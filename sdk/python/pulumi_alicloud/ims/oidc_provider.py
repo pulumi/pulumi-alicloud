@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['OidcProviderArgs', 'OidcProvider']
@@ -29,49 +29,16 @@ class OidcProviderArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] fingerprints: The authentication fingerprint of the HTTPS CA certificate.
         :param pulumi.Input[int] issuance_limit_time: The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
         """
-        OidcProviderArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            issuer_url=issuer_url,
-            oidc_provider_name=oidc_provider_name,
-            client_ids=client_ids,
-            description=description,
-            fingerprints=fingerprints,
-            issuance_limit_time=issuance_limit_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             issuer_url: Optional[pulumi.Input[str]] = None,
-             oidc_provider_name: Optional[pulumi.Input[str]] = None,
-             client_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             issuance_limit_time: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if issuer_url is None and 'issuerUrl' in kwargs:
-            issuer_url = kwargs['issuerUrl']
-        if issuer_url is None:
-            raise TypeError("Missing 'issuer_url' argument")
-        if oidc_provider_name is None and 'oidcProviderName' in kwargs:
-            oidc_provider_name = kwargs['oidcProviderName']
-        if oidc_provider_name is None:
-            raise TypeError("Missing 'oidc_provider_name' argument")
-        if client_ids is None and 'clientIds' in kwargs:
-            client_ids = kwargs['clientIds']
-        if issuance_limit_time is None and 'issuanceLimitTime' in kwargs:
-            issuance_limit_time = kwargs['issuanceLimitTime']
-
-        _setter("issuer_url", issuer_url)
-        _setter("oidc_provider_name", oidc_provider_name)
+        pulumi.set(__self__, "issuer_url", issuer_url)
+        pulumi.set(__self__, "oidc_provider_name", oidc_provider_name)
         if client_ids is not None:
-            _setter("client_ids", client_ids)
+            pulumi.set(__self__, "client_ids", client_ids)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if fingerprints is not None:
-            _setter("fingerprints", fingerprints)
+            pulumi.set(__self__, "fingerprints", fingerprints)
         if issuance_limit_time is not None:
-            _setter("issuance_limit_time", issuance_limit_time)
+            pulumi.set(__self__, "issuance_limit_time", issuance_limit_time)
 
     @property
     @pulumi.getter(name="issuerUrl")
@@ -166,53 +133,20 @@ class _OidcProviderState:
         :param pulumi.Input[str] issuer_url: The issuer URL of the OIDC identity provider.
         :param pulumi.Input[str] oidc_provider_name: The name of the OIDC identity provider.
         """
-        _OidcProviderState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            client_ids=client_ids,
-            create_time=create_time,
-            description=description,
-            fingerprints=fingerprints,
-            issuance_limit_time=issuance_limit_time,
-            issuer_url=issuer_url,
-            oidc_provider_name=oidc_provider_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             client_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             issuance_limit_time: Optional[pulumi.Input[int]] = None,
-             issuer_url: Optional[pulumi.Input[str]] = None,
-             oidc_provider_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if client_ids is None and 'clientIds' in kwargs:
-            client_ids = kwargs['clientIds']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if issuance_limit_time is None and 'issuanceLimitTime' in kwargs:
-            issuance_limit_time = kwargs['issuanceLimitTime']
-        if issuer_url is None and 'issuerUrl' in kwargs:
-            issuer_url = kwargs['issuerUrl']
-        if oidc_provider_name is None and 'oidcProviderName' in kwargs:
-            oidc_provider_name = kwargs['oidcProviderName']
-
         if client_ids is not None:
-            _setter("client_ids", client_ids)
+            pulumi.set(__self__, "client_ids", client_ids)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if fingerprints is not None:
-            _setter("fingerprints", fingerprints)
+            pulumi.set(__self__, "fingerprints", fingerprints)
         if issuance_limit_time is not None:
-            _setter("issuance_limit_time", issuance_limit_time)
+            pulumi.set(__self__, "issuance_limit_time", issuance_limit_time)
         if issuer_url is not None:
-            _setter("issuer_url", issuer_url)
+            pulumi.set(__self__, "issuer_url", issuer_url)
         if oidc_provider_name is not None:
-            _setter("oidc_provider_name", oidc_provider_name)
+            pulumi.set(__self__, "oidc_provider_name", oidc_provider_name)
 
     @property
     @pulumi.getter(name="clientIds")
@@ -420,10 +354,6 @@ class OidcProvider(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            OidcProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

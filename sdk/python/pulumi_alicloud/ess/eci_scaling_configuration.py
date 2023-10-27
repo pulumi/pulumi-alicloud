@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -88,170 +88,61 @@ class EciScalingConfigurationArgs:
                a null string.
         :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeArgs']]] volumes: The list of volumes. See `volumes` below for details.
         """
-        EciScalingConfigurationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            scaling_group_id=scaling_group_id,
-            acr_registry_infos=acr_registry_infos,
-            active=active,
-            auto_create_eip=auto_create_eip,
-            container_group_name=container_group_name,
-            containers=containers,
-            cpu=cpu,
-            description=description,
-            dns_policy=dns_policy,
-            egress_bandwidth=egress_bandwidth,
-            eip_bandwidth=eip_bandwidth,
-            enable_sls=enable_sls,
-            force_delete=force_delete,
-            host_aliases=host_aliases,
-            host_name=host_name,
-            image_registry_credentials=image_registry_credentials,
-            ingress_bandwidth=ingress_bandwidth,
-            init_containers=init_containers,
-            memory=memory,
-            ram_role_name=ram_role_name,
-            resource_group_id=resource_group_id,
-            restart_policy=restart_policy,
-            scaling_configuration_name=scaling_configuration_name,
-            security_group_id=security_group_id,
-            spot_price_limit=spot_price_limit,
-            spot_strategy=spot_strategy,
-            tags=tags,
-            volumes=volumes,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             scaling_group_id: Optional[pulumi.Input[str]] = None,
-             acr_registry_infos: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationAcrRegistryInfoArgs']]]] = None,
-             active: Optional[pulumi.Input[bool]] = None,
-             auto_create_eip: Optional[pulumi.Input[bool]] = None,
-             container_group_name: Optional[pulumi.Input[str]] = None,
-             containers: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerArgs']]]] = None,
-             cpu: Optional[pulumi.Input[float]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             dns_policy: Optional[pulumi.Input[str]] = None,
-             egress_bandwidth: Optional[pulumi.Input[int]] = None,
-             eip_bandwidth: Optional[pulumi.Input[int]] = None,
-             enable_sls: Optional[pulumi.Input[bool]] = None,
-             force_delete: Optional[pulumi.Input[bool]] = None,
-             host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationHostAliasArgs']]]] = None,
-             host_name: Optional[pulumi.Input[str]] = None,
-             image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationImageRegistryCredentialArgs']]]] = None,
-             ingress_bandwidth: Optional[pulumi.Input[int]] = None,
-             init_containers: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerArgs']]]] = None,
-             memory: Optional[pulumi.Input[float]] = None,
-             ram_role_name: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             restart_policy: Optional[pulumi.Input[str]] = None,
-             scaling_configuration_name: Optional[pulumi.Input[str]] = None,
-             security_group_id: Optional[pulumi.Input[str]] = None,
-             spot_price_limit: Optional[pulumi.Input[float]] = None,
-             spot_strategy: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             volumes: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if scaling_group_id is None and 'scalingGroupId' in kwargs:
-            scaling_group_id = kwargs['scalingGroupId']
-        if scaling_group_id is None:
-            raise TypeError("Missing 'scaling_group_id' argument")
-        if acr_registry_infos is None and 'acrRegistryInfos' in kwargs:
-            acr_registry_infos = kwargs['acrRegistryInfos']
-        if auto_create_eip is None and 'autoCreateEip' in kwargs:
-            auto_create_eip = kwargs['autoCreateEip']
-        if container_group_name is None and 'containerGroupName' in kwargs:
-            container_group_name = kwargs['containerGroupName']
-        if dns_policy is None and 'dnsPolicy' in kwargs:
-            dns_policy = kwargs['dnsPolicy']
-        if egress_bandwidth is None and 'egressBandwidth' in kwargs:
-            egress_bandwidth = kwargs['egressBandwidth']
-        if eip_bandwidth is None and 'eipBandwidth' in kwargs:
-            eip_bandwidth = kwargs['eipBandwidth']
-        if enable_sls is None and 'enableSls' in kwargs:
-            enable_sls = kwargs['enableSls']
-        if force_delete is None and 'forceDelete' in kwargs:
-            force_delete = kwargs['forceDelete']
-        if host_aliases is None and 'hostAliases' in kwargs:
-            host_aliases = kwargs['hostAliases']
-        if host_name is None and 'hostName' in kwargs:
-            host_name = kwargs['hostName']
-        if image_registry_credentials is None and 'imageRegistryCredentials' in kwargs:
-            image_registry_credentials = kwargs['imageRegistryCredentials']
-        if ingress_bandwidth is None and 'ingressBandwidth' in kwargs:
-            ingress_bandwidth = kwargs['ingressBandwidth']
-        if init_containers is None and 'initContainers' in kwargs:
-            init_containers = kwargs['initContainers']
-        if ram_role_name is None and 'ramRoleName' in kwargs:
-            ram_role_name = kwargs['ramRoleName']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if restart_policy is None and 'restartPolicy' in kwargs:
-            restart_policy = kwargs['restartPolicy']
-        if scaling_configuration_name is None and 'scalingConfigurationName' in kwargs:
-            scaling_configuration_name = kwargs['scalingConfigurationName']
-        if security_group_id is None and 'securityGroupId' in kwargs:
-            security_group_id = kwargs['securityGroupId']
-        if spot_price_limit is None and 'spotPriceLimit' in kwargs:
-            spot_price_limit = kwargs['spotPriceLimit']
-        if spot_strategy is None and 'spotStrategy' in kwargs:
-            spot_strategy = kwargs['spotStrategy']
-
-        _setter("scaling_group_id", scaling_group_id)
+        pulumi.set(__self__, "scaling_group_id", scaling_group_id)
         if acr_registry_infos is not None:
-            _setter("acr_registry_infos", acr_registry_infos)
+            pulumi.set(__self__, "acr_registry_infos", acr_registry_infos)
         if active is not None:
-            _setter("active", active)
+            pulumi.set(__self__, "active", active)
         if auto_create_eip is not None:
-            _setter("auto_create_eip", auto_create_eip)
+            pulumi.set(__self__, "auto_create_eip", auto_create_eip)
         if container_group_name is not None:
-            _setter("container_group_name", container_group_name)
+            pulumi.set(__self__, "container_group_name", container_group_name)
         if containers is not None:
-            _setter("containers", containers)
+            pulumi.set(__self__, "containers", containers)
         if cpu is not None:
-            _setter("cpu", cpu)
+            pulumi.set(__self__, "cpu", cpu)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if dns_policy is not None:
-            _setter("dns_policy", dns_policy)
+            pulumi.set(__self__, "dns_policy", dns_policy)
         if egress_bandwidth is not None:
-            _setter("egress_bandwidth", egress_bandwidth)
+            pulumi.set(__self__, "egress_bandwidth", egress_bandwidth)
         if eip_bandwidth is not None:
-            _setter("eip_bandwidth", eip_bandwidth)
+            pulumi.set(__self__, "eip_bandwidth", eip_bandwidth)
         if enable_sls is not None:
-            _setter("enable_sls", enable_sls)
+            pulumi.set(__self__, "enable_sls", enable_sls)
         if force_delete is not None:
-            _setter("force_delete", force_delete)
+            pulumi.set(__self__, "force_delete", force_delete)
         if host_aliases is not None:
-            _setter("host_aliases", host_aliases)
+            pulumi.set(__self__, "host_aliases", host_aliases)
         if host_name is not None:
-            _setter("host_name", host_name)
+            pulumi.set(__self__, "host_name", host_name)
         if image_registry_credentials is not None:
-            _setter("image_registry_credentials", image_registry_credentials)
+            pulumi.set(__self__, "image_registry_credentials", image_registry_credentials)
         if ingress_bandwidth is not None:
-            _setter("ingress_bandwidth", ingress_bandwidth)
+            pulumi.set(__self__, "ingress_bandwidth", ingress_bandwidth)
         if init_containers is not None:
-            _setter("init_containers", init_containers)
+            pulumi.set(__self__, "init_containers", init_containers)
         if memory is not None:
-            _setter("memory", memory)
+            pulumi.set(__self__, "memory", memory)
         if ram_role_name is not None:
-            _setter("ram_role_name", ram_role_name)
+            pulumi.set(__self__, "ram_role_name", ram_role_name)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if restart_policy is not None:
-            _setter("restart_policy", restart_policy)
+            pulumi.set(__self__, "restart_policy", restart_policy)
         if scaling_configuration_name is not None:
-            _setter("scaling_configuration_name", scaling_configuration_name)
+            pulumi.set(__self__, "scaling_configuration_name", scaling_configuration_name)
         if security_group_id is not None:
-            _setter("security_group_id", security_group_id)
+            pulumi.set(__self__, "security_group_id", security_group_id)
         if spot_price_limit is not None:
-            _setter("spot_price_limit", spot_price_limit)
+            pulumi.set(__self__, "spot_price_limit", spot_price_limit)
         if spot_strategy is not None:
-            _setter("spot_strategy", spot_strategy)
+            pulumi.set(__self__, "spot_strategy", spot_strategy)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if volumes is not None:
-            _setter("volumes", volumes)
+            pulumi.set(__self__, "volumes", volumes)
 
     @property
     @pulumi.getter(name="scalingGroupId")
@@ -678,169 +569,62 @@ class _EciScalingConfigurationState:
                a null string.
         :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeArgs']]] volumes: The list of volumes. See `volumes` below for details.
         """
-        _EciScalingConfigurationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            acr_registry_infos=acr_registry_infos,
-            active=active,
-            auto_create_eip=auto_create_eip,
-            container_group_name=container_group_name,
-            containers=containers,
-            cpu=cpu,
-            description=description,
-            dns_policy=dns_policy,
-            egress_bandwidth=egress_bandwidth,
-            eip_bandwidth=eip_bandwidth,
-            enable_sls=enable_sls,
-            force_delete=force_delete,
-            host_aliases=host_aliases,
-            host_name=host_name,
-            image_registry_credentials=image_registry_credentials,
-            ingress_bandwidth=ingress_bandwidth,
-            init_containers=init_containers,
-            memory=memory,
-            ram_role_name=ram_role_name,
-            resource_group_id=resource_group_id,
-            restart_policy=restart_policy,
-            scaling_configuration_name=scaling_configuration_name,
-            scaling_group_id=scaling_group_id,
-            security_group_id=security_group_id,
-            spot_price_limit=spot_price_limit,
-            spot_strategy=spot_strategy,
-            tags=tags,
-            volumes=volumes,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             acr_registry_infos: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationAcrRegistryInfoArgs']]]] = None,
-             active: Optional[pulumi.Input[bool]] = None,
-             auto_create_eip: Optional[pulumi.Input[bool]] = None,
-             container_group_name: Optional[pulumi.Input[str]] = None,
-             containers: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerArgs']]]] = None,
-             cpu: Optional[pulumi.Input[float]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             dns_policy: Optional[pulumi.Input[str]] = None,
-             egress_bandwidth: Optional[pulumi.Input[int]] = None,
-             eip_bandwidth: Optional[pulumi.Input[int]] = None,
-             enable_sls: Optional[pulumi.Input[bool]] = None,
-             force_delete: Optional[pulumi.Input[bool]] = None,
-             host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationHostAliasArgs']]]] = None,
-             host_name: Optional[pulumi.Input[str]] = None,
-             image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationImageRegistryCredentialArgs']]]] = None,
-             ingress_bandwidth: Optional[pulumi.Input[int]] = None,
-             init_containers: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerArgs']]]] = None,
-             memory: Optional[pulumi.Input[float]] = None,
-             ram_role_name: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             restart_policy: Optional[pulumi.Input[str]] = None,
-             scaling_configuration_name: Optional[pulumi.Input[str]] = None,
-             scaling_group_id: Optional[pulumi.Input[str]] = None,
-             security_group_id: Optional[pulumi.Input[str]] = None,
-             spot_price_limit: Optional[pulumi.Input[float]] = None,
-             spot_strategy: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             volumes: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if acr_registry_infos is None and 'acrRegistryInfos' in kwargs:
-            acr_registry_infos = kwargs['acrRegistryInfos']
-        if auto_create_eip is None and 'autoCreateEip' in kwargs:
-            auto_create_eip = kwargs['autoCreateEip']
-        if container_group_name is None and 'containerGroupName' in kwargs:
-            container_group_name = kwargs['containerGroupName']
-        if dns_policy is None and 'dnsPolicy' in kwargs:
-            dns_policy = kwargs['dnsPolicy']
-        if egress_bandwidth is None and 'egressBandwidth' in kwargs:
-            egress_bandwidth = kwargs['egressBandwidth']
-        if eip_bandwidth is None and 'eipBandwidth' in kwargs:
-            eip_bandwidth = kwargs['eipBandwidth']
-        if enable_sls is None and 'enableSls' in kwargs:
-            enable_sls = kwargs['enableSls']
-        if force_delete is None and 'forceDelete' in kwargs:
-            force_delete = kwargs['forceDelete']
-        if host_aliases is None and 'hostAliases' in kwargs:
-            host_aliases = kwargs['hostAliases']
-        if host_name is None and 'hostName' in kwargs:
-            host_name = kwargs['hostName']
-        if image_registry_credentials is None and 'imageRegistryCredentials' in kwargs:
-            image_registry_credentials = kwargs['imageRegistryCredentials']
-        if ingress_bandwidth is None and 'ingressBandwidth' in kwargs:
-            ingress_bandwidth = kwargs['ingressBandwidth']
-        if init_containers is None and 'initContainers' in kwargs:
-            init_containers = kwargs['initContainers']
-        if ram_role_name is None and 'ramRoleName' in kwargs:
-            ram_role_name = kwargs['ramRoleName']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if restart_policy is None and 'restartPolicy' in kwargs:
-            restart_policy = kwargs['restartPolicy']
-        if scaling_configuration_name is None and 'scalingConfigurationName' in kwargs:
-            scaling_configuration_name = kwargs['scalingConfigurationName']
-        if scaling_group_id is None and 'scalingGroupId' in kwargs:
-            scaling_group_id = kwargs['scalingGroupId']
-        if security_group_id is None and 'securityGroupId' in kwargs:
-            security_group_id = kwargs['securityGroupId']
-        if spot_price_limit is None and 'spotPriceLimit' in kwargs:
-            spot_price_limit = kwargs['spotPriceLimit']
-        if spot_strategy is None and 'spotStrategy' in kwargs:
-            spot_strategy = kwargs['spotStrategy']
-
         if acr_registry_infos is not None:
-            _setter("acr_registry_infos", acr_registry_infos)
+            pulumi.set(__self__, "acr_registry_infos", acr_registry_infos)
         if active is not None:
-            _setter("active", active)
+            pulumi.set(__self__, "active", active)
         if auto_create_eip is not None:
-            _setter("auto_create_eip", auto_create_eip)
+            pulumi.set(__self__, "auto_create_eip", auto_create_eip)
         if container_group_name is not None:
-            _setter("container_group_name", container_group_name)
+            pulumi.set(__self__, "container_group_name", container_group_name)
         if containers is not None:
-            _setter("containers", containers)
+            pulumi.set(__self__, "containers", containers)
         if cpu is not None:
-            _setter("cpu", cpu)
+            pulumi.set(__self__, "cpu", cpu)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if dns_policy is not None:
-            _setter("dns_policy", dns_policy)
+            pulumi.set(__self__, "dns_policy", dns_policy)
         if egress_bandwidth is not None:
-            _setter("egress_bandwidth", egress_bandwidth)
+            pulumi.set(__self__, "egress_bandwidth", egress_bandwidth)
         if eip_bandwidth is not None:
-            _setter("eip_bandwidth", eip_bandwidth)
+            pulumi.set(__self__, "eip_bandwidth", eip_bandwidth)
         if enable_sls is not None:
-            _setter("enable_sls", enable_sls)
+            pulumi.set(__self__, "enable_sls", enable_sls)
         if force_delete is not None:
-            _setter("force_delete", force_delete)
+            pulumi.set(__self__, "force_delete", force_delete)
         if host_aliases is not None:
-            _setter("host_aliases", host_aliases)
+            pulumi.set(__self__, "host_aliases", host_aliases)
         if host_name is not None:
-            _setter("host_name", host_name)
+            pulumi.set(__self__, "host_name", host_name)
         if image_registry_credentials is not None:
-            _setter("image_registry_credentials", image_registry_credentials)
+            pulumi.set(__self__, "image_registry_credentials", image_registry_credentials)
         if ingress_bandwidth is not None:
-            _setter("ingress_bandwidth", ingress_bandwidth)
+            pulumi.set(__self__, "ingress_bandwidth", ingress_bandwidth)
         if init_containers is not None:
-            _setter("init_containers", init_containers)
+            pulumi.set(__self__, "init_containers", init_containers)
         if memory is not None:
-            _setter("memory", memory)
+            pulumi.set(__self__, "memory", memory)
         if ram_role_name is not None:
-            _setter("ram_role_name", ram_role_name)
+            pulumi.set(__self__, "ram_role_name", ram_role_name)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if restart_policy is not None:
-            _setter("restart_policy", restart_policy)
+            pulumi.set(__self__, "restart_policy", restart_policy)
         if scaling_configuration_name is not None:
-            _setter("scaling_configuration_name", scaling_configuration_name)
+            pulumi.set(__self__, "scaling_configuration_name", scaling_configuration_name)
         if scaling_group_id is not None:
-            _setter("scaling_group_id", scaling_group_id)
+            pulumi.set(__self__, "scaling_group_id", scaling_group_id)
         if security_group_id is not None:
-            _setter("security_group_id", security_group_id)
+            pulumi.set(__self__, "security_group_id", security_group_id)
         if spot_price_limit is not None:
-            _setter("spot_price_limit", spot_price_limit)
+            pulumi.set(__self__, "spot_price_limit", spot_price_limit)
         if spot_strategy is not None:
-            _setter("spot_strategy", spot_strategy)
+            pulumi.set(__self__, "spot_strategy", spot_strategy)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if volumes is not None:
-            _setter("volumes", volumes)
+            pulumi.set(__self__, "volumes", volumes)
 
     @property
     @pulumi.getter(name="acrRegistryInfos")
@@ -1410,10 +1194,6 @@ class EciScalingConfiguration(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            EciScalingConfigurationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

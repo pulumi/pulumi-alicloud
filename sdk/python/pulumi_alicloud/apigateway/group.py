@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['GroupArgs', 'Group']
@@ -23,30 +23,11 @@ class GroupArgs:
         :param pulumi.Input[str] instance_id: The id of the api gateway.
         :param pulumi.Input[str] name: The name of the api gateway group. Defaults to null.
         """
-        GroupArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            instance_id=instance_id,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-
-        _setter("description", description)
+        pulumi.set(__self__, "description", description)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -101,41 +82,16 @@ class _GroupState:
         :param pulumi.Input[str] sub_domain: (Available in 1.69.0+)	Second-level domain name automatically assigned to the API group.
         :param pulumi.Input[str] vpc_domain: (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
         """
-        _GroupState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            instance_id=instance_id,
-            name=name,
-            sub_domain=sub_domain,
-            vpc_domain=vpc_domain,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             sub_domain: Optional[pulumi.Input[str]] = None,
-             vpc_domain: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if sub_domain is None and 'subDomain' in kwargs:
-            sub_domain = kwargs['subDomain']
-        if vpc_domain is None and 'vpcDomain' in kwargs:
-            vpc_domain = kwargs['vpcDomain']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if sub_domain is not None:
-            _setter("sub_domain", sub_domain)
+            pulumi.set(__self__, "sub_domain", sub_domain)
         if vpc_domain is not None:
-            _setter("vpc_domain", vpc_domain)
+            pulumi.set(__self__, "vpc_domain", vpc_domain)
 
     @property
     @pulumi.getter
@@ -269,10 +225,6 @@ class Group(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            GroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

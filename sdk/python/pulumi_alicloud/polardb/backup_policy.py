@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BackupPolicyArgs', 'BackupPolicy']
@@ -56,124 +56,41 @@ class BackupPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_backup_periods: PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
         :param pulumi.Input[str] preferred_backup_time: PolarDB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
         """
-        BackupPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            db_cluster_id=db_cluster_id,
-            backup_frequency=backup_frequency,
-            backup_retention_period=backup_retention_period,
-            backup_retention_policy_on_cluster_deletion=backup_retention_policy_on_cluster_deletion,
-            data_level1_backup_frequency=data_level1_backup_frequency,
-            data_level1_backup_periods=data_level1_backup_periods,
-            data_level1_backup_retention_period=data_level1_backup_retention_period,
-            data_level1_backup_time=data_level1_backup_time,
-            data_level2_backup_another_region_region=data_level2_backup_another_region_region,
-            data_level2_backup_another_region_retention_period=data_level2_backup_another_region_retention_period,
-            data_level2_backup_periods=data_level2_backup_periods,
-            data_level2_backup_retention_period=data_level2_backup_retention_period,
-            enable_backup_log=enable_backup_log,
-            log_backup_another_region_region=log_backup_another_region_region,
-            log_backup_another_region_retention_period=log_backup_another_region_retention_period,
-            log_backup_retention_period=log_backup_retention_period,
-            preferred_backup_periods=preferred_backup_periods,
-            preferred_backup_time=preferred_backup_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             db_cluster_id: Optional[pulumi.Input[str]] = None,
-             backup_frequency: Optional[pulumi.Input[str]] = None,
-             backup_retention_period: Optional[pulumi.Input[str]] = None,
-             backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[str]] = None,
-             data_level1_backup_frequency: Optional[pulumi.Input[str]] = None,
-             data_level1_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             data_level1_backup_retention_period: Optional[pulumi.Input[int]] = None,
-             data_level1_backup_time: Optional[pulumi.Input[str]] = None,
-             data_level2_backup_another_region_region: Optional[pulumi.Input[str]] = None,
-             data_level2_backup_another_region_retention_period: Optional[pulumi.Input[int]] = None,
-             data_level2_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             data_level2_backup_retention_period: Optional[pulumi.Input[int]] = None,
-             enable_backup_log: Optional[pulumi.Input[int]] = None,
-             log_backup_another_region_region: Optional[pulumi.Input[str]] = None,
-             log_backup_another_region_retention_period: Optional[pulumi.Input[int]] = None,
-             log_backup_retention_period: Optional[pulumi.Input[int]] = None,
-             preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             preferred_backup_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if db_cluster_id is None and 'dbClusterId' in kwargs:
-            db_cluster_id = kwargs['dbClusterId']
-        if db_cluster_id is None:
-            raise TypeError("Missing 'db_cluster_id' argument")
-        if backup_frequency is None and 'backupFrequency' in kwargs:
-            backup_frequency = kwargs['backupFrequency']
-        if backup_retention_period is None and 'backupRetentionPeriod' in kwargs:
-            backup_retention_period = kwargs['backupRetentionPeriod']
-        if backup_retention_policy_on_cluster_deletion is None and 'backupRetentionPolicyOnClusterDeletion' in kwargs:
-            backup_retention_policy_on_cluster_deletion = kwargs['backupRetentionPolicyOnClusterDeletion']
-        if data_level1_backup_frequency is None and 'dataLevel1BackupFrequency' in kwargs:
-            data_level1_backup_frequency = kwargs['dataLevel1BackupFrequency']
-        if data_level1_backup_periods is None and 'dataLevel1BackupPeriods' in kwargs:
-            data_level1_backup_periods = kwargs['dataLevel1BackupPeriods']
-        if data_level1_backup_retention_period is None and 'dataLevel1BackupRetentionPeriod' in kwargs:
-            data_level1_backup_retention_period = kwargs['dataLevel1BackupRetentionPeriod']
-        if data_level1_backup_time is None and 'dataLevel1BackupTime' in kwargs:
-            data_level1_backup_time = kwargs['dataLevel1BackupTime']
-        if data_level2_backup_another_region_region is None and 'dataLevel2BackupAnotherRegionRegion' in kwargs:
-            data_level2_backup_another_region_region = kwargs['dataLevel2BackupAnotherRegionRegion']
-        if data_level2_backup_another_region_retention_period is None and 'dataLevel2BackupAnotherRegionRetentionPeriod' in kwargs:
-            data_level2_backup_another_region_retention_period = kwargs['dataLevel2BackupAnotherRegionRetentionPeriod']
-        if data_level2_backup_periods is None and 'dataLevel2BackupPeriods' in kwargs:
-            data_level2_backup_periods = kwargs['dataLevel2BackupPeriods']
-        if data_level2_backup_retention_period is None and 'dataLevel2BackupRetentionPeriod' in kwargs:
-            data_level2_backup_retention_period = kwargs['dataLevel2BackupRetentionPeriod']
-        if enable_backup_log is None and 'enableBackupLog' in kwargs:
-            enable_backup_log = kwargs['enableBackupLog']
-        if log_backup_another_region_region is None and 'logBackupAnotherRegionRegion' in kwargs:
-            log_backup_another_region_region = kwargs['logBackupAnotherRegionRegion']
-        if log_backup_another_region_retention_period is None and 'logBackupAnotherRegionRetentionPeriod' in kwargs:
-            log_backup_another_region_retention_period = kwargs['logBackupAnotherRegionRetentionPeriod']
-        if log_backup_retention_period is None and 'logBackupRetentionPeriod' in kwargs:
-            log_backup_retention_period = kwargs['logBackupRetentionPeriod']
-        if preferred_backup_periods is None and 'preferredBackupPeriods' in kwargs:
-            preferred_backup_periods = kwargs['preferredBackupPeriods']
-        if preferred_backup_time is None and 'preferredBackupTime' in kwargs:
-            preferred_backup_time = kwargs['preferredBackupTime']
-
-        _setter("db_cluster_id", db_cluster_id)
+        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
         if backup_frequency is not None:
-            _setter("backup_frequency", backup_frequency)
+            pulumi.set(__self__, "backup_frequency", backup_frequency)
         if backup_retention_period is not None:
-            _setter("backup_retention_period", backup_retention_period)
+            pulumi.set(__self__, "backup_retention_period", backup_retention_period)
         if backup_retention_policy_on_cluster_deletion is not None:
-            _setter("backup_retention_policy_on_cluster_deletion", backup_retention_policy_on_cluster_deletion)
+            pulumi.set(__self__, "backup_retention_policy_on_cluster_deletion", backup_retention_policy_on_cluster_deletion)
         if data_level1_backup_frequency is not None:
-            _setter("data_level1_backup_frequency", data_level1_backup_frequency)
+            pulumi.set(__self__, "data_level1_backup_frequency", data_level1_backup_frequency)
         if data_level1_backup_periods is not None:
-            _setter("data_level1_backup_periods", data_level1_backup_periods)
+            pulumi.set(__self__, "data_level1_backup_periods", data_level1_backup_periods)
         if data_level1_backup_retention_period is not None:
-            _setter("data_level1_backup_retention_period", data_level1_backup_retention_period)
+            pulumi.set(__self__, "data_level1_backup_retention_period", data_level1_backup_retention_period)
         if data_level1_backup_time is not None:
-            _setter("data_level1_backup_time", data_level1_backup_time)
+            pulumi.set(__self__, "data_level1_backup_time", data_level1_backup_time)
         if data_level2_backup_another_region_region is not None:
-            _setter("data_level2_backup_another_region_region", data_level2_backup_another_region_region)
+            pulumi.set(__self__, "data_level2_backup_another_region_region", data_level2_backup_another_region_region)
         if data_level2_backup_another_region_retention_period is not None:
-            _setter("data_level2_backup_another_region_retention_period", data_level2_backup_another_region_retention_period)
+            pulumi.set(__self__, "data_level2_backup_another_region_retention_period", data_level2_backup_another_region_retention_period)
         if data_level2_backup_periods is not None:
-            _setter("data_level2_backup_periods", data_level2_backup_periods)
+            pulumi.set(__self__, "data_level2_backup_periods", data_level2_backup_periods)
         if data_level2_backup_retention_period is not None:
-            _setter("data_level2_backup_retention_period", data_level2_backup_retention_period)
+            pulumi.set(__self__, "data_level2_backup_retention_period", data_level2_backup_retention_period)
         if enable_backup_log is not None:
-            _setter("enable_backup_log", enable_backup_log)
+            pulumi.set(__self__, "enable_backup_log", enable_backup_log)
         if log_backup_another_region_region is not None:
-            _setter("log_backup_another_region_region", log_backup_another_region_region)
+            pulumi.set(__self__, "log_backup_another_region_region", log_backup_another_region_region)
         if log_backup_another_region_retention_period is not None:
-            _setter("log_backup_another_region_retention_period", log_backup_another_region_retention_period)
+            pulumi.set(__self__, "log_backup_another_region_retention_period", log_backup_another_region_retention_period)
         if log_backup_retention_period is not None:
-            _setter("log_backup_retention_period", log_backup_retention_period)
+            pulumi.set(__self__, "log_backup_retention_period", log_backup_retention_period)
         if preferred_backup_periods is not None:
-            _setter("preferred_backup_periods", preferred_backup_periods)
+            pulumi.set(__self__, "preferred_backup_periods", preferred_backup_periods)
         if preferred_backup_time is not None:
-            _setter("preferred_backup_time", preferred_backup_time)
+            pulumi.set(__self__, "preferred_backup_time", preferred_backup_time)
 
     @property
     @pulumi.getter(name="dbClusterId")
@@ -440,123 +357,42 @@ class _BackupPolicyState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_backup_periods: PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
         :param pulumi.Input[str] preferred_backup_time: PolarDB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
         """
-        _BackupPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            backup_frequency=backup_frequency,
-            backup_retention_period=backup_retention_period,
-            backup_retention_policy_on_cluster_deletion=backup_retention_policy_on_cluster_deletion,
-            data_level1_backup_frequency=data_level1_backup_frequency,
-            data_level1_backup_periods=data_level1_backup_periods,
-            data_level1_backup_retention_period=data_level1_backup_retention_period,
-            data_level1_backup_time=data_level1_backup_time,
-            data_level2_backup_another_region_region=data_level2_backup_another_region_region,
-            data_level2_backup_another_region_retention_period=data_level2_backup_another_region_retention_period,
-            data_level2_backup_periods=data_level2_backup_periods,
-            data_level2_backup_retention_period=data_level2_backup_retention_period,
-            db_cluster_id=db_cluster_id,
-            enable_backup_log=enable_backup_log,
-            log_backup_another_region_region=log_backup_another_region_region,
-            log_backup_another_region_retention_period=log_backup_another_region_retention_period,
-            log_backup_retention_period=log_backup_retention_period,
-            preferred_backup_periods=preferred_backup_periods,
-            preferred_backup_time=preferred_backup_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             backup_frequency: Optional[pulumi.Input[str]] = None,
-             backup_retention_period: Optional[pulumi.Input[str]] = None,
-             backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[str]] = None,
-             data_level1_backup_frequency: Optional[pulumi.Input[str]] = None,
-             data_level1_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             data_level1_backup_retention_period: Optional[pulumi.Input[int]] = None,
-             data_level1_backup_time: Optional[pulumi.Input[str]] = None,
-             data_level2_backup_another_region_region: Optional[pulumi.Input[str]] = None,
-             data_level2_backup_another_region_retention_period: Optional[pulumi.Input[int]] = None,
-             data_level2_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             data_level2_backup_retention_period: Optional[pulumi.Input[int]] = None,
-             db_cluster_id: Optional[pulumi.Input[str]] = None,
-             enable_backup_log: Optional[pulumi.Input[int]] = None,
-             log_backup_another_region_region: Optional[pulumi.Input[str]] = None,
-             log_backup_another_region_retention_period: Optional[pulumi.Input[int]] = None,
-             log_backup_retention_period: Optional[pulumi.Input[int]] = None,
-             preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             preferred_backup_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if backup_frequency is None and 'backupFrequency' in kwargs:
-            backup_frequency = kwargs['backupFrequency']
-        if backup_retention_period is None and 'backupRetentionPeriod' in kwargs:
-            backup_retention_period = kwargs['backupRetentionPeriod']
-        if backup_retention_policy_on_cluster_deletion is None and 'backupRetentionPolicyOnClusterDeletion' in kwargs:
-            backup_retention_policy_on_cluster_deletion = kwargs['backupRetentionPolicyOnClusterDeletion']
-        if data_level1_backup_frequency is None and 'dataLevel1BackupFrequency' in kwargs:
-            data_level1_backup_frequency = kwargs['dataLevel1BackupFrequency']
-        if data_level1_backup_periods is None and 'dataLevel1BackupPeriods' in kwargs:
-            data_level1_backup_periods = kwargs['dataLevel1BackupPeriods']
-        if data_level1_backup_retention_period is None and 'dataLevel1BackupRetentionPeriod' in kwargs:
-            data_level1_backup_retention_period = kwargs['dataLevel1BackupRetentionPeriod']
-        if data_level1_backup_time is None and 'dataLevel1BackupTime' in kwargs:
-            data_level1_backup_time = kwargs['dataLevel1BackupTime']
-        if data_level2_backup_another_region_region is None and 'dataLevel2BackupAnotherRegionRegion' in kwargs:
-            data_level2_backup_another_region_region = kwargs['dataLevel2BackupAnotherRegionRegion']
-        if data_level2_backup_another_region_retention_period is None and 'dataLevel2BackupAnotherRegionRetentionPeriod' in kwargs:
-            data_level2_backup_another_region_retention_period = kwargs['dataLevel2BackupAnotherRegionRetentionPeriod']
-        if data_level2_backup_periods is None and 'dataLevel2BackupPeriods' in kwargs:
-            data_level2_backup_periods = kwargs['dataLevel2BackupPeriods']
-        if data_level2_backup_retention_period is None and 'dataLevel2BackupRetentionPeriod' in kwargs:
-            data_level2_backup_retention_period = kwargs['dataLevel2BackupRetentionPeriod']
-        if db_cluster_id is None and 'dbClusterId' in kwargs:
-            db_cluster_id = kwargs['dbClusterId']
-        if enable_backup_log is None and 'enableBackupLog' in kwargs:
-            enable_backup_log = kwargs['enableBackupLog']
-        if log_backup_another_region_region is None and 'logBackupAnotherRegionRegion' in kwargs:
-            log_backup_another_region_region = kwargs['logBackupAnotherRegionRegion']
-        if log_backup_another_region_retention_period is None and 'logBackupAnotherRegionRetentionPeriod' in kwargs:
-            log_backup_another_region_retention_period = kwargs['logBackupAnotherRegionRetentionPeriod']
-        if log_backup_retention_period is None and 'logBackupRetentionPeriod' in kwargs:
-            log_backup_retention_period = kwargs['logBackupRetentionPeriod']
-        if preferred_backup_periods is None and 'preferredBackupPeriods' in kwargs:
-            preferred_backup_periods = kwargs['preferredBackupPeriods']
-        if preferred_backup_time is None and 'preferredBackupTime' in kwargs:
-            preferred_backup_time = kwargs['preferredBackupTime']
-
         if backup_frequency is not None:
-            _setter("backup_frequency", backup_frequency)
+            pulumi.set(__self__, "backup_frequency", backup_frequency)
         if backup_retention_period is not None:
-            _setter("backup_retention_period", backup_retention_period)
+            pulumi.set(__self__, "backup_retention_period", backup_retention_period)
         if backup_retention_policy_on_cluster_deletion is not None:
-            _setter("backup_retention_policy_on_cluster_deletion", backup_retention_policy_on_cluster_deletion)
+            pulumi.set(__self__, "backup_retention_policy_on_cluster_deletion", backup_retention_policy_on_cluster_deletion)
         if data_level1_backup_frequency is not None:
-            _setter("data_level1_backup_frequency", data_level1_backup_frequency)
+            pulumi.set(__self__, "data_level1_backup_frequency", data_level1_backup_frequency)
         if data_level1_backup_periods is not None:
-            _setter("data_level1_backup_periods", data_level1_backup_periods)
+            pulumi.set(__self__, "data_level1_backup_periods", data_level1_backup_periods)
         if data_level1_backup_retention_period is not None:
-            _setter("data_level1_backup_retention_period", data_level1_backup_retention_period)
+            pulumi.set(__self__, "data_level1_backup_retention_period", data_level1_backup_retention_period)
         if data_level1_backup_time is not None:
-            _setter("data_level1_backup_time", data_level1_backup_time)
+            pulumi.set(__self__, "data_level1_backup_time", data_level1_backup_time)
         if data_level2_backup_another_region_region is not None:
-            _setter("data_level2_backup_another_region_region", data_level2_backup_another_region_region)
+            pulumi.set(__self__, "data_level2_backup_another_region_region", data_level2_backup_another_region_region)
         if data_level2_backup_another_region_retention_period is not None:
-            _setter("data_level2_backup_another_region_retention_period", data_level2_backup_another_region_retention_period)
+            pulumi.set(__self__, "data_level2_backup_another_region_retention_period", data_level2_backup_another_region_retention_period)
         if data_level2_backup_periods is not None:
-            _setter("data_level2_backup_periods", data_level2_backup_periods)
+            pulumi.set(__self__, "data_level2_backup_periods", data_level2_backup_periods)
         if data_level2_backup_retention_period is not None:
-            _setter("data_level2_backup_retention_period", data_level2_backup_retention_period)
+            pulumi.set(__self__, "data_level2_backup_retention_period", data_level2_backup_retention_period)
         if db_cluster_id is not None:
-            _setter("db_cluster_id", db_cluster_id)
+            pulumi.set(__self__, "db_cluster_id", db_cluster_id)
         if enable_backup_log is not None:
-            _setter("enable_backup_log", enable_backup_log)
+            pulumi.set(__self__, "enable_backup_log", enable_backup_log)
         if log_backup_another_region_region is not None:
-            _setter("log_backup_another_region_region", log_backup_another_region_region)
+            pulumi.set(__self__, "log_backup_another_region_region", log_backup_another_region_region)
         if log_backup_another_region_retention_period is not None:
-            _setter("log_backup_another_region_retention_period", log_backup_another_region_retention_period)
+            pulumi.set(__self__, "log_backup_another_region_retention_period", log_backup_another_region_retention_period)
         if log_backup_retention_period is not None:
-            _setter("log_backup_retention_period", log_backup_retention_period)
+            pulumi.set(__self__, "log_backup_retention_period", log_backup_retention_period)
         if preferred_backup_periods is not None:
-            _setter("preferred_backup_periods", preferred_backup_periods)
+            pulumi.set(__self__, "preferred_backup_periods", preferred_backup_periods)
         if preferred_backup_time is not None:
-            _setter("preferred_backup_time", preferred_backup_time)
+            pulumi.set(__self__, "preferred_backup_time", preferred_backup_time)
 
     @property
     @pulumi.getter(name="backupFrequency")
@@ -860,10 +696,6 @@ class BackupPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            BackupPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

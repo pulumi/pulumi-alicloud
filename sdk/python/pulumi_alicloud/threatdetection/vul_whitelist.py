@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['VulWhitelistArgs', 'VulWhitelist']
@@ -23,30 +23,11 @@ class VulWhitelistArgs:
         :param pulumi.Input[str] reason: Reason for adding whitelist.
         :param pulumi.Input[str] target_info: Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
         """
-        VulWhitelistArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            whitelist=whitelist,
-            reason=reason,
-            target_info=target_info,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             whitelist: Optional[pulumi.Input[str]] = None,
-             reason: Optional[pulumi.Input[str]] = None,
-             target_info: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if whitelist is None:
-            raise TypeError("Missing 'whitelist' argument")
-        if target_info is None and 'targetInfo' in kwargs:
-            target_info = kwargs['targetInfo']
-
-        _setter("whitelist", whitelist)
+        pulumi.set(__self__, "whitelist", whitelist)
         if reason is not None:
-            _setter("reason", reason)
+            pulumi.set(__self__, "reason", reason)
         if target_info is not None:
-            _setter("target_info", target_info)
+            pulumi.set(__self__, "target_info", target_info)
 
     @property
     @pulumi.getter
@@ -97,29 +78,12 @@ class _VulWhitelistState:
         :param pulumi.Input[str] target_info: Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
         :param pulumi.Input[str] whitelist: Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
         """
-        _VulWhitelistState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            reason=reason,
-            target_info=target_info,
-            whitelist=whitelist,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             reason: Optional[pulumi.Input[str]] = None,
-             target_info: Optional[pulumi.Input[str]] = None,
-             whitelist: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if target_info is None and 'targetInfo' in kwargs:
-            target_info = kwargs['targetInfo']
-
         if reason is not None:
-            _setter("reason", reason)
+            pulumi.set(__self__, "reason", reason)
         if target_info is not None:
-            _setter("target_info", target_info)
+            pulumi.set(__self__, "target_info", target_info)
         if whitelist is not None:
-            _setter("whitelist", whitelist)
+            pulumi.set(__self__, "whitelist", whitelist)
 
     @property
     @pulumi.getter
@@ -247,10 +211,6 @@ class VulWhitelist(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            VulWhitelistArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

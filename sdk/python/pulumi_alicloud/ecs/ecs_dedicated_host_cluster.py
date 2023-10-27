@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EcsDedicatedHostClusterArgs', 'EcsDedicatedHostCluster']
@@ -27,42 +27,15 @@ class EcsDedicatedHostClusterArgs:
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
-        EcsDedicatedHostClusterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            zone_id=zone_id,
-            dedicated_host_cluster_name=dedicated_host_cluster_name,
-            description=description,
-            dry_run=dry_run,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             zone_id: Optional[pulumi.Input[str]] = None,
-             dedicated_host_cluster_name: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-        if dedicated_host_cluster_name is None and 'dedicatedHostClusterName' in kwargs:
-            dedicated_host_cluster_name = kwargs['dedicatedHostClusterName']
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "zone_id", zone_id)
         if dedicated_host_cluster_name is not None:
-            _setter("dedicated_host_cluster_name", dedicated_host_cluster_name)
+            pulumi.set(__self__, "dedicated_host_cluster_name", dedicated_host_cluster_name)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -141,41 +114,16 @@ class _EcsDedicatedHostClusterState:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] zone_id: The ID of the zone in which to create the dedicated host cluster.
         """
-        _EcsDedicatedHostClusterState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dedicated_host_cluster_name=dedicated_host_cluster_name,
-            description=description,
-            dry_run=dry_run,
-            tags=tags,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dedicated_host_cluster_name: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dedicated_host_cluster_name is None and 'dedicatedHostClusterName' in kwargs:
-            dedicated_host_cluster_name = kwargs['dedicatedHostClusterName']
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if dedicated_host_cluster_name is not None:
-            _setter("dedicated_host_cluster_name", dedicated_host_cluster_name)
+            pulumi.set(__self__, "dedicated_host_cluster_name", dedicated_host_cluster_name)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="dedicatedHostClusterName")
@@ -341,10 +289,6 @@ class EcsDedicatedHostCluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            EcsDedicatedHostClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

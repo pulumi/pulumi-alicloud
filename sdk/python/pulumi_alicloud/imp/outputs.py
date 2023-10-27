@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -27,23 +27,10 @@ class AppTemplateConfigList(dict):
                
                > **NOTE:**  By default, the attribute `config_list` will return all of nine keys with empty value. If you want to set one or more of the key's value, you had better also set other keys, otherwise, there will be a diff.
         """
-        AppTemplateConfigList._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -93,93 +80,18 @@ class GetAppTemplatesTemplateResult(dict):
         :param str standard_room_info: Model room information.
         :param str status: Application template usage status.
         """
-        GetAppTemplatesTemplateResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            app_template_creator=app_template_creator,
-            app_template_id=app_template_id,
-            app_template_name=app_template_name,
-            component_lists=component_lists,
-            config_lists=config_lists,
-            create_time=create_time,
-            id=id,
-            integration_mode=integration_mode,
-            scene=scene,
-            sdk_info=sdk_info,
-            standard_room_info=standard_room_info,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             app_template_creator: Optional[str] = None,
-             app_template_id: Optional[str] = None,
-             app_template_name: Optional[str] = None,
-             component_lists: Optional[Sequence[str]] = None,
-             config_lists: Optional[Sequence['outputs.GetAppTemplatesTemplateConfigListResult']] = None,
-             create_time: Optional[str] = None,
-             id: Optional[str] = None,
-             integration_mode: Optional[str] = None,
-             scene: Optional[str] = None,
-             sdk_info: Optional[str] = None,
-             standard_room_info: Optional[str] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if app_template_creator is None and 'appTemplateCreator' in kwargs:
-            app_template_creator = kwargs['appTemplateCreator']
-        if app_template_creator is None:
-            raise TypeError("Missing 'app_template_creator' argument")
-        if app_template_id is None and 'appTemplateId' in kwargs:
-            app_template_id = kwargs['appTemplateId']
-        if app_template_id is None:
-            raise TypeError("Missing 'app_template_id' argument")
-        if app_template_name is None and 'appTemplateName' in kwargs:
-            app_template_name = kwargs['appTemplateName']
-        if app_template_name is None:
-            raise TypeError("Missing 'app_template_name' argument")
-        if component_lists is None and 'componentLists' in kwargs:
-            component_lists = kwargs['componentLists']
-        if component_lists is None:
-            raise TypeError("Missing 'component_lists' argument")
-        if config_lists is None and 'configLists' in kwargs:
-            config_lists = kwargs['configLists']
-        if config_lists is None:
-            raise TypeError("Missing 'config_lists' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if integration_mode is None and 'integrationMode' in kwargs:
-            integration_mode = kwargs['integrationMode']
-        if integration_mode is None:
-            raise TypeError("Missing 'integration_mode' argument")
-        if scene is None:
-            raise TypeError("Missing 'scene' argument")
-        if sdk_info is None and 'sdkInfo' in kwargs:
-            sdk_info = kwargs['sdkInfo']
-        if sdk_info is None:
-            raise TypeError("Missing 'sdk_info' argument")
-        if standard_room_info is None and 'standardRoomInfo' in kwargs:
-            standard_room_info = kwargs['standardRoomInfo']
-        if standard_room_info is None:
-            raise TypeError("Missing 'standard_room_info' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("app_template_creator", app_template_creator)
-        _setter("app_template_id", app_template_id)
-        _setter("app_template_name", app_template_name)
-        _setter("component_lists", component_lists)
-        _setter("config_lists", config_lists)
-        _setter("create_time", create_time)
-        _setter("id", id)
-        _setter("integration_mode", integration_mode)
-        _setter("scene", scene)
-        _setter("sdk_info", sdk_info)
-        _setter("standard_room_info", standard_room_info)
-        _setter("status", status)
+        pulumi.set(__self__, "app_template_creator", app_template_creator)
+        pulumi.set(__self__, "app_template_id", app_template_id)
+        pulumi.set(__self__, "app_template_name", app_template_name)
+        pulumi.set(__self__, "component_lists", component_lists)
+        pulumi.set(__self__, "config_lists", config_lists)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "integration_mode", integration_mode)
+        pulumi.set(__self__, "scene", scene)
+        pulumi.set(__self__, "sdk_info", sdk_info)
+        pulumi.set(__self__, "standard_room_info", standard_room_info)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="appTemplateCreator")
@@ -287,25 +199,8 @@ class GetAppTemplatesTemplateConfigListResult(dict):
         :param str key: Config key.
         :param str value: Config Value.
         """
-        GetAppTemplatesTemplateConfigListResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("key", key)
-        _setter("value", value)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter

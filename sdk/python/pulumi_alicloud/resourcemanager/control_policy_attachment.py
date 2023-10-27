@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ControlPolicyAttachmentArgs', 'ControlPolicyAttachment']
@@ -21,29 +21,8 @@ class ControlPolicyAttachmentArgs:
         :param pulumi.Input[str] policy_id: The ID of control policy.
         :param pulumi.Input[str] target_id: The ID of target.
         """
-        ControlPolicyAttachmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            policy_id=policy_id,
-            target_id=target_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             policy_id: Optional[pulumi.Input[str]] = None,
-             target_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if policy_id is None and 'policyId' in kwargs:
-            policy_id = kwargs['policyId']
-        if policy_id is None:
-            raise TypeError("Missing 'policy_id' argument")
-        if target_id is None and 'targetId' in kwargs:
-            target_id = kwargs['targetId']
-        if target_id is None:
-            raise TypeError("Missing 'target_id' argument")
-
-        _setter("policy_id", policy_id)
-        _setter("target_id", target_id)
+        pulumi.set(__self__, "policy_id", policy_id)
+        pulumi.set(__self__, "target_id", target_id)
 
     @property
     @pulumi.getter(name="policyId")
@@ -80,27 +59,10 @@ class _ControlPolicyAttachmentState:
         :param pulumi.Input[str] policy_id: The ID of control policy.
         :param pulumi.Input[str] target_id: The ID of target.
         """
-        _ControlPolicyAttachmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            policy_id=policy_id,
-            target_id=target_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             policy_id: Optional[pulumi.Input[str]] = None,
-             target_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if policy_id is None and 'policyId' in kwargs:
-            policy_id = kwargs['policyId']
-        if target_id is None and 'targetId' in kwargs:
-            target_id = kwargs['targetId']
-
         if policy_id is not None:
-            _setter("policy_id", policy_id)
+            pulumi.set(__self__, "policy_id", policy_id)
         if target_id is not None:
-            _setter("target_id", target_id)
+            pulumi.set(__self__, "target_id", target_id)
 
     @property
     @pulumi.getter(name="policyId")
@@ -262,10 +224,6 @@ class ControlPolicyAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ControlPolicyAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

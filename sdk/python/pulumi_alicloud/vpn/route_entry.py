@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RouteEntryArgs', 'RouteEntry']
@@ -27,48 +27,11 @@ class RouteEntryArgs:
         :param pulumi.Input[str] vpn_gateway_id: The id of the vpn gateway.
         :param pulumi.Input[int] weight: The value should be 0 or 100.
         """
-        RouteEntryArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            next_hop=next_hop,
-            publish_vpc=publish_vpc,
-            route_dest=route_dest,
-            vpn_gateway_id=vpn_gateway_id,
-            weight=weight,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             next_hop: Optional[pulumi.Input[str]] = None,
-             publish_vpc: Optional[pulumi.Input[bool]] = None,
-             route_dest: Optional[pulumi.Input[str]] = None,
-             vpn_gateway_id: Optional[pulumi.Input[str]] = None,
-             weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if next_hop is None and 'nextHop' in kwargs:
-            next_hop = kwargs['nextHop']
-        if next_hop is None:
-            raise TypeError("Missing 'next_hop' argument")
-        if publish_vpc is None and 'publishVpc' in kwargs:
-            publish_vpc = kwargs['publishVpc']
-        if publish_vpc is None:
-            raise TypeError("Missing 'publish_vpc' argument")
-        if route_dest is None and 'routeDest' in kwargs:
-            route_dest = kwargs['routeDest']
-        if route_dest is None:
-            raise TypeError("Missing 'route_dest' argument")
-        if vpn_gateway_id is None and 'vpnGatewayId' in kwargs:
-            vpn_gateway_id = kwargs['vpnGatewayId']
-        if vpn_gateway_id is None:
-            raise TypeError("Missing 'vpn_gateway_id' argument")
-        if weight is None:
-            raise TypeError("Missing 'weight' argument")
-
-        _setter("next_hop", next_hop)
-        _setter("publish_vpc", publish_vpc)
-        _setter("route_dest", route_dest)
-        _setter("vpn_gateway_id", vpn_gateway_id)
-        _setter("weight", weight)
+        pulumi.set(__self__, "next_hop", next_hop)
+        pulumi.set(__self__, "publish_vpc", publish_vpc)
+        pulumi.set(__self__, "route_dest", route_dest)
+        pulumi.set(__self__, "vpn_gateway_id", vpn_gateway_id)
+        pulumi.set(__self__, "weight", weight)
 
     @property
     @pulumi.getter(name="nextHop")
@@ -151,53 +114,20 @@ class _RouteEntryState:
         :param pulumi.Input[str] vpn_gateway_id: The id of the vpn gateway.
         :param pulumi.Input[int] weight: The value should be 0 or 100.
         """
-        _RouteEntryState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            next_hop=next_hop,
-            publish_vpc=publish_vpc,
-            route_dest=route_dest,
-            route_entry_type=route_entry_type,
-            status=status,
-            vpn_gateway_id=vpn_gateway_id,
-            weight=weight,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             next_hop: Optional[pulumi.Input[str]] = None,
-             publish_vpc: Optional[pulumi.Input[bool]] = None,
-             route_dest: Optional[pulumi.Input[str]] = None,
-             route_entry_type: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             vpn_gateway_id: Optional[pulumi.Input[str]] = None,
-             weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if next_hop is None and 'nextHop' in kwargs:
-            next_hop = kwargs['nextHop']
-        if publish_vpc is None and 'publishVpc' in kwargs:
-            publish_vpc = kwargs['publishVpc']
-        if route_dest is None and 'routeDest' in kwargs:
-            route_dest = kwargs['routeDest']
-        if route_entry_type is None and 'routeEntryType' in kwargs:
-            route_entry_type = kwargs['routeEntryType']
-        if vpn_gateway_id is None and 'vpnGatewayId' in kwargs:
-            vpn_gateway_id = kwargs['vpnGatewayId']
-
         if next_hop is not None:
-            _setter("next_hop", next_hop)
+            pulumi.set(__self__, "next_hop", next_hop)
         if publish_vpc is not None:
-            _setter("publish_vpc", publish_vpc)
+            pulumi.set(__self__, "publish_vpc", publish_vpc)
         if route_dest is not None:
-            _setter("route_dest", route_dest)
+            pulumi.set(__self__, "route_dest", route_dest)
         if route_entry_type is not None:
-            _setter("route_entry_type", route_entry_type)
+            pulumi.set(__self__, "route_entry_type", route_entry_type)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if vpn_gateway_id is not None:
-            _setter("vpn_gateway_id", vpn_gateway_id)
+            pulumi.set(__self__, "vpn_gateway_id", vpn_gateway_id)
         if weight is not None:
-            _setter("weight", weight)
+            pulumi.set(__self__, "weight", weight)
 
     @property
     @pulumi.getter(name="nextHop")
@@ -413,10 +343,6 @@ class RouteEntry(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RouteEntryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

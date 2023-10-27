@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ExpressSyncShareAttachmentArgs', 'ExpressSyncShareAttachment']
@@ -23,36 +23,9 @@ class ExpressSyncShareAttachmentArgs:
         :param pulumi.Input[str] gateway_id: The ID of the Gateway.
         :param pulumi.Input[str] share_name: The name of the GatewayFileShare. **NOTE:** When GatewayFileShare is associated with a speed sync group, its reverse synchronization function will be turned off by default.
         """
-        ExpressSyncShareAttachmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            express_sync_id=express_sync_id,
-            gateway_id=gateway_id,
-            share_name=share_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             express_sync_id: Optional[pulumi.Input[str]] = None,
-             gateway_id: Optional[pulumi.Input[str]] = None,
-             share_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if express_sync_id is None and 'expressSyncId' in kwargs:
-            express_sync_id = kwargs['expressSyncId']
-        if express_sync_id is None:
-            raise TypeError("Missing 'express_sync_id' argument")
-        if gateway_id is None and 'gatewayId' in kwargs:
-            gateway_id = kwargs['gatewayId']
-        if gateway_id is None:
-            raise TypeError("Missing 'gateway_id' argument")
-        if share_name is None and 'shareName' in kwargs:
-            share_name = kwargs['shareName']
-        if share_name is None:
-            raise TypeError("Missing 'share_name' argument")
-
-        _setter("express_sync_id", express_sync_id)
-        _setter("gateway_id", gateway_id)
-        _setter("share_name", share_name)
+        pulumi.set(__self__, "express_sync_id", express_sync_id)
+        pulumi.set(__self__, "gateway_id", gateway_id)
+        pulumi.set(__self__, "share_name", share_name)
 
     @property
     @pulumi.getter(name="expressSyncId")
@@ -103,33 +76,12 @@ class _ExpressSyncShareAttachmentState:
         :param pulumi.Input[str] gateway_id: The ID of the Gateway.
         :param pulumi.Input[str] share_name: The name of the GatewayFileShare. **NOTE:** When GatewayFileShare is associated with a speed sync group, its reverse synchronization function will be turned off by default.
         """
-        _ExpressSyncShareAttachmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            express_sync_id=express_sync_id,
-            gateway_id=gateway_id,
-            share_name=share_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             express_sync_id: Optional[pulumi.Input[str]] = None,
-             gateway_id: Optional[pulumi.Input[str]] = None,
-             share_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if express_sync_id is None and 'expressSyncId' in kwargs:
-            express_sync_id = kwargs['expressSyncId']
-        if gateway_id is None and 'gatewayId' in kwargs:
-            gateway_id = kwargs['gatewayId']
-        if share_name is None and 'shareName' in kwargs:
-            share_name = kwargs['shareName']
-
         if express_sync_id is not None:
-            _setter("express_sync_id", express_sync_id)
+            pulumi.set(__self__, "express_sync_id", express_sync_id)
         if gateway_id is not None:
-            _setter("gateway_id", gateway_id)
+            pulumi.set(__self__, "gateway_id", gateway_id)
         if share_name is not None:
-            _setter("share_name", share_name)
+            pulumi.set(__self__, "share_name", share_name)
 
     @property
     @pulumi.getter(name="expressSyncId")
@@ -229,10 +181,6 @@ class ExpressSyncShareAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ExpressSyncShareAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

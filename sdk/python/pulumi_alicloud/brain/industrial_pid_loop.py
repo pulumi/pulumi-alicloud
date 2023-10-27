@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['IndustrialPidLoopArgs', 'IndustrialPidLoop']
@@ -31,63 +31,14 @@ class IndustrialPidLoopArgs:
         :param pulumi.Input[str] pid_project_id: The pid project id.
         :param pulumi.Input[str] pid_loop_desc: The desc of Pid Loop.
         """
-        IndustrialPidLoopArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            pid_loop_configuration=pid_loop_configuration,
-            pid_loop_dcs_type=pid_loop_dcs_type,
-            pid_loop_is_crucial=pid_loop_is_crucial,
-            pid_loop_name=pid_loop_name,
-            pid_loop_type=pid_loop_type,
-            pid_project_id=pid_project_id,
-            pid_loop_desc=pid_loop_desc,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             pid_loop_configuration: Optional[pulumi.Input[str]] = None,
-             pid_loop_dcs_type: Optional[pulumi.Input[str]] = None,
-             pid_loop_is_crucial: Optional[pulumi.Input[bool]] = None,
-             pid_loop_name: Optional[pulumi.Input[str]] = None,
-             pid_loop_type: Optional[pulumi.Input[str]] = None,
-             pid_project_id: Optional[pulumi.Input[str]] = None,
-             pid_loop_desc: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if pid_loop_configuration is None and 'pidLoopConfiguration' in kwargs:
-            pid_loop_configuration = kwargs['pidLoopConfiguration']
-        if pid_loop_configuration is None:
-            raise TypeError("Missing 'pid_loop_configuration' argument")
-        if pid_loop_dcs_type is None and 'pidLoopDcsType' in kwargs:
-            pid_loop_dcs_type = kwargs['pidLoopDcsType']
-        if pid_loop_dcs_type is None:
-            raise TypeError("Missing 'pid_loop_dcs_type' argument")
-        if pid_loop_is_crucial is None and 'pidLoopIsCrucial' in kwargs:
-            pid_loop_is_crucial = kwargs['pidLoopIsCrucial']
-        if pid_loop_is_crucial is None:
-            raise TypeError("Missing 'pid_loop_is_crucial' argument")
-        if pid_loop_name is None and 'pidLoopName' in kwargs:
-            pid_loop_name = kwargs['pidLoopName']
-        if pid_loop_name is None:
-            raise TypeError("Missing 'pid_loop_name' argument")
-        if pid_loop_type is None and 'pidLoopType' in kwargs:
-            pid_loop_type = kwargs['pidLoopType']
-        if pid_loop_type is None:
-            raise TypeError("Missing 'pid_loop_type' argument")
-        if pid_project_id is None and 'pidProjectId' in kwargs:
-            pid_project_id = kwargs['pidProjectId']
-        if pid_project_id is None:
-            raise TypeError("Missing 'pid_project_id' argument")
-        if pid_loop_desc is None and 'pidLoopDesc' in kwargs:
-            pid_loop_desc = kwargs['pidLoopDesc']
-
-        _setter("pid_loop_configuration", pid_loop_configuration)
-        _setter("pid_loop_dcs_type", pid_loop_dcs_type)
-        _setter("pid_loop_is_crucial", pid_loop_is_crucial)
-        _setter("pid_loop_name", pid_loop_name)
-        _setter("pid_loop_type", pid_loop_type)
-        _setter("pid_project_id", pid_project_id)
+        pulumi.set(__self__, "pid_loop_configuration", pid_loop_configuration)
+        pulumi.set(__self__, "pid_loop_dcs_type", pid_loop_dcs_type)
+        pulumi.set(__self__, "pid_loop_is_crucial", pid_loop_is_crucial)
+        pulumi.set(__self__, "pid_loop_name", pid_loop_name)
+        pulumi.set(__self__, "pid_loop_type", pid_loop_type)
+        pulumi.set(__self__, "pid_project_id", pid_project_id)
         if pid_loop_desc is not None:
-            _setter("pid_loop_desc", pid_loop_desc)
+            pulumi.set(__self__, "pid_loop_desc", pid_loop_desc)
 
     @property
     @pulumi.getter(name="pidLoopConfiguration")
@@ -196,61 +147,22 @@ class _IndustrialPidLoopState:
         :param pulumi.Input[str] pid_project_id: The pid project id.
         :param pulumi.Input[str] status: The status of Pid Loop.
         """
-        _IndustrialPidLoopState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            pid_loop_configuration=pid_loop_configuration,
-            pid_loop_dcs_type=pid_loop_dcs_type,
-            pid_loop_desc=pid_loop_desc,
-            pid_loop_is_crucial=pid_loop_is_crucial,
-            pid_loop_name=pid_loop_name,
-            pid_loop_type=pid_loop_type,
-            pid_project_id=pid_project_id,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             pid_loop_configuration: Optional[pulumi.Input[str]] = None,
-             pid_loop_dcs_type: Optional[pulumi.Input[str]] = None,
-             pid_loop_desc: Optional[pulumi.Input[str]] = None,
-             pid_loop_is_crucial: Optional[pulumi.Input[bool]] = None,
-             pid_loop_name: Optional[pulumi.Input[str]] = None,
-             pid_loop_type: Optional[pulumi.Input[str]] = None,
-             pid_project_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if pid_loop_configuration is None and 'pidLoopConfiguration' in kwargs:
-            pid_loop_configuration = kwargs['pidLoopConfiguration']
-        if pid_loop_dcs_type is None and 'pidLoopDcsType' in kwargs:
-            pid_loop_dcs_type = kwargs['pidLoopDcsType']
-        if pid_loop_desc is None and 'pidLoopDesc' in kwargs:
-            pid_loop_desc = kwargs['pidLoopDesc']
-        if pid_loop_is_crucial is None and 'pidLoopIsCrucial' in kwargs:
-            pid_loop_is_crucial = kwargs['pidLoopIsCrucial']
-        if pid_loop_name is None and 'pidLoopName' in kwargs:
-            pid_loop_name = kwargs['pidLoopName']
-        if pid_loop_type is None and 'pidLoopType' in kwargs:
-            pid_loop_type = kwargs['pidLoopType']
-        if pid_project_id is None and 'pidProjectId' in kwargs:
-            pid_project_id = kwargs['pidProjectId']
-
         if pid_loop_configuration is not None:
-            _setter("pid_loop_configuration", pid_loop_configuration)
+            pulumi.set(__self__, "pid_loop_configuration", pid_loop_configuration)
         if pid_loop_dcs_type is not None:
-            _setter("pid_loop_dcs_type", pid_loop_dcs_type)
+            pulumi.set(__self__, "pid_loop_dcs_type", pid_loop_dcs_type)
         if pid_loop_desc is not None:
-            _setter("pid_loop_desc", pid_loop_desc)
+            pulumi.set(__self__, "pid_loop_desc", pid_loop_desc)
         if pid_loop_is_crucial is not None:
-            _setter("pid_loop_is_crucial", pid_loop_is_crucial)
+            pulumi.set(__self__, "pid_loop_is_crucial", pid_loop_is_crucial)
         if pid_loop_name is not None:
-            _setter("pid_loop_name", pid_loop_name)
+            pulumi.set(__self__, "pid_loop_name", pid_loop_name)
         if pid_loop_type is not None:
-            _setter("pid_loop_type", pid_loop_type)
+            pulumi.set(__self__, "pid_loop_type", pid_loop_type)
         if pid_project_id is not None:
-            _setter("pid_project_id", pid_project_id)
+            pulumi.set(__self__, "pid_project_id", pid_project_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="pidLoopConfiguration")
@@ -448,10 +360,6 @@ class IndustrialPidLoop(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            IndustrialPidLoopArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ExchangeArgs', 'Exchange']
@@ -42,61 +42,14 @@ class ExchangeArgs:
         :param pulumi.Input[str] virtual_host_name: The name of virtual host where an exchange resides.
         :param pulumi.Input[str] alternate_exchange: The alternate exchange. An alternate exchange is configured for an existing exchange. It is used to receive messages that fail to be routed to queues from the existing exchange.
         """
-        ExchangeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto_delete_state=auto_delete_state,
-            exchange_name=exchange_name,
-            exchange_type=exchange_type,
-            instance_id=instance_id,
-            internal=internal,
-            virtual_host_name=virtual_host_name,
-            alternate_exchange=alternate_exchange,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto_delete_state: Optional[pulumi.Input[bool]] = None,
-             exchange_name: Optional[pulumi.Input[str]] = None,
-             exchange_type: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             internal: Optional[pulumi.Input[bool]] = None,
-             virtual_host_name: Optional[pulumi.Input[str]] = None,
-             alternate_exchange: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_delete_state is None and 'autoDeleteState' in kwargs:
-            auto_delete_state = kwargs['autoDeleteState']
-        if auto_delete_state is None:
-            raise TypeError("Missing 'auto_delete_state' argument")
-        if exchange_name is None and 'exchangeName' in kwargs:
-            exchange_name = kwargs['exchangeName']
-        if exchange_name is None:
-            raise TypeError("Missing 'exchange_name' argument")
-        if exchange_type is None and 'exchangeType' in kwargs:
-            exchange_type = kwargs['exchangeType']
-        if exchange_type is None:
-            raise TypeError("Missing 'exchange_type' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if internal is None:
-            raise TypeError("Missing 'internal' argument")
-        if virtual_host_name is None and 'virtualHostName' in kwargs:
-            virtual_host_name = kwargs['virtualHostName']
-        if virtual_host_name is None:
-            raise TypeError("Missing 'virtual_host_name' argument")
-        if alternate_exchange is None and 'alternateExchange' in kwargs:
-            alternate_exchange = kwargs['alternateExchange']
-
-        _setter("auto_delete_state", auto_delete_state)
-        _setter("exchange_name", exchange_name)
-        _setter("exchange_type", exchange_type)
-        _setter("instance_id", instance_id)
-        _setter("internal", internal)
-        _setter("virtual_host_name", virtual_host_name)
+        pulumi.set(__self__, "auto_delete_state", auto_delete_state)
+        pulumi.set(__self__, "exchange_name", exchange_name)
+        pulumi.set(__self__, "exchange_type", exchange_type)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "internal", internal)
+        pulumi.set(__self__, "virtual_host_name", virtual_host_name)
         if alternate_exchange is not None:
-            _setter("alternate_exchange", alternate_exchange)
+            pulumi.set(__self__, "alternate_exchange", alternate_exchange)
 
     @property
     @pulumi.getter(name="autoDeleteState")
@@ -225,55 +178,20 @@ class _ExchangeState:
                * true: The exchange is an internal exchange.
         :param pulumi.Input[str] virtual_host_name: The name of virtual host where an exchange resides.
         """
-        _ExchangeState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            alternate_exchange=alternate_exchange,
-            auto_delete_state=auto_delete_state,
-            exchange_name=exchange_name,
-            exchange_type=exchange_type,
-            instance_id=instance_id,
-            internal=internal,
-            virtual_host_name=virtual_host_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             alternate_exchange: Optional[pulumi.Input[str]] = None,
-             auto_delete_state: Optional[pulumi.Input[bool]] = None,
-             exchange_name: Optional[pulumi.Input[str]] = None,
-             exchange_type: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             internal: Optional[pulumi.Input[bool]] = None,
-             virtual_host_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if alternate_exchange is None and 'alternateExchange' in kwargs:
-            alternate_exchange = kwargs['alternateExchange']
-        if auto_delete_state is None and 'autoDeleteState' in kwargs:
-            auto_delete_state = kwargs['autoDeleteState']
-        if exchange_name is None and 'exchangeName' in kwargs:
-            exchange_name = kwargs['exchangeName']
-        if exchange_type is None and 'exchangeType' in kwargs:
-            exchange_type = kwargs['exchangeType']
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if virtual_host_name is None and 'virtualHostName' in kwargs:
-            virtual_host_name = kwargs['virtualHostName']
-
         if alternate_exchange is not None:
-            _setter("alternate_exchange", alternate_exchange)
+            pulumi.set(__self__, "alternate_exchange", alternate_exchange)
         if auto_delete_state is not None:
-            _setter("auto_delete_state", auto_delete_state)
+            pulumi.set(__self__, "auto_delete_state", auto_delete_state)
         if exchange_name is not None:
-            _setter("exchange_name", exchange_name)
+            pulumi.set(__self__, "exchange_name", exchange_name)
         if exchange_type is not None:
-            _setter("exchange_type", exchange_type)
+            pulumi.set(__self__, "exchange_type", exchange_type)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if internal is not None:
-            _setter("internal", internal)
+            pulumi.set(__self__, "internal", internal)
         if virtual_host_name is not None:
-            _setter("virtual_host_name", virtual_host_name)
+            pulumi.set(__self__, "virtual_host_name", virtual_host_name)
 
     @property
     @pulumi.getter(name="alternateExchange")
@@ -507,10 +425,6 @@ class Exchange(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ExchangeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['VirtualBorderRouterArgs', 'VirtualBorderRouter']
@@ -57,134 +57,41 @@ class VirtualBorderRouterArgs:
         :param pulumi.Input[str] vbr_owner_id: The vbr owner id.
         :param pulumi.Input[str] virtual_border_router_name: The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
         """
-        VirtualBorderRouterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            local_gateway_ip=local_gateway_ip,
-            peer_gateway_ip=peer_gateway_ip,
-            peering_subnet_mask=peering_subnet_mask,
-            physical_connection_id=physical_connection_id,
-            vlan_id=vlan_id,
-            associated_physical_connections=associated_physical_connections,
-            bandwidth=bandwidth,
-            circuit_code=circuit_code,
-            description=description,
-            detect_multiplier=detect_multiplier,
-            enable_ipv6=enable_ipv6,
-            include_cross_account_vbr=include_cross_account_vbr,
-            local_ipv6_gateway_ip=local_ipv6_gateway_ip,
-            min_rx_interval=min_rx_interval,
-            min_tx_interval=min_tx_interval,
-            peer_ipv6_gateway_ip=peer_ipv6_gateway_ip,
-            peering_ipv6_subnet_mask=peering_ipv6_subnet_mask,
-            status=status,
-            vbr_owner_id=vbr_owner_id,
-            virtual_border_router_name=virtual_border_router_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             local_gateway_ip: Optional[pulumi.Input[str]] = None,
-             peer_gateway_ip: Optional[pulumi.Input[str]] = None,
-             peering_subnet_mask: Optional[pulumi.Input[str]] = None,
-             physical_connection_id: Optional[pulumi.Input[str]] = None,
-             vlan_id: Optional[pulumi.Input[int]] = None,
-             associated_physical_connections: Optional[pulumi.Input[str]] = None,
-             bandwidth: Optional[pulumi.Input[int]] = None,
-             circuit_code: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             detect_multiplier: Optional[pulumi.Input[int]] = None,
-             enable_ipv6: Optional[pulumi.Input[bool]] = None,
-             include_cross_account_vbr: Optional[pulumi.Input[bool]] = None,
-             local_ipv6_gateway_ip: Optional[pulumi.Input[str]] = None,
-             min_rx_interval: Optional[pulumi.Input[int]] = None,
-             min_tx_interval: Optional[pulumi.Input[int]] = None,
-             peer_ipv6_gateway_ip: Optional[pulumi.Input[str]] = None,
-             peering_ipv6_subnet_mask: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             vbr_owner_id: Optional[pulumi.Input[str]] = None,
-             virtual_border_router_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if local_gateway_ip is None and 'localGatewayIp' in kwargs:
-            local_gateway_ip = kwargs['localGatewayIp']
-        if local_gateway_ip is None:
-            raise TypeError("Missing 'local_gateway_ip' argument")
-        if peer_gateway_ip is None and 'peerGatewayIp' in kwargs:
-            peer_gateway_ip = kwargs['peerGatewayIp']
-        if peer_gateway_ip is None:
-            raise TypeError("Missing 'peer_gateway_ip' argument")
-        if peering_subnet_mask is None and 'peeringSubnetMask' in kwargs:
-            peering_subnet_mask = kwargs['peeringSubnetMask']
-        if peering_subnet_mask is None:
-            raise TypeError("Missing 'peering_subnet_mask' argument")
-        if physical_connection_id is None and 'physicalConnectionId' in kwargs:
-            physical_connection_id = kwargs['physicalConnectionId']
-        if physical_connection_id is None:
-            raise TypeError("Missing 'physical_connection_id' argument")
-        if vlan_id is None and 'vlanId' in kwargs:
-            vlan_id = kwargs['vlanId']
-        if vlan_id is None:
-            raise TypeError("Missing 'vlan_id' argument")
-        if associated_physical_connections is None and 'associatedPhysicalConnections' in kwargs:
-            associated_physical_connections = kwargs['associatedPhysicalConnections']
-        if circuit_code is None and 'circuitCode' in kwargs:
-            circuit_code = kwargs['circuitCode']
-        if detect_multiplier is None and 'detectMultiplier' in kwargs:
-            detect_multiplier = kwargs['detectMultiplier']
-        if enable_ipv6 is None and 'enableIpv6' in kwargs:
-            enable_ipv6 = kwargs['enableIpv6']
-        if include_cross_account_vbr is None and 'includeCrossAccountVbr' in kwargs:
-            include_cross_account_vbr = kwargs['includeCrossAccountVbr']
-        if local_ipv6_gateway_ip is None and 'localIpv6GatewayIp' in kwargs:
-            local_ipv6_gateway_ip = kwargs['localIpv6GatewayIp']
-        if min_rx_interval is None and 'minRxInterval' in kwargs:
-            min_rx_interval = kwargs['minRxInterval']
-        if min_tx_interval is None and 'minTxInterval' in kwargs:
-            min_tx_interval = kwargs['minTxInterval']
-        if peer_ipv6_gateway_ip is None and 'peerIpv6GatewayIp' in kwargs:
-            peer_ipv6_gateway_ip = kwargs['peerIpv6GatewayIp']
-        if peering_ipv6_subnet_mask is None and 'peeringIpv6SubnetMask' in kwargs:
-            peering_ipv6_subnet_mask = kwargs['peeringIpv6SubnetMask']
-        if vbr_owner_id is None and 'vbrOwnerId' in kwargs:
-            vbr_owner_id = kwargs['vbrOwnerId']
-        if virtual_border_router_name is None and 'virtualBorderRouterName' in kwargs:
-            virtual_border_router_name = kwargs['virtualBorderRouterName']
-
-        _setter("local_gateway_ip", local_gateway_ip)
-        _setter("peer_gateway_ip", peer_gateway_ip)
-        _setter("peering_subnet_mask", peering_subnet_mask)
-        _setter("physical_connection_id", physical_connection_id)
-        _setter("vlan_id", vlan_id)
+        pulumi.set(__self__, "local_gateway_ip", local_gateway_ip)
+        pulumi.set(__self__, "peer_gateway_ip", peer_gateway_ip)
+        pulumi.set(__self__, "peering_subnet_mask", peering_subnet_mask)
+        pulumi.set(__self__, "physical_connection_id", physical_connection_id)
+        pulumi.set(__self__, "vlan_id", vlan_id)
         if associated_physical_connections is not None:
-            _setter("associated_physical_connections", associated_physical_connections)
+            pulumi.set(__self__, "associated_physical_connections", associated_physical_connections)
         if bandwidth is not None:
-            _setter("bandwidth", bandwidth)
+            pulumi.set(__self__, "bandwidth", bandwidth)
         if circuit_code is not None:
-            _setter("circuit_code", circuit_code)
+            pulumi.set(__self__, "circuit_code", circuit_code)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if detect_multiplier is not None:
-            _setter("detect_multiplier", detect_multiplier)
+            pulumi.set(__self__, "detect_multiplier", detect_multiplier)
         if enable_ipv6 is not None:
-            _setter("enable_ipv6", enable_ipv6)
+            pulumi.set(__self__, "enable_ipv6", enable_ipv6)
         if include_cross_account_vbr is not None:
-            _setter("include_cross_account_vbr", include_cross_account_vbr)
+            pulumi.set(__self__, "include_cross_account_vbr", include_cross_account_vbr)
         if local_ipv6_gateway_ip is not None:
-            _setter("local_ipv6_gateway_ip", local_ipv6_gateway_ip)
+            pulumi.set(__self__, "local_ipv6_gateway_ip", local_ipv6_gateway_ip)
         if min_rx_interval is not None:
-            _setter("min_rx_interval", min_rx_interval)
+            pulumi.set(__self__, "min_rx_interval", min_rx_interval)
         if min_tx_interval is not None:
-            _setter("min_tx_interval", min_tx_interval)
+            pulumi.set(__self__, "min_tx_interval", min_tx_interval)
         if peer_ipv6_gateway_ip is not None:
-            _setter("peer_ipv6_gateway_ip", peer_ipv6_gateway_ip)
+            pulumi.set(__self__, "peer_ipv6_gateway_ip", peer_ipv6_gateway_ip)
         if peering_ipv6_subnet_mask is not None:
-            _setter("peering_ipv6_subnet_mask", peering_ipv6_subnet_mask)
+            pulumi.set(__self__, "peering_ipv6_subnet_mask", peering_ipv6_subnet_mask)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if vbr_owner_id is not None:
-            _setter("vbr_owner_id", vbr_owner_id)
+            pulumi.set(__self__, "vbr_owner_id", vbr_owner_id)
         if virtual_border_router_name is not None:
-            _setter("virtual_border_router_name", virtual_border_router_name)
+            pulumi.set(__self__, "virtual_border_router_name", virtual_border_router_name)
 
     @property
     @pulumi.getter(name="localGatewayIp")
@@ -475,135 +382,48 @@ class _VirtualBorderRouterState:
         :param pulumi.Input[str] virtual_border_router_name: The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
         :param pulumi.Input[int] vlan_id: The VLAN ID of the VBR. Value range: 0~2999.
         """
-        _VirtualBorderRouterState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            associated_physical_connections=associated_physical_connections,
-            bandwidth=bandwidth,
-            circuit_code=circuit_code,
-            description=description,
-            detect_multiplier=detect_multiplier,
-            enable_ipv6=enable_ipv6,
-            include_cross_account_vbr=include_cross_account_vbr,
-            local_gateway_ip=local_gateway_ip,
-            local_ipv6_gateway_ip=local_ipv6_gateway_ip,
-            min_rx_interval=min_rx_interval,
-            min_tx_interval=min_tx_interval,
-            peer_gateway_ip=peer_gateway_ip,
-            peer_ipv6_gateway_ip=peer_ipv6_gateway_ip,
-            peering_ipv6_subnet_mask=peering_ipv6_subnet_mask,
-            peering_subnet_mask=peering_subnet_mask,
-            physical_connection_id=physical_connection_id,
-            route_table_id=route_table_id,
-            status=status,
-            vbr_owner_id=vbr_owner_id,
-            virtual_border_router_name=virtual_border_router_name,
-            vlan_id=vlan_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             associated_physical_connections: Optional[pulumi.Input[str]] = None,
-             bandwidth: Optional[pulumi.Input[int]] = None,
-             circuit_code: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             detect_multiplier: Optional[pulumi.Input[int]] = None,
-             enable_ipv6: Optional[pulumi.Input[bool]] = None,
-             include_cross_account_vbr: Optional[pulumi.Input[bool]] = None,
-             local_gateway_ip: Optional[pulumi.Input[str]] = None,
-             local_ipv6_gateway_ip: Optional[pulumi.Input[str]] = None,
-             min_rx_interval: Optional[pulumi.Input[int]] = None,
-             min_tx_interval: Optional[pulumi.Input[int]] = None,
-             peer_gateway_ip: Optional[pulumi.Input[str]] = None,
-             peer_ipv6_gateway_ip: Optional[pulumi.Input[str]] = None,
-             peering_ipv6_subnet_mask: Optional[pulumi.Input[str]] = None,
-             peering_subnet_mask: Optional[pulumi.Input[str]] = None,
-             physical_connection_id: Optional[pulumi.Input[str]] = None,
-             route_table_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             vbr_owner_id: Optional[pulumi.Input[str]] = None,
-             virtual_border_router_name: Optional[pulumi.Input[str]] = None,
-             vlan_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if associated_physical_connections is None and 'associatedPhysicalConnections' in kwargs:
-            associated_physical_connections = kwargs['associatedPhysicalConnections']
-        if circuit_code is None and 'circuitCode' in kwargs:
-            circuit_code = kwargs['circuitCode']
-        if detect_multiplier is None and 'detectMultiplier' in kwargs:
-            detect_multiplier = kwargs['detectMultiplier']
-        if enable_ipv6 is None and 'enableIpv6' in kwargs:
-            enable_ipv6 = kwargs['enableIpv6']
-        if include_cross_account_vbr is None and 'includeCrossAccountVbr' in kwargs:
-            include_cross_account_vbr = kwargs['includeCrossAccountVbr']
-        if local_gateway_ip is None and 'localGatewayIp' in kwargs:
-            local_gateway_ip = kwargs['localGatewayIp']
-        if local_ipv6_gateway_ip is None and 'localIpv6GatewayIp' in kwargs:
-            local_ipv6_gateway_ip = kwargs['localIpv6GatewayIp']
-        if min_rx_interval is None and 'minRxInterval' in kwargs:
-            min_rx_interval = kwargs['minRxInterval']
-        if min_tx_interval is None and 'minTxInterval' in kwargs:
-            min_tx_interval = kwargs['minTxInterval']
-        if peer_gateway_ip is None and 'peerGatewayIp' in kwargs:
-            peer_gateway_ip = kwargs['peerGatewayIp']
-        if peer_ipv6_gateway_ip is None and 'peerIpv6GatewayIp' in kwargs:
-            peer_ipv6_gateway_ip = kwargs['peerIpv6GatewayIp']
-        if peering_ipv6_subnet_mask is None and 'peeringIpv6SubnetMask' in kwargs:
-            peering_ipv6_subnet_mask = kwargs['peeringIpv6SubnetMask']
-        if peering_subnet_mask is None and 'peeringSubnetMask' in kwargs:
-            peering_subnet_mask = kwargs['peeringSubnetMask']
-        if physical_connection_id is None and 'physicalConnectionId' in kwargs:
-            physical_connection_id = kwargs['physicalConnectionId']
-        if route_table_id is None and 'routeTableId' in kwargs:
-            route_table_id = kwargs['routeTableId']
-        if vbr_owner_id is None and 'vbrOwnerId' in kwargs:
-            vbr_owner_id = kwargs['vbrOwnerId']
-        if virtual_border_router_name is None and 'virtualBorderRouterName' in kwargs:
-            virtual_border_router_name = kwargs['virtualBorderRouterName']
-        if vlan_id is None and 'vlanId' in kwargs:
-            vlan_id = kwargs['vlanId']
-
         if associated_physical_connections is not None:
-            _setter("associated_physical_connections", associated_physical_connections)
+            pulumi.set(__self__, "associated_physical_connections", associated_physical_connections)
         if bandwidth is not None:
-            _setter("bandwidth", bandwidth)
+            pulumi.set(__self__, "bandwidth", bandwidth)
         if circuit_code is not None:
-            _setter("circuit_code", circuit_code)
+            pulumi.set(__self__, "circuit_code", circuit_code)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if detect_multiplier is not None:
-            _setter("detect_multiplier", detect_multiplier)
+            pulumi.set(__self__, "detect_multiplier", detect_multiplier)
         if enable_ipv6 is not None:
-            _setter("enable_ipv6", enable_ipv6)
+            pulumi.set(__self__, "enable_ipv6", enable_ipv6)
         if include_cross_account_vbr is not None:
-            _setter("include_cross_account_vbr", include_cross_account_vbr)
+            pulumi.set(__self__, "include_cross_account_vbr", include_cross_account_vbr)
         if local_gateway_ip is not None:
-            _setter("local_gateway_ip", local_gateway_ip)
+            pulumi.set(__self__, "local_gateway_ip", local_gateway_ip)
         if local_ipv6_gateway_ip is not None:
-            _setter("local_ipv6_gateway_ip", local_ipv6_gateway_ip)
+            pulumi.set(__self__, "local_ipv6_gateway_ip", local_ipv6_gateway_ip)
         if min_rx_interval is not None:
-            _setter("min_rx_interval", min_rx_interval)
+            pulumi.set(__self__, "min_rx_interval", min_rx_interval)
         if min_tx_interval is not None:
-            _setter("min_tx_interval", min_tx_interval)
+            pulumi.set(__self__, "min_tx_interval", min_tx_interval)
         if peer_gateway_ip is not None:
-            _setter("peer_gateway_ip", peer_gateway_ip)
+            pulumi.set(__self__, "peer_gateway_ip", peer_gateway_ip)
         if peer_ipv6_gateway_ip is not None:
-            _setter("peer_ipv6_gateway_ip", peer_ipv6_gateway_ip)
+            pulumi.set(__self__, "peer_ipv6_gateway_ip", peer_ipv6_gateway_ip)
         if peering_ipv6_subnet_mask is not None:
-            _setter("peering_ipv6_subnet_mask", peering_ipv6_subnet_mask)
+            pulumi.set(__self__, "peering_ipv6_subnet_mask", peering_ipv6_subnet_mask)
         if peering_subnet_mask is not None:
-            _setter("peering_subnet_mask", peering_subnet_mask)
+            pulumi.set(__self__, "peering_subnet_mask", peering_subnet_mask)
         if physical_connection_id is not None:
-            _setter("physical_connection_id", physical_connection_id)
+            pulumi.set(__self__, "physical_connection_id", physical_connection_id)
         if route_table_id is not None:
-            _setter("route_table_id", route_table_id)
+            pulumi.set(__self__, "route_table_id", route_table_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if vbr_owner_id is not None:
-            _setter("vbr_owner_id", vbr_owner_id)
+            pulumi.set(__self__, "vbr_owner_id", vbr_owner_id)
         if virtual_border_router_name is not None:
-            _setter("virtual_border_router_name", virtual_border_router_name)
+            pulumi.set(__self__, "virtual_border_router_name", virtual_border_router_name)
         if vlan_id is not None:
-            _setter("vlan_id", vlan_id)
+            pulumi.set(__self__, "vlan_id", vlan_id)
 
     @property
     @pulumi.getter(name="associatedPhysicalConnections")
@@ -1011,10 +831,6 @@ class VirtualBorderRouter(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            VirtualBorderRouterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AccountArgs', 'Account']
@@ -33,50 +33,17 @@ class AccountArgs:
                
                > **NOTE:** The member name must be unique within the resource directory.
         """
-        AccountArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            display_name=display_name,
-            abandon_able_check_ids=abandon_able_check_ids,
-            account_name_prefix=account_name_prefix,
-            folder_id=folder_id,
-            payer_account_id=payer_account_id,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             display_name: Optional[pulumi.Input[str]] = None,
-             abandon_able_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             account_name_prefix: Optional[pulumi.Input[str]] = None,
-             folder_id: Optional[pulumi.Input[str]] = None,
-             payer_account_id: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if abandon_able_check_ids is None and 'abandonAbleCheckIds' in kwargs:
-            abandon_able_check_ids = kwargs['abandonAbleCheckIds']
-        if account_name_prefix is None and 'accountNamePrefix' in kwargs:
-            account_name_prefix = kwargs['accountNamePrefix']
-        if folder_id is None and 'folderId' in kwargs:
-            folder_id = kwargs['folderId']
-        if payer_account_id is None and 'payerAccountId' in kwargs:
-            payer_account_id = kwargs['payerAccountId']
-
-        _setter("display_name", display_name)
+        pulumi.set(__self__, "display_name", display_name)
         if abandon_able_check_ids is not None:
-            _setter("abandon_able_check_ids", abandon_able_check_ids)
+            pulumi.set(__self__, "abandon_able_check_ids", abandon_able_check_ids)
         if account_name_prefix is not None:
-            _setter("account_name_prefix", account_name_prefix)
+            pulumi.set(__self__, "account_name_prefix", account_name_prefix)
         if folder_id is not None:
-            _setter("folder_id", folder_id)
+            pulumi.set(__self__, "folder_id", folder_id)
         if payer_account_id is not None:
-            _setter("payer_account_id", payer_account_id)
+            pulumi.set(__self__, "payer_account_id", payer_account_id)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="displayName")
@@ -189,81 +156,30 @@ class _AccountState:
                > **NOTE:** The member name must be unique within the resource directory.
         :param pulumi.Input[str] type: Member type. The value of `ResourceAccount` indicates the resource account.
         """
-        _AccountState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            abandon_able_check_ids=abandon_able_check_ids,
-            account_name_prefix=account_name_prefix,
-            display_name=display_name,
-            folder_id=folder_id,
-            join_method=join_method,
-            join_time=join_time,
-            modify_time=modify_time,
-            payer_account_id=payer_account_id,
-            resource_directory_id=resource_directory_id,
-            status=status,
-            tags=tags,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             abandon_able_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             account_name_prefix: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             folder_id: Optional[pulumi.Input[str]] = None,
-             join_method: Optional[pulumi.Input[str]] = None,
-             join_time: Optional[pulumi.Input[str]] = None,
-             modify_time: Optional[pulumi.Input[str]] = None,
-             payer_account_id: Optional[pulumi.Input[str]] = None,
-             resource_directory_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if abandon_able_check_ids is None and 'abandonAbleCheckIds' in kwargs:
-            abandon_able_check_ids = kwargs['abandonAbleCheckIds']
-        if account_name_prefix is None and 'accountNamePrefix' in kwargs:
-            account_name_prefix = kwargs['accountNamePrefix']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if folder_id is None and 'folderId' in kwargs:
-            folder_id = kwargs['folderId']
-        if join_method is None and 'joinMethod' in kwargs:
-            join_method = kwargs['joinMethod']
-        if join_time is None and 'joinTime' in kwargs:
-            join_time = kwargs['joinTime']
-        if modify_time is None and 'modifyTime' in kwargs:
-            modify_time = kwargs['modifyTime']
-        if payer_account_id is None and 'payerAccountId' in kwargs:
-            payer_account_id = kwargs['payerAccountId']
-        if resource_directory_id is None and 'resourceDirectoryId' in kwargs:
-            resource_directory_id = kwargs['resourceDirectoryId']
-
         if abandon_able_check_ids is not None:
-            _setter("abandon_able_check_ids", abandon_able_check_ids)
+            pulumi.set(__self__, "abandon_able_check_ids", abandon_able_check_ids)
         if account_name_prefix is not None:
-            _setter("account_name_prefix", account_name_prefix)
+            pulumi.set(__self__, "account_name_prefix", account_name_prefix)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if folder_id is not None:
-            _setter("folder_id", folder_id)
+            pulumi.set(__self__, "folder_id", folder_id)
         if join_method is not None:
-            _setter("join_method", join_method)
+            pulumi.set(__self__, "join_method", join_method)
         if join_time is not None:
-            _setter("join_time", join_time)
+            pulumi.set(__self__, "join_time", join_time)
         if modify_time is not None:
-            _setter("modify_time", modify_time)
+            pulumi.set(__self__, "modify_time", modify_time)
         if payer_account_id is not None:
-            _setter("payer_account_id", payer_account_id)
+            pulumi.set(__self__, "payer_account_id", payer_account_id)
         if resource_directory_id is not None:
-            _setter("resource_directory_id", resource_directory_id)
+            pulumi.set(__self__, "resource_directory_id", resource_directory_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="abandonAbleCheckIds")
@@ -537,10 +453,6 @@ class Account(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AccountArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['HybridMonitorFcTaskArgs', 'HybridMonitorFcTask']
@@ -23,33 +23,10 @@ class HybridMonitorFcTaskArgs:
         :param pulumi.Input[str] yarm_config: The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
         :param pulumi.Input[str] target_user_id: The ID of the member account. If you call API operations by using a management account, you can connect the Alibaba Cloud services that are activated for a member account in Resource Directory to Hybrid Cloud Monitoring. You can use Resource Directory to monitor Alibaba Cloud services across enterprise accounts.
         """
-        HybridMonitorFcTaskArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            namespace=namespace,
-            yarm_config=yarm_config,
-            target_user_id=target_user_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             namespace: Optional[pulumi.Input[str]] = None,
-             yarm_config: Optional[pulumi.Input[str]] = None,
-             target_user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if namespace is None:
-            raise TypeError("Missing 'namespace' argument")
-        if yarm_config is None and 'yarmConfig' in kwargs:
-            yarm_config = kwargs['yarmConfig']
-        if yarm_config is None:
-            raise TypeError("Missing 'yarm_config' argument")
-        if target_user_id is None and 'targetUserId' in kwargs:
-            target_user_id = kwargs['targetUserId']
-
-        _setter("namespace", namespace)
-        _setter("yarm_config", yarm_config)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "yarm_config", yarm_config)
         if target_user_id is not None:
-            _setter("target_user_id", target_user_id)
+            pulumi.set(__self__, "target_user_id", target_user_id)
 
     @property
     @pulumi.getter
@@ -102,37 +79,14 @@ class _HybridMonitorFcTaskState:
         :param pulumi.Input[str] target_user_id: The ID of the member account. If you call API operations by using a management account, you can connect the Alibaba Cloud services that are activated for a member account in Resource Directory to Hybrid Cloud Monitoring. You can use Resource Directory to monitor Alibaba Cloud services across enterprise accounts.
         :param pulumi.Input[str] yarm_config: The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
         """
-        _HybridMonitorFcTaskState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            hybrid_monitor_fc_task_id=hybrid_monitor_fc_task_id,
-            namespace=namespace,
-            target_user_id=target_user_id,
-            yarm_config=yarm_config,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             hybrid_monitor_fc_task_id: Optional[pulumi.Input[str]] = None,
-             namespace: Optional[pulumi.Input[str]] = None,
-             target_user_id: Optional[pulumi.Input[str]] = None,
-             yarm_config: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if hybrid_monitor_fc_task_id is None and 'hybridMonitorFcTaskId' in kwargs:
-            hybrid_monitor_fc_task_id = kwargs['hybridMonitorFcTaskId']
-        if target_user_id is None and 'targetUserId' in kwargs:
-            target_user_id = kwargs['targetUserId']
-        if yarm_config is None and 'yarmConfig' in kwargs:
-            yarm_config = kwargs['yarmConfig']
-
         if hybrid_monitor_fc_task_id is not None:
-            _setter("hybrid_monitor_fc_task_id", hybrid_monitor_fc_task_id)
+            pulumi.set(__self__, "hybrid_monitor_fc_task_id", hybrid_monitor_fc_task_id)
         if namespace is not None:
-            _setter("namespace", namespace)
+            pulumi.set(__self__, "namespace", namespace)
         if target_user_id is not None:
-            _setter("target_user_id", target_user_id)
+            pulumi.set(__self__, "target_user_id", target_user_id)
         if yarm_config is not None:
-            _setter("yarm_config", yarm_config)
+            pulumi.set(__self__, "yarm_config", yarm_config)
 
     @property
     @pulumi.getter(name="hybridMonitorFcTaskId")
@@ -324,10 +278,6 @@ class HybridMonitorFcTask(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            HybridMonitorFcTaskArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

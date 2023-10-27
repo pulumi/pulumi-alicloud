@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -23,29 +23,8 @@ class ShardingNetworkPublicAddressArgs:
         :param pulumi.Input[str] db_instance_id: The ID of the instance.
         :param pulumi.Input[str] node_id: The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
         """
-        ShardingNetworkPublicAddressArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            db_instance_id=db_instance_id,
-            node_id=node_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             db_instance_id: Optional[pulumi.Input[str]] = None,
-             node_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if db_instance_id is None and 'dbInstanceId' in kwargs:
-            db_instance_id = kwargs['dbInstanceId']
-        if db_instance_id is None:
-            raise TypeError("Missing 'db_instance_id' argument")
-        if node_id is None and 'nodeId' in kwargs:
-            node_id = kwargs['nodeId']
-        if node_id is None:
-            raise TypeError("Missing 'node_id' argument")
-
-        _setter("db_instance_id", db_instance_id)
-        _setter("node_id", node_id)
+        pulumi.set(__self__, "db_instance_id", db_instance_id)
+        pulumi.set(__self__, "node_id", node_id)
 
     @property
     @pulumi.getter(name="dbInstanceId")
@@ -84,33 +63,12 @@ class _ShardingNetworkPublicAddressState:
         :param pulumi.Input[Sequence[pulumi.Input['ShardingNetworkPublicAddressNetworkAddressArgs']]] network_addresses: The endpoint of the instance.
         :param pulumi.Input[str] node_id: The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
         """
-        _ShardingNetworkPublicAddressState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            db_instance_id=db_instance_id,
-            network_addresses=network_addresses,
-            node_id=node_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             db_instance_id: Optional[pulumi.Input[str]] = None,
-             network_addresses: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingNetworkPublicAddressNetworkAddressArgs']]]] = None,
-             node_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if db_instance_id is None and 'dbInstanceId' in kwargs:
-            db_instance_id = kwargs['dbInstanceId']
-        if network_addresses is None and 'networkAddresses' in kwargs:
-            network_addresses = kwargs['networkAddresses']
-        if node_id is None and 'nodeId' in kwargs:
-            node_id = kwargs['nodeId']
-
         if db_instance_id is not None:
-            _setter("db_instance_id", db_instance_id)
+            pulumi.set(__self__, "db_instance_id", db_instance_id)
         if network_addresses is not None:
-            _setter("network_addresses", network_addresses)
+            pulumi.set(__self__, "network_addresses", network_addresses)
         if node_id is not None:
-            _setter("node_id", node_id)
+            pulumi.set(__self__, "node_id", node_id)
 
     @property
     @pulumi.getter(name="dbInstanceId")
@@ -314,10 +272,6 @@ class ShardingNetworkPublicAddress(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ShardingNetworkPublicAddressArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['PhysicalConnectionArgs', 'PhysicalConnection']
@@ -54,75 +54,26 @@ class PhysicalConnectionArgs:
         :param pulumi.Input[str] status: Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
         :param pulumi.Input[str] type: Physical Private Line of Type. Default Value: VPC.
         """
-        PhysicalConnectionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_point_id=access_point_id,
-            line_operator=line_operator,
-            bandwidth=bandwidth,
-            circuit_code=circuit_code,
-            description=description,
-            peer_location=peer_location,
-            physical_connection_name=physical_connection_name,
-            port_type=port_type,
-            redundant_physical_connection_id=redundant_physical_connection_id,
-            status=status,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_point_id: Optional[pulumi.Input[str]] = None,
-             line_operator: Optional[pulumi.Input[str]] = None,
-             bandwidth: Optional[pulumi.Input[str]] = None,
-             circuit_code: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             peer_location: Optional[pulumi.Input[str]] = None,
-             physical_connection_name: Optional[pulumi.Input[str]] = None,
-             port_type: Optional[pulumi.Input[str]] = None,
-             redundant_physical_connection_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_point_id is None and 'accessPointId' in kwargs:
-            access_point_id = kwargs['accessPointId']
-        if access_point_id is None:
-            raise TypeError("Missing 'access_point_id' argument")
-        if line_operator is None and 'lineOperator' in kwargs:
-            line_operator = kwargs['lineOperator']
-        if line_operator is None:
-            raise TypeError("Missing 'line_operator' argument")
-        if circuit_code is None and 'circuitCode' in kwargs:
-            circuit_code = kwargs['circuitCode']
-        if peer_location is None and 'peerLocation' in kwargs:
-            peer_location = kwargs['peerLocation']
-        if physical_connection_name is None and 'physicalConnectionName' in kwargs:
-            physical_connection_name = kwargs['physicalConnectionName']
-        if port_type is None and 'portType' in kwargs:
-            port_type = kwargs['portType']
-        if redundant_physical_connection_id is None and 'redundantPhysicalConnectionId' in kwargs:
-            redundant_physical_connection_id = kwargs['redundantPhysicalConnectionId']
-
-        _setter("access_point_id", access_point_id)
-        _setter("line_operator", line_operator)
+        pulumi.set(__self__, "access_point_id", access_point_id)
+        pulumi.set(__self__, "line_operator", line_operator)
         if bandwidth is not None:
-            _setter("bandwidth", bandwidth)
+            pulumi.set(__self__, "bandwidth", bandwidth)
         if circuit_code is not None:
-            _setter("circuit_code", circuit_code)
+            pulumi.set(__self__, "circuit_code", circuit_code)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if peer_location is not None:
-            _setter("peer_location", peer_location)
+            pulumi.set(__self__, "peer_location", peer_location)
         if physical_connection_name is not None:
-            _setter("physical_connection_name", physical_connection_name)
+            pulumi.set(__self__, "physical_connection_name", physical_connection_name)
         if port_type is not None:
-            _setter("port_type", port_type)
+            pulumi.set(__self__, "port_type", port_type)
         if redundant_physical_connection_id is not None:
-            _setter("redundant_physical_connection_id", redundant_physical_connection_id)
+            pulumi.set(__self__, "redundant_physical_connection_id", redundant_physical_connection_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="accessPointId")
@@ -315,73 +266,28 @@ class _PhysicalConnectionState:
         :param pulumi.Input[str] status: Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
         :param pulumi.Input[str] type: Physical Private Line of Type. Default Value: VPC.
         """
-        _PhysicalConnectionState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_point_id=access_point_id,
-            bandwidth=bandwidth,
-            circuit_code=circuit_code,
-            description=description,
-            line_operator=line_operator,
-            peer_location=peer_location,
-            physical_connection_name=physical_connection_name,
-            port_type=port_type,
-            redundant_physical_connection_id=redundant_physical_connection_id,
-            status=status,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_point_id: Optional[pulumi.Input[str]] = None,
-             bandwidth: Optional[pulumi.Input[str]] = None,
-             circuit_code: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             line_operator: Optional[pulumi.Input[str]] = None,
-             peer_location: Optional[pulumi.Input[str]] = None,
-             physical_connection_name: Optional[pulumi.Input[str]] = None,
-             port_type: Optional[pulumi.Input[str]] = None,
-             redundant_physical_connection_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_point_id is None and 'accessPointId' in kwargs:
-            access_point_id = kwargs['accessPointId']
-        if circuit_code is None and 'circuitCode' in kwargs:
-            circuit_code = kwargs['circuitCode']
-        if line_operator is None and 'lineOperator' in kwargs:
-            line_operator = kwargs['lineOperator']
-        if peer_location is None and 'peerLocation' in kwargs:
-            peer_location = kwargs['peerLocation']
-        if physical_connection_name is None and 'physicalConnectionName' in kwargs:
-            physical_connection_name = kwargs['physicalConnectionName']
-        if port_type is None and 'portType' in kwargs:
-            port_type = kwargs['portType']
-        if redundant_physical_connection_id is None and 'redundantPhysicalConnectionId' in kwargs:
-            redundant_physical_connection_id = kwargs['redundantPhysicalConnectionId']
-
         if access_point_id is not None:
-            _setter("access_point_id", access_point_id)
+            pulumi.set(__self__, "access_point_id", access_point_id)
         if bandwidth is not None:
-            _setter("bandwidth", bandwidth)
+            pulumi.set(__self__, "bandwidth", bandwidth)
         if circuit_code is not None:
-            _setter("circuit_code", circuit_code)
+            pulumi.set(__self__, "circuit_code", circuit_code)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if line_operator is not None:
-            _setter("line_operator", line_operator)
+            pulumi.set(__self__, "line_operator", line_operator)
         if peer_location is not None:
-            _setter("peer_location", peer_location)
+            pulumi.set(__self__, "peer_location", peer_location)
         if physical_connection_name is not None:
-            _setter("physical_connection_name", physical_connection_name)
+            pulumi.set(__self__, "physical_connection_name", physical_connection_name)
         if port_type is not None:
-            _setter("port_type", port_type)
+            pulumi.set(__self__, "port_type", port_type)
         if redundant_physical_connection_id is not None:
-            _setter("redundant_physical_connection_id", redundant_physical_connection_id)
+            pulumi.set(__self__, "redundant_physical_connection_id", redundant_physical_connection_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="accessPointId")
@@ -679,10 +585,6 @@ class PhysicalConnection(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            PhysicalConnectionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

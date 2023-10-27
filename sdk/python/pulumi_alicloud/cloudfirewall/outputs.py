@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -70,27 +70,10 @@ class AddressBookEcsTag(dict):
         :param str tag_key: The key of ECS tag that to be matched.
         :param str tag_value: The value of ECS tag that to be matched.
         """
-        AddressBookEcsTag._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            tag_key=tag_key,
-            tag_value=tag_value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             tag_key: Optional[str] = None,
-             tag_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if tag_key is None and 'tagKey' in kwargs:
-            tag_key = kwargs['tagKey']
-        if tag_value is None and 'tagValue' in kwargs:
-            tag_value = kwargs['tagValue']
-
         if tag_key is not None:
-            _setter("tag_key", tag_key)
+            pulumi.set(__self__, "tag_key", tag_key)
         if tag_value is not None:
-            _setter("tag_value", tag_value)
+            pulumi.set(__self__, "tag_value", tag_value)
 
     @property
     @pulumi.getter(name="tagKey")
@@ -197,118 +180,39 @@ class FirewallVpcFirewallCenLocalVpc(dict):
         :param str vpc_id: The ID of the VPC instance.
         :param str vpc_name: The instance name of the VPC.
         """
-        FirewallVpcFirewallCenLocalVpc._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            network_instance_id=network_instance_id,
-            attachment_id=attachment_id,
-            attachment_name=attachment_name,
-            defend_cidr_lists=defend_cidr_lists,
-            eni_lists=eni_lists,
-            manual_vswitch_id=manual_vswitch_id,
-            network_instance_name=network_instance_name,
-            network_instance_type=network_instance_type,
-            owner_id=owner_id,
-            region_no=region_no,
-            route_mode=route_mode,
-            support_manual_mode=support_manual_mode,
-            transit_router_id=transit_router_id,
-            transit_router_type=transit_router_type,
-            vpc_cidr_table_lists=vpc_cidr_table_lists,
-            vpc_id=vpc_id,
-            vpc_name=vpc_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             network_instance_id: Optional[str] = None,
-             attachment_id: Optional[str] = None,
-             attachment_name: Optional[str] = None,
-             defend_cidr_lists: Optional[Sequence[str]] = None,
-             eni_lists: Optional[Sequence['outputs.FirewallVpcFirewallCenLocalVpcEniList']] = None,
-             manual_vswitch_id: Optional[str] = None,
-             network_instance_name: Optional[str] = None,
-             network_instance_type: Optional[str] = None,
-             owner_id: Optional[str] = None,
-             region_no: Optional[str] = None,
-             route_mode: Optional[str] = None,
-             support_manual_mode: Optional[str] = None,
-             transit_router_id: Optional[str] = None,
-             transit_router_type: Optional[str] = None,
-             vpc_cidr_table_lists: Optional[Sequence['outputs.FirewallVpcFirewallCenLocalVpcVpcCidrTableList']] = None,
-             vpc_id: Optional[str] = None,
-             vpc_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if network_instance_id is None and 'networkInstanceId' in kwargs:
-            network_instance_id = kwargs['networkInstanceId']
-        if network_instance_id is None:
-            raise TypeError("Missing 'network_instance_id' argument")
-        if attachment_id is None and 'attachmentId' in kwargs:
-            attachment_id = kwargs['attachmentId']
-        if attachment_name is None and 'attachmentName' in kwargs:
-            attachment_name = kwargs['attachmentName']
-        if defend_cidr_lists is None and 'defendCidrLists' in kwargs:
-            defend_cidr_lists = kwargs['defendCidrLists']
-        if eni_lists is None and 'eniLists' in kwargs:
-            eni_lists = kwargs['eniLists']
-        if manual_vswitch_id is None and 'manualVswitchId' in kwargs:
-            manual_vswitch_id = kwargs['manualVswitchId']
-        if network_instance_name is None and 'networkInstanceName' in kwargs:
-            network_instance_name = kwargs['networkInstanceName']
-        if network_instance_type is None and 'networkInstanceType' in kwargs:
-            network_instance_type = kwargs['networkInstanceType']
-        if owner_id is None and 'ownerId' in kwargs:
-            owner_id = kwargs['ownerId']
-        if region_no is None and 'regionNo' in kwargs:
-            region_no = kwargs['regionNo']
-        if route_mode is None and 'routeMode' in kwargs:
-            route_mode = kwargs['routeMode']
-        if support_manual_mode is None and 'supportManualMode' in kwargs:
-            support_manual_mode = kwargs['supportManualMode']
-        if transit_router_id is None and 'transitRouterId' in kwargs:
-            transit_router_id = kwargs['transitRouterId']
-        if transit_router_type is None and 'transitRouterType' in kwargs:
-            transit_router_type = kwargs['transitRouterType']
-        if vpc_cidr_table_lists is None and 'vpcCidrTableLists' in kwargs:
-            vpc_cidr_table_lists = kwargs['vpcCidrTableLists']
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_name is None and 'vpcName' in kwargs:
-            vpc_name = kwargs['vpcName']
-
-        _setter("network_instance_id", network_instance_id)
+        pulumi.set(__self__, "network_instance_id", network_instance_id)
         if attachment_id is not None:
-            _setter("attachment_id", attachment_id)
+            pulumi.set(__self__, "attachment_id", attachment_id)
         if attachment_name is not None:
-            _setter("attachment_name", attachment_name)
+            pulumi.set(__self__, "attachment_name", attachment_name)
         if defend_cidr_lists is not None:
-            _setter("defend_cidr_lists", defend_cidr_lists)
+            pulumi.set(__self__, "defend_cidr_lists", defend_cidr_lists)
         if eni_lists is not None:
-            _setter("eni_lists", eni_lists)
+            pulumi.set(__self__, "eni_lists", eni_lists)
         if manual_vswitch_id is not None:
-            _setter("manual_vswitch_id", manual_vswitch_id)
+            pulumi.set(__self__, "manual_vswitch_id", manual_vswitch_id)
         if network_instance_name is not None:
-            _setter("network_instance_name", network_instance_name)
+            pulumi.set(__self__, "network_instance_name", network_instance_name)
         if network_instance_type is not None:
-            _setter("network_instance_type", network_instance_type)
+            pulumi.set(__self__, "network_instance_type", network_instance_type)
         if owner_id is not None:
-            _setter("owner_id", owner_id)
+            pulumi.set(__self__, "owner_id", owner_id)
         if region_no is not None:
-            _setter("region_no", region_no)
+            pulumi.set(__self__, "region_no", region_no)
         if route_mode is not None:
-            _setter("route_mode", route_mode)
+            pulumi.set(__self__, "route_mode", route_mode)
         if support_manual_mode is not None:
-            _setter("support_manual_mode", support_manual_mode)
+            pulumi.set(__self__, "support_manual_mode", support_manual_mode)
         if transit_router_id is not None:
-            _setter("transit_router_id", transit_router_id)
+            pulumi.set(__self__, "transit_router_id", transit_router_id)
         if transit_router_type is not None:
-            _setter("transit_router_type", transit_router_type)
+            pulumi.set(__self__, "transit_router_type", transit_router_type)
         if vpc_cidr_table_lists is not None:
-            _setter("vpc_cidr_table_lists", vpc_cidr_table_lists)
+            pulumi.set(__self__, "vpc_cidr_table_lists", vpc_cidr_table_lists)
         if vpc_id is not None:
-            _setter("vpc_id", vpc_id)
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vpc_name is not None:
-            _setter("vpc_name", vpc_name)
+            pulumi.set(__self__, "vpc_name", vpc_name)
 
     @property
     @pulumi.getter(name="networkInstanceId")
@@ -475,27 +379,10 @@ class FirewallVpcFirewallCenLocalVpcEniList(dict):
         :param str eni_id: The ID of the instance of the ENI in the VPC.
         :param str eni_private_ip_address: The private IP address of the ENI in the VPC.
         """
-        FirewallVpcFirewallCenLocalVpcEniList._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            eni_id=eni_id,
-            eni_private_ip_address=eni_private_ip_address,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             eni_id: Optional[str] = None,
-             eni_private_ip_address: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if eni_id is None and 'eniId' in kwargs:
-            eni_id = kwargs['eniId']
-        if eni_private_ip_address is None and 'eniPrivateIpAddress' in kwargs:
-            eni_private_ip_address = kwargs['eniPrivateIpAddress']
-
         if eni_id is not None:
-            _setter("eni_id", eni_id)
+            pulumi.set(__self__, "eni_id", eni_id)
         if eni_private_ip_address is not None:
-            _setter("eni_private_ip_address", eni_private_ip_address)
+            pulumi.set(__self__, "eni_private_ip_address", eni_private_ip_address)
 
     @property
     @pulumi.getter(name="eniId")
@@ -542,27 +429,10 @@ class FirewallVpcFirewallCenLocalVpcVpcCidrTableList(dict):
         :param Sequence['FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgs'] route_entry_lists: The list of route entries in the VPC.
         :param str route_table_id: The ID of the route table of the VPC.
         """
-        FirewallVpcFirewallCenLocalVpcVpcCidrTableList._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            route_entry_lists=route_entry_lists,
-            route_table_id=route_table_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             route_entry_lists: Optional[Sequence['outputs.FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList']] = None,
-             route_table_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if route_entry_lists is None and 'routeEntryLists' in kwargs:
-            route_entry_lists = kwargs['routeEntryLists']
-        if route_table_id is None and 'routeTableId' in kwargs:
-            route_table_id = kwargs['routeTableId']
-
         if route_entry_lists is not None:
-            _setter("route_entry_lists", route_entry_lists)
+            pulumi.set(__self__, "route_entry_lists", route_entry_lists)
         if route_table_id is not None:
-            _setter("route_table_id", route_table_id)
+            pulumi.set(__self__, "route_table_id", route_table_id)
 
     @property
     @pulumi.getter(name="routeEntryLists")
@@ -609,27 +479,10 @@ class FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList(dict):
         :param str destination_cidr: The target network segment of the VPC.
         :param str next_hop_instance_id: The ID of the next hop instance in the VPC.
         """
-        FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            destination_cidr=destination_cidr,
-            next_hop_instance_id=next_hop_instance_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             destination_cidr: Optional[str] = None,
-             next_hop_instance_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if destination_cidr is None and 'destinationCidr' in kwargs:
-            destination_cidr = kwargs['destinationCidr']
-        if next_hop_instance_id is None and 'nextHopInstanceId' in kwargs:
-            next_hop_instance_id = kwargs['nextHopInstanceId']
-
         if destination_cidr is not None:
-            _setter("destination_cidr", destination_cidr)
+            pulumi.set(__self__, "destination_cidr", destination_cidr)
         if next_hop_instance_id is not None:
-            _setter("next_hop_instance_id", next_hop_instance_id)
+            pulumi.set(__self__, "next_hop_instance_id", next_hop_instance_id)
 
     @property
     @pulumi.getter(name="destinationCidr")
@@ -696,60 +549,17 @@ class FirewallVpcFirewallLocalVpc(dict):
         :param str router_interface_id: The ID of the router interface in the peer VPC.
         :param str vpc_name: The instance name of the peer VPC.
         """
-        FirewallVpcFirewallLocalVpc._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            local_vpc_cidr_table_lists=local_vpc_cidr_table_lists,
-            region_no=region_no,
-            vpc_id=vpc_id,
-            eni_id=eni_id,
-            eni_private_ip_address=eni_private_ip_address,
-            router_interface_id=router_interface_id,
-            vpc_name=vpc_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             local_vpc_cidr_table_lists: Optional[Sequence['outputs.FirewallVpcFirewallLocalVpcLocalVpcCidrTableList']] = None,
-             region_no: Optional[str] = None,
-             vpc_id: Optional[str] = None,
-             eni_id: Optional[str] = None,
-             eni_private_ip_address: Optional[str] = None,
-             router_interface_id: Optional[str] = None,
-             vpc_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if local_vpc_cidr_table_lists is None and 'localVpcCidrTableLists' in kwargs:
-            local_vpc_cidr_table_lists = kwargs['localVpcCidrTableLists']
-        if local_vpc_cidr_table_lists is None:
-            raise TypeError("Missing 'local_vpc_cidr_table_lists' argument")
-        if region_no is None and 'regionNo' in kwargs:
-            region_no = kwargs['regionNo']
-        if region_no is None:
-            raise TypeError("Missing 'region_no' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-        if eni_id is None and 'eniId' in kwargs:
-            eni_id = kwargs['eniId']
-        if eni_private_ip_address is None and 'eniPrivateIpAddress' in kwargs:
-            eni_private_ip_address = kwargs['eniPrivateIpAddress']
-        if router_interface_id is None and 'routerInterfaceId' in kwargs:
-            router_interface_id = kwargs['routerInterfaceId']
-        if vpc_name is None and 'vpcName' in kwargs:
-            vpc_name = kwargs['vpcName']
-
-        _setter("local_vpc_cidr_table_lists", local_vpc_cidr_table_lists)
-        _setter("region_no", region_no)
-        _setter("vpc_id", vpc_id)
+        pulumi.set(__self__, "local_vpc_cidr_table_lists", local_vpc_cidr_table_lists)
+        pulumi.set(__self__, "region_no", region_no)
+        pulumi.set(__self__, "vpc_id", vpc_id)
         if eni_id is not None:
-            _setter("eni_id", eni_id)
+            pulumi.set(__self__, "eni_id", eni_id)
         if eni_private_ip_address is not None:
-            _setter("eni_private_ip_address", eni_private_ip_address)
+            pulumi.set(__self__, "eni_private_ip_address", eni_private_ip_address)
         if router_interface_id is not None:
-            _setter("router_interface_id", router_interface_id)
+            pulumi.set(__self__, "router_interface_id", router_interface_id)
         if vpc_name is not None:
-            _setter("vpc_name", vpc_name)
+            pulumi.set(__self__, "vpc_name", vpc_name)
 
     @property
     @pulumi.getter(name="localVpcCidrTableLists")
@@ -836,29 +646,8 @@ class FirewallVpcFirewallLocalVpcLocalVpcCidrTableList(dict):
         :param Sequence['FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs'] local_route_entry_lists: The list of route entries of the local VPC. See `local_route_entry_list` below.
         :param str local_route_table_id: The ID of the route table of the local VPC.
         """
-        FirewallVpcFirewallLocalVpcLocalVpcCidrTableList._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            local_route_entry_lists=local_route_entry_lists,
-            local_route_table_id=local_route_table_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             local_route_entry_lists: Optional[Sequence['outputs.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList']] = None,
-             local_route_table_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if local_route_entry_lists is None and 'localRouteEntryLists' in kwargs:
-            local_route_entry_lists = kwargs['localRouteEntryLists']
-        if local_route_entry_lists is None:
-            raise TypeError("Missing 'local_route_entry_lists' argument")
-        if local_route_table_id is None and 'localRouteTableId' in kwargs:
-            local_route_table_id = kwargs['localRouteTableId']
-        if local_route_table_id is None:
-            raise TypeError("Missing 'local_route_table_id' argument")
-
-        _setter("local_route_entry_lists", local_route_entry_lists)
-        _setter("local_route_table_id", local_route_table_id)
+        pulumi.set(__self__, "local_route_entry_lists", local_route_entry_lists)
+        pulumi.set(__self__, "local_route_table_id", local_route_table_id)
 
     @property
     @pulumi.getter(name="localRouteEntryLists")
@@ -905,29 +694,8 @@ class FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList(dict):
         :param str local_destination_cidr: The target network segment of the local VPC.
         :param str local_next_hop_instance_id: The ID of the next-hop instance in the local VPC.
         """
-        FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            local_destination_cidr=local_destination_cidr,
-            local_next_hop_instance_id=local_next_hop_instance_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             local_destination_cidr: Optional[str] = None,
-             local_next_hop_instance_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if local_destination_cidr is None and 'localDestinationCidr' in kwargs:
-            local_destination_cidr = kwargs['localDestinationCidr']
-        if local_destination_cidr is None:
-            raise TypeError("Missing 'local_destination_cidr' argument")
-        if local_next_hop_instance_id is None and 'localNextHopInstanceId' in kwargs:
-            local_next_hop_instance_id = kwargs['localNextHopInstanceId']
-        if local_next_hop_instance_id is None:
-            raise TypeError("Missing 'local_next_hop_instance_id' argument")
-
-        _setter("local_destination_cidr", local_destination_cidr)
-        _setter("local_next_hop_instance_id", local_next_hop_instance_id)
+        pulumi.set(__self__, "local_destination_cidr", local_destination_cidr)
+        pulumi.set(__self__, "local_next_hop_instance_id", local_next_hop_instance_id)
 
     @property
     @pulumi.getter(name="localDestinationCidr")
@@ -994,60 +762,17 @@ class FirewallVpcFirewallPeerVpc(dict):
         :param str router_interface_id: The ID of the router interface in the peer VPC.
         :param str vpc_name: The instance name of the peer VPC.
         """
-        FirewallVpcFirewallPeerVpc._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            peer_vpc_cidr_table_lists=peer_vpc_cidr_table_lists,
-            region_no=region_no,
-            vpc_id=vpc_id,
-            eni_id=eni_id,
-            eni_private_ip_address=eni_private_ip_address,
-            router_interface_id=router_interface_id,
-            vpc_name=vpc_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             peer_vpc_cidr_table_lists: Optional[Sequence['outputs.FirewallVpcFirewallPeerVpcPeerVpcCidrTableList']] = None,
-             region_no: Optional[str] = None,
-             vpc_id: Optional[str] = None,
-             eni_id: Optional[str] = None,
-             eni_private_ip_address: Optional[str] = None,
-             router_interface_id: Optional[str] = None,
-             vpc_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if peer_vpc_cidr_table_lists is None and 'peerVpcCidrTableLists' in kwargs:
-            peer_vpc_cidr_table_lists = kwargs['peerVpcCidrTableLists']
-        if peer_vpc_cidr_table_lists is None:
-            raise TypeError("Missing 'peer_vpc_cidr_table_lists' argument")
-        if region_no is None and 'regionNo' in kwargs:
-            region_no = kwargs['regionNo']
-        if region_no is None:
-            raise TypeError("Missing 'region_no' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-        if eni_id is None and 'eniId' in kwargs:
-            eni_id = kwargs['eniId']
-        if eni_private_ip_address is None and 'eniPrivateIpAddress' in kwargs:
-            eni_private_ip_address = kwargs['eniPrivateIpAddress']
-        if router_interface_id is None and 'routerInterfaceId' in kwargs:
-            router_interface_id = kwargs['routerInterfaceId']
-        if vpc_name is None and 'vpcName' in kwargs:
-            vpc_name = kwargs['vpcName']
-
-        _setter("peer_vpc_cidr_table_lists", peer_vpc_cidr_table_lists)
-        _setter("region_no", region_no)
-        _setter("vpc_id", vpc_id)
+        pulumi.set(__self__, "peer_vpc_cidr_table_lists", peer_vpc_cidr_table_lists)
+        pulumi.set(__self__, "region_no", region_no)
+        pulumi.set(__self__, "vpc_id", vpc_id)
         if eni_id is not None:
-            _setter("eni_id", eni_id)
+            pulumi.set(__self__, "eni_id", eni_id)
         if eni_private_ip_address is not None:
-            _setter("eni_private_ip_address", eni_private_ip_address)
+            pulumi.set(__self__, "eni_private_ip_address", eni_private_ip_address)
         if router_interface_id is not None:
-            _setter("router_interface_id", router_interface_id)
+            pulumi.set(__self__, "router_interface_id", router_interface_id)
         if vpc_name is not None:
-            _setter("vpc_name", vpc_name)
+            pulumi.set(__self__, "vpc_name", vpc_name)
 
     @property
     @pulumi.getter(name="peerVpcCidrTableLists")
@@ -1134,29 +859,8 @@ class FirewallVpcFirewallPeerVpcPeerVpcCidrTableList(dict):
         :param Sequence['FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs'] peer_route_entry_lists: Peer VPC route entry list information. See `peer_route_entry_list` below.
         :param str peer_route_table_id: The ID of the route table of the peer VPC.
         """
-        FirewallVpcFirewallPeerVpcPeerVpcCidrTableList._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            peer_route_entry_lists=peer_route_entry_lists,
-            peer_route_table_id=peer_route_table_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             peer_route_entry_lists: Optional[Sequence['outputs.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList']] = None,
-             peer_route_table_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if peer_route_entry_lists is None and 'peerRouteEntryLists' in kwargs:
-            peer_route_entry_lists = kwargs['peerRouteEntryLists']
-        if peer_route_entry_lists is None:
-            raise TypeError("Missing 'peer_route_entry_lists' argument")
-        if peer_route_table_id is None and 'peerRouteTableId' in kwargs:
-            peer_route_table_id = kwargs['peerRouteTableId']
-        if peer_route_table_id is None:
-            raise TypeError("Missing 'peer_route_table_id' argument")
-
-        _setter("peer_route_entry_lists", peer_route_entry_lists)
-        _setter("peer_route_table_id", peer_route_table_id)
+        pulumi.set(__self__, "peer_route_entry_lists", peer_route_entry_lists)
+        pulumi.set(__self__, "peer_route_table_id", peer_route_table_id)
 
     @property
     @pulumi.getter(name="peerRouteEntryLists")
@@ -1203,29 +907,8 @@ class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList(dict):
         :param str peer_destination_cidr: The target network segment of the peer VPC.
         :param str peer_next_hop_instance_id: The ID of the next-hop instance in the peer VPC.
         """
-        FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            peer_destination_cidr=peer_destination_cidr,
-            peer_next_hop_instance_id=peer_next_hop_instance_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             peer_destination_cidr: Optional[str] = None,
-             peer_next_hop_instance_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if peer_destination_cidr is None and 'peerDestinationCidr' in kwargs:
-            peer_destination_cidr = kwargs['peerDestinationCidr']
-        if peer_destination_cidr is None:
-            raise TypeError("Missing 'peer_destination_cidr' argument")
-        if peer_next_hop_instance_id is None and 'peerNextHopInstanceId' in kwargs:
-            peer_next_hop_instance_id = kwargs['peerNextHopInstanceId']
-        if peer_next_hop_instance_id is None:
-            raise TypeError("Missing 'peer_next_hop_instance_id' argument")
-
-        _setter("peer_destination_cidr", peer_destination_cidr)
-        _setter("peer_next_hop_instance_id", peer_next_hop_instance_id)
+        pulumi.set(__self__, "peer_destination_cidr", peer_destination_cidr)
+        pulumi.set(__self__, "peer_next_hop_instance_id", peer_next_hop_instance_id)
 
     @property
     @pulumi.getter(name="peerDestinationCidr")
@@ -1267,74 +950,15 @@ class GetAddressBooksBookResult(dict):
         :param str id: The ID of the Address Book.
         :param str tag_relation: One or more tags for the relationship between.
         """
-        GetAddressBooksBookResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address_lists=address_lists,
-            auto_add_tag_ecs=auto_add_tag_ecs,
-            description=description,
-            ecs_tags=ecs_tags,
-            group_name=group_name,
-            group_type=group_type,
-            group_uuid=group_uuid,
-            id=id,
-            tag_relation=tag_relation,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address_lists: Optional[Sequence[str]] = None,
-             auto_add_tag_ecs: Optional[int] = None,
-             description: Optional[str] = None,
-             ecs_tags: Optional[Sequence['outputs.GetAddressBooksBookEcsTagResult']] = None,
-             group_name: Optional[str] = None,
-             group_type: Optional[str] = None,
-             group_uuid: Optional[str] = None,
-             id: Optional[str] = None,
-             tag_relation: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address_lists is None and 'addressLists' in kwargs:
-            address_lists = kwargs['addressLists']
-        if address_lists is None:
-            raise TypeError("Missing 'address_lists' argument")
-        if auto_add_tag_ecs is None and 'autoAddTagEcs' in kwargs:
-            auto_add_tag_ecs = kwargs['autoAddTagEcs']
-        if auto_add_tag_ecs is None:
-            raise TypeError("Missing 'auto_add_tag_ecs' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if ecs_tags is None and 'ecsTags' in kwargs:
-            ecs_tags = kwargs['ecsTags']
-        if ecs_tags is None:
-            raise TypeError("Missing 'ecs_tags' argument")
-        if group_name is None and 'groupName' in kwargs:
-            group_name = kwargs['groupName']
-        if group_name is None:
-            raise TypeError("Missing 'group_name' argument")
-        if group_type is None and 'groupType' in kwargs:
-            group_type = kwargs['groupType']
-        if group_type is None:
-            raise TypeError("Missing 'group_type' argument")
-        if group_uuid is None and 'groupUuid' in kwargs:
-            group_uuid = kwargs['groupUuid']
-        if group_uuid is None:
-            raise TypeError("Missing 'group_uuid' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if tag_relation is None and 'tagRelation' in kwargs:
-            tag_relation = kwargs['tagRelation']
-        if tag_relation is None:
-            raise TypeError("Missing 'tag_relation' argument")
-
-        _setter("address_lists", address_lists)
-        _setter("auto_add_tag_ecs", auto_add_tag_ecs)
-        _setter("description", description)
-        _setter("ecs_tags", ecs_tags)
-        _setter("group_name", group_name)
-        _setter("group_type", group_type)
-        _setter("group_uuid", group_uuid)
-        _setter("id", id)
-        _setter("tag_relation", tag_relation)
+        pulumi.set(__self__, "address_lists", address_lists)
+        pulumi.set(__self__, "auto_add_tag_ecs", auto_add_tag_ecs)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "ecs_tags", ecs_tags)
+        pulumi.set(__self__, "group_name", group_name)
+        pulumi.set(__self__, "group_type", group_type)
+        pulumi.set(__self__, "group_uuid", group_uuid)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "tag_relation", tag_relation)
 
     @property
     @pulumi.getter(name="addressLists")
@@ -1418,29 +1042,8 @@ class GetAddressBooksBookEcsTagResult(dict):
         :param str tag_key: The key of ECS tag that to be matched.
         :param str tag_value: The value of ECS tag that to be matched.
         """
-        GetAddressBooksBookEcsTagResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            tag_key=tag_key,
-            tag_value=tag_value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             tag_key: Optional[str] = None,
-             tag_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if tag_key is None and 'tagKey' in kwargs:
-            tag_key = kwargs['tagKey']
-        if tag_key is None:
-            raise TypeError("Missing 'tag_key' argument")
-        if tag_value is None and 'tagValue' in kwargs:
-            tag_value = kwargs['tagValue']
-        if tag_value is None:
-            raise TypeError("Missing 'tag_value' argument")
-
-        _setter("tag_key", tag_key)
-        _setter("tag_value", tag_value)
+        pulumi.set(__self__, "tag_key", tag_key)
+        pulumi.set(__self__, "tag_value", tag_value)
 
     @property
     @pulumi.getter(name="tagKey")
@@ -1504,174 +1107,31 @@ class GetControlPoliciesPolicyResult(dict):
         :param str source: The source address defined in the access control policy.
         :param str source_type: The type of the source address book defined in the access control policy. Valid values: If `direction` is to `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
         """
-        GetControlPoliciesPolicyResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            acl_action=acl_action,
-            acl_uuid=acl_uuid,
-            application_id=application_id,
-            application_name=application_name,
-            description=description,
-            dest_port=dest_port,
-            dest_port_group=dest_port_group,
-            dest_port_group_ports=dest_port_group_ports,
-            dest_port_type=dest_port_type,
-            destination=destination,
-            destination_group_cidrs=destination_group_cidrs,
-            destination_group_type=destination_group_type,
-            destination_type=destination_type,
-            direction=direction,
-            dns_result=dns_result,
-            dns_result_time=dns_result_time,
-            hit_times=hit_times,
-            id=id,
-            order=order,
-            proto=proto,
-            release=release,
-            source=source,
-            source_group_cidrs=source_group_cidrs,
-            source_group_type=source_group_type,
-            source_type=source_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             acl_action: Optional[str] = None,
-             acl_uuid: Optional[str] = None,
-             application_id: Optional[str] = None,
-             application_name: Optional[str] = None,
-             description: Optional[str] = None,
-             dest_port: Optional[str] = None,
-             dest_port_group: Optional[str] = None,
-             dest_port_group_ports: Optional[Sequence[str]] = None,
-             dest_port_type: Optional[str] = None,
-             destination: Optional[str] = None,
-             destination_group_cidrs: Optional[Sequence[str]] = None,
-             destination_group_type: Optional[str] = None,
-             destination_type: Optional[str] = None,
-             direction: Optional[str] = None,
-             dns_result: Optional[str] = None,
-             dns_result_time: Optional[str] = None,
-             hit_times: Optional[str] = None,
-             id: Optional[str] = None,
-             order: Optional[int] = None,
-             proto: Optional[str] = None,
-             release: Optional[bool] = None,
-             source: Optional[str] = None,
-             source_group_cidrs: Optional[Sequence[str]] = None,
-             source_group_type: Optional[str] = None,
-             source_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if acl_action is None and 'aclAction' in kwargs:
-            acl_action = kwargs['aclAction']
-        if acl_action is None:
-            raise TypeError("Missing 'acl_action' argument")
-        if acl_uuid is None and 'aclUuid' in kwargs:
-            acl_uuid = kwargs['aclUuid']
-        if acl_uuid is None:
-            raise TypeError("Missing 'acl_uuid' argument")
-        if application_id is None and 'applicationId' in kwargs:
-            application_id = kwargs['applicationId']
-        if application_id is None:
-            raise TypeError("Missing 'application_id' argument")
-        if application_name is None and 'applicationName' in kwargs:
-            application_name = kwargs['applicationName']
-        if application_name is None:
-            raise TypeError("Missing 'application_name' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if dest_port is None and 'destPort' in kwargs:
-            dest_port = kwargs['destPort']
-        if dest_port is None:
-            raise TypeError("Missing 'dest_port' argument")
-        if dest_port_group is None and 'destPortGroup' in kwargs:
-            dest_port_group = kwargs['destPortGroup']
-        if dest_port_group is None:
-            raise TypeError("Missing 'dest_port_group' argument")
-        if dest_port_group_ports is None and 'destPortGroupPorts' in kwargs:
-            dest_port_group_ports = kwargs['destPortGroupPorts']
-        if dest_port_group_ports is None:
-            raise TypeError("Missing 'dest_port_group_ports' argument")
-        if dest_port_type is None and 'destPortType' in kwargs:
-            dest_port_type = kwargs['destPortType']
-        if dest_port_type is None:
-            raise TypeError("Missing 'dest_port_type' argument")
-        if destination is None:
-            raise TypeError("Missing 'destination' argument")
-        if destination_group_cidrs is None and 'destinationGroupCidrs' in kwargs:
-            destination_group_cidrs = kwargs['destinationGroupCidrs']
-        if destination_group_cidrs is None:
-            raise TypeError("Missing 'destination_group_cidrs' argument")
-        if destination_group_type is None and 'destinationGroupType' in kwargs:
-            destination_group_type = kwargs['destinationGroupType']
-        if destination_group_type is None:
-            raise TypeError("Missing 'destination_group_type' argument")
-        if destination_type is None and 'destinationType' in kwargs:
-            destination_type = kwargs['destinationType']
-        if destination_type is None:
-            raise TypeError("Missing 'destination_type' argument")
-        if direction is None:
-            raise TypeError("Missing 'direction' argument")
-        if dns_result is None and 'dnsResult' in kwargs:
-            dns_result = kwargs['dnsResult']
-        if dns_result is None:
-            raise TypeError("Missing 'dns_result' argument")
-        if dns_result_time is None and 'dnsResultTime' in kwargs:
-            dns_result_time = kwargs['dnsResultTime']
-        if dns_result_time is None:
-            raise TypeError("Missing 'dns_result_time' argument")
-        if hit_times is None and 'hitTimes' in kwargs:
-            hit_times = kwargs['hitTimes']
-        if hit_times is None:
-            raise TypeError("Missing 'hit_times' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if order is None:
-            raise TypeError("Missing 'order' argument")
-        if proto is None:
-            raise TypeError("Missing 'proto' argument")
-        if release is None:
-            raise TypeError("Missing 'release' argument")
-        if source is None:
-            raise TypeError("Missing 'source' argument")
-        if source_group_cidrs is None and 'sourceGroupCidrs' in kwargs:
-            source_group_cidrs = kwargs['sourceGroupCidrs']
-        if source_group_cidrs is None:
-            raise TypeError("Missing 'source_group_cidrs' argument")
-        if source_group_type is None and 'sourceGroupType' in kwargs:
-            source_group_type = kwargs['sourceGroupType']
-        if source_group_type is None:
-            raise TypeError("Missing 'source_group_type' argument")
-        if source_type is None and 'sourceType' in kwargs:
-            source_type = kwargs['sourceType']
-        if source_type is None:
-            raise TypeError("Missing 'source_type' argument")
-
-        _setter("acl_action", acl_action)
-        _setter("acl_uuid", acl_uuid)
-        _setter("application_id", application_id)
-        _setter("application_name", application_name)
-        _setter("description", description)
-        _setter("dest_port", dest_port)
-        _setter("dest_port_group", dest_port_group)
-        _setter("dest_port_group_ports", dest_port_group_ports)
-        _setter("dest_port_type", dest_port_type)
-        _setter("destination", destination)
-        _setter("destination_group_cidrs", destination_group_cidrs)
-        _setter("destination_group_type", destination_group_type)
-        _setter("destination_type", destination_type)
-        _setter("direction", direction)
-        _setter("dns_result", dns_result)
-        _setter("dns_result_time", dns_result_time)
-        _setter("hit_times", hit_times)
-        _setter("id", id)
-        _setter("order", order)
-        _setter("proto", proto)
-        _setter("release", release)
-        _setter("source", source)
-        _setter("source_group_cidrs", source_group_cidrs)
-        _setter("source_group_type", source_group_type)
-        _setter("source_type", source_type)
+        pulumi.set(__self__, "acl_action", acl_action)
+        pulumi.set(__self__, "acl_uuid", acl_uuid)
+        pulumi.set(__self__, "application_id", application_id)
+        pulumi.set(__self__, "application_name", application_name)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "dest_port", dest_port)
+        pulumi.set(__self__, "dest_port_group", dest_port_group)
+        pulumi.set(__self__, "dest_port_group_ports", dest_port_group_ports)
+        pulumi.set(__self__, "dest_port_type", dest_port_type)
+        pulumi.set(__self__, "destination", destination)
+        pulumi.set(__self__, "destination_group_cidrs", destination_group_cidrs)
+        pulumi.set(__self__, "destination_group_type", destination_group_type)
+        pulumi.set(__self__, "destination_type", destination_type)
+        pulumi.set(__self__, "direction", direction)
+        pulumi.set(__self__, "dns_result", dns_result)
+        pulumi.set(__self__, "dns_result_time", dns_result_time)
+        pulumi.set(__self__, "hit_times", hit_times)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "order", order)
+        pulumi.set(__self__, "proto", proto)
+        pulumi.set(__self__, "release", release)
+        pulumi.set(__self__, "source", source)
+        pulumi.set(__self__, "source_group_cidrs", source_group_cidrs)
+        pulumi.set(__self__, "source_group_type", source_group_type)
+        pulumi.set(__self__, "source_type", source_type)
 
     @property
     @pulumi.getter(name="aclAction")
@@ -1862,60 +1322,13 @@ class GetInstanceMembersMemberResult(dict):
         :param int modify_time: The last modification time of the cloud firewall member account.> use second-level timestamp format.
         :param str status: The resource attribute field that represents the resource status.
         """
-        GetInstanceMembersMemberResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            id=id,
-            member_desc=member_desc,
-            member_display_name=member_display_name,
-            member_uid=member_uid,
-            modify_time=modify_time,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[int] = None,
-             id: Optional[str] = None,
-             member_desc: Optional[str] = None,
-             member_display_name: Optional[str] = None,
-             member_uid: Optional[str] = None,
-             modify_time: Optional[int] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if member_desc is None and 'memberDesc' in kwargs:
-            member_desc = kwargs['memberDesc']
-        if member_desc is None:
-            raise TypeError("Missing 'member_desc' argument")
-        if member_display_name is None and 'memberDisplayName' in kwargs:
-            member_display_name = kwargs['memberDisplayName']
-        if member_display_name is None:
-            raise TypeError("Missing 'member_display_name' argument")
-        if member_uid is None and 'memberUid' in kwargs:
-            member_uid = kwargs['memberUid']
-        if member_uid is None:
-            raise TypeError("Missing 'member_uid' argument")
-        if modify_time is None and 'modifyTime' in kwargs:
-            modify_time = kwargs['modifyTime']
-        if modify_time is None:
-            raise TypeError("Missing 'modify_time' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("create_time", create_time)
-        _setter("id", id)
-        _setter("member_desc", member_desc)
-        _setter("member_display_name", member_display_name)
-        _setter("member_uid", member_uid)
-        _setter("modify_time", modify_time)
-        _setter("status", status)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "member_desc", member_desc)
+        pulumi.set(__self__, "member_display_name", member_display_name)
+        pulumi.set(__self__, "member_uid", member_uid)
+        pulumi.set(__self__, "modify_time", modify_time)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="createTime")
@@ -1992,67 +1405,14 @@ class GetInstancesInstanceResult(dict):
         :param str renewal_status: Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
         :param str status: The Status of Instance.
         """
-        GetInstancesInstanceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            end_time=end_time,
-            id=id,
-            instance_id=instance_id,
-            payment_type=payment_type,
-            renewal_duration_unit=renewal_duration_unit,
-            renewal_status=renewal_status,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[str] = None,
-             end_time: Optional[str] = None,
-             id: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             payment_type: Optional[str] = None,
-             renewal_duration_unit: Optional[str] = None,
-             renewal_status: Optional[str] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if end_time is None and 'endTime' in kwargs:
-            end_time = kwargs['endTime']
-        if end_time is None:
-            raise TypeError("Missing 'end_time' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if payment_type is None:
-            raise TypeError("Missing 'payment_type' argument")
-        if renewal_duration_unit is None and 'renewalDurationUnit' in kwargs:
-            renewal_duration_unit = kwargs['renewalDurationUnit']
-        if renewal_duration_unit is None:
-            raise TypeError("Missing 'renewal_duration_unit' argument")
-        if renewal_status is None and 'renewalStatus' in kwargs:
-            renewal_status = kwargs['renewalStatus']
-        if renewal_status is None:
-            raise TypeError("Missing 'renewal_status' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("create_time", create_time)
-        _setter("end_time", end_time)
-        _setter("id", id)
-        _setter("instance_id", instance_id)
-        _setter("payment_type", payment_type)
-        _setter("renewal_duration_unit", renewal_duration_unit)
-        _setter("renewal_status", renewal_status)
-        _setter("status", status)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "renewal_duration_unit", renewal_duration_unit)
+        pulumi.set(__self__, "renewal_status", renewal_status)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="createTime")
@@ -2140,67 +1500,14 @@ class GetVpcFirewallCensCenResult(dict):
         :param str vpc_firewall_id: VPC firewall ID
         :param str vpc_firewall_name: The name of the VPC firewall instance.
         """
-        GetVpcFirewallCensCenResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cen_id=cen_id,
-            connect_type=connect_type,
-            id=id,
-            local_vpcs=local_vpcs,
-            network_instance_id=network_instance_id,
-            status=status,
-            vpc_firewall_id=vpc_firewall_id,
-            vpc_firewall_name=vpc_firewall_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cen_id: Optional[str] = None,
-             connect_type: Optional[str] = None,
-             id: Optional[str] = None,
-             local_vpcs: Optional[Sequence['outputs.GetVpcFirewallCensCenLocalVpcResult']] = None,
-             network_instance_id: Optional[str] = None,
-             status: Optional[str] = None,
-             vpc_firewall_id: Optional[str] = None,
-             vpc_firewall_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cen_id is None and 'cenId' in kwargs:
-            cen_id = kwargs['cenId']
-        if cen_id is None:
-            raise TypeError("Missing 'cen_id' argument")
-        if connect_type is None and 'connectType' in kwargs:
-            connect_type = kwargs['connectType']
-        if connect_type is None:
-            raise TypeError("Missing 'connect_type' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if local_vpcs is None and 'localVpcs' in kwargs:
-            local_vpcs = kwargs['localVpcs']
-        if local_vpcs is None:
-            raise TypeError("Missing 'local_vpcs' argument")
-        if network_instance_id is None and 'networkInstanceId' in kwargs:
-            network_instance_id = kwargs['networkInstanceId']
-        if network_instance_id is None:
-            raise TypeError("Missing 'network_instance_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if vpc_firewall_id is None and 'vpcFirewallId' in kwargs:
-            vpc_firewall_id = kwargs['vpcFirewallId']
-        if vpc_firewall_id is None:
-            raise TypeError("Missing 'vpc_firewall_id' argument")
-        if vpc_firewall_name is None and 'vpcFirewallName' in kwargs:
-            vpc_firewall_name = kwargs['vpcFirewallName']
-        if vpc_firewall_name is None:
-            raise TypeError("Missing 'vpc_firewall_name' argument")
-
-        _setter("cen_id", cen_id)
-        _setter("connect_type", connect_type)
-        _setter("id", id)
-        _setter("local_vpcs", local_vpcs)
-        _setter("network_instance_id", network_instance_id)
-        _setter("status", status)
-        _setter("vpc_firewall_id", vpc_firewall_id)
-        _setter("vpc_firewall_name", vpc_firewall_name)
+        pulumi.set(__self__, "cen_id", cen_id)
+        pulumi.set(__self__, "connect_type", connect_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "local_vpcs", local_vpcs)
+        pulumi.set(__self__, "network_instance_id", network_instance_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vpc_firewall_id", vpc_firewall_id)
+        pulumi.set(__self__, "vpc_firewall_name", vpc_firewall_name)
 
     @property
     @pulumi.getter(name="cenId")
@@ -2301,134 +1608,23 @@ class GetVpcFirewallCensCenLocalVpcResult(dict):
         :param str vpc_id: The ID of the VPC instance.
         :param str vpc_name: The instance name of the VPC.
         """
-        GetVpcFirewallCensCenLocalVpcResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            attachment_id=attachment_id,
-            attachment_name=attachment_name,
-            defend_cidr_lists=defend_cidr_lists,
-            eni_lists=eni_lists,
-            manual_vswitch_id=manual_vswitch_id,
-            network_instance_id=network_instance_id,
-            network_instance_name=network_instance_name,
-            network_instance_type=network_instance_type,
-            owner_id=owner_id,
-            region_no=region_no,
-            route_mode=route_mode,
-            support_manual_mode=support_manual_mode,
-            transit_router_id=transit_router_id,
-            transit_router_type=transit_router_type,
-            vpc_cidr_table_lists=vpc_cidr_table_lists,
-            vpc_id=vpc_id,
-            vpc_name=vpc_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             attachment_id: Optional[str] = None,
-             attachment_name: Optional[str] = None,
-             defend_cidr_lists: Optional[Sequence[str]] = None,
-             eni_lists: Optional[Sequence['outputs.GetVpcFirewallCensCenLocalVpcEniListResult']] = None,
-             manual_vswitch_id: Optional[str] = None,
-             network_instance_id: Optional[str] = None,
-             network_instance_name: Optional[str] = None,
-             network_instance_type: Optional[str] = None,
-             owner_id: Optional[str] = None,
-             region_no: Optional[str] = None,
-             route_mode: Optional[str] = None,
-             support_manual_mode: Optional[str] = None,
-             transit_router_id: Optional[str] = None,
-             transit_router_type: Optional[str] = None,
-             vpc_cidr_table_lists: Optional[Sequence['outputs.GetVpcFirewallCensCenLocalVpcVpcCidrTableListResult']] = None,
-             vpc_id: Optional[str] = None,
-             vpc_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if attachment_id is None and 'attachmentId' in kwargs:
-            attachment_id = kwargs['attachmentId']
-        if attachment_id is None:
-            raise TypeError("Missing 'attachment_id' argument")
-        if attachment_name is None and 'attachmentName' in kwargs:
-            attachment_name = kwargs['attachmentName']
-        if attachment_name is None:
-            raise TypeError("Missing 'attachment_name' argument")
-        if defend_cidr_lists is None and 'defendCidrLists' in kwargs:
-            defend_cidr_lists = kwargs['defendCidrLists']
-        if defend_cidr_lists is None:
-            raise TypeError("Missing 'defend_cidr_lists' argument")
-        if eni_lists is None and 'eniLists' in kwargs:
-            eni_lists = kwargs['eniLists']
-        if eni_lists is None:
-            raise TypeError("Missing 'eni_lists' argument")
-        if manual_vswitch_id is None and 'manualVswitchId' in kwargs:
-            manual_vswitch_id = kwargs['manualVswitchId']
-        if manual_vswitch_id is None:
-            raise TypeError("Missing 'manual_vswitch_id' argument")
-        if network_instance_id is None and 'networkInstanceId' in kwargs:
-            network_instance_id = kwargs['networkInstanceId']
-        if network_instance_id is None:
-            raise TypeError("Missing 'network_instance_id' argument")
-        if network_instance_name is None and 'networkInstanceName' in kwargs:
-            network_instance_name = kwargs['networkInstanceName']
-        if network_instance_name is None:
-            raise TypeError("Missing 'network_instance_name' argument")
-        if network_instance_type is None and 'networkInstanceType' in kwargs:
-            network_instance_type = kwargs['networkInstanceType']
-        if network_instance_type is None:
-            raise TypeError("Missing 'network_instance_type' argument")
-        if owner_id is None and 'ownerId' in kwargs:
-            owner_id = kwargs['ownerId']
-        if owner_id is None:
-            raise TypeError("Missing 'owner_id' argument")
-        if region_no is None and 'regionNo' in kwargs:
-            region_no = kwargs['regionNo']
-        if region_no is None:
-            raise TypeError("Missing 'region_no' argument")
-        if route_mode is None and 'routeMode' in kwargs:
-            route_mode = kwargs['routeMode']
-        if route_mode is None:
-            raise TypeError("Missing 'route_mode' argument")
-        if support_manual_mode is None and 'supportManualMode' in kwargs:
-            support_manual_mode = kwargs['supportManualMode']
-        if support_manual_mode is None:
-            raise TypeError("Missing 'support_manual_mode' argument")
-        if transit_router_id is None and 'transitRouterId' in kwargs:
-            transit_router_id = kwargs['transitRouterId']
-        if transit_router_id is None:
-            raise TypeError("Missing 'transit_router_id' argument")
-        if transit_router_type is None and 'transitRouterType' in kwargs:
-            transit_router_type = kwargs['transitRouterType']
-        if transit_router_type is None:
-            raise TypeError("Missing 'transit_router_type' argument")
-        if vpc_cidr_table_lists is None and 'vpcCidrTableLists' in kwargs:
-            vpc_cidr_table_lists = kwargs['vpcCidrTableLists']
-        if vpc_cidr_table_lists is None:
-            raise TypeError("Missing 'vpc_cidr_table_lists' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-        if vpc_name is None and 'vpcName' in kwargs:
-            vpc_name = kwargs['vpcName']
-        if vpc_name is None:
-            raise TypeError("Missing 'vpc_name' argument")
-
-        _setter("attachment_id", attachment_id)
-        _setter("attachment_name", attachment_name)
-        _setter("defend_cidr_lists", defend_cidr_lists)
-        _setter("eni_lists", eni_lists)
-        _setter("manual_vswitch_id", manual_vswitch_id)
-        _setter("network_instance_id", network_instance_id)
-        _setter("network_instance_name", network_instance_name)
-        _setter("network_instance_type", network_instance_type)
-        _setter("owner_id", owner_id)
-        _setter("region_no", region_no)
-        _setter("route_mode", route_mode)
-        _setter("support_manual_mode", support_manual_mode)
-        _setter("transit_router_id", transit_router_id)
-        _setter("transit_router_type", transit_router_type)
-        _setter("vpc_cidr_table_lists", vpc_cidr_table_lists)
-        _setter("vpc_id", vpc_id)
-        _setter("vpc_name", vpc_name)
+        pulumi.set(__self__, "attachment_id", attachment_id)
+        pulumi.set(__self__, "attachment_name", attachment_name)
+        pulumi.set(__self__, "defend_cidr_lists", defend_cidr_lists)
+        pulumi.set(__self__, "eni_lists", eni_lists)
+        pulumi.set(__self__, "manual_vswitch_id", manual_vswitch_id)
+        pulumi.set(__self__, "network_instance_id", network_instance_id)
+        pulumi.set(__self__, "network_instance_name", network_instance_name)
+        pulumi.set(__self__, "network_instance_type", network_instance_type)
+        pulumi.set(__self__, "owner_id", owner_id)
+        pulumi.set(__self__, "region_no", region_no)
+        pulumi.set(__self__, "route_mode", route_mode)
+        pulumi.set(__self__, "support_manual_mode", support_manual_mode)
+        pulumi.set(__self__, "transit_router_id", transit_router_id)
+        pulumi.set(__self__, "transit_router_type", transit_router_type)
+        pulumi.set(__self__, "vpc_cidr_table_lists", vpc_cidr_table_lists)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vpc_name", vpc_name)
 
     @property
     @pulumi.getter(name="attachmentId")
@@ -2557,29 +1753,8 @@ class GetVpcFirewallCensCenLocalVpcEniListResult(dict):
     def __init__(__self__, *,
                  eni_id: str,
                  eni_private_ip_address: str):
-        GetVpcFirewallCensCenLocalVpcEniListResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            eni_id=eni_id,
-            eni_private_ip_address=eni_private_ip_address,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             eni_id: Optional[str] = None,
-             eni_private_ip_address: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if eni_id is None and 'eniId' in kwargs:
-            eni_id = kwargs['eniId']
-        if eni_id is None:
-            raise TypeError("Missing 'eni_id' argument")
-        if eni_private_ip_address is None and 'eniPrivateIpAddress' in kwargs:
-            eni_private_ip_address = kwargs['eniPrivateIpAddress']
-        if eni_private_ip_address is None:
-            raise TypeError("Missing 'eni_private_ip_address' argument")
-
-        _setter("eni_id", eni_id)
-        _setter("eni_private_ip_address", eni_private_ip_address)
+        pulumi.set(__self__, "eni_id", eni_id)
+        pulumi.set(__self__, "eni_private_ip_address", eni_private_ip_address)
 
     @property
     @pulumi.getter(name="eniId")
@@ -2601,29 +1776,8 @@ class GetVpcFirewallCensCenLocalVpcVpcCidrTableListResult(dict):
         :param Sequence['GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArgs'] route_entry_lists: The list of route entries in the VPC.
         :param str route_table_id: The ID of the route table of the VPC.
         """
-        GetVpcFirewallCensCenLocalVpcVpcCidrTableListResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            route_entry_lists=route_entry_lists,
-            route_table_id=route_table_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             route_entry_lists: Optional[Sequence['outputs.GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListResult']] = None,
-             route_table_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if route_entry_lists is None and 'routeEntryLists' in kwargs:
-            route_entry_lists = kwargs['routeEntryLists']
-        if route_entry_lists is None:
-            raise TypeError("Missing 'route_entry_lists' argument")
-        if route_table_id is None and 'routeTableId' in kwargs:
-            route_table_id = kwargs['routeTableId']
-        if route_table_id is None:
-            raise TypeError("Missing 'route_table_id' argument")
-
-        _setter("route_entry_lists", route_entry_lists)
-        _setter("route_table_id", route_table_id)
+        pulumi.set(__self__, "route_entry_lists", route_entry_lists)
+        pulumi.set(__self__, "route_table_id", route_table_id)
 
     @property
     @pulumi.getter(name="routeEntryLists")
@@ -2651,29 +1805,8 @@ class GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListResult(dict):
         :param str destination_cidr: The target network segment of the VPC.
         :param str next_hop_instance_id: The ID of the next hop instance in the VPC.
         """
-        GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            destination_cidr=destination_cidr,
-            next_hop_instance_id=next_hop_instance_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             destination_cidr: Optional[str] = None,
-             next_hop_instance_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if destination_cidr is None and 'destinationCidr' in kwargs:
-            destination_cidr = kwargs['destinationCidr']
-        if destination_cidr is None:
-            raise TypeError("Missing 'destination_cidr' argument")
-        if next_hop_instance_id is None and 'nextHopInstanceId' in kwargs:
-            next_hop_instance_id = kwargs['nextHopInstanceId']
-        if next_hop_instance_id is None:
-            raise TypeError("Missing 'next_hop_instance_id' argument")
-
-        _setter("destination_cidr", destination_cidr)
-        _setter("next_hop_instance_id", next_hop_instance_id)
+        pulumi.set(__self__, "destination_cidr", destination_cidr)
+        pulumi.set(__self__, "next_hop_instance_id", next_hop_instance_id)
 
     @property
     @pulumi.getter(name="destinationCidr")
@@ -2745,169 +1878,30 @@ class GetVpcFirewallControlPoliciesPolicyResult(dict):
         :param str source_type: Access control over VPC firewalls policy source address type.
         :param str vpc_firewall_id: The ID of the VPC firewall instance.
         """
-        GetVpcFirewallControlPoliciesPolicyResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            acl_action=acl_action,
-            acl_uuid=acl_uuid,
-            application_id=application_id,
-            application_name=application_name,
-            description=description,
-            dest_port=dest_port,
-            dest_port_group=dest_port_group,
-            dest_port_group_ports=dest_port_group_ports,
-            dest_port_type=dest_port_type,
-            destination=destination,
-            destination_group_cidrs=destination_group_cidrs,
-            destination_group_type=destination_group_type,
-            destination_type=destination_type,
-            hit_times=hit_times,
-            id=id,
-            member_uid=member_uid,
-            order=order,
-            proto=proto,
-            release=release,
-            source=source,
-            source_group_cidrs=source_group_cidrs,
-            source_group_type=source_group_type,
-            source_type=source_type,
-            vpc_firewall_id=vpc_firewall_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             acl_action: Optional[str] = None,
-             acl_uuid: Optional[str] = None,
-             application_id: Optional[str] = None,
-             application_name: Optional[str] = None,
-             description: Optional[str] = None,
-             dest_port: Optional[str] = None,
-             dest_port_group: Optional[str] = None,
-             dest_port_group_ports: Optional[Sequence[str]] = None,
-             dest_port_type: Optional[str] = None,
-             destination: Optional[str] = None,
-             destination_group_cidrs: Optional[Sequence[str]] = None,
-             destination_group_type: Optional[str] = None,
-             destination_type: Optional[str] = None,
-             hit_times: Optional[int] = None,
-             id: Optional[str] = None,
-             member_uid: Optional[str] = None,
-             order: Optional[int] = None,
-             proto: Optional[str] = None,
-             release: Optional[bool] = None,
-             source: Optional[str] = None,
-             source_group_cidrs: Optional[Sequence[str]] = None,
-             source_group_type: Optional[str] = None,
-             source_type: Optional[str] = None,
-             vpc_firewall_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if acl_action is None and 'aclAction' in kwargs:
-            acl_action = kwargs['aclAction']
-        if acl_action is None:
-            raise TypeError("Missing 'acl_action' argument")
-        if acl_uuid is None and 'aclUuid' in kwargs:
-            acl_uuid = kwargs['aclUuid']
-        if acl_uuid is None:
-            raise TypeError("Missing 'acl_uuid' argument")
-        if application_id is None and 'applicationId' in kwargs:
-            application_id = kwargs['applicationId']
-        if application_id is None:
-            raise TypeError("Missing 'application_id' argument")
-        if application_name is None and 'applicationName' in kwargs:
-            application_name = kwargs['applicationName']
-        if application_name is None:
-            raise TypeError("Missing 'application_name' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if dest_port is None and 'destPort' in kwargs:
-            dest_port = kwargs['destPort']
-        if dest_port is None:
-            raise TypeError("Missing 'dest_port' argument")
-        if dest_port_group is None and 'destPortGroup' in kwargs:
-            dest_port_group = kwargs['destPortGroup']
-        if dest_port_group is None:
-            raise TypeError("Missing 'dest_port_group' argument")
-        if dest_port_group_ports is None and 'destPortGroupPorts' in kwargs:
-            dest_port_group_ports = kwargs['destPortGroupPorts']
-        if dest_port_group_ports is None:
-            raise TypeError("Missing 'dest_port_group_ports' argument")
-        if dest_port_type is None and 'destPortType' in kwargs:
-            dest_port_type = kwargs['destPortType']
-        if dest_port_type is None:
-            raise TypeError("Missing 'dest_port_type' argument")
-        if destination is None:
-            raise TypeError("Missing 'destination' argument")
-        if destination_group_cidrs is None and 'destinationGroupCidrs' in kwargs:
-            destination_group_cidrs = kwargs['destinationGroupCidrs']
-        if destination_group_cidrs is None:
-            raise TypeError("Missing 'destination_group_cidrs' argument")
-        if destination_group_type is None and 'destinationGroupType' in kwargs:
-            destination_group_type = kwargs['destinationGroupType']
-        if destination_group_type is None:
-            raise TypeError("Missing 'destination_group_type' argument")
-        if destination_type is None and 'destinationType' in kwargs:
-            destination_type = kwargs['destinationType']
-        if destination_type is None:
-            raise TypeError("Missing 'destination_type' argument")
-        if hit_times is None and 'hitTimes' in kwargs:
-            hit_times = kwargs['hitTimes']
-        if hit_times is None:
-            raise TypeError("Missing 'hit_times' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if member_uid is None and 'memberUid' in kwargs:
-            member_uid = kwargs['memberUid']
-        if member_uid is None:
-            raise TypeError("Missing 'member_uid' argument")
-        if order is None:
-            raise TypeError("Missing 'order' argument")
-        if proto is None:
-            raise TypeError("Missing 'proto' argument")
-        if release is None:
-            raise TypeError("Missing 'release' argument")
-        if source is None:
-            raise TypeError("Missing 'source' argument")
-        if source_group_cidrs is None and 'sourceGroupCidrs' in kwargs:
-            source_group_cidrs = kwargs['sourceGroupCidrs']
-        if source_group_cidrs is None:
-            raise TypeError("Missing 'source_group_cidrs' argument")
-        if source_group_type is None and 'sourceGroupType' in kwargs:
-            source_group_type = kwargs['sourceGroupType']
-        if source_group_type is None:
-            raise TypeError("Missing 'source_group_type' argument")
-        if source_type is None and 'sourceType' in kwargs:
-            source_type = kwargs['sourceType']
-        if source_type is None:
-            raise TypeError("Missing 'source_type' argument")
-        if vpc_firewall_id is None and 'vpcFirewallId' in kwargs:
-            vpc_firewall_id = kwargs['vpcFirewallId']
-        if vpc_firewall_id is None:
-            raise TypeError("Missing 'vpc_firewall_id' argument")
-
-        _setter("acl_action", acl_action)
-        _setter("acl_uuid", acl_uuid)
-        _setter("application_id", application_id)
-        _setter("application_name", application_name)
-        _setter("description", description)
-        _setter("dest_port", dest_port)
-        _setter("dest_port_group", dest_port_group)
-        _setter("dest_port_group_ports", dest_port_group_ports)
-        _setter("dest_port_type", dest_port_type)
-        _setter("destination", destination)
-        _setter("destination_group_cidrs", destination_group_cidrs)
-        _setter("destination_group_type", destination_group_type)
-        _setter("destination_type", destination_type)
-        _setter("hit_times", hit_times)
-        _setter("id", id)
-        _setter("member_uid", member_uid)
-        _setter("order", order)
-        _setter("proto", proto)
-        _setter("release", release)
-        _setter("source", source)
-        _setter("source_group_cidrs", source_group_cidrs)
-        _setter("source_group_type", source_group_type)
-        _setter("source_type", source_type)
-        _setter("vpc_firewall_id", vpc_firewall_id)
+        pulumi.set(__self__, "acl_action", acl_action)
+        pulumi.set(__self__, "acl_uuid", acl_uuid)
+        pulumi.set(__self__, "application_id", application_id)
+        pulumi.set(__self__, "application_name", application_name)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "dest_port", dest_port)
+        pulumi.set(__self__, "dest_port_group", dest_port_group)
+        pulumi.set(__self__, "dest_port_group_ports", dest_port_group_ports)
+        pulumi.set(__self__, "dest_port_type", dest_port_type)
+        pulumi.set(__self__, "destination", destination)
+        pulumi.set(__self__, "destination_group_cidrs", destination_group_cidrs)
+        pulumi.set(__self__, "destination_group_type", destination_group_type)
+        pulumi.set(__self__, "destination_type", destination_type)
+        pulumi.set(__self__, "hit_times", hit_times)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "member_uid", member_uid)
+        pulumi.set(__self__, "order", order)
+        pulumi.set(__self__, "proto", proto)
+        pulumi.set(__self__, "release", release)
+        pulumi.set(__self__, "source", source)
+        pulumi.set(__self__, "source_group_cidrs", source_group_cidrs)
+        pulumi.set(__self__, "source_group_type", source_group_type)
+        pulumi.set(__self__, "source_type", source_type)
+        pulumi.set(__self__, "vpc_firewall_id", vpc_firewall_id)
 
     @property
     @pulumi.getter(name="aclAction")
@@ -3125,72 +2119,15 @@ class GetVpcFirewallsFirewallResult(dict):
         :param str vpc_firewall_id: The ID of the VPC firewall instance.
         :param str vpc_firewall_name: The name of the VPC firewall instance.
         """
-        GetVpcFirewallsFirewallResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bandwidth=bandwidth,
-            connect_type=connect_type,
-            id=id,
-            local_vpcs=local_vpcs,
-            peer_vpcs=peer_vpcs,
-            region_status=region_status,
-            status=status,
-            vpc_firewall_id=vpc_firewall_id,
-            vpc_firewall_name=vpc_firewall_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bandwidth: Optional[int] = None,
-             connect_type: Optional[str] = None,
-             id: Optional[str] = None,
-             local_vpcs: Optional[Sequence['outputs.GetVpcFirewallsFirewallLocalVpcResult']] = None,
-             peer_vpcs: Optional[Sequence['outputs.GetVpcFirewallsFirewallPeerVpcResult']] = None,
-             region_status: Optional[str] = None,
-             status: Optional[str] = None,
-             vpc_firewall_id: Optional[str] = None,
-             vpc_firewall_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bandwidth is None:
-            raise TypeError("Missing 'bandwidth' argument")
-        if connect_type is None and 'connectType' in kwargs:
-            connect_type = kwargs['connectType']
-        if connect_type is None:
-            raise TypeError("Missing 'connect_type' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if local_vpcs is None and 'localVpcs' in kwargs:
-            local_vpcs = kwargs['localVpcs']
-        if local_vpcs is None:
-            raise TypeError("Missing 'local_vpcs' argument")
-        if peer_vpcs is None and 'peerVpcs' in kwargs:
-            peer_vpcs = kwargs['peerVpcs']
-        if peer_vpcs is None:
-            raise TypeError("Missing 'peer_vpcs' argument")
-        if region_status is None and 'regionStatus' in kwargs:
-            region_status = kwargs['regionStatus']
-        if region_status is None:
-            raise TypeError("Missing 'region_status' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if vpc_firewall_id is None and 'vpcFirewallId' in kwargs:
-            vpc_firewall_id = kwargs['vpcFirewallId']
-        if vpc_firewall_id is None:
-            raise TypeError("Missing 'vpc_firewall_id' argument")
-        if vpc_firewall_name is None and 'vpcFirewallName' in kwargs:
-            vpc_firewall_name = kwargs['vpcFirewallName']
-        if vpc_firewall_name is None:
-            raise TypeError("Missing 'vpc_firewall_name' argument")
-
-        _setter("bandwidth", bandwidth)
-        _setter("connect_type", connect_type)
-        _setter("id", id)
-        _setter("local_vpcs", local_vpcs)
-        _setter("peer_vpcs", peer_vpcs)
-        _setter("region_status", region_status)
-        _setter("status", status)
-        _setter("vpc_firewall_id", vpc_firewall_id)
-        _setter("vpc_firewall_name", vpc_firewall_name)
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "connect_type", connect_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "local_vpcs", local_vpcs)
+        pulumi.set(__self__, "peer_vpcs", peer_vpcs)
+        pulumi.set(__self__, "region_status", region_status)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vpc_firewall_id", vpc_firewall_id)
+        pulumi.set(__self__, "vpc_firewall_name", vpc_firewall_name)
 
     @property
     @pulumi.getter
@@ -3281,64 +2218,13 @@ class GetVpcFirewallsFirewallLocalVpcResult(dict):
         :param str vpc_id: The ID of the peer VPC instance.
         :param str vpc_name: The instance name of the peer VPC.
         """
-        GetVpcFirewallsFirewallLocalVpcResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            eni_id=eni_id,
-            eni_private_ip_address=eni_private_ip_address,
-            local_vpc_cidr_table_lists=local_vpc_cidr_table_lists,
-            region_no=region_no,
-            router_interface_id=router_interface_id,
-            vpc_id=vpc_id,
-            vpc_name=vpc_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             eni_id: Optional[str] = None,
-             eni_private_ip_address: Optional[str] = None,
-             local_vpc_cidr_table_lists: Optional[Sequence['outputs.GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListResult']] = None,
-             region_no: Optional[str] = None,
-             router_interface_id: Optional[str] = None,
-             vpc_id: Optional[str] = None,
-             vpc_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if eni_id is None and 'eniId' in kwargs:
-            eni_id = kwargs['eniId']
-        if eni_id is None:
-            raise TypeError("Missing 'eni_id' argument")
-        if eni_private_ip_address is None and 'eniPrivateIpAddress' in kwargs:
-            eni_private_ip_address = kwargs['eniPrivateIpAddress']
-        if eni_private_ip_address is None:
-            raise TypeError("Missing 'eni_private_ip_address' argument")
-        if local_vpc_cidr_table_lists is None and 'localVpcCidrTableLists' in kwargs:
-            local_vpc_cidr_table_lists = kwargs['localVpcCidrTableLists']
-        if local_vpc_cidr_table_lists is None:
-            raise TypeError("Missing 'local_vpc_cidr_table_lists' argument")
-        if region_no is None and 'regionNo' in kwargs:
-            region_no = kwargs['regionNo']
-        if region_no is None:
-            raise TypeError("Missing 'region_no' argument")
-        if router_interface_id is None and 'routerInterfaceId' in kwargs:
-            router_interface_id = kwargs['routerInterfaceId']
-        if router_interface_id is None:
-            raise TypeError("Missing 'router_interface_id' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-        if vpc_name is None and 'vpcName' in kwargs:
-            vpc_name = kwargs['vpcName']
-        if vpc_name is None:
-            raise TypeError("Missing 'vpc_name' argument")
-
-        _setter("eni_id", eni_id)
-        _setter("eni_private_ip_address", eni_private_ip_address)
-        _setter("local_vpc_cidr_table_lists", local_vpc_cidr_table_lists)
-        _setter("region_no", region_no)
-        _setter("router_interface_id", router_interface_id)
-        _setter("vpc_id", vpc_id)
-        _setter("vpc_name", vpc_name)
+        pulumi.set(__self__, "eni_id", eni_id)
+        pulumi.set(__self__, "eni_private_ip_address", eni_private_ip_address)
+        pulumi.set(__self__, "local_vpc_cidr_table_lists", local_vpc_cidr_table_lists)
+        pulumi.set(__self__, "region_no", region_no)
+        pulumi.set(__self__, "router_interface_id", router_interface_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vpc_name", vpc_name)
 
     @property
     @pulumi.getter(name="eniId")
@@ -3397,29 +2283,8 @@ class GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListResult(dict):
         :param Sequence['GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs'] local_route_entry_lists: The list of route entries of the local VPC.
         :param str local_route_table_id: The ID of the route table of the local VPC.
         """
-        GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            local_route_entry_lists=local_route_entry_lists,
-            local_route_table_id=local_route_table_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             local_route_entry_lists: Optional[Sequence['outputs.GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListResult']] = None,
-             local_route_table_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if local_route_entry_lists is None and 'localRouteEntryLists' in kwargs:
-            local_route_entry_lists = kwargs['localRouteEntryLists']
-        if local_route_entry_lists is None:
-            raise TypeError("Missing 'local_route_entry_lists' argument")
-        if local_route_table_id is None and 'localRouteTableId' in kwargs:
-            local_route_table_id = kwargs['localRouteTableId']
-        if local_route_table_id is None:
-            raise TypeError("Missing 'local_route_table_id' argument")
-
-        _setter("local_route_entry_lists", local_route_entry_lists)
-        _setter("local_route_table_id", local_route_table_id)
+        pulumi.set(__self__, "local_route_entry_lists", local_route_entry_lists)
+        pulumi.set(__self__, "local_route_table_id", local_route_table_id)
 
     @property
     @pulumi.getter(name="localRouteEntryLists")
@@ -3447,29 +2312,8 @@ class GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListRes
         :param str local_destination_cidr: The target network segment of the local VPC.
         :param str local_next_hop_instance_id: The ID of the next-hop instance in the local VPC.
         """
-        GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            local_destination_cidr=local_destination_cidr,
-            local_next_hop_instance_id=local_next_hop_instance_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             local_destination_cidr: Optional[str] = None,
-             local_next_hop_instance_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if local_destination_cidr is None and 'localDestinationCidr' in kwargs:
-            local_destination_cidr = kwargs['localDestinationCidr']
-        if local_destination_cidr is None:
-            raise TypeError("Missing 'local_destination_cidr' argument")
-        if local_next_hop_instance_id is None and 'localNextHopInstanceId' in kwargs:
-            local_next_hop_instance_id = kwargs['localNextHopInstanceId']
-        if local_next_hop_instance_id is None:
-            raise TypeError("Missing 'local_next_hop_instance_id' argument")
-
-        _setter("local_destination_cidr", local_destination_cidr)
-        _setter("local_next_hop_instance_id", local_next_hop_instance_id)
+        pulumi.set(__self__, "local_destination_cidr", local_destination_cidr)
+        pulumi.set(__self__, "local_next_hop_instance_id", local_next_hop_instance_id)
 
     @property
     @pulumi.getter(name="localDestinationCidr")
@@ -3504,64 +2348,13 @@ class GetVpcFirewallsFirewallPeerVpcResult(dict):
         :param str vpc_id: The ID of the peer VPC instance.
         :param str vpc_name: The instance name of the peer VPC.
         """
-        GetVpcFirewallsFirewallPeerVpcResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            eni_id=eni_id,
-            eni_private_ip_address=eni_private_ip_address,
-            peer_vpc_cidr_table_lists=peer_vpc_cidr_table_lists,
-            region_no=region_no,
-            router_interface_id=router_interface_id,
-            vpc_id=vpc_id,
-            vpc_name=vpc_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             eni_id: Optional[str] = None,
-             eni_private_ip_address: Optional[str] = None,
-             peer_vpc_cidr_table_lists: Optional[Sequence['outputs.GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListResult']] = None,
-             region_no: Optional[str] = None,
-             router_interface_id: Optional[str] = None,
-             vpc_id: Optional[str] = None,
-             vpc_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if eni_id is None and 'eniId' in kwargs:
-            eni_id = kwargs['eniId']
-        if eni_id is None:
-            raise TypeError("Missing 'eni_id' argument")
-        if eni_private_ip_address is None and 'eniPrivateIpAddress' in kwargs:
-            eni_private_ip_address = kwargs['eniPrivateIpAddress']
-        if eni_private_ip_address is None:
-            raise TypeError("Missing 'eni_private_ip_address' argument")
-        if peer_vpc_cidr_table_lists is None and 'peerVpcCidrTableLists' in kwargs:
-            peer_vpc_cidr_table_lists = kwargs['peerVpcCidrTableLists']
-        if peer_vpc_cidr_table_lists is None:
-            raise TypeError("Missing 'peer_vpc_cidr_table_lists' argument")
-        if region_no is None and 'regionNo' in kwargs:
-            region_no = kwargs['regionNo']
-        if region_no is None:
-            raise TypeError("Missing 'region_no' argument")
-        if router_interface_id is None and 'routerInterfaceId' in kwargs:
-            router_interface_id = kwargs['routerInterfaceId']
-        if router_interface_id is None:
-            raise TypeError("Missing 'router_interface_id' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-        if vpc_name is None and 'vpcName' in kwargs:
-            vpc_name = kwargs['vpcName']
-        if vpc_name is None:
-            raise TypeError("Missing 'vpc_name' argument")
-
-        _setter("eni_id", eni_id)
-        _setter("eni_private_ip_address", eni_private_ip_address)
-        _setter("peer_vpc_cidr_table_lists", peer_vpc_cidr_table_lists)
-        _setter("region_no", region_no)
-        _setter("router_interface_id", router_interface_id)
-        _setter("vpc_id", vpc_id)
-        _setter("vpc_name", vpc_name)
+        pulumi.set(__self__, "eni_id", eni_id)
+        pulumi.set(__self__, "eni_private_ip_address", eni_private_ip_address)
+        pulumi.set(__self__, "peer_vpc_cidr_table_lists", peer_vpc_cidr_table_lists)
+        pulumi.set(__self__, "region_no", region_no)
+        pulumi.set(__self__, "router_interface_id", router_interface_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vpc_name", vpc_name)
 
     @property
     @pulumi.getter(name="eniId")
@@ -3620,29 +2413,8 @@ class GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListResult(dict):
         :param Sequence['GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs'] peer_route_entry_lists: Peer VPC route entry list information.
         :param str peer_route_table_id: The ID of the route table of the peer VPC.
         """
-        GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            peer_route_entry_lists=peer_route_entry_lists,
-            peer_route_table_id=peer_route_table_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             peer_route_entry_lists: Optional[Sequence['outputs.GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListResult']] = None,
-             peer_route_table_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if peer_route_entry_lists is None and 'peerRouteEntryLists' in kwargs:
-            peer_route_entry_lists = kwargs['peerRouteEntryLists']
-        if peer_route_entry_lists is None:
-            raise TypeError("Missing 'peer_route_entry_lists' argument")
-        if peer_route_table_id is None and 'peerRouteTableId' in kwargs:
-            peer_route_table_id = kwargs['peerRouteTableId']
-        if peer_route_table_id is None:
-            raise TypeError("Missing 'peer_route_table_id' argument")
-
-        _setter("peer_route_entry_lists", peer_route_entry_lists)
-        _setter("peer_route_table_id", peer_route_table_id)
+        pulumi.set(__self__, "peer_route_entry_lists", peer_route_entry_lists)
+        pulumi.set(__self__, "peer_route_table_id", peer_route_table_id)
 
     @property
     @pulumi.getter(name="peerRouteEntryLists")
@@ -3670,29 +2442,8 @@ class GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListResult
         :param str peer_destination_cidr: The target network segment of the peer VPC.
         :param str peer_next_hop_instance_id: The ID of the next-hop instance in the peer VPC.
         """
-        GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            peer_destination_cidr=peer_destination_cidr,
-            peer_next_hop_instance_id=peer_next_hop_instance_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             peer_destination_cidr: Optional[str] = None,
-             peer_next_hop_instance_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if peer_destination_cidr is None and 'peerDestinationCidr' in kwargs:
-            peer_destination_cidr = kwargs['peerDestinationCidr']
-        if peer_destination_cidr is None:
-            raise TypeError("Missing 'peer_destination_cidr' argument")
-        if peer_next_hop_instance_id is None and 'peerNextHopInstanceId' in kwargs:
-            peer_next_hop_instance_id = kwargs['peerNextHopInstanceId']
-        if peer_next_hop_instance_id is None:
-            raise TypeError("Missing 'peer_next_hop_instance_id' argument")
-
-        _setter("peer_destination_cidr", peer_destination_cidr)
-        _setter("peer_next_hop_instance_id", peer_next_hop_instance_id)
+        pulumi.set(__self__, "peer_destination_cidr", peer_destination_cidr)
+        pulumi.set(__self__, "peer_next_hop_instance_id", peer_next_hop_instance_id)
 
     @property
     @pulumi.getter(name="peerDestinationCidr")

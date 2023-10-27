@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ScheduleArgs', 'Schedule']
@@ -30,91 +30,32 @@ class ScheduleArgs:
         """
         The set of arguments for constructing a Schedule resource.
         """
-        ScheduleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            desired_capacity=desired_capacity,
-            launch_expiration_time=launch_expiration_time,
-            launch_time=launch_time,
-            max_value=max_value,
-            min_value=min_value,
-            recurrence_end_time=recurrence_end_time,
-            recurrence_type=recurrence_type,
-            recurrence_value=recurrence_value,
-            scaling_group_id=scaling_group_id,
-            scheduled_action=scheduled_action,
-            scheduled_task_name=scheduled_task_name,
-            task_enabled=task_enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             desired_capacity: Optional[pulumi.Input[int]] = None,
-             launch_expiration_time: Optional[pulumi.Input[int]] = None,
-             launch_time: Optional[pulumi.Input[str]] = None,
-             max_value: Optional[pulumi.Input[int]] = None,
-             min_value: Optional[pulumi.Input[int]] = None,
-             recurrence_end_time: Optional[pulumi.Input[str]] = None,
-             recurrence_type: Optional[pulumi.Input[str]] = None,
-             recurrence_value: Optional[pulumi.Input[str]] = None,
-             scaling_group_id: Optional[pulumi.Input[str]] = None,
-             scheduled_action: Optional[pulumi.Input[str]] = None,
-             scheduled_task_name: Optional[pulumi.Input[str]] = None,
-             task_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if desired_capacity is None and 'desiredCapacity' in kwargs:
-            desired_capacity = kwargs['desiredCapacity']
-        if launch_expiration_time is None and 'launchExpirationTime' in kwargs:
-            launch_expiration_time = kwargs['launchExpirationTime']
-        if launch_time is None and 'launchTime' in kwargs:
-            launch_time = kwargs['launchTime']
-        if max_value is None and 'maxValue' in kwargs:
-            max_value = kwargs['maxValue']
-        if min_value is None and 'minValue' in kwargs:
-            min_value = kwargs['minValue']
-        if recurrence_end_time is None and 'recurrenceEndTime' in kwargs:
-            recurrence_end_time = kwargs['recurrenceEndTime']
-        if recurrence_type is None and 'recurrenceType' in kwargs:
-            recurrence_type = kwargs['recurrenceType']
-        if recurrence_value is None and 'recurrenceValue' in kwargs:
-            recurrence_value = kwargs['recurrenceValue']
-        if scaling_group_id is None and 'scalingGroupId' in kwargs:
-            scaling_group_id = kwargs['scalingGroupId']
-        if scheduled_action is None and 'scheduledAction' in kwargs:
-            scheduled_action = kwargs['scheduledAction']
-        if scheduled_task_name is None and 'scheduledTaskName' in kwargs:
-            scheduled_task_name = kwargs['scheduledTaskName']
-        if task_enabled is None and 'taskEnabled' in kwargs:
-            task_enabled = kwargs['taskEnabled']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if desired_capacity is not None:
-            _setter("desired_capacity", desired_capacity)
+            pulumi.set(__self__, "desired_capacity", desired_capacity)
         if launch_expiration_time is not None:
-            _setter("launch_expiration_time", launch_expiration_time)
+            pulumi.set(__self__, "launch_expiration_time", launch_expiration_time)
         if launch_time is not None:
-            _setter("launch_time", launch_time)
+            pulumi.set(__self__, "launch_time", launch_time)
         if max_value is not None:
-            _setter("max_value", max_value)
+            pulumi.set(__self__, "max_value", max_value)
         if min_value is not None:
-            _setter("min_value", min_value)
+            pulumi.set(__self__, "min_value", min_value)
         if recurrence_end_time is not None:
-            _setter("recurrence_end_time", recurrence_end_time)
+            pulumi.set(__self__, "recurrence_end_time", recurrence_end_time)
         if recurrence_type is not None:
-            _setter("recurrence_type", recurrence_type)
+            pulumi.set(__self__, "recurrence_type", recurrence_type)
         if recurrence_value is not None:
-            _setter("recurrence_value", recurrence_value)
+            pulumi.set(__self__, "recurrence_value", recurrence_value)
         if scaling_group_id is not None:
-            _setter("scaling_group_id", scaling_group_id)
+            pulumi.set(__self__, "scaling_group_id", scaling_group_id)
         if scheduled_action is not None:
-            _setter("scheduled_action", scheduled_action)
+            pulumi.set(__self__, "scheduled_action", scheduled_action)
         if scheduled_task_name is not None:
-            _setter("scheduled_task_name", scheduled_task_name)
+            pulumi.set(__self__, "scheduled_task_name", scheduled_task_name)
         if task_enabled is not None:
-            _setter("task_enabled", task_enabled)
+            pulumi.set(__self__, "task_enabled", task_enabled)
 
     @property
     @pulumi.getter
@@ -253,91 +194,32 @@ class _ScheduleState:
         """
         Input properties used for looking up and filtering Schedule resources.
         """
-        _ScheduleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            desired_capacity=desired_capacity,
-            launch_expiration_time=launch_expiration_time,
-            launch_time=launch_time,
-            max_value=max_value,
-            min_value=min_value,
-            recurrence_end_time=recurrence_end_time,
-            recurrence_type=recurrence_type,
-            recurrence_value=recurrence_value,
-            scaling_group_id=scaling_group_id,
-            scheduled_action=scheduled_action,
-            scheduled_task_name=scheduled_task_name,
-            task_enabled=task_enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             desired_capacity: Optional[pulumi.Input[int]] = None,
-             launch_expiration_time: Optional[pulumi.Input[int]] = None,
-             launch_time: Optional[pulumi.Input[str]] = None,
-             max_value: Optional[pulumi.Input[int]] = None,
-             min_value: Optional[pulumi.Input[int]] = None,
-             recurrence_end_time: Optional[pulumi.Input[str]] = None,
-             recurrence_type: Optional[pulumi.Input[str]] = None,
-             recurrence_value: Optional[pulumi.Input[str]] = None,
-             scaling_group_id: Optional[pulumi.Input[str]] = None,
-             scheduled_action: Optional[pulumi.Input[str]] = None,
-             scheduled_task_name: Optional[pulumi.Input[str]] = None,
-             task_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if desired_capacity is None and 'desiredCapacity' in kwargs:
-            desired_capacity = kwargs['desiredCapacity']
-        if launch_expiration_time is None and 'launchExpirationTime' in kwargs:
-            launch_expiration_time = kwargs['launchExpirationTime']
-        if launch_time is None and 'launchTime' in kwargs:
-            launch_time = kwargs['launchTime']
-        if max_value is None and 'maxValue' in kwargs:
-            max_value = kwargs['maxValue']
-        if min_value is None and 'minValue' in kwargs:
-            min_value = kwargs['minValue']
-        if recurrence_end_time is None and 'recurrenceEndTime' in kwargs:
-            recurrence_end_time = kwargs['recurrenceEndTime']
-        if recurrence_type is None and 'recurrenceType' in kwargs:
-            recurrence_type = kwargs['recurrenceType']
-        if recurrence_value is None and 'recurrenceValue' in kwargs:
-            recurrence_value = kwargs['recurrenceValue']
-        if scaling_group_id is None and 'scalingGroupId' in kwargs:
-            scaling_group_id = kwargs['scalingGroupId']
-        if scheduled_action is None and 'scheduledAction' in kwargs:
-            scheduled_action = kwargs['scheduledAction']
-        if scheduled_task_name is None and 'scheduledTaskName' in kwargs:
-            scheduled_task_name = kwargs['scheduledTaskName']
-        if task_enabled is None and 'taskEnabled' in kwargs:
-            task_enabled = kwargs['taskEnabled']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if desired_capacity is not None:
-            _setter("desired_capacity", desired_capacity)
+            pulumi.set(__self__, "desired_capacity", desired_capacity)
         if launch_expiration_time is not None:
-            _setter("launch_expiration_time", launch_expiration_time)
+            pulumi.set(__self__, "launch_expiration_time", launch_expiration_time)
         if launch_time is not None:
-            _setter("launch_time", launch_time)
+            pulumi.set(__self__, "launch_time", launch_time)
         if max_value is not None:
-            _setter("max_value", max_value)
+            pulumi.set(__self__, "max_value", max_value)
         if min_value is not None:
-            _setter("min_value", min_value)
+            pulumi.set(__self__, "min_value", min_value)
         if recurrence_end_time is not None:
-            _setter("recurrence_end_time", recurrence_end_time)
+            pulumi.set(__self__, "recurrence_end_time", recurrence_end_time)
         if recurrence_type is not None:
-            _setter("recurrence_type", recurrence_type)
+            pulumi.set(__self__, "recurrence_type", recurrence_type)
         if recurrence_value is not None:
-            _setter("recurrence_value", recurrence_value)
+            pulumi.set(__self__, "recurrence_value", recurrence_value)
         if scaling_group_id is not None:
-            _setter("scaling_group_id", scaling_group_id)
+            pulumi.set(__self__, "scaling_group_id", scaling_group_id)
         if scheduled_action is not None:
-            _setter("scheduled_action", scheduled_action)
+            pulumi.set(__self__, "scheduled_action", scheduled_action)
         if scheduled_task_name is not None:
-            _setter("scheduled_task_name", scheduled_task_name)
+            pulumi.set(__self__, "scheduled_task_name", scheduled_task_name)
         if task_enabled is not None:
-            _setter("task_enabled", task_enabled)
+            pulumi.set(__self__, "task_enabled", task_enabled)
 
     @property
     @pulumi.getter
@@ -499,10 +381,6 @@ class Schedule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ScheduleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

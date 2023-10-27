@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -28,28 +28,9 @@ class AccessStrategyDefaultAddrPoolArgs:
         :param pulumi.Input[str] addr_pool_id: The ID of the address pool in the primary address pool group.
         :param pulumi.Input[int] lba_weight: The weight of the address pool in the primary address pool group.
         """
-        AccessStrategyDefaultAddrPoolArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            addr_pool_id=addr_pool_id,
-            lba_weight=lba_weight,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             addr_pool_id: Optional[pulumi.Input[str]] = None,
-             lba_weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if addr_pool_id is None and 'addrPoolId' in kwargs:
-            addr_pool_id = kwargs['addrPoolId']
-        if addr_pool_id is None:
-            raise TypeError("Missing 'addr_pool_id' argument")
-        if lba_weight is None and 'lbaWeight' in kwargs:
-            lba_weight = kwargs['lbaWeight']
-
-        _setter("addr_pool_id", addr_pool_id)
+        pulumi.set(__self__, "addr_pool_id", addr_pool_id)
         if lba_weight is not None:
-            _setter("lba_weight", lba_weight)
+            pulumi.set(__self__, "lba_weight", lba_weight)
 
     @property
     @pulumi.getter(name="addrPoolId")
@@ -85,27 +66,10 @@ class AccessStrategyFailoverAddrPoolArgs:
         :param pulumi.Input[str] addr_pool_id: The ID of the address pool in the secondary address pool group.
         :param pulumi.Input[int] lba_weight: The weight of the address pool in the secondary address pool group.
         """
-        AccessStrategyFailoverAddrPoolArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            addr_pool_id=addr_pool_id,
-            lba_weight=lba_weight,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             addr_pool_id: Optional[pulumi.Input[str]] = None,
-             lba_weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if addr_pool_id is None and 'addrPoolId' in kwargs:
-            addr_pool_id = kwargs['addrPoolId']
-        if lba_weight is None and 'lbaWeight' in kwargs:
-            lba_weight = kwargs['lbaWeight']
-
         if addr_pool_id is not None:
-            _setter("addr_pool_id", addr_pool_id)
+            pulumi.set(__self__, "addr_pool_id", addr_pool_id)
         if lba_weight is not None:
-            _setter("lba_weight", lba_weight)
+            pulumi.set(__self__, "lba_weight", lba_weight)
 
     @property
     @pulumi.getter(name="addrPoolId")
@@ -139,21 +103,8 @@ class AccessStrategyLineArgs:
         """
         :param pulumi.Input[str] line_code: The line code of the source region.
         """
-        AccessStrategyLineArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            line_code=line_code,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             line_code: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if line_code is None and 'lineCode' in kwargs:
-            line_code = kwargs['lineCode']
-
         if line_code is not None:
-            _setter("line_code", line_code)
+            pulumi.set(__self__, "line_code", line_code)
 
     @property
     @pulumi.getter(name="lineCode")
@@ -183,42 +134,13 @@ class AddressPoolAddressArgs:
         :param pulumi.Input[int] lba_weight: The weight of the address. **NOTE:** The attribute is valid when the attribute `lba_strategy` is `RATIO`.
         :param pulumi.Input[str] remark: The description of the address.
         """
-        AddressPoolAddressArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            attribute_info=attribute_info,
-            mode=mode,
-            lba_weight=lba_weight,
-            remark=remark,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[pulumi.Input[str]] = None,
-             attribute_info: Optional[pulumi.Input[str]] = None,
-             mode: Optional[pulumi.Input[str]] = None,
-             lba_weight: Optional[pulumi.Input[int]] = None,
-             remark: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address is None:
-            raise TypeError("Missing 'address' argument")
-        if attribute_info is None and 'attributeInfo' in kwargs:
-            attribute_info = kwargs['attributeInfo']
-        if attribute_info is None:
-            raise TypeError("Missing 'attribute_info' argument")
-        if mode is None:
-            raise TypeError("Missing 'mode' argument")
-        if lba_weight is None and 'lbaWeight' in kwargs:
-            lba_weight = kwargs['lbaWeight']
-
-        _setter("address", address)
-        _setter("attribute_info", attribute_info)
-        _setter("mode", mode)
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "attribute_info", attribute_info)
+        pulumi.set(__self__, "mode", mode)
         if lba_weight is not None:
-            _setter("lba_weight", lba_weight)
+            pulumi.set(__self__, "lba_weight", lba_weight)
         if remark is not None:
-            _setter("remark", remark)
+            pulumi.set(__self__, "remark", remark)
 
     @property
     @pulumi.getter
@@ -290,29 +212,8 @@ class CustomLineIpSegmentListArgs:
         :param pulumi.Input[str] end_ip: The end IP address of the CIDR block.
         :param pulumi.Input[str] start_ip: The start IP address of the CIDR block.
         """
-        CustomLineIpSegmentListArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            end_ip=end_ip,
-            start_ip=start_ip,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             end_ip: Optional[pulumi.Input[str]] = None,
-             start_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if end_ip is None and 'endIp' in kwargs:
-            end_ip = kwargs['endIp']
-        if end_ip is None:
-            raise TypeError("Missing 'end_ip' argument")
-        if start_ip is None and 'startIp' in kwargs:
-            start_ip = kwargs['startIp']
-        if start_ip is None:
-            raise TypeError("Missing 'start_ip' argument")
-
-        _setter("end_ip", end_ip)
-        _setter("start_ip", start_ip)
+        pulumi.set(__self__, "end_ip", end_ip)
+        pulumi.set(__self__, "start_ip", start_ip)
 
     @property
     @pulumi.getter(name="endIp")
@@ -352,39 +253,14 @@ class GtmInstanceAlertConfigArgs:
         :param pulumi.Input[str] notice_type: The Alarm Event Type.
         :param pulumi.Input[bool] sms_notice: Whether to configure SMS notification. Valid values: `true`, `false`.
         """
-        GtmInstanceAlertConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dingtalk_notice=dingtalk_notice,
-            email_notice=email_notice,
-            notice_type=notice_type,
-            sms_notice=sms_notice,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dingtalk_notice: Optional[pulumi.Input[bool]] = None,
-             email_notice: Optional[pulumi.Input[bool]] = None,
-             notice_type: Optional[pulumi.Input[str]] = None,
-             sms_notice: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dingtalk_notice is None and 'dingtalkNotice' in kwargs:
-            dingtalk_notice = kwargs['dingtalkNotice']
-        if email_notice is None and 'emailNotice' in kwargs:
-            email_notice = kwargs['emailNotice']
-        if notice_type is None and 'noticeType' in kwargs:
-            notice_type = kwargs['noticeType']
-        if sms_notice is None and 'smsNotice' in kwargs:
-            sms_notice = kwargs['smsNotice']
-
         if dingtalk_notice is not None:
-            _setter("dingtalk_notice", dingtalk_notice)
+            pulumi.set(__self__, "dingtalk_notice", dingtalk_notice)
         if email_notice is not None:
-            _setter("email_notice", email_notice)
+            pulumi.set(__self__, "email_notice", email_notice)
         if notice_type is not None:
-            _setter("notice_type", notice_type)
+            pulumi.set(__self__, "notice_type", notice_type)
         if sms_notice is not None:
-            _setter("sms_notice", sms_notice)
+            pulumi.set(__self__, "sms_notice", sms_notice)
 
     @property
     @pulumi.getter(name="dingtalkNotice")
@@ -444,29 +320,8 @@ class MonitorConfigIspCityNodeArgs:
         :param pulumi.Input[str] city_code: The code of the city node to monitor.
         :param pulumi.Input[str] isp_code: The code of the Internet provider service (ISP) node to monitor.
         """
-        MonitorConfigIspCityNodeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            city_code=city_code,
-            isp_code=isp_code,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             city_code: Optional[pulumi.Input[str]] = None,
-             isp_code: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if city_code is None and 'cityCode' in kwargs:
-            city_code = kwargs['cityCode']
-        if city_code is None:
-            raise TypeError("Missing 'city_code' argument")
-        if isp_code is None and 'ispCode' in kwargs:
-            isp_code = kwargs['ispCode']
-        if isp_code is None:
-            raise TypeError("Missing 'isp_code' argument")
-
-        _setter("city_code", city_code)
-        _setter("isp_code", isp_code)
+        pulumi.set(__self__, "city_code", city_code)
+        pulumi.set(__self__, "isp_code", isp_code)
 
     @property
     @pulumi.getter(name="cityCode")

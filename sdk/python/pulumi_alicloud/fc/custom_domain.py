@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,39 +27,12 @@ class CustomDomainArgs:
         :param pulumi.Input['CustomDomainCertConfigArgs'] cert_config: The configuration of HTTPS certificate.See `cert_config` below.
         :param pulumi.Input[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]] route_configs: The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
         """
-        CustomDomainArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            domain_name=domain_name,
-            protocol=protocol,
-            cert_config=cert_config,
-            route_configs=route_configs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             domain_name: Optional[pulumi.Input[str]] = None,
-             protocol: Optional[pulumi.Input[str]] = None,
-             cert_config: Optional[pulumi.Input['CustomDomainCertConfigArgs']] = None,
-             route_configs: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if domain_name is None and 'domainName' in kwargs:
-            domain_name = kwargs['domainName']
-        if domain_name is None:
-            raise TypeError("Missing 'domain_name' argument")
-        if protocol is None:
-            raise TypeError("Missing 'protocol' argument")
-        if cert_config is None and 'certConfig' in kwargs:
-            cert_config = kwargs['certConfig']
-        if route_configs is None and 'routeConfigs' in kwargs:
-            route_configs = kwargs['routeConfigs']
-
-        _setter("domain_name", domain_name)
-        _setter("protocol", protocol)
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "protocol", protocol)
         if cert_config is not None:
-            _setter("cert_config", cert_config)
+            pulumi.set(__self__, "cert_config", cert_config)
         if route_configs is not None:
-            _setter("route_configs", route_configs)
+            pulumi.set(__self__, "route_configs", route_configs)
 
     @property
     @pulumi.getter(name="domainName")
@@ -132,61 +105,22 @@ class _CustomDomainState:
         :param pulumi.Input[str] protocol: The protocol, `HTTP` or `HTTP,HTTPS`.
         :param pulumi.Input[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]] route_configs: The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
         """
-        _CustomDomainState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            api_version=api_version,
-            cert_config=cert_config,
-            created_time=created_time,
-            domain_name=domain_name,
-            last_modified_time=last_modified_time,
-            protocol=protocol,
-            route_configs=route_configs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             api_version: Optional[pulumi.Input[str]] = None,
-             cert_config: Optional[pulumi.Input['CustomDomainCertConfigArgs']] = None,
-             created_time: Optional[pulumi.Input[str]] = None,
-             domain_name: Optional[pulumi.Input[str]] = None,
-             last_modified_time: Optional[pulumi.Input[str]] = None,
-             protocol: Optional[pulumi.Input[str]] = None,
-             route_configs: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if api_version is None and 'apiVersion' in kwargs:
-            api_version = kwargs['apiVersion']
-        if cert_config is None and 'certConfig' in kwargs:
-            cert_config = kwargs['certConfig']
-        if created_time is None and 'createdTime' in kwargs:
-            created_time = kwargs['createdTime']
-        if domain_name is None and 'domainName' in kwargs:
-            domain_name = kwargs['domainName']
-        if last_modified_time is None and 'lastModifiedTime' in kwargs:
-            last_modified_time = kwargs['lastModifiedTime']
-        if route_configs is None and 'routeConfigs' in kwargs:
-            route_configs = kwargs['routeConfigs']
-
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if api_version is not None:
-            _setter("api_version", api_version)
+            pulumi.set(__self__, "api_version", api_version)
         if cert_config is not None:
-            _setter("cert_config", cert_config)
+            pulumi.set(__self__, "cert_config", cert_config)
         if created_time is not None:
-            _setter("created_time", created_time)
+            pulumi.set(__self__, "created_time", created_time)
         if domain_name is not None:
-            _setter("domain_name", domain_name)
+            pulumi.set(__self__, "domain_name", domain_name)
         if last_modified_time is not None:
-            _setter("last_modified_time", last_modified_time)
+            pulumi.set(__self__, "last_modified_time", last_modified_time)
         if protocol is not None:
-            _setter("protocol", protocol)
+            pulumi.set(__self__, "protocol", protocol)
         if route_configs is not None:
-            _setter("route_configs", route_configs)
+            pulumi.set(__self__, "route_configs", route_configs)
 
     @property
     @pulumi.getter(name="accountId")
@@ -516,10 +450,6 @@ class CustomDomain(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CustomDomainArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -538,7 +468,6 @@ class CustomDomain(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CustomDomainArgs.__new__(CustomDomainArgs)
 
-            cert_config = _utilities.configure(cert_config, CustomDomainCertConfigArgs, True)
             __props__.__dict__["cert_config"] = cert_config
             if domain_name is None and not opts.urn:
                 raise TypeError("Missing required property 'domain_name'")

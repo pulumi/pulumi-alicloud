@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -26,39 +26,14 @@ class InstanceBindVpcArgs:
         :param pulumi.Input[int] vpc_owner_id: VPC owner root user ID.
         :param pulumi.Input[str] vswitch_id: vswitch id.
         """
-        InstanceBindVpcArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            region_id=region_id,
-            vpc_id=vpc_id,
-            vpc_owner_id=vpc_owner_id,
-            vswitch_id=vswitch_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             region_id: Optional[pulumi.Input[str]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             vpc_owner_id: Optional[pulumi.Input[int]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if region_id is None and 'regionId' in kwargs:
-            region_id = kwargs['regionId']
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_owner_id is None and 'vpcOwnerId' in kwargs:
-            vpc_owner_id = kwargs['vpcOwnerId']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-
         if region_id is not None:
-            _setter("region_id", region_id)
+            pulumi.set(__self__, "region_id", region_id)
         if vpc_id is not None:
-            _setter("vpc_id", vpc_id)
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vpc_owner_id is not None:
-            _setter("vpc_owner_id", vpc_owner_id)
+            pulumi.set(__self__, "vpc_owner_id", vpc_owner_id)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="regionId")

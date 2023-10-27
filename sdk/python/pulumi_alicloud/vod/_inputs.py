@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -26,42 +26,11 @@ class DomainSourceArgs:
         :param pulumi.Input[str] source_type: The type of the origin server. Valid values:
         :param pulumi.Input[str] source_priority: The priority of the origin server if multiple origin servers are specified. Valid values: `20` and `30`. **Default value: 20**. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
         """
-        DomainSourceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            source_content=source_content,
-            source_port=source_port,
-            source_type=source_type,
-            source_priority=source_priority,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             source_content: Optional[pulumi.Input[str]] = None,
-             source_port: Optional[pulumi.Input[str]] = None,
-             source_type: Optional[pulumi.Input[str]] = None,
-             source_priority: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if source_content is None and 'sourceContent' in kwargs:
-            source_content = kwargs['sourceContent']
-        if source_content is None:
-            raise TypeError("Missing 'source_content' argument")
-        if source_port is None and 'sourcePort' in kwargs:
-            source_port = kwargs['sourcePort']
-        if source_port is None:
-            raise TypeError("Missing 'source_port' argument")
-        if source_type is None and 'sourceType' in kwargs:
-            source_type = kwargs['sourceType']
-        if source_type is None:
-            raise TypeError("Missing 'source_type' argument")
-        if source_priority is None and 'sourcePriority' in kwargs:
-            source_priority = kwargs['sourcePriority']
-
-        _setter("source_content", source_content)
-        _setter("source_port", source_port)
-        _setter("source_type", source_type)
+        pulumi.set(__self__, "source_content", source_content)
+        pulumi.set(__self__, "source_port", source_port)
+        pulumi.set(__self__, "source_type", source_type)
         if source_priority is not None:
-            _setter("source_priority", source_priority)
+            pulumi.set(__self__, "source_priority", source_priority)
 
     @property
     @pulumi.getter(name="sourceContent")

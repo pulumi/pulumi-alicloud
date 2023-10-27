@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -31,35 +31,14 @@ class DbInstancePlanPlanConfigArgs:
         :param pulumi.Input['DbInstancePlanPlanConfigScaleInArgs'] scale_in: Scale In instance plan config. See `scale_in` below.
         :param pulumi.Input['DbInstancePlanPlanConfigScaleOutArgs'] scale_out: Scale out instance plan config. See `scale_out` below.
         """
-        DbInstancePlanPlanConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            pause=pause,
-            resume=resume,
-            scale_in=scale_in,
-            scale_out=scale_out,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             pause: Optional[pulumi.Input['DbInstancePlanPlanConfigPauseArgs']] = None,
-             resume: Optional[pulumi.Input['DbInstancePlanPlanConfigResumeArgs']] = None,
-             scale_in: Optional[pulumi.Input['DbInstancePlanPlanConfigScaleInArgs']] = None,
-             scale_out: Optional[pulumi.Input['DbInstancePlanPlanConfigScaleOutArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if scale_in is None and 'scaleIn' in kwargs:
-            scale_in = kwargs['scaleIn']
-        if scale_out is None and 'scaleOut' in kwargs:
-            scale_out = kwargs['scaleOut']
-
         if pause is not None:
-            _setter("pause", pause)
+            pulumi.set(__self__, "pause", pause)
         if resume is not None:
-            _setter("resume", resume)
+            pulumi.set(__self__, "resume", resume)
         if scale_in is not None:
-            _setter("scale_in", scale_in)
+            pulumi.set(__self__, "scale_in", scale_in)
         if scale_out is not None:
-            _setter("scale_out", scale_out)
+            pulumi.set(__self__, "scale_out", scale_out)
 
     @property
     @pulumi.getter
@@ -119,27 +98,10 @@ class DbInstancePlanPlanConfigPauseArgs:
         :param pulumi.Input[str] execute_time: The executed time of the Plan.
         :param pulumi.Input[str] plan_cron_time: The Cron Time of the plan.
         """
-        DbInstancePlanPlanConfigPauseArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            execute_time=execute_time,
-            plan_cron_time=plan_cron_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             execute_time: Optional[pulumi.Input[str]] = None,
-             plan_cron_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if execute_time is None and 'executeTime' in kwargs:
-            execute_time = kwargs['executeTime']
-        if plan_cron_time is None and 'planCronTime' in kwargs:
-            plan_cron_time = kwargs['planCronTime']
-
         if execute_time is not None:
-            _setter("execute_time", execute_time)
+            pulumi.set(__self__, "execute_time", execute_time)
         if plan_cron_time is not None:
-            _setter("plan_cron_time", plan_cron_time)
+            pulumi.set(__self__, "plan_cron_time", plan_cron_time)
 
     @property
     @pulumi.getter(name="executeTime")
@@ -175,27 +137,10 @@ class DbInstancePlanPlanConfigResumeArgs:
         :param pulumi.Input[str] execute_time: The executed time of the Plan.
         :param pulumi.Input[str] plan_cron_time: The Cron Time of the plan.
         """
-        DbInstancePlanPlanConfigResumeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            execute_time=execute_time,
-            plan_cron_time=plan_cron_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             execute_time: Optional[pulumi.Input[str]] = None,
-             plan_cron_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if execute_time is None and 'executeTime' in kwargs:
-            execute_time = kwargs['executeTime']
-        if plan_cron_time is None and 'planCronTime' in kwargs:
-            plan_cron_time = kwargs['planCronTime']
-
         if execute_time is not None:
-            _setter("execute_time", execute_time)
+            pulumi.set(__self__, "execute_time", execute_time)
         if plan_cron_time is not None:
-            _setter("plan_cron_time", plan_cron_time)
+            pulumi.set(__self__, "plan_cron_time", plan_cron_time)
 
     @property
     @pulumi.getter(name="executeTime")
@@ -233,33 +178,12 @@ class DbInstancePlanPlanConfigScaleInArgs:
         :param pulumi.Input[str] plan_cron_time: The Cron Time of the plan.
         :param pulumi.Input[str] segment_node_num: The segment Node Num of the Plan.
         """
-        DbInstancePlanPlanConfigScaleInArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            execute_time=execute_time,
-            plan_cron_time=plan_cron_time,
-            segment_node_num=segment_node_num,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             execute_time: Optional[pulumi.Input[str]] = None,
-             plan_cron_time: Optional[pulumi.Input[str]] = None,
-             segment_node_num: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if execute_time is None and 'executeTime' in kwargs:
-            execute_time = kwargs['executeTime']
-        if plan_cron_time is None and 'planCronTime' in kwargs:
-            plan_cron_time = kwargs['planCronTime']
-        if segment_node_num is None and 'segmentNodeNum' in kwargs:
-            segment_node_num = kwargs['segmentNodeNum']
-
         if execute_time is not None:
-            _setter("execute_time", execute_time)
+            pulumi.set(__self__, "execute_time", execute_time)
         if plan_cron_time is not None:
-            _setter("plan_cron_time", plan_cron_time)
+            pulumi.set(__self__, "plan_cron_time", plan_cron_time)
         if segment_node_num is not None:
-            _setter("segment_node_num", segment_node_num)
+            pulumi.set(__self__, "segment_node_num", segment_node_num)
 
     @property
     @pulumi.getter(name="executeTime")
@@ -309,33 +233,12 @@ class DbInstancePlanPlanConfigScaleOutArgs:
         :param pulumi.Input[str] plan_cron_time: The Cron Time of the plan.
         :param pulumi.Input[str] segment_node_num: The segment Node Num of the Plan.
         """
-        DbInstancePlanPlanConfigScaleOutArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            execute_time=execute_time,
-            plan_cron_time=plan_cron_time,
-            segment_node_num=segment_node_num,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             execute_time: Optional[pulumi.Input[str]] = None,
-             plan_cron_time: Optional[pulumi.Input[str]] = None,
-             segment_node_num: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if execute_time is None and 'executeTime' in kwargs:
-            execute_time = kwargs['executeTime']
-        if plan_cron_time is None and 'planCronTime' in kwargs:
-            plan_cron_time = kwargs['planCronTime']
-        if segment_node_num is None and 'segmentNodeNum' in kwargs:
-            segment_node_num = kwargs['segmentNodeNum']
-
         if execute_time is not None:
-            _setter("execute_time", execute_time)
+            pulumi.set(__self__, "execute_time", execute_time)
         if plan_cron_time is not None:
-            _setter("plan_cron_time", plan_cron_time)
+            pulumi.set(__self__, "plan_cron_time", plan_cron_time)
         if segment_node_num is not None:
-            _setter("segment_node_num", segment_node_num)
+            pulumi.set(__self__, "segment_node_num", segment_node_num)
 
     @property
     @pulumi.getter(name="executeTime")
@@ -386,33 +289,12 @@ class InstanceIpWhitelistArgs:
         :param pulumi.Input[str] ip_group_name: IP whitelist group name.
         :param pulumi.Input[str] security_ip_list: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
         """
-        InstanceIpWhitelistArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ip_group_attribute=ip_group_attribute,
-            ip_group_name=ip_group_name,
-            security_ip_list=security_ip_list,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ip_group_attribute: Optional[pulumi.Input[str]] = None,
-             ip_group_name: Optional[pulumi.Input[str]] = None,
-             security_ip_list: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ip_group_attribute is None and 'ipGroupAttribute' in kwargs:
-            ip_group_attribute = kwargs['ipGroupAttribute']
-        if ip_group_name is None and 'ipGroupName' in kwargs:
-            ip_group_name = kwargs['ipGroupName']
-        if security_ip_list is None and 'securityIpList' in kwargs:
-            security_ip_list = kwargs['securityIpList']
-
         if ip_group_attribute is not None:
-            _setter("ip_group_attribute", ip_group_attribute)
+            pulumi.set(__self__, "ip_group_attribute", ip_group_attribute)
         if ip_group_name is not None:
-            _setter("ip_group_name", ip_group_name)
+            pulumi.set(__self__, "ip_group_name", ip_group_name)
         if security_ip_list is not None:
-            _setter("security_ip_list", security_ip_list)
+            pulumi.set(__self__, "security_ip_list", security_ip_list)
 
     @property
     @pulumi.getter(name="ipGroupAttribute")

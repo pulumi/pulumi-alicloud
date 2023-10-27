@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ControlPolicyOrderArgs', 'ControlPolicyOrder']
@@ -23,31 +23,10 @@ class ControlPolicyOrderArgs:
         :param pulumi.Input[str] direction: Direction. Valid values: `in`, `out`.
         :param pulumi.Input[int] order: The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
         """
-        ControlPolicyOrderArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            acl_uuid=acl_uuid,
-            direction=direction,
-            order=order,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             acl_uuid: Optional[pulumi.Input[str]] = None,
-             direction: Optional[pulumi.Input[str]] = None,
-             order: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if acl_uuid is None and 'aclUuid' in kwargs:
-            acl_uuid = kwargs['aclUuid']
-        if acl_uuid is None:
-            raise TypeError("Missing 'acl_uuid' argument")
-        if direction is None:
-            raise TypeError("Missing 'direction' argument")
-
-        _setter("acl_uuid", acl_uuid)
-        _setter("direction", direction)
+        pulumi.set(__self__, "acl_uuid", acl_uuid)
+        pulumi.set(__self__, "direction", direction)
         if order is not None:
-            _setter("order", order)
+            pulumi.set(__self__, "order", order)
 
     @property
     @pulumi.getter(name="aclUuid")
@@ -98,29 +77,12 @@ class _ControlPolicyOrderState:
         :param pulumi.Input[str] direction: Direction. Valid values: `in`, `out`.
         :param pulumi.Input[int] order: The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
         """
-        _ControlPolicyOrderState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            acl_uuid=acl_uuid,
-            direction=direction,
-            order=order,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             acl_uuid: Optional[pulumi.Input[str]] = None,
-             direction: Optional[pulumi.Input[str]] = None,
-             order: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if acl_uuid is None and 'aclUuid' in kwargs:
-            acl_uuid = kwargs['aclUuid']
-
         if acl_uuid is not None:
-            _setter("acl_uuid", acl_uuid)
+            pulumi.set(__self__, "acl_uuid", acl_uuid)
         if direction is not None:
-            _setter("direction", direction)
+            pulumi.set(__self__, "direction", direction)
         if order is not None:
-            _setter("order", order)
+            pulumi.set(__self__, "order", order)
 
     @property
     @pulumi.getter(name="aclUuid")
@@ -268,10 +230,6 @@ class ControlPolicyOrder(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ControlPolicyOrderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

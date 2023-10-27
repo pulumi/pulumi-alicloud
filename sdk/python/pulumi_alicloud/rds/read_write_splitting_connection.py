@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ReadWriteSplittingConnectionArgs', 'ReadWriteSplittingConnection']
@@ -29,49 +29,16 @@ class ReadWriteSplittingConnectionArgs:
         :param pulumi.Input[int] port: Intranet connection port. Valid value: [3001-3999]. Default to 3306.
         :param pulumi.Input[Mapping[str, Any]] weight: Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom.
         """
-        ReadWriteSplittingConnectionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            distribution_type=distribution_type,
-            instance_id=instance_id,
-            connection_prefix=connection_prefix,
-            max_delay_time=max_delay_time,
-            port=port,
-            weight=weight,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             distribution_type: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             connection_prefix: Optional[pulumi.Input[str]] = None,
-             max_delay_time: Optional[pulumi.Input[int]] = None,
-             port: Optional[pulumi.Input[int]] = None,
-             weight: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if distribution_type is None and 'distributionType' in kwargs:
-            distribution_type = kwargs['distributionType']
-        if distribution_type is None:
-            raise TypeError("Missing 'distribution_type' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if connection_prefix is None and 'connectionPrefix' in kwargs:
-            connection_prefix = kwargs['connectionPrefix']
-        if max_delay_time is None and 'maxDelayTime' in kwargs:
-            max_delay_time = kwargs['maxDelayTime']
-
-        _setter("distribution_type", distribution_type)
-        _setter("instance_id", instance_id)
+        pulumi.set(__self__, "distribution_type", distribution_type)
+        pulumi.set(__self__, "instance_id", instance_id)
         if connection_prefix is not None:
-            _setter("connection_prefix", connection_prefix)
+            pulumi.set(__self__, "connection_prefix", connection_prefix)
         if max_delay_time is not None:
-            _setter("max_delay_time", max_delay_time)
+            pulumi.set(__self__, "max_delay_time", max_delay_time)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if weight is not None:
-            _setter("weight", weight)
+            pulumi.set(__self__, "weight", weight)
 
     @property
     @pulumi.getter(name="distributionType")
@@ -166,53 +133,20 @@ class _ReadWriteSplittingConnectionState:
         :param pulumi.Input[int] port: Intranet connection port. Valid value: [3001-3999]. Default to 3306.
         :param pulumi.Input[Mapping[str, Any]] weight: Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom.
         """
-        _ReadWriteSplittingConnectionState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            connection_prefix=connection_prefix,
-            connection_string=connection_string,
-            distribution_type=distribution_type,
-            instance_id=instance_id,
-            max_delay_time=max_delay_time,
-            port=port,
-            weight=weight,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             connection_prefix: Optional[pulumi.Input[str]] = None,
-             connection_string: Optional[pulumi.Input[str]] = None,
-             distribution_type: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             max_delay_time: Optional[pulumi.Input[int]] = None,
-             port: Optional[pulumi.Input[int]] = None,
-             weight: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if connection_prefix is None and 'connectionPrefix' in kwargs:
-            connection_prefix = kwargs['connectionPrefix']
-        if connection_string is None and 'connectionString' in kwargs:
-            connection_string = kwargs['connectionString']
-        if distribution_type is None and 'distributionType' in kwargs:
-            distribution_type = kwargs['distributionType']
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if max_delay_time is None and 'maxDelayTime' in kwargs:
-            max_delay_time = kwargs['maxDelayTime']
-
         if connection_prefix is not None:
-            _setter("connection_prefix", connection_prefix)
+            pulumi.set(__self__, "connection_prefix", connection_prefix)
         if connection_string is not None:
-            _setter("connection_string", connection_string)
+            pulumi.set(__self__, "connection_string", connection_string)
         if distribution_type is not None:
-            _setter("distribution_type", distribution_type)
+            pulumi.set(__self__, "distribution_type", distribution_type)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if max_delay_time is not None:
-            _setter("max_delay_time", max_delay_time)
+            pulumi.set(__self__, "max_delay_time", max_delay_time)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if weight is not None:
-            _setter("weight", weight)
+            pulumi.set(__self__, "weight", weight)
 
     @property
     @pulumi.getter(name="connectionPrefix")
@@ -478,10 +412,6 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ReadWriteSplittingConnectionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

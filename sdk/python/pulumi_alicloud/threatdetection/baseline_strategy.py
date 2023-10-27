@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BaselineStrategyArgs', 'BaselineStrategy']
@@ -41,70 +41,15 @@ class BaselineStrategyArgs:
                * **12**: 12:00~18:00
                * **18**: 18:00~24:00
         """
-        BaselineStrategyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            baseline_strategy_name=baseline_strategy_name,
-            custom_type=custom_type,
-            cycle_days=cycle_days,
-            end_time=end_time,
-            risk_sub_type_name=risk_sub_type_name,
-            start_time=start_time,
-            target_type=target_type,
-            cycle_start_time=cycle_start_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             baseline_strategy_name: Optional[pulumi.Input[str]] = None,
-             custom_type: Optional[pulumi.Input[str]] = None,
-             cycle_days: Optional[pulumi.Input[int]] = None,
-             end_time: Optional[pulumi.Input[str]] = None,
-             risk_sub_type_name: Optional[pulumi.Input[str]] = None,
-             start_time: Optional[pulumi.Input[str]] = None,
-             target_type: Optional[pulumi.Input[str]] = None,
-             cycle_start_time: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if baseline_strategy_name is None and 'baselineStrategyName' in kwargs:
-            baseline_strategy_name = kwargs['baselineStrategyName']
-        if baseline_strategy_name is None:
-            raise TypeError("Missing 'baseline_strategy_name' argument")
-        if custom_type is None and 'customType' in kwargs:
-            custom_type = kwargs['customType']
-        if custom_type is None:
-            raise TypeError("Missing 'custom_type' argument")
-        if cycle_days is None and 'cycleDays' in kwargs:
-            cycle_days = kwargs['cycleDays']
-        if cycle_days is None:
-            raise TypeError("Missing 'cycle_days' argument")
-        if end_time is None and 'endTime' in kwargs:
-            end_time = kwargs['endTime']
-        if end_time is None:
-            raise TypeError("Missing 'end_time' argument")
-        if risk_sub_type_name is None and 'riskSubTypeName' in kwargs:
-            risk_sub_type_name = kwargs['riskSubTypeName']
-        if risk_sub_type_name is None:
-            raise TypeError("Missing 'risk_sub_type_name' argument")
-        if start_time is None and 'startTime' in kwargs:
-            start_time = kwargs['startTime']
-        if start_time is None:
-            raise TypeError("Missing 'start_time' argument")
-        if target_type is None and 'targetType' in kwargs:
-            target_type = kwargs['targetType']
-        if target_type is None:
-            raise TypeError("Missing 'target_type' argument")
-        if cycle_start_time is None and 'cycleStartTime' in kwargs:
-            cycle_start_time = kwargs['cycleStartTime']
-
-        _setter("baseline_strategy_name", baseline_strategy_name)
-        _setter("custom_type", custom_type)
-        _setter("cycle_days", cycle_days)
-        _setter("end_time", end_time)
-        _setter("risk_sub_type_name", risk_sub_type_name)
-        _setter("start_time", start_time)
-        _setter("target_type", target_type)
+        pulumi.set(__self__, "baseline_strategy_name", baseline_strategy_name)
+        pulumi.set(__self__, "custom_type", custom_type)
+        pulumi.set(__self__, "cycle_days", cycle_days)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "risk_sub_type_name", risk_sub_type_name)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "target_type", target_type)
         if cycle_start_time is not None:
-            _setter("cycle_start_time", cycle_start_time)
+            pulumi.set(__self__, "cycle_start_time", cycle_start_time)
 
     @property
     @pulumi.getter(name="baselineStrategyName")
@@ -243,69 +188,24 @@ class _BaselineStrategyState:
                * **groupId**: Added by asset group.
                * **uuid**: Add by single asset.
         """
-        _BaselineStrategyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            baseline_strategy_id=baseline_strategy_id,
-            baseline_strategy_name=baseline_strategy_name,
-            custom_type=custom_type,
-            cycle_days=cycle_days,
-            cycle_start_time=cycle_start_time,
-            end_time=end_time,
-            risk_sub_type_name=risk_sub_type_name,
-            start_time=start_time,
-            target_type=target_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             baseline_strategy_id: Optional[pulumi.Input[str]] = None,
-             baseline_strategy_name: Optional[pulumi.Input[str]] = None,
-             custom_type: Optional[pulumi.Input[str]] = None,
-             cycle_days: Optional[pulumi.Input[int]] = None,
-             cycle_start_time: Optional[pulumi.Input[int]] = None,
-             end_time: Optional[pulumi.Input[str]] = None,
-             risk_sub_type_name: Optional[pulumi.Input[str]] = None,
-             start_time: Optional[pulumi.Input[str]] = None,
-             target_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if baseline_strategy_id is None and 'baselineStrategyId' in kwargs:
-            baseline_strategy_id = kwargs['baselineStrategyId']
-        if baseline_strategy_name is None and 'baselineStrategyName' in kwargs:
-            baseline_strategy_name = kwargs['baselineStrategyName']
-        if custom_type is None and 'customType' in kwargs:
-            custom_type = kwargs['customType']
-        if cycle_days is None and 'cycleDays' in kwargs:
-            cycle_days = kwargs['cycleDays']
-        if cycle_start_time is None and 'cycleStartTime' in kwargs:
-            cycle_start_time = kwargs['cycleStartTime']
-        if end_time is None and 'endTime' in kwargs:
-            end_time = kwargs['endTime']
-        if risk_sub_type_name is None and 'riskSubTypeName' in kwargs:
-            risk_sub_type_name = kwargs['riskSubTypeName']
-        if start_time is None and 'startTime' in kwargs:
-            start_time = kwargs['startTime']
-        if target_type is None and 'targetType' in kwargs:
-            target_type = kwargs['targetType']
-
         if baseline_strategy_id is not None:
-            _setter("baseline_strategy_id", baseline_strategy_id)
+            pulumi.set(__self__, "baseline_strategy_id", baseline_strategy_id)
         if baseline_strategy_name is not None:
-            _setter("baseline_strategy_name", baseline_strategy_name)
+            pulumi.set(__self__, "baseline_strategy_name", baseline_strategy_name)
         if custom_type is not None:
-            _setter("custom_type", custom_type)
+            pulumi.set(__self__, "custom_type", custom_type)
         if cycle_days is not None:
-            _setter("cycle_days", cycle_days)
+            pulumi.set(__self__, "cycle_days", cycle_days)
         if cycle_start_time is not None:
-            _setter("cycle_start_time", cycle_start_time)
+            pulumi.set(__self__, "cycle_start_time", cycle_start_time)
         if end_time is not None:
-            _setter("end_time", end_time)
+            pulumi.set(__self__, "end_time", end_time)
         if risk_sub_type_name is not None:
-            _setter("risk_sub_type_name", risk_sub_type_name)
+            pulumi.set(__self__, "risk_sub_type_name", risk_sub_type_name)
         if start_time is not None:
-            _setter("start_time", start_time)
+            pulumi.set(__self__, "start_time", start_time)
         if target_type is not None:
-            _setter("target_type", target_type)
+            pulumi.set(__self__, "target_type", target_type)
 
     @property
     @pulumi.getter(name="baselineStrategyId")
@@ -539,10 +439,6 @@ class BaselineStrategy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            BaselineStrategyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

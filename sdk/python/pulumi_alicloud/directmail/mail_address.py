@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['MailAddressArgs', 'MailAddress']
@@ -25,37 +25,12 @@ class MailAddressArgs:
         :param pulumi.Input[str] password: Account password. The password must be length 10-20 string, contains numbers, uppercase letters, lowercase letters at the same time.
         :param pulumi.Input[str] reply_address: Return address.
         """
-        MailAddressArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_name=account_name,
-            sendtype=sendtype,
-            password=password,
-            reply_address=reply_address,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_name: Optional[pulumi.Input[str]] = None,
-             sendtype: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             reply_address: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_name is None and 'accountName' in kwargs:
-            account_name = kwargs['accountName']
-        if account_name is None:
-            raise TypeError("Missing 'account_name' argument")
-        if sendtype is None:
-            raise TypeError("Missing 'sendtype' argument")
-        if reply_address is None and 'replyAddress' in kwargs:
-            reply_address = kwargs['replyAddress']
-
-        _setter("account_name", account_name)
-        _setter("sendtype", sendtype)
+        pulumi.set(__self__, "account_name", account_name)
+        pulumi.set(__self__, "sendtype", sendtype)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if reply_address is not None:
-            _setter("reply_address", reply_address)
+            pulumi.set(__self__, "reply_address", reply_address)
 
     @property
     @pulumi.getter(name="accountName")
@@ -122,39 +97,16 @@ class _MailAddressState:
         :param pulumi.Input[str] sendtype: Account type. Valid values: `batch`, `trigger`.
         :param pulumi.Input[str] status: Account Status freeze: 1, normal: 0.
         """
-        _MailAddressState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_name=account_name,
-            password=password,
-            reply_address=reply_address,
-            sendtype=sendtype,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_name: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             reply_address: Optional[pulumi.Input[str]] = None,
-             sendtype: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_name is None and 'accountName' in kwargs:
-            account_name = kwargs['accountName']
-        if reply_address is None and 'replyAddress' in kwargs:
-            reply_address = kwargs['replyAddress']
-
         if account_name is not None:
-            _setter("account_name", account_name)
+            pulumi.set(__self__, "account_name", account_name)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if reply_address is not None:
-            _setter("reply_address", reply_address)
+            pulumi.set(__self__, "reply_address", reply_address)
         if sendtype is not None:
-            _setter("sendtype", sendtype)
+            pulumi.set(__self__, "sendtype", sendtype)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="accountName")
@@ -280,10 +232,6 @@ class MailAddress(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            MailAddressArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

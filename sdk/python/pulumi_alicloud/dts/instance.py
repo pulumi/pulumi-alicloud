@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InstanceArgs', 'Instance']
@@ -125,127 +125,46 @@ class InstanceArgs:
                - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
                - The billing method of the subscription instance. You can set the parameter `period`.
         """
-        InstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto_pay=auto_pay,
-            auto_start=auto_start,
-            compute_unit=compute_unit,
-            database_count=database_count,
-            destination_endpoint_engine_name=destination_endpoint_engine_name,
-            destination_region=destination_region,
-            du=du,
-            fee_type=fee_type,
-            instance_class=instance_class,
-            job_id=job_id,
-            payment_type=payment_type,
-            period=period,
-            resource_group_id=resource_group_id,
-            source_endpoint_engine_name=source_endpoint_engine_name,
-            source_region=source_region,
-            sync_architecture=sync_architecture,
-            synchronization_direction=synchronization_direction,
-            tags=tags,
-            type=type,
-            used_time=used_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto_pay: Optional[pulumi.Input[bool]] = None,
-             auto_start: Optional[pulumi.Input[bool]] = None,
-             compute_unit: Optional[pulumi.Input[int]] = None,
-             database_count: Optional[pulumi.Input[int]] = None,
-             destination_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
-             destination_region: Optional[pulumi.Input[str]] = None,
-             du: Optional[pulumi.Input[int]] = None,
-             fee_type: Optional[pulumi.Input[str]] = None,
-             instance_class: Optional[pulumi.Input[str]] = None,
-             job_id: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             source_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
-             source_region: Optional[pulumi.Input[str]] = None,
-             sync_architecture: Optional[pulumi.Input[str]] = None,
-             synchronization_direction: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             used_time: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_pay is None and 'autoPay' in kwargs:
-            auto_pay = kwargs['autoPay']
-        if auto_start is None and 'autoStart' in kwargs:
-            auto_start = kwargs['autoStart']
-        if compute_unit is None and 'computeUnit' in kwargs:
-            compute_unit = kwargs['computeUnit']
-        if database_count is None and 'databaseCount' in kwargs:
-            database_count = kwargs['databaseCount']
-        if destination_endpoint_engine_name is None and 'destinationEndpointEngineName' in kwargs:
-            destination_endpoint_engine_name = kwargs['destinationEndpointEngineName']
-        if destination_region is None and 'destinationRegion' in kwargs:
-            destination_region = kwargs['destinationRegion']
-        if fee_type is None and 'feeType' in kwargs:
-            fee_type = kwargs['feeType']
-        if instance_class is None and 'instanceClass' in kwargs:
-            instance_class = kwargs['instanceClass']
-        if job_id is None and 'jobId' in kwargs:
-            job_id = kwargs['jobId']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if source_endpoint_engine_name is None and 'sourceEndpointEngineName' in kwargs:
-            source_endpoint_engine_name = kwargs['sourceEndpointEngineName']
-        if source_region is None and 'sourceRegion' in kwargs:
-            source_region = kwargs['sourceRegion']
-        if sync_architecture is None and 'syncArchitecture' in kwargs:
-            sync_architecture = kwargs['syncArchitecture']
-        if synchronization_direction is None and 'synchronizationDirection' in kwargs:
-            synchronization_direction = kwargs['synchronizationDirection']
-        if used_time is None and 'usedTime' in kwargs:
-            used_time = kwargs['usedTime']
-
         if auto_pay is not None:
-            _setter("auto_pay", auto_pay)
+            pulumi.set(__self__, "auto_pay", auto_pay)
         if auto_start is not None:
-            _setter("auto_start", auto_start)
+            pulumi.set(__self__, "auto_start", auto_start)
         if compute_unit is not None:
-            _setter("compute_unit", compute_unit)
+            pulumi.set(__self__, "compute_unit", compute_unit)
         if database_count is not None:
-            _setter("database_count", database_count)
+            pulumi.set(__self__, "database_count", database_count)
         if destination_endpoint_engine_name is not None:
-            _setter("destination_endpoint_engine_name", destination_endpoint_engine_name)
+            pulumi.set(__self__, "destination_endpoint_engine_name", destination_endpoint_engine_name)
         if destination_region is not None:
-            _setter("destination_region", destination_region)
+            pulumi.set(__self__, "destination_region", destination_region)
         if du is not None:
-            _setter("du", du)
+            pulumi.set(__self__, "du", du)
         if fee_type is not None:
-            _setter("fee_type", fee_type)
+            pulumi.set(__self__, "fee_type", fee_type)
         if instance_class is not None:
-            _setter("instance_class", instance_class)
+            pulumi.set(__self__, "instance_class", instance_class)
         if job_id is not None:
-            _setter("job_id", job_id)
+            pulumi.set(__self__, "job_id", job_id)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if source_endpoint_engine_name is not None:
-            _setter("source_endpoint_engine_name", source_endpoint_engine_name)
+            pulumi.set(__self__, "source_endpoint_engine_name", source_endpoint_engine_name)
         if source_region is not None:
-            _setter("source_region", source_region)
+            pulumi.set(__self__, "source_region", source_region)
         if sync_architecture is not None:
-            _setter("sync_architecture", sync_architecture)
+            pulumi.set(__self__, "sync_architecture", sync_architecture)
         if synchronization_direction is not None:
-            _setter("synchronization_direction", synchronization_direction)
+            pulumi.set(__self__, "synchronization_direction", synchronization_direction)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if used_time is not None:
-            _setter("used_time", used_time)
+            pulumi.set(__self__, "used_time", used_time)
 
     @property
     @pulumi.getter(name="autoPay")
@@ -678,149 +597,54 @@ class _InstanceState:
                - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
                - The billing method of the subscription instance. You can set the parameter `period`.
         """
-        _InstanceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto_pay=auto_pay,
-            auto_start=auto_start,
-            compute_unit=compute_unit,
-            create_time=create_time,
-            database_count=database_count,
-            destination_endpoint_engine_name=destination_endpoint_engine_name,
-            destination_region=destination_region,
-            dts_instance_id=dts_instance_id,
-            du=du,
-            fee_type=fee_type,
-            instance_class=instance_class,
-            instance_name=instance_name,
-            job_id=job_id,
-            payment_type=payment_type,
-            period=period,
-            resource_group_id=resource_group_id,
-            source_endpoint_engine_name=source_endpoint_engine_name,
-            source_region=source_region,
-            status=status,
-            sync_architecture=sync_architecture,
-            synchronization_direction=synchronization_direction,
-            tags=tags,
-            type=type,
-            used_time=used_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto_pay: Optional[pulumi.Input[bool]] = None,
-             auto_start: Optional[pulumi.Input[bool]] = None,
-             compute_unit: Optional[pulumi.Input[int]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             database_count: Optional[pulumi.Input[int]] = None,
-             destination_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
-             destination_region: Optional[pulumi.Input[str]] = None,
-             dts_instance_id: Optional[pulumi.Input[str]] = None,
-             du: Optional[pulumi.Input[int]] = None,
-             fee_type: Optional[pulumi.Input[str]] = None,
-             instance_class: Optional[pulumi.Input[str]] = None,
-             instance_name: Optional[pulumi.Input[str]] = None,
-             job_id: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             source_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
-             source_region: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             sync_architecture: Optional[pulumi.Input[str]] = None,
-             synchronization_direction: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             used_time: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_pay is None and 'autoPay' in kwargs:
-            auto_pay = kwargs['autoPay']
-        if auto_start is None and 'autoStart' in kwargs:
-            auto_start = kwargs['autoStart']
-        if compute_unit is None and 'computeUnit' in kwargs:
-            compute_unit = kwargs['computeUnit']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if database_count is None and 'databaseCount' in kwargs:
-            database_count = kwargs['databaseCount']
-        if destination_endpoint_engine_name is None and 'destinationEndpointEngineName' in kwargs:
-            destination_endpoint_engine_name = kwargs['destinationEndpointEngineName']
-        if destination_region is None and 'destinationRegion' in kwargs:
-            destination_region = kwargs['destinationRegion']
-        if dts_instance_id is None and 'dtsInstanceId' in kwargs:
-            dts_instance_id = kwargs['dtsInstanceId']
-        if fee_type is None and 'feeType' in kwargs:
-            fee_type = kwargs['feeType']
-        if instance_class is None and 'instanceClass' in kwargs:
-            instance_class = kwargs['instanceClass']
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if job_id is None and 'jobId' in kwargs:
-            job_id = kwargs['jobId']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if source_endpoint_engine_name is None and 'sourceEndpointEngineName' in kwargs:
-            source_endpoint_engine_name = kwargs['sourceEndpointEngineName']
-        if source_region is None and 'sourceRegion' in kwargs:
-            source_region = kwargs['sourceRegion']
-        if sync_architecture is None and 'syncArchitecture' in kwargs:
-            sync_architecture = kwargs['syncArchitecture']
-        if synchronization_direction is None and 'synchronizationDirection' in kwargs:
-            synchronization_direction = kwargs['synchronizationDirection']
-        if used_time is None and 'usedTime' in kwargs:
-            used_time = kwargs['usedTime']
-
         if auto_pay is not None:
-            _setter("auto_pay", auto_pay)
+            pulumi.set(__self__, "auto_pay", auto_pay)
         if auto_start is not None:
-            _setter("auto_start", auto_start)
+            pulumi.set(__self__, "auto_start", auto_start)
         if compute_unit is not None:
-            _setter("compute_unit", compute_unit)
+            pulumi.set(__self__, "compute_unit", compute_unit)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if database_count is not None:
-            _setter("database_count", database_count)
+            pulumi.set(__self__, "database_count", database_count)
         if destination_endpoint_engine_name is not None:
-            _setter("destination_endpoint_engine_name", destination_endpoint_engine_name)
+            pulumi.set(__self__, "destination_endpoint_engine_name", destination_endpoint_engine_name)
         if destination_region is not None:
-            _setter("destination_region", destination_region)
+            pulumi.set(__self__, "destination_region", destination_region)
         if dts_instance_id is not None:
-            _setter("dts_instance_id", dts_instance_id)
+            pulumi.set(__self__, "dts_instance_id", dts_instance_id)
         if du is not None:
-            _setter("du", du)
+            pulumi.set(__self__, "du", du)
         if fee_type is not None:
-            _setter("fee_type", fee_type)
+            pulumi.set(__self__, "fee_type", fee_type)
         if instance_class is not None:
-            _setter("instance_class", instance_class)
+            pulumi.set(__self__, "instance_class", instance_class)
         if instance_name is not None:
-            _setter("instance_name", instance_name)
+            pulumi.set(__self__, "instance_name", instance_name)
         if job_id is not None:
-            _setter("job_id", job_id)
+            pulumi.set(__self__, "job_id", job_id)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if source_endpoint_engine_name is not None:
-            _setter("source_endpoint_engine_name", source_endpoint_engine_name)
+            pulumi.set(__self__, "source_endpoint_engine_name", source_endpoint_engine_name)
         if source_region is not None:
-            _setter("source_region", source_region)
+            pulumi.set(__self__, "source_region", source_region)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if sync_architecture is not None:
-            _setter("sync_architecture", sync_architecture)
+            pulumi.set(__self__, "sync_architecture", sync_architecture)
         if synchronization_direction is not None:
-            _setter("synchronization_direction", synchronization_direction)
+            pulumi.set(__self__, "synchronization_direction", synchronization_direction)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if used_time is not None:
-            _setter("used_time", used_time)
+            pulumi.set(__self__, "used_time", used_time)
 
     @property
     @pulumi.getter(name="autoPay")
@@ -1384,10 +1208,6 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

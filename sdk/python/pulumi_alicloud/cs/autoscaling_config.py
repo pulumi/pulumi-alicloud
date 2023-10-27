@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AutoscalingConfigArgs', 'AutoscalingConfig']
@@ -47,103 +47,36 @@ class AutoscalingConfigArgs:
         :param pulumi.Input[str] unneeded_duration: The unneeded duration. Default is `10m`.
         :param pulumi.Input[str] utilization_threshold: The scale-in threshold. Default is `0.5`.
         """
-        AutoscalingConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_id=cluster_id,
-            cool_down_duration=cool_down_duration,
-            daemonset_eviction_for_nodes=daemonset_eviction_for_nodes,
-            expander=expander,
-            gpu_utilization_threshold=gpu_utilization_threshold,
-            max_graceful_termination_sec=max_graceful_termination_sec,
-            min_replica_count=min_replica_count,
-            recycle_node_deletion_enabled=recycle_node_deletion_enabled,
-            scale_down_enabled=scale_down_enabled,
-            scale_up_from_zero=scale_up_from_zero,
-            scan_interval=scan_interval,
-            skip_nodes_with_local_storage=skip_nodes_with_local_storage,
-            skip_nodes_with_system_pods=skip_nodes_with_system_pods,
-            unneeded_duration=unneeded_duration,
-            utilization_threshold=utilization_threshold,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             cool_down_duration: Optional[pulumi.Input[str]] = None,
-             daemonset_eviction_for_nodes: Optional[pulumi.Input[bool]] = None,
-             expander: Optional[pulumi.Input[str]] = None,
-             gpu_utilization_threshold: Optional[pulumi.Input[str]] = None,
-             max_graceful_termination_sec: Optional[pulumi.Input[int]] = None,
-             min_replica_count: Optional[pulumi.Input[int]] = None,
-             recycle_node_deletion_enabled: Optional[pulumi.Input[bool]] = None,
-             scale_down_enabled: Optional[pulumi.Input[bool]] = None,
-             scale_up_from_zero: Optional[pulumi.Input[bool]] = None,
-             scan_interval: Optional[pulumi.Input[str]] = None,
-             skip_nodes_with_local_storage: Optional[pulumi.Input[bool]] = None,
-             skip_nodes_with_system_pods: Optional[pulumi.Input[bool]] = None,
-             unneeded_duration: Optional[pulumi.Input[str]] = None,
-             utilization_threshold: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cool_down_duration is None and 'coolDownDuration' in kwargs:
-            cool_down_duration = kwargs['coolDownDuration']
-        if daemonset_eviction_for_nodes is None and 'daemonsetEvictionForNodes' in kwargs:
-            daemonset_eviction_for_nodes = kwargs['daemonsetEvictionForNodes']
-        if gpu_utilization_threshold is None and 'gpuUtilizationThreshold' in kwargs:
-            gpu_utilization_threshold = kwargs['gpuUtilizationThreshold']
-        if max_graceful_termination_sec is None and 'maxGracefulTerminationSec' in kwargs:
-            max_graceful_termination_sec = kwargs['maxGracefulTerminationSec']
-        if min_replica_count is None and 'minReplicaCount' in kwargs:
-            min_replica_count = kwargs['minReplicaCount']
-        if recycle_node_deletion_enabled is None and 'recycleNodeDeletionEnabled' in kwargs:
-            recycle_node_deletion_enabled = kwargs['recycleNodeDeletionEnabled']
-        if scale_down_enabled is None and 'scaleDownEnabled' in kwargs:
-            scale_down_enabled = kwargs['scaleDownEnabled']
-        if scale_up_from_zero is None and 'scaleUpFromZero' in kwargs:
-            scale_up_from_zero = kwargs['scaleUpFromZero']
-        if scan_interval is None and 'scanInterval' in kwargs:
-            scan_interval = kwargs['scanInterval']
-        if skip_nodes_with_local_storage is None and 'skipNodesWithLocalStorage' in kwargs:
-            skip_nodes_with_local_storage = kwargs['skipNodesWithLocalStorage']
-        if skip_nodes_with_system_pods is None and 'skipNodesWithSystemPods' in kwargs:
-            skip_nodes_with_system_pods = kwargs['skipNodesWithSystemPods']
-        if unneeded_duration is None and 'unneededDuration' in kwargs:
-            unneeded_duration = kwargs['unneededDuration']
-        if utilization_threshold is None and 'utilizationThreshold' in kwargs:
-            utilization_threshold = kwargs['utilizationThreshold']
-
         if cluster_id is not None:
-            _setter("cluster_id", cluster_id)
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if cool_down_duration is not None:
-            _setter("cool_down_duration", cool_down_duration)
+            pulumi.set(__self__, "cool_down_duration", cool_down_duration)
         if daemonset_eviction_for_nodes is not None:
-            _setter("daemonset_eviction_for_nodes", daemonset_eviction_for_nodes)
+            pulumi.set(__self__, "daemonset_eviction_for_nodes", daemonset_eviction_for_nodes)
         if expander is not None:
-            _setter("expander", expander)
+            pulumi.set(__self__, "expander", expander)
         if gpu_utilization_threshold is not None:
-            _setter("gpu_utilization_threshold", gpu_utilization_threshold)
+            pulumi.set(__self__, "gpu_utilization_threshold", gpu_utilization_threshold)
         if max_graceful_termination_sec is not None:
-            _setter("max_graceful_termination_sec", max_graceful_termination_sec)
+            pulumi.set(__self__, "max_graceful_termination_sec", max_graceful_termination_sec)
         if min_replica_count is not None:
-            _setter("min_replica_count", min_replica_count)
+            pulumi.set(__self__, "min_replica_count", min_replica_count)
         if recycle_node_deletion_enabled is not None:
-            _setter("recycle_node_deletion_enabled", recycle_node_deletion_enabled)
+            pulumi.set(__self__, "recycle_node_deletion_enabled", recycle_node_deletion_enabled)
         if scale_down_enabled is not None:
-            _setter("scale_down_enabled", scale_down_enabled)
+            pulumi.set(__self__, "scale_down_enabled", scale_down_enabled)
         if scale_up_from_zero is not None:
-            _setter("scale_up_from_zero", scale_up_from_zero)
+            pulumi.set(__self__, "scale_up_from_zero", scale_up_from_zero)
         if scan_interval is not None:
-            _setter("scan_interval", scan_interval)
+            pulumi.set(__self__, "scan_interval", scan_interval)
         if skip_nodes_with_local_storage is not None:
-            _setter("skip_nodes_with_local_storage", skip_nodes_with_local_storage)
+            pulumi.set(__self__, "skip_nodes_with_local_storage", skip_nodes_with_local_storage)
         if skip_nodes_with_system_pods is not None:
-            _setter("skip_nodes_with_system_pods", skip_nodes_with_system_pods)
+            pulumi.set(__self__, "skip_nodes_with_system_pods", skip_nodes_with_system_pods)
         if unneeded_duration is not None:
-            _setter("unneeded_duration", unneeded_duration)
+            pulumi.set(__self__, "unneeded_duration", unneeded_duration)
         if utilization_threshold is not None:
-            _setter("utilization_threshold", utilization_threshold)
+            pulumi.set(__self__, "utilization_threshold", utilization_threshold)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -362,103 +295,36 @@ class _AutoscalingConfigState:
         :param pulumi.Input[str] unneeded_duration: The unneeded duration. Default is `10m`.
         :param pulumi.Input[str] utilization_threshold: The scale-in threshold. Default is `0.5`.
         """
-        _AutoscalingConfigState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_id=cluster_id,
-            cool_down_duration=cool_down_duration,
-            daemonset_eviction_for_nodes=daemonset_eviction_for_nodes,
-            expander=expander,
-            gpu_utilization_threshold=gpu_utilization_threshold,
-            max_graceful_termination_sec=max_graceful_termination_sec,
-            min_replica_count=min_replica_count,
-            recycle_node_deletion_enabled=recycle_node_deletion_enabled,
-            scale_down_enabled=scale_down_enabled,
-            scale_up_from_zero=scale_up_from_zero,
-            scan_interval=scan_interval,
-            skip_nodes_with_local_storage=skip_nodes_with_local_storage,
-            skip_nodes_with_system_pods=skip_nodes_with_system_pods,
-            unneeded_duration=unneeded_duration,
-            utilization_threshold=utilization_threshold,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             cool_down_duration: Optional[pulumi.Input[str]] = None,
-             daemonset_eviction_for_nodes: Optional[pulumi.Input[bool]] = None,
-             expander: Optional[pulumi.Input[str]] = None,
-             gpu_utilization_threshold: Optional[pulumi.Input[str]] = None,
-             max_graceful_termination_sec: Optional[pulumi.Input[int]] = None,
-             min_replica_count: Optional[pulumi.Input[int]] = None,
-             recycle_node_deletion_enabled: Optional[pulumi.Input[bool]] = None,
-             scale_down_enabled: Optional[pulumi.Input[bool]] = None,
-             scale_up_from_zero: Optional[pulumi.Input[bool]] = None,
-             scan_interval: Optional[pulumi.Input[str]] = None,
-             skip_nodes_with_local_storage: Optional[pulumi.Input[bool]] = None,
-             skip_nodes_with_system_pods: Optional[pulumi.Input[bool]] = None,
-             unneeded_duration: Optional[pulumi.Input[str]] = None,
-             utilization_threshold: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cool_down_duration is None and 'coolDownDuration' in kwargs:
-            cool_down_duration = kwargs['coolDownDuration']
-        if daemonset_eviction_for_nodes is None and 'daemonsetEvictionForNodes' in kwargs:
-            daemonset_eviction_for_nodes = kwargs['daemonsetEvictionForNodes']
-        if gpu_utilization_threshold is None and 'gpuUtilizationThreshold' in kwargs:
-            gpu_utilization_threshold = kwargs['gpuUtilizationThreshold']
-        if max_graceful_termination_sec is None and 'maxGracefulTerminationSec' in kwargs:
-            max_graceful_termination_sec = kwargs['maxGracefulTerminationSec']
-        if min_replica_count is None and 'minReplicaCount' in kwargs:
-            min_replica_count = kwargs['minReplicaCount']
-        if recycle_node_deletion_enabled is None and 'recycleNodeDeletionEnabled' in kwargs:
-            recycle_node_deletion_enabled = kwargs['recycleNodeDeletionEnabled']
-        if scale_down_enabled is None and 'scaleDownEnabled' in kwargs:
-            scale_down_enabled = kwargs['scaleDownEnabled']
-        if scale_up_from_zero is None and 'scaleUpFromZero' in kwargs:
-            scale_up_from_zero = kwargs['scaleUpFromZero']
-        if scan_interval is None and 'scanInterval' in kwargs:
-            scan_interval = kwargs['scanInterval']
-        if skip_nodes_with_local_storage is None and 'skipNodesWithLocalStorage' in kwargs:
-            skip_nodes_with_local_storage = kwargs['skipNodesWithLocalStorage']
-        if skip_nodes_with_system_pods is None and 'skipNodesWithSystemPods' in kwargs:
-            skip_nodes_with_system_pods = kwargs['skipNodesWithSystemPods']
-        if unneeded_duration is None and 'unneededDuration' in kwargs:
-            unneeded_duration = kwargs['unneededDuration']
-        if utilization_threshold is None and 'utilizationThreshold' in kwargs:
-            utilization_threshold = kwargs['utilizationThreshold']
-
         if cluster_id is not None:
-            _setter("cluster_id", cluster_id)
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if cool_down_duration is not None:
-            _setter("cool_down_duration", cool_down_duration)
+            pulumi.set(__self__, "cool_down_duration", cool_down_duration)
         if daemonset_eviction_for_nodes is not None:
-            _setter("daemonset_eviction_for_nodes", daemonset_eviction_for_nodes)
+            pulumi.set(__self__, "daemonset_eviction_for_nodes", daemonset_eviction_for_nodes)
         if expander is not None:
-            _setter("expander", expander)
+            pulumi.set(__self__, "expander", expander)
         if gpu_utilization_threshold is not None:
-            _setter("gpu_utilization_threshold", gpu_utilization_threshold)
+            pulumi.set(__self__, "gpu_utilization_threshold", gpu_utilization_threshold)
         if max_graceful_termination_sec is not None:
-            _setter("max_graceful_termination_sec", max_graceful_termination_sec)
+            pulumi.set(__self__, "max_graceful_termination_sec", max_graceful_termination_sec)
         if min_replica_count is not None:
-            _setter("min_replica_count", min_replica_count)
+            pulumi.set(__self__, "min_replica_count", min_replica_count)
         if recycle_node_deletion_enabled is not None:
-            _setter("recycle_node_deletion_enabled", recycle_node_deletion_enabled)
+            pulumi.set(__self__, "recycle_node_deletion_enabled", recycle_node_deletion_enabled)
         if scale_down_enabled is not None:
-            _setter("scale_down_enabled", scale_down_enabled)
+            pulumi.set(__self__, "scale_down_enabled", scale_down_enabled)
         if scale_up_from_zero is not None:
-            _setter("scale_up_from_zero", scale_up_from_zero)
+            pulumi.set(__self__, "scale_up_from_zero", scale_up_from_zero)
         if scan_interval is not None:
-            _setter("scan_interval", scan_interval)
+            pulumi.set(__self__, "scan_interval", scan_interval)
         if skip_nodes_with_local_storage is not None:
-            _setter("skip_nodes_with_local_storage", skip_nodes_with_local_storage)
+            pulumi.set(__self__, "skip_nodes_with_local_storage", skip_nodes_with_local_storage)
         if skip_nodes_with_system_pods is not None:
-            _setter("skip_nodes_with_system_pods", skip_nodes_with_system_pods)
+            pulumi.set(__self__, "skip_nodes_with_system_pods", skip_nodes_with_system_pods)
         if unneeded_duration is not None:
-            _setter("unneeded_duration", unneeded_duration)
+            pulumi.set(__self__, "unneeded_duration", unneeded_duration)
         if utilization_threshold is not None:
-            _setter("utilization_threshold", utilization_threshold)
+            pulumi.set(__self__, "utilization_threshold", utilization_threshold)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -714,10 +580,6 @@ class AutoscalingConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AutoscalingConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

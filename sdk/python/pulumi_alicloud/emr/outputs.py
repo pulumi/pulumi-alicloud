@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -70,45 +70,18 @@ class ClusterBootstrapAction(dict):
         :param str name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param str path: bootstrap action path, e.g. "oss://bucket/path".
         """
-        ClusterBootstrapAction._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            arg=arg,
-            execution_fail_strategy=execution_fail_strategy,
-            execution_moment=execution_moment,
-            execution_target=execution_target,
-            name=name,
-            path=path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             arg: Optional[str] = None,
-             execution_fail_strategy: Optional[str] = None,
-             execution_moment: Optional[str] = None,
-             execution_target: Optional[str] = None,
-             name: Optional[str] = None,
-             path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if execution_fail_strategy is None and 'executionFailStrategy' in kwargs:
-            execution_fail_strategy = kwargs['executionFailStrategy']
-        if execution_moment is None and 'executionMoment' in kwargs:
-            execution_moment = kwargs['executionMoment']
-        if execution_target is None and 'executionTarget' in kwargs:
-            execution_target = kwargs['executionTarget']
-
         if arg is not None:
-            _setter("arg", arg)
+            pulumi.set(__self__, "arg", arg)
         if execution_fail_strategy is not None:
-            _setter("execution_fail_strategy", execution_fail_strategy)
+            pulumi.set(__self__, "execution_fail_strategy", execution_fail_strategy)
         if execution_moment is not None:
-            _setter("execution_moment", execution_moment)
+            pulumi.set(__self__, "execution_moment", execution_moment)
         if execution_target is not None:
-            _setter("execution_target", execution_target)
+            pulumi.set(__self__, "execution_target", execution_target)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if path is not None:
-            _setter("path", path)
+            pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter
@@ -195,43 +168,10 @@ class ClusterConfig(dict):
         :param str file_name: Custom configuration service file name, e.g. ’hdfs-site’.
         :param str service_name: Custom configuration service name, e.g. ’HDFS’.
         """
-        ClusterConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            config_key=config_key,
-            config_value=config_value,
-            file_name=file_name,
-            service_name=service_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             config_key: Optional[str] = None,
-             config_value: Optional[str] = None,
-             file_name: Optional[str] = None,
-             service_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if config_key is None and 'configKey' in kwargs:
-            config_key = kwargs['configKey']
-        if config_key is None:
-            raise TypeError("Missing 'config_key' argument")
-        if config_value is None and 'configValue' in kwargs:
-            config_value = kwargs['configValue']
-        if config_value is None:
-            raise TypeError("Missing 'config_value' argument")
-        if file_name is None and 'fileName' in kwargs:
-            file_name = kwargs['fileName']
-        if file_name is None:
-            raise TypeError("Missing 'file_name' argument")
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-        if service_name is None:
-            raise TypeError("Missing 'service_name' argument")
-
-        _setter("config_key", config_key)
-        _setter("config_value", config_value)
-        _setter("file_name", file_name)
-        _setter("service_name", service_name)
+        pulumi.set(__self__, "config_key", config_key)
+        pulumi.set(__self__, "config_value", config_value)
+        pulumi.set(__self__, "file_name", file_name)
+        pulumi.set(__self__, "service_name", service_name)
 
     @property
     @pulumi.getter(name="configKey")
@@ -347,109 +287,38 @@ class ClusterHostGroup(dict):
         :param str sys_disk_capacity: System disk capacity.
         :param str sys_disk_type: System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
         """
-        ClusterHostGroup._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto_renew=auto_renew,
-            charge_type=charge_type,
-            decommission_timeout=decommission_timeout,
-            disk_capacity=disk_capacity,
-            disk_count=disk_count,
-            disk_type=disk_type,
-            enable_graceful_decommission=enable_graceful_decommission,
-            gpu_driver=gpu_driver,
-            host_group_name=host_group_name,
-            host_group_type=host_group_type,
-            instance_list=instance_list,
-            instance_type=instance_type,
-            node_count=node_count,
-            period=period,
-            sys_disk_capacity=sys_disk_capacity,
-            sys_disk_type=sys_disk_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto_renew: Optional[bool] = None,
-             charge_type: Optional[str] = None,
-             decommission_timeout: Optional[int] = None,
-             disk_capacity: Optional[str] = None,
-             disk_count: Optional[str] = None,
-             disk_type: Optional[str] = None,
-             enable_graceful_decommission: Optional[bool] = None,
-             gpu_driver: Optional[str] = None,
-             host_group_name: Optional[str] = None,
-             host_group_type: Optional[str] = None,
-             instance_list: Optional[str] = None,
-             instance_type: Optional[str] = None,
-             node_count: Optional[str] = None,
-             period: Optional[int] = None,
-             sys_disk_capacity: Optional[str] = None,
-             sys_disk_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_renew is None and 'autoRenew' in kwargs:
-            auto_renew = kwargs['autoRenew']
-        if charge_type is None and 'chargeType' in kwargs:
-            charge_type = kwargs['chargeType']
-        if decommission_timeout is None and 'decommissionTimeout' in kwargs:
-            decommission_timeout = kwargs['decommissionTimeout']
-        if disk_capacity is None and 'diskCapacity' in kwargs:
-            disk_capacity = kwargs['diskCapacity']
-        if disk_count is None and 'diskCount' in kwargs:
-            disk_count = kwargs['diskCount']
-        if disk_type is None and 'diskType' in kwargs:
-            disk_type = kwargs['diskType']
-        if enable_graceful_decommission is None and 'enableGracefulDecommission' in kwargs:
-            enable_graceful_decommission = kwargs['enableGracefulDecommission']
-        if gpu_driver is None and 'gpuDriver' in kwargs:
-            gpu_driver = kwargs['gpuDriver']
-        if host_group_name is None and 'hostGroupName' in kwargs:
-            host_group_name = kwargs['hostGroupName']
-        if host_group_type is None and 'hostGroupType' in kwargs:
-            host_group_type = kwargs['hostGroupType']
-        if instance_list is None and 'instanceList' in kwargs:
-            instance_list = kwargs['instanceList']
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if node_count is None and 'nodeCount' in kwargs:
-            node_count = kwargs['nodeCount']
-        if sys_disk_capacity is None and 'sysDiskCapacity' in kwargs:
-            sys_disk_capacity = kwargs['sysDiskCapacity']
-        if sys_disk_type is None and 'sysDiskType' in kwargs:
-            sys_disk_type = kwargs['sysDiskType']
-
         if auto_renew is not None:
-            _setter("auto_renew", auto_renew)
+            pulumi.set(__self__, "auto_renew", auto_renew)
         if charge_type is not None:
-            _setter("charge_type", charge_type)
+            pulumi.set(__self__, "charge_type", charge_type)
         if decommission_timeout is not None:
-            _setter("decommission_timeout", decommission_timeout)
+            pulumi.set(__self__, "decommission_timeout", decommission_timeout)
         if disk_capacity is not None:
-            _setter("disk_capacity", disk_capacity)
+            pulumi.set(__self__, "disk_capacity", disk_capacity)
         if disk_count is not None:
-            _setter("disk_count", disk_count)
+            pulumi.set(__self__, "disk_count", disk_count)
         if disk_type is not None:
-            _setter("disk_type", disk_type)
+            pulumi.set(__self__, "disk_type", disk_type)
         if enable_graceful_decommission is not None:
-            _setter("enable_graceful_decommission", enable_graceful_decommission)
+            pulumi.set(__self__, "enable_graceful_decommission", enable_graceful_decommission)
         if gpu_driver is not None:
-            _setter("gpu_driver", gpu_driver)
+            pulumi.set(__self__, "gpu_driver", gpu_driver)
         if host_group_name is not None:
-            _setter("host_group_name", host_group_name)
+            pulumi.set(__self__, "host_group_name", host_group_name)
         if host_group_type is not None:
-            _setter("host_group_type", host_group_type)
+            pulumi.set(__self__, "host_group_type", host_group_type)
         if instance_list is not None:
-            _setter("instance_list", instance_list)
+            pulumi.set(__self__, "instance_list", instance_list)
         if instance_type is not None:
-            _setter("instance_type", instance_type)
+            pulumi.set(__self__, "instance_type", instance_type)
         if node_count is not None:
-            _setter("node_count", node_count)
+            pulumi.set(__self__, "node_count", node_count)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if sys_disk_capacity is not None:
-            _setter("sys_disk_capacity", sys_disk_capacity)
+            pulumi.set(__self__, "sys_disk_capacity", sys_disk_capacity)
         if sys_disk_type is not None:
-            _setter("sys_disk_type", sys_disk_type)
+            pulumi.set(__self__, "sys_disk_type", sys_disk_type)
 
     @property
     @pulumi.getter(name="autoRenew")
@@ -609,36 +478,9 @@ class ClusterMetaStoreConf(dict):
         :param str db_url: Custom rds database connection url.
         :param str db_user_name: Custom rds database user name.
         """
-        ClusterMetaStoreConf._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            db_password=db_password,
-            db_url=db_url,
-            db_user_name=db_user_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             db_password: Optional[str] = None,
-             db_url: Optional[str] = None,
-             db_user_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if db_password is None and 'dbPassword' in kwargs:
-            db_password = kwargs['dbPassword']
-        if db_password is None:
-            raise TypeError("Missing 'db_password' argument")
-        if db_url is None and 'dbUrl' in kwargs:
-            db_url = kwargs['dbUrl']
-        if db_url is None:
-            raise TypeError("Missing 'db_url' argument")
-        if db_user_name is None and 'dbUserName' in kwargs:
-            db_user_name = kwargs['dbUserName']
-        if db_user_name is None:
-            raise TypeError("Missing 'db_user_name' argument")
-
-        _setter("db_password", db_password)
-        _setter("db_url", db_url)
-        _setter("db_user_name", db_user_name)
+        pulumi.set(__self__, "db_password", db_password)
+        pulumi.set(__self__, "db_url", db_url)
+        pulumi.set(__self__, "db_user_name", db_user_name)
 
     @property
     @pulumi.getter(name="dbPassword")
@@ -719,69 +561,22 @@ class ClusterModifyClusterServiceConfig(dict):
         :param str host_instance_id: Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
         :param bool refresh_host_config: Cluster service configuration modification refresh host config, ’true’ or ’false’.
         """
-        ClusterModifyClusterServiceConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            config_params=config_params,
-            service_name=service_name,
-            comment=comment,
-            config_type=config_type,
-            custom_config_params=custom_config_params,
-            gateway_cluster_id_lists=gateway_cluster_id_lists,
-            group_id=group_id,
-            host_instance_id=host_instance_id,
-            refresh_host_config=refresh_host_config,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             config_params: Optional[str] = None,
-             service_name: Optional[str] = None,
-             comment: Optional[str] = None,
-             config_type: Optional[str] = None,
-             custom_config_params: Optional[str] = None,
-             gateway_cluster_id_lists: Optional[Sequence[str]] = None,
-             group_id: Optional[str] = None,
-             host_instance_id: Optional[str] = None,
-             refresh_host_config: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if config_params is None and 'configParams' in kwargs:
-            config_params = kwargs['configParams']
-        if config_params is None:
-            raise TypeError("Missing 'config_params' argument")
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-        if service_name is None:
-            raise TypeError("Missing 'service_name' argument")
-        if config_type is None and 'configType' in kwargs:
-            config_type = kwargs['configType']
-        if custom_config_params is None and 'customConfigParams' in kwargs:
-            custom_config_params = kwargs['customConfigParams']
-        if gateway_cluster_id_lists is None and 'gatewayClusterIdLists' in kwargs:
-            gateway_cluster_id_lists = kwargs['gatewayClusterIdLists']
-        if group_id is None and 'groupId' in kwargs:
-            group_id = kwargs['groupId']
-        if host_instance_id is None and 'hostInstanceId' in kwargs:
-            host_instance_id = kwargs['hostInstanceId']
-        if refresh_host_config is None and 'refreshHostConfig' in kwargs:
-            refresh_host_config = kwargs['refreshHostConfig']
-
-        _setter("config_params", config_params)
-        _setter("service_name", service_name)
+        pulumi.set(__self__, "config_params", config_params)
+        pulumi.set(__self__, "service_name", service_name)
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if config_type is not None:
-            _setter("config_type", config_type)
+            pulumi.set(__self__, "config_type", config_type)
         if custom_config_params is not None:
-            _setter("custom_config_params", custom_config_params)
+            pulumi.set(__self__, "custom_config_params", custom_config_params)
         if gateway_cluster_id_lists is not None:
-            _setter("gateway_cluster_id_lists", gateway_cluster_id_lists)
+            pulumi.set(__self__, "gateway_cluster_id_lists", gateway_cluster_id_lists)
         if group_id is not None:
-            _setter("group_id", group_id)
+            pulumi.set(__self__, "group_id", group_id)
         if host_instance_id is not None:
-            _setter("host_instance_id", host_instance_id)
+            pulumi.set(__self__, "host_instance_id", host_instance_id)
         if refresh_host_config is not None:
-            _setter("refresh_host_config", refresh_host_config)
+            pulumi.set(__self__, "refresh_host_config", refresh_host_config)
 
     @property
     @pulumi.getter(name="configParams")
@@ -947,313 +742,50 @@ class GetClustersClusterResult(dict):
         :param str vswitch_id: The vswitch id.
         :param str zone_id: The zone ID.
         """
-        GetClustersClusterResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_infos=access_infos,
-            auto_scaling_allowed=auto_scaling_allowed,
-            auto_scaling_by_load_allowed=auto_scaling_by_load_allowed,
-            auto_scaling_enable=auto_scaling_enable,
-            auto_scaling_spot_with_limit_allowed=auto_scaling_spot_with_limit_allowed,
-            bootstrap_action_lists=bootstrap_action_lists,
-            bootstrap_failed=bootstrap_failed,
-            cluster_id=cluster_id,
-            cluster_name=cluster_name,
-            create_resource=create_resource,
-            create_time=create_time,
-            create_type=create_type,
-            deposit_type=deposit_type,
-            eas_enable=eas_enable,
-            expired_time=expired_time,
-            extra_info=extra_info,
-            has_uncompleted_order=has_uncompleted_order,
-            high_availability_enable=high_availability_enable,
-            host_group_lists=host_group_lists,
-            host_pool_infos=host_pool_infos,
-            id=id,
-            image_id=image_id,
-            local_meta_db=local_meta_db,
-            machine_type=machine_type,
-            meta_store_type=meta_store_type,
-            net_type=net_type,
-            payment_type=payment_type,
-            period=period,
-            relate_cluster_infos=relate_cluster_infos,
-            resize_disk_enable=resize_disk_enable,
-            running_time=running_time,
-            security_group_id=security_group_id,
-            security_group_name=security_group_name,
-            software_infos=software_infos,
-            start_time=start_time,
-            status=status,
-            stop_time=stop_time,
-            tags=tags,
-            type=type,
-            user_defined_emr_ecs_role=user_defined_emr_ecs_role,
-            user_id=user_id,
-            vpc_id=vpc_id,
-            vswitch_id=vswitch_id,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_infos: Optional[Sequence['outputs.GetClustersClusterAccessInfoResult']] = None,
-             auto_scaling_allowed: Optional[bool] = None,
-             auto_scaling_by_load_allowed: Optional[bool] = None,
-             auto_scaling_enable: Optional[bool] = None,
-             auto_scaling_spot_with_limit_allowed: Optional[bool] = None,
-             bootstrap_action_lists: Optional[Sequence['outputs.GetClustersClusterBootstrapActionListResult']] = None,
-             bootstrap_failed: Optional[bool] = None,
-             cluster_id: Optional[str] = None,
-             cluster_name: Optional[str] = None,
-             create_resource: Optional[str] = None,
-             create_time: Optional[str] = None,
-             create_type: Optional[str] = None,
-             deposit_type: Optional[str] = None,
-             eas_enable: Optional[bool] = None,
-             expired_time: Optional[str] = None,
-             extra_info: Optional[str] = None,
-             has_uncompleted_order: Optional[bool] = None,
-             high_availability_enable: Optional[bool] = None,
-             host_group_lists: Optional[Sequence['outputs.GetClustersClusterHostGroupListResult']] = None,
-             host_pool_infos: Optional[Sequence['outputs.GetClustersClusterHostPoolInfoResult']] = None,
-             id: Optional[str] = None,
-             image_id: Optional[str] = None,
-             local_meta_db: Optional[bool] = None,
-             machine_type: Optional[str] = None,
-             meta_store_type: Optional[str] = None,
-             net_type: Optional[str] = None,
-             payment_type: Optional[str] = None,
-             period: Optional[int] = None,
-             relate_cluster_infos: Optional[Sequence['outputs.GetClustersClusterRelateClusterInfoResult']] = None,
-             resize_disk_enable: Optional[bool] = None,
-             running_time: Optional[int] = None,
-             security_group_id: Optional[str] = None,
-             security_group_name: Optional[str] = None,
-             software_infos: Optional[Sequence['outputs.GetClustersClusterSoftwareInfoResult']] = None,
-             start_time: Optional[str] = None,
-             status: Optional[str] = None,
-             stop_time: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             type: Optional[str] = None,
-             user_defined_emr_ecs_role: Optional[str] = None,
-             user_id: Optional[str] = None,
-             vpc_id: Optional[str] = None,
-             vswitch_id: Optional[str] = None,
-             zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_infos is None and 'accessInfos' in kwargs:
-            access_infos = kwargs['accessInfos']
-        if access_infos is None:
-            raise TypeError("Missing 'access_infos' argument")
-        if auto_scaling_allowed is None and 'autoScalingAllowed' in kwargs:
-            auto_scaling_allowed = kwargs['autoScalingAllowed']
-        if auto_scaling_allowed is None:
-            raise TypeError("Missing 'auto_scaling_allowed' argument")
-        if auto_scaling_by_load_allowed is None and 'autoScalingByLoadAllowed' in kwargs:
-            auto_scaling_by_load_allowed = kwargs['autoScalingByLoadAllowed']
-        if auto_scaling_by_load_allowed is None:
-            raise TypeError("Missing 'auto_scaling_by_load_allowed' argument")
-        if auto_scaling_enable is None and 'autoScalingEnable' in kwargs:
-            auto_scaling_enable = kwargs['autoScalingEnable']
-        if auto_scaling_enable is None:
-            raise TypeError("Missing 'auto_scaling_enable' argument")
-        if auto_scaling_spot_with_limit_allowed is None and 'autoScalingSpotWithLimitAllowed' in kwargs:
-            auto_scaling_spot_with_limit_allowed = kwargs['autoScalingSpotWithLimitAllowed']
-        if auto_scaling_spot_with_limit_allowed is None:
-            raise TypeError("Missing 'auto_scaling_spot_with_limit_allowed' argument")
-        if bootstrap_action_lists is None and 'bootstrapActionLists' in kwargs:
-            bootstrap_action_lists = kwargs['bootstrapActionLists']
-        if bootstrap_action_lists is None:
-            raise TypeError("Missing 'bootstrap_action_lists' argument")
-        if bootstrap_failed is None and 'bootstrapFailed' in kwargs:
-            bootstrap_failed = kwargs['bootstrapFailed']
-        if bootstrap_failed is None:
-            raise TypeError("Missing 'bootstrap_failed' argument")
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cluster_id is None:
-            raise TypeError("Missing 'cluster_id' argument")
-        if cluster_name is None and 'clusterName' in kwargs:
-            cluster_name = kwargs['clusterName']
-        if cluster_name is None:
-            raise TypeError("Missing 'cluster_name' argument")
-        if create_resource is None and 'createResource' in kwargs:
-            create_resource = kwargs['createResource']
-        if create_resource is None:
-            raise TypeError("Missing 'create_resource' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if create_type is None and 'createType' in kwargs:
-            create_type = kwargs['createType']
-        if create_type is None:
-            raise TypeError("Missing 'create_type' argument")
-        if deposit_type is None and 'depositType' in kwargs:
-            deposit_type = kwargs['depositType']
-        if deposit_type is None:
-            raise TypeError("Missing 'deposit_type' argument")
-        if eas_enable is None and 'easEnable' in kwargs:
-            eas_enable = kwargs['easEnable']
-        if eas_enable is None:
-            raise TypeError("Missing 'eas_enable' argument")
-        if expired_time is None and 'expiredTime' in kwargs:
-            expired_time = kwargs['expiredTime']
-        if expired_time is None:
-            raise TypeError("Missing 'expired_time' argument")
-        if extra_info is None and 'extraInfo' in kwargs:
-            extra_info = kwargs['extraInfo']
-        if extra_info is None:
-            raise TypeError("Missing 'extra_info' argument")
-        if has_uncompleted_order is None and 'hasUncompletedOrder' in kwargs:
-            has_uncompleted_order = kwargs['hasUncompletedOrder']
-        if has_uncompleted_order is None:
-            raise TypeError("Missing 'has_uncompleted_order' argument")
-        if high_availability_enable is None and 'highAvailabilityEnable' in kwargs:
-            high_availability_enable = kwargs['highAvailabilityEnable']
-        if high_availability_enable is None:
-            raise TypeError("Missing 'high_availability_enable' argument")
-        if host_group_lists is None and 'hostGroupLists' in kwargs:
-            host_group_lists = kwargs['hostGroupLists']
-        if host_group_lists is None:
-            raise TypeError("Missing 'host_group_lists' argument")
-        if host_pool_infos is None and 'hostPoolInfos' in kwargs:
-            host_pool_infos = kwargs['hostPoolInfos']
-        if host_pool_infos is None:
-            raise TypeError("Missing 'host_pool_infos' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-        if image_id is None:
-            raise TypeError("Missing 'image_id' argument")
-        if local_meta_db is None and 'localMetaDb' in kwargs:
-            local_meta_db = kwargs['localMetaDb']
-        if local_meta_db is None:
-            raise TypeError("Missing 'local_meta_db' argument")
-        if machine_type is None and 'machineType' in kwargs:
-            machine_type = kwargs['machineType']
-        if machine_type is None:
-            raise TypeError("Missing 'machine_type' argument")
-        if meta_store_type is None and 'metaStoreType' in kwargs:
-            meta_store_type = kwargs['metaStoreType']
-        if meta_store_type is None:
-            raise TypeError("Missing 'meta_store_type' argument")
-        if net_type is None and 'netType' in kwargs:
-            net_type = kwargs['netType']
-        if net_type is None:
-            raise TypeError("Missing 'net_type' argument")
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if payment_type is None:
-            raise TypeError("Missing 'payment_type' argument")
-        if period is None:
-            raise TypeError("Missing 'period' argument")
-        if relate_cluster_infos is None and 'relateClusterInfos' in kwargs:
-            relate_cluster_infos = kwargs['relateClusterInfos']
-        if relate_cluster_infos is None:
-            raise TypeError("Missing 'relate_cluster_infos' argument")
-        if resize_disk_enable is None and 'resizeDiskEnable' in kwargs:
-            resize_disk_enable = kwargs['resizeDiskEnable']
-        if resize_disk_enable is None:
-            raise TypeError("Missing 'resize_disk_enable' argument")
-        if running_time is None and 'runningTime' in kwargs:
-            running_time = kwargs['runningTime']
-        if running_time is None:
-            raise TypeError("Missing 'running_time' argument")
-        if security_group_id is None and 'securityGroupId' in kwargs:
-            security_group_id = kwargs['securityGroupId']
-        if security_group_id is None:
-            raise TypeError("Missing 'security_group_id' argument")
-        if security_group_name is None and 'securityGroupName' in kwargs:
-            security_group_name = kwargs['securityGroupName']
-        if security_group_name is None:
-            raise TypeError("Missing 'security_group_name' argument")
-        if software_infos is None and 'softwareInfos' in kwargs:
-            software_infos = kwargs['softwareInfos']
-        if software_infos is None:
-            raise TypeError("Missing 'software_infos' argument")
-        if start_time is None and 'startTime' in kwargs:
-            start_time = kwargs['startTime']
-        if start_time is None:
-            raise TypeError("Missing 'start_time' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if stop_time is None and 'stopTime' in kwargs:
-            stop_time = kwargs['stopTime']
-        if stop_time is None:
-            raise TypeError("Missing 'stop_time' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if user_defined_emr_ecs_role is None and 'userDefinedEmrEcsRole' in kwargs:
-            user_defined_emr_ecs_role = kwargs['userDefinedEmrEcsRole']
-        if user_defined_emr_ecs_role is None:
-            raise TypeError("Missing 'user_defined_emr_ecs_role' argument")
-        if user_id is None and 'userId' in kwargs:
-            user_id = kwargs['userId']
-        if user_id is None:
-            raise TypeError("Missing 'user_id' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("access_infos", access_infos)
-        _setter("auto_scaling_allowed", auto_scaling_allowed)
-        _setter("auto_scaling_by_load_allowed", auto_scaling_by_load_allowed)
-        _setter("auto_scaling_enable", auto_scaling_enable)
-        _setter("auto_scaling_spot_with_limit_allowed", auto_scaling_spot_with_limit_allowed)
-        _setter("bootstrap_action_lists", bootstrap_action_lists)
-        _setter("bootstrap_failed", bootstrap_failed)
-        _setter("cluster_id", cluster_id)
-        _setter("cluster_name", cluster_name)
-        _setter("create_resource", create_resource)
-        _setter("create_time", create_time)
-        _setter("create_type", create_type)
-        _setter("deposit_type", deposit_type)
-        _setter("eas_enable", eas_enable)
-        _setter("expired_time", expired_time)
-        _setter("extra_info", extra_info)
-        _setter("has_uncompleted_order", has_uncompleted_order)
-        _setter("high_availability_enable", high_availability_enable)
-        _setter("host_group_lists", host_group_lists)
-        _setter("host_pool_infos", host_pool_infos)
-        _setter("id", id)
-        _setter("image_id", image_id)
-        _setter("local_meta_db", local_meta_db)
-        _setter("machine_type", machine_type)
-        _setter("meta_store_type", meta_store_type)
-        _setter("net_type", net_type)
-        _setter("payment_type", payment_type)
-        _setter("period", period)
-        _setter("relate_cluster_infos", relate_cluster_infos)
-        _setter("resize_disk_enable", resize_disk_enable)
-        _setter("running_time", running_time)
-        _setter("security_group_id", security_group_id)
-        _setter("security_group_name", security_group_name)
-        _setter("software_infos", software_infos)
-        _setter("start_time", start_time)
-        _setter("status", status)
-        _setter("stop_time", stop_time)
-        _setter("tags", tags)
-        _setter("type", type)
-        _setter("user_defined_emr_ecs_role", user_defined_emr_ecs_role)
-        _setter("user_id", user_id)
-        _setter("vpc_id", vpc_id)
-        _setter("vswitch_id", vswitch_id)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "access_infos", access_infos)
+        pulumi.set(__self__, "auto_scaling_allowed", auto_scaling_allowed)
+        pulumi.set(__self__, "auto_scaling_by_load_allowed", auto_scaling_by_load_allowed)
+        pulumi.set(__self__, "auto_scaling_enable", auto_scaling_enable)
+        pulumi.set(__self__, "auto_scaling_spot_with_limit_allowed", auto_scaling_spot_with_limit_allowed)
+        pulumi.set(__self__, "bootstrap_action_lists", bootstrap_action_lists)
+        pulumi.set(__self__, "bootstrap_failed", bootstrap_failed)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "cluster_name", cluster_name)
+        pulumi.set(__self__, "create_resource", create_resource)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "create_type", create_type)
+        pulumi.set(__self__, "deposit_type", deposit_type)
+        pulumi.set(__self__, "eas_enable", eas_enable)
+        pulumi.set(__self__, "expired_time", expired_time)
+        pulumi.set(__self__, "extra_info", extra_info)
+        pulumi.set(__self__, "has_uncompleted_order", has_uncompleted_order)
+        pulumi.set(__self__, "high_availability_enable", high_availability_enable)
+        pulumi.set(__self__, "host_group_lists", host_group_lists)
+        pulumi.set(__self__, "host_pool_infos", host_pool_infos)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "local_meta_db", local_meta_db)
+        pulumi.set(__self__, "machine_type", machine_type)
+        pulumi.set(__self__, "meta_store_type", meta_store_type)
+        pulumi.set(__self__, "net_type", net_type)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "period", period)
+        pulumi.set(__self__, "relate_cluster_infos", relate_cluster_infos)
+        pulumi.set(__self__, "resize_disk_enable", resize_disk_enable)
+        pulumi.set(__self__, "running_time", running_time)
+        pulumi.set(__self__, "security_group_id", security_group_id)
+        pulumi.set(__self__, "security_group_name", security_group_name)
+        pulumi.set(__self__, "software_infos", software_infos)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "stop_time", stop_time)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "user_defined_emr_ecs_role", user_defined_emr_ecs_role)
+        pulumi.set(__self__, "user_id", user_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="accessInfos")
@@ -1609,22 +1141,7 @@ class GetClustersClusterAccessInfoResult(dict):
         """
         :param Sequence['GetClustersClusterAccessInfoZkLinkArgs'] zk_links: Link address information list of ZooKeeper.
         """
-        GetClustersClusterAccessInfoResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            zk_links=zk_links,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             zk_links: Optional[Sequence['outputs.GetClustersClusterAccessInfoZkLinkResult']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if zk_links is None and 'zkLinks' in kwargs:
-            zk_links = kwargs['zkLinks']
-        if zk_links is None:
-            raise TypeError("Missing 'zk_links' argument")
-
-        _setter("zk_links", zk_links)
+        pulumi.set(__self__, "zk_links", zk_links)
 
     @property
     @pulumi.getter(name="zkLinks")
@@ -1644,25 +1161,8 @@ class GetClustersClusterAccessInfoZkLinkResult(dict):
         :param str link: The access link address of ZooKeeper.
         :param str port: The port of ZooKeeper.
         """
-        GetClustersClusterAccessInfoZkLinkResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            link=link,
-            port=port,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             link: Optional[str] = None,
-             port: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if link is None:
-            raise TypeError("Missing 'link' argument")
-        if port is None:
-            raise TypeError("Missing 'port' argument")
-
-        _setter("link", link)
-        _setter("port", port)
+        pulumi.set(__self__, "link", link)
+        pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter
@@ -1692,30 +1192,9 @@ class GetClustersClusterBootstrapActionListResult(dict):
         :param str name: The internal name of the service.
         :param str path: Boot operation script path.
         """
-        GetClustersClusterBootstrapActionListResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            arg=arg,
-            name=name,
-            path=path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             arg: Optional[str] = None,
-             name: Optional[str] = None,
-             path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if arg is None:
-            raise TypeError("Missing 'arg' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-
-        _setter("arg", arg)
-        _setter("name", name)
-        _setter("path", path)
+        pulumi.set(__self__, "arg", arg)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter
@@ -1777,116 +1256,21 @@ class GetClustersClusterHostGroupListResult(dict):
         :param Sequence['GetClustersClusterHostGroupListNodeArgs'] nodes: Machine node.
         :param str period: The package year and month time of the machine group. The Valid Values : `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
         """
-        GetClustersClusterHostGroupListResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            band_width=band_width,
-            charge_type=charge_type,
-            cpu_core=cpu_core,
-            disk_capacity=disk_capacity,
-            disk_count=disk_count,
-            disk_type=disk_type,
-            host_group_change_type=host_group_change_type,
-            host_group_id=host_group_id,
-            host_group_name=host_group_name,
-            host_group_type=host_group_type,
-            instance_type=instance_type,
-            memory_capacity=memory_capacity,
-            node_count=node_count,
-            nodes=nodes,
-            period=period,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             band_width: Optional[str] = None,
-             charge_type: Optional[str] = None,
-             cpu_core: Optional[int] = None,
-             disk_capacity: Optional[int] = None,
-             disk_count: Optional[int] = None,
-             disk_type: Optional[str] = None,
-             host_group_change_type: Optional[str] = None,
-             host_group_id: Optional[str] = None,
-             host_group_name: Optional[str] = None,
-             host_group_type: Optional[str] = None,
-             instance_type: Optional[str] = None,
-             memory_capacity: Optional[int] = None,
-             node_count: Optional[int] = None,
-             nodes: Optional[Sequence['outputs.GetClustersClusterHostGroupListNodeResult']] = None,
-             period: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if band_width is None and 'bandWidth' in kwargs:
-            band_width = kwargs['bandWidth']
-        if band_width is None:
-            raise TypeError("Missing 'band_width' argument")
-        if charge_type is None and 'chargeType' in kwargs:
-            charge_type = kwargs['chargeType']
-        if charge_type is None:
-            raise TypeError("Missing 'charge_type' argument")
-        if cpu_core is None and 'cpuCore' in kwargs:
-            cpu_core = kwargs['cpuCore']
-        if cpu_core is None:
-            raise TypeError("Missing 'cpu_core' argument")
-        if disk_capacity is None and 'diskCapacity' in kwargs:
-            disk_capacity = kwargs['diskCapacity']
-        if disk_capacity is None:
-            raise TypeError("Missing 'disk_capacity' argument")
-        if disk_count is None and 'diskCount' in kwargs:
-            disk_count = kwargs['diskCount']
-        if disk_count is None:
-            raise TypeError("Missing 'disk_count' argument")
-        if disk_type is None and 'diskType' in kwargs:
-            disk_type = kwargs['diskType']
-        if disk_type is None:
-            raise TypeError("Missing 'disk_type' argument")
-        if host_group_change_type is None and 'hostGroupChangeType' in kwargs:
-            host_group_change_type = kwargs['hostGroupChangeType']
-        if host_group_change_type is None:
-            raise TypeError("Missing 'host_group_change_type' argument")
-        if host_group_id is None and 'hostGroupId' in kwargs:
-            host_group_id = kwargs['hostGroupId']
-        if host_group_id is None:
-            raise TypeError("Missing 'host_group_id' argument")
-        if host_group_name is None and 'hostGroupName' in kwargs:
-            host_group_name = kwargs['hostGroupName']
-        if host_group_name is None:
-            raise TypeError("Missing 'host_group_name' argument")
-        if host_group_type is None and 'hostGroupType' in kwargs:
-            host_group_type = kwargs['hostGroupType']
-        if host_group_type is None:
-            raise TypeError("Missing 'host_group_type' argument")
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if instance_type is None:
-            raise TypeError("Missing 'instance_type' argument")
-        if memory_capacity is None and 'memoryCapacity' in kwargs:
-            memory_capacity = kwargs['memoryCapacity']
-        if memory_capacity is None:
-            raise TypeError("Missing 'memory_capacity' argument")
-        if node_count is None and 'nodeCount' in kwargs:
-            node_count = kwargs['nodeCount']
-        if node_count is None:
-            raise TypeError("Missing 'node_count' argument")
-        if nodes is None:
-            raise TypeError("Missing 'nodes' argument")
-        if period is None:
-            raise TypeError("Missing 'period' argument")
-
-        _setter("band_width", band_width)
-        _setter("charge_type", charge_type)
-        _setter("cpu_core", cpu_core)
-        _setter("disk_capacity", disk_capacity)
-        _setter("disk_count", disk_count)
-        _setter("disk_type", disk_type)
-        _setter("host_group_change_type", host_group_change_type)
-        _setter("host_group_id", host_group_id)
-        _setter("host_group_name", host_group_name)
-        _setter("host_group_type", host_group_type)
-        _setter("instance_type", instance_type)
-        _setter("memory_capacity", memory_capacity)
-        _setter("node_count", node_count)
-        _setter("nodes", nodes)
-        _setter("period", period)
+        pulumi.set(__self__, "band_width", band_width)
+        pulumi.set(__self__, "charge_type", charge_type)
+        pulumi.set(__self__, "cpu_core", cpu_core)
+        pulumi.set(__self__, "disk_capacity", disk_capacity)
+        pulumi.set(__self__, "disk_count", disk_count)
+        pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "host_group_change_type", host_group_change_type)
+        pulumi.set(__self__, "host_group_id", host_group_id)
+        pulumi.set(__self__, "host_group_name", host_group_name)
+        pulumi.set(__self__, "host_group_type", host_group_type)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "memory_capacity", memory_capacity)
+        pulumi.set(__self__, "node_count", node_count)
+        pulumi.set(__self__, "nodes", nodes)
+        pulumi.set(__self__, "period", period)
 
     @property
     @pulumi.getter(name="bandWidth")
@@ -2034,83 +1418,16 @@ class GetClustersClusterHostGroupListNodeResult(dict):
         :param bool support_ipv6: Whether IPV6 is supported.
         :param str zone_id: The zone ID.
         """
-        GetClustersClusterHostGroupListNodeResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            disk_infos=disk_infos,
-            emr_expired_time=emr_expired_time,
-            expired_time=expired_time,
-            inner_ip=inner_ip,
-            instance_id=instance_id,
-            pub_ip=pub_ip,
-            status=status,
-            support_ipv6=support_ipv6,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[str] = None,
-             disk_infos: Optional[Sequence['outputs.GetClustersClusterHostGroupListNodeDiskInfoResult']] = None,
-             emr_expired_time: Optional[str] = None,
-             expired_time: Optional[str] = None,
-             inner_ip: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             pub_ip: Optional[str] = None,
-             status: Optional[str] = None,
-             support_ipv6: Optional[bool] = None,
-             zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if disk_infos is None and 'diskInfos' in kwargs:
-            disk_infos = kwargs['diskInfos']
-        if disk_infos is None:
-            raise TypeError("Missing 'disk_infos' argument")
-        if emr_expired_time is None and 'emrExpiredTime' in kwargs:
-            emr_expired_time = kwargs['emrExpiredTime']
-        if emr_expired_time is None:
-            raise TypeError("Missing 'emr_expired_time' argument")
-        if expired_time is None and 'expiredTime' in kwargs:
-            expired_time = kwargs['expiredTime']
-        if expired_time is None:
-            raise TypeError("Missing 'expired_time' argument")
-        if inner_ip is None and 'innerIp' in kwargs:
-            inner_ip = kwargs['innerIp']
-        if inner_ip is None:
-            raise TypeError("Missing 'inner_ip' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if pub_ip is None and 'pubIp' in kwargs:
-            pub_ip = kwargs['pubIp']
-        if pub_ip is None:
-            raise TypeError("Missing 'pub_ip' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if support_ipv6 is None and 'supportIpv6' in kwargs:
-            support_ipv6 = kwargs['supportIpv6']
-        if support_ipv6 is None:
-            raise TypeError("Missing 'support_ipv6' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("create_time", create_time)
-        _setter("disk_infos", disk_infos)
-        _setter("emr_expired_time", emr_expired_time)
-        _setter("expired_time", expired_time)
-        _setter("inner_ip", inner_ip)
-        _setter("instance_id", instance_id)
-        _setter("pub_ip", pub_ip)
-        _setter("status", status)
-        _setter("support_ipv6", support_ipv6)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "disk_infos", disk_infos)
+        pulumi.set(__self__, "emr_expired_time", emr_expired_time)
+        pulumi.set(__self__, "expired_time", expired_time)
+        pulumi.set(__self__, "inner_ip", inner_ip)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "pub_ip", pub_ip)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "support_ipv6", support_ipv6)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="createTime")
@@ -2208,44 +1525,11 @@ class GetClustersClusterHostGroupListNodeDiskInfoResult(dict):
         :param int size: Disk capacity.
         :param str type: Disk type.
         """
-        GetClustersClusterHostGroupListNodeDiskInfoResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            device=device,
-            disk_id=disk_id,
-            disk_name=disk_name,
-            size=size,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             device: Optional[str] = None,
-             disk_id: Optional[str] = None,
-             disk_name: Optional[str] = None,
-             size: Optional[int] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if device is None:
-            raise TypeError("Missing 'device' argument")
-        if disk_id is None and 'diskId' in kwargs:
-            disk_id = kwargs['diskId']
-        if disk_id is None:
-            raise TypeError("Missing 'disk_id' argument")
-        if disk_name is None and 'diskName' in kwargs:
-            disk_name = kwargs['diskName']
-        if disk_name is None:
-            raise TypeError("Missing 'disk_name' argument")
-        if size is None:
-            raise TypeError("Missing 'size' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("device", device)
-        _setter("disk_id", disk_id)
-        _setter("disk_name", disk_name)
-        _setter("size", size)
-        _setter("type", type)
+        pulumi.set(__self__, "device", device)
+        pulumi.set(__self__, "disk_id", disk_id)
+        pulumi.set(__self__, "disk_name", disk_name)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -2297,29 +1581,8 @@ class GetClustersClusterHostPoolInfoResult(dict):
         :param str hp_biz_id: Machine pool ID.
         :param str hp_name: The name of the machine pool.
         """
-        GetClustersClusterHostPoolInfoResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            hp_biz_id=hp_biz_id,
-            hp_name=hp_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             hp_biz_id: Optional[str] = None,
-             hp_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if hp_biz_id is None and 'hpBizId' in kwargs:
-            hp_biz_id = kwargs['hpBizId']
-        if hp_biz_id is None:
-            raise TypeError("Missing 'hp_biz_id' argument")
-        if hp_name is None and 'hpName' in kwargs:
-            hp_name = kwargs['hpName']
-        if hp_name is None:
-            raise TypeError("Missing 'hp_name' argument")
-
-        _setter("hp_biz_id", hp_biz_id)
-        _setter("hp_name", hp_name)
+        pulumi.set(__self__, "hp_biz_id", hp_biz_id)
+        pulumi.set(__self__, "hp_name", hp_name)
 
     @property
     @pulumi.getter(name="hpBizId")
@@ -2351,41 +1614,10 @@ class GetClustersClusterRelateClusterInfoResult(dict):
         :param str cluster_type: Cluster type:
         :param str status: The cluster status.
         """
-        GetClustersClusterRelateClusterInfoResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_id=cluster_id,
-            cluster_name=cluster_name,
-            cluster_type=cluster_type,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_id: Optional[str] = None,
-             cluster_name: Optional[str] = None,
-             cluster_type: Optional[str] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cluster_id is None:
-            raise TypeError("Missing 'cluster_id' argument")
-        if cluster_name is None and 'clusterName' in kwargs:
-            cluster_name = kwargs['clusterName']
-        if cluster_name is None:
-            raise TypeError("Missing 'cluster_name' argument")
-        if cluster_type is None and 'clusterType' in kwargs:
-            cluster_type = kwargs['clusterType']
-        if cluster_type is None:
-            raise TypeError("Missing 'cluster_type' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("cluster_id", cluster_id)
-        _setter("cluster_name", cluster_name)
-        _setter("cluster_type", cluster_type)
-        _setter("status", status)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "cluster_name", cluster_name)
+        pulumi.set(__self__, "cluster_type", cluster_type)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -2431,34 +1663,9 @@ class GetClustersClusterSoftwareInfoResult(dict):
         :param str emr_ver: E-MapReduce version number.
         :param Sequence['GetClustersClusterSoftwareInfoSoftwareArgs'] softwares: Service list.
         """
-        GetClustersClusterSoftwareInfoResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_type=cluster_type,
-            emr_ver=emr_ver,
-            softwares=softwares,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_type: Optional[str] = None,
-             emr_ver: Optional[str] = None,
-             softwares: Optional[Sequence['outputs.GetClustersClusterSoftwareInfoSoftwareResult']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_type is None and 'clusterType' in kwargs:
-            cluster_type = kwargs['clusterType']
-        if cluster_type is None:
-            raise TypeError("Missing 'cluster_type' argument")
-        if emr_ver is None and 'emrVer' in kwargs:
-            emr_ver = kwargs['emrVer']
-        if emr_ver is None:
-            raise TypeError("Missing 'emr_ver' argument")
-        if softwares is None:
-            raise TypeError("Missing 'softwares' argument")
-
-        _setter("cluster_type", cluster_type)
-        _setter("emr_ver", emr_ver)
-        _setter("softwares", softwares)
+        pulumi.set(__self__, "cluster_type", cluster_type)
+        pulumi.set(__self__, "emr_ver", emr_ver)
+        pulumi.set(__self__, "softwares", softwares)
 
     @property
     @pulumi.getter(name="clusterType")
@@ -2500,46 +1707,11 @@ class GetClustersClusterSoftwareInfoSoftwareResult(dict):
         :param int start_tpe: Startup type.
         :param str version: Service version.
         """
-        GetClustersClusterSoftwareInfoSoftwareResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            display_name=display_name,
-            name=name,
-            only_display=only_display,
-            start_tpe=start_tpe,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             display_name: Optional[str] = None,
-             name: Optional[str] = None,
-             only_display: Optional[bool] = None,
-             start_tpe: Optional[int] = None,
-             version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if only_display is None and 'onlyDisplay' in kwargs:
-            only_display = kwargs['onlyDisplay']
-        if only_display is None:
-            raise TypeError("Missing 'only_display' argument")
-        if start_tpe is None and 'startTpe' in kwargs:
-            start_tpe = kwargs['startTpe']
-        if start_tpe is None:
-            raise TypeError("Missing 'start_tpe' argument")
-        if version is None:
-            raise TypeError("Missing 'version' argument")
-
-        _setter("display_name", display_name)
-        _setter("name", name)
-        _setter("only_display", only_display)
-        _setter("start_tpe", start_tpe)
-        _setter("version", version)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "only_display", only_display)
+        pulumi.set(__self__, "start_tpe", start_tpe)
+        pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="displayName")
@@ -2593,30 +1765,9 @@ class GetDiskTypesTypeResult(dict):
         :param int min: The mininum value of the data disk to supported the specific instance type
         :param str value: The value of the data disk or system disk
         """
-        GetDiskTypesTypeResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            max=max,
-            min=min,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             max: Optional[int] = None,
-             min: Optional[int] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if max is None:
-            raise TypeError("Missing 'max' argument")
-        if min is None:
-            raise TypeError("Missing 'min' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("max", max)
-        _setter("min", min)
-        _setter("value", value)
+        pulumi.set(__self__, "max", max)
+        pulumi.set(__self__, "min", min)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -2654,34 +1805,9 @@ class GetInstanceTypesTypeResult(dict):
         :param int local_storage_capacity: Local capacity of the applied ecs instance for emr cluster. Unit: GB.
         :param str zone_id: The supported resources of specific zoneId.
         """
-        GetInstanceTypesTypeResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            local_storage_capacity=local_storage_capacity,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             local_storage_capacity: Optional[int] = None,
-             zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if local_storage_capacity is None and 'localStorageCapacity' in kwargs:
-            local_storage_capacity = kwargs['localStorageCapacity']
-        if local_storage_capacity is None:
-            raise TypeError("Missing 'local_storage_capacity' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("id", id)
-        _setter("local_storage_capacity", local_storage_capacity)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "local_storage_capacity", local_storage_capacity)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -2719,36 +1845,9 @@ class GetMainVersionsMainVersionResult(dict):
         :param str emr_version: The version of the emr cluster instance. Possible values: `EMR-4.0.0`, `EMR-3.23.0`, `EMR-3.22.0`.
         :param str image_id: The image id of the emr cluster instance.
         """
-        GetMainVersionsMainVersionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_types=cluster_types,
-            emr_version=emr_version,
-            image_id=image_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_types: Optional[Sequence[str]] = None,
-             emr_version: Optional[str] = None,
-             image_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_types is None and 'clusterTypes' in kwargs:
-            cluster_types = kwargs['clusterTypes']
-        if cluster_types is None:
-            raise TypeError("Missing 'cluster_types' argument")
-        if emr_version is None and 'emrVersion' in kwargs:
-            emr_version = kwargs['emrVersion']
-        if emr_version is None:
-            raise TypeError("Missing 'emr_version' argument")
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-        if image_id is None:
-            raise TypeError("Missing 'image_id' argument")
-
-        _setter("cluster_types", cluster_types)
-        _setter("emr_version", emr_version)
-        _setter("image_id", image_id)
+        pulumi.set(__self__, "cluster_types", cluster_types)
+        pulumi.set(__self__, "emr_version", emr_version)
+        pulumi.set(__self__, "image_id", image_id)
 
     @property
     @pulumi.getter(name="clusterTypes")

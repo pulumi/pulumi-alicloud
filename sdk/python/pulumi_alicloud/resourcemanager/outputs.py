@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -58,25 +58,10 @@ class ResourceGroupRegionStatus(dict):
         :param str region_id: The region ID.
         :param str status: The status of the regional resource group.
         """
-        ResourceGroupRegionStatus._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            region_id=region_id,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             region_id: Optional[str] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if region_id is None and 'regionId' in kwargs:
-            region_id = kwargs['regionId']
-
         if region_id is not None:
-            _setter("region_id", region_id)
+            pulumi.set(__self__, "region_id", region_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="regionId")
@@ -106,34 +91,9 @@ class GetAccountDeletionCheckTaskAbandonAbleCheckResult(dict):
         :param str check_name: The name of the cloud service to which the check item belongs.
         :param str description: The description of the check item.
         """
-        GetAccountDeletionCheckTaskAbandonAbleCheckResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            check_id=check_id,
-            check_name=check_name,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             check_id: Optional[str] = None,
-             check_name: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if check_id is None and 'checkId' in kwargs:
-            check_id = kwargs['checkId']
-        if check_id is None:
-            raise TypeError("Missing 'check_id' argument")
-        if check_name is None and 'checkName' in kwargs:
-            check_name = kwargs['checkName']
-        if check_name is None:
-            raise TypeError("Missing 'check_name' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-
-        _setter("check_id", check_id)
-        _setter("check_name", check_name)
-        _setter("description", description)
+        pulumi.set(__self__, "check_id", check_id)
+        pulumi.set(__self__, "check_name", check_name)
+        pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter(name="checkId")
@@ -171,34 +131,9 @@ class GetAccountDeletionCheckTaskNotAllowReasonResult(dict):
         :param str check_name: The name of the cloud service to which the check item belongs.
         :param str description: The description of the check item.
         """
-        GetAccountDeletionCheckTaskNotAllowReasonResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            check_id=check_id,
-            check_name=check_name,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             check_id: Optional[str] = None,
-             check_name: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if check_id is None and 'checkId' in kwargs:
-            check_id = kwargs['checkId']
-        if check_id is None:
-            raise TypeError("Missing 'check_id' argument")
-        if check_name is None and 'checkName' in kwargs:
-            check_name = kwargs['checkName']
-        if check_name is None:
-            raise TypeError("Missing 'check_name' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-
-        _setter("check_id", check_id)
-        _setter("check_name", check_name)
-        _setter("description", description)
+        pulumi.set(__self__, "check_id", check_id)
+        pulumi.set(__self__, "check_name", check_name)
+        pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter(name="checkId")
@@ -254,93 +189,18 @@ class GetAccountsAccountResult(dict):
         :param str status: The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
         :param str type: The type of the member account.
         """
-        GetAccountsAccountResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            account_name=account_name,
-            display_name=display_name,
-            folder_id=folder_id,
-            id=id,
-            join_method=join_method,
-            join_time=join_time,
-            modify_time=modify_time,
-            payer_account_id=payer_account_id,
-            resource_directory_id=resource_directory_id,
-            status=status,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[str] = None,
-             account_name: Optional[str] = None,
-             display_name: Optional[str] = None,
-             folder_id: Optional[str] = None,
-             id: Optional[str] = None,
-             join_method: Optional[str] = None,
-             join_time: Optional[str] = None,
-             modify_time: Optional[str] = None,
-             payer_account_id: Optional[str] = None,
-             resource_directory_id: Optional[str] = None,
-             status: Optional[str] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if account_id is None:
-            raise TypeError("Missing 'account_id' argument")
-        if account_name is None and 'accountName' in kwargs:
-            account_name = kwargs['accountName']
-        if account_name is None:
-            raise TypeError("Missing 'account_name' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if folder_id is None and 'folderId' in kwargs:
-            folder_id = kwargs['folderId']
-        if folder_id is None:
-            raise TypeError("Missing 'folder_id' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if join_method is None and 'joinMethod' in kwargs:
-            join_method = kwargs['joinMethod']
-        if join_method is None:
-            raise TypeError("Missing 'join_method' argument")
-        if join_time is None and 'joinTime' in kwargs:
-            join_time = kwargs['joinTime']
-        if join_time is None:
-            raise TypeError("Missing 'join_time' argument")
-        if modify_time is None and 'modifyTime' in kwargs:
-            modify_time = kwargs['modifyTime']
-        if modify_time is None:
-            raise TypeError("Missing 'modify_time' argument")
-        if payer_account_id is None and 'payerAccountId' in kwargs:
-            payer_account_id = kwargs['payerAccountId']
-        if payer_account_id is None:
-            raise TypeError("Missing 'payer_account_id' argument")
-        if resource_directory_id is None and 'resourceDirectoryId' in kwargs:
-            resource_directory_id = kwargs['resourceDirectoryId']
-        if resource_directory_id is None:
-            raise TypeError("Missing 'resource_directory_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("account_id", account_id)
-        _setter("account_name", account_name)
-        _setter("display_name", display_name)
-        _setter("folder_id", folder_id)
-        _setter("id", id)
-        _setter("join_method", join_method)
-        _setter("join_time", join_time)
-        _setter("modify_time", modify_time)
-        _setter("payer_account_id", payer_account_id)
-        _setter("resource_directory_id", resource_directory_id)
-        _setter("status", status)
-        _setter("type", type)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "account_name", account_name)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "folder_id", folder_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "join_method", join_method)
+        pulumi.set(__self__, "join_time", join_time)
+        pulumi.set(__self__, "modify_time", modify_time)
+        pulumi.set(__self__, "payer_account_id", payer_account_id)
+        pulumi.set(__self__, "resource_directory_id", resource_directory_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="accountId")
@@ -460,67 +320,14 @@ class GetControlPoliciesPolicyResult(dict):
         :param str policy_id: The ID of policy.
         :param str policy_type: The type of policy.
         """
-        GetControlPoliciesPolicyResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            attachment_count=attachment_count,
-            control_policy_name=control_policy_name,
-            description=description,
-            effect_scope=effect_scope,
-            id=id,
-            policy_document=policy_document,
-            policy_id=policy_id,
-            policy_type=policy_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             attachment_count: Optional[int] = None,
-             control_policy_name: Optional[str] = None,
-             description: Optional[str] = None,
-             effect_scope: Optional[str] = None,
-             id: Optional[str] = None,
-             policy_document: Optional[str] = None,
-             policy_id: Optional[str] = None,
-             policy_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if attachment_count is None and 'attachmentCount' in kwargs:
-            attachment_count = kwargs['attachmentCount']
-        if attachment_count is None:
-            raise TypeError("Missing 'attachment_count' argument")
-        if control_policy_name is None and 'controlPolicyName' in kwargs:
-            control_policy_name = kwargs['controlPolicyName']
-        if control_policy_name is None:
-            raise TypeError("Missing 'control_policy_name' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if effect_scope is None and 'effectScope' in kwargs:
-            effect_scope = kwargs['effectScope']
-        if effect_scope is None:
-            raise TypeError("Missing 'effect_scope' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if policy_document is None and 'policyDocument' in kwargs:
-            policy_document = kwargs['policyDocument']
-        if policy_document is None:
-            raise TypeError("Missing 'policy_document' argument")
-        if policy_id is None and 'policyId' in kwargs:
-            policy_id = kwargs['policyId']
-        if policy_id is None:
-            raise TypeError("Missing 'policy_id' argument")
-        if policy_type is None and 'policyType' in kwargs:
-            policy_type = kwargs['policyType']
-        if policy_type is None:
-            raise TypeError("Missing 'policy_type' argument")
-
-        _setter("attachment_count", attachment_count)
-        _setter("control_policy_name", control_policy_name)
-        _setter("description", description)
-        _setter("effect_scope", effect_scope)
-        _setter("id", id)
-        _setter("policy_document", policy_document)
-        _setter("policy_id", policy_id)
-        _setter("policy_type", policy_type)
+        pulumi.set(__self__, "attachment_count", attachment_count)
+        pulumi.set(__self__, "control_policy_name", control_policy_name)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "effect_scope", effect_scope)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "policy_document", policy_document)
+        pulumi.set(__self__, "policy_id", policy_id)
+        pulumi.set(__self__, "policy_type", policy_type)
 
     @property
     @pulumi.getter(name="attachmentCount")
@@ -604,53 +411,12 @@ class GetControlPolicyAttachmentsAttachmentResult(dict):
         :param str policy_name: The name of policy.
         :param str policy_type: The type of policy.
         """
-        GetControlPolicyAttachmentsAttachmentResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            attach_date=attach_date,
-            description=description,
-            id=id,
-            policy_id=policy_id,
-            policy_name=policy_name,
-            policy_type=policy_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             attach_date: Optional[str] = None,
-             description: Optional[str] = None,
-             id: Optional[str] = None,
-             policy_id: Optional[str] = None,
-             policy_name: Optional[str] = None,
-             policy_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if attach_date is None and 'attachDate' in kwargs:
-            attach_date = kwargs['attachDate']
-        if attach_date is None:
-            raise TypeError("Missing 'attach_date' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if policy_id is None and 'policyId' in kwargs:
-            policy_id = kwargs['policyId']
-        if policy_id is None:
-            raise TypeError("Missing 'policy_id' argument")
-        if policy_name is None and 'policyName' in kwargs:
-            policy_name = kwargs['policyName']
-        if policy_name is None:
-            raise TypeError("Missing 'policy_name' argument")
-        if policy_type is None and 'policyType' in kwargs:
-            policy_type = kwargs['policyType']
-        if policy_type is None:
-            raise TypeError("Missing 'policy_type' argument")
-
-        _setter("attach_date", attach_date)
-        _setter("description", description)
-        _setter("id", id)
-        _setter("policy_id", policy_id)
-        _setter("policy_name", policy_name)
-        _setter("policy_type", policy_type)
+        pulumi.set(__self__, "attach_date", attach_date)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "policy_id", policy_id)
+        pulumi.set(__self__, "policy_name", policy_name)
+        pulumi.set(__self__, "policy_type", policy_type)
 
     @property
     @pulumi.getter(name="attachDate")
@@ -714,41 +480,10 @@ class GetDelegatedAdministratorsAdministratorResult(dict):
         :param str id: The ID of the Delegated Administrator.
         :param str service_principal: The identity of the trusted service.
         """
-        GetDelegatedAdministratorsAdministratorResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            delegation_enabled_time=delegation_enabled_time,
-            id=id,
-            service_principal=service_principal,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[str] = None,
-             delegation_enabled_time: Optional[str] = None,
-             id: Optional[str] = None,
-             service_principal: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if account_id is None:
-            raise TypeError("Missing 'account_id' argument")
-        if delegation_enabled_time is None and 'delegationEnabledTime' in kwargs:
-            delegation_enabled_time = kwargs['delegationEnabledTime']
-        if delegation_enabled_time is None:
-            raise TypeError("Missing 'delegation_enabled_time' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if service_principal is None and 'servicePrincipal' in kwargs:
-            service_principal = kwargs['servicePrincipal']
-        if service_principal is None:
-            raise TypeError("Missing 'service_principal' argument")
-
-        _setter("account_id", account_id)
-        _setter("delegation_enabled_time", delegation_enabled_time)
-        _setter("id", id)
-        _setter("service_principal", service_principal)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "delegation_enabled_time", delegation_enabled_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "service_principal", service_principal)
 
     @property
     @pulumi.getter(name="accountId")
@@ -796,41 +531,10 @@ class GetFoldersFolderResult(dict):
         :param str id: The ID of the folder.
         :param str parent_folder_id: The ID of the parent folder.
         """
-        GetFoldersFolderResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            folder_id=folder_id,
-            folder_name=folder_name,
-            id=id,
-            parent_folder_id=parent_folder_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             folder_id: Optional[str] = None,
-             folder_name: Optional[str] = None,
-             id: Optional[str] = None,
-             parent_folder_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if folder_id is None and 'folderId' in kwargs:
-            folder_id = kwargs['folderId']
-        if folder_id is None:
-            raise TypeError("Missing 'folder_id' argument")
-        if folder_name is None and 'folderName' in kwargs:
-            folder_name = kwargs['folderName']
-        if folder_name is None:
-            raise TypeError("Missing 'folder_name' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if parent_folder_id is None and 'parentFolderId' in kwargs:
-            parent_folder_id = kwargs['parentFolderId']
-        if parent_folder_id is None:
-            raise TypeError("Missing 'parent_folder_id' argument")
-
-        _setter("folder_id", folder_id)
-        _setter("folder_name", folder_name)
-        _setter("id", id)
-        _setter("parent_folder_id", parent_folder_id)
+        pulumi.set(__self__, "folder_id", folder_id)
+        pulumi.set(__self__, "folder_name", folder_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "parent_folder_id", parent_folder_id)
 
     @property
     @pulumi.getter(name="folderId")
@@ -896,100 +600,19 @@ class GetHandshakesHandshakeResult(dict):
         :param str target_entity: The ID or logon email address of the invited account.
         :param str target_type: The type of the invited account.
         """
-        GetHandshakesHandshakeResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expire_time=expire_time,
-            handshake_id=handshake_id,
-            id=id,
-            invited_account_real_name=invited_account_real_name,
-            master_account_id=master_account_id,
-            master_account_name=master_account_name,
-            master_account_real_name=master_account_real_name,
-            modify_time=modify_time,
-            note=note,
-            resource_directory_id=resource_directory_id,
-            status=status,
-            target_entity=target_entity,
-            target_type=target_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expire_time: Optional[str] = None,
-             handshake_id: Optional[str] = None,
-             id: Optional[str] = None,
-             invited_account_real_name: Optional[str] = None,
-             master_account_id: Optional[str] = None,
-             master_account_name: Optional[str] = None,
-             master_account_real_name: Optional[str] = None,
-             modify_time: Optional[str] = None,
-             note: Optional[str] = None,
-             resource_directory_id: Optional[str] = None,
-             status: Optional[str] = None,
-             target_entity: Optional[str] = None,
-             target_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expire_time is None and 'expireTime' in kwargs:
-            expire_time = kwargs['expireTime']
-        if expire_time is None:
-            raise TypeError("Missing 'expire_time' argument")
-        if handshake_id is None and 'handshakeId' in kwargs:
-            handshake_id = kwargs['handshakeId']
-        if handshake_id is None:
-            raise TypeError("Missing 'handshake_id' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if invited_account_real_name is None and 'invitedAccountRealName' in kwargs:
-            invited_account_real_name = kwargs['invitedAccountRealName']
-        if invited_account_real_name is None:
-            raise TypeError("Missing 'invited_account_real_name' argument")
-        if master_account_id is None and 'masterAccountId' in kwargs:
-            master_account_id = kwargs['masterAccountId']
-        if master_account_id is None:
-            raise TypeError("Missing 'master_account_id' argument")
-        if master_account_name is None and 'masterAccountName' in kwargs:
-            master_account_name = kwargs['masterAccountName']
-        if master_account_name is None:
-            raise TypeError("Missing 'master_account_name' argument")
-        if master_account_real_name is None and 'masterAccountRealName' in kwargs:
-            master_account_real_name = kwargs['masterAccountRealName']
-        if master_account_real_name is None:
-            raise TypeError("Missing 'master_account_real_name' argument")
-        if modify_time is None and 'modifyTime' in kwargs:
-            modify_time = kwargs['modifyTime']
-        if modify_time is None:
-            raise TypeError("Missing 'modify_time' argument")
-        if note is None:
-            raise TypeError("Missing 'note' argument")
-        if resource_directory_id is None and 'resourceDirectoryId' in kwargs:
-            resource_directory_id = kwargs['resourceDirectoryId']
-        if resource_directory_id is None:
-            raise TypeError("Missing 'resource_directory_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if target_entity is None and 'targetEntity' in kwargs:
-            target_entity = kwargs['targetEntity']
-        if target_entity is None:
-            raise TypeError("Missing 'target_entity' argument")
-        if target_type is None and 'targetType' in kwargs:
-            target_type = kwargs['targetType']
-        if target_type is None:
-            raise TypeError("Missing 'target_type' argument")
-
-        _setter("expire_time", expire_time)
-        _setter("handshake_id", handshake_id)
-        _setter("id", id)
-        _setter("invited_account_real_name", invited_account_real_name)
-        _setter("master_account_id", master_account_id)
-        _setter("master_account_name", master_account_name)
-        _setter("master_account_real_name", master_account_real_name)
-        _setter("modify_time", modify_time)
-        _setter("note", note)
-        _setter("resource_directory_id", resource_directory_id)
-        _setter("status", status)
-        _setter("target_entity", target_entity)
-        _setter("target_type", target_type)
+        pulumi.set(__self__, "expire_time", expire_time)
+        pulumi.set(__self__, "handshake_id", handshake_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "invited_account_real_name", invited_account_real_name)
+        pulumi.set(__self__, "master_account_id", master_account_id)
+        pulumi.set(__self__, "master_account_name", master_account_name)
+        pulumi.set(__self__, "master_account_real_name", master_account_real_name)
+        pulumi.set(__self__, "modify_time", modify_time)
+        pulumi.set(__self__, "note", note)
+        pulumi.set(__self__, "resource_directory_id", resource_directory_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "target_entity", target_entity)
+        pulumi.set(__self__, "target_type", target_type)
 
     @property
     @pulumi.getter(name="expireTime")
@@ -1115,60 +738,13 @@ class GetPoliciesPolicyResult(dict):
         :param str policy_type: The type of the policy. If you do not specify this parameter, the system lists all types of policies. Valid values: `Custom` and `System`.
         :param str update_date: The time when the policy was updated.
         """
-        GetPoliciesPolicyResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            attachment_count=attachment_count,
-            default_version=default_version,
-            description=description,
-            id=id,
-            policy_name=policy_name,
-            policy_type=policy_type,
-            update_date=update_date,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             attachment_count: Optional[int] = None,
-             default_version: Optional[str] = None,
-             description: Optional[str] = None,
-             id: Optional[str] = None,
-             policy_name: Optional[str] = None,
-             policy_type: Optional[str] = None,
-             update_date: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if attachment_count is None and 'attachmentCount' in kwargs:
-            attachment_count = kwargs['attachmentCount']
-        if attachment_count is None:
-            raise TypeError("Missing 'attachment_count' argument")
-        if default_version is None and 'defaultVersion' in kwargs:
-            default_version = kwargs['defaultVersion']
-        if default_version is None:
-            raise TypeError("Missing 'default_version' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if policy_name is None and 'policyName' in kwargs:
-            policy_name = kwargs['policyName']
-        if policy_name is None:
-            raise TypeError("Missing 'policy_name' argument")
-        if policy_type is None and 'policyType' in kwargs:
-            policy_type = kwargs['policyType']
-        if policy_type is None:
-            raise TypeError("Missing 'policy_type' argument")
-        if update_date is None and 'updateDate' in kwargs:
-            update_date = kwargs['updateDate']
-        if update_date is None:
-            raise TypeError("Missing 'update_date' argument")
-
-        _setter("attachment_count", attachment_count)
-        _setter("default_version", default_version)
-        _setter("description", description)
-        _setter("id", id)
-        _setter("policy_name", policy_name)
-        _setter("policy_type", policy_type)
-        _setter("update_date", update_date)
+        pulumi.set(__self__, "attachment_count", attachment_count)
+        pulumi.set(__self__, "default_version", default_version)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "policy_name", policy_name)
+        pulumi.set(__self__, "policy_type", policy_type)
+        pulumi.set(__self__, "update_date", update_date)
 
     @property
     @pulumi.getter(name="attachmentCount")
@@ -1248,67 +824,14 @@ class GetPolicyAttachmentsAttachmentResult(dict):
         :param str principal_type: The type of the object to which the policy is attached. If you do not specify this parameter, the system lists all types of objects. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
         :param str resource_group_id: The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs. If you do not specify this parameter, the system lists all policy attachment records under the current account.
         """
-        GetPolicyAttachmentsAttachmentResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            attach_date=attach_date,
-            description=description,
-            id=id,
-            policy_name=policy_name,
-            policy_type=policy_type,
-            principal_name=principal_name,
-            principal_type=principal_type,
-            resource_group_id=resource_group_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             attach_date: Optional[str] = None,
-             description: Optional[str] = None,
-             id: Optional[str] = None,
-             policy_name: Optional[str] = None,
-             policy_type: Optional[str] = None,
-             principal_name: Optional[str] = None,
-             principal_type: Optional[str] = None,
-             resource_group_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if attach_date is None and 'attachDate' in kwargs:
-            attach_date = kwargs['attachDate']
-        if attach_date is None:
-            raise TypeError("Missing 'attach_date' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if policy_name is None and 'policyName' in kwargs:
-            policy_name = kwargs['policyName']
-        if policy_name is None:
-            raise TypeError("Missing 'policy_name' argument")
-        if policy_type is None and 'policyType' in kwargs:
-            policy_type = kwargs['policyType']
-        if policy_type is None:
-            raise TypeError("Missing 'policy_type' argument")
-        if principal_name is None and 'principalName' in kwargs:
-            principal_name = kwargs['principalName']
-        if principal_name is None:
-            raise TypeError("Missing 'principal_name' argument")
-        if principal_type is None and 'principalType' in kwargs:
-            principal_type = kwargs['principalType']
-        if principal_type is None:
-            raise TypeError("Missing 'principal_type' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-
-        _setter("attach_date", attach_date)
-        _setter("description", description)
-        _setter("id", id)
-        _setter("policy_name", policy_name)
-        _setter("policy_type", policy_type)
-        _setter("principal_name", principal_name)
-        _setter("principal_type", principal_type)
-        _setter("resource_group_id", resource_group_id)
+        pulumi.set(__self__, "attach_date", attach_date)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "policy_name", policy_name)
+        pulumi.set(__self__, "policy_type", policy_type)
+        pulumi.set(__self__, "principal_name", principal_name)
+        pulumi.set(__self__, "principal_type", principal_type)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
 
     @property
     @pulumi.getter(name="attachDate")
@@ -1388,41 +911,10 @@ class GetPolicyVersionsVersionResult(dict):
         :param str policy_document: (Available in v1.114.0+) The policy document of the policy version.
         :param str version_id: The ID of the policy version.
         """
-        GetPolicyVersionsVersionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            is_default_version=is_default_version,
-            policy_document=policy_document,
-            version_id=version_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             is_default_version: Optional[bool] = None,
-             policy_document: Optional[str] = None,
-             version_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if is_default_version is None and 'isDefaultVersion' in kwargs:
-            is_default_version = kwargs['isDefaultVersion']
-        if is_default_version is None:
-            raise TypeError("Missing 'is_default_version' argument")
-        if policy_document is None and 'policyDocument' in kwargs:
-            policy_document = kwargs['policyDocument']
-        if policy_document is None:
-            raise TypeError("Missing 'policy_document' argument")
-        if version_id is None and 'versionId' in kwargs:
-            version_id = kwargs['versionId']
-        if version_id is None:
-            raise TypeError("Missing 'version_id' argument")
-
-        _setter("id", id)
-        _setter("is_default_version", is_default_version)
-        _setter("policy_document", policy_document)
-        _setter("version_id", version_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_default_version", is_default_version)
+        pulumi.set(__self__, "policy_document", policy_document)
+        pulumi.set(__self__, "version_id", version_id)
 
     @property
     @pulumi.getter
@@ -1474,53 +966,12 @@ class GetResourceDirectoriesDirectoryResult(dict):
         :param str root_folder_id: The ID of the root folder.
         :param str status: (Available in 1.120.0+.) The status of the control policy.
         """
-        GetResourceDirectoriesDirectoryResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            master_account_id=master_account_id,
-            master_account_name=master_account_name,
-            resource_directory_id=resource_directory_id,
-            root_folder_id=root_folder_id,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             master_account_id: Optional[str] = None,
-             master_account_name: Optional[str] = None,
-             resource_directory_id: Optional[str] = None,
-             root_folder_id: Optional[str] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if master_account_id is None and 'masterAccountId' in kwargs:
-            master_account_id = kwargs['masterAccountId']
-        if master_account_id is None:
-            raise TypeError("Missing 'master_account_id' argument")
-        if master_account_name is None and 'masterAccountName' in kwargs:
-            master_account_name = kwargs['masterAccountName']
-        if master_account_name is None:
-            raise TypeError("Missing 'master_account_name' argument")
-        if resource_directory_id is None and 'resourceDirectoryId' in kwargs:
-            resource_directory_id = kwargs['resourceDirectoryId']
-        if resource_directory_id is None:
-            raise TypeError("Missing 'resource_directory_id' argument")
-        if root_folder_id is None and 'rootFolderId' in kwargs:
-            root_folder_id = kwargs['rootFolderId']
-        if root_folder_id is None:
-            raise TypeError("Missing 'root_folder_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("id", id)
-        _setter("master_account_id", master_account_id)
-        _setter("master_account_name", master_account_name)
-        _setter("resource_directory_id", resource_directory_id)
-        _setter("root_folder_id", root_folder_id)
-        _setter("status", status)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "master_account_id", master_account_id)
+        pulumi.set(__self__, "master_account_name", master_account_name)
+        pulumi.set(__self__, "resource_directory_id", resource_directory_id)
+        pulumi.set(__self__, "root_folder_id", root_folder_id)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -1590,58 +1041,13 @@ class GetResourceGroupsGroupResult(dict):
         :param str resource_group_name: (Available since v1.114.0) The unique identifier of the resource group.
         :param str status: The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
         """
-        GetResourceGroupsGroupResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            display_name=display_name,
-            id=id,
-            name=name,
-            region_statuses=region_statuses,
-            resource_group_name=resource_group_name,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[str] = None,
-             display_name: Optional[str] = None,
-             id: Optional[str] = None,
-             name: Optional[str] = None,
-             region_statuses: Optional[Sequence['outputs.GetResourceGroupsGroupRegionStatusResult']] = None,
-             resource_group_name: Optional[str] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if account_id is None:
-            raise TypeError("Missing 'account_id' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if region_statuses is None and 'regionStatuses' in kwargs:
-            region_statuses = kwargs['regionStatuses']
-        if region_statuses is None:
-            raise TypeError("Missing 'region_statuses' argument")
-        if resource_group_name is None and 'resourceGroupName' in kwargs:
-            resource_group_name = kwargs['resourceGroupName']
-        if resource_group_name is None:
-            raise TypeError("Missing 'resource_group_name' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("account_id", account_id)
-        _setter("display_name", display_name)
-        _setter("id", id)
-        _setter("name", name)
-        _setter("region_statuses", region_statuses)
-        _setter("resource_group_name", resource_group_name)
-        _setter("status", status)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "region_statuses", region_statuses)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="accountId")
@@ -1709,27 +1115,8 @@ class GetResourceGroupsGroupRegionStatusResult(dict):
         :param str region_id: The region ID.
         :param str status: The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
         """
-        GetResourceGroupsGroupRegionStatusResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            region_id=region_id,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             region_id: Optional[str] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if region_id is None and 'regionId' in kwargs:
-            region_id = kwargs['regionId']
-        if region_id is None:
-            raise TypeError("Missing 'region_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("region_id", region_id)
-        _setter("status", status)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="regionId")
@@ -1763,46 +1150,11 @@ class GetResourceSharesShareResult(dict):
         :param str resource_share_owner: The owner of resource share.
         :param str status: The status of resource share.
         """
-        GetResourceSharesShareResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            resource_share_id=resource_share_id,
-            resource_share_name=resource_share_name,
-            resource_share_owner=resource_share_owner,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             resource_share_id: Optional[str] = None,
-             resource_share_name: Optional[str] = None,
-             resource_share_owner: Optional[str] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if resource_share_id is None and 'resourceShareId' in kwargs:
-            resource_share_id = kwargs['resourceShareId']
-        if resource_share_id is None:
-            raise TypeError("Missing 'resource_share_id' argument")
-        if resource_share_name is None and 'resourceShareName' in kwargs:
-            resource_share_name = kwargs['resourceShareName']
-        if resource_share_name is None:
-            raise TypeError("Missing 'resource_share_name' argument")
-        if resource_share_owner is None and 'resourceShareOwner' in kwargs:
-            resource_share_owner = kwargs['resourceShareOwner']
-        if resource_share_owner is None:
-            raise TypeError("Missing 'resource_share_owner' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("id", id)
-        _setter("resource_share_id", resource_share_id)
-        _setter("resource_share_name", resource_share_name)
-        _setter("resource_share_owner", resource_share_owner)
-        _setter("status", status)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource_share_id", resource_share_id)
+        pulumi.set(__self__, "resource_share_name", resource_share_name)
+        pulumi.set(__self__, "resource_share_owner", resource_share_owner)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -1866,65 +1218,14 @@ class GetRolesRoleResult(dict):
         :param str role_name: The name of the role.
         :param str update_date: The time when the RAM role was updated.
         """
-        GetRolesRoleResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            arn=arn,
-            assume_role_policy_document=assume_role_policy_document,
-            description=description,
-            id=id,
-            max_session_duration=max_session_duration,
-            role_id=role_id,
-            role_name=role_name,
-            update_date=update_date,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             arn: Optional[str] = None,
-             assume_role_policy_document: Optional[str] = None,
-             description: Optional[str] = None,
-             id: Optional[str] = None,
-             max_session_duration: Optional[int] = None,
-             role_id: Optional[str] = None,
-             role_name: Optional[str] = None,
-             update_date: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if arn is None:
-            raise TypeError("Missing 'arn' argument")
-        if assume_role_policy_document is None and 'assumeRolePolicyDocument' in kwargs:
-            assume_role_policy_document = kwargs['assumeRolePolicyDocument']
-        if assume_role_policy_document is None:
-            raise TypeError("Missing 'assume_role_policy_document' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if max_session_duration is None and 'maxSessionDuration' in kwargs:
-            max_session_duration = kwargs['maxSessionDuration']
-        if max_session_duration is None:
-            raise TypeError("Missing 'max_session_duration' argument")
-        if role_id is None and 'roleId' in kwargs:
-            role_id = kwargs['roleId']
-        if role_id is None:
-            raise TypeError("Missing 'role_id' argument")
-        if role_name is None and 'roleName' in kwargs:
-            role_name = kwargs['roleName']
-        if role_name is None:
-            raise TypeError("Missing 'role_name' argument")
-        if update_date is None and 'updateDate' in kwargs:
-            update_date = kwargs['updateDate']
-        if update_date is None:
-            raise TypeError("Missing 'update_date' argument")
-
-        _setter("arn", arn)
-        _setter("assume_role_policy_document", assume_role_policy_document)
-        _setter("description", description)
-        _setter("id", id)
-        _setter("max_session_duration", max_session_duration)
-        _setter("role_id", role_id)
-        _setter("role_name", role_name)
-        _setter("update_date", update_date)
+        pulumi.set(__self__, "arn", arn)
+        pulumi.set(__self__, "assume_role_policy_document", assume_role_policy_document)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "max_session_duration", max_session_duration)
+        pulumi.set(__self__, "role_id", role_id)
+        pulumi.set(__self__, "role_name", role_name)
+        pulumi.set(__self__, "update_date", update_date)
 
     @property
     @pulumi.getter
@@ -2006,46 +1307,11 @@ class GetSharedResourcesResourceResult(dict):
         :param str resource_type: The type of shared resource.
         :param str status: The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
         """
-        GetSharedResourcesResourceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            resource_id=resource_id,
-            resource_share_id=resource_share_id,
-            resource_type=resource_type,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             resource_id: Optional[str] = None,
-             resource_share_id: Optional[str] = None,
-             resource_type: Optional[str] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if resource_id is None and 'resourceId' in kwargs:
-            resource_id = kwargs['resourceId']
-        if resource_id is None:
-            raise TypeError("Missing 'resource_id' argument")
-        if resource_share_id is None and 'resourceShareId' in kwargs:
-            resource_share_id = kwargs['resourceShareId']
-        if resource_share_id is None:
-            raise TypeError("Missing 'resource_share_id' argument")
-        if resource_type is None and 'resourceType' in kwargs:
-            resource_type = kwargs['resourceType']
-        if resource_type is None:
-            raise TypeError("Missing 'resource_type' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("id", id)
-        _setter("resource_id", resource_id)
-        _setter("resource_share_id", resource_share_id)
-        _setter("resource_type", resource_type)
-        _setter("status", status)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource_id", resource_id)
+        pulumi.set(__self__, "resource_share_id", resource_share_id)
+        pulumi.set(__self__, "resource_type", resource_type)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -2101,39 +1367,10 @@ class GetSharedTargetsTargetResult(dict):
         :param str status: The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
         :param str target_id: The ID of the Shared Target.
         """
-        GetSharedTargetsTargetResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            resource_share_id=resource_share_id,
-            status=status,
-            target_id=target_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             resource_share_id: Optional[str] = None,
-             status: Optional[str] = None,
-             target_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if resource_share_id is None and 'resourceShareId' in kwargs:
-            resource_share_id = kwargs['resourceShareId']
-        if resource_share_id is None:
-            raise TypeError("Missing 'resource_share_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if target_id is None and 'targetId' in kwargs:
-            target_id = kwargs['targetId']
-        if target_id is None:
-            raise TypeError("Missing 'target_id' argument")
-
-        _setter("id", id)
-        _setter("resource_share_id", resource_share_id)
-        _setter("status", status)
-        _setter("target_id", target_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource_share_id", resource_share_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "target_id", target_id)
 
     @property
     @pulumi.getter

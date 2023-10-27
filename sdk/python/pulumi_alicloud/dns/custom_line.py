@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,40 +27,11 @@ class CustomLineArgs:
         :param pulumi.Input[Sequence[pulumi.Input['CustomLineIpSegmentListArgs']]] ip_segment_lists: The IP segment list. See `ip_segment_list` below for details.
         :param pulumi.Input[str] lang: The lang.
         """
-        CustomLineArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            custom_line_name=custom_line_name,
-            domain_name=domain_name,
-            ip_segment_lists=ip_segment_lists,
-            lang=lang,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             custom_line_name: Optional[pulumi.Input[str]] = None,
-             domain_name: Optional[pulumi.Input[str]] = None,
-             ip_segment_lists: Optional[pulumi.Input[Sequence[pulumi.Input['CustomLineIpSegmentListArgs']]]] = None,
-             lang: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if custom_line_name is None and 'customLineName' in kwargs:
-            custom_line_name = kwargs['customLineName']
-        if custom_line_name is None:
-            raise TypeError("Missing 'custom_line_name' argument")
-        if domain_name is None and 'domainName' in kwargs:
-            domain_name = kwargs['domainName']
-        if domain_name is None:
-            raise TypeError("Missing 'domain_name' argument")
-        if ip_segment_lists is None and 'ipSegmentLists' in kwargs:
-            ip_segment_lists = kwargs['ipSegmentLists']
-        if ip_segment_lists is None:
-            raise TypeError("Missing 'ip_segment_lists' argument")
-
-        _setter("custom_line_name", custom_line_name)
-        _setter("domain_name", domain_name)
-        _setter("ip_segment_lists", ip_segment_lists)
+        pulumi.set(__self__, "custom_line_name", custom_line_name)
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "ip_segment_lists", ip_segment_lists)
         if lang is not None:
-            _setter("lang", lang)
+            pulumi.set(__self__, "lang", lang)
 
     @property
     @pulumi.getter(name="customLineName")
@@ -125,37 +96,14 @@ class _CustomLineState:
         :param pulumi.Input[Sequence[pulumi.Input['CustomLineIpSegmentListArgs']]] ip_segment_lists: The IP segment list. See `ip_segment_list` below for details.
         :param pulumi.Input[str] lang: The lang.
         """
-        _CustomLineState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            custom_line_name=custom_line_name,
-            domain_name=domain_name,
-            ip_segment_lists=ip_segment_lists,
-            lang=lang,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             custom_line_name: Optional[pulumi.Input[str]] = None,
-             domain_name: Optional[pulumi.Input[str]] = None,
-             ip_segment_lists: Optional[pulumi.Input[Sequence[pulumi.Input['CustomLineIpSegmentListArgs']]]] = None,
-             lang: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if custom_line_name is None and 'customLineName' in kwargs:
-            custom_line_name = kwargs['customLineName']
-        if domain_name is None and 'domainName' in kwargs:
-            domain_name = kwargs['domainName']
-        if ip_segment_lists is None and 'ipSegmentLists' in kwargs:
-            ip_segment_lists = kwargs['ipSegmentLists']
-
         if custom_line_name is not None:
-            _setter("custom_line_name", custom_line_name)
+            pulumi.set(__self__, "custom_line_name", custom_line_name)
         if domain_name is not None:
-            _setter("domain_name", domain_name)
+            pulumi.set(__self__, "domain_name", domain_name)
         if ip_segment_lists is not None:
-            _setter("ip_segment_lists", ip_segment_lists)
+            pulumi.set(__self__, "ip_segment_lists", ip_segment_lists)
         if lang is not None:
-            _setter("lang", lang)
+            pulumi.set(__self__, "lang", lang)
 
     @property
     @pulumi.getter(name="customLineName")
@@ -303,10 +251,6 @@ class CustomLine(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CustomLineArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

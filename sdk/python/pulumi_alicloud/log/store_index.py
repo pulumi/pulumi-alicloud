@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,37 +27,12 @@ class StoreIndexArgs:
         :param pulumi.Input[Sequence[pulumi.Input['StoreIndexFieldSearchArgs']]] field_searches: List configurations of field search index. Valid item as follows:
         :param pulumi.Input['StoreIndexFullTextArgs'] full_text: The configuration of full text index. Valid item as follows:
         """
-        StoreIndexArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            logstore=logstore,
-            project=project,
-            field_searches=field_searches,
-            full_text=full_text,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             logstore: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             field_searches: Optional[pulumi.Input[Sequence[pulumi.Input['StoreIndexFieldSearchArgs']]]] = None,
-             full_text: Optional[pulumi.Input['StoreIndexFullTextArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if logstore is None:
-            raise TypeError("Missing 'logstore' argument")
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-        if field_searches is None and 'fieldSearches' in kwargs:
-            field_searches = kwargs['fieldSearches']
-        if full_text is None and 'fullText' in kwargs:
-            full_text = kwargs['fullText']
-
-        _setter("logstore", logstore)
-        _setter("project", project)
+        pulumi.set(__self__, "logstore", logstore)
+        pulumi.set(__self__, "project", project)
         if field_searches is not None:
-            _setter("field_searches", field_searches)
+            pulumi.set(__self__, "field_searches", field_searches)
         if full_text is not None:
-            _setter("full_text", full_text)
+            pulumi.set(__self__, "full_text", full_text)
 
     @property
     @pulumi.getter
@@ -122,35 +97,14 @@ class _StoreIndexState:
         :param pulumi.Input[str] logstore: The log store name to the query index belongs.
         :param pulumi.Input[str] project: The project name to the log store belongs.
         """
-        _StoreIndexState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            field_searches=field_searches,
-            full_text=full_text,
-            logstore=logstore,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             field_searches: Optional[pulumi.Input[Sequence[pulumi.Input['StoreIndexFieldSearchArgs']]]] = None,
-             full_text: Optional[pulumi.Input['StoreIndexFullTextArgs']] = None,
-             logstore: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if field_searches is None and 'fieldSearches' in kwargs:
-            field_searches = kwargs['fieldSearches']
-        if full_text is None and 'fullText' in kwargs:
-            full_text = kwargs['fullText']
-
         if field_searches is not None:
-            _setter("field_searches", field_searches)
+            pulumi.set(__self__, "field_searches", field_searches)
         if full_text is not None:
-            _setter("full_text", full_text)
+            pulumi.set(__self__, "full_text", full_text)
         if logstore is not None:
-            _setter("logstore", logstore)
+            pulumi.set(__self__, "logstore", logstore)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="fieldSearches")
@@ -338,10 +292,6 @@ class StoreIndex(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            StoreIndexArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -361,7 +311,6 @@ class StoreIndex(pulumi.CustomResource):
             __props__ = StoreIndexArgs.__new__(StoreIndexArgs)
 
             __props__.__dict__["field_searches"] = field_searches
-            full_text = _utilities.configure(full_text, StoreIndexFullTextArgs, True)
             __props__.__dict__["full_text"] = full_text
             if logstore is None and not opts.urn:
                 raise TypeError("Missing required property 'logstore'")

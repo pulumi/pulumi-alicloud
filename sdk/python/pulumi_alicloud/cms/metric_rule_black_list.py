@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,77 +41,24 @@ class MetricRuleBlackListArgs:
         :param pulumi.Input[str] scope_type: The effective range of the alert blacklist policy. Value:-USER: The alert blacklist policy only takes effect in the current Alibaba cloud account.-GROUP: The alert blacklist policy takes effect in the specified application GROUP.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scope_values: Application Group ID list. The format is JSON Array.> This parameter is displayed only when 'ScopeType' is 'GROUP.
         """
-        MetricRuleBlackListArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            category=category,
-            instances=instances,
-            metric_rule_black_list_name=metric_rule_black_list_name,
-            namespace=namespace,
-            effective_time=effective_time,
-            enable_end_time=enable_end_time,
-            enable_start_time=enable_start_time,
-            is_enable=is_enable,
-            metrics=metrics,
-            scope_type=scope_type,
-            scope_values=scope_values,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             category: Optional[pulumi.Input[str]] = None,
-             instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             metric_rule_black_list_name: Optional[pulumi.Input[str]] = None,
-             namespace: Optional[pulumi.Input[str]] = None,
-             effective_time: Optional[pulumi.Input[str]] = None,
-             enable_end_time: Optional[pulumi.Input[str]] = None,
-             enable_start_time: Optional[pulumi.Input[str]] = None,
-             is_enable: Optional[pulumi.Input[bool]] = None,
-             metrics: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRuleBlackListMetricArgs']]]] = None,
-             scope_type: Optional[pulumi.Input[str]] = None,
-             scope_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if category is None:
-            raise TypeError("Missing 'category' argument")
-        if instances is None:
-            raise TypeError("Missing 'instances' argument")
-        if metric_rule_black_list_name is None and 'metricRuleBlackListName' in kwargs:
-            metric_rule_black_list_name = kwargs['metricRuleBlackListName']
-        if metric_rule_black_list_name is None:
-            raise TypeError("Missing 'metric_rule_black_list_name' argument")
-        if namespace is None:
-            raise TypeError("Missing 'namespace' argument")
-        if effective_time is None and 'effectiveTime' in kwargs:
-            effective_time = kwargs['effectiveTime']
-        if enable_end_time is None and 'enableEndTime' in kwargs:
-            enable_end_time = kwargs['enableEndTime']
-        if enable_start_time is None and 'enableStartTime' in kwargs:
-            enable_start_time = kwargs['enableStartTime']
-        if is_enable is None and 'isEnable' in kwargs:
-            is_enable = kwargs['isEnable']
-        if scope_type is None and 'scopeType' in kwargs:
-            scope_type = kwargs['scopeType']
-        if scope_values is None and 'scopeValues' in kwargs:
-            scope_values = kwargs['scopeValues']
-
-        _setter("category", category)
-        _setter("instances", instances)
-        _setter("metric_rule_black_list_name", metric_rule_black_list_name)
-        _setter("namespace", namespace)
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "instances", instances)
+        pulumi.set(__self__, "metric_rule_black_list_name", metric_rule_black_list_name)
+        pulumi.set(__self__, "namespace", namespace)
         if effective_time is not None:
-            _setter("effective_time", effective_time)
+            pulumi.set(__self__, "effective_time", effective_time)
         if enable_end_time is not None:
-            _setter("enable_end_time", enable_end_time)
+            pulumi.set(__self__, "enable_end_time", enable_end_time)
         if enable_start_time is not None:
-            _setter("enable_start_time", enable_start_time)
+            pulumi.set(__self__, "enable_start_time", enable_start_time)
         if is_enable is not None:
-            _setter("is_enable", is_enable)
+            pulumi.set(__self__, "is_enable", is_enable)
         if metrics is not None:
-            _setter("metrics", metrics)
+            pulumi.set(__self__, "metrics", metrics)
         if scope_type is not None:
-            _setter("scope_type", scope_type)
+            pulumi.set(__self__, "scope_type", scope_type)
         if scope_values is not None:
-            _setter("scope_values", scope_values)
+            pulumi.set(__self__, "scope_values", scope_values)
 
     @property
     @pulumi.getter
@@ -280,91 +227,34 @@ class _MetricRuleBlackListState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scope_values: Application Group ID list. The format is JSON Array.> This parameter is displayed only when 'ScopeType' is 'GROUP.
         :param pulumi.Input[str] update_time: Modify the timestamp of the alert blacklist policy.Unit: milliseconds.
         """
-        _MetricRuleBlackListState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            category=category,
-            create_time=create_time,
-            effective_time=effective_time,
-            enable_end_time=enable_end_time,
-            enable_start_time=enable_start_time,
-            instances=instances,
-            is_enable=is_enable,
-            metric_rule_black_list_id=metric_rule_black_list_id,
-            metric_rule_black_list_name=metric_rule_black_list_name,
-            metrics=metrics,
-            namespace=namespace,
-            scope_type=scope_type,
-            scope_values=scope_values,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             category: Optional[pulumi.Input[str]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             effective_time: Optional[pulumi.Input[str]] = None,
-             enable_end_time: Optional[pulumi.Input[str]] = None,
-             enable_start_time: Optional[pulumi.Input[str]] = None,
-             instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             is_enable: Optional[pulumi.Input[bool]] = None,
-             metric_rule_black_list_id: Optional[pulumi.Input[str]] = None,
-             metric_rule_black_list_name: Optional[pulumi.Input[str]] = None,
-             metrics: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRuleBlackListMetricArgs']]]] = None,
-             namespace: Optional[pulumi.Input[str]] = None,
-             scope_type: Optional[pulumi.Input[str]] = None,
-             scope_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if effective_time is None and 'effectiveTime' in kwargs:
-            effective_time = kwargs['effectiveTime']
-        if enable_end_time is None and 'enableEndTime' in kwargs:
-            enable_end_time = kwargs['enableEndTime']
-        if enable_start_time is None and 'enableStartTime' in kwargs:
-            enable_start_time = kwargs['enableStartTime']
-        if is_enable is None and 'isEnable' in kwargs:
-            is_enable = kwargs['isEnable']
-        if metric_rule_black_list_id is None and 'metricRuleBlackListId' in kwargs:
-            metric_rule_black_list_id = kwargs['metricRuleBlackListId']
-        if metric_rule_black_list_name is None and 'metricRuleBlackListName' in kwargs:
-            metric_rule_black_list_name = kwargs['metricRuleBlackListName']
-        if scope_type is None and 'scopeType' in kwargs:
-            scope_type = kwargs['scopeType']
-        if scope_values is None and 'scopeValues' in kwargs:
-            scope_values = kwargs['scopeValues']
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-
         if category is not None:
-            _setter("category", category)
+            pulumi.set(__self__, "category", category)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if effective_time is not None:
-            _setter("effective_time", effective_time)
+            pulumi.set(__self__, "effective_time", effective_time)
         if enable_end_time is not None:
-            _setter("enable_end_time", enable_end_time)
+            pulumi.set(__self__, "enable_end_time", enable_end_time)
         if enable_start_time is not None:
-            _setter("enable_start_time", enable_start_time)
+            pulumi.set(__self__, "enable_start_time", enable_start_time)
         if instances is not None:
-            _setter("instances", instances)
+            pulumi.set(__self__, "instances", instances)
         if is_enable is not None:
-            _setter("is_enable", is_enable)
+            pulumi.set(__self__, "is_enable", is_enable)
         if metric_rule_black_list_id is not None:
-            _setter("metric_rule_black_list_id", metric_rule_black_list_id)
+            pulumi.set(__self__, "metric_rule_black_list_id", metric_rule_black_list_id)
         if metric_rule_black_list_name is not None:
-            _setter("metric_rule_black_list_name", metric_rule_black_list_name)
+            pulumi.set(__self__, "metric_rule_black_list_name", metric_rule_black_list_name)
         if metrics is not None:
-            _setter("metrics", metrics)
+            pulumi.set(__self__, "metrics", metrics)
         if namespace is not None:
-            _setter("namespace", namespace)
+            pulumi.set(__self__, "namespace", namespace)
         if scope_type is not None:
-            _setter("scope_type", scope_type)
+            pulumi.set(__self__, "scope_type", scope_type)
         if scope_values is not None:
-            _setter("scope_values", scope_values)
+            pulumi.set(__self__, "scope_values", scope_values)
         if update_time is not None:
-            _setter("update_time", update_time)
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter
@@ -704,10 +594,6 @@ class MetricRuleBlackList(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            MetricRuleBlackListArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

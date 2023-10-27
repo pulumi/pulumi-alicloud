@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,58 +33,15 @@ class AScriptArgs:
         :param pulumi.Input[bool] ext_attribute_enabled: Whether extension parameters are enabled.
         :param pulumi.Input[Sequence[pulumi.Input['AScriptExtAttributeArgs']]] ext_attributes: Extended attribute list. See `ext_attributes` below for details.
         """
-        AScriptArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ascript_name=ascript_name,
-            enabled=enabled,
-            listener_id=listener_id,
-            position=position,
-            script_content=script_content,
-            ext_attribute_enabled=ext_attribute_enabled,
-            ext_attributes=ext_attributes,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ascript_name: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             listener_id: Optional[pulumi.Input[str]] = None,
-             position: Optional[pulumi.Input[str]] = None,
-             script_content: Optional[pulumi.Input[str]] = None,
-             ext_attribute_enabled: Optional[pulumi.Input[bool]] = None,
-             ext_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['AScriptExtAttributeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ascript_name is None and 'ascriptName' in kwargs:
-            ascript_name = kwargs['ascriptName']
-        if ascript_name is None:
-            raise TypeError("Missing 'ascript_name' argument")
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-        if listener_id is None and 'listenerId' in kwargs:
-            listener_id = kwargs['listenerId']
-        if listener_id is None:
-            raise TypeError("Missing 'listener_id' argument")
-        if position is None:
-            raise TypeError("Missing 'position' argument")
-        if script_content is None and 'scriptContent' in kwargs:
-            script_content = kwargs['scriptContent']
-        if script_content is None:
-            raise TypeError("Missing 'script_content' argument")
-        if ext_attribute_enabled is None and 'extAttributeEnabled' in kwargs:
-            ext_attribute_enabled = kwargs['extAttributeEnabled']
-        if ext_attributes is None and 'extAttributes' in kwargs:
-            ext_attributes = kwargs['extAttributes']
-
-        _setter("ascript_name", ascript_name)
-        _setter("enabled", enabled)
-        _setter("listener_id", listener_id)
-        _setter("position", position)
-        _setter("script_content", script_content)
+        pulumi.set(__self__, "ascript_name", ascript_name)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "listener_id", listener_id)
+        pulumi.set(__self__, "position", position)
+        pulumi.set(__self__, "script_content", script_content)
         if ext_attribute_enabled is not None:
-            _setter("ext_attribute_enabled", ext_attribute_enabled)
+            pulumi.set(__self__, "ext_attribute_enabled", ext_attribute_enabled)
         if ext_attributes is not None:
-            _setter("ext_attributes", ext_attributes)
+            pulumi.set(__self__, "ext_attributes", ext_attributes)
 
     @property
     @pulumi.getter(name="ascriptName")
@@ -195,63 +152,24 @@ class _AScriptState:
         :param pulumi.Input[str] script_content: The content of AScript.
         :param pulumi.Input[str] status: The status of AScript.
         """
-        _AScriptState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ascript_name=ascript_name,
-            enabled=enabled,
-            ext_attribute_enabled=ext_attribute_enabled,
-            ext_attributes=ext_attributes,
-            listener_id=listener_id,
-            load_balancer_id=load_balancer_id,
-            position=position,
-            script_content=script_content,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ascript_name: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             ext_attribute_enabled: Optional[pulumi.Input[bool]] = None,
-             ext_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['AScriptExtAttributeArgs']]]] = None,
-             listener_id: Optional[pulumi.Input[str]] = None,
-             load_balancer_id: Optional[pulumi.Input[str]] = None,
-             position: Optional[pulumi.Input[str]] = None,
-             script_content: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ascript_name is None and 'ascriptName' in kwargs:
-            ascript_name = kwargs['ascriptName']
-        if ext_attribute_enabled is None and 'extAttributeEnabled' in kwargs:
-            ext_attribute_enabled = kwargs['extAttributeEnabled']
-        if ext_attributes is None and 'extAttributes' in kwargs:
-            ext_attributes = kwargs['extAttributes']
-        if listener_id is None and 'listenerId' in kwargs:
-            listener_id = kwargs['listenerId']
-        if load_balancer_id is None and 'loadBalancerId' in kwargs:
-            load_balancer_id = kwargs['loadBalancerId']
-        if script_content is None and 'scriptContent' in kwargs:
-            script_content = kwargs['scriptContent']
-
         if ascript_name is not None:
-            _setter("ascript_name", ascript_name)
+            pulumi.set(__self__, "ascript_name", ascript_name)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if ext_attribute_enabled is not None:
-            _setter("ext_attribute_enabled", ext_attribute_enabled)
+            pulumi.set(__self__, "ext_attribute_enabled", ext_attribute_enabled)
         if ext_attributes is not None:
-            _setter("ext_attributes", ext_attributes)
+            pulumi.set(__self__, "ext_attributes", ext_attributes)
         if listener_id is not None:
-            _setter("listener_id", listener_id)
+            pulumi.set(__self__, "listener_id", listener_id)
         if load_balancer_id is not None:
-            _setter("load_balancer_id", load_balancer_id)
+            pulumi.set(__self__, "load_balancer_id", load_balancer_id)
         if position is not None:
-            _setter("position", position)
+            pulumi.set(__self__, "position", position)
         if script_content is not None:
-            _setter("script_content", script_content)
+            pulumi.set(__self__, "script_content", script_content)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="ascriptName")
@@ -431,10 +349,6 @@ class AScript(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AScriptArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InstanceAllowedIpAttachmentArgs', 'InstanceAllowedIpAttachment']
@@ -27,43 +27,10 @@ class InstanceAllowedIpAttachmentArgs:
                - `9092/9092`: port range for a VPC whitelist.
                - `9093/9093`: port range for an Internet whitelist.
         """
-        InstanceAllowedIpAttachmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_ip=allowed_ip,
-            allowed_type=allowed_type,
-            instance_id=instance_id,
-            port_range=port_range,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_ip: Optional[pulumi.Input[str]] = None,
-             allowed_type: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             port_range: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_ip is None and 'allowedIp' in kwargs:
-            allowed_ip = kwargs['allowedIp']
-        if allowed_ip is None:
-            raise TypeError("Missing 'allowed_ip' argument")
-        if allowed_type is None and 'allowedType' in kwargs:
-            allowed_type = kwargs['allowedType']
-        if allowed_type is None:
-            raise TypeError("Missing 'allowed_type' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if port_range is None and 'portRange' in kwargs:
-            port_range = kwargs['portRange']
-        if port_range is None:
-            raise TypeError("Missing 'port_range' argument")
-
-        _setter("allowed_ip", allowed_ip)
-        _setter("allowed_type", allowed_type)
-        _setter("instance_id", instance_id)
-        _setter("port_range", port_range)
+        pulumi.set(__self__, "allowed_ip", allowed_ip)
+        pulumi.set(__self__, "allowed_type", allowed_type)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "port_range", port_range)
 
     @property
     @pulumi.getter(name="allowedIp")
@@ -132,39 +99,14 @@ class _InstanceAllowedIpAttachmentState:
                - `9092/9092`: port range for a VPC whitelist.
                - `9093/9093`: port range for an Internet whitelist.
         """
-        _InstanceAllowedIpAttachmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_ip=allowed_ip,
-            allowed_type=allowed_type,
-            instance_id=instance_id,
-            port_range=port_range,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_ip: Optional[pulumi.Input[str]] = None,
-             allowed_type: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             port_range: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_ip is None and 'allowedIp' in kwargs:
-            allowed_ip = kwargs['allowedIp']
-        if allowed_type is None and 'allowedType' in kwargs:
-            allowed_type = kwargs['allowedType']
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if port_range is None and 'portRange' in kwargs:
-            port_range = kwargs['portRange']
-
         if allowed_ip is not None:
-            _setter("allowed_ip", allowed_ip)
+            pulumi.set(__self__, "allowed_ip", allowed_ip)
         if allowed_type is not None:
-            _setter("allowed_type", allowed_type)
+            pulumi.set(__self__, "allowed_type", allowed_type)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if port_range is not None:
-            _setter("port_range", port_range)
+            pulumi.set(__self__, "port_range", port_range)
 
     @property
     @pulumi.getter(name="allowedIp")
@@ -356,10 +298,6 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            InstanceAllowedIpAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -41,71 +41,26 @@ class ClusterAdditionalVolumeArgs:
         :param pulumi.Input[str] volume_protocol: The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
         :param pulumi.Input[str] volume_type: The type of the additional shared storage. Only NAS file systems are supported.
         """
-        ClusterAdditionalVolumeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            job_queue=job_queue,
-            local_directory=local_directory,
-            location=location,
-            remote_directory=remote_directory,
-            roles=roles,
-            volume_id=volume_id,
-            volume_mount_option=volume_mount_option,
-            volume_mountpoint=volume_mountpoint,
-            volume_protocol=volume_protocol,
-            volume_type=volume_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             job_queue: Optional[pulumi.Input[str]] = None,
-             local_directory: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             remote_directory: Optional[pulumi.Input[str]] = None,
-             roles: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAdditionalVolumeRoleArgs']]]] = None,
-             volume_id: Optional[pulumi.Input[str]] = None,
-             volume_mount_option: Optional[pulumi.Input[str]] = None,
-             volume_mountpoint: Optional[pulumi.Input[str]] = None,
-             volume_protocol: Optional[pulumi.Input[str]] = None,
-             volume_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if job_queue is None and 'jobQueue' in kwargs:
-            job_queue = kwargs['jobQueue']
-        if local_directory is None and 'localDirectory' in kwargs:
-            local_directory = kwargs['localDirectory']
-        if remote_directory is None and 'remoteDirectory' in kwargs:
-            remote_directory = kwargs['remoteDirectory']
-        if volume_id is None and 'volumeId' in kwargs:
-            volume_id = kwargs['volumeId']
-        if volume_mount_option is None and 'volumeMountOption' in kwargs:
-            volume_mount_option = kwargs['volumeMountOption']
-        if volume_mountpoint is None and 'volumeMountpoint' in kwargs:
-            volume_mountpoint = kwargs['volumeMountpoint']
-        if volume_protocol is None and 'volumeProtocol' in kwargs:
-            volume_protocol = kwargs['volumeProtocol']
-        if volume_type is None and 'volumeType' in kwargs:
-            volume_type = kwargs['volumeType']
-
         if job_queue is not None:
-            _setter("job_queue", job_queue)
+            pulumi.set(__self__, "job_queue", job_queue)
         if local_directory is not None:
-            _setter("local_directory", local_directory)
+            pulumi.set(__self__, "local_directory", local_directory)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if remote_directory is not None:
-            _setter("remote_directory", remote_directory)
+            pulumi.set(__self__, "remote_directory", remote_directory)
         if roles is not None:
-            _setter("roles", roles)
+            pulumi.set(__self__, "roles", roles)
         if volume_id is not None:
-            _setter("volume_id", volume_id)
+            pulumi.set(__self__, "volume_id", volume_id)
         if volume_mount_option is not None:
-            _setter("volume_mount_option", volume_mount_option)
+            pulumi.set(__self__, "volume_mount_option", volume_mount_option)
         if volume_mountpoint is not None:
-            _setter("volume_mountpoint", volume_mountpoint)
+            pulumi.set(__self__, "volume_mountpoint", volume_mountpoint)
         if volume_protocol is not None:
-            _setter("volume_protocol", volume_protocol)
+            pulumi.set(__self__, "volume_protocol", volume_protocol)
         if volume_type is not None:
-            _setter("volume_type", volume_type)
+            pulumi.set(__self__, "volume_type", volume_type)
 
     @property
     @pulumi.getter(name="jobQueue")
@@ -235,19 +190,8 @@ class ClusterAdditionalVolumeRoleArgs:
         """
         :param pulumi.Input[str] name: The type of the nodes to which the additional file system is attached.
         """
-        ClusterAdditionalVolumeRoleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -269,19 +213,8 @@ class ClusterApplicationArgs:
         """
         :param pulumi.Input[str] tag: The tag of the software.
         """
-        ClusterApplicationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            tag=tag,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             tag: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if tag is not None:
-            _setter("tag", tag)
+            pulumi.set(__self__, "tag", tag)
 
     @property
     @pulumi.getter
@@ -305,23 +238,10 @@ class ClusterPostInstallScriptArgs:
         :param pulumi.Input[str] args: The parameter that is used to run the script after the cluster is created.
         :param pulumi.Input[str] url: The URL that is used to download the script after the cluster is created.
         """
-        ClusterPostInstallScriptArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            args=args,
-            url=url,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             args: Optional[pulumi.Input[str]] = None,
-             url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if args is not None:
-            _setter("args", args)
+            pulumi.set(__self__, "args", args)
         if url is not None:
-            _setter("url", url)
+            pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,43 +29,12 @@ class DomainArgs:
         :param pulumi.Input['DomainRedirectArgs'] redirect: Configure forwarding information. See `redirect` below.
         :param pulumi.Input[str] access_type: The access type of the WAF instance. Value: **share** (default): CNAME access.
         """
-        DomainArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            domain=domain,
-            instance_id=instance_id,
-            listen=listen,
-            redirect=redirect,
-            access_type=access_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             domain: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             listen: Optional[pulumi.Input['DomainListenArgs']] = None,
-             redirect: Optional[pulumi.Input['DomainRedirectArgs']] = None,
-             access_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if domain is None:
-            raise TypeError("Missing 'domain' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if listen is None:
-            raise TypeError("Missing 'listen' argument")
-        if redirect is None:
-            raise TypeError("Missing 'redirect' argument")
-        if access_type is None and 'accessType' in kwargs:
-            access_type = kwargs['accessType']
-
-        _setter("domain", domain)
-        _setter("instance_id", instance_id)
-        _setter("listen", listen)
-        _setter("redirect", redirect)
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "listen", listen)
+        pulumi.set(__self__, "redirect", redirect)
         if access_type is not None:
-            _setter("access_type", access_type)
+            pulumi.set(__self__, "access_type", access_type)
 
     @property
     @pulumi.getter
@@ -148,49 +117,20 @@ class _DomainState:
         :param pulumi.Input[str] resource_manager_resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The status of the resource.
         """
-        _DomainState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_type=access_type,
-            domain=domain,
-            instance_id=instance_id,
-            listen=listen,
-            redirect=redirect,
-            resource_manager_resource_group_id=resource_manager_resource_group_id,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_type: Optional[pulumi.Input[str]] = None,
-             domain: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             listen: Optional[pulumi.Input['DomainListenArgs']] = None,
-             redirect: Optional[pulumi.Input['DomainRedirectArgs']] = None,
-             resource_manager_resource_group_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_type is None and 'accessType' in kwargs:
-            access_type = kwargs['accessType']
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if resource_manager_resource_group_id is None and 'resourceManagerResourceGroupId' in kwargs:
-            resource_manager_resource_group_id = kwargs['resourceManagerResourceGroupId']
-
         if access_type is not None:
-            _setter("access_type", access_type)
+            pulumi.set(__self__, "access_type", access_type)
         if domain is not None:
-            _setter("domain", domain)
+            pulumi.set(__self__, "domain", domain)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if listen is not None:
-            _setter("listen", listen)
+            pulumi.set(__self__, "listen", listen)
         if redirect is not None:
-            _setter("redirect", redirect)
+            pulumi.set(__self__, "redirect", redirect)
         if resource_manager_resource_group_id is not None:
-            _setter("resource_manager_resource_group_id", resource_manager_resource_group_id)
+            pulumi.set(__self__, "resource_manager_resource_group_id", resource_manager_resource_group_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="accessType")
@@ -342,10 +282,6 @@ class Domain(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DomainArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -372,11 +308,9 @@ class Domain(pulumi.CustomResource):
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
-            listen = _utilities.configure(listen, DomainListenArgs, True)
             if listen is None and not opts.urn:
                 raise TypeError("Missing required property 'listen'")
             __props__.__dict__["listen"] = listen
-            redirect = _utilities.configure(redirect, DomainRedirectArgs, True)
             if redirect is None and not opts.urn:
                 raise TypeError("Missing required property 'redirect'")
             __props__.__dict__["redirect"] = redirect

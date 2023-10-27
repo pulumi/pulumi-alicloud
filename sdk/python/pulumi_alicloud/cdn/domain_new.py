@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,60 +39,19 @@ class DomainNewArgs:
                The default value is **domestic**.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         """
-        DomainNewArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cdn_type=cdn_type,
-            domain_name=domain_name,
-            sources=sources,
-            certificate_config=certificate_config,
-            check_url=check_url,
-            resource_group_id=resource_group_id,
-            scope=scope,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cdn_type: Optional[pulumi.Input[str]] = None,
-             domain_name: Optional[pulumi.Input[str]] = None,
-             sources: Optional[pulumi.Input[Sequence[pulumi.Input['DomainNewSourceArgs']]]] = None,
-             certificate_config: Optional[pulumi.Input['DomainNewCertificateConfigArgs']] = None,
-             check_url: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             scope: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cdn_type is None and 'cdnType' in kwargs:
-            cdn_type = kwargs['cdnType']
-        if cdn_type is None:
-            raise TypeError("Missing 'cdn_type' argument")
-        if domain_name is None and 'domainName' in kwargs:
-            domain_name = kwargs['domainName']
-        if domain_name is None:
-            raise TypeError("Missing 'domain_name' argument")
-        if sources is None:
-            raise TypeError("Missing 'sources' argument")
-        if certificate_config is None and 'certificateConfig' in kwargs:
-            certificate_config = kwargs['certificateConfig']
-        if check_url is None and 'checkUrl' in kwargs:
-            check_url = kwargs['checkUrl']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-
-        _setter("cdn_type", cdn_type)
-        _setter("domain_name", domain_name)
-        _setter("sources", sources)
+        pulumi.set(__self__, "cdn_type", cdn_type)
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "sources", sources)
         if certificate_config is not None:
-            _setter("certificate_config", certificate_config)
+            pulumi.set(__self__, "certificate_config", certificate_config)
         if check_url is not None:
-            _setter("check_url", check_url)
+            pulumi.set(__self__, "check_url", check_url)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if scope is not None:
-            _setter("scope", scope)
+            pulumi.set(__self__, "scope", scope)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="cdnType")
@@ -225,65 +184,26 @@ class _DomainNewState:
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         """
-        _DomainNewState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cdn_type=cdn_type,
-            certificate_config=certificate_config,
-            check_url=check_url,
-            cname=cname,
-            domain_name=domain_name,
-            resource_group_id=resource_group_id,
-            scope=scope,
-            sources=sources,
-            status=status,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cdn_type: Optional[pulumi.Input[str]] = None,
-             certificate_config: Optional[pulumi.Input['DomainNewCertificateConfigArgs']] = None,
-             check_url: Optional[pulumi.Input[str]] = None,
-             cname: Optional[pulumi.Input[str]] = None,
-             domain_name: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             scope: Optional[pulumi.Input[str]] = None,
-             sources: Optional[pulumi.Input[Sequence[pulumi.Input['DomainNewSourceArgs']]]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cdn_type is None and 'cdnType' in kwargs:
-            cdn_type = kwargs['cdnType']
-        if certificate_config is None and 'certificateConfig' in kwargs:
-            certificate_config = kwargs['certificateConfig']
-        if check_url is None and 'checkUrl' in kwargs:
-            check_url = kwargs['checkUrl']
-        if domain_name is None and 'domainName' in kwargs:
-            domain_name = kwargs['domainName']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-
         if cdn_type is not None:
-            _setter("cdn_type", cdn_type)
+            pulumi.set(__self__, "cdn_type", cdn_type)
         if certificate_config is not None:
-            _setter("certificate_config", certificate_config)
+            pulumi.set(__self__, "certificate_config", certificate_config)
         if check_url is not None:
-            _setter("check_url", check_url)
+            pulumi.set(__self__, "check_url", check_url)
         if cname is not None:
-            _setter("cname", cname)
+            pulumi.set(__self__, "cname", cname)
         if domain_name is not None:
-            _setter("domain_name", domain_name)
+            pulumi.set(__self__, "domain_name", domain_name)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if scope is not None:
-            _setter("scope", scope)
+            pulumi.set(__self__, "scope", scope)
         if sources is not None:
-            _setter("sources", sources)
+            pulumi.set(__self__, "sources", sources)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="cdnType")
@@ -535,10 +455,6 @@ class DomainNew(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DomainNewArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -564,7 +480,6 @@ class DomainNew(pulumi.CustomResource):
             if cdn_type is None and not opts.urn:
                 raise TypeError("Missing required property 'cdn_type'")
             __props__.__dict__["cdn_type"] = cdn_type
-            certificate_config = _utilities.configure(certificate_config, DomainNewCertificateConfigArgs, True)
             __props__.__dict__["certificate_config"] = certificate_config
             __props__.__dict__["check_url"] = check_url
             if domain_name is None and not opts.urn:

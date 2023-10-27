@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SecurityPolicyArgs', 'SecurityPolicy']
@@ -30,43 +30,14 @@ class SecurityPolicyArgs:
         :param pulumi.Input[str] security_policy_name: The name of the security policy. The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
-        SecurityPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ciphers=ciphers,
-            tls_versions=tls_versions,
-            resource_group_id=resource_group_id,
-            security_policy_name=security_policy_name,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ciphers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             security_policy_name: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ciphers is None:
-            raise TypeError("Missing 'ciphers' argument")
-        if tls_versions is None and 'tlsVersions' in kwargs:
-            tls_versions = kwargs['tlsVersions']
-        if tls_versions is None:
-            raise TypeError("Missing 'tls_versions' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if security_policy_name is None and 'securityPolicyName' in kwargs:
-            security_policy_name = kwargs['securityPolicyName']
-
-        _setter("ciphers", ciphers)
-        _setter("tls_versions", tls_versions)
+        pulumi.set(__self__, "ciphers", ciphers)
+        pulumi.set(__self__, "tls_versions", tls_versions)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_policy_name is not None:
-            _setter("security_policy_name", security_policy_name)
+            pulumi.set(__self__, "security_policy_name", security_policy_name)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -153,45 +124,18 @@ class _SecurityPolicyState:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tls_versions: The supported versions of the Transport Layer Security (TLS) protocol. Valid values: `TLSv1.0`, `TLSv1.1`, `TLSv1.2`, and `TLSv1.3`. You can specify at most four TLS versions.
         """
-        _SecurityPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ciphers=ciphers,
-            resource_group_id=resource_group_id,
-            security_policy_name=security_policy_name,
-            status=status,
-            tags=tags,
-            tls_versions=tls_versions,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ciphers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             security_policy_name: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if security_policy_name is None and 'securityPolicyName' in kwargs:
-            security_policy_name = kwargs['securityPolicyName']
-        if tls_versions is None and 'tlsVersions' in kwargs:
-            tls_versions = kwargs['tlsVersions']
-
         if ciphers is not None:
-            _setter("ciphers", ciphers)
+            pulumi.set(__self__, "ciphers", ciphers)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_policy_name is not None:
-            _setter("security_policy_name", security_policy_name)
+            pulumi.set(__self__, "security_policy_name", security_policy_name)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if tls_versions is not None:
-            _setter("tls_versions", tls_versions)
+            pulumi.set(__self__, "tls_versions", tls_versions)
 
     @property
     @pulumi.getter
@@ -399,10 +343,6 @@ class SecurityPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SecurityPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

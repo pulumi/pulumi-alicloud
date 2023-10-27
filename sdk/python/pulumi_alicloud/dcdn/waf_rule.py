@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -49,97 +49,34 @@ class WafRuleArgs:
         :param pulumi.Input[str] status: The status of the waf rule. Valid values: `on` and `off`. Default value: on.
         :param pulumi.Input[str] waf_group_ids: The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas.
         """
-        WafRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            policy_id=policy_id,
-            rule_name=rule_name,
-            action=action,
-            cc_status=cc_status,
-            cn_region_list=cn_region_list,
-            conditions=conditions,
-            effect=effect,
-            other_region_list=other_region_list,
-            rate_limit=rate_limit,
-            regular_rules=regular_rules,
-            regular_types=regular_types,
-            remote_addrs=remote_addrs,
-            scenes=scenes,
-            status=status,
-            waf_group_ids=waf_group_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             policy_id: Optional[pulumi.Input[str]] = None,
-             rule_name: Optional[pulumi.Input[str]] = None,
-             action: Optional[pulumi.Input[str]] = None,
-             cc_status: Optional[pulumi.Input[str]] = None,
-             cn_region_list: Optional[pulumi.Input[str]] = None,
-             conditions: Optional[pulumi.Input[Sequence[pulumi.Input['WafRuleConditionArgs']]]] = None,
-             effect: Optional[pulumi.Input[str]] = None,
-             other_region_list: Optional[pulumi.Input[str]] = None,
-             rate_limit: Optional[pulumi.Input['WafRuleRateLimitArgs']] = None,
-             regular_rules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             regular_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             remote_addrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             scenes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             waf_group_ids: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if policy_id is None and 'policyId' in kwargs:
-            policy_id = kwargs['policyId']
-        if policy_id is None:
-            raise TypeError("Missing 'policy_id' argument")
-        if rule_name is None and 'ruleName' in kwargs:
-            rule_name = kwargs['ruleName']
-        if rule_name is None:
-            raise TypeError("Missing 'rule_name' argument")
-        if cc_status is None and 'ccStatus' in kwargs:
-            cc_status = kwargs['ccStatus']
-        if cn_region_list is None and 'cnRegionList' in kwargs:
-            cn_region_list = kwargs['cnRegionList']
-        if other_region_list is None and 'otherRegionList' in kwargs:
-            other_region_list = kwargs['otherRegionList']
-        if rate_limit is None and 'rateLimit' in kwargs:
-            rate_limit = kwargs['rateLimit']
-        if regular_rules is None and 'regularRules' in kwargs:
-            regular_rules = kwargs['regularRules']
-        if regular_types is None and 'regularTypes' in kwargs:
-            regular_types = kwargs['regularTypes']
-        if remote_addrs is None and 'remoteAddrs' in kwargs:
-            remote_addrs = kwargs['remoteAddrs']
-        if waf_group_ids is None and 'wafGroupIds' in kwargs:
-            waf_group_ids = kwargs['wafGroupIds']
-
-        _setter("policy_id", policy_id)
-        _setter("rule_name", rule_name)
+        pulumi.set(__self__, "policy_id", policy_id)
+        pulumi.set(__self__, "rule_name", rule_name)
         if action is not None:
-            _setter("action", action)
+            pulumi.set(__self__, "action", action)
         if cc_status is not None:
-            _setter("cc_status", cc_status)
+            pulumi.set(__self__, "cc_status", cc_status)
         if cn_region_list is not None:
-            _setter("cn_region_list", cn_region_list)
+            pulumi.set(__self__, "cn_region_list", cn_region_list)
         if conditions is not None:
-            _setter("conditions", conditions)
+            pulumi.set(__self__, "conditions", conditions)
         if effect is not None:
-            _setter("effect", effect)
+            pulumi.set(__self__, "effect", effect)
         if other_region_list is not None:
-            _setter("other_region_list", other_region_list)
+            pulumi.set(__self__, "other_region_list", other_region_list)
         if rate_limit is not None:
-            _setter("rate_limit", rate_limit)
+            pulumi.set(__self__, "rate_limit", rate_limit)
         if regular_rules is not None:
-            _setter("regular_rules", regular_rules)
+            pulumi.set(__self__, "regular_rules", regular_rules)
         if regular_types is not None:
-            _setter("regular_types", regular_types)
+            pulumi.set(__self__, "regular_types", regular_types)
         if remote_addrs is not None:
-            _setter("remote_addrs", remote_addrs)
+            pulumi.set(__self__, "remote_addrs", remote_addrs)
         if scenes is not None:
-            _setter("scenes", scenes)
+            pulumi.set(__self__, "scenes", scenes)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if waf_group_ids is not None:
-            _setter("waf_group_ids", waf_group_ids)
+            pulumi.set(__self__, "waf_group_ids", waf_group_ids)
 
     @property
     @pulumi.getter(name="policyId")
@@ -362,107 +299,40 @@ class _WafRuleState:
         :param pulumi.Input[str] status: The status of the waf rule. Valid values: `on` and `off`. Default value: on.
         :param pulumi.Input[str] waf_group_ids: The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas.
         """
-        _WafRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action=action,
-            cc_status=cc_status,
-            cn_region_list=cn_region_list,
-            conditions=conditions,
-            defense_scene=defense_scene,
-            effect=effect,
-            gmt_modified=gmt_modified,
-            other_region_list=other_region_list,
-            policy_id=policy_id,
-            rate_limit=rate_limit,
-            regular_rules=regular_rules,
-            regular_types=regular_types,
-            remote_addrs=remote_addrs,
-            rule_name=rule_name,
-            scenes=scenes,
-            status=status,
-            waf_group_ids=waf_group_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action: Optional[pulumi.Input[str]] = None,
-             cc_status: Optional[pulumi.Input[str]] = None,
-             cn_region_list: Optional[pulumi.Input[str]] = None,
-             conditions: Optional[pulumi.Input[Sequence[pulumi.Input['WafRuleConditionArgs']]]] = None,
-             defense_scene: Optional[pulumi.Input[str]] = None,
-             effect: Optional[pulumi.Input[str]] = None,
-             gmt_modified: Optional[pulumi.Input[str]] = None,
-             other_region_list: Optional[pulumi.Input[str]] = None,
-             policy_id: Optional[pulumi.Input[str]] = None,
-             rate_limit: Optional[pulumi.Input['WafRuleRateLimitArgs']] = None,
-             regular_rules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             regular_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             remote_addrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             rule_name: Optional[pulumi.Input[str]] = None,
-             scenes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             waf_group_ids: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cc_status is None and 'ccStatus' in kwargs:
-            cc_status = kwargs['ccStatus']
-        if cn_region_list is None and 'cnRegionList' in kwargs:
-            cn_region_list = kwargs['cnRegionList']
-        if defense_scene is None and 'defenseScene' in kwargs:
-            defense_scene = kwargs['defenseScene']
-        if gmt_modified is None and 'gmtModified' in kwargs:
-            gmt_modified = kwargs['gmtModified']
-        if other_region_list is None and 'otherRegionList' in kwargs:
-            other_region_list = kwargs['otherRegionList']
-        if policy_id is None and 'policyId' in kwargs:
-            policy_id = kwargs['policyId']
-        if rate_limit is None and 'rateLimit' in kwargs:
-            rate_limit = kwargs['rateLimit']
-        if regular_rules is None and 'regularRules' in kwargs:
-            regular_rules = kwargs['regularRules']
-        if regular_types is None and 'regularTypes' in kwargs:
-            regular_types = kwargs['regularTypes']
-        if remote_addrs is None and 'remoteAddrs' in kwargs:
-            remote_addrs = kwargs['remoteAddrs']
-        if rule_name is None and 'ruleName' in kwargs:
-            rule_name = kwargs['ruleName']
-        if waf_group_ids is None and 'wafGroupIds' in kwargs:
-            waf_group_ids = kwargs['wafGroupIds']
-
         if action is not None:
-            _setter("action", action)
+            pulumi.set(__self__, "action", action)
         if cc_status is not None:
-            _setter("cc_status", cc_status)
+            pulumi.set(__self__, "cc_status", cc_status)
         if cn_region_list is not None:
-            _setter("cn_region_list", cn_region_list)
+            pulumi.set(__self__, "cn_region_list", cn_region_list)
         if conditions is not None:
-            _setter("conditions", conditions)
+            pulumi.set(__self__, "conditions", conditions)
         if defense_scene is not None:
-            _setter("defense_scene", defense_scene)
+            pulumi.set(__self__, "defense_scene", defense_scene)
         if effect is not None:
-            _setter("effect", effect)
+            pulumi.set(__self__, "effect", effect)
         if gmt_modified is not None:
-            _setter("gmt_modified", gmt_modified)
+            pulumi.set(__self__, "gmt_modified", gmt_modified)
         if other_region_list is not None:
-            _setter("other_region_list", other_region_list)
+            pulumi.set(__self__, "other_region_list", other_region_list)
         if policy_id is not None:
-            _setter("policy_id", policy_id)
+            pulumi.set(__self__, "policy_id", policy_id)
         if rate_limit is not None:
-            _setter("rate_limit", rate_limit)
+            pulumi.set(__self__, "rate_limit", rate_limit)
         if regular_rules is not None:
-            _setter("regular_rules", regular_rules)
+            pulumi.set(__self__, "regular_rules", regular_rules)
         if regular_types is not None:
-            _setter("regular_types", regular_types)
+            pulumi.set(__self__, "regular_types", regular_types)
         if remote_addrs is not None:
-            _setter("remote_addrs", remote_addrs)
+            pulumi.set(__self__, "remote_addrs", remote_addrs)
         if rule_name is not None:
-            _setter("rule_name", rule_name)
+            pulumi.set(__self__, "rule_name", rule_name)
         if scenes is not None:
-            _setter("scenes", scenes)
+            pulumi.set(__self__, "scenes", scenes)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if waf_group_ids is not None:
-            _setter("waf_group_ids", waf_group_ids)
+            pulumi.set(__self__, "waf_group_ids", waf_group_ids)
 
     @property
     @pulumi.getter
@@ -852,10 +722,6 @@ class WafRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            WafRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -894,7 +760,6 @@ class WafRule(pulumi.CustomResource):
             if policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_id'")
             __props__.__dict__["policy_id"] = policy_id
-            rate_limit = _utilities.configure(rate_limit, WafRuleRateLimitArgs, True)
             __props__.__dict__["rate_limit"] = rate_limit
             __props__.__dict__["regular_rules"] = regular_rules
             __props__.__dict__["regular_types"] = regular_types

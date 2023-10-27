@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -42,21 +42,8 @@ class InstanceEcsList(dict):
         """
         :param str ecs_id: The ID of the ECS instance.
         """
-        InstanceEcsList._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ecs_id=ecs_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ecs_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ecs_id is None and 'ecsId' in kwargs:
-            ecs_id = kwargs['ecsId']
-
         if ecs_id is not None:
-            _setter("ecs_id", ecs_id)
+            pulumi.set(__self__, "ecs_id", ecs_id)
 
     @property
     @pulumi.getter(name="ecsId")
@@ -94,88 +81,17 @@ class GetAutoSnapShotPoliciesAutoSnapShotPolicyResult(dict):
         :param str status_detail: Automatic snapshot policy status details
         :param Sequence[str] time_points: The set of times at which the snapshot is taken on the day the automatic snapshot is executed.
         """
-        GetAutoSnapShotPoliciesAutoSnapShotPolicyResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            applied_dbfs_number=applied_dbfs_number,
-            create_time=create_time,
-            id=id,
-            last_modified=last_modified,
-            policy_id=policy_id,
-            policy_name=policy_name,
-            repeat_weekdays=repeat_weekdays,
-            retention_days=retention_days,
-            status=status,
-            status_detail=status_detail,
-            time_points=time_points,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             applied_dbfs_number: Optional[int] = None,
-             create_time: Optional[str] = None,
-             id: Optional[str] = None,
-             last_modified: Optional[str] = None,
-             policy_id: Optional[str] = None,
-             policy_name: Optional[str] = None,
-             repeat_weekdays: Optional[Sequence[str]] = None,
-             retention_days: Optional[int] = None,
-             status: Optional[str] = None,
-             status_detail: Optional[str] = None,
-             time_points: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if applied_dbfs_number is None and 'appliedDbfsNumber' in kwargs:
-            applied_dbfs_number = kwargs['appliedDbfsNumber']
-        if applied_dbfs_number is None:
-            raise TypeError("Missing 'applied_dbfs_number' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if last_modified is None and 'lastModified' in kwargs:
-            last_modified = kwargs['lastModified']
-        if last_modified is None:
-            raise TypeError("Missing 'last_modified' argument")
-        if policy_id is None and 'policyId' in kwargs:
-            policy_id = kwargs['policyId']
-        if policy_id is None:
-            raise TypeError("Missing 'policy_id' argument")
-        if policy_name is None and 'policyName' in kwargs:
-            policy_name = kwargs['policyName']
-        if policy_name is None:
-            raise TypeError("Missing 'policy_name' argument")
-        if repeat_weekdays is None and 'repeatWeekdays' in kwargs:
-            repeat_weekdays = kwargs['repeatWeekdays']
-        if repeat_weekdays is None:
-            raise TypeError("Missing 'repeat_weekdays' argument")
-        if retention_days is None and 'retentionDays' in kwargs:
-            retention_days = kwargs['retentionDays']
-        if retention_days is None:
-            raise TypeError("Missing 'retention_days' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if status_detail is None and 'statusDetail' in kwargs:
-            status_detail = kwargs['statusDetail']
-        if status_detail is None:
-            raise TypeError("Missing 'status_detail' argument")
-        if time_points is None and 'timePoints' in kwargs:
-            time_points = kwargs['timePoints']
-        if time_points is None:
-            raise TypeError("Missing 'time_points' argument")
-
-        _setter("applied_dbfs_number", applied_dbfs_number)
-        _setter("create_time", create_time)
-        _setter("id", id)
-        _setter("last_modified", last_modified)
-        _setter("policy_id", policy_id)
-        _setter("policy_name", policy_name)
-        _setter("repeat_weekdays", repeat_weekdays)
-        _setter("retention_days", retention_days)
-        _setter("status", status)
-        _setter("status_detail", status_detail)
-        _setter("time_points", time_points)
+        pulumi.set(__self__, "applied_dbfs_number", applied_dbfs_number)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "last_modified", last_modified)
+        pulumi.set(__self__, "policy_id", policy_id)
+        pulumi.set(__self__, "policy_name", policy_name)
+        pulumi.set(__self__, "repeat_weekdays", repeat_weekdays)
+        pulumi.set(__self__, "retention_days", retention_days)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "status_detail", status_detail)
+        pulumi.set(__self__, "time_points", time_points)
 
     @property
     @pulumi.getter(name="appliedDbfsNumber")
@@ -305,124 +221,23 @@ class GetInstancesInstanceResult(dict):
         :param str status: The status of the Database file system.
         :param str zone_id: The Zone ID of the Database file system.
         """
-        GetInstancesInstanceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            attach_node_number=attach_node_number,
-            category=category,
-            create_time=create_time,
-            dbfs_cluster_id=dbfs_cluster_id,
-            ecs_lists=ecs_lists,
-            enable_raid=enable_raid,
-            encryption=encryption,
-            id=id,
-            instance_id=instance_id,
-            instance_name=instance_name,
-            kms_key_id=kms_key_id,
-            payment_type=payment_type,
-            performance_level=performance_level,
-            raid_stripe_unit_number=raid_stripe_unit_number,
-            size=size,
-            status=status,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             attach_node_number: Optional[int] = None,
-             category: Optional[str] = None,
-             create_time: Optional[str] = None,
-             dbfs_cluster_id: Optional[str] = None,
-             ecs_lists: Optional[Sequence['outputs.GetInstancesInstanceEcsListResult']] = None,
-             enable_raid: Optional[bool] = None,
-             encryption: Optional[bool] = None,
-             id: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             instance_name: Optional[str] = None,
-             kms_key_id: Optional[str] = None,
-             payment_type: Optional[str] = None,
-             performance_level: Optional[str] = None,
-             raid_stripe_unit_number: Optional[str] = None,
-             size: Optional[int] = None,
-             status: Optional[str] = None,
-             zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if attach_node_number is None and 'attachNodeNumber' in kwargs:
-            attach_node_number = kwargs['attachNodeNumber']
-        if attach_node_number is None:
-            raise TypeError("Missing 'attach_node_number' argument")
-        if category is None:
-            raise TypeError("Missing 'category' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if dbfs_cluster_id is None and 'dbfsClusterId' in kwargs:
-            dbfs_cluster_id = kwargs['dbfsClusterId']
-        if dbfs_cluster_id is None:
-            raise TypeError("Missing 'dbfs_cluster_id' argument")
-        if ecs_lists is None and 'ecsLists' in kwargs:
-            ecs_lists = kwargs['ecsLists']
-        if ecs_lists is None:
-            raise TypeError("Missing 'ecs_lists' argument")
-        if enable_raid is None and 'enableRaid' in kwargs:
-            enable_raid = kwargs['enableRaid']
-        if enable_raid is None:
-            raise TypeError("Missing 'enable_raid' argument")
-        if encryption is None:
-            raise TypeError("Missing 'encryption' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_name is None:
-            raise TypeError("Missing 'instance_name' argument")
-        if kms_key_id is None and 'kmsKeyId' in kwargs:
-            kms_key_id = kwargs['kmsKeyId']
-        if kms_key_id is None:
-            raise TypeError("Missing 'kms_key_id' argument")
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if payment_type is None:
-            raise TypeError("Missing 'payment_type' argument")
-        if performance_level is None and 'performanceLevel' in kwargs:
-            performance_level = kwargs['performanceLevel']
-        if performance_level is None:
-            raise TypeError("Missing 'performance_level' argument")
-        if raid_stripe_unit_number is None and 'raidStripeUnitNumber' in kwargs:
-            raid_stripe_unit_number = kwargs['raidStripeUnitNumber']
-        if raid_stripe_unit_number is None:
-            raise TypeError("Missing 'raid_stripe_unit_number' argument")
-        if size is None:
-            raise TypeError("Missing 'size' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("attach_node_number", attach_node_number)
-        _setter("category", category)
-        _setter("create_time", create_time)
-        _setter("dbfs_cluster_id", dbfs_cluster_id)
-        _setter("ecs_lists", ecs_lists)
-        _setter("enable_raid", enable_raid)
-        _setter("encryption", encryption)
-        _setter("id", id)
-        _setter("instance_id", instance_id)
-        _setter("instance_name", instance_name)
-        _setter("kms_key_id", kms_key_id)
-        _setter("payment_type", payment_type)
-        _setter("performance_level", performance_level)
-        _setter("raid_stripe_unit_number", raid_stripe_unit_number)
-        _setter("size", size)
-        _setter("status", status)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "attach_node_number", attach_node_number)
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "dbfs_cluster_id", dbfs_cluster_id)
+        pulumi.set(__self__, "ecs_lists", ecs_lists)
+        pulumi.set(__self__, "enable_raid", enable_raid)
+        pulumi.set(__self__, "encryption", encryption)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "kms_key_id", kms_key_id)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "performance_level", performance_level)
+        pulumi.set(__self__, "raid_stripe_unit_number", raid_stripe_unit_number)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="attachNodeNumber")
@@ -568,22 +383,7 @@ class GetInstancesInstanceEcsListResult(dict):
         """
         :param str ecs_id: The ID of the ECS instance.
         """
-        GetInstancesInstanceEcsListResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ecs_id=ecs_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ecs_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ecs_id is None and 'ecsId' in kwargs:
-            ecs_id = kwargs['ecsId']
-        if ecs_id is None:
-            raise TypeError("Missing 'ecs_id' argument")
-
-        _setter("ecs_id", ecs_id)
+        pulumi.set(__self__, "ecs_id", ecs_id)
 
     @property
     @pulumi.getter(name="ecsId")
@@ -627,103 +427,20 @@ class GetSnapshotsSnapshotResult(dict):
         :param int source_fs_size: Source database file system capacity.
         :param str status: The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
         """
-        GetSnapshotsSnapshotResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            category=category,
-            create_time=create_time,
-            description=description,
-            id=id,
-            instance_id=instance_id,
-            last_modified_time=last_modified_time,
-            progress=progress,
-            remain_time=remain_time,
-            retention_days=retention_days,
-            snapshot_id=snapshot_id,
-            snapshot_name=snapshot_name,
-            snapshot_type=snapshot_type,
-            source_fs_size=source_fs_size,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             category: Optional[str] = None,
-             create_time: Optional[str] = None,
-             description: Optional[str] = None,
-             id: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             last_modified_time: Optional[str] = None,
-             progress: Optional[str] = None,
-             remain_time: Optional[int] = None,
-             retention_days: Optional[int] = None,
-             snapshot_id: Optional[str] = None,
-             snapshot_name: Optional[str] = None,
-             snapshot_type: Optional[str] = None,
-             source_fs_size: Optional[int] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if category is None:
-            raise TypeError("Missing 'category' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if last_modified_time is None and 'lastModifiedTime' in kwargs:
-            last_modified_time = kwargs['lastModifiedTime']
-        if last_modified_time is None:
-            raise TypeError("Missing 'last_modified_time' argument")
-        if progress is None:
-            raise TypeError("Missing 'progress' argument")
-        if remain_time is None and 'remainTime' in kwargs:
-            remain_time = kwargs['remainTime']
-        if remain_time is None:
-            raise TypeError("Missing 'remain_time' argument")
-        if retention_days is None and 'retentionDays' in kwargs:
-            retention_days = kwargs['retentionDays']
-        if retention_days is None:
-            raise TypeError("Missing 'retention_days' argument")
-        if snapshot_id is None and 'snapshotId' in kwargs:
-            snapshot_id = kwargs['snapshotId']
-        if snapshot_id is None:
-            raise TypeError("Missing 'snapshot_id' argument")
-        if snapshot_name is None and 'snapshotName' in kwargs:
-            snapshot_name = kwargs['snapshotName']
-        if snapshot_name is None:
-            raise TypeError("Missing 'snapshot_name' argument")
-        if snapshot_type is None and 'snapshotType' in kwargs:
-            snapshot_type = kwargs['snapshotType']
-        if snapshot_type is None:
-            raise TypeError("Missing 'snapshot_type' argument")
-        if source_fs_size is None and 'sourceFsSize' in kwargs:
-            source_fs_size = kwargs['sourceFsSize']
-        if source_fs_size is None:
-            raise TypeError("Missing 'source_fs_size' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("category", category)
-        _setter("create_time", create_time)
-        _setter("description", description)
-        _setter("id", id)
-        _setter("instance_id", instance_id)
-        _setter("last_modified_time", last_modified_time)
-        _setter("progress", progress)
-        _setter("remain_time", remain_time)
-        _setter("retention_days", retention_days)
-        _setter("snapshot_id", snapshot_id)
-        _setter("snapshot_name", snapshot_name)
-        _setter("snapshot_type", snapshot_type)
-        _setter("source_fs_size", source_fs_size)
-        _setter("status", status)
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "last_modified_time", last_modified_time)
+        pulumi.set(__self__, "progress", progress)
+        pulumi.set(__self__, "remain_time", remain_time)
+        pulumi.set(__self__, "retention_days", retention_days)
+        pulumi.set(__self__, "snapshot_id", snapshot_id)
+        pulumi.set(__self__, "snapshot_name", snapshot_name)
+        pulumi.set(__self__, "snapshot_type", snapshot_type)
+        pulumi.set(__self__, "source_fs_size", source_fs_size)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter

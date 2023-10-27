@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -47,80 +47,27 @@ class ScalingRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]] step_adjustments: Steps for StepScalingRule. See `step_adjustment` below.
         :param pulumi.Input[float] target_value: The target value for the metric.
         """
-        ScalingRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            scaling_group_id=scaling_group_id,
-            adjustment_type=adjustment_type,
-            adjustment_value=adjustment_value,
-            cooldown=cooldown,
-            disable_scale_in=disable_scale_in,
-            estimated_instance_warmup=estimated_instance_warmup,
-            metric_name=metric_name,
-            scaling_rule_name=scaling_rule_name,
-            scaling_rule_type=scaling_rule_type,
-            step_adjustments=step_adjustments,
-            target_value=target_value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             scaling_group_id: Optional[pulumi.Input[str]] = None,
-             adjustment_type: Optional[pulumi.Input[str]] = None,
-             adjustment_value: Optional[pulumi.Input[int]] = None,
-             cooldown: Optional[pulumi.Input[int]] = None,
-             disable_scale_in: Optional[pulumi.Input[bool]] = None,
-             estimated_instance_warmup: Optional[pulumi.Input[int]] = None,
-             metric_name: Optional[pulumi.Input[str]] = None,
-             scaling_rule_name: Optional[pulumi.Input[str]] = None,
-             scaling_rule_type: Optional[pulumi.Input[str]] = None,
-             step_adjustments: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]]] = None,
-             target_value: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if scaling_group_id is None and 'scalingGroupId' in kwargs:
-            scaling_group_id = kwargs['scalingGroupId']
-        if scaling_group_id is None:
-            raise TypeError("Missing 'scaling_group_id' argument")
-        if adjustment_type is None and 'adjustmentType' in kwargs:
-            adjustment_type = kwargs['adjustmentType']
-        if adjustment_value is None and 'adjustmentValue' in kwargs:
-            adjustment_value = kwargs['adjustmentValue']
-        if disable_scale_in is None and 'disableScaleIn' in kwargs:
-            disable_scale_in = kwargs['disableScaleIn']
-        if estimated_instance_warmup is None and 'estimatedInstanceWarmup' in kwargs:
-            estimated_instance_warmup = kwargs['estimatedInstanceWarmup']
-        if metric_name is None and 'metricName' in kwargs:
-            metric_name = kwargs['metricName']
-        if scaling_rule_name is None and 'scalingRuleName' in kwargs:
-            scaling_rule_name = kwargs['scalingRuleName']
-        if scaling_rule_type is None and 'scalingRuleType' in kwargs:
-            scaling_rule_type = kwargs['scalingRuleType']
-        if step_adjustments is None and 'stepAdjustments' in kwargs:
-            step_adjustments = kwargs['stepAdjustments']
-        if target_value is None and 'targetValue' in kwargs:
-            target_value = kwargs['targetValue']
-
-        _setter("scaling_group_id", scaling_group_id)
+        pulumi.set(__self__, "scaling_group_id", scaling_group_id)
         if adjustment_type is not None:
-            _setter("adjustment_type", adjustment_type)
+            pulumi.set(__self__, "adjustment_type", adjustment_type)
         if adjustment_value is not None:
-            _setter("adjustment_value", adjustment_value)
+            pulumi.set(__self__, "adjustment_value", adjustment_value)
         if cooldown is not None:
-            _setter("cooldown", cooldown)
+            pulumi.set(__self__, "cooldown", cooldown)
         if disable_scale_in is not None:
-            _setter("disable_scale_in", disable_scale_in)
+            pulumi.set(__self__, "disable_scale_in", disable_scale_in)
         if estimated_instance_warmup is not None:
-            _setter("estimated_instance_warmup", estimated_instance_warmup)
+            pulumi.set(__self__, "estimated_instance_warmup", estimated_instance_warmup)
         if metric_name is not None:
-            _setter("metric_name", metric_name)
+            pulumi.set(__self__, "metric_name", metric_name)
         if scaling_rule_name is not None:
-            _setter("scaling_rule_name", scaling_rule_name)
+            pulumi.set(__self__, "scaling_rule_name", scaling_rule_name)
         if scaling_rule_type is not None:
-            _setter("scaling_rule_type", scaling_rule_type)
+            pulumi.set(__self__, "scaling_rule_type", scaling_rule_type)
         if step_adjustments is not None:
-            _setter("step_adjustments", step_adjustments)
+            pulumi.set(__self__, "step_adjustments", step_adjustments)
         if target_value is not None:
-            _setter("target_value", target_value)
+            pulumi.set(__self__, "target_value", target_value)
 
     @property
     @pulumi.getter(name="scalingGroupId")
@@ -297,83 +244,30 @@ class _ScalingRuleState:
         :param pulumi.Input[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]] step_adjustments: Steps for StepScalingRule. See `step_adjustment` below.
         :param pulumi.Input[float] target_value: The target value for the metric.
         """
-        _ScalingRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            adjustment_type=adjustment_type,
-            adjustment_value=adjustment_value,
-            ari=ari,
-            cooldown=cooldown,
-            disable_scale_in=disable_scale_in,
-            estimated_instance_warmup=estimated_instance_warmup,
-            metric_name=metric_name,
-            scaling_group_id=scaling_group_id,
-            scaling_rule_name=scaling_rule_name,
-            scaling_rule_type=scaling_rule_type,
-            step_adjustments=step_adjustments,
-            target_value=target_value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             adjustment_type: Optional[pulumi.Input[str]] = None,
-             adjustment_value: Optional[pulumi.Input[int]] = None,
-             ari: Optional[pulumi.Input[str]] = None,
-             cooldown: Optional[pulumi.Input[int]] = None,
-             disable_scale_in: Optional[pulumi.Input[bool]] = None,
-             estimated_instance_warmup: Optional[pulumi.Input[int]] = None,
-             metric_name: Optional[pulumi.Input[str]] = None,
-             scaling_group_id: Optional[pulumi.Input[str]] = None,
-             scaling_rule_name: Optional[pulumi.Input[str]] = None,
-             scaling_rule_type: Optional[pulumi.Input[str]] = None,
-             step_adjustments: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]]] = None,
-             target_value: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if adjustment_type is None and 'adjustmentType' in kwargs:
-            adjustment_type = kwargs['adjustmentType']
-        if adjustment_value is None and 'adjustmentValue' in kwargs:
-            adjustment_value = kwargs['adjustmentValue']
-        if disable_scale_in is None and 'disableScaleIn' in kwargs:
-            disable_scale_in = kwargs['disableScaleIn']
-        if estimated_instance_warmup is None and 'estimatedInstanceWarmup' in kwargs:
-            estimated_instance_warmup = kwargs['estimatedInstanceWarmup']
-        if metric_name is None and 'metricName' in kwargs:
-            metric_name = kwargs['metricName']
-        if scaling_group_id is None and 'scalingGroupId' in kwargs:
-            scaling_group_id = kwargs['scalingGroupId']
-        if scaling_rule_name is None and 'scalingRuleName' in kwargs:
-            scaling_rule_name = kwargs['scalingRuleName']
-        if scaling_rule_type is None and 'scalingRuleType' in kwargs:
-            scaling_rule_type = kwargs['scalingRuleType']
-        if step_adjustments is None and 'stepAdjustments' in kwargs:
-            step_adjustments = kwargs['stepAdjustments']
-        if target_value is None and 'targetValue' in kwargs:
-            target_value = kwargs['targetValue']
-
         if adjustment_type is not None:
-            _setter("adjustment_type", adjustment_type)
+            pulumi.set(__self__, "adjustment_type", adjustment_type)
         if adjustment_value is not None:
-            _setter("adjustment_value", adjustment_value)
+            pulumi.set(__self__, "adjustment_value", adjustment_value)
         if ari is not None:
-            _setter("ari", ari)
+            pulumi.set(__self__, "ari", ari)
         if cooldown is not None:
-            _setter("cooldown", cooldown)
+            pulumi.set(__self__, "cooldown", cooldown)
         if disable_scale_in is not None:
-            _setter("disable_scale_in", disable_scale_in)
+            pulumi.set(__self__, "disable_scale_in", disable_scale_in)
         if estimated_instance_warmup is not None:
-            _setter("estimated_instance_warmup", estimated_instance_warmup)
+            pulumi.set(__self__, "estimated_instance_warmup", estimated_instance_warmup)
         if metric_name is not None:
-            _setter("metric_name", metric_name)
+            pulumi.set(__self__, "metric_name", metric_name)
         if scaling_group_id is not None:
-            _setter("scaling_group_id", scaling_group_id)
+            pulumi.set(__self__, "scaling_group_id", scaling_group_id)
         if scaling_rule_name is not None:
-            _setter("scaling_rule_name", scaling_rule_name)
+            pulumi.set(__self__, "scaling_rule_name", scaling_rule_name)
         if scaling_rule_type is not None:
-            _setter("scaling_rule_type", scaling_rule_type)
+            pulumi.set(__self__, "scaling_rule_type", scaling_rule_type)
         if step_adjustments is not None:
-            _setter("step_adjustments", step_adjustments)
+            pulumi.set(__self__, "step_adjustments", step_adjustments)
         if target_value is not None:
-            _setter("target_value", target_value)
+            pulumi.set(__self__, "target_value", target_value)
 
     @property
     @pulumi.getter(name="adjustmentType")
@@ -727,10 +621,6 @@ class ScalingRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ScalingRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

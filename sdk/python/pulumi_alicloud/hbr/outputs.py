@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -61,21 +61,8 @@ class OtsBackupPlanOtsDetail(dict):
         """
         :param Sequence[str] table_names: The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
         """
-        OtsBackupPlanOtsDetail._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            table_names=table_names,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             table_names: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if table_names is None and 'tableNames' in kwargs:
-            table_names = kwargs['tableNames']
-
         if table_names is not None:
-            _setter("table_names", table_names)
+            pulumi.set(__self__, "table_names", table_names)
 
     @property
     @pulumi.getter(name="tableNames")
@@ -120,39 +107,16 @@ class OtsBackupPlanRule(dict):
         :param str rule_name: The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
         :param str schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         """
-        OtsBackupPlanRule._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            backup_type=backup_type,
-            disabled=disabled,
-            retention=retention,
-            rule_name=rule_name,
-            schedule=schedule,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             backup_type: Optional[str] = None,
-             disabled: Optional[bool] = None,
-             retention: Optional[str] = None,
-             rule_name: Optional[str] = None,
-             schedule: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if backup_type is None and 'backupType' in kwargs:
-            backup_type = kwargs['backupType']
-        if rule_name is None and 'ruleName' in kwargs:
-            rule_name = kwargs['ruleName']
-
         if backup_type is not None:
-            _setter("backup_type", backup_type)
+            pulumi.set(__self__, "backup_type", backup_type)
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if retention is not None:
-            _setter("retention", retention)
+            pulumi.set(__self__, "retention", retention)
         if rule_name is not None:
-            _setter("rule_name", rule_name)
+            pulumi.set(__self__, "rule_name", rule_name)
         if schedule is not None:
-            _setter("schedule", schedule)
+            pulumi.set(__self__, "schedule", schedule)
 
     @property
     @pulumi.getter(name="backupType")
@@ -219,21 +183,8 @@ class RestoreJobOtsDetail(dict):
         """
         :param bool overwrite_existing: Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
         """
-        RestoreJobOtsDetail._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            overwrite_existing=overwrite_existing,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             overwrite_existing: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if overwrite_existing is None and 'overwriteExisting' in kwargs:
-            overwrite_existing = kwargs['overwriteExisting']
-
         if overwrite_existing is not None:
-            _setter("overwrite_existing", overwrite_existing)
+            pulumi.set(__self__, "overwrite_existing", overwrite_existing)
 
     @property
     @pulumi.getter(name="overwriteExisting")
@@ -304,77 +255,24 @@ class ServerBackupPlanDetail(dict):
         :param str pre_script_path: Only vaild for the linux system when AppConsistent is true. Apply the freeze script path (e.g. /tmp/prescript.sh). prescript.sh scripts must meet the following conditions: in terms of permissions, only root, as the owner, has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
         :param int timeout_in_seconds: Only the Linux system is valid, and the IO freeze timeout period. The default is 30 seconds.
         """
-        ServerBackupPlanDetail._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            app_consistent=app_consistent,
-            snapshot_group=snapshot_group,
-            destination_region_id=destination_region_id,
-            destination_retention=destination_retention,
-            disk_id_lists=disk_id_lists,
-            do_copy=do_copy,
-            enable_fs_freeze=enable_fs_freeze,
-            post_script_path=post_script_path,
-            pre_script_path=pre_script_path,
-            timeout_in_seconds=timeout_in_seconds,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             app_consistent: Optional[bool] = None,
-             snapshot_group: Optional[bool] = None,
-             destination_region_id: Optional[str] = None,
-             destination_retention: Optional[int] = None,
-             disk_id_lists: Optional[Sequence[str]] = None,
-             do_copy: Optional[bool] = None,
-             enable_fs_freeze: Optional[bool] = None,
-             post_script_path: Optional[str] = None,
-             pre_script_path: Optional[str] = None,
-             timeout_in_seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if app_consistent is None and 'appConsistent' in kwargs:
-            app_consistent = kwargs['appConsistent']
-        if app_consistent is None:
-            raise TypeError("Missing 'app_consistent' argument")
-        if snapshot_group is None and 'snapshotGroup' in kwargs:
-            snapshot_group = kwargs['snapshotGroup']
-        if snapshot_group is None:
-            raise TypeError("Missing 'snapshot_group' argument")
-        if destination_region_id is None and 'destinationRegionId' in kwargs:
-            destination_region_id = kwargs['destinationRegionId']
-        if destination_retention is None and 'destinationRetention' in kwargs:
-            destination_retention = kwargs['destinationRetention']
-        if disk_id_lists is None and 'diskIdLists' in kwargs:
-            disk_id_lists = kwargs['diskIdLists']
-        if do_copy is None and 'doCopy' in kwargs:
-            do_copy = kwargs['doCopy']
-        if enable_fs_freeze is None and 'enableFsFreeze' in kwargs:
-            enable_fs_freeze = kwargs['enableFsFreeze']
-        if post_script_path is None and 'postScriptPath' in kwargs:
-            post_script_path = kwargs['postScriptPath']
-        if pre_script_path is None and 'preScriptPath' in kwargs:
-            pre_script_path = kwargs['preScriptPath']
-        if timeout_in_seconds is None and 'timeoutInSeconds' in kwargs:
-            timeout_in_seconds = kwargs['timeoutInSeconds']
-
-        _setter("app_consistent", app_consistent)
-        _setter("snapshot_group", snapshot_group)
+        pulumi.set(__self__, "app_consistent", app_consistent)
+        pulumi.set(__self__, "snapshot_group", snapshot_group)
         if destination_region_id is not None:
-            _setter("destination_region_id", destination_region_id)
+            pulumi.set(__self__, "destination_region_id", destination_region_id)
         if destination_retention is not None:
-            _setter("destination_retention", destination_retention)
+            pulumi.set(__self__, "destination_retention", destination_retention)
         if disk_id_lists is not None:
-            _setter("disk_id_lists", disk_id_lists)
+            pulumi.set(__self__, "disk_id_lists", disk_id_lists)
         if do_copy is not None:
-            _setter("do_copy", do_copy)
+            pulumi.set(__self__, "do_copy", do_copy)
         if enable_fs_freeze is not None:
-            _setter("enable_fs_freeze", enable_fs_freeze)
+            pulumi.set(__self__, "enable_fs_freeze", enable_fs_freeze)
         if post_script_path is not None:
-            _setter("post_script_path", post_script_path)
+            pulumi.set(__self__, "post_script_path", post_script_path)
         if pre_script_path is not None:
-            _setter("pre_script_path", pre_script_path)
+            pulumi.set(__self__, "pre_script_path", pre_script_path)
         if timeout_in_seconds is not None:
-            _setter("timeout_in_seconds", timeout_in_seconds)
+            pulumi.set(__self__, "timeout_in_seconds", timeout_in_seconds)
 
     @property
     @pulumi.getter(name="appConsistent")
@@ -470,27 +368,12 @@ class GetBackupJobsFilterResult(dict):
                
                > **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
         """
-        GetBackupJobsFilterResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            operator=operator,
-            values=values,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             operator: Optional[str] = None,
-             values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if operator is not None:
-            _setter("operator", operator)
+            pulumi.set(__self__, "operator", operator)
         if values is not None:
-            _setter("values", values)
+            pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
@@ -587,223 +470,38 @@ class GetBackupJobsJobResult(dict):
         :param str updated_time: The update time of backup job. UNIX time seconds.
         :param str vault_id: The ID of backup vault.
         """
-        GetBackupJobsJobResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            actual_bytes=actual_bytes,
-            actual_items=actual_items,
-            back_job_name=back_job_name,
-            backup_job_id=backup_job_id,
-            backup_type=backup_type,
-            bucket=bucket,
-            bytes_done=bytes_done,
-            bytes_total=bytes_total,
-            complete_time=complete_time,
-            create_time=create_time,
-            cross_account_role_name=cross_account_role_name,
-            cross_account_type=cross_account_type,
-            cross_account_user_id=cross_account_user_id,
-            error_message=error_message,
-            exclude=exclude,
-            file_system_id=file_system_id,
-            id=id,
-            include=include,
-            instance_id=instance_id,
-            items_done=items_done,
-            items_total=items_total,
-            nas_create_time=nas_create_time,
-            ots_details=ots_details,
-            paths=paths,
-            plan_id=plan_id,
-            prefix=prefix,
-            progress=progress,
-            source_type=source_type,
-            start_time=start_time,
-            status=status,
-            updated_time=updated_time,
-            vault_id=vault_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             actual_bytes: Optional[str] = None,
-             actual_items: Optional[str] = None,
-             back_job_name: Optional[str] = None,
-             backup_job_id: Optional[str] = None,
-             backup_type: Optional[str] = None,
-             bucket: Optional[str] = None,
-             bytes_done: Optional[str] = None,
-             bytes_total: Optional[str] = None,
-             complete_time: Optional[str] = None,
-             create_time: Optional[str] = None,
-             cross_account_role_name: Optional[str] = None,
-             cross_account_type: Optional[str] = None,
-             cross_account_user_id: Optional[int] = None,
-             error_message: Optional[str] = None,
-             exclude: Optional[str] = None,
-             file_system_id: Optional[str] = None,
-             id: Optional[str] = None,
-             include: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             items_done: Optional[str] = None,
-             items_total: Optional[str] = None,
-             nas_create_time: Optional[str] = None,
-             ots_details: Optional[Sequence['outputs.GetBackupJobsJobOtsDetailResult']] = None,
-             paths: Optional[Sequence[str]] = None,
-             plan_id: Optional[str] = None,
-             prefix: Optional[str] = None,
-             progress: Optional[str] = None,
-             source_type: Optional[str] = None,
-             start_time: Optional[str] = None,
-             status: Optional[str] = None,
-             updated_time: Optional[str] = None,
-             vault_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if actual_bytes is None and 'actualBytes' in kwargs:
-            actual_bytes = kwargs['actualBytes']
-        if actual_bytes is None:
-            raise TypeError("Missing 'actual_bytes' argument")
-        if actual_items is None and 'actualItems' in kwargs:
-            actual_items = kwargs['actualItems']
-        if actual_items is None:
-            raise TypeError("Missing 'actual_items' argument")
-        if back_job_name is None and 'backJobName' in kwargs:
-            back_job_name = kwargs['backJobName']
-        if back_job_name is None:
-            raise TypeError("Missing 'back_job_name' argument")
-        if backup_job_id is None and 'backupJobId' in kwargs:
-            backup_job_id = kwargs['backupJobId']
-        if backup_job_id is None:
-            raise TypeError("Missing 'backup_job_id' argument")
-        if backup_type is None and 'backupType' in kwargs:
-            backup_type = kwargs['backupType']
-        if backup_type is None:
-            raise TypeError("Missing 'backup_type' argument")
-        if bucket is None:
-            raise TypeError("Missing 'bucket' argument")
-        if bytes_done is None and 'bytesDone' in kwargs:
-            bytes_done = kwargs['bytesDone']
-        if bytes_done is None:
-            raise TypeError("Missing 'bytes_done' argument")
-        if bytes_total is None and 'bytesTotal' in kwargs:
-            bytes_total = kwargs['bytesTotal']
-        if bytes_total is None:
-            raise TypeError("Missing 'bytes_total' argument")
-        if complete_time is None and 'completeTime' in kwargs:
-            complete_time = kwargs['completeTime']
-        if complete_time is None:
-            raise TypeError("Missing 'complete_time' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if cross_account_role_name is None and 'crossAccountRoleName' in kwargs:
-            cross_account_role_name = kwargs['crossAccountRoleName']
-        if cross_account_role_name is None:
-            raise TypeError("Missing 'cross_account_role_name' argument")
-        if cross_account_type is None and 'crossAccountType' in kwargs:
-            cross_account_type = kwargs['crossAccountType']
-        if cross_account_type is None:
-            raise TypeError("Missing 'cross_account_type' argument")
-        if cross_account_user_id is None and 'crossAccountUserId' in kwargs:
-            cross_account_user_id = kwargs['crossAccountUserId']
-        if cross_account_user_id is None:
-            raise TypeError("Missing 'cross_account_user_id' argument")
-        if error_message is None and 'errorMessage' in kwargs:
-            error_message = kwargs['errorMessage']
-        if error_message is None:
-            raise TypeError("Missing 'error_message' argument")
-        if exclude is None:
-            raise TypeError("Missing 'exclude' argument")
-        if file_system_id is None and 'fileSystemId' in kwargs:
-            file_system_id = kwargs['fileSystemId']
-        if file_system_id is None:
-            raise TypeError("Missing 'file_system_id' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if include is None:
-            raise TypeError("Missing 'include' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if items_done is None and 'itemsDone' in kwargs:
-            items_done = kwargs['itemsDone']
-        if items_done is None:
-            raise TypeError("Missing 'items_done' argument")
-        if items_total is None and 'itemsTotal' in kwargs:
-            items_total = kwargs['itemsTotal']
-        if items_total is None:
-            raise TypeError("Missing 'items_total' argument")
-        if nas_create_time is None and 'nasCreateTime' in kwargs:
-            nas_create_time = kwargs['nasCreateTime']
-        if nas_create_time is None:
-            raise TypeError("Missing 'nas_create_time' argument")
-        if ots_details is None and 'otsDetails' in kwargs:
-            ots_details = kwargs['otsDetails']
-        if ots_details is None:
-            raise TypeError("Missing 'ots_details' argument")
-        if paths is None:
-            raise TypeError("Missing 'paths' argument")
-        if plan_id is None and 'planId' in kwargs:
-            plan_id = kwargs['planId']
-        if plan_id is None:
-            raise TypeError("Missing 'plan_id' argument")
-        if prefix is None:
-            raise TypeError("Missing 'prefix' argument")
-        if progress is None:
-            raise TypeError("Missing 'progress' argument")
-        if source_type is None and 'sourceType' in kwargs:
-            source_type = kwargs['sourceType']
-        if source_type is None:
-            raise TypeError("Missing 'source_type' argument")
-        if start_time is None and 'startTime' in kwargs:
-            start_time = kwargs['startTime']
-        if start_time is None:
-            raise TypeError("Missing 'start_time' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if updated_time is None and 'updatedTime' in kwargs:
-            updated_time = kwargs['updatedTime']
-        if updated_time is None:
-            raise TypeError("Missing 'updated_time' argument")
-        if vault_id is None and 'vaultId' in kwargs:
-            vault_id = kwargs['vaultId']
-        if vault_id is None:
-            raise TypeError("Missing 'vault_id' argument")
-
-        _setter("actual_bytes", actual_bytes)
-        _setter("actual_items", actual_items)
-        _setter("back_job_name", back_job_name)
-        _setter("backup_job_id", backup_job_id)
-        _setter("backup_type", backup_type)
-        _setter("bucket", bucket)
-        _setter("bytes_done", bytes_done)
-        _setter("bytes_total", bytes_total)
-        _setter("complete_time", complete_time)
-        _setter("create_time", create_time)
-        _setter("cross_account_role_name", cross_account_role_name)
-        _setter("cross_account_type", cross_account_type)
-        _setter("cross_account_user_id", cross_account_user_id)
-        _setter("error_message", error_message)
-        _setter("exclude", exclude)
-        _setter("file_system_id", file_system_id)
-        _setter("id", id)
-        _setter("include", include)
-        _setter("instance_id", instance_id)
-        _setter("items_done", items_done)
-        _setter("items_total", items_total)
-        _setter("nas_create_time", nas_create_time)
-        _setter("ots_details", ots_details)
-        _setter("paths", paths)
-        _setter("plan_id", plan_id)
-        _setter("prefix", prefix)
-        _setter("progress", progress)
-        _setter("source_type", source_type)
-        _setter("start_time", start_time)
-        _setter("status", status)
-        _setter("updated_time", updated_time)
-        _setter("vault_id", vault_id)
+        pulumi.set(__self__, "actual_bytes", actual_bytes)
+        pulumi.set(__self__, "actual_items", actual_items)
+        pulumi.set(__self__, "back_job_name", back_job_name)
+        pulumi.set(__self__, "backup_job_id", backup_job_id)
+        pulumi.set(__self__, "backup_type", backup_type)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "bytes_done", bytes_done)
+        pulumi.set(__self__, "bytes_total", bytes_total)
+        pulumi.set(__self__, "complete_time", complete_time)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "cross_account_role_name", cross_account_role_name)
+        pulumi.set(__self__, "cross_account_type", cross_account_type)
+        pulumi.set(__self__, "cross_account_user_id", cross_account_user_id)
+        pulumi.set(__self__, "error_message", error_message)
+        pulumi.set(__self__, "exclude", exclude)
+        pulumi.set(__self__, "file_system_id", file_system_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "include", include)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "items_done", items_done)
+        pulumi.set(__self__, "items_total", items_total)
+        pulumi.set(__self__, "nas_create_time", nas_create_time)
+        pulumi.set(__self__, "ots_details", ots_details)
+        pulumi.set(__self__, "paths", paths)
+        pulumi.set(__self__, "plan_id", plan_id)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "progress", progress)
+        pulumi.set(__self__, "source_type", source_type)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "updated_time", updated_time)
+        pulumi.set(__self__, "vault_id", vault_id)
 
     @property
     @pulumi.getter(name="actualBytes")
@@ -1063,22 +761,7 @@ class GetBackupJobsJobResult(dict):
 class GetBackupJobsJobOtsDetailResult(dict):
     def __init__(__self__, *,
                  table_names: Sequence[str]):
-        GetBackupJobsJobOtsDetailResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            table_names=table_names,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             table_names: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if table_names is None and 'tableNames' in kwargs:
-            table_names = kwargs['tableNames']
-        if table_names is None:
-            raise TypeError("Missing 'table_names' argument")
-
-        _setter("table_names", table_names)
+        pulumi.set(__self__, "table_names", table_names)
 
     @property
     @pulumi.getter(name="tableNames")
@@ -1143,191 +826,32 @@ class GetEcsBackupClientsClientResult(dict):
         :param bool use_https: Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
         :param str zone_id: The ID of Zone.
         """
-        GetEcsBackupClientsClientResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            arch_type=arch_type,
-            backup_status=backup_status,
-            client_type=client_type,
-            client_version=client_version,
-            create_time=create_time,
-            data_network_type=data_network_type,
-            data_proxy_setting=data_proxy_setting,
-            ecs_backup_client_id=ecs_backup_client_id,
-            hostname=hostname,
-            id=id,
-            instance_id=instance_id,
-            instance_name=instance_name,
-            last_heart_beat_time=last_heart_beat_time,
-            max_client_version=max_client_version,
-            max_cpu_core=max_cpu_core,
-            max_worker=max_worker,
-            os_type=os_type,
-            private_ipv4=private_ipv4,
-            proxy_host=proxy_host,
-            proxy_password=proxy_password,
-            proxy_port=proxy_port,
-            proxy_user=proxy_user,
-            status=status,
-            updated_time=updated_time,
-            use_https=use_https,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             arch_type: Optional[str] = None,
-             backup_status: Optional[str] = None,
-             client_type: Optional[str] = None,
-             client_version: Optional[str] = None,
-             create_time: Optional[str] = None,
-             data_network_type: Optional[str] = None,
-             data_proxy_setting: Optional[str] = None,
-             ecs_backup_client_id: Optional[str] = None,
-             hostname: Optional[str] = None,
-             id: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             instance_name: Optional[str] = None,
-             last_heart_beat_time: Optional[str] = None,
-             max_client_version: Optional[str] = None,
-             max_cpu_core: Optional[str] = None,
-             max_worker: Optional[str] = None,
-             os_type: Optional[str] = None,
-             private_ipv4: Optional[str] = None,
-             proxy_host: Optional[str] = None,
-             proxy_password: Optional[str] = None,
-             proxy_port: Optional[str] = None,
-             proxy_user: Optional[str] = None,
-             status: Optional[str] = None,
-             updated_time: Optional[str] = None,
-             use_https: Optional[bool] = None,
-             zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if arch_type is None and 'archType' in kwargs:
-            arch_type = kwargs['archType']
-        if arch_type is None:
-            raise TypeError("Missing 'arch_type' argument")
-        if backup_status is None and 'backupStatus' in kwargs:
-            backup_status = kwargs['backupStatus']
-        if backup_status is None:
-            raise TypeError("Missing 'backup_status' argument")
-        if client_type is None and 'clientType' in kwargs:
-            client_type = kwargs['clientType']
-        if client_type is None:
-            raise TypeError("Missing 'client_type' argument")
-        if client_version is None and 'clientVersion' in kwargs:
-            client_version = kwargs['clientVersion']
-        if client_version is None:
-            raise TypeError("Missing 'client_version' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if data_network_type is None and 'dataNetworkType' in kwargs:
-            data_network_type = kwargs['dataNetworkType']
-        if data_network_type is None:
-            raise TypeError("Missing 'data_network_type' argument")
-        if data_proxy_setting is None and 'dataProxySetting' in kwargs:
-            data_proxy_setting = kwargs['dataProxySetting']
-        if data_proxy_setting is None:
-            raise TypeError("Missing 'data_proxy_setting' argument")
-        if ecs_backup_client_id is None and 'ecsBackupClientId' in kwargs:
-            ecs_backup_client_id = kwargs['ecsBackupClientId']
-        if ecs_backup_client_id is None:
-            raise TypeError("Missing 'ecs_backup_client_id' argument")
-        if hostname is None:
-            raise TypeError("Missing 'hostname' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_name is None:
-            raise TypeError("Missing 'instance_name' argument")
-        if last_heart_beat_time is None and 'lastHeartBeatTime' in kwargs:
-            last_heart_beat_time = kwargs['lastHeartBeatTime']
-        if last_heart_beat_time is None:
-            raise TypeError("Missing 'last_heart_beat_time' argument")
-        if max_client_version is None and 'maxClientVersion' in kwargs:
-            max_client_version = kwargs['maxClientVersion']
-        if max_client_version is None:
-            raise TypeError("Missing 'max_client_version' argument")
-        if max_cpu_core is None and 'maxCpuCore' in kwargs:
-            max_cpu_core = kwargs['maxCpuCore']
-        if max_cpu_core is None:
-            raise TypeError("Missing 'max_cpu_core' argument")
-        if max_worker is None and 'maxWorker' in kwargs:
-            max_worker = kwargs['maxWorker']
-        if max_worker is None:
-            raise TypeError("Missing 'max_worker' argument")
-        if os_type is None and 'osType' in kwargs:
-            os_type = kwargs['osType']
-        if os_type is None:
-            raise TypeError("Missing 'os_type' argument")
-        if private_ipv4 is None and 'privateIpv4' in kwargs:
-            private_ipv4 = kwargs['privateIpv4']
-        if private_ipv4 is None:
-            raise TypeError("Missing 'private_ipv4' argument")
-        if proxy_host is None and 'proxyHost' in kwargs:
-            proxy_host = kwargs['proxyHost']
-        if proxy_host is None:
-            raise TypeError("Missing 'proxy_host' argument")
-        if proxy_password is None and 'proxyPassword' in kwargs:
-            proxy_password = kwargs['proxyPassword']
-        if proxy_password is None:
-            raise TypeError("Missing 'proxy_password' argument")
-        if proxy_port is None and 'proxyPort' in kwargs:
-            proxy_port = kwargs['proxyPort']
-        if proxy_port is None:
-            raise TypeError("Missing 'proxy_port' argument")
-        if proxy_user is None and 'proxyUser' in kwargs:
-            proxy_user = kwargs['proxyUser']
-        if proxy_user is None:
-            raise TypeError("Missing 'proxy_user' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if updated_time is None and 'updatedTime' in kwargs:
-            updated_time = kwargs['updatedTime']
-        if updated_time is None:
-            raise TypeError("Missing 'updated_time' argument")
-        if use_https is None and 'useHttps' in kwargs:
-            use_https = kwargs['useHttps']
-        if use_https is None:
-            raise TypeError("Missing 'use_https' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("arch_type", arch_type)
-        _setter("backup_status", backup_status)
-        _setter("client_type", client_type)
-        _setter("client_version", client_version)
-        _setter("create_time", create_time)
-        _setter("data_network_type", data_network_type)
-        _setter("data_proxy_setting", data_proxy_setting)
-        _setter("ecs_backup_client_id", ecs_backup_client_id)
-        _setter("hostname", hostname)
-        _setter("id", id)
-        _setter("instance_id", instance_id)
-        _setter("instance_name", instance_name)
-        _setter("last_heart_beat_time", last_heart_beat_time)
-        _setter("max_client_version", max_client_version)
-        _setter("max_cpu_core", max_cpu_core)
-        _setter("max_worker", max_worker)
-        _setter("os_type", os_type)
-        _setter("private_ipv4", private_ipv4)
-        _setter("proxy_host", proxy_host)
-        _setter("proxy_password", proxy_password)
-        _setter("proxy_port", proxy_port)
-        _setter("proxy_user", proxy_user)
-        _setter("status", status)
-        _setter("updated_time", updated_time)
-        _setter("use_https", use_https)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "arch_type", arch_type)
+        pulumi.set(__self__, "backup_status", backup_status)
+        pulumi.set(__self__, "client_type", client_type)
+        pulumi.set(__self__, "client_version", client_version)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "data_network_type", data_network_type)
+        pulumi.set(__self__, "data_proxy_setting", data_proxy_setting)
+        pulumi.set(__self__, "ecs_backup_client_id", ecs_backup_client_id)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "last_heart_beat_time", last_heart_beat_time)
+        pulumi.set(__self__, "max_client_version", max_client_version)
+        pulumi.set(__self__, "max_cpu_core", max_cpu_core)
+        pulumi.set(__self__, "max_worker", max_worker)
+        pulumi.set(__self__, "os_type", os_type)
+        pulumi.set(__self__, "private_ipv4", private_ipv4)
+        pulumi.set(__self__, "proxy_host", proxy_host)
+        pulumi.set(__self__, "proxy_password", proxy_password)
+        pulumi.set(__self__, "proxy_port", proxy_port)
+        pulumi.set(__self__, "proxy_user", proxy_user)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "updated_time", updated_time)
+        pulumi.set(__self__, "use_https", use_https)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="archType")
@@ -1579,130 +1103,25 @@ class GetEcsBackupPlansPlanResult(dict):
         :param str updated_time: The update time of the backup plan. UNIX time in seconds.
         :param str vault_id: The ID of Backup vault.
         """
-        GetEcsBackupPlansPlanResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            backup_type=backup_type,
-            create_time=create_time,
-            created_time=created_time,
-            detail=detail,
-            disabled=disabled,
-            ecs_backup_plan_id=ecs_backup_plan_id,
-            ecs_backup_plan_name=ecs_backup_plan_name,
-            exclude=exclude,
-            id=id,
-            include=include,
-            instance_id=instance_id,
-            options=options,
-            paths=paths,
-            retention=retention,
-            schedule=schedule,
-            source_type=source_type,
-            speed_limit=speed_limit,
-            updated_time=updated_time,
-            vault_id=vault_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             backup_type: Optional[str] = None,
-             create_time: Optional[str] = None,
-             created_time: Optional[str] = None,
-             detail: Optional[str] = None,
-             disabled: Optional[bool] = None,
-             ecs_backup_plan_id: Optional[str] = None,
-             ecs_backup_plan_name: Optional[str] = None,
-             exclude: Optional[str] = None,
-             id: Optional[str] = None,
-             include: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             options: Optional[str] = None,
-             paths: Optional[Sequence[str]] = None,
-             retention: Optional[str] = None,
-             schedule: Optional[str] = None,
-             source_type: Optional[str] = None,
-             speed_limit: Optional[str] = None,
-             updated_time: Optional[str] = None,
-             vault_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if backup_type is None and 'backupType' in kwargs:
-            backup_type = kwargs['backupType']
-        if backup_type is None:
-            raise TypeError("Missing 'backup_type' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if created_time is None and 'createdTime' in kwargs:
-            created_time = kwargs['createdTime']
-        if created_time is None:
-            raise TypeError("Missing 'created_time' argument")
-        if detail is None:
-            raise TypeError("Missing 'detail' argument")
-        if disabled is None:
-            raise TypeError("Missing 'disabled' argument")
-        if ecs_backup_plan_id is None and 'ecsBackupPlanId' in kwargs:
-            ecs_backup_plan_id = kwargs['ecsBackupPlanId']
-        if ecs_backup_plan_id is None:
-            raise TypeError("Missing 'ecs_backup_plan_id' argument")
-        if ecs_backup_plan_name is None and 'ecsBackupPlanName' in kwargs:
-            ecs_backup_plan_name = kwargs['ecsBackupPlanName']
-        if ecs_backup_plan_name is None:
-            raise TypeError("Missing 'ecs_backup_plan_name' argument")
-        if exclude is None:
-            raise TypeError("Missing 'exclude' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if include is None:
-            raise TypeError("Missing 'include' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if options is None:
-            raise TypeError("Missing 'options' argument")
-        if paths is None:
-            raise TypeError("Missing 'paths' argument")
-        if retention is None:
-            raise TypeError("Missing 'retention' argument")
-        if schedule is None:
-            raise TypeError("Missing 'schedule' argument")
-        if source_type is None and 'sourceType' in kwargs:
-            source_type = kwargs['sourceType']
-        if source_type is None:
-            raise TypeError("Missing 'source_type' argument")
-        if speed_limit is None and 'speedLimit' in kwargs:
-            speed_limit = kwargs['speedLimit']
-        if speed_limit is None:
-            raise TypeError("Missing 'speed_limit' argument")
-        if updated_time is None and 'updatedTime' in kwargs:
-            updated_time = kwargs['updatedTime']
-        if updated_time is None:
-            raise TypeError("Missing 'updated_time' argument")
-        if vault_id is None and 'vaultId' in kwargs:
-            vault_id = kwargs['vaultId']
-        if vault_id is None:
-            raise TypeError("Missing 'vault_id' argument")
-
-        _setter("backup_type", backup_type)
-        _setter("create_time", create_time)
-        _setter("created_time", created_time)
-        _setter("detail", detail)
-        _setter("disabled", disabled)
-        _setter("ecs_backup_plan_id", ecs_backup_plan_id)
-        _setter("ecs_backup_plan_name", ecs_backup_plan_name)
-        _setter("exclude", exclude)
-        _setter("id", id)
-        _setter("include", include)
-        _setter("instance_id", instance_id)
-        _setter("options", options)
-        _setter("paths", paths)
-        _setter("retention", retention)
-        _setter("schedule", schedule)
-        _setter("source_type", source_type)
-        _setter("speed_limit", speed_limit)
-        _setter("updated_time", updated_time)
-        _setter("vault_id", vault_id)
+        pulumi.set(__self__, "backup_type", backup_type)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "created_time", created_time)
+        pulumi.set(__self__, "detail", detail)
+        pulumi.set(__self__, "disabled", disabled)
+        pulumi.set(__self__, "ecs_backup_plan_id", ecs_backup_plan_id)
+        pulumi.set(__self__, "ecs_backup_plan_name", ecs_backup_plan_name)
+        pulumi.set(__self__, "exclude", exclude)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "include", include)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "options", options)
+        pulumi.set(__self__, "paths", paths)
+        pulumi.set(__self__, "retention", retention)
+        pulumi.set(__self__, "schedule", schedule)
+        pulumi.set(__self__, "source_type", source_type)
+        pulumi.set(__self__, "speed_limit", speed_limit)
+        pulumi.set(__self__, "updated_time", updated_time)
+        pulumi.set(__self__, "vault_id", vault_id)
 
     @property
     @pulumi.getter(name="backupType")
@@ -1886,116 +1305,21 @@ class GetHanaBackupClientsHanaBackupClientResult(dict):
         :param bool use_https: Indicates whether data is transmitted over HTTPS.
         :param str vault_id: The ID of the backup vault.
         """
-        GetHanaBackupClientsHanaBackupClientResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            alert_setting=alert_setting,
-            client_id=client_id,
-            client_name=client_name,
-            client_type=client_type,
-            client_version=client_version,
-            cluster_id=cluster_id,
-            id=id,
-            instance_id=instance_id,
-            instance_name=instance_name,
-            max_version=max_version,
-            network_type=network_type,
-            status=status,
-            status_message=status_message,
-            use_https=use_https,
-            vault_id=vault_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             alert_setting: Optional[str] = None,
-             client_id: Optional[str] = None,
-             client_name: Optional[str] = None,
-             client_type: Optional[str] = None,
-             client_version: Optional[str] = None,
-             cluster_id: Optional[str] = None,
-             id: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             instance_name: Optional[str] = None,
-             max_version: Optional[str] = None,
-             network_type: Optional[str] = None,
-             status: Optional[str] = None,
-             status_message: Optional[str] = None,
-             use_https: Optional[bool] = None,
-             vault_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if alert_setting is None and 'alertSetting' in kwargs:
-            alert_setting = kwargs['alertSetting']
-        if alert_setting is None:
-            raise TypeError("Missing 'alert_setting' argument")
-        if client_id is None and 'clientId' in kwargs:
-            client_id = kwargs['clientId']
-        if client_id is None:
-            raise TypeError("Missing 'client_id' argument")
-        if client_name is None and 'clientName' in kwargs:
-            client_name = kwargs['clientName']
-        if client_name is None:
-            raise TypeError("Missing 'client_name' argument")
-        if client_type is None and 'clientType' in kwargs:
-            client_type = kwargs['clientType']
-        if client_type is None:
-            raise TypeError("Missing 'client_type' argument")
-        if client_version is None and 'clientVersion' in kwargs:
-            client_version = kwargs['clientVersion']
-        if client_version is None:
-            raise TypeError("Missing 'client_version' argument")
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cluster_id is None:
-            raise TypeError("Missing 'cluster_id' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_name is None:
-            raise TypeError("Missing 'instance_name' argument")
-        if max_version is None and 'maxVersion' in kwargs:
-            max_version = kwargs['maxVersion']
-        if max_version is None:
-            raise TypeError("Missing 'max_version' argument")
-        if network_type is None and 'networkType' in kwargs:
-            network_type = kwargs['networkType']
-        if network_type is None:
-            raise TypeError("Missing 'network_type' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if status_message is None and 'statusMessage' in kwargs:
-            status_message = kwargs['statusMessage']
-        if status_message is None:
-            raise TypeError("Missing 'status_message' argument")
-        if use_https is None and 'useHttps' in kwargs:
-            use_https = kwargs['useHttps']
-        if use_https is None:
-            raise TypeError("Missing 'use_https' argument")
-        if vault_id is None and 'vaultId' in kwargs:
-            vault_id = kwargs['vaultId']
-        if vault_id is None:
-            raise TypeError("Missing 'vault_id' argument")
-
-        _setter("alert_setting", alert_setting)
-        _setter("client_id", client_id)
-        _setter("client_name", client_name)
-        _setter("client_type", client_type)
-        _setter("client_version", client_version)
-        _setter("cluster_id", cluster_id)
-        _setter("id", id)
-        _setter("instance_id", instance_id)
-        _setter("instance_name", instance_name)
-        _setter("max_version", max_version)
-        _setter("network_type", network_type)
-        _setter("status", status)
-        _setter("status_message", status_message)
-        _setter("use_https", use_https)
-        _setter("vault_id", vault_id)
+        pulumi.set(__self__, "alert_setting", alert_setting)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_name", client_name)
+        pulumi.set(__self__, "client_type", client_type)
+        pulumi.set(__self__, "client_version", client_version)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "max_version", max_version)
+        pulumi.set(__self__, "network_type", network_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "status_message", status_message)
+        pulumi.set(__self__, "use_https", use_https)
+        pulumi.set(__self__, "vault_id", vault_id)
 
     @property
     @pulumi.getter(name="alertSetting")
@@ -2144,86 +1468,17 @@ class GetHanaBackupPlansPlanResult(dict):
         :param str status: The status of the resource.
         :param str vault_id: The ID of the backup vault.
         """
-        GetHanaBackupPlansPlanResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            backup_prefix=backup_prefix,
-            backup_type=backup_type,
-            cluster_id=cluster_id,
-            database_name=database_name,
-            id=id,
-            page_total=page_total,
-            plan_id=plan_id,
-            plan_name=plan_name,
-            schedule=schedule,
-            status=status,
-            vault_id=vault_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             backup_prefix: Optional[str] = None,
-             backup_type: Optional[str] = None,
-             cluster_id: Optional[str] = None,
-             database_name: Optional[str] = None,
-             id: Optional[str] = None,
-             page_total: Optional[str] = None,
-             plan_id: Optional[str] = None,
-             plan_name: Optional[str] = None,
-             schedule: Optional[str] = None,
-             status: Optional[str] = None,
-             vault_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if backup_prefix is None and 'backupPrefix' in kwargs:
-            backup_prefix = kwargs['backupPrefix']
-        if backup_prefix is None:
-            raise TypeError("Missing 'backup_prefix' argument")
-        if backup_type is None and 'backupType' in kwargs:
-            backup_type = kwargs['backupType']
-        if backup_type is None:
-            raise TypeError("Missing 'backup_type' argument")
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cluster_id is None:
-            raise TypeError("Missing 'cluster_id' argument")
-        if database_name is None and 'databaseName' in kwargs:
-            database_name = kwargs['databaseName']
-        if database_name is None:
-            raise TypeError("Missing 'database_name' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if page_total is None and 'pageTotal' in kwargs:
-            page_total = kwargs['pageTotal']
-        if page_total is None:
-            raise TypeError("Missing 'page_total' argument")
-        if plan_id is None and 'planId' in kwargs:
-            plan_id = kwargs['planId']
-        if plan_id is None:
-            raise TypeError("Missing 'plan_id' argument")
-        if plan_name is None and 'planName' in kwargs:
-            plan_name = kwargs['planName']
-        if plan_name is None:
-            raise TypeError("Missing 'plan_name' argument")
-        if schedule is None:
-            raise TypeError("Missing 'schedule' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if vault_id is None and 'vaultId' in kwargs:
-            vault_id = kwargs['vaultId']
-        if vault_id is None:
-            raise TypeError("Missing 'vault_id' argument")
-
-        _setter("backup_prefix", backup_prefix)
-        _setter("backup_type", backup_type)
-        _setter("cluster_id", cluster_id)
-        _setter("database_name", database_name)
-        _setter("id", id)
-        _setter("page_total", page_total)
-        _setter("plan_id", plan_id)
-        _setter("plan_name", plan_name)
-        _setter("schedule", schedule)
-        _setter("status", status)
-        _setter("vault_id", vault_id)
+        pulumi.set(__self__, "backup_prefix", backup_prefix)
+        pulumi.set(__self__, "backup_type", backup_type)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "database_name", database_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "page_total", page_total)
+        pulumi.set(__self__, "plan_id", plan_id)
+        pulumi.set(__self__, "plan_name", plan_name)
+        pulumi.set(__self__, "schedule", schedule)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vault_id", vault_id)
 
     @property
     @pulumi.getter(name="backupPrefix")
@@ -2342,100 +1597,19 @@ class GetHanaInstancesInstanceResult(dict):
         :param bool validate_certificate: Indicates whether the SSL certificate of the SAP HANA instance is verified.
         :param str vault_id: The ID of the backup vault.
         """
-        GetHanaInstancesInstanceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            alert_setting=alert_setting,
-            hana_instance_id=hana_instance_id,
-            hana_name=hana_name,
-            host=host,
-            id=id,
-            instance_number=instance_number,
-            resource_group_id=resource_group_id,
-            status=status,
-            status_message=status_message,
-            use_ssl=use_ssl,
-            user_name=user_name,
-            validate_certificate=validate_certificate,
-            vault_id=vault_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             alert_setting: Optional[str] = None,
-             hana_instance_id: Optional[str] = None,
-             hana_name: Optional[str] = None,
-             host: Optional[str] = None,
-             id: Optional[str] = None,
-             instance_number: Optional[int] = None,
-             resource_group_id: Optional[str] = None,
-             status: Optional[str] = None,
-             status_message: Optional[str] = None,
-             use_ssl: Optional[bool] = None,
-             user_name: Optional[str] = None,
-             validate_certificate: Optional[bool] = None,
-             vault_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if alert_setting is None and 'alertSetting' in kwargs:
-            alert_setting = kwargs['alertSetting']
-        if alert_setting is None:
-            raise TypeError("Missing 'alert_setting' argument")
-        if hana_instance_id is None and 'hanaInstanceId' in kwargs:
-            hana_instance_id = kwargs['hanaInstanceId']
-        if hana_instance_id is None:
-            raise TypeError("Missing 'hana_instance_id' argument")
-        if hana_name is None and 'hanaName' in kwargs:
-            hana_name = kwargs['hanaName']
-        if hana_name is None:
-            raise TypeError("Missing 'hana_name' argument")
-        if host is None:
-            raise TypeError("Missing 'host' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_number is None and 'instanceNumber' in kwargs:
-            instance_number = kwargs['instanceNumber']
-        if instance_number is None:
-            raise TypeError("Missing 'instance_number' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if status_message is None and 'statusMessage' in kwargs:
-            status_message = kwargs['statusMessage']
-        if status_message is None:
-            raise TypeError("Missing 'status_message' argument")
-        if use_ssl is None and 'useSsl' in kwargs:
-            use_ssl = kwargs['useSsl']
-        if use_ssl is None:
-            raise TypeError("Missing 'use_ssl' argument")
-        if user_name is None and 'userName' in kwargs:
-            user_name = kwargs['userName']
-        if user_name is None:
-            raise TypeError("Missing 'user_name' argument")
-        if validate_certificate is None and 'validateCertificate' in kwargs:
-            validate_certificate = kwargs['validateCertificate']
-        if validate_certificate is None:
-            raise TypeError("Missing 'validate_certificate' argument")
-        if vault_id is None and 'vaultId' in kwargs:
-            vault_id = kwargs['vaultId']
-        if vault_id is None:
-            raise TypeError("Missing 'vault_id' argument")
-
-        _setter("alert_setting", alert_setting)
-        _setter("hana_instance_id", hana_instance_id)
-        _setter("hana_name", hana_name)
-        _setter("host", host)
-        _setter("id", id)
-        _setter("instance_number", instance_number)
-        _setter("resource_group_id", resource_group_id)
-        _setter("status", status)
-        _setter("status_message", status_message)
-        _setter("use_ssl", use_ssl)
-        _setter("user_name", user_name)
-        _setter("validate_certificate", validate_certificate)
-        _setter("vault_id", vault_id)
+        pulumi.set(__self__, "alert_setting", alert_setting)
+        pulumi.set(__self__, "hana_instance_id", hana_instance_id)
+        pulumi.set(__self__, "hana_name", hana_name)
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_number", instance_number)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "status_message", status_message)
+        pulumi.set(__self__, "use_ssl", use_ssl)
+        pulumi.set(__self__, "user_name", user_name)
+        pulumi.set(__self__, "validate_certificate", validate_certificate)
+        pulumi.set(__self__, "vault_id", vault_id)
 
     @property
     @pulumi.getter(name="alertSetting")
@@ -2575,101 +1749,20 @@ class GetNasBackupPlansPlanResult(dict):
         :param str updated_time: The update time of the backup plan. UNIX time in seconds.
         :param str vault_id: The ID of backup vault.
         """
-        GetNasBackupPlansPlanResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            backup_type=backup_type,
-            create_time=create_time,
-            created_time=created_time,
-            disabled=disabled,
-            file_system_id=file_system_id,
-            id=id,
-            nas_backup_plan_id=nas_backup_plan_id,
-            nas_backup_plan_name=nas_backup_plan_name,
-            options=options,
-            paths=paths,
-            retention=retention,
-            schedule=schedule,
-            updated_time=updated_time,
-            vault_id=vault_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             backup_type: Optional[str] = None,
-             create_time: Optional[str] = None,
-             created_time: Optional[str] = None,
-             disabled: Optional[bool] = None,
-             file_system_id: Optional[str] = None,
-             id: Optional[str] = None,
-             nas_backup_plan_id: Optional[str] = None,
-             nas_backup_plan_name: Optional[str] = None,
-             options: Optional[str] = None,
-             paths: Optional[Sequence[str]] = None,
-             retention: Optional[str] = None,
-             schedule: Optional[str] = None,
-             updated_time: Optional[str] = None,
-             vault_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if backup_type is None and 'backupType' in kwargs:
-            backup_type = kwargs['backupType']
-        if backup_type is None:
-            raise TypeError("Missing 'backup_type' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if created_time is None and 'createdTime' in kwargs:
-            created_time = kwargs['createdTime']
-        if created_time is None:
-            raise TypeError("Missing 'created_time' argument")
-        if disabled is None:
-            raise TypeError("Missing 'disabled' argument")
-        if file_system_id is None and 'fileSystemId' in kwargs:
-            file_system_id = kwargs['fileSystemId']
-        if file_system_id is None:
-            raise TypeError("Missing 'file_system_id' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if nas_backup_plan_id is None and 'nasBackupPlanId' in kwargs:
-            nas_backup_plan_id = kwargs['nasBackupPlanId']
-        if nas_backup_plan_id is None:
-            raise TypeError("Missing 'nas_backup_plan_id' argument")
-        if nas_backup_plan_name is None and 'nasBackupPlanName' in kwargs:
-            nas_backup_plan_name = kwargs['nasBackupPlanName']
-        if nas_backup_plan_name is None:
-            raise TypeError("Missing 'nas_backup_plan_name' argument")
-        if options is None:
-            raise TypeError("Missing 'options' argument")
-        if paths is None:
-            raise TypeError("Missing 'paths' argument")
-        if retention is None:
-            raise TypeError("Missing 'retention' argument")
-        if schedule is None:
-            raise TypeError("Missing 'schedule' argument")
-        if updated_time is None and 'updatedTime' in kwargs:
-            updated_time = kwargs['updatedTime']
-        if updated_time is None:
-            raise TypeError("Missing 'updated_time' argument")
-        if vault_id is None and 'vaultId' in kwargs:
-            vault_id = kwargs['vaultId']
-        if vault_id is None:
-            raise TypeError("Missing 'vault_id' argument")
-
-        _setter("backup_type", backup_type)
-        _setter("create_time", create_time)
-        _setter("created_time", created_time)
-        _setter("disabled", disabled)
-        _setter("file_system_id", file_system_id)
-        _setter("id", id)
-        _setter("nas_backup_plan_id", nas_backup_plan_id)
-        _setter("nas_backup_plan_name", nas_backup_plan_name)
-        _setter("options", options)
-        _setter("paths", paths)
-        _setter("retention", retention)
-        _setter("schedule", schedule)
-        _setter("updated_time", updated_time)
-        _setter("vault_id", vault_id)
+        pulumi.set(__self__, "backup_type", backup_type)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "created_time", created_time)
+        pulumi.set(__self__, "disabled", disabled)
+        pulumi.set(__self__, "file_system_id", file_system_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "nas_backup_plan_id", nas_backup_plan_id)
+        pulumi.set(__self__, "nas_backup_plan_name", nas_backup_plan_name)
+        pulumi.set(__self__, "options", options)
+        pulumi.set(__self__, "paths", paths)
+        pulumi.set(__self__, "retention", retention)
+        pulumi.set(__self__, "schedule", schedule)
+        pulumi.set(__self__, "updated_time", updated_time)
+        pulumi.set(__self__, "vault_id", vault_id)
 
     @property
     @pulumi.getter(name="backupType")
@@ -2813,87 +1906,18 @@ class GetOssBackupPlansPlanResult(dict):
         :param str updated_time: The update time of the backup plan. UNIX time in seconds.
         :param str vault_id: The ID of backup vault.
         """
-        GetOssBackupPlansPlanResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            backup_type=backup_type,
-            bucket=bucket,
-            created_time=created_time,
-            disabled=disabled,
-            id=id,
-            oss_backup_plan_id=oss_backup_plan_id,
-            oss_backup_plan_name=oss_backup_plan_name,
-            prefix=prefix,
-            retention=retention,
-            schedule=schedule,
-            updated_time=updated_time,
-            vault_id=vault_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             backup_type: Optional[str] = None,
-             bucket: Optional[str] = None,
-             created_time: Optional[str] = None,
-             disabled: Optional[bool] = None,
-             id: Optional[str] = None,
-             oss_backup_plan_id: Optional[str] = None,
-             oss_backup_plan_name: Optional[str] = None,
-             prefix: Optional[str] = None,
-             retention: Optional[str] = None,
-             schedule: Optional[str] = None,
-             updated_time: Optional[str] = None,
-             vault_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if backup_type is None and 'backupType' in kwargs:
-            backup_type = kwargs['backupType']
-        if backup_type is None:
-            raise TypeError("Missing 'backup_type' argument")
-        if bucket is None:
-            raise TypeError("Missing 'bucket' argument")
-        if created_time is None and 'createdTime' in kwargs:
-            created_time = kwargs['createdTime']
-        if created_time is None:
-            raise TypeError("Missing 'created_time' argument")
-        if disabled is None:
-            raise TypeError("Missing 'disabled' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if oss_backup_plan_id is None and 'ossBackupPlanId' in kwargs:
-            oss_backup_plan_id = kwargs['ossBackupPlanId']
-        if oss_backup_plan_id is None:
-            raise TypeError("Missing 'oss_backup_plan_id' argument")
-        if oss_backup_plan_name is None and 'ossBackupPlanName' in kwargs:
-            oss_backup_plan_name = kwargs['ossBackupPlanName']
-        if oss_backup_plan_name is None:
-            raise TypeError("Missing 'oss_backup_plan_name' argument")
-        if prefix is None:
-            raise TypeError("Missing 'prefix' argument")
-        if retention is None:
-            raise TypeError("Missing 'retention' argument")
-        if schedule is None:
-            raise TypeError("Missing 'schedule' argument")
-        if updated_time is None and 'updatedTime' in kwargs:
-            updated_time = kwargs['updatedTime']
-        if updated_time is None:
-            raise TypeError("Missing 'updated_time' argument")
-        if vault_id is None and 'vaultId' in kwargs:
-            vault_id = kwargs['vaultId']
-        if vault_id is None:
-            raise TypeError("Missing 'vault_id' argument")
-
-        _setter("backup_type", backup_type)
-        _setter("bucket", bucket)
-        _setter("created_time", created_time)
-        _setter("disabled", disabled)
-        _setter("id", id)
-        _setter("oss_backup_plan_id", oss_backup_plan_id)
-        _setter("oss_backup_plan_name", oss_backup_plan_name)
-        _setter("prefix", prefix)
-        _setter("retention", retention)
-        _setter("schedule", schedule)
-        _setter("updated_time", updated_time)
-        _setter("vault_id", vault_id)
+        pulumi.set(__self__, "backup_type", backup_type)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "created_time", created_time)
+        pulumi.set(__self__, "disabled", disabled)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "oss_backup_plan_id", oss_backup_plan_id)
+        pulumi.set(__self__, "oss_backup_plan_name", oss_backup_plan_name)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "retention", retention)
+        pulumi.set(__self__, "schedule", schedule)
+        pulumi.set(__self__, "updated_time", updated_time)
+        pulumi.set(__self__, "vault_id", vault_id)
 
     @property
     @pulumi.getter(name="backupType")
@@ -3021,91 +2045,18 @@ class GetOtsBackupPlansPlanResult(dict):
                *ots_detail - The details about the Tablestore instance.
         :param str vault_id: The ID of backup vault.
         """
-        GetOtsBackupPlansPlanResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            backup_type=backup_type,
-            created_time=created_time,
-            disabled=disabled,
-            id=id,
-            ots_backup_plan_id=ots_backup_plan_id,
-            ots_backup_plan_name=ots_backup_plan_name,
-            ots_details=ots_details,
-            retention=retention,
-            schedule=schedule,
-            source_type=source_type,
-            updated_time=updated_time,
-            vault_id=vault_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             backup_type: Optional[str] = None,
-             created_time: Optional[str] = None,
-             disabled: Optional[bool] = None,
-             id: Optional[str] = None,
-             ots_backup_plan_id: Optional[str] = None,
-             ots_backup_plan_name: Optional[str] = None,
-             ots_details: Optional[Sequence['outputs.GetOtsBackupPlansPlanOtsDetailResult']] = None,
-             retention: Optional[str] = None,
-             schedule: Optional[str] = None,
-             source_type: Optional[str] = None,
-             updated_time: Optional[str] = None,
-             vault_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if backup_type is None and 'backupType' in kwargs:
-            backup_type = kwargs['backupType']
-        if backup_type is None:
-            raise TypeError("Missing 'backup_type' argument")
-        if created_time is None and 'createdTime' in kwargs:
-            created_time = kwargs['createdTime']
-        if created_time is None:
-            raise TypeError("Missing 'created_time' argument")
-        if disabled is None:
-            raise TypeError("Missing 'disabled' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if ots_backup_plan_id is None and 'otsBackupPlanId' in kwargs:
-            ots_backup_plan_id = kwargs['otsBackupPlanId']
-        if ots_backup_plan_id is None:
-            raise TypeError("Missing 'ots_backup_plan_id' argument")
-        if ots_backup_plan_name is None and 'otsBackupPlanName' in kwargs:
-            ots_backup_plan_name = kwargs['otsBackupPlanName']
-        if ots_backup_plan_name is None:
-            raise TypeError("Missing 'ots_backup_plan_name' argument")
-        if ots_details is None and 'otsDetails' in kwargs:
-            ots_details = kwargs['otsDetails']
-        if ots_details is None:
-            raise TypeError("Missing 'ots_details' argument")
-        if retention is None:
-            raise TypeError("Missing 'retention' argument")
-        if schedule is None:
-            raise TypeError("Missing 'schedule' argument")
-        if source_type is None and 'sourceType' in kwargs:
-            source_type = kwargs['sourceType']
-        if source_type is None:
-            raise TypeError("Missing 'source_type' argument")
-        if updated_time is None and 'updatedTime' in kwargs:
-            updated_time = kwargs['updatedTime']
-        if updated_time is None:
-            raise TypeError("Missing 'updated_time' argument")
-        if vault_id is None and 'vaultId' in kwargs:
-            vault_id = kwargs['vaultId']
-        if vault_id is None:
-            raise TypeError("Missing 'vault_id' argument")
-
-        _setter("backup_type", backup_type)
-        _setter("created_time", created_time)
-        _setter("disabled", disabled)
-        _setter("id", id)
-        _setter("ots_backup_plan_id", ots_backup_plan_id)
-        _setter("ots_backup_plan_name", ots_backup_plan_name)
-        _setter("ots_details", ots_details)
-        _setter("retention", retention)
-        _setter("schedule", schedule)
-        _setter("source_type", source_type)
-        _setter("updated_time", updated_time)
-        _setter("vault_id", vault_id)
+        pulumi.set(__self__, "backup_type", backup_type)
+        pulumi.set(__self__, "created_time", created_time)
+        pulumi.set(__self__, "disabled", disabled)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ots_backup_plan_id", ots_backup_plan_id)
+        pulumi.set(__self__, "ots_backup_plan_name", ots_backup_plan_name)
+        pulumi.set(__self__, "ots_details", ots_details)
+        pulumi.set(__self__, "retention", retention)
+        pulumi.set(__self__, "schedule", schedule)
+        pulumi.set(__self__, "source_type", source_type)
+        pulumi.set(__self__, "updated_time", updated_time)
+        pulumi.set(__self__, "vault_id", vault_id)
 
     @property
     @pulumi.getter(name="backupType")
@@ -3206,22 +2157,7 @@ class GetOtsBackupPlansPlanResult(dict):
 class GetOtsBackupPlansPlanOtsDetailResult(dict):
     def __init__(__self__, *,
                  table_names: Sequence[str]):
-        GetOtsBackupPlansPlanOtsDetailResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            table_names=table_names,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             table_names: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if table_names is None and 'tableNames' in kwargs:
-            table_names = kwargs['tableNames']
-        if table_names is None:
-            raise TypeError("Missing 'table_names' argument")
-
-        _setter("table_names", table_names)
+        pulumi.set(__self__, "table_names", table_names)
 
     @property
     @pulumi.getter(name="tableNames")
@@ -3276,156 +2212,27 @@ class GetOtsSnapshotsSnapshotResult(dict):
         :param str updated_time: The time when the backup snapshot was updated. This value is a UNIX timestamp. Unit: seconds.
         :param str vault_id: The ID of the backup vault that stores the backup snapshot.
         """
-        GetOtsSnapshotsSnapshotResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            actual_bytes=actual_bytes,
-            backup_type=backup_type,
-            bytes_total=bytes_total,
-            complete_time=complete_time,
-            create_time=create_time,
-            created_time=created_time,
-            id=id,
-            instance_name=instance_name,
-            job_id=job_id,
-            parent_snapshot_hash=parent_snapshot_hash,
-            range_end=range_end,
-            range_start=range_start,
-            retention=retention,
-            snapshot_hash=snapshot_hash,
-            snapshot_id=snapshot_id,
-            source_type=source_type,
-            start_time=start_time,
-            status=status,
-            table_name=table_name,
-            updated_time=updated_time,
-            vault_id=vault_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             actual_bytes: Optional[str] = None,
-             backup_type: Optional[str] = None,
-             bytes_total: Optional[str] = None,
-             complete_time: Optional[str] = None,
-             create_time: Optional[str] = None,
-             created_time: Optional[str] = None,
-             id: Optional[str] = None,
-             instance_name: Optional[str] = None,
-             job_id: Optional[str] = None,
-             parent_snapshot_hash: Optional[str] = None,
-             range_end: Optional[str] = None,
-             range_start: Optional[str] = None,
-             retention: Optional[str] = None,
-             snapshot_hash: Optional[str] = None,
-             snapshot_id: Optional[str] = None,
-             source_type: Optional[str] = None,
-             start_time: Optional[str] = None,
-             status: Optional[str] = None,
-             table_name: Optional[str] = None,
-             updated_time: Optional[str] = None,
-             vault_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if actual_bytes is None and 'actualBytes' in kwargs:
-            actual_bytes = kwargs['actualBytes']
-        if actual_bytes is None:
-            raise TypeError("Missing 'actual_bytes' argument")
-        if backup_type is None and 'backupType' in kwargs:
-            backup_type = kwargs['backupType']
-        if backup_type is None:
-            raise TypeError("Missing 'backup_type' argument")
-        if bytes_total is None and 'bytesTotal' in kwargs:
-            bytes_total = kwargs['bytesTotal']
-        if bytes_total is None:
-            raise TypeError("Missing 'bytes_total' argument")
-        if complete_time is None and 'completeTime' in kwargs:
-            complete_time = kwargs['completeTime']
-        if complete_time is None:
-            raise TypeError("Missing 'complete_time' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if created_time is None and 'createdTime' in kwargs:
-            created_time = kwargs['createdTime']
-        if created_time is None:
-            raise TypeError("Missing 'created_time' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_name is None:
-            raise TypeError("Missing 'instance_name' argument")
-        if job_id is None and 'jobId' in kwargs:
-            job_id = kwargs['jobId']
-        if job_id is None:
-            raise TypeError("Missing 'job_id' argument")
-        if parent_snapshot_hash is None and 'parentSnapshotHash' in kwargs:
-            parent_snapshot_hash = kwargs['parentSnapshotHash']
-        if parent_snapshot_hash is None:
-            raise TypeError("Missing 'parent_snapshot_hash' argument")
-        if range_end is None and 'rangeEnd' in kwargs:
-            range_end = kwargs['rangeEnd']
-        if range_end is None:
-            raise TypeError("Missing 'range_end' argument")
-        if range_start is None and 'rangeStart' in kwargs:
-            range_start = kwargs['rangeStart']
-        if range_start is None:
-            raise TypeError("Missing 'range_start' argument")
-        if retention is None:
-            raise TypeError("Missing 'retention' argument")
-        if snapshot_hash is None and 'snapshotHash' in kwargs:
-            snapshot_hash = kwargs['snapshotHash']
-        if snapshot_hash is None:
-            raise TypeError("Missing 'snapshot_hash' argument")
-        if snapshot_id is None and 'snapshotId' in kwargs:
-            snapshot_id = kwargs['snapshotId']
-        if snapshot_id is None:
-            raise TypeError("Missing 'snapshot_id' argument")
-        if source_type is None and 'sourceType' in kwargs:
-            source_type = kwargs['sourceType']
-        if source_type is None:
-            raise TypeError("Missing 'source_type' argument")
-        if start_time is None and 'startTime' in kwargs:
-            start_time = kwargs['startTime']
-        if start_time is None:
-            raise TypeError("Missing 'start_time' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if table_name is None and 'tableName' in kwargs:
-            table_name = kwargs['tableName']
-        if table_name is None:
-            raise TypeError("Missing 'table_name' argument")
-        if updated_time is None and 'updatedTime' in kwargs:
-            updated_time = kwargs['updatedTime']
-        if updated_time is None:
-            raise TypeError("Missing 'updated_time' argument")
-        if vault_id is None and 'vaultId' in kwargs:
-            vault_id = kwargs['vaultId']
-        if vault_id is None:
-            raise TypeError("Missing 'vault_id' argument")
-
-        _setter("actual_bytes", actual_bytes)
-        _setter("backup_type", backup_type)
-        _setter("bytes_total", bytes_total)
-        _setter("complete_time", complete_time)
-        _setter("create_time", create_time)
-        _setter("created_time", created_time)
-        _setter("id", id)
-        _setter("instance_name", instance_name)
-        _setter("job_id", job_id)
-        _setter("parent_snapshot_hash", parent_snapshot_hash)
-        _setter("range_end", range_end)
-        _setter("range_start", range_start)
-        _setter("retention", retention)
-        _setter("snapshot_hash", snapshot_hash)
-        _setter("snapshot_id", snapshot_id)
-        _setter("source_type", source_type)
-        _setter("start_time", start_time)
-        _setter("status", status)
-        _setter("table_name", table_name)
-        _setter("updated_time", updated_time)
-        _setter("vault_id", vault_id)
+        pulumi.set(__self__, "actual_bytes", actual_bytes)
+        pulumi.set(__self__, "backup_type", backup_type)
+        pulumi.set(__self__, "bytes_total", bytes_total)
+        pulumi.set(__self__, "complete_time", complete_time)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "created_time", created_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "job_id", job_id)
+        pulumi.set(__self__, "parent_snapshot_hash", parent_snapshot_hash)
+        pulumi.set(__self__, "range_end", range_end)
+        pulumi.set(__self__, "range_start", range_start)
+        pulumi.set(__self__, "retention", retention)
+        pulumi.set(__self__, "snapshot_hash", snapshot_hash)
+        pulumi.set(__self__, "snapshot_id", snapshot_id)
+        pulumi.set(__self__, "source_type", source_type)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "table_name", table_name)
+        pulumi.set(__self__, "updated_time", updated_time)
+        pulumi.set(__self__, "vault_id", vault_id)
 
     @property
     @pulumi.getter(name="actualBytes")
@@ -3603,22 +2410,7 @@ class GetReplicationVaultRegionsRegionResult(dict):
         """
         :param str replication_region_id: The ID of the replication region.
         """
-        GetReplicationVaultRegionsRegionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            replication_region_id=replication_region_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             replication_region_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if replication_region_id is None and 'replicationRegionId' in kwargs:
-            replication_region_id = kwargs['replicationRegionId']
-        if replication_region_id is None:
-            raise TypeError("Missing 'replication_region_id' argument")
-
-        _setter("replication_region_id", replication_region_id)
+        pulumi.set(__self__, "replication_region_id", replication_region_id)
 
     @property
     @pulumi.getter(name="replicationRegionId")
@@ -3694,231 +2486,38 @@ class GetRestoreJobsJobResult(dict):
         :param str updated_time: The update Time of restore job. Unix Time in Seconds.
         :param str vault_id: The ID of backup vault.
         """
-        GetRestoreJobsJobResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            actual_bytes=actual_bytes,
-            actual_items=actual_items,
-            bytes_done=bytes_done,
-            bytes_total=bytes_total,
-            complete_time=complete_time,
-            create_time=create_time,
-            error_file=error_file,
-            error_message=error_message,
-            expire_time=expire_time,
-            id=id,
-            items_done=items_done,
-            items_total=items_total,
-            options=options,
-            parent_id=parent_id,
-            progress=progress,
-            restore_job_id=restore_job_id,
-            restore_type=restore_type,
-            snapshot_hash=snapshot_hash,
-            snapshot_id=snapshot_id,
-            source_type=source_type,
-            start_time=start_time,
-            status=status,
-            target_bucket=target_bucket,
-            target_client_id=target_client_id,
-            target_create_time=target_create_time,
-            target_data_source_id=target_data_source_id,
-            target_file_system_id=target_file_system_id,
-            target_instance_id=target_instance_id,
-            target_path=target_path,
-            target_prefix=target_prefix,
-            updated_time=updated_time,
-            vault_id=vault_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             actual_bytes: Optional[str] = None,
-             actual_items: Optional[str] = None,
-             bytes_done: Optional[str] = None,
-             bytes_total: Optional[str] = None,
-             complete_time: Optional[str] = None,
-             create_time: Optional[str] = None,
-             error_file: Optional[str] = None,
-             error_message: Optional[str] = None,
-             expire_time: Optional[str] = None,
-             id: Optional[str] = None,
-             items_done: Optional[str] = None,
-             items_total: Optional[str] = None,
-             options: Optional[str] = None,
-             parent_id: Optional[str] = None,
-             progress: Optional[int] = None,
-             restore_job_id: Optional[str] = None,
-             restore_type: Optional[str] = None,
-             snapshot_hash: Optional[str] = None,
-             snapshot_id: Optional[str] = None,
-             source_type: Optional[str] = None,
-             start_time: Optional[str] = None,
-             status: Optional[str] = None,
-             target_bucket: Optional[str] = None,
-             target_client_id: Optional[str] = None,
-             target_create_time: Optional[str] = None,
-             target_data_source_id: Optional[str] = None,
-             target_file_system_id: Optional[str] = None,
-             target_instance_id: Optional[str] = None,
-             target_path: Optional[str] = None,
-             target_prefix: Optional[str] = None,
-             updated_time: Optional[str] = None,
-             vault_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if actual_bytes is None and 'actualBytes' in kwargs:
-            actual_bytes = kwargs['actualBytes']
-        if actual_bytes is None:
-            raise TypeError("Missing 'actual_bytes' argument")
-        if actual_items is None and 'actualItems' in kwargs:
-            actual_items = kwargs['actualItems']
-        if actual_items is None:
-            raise TypeError("Missing 'actual_items' argument")
-        if bytes_done is None and 'bytesDone' in kwargs:
-            bytes_done = kwargs['bytesDone']
-        if bytes_done is None:
-            raise TypeError("Missing 'bytes_done' argument")
-        if bytes_total is None and 'bytesTotal' in kwargs:
-            bytes_total = kwargs['bytesTotal']
-        if bytes_total is None:
-            raise TypeError("Missing 'bytes_total' argument")
-        if complete_time is None and 'completeTime' in kwargs:
-            complete_time = kwargs['completeTime']
-        if complete_time is None:
-            raise TypeError("Missing 'complete_time' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if error_file is None and 'errorFile' in kwargs:
-            error_file = kwargs['errorFile']
-        if error_file is None:
-            raise TypeError("Missing 'error_file' argument")
-        if error_message is None and 'errorMessage' in kwargs:
-            error_message = kwargs['errorMessage']
-        if error_message is None:
-            raise TypeError("Missing 'error_message' argument")
-        if expire_time is None and 'expireTime' in kwargs:
-            expire_time = kwargs['expireTime']
-        if expire_time is None:
-            raise TypeError("Missing 'expire_time' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if items_done is None and 'itemsDone' in kwargs:
-            items_done = kwargs['itemsDone']
-        if items_done is None:
-            raise TypeError("Missing 'items_done' argument")
-        if items_total is None and 'itemsTotal' in kwargs:
-            items_total = kwargs['itemsTotal']
-        if items_total is None:
-            raise TypeError("Missing 'items_total' argument")
-        if options is None:
-            raise TypeError("Missing 'options' argument")
-        if parent_id is None and 'parentId' in kwargs:
-            parent_id = kwargs['parentId']
-        if parent_id is None:
-            raise TypeError("Missing 'parent_id' argument")
-        if progress is None:
-            raise TypeError("Missing 'progress' argument")
-        if restore_job_id is None and 'restoreJobId' in kwargs:
-            restore_job_id = kwargs['restoreJobId']
-        if restore_job_id is None:
-            raise TypeError("Missing 'restore_job_id' argument")
-        if restore_type is None and 'restoreType' in kwargs:
-            restore_type = kwargs['restoreType']
-        if restore_type is None:
-            raise TypeError("Missing 'restore_type' argument")
-        if snapshot_hash is None and 'snapshotHash' in kwargs:
-            snapshot_hash = kwargs['snapshotHash']
-        if snapshot_hash is None:
-            raise TypeError("Missing 'snapshot_hash' argument")
-        if snapshot_id is None and 'snapshotId' in kwargs:
-            snapshot_id = kwargs['snapshotId']
-        if snapshot_id is None:
-            raise TypeError("Missing 'snapshot_id' argument")
-        if source_type is None and 'sourceType' in kwargs:
-            source_type = kwargs['sourceType']
-        if source_type is None:
-            raise TypeError("Missing 'source_type' argument")
-        if start_time is None and 'startTime' in kwargs:
-            start_time = kwargs['startTime']
-        if start_time is None:
-            raise TypeError("Missing 'start_time' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if target_bucket is None and 'targetBucket' in kwargs:
-            target_bucket = kwargs['targetBucket']
-        if target_bucket is None:
-            raise TypeError("Missing 'target_bucket' argument")
-        if target_client_id is None and 'targetClientId' in kwargs:
-            target_client_id = kwargs['targetClientId']
-        if target_client_id is None:
-            raise TypeError("Missing 'target_client_id' argument")
-        if target_create_time is None and 'targetCreateTime' in kwargs:
-            target_create_time = kwargs['targetCreateTime']
-        if target_create_time is None:
-            raise TypeError("Missing 'target_create_time' argument")
-        if target_data_source_id is None and 'targetDataSourceId' in kwargs:
-            target_data_source_id = kwargs['targetDataSourceId']
-        if target_data_source_id is None:
-            raise TypeError("Missing 'target_data_source_id' argument")
-        if target_file_system_id is None and 'targetFileSystemId' in kwargs:
-            target_file_system_id = kwargs['targetFileSystemId']
-        if target_file_system_id is None:
-            raise TypeError("Missing 'target_file_system_id' argument")
-        if target_instance_id is None and 'targetInstanceId' in kwargs:
-            target_instance_id = kwargs['targetInstanceId']
-        if target_instance_id is None:
-            raise TypeError("Missing 'target_instance_id' argument")
-        if target_path is None and 'targetPath' in kwargs:
-            target_path = kwargs['targetPath']
-        if target_path is None:
-            raise TypeError("Missing 'target_path' argument")
-        if target_prefix is None and 'targetPrefix' in kwargs:
-            target_prefix = kwargs['targetPrefix']
-        if target_prefix is None:
-            raise TypeError("Missing 'target_prefix' argument")
-        if updated_time is None and 'updatedTime' in kwargs:
-            updated_time = kwargs['updatedTime']
-        if updated_time is None:
-            raise TypeError("Missing 'updated_time' argument")
-        if vault_id is None and 'vaultId' in kwargs:
-            vault_id = kwargs['vaultId']
-        if vault_id is None:
-            raise TypeError("Missing 'vault_id' argument")
-
-        _setter("actual_bytes", actual_bytes)
-        _setter("actual_items", actual_items)
-        _setter("bytes_done", bytes_done)
-        _setter("bytes_total", bytes_total)
-        _setter("complete_time", complete_time)
-        _setter("create_time", create_time)
-        _setter("error_file", error_file)
-        _setter("error_message", error_message)
-        _setter("expire_time", expire_time)
-        _setter("id", id)
-        _setter("items_done", items_done)
-        _setter("items_total", items_total)
-        _setter("options", options)
-        _setter("parent_id", parent_id)
-        _setter("progress", progress)
-        _setter("restore_job_id", restore_job_id)
-        _setter("restore_type", restore_type)
-        _setter("snapshot_hash", snapshot_hash)
-        _setter("snapshot_id", snapshot_id)
-        _setter("source_type", source_type)
-        _setter("start_time", start_time)
-        _setter("status", status)
-        _setter("target_bucket", target_bucket)
-        _setter("target_client_id", target_client_id)
-        _setter("target_create_time", target_create_time)
-        _setter("target_data_source_id", target_data_source_id)
-        _setter("target_file_system_id", target_file_system_id)
-        _setter("target_instance_id", target_instance_id)
-        _setter("target_path", target_path)
-        _setter("target_prefix", target_prefix)
-        _setter("updated_time", updated_time)
-        _setter("vault_id", vault_id)
+        pulumi.set(__self__, "actual_bytes", actual_bytes)
+        pulumi.set(__self__, "actual_items", actual_items)
+        pulumi.set(__self__, "bytes_done", bytes_done)
+        pulumi.set(__self__, "bytes_total", bytes_total)
+        pulumi.set(__self__, "complete_time", complete_time)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "error_file", error_file)
+        pulumi.set(__self__, "error_message", error_message)
+        pulumi.set(__self__, "expire_time", expire_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "items_done", items_done)
+        pulumi.set(__self__, "items_total", items_total)
+        pulumi.set(__self__, "options", options)
+        pulumi.set(__self__, "parent_id", parent_id)
+        pulumi.set(__self__, "progress", progress)
+        pulumi.set(__self__, "restore_job_id", restore_job_id)
+        pulumi.set(__self__, "restore_type", restore_type)
+        pulumi.set(__self__, "snapshot_hash", snapshot_hash)
+        pulumi.set(__self__, "snapshot_id", snapshot_id)
+        pulumi.set(__self__, "source_type", source_type)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "target_bucket", target_bucket)
+        pulumi.set(__self__, "target_client_id", target_client_id)
+        pulumi.set(__self__, "target_create_time", target_create_time)
+        pulumi.set(__self__, "target_data_source_id", target_data_source_id)
+        pulumi.set(__self__, "target_file_system_id", target_file_system_id)
+        pulumi.set(__self__, "target_instance_id", target_instance_id)
+        pulumi.set(__self__, "target_path", target_path)
+        pulumi.set(__self__, "target_prefix", target_prefix)
+        pulumi.set(__self__, "updated_time", updated_time)
+        pulumi.set(__self__, "vault_id", vault_id)
 
     @property
     @pulumi.getter(name="actualBytes")
@@ -4174,23 +2773,10 @@ class GetServerBackupPlansFilterResult(dict):
         :param str key: The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
         :param Sequence[str] values: Set of values that are accepted for the given field.
         """
-        GetServerBackupPlansFilterResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            values=values,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if values is not None:
-            _setter("values", values)
+            pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
@@ -4232,68 +2818,15 @@ class GetServerBackupPlansPlanResult(dict):
         :param str retention: Backup retention days, the minimum is 1.
         :param str schedule: Backup strategy.
         """
-        GetServerBackupPlansPlanResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            details=details,
-            disabled=disabled,
-            ecs_server_backup_plan_id=ecs_server_backup_plan_id,
-            ecs_server_backup_plan_name=ecs_server_backup_plan_name,
-            id=id,
-            instance_id=instance_id,
-            retention=retention,
-            schedule=schedule,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[str] = None,
-             details: Optional[Sequence['outputs.GetServerBackupPlansPlanDetailResult']] = None,
-             disabled: Optional[bool] = None,
-             ecs_server_backup_plan_id: Optional[str] = None,
-             ecs_server_backup_plan_name: Optional[str] = None,
-             id: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             retention: Optional[str] = None,
-             schedule: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if details is None:
-            raise TypeError("Missing 'details' argument")
-        if disabled is None:
-            raise TypeError("Missing 'disabled' argument")
-        if ecs_server_backup_plan_id is None and 'ecsServerBackupPlanId' in kwargs:
-            ecs_server_backup_plan_id = kwargs['ecsServerBackupPlanId']
-        if ecs_server_backup_plan_id is None:
-            raise TypeError("Missing 'ecs_server_backup_plan_id' argument")
-        if ecs_server_backup_plan_name is None and 'ecsServerBackupPlanName' in kwargs:
-            ecs_server_backup_plan_name = kwargs['ecsServerBackupPlanName']
-        if ecs_server_backup_plan_name is None:
-            raise TypeError("Missing 'ecs_server_backup_plan_name' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if retention is None:
-            raise TypeError("Missing 'retention' argument")
-        if schedule is None:
-            raise TypeError("Missing 'schedule' argument")
-
-        _setter("create_time", create_time)
-        _setter("details", details)
-        _setter("disabled", disabled)
-        _setter("ecs_server_backup_plan_id", ecs_server_backup_plan_id)
-        _setter("ecs_server_backup_plan_name", ecs_server_backup_plan_name)
-        _setter("id", id)
-        _setter("instance_id", instance_id)
-        _setter("retention", retention)
-        _setter("schedule", schedule)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "details", details)
+        pulumi.set(__self__, "disabled", disabled)
+        pulumi.set(__self__, "ecs_server_backup_plan_id", ecs_server_backup_plan_id)
+        pulumi.set(__self__, "ecs_server_backup_plan_name", ecs_server_backup_plan_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "retention", retention)
+        pulumi.set(__self__, "schedule", schedule)
 
     @property
     @pulumi.getter(name="createTime")
@@ -4393,85 +2926,16 @@ class GetServerBackupPlansPlanDetailResult(dict):
         :param bool snapshot_group: Whether to turn on file system consistency. If SnapshotGroup is true, when AppConsistent is true but the relevant conditions are not met or AppConsistent is false, the resulting snapshot will be a file system consistency snapshot. The file system consistency ensures that the file system memory and disk information are synchronized at the time of snapshot creation, and the file system write operation is frozen to make the file system in a consistent state. The file system consistency snapshot can prevent the operating system from performing disk inspection and repair operations such as CHKDSK or fsck after restart. Valid values: `true`, `false`.
         :param int timeout_in_seconds: Only the Linux system is valid, and the IO freeze timeout period. The default is 30 seconds.
         """
-        GetServerBackupPlansPlanDetailResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            app_consistent=app_consistent,
-            destination_region_id=destination_region_id,
-            destination_retention=destination_retention,
-            disk_id_lists=disk_id_lists,
-            do_copy=do_copy,
-            enable_fs_freeze=enable_fs_freeze,
-            post_script_path=post_script_path,
-            pre_script_path=pre_script_path,
-            snapshot_group=snapshot_group,
-            timeout_in_seconds=timeout_in_seconds,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             app_consistent: Optional[bool] = None,
-             destination_region_id: Optional[str] = None,
-             destination_retention: Optional[int] = None,
-             disk_id_lists: Optional[Sequence[str]] = None,
-             do_copy: Optional[bool] = None,
-             enable_fs_freeze: Optional[bool] = None,
-             post_script_path: Optional[str] = None,
-             pre_script_path: Optional[str] = None,
-             snapshot_group: Optional[bool] = None,
-             timeout_in_seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if app_consistent is None and 'appConsistent' in kwargs:
-            app_consistent = kwargs['appConsistent']
-        if app_consistent is None:
-            raise TypeError("Missing 'app_consistent' argument")
-        if destination_region_id is None and 'destinationRegionId' in kwargs:
-            destination_region_id = kwargs['destinationRegionId']
-        if destination_region_id is None:
-            raise TypeError("Missing 'destination_region_id' argument")
-        if destination_retention is None and 'destinationRetention' in kwargs:
-            destination_retention = kwargs['destinationRetention']
-        if destination_retention is None:
-            raise TypeError("Missing 'destination_retention' argument")
-        if disk_id_lists is None and 'diskIdLists' in kwargs:
-            disk_id_lists = kwargs['diskIdLists']
-        if disk_id_lists is None:
-            raise TypeError("Missing 'disk_id_lists' argument")
-        if do_copy is None and 'doCopy' in kwargs:
-            do_copy = kwargs['doCopy']
-        if do_copy is None:
-            raise TypeError("Missing 'do_copy' argument")
-        if enable_fs_freeze is None and 'enableFsFreeze' in kwargs:
-            enable_fs_freeze = kwargs['enableFsFreeze']
-        if enable_fs_freeze is None:
-            raise TypeError("Missing 'enable_fs_freeze' argument")
-        if post_script_path is None and 'postScriptPath' in kwargs:
-            post_script_path = kwargs['postScriptPath']
-        if post_script_path is None:
-            raise TypeError("Missing 'post_script_path' argument")
-        if pre_script_path is None and 'preScriptPath' in kwargs:
-            pre_script_path = kwargs['preScriptPath']
-        if pre_script_path is None:
-            raise TypeError("Missing 'pre_script_path' argument")
-        if snapshot_group is None and 'snapshotGroup' in kwargs:
-            snapshot_group = kwargs['snapshotGroup']
-        if snapshot_group is None:
-            raise TypeError("Missing 'snapshot_group' argument")
-        if timeout_in_seconds is None and 'timeoutInSeconds' in kwargs:
-            timeout_in_seconds = kwargs['timeoutInSeconds']
-        if timeout_in_seconds is None:
-            raise TypeError("Missing 'timeout_in_seconds' argument")
-
-        _setter("app_consistent", app_consistent)
-        _setter("destination_region_id", destination_region_id)
-        _setter("destination_retention", destination_retention)
-        _setter("disk_id_lists", disk_id_lists)
-        _setter("do_copy", do_copy)
-        _setter("enable_fs_freeze", enable_fs_freeze)
-        _setter("post_script_path", post_script_path)
-        _setter("pre_script_path", pre_script_path)
-        _setter("snapshot_group", snapshot_group)
-        _setter("timeout_in_seconds", timeout_in_seconds)
+        pulumi.set(__self__, "app_consistent", app_consistent)
+        pulumi.set(__self__, "destination_region_id", destination_region_id)
+        pulumi.set(__self__, "destination_retention", destination_retention)
+        pulumi.set(__self__, "disk_id_lists", disk_id_lists)
+        pulumi.set(__self__, "do_copy", do_copy)
+        pulumi.set(__self__, "enable_fs_freeze", enable_fs_freeze)
+        pulumi.set(__self__, "post_script_path", post_script_path)
+        pulumi.set(__self__, "pre_script_path", pre_script_path)
+        pulumi.set(__self__, "snapshot_group", snapshot_group)
+        pulumi.set(__self__, "timeout_in_seconds", timeout_in_seconds)
 
     @property
     @pulumi.getter(name="appConsistent")
@@ -4612,192 +3076,33 @@ class GetSnapshotsSnapshotResult(dict):
         :param str status: The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
         :param str updated_time: The update time of snapshot. UNIX time in seconds.
         """
-        GetSnapshotsSnapshotResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            actual_bytes=actual_bytes,
-            actual_items=actual_items,
-            backup_type=backup_type,
-            bucket=bucket,
-            bytes_done=bytes_done,
-            bytes_total=bytes_total,
-            client_id=client_id,
-            complete_time=complete_time,
-            create_time=create_time,
-            created_time=created_time,
-            error_file=error_file,
-            file_system_id=file_system_id,
-            id=id,
-            instance_id=instance_id,
-            items_done=items_done,
-            items_total=items_total,
-            job_id=job_id,
-            parent_snapshot_hash=parent_snapshot_hash,
-            path=path,
-            prefix=prefix,
-            retention=retention,
-            snapshot_hash=snapshot_hash,
-            snapshot_id=snapshot_id,
-            source_type=source_type,
-            start_time=start_time,
-            status=status,
-            updated_time=updated_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             actual_bytes: Optional[str] = None,
-             actual_items: Optional[str] = None,
-             backup_type: Optional[str] = None,
-             bucket: Optional[str] = None,
-             bytes_done: Optional[str] = None,
-             bytes_total: Optional[str] = None,
-             client_id: Optional[str] = None,
-             complete_time: Optional[str] = None,
-             create_time: Optional[str] = None,
-             created_time: Optional[str] = None,
-             error_file: Optional[str] = None,
-             file_system_id: Optional[str] = None,
-             id: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             items_done: Optional[str] = None,
-             items_total: Optional[str] = None,
-             job_id: Optional[str] = None,
-             parent_snapshot_hash: Optional[str] = None,
-             path: Optional[str] = None,
-             prefix: Optional[str] = None,
-             retention: Optional[str] = None,
-             snapshot_hash: Optional[str] = None,
-             snapshot_id: Optional[str] = None,
-             source_type: Optional[str] = None,
-             start_time: Optional[str] = None,
-             status: Optional[str] = None,
-             updated_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if actual_bytes is None and 'actualBytes' in kwargs:
-            actual_bytes = kwargs['actualBytes']
-        if actual_bytes is None:
-            raise TypeError("Missing 'actual_bytes' argument")
-        if actual_items is None and 'actualItems' in kwargs:
-            actual_items = kwargs['actualItems']
-        if actual_items is None:
-            raise TypeError("Missing 'actual_items' argument")
-        if backup_type is None and 'backupType' in kwargs:
-            backup_type = kwargs['backupType']
-        if backup_type is None:
-            raise TypeError("Missing 'backup_type' argument")
-        if bucket is None:
-            raise TypeError("Missing 'bucket' argument")
-        if bytes_done is None and 'bytesDone' in kwargs:
-            bytes_done = kwargs['bytesDone']
-        if bytes_done is None:
-            raise TypeError("Missing 'bytes_done' argument")
-        if bytes_total is None and 'bytesTotal' in kwargs:
-            bytes_total = kwargs['bytesTotal']
-        if bytes_total is None:
-            raise TypeError("Missing 'bytes_total' argument")
-        if client_id is None and 'clientId' in kwargs:
-            client_id = kwargs['clientId']
-        if client_id is None:
-            raise TypeError("Missing 'client_id' argument")
-        if complete_time is None and 'completeTime' in kwargs:
-            complete_time = kwargs['completeTime']
-        if complete_time is None:
-            raise TypeError("Missing 'complete_time' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if created_time is None and 'createdTime' in kwargs:
-            created_time = kwargs['createdTime']
-        if created_time is None:
-            raise TypeError("Missing 'created_time' argument")
-        if error_file is None and 'errorFile' in kwargs:
-            error_file = kwargs['errorFile']
-        if error_file is None:
-            raise TypeError("Missing 'error_file' argument")
-        if file_system_id is None and 'fileSystemId' in kwargs:
-            file_system_id = kwargs['fileSystemId']
-        if file_system_id is None:
-            raise TypeError("Missing 'file_system_id' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if items_done is None and 'itemsDone' in kwargs:
-            items_done = kwargs['itemsDone']
-        if items_done is None:
-            raise TypeError("Missing 'items_done' argument")
-        if items_total is None and 'itemsTotal' in kwargs:
-            items_total = kwargs['itemsTotal']
-        if items_total is None:
-            raise TypeError("Missing 'items_total' argument")
-        if job_id is None and 'jobId' in kwargs:
-            job_id = kwargs['jobId']
-        if job_id is None:
-            raise TypeError("Missing 'job_id' argument")
-        if parent_snapshot_hash is None and 'parentSnapshotHash' in kwargs:
-            parent_snapshot_hash = kwargs['parentSnapshotHash']
-        if parent_snapshot_hash is None:
-            raise TypeError("Missing 'parent_snapshot_hash' argument")
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-        if prefix is None:
-            raise TypeError("Missing 'prefix' argument")
-        if retention is None:
-            raise TypeError("Missing 'retention' argument")
-        if snapshot_hash is None and 'snapshotHash' in kwargs:
-            snapshot_hash = kwargs['snapshotHash']
-        if snapshot_hash is None:
-            raise TypeError("Missing 'snapshot_hash' argument")
-        if snapshot_id is None and 'snapshotId' in kwargs:
-            snapshot_id = kwargs['snapshotId']
-        if snapshot_id is None:
-            raise TypeError("Missing 'snapshot_id' argument")
-        if source_type is None and 'sourceType' in kwargs:
-            source_type = kwargs['sourceType']
-        if source_type is None:
-            raise TypeError("Missing 'source_type' argument")
-        if start_time is None and 'startTime' in kwargs:
-            start_time = kwargs['startTime']
-        if start_time is None:
-            raise TypeError("Missing 'start_time' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if updated_time is None and 'updatedTime' in kwargs:
-            updated_time = kwargs['updatedTime']
-        if updated_time is None:
-            raise TypeError("Missing 'updated_time' argument")
-
-        _setter("actual_bytes", actual_bytes)
-        _setter("actual_items", actual_items)
-        _setter("backup_type", backup_type)
-        _setter("bucket", bucket)
-        _setter("bytes_done", bytes_done)
-        _setter("bytes_total", bytes_total)
-        _setter("client_id", client_id)
-        _setter("complete_time", complete_time)
-        _setter("create_time", create_time)
-        _setter("created_time", created_time)
-        _setter("error_file", error_file)
-        _setter("file_system_id", file_system_id)
-        _setter("id", id)
-        _setter("instance_id", instance_id)
-        _setter("items_done", items_done)
-        _setter("items_total", items_total)
-        _setter("job_id", job_id)
-        _setter("parent_snapshot_hash", parent_snapshot_hash)
-        _setter("path", path)
-        _setter("prefix", prefix)
-        _setter("retention", retention)
-        _setter("snapshot_hash", snapshot_hash)
-        _setter("snapshot_id", snapshot_id)
-        _setter("source_type", source_type)
-        _setter("start_time", start_time)
-        _setter("status", status)
-        _setter("updated_time", updated_time)
+        pulumi.set(__self__, "actual_bytes", actual_bytes)
+        pulumi.set(__self__, "actual_items", actual_items)
+        pulumi.set(__self__, "backup_type", backup_type)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "bytes_done", bytes_done)
+        pulumi.set(__self__, "bytes_total", bytes_total)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "complete_time", complete_time)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "created_time", created_time)
+        pulumi.set(__self__, "error_file", error_file)
+        pulumi.set(__self__, "file_system_id", file_system_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "items_done", items_done)
+        pulumi.set(__self__, "items_total", items_total)
+        pulumi.set(__self__, "job_id", job_id)
+        pulumi.set(__self__, "parent_snapshot_hash", parent_snapshot_hash)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "retention", retention)
+        pulumi.set(__self__, "snapshot_hash", snapshot_hash)
+        pulumi.set(__self__, "snapshot_id", snapshot_id)
+        pulumi.set(__self__, "source_type", source_type)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "updated_time", updated_time)
 
     @property
     @pulumi.getter(name="actualBytes")
@@ -5067,178 +3372,31 @@ class GetVaultsVaultResult(dict):
         :param str vault_storage_class: The storage class of vault. Valid values: `STANDARD`.
         :param str vault_type: The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
         """
-        GetVaultsVaultResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket_name=bucket_name,
-            bytes_done=bytes_done,
-            created_time=created_time,
-            dedup=dedup,
-            description=description,
-            id=id,
-            index_available=index_available,
-            index_level=index_level,
-            index_update_time=index_update_time,
-            latest_replication_time=latest_replication_time,
-            payment_type=payment_type,
-            replication=replication,
-            replication_source_region_id=replication_source_region_id,
-            replication_source_vault_id=replication_source_vault_id,
-            retention=retention,
-            search_enabled=search_enabled,
-            source_types=source_types,
-            status=status,
-            storage_size=storage_size,
-            updated_time=updated_time,
-            vault_id=vault_id,
-            vault_name=vault_name,
-            vault_status_message=vault_status_message,
-            vault_storage_class=vault_storage_class,
-            vault_type=vault_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket_name: Optional[str] = None,
-             bytes_done: Optional[str] = None,
-             created_time: Optional[str] = None,
-             dedup: Optional[bool] = None,
-             description: Optional[str] = None,
-             id: Optional[str] = None,
-             index_available: Optional[bool] = None,
-             index_level: Optional[str] = None,
-             index_update_time: Optional[str] = None,
-             latest_replication_time: Optional[str] = None,
-             payment_type: Optional[str] = None,
-             replication: Optional[bool] = None,
-             replication_source_region_id: Optional[str] = None,
-             replication_source_vault_id: Optional[str] = None,
-             retention: Optional[str] = None,
-             search_enabled: Optional[bool] = None,
-             source_types: Optional[Sequence[str]] = None,
-             status: Optional[str] = None,
-             storage_size: Optional[str] = None,
-             updated_time: Optional[str] = None,
-             vault_id: Optional[str] = None,
-             vault_name: Optional[str] = None,
-             vault_status_message: Optional[str] = None,
-             vault_storage_class: Optional[str] = None,
-             vault_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket_name is None and 'bucketName' in kwargs:
-            bucket_name = kwargs['bucketName']
-        if bucket_name is None:
-            raise TypeError("Missing 'bucket_name' argument")
-        if bytes_done is None and 'bytesDone' in kwargs:
-            bytes_done = kwargs['bytesDone']
-        if bytes_done is None:
-            raise TypeError("Missing 'bytes_done' argument")
-        if created_time is None and 'createdTime' in kwargs:
-            created_time = kwargs['createdTime']
-        if created_time is None:
-            raise TypeError("Missing 'created_time' argument")
-        if dedup is None:
-            raise TypeError("Missing 'dedup' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if index_available is None and 'indexAvailable' in kwargs:
-            index_available = kwargs['indexAvailable']
-        if index_available is None:
-            raise TypeError("Missing 'index_available' argument")
-        if index_level is None and 'indexLevel' in kwargs:
-            index_level = kwargs['indexLevel']
-        if index_level is None:
-            raise TypeError("Missing 'index_level' argument")
-        if index_update_time is None and 'indexUpdateTime' in kwargs:
-            index_update_time = kwargs['indexUpdateTime']
-        if index_update_time is None:
-            raise TypeError("Missing 'index_update_time' argument")
-        if latest_replication_time is None and 'latestReplicationTime' in kwargs:
-            latest_replication_time = kwargs['latestReplicationTime']
-        if latest_replication_time is None:
-            raise TypeError("Missing 'latest_replication_time' argument")
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if payment_type is None:
-            raise TypeError("Missing 'payment_type' argument")
-        if replication is None:
-            raise TypeError("Missing 'replication' argument")
-        if replication_source_region_id is None and 'replicationSourceRegionId' in kwargs:
-            replication_source_region_id = kwargs['replicationSourceRegionId']
-        if replication_source_region_id is None:
-            raise TypeError("Missing 'replication_source_region_id' argument")
-        if replication_source_vault_id is None and 'replicationSourceVaultId' in kwargs:
-            replication_source_vault_id = kwargs['replicationSourceVaultId']
-        if replication_source_vault_id is None:
-            raise TypeError("Missing 'replication_source_vault_id' argument")
-        if retention is None:
-            raise TypeError("Missing 'retention' argument")
-        if search_enabled is None and 'searchEnabled' in kwargs:
-            search_enabled = kwargs['searchEnabled']
-        if search_enabled is None:
-            raise TypeError("Missing 'search_enabled' argument")
-        if source_types is None and 'sourceTypes' in kwargs:
-            source_types = kwargs['sourceTypes']
-        if source_types is None:
-            raise TypeError("Missing 'source_types' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if storage_size is None and 'storageSize' in kwargs:
-            storage_size = kwargs['storageSize']
-        if storage_size is None:
-            raise TypeError("Missing 'storage_size' argument")
-        if updated_time is None and 'updatedTime' in kwargs:
-            updated_time = kwargs['updatedTime']
-        if updated_time is None:
-            raise TypeError("Missing 'updated_time' argument")
-        if vault_id is None and 'vaultId' in kwargs:
-            vault_id = kwargs['vaultId']
-        if vault_id is None:
-            raise TypeError("Missing 'vault_id' argument")
-        if vault_name is None and 'vaultName' in kwargs:
-            vault_name = kwargs['vaultName']
-        if vault_name is None:
-            raise TypeError("Missing 'vault_name' argument")
-        if vault_status_message is None and 'vaultStatusMessage' in kwargs:
-            vault_status_message = kwargs['vaultStatusMessage']
-        if vault_status_message is None:
-            raise TypeError("Missing 'vault_status_message' argument")
-        if vault_storage_class is None and 'vaultStorageClass' in kwargs:
-            vault_storage_class = kwargs['vaultStorageClass']
-        if vault_storage_class is None:
-            raise TypeError("Missing 'vault_storage_class' argument")
-        if vault_type is None and 'vaultType' in kwargs:
-            vault_type = kwargs['vaultType']
-        if vault_type is None:
-            raise TypeError("Missing 'vault_type' argument")
-
-        _setter("bucket_name", bucket_name)
-        _setter("bytes_done", bytes_done)
-        _setter("created_time", created_time)
-        _setter("dedup", dedup)
-        _setter("description", description)
-        _setter("id", id)
-        _setter("index_available", index_available)
-        _setter("index_level", index_level)
-        _setter("index_update_time", index_update_time)
-        _setter("latest_replication_time", latest_replication_time)
-        _setter("payment_type", payment_type)
-        _setter("replication", replication)
-        _setter("replication_source_region_id", replication_source_region_id)
-        _setter("replication_source_vault_id", replication_source_vault_id)
-        _setter("retention", retention)
-        _setter("search_enabled", search_enabled)
-        _setter("source_types", source_types)
-        _setter("status", status)
-        _setter("storage_size", storage_size)
-        _setter("updated_time", updated_time)
-        _setter("vault_id", vault_id)
-        _setter("vault_name", vault_name)
-        _setter("vault_status_message", vault_status_message)
-        _setter("vault_storage_class", vault_storage_class)
-        _setter("vault_type", vault_type)
+        pulumi.set(__self__, "bucket_name", bucket_name)
+        pulumi.set(__self__, "bytes_done", bytes_done)
+        pulumi.set(__self__, "created_time", created_time)
+        pulumi.set(__self__, "dedup", dedup)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "index_available", index_available)
+        pulumi.set(__self__, "index_level", index_level)
+        pulumi.set(__self__, "index_update_time", index_update_time)
+        pulumi.set(__self__, "latest_replication_time", latest_replication_time)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "replication", replication)
+        pulumi.set(__self__, "replication_source_region_id", replication_source_region_id)
+        pulumi.set(__self__, "replication_source_vault_id", replication_source_vault_id)
+        pulumi.set(__self__, "retention", retention)
+        pulumi.set(__self__, "search_enabled", search_enabled)
+        pulumi.set(__self__, "source_types", source_types)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "storage_size", storage_size)
+        pulumi.set(__self__, "updated_time", updated_time)
+        pulumi.set(__self__, "vault_id", vault_id)
+        pulumi.set(__self__, "vault_name", vault_name)
+        pulumi.set(__self__, "vault_status_message", vault_status_message)
+        pulumi.set(__self__, "vault_storage_class", vault_storage_class)
+        pulumi.set(__self__, "vault_type", vault_type)
 
     @property
     @pulumi.getter(name="bucketName")

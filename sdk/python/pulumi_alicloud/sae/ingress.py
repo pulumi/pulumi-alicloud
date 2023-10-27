@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,75 +39,22 @@ class IngressArgs:
         :param pulumi.Input[str] listener_protocol: The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
         :param pulumi.Input[str] load_balance_type: The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
         """
-        IngressArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            listener_port=listener_port,
-            namespace_id=namespace_id,
-            rules=rules,
-            slb_id=slb_id,
-            cert_id=cert_id,
-            cert_ids=cert_ids,
-            default_rule=default_rule,
-            description=description,
-            listener_protocol=listener_protocol,
-            load_balance_type=load_balance_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             listener_port: Optional[pulumi.Input[int]] = None,
-             namespace_id: Optional[pulumi.Input[str]] = None,
-             rules: Optional[pulumi.Input[Sequence[pulumi.Input['IngressRuleArgs']]]] = None,
-             slb_id: Optional[pulumi.Input[str]] = None,
-             cert_id: Optional[pulumi.Input[str]] = None,
-             cert_ids: Optional[pulumi.Input[str]] = None,
-             default_rule: Optional[pulumi.Input['IngressDefaultRuleArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             listener_protocol: Optional[pulumi.Input[str]] = None,
-             load_balance_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if listener_port is None and 'listenerPort' in kwargs:
-            listener_port = kwargs['listenerPort']
-        if listener_port is None:
-            raise TypeError("Missing 'listener_port' argument")
-        if namespace_id is None and 'namespaceId' in kwargs:
-            namespace_id = kwargs['namespaceId']
-        if namespace_id is None:
-            raise TypeError("Missing 'namespace_id' argument")
-        if rules is None:
-            raise TypeError("Missing 'rules' argument")
-        if slb_id is None and 'slbId' in kwargs:
-            slb_id = kwargs['slbId']
-        if slb_id is None:
-            raise TypeError("Missing 'slb_id' argument")
-        if cert_id is None and 'certId' in kwargs:
-            cert_id = kwargs['certId']
-        if cert_ids is None and 'certIds' in kwargs:
-            cert_ids = kwargs['certIds']
-        if default_rule is None and 'defaultRule' in kwargs:
-            default_rule = kwargs['defaultRule']
-        if listener_protocol is None and 'listenerProtocol' in kwargs:
-            listener_protocol = kwargs['listenerProtocol']
-        if load_balance_type is None and 'loadBalanceType' in kwargs:
-            load_balance_type = kwargs['loadBalanceType']
-
-        _setter("listener_port", listener_port)
-        _setter("namespace_id", namespace_id)
-        _setter("rules", rules)
-        _setter("slb_id", slb_id)
+        pulumi.set(__self__, "listener_port", listener_port)
+        pulumi.set(__self__, "namespace_id", namespace_id)
+        pulumi.set(__self__, "rules", rules)
+        pulumi.set(__self__, "slb_id", slb_id)
         if cert_id is not None:
-            _setter("cert_id", cert_id)
+            pulumi.set(__self__, "cert_id", cert_id)
         if cert_ids is not None:
-            _setter("cert_ids", cert_ids)
+            pulumi.set(__self__, "cert_ids", cert_ids)
         if default_rule is not None:
-            _setter("default_rule", default_rule)
+            pulumi.set(__self__, "default_rule", default_rule)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if listener_protocol is not None:
-            _setter("listener_protocol", listener_protocol)
+            pulumi.set(__self__, "listener_protocol", listener_protocol)
         if load_balance_type is not None:
-            _setter("load_balance_type", load_balance_type)
+            pulumi.set(__self__, "load_balance_type", load_balance_type)
 
     @property
     @pulumi.getter(name="listenerPort")
@@ -256,71 +203,26 @@ class _IngressState:
         :param pulumi.Input[Sequence[pulumi.Input['IngressRuleArgs']]] rules: Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
         :param pulumi.Input[str] slb_id: SLB ID.
         """
-        _IngressState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cert_id=cert_id,
-            cert_ids=cert_ids,
-            default_rule=default_rule,
-            description=description,
-            listener_port=listener_port,
-            listener_protocol=listener_protocol,
-            load_balance_type=load_balance_type,
-            namespace_id=namespace_id,
-            rules=rules,
-            slb_id=slb_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cert_id: Optional[pulumi.Input[str]] = None,
-             cert_ids: Optional[pulumi.Input[str]] = None,
-             default_rule: Optional[pulumi.Input['IngressDefaultRuleArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             listener_port: Optional[pulumi.Input[int]] = None,
-             listener_protocol: Optional[pulumi.Input[str]] = None,
-             load_balance_type: Optional[pulumi.Input[str]] = None,
-             namespace_id: Optional[pulumi.Input[str]] = None,
-             rules: Optional[pulumi.Input[Sequence[pulumi.Input['IngressRuleArgs']]]] = None,
-             slb_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cert_id is None and 'certId' in kwargs:
-            cert_id = kwargs['certId']
-        if cert_ids is None and 'certIds' in kwargs:
-            cert_ids = kwargs['certIds']
-        if default_rule is None and 'defaultRule' in kwargs:
-            default_rule = kwargs['defaultRule']
-        if listener_port is None and 'listenerPort' in kwargs:
-            listener_port = kwargs['listenerPort']
-        if listener_protocol is None and 'listenerProtocol' in kwargs:
-            listener_protocol = kwargs['listenerProtocol']
-        if load_balance_type is None and 'loadBalanceType' in kwargs:
-            load_balance_type = kwargs['loadBalanceType']
-        if namespace_id is None and 'namespaceId' in kwargs:
-            namespace_id = kwargs['namespaceId']
-        if slb_id is None and 'slbId' in kwargs:
-            slb_id = kwargs['slbId']
-
         if cert_id is not None:
-            _setter("cert_id", cert_id)
+            pulumi.set(__self__, "cert_id", cert_id)
         if cert_ids is not None:
-            _setter("cert_ids", cert_ids)
+            pulumi.set(__self__, "cert_ids", cert_ids)
         if default_rule is not None:
-            _setter("default_rule", default_rule)
+            pulumi.set(__self__, "default_rule", default_rule)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if listener_port is not None:
-            _setter("listener_port", listener_port)
+            pulumi.set(__self__, "listener_port", listener_port)
         if listener_protocol is not None:
-            _setter("listener_protocol", listener_protocol)
+            pulumi.set(__self__, "listener_protocol", listener_protocol)
         if load_balance_type is not None:
-            _setter("load_balance_type", load_balance_type)
+            pulumi.set(__self__, "load_balance_type", load_balance_type)
         if namespace_id is not None:
-            _setter("namespace_id", namespace_id)
+            pulumi.set(__self__, "namespace_id", namespace_id)
         if rules is not None:
-            _setter("rules", rules)
+            pulumi.set(__self__, "rules", rules)
         if slb_id is not None:
-            _setter("slb_id", slb_id)
+            pulumi.set(__self__, "slb_id", slb_id)
 
     @property
     @pulumi.getter(name="certId")
@@ -652,10 +554,6 @@ class Ingress(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            IngressArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -682,7 +580,6 @@ class Ingress(pulumi.CustomResource):
 
             __props__.__dict__["cert_id"] = cert_id
             __props__.__dict__["cert_ids"] = cert_ids
-            default_rule = _utilities.configure(default_rule, IngressDefaultRuleArgs, True)
             __props__.__dict__["default_rule"] = default_rule
             __props__.__dict__["description"] = description
             if listener_port is None and not opts.urn:

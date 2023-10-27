@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -71,156 +71,51 @@ class ShardingInstanceArgs:
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
         """
-        ShardingInstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            engine_version=engine_version,
-            mongo_lists=mongo_lists,
-            shard_lists=shard_lists,
-            account_password=account_password,
-            auto_renew=auto_renew,
-            backup_periods=backup_periods,
-            backup_time=backup_time,
-            instance_charge_type=instance_charge_type,
-            kms_encrypted_password=kms_encrypted_password,
-            kms_encryption_context=kms_encryption_context,
-            name=name,
-            network_type=network_type,
-            order_type=order_type,
-            period=period,
-            protocol_type=protocol_type,
-            resource_group_id=resource_group_id,
-            security_group_id=security_group_id,
-            security_ip_lists=security_ip_lists,
-            storage_engine=storage_engine,
-            tags=tags,
-            tde_status=tde_status,
-            vpc_id=vpc_id,
-            vswitch_id=vswitch_id,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             engine_version: Optional[pulumi.Input[str]] = None,
-             mongo_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceMongoListArgs']]]] = None,
-             shard_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceShardListArgs']]]] = None,
-             account_password: Optional[pulumi.Input[str]] = None,
-             auto_renew: Optional[pulumi.Input[bool]] = None,
-             backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             backup_time: Optional[pulumi.Input[str]] = None,
-             instance_charge_type: Optional[pulumi.Input[str]] = None,
-             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network_type: Optional[pulumi.Input[str]] = None,
-             order_type: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[int]] = None,
-             protocol_type: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             security_group_id: Optional[pulumi.Input[str]] = None,
-             security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             storage_engine: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             tde_status: Optional[pulumi.Input[str]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if engine_version is None and 'engineVersion' in kwargs:
-            engine_version = kwargs['engineVersion']
-        if engine_version is None:
-            raise TypeError("Missing 'engine_version' argument")
-        if mongo_lists is None and 'mongoLists' in kwargs:
-            mongo_lists = kwargs['mongoLists']
-        if mongo_lists is None:
-            raise TypeError("Missing 'mongo_lists' argument")
-        if shard_lists is None and 'shardLists' in kwargs:
-            shard_lists = kwargs['shardLists']
-        if shard_lists is None:
-            raise TypeError("Missing 'shard_lists' argument")
-        if account_password is None and 'accountPassword' in kwargs:
-            account_password = kwargs['accountPassword']
-        if auto_renew is None and 'autoRenew' in kwargs:
-            auto_renew = kwargs['autoRenew']
-        if backup_periods is None and 'backupPeriods' in kwargs:
-            backup_periods = kwargs['backupPeriods']
-        if backup_time is None and 'backupTime' in kwargs:
-            backup_time = kwargs['backupTime']
-        if instance_charge_type is None and 'instanceChargeType' in kwargs:
-            instance_charge_type = kwargs['instanceChargeType']
-        if kms_encrypted_password is None and 'kmsEncryptedPassword' in kwargs:
-            kms_encrypted_password = kwargs['kmsEncryptedPassword']
-        if kms_encryption_context is None and 'kmsEncryptionContext' in kwargs:
-            kms_encryption_context = kwargs['kmsEncryptionContext']
-        if network_type is None and 'networkType' in kwargs:
-            network_type = kwargs['networkType']
-        if order_type is None and 'orderType' in kwargs:
-            order_type = kwargs['orderType']
-        if protocol_type is None and 'protocolType' in kwargs:
-            protocol_type = kwargs['protocolType']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if security_group_id is None and 'securityGroupId' in kwargs:
-            security_group_id = kwargs['securityGroupId']
-        if security_ip_lists is None and 'securityIpLists' in kwargs:
-            security_ip_lists = kwargs['securityIpLists']
-        if storage_engine is None and 'storageEngine' in kwargs:
-            storage_engine = kwargs['storageEngine']
-        if tde_status is None and 'tdeStatus' in kwargs:
-            tde_status = kwargs['tdeStatus']
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
-        _setter("engine_version", engine_version)
-        _setter("mongo_lists", mongo_lists)
-        _setter("shard_lists", shard_lists)
+        pulumi.set(__self__, "engine_version", engine_version)
+        pulumi.set(__self__, "mongo_lists", mongo_lists)
+        pulumi.set(__self__, "shard_lists", shard_lists)
         if account_password is not None:
-            _setter("account_password", account_password)
+            pulumi.set(__self__, "account_password", account_password)
         if auto_renew is not None:
-            _setter("auto_renew", auto_renew)
+            pulumi.set(__self__, "auto_renew", auto_renew)
         if backup_periods is not None:
-            _setter("backup_periods", backup_periods)
+            pulumi.set(__self__, "backup_periods", backup_periods)
         if backup_time is not None:
-            _setter("backup_time", backup_time)
+            pulumi.set(__self__, "backup_time", backup_time)
         if instance_charge_type is not None:
-            _setter("instance_charge_type", instance_charge_type)
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if kms_encrypted_password is not None:
-            _setter("kms_encrypted_password", kms_encrypted_password)
+            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
-            _setter("kms_encryption_context", kms_encryption_context)
+            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network_type is not None:
-            _setter("network_type", network_type)
+            pulumi.set(__self__, "network_type", network_type)
         if order_type is not None:
-            _setter("order_type", order_type)
+            pulumi.set(__self__, "order_type", order_type)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if protocol_type is not None:
-            _setter("protocol_type", protocol_type)
+            pulumi.set(__self__, "protocol_type", protocol_type)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_group_id is not None:
-            _setter("security_group_id", security_group_id)
+            pulumi.set(__self__, "security_group_id", security_group_id)
         if security_ip_lists is not None:
-            _setter("security_ip_lists", security_ip_lists)
+            pulumi.set(__self__, "security_ip_lists", security_ip_lists)
         if storage_engine is not None:
-            _setter("storage_engine", storage_engine)
+            pulumi.set(__self__, "storage_engine", storage_engine)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if tde_status is not None:
-            _setter("tde_status", tde_status)
+            pulumi.set(__self__, "tde_status", tde_status)
         if vpc_id is not None:
-            _setter("vpc_id", vpc_id)
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="engineVersion")
@@ -577,165 +472,58 @@ class _ShardingInstanceState:
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
         """
-        _ShardingInstanceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_password=account_password,
-            auto_renew=auto_renew,
-            backup_periods=backup_periods,
-            backup_time=backup_time,
-            config_server_lists=config_server_lists,
-            engine_version=engine_version,
-            instance_charge_type=instance_charge_type,
-            kms_encrypted_password=kms_encrypted_password,
-            kms_encryption_context=kms_encryption_context,
-            mongo_lists=mongo_lists,
-            name=name,
-            network_type=network_type,
-            order_type=order_type,
-            period=period,
-            protocol_type=protocol_type,
-            resource_group_id=resource_group_id,
-            retention_period=retention_period,
-            security_group_id=security_group_id,
-            security_ip_lists=security_ip_lists,
-            shard_lists=shard_lists,
-            storage_engine=storage_engine,
-            tags=tags,
-            tde_status=tde_status,
-            vpc_id=vpc_id,
-            vswitch_id=vswitch_id,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_password: Optional[pulumi.Input[str]] = None,
-             auto_renew: Optional[pulumi.Input[bool]] = None,
-             backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             backup_time: Optional[pulumi.Input[str]] = None,
-             config_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]]] = None,
-             engine_version: Optional[pulumi.Input[str]] = None,
-             instance_charge_type: Optional[pulumi.Input[str]] = None,
-             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             mongo_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceMongoListArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network_type: Optional[pulumi.Input[str]] = None,
-             order_type: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[int]] = None,
-             protocol_type: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             retention_period: Optional[pulumi.Input[int]] = None,
-             security_group_id: Optional[pulumi.Input[str]] = None,
-             security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             shard_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceShardListArgs']]]] = None,
-             storage_engine: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             tde_status: Optional[pulumi.Input[str]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_password is None and 'accountPassword' in kwargs:
-            account_password = kwargs['accountPassword']
-        if auto_renew is None and 'autoRenew' in kwargs:
-            auto_renew = kwargs['autoRenew']
-        if backup_periods is None and 'backupPeriods' in kwargs:
-            backup_periods = kwargs['backupPeriods']
-        if backup_time is None and 'backupTime' in kwargs:
-            backup_time = kwargs['backupTime']
-        if config_server_lists is None and 'configServerLists' in kwargs:
-            config_server_lists = kwargs['configServerLists']
-        if engine_version is None and 'engineVersion' in kwargs:
-            engine_version = kwargs['engineVersion']
-        if instance_charge_type is None and 'instanceChargeType' in kwargs:
-            instance_charge_type = kwargs['instanceChargeType']
-        if kms_encrypted_password is None and 'kmsEncryptedPassword' in kwargs:
-            kms_encrypted_password = kwargs['kmsEncryptedPassword']
-        if kms_encryption_context is None and 'kmsEncryptionContext' in kwargs:
-            kms_encryption_context = kwargs['kmsEncryptionContext']
-        if mongo_lists is None and 'mongoLists' in kwargs:
-            mongo_lists = kwargs['mongoLists']
-        if network_type is None and 'networkType' in kwargs:
-            network_type = kwargs['networkType']
-        if order_type is None and 'orderType' in kwargs:
-            order_type = kwargs['orderType']
-        if protocol_type is None and 'protocolType' in kwargs:
-            protocol_type = kwargs['protocolType']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if retention_period is None and 'retentionPeriod' in kwargs:
-            retention_period = kwargs['retentionPeriod']
-        if security_group_id is None and 'securityGroupId' in kwargs:
-            security_group_id = kwargs['securityGroupId']
-        if security_ip_lists is None and 'securityIpLists' in kwargs:
-            security_ip_lists = kwargs['securityIpLists']
-        if shard_lists is None and 'shardLists' in kwargs:
-            shard_lists = kwargs['shardLists']
-        if storage_engine is None and 'storageEngine' in kwargs:
-            storage_engine = kwargs['storageEngine']
-        if tde_status is None and 'tdeStatus' in kwargs:
-            tde_status = kwargs['tdeStatus']
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if account_password is not None:
-            _setter("account_password", account_password)
+            pulumi.set(__self__, "account_password", account_password)
         if auto_renew is not None:
-            _setter("auto_renew", auto_renew)
+            pulumi.set(__self__, "auto_renew", auto_renew)
         if backup_periods is not None:
-            _setter("backup_periods", backup_periods)
+            pulumi.set(__self__, "backup_periods", backup_periods)
         if backup_time is not None:
-            _setter("backup_time", backup_time)
+            pulumi.set(__self__, "backup_time", backup_time)
         if config_server_lists is not None:
-            _setter("config_server_lists", config_server_lists)
+            pulumi.set(__self__, "config_server_lists", config_server_lists)
         if engine_version is not None:
-            _setter("engine_version", engine_version)
+            pulumi.set(__self__, "engine_version", engine_version)
         if instance_charge_type is not None:
-            _setter("instance_charge_type", instance_charge_type)
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if kms_encrypted_password is not None:
-            _setter("kms_encrypted_password", kms_encrypted_password)
+            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
-            _setter("kms_encryption_context", kms_encryption_context)
+            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
         if mongo_lists is not None:
-            _setter("mongo_lists", mongo_lists)
+            pulumi.set(__self__, "mongo_lists", mongo_lists)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network_type is not None:
-            _setter("network_type", network_type)
+            pulumi.set(__self__, "network_type", network_type)
         if order_type is not None:
-            _setter("order_type", order_type)
+            pulumi.set(__self__, "order_type", order_type)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if protocol_type is not None:
-            _setter("protocol_type", protocol_type)
+            pulumi.set(__self__, "protocol_type", protocol_type)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if retention_period is not None:
-            _setter("retention_period", retention_period)
+            pulumi.set(__self__, "retention_period", retention_period)
         if security_group_id is not None:
-            _setter("security_group_id", security_group_id)
+            pulumi.set(__self__, "security_group_id", security_group_id)
         if security_ip_lists is not None:
-            _setter("security_ip_lists", security_ip_lists)
+            pulumi.set(__self__, "security_ip_lists", security_ip_lists)
         if shard_lists is not None:
-            _setter("shard_lists", shard_lists)
+            pulumi.set(__self__, "shard_lists", shard_lists)
         if storage_engine is not None:
-            _setter("storage_engine", storage_engine)
+            pulumi.set(__self__, "storage_engine", storage_engine)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if tde_status is not None:
-            _setter("tde_status", tde_status)
+            pulumi.set(__self__, "tde_status", tde_status)
         if vpc_id is not None:
-            _setter("vpc_id", vpc_id)
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="accountPassword")
@@ -1273,10 +1061,6 @@ class ShardingInstance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ShardingInstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

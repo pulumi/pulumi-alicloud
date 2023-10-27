@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EnterpriseUserArgs', 'EnterpriseUser']
@@ -35,65 +35,26 @@ class EnterpriseUserArgs:
         :param pulumi.Input[int] tid: The tenant ID.
         :param pulumi.Input[str] user_name: The nickname of the user.
         """
-        EnterpriseUserArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            uid=uid,
-            max_execute_count=max_execute_count,
-            max_result_count=max_result_count,
-            mobile=mobile,
-            nick_name=nick_name,
-            role_names=role_names,
-            status=status,
-            tid=tid,
-            user_name=user_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             uid: Optional[pulumi.Input[str]] = None,
-             max_execute_count: Optional[pulumi.Input[int]] = None,
-             max_result_count: Optional[pulumi.Input[int]] = None,
-             mobile: Optional[pulumi.Input[str]] = None,
-             nick_name: Optional[pulumi.Input[str]] = None,
-             role_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tid: Optional[pulumi.Input[int]] = None,
-             user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if uid is None:
-            raise TypeError("Missing 'uid' argument")
-        if max_execute_count is None and 'maxExecuteCount' in kwargs:
-            max_execute_count = kwargs['maxExecuteCount']
-        if max_result_count is None and 'maxResultCount' in kwargs:
-            max_result_count = kwargs['maxResultCount']
-        if nick_name is None and 'nickName' in kwargs:
-            nick_name = kwargs['nickName']
-        if role_names is None and 'roleNames' in kwargs:
-            role_names = kwargs['roleNames']
-        if user_name is None and 'userName' in kwargs:
-            user_name = kwargs['userName']
-
-        _setter("uid", uid)
+        pulumi.set(__self__, "uid", uid)
         if max_execute_count is not None:
-            _setter("max_execute_count", max_execute_count)
+            pulumi.set(__self__, "max_execute_count", max_execute_count)
         if max_result_count is not None:
-            _setter("max_result_count", max_result_count)
+            pulumi.set(__self__, "max_result_count", max_result_count)
         if mobile is not None:
-            _setter("mobile", mobile)
+            pulumi.set(__self__, "mobile", mobile)
         if nick_name is not None:
             warnings.warn("""Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""nick_name is deprecated: Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.""")
         if nick_name is not None:
-            _setter("nick_name", nick_name)
+            pulumi.set(__self__, "nick_name", nick_name)
         if role_names is not None:
-            _setter("role_names", role_names)
+            pulumi.set(__self__, "role_names", role_names)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tid is not None:
-            _setter("tid", tid)
+            pulumi.set(__self__, "tid", tid)
         if user_name is not None:
-            _setter("user_name", user_name)
+            pulumi.set(__self__, "user_name", user_name)
 
     @property
     @pulumi.getter
@@ -231,64 +192,27 @@ class _EnterpriseUserState:
         :param pulumi.Input[str] uid: The Alibaba Cloud unique ID (UID) of the user to add.
         :param pulumi.Input[str] user_name: The nickname of the user.
         """
-        _EnterpriseUserState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            max_execute_count=max_execute_count,
-            max_result_count=max_result_count,
-            mobile=mobile,
-            nick_name=nick_name,
-            role_names=role_names,
-            status=status,
-            tid=tid,
-            uid=uid,
-            user_name=user_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             max_execute_count: Optional[pulumi.Input[int]] = None,
-             max_result_count: Optional[pulumi.Input[int]] = None,
-             mobile: Optional[pulumi.Input[str]] = None,
-             nick_name: Optional[pulumi.Input[str]] = None,
-             role_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tid: Optional[pulumi.Input[int]] = None,
-             uid: Optional[pulumi.Input[str]] = None,
-             user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if max_execute_count is None and 'maxExecuteCount' in kwargs:
-            max_execute_count = kwargs['maxExecuteCount']
-        if max_result_count is None and 'maxResultCount' in kwargs:
-            max_result_count = kwargs['maxResultCount']
-        if nick_name is None and 'nickName' in kwargs:
-            nick_name = kwargs['nickName']
-        if role_names is None and 'roleNames' in kwargs:
-            role_names = kwargs['roleNames']
-        if user_name is None and 'userName' in kwargs:
-            user_name = kwargs['userName']
-
         if max_execute_count is not None:
-            _setter("max_execute_count", max_execute_count)
+            pulumi.set(__self__, "max_execute_count", max_execute_count)
         if max_result_count is not None:
-            _setter("max_result_count", max_result_count)
+            pulumi.set(__self__, "max_result_count", max_result_count)
         if mobile is not None:
-            _setter("mobile", mobile)
+            pulumi.set(__self__, "mobile", mobile)
         if nick_name is not None:
             warnings.warn("""Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""nick_name is deprecated: Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.""")
         if nick_name is not None:
-            _setter("nick_name", nick_name)
+            pulumi.set(__self__, "nick_name", nick_name)
         if role_names is not None:
-            _setter("role_names", role_names)
+            pulumi.set(__self__, "role_names", role_names)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tid is not None:
-            _setter("tid", tid)
+            pulumi.set(__self__, "tid", tid)
         if uid is not None:
-            _setter("uid", uid)
+            pulumi.set(__self__, "uid", uid)
         if user_name is not None:
-            _setter("user_name", user_name)
+            pulumi.set(__self__, "user_name", user_name)
 
     @property
     @pulumi.getter(name="maxExecuteCount")
@@ -515,10 +439,6 @@ class EnterpriseUser(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            EnterpriseUserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

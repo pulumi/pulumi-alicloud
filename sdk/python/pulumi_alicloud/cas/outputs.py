@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -50,117 +50,24 @@ class GetCertificatesCertificateResult(dict):
         :param str sans: The cert's subject alternative name.
         :param str start_date: The cert's not valid before time.
         """
-        GetCertificatesCertificateResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            buy_in_aliyun=buy_in_aliyun,
-            cert=cert,
-            cert_id=cert_id,
-            certificate_name=certificate_name,
-            city=city,
-            common=common,
-            country=country,
-            end_date=end_date,
-            expired=expired,
-            fingerprint=fingerprint,
-            id=id,
-            issuer=issuer,
-            key=key,
-            name=name,
-            org_name=org_name,
-            province=province,
-            sans=sans,
-            start_date=start_date,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             buy_in_aliyun: Optional[bool] = None,
-             cert: Optional[str] = None,
-             cert_id: Optional[str] = None,
-             certificate_name: Optional[str] = None,
-             city: Optional[str] = None,
-             common: Optional[str] = None,
-             country: Optional[str] = None,
-             end_date: Optional[str] = None,
-             expired: Optional[bool] = None,
-             fingerprint: Optional[str] = None,
-             id: Optional[str] = None,
-             issuer: Optional[str] = None,
-             key: Optional[str] = None,
-             name: Optional[str] = None,
-             org_name: Optional[str] = None,
-             province: Optional[str] = None,
-             sans: Optional[str] = None,
-             start_date: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if buy_in_aliyun is None and 'buyInAliyun' in kwargs:
-            buy_in_aliyun = kwargs['buyInAliyun']
-        if buy_in_aliyun is None:
-            raise TypeError("Missing 'buy_in_aliyun' argument")
-        if cert is None:
-            raise TypeError("Missing 'cert' argument")
-        if cert_id is None and 'certId' in kwargs:
-            cert_id = kwargs['certId']
-        if cert_id is None:
-            raise TypeError("Missing 'cert_id' argument")
-        if certificate_name is None and 'certificateName' in kwargs:
-            certificate_name = kwargs['certificateName']
-        if certificate_name is None:
-            raise TypeError("Missing 'certificate_name' argument")
-        if city is None:
-            raise TypeError("Missing 'city' argument")
-        if common is None:
-            raise TypeError("Missing 'common' argument")
-        if country is None:
-            raise TypeError("Missing 'country' argument")
-        if end_date is None and 'endDate' in kwargs:
-            end_date = kwargs['endDate']
-        if end_date is None:
-            raise TypeError("Missing 'end_date' argument")
-        if expired is None:
-            raise TypeError("Missing 'expired' argument")
-        if fingerprint is None:
-            raise TypeError("Missing 'fingerprint' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if issuer is None:
-            raise TypeError("Missing 'issuer' argument")
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if org_name is None and 'orgName' in kwargs:
-            org_name = kwargs['orgName']
-        if org_name is None:
-            raise TypeError("Missing 'org_name' argument")
-        if province is None:
-            raise TypeError("Missing 'province' argument")
-        if sans is None:
-            raise TypeError("Missing 'sans' argument")
-        if start_date is None and 'startDate' in kwargs:
-            start_date = kwargs['startDate']
-        if start_date is None:
-            raise TypeError("Missing 'start_date' argument")
-
-        _setter("buy_in_aliyun", buy_in_aliyun)
-        _setter("cert", cert)
-        _setter("cert_id", cert_id)
-        _setter("certificate_name", certificate_name)
-        _setter("city", city)
-        _setter("common", common)
-        _setter("country", country)
-        _setter("end_date", end_date)
-        _setter("expired", expired)
-        _setter("fingerprint", fingerprint)
-        _setter("id", id)
-        _setter("issuer", issuer)
-        _setter("key", key)
-        _setter("name", name)
-        _setter("org_name", org_name)
-        _setter("province", province)
-        _setter("sans", sans)
-        _setter("start_date", start_date)
+        pulumi.set(__self__, "buy_in_aliyun", buy_in_aliyun)
+        pulumi.set(__self__, "cert", cert)
+        pulumi.set(__self__, "cert_id", cert_id)
+        pulumi.set(__self__, "certificate_name", certificate_name)
+        pulumi.set(__self__, "city", city)
+        pulumi.set(__self__, "common", common)
+        pulumi.set(__self__, "country", country)
+        pulumi.set(__self__, "end_date", end_date)
+        pulumi.set(__self__, "expired", expired)
+        pulumi.set(__self__, "fingerprint", fingerprint)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "issuer", issuer)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "org_name", org_name)
+        pulumi.set(__self__, "province", province)
+        pulumi.set(__self__, "sans", sans)
+        pulumi.set(__self__, "start_date", start_date)
 
     @property
     @pulumi.getter(name="buyInAliyun")
@@ -335,117 +242,24 @@ class GetServiceCertificatesCertificateResult(dict):
         :param str sans: The cert's subject alternative name.
         :param str start_date: The cert's not valid before time.
         """
-        GetServiceCertificatesCertificateResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            buy_in_aliyun=buy_in_aliyun,
-            cert=cert,
-            cert_id=cert_id,
-            certificate_name=certificate_name,
-            city=city,
-            common=common,
-            country=country,
-            end_date=end_date,
-            expired=expired,
-            fingerprint=fingerprint,
-            id=id,
-            issuer=issuer,
-            key=key,
-            name=name,
-            org_name=org_name,
-            province=province,
-            sans=sans,
-            start_date=start_date,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             buy_in_aliyun: Optional[bool] = None,
-             cert: Optional[str] = None,
-             cert_id: Optional[str] = None,
-             certificate_name: Optional[str] = None,
-             city: Optional[str] = None,
-             common: Optional[str] = None,
-             country: Optional[str] = None,
-             end_date: Optional[str] = None,
-             expired: Optional[bool] = None,
-             fingerprint: Optional[str] = None,
-             id: Optional[str] = None,
-             issuer: Optional[str] = None,
-             key: Optional[str] = None,
-             name: Optional[str] = None,
-             org_name: Optional[str] = None,
-             province: Optional[str] = None,
-             sans: Optional[str] = None,
-             start_date: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if buy_in_aliyun is None and 'buyInAliyun' in kwargs:
-            buy_in_aliyun = kwargs['buyInAliyun']
-        if buy_in_aliyun is None:
-            raise TypeError("Missing 'buy_in_aliyun' argument")
-        if cert is None:
-            raise TypeError("Missing 'cert' argument")
-        if cert_id is None and 'certId' in kwargs:
-            cert_id = kwargs['certId']
-        if cert_id is None:
-            raise TypeError("Missing 'cert_id' argument")
-        if certificate_name is None and 'certificateName' in kwargs:
-            certificate_name = kwargs['certificateName']
-        if certificate_name is None:
-            raise TypeError("Missing 'certificate_name' argument")
-        if city is None:
-            raise TypeError("Missing 'city' argument")
-        if common is None:
-            raise TypeError("Missing 'common' argument")
-        if country is None:
-            raise TypeError("Missing 'country' argument")
-        if end_date is None and 'endDate' in kwargs:
-            end_date = kwargs['endDate']
-        if end_date is None:
-            raise TypeError("Missing 'end_date' argument")
-        if expired is None:
-            raise TypeError("Missing 'expired' argument")
-        if fingerprint is None:
-            raise TypeError("Missing 'fingerprint' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if issuer is None:
-            raise TypeError("Missing 'issuer' argument")
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if org_name is None and 'orgName' in kwargs:
-            org_name = kwargs['orgName']
-        if org_name is None:
-            raise TypeError("Missing 'org_name' argument")
-        if province is None:
-            raise TypeError("Missing 'province' argument")
-        if sans is None:
-            raise TypeError("Missing 'sans' argument")
-        if start_date is None and 'startDate' in kwargs:
-            start_date = kwargs['startDate']
-        if start_date is None:
-            raise TypeError("Missing 'start_date' argument")
-
-        _setter("buy_in_aliyun", buy_in_aliyun)
-        _setter("cert", cert)
-        _setter("cert_id", cert_id)
-        _setter("certificate_name", certificate_name)
-        _setter("city", city)
-        _setter("common", common)
-        _setter("country", country)
-        _setter("end_date", end_date)
-        _setter("expired", expired)
-        _setter("fingerprint", fingerprint)
-        _setter("id", id)
-        _setter("issuer", issuer)
-        _setter("key", key)
-        _setter("name", name)
-        _setter("org_name", org_name)
-        _setter("province", province)
-        _setter("sans", sans)
-        _setter("start_date", start_date)
+        pulumi.set(__self__, "buy_in_aliyun", buy_in_aliyun)
+        pulumi.set(__self__, "cert", cert)
+        pulumi.set(__self__, "cert_id", cert_id)
+        pulumi.set(__self__, "certificate_name", certificate_name)
+        pulumi.set(__self__, "city", city)
+        pulumi.set(__self__, "common", common)
+        pulumi.set(__self__, "country", country)
+        pulumi.set(__self__, "end_date", end_date)
+        pulumi.set(__self__, "expired", expired)
+        pulumi.set(__self__, "fingerprint", fingerprint)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "issuer", issuer)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "org_name", org_name)
+        pulumi.set(__self__, "province", province)
+        pulumi.set(__self__, "sans", sans)
+        pulumi.set(__self__, "start_date", start_date)
 
     @property
     @pulumi.getter(name="buyInAliyun")

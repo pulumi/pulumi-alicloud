@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -48,75 +48,16 @@ class GetAccessPointsPointResult(dict):
         :param str status: The Physical Connection to Which the Access Point State.
         :param str type: The Physical Connection to Which the Network Type.
         """
-        GetAccessPointsPointResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_point_feature_models=access_point_feature_models,
-            access_point_id=access_point_id,
-            access_point_name=access_point_name,
-            attached_region_no=attached_region_no,
-            description=description,
-            host_operator=host_operator,
-            id=id,
-            location=location,
-            status=status,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_point_feature_models: Optional[Sequence['outputs.GetAccessPointsPointAccessPointFeatureModelResult']] = None,
-             access_point_id: Optional[str] = None,
-             access_point_name: Optional[str] = None,
-             attached_region_no: Optional[str] = None,
-             description: Optional[str] = None,
-             host_operator: Optional[str] = None,
-             id: Optional[str] = None,
-             location: Optional[str] = None,
-             status: Optional[str] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_point_feature_models is None and 'accessPointFeatureModels' in kwargs:
-            access_point_feature_models = kwargs['accessPointFeatureModels']
-        if access_point_feature_models is None:
-            raise TypeError("Missing 'access_point_feature_models' argument")
-        if access_point_id is None and 'accessPointId' in kwargs:
-            access_point_id = kwargs['accessPointId']
-        if access_point_id is None:
-            raise TypeError("Missing 'access_point_id' argument")
-        if access_point_name is None and 'accessPointName' in kwargs:
-            access_point_name = kwargs['accessPointName']
-        if access_point_name is None:
-            raise TypeError("Missing 'access_point_name' argument")
-        if attached_region_no is None and 'attachedRegionNo' in kwargs:
-            attached_region_no = kwargs['attachedRegionNo']
-        if attached_region_no is None:
-            raise TypeError("Missing 'attached_region_no' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if host_operator is None and 'hostOperator' in kwargs:
-            host_operator = kwargs['hostOperator']
-        if host_operator is None:
-            raise TypeError("Missing 'host_operator' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("access_point_feature_models", access_point_feature_models)
-        _setter("access_point_id", access_point_id)
-        _setter("access_point_name", access_point_name)
-        _setter("attached_region_no", attached_region_no)
-        _setter("description", description)
-        _setter("host_operator", host_operator)
-        _setter("id", id)
-        _setter("location", location)
-        _setter("status", status)
-        _setter("type", type)
+        pulumi.set(__self__, "access_point_feature_models", access_point_feature_models)
+        pulumi.set(__self__, "access_point_id", access_point_id)
+        pulumi.set(__self__, "access_point_name", access_point_name)
+        pulumi.set(__self__, "attached_region_no", attached_region_no)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "host_operator", host_operator)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="accessPointFeatureModels")
@@ -208,29 +149,8 @@ class GetAccessPointsPointAccessPointFeatureModelResult(dict):
         :param str feature_key: The Access Point Properties.
         :param str feature_value: The Access Point Characteristic Value.
         """
-        GetAccessPointsPointAccessPointFeatureModelResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            feature_key=feature_key,
-            feature_value=feature_value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             feature_key: Optional[str] = None,
-             feature_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if feature_key is None and 'featureKey' in kwargs:
-            feature_key = kwargs['featureKey']
-        if feature_key is None:
-            raise TypeError("Missing 'feature_key' argument")
-        if feature_value is None and 'featureValue' in kwargs:
-            feature_value = kwargs['featureValue']
-        if feature_value is None:
-            raise TypeError("Missing 'feature_value' argument")
-
-        _setter("feature_key", feature_key)
-        _setter("feature_value", feature_value)
+        pulumi.set(__self__, "feature_key", feature_key)
+        pulumi.set(__self__, "feature_value", feature_value)
 
     @property
     @pulumi.getter(name="featureKey")
@@ -262,41 +182,10 @@ class GetGrantRuleToCensCenResult(dict):
         :param str create_time: The time when the instance was created.
         :param str id: The ID of the Grant Rule To Cen. It formats as `<cen_id>:<cen_owner_id>:<instance_id>`.
         """
-        GetGrantRuleToCensCenResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cen_id=cen_id,
-            cen_owner_id=cen_owner_id,
-            create_time=create_time,
-            id=id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cen_id: Optional[str] = None,
-             cen_owner_id: Optional[int] = None,
-             create_time: Optional[str] = None,
-             id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cen_id is None and 'cenId' in kwargs:
-            cen_id = kwargs['cenId']
-        if cen_id is None:
-            raise TypeError("Missing 'cen_id' argument")
-        if cen_owner_id is None and 'cenOwnerId' in kwargs:
-            cen_owner_id = kwargs['cenOwnerId']
-        if cen_owner_id is None:
-            raise TypeError("Missing 'cen_owner_id' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-
-        _setter("cen_id", cen_id)
-        _setter("cen_owner_id", cen_owner_id)
-        _setter("create_time", create_time)
-        _setter("id", id)
+        pulumi.set(__self__, "cen_id", cen_id)
+        pulumi.set(__self__, "cen_owner_id", cen_owner_id)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter(name="cenId")
@@ -388,185 +277,32 @@ class GetPhysicalConnectionsConnectionResult(dict):
         :param str status: Resources on Behalf of a State of the Resource Attribute Field.
         :param str type: Physical Private Line of Type. Default Value: VPC.
         """
-        GetPhysicalConnectionsConnectionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_point_id=access_point_id,
-            ad_location=ad_location,
-            bandwidth=bandwidth,
-            business_status=business_status,
-            circuit_code=circuit_code,
-            create_time=create_time,
-            description=description,
-            enabled_time=enabled_time,
-            end_time=end_time,
-            has_reservation_data=has_reservation_data,
-            id=id,
-            line_operator=line_operator,
-            loa_status=loa_status,
-            payment_type=payment_type,
-            peer_location=peer_location,
-            physical_connection_id=physical_connection_id,
-            physical_connection_name=physical_connection_name,
-            port_number=port_number,
-            port_type=port_type,
-            redundant_physical_connection_id=redundant_physical_connection_id,
-            reservation_active_time=reservation_active_time,
-            reservation_internet_charge_type=reservation_internet_charge_type,
-            reservation_order_type=reservation_order_type,
-            spec=spec,
-            status=status,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_point_id: Optional[str] = None,
-             ad_location: Optional[str] = None,
-             bandwidth: Optional[str] = None,
-             business_status: Optional[str] = None,
-             circuit_code: Optional[str] = None,
-             create_time: Optional[str] = None,
-             description: Optional[str] = None,
-             enabled_time: Optional[str] = None,
-             end_time: Optional[str] = None,
-             has_reservation_data: Optional[str] = None,
-             id: Optional[str] = None,
-             line_operator: Optional[str] = None,
-             loa_status: Optional[str] = None,
-             payment_type: Optional[str] = None,
-             peer_location: Optional[str] = None,
-             physical_connection_id: Optional[str] = None,
-             physical_connection_name: Optional[str] = None,
-             port_number: Optional[str] = None,
-             port_type: Optional[str] = None,
-             redundant_physical_connection_id: Optional[str] = None,
-             reservation_active_time: Optional[str] = None,
-             reservation_internet_charge_type: Optional[str] = None,
-             reservation_order_type: Optional[str] = None,
-             spec: Optional[str] = None,
-             status: Optional[str] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_point_id is None and 'accessPointId' in kwargs:
-            access_point_id = kwargs['accessPointId']
-        if access_point_id is None:
-            raise TypeError("Missing 'access_point_id' argument")
-        if ad_location is None and 'adLocation' in kwargs:
-            ad_location = kwargs['adLocation']
-        if ad_location is None:
-            raise TypeError("Missing 'ad_location' argument")
-        if bandwidth is None:
-            raise TypeError("Missing 'bandwidth' argument")
-        if business_status is None and 'businessStatus' in kwargs:
-            business_status = kwargs['businessStatus']
-        if business_status is None:
-            raise TypeError("Missing 'business_status' argument")
-        if circuit_code is None and 'circuitCode' in kwargs:
-            circuit_code = kwargs['circuitCode']
-        if circuit_code is None:
-            raise TypeError("Missing 'circuit_code' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if enabled_time is None and 'enabledTime' in kwargs:
-            enabled_time = kwargs['enabledTime']
-        if enabled_time is None:
-            raise TypeError("Missing 'enabled_time' argument")
-        if end_time is None and 'endTime' in kwargs:
-            end_time = kwargs['endTime']
-        if end_time is None:
-            raise TypeError("Missing 'end_time' argument")
-        if has_reservation_data is None and 'hasReservationData' in kwargs:
-            has_reservation_data = kwargs['hasReservationData']
-        if has_reservation_data is None:
-            raise TypeError("Missing 'has_reservation_data' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if line_operator is None and 'lineOperator' in kwargs:
-            line_operator = kwargs['lineOperator']
-        if line_operator is None:
-            raise TypeError("Missing 'line_operator' argument")
-        if loa_status is None and 'loaStatus' in kwargs:
-            loa_status = kwargs['loaStatus']
-        if loa_status is None:
-            raise TypeError("Missing 'loa_status' argument")
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if payment_type is None:
-            raise TypeError("Missing 'payment_type' argument")
-        if peer_location is None and 'peerLocation' in kwargs:
-            peer_location = kwargs['peerLocation']
-        if peer_location is None:
-            raise TypeError("Missing 'peer_location' argument")
-        if physical_connection_id is None and 'physicalConnectionId' in kwargs:
-            physical_connection_id = kwargs['physicalConnectionId']
-        if physical_connection_id is None:
-            raise TypeError("Missing 'physical_connection_id' argument")
-        if physical_connection_name is None and 'physicalConnectionName' in kwargs:
-            physical_connection_name = kwargs['physicalConnectionName']
-        if physical_connection_name is None:
-            raise TypeError("Missing 'physical_connection_name' argument")
-        if port_number is None and 'portNumber' in kwargs:
-            port_number = kwargs['portNumber']
-        if port_number is None:
-            raise TypeError("Missing 'port_number' argument")
-        if port_type is None and 'portType' in kwargs:
-            port_type = kwargs['portType']
-        if port_type is None:
-            raise TypeError("Missing 'port_type' argument")
-        if redundant_physical_connection_id is None and 'redundantPhysicalConnectionId' in kwargs:
-            redundant_physical_connection_id = kwargs['redundantPhysicalConnectionId']
-        if redundant_physical_connection_id is None:
-            raise TypeError("Missing 'redundant_physical_connection_id' argument")
-        if reservation_active_time is None and 'reservationActiveTime' in kwargs:
-            reservation_active_time = kwargs['reservationActiveTime']
-        if reservation_active_time is None:
-            raise TypeError("Missing 'reservation_active_time' argument")
-        if reservation_internet_charge_type is None and 'reservationInternetChargeType' in kwargs:
-            reservation_internet_charge_type = kwargs['reservationInternetChargeType']
-        if reservation_internet_charge_type is None:
-            raise TypeError("Missing 'reservation_internet_charge_type' argument")
-        if reservation_order_type is None and 'reservationOrderType' in kwargs:
-            reservation_order_type = kwargs['reservationOrderType']
-        if reservation_order_type is None:
-            raise TypeError("Missing 'reservation_order_type' argument")
-        if spec is None:
-            raise TypeError("Missing 'spec' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("access_point_id", access_point_id)
-        _setter("ad_location", ad_location)
-        _setter("bandwidth", bandwidth)
-        _setter("business_status", business_status)
-        _setter("circuit_code", circuit_code)
-        _setter("create_time", create_time)
-        _setter("description", description)
-        _setter("enabled_time", enabled_time)
-        _setter("end_time", end_time)
-        _setter("has_reservation_data", has_reservation_data)
-        _setter("id", id)
-        _setter("line_operator", line_operator)
-        _setter("loa_status", loa_status)
-        _setter("payment_type", payment_type)
-        _setter("peer_location", peer_location)
-        _setter("physical_connection_id", physical_connection_id)
-        _setter("physical_connection_name", physical_connection_name)
-        _setter("port_number", port_number)
-        _setter("port_type", port_type)
-        _setter("redundant_physical_connection_id", redundant_physical_connection_id)
-        _setter("reservation_active_time", reservation_active_time)
-        _setter("reservation_internet_charge_type", reservation_internet_charge_type)
-        _setter("reservation_order_type", reservation_order_type)
-        _setter("spec", spec)
-        _setter("status", status)
-        _setter("type", type)
+        pulumi.set(__self__, "access_point_id", access_point_id)
+        pulumi.set(__self__, "ad_location", ad_location)
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "business_status", business_status)
+        pulumi.set(__self__, "circuit_code", circuit_code)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "enabled_time", enabled_time)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "has_reservation_data", has_reservation_data)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "line_operator", line_operator)
+        pulumi.set(__self__, "loa_status", loa_status)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "peer_location", peer_location)
+        pulumi.set(__self__, "physical_connection_id", physical_connection_id)
+        pulumi.set(__self__, "physical_connection_name", physical_connection_name)
+        pulumi.set(__self__, "port_number", port_number)
+        pulumi.set(__self__, "port_type", port_type)
+        pulumi.set(__self__, "redundant_physical_connection_id", redundant_physical_connection_id)
+        pulumi.set(__self__, "reservation_active_time", reservation_active_time)
+        pulumi.set(__self__, "reservation_internet_charge_type", reservation_internet_charge_type)
+        pulumi.set(__self__, "reservation_order_type", reservation_order_type)
+        pulumi.set(__self__, "spec", spec)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="accessPointId")
@@ -782,23 +518,10 @@ class GetRouterInterfacesFilterResult(dict):
     def __init__(__self__, *,
                  key: Optional[str] = None,
                  values: Optional[Sequence[str]] = None):
-        GetRouterInterfacesFilterResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            values=values,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if values is not None:
-            _setter("values", values)
+            pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
@@ -891,269 +614,44 @@ class GetRouterInterfacesInterfaceResult(dict):
         :param str status: The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
         :param str vpc_instance_id: The vpc instance id of the resource.
         """
-        GetRouterInterfacesInterfaceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_point_id=access_point_id,
-            bandwidth=bandwidth,
-            business_status=business_status,
-            connected_time=connected_time,
-            create_time=create_time,
-            cross_border=cross_border,
-            description=description,
-            end_time=end_time,
-            has_reservation_data=has_reservation_data,
-            hc_rate=hc_rate,
-            hc_threshold=hc_threshold,
-            health_check_source_ip=health_check_source_ip,
-            health_check_target_ip=health_check_target_ip,
-            id=id,
-            opposite_access_point_id=opposite_access_point_id,
-            opposite_bandwidth=opposite_bandwidth,
-            opposite_interface_business_status=opposite_interface_business_status,
-            opposite_interface_id=opposite_interface_id,
-            opposite_interface_owner_id=opposite_interface_owner_id,
-            opposite_interface_spec=opposite_interface_spec,
-            opposite_interface_status=opposite_interface_status,
-            opposite_region_id=opposite_region_id,
-            opposite_router_id=opposite_router_id,
-            opposite_router_type=opposite_router_type,
-            opposite_vpc_instance_id=opposite_vpc_instance_id,
-            payment_type=payment_type,
-            reservation_active_time=reservation_active_time,
-            reservation_bandwidth=reservation_bandwidth,
-            reservation_internet_charge_type=reservation_internet_charge_type,
-            reservation_order_type=reservation_order_type,
-            role=role,
-            router_id=router_id,
-            router_interface_id=router_interface_id,
-            router_interface_name=router_interface_name,
-            router_type=router_type,
-            spec=spec,
-            status=status,
-            vpc_instance_id=vpc_instance_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_point_id: Optional[str] = None,
-             bandwidth: Optional[int] = None,
-             business_status: Optional[str] = None,
-             connected_time: Optional[str] = None,
-             create_time: Optional[str] = None,
-             cross_border: Optional[bool] = None,
-             description: Optional[str] = None,
-             end_time: Optional[str] = None,
-             has_reservation_data: Optional[str] = None,
-             hc_rate: Optional[int] = None,
-             hc_threshold: Optional[str] = None,
-             health_check_source_ip: Optional[str] = None,
-             health_check_target_ip: Optional[str] = None,
-             id: Optional[str] = None,
-             opposite_access_point_id: Optional[str] = None,
-             opposite_bandwidth: Optional[int] = None,
-             opposite_interface_business_status: Optional[str] = None,
-             opposite_interface_id: Optional[str] = None,
-             opposite_interface_owner_id: Optional[str] = None,
-             opposite_interface_spec: Optional[str] = None,
-             opposite_interface_status: Optional[str] = None,
-             opposite_region_id: Optional[str] = None,
-             opposite_router_id: Optional[str] = None,
-             opposite_router_type: Optional[str] = None,
-             opposite_vpc_instance_id: Optional[str] = None,
-             payment_type: Optional[str] = None,
-             reservation_active_time: Optional[str] = None,
-             reservation_bandwidth: Optional[str] = None,
-             reservation_internet_charge_type: Optional[str] = None,
-             reservation_order_type: Optional[str] = None,
-             role: Optional[str] = None,
-             router_id: Optional[str] = None,
-             router_interface_id: Optional[str] = None,
-             router_interface_name: Optional[str] = None,
-             router_type: Optional[str] = None,
-             spec: Optional[str] = None,
-             status: Optional[str] = None,
-             vpc_instance_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_point_id is None and 'accessPointId' in kwargs:
-            access_point_id = kwargs['accessPointId']
-        if access_point_id is None:
-            raise TypeError("Missing 'access_point_id' argument")
-        if bandwidth is None:
-            raise TypeError("Missing 'bandwidth' argument")
-        if business_status is None and 'businessStatus' in kwargs:
-            business_status = kwargs['businessStatus']
-        if business_status is None:
-            raise TypeError("Missing 'business_status' argument")
-        if connected_time is None and 'connectedTime' in kwargs:
-            connected_time = kwargs['connectedTime']
-        if connected_time is None:
-            raise TypeError("Missing 'connected_time' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if cross_border is None and 'crossBorder' in kwargs:
-            cross_border = kwargs['crossBorder']
-        if cross_border is None:
-            raise TypeError("Missing 'cross_border' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if end_time is None and 'endTime' in kwargs:
-            end_time = kwargs['endTime']
-        if end_time is None:
-            raise TypeError("Missing 'end_time' argument")
-        if has_reservation_data is None and 'hasReservationData' in kwargs:
-            has_reservation_data = kwargs['hasReservationData']
-        if has_reservation_data is None:
-            raise TypeError("Missing 'has_reservation_data' argument")
-        if hc_rate is None and 'hcRate' in kwargs:
-            hc_rate = kwargs['hcRate']
-        if hc_rate is None:
-            raise TypeError("Missing 'hc_rate' argument")
-        if hc_threshold is None and 'hcThreshold' in kwargs:
-            hc_threshold = kwargs['hcThreshold']
-        if hc_threshold is None:
-            raise TypeError("Missing 'hc_threshold' argument")
-        if health_check_source_ip is None and 'healthCheckSourceIp' in kwargs:
-            health_check_source_ip = kwargs['healthCheckSourceIp']
-        if health_check_source_ip is None:
-            raise TypeError("Missing 'health_check_source_ip' argument")
-        if health_check_target_ip is None and 'healthCheckTargetIp' in kwargs:
-            health_check_target_ip = kwargs['healthCheckTargetIp']
-        if health_check_target_ip is None:
-            raise TypeError("Missing 'health_check_target_ip' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if opposite_access_point_id is None and 'oppositeAccessPointId' in kwargs:
-            opposite_access_point_id = kwargs['oppositeAccessPointId']
-        if opposite_access_point_id is None:
-            raise TypeError("Missing 'opposite_access_point_id' argument")
-        if opposite_bandwidth is None and 'oppositeBandwidth' in kwargs:
-            opposite_bandwidth = kwargs['oppositeBandwidth']
-        if opposite_bandwidth is None:
-            raise TypeError("Missing 'opposite_bandwidth' argument")
-        if opposite_interface_business_status is None and 'oppositeInterfaceBusinessStatus' in kwargs:
-            opposite_interface_business_status = kwargs['oppositeInterfaceBusinessStatus']
-        if opposite_interface_business_status is None:
-            raise TypeError("Missing 'opposite_interface_business_status' argument")
-        if opposite_interface_id is None and 'oppositeInterfaceId' in kwargs:
-            opposite_interface_id = kwargs['oppositeInterfaceId']
-        if opposite_interface_id is None:
-            raise TypeError("Missing 'opposite_interface_id' argument")
-        if opposite_interface_owner_id is None and 'oppositeInterfaceOwnerId' in kwargs:
-            opposite_interface_owner_id = kwargs['oppositeInterfaceOwnerId']
-        if opposite_interface_owner_id is None:
-            raise TypeError("Missing 'opposite_interface_owner_id' argument")
-        if opposite_interface_spec is None and 'oppositeInterfaceSpec' in kwargs:
-            opposite_interface_spec = kwargs['oppositeInterfaceSpec']
-        if opposite_interface_spec is None:
-            raise TypeError("Missing 'opposite_interface_spec' argument")
-        if opposite_interface_status is None and 'oppositeInterfaceStatus' in kwargs:
-            opposite_interface_status = kwargs['oppositeInterfaceStatus']
-        if opposite_interface_status is None:
-            raise TypeError("Missing 'opposite_interface_status' argument")
-        if opposite_region_id is None and 'oppositeRegionId' in kwargs:
-            opposite_region_id = kwargs['oppositeRegionId']
-        if opposite_region_id is None:
-            raise TypeError("Missing 'opposite_region_id' argument")
-        if opposite_router_id is None and 'oppositeRouterId' in kwargs:
-            opposite_router_id = kwargs['oppositeRouterId']
-        if opposite_router_id is None:
-            raise TypeError("Missing 'opposite_router_id' argument")
-        if opposite_router_type is None and 'oppositeRouterType' in kwargs:
-            opposite_router_type = kwargs['oppositeRouterType']
-        if opposite_router_type is None:
-            raise TypeError("Missing 'opposite_router_type' argument")
-        if opposite_vpc_instance_id is None and 'oppositeVpcInstanceId' in kwargs:
-            opposite_vpc_instance_id = kwargs['oppositeVpcInstanceId']
-        if opposite_vpc_instance_id is None:
-            raise TypeError("Missing 'opposite_vpc_instance_id' argument")
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if payment_type is None:
-            raise TypeError("Missing 'payment_type' argument")
-        if reservation_active_time is None and 'reservationActiveTime' in kwargs:
-            reservation_active_time = kwargs['reservationActiveTime']
-        if reservation_active_time is None:
-            raise TypeError("Missing 'reservation_active_time' argument")
-        if reservation_bandwidth is None and 'reservationBandwidth' in kwargs:
-            reservation_bandwidth = kwargs['reservationBandwidth']
-        if reservation_bandwidth is None:
-            raise TypeError("Missing 'reservation_bandwidth' argument")
-        if reservation_internet_charge_type is None and 'reservationInternetChargeType' in kwargs:
-            reservation_internet_charge_type = kwargs['reservationInternetChargeType']
-        if reservation_internet_charge_type is None:
-            raise TypeError("Missing 'reservation_internet_charge_type' argument")
-        if reservation_order_type is None and 'reservationOrderType' in kwargs:
-            reservation_order_type = kwargs['reservationOrderType']
-        if reservation_order_type is None:
-            raise TypeError("Missing 'reservation_order_type' argument")
-        if role is None:
-            raise TypeError("Missing 'role' argument")
-        if router_id is None and 'routerId' in kwargs:
-            router_id = kwargs['routerId']
-        if router_id is None:
-            raise TypeError("Missing 'router_id' argument")
-        if router_interface_id is None and 'routerInterfaceId' in kwargs:
-            router_interface_id = kwargs['routerInterfaceId']
-        if router_interface_id is None:
-            raise TypeError("Missing 'router_interface_id' argument")
-        if router_interface_name is None and 'routerInterfaceName' in kwargs:
-            router_interface_name = kwargs['routerInterfaceName']
-        if router_interface_name is None:
-            raise TypeError("Missing 'router_interface_name' argument")
-        if router_type is None and 'routerType' in kwargs:
-            router_type = kwargs['routerType']
-        if router_type is None:
-            raise TypeError("Missing 'router_type' argument")
-        if spec is None:
-            raise TypeError("Missing 'spec' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if vpc_instance_id is None and 'vpcInstanceId' in kwargs:
-            vpc_instance_id = kwargs['vpcInstanceId']
-        if vpc_instance_id is None:
-            raise TypeError("Missing 'vpc_instance_id' argument")
-
-        _setter("access_point_id", access_point_id)
-        _setter("bandwidth", bandwidth)
-        _setter("business_status", business_status)
-        _setter("connected_time", connected_time)
-        _setter("create_time", create_time)
-        _setter("cross_border", cross_border)
-        _setter("description", description)
-        _setter("end_time", end_time)
-        _setter("has_reservation_data", has_reservation_data)
-        _setter("hc_rate", hc_rate)
-        _setter("hc_threshold", hc_threshold)
-        _setter("health_check_source_ip", health_check_source_ip)
-        _setter("health_check_target_ip", health_check_target_ip)
-        _setter("id", id)
-        _setter("opposite_access_point_id", opposite_access_point_id)
-        _setter("opposite_bandwidth", opposite_bandwidth)
-        _setter("opposite_interface_business_status", opposite_interface_business_status)
-        _setter("opposite_interface_id", opposite_interface_id)
-        _setter("opposite_interface_owner_id", opposite_interface_owner_id)
-        _setter("opposite_interface_spec", opposite_interface_spec)
-        _setter("opposite_interface_status", opposite_interface_status)
-        _setter("opposite_region_id", opposite_region_id)
-        _setter("opposite_router_id", opposite_router_id)
-        _setter("opposite_router_type", opposite_router_type)
-        _setter("opposite_vpc_instance_id", opposite_vpc_instance_id)
-        _setter("payment_type", payment_type)
-        _setter("reservation_active_time", reservation_active_time)
-        _setter("reservation_bandwidth", reservation_bandwidth)
-        _setter("reservation_internet_charge_type", reservation_internet_charge_type)
-        _setter("reservation_order_type", reservation_order_type)
-        _setter("role", role)
-        _setter("router_id", router_id)
-        _setter("router_interface_id", router_interface_id)
-        _setter("router_interface_name", router_interface_name)
-        _setter("router_type", router_type)
-        _setter("spec", spec)
-        _setter("status", status)
-        _setter("vpc_instance_id", vpc_instance_id)
+        pulumi.set(__self__, "access_point_id", access_point_id)
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "business_status", business_status)
+        pulumi.set(__self__, "connected_time", connected_time)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "cross_border", cross_border)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "has_reservation_data", has_reservation_data)
+        pulumi.set(__self__, "hc_rate", hc_rate)
+        pulumi.set(__self__, "hc_threshold", hc_threshold)
+        pulumi.set(__self__, "health_check_source_ip", health_check_source_ip)
+        pulumi.set(__self__, "health_check_target_ip", health_check_target_ip)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "opposite_access_point_id", opposite_access_point_id)
+        pulumi.set(__self__, "opposite_bandwidth", opposite_bandwidth)
+        pulumi.set(__self__, "opposite_interface_business_status", opposite_interface_business_status)
+        pulumi.set(__self__, "opposite_interface_id", opposite_interface_id)
+        pulumi.set(__self__, "opposite_interface_owner_id", opposite_interface_owner_id)
+        pulumi.set(__self__, "opposite_interface_spec", opposite_interface_spec)
+        pulumi.set(__self__, "opposite_interface_status", opposite_interface_status)
+        pulumi.set(__self__, "opposite_region_id", opposite_region_id)
+        pulumi.set(__self__, "opposite_router_id", opposite_router_id)
+        pulumi.set(__self__, "opposite_router_type", opposite_router_type)
+        pulumi.set(__self__, "opposite_vpc_instance_id", opposite_vpc_instance_id)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "reservation_active_time", reservation_active_time)
+        pulumi.set(__self__, "reservation_bandwidth", reservation_bandwidth)
+        pulumi.set(__self__, "reservation_internet_charge_type", reservation_internet_charge_type)
+        pulumi.set(__self__, "reservation_order_type", reservation_order_type)
+        pulumi.set(__self__, "role", role)
+        pulumi.set(__self__, "router_id", router_id)
+        pulumi.set(__self__, "router_interface_id", router_interface_id)
+        pulumi.set(__self__, "router_interface_name", router_interface_name)
+        pulumi.set(__self__, "router_type", router_type)
+        pulumi.set(__self__, "spec", spec)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vpc_instance_id", vpc_instance_id)
 
     @property
     @pulumi.getter(name="accessPointId")
@@ -1488,102 +986,19 @@ class GetVbrPconnAssociationsAssociationResult(dict):
         :param str vbr_id: The ID of the VBR instance.
         :param int vlan_id: VLAN ID of the VBR.
         """
-        GetVbrPconnAssociationsAssociationResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            circuit_code=circuit_code,
-            enable_ipv6=enable_ipv6,
-            id=id,
-            local_gateway_ip=local_gateway_ip,
-            local_ipv6_gateway_ip=local_ipv6_gateway_ip,
-            peer_gateway_ip=peer_gateway_ip,
-            peer_ipv6_gateway_ip=peer_ipv6_gateway_ip,
-            peering_ipv6_subnet_mask=peering_ipv6_subnet_mask,
-            peering_subnet_mask=peering_subnet_mask,
-            physical_connection_id=physical_connection_id,
-            status=status,
-            vbr_id=vbr_id,
-            vlan_id=vlan_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             circuit_code: Optional[str] = None,
-             enable_ipv6: Optional[bool] = None,
-             id: Optional[str] = None,
-             local_gateway_ip: Optional[str] = None,
-             local_ipv6_gateway_ip: Optional[str] = None,
-             peer_gateway_ip: Optional[str] = None,
-             peer_ipv6_gateway_ip: Optional[str] = None,
-             peering_ipv6_subnet_mask: Optional[str] = None,
-             peering_subnet_mask: Optional[str] = None,
-             physical_connection_id: Optional[str] = None,
-             status: Optional[str] = None,
-             vbr_id: Optional[str] = None,
-             vlan_id: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if circuit_code is None and 'circuitCode' in kwargs:
-            circuit_code = kwargs['circuitCode']
-        if circuit_code is None:
-            raise TypeError("Missing 'circuit_code' argument")
-        if enable_ipv6 is None and 'enableIpv6' in kwargs:
-            enable_ipv6 = kwargs['enableIpv6']
-        if enable_ipv6 is None:
-            raise TypeError("Missing 'enable_ipv6' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if local_gateway_ip is None and 'localGatewayIp' in kwargs:
-            local_gateway_ip = kwargs['localGatewayIp']
-        if local_gateway_ip is None:
-            raise TypeError("Missing 'local_gateway_ip' argument")
-        if local_ipv6_gateway_ip is None and 'localIpv6GatewayIp' in kwargs:
-            local_ipv6_gateway_ip = kwargs['localIpv6GatewayIp']
-        if local_ipv6_gateway_ip is None:
-            raise TypeError("Missing 'local_ipv6_gateway_ip' argument")
-        if peer_gateway_ip is None and 'peerGatewayIp' in kwargs:
-            peer_gateway_ip = kwargs['peerGatewayIp']
-        if peer_gateway_ip is None:
-            raise TypeError("Missing 'peer_gateway_ip' argument")
-        if peer_ipv6_gateway_ip is None and 'peerIpv6GatewayIp' in kwargs:
-            peer_ipv6_gateway_ip = kwargs['peerIpv6GatewayIp']
-        if peer_ipv6_gateway_ip is None:
-            raise TypeError("Missing 'peer_ipv6_gateway_ip' argument")
-        if peering_ipv6_subnet_mask is None and 'peeringIpv6SubnetMask' in kwargs:
-            peering_ipv6_subnet_mask = kwargs['peeringIpv6SubnetMask']
-        if peering_ipv6_subnet_mask is None:
-            raise TypeError("Missing 'peering_ipv6_subnet_mask' argument")
-        if peering_subnet_mask is None and 'peeringSubnetMask' in kwargs:
-            peering_subnet_mask = kwargs['peeringSubnetMask']
-        if peering_subnet_mask is None:
-            raise TypeError("Missing 'peering_subnet_mask' argument")
-        if physical_connection_id is None and 'physicalConnectionId' in kwargs:
-            physical_connection_id = kwargs['physicalConnectionId']
-        if physical_connection_id is None:
-            raise TypeError("Missing 'physical_connection_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if vbr_id is None and 'vbrId' in kwargs:
-            vbr_id = kwargs['vbrId']
-        if vbr_id is None:
-            raise TypeError("Missing 'vbr_id' argument")
-        if vlan_id is None and 'vlanId' in kwargs:
-            vlan_id = kwargs['vlanId']
-        if vlan_id is None:
-            raise TypeError("Missing 'vlan_id' argument")
-
-        _setter("circuit_code", circuit_code)
-        _setter("enable_ipv6", enable_ipv6)
-        _setter("id", id)
-        _setter("local_gateway_ip", local_gateway_ip)
-        _setter("local_ipv6_gateway_ip", local_ipv6_gateway_ip)
-        _setter("peer_gateway_ip", peer_gateway_ip)
-        _setter("peer_ipv6_gateway_ip", peer_ipv6_gateway_ip)
-        _setter("peering_ipv6_subnet_mask", peering_ipv6_subnet_mask)
-        _setter("peering_subnet_mask", peering_subnet_mask)
-        _setter("physical_connection_id", physical_connection_id)
-        _setter("status", status)
-        _setter("vbr_id", vbr_id)
-        _setter("vlan_id", vlan_id)
+        pulumi.set(__self__, "circuit_code", circuit_code)
+        pulumi.set(__self__, "enable_ipv6", enable_ipv6)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "local_gateway_ip", local_gateway_ip)
+        pulumi.set(__self__, "local_ipv6_gateway_ip", local_ipv6_gateway_ip)
+        pulumi.set(__self__, "peer_gateway_ip", peer_gateway_ip)
+        pulumi.set(__self__, "peer_ipv6_gateway_ip", peer_ipv6_gateway_ip)
+        pulumi.set(__self__, "peering_ipv6_subnet_mask", peering_ipv6_subnet_mask)
+        pulumi.set(__self__, "peering_subnet_mask", peering_subnet_mask)
+        pulumi.set(__self__, "physical_connection_id", physical_connection_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vbr_id", vbr_id)
+        pulumi.set(__self__, "vlan_id", vlan_id)
 
     @property
     @pulumi.getter(name="circuitCode")
@@ -1700,23 +1115,10 @@ class GetVirtualBorderRoutersFilterResult(dict):
                [Alibaba Cloud API](https://www.alibabacloud.com/help/en/doc-detail/124791.htm).
         :param Sequence[str] values: Set of values that are accepted for the given field.
         """
-        GetVirtualBorderRoutersFilterResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            values=values,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if values is not None:
-            _setter("values", values)
+            pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
@@ -1805,231 +1207,38 @@ class GetVirtualBorderRoutersRouterResult(dict):
         :param int vlan_id: The VLAN ID of the VBR. Value range: 0~2999.
         :param str vlan_interface_id: The ID of the Router Interface.
         """
-        GetVirtualBorderRoutersRouterResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_point_id=access_point_id,
-            activation_time=activation_time,
-            circuit_code=circuit_code,
-            cloud_box_instance_id=cloud_box_instance_id,
-            create_time=create_time,
-            description=description,
-            detect_multiplier=detect_multiplier,
-            ecc_id=ecc_id,
-            enable_ipv6=enable_ipv6,
-            id=id,
-            local_gateway_ip=local_gateway_ip,
-            local_ipv6_gateway_ip=local_ipv6_gateway_ip,
-            min_rx_interval=min_rx_interval,
-            min_tx_interval=min_tx_interval,
-            payment_vbr_expire_time=payment_vbr_expire_time,
-            peer_gateway_ip=peer_gateway_ip,
-            peer_ipv6_gateway_ip=peer_ipv6_gateway_ip,
-            peering_ipv6_subnet_mask=peering_ipv6_subnet_mask,
-            peering_subnet_mask=peering_subnet_mask,
-            physical_connection_business_status=physical_connection_business_status,
-            physical_connection_id=physical_connection_id,
-            physical_connection_owner_uid=physical_connection_owner_uid,
-            physical_connection_status=physical_connection_status,
-            recovery_time=recovery_time,
-            route_table_id=route_table_id,
-            status=status,
-            termination_time=termination_time,
-            type=type,
-            virtual_border_router_id=virtual_border_router_id,
-            virtual_border_router_name=virtual_border_router_name,
-            vlan_id=vlan_id,
-            vlan_interface_id=vlan_interface_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_point_id: Optional[str] = None,
-             activation_time: Optional[str] = None,
-             circuit_code: Optional[str] = None,
-             cloud_box_instance_id: Optional[str] = None,
-             create_time: Optional[str] = None,
-             description: Optional[str] = None,
-             detect_multiplier: Optional[int] = None,
-             ecc_id: Optional[str] = None,
-             enable_ipv6: Optional[bool] = None,
-             id: Optional[str] = None,
-             local_gateway_ip: Optional[str] = None,
-             local_ipv6_gateway_ip: Optional[str] = None,
-             min_rx_interval: Optional[int] = None,
-             min_tx_interval: Optional[int] = None,
-             payment_vbr_expire_time: Optional[str] = None,
-             peer_gateway_ip: Optional[str] = None,
-             peer_ipv6_gateway_ip: Optional[str] = None,
-             peering_ipv6_subnet_mask: Optional[str] = None,
-             peering_subnet_mask: Optional[str] = None,
-             physical_connection_business_status: Optional[str] = None,
-             physical_connection_id: Optional[str] = None,
-             physical_connection_owner_uid: Optional[str] = None,
-             physical_connection_status: Optional[str] = None,
-             recovery_time: Optional[str] = None,
-             route_table_id: Optional[str] = None,
-             status: Optional[str] = None,
-             termination_time: Optional[str] = None,
-             type: Optional[str] = None,
-             virtual_border_router_id: Optional[str] = None,
-             virtual_border_router_name: Optional[str] = None,
-             vlan_id: Optional[int] = None,
-             vlan_interface_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_point_id is None and 'accessPointId' in kwargs:
-            access_point_id = kwargs['accessPointId']
-        if access_point_id is None:
-            raise TypeError("Missing 'access_point_id' argument")
-        if activation_time is None and 'activationTime' in kwargs:
-            activation_time = kwargs['activationTime']
-        if activation_time is None:
-            raise TypeError("Missing 'activation_time' argument")
-        if circuit_code is None and 'circuitCode' in kwargs:
-            circuit_code = kwargs['circuitCode']
-        if circuit_code is None:
-            raise TypeError("Missing 'circuit_code' argument")
-        if cloud_box_instance_id is None and 'cloudBoxInstanceId' in kwargs:
-            cloud_box_instance_id = kwargs['cloudBoxInstanceId']
-        if cloud_box_instance_id is None:
-            raise TypeError("Missing 'cloud_box_instance_id' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if detect_multiplier is None and 'detectMultiplier' in kwargs:
-            detect_multiplier = kwargs['detectMultiplier']
-        if detect_multiplier is None:
-            raise TypeError("Missing 'detect_multiplier' argument")
-        if ecc_id is None and 'eccId' in kwargs:
-            ecc_id = kwargs['eccId']
-        if ecc_id is None:
-            raise TypeError("Missing 'ecc_id' argument")
-        if enable_ipv6 is None and 'enableIpv6' in kwargs:
-            enable_ipv6 = kwargs['enableIpv6']
-        if enable_ipv6 is None:
-            raise TypeError("Missing 'enable_ipv6' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if local_gateway_ip is None and 'localGatewayIp' in kwargs:
-            local_gateway_ip = kwargs['localGatewayIp']
-        if local_gateway_ip is None:
-            raise TypeError("Missing 'local_gateway_ip' argument")
-        if local_ipv6_gateway_ip is None and 'localIpv6GatewayIp' in kwargs:
-            local_ipv6_gateway_ip = kwargs['localIpv6GatewayIp']
-        if local_ipv6_gateway_ip is None:
-            raise TypeError("Missing 'local_ipv6_gateway_ip' argument")
-        if min_rx_interval is None and 'minRxInterval' in kwargs:
-            min_rx_interval = kwargs['minRxInterval']
-        if min_rx_interval is None:
-            raise TypeError("Missing 'min_rx_interval' argument")
-        if min_tx_interval is None and 'minTxInterval' in kwargs:
-            min_tx_interval = kwargs['minTxInterval']
-        if min_tx_interval is None:
-            raise TypeError("Missing 'min_tx_interval' argument")
-        if payment_vbr_expire_time is None and 'paymentVbrExpireTime' in kwargs:
-            payment_vbr_expire_time = kwargs['paymentVbrExpireTime']
-        if payment_vbr_expire_time is None:
-            raise TypeError("Missing 'payment_vbr_expire_time' argument")
-        if peer_gateway_ip is None and 'peerGatewayIp' in kwargs:
-            peer_gateway_ip = kwargs['peerGatewayIp']
-        if peer_gateway_ip is None:
-            raise TypeError("Missing 'peer_gateway_ip' argument")
-        if peer_ipv6_gateway_ip is None and 'peerIpv6GatewayIp' in kwargs:
-            peer_ipv6_gateway_ip = kwargs['peerIpv6GatewayIp']
-        if peer_ipv6_gateway_ip is None:
-            raise TypeError("Missing 'peer_ipv6_gateway_ip' argument")
-        if peering_ipv6_subnet_mask is None and 'peeringIpv6SubnetMask' in kwargs:
-            peering_ipv6_subnet_mask = kwargs['peeringIpv6SubnetMask']
-        if peering_ipv6_subnet_mask is None:
-            raise TypeError("Missing 'peering_ipv6_subnet_mask' argument")
-        if peering_subnet_mask is None and 'peeringSubnetMask' in kwargs:
-            peering_subnet_mask = kwargs['peeringSubnetMask']
-        if peering_subnet_mask is None:
-            raise TypeError("Missing 'peering_subnet_mask' argument")
-        if physical_connection_business_status is None and 'physicalConnectionBusinessStatus' in kwargs:
-            physical_connection_business_status = kwargs['physicalConnectionBusinessStatus']
-        if physical_connection_business_status is None:
-            raise TypeError("Missing 'physical_connection_business_status' argument")
-        if physical_connection_id is None and 'physicalConnectionId' in kwargs:
-            physical_connection_id = kwargs['physicalConnectionId']
-        if physical_connection_id is None:
-            raise TypeError("Missing 'physical_connection_id' argument")
-        if physical_connection_owner_uid is None and 'physicalConnectionOwnerUid' in kwargs:
-            physical_connection_owner_uid = kwargs['physicalConnectionOwnerUid']
-        if physical_connection_owner_uid is None:
-            raise TypeError("Missing 'physical_connection_owner_uid' argument")
-        if physical_connection_status is None and 'physicalConnectionStatus' in kwargs:
-            physical_connection_status = kwargs['physicalConnectionStatus']
-        if physical_connection_status is None:
-            raise TypeError("Missing 'physical_connection_status' argument")
-        if recovery_time is None and 'recoveryTime' in kwargs:
-            recovery_time = kwargs['recoveryTime']
-        if recovery_time is None:
-            raise TypeError("Missing 'recovery_time' argument")
-        if route_table_id is None and 'routeTableId' in kwargs:
-            route_table_id = kwargs['routeTableId']
-        if route_table_id is None:
-            raise TypeError("Missing 'route_table_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if termination_time is None and 'terminationTime' in kwargs:
-            termination_time = kwargs['terminationTime']
-        if termination_time is None:
-            raise TypeError("Missing 'termination_time' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if virtual_border_router_id is None and 'virtualBorderRouterId' in kwargs:
-            virtual_border_router_id = kwargs['virtualBorderRouterId']
-        if virtual_border_router_id is None:
-            raise TypeError("Missing 'virtual_border_router_id' argument")
-        if virtual_border_router_name is None and 'virtualBorderRouterName' in kwargs:
-            virtual_border_router_name = kwargs['virtualBorderRouterName']
-        if virtual_border_router_name is None:
-            raise TypeError("Missing 'virtual_border_router_name' argument")
-        if vlan_id is None and 'vlanId' in kwargs:
-            vlan_id = kwargs['vlanId']
-        if vlan_id is None:
-            raise TypeError("Missing 'vlan_id' argument")
-        if vlan_interface_id is None and 'vlanInterfaceId' in kwargs:
-            vlan_interface_id = kwargs['vlanInterfaceId']
-        if vlan_interface_id is None:
-            raise TypeError("Missing 'vlan_interface_id' argument")
-
-        _setter("access_point_id", access_point_id)
-        _setter("activation_time", activation_time)
-        _setter("circuit_code", circuit_code)
-        _setter("cloud_box_instance_id", cloud_box_instance_id)
-        _setter("create_time", create_time)
-        _setter("description", description)
-        _setter("detect_multiplier", detect_multiplier)
-        _setter("ecc_id", ecc_id)
-        _setter("enable_ipv6", enable_ipv6)
-        _setter("id", id)
-        _setter("local_gateway_ip", local_gateway_ip)
-        _setter("local_ipv6_gateway_ip", local_ipv6_gateway_ip)
-        _setter("min_rx_interval", min_rx_interval)
-        _setter("min_tx_interval", min_tx_interval)
-        _setter("payment_vbr_expire_time", payment_vbr_expire_time)
-        _setter("peer_gateway_ip", peer_gateway_ip)
-        _setter("peer_ipv6_gateway_ip", peer_ipv6_gateway_ip)
-        _setter("peering_ipv6_subnet_mask", peering_ipv6_subnet_mask)
-        _setter("peering_subnet_mask", peering_subnet_mask)
-        _setter("physical_connection_business_status", physical_connection_business_status)
-        _setter("physical_connection_id", physical_connection_id)
-        _setter("physical_connection_owner_uid", physical_connection_owner_uid)
-        _setter("physical_connection_status", physical_connection_status)
-        _setter("recovery_time", recovery_time)
-        _setter("route_table_id", route_table_id)
-        _setter("status", status)
-        _setter("termination_time", termination_time)
-        _setter("type", type)
-        _setter("virtual_border_router_id", virtual_border_router_id)
-        _setter("virtual_border_router_name", virtual_border_router_name)
-        _setter("vlan_id", vlan_id)
-        _setter("vlan_interface_id", vlan_interface_id)
+        pulumi.set(__self__, "access_point_id", access_point_id)
+        pulumi.set(__self__, "activation_time", activation_time)
+        pulumi.set(__self__, "circuit_code", circuit_code)
+        pulumi.set(__self__, "cloud_box_instance_id", cloud_box_instance_id)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "detect_multiplier", detect_multiplier)
+        pulumi.set(__self__, "ecc_id", ecc_id)
+        pulumi.set(__self__, "enable_ipv6", enable_ipv6)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "local_gateway_ip", local_gateway_ip)
+        pulumi.set(__self__, "local_ipv6_gateway_ip", local_ipv6_gateway_ip)
+        pulumi.set(__self__, "min_rx_interval", min_rx_interval)
+        pulumi.set(__self__, "min_tx_interval", min_tx_interval)
+        pulumi.set(__self__, "payment_vbr_expire_time", payment_vbr_expire_time)
+        pulumi.set(__self__, "peer_gateway_ip", peer_gateway_ip)
+        pulumi.set(__self__, "peer_ipv6_gateway_ip", peer_ipv6_gateway_ip)
+        pulumi.set(__self__, "peering_ipv6_subnet_mask", peering_ipv6_subnet_mask)
+        pulumi.set(__self__, "peering_subnet_mask", peering_subnet_mask)
+        pulumi.set(__self__, "physical_connection_business_status", physical_connection_business_status)
+        pulumi.set(__self__, "physical_connection_id", physical_connection_id)
+        pulumi.set(__self__, "physical_connection_owner_uid", physical_connection_owner_uid)
+        pulumi.set(__self__, "physical_connection_status", physical_connection_status)
+        pulumi.set(__self__, "recovery_time", recovery_time)
+        pulumi.set(__self__, "route_table_id", route_table_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "termination_time", termination_time)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "virtual_border_router_id", virtual_border_router_id)
+        pulumi.set(__self__, "virtual_border_router_name", virtual_border_router_name)
+        pulumi.set(__self__, "vlan_id", vlan_id)
+        pulumi.set(__self__, "vlan_interface_id", vlan_interface_id)
 
     @property
     @pulumi.getter(name="accessPointId")
@@ -2355,201 +1564,34 @@ class GetVirtualPhysicalConnectionsConnectionResult(dict):
         :param int vlan_id: The VLAN ID of the shared leased line.
         :param str vpconn_ali_uid: The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
         """
-        GetVirtualPhysicalConnectionsConnectionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_point_id=access_point_id,
-            ad_location=ad_location,
-            bandwidth=bandwidth,
-            business_status=business_status,
-            circuit_code=circuit_code,
-            create_time=create_time,
-            description=description,
-            enabled_time=enabled_time,
-            end_time=end_time,
-            expect_spec=expect_spec,
-            id=id,
-            line_operator=line_operator,
-            loa_status=loa_status,
-            order_mode=order_mode,
-            parent_physical_connection_ali_uid=parent_physical_connection_ali_uid,
-            parent_physical_connection_id=parent_physical_connection_id,
-            peer_location=peer_location,
-            port_number=port_number,
-            port_type=port_type,
-            redundant_physical_connection_id=redundant_physical_connection_id,
-            resource_group_id=resource_group_id,
-            spec=spec,
-            status=status,
-            virtual_physical_connection_id=virtual_physical_connection_id,
-            virtual_physical_connection_name=virtual_physical_connection_name,
-            virtual_physical_connection_status=virtual_physical_connection_status,
-            vlan_id=vlan_id,
-            vpconn_ali_uid=vpconn_ali_uid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_point_id: Optional[str] = None,
-             ad_location: Optional[str] = None,
-             bandwidth: Optional[str] = None,
-             business_status: Optional[str] = None,
-             circuit_code: Optional[str] = None,
-             create_time: Optional[str] = None,
-             description: Optional[str] = None,
-             enabled_time: Optional[str] = None,
-             end_time: Optional[str] = None,
-             expect_spec: Optional[str] = None,
-             id: Optional[str] = None,
-             line_operator: Optional[str] = None,
-             loa_status: Optional[str] = None,
-             order_mode: Optional[str] = None,
-             parent_physical_connection_ali_uid: Optional[str] = None,
-             parent_physical_connection_id: Optional[str] = None,
-             peer_location: Optional[str] = None,
-             port_number: Optional[str] = None,
-             port_type: Optional[str] = None,
-             redundant_physical_connection_id: Optional[str] = None,
-             resource_group_id: Optional[str] = None,
-             spec: Optional[str] = None,
-             status: Optional[str] = None,
-             virtual_physical_connection_id: Optional[str] = None,
-             virtual_physical_connection_name: Optional[str] = None,
-             virtual_physical_connection_status: Optional[str] = None,
-             vlan_id: Optional[int] = None,
-             vpconn_ali_uid: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_point_id is None and 'accessPointId' in kwargs:
-            access_point_id = kwargs['accessPointId']
-        if access_point_id is None:
-            raise TypeError("Missing 'access_point_id' argument")
-        if ad_location is None and 'adLocation' in kwargs:
-            ad_location = kwargs['adLocation']
-        if ad_location is None:
-            raise TypeError("Missing 'ad_location' argument")
-        if bandwidth is None:
-            raise TypeError("Missing 'bandwidth' argument")
-        if business_status is None and 'businessStatus' in kwargs:
-            business_status = kwargs['businessStatus']
-        if business_status is None:
-            raise TypeError("Missing 'business_status' argument")
-        if circuit_code is None and 'circuitCode' in kwargs:
-            circuit_code = kwargs['circuitCode']
-        if circuit_code is None:
-            raise TypeError("Missing 'circuit_code' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if enabled_time is None and 'enabledTime' in kwargs:
-            enabled_time = kwargs['enabledTime']
-        if enabled_time is None:
-            raise TypeError("Missing 'enabled_time' argument")
-        if end_time is None and 'endTime' in kwargs:
-            end_time = kwargs['endTime']
-        if end_time is None:
-            raise TypeError("Missing 'end_time' argument")
-        if expect_spec is None and 'expectSpec' in kwargs:
-            expect_spec = kwargs['expectSpec']
-        if expect_spec is None:
-            raise TypeError("Missing 'expect_spec' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if line_operator is None and 'lineOperator' in kwargs:
-            line_operator = kwargs['lineOperator']
-        if line_operator is None:
-            raise TypeError("Missing 'line_operator' argument")
-        if loa_status is None and 'loaStatus' in kwargs:
-            loa_status = kwargs['loaStatus']
-        if loa_status is None:
-            raise TypeError("Missing 'loa_status' argument")
-        if order_mode is None and 'orderMode' in kwargs:
-            order_mode = kwargs['orderMode']
-        if order_mode is None:
-            raise TypeError("Missing 'order_mode' argument")
-        if parent_physical_connection_ali_uid is None and 'parentPhysicalConnectionAliUid' in kwargs:
-            parent_physical_connection_ali_uid = kwargs['parentPhysicalConnectionAliUid']
-        if parent_physical_connection_ali_uid is None:
-            raise TypeError("Missing 'parent_physical_connection_ali_uid' argument")
-        if parent_physical_connection_id is None and 'parentPhysicalConnectionId' in kwargs:
-            parent_physical_connection_id = kwargs['parentPhysicalConnectionId']
-        if parent_physical_connection_id is None:
-            raise TypeError("Missing 'parent_physical_connection_id' argument")
-        if peer_location is None and 'peerLocation' in kwargs:
-            peer_location = kwargs['peerLocation']
-        if peer_location is None:
-            raise TypeError("Missing 'peer_location' argument")
-        if port_number is None and 'portNumber' in kwargs:
-            port_number = kwargs['portNumber']
-        if port_number is None:
-            raise TypeError("Missing 'port_number' argument")
-        if port_type is None and 'portType' in kwargs:
-            port_type = kwargs['portType']
-        if port_type is None:
-            raise TypeError("Missing 'port_type' argument")
-        if redundant_physical_connection_id is None and 'redundantPhysicalConnectionId' in kwargs:
-            redundant_physical_connection_id = kwargs['redundantPhysicalConnectionId']
-        if redundant_physical_connection_id is None:
-            raise TypeError("Missing 'redundant_physical_connection_id' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if spec is None:
-            raise TypeError("Missing 'spec' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if virtual_physical_connection_id is None and 'virtualPhysicalConnectionId' in kwargs:
-            virtual_physical_connection_id = kwargs['virtualPhysicalConnectionId']
-        if virtual_physical_connection_id is None:
-            raise TypeError("Missing 'virtual_physical_connection_id' argument")
-        if virtual_physical_connection_name is None and 'virtualPhysicalConnectionName' in kwargs:
-            virtual_physical_connection_name = kwargs['virtualPhysicalConnectionName']
-        if virtual_physical_connection_name is None:
-            raise TypeError("Missing 'virtual_physical_connection_name' argument")
-        if virtual_physical_connection_status is None and 'virtualPhysicalConnectionStatus' in kwargs:
-            virtual_physical_connection_status = kwargs['virtualPhysicalConnectionStatus']
-        if virtual_physical_connection_status is None:
-            raise TypeError("Missing 'virtual_physical_connection_status' argument")
-        if vlan_id is None and 'vlanId' in kwargs:
-            vlan_id = kwargs['vlanId']
-        if vlan_id is None:
-            raise TypeError("Missing 'vlan_id' argument")
-        if vpconn_ali_uid is None and 'vpconnAliUid' in kwargs:
-            vpconn_ali_uid = kwargs['vpconnAliUid']
-        if vpconn_ali_uid is None:
-            raise TypeError("Missing 'vpconn_ali_uid' argument")
-
-        _setter("access_point_id", access_point_id)
-        _setter("ad_location", ad_location)
-        _setter("bandwidth", bandwidth)
-        _setter("business_status", business_status)
-        _setter("circuit_code", circuit_code)
-        _setter("create_time", create_time)
-        _setter("description", description)
-        _setter("enabled_time", enabled_time)
-        _setter("end_time", end_time)
-        _setter("expect_spec", expect_spec)
-        _setter("id", id)
-        _setter("line_operator", line_operator)
-        _setter("loa_status", loa_status)
-        _setter("order_mode", order_mode)
-        _setter("parent_physical_connection_ali_uid", parent_physical_connection_ali_uid)
-        _setter("parent_physical_connection_id", parent_physical_connection_id)
-        _setter("peer_location", peer_location)
-        _setter("port_number", port_number)
-        _setter("port_type", port_type)
-        _setter("redundant_physical_connection_id", redundant_physical_connection_id)
-        _setter("resource_group_id", resource_group_id)
-        _setter("spec", spec)
-        _setter("status", status)
-        _setter("virtual_physical_connection_id", virtual_physical_connection_id)
-        _setter("virtual_physical_connection_name", virtual_physical_connection_name)
-        _setter("virtual_physical_connection_status", virtual_physical_connection_status)
-        _setter("vlan_id", vlan_id)
-        _setter("vpconn_ali_uid", vpconn_ali_uid)
+        pulumi.set(__self__, "access_point_id", access_point_id)
+        pulumi.set(__self__, "ad_location", ad_location)
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "business_status", business_status)
+        pulumi.set(__self__, "circuit_code", circuit_code)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "enabled_time", enabled_time)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "expect_spec", expect_spec)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "line_operator", line_operator)
+        pulumi.set(__self__, "loa_status", loa_status)
+        pulumi.set(__self__, "order_mode", order_mode)
+        pulumi.set(__self__, "parent_physical_connection_ali_uid", parent_physical_connection_ali_uid)
+        pulumi.set(__self__, "parent_physical_connection_id", parent_physical_connection_id)
+        pulumi.set(__self__, "peer_location", peer_location)
+        pulumi.set(__self__, "port_number", port_number)
+        pulumi.set(__self__, "port_type", port_type)
+        pulumi.set(__self__, "redundant_physical_connection_id", redundant_physical_connection_id)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "spec", spec)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "virtual_physical_connection_id", virtual_physical_connection_id)
+        pulumi.set(__self__, "virtual_physical_connection_name", virtual_physical_connection_name)
+        pulumi.set(__self__, "virtual_physical_connection_status", virtual_physical_connection_status)
+        pulumi.set(__self__, "vlan_id", vlan_id)
+        pulumi.set(__self__, "vpconn_ali_uid", vpconn_ali_uid)
 
     @property
     @pulumi.getter(name="accessPointId")

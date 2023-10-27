@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -52,33 +52,12 @@ class InstanceSlbConnAddr(dict):
         :param str conn_addr_port: The number of the port over which Phoenix connects to the instance.
         :param str net_type: The type of the network. Valid values:
         """
-        InstanceSlbConnAddr._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            conn_addr=conn_addr,
-            conn_addr_port=conn_addr_port,
-            net_type=net_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             conn_addr: Optional[str] = None,
-             conn_addr_port: Optional[str] = None,
-             net_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if conn_addr is None and 'connAddr' in kwargs:
-            conn_addr = kwargs['connAddr']
-        if conn_addr_port is None and 'connAddrPort' in kwargs:
-            conn_addr_port = kwargs['connAddrPort']
-        if net_type is None and 'netType' in kwargs:
-            net_type = kwargs['netType']
-
         if conn_addr is not None:
-            _setter("conn_addr", conn_addr)
+            pulumi.set(__self__, "conn_addr", conn_addr)
         if conn_addr_port is not None:
-            _setter("conn_addr_port", conn_addr_port)
+            pulumi.set(__self__, "conn_addr_port", conn_addr_port)
         if net_type is not None:
-            _setter("net_type", net_type)
+            pulumi.set(__self__, "net_type", net_type)
 
     @property
     @pulumi.getter(name="connAddr")
@@ -137,33 +116,12 @@ class InstanceUiProxyConnAddr(dict):
         :param str conn_addr_port: The number of the port over which Phoenix connects to the instance.
         :param str net_type: The type of the network. Valid values:
         """
-        InstanceUiProxyConnAddr._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            conn_addr=conn_addr,
-            conn_addr_port=conn_addr_port,
-            net_type=net_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             conn_addr: Optional[str] = None,
-             conn_addr_port: Optional[str] = None,
-             net_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if conn_addr is None and 'connAddr' in kwargs:
-            conn_addr = kwargs['connAddr']
-        if conn_addr_port is None and 'connAddrPort' in kwargs:
-            conn_addr_port = kwargs['connAddrPort']
-        if net_type is None and 'netType' in kwargs:
-            net_type = kwargs['netType']
-
         if conn_addr is not None:
-            _setter("conn_addr", conn_addr)
+            pulumi.set(__self__, "conn_addr", conn_addr)
         if conn_addr_port is not None:
-            _setter("conn_addr_port", conn_addr_port)
+            pulumi.set(__self__, "conn_addr_port", conn_addr_port)
         if net_type is not None:
-            _setter("net_type", net_type)
+            pulumi.set(__self__, "net_type", net_type)
 
     @property
     @pulumi.getter(name="connAddr")
@@ -222,33 +180,12 @@ class InstanceZkConnAddr(dict):
         :param str conn_addr_port: The number of the port over which Phoenix connects to the instance.
         :param str net_type: The type of the network. Valid values:
         """
-        InstanceZkConnAddr._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            conn_addr=conn_addr,
-            conn_addr_port=conn_addr_port,
-            net_type=net_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             conn_addr: Optional[str] = None,
-             conn_addr_port: Optional[str] = None,
-             net_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if conn_addr is None and 'connAddr' in kwargs:
-            conn_addr = kwargs['connAddr']
-        if conn_addr_port is None and 'connAddrPort' in kwargs:
-            conn_addr_port = kwargs['connAddrPort']
-        if net_type is None and 'netType' in kwargs:
-            net_type = kwargs['netType']
-
         if conn_addr is not None:
-            _setter("conn_addr", conn_addr)
+            pulumi.set(__self__, "conn_addr", conn_addr)
         if conn_addr_port is not None:
-            _setter("conn_addr_port", conn_addr_port)
+            pulumi.set(__self__, "conn_addr_port", conn_addr_port)
         if net_type is not None:
-            _setter("net_type", net_type)
+            pulumi.set(__self__, "net_type", net_type)
 
     @property
     @pulumi.getter(name="connAddr")
@@ -298,70 +235,15 @@ class GetInstanceTypesCoreInstanceTypeResult(dict):
         :param str version: The engine version, singlehbase/hbase=1.1/2.0, bds=1.0.
         :param str zone: Name of zone id.
         """
-        GetInstanceTypesCoreInstanceTypeResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            category=category,
-            cpu_size=cpu_size,
-            engine=engine,
-            instance_type=instance_type,
-            max_core_count=max_core_count,
-            mem_size=mem_size,
-            storage_type=storage_type,
-            version=version,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             category: Optional[str] = None,
-             cpu_size: Optional[int] = None,
-             engine: Optional[str] = None,
-             instance_type: Optional[str] = None,
-             max_core_count: Optional[int] = None,
-             mem_size: Optional[int] = None,
-             storage_type: Optional[str] = None,
-             version: Optional[str] = None,
-             zone: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if category is None:
-            raise TypeError("Missing 'category' argument")
-        if cpu_size is None and 'cpuSize' in kwargs:
-            cpu_size = kwargs['cpuSize']
-        if cpu_size is None:
-            raise TypeError("Missing 'cpu_size' argument")
-        if engine is None:
-            raise TypeError("Missing 'engine' argument")
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if instance_type is None:
-            raise TypeError("Missing 'instance_type' argument")
-        if max_core_count is None and 'maxCoreCount' in kwargs:
-            max_core_count = kwargs['maxCoreCount']
-        if max_core_count is None:
-            raise TypeError("Missing 'max_core_count' argument")
-        if mem_size is None and 'memSize' in kwargs:
-            mem_size = kwargs['memSize']
-        if mem_size is None:
-            raise TypeError("Missing 'mem_size' argument")
-        if storage_type is None and 'storageType' in kwargs:
-            storage_type = kwargs['storageType']
-        if storage_type is None:
-            raise TypeError("Missing 'storage_type' argument")
-        if version is None:
-            raise TypeError("Missing 'version' argument")
-        if zone is None:
-            raise TypeError("Missing 'zone' argument")
-
-        _setter("category", category)
-        _setter("cpu_size", cpu_size)
-        _setter("engine", engine)
-        _setter("instance_type", instance_type)
-        _setter("max_core_count", max_core_count)
-        _setter("mem_size", mem_size)
-        _setter("storage_type", storage_type)
-        _setter("version", version)
-        _setter("zone", zone)
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "cpu_size", cpu_size)
+        pulumi.set(__self__, "engine", engine)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "max_core_count", max_core_count)
+        pulumi.set(__self__, "mem_size", mem_size)
+        pulumi.set(__self__, "storage_type", storage_type)
+        pulumi.set(__self__, "version", version)
+        pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter
@@ -447,36 +329,9 @@ class GetInstanceTypesMasterInstanceTypeResult(dict):
         :param str instance_type: The hbase instance type of create hbase cluster instance.
         :param int mem_size: Mem size of the instance type.
         """
-        GetInstanceTypesMasterInstanceTypeResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cpu_size=cpu_size,
-            instance_type=instance_type,
-            mem_size=mem_size,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cpu_size: Optional[int] = None,
-             instance_type: Optional[str] = None,
-             mem_size: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cpu_size is None and 'cpuSize' in kwargs:
-            cpu_size = kwargs['cpuSize']
-        if cpu_size is None:
-            raise TypeError("Missing 'cpu_size' argument")
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if instance_type is None:
-            raise TypeError("Missing 'instance_type' argument")
-        if mem_size is None and 'memSize' in kwargs:
-            mem_size = kwargs['memSize']
-        if mem_size is None:
-            raise TypeError("Missing 'mem_size' argument")
-
-        _setter("cpu_size", cpu_size)
-        _setter("instance_type", instance_type)
-        _setter("mem_size", mem_size)
+        pulumi.set(__self__, "cpu_size", cpu_size)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "mem_size", mem_size)
 
     @property
     @pulumi.getter(name="cpuSize")
@@ -514,34 +369,9 @@ class GetInstanceTypesTypeResult(dict):
         :param int mem_size: Mem size of the instance type.
         :param str value: Name of the instance type.
         """
-        GetInstanceTypesTypeResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cpu_size=cpu_size,
-            mem_size=mem_size,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cpu_size: Optional[int] = None,
-             mem_size: Optional[int] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cpu_size is None and 'cpuSize' in kwargs:
-            cpu_size = kwargs['cpuSize']
-        if cpu_size is None:
-            raise TypeError("Missing 'cpu_size' argument")
-        if mem_size is None and 'memSize' in kwargs:
-            mem_size = kwargs['memSize']
-        if mem_size is None:
-            raise TypeError("Missing 'mem_size' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("cpu_size", cpu_size)
-        _setter("mem_size", mem_size)
-        _setter("value", value)
+        pulumi.set(__self__, "cpu_size", cpu_size)
+        pulumi.set(__self__, "mem_size", mem_size)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter(name="cpuSize")
@@ -617,158 +447,29 @@ class GetInstancesInstanceResult(dict):
         :param str zone_id: Zone ID the instance belongs to.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
-        GetInstancesInstanceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            backup_status=backup_status,
-            core_disk_size=core_disk_size,
-            core_disk_type=core_disk_type,
-            core_instance_type=core_instance_type,
-            core_node_count=core_node_count,
-            created_time=created_time,
-            deletion_protection=deletion_protection,
-            engine=engine,
-            engine_version=engine_version,
-            expire_time=expire_time,
-            id=id,
-            master_instance_type=master_instance_type,
-            master_node_count=master_node_count,
-            name=name,
-            network_type=network_type,
-            pay_type=pay_type,
-            region_id=region_id,
-            status=status,
-            vpc_id=vpc_id,
-            vswitch_id=vswitch_id,
-            zone_id=zone_id,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             backup_status: Optional[str] = None,
-             core_disk_size: Optional[int] = None,
-             core_disk_type: Optional[str] = None,
-             core_instance_type: Optional[str] = None,
-             core_node_count: Optional[int] = None,
-             created_time: Optional[str] = None,
-             deletion_protection: Optional[bool] = None,
-             engine: Optional[str] = None,
-             engine_version: Optional[str] = None,
-             expire_time: Optional[str] = None,
-             id: Optional[str] = None,
-             master_instance_type: Optional[str] = None,
-             master_node_count: Optional[int] = None,
-             name: Optional[str] = None,
-             network_type: Optional[str] = None,
-             pay_type: Optional[str] = None,
-             region_id: Optional[str] = None,
-             status: Optional[str] = None,
-             vpc_id: Optional[str] = None,
-             vswitch_id: Optional[str] = None,
-             zone_id: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if backup_status is None and 'backupStatus' in kwargs:
-            backup_status = kwargs['backupStatus']
-        if backup_status is None:
-            raise TypeError("Missing 'backup_status' argument")
-        if core_disk_size is None and 'coreDiskSize' in kwargs:
-            core_disk_size = kwargs['coreDiskSize']
-        if core_disk_size is None:
-            raise TypeError("Missing 'core_disk_size' argument")
-        if core_disk_type is None and 'coreDiskType' in kwargs:
-            core_disk_type = kwargs['coreDiskType']
-        if core_disk_type is None:
-            raise TypeError("Missing 'core_disk_type' argument")
-        if core_instance_type is None and 'coreInstanceType' in kwargs:
-            core_instance_type = kwargs['coreInstanceType']
-        if core_instance_type is None:
-            raise TypeError("Missing 'core_instance_type' argument")
-        if core_node_count is None and 'coreNodeCount' in kwargs:
-            core_node_count = kwargs['coreNodeCount']
-        if core_node_count is None:
-            raise TypeError("Missing 'core_node_count' argument")
-        if created_time is None and 'createdTime' in kwargs:
-            created_time = kwargs['createdTime']
-        if created_time is None:
-            raise TypeError("Missing 'created_time' argument")
-        if deletion_protection is None and 'deletionProtection' in kwargs:
-            deletion_protection = kwargs['deletionProtection']
-        if deletion_protection is None:
-            raise TypeError("Missing 'deletion_protection' argument")
-        if engine is None:
-            raise TypeError("Missing 'engine' argument")
-        if engine_version is None and 'engineVersion' in kwargs:
-            engine_version = kwargs['engineVersion']
-        if engine_version is None:
-            raise TypeError("Missing 'engine_version' argument")
-        if expire_time is None and 'expireTime' in kwargs:
-            expire_time = kwargs['expireTime']
-        if expire_time is None:
-            raise TypeError("Missing 'expire_time' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if master_instance_type is None and 'masterInstanceType' in kwargs:
-            master_instance_type = kwargs['masterInstanceType']
-        if master_instance_type is None:
-            raise TypeError("Missing 'master_instance_type' argument")
-        if master_node_count is None and 'masterNodeCount' in kwargs:
-            master_node_count = kwargs['masterNodeCount']
-        if master_node_count is None:
-            raise TypeError("Missing 'master_node_count' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if network_type is None and 'networkType' in kwargs:
-            network_type = kwargs['networkType']
-        if network_type is None:
-            raise TypeError("Missing 'network_type' argument")
-        if pay_type is None and 'payType' in kwargs:
-            pay_type = kwargs['payType']
-        if pay_type is None:
-            raise TypeError("Missing 'pay_type' argument")
-        if region_id is None and 'regionId' in kwargs:
-            region_id = kwargs['regionId']
-        if region_id is None:
-            raise TypeError("Missing 'region_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("backup_status", backup_status)
-        _setter("core_disk_size", core_disk_size)
-        _setter("core_disk_type", core_disk_type)
-        _setter("core_instance_type", core_instance_type)
-        _setter("core_node_count", core_node_count)
-        _setter("created_time", created_time)
-        _setter("deletion_protection", deletion_protection)
-        _setter("engine", engine)
-        _setter("engine_version", engine_version)
-        _setter("expire_time", expire_time)
-        _setter("id", id)
-        _setter("master_instance_type", master_instance_type)
-        _setter("master_node_count", master_node_count)
-        _setter("name", name)
-        _setter("network_type", network_type)
-        _setter("pay_type", pay_type)
-        _setter("region_id", region_id)
-        _setter("status", status)
-        _setter("vpc_id", vpc_id)
-        _setter("vswitch_id", vswitch_id)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "backup_status", backup_status)
+        pulumi.set(__self__, "core_disk_size", core_disk_size)
+        pulumi.set(__self__, "core_disk_type", core_disk_type)
+        pulumi.set(__self__, "core_instance_type", core_instance_type)
+        pulumi.set(__self__, "core_node_count", core_node_count)
+        pulumi.set(__self__, "created_time", created_time)
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
+        pulumi.set(__self__, "engine", engine)
+        pulumi.set(__self__, "engine_version", engine_version)
+        pulumi.set(__self__, "expire_time", expire_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "master_instance_type", master_instance_type)
+        pulumi.set(__self__, "master_node_count", master_node_count)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network_type", network_type)
+        pulumi.set(__self__, "pay_type", pay_type)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="backupStatus")
@@ -956,27 +657,8 @@ class GetZonesZoneResult(dict):
         :param str id: ID of the zone.
         :param Sequence[str] multi_zone_ids: A list of zone ids in which the multi zone. Removed from v1.99.0.
         """
-        GetZonesZoneResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            multi_zone_ids=multi_zone_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             multi_zone_ids: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if multi_zone_ids is None and 'multiZoneIds' in kwargs:
-            multi_zone_ids = kwargs['multiZoneIds']
-        if multi_zone_ids is None:
-            raise TypeError("Missing 'multi_zone_ids' argument")
-
-        _setter("id", id)
-        _setter("multi_zone_ids", multi_zone_ids)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "multi_zone_ids", multi_zone_ids)
 
     @property
     @pulumi.getter

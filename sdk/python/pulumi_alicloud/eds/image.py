@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ImageArgs', 'Image']
@@ -23,32 +23,11 @@ class ImageArgs:
         :param pulumi.Input[str] description: The description of the image.
         :param pulumi.Input[str] image_name: The name of the image.
         """
-        ImageArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            desktop_id=desktop_id,
-            description=description,
-            image_name=image_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             desktop_id: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             image_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if desktop_id is None and 'desktopId' in kwargs:
-            desktop_id = kwargs['desktopId']
-        if desktop_id is None:
-            raise TypeError("Missing 'desktop_id' argument")
-        if image_name is None and 'imageName' in kwargs:
-            image_name = kwargs['imageName']
-
-        _setter("desktop_id", desktop_id)
+        pulumi.set(__self__, "desktop_id", desktop_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if image_name is not None:
-            _setter("image_name", image_name)
+            pulumi.set(__self__, "image_name", image_name)
 
     @property
     @pulumi.getter(name="desktopId")
@@ -101,35 +80,14 @@ class _ImageState:
         :param pulumi.Input[str] image_name: The name of the image.
         :param pulumi.Input[str] status: The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
         """
-        _ImageState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            desktop_id=desktop_id,
-            image_name=image_name,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             desktop_id: Optional[pulumi.Input[str]] = None,
-             image_name: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if desktop_id is None and 'desktopId' in kwargs:
-            desktop_id = kwargs['desktopId']
-        if image_name is None and 'imageName' in kwargs:
-            image_name = kwargs['imageName']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if desktop_id is not None:
-            _setter("desktop_id", desktop_id)
+            pulumi.set(__self__, "desktop_id", desktop_id)
         if image_name is not None:
-            _setter("image_name", image_name)
+            pulumi.set(__self__, "image_name", image_name)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -337,10 +295,6 @@ class Image(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ImageArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

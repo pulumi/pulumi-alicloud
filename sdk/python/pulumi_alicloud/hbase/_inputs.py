@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -26,33 +26,12 @@ class InstanceSlbConnAddrArgs:
         :param pulumi.Input[str] conn_addr_port: The number of the port over which Phoenix connects to the instance.
         :param pulumi.Input[str] net_type: The type of the network. Valid values:
         """
-        InstanceSlbConnAddrArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            conn_addr=conn_addr,
-            conn_addr_port=conn_addr_port,
-            net_type=net_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             conn_addr: Optional[pulumi.Input[str]] = None,
-             conn_addr_port: Optional[pulumi.Input[str]] = None,
-             net_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if conn_addr is None and 'connAddr' in kwargs:
-            conn_addr = kwargs['connAddr']
-        if conn_addr_port is None and 'connAddrPort' in kwargs:
-            conn_addr_port = kwargs['connAddrPort']
-        if net_type is None and 'netType' in kwargs:
-            net_type = kwargs['netType']
-
         if conn_addr is not None:
-            _setter("conn_addr", conn_addr)
+            pulumi.set(__self__, "conn_addr", conn_addr)
         if conn_addr_port is not None:
-            _setter("conn_addr_port", conn_addr_port)
+            pulumi.set(__self__, "conn_addr_port", conn_addr_port)
         if net_type is not None:
-            _setter("net_type", net_type)
+            pulumi.set(__self__, "net_type", net_type)
 
     @property
     @pulumi.getter(name="connAddr")
@@ -102,33 +81,12 @@ class InstanceUiProxyConnAddrArgs:
         :param pulumi.Input[str] conn_addr_port: The number of the port over which Phoenix connects to the instance.
         :param pulumi.Input[str] net_type: The type of the network. Valid values:
         """
-        InstanceUiProxyConnAddrArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            conn_addr=conn_addr,
-            conn_addr_port=conn_addr_port,
-            net_type=net_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             conn_addr: Optional[pulumi.Input[str]] = None,
-             conn_addr_port: Optional[pulumi.Input[str]] = None,
-             net_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if conn_addr is None and 'connAddr' in kwargs:
-            conn_addr = kwargs['connAddr']
-        if conn_addr_port is None and 'connAddrPort' in kwargs:
-            conn_addr_port = kwargs['connAddrPort']
-        if net_type is None and 'netType' in kwargs:
-            net_type = kwargs['netType']
-
         if conn_addr is not None:
-            _setter("conn_addr", conn_addr)
+            pulumi.set(__self__, "conn_addr", conn_addr)
         if conn_addr_port is not None:
-            _setter("conn_addr_port", conn_addr_port)
+            pulumi.set(__self__, "conn_addr_port", conn_addr_port)
         if net_type is not None:
-            _setter("net_type", net_type)
+            pulumi.set(__self__, "net_type", net_type)
 
     @property
     @pulumi.getter(name="connAddr")
@@ -178,33 +136,12 @@ class InstanceZkConnAddrArgs:
         :param pulumi.Input[str] conn_addr_port: The number of the port over which Phoenix connects to the instance.
         :param pulumi.Input[str] net_type: The type of the network. Valid values:
         """
-        InstanceZkConnAddrArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            conn_addr=conn_addr,
-            conn_addr_port=conn_addr_port,
-            net_type=net_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             conn_addr: Optional[pulumi.Input[str]] = None,
-             conn_addr_port: Optional[pulumi.Input[str]] = None,
-             net_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if conn_addr is None and 'connAddr' in kwargs:
-            conn_addr = kwargs['connAddr']
-        if conn_addr_port is None and 'connAddrPort' in kwargs:
-            conn_addr_port = kwargs['connAddrPort']
-        if net_type is None and 'netType' in kwargs:
-            net_type = kwargs['netType']
-
         if conn_addr is not None:
-            _setter("conn_addr", conn_addr)
+            pulumi.set(__self__, "conn_addr", conn_addr)
         if conn_addr_port is not None:
-            _setter("conn_addr_port", conn_addr_port)
+            pulumi.set(__self__, "conn_addr_port", conn_addr_port)
         if net_type is not None:
-            _setter("net_type", net_type)
+            pulumi.set(__self__, "net_type", net_type)
 
     @property
     @pulumi.getter(name="connAddr")

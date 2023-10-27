@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,68 +39,21 @@ class PrometheusAlertRuleArgs:
         :param pulumi.Input[str] notify_type: The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
         :param pulumi.Input[str] type: The type of the alert rule.
         """
-        PrometheusAlertRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_id=cluster_id,
-            duration=duration,
-            expression=expression,
-            message=message,
-            prometheus_alert_rule_name=prometheus_alert_rule_name,
-            annotations=annotations,
-            dispatch_rule_id=dispatch_rule_id,
-            labels=labels,
-            notify_type=notify_type,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             duration: Optional[pulumi.Input[str]] = None,
-             expression: Optional[pulumi.Input[str]] = None,
-             message: Optional[pulumi.Input[str]] = None,
-             prometheus_alert_rule_name: Optional[pulumi.Input[str]] = None,
-             annotations: Optional[pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleAnnotationArgs']]]] = None,
-             dispatch_rule_id: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleLabelArgs']]]] = None,
-             notify_type: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cluster_id is None:
-            raise TypeError("Missing 'cluster_id' argument")
-        if duration is None:
-            raise TypeError("Missing 'duration' argument")
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if message is None:
-            raise TypeError("Missing 'message' argument")
-        if prometheus_alert_rule_name is None and 'prometheusAlertRuleName' in kwargs:
-            prometheus_alert_rule_name = kwargs['prometheusAlertRuleName']
-        if prometheus_alert_rule_name is None:
-            raise TypeError("Missing 'prometheus_alert_rule_name' argument")
-        if dispatch_rule_id is None and 'dispatchRuleId' in kwargs:
-            dispatch_rule_id = kwargs['dispatchRuleId']
-        if notify_type is None and 'notifyType' in kwargs:
-            notify_type = kwargs['notifyType']
-
-        _setter("cluster_id", cluster_id)
-        _setter("duration", duration)
-        _setter("expression", expression)
-        _setter("message", message)
-        _setter("prometheus_alert_rule_name", prometheus_alert_rule_name)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "prometheus_alert_rule_name", prometheus_alert_rule_name)
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if dispatch_rule_id is not None:
-            _setter("dispatch_rule_id", dispatch_rule_id)
+            pulumi.set(__self__, "dispatch_rule_id", dispatch_rule_id)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if notify_type is not None:
-            _setter("notify_type", notify_type)
+            pulumi.set(__self__, "notify_type", notify_type)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -253,73 +206,30 @@ class _PrometheusAlertRuleState:
         :param pulumi.Input[int] status: The status of the resource. Valid values: `0`, `1`.
         :param pulumi.Input[str] type: The type of the alert rule.
         """
-        _PrometheusAlertRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            annotations=annotations,
-            cluster_id=cluster_id,
-            dispatch_rule_id=dispatch_rule_id,
-            duration=duration,
-            expression=expression,
-            labels=labels,
-            message=message,
-            notify_type=notify_type,
-            prometheus_alert_rule_id=prometheus_alert_rule_id,
-            prometheus_alert_rule_name=prometheus_alert_rule_name,
-            status=status,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             annotations: Optional[pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleAnnotationArgs']]]] = None,
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             dispatch_rule_id: Optional[pulumi.Input[str]] = None,
-             duration: Optional[pulumi.Input[str]] = None,
-             expression: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleLabelArgs']]]] = None,
-             message: Optional[pulumi.Input[str]] = None,
-             notify_type: Optional[pulumi.Input[str]] = None,
-             prometheus_alert_rule_id: Optional[pulumi.Input[int]] = None,
-             prometheus_alert_rule_name: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[int]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if dispatch_rule_id is None and 'dispatchRuleId' in kwargs:
-            dispatch_rule_id = kwargs['dispatchRuleId']
-        if notify_type is None and 'notifyType' in kwargs:
-            notify_type = kwargs['notifyType']
-        if prometheus_alert_rule_id is None and 'prometheusAlertRuleId' in kwargs:
-            prometheus_alert_rule_id = kwargs['prometheusAlertRuleId']
-        if prometheus_alert_rule_name is None and 'prometheusAlertRuleName' in kwargs:
-            prometheus_alert_rule_name = kwargs['prometheusAlertRuleName']
-
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if cluster_id is not None:
-            _setter("cluster_id", cluster_id)
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if dispatch_rule_id is not None:
-            _setter("dispatch_rule_id", dispatch_rule_id)
+            pulumi.set(__self__, "dispatch_rule_id", dispatch_rule_id)
         if duration is not None:
-            _setter("duration", duration)
+            pulumi.set(__self__, "duration", duration)
         if expression is not None:
-            _setter("expression", expression)
+            pulumi.set(__self__, "expression", expression)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if message is not None:
-            _setter("message", message)
+            pulumi.set(__self__, "message", message)
         if notify_type is not None:
-            _setter("notify_type", notify_type)
+            pulumi.set(__self__, "notify_type", notify_type)
         if prometheus_alert_rule_id is not None:
-            _setter("prometheus_alert_rule_id", prometheus_alert_rule_id)
+            pulumi.set(__self__, "prometheus_alert_rule_id", prometheus_alert_rule_id)
         if prometheus_alert_rule_name is not None:
-            _setter("prometheus_alert_rule_name", prometheus_alert_rule_name)
+            pulumi.set(__self__, "prometheus_alert_rule_name", prometheus_alert_rule_name)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -541,10 +451,6 @@ class PrometheusAlertRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            PrometheusAlertRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

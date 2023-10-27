@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DomainGroupArgs', 'DomainGroup']
@@ -23,34 +23,15 @@ class DomainGroupArgs:
         :param pulumi.Input[str] group_name: The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
         :param pulumi.Input[str] lang: User language.
         """
-        DomainGroupArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            domain_group_name=domain_group_name,
-            group_name=group_name,
-            lang=lang,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             domain_group_name: Optional[pulumi.Input[str]] = None,
-             group_name: Optional[pulumi.Input[str]] = None,
-             lang: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if domain_group_name is None and 'domainGroupName' in kwargs:
-            domain_group_name = kwargs['domainGroupName']
-        if group_name is None and 'groupName' in kwargs:
-            group_name = kwargs['groupName']
-
         if domain_group_name is not None:
-            _setter("domain_group_name", domain_group_name)
+            pulumi.set(__self__, "domain_group_name", domain_group_name)
         if group_name is not None:
             warnings.warn("""Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""group_name is deprecated: Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.""")
         if group_name is not None:
-            _setter("group_name", group_name)
+            pulumi.set(__self__, "group_name", group_name)
         if lang is not None:
-            _setter("lang", lang)
+            pulumi.set(__self__, "lang", lang)
 
     @property
     @pulumi.getter(name="domainGroupName")
@@ -104,34 +85,15 @@ class _DomainGroupState:
         :param pulumi.Input[str] group_name: The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
         :param pulumi.Input[str] lang: User language.
         """
-        _DomainGroupState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            domain_group_name=domain_group_name,
-            group_name=group_name,
-            lang=lang,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             domain_group_name: Optional[pulumi.Input[str]] = None,
-             group_name: Optional[pulumi.Input[str]] = None,
-             lang: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if domain_group_name is None and 'domainGroupName' in kwargs:
-            domain_group_name = kwargs['domainGroupName']
-        if group_name is None and 'groupName' in kwargs:
-            group_name = kwargs['groupName']
-
         if domain_group_name is not None:
-            _setter("domain_group_name", domain_group_name)
+            pulumi.set(__self__, "domain_group_name", domain_group_name)
         if group_name is not None:
             warnings.warn("""Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""group_name is deprecated: Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.""")
         if group_name is not None:
-            _setter("group_name", group_name)
+            pulumi.set(__self__, "group_name", group_name)
         if lang is not None:
-            _setter("lang", lang)
+            pulumi.set(__self__, "lang", lang)
 
     @property
     @pulumi.getter(name="domainGroupName")
@@ -248,10 +210,6 @@ class DomainGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DomainGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

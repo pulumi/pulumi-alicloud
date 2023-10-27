@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AccountPrivilegeArgs', 'AccountPrivilege']
@@ -31,40 +31,11 @@ class AccountPrivilegeArgs:
                - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
                Default to "ReadOnly".
         """
-        AccountPrivilegeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_name=account_name,
-            db_names=db_names,
-            instance_id=instance_id,
-            privilege=privilege,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_name: Optional[pulumi.Input[str]] = None,
-             db_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             privilege: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_name is None and 'accountName' in kwargs:
-            account_name = kwargs['accountName']
-        if account_name is None:
-            raise TypeError("Missing 'account_name' argument")
-        if db_names is None and 'dbNames' in kwargs:
-            db_names = kwargs['dbNames']
-        if db_names is None:
-            raise TypeError("Missing 'db_names' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-
-        _setter("account_name", account_name)
-        _setter("db_names", db_names)
-        _setter("instance_id", instance_id)
+        pulumi.set(__self__, "account_name", account_name)
+        pulumi.set(__self__, "db_names", db_names)
+        pulumi.set(__self__, "instance_id", instance_id)
         if privilege is not None:
-            _setter("privilege", privilege)
+            pulumi.set(__self__, "privilege", privilege)
 
     @property
     @pulumi.getter(name="accountName")
@@ -141,37 +112,14 @@ class _AccountPrivilegeState:
                - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
                Default to "ReadOnly".
         """
-        _AccountPrivilegeState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_name=account_name,
-            db_names=db_names,
-            instance_id=instance_id,
-            privilege=privilege,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_name: Optional[pulumi.Input[str]] = None,
-             db_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             privilege: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_name is None and 'accountName' in kwargs:
-            account_name = kwargs['accountName']
-        if db_names is None and 'dbNames' in kwargs:
-            db_names = kwargs['dbNames']
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-
         if account_name is not None:
-            _setter("account_name", account_name)
+            pulumi.set(__self__, "account_name", account_name)
         if db_names is not None:
-            _setter("db_names", db_names)
+            pulumi.set(__self__, "db_names", db_names)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if privilege is not None:
-            _setter("privilege", privilege)
+            pulumi.set(__self__, "privilege", privilege)
 
     @property
     @pulumi.getter(name="accountName")
@@ -385,10 +333,6 @@ class AccountPrivilege(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AccountPrivilegeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

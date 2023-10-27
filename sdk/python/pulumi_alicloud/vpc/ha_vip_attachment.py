@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['HAVipAttachmentArgs', 'HAVipAttachment']
@@ -32,47 +32,18 @@ class HAVipAttachmentArgs:
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
-        HAVipAttachmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_id=instance_id,
-            force=force,
-            ha_vip_id=ha_vip_id,
-            havip_id=havip_id,
-            instance_type=instance_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_id: Optional[pulumi.Input[str]] = None,
-             force: Optional[pulumi.Input[bool]] = None,
-             ha_vip_id: Optional[pulumi.Input[str]] = None,
-             havip_id: Optional[pulumi.Input[str]] = None,
-             instance_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if ha_vip_id is None and 'haVipId' in kwargs:
-            ha_vip_id = kwargs['haVipId']
-        if havip_id is None and 'havipId' in kwargs:
-            havip_id = kwargs['havipId']
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-
-        _setter("instance_id", instance_id)
+        pulumi.set(__self__, "instance_id", instance_id)
         if force is not None:
-            _setter("force", force)
+            pulumi.set(__self__, "force", force)
         if ha_vip_id is not None:
-            _setter("ha_vip_id", ha_vip_id)
+            pulumi.set(__self__, "ha_vip_id", ha_vip_id)
         if havip_id is not None:
             warnings.warn("""Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""", DeprecationWarning)
             pulumi.log.warn("""havip_id is deprecated: Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""")
         if havip_id is not None:
-            _setter("havip_id", havip_id)
+            pulumi.set(__self__, "havip_id", havip_id)
         if instance_type is not None:
-            _setter("instance_type", instance_type)
+            pulumi.set(__self__, "instance_type", instance_type)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -166,50 +137,21 @@ class _HAVipAttachmentState:
                The following arguments will be discarded. Please use new fields as soon as possible:
         :param pulumi.Input[str] status: The status of the resource.
         """
-        _HAVipAttachmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            force=force,
-            ha_vip_id=ha_vip_id,
-            havip_id=havip_id,
-            instance_id=instance_id,
-            instance_type=instance_type,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             force: Optional[pulumi.Input[bool]] = None,
-             ha_vip_id: Optional[pulumi.Input[str]] = None,
-             havip_id: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             instance_type: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ha_vip_id is None and 'haVipId' in kwargs:
-            ha_vip_id = kwargs['haVipId']
-        if havip_id is None and 'havipId' in kwargs:
-            havip_id = kwargs['havipId']
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-
         if force is not None:
-            _setter("force", force)
+            pulumi.set(__self__, "force", force)
         if ha_vip_id is not None:
-            _setter("ha_vip_id", ha_vip_id)
+            pulumi.set(__self__, "ha_vip_id", ha_vip_id)
         if havip_id is not None:
             warnings.warn("""Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""", DeprecationWarning)
             pulumi.log.warn("""havip_id is deprecated: Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""")
         if havip_id is not None:
-            _setter("havip_id", havip_id)
+            pulumi.set(__self__, "havip_id", havip_id)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if instance_type is not None:
-            _setter("instance_type", instance_type)
+            pulumi.set(__self__, "instance_type", instance_type)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -446,10 +388,6 @@ class HAVipAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            HAVipAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

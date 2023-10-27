@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['VpcEndpointZoneArgs', 'VpcEndpointZone']
@@ -25,41 +25,12 @@ class VpcEndpointZoneArgs:
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[str] zone_id: The Zone Id.
         """
-        VpcEndpointZoneArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            endpoint_id=endpoint_id,
-            vswitch_id=vswitch_id,
-            dry_run=dry_run,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             endpoint_id: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if endpoint_id is None and 'endpointId' in kwargs:
-            endpoint_id = kwargs['endpointId']
-        if endpoint_id is None:
-            raise TypeError("Missing 'endpoint_id' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
-        _setter("endpoint_id", endpoint_id)
-        _setter("vswitch_id", vswitch_id)
+        pulumi.set(__self__, "endpoint_id", endpoint_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="endpointId")
@@ -126,43 +97,16 @@ class _VpcEndpointZoneState:
         :param pulumi.Input[str] vswitch_id: The VSwitch id.
         :param pulumi.Input[str] zone_id: The Zone Id.
         """
-        _VpcEndpointZoneState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dry_run=dry_run,
-            endpoint_id=endpoint_id,
-            status=status,
-            vswitch_id=vswitch_id,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             endpoint_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-        if endpoint_id is None and 'endpointId' in kwargs:
-            endpoint_id = kwargs['endpointId']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if endpoint_id is not None:
-            _setter("endpoint_id", endpoint_id)
+            pulumi.set(__self__, "endpoint_id", endpoint_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="dryRun")
@@ -380,10 +324,6 @@ class VpcEndpointZone(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            VpcEndpointZoneArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

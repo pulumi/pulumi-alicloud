@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -146,382 +146,147 @@ class InstanceArgs:
         :param pulumi.Input[str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[str] zone_id: The ID of the zone.
         """
-        InstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto_renew=auto_renew,
-            auto_renew_period=auto_renew_period,
-            auto_use_coupon=auto_use_coupon,
-            availability_zone=availability_zone,
-            backup_id=backup_id,
-            backup_periods=backup_periods,
-            backup_time=backup_time,
-            business_info=business_info,
-            capacity=capacity,
-            config=config,
-            connection_string_prefix=connection_string_prefix,
-            coupon_no=coupon_no,
-            db_instance_name=db_instance_name,
-            dedicated_host_group_id=dedicated_host_group_id,
-            dry_run=dry_run,
-            effective_time=effective_time,
-            enable_backup_log=enable_backup_log,
-            enable_public=enable_public,
-            encryption_key=encryption_key,
-            encryption_name=encryption_name,
-            engine_version=engine_version,
-            force_upgrade=force_upgrade,
-            global_instance=global_instance,
-            global_instance_id=global_instance_id,
-            instance_charge_type=instance_charge_type,
-            instance_class=instance_class,
-            instance_name=instance_name,
-            instance_release_protection=instance_release_protection,
-            instance_type=instance_type,
-            kms_encrypted_password=kms_encrypted_password,
-            kms_encryption_context=kms_encryption_context,
-            maintain_end_time=maintain_end_time,
-            maintain_start_time=maintain_start_time,
-            modify_mode=modify_mode,
-            node_type=node_type,
-            order_type=order_type,
-            parameters=parameters,
-            password=password,
-            payment_type=payment_type,
-            period=period,
-            port=port,
-            private_connection_port=private_connection_port,
-            private_connection_prefix=private_connection_prefix,
-            private_ip=private_ip,
-            resource_group_id=resource_group_id,
-            restore_time=restore_time,
-            role_arn=role_arn,
-            secondary_zone_id=secondary_zone_id,
-            security_group_id=security_group_id,
-            security_ip_group_attribute=security_ip_group_attribute,
-            security_ip_group_name=security_ip_group_name,
-            security_ips=security_ips,
-            shard_count=shard_count,
-            srcdb_instance_id=srcdb_instance_id,
-            ssl_enable=ssl_enable,
-            tags=tags,
-            tde_status=tde_status,
-            vpc_auth_mode=vpc_auth_mode,
-            vswitch_id=vswitch_id,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto_renew: Optional[pulumi.Input[bool]] = None,
-             auto_renew_period: Optional[pulumi.Input[int]] = None,
-             auto_use_coupon: Optional[pulumi.Input[bool]] = None,
-             availability_zone: Optional[pulumi.Input[str]] = None,
-             backup_id: Optional[pulumi.Input[str]] = None,
-             backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             backup_time: Optional[pulumi.Input[str]] = None,
-             business_info: Optional[pulumi.Input[str]] = None,
-             capacity: Optional[pulumi.Input[int]] = None,
-             config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             connection_string_prefix: Optional[pulumi.Input[str]] = None,
-             coupon_no: Optional[pulumi.Input[str]] = None,
-             db_instance_name: Optional[pulumi.Input[str]] = None,
-             dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             effective_time: Optional[pulumi.Input[str]] = None,
-             enable_backup_log: Optional[pulumi.Input[int]] = None,
-             enable_public: Optional[pulumi.Input[bool]] = None,
-             encryption_key: Optional[pulumi.Input[str]] = None,
-             encryption_name: Optional[pulumi.Input[str]] = None,
-             engine_version: Optional[pulumi.Input[str]] = None,
-             force_upgrade: Optional[pulumi.Input[bool]] = None,
-             global_instance: Optional[pulumi.Input[bool]] = None,
-             global_instance_id: Optional[pulumi.Input[str]] = None,
-             instance_charge_type: Optional[pulumi.Input[str]] = None,
-             instance_class: Optional[pulumi.Input[str]] = None,
-             instance_name: Optional[pulumi.Input[str]] = None,
-             instance_release_protection: Optional[pulumi.Input[bool]] = None,
-             instance_type: Optional[pulumi.Input[str]] = None,
-             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             maintain_end_time: Optional[pulumi.Input[str]] = None,
-             maintain_start_time: Optional[pulumi.Input[str]] = None,
-             modify_mode: Optional[pulumi.Input[int]] = None,
-             node_type: Optional[pulumi.Input[str]] = None,
-             order_type: Optional[pulumi.Input[str]] = None,
-             parameters: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[str]] = None,
-             port: Optional[pulumi.Input[int]] = None,
-             private_connection_port: Optional[pulumi.Input[str]] = None,
-             private_connection_prefix: Optional[pulumi.Input[str]] = None,
-             private_ip: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             restore_time: Optional[pulumi.Input[str]] = None,
-             role_arn: Optional[pulumi.Input[str]] = None,
-             secondary_zone_id: Optional[pulumi.Input[str]] = None,
-             security_group_id: Optional[pulumi.Input[str]] = None,
-             security_ip_group_attribute: Optional[pulumi.Input[str]] = None,
-             security_ip_group_name: Optional[pulumi.Input[str]] = None,
-             security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             shard_count: Optional[pulumi.Input[int]] = None,
-             srcdb_instance_id: Optional[pulumi.Input[str]] = None,
-             ssl_enable: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             tde_status: Optional[pulumi.Input[str]] = None,
-             vpc_auth_mode: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_renew is None and 'autoRenew' in kwargs:
-            auto_renew = kwargs['autoRenew']
-        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
-            auto_renew_period = kwargs['autoRenewPeriod']
-        if auto_use_coupon is None and 'autoUseCoupon' in kwargs:
-            auto_use_coupon = kwargs['autoUseCoupon']
-        if availability_zone is None and 'availabilityZone' in kwargs:
-            availability_zone = kwargs['availabilityZone']
-        if backup_id is None and 'backupId' in kwargs:
-            backup_id = kwargs['backupId']
-        if backup_periods is None and 'backupPeriods' in kwargs:
-            backup_periods = kwargs['backupPeriods']
-        if backup_time is None and 'backupTime' in kwargs:
-            backup_time = kwargs['backupTime']
-        if business_info is None and 'businessInfo' in kwargs:
-            business_info = kwargs['businessInfo']
-        if connection_string_prefix is None and 'connectionStringPrefix' in kwargs:
-            connection_string_prefix = kwargs['connectionStringPrefix']
-        if coupon_no is None and 'couponNo' in kwargs:
-            coupon_no = kwargs['couponNo']
-        if db_instance_name is None and 'dbInstanceName' in kwargs:
-            db_instance_name = kwargs['dbInstanceName']
-        if dedicated_host_group_id is None and 'dedicatedHostGroupId' in kwargs:
-            dedicated_host_group_id = kwargs['dedicatedHostGroupId']
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-        if effective_time is None and 'effectiveTime' in kwargs:
-            effective_time = kwargs['effectiveTime']
-        if enable_backup_log is None and 'enableBackupLog' in kwargs:
-            enable_backup_log = kwargs['enableBackupLog']
-        if enable_public is None and 'enablePublic' in kwargs:
-            enable_public = kwargs['enablePublic']
-        if encryption_key is None and 'encryptionKey' in kwargs:
-            encryption_key = kwargs['encryptionKey']
-        if encryption_name is None and 'encryptionName' in kwargs:
-            encryption_name = kwargs['encryptionName']
-        if engine_version is None and 'engineVersion' in kwargs:
-            engine_version = kwargs['engineVersion']
-        if force_upgrade is None and 'forceUpgrade' in kwargs:
-            force_upgrade = kwargs['forceUpgrade']
-        if global_instance is None and 'globalInstance' in kwargs:
-            global_instance = kwargs['globalInstance']
-        if global_instance_id is None and 'globalInstanceId' in kwargs:
-            global_instance_id = kwargs['globalInstanceId']
-        if instance_charge_type is None and 'instanceChargeType' in kwargs:
-            instance_charge_type = kwargs['instanceChargeType']
-        if instance_class is None and 'instanceClass' in kwargs:
-            instance_class = kwargs['instanceClass']
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_release_protection is None and 'instanceReleaseProtection' in kwargs:
-            instance_release_protection = kwargs['instanceReleaseProtection']
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if kms_encrypted_password is None and 'kmsEncryptedPassword' in kwargs:
-            kms_encrypted_password = kwargs['kmsEncryptedPassword']
-        if kms_encryption_context is None and 'kmsEncryptionContext' in kwargs:
-            kms_encryption_context = kwargs['kmsEncryptionContext']
-        if maintain_end_time is None and 'maintainEndTime' in kwargs:
-            maintain_end_time = kwargs['maintainEndTime']
-        if maintain_start_time is None and 'maintainStartTime' in kwargs:
-            maintain_start_time = kwargs['maintainStartTime']
-        if modify_mode is None and 'modifyMode' in kwargs:
-            modify_mode = kwargs['modifyMode']
-        if node_type is None and 'nodeType' in kwargs:
-            node_type = kwargs['nodeType']
-        if order_type is None and 'orderType' in kwargs:
-            order_type = kwargs['orderType']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if private_connection_port is None and 'privateConnectionPort' in kwargs:
-            private_connection_port = kwargs['privateConnectionPort']
-        if private_connection_prefix is None and 'privateConnectionPrefix' in kwargs:
-            private_connection_prefix = kwargs['privateConnectionPrefix']
-        if private_ip is None and 'privateIp' in kwargs:
-            private_ip = kwargs['privateIp']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if restore_time is None and 'restoreTime' in kwargs:
-            restore_time = kwargs['restoreTime']
-        if role_arn is None and 'roleArn' in kwargs:
-            role_arn = kwargs['roleArn']
-        if secondary_zone_id is None and 'secondaryZoneId' in kwargs:
-            secondary_zone_id = kwargs['secondaryZoneId']
-        if security_group_id is None and 'securityGroupId' in kwargs:
-            security_group_id = kwargs['securityGroupId']
-        if security_ip_group_attribute is None and 'securityIpGroupAttribute' in kwargs:
-            security_ip_group_attribute = kwargs['securityIpGroupAttribute']
-        if security_ip_group_name is None and 'securityIpGroupName' in kwargs:
-            security_ip_group_name = kwargs['securityIpGroupName']
-        if security_ips is None and 'securityIps' in kwargs:
-            security_ips = kwargs['securityIps']
-        if shard_count is None and 'shardCount' in kwargs:
-            shard_count = kwargs['shardCount']
-        if srcdb_instance_id is None and 'srcdbInstanceId' in kwargs:
-            srcdb_instance_id = kwargs['srcdbInstanceId']
-        if ssl_enable is None and 'sslEnable' in kwargs:
-            ssl_enable = kwargs['sslEnable']
-        if tde_status is None and 'tdeStatus' in kwargs:
-            tde_status = kwargs['tdeStatus']
-        if vpc_auth_mode is None and 'vpcAuthMode' in kwargs:
-            vpc_auth_mode = kwargs['vpcAuthMode']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if auto_renew is not None:
-            _setter("auto_renew", auto_renew)
+            pulumi.set(__self__, "auto_renew", auto_renew)
         if auto_renew_period is not None:
-            _setter("auto_renew_period", auto_renew_period)
+            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if auto_use_coupon is not None:
-            _setter("auto_use_coupon", auto_use_coupon)
+            pulumi.set(__self__, "auto_use_coupon", auto_use_coupon)
         if availability_zone is not None:
             warnings.warn("""Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.""", DeprecationWarning)
             pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.""")
         if availability_zone is not None:
-            _setter("availability_zone", availability_zone)
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if backup_id is not None:
-            _setter("backup_id", backup_id)
+            pulumi.set(__self__, "backup_id", backup_id)
         if backup_periods is not None:
-            _setter("backup_periods", backup_periods)
+            pulumi.set(__self__, "backup_periods", backup_periods)
         if backup_time is not None:
-            _setter("backup_time", backup_time)
+            pulumi.set(__self__, "backup_time", backup_time)
         if business_info is not None:
-            _setter("business_info", business_info)
+            pulumi.set(__self__, "business_info", business_info)
         if capacity is not None:
-            _setter("capacity", capacity)
+            pulumi.set(__self__, "capacity", capacity)
         if config is not None:
-            _setter("config", config)
+            pulumi.set(__self__, "config", config)
         if connection_string_prefix is not None:
             warnings.warn("""Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""", DeprecationWarning)
             pulumi.log.warn("""connection_string_prefix is deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""")
         if connection_string_prefix is not None:
-            _setter("connection_string_prefix", connection_string_prefix)
+            pulumi.set(__self__, "connection_string_prefix", connection_string_prefix)
         if coupon_no is not None:
-            _setter("coupon_no", coupon_no)
+            pulumi.set(__self__, "coupon_no", coupon_no)
         if db_instance_name is not None:
-            _setter("db_instance_name", db_instance_name)
+            pulumi.set(__self__, "db_instance_name", db_instance_name)
         if dedicated_host_group_id is not None:
-            _setter("dedicated_host_group_id", dedicated_host_group_id)
+            pulumi.set(__self__, "dedicated_host_group_id", dedicated_host_group_id)
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if effective_time is not None:
-            _setter("effective_time", effective_time)
+            pulumi.set(__self__, "effective_time", effective_time)
         if enable_backup_log is not None:
-            _setter("enable_backup_log", enable_backup_log)
+            pulumi.set(__self__, "enable_backup_log", enable_backup_log)
         if enable_public is not None:
             warnings.warn("""Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""", DeprecationWarning)
             pulumi.log.warn("""enable_public is deprecated: Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""")
         if enable_public is not None:
-            _setter("enable_public", enable_public)
+            pulumi.set(__self__, "enable_public", enable_public)
         if encryption_key is not None:
-            _setter("encryption_key", encryption_key)
+            pulumi.set(__self__, "encryption_key", encryption_key)
         if encryption_name is not None:
-            _setter("encryption_name", encryption_name)
+            pulumi.set(__self__, "encryption_name", encryption_name)
         if engine_version is not None:
-            _setter("engine_version", engine_version)
+            pulumi.set(__self__, "engine_version", engine_version)
         if force_upgrade is not None:
-            _setter("force_upgrade", force_upgrade)
+            pulumi.set(__self__, "force_upgrade", force_upgrade)
         if global_instance is not None:
-            _setter("global_instance", global_instance)
+            pulumi.set(__self__, "global_instance", global_instance)
         if global_instance_id is not None:
-            _setter("global_instance_id", global_instance_id)
+            pulumi.set(__self__, "global_instance_id", global_instance_id)
         if instance_charge_type is not None:
             warnings.warn("""Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.""", DeprecationWarning)
             pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.""")
         if instance_charge_type is not None:
-            _setter("instance_charge_type", instance_charge_type)
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if instance_class is not None:
-            _setter("instance_class", instance_class)
+            pulumi.set(__self__, "instance_class", instance_class)
         if instance_name is not None:
             warnings.warn("""Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.""", DeprecationWarning)
             pulumi.log.warn("""instance_name is deprecated: Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.""")
         if instance_name is not None:
-            _setter("instance_name", instance_name)
+            pulumi.set(__self__, "instance_name", instance_name)
         if instance_release_protection is not None:
-            _setter("instance_release_protection", instance_release_protection)
+            pulumi.set(__self__, "instance_release_protection", instance_release_protection)
         if instance_type is not None:
-            _setter("instance_type", instance_type)
+            pulumi.set(__self__, "instance_type", instance_type)
         if kms_encrypted_password is not None:
-            _setter("kms_encrypted_password", kms_encrypted_password)
+            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
-            _setter("kms_encryption_context", kms_encryption_context)
+            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
         if maintain_end_time is not None:
-            _setter("maintain_end_time", maintain_end_time)
+            pulumi.set(__self__, "maintain_end_time", maintain_end_time)
         if maintain_start_time is not None:
-            _setter("maintain_start_time", maintain_start_time)
+            pulumi.set(__self__, "maintain_start_time", maintain_start_time)
         if modify_mode is not None:
-            _setter("modify_mode", modify_mode)
+            pulumi.set(__self__, "modify_mode", modify_mode)
         if node_type is not None:
             warnings.warn("""Field 'node_type' has been deprecated from version 1.120.1""", DeprecationWarning)
             pulumi.log.warn("""node_type is deprecated: Field 'node_type' has been deprecated from version 1.120.1""")
         if node_type is not None:
-            _setter("node_type", node_type)
+            pulumi.set(__self__, "node_type", node_type)
         if order_type is not None:
-            _setter("order_type", order_type)
+            pulumi.set(__self__, "order_type", order_type)
         if parameters is not None:
             warnings.warn("""Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""", DeprecationWarning)
             pulumi.log.warn("""parameters is deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""")
         if parameters is not None:
-            _setter("parameters", parameters)
+            pulumi.set(__self__, "parameters", parameters)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if private_connection_port is not None:
-            _setter("private_connection_port", private_connection_port)
+            pulumi.set(__self__, "private_connection_port", private_connection_port)
         if private_connection_prefix is not None:
-            _setter("private_connection_prefix", private_connection_prefix)
+            pulumi.set(__self__, "private_connection_prefix", private_connection_prefix)
         if private_ip is not None:
-            _setter("private_ip", private_ip)
+            pulumi.set(__self__, "private_ip", private_ip)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if restore_time is not None:
-            _setter("restore_time", restore_time)
+            pulumi.set(__self__, "restore_time", restore_time)
         if role_arn is not None:
-            _setter("role_arn", role_arn)
+            pulumi.set(__self__, "role_arn", role_arn)
         if secondary_zone_id is not None:
-            _setter("secondary_zone_id", secondary_zone_id)
+            pulumi.set(__self__, "secondary_zone_id", secondary_zone_id)
         if security_group_id is not None:
-            _setter("security_group_id", security_group_id)
+            pulumi.set(__self__, "security_group_id", security_group_id)
         if security_ip_group_attribute is not None:
-            _setter("security_ip_group_attribute", security_ip_group_attribute)
+            pulumi.set(__self__, "security_ip_group_attribute", security_ip_group_attribute)
         if security_ip_group_name is not None:
-            _setter("security_ip_group_name", security_ip_group_name)
+            pulumi.set(__self__, "security_ip_group_name", security_ip_group_name)
         if security_ips is not None:
-            _setter("security_ips", security_ips)
+            pulumi.set(__self__, "security_ips", security_ips)
         if shard_count is not None:
-            _setter("shard_count", shard_count)
+            pulumi.set(__self__, "shard_count", shard_count)
         if srcdb_instance_id is not None:
-            _setter("srcdb_instance_id", srcdb_instance_id)
+            pulumi.set(__self__, "srcdb_instance_id", srcdb_instance_id)
         if ssl_enable is not None:
-            _setter("ssl_enable", ssl_enable)
+            pulumi.set(__self__, "ssl_enable", ssl_enable)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if tde_status is not None:
-            _setter("tde_status", tde_status)
+            pulumi.set(__self__, "tde_status", tde_status)
         if vpc_auth_mode is not None:
-            _setter("vpc_auth_mode", vpc_auth_mode)
+            pulumi.set(__self__, "vpc_auth_mode", vpc_auth_mode)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="autoRenew")
@@ -1425,415 +1190,162 @@ class _InstanceState:
         :param pulumi.Input[str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[str] zone_id: The ID of the zone.
         """
-        _InstanceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto_renew=auto_renew,
-            auto_renew_period=auto_renew_period,
-            auto_use_coupon=auto_use_coupon,
-            availability_zone=availability_zone,
-            backup_id=backup_id,
-            backup_periods=backup_periods,
-            backup_time=backup_time,
-            bandwidth=bandwidth,
-            business_info=business_info,
-            capacity=capacity,
-            config=config,
-            connection_domain=connection_domain,
-            connection_string=connection_string,
-            connection_string_prefix=connection_string_prefix,
-            coupon_no=coupon_no,
-            db_instance_name=db_instance_name,
-            dedicated_host_group_id=dedicated_host_group_id,
-            dry_run=dry_run,
-            effective_time=effective_time,
-            enable_backup_log=enable_backup_log,
-            enable_public=enable_public,
-            encryption_key=encryption_key,
-            encryption_name=encryption_name,
-            end_time=end_time,
-            engine_version=engine_version,
-            force_upgrade=force_upgrade,
-            global_instance=global_instance,
-            global_instance_id=global_instance_id,
-            instance_charge_type=instance_charge_type,
-            instance_class=instance_class,
-            instance_name=instance_name,
-            instance_release_protection=instance_release_protection,
-            instance_type=instance_type,
-            kms_encrypted_password=kms_encrypted_password,
-            kms_encryption_context=kms_encryption_context,
-            maintain_end_time=maintain_end_time,
-            maintain_start_time=maintain_start_time,
-            modify_mode=modify_mode,
-            node_type=node_type,
-            order_type=order_type,
-            parameters=parameters,
-            password=password,
-            payment_type=payment_type,
-            period=period,
-            port=port,
-            private_connection_port=private_connection_port,
-            private_connection_prefix=private_connection_prefix,
-            private_ip=private_ip,
-            qps=qps,
-            resource_group_id=resource_group_id,
-            restore_time=restore_time,
-            role_arn=role_arn,
-            secondary_zone_id=secondary_zone_id,
-            security_group_id=security_group_id,
-            security_ip_group_attribute=security_ip_group_attribute,
-            security_ip_group_name=security_ip_group_name,
-            security_ips=security_ips,
-            shard_count=shard_count,
-            srcdb_instance_id=srcdb_instance_id,
-            ssl_enable=ssl_enable,
-            status=status,
-            tags=tags,
-            tde_status=tde_status,
-            vpc_auth_mode=vpc_auth_mode,
-            vswitch_id=vswitch_id,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto_renew: Optional[pulumi.Input[bool]] = None,
-             auto_renew_period: Optional[pulumi.Input[int]] = None,
-             auto_use_coupon: Optional[pulumi.Input[bool]] = None,
-             availability_zone: Optional[pulumi.Input[str]] = None,
-             backup_id: Optional[pulumi.Input[str]] = None,
-             backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             backup_time: Optional[pulumi.Input[str]] = None,
-             bandwidth: Optional[pulumi.Input[int]] = None,
-             business_info: Optional[pulumi.Input[str]] = None,
-             capacity: Optional[pulumi.Input[int]] = None,
-             config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             connection_domain: Optional[pulumi.Input[str]] = None,
-             connection_string: Optional[pulumi.Input[str]] = None,
-             connection_string_prefix: Optional[pulumi.Input[str]] = None,
-             coupon_no: Optional[pulumi.Input[str]] = None,
-             db_instance_name: Optional[pulumi.Input[str]] = None,
-             dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             effective_time: Optional[pulumi.Input[str]] = None,
-             enable_backup_log: Optional[pulumi.Input[int]] = None,
-             enable_public: Optional[pulumi.Input[bool]] = None,
-             encryption_key: Optional[pulumi.Input[str]] = None,
-             encryption_name: Optional[pulumi.Input[str]] = None,
-             end_time: Optional[pulumi.Input[str]] = None,
-             engine_version: Optional[pulumi.Input[str]] = None,
-             force_upgrade: Optional[pulumi.Input[bool]] = None,
-             global_instance: Optional[pulumi.Input[bool]] = None,
-             global_instance_id: Optional[pulumi.Input[str]] = None,
-             instance_charge_type: Optional[pulumi.Input[str]] = None,
-             instance_class: Optional[pulumi.Input[str]] = None,
-             instance_name: Optional[pulumi.Input[str]] = None,
-             instance_release_protection: Optional[pulumi.Input[bool]] = None,
-             instance_type: Optional[pulumi.Input[str]] = None,
-             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             maintain_end_time: Optional[pulumi.Input[str]] = None,
-             maintain_start_time: Optional[pulumi.Input[str]] = None,
-             modify_mode: Optional[pulumi.Input[int]] = None,
-             node_type: Optional[pulumi.Input[str]] = None,
-             order_type: Optional[pulumi.Input[str]] = None,
-             parameters: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[str]] = None,
-             port: Optional[pulumi.Input[int]] = None,
-             private_connection_port: Optional[pulumi.Input[str]] = None,
-             private_connection_prefix: Optional[pulumi.Input[str]] = None,
-             private_ip: Optional[pulumi.Input[str]] = None,
-             qps: Optional[pulumi.Input[int]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             restore_time: Optional[pulumi.Input[str]] = None,
-             role_arn: Optional[pulumi.Input[str]] = None,
-             secondary_zone_id: Optional[pulumi.Input[str]] = None,
-             security_group_id: Optional[pulumi.Input[str]] = None,
-             security_ip_group_attribute: Optional[pulumi.Input[str]] = None,
-             security_ip_group_name: Optional[pulumi.Input[str]] = None,
-             security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             shard_count: Optional[pulumi.Input[int]] = None,
-             srcdb_instance_id: Optional[pulumi.Input[str]] = None,
-             ssl_enable: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             tde_status: Optional[pulumi.Input[str]] = None,
-             vpc_auth_mode: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_renew is None and 'autoRenew' in kwargs:
-            auto_renew = kwargs['autoRenew']
-        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
-            auto_renew_period = kwargs['autoRenewPeriod']
-        if auto_use_coupon is None and 'autoUseCoupon' in kwargs:
-            auto_use_coupon = kwargs['autoUseCoupon']
-        if availability_zone is None and 'availabilityZone' in kwargs:
-            availability_zone = kwargs['availabilityZone']
-        if backup_id is None and 'backupId' in kwargs:
-            backup_id = kwargs['backupId']
-        if backup_periods is None and 'backupPeriods' in kwargs:
-            backup_periods = kwargs['backupPeriods']
-        if backup_time is None and 'backupTime' in kwargs:
-            backup_time = kwargs['backupTime']
-        if business_info is None and 'businessInfo' in kwargs:
-            business_info = kwargs['businessInfo']
-        if connection_domain is None and 'connectionDomain' in kwargs:
-            connection_domain = kwargs['connectionDomain']
-        if connection_string is None and 'connectionString' in kwargs:
-            connection_string = kwargs['connectionString']
-        if connection_string_prefix is None and 'connectionStringPrefix' in kwargs:
-            connection_string_prefix = kwargs['connectionStringPrefix']
-        if coupon_no is None and 'couponNo' in kwargs:
-            coupon_no = kwargs['couponNo']
-        if db_instance_name is None and 'dbInstanceName' in kwargs:
-            db_instance_name = kwargs['dbInstanceName']
-        if dedicated_host_group_id is None and 'dedicatedHostGroupId' in kwargs:
-            dedicated_host_group_id = kwargs['dedicatedHostGroupId']
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-        if effective_time is None and 'effectiveTime' in kwargs:
-            effective_time = kwargs['effectiveTime']
-        if enable_backup_log is None and 'enableBackupLog' in kwargs:
-            enable_backup_log = kwargs['enableBackupLog']
-        if enable_public is None and 'enablePublic' in kwargs:
-            enable_public = kwargs['enablePublic']
-        if encryption_key is None and 'encryptionKey' in kwargs:
-            encryption_key = kwargs['encryptionKey']
-        if encryption_name is None and 'encryptionName' in kwargs:
-            encryption_name = kwargs['encryptionName']
-        if end_time is None and 'endTime' in kwargs:
-            end_time = kwargs['endTime']
-        if engine_version is None and 'engineVersion' in kwargs:
-            engine_version = kwargs['engineVersion']
-        if force_upgrade is None and 'forceUpgrade' in kwargs:
-            force_upgrade = kwargs['forceUpgrade']
-        if global_instance is None and 'globalInstance' in kwargs:
-            global_instance = kwargs['globalInstance']
-        if global_instance_id is None and 'globalInstanceId' in kwargs:
-            global_instance_id = kwargs['globalInstanceId']
-        if instance_charge_type is None and 'instanceChargeType' in kwargs:
-            instance_charge_type = kwargs['instanceChargeType']
-        if instance_class is None and 'instanceClass' in kwargs:
-            instance_class = kwargs['instanceClass']
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_release_protection is None and 'instanceReleaseProtection' in kwargs:
-            instance_release_protection = kwargs['instanceReleaseProtection']
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if kms_encrypted_password is None and 'kmsEncryptedPassword' in kwargs:
-            kms_encrypted_password = kwargs['kmsEncryptedPassword']
-        if kms_encryption_context is None and 'kmsEncryptionContext' in kwargs:
-            kms_encryption_context = kwargs['kmsEncryptionContext']
-        if maintain_end_time is None and 'maintainEndTime' in kwargs:
-            maintain_end_time = kwargs['maintainEndTime']
-        if maintain_start_time is None and 'maintainStartTime' in kwargs:
-            maintain_start_time = kwargs['maintainStartTime']
-        if modify_mode is None and 'modifyMode' in kwargs:
-            modify_mode = kwargs['modifyMode']
-        if node_type is None and 'nodeType' in kwargs:
-            node_type = kwargs['nodeType']
-        if order_type is None and 'orderType' in kwargs:
-            order_type = kwargs['orderType']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if private_connection_port is None and 'privateConnectionPort' in kwargs:
-            private_connection_port = kwargs['privateConnectionPort']
-        if private_connection_prefix is None and 'privateConnectionPrefix' in kwargs:
-            private_connection_prefix = kwargs['privateConnectionPrefix']
-        if private_ip is None and 'privateIp' in kwargs:
-            private_ip = kwargs['privateIp']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if restore_time is None and 'restoreTime' in kwargs:
-            restore_time = kwargs['restoreTime']
-        if role_arn is None and 'roleArn' in kwargs:
-            role_arn = kwargs['roleArn']
-        if secondary_zone_id is None and 'secondaryZoneId' in kwargs:
-            secondary_zone_id = kwargs['secondaryZoneId']
-        if security_group_id is None and 'securityGroupId' in kwargs:
-            security_group_id = kwargs['securityGroupId']
-        if security_ip_group_attribute is None and 'securityIpGroupAttribute' in kwargs:
-            security_ip_group_attribute = kwargs['securityIpGroupAttribute']
-        if security_ip_group_name is None and 'securityIpGroupName' in kwargs:
-            security_ip_group_name = kwargs['securityIpGroupName']
-        if security_ips is None and 'securityIps' in kwargs:
-            security_ips = kwargs['securityIps']
-        if shard_count is None and 'shardCount' in kwargs:
-            shard_count = kwargs['shardCount']
-        if srcdb_instance_id is None and 'srcdbInstanceId' in kwargs:
-            srcdb_instance_id = kwargs['srcdbInstanceId']
-        if ssl_enable is None and 'sslEnable' in kwargs:
-            ssl_enable = kwargs['sslEnable']
-        if tde_status is None and 'tdeStatus' in kwargs:
-            tde_status = kwargs['tdeStatus']
-        if vpc_auth_mode is None and 'vpcAuthMode' in kwargs:
-            vpc_auth_mode = kwargs['vpcAuthMode']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if auto_renew is not None:
-            _setter("auto_renew", auto_renew)
+            pulumi.set(__self__, "auto_renew", auto_renew)
         if auto_renew_period is not None:
-            _setter("auto_renew_period", auto_renew_period)
+            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if auto_use_coupon is not None:
-            _setter("auto_use_coupon", auto_use_coupon)
+            pulumi.set(__self__, "auto_use_coupon", auto_use_coupon)
         if availability_zone is not None:
             warnings.warn("""Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.""", DeprecationWarning)
             pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.""")
         if availability_zone is not None:
-            _setter("availability_zone", availability_zone)
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if backup_id is not None:
-            _setter("backup_id", backup_id)
+            pulumi.set(__self__, "backup_id", backup_id)
         if backup_periods is not None:
-            _setter("backup_periods", backup_periods)
+            pulumi.set(__self__, "backup_periods", backup_periods)
         if backup_time is not None:
-            _setter("backup_time", backup_time)
+            pulumi.set(__self__, "backup_time", backup_time)
         if bandwidth is not None:
-            _setter("bandwidth", bandwidth)
+            pulumi.set(__self__, "bandwidth", bandwidth)
         if business_info is not None:
-            _setter("business_info", business_info)
+            pulumi.set(__self__, "business_info", business_info)
         if capacity is not None:
-            _setter("capacity", capacity)
+            pulumi.set(__self__, "capacity", capacity)
         if config is not None:
-            _setter("config", config)
+            pulumi.set(__self__, "config", config)
         if connection_domain is not None:
-            _setter("connection_domain", connection_domain)
+            pulumi.set(__self__, "connection_domain", connection_domain)
         if connection_string is not None:
             warnings.warn("""Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""", DeprecationWarning)
             pulumi.log.warn("""connection_string is deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""")
         if connection_string is not None:
-            _setter("connection_string", connection_string)
+            pulumi.set(__self__, "connection_string", connection_string)
         if connection_string_prefix is not None:
             warnings.warn("""Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""", DeprecationWarning)
             pulumi.log.warn("""connection_string_prefix is deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""")
         if connection_string_prefix is not None:
-            _setter("connection_string_prefix", connection_string_prefix)
+            pulumi.set(__self__, "connection_string_prefix", connection_string_prefix)
         if coupon_no is not None:
-            _setter("coupon_no", coupon_no)
+            pulumi.set(__self__, "coupon_no", coupon_no)
         if db_instance_name is not None:
-            _setter("db_instance_name", db_instance_name)
+            pulumi.set(__self__, "db_instance_name", db_instance_name)
         if dedicated_host_group_id is not None:
-            _setter("dedicated_host_group_id", dedicated_host_group_id)
+            pulumi.set(__self__, "dedicated_host_group_id", dedicated_host_group_id)
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if effective_time is not None:
-            _setter("effective_time", effective_time)
+            pulumi.set(__self__, "effective_time", effective_time)
         if enable_backup_log is not None:
-            _setter("enable_backup_log", enable_backup_log)
+            pulumi.set(__self__, "enable_backup_log", enable_backup_log)
         if enable_public is not None:
             warnings.warn("""Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""", DeprecationWarning)
             pulumi.log.warn("""enable_public is deprecated: Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""")
         if enable_public is not None:
-            _setter("enable_public", enable_public)
+            pulumi.set(__self__, "enable_public", enable_public)
         if encryption_key is not None:
-            _setter("encryption_key", encryption_key)
+            pulumi.set(__self__, "encryption_key", encryption_key)
         if encryption_name is not None:
-            _setter("encryption_name", encryption_name)
+            pulumi.set(__self__, "encryption_name", encryption_name)
         if end_time is not None:
-            _setter("end_time", end_time)
+            pulumi.set(__self__, "end_time", end_time)
         if engine_version is not None:
-            _setter("engine_version", engine_version)
+            pulumi.set(__self__, "engine_version", engine_version)
         if force_upgrade is not None:
-            _setter("force_upgrade", force_upgrade)
+            pulumi.set(__self__, "force_upgrade", force_upgrade)
         if global_instance is not None:
-            _setter("global_instance", global_instance)
+            pulumi.set(__self__, "global_instance", global_instance)
         if global_instance_id is not None:
-            _setter("global_instance_id", global_instance_id)
+            pulumi.set(__self__, "global_instance_id", global_instance_id)
         if instance_charge_type is not None:
             warnings.warn("""Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.""", DeprecationWarning)
             pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.""")
         if instance_charge_type is not None:
-            _setter("instance_charge_type", instance_charge_type)
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if instance_class is not None:
-            _setter("instance_class", instance_class)
+            pulumi.set(__self__, "instance_class", instance_class)
         if instance_name is not None:
             warnings.warn("""Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.""", DeprecationWarning)
             pulumi.log.warn("""instance_name is deprecated: Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.""")
         if instance_name is not None:
-            _setter("instance_name", instance_name)
+            pulumi.set(__self__, "instance_name", instance_name)
         if instance_release_protection is not None:
-            _setter("instance_release_protection", instance_release_protection)
+            pulumi.set(__self__, "instance_release_protection", instance_release_protection)
         if instance_type is not None:
-            _setter("instance_type", instance_type)
+            pulumi.set(__self__, "instance_type", instance_type)
         if kms_encrypted_password is not None:
-            _setter("kms_encrypted_password", kms_encrypted_password)
+            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
-            _setter("kms_encryption_context", kms_encryption_context)
+            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
         if maintain_end_time is not None:
-            _setter("maintain_end_time", maintain_end_time)
+            pulumi.set(__self__, "maintain_end_time", maintain_end_time)
         if maintain_start_time is not None:
-            _setter("maintain_start_time", maintain_start_time)
+            pulumi.set(__self__, "maintain_start_time", maintain_start_time)
         if modify_mode is not None:
-            _setter("modify_mode", modify_mode)
+            pulumi.set(__self__, "modify_mode", modify_mode)
         if node_type is not None:
             warnings.warn("""Field 'node_type' has been deprecated from version 1.120.1""", DeprecationWarning)
             pulumi.log.warn("""node_type is deprecated: Field 'node_type' has been deprecated from version 1.120.1""")
         if node_type is not None:
-            _setter("node_type", node_type)
+            pulumi.set(__self__, "node_type", node_type)
         if order_type is not None:
-            _setter("order_type", order_type)
+            pulumi.set(__self__, "order_type", order_type)
         if parameters is not None:
             warnings.warn("""Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""", DeprecationWarning)
             pulumi.log.warn("""parameters is deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""")
         if parameters is not None:
-            _setter("parameters", parameters)
+            pulumi.set(__self__, "parameters", parameters)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if private_connection_port is not None:
-            _setter("private_connection_port", private_connection_port)
+            pulumi.set(__self__, "private_connection_port", private_connection_port)
         if private_connection_prefix is not None:
-            _setter("private_connection_prefix", private_connection_prefix)
+            pulumi.set(__self__, "private_connection_prefix", private_connection_prefix)
         if private_ip is not None:
-            _setter("private_ip", private_ip)
+            pulumi.set(__self__, "private_ip", private_ip)
         if qps is not None:
-            _setter("qps", qps)
+            pulumi.set(__self__, "qps", qps)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if restore_time is not None:
-            _setter("restore_time", restore_time)
+            pulumi.set(__self__, "restore_time", restore_time)
         if role_arn is not None:
-            _setter("role_arn", role_arn)
+            pulumi.set(__self__, "role_arn", role_arn)
         if secondary_zone_id is not None:
-            _setter("secondary_zone_id", secondary_zone_id)
+            pulumi.set(__self__, "secondary_zone_id", secondary_zone_id)
         if security_group_id is not None:
-            _setter("security_group_id", security_group_id)
+            pulumi.set(__self__, "security_group_id", security_group_id)
         if security_ip_group_attribute is not None:
-            _setter("security_ip_group_attribute", security_ip_group_attribute)
+            pulumi.set(__self__, "security_ip_group_attribute", security_ip_group_attribute)
         if security_ip_group_name is not None:
-            _setter("security_ip_group_name", security_ip_group_name)
+            pulumi.set(__self__, "security_ip_group_name", security_ip_group_name)
         if security_ips is not None:
-            _setter("security_ips", security_ips)
+            pulumi.set(__self__, "security_ips", security_ips)
         if shard_count is not None:
-            _setter("shard_count", shard_count)
+            pulumi.set(__self__, "shard_count", shard_count)
         if srcdb_instance_id is not None:
-            _setter("srcdb_instance_id", srcdb_instance_id)
+            pulumi.set(__self__, "srcdb_instance_id", srcdb_instance_id)
         if ssl_enable is not None:
-            _setter("ssl_enable", ssl_enable)
+            pulumi.set(__self__, "ssl_enable", ssl_enable)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if tde_status is not None:
-            _setter("tde_status", tde_status)
+            pulumi.set(__self__, "tde_status", tde_status)
         if vpc_auth_mode is not None:
-            _setter("vpc_auth_mode", vpc_auth_mode)
+            pulumi.set(__self__, "vpc_auth_mode", vpc_auth_mode)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="autoRenew")
@@ -2837,10 +2349,6 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

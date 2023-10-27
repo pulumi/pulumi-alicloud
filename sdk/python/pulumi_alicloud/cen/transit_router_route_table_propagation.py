@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TransitRouterRouteTablePropagationArgs', 'TransitRouterRouteTablePropagation']
@@ -25,35 +25,10 @@ class TransitRouterRouteTablePropagationArgs:
                
                > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
         """
-        TransitRouterRouteTablePropagationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            transit_router_attachment_id=transit_router_attachment_id,
-            transit_router_route_table_id=transit_router_route_table_id,
-            dry_run=dry_run,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             transit_router_attachment_id: Optional[pulumi.Input[str]] = None,
-             transit_router_route_table_id: Optional[pulumi.Input[str]] = None,
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if transit_router_attachment_id is None and 'transitRouterAttachmentId' in kwargs:
-            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
-        if transit_router_attachment_id is None:
-            raise TypeError("Missing 'transit_router_attachment_id' argument")
-        if transit_router_route_table_id is None and 'transitRouterRouteTableId' in kwargs:
-            transit_router_route_table_id = kwargs['transitRouterRouteTableId']
-        if transit_router_route_table_id is None:
-            raise TypeError("Missing 'transit_router_route_table_id' argument")
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-
-        _setter("transit_router_attachment_id", transit_router_attachment_id)
-        _setter("transit_router_route_table_id", transit_router_route_table_id)
+        pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
+        pulumi.set(__self__, "transit_router_route_table_id", transit_router_route_table_id)
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
 
     @property
     @pulumi.getter(name="transitRouterAttachmentId")
@@ -110,37 +85,14 @@ class _TransitRouterRouteTablePropagationState:
         :param pulumi.Input[str] transit_router_attachment_id: The ID the transit router attachment.
         :param pulumi.Input[str] transit_router_route_table_id: The ID of the transit router route table.
         """
-        _TransitRouterRouteTablePropagationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dry_run=dry_run,
-            status=status,
-            transit_router_attachment_id=transit_router_attachment_id,
-            transit_router_route_table_id=transit_router_route_table_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             transit_router_attachment_id: Optional[pulumi.Input[str]] = None,
-             transit_router_route_table_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-        if transit_router_attachment_id is None and 'transitRouterAttachmentId' in kwargs:
-            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
-        if transit_router_route_table_id is None and 'transitRouterRouteTableId' in kwargs:
-            transit_router_route_table_id = kwargs['transitRouterRouteTableId']
-
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if transit_router_attachment_id is not None:
-            _setter("transit_router_attachment_id", transit_router_attachment_id)
+            pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
         if transit_router_route_table_id is not None:
-            _setter("transit_router_route_table_id", transit_router_route_table_id)
+            pulumi.set(__self__, "transit_router_route_table_id", transit_router_route_table_id)
 
     @property
     @pulumi.getter(name="dryRun")
@@ -364,10 +316,6 @@ class TransitRouterRouteTablePropagation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TransitRouterRouteTablePropagationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

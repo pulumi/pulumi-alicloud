@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DiskArgs', 'Disk']
@@ -56,151 +56,60 @@ class DiskArgs:
         :param pulumi.Input[str] snapshot_id: A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
-        DiskArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            advanced_features=advanced_features,
-            availability_zone=availability_zone,
-            category=category,
-            delete_auto_snapshot=delete_auto_snapshot,
-            delete_with_instance=delete_with_instance,
-            description=description,
-            disk_name=disk_name,
-            dry_run=dry_run,
-            enable_auto_snapshot=enable_auto_snapshot,
-            encrypt_algorithm=encrypt_algorithm,
-            encrypted=encrypted,
-            instance_id=instance_id,
-            kms_key_id=kms_key_id,
-            name=name,
-            payment_type=payment_type,
-            performance_level=performance_level,
-            resource_group_id=resource_group_id,
-            size=size,
-            snapshot_id=snapshot_id,
-            storage_set_id=storage_set_id,
-            storage_set_partition_number=storage_set_partition_number,
-            tags=tags,
-            type=type,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             advanced_features: Optional[pulumi.Input[str]] = None,
-             availability_zone: Optional[pulumi.Input[str]] = None,
-             category: Optional[pulumi.Input[str]] = None,
-             delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
-             delete_with_instance: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disk_name: Optional[pulumi.Input[str]] = None,
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             enable_auto_snapshot: Optional[pulumi.Input[bool]] = None,
-             encrypt_algorithm: Optional[pulumi.Input[str]] = None,
-             encrypted: Optional[pulumi.Input[bool]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             kms_key_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             performance_level: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             size: Optional[pulumi.Input[int]] = None,
-             snapshot_id: Optional[pulumi.Input[str]] = None,
-             storage_set_id: Optional[pulumi.Input[str]] = None,
-             storage_set_partition_number: Optional[pulumi.Input[int]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if advanced_features is None and 'advancedFeatures' in kwargs:
-            advanced_features = kwargs['advancedFeatures']
-        if availability_zone is None and 'availabilityZone' in kwargs:
-            availability_zone = kwargs['availabilityZone']
-        if delete_auto_snapshot is None and 'deleteAutoSnapshot' in kwargs:
-            delete_auto_snapshot = kwargs['deleteAutoSnapshot']
-        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
-            delete_with_instance = kwargs['deleteWithInstance']
-        if disk_name is None and 'diskName' in kwargs:
-            disk_name = kwargs['diskName']
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-        if enable_auto_snapshot is None and 'enableAutoSnapshot' in kwargs:
-            enable_auto_snapshot = kwargs['enableAutoSnapshot']
-        if encrypt_algorithm is None and 'encryptAlgorithm' in kwargs:
-            encrypt_algorithm = kwargs['encryptAlgorithm']
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if kms_key_id is None and 'kmsKeyId' in kwargs:
-            kms_key_id = kwargs['kmsKeyId']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if performance_level is None and 'performanceLevel' in kwargs:
-            performance_level = kwargs['performanceLevel']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if snapshot_id is None and 'snapshotId' in kwargs:
-            snapshot_id = kwargs['snapshotId']
-        if storage_set_id is None and 'storageSetId' in kwargs:
-            storage_set_id = kwargs['storageSetId']
-        if storage_set_partition_number is None and 'storageSetPartitionNumber' in kwargs:
-            storage_set_partition_number = kwargs['storageSetPartitionNumber']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if advanced_features is not None:
-            _setter("advanced_features", advanced_features)
+            pulumi.set(__self__, "advanced_features", advanced_features)
         if availability_zone is not None:
             warnings.warn("""Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""", DeprecationWarning)
             pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""")
         if availability_zone is not None:
-            _setter("availability_zone", availability_zone)
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if category is not None:
-            _setter("category", category)
+            pulumi.set(__self__, "category", category)
         if delete_auto_snapshot is not None:
-            _setter("delete_auto_snapshot", delete_auto_snapshot)
+            pulumi.set(__self__, "delete_auto_snapshot", delete_auto_snapshot)
         if delete_with_instance is not None:
-            _setter("delete_with_instance", delete_with_instance)
+            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disk_name is not None:
-            _setter("disk_name", disk_name)
+            pulumi.set(__self__, "disk_name", disk_name)
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if enable_auto_snapshot is not None:
-            _setter("enable_auto_snapshot", enable_auto_snapshot)
+            pulumi.set(__self__, "enable_auto_snapshot", enable_auto_snapshot)
         if encrypt_algorithm is not None:
-            _setter("encrypt_algorithm", encrypt_algorithm)
+            pulumi.set(__self__, "encrypt_algorithm", encrypt_algorithm)
         if encrypted is not None:
-            _setter("encrypted", encrypted)
+            pulumi.set(__self__, "encrypted", encrypted)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if kms_key_id is not None:
-            _setter("kms_key_id", kms_key_id)
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.""")
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if performance_level is not None:
-            _setter("performance_level", performance_level)
+            pulumi.set(__self__, "performance_level", performance_level)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if size is not None:
-            _setter("size", size)
+            pulumi.set(__self__, "size", size)
         if snapshot_id is not None:
-            _setter("snapshot_id", snapshot_id)
+            pulumi.set(__self__, "snapshot_id", snapshot_id)
         if storage_set_id is not None:
-            _setter("storage_set_id", storage_set_id)
+            pulumi.set(__self__, "storage_set_id", storage_set_id)
         if storage_set_partition_number is not None:
-            _setter("storage_set_partition_number", storage_set_partition_number)
+            pulumi.set(__self__, "storage_set_partition_number", storage_set_partition_number)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="advancedFeatures")
@@ -515,155 +424,62 @@ class _DiskState:
         :param pulumi.Input[str] status: The disk status.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
-        _DiskState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            advanced_features=advanced_features,
-            availability_zone=availability_zone,
-            category=category,
-            delete_auto_snapshot=delete_auto_snapshot,
-            delete_with_instance=delete_with_instance,
-            description=description,
-            disk_name=disk_name,
-            dry_run=dry_run,
-            enable_auto_snapshot=enable_auto_snapshot,
-            encrypt_algorithm=encrypt_algorithm,
-            encrypted=encrypted,
-            instance_id=instance_id,
-            kms_key_id=kms_key_id,
-            name=name,
-            payment_type=payment_type,
-            performance_level=performance_level,
-            resource_group_id=resource_group_id,
-            size=size,
-            snapshot_id=snapshot_id,
-            status=status,
-            storage_set_id=storage_set_id,
-            storage_set_partition_number=storage_set_partition_number,
-            tags=tags,
-            type=type,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             advanced_features: Optional[pulumi.Input[str]] = None,
-             availability_zone: Optional[pulumi.Input[str]] = None,
-             category: Optional[pulumi.Input[str]] = None,
-             delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
-             delete_with_instance: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disk_name: Optional[pulumi.Input[str]] = None,
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             enable_auto_snapshot: Optional[pulumi.Input[bool]] = None,
-             encrypt_algorithm: Optional[pulumi.Input[str]] = None,
-             encrypted: Optional[pulumi.Input[bool]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             kms_key_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             performance_level: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             size: Optional[pulumi.Input[int]] = None,
-             snapshot_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             storage_set_id: Optional[pulumi.Input[str]] = None,
-             storage_set_partition_number: Optional[pulumi.Input[int]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if advanced_features is None and 'advancedFeatures' in kwargs:
-            advanced_features = kwargs['advancedFeatures']
-        if availability_zone is None and 'availabilityZone' in kwargs:
-            availability_zone = kwargs['availabilityZone']
-        if delete_auto_snapshot is None and 'deleteAutoSnapshot' in kwargs:
-            delete_auto_snapshot = kwargs['deleteAutoSnapshot']
-        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
-            delete_with_instance = kwargs['deleteWithInstance']
-        if disk_name is None and 'diskName' in kwargs:
-            disk_name = kwargs['diskName']
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-        if enable_auto_snapshot is None and 'enableAutoSnapshot' in kwargs:
-            enable_auto_snapshot = kwargs['enableAutoSnapshot']
-        if encrypt_algorithm is None and 'encryptAlgorithm' in kwargs:
-            encrypt_algorithm = kwargs['encryptAlgorithm']
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if kms_key_id is None and 'kmsKeyId' in kwargs:
-            kms_key_id = kwargs['kmsKeyId']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if performance_level is None and 'performanceLevel' in kwargs:
-            performance_level = kwargs['performanceLevel']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if snapshot_id is None and 'snapshotId' in kwargs:
-            snapshot_id = kwargs['snapshotId']
-        if storage_set_id is None and 'storageSetId' in kwargs:
-            storage_set_id = kwargs['storageSetId']
-        if storage_set_partition_number is None and 'storageSetPartitionNumber' in kwargs:
-            storage_set_partition_number = kwargs['storageSetPartitionNumber']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if advanced_features is not None:
-            _setter("advanced_features", advanced_features)
+            pulumi.set(__self__, "advanced_features", advanced_features)
         if availability_zone is not None:
             warnings.warn("""Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""", DeprecationWarning)
             pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""")
         if availability_zone is not None:
-            _setter("availability_zone", availability_zone)
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if category is not None:
-            _setter("category", category)
+            pulumi.set(__self__, "category", category)
         if delete_auto_snapshot is not None:
-            _setter("delete_auto_snapshot", delete_auto_snapshot)
+            pulumi.set(__self__, "delete_auto_snapshot", delete_auto_snapshot)
         if delete_with_instance is not None:
-            _setter("delete_with_instance", delete_with_instance)
+            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disk_name is not None:
-            _setter("disk_name", disk_name)
+            pulumi.set(__self__, "disk_name", disk_name)
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if enable_auto_snapshot is not None:
-            _setter("enable_auto_snapshot", enable_auto_snapshot)
+            pulumi.set(__self__, "enable_auto_snapshot", enable_auto_snapshot)
         if encrypt_algorithm is not None:
-            _setter("encrypt_algorithm", encrypt_algorithm)
+            pulumi.set(__self__, "encrypt_algorithm", encrypt_algorithm)
         if encrypted is not None:
-            _setter("encrypted", encrypted)
+            pulumi.set(__self__, "encrypted", encrypted)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if kms_key_id is not None:
-            _setter("kms_key_id", kms_key_id)
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.""")
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if performance_level is not None:
-            _setter("performance_level", performance_level)
+            pulumi.set(__self__, "performance_level", performance_level)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if size is not None:
-            _setter("size", size)
+            pulumi.set(__self__, "size", size)
         if snapshot_id is not None:
-            _setter("snapshot_id", snapshot_id)
+            pulumi.set(__self__, "snapshot_id", snapshot_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if storage_set_id is not None:
-            _setter("storage_set_id", storage_set_id)
+            pulumi.set(__self__, "storage_set_id", storage_set_id)
         if storage_set_partition_number is not None:
-            _setter("storage_set_partition_number", storage_set_partition_number)
+            pulumi.set(__self__, "storage_set_partition_number", storage_set_partition_number)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="advancedFeatures")
@@ -1075,10 +891,6 @@ class Disk(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DiskArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

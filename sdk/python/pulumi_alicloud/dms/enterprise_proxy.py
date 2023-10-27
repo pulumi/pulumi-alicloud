@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EnterpriseProxyArgs', 'EnterpriseProxy']
@@ -25,36 +25,11 @@ class EnterpriseProxyArgs:
         :param pulumi.Input[str] username: The username of the database account.
         :param pulumi.Input[str] tid: The ID of the tenant.
         """
-        EnterpriseProxyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_id=instance_id,
-            password=password,
-            username=username,
-            tid=tid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_id: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             username: Optional[pulumi.Input[str]] = None,
-             tid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if password is None:
-            raise TypeError("Missing 'password' argument")
-        if username is None:
-            raise TypeError("Missing 'username' argument")
-
-        _setter("instance_id", instance_id)
-        _setter("password", password)
-        _setter("username", username)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "username", username)
         if tid is not None:
-            _setter("tid", tid)
+            pulumi.set(__self__, "tid", tid)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -119,33 +94,14 @@ class _EnterpriseProxyState:
         :param pulumi.Input[str] tid: The ID of the tenant.
         :param pulumi.Input[str] username: The username of the database account.
         """
-        _EnterpriseProxyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_id=instance_id,
-            password=password,
-            tid=tid,
-            username=username,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_id: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             tid: Optional[pulumi.Input[str]] = None,
-             username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if tid is not None:
-            _setter("tid", tid)
+            pulumi.set(__self__, "tid", tid)
         if username is not None:
-            _setter("username", username)
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -417,10 +373,6 @@ class EnterpriseProxy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            EnterpriseProxyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

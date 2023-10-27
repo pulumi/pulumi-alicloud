@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -33,45 +33,16 @@ class DomainCertInfoArgs:
         :param pulumi.Input[str] ssl_protocol: Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
         :param pulumi.Input[str] ssl_pub: If You Enable HTTPS Here Key.
         """
-        DomainCertInfoArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cert_name=cert_name,
-            cert_type=cert_type,
-            ssl_pri=ssl_pri,
-            ssl_protocol=ssl_protocol,
-            ssl_pub=ssl_pub,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cert_name: Optional[pulumi.Input[str]] = None,
-             cert_type: Optional[pulumi.Input[str]] = None,
-             ssl_pri: Optional[pulumi.Input[str]] = None,
-             ssl_protocol: Optional[pulumi.Input[str]] = None,
-             ssl_pub: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cert_name is None and 'certName' in kwargs:
-            cert_name = kwargs['certName']
-        if cert_type is None and 'certType' in kwargs:
-            cert_type = kwargs['certType']
-        if ssl_pri is None and 'sslPri' in kwargs:
-            ssl_pri = kwargs['sslPri']
-        if ssl_protocol is None and 'sslProtocol' in kwargs:
-            ssl_protocol = kwargs['sslProtocol']
-        if ssl_pub is None and 'sslPub' in kwargs:
-            ssl_pub = kwargs['sslPub']
-
         if cert_name is not None:
-            _setter("cert_name", cert_name)
+            pulumi.set(__self__, "cert_name", cert_name)
         if cert_type is not None:
-            _setter("cert_type", cert_type)
+            pulumi.set(__self__, "cert_type", cert_type)
         if ssl_pri is not None:
-            _setter("ssl_pri", ssl_pri)
+            pulumi.set(__self__, "ssl_pri", ssl_pri)
         if ssl_protocol is not None:
-            _setter("ssl_protocol", ssl_protocol)
+            pulumi.set(__self__, "ssl_protocol", ssl_protocol)
         if ssl_pub is not None:
-            _setter("ssl_pub", ssl_pub)
+            pulumi.set(__self__, "ssl_pub", ssl_pub)
 
     @property
     @pulumi.getter(name="certName")
@@ -146,29 +117,8 @@ class DomainConfigFunctionArgArgs:
         :param pulumi.Input[str] arg_name: The name of arg.
         :param pulumi.Input[str] arg_value: The value of arg.
         """
-        DomainConfigFunctionArgArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            arg_name=arg_name,
-            arg_value=arg_value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             arg_name: Optional[pulumi.Input[str]] = None,
-             arg_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if arg_name is None and 'argName' in kwargs:
-            arg_name = kwargs['argName']
-        if arg_name is None:
-            raise TypeError("Missing 'arg_name' argument")
-        if arg_value is None and 'argValue' in kwargs:
-            arg_value = kwargs['argValue']
-        if arg_value is None:
-            raise TypeError("Missing 'arg_value' argument")
-
-        _setter("arg_name", arg_name)
-        _setter("arg_value", arg_value)
+        pulumi.set(__self__, "arg_name", arg_name)
+        pulumi.set(__self__, "arg_value", arg_value)
 
     @property
     @pulumi.getter(name="argName")
@@ -213,39 +163,12 @@ class DomainSourceArgs:
                * oss: OSS Bucket as a Source Station.
         :param pulumi.Input[str] enabled: The source status. Valid values: online, offline.
         """
-        DomainSourceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            content=content,
-            port=port,
-            priority=priority,
-            type=type,
-            enabled=enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             content: Optional[pulumi.Input[str]] = None,
-             port: Optional[pulumi.Input[int]] = None,
-             priority: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if content is None:
-            raise TypeError("Missing 'content' argument")
-        if port is None:
-            raise TypeError("Missing 'port' argument")
-        if priority is None:
-            raise TypeError("Missing 'priority' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("content", content)
-        _setter("port", port)
-        _setter("priority", priority)
-        _setter("type", type)
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "type", type)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter

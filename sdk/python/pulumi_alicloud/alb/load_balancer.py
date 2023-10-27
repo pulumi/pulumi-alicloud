@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -53,114 +53,33 @@ class LoadBalancerArgs:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         """
-        LoadBalancerArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address_type=address_type,
-            load_balancer_billing_config=load_balancer_billing_config,
-            load_balancer_edition=load_balancer_edition,
-            vpc_id=vpc_id,
-            zone_mappings=zone_mappings,
-            access_log_config=access_log_config,
-            address_allocated_mode=address_allocated_mode,
-            address_ip_version=address_ip_version,
-            bandwidth_package_id=bandwidth_package_id,
-            deletion_protection_enabled=deletion_protection_enabled,
-            dry_run=dry_run,
-            ipv6_address_type=ipv6_address_type,
-            load_balancer_name=load_balancer_name,
-            modification_protection_config=modification_protection_config,
-            resource_group_id=resource_group_id,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address_type: Optional[pulumi.Input[str]] = None,
-             load_balancer_billing_config: Optional[pulumi.Input['LoadBalancerLoadBalancerBillingConfigArgs']] = None,
-             load_balancer_edition: Optional[pulumi.Input[str]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]]] = None,
-             access_log_config: Optional[pulumi.Input['LoadBalancerAccessLogConfigArgs']] = None,
-             address_allocated_mode: Optional[pulumi.Input[str]] = None,
-             address_ip_version: Optional[pulumi.Input[str]] = None,
-             bandwidth_package_id: Optional[pulumi.Input[str]] = None,
-             deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             ipv6_address_type: Optional[pulumi.Input[str]] = None,
-             load_balancer_name: Optional[pulumi.Input[str]] = None,
-             modification_protection_config: Optional[pulumi.Input['LoadBalancerModificationProtectionConfigArgs']] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address_type is None and 'addressType' in kwargs:
-            address_type = kwargs['addressType']
-        if address_type is None:
-            raise TypeError("Missing 'address_type' argument")
-        if load_balancer_billing_config is None and 'loadBalancerBillingConfig' in kwargs:
-            load_balancer_billing_config = kwargs['loadBalancerBillingConfig']
-        if load_balancer_billing_config is None:
-            raise TypeError("Missing 'load_balancer_billing_config' argument")
-        if load_balancer_edition is None and 'loadBalancerEdition' in kwargs:
-            load_balancer_edition = kwargs['loadBalancerEdition']
-        if load_balancer_edition is None:
-            raise TypeError("Missing 'load_balancer_edition' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-        if zone_mappings is None and 'zoneMappings' in kwargs:
-            zone_mappings = kwargs['zoneMappings']
-        if zone_mappings is None:
-            raise TypeError("Missing 'zone_mappings' argument")
-        if access_log_config is None and 'accessLogConfig' in kwargs:
-            access_log_config = kwargs['accessLogConfig']
-        if address_allocated_mode is None and 'addressAllocatedMode' in kwargs:
-            address_allocated_mode = kwargs['addressAllocatedMode']
-        if address_ip_version is None and 'addressIpVersion' in kwargs:
-            address_ip_version = kwargs['addressIpVersion']
-        if bandwidth_package_id is None and 'bandwidthPackageId' in kwargs:
-            bandwidth_package_id = kwargs['bandwidthPackageId']
-        if deletion_protection_enabled is None and 'deletionProtectionEnabled' in kwargs:
-            deletion_protection_enabled = kwargs['deletionProtectionEnabled']
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-        if ipv6_address_type is None and 'ipv6AddressType' in kwargs:
-            ipv6_address_type = kwargs['ipv6AddressType']
-        if load_balancer_name is None and 'loadBalancerName' in kwargs:
-            load_balancer_name = kwargs['loadBalancerName']
-        if modification_protection_config is None and 'modificationProtectionConfig' in kwargs:
-            modification_protection_config = kwargs['modificationProtectionConfig']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-
-        _setter("address_type", address_type)
-        _setter("load_balancer_billing_config", load_balancer_billing_config)
-        _setter("load_balancer_edition", load_balancer_edition)
-        _setter("vpc_id", vpc_id)
-        _setter("zone_mappings", zone_mappings)
+        pulumi.set(__self__, "address_type", address_type)
+        pulumi.set(__self__, "load_balancer_billing_config", load_balancer_billing_config)
+        pulumi.set(__self__, "load_balancer_edition", load_balancer_edition)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "zone_mappings", zone_mappings)
         if access_log_config is not None:
-            _setter("access_log_config", access_log_config)
+            pulumi.set(__self__, "access_log_config", access_log_config)
         if address_allocated_mode is not None:
-            _setter("address_allocated_mode", address_allocated_mode)
+            pulumi.set(__self__, "address_allocated_mode", address_allocated_mode)
         if address_ip_version is not None:
-            _setter("address_ip_version", address_ip_version)
+            pulumi.set(__self__, "address_ip_version", address_ip_version)
         if bandwidth_package_id is not None:
-            _setter("bandwidth_package_id", bandwidth_package_id)
+            pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
         if deletion_protection_enabled is not None:
-            _setter("deletion_protection_enabled", deletion_protection_enabled)
+            pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if ipv6_address_type is not None:
-            _setter("ipv6_address_type", ipv6_address_type)
+            pulumi.set(__self__, "ipv6_address_type", ipv6_address_type)
         if load_balancer_name is not None:
-            _setter("load_balancer_name", load_balancer_name)
+            pulumi.set(__self__, "load_balancer_name", load_balancer_name)
         if modification_protection_config is not None:
-            _setter("modification_protection_config", modification_protection_config)
+            pulumi.set(__self__, "modification_protection_config", modification_protection_config)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="addressType")
@@ -403,125 +322,44 @@ class _LoadBalancerState:
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC) where the SLB instance is deployed.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]] zone_mappings: The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below.
         """
-        _LoadBalancerState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_log_config=access_log_config,
-            address_allocated_mode=address_allocated_mode,
-            address_ip_version=address_ip_version,
-            address_type=address_type,
-            bandwidth_package_id=bandwidth_package_id,
-            create_time=create_time,
-            deletion_protection_enabled=deletion_protection_enabled,
-            dns_name=dns_name,
-            dry_run=dry_run,
-            ipv6_address_type=ipv6_address_type,
-            load_balancer_billing_config=load_balancer_billing_config,
-            load_balancer_edition=load_balancer_edition,
-            load_balancer_name=load_balancer_name,
-            modification_protection_config=modification_protection_config,
-            resource_group_id=resource_group_id,
-            status=status,
-            tags=tags,
-            vpc_id=vpc_id,
-            zone_mappings=zone_mappings,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_log_config: Optional[pulumi.Input['LoadBalancerAccessLogConfigArgs']] = None,
-             address_allocated_mode: Optional[pulumi.Input[str]] = None,
-             address_ip_version: Optional[pulumi.Input[str]] = None,
-             address_type: Optional[pulumi.Input[str]] = None,
-             bandwidth_package_id: Optional[pulumi.Input[str]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
-             dns_name: Optional[pulumi.Input[str]] = None,
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             ipv6_address_type: Optional[pulumi.Input[str]] = None,
-             load_balancer_billing_config: Optional[pulumi.Input['LoadBalancerLoadBalancerBillingConfigArgs']] = None,
-             load_balancer_edition: Optional[pulumi.Input[str]] = None,
-             load_balancer_name: Optional[pulumi.Input[str]] = None,
-             modification_protection_config: Optional[pulumi.Input['LoadBalancerModificationProtectionConfigArgs']] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_log_config is None and 'accessLogConfig' in kwargs:
-            access_log_config = kwargs['accessLogConfig']
-        if address_allocated_mode is None and 'addressAllocatedMode' in kwargs:
-            address_allocated_mode = kwargs['addressAllocatedMode']
-        if address_ip_version is None and 'addressIpVersion' in kwargs:
-            address_ip_version = kwargs['addressIpVersion']
-        if address_type is None and 'addressType' in kwargs:
-            address_type = kwargs['addressType']
-        if bandwidth_package_id is None and 'bandwidthPackageId' in kwargs:
-            bandwidth_package_id = kwargs['bandwidthPackageId']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if deletion_protection_enabled is None and 'deletionProtectionEnabled' in kwargs:
-            deletion_protection_enabled = kwargs['deletionProtectionEnabled']
-        if dns_name is None and 'dnsName' in kwargs:
-            dns_name = kwargs['dnsName']
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-        if ipv6_address_type is None and 'ipv6AddressType' in kwargs:
-            ipv6_address_type = kwargs['ipv6AddressType']
-        if load_balancer_billing_config is None and 'loadBalancerBillingConfig' in kwargs:
-            load_balancer_billing_config = kwargs['loadBalancerBillingConfig']
-        if load_balancer_edition is None and 'loadBalancerEdition' in kwargs:
-            load_balancer_edition = kwargs['loadBalancerEdition']
-        if load_balancer_name is None and 'loadBalancerName' in kwargs:
-            load_balancer_name = kwargs['loadBalancerName']
-        if modification_protection_config is None and 'modificationProtectionConfig' in kwargs:
-            modification_protection_config = kwargs['modificationProtectionConfig']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if zone_mappings is None and 'zoneMappings' in kwargs:
-            zone_mappings = kwargs['zoneMappings']
-
         if access_log_config is not None:
-            _setter("access_log_config", access_log_config)
+            pulumi.set(__self__, "access_log_config", access_log_config)
         if address_allocated_mode is not None:
-            _setter("address_allocated_mode", address_allocated_mode)
+            pulumi.set(__self__, "address_allocated_mode", address_allocated_mode)
         if address_ip_version is not None:
-            _setter("address_ip_version", address_ip_version)
+            pulumi.set(__self__, "address_ip_version", address_ip_version)
         if address_type is not None:
-            _setter("address_type", address_type)
+            pulumi.set(__self__, "address_type", address_type)
         if bandwidth_package_id is not None:
-            _setter("bandwidth_package_id", bandwidth_package_id)
+            pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if deletion_protection_enabled is not None:
-            _setter("deletion_protection_enabled", deletion_protection_enabled)
+            pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
         if dns_name is not None:
-            _setter("dns_name", dns_name)
+            pulumi.set(__self__, "dns_name", dns_name)
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if ipv6_address_type is not None:
-            _setter("ipv6_address_type", ipv6_address_type)
+            pulumi.set(__self__, "ipv6_address_type", ipv6_address_type)
         if load_balancer_billing_config is not None:
-            _setter("load_balancer_billing_config", load_balancer_billing_config)
+            pulumi.set(__self__, "load_balancer_billing_config", load_balancer_billing_config)
         if load_balancer_edition is not None:
-            _setter("load_balancer_edition", load_balancer_edition)
+            pulumi.set(__self__, "load_balancer_edition", load_balancer_edition)
         if load_balancer_name is not None:
-            _setter("load_balancer_name", load_balancer_name)
+            pulumi.set(__self__, "load_balancer_name", load_balancer_name)
         if modification_protection_config is not None:
-            _setter("modification_protection_config", modification_protection_config)
+            pulumi.set(__self__, "modification_protection_config", modification_protection_config)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if vpc_id is not None:
-            _setter("vpc_id", vpc_id)
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if zone_mappings is not None:
-            _setter("zone_mappings", zone_mappings)
+            pulumi.set(__self__, "zone_mappings", zone_mappings)
 
     @property
     @pulumi.getter(name="accessLogConfig")
@@ -843,10 +681,6 @@ class LoadBalancer(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            LoadBalancerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -877,7 +711,6 @@ class LoadBalancer(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = LoadBalancerArgs.__new__(LoadBalancerArgs)
 
-            access_log_config = _utilities.configure(access_log_config, LoadBalancerAccessLogConfigArgs, True)
             __props__.__dict__["access_log_config"] = access_log_config
             __props__.__dict__["address_allocated_mode"] = address_allocated_mode
             __props__.__dict__["address_ip_version"] = address_ip_version
@@ -888,7 +721,6 @@ class LoadBalancer(pulumi.CustomResource):
             __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
             __props__.__dict__["dry_run"] = dry_run
             __props__.__dict__["ipv6_address_type"] = ipv6_address_type
-            load_balancer_billing_config = _utilities.configure(load_balancer_billing_config, LoadBalancerLoadBalancerBillingConfigArgs, True)
             if load_balancer_billing_config is None and not opts.urn:
                 raise TypeError("Missing required property 'load_balancer_billing_config'")
             __props__.__dict__["load_balancer_billing_config"] = load_balancer_billing_config
@@ -896,7 +728,6 @@ class LoadBalancer(pulumi.CustomResource):
                 raise TypeError("Missing required property 'load_balancer_edition'")
             __props__.__dict__["load_balancer_edition"] = load_balancer_edition
             __props__.__dict__["load_balancer_name"] = load_balancer_name
-            modification_protection_config = _utilities.configure(modification_protection_config, LoadBalancerModificationProtectionConfigArgs, True)
             __props__.__dict__["modification_protection_config"] = modification_protection_config
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["tags"] = tags

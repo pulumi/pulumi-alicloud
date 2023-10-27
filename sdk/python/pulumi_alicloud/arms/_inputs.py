@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -35,48 +35,13 @@ class DispatchRuleGroupRuleArgs:
         :param pulumi.Input[int] group_id: The ID of the group rule.
         :param pulumi.Input[int] repeat_interval: The silence period of repeated alerts. All alerts are repeatedly sent at specified intervals until the alerts are cleared. The minimum value is 61. Default to 600.
         """
-        DispatchRuleGroupRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            group_interval=group_interval,
-            group_wait_time=group_wait_time,
-            grouping_fields=grouping_fields,
-            group_id=group_id,
-            repeat_interval=repeat_interval,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             group_interval: Optional[pulumi.Input[int]] = None,
-             group_wait_time: Optional[pulumi.Input[int]] = None,
-             grouping_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             group_id: Optional[pulumi.Input[int]] = None,
-             repeat_interval: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if group_interval is None and 'groupInterval' in kwargs:
-            group_interval = kwargs['groupInterval']
-        if group_interval is None:
-            raise TypeError("Missing 'group_interval' argument")
-        if group_wait_time is None and 'groupWaitTime' in kwargs:
-            group_wait_time = kwargs['groupWaitTime']
-        if group_wait_time is None:
-            raise TypeError("Missing 'group_wait_time' argument")
-        if grouping_fields is None and 'groupingFields' in kwargs:
-            grouping_fields = kwargs['groupingFields']
-        if grouping_fields is None:
-            raise TypeError("Missing 'grouping_fields' argument")
-        if group_id is None and 'groupId' in kwargs:
-            group_id = kwargs['groupId']
-        if repeat_interval is None and 'repeatInterval' in kwargs:
-            repeat_interval = kwargs['repeatInterval']
-
-        _setter("group_interval", group_interval)
-        _setter("group_wait_time", group_wait_time)
-        _setter("grouping_fields", grouping_fields)
+        pulumi.set(__self__, "group_interval", group_interval)
+        pulumi.set(__self__, "group_wait_time", group_wait_time)
+        pulumi.set(__self__, "grouping_fields", grouping_fields)
         if group_id is not None:
-            _setter("group_id", group_id)
+            pulumi.set(__self__, "group_id", group_id)
         if repeat_interval is not None:
-            _setter("repeat_interval", repeat_interval)
+            pulumi.set(__self__, "repeat_interval", repeat_interval)
 
     @property
     @pulumi.getter(name="groupInterval")
@@ -146,22 +111,7 @@ class DispatchRuleLabelMatchExpressionGridArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs']]] label_match_expression_groups: Sets the dispatch rule. See `label_match_expression_groups` below.
         """
-        DispatchRuleLabelMatchExpressionGridArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            label_match_expression_groups=label_match_expression_groups,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             label_match_expression_groups: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if label_match_expression_groups is None and 'labelMatchExpressionGroups' in kwargs:
-            label_match_expression_groups = kwargs['labelMatchExpressionGroups']
-        if label_match_expression_groups is None:
-            raise TypeError("Missing 'label_match_expression_groups' argument")
-
-        _setter("label_match_expression_groups", label_match_expression_groups)
+        pulumi.set(__self__, "label_match_expression_groups", label_match_expression_groups)
 
     @property
     @pulumi.getter(name="labelMatchExpressionGroups")
@@ -183,22 +133,7 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs']]] label_match_expressions: Sets the dispatch rule. See `label_match_expressions` below.
         """
-        DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            label_match_expressions=label_match_expressions,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             label_match_expressions: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if label_match_expressions is None and 'labelMatchExpressions' in kwargs:
-            label_match_expressions = kwargs['labelMatchExpressions']
-        if label_match_expressions is None:
-            raise TypeError("Missing 'label_match_expressions' argument")
-
-        _setter("label_match_expressions", label_match_expressions)
+        pulumi.set(__self__, "label_match_expressions", label_match_expressions)
 
     @property
     @pulumi.getter(name="labelMatchExpressions")
@@ -234,30 +169,9 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExp
                * re: matches a regular expression.
         :param pulumi.Input[str] value: The value of the tag.
         """
-        DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            operator=operator,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[pulumi.Input[str]] = None,
-             operator: Optional[pulumi.Input[str]] = None,
-             value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if operator is None:
-            raise TypeError("Missing 'operator' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("key", key)
-        _setter("operator", operator)
-        _setter("value", value)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -315,29 +229,8 @@ class DispatchRuleNotifyRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notify_channels: The notification method. Valid values: dingTalk, sms, webhook, email, and wechat.
         :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleNotifyObjectArgs']]] notify_objects: Sets the notification object. See `notify_objects` below.
         """
-        DispatchRuleNotifyRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            notify_channels=notify_channels,
-            notify_objects=notify_objects,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             notify_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             notify_objects: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleNotifyObjectArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if notify_channels is None and 'notifyChannels' in kwargs:
-            notify_channels = kwargs['notifyChannels']
-        if notify_channels is None:
-            raise TypeError("Missing 'notify_channels' argument")
-        if notify_objects is None and 'notifyObjects' in kwargs:
-            notify_objects = kwargs['notifyObjects']
-        if notify_objects is None:
-            raise TypeError("Missing 'notify_objects' argument")
-
-        _setter("notify_channels", notify_channels)
-        _setter("notify_objects", notify_objects)
+        pulumi.set(__self__, "notify_channels", notify_channels)
+        pulumi.set(__self__, "notify_objects", notify_objects)
 
     @property
     @pulumi.getter(name="notifyChannels")
@@ -375,34 +268,9 @@ class DispatchRuleNotifyRuleNotifyObjectArgs:
         :param pulumi.Input[str] notify_object_id: The ID of the contact or contact group.
         :param pulumi.Input[str] notify_type: The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
         """
-        DispatchRuleNotifyRuleNotifyObjectArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            notify_object_id=notify_object_id,
-            notify_type=notify_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[pulumi.Input[str]] = None,
-             notify_object_id: Optional[pulumi.Input[str]] = None,
-             notify_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if notify_object_id is None and 'notifyObjectId' in kwargs:
-            notify_object_id = kwargs['notifyObjectId']
-        if notify_object_id is None:
-            raise TypeError("Missing 'notify_object_id' argument")
-        if notify_type is None and 'notifyType' in kwargs:
-            notify_type = kwargs['notifyType']
-        if notify_type is None:
-            raise TypeError("Missing 'notify_type' argument")
-
-        _setter("name", name)
-        _setter("notify_object_id", notify_object_id)
-        _setter("notify_type", notify_type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "notify_object_id", notify_object_id)
+        pulumi.set(__self__, "notify_type", notify_type)
 
     @property
     @pulumi.getter
@@ -450,23 +318,10 @@ class PrometheusAlertRuleAnnotationArgs:
         :param pulumi.Input[str] name: The name of the annotation.
         :param pulumi.Input[str] value: The value of the annotation.
         """
-        PrometheusAlertRuleAnnotationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[pulumi.Input[str]] = None,
-             value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -502,23 +357,10 @@ class PrometheusAlertRuleLabelArgs:
         :param pulumi.Input[str] name: The name of the label.
         :param pulumi.Input[str] value: The value of the label.
         """
-        PrometheusAlertRuleLabelArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[pulumi.Input[str]] = None,
-             value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter

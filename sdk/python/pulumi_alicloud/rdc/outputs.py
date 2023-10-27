@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -24,34 +24,9 @@ class GetOrganizationsOrganizationResult(dict):
         :param str organization_id: The first ID of the resource.
         :param str organization_name: Company name.
         """
-        GetOrganizationsOrganizationResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            organization_id=organization_id,
-            organization_name=organization_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             organization_id: Optional[str] = None,
-             organization_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if organization_id is None and 'organizationId' in kwargs:
-            organization_id = kwargs['organizationId']
-        if organization_id is None:
-            raise TypeError("Missing 'organization_id' argument")
-        if organization_name is None and 'organizationName' in kwargs:
-            organization_name = kwargs['organizationName']
-        if organization_name is None:
-            raise TypeError("Missing 'organization_name' argument")
-
-        _setter("id", id)
-        _setter("organization_id", organization_id)
-        _setter("organization_name", organization_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "organization_id", organization_id)
+        pulumi.set(__self__, "organization_name", organization_name)
 
     @property
     @pulumi.getter

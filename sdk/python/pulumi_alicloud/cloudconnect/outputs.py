@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -27,44 +27,11 @@ class GetNetworksNetworkResult(dict):
         :param bool is_default: IsDefault of the CCN instance.
         :param str name: Name of the CCN instance.
         """
-        GetNetworksNetworkResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cidr_block=cidr_block,
-            description=description,
-            id=id,
-            is_default=is_default,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cidr_block: Optional[str] = None,
-             description: Optional[str] = None,
-             id: Optional[str] = None,
-             is_default: Optional[bool] = None,
-             name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cidr_block is None and 'cidrBlock' in kwargs:
-            cidr_block = kwargs['cidrBlock']
-        if cidr_block is None:
-            raise TypeError("Missing 'cidr_block' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if is_default is None and 'isDefault' in kwargs:
-            is_default = kwargs['isDefault']
-        if is_default is None:
-            raise TypeError("Missing 'is_default' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("cidr_block", cidr_block)
-        _setter("description", description)
-        _setter("id", id)
-        _setter("is_default", is_default)
-        _setter("name", name)
+        pulumi.set(__self__, "cidr_block", cidr_block)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_default", is_default)
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="cidrBlock")

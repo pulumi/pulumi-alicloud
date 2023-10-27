@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TriggerArgs', 'Trigger']
@@ -39,60 +39,21 @@ class TriggerArgs:
         :param pulumi.Input[str] role: RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is "acs:ram::$account-id:role/$role-name". See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
         :param pulumi.Input[str] source_arn: Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
         """
-        TriggerArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            function=function,
-            service=service,
-            type=type,
-            config=config,
-            config_mns=config_mns,
-            name=name,
-            name_prefix=name_prefix,
-            role=role,
-            source_arn=source_arn,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             function: Optional[pulumi.Input[str]] = None,
-             service: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             config: Optional[pulumi.Input[str]] = None,
-             config_mns: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             name_prefix: Optional[pulumi.Input[str]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             source_arn: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if function is None:
-            raise TypeError("Missing 'function' argument")
-        if service is None:
-            raise TypeError("Missing 'service' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if config_mns is None and 'configMns' in kwargs:
-            config_mns = kwargs['configMns']
-        if name_prefix is None and 'namePrefix' in kwargs:
-            name_prefix = kwargs['namePrefix']
-        if source_arn is None and 'sourceArn' in kwargs:
-            source_arn = kwargs['sourceArn']
-
-        _setter("function", function)
-        _setter("service", service)
-        _setter("type", type)
+        pulumi.set(__self__, "function", function)
+        pulumi.set(__self__, "service", service)
+        pulumi.set(__self__, "type", type)
         if config is not None:
-            _setter("config", config)
+            pulumi.set(__self__, "config", config)
         if config_mns is not None:
-            _setter("config_mns", config_mns)
+            pulumi.set(__self__, "config_mns", config_mns)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if name_prefix is not None:
-            _setter("name_prefix", name_prefix)
+            pulumi.set(__self__, "name_prefix", name_prefix)
         if role is not None:
-            _setter("role", role)
+            pulumi.set(__self__, "role", role)
         if source_arn is not None:
-            _setter("source_arn", source_arn)
+            pulumi.set(__self__, "source_arn", source_arn)
 
     @property
     @pulumi.getter
@@ -239,69 +200,28 @@ class _TriggerState:
                > **NOTE:** type = cdn_events, available in 1.47.0+.
                > **NOTE:** type = eventbridge, available in 1.173.0+.
         """
-        _TriggerState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            config=config,
-            config_mns=config_mns,
-            function=function,
-            last_modified=last_modified,
-            name=name,
-            name_prefix=name_prefix,
-            role=role,
-            service=service,
-            source_arn=source_arn,
-            trigger_id=trigger_id,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             config: Optional[pulumi.Input[str]] = None,
-             config_mns: Optional[pulumi.Input[str]] = None,
-             function: Optional[pulumi.Input[str]] = None,
-             last_modified: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             name_prefix: Optional[pulumi.Input[str]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             service: Optional[pulumi.Input[str]] = None,
-             source_arn: Optional[pulumi.Input[str]] = None,
-             trigger_id: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if config_mns is None and 'configMns' in kwargs:
-            config_mns = kwargs['configMns']
-        if last_modified is None and 'lastModified' in kwargs:
-            last_modified = kwargs['lastModified']
-        if name_prefix is None and 'namePrefix' in kwargs:
-            name_prefix = kwargs['namePrefix']
-        if source_arn is None and 'sourceArn' in kwargs:
-            source_arn = kwargs['sourceArn']
-        if trigger_id is None and 'triggerId' in kwargs:
-            trigger_id = kwargs['triggerId']
-
         if config is not None:
-            _setter("config", config)
+            pulumi.set(__self__, "config", config)
         if config_mns is not None:
-            _setter("config_mns", config_mns)
+            pulumi.set(__self__, "config_mns", config_mns)
         if function is not None:
-            _setter("function", function)
+            pulumi.set(__self__, "function", function)
         if last_modified is not None:
-            _setter("last_modified", last_modified)
+            pulumi.set(__self__, "last_modified", last_modified)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if name_prefix is not None:
-            _setter("name_prefix", name_prefix)
+            pulumi.set(__self__, "name_prefix", name_prefix)
         if role is not None:
-            _setter("role", role)
+            pulumi.set(__self__, "role", role)
         if service is not None:
-            _setter("service", service)
+            pulumi.set(__self__, "service", service)
         if source_arn is not None:
-            _setter("source_arn", source_arn)
+            pulumi.set(__self__, "source_arn", source_arn)
         if trigger_id is not None:
-            _setter("trigger_id", trigger_id)
+            pulumi.set(__self__, "trigger_id", trigger_id)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -1359,10 +1279,6 @@ class Trigger(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TriggerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

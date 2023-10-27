@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['Ipv4GatewayArgs', 'Ipv4Gateway']
@@ -31,54 +31,19 @@ class Ipv4GatewayArgs:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of the current resource.
         """
-        Ipv4GatewayArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            vpc_id=vpc_id,
-            dry_run=dry_run,
-            enabled=enabled,
-            ipv4_gateway_description=ipv4_gateway_description,
-            ipv4_gateway_name=ipv4_gateway_name,
-            resource_group_id=resource_group_id,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             ipv4_gateway_description: Optional[pulumi.Input[str]] = None,
-             ipv4_gateway_name: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-        if ipv4_gateway_description is None and 'ipv4GatewayDescription' in kwargs:
-            ipv4_gateway_description = kwargs['ipv4GatewayDescription']
-        if ipv4_gateway_name is None and 'ipv4GatewayName' in kwargs:
-            ipv4_gateway_name = kwargs['ipv4GatewayName']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-
-        _setter("vpc_id", vpc_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if ipv4_gateway_description is not None:
-            _setter("ipv4_gateway_description", ipv4_gateway_description)
+            pulumi.set(__self__, "ipv4_gateway_description", ipv4_gateway_description)
         if ipv4_gateway_name is not None:
-            _setter("ipv4_gateway_name", ipv4_gateway_name)
+            pulumi.set(__self__, "ipv4_gateway_name", ipv4_gateway_name)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -193,75 +158,28 @@ class _Ipv4GatewayState:
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of the current resource.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC) where you want to create the IPv4 gateway. You can create only one IPv4 gateway in a VPC.
         """
-        _Ipv4GatewayState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            dry_run=dry_run,
-            enabled=enabled,
-            ipv4_gateway_description=ipv4_gateway_description,
-            ipv4_gateway_id=ipv4_gateway_id,
-            ipv4_gateway_name=ipv4_gateway_name,
-            ipv4_gateway_route_table_id=ipv4_gateway_route_table_id,
-            resource_group_id=resource_group_id,
-            status=status,
-            tags=tags,
-            vpc_id=vpc_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[pulumi.Input[str]] = None,
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             ipv4_gateway_description: Optional[pulumi.Input[str]] = None,
-             ipv4_gateway_id: Optional[pulumi.Input[str]] = None,
-             ipv4_gateway_name: Optional[pulumi.Input[str]] = None,
-             ipv4_gateway_route_table_id: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-        if ipv4_gateway_description is None and 'ipv4GatewayDescription' in kwargs:
-            ipv4_gateway_description = kwargs['ipv4GatewayDescription']
-        if ipv4_gateway_id is None and 'ipv4GatewayId' in kwargs:
-            ipv4_gateway_id = kwargs['ipv4GatewayId']
-        if ipv4_gateway_name is None and 'ipv4GatewayName' in kwargs:
-            ipv4_gateway_name = kwargs['ipv4GatewayName']
-        if ipv4_gateway_route_table_id is None and 'ipv4GatewayRouteTableId' in kwargs:
-            ipv4_gateway_route_table_id = kwargs['ipv4GatewayRouteTableId']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if ipv4_gateway_description is not None:
-            _setter("ipv4_gateway_description", ipv4_gateway_description)
+            pulumi.set(__self__, "ipv4_gateway_description", ipv4_gateway_description)
         if ipv4_gateway_id is not None:
-            _setter("ipv4_gateway_id", ipv4_gateway_id)
+            pulumi.set(__self__, "ipv4_gateway_id", ipv4_gateway_id)
         if ipv4_gateway_name is not None:
-            _setter("ipv4_gateway_name", ipv4_gateway_name)
+            pulumi.set(__self__, "ipv4_gateway_name", ipv4_gateway_name)
         if ipv4_gateway_route_table_id is not None:
-            _setter("ipv4_gateway_route_table_id", ipv4_gateway_route_table_id)
+            pulumi.set(__self__, "ipv4_gateway_route_table_id", ipv4_gateway_route_table_id)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if vpc_id is not None:
-            _setter("vpc_id", vpc_id)
+            pulumi.set(__self__, "vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="createTime")
@@ -521,10 +439,6 @@ class Ipv4Gateway(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            Ipv4GatewayArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

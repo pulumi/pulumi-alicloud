@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EndpointArgs', 'Endpoint']
@@ -28,74 +28,25 @@ class EndpointArgs:
         The set of arguments for constructing a Endpoint resource.
         :param pulumi.Input[str] endpoint_type: Type of endpoint.
         """
-        EndpointArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            db_cluster_id=db_cluster_id,
-            auto_add_new_nodes=auto_add_new_nodes,
-            db_endpoint_description=db_endpoint_description,
-            endpoint_config=endpoint_config,
-            endpoint_type=endpoint_type,
-            net_type=net_type,
-            nodes=nodes,
-            read_write_mode=read_write_mode,
-            ssl_auto_rotate=ssl_auto_rotate,
-            ssl_enabled=ssl_enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             db_cluster_id: Optional[pulumi.Input[str]] = None,
-             auto_add_new_nodes: Optional[pulumi.Input[str]] = None,
-             db_endpoint_description: Optional[pulumi.Input[str]] = None,
-             endpoint_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             endpoint_type: Optional[pulumi.Input[str]] = None,
-             net_type: Optional[pulumi.Input[str]] = None,
-             nodes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             read_write_mode: Optional[pulumi.Input[str]] = None,
-             ssl_auto_rotate: Optional[pulumi.Input[str]] = None,
-             ssl_enabled: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if db_cluster_id is None and 'dbClusterId' in kwargs:
-            db_cluster_id = kwargs['dbClusterId']
-        if db_cluster_id is None:
-            raise TypeError("Missing 'db_cluster_id' argument")
-        if auto_add_new_nodes is None and 'autoAddNewNodes' in kwargs:
-            auto_add_new_nodes = kwargs['autoAddNewNodes']
-        if db_endpoint_description is None and 'dbEndpointDescription' in kwargs:
-            db_endpoint_description = kwargs['dbEndpointDescription']
-        if endpoint_config is None and 'endpointConfig' in kwargs:
-            endpoint_config = kwargs['endpointConfig']
-        if endpoint_type is None and 'endpointType' in kwargs:
-            endpoint_type = kwargs['endpointType']
-        if net_type is None and 'netType' in kwargs:
-            net_type = kwargs['netType']
-        if read_write_mode is None and 'readWriteMode' in kwargs:
-            read_write_mode = kwargs['readWriteMode']
-        if ssl_auto_rotate is None and 'sslAutoRotate' in kwargs:
-            ssl_auto_rotate = kwargs['sslAutoRotate']
-        if ssl_enabled is None and 'sslEnabled' in kwargs:
-            ssl_enabled = kwargs['sslEnabled']
-
-        _setter("db_cluster_id", db_cluster_id)
+        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
         if auto_add_new_nodes is not None:
-            _setter("auto_add_new_nodes", auto_add_new_nodes)
+            pulumi.set(__self__, "auto_add_new_nodes", auto_add_new_nodes)
         if db_endpoint_description is not None:
-            _setter("db_endpoint_description", db_endpoint_description)
+            pulumi.set(__self__, "db_endpoint_description", db_endpoint_description)
         if endpoint_config is not None:
-            _setter("endpoint_config", endpoint_config)
+            pulumi.set(__self__, "endpoint_config", endpoint_config)
         if endpoint_type is not None:
-            _setter("endpoint_type", endpoint_type)
+            pulumi.set(__self__, "endpoint_type", endpoint_type)
         if net_type is not None:
-            _setter("net_type", net_type)
+            pulumi.set(__self__, "net_type", net_type)
         if nodes is not None:
-            _setter("nodes", nodes)
+            pulumi.set(__self__, "nodes", nodes)
         if read_write_mode is not None:
-            _setter("read_write_mode", read_write_mode)
+            pulumi.set(__self__, "read_write_mode", read_write_mode)
         if ssl_auto_rotate is not None:
-            _setter("ssl_auto_rotate", ssl_auto_rotate)
+            pulumi.set(__self__, "ssl_auto_rotate", ssl_auto_rotate)
         if ssl_enabled is not None:
-            _setter("ssl_enabled", ssl_enabled)
+            pulumi.set(__self__, "ssl_enabled", ssl_enabled)
 
     @property
     @pulumi.getter(name="dbClusterId")
@@ -215,97 +166,34 @@ class _EndpointState:
         :param pulumi.Input[str] ssl_connection_string: (Available in v1.121.0+) The SSL connection string.
         :param pulumi.Input[str] ssl_expire_time: (Available in v1.121.0+) The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         """
-        _EndpointState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto_add_new_nodes=auto_add_new_nodes,
-            db_cluster_id=db_cluster_id,
-            db_endpoint_description=db_endpoint_description,
-            db_endpoint_id=db_endpoint_id,
-            endpoint_config=endpoint_config,
-            endpoint_type=endpoint_type,
-            net_type=net_type,
-            nodes=nodes,
-            read_write_mode=read_write_mode,
-            ssl_auto_rotate=ssl_auto_rotate,
-            ssl_certificate_url=ssl_certificate_url,
-            ssl_connection_string=ssl_connection_string,
-            ssl_enabled=ssl_enabled,
-            ssl_expire_time=ssl_expire_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto_add_new_nodes: Optional[pulumi.Input[str]] = None,
-             db_cluster_id: Optional[pulumi.Input[str]] = None,
-             db_endpoint_description: Optional[pulumi.Input[str]] = None,
-             db_endpoint_id: Optional[pulumi.Input[str]] = None,
-             endpoint_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             endpoint_type: Optional[pulumi.Input[str]] = None,
-             net_type: Optional[pulumi.Input[str]] = None,
-             nodes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             read_write_mode: Optional[pulumi.Input[str]] = None,
-             ssl_auto_rotate: Optional[pulumi.Input[str]] = None,
-             ssl_certificate_url: Optional[pulumi.Input[str]] = None,
-             ssl_connection_string: Optional[pulumi.Input[str]] = None,
-             ssl_enabled: Optional[pulumi.Input[str]] = None,
-             ssl_expire_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_add_new_nodes is None and 'autoAddNewNodes' in kwargs:
-            auto_add_new_nodes = kwargs['autoAddNewNodes']
-        if db_cluster_id is None and 'dbClusterId' in kwargs:
-            db_cluster_id = kwargs['dbClusterId']
-        if db_endpoint_description is None and 'dbEndpointDescription' in kwargs:
-            db_endpoint_description = kwargs['dbEndpointDescription']
-        if db_endpoint_id is None and 'dbEndpointId' in kwargs:
-            db_endpoint_id = kwargs['dbEndpointId']
-        if endpoint_config is None and 'endpointConfig' in kwargs:
-            endpoint_config = kwargs['endpointConfig']
-        if endpoint_type is None and 'endpointType' in kwargs:
-            endpoint_type = kwargs['endpointType']
-        if net_type is None and 'netType' in kwargs:
-            net_type = kwargs['netType']
-        if read_write_mode is None and 'readWriteMode' in kwargs:
-            read_write_mode = kwargs['readWriteMode']
-        if ssl_auto_rotate is None and 'sslAutoRotate' in kwargs:
-            ssl_auto_rotate = kwargs['sslAutoRotate']
-        if ssl_certificate_url is None and 'sslCertificateUrl' in kwargs:
-            ssl_certificate_url = kwargs['sslCertificateUrl']
-        if ssl_connection_string is None and 'sslConnectionString' in kwargs:
-            ssl_connection_string = kwargs['sslConnectionString']
-        if ssl_enabled is None and 'sslEnabled' in kwargs:
-            ssl_enabled = kwargs['sslEnabled']
-        if ssl_expire_time is None and 'sslExpireTime' in kwargs:
-            ssl_expire_time = kwargs['sslExpireTime']
-
         if auto_add_new_nodes is not None:
-            _setter("auto_add_new_nodes", auto_add_new_nodes)
+            pulumi.set(__self__, "auto_add_new_nodes", auto_add_new_nodes)
         if db_cluster_id is not None:
-            _setter("db_cluster_id", db_cluster_id)
+            pulumi.set(__self__, "db_cluster_id", db_cluster_id)
         if db_endpoint_description is not None:
-            _setter("db_endpoint_description", db_endpoint_description)
+            pulumi.set(__self__, "db_endpoint_description", db_endpoint_description)
         if db_endpoint_id is not None:
-            _setter("db_endpoint_id", db_endpoint_id)
+            pulumi.set(__self__, "db_endpoint_id", db_endpoint_id)
         if endpoint_config is not None:
-            _setter("endpoint_config", endpoint_config)
+            pulumi.set(__self__, "endpoint_config", endpoint_config)
         if endpoint_type is not None:
-            _setter("endpoint_type", endpoint_type)
+            pulumi.set(__self__, "endpoint_type", endpoint_type)
         if net_type is not None:
-            _setter("net_type", net_type)
+            pulumi.set(__self__, "net_type", net_type)
         if nodes is not None:
-            _setter("nodes", nodes)
+            pulumi.set(__self__, "nodes", nodes)
         if read_write_mode is not None:
-            _setter("read_write_mode", read_write_mode)
+            pulumi.set(__self__, "read_write_mode", read_write_mode)
         if ssl_auto_rotate is not None:
-            _setter("ssl_auto_rotate", ssl_auto_rotate)
+            pulumi.set(__self__, "ssl_auto_rotate", ssl_auto_rotate)
         if ssl_certificate_url is not None:
-            _setter("ssl_certificate_url", ssl_certificate_url)
+            pulumi.set(__self__, "ssl_certificate_url", ssl_certificate_url)
         if ssl_connection_string is not None:
-            _setter("ssl_connection_string", ssl_connection_string)
+            pulumi.set(__self__, "ssl_connection_string", ssl_connection_string)
         if ssl_enabled is not None:
-            _setter("ssl_enabled", ssl_enabled)
+            pulumi.set(__self__, "ssl_enabled", ssl_enabled)
         if ssl_expire_time is not None:
-            _setter("ssl_expire_time", ssl_expire_time)
+            pulumi.set(__self__, "ssl_expire_time", ssl_expire_time)
 
     @property
     @pulumi.getter(name="autoAddNewNodes")
@@ -604,10 +492,6 @@ class Endpoint(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            EndpointArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -60,31 +60,12 @@ class ProvisionedProductOutput(dict):
         :param str output_key: The name of the output value defined in the template.
         :param str output_value: The content of the output value defined in the template.
         """
-        ProvisionedProductOutput._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            output_key=output_key,
-            output_value=output_value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[str] = None,
-             output_key: Optional[str] = None,
-             output_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if output_key is None and 'outputKey' in kwargs:
-            output_key = kwargs['outputKey']
-        if output_value is None and 'outputValue' in kwargs:
-            output_value = kwargs['outputValue']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if output_key is not None:
-            _setter("output_key", output_key)
+            pulumi.set(__self__, "output_key", output_key)
         if output_value is not None:
-            _setter("output_value", output_value)
+            pulumi.set(__self__, "output_value", output_value)
 
     @property
     @pulumi.getter
@@ -139,27 +120,10 @@ class ProvisionedProductParameter(dict):
         :param str parameter_key: The name of the parameter defined in the template.
         :param str parameter_value: The Template parameter value entered by the user.
         """
-        ProvisionedProductParameter._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            parameter_key=parameter_key,
-            parameter_value=parameter_value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             parameter_key: Optional[str] = None,
-             parameter_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if parameter_key is None and 'parameterKey' in kwargs:
-            parameter_key = kwargs['parameterKey']
-        if parameter_value is None and 'parameterValue' in kwargs:
-            parameter_value = kwargs['parameterValue']
-
         if parameter_key is not None:
-            _setter("parameter_key", parameter_key)
+            pulumi.set(__self__, "parameter_key", parameter_key)
         if parameter_value is not None:
-            _setter("parameter_value", parameter_value)
+            pulumi.set(__self__, "parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterKey")
@@ -201,74 +165,15 @@ class GetEndUserProductsEndUserProductResult(dict):
         :param str product_type: Type of product.The value is Ros, which indicates the resource orchestration service (ROS).
         :param str provider_name: Product provider.
         """
-        GetEndUserProductsEndUserProductResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            description=description,
-            has_default_launch_option=has_default_launch_option,
-            id=id,
-            product_arn=product_arn,
-            product_id=product_id,
-            product_name=product_name,
-            product_type=product_type,
-            provider_name=provider_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[str] = None,
-             description: Optional[str] = None,
-             has_default_launch_option: Optional[bool] = None,
-             id: Optional[str] = None,
-             product_arn: Optional[str] = None,
-             product_id: Optional[str] = None,
-             product_name: Optional[str] = None,
-             product_type: Optional[str] = None,
-             provider_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if has_default_launch_option is None and 'hasDefaultLaunchOption' in kwargs:
-            has_default_launch_option = kwargs['hasDefaultLaunchOption']
-        if has_default_launch_option is None:
-            raise TypeError("Missing 'has_default_launch_option' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if product_arn is None and 'productArn' in kwargs:
-            product_arn = kwargs['productArn']
-        if product_arn is None:
-            raise TypeError("Missing 'product_arn' argument")
-        if product_id is None and 'productId' in kwargs:
-            product_id = kwargs['productId']
-        if product_id is None:
-            raise TypeError("Missing 'product_id' argument")
-        if product_name is None and 'productName' in kwargs:
-            product_name = kwargs['productName']
-        if product_name is None:
-            raise TypeError("Missing 'product_name' argument")
-        if product_type is None and 'productType' in kwargs:
-            product_type = kwargs['productType']
-        if product_type is None:
-            raise TypeError("Missing 'product_type' argument")
-        if provider_name is None and 'providerName' in kwargs:
-            provider_name = kwargs['providerName']
-        if provider_name is None:
-            raise TypeError("Missing 'provider_name' argument")
-
-        _setter("create_time", create_time)
-        _setter("description", description)
-        _setter("has_default_launch_option", has_default_launch_option)
-        _setter("id", id)
-        _setter("product_arn", product_arn)
-        _setter("product_id", product_id)
-        _setter("product_name", product_name)
-        _setter("product_type", product_type)
-        _setter("provider_name", provider_name)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "has_default_launch_option", has_default_launch_option)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "product_arn", product_arn)
+        pulumi.set(__self__, "product_id", product_id)
+        pulumi.set(__self__, "product_name", product_name)
+        pulumi.set(__self__, "product_type", product_type)
+        pulumi.set(__self__, "provider_name", provider_name)
 
     @property
     @pulumi.getter(name="createTime")
@@ -356,41 +261,10 @@ class GetLaunchOptionsLaunchOptionResult(dict):
         :param str portfolio_id: Product mix ID.
         :param str portfolio_name: Product portfolio name.
         """
-        GetLaunchOptionsLaunchOptionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            constraint_summaries=constraint_summaries,
-            id=id,
-            portfolio_id=portfolio_id,
-            portfolio_name=portfolio_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             constraint_summaries: Optional[Sequence['outputs.GetLaunchOptionsLaunchOptionConstraintSummaryResult']] = None,
-             id: Optional[str] = None,
-             portfolio_id: Optional[str] = None,
-             portfolio_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if constraint_summaries is None and 'constraintSummaries' in kwargs:
-            constraint_summaries = kwargs['constraintSummaries']
-        if constraint_summaries is None:
-            raise TypeError("Missing 'constraint_summaries' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if portfolio_id is None and 'portfolioId' in kwargs:
-            portfolio_id = kwargs['portfolioId']
-        if portfolio_id is None:
-            raise TypeError("Missing 'portfolio_id' argument")
-        if portfolio_name is None and 'portfolioName' in kwargs:
-            portfolio_name = kwargs['portfolioName']
-        if portfolio_name is None:
-            raise TypeError("Missing 'portfolio_name' argument")
-
-        _setter("constraint_summaries", constraint_summaries)
-        _setter("id", id)
-        _setter("portfolio_id", portfolio_id)
-        _setter("portfolio_name", portfolio_name)
+        pulumi.set(__self__, "constraint_summaries", constraint_summaries)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "portfolio_id", portfolio_id)
+        pulumi.set(__self__, "portfolio_name", portfolio_name)
 
     @property
     @pulumi.getter(name="constraintSummaries")
@@ -434,27 +308,8 @@ class GetLaunchOptionsLaunchOptionConstraintSummaryResult(dict):
         :param str constraint_type: Constraint type.The value is Launch, which indicates that the constraint is started.
         :param str description: Constraint description.
         """
-        GetLaunchOptionsLaunchOptionConstraintSummaryResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            constraint_type=constraint_type,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             constraint_type: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if constraint_type is None and 'constraintType' in kwargs:
-            constraint_type = kwargs['constraintType']
-        if constraint_type is None:
-            raise TypeError("Missing 'constraint_type' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-
-        _setter("constraint_type", constraint_type)
-        _setter("description", description)
+        pulumi.set(__self__, "constraint_type", constraint_type)
+        pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter(name="constraintType")
@@ -486,41 +341,10 @@ class GetLaunchOptionsOptionResult(dict):
         :param str portfolio_id: Product mix ID.
         :param str portfolio_name: Product portfolio name.
         """
-        GetLaunchOptionsOptionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            constraint_summaries=constraint_summaries,
-            id=id,
-            portfolio_id=portfolio_id,
-            portfolio_name=portfolio_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             constraint_summaries: Optional[Sequence['outputs.GetLaunchOptionsOptionConstraintSummaryResult']] = None,
-             id: Optional[str] = None,
-             portfolio_id: Optional[str] = None,
-             portfolio_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if constraint_summaries is None and 'constraintSummaries' in kwargs:
-            constraint_summaries = kwargs['constraintSummaries']
-        if constraint_summaries is None:
-            raise TypeError("Missing 'constraint_summaries' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if portfolio_id is None and 'portfolioId' in kwargs:
-            portfolio_id = kwargs['portfolioId']
-        if portfolio_id is None:
-            raise TypeError("Missing 'portfolio_id' argument")
-        if portfolio_name is None and 'portfolioName' in kwargs:
-            portfolio_name = kwargs['portfolioName']
-        if portfolio_name is None:
-            raise TypeError("Missing 'portfolio_name' argument")
-
-        _setter("constraint_summaries", constraint_summaries)
-        _setter("id", id)
-        _setter("portfolio_id", portfolio_id)
-        _setter("portfolio_name", portfolio_name)
+        pulumi.set(__self__, "constraint_summaries", constraint_summaries)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "portfolio_id", portfolio_id)
+        pulumi.set(__self__, "portfolio_name", portfolio_name)
 
     @property
     @pulumi.getter(name="constraintSummaries")
@@ -564,27 +388,8 @@ class GetLaunchOptionsOptionConstraintSummaryResult(dict):
         :param str constraint_type: Constraint type.The value is Launch, which indicates that the constraint is started.
         :param str description: Constraint description.
         """
-        GetLaunchOptionsOptionConstraintSummaryResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            constraint_type=constraint_type,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             constraint_type: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if constraint_type is None and 'constraintType' in kwargs:
-            constraint_type = kwargs['constraintType']
-        if constraint_type is None:
-            raise TypeError("Missing 'constraint_type' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-
-        _setter("constraint_type", constraint_type)
-        _setter("description", description)
+        pulumi.set(__self__, "constraint_type", constraint_type)
+        pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter(name="constraintType")
@@ -622,60 +427,13 @@ class GetPortfoliosPortfolioResult(dict):
         :param str portfolio_name: The name of the portfolio
         :param str provider_name: The provider name of the portfolio
         """
-        GetPortfoliosPortfolioResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            description=description,
-            id=id,
-            portfolio_arn=portfolio_arn,
-            portfolio_id=portfolio_id,
-            portfolio_name=portfolio_name,
-            provider_name=provider_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[str] = None,
-             description: Optional[str] = None,
-             id: Optional[str] = None,
-             portfolio_arn: Optional[str] = None,
-             portfolio_id: Optional[str] = None,
-             portfolio_name: Optional[str] = None,
-             provider_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if portfolio_arn is None and 'portfolioArn' in kwargs:
-            portfolio_arn = kwargs['portfolioArn']
-        if portfolio_arn is None:
-            raise TypeError("Missing 'portfolio_arn' argument")
-        if portfolio_id is None and 'portfolioId' in kwargs:
-            portfolio_id = kwargs['portfolioId']
-        if portfolio_id is None:
-            raise TypeError("Missing 'portfolio_id' argument")
-        if portfolio_name is None and 'portfolioName' in kwargs:
-            portfolio_name = kwargs['portfolioName']
-        if portfolio_name is None:
-            raise TypeError("Missing 'portfolio_name' argument")
-        if provider_name is None and 'providerName' in kwargs:
-            provider_name = kwargs['providerName']
-        if provider_name is None:
-            raise TypeError("Missing 'provider_name' argument")
-
-        _setter("create_time", create_time)
-        _setter("description", description)
-        _setter("id", id)
-        _setter("portfolio_arn", portfolio_arn)
-        _setter("portfolio_id", portfolio_id)
-        _setter("portfolio_name", portfolio_name)
-        _setter("provider_name", provider_name)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "portfolio_arn", portfolio_arn)
+        pulumi.set(__self__, "portfolio_id", portfolio_id)
+        pulumi.set(__self__, "portfolio_name", portfolio_name)
+        pulumi.set(__self__, "provider_name", provider_name)
 
     @property
     @pulumi.getter(name="createTime")
@@ -757,74 +515,15 @@ class GetProductAsEndUsersUserResult(dict):
         :param str product_type: Type of product.The value is Ros, which indicates the resource orchestration service (ROS).
         :param str provider_name: Product provider.
         """
-        GetProductAsEndUsersUserResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            description=description,
-            has_default_launch_option=has_default_launch_option,
-            id=id,
-            product_arn=product_arn,
-            product_id=product_id,
-            product_name=product_name,
-            product_type=product_type,
-            provider_name=provider_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[str] = None,
-             description: Optional[str] = None,
-             has_default_launch_option: Optional[bool] = None,
-             id: Optional[str] = None,
-             product_arn: Optional[str] = None,
-             product_id: Optional[str] = None,
-             product_name: Optional[str] = None,
-             product_type: Optional[str] = None,
-             provider_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if has_default_launch_option is None and 'hasDefaultLaunchOption' in kwargs:
-            has_default_launch_option = kwargs['hasDefaultLaunchOption']
-        if has_default_launch_option is None:
-            raise TypeError("Missing 'has_default_launch_option' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if product_arn is None and 'productArn' in kwargs:
-            product_arn = kwargs['productArn']
-        if product_arn is None:
-            raise TypeError("Missing 'product_arn' argument")
-        if product_id is None and 'productId' in kwargs:
-            product_id = kwargs['productId']
-        if product_id is None:
-            raise TypeError("Missing 'product_id' argument")
-        if product_name is None and 'productName' in kwargs:
-            product_name = kwargs['productName']
-        if product_name is None:
-            raise TypeError("Missing 'product_name' argument")
-        if product_type is None and 'productType' in kwargs:
-            product_type = kwargs['productType']
-        if product_type is None:
-            raise TypeError("Missing 'product_type' argument")
-        if provider_name is None and 'providerName' in kwargs:
-            provider_name = kwargs['providerName']
-        if provider_name is None:
-            raise TypeError("Missing 'provider_name' argument")
-
-        _setter("create_time", create_time)
-        _setter("description", description)
-        _setter("has_default_launch_option", has_default_launch_option)
-        _setter("id", id)
-        _setter("product_arn", product_arn)
-        _setter("product_id", product_id)
-        _setter("product_name", product_name)
-        _setter("product_type", product_type)
-        _setter("provider_name", provider_name)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "has_default_launch_option", has_default_launch_option)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "product_arn", product_arn)
+        pulumi.set(__self__, "product_id", product_id)
+        pulumi.set(__self__, "product_name", product_name)
+        pulumi.set(__self__, "product_type", product_type)
+        pulumi.set(__self__, "provider_name", provider_name)
 
     @property
     @pulumi.getter(name="createTime")
@@ -924,77 +623,16 @@ class GetProductVersionsProductVersionResult(dict):
         :param str template_type: Template Type
         :param str template_url: Template URL
         """
-        GetProductVersionsProductVersionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            active=active,
-            create_time=create_time,
-            description=description,
-            guidance=guidance,
-            id=id,
-            product_id=product_id,
-            product_version_id=product_version_id,
-            product_version_name=product_version_name,
-            template_type=template_type,
-            template_url=template_url,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             active: Optional[bool] = None,
-             create_time: Optional[str] = None,
-             description: Optional[str] = None,
-             guidance: Optional[str] = None,
-             id: Optional[str] = None,
-             product_id: Optional[str] = None,
-             product_version_id: Optional[str] = None,
-             product_version_name: Optional[str] = None,
-             template_type: Optional[str] = None,
-             template_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if active is None:
-            raise TypeError("Missing 'active' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if guidance is None:
-            raise TypeError("Missing 'guidance' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if product_id is None and 'productId' in kwargs:
-            product_id = kwargs['productId']
-        if product_id is None:
-            raise TypeError("Missing 'product_id' argument")
-        if product_version_id is None and 'productVersionId' in kwargs:
-            product_version_id = kwargs['productVersionId']
-        if product_version_id is None:
-            raise TypeError("Missing 'product_version_id' argument")
-        if product_version_name is None and 'productVersionName' in kwargs:
-            product_version_name = kwargs['productVersionName']
-        if product_version_name is None:
-            raise TypeError("Missing 'product_version_name' argument")
-        if template_type is None and 'templateType' in kwargs:
-            template_type = kwargs['templateType']
-        if template_type is None:
-            raise TypeError("Missing 'template_type' argument")
-        if template_url is None and 'templateUrl' in kwargs:
-            template_url = kwargs['templateUrl']
-        if template_url is None:
-            raise TypeError("Missing 'template_url' argument")
-
-        _setter("active", active)
-        _setter("create_time", create_time)
-        _setter("description", description)
-        _setter("guidance", guidance)
-        _setter("id", id)
-        _setter("product_id", product_id)
-        _setter("product_version_id", product_version_id)
-        _setter("product_version_name", product_version_name)
-        _setter("template_type", template_type)
-        _setter("template_url", template_url)
+        pulumi.set(__self__, "active", active)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "guidance", guidance)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "product_id", product_id)
+        pulumi.set(__self__, "product_version_id", product_version_id)
+        pulumi.set(__self__, "product_version_name", product_version_name)
+        pulumi.set(__self__, "template_type", template_type)
+        pulumi.set(__self__, "template_url", template_url)
 
     @property
     @pulumi.getter
@@ -1102,77 +740,16 @@ class GetProductVersionsVersionResult(dict):
         :param str template_type: Template Type
         :param str template_url: Template URL
         """
-        GetProductVersionsVersionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            active=active,
-            create_time=create_time,
-            description=description,
-            guidance=guidance,
-            id=id,
-            product_id=product_id,
-            product_version_id=product_version_id,
-            product_version_name=product_version_name,
-            template_type=template_type,
-            template_url=template_url,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             active: Optional[bool] = None,
-             create_time: Optional[str] = None,
-             description: Optional[str] = None,
-             guidance: Optional[str] = None,
-             id: Optional[str] = None,
-             product_id: Optional[str] = None,
-             product_version_id: Optional[str] = None,
-             product_version_name: Optional[str] = None,
-             template_type: Optional[str] = None,
-             template_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if active is None:
-            raise TypeError("Missing 'active' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if guidance is None:
-            raise TypeError("Missing 'guidance' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if product_id is None and 'productId' in kwargs:
-            product_id = kwargs['productId']
-        if product_id is None:
-            raise TypeError("Missing 'product_id' argument")
-        if product_version_id is None and 'productVersionId' in kwargs:
-            product_version_id = kwargs['productVersionId']
-        if product_version_id is None:
-            raise TypeError("Missing 'product_version_id' argument")
-        if product_version_name is None and 'productVersionName' in kwargs:
-            product_version_name = kwargs['productVersionName']
-        if product_version_name is None:
-            raise TypeError("Missing 'product_version_name' argument")
-        if template_type is None and 'templateType' in kwargs:
-            template_type = kwargs['templateType']
-        if template_type is None:
-            raise TypeError("Missing 'template_type' argument")
-        if template_url is None and 'templateUrl' in kwargs:
-            template_url = kwargs['templateUrl']
-        if template_url is None:
-            raise TypeError("Missing 'template_url' argument")
-
-        _setter("active", active)
-        _setter("create_time", create_time)
-        _setter("description", description)
-        _setter("guidance", guidance)
-        _setter("id", id)
-        _setter("product_id", product_id)
-        _setter("product_version_id", product_version_id)
-        _setter("product_version_name", product_version_name)
-        _setter("template_type", template_type)
-        _setter("template_url", template_url)
+        pulumi.set(__self__, "active", active)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "guidance", guidance)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "product_id", product_id)
+        pulumi.set(__self__, "product_version_id", product_version_id)
+        pulumi.set(__self__, "product_version_name", product_version_name)
+        pulumi.set(__self__, "template_type", template_type)
+        pulumi.set(__self__, "template_url", template_url)
 
     @property
     @pulumi.getter
@@ -1302,165 +879,30 @@ class GetProvisionedProductsProductResult(dict):
         :param str status: Instance status
         :param str status_message: The status message of the product instance
         """
-        GetProvisionedProductsProductResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            id=id,
-            last_provisioning_task_id=last_provisioning_task_id,
-            last_successful_provisioning_task_id=last_successful_provisioning_task_id,
-            last_task_id=last_task_id,
-            outputs=outputs,
-            owner_principal_id=owner_principal_id,
-            owner_principal_type=owner_principal_type,
-            parameters=parameters,
-            portfolio_id=portfolio_id,
-            product_id=product_id,
-            product_name=product_name,
-            product_version_id=product_version_id,
-            product_version_name=product_version_name,
-            provisioned_product_arn=provisioned_product_arn,
-            provisioned_product_id=provisioned_product_id,
-            provisioned_product_name=provisioned_product_name,
-            provisioned_product_type=provisioned_product_type,
-            stack_id=stack_id,
-            stack_region_id=stack_region_id,
-            status=status,
-            status_message=status_message,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[str] = None,
-             id: Optional[str] = None,
-             last_provisioning_task_id: Optional[str] = None,
-             last_successful_provisioning_task_id: Optional[str] = None,
-             last_task_id: Optional[str] = None,
-             outputs: Optional[Sequence['outputs.GetProvisionedProductsProductOutputResult']] = None,
-             owner_principal_id: Optional[str] = None,
-             owner_principal_type: Optional[str] = None,
-             parameters: Optional[Sequence['outputs.GetProvisionedProductsProductParameterResult']] = None,
-             portfolio_id: Optional[str] = None,
-             product_id: Optional[str] = None,
-             product_name: Optional[str] = None,
-             product_version_id: Optional[str] = None,
-             product_version_name: Optional[str] = None,
-             provisioned_product_arn: Optional[str] = None,
-             provisioned_product_id: Optional[str] = None,
-             provisioned_product_name: Optional[str] = None,
-             provisioned_product_type: Optional[str] = None,
-             stack_id: Optional[str] = None,
-             stack_region_id: Optional[str] = None,
-             status: Optional[str] = None,
-             status_message: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if last_provisioning_task_id is None and 'lastProvisioningTaskId' in kwargs:
-            last_provisioning_task_id = kwargs['lastProvisioningTaskId']
-        if last_provisioning_task_id is None:
-            raise TypeError("Missing 'last_provisioning_task_id' argument")
-        if last_successful_provisioning_task_id is None and 'lastSuccessfulProvisioningTaskId' in kwargs:
-            last_successful_provisioning_task_id = kwargs['lastSuccessfulProvisioningTaskId']
-        if last_successful_provisioning_task_id is None:
-            raise TypeError("Missing 'last_successful_provisioning_task_id' argument")
-        if last_task_id is None and 'lastTaskId' in kwargs:
-            last_task_id = kwargs['lastTaskId']
-        if last_task_id is None:
-            raise TypeError("Missing 'last_task_id' argument")
-        if outputs is None:
-            raise TypeError("Missing 'outputs' argument")
-        if owner_principal_id is None and 'ownerPrincipalId' in kwargs:
-            owner_principal_id = kwargs['ownerPrincipalId']
-        if owner_principal_id is None:
-            raise TypeError("Missing 'owner_principal_id' argument")
-        if owner_principal_type is None and 'ownerPrincipalType' in kwargs:
-            owner_principal_type = kwargs['ownerPrincipalType']
-        if owner_principal_type is None:
-            raise TypeError("Missing 'owner_principal_type' argument")
-        if parameters is None:
-            raise TypeError("Missing 'parameters' argument")
-        if portfolio_id is None and 'portfolioId' in kwargs:
-            portfolio_id = kwargs['portfolioId']
-        if portfolio_id is None:
-            raise TypeError("Missing 'portfolio_id' argument")
-        if product_id is None and 'productId' in kwargs:
-            product_id = kwargs['productId']
-        if product_id is None:
-            raise TypeError("Missing 'product_id' argument")
-        if product_name is None and 'productName' in kwargs:
-            product_name = kwargs['productName']
-        if product_name is None:
-            raise TypeError("Missing 'product_name' argument")
-        if product_version_id is None and 'productVersionId' in kwargs:
-            product_version_id = kwargs['productVersionId']
-        if product_version_id is None:
-            raise TypeError("Missing 'product_version_id' argument")
-        if product_version_name is None and 'productVersionName' in kwargs:
-            product_version_name = kwargs['productVersionName']
-        if product_version_name is None:
-            raise TypeError("Missing 'product_version_name' argument")
-        if provisioned_product_arn is None and 'provisionedProductArn' in kwargs:
-            provisioned_product_arn = kwargs['provisionedProductArn']
-        if provisioned_product_arn is None:
-            raise TypeError("Missing 'provisioned_product_arn' argument")
-        if provisioned_product_id is None and 'provisionedProductId' in kwargs:
-            provisioned_product_id = kwargs['provisionedProductId']
-        if provisioned_product_id is None:
-            raise TypeError("Missing 'provisioned_product_id' argument")
-        if provisioned_product_name is None and 'provisionedProductName' in kwargs:
-            provisioned_product_name = kwargs['provisionedProductName']
-        if provisioned_product_name is None:
-            raise TypeError("Missing 'provisioned_product_name' argument")
-        if provisioned_product_type is None and 'provisionedProductType' in kwargs:
-            provisioned_product_type = kwargs['provisionedProductType']
-        if provisioned_product_type is None:
-            raise TypeError("Missing 'provisioned_product_type' argument")
-        if stack_id is None and 'stackId' in kwargs:
-            stack_id = kwargs['stackId']
-        if stack_id is None:
-            raise TypeError("Missing 'stack_id' argument")
-        if stack_region_id is None and 'stackRegionId' in kwargs:
-            stack_region_id = kwargs['stackRegionId']
-        if stack_region_id is None:
-            raise TypeError("Missing 'stack_region_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if status_message is None and 'statusMessage' in kwargs:
-            status_message = kwargs['statusMessage']
-        if status_message is None:
-            raise TypeError("Missing 'status_message' argument")
-
-        _setter("create_time", create_time)
-        _setter("id", id)
-        _setter("last_provisioning_task_id", last_provisioning_task_id)
-        _setter("last_successful_provisioning_task_id", last_successful_provisioning_task_id)
-        _setter("last_task_id", last_task_id)
-        _setter("outputs", outputs)
-        _setter("owner_principal_id", owner_principal_id)
-        _setter("owner_principal_type", owner_principal_type)
-        _setter("parameters", parameters)
-        _setter("portfolio_id", portfolio_id)
-        _setter("product_id", product_id)
-        _setter("product_name", product_name)
-        _setter("product_version_id", product_version_id)
-        _setter("product_version_name", product_version_name)
-        _setter("provisioned_product_arn", provisioned_product_arn)
-        _setter("provisioned_product_id", provisioned_product_id)
-        _setter("provisioned_product_name", provisioned_product_name)
-        _setter("provisioned_product_type", provisioned_product_type)
-        _setter("stack_id", stack_id)
-        _setter("stack_region_id", stack_region_id)
-        _setter("status", status)
-        _setter("status_message", status_message)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "last_provisioning_task_id", last_provisioning_task_id)
+        pulumi.set(__self__, "last_successful_provisioning_task_id", last_successful_provisioning_task_id)
+        pulumi.set(__self__, "last_task_id", last_task_id)
+        pulumi.set(__self__, "outputs", outputs)
+        pulumi.set(__self__, "owner_principal_id", owner_principal_id)
+        pulumi.set(__self__, "owner_principal_type", owner_principal_type)
+        pulumi.set(__self__, "parameters", parameters)
+        pulumi.set(__self__, "portfolio_id", portfolio_id)
+        pulumi.set(__self__, "product_id", product_id)
+        pulumi.set(__self__, "product_name", product_name)
+        pulumi.set(__self__, "product_version_id", product_version_id)
+        pulumi.set(__self__, "product_version_name", product_version_name)
+        pulumi.set(__self__, "provisioned_product_arn", provisioned_product_arn)
+        pulumi.set(__self__, "provisioned_product_id", provisioned_product_id)
+        pulumi.set(__self__, "provisioned_product_name", provisioned_product_name)
+        pulumi.set(__self__, "provisioned_product_type", provisioned_product_type)
+        pulumi.set(__self__, "stack_id", stack_id)
+        pulumi.set(__self__, "stack_region_id", stack_region_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "status_message", status_message)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="createTime")
@@ -1641,34 +1083,9 @@ class GetProvisionedProductsProductOutputResult(dict):
                  description: str,
                  output_key: str,
                  output_value: str):
-        GetProvisionedProductsProductOutputResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            output_key=output_key,
-            output_value=output_value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[str] = None,
-             output_key: Optional[str] = None,
-             output_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if output_key is None and 'outputKey' in kwargs:
-            output_key = kwargs['outputKey']
-        if output_key is None:
-            raise TypeError("Missing 'output_key' argument")
-        if output_value is None and 'outputValue' in kwargs:
-            output_value = kwargs['outputValue']
-        if output_value is None:
-            raise TypeError("Missing 'output_value' argument")
-
-        _setter("description", description)
-        _setter("output_key", output_key)
-        _setter("output_value", output_value)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "output_key", output_key)
+        pulumi.set(__self__, "output_value", output_value)
 
     @property
     @pulumi.getter
@@ -1691,29 +1108,8 @@ class GetProvisionedProductsProductParameterResult(dict):
     def __init__(__self__, *,
                  parameter_key: str,
                  parameter_value: str):
-        GetProvisionedProductsProductParameterResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            parameter_key=parameter_key,
-            parameter_value=parameter_value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             parameter_key: Optional[str] = None,
-             parameter_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if parameter_key is None and 'parameterKey' in kwargs:
-            parameter_key = kwargs['parameterKey']
-        if parameter_key is None:
-            raise TypeError("Missing 'parameter_key' argument")
-        if parameter_value is None and 'parameterValue' in kwargs:
-            parameter_value = kwargs['parameterValue']
-        if parameter_value is None:
-            raise TypeError("Missing 'parameter_value' argument")
-
-        _setter("parameter_key", parameter_key)
-        _setter("parameter_value", parameter_value)
+        pulumi.set(__self__, "parameter_key", parameter_key)
+        pulumi.set(__self__, "parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterKey")
@@ -1773,165 +1169,30 @@ class GetProvisionedProductsProvisionedProductResult(dict):
         :param str status: Instance status
         :param str status_message: The status message of the product instance
         """
-        GetProvisionedProductsProvisionedProductResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            id=id,
-            last_provisioning_task_id=last_provisioning_task_id,
-            last_successful_provisioning_task_id=last_successful_provisioning_task_id,
-            last_task_id=last_task_id,
-            outputs=outputs,
-            owner_principal_id=owner_principal_id,
-            owner_principal_type=owner_principal_type,
-            parameters=parameters,
-            portfolio_id=portfolio_id,
-            product_id=product_id,
-            product_name=product_name,
-            product_version_id=product_version_id,
-            product_version_name=product_version_name,
-            provisioned_product_arn=provisioned_product_arn,
-            provisioned_product_id=provisioned_product_id,
-            provisioned_product_name=provisioned_product_name,
-            provisioned_product_type=provisioned_product_type,
-            stack_id=stack_id,
-            stack_region_id=stack_region_id,
-            status=status,
-            status_message=status_message,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[str] = None,
-             id: Optional[str] = None,
-             last_provisioning_task_id: Optional[str] = None,
-             last_successful_provisioning_task_id: Optional[str] = None,
-             last_task_id: Optional[str] = None,
-             outputs: Optional[Sequence['outputs.GetProvisionedProductsProvisionedProductOutputResult']] = None,
-             owner_principal_id: Optional[str] = None,
-             owner_principal_type: Optional[str] = None,
-             parameters: Optional[Sequence['outputs.GetProvisionedProductsProvisionedProductParameterResult']] = None,
-             portfolio_id: Optional[str] = None,
-             product_id: Optional[str] = None,
-             product_name: Optional[str] = None,
-             product_version_id: Optional[str] = None,
-             product_version_name: Optional[str] = None,
-             provisioned_product_arn: Optional[str] = None,
-             provisioned_product_id: Optional[str] = None,
-             provisioned_product_name: Optional[str] = None,
-             provisioned_product_type: Optional[str] = None,
-             stack_id: Optional[str] = None,
-             stack_region_id: Optional[str] = None,
-             status: Optional[str] = None,
-             status_message: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if last_provisioning_task_id is None and 'lastProvisioningTaskId' in kwargs:
-            last_provisioning_task_id = kwargs['lastProvisioningTaskId']
-        if last_provisioning_task_id is None:
-            raise TypeError("Missing 'last_provisioning_task_id' argument")
-        if last_successful_provisioning_task_id is None and 'lastSuccessfulProvisioningTaskId' in kwargs:
-            last_successful_provisioning_task_id = kwargs['lastSuccessfulProvisioningTaskId']
-        if last_successful_provisioning_task_id is None:
-            raise TypeError("Missing 'last_successful_provisioning_task_id' argument")
-        if last_task_id is None and 'lastTaskId' in kwargs:
-            last_task_id = kwargs['lastTaskId']
-        if last_task_id is None:
-            raise TypeError("Missing 'last_task_id' argument")
-        if outputs is None:
-            raise TypeError("Missing 'outputs' argument")
-        if owner_principal_id is None and 'ownerPrincipalId' in kwargs:
-            owner_principal_id = kwargs['ownerPrincipalId']
-        if owner_principal_id is None:
-            raise TypeError("Missing 'owner_principal_id' argument")
-        if owner_principal_type is None and 'ownerPrincipalType' in kwargs:
-            owner_principal_type = kwargs['ownerPrincipalType']
-        if owner_principal_type is None:
-            raise TypeError("Missing 'owner_principal_type' argument")
-        if parameters is None:
-            raise TypeError("Missing 'parameters' argument")
-        if portfolio_id is None and 'portfolioId' in kwargs:
-            portfolio_id = kwargs['portfolioId']
-        if portfolio_id is None:
-            raise TypeError("Missing 'portfolio_id' argument")
-        if product_id is None and 'productId' in kwargs:
-            product_id = kwargs['productId']
-        if product_id is None:
-            raise TypeError("Missing 'product_id' argument")
-        if product_name is None and 'productName' in kwargs:
-            product_name = kwargs['productName']
-        if product_name is None:
-            raise TypeError("Missing 'product_name' argument")
-        if product_version_id is None and 'productVersionId' in kwargs:
-            product_version_id = kwargs['productVersionId']
-        if product_version_id is None:
-            raise TypeError("Missing 'product_version_id' argument")
-        if product_version_name is None and 'productVersionName' in kwargs:
-            product_version_name = kwargs['productVersionName']
-        if product_version_name is None:
-            raise TypeError("Missing 'product_version_name' argument")
-        if provisioned_product_arn is None and 'provisionedProductArn' in kwargs:
-            provisioned_product_arn = kwargs['provisionedProductArn']
-        if provisioned_product_arn is None:
-            raise TypeError("Missing 'provisioned_product_arn' argument")
-        if provisioned_product_id is None and 'provisionedProductId' in kwargs:
-            provisioned_product_id = kwargs['provisionedProductId']
-        if provisioned_product_id is None:
-            raise TypeError("Missing 'provisioned_product_id' argument")
-        if provisioned_product_name is None and 'provisionedProductName' in kwargs:
-            provisioned_product_name = kwargs['provisionedProductName']
-        if provisioned_product_name is None:
-            raise TypeError("Missing 'provisioned_product_name' argument")
-        if provisioned_product_type is None and 'provisionedProductType' in kwargs:
-            provisioned_product_type = kwargs['provisionedProductType']
-        if provisioned_product_type is None:
-            raise TypeError("Missing 'provisioned_product_type' argument")
-        if stack_id is None and 'stackId' in kwargs:
-            stack_id = kwargs['stackId']
-        if stack_id is None:
-            raise TypeError("Missing 'stack_id' argument")
-        if stack_region_id is None and 'stackRegionId' in kwargs:
-            stack_region_id = kwargs['stackRegionId']
-        if stack_region_id is None:
-            raise TypeError("Missing 'stack_region_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if status_message is None and 'statusMessage' in kwargs:
-            status_message = kwargs['statusMessage']
-        if status_message is None:
-            raise TypeError("Missing 'status_message' argument")
-
-        _setter("create_time", create_time)
-        _setter("id", id)
-        _setter("last_provisioning_task_id", last_provisioning_task_id)
-        _setter("last_successful_provisioning_task_id", last_successful_provisioning_task_id)
-        _setter("last_task_id", last_task_id)
-        _setter("outputs", outputs)
-        _setter("owner_principal_id", owner_principal_id)
-        _setter("owner_principal_type", owner_principal_type)
-        _setter("parameters", parameters)
-        _setter("portfolio_id", portfolio_id)
-        _setter("product_id", product_id)
-        _setter("product_name", product_name)
-        _setter("product_version_id", product_version_id)
-        _setter("product_version_name", product_version_name)
-        _setter("provisioned_product_arn", provisioned_product_arn)
-        _setter("provisioned_product_id", provisioned_product_id)
-        _setter("provisioned_product_name", provisioned_product_name)
-        _setter("provisioned_product_type", provisioned_product_type)
-        _setter("stack_id", stack_id)
-        _setter("stack_region_id", stack_region_id)
-        _setter("status", status)
-        _setter("status_message", status_message)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "last_provisioning_task_id", last_provisioning_task_id)
+        pulumi.set(__self__, "last_successful_provisioning_task_id", last_successful_provisioning_task_id)
+        pulumi.set(__self__, "last_task_id", last_task_id)
+        pulumi.set(__self__, "outputs", outputs)
+        pulumi.set(__self__, "owner_principal_id", owner_principal_id)
+        pulumi.set(__self__, "owner_principal_type", owner_principal_type)
+        pulumi.set(__self__, "parameters", parameters)
+        pulumi.set(__self__, "portfolio_id", portfolio_id)
+        pulumi.set(__self__, "product_id", product_id)
+        pulumi.set(__self__, "product_name", product_name)
+        pulumi.set(__self__, "product_version_id", product_version_id)
+        pulumi.set(__self__, "product_version_name", product_version_name)
+        pulumi.set(__self__, "provisioned_product_arn", provisioned_product_arn)
+        pulumi.set(__self__, "provisioned_product_id", provisioned_product_id)
+        pulumi.set(__self__, "provisioned_product_name", provisioned_product_name)
+        pulumi.set(__self__, "provisioned_product_type", provisioned_product_type)
+        pulumi.set(__self__, "stack_id", stack_id)
+        pulumi.set(__self__, "stack_region_id", stack_region_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "status_message", status_message)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="createTime")
@@ -2112,34 +1373,9 @@ class GetProvisionedProductsProvisionedProductOutputResult(dict):
                  description: str,
                  output_key: str,
                  output_value: str):
-        GetProvisionedProductsProvisionedProductOutputResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            output_key=output_key,
-            output_value=output_value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[str] = None,
-             output_key: Optional[str] = None,
-             output_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if output_key is None and 'outputKey' in kwargs:
-            output_key = kwargs['outputKey']
-        if output_key is None:
-            raise TypeError("Missing 'output_key' argument")
-        if output_value is None and 'outputValue' in kwargs:
-            output_value = kwargs['outputValue']
-        if output_value is None:
-            raise TypeError("Missing 'output_value' argument")
-
-        _setter("description", description)
-        _setter("output_key", output_key)
-        _setter("output_value", output_value)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "output_key", output_key)
+        pulumi.set(__self__, "output_value", output_value)
 
     @property
     @pulumi.getter
@@ -2162,29 +1398,8 @@ class GetProvisionedProductsProvisionedProductParameterResult(dict):
     def __init__(__self__, *,
                  parameter_key: str,
                  parameter_value: str):
-        GetProvisionedProductsProvisionedProductParameterResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            parameter_key=parameter_key,
-            parameter_value=parameter_value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             parameter_key: Optional[str] = None,
-             parameter_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if parameter_key is None and 'parameterKey' in kwargs:
-            parameter_key = kwargs['parameterKey']
-        if parameter_key is None:
-            raise TypeError("Missing 'parameter_key' argument")
-        if parameter_value is None and 'parameterValue' in kwargs:
-            parameter_value = kwargs['parameterValue']
-        if parameter_value is None:
-            raise TypeError("Missing 'parameter_value' argument")
-
-        _setter("parameter_key", parameter_key)
-        _setter("parameter_value", parameter_value)
+        pulumi.set(__self__, "parameter_key", parameter_key)
+        pulumi.set(__self__, "parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterKey")

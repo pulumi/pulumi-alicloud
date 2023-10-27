@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['LayerVersionArgs', 'LayerVersion']
@@ -33,57 +33,18 @@ class LayerVersionArgs:
                
                > **NOTE:** `zip_file` and `oss_bucket_name`, `oss_object_name` cannot be used together.
         """
-        LayerVersionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            compatible_runtimes=compatible_runtimes,
-            layer_name=layer_name,
-            description=description,
-            oss_bucket_name=oss_bucket_name,
-            oss_object_name=oss_object_name,
-            skip_destroy=skip_destroy,
-            zip_file=zip_file,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             compatible_runtimes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             layer_name: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             oss_bucket_name: Optional[pulumi.Input[str]] = None,
-             oss_object_name: Optional[pulumi.Input[str]] = None,
-             skip_destroy: Optional[pulumi.Input[bool]] = None,
-             zip_file: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if compatible_runtimes is None and 'compatibleRuntimes' in kwargs:
-            compatible_runtimes = kwargs['compatibleRuntimes']
-        if compatible_runtimes is None:
-            raise TypeError("Missing 'compatible_runtimes' argument")
-        if layer_name is None and 'layerName' in kwargs:
-            layer_name = kwargs['layerName']
-        if layer_name is None:
-            raise TypeError("Missing 'layer_name' argument")
-        if oss_bucket_name is None and 'ossBucketName' in kwargs:
-            oss_bucket_name = kwargs['ossBucketName']
-        if oss_object_name is None and 'ossObjectName' in kwargs:
-            oss_object_name = kwargs['ossObjectName']
-        if skip_destroy is None and 'skipDestroy' in kwargs:
-            skip_destroy = kwargs['skipDestroy']
-        if zip_file is None and 'zipFile' in kwargs:
-            zip_file = kwargs['zipFile']
-
-        _setter("compatible_runtimes", compatible_runtimes)
-        _setter("layer_name", layer_name)
+        pulumi.set(__self__, "compatible_runtimes", compatible_runtimes)
+        pulumi.set(__self__, "layer_name", layer_name)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if oss_bucket_name is not None:
-            _setter("oss_bucket_name", oss_bucket_name)
+            pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
         if oss_object_name is not None:
-            _setter("oss_object_name", oss_object_name)
+            pulumi.set(__self__, "oss_object_name", oss_object_name)
         if skip_destroy is not None:
-            _setter("skip_destroy", skip_destroy)
+            pulumi.set(__self__, "skip_destroy", skip_destroy)
         if zip_file is not None:
-            _setter("zip_file", zip_file)
+            pulumi.set(__self__, "zip_file", zip_file)
 
     @property
     @pulumi.getter(name="compatibleRuntimes")
@@ -202,73 +163,28 @@ class _LayerVersionState:
                
                > **NOTE:** `zip_file` and `oss_bucket_name`, `oss_object_name` cannot be used together.
         """
-        _LayerVersionState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            acl=acl,
-            arn=arn,
-            code_check_sum=code_check_sum,
-            compatible_runtimes=compatible_runtimes,
-            description=description,
-            layer_name=layer_name,
-            oss_bucket_name=oss_bucket_name,
-            oss_object_name=oss_object_name,
-            skip_destroy=skip_destroy,
-            version=version,
-            zip_file=zip_file,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             acl: Optional[pulumi.Input[str]] = None,
-             arn: Optional[pulumi.Input[str]] = None,
-             code_check_sum: Optional[pulumi.Input[str]] = None,
-             compatible_runtimes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             layer_name: Optional[pulumi.Input[str]] = None,
-             oss_bucket_name: Optional[pulumi.Input[str]] = None,
-             oss_object_name: Optional[pulumi.Input[str]] = None,
-             skip_destroy: Optional[pulumi.Input[bool]] = None,
-             version: Optional[pulumi.Input[str]] = None,
-             zip_file: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if code_check_sum is None and 'codeCheckSum' in kwargs:
-            code_check_sum = kwargs['codeCheckSum']
-        if compatible_runtimes is None and 'compatibleRuntimes' in kwargs:
-            compatible_runtimes = kwargs['compatibleRuntimes']
-        if layer_name is None and 'layerName' in kwargs:
-            layer_name = kwargs['layerName']
-        if oss_bucket_name is None and 'ossBucketName' in kwargs:
-            oss_bucket_name = kwargs['ossBucketName']
-        if oss_object_name is None and 'ossObjectName' in kwargs:
-            oss_object_name = kwargs['ossObjectName']
-        if skip_destroy is None and 'skipDestroy' in kwargs:
-            skip_destroy = kwargs['skipDestroy']
-        if zip_file is None and 'zipFile' in kwargs:
-            zip_file = kwargs['zipFile']
-
         if acl is not None:
-            _setter("acl", acl)
+            pulumi.set(__self__, "acl", acl)
         if arn is not None:
-            _setter("arn", arn)
+            pulumi.set(__self__, "arn", arn)
         if code_check_sum is not None:
-            _setter("code_check_sum", code_check_sum)
+            pulumi.set(__self__, "code_check_sum", code_check_sum)
         if compatible_runtimes is not None:
-            _setter("compatible_runtimes", compatible_runtimes)
+            pulumi.set(__self__, "compatible_runtimes", compatible_runtimes)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if layer_name is not None:
-            _setter("layer_name", layer_name)
+            pulumi.set(__self__, "layer_name", layer_name)
         if oss_bucket_name is not None:
-            _setter("oss_bucket_name", oss_bucket_name)
+            pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
         if oss_object_name is not None:
-            _setter("oss_object_name", oss_object_name)
+            pulumi.set(__self__, "oss_object_name", oss_object_name)
         if skip_destroy is not None:
-            _setter("skip_destroy", skip_destroy)
+            pulumi.set(__self__, "skip_destroy", skip_destroy)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
         if zip_file is not None:
-            _setter("zip_file", zip_file)
+            pulumi.set(__self__, "zip_file", zip_file)
 
     @property
     @pulumi.getter
@@ -522,10 +438,6 @@ class LayerVersion(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            LayerVersionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

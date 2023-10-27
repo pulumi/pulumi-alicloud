@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['FlowLogArgs', 'FlowLog']
@@ -41,86 +41,25 @@ class FlowLogArgs:
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the current instance resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] traffic_paths: The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
         """
-        FlowLogArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            log_store_name=log_store_name,
-            project_name=project_name,
-            resource_id=resource_id,
-            resource_type=resource_type,
-            traffic_type=traffic_type,
-            aggregation_interval=aggregation_interval,
-            description=description,
-            flow_log_name=flow_log_name,
-            resource_group_id=resource_group_id,
-            status=status,
-            tags=tags,
-            traffic_paths=traffic_paths,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             log_store_name: Optional[pulumi.Input[str]] = None,
-             project_name: Optional[pulumi.Input[str]] = None,
-             resource_id: Optional[pulumi.Input[str]] = None,
-             resource_type: Optional[pulumi.Input[str]] = None,
-             traffic_type: Optional[pulumi.Input[str]] = None,
-             aggregation_interval: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             flow_log_name: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             traffic_paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if log_store_name is None and 'logStoreName' in kwargs:
-            log_store_name = kwargs['logStoreName']
-        if log_store_name is None:
-            raise TypeError("Missing 'log_store_name' argument")
-        if project_name is None and 'projectName' in kwargs:
-            project_name = kwargs['projectName']
-        if project_name is None:
-            raise TypeError("Missing 'project_name' argument")
-        if resource_id is None and 'resourceId' in kwargs:
-            resource_id = kwargs['resourceId']
-        if resource_id is None:
-            raise TypeError("Missing 'resource_id' argument")
-        if resource_type is None and 'resourceType' in kwargs:
-            resource_type = kwargs['resourceType']
-        if resource_type is None:
-            raise TypeError("Missing 'resource_type' argument")
-        if traffic_type is None and 'trafficType' in kwargs:
-            traffic_type = kwargs['trafficType']
-        if traffic_type is None:
-            raise TypeError("Missing 'traffic_type' argument")
-        if aggregation_interval is None and 'aggregationInterval' in kwargs:
-            aggregation_interval = kwargs['aggregationInterval']
-        if flow_log_name is None and 'flowLogName' in kwargs:
-            flow_log_name = kwargs['flowLogName']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if traffic_paths is None and 'trafficPaths' in kwargs:
-            traffic_paths = kwargs['trafficPaths']
-
-        _setter("log_store_name", log_store_name)
-        _setter("project_name", project_name)
-        _setter("resource_id", resource_id)
-        _setter("resource_type", resource_type)
-        _setter("traffic_type", traffic_type)
+        pulumi.set(__self__, "log_store_name", log_store_name)
+        pulumi.set(__self__, "project_name", project_name)
+        pulumi.set(__self__, "resource_id", resource_id)
+        pulumi.set(__self__, "resource_type", resource_type)
+        pulumi.set(__self__, "traffic_type", traffic_type)
         if aggregation_interval is not None:
-            _setter("aggregation_interval", aggregation_interval)
+            pulumi.set(__self__, "aggregation_interval", aggregation_interval)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if flow_log_name is not None:
-            _setter("flow_log_name", flow_log_name)
+            pulumi.set(__self__, "flow_log_name", flow_log_name)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if traffic_paths is not None:
-            _setter("traffic_paths", traffic_paths)
+            pulumi.set(__self__, "traffic_paths", traffic_paths)
 
     @property
     @pulumi.getter(name="logStoreName")
@@ -303,99 +242,36 @@ class _FlowLogState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] traffic_paths: The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
         :param pulumi.Input[str] traffic_type: The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
         """
-        _FlowLogState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            aggregation_interval=aggregation_interval,
-            business_status=business_status,
-            create_time=create_time,
-            description=description,
-            flow_log_id=flow_log_id,
-            flow_log_name=flow_log_name,
-            log_store_name=log_store_name,
-            project_name=project_name,
-            resource_group_id=resource_group_id,
-            resource_id=resource_id,
-            resource_type=resource_type,
-            status=status,
-            tags=tags,
-            traffic_paths=traffic_paths,
-            traffic_type=traffic_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             aggregation_interval: Optional[pulumi.Input[str]] = None,
-             business_status: Optional[pulumi.Input[str]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             flow_log_id: Optional[pulumi.Input[str]] = None,
-             flow_log_name: Optional[pulumi.Input[str]] = None,
-             log_store_name: Optional[pulumi.Input[str]] = None,
-             project_name: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             resource_id: Optional[pulumi.Input[str]] = None,
-             resource_type: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             traffic_paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             traffic_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if aggregation_interval is None and 'aggregationInterval' in kwargs:
-            aggregation_interval = kwargs['aggregationInterval']
-        if business_status is None and 'businessStatus' in kwargs:
-            business_status = kwargs['businessStatus']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if flow_log_id is None and 'flowLogId' in kwargs:
-            flow_log_id = kwargs['flowLogId']
-        if flow_log_name is None and 'flowLogName' in kwargs:
-            flow_log_name = kwargs['flowLogName']
-        if log_store_name is None and 'logStoreName' in kwargs:
-            log_store_name = kwargs['logStoreName']
-        if project_name is None and 'projectName' in kwargs:
-            project_name = kwargs['projectName']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_id is None and 'resourceId' in kwargs:
-            resource_id = kwargs['resourceId']
-        if resource_type is None and 'resourceType' in kwargs:
-            resource_type = kwargs['resourceType']
-        if traffic_paths is None and 'trafficPaths' in kwargs:
-            traffic_paths = kwargs['trafficPaths']
-        if traffic_type is None and 'trafficType' in kwargs:
-            traffic_type = kwargs['trafficType']
-
         if aggregation_interval is not None:
-            _setter("aggregation_interval", aggregation_interval)
+            pulumi.set(__self__, "aggregation_interval", aggregation_interval)
         if business_status is not None:
-            _setter("business_status", business_status)
+            pulumi.set(__self__, "business_status", business_status)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if flow_log_id is not None:
-            _setter("flow_log_id", flow_log_id)
+            pulumi.set(__self__, "flow_log_id", flow_log_id)
         if flow_log_name is not None:
-            _setter("flow_log_name", flow_log_name)
+            pulumi.set(__self__, "flow_log_name", flow_log_name)
         if log_store_name is not None:
-            _setter("log_store_name", log_store_name)
+            pulumi.set(__self__, "log_store_name", log_store_name)
         if project_name is not None:
-            _setter("project_name", project_name)
+            pulumi.set(__self__, "project_name", project_name)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if resource_id is not None:
-            _setter("resource_id", resource_id)
+            pulumi.set(__self__, "resource_id", resource_id)
         if resource_type is not None:
-            _setter("resource_type", resource_type)
+            pulumi.set(__self__, "resource_type", resource_type)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if traffic_paths is not None:
-            _setter("traffic_paths", traffic_paths)
+            pulumi.set(__self__, "traffic_paths", traffic_paths)
         if traffic_type is not None:
-            _setter("traffic_type", traffic_type)
+            pulumi.set(__self__, "traffic_type", traffic_type)
 
     @property
     @pulumi.getter(name="aggregationInterval")
@@ -657,10 +533,6 @@ class FlowLog(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            FlowLogArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

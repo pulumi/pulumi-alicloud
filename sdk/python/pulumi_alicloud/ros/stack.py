@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -59,132 +59,45 @@ class StackArgs:
         :param pulumi.Input[int] timeout_in_minutes: The timeout period that is specified for the stack creation request. Default to: `60`.
         :param pulumi.Input[bool] use_previous_parameters: Specifies whether to use the values that were passed last time for the parameters that you do not specify in the current request.
         """
-        StackArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            stack_name=stack_name,
-            create_option=create_option,
-            deletion_protection=deletion_protection,
-            disable_rollback=disable_rollback,
-            notification_urls=notification_urls,
-            parameters=parameters,
-            ram_role_name=ram_role_name,
-            replacement_option=replacement_option,
-            retain_all_resources=retain_all_resources,
-            retain_resources=retain_resources,
-            stack_policy_body=stack_policy_body,
-            stack_policy_during_update_body=stack_policy_during_update_body,
-            stack_policy_during_update_url=stack_policy_during_update_url,
-            stack_policy_url=stack_policy_url,
-            tags=tags,
-            template_body=template_body,
-            template_url=template_url,
-            template_version=template_version,
-            timeout_in_minutes=timeout_in_minutes,
-            use_previous_parameters=use_previous_parameters,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             stack_name: Optional[pulumi.Input[str]] = None,
-             create_option: Optional[pulumi.Input[str]] = None,
-             deletion_protection: Optional[pulumi.Input[str]] = None,
-             disable_rollback: Optional[pulumi.Input[bool]] = None,
-             notification_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             parameters: Optional[pulumi.Input[Sequence[pulumi.Input['StackParameterArgs']]]] = None,
-             ram_role_name: Optional[pulumi.Input[str]] = None,
-             replacement_option: Optional[pulumi.Input[str]] = None,
-             retain_all_resources: Optional[pulumi.Input[bool]] = None,
-             retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             stack_policy_body: Optional[pulumi.Input[str]] = None,
-             stack_policy_during_update_body: Optional[pulumi.Input[str]] = None,
-             stack_policy_during_update_url: Optional[pulumi.Input[str]] = None,
-             stack_policy_url: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             template_body: Optional[pulumi.Input[str]] = None,
-             template_url: Optional[pulumi.Input[str]] = None,
-             template_version: Optional[pulumi.Input[str]] = None,
-             timeout_in_minutes: Optional[pulumi.Input[int]] = None,
-             use_previous_parameters: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if stack_name is None and 'stackName' in kwargs:
-            stack_name = kwargs['stackName']
-        if stack_name is None:
-            raise TypeError("Missing 'stack_name' argument")
-        if create_option is None and 'createOption' in kwargs:
-            create_option = kwargs['createOption']
-        if deletion_protection is None and 'deletionProtection' in kwargs:
-            deletion_protection = kwargs['deletionProtection']
-        if disable_rollback is None and 'disableRollback' in kwargs:
-            disable_rollback = kwargs['disableRollback']
-        if notification_urls is None and 'notificationUrls' in kwargs:
-            notification_urls = kwargs['notificationUrls']
-        if ram_role_name is None and 'ramRoleName' in kwargs:
-            ram_role_name = kwargs['ramRoleName']
-        if replacement_option is None and 'replacementOption' in kwargs:
-            replacement_option = kwargs['replacementOption']
-        if retain_all_resources is None and 'retainAllResources' in kwargs:
-            retain_all_resources = kwargs['retainAllResources']
-        if retain_resources is None and 'retainResources' in kwargs:
-            retain_resources = kwargs['retainResources']
-        if stack_policy_body is None and 'stackPolicyBody' in kwargs:
-            stack_policy_body = kwargs['stackPolicyBody']
-        if stack_policy_during_update_body is None and 'stackPolicyDuringUpdateBody' in kwargs:
-            stack_policy_during_update_body = kwargs['stackPolicyDuringUpdateBody']
-        if stack_policy_during_update_url is None and 'stackPolicyDuringUpdateUrl' in kwargs:
-            stack_policy_during_update_url = kwargs['stackPolicyDuringUpdateUrl']
-        if stack_policy_url is None and 'stackPolicyUrl' in kwargs:
-            stack_policy_url = kwargs['stackPolicyUrl']
-        if template_body is None and 'templateBody' in kwargs:
-            template_body = kwargs['templateBody']
-        if template_url is None and 'templateUrl' in kwargs:
-            template_url = kwargs['templateUrl']
-        if template_version is None and 'templateVersion' in kwargs:
-            template_version = kwargs['templateVersion']
-        if timeout_in_minutes is None and 'timeoutInMinutes' in kwargs:
-            timeout_in_minutes = kwargs['timeoutInMinutes']
-        if use_previous_parameters is None and 'usePreviousParameters' in kwargs:
-            use_previous_parameters = kwargs['usePreviousParameters']
-
-        _setter("stack_name", stack_name)
+        pulumi.set(__self__, "stack_name", stack_name)
         if create_option is not None:
-            _setter("create_option", create_option)
+            pulumi.set(__self__, "create_option", create_option)
         if deletion_protection is not None:
-            _setter("deletion_protection", deletion_protection)
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if disable_rollback is not None:
-            _setter("disable_rollback", disable_rollback)
+            pulumi.set(__self__, "disable_rollback", disable_rollback)
         if notification_urls is not None:
-            _setter("notification_urls", notification_urls)
+            pulumi.set(__self__, "notification_urls", notification_urls)
         if parameters is not None:
-            _setter("parameters", parameters)
+            pulumi.set(__self__, "parameters", parameters)
         if ram_role_name is not None:
-            _setter("ram_role_name", ram_role_name)
+            pulumi.set(__self__, "ram_role_name", ram_role_name)
         if replacement_option is not None:
-            _setter("replacement_option", replacement_option)
+            pulumi.set(__self__, "replacement_option", replacement_option)
         if retain_all_resources is not None:
-            _setter("retain_all_resources", retain_all_resources)
+            pulumi.set(__self__, "retain_all_resources", retain_all_resources)
         if retain_resources is not None:
-            _setter("retain_resources", retain_resources)
+            pulumi.set(__self__, "retain_resources", retain_resources)
         if stack_policy_body is not None:
-            _setter("stack_policy_body", stack_policy_body)
+            pulumi.set(__self__, "stack_policy_body", stack_policy_body)
         if stack_policy_during_update_body is not None:
-            _setter("stack_policy_during_update_body", stack_policy_during_update_body)
+            pulumi.set(__self__, "stack_policy_during_update_body", stack_policy_during_update_body)
         if stack_policy_during_update_url is not None:
-            _setter("stack_policy_during_update_url", stack_policy_during_update_url)
+            pulumi.set(__self__, "stack_policy_during_update_url", stack_policy_during_update_url)
         if stack_policy_url is not None:
-            _setter("stack_policy_url", stack_policy_url)
+            pulumi.set(__self__, "stack_policy_url", stack_policy_url)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if template_body is not None:
-            _setter("template_body", template_body)
+            pulumi.set(__self__, "template_body", template_body)
         if template_url is not None:
-            _setter("template_url", template_url)
+            pulumi.set(__self__, "template_url", template_url)
         if template_version is not None:
-            _setter("template_version", template_version)
+            pulumi.set(__self__, "template_version", template_version)
         if timeout_in_minutes is not None:
-            _setter("timeout_in_minutes", timeout_in_minutes)
+            pulumi.set(__self__, "timeout_in_minutes", timeout_in_minutes)
         if use_previous_parameters is not None:
-            _setter("use_previous_parameters", use_previous_parameters)
+            pulumi.set(__self__, "use_previous_parameters", use_previous_parameters)
 
     @property
     @pulumi.getter(name="stackName")
@@ -475,135 +388,48 @@ class _StackState:
         :param pulumi.Input[int] timeout_in_minutes: The timeout period that is specified for the stack creation request. Default to: `60`.
         :param pulumi.Input[bool] use_previous_parameters: Specifies whether to use the values that were passed last time for the parameters that you do not specify in the current request.
         """
-        _StackState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_option=create_option,
-            deletion_protection=deletion_protection,
-            disable_rollback=disable_rollback,
-            notification_urls=notification_urls,
-            parameters=parameters,
-            ram_role_name=ram_role_name,
-            replacement_option=replacement_option,
-            retain_all_resources=retain_all_resources,
-            retain_resources=retain_resources,
-            stack_name=stack_name,
-            stack_policy_body=stack_policy_body,
-            stack_policy_during_update_body=stack_policy_during_update_body,
-            stack_policy_during_update_url=stack_policy_during_update_url,
-            stack_policy_url=stack_policy_url,
-            status=status,
-            tags=tags,
-            template_body=template_body,
-            template_url=template_url,
-            template_version=template_version,
-            timeout_in_minutes=timeout_in_minutes,
-            use_previous_parameters=use_previous_parameters,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_option: Optional[pulumi.Input[str]] = None,
-             deletion_protection: Optional[pulumi.Input[str]] = None,
-             disable_rollback: Optional[pulumi.Input[bool]] = None,
-             notification_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             parameters: Optional[pulumi.Input[Sequence[pulumi.Input['StackParameterArgs']]]] = None,
-             ram_role_name: Optional[pulumi.Input[str]] = None,
-             replacement_option: Optional[pulumi.Input[str]] = None,
-             retain_all_resources: Optional[pulumi.Input[bool]] = None,
-             retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             stack_name: Optional[pulumi.Input[str]] = None,
-             stack_policy_body: Optional[pulumi.Input[str]] = None,
-             stack_policy_during_update_body: Optional[pulumi.Input[str]] = None,
-             stack_policy_during_update_url: Optional[pulumi.Input[str]] = None,
-             stack_policy_url: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             template_body: Optional[pulumi.Input[str]] = None,
-             template_url: Optional[pulumi.Input[str]] = None,
-             template_version: Optional[pulumi.Input[str]] = None,
-             timeout_in_minutes: Optional[pulumi.Input[int]] = None,
-             use_previous_parameters: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_option is None and 'createOption' in kwargs:
-            create_option = kwargs['createOption']
-        if deletion_protection is None and 'deletionProtection' in kwargs:
-            deletion_protection = kwargs['deletionProtection']
-        if disable_rollback is None and 'disableRollback' in kwargs:
-            disable_rollback = kwargs['disableRollback']
-        if notification_urls is None and 'notificationUrls' in kwargs:
-            notification_urls = kwargs['notificationUrls']
-        if ram_role_name is None and 'ramRoleName' in kwargs:
-            ram_role_name = kwargs['ramRoleName']
-        if replacement_option is None and 'replacementOption' in kwargs:
-            replacement_option = kwargs['replacementOption']
-        if retain_all_resources is None and 'retainAllResources' in kwargs:
-            retain_all_resources = kwargs['retainAllResources']
-        if retain_resources is None and 'retainResources' in kwargs:
-            retain_resources = kwargs['retainResources']
-        if stack_name is None and 'stackName' in kwargs:
-            stack_name = kwargs['stackName']
-        if stack_policy_body is None and 'stackPolicyBody' in kwargs:
-            stack_policy_body = kwargs['stackPolicyBody']
-        if stack_policy_during_update_body is None and 'stackPolicyDuringUpdateBody' in kwargs:
-            stack_policy_during_update_body = kwargs['stackPolicyDuringUpdateBody']
-        if stack_policy_during_update_url is None and 'stackPolicyDuringUpdateUrl' in kwargs:
-            stack_policy_during_update_url = kwargs['stackPolicyDuringUpdateUrl']
-        if stack_policy_url is None and 'stackPolicyUrl' in kwargs:
-            stack_policy_url = kwargs['stackPolicyUrl']
-        if template_body is None and 'templateBody' in kwargs:
-            template_body = kwargs['templateBody']
-        if template_url is None and 'templateUrl' in kwargs:
-            template_url = kwargs['templateUrl']
-        if template_version is None and 'templateVersion' in kwargs:
-            template_version = kwargs['templateVersion']
-        if timeout_in_minutes is None and 'timeoutInMinutes' in kwargs:
-            timeout_in_minutes = kwargs['timeoutInMinutes']
-        if use_previous_parameters is None and 'usePreviousParameters' in kwargs:
-            use_previous_parameters = kwargs['usePreviousParameters']
-
         if create_option is not None:
-            _setter("create_option", create_option)
+            pulumi.set(__self__, "create_option", create_option)
         if deletion_protection is not None:
-            _setter("deletion_protection", deletion_protection)
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if disable_rollback is not None:
-            _setter("disable_rollback", disable_rollback)
+            pulumi.set(__self__, "disable_rollback", disable_rollback)
         if notification_urls is not None:
-            _setter("notification_urls", notification_urls)
+            pulumi.set(__self__, "notification_urls", notification_urls)
         if parameters is not None:
-            _setter("parameters", parameters)
+            pulumi.set(__self__, "parameters", parameters)
         if ram_role_name is not None:
-            _setter("ram_role_name", ram_role_name)
+            pulumi.set(__self__, "ram_role_name", ram_role_name)
         if replacement_option is not None:
-            _setter("replacement_option", replacement_option)
+            pulumi.set(__self__, "replacement_option", replacement_option)
         if retain_all_resources is not None:
-            _setter("retain_all_resources", retain_all_resources)
+            pulumi.set(__self__, "retain_all_resources", retain_all_resources)
         if retain_resources is not None:
-            _setter("retain_resources", retain_resources)
+            pulumi.set(__self__, "retain_resources", retain_resources)
         if stack_name is not None:
-            _setter("stack_name", stack_name)
+            pulumi.set(__self__, "stack_name", stack_name)
         if stack_policy_body is not None:
-            _setter("stack_policy_body", stack_policy_body)
+            pulumi.set(__self__, "stack_policy_body", stack_policy_body)
         if stack_policy_during_update_body is not None:
-            _setter("stack_policy_during_update_body", stack_policy_during_update_body)
+            pulumi.set(__self__, "stack_policy_during_update_body", stack_policy_during_update_body)
         if stack_policy_during_update_url is not None:
-            _setter("stack_policy_during_update_url", stack_policy_during_update_url)
+            pulumi.set(__self__, "stack_policy_during_update_url", stack_policy_during_update_url)
         if stack_policy_url is not None:
-            _setter("stack_policy_url", stack_policy_url)
+            pulumi.set(__self__, "stack_policy_url", stack_policy_url)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if template_body is not None:
-            _setter("template_body", template_body)
+            pulumi.set(__self__, "template_body", template_body)
         if template_url is not None:
-            _setter("template_url", template_url)
+            pulumi.set(__self__, "template_url", template_url)
         if template_version is not None:
-            _setter("template_version", template_version)
+            pulumi.set(__self__, "template_version", template_version)
         if timeout_in_minutes is not None:
-            _setter("timeout_in_minutes", timeout_in_minutes)
+            pulumi.set(__self__, "timeout_in_minutes", timeout_in_minutes)
         if use_previous_parameters is not None:
-            _setter("use_previous_parameters", use_previous_parameters)
+            pulumi.set(__self__, "use_previous_parameters", use_previous_parameters)
 
     @property
     @pulumi.getter(name="createOption")
@@ -1007,10 +833,6 @@ class Stack(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            StackArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

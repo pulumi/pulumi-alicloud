@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -31,37 +31,10 @@ class GetVpcEndpointConnectionsConnectionResult(dict):
         :param str id: The ID of the Vpc Endpoint Connection.
         :param str status: The status of Vpc Endpoint Connection.
         """
-        GetVpcEndpointConnectionsConnectionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bandwidth=bandwidth,
-            endpoint_id=endpoint_id,
-            id=id,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bandwidth: Optional[int] = None,
-             endpoint_id: Optional[str] = None,
-             id: Optional[str] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bandwidth is None:
-            raise TypeError("Missing 'bandwidth' argument")
-        if endpoint_id is None and 'endpointId' in kwargs:
-            endpoint_id = kwargs['endpointId']
-        if endpoint_id is None:
-            raise TypeError("Missing 'endpoint_id' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("bandwidth", bandwidth)
-        _setter("endpoint_id", endpoint_id)
-        _setter("id", id)
-        _setter("status", status)
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "endpoint_id", endpoint_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -107,34 +80,9 @@ class GetVpcEndpointServiceResourcesResourceResult(dict):
         :param str resource_id: The ID of Resource.
         :param str resource_type: The type of Resource.
         """
-        GetVpcEndpointServiceResourcesResourceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            resource_id=resource_id,
-            resource_type=resource_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             resource_id: Optional[str] = None,
-             resource_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if resource_id is None and 'resourceId' in kwargs:
-            resource_id = kwargs['resourceId']
-        if resource_id is None:
-            raise TypeError("Missing 'resource_id' argument")
-        if resource_type is None and 'resourceType' in kwargs:
-            resource_type = kwargs['resourceType']
-        if resource_type is None:
-            raise TypeError("Missing 'resource_type' argument")
-
-        _setter("id", id)
-        _setter("resource_id", resource_id)
-        _setter("resource_type", resource_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource_id", resource_id)
+        pulumi.set(__self__, "resource_type", resource_type)
 
     @property
     @pulumi.getter
@@ -170,27 +118,8 @@ class GetVpcEndpointServiceUsersUserResult(dict):
         :param str id: The ID of the Vpc Endpoint Service User.
         :param str user_id: The Id of Ram User.
         """
-        GetVpcEndpointServiceUsersUserResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            user_id=user_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             user_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if user_id is None and 'userId' in kwargs:
-            user_id = kwargs['userId']
-        if user_id is None:
-            raise TypeError("Missing 'user_id' argument")
-
-        _setter("id", id)
-        _setter("user_id", user_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "user_id", user_id)
 
     @property
     @pulumi.getter
@@ -232,74 +161,15 @@ class GetVpcEndpointServicesServiceResult(dict):
         :param str status: The Status of Vpc Endpoint Service.
         :param str vpc_endpoint_service_name: The name of Vpc Endpoint Service.
         """
-        GetVpcEndpointServicesServiceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto_accept_connection=auto_accept_connection,
-            connect_bandwidth=connect_bandwidth,
-            id=id,
-            service_business_status=service_business_status,
-            service_description=service_description,
-            service_domain=service_domain,
-            service_id=service_id,
-            status=status,
-            vpc_endpoint_service_name=vpc_endpoint_service_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto_accept_connection: Optional[bool] = None,
-             connect_bandwidth: Optional[int] = None,
-             id: Optional[str] = None,
-             service_business_status: Optional[str] = None,
-             service_description: Optional[str] = None,
-             service_domain: Optional[str] = None,
-             service_id: Optional[str] = None,
-             status: Optional[str] = None,
-             vpc_endpoint_service_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_accept_connection is None and 'autoAcceptConnection' in kwargs:
-            auto_accept_connection = kwargs['autoAcceptConnection']
-        if auto_accept_connection is None:
-            raise TypeError("Missing 'auto_accept_connection' argument")
-        if connect_bandwidth is None and 'connectBandwidth' in kwargs:
-            connect_bandwidth = kwargs['connectBandwidth']
-        if connect_bandwidth is None:
-            raise TypeError("Missing 'connect_bandwidth' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if service_business_status is None and 'serviceBusinessStatus' in kwargs:
-            service_business_status = kwargs['serviceBusinessStatus']
-        if service_business_status is None:
-            raise TypeError("Missing 'service_business_status' argument")
-        if service_description is None and 'serviceDescription' in kwargs:
-            service_description = kwargs['serviceDescription']
-        if service_description is None:
-            raise TypeError("Missing 'service_description' argument")
-        if service_domain is None and 'serviceDomain' in kwargs:
-            service_domain = kwargs['serviceDomain']
-        if service_domain is None:
-            raise TypeError("Missing 'service_domain' argument")
-        if service_id is None and 'serviceId' in kwargs:
-            service_id = kwargs['serviceId']
-        if service_id is None:
-            raise TypeError("Missing 'service_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if vpc_endpoint_service_name is None and 'vpcEndpointServiceName' in kwargs:
-            vpc_endpoint_service_name = kwargs['vpcEndpointServiceName']
-        if vpc_endpoint_service_name is None:
-            raise TypeError("Missing 'vpc_endpoint_service_name' argument")
-
-        _setter("auto_accept_connection", auto_accept_connection)
-        _setter("connect_bandwidth", connect_bandwidth)
-        _setter("id", id)
-        _setter("service_business_status", service_business_status)
-        _setter("service_description", service_description)
-        _setter("service_domain", service_domain)
-        _setter("service_id", service_id)
-        _setter("status", status)
-        _setter("vpc_endpoint_service_name", vpc_endpoint_service_name)
+        pulumi.set(__self__, "auto_accept_connection", auto_accept_connection)
+        pulumi.set(__self__, "connect_bandwidth", connect_bandwidth)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "service_business_status", service_business_status)
+        pulumi.set(__self__, "service_description", service_description)
+        pulumi.set(__self__, "service_domain", service_domain)
+        pulumi.set(__self__, "service_id", service_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vpc_endpoint_service_name", vpc_endpoint_service_name)
 
     @property
     @pulumi.getter(name="autoAcceptConnection")
@@ -393,60 +263,13 @@ class GetVpcEndpointZonesZoneResult(dict):
         :param str zone_domain: The Zone Domain.
         :param str zone_id: The Zone Id.
         """
-        GetVpcEndpointZonesZoneResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            eni_id=eni_id,
-            eni_ip=eni_ip,
-            id=id,
-            status=status,
-            vswitch_id=vswitch_id,
-            zone_domain=zone_domain,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             eni_id: Optional[str] = None,
-             eni_ip: Optional[str] = None,
-             id: Optional[str] = None,
-             status: Optional[str] = None,
-             vswitch_id: Optional[str] = None,
-             zone_domain: Optional[str] = None,
-             zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if eni_id is None and 'eniId' in kwargs:
-            eni_id = kwargs['eniId']
-        if eni_id is None:
-            raise TypeError("Missing 'eni_id' argument")
-        if eni_ip is None and 'eniIp' in kwargs:
-            eni_ip = kwargs['eniIp']
-        if eni_ip is None:
-            raise TypeError("Missing 'eni_ip' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-        if zone_domain is None and 'zoneDomain' in kwargs:
-            zone_domain = kwargs['zoneDomain']
-        if zone_domain is None:
-            raise TypeError("Missing 'zone_domain' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("eni_id", eni_id)
-        _setter("eni_ip", eni_ip)
-        _setter("id", id)
-        _setter("status", status)
-        _setter("vswitch_id", vswitch_id)
-        _setter("zone_domain", zone_domain)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "eni_id", eni_id)
+        pulumi.set(__self__, "eni_ip", eni_ip)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_domain", zone_domain)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="eniId")
@@ -536,100 +359,19 @@ class GetVpcEndpointsEndpointResult(dict):
         :param str vpc_endpoint_name: The name of Vpc Endpoint.
         :param str vpc_id: The private network to which the terminal node belongs.
         """
-        GetVpcEndpointsEndpointResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bandwidth=bandwidth,
-            connection_status=connection_status,
-            endpoint_business_status=endpoint_business_status,
-            endpoint_description=endpoint_description,
-            endpoint_domain=endpoint_domain,
-            endpoint_id=endpoint_id,
-            id=id,
-            security_group_ids=security_group_ids,
-            service_id=service_id,
-            service_name=service_name,
-            status=status,
-            vpc_endpoint_name=vpc_endpoint_name,
-            vpc_id=vpc_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bandwidth: Optional[int] = None,
-             connection_status: Optional[str] = None,
-             endpoint_business_status: Optional[str] = None,
-             endpoint_description: Optional[str] = None,
-             endpoint_domain: Optional[str] = None,
-             endpoint_id: Optional[str] = None,
-             id: Optional[str] = None,
-             security_group_ids: Optional[Sequence[str]] = None,
-             service_id: Optional[str] = None,
-             service_name: Optional[str] = None,
-             status: Optional[str] = None,
-             vpc_endpoint_name: Optional[str] = None,
-             vpc_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bandwidth is None:
-            raise TypeError("Missing 'bandwidth' argument")
-        if connection_status is None and 'connectionStatus' in kwargs:
-            connection_status = kwargs['connectionStatus']
-        if connection_status is None:
-            raise TypeError("Missing 'connection_status' argument")
-        if endpoint_business_status is None and 'endpointBusinessStatus' in kwargs:
-            endpoint_business_status = kwargs['endpointBusinessStatus']
-        if endpoint_business_status is None:
-            raise TypeError("Missing 'endpoint_business_status' argument")
-        if endpoint_description is None and 'endpointDescription' in kwargs:
-            endpoint_description = kwargs['endpointDescription']
-        if endpoint_description is None:
-            raise TypeError("Missing 'endpoint_description' argument")
-        if endpoint_domain is None and 'endpointDomain' in kwargs:
-            endpoint_domain = kwargs['endpointDomain']
-        if endpoint_domain is None:
-            raise TypeError("Missing 'endpoint_domain' argument")
-        if endpoint_id is None and 'endpointId' in kwargs:
-            endpoint_id = kwargs['endpointId']
-        if endpoint_id is None:
-            raise TypeError("Missing 'endpoint_id' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if security_group_ids is None and 'securityGroupIds' in kwargs:
-            security_group_ids = kwargs['securityGroupIds']
-        if security_group_ids is None:
-            raise TypeError("Missing 'security_group_ids' argument")
-        if service_id is None and 'serviceId' in kwargs:
-            service_id = kwargs['serviceId']
-        if service_id is None:
-            raise TypeError("Missing 'service_id' argument")
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-        if service_name is None:
-            raise TypeError("Missing 'service_name' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if vpc_endpoint_name is None and 'vpcEndpointName' in kwargs:
-            vpc_endpoint_name = kwargs['vpcEndpointName']
-        if vpc_endpoint_name is None:
-            raise TypeError("Missing 'vpc_endpoint_name' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-
-        _setter("bandwidth", bandwidth)
-        _setter("connection_status", connection_status)
-        _setter("endpoint_business_status", endpoint_business_status)
-        _setter("endpoint_description", endpoint_description)
-        _setter("endpoint_domain", endpoint_domain)
-        _setter("endpoint_id", endpoint_id)
-        _setter("id", id)
-        _setter("security_group_ids", security_group_ids)
-        _setter("service_id", service_id)
-        _setter("service_name", service_name)
-        _setter("status", status)
-        _setter("vpc_endpoint_name", vpc_endpoint_name)
-        _setter("vpc_id", vpc_id)
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "connection_status", connection_status)
+        pulumi.set(__self__, "endpoint_business_status", endpoint_business_status)
+        pulumi.set(__self__, "endpoint_description", endpoint_description)
+        pulumi.set(__self__, "endpoint_domain", endpoint_domain)
+        pulumi.set(__self__, "endpoint_id", endpoint_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "security_group_ids", security_group_ids)
+        pulumi.set(__self__, "service_id", service_id)
+        pulumi.set(__self__, "service_name", service_name)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vpc_endpoint_name", vpc_endpoint_name)
+        pulumi.set(__self__, "vpc_id", vpc_id)
 
     @property
     @pulumi.getter

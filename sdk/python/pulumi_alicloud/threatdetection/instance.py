@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InstanceArgs', 'Instance']
@@ -63,145 +63,48 @@ class InstanceArgs:
         :param pulumi.Input[str] threat_analysis_switch: Threat analysis.  Valid values: `0`, `1`.
         :param pulumi.Input[str] v_core: Number of cores.
         """
-        InstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            payment_type=payment_type,
-            version_code=version_code,
-            buy_number=buy_number,
-            container_image_scan=container_image_scan,
-            honeypot=honeypot,
-            honeypot_switch=honeypot_switch,
-            instance_id=instance_id,
-            modify_type=modify_type,
-            period=period,
-            renew_period=renew_period,
-            renewal_period_unit=renewal_period_unit,
-            renewal_status=renewal_status,
-            sas_anti_ransomware=sas_anti_ransomware,
-            sas_sc=sas_sc,
-            sas_sdk=sas_sdk,
-            sas_sdk_switch=sas_sdk_switch,
-            sas_sls_storage=sas_sls_storage,
-            sas_webguard_boolean=sas_webguard_boolean,
-            sas_webguard_order_num=sas_webguard_order_num,
-            threat_analysis=threat_analysis,
-            threat_analysis_switch=threat_analysis_switch,
-            v_core=v_core,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             payment_type: Optional[pulumi.Input[str]] = None,
-             version_code: Optional[pulumi.Input[str]] = None,
-             buy_number: Optional[pulumi.Input[str]] = None,
-             container_image_scan: Optional[pulumi.Input[str]] = None,
-             honeypot: Optional[pulumi.Input[str]] = None,
-             honeypot_switch: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             modify_type: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[int]] = None,
-             renew_period: Optional[pulumi.Input[int]] = None,
-             renewal_period_unit: Optional[pulumi.Input[str]] = None,
-             renewal_status: Optional[pulumi.Input[str]] = None,
-             sas_anti_ransomware: Optional[pulumi.Input[str]] = None,
-             sas_sc: Optional[pulumi.Input[bool]] = None,
-             sas_sdk: Optional[pulumi.Input[str]] = None,
-             sas_sdk_switch: Optional[pulumi.Input[str]] = None,
-             sas_sls_storage: Optional[pulumi.Input[str]] = None,
-             sas_webguard_boolean: Optional[pulumi.Input[str]] = None,
-             sas_webguard_order_num: Optional[pulumi.Input[str]] = None,
-             threat_analysis: Optional[pulumi.Input[str]] = None,
-             threat_analysis_switch: Optional[pulumi.Input[str]] = None,
-             v_core: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if payment_type is None:
-            raise TypeError("Missing 'payment_type' argument")
-        if version_code is None and 'versionCode' in kwargs:
-            version_code = kwargs['versionCode']
-        if version_code is None:
-            raise TypeError("Missing 'version_code' argument")
-        if buy_number is None and 'buyNumber' in kwargs:
-            buy_number = kwargs['buyNumber']
-        if container_image_scan is None and 'containerImageScan' in kwargs:
-            container_image_scan = kwargs['containerImageScan']
-        if honeypot_switch is None and 'honeypotSwitch' in kwargs:
-            honeypot_switch = kwargs['honeypotSwitch']
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if modify_type is None and 'modifyType' in kwargs:
-            modify_type = kwargs['modifyType']
-        if renew_period is None and 'renewPeriod' in kwargs:
-            renew_period = kwargs['renewPeriod']
-        if renewal_period_unit is None and 'renewalPeriodUnit' in kwargs:
-            renewal_period_unit = kwargs['renewalPeriodUnit']
-        if renewal_status is None and 'renewalStatus' in kwargs:
-            renewal_status = kwargs['renewalStatus']
-        if sas_anti_ransomware is None and 'sasAntiRansomware' in kwargs:
-            sas_anti_ransomware = kwargs['sasAntiRansomware']
-        if sas_sc is None and 'sasSc' in kwargs:
-            sas_sc = kwargs['sasSc']
-        if sas_sdk is None and 'sasSdk' in kwargs:
-            sas_sdk = kwargs['sasSdk']
-        if sas_sdk_switch is None and 'sasSdkSwitch' in kwargs:
-            sas_sdk_switch = kwargs['sasSdkSwitch']
-        if sas_sls_storage is None and 'sasSlsStorage' in kwargs:
-            sas_sls_storage = kwargs['sasSlsStorage']
-        if sas_webguard_boolean is None and 'sasWebguardBoolean' in kwargs:
-            sas_webguard_boolean = kwargs['sasWebguardBoolean']
-        if sas_webguard_order_num is None and 'sasWebguardOrderNum' in kwargs:
-            sas_webguard_order_num = kwargs['sasWebguardOrderNum']
-        if threat_analysis is None and 'threatAnalysis' in kwargs:
-            threat_analysis = kwargs['threatAnalysis']
-        if threat_analysis_switch is None and 'threatAnalysisSwitch' in kwargs:
-            threat_analysis_switch = kwargs['threatAnalysisSwitch']
-        if v_core is None and 'vCore' in kwargs:
-            v_core = kwargs['vCore']
-
-        _setter("payment_type", payment_type)
-        _setter("version_code", version_code)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "version_code", version_code)
         if buy_number is not None:
-            _setter("buy_number", buy_number)
+            pulumi.set(__self__, "buy_number", buy_number)
         if container_image_scan is not None:
-            _setter("container_image_scan", container_image_scan)
+            pulumi.set(__self__, "container_image_scan", container_image_scan)
         if honeypot is not None:
-            _setter("honeypot", honeypot)
+            pulumi.set(__self__, "honeypot", honeypot)
         if honeypot_switch is not None:
-            _setter("honeypot_switch", honeypot_switch)
+            pulumi.set(__self__, "honeypot_switch", honeypot_switch)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if modify_type is not None:
-            _setter("modify_type", modify_type)
+            pulumi.set(__self__, "modify_type", modify_type)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if renew_period is not None:
-            _setter("renew_period", renew_period)
+            pulumi.set(__self__, "renew_period", renew_period)
         if renewal_period_unit is not None:
-            _setter("renewal_period_unit", renewal_period_unit)
+            pulumi.set(__self__, "renewal_period_unit", renewal_period_unit)
         if renewal_status is not None:
-            _setter("renewal_status", renewal_status)
+            pulumi.set(__self__, "renewal_status", renewal_status)
         if sas_anti_ransomware is not None:
-            _setter("sas_anti_ransomware", sas_anti_ransomware)
+            pulumi.set(__self__, "sas_anti_ransomware", sas_anti_ransomware)
         if sas_sc is not None:
-            _setter("sas_sc", sas_sc)
+            pulumi.set(__self__, "sas_sc", sas_sc)
         if sas_sdk is not None:
-            _setter("sas_sdk", sas_sdk)
+            pulumi.set(__self__, "sas_sdk", sas_sdk)
         if sas_sdk_switch is not None:
-            _setter("sas_sdk_switch", sas_sdk_switch)
+            pulumi.set(__self__, "sas_sdk_switch", sas_sdk_switch)
         if sas_sls_storage is not None:
-            _setter("sas_sls_storage", sas_sls_storage)
+            pulumi.set(__self__, "sas_sls_storage", sas_sls_storage)
         if sas_webguard_boolean is not None:
-            _setter("sas_webguard_boolean", sas_webguard_boolean)
+            pulumi.set(__self__, "sas_webguard_boolean", sas_webguard_boolean)
         if sas_webguard_order_num is not None:
-            _setter("sas_webguard_order_num", sas_webguard_order_num)
+            pulumi.set(__self__, "sas_webguard_order_num", sas_webguard_order_num)
         if threat_analysis is not None:
-            _setter("threat_analysis", threat_analysis)
+            pulumi.set(__self__, "threat_analysis", threat_analysis)
         if threat_analysis_switch is not None:
-            _setter("threat_analysis_switch", threat_analysis_switch)
+            pulumi.set(__self__, "threat_analysis_switch", threat_analysis_switch)
         if v_core is not None:
-            _setter("v_core", v_core)
+            pulumi.set(__self__, "v_core", v_core)
 
     @property
     @pulumi.getter(name="paymentType")
@@ -526,153 +429,54 @@ class _InstanceState:
         :param pulumi.Input[str] v_core: Number of cores.
         :param pulumi.Input[str] version_code: Version selection. Valid values: `level10`, `level2`, `level3`, `level7`, `level8`.
         """
-        _InstanceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            buy_number=buy_number,
-            container_image_scan=container_image_scan,
-            create_time=create_time,
-            honeypot=honeypot,
-            honeypot_switch=honeypot_switch,
-            instance_id=instance_id,
-            modify_type=modify_type,
-            payment_type=payment_type,
-            period=period,
-            renew_period=renew_period,
-            renewal_period_unit=renewal_period_unit,
-            renewal_status=renewal_status,
-            sas_anti_ransomware=sas_anti_ransomware,
-            sas_sc=sas_sc,
-            sas_sdk=sas_sdk,
-            sas_sdk_switch=sas_sdk_switch,
-            sas_sls_storage=sas_sls_storage,
-            sas_webguard_boolean=sas_webguard_boolean,
-            sas_webguard_order_num=sas_webguard_order_num,
-            status=status,
-            threat_analysis=threat_analysis,
-            threat_analysis_switch=threat_analysis_switch,
-            v_core=v_core,
-            version_code=version_code,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             buy_number: Optional[pulumi.Input[str]] = None,
-             container_image_scan: Optional[pulumi.Input[str]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             honeypot: Optional[pulumi.Input[str]] = None,
-             honeypot_switch: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             modify_type: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[int]] = None,
-             renew_period: Optional[pulumi.Input[int]] = None,
-             renewal_period_unit: Optional[pulumi.Input[str]] = None,
-             renewal_status: Optional[pulumi.Input[str]] = None,
-             sas_anti_ransomware: Optional[pulumi.Input[str]] = None,
-             sas_sc: Optional[pulumi.Input[bool]] = None,
-             sas_sdk: Optional[pulumi.Input[str]] = None,
-             sas_sdk_switch: Optional[pulumi.Input[str]] = None,
-             sas_sls_storage: Optional[pulumi.Input[str]] = None,
-             sas_webguard_boolean: Optional[pulumi.Input[str]] = None,
-             sas_webguard_order_num: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             threat_analysis: Optional[pulumi.Input[str]] = None,
-             threat_analysis_switch: Optional[pulumi.Input[str]] = None,
-             v_core: Optional[pulumi.Input[str]] = None,
-             version_code: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if buy_number is None and 'buyNumber' in kwargs:
-            buy_number = kwargs['buyNumber']
-        if container_image_scan is None and 'containerImageScan' in kwargs:
-            container_image_scan = kwargs['containerImageScan']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if honeypot_switch is None and 'honeypotSwitch' in kwargs:
-            honeypot_switch = kwargs['honeypotSwitch']
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if modify_type is None and 'modifyType' in kwargs:
-            modify_type = kwargs['modifyType']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if renew_period is None and 'renewPeriod' in kwargs:
-            renew_period = kwargs['renewPeriod']
-        if renewal_period_unit is None and 'renewalPeriodUnit' in kwargs:
-            renewal_period_unit = kwargs['renewalPeriodUnit']
-        if renewal_status is None and 'renewalStatus' in kwargs:
-            renewal_status = kwargs['renewalStatus']
-        if sas_anti_ransomware is None and 'sasAntiRansomware' in kwargs:
-            sas_anti_ransomware = kwargs['sasAntiRansomware']
-        if sas_sc is None and 'sasSc' in kwargs:
-            sas_sc = kwargs['sasSc']
-        if sas_sdk is None and 'sasSdk' in kwargs:
-            sas_sdk = kwargs['sasSdk']
-        if sas_sdk_switch is None and 'sasSdkSwitch' in kwargs:
-            sas_sdk_switch = kwargs['sasSdkSwitch']
-        if sas_sls_storage is None and 'sasSlsStorage' in kwargs:
-            sas_sls_storage = kwargs['sasSlsStorage']
-        if sas_webguard_boolean is None and 'sasWebguardBoolean' in kwargs:
-            sas_webguard_boolean = kwargs['sasWebguardBoolean']
-        if sas_webguard_order_num is None and 'sasWebguardOrderNum' in kwargs:
-            sas_webguard_order_num = kwargs['sasWebguardOrderNum']
-        if threat_analysis is None and 'threatAnalysis' in kwargs:
-            threat_analysis = kwargs['threatAnalysis']
-        if threat_analysis_switch is None and 'threatAnalysisSwitch' in kwargs:
-            threat_analysis_switch = kwargs['threatAnalysisSwitch']
-        if v_core is None and 'vCore' in kwargs:
-            v_core = kwargs['vCore']
-        if version_code is None and 'versionCode' in kwargs:
-            version_code = kwargs['versionCode']
-
         if buy_number is not None:
-            _setter("buy_number", buy_number)
+            pulumi.set(__self__, "buy_number", buy_number)
         if container_image_scan is not None:
-            _setter("container_image_scan", container_image_scan)
+            pulumi.set(__self__, "container_image_scan", container_image_scan)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if honeypot is not None:
-            _setter("honeypot", honeypot)
+            pulumi.set(__self__, "honeypot", honeypot)
         if honeypot_switch is not None:
-            _setter("honeypot_switch", honeypot_switch)
+            pulumi.set(__self__, "honeypot_switch", honeypot_switch)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if modify_type is not None:
-            _setter("modify_type", modify_type)
+            pulumi.set(__self__, "modify_type", modify_type)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if renew_period is not None:
-            _setter("renew_period", renew_period)
+            pulumi.set(__self__, "renew_period", renew_period)
         if renewal_period_unit is not None:
-            _setter("renewal_period_unit", renewal_period_unit)
+            pulumi.set(__self__, "renewal_period_unit", renewal_period_unit)
         if renewal_status is not None:
-            _setter("renewal_status", renewal_status)
+            pulumi.set(__self__, "renewal_status", renewal_status)
         if sas_anti_ransomware is not None:
-            _setter("sas_anti_ransomware", sas_anti_ransomware)
+            pulumi.set(__self__, "sas_anti_ransomware", sas_anti_ransomware)
         if sas_sc is not None:
-            _setter("sas_sc", sas_sc)
+            pulumi.set(__self__, "sas_sc", sas_sc)
         if sas_sdk is not None:
-            _setter("sas_sdk", sas_sdk)
+            pulumi.set(__self__, "sas_sdk", sas_sdk)
         if sas_sdk_switch is not None:
-            _setter("sas_sdk_switch", sas_sdk_switch)
+            pulumi.set(__self__, "sas_sdk_switch", sas_sdk_switch)
         if sas_sls_storage is not None:
-            _setter("sas_sls_storage", sas_sls_storage)
+            pulumi.set(__self__, "sas_sls_storage", sas_sls_storage)
         if sas_webguard_boolean is not None:
-            _setter("sas_webguard_boolean", sas_webguard_boolean)
+            pulumi.set(__self__, "sas_webguard_boolean", sas_webguard_boolean)
         if sas_webguard_order_num is not None:
-            _setter("sas_webguard_order_num", sas_webguard_order_num)
+            pulumi.set(__self__, "sas_webguard_order_num", sas_webguard_order_num)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if threat_analysis is not None:
-            _setter("threat_analysis", threat_analysis)
+            pulumi.set(__self__, "threat_analysis", threat_analysis)
         if threat_analysis_switch is not None:
-            _setter("threat_analysis_switch", threat_analysis_switch)
+            pulumi.set(__self__, "threat_analysis_switch", threat_analysis_switch)
         if v_core is not None:
-            _setter("v_core", v_core)
+            pulumi.set(__self__, "v_core", v_core)
         if version_code is not None:
-            _setter("version_code", version_code)
+            pulumi.set(__self__, "version_code", version_code)
 
     @property
     @pulumi.getter(name="buyNumber")
@@ -1110,10 +914,6 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

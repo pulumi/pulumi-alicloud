@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -77,71 +77,26 @@ class ClusterAdditionalVolume(dict):
         :param str volume_protocol: The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
         :param str volume_type: The type of the additional shared storage. Only NAS file systems are supported.
         """
-        ClusterAdditionalVolume._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            job_queue=job_queue,
-            local_directory=local_directory,
-            location=location,
-            remote_directory=remote_directory,
-            roles=roles,
-            volume_id=volume_id,
-            volume_mount_option=volume_mount_option,
-            volume_mountpoint=volume_mountpoint,
-            volume_protocol=volume_protocol,
-            volume_type=volume_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             job_queue: Optional[str] = None,
-             local_directory: Optional[str] = None,
-             location: Optional[str] = None,
-             remote_directory: Optional[str] = None,
-             roles: Optional[Sequence['outputs.ClusterAdditionalVolumeRole']] = None,
-             volume_id: Optional[str] = None,
-             volume_mount_option: Optional[str] = None,
-             volume_mountpoint: Optional[str] = None,
-             volume_protocol: Optional[str] = None,
-             volume_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if job_queue is None and 'jobQueue' in kwargs:
-            job_queue = kwargs['jobQueue']
-        if local_directory is None and 'localDirectory' in kwargs:
-            local_directory = kwargs['localDirectory']
-        if remote_directory is None and 'remoteDirectory' in kwargs:
-            remote_directory = kwargs['remoteDirectory']
-        if volume_id is None and 'volumeId' in kwargs:
-            volume_id = kwargs['volumeId']
-        if volume_mount_option is None and 'volumeMountOption' in kwargs:
-            volume_mount_option = kwargs['volumeMountOption']
-        if volume_mountpoint is None and 'volumeMountpoint' in kwargs:
-            volume_mountpoint = kwargs['volumeMountpoint']
-        if volume_protocol is None and 'volumeProtocol' in kwargs:
-            volume_protocol = kwargs['volumeProtocol']
-        if volume_type is None and 'volumeType' in kwargs:
-            volume_type = kwargs['volumeType']
-
         if job_queue is not None:
-            _setter("job_queue", job_queue)
+            pulumi.set(__self__, "job_queue", job_queue)
         if local_directory is not None:
-            _setter("local_directory", local_directory)
+            pulumi.set(__self__, "local_directory", local_directory)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if remote_directory is not None:
-            _setter("remote_directory", remote_directory)
+            pulumi.set(__self__, "remote_directory", remote_directory)
         if roles is not None:
-            _setter("roles", roles)
+            pulumi.set(__self__, "roles", roles)
         if volume_id is not None:
-            _setter("volume_id", volume_id)
+            pulumi.set(__self__, "volume_id", volume_id)
         if volume_mount_option is not None:
-            _setter("volume_mount_option", volume_mount_option)
+            pulumi.set(__self__, "volume_mount_option", volume_mount_option)
         if volume_mountpoint is not None:
-            _setter("volume_mountpoint", volume_mountpoint)
+            pulumi.set(__self__, "volume_mountpoint", volume_mountpoint)
         if volume_protocol is not None:
-            _setter("volume_protocol", volume_protocol)
+            pulumi.set(__self__, "volume_protocol", volume_protocol)
         if volume_type is not None:
-            _setter("volume_type", volume_type)
+            pulumi.set(__self__, "volume_type", volume_type)
 
     @property
     @pulumi.getter(name="jobQueue")
@@ -231,19 +186,8 @@ class ClusterAdditionalVolumeRole(dict):
         """
         :param str name: The type of the nodes to which the additional file system is attached.
         """
-        ClusterAdditionalVolumeRole._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -261,19 +205,8 @@ class ClusterApplication(dict):
         """
         :param str tag: The tag of the software.
         """
-        ClusterApplication._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            tag=tag,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             tag: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if tag is not None:
-            _setter("tag", tag)
+            pulumi.set(__self__, "tag", tag)
 
     @property
     @pulumi.getter
@@ -293,23 +226,10 @@ class ClusterPostInstallScript(dict):
         :param str args: The parameter that is used to run the script after the cluster is created.
         :param str url: The URL that is used to download the script after the cluster is created.
         """
-        ClusterPostInstallScript._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            args=args,
-            url=url,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             args: Optional[str] = None,
-             url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if args is not None:
-            _setter("args", args)
+            pulumi.set(__self__, "args", args)
         if url is not None:
-            _setter("url", url)
+            pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter
@@ -398,231 +318,38 @@ class GetClustersClusterResult(dict):
         :param str vpc_id: The ID of the VPC network.
         :param str vswitch_id: The vswitch id.
         """
-        GetClustersClusterResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_type=account_type,
-            applications=applications,
-            client_version=client_version,
-            cluster_id=cluster_id,
-            cluster_name=cluster_name,
-            compute_count=compute_count,
-            compute_instance_type=compute_instance_type,
-            create_time=create_time,
-            deploy_mode=deploy_mode,
-            description=description,
-            ha_enable=ha_enable,
-            id=id,
-            image_id=image_id,
-            image_owner_alias=image_owner_alias,
-            login_count=login_count,
-            login_instance_type=login_instance_type,
-            manager_count=manager_count,
-            manager_instance_type=manager_instance_type,
-            os_tag=os_tag,
-            post_install_scripts=post_install_scripts,
-            remote_directory=remote_directory,
-            scc_cluster_id=scc_cluster_id,
-            scheduler_type=scheduler_type,
-            security_group_id=security_group_id,
-            status=status,
-            volume_id=volume_id,
-            volume_mountpoint=volume_mountpoint,
-            volume_protocol=volume_protocol,
-            volume_type=volume_type,
-            vpc_id=vpc_id,
-            vswitch_id=vswitch_id,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_type: Optional[str] = None,
-             applications: Optional[Sequence['outputs.GetClustersClusterApplicationResult']] = None,
-             client_version: Optional[str] = None,
-             cluster_id: Optional[str] = None,
-             cluster_name: Optional[str] = None,
-             compute_count: Optional[int] = None,
-             compute_instance_type: Optional[str] = None,
-             create_time: Optional[str] = None,
-             deploy_mode: Optional[str] = None,
-             description: Optional[str] = None,
-             ha_enable: Optional[bool] = None,
-             id: Optional[str] = None,
-             image_id: Optional[str] = None,
-             image_owner_alias: Optional[str] = None,
-             login_count: Optional[int] = None,
-             login_instance_type: Optional[str] = None,
-             manager_count: Optional[int] = None,
-             manager_instance_type: Optional[str] = None,
-             os_tag: Optional[str] = None,
-             post_install_scripts: Optional[Sequence['outputs.GetClustersClusterPostInstallScriptResult']] = None,
-             remote_directory: Optional[str] = None,
-             scc_cluster_id: Optional[str] = None,
-             scheduler_type: Optional[str] = None,
-             security_group_id: Optional[str] = None,
-             status: Optional[str] = None,
-             volume_id: Optional[str] = None,
-             volume_mountpoint: Optional[str] = None,
-             volume_protocol: Optional[str] = None,
-             volume_type: Optional[str] = None,
-             vpc_id: Optional[str] = None,
-             vswitch_id: Optional[str] = None,
-             zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_type is None and 'accountType' in kwargs:
-            account_type = kwargs['accountType']
-        if account_type is None:
-            raise TypeError("Missing 'account_type' argument")
-        if applications is None:
-            raise TypeError("Missing 'applications' argument")
-        if client_version is None and 'clientVersion' in kwargs:
-            client_version = kwargs['clientVersion']
-        if client_version is None:
-            raise TypeError("Missing 'client_version' argument")
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cluster_id is None:
-            raise TypeError("Missing 'cluster_id' argument")
-        if cluster_name is None and 'clusterName' in kwargs:
-            cluster_name = kwargs['clusterName']
-        if cluster_name is None:
-            raise TypeError("Missing 'cluster_name' argument")
-        if compute_count is None and 'computeCount' in kwargs:
-            compute_count = kwargs['computeCount']
-        if compute_count is None:
-            raise TypeError("Missing 'compute_count' argument")
-        if compute_instance_type is None and 'computeInstanceType' in kwargs:
-            compute_instance_type = kwargs['computeInstanceType']
-        if compute_instance_type is None:
-            raise TypeError("Missing 'compute_instance_type' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if deploy_mode is None and 'deployMode' in kwargs:
-            deploy_mode = kwargs['deployMode']
-        if deploy_mode is None:
-            raise TypeError("Missing 'deploy_mode' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if ha_enable is None and 'haEnable' in kwargs:
-            ha_enable = kwargs['haEnable']
-        if ha_enable is None:
-            raise TypeError("Missing 'ha_enable' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-        if image_id is None:
-            raise TypeError("Missing 'image_id' argument")
-        if image_owner_alias is None and 'imageOwnerAlias' in kwargs:
-            image_owner_alias = kwargs['imageOwnerAlias']
-        if image_owner_alias is None:
-            raise TypeError("Missing 'image_owner_alias' argument")
-        if login_count is None and 'loginCount' in kwargs:
-            login_count = kwargs['loginCount']
-        if login_count is None:
-            raise TypeError("Missing 'login_count' argument")
-        if login_instance_type is None and 'loginInstanceType' in kwargs:
-            login_instance_type = kwargs['loginInstanceType']
-        if login_instance_type is None:
-            raise TypeError("Missing 'login_instance_type' argument")
-        if manager_count is None and 'managerCount' in kwargs:
-            manager_count = kwargs['managerCount']
-        if manager_count is None:
-            raise TypeError("Missing 'manager_count' argument")
-        if manager_instance_type is None and 'managerInstanceType' in kwargs:
-            manager_instance_type = kwargs['managerInstanceType']
-        if manager_instance_type is None:
-            raise TypeError("Missing 'manager_instance_type' argument")
-        if os_tag is None and 'osTag' in kwargs:
-            os_tag = kwargs['osTag']
-        if os_tag is None:
-            raise TypeError("Missing 'os_tag' argument")
-        if post_install_scripts is None and 'postInstallScripts' in kwargs:
-            post_install_scripts = kwargs['postInstallScripts']
-        if post_install_scripts is None:
-            raise TypeError("Missing 'post_install_scripts' argument")
-        if remote_directory is None and 'remoteDirectory' in kwargs:
-            remote_directory = kwargs['remoteDirectory']
-        if remote_directory is None:
-            raise TypeError("Missing 'remote_directory' argument")
-        if scc_cluster_id is None and 'sccClusterId' in kwargs:
-            scc_cluster_id = kwargs['sccClusterId']
-        if scc_cluster_id is None:
-            raise TypeError("Missing 'scc_cluster_id' argument")
-        if scheduler_type is None and 'schedulerType' in kwargs:
-            scheduler_type = kwargs['schedulerType']
-        if scheduler_type is None:
-            raise TypeError("Missing 'scheduler_type' argument")
-        if security_group_id is None and 'securityGroupId' in kwargs:
-            security_group_id = kwargs['securityGroupId']
-        if security_group_id is None:
-            raise TypeError("Missing 'security_group_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if volume_id is None and 'volumeId' in kwargs:
-            volume_id = kwargs['volumeId']
-        if volume_id is None:
-            raise TypeError("Missing 'volume_id' argument")
-        if volume_mountpoint is None and 'volumeMountpoint' in kwargs:
-            volume_mountpoint = kwargs['volumeMountpoint']
-        if volume_mountpoint is None:
-            raise TypeError("Missing 'volume_mountpoint' argument")
-        if volume_protocol is None and 'volumeProtocol' in kwargs:
-            volume_protocol = kwargs['volumeProtocol']
-        if volume_protocol is None:
-            raise TypeError("Missing 'volume_protocol' argument")
-        if volume_type is None and 'volumeType' in kwargs:
-            volume_type = kwargs['volumeType']
-        if volume_type is None:
-            raise TypeError("Missing 'volume_type' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("account_type", account_type)
-        _setter("applications", applications)
-        _setter("client_version", client_version)
-        _setter("cluster_id", cluster_id)
-        _setter("cluster_name", cluster_name)
-        _setter("compute_count", compute_count)
-        _setter("compute_instance_type", compute_instance_type)
-        _setter("create_time", create_time)
-        _setter("deploy_mode", deploy_mode)
-        _setter("description", description)
-        _setter("ha_enable", ha_enable)
-        _setter("id", id)
-        _setter("image_id", image_id)
-        _setter("image_owner_alias", image_owner_alias)
-        _setter("login_count", login_count)
-        _setter("login_instance_type", login_instance_type)
-        _setter("manager_count", manager_count)
-        _setter("manager_instance_type", manager_instance_type)
-        _setter("os_tag", os_tag)
-        _setter("post_install_scripts", post_install_scripts)
-        _setter("remote_directory", remote_directory)
-        _setter("scc_cluster_id", scc_cluster_id)
-        _setter("scheduler_type", scheduler_type)
-        _setter("security_group_id", security_group_id)
-        _setter("status", status)
-        _setter("volume_id", volume_id)
-        _setter("volume_mountpoint", volume_mountpoint)
-        _setter("volume_protocol", volume_protocol)
-        _setter("volume_type", volume_type)
-        _setter("vpc_id", vpc_id)
-        _setter("vswitch_id", vswitch_id)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "account_type", account_type)
+        pulumi.set(__self__, "applications", applications)
+        pulumi.set(__self__, "client_version", client_version)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "cluster_name", cluster_name)
+        pulumi.set(__self__, "compute_count", compute_count)
+        pulumi.set(__self__, "compute_instance_type", compute_instance_type)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "deploy_mode", deploy_mode)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "ha_enable", ha_enable)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "image_owner_alias", image_owner_alias)
+        pulumi.set(__self__, "login_count", login_count)
+        pulumi.set(__self__, "login_instance_type", login_instance_type)
+        pulumi.set(__self__, "manager_count", manager_count)
+        pulumi.set(__self__, "manager_instance_type", manager_instance_type)
+        pulumi.set(__self__, "os_tag", os_tag)
+        pulumi.set(__self__, "post_install_scripts", post_install_scripts)
+        pulumi.set(__self__, "remote_directory", remote_directory)
+        pulumi.set(__self__, "scc_cluster_id", scc_cluster_id)
+        pulumi.set(__self__, "scheduler_type", scheduler_type)
+        pulumi.set(__self__, "security_group_id", security_group_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "volume_mountpoint", volume_mountpoint)
+        pulumi.set(__self__, "volume_protocol", volume_protocol)
+        pulumi.set(__self__, "volume_type", volume_type)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="accountType")
@@ -878,20 +605,7 @@ class GetClustersClusterResult(dict):
 class GetClustersClusterApplicationResult(dict):
     def __init__(__self__, *,
                  tag: str):
-        GetClustersClusterApplicationResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            tag=tag,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             tag: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if tag is None:
-            raise TypeError("Missing 'tag' argument")
-
-        _setter("tag", tag)
+        pulumi.set(__self__, "tag", tag)
 
     @property
     @pulumi.getter
@@ -904,25 +618,8 @@ class GetClustersClusterPostInstallScriptResult(dict):
     def __init__(__self__, *,
                  args: str,
                  url: str):
-        GetClustersClusterPostInstallScriptResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            args=args,
-            url=url,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             args: Optional[str] = None,
-             url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if args is None:
-            raise TypeError("Missing 'args' argument")
-        if url is None:
-            raise TypeError("Missing 'url' argument")
-
-        _setter("args", args)
-        _setter("url", url)
+        pulumi.set(__self__, "args", args)
+        pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter
@@ -978,130 +675,25 @@ class GetJobTemplatesTemplateResult(dict):
         :param int thread: A Single Task and the Number of Required Threads.Possible Values: 1~20000.
         :param str variables: The Job of the Environment Variable.
         """
-        GetJobTemplatesTemplateResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            array_request=array_request,
-            clock_time=clock_time,
-            command_line=command_line,
-            gpu=gpu,
-            id=id,
-            job_template_id=job_template_id,
-            job_template_name=job_template_name,
-            mem=mem,
-            node=node,
-            package_path=package_path,
-            priority=priority,
-            queue=queue,
-            re_runable=re_runable,
-            runas_user=runas_user,
-            stderr_redirect_path=stderr_redirect_path,
-            stdout_redirect_path=stdout_redirect_path,
-            task=task,
-            thread=thread,
-            variables=variables,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             array_request: Optional[str] = None,
-             clock_time: Optional[str] = None,
-             command_line: Optional[str] = None,
-             gpu: Optional[int] = None,
-             id: Optional[str] = None,
-             job_template_id: Optional[str] = None,
-             job_template_name: Optional[str] = None,
-             mem: Optional[str] = None,
-             node: Optional[int] = None,
-             package_path: Optional[str] = None,
-             priority: Optional[int] = None,
-             queue: Optional[str] = None,
-             re_runable: Optional[bool] = None,
-             runas_user: Optional[str] = None,
-             stderr_redirect_path: Optional[str] = None,
-             stdout_redirect_path: Optional[str] = None,
-             task: Optional[int] = None,
-             thread: Optional[int] = None,
-             variables: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if array_request is None and 'arrayRequest' in kwargs:
-            array_request = kwargs['arrayRequest']
-        if array_request is None:
-            raise TypeError("Missing 'array_request' argument")
-        if clock_time is None and 'clockTime' in kwargs:
-            clock_time = kwargs['clockTime']
-        if clock_time is None:
-            raise TypeError("Missing 'clock_time' argument")
-        if command_line is None and 'commandLine' in kwargs:
-            command_line = kwargs['commandLine']
-        if command_line is None:
-            raise TypeError("Missing 'command_line' argument")
-        if gpu is None:
-            raise TypeError("Missing 'gpu' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if job_template_id is None and 'jobTemplateId' in kwargs:
-            job_template_id = kwargs['jobTemplateId']
-        if job_template_id is None:
-            raise TypeError("Missing 'job_template_id' argument")
-        if job_template_name is None and 'jobTemplateName' in kwargs:
-            job_template_name = kwargs['jobTemplateName']
-        if job_template_name is None:
-            raise TypeError("Missing 'job_template_name' argument")
-        if mem is None:
-            raise TypeError("Missing 'mem' argument")
-        if node is None:
-            raise TypeError("Missing 'node' argument")
-        if package_path is None and 'packagePath' in kwargs:
-            package_path = kwargs['packagePath']
-        if package_path is None:
-            raise TypeError("Missing 'package_path' argument")
-        if priority is None:
-            raise TypeError("Missing 'priority' argument")
-        if queue is None:
-            raise TypeError("Missing 'queue' argument")
-        if re_runable is None and 'reRunable' in kwargs:
-            re_runable = kwargs['reRunable']
-        if re_runable is None:
-            raise TypeError("Missing 're_runable' argument")
-        if runas_user is None and 'runasUser' in kwargs:
-            runas_user = kwargs['runasUser']
-        if runas_user is None:
-            raise TypeError("Missing 'runas_user' argument")
-        if stderr_redirect_path is None and 'stderrRedirectPath' in kwargs:
-            stderr_redirect_path = kwargs['stderrRedirectPath']
-        if stderr_redirect_path is None:
-            raise TypeError("Missing 'stderr_redirect_path' argument")
-        if stdout_redirect_path is None and 'stdoutRedirectPath' in kwargs:
-            stdout_redirect_path = kwargs['stdoutRedirectPath']
-        if stdout_redirect_path is None:
-            raise TypeError("Missing 'stdout_redirect_path' argument")
-        if task is None:
-            raise TypeError("Missing 'task' argument")
-        if thread is None:
-            raise TypeError("Missing 'thread' argument")
-        if variables is None:
-            raise TypeError("Missing 'variables' argument")
-
-        _setter("array_request", array_request)
-        _setter("clock_time", clock_time)
-        _setter("command_line", command_line)
-        _setter("gpu", gpu)
-        _setter("id", id)
-        _setter("job_template_id", job_template_id)
-        _setter("job_template_name", job_template_name)
-        _setter("mem", mem)
-        _setter("node", node)
-        _setter("package_path", package_path)
-        _setter("priority", priority)
-        _setter("queue", queue)
-        _setter("re_runable", re_runable)
-        _setter("runas_user", runas_user)
-        _setter("stderr_redirect_path", stderr_redirect_path)
-        _setter("stdout_redirect_path", stdout_redirect_path)
-        _setter("task", task)
-        _setter("thread", thread)
-        _setter("variables", variables)
+        pulumi.set(__self__, "array_request", array_request)
+        pulumi.set(__self__, "clock_time", clock_time)
+        pulumi.set(__self__, "command_line", command_line)
+        pulumi.set(__self__, "gpu", gpu)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "job_template_id", job_template_id)
+        pulumi.set(__self__, "job_template_name", job_template_name)
+        pulumi.set(__self__, "mem", mem)
+        pulumi.set(__self__, "node", node)
+        pulumi.set(__self__, "package_path", package_path)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "queue", queue)
+        pulumi.set(__self__, "re_runable", re_runable)
+        pulumi.set(__self__, "runas_user", runas_user)
+        pulumi.set(__self__, "stderr_redirect_path", stderr_redirect_path)
+        pulumi.set(__self__, "stdout_redirect_path", stdout_redirect_path)
+        pulumi.set(__self__, "task", task)
+        pulumi.set(__self__, "thread", thread)
+        pulumi.set(__self__, "variables", variables)
 
     @property
     @pulumi.getter(name="arrayRequest")

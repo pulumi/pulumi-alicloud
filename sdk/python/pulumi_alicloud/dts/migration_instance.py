@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['MigrationInstanceArgs', 'MigrationInstance']
@@ -37,78 +37,21 @@ class MigrationInstanceArgs:
         :param pulumi.Input[str] sync_architecture: The sync architecture. Valid values: `oneway`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
-        MigrationInstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            destination_endpoint_engine_name=destination_endpoint_engine_name,
-            destination_endpoint_region=destination_endpoint_region,
-            payment_type=payment_type,
-            source_endpoint_engine_name=source_endpoint_engine_name,
-            source_endpoint_region=source_endpoint_region,
-            compute_unit=compute_unit,
-            database_count=database_count,
-            instance_class=instance_class,
-            sync_architecture=sync_architecture,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             destination_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
-             destination_endpoint_region: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             source_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
-             source_endpoint_region: Optional[pulumi.Input[str]] = None,
-             compute_unit: Optional[pulumi.Input[int]] = None,
-             database_count: Optional[pulumi.Input[int]] = None,
-             instance_class: Optional[pulumi.Input[str]] = None,
-             sync_architecture: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if destination_endpoint_engine_name is None and 'destinationEndpointEngineName' in kwargs:
-            destination_endpoint_engine_name = kwargs['destinationEndpointEngineName']
-        if destination_endpoint_engine_name is None:
-            raise TypeError("Missing 'destination_endpoint_engine_name' argument")
-        if destination_endpoint_region is None and 'destinationEndpointRegion' in kwargs:
-            destination_endpoint_region = kwargs['destinationEndpointRegion']
-        if destination_endpoint_region is None:
-            raise TypeError("Missing 'destination_endpoint_region' argument")
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if payment_type is None:
-            raise TypeError("Missing 'payment_type' argument")
-        if source_endpoint_engine_name is None and 'sourceEndpointEngineName' in kwargs:
-            source_endpoint_engine_name = kwargs['sourceEndpointEngineName']
-        if source_endpoint_engine_name is None:
-            raise TypeError("Missing 'source_endpoint_engine_name' argument")
-        if source_endpoint_region is None and 'sourceEndpointRegion' in kwargs:
-            source_endpoint_region = kwargs['sourceEndpointRegion']
-        if source_endpoint_region is None:
-            raise TypeError("Missing 'source_endpoint_region' argument")
-        if compute_unit is None and 'computeUnit' in kwargs:
-            compute_unit = kwargs['computeUnit']
-        if database_count is None and 'databaseCount' in kwargs:
-            database_count = kwargs['databaseCount']
-        if instance_class is None and 'instanceClass' in kwargs:
-            instance_class = kwargs['instanceClass']
-        if sync_architecture is None and 'syncArchitecture' in kwargs:
-            sync_architecture = kwargs['syncArchitecture']
-
-        _setter("destination_endpoint_engine_name", destination_endpoint_engine_name)
-        _setter("destination_endpoint_region", destination_endpoint_region)
-        _setter("payment_type", payment_type)
-        _setter("source_endpoint_engine_name", source_endpoint_engine_name)
-        _setter("source_endpoint_region", source_endpoint_region)
+        pulumi.set(__self__, "destination_endpoint_engine_name", destination_endpoint_engine_name)
+        pulumi.set(__self__, "destination_endpoint_region", destination_endpoint_region)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "source_endpoint_engine_name", source_endpoint_engine_name)
+        pulumi.set(__self__, "source_endpoint_region", source_endpoint_region)
         if compute_unit is not None:
-            _setter("compute_unit", compute_unit)
+            pulumi.set(__self__, "compute_unit", compute_unit)
         if database_count is not None:
-            _setter("database_count", database_count)
+            pulumi.set(__self__, "database_count", database_count)
         if instance_class is not None:
-            _setter("instance_class", instance_class)
+            pulumi.set(__self__, "instance_class", instance_class)
         if sync_architecture is not None:
-            _setter("sync_architecture", sync_architecture)
+            pulumi.set(__self__, "sync_architecture", sync_architecture)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="destinationEndpointEngineName")
@@ -261,83 +204,30 @@ class _MigrationInstanceState:
         :param pulumi.Input[str] sync_architecture: The sync architecture. Valid values: `oneway`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
-        _MigrationInstanceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            compute_unit=compute_unit,
-            database_count=database_count,
-            destination_endpoint_engine_name=destination_endpoint_engine_name,
-            destination_endpoint_region=destination_endpoint_region,
-            dts_instance_id=dts_instance_id,
-            instance_class=instance_class,
-            payment_type=payment_type,
-            source_endpoint_engine_name=source_endpoint_engine_name,
-            source_endpoint_region=source_endpoint_region,
-            status=status,
-            sync_architecture=sync_architecture,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             compute_unit: Optional[pulumi.Input[int]] = None,
-             database_count: Optional[pulumi.Input[int]] = None,
-             destination_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
-             destination_endpoint_region: Optional[pulumi.Input[str]] = None,
-             dts_instance_id: Optional[pulumi.Input[str]] = None,
-             instance_class: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             source_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
-             source_endpoint_region: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             sync_architecture: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if compute_unit is None and 'computeUnit' in kwargs:
-            compute_unit = kwargs['computeUnit']
-        if database_count is None and 'databaseCount' in kwargs:
-            database_count = kwargs['databaseCount']
-        if destination_endpoint_engine_name is None and 'destinationEndpointEngineName' in kwargs:
-            destination_endpoint_engine_name = kwargs['destinationEndpointEngineName']
-        if destination_endpoint_region is None and 'destinationEndpointRegion' in kwargs:
-            destination_endpoint_region = kwargs['destinationEndpointRegion']
-        if dts_instance_id is None and 'dtsInstanceId' in kwargs:
-            dts_instance_id = kwargs['dtsInstanceId']
-        if instance_class is None and 'instanceClass' in kwargs:
-            instance_class = kwargs['instanceClass']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if source_endpoint_engine_name is None and 'sourceEndpointEngineName' in kwargs:
-            source_endpoint_engine_name = kwargs['sourceEndpointEngineName']
-        if source_endpoint_region is None and 'sourceEndpointRegion' in kwargs:
-            source_endpoint_region = kwargs['sourceEndpointRegion']
-        if sync_architecture is None and 'syncArchitecture' in kwargs:
-            sync_architecture = kwargs['syncArchitecture']
-
         if compute_unit is not None:
-            _setter("compute_unit", compute_unit)
+            pulumi.set(__self__, "compute_unit", compute_unit)
         if database_count is not None:
-            _setter("database_count", database_count)
+            pulumi.set(__self__, "database_count", database_count)
         if destination_endpoint_engine_name is not None:
-            _setter("destination_endpoint_engine_name", destination_endpoint_engine_name)
+            pulumi.set(__self__, "destination_endpoint_engine_name", destination_endpoint_engine_name)
         if destination_endpoint_region is not None:
-            _setter("destination_endpoint_region", destination_endpoint_region)
+            pulumi.set(__self__, "destination_endpoint_region", destination_endpoint_region)
         if dts_instance_id is not None:
-            _setter("dts_instance_id", dts_instance_id)
+            pulumi.set(__self__, "dts_instance_id", dts_instance_id)
         if instance_class is not None:
-            _setter("instance_class", instance_class)
+            pulumi.set(__self__, "instance_class", instance_class)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if source_endpoint_engine_name is not None:
-            _setter("source_endpoint_engine_name", source_endpoint_engine_name)
+            pulumi.set(__self__, "source_endpoint_engine_name", source_endpoint_engine_name)
         if source_endpoint_region is not None:
-            _setter("source_endpoint_region", source_endpoint_region)
+            pulumi.set(__self__, "source_endpoint_region", source_endpoint_region)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if sync_architecture is not None:
-            _setter("sync_architecture", sync_architecture)
+            pulumi.set(__self__, "sync_architecture", sync_architecture)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="computeUnit")
@@ -597,10 +487,6 @@ class MigrationInstance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            MigrationInstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

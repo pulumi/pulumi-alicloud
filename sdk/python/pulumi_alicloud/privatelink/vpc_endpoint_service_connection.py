@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['VpcEndpointServiceConnectionArgs', 'VpcEndpointServiceConnection']
@@ -25,39 +25,12 @@ class VpcEndpointServiceConnectionArgs:
         :param pulumi.Input[int] bandwidth: The Bandwidth.
         :param pulumi.Input[bool] dry_run: The dry run.
         """
-        VpcEndpointServiceConnectionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            endpoint_id=endpoint_id,
-            service_id=service_id,
-            bandwidth=bandwidth,
-            dry_run=dry_run,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             endpoint_id: Optional[pulumi.Input[str]] = None,
-             service_id: Optional[pulumi.Input[str]] = None,
-             bandwidth: Optional[pulumi.Input[int]] = None,
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if endpoint_id is None and 'endpointId' in kwargs:
-            endpoint_id = kwargs['endpointId']
-        if endpoint_id is None:
-            raise TypeError("Missing 'endpoint_id' argument")
-        if service_id is None and 'serviceId' in kwargs:
-            service_id = kwargs['serviceId']
-        if service_id is None:
-            raise TypeError("Missing 'service_id' argument")
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-
-        _setter("endpoint_id", endpoint_id)
-        _setter("service_id", service_id)
+        pulumi.set(__self__, "endpoint_id", endpoint_id)
+        pulumi.set(__self__, "service_id", service_id)
         if bandwidth is not None:
-            _setter("bandwidth", bandwidth)
+            pulumi.set(__self__, "bandwidth", bandwidth)
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
 
     @property
     @pulumi.getter(name="endpointId")
@@ -124,41 +97,16 @@ class _VpcEndpointServiceConnectionState:
         :param pulumi.Input[str] service_id: The ID of the Vpc Endpoint Service.
         :param pulumi.Input[str] status: The status of Vpc Endpoint Connection.
         """
-        _VpcEndpointServiceConnectionState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bandwidth=bandwidth,
-            dry_run=dry_run,
-            endpoint_id=endpoint_id,
-            service_id=service_id,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bandwidth: Optional[pulumi.Input[int]] = None,
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             endpoint_id: Optional[pulumi.Input[str]] = None,
-             service_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-        if endpoint_id is None and 'endpointId' in kwargs:
-            endpoint_id = kwargs['endpointId']
-        if service_id is None and 'serviceId' in kwargs:
-            service_id = kwargs['serviceId']
-
         if bandwidth is not None:
-            _setter("bandwidth", bandwidth)
+            pulumi.set(__self__, "bandwidth", bandwidth)
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if endpoint_id is not None:
-            _setter("endpoint_id", endpoint_id)
+            pulumi.set(__self__, "endpoint_id", endpoint_id)
         if service_id is not None:
-            _setter("service_id", service_id)
+            pulumi.set(__self__, "service_id", service_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -376,10 +324,6 @@ class VpcEndpointServiceConnection(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            VpcEndpointServiceConnectionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SmbAclAttachmentArgs', 'SmbAclAttachment']
@@ -47,64 +47,19 @@ class SmbAclAttachmentArgs:
                The ID contains at least three hyphens (-) as delimiters.
                Example: S-1-5-22 and S-1-5-22-23.
         """
-        SmbAclAttachmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            file_system_id=file_system_id,
-            keytab=keytab,
-            keytab_md5=keytab_md5,
-            enable_anonymous_access=enable_anonymous_access,
-            encrypt_data=encrypt_data,
-            home_dir_path=home_dir_path,
-            reject_unencrypted_access=reject_unencrypted_access,
-            super_admin_sid=super_admin_sid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             file_system_id: Optional[pulumi.Input[str]] = None,
-             keytab: Optional[pulumi.Input[str]] = None,
-             keytab_md5: Optional[pulumi.Input[str]] = None,
-             enable_anonymous_access: Optional[pulumi.Input[bool]] = None,
-             encrypt_data: Optional[pulumi.Input[bool]] = None,
-             home_dir_path: Optional[pulumi.Input[str]] = None,
-             reject_unencrypted_access: Optional[pulumi.Input[bool]] = None,
-             super_admin_sid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if file_system_id is None and 'fileSystemId' in kwargs:
-            file_system_id = kwargs['fileSystemId']
-        if file_system_id is None:
-            raise TypeError("Missing 'file_system_id' argument")
-        if keytab is None:
-            raise TypeError("Missing 'keytab' argument")
-        if keytab_md5 is None and 'keytabMd5' in kwargs:
-            keytab_md5 = kwargs['keytabMd5']
-        if keytab_md5 is None:
-            raise TypeError("Missing 'keytab_md5' argument")
-        if enable_anonymous_access is None and 'enableAnonymousAccess' in kwargs:
-            enable_anonymous_access = kwargs['enableAnonymousAccess']
-        if encrypt_data is None and 'encryptData' in kwargs:
-            encrypt_data = kwargs['encryptData']
-        if home_dir_path is None and 'homeDirPath' in kwargs:
-            home_dir_path = kwargs['homeDirPath']
-        if reject_unencrypted_access is None and 'rejectUnencryptedAccess' in kwargs:
-            reject_unencrypted_access = kwargs['rejectUnencryptedAccess']
-        if super_admin_sid is None and 'superAdminSid' in kwargs:
-            super_admin_sid = kwargs['superAdminSid']
-
-        _setter("file_system_id", file_system_id)
-        _setter("keytab", keytab)
-        _setter("keytab_md5", keytab_md5)
+        pulumi.set(__self__, "file_system_id", file_system_id)
+        pulumi.set(__self__, "keytab", keytab)
+        pulumi.set(__self__, "keytab_md5", keytab_md5)
         if enable_anonymous_access is not None:
-            _setter("enable_anonymous_access", enable_anonymous_access)
+            pulumi.set(__self__, "enable_anonymous_access", enable_anonymous_access)
         if encrypt_data is not None:
-            _setter("encrypt_data", encrypt_data)
+            pulumi.set(__self__, "encrypt_data", encrypt_data)
         if home_dir_path is not None:
-            _setter("home_dir_path", home_dir_path)
+            pulumi.set(__self__, "home_dir_path", home_dir_path)
         if reject_unencrypted_access is not None:
-            _setter("reject_unencrypted_access", reject_unencrypted_access)
+            pulumi.set(__self__, "reject_unencrypted_access", reject_unencrypted_access)
         if super_admin_sid is not None:
-            _setter("super_admin_sid", super_admin_sid)
+            pulumi.set(__self__, "super_admin_sid", super_admin_sid)
 
     @property
     @pulumi.getter(name="fileSystemId")
@@ -259,71 +214,26 @@ class _SmbAclAttachmentState:
                The ID contains at least three hyphens (-) as delimiters.
                Example: S-1-5-22 and S-1-5-22-23.
         """
-        _SmbAclAttachmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auth_method=auth_method,
-            enable_anonymous_access=enable_anonymous_access,
-            enabled=enabled,
-            encrypt_data=encrypt_data,
-            file_system_id=file_system_id,
-            home_dir_path=home_dir_path,
-            keytab=keytab,
-            keytab_md5=keytab_md5,
-            reject_unencrypted_access=reject_unencrypted_access,
-            super_admin_sid=super_admin_sid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auth_method: Optional[pulumi.Input[str]] = None,
-             enable_anonymous_access: Optional[pulumi.Input[bool]] = None,
-             enabled: Optional[pulumi.Input[str]] = None,
-             encrypt_data: Optional[pulumi.Input[bool]] = None,
-             file_system_id: Optional[pulumi.Input[str]] = None,
-             home_dir_path: Optional[pulumi.Input[str]] = None,
-             keytab: Optional[pulumi.Input[str]] = None,
-             keytab_md5: Optional[pulumi.Input[str]] = None,
-             reject_unencrypted_access: Optional[pulumi.Input[bool]] = None,
-             super_admin_sid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auth_method is None and 'authMethod' in kwargs:
-            auth_method = kwargs['authMethod']
-        if enable_anonymous_access is None and 'enableAnonymousAccess' in kwargs:
-            enable_anonymous_access = kwargs['enableAnonymousAccess']
-        if encrypt_data is None and 'encryptData' in kwargs:
-            encrypt_data = kwargs['encryptData']
-        if file_system_id is None and 'fileSystemId' in kwargs:
-            file_system_id = kwargs['fileSystemId']
-        if home_dir_path is None and 'homeDirPath' in kwargs:
-            home_dir_path = kwargs['homeDirPath']
-        if keytab_md5 is None and 'keytabMd5' in kwargs:
-            keytab_md5 = kwargs['keytabMd5']
-        if reject_unencrypted_access is None and 'rejectUnencryptedAccess' in kwargs:
-            reject_unencrypted_access = kwargs['rejectUnencryptedAccess']
-        if super_admin_sid is None and 'superAdminSid' in kwargs:
-            super_admin_sid = kwargs['superAdminSid']
-
         if auth_method is not None:
-            _setter("auth_method", auth_method)
+            pulumi.set(__self__, "auth_method", auth_method)
         if enable_anonymous_access is not None:
-            _setter("enable_anonymous_access", enable_anonymous_access)
+            pulumi.set(__self__, "enable_anonymous_access", enable_anonymous_access)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if encrypt_data is not None:
-            _setter("encrypt_data", encrypt_data)
+            pulumi.set(__self__, "encrypt_data", encrypt_data)
         if file_system_id is not None:
-            _setter("file_system_id", file_system_id)
+            pulumi.set(__self__, "file_system_id", file_system_id)
         if home_dir_path is not None:
-            _setter("home_dir_path", home_dir_path)
+            pulumi.set(__self__, "home_dir_path", home_dir_path)
         if keytab is not None:
-            _setter("keytab", keytab)
+            pulumi.set(__self__, "keytab", keytab)
         if keytab_md5 is not None:
-            _setter("keytab_md5", keytab_md5)
+            pulumi.set(__self__, "keytab_md5", keytab_md5)
         if reject_unencrypted_access is not None:
-            _setter("reject_unencrypted_access", reject_unencrypted_access)
+            pulumi.set(__self__, "reject_unencrypted_access", reject_unencrypted_access)
         if super_admin_sid is not None:
-            _setter("super_admin_sid", super_admin_sid)
+            pulumi.set(__self__, "super_admin_sid", super_admin_sid)
 
     @property
     @pulumi.getter(name="authMethod")
@@ -573,10 +483,6 @@ class SmbAclAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SmbAclAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

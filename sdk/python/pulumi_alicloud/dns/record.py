@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RecordArgs', 'Record']
@@ -31,48 +31,17 @@ class RecordArgs:
         :param pulumi.Input[str] routing: The resolution line of domain record. Valid values are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/what-is-alibaba-cloud-dns) or using dns_get_resolution_lines in data source to get the value.
         :param pulumi.Input[int] ttl: The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.
         """
-        RecordArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            host_record=host_record,
-            type=type,
-            value=value,
-            name=name,
-            priority=priority,
-            routing=routing,
-            ttl=ttl,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             host_record: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             value: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             routing: Optional[pulumi.Input[str]] = None,
-             ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if host_record is None and 'hostRecord' in kwargs:
-            host_record = kwargs['hostRecord']
-        if host_record is None:
-            raise TypeError("Missing 'host_record' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("host_record", host_record)
-        _setter("type", type)
-        _setter("value", value)
+        pulumi.set(__self__, "host_record", host_record)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if routing is not None:
-            _setter("routing", routing)
+            pulumi.set(__self__, "routing", routing)
         if ttl is not None:
-            _setter("ttl", ttl)
+            pulumi.set(__self__, "ttl", ttl)
 
     @property
     @pulumi.getter(name="hostRecord")
@@ -182,53 +151,24 @@ class _RecordState:
         :param pulumi.Input[str] type: The type of domain record. Valid values are `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
         :param pulumi.Input[str] value: The value of domain record, When the `type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `value` as a fully qualified domain name, so it's no need to add a `.` at the end.
         """
-        _RecordState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            host_record=host_record,
-            locked=locked,
-            name=name,
-            priority=priority,
-            routing=routing,
-            status=status,
-            ttl=ttl,
-            type=type,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             host_record: Optional[pulumi.Input[str]] = None,
-             locked: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             routing: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             ttl: Optional[pulumi.Input[int]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if host_record is None and 'hostRecord' in kwargs:
-            host_record = kwargs['hostRecord']
-
         if host_record is not None:
-            _setter("host_record", host_record)
+            pulumi.set(__self__, "host_record", host_record)
         if locked is not None:
-            _setter("locked", locked)
+            pulumi.set(__self__, "locked", locked)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if routing is not None:
-            _setter("routing", routing)
+            pulumi.set(__self__, "routing", routing)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if ttl is not None:
-            _setter("ttl", ttl)
+            pulumi.set(__self__, "ttl", ttl)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter(name="hostRecord")
@@ -431,10 +371,6 @@ class Record(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RecordArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

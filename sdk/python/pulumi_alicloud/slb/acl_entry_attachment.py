@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AclEntryAttachmentArgs', 'AclEntryAttachment']
@@ -23,31 +23,10 @@ class AclEntryAttachmentArgs:
         :param pulumi.Input[str] entry: The CIDR blocks.
         :param pulumi.Input[str] comment: The comment of the entry.
         """
-        AclEntryAttachmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            acl_id=acl_id,
-            entry=entry,
-            comment=comment,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             acl_id: Optional[pulumi.Input[str]] = None,
-             entry: Optional[pulumi.Input[str]] = None,
-             comment: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if acl_id is None and 'aclId' in kwargs:
-            acl_id = kwargs['aclId']
-        if acl_id is None:
-            raise TypeError("Missing 'acl_id' argument")
-        if entry is None:
-            raise TypeError("Missing 'entry' argument")
-
-        _setter("acl_id", acl_id)
-        _setter("entry", entry)
+        pulumi.set(__self__, "acl_id", acl_id)
+        pulumi.set(__self__, "entry", entry)
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
 
     @property
     @pulumi.getter(name="aclId")
@@ -98,29 +77,12 @@ class _AclEntryAttachmentState:
         :param pulumi.Input[str] comment: The comment of the entry.
         :param pulumi.Input[str] entry: The CIDR blocks.
         """
-        _AclEntryAttachmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            acl_id=acl_id,
-            comment=comment,
-            entry=entry,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             acl_id: Optional[pulumi.Input[str]] = None,
-             comment: Optional[pulumi.Input[str]] = None,
-             entry: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if acl_id is None and 'aclId' in kwargs:
-            acl_id = kwargs['aclId']
-
         if acl_id is not None:
-            _setter("acl_id", acl_id)
+            pulumi.set(__self__, "acl_id", acl_id)
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if entry is not None:
-            _setter("entry", entry)
+            pulumi.set(__self__, "entry", entry)
 
     @property
     @pulumi.getter(name="aclId")
@@ -246,10 +208,6 @@ class AclEntryAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AclEntryAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

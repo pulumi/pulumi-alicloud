@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AlbServerGroupAttachmentArgs', 'AlbServerGroupAttachment']
@@ -28,45 +28,12 @@ class AlbServerGroupAttachmentArgs:
         :param pulumi.Input[bool] force_attach: If instances of scaling group are attached/removed from slb backend server when attach/detach alb
                server group from scaling group. Default to false.
         """
-        AlbServerGroupAttachmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            alb_server_group_id=alb_server_group_id,
-            port=port,
-            scaling_group_id=scaling_group_id,
-            weight=weight,
-            force_attach=force_attach,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             alb_server_group_id: Optional[pulumi.Input[str]] = None,
-             port: Optional[pulumi.Input[int]] = None,
-             scaling_group_id: Optional[pulumi.Input[str]] = None,
-             weight: Optional[pulumi.Input[int]] = None,
-             force_attach: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if alb_server_group_id is None and 'albServerGroupId' in kwargs:
-            alb_server_group_id = kwargs['albServerGroupId']
-        if alb_server_group_id is None:
-            raise TypeError("Missing 'alb_server_group_id' argument")
-        if port is None:
-            raise TypeError("Missing 'port' argument")
-        if scaling_group_id is None and 'scalingGroupId' in kwargs:
-            scaling_group_id = kwargs['scalingGroupId']
-        if scaling_group_id is None:
-            raise TypeError("Missing 'scaling_group_id' argument")
-        if weight is None:
-            raise TypeError("Missing 'weight' argument")
-        if force_attach is None and 'forceAttach' in kwargs:
-            force_attach = kwargs['forceAttach']
-
-        _setter("alb_server_group_id", alb_server_group_id)
-        _setter("port", port)
-        _setter("scaling_group_id", scaling_group_id)
-        _setter("weight", weight)
+        pulumi.set(__self__, "alb_server_group_id", alb_server_group_id)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+        pulumi.set(__self__, "weight", weight)
         if force_attach is not None:
-            _setter("force_attach", force_attach)
+            pulumi.set(__self__, "force_attach", force_attach)
 
     @property
     @pulumi.getter(name="albServerGroupId")
@@ -147,41 +114,16 @@ class _AlbServerGroupAttachmentState:
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group.
         :param pulumi.Input[int] weight: The weight of an ECS instance attached to the Alb Server Group.
         """
-        _AlbServerGroupAttachmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            alb_server_group_id=alb_server_group_id,
-            force_attach=force_attach,
-            port=port,
-            scaling_group_id=scaling_group_id,
-            weight=weight,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             alb_server_group_id: Optional[pulumi.Input[str]] = None,
-             force_attach: Optional[pulumi.Input[bool]] = None,
-             port: Optional[pulumi.Input[int]] = None,
-             scaling_group_id: Optional[pulumi.Input[str]] = None,
-             weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if alb_server_group_id is None and 'albServerGroupId' in kwargs:
-            alb_server_group_id = kwargs['albServerGroupId']
-        if force_attach is None and 'forceAttach' in kwargs:
-            force_attach = kwargs['forceAttach']
-        if scaling_group_id is None and 'scalingGroupId' in kwargs:
-            scaling_group_id = kwargs['scalingGroupId']
-
         if alb_server_group_id is not None:
-            _setter("alb_server_group_id", alb_server_group_id)
+            pulumi.set(__self__, "alb_server_group_id", alb_server_group_id)
         if force_attach is not None:
-            _setter("force_attach", force_attach)
+            pulumi.set(__self__, "force_attach", force_attach)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if scaling_group_id is not None:
-            _setter("scaling_group_id", scaling_group_id)
+            pulumi.set(__self__, "scaling_group_id", scaling_group_id)
         if weight is not None:
-            _setter("weight", weight)
+            pulumi.set(__self__, "weight", weight)
 
     @property
     @pulumi.getter(name="albServerGroupId")
@@ -445,10 +387,6 @@ class AlbServerGroupAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AlbServerGroupAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

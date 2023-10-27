@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RolePolicyAttachmentArgs', 'RolePolicyAttachment']
@@ -23,36 +23,9 @@ class RolePolicyAttachmentArgs:
         :param pulumi.Input[str] policy_type: Type of the RAM policy. It must be `Custom` or `System`.
         :param pulumi.Input[str] role_name: Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
         """
-        RolePolicyAttachmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            policy_name=policy_name,
-            policy_type=policy_type,
-            role_name=role_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             policy_name: Optional[pulumi.Input[str]] = None,
-             policy_type: Optional[pulumi.Input[str]] = None,
-             role_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if policy_name is None and 'policyName' in kwargs:
-            policy_name = kwargs['policyName']
-        if policy_name is None:
-            raise TypeError("Missing 'policy_name' argument")
-        if policy_type is None and 'policyType' in kwargs:
-            policy_type = kwargs['policyType']
-        if policy_type is None:
-            raise TypeError("Missing 'policy_type' argument")
-        if role_name is None and 'roleName' in kwargs:
-            role_name = kwargs['roleName']
-        if role_name is None:
-            raise TypeError("Missing 'role_name' argument")
-
-        _setter("policy_name", policy_name)
-        _setter("policy_type", policy_type)
-        _setter("role_name", role_name)
+        pulumi.set(__self__, "policy_name", policy_name)
+        pulumi.set(__self__, "policy_type", policy_type)
+        pulumi.set(__self__, "role_name", role_name)
 
     @property
     @pulumi.getter(name="policyName")
@@ -103,33 +76,12 @@ class _RolePolicyAttachmentState:
         :param pulumi.Input[str] policy_type: Type of the RAM policy. It must be `Custom` or `System`.
         :param pulumi.Input[str] role_name: Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
         """
-        _RolePolicyAttachmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            policy_name=policy_name,
-            policy_type=policy_type,
-            role_name=role_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             policy_name: Optional[pulumi.Input[str]] = None,
-             policy_type: Optional[pulumi.Input[str]] = None,
-             role_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if policy_name is None and 'policyName' in kwargs:
-            policy_name = kwargs['policyName']
-        if policy_type is None and 'policyType' in kwargs:
-            policy_type = kwargs['policyType']
-        if role_name is None and 'roleName' in kwargs:
-            role_name = kwargs['roleName']
-
         if policy_name is not None:
-            _setter("policy_name", policy_name)
+            pulumi.set(__self__, "policy_name", policy_name)
         if policy_type is not None:
-            _setter("policy_type", policy_type)
+            pulumi.set(__self__, "policy_type", policy_type)
         if role_name is not None:
-            _setter("role_name", role_name)
+            pulumi.set(__self__, "role_name", role_name)
 
     @property
     @pulumi.getter(name="policyName")
@@ -325,10 +277,6 @@ class RolePolicyAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RolePolicyAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BindingArgs', 'Binding']
@@ -40,61 +40,14 @@ class BindingArgs:
                
                **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
         """
-        BindingArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            binding_key=binding_key,
-            binding_type=binding_type,
-            destination_name=destination_name,
-            instance_id=instance_id,
-            source_exchange=source_exchange,
-            virtual_host_name=virtual_host_name,
-            argument=argument,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             binding_key: Optional[pulumi.Input[str]] = None,
-             binding_type: Optional[pulumi.Input[str]] = None,
-             destination_name: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             source_exchange: Optional[pulumi.Input[str]] = None,
-             virtual_host_name: Optional[pulumi.Input[str]] = None,
-             argument: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if binding_key is None and 'bindingKey' in kwargs:
-            binding_key = kwargs['bindingKey']
-        if binding_key is None:
-            raise TypeError("Missing 'binding_key' argument")
-        if binding_type is None and 'bindingType' in kwargs:
-            binding_type = kwargs['bindingType']
-        if binding_type is None:
-            raise TypeError("Missing 'binding_type' argument")
-        if destination_name is None and 'destinationName' in kwargs:
-            destination_name = kwargs['destinationName']
-        if destination_name is None:
-            raise TypeError("Missing 'destination_name' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if source_exchange is None and 'sourceExchange' in kwargs:
-            source_exchange = kwargs['sourceExchange']
-        if source_exchange is None:
-            raise TypeError("Missing 'source_exchange' argument")
-        if virtual_host_name is None and 'virtualHostName' in kwargs:
-            virtual_host_name = kwargs['virtualHostName']
-        if virtual_host_name is None:
-            raise TypeError("Missing 'virtual_host_name' argument")
-
-        _setter("binding_key", binding_key)
-        _setter("binding_type", binding_type)
-        _setter("destination_name", destination_name)
-        _setter("instance_id", instance_id)
-        _setter("source_exchange", source_exchange)
-        _setter("virtual_host_name", virtual_host_name)
+        pulumi.set(__self__, "binding_key", binding_key)
+        pulumi.set(__self__, "binding_type", binding_type)
+        pulumi.set(__self__, "destination_name", destination_name)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "source_exchange", source_exchange)
+        pulumi.set(__self__, "virtual_host_name", virtual_host_name)
         if argument is not None:
-            _setter("argument", argument)
+            pulumi.set(__self__, "argument", argument)
 
     @property
     @pulumi.getter(name="bindingKey")
@@ -219,55 +172,20 @@ class _BindingState:
         :param pulumi.Input[str] source_exchange: The Source Exchange Name.
         :param pulumi.Input[str] virtual_host_name: Virtualhost Name.
         """
-        _BindingState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            argument=argument,
-            binding_key=binding_key,
-            binding_type=binding_type,
-            destination_name=destination_name,
-            instance_id=instance_id,
-            source_exchange=source_exchange,
-            virtual_host_name=virtual_host_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             argument: Optional[pulumi.Input[str]] = None,
-             binding_key: Optional[pulumi.Input[str]] = None,
-             binding_type: Optional[pulumi.Input[str]] = None,
-             destination_name: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             source_exchange: Optional[pulumi.Input[str]] = None,
-             virtual_host_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if binding_key is None and 'bindingKey' in kwargs:
-            binding_key = kwargs['bindingKey']
-        if binding_type is None and 'bindingType' in kwargs:
-            binding_type = kwargs['bindingType']
-        if destination_name is None and 'destinationName' in kwargs:
-            destination_name = kwargs['destinationName']
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if source_exchange is None and 'sourceExchange' in kwargs:
-            source_exchange = kwargs['sourceExchange']
-        if virtual_host_name is None and 'virtualHostName' in kwargs:
-            virtual_host_name = kwargs['virtualHostName']
-
         if argument is not None:
-            _setter("argument", argument)
+            pulumi.set(__self__, "argument", argument)
         if binding_key is not None:
-            _setter("binding_key", binding_key)
+            pulumi.set(__self__, "binding_key", binding_key)
         if binding_type is not None:
-            _setter("binding_type", binding_type)
+            pulumi.set(__self__, "binding_type", binding_type)
         if destination_name is not None:
-            _setter("destination_name", destination_name)
+            pulumi.set(__self__, "destination_name", destination_name)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if source_exchange is not None:
-            _setter("source_exchange", source_exchange)
+            pulumi.set(__self__, "source_exchange", source_exchange)
         if virtual_host_name is not None:
-            _setter("virtual_host_name", virtual_host_name)
+            pulumi.set(__self__, "virtual_host_name", virtual_host_name)
 
     @property
     @pulumi.getter
@@ -523,10 +441,6 @@ class Binding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            BindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

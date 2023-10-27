@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -32,46 +32,15 @@ class K8sSlbAttachmentSlbConfigArgs:
         :param pulumi.Input[str] slb_id: The ID of your SLB instance, if value is empty which means EDAS will purchase an SLB instance with 'specification' field.
         :param pulumi.Input[str] specification: The instance specification of SLB, values can be found [here](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createloadbalancer-2#t4182.html), empty for 'slb.s1.small'.
         """
-        K8sSlbAttachmentSlbConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            port_mappings=port_mappings,
-            scheduler=scheduler,
-            type=type,
-            name=name,
-            slb_id=slb_id,
-            specification=specification,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             port_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigPortMappingArgs']]]] = None,
-             scheduler: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             slb_id: Optional[pulumi.Input[str]] = None,
-             specification: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if port_mappings is None and 'portMappings' in kwargs:
-            port_mappings = kwargs['portMappings']
-        if port_mappings is None:
-            raise TypeError("Missing 'port_mappings' argument")
-        if scheduler is None:
-            raise TypeError("Missing 'scheduler' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if slb_id is None and 'slbId' in kwargs:
-            slb_id = kwargs['slbId']
-
-        _setter("port_mappings", port_mappings)
-        _setter("scheduler", scheduler)
-        _setter("type", type)
+        pulumi.set(__self__, "port_mappings", port_mappings)
+        pulumi.set(__self__, "scheduler", scheduler)
+        pulumi.set(__self__, "type", type)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if slb_id is not None:
-            _setter("slb_id", slb_id)
+            pulumi.set(__self__, "slb_id", slb_id)
         if specification is not None:
-            _setter("specification", specification)
+            pulumi.set(__self__, "specification", specification)
 
     @property
     @pulumi.getter(name="portMappings")
@@ -157,35 +126,10 @@ class K8sSlbAttachmentSlbConfigPortMappingArgs:
         :param pulumi.Input['K8sSlbAttachmentSlbConfigPortMappingServicePortArgs'] service_port: The backend k8s service configuration for SLB instance, which is supported for multiple configurations. See `service_port` below.
         :param pulumi.Input[str] cert_id: The ID of your tls certification, this is used for 'HTTPS' protocol only.
         """
-        K8sSlbAttachmentSlbConfigPortMappingArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            loadbalancer_protocol=loadbalancer_protocol,
-            service_port=service_port,
-            cert_id=cert_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             loadbalancer_protocol: Optional[pulumi.Input[str]] = None,
-             service_port: Optional[pulumi.Input['K8sSlbAttachmentSlbConfigPortMappingServicePortArgs']] = None,
-             cert_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if loadbalancer_protocol is None and 'loadbalancerProtocol' in kwargs:
-            loadbalancer_protocol = kwargs['loadbalancerProtocol']
-        if loadbalancer_protocol is None:
-            raise TypeError("Missing 'loadbalancer_protocol' argument")
-        if service_port is None and 'servicePort' in kwargs:
-            service_port = kwargs['servicePort']
-        if service_port is None:
-            raise TypeError("Missing 'service_port' argument")
-        if cert_id is None and 'certId' in kwargs:
-            cert_id = kwargs['certId']
-
-        _setter("loadbalancer_protocol", loadbalancer_protocol)
-        _setter("service_port", service_port)
+        pulumi.set(__self__, "loadbalancer_protocol", loadbalancer_protocol)
+        pulumi.set(__self__, "service_port", service_port)
         if cert_id is not None:
-            _setter("cert_id", cert_id)
+            pulumi.set(__self__, "cert_id", cert_id)
 
     @property
     @pulumi.getter(name="loadbalancerProtocol")
@@ -235,32 +179,9 @@ class K8sSlbAttachmentSlbConfigPortMappingServicePortArgs:
         :param pulumi.Input[str] protocol: The protocol of k8s service, values can be 'TCP' or 'UDP'.
         :param pulumi.Input[int] target_port: The port of k8s pod, values should be within range [1, 65535].
         """
-        K8sSlbAttachmentSlbConfigPortMappingServicePortArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            port=port,
-            protocol=protocol,
-            target_port=target_port,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             port: Optional[pulumi.Input[int]] = None,
-             protocol: Optional[pulumi.Input[str]] = None,
-             target_port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if port is None:
-            raise TypeError("Missing 'port' argument")
-        if protocol is None:
-            raise TypeError("Missing 'protocol' argument")
-        if target_port is None and 'targetPort' in kwargs:
-            target_port = kwargs['targetPort']
-        if target_port is None:
-            raise TypeError("Missing 'target_port' argument")
-
-        _setter("port", port)
-        _setter("protocol", protocol)
-        _setter("target_port", target_port)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "target_port", target_port)
 
     @property
     @pulumi.getter

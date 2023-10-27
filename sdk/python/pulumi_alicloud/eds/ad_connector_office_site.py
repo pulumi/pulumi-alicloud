@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AdConnectorOfficeSiteArgs', 'AdConnectorOfficeSite']
@@ -55,130 +55,39 @@ class AdConnectorOfficeSiteArgs:
         :param pulumi.Input[str] sub_domain_name: The domain name of the enterprise AD subdomain.
         :param pulumi.Input[str] verify_code: The verification code. If the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, you must call the SendVerifyCode operation to obtain the verification code.
         """
-        AdConnectorOfficeSiteArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ad_connector_office_site_name=ad_connector_office_site_name,
-            cen_id=cen_id,
-            cidr_block=cidr_block,
-            dns_addresses=dns_addresses,
-            domain_name=domain_name,
-            ad_hostname=ad_hostname,
-            bandwidth=bandwidth,
-            cen_owner_id=cen_owner_id,
-            desktop_access_type=desktop_access_type,
-            domain_password=domain_password,
-            domain_user_name=domain_user_name,
-            enable_admin_access=enable_admin_access,
-            enable_internet_access=enable_internet_access,
-            mfa_enabled=mfa_enabled,
-            protocol_type=protocol_type,
-            specification=specification,
-            sub_domain_dns_addresses=sub_domain_dns_addresses,
-            sub_domain_name=sub_domain_name,
-            verify_code=verify_code,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ad_connector_office_site_name: Optional[pulumi.Input[str]] = None,
-             cen_id: Optional[pulumi.Input[str]] = None,
-             cidr_block: Optional[pulumi.Input[str]] = None,
-             dns_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             domain_name: Optional[pulumi.Input[str]] = None,
-             ad_hostname: Optional[pulumi.Input[str]] = None,
-             bandwidth: Optional[pulumi.Input[int]] = None,
-             cen_owner_id: Optional[pulumi.Input[str]] = None,
-             desktop_access_type: Optional[pulumi.Input[str]] = None,
-             domain_password: Optional[pulumi.Input[str]] = None,
-             domain_user_name: Optional[pulumi.Input[str]] = None,
-             enable_admin_access: Optional[pulumi.Input[bool]] = None,
-             enable_internet_access: Optional[pulumi.Input[bool]] = None,
-             mfa_enabled: Optional[pulumi.Input[bool]] = None,
-             protocol_type: Optional[pulumi.Input[str]] = None,
-             specification: Optional[pulumi.Input[int]] = None,
-             sub_domain_dns_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             sub_domain_name: Optional[pulumi.Input[str]] = None,
-             verify_code: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ad_connector_office_site_name is None and 'adConnectorOfficeSiteName' in kwargs:
-            ad_connector_office_site_name = kwargs['adConnectorOfficeSiteName']
-        if ad_connector_office_site_name is None:
-            raise TypeError("Missing 'ad_connector_office_site_name' argument")
-        if cen_id is None and 'cenId' in kwargs:
-            cen_id = kwargs['cenId']
-        if cen_id is None:
-            raise TypeError("Missing 'cen_id' argument")
-        if cidr_block is None and 'cidrBlock' in kwargs:
-            cidr_block = kwargs['cidrBlock']
-        if cidr_block is None:
-            raise TypeError("Missing 'cidr_block' argument")
-        if dns_addresses is None and 'dnsAddresses' in kwargs:
-            dns_addresses = kwargs['dnsAddresses']
-        if dns_addresses is None:
-            raise TypeError("Missing 'dns_addresses' argument")
-        if domain_name is None and 'domainName' in kwargs:
-            domain_name = kwargs['domainName']
-        if domain_name is None:
-            raise TypeError("Missing 'domain_name' argument")
-        if ad_hostname is None and 'adHostname' in kwargs:
-            ad_hostname = kwargs['adHostname']
-        if cen_owner_id is None and 'cenOwnerId' in kwargs:
-            cen_owner_id = kwargs['cenOwnerId']
-        if desktop_access_type is None and 'desktopAccessType' in kwargs:
-            desktop_access_type = kwargs['desktopAccessType']
-        if domain_password is None and 'domainPassword' in kwargs:
-            domain_password = kwargs['domainPassword']
-        if domain_user_name is None and 'domainUserName' in kwargs:
-            domain_user_name = kwargs['domainUserName']
-        if enable_admin_access is None and 'enableAdminAccess' in kwargs:
-            enable_admin_access = kwargs['enableAdminAccess']
-        if enable_internet_access is None and 'enableInternetAccess' in kwargs:
-            enable_internet_access = kwargs['enableInternetAccess']
-        if mfa_enabled is None and 'mfaEnabled' in kwargs:
-            mfa_enabled = kwargs['mfaEnabled']
-        if protocol_type is None and 'protocolType' in kwargs:
-            protocol_type = kwargs['protocolType']
-        if sub_domain_dns_addresses is None and 'subDomainDnsAddresses' in kwargs:
-            sub_domain_dns_addresses = kwargs['subDomainDnsAddresses']
-        if sub_domain_name is None and 'subDomainName' in kwargs:
-            sub_domain_name = kwargs['subDomainName']
-        if verify_code is None and 'verifyCode' in kwargs:
-            verify_code = kwargs['verifyCode']
-
-        _setter("ad_connector_office_site_name", ad_connector_office_site_name)
-        _setter("cen_id", cen_id)
-        _setter("cidr_block", cidr_block)
-        _setter("dns_addresses", dns_addresses)
-        _setter("domain_name", domain_name)
+        pulumi.set(__self__, "ad_connector_office_site_name", ad_connector_office_site_name)
+        pulumi.set(__self__, "cen_id", cen_id)
+        pulumi.set(__self__, "cidr_block", cidr_block)
+        pulumi.set(__self__, "dns_addresses", dns_addresses)
+        pulumi.set(__self__, "domain_name", domain_name)
         if ad_hostname is not None:
-            _setter("ad_hostname", ad_hostname)
+            pulumi.set(__self__, "ad_hostname", ad_hostname)
         if bandwidth is not None:
-            _setter("bandwidth", bandwidth)
+            pulumi.set(__self__, "bandwidth", bandwidth)
         if cen_owner_id is not None:
-            _setter("cen_owner_id", cen_owner_id)
+            pulumi.set(__self__, "cen_owner_id", cen_owner_id)
         if desktop_access_type is not None:
-            _setter("desktop_access_type", desktop_access_type)
+            pulumi.set(__self__, "desktop_access_type", desktop_access_type)
         if domain_password is not None:
-            _setter("domain_password", domain_password)
+            pulumi.set(__self__, "domain_password", domain_password)
         if domain_user_name is not None:
-            _setter("domain_user_name", domain_user_name)
+            pulumi.set(__self__, "domain_user_name", domain_user_name)
         if enable_admin_access is not None:
-            _setter("enable_admin_access", enable_admin_access)
+            pulumi.set(__self__, "enable_admin_access", enable_admin_access)
         if enable_internet_access is not None:
-            _setter("enable_internet_access", enable_internet_access)
+            pulumi.set(__self__, "enable_internet_access", enable_internet_access)
         if mfa_enabled is not None:
-            _setter("mfa_enabled", mfa_enabled)
+            pulumi.set(__self__, "mfa_enabled", mfa_enabled)
         if protocol_type is not None:
-            _setter("protocol_type", protocol_type)
+            pulumi.set(__self__, "protocol_type", protocol_type)
         if specification is not None:
-            _setter("specification", specification)
+            pulumi.set(__self__, "specification", specification)
         if sub_domain_dns_addresses is not None:
-            _setter("sub_domain_dns_addresses", sub_domain_dns_addresses)
+            pulumi.set(__self__, "sub_domain_dns_addresses", sub_domain_dns_addresses)
         if sub_domain_name is not None:
-            _setter("sub_domain_name", sub_domain_name)
+            pulumi.set(__self__, "sub_domain_name", sub_domain_name)
         if verify_code is not None:
-            _setter("verify_code", verify_code)
+            pulumi.set(__self__, "verify_code", verify_code)
 
     @property
     @pulumi.getter(name="adConnectorOfficeSiteName")
@@ -455,129 +364,46 @@ class _AdConnectorOfficeSiteState:
         :param pulumi.Input[str] sub_domain_name: The domain name of the enterprise AD subdomain.
         :param pulumi.Input[str] verify_code: The verification code. If the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, you must call the SendVerifyCode operation to obtain the verification code.
         """
-        _AdConnectorOfficeSiteState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ad_connector_office_site_name=ad_connector_office_site_name,
-            ad_hostname=ad_hostname,
-            bandwidth=bandwidth,
-            cen_id=cen_id,
-            cen_owner_id=cen_owner_id,
-            cidr_block=cidr_block,
-            desktop_access_type=desktop_access_type,
-            dns_addresses=dns_addresses,
-            domain_name=domain_name,
-            domain_password=domain_password,
-            domain_user_name=domain_user_name,
-            enable_admin_access=enable_admin_access,
-            enable_internet_access=enable_internet_access,
-            mfa_enabled=mfa_enabled,
-            protocol_type=protocol_type,
-            specification=specification,
-            status=status,
-            sub_domain_dns_addresses=sub_domain_dns_addresses,
-            sub_domain_name=sub_domain_name,
-            verify_code=verify_code,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ad_connector_office_site_name: Optional[pulumi.Input[str]] = None,
-             ad_hostname: Optional[pulumi.Input[str]] = None,
-             bandwidth: Optional[pulumi.Input[int]] = None,
-             cen_id: Optional[pulumi.Input[str]] = None,
-             cen_owner_id: Optional[pulumi.Input[str]] = None,
-             cidr_block: Optional[pulumi.Input[str]] = None,
-             desktop_access_type: Optional[pulumi.Input[str]] = None,
-             dns_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             domain_name: Optional[pulumi.Input[str]] = None,
-             domain_password: Optional[pulumi.Input[str]] = None,
-             domain_user_name: Optional[pulumi.Input[str]] = None,
-             enable_admin_access: Optional[pulumi.Input[bool]] = None,
-             enable_internet_access: Optional[pulumi.Input[bool]] = None,
-             mfa_enabled: Optional[pulumi.Input[bool]] = None,
-             protocol_type: Optional[pulumi.Input[str]] = None,
-             specification: Optional[pulumi.Input[int]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             sub_domain_dns_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             sub_domain_name: Optional[pulumi.Input[str]] = None,
-             verify_code: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ad_connector_office_site_name is None and 'adConnectorOfficeSiteName' in kwargs:
-            ad_connector_office_site_name = kwargs['adConnectorOfficeSiteName']
-        if ad_hostname is None and 'adHostname' in kwargs:
-            ad_hostname = kwargs['adHostname']
-        if cen_id is None and 'cenId' in kwargs:
-            cen_id = kwargs['cenId']
-        if cen_owner_id is None and 'cenOwnerId' in kwargs:
-            cen_owner_id = kwargs['cenOwnerId']
-        if cidr_block is None and 'cidrBlock' in kwargs:
-            cidr_block = kwargs['cidrBlock']
-        if desktop_access_type is None and 'desktopAccessType' in kwargs:
-            desktop_access_type = kwargs['desktopAccessType']
-        if dns_addresses is None and 'dnsAddresses' in kwargs:
-            dns_addresses = kwargs['dnsAddresses']
-        if domain_name is None and 'domainName' in kwargs:
-            domain_name = kwargs['domainName']
-        if domain_password is None and 'domainPassword' in kwargs:
-            domain_password = kwargs['domainPassword']
-        if domain_user_name is None and 'domainUserName' in kwargs:
-            domain_user_name = kwargs['domainUserName']
-        if enable_admin_access is None and 'enableAdminAccess' in kwargs:
-            enable_admin_access = kwargs['enableAdminAccess']
-        if enable_internet_access is None and 'enableInternetAccess' in kwargs:
-            enable_internet_access = kwargs['enableInternetAccess']
-        if mfa_enabled is None and 'mfaEnabled' in kwargs:
-            mfa_enabled = kwargs['mfaEnabled']
-        if protocol_type is None and 'protocolType' in kwargs:
-            protocol_type = kwargs['protocolType']
-        if sub_domain_dns_addresses is None and 'subDomainDnsAddresses' in kwargs:
-            sub_domain_dns_addresses = kwargs['subDomainDnsAddresses']
-        if sub_domain_name is None and 'subDomainName' in kwargs:
-            sub_domain_name = kwargs['subDomainName']
-        if verify_code is None and 'verifyCode' in kwargs:
-            verify_code = kwargs['verifyCode']
-
         if ad_connector_office_site_name is not None:
-            _setter("ad_connector_office_site_name", ad_connector_office_site_name)
+            pulumi.set(__self__, "ad_connector_office_site_name", ad_connector_office_site_name)
         if ad_hostname is not None:
-            _setter("ad_hostname", ad_hostname)
+            pulumi.set(__self__, "ad_hostname", ad_hostname)
         if bandwidth is not None:
-            _setter("bandwidth", bandwidth)
+            pulumi.set(__self__, "bandwidth", bandwidth)
         if cen_id is not None:
-            _setter("cen_id", cen_id)
+            pulumi.set(__self__, "cen_id", cen_id)
         if cen_owner_id is not None:
-            _setter("cen_owner_id", cen_owner_id)
+            pulumi.set(__self__, "cen_owner_id", cen_owner_id)
         if cidr_block is not None:
-            _setter("cidr_block", cidr_block)
+            pulumi.set(__self__, "cidr_block", cidr_block)
         if desktop_access_type is not None:
-            _setter("desktop_access_type", desktop_access_type)
+            pulumi.set(__self__, "desktop_access_type", desktop_access_type)
         if dns_addresses is not None:
-            _setter("dns_addresses", dns_addresses)
+            pulumi.set(__self__, "dns_addresses", dns_addresses)
         if domain_name is not None:
-            _setter("domain_name", domain_name)
+            pulumi.set(__self__, "domain_name", domain_name)
         if domain_password is not None:
-            _setter("domain_password", domain_password)
+            pulumi.set(__self__, "domain_password", domain_password)
         if domain_user_name is not None:
-            _setter("domain_user_name", domain_user_name)
+            pulumi.set(__self__, "domain_user_name", domain_user_name)
         if enable_admin_access is not None:
-            _setter("enable_admin_access", enable_admin_access)
+            pulumi.set(__self__, "enable_admin_access", enable_admin_access)
         if enable_internet_access is not None:
-            _setter("enable_internet_access", enable_internet_access)
+            pulumi.set(__self__, "enable_internet_access", enable_internet_access)
         if mfa_enabled is not None:
-            _setter("mfa_enabled", mfa_enabled)
+            pulumi.set(__self__, "mfa_enabled", mfa_enabled)
         if protocol_type is not None:
-            _setter("protocol_type", protocol_type)
+            pulumi.set(__self__, "protocol_type", protocol_type)
         if specification is not None:
-            _setter("specification", specification)
+            pulumi.set(__self__, "specification", specification)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if sub_domain_dns_addresses is not None:
-            _setter("sub_domain_dns_addresses", sub_domain_dns_addresses)
+            pulumi.set(__self__, "sub_domain_dns_addresses", sub_domain_dns_addresses)
         if sub_domain_name is not None:
-            _setter("sub_domain_name", sub_domain_name)
+            pulumi.set(__self__, "sub_domain_name", sub_domain_name)
         if verify_code is not None:
-            _setter("verify_code", verify_code)
+            pulumi.set(__self__, "verify_code", verify_code)
 
     @property
     @pulumi.getter(name="adConnectorOfficeSiteName")
@@ -977,10 +803,6 @@ class AdConnectorOfficeSite(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AdConnectorOfficeSiteArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

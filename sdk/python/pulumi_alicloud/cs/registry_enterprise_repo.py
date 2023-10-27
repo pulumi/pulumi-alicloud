@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RegistryEnterpriseRepoArgs', 'RegistryEnterpriseRepo']
@@ -29,47 +29,14 @@ class RegistryEnterpriseRepoArgs:
         :param pulumi.Input[str] detail: The repository specific information. MarkDown format is supported, and the length limit is 2000.
         :param pulumi.Input[str] name: Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
         """
-        RegistryEnterpriseRepoArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_id=instance_id,
-            namespace=namespace,
-            repo_type=repo_type,
-            summary=summary,
-            detail=detail,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_id: Optional[pulumi.Input[str]] = None,
-             namespace: Optional[pulumi.Input[str]] = None,
-             repo_type: Optional[pulumi.Input[str]] = None,
-             summary: Optional[pulumi.Input[str]] = None,
-             detail: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if namespace is None:
-            raise TypeError("Missing 'namespace' argument")
-        if repo_type is None and 'repoType' in kwargs:
-            repo_type = kwargs['repoType']
-        if repo_type is None:
-            raise TypeError("Missing 'repo_type' argument")
-        if summary is None:
-            raise TypeError("Missing 'summary' argument")
-
-        _setter("instance_id", instance_id)
-        _setter("namespace", namespace)
-        _setter("repo_type", repo_type)
-        _setter("summary", summary)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "repo_type", repo_type)
+        pulumi.set(__self__, "summary", summary)
         if detail is not None:
-            _setter("detail", detail)
+            pulumi.set(__self__, "detail", detail)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -164,49 +131,20 @@ class _RegistryEnterpriseRepoState:
         :param pulumi.Input[str] repo_type: `PUBLIC` or `PRIVATE`, repo's visibility.
         :param pulumi.Input[str] summary: The repository general information. It can contain 1 to 100 characters.
         """
-        _RegistryEnterpriseRepoState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            detail=detail,
-            instance_id=instance_id,
-            name=name,
-            namespace=namespace,
-            repo_id=repo_id,
-            repo_type=repo_type,
-            summary=summary,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             detail: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             namespace: Optional[pulumi.Input[str]] = None,
-             repo_id: Optional[pulumi.Input[str]] = None,
-             repo_type: Optional[pulumi.Input[str]] = None,
-             summary: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if repo_id is None and 'repoId' in kwargs:
-            repo_id = kwargs['repoId']
-        if repo_type is None and 'repoType' in kwargs:
-            repo_type = kwargs['repoType']
-
         if detail is not None:
-            _setter("detail", detail)
+            pulumi.set(__self__, "detail", detail)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if namespace is not None:
-            _setter("namespace", namespace)
+            pulumi.set(__self__, "namespace", namespace)
         if repo_id is not None:
-            _setter("repo_id", repo_id)
+            pulumi.set(__self__, "repo_id", repo_id)
         if repo_type is not None:
-            _setter("repo_type", repo_type)
+            pulumi.set(__self__, "repo_type", repo_type)
         if summary is not None:
-            _setter("summary", summary)
+            pulumi.set(__self__, "summary", summary)
 
     @property
     @pulumi.getter
@@ -426,10 +364,6 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RegistryEnterpriseRepoArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

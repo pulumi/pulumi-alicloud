@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,43 +27,10 @@ class TunnelArgs:
         :param pulumi.Input[str] tunnel_name: The name of the OTS tunnel. If changed, a new tunnel would be created.
         :param pulumi.Input[str] tunnel_type: The type of the OTS tunnel. Only `BaseAndStream`, `BaseData` or `Stream` is allowed.
         """
-        TunnelArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_name=instance_name,
-            table_name=table_name,
-            tunnel_name=tunnel_name,
-            tunnel_type=tunnel_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_name: Optional[pulumi.Input[str]] = None,
-             table_name: Optional[pulumi.Input[str]] = None,
-             tunnel_name: Optional[pulumi.Input[str]] = None,
-             tunnel_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_name is None:
-            raise TypeError("Missing 'instance_name' argument")
-        if table_name is None and 'tableName' in kwargs:
-            table_name = kwargs['tableName']
-        if table_name is None:
-            raise TypeError("Missing 'table_name' argument")
-        if tunnel_name is None and 'tunnelName' in kwargs:
-            tunnel_name = kwargs['tunnelName']
-        if tunnel_name is None:
-            raise TypeError("Missing 'tunnel_name' argument")
-        if tunnel_type is None and 'tunnelType' in kwargs:
-            tunnel_type = kwargs['tunnelType']
-        if tunnel_type is None:
-            raise TypeError("Missing 'tunnel_type' argument")
-
-        _setter("instance_name", instance_name)
-        _setter("table_name", table_name)
-        _setter("tunnel_name", tunnel_name)
-        _setter("tunnel_type", tunnel_type)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "table_name", table_name)
+        pulumi.set(__self__, "tunnel_name", tunnel_name)
+        pulumi.set(__self__, "tunnel_type", tunnel_type)
 
     @property
     @pulumi.getter(name="instanceName")
@@ -140,71 +107,26 @@ class _TunnelState:
         :param pulumi.Input[str] tunnel_stage: The stage of OTS tunnel, valid values: `InitBaseDataAndStreamShard`, `ProcessBaseData`, `ProcessStream`.
         :param pulumi.Input[str] tunnel_type: The type of the OTS tunnel. Only `BaseAndStream`, `BaseData` or `Stream` is allowed.
         """
-        _TunnelState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            channels=channels,
-            create_time=create_time,
-            expired=expired,
-            instance_name=instance_name,
-            table_name=table_name,
-            tunnel_id=tunnel_id,
-            tunnel_name=tunnel_name,
-            tunnel_rpo=tunnel_rpo,
-            tunnel_stage=tunnel_stage,
-            tunnel_type=tunnel_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             channels: Optional[pulumi.Input[Sequence[pulumi.Input['TunnelChannelArgs']]]] = None,
-             create_time: Optional[pulumi.Input[int]] = None,
-             expired: Optional[pulumi.Input[bool]] = None,
-             instance_name: Optional[pulumi.Input[str]] = None,
-             table_name: Optional[pulumi.Input[str]] = None,
-             tunnel_id: Optional[pulumi.Input[str]] = None,
-             tunnel_name: Optional[pulumi.Input[str]] = None,
-             tunnel_rpo: Optional[pulumi.Input[int]] = None,
-             tunnel_stage: Optional[pulumi.Input[str]] = None,
-             tunnel_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if table_name is None and 'tableName' in kwargs:
-            table_name = kwargs['tableName']
-        if tunnel_id is None and 'tunnelId' in kwargs:
-            tunnel_id = kwargs['tunnelId']
-        if tunnel_name is None and 'tunnelName' in kwargs:
-            tunnel_name = kwargs['tunnelName']
-        if tunnel_rpo is None and 'tunnelRpo' in kwargs:
-            tunnel_rpo = kwargs['tunnelRpo']
-        if tunnel_stage is None and 'tunnelStage' in kwargs:
-            tunnel_stage = kwargs['tunnelStage']
-        if tunnel_type is None and 'tunnelType' in kwargs:
-            tunnel_type = kwargs['tunnelType']
-
         if channels is not None:
-            _setter("channels", channels)
+            pulumi.set(__self__, "channels", channels)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if expired is not None:
-            _setter("expired", expired)
+            pulumi.set(__self__, "expired", expired)
         if instance_name is not None:
-            _setter("instance_name", instance_name)
+            pulumi.set(__self__, "instance_name", instance_name)
         if table_name is not None:
-            _setter("table_name", table_name)
+            pulumi.set(__self__, "table_name", table_name)
         if tunnel_id is not None:
-            _setter("tunnel_id", tunnel_id)
+            pulumi.set(__self__, "tunnel_id", tunnel_id)
         if tunnel_name is not None:
-            _setter("tunnel_name", tunnel_name)
+            pulumi.set(__self__, "tunnel_name", tunnel_name)
         if tunnel_rpo is not None:
-            _setter("tunnel_rpo", tunnel_rpo)
+            pulumi.set(__self__, "tunnel_rpo", tunnel_rpo)
         if tunnel_stage is not None:
-            _setter("tunnel_stage", tunnel_stage)
+            pulumi.set(__self__, "tunnel_stage", tunnel_stage)
         if tunnel_type is not None:
-            _setter("tunnel_type", tunnel_type)
+            pulumi.set(__self__, "tunnel_type", tunnel_type)
 
     @property
     @pulumi.getter
@@ -480,10 +402,6 @@ class Tunnel(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TunnelArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

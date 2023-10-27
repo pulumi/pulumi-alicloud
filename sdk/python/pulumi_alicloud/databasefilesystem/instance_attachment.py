@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InstanceAttachmentArgs', 'InstanceAttachment']
@@ -21,29 +21,8 @@ class InstanceAttachmentArgs:
         :param pulumi.Input[str] ecs_id: The ID of the ECS instance.
         :param pulumi.Input[str] instance_id: The ID of the database file system.
         """
-        InstanceAttachmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ecs_id=ecs_id,
-            instance_id=instance_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ecs_id: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ecs_id is None and 'ecsId' in kwargs:
-            ecs_id = kwargs['ecsId']
-        if ecs_id is None:
-            raise TypeError("Missing 'ecs_id' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-
-        _setter("ecs_id", ecs_id)
-        _setter("instance_id", instance_id)
+        pulumi.set(__self__, "ecs_id", ecs_id)
+        pulumi.set(__self__, "instance_id", instance_id)
 
     @property
     @pulumi.getter(name="ecsId")
@@ -82,31 +61,12 @@ class _InstanceAttachmentState:
         :param pulumi.Input[str] instance_id: The ID of the database file system.
         :param pulumi.Input[str] status: The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
         """
-        _InstanceAttachmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ecs_id=ecs_id,
-            instance_id=instance_id,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ecs_id: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ecs_id is None and 'ecsId' in kwargs:
-            ecs_id = kwargs['ecsId']
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-
         if ecs_id is not None:
-            _setter("ecs_id", ecs_id)
+            pulumi.set(__self__, "ecs_id", ecs_id)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="ecsId")
@@ -296,10 +256,6 @@ class InstanceAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            InstanceAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

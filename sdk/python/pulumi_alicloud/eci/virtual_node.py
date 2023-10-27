@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,74 +39,23 @@ class VirtualNodeArgs:
         :param pulumi.Input[str] virtual_node_name: The name of the virtual node. The length of the name is limited to `2` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, half-width colon (:), underscores (_), or hyphens (-), and must start with letters.
         :param pulumi.Input[str] zone_id: The Zone.
         """
-        VirtualNodeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            kube_config=kube_config,
-            security_group_id=security_group_id,
-            vswitch_id=vswitch_id,
-            eip_instance_id=eip_instance_id,
-            enable_public_network=enable_public_network,
-            resource_group_id=resource_group_id,
-            tags=tags,
-            taints=taints,
-            virtual_node_name=virtual_node_name,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             kube_config: Optional[pulumi.Input[str]] = None,
-             security_group_id: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             eip_instance_id: Optional[pulumi.Input[str]] = None,
-             enable_public_network: Optional[pulumi.Input[bool]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             taints: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualNodeTaintArgs']]]] = None,
-             virtual_node_name: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if kube_config is None and 'kubeConfig' in kwargs:
-            kube_config = kwargs['kubeConfig']
-        if kube_config is None:
-            raise TypeError("Missing 'kube_config' argument")
-        if security_group_id is None and 'securityGroupId' in kwargs:
-            security_group_id = kwargs['securityGroupId']
-        if security_group_id is None:
-            raise TypeError("Missing 'security_group_id' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-        if eip_instance_id is None and 'eipInstanceId' in kwargs:
-            eip_instance_id = kwargs['eipInstanceId']
-        if enable_public_network is None and 'enablePublicNetwork' in kwargs:
-            enable_public_network = kwargs['enablePublicNetwork']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if virtual_node_name is None and 'virtualNodeName' in kwargs:
-            virtual_node_name = kwargs['virtualNodeName']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
-        _setter("kube_config", kube_config)
-        _setter("security_group_id", security_group_id)
-        _setter("vswitch_id", vswitch_id)
+        pulumi.set(__self__, "kube_config", kube_config)
+        pulumi.set(__self__, "security_group_id", security_group_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
         if eip_instance_id is not None:
-            _setter("eip_instance_id", eip_instance_id)
+            pulumi.set(__self__, "eip_instance_id", eip_instance_id)
         if enable_public_network is not None:
-            _setter("enable_public_network", enable_public_network)
+            pulumi.set(__self__, "enable_public_network", enable_public_network)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if taints is not None:
-            _setter("taints", taints)
+            pulumi.set(__self__, "taints", taints)
         if virtual_node_name is not None:
-            _setter("virtual_node_name", virtual_node_name)
+            pulumi.set(__self__, "virtual_node_name", virtual_node_name)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="kubeConfig")
@@ -257,75 +206,28 @@ class _VirtualNodeState:
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] zone_id: The Zone.
         """
-        _VirtualNodeState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            eip_instance_id=eip_instance_id,
-            enable_public_network=enable_public_network,
-            kube_config=kube_config,
-            resource_group_id=resource_group_id,
-            security_group_id=security_group_id,
-            status=status,
-            tags=tags,
-            taints=taints,
-            virtual_node_name=virtual_node_name,
-            vswitch_id=vswitch_id,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             eip_instance_id: Optional[pulumi.Input[str]] = None,
-             enable_public_network: Optional[pulumi.Input[bool]] = None,
-             kube_config: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             security_group_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             taints: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualNodeTaintArgs']]]] = None,
-             virtual_node_name: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if eip_instance_id is None and 'eipInstanceId' in kwargs:
-            eip_instance_id = kwargs['eipInstanceId']
-        if enable_public_network is None and 'enablePublicNetwork' in kwargs:
-            enable_public_network = kwargs['enablePublicNetwork']
-        if kube_config is None and 'kubeConfig' in kwargs:
-            kube_config = kwargs['kubeConfig']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if security_group_id is None and 'securityGroupId' in kwargs:
-            security_group_id = kwargs['securityGroupId']
-        if virtual_node_name is None and 'virtualNodeName' in kwargs:
-            virtual_node_name = kwargs['virtualNodeName']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if eip_instance_id is not None:
-            _setter("eip_instance_id", eip_instance_id)
+            pulumi.set(__self__, "eip_instance_id", eip_instance_id)
         if enable_public_network is not None:
-            _setter("enable_public_network", enable_public_network)
+            pulumi.set(__self__, "enable_public_network", enable_public_network)
         if kube_config is not None:
-            _setter("kube_config", kube_config)
+            pulumi.set(__self__, "kube_config", kube_config)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_group_id is not None:
-            _setter("security_group_id", security_group_id)
+            pulumi.set(__self__, "security_group_id", security_group_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if taints is not None:
-            _setter("taints", taints)
+            pulumi.set(__self__, "taints", taints)
         if virtual_node_name is not None:
-            _setter("virtual_node_name", virtual_node_name)
+            pulumi.set(__self__, "virtual_node_name", virtual_node_name)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="eipInstanceId")
@@ -631,10 +533,6 @@ class VirtualNode(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            VirtualNodeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['MountTargetArgs', 'MountTarget']
@@ -31,56 +31,19 @@ class MountTargetArgs:
         :param pulumi.Input[str] vpc_id: The ID of VPC.
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch in the VPC where the mount target resides.
         """
-        MountTargetArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            file_system_id=file_system_id,
-            access_group_name=access_group_name,
-            network_type=network_type,
-            security_group_id=security_group_id,
-            status=status,
-            vpc_id=vpc_id,
-            vswitch_id=vswitch_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             file_system_id: Optional[pulumi.Input[str]] = None,
-             access_group_name: Optional[pulumi.Input[str]] = None,
-             network_type: Optional[pulumi.Input[str]] = None,
-             security_group_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if file_system_id is None and 'fileSystemId' in kwargs:
-            file_system_id = kwargs['fileSystemId']
-        if file_system_id is None:
-            raise TypeError("Missing 'file_system_id' argument")
-        if access_group_name is None and 'accessGroupName' in kwargs:
-            access_group_name = kwargs['accessGroupName']
-        if network_type is None and 'networkType' in kwargs:
-            network_type = kwargs['networkType']
-        if security_group_id is None and 'securityGroupId' in kwargs:
-            security_group_id = kwargs['securityGroupId']
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-
-        _setter("file_system_id", file_system_id)
+        pulumi.set(__self__, "file_system_id", file_system_id)
         if access_group_name is not None:
-            _setter("access_group_name", access_group_name)
+            pulumi.set(__self__, "access_group_name", access_group_name)
         if network_type is not None:
-            _setter("network_type", network_type)
+            pulumi.set(__self__, "network_type", network_type)
         if security_group_id is not None:
-            _setter("security_group_id", security_group_id)
+            pulumi.set(__self__, "security_group_id", security_group_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if vpc_id is not None:
-            _setter("vpc_id", vpc_id)
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="fileSystemId")
@@ -189,61 +152,22 @@ class _MountTargetState:
         :param pulumi.Input[str] vpc_id: The ID of VPC.
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch in the VPC where the mount target resides.
         """
-        _MountTargetState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_group_name=access_group_name,
-            file_system_id=file_system_id,
-            mount_target_domain=mount_target_domain,
-            network_type=network_type,
-            security_group_id=security_group_id,
-            status=status,
-            vpc_id=vpc_id,
-            vswitch_id=vswitch_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_group_name: Optional[pulumi.Input[str]] = None,
-             file_system_id: Optional[pulumi.Input[str]] = None,
-             mount_target_domain: Optional[pulumi.Input[str]] = None,
-             network_type: Optional[pulumi.Input[str]] = None,
-             security_group_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_group_name is None and 'accessGroupName' in kwargs:
-            access_group_name = kwargs['accessGroupName']
-        if file_system_id is None and 'fileSystemId' in kwargs:
-            file_system_id = kwargs['fileSystemId']
-        if mount_target_domain is None and 'mountTargetDomain' in kwargs:
-            mount_target_domain = kwargs['mountTargetDomain']
-        if network_type is None and 'networkType' in kwargs:
-            network_type = kwargs['networkType']
-        if security_group_id is None and 'securityGroupId' in kwargs:
-            security_group_id = kwargs['securityGroupId']
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-
         if access_group_name is not None:
-            _setter("access_group_name", access_group_name)
+            pulumi.set(__self__, "access_group_name", access_group_name)
         if file_system_id is not None:
-            _setter("file_system_id", file_system_id)
+            pulumi.set(__self__, "file_system_id", file_system_id)
         if mount_target_domain is not None:
-            _setter("mount_target_domain", mount_target_domain)
+            pulumi.set(__self__, "mount_target_domain", mount_target_domain)
         if network_type is not None:
-            _setter("network_type", network_type)
+            pulumi.set(__self__, "network_type", network_type)
         if security_group_id is not None:
-            _setter("security_group_id", security_group_id)
+            pulumi.set(__self__, "security_group_id", security_group_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if vpc_id is not None:
-            _setter("vpc_id", vpc_id)
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="accessGroupName")
@@ -409,10 +333,6 @@ class MountTarget(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            MountTargetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

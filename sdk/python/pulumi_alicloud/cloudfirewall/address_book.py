@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,62 +35,19 @@ class AddressBookArgs:
         :param pulumi.Input[str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
         :param pulumi.Input[str] tag_relation: The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
         """
-        AddressBookArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            group_name=group_name,
-            group_type=group_type,
-            address_lists=address_lists,
-            auto_add_tag_ecs=auto_add_tag_ecs,
-            ecs_tags=ecs_tags,
-            lang=lang,
-            tag_relation=tag_relation,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             group_name: Optional[pulumi.Input[str]] = None,
-             group_type: Optional[pulumi.Input[str]] = None,
-             address_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             auto_add_tag_ecs: Optional[pulumi.Input[int]] = None,
-             ecs_tags: Optional[pulumi.Input[Sequence[pulumi.Input['AddressBookEcsTagArgs']]]] = None,
-             lang: Optional[pulumi.Input[str]] = None,
-             tag_relation: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if group_name is None and 'groupName' in kwargs:
-            group_name = kwargs['groupName']
-        if group_name is None:
-            raise TypeError("Missing 'group_name' argument")
-        if group_type is None and 'groupType' in kwargs:
-            group_type = kwargs['groupType']
-        if group_type is None:
-            raise TypeError("Missing 'group_type' argument")
-        if address_lists is None and 'addressLists' in kwargs:
-            address_lists = kwargs['addressLists']
-        if auto_add_tag_ecs is None and 'autoAddTagEcs' in kwargs:
-            auto_add_tag_ecs = kwargs['autoAddTagEcs']
-        if ecs_tags is None and 'ecsTags' in kwargs:
-            ecs_tags = kwargs['ecsTags']
-        if tag_relation is None and 'tagRelation' in kwargs:
-            tag_relation = kwargs['tagRelation']
-
-        _setter("description", description)
-        _setter("group_name", group_name)
-        _setter("group_type", group_type)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "group_name", group_name)
+        pulumi.set(__self__, "group_type", group_type)
         if address_lists is not None:
-            _setter("address_lists", address_lists)
+            pulumi.set(__self__, "address_lists", address_lists)
         if auto_add_tag_ecs is not None:
-            _setter("auto_add_tag_ecs", auto_add_tag_ecs)
+            pulumi.set(__self__, "auto_add_tag_ecs", auto_add_tag_ecs)
         if ecs_tags is not None:
-            _setter("ecs_tags", ecs_tags)
+            pulumi.set(__self__, "ecs_tags", ecs_tags)
         if lang is not None:
-            _setter("lang", lang)
+            pulumi.set(__self__, "lang", lang)
         if tag_relation is not None:
-            _setter("tag_relation", tag_relation)
+            pulumi.set(__self__, "tag_relation", tag_relation)
 
     @property
     @pulumi.getter
@@ -211,59 +168,22 @@ class _AddressBookState:
         :param pulumi.Input[str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
         :param pulumi.Input[str] tag_relation: The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
         """
-        _AddressBookState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address_lists=address_lists,
-            auto_add_tag_ecs=auto_add_tag_ecs,
-            description=description,
-            ecs_tags=ecs_tags,
-            group_name=group_name,
-            group_type=group_type,
-            lang=lang,
-            tag_relation=tag_relation,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             auto_add_tag_ecs: Optional[pulumi.Input[int]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             ecs_tags: Optional[pulumi.Input[Sequence[pulumi.Input['AddressBookEcsTagArgs']]]] = None,
-             group_name: Optional[pulumi.Input[str]] = None,
-             group_type: Optional[pulumi.Input[str]] = None,
-             lang: Optional[pulumi.Input[str]] = None,
-             tag_relation: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address_lists is None and 'addressLists' in kwargs:
-            address_lists = kwargs['addressLists']
-        if auto_add_tag_ecs is None and 'autoAddTagEcs' in kwargs:
-            auto_add_tag_ecs = kwargs['autoAddTagEcs']
-        if ecs_tags is None and 'ecsTags' in kwargs:
-            ecs_tags = kwargs['ecsTags']
-        if group_name is None and 'groupName' in kwargs:
-            group_name = kwargs['groupName']
-        if group_type is None and 'groupType' in kwargs:
-            group_type = kwargs['groupType']
-        if tag_relation is None and 'tagRelation' in kwargs:
-            tag_relation = kwargs['tagRelation']
-
         if address_lists is not None:
-            _setter("address_lists", address_lists)
+            pulumi.set(__self__, "address_lists", address_lists)
         if auto_add_tag_ecs is not None:
-            _setter("auto_add_tag_ecs", auto_add_tag_ecs)
+            pulumi.set(__self__, "auto_add_tag_ecs", auto_add_tag_ecs)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if ecs_tags is not None:
-            _setter("ecs_tags", ecs_tags)
+            pulumi.set(__self__, "ecs_tags", ecs_tags)
         if group_name is not None:
-            _setter("group_name", group_name)
+            pulumi.set(__self__, "group_name", group_name)
         if group_type is not None:
-            _setter("group_type", group_type)
+            pulumi.set(__self__, "group_type", group_type)
         if lang is not None:
-            _setter("lang", lang)
+            pulumi.set(__self__, "lang", lang)
         if tag_relation is not None:
-            _setter("tag_relation", tag_relation)
+            pulumi.set(__self__, "tag_relation", tag_relation)
 
     @property
     @pulumi.getter(name="addressLists")
@@ -473,10 +393,6 @@ class AddressBook(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AddressBookArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

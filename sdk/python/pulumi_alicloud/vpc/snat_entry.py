@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SnatEntryArgs', 'SnatEntry']
@@ -27,47 +27,14 @@ class SnatEntryArgs:
         :param pulumi.Input[str] source_cidr: The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
         :param pulumi.Input[str] source_vswitch_id: The vswitch ID.
         """
-        SnatEntryArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            snat_ip=snat_ip,
-            snat_table_id=snat_table_id,
-            snat_entry_name=snat_entry_name,
-            source_cidr=source_cidr,
-            source_vswitch_id=source_vswitch_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             snat_ip: Optional[pulumi.Input[str]] = None,
-             snat_table_id: Optional[pulumi.Input[str]] = None,
-             snat_entry_name: Optional[pulumi.Input[str]] = None,
-             source_cidr: Optional[pulumi.Input[str]] = None,
-             source_vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if snat_ip is None and 'snatIp' in kwargs:
-            snat_ip = kwargs['snatIp']
-        if snat_ip is None:
-            raise TypeError("Missing 'snat_ip' argument")
-        if snat_table_id is None and 'snatTableId' in kwargs:
-            snat_table_id = kwargs['snatTableId']
-        if snat_table_id is None:
-            raise TypeError("Missing 'snat_table_id' argument")
-        if snat_entry_name is None and 'snatEntryName' in kwargs:
-            snat_entry_name = kwargs['snatEntryName']
-        if source_cidr is None and 'sourceCidr' in kwargs:
-            source_cidr = kwargs['sourceCidr']
-        if source_vswitch_id is None and 'sourceVswitchId' in kwargs:
-            source_vswitch_id = kwargs['sourceVswitchId']
-
-        _setter("snat_ip", snat_ip)
-        _setter("snat_table_id", snat_table_id)
+        pulumi.set(__self__, "snat_ip", snat_ip)
+        pulumi.set(__self__, "snat_table_id", snat_table_id)
         if snat_entry_name is not None:
-            _setter("snat_entry_name", snat_entry_name)
+            pulumi.set(__self__, "snat_entry_name", snat_entry_name)
         if source_cidr is not None:
-            _setter("source_cidr", source_cidr)
+            pulumi.set(__self__, "source_cidr", source_cidr)
         if source_vswitch_id is not None:
-            _setter("source_vswitch_id", source_vswitch_id)
+            pulumi.set(__self__, "source_vswitch_id", source_vswitch_id)
 
     @property
     @pulumi.getter(name="snatIp")
@@ -150,55 +117,20 @@ class _SnatEntryState:
         :param pulumi.Input[str] source_vswitch_id: The vswitch ID.
         :param pulumi.Input[str] status: (Available since v1.119.1) The status of snat entry.
         """
-        _SnatEntryState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            snat_entry_id=snat_entry_id,
-            snat_entry_name=snat_entry_name,
-            snat_ip=snat_ip,
-            snat_table_id=snat_table_id,
-            source_cidr=source_cidr,
-            source_vswitch_id=source_vswitch_id,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             snat_entry_id: Optional[pulumi.Input[str]] = None,
-             snat_entry_name: Optional[pulumi.Input[str]] = None,
-             snat_ip: Optional[pulumi.Input[str]] = None,
-             snat_table_id: Optional[pulumi.Input[str]] = None,
-             source_cidr: Optional[pulumi.Input[str]] = None,
-             source_vswitch_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if snat_entry_id is None and 'snatEntryId' in kwargs:
-            snat_entry_id = kwargs['snatEntryId']
-        if snat_entry_name is None and 'snatEntryName' in kwargs:
-            snat_entry_name = kwargs['snatEntryName']
-        if snat_ip is None and 'snatIp' in kwargs:
-            snat_ip = kwargs['snatIp']
-        if snat_table_id is None and 'snatTableId' in kwargs:
-            snat_table_id = kwargs['snatTableId']
-        if source_cidr is None and 'sourceCidr' in kwargs:
-            source_cidr = kwargs['sourceCidr']
-        if source_vswitch_id is None and 'sourceVswitchId' in kwargs:
-            source_vswitch_id = kwargs['sourceVswitchId']
-
         if snat_entry_id is not None:
-            _setter("snat_entry_id", snat_entry_id)
+            pulumi.set(__self__, "snat_entry_id", snat_entry_id)
         if snat_entry_name is not None:
-            _setter("snat_entry_name", snat_entry_name)
+            pulumi.set(__self__, "snat_entry_name", snat_entry_name)
         if snat_ip is not None:
-            _setter("snat_ip", snat_ip)
+            pulumi.set(__self__, "snat_ip", snat_ip)
         if snat_table_id is not None:
-            _setter("snat_table_id", snat_table_id)
+            pulumi.set(__self__, "snat_table_id", snat_table_id)
         if source_cidr is not None:
-            _setter("source_cidr", source_cidr)
+            pulumi.set(__self__, "source_cidr", source_cidr)
         if source_vswitch_id is not None:
-            _setter("source_vswitch_id", source_vswitch_id)
+            pulumi.set(__self__, "source_vswitch_id", source_vswitch_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="snatEntryId")
@@ -420,10 +352,6 @@ class SnatEntry(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SnatEntryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

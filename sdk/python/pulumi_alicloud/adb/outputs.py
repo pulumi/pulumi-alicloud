@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -83,300 +83,49 @@ class GetClustersClusterResult(dict):
         :param str vpc_id: ID of the VPC the cluster belongs to.
         :param str zone_id: The ZoneId of the ADB cluster.
         """
-        GetClustersClusterResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto_renew_period=auto_renew_period,
-            charge_type=charge_type,
-            commodity_code=commodity_code,
-            compute_resource=compute_resource,
-            connection_string=connection_string,
-            create_time=create_time,
-            db_cluster_category=db_cluster_category,
-            db_cluster_id=db_cluster_id,
-            db_cluster_network_type=db_cluster_network_type,
-            db_cluster_type=db_cluster_type,
-            db_cluster_version=db_cluster_version,
-            db_node_class=db_node_class,
-            db_node_count=db_node_count,
-            db_node_storage=db_node_storage,
-            description=description,
-            disk_type=disk_type,
-            dts_job_id=dts_job_id,
-            elastic_io_resource=elastic_io_resource,
-            engine=engine,
-            engine_version=engine_version,
-            executor_count=executor_count,
-            expire_time=expire_time,
-            expired=expired,
-            id=id,
-            lock_mode=lock_mode,
-            lock_reason=lock_reason,
-            maintain_time=maintain_time,
-            mode=mode,
-            network_type=network_type,
-            payment_type=payment_type,
-            port=port,
-            rds_instance_id=rds_instance_id,
-            region_id=region_id,
-            renewal_status=renewal_status,
-            resource_group_id=resource_group_id,
-            security_ips=security_ips,
-            status=status,
-            storage_resource=storage_resource,
-            tags=tags,
-            vpc_cloud_instance_id=vpc_cloud_instance_id,
-            vpc_id=vpc_id,
-            vswitch_id=vswitch_id,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto_renew_period: Optional[int] = None,
-             charge_type: Optional[str] = None,
-             commodity_code: Optional[str] = None,
-             compute_resource: Optional[str] = None,
-             connection_string: Optional[str] = None,
-             create_time: Optional[str] = None,
-             db_cluster_category: Optional[str] = None,
-             db_cluster_id: Optional[str] = None,
-             db_cluster_network_type: Optional[str] = None,
-             db_cluster_type: Optional[str] = None,
-             db_cluster_version: Optional[str] = None,
-             db_node_class: Optional[str] = None,
-             db_node_count: Optional[int] = None,
-             db_node_storage: Optional[int] = None,
-             description: Optional[str] = None,
-             disk_type: Optional[str] = None,
-             dts_job_id: Optional[str] = None,
-             elastic_io_resource: Optional[int] = None,
-             engine: Optional[str] = None,
-             engine_version: Optional[str] = None,
-             executor_count: Optional[str] = None,
-             expire_time: Optional[str] = None,
-             expired: Optional[str] = None,
-             id: Optional[str] = None,
-             lock_mode: Optional[str] = None,
-             lock_reason: Optional[str] = None,
-             maintain_time: Optional[str] = None,
-             mode: Optional[str] = None,
-             network_type: Optional[str] = None,
-             payment_type: Optional[str] = None,
-             port: Optional[int] = None,
-             rds_instance_id: Optional[str] = None,
-             region_id: Optional[str] = None,
-             renewal_status: Optional[str] = None,
-             resource_group_id: Optional[str] = None,
-             security_ips: Optional[Sequence[str]] = None,
-             status: Optional[str] = None,
-             storage_resource: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             vpc_cloud_instance_id: Optional[str] = None,
-             vpc_id: Optional[str] = None,
-             vswitch_id: Optional[str] = None,
-             zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
-            auto_renew_period = kwargs['autoRenewPeriod']
-        if auto_renew_period is None:
-            raise TypeError("Missing 'auto_renew_period' argument")
-        if charge_type is None and 'chargeType' in kwargs:
-            charge_type = kwargs['chargeType']
-        if charge_type is None:
-            raise TypeError("Missing 'charge_type' argument")
-        if commodity_code is None and 'commodityCode' in kwargs:
-            commodity_code = kwargs['commodityCode']
-        if commodity_code is None:
-            raise TypeError("Missing 'commodity_code' argument")
-        if compute_resource is None and 'computeResource' in kwargs:
-            compute_resource = kwargs['computeResource']
-        if compute_resource is None:
-            raise TypeError("Missing 'compute_resource' argument")
-        if connection_string is None and 'connectionString' in kwargs:
-            connection_string = kwargs['connectionString']
-        if connection_string is None:
-            raise TypeError("Missing 'connection_string' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if db_cluster_category is None and 'dbClusterCategory' in kwargs:
-            db_cluster_category = kwargs['dbClusterCategory']
-        if db_cluster_category is None:
-            raise TypeError("Missing 'db_cluster_category' argument")
-        if db_cluster_id is None and 'dbClusterId' in kwargs:
-            db_cluster_id = kwargs['dbClusterId']
-        if db_cluster_id is None:
-            raise TypeError("Missing 'db_cluster_id' argument")
-        if db_cluster_network_type is None and 'dbClusterNetworkType' in kwargs:
-            db_cluster_network_type = kwargs['dbClusterNetworkType']
-        if db_cluster_network_type is None:
-            raise TypeError("Missing 'db_cluster_network_type' argument")
-        if db_cluster_type is None and 'dbClusterType' in kwargs:
-            db_cluster_type = kwargs['dbClusterType']
-        if db_cluster_type is None:
-            raise TypeError("Missing 'db_cluster_type' argument")
-        if db_cluster_version is None and 'dbClusterVersion' in kwargs:
-            db_cluster_version = kwargs['dbClusterVersion']
-        if db_cluster_version is None:
-            raise TypeError("Missing 'db_cluster_version' argument")
-        if db_node_class is None and 'dbNodeClass' in kwargs:
-            db_node_class = kwargs['dbNodeClass']
-        if db_node_class is None:
-            raise TypeError("Missing 'db_node_class' argument")
-        if db_node_count is None and 'dbNodeCount' in kwargs:
-            db_node_count = kwargs['dbNodeCount']
-        if db_node_count is None:
-            raise TypeError("Missing 'db_node_count' argument")
-        if db_node_storage is None and 'dbNodeStorage' in kwargs:
-            db_node_storage = kwargs['dbNodeStorage']
-        if db_node_storage is None:
-            raise TypeError("Missing 'db_node_storage' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if disk_type is None and 'diskType' in kwargs:
-            disk_type = kwargs['diskType']
-        if disk_type is None:
-            raise TypeError("Missing 'disk_type' argument")
-        if dts_job_id is None and 'dtsJobId' in kwargs:
-            dts_job_id = kwargs['dtsJobId']
-        if dts_job_id is None:
-            raise TypeError("Missing 'dts_job_id' argument")
-        if elastic_io_resource is None and 'elasticIoResource' in kwargs:
-            elastic_io_resource = kwargs['elasticIoResource']
-        if elastic_io_resource is None:
-            raise TypeError("Missing 'elastic_io_resource' argument")
-        if engine is None:
-            raise TypeError("Missing 'engine' argument")
-        if engine_version is None and 'engineVersion' in kwargs:
-            engine_version = kwargs['engineVersion']
-        if engine_version is None:
-            raise TypeError("Missing 'engine_version' argument")
-        if executor_count is None and 'executorCount' in kwargs:
-            executor_count = kwargs['executorCount']
-        if executor_count is None:
-            raise TypeError("Missing 'executor_count' argument")
-        if expire_time is None and 'expireTime' in kwargs:
-            expire_time = kwargs['expireTime']
-        if expire_time is None:
-            raise TypeError("Missing 'expire_time' argument")
-        if expired is None:
-            raise TypeError("Missing 'expired' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if lock_mode is None and 'lockMode' in kwargs:
-            lock_mode = kwargs['lockMode']
-        if lock_mode is None:
-            raise TypeError("Missing 'lock_mode' argument")
-        if lock_reason is None and 'lockReason' in kwargs:
-            lock_reason = kwargs['lockReason']
-        if lock_reason is None:
-            raise TypeError("Missing 'lock_reason' argument")
-        if maintain_time is None and 'maintainTime' in kwargs:
-            maintain_time = kwargs['maintainTime']
-        if maintain_time is None:
-            raise TypeError("Missing 'maintain_time' argument")
-        if mode is None:
-            raise TypeError("Missing 'mode' argument")
-        if network_type is None and 'networkType' in kwargs:
-            network_type = kwargs['networkType']
-        if network_type is None:
-            raise TypeError("Missing 'network_type' argument")
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if payment_type is None:
-            raise TypeError("Missing 'payment_type' argument")
-        if port is None:
-            raise TypeError("Missing 'port' argument")
-        if rds_instance_id is None and 'rdsInstanceId' in kwargs:
-            rds_instance_id = kwargs['rdsInstanceId']
-        if rds_instance_id is None:
-            raise TypeError("Missing 'rds_instance_id' argument")
-        if region_id is None and 'regionId' in kwargs:
-            region_id = kwargs['regionId']
-        if region_id is None:
-            raise TypeError("Missing 'region_id' argument")
-        if renewal_status is None and 'renewalStatus' in kwargs:
-            renewal_status = kwargs['renewalStatus']
-        if renewal_status is None:
-            raise TypeError("Missing 'renewal_status' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if security_ips is None and 'securityIps' in kwargs:
-            security_ips = kwargs['securityIps']
-        if security_ips is None:
-            raise TypeError("Missing 'security_ips' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if storage_resource is None and 'storageResource' in kwargs:
-            storage_resource = kwargs['storageResource']
-        if storage_resource is None:
-            raise TypeError("Missing 'storage_resource' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-        if vpc_cloud_instance_id is None and 'vpcCloudInstanceId' in kwargs:
-            vpc_cloud_instance_id = kwargs['vpcCloudInstanceId']
-        if vpc_cloud_instance_id is None:
-            raise TypeError("Missing 'vpc_cloud_instance_id' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("auto_renew_period", auto_renew_period)
-        _setter("charge_type", charge_type)
-        _setter("commodity_code", commodity_code)
-        _setter("compute_resource", compute_resource)
-        _setter("connection_string", connection_string)
-        _setter("create_time", create_time)
-        _setter("db_cluster_category", db_cluster_category)
-        _setter("db_cluster_id", db_cluster_id)
-        _setter("db_cluster_network_type", db_cluster_network_type)
-        _setter("db_cluster_type", db_cluster_type)
-        _setter("db_cluster_version", db_cluster_version)
-        _setter("db_node_class", db_node_class)
-        _setter("db_node_count", db_node_count)
-        _setter("db_node_storage", db_node_storage)
-        _setter("description", description)
-        _setter("disk_type", disk_type)
-        _setter("dts_job_id", dts_job_id)
-        _setter("elastic_io_resource", elastic_io_resource)
-        _setter("engine", engine)
-        _setter("engine_version", engine_version)
-        _setter("executor_count", executor_count)
-        _setter("expire_time", expire_time)
-        _setter("expired", expired)
-        _setter("id", id)
-        _setter("lock_mode", lock_mode)
-        _setter("lock_reason", lock_reason)
-        _setter("maintain_time", maintain_time)
-        _setter("mode", mode)
-        _setter("network_type", network_type)
-        _setter("payment_type", payment_type)
-        _setter("port", port)
-        _setter("rds_instance_id", rds_instance_id)
-        _setter("region_id", region_id)
-        _setter("renewal_status", renewal_status)
-        _setter("resource_group_id", resource_group_id)
-        _setter("security_ips", security_ips)
-        _setter("status", status)
-        _setter("storage_resource", storage_resource)
-        _setter("tags", tags)
-        _setter("vpc_cloud_instance_id", vpc_cloud_instance_id)
-        _setter("vpc_id", vpc_id)
-        _setter("vswitch_id", vswitch_id)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        pulumi.set(__self__, "charge_type", charge_type)
+        pulumi.set(__self__, "commodity_code", commodity_code)
+        pulumi.set(__self__, "compute_resource", compute_resource)
+        pulumi.set(__self__, "connection_string", connection_string)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "db_cluster_category", db_cluster_category)
+        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+        pulumi.set(__self__, "db_cluster_network_type", db_cluster_network_type)
+        pulumi.set(__self__, "db_cluster_type", db_cluster_type)
+        pulumi.set(__self__, "db_cluster_version", db_cluster_version)
+        pulumi.set(__self__, "db_node_class", db_node_class)
+        pulumi.set(__self__, "db_node_count", db_node_count)
+        pulumi.set(__self__, "db_node_storage", db_node_storage)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "dts_job_id", dts_job_id)
+        pulumi.set(__self__, "elastic_io_resource", elastic_io_resource)
+        pulumi.set(__self__, "engine", engine)
+        pulumi.set(__self__, "engine_version", engine_version)
+        pulumi.set(__self__, "executor_count", executor_count)
+        pulumi.set(__self__, "expire_time", expire_time)
+        pulumi.set(__self__, "expired", expired)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "lock_mode", lock_mode)
+        pulumi.set(__self__, "lock_reason", lock_reason)
+        pulumi.set(__self__, "maintain_time", maintain_time)
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "network_type", network_type)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "rds_instance_id", rds_instance_id)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "renewal_status", renewal_status)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "security_ips", security_ips)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "storage_resource", storage_resource)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "vpc_cloud_instance_id", vpc_cloud_instance_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="autoRenewPeriod")
@@ -691,152 +440,27 @@ class GetDBClusterLakeVersionsVersionResult(dict):
         :param str vswitch_id: The vswitch id.
         :param str zone_id: The zone ID  of the resource.
         """
-        GetDBClusterLakeVersionsVersionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            commodity_code=commodity_code,
-            compute_resource=compute_resource,
-            connection_string=connection_string,
-            create_time=create_time,
-            db_cluster_id=db_cluster_id,
-            db_cluster_version=db_cluster_version,
-            engine=engine,
-            engine_version=engine_version,
-            expire_time=expire_time,
-            expired=expired,
-            id=id,
-            lock_mode=lock_mode,
-            lock_reason=lock_reason,
-            payment_type=payment_type,
-            port=port,
-            resource_group_id=resource_group_id,
-            status=status,
-            storage_resource=storage_resource,
-            vpc_id=vpc_id,
-            vswitch_id=vswitch_id,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             commodity_code: Optional[str] = None,
-             compute_resource: Optional[str] = None,
-             connection_string: Optional[str] = None,
-             create_time: Optional[str] = None,
-             db_cluster_id: Optional[str] = None,
-             db_cluster_version: Optional[str] = None,
-             engine: Optional[str] = None,
-             engine_version: Optional[str] = None,
-             expire_time: Optional[str] = None,
-             expired: Optional[str] = None,
-             id: Optional[str] = None,
-             lock_mode: Optional[str] = None,
-             lock_reason: Optional[str] = None,
-             payment_type: Optional[str] = None,
-             port: Optional[str] = None,
-             resource_group_id: Optional[str] = None,
-             status: Optional[str] = None,
-             storage_resource: Optional[str] = None,
-             vpc_id: Optional[str] = None,
-             vswitch_id: Optional[str] = None,
-             zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if commodity_code is None and 'commodityCode' in kwargs:
-            commodity_code = kwargs['commodityCode']
-        if commodity_code is None:
-            raise TypeError("Missing 'commodity_code' argument")
-        if compute_resource is None and 'computeResource' in kwargs:
-            compute_resource = kwargs['computeResource']
-        if compute_resource is None:
-            raise TypeError("Missing 'compute_resource' argument")
-        if connection_string is None and 'connectionString' in kwargs:
-            connection_string = kwargs['connectionString']
-        if connection_string is None:
-            raise TypeError("Missing 'connection_string' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if db_cluster_id is None and 'dbClusterId' in kwargs:
-            db_cluster_id = kwargs['dbClusterId']
-        if db_cluster_id is None:
-            raise TypeError("Missing 'db_cluster_id' argument")
-        if db_cluster_version is None and 'dbClusterVersion' in kwargs:
-            db_cluster_version = kwargs['dbClusterVersion']
-        if db_cluster_version is None:
-            raise TypeError("Missing 'db_cluster_version' argument")
-        if engine is None:
-            raise TypeError("Missing 'engine' argument")
-        if engine_version is None and 'engineVersion' in kwargs:
-            engine_version = kwargs['engineVersion']
-        if engine_version is None:
-            raise TypeError("Missing 'engine_version' argument")
-        if expire_time is None and 'expireTime' in kwargs:
-            expire_time = kwargs['expireTime']
-        if expire_time is None:
-            raise TypeError("Missing 'expire_time' argument")
-        if expired is None:
-            raise TypeError("Missing 'expired' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if lock_mode is None and 'lockMode' in kwargs:
-            lock_mode = kwargs['lockMode']
-        if lock_mode is None:
-            raise TypeError("Missing 'lock_mode' argument")
-        if lock_reason is None and 'lockReason' in kwargs:
-            lock_reason = kwargs['lockReason']
-        if lock_reason is None:
-            raise TypeError("Missing 'lock_reason' argument")
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if payment_type is None:
-            raise TypeError("Missing 'payment_type' argument")
-        if port is None:
-            raise TypeError("Missing 'port' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if storage_resource is None and 'storageResource' in kwargs:
-            storage_resource = kwargs['storageResource']
-        if storage_resource is None:
-            raise TypeError("Missing 'storage_resource' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("commodity_code", commodity_code)
-        _setter("compute_resource", compute_resource)
-        _setter("connection_string", connection_string)
-        _setter("create_time", create_time)
-        _setter("db_cluster_id", db_cluster_id)
-        _setter("db_cluster_version", db_cluster_version)
-        _setter("engine", engine)
-        _setter("engine_version", engine_version)
-        _setter("expire_time", expire_time)
-        _setter("expired", expired)
-        _setter("id", id)
-        _setter("lock_mode", lock_mode)
-        _setter("lock_reason", lock_reason)
-        _setter("payment_type", payment_type)
-        _setter("port", port)
-        _setter("resource_group_id", resource_group_id)
-        _setter("status", status)
-        _setter("storage_resource", storage_resource)
-        _setter("vpc_id", vpc_id)
-        _setter("vswitch_id", vswitch_id)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "commodity_code", commodity_code)
+        pulumi.set(__self__, "compute_resource", compute_resource)
+        pulumi.set(__self__, "connection_string", connection_string)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+        pulumi.set(__self__, "db_cluster_version", db_cluster_version)
+        pulumi.set(__self__, "engine", engine)
+        pulumi.set(__self__, "engine_version", engine_version)
+        pulumi.set(__self__, "expire_time", expire_time)
+        pulumi.set(__self__, "expired", expired)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "lock_mode", lock_mode)
+        pulumi.set(__self__, "lock_reason", lock_reason)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "storage_resource", storage_resource)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="commodityCode")
@@ -1098,300 +722,49 @@ class GetDBClustersClusterResult(dict):
         :param str vswitch_id: The vswitch id.
         :param str zone_id: The zone ID  of the resource.
         """
-        GetDBClustersClusterResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto_renew_period=auto_renew_period,
-            charge_type=charge_type,
-            commodity_code=commodity_code,
-            compute_resource=compute_resource,
-            connection_string=connection_string,
-            create_time=create_time,
-            db_cluster_category=db_cluster_category,
-            db_cluster_id=db_cluster_id,
-            db_cluster_network_type=db_cluster_network_type,
-            db_cluster_type=db_cluster_type,
-            db_cluster_version=db_cluster_version,
-            db_node_class=db_node_class,
-            db_node_count=db_node_count,
-            db_node_storage=db_node_storage,
-            description=description,
-            disk_type=disk_type,
-            dts_job_id=dts_job_id,
-            elastic_io_resource=elastic_io_resource,
-            engine=engine,
-            engine_version=engine_version,
-            executor_count=executor_count,
-            expire_time=expire_time,
-            expired=expired,
-            id=id,
-            lock_mode=lock_mode,
-            lock_reason=lock_reason,
-            maintain_time=maintain_time,
-            mode=mode,
-            network_type=network_type,
-            payment_type=payment_type,
-            port=port,
-            rds_instance_id=rds_instance_id,
-            region_id=region_id,
-            renewal_status=renewal_status,
-            resource_group_id=resource_group_id,
-            security_ips=security_ips,
-            status=status,
-            storage_resource=storage_resource,
-            tags=tags,
-            vpc_cloud_instance_id=vpc_cloud_instance_id,
-            vpc_id=vpc_id,
-            vswitch_id=vswitch_id,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto_renew_period: Optional[int] = None,
-             charge_type: Optional[str] = None,
-             commodity_code: Optional[str] = None,
-             compute_resource: Optional[str] = None,
-             connection_string: Optional[str] = None,
-             create_time: Optional[str] = None,
-             db_cluster_category: Optional[str] = None,
-             db_cluster_id: Optional[str] = None,
-             db_cluster_network_type: Optional[str] = None,
-             db_cluster_type: Optional[str] = None,
-             db_cluster_version: Optional[str] = None,
-             db_node_class: Optional[str] = None,
-             db_node_count: Optional[int] = None,
-             db_node_storage: Optional[int] = None,
-             description: Optional[str] = None,
-             disk_type: Optional[str] = None,
-             dts_job_id: Optional[str] = None,
-             elastic_io_resource: Optional[int] = None,
-             engine: Optional[str] = None,
-             engine_version: Optional[str] = None,
-             executor_count: Optional[str] = None,
-             expire_time: Optional[str] = None,
-             expired: Optional[str] = None,
-             id: Optional[str] = None,
-             lock_mode: Optional[str] = None,
-             lock_reason: Optional[str] = None,
-             maintain_time: Optional[str] = None,
-             mode: Optional[str] = None,
-             network_type: Optional[str] = None,
-             payment_type: Optional[str] = None,
-             port: Optional[int] = None,
-             rds_instance_id: Optional[str] = None,
-             region_id: Optional[str] = None,
-             renewal_status: Optional[str] = None,
-             resource_group_id: Optional[str] = None,
-             security_ips: Optional[Sequence[str]] = None,
-             status: Optional[str] = None,
-             storage_resource: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             vpc_cloud_instance_id: Optional[str] = None,
-             vpc_id: Optional[str] = None,
-             vswitch_id: Optional[str] = None,
-             zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
-            auto_renew_period = kwargs['autoRenewPeriod']
-        if auto_renew_period is None:
-            raise TypeError("Missing 'auto_renew_period' argument")
-        if charge_type is None and 'chargeType' in kwargs:
-            charge_type = kwargs['chargeType']
-        if charge_type is None:
-            raise TypeError("Missing 'charge_type' argument")
-        if commodity_code is None and 'commodityCode' in kwargs:
-            commodity_code = kwargs['commodityCode']
-        if commodity_code is None:
-            raise TypeError("Missing 'commodity_code' argument")
-        if compute_resource is None and 'computeResource' in kwargs:
-            compute_resource = kwargs['computeResource']
-        if compute_resource is None:
-            raise TypeError("Missing 'compute_resource' argument")
-        if connection_string is None and 'connectionString' in kwargs:
-            connection_string = kwargs['connectionString']
-        if connection_string is None:
-            raise TypeError("Missing 'connection_string' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if db_cluster_category is None and 'dbClusterCategory' in kwargs:
-            db_cluster_category = kwargs['dbClusterCategory']
-        if db_cluster_category is None:
-            raise TypeError("Missing 'db_cluster_category' argument")
-        if db_cluster_id is None and 'dbClusterId' in kwargs:
-            db_cluster_id = kwargs['dbClusterId']
-        if db_cluster_id is None:
-            raise TypeError("Missing 'db_cluster_id' argument")
-        if db_cluster_network_type is None and 'dbClusterNetworkType' in kwargs:
-            db_cluster_network_type = kwargs['dbClusterNetworkType']
-        if db_cluster_network_type is None:
-            raise TypeError("Missing 'db_cluster_network_type' argument")
-        if db_cluster_type is None and 'dbClusterType' in kwargs:
-            db_cluster_type = kwargs['dbClusterType']
-        if db_cluster_type is None:
-            raise TypeError("Missing 'db_cluster_type' argument")
-        if db_cluster_version is None and 'dbClusterVersion' in kwargs:
-            db_cluster_version = kwargs['dbClusterVersion']
-        if db_cluster_version is None:
-            raise TypeError("Missing 'db_cluster_version' argument")
-        if db_node_class is None and 'dbNodeClass' in kwargs:
-            db_node_class = kwargs['dbNodeClass']
-        if db_node_class is None:
-            raise TypeError("Missing 'db_node_class' argument")
-        if db_node_count is None and 'dbNodeCount' in kwargs:
-            db_node_count = kwargs['dbNodeCount']
-        if db_node_count is None:
-            raise TypeError("Missing 'db_node_count' argument")
-        if db_node_storage is None and 'dbNodeStorage' in kwargs:
-            db_node_storage = kwargs['dbNodeStorage']
-        if db_node_storage is None:
-            raise TypeError("Missing 'db_node_storage' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if disk_type is None and 'diskType' in kwargs:
-            disk_type = kwargs['diskType']
-        if disk_type is None:
-            raise TypeError("Missing 'disk_type' argument")
-        if dts_job_id is None and 'dtsJobId' in kwargs:
-            dts_job_id = kwargs['dtsJobId']
-        if dts_job_id is None:
-            raise TypeError("Missing 'dts_job_id' argument")
-        if elastic_io_resource is None and 'elasticIoResource' in kwargs:
-            elastic_io_resource = kwargs['elasticIoResource']
-        if elastic_io_resource is None:
-            raise TypeError("Missing 'elastic_io_resource' argument")
-        if engine is None:
-            raise TypeError("Missing 'engine' argument")
-        if engine_version is None and 'engineVersion' in kwargs:
-            engine_version = kwargs['engineVersion']
-        if engine_version is None:
-            raise TypeError("Missing 'engine_version' argument")
-        if executor_count is None and 'executorCount' in kwargs:
-            executor_count = kwargs['executorCount']
-        if executor_count is None:
-            raise TypeError("Missing 'executor_count' argument")
-        if expire_time is None and 'expireTime' in kwargs:
-            expire_time = kwargs['expireTime']
-        if expire_time is None:
-            raise TypeError("Missing 'expire_time' argument")
-        if expired is None:
-            raise TypeError("Missing 'expired' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if lock_mode is None and 'lockMode' in kwargs:
-            lock_mode = kwargs['lockMode']
-        if lock_mode is None:
-            raise TypeError("Missing 'lock_mode' argument")
-        if lock_reason is None and 'lockReason' in kwargs:
-            lock_reason = kwargs['lockReason']
-        if lock_reason is None:
-            raise TypeError("Missing 'lock_reason' argument")
-        if maintain_time is None and 'maintainTime' in kwargs:
-            maintain_time = kwargs['maintainTime']
-        if maintain_time is None:
-            raise TypeError("Missing 'maintain_time' argument")
-        if mode is None:
-            raise TypeError("Missing 'mode' argument")
-        if network_type is None and 'networkType' in kwargs:
-            network_type = kwargs['networkType']
-        if network_type is None:
-            raise TypeError("Missing 'network_type' argument")
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if payment_type is None:
-            raise TypeError("Missing 'payment_type' argument")
-        if port is None:
-            raise TypeError("Missing 'port' argument")
-        if rds_instance_id is None and 'rdsInstanceId' in kwargs:
-            rds_instance_id = kwargs['rdsInstanceId']
-        if rds_instance_id is None:
-            raise TypeError("Missing 'rds_instance_id' argument")
-        if region_id is None and 'regionId' in kwargs:
-            region_id = kwargs['regionId']
-        if region_id is None:
-            raise TypeError("Missing 'region_id' argument")
-        if renewal_status is None and 'renewalStatus' in kwargs:
-            renewal_status = kwargs['renewalStatus']
-        if renewal_status is None:
-            raise TypeError("Missing 'renewal_status' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if security_ips is None and 'securityIps' in kwargs:
-            security_ips = kwargs['securityIps']
-        if security_ips is None:
-            raise TypeError("Missing 'security_ips' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if storage_resource is None and 'storageResource' in kwargs:
-            storage_resource = kwargs['storageResource']
-        if storage_resource is None:
-            raise TypeError("Missing 'storage_resource' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-        if vpc_cloud_instance_id is None and 'vpcCloudInstanceId' in kwargs:
-            vpc_cloud_instance_id = kwargs['vpcCloudInstanceId']
-        if vpc_cloud_instance_id is None:
-            raise TypeError("Missing 'vpc_cloud_instance_id' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("auto_renew_period", auto_renew_period)
-        _setter("charge_type", charge_type)
-        _setter("commodity_code", commodity_code)
-        _setter("compute_resource", compute_resource)
-        _setter("connection_string", connection_string)
-        _setter("create_time", create_time)
-        _setter("db_cluster_category", db_cluster_category)
-        _setter("db_cluster_id", db_cluster_id)
-        _setter("db_cluster_network_type", db_cluster_network_type)
-        _setter("db_cluster_type", db_cluster_type)
-        _setter("db_cluster_version", db_cluster_version)
-        _setter("db_node_class", db_node_class)
-        _setter("db_node_count", db_node_count)
-        _setter("db_node_storage", db_node_storage)
-        _setter("description", description)
-        _setter("disk_type", disk_type)
-        _setter("dts_job_id", dts_job_id)
-        _setter("elastic_io_resource", elastic_io_resource)
-        _setter("engine", engine)
-        _setter("engine_version", engine_version)
-        _setter("executor_count", executor_count)
-        _setter("expire_time", expire_time)
-        _setter("expired", expired)
-        _setter("id", id)
-        _setter("lock_mode", lock_mode)
-        _setter("lock_reason", lock_reason)
-        _setter("maintain_time", maintain_time)
-        _setter("mode", mode)
-        _setter("network_type", network_type)
-        _setter("payment_type", payment_type)
-        _setter("port", port)
-        _setter("rds_instance_id", rds_instance_id)
-        _setter("region_id", region_id)
-        _setter("renewal_status", renewal_status)
-        _setter("resource_group_id", resource_group_id)
-        _setter("security_ips", security_ips)
-        _setter("status", status)
-        _setter("storage_resource", storage_resource)
-        _setter("tags", tags)
-        _setter("vpc_cloud_instance_id", vpc_cloud_instance_id)
-        _setter("vpc_id", vpc_id)
-        _setter("vswitch_id", vswitch_id)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        pulumi.set(__self__, "charge_type", charge_type)
+        pulumi.set(__self__, "commodity_code", commodity_code)
+        pulumi.set(__self__, "compute_resource", compute_resource)
+        pulumi.set(__self__, "connection_string", connection_string)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "db_cluster_category", db_cluster_category)
+        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+        pulumi.set(__self__, "db_cluster_network_type", db_cluster_network_type)
+        pulumi.set(__self__, "db_cluster_type", db_cluster_type)
+        pulumi.set(__self__, "db_cluster_version", db_cluster_version)
+        pulumi.set(__self__, "db_node_class", db_node_class)
+        pulumi.set(__self__, "db_node_count", db_node_count)
+        pulumi.set(__self__, "db_node_storage", db_node_storage)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "dts_job_id", dts_job_id)
+        pulumi.set(__self__, "elastic_io_resource", elastic_io_resource)
+        pulumi.set(__self__, "engine", engine)
+        pulumi.set(__self__, "engine_version", engine_version)
+        pulumi.set(__self__, "executor_count", executor_count)
+        pulumi.set(__self__, "expire_time", expire_time)
+        pulumi.set(__self__, "expired", expired)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "lock_mode", lock_mode)
+        pulumi.set(__self__, "lock_reason", lock_reason)
+        pulumi.set(__self__, "maintain_time", maintain_time)
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "network_type", network_type)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "rds_instance_id", rds_instance_id)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "renewal_status", renewal_status)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "security_ips", security_ips)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "storage_resource", storage_resource)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "vpc_cloud_instance_id", vpc_cloud_instance_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="autoRenewPeriod")
@@ -1760,60 +1133,13 @@ class GetResourceGroupsGroupResult(dict):
         :param int node_num: The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
         :param str user: Binding User.
         """
-        GetResourceGroupsGroupResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            db_cluster_id=db_cluster_id,
-            group_name=group_name,
-            group_type=group_type,
-            id=id,
-            node_num=node_num,
-            user=user,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[str] = None,
-             db_cluster_id: Optional[str] = None,
-             group_name: Optional[str] = None,
-             group_type: Optional[str] = None,
-             id: Optional[str] = None,
-             node_num: Optional[int] = None,
-             user: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if db_cluster_id is None and 'dbClusterId' in kwargs:
-            db_cluster_id = kwargs['dbClusterId']
-        if db_cluster_id is None:
-            raise TypeError("Missing 'db_cluster_id' argument")
-        if group_name is None and 'groupName' in kwargs:
-            group_name = kwargs['groupName']
-        if group_name is None:
-            raise TypeError("Missing 'group_name' argument")
-        if group_type is None and 'groupType' in kwargs:
-            group_type = kwargs['groupType']
-        if group_type is None:
-            raise TypeError("Missing 'group_type' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if node_num is None and 'nodeNum' in kwargs:
-            node_num = kwargs['nodeNum']
-        if node_num is None:
-            raise TypeError("Missing 'node_num' argument")
-        if user is None:
-            raise TypeError("Missing 'user' argument")
-
-        _setter("create_time", create_time)
-        _setter("db_cluster_id", db_cluster_id)
-        _setter("group_name", group_name)
-        _setter("group_type", group_type)
-        _setter("id", id)
-        _setter("node_num", node_num)
-        _setter("user", user)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+        pulumi.set(__self__, "group_name", group_name)
+        pulumi.set(__self__, "group_type", group_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "node_num", node_num)
+        pulumi.set(__self__, "user", user)
 
     @property
     @pulumi.getter(name="createTime")
@@ -1884,27 +1210,8 @@ class GetZonesZoneResult(dict):
         :param str id: ID of the zone.
         :param Sequence[str] multi_zone_ids: A list of zone ids in which the multi zone.
         """
-        GetZonesZoneResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            multi_zone_ids=multi_zone_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             multi_zone_ids: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if multi_zone_ids is None and 'multiZoneIds' in kwargs:
-            multi_zone_ids = kwargs['multiZoneIds']
-        if multi_zone_ids is None:
-            raise TypeError("Missing 'multi_zone_ids' argument")
-
-        _setter("id", id)
-        _setter("multi_zone_ids", multi_zone_ids)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "multi_zone_ids", multi_zone_ids)
 
     @property
     @pulumi.getter

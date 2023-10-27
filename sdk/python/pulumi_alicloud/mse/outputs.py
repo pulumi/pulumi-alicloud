@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -70,61 +70,22 @@ class GatewaySlbList(dict):
         :param str slb_port: The port of the gateway slb.
         :param str type: The type of the gateway slb.
         """
-        GatewaySlbList._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            associate_id=associate_id,
-            gateway_slb_mode=gateway_slb_mode,
-            gateway_slb_status=gateway_slb_status,
-            gmt_create=gmt_create,
-            slb_id=slb_id,
-            slb_ip=slb_ip,
-            slb_port=slb_port,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             associate_id: Optional[str] = None,
-             gateway_slb_mode: Optional[str] = None,
-             gateway_slb_status: Optional[str] = None,
-             gmt_create: Optional[str] = None,
-             slb_id: Optional[str] = None,
-             slb_ip: Optional[str] = None,
-             slb_port: Optional[str] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if associate_id is None and 'associateId' in kwargs:
-            associate_id = kwargs['associateId']
-        if gateway_slb_mode is None and 'gatewaySlbMode' in kwargs:
-            gateway_slb_mode = kwargs['gatewaySlbMode']
-        if gateway_slb_status is None and 'gatewaySlbStatus' in kwargs:
-            gateway_slb_status = kwargs['gatewaySlbStatus']
-        if gmt_create is None and 'gmtCreate' in kwargs:
-            gmt_create = kwargs['gmtCreate']
-        if slb_id is None and 'slbId' in kwargs:
-            slb_id = kwargs['slbId']
-        if slb_ip is None and 'slbIp' in kwargs:
-            slb_ip = kwargs['slbIp']
-        if slb_port is None and 'slbPort' in kwargs:
-            slb_port = kwargs['slbPort']
-
         if associate_id is not None:
-            _setter("associate_id", associate_id)
+            pulumi.set(__self__, "associate_id", associate_id)
         if gateway_slb_mode is not None:
-            _setter("gateway_slb_mode", gateway_slb_mode)
+            pulumi.set(__self__, "gateway_slb_mode", gateway_slb_mode)
         if gateway_slb_status is not None:
-            _setter("gateway_slb_status", gateway_slb_status)
+            pulumi.set(__self__, "gateway_slb_status", gateway_slb_status)
         if gmt_create is not None:
-            _setter("gmt_create", gmt_create)
+            pulumi.set(__self__, "gmt_create", gmt_create)
         if slb_id is not None:
-            _setter("slb_id", slb_id)
+            pulumi.set(__self__, "slb_id", slb_id)
         if slb_ip is not None:
-            _setter("slb_ip", slb_ip)
+            pulumi.set(__self__, "slb_ip", slb_ip)
         if slb_port is not None:
-            _setter("slb_port", slb_port)
+            pulumi.set(__self__, "slb_port", slb_port)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="associateId")
@@ -240,163 +201,28 @@ class GetClustersClusterResult(dict):
         :param str pub_network_flow: The public network bandwidth.
         :param str status: The status of MSE Cluster. Valid: `DESTROY_FAILED`, `DESTROY_ING`, `DESTROY_SUCCESS`, `INIT_FAILED`, `INIT_ING`, `INIT_SUCCESS`, `INIT_TIME_OUT`, `RESTART_FAILED`, `RESTART_ING`, `RESTART_SUCCESS`, `SCALE_FAILED`, `SCALE_ING`, `SCALE_SUCCESS`
         """
-        GetClustersClusterResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            acl_id=acl_id,
-            app_version=app_version,
-            cluster_id=cluster_id,
-            cluster_name=cluster_name,
-            cluster_type=cluster_type,
-            cpu=cpu,
-            health_status=health_status,
-            id=id,
-            init_cost_time=init_cost_time,
-            instance_count=instance_count,
-            instance_id=instance_id,
-            instance_models=instance_models,
-            internet_address=internet_address,
-            internet_domain=internet_domain,
-            internet_port=internet_port,
-            intranet_address=intranet_address,
-            intranet_domain=intranet_domain,
-            intranet_port=intranet_port,
-            memory_capacity=memory_capacity,
-            pay_info=pay_info,
-            pub_network_flow=pub_network_flow,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             acl_id: Optional[str] = None,
-             app_version: Optional[str] = None,
-             cluster_id: Optional[str] = None,
-             cluster_name: Optional[str] = None,
-             cluster_type: Optional[str] = None,
-             cpu: Optional[int] = None,
-             health_status: Optional[str] = None,
-             id: Optional[str] = None,
-             init_cost_time: Optional[int] = None,
-             instance_count: Optional[int] = None,
-             instance_id: Optional[str] = None,
-             instance_models: Optional[Sequence['outputs.GetClustersClusterInstanceModelResult']] = None,
-             internet_address: Optional[str] = None,
-             internet_domain: Optional[str] = None,
-             internet_port: Optional[str] = None,
-             intranet_address: Optional[str] = None,
-             intranet_domain: Optional[str] = None,
-             intranet_port: Optional[str] = None,
-             memory_capacity: Optional[int] = None,
-             pay_info: Optional[str] = None,
-             pub_network_flow: Optional[str] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if acl_id is None and 'aclId' in kwargs:
-            acl_id = kwargs['aclId']
-        if acl_id is None:
-            raise TypeError("Missing 'acl_id' argument")
-        if app_version is None and 'appVersion' in kwargs:
-            app_version = kwargs['appVersion']
-        if app_version is None:
-            raise TypeError("Missing 'app_version' argument")
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cluster_id is None:
-            raise TypeError("Missing 'cluster_id' argument")
-        if cluster_name is None and 'clusterName' in kwargs:
-            cluster_name = kwargs['clusterName']
-        if cluster_name is None:
-            raise TypeError("Missing 'cluster_name' argument")
-        if cluster_type is None and 'clusterType' in kwargs:
-            cluster_type = kwargs['clusterType']
-        if cluster_type is None:
-            raise TypeError("Missing 'cluster_type' argument")
-        if cpu is None:
-            raise TypeError("Missing 'cpu' argument")
-        if health_status is None and 'healthStatus' in kwargs:
-            health_status = kwargs['healthStatus']
-        if health_status is None:
-            raise TypeError("Missing 'health_status' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if init_cost_time is None and 'initCostTime' in kwargs:
-            init_cost_time = kwargs['initCostTime']
-        if init_cost_time is None:
-            raise TypeError("Missing 'init_cost_time' argument")
-        if instance_count is None and 'instanceCount' in kwargs:
-            instance_count = kwargs['instanceCount']
-        if instance_count is None:
-            raise TypeError("Missing 'instance_count' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if instance_models is None and 'instanceModels' in kwargs:
-            instance_models = kwargs['instanceModels']
-        if instance_models is None:
-            raise TypeError("Missing 'instance_models' argument")
-        if internet_address is None and 'internetAddress' in kwargs:
-            internet_address = kwargs['internetAddress']
-        if internet_address is None:
-            raise TypeError("Missing 'internet_address' argument")
-        if internet_domain is None and 'internetDomain' in kwargs:
-            internet_domain = kwargs['internetDomain']
-        if internet_domain is None:
-            raise TypeError("Missing 'internet_domain' argument")
-        if internet_port is None and 'internetPort' in kwargs:
-            internet_port = kwargs['internetPort']
-        if internet_port is None:
-            raise TypeError("Missing 'internet_port' argument")
-        if intranet_address is None and 'intranetAddress' in kwargs:
-            intranet_address = kwargs['intranetAddress']
-        if intranet_address is None:
-            raise TypeError("Missing 'intranet_address' argument")
-        if intranet_domain is None and 'intranetDomain' in kwargs:
-            intranet_domain = kwargs['intranetDomain']
-        if intranet_domain is None:
-            raise TypeError("Missing 'intranet_domain' argument")
-        if intranet_port is None and 'intranetPort' in kwargs:
-            intranet_port = kwargs['intranetPort']
-        if intranet_port is None:
-            raise TypeError("Missing 'intranet_port' argument")
-        if memory_capacity is None and 'memoryCapacity' in kwargs:
-            memory_capacity = kwargs['memoryCapacity']
-        if memory_capacity is None:
-            raise TypeError("Missing 'memory_capacity' argument")
-        if pay_info is None and 'payInfo' in kwargs:
-            pay_info = kwargs['payInfo']
-        if pay_info is None:
-            raise TypeError("Missing 'pay_info' argument")
-        if pub_network_flow is None and 'pubNetworkFlow' in kwargs:
-            pub_network_flow = kwargs['pubNetworkFlow']
-        if pub_network_flow is None:
-            raise TypeError("Missing 'pub_network_flow' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("acl_id", acl_id)
-        _setter("app_version", app_version)
-        _setter("cluster_id", cluster_id)
-        _setter("cluster_name", cluster_name)
-        _setter("cluster_type", cluster_type)
-        _setter("cpu", cpu)
-        _setter("health_status", health_status)
-        _setter("id", id)
-        _setter("init_cost_time", init_cost_time)
-        _setter("instance_count", instance_count)
-        _setter("instance_id", instance_id)
-        _setter("instance_models", instance_models)
-        _setter("internet_address", internet_address)
-        _setter("internet_domain", internet_domain)
-        _setter("internet_port", internet_port)
-        _setter("intranet_address", intranet_address)
-        _setter("intranet_domain", intranet_domain)
-        _setter("intranet_port", intranet_port)
-        _setter("memory_capacity", memory_capacity)
-        _setter("pay_info", pay_info)
-        _setter("pub_network_flow", pub_network_flow)
-        _setter("status", status)
+        pulumi.set(__self__, "acl_id", acl_id)
+        pulumi.set(__self__, "app_version", app_version)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "cluster_name", cluster_name)
+        pulumi.set(__self__, "cluster_type", cluster_type)
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "health_status", health_status)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "init_cost_time", init_cost_time)
+        pulumi.set(__self__, "instance_count", instance_count)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_models", instance_models)
+        pulumi.set(__self__, "internet_address", internet_address)
+        pulumi.set(__self__, "internet_domain", internet_domain)
+        pulumi.set(__self__, "internet_port", internet_port)
+        pulumi.set(__self__, "intranet_address", intranet_address)
+        pulumi.set(__self__, "intranet_domain", intranet_domain)
+        pulumi.set(__self__, "intranet_port", intranet_port)
+        pulumi.set(__self__, "memory_capacity", memory_capacity)
+        pulumi.set(__self__, "pay_info", pay_info)
+        pulumi.set(__self__, "pub_network_flow", pub_network_flow)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="aclId")
@@ -589,65 +415,14 @@ class GetClustersClusterInstanceModelResult(dict):
         """
         :param str health_status: The health status of MSE Cluster.
         """
-        GetClustersClusterInstanceModelResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            health_status=health_status,
-            instance_type=instance_type,
-            internet_ip=internet_ip,
-            ip=ip,
-            pod_name=pod_name,
-            role=role,
-            single_tunnel_vip=single_tunnel_vip,
-            vip=vip,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             health_status: Optional[str] = None,
-             instance_type: Optional[str] = None,
-             internet_ip: Optional[str] = None,
-             ip: Optional[str] = None,
-             pod_name: Optional[str] = None,
-             role: Optional[str] = None,
-             single_tunnel_vip: Optional[str] = None,
-             vip: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if health_status is None and 'healthStatus' in kwargs:
-            health_status = kwargs['healthStatus']
-        if health_status is None:
-            raise TypeError("Missing 'health_status' argument")
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if instance_type is None:
-            raise TypeError("Missing 'instance_type' argument")
-        if internet_ip is None and 'internetIp' in kwargs:
-            internet_ip = kwargs['internetIp']
-        if internet_ip is None:
-            raise TypeError("Missing 'internet_ip' argument")
-        if ip is None:
-            raise TypeError("Missing 'ip' argument")
-        if pod_name is None and 'podName' in kwargs:
-            pod_name = kwargs['podName']
-        if pod_name is None:
-            raise TypeError("Missing 'pod_name' argument")
-        if role is None:
-            raise TypeError("Missing 'role' argument")
-        if single_tunnel_vip is None and 'singleTunnelVip' in kwargs:
-            single_tunnel_vip = kwargs['singleTunnelVip']
-        if single_tunnel_vip is None:
-            raise TypeError("Missing 'single_tunnel_vip' argument")
-        if vip is None:
-            raise TypeError("Missing 'vip' argument")
-
-        _setter("health_status", health_status)
-        _setter("instance_type", instance_type)
-        _setter("internet_ip", internet_ip)
-        _setter("ip", ip)
-        _setter("pod_name", pod_name)
-        _setter("role", role)
-        _setter("single_tunnel_vip", single_tunnel_vip)
-        _setter("vip", vip)
+        pulumi.set(__self__, "health_status", health_status)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "internet_ip", internet_ip)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "pod_name", pod_name)
+        pulumi.set(__self__, "role", role)
+        pulumi.set(__self__, "single_tunnel_vip", single_tunnel_vip)
+        pulumi.set(__self__, "vip", vip)
 
     @property
     @pulumi.getter(name="healthStatus")
@@ -717,65 +492,14 @@ class GetEngineNamespacesNamespaceResult(dict):
                - '1': default namespace.
                - '2': Custom Namespace.
         """
-        GetEngineNamespacesNamespaceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            config_count=config_count,
-            id=id,
-            namespace_desc=namespace_desc,
-            namespace_id=namespace_id,
-            namespace_show_name=namespace_show_name,
-            quota=quota,
-            service_count=service_count,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             config_count: Optional[int] = None,
-             id: Optional[str] = None,
-             namespace_desc: Optional[str] = None,
-             namespace_id: Optional[str] = None,
-             namespace_show_name: Optional[str] = None,
-             quota: Optional[int] = None,
-             service_count: Optional[str] = None,
-             type: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if config_count is None and 'configCount' in kwargs:
-            config_count = kwargs['configCount']
-        if config_count is None:
-            raise TypeError("Missing 'config_count' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if namespace_desc is None and 'namespaceDesc' in kwargs:
-            namespace_desc = kwargs['namespaceDesc']
-        if namespace_desc is None:
-            raise TypeError("Missing 'namespace_desc' argument")
-        if namespace_id is None and 'namespaceId' in kwargs:
-            namespace_id = kwargs['namespaceId']
-        if namespace_id is None:
-            raise TypeError("Missing 'namespace_id' argument")
-        if namespace_show_name is None and 'namespaceShowName' in kwargs:
-            namespace_show_name = kwargs['namespaceShowName']
-        if namespace_show_name is None:
-            raise TypeError("Missing 'namespace_show_name' argument")
-        if quota is None:
-            raise TypeError("Missing 'quota' argument")
-        if service_count is None and 'serviceCount' in kwargs:
-            service_count = kwargs['serviceCount']
-        if service_count is None:
-            raise TypeError("Missing 'service_count' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("config_count", config_count)
-        _setter("id", id)
-        _setter("namespace_desc", namespace_desc)
-        _setter("namespace_id", namespace_id)
-        _setter("namespace_show_name", namespace_show_name)
-        _setter("quota", quota)
-        _setter("service_count", service_count)
-        _setter("type", type)
+        pulumi.set(__self__, "config_count", config_count)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "namespace_desc", namespace_desc)
+        pulumi.set(__self__, "namespace_id", namespace_id)
+        pulumi.set(__self__, "namespace_show_name", namespace_show_name)
+        pulumi.set(__self__, "quota", quota)
+        pulumi.set(__self__, "service_count", service_count)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="configCount")
@@ -872,84 +596,17 @@ class GetGatewaysGatewayResult(dict):
         :param str vpc_id: The ID of the vpc.
         :param str vswitch_id: The ID of the vswitch.
         """
-        GetGatewaysGatewayResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            backup_vswitch_id=backup_vswitch_id,
-            gateway_name=gateway_name,
-            gateway_unique_id=gateway_unique_id,
-            id=id,
-            payment_type=payment_type,
-            replica=replica,
-            slb_lists=slb_lists,
-            spec=spec,
-            status=status,
-            vpc_id=vpc_id,
-            vswitch_id=vswitch_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             backup_vswitch_id: Optional[str] = None,
-             gateway_name: Optional[str] = None,
-             gateway_unique_id: Optional[str] = None,
-             id: Optional[str] = None,
-             payment_type: Optional[str] = None,
-             replica: Optional[str] = None,
-             slb_lists: Optional[Sequence['outputs.GetGatewaysGatewaySlbListResult']] = None,
-             spec: Optional[str] = None,
-             status: Optional[str] = None,
-             vpc_id: Optional[str] = None,
-             vswitch_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if backup_vswitch_id is None and 'backupVswitchId' in kwargs:
-            backup_vswitch_id = kwargs['backupVswitchId']
-        if backup_vswitch_id is None:
-            raise TypeError("Missing 'backup_vswitch_id' argument")
-        if gateway_name is None and 'gatewayName' in kwargs:
-            gateway_name = kwargs['gatewayName']
-        if gateway_name is None:
-            raise TypeError("Missing 'gateway_name' argument")
-        if gateway_unique_id is None and 'gatewayUniqueId' in kwargs:
-            gateway_unique_id = kwargs['gatewayUniqueId']
-        if gateway_unique_id is None:
-            raise TypeError("Missing 'gateway_unique_id' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if payment_type is None:
-            raise TypeError("Missing 'payment_type' argument")
-        if replica is None:
-            raise TypeError("Missing 'replica' argument")
-        if slb_lists is None and 'slbLists' in kwargs:
-            slb_lists = kwargs['slbLists']
-        if slb_lists is None:
-            raise TypeError("Missing 'slb_lists' argument")
-        if spec is None:
-            raise TypeError("Missing 'spec' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-
-        _setter("backup_vswitch_id", backup_vswitch_id)
-        _setter("gateway_name", gateway_name)
-        _setter("gateway_unique_id", gateway_unique_id)
-        _setter("id", id)
-        _setter("payment_type", payment_type)
-        _setter("replica", replica)
-        _setter("slb_lists", slb_lists)
-        _setter("spec", spec)
-        _setter("status", status)
-        _setter("vpc_id", vpc_id)
-        _setter("vswitch_id", vswitch_id)
+        pulumi.set(__self__, "backup_vswitch_id", backup_vswitch_id)
+        pulumi.set(__self__, "gateway_name", gateway_name)
+        pulumi.set(__self__, "gateway_unique_id", gateway_unique_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "replica", replica)
+        pulumi.set(__self__, "slb_lists", slb_lists)
+        pulumi.set(__self__, "spec", spec)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="backupVswitchId")
@@ -1061,69 +718,14 @@ class GetGatewaysGatewaySlbListResult(dict):
         :param str slb_port: The port of the gateway slb.
         :param str type: The type of the gateway slb.
         """
-        GetGatewaysGatewaySlbListResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            associate_id=associate_id,
-            gateway_slb_mode=gateway_slb_mode,
-            gateway_slb_status=gateway_slb_status,
-            gmt_create=gmt_create,
-            slb_id=slb_id,
-            slb_ip=slb_ip,
-            slb_port=slb_port,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             associate_id: Optional[str] = None,
-             gateway_slb_mode: Optional[str] = None,
-             gateway_slb_status: Optional[str] = None,
-             gmt_create: Optional[str] = None,
-             slb_id: Optional[str] = None,
-             slb_ip: Optional[str] = None,
-             slb_port: Optional[str] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if associate_id is None and 'associateId' in kwargs:
-            associate_id = kwargs['associateId']
-        if associate_id is None:
-            raise TypeError("Missing 'associate_id' argument")
-        if gateway_slb_mode is None and 'gatewaySlbMode' in kwargs:
-            gateway_slb_mode = kwargs['gatewaySlbMode']
-        if gateway_slb_mode is None:
-            raise TypeError("Missing 'gateway_slb_mode' argument")
-        if gateway_slb_status is None and 'gatewaySlbStatus' in kwargs:
-            gateway_slb_status = kwargs['gatewaySlbStatus']
-        if gateway_slb_status is None:
-            raise TypeError("Missing 'gateway_slb_status' argument")
-        if gmt_create is None and 'gmtCreate' in kwargs:
-            gmt_create = kwargs['gmtCreate']
-        if gmt_create is None:
-            raise TypeError("Missing 'gmt_create' argument")
-        if slb_id is None and 'slbId' in kwargs:
-            slb_id = kwargs['slbId']
-        if slb_id is None:
-            raise TypeError("Missing 'slb_id' argument")
-        if slb_ip is None and 'slbIp' in kwargs:
-            slb_ip = kwargs['slbIp']
-        if slb_ip is None:
-            raise TypeError("Missing 'slb_ip' argument")
-        if slb_port is None and 'slbPort' in kwargs:
-            slb_port = kwargs['slbPort']
-        if slb_port is None:
-            raise TypeError("Missing 'slb_port' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("associate_id", associate_id)
-        _setter("gateway_slb_mode", gateway_slb_mode)
-        _setter("gateway_slb_status", gateway_slb_status)
-        _setter("gmt_create", gmt_create)
-        _setter("slb_id", slb_id)
-        _setter("slb_ip", slb_ip)
-        _setter("slb_port", slb_port)
-        _setter("type", type)
+        pulumi.set(__self__, "associate_id", associate_id)
+        pulumi.set(__self__, "gateway_slb_mode", gateway_slb_mode)
+        pulumi.set(__self__, "gateway_slb_status", gateway_slb_status)
+        pulumi.set(__self__, "gmt_create", gmt_create)
+        pulumi.set(__self__, "slb_id", slb_id)
+        pulumi.set(__self__, "slb_ip", slb_ip)
+        pulumi.set(__self__, "slb_port", slb_port)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="associateId")
@@ -1207,49 +809,12 @@ class GetZnodesZnodeResult(dict):
         :param str path: The Node path.
         :param str znode_name: The Node name.
         """
-        GetZnodesZnodeResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_id=cluster_id,
-            data=data,
-            dir=dir,
-            id=id,
-            path=path,
-            znode_name=znode_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_id: Optional[str] = None,
-             data: Optional[str] = None,
-             dir: Optional[bool] = None,
-             id: Optional[str] = None,
-             path: Optional[str] = None,
-             znode_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cluster_id is None:
-            raise TypeError("Missing 'cluster_id' argument")
-        if data is None:
-            raise TypeError("Missing 'data' argument")
-        if dir is None:
-            raise TypeError("Missing 'dir' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-        if znode_name is None and 'znodeName' in kwargs:
-            znode_name = kwargs['znodeName']
-        if znode_name is None:
-            raise TypeError("Missing 'znode_name' argument")
-
-        _setter("cluster_id", cluster_id)
-        _setter("data", data)
-        _setter("dir", dir)
-        _setter("id", id)
-        _setter("path", path)
-        _setter("znode_name", znode_name)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "data", data)
+        pulumi.set(__self__, "dir", dir)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "znode_name", znode_name)
 
     @property
     @pulumi.getter(name="clusterId")

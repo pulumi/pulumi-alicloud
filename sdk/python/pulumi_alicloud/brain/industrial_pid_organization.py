@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['IndustrialPidOrganizationArgs', 'IndustrialPidOrganization']
@@ -21,28 +21,9 @@ class IndustrialPidOrganizationArgs:
         :param pulumi.Input[str] pid_organization_name: The name of pid organization.
         :param pulumi.Input[str] parent_pid_organization_id: The ID of parent pid organization.
         """
-        IndustrialPidOrganizationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            pid_organization_name=pid_organization_name,
-            parent_pid_organization_id=parent_pid_organization_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             pid_organization_name: Optional[pulumi.Input[str]] = None,
-             parent_pid_organization_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if pid_organization_name is None and 'pidOrganizationName' in kwargs:
-            pid_organization_name = kwargs['pidOrganizationName']
-        if pid_organization_name is None:
-            raise TypeError("Missing 'pid_organization_name' argument")
-        if parent_pid_organization_id is None and 'parentPidOrganizationId' in kwargs:
-            parent_pid_organization_id = kwargs['parentPidOrganizationId']
-
-        _setter("pid_organization_name", pid_organization_name)
+        pulumi.set(__self__, "pid_organization_name", pid_organization_name)
         if parent_pid_organization_id is not None:
-            _setter("parent_pid_organization_id", parent_pid_organization_id)
+            pulumi.set(__self__, "parent_pid_organization_id", parent_pid_organization_id)
 
     @property
     @pulumi.getter(name="pidOrganizationName")
@@ -79,27 +60,10 @@ class _IndustrialPidOrganizationState:
         :param pulumi.Input[str] parent_pid_organization_id: The ID of parent pid organization.
         :param pulumi.Input[str] pid_organization_name: The name of pid organization.
         """
-        _IndustrialPidOrganizationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            parent_pid_organization_id=parent_pid_organization_id,
-            pid_organization_name=pid_organization_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             parent_pid_organization_id: Optional[pulumi.Input[str]] = None,
-             pid_organization_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if parent_pid_organization_id is None and 'parentPidOrganizationId' in kwargs:
-            parent_pid_organization_id = kwargs['parentPidOrganizationId']
-        if pid_organization_name is None and 'pidOrganizationName' in kwargs:
-            pid_organization_name = kwargs['pidOrganizationName']
-
         if parent_pid_organization_id is not None:
-            _setter("parent_pid_organization_id", parent_pid_organization_id)
+            pulumi.set(__self__, "parent_pid_organization_id", parent_pid_organization_id)
         if pid_organization_name is not None:
-            _setter("pid_organization_name", pid_organization_name)
+            pulumi.set(__self__, "pid_organization_name", pid_organization_name)
 
     @property
     @pulumi.getter(name="parentPidOrganizationId")
@@ -203,10 +167,6 @@ class IndustrialPidOrganization(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            IndustrialPidOrganizationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SimpleOfficeSiteArgs', 'SimpleOfficeSite']
@@ -39,86 +39,33 @@ class SimpleOfficeSiteArgs:
         :param pulumi.Input[str] office_site_name: The office site name.
         :param pulumi.Input[bool] sso_enabled: Whether to Enable Single Sign-on (SSO) for User-Based SSO.
         """
-        SimpleOfficeSiteArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cidr_block=cidr_block,
-            bandwidth=bandwidth,
-            cen_id=cen_id,
-            cen_owner_id=cen_owner_id,
-            desktop_access_type=desktop_access_type,
-            enable_admin_access=enable_admin_access,
-            enable_cross_desktop_access=enable_cross_desktop_access,
-            enable_internet_access=enable_internet_access,
-            mfa_enabled=mfa_enabled,
-            office_site_name=office_site_name,
-            sso_enabled=sso_enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cidr_block: Optional[pulumi.Input[str]] = None,
-             bandwidth: Optional[pulumi.Input[int]] = None,
-             cen_id: Optional[pulumi.Input[str]] = None,
-             cen_owner_id: Optional[pulumi.Input[str]] = None,
-             desktop_access_type: Optional[pulumi.Input[str]] = None,
-             enable_admin_access: Optional[pulumi.Input[bool]] = None,
-             enable_cross_desktop_access: Optional[pulumi.Input[bool]] = None,
-             enable_internet_access: Optional[pulumi.Input[bool]] = None,
-             mfa_enabled: Optional[pulumi.Input[bool]] = None,
-             office_site_name: Optional[pulumi.Input[str]] = None,
-             sso_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cidr_block is None and 'cidrBlock' in kwargs:
-            cidr_block = kwargs['cidrBlock']
-        if cidr_block is None:
-            raise TypeError("Missing 'cidr_block' argument")
-        if cen_id is None and 'cenId' in kwargs:
-            cen_id = kwargs['cenId']
-        if cen_owner_id is None and 'cenOwnerId' in kwargs:
-            cen_owner_id = kwargs['cenOwnerId']
-        if desktop_access_type is None and 'desktopAccessType' in kwargs:
-            desktop_access_type = kwargs['desktopAccessType']
-        if enable_admin_access is None and 'enableAdminAccess' in kwargs:
-            enable_admin_access = kwargs['enableAdminAccess']
-        if enable_cross_desktop_access is None and 'enableCrossDesktopAccess' in kwargs:
-            enable_cross_desktop_access = kwargs['enableCrossDesktopAccess']
-        if enable_internet_access is None and 'enableInternetAccess' in kwargs:
-            enable_internet_access = kwargs['enableInternetAccess']
-        if mfa_enabled is None and 'mfaEnabled' in kwargs:
-            mfa_enabled = kwargs['mfaEnabled']
-        if office_site_name is None and 'officeSiteName' in kwargs:
-            office_site_name = kwargs['officeSiteName']
-        if sso_enabled is None and 'ssoEnabled' in kwargs:
-            sso_enabled = kwargs['ssoEnabled']
-
-        _setter("cidr_block", cidr_block)
+        pulumi.set(__self__, "cidr_block", cidr_block)
         if bandwidth is not None:
             warnings.warn("""Field 'bandwidth' has been deprecated from provider version 1.142.0.""", DeprecationWarning)
             pulumi.log.warn("""bandwidth is deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.""")
         if bandwidth is not None:
-            _setter("bandwidth", bandwidth)
+            pulumi.set(__self__, "bandwidth", bandwidth)
         if cen_id is not None:
-            _setter("cen_id", cen_id)
+            pulumi.set(__self__, "cen_id", cen_id)
         if cen_owner_id is not None:
-            _setter("cen_owner_id", cen_owner_id)
+            pulumi.set(__self__, "cen_owner_id", cen_owner_id)
         if desktop_access_type is not None:
-            _setter("desktop_access_type", desktop_access_type)
+            pulumi.set(__self__, "desktop_access_type", desktop_access_type)
         if enable_admin_access is not None:
-            _setter("enable_admin_access", enable_admin_access)
+            pulumi.set(__self__, "enable_admin_access", enable_admin_access)
         if enable_cross_desktop_access is not None:
-            _setter("enable_cross_desktop_access", enable_cross_desktop_access)
+            pulumi.set(__self__, "enable_cross_desktop_access", enable_cross_desktop_access)
         if enable_internet_access is not None:
             warnings.warn("""Field 'enable_internet_access' has been deprecated from provider version 1.142.0.""", DeprecationWarning)
             pulumi.log.warn("""enable_internet_access is deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.""")
         if enable_internet_access is not None:
-            _setter("enable_internet_access", enable_internet_access)
+            pulumi.set(__self__, "enable_internet_access", enable_internet_access)
         if mfa_enabled is not None:
-            _setter("mfa_enabled", mfa_enabled)
+            pulumi.set(__self__, "mfa_enabled", mfa_enabled)
         if office_site_name is not None:
-            _setter("office_site_name", office_site_name)
+            pulumi.set(__self__, "office_site_name", office_site_name)
         if sso_enabled is not None:
-            _setter("sso_enabled", sso_enabled)
+            pulumi.set(__self__, "sso_enabled", sso_enabled)
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -289,89 +236,36 @@ class _SimpleOfficeSiteState:
         :param pulumi.Input[bool] sso_enabled: Whether to Enable Single Sign-on (SSO) for User-Based SSO.
         :param pulumi.Input[str] status: Workspace State. Valid Values: `REGISTERED`,`REGISTERING`.
         """
-        _SimpleOfficeSiteState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bandwidth=bandwidth,
-            cen_id=cen_id,
-            cen_owner_id=cen_owner_id,
-            cidr_block=cidr_block,
-            desktop_access_type=desktop_access_type,
-            enable_admin_access=enable_admin_access,
-            enable_cross_desktop_access=enable_cross_desktop_access,
-            enable_internet_access=enable_internet_access,
-            mfa_enabled=mfa_enabled,
-            office_site_name=office_site_name,
-            sso_enabled=sso_enabled,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bandwidth: Optional[pulumi.Input[int]] = None,
-             cen_id: Optional[pulumi.Input[str]] = None,
-             cen_owner_id: Optional[pulumi.Input[str]] = None,
-             cidr_block: Optional[pulumi.Input[str]] = None,
-             desktop_access_type: Optional[pulumi.Input[str]] = None,
-             enable_admin_access: Optional[pulumi.Input[bool]] = None,
-             enable_cross_desktop_access: Optional[pulumi.Input[bool]] = None,
-             enable_internet_access: Optional[pulumi.Input[bool]] = None,
-             mfa_enabled: Optional[pulumi.Input[bool]] = None,
-             office_site_name: Optional[pulumi.Input[str]] = None,
-             sso_enabled: Optional[pulumi.Input[bool]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cen_id is None and 'cenId' in kwargs:
-            cen_id = kwargs['cenId']
-        if cen_owner_id is None and 'cenOwnerId' in kwargs:
-            cen_owner_id = kwargs['cenOwnerId']
-        if cidr_block is None and 'cidrBlock' in kwargs:
-            cidr_block = kwargs['cidrBlock']
-        if desktop_access_type is None and 'desktopAccessType' in kwargs:
-            desktop_access_type = kwargs['desktopAccessType']
-        if enable_admin_access is None and 'enableAdminAccess' in kwargs:
-            enable_admin_access = kwargs['enableAdminAccess']
-        if enable_cross_desktop_access is None and 'enableCrossDesktopAccess' in kwargs:
-            enable_cross_desktop_access = kwargs['enableCrossDesktopAccess']
-        if enable_internet_access is None and 'enableInternetAccess' in kwargs:
-            enable_internet_access = kwargs['enableInternetAccess']
-        if mfa_enabled is None and 'mfaEnabled' in kwargs:
-            mfa_enabled = kwargs['mfaEnabled']
-        if office_site_name is None and 'officeSiteName' in kwargs:
-            office_site_name = kwargs['officeSiteName']
-        if sso_enabled is None and 'ssoEnabled' in kwargs:
-            sso_enabled = kwargs['ssoEnabled']
-
         if bandwidth is not None:
             warnings.warn("""Field 'bandwidth' has been deprecated from provider version 1.142.0.""", DeprecationWarning)
             pulumi.log.warn("""bandwidth is deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.""")
         if bandwidth is not None:
-            _setter("bandwidth", bandwidth)
+            pulumi.set(__self__, "bandwidth", bandwidth)
         if cen_id is not None:
-            _setter("cen_id", cen_id)
+            pulumi.set(__self__, "cen_id", cen_id)
         if cen_owner_id is not None:
-            _setter("cen_owner_id", cen_owner_id)
+            pulumi.set(__self__, "cen_owner_id", cen_owner_id)
         if cidr_block is not None:
-            _setter("cidr_block", cidr_block)
+            pulumi.set(__self__, "cidr_block", cidr_block)
         if desktop_access_type is not None:
-            _setter("desktop_access_type", desktop_access_type)
+            pulumi.set(__self__, "desktop_access_type", desktop_access_type)
         if enable_admin_access is not None:
-            _setter("enable_admin_access", enable_admin_access)
+            pulumi.set(__self__, "enable_admin_access", enable_admin_access)
         if enable_cross_desktop_access is not None:
-            _setter("enable_cross_desktop_access", enable_cross_desktop_access)
+            pulumi.set(__self__, "enable_cross_desktop_access", enable_cross_desktop_access)
         if enable_internet_access is not None:
             warnings.warn("""Field 'enable_internet_access' has been deprecated from provider version 1.142.0.""", DeprecationWarning)
             pulumi.log.warn("""enable_internet_access is deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.""")
         if enable_internet_access is not None:
-            _setter("enable_internet_access", enable_internet_access)
+            pulumi.set(__self__, "enable_internet_access", enable_internet_access)
         if mfa_enabled is not None:
-            _setter("mfa_enabled", mfa_enabled)
+            pulumi.set(__self__, "mfa_enabled", mfa_enabled)
         if office_site_name is not None:
-            _setter("office_site_name", office_site_name)
+            pulumi.set(__self__, "office_site_name", office_site_name)
         if sso_enabled is not None:
-            _setter("sso_enabled", sso_enabled)
+            pulumi.set(__self__, "sso_enabled", sso_enabled)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -631,10 +525,6 @@ class SimpleOfficeSite(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SimpleOfficeSiteArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
