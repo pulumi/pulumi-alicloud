@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,53 +31,14 @@ class ForwardingRuleArgs:
         :param pulumi.Input[str] forwarding_rule_name: Forwarding policy name. The length of the name is 2-128 English or Chinese characters. It must start with uppercase and lowercase letters or Chinese characters. It can contain numbers, half width period (.), underscores (_) And dash (-).
         :param pulumi.Input[int] priority: Forwarding policy priority.
         """
-        ForwardingRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            accelerator_id=accelerator_id,
-            listener_id=listener_id,
-            rule_actions=rule_actions,
-            rule_conditions=rule_conditions,
-            forwarding_rule_name=forwarding_rule_name,
-            priority=priority,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             accelerator_id: Optional[pulumi.Input[str]] = None,
-             listener_id: Optional[pulumi.Input[str]] = None,
-             rule_actions: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionArgs']]]] = None,
-             rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionArgs']]]] = None,
-             forwarding_rule_name: Optional[pulumi.Input[str]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if accelerator_id is None and 'acceleratorId' in kwargs:
-            accelerator_id = kwargs['acceleratorId']
-        if accelerator_id is None:
-            raise TypeError("Missing 'accelerator_id' argument")
-        if listener_id is None and 'listenerId' in kwargs:
-            listener_id = kwargs['listenerId']
-        if listener_id is None:
-            raise TypeError("Missing 'listener_id' argument")
-        if rule_actions is None and 'ruleActions' in kwargs:
-            rule_actions = kwargs['ruleActions']
-        if rule_actions is None:
-            raise TypeError("Missing 'rule_actions' argument")
-        if rule_conditions is None and 'ruleConditions' in kwargs:
-            rule_conditions = kwargs['ruleConditions']
-        if rule_conditions is None:
-            raise TypeError("Missing 'rule_conditions' argument")
-        if forwarding_rule_name is None and 'forwardingRuleName' in kwargs:
-            forwarding_rule_name = kwargs['forwardingRuleName']
-
-        _setter("accelerator_id", accelerator_id)
-        _setter("listener_id", listener_id)
-        _setter("rule_actions", rule_actions)
-        _setter("rule_conditions", rule_conditions)
+        pulumi.set(__self__, "accelerator_id", accelerator_id)
+        pulumi.set(__self__, "listener_id", listener_id)
+        pulumi.set(__self__, "rule_actions", rule_actions)
+        pulumi.set(__self__, "rule_conditions", rule_conditions)
         if forwarding_rule_name is not None:
-            _setter("forwarding_rule_name", forwarding_rule_name)
+            pulumi.set(__self__, "forwarding_rule_name", forwarding_rule_name)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -174,61 +135,22 @@ class _ForwardingRuleState:
         :param pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionArgs']]] rule_actions: Forward action. See `rule_actions` below.
         :param pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionArgs']]] rule_conditions: Forwarding condition list. See `rule_conditions` below.
         """
-        _ForwardingRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            accelerator_id=accelerator_id,
-            forwarding_rule_id=forwarding_rule_id,
-            forwarding_rule_name=forwarding_rule_name,
-            forwarding_rule_status=forwarding_rule_status,
-            listener_id=listener_id,
-            priority=priority,
-            rule_actions=rule_actions,
-            rule_conditions=rule_conditions,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             accelerator_id: Optional[pulumi.Input[str]] = None,
-             forwarding_rule_id: Optional[pulumi.Input[str]] = None,
-             forwarding_rule_name: Optional[pulumi.Input[str]] = None,
-             forwarding_rule_status: Optional[pulumi.Input[str]] = None,
-             listener_id: Optional[pulumi.Input[str]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             rule_actions: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionArgs']]]] = None,
-             rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if accelerator_id is None and 'acceleratorId' in kwargs:
-            accelerator_id = kwargs['acceleratorId']
-        if forwarding_rule_id is None and 'forwardingRuleId' in kwargs:
-            forwarding_rule_id = kwargs['forwardingRuleId']
-        if forwarding_rule_name is None and 'forwardingRuleName' in kwargs:
-            forwarding_rule_name = kwargs['forwardingRuleName']
-        if forwarding_rule_status is None and 'forwardingRuleStatus' in kwargs:
-            forwarding_rule_status = kwargs['forwardingRuleStatus']
-        if listener_id is None and 'listenerId' in kwargs:
-            listener_id = kwargs['listenerId']
-        if rule_actions is None and 'ruleActions' in kwargs:
-            rule_actions = kwargs['ruleActions']
-        if rule_conditions is None and 'ruleConditions' in kwargs:
-            rule_conditions = kwargs['ruleConditions']
-
         if accelerator_id is not None:
-            _setter("accelerator_id", accelerator_id)
+            pulumi.set(__self__, "accelerator_id", accelerator_id)
         if forwarding_rule_id is not None:
-            _setter("forwarding_rule_id", forwarding_rule_id)
+            pulumi.set(__self__, "forwarding_rule_id", forwarding_rule_id)
         if forwarding_rule_name is not None:
-            _setter("forwarding_rule_name", forwarding_rule_name)
+            pulumi.set(__self__, "forwarding_rule_name", forwarding_rule_name)
         if forwarding_rule_status is not None:
-            _setter("forwarding_rule_status", forwarding_rule_status)
+            pulumi.set(__self__, "forwarding_rule_status", forwarding_rule_status)
         if listener_id is not None:
-            _setter("listener_id", listener_id)
+            pulumi.set(__self__, "listener_id", listener_id)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if rule_actions is not None:
-            _setter("rule_actions", rule_actions)
+            pulumi.set(__self__, "rule_actions", rule_actions)
         if rule_conditions is not None:
-            _setter("rule_conditions", rule_conditions)
+            pulumi.set(__self__, "rule_conditions", rule_conditions)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -596,10 +518,6 @@ class ForwardingRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ForwardingRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

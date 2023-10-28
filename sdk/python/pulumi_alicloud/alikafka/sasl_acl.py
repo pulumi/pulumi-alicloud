@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SaslAclArgs', 'SaslAcl']
@@ -29,55 +29,12 @@ class SaslAclArgs:
         :param pulumi.Input[str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
         :param pulumi.Input[str] username: Username for the sasl user. The length should between 1 to 64 characters. The user should be an existed sasl user.
         """
-        SaslAclArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            acl_operation_type=acl_operation_type,
-            acl_resource_name=acl_resource_name,
-            acl_resource_pattern_type=acl_resource_pattern_type,
-            acl_resource_type=acl_resource_type,
-            instance_id=instance_id,
-            username=username,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             acl_operation_type: Optional[pulumi.Input[str]] = None,
-             acl_resource_name: Optional[pulumi.Input[str]] = None,
-             acl_resource_pattern_type: Optional[pulumi.Input[str]] = None,
-             acl_resource_type: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if acl_operation_type is None and 'aclOperationType' in kwargs:
-            acl_operation_type = kwargs['aclOperationType']
-        if acl_operation_type is None:
-            raise TypeError("Missing 'acl_operation_type' argument")
-        if acl_resource_name is None and 'aclResourceName' in kwargs:
-            acl_resource_name = kwargs['aclResourceName']
-        if acl_resource_name is None:
-            raise TypeError("Missing 'acl_resource_name' argument")
-        if acl_resource_pattern_type is None and 'aclResourcePatternType' in kwargs:
-            acl_resource_pattern_type = kwargs['aclResourcePatternType']
-        if acl_resource_pattern_type is None:
-            raise TypeError("Missing 'acl_resource_pattern_type' argument")
-        if acl_resource_type is None and 'aclResourceType' in kwargs:
-            acl_resource_type = kwargs['aclResourceType']
-        if acl_resource_type is None:
-            raise TypeError("Missing 'acl_resource_type' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if username is None:
-            raise TypeError("Missing 'username' argument")
-
-        _setter("acl_operation_type", acl_operation_type)
-        _setter("acl_resource_name", acl_resource_name)
-        _setter("acl_resource_pattern_type", acl_resource_pattern_type)
-        _setter("acl_resource_type", acl_resource_type)
-        _setter("instance_id", instance_id)
-        _setter("username", username)
+        pulumi.set(__self__, "acl_operation_type", acl_operation_type)
+        pulumi.set(__self__, "acl_resource_name", acl_resource_name)
+        pulumi.set(__self__, "acl_resource_pattern_type", acl_resource_pattern_type)
+        pulumi.set(__self__, "acl_resource_type", acl_resource_type)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="aclOperationType")
@@ -172,53 +129,20 @@ class _SaslAclState:
         :param pulumi.Input[str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
         :param pulumi.Input[str] username: Username for the sasl user. The length should between 1 to 64 characters. The user should be an existed sasl user.
         """
-        _SaslAclState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            acl_operation_type=acl_operation_type,
-            acl_resource_name=acl_resource_name,
-            acl_resource_pattern_type=acl_resource_pattern_type,
-            acl_resource_type=acl_resource_type,
-            host=host,
-            instance_id=instance_id,
-            username=username,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             acl_operation_type: Optional[pulumi.Input[str]] = None,
-             acl_resource_name: Optional[pulumi.Input[str]] = None,
-             acl_resource_pattern_type: Optional[pulumi.Input[str]] = None,
-             acl_resource_type: Optional[pulumi.Input[str]] = None,
-             host: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if acl_operation_type is None and 'aclOperationType' in kwargs:
-            acl_operation_type = kwargs['aclOperationType']
-        if acl_resource_name is None and 'aclResourceName' in kwargs:
-            acl_resource_name = kwargs['aclResourceName']
-        if acl_resource_pattern_type is None and 'aclResourcePatternType' in kwargs:
-            acl_resource_pattern_type = kwargs['aclResourcePatternType']
-        if acl_resource_type is None and 'aclResourceType' in kwargs:
-            acl_resource_type = kwargs['aclResourceType']
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-
         if acl_operation_type is not None:
-            _setter("acl_operation_type", acl_operation_type)
+            pulumi.set(__self__, "acl_operation_type", acl_operation_type)
         if acl_resource_name is not None:
-            _setter("acl_resource_name", acl_resource_name)
+            pulumi.set(__self__, "acl_resource_name", acl_resource_name)
         if acl_resource_pattern_type is not None:
-            _setter("acl_resource_pattern_type", acl_resource_pattern_type)
+            pulumi.set(__self__, "acl_resource_pattern_type", acl_resource_pattern_type)
         if acl_resource_type is not None:
-            _setter("acl_resource_type", acl_resource_type)
+            pulumi.set(__self__, "acl_resource_type", acl_resource_type)
         if host is not None:
-            _setter("host", host)
+            pulumi.set(__self__, "host", host)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if username is not None:
-            _setter("username", username)
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="aclOperationType")
@@ -474,10 +398,6 @@ class SaslAcl(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SaslAclArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

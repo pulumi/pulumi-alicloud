@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -36,74 +36,15 @@ class GetInstancesInstanceResult(dict):
         :param str status: The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
         :param str zone_id: The ID of the region to which the EAIS instance belongs.
         """
-        GetInstancesInstanceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            client_instance_id=client_instance_id,
-            client_instance_name=client_instance_name,
-            client_instance_type=client_instance_type,
-            id=id,
-            instance_id=instance_id,
-            instance_name=instance_name,
-            instance_type=instance_type,
-            status=status,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             client_instance_id: Optional[str] = None,
-             client_instance_name: Optional[str] = None,
-             client_instance_type: Optional[str] = None,
-             id: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             instance_name: Optional[str] = None,
-             instance_type: Optional[str] = None,
-             status: Optional[str] = None,
-             zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if client_instance_id is None and 'clientInstanceId' in kwargs:
-            client_instance_id = kwargs['clientInstanceId']
-        if client_instance_id is None:
-            raise TypeError("Missing 'client_instance_id' argument")
-        if client_instance_name is None and 'clientInstanceName' in kwargs:
-            client_instance_name = kwargs['clientInstanceName']
-        if client_instance_name is None:
-            raise TypeError("Missing 'client_instance_name' argument")
-        if client_instance_type is None and 'clientInstanceType' in kwargs:
-            client_instance_type = kwargs['clientInstanceType']
-        if client_instance_type is None:
-            raise TypeError("Missing 'client_instance_type' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_name is None:
-            raise TypeError("Missing 'instance_name' argument")
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if instance_type is None:
-            raise TypeError("Missing 'instance_type' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("client_instance_id", client_instance_id)
-        _setter("client_instance_name", client_instance_name)
-        _setter("client_instance_type", client_instance_type)
-        _setter("id", id)
-        _setter("instance_id", instance_id)
-        _setter("instance_name", instance_name)
-        _setter("instance_type", instance_type)
-        _setter("status", status)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "client_instance_id", client_instance_id)
+        pulumi.set(__self__, "client_instance_name", client_instance_name)
+        pulumi.set(__self__, "client_instance_type", client_instance_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="clientInstanceId")

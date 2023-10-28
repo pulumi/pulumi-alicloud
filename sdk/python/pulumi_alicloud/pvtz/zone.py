@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -40,66 +40,27 @@ class ZoneArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ZoneUserInfoArgs']]] user_infos: The user information of the host synchronization task. The details see Block `user_info`.
         :param pulumi.Input[str] zone_name: The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
         """
-        ZoneArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            lang=lang,
-            name=name,
-            proxy_pattern=proxy_pattern,
-            remark=remark,
-            resource_group_id=resource_group_id,
-            sync_status=sync_status,
-            user_client_ip=user_client_ip,
-            user_infos=user_infos,
-            zone_name=zone_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             lang: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             proxy_pattern: Optional[pulumi.Input[str]] = None,
-             remark: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             sync_status: Optional[pulumi.Input[str]] = None,
-             user_client_ip: Optional[pulumi.Input[str]] = None,
-             user_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneUserInfoArgs']]]] = None,
-             zone_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if proxy_pattern is None and 'proxyPattern' in kwargs:
-            proxy_pattern = kwargs['proxyPattern']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if sync_status is None and 'syncStatus' in kwargs:
-            sync_status = kwargs['syncStatus']
-        if user_client_ip is None and 'userClientIp' in kwargs:
-            user_client_ip = kwargs['userClientIp']
-        if user_infos is None and 'userInfos' in kwargs:
-            user_infos = kwargs['userInfos']
-        if zone_name is None and 'zoneName' in kwargs:
-            zone_name = kwargs['zoneName']
-
         if lang is not None:
-            _setter("lang", lang)
+            pulumi.set(__self__, "lang", lang)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.""")
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if proxy_pattern is not None:
-            _setter("proxy_pattern", proxy_pattern)
+            pulumi.set(__self__, "proxy_pattern", proxy_pattern)
         if remark is not None:
-            _setter("remark", remark)
+            pulumi.set(__self__, "remark", remark)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if sync_status is not None:
-            _setter("sync_status", sync_status)
+            pulumi.set(__self__, "sync_status", sync_status)
         if user_client_ip is not None:
-            _setter("user_client_ip", user_client_ip)
+            pulumi.set(__self__, "user_client_ip", user_client_ip)
         if user_infos is not None:
-            _setter("user_infos", user_infos)
+            pulumi.set(__self__, "user_infos", user_infos)
         if zone_name is not None:
-            _setter("zone_name", zone_name)
+            pulumi.set(__self__, "zone_name", zone_name)
 
     @property
     @pulumi.getter
@@ -247,78 +208,31 @@ class _ZoneState:
         :param pulumi.Input[Sequence[pulumi.Input['ZoneUserInfoArgs']]] user_infos: The user information of the host synchronization task. The details see Block `user_info`.
         :param pulumi.Input[str] zone_name: The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
         """
-        _ZoneState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            is_ptr=is_ptr,
-            lang=lang,
-            name=name,
-            proxy_pattern=proxy_pattern,
-            record_count=record_count,
-            remark=remark,
-            resource_group_id=resource_group_id,
-            sync_status=sync_status,
-            user_client_ip=user_client_ip,
-            user_infos=user_infos,
-            zone_name=zone_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             is_ptr: Optional[pulumi.Input[bool]] = None,
-             lang: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             proxy_pattern: Optional[pulumi.Input[str]] = None,
-             record_count: Optional[pulumi.Input[int]] = None,
-             remark: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             sync_status: Optional[pulumi.Input[str]] = None,
-             user_client_ip: Optional[pulumi.Input[str]] = None,
-             user_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneUserInfoArgs']]]] = None,
-             zone_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if is_ptr is None and 'isPtr' in kwargs:
-            is_ptr = kwargs['isPtr']
-        if proxy_pattern is None and 'proxyPattern' in kwargs:
-            proxy_pattern = kwargs['proxyPattern']
-        if record_count is None and 'recordCount' in kwargs:
-            record_count = kwargs['recordCount']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if sync_status is None and 'syncStatus' in kwargs:
-            sync_status = kwargs['syncStatus']
-        if user_client_ip is None and 'userClientIp' in kwargs:
-            user_client_ip = kwargs['userClientIp']
-        if user_infos is None and 'userInfos' in kwargs:
-            user_infos = kwargs['userInfos']
-        if zone_name is None and 'zoneName' in kwargs:
-            zone_name = kwargs['zoneName']
-
         if is_ptr is not None:
-            _setter("is_ptr", is_ptr)
+            pulumi.set(__self__, "is_ptr", is_ptr)
         if lang is not None:
-            _setter("lang", lang)
+            pulumi.set(__self__, "lang", lang)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.""")
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if proxy_pattern is not None:
-            _setter("proxy_pattern", proxy_pattern)
+            pulumi.set(__self__, "proxy_pattern", proxy_pattern)
         if record_count is not None:
-            _setter("record_count", record_count)
+            pulumi.set(__self__, "record_count", record_count)
         if remark is not None:
-            _setter("remark", remark)
+            pulumi.set(__self__, "remark", remark)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if sync_status is not None:
-            _setter("sync_status", sync_status)
+            pulumi.set(__self__, "sync_status", sync_status)
         if user_client_ip is not None:
-            _setter("user_client_ip", user_client_ip)
+            pulumi.set(__self__, "user_client_ip", user_client_ip)
         if user_infos is not None:
-            _setter("user_infos", user_infos)
+            pulumi.set(__self__, "user_infos", user_infos)
         if zone_name is not None:
-            _setter("zone_name", zone_name)
+            pulumi.set(__self__, "zone_name", zone_name)
 
     @property
     @pulumi.getter(name="isPtr")
@@ -545,10 +459,6 @@ class Zone(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ZoneArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

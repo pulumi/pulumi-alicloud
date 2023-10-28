@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -57,123 +57,44 @@ class EcdPolicyGroupArgs:
         :param pulumi.Input[str] watermark_transparency: The watermark transparency. Valid values: `DARK`, `LIGHT`, `MIDDLE`.
         :param pulumi.Input[str] watermark_type: The type of watemark. Valid values: `EndUserId`, `HostName`.
         """
-        EcdPolicyGroupArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            authorize_access_policy_rules=authorize_access_policy_rules,
-            authorize_security_policy_rules=authorize_security_policy_rules,
-            camera_redirect=camera_redirect,
-            clipboard=clipboard,
-            domain_list=domain_list,
-            html_access=html_access,
-            html_file_transfer=html_file_transfer,
-            local_drive=local_drive,
-            policy_group_name=policy_group_name,
-            recording=recording,
-            recording_end_time=recording_end_time,
-            recording_expires=recording_expires,
-            recording_fps=recording_fps,
-            recording_start_time=recording_start_time,
-            usb_redirect=usb_redirect,
-            visual_quality=visual_quality,
-            watermark=watermark,
-            watermark_transparency=watermark_transparency,
-            watermark_type=watermark_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             authorize_access_policy_rules: Optional[pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]]] = None,
-             authorize_security_policy_rules: Optional[pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]] = None,
-             camera_redirect: Optional[pulumi.Input[str]] = None,
-             clipboard: Optional[pulumi.Input[str]] = None,
-             domain_list: Optional[pulumi.Input[str]] = None,
-             html_access: Optional[pulumi.Input[str]] = None,
-             html_file_transfer: Optional[pulumi.Input[str]] = None,
-             local_drive: Optional[pulumi.Input[str]] = None,
-             policy_group_name: Optional[pulumi.Input[str]] = None,
-             recording: Optional[pulumi.Input[str]] = None,
-             recording_end_time: Optional[pulumi.Input[str]] = None,
-             recording_expires: Optional[pulumi.Input[int]] = None,
-             recording_fps: Optional[pulumi.Input[int]] = None,
-             recording_start_time: Optional[pulumi.Input[str]] = None,
-             usb_redirect: Optional[pulumi.Input[str]] = None,
-             visual_quality: Optional[pulumi.Input[str]] = None,
-             watermark: Optional[pulumi.Input[str]] = None,
-             watermark_transparency: Optional[pulumi.Input[str]] = None,
-             watermark_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if authorize_access_policy_rules is None and 'authorizeAccessPolicyRules' in kwargs:
-            authorize_access_policy_rules = kwargs['authorizeAccessPolicyRules']
-        if authorize_security_policy_rules is None and 'authorizeSecurityPolicyRules' in kwargs:
-            authorize_security_policy_rules = kwargs['authorizeSecurityPolicyRules']
-        if camera_redirect is None and 'cameraRedirect' in kwargs:
-            camera_redirect = kwargs['cameraRedirect']
-        if domain_list is None and 'domainList' in kwargs:
-            domain_list = kwargs['domainList']
-        if html_access is None and 'htmlAccess' in kwargs:
-            html_access = kwargs['htmlAccess']
-        if html_file_transfer is None and 'htmlFileTransfer' in kwargs:
-            html_file_transfer = kwargs['htmlFileTransfer']
-        if local_drive is None and 'localDrive' in kwargs:
-            local_drive = kwargs['localDrive']
-        if policy_group_name is None and 'policyGroupName' in kwargs:
-            policy_group_name = kwargs['policyGroupName']
-        if recording_end_time is None and 'recordingEndTime' in kwargs:
-            recording_end_time = kwargs['recordingEndTime']
-        if recording_expires is None and 'recordingExpires' in kwargs:
-            recording_expires = kwargs['recordingExpires']
-        if recording_fps is None and 'recordingFps' in kwargs:
-            recording_fps = kwargs['recordingFps']
-        if recording_start_time is None and 'recordingStartTime' in kwargs:
-            recording_start_time = kwargs['recordingStartTime']
-        if usb_redirect is None and 'usbRedirect' in kwargs:
-            usb_redirect = kwargs['usbRedirect']
-        if visual_quality is None and 'visualQuality' in kwargs:
-            visual_quality = kwargs['visualQuality']
-        if watermark_transparency is None and 'watermarkTransparency' in kwargs:
-            watermark_transparency = kwargs['watermarkTransparency']
-        if watermark_type is None and 'watermarkType' in kwargs:
-            watermark_type = kwargs['watermarkType']
-
         if authorize_access_policy_rules is not None:
-            _setter("authorize_access_policy_rules", authorize_access_policy_rules)
+            pulumi.set(__self__, "authorize_access_policy_rules", authorize_access_policy_rules)
         if authorize_security_policy_rules is not None:
-            _setter("authorize_security_policy_rules", authorize_security_policy_rules)
+            pulumi.set(__self__, "authorize_security_policy_rules", authorize_security_policy_rules)
         if camera_redirect is not None:
-            _setter("camera_redirect", camera_redirect)
+            pulumi.set(__self__, "camera_redirect", camera_redirect)
         if clipboard is not None:
-            _setter("clipboard", clipboard)
+            pulumi.set(__self__, "clipboard", clipboard)
         if domain_list is not None:
-            _setter("domain_list", domain_list)
+            pulumi.set(__self__, "domain_list", domain_list)
         if html_access is not None:
-            _setter("html_access", html_access)
+            pulumi.set(__self__, "html_access", html_access)
         if html_file_transfer is not None:
-            _setter("html_file_transfer", html_file_transfer)
+            pulumi.set(__self__, "html_file_transfer", html_file_transfer)
         if local_drive is not None:
-            _setter("local_drive", local_drive)
+            pulumi.set(__self__, "local_drive", local_drive)
         if policy_group_name is not None:
-            _setter("policy_group_name", policy_group_name)
+            pulumi.set(__self__, "policy_group_name", policy_group_name)
         if recording is not None:
-            _setter("recording", recording)
+            pulumi.set(__self__, "recording", recording)
         if recording_end_time is not None:
-            _setter("recording_end_time", recording_end_time)
+            pulumi.set(__self__, "recording_end_time", recording_end_time)
         if recording_expires is not None:
-            _setter("recording_expires", recording_expires)
+            pulumi.set(__self__, "recording_expires", recording_expires)
         if recording_fps is not None:
-            _setter("recording_fps", recording_fps)
+            pulumi.set(__self__, "recording_fps", recording_fps)
         if recording_start_time is not None:
-            _setter("recording_start_time", recording_start_time)
+            pulumi.set(__self__, "recording_start_time", recording_start_time)
         if usb_redirect is not None:
-            _setter("usb_redirect", usb_redirect)
+            pulumi.set(__self__, "usb_redirect", usb_redirect)
         if visual_quality is not None:
-            _setter("visual_quality", visual_quality)
+            pulumi.set(__self__, "visual_quality", visual_quality)
         if watermark is not None:
-            _setter("watermark", watermark)
+            pulumi.set(__self__, "watermark", watermark)
         if watermark_transparency is not None:
-            _setter("watermark_transparency", watermark_transparency)
+            pulumi.set(__self__, "watermark_transparency", watermark_transparency)
         if watermark_type is not None:
-            _setter("watermark_type", watermark_type)
+            pulumi.set(__self__, "watermark_type", watermark_type)
 
     @property
     @pulumi.getter(name="authorizeAccessPolicyRules")
@@ -450,127 +371,46 @@ class _EcdPolicyGroupState:
         :param pulumi.Input[str] watermark_transparency: The watermark transparency. Valid values: `DARK`, `LIGHT`, `MIDDLE`.
         :param pulumi.Input[str] watermark_type: The type of watemark. Valid values: `EndUserId`, `HostName`.
         """
-        _EcdPolicyGroupState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            authorize_access_policy_rules=authorize_access_policy_rules,
-            authorize_security_policy_rules=authorize_security_policy_rules,
-            camera_redirect=camera_redirect,
-            clipboard=clipboard,
-            domain_list=domain_list,
-            html_access=html_access,
-            html_file_transfer=html_file_transfer,
-            local_drive=local_drive,
-            policy_group_name=policy_group_name,
-            recording=recording,
-            recording_end_time=recording_end_time,
-            recording_expires=recording_expires,
-            recording_fps=recording_fps,
-            recording_start_time=recording_start_time,
-            status=status,
-            usb_redirect=usb_redirect,
-            visual_quality=visual_quality,
-            watermark=watermark,
-            watermark_transparency=watermark_transparency,
-            watermark_type=watermark_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             authorize_access_policy_rules: Optional[pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]]] = None,
-             authorize_security_policy_rules: Optional[pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]] = None,
-             camera_redirect: Optional[pulumi.Input[str]] = None,
-             clipboard: Optional[pulumi.Input[str]] = None,
-             domain_list: Optional[pulumi.Input[str]] = None,
-             html_access: Optional[pulumi.Input[str]] = None,
-             html_file_transfer: Optional[pulumi.Input[str]] = None,
-             local_drive: Optional[pulumi.Input[str]] = None,
-             policy_group_name: Optional[pulumi.Input[str]] = None,
-             recording: Optional[pulumi.Input[str]] = None,
-             recording_end_time: Optional[pulumi.Input[str]] = None,
-             recording_expires: Optional[pulumi.Input[int]] = None,
-             recording_fps: Optional[pulumi.Input[int]] = None,
-             recording_start_time: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             usb_redirect: Optional[pulumi.Input[str]] = None,
-             visual_quality: Optional[pulumi.Input[str]] = None,
-             watermark: Optional[pulumi.Input[str]] = None,
-             watermark_transparency: Optional[pulumi.Input[str]] = None,
-             watermark_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if authorize_access_policy_rules is None and 'authorizeAccessPolicyRules' in kwargs:
-            authorize_access_policy_rules = kwargs['authorizeAccessPolicyRules']
-        if authorize_security_policy_rules is None and 'authorizeSecurityPolicyRules' in kwargs:
-            authorize_security_policy_rules = kwargs['authorizeSecurityPolicyRules']
-        if camera_redirect is None and 'cameraRedirect' in kwargs:
-            camera_redirect = kwargs['cameraRedirect']
-        if domain_list is None and 'domainList' in kwargs:
-            domain_list = kwargs['domainList']
-        if html_access is None and 'htmlAccess' in kwargs:
-            html_access = kwargs['htmlAccess']
-        if html_file_transfer is None and 'htmlFileTransfer' in kwargs:
-            html_file_transfer = kwargs['htmlFileTransfer']
-        if local_drive is None and 'localDrive' in kwargs:
-            local_drive = kwargs['localDrive']
-        if policy_group_name is None and 'policyGroupName' in kwargs:
-            policy_group_name = kwargs['policyGroupName']
-        if recording_end_time is None and 'recordingEndTime' in kwargs:
-            recording_end_time = kwargs['recordingEndTime']
-        if recording_expires is None and 'recordingExpires' in kwargs:
-            recording_expires = kwargs['recordingExpires']
-        if recording_fps is None and 'recordingFps' in kwargs:
-            recording_fps = kwargs['recordingFps']
-        if recording_start_time is None and 'recordingStartTime' in kwargs:
-            recording_start_time = kwargs['recordingStartTime']
-        if usb_redirect is None and 'usbRedirect' in kwargs:
-            usb_redirect = kwargs['usbRedirect']
-        if visual_quality is None and 'visualQuality' in kwargs:
-            visual_quality = kwargs['visualQuality']
-        if watermark_transparency is None and 'watermarkTransparency' in kwargs:
-            watermark_transparency = kwargs['watermarkTransparency']
-        if watermark_type is None and 'watermarkType' in kwargs:
-            watermark_type = kwargs['watermarkType']
-
         if authorize_access_policy_rules is not None:
-            _setter("authorize_access_policy_rules", authorize_access_policy_rules)
+            pulumi.set(__self__, "authorize_access_policy_rules", authorize_access_policy_rules)
         if authorize_security_policy_rules is not None:
-            _setter("authorize_security_policy_rules", authorize_security_policy_rules)
+            pulumi.set(__self__, "authorize_security_policy_rules", authorize_security_policy_rules)
         if camera_redirect is not None:
-            _setter("camera_redirect", camera_redirect)
+            pulumi.set(__self__, "camera_redirect", camera_redirect)
         if clipboard is not None:
-            _setter("clipboard", clipboard)
+            pulumi.set(__self__, "clipboard", clipboard)
         if domain_list is not None:
-            _setter("domain_list", domain_list)
+            pulumi.set(__self__, "domain_list", domain_list)
         if html_access is not None:
-            _setter("html_access", html_access)
+            pulumi.set(__self__, "html_access", html_access)
         if html_file_transfer is not None:
-            _setter("html_file_transfer", html_file_transfer)
+            pulumi.set(__self__, "html_file_transfer", html_file_transfer)
         if local_drive is not None:
-            _setter("local_drive", local_drive)
+            pulumi.set(__self__, "local_drive", local_drive)
         if policy_group_name is not None:
-            _setter("policy_group_name", policy_group_name)
+            pulumi.set(__self__, "policy_group_name", policy_group_name)
         if recording is not None:
-            _setter("recording", recording)
+            pulumi.set(__self__, "recording", recording)
         if recording_end_time is not None:
-            _setter("recording_end_time", recording_end_time)
+            pulumi.set(__self__, "recording_end_time", recording_end_time)
         if recording_expires is not None:
-            _setter("recording_expires", recording_expires)
+            pulumi.set(__self__, "recording_expires", recording_expires)
         if recording_fps is not None:
-            _setter("recording_fps", recording_fps)
+            pulumi.set(__self__, "recording_fps", recording_fps)
         if recording_start_time is not None:
-            _setter("recording_start_time", recording_start_time)
+            pulumi.set(__self__, "recording_start_time", recording_start_time)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if usb_redirect is not None:
-            _setter("usb_redirect", usb_redirect)
+            pulumi.set(__self__, "usb_redirect", usb_redirect)
         if visual_quality is not None:
-            _setter("visual_quality", visual_quality)
+            pulumi.set(__self__, "visual_quality", visual_quality)
         if watermark is not None:
-            _setter("watermark", watermark)
+            pulumi.set(__self__, "watermark", watermark)
         if watermark_transparency is not None:
-            _setter("watermark_transparency", watermark_transparency)
+            pulumi.set(__self__, "watermark_transparency", watermark_transparency)
         if watermark_type is not None:
-            _setter("watermark_type", watermark_type)
+            pulumi.set(__self__, "watermark_type", watermark_type)
 
     @property
     @pulumi.getter(name="authorizeAccessPolicyRules")
@@ -964,10 +804,6 @@ class EcdPolicyGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            EcdPolicyGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

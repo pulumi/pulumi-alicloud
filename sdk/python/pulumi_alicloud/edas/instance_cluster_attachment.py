@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InstanceClusterAttachmentArgs', 'InstanceClusterAttachment']
@@ -21,29 +21,8 @@ class InstanceClusterAttachmentArgs:
         :param pulumi.Input[str] cluster_id: The ID of the cluster that you want to create the application.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The ID of instance. Type: list.
         """
-        InstanceClusterAttachmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_id=cluster_id,
-            instance_ids=instance_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cluster_id is None:
-            raise TypeError("Missing 'cluster_id' argument")
-        if instance_ids is None and 'instanceIds' in kwargs:
-            instance_ids = kwargs['instanceIds']
-        if instance_ids is None:
-            raise TypeError("Missing 'instance_ids' argument")
-
-        _setter("cluster_id", cluster_id)
-        _setter("instance_ids", instance_ids)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "instance_ids", instance_ids)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -86,45 +65,16 @@ class _InstanceClusterAttachmentState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The ID of instance. Type: list.
         :param pulumi.Input[Mapping[str, pulumi.Input[int]]] status_map: The status map of the resource supplied above. The key is instance_id and the values are 1(running) 0(converting) -1(failed) and -2(offline).
         """
-        _InstanceClusterAttachmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_id=cluster_id,
-            cluster_member_ids=cluster_member_ids,
-            ecu_map=ecu_map,
-            instance_ids=instance_ids,
-            status_map=status_map,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             cluster_member_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             ecu_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             status_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cluster_member_ids is None and 'clusterMemberIds' in kwargs:
-            cluster_member_ids = kwargs['clusterMemberIds']
-        if ecu_map is None and 'ecuMap' in kwargs:
-            ecu_map = kwargs['ecuMap']
-        if instance_ids is None and 'instanceIds' in kwargs:
-            instance_ids = kwargs['instanceIds']
-        if status_map is None and 'statusMap' in kwargs:
-            status_map = kwargs['statusMap']
-
         if cluster_id is not None:
-            _setter("cluster_id", cluster_id)
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_member_ids is not None:
-            _setter("cluster_member_ids", cluster_member_ids)
+            pulumi.set(__self__, "cluster_member_ids", cluster_member_ids)
         if ecu_map is not None:
-            _setter("ecu_map", ecu_map)
+            pulumi.set(__self__, "ecu_map", ecu_map)
         if instance_ids is not None:
-            _setter("instance_ids", instance_ids)
+            pulumi.set(__self__, "instance_ids", instance_ids)
         if status_map is not None:
-            _setter("status_map", status_map)
+            pulumi.set(__self__, "status_map", status_map)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -318,10 +268,6 @@ class InstanceClusterAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            InstanceClusterAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -155,243 +155,80 @@ class ReadOnlyInstanceArgs:
                > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance.
         """
-        ReadOnlyInstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            engine_version=engine_version,
-            instance_storage=instance_storage,
-            instance_type=instance_type,
-            master_db_instance_id=master_db_instance_id,
-            acl=acl,
-            auto_renew=auto_renew,
-            auto_renew_period=auto_renew_period,
-            ca_type=ca_type,
-            client_ca_cert=client_ca_cert,
-            client_ca_enabled=client_ca_enabled,
-            client_cert_revocation_list=client_cert_revocation_list,
-            client_crl_enabled=client_crl_enabled,
-            db_instance_ip_array_attribute=db_instance_ip_array_attribute,
-            db_instance_ip_array_name=db_instance_ip_array_name,
-            db_instance_storage_type=db_instance_storage_type,
-            deletion_protection=deletion_protection,
-            direction=direction,
-            effective_time=effective_time,
-            force_restart=force_restart,
-            instance_charge_type=instance_charge_type,
-            instance_name=instance_name,
-            modify_mode=modify_mode,
-            parameters=parameters,
-            period=period,
-            replication_acl=replication_acl,
-            resource_group_id=resource_group_id,
-            security_ip_type=security_ip_type,
-            security_ips=security_ips,
-            server_cert=server_cert,
-            server_key=server_key,
-            ssl_enabled=ssl_enabled,
-            switch_time=switch_time,
-            tags=tags,
-            target_minor_version=target_minor_version,
-            upgrade_db_instance_kernel_version=upgrade_db_instance_kernel_version,
-            upgrade_time=upgrade_time,
-            vswitch_id=vswitch_id,
-            whitelist_network_type=whitelist_network_type,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             engine_version: Optional[pulumi.Input[str]] = None,
-             instance_storage: Optional[pulumi.Input[int]] = None,
-             instance_type: Optional[pulumi.Input[str]] = None,
-             master_db_instance_id: Optional[pulumi.Input[str]] = None,
-             acl: Optional[pulumi.Input[str]] = None,
-             auto_renew: Optional[pulumi.Input[bool]] = None,
-             auto_renew_period: Optional[pulumi.Input[int]] = None,
-             ca_type: Optional[pulumi.Input[str]] = None,
-             client_ca_cert: Optional[pulumi.Input[str]] = None,
-             client_ca_enabled: Optional[pulumi.Input[int]] = None,
-             client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
-             client_crl_enabled: Optional[pulumi.Input[int]] = None,
-             db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
-             db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
-             db_instance_storage_type: Optional[pulumi.Input[str]] = None,
-             deletion_protection: Optional[pulumi.Input[bool]] = None,
-             direction: Optional[pulumi.Input[str]] = None,
-             effective_time: Optional[pulumi.Input[str]] = None,
-             force_restart: Optional[pulumi.Input[bool]] = None,
-             instance_charge_type: Optional[pulumi.Input[str]] = None,
-             instance_name: Optional[pulumi.Input[str]] = None,
-             modify_mode: Optional[pulumi.Input[str]] = None,
-             parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]]] = None,
-             period: Optional[pulumi.Input[int]] = None,
-             replication_acl: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             security_ip_type: Optional[pulumi.Input[str]] = None,
-             security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             server_cert: Optional[pulumi.Input[str]] = None,
-             server_key: Optional[pulumi.Input[str]] = None,
-             ssl_enabled: Optional[pulumi.Input[int]] = None,
-             switch_time: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             target_minor_version: Optional[pulumi.Input[str]] = None,
-             upgrade_db_instance_kernel_version: Optional[pulumi.Input[bool]] = None,
-             upgrade_time: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             whitelist_network_type: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if engine_version is None and 'engineVersion' in kwargs:
-            engine_version = kwargs['engineVersion']
-        if engine_version is None:
-            raise TypeError("Missing 'engine_version' argument")
-        if instance_storage is None and 'instanceStorage' in kwargs:
-            instance_storage = kwargs['instanceStorage']
-        if instance_storage is None:
-            raise TypeError("Missing 'instance_storage' argument")
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if instance_type is None:
-            raise TypeError("Missing 'instance_type' argument")
-        if master_db_instance_id is None and 'masterDbInstanceId' in kwargs:
-            master_db_instance_id = kwargs['masterDbInstanceId']
-        if master_db_instance_id is None:
-            raise TypeError("Missing 'master_db_instance_id' argument")
-        if auto_renew is None and 'autoRenew' in kwargs:
-            auto_renew = kwargs['autoRenew']
-        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
-            auto_renew_period = kwargs['autoRenewPeriod']
-        if ca_type is None and 'caType' in kwargs:
-            ca_type = kwargs['caType']
-        if client_ca_cert is None and 'clientCaCert' in kwargs:
-            client_ca_cert = kwargs['clientCaCert']
-        if client_ca_enabled is None and 'clientCaEnabled' in kwargs:
-            client_ca_enabled = kwargs['clientCaEnabled']
-        if client_cert_revocation_list is None and 'clientCertRevocationList' in kwargs:
-            client_cert_revocation_list = kwargs['clientCertRevocationList']
-        if client_crl_enabled is None and 'clientCrlEnabled' in kwargs:
-            client_crl_enabled = kwargs['clientCrlEnabled']
-        if db_instance_ip_array_attribute is None and 'dbInstanceIpArrayAttribute' in kwargs:
-            db_instance_ip_array_attribute = kwargs['dbInstanceIpArrayAttribute']
-        if db_instance_ip_array_name is None and 'dbInstanceIpArrayName' in kwargs:
-            db_instance_ip_array_name = kwargs['dbInstanceIpArrayName']
-        if db_instance_storage_type is None and 'dbInstanceStorageType' in kwargs:
-            db_instance_storage_type = kwargs['dbInstanceStorageType']
-        if deletion_protection is None and 'deletionProtection' in kwargs:
-            deletion_protection = kwargs['deletionProtection']
-        if effective_time is None and 'effectiveTime' in kwargs:
-            effective_time = kwargs['effectiveTime']
-        if force_restart is None and 'forceRestart' in kwargs:
-            force_restart = kwargs['forceRestart']
-        if instance_charge_type is None and 'instanceChargeType' in kwargs:
-            instance_charge_type = kwargs['instanceChargeType']
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if modify_mode is None and 'modifyMode' in kwargs:
-            modify_mode = kwargs['modifyMode']
-        if replication_acl is None and 'replicationAcl' in kwargs:
-            replication_acl = kwargs['replicationAcl']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if security_ip_type is None and 'securityIpType' in kwargs:
-            security_ip_type = kwargs['securityIpType']
-        if security_ips is None and 'securityIps' in kwargs:
-            security_ips = kwargs['securityIps']
-        if server_cert is None and 'serverCert' in kwargs:
-            server_cert = kwargs['serverCert']
-        if server_key is None and 'serverKey' in kwargs:
-            server_key = kwargs['serverKey']
-        if ssl_enabled is None and 'sslEnabled' in kwargs:
-            ssl_enabled = kwargs['sslEnabled']
-        if switch_time is None and 'switchTime' in kwargs:
-            switch_time = kwargs['switchTime']
-        if target_minor_version is None and 'targetMinorVersion' in kwargs:
-            target_minor_version = kwargs['targetMinorVersion']
-        if upgrade_db_instance_kernel_version is None and 'upgradeDbInstanceKernelVersion' in kwargs:
-            upgrade_db_instance_kernel_version = kwargs['upgradeDbInstanceKernelVersion']
-        if upgrade_time is None and 'upgradeTime' in kwargs:
-            upgrade_time = kwargs['upgradeTime']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if whitelist_network_type is None and 'whitelistNetworkType' in kwargs:
-            whitelist_network_type = kwargs['whitelistNetworkType']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
-        _setter("engine_version", engine_version)
-        _setter("instance_storage", instance_storage)
-        _setter("instance_type", instance_type)
-        _setter("master_db_instance_id", master_db_instance_id)
+        pulumi.set(__self__, "engine_version", engine_version)
+        pulumi.set(__self__, "instance_storage", instance_storage)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "master_db_instance_id", master_db_instance_id)
         if acl is not None:
-            _setter("acl", acl)
+            pulumi.set(__self__, "acl", acl)
         if auto_renew is not None:
-            _setter("auto_renew", auto_renew)
+            pulumi.set(__self__, "auto_renew", auto_renew)
         if auto_renew_period is not None:
-            _setter("auto_renew_period", auto_renew_period)
+            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if ca_type is not None:
-            _setter("ca_type", ca_type)
+            pulumi.set(__self__, "ca_type", ca_type)
         if client_ca_cert is not None:
-            _setter("client_ca_cert", client_ca_cert)
+            pulumi.set(__self__, "client_ca_cert", client_ca_cert)
         if client_ca_enabled is not None:
-            _setter("client_ca_enabled", client_ca_enabled)
+            pulumi.set(__self__, "client_ca_enabled", client_ca_enabled)
         if client_cert_revocation_list is not None:
-            _setter("client_cert_revocation_list", client_cert_revocation_list)
+            pulumi.set(__self__, "client_cert_revocation_list", client_cert_revocation_list)
         if client_crl_enabled is not None:
-            _setter("client_crl_enabled", client_crl_enabled)
+            pulumi.set(__self__, "client_crl_enabled", client_crl_enabled)
         if db_instance_ip_array_attribute is not None:
-            _setter("db_instance_ip_array_attribute", db_instance_ip_array_attribute)
+            pulumi.set(__self__, "db_instance_ip_array_attribute", db_instance_ip_array_attribute)
         if db_instance_ip_array_name is not None:
-            _setter("db_instance_ip_array_name", db_instance_ip_array_name)
+            pulumi.set(__self__, "db_instance_ip_array_name", db_instance_ip_array_name)
         if db_instance_storage_type is not None:
-            _setter("db_instance_storage_type", db_instance_storage_type)
+            pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
         if deletion_protection is not None:
-            _setter("deletion_protection", deletion_protection)
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if direction is not None:
-            _setter("direction", direction)
+            pulumi.set(__self__, "direction", direction)
         if effective_time is not None:
-            _setter("effective_time", effective_time)
+            pulumi.set(__self__, "effective_time", effective_time)
         if force_restart is not None:
-            _setter("force_restart", force_restart)
+            pulumi.set(__self__, "force_restart", force_restart)
         if instance_charge_type is not None:
-            _setter("instance_charge_type", instance_charge_type)
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if instance_name is not None:
-            _setter("instance_name", instance_name)
+            pulumi.set(__self__, "instance_name", instance_name)
         if modify_mode is not None:
-            _setter("modify_mode", modify_mode)
+            pulumi.set(__self__, "modify_mode", modify_mode)
         if parameters is not None:
-            _setter("parameters", parameters)
+            pulumi.set(__self__, "parameters", parameters)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if replication_acl is not None:
-            _setter("replication_acl", replication_acl)
+            pulumi.set(__self__, "replication_acl", replication_acl)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_ip_type is not None:
-            _setter("security_ip_type", security_ip_type)
+            pulumi.set(__self__, "security_ip_type", security_ip_type)
         if security_ips is not None:
-            _setter("security_ips", security_ips)
+            pulumi.set(__self__, "security_ips", security_ips)
         if server_cert is not None:
-            _setter("server_cert", server_cert)
+            pulumi.set(__self__, "server_cert", server_cert)
         if server_key is not None:
-            _setter("server_key", server_key)
+            pulumi.set(__self__, "server_key", server_key)
         if ssl_enabled is not None:
-            _setter("ssl_enabled", ssl_enabled)
+            pulumi.set(__self__, "ssl_enabled", ssl_enabled)
         if switch_time is not None:
-            _setter("switch_time", switch_time)
+            pulumi.set(__self__, "switch_time", switch_time)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if target_minor_version is not None:
-            _setter("target_minor_version", target_minor_version)
+            pulumi.set(__self__, "target_minor_version", target_minor_version)
         if upgrade_db_instance_kernel_version is not None:
-            _setter("upgrade_db_instance_kernel_version", upgrade_db_instance_kernel_version)
+            pulumi.set(__self__, "upgrade_db_instance_kernel_version", upgrade_db_instance_kernel_version)
         if upgrade_time is not None:
-            _setter("upgrade_time", upgrade_time)
+            pulumi.set(__self__, "upgrade_time", upgrade_time)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
         if whitelist_network_type is not None:
-            _setter("whitelist_network_type", whitelist_network_type)
+            pulumi.set(__self__, "whitelist_network_type", whitelist_network_type)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="engineVersion")
@@ -1068,253 +905,90 @@ class _ReadOnlyInstanceState:
                > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance.
         """
-        _ReadOnlyInstanceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            acl=acl,
-            auto_renew=auto_renew,
-            auto_renew_period=auto_renew_period,
-            ca_type=ca_type,
-            client_ca_cert=client_ca_cert,
-            client_ca_enabled=client_ca_enabled,
-            client_cert_revocation_list=client_cert_revocation_list,
-            client_crl_enabled=client_crl_enabled,
-            connection_string=connection_string,
-            db_instance_ip_array_attribute=db_instance_ip_array_attribute,
-            db_instance_ip_array_name=db_instance_ip_array_name,
-            db_instance_storage_type=db_instance_storage_type,
-            deletion_protection=deletion_protection,
-            direction=direction,
-            effective_time=effective_time,
-            engine=engine,
-            engine_version=engine_version,
-            force_restart=force_restart,
-            instance_charge_type=instance_charge_type,
-            instance_name=instance_name,
-            instance_storage=instance_storage,
-            instance_type=instance_type,
-            master_db_instance_id=master_db_instance_id,
-            modify_mode=modify_mode,
-            parameters=parameters,
-            period=period,
-            port=port,
-            replication_acl=replication_acl,
-            resource_group_id=resource_group_id,
-            security_ip_type=security_ip_type,
-            security_ips=security_ips,
-            server_cert=server_cert,
-            server_key=server_key,
-            ssl_enabled=ssl_enabled,
-            switch_time=switch_time,
-            tags=tags,
-            target_minor_version=target_minor_version,
-            upgrade_db_instance_kernel_version=upgrade_db_instance_kernel_version,
-            upgrade_time=upgrade_time,
-            vswitch_id=vswitch_id,
-            whitelist_network_type=whitelist_network_type,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             acl: Optional[pulumi.Input[str]] = None,
-             auto_renew: Optional[pulumi.Input[bool]] = None,
-             auto_renew_period: Optional[pulumi.Input[int]] = None,
-             ca_type: Optional[pulumi.Input[str]] = None,
-             client_ca_cert: Optional[pulumi.Input[str]] = None,
-             client_ca_enabled: Optional[pulumi.Input[int]] = None,
-             client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
-             client_crl_enabled: Optional[pulumi.Input[int]] = None,
-             connection_string: Optional[pulumi.Input[str]] = None,
-             db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
-             db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
-             db_instance_storage_type: Optional[pulumi.Input[str]] = None,
-             deletion_protection: Optional[pulumi.Input[bool]] = None,
-             direction: Optional[pulumi.Input[str]] = None,
-             effective_time: Optional[pulumi.Input[str]] = None,
-             engine: Optional[pulumi.Input[str]] = None,
-             engine_version: Optional[pulumi.Input[str]] = None,
-             force_restart: Optional[pulumi.Input[bool]] = None,
-             instance_charge_type: Optional[pulumi.Input[str]] = None,
-             instance_name: Optional[pulumi.Input[str]] = None,
-             instance_storage: Optional[pulumi.Input[int]] = None,
-             instance_type: Optional[pulumi.Input[str]] = None,
-             master_db_instance_id: Optional[pulumi.Input[str]] = None,
-             modify_mode: Optional[pulumi.Input[str]] = None,
-             parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]]] = None,
-             period: Optional[pulumi.Input[int]] = None,
-             port: Optional[pulumi.Input[str]] = None,
-             replication_acl: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             security_ip_type: Optional[pulumi.Input[str]] = None,
-             security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             server_cert: Optional[pulumi.Input[str]] = None,
-             server_key: Optional[pulumi.Input[str]] = None,
-             ssl_enabled: Optional[pulumi.Input[int]] = None,
-             switch_time: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             target_minor_version: Optional[pulumi.Input[str]] = None,
-             upgrade_db_instance_kernel_version: Optional[pulumi.Input[bool]] = None,
-             upgrade_time: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             whitelist_network_type: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_renew is None and 'autoRenew' in kwargs:
-            auto_renew = kwargs['autoRenew']
-        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
-            auto_renew_period = kwargs['autoRenewPeriod']
-        if ca_type is None and 'caType' in kwargs:
-            ca_type = kwargs['caType']
-        if client_ca_cert is None and 'clientCaCert' in kwargs:
-            client_ca_cert = kwargs['clientCaCert']
-        if client_ca_enabled is None and 'clientCaEnabled' in kwargs:
-            client_ca_enabled = kwargs['clientCaEnabled']
-        if client_cert_revocation_list is None and 'clientCertRevocationList' in kwargs:
-            client_cert_revocation_list = kwargs['clientCertRevocationList']
-        if client_crl_enabled is None and 'clientCrlEnabled' in kwargs:
-            client_crl_enabled = kwargs['clientCrlEnabled']
-        if connection_string is None and 'connectionString' in kwargs:
-            connection_string = kwargs['connectionString']
-        if db_instance_ip_array_attribute is None and 'dbInstanceIpArrayAttribute' in kwargs:
-            db_instance_ip_array_attribute = kwargs['dbInstanceIpArrayAttribute']
-        if db_instance_ip_array_name is None and 'dbInstanceIpArrayName' in kwargs:
-            db_instance_ip_array_name = kwargs['dbInstanceIpArrayName']
-        if db_instance_storage_type is None and 'dbInstanceStorageType' in kwargs:
-            db_instance_storage_type = kwargs['dbInstanceStorageType']
-        if deletion_protection is None and 'deletionProtection' in kwargs:
-            deletion_protection = kwargs['deletionProtection']
-        if effective_time is None and 'effectiveTime' in kwargs:
-            effective_time = kwargs['effectiveTime']
-        if engine_version is None and 'engineVersion' in kwargs:
-            engine_version = kwargs['engineVersion']
-        if force_restart is None and 'forceRestart' in kwargs:
-            force_restart = kwargs['forceRestart']
-        if instance_charge_type is None and 'instanceChargeType' in kwargs:
-            instance_charge_type = kwargs['instanceChargeType']
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_storage is None and 'instanceStorage' in kwargs:
-            instance_storage = kwargs['instanceStorage']
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if master_db_instance_id is None and 'masterDbInstanceId' in kwargs:
-            master_db_instance_id = kwargs['masterDbInstanceId']
-        if modify_mode is None and 'modifyMode' in kwargs:
-            modify_mode = kwargs['modifyMode']
-        if replication_acl is None and 'replicationAcl' in kwargs:
-            replication_acl = kwargs['replicationAcl']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if security_ip_type is None and 'securityIpType' in kwargs:
-            security_ip_type = kwargs['securityIpType']
-        if security_ips is None and 'securityIps' in kwargs:
-            security_ips = kwargs['securityIps']
-        if server_cert is None and 'serverCert' in kwargs:
-            server_cert = kwargs['serverCert']
-        if server_key is None and 'serverKey' in kwargs:
-            server_key = kwargs['serverKey']
-        if ssl_enabled is None and 'sslEnabled' in kwargs:
-            ssl_enabled = kwargs['sslEnabled']
-        if switch_time is None and 'switchTime' in kwargs:
-            switch_time = kwargs['switchTime']
-        if target_minor_version is None and 'targetMinorVersion' in kwargs:
-            target_minor_version = kwargs['targetMinorVersion']
-        if upgrade_db_instance_kernel_version is None and 'upgradeDbInstanceKernelVersion' in kwargs:
-            upgrade_db_instance_kernel_version = kwargs['upgradeDbInstanceKernelVersion']
-        if upgrade_time is None and 'upgradeTime' in kwargs:
-            upgrade_time = kwargs['upgradeTime']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if whitelist_network_type is None and 'whitelistNetworkType' in kwargs:
-            whitelist_network_type = kwargs['whitelistNetworkType']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if acl is not None:
-            _setter("acl", acl)
+            pulumi.set(__self__, "acl", acl)
         if auto_renew is not None:
-            _setter("auto_renew", auto_renew)
+            pulumi.set(__self__, "auto_renew", auto_renew)
         if auto_renew_period is not None:
-            _setter("auto_renew_period", auto_renew_period)
+            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if ca_type is not None:
-            _setter("ca_type", ca_type)
+            pulumi.set(__self__, "ca_type", ca_type)
         if client_ca_cert is not None:
-            _setter("client_ca_cert", client_ca_cert)
+            pulumi.set(__self__, "client_ca_cert", client_ca_cert)
         if client_ca_enabled is not None:
-            _setter("client_ca_enabled", client_ca_enabled)
+            pulumi.set(__self__, "client_ca_enabled", client_ca_enabled)
         if client_cert_revocation_list is not None:
-            _setter("client_cert_revocation_list", client_cert_revocation_list)
+            pulumi.set(__self__, "client_cert_revocation_list", client_cert_revocation_list)
         if client_crl_enabled is not None:
-            _setter("client_crl_enabled", client_crl_enabled)
+            pulumi.set(__self__, "client_crl_enabled", client_crl_enabled)
         if connection_string is not None:
-            _setter("connection_string", connection_string)
+            pulumi.set(__self__, "connection_string", connection_string)
         if db_instance_ip_array_attribute is not None:
-            _setter("db_instance_ip_array_attribute", db_instance_ip_array_attribute)
+            pulumi.set(__self__, "db_instance_ip_array_attribute", db_instance_ip_array_attribute)
         if db_instance_ip_array_name is not None:
-            _setter("db_instance_ip_array_name", db_instance_ip_array_name)
+            pulumi.set(__self__, "db_instance_ip_array_name", db_instance_ip_array_name)
         if db_instance_storage_type is not None:
-            _setter("db_instance_storage_type", db_instance_storage_type)
+            pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
         if deletion_protection is not None:
-            _setter("deletion_protection", deletion_protection)
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if direction is not None:
-            _setter("direction", direction)
+            pulumi.set(__self__, "direction", direction)
         if effective_time is not None:
-            _setter("effective_time", effective_time)
+            pulumi.set(__self__, "effective_time", effective_time)
         if engine is not None:
-            _setter("engine", engine)
+            pulumi.set(__self__, "engine", engine)
         if engine_version is not None:
-            _setter("engine_version", engine_version)
+            pulumi.set(__self__, "engine_version", engine_version)
         if force_restart is not None:
-            _setter("force_restart", force_restart)
+            pulumi.set(__self__, "force_restart", force_restart)
         if instance_charge_type is not None:
-            _setter("instance_charge_type", instance_charge_type)
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if instance_name is not None:
-            _setter("instance_name", instance_name)
+            pulumi.set(__self__, "instance_name", instance_name)
         if instance_storage is not None:
-            _setter("instance_storage", instance_storage)
+            pulumi.set(__self__, "instance_storage", instance_storage)
         if instance_type is not None:
-            _setter("instance_type", instance_type)
+            pulumi.set(__self__, "instance_type", instance_type)
         if master_db_instance_id is not None:
-            _setter("master_db_instance_id", master_db_instance_id)
+            pulumi.set(__self__, "master_db_instance_id", master_db_instance_id)
         if modify_mode is not None:
-            _setter("modify_mode", modify_mode)
+            pulumi.set(__self__, "modify_mode", modify_mode)
         if parameters is not None:
-            _setter("parameters", parameters)
+            pulumi.set(__self__, "parameters", parameters)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if replication_acl is not None:
-            _setter("replication_acl", replication_acl)
+            pulumi.set(__self__, "replication_acl", replication_acl)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_ip_type is not None:
-            _setter("security_ip_type", security_ip_type)
+            pulumi.set(__self__, "security_ip_type", security_ip_type)
         if security_ips is not None:
-            _setter("security_ips", security_ips)
+            pulumi.set(__self__, "security_ips", security_ips)
         if server_cert is not None:
-            _setter("server_cert", server_cert)
+            pulumi.set(__self__, "server_cert", server_cert)
         if server_key is not None:
-            _setter("server_key", server_key)
+            pulumi.set(__self__, "server_key", server_key)
         if ssl_enabled is not None:
-            _setter("ssl_enabled", ssl_enabled)
+            pulumi.set(__self__, "ssl_enabled", ssl_enabled)
         if switch_time is not None:
-            _setter("switch_time", switch_time)
+            pulumi.set(__self__, "switch_time", switch_time)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if target_minor_version is not None:
-            _setter("target_minor_version", target_minor_version)
+            pulumi.set(__self__, "target_minor_version", target_minor_version)
         if upgrade_db_instance_kernel_version is not None:
-            _setter("upgrade_db_instance_kernel_version", upgrade_db_instance_kernel_version)
+            pulumi.set(__self__, "upgrade_db_instance_kernel_version", upgrade_db_instance_kernel_version)
         if upgrade_time is not None:
-            _setter("upgrade_time", upgrade_time)
+            pulumi.set(__self__, "upgrade_time", upgrade_time)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
         if whitelist_network_type is not None:
-            _setter("whitelist_network_type", whitelist_network_type)
+            pulumi.set(__self__, "whitelist_network_type", whitelist_network_type)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -2152,10 +1826,6 @@ class ReadOnlyInstance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ReadOnlyInstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

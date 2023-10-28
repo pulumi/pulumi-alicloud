@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['K8sClusterArgs', 'K8sCluster']
@@ -21,28 +21,9 @@ class K8sClusterArgs:
         :param pulumi.Input[str] cs_cluster_id: The ID of the alicloud container service kubernetes cluster that you want to import.
         :param pulumi.Input[str] namespace_id: The ID of the namespace where you want to import. You can call the [ListUserDefineRegion](https://www.alibabacloud.com/help/en/doc-detail/149377.htm?spm=a2c63.p38356.879954.34.331054faK2yNvC#doc-api-Edas-ListUserDefineRegion) operation to query the namespace ID.
         """
-        K8sClusterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cs_cluster_id=cs_cluster_id,
-            namespace_id=namespace_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cs_cluster_id: Optional[pulumi.Input[str]] = None,
-             namespace_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cs_cluster_id is None and 'csClusterId' in kwargs:
-            cs_cluster_id = kwargs['csClusterId']
-        if cs_cluster_id is None:
-            raise TypeError("Missing 'cs_cluster_id' argument")
-        if namespace_id is None and 'namespaceId' in kwargs:
-            namespace_id = kwargs['namespaceId']
-
-        _setter("cs_cluster_id", cs_cluster_id)
+        pulumi.set(__self__, "cs_cluster_id", cs_cluster_id)
         if namespace_id is not None:
-            _setter("namespace_id", namespace_id)
+            pulumi.set(__self__, "namespace_id", namespace_id)
 
     @property
     @pulumi.getter(name="csClusterId")
@@ -93,57 +74,20 @@ class _K8sClusterState:
         :param pulumi.Input[int] network_mode: The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
         :param pulumi.Input[str] vpc_id: The ID of the Virtual Private Cloud (VPC) for the cluster.
         """
-        _K8sClusterState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_import_status=cluster_import_status,
-            cluster_name=cluster_name,
-            cluster_type=cluster_type,
-            cs_cluster_id=cs_cluster_id,
-            namespace_id=namespace_id,
-            network_mode=network_mode,
-            vpc_id=vpc_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_import_status: Optional[pulumi.Input[int]] = None,
-             cluster_name: Optional[pulumi.Input[str]] = None,
-             cluster_type: Optional[pulumi.Input[int]] = None,
-             cs_cluster_id: Optional[pulumi.Input[str]] = None,
-             namespace_id: Optional[pulumi.Input[str]] = None,
-             network_mode: Optional[pulumi.Input[int]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_import_status is None and 'clusterImportStatus' in kwargs:
-            cluster_import_status = kwargs['clusterImportStatus']
-        if cluster_name is None and 'clusterName' in kwargs:
-            cluster_name = kwargs['clusterName']
-        if cluster_type is None and 'clusterType' in kwargs:
-            cluster_type = kwargs['clusterType']
-        if cs_cluster_id is None and 'csClusterId' in kwargs:
-            cs_cluster_id = kwargs['csClusterId']
-        if namespace_id is None and 'namespaceId' in kwargs:
-            namespace_id = kwargs['namespaceId']
-        if network_mode is None and 'networkMode' in kwargs:
-            network_mode = kwargs['networkMode']
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-
         if cluster_import_status is not None:
-            _setter("cluster_import_status", cluster_import_status)
+            pulumi.set(__self__, "cluster_import_status", cluster_import_status)
         if cluster_name is not None:
-            _setter("cluster_name", cluster_name)
+            pulumi.set(__self__, "cluster_name", cluster_name)
         if cluster_type is not None:
-            _setter("cluster_type", cluster_type)
+            pulumi.set(__self__, "cluster_type", cluster_type)
         if cs_cluster_id is not None:
-            _setter("cs_cluster_id", cs_cluster_id)
+            pulumi.set(__self__, "cs_cluster_id", cs_cluster_id)
         if namespace_id is not None:
-            _setter("namespace_id", namespace_id)
+            pulumi.set(__self__, "namespace_id", namespace_id)
         if network_mode is not None:
-            _setter("network_mode", network_mode)
+            pulumi.set(__self__, "network_mode", network_mode)
         if vpc_id is not None:
-            _setter("vpc_id", vpc_id)
+            pulumi.set(__self__, "vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="clusterImportStatus")
@@ -289,10 +233,6 @@ class K8sCluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            K8sClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

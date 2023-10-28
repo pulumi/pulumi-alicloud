@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ReceiversArgs', 'Receivers']
@@ -23,33 +23,10 @@ class ReceiversArgs:
         :param pulumi.Input[str] receivers_name: The name of the resource. The length that cannot be repeated is 1-30 characters.
         :param pulumi.Input[str] description: The description of receivers and 1-50 characters in length.
         """
-        ReceiversArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            receivers_alias=receivers_alias,
-            receivers_name=receivers_name,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             receivers_alias: Optional[pulumi.Input[str]] = None,
-             receivers_name: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if receivers_alias is None and 'receiversAlias' in kwargs:
-            receivers_alias = kwargs['receiversAlias']
-        if receivers_alias is None:
-            raise TypeError("Missing 'receivers_alias' argument")
-        if receivers_name is None and 'receiversName' in kwargs:
-            receivers_name = kwargs['receiversName']
-        if receivers_name is None:
-            raise TypeError("Missing 'receivers_name' argument")
-
-        _setter("receivers_alias", receivers_alias)
-        _setter("receivers_name", receivers_name)
+        pulumi.set(__self__, "receivers_alias", receivers_alias)
+        pulumi.set(__self__, "receivers_name", receivers_name)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter(name="receiversAlias")
@@ -102,35 +79,14 @@ class _ReceiversState:
         :param pulumi.Input[str] receivers_name: The name of the resource. The length that cannot be repeated is 1-30 characters.
         :param pulumi.Input[int] status: The status of the resource. `0` means uploading, `1` means upload completed.
         """
-        _ReceiversState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            receivers_alias=receivers_alias,
-            receivers_name=receivers_name,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             receivers_alias: Optional[pulumi.Input[str]] = None,
-             receivers_name: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if receivers_alias is None and 'receiversAlias' in kwargs:
-            receivers_alias = kwargs['receiversAlias']
-        if receivers_name is None and 'receiversName' in kwargs:
-            receivers_name = kwargs['receiversName']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if receivers_alias is not None:
-            _setter("receivers_alias", receivers_alias)
+            pulumi.set(__self__, "receivers_alias", receivers_alias)
         if receivers_name is not None:
-            _setter("receivers_name", receivers_name)
+            pulumi.set(__self__, "receivers_name", receivers_name)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -242,10 +198,6 @@ class Receivers(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ReceiversArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

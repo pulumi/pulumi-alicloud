@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['HostAttachmentArgs', 'HostAttachment']
@@ -23,36 +23,9 @@ class HostAttachmentArgs:
         :param pulumi.Input[str] host_id: Specified to be part of a host group of host ID.
         :param pulumi.Input[str] instance_id: The bastion host instance id.
         """
-        HostAttachmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            host_group_id=host_group_id,
-            host_id=host_id,
-            instance_id=instance_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             host_group_id: Optional[pulumi.Input[str]] = None,
-             host_id: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if host_group_id is None and 'hostGroupId' in kwargs:
-            host_group_id = kwargs['hostGroupId']
-        if host_group_id is None:
-            raise TypeError("Missing 'host_group_id' argument")
-        if host_id is None and 'hostId' in kwargs:
-            host_id = kwargs['hostId']
-        if host_id is None:
-            raise TypeError("Missing 'host_id' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-
-        _setter("host_group_id", host_group_id)
-        _setter("host_id", host_id)
-        _setter("instance_id", instance_id)
+        pulumi.set(__self__, "host_group_id", host_group_id)
+        pulumi.set(__self__, "host_id", host_id)
+        pulumi.set(__self__, "instance_id", instance_id)
 
     @property
     @pulumi.getter(name="hostGroupId")
@@ -103,33 +76,12 @@ class _HostAttachmentState:
         :param pulumi.Input[str] host_id: Specified to be part of a host group of host ID.
         :param pulumi.Input[str] instance_id: The bastion host instance id.
         """
-        _HostAttachmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            host_group_id=host_group_id,
-            host_id=host_id,
-            instance_id=instance_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             host_group_id: Optional[pulumi.Input[str]] = None,
-             host_id: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if host_group_id is None and 'hostGroupId' in kwargs:
-            host_group_id = kwargs['hostGroupId']
-        if host_id is None and 'hostId' in kwargs:
-            host_id = kwargs['hostId']
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-
         if host_group_id is not None:
-            _setter("host_group_id", host_group_id)
+            pulumi.set(__self__, "host_group_id", host_group_id)
         if host_id is not None:
-            _setter("host_id", host_id)
+            pulumi.set(__self__, "host_id", host_id)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
 
     @property
     @pulumi.getter(name="hostGroupId")
@@ -319,10 +271,6 @@ class HostAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            HostAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

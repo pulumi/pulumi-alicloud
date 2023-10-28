@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -48,106 +48,37 @@ class TransitRouterVpcAttachmentArgs:
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] vpc_owner_id: The owner id of vpc.
         """
-        TransitRouterVpcAttachmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cen_id=cen_id,
-            vpc_id=vpc_id,
-            zone_mappings=zone_mappings,
-            auto_publish_route_enabled=auto_publish_route_enabled,
-            dry_run=dry_run,
-            payment_type=payment_type,
-            resource_type=resource_type,
-            route_table_association_enabled=route_table_association_enabled,
-            route_table_propagation_enabled=route_table_propagation_enabled,
-            tags=tags,
-            transit_router_attachment_description=transit_router_attachment_description,
-            transit_router_attachment_name=transit_router_attachment_name,
-            transit_router_id=transit_router_id,
-            vpc_owner_id=vpc_owner_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cen_id: Optional[pulumi.Input[str]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]]] = None,
-             auto_publish_route_enabled: Optional[pulumi.Input[bool]] = None,
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             resource_type: Optional[pulumi.Input[str]] = None,
-             route_table_association_enabled: Optional[pulumi.Input[bool]] = None,
-             route_table_propagation_enabled: Optional[pulumi.Input[bool]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             transit_router_attachment_description: Optional[pulumi.Input[str]] = None,
-             transit_router_attachment_name: Optional[pulumi.Input[str]] = None,
-             transit_router_id: Optional[pulumi.Input[str]] = None,
-             vpc_owner_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cen_id is None and 'cenId' in kwargs:
-            cen_id = kwargs['cenId']
-        if cen_id is None:
-            raise TypeError("Missing 'cen_id' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-        if zone_mappings is None and 'zoneMappings' in kwargs:
-            zone_mappings = kwargs['zoneMappings']
-        if zone_mappings is None:
-            raise TypeError("Missing 'zone_mappings' argument")
-        if auto_publish_route_enabled is None and 'autoPublishRouteEnabled' in kwargs:
-            auto_publish_route_enabled = kwargs['autoPublishRouteEnabled']
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if resource_type is None and 'resourceType' in kwargs:
-            resource_type = kwargs['resourceType']
-        if route_table_association_enabled is None and 'routeTableAssociationEnabled' in kwargs:
-            route_table_association_enabled = kwargs['routeTableAssociationEnabled']
-        if route_table_propagation_enabled is None and 'routeTablePropagationEnabled' in kwargs:
-            route_table_propagation_enabled = kwargs['routeTablePropagationEnabled']
-        if transit_router_attachment_description is None and 'transitRouterAttachmentDescription' in kwargs:
-            transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
-        if transit_router_attachment_name is None and 'transitRouterAttachmentName' in kwargs:
-            transit_router_attachment_name = kwargs['transitRouterAttachmentName']
-        if transit_router_id is None and 'transitRouterId' in kwargs:
-            transit_router_id = kwargs['transitRouterId']
-        if vpc_owner_id is None and 'vpcOwnerId' in kwargs:
-            vpc_owner_id = kwargs['vpcOwnerId']
-
-        _setter("cen_id", cen_id)
-        _setter("vpc_id", vpc_id)
-        _setter("zone_mappings", zone_mappings)
+        pulumi.set(__self__, "cen_id", cen_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "zone_mappings", zone_mappings)
         if auto_publish_route_enabled is not None:
-            _setter("auto_publish_route_enabled", auto_publish_route_enabled)
+            pulumi.set(__self__, "auto_publish_route_enabled", auto_publish_route_enabled)
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if resource_type is not None:
-            _setter("resource_type", resource_type)
+            pulumi.set(__self__, "resource_type", resource_type)
         if route_table_association_enabled is not None:
             warnings.warn("""Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead.""", DeprecationWarning)
             pulumi.log.warn("""route_table_association_enabled is deprecated: Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead.""")
         if route_table_association_enabled is not None:
-            _setter("route_table_association_enabled", route_table_association_enabled)
+            pulumi.set(__self__, "route_table_association_enabled", route_table_association_enabled)
         if route_table_propagation_enabled is not None:
             warnings.warn("""Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead.""", DeprecationWarning)
             pulumi.log.warn("""route_table_propagation_enabled is deprecated: Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead.""")
         if route_table_propagation_enabled is not None:
-            _setter("route_table_propagation_enabled", route_table_propagation_enabled)
+            pulumi.set(__self__, "route_table_propagation_enabled", route_table_propagation_enabled)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if transit_router_attachment_description is not None:
-            _setter("transit_router_attachment_description", transit_router_attachment_description)
+            pulumi.set(__self__, "transit_router_attachment_description", transit_router_attachment_description)
         if transit_router_attachment_name is not None:
-            _setter("transit_router_attachment_name", transit_router_attachment_name)
+            pulumi.set(__self__, "transit_router_attachment_name", transit_router_attachment_name)
         if transit_router_id is not None:
-            _setter("transit_router_id", transit_router_id)
+            pulumi.set(__self__, "transit_router_id", transit_router_id)
         if vpc_owner_id is not None:
-            _setter("vpc_owner_id", vpc_owner_id)
+            pulumi.set(__self__, "vpc_owner_id", vpc_owner_id)
 
     @property
     @pulumi.getter(name="cenId")
@@ -364,113 +295,44 @@ class _TransitRouterVpcAttachmentState:
         :param pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]] zone_mappings: The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified. See `zone_mappings` below.
                > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
         """
-        _TransitRouterVpcAttachmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto_publish_route_enabled=auto_publish_route_enabled,
-            cen_id=cen_id,
-            dry_run=dry_run,
-            payment_type=payment_type,
-            resource_type=resource_type,
-            route_table_association_enabled=route_table_association_enabled,
-            route_table_propagation_enabled=route_table_propagation_enabled,
-            status=status,
-            tags=tags,
-            transit_router_attachment_description=transit_router_attachment_description,
-            transit_router_attachment_id=transit_router_attachment_id,
-            transit_router_attachment_name=transit_router_attachment_name,
-            transit_router_id=transit_router_id,
-            vpc_id=vpc_id,
-            vpc_owner_id=vpc_owner_id,
-            zone_mappings=zone_mappings,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto_publish_route_enabled: Optional[pulumi.Input[bool]] = None,
-             cen_id: Optional[pulumi.Input[str]] = None,
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             resource_type: Optional[pulumi.Input[str]] = None,
-             route_table_association_enabled: Optional[pulumi.Input[bool]] = None,
-             route_table_propagation_enabled: Optional[pulumi.Input[bool]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             transit_router_attachment_description: Optional[pulumi.Input[str]] = None,
-             transit_router_attachment_id: Optional[pulumi.Input[str]] = None,
-             transit_router_attachment_name: Optional[pulumi.Input[str]] = None,
-             transit_router_id: Optional[pulumi.Input[str]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             vpc_owner_id: Optional[pulumi.Input[str]] = None,
-             zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_publish_route_enabled is None and 'autoPublishRouteEnabled' in kwargs:
-            auto_publish_route_enabled = kwargs['autoPublishRouteEnabled']
-        if cen_id is None and 'cenId' in kwargs:
-            cen_id = kwargs['cenId']
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if resource_type is None and 'resourceType' in kwargs:
-            resource_type = kwargs['resourceType']
-        if route_table_association_enabled is None and 'routeTableAssociationEnabled' in kwargs:
-            route_table_association_enabled = kwargs['routeTableAssociationEnabled']
-        if route_table_propagation_enabled is None and 'routeTablePropagationEnabled' in kwargs:
-            route_table_propagation_enabled = kwargs['routeTablePropagationEnabled']
-        if transit_router_attachment_description is None and 'transitRouterAttachmentDescription' in kwargs:
-            transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
-        if transit_router_attachment_id is None and 'transitRouterAttachmentId' in kwargs:
-            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
-        if transit_router_attachment_name is None and 'transitRouterAttachmentName' in kwargs:
-            transit_router_attachment_name = kwargs['transitRouterAttachmentName']
-        if transit_router_id is None and 'transitRouterId' in kwargs:
-            transit_router_id = kwargs['transitRouterId']
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_owner_id is None and 'vpcOwnerId' in kwargs:
-            vpc_owner_id = kwargs['vpcOwnerId']
-        if zone_mappings is None and 'zoneMappings' in kwargs:
-            zone_mappings = kwargs['zoneMappings']
-
         if auto_publish_route_enabled is not None:
-            _setter("auto_publish_route_enabled", auto_publish_route_enabled)
+            pulumi.set(__self__, "auto_publish_route_enabled", auto_publish_route_enabled)
         if cen_id is not None:
-            _setter("cen_id", cen_id)
+            pulumi.set(__self__, "cen_id", cen_id)
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if resource_type is not None:
-            _setter("resource_type", resource_type)
+            pulumi.set(__self__, "resource_type", resource_type)
         if route_table_association_enabled is not None:
             warnings.warn("""Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead.""", DeprecationWarning)
             pulumi.log.warn("""route_table_association_enabled is deprecated: Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead.""")
         if route_table_association_enabled is not None:
-            _setter("route_table_association_enabled", route_table_association_enabled)
+            pulumi.set(__self__, "route_table_association_enabled", route_table_association_enabled)
         if route_table_propagation_enabled is not None:
             warnings.warn("""Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead.""", DeprecationWarning)
             pulumi.log.warn("""route_table_propagation_enabled is deprecated: Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead.""")
         if route_table_propagation_enabled is not None:
-            _setter("route_table_propagation_enabled", route_table_propagation_enabled)
+            pulumi.set(__self__, "route_table_propagation_enabled", route_table_propagation_enabled)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if transit_router_attachment_description is not None:
-            _setter("transit_router_attachment_description", transit_router_attachment_description)
+            pulumi.set(__self__, "transit_router_attachment_description", transit_router_attachment_description)
         if transit_router_attachment_id is not None:
-            _setter("transit_router_attachment_id", transit_router_attachment_id)
+            pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
         if transit_router_attachment_name is not None:
-            _setter("transit_router_attachment_name", transit_router_attachment_name)
+            pulumi.set(__self__, "transit_router_attachment_name", transit_router_attachment_name)
         if transit_router_id is not None:
-            _setter("transit_router_id", transit_router_id)
+            pulumi.set(__self__, "transit_router_id", transit_router_id)
         if vpc_id is not None:
-            _setter("vpc_id", vpc_id)
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vpc_owner_id is not None:
-            _setter("vpc_owner_id", vpc_owner_id)
+            pulumi.set(__self__, "vpc_owner_id", vpc_owner_id)
         if zone_mappings is not None:
-            _setter("zone_mappings", zone_mappings)
+            pulumi.set(__self__, "zone_mappings", zone_mappings)
 
     @property
     @pulumi.getter(name="autoPublishRouteEnabled")
@@ -856,10 +718,6 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TransitRouterVpcAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

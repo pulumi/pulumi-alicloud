@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TransitRouterMulticastDomainAssociationArgs', 'TransitRouterMulticastDomainAssociation']
@@ -23,36 +23,9 @@ class TransitRouterMulticastDomainAssociationArgs:
         :param pulumi.Input[str] transit_router_multicast_domain_id: The ID of the multicast domain.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
         """
-        TransitRouterMulticastDomainAssociationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            transit_router_attachment_id=transit_router_attachment_id,
-            transit_router_multicast_domain_id=transit_router_multicast_domain_id,
-            vswitch_id=vswitch_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             transit_router_attachment_id: Optional[pulumi.Input[str]] = None,
-             transit_router_multicast_domain_id: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if transit_router_attachment_id is None and 'transitRouterAttachmentId' in kwargs:
-            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
-        if transit_router_attachment_id is None:
-            raise TypeError("Missing 'transit_router_attachment_id' argument")
-        if transit_router_multicast_domain_id is None and 'transitRouterMulticastDomainId' in kwargs:
-            transit_router_multicast_domain_id = kwargs['transitRouterMulticastDomainId']
-        if transit_router_multicast_domain_id is None:
-            raise TypeError("Missing 'transit_router_multicast_domain_id' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-
-        _setter("transit_router_attachment_id", transit_router_attachment_id)
-        _setter("transit_router_multicast_domain_id", transit_router_multicast_domain_id)
-        _setter("vswitch_id", vswitch_id)
+        pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
+        pulumi.set(__self__, "transit_router_multicast_domain_id", transit_router_multicast_domain_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="transitRouterAttachmentId")
@@ -105,37 +78,14 @@ class _TransitRouterMulticastDomainAssociationState:
         :param pulumi.Input[str] transit_router_multicast_domain_id: The ID of the multicast domain.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
         """
-        _TransitRouterMulticastDomainAssociationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            status=status,
-            transit_router_attachment_id=transit_router_attachment_id,
-            transit_router_multicast_domain_id=transit_router_multicast_domain_id,
-            vswitch_id=vswitch_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             status: Optional[pulumi.Input[str]] = None,
-             transit_router_attachment_id: Optional[pulumi.Input[str]] = None,
-             transit_router_multicast_domain_id: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if transit_router_attachment_id is None and 'transitRouterAttachmentId' in kwargs:
-            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
-        if transit_router_multicast_domain_id is None and 'transitRouterMulticastDomainId' in kwargs:
-            transit_router_multicast_domain_id = kwargs['transitRouterMulticastDomainId']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if transit_router_attachment_id is not None:
-            _setter("transit_router_attachment_id", transit_router_attachment_id)
+            pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
         if transit_router_multicast_domain_id is not None:
-            _setter("transit_router_multicast_domain_id", transit_router_multicast_domain_id)
+            pulumi.set(__self__, "transit_router_multicast_domain_id", transit_router_multicast_domain_id)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter
@@ -335,10 +285,6 @@ class TransitRouterMulticastDomainAssociation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TransitRouterMulticastDomainAssociationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

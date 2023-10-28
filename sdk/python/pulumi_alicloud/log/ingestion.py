@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['IngestionArgs', 'Ingestion']
@@ -35,66 +35,17 @@ class IngestionArgs:
         :param pulumi.Input[str] description: Ingestion job description.
         :param pulumi.Input[str] time_zone: Which time zone is the log time imported in, e.g. `+0800`.
         """
-        IngestionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            display_name=display_name,
-            ingestion_name=ingestion_name,
-            interval=interval,
-            logstore=logstore,
-            project=project,
-            run_immediately=run_immediately,
-            source=source,
-            description=description,
-            time_zone=time_zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             display_name: Optional[pulumi.Input[str]] = None,
-             ingestion_name: Optional[pulumi.Input[str]] = None,
-             interval: Optional[pulumi.Input[str]] = None,
-             logstore: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             run_immediately: Optional[pulumi.Input[bool]] = None,
-             source: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if ingestion_name is None and 'ingestionName' in kwargs:
-            ingestion_name = kwargs['ingestionName']
-        if ingestion_name is None:
-            raise TypeError("Missing 'ingestion_name' argument")
-        if interval is None:
-            raise TypeError("Missing 'interval' argument")
-        if logstore is None:
-            raise TypeError("Missing 'logstore' argument")
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-        if run_immediately is None and 'runImmediately' in kwargs:
-            run_immediately = kwargs['runImmediately']
-        if run_immediately is None:
-            raise TypeError("Missing 'run_immediately' argument")
-        if source is None:
-            raise TypeError("Missing 'source' argument")
-        if time_zone is None and 'timeZone' in kwargs:
-            time_zone = kwargs['timeZone']
-
-        _setter("display_name", display_name)
-        _setter("ingestion_name", ingestion_name)
-        _setter("interval", interval)
-        _setter("logstore", logstore)
-        _setter("project", project)
-        _setter("run_immediately", run_immediately)
-        _setter("source", source)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "ingestion_name", ingestion_name)
+        pulumi.set(__self__, "interval", interval)
+        pulumi.set(__self__, "logstore", logstore)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "run_immediately", run_immediately)
+        pulumi.set(__self__, "source", source)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if time_zone is not None:
-            _setter("time_zone", time_zone)
+            pulumi.set(__self__, "time_zone", time_zone)
 
     @property
     @pulumi.getter(name="displayName")
@@ -229,59 +180,24 @@ class _IngestionState:
         :param pulumi.Input[str] source: Data source and data format details. [Refer to details](https://www.alibabacloud.com/help/en/doc-detail/147819.html).
         :param pulumi.Input[str] time_zone: Which time zone is the log time imported in, e.g. `+0800`.
         """
-        _IngestionState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            display_name=display_name,
-            ingestion_name=ingestion_name,
-            interval=interval,
-            logstore=logstore,
-            project=project,
-            run_immediately=run_immediately,
-            source=source,
-            time_zone=time_zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             ingestion_name: Optional[pulumi.Input[str]] = None,
-             interval: Optional[pulumi.Input[str]] = None,
-             logstore: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             run_immediately: Optional[pulumi.Input[bool]] = None,
-             source: Optional[pulumi.Input[str]] = None,
-             time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if ingestion_name is None and 'ingestionName' in kwargs:
-            ingestion_name = kwargs['ingestionName']
-        if run_immediately is None and 'runImmediately' in kwargs:
-            run_immediately = kwargs['runImmediately']
-        if time_zone is None and 'timeZone' in kwargs:
-            time_zone = kwargs['timeZone']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if ingestion_name is not None:
-            _setter("ingestion_name", ingestion_name)
+            pulumi.set(__self__, "ingestion_name", ingestion_name)
         if interval is not None:
-            _setter("interval", interval)
+            pulumi.set(__self__, "interval", interval)
         if logstore is not None:
-            _setter("logstore", logstore)
+            pulumi.set(__self__, "logstore", logstore)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if run_immediately is not None:
-            _setter("run_immediately", run_immediately)
+            pulumi.set(__self__, "run_immediately", run_immediately)
         if source is not None:
-            _setter("source", source)
+            pulumi.set(__self__, "source", source)
         if time_zone is not None:
-            _setter("time_zone", time_zone)
+            pulumi.set(__self__, "time_zone", time_zone)
 
     @property
     @pulumi.getter
@@ -581,10 +497,6 @@ class Ingestion(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            IngestionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

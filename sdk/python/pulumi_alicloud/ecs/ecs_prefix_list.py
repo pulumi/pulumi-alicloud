@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,45 +29,12 @@ class EcsPrefixListArgs:
         :param pulumi.Input[str] prefix_list_name: The name of the prefix. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://`, `https://`, `com.aliyun`, or `com.alibabacloud`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         :param pulumi.Input[str] description: The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         """
-        EcsPrefixListArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address_family=address_family,
-            entries=entries,
-            max_entries=max_entries,
-            prefix_list_name=prefix_list_name,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address_family: Optional[pulumi.Input[str]] = None,
-             entries: Optional[pulumi.Input[Sequence[pulumi.Input['EcsPrefixListEntryArgs']]]] = None,
-             max_entries: Optional[pulumi.Input[int]] = None,
-             prefix_list_name: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address_family is None and 'addressFamily' in kwargs:
-            address_family = kwargs['addressFamily']
-        if address_family is None:
-            raise TypeError("Missing 'address_family' argument")
-        if entries is None:
-            raise TypeError("Missing 'entries' argument")
-        if max_entries is None and 'maxEntries' in kwargs:
-            max_entries = kwargs['maxEntries']
-        if max_entries is None:
-            raise TypeError("Missing 'max_entries' argument")
-        if prefix_list_name is None and 'prefixListName' in kwargs:
-            prefix_list_name = kwargs['prefixListName']
-        if prefix_list_name is None:
-            raise TypeError("Missing 'prefix_list_name' argument")
-
-        _setter("address_family", address_family)
-        _setter("entries", entries)
-        _setter("max_entries", max_entries)
-        _setter("prefix_list_name", prefix_list_name)
+        pulumi.set(__self__, "address_family", address_family)
+        pulumi.set(__self__, "entries", entries)
+        pulumi.set(__self__, "max_entries", max_entries)
+        pulumi.set(__self__, "prefix_list_name", prefix_list_name)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter(name="addressFamily")
@@ -146,41 +113,16 @@ class _EcsPrefixListState:
         :param pulumi.Input[int] max_entries: The maximum number of entries that the prefix list can contain.  Valid values: 1 to 200.
         :param pulumi.Input[str] prefix_list_name: The name of the prefix. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://`, `https://`, `com.aliyun`, or `com.alibabacloud`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         """
-        _EcsPrefixListState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address_family=address_family,
-            description=description,
-            entries=entries,
-            max_entries=max_entries,
-            prefix_list_name=prefix_list_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address_family: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             entries: Optional[pulumi.Input[Sequence[pulumi.Input['EcsPrefixListEntryArgs']]]] = None,
-             max_entries: Optional[pulumi.Input[int]] = None,
-             prefix_list_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address_family is None and 'addressFamily' in kwargs:
-            address_family = kwargs['addressFamily']
-        if max_entries is None and 'maxEntries' in kwargs:
-            max_entries = kwargs['maxEntries']
-        if prefix_list_name is None and 'prefixListName' in kwargs:
-            prefix_list_name = kwargs['prefixListName']
-
         if address_family is not None:
-            _setter("address_family", address_family)
+            pulumi.set(__self__, "address_family", address_family)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if entries is not None:
-            _setter("entries", entries)
+            pulumi.set(__self__, "entries", entries)
         if max_entries is not None:
-            _setter("max_entries", max_entries)
+            pulumi.set(__self__, "max_entries", max_entries)
         if prefix_list_name is not None:
-            _setter("prefix_list_name", prefix_list_name)
+            pulumi.set(__self__, "prefix_list_name", prefix_list_name)
 
     @property
     @pulumi.getter(name="addressFamily")
@@ -346,10 +288,6 @@ class EcsPrefixList(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            EcsPrefixListArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

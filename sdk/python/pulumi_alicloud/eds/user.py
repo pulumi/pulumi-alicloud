@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['UserArgs', 'User']
@@ -27,39 +27,14 @@ class UserArgs:
         :param pulumi.Input[str] phone: The phone of the mobile phone number.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Unlocked`, `Locked`.
         """
-        UserArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            email=email,
-            end_user_id=end_user_id,
-            password=password,
-            phone=phone,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             email: Optional[pulumi.Input[str]] = None,
-             end_user_id: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             phone: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if email is None:
-            raise TypeError("Missing 'email' argument")
-        if end_user_id is None and 'endUserId' in kwargs:
-            end_user_id = kwargs['endUserId']
-        if end_user_id is None:
-            raise TypeError("Missing 'end_user_id' argument")
-
-        _setter("email", email)
-        _setter("end_user_id", end_user_id)
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "end_user_id", end_user_id)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if phone is not None:
-            _setter("phone", phone)
+            pulumi.set(__self__, "phone", phone)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -138,37 +113,16 @@ class _UserState:
         :param pulumi.Input[str] phone: The phone of the mobile phone number.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Unlocked`, `Locked`.
         """
-        _UserState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            email=email,
-            end_user_id=end_user_id,
-            password=password,
-            phone=phone,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             email: Optional[pulumi.Input[str]] = None,
-             end_user_id: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             phone: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if end_user_id is None and 'endUserId' in kwargs:
-            end_user_id = kwargs['endUserId']
-
         if email is not None:
-            _setter("email", email)
+            pulumi.set(__self__, "email", email)
         if end_user_id is not None:
-            _setter("end_user_id", end_user_id)
+            pulumi.set(__self__, "end_user_id", end_user_id)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if phone is not None:
-            _setter("phone", phone)
+            pulumi.set(__self__, "phone", phone)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -326,10 +280,6 @@ class User(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            UserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BucketObjectArgs', 'BucketObject']
@@ -46,83 +46,30 @@ class BucketObjectArgs:
         :param pulumi.Input[str] server_side_encryption: Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
         :param pulumi.Input[str] source: The path to the source file being uploaded to the bucket.
         """
-        BucketObjectArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            key=key,
-            acl=acl,
-            cache_control=cache_control,
-            content=content,
-            content_disposition=content_disposition,
-            content_encoding=content_encoding,
-            content_md5=content_md5,
-            content_type=content_type,
-            expires=expires,
-            kms_key_id=kms_key_id,
-            server_side_encryption=server_side_encryption,
-            source=source,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[pulumi.Input[str]] = None,
-             key: Optional[pulumi.Input[str]] = None,
-             acl: Optional[pulumi.Input[str]] = None,
-             cache_control: Optional[pulumi.Input[str]] = None,
-             content: Optional[pulumi.Input[str]] = None,
-             content_disposition: Optional[pulumi.Input[str]] = None,
-             content_encoding: Optional[pulumi.Input[str]] = None,
-             content_md5: Optional[pulumi.Input[str]] = None,
-             content_type: Optional[pulumi.Input[str]] = None,
-             expires: Optional[pulumi.Input[str]] = None,
-             kms_key_id: Optional[pulumi.Input[str]] = None,
-             server_side_encryption: Optional[pulumi.Input[str]] = None,
-             source: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket is None:
-            raise TypeError("Missing 'bucket' argument")
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if cache_control is None and 'cacheControl' in kwargs:
-            cache_control = kwargs['cacheControl']
-        if content_disposition is None and 'contentDisposition' in kwargs:
-            content_disposition = kwargs['contentDisposition']
-        if content_encoding is None and 'contentEncoding' in kwargs:
-            content_encoding = kwargs['contentEncoding']
-        if content_md5 is None and 'contentMd5' in kwargs:
-            content_md5 = kwargs['contentMd5']
-        if content_type is None and 'contentType' in kwargs:
-            content_type = kwargs['contentType']
-        if kms_key_id is None and 'kmsKeyId' in kwargs:
-            kms_key_id = kwargs['kmsKeyId']
-        if server_side_encryption is None and 'serverSideEncryption' in kwargs:
-            server_side_encryption = kwargs['serverSideEncryption']
-
-        _setter("bucket", bucket)
-        _setter("key", key)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "key", key)
         if acl is not None:
-            _setter("acl", acl)
+            pulumi.set(__self__, "acl", acl)
         if cache_control is not None:
-            _setter("cache_control", cache_control)
+            pulumi.set(__self__, "cache_control", cache_control)
         if content is not None:
-            _setter("content", content)
+            pulumi.set(__self__, "content", content)
         if content_disposition is not None:
-            _setter("content_disposition", content_disposition)
+            pulumi.set(__self__, "content_disposition", content_disposition)
         if content_encoding is not None:
-            _setter("content_encoding", content_encoding)
+            pulumi.set(__self__, "content_encoding", content_encoding)
         if content_md5 is not None:
-            _setter("content_md5", content_md5)
+            pulumi.set(__self__, "content_md5", content_md5)
         if content_type is not None:
-            _setter("content_type", content_type)
+            pulumi.set(__self__, "content_type", content_type)
         if expires is not None:
-            _setter("expires", expires)
+            pulumi.set(__self__, "expires", expires)
         if kms_key_id is not None:
-            _setter("kms_key_id", kms_key_id)
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if server_side_encryption is not None:
-            _setter("server_side_encryption", server_side_encryption)
+            pulumi.set(__self__, "server_side_encryption", server_side_encryption)
         if source is not None:
-            _setter("source", source)
+            pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter
@@ -325,97 +272,38 @@ class _BucketObjectState:
         :param pulumi.Input[str] source: The path to the source file being uploaded to the bucket.
         :param pulumi.Input[str] version_id: A unique version ID value for the object, if bucket versioning is enabled.
         """
-        _BucketObjectState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            acl=acl,
-            bucket=bucket,
-            cache_control=cache_control,
-            content=content,
-            content_disposition=content_disposition,
-            content_encoding=content_encoding,
-            content_length=content_length,
-            content_md5=content_md5,
-            content_type=content_type,
-            etag=etag,
-            expires=expires,
-            key=key,
-            kms_key_id=kms_key_id,
-            server_side_encryption=server_side_encryption,
-            source=source,
-            version_id=version_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             acl: Optional[pulumi.Input[str]] = None,
-             bucket: Optional[pulumi.Input[str]] = None,
-             cache_control: Optional[pulumi.Input[str]] = None,
-             content: Optional[pulumi.Input[str]] = None,
-             content_disposition: Optional[pulumi.Input[str]] = None,
-             content_encoding: Optional[pulumi.Input[str]] = None,
-             content_length: Optional[pulumi.Input[str]] = None,
-             content_md5: Optional[pulumi.Input[str]] = None,
-             content_type: Optional[pulumi.Input[str]] = None,
-             etag: Optional[pulumi.Input[str]] = None,
-             expires: Optional[pulumi.Input[str]] = None,
-             key: Optional[pulumi.Input[str]] = None,
-             kms_key_id: Optional[pulumi.Input[str]] = None,
-             server_side_encryption: Optional[pulumi.Input[str]] = None,
-             source: Optional[pulumi.Input[str]] = None,
-             version_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cache_control is None and 'cacheControl' in kwargs:
-            cache_control = kwargs['cacheControl']
-        if content_disposition is None and 'contentDisposition' in kwargs:
-            content_disposition = kwargs['contentDisposition']
-        if content_encoding is None and 'contentEncoding' in kwargs:
-            content_encoding = kwargs['contentEncoding']
-        if content_length is None and 'contentLength' in kwargs:
-            content_length = kwargs['contentLength']
-        if content_md5 is None and 'contentMd5' in kwargs:
-            content_md5 = kwargs['contentMd5']
-        if content_type is None and 'contentType' in kwargs:
-            content_type = kwargs['contentType']
-        if kms_key_id is None and 'kmsKeyId' in kwargs:
-            kms_key_id = kwargs['kmsKeyId']
-        if server_side_encryption is None and 'serverSideEncryption' in kwargs:
-            server_side_encryption = kwargs['serverSideEncryption']
-        if version_id is None and 'versionId' in kwargs:
-            version_id = kwargs['versionId']
-
         if acl is not None:
-            _setter("acl", acl)
+            pulumi.set(__self__, "acl", acl)
         if bucket is not None:
-            _setter("bucket", bucket)
+            pulumi.set(__self__, "bucket", bucket)
         if cache_control is not None:
-            _setter("cache_control", cache_control)
+            pulumi.set(__self__, "cache_control", cache_control)
         if content is not None:
-            _setter("content", content)
+            pulumi.set(__self__, "content", content)
         if content_disposition is not None:
-            _setter("content_disposition", content_disposition)
+            pulumi.set(__self__, "content_disposition", content_disposition)
         if content_encoding is not None:
-            _setter("content_encoding", content_encoding)
+            pulumi.set(__self__, "content_encoding", content_encoding)
         if content_length is not None:
-            _setter("content_length", content_length)
+            pulumi.set(__self__, "content_length", content_length)
         if content_md5 is not None:
-            _setter("content_md5", content_md5)
+            pulumi.set(__self__, "content_md5", content_md5)
         if content_type is not None:
-            _setter("content_type", content_type)
+            pulumi.set(__self__, "content_type", content_type)
         if etag is not None:
-            _setter("etag", etag)
+            pulumi.set(__self__, "etag", etag)
         if expires is not None:
-            _setter("expires", expires)
+            pulumi.set(__self__, "expires", expires)
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if kms_key_id is not None:
-            _setter("kms_key_id", kms_key_id)
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if server_side_encryption is not None:
-            _setter("server_side_encryption", server_side_encryption)
+            pulumi.set(__self__, "server_side_encryption", server_side_encryption)
         if source is not None:
-            _setter("source", source)
+            pulumi.set(__self__, "source", source)
         if version_id is not None:
-            _setter("version_id", version_id)
+            pulumi.set(__self__, "version_id", version_id)
 
     @property
     @pulumi.getter
@@ -749,10 +637,6 @@ class BucketObject(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            BucketObjectArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

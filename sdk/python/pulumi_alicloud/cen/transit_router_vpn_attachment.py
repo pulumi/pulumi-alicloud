@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,68 +37,21 @@ class TransitRouterVpnAttachmentArgs:
         :param pulumi.Input[str] transit_router_attachment_name: The name of the VPN connection. The name must be `2` to `128` characters in length, and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
         :param pulumi.Input[str] vpn_owner_id: The owner id of vpn. **NOTE:** You must set `vpn_owner_id`, if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
         """
-        TransitRouterVpnAttachmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            transit_router_id=transit_router_id,
-            vpn_id=vpn_id,
-            zones=zones,
-            auto_publish_route_enabled=auto_publish_route_enabled,
-            cen_id=cen_id,
-            tags=tags,
-            transit_router_attachment_description=transit_router_attachment_description,
-            transit_router_attachment_name=transit_router_attachment_name,
-            vpn_owner_id=vpn_owner_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             transit_router_id: Optional[pulumi.Input[str]] = None,
-             vpn_id: Optional[pulumi.Input[str]] = None,
-             zones: Optional[pulumi.Input[Sequence[pulumi.Input['TransitRouterVpnAttachmentZoneArgs']]]] = None,
-             auto_publish_route_enabled: Optional[pulumi.Input[bool]] = None,
-             cen_id: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             transit_router_attachment_description: Optional[pulumi.Input[str]] = None,
-             transit_router_attachment_name: Optional[pulumi.Input[str]] = None,
-             vpn_owner_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if transit_router_id is None and 'transitRouterId' in kwargs:
-            transit_router_id = kwargs['transitRouterId']
-        if transit_router_id is None:
-            raise TypeError("Missing 'transit_router_id' argument")
-        if vpn_id is None and 'vpnId' in kwargs:
-            vpn_id = kwargs['vpnId']
-        if vpn_id is None:
-            raise TypeError("Missing 'vpn_id' argument")
-        if zones is None:
-            raise TypeError("Missing 'zones' argument")
-        if auto_publish_route_enabled is None and 'autoPublishRouteEnabled' in kwargs:
-            auto_publish_route_enabled = kwargs['autoPublishRouteEnabled']
-        if cen_id is None and 'cenId' in kwargs:
-            cen_id = kwargs['cenId']
-        if transit_router_attachment_description is None and 'transitRouterAttachmentDescription' in kwargs:
-            transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
-        if transit_router_attachment_name is None and 'transitRouterAttachmentName' in kwargs:
-            transit_router_attachment_name = kwargs['transitRouterAttachmentName']
-        if vpn_owner_id is None and 'vpnOwnerId' in kwargs:
-            vpn_owner_id = kwargs['vpnOwnerId']
-
-        _setter("transit_router_id", transit_router_id)
-        _setter("vpn_id", vpn_id)
-        _setter("zones", zones)
+        pulumi.set(__self__, "transit_router_id", transit_router_id)
+        pulumi.set(__self__, "vpn_id", vpn_id)
+        pulumi.set(__self__, "zones", zones)
         if auto_publish_route_enabled is not None:
-            _setter("auto_publish_route_enabled", auto_publish_route_enabled)
+            pulumi.set(__self__, "auto_publish_route_enabled", auto_publish_route_enabled)
         if cen_id is not None:
-            _setter("cen_id", cen_id)
+            pulumi.set(__self__, "cen_id", cen_id)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if transit_router_attachment_description is not None:
-            _setter("transit_router_attachment_description", transit_router_attachment_description)
+            pulumi.set(__self__, "transit_router_attachment_description", transit_router_attachment_description)
         if transit_router_attachment_name is not None:
-            _setter("transit_router_attachment_name", transit_router_attachment_name)
+            pulumi.set(__self__, "transit_router_attachment_name", transit_router_attachment_name)
         if vpn_owner_id is not None:
-            _setter("vpn_owner_id", vpn_owner_id)
+            pulumi.set(__self__, "vpn_owner_id", vpn_owner_id)
 
     @property
     @pulumi.getter(name="transitRouterId")
@@ -235,69 +188,26 @@ class _TransitRouterVpnAttachmentState:
         :param pulumi.Input[str] vpn_owner_id: The owner id of vpn. **NOTE:** You must set `vpn_owner_id`, if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
         :param pulumi.Input[Sequence[pulumi.Input['TransitRouterVpnAttachmentZoneArgs']]] zones: The list of zone mapping. See `zone` below.
         """
-        _TransitRouterVpnAttachmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto_publish_route_enabled=auto_publish_route_enabled,
-            cen_id=cen_id,
-            status=status,
-            tags=tags,
-            transit_router_attachment_description=transit_router_attachment_description,
-            transit_router_attachment_name=transit_router_attachment_name,
-            transit_router_id=transit_router_id,
-            vpn_id=vpn_id,
-            vpn_owner_id=vpn_owner_id,
-            zones=zones,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto_publish_route_enabled: Optional[pulumi.Input[bool]] = None,
-             cen_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             transit_router_attachment_description: Optional[pulumi.Input[str]] = None,
-             transit_router_attachment_name: Optional[pulumi.Input[str]] = None,
-             transit_router_id: Optional[pulumi.Input[str]] = None,
-             vpn_id: Optional[pulumi.Input[str]] = None,
-             vpn_owner_id: Optional[pulumi.Input[str]] = None,
-             zones: Optional[pulumi.Input[Sequence[pulumi.Input['TransitRouterVpnAttachmentZoneArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_publish_route_enabled is None and 'autoPublishRouteEnabled' in kwargs:
-            auto_publish_route_enabled = kwargs['autoPublishRouteEnabled']
-        if cen_id is None and 'cenId' in kwargs:
-            cen_id = kwargs['cenId']
-        if transit_router_attachment_description is None and 'transitRouterAttachmentDescription' in kwargs:
-            transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
-        if transit_router_attachment_name is None and 'transitRouterAttachmentName' in kwargs:
-            transit_router_attachment_name = kwargs['transitRouterAttachmentName']
-        if transit_router_id is None and 'transitRouterId' in kwargs:
-            transit_router_id = kwargs['transitRouterId']
-        if vpn_id is None and 'vpnId' in kwargs:
-            vpn_id = kwargs['vpnId']
-        if vpn_owner_id is None and 'vpnOwnerId' in kwargs:
-            vpn_owner_id = kwargs['vpnOwnerId']
-
         if auto_publish_route_enabled is not None:
-            _setter("auto_publish_route_enabled", auto_publish_route_enabled)
+            pulumi.set(__self__, "auto_publish_route_enabled", auto_publish_route_enabled)
         if cen_id is not None:
-            _setter("cen_id", cen_id)
+            pulumi.set(__self__, "cen_id", cen_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if transit_router_attachment_description is not None:
-            _setter("transit_router_attachment_description", transit_router_attachment_description)
+            pulumi.set(__self__, "transit_router_attachment_description", transit_router_attachment_description)
         if transit_router_attachment_name is not None:
-            _setter("transit_router_attachment_name", transit_router_attachment_name)
+            pulumi.set(__self__, "transit_router_attachment_name", transit_router_attachment_name)
         if transit_router_id is not None:
-            _setter("transit_router_id", transit_router_id)
+            pulumi.set(__self__, "transit_router_id", transit_router_id)
         if vpn_id is not None:
-            _setter("vpn_id", vpn_id)
+            pulumi.set(__self__, "vpn_id", vpn_id)
         if vpn_owner_id is not None:
-            _setter("vpn_owner_id", vpn_owner_id)
+            pulumi.set(__self__, "vpn_owner_id", vpn_owner_id)
         if zones is not None:
-            _setter("zones", zones)
+            pulumi.set(__self__, "zones", zones)
 
     @property
     @pulumi.getter(name="autoPublishRouteEnabled")
@@ -653,10 +563,6 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TransitRouterVpnAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

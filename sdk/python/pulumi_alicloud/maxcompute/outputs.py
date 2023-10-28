@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -54,27 +54,10 @@ class ProjectIpWhiteList(dict):
         :param str ip_list: Classic network IP white list.
         :param str vpc_ip_list: VPC network whitelist.
         """
-        ProjectIpWhiteList._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ip_list=ip_list,
-            vpc_ip_list=vpc_ip_list,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ip_list: Optional[str] = None,
-             vpc_ip_list: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ip_list is None and 'ipList' in kwargs:
-            ip_list = kwargs['ipList']
-        if vpc_ip_list is None and 'vpcIpList' in kwargs:
-            vpc_ip_list = kwargs['vpcIpList']
-
         if ip_list is not None:
-            _setter("ip_list", ip_list)
+            pulumi.set(__self__, "ip_list", ip_list)
         if vpc_ip_list is not None:
-            _setter("vpc_ip_list", vpc_ip_list)
+            pulumi.set(__self__, "vpc_ip_list", vpc_ip_list)
 
     @property
     @pulumi.getter(name="ipList")
@@ -141,59 +124,22 @@ class ProjectProperties(dict):
         :param str timezone: Project time zone.
         :param str type_system: Type system.
         """
-        ProjectProperties._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_full_scan=allow_full_scan,
-            enable_decimal2=enable_decimal2,
-            encryption=encryption,
-            retention_days=retention_days,
-            sql_metering_max=sql_metering_max,
-            table_lifecycle=table_lifecycle,
-            timezone=timezone,
-            type_system=type_system,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_full_scan: Optional[bool] = None,
-             enable_decimal2: Optional[bool] = None,
-             encryption: Optional['outputs.ProjectPropertiesEncryption'] = None,
-             retention_days: Optional[int] = None,
-             sql_metering_max: Optional[str] = None,
-             table_lifecycle: Optional['outputs.ProjectPropertiesTableLifecycle'] = None,
-             timezone: Optional[str] = None,
-             type_system: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_full_scan is None and 'allowFullScan' in kwargs:
-            allow_full_scan = kwargs['allowFullScan']
-        if enable_decimal2 is None and 'enableDecimal2' in kwargs:
-            enable_decimal2 = kwargs['enableDecimal2']
-        if retention_days is None and 'retentionDays' in kwargs:
-            retention_days = kwargs['retentionDays']
-        if sql_metering_max is None and 'sqlMeteringMax' in kwargs:
-            sql_metering_max = kwargs['sqlMeteringMax']
-        if table_lifecycle is None and 'tableLifecycle' in kwargs:
-            table_lifecycle = kwargs['tableLifecycle']
-        if type_system is None and 'typeSystem' in kwargs:
-            type_system = kwargs['typeSystem']
-
         if allow_full_scan is not None:
-            _setter("allow_full_scan", allow_full_scan)
+            pulumi.set(__self__, "allow_full_scan", allow_full_scan)
         if enable_decimal2 is not None:
-            _setter("enable_decimal2", enable_decimal2)
+            pulumi.set(__self__, "enable_decimal2", enable_decimal2)
         if encryption is not None:
-            _setter("encryption", encryption)
+            pulumi.set(__self__, "encryption", encryption)
         if retention_days is not None:
-            _setter("retention_days", retention_days)
+            pulumi.set(__self__, "retention_days", retention_days)
         if sql_metering_max is not None:
-            _setter("sql_metering_max", sql_metering_max)
+            pulumi.set(__self__, "sql_metering_max", sql_metering_max)
         if table_lifecycle is not None:
-            _setter("table_lifecycle", table_lifecycle)
+            pulumi.set(__self__, "table_lifecycle", table_lifecycle)
         if timezone is not None:
-            _setter("timezone", timezone)
+            pulumi.set(__self__, "timezone", timezone)
         if type_system is not None:
-            _setter("type_system", type_system)
+            pulumi.set(__self__, "type_system", type_system)
 
     @property
     @pulumi.getter(name="allowFullScan")
@@ -271,27 +217,12 @@ class ProjectPropertiesEncryption(dict):
         :param bool enable: Whether to open.
         :param str key: Encryption algorithm key.
         """
-        ProjectPropertiesEncryption._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            algorithm=algorithm,
-            enable=enable,
-            key=key,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             algorithm: Optional[str] = None,
-             enable: Optional[bool] = None,
-             key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if algorithm is not None:
-            _setter("algorithm", algorithm)
+            pulumi.set(__self__, "algorithm", algorithm)
         if enable is not None:
-            _setter("enable", enable)
+            pulumi.set(__self__, "enable", enable)
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
 
     @property
     @pulumi.getter
@@ -327,23 +258,10 @@ class ProjectPropertiesTableLifecycle(dict):
         :param str type: Life cycle type.
         :param str value: The value of the life cycle.
         """
-        ProjectPropertiesTableLifecycle._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            type=type,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             type: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -410,57 +328,20 @@ class ProjectSecurityProperties(dict):
         :param bool using_acl: Whether to turn on ACL.
         :param bool using_policy: Whether to enable Policy.
         """
-        ProjectSecurityProperties._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enable_download_privilege=enable_download_privilege,
-            label_security=label_security,
-            object_creator_has_access_permission=object_creator_has_access_permission,
-            object_creator_has_grant_permission=object_creator_has_grant_permission,
-            project_protection=project_protection,
-            using_acl=using_acl,
-            using_policy=using_policy,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enable_download_privilege: Optional[bool] = None,
-             label_security: Optional[bool] = None,
-             object_creator_has_access_permission: Optional[bool] = None,
-             object_creator_has_grant_permission: Optional[bool] = None,
-             project_protection: Optional['outputs.ProjectSecurityPropertiesProjectProtection'] = None,
-             using_acl: Optional[bool] = None,
-             using_policy: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enable_download_privilege is None and 'enableDownloadPrivilege' in kwargs:
-            enable_download_privilege = kwargs['enableDownloadPrivilege']
-        if label_security is None and 'labelSecurity' in kwargs:
-            label_security = kwargs['labelSecurity']
-        if object_creator_has_access_permission is None and 'objectCreatorHasAccessPermission' in kwargs:
-            object_creator_has_access_permission = kwargs['objectCreatorHasAccessPermission']
-        if object_creator_has_grant_permission is None and 'objectCreatorHasGrantPermission' in kwargs:
-            object_creator_has_grant_permission = kwargs['objectCreatorHasGrantPermission']
-        if project_protection is None and 'projectProtection' in kwargs:
-            project_protection = kwargs['projectProtection']
-        if using_acl is None and 'usingAcl' in kwargs:
-            using_acl = kwargs['usingAcl']
-        if using_policy is None and 'usingPolicy' in kwargs:
-            using_policy = kwargs['usingPolicy']
-
         if enable_download_privilege is not None:
-            _setter("enable_download_privilege", enable_download_privilege)
+            pulumi.set(__self__, "enable_download_privilege", enable_download_privilege)
         if label_security is not None:
-            _setter("label_security", label_security)
+            pulumi.set(__self__, "label_security", label_security)
         if object_creator_has_access_permission is not None:
-            _setter("object_creator_has_access_permission", object_creator_has_access_permission)
+            pulumi.set(__self__, "object_creator_has_access_permission", object_creator_has_access_permission)
         if object_creator_has_grant_permission is not None:
-            _setter("object_creator_has_grant_permission", object_creator_has_grant_permission)
+            pulumi.set(__self__, "object_creator_has_grant_permission", object_creator_has_grant_permission)
         if project_protection is not None:
-            _setter("project_protection", project_protection)
+            pulumi.set(__self__, "project_protection", project_protection)
         if using_acl is not None:
-            _setter("using_acl", using_acl)
+            pulumi.set(__self__, "using_acl", using_acl)
         if using_policy is not None:
-            _setter("using_policy", using_policy)
+            pulumi.set(__self__, "using_policy", using_policy)
 
     @property
     @pulumi.getter(name="enableDownloadPrivilege")
@@ -545,25 +426,10 @@ class ProjectSecurityPropertiesProjectProtection(dict):
         :param str exception_policy: Exclusion policy.
         :param bool protected: Is it turned on.
         """
-        ProjectSecurityPropertiesProjectProtection._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            exception_policy=exception_policy,
-            protected=protected,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             exception_policy: Optional[str] = None,
-             protected: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if exception_policy is None and 'exceptionPolicy' in kwargs:
-            exception_policy = kwargs['exceptionPolicy']
-
         if exception_policy is not None:
-            _setter("exception_policy", exception_policy)
+            pulumi.set(__self__, "exception_policy", exception_policy)
         if protected is not None:
-            _setter("protected", protected)
+            pulumi.set(__self__, "protected", protected)
 
     @property
     @pulumi.getter(name="exceptionPolicy")
@@ -606,73 +472,16 @@ class GetProjectsProjectResult(dict):
         :param str status: The status of the resource
         :param str type: Project type
         """
-        GetProjectsProjectResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            comment=comment,
-            default_quota=default_quota,
-            id=id,
-            ip_white_list=ip_white_list,
-            owner=owner,
-            project_name=project_name,
-            properties=properties,
-            security_properties=security_properties,
-            status=status,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             comment: Optional[str] = None,
-             default_quota: Optional[str] = None,
-             id: Optional[str] = None,
-             ip_white_list: Optional['outputs.GetProjectsProjectIpWhiteListResult'] = None,
-             owner: Optional[str] = None,
-             project_name: Optional[str] = None,
-             properties: Optional['outputs.GetProjectsProjectPropertiesResult'] = None,
-             security_properties: Optional['outputs.GetProjectsProjectSecurityPropertiesResult'] = None,
-             status: Optional[str] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if comment is None:
-            raise TypeError("Missing 'comment' argument")
-        if default_quota is None and 'defaultQuota' in kwargs:
-            default_quota = kwargs['defaultQuota']
-        if default_quota is None:
-            raise TypeError("Missing 'default_quota' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if ip_white_list is None and 'ipWhiteList' in kwargs:
-            ip_white_list = kwargs['ipWhiteList']
-        if ip_white_list is None:
-            raise TypeError("Missing 'ip_white_list' argument")
-        if owner is None:
-            raise TypeError("Missing 'owner' argument")
-        if project_name is None and 'projectName' in kwargs:
-            project_name = kwargs['projectName']
-        if project_name is None:
-            raise TypeError("Missing 'project_name' argument")
-        if properties is None:
-            raise TypeError("Missing 'properties' argument")
-        if security_properties is None and 'securityProperties' in kwargs:
-            security_properties = kwargs['securityProperties']
-        if security_properties is None:
-            raise TypeError("Missing 'security_properties' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("comment", comment)
-        _setter("default_quota", default_quota)
-        _setter("id", id)
-        _setter("ip_white_list", ip_white_list)
-        _setter("owner", owner)
-        _setter("project_name", project_name)
-        _setter("properties", properties)
-        _setter("security_properties", security_properties)
-        _setter("status", status)
-        _setter("type", type)
+        pulumi.set(__self__, "comment", comment)
+        pulumi.set(__self__, "default_quota", default_quota)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip_white_list", ip_white_list)
+        pulumi.set(__self__, "owner", owner)
+        pulumi.set(__self__, "project_name", project_name)
+        pulumi.set(__self__, "properties", properties)
+        pulumi.set(__self__, "security_properties", security_properties)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -761,29 +570,8 @@ class GetProjectsProjectIpWhiteListResult(dict):
         :param str ip_list: Classic network IP white list.
         :param str vpc_ip_list: VPC network whitelist.
         """
-        GetProjectsProjectIpWhiteListResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ip_list=ip_list,
-            vpc_ip_list=vpc_ip_list,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ip_list: Optional[str] = None,
-             vpc_ip_list: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ip_list is None and 'ipList' in kwargs:
-            ip_list = kwargs['ipList']
-        if ip_list is None:
-            raise TypeError("Missing 'ip_list' argument")
-        if vpc_ip_list is None and 'vpcIpList' in kwargs:
-            vpc_ip_list = kwargs['vpcIpList']
-        if vpc_ip_list is None:
-            raise TypeError("Missing 'vpc_ip_list' argument")
-
-        _setter("ip_list", ip_list)
-        _setter("vpc_ip_list", vpc_ip_list)
+        pulumi.set(__self__, "ip_list", ip_list)
+        pulumi.set(__self__, "vpc_ip_list", vpc_ip_list)
 
     @property
     @pulumi.getter(name="ipList")
@@ -823,67 +611,14 @@ class GetProjectsProjectPropertiesResult(dict):
         :param str timezone: Project time zone.
         :param str type_system: Type system.
         """
-        GetProjectsProjectPropertiesResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_full_scan=allow_full_scan,
-            enable_decimal2=enable_decimal2,
-            encryption=encryption,
-            retention_days=retention_days,
-            sql_metering_max=sql_metering_max,
-            table_lifecycle=table_lifecycle,
-            timezone=timezone,
-            type_system=type_system,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_full_scan: Optional[bool] = None,
-             enable_decimal2: Optional[bool] = None,
-             encryption: Optional['outputs.GetProjectsProjectPropertiesEncryptionResult'] = None,
-             retention_days: Optional[str] = None,
-             sql_metering_max: Optional[str] = None,
-             table_lifecycle: Optional['outputs.GetProjectsProjectPropertiesTableLifecycleResult'] = None,
-             timezone: Optional[str] = None,
-             type_system: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_full_scan is None and 'allowFullScan' in kwargs:
-            allow_full_scan = kwargs['allowFullScan']
-        if allow_full_scan is None:
-            raise TypeError("Missing 'allow_full_scan' argument")
-        if enable_decimal2 is None and 'enableDecimal2' in kwargs:
-            enable_decimal2 = kwargs['enableDecimal2']
-        if enable_decimal2 is None:
-            raise TypeError("Missing 'enable_decimal2' argument")
-        if encryption is None:
-            raise TypeError("Missing 'encryption' argument")
-        if retention_days is None and 'retentionDays' in kwargs:
-            retention_days = kwargs['retentionDays']
-        if retention_days is None:
-            raise TypeError("Missing 'retention_days' argument")
-        if sql_metering_max is None and 'sqlMeteringMax' in kwargs:
-            sql_metering_max = kwargs['sqlMeteringMax']
-        if sql_metering_max is None:
-            raise TypeError("Missing 'sql_metering_max' argument")
-        if table_lifecycle is None and 'tableLifecycle' in kwargs:
-            table_lifecycle = kwargs['tableLifecycle']
-        if table_lifecycle is None:
-            raise TypeError("Missing 'table_lifecycle' argument")
-        if timezone is None:
-            raise TypeError("Missing 'timezone' argument")
-        if type_system is None and 'typeSystem' in kwargs:
-            type_system = kwargs['typeSystem']
-        if type_system is None:
-            raise TypeError("Missing 'type_system' argument")
-
-        _setter("allow_full_scan", allow_full_scan)
-        _setter("enable_decimal2", enable_decimal2)
-        _setter("encryption", encryption)
-        _setter("retention_days", retention_days)
-        _setter("sql_metering_max", sql_metering_max)
-        _setter("table_lifecycle", table_lifecycle)
-        _setter("timezone", timezone)
-        _setter("type_system", type_system)
+        pulumi.set(__self__, "allow_full_scan", allow_full_scan)
+        pulumi.set(__self__, "enable_decimal2", enable_decimal2)
+        pulumi.set(__self__, "encryption", encryption)
+        pulumi.set(__self__, "retention_days", retention_days)
+        pulumi.set(__self__, "sql_metering_max", sql_metering_max)
+        pulumi.set(__self__, "table_lifecycle", table_lifecycle)
+        pulumi.set(__self__, "timezone", timezone)
+        pulumi.set(__self__, "type_system", type_system)
 
     @property
     @pulumi.getter(name="allowFullScan")
@@ -961,30 +696,9 @@ class GetProjectsProjectPropertiesEncryptionResult(dict):
         :param bool enable: Whether to open.
         :param str key: Encryption algorithm key.
         """
-        GetProjectsProjectPropertiesEncryptionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            algorithm=algorithm,
-            enable=enable,
-            key=key,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             algorithm: Optional[str] = None,
-             enable: Optional[bool] = None,
-             key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if algorithm is None:
-            raise TypeError("Missing 'algorithm' argument")
-        if enable is None:
-            raise TypeError("Missing 'enable' argument")
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-
-        _setter("algorithm", algorithm)
-        _setter("enable", enable)
-        _setter("key", key)
+        pulumi.set(__self__, "algorithm", algorithm)
+        pulumi.set(__self__, "enable", enable)
+        pulumi.set(__self__, "key", key)
 
     @property
     @pulumi.getter
@@ -1020,25 +734,8 @@ class GetProjectsProjectPropertiesTableLifecycleResult(dict):
         :param str type: Project type
         :param str value: The value of the life cycle.
         """
-        GetProjectsProjectPropertiesTableLifecycleResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            type=type,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             type: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("type", type)
-        _setter("value", value)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -1076,64 +773,13 @@ class GetProjectsProjectSecurityPropertiesResult(dict):
         :param bool using_acl: Whether to turn on ACL.
         :param bool using_policy: Whether to enable Policy.
         """
-        GetProjectsProjectSecurityPropertiesResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enable_download_privilege=enable_download_privilege,
-            label_security=label_security,
-            object_creator_has_access_permission=object_creator_has_access_permission,
-            object_creator_has_grant_permission=object_creator_has_grant_permission,
-            project_protection=project_protection,
-            using_acl=using_acl,
-            using_policy=using_policy,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enable_download_privilege: Optional[bool] = None,
-             label_security: Optional[bool] = None,
-             object_creator_has_access_permission: Optional[bool] = None,
-             object_creator_has_grant_permission: Optional[bool] = None,
-             project_protection: Optional['outputs.GetProjectsProjectSecurityPropertiesProjectProtectionResult'] = None,
-             using_acl: Optional[bool] = None,
-             using_policy: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enable_download_privilege is None and 'enableDownloadPrivilege' in kwargs:
-            enable_download_privilege = kwargs['enableDownloadPrivilege']
-        if enable_download_privilege is None:
-            raise TypeError("Missing 'enable_download_privilege' argument")
-        if label_security is None and 'labelSecurity' in kwargs:
-            label_security = kwargs['labelSecurity']
-        if label_security is None:
-            raise TypeError("Missing 'label_security' argument")
-        if object_creator_has_access_permission is None and 'objectCreatorHasAccessPermission' in kwargs:
-            object_creator_has_access_permission = kwargs['objectCreatorHasAccessPermission']
-        if object_creator_has_access_permission is None:
-            raise TypeError("Missing 'object_creator_has_access_permission' argument")
-        if object_creator_has_grant_permission is None and 'objectCreatorHasGrantPermission' in kwargs:
-            object_creator_has_grant_permission = kwargs['objectCreatorHasGrantPermission']
-        if object_creator_has_grant_permission is None:
-            raise TypeError("Missing 'object_creator_has_grant_permission' argument")
-        if project_protection is None and 'projectProtection' in kwargs:
-            project_protection = kwargs['projectProtection']
-        if project_protection is None:
-            raise TypeError("Missing 'project_protection' argument")
-        if using_acl is None and 'usingAcl' in kwargs:
-            using_acl = kwargs['usingAcl']
-        if using_acl is None:
-            raise TypeError("Missing 'using_acl' argument")
-        if using_policy is None and 'usingPolicy' in kwargs:
-            using_policy = kwargs['usingPolicy']
-        if using_policy is None:
-            raise TypeError("Missing 'using_policy' argument")
-
-        _setter("enable_download_privilege", enable_download_privilege)
-        _setter("label_security", label_security)
-        _setter("object_creator_has_access_permission", object_creator_has_access_permission)
-        _setter("object_creator_has_grant_permission", object_creator_has_grant_permission)
-        _setter("project_protection", project_protection)
-        _setter("using_acl", using_acl)
-        _setter("using_policy", using_policy)
+        pulumi.set(__self__, "enable_download_privilege", enable_download_privilege)
+        pulumi.set(__self__, "label_security", label_security)
+        pulumi.set(__self__, "object_creator_has_access_permission", object_creator_has_access_permission)
+        pulumi.set(__self__, "object_creator_has_grant_permission", object_creator_has_grant_permission)
+        pulumi.set(__self__, "project_protection", project_protection)
+        pulumi.set(__self__, "using_acl", using_acl)
+        pulumi.set(__self__, "using_policy", using_policy)
 
     @property
     @pulumi.getter(name="enableDownloadPrivilege")
@@ -1201,27 +847,8 @@ class GetProjectsProjectSecurityPropertiesProjectProtectionResult(dict):
         :param str exception_policy: Exclusion policy.
         :param bool protected: Is it turned on.
         """
-        GetProjectsProjectSecurityPropertiesProjectProtectionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            exception_policy=exception_policy,
-            protected=protected,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             exception_policy: Optional[str] = None,
-             protected: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if exception_policy is None and 'exceptionPolicy' in kwargs:
-            exception_policy = kwargs['exceptionPolicy']
-        if exception_policy is None:
-            raise TypeError("Missing 'exception_policy' argument")
-        if protected is None:
-            raise TypeError("Missing 'protected' argument")
-
-        _setter("exception_policy", exception_policy)
-        _setter("protected", protected)
+        pulumi.set(__self__, "exception_policy", exception_policy)
+        pulumi.set(__self__, "protected", protected)
 
     @property
     @pulumi.getter(name="exceptionPolicy")

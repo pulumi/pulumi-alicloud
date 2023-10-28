@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -33,30 +33,9 @@ class PolicyStatement(dict):
         :param str effect: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
         :param Sequence[str] resources: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
         """
-        PolicyStatement._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            actions=actions,
-            effect=effect,
-            resources=resources,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             actions: Optional[Sequence[str]] = None,
-             effect: Optional[str] = None,
-             resources: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if actions is None:
-            raise TypeError("Missing 'actions' argument")
-        if effect is None:
-            raise TypeError("Missing 'effect' argument")
-        if resources is None:
-            raise TypeError("Missing 'resources' argument")
-
-        _setter("actions", actions)
-        _setter("effect", effect)
-        _setter("resources", resources)
+        pulumi.set(__self__, "actions", actions)
+        pulumi.set(__self__, "effect", effect)
+        pulumi.set(__self__, "resources", resources)
 
     @property
     @pulumi.getter
@@ -92,25 +71,8 @@ class GetGroupsGroupResult(dict):
         :param str comments: Comments of the group.
         :param str name: Name of the group.
         """
-        GetGroupsGroupResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            comments=comments,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             comments: Optional[str] = None,
-             name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if comments is None:
-            raise TypeError("Missing 'comments' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("comments", comments)
-        _setter("name", name)
+        pulumi.set(__self__, "comments", comments)
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -160,96 +122,19 @@ class GetPoliciesPolicyResult(dict):
         :param str user_name: Filter results by a specific user name. Returned policies are attached to the specified user.
         :param str version_id: The ID of default policy.
         """
-        GetPoliciesPolicyResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            attachment_count=attachment_count,
-            create_date=create_date,
-            default_version=default_version,
-            description=description,
-            document=document,
-            id=id,
-            name=name,
-            policy_document=policy_document,
-            policy_name=policy_name,
-            type=type,
-            update_date=update_date,
-            user_name=user_name,
-            version_id=version_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             attachment_count: Optional[int] = None,
-             create_date: Optional[str] = None,
-             default_version: Optional[str] = None,
-             description: Optional[str] = None,
-             document: Optional[str] = None,
-             id: Optional[str] = None,
-             name: Optional[str] = None,
-             policy_document: Optional[str] = None,
-             policy_name: Optional[str] = None,
-             type: Optional[str] = None,
-             update_date: Optional[str] = None,
-             user_name: Optional[str] = None,
-             version_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if attachment_count is None and 'attachmentCount' in kwargs:
-            attachment_count = kwargs['attachmentCount']
-        if attachment_count is None:
-            raise TypeError("Missing 'attachment_count' argument")
-        if create_date is None and 'createDate' in kwargs:
-            create_date = kwargs['createDate']
-        if create_date is None:
-            raise TypeError("Missing 'create_date' argument")
-        if default_version is None and 'defaultVersion' in kwargs:
-            default_version = kwargs['defaultVersion']
-        if default_version is None:
-            raise TypeError("Missing 'default_version' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if document is None:
-            raise TypeError("Missing 'document' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if policy_document is None and 'policyDocument' in kwargs:
-            policy_document = kwargs['policyDocument']
-        if policy_document is None:
-            raise TypeError("Missing 'policy_document' argument")
-        if policy_name is None and 'policyName' in kwargs:
-            policy_name = kwargs['policyName']
-        if policy_name is None:
-            raise TypeError("Missing 'policy_name' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if update_date is None and 'updateDate' in kwargs:
-            update_date = kwargs['updateDate']
-        if update_date is None:
-            raise TypeError("Missing 'update_date' argument")
-        if user_name is None and 'userName' in kwargs:
-            user_name = kwargs['userName']
-        if user_name is None:
-            raise TypeError("Missing 'user_name' argument")
-        if version_id is None and 'versionId' in kwargs:
-            version_id = kwargs['versionId']
-        if version_id is None:
-            raise TypeError("Missing 'version_id' argument")
-
-        _setter("attachment_count", attachment_count)
-        _setter("create_date", create_date)
-        _setter("default_version", default_version)
-        _setter("description", description)
-        _setter("document", document)
-        _setter("id", id)
-        _setter("name", name)
-        _setter("policy_document", policy_document)
-        _setter("policy_name", policy_name)
-        _setter("type", type)
-        _setter("update_date", update_date)
-        _setter("user_name", user_name)
-        _setter("version_id", version_id)
+        pulumi.set(__self__, "attachment_count", attachment_count)
+        pulumi.set(__self__, "create_date", create_date)
+        pulumi.set(__self__, "default_version", default_version)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "document", document)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "policy_document", policy_document)
+        pulumi.set(__self__, "policy_name", policy_name)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "update_date", update_date)
+        pulumi.set(__self__, "user_name", user_name)
+        pulumi.set(__self__, "version_id", version_id)
 
     @property
     @pulumi.getter(name="attachmentCount")
@@ -371,36 +256,15 @@ class GetPolicyDocumentStatementResult(dict):
         :param Sequence['GetPolicyDocumentStatementPrincipalArgs'] principals: Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See `principal` below.
         :param Sequence[str] resources: List of specific objects which will be authorized. If you want to create a RAM policy document, it must be set.
         """
-        GetPolicyDocumentStatementResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            actions=actions,
-            conditions=conditions,
-            effect=effect,
-            principals=principals,
-            resources=resources,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             actions: Optional[Sequence[str]] = None,
-             conditions: Optional[Sequence['outputs.GetPolicyDocumentStatementConditionResult']] = None,
-             effect: Optional[str] = None,
-             principals: Optional[Sequence['outputs.GetPolicyDocumentStatementPrincipalResult']] = None,
-             resources: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if actions is None:
-            raise TypeError("Missing 'actions' argument")
-
-        _setter("actions", actions)
+        pulumi.set(__self__, "actions", actions)
         if conditions is not None:
-            _setter("conditions", conditions)
+            pulumi.set(__self__, "conditions", conditions)
         if effect is not None:
-            _setter("effect", effect)
+            pulumi.set(__self__, "effect", effect)
         if principals is not None:
-            _setter("principals", principals)
+            pulumi.set(__self__, "principals", principals)
         if resources is not None:
-            _setter("resources", resources)
+            pulumi.set(__self__, "resources", resources)
 
     @property
     @pulumi.getter
@@ -454,30 +318,9 @@ class GetPolicyDocumentStatementConditionResult(dict):
         :param Sequence[str] values: The values of the condition.
         :param str variable: The variable of the condition.
         """
-        GetPolicyDocumentStatementConditionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            operator=operator,
-            values=values,
-            variable=variable,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             operator: Optional[str] = None,
-             values: Optional[Sequence[str]] = None,
-             variable: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if operator is None:
-            raise TypeError("Missing 'operator' argument")
-        if values is None:
-            raise TypeError("Missing 'values' argument")
-        if variable is None:
-            raise TypeError("Missing 'variable' argument")
-
-        _setter("operator", operator)
-        _setter("values", values)
-        _setter("variable", variable)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "values", values)
+        pulumi.set(__self__, "variable", variable)
 
     @property
     @pulumi.getter
@@ -513,25 +356,8 @@ class GetPolicyDocumentStatementPrincipalResult(dict):
         :param str entity: The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
         :param Sequence[str] identifiers: The identifiers of the principal.
         """
-        GetPolicyDocumentStatementPrincipalResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            entity=entity,
-            identifiers=identifiers,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             entity: Optional[str] = None,
-             identifiers: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if entity is None:
-            raise TypeError("Missing 'entity' argument")
-        if identifiers is None:
-            raise TypeError("Missing 'identifiers' argument")
-
-        _setter("entity", entity)
-        _setter("identifiers", identifiers)
+        pulumi.set(__self__, "entity", entity)
+        pulumi.set(__self__, "identifiers", identifiers)
 
     @property
     @pulumi.getter
@@ -571,61 +397,14 @@ class GetRolesRoleResult(dict):
         :param str name: Name of the role.
         :param str update_date: Update date of the role.
         """
-        GetRolesRoleResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            arn=arn,
-            assume_role_policy_document=assume_role_policy_document,
-            create_date=create_date,
-            description=description,
-            document=document,
-            id=id,
-            name=name,
-            update_date=update_date,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             arn: Optional[str] = None,
-             assume_role_policy_document: Optional[str] = None,
-             create_date: Optional[str] = None,
-             description: Optional[str] = None,
-             document: Optional[str] = None,
-             id: Optional[str] = None,
-             name: Optional[str] = None,
-             update_date: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if arn is None:
-            raise TypeError("Missing 'arn' argument")
-        if assume_role_policy_document is None and 'assumeRolePolicyDocument' in kwargs:
-            assume_role_policy_document = kwargs['assumeRolePolicyDocument']
-        if assume_role_policy_document is None:
-            raise TypeError("Missing 'assume_role_policy_document' argument")
-        if create_date is None and 'createDate' in kwargs:
-            create_date = kwargs['createDate']
-        if create_date is None:
-            raise TypeError("Missing 'create_date' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if document is None:
-            raise TypeError("Missing 'document' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if update_date is None and 'updateDate' in kwargs:
-            update_date = kwargs['updateDate']
-        if update_date is None:
-            raise TypeError("Missing 'update_date' argument")
-
-        _setter("arn", arn)
-        _setter("assume_role_policy_document", assume_role_policy_document)
-        _setter("create_date", create_date)
-        _setter("description", description)
-        _setter("document", document)
-        _setter("id", id)
-        _setter("name", name)
-        _setter("update_date", update_date)
+        pulumi.set(__self__, "arn", arn)
+        pulumi.set(__self__, "assume_role_policy_document", assume_role_policy_document)
+        pulumi.set(__self__, "create_date", create_date)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "document", document)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "update_date", update_date)
 
     @property
     @pulumi.getter
@@ -709,51 +488,12 @@ class GetSamlProvidersProviderResult(dict):
         :param str saml_provider_name: The saml provider name.
         :param str update_date: The update time.
         """
-        GetSamlProvidersProviderResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            arn=arn,
-            description=description,
-            encodedsaml_metadata_document=encodedsaml_metadata_document,
-            id=id,
-            saml_provider_name=saml_provider_name,
-            update_date=update_date,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             arn: Optional[str] = None,
-             description: Optional[str] = None,
-             encodedsaml_metadata_document: Optional[str] = None,
-             id: Optional[str] = None,
-             saml_provider_name: Optional[str] = None,
-             update_date: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if arn is None:
-            raise TypeError("Missing 'arn' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if encodedsaml_metadata_document is None and 'encodedsamlMetadataDocument' in kwargs:
-            encodedsaml_metadata_document = kwargs['encodedsamlMetadataDocument']
-        if encodedsaml_metadata_document is None:
-            raise TypeError("Missing 'encodedsaml_metadata_document' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if saml_provider_name is None and 'samlProviderName' in kwargs:
-            saml_provider_name = kwargs['samlProviderName']
-        if saml_provider_name is None:
-            raise TypeError("Missing 'saml_provider_name' argument")
-        if update_date is None and 'updateDate' in kwargs:
-            update_date = kwargs['updateDate']
-        if update_date is None:
-            raise TypeError("Missing 'update_date' argument")
-
-        _setter("arn", arn)
-        _setter("description", description)
-        _setter("encodedsaml_metadata_document", encodedsaml_metadata_document)
-        _setter("id", id)
-        _setter("saml_provider_name", saml_provider_name)
-        _setter("update_date", update_date)
+        pulumi.set(__self__, "arn", arn)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "encodedsaml_metadata_document", encodedsaml_metadata_document)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "saml_provider_name", saml_provider_name)
+        pulumi.set(__self__, "update_date", update_date)
 
     @property
     @pulumi.getter
@@ -817,39 +557,10 @@ class GetUsersUserResult(dict):
         :param str last_login_date: (Removed) Last login date of the user. Removed from version 1.79.0.
         :param str name: Name of the user.
         """
-        GetUsersUserResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_date=create_date,
-            id=id,
-            last_login_date=last_login_date,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_date: Optional[str] = None,
-             id: Optional[str] = None,
-             last_login_date: Optional[str] = None,
-             name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_date is None and 'createDate' in kwargs:
-            create_date = kwargs['createDate']
-        if create_date is None:
-            raise TypeError("Missing 'create_date' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if last_login_date is None and 'lastLoginDate' in kwargs:
-            last_login_date = kwargs['lastLoginDate']
-        if last_login_date is None:
-            raise TypeError("Missing 'last_login_date' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("create_date", create_date)
-        _setter("id", id)
-        _setter("last_login_date", last_login_date)
-        _setter("name", name)
+        pulumi.set(__self__, "create_date", create_date)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "last_login_date", last_login_date)
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="createDate")

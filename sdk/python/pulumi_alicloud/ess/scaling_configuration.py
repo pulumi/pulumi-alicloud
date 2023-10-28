@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -119,262 +119,95 @@ class ScalingConfigurationArgs:
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
         :param pulumi.Input[str] user_data: User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
         """
-        ScalingConfigurationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            scaling_group_id=scaling_group_id,
-            active=active,
-            credit_specification=credit_specification,
-            data_disks=data_disks,
-            enable=enable,
-            force_delete=force_delete,
-            host_name=host_name,
-            image_id=image_id,
-            image_name=image_name,
-            instance_ids=instance_ids,
-            instance_name=instance_name,
-            instance_pattern_infos=instance_pattern_infos,
-            instance_type=instance_type,
-            instance_types=instance_types,
-            internet_charge_type=internet_charge_type,
-            internet_max_bandwidth_in=internet_max_bandwidth_in,
-            internet_max_bandwidth_out=internet_max_bandwidth_out,
-            io_optimized=io_optimized,
-            is_outdated=is_outdated,
-            key_name=key_name,
-            kms_encrypted_password=kms_encrypted_password,
-            kms_encryption_context=kms_encryption_context,
-            override=override,
-            password=password,
-            password_inherit=password_inherit,
-            resource_group_id=resource_group_id,
-            role_name=role_name,
-            scaling_configuration_name=scaling_configuration_name,
-            security_group_id=security_group_id,
-            security_group_ids=security_group_ids,
-            spot_price_limits=spot_price_limits,
-            spot_strategy=spot_strategy,
-            substitute=substitute,
-            system_disk_auto_snapshot_policy_id=system_disk_auto_snapshot_policy_id,
-            system_disk_category=system_disk_category,
-            system_disk_description=system_disk_description,
-            system_disk_encrypted=system_disk_encrypted,
-            system_disk_name=system_disk_name,
-            system_disk_performance_level=system_disk_performance_level,
-            system_disk_size=system_disk_size,
-            tags=tags,
-            user_data=user_data,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             scaling_group_id: Optional[pulumi.Input[str]] = None,
-             active: Optional[pulumi.Input[bool]] = None,
-             credit_specification: Optional[pulumi.Input[str]] = None,
-             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]]] = None,
-             enable: Optional[pulumi.Input[bool]] = None,
-             force_delete: Optional[pulumi.Input[bool]] = None,
-             host_name: Optional[pulumi.Input[str]] = None,
-             image_id: Optional[pulumi.Input[str]] = None,
-             image_name: Optional[pulumi.Input[str]] = None,
-             instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             instance_name: Optional[pulumi.Input[str]] = None,
-             instance_pattern_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]]] = None,
-             instance_type: Optional[pulumi.Input[str]] = None,
-             instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             internet_charge_type: Optional[pulumi.Input[str]] = None,
-             internet_max_bandwidth_in: Optional[pulumi.Input[int]] = None,
-             internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
-             io_optimized: Optional[pulumi.Input[str]] = None,
-             is_outdated: Optional[pulumi.Input[bool]] = None,
-             key_name: Optional[pulumi.Input[str]] = None,
-             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             override: Optional[pulumi.Input[bool]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             password_inherit: Optional[pulumi.Input[bool]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             role_name: Optional[pulumi.Input[str]] = None,
-             scaling_configuration_name: Optional[pulumi.Input[str]] = None,
-             security_group_id: Optional[pulumi.Input[str]] = None,
-             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]]] = None,
-             spot_strategy: Optional[pulumi.Input[str]] = None,
-             substitute: Optional[pulumi.Input[str]] = None,
-             system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
-             system_disk_category: Optional[pulumi.Input[str]] = None,
-             system_disk_description: Optional[pulumi.Input[str]] = None,
-             system_disk_encrypted: Optional[pulumi.Input[bool]] = None,
-             system_disk_name: Optional[pulumi.Input[str]] = None,
-             system_disk_performance_level: Optional[pulumi.Input[str]] = None,
-             system_disk_size: Optional[pulumi.Input[int]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             user_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if scaling_group_id is None and 'scalingGroupId' in kwargs:
-            scaling_group_id = kwargs['scalingGroupId']
-        if scaling_group_id is None:
-            raise TypeError("Missing 'scaling_group_id' argument")
-        if credit_specification is None and 'creditSpecification' in kwargs:
-            credit_specification = kwargs['creditSpecification']
-        if data_disks is None and 'dataDisks' in kwargs:
-            data_disks = kwargs['dataDisks']
-        if force_delete is None and 'forceDelete' in kwargs:
-            force_delete = kwargs['forceDelete']
-        if host_name is None and 'hostName' in kwargs:
-            host_name = kwargs['hostName']
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-        if image_name is None and 'imageName' in kwargs:
-            image_name = kwargs['imageName']
-        if instance_ids is None and 'instanceIds' in kwargs:
-            instance_ids = kwargs['instanceIds']
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_pattern_infos is None and 'instancePatternInfos' in kwargs:
-            instance_pattern_infos = kwargs['instancePatternInfos']
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if instance_types is None and 'instanceTypes' in kwargs:
-            instance_types = kwargs['instanceTypes']
-        if internet_charge_type is None and 'internetChargeType' in kwargs:
-            internet_charge_type = kwargs['internetChargeType']
-        if internet_max_bandwidth_in is None and 'internetMaxBandwidthIn' in kwargs:
-            internet_max_bandwidth_in = kwargs['internetMaxBandwidthIn']
-        if internet_max_bandwidth_out is None and 'internetMaxBandwidthOut' in kwargs:
-            internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
-        if io_optimized is None and 'ioOptimized' in kwargs:
-            io_optimized = kwargs['ioOptimized']
-        if is_outdated is None and 'isOutdated' in kwargs:
-            is_outdated = kwargs['isOutdated']
-        if key_name is None and 'keyName' in kwargs:
-            key_name = kwargs['keyName']
-        if kms_encrypted_password is None and 'kmsEncryptedPassword' in kwargs:
-            kms_encrypted_password = kwargs['kmsEncryptedPassword']
-        if kms_encryption_context is None and 'kmsEncryptionContext' in kwargs:
-            kms_encryption_context = kwargs['kmsEncryptionContext']
-        if password_inherit is None and 'passwordInherit' in kwargs:
-            password_inherit = kwargs['passwordInherit']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if role_name is None and 'roleName' in kwargs:
-            role_name = kwargs['roleName']
-        if scaling_configuration_name is None and 'scalingConfigurationName' in kwargs:
-            scaling_configuration_name = kwargs['scalingConfigurationName']
-        if security_group_id is None and 'securityGroupId' in kwargs:
-            security_group_id = kwargs['securityGroupId']
-        if security_group_ids is None and 'securityGroupIds' in kwargs:
-            security_group_ids = kwargs['securityGroupIds']
-        if spot_price_limits is None and 'spotPriceLimits' in kwargs:
-            spot_price_limits = kwargs['spotPriceLimits']
-        if spot_strategy is None and 'spotStrategy' in kwargs:
-            spot_strategy = kwargs['spotStrategy']
-        if system_disk_auto_snapshot_policy_id is None and 'systemDiskAutoSnapshotPolicyId' in kwargs:
-            system_disk_auto_snapshot_policy_id = kwargs['systemDiskAutoSnapshotPolicyId']
-        if system_disk_category is None and 'systemDiskCategory' in kwargs:
-            system_disk_category = kwargs['systemDiskCategory']
-        if system_disk_description is None and 'systemDiskDescription' in kwargs:
-            system_disk_description = kwargs['systemDiskDescription']
-        if system_disk_encrypted is None and 'systemDiskEncrypted' in kwargs:
-            system_disk_encrypted = kwargs['systemDiskEncrypted']
-        if system_disk_name is None and 'systemDiskName' in kwargs:
-            system_disk_name = kwargs['systemDiskName']
-        if system_disk_performance_level is None and 'systemDiskPerformanceLevel' in kwargs:
-            system_disk_performance_level = kwargs['systemDiskPerformanceLevel']
-        if system_disk_size is None and 'systemDiskSize' in kwargs:
-            system_disk_size = kwargs['systemDiskSize']
-        if user_data is None and 'userData' in kwargs:
-            user_data = kwargs['userData']
-
-        _setter("scaling_group_id", scaling_group_id)
+        pulumi.set(__self__, "scaling_group_id", scaling_group_id)
         if active is not None:
-            _setter("active", active)
+            pulumi.set(__self__, "active", active)
         if credit_specification is not None:
-            _setter("credit_specification", credit_specification)
+            pulumi.set(__self__, "credit_specification", credit_specification)
         if data_disks is not None:
-            _setter("data_disks", data_disks)
+            pulumi.set(__self__, "data_disks", data_disks)
         if enable is not None:
-            _setter("enable", enable)
+            pulumi.set(__self__, "enable", enable)
         if force_delete is not None:
-            _setter("force_delete", force_delete)
+            pulumi.set(__self__, "force_delete", force_delete)
         if host_name is not None:
-            _setter("host_name", host_name)
+            pulumi.set(__self__, "host_name", host_name)
         if image_id is not None:
-            _setter("image_id", image_id)
+            pulumi.set(__self__, "image_id", image_id)
         if image_name is not None:
-            _setter("image_name", image_name)
+            pulumi.set(__self__, "image_name", image_name)
         if instance_ids is not None:
             warnings.warn("""Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.""", DeprecationWarning)
             pulumi.log.warn("""instance_ids is deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.""")
         if instance_ids is not None:
-            _setter("instance_ids", instance_ids)
+            pulumi.set(__self__, "instance_ids", instance_ids)
         if instance_name is not None:
-            _setter("instance_name", instance_name)
+            pulumi.set(__self__, "instance_name", instance_name)
         if instance_pattern_infos is not None:
-            _setter("instance_pattern_infos", instance_pattern_infos)
+            pulumi.set(__self__, "instance_pattern_infos", instance_pattern_infos)
         if instance_type is not None:
-            _setter("instance_type", instance_type)
+            pulumi.set(__self__, "instance_type", instance_type)
         if instance_types is not None:
-            _setter("instance_types", instance_types)
+            pulumi.set(__self__, "instance_types", instance_types)
         if internet_charge_type is not None:
-            _setter("internet_charge_type", internet_charge_type)
+            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
         if internet_max_bandwidth_in is not None:
-            _setter("internet_max_bandwidth_in", internet_max_bandwidth_in)
+            pulumi.set(__self__, "internet_max_bandwidth_in", internet_max_bandwidth_in)
         if internet_max_bandwidth_out is not None:
-            _setter("internet_max_bandwidth_out", internet_max_bandwidth_out)
+            pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
         if io_optimized is not None:
             warnings.warn("""Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""", DeprecationWarning)
             pulumi.log.warn("""io_optimized is deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""")
         if io_optimized is not None:
-            _setter("io_optimized", io_optimized)
+            pulumi.set(__self__, "io_optimized", io_optimized)
         if is_outdated is not None:
-            _setter("is_outdated", is_outdated)
+            pulumi.set(__self__, "is_outdated", is_outdated)
         if key_name is not None:
-            _setter("key_name", key_name)
+            pulumi.set(__self__, "key_name", key_name)
         if kms_encrypted_password is not None:
-            _setter("kms_encrypted_password", kms_encrypted_password)
+            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
-            _setter("kms_encryption_context", kms_encryption_context)
+            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
         if override is not None:
-            _setter("override", override)
+            pulumi.set(__self__, "override", override)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if password_inherit is not None:
-            _setter("password_inherit", password_inherit)
+            pulumi.set(__self__, "password_inherit", password_inherit)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if role_name is not None:
-            _setter("role_name", role_name)
+            pulumi.set(__self__, "role_name", role_name)
         if scaling_configuration_name is not None:
-            _setter("scaling_configuration_name", scaling_configuration_name)
+            pulumi.set(__self__, "scaling_configuration_name", scaling_configuration_name)
         if security_group_id is not None:
-            _setter("security_group_id", security_group_id)
+            pulumi.set(__self__, "security_group_id", security_group_id)
         if security_group_ids is not None:
-            _setter("security_group_ids", security_group_ids)
+            pulumi.set(__self__, "security_group_ids", security_group_ids)
         if spot_price_limits is not None:
-            _setter("spot_price_limits", spot_price_limits)
+            pulumi.set(__self__, "spot_price_limits", spot_price_limits)
         if spot_strategy is not None:
-            _setter("spot_strategy", spot_strategy)
+            pulumi.set(__self__, "spot_strategy", spot_strategy)
         if substitute is not None:
-            _setter("substitute", substitute)
+            pulumi.set(__self__, "substitute", substitute)
         if system_disk_auto_snapshot_policy_id is not None:
-            _setter("system_disk_auto_snapshot_policy_id", system_disk_auto_snapshot_policy_id)
+            pulumi.set(__self__, "system_disk_auto_snapshot_policy_id", system_disk_auto_snapshot_policy_id)
         if system_disk_category is not None:
-            _setter("system_disk_category", system_disk_category)
+            pulumi.set(__self__, "system_disk_category", system_disk_category)
         if system_disk_description is not None:
-            _setter("system_disk_description", system_disk_description)
+            pulumi.set(__self__, "system_disk_description", system_disk_description)
         if system_disk_encrypted is not None:
-            _setter("system_disk_encrypted", system_disk_encrypted)
+            pulumi.set(__self__, "system_disk_encrypted", system_disk_encrypted)
         if system_disk_name is not None:
-            _setter("system_disk_name", system_disk_name)
+            pulumi.set(__self__, "system_disk_name", system_disk_name)
         if system_disk_performance_level is not None:
-            _setter("system_disk_performance_level", system_disk_performance_level)
+            pulumi.set(__self__, "system_disk_performance_level", system_disk_performance_level)
         if system_disk_size is not None:
-            _setter("system_disk_size", system_disk_size)
+            pulumi.set(__self__, "system_disk_size", system_disk_size)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if user_data is not None:
-            _setter("user_data", user_data)
+            pulumi.set(__self__, "user_data", user_data)
 
     @property
     @pulumi.getter(name="scalingGroupId")
@@ -1009,261 +842,96 @@ class _ScalingConfigurationState:
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
         :param pulumi.Input[str] user_data: User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
         """
-        _ScalingConfigurationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            active=active,
-            credit_specification=credit_specification,
-            data_disks=data_disks,
-            enable=enable,
-            force_delete=force_delete,
-            host_name=host_name,
-            image_id=image_id,
-            image_name=image_name,
-            instance_ids=instance_ids,
-            instance_name=instance_name,
-            instance_pattern_infos=instance_pattern_infos,
-            instance_type=instance_type,
-            instance_types=instance_types,
-            internet_charge_type=internet_charge_type,
-            internet_max_bandwidth_in=internet_max_bandwidth_in,
-            internet_max_bandwidth_out=internet_max_bandwidth_out,
-            io_optimized=io_optimized,
-            is_outdated=is_outdated,
-            key_name=key_name,
-            kms_encrypted_password=kms_encrypted_password,
-            kms_encryption_context=kms_encryption_context,
-            override=override,
-            password=password,
-            password_inherit=password_inherit,
-            resource_group_id=resource_group_id,
-            role_name=role_name,
-            scaling_configuration_name=scaling_configuration_name,
-            scaling_group_id=scaling_group_id,
-            security_group_id=security_group_id,
-            security_group_ids=security_group_ids,
-            spot_price_limits=spot_price_limits,
-            spot_strategy=spot_strategy,
-            substitute=substitute,
-            system_disk_auto_snapshot_policy_id=system_disk_auto_snapshot_policy_id,
-            system_disk_category=system_disk_category,
-            system_disk_description=system_disk_description,
-            system_disk_encrypted=system_disk_encrypted,
-            system_disk_name=system_disk_name,
-            system_disk_performance_level=system_disk_performance_level,
-            system_disk_size=system_disk_size,
-            tags=tags,
-            user_data=user_data,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             active: Optional[pulumi.Input[bool]] = None,
-             credit_specification: Optional[pulumi.Input[str]] = None,
-             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]]] = None,
-             enable: Optional[pulumi.Input[bool]] = None,
-             force_delete: Optional[pulumi.Input[bool]] = None,
-             host_name: Optional[pulumi.Input[str]] = None,
-             image_id: Optional[pulumi.Input[str]] = None,
-             image_name: Optional[pulumi.Input[str]] = None,
-             instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             instance_name: Optional[pulumi.Input[str]] = None,
-             instance_pattern_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]]] = None,
-             instance_type: Optional[pulumi.Input[str]] = None,
-             instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             internet_charge_type: Optional[pulumi.Input[str]] = None,
-             internet_max_bandwidth_in: Optional[pulumi.Input[int]] = None,
-             internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
-             io_optimized: Optional[pulumi.Input[str]] = None,
-             is_outdated: Optional[pulumi.Input[bool]] = None,
-             key_name: Optional[pulumi.Input[str]] = None,
-             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             override: Optional[pulumi.Input[bool]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             password_inherit: Optional[pulumi.Input[bool]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             role_name: Optional[pulumi.Input[str]] = None,
-             scaling_configuration_name: Optional[pulumi.Input[str]] = None,
-             scaling_group_id: Optional[pulumi.Input[str]] = None,
-             security_group_id: Optional[pulumi.Input[str]] = None,
-             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]]] = None,
-             spot_strategy: Optional[pulumi.Input[str]] = None,
-             substitute: Optional[pulumi.Input[str]] = None,
-             system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
-             system_disk_category: Optional[pulumi.Input[str]] = None,
-             system_disk_description: Optional[pulumi.Input[str]] = None,
-             system_disk_encrypted: Optional[pulumi.Input[bool]] = None,
-             system_disk_name: Optional[pulumi.Input[str]] = None,
-             system_disk_performance_level: Optional[pulumi.Input[str]] = None,
-             system_disk_size: Optional[pulumi.Input[int]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             user_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if credit_specification is None and 'creditSpecification' in kwargs:
-            credit_specification = kwargs['creditSpecification']
-        if data_disks is None and 'dataDisks' in kwargs:
-            data_disks = kwargs['dataDisks']
-        if force_delete is None and 'forceDelete' in kwargs:
-            force_delete = kwargs['forceDelete']
-        if host_name is None and 'hostName' in kwargs:
-            host_name = kwargs['hostName']
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-        if image_name is None and 'imageName' in kwargs:
-            image_name = kwargs['imageName']
-        if instance_ids is None and 'instanceIds' in kwargs:
-            instance_ids = kwargs['instanceIds']
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_pattern_infos is None and 'instancePatternInfos' in kwargs:
-            instance_pattern_infos = kwargs['instancePatternInfos']
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if instance_types is None and 'instanceTypes' in kwargs:
-            instance_types = kwargs['instanceTypes']
-        if internet_charge_type is None and 'internetChargeType' in kwargs:
-            internet_charge_type = kwargs['internetChargeType']
-        if internet_max_bandwidth_in is None and 'internetMaxBandwidthIn' in kwargs:
-            internet_max_bandwidth_in = kwargs['internetMaxBandwidthIn']
-        if internet_max_bandwidth_out is None and 'internetMaxBandwidthOut' in kwargs:
-            internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
-        if io_optimized is None and 'ioOptimized' in kwargs:
-            io_optimized = kwargs['ioOptimized']
-        if is_outdated is None and 'isOutdated' in kwargs:
-            is_outdated = kwargs['isOutdated']
-        if key_name is None and 'keyName' in kwargs:
-            key_name = kwargs['keyName']
-        if kms_encrypted_password is None and 'kmsEncryptedPassword' in kwargs:
-            kms_encrypted_password = kwargs['kmsEncryptedPassword']
-        if kms_encryption_context is None and 'kmsEncryptionContext' in kwargs:
-            kms_encryption_context = kwargs['kmsEncryptionContext']
-        if password_inherit is None and 'passwordInherit' in kwargs:
-            password_inherit = kwargs['passwordInherit']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if role_name is None and 'roleName' in kwargs:
-            role_name = kwargs['roleName']
-        if scaling_configuration_name is None and 'scalingConfigurationName' in kwargs:
-            scaling_configuration_name = kwargs['scalingConfigurationName']
-        if scaling_group_id is None and 'scalingGroupId' in kwargs:
-            scaling_group_id = kwargs['scalingGroupId']
-        if security_group_id is None and 'securityGroupId' in kwargs:
-            security_group_id = kwargs['securityGroupId']
-        if security_group_ids is None and 'securityGroupIds' in kwargs:
-            security_group_ids = kwargs['securityGroupIds']
-        if spot_price_limits is None and 'spotPriceLimits' in kwargs:
-            spot_price_limits = kwargs['spotPriceLimits']
-        if spot_strategy is None and 'spotStrategy' in kwargs:
-            spot_strategy = kwargs['spotStrategy']
-        if system_disk_auto_snapshot_policy_id is None and 'systemDiskAutoSnapshotPolicyId' in kwargs:
-            system_disk_auto_snapshot_policy_id = kwargs['systemDiskAutoSnapshotPolicyId']
-        if system_disk_category is None and 'systemDiskCategory' in kwargs:
-            system_disk_category = kwargs['systemDiskCategory']
-        if system_disk_description is None and 'systemDiskDescription' in kwargs:
-            system_disk_description = kwargs['systemDiskDescription']
-        if system_disk_encrypted is None and 'systemDiskEncrypted' in kwargs:
-            system_disk_encrypted = kwargs['systemDiskEncrypted']
-        if system_disk_name is None and 'systemDiskName' in kwargs:
-            system_disk_name = kwargs['systemDiskName']
-        if system_disk_performance_level is None and 'systemDiskPerformanceLevel' in kwargs:
-            system_disk_performance_level = kwargs['systemDiskPerformanceLevel']
-        if system_disk_size is None and 'systemDiskSize' in kwargs:
-            system_disk_size = kwargs['systemDiskSize']
-        if user_data is None and 'userData' in kwargs:
-            user_data = kwargs['userData']
-
         if active is not None:
-            _setter("active", active)
+            pulumi.set(__self__, "active", active)
         if credit_specification is not None:
-            _setter("credit_specification", credit_specification)
+            pulumi.set(__self__, "credit_specification", credit_specification)
         if data_disks is not None:
-            _setter("data_disks", data_disks)
+            pulumi.set(__self__, "data_disks", data_disks)
         if enable is not None:
-            _setter("enable", enable)
+            pulumi.set(__self__, "enable", enable)
         if force_delete is not None:
-            _setter("force_delete", force_delete)
+            pulumi.set(__self__, "force_delete", force_delete)
         if host_name is not None:
-            _setter("host_name", host_name)
+            pulumi.set(__self__, "host_name", host_name)
         if image_id is not None:
-            _setter("image_id", image_id)
+            pulumi.set(__self__, "image_id", image_id)
         if image_name is not None:
-            _setter("image_name", image_name)
+            pulumi.set(__self__, "image_name", image_name)
         if instance_ids is not None:
             warnings.warn("""Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.""", DeprecationWarning)
             pulumi.log.warn("""instance_ids is deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.""")
         if instance_ids is not None:
-            _setter("instance_ids", instance_ids)
+            pulumi.set(__self__, "instance_ids", instance_ids)
         if instance_name is not None:
-            _setter("instance_name", instance_name)
+            pulumi.set(__self__, "instance_name", instance_name)
         if instance_pattern_infos is not None:
-            _setter("instance_pattern_infos", instance_pattern_infos)
+            pulumi.set(__self__, "instance_pattern_infos", instance_pattern_infos)
         if instance_type is not None:
-            _setter("instance_type", instance_type)
+            pulumi.set(__self__, "instance_type", instance_type)
         if instance_types is not None:
-            _setter("instance_types", instance_types)
+            pulumi.set(__self__, "instance_types", instance_types)
         if internet_charge_type is not None:
-            _setter("internet_charge_type", internet_charge_type)
+            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
         if internet_max_bandwidth_in is not None:
-            _setter("internet_max_bandwidth_in", internet_max_bandwidth_in)
+            pulumi.set(__self__, "internet_max_bandwidth_in", internet_max_bandwidth_in)
         if internet_max_bandwidth_out is not None:
-            _setter("internet_max_bandwidth_out", internet_max_bandwidth_out)
+            pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
         if io_optimized is not None:
             warnings.warn("""Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""", DeprecationWarning)
             pulumi.log.warn("""io_optimized is deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""")
         if io_optimized is not None:
-            _setter("io_optimized", io_optimized)
+            pulumi.set(__self__, "io_optimized", io_optimized)
         if is_outdated is not None:
-            _setter("is_outdated", is_outdated)
+            pulumi.set(__self__, "is_outdated", is_outdated)
         if key_name is not None:
-            _setter("key_name", key_name)
+            pulumi.set(__self__, "key_name", key_name)
         if kms_encrypted_password is not None:
-            _setter("kms_encrypted_password", kms_encrypted_password)
+            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
-            _setter("kms_encryption_context", kms_encryption_context)
+            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
         if override is not None:
-            _setter("override", override)
+            pulumi.set(__self__, "override", override)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if password_inherit is not None:
-            _setter("password_inherit", password_inherit)
+            pulumi.set(__self__, "password_inherit", password_inherit)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if role_name is not None:
-            _setter("role_name", role_name)
+            pulumi.set(__self__, "role_name", role_name)
         if scaling_configuration_name is not None:
-            _setter("scaling_configuration_name", scaling_configuration_name)
+            pulumi.set(__self__, "scaling_configuration_name", scaling_configuration_name)
         if scaling_group_id is not None:
-            _setter("scaling_group_id", scaling_group_id)
+            pulumi.set(__self__, "scaling_group_id", scaling_group_id)
         if security_group_id is not None:
-            _setter("security_group_id", security_group_id)
+            pulumi.set(__self__, "security_group_id", security_group_id)
         if security_group_ids is not None:
-            _setter("security_group_ids", security_group_ids)
+            pulumi.set(__self__, "security_group_ids", security_group_ids)
         if spot_price_limits is not None:
-            _setter("spot_price_limits", spot_price_limits)
+            pulumi.set(__self__, "spot_price_limits", spot_price_limits)
         if spot_strategy is not None:
-            _setter("spot_strategy", spot_strategy)
+            pulumi.set(__self__, "spot_strategy", spot_strategy)
         if substitute is not None:
-            _setter("substitute", substitute)
+            pulumi.set(__self__, "substitute", substitute)
         if system_disk_auto_snapshot_policy_id is not None:
-            _setter("system_disk_auto_snapshot_policy_id", system_disk_auto_snapshot_policy_id)
+            pulumi.set(__self__, "system_disk_auto_snapshot_policy_id", system_disk_auto_snapshot_policy_id)
         if system_disk_category is not None:
-            _setter("system_disk_category", system_disk_category)
+            pulumi.set(__self__, "system_disk_category", system_disk_category)
         if system_disk_description is not None:
-            _setter("system_disk_description", system_disk_description)
+            pulumi.set(__self__, "system_disk_description", system_disk_description)
         if system_disk_encrypted is not None:
-            _setter("system_disk_encrypted", system_disk_encrypted)
+            pulumi.set(__self__, "system_disk_encrypted", system_disk_encrypted)
         if system_disk_name is not None:
-            _setter("system_disk_name", system_disk_name)
+            pulumi.set(__self__, "system_disk_name", system_disk_name)
         if system_disk_performance_level is not None:
-            _setter("system_disk_performance_level", system_disk_performance_level)
+            pulumi.set(__self__, "system_disk_performance_level", system_disk_performance_level)
         if system_disk_size is not None:
-            _setter("system_disk_size", system_disk_size)
+            pulumi.set(__self__, "system_disk_size", system_disk_size)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if user_data is not None:
-            _setter("user_data", user_data)
+            pulumi.set(__self__, "user_data", user_data)
 
     @property
     @pulumi.getter
@@ -2063,10 +1731,6 @@ class ScalingConfiguration(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ScalingConfigurationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

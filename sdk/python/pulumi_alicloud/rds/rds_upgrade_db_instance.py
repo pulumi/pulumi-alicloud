@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -190,334 +190,105 @@ class RdsUpgradeDbInstanceArgs:
                > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
         :param pulumi.Input[str] zone_id_slave1: The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query zone IDs.
         """
-        RdsUpgradeDbInstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            collect_stat_mode=collect_stat_mode,
-            db_instance_class=db_instance_class,
-            db_instance_storage=db_instance_storage,
-            db_instance_storage_type=db_instance_storage_type,
-            instance_network_type=instance_network_type,
-            payment_type=payment_type,
-            source_db_instance_id=source_db_instance_id,
-            switch_over=switch_over,
-            target_major_version=target_major_version,
-            acl=acl,
-            auto_upgrade_minor_version=auto_upgrade_minor_version,
-            ca_type=ca_type,
-            certificate=certificate,
-            client_ca_cert=client_ca_cert,
-            client_ca_enabled=client_ca_enabled,
-            client_cert_revocation_list=client_cert_revocation_list,
-            client_crl_enabled=client_crl_enabled,
-            connection_string_prefix=connection_string_prefix,
-            db_instance_description=db_instance_description,
-            db_name=db_name,
-            dedicated_host_group_id=dedicated_host_group_id,
-            deletion_protection=deletion_protection,
-            direction=direction,
-            effective_time=effective_time,
-            encryption_key=encryption_key,
-            engine=engine,
-            engine_version=engine_version,
-            force_restart=force_restart,
-            ha_mode=ha_mode,
-            maintain_time=maintain_time,
-            parameters=parameters,
-            password=password,
-            pg_hba_confs=pg_hba_confs,
-            port=port,
-            private_ip_address=private_ip_address,
-            private_key=private_key,
-            released_keep_policy=released_keep_policy,
-            replication_acl=replication_acl,
-            resource_group_id=resource_group_id,
-            role_arn=role_arn,
-            security_ips=security_ips,
-            server_cert=server_cert,
-            server_key=server_key,
-            source_biz=source_biz,
-            ssl_enabled=ssl_enabled,
-            switch_time=switch_time,
-            switch_time_mode=switch_time_mode,
-            sync_mode=sync_mode,
-            tcp_connection_type=tcp_connection_type,
-            tde_status=tde_status,
-            vpc_id=vpc_id,
-            vswitch_id=vswitch_id,
-            zone_id=zone_id,
-            zone_id_slave1=zone_id_slave1,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             collect_stat_mode: Optional[pulumi.Input[str]] = None,
-             db_instance_class: Optional[pulumi.Input[str]] = None,
-             db_instance_storage: Optional[pulumi.Input[int]] = None,
-             db_instance_storage_type: Optional[pulumi.Input[str]] = None,
-             instance_network_type: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             source_db_instance_id: Optional[pulumi.Input[str]] = None,
-             switch_over: Optional[pulumi.Input[str]] = None,
-             target_major_version: Optional[pulumi.Input[str]] = None,
-             acl: Optional[pulumi.Input[str]] = None,
-             auto_upgrade_minor_version: Optional[pulumi.Input[str]] = None,
-             ca_type: Optional[pulumi.Input[str]] = None,
-             certificate: Optional[pulumi.Input[str]] = None,
-             client_ca_cert: Optional[pulumi.Input[str]] = None,
-             client_ca_enabled: Optional[pulumi.Input[int]] = None,
-             client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
-             client_crl_enabled: Optional[pulumi.Input[int]] = None,
-             connection_string_prefix: Optional[pulumi.Input[str]] = None,
-             db_instance_description: Optional[pulumi.Input[str]] = None,
-             db_name: Optional[pulumi.Input[str]] = None,
-             dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
-             deletion_protection: Optional[pulumi.Input[bool]] = None,
-             direction: Optional[pulumi.Input[str]] = None,
-             effective_time: Optional[pulumi.Input[str]] = None,
-             encryption_key: Optional[pulumi.Input[str]] = None,
-             engine: Optional[pulumi.Input[str]] = None,
-             engine_version: Optional[pulumi.Input[str]] = None,
-             force_restart: Optional[pulumi.Input[bool]] = None,
-             ha_mode: Optional[pulumi.Input[str]] = None,
-             maintain_time: Optional[pulumi.Input[str]] = None,
-             parameters: Optional[pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstanceParameterArgs']]]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstancePgHbaConfArgs']]]] = None,
-             port: Optional[pulumi.Input[str]] = None,
-             private_ip_address: Optional[pulumi.Input[str]] = None,
-             private_key: Optional[pulumi.Input[str]] = None,
-             released_keep_policy: Optional[pulumi.Input[str]] = None,
-             replication_acl: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             role_arn: Optional[pulumi.Input[str]] = None,
-             security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             server_cert: Optional[pulumi.Input[str]] = None,
-             server_key: Optional[pulumi.Input[str]] = None,
-             source_biz: Optional[pulumi.Input[str]] = None,
-             ssl_enabled: Optional[pulumi.Input[int]] = None,
-             switch_time: Optional[pulumi.Input[str]] = None,
-             switch_time_mode: Optional[pulumi.Input[str]] = None,
-             sync_mode: Optional[pulumi.Input[str]] = None,
-             tcp_connection_type: Optional[pulumi.Input[str]] = None,
-             tde_status: Optional[pulumi.Input[str]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             zone_id_slave1: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if collect_stat_mode is None and 'collectStatMode' in kwargs:
-            collect_stat_mode = kwargs['collectStatMode']
-        if collect_stat_mode is None:
-            raise TypeError("Missing 'collect_stat_mode' argument")
-        if db_instance_class is None and 'dbInstanceClass' in kwargs:
-            db_instance_class = kwargs['dbInstanceClass']
-        if db_instance_class is None:
-            raise TypeError("Missing 'db_instance_class' argument")
-        if db_instance_storage is None and 'dbInstanceStorage' in kwargs:
-            db_instance_storage = kwargs['dbInstanceStorage']
-        if db_instance_storage is None:
-            raise TypeError("Missing 'db_instance_storage' argument")
-        if db_instance_storage_type is None and 'dbInstanceStorageType' in kwargs:
-            db_instance_storage_type = kwargs['dbInstanceStorageType']
-        if db_instance_storage_type is None:
-            raise TypeError("Missing 'db_instance_storage_type' argument")
-        if instance_network_type is None and 'instanceNetworkType' in kwargs:
-            instance_network_type = kwargs['instanceNetworkType']
-        if instance_network_type is None:
-            raise TypeError("Missing 'instance_network_type' argument")
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if payment_type is None:
-            raise TypeError("Missing 'payment_type' argument")
-        if source_db_instance_id is None and 'sourceDbInstanceId' in kwargs:
-            source_db_instance_id = kwargs['sourceDbInstanceId']
-        if source_db_instance_id is None:
-            raise TypeError("Missing 'source_db_instance_id' argument")
-        if switch_over is None and 'switchOver' in kwargs:
-            switch_over = kwargs['switchOver']
-        if switch_over is None:
-            raise TypeError("Missing 'switch_over' argument")
-        if target_major_version is None and 'targetMajorVersion' in kwargs:
-            target_major_version = kwargs['targetMajorVersion']
-        if target_major_version is None:
-            raise TypeError("Missing 'target_major_version' argument")
-        if auto_upgrade_minor_version is None and 'autoUpgradeMinorVersion' in kwargs:
-            auto_upgrade_minor_version = kwargs['autoUpgradeMinorVersion']
-        if ca_type is None and 'caType' in kwargs:
-            ca_type = kwargs['caType']
-        if client_ca_cert is None and 'clientCaCert' in kwargs:
-            client_ca_cert = kwargs['clientCaCert']
-        if client_ca_enabled is None and 'clientCaEnabled' in kwargs:
-            client_ca_enabled = kwargs['clientCaEnabled']
-        if client_cert_revocation_list is None and 'clientCertRevocationList' in kwargs:
-            client_cert_revocation_list = kwargs['clientCertRevocationList']
-        if client_crl_enabled is None and 'clientCrlEnabled' in kwargs:
-            client_crl_enabled = kwargs['clientCrlEnabled']
-        if connection_string_prefix is None and 'connectionStringPrefix' in kwargs:
-            connection_string_prefix = kwargs['connectionStringPrefix']
-        if db_instance_description is None and 'dbInstanceDescription' in kwargs:
-            db_instance_description = kwargs['dbInstanceDescription']
-        if db_name is None and 'dbName' in kwargs:
-            db_name = kwargs['dbName']
-        if dedicated_host_group_id is None and 'dedicatedHostGroupId' in kwargs:
-            dedicated_host_group_id = kwargs['dedicatedHostGroupId']
-        if deletion_protection is None and 'deletionProtection' in kwargs:
-            deletion_protection = kwargs['deletionProtection']
-        if effective_time is None and 'effectiveTime' in kwargs:
-            effective_time = kwargs['effectiveTime']
-        if encryption_key is None and 'encryptionKey' in kwargs:
-            encryption_key = kwargs['encryptionKey']
-        if engine_version is None and 'engineVersion' in kwargs:
-            engine_version = kwargs['engineVersion']
-        if force_restart is None and 'forceRestart' in kwargs:
-            force_restart = kwargs['forceRestart']
-        if ha_mode is None and 'haMode' in kwargs:
-            ha_mode = kwargs['haMode']
-        if maintain_time is None and 'maintainTime' in kwargs:
-            maintain_time = kwargs['maintainTime']
-        if pg_hba_confs is None and 'pgHbaConfs' in kwargs:
-            pg_hba_confs = kwargs['pgHbaConfs']
-        if private_ip_address is None and 'privateIpAddress' in kwargs:
-            private_ip_address = kwargs['privateIpAddress']
-        if private_key is None and 'privateKey' in kwargs:
-            private_key = kwargs['privateKey']
-        if released_keep_policy is None and 'releasedKeepPolicy' in kwargs:
-            released_keep_policy = kwargs['releasedKeepPolicy']
-        if replication_acl is None and 'replicationAcl' in kwargs:
-            replication_acl = kwargs['replicationAcl']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if role_arn is None and 'roleArn' in kwargs:
-            role_arn = kwargs['roleArn']
-        if security_ips is None and 'securityIps' in kwargs:
-            security_ips = kwargs['securityIps']
-        if server_cert is None and 'serverCert' in kwargs:
-            server_cert = kwargs['serverCert']
-        if server_key is None and 'serverKey' in kwargs:
-            server_key = kwargs['serverKey']
-        if source_biz is None and 'sourceBiz' in kwargs:
-            source_biz = kwargs['sourceBiz']
-        if ssl_enabled is None and 'sslEnabled' in kwargs:
-            ssl_enabled = kwargs['sslEnabled']
-        if switch_time is None and 'switchTime' in kwargs:
-            switch_time = kwargs['switchTime']
-        if switch_time_mode is None and 'switchTimeMode' in kwargs:
-            switch_time_mode = kwargs['switchTimeMode']
-        if sync_mode is None and 'syncMode' in kwargs:
-            sync_mode = kwargs['syncMode']
-        if tcp_connection_type is None and 'tcpConnectionType' in kwargs:
-            tcp_connection_type = kwargs['tcpConnectionType']
-        if tde_status is None and 'tdeStatus' in kwargs:
-            tde_status = kwargs['tdeStatus']
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id_slave1 is None and 'zoneIdSlave1' in kwargs:
-            zone_id_slave1 = kwargs['zoneIdSlave1']
-
-        _setter("collect_stat_mode", collect_stat_mode)
-        _setter("db_instance_class", db_instance_class)
-        _setter("db_instance_storage", db_instance_storage)
-        _setter("db_instance_storage_type", db_instance_storage_type)
-        _setter("instance_network_type", instance_network_type)
-        _setter("payment_type", payment_type)
-        _setter("source_db_instance_id", source_db_instance_id)
-        _setter("switch_over", switch_over)
-        _setter("target_major_version", target_major_version)
+        pulumi.set(__self__, "collect_stat_mode", collect_stat_mode)
+        pulumi.set(__self__, "db_instance_class", db_instance_class)
+        pulumi.set(__self__, "db_instance_storage", db_instance_storage)
+        pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
+        pulumi.set(__self__, "instance_network_type", instance_network_type)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "source_db_instance_id", source_db_instance_id)
+        pulumi.set(__self__, "switch_over", switch_over)
+        pulumi.set(__self__, "target_major_version", target_major_version)
         if acl is not None:
-            _setter("acl", acl)
+            pulumi.set(__self__, "acl", acl)
         if auto_upgrade_minor_version is not None:
-            _setter("auto_upgrade_minor_version", auto_upgrade_minor_version)
+            pulumi.set(__self__, "auto_upgrade_minor_version", auto_upgrade_minor_version)
         if ca_type is not None:
-            _setter("ca_type", ca_type)
+            pulumi.set(__self__, "ca_type", ca_type)
         if certificate is not None:
-            _setter("certificate", certificate)
+            pulumi.set(__self__, "certificate", certificate)
         if client_ca_cert is not None:
-            _setter("client_ca_cert", client_ca_cert)
+            pulumi.set(__self__, "client_ca_cert", client_ca_cert)
         if client_ca_enabled is not None:
-            _setter("client_ca_enabled", client_ca_enabled)
+            pulumi.set(__self__, "client_ca_enabled", client_ca_enabled)
         if client_cert_revocation_list is not None:
-            _setter("client_cert_revocation_list", client_cert_revocation_list)
+            pulumi.set(__self__, "client_cert_revocation_list", client_cert_revocation_list)
         if client_crl_enabled is not None:
-            _setter("client_crl_enabled", client_crl_enabled)
+            pulumi.set(__self__, "client_crl_enabled", client_crl_enabled)
         if connection_string_prefix is not None:
-            _setter("connection_string_prefix", connection_string_prefix)
+            pulumi.set(__self__, "connection_string_prefix", connection_string_prefix)
         if db_instance_description is not None:
-            _setter("db_instance_description", db_instance_description)
+            pulumi.set(__self__, "db_instance_description", db_instance_description)
         if db_name is not None:
-            _setter("db_name", db_name)
+            pulumi.set(__self__, "db_name", db_name)
         if dedicated_host_group_id is not None:
-            _setter("dedicated_host_group_id", dedicated_host_group_id)
+            pulumi.set(__self__, "dedicated_host_group_id", dedicated_host_group_id)
         if deletion_protection is not None:
-            _setter("deletion_protection", deletion_protection)
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if direction is not None:
-            _setter("direction", direction)
+            pulumi.set(__self__, "direction", direction)
         if effective_time is not None:
-            _setter("effective_time", effective_time)
+            pulumi.set(__self__, "effective_time", effective_time)
         if encryption_key is not None:
-            _setter("encryption_key", encryption_key)
+            pulumi.set(__self__, "encryption_key", encryption_key)
         if engine is not None:
-            _setter("engine", engine)
+            pulumi.set(__self__, "engine", engine)
         if engine_version is not None:
-            _setter("engine_version", engine_version)
+            pulumi.set(__self__, "engine_version", engine_version)
         if force_restart is not None:
-            _setter("force_restart", force_restart)
+            pulumi.set(__self__, "force_restart", force_restart)
         if ha_mode is not None:
-            _setter("ha_mode", ha_mode)
+            pulumi.set(__self__, "ha_mode", ha_mode)
         if maintain_time is not None:
-            _setter("maintain_time", maintain_time)
+            pulumi.set(__self__, "maintain_time", maintain_time)
         if parameters is not None:
-            _setter("parameters", parameters)
+            pulumi.set(__self__, "parameters", parameters)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if pg_hba_confs is not None:
-            _setter("pg_hba_confs", pg_hba_confs)
+            pulumi.set(__self__, "pg_hba_confs", pg_hba_confs)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if private_ip_address is not None:
-            _setter("private_ip_address", private_ip_address)
+            pulumi.set(__self__, "private_ip_address", private_ip_address)
         if private_key is not None:
-            _setter("private_key", private_key)
+            pulumi.set(__self__, "private_key", private_key)
         if released_keep_policy is not None:
-            _setter("released_keep_policy", released_keep_policy)
+            pulumi.set(__self__, "released_keep_policy", released_keep_policy)
         if replication_acl is not None:
-            _setter("replication_acl", replication_acl)
+            pulumi.set(__self__, "replication_acl", replication_acl)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if role_arn is not None:
-            _setter("role_arn", role_arn)
+            pulumi.set(__self__, "role_arn", role_arn)
         if security_ips is not None:
-            _setter("security_ips", security_ips)
+            pulumi.set(__self__, "security_ips", security_ips)
         if server_cert is not None:
-            _setter("server_cert", server_cert)
+            pulumi.set(__self__, "server_cert", server_cert)
         if server_key is not None:
-            _setter("server_key", server_key)
+            pulumi.set(__self__, "server_key", server_key)
         if source_biz is not None:
-            _setter("source_biz", source_biz)
+            pulumi.set(__self__, "source_biz", source_biz)
         if ssl_enabled is not None:
-            _setter("ssl_enabled", ssl_enabled)
+            pulumi.set(__self__, "ssl_enabled", ssl_enabled)
         if switch_time is not None:
-            _setter("switch_time", switch_time)
+            pulumi.set(__self__, "switch_time", switch_time)
         if switch_time_mode is not None:
-            _setter("switch_time_mode", switch_time_mode)
+            pulumi.set(__self__, "switch_time_mode", switch_time_mode)
         if sync_mode is not None:
-            _setter("sync_mode", sync_mode)
+            pulumi.set(__self__, "sync_mode", sync_mode)
         if tcp_connection_type is not None:
-            _setter("tcp_connection_type", tcp_connection_type)
+            pulumi.set(__self__, "tcp_connection_type", tcp_connection_type)
         if tde_status is not None:
-            _setter("tde_status", tde_status)
+            pulumi.set(__self__, "tde_status", tde_status)
         if vpc_id is not None:
-            _setter("vpc_id", vpc_id)
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
         if zone_id_slave1 is not None:
-            _setter("zone_id_slave1", zone_id_slave1)
+            pulumi.set(__self__, "zone_id_slave1", zone_id_slave1)
 
     @property
     @pulumi.getter(name="collectStatMode")
@@ -1410,331 +1181,116 @@ class _RdsUpgradeDbInstanceState:
                > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
         :param pulumi.Input[str] zone_id_slave1: The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query zone IDs.
         """
-        _RdsUpgradeDbInstanceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            acl=acl,
-            auto_upgrade_minor_version=auto_upgrade_minor_version,
-            ca_type=ca_type,
-            certificate=certificate,
-            client_ca_cert=client_ca_cert,
-            client_ca_enabled=client_ca_enabled,
-            client_cert_revocation_list=client_cert_revocation_list,
-            client_crl_enabled=client_crl_enabled,
-            collect_stat_mode=collect_stat_mode,
-            connection_string=connection_string,
-            connection_string_prefix=connection_string_prefix,
-            db_instance_class=db_instance_class,
-            db_instance_description=db_instance_description,
-            db_instance_storage=db_instance_storage,
-            db_instance_storage_type=db_instance_storage_type,
-            db_name=db_name,
-            dedicated_host_group_id=dedicated_host_group_id,
-            deletion_protection=deletion_protection,
-            direction=direction,
-            effective_time=effective_time,
-            encryption_key=encryption_key,
-            engine=engine,
-            engine_version=engine_version,
-            force_restart=force_restart,
-            ha_mode=ha_mode,
-            instance_network_type=instance_network_type,
-            maintain_time=maintain_time,
-            parameters=parameters,
-            password=password,
-            payment_type=payment_type,
-            pg_hba_confs=pg_hba_confs,
-            port=port,
-            private_ip_address=private_ip_address,
-            private_key=private_key,
-            released_keep_policy=released_keep_policy,
-            replication_acl=replication_acl,
-            resource_group_id=resource_group_id,
-            role_arn=role_arn,
-            security_ips=security_ips,
-            server_cert=server_cert,
-            server_key=server_key,
-            source_biz=source_biz,
-            source_db_instance_id=source_db_instance_id,
-            ssl_enabled=ssl_enabled,
-            switch_over=switch_over,
-            switch_time=switch_time,
-            switch_time_mode=switch_time_mode,
-            sync_mode=sync_mode,
-            target_major_version=target_major_version,
-            tcp_connection_type=tcp_connection_type,
-            tde_status=tde_status,
-            vpc_id=vpc_id,
-            vswitch_id=vswitch_id,
-            zone_id=zone_id,
-            zone_id_slave1=zone_id_slave1,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             acl: Optional[pulumi.Input[str]] = None,
-             auto_upgrade_minor_version: Optional[pulumi.Input[str]] = None,
-             ca_type: Optional[pulumi.Input[str]] = None,
-             certificate: Optional[pulumi.Input[str]] = None,
-             client_ca_cert: Optional[pulumi.Input[str]] = None,
-             client_ca_enabled: Optional[pulumi.Input[int]] = None,
-             client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
-             client_crl_enabled: Optional[pulumi.Input[int]] = None,
-             collect_stat_mode: Optional[pulumi.Input[str]] = None,
-             connection_string: Optional[pulumi.Input[str]] = None,
-             connection_string_prefix: Optional[pulumi.Input[str]] = None,
-             db_instance_class: Optional[pulumi.Input[str]] = None,
-             db_instance_description: Optional[pulumi.Input[str]] = None,
-             db_instance_storage: Optional[pulumi.Input[int]] = None,
-             db_instance_storage_type: Optional[pulumi.Input[str]] = None,
-             db_name: Optional[pulumi.Input[str]] = None,
-             dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
-             deletion_protection: Optional[pulumi.Input[bool]] = None,
-             direction: Optional[pulumi.Input[str]] = None,
-             effective_time: Optional[pulumi.Input[str]] = None,
-             encryption_key: Optional[pulumi.Input[str]] = None,
-             engine: Optional[pulumi.Input[str]] = None,
-             engine_version: Optional[pulumi.Input[str]] = None,
-             force_restart: Optional[pulumi.Input[bool]] = None,
-             ha_mode: Optional[pulumi.Input[str]] = None,
-             instance_network_type: Optional[pulumi.Input[str]] = None,
-             maintain_time: Optional[pulumi.Input[str]] = None,
-             parameters: Optional[pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstanceParameterArgs']]]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstancePgHbaConfArgs']]]] = None,
-             port: Optional[pulumi.Input[str]] = None,
-             private_ip_address: Optional[pulumi.Input[str]] = None,
-             private_key: Optional[pulumi.Input[str]] = None,
-             released_keep_policy: Optional[pulumi.Input[str]] = None,
-             replication_acl: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             role_arn: Optional[pulumi.Input[str]] = None,
-             security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             server_cert: Optional[pulumi.Input[str]] = None,
-             server_key: Optional[pulumi.Input[str]] = None,
-             source_biz: Optional[pulumi.Input[str]] = None,
-             source_db_instance_id: Optional[pulumi.Input[str]] = None,
-             ssl_enabled: Optional[pulumi.Input[int]] = None,
-             switch_over: Optional[pulumi.Input[str]] = None,
-             switch_time: Optional[pulumi.Input[str]] = None,
-             switch_time_mode: Optional[pulumi.Input[str]] = None,
-             sync_mode: Optional[pulumi.Input[str]] = None,
-             target_major_version: Optional[pulumi.Input[str]] = None,
-             tcp_connection_type: Optional[pulumi.Input[str]] = None,
-             tde_status: Optional[pulumi.Input[str]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             zone_id_slave1: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_upgrade_minor_version is None and 'autoUpgradeMinorVersion' in kwargs:
-            auto_upgrade_minor_version = kwargs['autoUpgradeMinorVersion']
-        if ca_type is None and 'caType' in kwargs:
-            ca_type = kwargs['caType']
-        if client_ca_cert is None and 'clientCaCert' in kwargs:
-            client_ca_cert = kwargs['clientCaCert']
-        if client_ca_enabled is None and 'clientCaEnabled' in kwargs:
-            client_ca_enabled = kwargs['clientCaEnabled']
-        if client_cert_revocation_list is None and 'clientCertRevocationList' in kwargs:
-            client_cert_revocation_list = kwargs['clientCertRevocationList']
-        if client_crl_enabled is None and 'clientCrlEnabled' in kwargs:
-            client_crl_enabled = kwargs['clientCrlEnabled']
-        if collect_stat_mode is None and 'collectStatMode' in kwargs:
-            collect_stat_mode = kwargs['collectStatMode']
-        if connection_string is None and 'connectionString' in kwargs:
-            connection_string = kwargs['connectionString']
-        if connection_string_prefix is None and 'connectionStringPrefix' in kwargs:
-            connection_string_prefix = kwargs['connectionStringPrefix']
-        if db_instance_class is None and 'dbInstanceClass' in kwargs:
-            db_instance_class = kwargs['dbInstanceClass']
-        if db_instance_description is None and 'dbInstanceDescription' in kwargs:
-            db_instance_description = kwargs['dbInstanceDescription']
-        if db_instance_storage is None and 'dbInstanceStorage' in kwargs:
-            db_instance_storage = kwargs['dbInstanceStorage']
-        if db_instance_storage_type is None and 'dbInstanceStorageType' in kwargs:
-            db_instance_storage_type = kwargs['dbInstanceStorageType']
-        if db_name is None and 'dbName' in kwargs:
-            db_name = kwargs['dbName']
-        if dedicated_host_group_id is None and 'dedicatedHostGroupId' in kwargs:
-            dedicated_host_group_id = kwargs['dedicatedHostGroupId']
-        if deletion_protection is None and 'deletionProtection' in kwargs:
-            deletion_protection = kwargs['deletionProtection']
-        if effective_time is None and 'effectiveTime' in kwargs:
-            effective_time = kwargs['effectiveTime']
-        if encryption_key is None and 'encryptionKey' in kwargs:
-            encryption_key = kwargs['encryptionKey']
-        if engine_version is None and 'engineVersion' in kwargs:
-            engine_version = kwargs['engineVersion']
-        if force_restart is None and 'forceRestart' in kwargs:
-            force_restart = kwargs['forceRestart']
-        if ha_mode is None and 'haMode' in kwargs:
-            ha_mode = kwargs['haMode']
-        if instance_network_type is None and 'instanceNetworkType' in kwargs:
-            instance_network_type = kwargs['instanceNetworkType']
-        if maintain_time is None and 'maintainTime' in kwargs:
-            maintain_time = kwargs['maintainTime']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if pg_hba_confs is None and 'pgHbaConfs' in kwargs:
-            pg_hba_confs = kwargs['pgHbaConfs']
-        if private_ip_address is None and 'privateIpAddress' in kwargs:
-            private_ip_address = kwargs['privateIpAddress']
-        if private_key is None and 'privateKey' in kwargs:
-            private_key = kwargs['privateKey']
-        if released_keep_policy is None and 'releasedKeepPolicy' in kwargs:
-            released_keep_policy = kwargs['releasedKeepPolicy']
-        if replication_acl is None and 'replicationAcl' in kwargs:
-            replication_acl = kwargs['replicationAcl']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if role_arn is None and 'roleArn' in kwargs:
-            role_arn = kwargs['roleArn']
-        if security_ips is None and 'securityIps' in kwargs:
-            security_ips = kwargs['securityIps']
-        if server_cert is None and 'serverCert' in kwargs:
-            server_cert = kwargs['serverCert']
-        if server_key is None and 'serverKey' in kwargs:
-            server_key = kwargs['serverKey']
-        if source_biz is None and 'sourceBiz' in kwargs:
-            source_biz = kwargs['sourceBiz']
-        if source_db_instance_id is None and 'sourceDbInstanceId' in kwargs:
-            source_db_instance_id = kwargs['sourceDbInstanceId']
-        if ssl_enabled is None and 'sslEnabled' in kwargs:
-            ssl_enabled = kwargs['sslEnabled']
-        if switch_over is None and 'switchOver' in kwargs:
-            switch_over = kwargs['switchOver']
-        if switch_time is None and 'switchTime' in kwargs:
-            switch_time = kwargs['switchTime']
-        if switch_time_mode is None and 'switchTimeMode' in kwargs:
-            switch_time_mode = kwargs['switchTimeMode']
-        if sync_mode is None and 'syncMode' in kwargs:
-            sync_mode = kwargs['syncMode']
-        if target_major_version is None and 'targetMajorVersion' in kwargs:
-            target_major_version = kwargs['targetMajorVersion']
-        if tcp_connection_type is None and 'tcpConnectionType' in kwargs:
-            tcp_connection_type = kwargs['tcpConnectionType']
-        if tde_status is None and 'tdeStatus' in kwargs:
-            tde_status = kwargs['tdeStatus']
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id_slave1 is None and 'zoneIdSlave1' in kwargs:
-            zone_id_slave1 = kwargs['zoneIdSlave1']
-
         if acl is not None:
-            _setter("acl", acl)
+            pulumi.set(__self__, "acl", acl)
         if auto_upgrade_minor_version is not None:
-            _setter("auto_upgrade_minor_version", auto_upgrade_minor_version)
+            pulumi.set(__self__, "auto_upgrade_minor_version", auto_upgrade_minor_version)
         if ca_type is not None:
-            _setter("ca_type", ca_type)
+            pulumi.set(__self__, "ca_type", ca_type)
         if certificate is not None:
-            _setter("certificate", certificate)
+            pulumi.set(__self__, "certificate", certificate)
         if client_ca_cert is not None:
-            _setter("client_ca_cert", client_ca_cert)
+            pulumi.set(__self__, "client_ca_cert", client_ca_cert)
         if client_ca_enabled is not None:
-            _setter("client_ca_enabled", client_ca_enabled)
+            pulumi.set(__self__, "client_ca_enabled", client_ca_enabled)
         if client_cert_revocation_list is not None:
-            _setter("client_cert_revocation_list", client_cert_revocation_list)
+            pulumi.set(__self__, "client_cert_revocation_list", client_cert_revocation_list)
         if client_crl_enabled is not None:
-            _setter("client_crl_enabled", client_crl_enabled)
+            pulumi.set(__self__, "client_crl_enabled", client_crl_enabled)
         if collect_stat_mode is not None:
-            _setter("collect_stat_mode", collect_stat_mode)
+            pulumi.set(__self__, "collect_stat_mode", collect_stat_mode)
         if connection_string is not None:
-            _setter("connection_string", connection_string)
+            pulumi.set(__self__, "connection_string", connection_string)
         if connection_string_prefix is not None:
-            _setter("connection_string_prefix", connection_string_prefix)
+            pulumi.set(__self__, "connection_string_prefix", connection_string_prefix)
         if db_instance_class is not None:
-            _setter("db_instance_class", db_instance_class)
+            pulumi.set(__self__, "db_instance_class", db_instance_class)
         if db_instance_description is not None:
-            _setter("db_instance_description", db_instance_description)
+            pulumi.set(__self__, "db_instance_description", db_instance_description)
         if db_instance_storage is not None:
-            _setter("db_instance_storage", db_instance_storage)
+            pulumi.set(__self__, "db_instance_storage", db_instance_storage)
         if db_instance_storage_type is not None:
-            _setter("db_instance_storage_type", db_instance_storage_type)
+            pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
         if db_name is not None:
-            _setter("db_name", db_name)
+            pulumi.set(__self__, "db_name", db_name)
         if dedicated_host_group_id is not None:
-            _setter("dedicated_host_group_id", dedicated_host_group_id)
+            pulumi.set(__self__, "dedicated_host_group_id", dedicated_host_group_id)
         if deletion_protection is not None:
-            _setter("deletion_protection", deletion_protection)
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if direction is not None:
-            _setter("direction", direction)
+            pulumi.set(__self__, "direction", direction)
         if effective_time is not None:
-            _setter("effective_time", effective_time)
+            pulumi.set(__self__, "effective_time", effective_time)
         if encryption_key is not None:
-            _setter("encryption_key", encryption_key)
+            pulumi.set(__self__, "encryption_key", encryption_key)
         if engine is not None:
-            _setter("engine", engine)
+            pulumi.set(__self__, "engine", engine)
         if engine_version is not None:
-            _setter("engine_version", engine_version)
+            pulumi.set(__self__, "engine_version", engine_version)
         if force_restart is not None:
-            _setter("force_restart", force_restart)
+            pulumi.set(__self__, "force_restart", force_restart)
         if ha_mode is not None:
-            _setter("ha_mode", ha_mode)
+            pulumi.set(__self__, "ha_mode", ha_mode)
         if instance_network_type is not None:
-            _setter("instance_network_type", instance_network_type)
+            pulumi.set(__self__, "instance_network_type", instance_network_type)
         if maintain_time is not None:
-            _setter("maintain_time", maintain_time)
+            pulumi.set(__self__, "maintain_time", maintain_time)
         if parameters is not None:
-            _setter("parameters", parameters)
+            pulumi.set(__self__, "parameters", parameters)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if pg_hba_confs is not None:
-            _setter("pg_hba_confs", pg_hba_confs)
+            pulumi.set(__self__, "pg_hba_confs", pg_hba_confs)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if private_ip_address is not None:
-            _setter("private_ip_address", private_ip_address)
+            pulumi.set(__self__, "private_ip_address", private_ip_address)
         if private_key is not None:
-            _setter("private_key", private_key)
+            pulumi.set(__self__, "private_key", private_key)
         if released_keep_policy is not None:
-            _setter("released_keep_policy", released_keep_policy)
+            pulumi.set(__self__, "released_keep_policy", released_keep_policy)
         if replication_acl is not None:
-            _setter("replication_acl", replication_acl)
+            pulumi.set(__self__, "replication_acl", replication_acl)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if role_arn is not None:
-            _setter("role_arn", role_arn)
+            pulumi.set(__self__, "role_arn", role_arn)
         if security_ips is not None:
-            _setter("security_ips", security_ips)
+            pulumi.set(__self__, "security_ips", security_ips)
         if server_cert is not None:
-            _setter("server_cert", server_cert)
+            pulumi.set(__self__, "server_cert", server_cert)
         if server_key is not None:
-            _setter("server_key", server_key)
+            pulumi.set(__self__, "server_key", server_key)
         if source_biz is not None:
-            _setter("source_biz", source_biz)
+            pulumi.set(__self__, "source_biz", source_biz)
         if source_db_instance_id is not None:
-            _setter("source_db_instance_id", source_db_instance_id)
+            pulumi.set(__self__, "source_db_instance_id", source_db_instance_id)
         if ssl_enabled is not None:
-            _setter("ssl_enabled", ssl_enabled)
+            pulumi.set(__self__, "ssl_enabled", ssl_enabled)
         if switch_over is not None:
-            _setter("switch_over", switch_over)
+            pulumi.set(__self__, "switch_over", switch_over)
         if switch_time is not None:
-            _setter("switch_time", switch_time)
+            pulumi.set(__self__, "switch_time", switch_time)
         if switch_time_mode is not None:
-            _setter("switch_time_mode", switch_time_mode)
+            pulumi.set(__self__, "switch_time_mode", switch_time_mode)
         if sync_mode is not None:
-            _setter("sync_mode", sync_mode)
+            pulumi.set(__self__, "sync_mode", sync_mode)
         if target_major_version is not None:
-            _setter("target_major_version", target_major_version)
+            pulumi.set(__self__, "target_major_version", target_major_version)
         if tcp_connection_type is not None:
-            _setter("tcp_connection_type", tcp_connection_type)
+            pulumi.set(__self__, "tcp_connection_type", tcp_connection_type)
         if tde_status is not None:
-            _setter("tde_status", tde_status)
+            pulumi.set(__self__, "tde_status", tde_status)
         if vpc_id is not None:
-            _setter("vpc_id", vpc_id)
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
         if zone_id_slave1 is not None:
-            _setter("zone_id_slave1", zone_id_slave1)
+            pulumi.set(__self__, "zone_id_slave1", zone_id_slave1)
 
     @property
     @pulumi.getter
@@ -2788,10 +2344,6 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RdsUpgradeDbInstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -56,120 +56,41 @@ class DomainArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_ips: List of the IP address or domain of the origin server to which the specified domain points.
         :param pulumi.Input[int] write_time: The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
         """
-        DomainArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_id=instance_id,
-            is_access_product=is_access_product,
-            cluster_type=cluster_type,
-            connection_time=connection_time,
-            domain=domain,
-            domain_name=domain_name,
-            http2_ports=http2_ports,
-            http_ports=http_ports,
-            http_to_user_ip=http_to_user_ip,
-            https_ports=https_ports,
-            https_redirect=https_redirect,
-            load_balancing=load_balancing,
-            log_headers=log_headers,
-            read_time=read_time,
-            resource_group_id=resource_group_id,
-            source_ips=source_ips,
-            write_time=write_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_id: Optional[pulumi.Input[str]] = None,
-             is_access_product: Optional[pulumi.Input[str]] = None,
-             cluster_type: Optional[pulumi.Input[str]] = None,
-             connection_time: Optional[pulumi.Input[int]] = None,
-             domain: Optional[pulumi.Input[str]] = None,
-             domain_name: Optional[pulumi.Input[str]] = None,
-             http2_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             http_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             http_to_user_ip: Optional[pulumi.Input[str]] = None,
-             https_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             https_redirect: Optional[pulumi.Input[str]] = None,
-             load_balancing: Optional[pulumi.Input[str]] = None,
-             log_headers: Optional[pulumi.Input[Sequence[pulumi.Input['DomainLogHeaderArgs']]]] = None,
-             read_time: Optional[pulumi.Input[int]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             source_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             write_time: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if is_access_product is None and 'isAccessProduct' in kwargs:
-            is_access_product = kwargs['isAccessProduct']
-        if is_access_product is None:
-            raise TypeError("Missing 'is_access_product' argument")
-        if cluster_type is None and 'clusterType' in kwargs:
-            cluster_type = kwargs['clusterType']
-        if connection_time is None and 'connectionTime' in kwargs:
-            connection_time = kwargs['connectionTime']
-        if domain_name is None and 'domainName' in kwargs:
-            domain_name = kwargs['domainName']
-        if http2_ports is None and 'http2Ports' in kwargs:
-            http2_ports = kwargs['http2Ports']
-        if http_ports is None and 'httpPorts' in kwargs:
-            http_ports = kwargs['httpPorts']
-        if http_to_user_ip is None and 'httpToUserIp' in kwargs:
-            http_to_user_ip = kwargs['httpToUserIp']
-        if https_ports is None and 'httpsPorts' in kwargs:
-            https_ports = kwargs['httpsPorts']
-        if https_redirect is None and 'httpsRedirect' in kwargs:
-            https_redirect = kwargs['httpsRedirect']
-        if load_balancing is None and 'loadBalancing' in kwargs:
-            load_balancing = kwargs['loadBalancing']
-        if log_headers is None and 'logHeaders' in kwargs:
-            log_headers = kwargs['logHeaders']
-        if read_time is None and 'readTime' in kwargs:
-            read_time = kwargs['readTime']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if source_ips is None and 'sourceIps' in kwargs:
-            source_ips = kwargs['sourceIps']
-        if write_time is None and 'writeTime' in kwargs:
-            write_time = kwargs['writeTime']
-
-        _setter("instance_id", instance_id)
-        _setter("is_access_product", is_access_product)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "is_access_product", is_access_product)
         if cluster_type is not None:
-            _setter("cluster_type", cluster_type)
+            pulumi.set(__self__, "cluster_type", cluster_type)
         if connection_time is not None:
-            _setter("connection_time", connection_time)
+            pulumi.set(__self__, "connection_time", connection_time)
         if domain is not None:
             warnings.warn("""Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""domain is deprecated: Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.""")
         if domain is not None:
-            _setter("domain", domain)
+            pulumi.set(__self__, "domain", domain)
         if domain_name is not None:
-            _setter("domain_name", domain_name)
+            pulumi.set(__self__, "domain_name", domain_name)
         if http2_ports is not None:
-            _setter("http2_ports", http2_ports)
+            pulumi.set(__self__, "http2_ports", http2_ports)
         if http_ports is not None:
-            _setter("http_ports", http_ports)
+            pulumi.set(__self__, "http_ports", http_ports)
         if http_to_user_ip is not None:
-            _setter("http_to_user_ip", http_to_user_ip)
+            pulumi.set(__self__, "http_to_user_ip", http_to_user_ip)
         if https_ports is not None:
-            _setter("https_ports", https_ports)
+            pulumi.set(__self__, "https_ports", https_ports)
         if https_redirect is not None:
-            _setter("https_redirect", https_redirect)
+            pulumi.set(__self__, "https_redirect", https_redirect)
         if load_balancing is not None:
-            _setter("load_balancing", load_balancing)
+            pulumi.set(__self__, "load_balancing", load_balancing)
         if log_headers is not None:
-            _setter("log_headers", log_headers)
+            pulumi.set(__self__, "log_headers", log_headers)
         if read_time is not None:
-            _setter("read_time", read_time)
+            pulumi.set(__self__, "read_time", read_time)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if source_ips is not None:
-            _setter("source_ips", source_ips)
+            pulumi.set(__self__, "source_ips", source_ips)
         if write_time is not None:
-            _setter("write_time", write_time)
+            pulumi.set(__self__, "write_time", write_time)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -427,122 +348,45 @@ class _DomainState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_ips: List of the IP address or domain of the origin server to which the specified domain points.
         :param pulumi.Input[int] write_time: The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
         """
-        _DomainState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_type=cluster_type,
-            cname=cname,
-            connection_time=connection_time,
-            domain=domain,
-            domain_name=domain_name,
-            http2_ports=http2_ports,
-            http_ports=http_ports,
-            http_to_user_ip=http_to_user_ip,
-            https_ports=https_ports,
-            https_redirect=https_redirect,
-            instance_id=instance_id,
-            is_access_product=is_access_product,
-            load_balancing=load_balancing,
-            log_headers=log_headers,
-            read_time=read_time,
-            resource_group_id=resource_group_id,
-            source_ips=source_ips,
-            write_time=write_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_type: Optional[pulumi.Input[str]] = None,
-             cname: Optional[pulumi.Input[str]] = None,
-             connection_time: Optional[pulumi.Input[int]] = None,
-             domain: Optional[pulumi.Input[str]] = None,
-             domain_name: Optional[pulumi.Input[str]] = None,
-             http2_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             http_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             http_to_user_ip: Optional[pulumi.Input[str]] = None,
-             https_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             https_redirect: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             is_access_product: Optional[pulumi.Input[str]] = None,
-             load_balancing: Optional[pulumi.Input[str]] = None,
-             log_headers: Optional[pulumi.Input[Sequence[pulumi.Input['DomainLogHeaderArgs']]]] = None,
-             read_time: Optional[pulumi.Input[int]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             source_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             write_time: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_type is None and 'clusterType' in kwargs:
-            cluster_type = kwargs['clusterType']
-        if connection_time is None and 'connectionTime' in kwargs:
-            connection_time = kwargs['connectionTime']
-        if domain_name is None and 'domainName' in kwargs:
-            domain_name = kwargs['domainName']
-        if http2_ports is None and 'http2Ports' in kwargs:
-            http2_ports = kwargs['http2Ports']
-        if http_ports is None and 'httpPorts' in kwargs:
-            http_ports = kwargs['httpPorts']
-        if http_to_user_ip is None and 'httpToUserIp' in kwargs:
-            http_to_user_ip = kwargs['httpToUserIp']
-        if https_ports is None and 'httpsPorts' in kwargs:
-            https_ports = kwargs['httpsPorts']
-        if https_redirect is None and 'httpsRedirect' in kwargs:
-            https_redirect = kwargs['httpsRedirect']
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if is_access_product is None and 'isAccessProduct' in kwargs:
-            is_access_product = kwargs['isAccessProduct']
-        if load_balancing is None and 'loadBalancing' in kwargs:
-            load_balancing = kwargs['loadBalancing']
-        if log_headers is None and 'logHeaders' in kwargs:
-            log_headers = kwargs['logHeaders']
-        if read_time is None and 'readTime' in kwargs:
-            read_time = kwargs['readTime']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if source_ips is None and 'sourceIps' in kwargs:
-            source_ips = kwargs['sourceIps']
-        if write_time is None and 'writeTime' in kwargs:
-            write_time = kwargs['writeTime']
-
         if cluster_type is not None:
-            _setter("cluster_type", cluster_type)
+            pulumi.set(__self__, "cluster_type", cluster_type)
         if cname is not None:
-            _setter("cname", cname)
+            pulumi.set(__self__, "cname", cname)
         if connection_time is not None:
-            _setter("connection_time", connection_time)
+            pulumi.set(__self__, "connection_time", connection_time)
         if domain is not None:
             warnings.warn("""Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""domain is deprecated: Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.""")
         if domain is not None:
-            _setter("domain", domain)
+            pulumi.set(__self__, "domain", domain)
         if domain_name is not None:
-            _setter("domain_name", domain_name)
+            pulumi.set(__self__, "domain_name", domain_name)
         if http2_ports is not None:
-            _setter("http2_ports", http2_ports)
+            pulumi.set(__self__, "http2_ports", http2_ports)
         if http_ports is not None:
-            _setter("http_ports", http_ports)
+            pulumi.set(__self__, "http_ports", http_ports)
         if http_to_user_ip is not None:
-            _setter("http_to_user_ip", http_to_user_ip)
+            pulumi.set(__self__, "http_to_user_ip", http_to_user_ip)
         if https_ports is not None:
-            _setter("https_ports", https_ports)
+            pulumi.set(__self__, "https_ports", https_ports)
         if https_redirect is not None:
-            _setter("https_redirect", https_redirect)
+            pulumi.set(__self__, "https_redirect", https_redirect)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if is_access_product is not None:
-            _setter("is_access_product", is_access_product)
+            pulumi.set(__self__, "is_access_product", is_access_product)
         if load_balancing is not None:
-            _setter("load_balancing", load_balancing)
+            pulumi.set(__self__, "load_balancing", load_balancing)
         if log_headers is not None:
-            _setter("log_headers", log_headers)
+            pulumi.set(__self__, "log_headers", log_headers)
         if read_time is not None:
-            _setter("read_time", read_time)
+            pulumi.set(__self__, "read_time", read_time)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if source_ips is not None:
-            _setter("source_ips", source_ips)
+            pulumi.set(__self__, "source_ips", source_ips)
         if write_time is not None:
-            _setter("write_time", write_time)
+            pulumi.set(__self__, "write_time", write_time)
 
     @property
     @pulumi.getter(name="clusterType")
@@ -911,10 +755,6 @@ class Domain(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DomainArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

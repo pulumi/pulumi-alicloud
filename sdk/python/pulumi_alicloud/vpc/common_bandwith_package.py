@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['CommonBandwithPackageArgs', 'CommonBandwithPackage']
@@ -50,81 +50,34 @@ class CommonBandwithPackageArgs:
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
-        CommonBandwithPackageArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bandwidth=bandwidth,
-            bandwidth_package_name=bandwidth_package_name,
-            deletion_protection=deletion_protection,
-            description=description,
-            force=force,
-            internet_charge_type=internet_charge_type,
-            isp=isp,
-            name=name,
-            ratio=ratio,
-            resource_group_id=resource_group_id,
-            security_protection_types=security_protection_types,
-            tags=tags,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bandwidth: Optional[pulumi.Input[str]] = None,
-             bandwidth_package_name: Optional[pulumi.Input[str]] = None,
-             deletion_protection: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             force: Optional[pulumi.Input[str]] = None,
-             internet_charge_type: Optional[pulumi.Input[str]] = None,
-             isp: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             ratio: Optional[pulumi.Input[int]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bandwidth is None:
-            raise TypeError("Missing 'bandwidth' argument")
-        if bandwidth_package_name is None and 'bandwidthPackageName' in kwargs:
-            bandwidth_package_name = kwargs['bandwidthPackageName']
-        if deletion_protection is None and 'deletionProtection' in kwargs:
-            deletion_protection = kwargs['deletionProtection']
-        if internet_charge_type is None and 'internetChargeType' in kwargs:
-            internet_charge_type = kwargs['internetChargeType']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if security_protection_types is None and 'securityProtectionTypes' in kwargs:
-            security_protection_types = kwargs['securityProtectionTypes']
-
-        _setter("bandwidth", bandwidth)
+        pulumi.set(__self__, "bandwidth", bandwidth)
         if bandwidth_package_name is not None:
-            _setter("bandwidth_package_name", bandwidth_package_name)
+            pulumi.set(__self__, "bandwidth_package_name", bandwidth_package_name)
         if deletion_protection is not None:
-            _setter("deletion_protection", deletion_protection)
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if force is not None:
-            _setter("force", force)
+            pulumi.set(__self__, "force", force)
         if internet_charge_type is not None:
-            _setter("internet_charge_type", internet_charge_type)
+            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
         if isp is not None:
-            _setter("isp", isp)
+            pulumi.set(__self__, "isp", isp)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated since provider version 1.120.0. New field 'bandwidth_package_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.120.0. New field 'bandwidth_package_name' instead.""")
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if ratio is not None:
-            _setter("ratio", ratio)
+            pulumi.set(__self__, "ratio", ratio)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_protection_types is not None:
-            _setter("security_protection_types", security_protection_types)
+            pulumi.set(__self__, "security_protection_types", security_protection_types)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter
@@ -338,96 +291,41 @@ class _CommonBandwithPackageState:
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
-        _CommonBandwithPackageState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bandwidth=bandwidth,
-            bandwidth_package_name=bandwidth_package_name,
-            create_time=create_time,
-            deletion_protection=deletion_protection,
-            description=description,
-            force=force,
-            internet_charge_type=internet_charge_type,
-            isp=isp,
-            name=name,
-            payment_type=payment_type,
-            ratio=ratio,
-            resource_group_id=resource_group_id,
-            security_protection_types=security_protection_types,
-            status=status,
-            tags=tags,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bandwidth: Optional[pulumi.Input[str]] = None,
-             bandwidth_package_name: Optional[pulumi.Input[str]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             deletion_protection: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             force: Optional[pulumi.Input[str]] = None,
-             internet_charge_type: Optional[pulumi.Input[str]] = None,
-             isp: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             ratio: Optional[pulumi.Input[int]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bandwidth_package_name is None and 'bandwidthPackageName' in kwargs:
-            bandwidth_package_name = kwargs['bandwidthPackageName']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if deletion_protection is None and 'deletionProtection' in kwargs:
-            deletion_protection = kwargs['deletionProtection']
-        if internet_charge_type is None and 'internetChargeType' in kwargs:
-            internet_charge_type = kwargs['internetChargeType']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if security_protection_types is None and 'securityProtectionTypes' in kwargs:
-            security_protection_types = kwargs['securityProtectionTypes']
-
         if bandwidth is not None:
-            _setter("bandwidth", bandwidth)
+            pulumi.set(__self__, "bandwidth", bandwidth)
         if bandwidth_package_name is not None:
-            _setter("bandwidth_package_name", bandwidth_package_name)
+            pulumi.set(__self__, "bandwidth_package_name", bandwidth_package_name)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if deletion_protection is not None:
-            _setter("deletion_protection", deletion_protection)
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if force is not None:
-            _setter("force", force)
+            pulumi.set(__self__, "force", force)
         if internet_charge_type is not None:
-            _setter("internet_charge_type", internet_charge_type)
+            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
         if isp is not None:
-            _setter("isp", isp)
+            pulumi.set(__self__, "isp", isp)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated since provider version 1.120.0. New field 'bandwidth_package_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.120.0. New field 'bandwidth_package_name' instead.""")
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if ratio is not None:
-            _setter("ratio", ratio)
+            pulumi.set(__self__, "ratio", ratio)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_protection_types is not None:
-            _setter("security_protection_types", security_protection_types)
+            pulumi.set(__self__, "security_protection_types", security_protection_types)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter
@@ -708,10 +606,6 @@ class CommonBandwithPackage(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CommonBandwithPackageArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

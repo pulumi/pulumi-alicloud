@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RoleAttachmentArgs', 'RoleAttachment']
@@ -21,29 +21,8 @@ class RoleAttachmentArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The list of ECS instance's IDs.
         :param pulumi.Input[str] role_name: The name of role used to bind. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
         """
-        RoleAttachmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_ids=instance_ids,
-            role_name=role_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             role_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_ids is None and 'instanceIds' in kwargs:
-            instance_ids = kwargs['instanceIds']
-        if instance_ids is None:
-            raise TypeError("Missing 'instance_ids' argument")
-        if role_name is None and 'roleName' in kwargs:
-            role_name = kwargs['roleName']
-        if role_name is None:
-            raise TypeError("Missing 'role_name' argument")
-
-        _setter("instance_ids", instance_ids)
-        _setter("role_name", role_name)
+        pulumi.set(__self__, "instance_ids", instance_ids)
+        pulumi.set(__self__, "role_name", role_name)
 
     @property
     @pulumi.getter(name="instanceIds")
@@ -80,27 +59,10 @@ class _RoleAttachmentState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The list of ECS instance's IDs.
         :param pulumi.Input[str] role_name: The name of role used to bind. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
         """
-        _RoleAttachmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_ids=instance_ids,
-            role_name=role_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             role_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_ids is None and 'instanceIds' in kwargs:
-            instance_ids = kwargs['instanceIds']
-        if role_name is None and 'roleName' in kwargs:
-            role_name = kwargs['roleName']
-
         if instance_ids is not None:
-            _setter("instance_ids", instance_ids)
+            pulumi.set(__self__, "instance_ids", instance_ids)
         if role_name is not None:
-            _setter("role_name", role_name)
+            pulumi.set(__self__, "role_name", role_name)
 
     @property
     @pulumi.getter(name="instanceIds")
@@ -304,10 +266,6 @@ class RoleAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RoleAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

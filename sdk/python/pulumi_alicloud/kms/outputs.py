@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -54,39 +54,14 @@ class InstanceBindVpc(dict):
         :param int vpc_owner_id: VPC owner root user ID.
         :param str vswitch_id: vswitch id.
         """
-        InstanceBindVpc._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            region_id=region_id,
-            vpc_id=vpc_id,
-            vpc_owner_id=vpc_owner_id,
-            vswitch_id=vswitch_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             region_id: Optional[str] = None,
-             vpc_id: Optional[str] = None,
-             vpc_owner_id: Optional[int] = None,
-             vswitch_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if region_id is None and 'regionId' in kwargs:
-            region_id = kwargs['regionId']
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_owner_id is None and 'vpcOwnerId' in kwargs:
-            vpc_owner_id = kwargs['vpcOwnerId']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-
         if region_id is not None:
-            _setter("region_id", region_id)
+            pulumi.set(__self__, "region_id", region_id)
         if vpc_id is not None:
-            _setter("vpc_id", vpc_id)
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vpc_owner_id is not None:
-            _setter("vpc_owner_id", vpc_owner_id)
+            pulumi.set(__self__, "vpc_owner_id", vpc_owner_id)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="regionId")
@@ -132,34 +107,9 @@ class GetAliasesAliasResult(dict):
         :param str id: ID of the alias. The value is same as KMS alias_name.
         :param str key_id: ID of the key.
         """
-        GetAliasesAliasResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            alias_name=alias_name,
-            id=id,
-            key_id=key_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             alias_name: Optional[str] = None,
-             id: Optional[str] = None,
-             key_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if alias_name is None and 'aliasName' in kwargs:
-            alias_name = kwargs['aliasName']
-        if alias_name is None:
-            raise TypeError("Missing 'alias_name' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if key_id is None and 'keyId' in kwargs:
-            key_id = kwargs['keyId']
-        if key_id is None:
-            raise TypeError("Missing 'key_id' argument")
-
-        _setter("alias_name", alias_name)
-        _setter("id", id)
-        _setter("key_id", key_id)
+        pulumi.set(__self__, "alias_name", alias_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "key_id", key_id)
 
     @property
     @pulumi.getter(name="aliasName")
@@ -201,48 +151,11 @@ class GetKeyVersionsVersionResult(dict):
         :param str key_id: The id of kms key.
         :param str key_version_id: ID of the key version.
         """
-        GetKeyVersionsVersionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            creation_date=creation_date,
-            id=id,
-            key_id=key_id,
-            key_version_id=key_version_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[str] = None,
-             creation_date: Optional[str] = None,
-             id: Optional[str] = None,
-             key_id: Optional[str] = None,
-             key_version_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if creation_date is None and 'creationDate' in kwargs:
-            creation_date = kwargs['creationDate']
-        if creation_date is None:
-            raise TypeError("Missing 'creation_date' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if key_id is None and 'keyId' in kwargs:
-            key_id = kwargs['keyId']
-        if key_id is None:
-            raise TypeError("Missing 'key_id' argument")
-        if key_version_id is None and 'keyVersionId' in kwargs:
-            key_version_id = kwargs['keyVersionId']
-        if key_version_id is None:
-            raise TypeError("Missing 'key_version_id' argument")
-
-        _setter("create_time", create_time)
-        _setter("creation_date", creation_date)
-        _setter("id", id)
-        _setter("key_id", key_id)
-        _setter("key_version_id", key_version_id)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "creation_date", creation_date)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "key_id", key_id)
+        pulumi.set(__self__, "key_version_id", key_version_id)
 
     @property
     @pulumi.getter(name="createTime")
@@ -326,129 +239,24 @@ class GetKeysKeyResult(dict):
         :param str rotation_interval: (Available in 1.123.1+)  The period of automatic key rotation.
         :param str status: Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
         """
-        GetKeysKeyResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            arn=arn,
-            automatic_rotation=automatic_rotation,
-            creation_date=creation_date,
-            creator=creator,
-            delete_date=delete_date,
-            description=description,
-            id=id,
-            key_id=key_id,
-            key_spec=key_spec,
-            key_usage=key_usage,
-            last_rotation_date=last_rotation_date,
-            material_expire_time=material_expire_time,
-            next_rotation_date=next_rotation_date,
-            origin=origin,
-            primary_key_version=primary_key_version,
-            protection_level=protection_level,
-            rotation_interval=rotation_interval,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             arn: Optional[str] = None,
-             automatic_rotation: Optional[str] = None,
-             creation_date: Optional[str] = None,
-             creator: Optional[str] = None,
-             delete_date: Optional[str] = None,
-             description: Optional[str] = None,
-             id: Optional[str] = None,
-             key_id: Optional[str] = None,
-             key_spec: Optional[str] = None,
-             key_usage: Optional[str] = None,
-             last_rotation_date: Optional[str] = None,
-             material_expire_time: Optional[str] = None,
-             next_rotation_date: Optional[str] = None,
-             origin: Optional[str] = None,
-             primary_key_version: Optional[str] = None,
-             protection_level: Optional[str] = None,
-             rotation_interval: Optional[str] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if arn is None:
-            raise TypeError("Missing 'arn' argument")
-        if automatic_rotation is None and 'automaticRotation' in kwargs:
-            automatic_rotation = kwargs['automaticRotation']
-        if automatic_rotation is None:
-            raise TypeError("Missing 'automatic_rotation' argument")
-        if creation_date is None and 'creationDate' in kwargs:
-            creation_date = kwargs['creationDate']
-        if creation_date is None:
-            raise TypeError("Missing 'creation_date' argument")
-        if creator is None:
-            raise TypeError("Missing 'creator' argument")
-        if delete_date is None and 'deleteDate' in kwargs:
-            delete_date = kwargs['deleteDate']
-        if delete_date is None:
-            raise TypeError("Missing 'delete_date' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if key_id is None and 'keyId' in kwargs:
-            key_id = kwargs['keyId']
-        if key_id is None:
-            raise TypeError("Missing 'key_id' argument")
-        if key_spec is None and 'keySpec' in kwargs:
-            key_spec = kwargs['keySpec']
-        if key_spec is None:
-            raise TypeError("Missing 'key_spec' argument")
-        if key_usage is None and 'keyUsage' in kwargs:
-            key_usage = kwargs['keyUsage']
-        if key_usage is None:
-            raise TypeError("Missing 'key_usage' argument")
-        if last_rotation_date is None and 'lastRotationDate' in kwargs:
-            last_rotation_date = kwargs['lastRotationDate']
-        if last_rotation_date is None:
-            raise TypeError("Missing 'last_rotation_date' argument")
-        if material_expire_time is None and 'materialExpireTime' in kwargs:
-            material_expire_time = kwargs['materialExpireTime']
-        if material_expire_time is None:
-            raise TypeError("Missing 'material_expire_time' argument")
-        if next_rotation_date is None and 'nextRotationDate' in kwargs:
-            next_rotation_date = kwargs['nextRotationDate']
-        if next_rotation_date is None:
-            raise TypeError("Missing 'next_rotation_date' argument")
-        if origin is None:
-            raise TypeError("Missing 'origin' argument")
-        if primary_key_version is None and 'primaryKeyVersion' in kwargs:
-            primary_key_version = kwargs['primaryKeyVersion']
-        if primary_key_version is None:
-            raise TypeError("Missing 'primary_key_version' argument")
-        if protection_level is None and 'protectionLevel' in kwargs:
-            protection_level = kwargs['protectionLevel']
-        if protection_level is None:
-            raise TypeError("Missing 'protection_level' argument")
-        if rotation_interval is None and 'rotationInterval' in kwargs:
-            rotation_interval = kwargs['rotationInterval']
-        if rotation_interval is None:
-            raise TypeError("Missing 'rotation_interval' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("arn", arn)
-        _setter("automatic_rotation", automatic_rotation)
-        _setter("creation_date", creation_date)
-        _setter("creator", creator)
-        _setter("delete_date", delete_date)
-        _setter("description", description)
-        _setter("id", id)
-        _setter("key_id", key_id)
-        _setter("key_spec", key_spec)
-        _setter("key_usage", key_usage)
-        _setter("last_rotation_date", last_rotation_date)
-        _setter("material_expire_time", material_expire_time)
-        _setter("next_rotation_date", next_rotation_date)
-        _setter("origin", origin)
-        _setter("primary_key_version", primary_key_version)
-        _setter("protection_level", protection_level)
-        _setter("rotation_interval", rotation_interval)
-        _setter("status", status)
+        pulumi.set(__self__, "arn", arn)
+        pulumi.set(__self__, "automatic_rotation", automatic_rotation)
+        pulumi.set(__self__, "creation_date", creation_date)
+        pulumi.set(__self__, "creator", creator)
+        pulumi.set(__self__, "delete_date", delete_date)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "key_id", key_id)
+        pulumi.set(__self__, "key_spec", key_spec)
+        pulumi.set(__self__, "key_usage", key_usage)
+        pulumi.set(__self__, "last_rotation_date", last_rotation_date)
+        pulumi.set(__self__, "material_expire_time", material_expire_time)
+        pulumi.set(__self__, "next_rotation_date", next_rotation_date)
+        pulumi.set(__self__, "origin", origin)
+        pulumi.set(__self__, "primary_key_version", primary_key_version)
+        pulumi.set(__self__, "protection_level", protection_level)
+        pulumi.set(__self__, "rotation_interval", rotation_interval)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -610,50 +418,11 @@ class GetSecretVersionsVersionResult(dict):
         :param str version_id: The version number of the secret value.
         :param Sequence[str] version_stages: Stage labels that mark the secret version.
         """
-        GetSecretVersionsVersionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            secret_data=secret_data,
-            secret_data_type=secret_data_type,
-            secret_name=secret_name,
-            version_id=version_id,
-            version_stages=version_stages,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             secret_data: Optional[str] = None,
-             secret_data_type: Optional[str] = None,
-             secret_name: Optional[str] = None,
-             version_id: Optional[str] = None,
-             version_stages: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if secret_data is None and 'secretData' in kwargs:
-            secret_data = kwargs['secretData']
-        if secret_data is None:
-            raise TypeError("Missing 'secret_data' argument")
-        if secret_data_type is None and 'secretDataType' in kwargs:
-            secret_data_type = kwargs['secretDataType']
-        if secret_data_type is None:
-            raise TypeError("Missing 'secret_data_type' argument")
-        if secret_name is None and 'secretName' in kwargs:
-            secret_name = kwargs['secretName']
-        if secret_name is None:
-            raise TypeError("Missing 'secret_name' argument")
-        if version_id is None and 'versionId' in kwargs:
-            version_id = kwargs['versionId']
-        if version_id is None:
-            raise TypeError("Missing 'version_id' argument")
-        if version_stages is None and 'versionStages' in kwargs:
-            version_stages = kwargs['versionStages']
-        if version_stages is None:
-            raise TypeError("Missing 'version_stages' argument")
-
-        _setter("secret_data", secret_data)
-        _setter("secret_data_type", secret_data_type)
-        _setter("secret_name", secret_name)
-        _setter("version_id", version_id)
-        _setter("version_stages", version_stages)
+        pulumi.set(__self__, "secret_data", secret_data)
+        pulumi.set(__self__, "secret_data_type", secret_data_type)
+        pulumi.set(__self__, "secret_name", secret_name)
+        pulumi.set(__self__, "version_id", version_id)
+        pulumi.set(__self__, "version_stages", version_stages)
 
     @property
     @pulumi.getter(name="secretData")
@@ -725,91 +494,18 @@ class GetSecretsSecretResult(dict):
         :param str version_id: (Available in 1.124.0+)  The version number of the initial version.
         :param Sequence[str] version_stages: (Available in 1.124.0+)  The stage labels that mark the new secret version.
         """
-        GetSecretsSecretResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            arn=arn,
-            description=description,
-            encryption_key_id=encryption_key_id,
-            id=id,
-            planned_delete_time=planned_delete_time,
-            secret_data=secret_data,
-            secret_data_type=secret_data_type,
-            secret_name=secret_name,
-            secret_type=secret_type,
-            tags=tags,
-            version_id=version_id,
-            version_stages=version_stages,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             arn: Optional[str] = None,
-             description: Optional[str] = None,
-             encryption_key_id: Optional[str] = None,
-             id: Optional[str] = None,
-             planned_delete_time: Optional[str] = None,
-             secret_data: Optional[str] = None,
-             secret_data_type: Optional[str] = None,
-             secret_name: Optional[str] = None,
-             secret_type: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             version_id: Optional[str] = None,
-             version_stages: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if arn is None:
-            raise TypeError("Missing 'arn' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if encryption_key_id is None and 'encryptionKeyId' in kwargs:
-            encryption_key_id = kwargs['encryptionKeyId']
-        if encryption_key_id is None:
-            raise TypeError("Missing 'encryption_key_id' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if planned_delete_time is None and 'plannedDeleteTime' in kwargs:
-            planned_delete_time = kwargs['plannedDeleteTime']
-        if planned_delete_time is None:
-            raise TypeError("Missing 'planned_delete_time' argument")
-        if secret_data is None and 'secretData' in kwargs:
-            secret_data = kwargs['secretData']
-        if secret_data is None:
-            raise TypeError("Missing 'secret_data' argument")
-        if secret_data_type is None and 'secretDataType' in kwargs:
-            secret_data_type = kwargs['secretDataType']
-        if secret_data_type is None:
-            raise TypeError("Missing 'secret_data_type' argument")
-        if secret_name is None and 'secretName' in kwargs:
-            secret_name = kwargs['secretName']
-        if secret_name is None:
-            raise TypeError("Missing 'secret_name' argument")
-        if secret_type is None and 'secretType' in kwargs:
-            secret_type = kwargs['secretType']
-        if secret_type is None:
-            raise TypeError("Missing 'secret_type' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-        if version_id is None and 'versionId' in kwargs:
-            version_id = kwargs['versionId']
-        if version_id is None:
-            raise TypeError("Missing 'version_id' argument")
-        if version_stages is None and 'versionStages' in kwargs:
-            version_stages = kwargs['versionStages']
-        if version_stages is None:
-            raise TypeError("Missing 'version_stages' argument")
-
-        _setter("arn", arn)
-        _setter("description", description)
-        _setter("encryption_key_id", encryption_key_id)
-        _setter("id", id)
-        _setter("planned_delete_time", planned_delete_time)
-        _setter("secret_data", secret_data)
-        _setter("secret_data_type", secret_data_type)
-        _setter("secret_name", secret_name)
-        _setter("secret_type", secret_type)
-        _setter("tags", tags)
-        _setter("version_id", version_id)
-        _setter("version_stages", version_stages)
+        pulumi.set(__self__, "arn", arn)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "encryption_key_id", encryption_key_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "planned_delete_time", planned_delete_time)
+        pulumi.set(__self__, "secret_data", secret_data)
+        pulumi.set(__self__, "secret_data_type", secret_data_type)
+        pulumi.set(__self__, "secret_name", secret_name)
+        pulumi.set(__self__, "secret_type", secret_type)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "version_id", version_id)
+        pulumi.set(__self__, "version_stages", version_stages)
 
     @property
     @pulumi.getter

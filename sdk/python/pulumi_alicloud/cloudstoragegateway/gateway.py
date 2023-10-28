@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['GatewayArgs', 'Gateway']
@@ -41,85 +41,26 @@ class GatewayArgs:
         :param pulumi.Input[bool] release_after_expiration: Whether to release the gateway due to expiration.
         :param pulumi.Input[str] vswitch_id: The vswitch id of gateway.
         """
-        GatewayArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            gateway_name=gateway_name,
-            location=location,
-            storage_bundle_id=storage_bundle_id,
-            type=type,
-            description=description,
-            gateway_class=gateway_class,
-            payment_type=payment_type,
-            public_network_bandwidth=public_network_bandwidth,
-            reason_detail=reason_detail,
-            reason_type=reason_type,
-            release_after_expiration=release_after_expiration,
-            vswitch_id=vswitch_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             gateway_name: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             storage_bundle_id: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             gateway_class: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             public_network_bandwidth: Optional[pulumi.Input[int]] = None,
-             reason_detail: Optional[pulumi.Input[str]] = None,
-             reason_type: Optional[pulumi.Input[str]] = None,
-             release_after_expiration: Optional[pulumi.Input[bool]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if gateway_name is None and 'gatewayName' in kwargs:
-            gateway_name = kwargs['gatewayName']
-        if gateway_name is None:
-            raise TypeError("Missing 'gateway_name' argument")
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if storage_bundle_id is None and 'storageBundleId' in kwargs:
-            storage_bundle_id = kwargs['storageBundleId']
-        if storage_bundle_id is None:
-            raise TypeError("Missing 'storage_bundle_id' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if gateway_class is None and 'gatewayClass' in kwargs:
-            gateway_class = kwargs['gatewayClass']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if public_network_bandwidth is None and 'publicNetworkBandwidth' in kwargs:
-            public_network_bandwidth = kwargs['publicNetworkBandwidth']
-        if reason_detail is None and 'reasonDetail' in kwargs:
-            reason_detail = kwargs['reasonDetail']
-        if reason_type is None and 'reasonType' in kwargs:
-            reason_type = kwargs['reasonType']
-        if release_after_expiration is None and 'releaseAfterExpiration' in kwargs:
-            release_after_expiration = kwargs['releaseAfterExpiration']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-
-        _setter("gateway_name", gateway_name)
-        _setter("location", location)
-        _setter("storage_bundle_id", storage_bundle_id)
-        _setter("type", type)
+        pulumi.set(__self__, "gateway_name", gateway_name)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "storage_bundle_id", storage_bundle_id)
+        pulumi.set(__self__, "type", type)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if gateway_class is not None:
-            _setter("gateway_class", gateway_class)
+            pulumi.set(__self__, "gateway_class", gateway_class)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if public_network_bandwidth is not None:
-            _setter("public_network_bandwidth", public_network_bandwidth)
+            pulumi.set(__self__, "public_network_bandwidth", public_network_bandwidth)
         if reason_detail is not None:
-            _setter("reason_detail", reason_detail)
+            pulumi.set(__self__, "reason_detail", reason_detail)
         if reason_type is not None:
-            _setter("reason_type", reason_type)
+            pulumi.set(__self__, "reason_type", reason_type)
         if release_after_expiration is not None:
-            _setter("release_after_expiration", release_after_expiration)
+            pulumi.set(__self__, "release_after_expiration", release_after_expiration)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="gatewayName")
@@ -298,85 +239,32 @@ class _GatewayState:
         :param pulumi.Input[str] type: gateway type. the valid values: `Type`, `Iscsi`.
         :param pulumi.Input[str] vswitch_id: The vswitch id of gateway.
         """
-        _GatewayState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            gateway_class=gateway_class,
-            gateway_name=gateway_name,
-            location=location,
-            payment_type=payment_type,
-            public_network_bandwidth=public_network_bandwidth,
-            reason_detail=reason_detail,
-            reason_type=reason_type,
-            release_after_expiration=release_after_expiration,
-            status=status,
-            storage_bundle_id=storage_bundle_id,
-            type=type,
-            vswitch_id=vswitch_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             gateway_class: Optional[pulumi.Input[str]] = None,
-             gateway_name: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             public_network_bandwidth: Optional[pulumi.Input[int]] = None,
-             reason_detail: Optional[pulumi.Input[str]] = None,
-             reason_type: Optional[pulumi.Input[str]] = None,
-             release_after_expiration: Optional[pulumi.Input[bool]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             storage_bundle_id: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if gateway_class is None and 'gatewayClass' in kwargs:
-            gateway_class = kwargs['gatewayClass']
-        if gateway_name is None and 'gatewayName' in kwargs:
-            gateway_name = kwargs['gatewayName']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if public_network_bandwidth is None and 'publicNetworkBandwidth' in kwargs:
-            public_network_bandwidth = kwargs['publicNetworkBandwidth']
-        if reason_detail is None and 'reasonDetail' in kwargs:
-            reason_detail = kwargs['reasonDetail']
-        if reason_type is None and 'reasonType' in kwargs:
-            reason_type = kwargs['reasonType']
-        if release_after_expiration is None and 'releaseAfterExpiration' in kwargs:
-            release_after_expiration = kwargs['releaseAfterExpiration']
-        if storage_bundle_id is None and 'storageBundleId' in kwargs:
-            storage_bundle_id = kwargs['storageBundleId']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if gateway_class is not None:
-            _setter("gateway_class", gateway_class)
+            pulumi.set(__self__, "gateway_class", gateway_class)
         if gateway_name is not None:
-            _setter("gateway_name", gateway_name)
+            pulumi.set(__self__, "gateway_name", gateway_name)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if public_network_bandwidth is not None:
-            _setter("public_network_bandwidth", public_network_bandwidth)
+            pulumi.set(__self__, "public_network_bandwidth", public_network_bandwidth)
         if reason_detail is not None:
-            _setter("reason_detail", reason_detail)
+            pulumi.set(__self__, "reason_detail", reason_detail)
         if reason_type is not None:
-            _setter("reason_type", reason_type)
+            pulumi.set(__self__, "reason_type", reason_type)
         if release_after_expiration is not None:
-            _setter("release_after_expiration", release_after_expiration)
+            pulumi.set(__self__, "release_after_expiration", release_after_expiration)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if storage_bundle_id is not None:
-            _setter("storage_bundle_id", storage_bundle_id)
+            pulumi.set(__self__, "storage_bundle_id", storage_bundle_id)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter
@@ -614,10 +502,6 @@ class Gateway(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            GatewayArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['FaceConfigArgs', 'FaceConfig']
@@ -21,29 +21,8 @@ class FaceConfigArgs:
         :param pulumi.Input[str] biz_name: Scene name.
         :param pulumi.Input[str] biz_type: Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
         """
-        FaceConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            biz_name=biz_name,
-            biz_type=biz_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             biz_name: Optional[pulumi.Input[str]] = None,
-             biz_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if biz_name is None and 'bizName' in kwargs:
-            biz_name = kwargs['bizName']
-        if biz_name is None:
-            raise TypeError("Missing 'biz_name' argument")
-        if biz_type is None and 'bizType' in kwargs:
-            biz_type = kwargs['bizType']
-        if biz_type is None:
-            raise TypeError("Missing 'biz_type' argument")
-
-        _setter("biz_name", biz_name)
-        _setter("biz_type", biz_type)
+        pulumi.set(__self__, "biz_name", biz_name)
+        pulumi.set(__self__, "biz_type", biz_type)
 
     @property
     @pulumi.getter(name="bizName")
@@ -82,33 +61,12 @@ class _FaceConfigState:
         :param pulumi.Input[str] biz_type: Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
         :param pulumi.Input[str] gmt_modified: Last Modified Date.
         """
-        _FaceConfigState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            biz_name=biz_name,
-            biz_type=biz_type,
-            gmt_modified=gmt_modified,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             biz_name: Optional[pulumi.Input[str]] = None,
-             biz_type: Optional[pulumi.Input[str]] = None,
-             gmt_modified: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if biz_name is None and 'bizName' in kwargs:
-            biz_name = kwargs['bizName']
-        if biz_type is None and 'bizType' in kwargs:
-            biz_type = kwargs['bizType']
-        if gmt_modified is None and 'gmtModified' in kwargs:
-            gmt_modified = kwargs['gmtModified']
-
         if biz_name is not None:
-            _setter("biz_name", biz_name)
+            pulumi.set(__self__, "biz_name", biz_name)
         if biz_type is not None:
-            _setter("biz_type", biz_type)
+            pulumi.set(__self__, "biz_type", biz_type)
         if gmt_modified is not None:
-            _setter("gmt_modified", gmt_modified)
+            pulumi.set(__self__, "gmt_modified", gmt_modified)
 
     @property
     @pulumi.getter(name="bizName")
@@ -206,10 +164,6 @@ class FaceConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            FaceConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

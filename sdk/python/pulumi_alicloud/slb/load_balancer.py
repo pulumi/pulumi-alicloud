@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['LoadBalancerArgs', 'LoadBalancer']
@@ -72,133 +72,54 @@ class LoadBalancerArgs:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
         :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
         """
-        LoadBalancerArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            address_ip_version=address_ip_version,
-            address_type=address_type,
-            bandwidth=bandwidth,
-            delete_protection=delete_protection,
-            instance_charge_type=instance_charge_type,
-            internet_charge_type=internet_charge_type,
-            load_balancer_name=load_balancer_name,
-            load_balancer_spec=load_balancer_spec,
-            master_zone_id=master_zone_id,
-            modification_protection_reason=modification_protection_reason,
-            modification_protection_status=modification_protection_status,
-            name=name,
-            payment_type=payment_type,
-            period=period,
-            resource_group_id=resource_group_id,
-            slave_zone_id=slave_zone_id,
-            specification=specification,
-            status=status,
-            tags=tags,
-            vswitch_id=vswitch_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[pulumi.Input[str]] = None,
-             address_ip_version: Optional[pulumi.Input[str]] = None,
-             address_type: Optional[pulumi.Input[str]] = None,
-             bandwidth: Optional[pulumi.Input[int]] = None,
-             delete_protection: Optional[pulumi.Input[str]] = None,
-             instance_charge_type: Optional[pulumi.Input[str]] = None,
-             internet_charge_type: Optional[pulumi.Input[str]] = None,
-             load_balancer_name: Optional[pulumi.Input[str]] = None,
-             load_balancer_spec: Optional[pulumi.Input[str]] = None,
-             master_zone_id: Optional[pulumi.Input[str]] = None,
-             modification_protection_reason: Optional[pulumi.Input[str]] = None,
-             modification_protection_status: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[int]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             slave_zone_id: Optional[pulumi.Input[str]] = None,
-             specification: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address_ip_version is None and 'addressIpVersion' in kwargs:
-            address_ip_version = kwargs['addressIpVersion']
-        if address_type is None and 'addressType' in kwargs:
-            address_type = kwargs['addressType']
-        if delete_protection is None and 'deleteProtection' in kwargs:
-            delete_protection = kwargs['deleteProtection']
-        if instance_charge_type is None and 'instanceChargeType' in kwargs:
-            instance_charge_type = kwargs['instanceChargeType']
-        if internet_charge_type is None and 'internetChargeType' in kwargs:
-            internet_charge_type = kwargs['internetChargeType']
-        if load_balancer_name is None and 'loadBalancerName' in kwargs:
-            load_balancer_name = kwargs['loadBalancerName']
-        if load_balancer_spec is None and 'loadBalancerSpec' in kwargs:
-            load_balancer_spec = kwargs['loadBalancerSpec']
-        if master_zone_id is None and 'masterZoneId' in kwargs:
-            master_zone_id = kwargs['masterZoneId']
-        if modification_protection_reason is None and 'modificationProtectionReason' in kwargs:
-            modification_protection_reason = kwargs['modificationProtectionReason']
-        if modification_protection_status is None and 'modificationProtectionStatus' in kwargs:
-            modification_protection_status = kwargs['modificationProtectionStatus']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if slave_zone_id is None and 'slaveZoneId' in kwargs:
-            slave_zone_id = kwargs['slaveZoneId']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-
         if address is not None:
-            _setter("address", address)
+            pulumi.set(__self__, "address", address)
         if address_ip_version is not None:
-            _setter("address_ip_version", address_ip_version)
+            pulumi.set(__self__, "address_ip_version", address_ip_version)
         if address_type is not None:
-            _setter("address_type", address_type)
+            pulumi.set(__self__, "address_type", address_type)
         if bandwidth is not None:
-            _setter("bandwidth", bandwidth)
+            pulumi.set(__self__, "bandwidth", bandwidth)
         if delete_protection is not None:
-            _setter("delete_protection", delete_protection)
+            pulumi.set(__self__, "delete_protection", delete_protection)
         if instance_charge_type is not None:
-            _setter("instance_charge_type", instance_charge_type)
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if internet_charge_type is not None:
-            _setter("internet_charge_type", internet_charge_type)
+            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
         if load_balancer_name is not None:
-            _setter("load_balancer_name", load_balancer_name)
+            pulumi.set(__self__, "load_balancer_name", load_balancer_name)
         if load_balancer_spec is not None:
-            _setter("load_balancer_spec", load_balancer_spec)
+            pulumi.set(__self__, "load_balancer_spec", load_balancer_spec)
         if master_zone_id is not None:
-            _setter("master_zone_id", master_zone_id)
+            pulumi.set(__self__, "master_zone_id", master_zone_id)
         if modification_protection_reason is not None:
-            _setter("modification_protection_reason", modification_protection_reason)
+            pulumi.set(__self__, "modification_protection_reason", modification_protection_reason)
         if modification_protection_status is not None:
-            _setter("modification_protection_status", modification_protection_status)
+            pulumi.set(__self__, "modification_protection_status", modification_protection_status)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead""")
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if slave_zone_id is not None:
-            _setter("slave_zone_id", slave_zone_id)
+            pulumi.set(__self__, "slave_zone_id", slave_zone_id)
         if specification is not None:
             warnings.warn("""Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead""", DeprecationWarning)
             pulumi.log.warn("""specification is deprecated: Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead""")
         if specification is not None:
-            _setter("specification", specification)
+            pulumi.set(__self__, "specification", specification)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter
@@ -531,133 +452,54 @@ class _LoadBalancerState:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
         :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
         """
-        _LoadBalancerState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            address_ip_version=address_ip_version,
-            address_type=address_type,
-            bandwidth=bandwidth,
-            delete_protection=delete_protection,
-            instance_charge_type=instance_charge_type,
-            internet_charge_type=internet_charge_type,
-            load_balancer_name=load_balancer_name,
-            load_balancer_spec=load_balancer_spec,
-            master_zone_id=master_zone_id,
-            modification_protection_reason=modification_protection_reason,
-            modification_protection_status=modification_protection_status,
-            name=name,
-            payment_type=payment_type,
-            period=period,
-            resource_group_id=resource_group_id,
-            slave_zone_id=slave_zone_id,
-            specification=specification,
-            status=status,
-            tags=tags,
-            vswitch_id=vswitch_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[pulumi.Input[str]] = None,
-             address_ip_version: Optional[pulumi.Input[str]] = None,
-             address_type: Optional[pulumi.Input[str]] = None,
-             bandwidth: Optional[pulumi.Input[int]] = None,
-             delete_protection: Optional[pulumi.Input[str]] = None,
-             instance_charge_type: Optional[pulumi.Input[str]] = None,
-             internet_charge_type: Optional[pulumi.Input[str]] = None,
-             load_balancer_name: Optional[pulumi.Input[str]] = None,
-             load_balancer_spec: Optional[pulumi.Input[str]] = None,
-             master_zone_id: Optional[pulumi.Input[str]] = None,
-             modification_protection_reason: Optional[pulumi.Input[str]] = None,
-             modification_protection_status: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[int]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             slave_zone_id: Optional[pulumi.Input[str]] = None,
-             specification: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address_ip_version is None and 'addressIpVersion' in kwargs:
-            address_ip_version = kwargs['addressIpVersion']
-        if address_type is None and 'addressType' in kwargs:
-            address_type = kwargs['addressType']
-        if delete_protection is None and 'deleteProtection' in kwargs:
-            delete_protection = kwargs['deleteProtection']
-        if instance_charge_type is None and 'instanceChargeType' in kwargs:
-            instance_charge_type = kwargs['instanceChargeType']
-        if internet_charge_type is None and 'internetChargeType' in kwargs:
-            internet_charge_type = kwargs['internetChargeType']
-        if load_balancer_name is None and 'loadBalancerName' in kwargs:
-            load_balancer_name = kwargs['loadBalancerName']
-        if load_balancer_spec is None and 'loadBalancerSpec' in kwargs:
-            load_balancer_spec = kwargs['loadBalancerSpec']
-        if master_zone_id is None and 'masterZoneId' in kwargs:
-            master_zone_id = kwargs['masterZoneId']
-        if modification_protection_reason is None and 'modificationProtectionReason' in kwargs:
-            modification_protection_reason = kwargs['modificationProtectionReason']
-        if modification_protection_status is None and 'modificationProtectionStatus' in kwargs:
-            modification_protection_status = kwargs['modificationProtectionStatus']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if slave_zone_id is None and 'slaveZoneId' in kwargs:
-            slave_zone_id = kwargs['slaveZoneId']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-
         if address is not None:
-            _setter("address", address)
+            pulumi.set(__self__, "address", address)
         if address_ip_version is not None:
-            _setter("address_ip_version", address_ip_version)
+            pulumi.set(__self__, "address_ip_version", address_ip_version)
         if address_type is not None:
-            _setter("address_type", address_type)
+            pulumi.set(__self__, "address_type", address_type)
         if bandwidth is not None:
-            _setter("bandwidth", bandwidth)
+            pulumi.set(__self__, "bandwidth", bandwidth)
         if delete_protection is not None:
-            _setter("delete_protection", delete_protection)
+            pulumi.set(__self__, "delete_protection", delete_protection)
         if instance_charge_type is not None:
-            _setter("instance_charge_type", instance_charge_type)
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if internet_charge_type is not None:
-            _setter("internet_charge_type", internet_charge_type)
+            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
         if load_balancer_name is not None:
-            _setter("load_balancer_name", load_balancer_name)
+            pulumi.set(__self__, "load_balancer_name", load_balancer_name)
         if load_balancer_spec is not None:
-            _setter("load_balancer_spec", load_balancer_spec)
+            pulumi.set(__self__, "load_balancer_spec", load_balancer_spec)
         if master_zone_id is not None:
-            _setter("master_zone_id", master_zone_id)
+            pulumi.set(__self__, "master_zone_id", master_zone_id)
         if modification_protection_reason is not None:
-            _setter("modification_protection_reason", modification_protection_reason)
+            pulumi.set(__self__, "modification_protection_reason", modification_protection_reason)
         if modification_protection_status is not None:
-            _setter("modification_protection_status", modification_protection_status)
+            pulumi.set(__self__, "modification_protection_status", modification_protection_status)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead""")
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if slave_zone_id is not None:
-            _setter("slave_zone_id", slave_zone_id)
+            pulumi.set(__self__, "slave_zone_id", slave_zone_id)
         if specification is not None:
             warnings.warn("""Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead""", DeprecationWarning)
             pulumi.log.warn("""specification is deprecated: Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead""")
         if specification is not None:
-            _setter("specification", specification)
+            pulumi.set(__self__, "specification", specification)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter
@@ -1128,10 +970,6 @@ class LoadBalancer(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            LoadBalancerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

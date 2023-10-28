@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -26,41 +26,10 @@ class GetAgentsAgentResult(dict):
         :param str agent_name: The name of the agent.
         :param str id: ID of the agent.
         """
-        GetAgentsAgentResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            agent_id=agent_id,
-            agent_key=agent_key,
-            agent_name=agent_name,
-            id=id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             agent_id: Optional[str] = None,
-             agent_key: Optional[str] = None,
-             agent_name: Optional[str] = None,
-             id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if agent_id is None and 'agentId' in kwargs:
-            agent_id = kwargs['agentId']
-        if agent_id is None:
-            raise TypeError("Missing 'agent_id' argument")
-        if agent_key is None and 'agentKey' in kwargs:
-            agent_key = kwargs['agentKey']
-        if agent_key is None:
-            raise TypeError("Missing 'agent_key' argument")
-        if agent_name is None and 'agentName' in kwargs:
-            agent_name = kwargs['agentName']
-        if agent_name is None:
-            raise TypeError("Missing 'agent_name' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-
-        _setter("agent_id", agent_id)
-        _setter("agent_key", agent_key)
-        _setter("agent_name", agent_name)
-        _setter("id", id)
+        pulumi.set(__self__, "agent_id", agent_id)
+        pulumi.set(__self__, "agent_key", agent_key)
+        pulumi.set(__self__, "agent_name", agent_name)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter(name="agentId")

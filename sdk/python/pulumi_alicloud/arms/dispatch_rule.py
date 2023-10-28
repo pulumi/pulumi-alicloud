@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,55 +31,14 @@ class DispatchRuleArgs:
         :param pulumi.Input[str] dispatch_type: The alert handling method. Valid values: CREATE_ALERT: generates an alert. DISCARD_ALERT: discards the alert event and generates no alert.
         :param pulumi.Input[bool] is_recover: Specifies whether to send the restored alert. Valid values: true: sends the alert. false: does not send the alert.
         """
-        DispatchRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dispatch_rule_name=dispatch_rule_name,
-            group_rules=group_rules,
-            label_match_expression_grids=label_match_expression_grids,
-            notify_rules=notify_rules,
-            dispatch_type=dispatch_type,
-            is_recover=is_recover,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dispatch_rule_name: Optional[pulumi.Input[str]] = None,
-             group_rules: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleGroupRuleArgs']]]] = None,
-             label_match_expression_grids: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridArgs']]]] = None,
-             notify_rules: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleArgs']]]] = None,
-             dispatch_type: Optional[pulumi.Input[str]] = None,
-             is_recover: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dispatch_rule_name is None and 'dispatchRuleName' in kwargs:
-            dispatch_rule_name = kwargs['dispatchRuleName']
-        if dispatch_rule_name is None:
-            raise TypeError("Missing 'dispatch_rule_name' argument")
-        if group_rules is None and 'groupRules' in kwargs:
-            group_rules = kwargs['groupRules']
-        if group_rules is None:
-            raise TypeError("Missing 'group_rules' argument")
-        if label_match_expression_grids is None and 'labelMatchExpressionGrids' in kwargs:
-            label_match_expression_grids = kwargs['labelMatchExpressionGrids']
-        if label_match_expression_grids is None:
-            raise TypeError("Missing 'label_match_expression_grids' argument")
-        if notify_rules is None and 'notifyRules' in kwargs:
-            notify_rules = kwargs['notifyRules']
-        if notify_rules is None:
-            raise TypeError("Missing 'notify_rules' argument")
-        if dispatch_type is None and 'dispatchType' in kwargs:
-            dispatch_type = kwargs['dispatchType']
-        if is_recover is None and 'isRecover' in kwargs:
-            is_recover = kwargs['isRecover']
-
-        _setter("dispatch_rule_name", dispatch_rule_name)
-        _setter("group_rules", group_rules)
-        _setter("label_match_expression_grids", label_match_expression_grids)
-        _setter("notify_rules", notify_rules)
+        pulumi.set(__self__, "dispatch_rule_name", dispatch_rule_name)
+        pulumi.set(__self__, "group_rules", group_rules)
+        pulumi.set(__self__, "label_match_expression_grids", label_match_expression_grids)
+        pulumi.set(__self__, "notify_rules", notify_rules)
         if dispatch_type is not None:
-            _setter("dispatch_type", dispatch_type)
+            pulumi.set(__self__, "dispatch_type", dispatch_type)
         if is_recover is not None:
-            _setter("is_recover", is_recover)
+            pulumi.set(__self__, "is_recover", is_recover)
 
     @property
     @pulumi.getter(name="dispatchRuleName")
@@ -174,55 +133,20 @@ class _DispatchRuleState:
         :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleArgs']]] notify_rules: Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
         :param pulumi.Input[str] status: The resource status of Alert Dispatch Rule.
         """
-        _DispatchRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dispatch_rule_name=dispatch_rule_name,
-            dispatch_type=dispatch_type,
-            group_rules=group_rules,
-            is_recover=is_recover,
-            label_match_expression_grids=label_match_expression_grids,
-            notify_rules=notify_rules,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dispatch_rule_name: Optional[pulumi.Input[str]] = None,
-             dispatch_type: Optional[pulumi.Input[str]] = None,
-             group_rules: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleGroupRuleArgs']]]] = None,
-             is_recover: Optional[pulumi.Input[bool]] = None,
-             label_match_expression_grids: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridArgs']]]] = None,
-             notify_rules: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleArgs']]]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dispatch_rule_name is None and 'dispatchRuleName' in kwargs:
-            dispatch_rule_name = kwargs['dispatchRuleName']
-        if dispatch_type is None and 'dispatchType' in kwargs:
-            dispatch_type = kwargs['dispatchType']
-        if group_rules is None and 'groupRules' in kwargs:
-            group_rules = kwargs['groupRules']
-        if is_recover is None and 'isRecover' in kwargs:
-            is_recover = kwargs['isRecover']
-        if label_match_expression_grids is None and 'labelMatchExpressionGrids' in kwargs:
-            label_match_expression_grids = kwargs['labelMatchExpressionGrids']
-        if notify_rules is None and 'notifyRules' in kwargs:
-            notify_rules = kwargs['notifyRules']
-
         if dispatch_rule_name is not None:
-            _setter("dispatch_rule_name", dispatch_rule_name)
+            pulumi.set(__self__, "dispatch_rule_name", dispatch_rule_name)
         if dispatch_type is not None:
-            _setter("dispatch_type", dispatch_type)
+            pulumi.set(__self__, "dispatch_type", dispatch_type)
         if group_rules is not None:
-            _setter("group_rules", group_rules)
+            pulumi.set(__self__, "group_rules", group_rules)
         if is_recover is not None:
-            _setter("is_recover", is_recover)
+            pulumi.set(__self__, "is_recover", is_recover)
         if label_match_expression_grids is not None:
-            _setter("label_match_expression_grids", label_match_expression_grids)
+            pulumi.set(__self__, "label_match_expression_grids", label_match_expression_grids)
         if notify_rules is not None:
-            _setter("notify_rules", notify_rules)
+            pulumi.set(__self__, "notify_rules", notify_rules)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="dispatchRuleName")
@@ -480,10 +404,6 @@ class DispatchRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DispatchRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -43,85 +43,28 @@ class EventRuleArgs:
         :param pulumi.Input[str] status: The status of the resource. Valid values: `ENABLED`, `DISABLED`.
         :param pulumi.Input[Sequence[pulumi.Input['EventRuleWebhookParameterArgs']]] webhook_parameters: The information about the callback URLs that are used to receive alert notifications. See `webhook_parameters` below.
         """
-        EventRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            event_pattern=event_pattern,
-            rule_name=rule_name,
-            contact_parameters=contact_parameters,
-            description=description,
-            fc_parameters=fc_parameters,
-            group_id=group_id,
-            mns_parameters=mns_parameters,
-            open_api_parameters=open_api_parameters,
-            silence_time=silence_time,
-            sls_parameters=sls_parameters,
-            status=status,
-            webhook_parameters=webhook_parameters,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             event_pattern: Optional[pulumi.Input['EventRuleEventPatternArgs']] = None,
-             rule_name: Optional[pulumi.Input[str]] = None,
-             contact_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleContactParameterArgs']]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             fc_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleFcParameterArgs']]]] = None,
-             group_id: Optional[pulumi.Input[str]] = None,
-             mns_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleMnsParameterArgs']]]] = None,
-             open_api_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleOpenApiParameterArgs']]]] = None,
-             silence_time: Optional[pulumi.Input[int]] = None,
-             sls_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleSlsParameterArgs']]]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             webhook_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleWebhookParameterArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if event_pattern is None and 'eventPattern' in kwargs:
-            event_pattern = kwargs['eventPattern']
-        if event_pattern is None:
-            raise TypeError("Missing 'event_pattern' argument")
-        if rule_name is None and 'ruleName' in kwargs:
-            rule_name = kwargs['ruleName']
-        if rule_name is None:
-            raise TypeError("Missing 'rule_name' argument")
-        if contact_parameters is None and 'contactParameters' in kwargs:
-            contact_parameters = kwargs['contactParameters']
-        if fc_parameters is None and 'fcParameters' in kwargs:
-            fc_parameters = kwargs['fcParameters']
-        if group_id is None and 'groupId' in kwargs:
-            group_id = kwargs['groupId']
-        if mns_parameters is None and 'mnsParameters' in kwargs:
-            mns_parameters = kwargs['mnsParameters']
-        if open_api_parameters is None and 'openApiParameters' in kwargs:
-            open_api_parameters = kwargs['openApiParameters']
-        if silence_time is None and 'silenceTime' in kwargs:
-            silence_time = kwargs['silenceTime']
-        if sls_parameters is None and 'slsParameters' in kwargs:
-            sls_parameters = kwargs['slsParameters']
-        if webhook_parameters is None and 'webhookParameters' in kwargs:
-            webhook_parameters = kwargs['webhookParameters']
-
-        _setter("event_pattern", event_pattern)
-        _setter("rule_name", rule_name)
+        pulumi.set(__self__, "event_pattern", event_pattern)
+        pulumi.set(__self__, "rule_name", rule_name)
         if contact_parameters is not None:
-            _setter("contact_parameters", contact_parameters)
+            pulumi.set(__self__, "contact_parameters", contact_parameters)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if fc_parameters is not None:
-            _setter("fc_parameters", fc_parameters)
+            pulumi.set(__self__, "fc_parameters", fc_parameters)
         if group_id is not None:
-            _setter("group_id", group_id)
+            pulumi.set(__self__, "group_id", group_id)
         if mns_parameters is not None:
-            _setter("mns_parameters", mns_parameters)
+            pulumi.set(__self__, "mns_parameters", mns_parameters)
         if open_api_parameters is not None:
-            _setter("open_api_parameters", open_api_parameters)
+            pulumi.set(__self__, "open_api_parameters", open_api_parameters)
         if silence_time is not None:
-            _setter("silence_time", silence_time)
+            pulumi.set(__self__, "silence_time", silence_time)
         if sls_parameters is not None:
-            _setter("sls_parameters", sls_parameters)
+            pulumi.set(__self__, "sls_parameters", sls_parameters)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if webhook_parameters is not None:
-            _setter("webhook_parameters", webhook_parameters)
+            pulumi.set(__self__, "webhook_parameters", webhook_parameters)
 
     @property
     @pulumi.getter(name="eventPattern")
@@ -298,83 +241,30 @@ class _EventRuleState:
         :param pulumi.Input[str] status: The status of the resource. Valid values: `ENABLED`, `DISABLED`.
         :param pulumi.Input[Sequence[pulumi.Input['EventRuleWebhookParameterArgs']]] webhook_parameters: The information about the callback URLs that are used to receive alert notifications. See `webhook_parameters` below.
         """
-        _EventRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            contact_parameters=contact_parameters,
-            description=description,
-            event_pattern=event_pattern,
-            fc_parameters=fc_parameters,
-            group_id=group_id,
-            mns_parameters=mns_parameters,
-            open_api_parameters=open_api_parameters,
-            rule_name=rule_name,
-            silence_time=silence_time,
-            sls_parameters=sls_parameters,
-            status=status,
-            webhook_parameters=webhook_parameters,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             contact_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleContactParameterArgs']]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             event_pattern: Optional[pulumi.Input['EventRuleEventPatternArgs']] = None,
-             fc_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleFcParameterArgs']]]] = None,
-             group_id: Optional[pulumi.Input[str]] = None,
-             mns_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleMnsParameterArgs']]]] = None,
-             open_api_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleOpenApiParameterArgs']]]] = None,
-             rule_name: Optional[pulumi.Input[str]] = None,
-             silence_time: Optional[pulumi.Input[int]] = None,
-             sls_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleSlsParameterArgs']]]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             webhook_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleWebhookParameterArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if contact_parameters is None and 'contactParameters' in kwargs:
-            contact_parameters = kwargs['contactParameters']
-        if event_pattern is None and 'eventPattern' in kwargs:
-            event_pattern = kwargs['eventPattern']
-        if fc_parameters is None and 'fcParameters' in kwargs:
-            fc_parameters = kwargs['fcParameters']
-        if group_id is None and 'groupId' in kwargs:
-            group_id = kwargs['groupId']
-        if mns_parameters is None and 'mnsParameters' in kwargs:
-            mns_parameters = kwargs['mnsParameters']
-        if open_api_parameters is None and 'openApiParameters' in kwargs:
-            open_api_parameters = kwargs['openApiParameters']
-        if rule_name is None and 'ruleName' in kwargs:
-            rule_name = kwargs['ruleName']
-        if silence_time is None and 'silenceTime' in kwargs:
-            silence_time = kwargs['silenceTime']
-        if sls_parameters is None and 'slsParameters' in kwargs:
-            sls_parameters = kwargs['slsParameters']
-        if webhook_parameters is None and 'webhookParameters' in kwargs:
-            webhook_parameters = kwargs['webhookParameters']
-
         if contact_parameters is not None:
-            _setter("contact_parameters", contact_parameters)
+            pulumi.set(__self__, "contact_parameters", contact_parameters)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if event_pattern is not None:
-            _setter("event_pattern", event_pattern)
+            pulumi.set(__self__, "event_pattern", event_pattern)
         if fc_parameters is not None:
-            _setter("fc_parameters", fc_parameters)
+            pulumi.set(__self__, "fc_parameters", fc_parameters)
         if group_id is not None:
-            _setter("group_id", group_id)
+            pulumi.set(__self__, "group_id", group_id)
         if mns_parameters is not None:
-            _setter("mns_parameters", mns_parameters)
+            pulumi.set(__self__, "mns_parameters", mns_parameters)
         if open_api_parameters is not None:
-            _setter("open_api_parameters", open_api_parameters)
+            pulumi.set(__self__, "open_api_parameters", open_api_parameters)
         if rule_name is not None:
-            _setter("rule_name", rule_name)
+            pulumi.set(__self__, "rule_name", rule_name)
         if silence_time is not None:
-            _setter("silence_time", silence_time)
+            pulumi.set(__self__, "silence_time", silence_time)
         if sls_parameters is not None:
-            _setter("sls_parameters", sls_parameters)
+            pulumi.set(__self__, "sls_parameters", sls_parameters)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if webhook_parameters is not None:
-            _setter("webhook_parameters", webhook_parameters)
+            pulumi.set(__self__, "webhook_parameters", webhook_parameters)
 
     @property
     @pulumi.getter(name="contactParameters")
@@ -656,10 +546,6 @@ class EventRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            EventRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -688,7 +574,6 @@ class EventRule(pulumi.CustomResource):
 
             __props__.__dict__["contact_parameters"] = contact_parameters
             __props__.__dict__["description"] = description
-            event_pattern = _utilities.configure(event_pattern, EventRuleEventPatternArgs, True)
             if event_pattern is None and not opts.urn:
                 raise TypeError("Missing required property 'event_pattern'")
             __props__.__dict__["event_pattern"] = event_pattern

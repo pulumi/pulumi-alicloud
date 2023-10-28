@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DesktopArgs', 'Desktop']
@@ -55,124 +55,41 @@ class DesktopArgs:
         :param pulumi.Input[str] user_assign_mode: The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
         :param pulumi.Input[int] user_disk_size_gib: The user disk size gib of the Desktop.
         """
-        DesktopArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bundle_id=bundle_id,
-            office_site_id=office_site_id,
-            policy_group_id=policy_group_id,
-            amount=amount,
-            auto_pay=auto_pay,
-            auto_renew=auto_renew,
-            desktop_name=desktop_name,
-            desktop_type=desktop_type,
-            end_user_ids=end_user_ids,
-            host_name=host_name,
-            payment_type=payment_type,
-            period=period,
-            period_unit=period_unit,
-            root_disk_size_gib=root_disk_size_gib,
-            status=status,
-            stopped_mode=stopped_mode,
-            tags=tags,
-            user_assign_mode=user_assign_mode,
-            user_disk_size_gib=user_disk_size_gib,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bundle_id: Optional[pulumi.Input[str]] = None,
-             office_site_id: Optional[pulumi.Input[str]] = None,
-             policy_group_id: Optional[pulumi.Input[str]] = None,
-             amount: Optional[pulumi.Input[int]] = None,
-             auto_pay: Optional[pulumi.Input[bool]] = None,
-             auto_renew: Optional[pulumi.Input[bool]] = None,
-             desktop_name: Optional[pulumi.Input[str]] = None,
-             desktop_type: Optional[pulumi.Input[str]] = None,
-             end_user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             host_name: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[int]] = None,
-             period_unit: Optional[pulumi.Input[str]] = None,
-             root_disk_size_gib: Optional[pulumi.Input[int]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             stopped_mode: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             user_assign_mode: Optional[pulumi.Input[str]] = None,
-             user_disk_size_gib: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bundle_id is None and 'bundleId' in kwargs:
-            bundle_id = kwargs['bundleId']
-        if bundle_id is None:
-            raise TypeError("Missing 'bundle_id' argument")
-        if office_site_id is None and 'officeSiteId' in kwargs:
-            office_site_id = kwargs['officeSiteId']
-        if office_site_id is None:
-            raise TypeError("Missing 'office_site_id' argument")
-        if policy_group_id is None and 'policyGroupId' in kwargs:
-            policy_group_id = kwargs['policyGroupId']
-        if policy_group_id is None:
-            raise TypeError("Missing 'policy_group_id' argument")
-        if auto_pay is None and 'autoPay' in kwargs:
-            auto_pay = kwargs['autoPay']
-        if auto_renew is None and 'autoRenew' in kwargs:
-            auto_renew = kwargs['autoRenew']
-        if desktop_name is None and 'desktopName' in kwargs:
-            desktop_name = kwargs['desktopName']
-        if desktop_type is None and 'desktopType' in kwargs:
-            desktop_type = kwargs['desktopType']
-        if end_user_ids is None and 'endUserIds' in kwargs:
-            end_user_ids = kwargs['endUserIds']
-        if host_name is None and 'hostName' in kwargs:
-            host_name = kwargs['hostName']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if period_unit is None and 'periodUnit' in kwargs:
-            period_unit = kwargs['periodUnit']
-        if root_disk_size_gib is None and 'rootDiskSizeGib' in kwargs:
-            root_disk_size_gib = kwargs['rootDiskSizeGib']
-        if stopped_mode is None and 'stoppedMode' in kwargs:
-            stopped_mode = kwargs['stoppedMode']
-        if user_assign_mode is None and 'userAssignMode' in kwargs:
-            user_assign_mode = kwargs['userAssignMode']
-        if user_disk_size_gib is None and 'userDiskSizeGib' in kwargs:
-            user_disk_size_gib = kwargs['userDiskSizeGib']
-
-        _setter("bundle_id", bundle_id)
-        _setter("office_site_id", office_site_id)
-        _setter("policy_group_id", policy_group_id)
+        pulumi.set(__self__, "bundle_id", bundle_id)
+        pulumi.set(__self__, "office_site_id", office_site_id)
+        pulumi.set(__self__, "policy_group_id", policy_group_id)
         if amount is not None:
-            _setter("amount", amount)
+            pulumi.set(__self__, "amount", amount)
         if auto_pay is not None:
-            _setter("auto_pay", auto_pay)
+            pulumi.set(__self__, "auto_pay", auto_pay)
         if auto_renew is not None:
-            _setter("auto_renew", auto_renew)
+            pulumi.set(__self__, "auto_renew", auto_renew)
         if desktop_name is not None:
-            _setter("desktop_name", desktop_name)
+            pulumi.set(__self__, "desktop_name", desktop_name)
         if desktop_type is not None:
-            _setter("desktop_type", desktop_type)
+            pulumi.set(__self__, "desktop_type", desktop_type)
         if end_user_ids is not None:
-            _setter("end_user_ids", end_user_ids)
+            pulumi.set(__self__, "end_user_ids", end_user_ids)
         if host_name is not None:
-            _setter("host_name", host_name)
+            pulumi.set(__self__, "host_name", host_name)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if period_unit is not None:
-            _setter("period_unit", period_unit)
+            pulumi.set(__self__, "period_unit", period_unit)
         if root_disk_size_gib is not None:
-            _setter("root_disk_size_gib", root_disk_size_gib)
+            pulumi.set(__self__, "root_disk_size_gib", root_disk_size_gib)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if stopped_mode is not None:
-            _setter("stopped_mode", stopped_mode)
+            pulumi.set(__self__, "stopped_mode", stopped_mode)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if user_assign_mode is not None:
-            _setter("user_assign_mode", user_assign_mode)
+            pulumi.set(__self__, "user_assign_mode", user_assign_mode)
         if user_disk_size_gib is not None:
-            _setter("user_disk_size_gib", user_disk_size_gib)
+            pulumi.set(__self__, "user_disk_size_gib", user_disk_size_gib)
 
     @property
     @pulumi.getter(name="bundleId")
@@ -447,121 +364,44 @@ class _DesktopState:
         :param pulumi.Input[str] user_assign_mode: The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
         :param pulumi.Input[int] user_disk_size_gib: The user disk size gib of the Desktop.
         """
-        _DesktopState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            amount=amount,
-            auto_pay=auto_pay,
-            auto_renew=auto_renew,
-            bundle_id=bundle_id,
-            desktop_name=desktop_name,
-            desktop_type=desktop_type,
-            end_user_ids=end_user_ids,
-            host_name=host_name,
-            office_site_id=office_site_id,
-            payment_type=payment_type,
-            period=period,
-            period_unit=period_unit,
-            policy_group_id=policy_group_id,
-            root_disk_size_gib=root_disk_size_gib,
-            status=status,
-            stopped_mode=stopped_mode,
-            tags=tags,
-            user_assign_mode=user_assign_mode,
-            user_disk_size_gib=user_disk_size_gib,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             amount: Optional[pulumi.Input[int]] = None,
-             auto_pay: Optional[pulumi.Input[bool]] = None,
-             auto_renew: Optional[pulumi.Input[bool]] = None,
-             bundle_id: Optional[pulumi.Input[str]] = None,
-             desktop_name: Optional[pulumi.Input[str]] = None,
-             desktop_type: Optional[pulumi.Input[str]] = None,
-             end_user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             host_name: Optional[pulumi.Input[str]] = None,
-             office_site_id: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[int]] = None,
-             period_unit: Optional[pulumi.Input[str]] = None,
-             policy_group_id: Optional[pulumi.Input[str]] = None,
-             root_disk_size_gib: Optional[pulumi.Input[int]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             stopped_mode: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             user_assign_mode: Optional[pulumi.Input[str]] = None,
-             user_disk_size_gib: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_pay is None and 'autoPay' in kwargs:
-            auto_pay = kwargs['autoPay']
-        if auto_renew is None and 'autoRenew' in kwargs:
-            auto_renew = kwargs['autoRenew']
-        if bundle_id is None and 'bundleId' in kwargs:
-            bundle_id = kwargs['bundleId']
-        if desktop_name is None and 'desktopName' in kwargs:
-            desktop_name = kwargs['desktopName']
-        if desktop_type is None and 'desktopType' in kwargs:
-            desktop_type = kwargs['desktopType']
-        if end_user_ids is None and 'endUserIds' in kwargs:
-            end_user_ids = kwargs['endUserIds']
-        if host_name is None and 'hostName' in kwargs:
-            host_name = kwargs['hostName']
-        if office_site_id is None and 'officeSiteId' in kwargs:
-            office_site_id = kwargs['officeSiteId']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if period_unit is None and 'periodUnit' in kwargs:
-            period_unit = kwargs['periodUnit']
-        if policy_group_id is None and 'policyGroupId' in kwargs:
-            policy_group_id = kwargs['policyGroupId']
-        if root_disk_size_gib is None and 'rootDiskSizeGib' in kwargs:
-            root_disk_size_gib = kwargs['rootDiskSizeGib']
-        if stopped_mode is None and 'stoppedMode' in kwargs:
-            stopped_mode = kwargs['stoppedMode']
-        if user_assign_mode is None and 'userAssignMode' in kwargs:
-            user_assign_mode = kwargs['userAssignMode']
-        if user_disk_size_gib is None and 'userDiskSizeGib' in kwargs:
-            user_disk_size_gib = kwargs['userDiskSizeGib']
-
         if amount is not None:
-            _setter("amount", amount)
+            pulumi.set(__self__, "amount", amount)
         if auto_pay is not None:
-            _setter("auto_pay", auto_pay)
+            pulumi.set(__self__, "auto_pay", auto_pay)
         if auto_renew is not None:
-            _setter("auto_renew", auto_renew)
+            pulumi.set(__self__, "auto_renew", auto_renew)
         if bundle_id is not None:
-            _setter("bundle_id", bundle_id)
+            pulumi.set(__self__, "bundle_id", bundle_id)
         if desktop_name is not None:
-            _setter("desktop_name", desktop_name)
+            pulumi.set(__self__, "desktop_name", desktop_name)
         if desktop_type is not None:
-            _setter("desktop_type", desktop_type)
+            pulumi.set(__self__, "desktop_type", desktop_type)
         if end_user_ids is not None:
-            _setter("end_user_ids", end_user_ids)
+            pulumi.set(__self__, "end_user_ids", end_user_ids)
         if host_name is not None:
-            _setter("host_name", host_name)
+            pulumi.set(__self__, "host_name", host_name)
         if office_site_id is not None:
-            _setter("office_site_id", office_site_id)
+            pulumi.set(__self__, "office_site_id", office_site_id)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if period_unit is not None:
-            _setter("period_unit", period_unit)
+            pulumi.set(__self__, "period_unit", period_unit)
         if policy_group_id is not None:
-            _setter("policy_group_id", policy_group_id)
+            pulumi.set(__self__, "policy_group_id", policy_group_id)
         if root_disk_size_gib is not None:
-            _setter("root_disk_size_gib", root_disk_size_gib)
+            pulumi.set(__self__, "root_disk_size_gib", root_disk_size_gib)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if stopped_mode is not None:
-            _setter("stopped_mode", stopped_mode)
+            pulumi.set(__self__, "stopped_mode", stopped_mode)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if user_assign_mode is not None:
-            _setter("user_assign_mode", user_assign_mode)
+            pulumi.set(__self__, "user_assign_mode", user_assign_mode)
         if user_disk_size_gib is not None:
-            _setter("user_disk_size_gib", user_disk_size_gib)
+            pulumi.set(__self__, "user_disk_size_gib", user_disk_size_gib)
 
     @property
     @pulumi.getter
@@ -973,10 +813,6 @@ class Desktop(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DesktopArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

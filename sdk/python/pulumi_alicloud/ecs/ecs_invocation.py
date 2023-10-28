@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EcsInvocationArgs', 'EcsInvocation']
@@ -39,57 +39,20 @@ class EcsInvocationArgs:
                * You can also specify other usernames that already exist in the ECS instance to run the command. It is more secure to run Cloud Assistant commands as a regular user. For more information, see [Configure a regular user to run Cloud Assistant commands](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/run-cloud-assistant-commands-as-a-regular-user).
         :param pulumi.Input[str] windows_password_name: The name of the password used to run the command on a Windows instance.
         """
-        EcsInvocationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            command_id=command_id,
-            instance_ids=instance_ids,
-            frequency=frequency,
-            parameters=parameters,
-            repeat_mode=repeat_mode,
-            timed=timed,
-            username=username,
-            windows_password_name=windows_password_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             command_id: Optional[pulumi.Input[str]] = None,
-             instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             frequency: Optional[pulumi.Input[str]] = None,
-             parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             repeat_mode: Optional[pulumi.Input[str]] = None,
-             timed: Optional[pulumi.Input[bool]] = None,
-             username: Optional[pulumi.Input[str]] = None,
-             windows_password_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if command_id is None and 'commandId' in kwargs:
-            command_id = kwargs['commandId']
-        if command_id is None:
-            raise TypeError("Missing 'command_id' argument")
-        if instance_ids is None and 'instanceIds' in kwargs:
-            instance_ids = kwargs['instanceIds']
-        if instance_ids is None:
-            raise TypeError("Missing 'instance_ids' argument")
-        if repeat_mode is None and 'repeatMode' in kwargs:
-            repeat_mode = kwargs['repeatMode']
-        if windows_password_name is None and 'windowsPasswordName' in kwargs:
-            windows_password_name = kwargs['windowsPasswordName']
-
-        _setter("command_id", command_id)
-        _setter("instance_ids", instance_ids)
+        pulumi.set(__self__, "command_id", command_id)
+        pulumi.set(__self__, "instance_ids", instance_ids)
         if frequency is not None:
-            _setter("frequency", frequency)
+            pulumi.set(__self__, "frequency", frequency)
         if parameters is not None:
-            _setter("parameters", parameters)
+            pulumi.set(__self__, "parameters", parameters)
         if repeat_mode is not None:
-            _setter("repeat_mode", repeat_mode)
+            pulumi.set(__self__, "repeat_mode", repeat_mode)
         if timed is not None:
-            _setter("timed", timed)
+            pulumi.set(__self__, "timed", timed)
         if username is not None:
-            _setter("username", username)
+            pulumi.set(__self__, "username", username)
         if windows_password_name is not None:
-            _setter("windows_password_name", windows_password_name)
+            pulumi.set(__self__, "windows_password_name", windows_password_name)
 
     @property
     @pulumi.getter(name="commandId")
@@ -224,59 +187,24 @@ class _EcsInvocationState:
                * You can also specify other usernames that already exist in the ECS instance to run the command. It is more secure to run Cloud Assistant commands as a regular user. For more information, see [Configure a regular user to run Cloud Assistant commands](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/run-cloud-assistant-commands-as-a-regular-user).
         :param pulumi.Input[str] windows_password_name: The name of the password used to run the command on a Windows instance.
         """
-        _EcsInvocationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            command_id=command_id,
-            frequency=frequency,
-            instance_ids=instance_ids,
-            parameters=parameters,
-            repeat_mode=repeat_mode,
-            status=status,
-            timed=timed,
-            username=username,
-            windows_password_name=windows_password_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             command_id: Optional[pulumi.Input[str]] = None,
-             frequency: Optional[pulumi.Input[str]] = None,
-             instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             repeat_mode: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             timed: Optional[pulumi.Input[bool]] = None,
-             username: Optional[pulumi.Input[str]] = None,
-             windows_password_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if command_id is None and 'commandId' in kwargs:
-            command_id = kwargs['commandId']
-        if instance_ids is None and 'instanceIds' in kwargs:
-            instance_ids = kwargs['instanceIds']
-        if repeat_mode is None and 'repeatMode' in kwargs:
-            repeat_mode = kwargs['repeatMode']
-        if windows_password_name is None and 'windowsPasswordName' in kwargs:
-            windows_password_name = kwargs['windowsPasswordName']
-
         if command_id is not None:
-            _setter("command_id", command_id)
+            pulumi.set(__self__, "command_id", command_id)
         if frequency is not None:
-            _setter("frequency", frequency)
+            pulumi.set(__self__, "frequency", frequency)
         if instance_ids is not None:
-            _setter("instance_ids", instance_ids)
+            pulumi.set(__self__, "instance_ids", instance_ids)
         if parameters is not None:
-            _setter("parameters", parameters)
+            pulumi.set(__self__, "parameters", parameters)
         if repeat_mode is not None:
-            _setter("repeat_mode", repeat_mode)
+            pulumi.set(__self__, "repeat_mode", repeat_mode)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if timed is not None:
-            _setter("timed", timed)
+            pulumi.set(__self__, "timed", timed)
         if username is not None:
-            _setter("username", username)
+            pulumi.set(__self__, "username", username)
         if windows_password_name is not None:
-            _setter("windows_password_name", windows_password_name)
+            pulumi.set(__self__, "windows_password_name", windows_password_name)
 
     @property
     @pulumi.getter(name="commandId")
@@ -508,10 +436,6 @@ class EcsInvocation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            EcsInvocationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,48 +29,13 @@ class DynamicTagGroupArgs:
         :param pulumi.Input[str] match_express_filter_relation: The relationship between conditional expressions. Valid values: `and`, `or`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] template_id_lists: Alarm template ID list.
         """
-        DynamicTagGroupArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            contact_group_lists=contact_group_lists,
-            match_expresses=match_expresses,
-            tag_key=tag_key,
-            match_express_filter_relation=match_express_filter_relation,
-            template_id_lists=template_id_lists,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             contact_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             match_expresses: Optional[pulumi.Input[Sequence[pulumi.Input['DynamicTagGroupMatchExpressArgs']]]] = None,
-             tag_key: Optional[pulumi.Input[str]] = None,
-             match_express_filter_relation: Optional[pulumi.Input[str]] = None,
-             template_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if contact_group_lists is None and 'contactGroupLists' in kwargs:
-            contact_group_lists = kwargs['contactGroupLists']
-        if contact_group_lists is None:
-            raise TypeError("Missing 'contact_group_lists' argument")
-        if match_expresses is None and 'matchExpresses' in kwargs:
-            match_expresses = kwargs['matchExpresses']
-        if match_expresses is None:
-            raise TypeError("Missing 'match_expresses' argument")
-        if tag_key is None and 'tagKey' in kwargs:
-            tag_key = kwargs['tagKey']
-        if tag_key is None:
-            raise TypeError("Missing 'tag_key' argument")
-        if match_express_filter_relation is None and 'matchExpressFilterRelation' in kwargs:
-            match_express_filter_relation = kwargs['matchExpressFilterRelation']
-        if template_id_lists is None and 'templateIdLists' in kwargs:
-            template_id_lists = kwargs['templateIdLists']
-
-        _setter("contact_group_lists", contact_group_lists)
-        _setter("match_expresses", match_expresses)
-        _setter("tag_key", tag_key)
+        pulumi.set(__self__, "contact_group_lists", contact_group_lists)
+        pulumi.set(__self__, "match_expresses", match_expresses)
+        pulumi.set(__self__, "tag_key", tag_key)
         if match_express_filter_relation is not None:
-            _setter("match_express_filter_relation", match_express_filter_relation)
+            pulumi.set(__self__, "match_express_filter_relation", match_express_filter_relation)
         if template_id_lists is not None:
-            _setter("template_id_lists", template_id_lists)
+            pulumi.set(__self__, "template_id_lists", template_id_lists)
 
     @property
     @pulumi.getter(name="contactGroupLists")
@@ -151,49 +116,18 @@ class _DynamicTagGroupState:
         :param pulumi.Input[str] tag_key: The tag key of the tag.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] template_id_lists: Alarm template ID list.
         """
-        _DynamicTagGroupState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            contact_group_lists=contact_group_lists,
-            match_express_filter_relation=match_express_filter_relation,
-            match_expresses=match_expresses,
-            status=status,
-            tag_key=tag_key,
-            template_id_lists=template_id_lists,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             contact_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             match_express_filter_relation: Optional[pulumi.Input[str]] = None,
-             match_expresses: Optional[pulumi.Input[Sequence[pulumi.Input['DynamicTagGroupMatchExpressArgs']]]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tag_key: Optional[pulumi.Input[str]] = None,
-             template_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if contact_group_lists is None and 'contactGroupLists' in kwargs:
-            contact_group_lists = kwargs['contactGroupLists']
-        if match_express_filter_relation is None and 'matchExpressFilterRelation' in kwargs:
-            match_express_filter_relation = kwargs['matchExpressFilterRelation']
-        if match_expresses is None and 'matchExpresses' in kwargs:
-            match_expresses = kwargs['matchExpresses']
-        if tag_key is None and 'tagKey' in kwargs:
-            tag_key = kwargs['tagKey']
-        if template_id_lists is None and 'templateIdLists' in kwargs:
-            template_id_lists = kwargs['templateIdLists']
-
         if contact_group_lists is not None:
-            _setter("contact_group_lists", contact_group_lists)
+            pulumi.set(__self__, "contact_group_lists", contact_group_lists)
         if match_express_filter_relation is not None:
-            _setter("match_express_filter_relation", match_express_filter_relation)
+            pulumi.set(__self__, "match_express_filter_relation", match_express_filter_relation)
         if match_expresses is not None:
-            _setter("match_expresses", match_expresses)
+            pulumi.set(__self__, "match_expresses", match_expresses)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tag_key is not None:
-            _setter("tag_key", tag_key)
+            pulumi.set(__self__, "tag_key", tag_key)
         if template_id_lists is not None:
-            _setter("template_id_lists", template_id_lists)
+            pulumi.set(__self__, "template_id_lists", template_id_lists)
 
     @property
     @pulumi.getter(name="contactGroupLists")
@@ -375,10 +309,6 @@ class DynamicTagGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DynamicTagGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

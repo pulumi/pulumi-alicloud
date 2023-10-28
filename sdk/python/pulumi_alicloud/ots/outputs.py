@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -62,34 +62,11 @@ class SearchIndexSchema(dict):
         :param Sequence['SearchIndexSchemaIndexSettingArgs'] index_settings: The settings of the search index, including routingFields. See `index_setting` below.
         :param Sequence['SearchIndexSchemaIndexSortArgs'] index_sorts: The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default. See `index_sort` below.
         """
-        SearchIndexSchema._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            field_schemas=field_schemas,
-            index_settings=index_settings,
-            index_sorts=index_sorts,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             field_schemas: Optional[Sequence['outputs.SearchIndexSchemaFieldSchema']] = None,
-             index_settings: Optional[Sequence['outputs.SearchIndexSchemaIndexSetting']] = None,
-             index_sorts: Optional[Sequence['outputs.SearchIndexSchemaIndexSort']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if field_schemas is None and 'fieldSchemas' in kwargs:
-            field_schemas = kwargs['fieldSchemas']
-        if field_schemas is None:
-            raise TypeError("Missing 'field_schemas' argument")
-        if index_settings is None and 'indexSettings' in kwargs:
-            index_settings = kwargs['indexSettings']
-        if index_sorts is None and 'indexSorts' in kwargs:
-            index_sorts = kwargs['indexSorts']
-
-        _setter("field_schemas", field_schemas)
+        pulumi.set(__self__, "field_schemas", field_schemas)
         if index_settings is not None:
-            _setter("index_settings", index_settings)
+            pulumi.set(__self__, "index_settings", index_settings)
         if index_sorts is not None:
-            _setter("index_sorts", index_sorts)
+            pulumi.set(__self__, "index_sorts", index_sorts)
 
     @property
     @pulumi.getter(name="fieldSchemas")
@@ -158,53 +135,18 @@ class SearchIndexSchemaFieldSchema(dict):
         :param bool is_array: Specifies whether the value is an array. Type: Boolean.
         :param bool store: Specifies whether to store the value of the field in the search index. Type: Boolean. If you set store to true, you can read the value of the field from the search index without querying the data table. This improves query performance.
         """
-        SearchIndexSchemaFieldSchema._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            field_name=field_name,
-            field_type=field_type,
-            analyzer=analyzer,
-            enable_sort_and_agg=enable_sort_and_agg,
-            index=index,
-            is_array=is_array,
-            store=store,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             field_name: Optional[str] = None,
-             field_type: Optional[str] = None,
-             analyzer: Optional[str] = None,
-             enable_sort_and_agg: Optional[bool] = None,
-             index: Optional[bool] = None,
-             is_array: Optional[bool] = None,
-             store: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if field_name is None and 'fieldName' in kwargs:
-            field_name = kwargs['fieldName']
-        if field_name is None:
-            raise TypeError("Missing 'field_name' argument")
-        if field_type is None and 'fieldType' in kwargs:
-            field_type = kwargs['fieldType']
-        if field_type is None:
-            raise TypeError("Missing 'field_type' argument")
-        if enable_sort_and_agg is None and 'enableSortAndAgg' in kwargs:
-            enable_sort_and_agg = kwargs['enableSortAndAgg']
-        if is_array is None and 'isArray' in kwargs:
-            is_array = kwargs['isArray']
-
-        _setter("field_name", field_name)
-        _setter("field_type", field_type)
+        pulumi.set(__self__, "field_name", field_name)
+        pulumi.set(__self__, "field_type", field_type)
         if analyzer is not None:
-            _setter("analyzer", analyzer)
+            pulumi.set(__self__, "analyzer", analyzer)
         if enable_sort_and_agg is not None:
-            _setter("enable_sort_and_agg", enable_sort_and_agg)
+            pulumi.set(__self__, "enable_sort_and_agg", enable_sort_and_agg)
         if index is not None:
-            _setter("index", index)
+            pulumi.set(__self__, "index", index)
         if is_array is not None:
-            _setter("is_array", is_array)
+            pulumi.set(__self__, "is_array", is_array)
         if store is not None:
-            _setter("store", store)
+            pulumi.set(__self__, "store", store)
 
     @property
     @pulumi.getter(name="fieldName")
@@ -287,21 +229,8 @@ class SearchIndexSchemaIndexSetting(dict):
         """
         :param Sequence[str] routing_fields: Specifies custom routing fields. You can specify some primary key columns as routing fields. Tablestore distributes data that is written to a search index across different partitions based on the specified routing fields. The data whose routing field values are the same is distributed to the same partition.
         """
-        SearchIndexSchemaIndexSetting._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            routing_fields=routing_fields,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             routing_fields: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if routing_fields is None and 'routingFields' in kwargs:
-            routing_fields = kwargs['routingFields']
-
         if routing_fields is not None:
-            _setter("routing_fields", routing_fields)
+            pulumi.set(__self__, "routing_fields", routing_fields)
 
     @property
     @pulumi.getter(name="routingFields")
@@ -319,20 +248,7 @@ class SearchIndexSchemaIndexSort(dict):
         """
         :param Sequence['SearchIndexSchemaIndexSortSorterArgs'] sorters: Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported. See `sorter` below.
         """
-        SearchIndexSchemaIndexSort._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            sorters=sorters,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             sorters: Optional[Sequence['outputs.SearchIndexSchemaIndexSortSorter']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if sorters is None:
-            raise TypeError("Missing 'sorters' argument")
-
-        _setter("sorters", sorters)
+        pulumi.set(__self__, "sorters", sorters)
 
     @property
     @pulumi.getter
@@ -375,35 +291,14 @@ class SearchIndexSchemaIndexSortSorter(dict):
         :param str order: The sort order. Data can be sorted in ascending(`Asc`) or descending(`Desc`) order. Default value: `Asc`.
         :param str sorter_type: Data is sorted by Which fields or keys. valid values: `PrimaryKeySort`, `FieldSort`.
         """
-        SearchIndexSchemaIndexSortSorter._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            field_name=field_name,
-            mode=mode,
-            order=order,
-            sorter_type=sorter_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             field_name: Optional[str] = None,
-             mode: Optional[str] = None,
-             order: Optional[str] = None,
-             sorter_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if field_name is None and 'fieldName' in kwargs:
-            field_name = kwargs['fieldName']
-        if sorter_type is None and 'sorterType' in kwargs:
-            sorter_type = kwargs['sorterType']
-
         if field_name is not None:
-            _setter("field_name", field_name)
+            pulumi.set(__self__, "field_name", field_name)
         if mode is not None:
-            _setter("mode", mode)
+            pulumi.set(__self__, "mode", mode)
         if order is not None:
-            _setter("order", order)
+            pulumi.set(__self__, "order", order)
         if sorter_type is not None:
-            _setter("sorter_type", sorter_type)
+            pulumi.set(__self__, "sorter_type", sorter_type)
 
     @property
     @pulumi.getter(name="fieldName")
@@ -447,25 +342,8 @@ class TableDefinedColumn(dict):
         :param str name: Name for defined column.
         :param str type: Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
         """
-        TableDefinedColumn._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("name", name)
-        _setter("type", type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -493,25 +371,8 @@ class TablePrimaryKey(dict):
         :param str name: Name for primary key.
         :param str type: Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
         """
-        TablePrimaryKey._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("name", name)
-        _setter("type", type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -570,45 +431,16 @@ class TunnelChannel(dict):
         :param str channel_type: The type of the channel, valid values: `BaseData`, `Stream`.
         :param str client_id: The client id of the channel.
         """
-        TunnelChannel._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            channel_id=channel_id,
-            channel_rpo=channel_rpo,
-            channel_status=channel_status,
-            channel_type=channel_type,
-            client_id=client_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             channel_id: Optional[str] = None,
-             channel_rpo: Optional[int] = None,
-             channel_status: Optional[str] = None,
-             channel_type: Optional[str] = None,
-             client_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if channel_id is None and 'channelId' in kwargs:
-            channel_id = kwargs['channelId']
-        if channel_rpo is None and 'channelRpo' in kwargs:
-            channel_rpo = kwargs['channelRpo']
-        if channel_status is None and 'channelStatus' in kwargs:
-            channel_status = kwargs['channelStatus']
-        if channel_type is None and 'channelType' in kwargs:
-            channel_type = kwargs['channelType']
-        if client_id is None and 'clientId' in kwargs:
-            client_id = kwargs['clientId']
-
         if channel_id is not None:
-            _setter("channel_id", channel_id)
+            pulumi.set(__self__, "channel_id", channel_id)
         if channel_rpo is not None:
-            _setter("channel_rpo", channel_rpo)
+            pulumi.set(__self__, "channel_rpo", channel_rpo)
         if channel_status is not None:
-            _setter("channel_status", channel_status)
+            pulumi.set(__self__, "channel_status", channel_status)
         if channel_type is not None:
-            _setter("channel_type", channel_type)
+            pulumi.set(__self__, "channel_type", channel_type)
         if client_id is not None:
-            _setter("client_id", client_id)
+            pulumi.set(__self__, "client_id", client_id)
 
     @property
     @pulumi.getter(name="channelId")
@@ -670,56 +502,13 @@ class GetInstanceAttachmentsAttachmentResult(dict):
         :param str vpc_id: The ID of attaching VPC to instance.
         :param str vpc_name: The name of attaching VPC to instance.
         """
-        GetInstanceAttachmentsAttachmentResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            domain=domain,
-            endpoint=endpoint,
-            id=id,
-            instance_name=instance_name,
-            region=region,
-            vpc_id=vpc_id,
-            vpc_name=vpc_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             domain: Optional[str] = None,
-             endpoint: Optional[str] = None,
-             id: Optional[str] = None,
-             instance_name: Optional[str] = None,
-             region: Optional[str] = None,
-             vpc_id: Optional[str] = None,
-             vpc_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if domain is None:
-            raise TypeError("Missing 'domain' argument")
-        if endpoint is None:
-            raise TypeError("Missing 'endpoint' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_name is None:
-            raise TypeError("Missing 'instance_name' argument")
-        if region is None:
-            raise TypeError("Missing 'region' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-        if vpc_name is None and 'vpcName' in kwargs:
-            vpc_name = kwargs['vpcName']
-        if vpc_name is None:
-            raise TypeError("Missing 'vpc_name' argument")
-
-        _setter("domain", domain)
-        _setter("endpoint", endpoint)
-        _setter("id", id)
-        _setter("instance_name", instance_name)
-        _setter("region", region)
-        _setter("vpc_id", vpc_id)
-        _setter("vpc_name", vpc_name)
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "endpoint", endpoint)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vpc_name", vpc_name)
 
     @property
     @pulumi.getter
@@ -816,87 +605,18 @@ class GetInstancesInstanceResult(dict):
         :param str user_id: The user id of the instance.
         :param int write_capacity: The maximum adjustable write capacity unit of the instance.
         """
-        GetInstancesInstanceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_type=cluster_type,
-            create_time=create_time,
-            description=description,
-            entity_quota=entity_quota,
-            id=id,
-            name=name,
-            network=network,
-            read_capacity=read_capacity,
-            status=status,
-            tags=tags,
-            user_id=user_id,
-            write_capacity=write_capacity,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_type: Optional[str] = None,
-             create_time: Optional[str] = None,
-             description: Optional[str] = None,
-             entity_quota: Optional[int] = None,
-             id: Optional[str] = None,
-             name: Optional[str] = None,
-             network: Optional[str] = None,
-             read_capacity: Optional[int] = None,
-             status: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             user_id: Optional[str] = None,
-             write_capacity: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_type is None and 'clusterType' in kwargs:
-            cluster_type = kwargs['clusterType']
-        if cluster_type is None:
-            raise TypeError("Missing 'cluster_type' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if entity_quota is None and 'entityQuota' in kwargs:
-            entity_quota = kwargs['entityQuota']
-        if entity_quota is None:
-            raise TypeError("Missing 'entity_quota' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if network is None:
-            raise TypeError("Missing 'network' argument")
-        if read_capacity is None and 'readCapacity' in kwargs:
-            read_capacity = kwargs['readCapacity']
-        if read_capacity is None:
-            raise TypeError("Missing 'read_capacity' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-        if user_id is None and 'userId' in kwargs:
-            user_id = kwargs['userId']
-        if user_id is None:
-            raise TypeError("Missing 'user_id' argument")
-        if write_capacity is None and 'writeCapacity' in kwargs:
-            write_capacity = kwargs['writeCapacity']
-        if write_capacity is None:
-            raise TypeError("Missing 'write_capacity' argument")
-
-        _setter("cluster_type", cluster_type)
-        _setter("create_time", create_time)
-        _setter("description", description)
-        _setter("entity_quota", entity_quota)
-        _setter("id", id)
-        _setter("name", name)
-        _setter("network", network)
-        _setter("read_capacity", read_capacity)
-        _setter("status", status)
-        _setter("tags", tags)
-        _setter("user_id", user_id)
-        _setter("write_capacity", write_capacity)
+        pulumi.set(__self__, "cluster_type", cluster_type)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "entity_quota", entity_quota)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "read_capacity", read_capacity)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "user_id", user_id)
+        pulumi.set(__self__, "write_capacity", write_capacity)
 
     @property
     @pulumi.getter(name="clusterType")
@@ -1035,102 +755,19 @@ class GetSearchIndexesIndexResult(dict):
         :param str table_name: The name of OTS table.
         :param int time_to_live: TTL of index.
         """
-        GetSearchIndexesIndexResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            current_sync_timestamp=current_sync_timestamp,
-            id=id,
-            index_name=index_name,
-            instance_name=instance_name,
-            metering_last_update_time=metering_last_update_time,
-            reserved_read_cu=reserved_read_cu,
-            row_count=row_count,
-            schema=schema,
-            storage_size=storage_size,
-            sync_phase=sync_phase,
-            table_name=table_name,
-            time_to_live=time_to_live,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[int] = None,
-             current_sync_timestamp: Optional[int] = None,
-             id: Optional[str] = None,
-             index_name: Optional[str] = None,
-             instance_name: Optional[str] = None,
-             metering_last_update_time: Optional[int] = None,
-             reserved_read_cu: Optional[int] = None,
-             row_count: Optional[int] = None,
-             schema: Optional[str] = None,
-             storage_size: Optional[int] = None,
-             sync_phase: Optional[str] = None,
-             table_name: Optional[str] = None,
-             time_to_live: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if current_sync_timestamp is None and 'currentSyncTimestamp' in kwargs:
-            current_sync_timestamp = kwargs['currentSyncTimestamp']
-        if current_sync_timestamp is None:
-            raise TypeError("Missing 'current_sync_timestamp' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if index_name is None and 'indexName' in kwargs:
-            index_name = kwargs['indexName']
-        if index_name is None:
-            raise TypeError("Missing 'index_name' argument")
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_name is None:
-            raise TypeError("Missing 'instance_name' argument")
-        if metering_last_update_time is None and 'meteringLastUpdateTime' in kwargs:
-            metering_last_update_time = kwargs['meteringLastUpdateTime']
-        if metering_last_update_time is None:
-            raise TypeError("Missing 'metering_last_update_time' argument")
-        if reserved_read_cu is None and 'reservedReadCu' in kwargs:
-            reserved_read_cu = kwargs['reservedReadCu']
-        if reserved_read_cu is None:
-            raise TypeError("Missing 'reserved_read_cu' argument")
-        if row_count is None and 'rowCount' in kwargs:
-            row_count = kwargs['rowCount']
-        if row_count is None:
-            raise TypeError("Missing 'row_count' argument")
-        if schema is None:
-            raise TypeError("Missing 'schema' argument")
-        if storage_size is None and 'storageSize' in kwargs:
-            storage_size = kwargs['storageSize']
-        if storage_size is None:
-            raise TypeError("Missing 'storage_size' argument")
-        if sync_phase is None and 'syncPhase' in kwargs:
-            sync_phase = kwargs['syncPhase']
-        if sync_phase is None:
-            raise TypeError("Missing 'sync_phase' argument")
-        if table_name is None and 'tableName' in kwargs:
-            table_name = kwargs['tableName']
-        if table_name is None:
-            raise TypeError("Missing 'table_name' argument")
-        if time_to_live is None and 'timeToLive' in kwargs:
-            time_to_live = kwargs['timeToLive']
-        if time_to_live is None:
-            raise TypeError("Missing 'time_to_live' argument")
-
-        _setter("create_time", create_time)
-        _setter("current_sync_timestamp", current_sync_timestamp)
-        _setter("id", id)
-        _setter("index_name", index_name)
-        _setter("instance_name", instance_name)
-        _setter("metering_last_update_time", metering_last_update_time)
-        _setter("reserved_read_cu", reserved_read_cu)
-        _setter("row_count", row_count)
-        _setter("schema", schema)
-        _setter("storage_size", storage_size)
-        _setter("sync_phase", sync_phase)
-        _setter("table_name", table_name)
-        _setter("time_to_live", time_to_live)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "current_sync_timestamp", current_sync_timestamp)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "index_name", index_name)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "metering_last_update_time", metering_last_update_time)
+        pulumi.set(__self__, "reserved_read_cu", reserved_read_cu)
+        pulumi.set(__self__, "row_count", row_count)
+        pulumi.set(__self__, "schema", schema)
+        pulumi.set(__self__, "storage_size", storage_size)
+        pulumi.set(__self__, "sync_phase", sync_phase)
+        pulumi.set(__self__, "table_name", table_name)
+        pulumi.set(__self__, "time_to_live", time_to_live)
 
     @property
     @pulumi.getter(name="createTime")
@@ -1256,62 +893,13 @@ class GetSecondaryIndexesIndexResult(dict):
         :param Sequence[str] primary_keys: A list of primary keys for index, referenced from Table's primary keys or predefined columns.
         :param str table_name: The name of OTS table.
         """
-        GetSecondaryIndexesIndexResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            defined_columns=defined_columns,
-            id=id,
-            index_name=index_name,
-            index_type=index_type,
-            instance_name=instance_name,
-            primary_keys=primary_keys,
-            table_name=table_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             defined_columns: Optional[Sequence[str]] = None,
-             id: Optional[str] = None,
-             index_name: Optional[str] = None,
-             index_type: Optional[str] = None,
-             instance_name: Optional[str] = None,
-             primary_keys: Optional[Sequence[str]] = None,
-             table_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if defined_columns is None and 'definedColumns' in kwargs:
-            defined_columns = kwargs['definedColumns']
-        if defined_columns is None:
-            raise TypeError("Missing 'defined_columns' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if index_name is None and 'indexName' in kwargs:
-            index_name = kwargs['indexName']
-        if index_name is None:
-            raise TypeError("Missing 'index_name' argument")
-        if index_type is None and 'indexType' in kwargs:
-            index_type = kwargs['indexType']
-        if index_type is None:
-            raise TypeError("Missing 'index_type' argument")
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_name is None:
-            raise TypeError("Missing 'instance_name' argument")
-        if primary_keys is None and 'primaryKeys' in kwargs:
-            primary_keys = kwargs['primaryKeys']
-        if primary_keys is None:
-            raise TypeError("Missing 'primary_keys' argument")
-        if table_name is None and 'tableName' in kwargs:
-            table_name = kwargs['tableName']
-        if table_name is None:
-            raise TypeError("Missing 'table_name' argument")
-
-        _setter("defined_columns", defined_columns)
-        _setter("id", id)
-        _setter("index_name", index_name)
-        _setter("index_type", index_type)
-        _setter("instance_name", instance_name)
-        _setter("primary_keys", primary_keys)
-        _setter("table_name", table_name)
+        pulumi.set(__self__, "defined_columns", defined_columns)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "index_name", index_name)
+        pulumi.set(__self__, "index_type", index_type)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "primary_keys", primary_keys)
+        pulumi.set(__self__, "table_name", table_name)
 
     @property
     @pulumi.getter(name="definedColumns")
@@ -1388,62 +976,13 @@ class GetTablesTableResult(dict):
         :param str table_name: The table name of the OTS which could not be changed.
         :param int time_to_live: The retention time of data stored in this table.
         """
-        GetTablesTableResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            defined_columns=defined_columns,
-            id=id,
-            instance_name=instance_name,
-            max_version=max_version,
-            primary_keys=primary_keys,
-            table_name=table_name,
-            time_to_live=time_to_live,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             defined_columns: Optional[Sequence['outputs.GetTablesTableDefinedColumnResult']] = None,
-             id: Optional[str] = None,
-             instance_name: Optional[str] = None,
-             max_version: Optional[int] = None,
-             primary_keys: Optional[Sequence['outputs.GetTablesTablePrimaryKeyResult']] = None,
-             table_name: Optional[str] = None,
-             time_to_live: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if defined_columns is None and 'definedColumns' in kwargs:
-            defined_columns = kwargs['definedColumns']
-        if defined_columns is None:
-            raise TypeError("Missing 'defined_columns' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_name is None:
-            raise TypeError("Missing 'instance_name' argument")
-        if max_version is None and 'maxVersion' in kwargs:
-            max_version = kwargs['maxVersion']
-        if max_version is None:
-            raise TypeError("Missing 'max_version' argument")
-        if primary_keys is None and 'primaryKeys' in kwargs:
-            primary_keys = kwargs['primaryKeys']
-        if primary_keys is None:
-            raise TypeError("Missing 'primary_keys' argument")
-        if table_name is None and 'tableName' in kwargs:
-            table_name = kwargs['tableName']
-        if table_name is None:
-            raise TypeError("Missing 'table_name' argument")
-        if time_to_live is None and 'timeToLive' in kwargs:
-            time_to_live = kwargs['timeToLive']
-        if time_to_live is None:
-            raise TypeError("Missing 'time_to_live' argument")
-
-        _setter("defined_columns", defined_columns)
-        _setter("id", id)
-        _setter("instance_name", instance_name)
-        _setter("max_version", max_version)
-        _setter("primary_keys", primary_keys)
-        _setter("table_name", table_name)
-        _setter("time_to_live", time_to_live)
+        pulumi.set(__self__, "defined_columns", defined_columns)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "max_version", max_version)
+        pulumi.set(__self__, "primary_keys", primary_keys)
+        pulumi.set(__self__, "table_name", table_name)
+        pulumi.set(__self__, "time_to_live", time_to_live)
 
     @property
     @pulumi.getter(name="definedColumns")
@@ -1504,25 +1043,8 @@ class GetTablesTableDefinedColumnResult(dict):
     def __init__(__self__, *,
                  name: str,
                  type: str):
-        GetTablesTableDefinedColumnResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("name", name)
-        _setter("type", type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -1540,25 +1062,8 @@ class GetTablesTablePrimaryKeyResult(dict):
     def __init__(__self__, *,
                  name: str,
                  type: str):
-        GetTablesTablePrimaryKeyResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("name", name)
-        _setter("type", type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -1598,86 +1103,17 @@ class GetTunnelsTunnelResult(dict):
         :param str tunnel_stage: The stage of OTS tunnel, valid values: `InitBaseDataAndStreamShard`, `ProcessBaseData`, `ProcessStream`.
         :param str tunnel_type: The type of the OTS tunnel, valid values: `BaseAndStream`, `BaseData`, `Stream`.
         """
-        GetTunnelsTunnelResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            channels=channels,
-            create_time=create_time,
-            expired=expired,
-            id=id,
-            instance_name=instance_name,
-            table_name=table_name,
-            tunnel_id=tunnel_id,
-            tunnel_name=tunnel_name,
-            tunnel_rpo=tunnel_rpo,
-            tunnel_stage=tunnel_stage,
-            tunnel_type=tunnel_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             channels: Optional[Sequence['outputs.GetTunnelsTunnelChannelResult']] = None,
-             create_time: Optional[int] = None,
-             expired: Optional[bool] = None,
-             id: Optional[str] = None,
-             instance_name: Optional[str] = None,
-             table_name: Optional[str] = None,
-             tunnel_id: Optional[str] = None,
-             tunnel_name: Optional[str] = None,
-             tunnel_rpo: Optional[int] = None,
-             tunnel_stage: Optional[str] = None,
-             tunnel_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if channels is None:
-            raise TypeError("Missing 'channels' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if expired is None:
-            raise TypeError("Missing 'expired' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_name is None:
-            raise TypeError("Missing 'instance_name' argument")
-        if table_name is None and 'tableName' in kwargs:
-            table_name = kwargs['tableName']
-        if table_name is None:
-            raise TypeError("Missing 'table_name' argument")
-        if tunnel_id is None and 'tunnelId' in kwargs:
-            tunnel_id = kwargs['tunnelId']
-        if tunnel_id is None:
-            raise TypeError("Missing 'tunnel_id' argument")
-        if tunnel_name is None and 'tunnelName' in kwargs:
-            tunnel_name = kwargs['tunnelName']
-        if tunnel_name is None:
-            raise TypeError("Missing 'tunnel_name' argument")
-        if tunnel_rpo is None and 'tunnelRpo' in kwargs:
-            tunnel_rpo = kwargs['tunnelRpo']
-        if tunnel_rpo is None:
-            raise TypeError("Missing 'tunnel_rpo' argument")
-        if tunnel_stage is None and 'tunnelStage' in kwargs:
-            tunnel_stage = kwargs['tunnelStage']
-        if tunnel_stage is None:
-            raise TypeError("Missing 'tunnel_stage' argument")
-        if tunnel_type is None and 'tunnelType' in kwargs:
-            tunnel_type = kwargs['tunnelType']
-        if tunnel_type is None:
-            raise TypeError("Missing 'tunnel_type' argument")
-
-        _setter("channels", channels)
-        _setter("create_time", create_time)
-        _setter("expired", expired)
-        _setter("id", id)
-        _setter("instance_name", instance_name)
-        _setter("table_name", table_name)
-        _setter("tunnel_id", tunnel_id)
-        _setter("tunnel_name", tunnel_name)
-        _setter("tunnel_rpo", tunnel_rpo)
-        _setter("tunnel_stage", tunnel_stage)
-        _setter("tunnel_type", tunnel_type)
+        pulumi.set(__self__, "channels", channels)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "expired", expired)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "table_name", table_name)
+        pulumi.set(__self__, "tunnel_id", tunnel_id)
+        pulumi.set(__self__, "tunnel_name", tunnel_name)
+        pulumi.set(__self__, "tunnel_rpo", tunnel_rpo)
+        pulumi.set(__self__, "tunnel_stage", tunnel_stage)
+        pulumi.set(__self__, "tunnel_type", tunnel_type)
 
     @property
     @pulumi.getter
@@ -1783,50 +1219,11 @@ class GetTunnelsTunnelChannelResult(dict):
         :param str channel_type: The type of the channel, valid values: `BaseData`, `Stream`.
         :param str client_id: The client id of the channel.
         """
-        GetTunnelsTunnelChannelResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            channel_id=channel_id,
-            channel_rpo=channel_rpo,
-            channel_status=channel_status,
-            channel_type=channel_type,
-            client_id=client_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             channel_id: Optional[str] = None,
-             channel_rpo: Optional[int] = None,
-             channel_status: Optional[str] = None,
-             channel_type: Optional[str] = None,
-             client_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if channel_id is None and 'channelId' in kwargs:
-            channel_id = kwargs['channelId']
-        if channel_id is None:
-            raise TypeError("Missing 'channel_id' argument")
-        if channel_rpo is None and 'channelRpo' in kwargs:
-            channel_rpo = kwargs['channelRpo']
-        if channel_rpo is None:
-            raise TypeError("Missing 'channel_rpo' argument")
-        if channel_status is None and 'channelStatus' in kwargs:
-            channel_status = kwargs['channelStatus']
-        if channel_status is None:
-            raise TypeError("Missing 'channel_status' argument")
-        if channel_type is None and 'channelType' in kwargs:
-            channel_type = kwargs['channelType']
-        if channel_type is None:
-            raise TypeError("Missing 'channel_type' argument")
-        if client_id is None and 'clientId' in kwargs:
-            client_id = kwargs['clientId']
-        if client_id is None:
-            raise TypeError("Missing 'client_id' argument")
-
-        _setter("channel_id", channel_id)
-        _setter("channel_rpo", channel_rpo)
-        _setter("channel_status", channel_status)
-        _setter("channel_type", channel_type)
-        _setter("client_id", client_id)
+        pulumi.set(__self__, "channel_id", channel_id)
+        pulumi.set(__self__, "channel_rpo", channel_rpo)
+        pulumi.set(__self__, "channel_status", channel_status)
+        pulumi.set(__self__, "channel_type", channel_type)
+        pulumi.set(__self__, "client_id", client_id)
 
     @property
     @pulumi.getter(name="channelId")

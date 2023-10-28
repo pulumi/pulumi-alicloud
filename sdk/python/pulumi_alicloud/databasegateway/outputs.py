@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -39,79 +39,16 @@ class GetGatewaysGatewayResult(dict):
         :param str status: The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
         :param str user_id: The user's id.
         """
-        GetGatewaysGatewayResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            gateway_desc=gateway_desc,
-            gateway_instances=gateway_instances,
-            gateway_name=gateway_name,
-            hosts=hosts,
-            id=id,
-            modified_time=modified_time,
-            parent_id=parent_id,
-            status=status,
-            user_id=user_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[str] = None,
-             gateway_desc: Optional[str] = None,
-             gateway_instances: Optional[Sequence['outputs.GetGatewaysGatewayGatewayInstanceResult']] = None,
-             gateway_name: Optional[str] = None,
-             hosts: Optional[str] = None,
-             id: Optional[str] = None,
-             modified_time: Optional[str] = None,
-             parent_id: Optional[str] = None,
-             status: Optional[str] = None,
-             user_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if gateway_desc is None and 'gatewayDesc' in kwargs:
-            gateway_desc = kwargs['gatewayDesc']
-        if gateway_desc is None:
-            raise TypeError("Missing 'gateway_desc' argument")
-        if gateway_instances is None and 'gatewayInstances' in kwargs:
-            gateway_instances = kwargs['gatewayInstances']
-        if gateway_instances is None:
-            raise TypeError("Missing 'gateway_instances' argument")
-        if gateway_name is None and 'gatewayName' in kwargs:
-            gateway_name = kwargs['gatewayName']
-        if gateway_name is None:
-            raise TypeError("Missing 'gateway_name' argument")
-        if hosts is None:
-            raise TypeError("Missing 'hosts' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if modified_time is None and 'modifiedTime' in kwargs:
-            modified_time = kwargs['modifiedTime']
-        if modified_time is None:
-            raise TypeError("Missing 'modified_time' argument")
-        if parent_id is None and 'parentId' in kwargs:
-            parent_id = kwargs['parentId']
-        if parent_id is None:
-            raise TypeError("Missing 'parent_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if user_id is None and 'userId' in kwargs:
-            user_id = kwargs['userId']
-        if user_id is None:
-            raise TypeError("Missing 'user_id' argument")
-
-        _setter("create_time", create_time)
-        _setter("gateway_desc", gateway_desc)
-        _setter("gateway_instances", gateway_instances)
-        _setter("gateway_name", gateway_name)
-        _setter("hosts", hosts)
-        _setter("id", id)
-        _setter("modified_time", modified_time)
-        _setter("parent_id", parent_id)
-        _setter("status", status)
-        _setter("user_id", user_id)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "gateway_desc", gateway_desc)
+        pulumi.set(__self__, "gateway_instances", gateway_instances)
+        pulumi.set(__self__, "gateway_name", gateway_name)
+        pulumi.set(__self__, "hosts", hosts)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "modified_time", modified_time)
+        pulumi.set(__self__, "parent_id", parent_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "user_id", user_id)
 
     @property
     @pulumi.getter(name="createTime")
@@ -216,83 +153,16 @@ class GetGatewaysGatewayGatewayInstanceResult(dict):
         :param str message: The prompt information of Gateway instance.
         :param str output_ip: The host of Gateway instance.
         """
-        GetGatewaysGatewayGatewayInstanceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            connect_endpoint_type=connect_endpoint_type,
-            current_daemon_version=current_daemon_version,
-            current_version=current_version,
-            end_point=end_point,
-            gateway_instance_id=gateway_instance_id,
-            gateway_instance_status=gateway_instance_status,
-            last_update_time=last_update_time,
-            local_ip=local_ip,
-            message=message,
-            output_ip=output_ip,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             connect_endpoint_type: Optional[str] = None,
-             current_daemon_version: Optional[str] = None,
-             current_version: Optional[str] = None,
-             end_point: Optional[str] = None,
-             gateway_instance_id: Optional[str] = None,
-             gateway_instance_status: Optional[str] = None,
-             last_update_time: Optional[str] = None,
-             local_ip: Optional[str] = None,
-             message: Optional[str] = None,
-             output_ip: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if connect_endpoint_type is None and 'connectEndpointType' in kwargs:
-            connect_endpoint_type = kwargs['connectEndpointType']
-        if connect_endpoint_type is None:
-            raise TypeError("Missing 'connect_endpoint_type' argument")
-        if current_daemon_version is None and 'currentDaemonVersion' in kwargs:
-            current_daemon_version = kwargs['currentDaemonVersion']
-        if current_daemon_version is None:
-            raise TypeError("Missing 'current_daemon_version' argument")
-        if current_version is None and 'currentVersion' in kwargs:
-            current_version = kwargs['currentVersion']
-        if current_version is None:
-            raise TypeError("Missing 'current_version' argument")
-        if end_point is None and 'endPoint' in kwargs:
-            end_point = kwargs['endPoint']
-        if end_point is None:
-            raise TypeError("Missing 'end_point' argument")
-        if gateway_instance_id is None and 'gatewayInstanceId' in kwargs:
-            gateway_instance_id = kwargs['gatewayInstanceId']
-        if gateway_instance_id is None:
-            raise TypeError("Missing 'gateway_instance_id' argument")
-        if gateway_instance_status is None and 'gatewayInstanceStatus' in kwargs:
-            gateway_instance_status = kwargs['gatewayInstanceStatus']
-        if gateway_instance_status is None:
-            raise TypeError("Missing 'gateway_instance_status' argument")
-        if last_update_time is None and 'lastUpdateTime' in kwargs:
-            last_update_time = kwargs['lastUpdateTime']
-        if last_update_time is None:
-            raise TypeError("Missing 'last_update_time' argument")
-        if local_ip is None and 'localIp' in kwargs:
-            local_ip = kwargs['localIp']
-        if local_ip is None:
-            raise TypeError("Missing 'local_ip' argument")
-        if message is None:
-            raise TypeError("Missing 'message' argument")
-        if output_ip is None and 'outputIp' in kwargs:
-            output_ip = kwargs['outputIp']
-        if output_ip is None:
-            raise TypeError("Missing 'output_ip' argument")
-
-        _setter("connect_endpoint_type", connect_endpoint_type)
-        _setter("current_daemon_version", current_daemon_version)
-        _setter("current_version", current_version)
-        _setter("end_point", end_point)
-        _setter("gateway_instance_id", gateway_instance_id)
-        _setter("gateway_instance_status", gateway_instance_status)
-        _setter("last_update_time", last_update_time)
-        _setter("local_ip", local_ip)
-        _setter("message", message)
-        _setter("output_ip", output_ip)
+        pulumi.set(__self__, "connect_endpoint_type", connect_endpoint_type)
+        pulumi.set(__self__, "current_daemon_version", current_daemon_version)
+        pulumi.set(__self__, "current_version", current_version)
+        pulumi.set(__self__, "end_point", end_point)
+        pulumi.set(__self__, "gateway_instance_id", gateway_instance_id)
+        pulumi.set(__self__, "gateway_instance_status", gateway_instance_status)
+        pulumi.set(__self__, "last_update_time", last_update_time)
+        pulumi.set(__self__, "local_ip", local_ip)
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "output_ip", output_ip)
 
     @property
     @pulumi.getter(name="connectEndpointType")

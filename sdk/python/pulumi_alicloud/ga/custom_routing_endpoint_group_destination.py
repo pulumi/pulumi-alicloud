@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['CustomRoutingEndpointGroupDestinationArgs', 'CustomRoutingEndpointGroupDestination']
@@ -25,41 +25,10 @@ class CustomRoutingEndpointGroupDestinationArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] protocols: The backend service protocol of the endpoint group. Valid values: `TCP`, `UDP`, `TCP, UDP`.
         :param pulumi.Input[int] to_port: The end port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
         """
-        CustomRoutingEndpointGroupDestinationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            endpoint_group_id=endpoint_group_id,
-            from_port=from_port,
-            protocols=protocols,
-            to_port=to_port,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             endpoint_group_id: Optional[pulumi.Input[str]] = None,
-             from_port: Optional[pulumi.Input[int]] = None,
-             protocols: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             to_port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if endpoint_group_id is None and 'endpointGroupId' in kwargs:
-            endpoint_group_id = kwargs['endpointGroupId']
-        if endpoint_group_id is None:
-            raise TypeError("Missing 'endpoint_group_id' argument")
-        if from_port is None and 'fromPort' in kwargs:
-            from_port = kwargs['fromPort']
-        if from_port is None:
-            raise TypeError("Missing 'from_port' argument")
-        if protocols is None:
-            raise TypeError("Missing 'protocols' argument")
-        if to_port is None and 'toPort' in kwargs:
-            to_port = kwargs['toPort']
-        if to_port is None:
-            raise TypeError("Missing 'to_port' argument")
-
-        _setter("endpoint_group_id", endpoint_group_id)
-        _setter("from_port", from_port)
-        _setter("protocols", protocols)
-        _setter("to_port", to_port)
+        pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
+        pulumi.set(__self__, "from_port", from_port)
+        pulumi.set(__self__, "protocols", protocols)
+        pulumi.set(__self__, "to_port", to_port)
 
     @property
     @pulumi.getter(name="endpointGroupId")
@@ -132,59 +101,22 @@ class _CustomRoutingEndpointGroupDestinationState:
         :param pulumi.Input[str] status: The status of the Custom Routing Endpoint Group Destination.
         :param pulumi.Input[int] to_port: The end port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
         """
-        _CustomRoutingEndpointGroupDestinationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            accelerator_id=accelerator_id,
-            custom_routing_endpoint_group_destination_id=custom_routing_endpoint_group_destination_id,
-            endpoint_group_id=endpoint_group_id,
-            from_port=from_port,
-            listener_id=listener_id,
-            protocols=protocols,
-            status=status,
-            to_port=to_port,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             accelerator_id: Optional[pulumi.Input[str]] = None,
-             custom_routing_endpoint_group_destination_id: Optional[pulumi.Input[str]] = None,
-             endpoint_group_id: Optional[pulumi.Input[str]] = None,
-             from_port: Optional[pulumi.Input[int]] = None,
-             listener_id: Optional[pulumi.Input[str]] = None,
-             protocols: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             to_port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if accelerator_id is None and 'acceleratorId' in kwargs:
-            accelerator_id = kwargs['acceleratorId']
-        if custom_routing_endpoint_group_destination_id is None and 'customRoutingEndpointGroupDestinationId' in kwargs:
-            custom_routing_endpoint_group_destination_id = kwargs['customRoutingEndpointGroupDestinationId']
-        if endpoint_group_id is None and 'endpointGroupId' in kwargs:
-            endpoint_group_id = kwargs['endpointGroupId']
-        if from_port is None and 'fromPort' in kwargs:
-            from_port = kwargs['fromPort']
-        if listener_id is None and 'listenerId' in kwargs:
-            listener_id = kwargs['listenerId']
-        if to_port is None and 'toPort' in kwargs:
-            to_port = kwargs['toPort']
-
         if accelerator_id is not None:
-            _setter("accelerator_id", accelerator_id)
+            pulumi.set(__self__, "accelerator_id", accelerator_id)
         if custom_routing_endpoint_group_destination_id is not None:
-            _setter("custom_routing_endpoint_group_destination_id", custom_routing_endpoint_group_destination_id)
+            pulumi.set(__self__, "custom_routing_endpoint_group_destination_id", custom_routing_endpoint_group_destination_id)
         if endpoint_group_id is not None:
-            _setter("endpoint_group_id", endpoint_group_id)
+            pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
         if from_port is not None:
-            _setter("from_port", from_port)
+            pulumi.set(__self__, "from_port", from_port)
         if listener_id is not None:
-            _setter("listener_id", listener_id)
+            pulumi.set(__self__, "listener_id", listener_id)
         if protocols is not None:
-            _setter("protocols", protocols)
+            pulumi.set(__self__, "protocols", protocols)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if to_port is not None:
-            _setter("to_port", to_port)
+            pulumi.set(__self__, "to_port", to_port)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -438,10 +370,6 @@ class CustomRoutingEndpointGroupDestination(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CustomRoutingEndpointGroupDestinationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

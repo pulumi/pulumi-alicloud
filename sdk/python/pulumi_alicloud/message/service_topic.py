@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ServiceTopicArgs', 'ServiceTopic']
@@ -23,34 +23,11 @@ class ServiceTopicArgs:
         :param pulumi.Input[bool] logging_enabled: Specifies whether to enable the log management feature. Default value: false. Valid values:
         :param pulumi.Input[int] max_message_size: The maximum size of a message body that can be sent to the topic. Unit: bytes. Valid values: 1024-65536. Default value: 65536.
         """
-        ServiceTopicArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            topic_name=topic_name,
-            logging_enabled=logging_enabled,
-            max_message_size=max_message_size,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             topic_name: Optional[pulumi.Input[str]] = None,
-             logging_enabled: Optional[pulumi.Input[bool]] = None,
-             max_message_size: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if topic_name is None and 'topicName' in kwargs:
-            topic_name = kwargs['topicName']
-        if topic_name is None:
-            raise TypeError("Missing 'topic_name' argument")
-        if logging_enabled is None and 'loggingEnabled' in kwargs:
-            logging_enabled = kwargs['loggingEnabled']
-        if max_message_size is None and 'maxMessageSize' in kwargs:
-            max_message_size = kwargs['maxMessageSize']
-
-        _setter("topic_name", topic_name)
+        pulumi.set(__self__, "topic_name", topic_name)
         if logging_enabled is not None:
-            _setter("logging_enabled", logging_enabled)
+            pulumi.set(__self__, "logging_enabled", logging_enabled)
         if max_message_size is not None:
-            _setter("max_message_size", max_message_size)
+            pulumi.set(__self__, "max_message_size", max_message_size)
 
     @property
     @pulumi.getter(name="topicName")
@@ -101,33 +78,12 @@ class _ServiceTopicState:
         :param pulumi.Input[int] max_message_size: The maximum size of a message body that can be sent to the topic. Unit: bytes. Valid values: 1024-65536. Default value: 65536.
         :param pulumi.Input[str] topic_name: Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
         """
-        _ServiceTopicState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            logging_enabled=logging_enabled,
-            max_message_size=max_message_size,
-            topic_name=topic_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             logging_enabled: Optional[pulumi.Input[bool]] = None,
-             max_message_size: Optional[pulumi.Input[int]] = None,
-             topic_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if logging_enabled is None and 'loggingEnabled' in kwargs:
-            logging_enabled = kwargs['loggingEnabled']
-        if max_message_size is None and 'maxMessageSize' in kwargs:
-            max_message_size = kwargs['maxMessageSize']
-        if topic_name is None and 'topicName' in kwargs:
-            topic_name = kwargs['topicName']
-
         if logging_enabled is not None:
-            _setter("logging_enabled", logging_enabled)
+            pulumi.set(__self__, "logging_enabled", logging_enabled)
         if max_message_size is not None:
-            _setter("max_message_size", max_message_size)
+            pulumi.set(__self__, "max_message_size", max_message_size)
         if topic_name is not None:
-            _setter("topic_name", topic_name)
+            pulumi.set(__self__, "topic_name", topic_name)
 
     @property
     @pulumi.getter(name="loggingEnabled")
@@ -263,10 +219,6 @@ class ServiceTopic(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ServiceTopicArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

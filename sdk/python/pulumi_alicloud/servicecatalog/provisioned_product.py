@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,63 +35,18 @@ class ProvisionedProductArgs:
         :param pulumi.Input[str] provisioned_product_id: The ID of the instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
-        ProvisionedProductArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            product_id=product_id,
-            product_version_id=product_version_id,
-            provisioned_product_name=provisioned_product_name,
-            stack_region_id=stack_region_id,
-            parameters=parameters,
-            portfolio_id=portfolio_id,
-            provisioned_product_id=provisioned_product_id,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             product_id: Optional[pulumi.Input[str]] = None,
-             product_version_id: Optional[pulumi.Input[str]] = None,
-             provisioned_product_name: Optional[pulumi.Input[str]] = None,
-             stack_region_id: Optional[pulumi.Input[str]] = None,
-             parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ProvisionedProductParameterArgs']]]] = None,
-             portfolio_id: Optional[pulumi.Input[str]] = None,
-             provisioned_product_id: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if product_id is None and 'productId' in kwargs:
-            product_id = kwargs['productId']
-        if product_id is None:
-            raise TypeError("Missing 'product_id' argument")
-        if product_version_id is None and 'productVersionId' in kwargs:
-            product_version_id = kwargs['productVersionId']
-        if product_version_id is None:
-            raise TypeError("Missing 'product_version_id' argument")
-        if provisioned_product_name is None and 'provisionedProductName' in kwargs:
-            provisioned_product_name = kwargs['provisionedProductName']
-        if provisioned_product_name is None:
-            raise TypeError("Missing 'provisioned_product_name' argument")
-        if stack_region_id is None and 'stackRegionId' in kwargs:
-            stack_region_id = kwargs['stackRegionId']
-        if stack_region_id is None:
-            raise TypeError("Missing 'stack_region_id' argument")
-        if portfolio_id is None and 'portfolioId' in kwargs:
-            portfolio_id = kwargs['portfolioId']
-        if provisioned_product_id is None and 'provisionedProductId' in kwargs:
-            provisioned_product_id = kwargs['provisionedProductId']
-
-        _setter("product_id", product_id)
-        _setter("product_version_id", product_version_id)
-        _setter("provisioned_product_name", provisioned_product_name)
-        _setter("stack_region_id", stack_region_id)
+        pulumi.set(__self__, "product_id", product_id)
+        pulumi.set(__self__, "product_version_id", product_version_id)
+        pulumi.set(__self__, "provisioned_product_name", provisioned_product_name)
+        pulumi.set(__self__, "stack_region_id", stack_region_id)
         if parameters is not None:
-            _setter("parameters", parameters)
+            pulumi.set(__self__, "parameters", parameters)
         if portfolio_id is not None:
-            _setter("portfolio_id", portfolio_id)
+            pulumi.set(__self__, "portfolio_id", portfolio_id)
         if provisioned_product_id is not None:
-            _setter("provisioned_product_id", provisioned_product_id)
+            pulumi.set(__self__, "provisioned_product_id", provisioned_product_id)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="productId")
@@ -240,139 +195,50 @@ class _ProvisionedProductState:
         :param pulumi.Input[str] status_message: The status message of the product instance
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
-        _ProvisionedProductState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            last_provisioning_task_id=last_provisioning_task_id,
-            last_successful_provisioning_task_id=last_successful_provisioning_task_id,
-            last_task_id=last_task_id,
-            outputs=outputs,
-            owner_principal_id=owner_principal_id,
-            owner_principal_type=owner_principal_type,
-            parameters=parameters,
-            portfolio_id=portfolio_id,
-            product_id=product_id,
-            product_name=product_name,
-            product_version_id=product_version_id,
-            product_version_name=product_version_name,
-            provisioned_product_arn=provisioned_product_arn,
-            provisioned_product_id=provisioned_product_id,
-            provisioned_product_name=provisioned_product_name,
-            provisioned_product_type=provisioned_product_type,
-            stack_id=stack_id,
-            stack_region_id=stack_region_id,
-            status=status,
-            status_message=status_message,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[pulumi.Input[str]] = None,
-             last_provisioning_task_id: Optional[pulumi.Input[str]] = None,
-             last_successful_provisioning_task_id: Optional[pulumi.Input[str]] = None,
-             last_task_id: Optional[pulumi.Input[str]] = None,
-             outputs: Optional[pulumi.Input[Sequence[pulumi.Input['ProvisionedProductOutputArgs']]]] = None,
-             owner_principal_id: Optional[pulumi.Input[str]] = None,
-             owner_principal_type: Optional[pulumi.Input[str]] = None,
-             parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ProvisionedProductParameterArgs']]]] = None,
-             portfolio_id: Optional[pulumi.Input[str]] = None,
-             product_id: Optional[pulumi.Input[str]] = None,
-             product_name: Optional[pulumi.Input[str]] = None,
-             product_version_id: Optional[pulumi.Input[str]] = None,
-             product_version_name: Optional[pulumi.Input[str]] = None,
-             provisioned_product_arn: Optional[pulumi.Input[str]] = None,
-             provisioned_product_id: Optional[pulumi.Input[str]] = None,
-             provisioned_product_name: Optional[pulumi.Input[str]] = None,
-             provisioned_product_type: Optional[pulumi.Input[str]] = None,
-             stack_id: Optional[pulumi.Input[str]] = None,
-             stack_region_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             status_message: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if last_provisioning_task_id is None and 'lastProvisioningTaskId' in kwargs:
-            last_provisioning_task_id = kwargs['lastProvisioningTaskId']
-        if last_successful_provisioning_task_id is None and 'lastSuccessfulProvisioningTaskId' in kwargs:
-            last_successful_provisioning_task_id = kwargs['lastSuccessfulProvisioningTaskId']
-        if last_task_id is None and 'lastTaskId' in kwargs:
-            last_task_id = kwargs['lastTaskId']
-        if owner_principal_id is None and 'ownerPrincipalId' in kwargs:
-            owner_principal_id = kwargs['ownerPrincipalId']
-        if owner_principal_type is None and 'ownerPrincipalType' in kwargs:
-            owner_principal_type = kwargs['ownerPrincipalType']
-        if portfolio_id is None and 'portfolioId' in kwargs:
-            portfolio_id = kwargs['portfolioId']
-        if product_id is None and 'productId' in kwargs:
-            product_id = kwargs['productId']
-        if product_name is None and 'productName' in kwargs:
-            product_name = kwargs['productName']
-        if product_version_id is None and 'productVersionId' in kwargs:
-            product_version_id = kwargs['productVersionId']
-        if product_version_name is None and 'productVersionName' in kwargs:
-            product_version_name = kwargs['productVersionName']
-        if provisioned_product_arn is None and 'provisionedProductArn' in kwargs:
-            provisioned_product_arn = kwargs['provisionedProductArn']
-        if provisioned_product_id is None and 'provisionedProductId' in kwargs:
-            provisioned_product_id = kwargs['provisionedProductId']
-        if provisioned_product_name is None and 'provisionedProductName' in kwargs:
-            provisioned_product_name = kwargs['provisionedProductName']
-        if provisioned_product_type is None and 'provisionedProductType' in kwargs:
-            provisioned_product_type = kwargs['provisionedProductType']
-        if stack_id is None and 'stackId' in kwargs:
-            stack_id = kwargs['stackId']
-        if stack_region_id is None and 'stackRegionId' in kwargs:
-            stack_region_id = kwargs['stackRegionId']
-        if status_message is None and 'statusMessage' in kwargs:
-            status_message = kwargs['statusMessage']
-
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if last_provisioning_task_id is not None:
-            _setter("last_provisioning_task_id", last_provisioning_task_id)
+            pulumi.set(__self__, "last_provisioning_task_id", last_provisioning_task_id)
         if last_successful_provisioning_task_id is not None:
-            _setter("last_successful_provisioning_task_id", last_successful_provisioning_task_id)
+            pulumi.set(__self__, "last_successful_provisioning_task_id", last_successful_provisioning_task_id)
         if last_task_id is not None:
-            _setter("last_task_id", last_task_id)
+            pulumi.set(__self__, "last_task_id", last_task_id)
         if outputs is not None:
-            _setter("outputs", outputs)
+            pulumi.set(__self__, "outputs", outputs)
         if owner_principal_id is not None:
-            _setter("owner_principal_id", owner_principal_id)
+            pulumi.set(__self__, "owner_principal_id", owner_principal_id)
         if owner_principal_type is not None:
-            _setter("owner_principal_type", owner_principal_type)
+            pulumi.set(__self__, "owner_principal_type", owner_principal_type)
         if parameters is not None:
-            _setter("parameters", parameters)
+            pulumi.set(__self__, "parameters", parameters)
         if portfolio_id is not None:
-            _setter("portfolio_id", portfolio_id)
+            pulumi.set(__self__, "portfolio_id", portfolio_id)
         if product_id is not None:
-            _setter("product_id", product_id)
+            pulumi.set(__self__, "product_id", product_id)
         if product_name is not None:
-            _setter("product_name", product_name)
+            pulumi.set(__self__, "product_name", product_name)
         if product_version_id is not None:
-            _setter("product_version_id", product_version_id)
+            pulumi.set(__self__, "product_version_id", product_version_id)
         if product_version_name is not None:
-            _setter("product_version_name", product_version_name)
+            pulumi.set(__self__, "product_version_name", product_version_name)
         if provisioned_product_arn is not None:
-            _setter("provisioned_product_arn", provisioned_product_arn)
+            pulumi.set(__self__, "provisioned_product_arn", provisioned_product_arn)
         if provisioned_product_id is not None:
-            _setter("provisioned_product_id", provisioned_product_id)
+            pulumi.set(__self__, "provisioned_product_id", provisioned_product_id)
         if provisioned_product_name is not None:
-            _setter("provisioned_product_name", provisioned_product_name)
+            pulumi.set(__self__, "provisioned_product_name", provisioned_product_name)
         if provisioned_product_type is not None:
-            _setter("provisioned_product_type", provisioned_product_type)
+            pulumi.set(__self__, "provisioned_product_type", provisioned_product_type)
         if stack_id is not None:
-            _setter("stack_id", stack_id)
+            pulumi.set(__self__, "stack_id", stack_id)
         if stack_region_id is not None:
-            _setter("stack_region_id", stack_region_id)
+            pulumi.set(__self__, "stack_region_id", stack_region_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if status_message is not None:
-            _setter("status_message", status_message)
+            pulumi.set(__self__, "status_message", status_message)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="createTime")
@@ -764,10 +630,6 @@ class ProvisionedProduct(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProvisionedProductArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['JobMonitorRuleArgs', 'JobMonitorRule']
@@ -27,41 +27,14 @@ class JobMonitorRuleArgs:
         :param pulumi.Input[str] phone: The alarm is triggered after notification of the contact phone number, A plurality of phone numbers between them with a comma (,) to separate.
         :param pulumi.Input[str] state: Whether to enable monitoring rules, valid values: `Y`, `N`.
         """
-        JobMonitorRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dts_job_id=dts_job_id,
-            type=type,
-            delay_rule_time=delay_rule_time,
-            phone=phone,
-            state=state,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dts_job_id: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             delay_rule_time: Optional[pulumi.Input[str]] = None,
-             phone: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dts_job_id is None and 'dtsJobId' in kwargs:
-            dts_job_id = kwargs['dtsJobId']
-        if dts_job_id is None:
-            raise TypeError("Missing 'dts_job_id' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if delay_rule_time is None and 'delayRuleTime' in kwargs:
-            delay_rule_time = kwargs['delayRuleTime']
-
-        _setter("dts_job_id", dts_job_id)
-        _setter("type", type)
+        pulumi.set(__self__, "dts_job_id", dts_job_id)
+        pulumi.set(__self__, "type", type)
         if delay_rule_time is not None:
-            _setter("delay_rule_time", delay_rule_time)
+            pulumi.set(__self__, "delay_rule_time", delay_rule_time)
         if phone is not None:
-            _setter("phone", phone)
+            pulumi.set(__self__, "phone", phone)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter(name="dtsJobId")
@@ -140,39 +113,16 @@ class _JobMonitorRuleState:
         :param pulumi.Input[str] state: Whether to enable monitoring rules, valid values: `Y`, `N`.
         :param pulumi.Input[str] type: Monitoring rules of type, valid values: `delay`, `error`. **delay**: delay alarm. **error**: abnormal alarm.
         """
-        _JobMonitorRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            delay_rule_time=delay_rule_time,
-            dts_job_id=dts_job_id,
-            phone=phone,
-            state=state,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             delay_rule_time: Optional[pulumi.Input[str]] = None,
-             dts_job_id: Optional[pulumi.Input[str]] = None,
-             phone: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if delay_rule_time is None and 'delayRuleTime' in kwargs:
-            delay_rule_time = kwargs['delayRuleTime']
-        if dts_job_id is None and 'dtsJobId' in kwargs:
-            dts_job_id = kwargs['dtsJobId']
-
         if delay_rule_time is not None:
-            _setter("delay_rule_time", delay_rule_time)
+            pulumi.set(__self__, "delay_rule_time", delay_rule_time)
         if dts_job_id is not None:
-            _setter("dts_job_id", dts_job_id)
+            pulumi.set(__self__, "dts_job_id", dts_job_id)
         if phone is not None:
-            _setter("phone", phone)
+            pulumi.set(__self__, "phone", phone)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="delayRuleTime")
@@ -300,10 +250,6 @@ class JobMonitorRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            JobMonitorRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EcsSnapshotArgs', 'EcsSnapshot']
@@ -41,75 +41,30 @@ class EcsSnapshotArgs:
                
                > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
         """
-        EcsSnapshotArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            disk_id=disk_id,
-            category=category,
-            description=description,
-            force=force,
-            instant_access=instant_access,
-            instant_access_retention_days=instant_access_retention_days,
-            name=name,
-            resource_group_id=resource_group_id,
-            retention_days=retention_days,
-            snapshot_name=snapshot_name,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             disk_id: Optional[pulumi.Input[str]] = None,
-             category: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             force: Optional[pulumi.Input[bool]] = None,
-             instant_access: Optional[pulumi.Input[bool]] = None,
-             instant_access_retention_days: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             retention_days: Optional[pulumi.Input[int]] = None,
-             snapshot_name: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disk_id is None and 'diskId' in kwargs:
-            disk_id = kwargs['diskId']
-        if disk_id is None:
-            raise TypeError("Missing 'disk_id' argument")
-        if instant_access is None and 'instantAccess' in kwargs:
-            instant_access = kwargs['instantAccess']
-        if instant_access_retention_days is None and 'instantAccessRetentionDays' in kwargs:
-            instant_access_retention_days = kwargs['instantAccessRetentionDays']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if retention_days is None and 'retentionDays' in kwargs:
-            retention_days = kwargs['retentionDays']
-        if snapshot_name is None and 'snapshotName' in kwargs:
-            snapshot_name = kwargs['snapshotName']
-
-        _setter("disk_id", disk_id)
+        pulumi.set(__self__, "disk_id", disk_id)
         if category is not None:
-            _setter("category", category)
+            pulumi.set(__self__, "category", category)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if force is not None:
-            _setter("force", force)
+            pulumi.set(__self__, "force", force)
         if instant_access is not None:
-            _setter("instant_access", instant_access)
+            pulumi.set(__self__, "instant_access", instant_access)
         if instant_access_retention_days is not None:
-            _setter("instant_access_retention_days", instant_access_retention_days)
+            pulumi.set(__self__, "instant_access_retention_days", instant_access_retention_days)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""")
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if retention_days is not None:
-            _setter("retention_days", retention_days)
+            pulumi.set(__self__, "retention_days", retention_days)
         if snapshot_name is not None:
-            _setter("snapshot_name", snapshot_name)
+            pulumi.set(__self__, "snapshot_name", snapshot_name)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="diskId")
@@ -281,78 +236,33 @@ class _EcsSnapshotState:
                
                > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
         """
-        _EcsSnapshotState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            category=category,
-            description=description,
-            disk_id=disk_id,
-            force=force,
-            instant_access=instant_access,
-            instant_access_retention_days=instant_access_retention_days,
-            name=name,
-            resource_group_id=resource_group_id,
-            retention_days=retention_days,
-            snapshot_name=snapshot_name,
-            status=status,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             category: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disk_id: Optional[pulumi.Input[str]] = None,
-             force: Optional[pulumi.Input[bool]] = None,
-             instant_access: Optional[pulumi.Input[bool]] = None,
-             instant_access_retention_days: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             retention_days: Optional[pulumi.Input[int]] = None,
-             snapshot_name: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disk_id is None and 'diskId' in kwargs:
-            disk_id = kwargs['diskId']
-        if instant_access is None and 'instantAccess' in kwargs:
-            instant_access = kwargs['instantAccess']
-        if instant_access_retention_days is None and 'instantAccessRetentionDays' in kwargs:
-            instant_access_retention_days = kwargs['instantAccessRetentionDays']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if retention_days is None and 'retentionDays' in kwargs:
-            retention_days = kwargs['retentionDays']
-        if snapshot_name is None and 'snapshotName' in kwargs:
-            snapshot_name = kwargs['snapshotName']
-
         if category is not None:
-            _setter("category", category)
+            pulumi.set(__self__, "category", category)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disk_id is not None:
-            _setter("disk_id", disk_id)
+            pulumi.set(__self__, "disk_id", disk_id)
         if force is not None:
-            _setter("force", force)
+            pulumi.set(__self__, "force", force)
         if instant_access is not None:
-            _setter("instant_access", instant_access)
+            pulumi.set(__self__, "instant_access", instant_access)
         if instant_access_retention_days is not None:
-            _setter("instant_access_retention_days", instant_access_retention_days)
+            pulumi.set(__self__, "instant_access_retention_days", instant_access_retention_days)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""")
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if retention_days is not None:
-            _setter("retention_days", retention_days)
+            pulumi.set(__self__, "retention_days", retention_days)
         if snapshot_name is not None:
-            _setter("snapshot_name", snapshot_name)
+            pulumi.set(__self__, "snapshot_name", snapshot_name)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -687,10 +597,6 @@ class EcsSnapshot(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            EcsSnapshotArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

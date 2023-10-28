@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ClusterArgs', 'Cluster']
@@ -27,48 +27,13 @@ class ClusterArgs:
         :param pulumi.Input[str] logical_region_id: The ID of the namespace where you want to create the application. You can call the ListUserDefineRegion operation to query the namespace ID.
         :param pulumi.Input[str] vpc_id: The ID of the Virtual Private Cloud (VPC) for the cluster.
         """
-        ClusterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_name=cluster_name,
-            cluster_type=cluster_type,
-            network_mode=network_mode,
-            logical_region_id=logical_region_id,
-            vpc_id=vpc_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_name: Optional[pulumi.Input[str]] = None,
-             cluster_type: Optional[pulumi.Input[int]] = None,
-             network_mode: Optional[pulumi.Input[int]] = None,
-             logical_region_id: Optional[pulumi.Input[str]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_name is None and 'clusterName' in kwargs:
-            cluster_name = kwargs['clusterName']
-        if cluster_name is None:
-            raise TypeError("Missing 'cluster_name' argument")
-        if cluster_type is None and 'clusterType' in kwargs:
-            cluster_type = kwargs['clusterType']
-        if cluster_type is None:
-            raise TypeError("Missing 'cluster_type' argument")
-        if network_mode is None and 'networkMode' in kwargs:
-            network_mode = kwargs['networkMode']
-        if network_mode is None:
-            raise TypeError("Missing 'network_mode' argument")
-        if logical_region_id is None and 'logicalRegionId' in kwargs:
-            logical_region_id = kwargs['logicalRegionId']
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-
-        _setter("cluster_name", cluster_name)
-        _setter("cluster_type", cluster_type)
-        _setter("network_mode", network_mode)
+        pulumi.set(__self__, "cluster_name", cluster_name)
+        pulumi.set(__self__, "cluster_type", cluster_type)
+        pulumi.set(__self__, "network_mode", network_mode)
         if logical_region_id is not None:
-            _setter("logical_region_id", logical_region_id)
+            pulumi.set(__self__, "logical_region_id", logical_region_id)
         if vpc_id is not None:
-            _setter("vpc_id", vpc_id)
+            pulumi.set(__self__, "vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="clusterName")
@@ -147,45 +112,16 @@ class _ClusterState:
         :param pulumi.Input[int] network_mode: The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
         :param pulumi.Input[str] vpc_id: The ID of the Virtual Private Cloud (VPC) for the cluster.
         """
-        _ClusterState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_name=cluster_name,
-            cluster_type=cluster_type,
-            logical_region_id=logical_region_id,
-            network_mode=network_mode,
-            vpc_id=vpc_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_name: Optional[pulumi.Input[str]] = None,
-             cluster_type: Optional[pulumi.Input[int]] = None,
-             logical_region_id: Optional[pulumi.Input[str]] = None,
-             network_mode: Optional[pulumi.Input[int]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_name is None and 'clusterName' in kwargs:
-            cluster_name = kwargs['clusterName']
-        if cluster_type is None and 'clusterType' in kwargs:
-            cluster_type = kwargs['clusterType']
-        if logical_region_id is None and 'logicalRegionId' in kwargs:
-            logical_region_id = kwargs['logicalRegionId']
-        if network_mode is None and 'networkMode' in kwargs:
-            network_mode = kwargs['networkMode']
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-
         if cluster_name is not None:
-            _setter("cluster_name", cluster_name)
+            pulumi.set(__self__, "cluster_name", cluster_name)
         if cluster_type is not None:
-            _setter("cluster_type", cluster_type)
+            pulumi.set(__self__, "cluster_type", cluster_type)
         if logical_region_id is not None:
-            _setter("logical_region_id", logical_region_id)
+            pulumi.set(__self__, "logical_region_id", logical_region_id)
         if network_mode is not None:
-            _setter("network_mode", network_mode)
+            pulumi.set(__self__, "network_mode", network_mode)
         if vpc_id is not None:
-            _setter("vpc_id", vpc_id)
+            pulumi.set(__self__, "vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="clusterName")
@@ -357,10 +293,6 @@ class Cluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

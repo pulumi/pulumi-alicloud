@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AppAttachmentArgs', 'AppAttachment']
@@ -25,43 +25,10 @@ class AppAttachmentArgs:
         :param pulumi.Input[str] group_id: The group that the api belongs to.
         :param pulumi.Input[str] stage_name: Stage that the app apply to access.
         """
-        AppAttachmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            api_id=api_id,
-            app_id=app_id,
-            group_id=group_id,
-            stage_name=stage_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             api_id: Optional[pulumi.Input[str]] = None,
-             app_id: Optional[pulumi.Input[str]] = None,
-             group_id: Optional[pulumi.Input[str]] = None,
-             stage_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if api_id is None and 'apiId' in kwargs:
-            api_id = kwargs['apiId']
-        if api_id is None:
-            raise TypeError("Missing 'api_id' argument")
-        if app_id is None and 'appId' in kwargs:
-            app_id = kwargs['appId']
-        if app_id is None:
-            raise TypeError("Missing 'app_id' argument")
-        if group_id is None and 'groupId' in kwargs:
-            group_id = kwargs['groupId']
-        if group_id is None:
-            raise TypeError("Missing 'group_id' argument")
-        if stage_name is None and 'stageName' in kwargs:
-            stage_name = kwargs['stageName']
-        if stage_name is None:
-            raise TypeError("Missing 'stage_name' argument")
-
-        _setter("api_id", api_id)
-        _setter("app_id", app_id)
-        _setter("group_id", group_id)
-        _setter("stage_name", stage_name)
+        pulumi.set(__self__, "api_id", api_id)
+        pulumi.set(__self__, "app_id", app_id)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "stage_name", stage_name)
 
     @property
     @pulumi.getter(name="apiId")
@@ -126,39 +93,14 @@ class _AppAttachmentState:
         :param pulumi.Input[str] group_id: The group that the api belongs to.
         :param pulumi.Input[str] stage_name: Stage that the app apply to access.
         """
-        _AppAttachmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            api_id=api_id,
-            app_id=app_id,
-            group_id=group_id,
-            stage_name=stage_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             api_id: Optional[pulumi.Input[str]] = None,
-             app_id: Optional[pulumi.Input[str]] = None,
-             group_id: Optional[pulumi.Input[str]] = None,
-             stage_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if api_id is None and 'apiId' in kwargs:
-            api_id = kwargs['apiId']
-        if app_id is None and 'appId' in kwargs:
-            app_id = kwargs['appId']
-        if group_id is None and 'groupId' in kwargs:
-            group_id = kwargs['groupId']
-        if stage_name is None and 'stageName' in kwargs:
-            stage_name = kwargs['stageName']
-
         if api_id is not None:
-            _setter("api_id", api_id)
+            pulumi.set(__self__, "api_id", api_id)
         if app_id is not None:
-            _setter("app_id", app_id)
+            pulumi.set(__self__, "app_id", app_id)
         if group_id is not None:
-            _setter("group_id", group_id)
+            pulumi.set(__self__, "group_id", group_id)
         if stage_name is not None:
-            _setter("stage_name", stage_name)
+            pulumi.set(__self__, "stage_name", stage_name)
 
     @property
     @pulumi.getter(name="apiId")
@@ -348,10 +290,6 @@ class AppAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AppAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

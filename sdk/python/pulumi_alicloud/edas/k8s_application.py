@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['K8sApplicationArgs', 'K8sApplication']
@@ -81,201 +81,78 @@ class K8sApplicationArgs:
         :param pulumi.Input[int] requests_mem: When the application is created, the memory limit of the application instance, unit: M. When set to 0, it means unlimited.
         :param pulumi.Input[str] web_container: The Tomcat version that the deployment package depends on. Applicable to Spring Cloud and Dubbo applications deployed through WAR packages. Image does not support this parameter.
         """
-        K8sApplicationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            application_name=application_name,
-            cluster_id=cluster_id,
-            application_descriotion=application_descriotion,
-            command=command,
-            command_args=command_args,
-            edas_container_version=edas_container_version,
-            envs=envs,
-            image_url=image_url,
-            internet_slb_id=internet_slb_id,
-            internet_slb_port=internet_slb_port,
-            internet_slb_protocol=internet_slb_protocol,
-            internet_target_port=internet_target_port,
-            jdk=jdk,
-            limit_m_cpu=limit_m_cpu,
-            limit_mem=limit_mem,
-            liveness=liveness,
-            local_volume=local_volume,
-            logical_region_id=logical_region_id,
-            mount_descs=mount_descs,
-            namespace=namespace,
-            nas_id=nas_id,
-            package_type=package_type,
-            package_url=package_url,
-            package_version=package_version,
-            post_start=post_start,
-            pre_stop=pre_stop,
-            readiness=readiness,
-            replicas=replicas,
-            requests_m_cpu=requests_m_cpu,
-            requests_mem=requests_mem,
-            web_container=web_container,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             application_name: Optional[pulumi.Input[str]] = None,
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             application_descriotion: Optional[pulumi.Input[str]] = None,
-             command: Optional[pulumi.Input[str]] = None,
-             command_args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             edas_container_version: Optional[pulumi.Input[str]] = None,
-             envs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             image_url: Optional[pulumi.Input[str]] = None,
-             internet_slb_id: Optional[pulumi.Input[str]] = None,
-             internet_slb_port: Optional[pulumi.Input[int]] = None,
-             internet_slb_protocol: Optional[pulumi.Input[str]] = None,
-             internet_target_port: Optional[pulumi.Input[int]] = None,
-             jdk: Optional[pulumi.Input[str]] = None,
-             limit_m_cpu: Optional[pulumi.Input[int]] = None,
-             limit_mem: Optional[pulumi.Input[int]] = None,
-             liveness: Optional[pulumi.Input[str]] = None,
-             local_volume: Optional[pulumi.Input[str]] = None,
-             logical_region_id: Optional[pulumi.Input[str]] = None,
-             mount_descs: Optional[pulumi.Input[str]] = None,
-             namespace: Optional[pulumi.Input[str]] = None,
-             nas_id: Optional[pulumi.Input[str]] = None,
-             package_type: Optional[pulumi.Input[str]] = None,
-             package_url: Optional[pulumi.Input[str]] = None,
-             package_version: Optional[pulumi.Input[str]] = None,
-             post_start: Optional[pulumi.Input[str]] = None,
-             pre_stop: Optional[pulumi.Input[str]] = None,
-             readiness: Optional[pulumi.Input[str]] = None,
-             replicas: Optional[pulumi.Input[int]] = None,
-             requests_m_cpu: Optional[pulumi.Input[int]] = None,
-             requests_mem: Optional[pulumi.Input[int]] = None,
-             web_container: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if application_name is None and 'applicationName' in kwargs:
-            application_name = kwargs['applicationName']
-        if application_name is None:
-            raise TypeError("Missing 'application_name' argument")
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cluster_id is None:
-            raise TypeError("Missing 'cluster_id' argument")
-        if application_descriotion is None and 'applicationDescriotion' in kwargs:
-            application_descriotion = kwargs['applicationDescriotion']
-        if command_args is None and 'commandArgs' in kwargs:
-            command_args = kwargs['commandArgs']
-        if edas_container_version is None and 'edasContainerVersion' in kwargs:
-            edas_container_version = kwargs['edasContainerVersion']
-        if image_url is None and 'imageUrl' in kwargs:
-            image_url = kwargs['imageUrl']
-        if internet_slb_id is None and 'internetSlbId' in kwargs:
-            internet_slb_id = kwargs['internetSlbId']
-        if internet_slb_port is None and 'internetSlbPort' in kwargs:
-            internet_slb_port = kwargs['internetSlbPort']
-        if internet_slb_protocol is None and 'internetSlbProtocol' in kwargs:
-            internet_slb_protocol = kwargs['internetSlbProtocol']
-        if internet_target_port is None and 'internetTargetPort' in kwargs:
-            internet_target_port = kwargs['internetTargetPort']
-        if limit_m_cpu is None and 'limitMCpu' in kwargs:
-            limit_m_cpu = kwargs['limitMCpu']
-        if limit_mem is None and 'limitMem' in kwargs:
-            limit_mem = kwargs['limitMem']
-        if local_volume is None and 'localVolume' in kwargs:
-            local_volume = kwargs['localVolume']
-        if logical_region_id is None and 'logicalRegionId' in kwargs:
-            logical_region_id = kwargs['logicalRegionId']
-        if mount_descs is None and 'mountDescs' in kwargs:
-            mount_descs = kwargs['mountDescs']
-        if nas_id is None and 'nasId' in kwargs:
-            nas_id = kwargs['nasId']
-        if package_type is None and 'packageType' in kwargs:
-            package_type = kwargs['packageType']
-        if package_url is None and 'packageUrl' in kwargs:
-            package_url = kwargs['packageUrl']
-        if package_version is None and 'packageVersion' in kwargs:
-            package_version = kwargs['packageVersion']
-        if post_start is None and 'postStart' in kwargs:
-            post_start = kwargs['postStart']
-        if pre_stop is None and 'preStop' in kwargs:
-            pre_stop = kwargs['preStop']
-        if requests_m_cpu is None and 'requestsMCpu' in kwargs:
-            requests_m_cpu = kwargs['requestsMCpu']
-        if requests_mem is None and 'requestsMem' in kwargs:
-            requests_mem = kwargs['requestsMem']
-        if web_container is None and 'webContainer' in kwargs:
-            web_container = kwargs['webContainer']
-
-        _setter("application_name", application_name)
-        _setter("cluster_id", cluster_id)
+        pulumi.set(__self__, "application_name", application_name)
+        pulumi.set(__self__, "cluster_id", cluster_id)
         if application_descriotion is not None:
-            _setter("application_descriotion", application_descriotion)
+            pulumi.set(__self__, "application_descriotion", application_descriotion)
         if command is not None:
-            _setter("command", command)
+            pulumi.set(__self__, "command", command)
         if command_args is not None:
-            _setter("command_args", command_args)
+            pulumi.set(__self__, "command_args", command_args)
         if edas_container_version is not None:
-            _setter("edas_container_version", edas_container_version)
+            pulumi.set(__self__, "edas_container_version", edas_container_version)
         if envs is not None:
-            _setter("envs", envs)
+            pulumi.set(__self__, "envs", envs)
         if image_url is not None:
-            _setter("image_url", image_url)
+            pulumi.set(__self__, "image_url", image_url)
         if internet_slb_id is not None:
             warnings.warn("""Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
             pulumi.log.warn("""internet_slb_id is deprecated: Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
         if internet_slb_id is not None:
-            _setter("internet_slb_id", internet_slb_id)
+            pulumi.set(__self__, "internet_slb_id", internet_slb_id)
         if internet_slb_port is not None:
             warnings.warn("""Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
             pulumi.log.warn("""internet_slb_port is deprecated: Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
         if internet_slb_port is not None:
-            _setter("internet_slb_port", internet_slb_port)
+            pulumi.set(__self__, "internet_slb_port", internet_slb_port)
         if internet_slb_protocol is not None:
             warnings.warn("""Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
             pulumi.log.warn("""internet_slb_protocol is deprecated: Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
         if internet_slb_protocol is not None:
-            _setter("internet_slb_protocol", internet_slb_protocol)
+            pulumi.set(__self__, "internet_slb_protocol", internet_slb_protocol)
         if internet_target_port is not None:
             warnings.warn("""Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
             pulumi.log.warn("""internet_target_port is deprecated: Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
         if internet_target_port is not None:
-            _setter("internet_target_port", internet_target_port)
+            pulumi.set(__self__, "internet_target_port", internet_target_port)
         if jdk is not None:
-            _setter("jdk", jdk)
+            pulumi.set(__self__, "jdk", jdk)
         if limit_m_cpu is not None:
-            _setter("limit_m_cpu", limit_m_cpu)
+            pulumi.set(__self__, "limit_m_cpu", limit_m_cpu)
         if limit_mem is not None:
-            _setter("limit_mem", limit_mem)
+            pulumi.set(__self__, "limit_mem", limit_mem)
         if liveness is not None:
-            _setter("liveness", liveness)
+            pulumi.set(__self__, "liveness", liveness)
         if local_volume is not None:
-            _setter("local_volume", local_volume)
+            pulumi.set(__self__, "local_volume", local_volume)
         if logical_region_id is not None:
-            _setter("logical_region_id", logical_region_id)
+            pulumi.set(__self__, "logical_region_id", logical_region_id)
         if mount_descs is not None:
-            _setter("mount_descs", mount_descs)
+            pulumi.set(__self__, "mount_descs", mount_descs)
         if namespace is not None:
-            _setter("namespace", namespace)
+            pulumi.set(__self__, "namespace", namespace)
         if nas_id is not None:
-            _setter("nas_id", nas_id)
+            pulumi.set(__self__, "nas_id", nas_id)
         if package_type is not None:
-            _setter("package_type", package_type)
+            pulumi.set(__self__, "package_type", package_type)
         if package_url is not None:
-            _setter("package_url", package_url)
+            pulumi.set(__self__, "package_url", package_url)
         if package_version is not None:
-            _setter("package_version", package_version)
+            pulumi.set(__self__, "package_version", package_version)
         if post_start is not None:
-            _setter("post_start", post_start)
+            pulumi.set(__self__, "post_start", post_start)
         if pre_stop is not None:
-            _setter("pre_stop", pre_stop)
+            pulumi.set(__self__, "pre_stop", pre_stop)
         if readiness is not None:
-            _setter("readiness", readiness)
+            pulumi.set(__self__, "readiness", readiness)
         if replicas is not None:
-            _setter("replicas", replicas)
+            pulumi.set(__self__, "replicas", replicas)
         if requests_m_cpu is not None:
-            _setter("requests_m_cpu", requests_m_cpu)
+            pulumi.set(__self__, "requests_m_cpu", requests_m_cpu)
         if requests_mem is not None:
-            _setter("requests_mem", requests_mem)
+            pulumi.set(__self__, "requests_mem", requests_mem)
         if web_container is not None:
-            _setter("web_container", web_container)
+            pulumi.set(__self__, "web_container", web_container)
 
     @property
     @pulumi.getter(name="applicationName")
@@ -734,199 +611,80 @@ class _K8sApplicationState:
         :param pulumi.Input[int] requests_mem: When the application is created, the memory limit of the application instance, unit: M. When set to 0, it means unlimited.
         :param pulumi.Input[str] web_container: The Tomcat version that the deployment package depends on. Applicable to Spring Cloud and Dubbo applications deployed through WAR packages. Image does not support this parameter.
         """
-        _K8sApplicationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            application_descriotion=application_descriotion,
-            application_name=application_name,
-            cluster_id=cluster_id,
-            command=command,
-            command_args=command_args,
-            edas_container_version=edas_container_version,
-            envs=envs,
-            image_url=image_url,
-            internet_slb_id=internet_slb_id,
-            internet_slb_port=internet_slb_port,
-            internet_slb_protocol=internet_slb_protocol,
-            internet_target_port=internet_target_port,
-            jdk=jdk,
-            limit_m_cpu=limit_m_cpu,
-            limit_mem=limit_mem,
-            liveness=liveness,
-            local_volume=local_volume,
-            logical_region_id=logical_region_id,
-            mount_descs=mount_descs,
-            namespace=namespace,
-            nas_id=nas_id,
-            package_type=package_type,
-            package_url=package_url,
-            package_version=package_version,
-            post_start=post_start,
-            pre_stop=pre_stop,
-            readiness=readiness,
-            replicas=replicas,
-            requests_m_cpu=requests_m_cpu,
-            requests_mem=requests_mem,
-            web_container=web_container,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             application_descriotion: Optional[pulumi.Input[str]] = None,
-             application_name: Optional[pulumi.Input[str]] = None,
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             command: Optional[pulumi.Input[str]] = None,
-             command_args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             edas_container_version: Optional[pulumi.Input[str]] = None,
-             envs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             image_url: Optional[pulumi.Input[str]] = None,
-             internet_slb_id: Optional[pulumi.Input[str]] = None,
-             internet_slb_port: Optional[pulumi.Input[int]] = None,
-             internet_slb_protocol: Optional[pulumi.Input[str]] = None,
-             internet_target_port: Optional[pulumi.Input[int]] = None,
-             jdk: Optional[pulumi.Input[str]] = None,
-             limit_m_cpu: Optional[pulumi.Input[int]] = None,
-             limit_mem: Optional[pulumi.Input[int]] = None,
-             liveness: Optional[pulumi.Input[str]] = None,
-             local_volume: Optional[pulumi.Input[str]] = None,
-             logical_region_id: Optional[pulumi.Input[str]] = None,
-             mount_descs: Optional[pulumi.Input[str]] = None,
-             namespace: Optional[pulumi.Input[str]] = None,
-             nas_id: Optional[pulumi.Input[str]] = None,
-             package_type: Optional[pulumi.Input[str]] = None,
-             package_url: Optional[pulumi.Input[str]] = None,
-             package_version: Optional[pulumi.Input[str]] = None,
-             post_start: Optional[pulumi.Input[str]] = None,
-             pre_stop: Optional[pulumi.Input[str]] = None,
-             readiness: Optional[pulumi.Input[str]] = None,
-             replicas: Optional[pulumi.Input[int]] = None,
-             requests_m_cpu: Optional[pulumi.Input[int]] = None,
-             requests_mem: Optional[pulumi.Input[int]] = None,
-             web_container: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if application_descriotion is None and 'applicationDescriotion' in kwargs:
-            application_descriotion = kwargs['applicationDescriotion']
-        if application_name is None and 'applicationName' in kwargs:
-            application_name = kwargs['applicationName']
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if command_args is None and 'commandArgs' in kwargs:
-            command_args = kwargs['commandArgs']
-        if edas_container_version is None and 'edasContainerVersion' in kwargs:
-            edas_container_version = kwargs['edasContainerVersion']
-        if image_url is None and 'imageUrl' in kwargs:
-            image_url = kwargs['imageUrl']
-        if internet_slb_id is None and 'internetSlbId' in kwargs:
-            internet_slb_id = kwargs['internetSlbId']
-        if internet_slb_port is None and 'internetSlbPort' in kwargs:
-            internet_slb_port = kwargs['internetSlbPort']
-        if internet_slb_protocol is None and 'internetSlbProtocol' in kwargs:
-            internet_slb_protocol = kwargs['internetSlbProtocol']
-        if internet_target_port is None and 'internetTargetPort' in kwargs:
-            internet_target_port = kwargs['internetTargetPort']
-        if limit_m_cpu is None and 'limitMCpu' in kwargs:
-            limit_m_cpu = kwargs['limitMCpu']
-        if limit_mem is None and 'limitMem' in kwargs:
-            limit_mem = kwargs['limitMem']
-        if local_volume is None and 'localVolume' in kwargs:
-            local_volume = kwargs['localVolume']
-        if logical_region_id is None and 'logicalRegionId' in kwargs:
-            logical_region_id = kwargs['logicalRegionId']
-        if mount_descs is None and 'mountDescs' in kwargs:
-            mount_descs = kwargs['mountDescs']
-        if nas_id is None and 'nasId' in kwargs:
-            nas_id = kwargs['nasId']
-        if package_type is None and 'packageType' in kwargs:
-            package_type = kwargs['packageType']
-        if package_url is None and 'packageUrl' in kwargs:
-            package_url = kwargs['packageUrl']
-        if package_version is None and 'packageVersion' in kwargs:
-            package_version = kwargs['packageVersion']
-        if post_start is None and 'postStart' in kwargs:
-            post_start = kwargs['postStart']
-        if pre_stop is None and 'preStop' in kwargs:
-            pre_stop = kwargs['preStop']
-        if requests_m_cpu is None and 'requestsMCpu' in kwargs:
-            requests_m_cpu = kwargs['requestsMCpu']
-        if requests_mem is None and 'requestsMem' in kwargs:
-            requests_mem = kwargs['requestsMem']
-        if web_container is None and 'webContainer' in kwargs:
-            web_container = kwargs['webContainer']
-
         if application_descriotion is not None:
-            _setter("application_descriotion", application_descriotion)
+            pulumi.set(__self__, "application_descriotion", application_descriotion)
         if application_name is not None:
-            _setter("application_name", application_name)
+            pulumi.set(__self__, "application_name", application_name)
         if cluster_id is not None:
-            _setter("cluster_id", cluster_id)
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if command is not None:
-            _setter("command", command)
+            pulumi.set(__self__, "command", command)
         if command_args is not None:
-            _setter("command_args", command_args)
+            pulumi.set(__self__, "command_args", command_args)
         if edas_container_version is not None:
-            _setter("edas_container_version", edas_container_version)
+            pulumi.set(__self__, "edas_container_version", edas_container_version)
         if envs is not None:
-            _setter("envs", envs)
+            pulumi.set(__self__, "envs", envs)
         if image_url is not None:
-            _setter("image_url", image_url)
+            pulumi.set(__self__, "image_url", image_url)
         if internet_slb_id is not None:
             warnings.warn("""Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
             pulumi.log.warn("""internet_slb_id is deprecated: Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
         if internet_slb_id is not None:
-            _setter("internet_slb_id", internet_slb_id)
+            pulumi.set(__self__, "internet_slb_id", internet_slb_id)
         if internet_slb_port is not None:
             warnings.warn("""Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
             pulumi.log.warn("""internet_slb_port is deprecated: Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
         if internet_slb_port is not None:
-            _setter("internet_slb_port", internet_slb_port)
+            pulumi.set(__self__, "internet_slb_port", internet_slb_port)
         if internet_slb_protocol is not None:
             warnings.warn("""Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
             pulumi.log.warn("""internet_slb_protocol is deprecated: Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
         if internet_slb_protocol is not None:
-            _setter("internet_slb_protocol", internet_slb_protocol)
+            pulumi.set(__self__, "internet_slb_protocol", internet_slb_protocol)
         if internet_target_port is not None:
             warnings.warn("""Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
             pulumi.log.warn("""internet_target_port is deprecated: Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
         if internet_target_port is not None:
-            _setter("internet_target_port", internet_target_port)
+            pulumi.set(__self__, "internet_target_port", internet_target_port)
         if jdk is not None:
-            _setter("jdk", jdk)
+            pulumi.set(__self__, "jdk", jdk)
         if limit_m_cpu is not None:
-            _setter("limit_m_cpu", limit_m_cpu)
+            pulumi.set(__self__, "limit_m_cpu", limit_m_cpu)
         if limit_mem is not None:
-            _setter("limit_mem", limit_mem)
+            pulumi.set(__self__, "limit_mem", limit_mem)
         if liveness is not None:
-            _setter("liveness", liveness)
+            pulumi.set(__self__, "liveness", liveness)
         if local_volume is not None:
-            _setter("local_volume", local_volume)
+            pulumi.set(__self__, "local_volume", local_volume)
         if logical_region_id is not None:
-            _setter("logical_region_id", logical_region_id)
+            pulumi.set(__self__, "logical_region_id", logical_region_id)
         if mount_descs is not None:
-            _setter("mount_descs", mount_descs)
+            pulumi.set(__self__, "mount_descs", mount_descs)
         if namespace is not None:
-            _setter("namespace", namespace)
+            pulumi.set(__self__, "namespace", namespace)
         if nas_id is not None:
-            _setter("nas_id", nas_id)
+            pulumi.set(__self__, "nas_id", nas_id)
         if package_type is not None:
-            _setter("package_type", package_type)
+            pulumi.set(__self__, "package_type", package_type)
         if package_url is not None:
-            _setter("package_url", package_url)
+            pulumi.set(__self__, "package_url", package_url)
         if package_version is not None:
-            _setter("package_version", package_version)
+            pulumi.set(__self__, "package_version", package_version)
         if post_start is not None:
-            _setter("post_start", post_start)
+            pulumi.set(__self__, "post_start", post_start)
         if pre_stop is not None:
-            _setter("pre_stop", pre_stop)
+            pulumi.set(__self__, "pre_stop", pre_stop)
         if readiness is not None:
-            _setter("readiness", readiness)
+            pulumi.set(__self__, "readiness", readiness)
         if replicas is not None:
-            _setter("replicas", replicas)
+            pulumi.set(__self__, "replicas", replicas)
         if requests_m_cpu is not None:
-            _setter("requests_m_cpu", requests_m_cpu)
+            pulumi.set(__self__, "requests_m_cpu", requests_m_cpu)
         if requests_mem is not None:
-            _setter("requests_mem", requests_mem)
+            pulumi.set(__self__, "requests_mem", requests_mem)
         if web_container is not None:
-            _setter("web_container", web_container)
+            pulumi.set(__self__, "web_container", web_container)
 
     @property
     @pulumi.getter(name="applicationDescriotion")
@@ -1430,10 +1188,6 @@ class K8sApplication(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            K8sApplicationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

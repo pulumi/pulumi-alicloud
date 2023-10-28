@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -47,101 +47,28 @@ class ClusterArgs:
         :param pulumi.Input['ClusterSubscriptionConfigArgs'] subscription_config: The detail configuration of subscription payment type. See `subscription_config` below.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
-        ClusterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            applications=applications,
-            cluster_name=cluster_name,
-            cluster_type=cluster_type,
-            node_attributes=node_attributes,
-            node_groups=node_groups,
-            release_version=release_version,
-            application_configs=application_configs,
-            bootstrap_scripts=bootstrap_scripts,
-            deploy_mode=deploy_mode,
-            payment_type=payment_type,
-            resource_group_id=resource_group_id,
-            security_mode=security_mode,
-            subscription_config=subscription_config,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             applications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             cluster_name: Optional[pulumi.Input[str]] = None,
-             cluster_type: Optional[pulumi.Input[str]] = None,
-             node_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeAttributeArgs']]]] = None,
-             node_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupArgs']]]] = None,
-             release_version: Optional[pulumi.Input[str]] = None,
-             application_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterApplicationConfigArgs']]]] = None,
-             bootstrap_scripts: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]]] = None,
-             deploy_mode: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             security_mode: Optional[pulumi.Input[str]] = None,
-             subscription_config: Optional[pulumi.Input['ClusterSubscriptionConfigArgs']] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if applications is None:
-            raise TypeError("Missing 'applications' argument")
-        if cluster_name is None and 'clusterName' in kwargs:
-            cluster_name = kwargs['clusterName']
-        if cluster_name is None:
-            raise TypeError("Missing 'cluster_name' argument")
-        if cluster_type is None and 'clusterType' in kwargs:
-            cluster_type = kwargs['clusterType']
-        if cluster_type is None:
-            raise TypeError("Missing 'cluster_type' argument")
-        if node_attributes is None and 'nodeAttributes' in kwargs:
-            node_attributes = kwargs['nodeAttributes']
-        if node_attributes is None:
-            raise TypeError("Missing 'node_attributes' argument")
-        if node_groups is None and 'nodeGroups' in kwargs:
-            node_groups = kwargs['nodeGroups']
-        if node_groups is None:
-            raise TypeError("Missing 'node_groups' argument")
-        if release_version is None and 'releaseVersion' in kwargs:
-            release_version = kwargs['releaseVersion']
-        if release_version is None:
-            raise TypeError("Missing 'release_version' argument")
-        if application_configs is None and 'applicationConfigs' in kwargs:
-            application_configs = kwargs['applicationConfigs']
-        if bootstrap_scripts is None and 'bootstrapScripts' in kwargs:
-            bootstrap_scripts = kwargs['bootstrapScripts']
-        if deploy_mode is None and 'deployMode' in kwargs:
-            deploy_mode = kwargs['deployMode']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if security_mode is None and 'securityMode' in kwargs:
-            security_mode = kwargs['securityMode']
-        if subscription_config is None and 'subscriptionConfig' in kwargs:
-            subscription_config = kwargs['subscriptionConfig']
-
-        _setter("applications", applications)
-        _setter("cluster_name", cluster_name)
-        _setter("cluster_type", cluster_type)
-        _setter("node_attributes", node_attributes)
-        _setter("node_groups", node_groups)
-        _setter("release_version", release_version)
+        pulumi.set(__self__, "applications", applications)
+        pulumi.set(__self__, "cluster_name", cluster_name)
+        pulumi.set(__self__, "cluster_type", cluster_type)
+        pulumi.set(__self__, "node_attributes", node_attributes)
+        pulumi.set(__self__, "node_groups", node_groups)
+        pulumi.set(__self__, "release_version", release_version)
         if application_configs is not None:
-            _setter("application_configs", application_configs)
+            pulumi.set(__self__, "application_configs", application_configs)
         if bootstrap_scripts is not None:
-            _setter("bootstrap_scripts", bootstrap_scripts)
+            pulumi.set(__self__, "bootstrap_scripts", bootstrap_scripts)
         if deploy_mode is not None:
-            _setter("deploy_mode", deploy_mode)
+            pulumi.set(__self__, "deploy_mode", deploy_mode)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_mode is not None:
-            _setter("security_mode", security_mode)
+            pulumi.set(__self__, "security_mode", security_mode)
         if subscription_config is not None:
-            _setter("subscription_config", subscription_config)
+            pulumi.set(__self__, "subscription_config", subscription_config)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -346,95 +273,34 @@ class _ClusterState:
         :param pulumi.Input['ClusterSubscriptionConfigArgs'] subscription_config: The detail configuration of subscription payment type. See `subscription_config` below.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
-        _ClusterState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            application_configs=application_configs,
-            applications=applications,
-            bootstrap_scripts=bootstrap_scripts,
-            cluster_name=cluster_name,
-            cluster_type=cluster_type,
-            deploy_mode=deploy_mode,
-            node_attributes=node_attributes,
-            node_groups=node_groups,
-            payment_type=payment_type,
-            release_version=release_version,
-            resource_group_id=resource_group_id,
-            security_mode=security_mode,
-            subscription_config=subscription_config,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             application_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterApplicationConfigArgs']]]] = None,
-             applications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             bootstrap_scripts: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]]] = None,
-             cluster_name: Optional[pulumi.Input[str]] = None,
-             cluster_type: Optional[pulumi.Input[str]] = None,
-             deploy_mode: Optional[pulumi.Input[str]] = None,
-             node_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeAttributeArgs']]]] = None,
-             node_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupArgs']]]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             release_version: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             security_mode: Optional[pulumi.Input[str]] = None,
-             subscription_config: Optional[pulumi.Input['ClusterSubscriptionConfigArgs']] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if application_configs is None and 'applicationConfigs' in kwargs:
-            application_configs = kwargs['applicationConfigs']
-        if bootstrap_scripts is None and 'bootstrapScripts' in kwargs:
-            bootstrap_scripts = kwargs['bootstrapScripts']
-        if cluster_name is None and 'clusterName' in kwargs:
-            cluster_name = kwargs['clusterName']
-        if cluster_type is None and 'clusterType' in kwargs:
-            cluster_type = kwargs['clusterType']
-        if deploy_mode is None and 'deployMode' in kwargs:
-            deploy_mode = kwargs['deployMode']
-        if node_attributes is None and 'nodeAttributes' in kwargs:
-            node_attributes = kwargs['nodeAttributes']
-        if node_groups is None and 'nodeGroups' in kwargs:
-            node_groups = kwargs['nodeGroups']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if release_version is None and 'releaseVersion' in kwargs:
-            release_version = kwargs['releaseVersion']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if security_mode is None and 'securityMode' in kwargs:
-            security_mode = kwargs['securityMode']
-        if subscription_config is None and 'subscriptionConfig' in kwargs:
-            subscription_config = kwargs['subscriptionConfig']
-
         if application_configs is not None:
-            _setter("application_configs", application_configs)
+            pulumi.set(__self__, "application_configs", application_configs)
         if applications is not None:
-            _setter("applications", applications)
+            pulumi.set(__self__, "applications", applications)
         if bootstrap_scripts is not None:
-            _setter("bootstrap_scripts", bootstrap_scripts)
+            pulumi.set(__self__, "bootstrap_scripts", bootstrap_scripts)
         if cluster_name is not None:
-            _setter("cluster_name", cluster_name)
+            pulumi.set(__self__, "cluster_name", cluster_name)
         if cluster_type is not None:
-            _setter("cluster_type", cluster_type)
+            pulumi.set(__self__, "cluster_type", cluster_type)
         if deploy_mode is not None:
-            _setter("deploy_mode", deploy_mode)
+            pulumi.set(__self__, "deploy_mode", deploy_mode)
         if node_attributes is not None:
-            _setter("node_attributes", node_attributes)
+            pulumi.set(__self__, "node_attributes", node_attributes)
         if node_groups is not None:
-            _setter("node_groups", node_groups)
+            pulumi.set(__self__, "node_groups", node_groups)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if release_version is not None:
-            _setter("release_version", release_version)
+            pulumi.set(__self__, "release_version", release_version)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_mode is not None:
-            _setter("security_mode", security_mode)
+            pulumi.set(__self__, "security_mode", security_mode)
         if subscription_config is not None:
-            _setter("subscription_config", subscription_config)
+            pulumi.set(__self__, "subscription_config", subscription_config)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="applicationConfigs")
@@ -942,10 +808,6 @@ class Cluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -998,7 +860,6 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["release_version"] = release_version
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["security_mode"] = security_mode
-            subscription_config = _utilities.configure(subscription_config, ClusterSubscriptionConfigArgs, True)
             __props__.__dict__["subscription_config"] = subscription_config
             __props__.__dict__["tags"] = tags
         super(Cluster, __self__).__init__(

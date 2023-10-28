@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -23,27 +23,8 @@ class NetworkAclAttachmentArgs:
         :param pulumi.Input[str] network_acl_id: The id of the network acl, the field can't be changed.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]] resources: List of the resources associated with the network acl. The details see Block Resources.
         """
-        NetworkAclAttachmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            network_acl_id=network_acl_id,
-            resources=resources,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             network_acl_id: Optional[pulumi.Input[str]] = None,
-             resources: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if network_acl_id is None and 'networkAclId' in kwargs:
-            network_acl_id = kwargs['networkAclId']
-        if network_acl_id is None:
-            raise TypeError("Missing 'network_acl_id' argument")
-        if resources is None:
-            raise TypeError("Missing 'resources' argument")
-
-        _setter("network_acl_id", network_acl_id)
-        _setter("resources", resources)
+        pulumi.set(__self__, "network_acl_id", network_acl_id)
+        pulumi.set(__self__, "resources", resources)
 
     @property
     @pulumi.getter(name="networkAclId")
@@ -80,25 +61,10 @@ class _NetworkAclAttachmentState:
         :param pulumi.Input[str] network_acl_id: The id of the network acl, the field can't be changed.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]] resources: List of the resources associated with the network acl. The details see Block Resources.
         """
-        _NetworkAclAttachmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            network_acl_id=network_acl_id,
-            resources=resources,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             network_acl_id: Optional[pulumi.Input[str]] = None,
-             resources: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if network_acl_id is None and 'networkAclId' in kwargs:
-            network_acl_id = kwargs['networkAclId']
-
         if network_acl_id is not None:
-            _setter("network_acl_id", network_acl_id)
+            pulumi.set(__self__, "network_acl_id", network_acl_id)
         if resources is not None:
-            _setter("resources", resources)
+            pulumi.set(__self__, "resources", resources)
 
     @property
     @pulumi.getter(name="networkAclId")
@@ -234,10 +200,6 @@ class NetworkAclAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            NetworkAclAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

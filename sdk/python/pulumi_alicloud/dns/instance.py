@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InstanceArgs', 'Instance']
@@ -30,58 +30,17 @@ class InstanceArgs:
         :param pulumi.Input[int] renew_period: Automatic renewal period, the unit is month. When setting RenewalStatus to AutoRenewal, it must be set.
         :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, default to `ManualRenewal`.
         """
-        InstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dns_security=dns_security,
-            domain_numbers=domain_numbers,
-            version_code=version_code,
-            payment_type=payment_type,
-            period=period,
-            renew_period=renew_period,
-            renewal_status=renewal_status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dns_security: Optional[pulumi.Input[str]] = None,
-             domain_numbers: Optional[pulumi.Input[str]] = None,
-             version_code: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[int]] = None,
-             renew_period: Optional[pulumi.Input[int]] = None,
-             renewal_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dns_security is None and 'dnsSecurity' in kwargs:
-            dns_security = kwargs['dnsSecurity']
-        if dns_security is None:
-            raise TypeError("Missing 'dns_security' argument")
-        if domain_numbers is None and 'domainNumbers' in kwargs:
-            domain_numbers = kwargs['domainNumbers']
-        if domain_numbers is None:
-            raise TypeError("Missing 'domain_numbers' argument")
-        if version_code is None and 'versionCode' in kwargs:
-            version_code = kwargs['versionCode']
-        if version_code is None:
-            raise TypeError("Missing 'version_code' argument")
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if renew_period is None and 'renewPeriod' in kwargs:
-            renew_period = kwargs['renewPeriod']
-        if renewal_status is None and 'renewalStatus' in kwargs:
-            renewal_status = kwargs['renewalStatus']
-
-        _setter("dns_security", dns_security)
-        _setter("domain_numbers", domain_numbers)
-        _setter("version_code", version_code)
+        pulumi.set(__self__, "dns_security", dns_security)
+        pulumi.set(__self__, "domain_numbers", domain_numbers)
+        pulumi.set(__self__, "version_code", version_code)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if renew_period is not None:
-            _setter("renew_period", renew_period)
+            pulumi.set(__self__, "renew_period", renew_period)
         if renewal_status is not None:
-            _setter("renewal_status", renewal_status)
+            pulumi.set(__self__, "renewal_status", renewal_status)
 
     @property
     @pulumi.getter(name="dnsSecurity")
@@ -186,61 +145,22 @@ class _InstanceState:
         :param pulumi.Input[str] version_code: Paid package version. Valid values: `version_personal`, `version_enterprise_basic`, `version_enterprise_advanced`.
         :param pulumi.Input[str] version_name: Paid package version name.
         """
-        _InstanceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dns_security=dns_security,
-            domain_numbers=domain_numbers,
-            payment_type=payment_type,
-            period=period,
-            renew_period=renew_period,
-            renewal_status=renewal_status,
-            version_code=version_code,
-            version_name=version_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dns_security: Optional[pulumi.Input[str]] = None,
-             domain_numbers: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[int]] = None,
-             renew_period: Optional[pulumi.Input[int]] = None,
-             renewal_status: Optional[pulumi.Input[str]] = None,
-             version_code: Optional[pulumi.Input[str]] = None,
-             version_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dns_security is None and 'dnsSecurity' in kwargs:
-            dns_security = kwargs['dnsSecurity']
-        if domain_numbers is None and 'domainNumbers' in kwargs:
-            domain_numbers = kwargs['domainNumbers']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if renew_period is None and 'renewPeriod' in kwargs:
-            renew_period = kwargs['renewPeriod']
-        if renewal_status is None and 'renewalStatus' in kwargs:
-            renewal_status = kwargs['renewalStatus']
-        if version_code is None and 'versionCode' in kwargs:
-            version_code = kwargs['versionCode']
-        if version_name is None and 'versionName' in kwargs:
-            version_name = kwargs['versionName']
-
         if dns_security is not None:
-            _setter("dns_security", dns_security)
+            pulumi.set(__self__, "dns_security", dns_security)
         if domain_numbers is not None:
-            _setter("domain_numbers", domain_numbers)
+            pulumi.set(__self__, "domain_numbers", domain_numbers)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if renew_period is not None:
-            _setter("renew_period", renew_period)
+            pulumi.set(__self__, "renew_period", renew_period)
         if renewal_status is not None:
-            _setter("renewal_status", renewal_status)
+            pulumi.set(__self__, "renewal_status", renewal_status)
         if version_code is not None:
-            _setter("version_code", version_code)
+            pulumi.set(__self__, "version_code", version_code)
         if version_name is not None:
-            _setter("version_name", version_name)
+            pulumi.set(__self__, "version_name", version_name)
 
     @property
     @pulumi.getter(name="dnsSecurity")
@@ -438,10 +358,6 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

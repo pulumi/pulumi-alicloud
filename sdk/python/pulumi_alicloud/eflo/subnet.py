@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SubnetArgs', 'Subnet']
@@ -30,45 +30,12 @@ class SubnetArgs:
                - OOB:OOB type
                - LB: LB type
         """
-        SubnetArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cidr=cidr,
-            subnet_name=subnet_name,
-            vpd_id=vpd_id,
-            zone_id=zone_id,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cidr: Optional[pulumi.Input[str]] = None,
-             subnet_name: Optional[pulumi.Input[str]] = None,
-             vpd_id: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cidr is None:
-            raise TypeError("Missing 'cidr' argument")
-        if subnet_name is None and 'subnetName' in kwargs:
-            subnet_name = kwargs['subnetName']
-        if subnet_name is None:
-            raise TypeError("Missing 'subnet_name' argument")
-        if vpd_id is None and 'vpdId' in kwargs:
-            vpd_id = kwargs['vpdId']
-        if vpd_id is None:
-            raise TypeError("Missing 'vpd_id' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("cidr", cidr)
-        _setter("subnet_name", subnet_name)
-        _setter("vpd_id", vpd_id)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "cidr", cidr)
+        pulumi.set(__self__, "subnet_name", subnet_name)
+        pulumi.set(__self__, "vpd_id", vpd_id)
+        pulumi.set(__self__, "zone_id", zone_id)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -165,73 +132,28 @@ class _SubnetState:
         :param pulumi.Input[str] vpd_id: The Eflo VPD ID.
         :param pulumi.Input[str] zone_id: The zone ID  of the resource.
         """
-        _SubnetState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cidr=cidr,
-            create_time=create_time,
-            gmt_modified=gmt_modified,
-            message=message,
-            resource_group_id=resource_group_id,
-            status=status,
-            subnet_id=subnet_id,
-            subnet_name=subnet_name,
-            type=type,
-            vpd_id=vpd_id,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cidr: Optional[pulumi.Input[str]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             gmt_modified: Optional[pulumi.Input[str]] = None,
-             message: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             subnet_id: Optional[pulumi.Input[str]] = None,
-             subnet_name: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             vpd_id: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if gmt_modified is None and 'gmtModified' in kwargs:
-            gmt_modified = kwargs['gmtModified']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if subnet_id is None and 'subnetId' in kwargs:
-            subnet_id = kwargs['subnetId']
-        if subnet_name is None and 'subnetName' in kwargs:
-            subnet_name = kwargs['subnetName']
-        if vpd_id is None and 'vpdId' in kwargs:
-            vpd_id = kwargs['vpdId']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if cidr is not None:
-            _setter("cidr", cidr)
+            pulumi.set(__self__, "cidr", cidr)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if gmt_modified is not None:
-            _setter("gmt_modified", gmt_modified)
+            pulumi.set(__self__, "gmt_modified", gmt_modified)
         if message is not None:
-            _setter("message", message)
+            pulumi.set(__self__, "message", message)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if subnet_id is not None:
-            _setter("subnet_id", subnet_id)
+            pulumi.set(__self__, "subnet_id", subnet_id)
         if subnet_name is not None:
-            _setter("subnet_name", subnet_name)
+            pulumi.set(__self__, "subnet_name", subnet_name)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if vpd_id is not None:
-            _setter("vpd_id", vpd_id)
+            pulumi.set(__self__, "vpd_id", vpd_id)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -487,10 +409,6 @@ class Subnet(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SubnetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['UserArgs', 'User']
@@ -63,72 +63,25 @@ class UserArgs:
         :param pulumi.Input[str] source_user_id: Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Frozen`, `Normal`.
         """
-        UserArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_id=instance_id,
-            source=source,
-            user_name=user_name,
-            comment=comment,
-            display_name=display_name,
-            email=email,
-            mobile=mobile,
-            mobile_country_code=mobile_country_code,
-            password=password,
-            source_user_id=source_user_id,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_id: Optional[pulumi.Input[str]] = None,
-             source: Optional[pulumi.Input[str]] = None,
-             user_name: Optional[pulumi.Input[str]] = None,
-             comment: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             email: Optional[pulumi.Input[str]] = None,
-             mobile: Optional[pulumi.Input[str]] = None,
-             mobile_country_code: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             source_user_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if source is None:
-            raise TypeError("Missing 'source' argument")
-        if user_name is None and 'userName' in kwargs:
-            user_name = kwargs['userName']
-        if user_name is None:
-            raise TypeError("Missing 'user_name' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if mobile_country_code is None and 'mobileCountryCode' in kwargs:
-            mobile_country_code = kwargs['mobileCountryCode']
-        if source_user_id is None and 'sourceUserId' in kwargs:
-            source_user_id = kwargs['sourceUserId']
-
-        _setter("instance_id", instance_id)
-        _setter("source", source)
-        _setter("user_name", user_name)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "source", source)
+        pulumi.set(__self__, "user_name", user_name)
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if email is not None:
-            _setter("email", email)
+            pulumi.set(__self__, "email", email)
         if mobile is not None:
-            _setter("mobile", mobile)
+            pulumi.set(__self__, "mobile", mobile)
         if mobile_country_code is not None:
-            _setter("mobile_country_code", mobile_country_code)
+            pulumi.set(__self__, "mobile_country_code", mobile_country_code)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if source_user_id is not None:
-            _setter("source_user_id", source_user_id)
+            pulumi.set(__self__, "source_user_id", source_user_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -341,75 +294,30 @@ class _UserState:
         :param pulumi.Input[str] user_id: The User ID.
         :param pulumi.Input[str] user_name: Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
         """
-        _UserState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            comment=comment,
-            display_name=display_name,
-            email=email,
-            instance_id=instance_id,
-            mobile=mobile,
-            mobile_country_code=mobile_country_code,
-            password=password,
-            source=source,
-            source_user_id=source_user_id,
-            status=status,
-            user_id=user_id,
-            user_name=user_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             comment: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             email: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             mobile: Optional[pulumi.Input[str]] = None,
-             mobile_country_code: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             source: Optional[pulumi.Input[str]] = None,
-             source_user_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             user_id: Optional[pulumi.Input[str]] = None,
-             user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if mobile_country_code is None and 'mobileCountryCode' in kwargs:
-            mobile_country_code = kwargs['mobileCountryCode']
-        if source_user_id is None and 'sourceUserId' in kwargs:
-            source_user_id = kwargs['sourceUserId']
-        if user_id is None and 'userId' in kwargs:
-            user_id = kwargs['userId']
-        if user_name is None and 'userName' in kwargs:
-            user_name = kwargs['userName']
-
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if email is not None:
-            _setter("email", email)
+            pulumi.set(__self__, "email", email)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if mobile is not None:
-            _setter("mobile", mobile)
+            pulumi.set(__self__, "mobile", mobile)
         if mobile_country_code is not None:
-            _setter("mobile_country_code", mobile_country_code)
+            pulumi.set(__self__, "mobile_country_code", mobile_country_code)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if source is not None:
-            _setter("source", source)
+            pulumi.set(__self__, "source", source)
         if source_user_id is not None:
-            _setter("source_user_id", source_user_id)
+            pulumi.set(__self__, "source_user_id", source_user_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if user_id is not None:
-            _setter("user_id", user_id)
+            pulumi.set(__self__, "user_id", user_id)
         if user_name is not None:
-            _setter("user_name", user_name)
+            pulumi.set(__self__, "user_name", user_name)
 
     @property
     @pulumi.getter
@@ -785,10 +693,6 @@ class User(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            UserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

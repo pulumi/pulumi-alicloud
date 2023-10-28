@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['Ipv6EgressRuleArgs', 'Ipv6EgressRule']
@@ -27,45 +27,14 @@ class Ipv6EgressRuleArgs:
         :param pulumi.Input[str] instance_type: The type of instance to which you want to apply the egress-only rule. Valid values: `Ipv6Address`. `Ipv6Address` (default): an IPv6 address.
         :param pulumi.Input[str] ipv6_egress_rule_name: The name of the egress-only rule. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         """
-        Ipv6EgressRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_id=instance_id,
-            ipv6_gateway_id=ipv6_gateway_id,
-            description=description,
-            instance_type=instance_type,
-            ipv6_egress_rule_name=ipv6_egress_rule_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_id: Optional[pulumi.Input[str]] = None,
-             ipv6_gateway_id: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             instance_type: Optional[pulumi.Input[str]] = None,
-             ipv6_egress_rule_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if ipv6_gateway_id is None and 'ipv6GatewayId' in kwargs:
-            ipv6_gateway_id = kwargs['ipv6GatewayId']
-        if ipv6_gateway_id is None:
-            raise TypeError("Missing 'ipv6_gateway_id' argument")
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if ipv6_egress_rule_name is None and 'ipv6EgressRuleName' in kwargs:
-            ipv6_egress_rule_name = kwargs['ipv6EgressRuleName']
-
-        _setter("instance_id", instance_id)
-        _setter("ipv6_gateway_id", ipv6_gateway_id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "ipv6_gateway_id", ipv6_gateway_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if instance_type is not None:
-            _setter("instance_type", instance_type)
+            pulumi.set(__self__, "instance_type", instance_type)
         if ipv6_egress_rule_name is not None:
-            _setter("ipv6_egress_rule_name", ipv6_egress_rule_name)
+            pulumi.set(__self__, "ipv6_egress_rule_name", ipv6_egress_rule_name)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -146,47 +115,18 @@ class _Ipv6EgressRuleState:
         :param pulumi.Input[str] ipv6_gateway_id: The ID of the IPv6 gateway.
         :param pulumi.Input[str] status: The status of the resource.
         """
-        _Ipv6EgressRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            instance_id=instance_id,
-            instance_type=instance_type,
-            ipv6_egress_rule_name=ipv6_egress_rule_name,
-            ipv6_gateway_id=ipv6_gateway_id,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             instance_type: Optional[pulumi.Input[str]] = None,
-             ipv6_egress_rule_name: Optional[pulumi.Input[str]] = None,
-             ipv6_gateway_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if ipv6_egress_rule_name is None and 'ipv6EgressRuleName' in kwargs:
-            ipv6_egress_rule_name = kwargs['ipv6EgressRuleName']
-        if ipv6_gateway_id is None and 'ipv6GatewayId' in kwargs:
-            ipv6_gateway_id = kwargs['ipv6GatewayId']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if instance_type is not None:
-            _setter("instance_type", instance_type)
+            pulumi.set(__self__, "instance_type", instance_type)
         if ipv6_egress_rule_name is not None:
-            _setter("ipv6_egress_rule_name", ipv6_egress_rule_name)
+            pulumi.set(__self__, "ipv6_egress_rule_name", ipv6_egress_rule_name)
         if ipv6_gateway_id is not None:
-            _setter("ipv6_gateway_id", ipv6_gateway_id)
+            pulumi.set(__self__, "ipv6_gateway_id", ipv6_gateway_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -448,10 +388,6 @@ class Ipv6EgressRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            Ipv6EgressRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

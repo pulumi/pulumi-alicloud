@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AuditPolicyArgs', 'AuditPolicy']
@@ -23,35 +23,10 @@ class AuditPolicyArgs:
         :param pulumi.Input[str] db_instance_id: The ID of the instance.
         :param pulumi.Input[int] storage_period: The retention period of audit logs. Valid values: `1` to `30`. Default value: `30`.
         """
-        AuditPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            audit_status=audit_status,
-            db_instance_id=db_instance_id,
-            storage_period=storage_period,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             audit_status: Optional[pulumi.Input[str]] = None,
-             db_instance_id: Optional[pulumi.Input[str]] = None,
-             storage_period: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if audit_status is None and 'auditStatus' in kwargs:
-            audit_status = kwargs['auditStatus']
-        if audit_status is None:
-            raise TypeError("Missing 'audit_status' argument")
-        if db_instance_id is None and 'dbInstanceId' in kwargs:
-            db_instance_id = kwargs['dbInstanceId']
-        if db_instance_id is None:
-            raise TypeError("Missing 'db_instance_id' argument")
-        if storage_period is None and 'storagePeriod' in kwargs:
-            storage_period = kwargs['storagePeriod']
-
-        _setter("audit_status", audit_status)
-        _setter("db_instance_id", db_instance_id)
+        pulumi.set(__self__, "audit_status", audit_status)
+        pulumi.set(__self__, "db_instance_id", db_instance_id)
         if storage_period is not None:
-            _setter("storage_period", storage_period)
+            pulumi.set(__self__, "storage_period", storage_period)
 
     @property
     @pulumi.getter(name="auditStatus")
@@ -102,33 +77,12 @@ class _AuditPolicyState:
         :param pulumi.Input[str] db_instance_id: The ID of the instance.
         :param pulumi.Input[int] storage_period: The retention period of audit logs. Valid values: `1` to `30`. Default value: `30`.
         """
-        _AuditPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            audit_status=audit_status,
-            db_instance_id=db_instance_id,
-            storage_period=storage_period,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             audit_status: Optional[pulumi.Input[str]] = None,
-             db_instance_id: Optional[pulumi.Input[str]] = None,
-             storage_period: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if audit_status is None and 'auditStatus' in kwargs:
-            audit_status = kwargs['auditStatus']
-        if db_instance_id is None and 'dbInstanceId' in kwargs:
-            db_instance_id = kwargs['dbInstanceId']
-        if storage_period is None and 'storagePeriod' in kwargs:
-            storage_period = kwargs['storagePeriod']
-
         if audit_status is not None:
-            _setter("audit_status", audit_status)
+            pulumi.set(__self__, "audit_status", audit_status)
         if db_instance_id is not None:
-            _setter("db_instance_id", db_instance_id)
+            pulumi.set(__self__, "db_instance_id", db_instance_id)
         if storage_period is not None:
-            _setter("storage_period", storage_period)
+            pulumi.set(__self__, "storage_period", storage_period)
 
     @property
     @pulumi.getter(name="auditStatus")
@@ -310,10 +264,6 @@ class AuditPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AuditPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['VbrHealthCheckArgs', 'VbrHealthCheck']
@@ -35,67 +35,18 @@ class VbrHealthCheckArgs:
         :param pulumi.Input[int] healthy_threshold: Specifies the number of probe messages sent by the health check. Default value: 8. Value range: 3 to 8.
         :param pulumi.Input[int] vbr_instance_owner_id: The ID of the account to which the VBR belongs.
         """
-        VbrHealthCheckArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cen_id=cen_id,
-            health_check_target_ip=health_check_target_ip,
-            vbr_instance_id=vbr_instance_id,
-            vbr_instance_region_id=vbr_instance_region_id,
-            health_check_interval=health_check_interval,
-            health_check_source_ip=health_check_source_ip,
-            healthy_threshold=healthy_threshold,
-            vbr_instance_owner_id=vbr_instance_owner_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cen_id: Optional[pulumi.Input[str]] = None,
-             health_check_target_ip: Optional[pulumi.Input[str]] = None,
-             vbr_instance_id: Optional[pulumi.Input[str]] = None,
-             vbr_instance_region_id: Optional[pulumi.Input[str]] = None,
-             health_check_interval: Optional[pulumi.Input[int]] = None,
-             health_check_source_ip: Optional[pulumi.Input[str]] = None,
-             healthy_threshold: Optional[pulumi.Input[int]] = None,
-             vbr_instance_owner_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cen_id is None and 'cenId' in kwargs:
-            cen_id = kwargs['cenId']
-        if cen_id is None:
-            raise TypeError("Missing 'cen_id' argument")
-        if health_check_target_ip is None and 'healthCheckTargetIp' in kwargs:
-            health_check_target_ip = kwargs['healthCheckTargetIp']
-        if health_check_target_ip is None:
-            raise TypeError("Missing 'health_check_target_ip' argument")
-        if vbr_instance_id is None and 'vbrInstanceId' in kwargs:
-            vbr_instance_id = kwargs['vbrInstanceId']
-        if vbr_instance_id is None:
-            raise TypeError("Missing 'vbr_instance_id' argument")
-        if vbr_instance_region_id is None and 'vbrInstanceRegionId' in kwargs:
-            vbr_instance_region_id = kwargs['vbrInstanceRegionId']
-        if vbr_instance_region_id is None:
-            raise TypeError("Missing 'vbr_instance_region_id' argument")
-        if health_check_interval is None and 'healthCheckInterval' in kwargs:
-            health_check_interval = kwargs['healthCheckInterval']
-        if health_check_source_ip is None and 'healthCheckSourceIp' in kwargs:
-            health_check_source_ip = kwargs['healthCheckSourceIp']
-        if healthy_threshold is None and 'healthyThreshold' in kwargs:
-            healthy_threshold = kwargs['healthyThreshold']
-        if vbr_instance_owner_id is None and 'vbrInstanceOwnerId' in kwargs:
-            vbr_instance_owner_id = kwargs['vbrInstanceOwnerId']
-
-        _setter("cen_id", cen_id)
-        _setter("health_check_target_ip", health_check_target_ip)
-        _setter("vbr_instance_id", vbr_instance_id)
-        _setter("vbr_instance_region_id", vbr_instance_region_id)
+        pulumi.set(__self__, "cen_id", cen_id)
+        pulumi.set(__self__, "health_check_target_ip", health_check_target_ip)
+        pulumi.set(__self__, "vbr_instance_id", vbr_instance_id)
+        pulumi.set(__self__, "vbr_instance_region_id", vbr_instance_region_id)
         if health_check_interval is not None:
-            _setter("health_check_interval", health_check_interval)
+            pulumi.set(__self__, "health_check_interval", health_check_interval)
         if health_check_source_ip is not None:
-            _setter("health_check_source_ip", health_check_source_ip)
+            pulumi.set(__self__, "health_check_source_ip", health_check_source_ip)
         if healthy_threshold is not None:
-            _setter("healthy_threshold", healthy_threshold)
+            pulumi.set(__self__, "healthy_threshold", healthy_threshold)
         if vbr_instance_owner_id is not None:
-            _setter("vbr_instance_owner_id", vbr_instance_owner_id)
+            pulumi.set(__self__, "vbr_instance_owner_id", vbr_instance_owner_id)
 
     @property
     @pulumi.getter(name="cenId")
@@ -220,63 +171,22 @@ class _VbrHealthCheckState:
                
                ->**NOTE:** The `cen.VbrHealthCheck` resource depends on the related `cen.InstanceAttachment` resource.
         """
-        _VbrHealthCheckState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cen_id=cen_id,
-            health_check_interval=health_check_interval,
-            health_check_source_ip=health_check_source_ip,
-            health_check_target_ip=health_check_target_ip,
-            healthy_threshold=healthy_threshold,
-            vbr_instance_id=vbr_instance_id,
-            vbr_instance_owner_id=vbr_instance_owner_id,
-            vbr_instance_region_id=vbr_instance_region_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cen_id: Optional[pulumi.Input[str]] = None,
-             health_check_interval: Optional[pulumi.Input[int]] = None,
-             health_check_source_ip: Optional[pulumi.Input[str]] = None,
-             health_check_target_ip: Optional[pulumi.Input[str]] = None,
-             healthy_threshold: Optional[pulumi.Input[int]] = None,
-             vbr_instance_id: Optional[pulumi.Input[str]] = None,
-             vbr_instance_owner_id: Optional[pulumi.Input[int]] = None,
-             vbr_instance_region_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cen_id is None and 'cenId' in kwargs:
-            cen_id = kwargs['cenId']
-        if health_check_interval is None and 'healthCheckInterval' in kwargs:
-            health_check_interval = kwargs['healthCheckInterval']
-        if health_check_source_ip is None and 'healthCheckSourceIp' in kwargs:
-            health_check_source_ip = kwargs['healthCheckSourceIp']
-        if health_check_target_ip is None and 'healthCheckTargetIp' in kwargs:
-            health_check_target_ip = kwargs['healthCheckTargetIp']
-        if healthy_threshold is None and 'healthyThreshold' in kwargs:
-            healthy_threshold = kwargs['healthyThreshold']
-        if vbr_instance_id is None and 'vbrInstanceId' in kwargs:
-            vbr_instance_id = kwargs['vbrInstanceId']
-        if vbr_instance_owner_id is None and 'vbrInstanceOwnerId' in kwargs:
-            vbr_instance_owner_id = kwargs['vbrInstanceOwnerId']
-        if vbr_instance_region_id is None and 'vbrInstanceRegionId' in kwargs:
-            vbr_instance_region_id = kwargs['vbrInstanceRegionId']
-
         if cen_id is not None:
-            _setter("cen_id", cen_id)
+            pulumi.set(__self__, "cen_id", cen_id)
         if health_check_interval is not None:
-            _setter("health_check_interval", health_check_interval)
+            pulumi.set(__self__, "health_check_interval", health_check_interval)
         if health_check_source_ip is not None:
-            _setter("health_check_source_ip", health_check_source_ip)
+            pulumi.set(__self__, "health_check_source_ip", health_check_source_ip)
         if health_check_target_ip is not None:
-            _setter("health_check_target_ip", health_check_target_ip)
+            pulumi.set(__self__, "health_check_target_ip", health_check_target_ip)
         if healthy_threshold is not None:
-            _setter("healthy_threshold", healthy_threshold)
+            pulumi.set(__self__, "healthy_threshold", healthy_threshold)
         if vbr_instance_id is not None:
-            _setter("vbr_instance_id", vbr_instance_id)
+            pulumi.set(__self__, "vbr_instance_id", vbr_instance_id)
         if vbr_instance_owner_id is not None:
-            _setter("vbr_instance_owner_id", vbr_instance_owner_id)
+            pulumi.set(__self__, "vbr_instance_owner_id", vbr_instance_owner_id)
         if vbr_instance_region_id is not None:
-            _setter("vbr_instance_region_id", vbr_instance_region_id)
+            pulumi.set(__self__, "vbr_instance_region_id", vbr_instance_region_id)
 
     @property
     @pulumi.getter(name="cenId")
@@ -544,10 +454,6 @@ class VbrHealthCheck(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            VbrHealthCheckArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,66 +35,19 @@ class ApplicationScalingRuleArgs:
         :param pulumi.Input['ApplicationScalingRuleScalingRuleMetricArgs'] scaling_rule_metric: Monitor the configuration of the indicator elasticity strategy. See `scaling_rule_metric` below.
         :param pulumi.Input['ApplicationScalingRuleScalingRuleTimerArgs'] scaling_rule_timer: Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
         """
-        ApplicationScalingRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            app_id=app_id,
-            scaling_rule_name=scaling_rule_name,
-            scaling_rule_type=scaling_rule_type,
-            min_ready_instance_ratio=min_ready_instance_ratio,
-            min_ready_instances=min_ready_instances,
-            scaling_rule_enable=scaling_rule_enable,
-            scaling_rule_metric=scaling_rule_metric,
-            scaling_rule_timer=scaling_rule_timer,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             app_id: Optional[pulumi.Input[str]] = None,
-             scaling_rule_name: Optional[pulumi.Input[str]] = None,
-             scaling_rule_type: Optional[pulumi.Input[str]] = None,
-             min_ready_instance_ratio: Optional[pulumi.Input[int]] = None,
-             min_ready_instances: Optional[pulumi.Input[int]] = None,
-             scaling_rule_enable: Optional[pulumi.Input[bool]] = None,
-             scaling_rule_metric: Optional[pulumi.Input['ApplicationScalingRuleScalingRuleMetricArgs']] = None,
-             scaling_rule_timer: Optional[pulumi.Input['ApplicationScalingRuleScalingRuleTimerArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if app_id is None and 'appId' in kwargs:
-            app_id = kwargs['appId']
-        if app_id is None:
-            raise TypeError("Missing 'app_id' argument")
-        if scaling_rule_name is None and 'scalingRuleName' in kwargs:
-            scaling_rule_name = kwargs['scalingRuleName']
-        if scaling_rule_name is None:
-            raise TypeError("Missing 'scaling_rule_name' argument")
-        if scaling_rule_type is None and 'scalingRuleType' in kwargs:
-            scaling_rule_type = kwargs['scalingRuleType']
-        if scaling_rule_type is None:
-            raise TypeError("Missing 'scaling_rule_type' argument")
-        if min_ready_instance_ratio is None and 'minReadyInstanceRatio' in kwargs:
-            min_ready_instance_ratio = kwargs['minReadyInstanceRatio']
-        if min_ready_instances is None and 'minReadyInstances' in kwargs:
-            min_ready_instances = kwargs['minReadyInstances']
-        if scaling_rule_enable is None and 'scalingRuleEnable' in kwargs:
-            scaling_rule_enable = kwargs['scalingRuleEnable']
-        if scaling_rule_metric is None and 'scalingRuleMetric' in kwargs:
-            scaling_rule_metric = kwargs['scalingRuleMetric']
-        if scaling_rule_timer is None and 'scalingRuleTimer' in kwargs:
-            scaling_rule_timer = kwargs['scalingRuleTimer']
-
-        _setter("app_id", app_id)
-        _setter("scaling_rule_name", scaling_rule_name)
-        _setter("scaling_rule_type", scaling_rule_type)
+        pulumi.set(__self__, "app_id", app_id)
+        pulumi.set(__self__, "scaling_rule_name", scaling_rule_name)
+        pulumi.set(__self__, "scaling_rule_type", scaling_rule_type)
         if min_ready_instance_ratio is not None:
-            _setter("min_ready_instance_ratio", min_ready_instance_ratio)
+            pulumi.set(__self__, "min_ready_instance_ratio", min_ready_instance_ratio)
         if min_ready_instances is not None:
-            _setter("min_ready_instances", min_ready_instances)
+            pulumi.set(__self__, "min_ready_instances", min_ready_instances)
         if scaling_rule_enable is not None:
-            _setter("scaling_rule_enable", scaling_rule_enable)
+            pulumi.set(__self__, "scaling_rule_enable", scaling_rule_enable)
         if scaling_rule_metric is not None:
-            _setter("scaling_rule_metric", scaling_rule_metric)
+            pulumi.set(__self__, "scaling_rule_metric", scaling_rule_metric)
         if scaling_rule_timer is not None:
-            _setter("scaling_rule_timer", scaling_rule_timer)
+            pulumi.set(__self__, "scaling_rule_timer", scaling_rule_timer)
 
     @property
     @pulumi.getter(name="appId")
@@ -215,63 +168,22 @@ class _ApplicationScalingRuleState:
         :param pulumi.Input['ApplicationScalingRuleScalingRuleTimerArgs'] scaling_rule_timer: Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
         :param pulumi.Input[str] scaling_rule_type: Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
         """
-        _ApplicationScalingRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            app_id=app_id,
-            min_ready_instance_ratio=min_ready_instance_ratio,
-            min_ready_instances=min_ready_instances,
-            scaling_rule_enable=scaling_rule_enable,
-            scaling_rule_metric=scaling_rule_metric,
-            scaling_rule_name=scaling_rule_name,
-            scaling_rule_timer=scaling_rule_timer,
-            scaling_rule_type=scaling_rule_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             app_id: Optional[pulumi.Input[str]] = None,
-             min_ready_instance_ratio: Optional[pulumi.Input[int]] = None,
-             min_ready_instances: Optional[pulumi.Input[int]] = None,
-             scaling_rule_enable: Optional[pulumi.Input[bool]] = None,
-             scaling_rule_metric: Optional[pulumi.Input['ApplicationScalingRuleScalingRuleMetricArgs']] = None,
-             scaling_rule_name: Optional[pulumi.Input[str]] = None,
-             scaling_rule_timer: Optional[pulumi.Input['ApplicationScalingRuleScalingRuleTimerArgs']] = None,
-             scaling_rule_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if app_id is None and 'appId' in kwargs:
-            app_id = kwargs['appId']
-        if min_ready_instance_ratio is None and 'minReadyInstanceRatio' in kwargs:
-            min_ready_instance_ratio = kwargs['minReadyInstanceRatio']
-        if min_ready_instances is None and 'minReadyInstances' in kwargs:
-            min_ready_instances = kwargs['minReadyInstances']
-        if scaling_rule_enable is None and 'scalingRuleEnable' in kwargs:
-            scaling_rule_enable = kwargs['scalingRuleEnable']
-        if scaling_rule_metric is None and 'scalingRuleMetric' in kwargs:
-            scaling_rule_metric = kwargs['scalingRuleMetric']
-        if scaling_rule_name is None and 'scalingRuleName' in kwargs:
-            scaling_rule_name = kwargs['scalingRuleName']
-        if scaling_rule_timer is None and 'scalingRuleTimer' in kwargs:
-            scaling_rule_timer = kwargs['scalingRuleTimer']
-        if scaling_rule_type is None and 'scalingRuleType' in kwargs:
-            scaling_rule_type = kwargs['scalingRuleType']
-
         if app_id is not None:
-            _setter("app_id", app_id)
+            pulumi.set(__self__, "app_id", app_id)
         if min_ready_instance_ratio is not None:
-            _setter("min_ready_instance_ratio", min_ready_instance_ratio)
+            pulumi.set(__self__, "min_ready_instance_ratio", min_ready_instance_ratio)
         if min_ready_instances is not None:
-            _setter("min_ready_instances", min_ready_instances)
+            pulumi.set(__self__, "min_ready_instances", min_ready_instances)
         if scaling_rule_enable is not None:
-            _setter("scaling_rule_enable", scaling_rule_enable)
+            pulumi.set(__self__, "scaling_rule_enable", scaling_rule_enable)
         if scaling_rule_metric is not None:
-            _setter("scaling_rule_metric", scaling_rule_metric)
+            pulumi.set(__self__, "scaling_rule_metric", scaling_rule_metric)
         if scaling_rule_name is not None:
-            _setter("scaling_rule_name", scaling_rule_name)
+            pulumi.set(__self__, "scaling_rule_name", scaling_rule_name)
         if scaling_rule_timer is not None:
-            _setter("scaling_rule_timer", scaling_rule_timer)
+            pulumi.set(__self__, "scaling_rule_timer", scaling_rule_timer)
         if scaling_rule_type is not None:
-            _setter("scaling_rule_type", scaling_rule_type)
+            pulumi.set(__self__, "scaling_rule_type", scaling_rule_type)
 
     @property
     @pulumi.getter(name="appId")
@@ -635,10 +547,6 @@ class ApplicationScalingRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ApplicationScalingRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -667,12 +575,10 @@ class ApplicationScalingRule(pulumi.CustomResource):
             __props__.__dict__["min_ready_instance_ratio"] = min_ready_instance_ratio
             __props__.__dict__["min_ready_instances"] = min_ready_instances
             __props__.__dict__["scaling_rule_enable"] = scaling_rule_enable
-            scaling_rule_metric = _utilities.configure(scaling_rule_metric, ApplicationScalingRuleScalingRuleMetricArgs, True)
             __props__.__dict__["scaling_rule_metric"] = scaling_rule_metric
             if scaling_rule_name is None and not opts.urn:
                 raise TypeError("Missing required property 'scaling_rule_name'")
             __props__.__dict__["scaling_rule_name"] = scaling_rule_name
-            scaling_rule_timer = _utilities.configure(scaling_rule_timer, ApplicationScalingRuleScalingRuleTimerArgs, True)
             __props__.__dict__["scaling_rule_timer"] = scaling_rule_timer
             if scaling_rule_type is None and not opts.urn:
                 raise TypeError("Missing required property 'scaling_rule_type'")

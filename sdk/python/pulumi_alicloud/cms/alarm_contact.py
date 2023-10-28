@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AlarmContactArgs', 'AlarmContact']
@@ -33,55 +33,18 @@ class AlarmContactArgs:
                
                > **NOTE:** Specify at least one of the following alarm notification targets: `channels_aliim`, `channels_ding_web_hook`, `channels_mail`, `channels_sms`.
         """
-        AlarmContactArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            alarm_contact_name=alarm_contact_name,
-            describe=describe,
-            channels_aliim=channels_aliim,
-            channels_ding_web_hook=channels_ding_web_hook,
-            channels_mail=channels_mail,
-            channels_sms=channels_sms,
-            lang=lang,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             alarm_contact_name: Optional[pulumi.Input[str]] = None,
-             describe: Optional[pulumi.Input[str]] = None,
-             channels_aliim: Optional[pulumi.Input[str]] = None,
-             channels_ding_web_hook: Optional[pulumi.Input[str]] = None,
-             channels_mail: Optional[pulumi.Input[str]] = None,
-             channels_sms: Optional[pulumi.Input[str]] = None,
-             lang: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if alarm_contact_name is None and 'alarmContactName' in kwargs:
-            alarm_contact_name = kwargs['alarmContactName']
-        if alarm_contact_name is None:
-            raise TypeError("Missing 'alarm_contact_name' argument")
-        if describe is None:
-            raise TypeError("Missing 'describe' argument")
-        if channels_aliim is None and 'channelsAliim' in kwargs:
-            channels_aliim = kwargs['channelsAliim']
-        if channels_ding_web_hook is None and 'channelsDingWebHook' in kwargs:
-            channels_ding_web_hook = kwargs['channelsDingWebHook']
-        if channels_mail is None and 'channelsMail' in kwargs:
-            channels_mail = kwargs['channelsMail']
-        if channels_sms is None and 'channelsSms' in kwargs:
-            channels_sms = kwargs['channelsSms']
-
-        _setter("alarm_contact_name", alarm_contact_name)
-        _setter("describe", describe)
+        pulumi.set(__self__, "alarm_contact_name", alarm_contact_name)
+        pulumi.set(__self__, "describe", describe)
         if channels_aliim is not None:
-            _setter("channels_aliim", channels_aliim)
+            pulumi.set(__self__, "channels_aliim", channels_aliim)
         if channels_ding_web_hook is not None:
-            _setter("channels_ding_web_hook", channels_ding_web_hook)
+            pulumi.set(__self__, "channels_ding_web_hook", channels_ding_web_hook)
         if channels_mail is not None:
-            _setter("channels_mail", channels_mail)
+            pulumi.set(__self__, "channels_mail", channels_mail)
         if channels_sms is not None:
-            _setter("channels_sms", channels_sms)
+            pulumi.set(__self__, "channels_sms", channels_sms)
         if lang is not None:
-            _setter("lang", lang)
+            pulumi.set(__self__, "lang", lang)
 
     @property
     @pulumi.getter(name="alarmContactName")
@@ -192,53 +155,20 @@ class _AlarmContactState:
                
                > **NOTE:** Specify at least one of the following alarm notification targets: `channels_aliim`, `channels_ding_web_hook`, `channels_mail`, `channels_sms`.
         """
-        _AlarmContactState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            alarm_contact_name=alarm_contact_name,
-            channels_aliim=channels_aliim,
-            channels_ding_web_hook=channels_ding_web_hook,
-            channels_mail=channels_mail,
-            channels_sms=channels_sms,
-            describe=describe,
-            lang=lang,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             alarm_contact_name: Optional[pulumi.Input[str]] = None,
-             channels_aliim: Optional[pulumi.Input[str]] = None,
-             channels_ding_web_hook: Optional[pulumi.Input[str]] = None,
-             channels_mail: Optional[pulumi.Input[str]] = None,
-             channels_sms: Optional[pulumi.Input[str]] = None,
-             describe: Optional[pulumi.Input[str]] = None,
-             lang: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if alarm_contact_name is None and 'alarmContactName' in kwargs:
-            alarm_contact_name = kwargs['alarmContactName']
-        if channels_aliim is None and 'channelsAliim' in kwargs:
-            channels_aliim = kwargs['channelsAliim']
-        if channels_ding_web_hook is None and 'channelsDingWebHook' in kwargs:
-            channels_ding_web_hook = kwargs['channelsDingWebHook']
-        if channels_mail is None and 'channelsMail' in kwargs:
-            channels_mail = kwargs['channelsMail']
-        if channels_sms is None and 'channelsSms' in kwargs:
-            channels_sms = kwargs['channelsSms']
-
         if alarm_contact_name is not None:
-            _setter("alarm_contact_name", alarm_contact_name)
+            pulumi.set(__self__, "alarm_contact_name", alarm_contact_name)
         if channels_aliim is not None:
-            _setter("channels_aliim", channels_aliim)
+            pulumi.set(__self__, "channels_aliim", channels_aliim)
         if channels_ding_web_hook is not None:
-            _setter("channels_ding_web_hook", channels_ding_web_hook)
+            pulumi.set(__self__, "channels_ding_web_hook", channels_ding_web_hook)
         if channels_mail is not None:
-            _setter("channels_mail", channels_mail)
+            pulumi.set(__self__, "channels_mail", channels_mail)
         if channels_sms is not None:
-            _setter("channels_sms", channels_sms)
+            pulumi.set(__self__, "channels_sms", channels_sms)
         if describe is not None:
-            _setter("describe", describe)
+            pulumi.set(__self__, "describe", describe)
         if lang is not None:
-            _setter("lang", lang)
+            pulumi.set(__self__, "lang", lang)
 
     @property
     @pulumi.getter(name="alarmContactName")
@@ -446,10 +376,6 @@ class AlarmContact(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AlarmContactArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

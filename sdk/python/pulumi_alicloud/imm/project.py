@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ProjectArgs', 'Project']
@@ -21,26 +21,9 @@ class ProjectArgs:
         :param pulumi.Input[str] project: The name of Project.
         :param pulumi.Input[str] service_role: The service role authorized to the Intelligent Media Management service to access other cloud resources. Default value: `AliyunIMMDefaultRole`. You can also create authorization  roles through the `ram.Role`.
         """
-        ProjectArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project=project,
-            service_role=service_role,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project: Optional[pulumi.Input[str]] = None,
-             service_role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-        if service_role is None and 'serviceRole' in kwargs:
-            service_role = kwargs['serviceRole']
-
-        _setter("project", project)
+        pulumi.set(__self__, "project", project)
         if service_role is not None:
-            _setter("service_role", service_role)
+            pulumi.set(__self__, "service_role", service_role)
 
     @property
     @pulumi.getter
@@ -77,25 +60,10 @@ class _ProjectState:
         :param pulumi.Input[str] project: The name of Project.
         :param pulumi.Input[str] service_role: The service role authorized to the Intelligent Media Management service to access other cloud resources. Default value: `AliyunIMMDefaultRole`. You can also create authorization  roles through the `ram.Role`.
         """
-        _ProjectState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project=project,
-            service_role=service_role,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project: Optional[pulumi.Input[str]] = None,
-             service_role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if service_role is None and 'serviceRole' in kwargs:
-            service_role = kwargs['serviceRole']
-
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if service_role is not None:
-            _setter("service_role", service_role)
+            pulumi.set(__self__, "service_role", service_role)
 
     @property
     @pulumi.getter
@@ -251,10 +219,6 @@ class Project(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProjectArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

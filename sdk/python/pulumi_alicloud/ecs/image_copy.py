@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ImageCopyArgs', 'ImageCopy']
@@ -37,70 +37,27 @@ class ImageCopyArgs:
         :param pulumi.Input[str] kms_key_id: Key ID used to encrypt the image.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag value of an image. The value of N ranges from 1 to 20.
         """
-        ImageCopyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            source_image_id=source_image_id,
-            source_region_id=source_region_id,
-            delete_auto_snapshot=delete_auto_snapshot,
-            description=description,
-            encrypted=encrypted,
-            force=force,
-            image_name=image_name,
-            kms_key_id=kms_key_id,
-            name=name,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             source_image_id: Optional[pulumi.Input[str]] = None,
-             source_region_id: Optional[pulumi.Input[str]] = None,
-             delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             encrypted: Optional[pulumi.Input[bool]] = None,
-             force: Optional[pulumi.Input[bool]] = None,
-             image_name: Optional[pulumi.Input[str]] = None,
-             kms_key_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if source_image_id is None and 'sourceImageId' in kwargs:
-            source_image_id = kwargs['sourceImageId']
-        if source_image_id is None:
-            raise TypeError("Missing 'source_image_id' argument")
-        if source_region_id is None and 'sourceRegionId' in kwargs:
-            source_region_id = kwargs['sourceRegionId']
-        if source_region_id is None:
-            raise TypeError("Missing 'source_region_id' argument")
-        if delete_auto_snapshot is None and 'deleteAutoSnapshot' in kwargs:
-            delete_auto_snapshot = kwargs['deleteAutoSnapshot']
-        if image_name is None and 'imageName' in kwargs:
-            image_name = kwargs['imageName']
-        if kms_key_id is None and 'kmsKeyId' in kwargs:
-            kms_key_id = kwargs['kmsKeyId']
-
-        _setter("source_image_id", source_image_id)
-        _setter("source_region_id", source_region_id)
+        pulumi.set(__self__, "source_image_id", source_image_id)
+        pulumi.set(__self__, "source_region_id", source_region_id)
         if delete_auto_snapshot is not None:
-            _setter("delete_auto_snapshot", delete_auto_snapshot)
+            pulumi.set(__self__, "delete_auto_snapshot", delete_auto_snapshot)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if encrypted is not None:
-            _setter("encrypted", encrypted)
+            pulumi.set(__self__, "encrypted", encrypted)
         if force is not None:
-            _setter("force", force)
+            pulumi.set(__self__, "force", force)
         if image_name is not None:
-            _setter("image_name", image_name)
+            pulumi.set(__self__, "image_name", image_name)
         if kms_key_id is not None:
-            _setter("kms_key_id", kms_key_id)
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if name is not None:
             warnings.warn("""Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.""")
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="sourceImageId")
@@ -248,68 +205,29 @@ class _ImageCopyState:
         :param pulumi.Input[str] source_region_id: The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag value of an image. The value of N ranges from 1 to 20.
         """
-        _ImageCopyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            delete_auto_snapshot=delete_auto_snapshot,
-            description=description,
-            encrypted=encrypted,
-            force=force,
-            image_name=image_name,
-            kms_key_id=kms_key_id,
-            name=name,
-            source_image_id=source_image_id,
-            source_region_id=source_region_id,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             encrypted: Optional[pulumi.Input[bool]] = None,
-             force: Optional[pulumi.Input[bool]] = None,
-             image_name: Optional[pulumi.Input[str]] = None,
-             kms_key_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             source_image_id: Optional[pulumi.Input[str]] = None,
-             source_region_id: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if delete_auto_snapshot is None and 'deleteAutoSnapshot' in kwargs:
-            delete_auto_snapshot = kwargs['deleteAutoSnapshot']
-        if image_name is None and 'imageName' in kwargs:
-            image_name = kwargs['imageName']
-        if kms_key_id is None and 'kmsKeyId' in kwargs:
-            kms_key_id = kwargs['kmsKeyId']
-        if source_image_id is None and 'sourceImageId' in kwargs:
-            source_image_id = kwargs['sourceImageId']
-        if source_region_id is None and 'sourceRegionId' in kwargs:
-            source_region_id = kwargs['sourceRegionId']
-
         if delete_auto_snapshot is not None:
-            _setter("delete_auto_snapshot", delete_auto_snapshot)
+            pulumi.set(__self__, "delete_auto_snapshot", delete_auto_snapshot)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if encrypted is not None:
-            _setter("encrypted", encrypted)
+            pulumi.set(__self__, "encrypted", encrypted)
         if force is not None:
-            _setter("force", force)
+            pulumi.set(__self__, "force", force)
         if image_name is not None:
-            _setter("image_name", image_name)
+            pulumi.set(__self__, "image_name", image_name)
         if kms_key_id is not None:
-            _setter("kms_key_id", kms_key_id)
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if name is not None:
             warnings.warn("""Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.""")
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if source_image_id is not None:
-            _setter("source_image_id", source_image_id)
+            pulumi.set(__self__, "source_image_id", source_image_id)
         if source_region_id is not None:
-            _setter("source_region_id", source_region_id)
+            pulumi.set(__self__, "source_region_id", source_region_id)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="deleteAutoSnapshot")
@@ -622,10 +540,6 @@ class ImageCopy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ImageCopyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

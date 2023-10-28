@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,86 +41,21 @@ class InstanceArgs:
         :param pulumi.Input[int] renew_period: Automatic renewal period, in months.
         :param pulumi.Input[str] renew_status: Renewal options (manual renewal, automatic renewal, no renewal).
         """
-        InstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key_num=key_num,
-            secret_num=secret_num,
-            spec=spec,
-            vpc_id=vpc_id,
-            vpc_num=vpc_num,
-            vswitch_ids=vswitch_ids,
-            zone_ids=zone_ids,
-            bind_vpcs=bind_vpcs,
-            product_version=product_version,
-            renew_period=renew_period,
-            renew_status=renew_status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key_num: Optional[pulumi.Input[int]] = None,
-             secret_num: Optional[pulumi.Input[int]] = None,
-             spec: Optional[pulumi.Input[int]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             vpc_num: Optional[pulumi.Input[int]] = None,
-             vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             bind_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBindVpcArgs']]]] = None,
-             product_version: Optional[pulumi.Input[str]] = None,
-             renew_period: Optional[pulumi.Input[int]] = None,
-             renew_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key_num is None and 'keyNum' in kwargs:
-            key_num = kwargs['keyNum']
-        if key_num is None:
-            raise TypeError("Missing 'key_num' argument")
-        if secret_num is None and 'secretNum' in kwargs:
-            secret_num = kwargs['secretNum']
-        if secret_num is None:
-            raise TypeError("Missing 'secret_num' argument")
-        if spec is None:
-            raise TypeError("Missing 'spec' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-        if vpc_num is None and 'vpcNum' in kwargs:
-            vpc_num = kwargs['vpcNum']
-        if vpc_num is None:
-            raise TypeError("Missing 'vpc_num' argument")
-        if vswitch_ids is None and 'vswitchIds' in kwargs:
-            vswitch_ids = kwargs['vswitchIds']
-        if vswitch_ids is None:
-            raise TypeError("Missing 'vswitch_ids' argument")
-        if zone_ids is None and 'zoneIds' in kwargs:
-            zone_ids = kwargs['zoneIds']
-        if zone_ids is None:
-            raise TypeError("Missing 'zone_ids' argument")
-        if bind_vpcs is None and 'bindVpcs' in kwargs:
-            bind_vpcs = kwargs['bindVpcs']
-        if product_version is None and 'productVersion' in kwargs:
-            product_version = kwargs['productVersion']
-        if renew_period is None and 'renewPeriod' in kwargs:
-            renew_period = kwargs['renewPeriod']
-        if renew_status is None and 'renewStatus' in kwargs:
-            renew_status = kwargs['renewStatus']
-
-        _setter("key_num", key_num)
-        _setter("secret_num", secret_num)
-        _setter("spec", spec)
-        _setter("vpc_id", vpc_id)
-        _setter("vpc_num", vpc_num)
-        _setter("vswitch_ids", vswitch_ids)
-        _setter("zone_ids", zone_ids)
+        pulumi.set(__self__, "key_num", key_num)
+        pulumi.set(__self__, "secret_num", secret_num)
+        pulumi.set(__self__, "spec", spec)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vpc_num", vpc_num)
+        pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+        pulumi.set(__self__, "zone_ids", zone_ids)
         if bind_vpcs is not None:
-            _setter("bind_vpcs", bind_vpcs)
+            pulumi.set(__self__, "bind_vpcs", bind_vpcs)
         if product_version is not None:
-            _setter("product_version", product_version)
+            pulumi.set(__self__, "product_version", product_version)
         if renew_period is not None:
-            _setter("renew_period", renew_period)
+            pulumi.set(__self__, "renew_period", renew_period)
         if renew_status is not None:
-            _setter("renew_status", renew_status)
+            pulumi.set(__self__, "renew_status", renew_status)
 
     @property
     @pulumi.getter(name="keyNum")
@@ -291,101 +226,36 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: Instance bind vswitches.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_ids: zone id.
         """
-        _InstanceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bind_vpcs=bind_vpcs,
-            ca_certificate_chain_pem=ca_certificate_chain_pem,
-            create_time=create_time,
-            instance_name=instance_name,
-            key_num=key_num,
-            product_version=product_version,
-            renew_period=renew_period,
-            renew_status=renew_status,
-            secret_num=secret_num,
-            spec=spec,
-            status=status,
-            vpc_id=vpc_id,
-            vpc_num=vpc_num,
-            vswitch_ids=vswitch_ids,
-            zone_ids=zone_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bind_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBindVpcArgs']]]] = None,
-             ca_certificate_chain_pem: Optional[pulumi.Input[str]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             instance_name: Optional[pulumi.Input[str]] = None,
-             key_num: Optional[pulumi.Input[int]] = None,
-             product_version: Optional[pulumi.Input[str]] = None,
-             renew_period: Optional[pulumi.Input[int]] = None,
-             renew_status: Optional[pulumi.Input[str]] = None,
-             secret_num: Optional[pulumi.Input[int]] = None,
-             spec: Optional[pulumi.Input[int]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             vpc_num: Optional[pulumi.Input[int]] = None,
-             vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bind_vpcs is None and 'bindVpcs' in kwargs:
-            bind_vpcs = kwargs['bindVpcs']
-        if ca_certificate_chain_pem is None and 'caCertificateChainPem' in kwargs:
-            ca_certificate_chain_pem = kwargs['caCertificateChainPem']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if key_num is None and 'keyNum' in kwargs:
-            key_num = kwargs['keyNum']
-        if product_version is None and 'productVersion' in kwargs:
-            product_version = kwargs['productVersion']
-        if renew_period is None and 'renewPeriod' in kwargs:
-            renew_period = kwargs['renewPeriod']
-        if renew_status is None and 'renewStatus' in kwargs:
-            renew_status = kwargs['renewStatus']
-        if secret_num is None and 'secretNum' in kwargs:
-            secret_num = kwargs['secretNum']
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_num is None and 'vpcNum' in kwargs:
-            vpc_num = kwargs['vpcNum']
-        if vswitch_ids is None and 'vswitchIds' in kwargs:
-            vswitch_ids = kwargs['vswitchIds']
-        if zone_ids is None and 'zoneIds' in kwargs:
-            zone_ids = kwargs['zoneIds']
-
         if bind_vpcs is not None:
-            _setter("bind_vpcs", bind_vpcs)
+            pulumi.set(__self__, "bind_vpcs", bind_vpcs)
         if ca_certificate_chain_pem is not None:
-            _setter("ca_certificate_chain_pem", ca_certificate_chain_pem)
+            pulumi.set(__self__, "ca_certificate_chain_pem", ca_certificate_chain_pem)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if instance_name is not None:
-            _setter("instance_name", instance_name)
+            pulumi.set(__self__, "instance_name", instance_name)
         if key_num is not None:
-            _setter("key_num", key_num)
+            pulumi.set(__self__, "key_num", key_num)
         if product_version is not None:
-            _setter("product_version", product_version)
+            pulumi.set(__self__, "product_version", product_version)
         if renew_period is not None:
-            _setter("renew_period", renew_period)
+            pulumi.set(__self__, "renew_period", renew_period)
         if renew_status is not None:
-            _setter("renew_status", renew_status)
+            pulumi.set(__self__, "renew_status", renew_status)
         if secret_num is not None:
-            _setter("secret_num", secret_num)
+            pulumi.set(__self__, "secret_num", secret_num)
         if spec is not None:
-            _setter("spec", spec)
+            pulumi.set(__self__, "spec", spec)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if vpc_id is not None:
-            _setter("vpc_id", vpc_id)
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vpc_num is not None:
-            _setter("vpc_num", vpc_num)
+            pulumi.set(__self__, "vpc_num", vpc_num)
         if vswitch_ids is not None:
-            _setter("vswitch_ids", vswitch_ids)
+            pulumi.set(__self__, "vswitch_ids", vswitch_ids)
         if zone_ids is not None:
-            _setter("zone_ids", zone_ids)
+            pulumi.set(__self__, "zone_ids", zone_ids)
 
     @property
     @pulumi.getter(name="bindVpcs")
@@ -633,10 +503,6 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

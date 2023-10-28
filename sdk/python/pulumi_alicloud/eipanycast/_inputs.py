@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -20,21 +20,8 @@ class AnycastEipAddressAttachmentPopLocationArgs:
         """
         :param pulumi.Input[str] pop_location: The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas.
         """
-        AnycastEipAddressAttachmentPopLocationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            pop_location=pop_location,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             pop_location: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if pop_location is None and 'popLocation' in kwargs:
-            pop_location = kwargs['popLocation']
-
         if pop_location is not None:
-            _setter("pop_location", pop_location)
+            pulumi.set(__self__, "pop_location", pop_location)
 
     @property
     @pulumi.getter(name="popLocation")

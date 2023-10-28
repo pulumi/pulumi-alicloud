@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,60 +35,15 @@ class DomainResourceArgs:
         :param pulumi.Input[str] https_ext: The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
         :param pulumi.Input[bool] ocsp_enabled: Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
         """
-        DomainResourceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            domain=domain,
-            instance_ids=instance_ids,
-            proxy_types=proxy_types,
-            real_servers=real_servers,
-            rs_type=rs_type,
-            https_ext=https_ext,
-            ocsp_enabled=ocsp_enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             domain: Optional[pulumi.Input[str]] = None,
-             instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             proxy_types: Optional[pulumi.Input[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]]] = None,
-             real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             rs_type: Optional[pulumi.Input[int]] = None,
-             https_ext: Optional[pulumi.Input[str]] = None,
-             ocsp_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if domain is None:
-            raise TypeError("Missing 'domain' argument")
-        if instance_ids is None and 'instanceIds' in kwargs:
-            instance_ids = kwargs['instanceIds']
-        if instance_ids is None:
-            raise TypeError("Missing 'instance_ids' argument")
-        if proxy_types is None and 'proxyTypes' in kwargs:
-            proxy_types = kwargs['proxyTypes']
-        if proxy_types is None:
-            raise TypeError("Missing 'proxy_types' argument")
-        if real_servers is None and 'realServers' in kwargs:
-            real_servers = kwargs['realServers']
-        if real_servers is None:
-            raise TypeError("Missing 'real_servers' argument")
-        if rs_type is None and 'rsType' in kwargs:
-            rs_type = kwargs['rsType']
-        if rs_type is None:
-            raise TypeError("Missing 'rs_type' argument")
-        if https_ext is None and 'httpsExt' in kwargs:
-            https_ext = kwargs['httpsExt']
-        if ocsp_enabled is None and 'ocspEnabled' in kwargs:
-            ocsp_enabled = kwargs['ocspEnabled']
-
-        _setter("domain", domain)
-        _setter("instance_ids", instance_ids)
-        _setter("proxy_types", proxy_types)
-        _setter("real_servers", real_servers)
-        _setter("rs_type", rs_type)
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "instance_ids", instance_ids)
+        pulumi.set(__self__, "proxy_types", proxy_types)
+        pulumi.set(__self__, "real_servers", real_servers)
+        pulumi.set(__self__, "rs_type", rs_type)
         if https_ext is not None:
-            _setter("https_ext", https_ext)
+            pulumi.set(__self__, "https_ext", https_ext)
         if ocsp_enabled is not None:
-            _setter("ocsp_enabled", ocsp_enabled)
+            pulumi.set(__self__, "ocsp_enabled", ocsp_enabled)
 
     @property
     @pulumi.getter
@@ -201,59 +156,22 @@ class _DomainResourceState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] real_servers: the IP address. This field is required and must be a string array.
         :param pulumi.Input[int] rs_type: The address type of the origin server. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. Valid values:
         """
-        _DomainResourceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cname=cname,
-            domain=domain,
-            https_ext=https_ext,
-            instance_ids=instance_ids,
-            ocsp_enabled=ocsp_enabled,
-            proxy_types=proxy_types,
-            real_servers=real_servers,
-            rs_type=rs_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cname: Optional[pulumi.Input[str]] = None,
-             domain: Optional[pulumi.Input[str]] = None,
-             https_ext: Optional[pulumi.Input[str]] = None,
-             instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             ocsp_enabled: Optional[pulumi.Input[bool]] = None,
-             proxy_types: Optional[pulumi.Input[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]]] = None,
-             real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             rs_type: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if https_ext is None and 'httpsExt' in kwargs:
-            https_ext = kwargs['httpsExt']
-        if instance_ids is None and 'instanceIds' in kwargs:
-            instance_ids = kwargs['instanceIds']
-        if ocsp_enabled is None and 'ocspEnabled' in kwargs:
-            ocsp_enabled = kwargs['ocspEnabled']
-        if proxy_types is None and 'proxyTypes' in kwargs:
-            proxy_types = kwargs['proxyTypes']
-        if real_servers is None and 'realServers' in kwargs:
-            real_servers = kwargs['realServers']
-        if rs_type is None and 'rsType' in kwargs:
-            rs_type = kwargs['rsType']
-
         if cname is not None:
-            _setter("cname", cname)
+            pulumi.set(__self__, "cname", cname)
         if domain is not None:
-            _setter("domain", domain)
+            pulumi.set(__self__, "domain", domain)
         if https_ext is not None:
-            _setter("https_ext", https_ext)
+            pulumi.set(__self__, "https_ext", https_ext)
         if instance_ids is not None:
-            _setter("instance_ids", instance_ids)
+            pulumi.set(__self__, "instance_ids", instance_ids)
         if ocsp_enabled is not None:
-            _setter("ocsp_enabled", ocsp_enabled)
+            pulumi.set(__self__, "ocsp_enabled", ocsp_enabled)
         if proxy_types is not None:
-            _setter("proxy_types", proxy_types)
+            pulumi.set(__self__, "proxy_types", proxy_types)
         if real_servers is not None:
-            _setter("real_servers", real_servers)
+            pulumi.set(__self__, "real_servers", real_servers)
         if rs_type is not None:
-            _setter("rs_type", rs_type)
+            pulumi.set(__self__, "rs_type", rs_type)
 
     @property
     @pulumi.getter
@@ -495,10 +413,6 @@ class DomainResource(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DomainResourceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

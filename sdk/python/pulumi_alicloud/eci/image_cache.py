@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,77 +39,22 @@ class ImageCacheArgs:
         :param pulumi.Input[int] retention_days: The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
         :param pulumi.Input[str] zone_id: The zone id to cache image.
         """
-        ImageCacheArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            image_cache_name=image_cache_name,
-            images=images,
-            security_group_id=security_group_id,
-            vswitch_id=vswitch_id,
-            eip_instance_id=eip_instance_id,
-            image_cache_size=image_cache_size,
-            image_registry_credentials=image_registry_credentials,
-            resource_group_id=resource_group_id,
-            retention_days=retention_days,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             image_cache_name: Optional[pulumi.Input[str]] = None,
-             images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             security_group_id: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             eip_instance_id: Optional[pulumi.Input[str]] = None,
-             image_cache_size: Optional[pulumi.Input[int]] = None,
-             image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input['ImageCacheImageRegistryCredentialArgs']]]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             retention_days: Optional[pulumi.Input[int]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if image_cache_name is None and 'imageCacheName' in kwargs:
-            image_cache_name = kwargs['imageCacheName']
-        if image_cache_name is None:
-            raise TypeError("Missing 'image_cache_name' argument")
-        if images is None:
-            raise TypeError("Missing 'images' argument")
-        if security_group_id is None and 'securityGroupId' in kwargs:
-            security_group_id = kwargs['securityGroupId']
-        if security_group_id is None:
-            raise TypeError("Missing 'security_group_id' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-        if eip_instance_id is None and 'eipInstanceId' in kwargs:
-            eip_instance_id = kwargs['eipInstanceId']
-        if image_cache_size is None and 'imageCacheSize' in kwargs:
-            image_cache_size = kwargs['imageCacheSize']
-        if image_registry_credentials is None and 'imageRegistryCredentials' in kwargs:
-            image_registry_credentials = kwargs['imageRegistryCredentials']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if retention_days is None and 'retentionDays' in kwargs:
-            retention_days = kwargs['retentionDays']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
-        _setter("image_cache_name", image_cache_name)
-        _setter("images", images)
-        _setter("security_group_id", security_group_id)
-        _setter("vswitch_id", vswitch_id)
+        pulumi.set(__self__, "image_cache_name", image_cache_name)
+        pulumi.set(__self__, "images", images)
+        pulumi.set(__self__, "security_group_id", security_group_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
         if eip_instance_id is not None:
-            _setter("eip_instance_id", eip_instance_id)
+            pulumi.set(__self__, "eip_instance_id", eip_instance_id)
         if image_cache_size is not None:
-            _setter("image_cache_size", image_cache_size)
+            pulumi.set(__self__, "image_cache_size", image_cache_size)
         if image_registry_credentials is not None:
-            _setter("image_registry_credentials", image_registry_credentials)
+            pulumi.set(__self__, "image_registry_credentials", image_registry_credentials)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if retention_days is not None:
-            _setter("retention_days", retention_days)
+            pulumi.set(__self__, "retention_days", retention_days)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="imageCacheName")
@@ -262,83 +207,30 @@ class _ImageCacheState:
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
         :param pulumi.Input[str] zone_id: The zone id to cache image.
         """
-        _ImageCacheState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            container_group_id=container_group_id,
-            eip_instance_id=eip_instance_id,
-            image_cache_name=image_cache_name,
-            image_cache_size=image_cache_size,
-            image_registry_credentials=image_registry_credentials,
-            images=images,
-            resource_group_id=resource_group_id,
-            retention_days=retention_days,
-            security_group_id=security_group_id,
-            status=status,
-            vswitch_id=vswitch_id,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             container_group_id: Optional[pulumi.Input[str]] = None,
-             eip_instance_id: Optional[pulumi.Input[str]] = None,
-             image_cache_name: Optional[pulumi.Input[str]] = None,
-             image_cache_size: Optional[pulumi.Input[int]] = None,
-             image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input['ImageCacheImageRegistryCredentialArgs']]]] = None,
-             images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             retention_days: Optional[pulumi.Input[int]] = None,
-             security_group_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if container_group_id is None and 'containerGroupId' in kwargs:
-            container_group_id = kwargs['containerGroupId']
-        if eip_instance_id is None and 'eipInstanceId' in kwargs:
-            eip_instance_id = kwargs['eipInstanceId']
-        if image_cache_name is None and 'imageCacheName' in kwargs:
-            image_cache_name = kwargs['imageCacheName']
-        if image_cache_size is None and 'imageCacheSize' in kwargs:
-            image_cache_size = kwargs['imageCacheSize']
-        if image_registry_credentials is None and 'imageRegistryCredentials' in kwargs:
-            image_registry_credentials = kwargs['imageRegistryCredentials']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if retention_days is None and 'retentionDays' in kwargs:
-            retention_days = kwargs['retentionDays']
-        if security_group_id is None and 'securityGroupId' in kwargs:
-            security_group_id = kwargs['securityGroupId']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if container_group_id is not None:
-            _setter("container_group_id", container_group_id)
+            pulumi.set(__self__, "container_group_id", container_group_id)
         if eip_instance_id is not None:
-            _setter("eip_instance_id", eip_instance_id)
+            pulumi.set(__self__, "eip_instance_id", eip_instance_id)
         if image_cache_name is not None:
-            _setter("image_cache_name", image_cache_name)
+            pulumi.set(__self__, "image_cache_name", image_cache_name)
         if image_cache_size is not None:
-            _setter("image_cache_size", image_cache_size)
+            pulumi.set(__self__, "image_cache_size", image_cache_size)
         if image_registry_credentials is not None:
-            _setter("image_registry_credentials", image_registry_credentials)
+            pulumi.set(__self__, "image_registry_credentials", image_registry_credentials)
         if images is not None:
-            _setter("images", images)
+            pulumi.set(__self__, "images", images)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if retention_days is not None:
-            _setter("retention_days", retention_days)
+            pulumi.set(__self__, "retention_days", retention_days)
         if security_group_id is not None:
-            _setter("security_group_id", security_group_id)
+            pulumi.set(__self__, "security_group_id", security_group_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="containerGroupId")
@@ -636,10 +528,6 @@ class ImageCache(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ImageCacheArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

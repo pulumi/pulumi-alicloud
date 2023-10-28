@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InstanceArgs', 'Instance']
@@ -45,96 +45,27 @@ class InstanceArgs:
         :param pulumi.Input[int] renew_period: Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`,
         :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
         """
-        InstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            payment_type=payment_type,
-            period=period,
-            sd_cbool=sd_cbool,
-            sdc=sdc,
-            sddp_version=sddp_version,
-            ud_cbool=ud_cbool,
-            udc=udc,
-            dataphin=dataphin,
-            dataphin_count=dataphin_count,
-            logistics=logistics,
-            modify_type=modify_type,
-            oss_size=oss_size,
-            renew_period=renew_period,
-            renewal_status=renewal_status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             payment_type: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[int]] = None,
-             sd_cbool: Optional[pulumi.Input[str]] = None,
-             sdc: Optional[pulumi.Input[str]] = None,
-             sddp_version: Optional[pulumi.Input[str]] = None,
-             ud_cbool: Optional[pulumi.Input[str]] = None,
-             udc: Optional[pulumi.Input[str]] = None,
-             dataphin: Optional[pulumi.Input[str]] = None,
-             dataphin_count: Optional[pulumi.Input[str]] = None,
-             logistics: Optional[pulumi.Input[str]] = None,
-             modify_type: Optional[pulumi.Input[str]] = None,
-             oss_size: Optional[pulumi.Input[str]] = None,
-             renew_period: Optional[pulumi.Input[int]] = None,
-             renewal_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if payment_type is None:
-            raise TypeError("Missing 'payment_type' argument")
-        if period is None:
-            raise TypeError("Missing 'period' argument")
-        if sd_cbool is None and 'sdCbool' in kwargs:
-            sd_cbool = kwargs['sdCbool']
-        if sd_cbool is None:
-            raise TypeError("Missing 'sd_cbool' argument")
-        if sdc is None:
-            raise TypeError("Missing 'sdc' argument")
-        if sddp_version is None and 'sddpVersion' in kwargs:
-            sddp_version = kwargs['sddpVersion']
-        if sddp_version is None:
-            raise TypeError("Missing 'sddp_version' argument")
-        if ud_cbool is None and 'udCbool' in kwargs:
-            ud_cbool = kwargs['udCbool']
-        if ud_cbool is None:
-            raise TypeError("Missing 'ud_cbool' argument")
-        if udc is None:
-            raise TypeError("Missing 'udc' argument")
-        if dataphin_count is None and 'dataphinCount' in kwargs:
-            dataphin_count = kwargs['dataphinCount']
-        if modify_type is None and 'modifyType' in kwargs:
-            modify_type = kwargs['modifyType']
-        if oss_size is None and 'ossSize' in kwargs:
-            oss_size = kwargs['ossSize']
-        if renew_period is None and 'renewPeriod' in kwargs:
-            renew_period = kwargs['renewPeriod']
-        if renewal_status is None and 'renewalStatus' in kwargs:
-            renewal_status = kwargs['renewalStatus']
-
-        _setter("payment_type", payment_type)
-        _setter("period", period)
-        _setter("sd_cbool", sd_cbool)
-        _setter("sdc", sdc)
-        _setter("sddp_version", sddp_version)
-        _setter("ud_cbool", ud_cbool)
-        _setter("udc", udc)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "period", period)
+        pulumi.set(__self__, "sd_cbool", sd_cbool)
+        pulumi.set(__self__, "sdc", sdc)
+        pulumi.set(__self__, "sddp_version", sddp_version)
+        pulumi.set(__self__, "ud_cbool", ud_cbool)
+        pulumi.set(__self__, "udc", udc)
         if dataphin is not None:
-            _setter("dataphin", dataphin)
+            pulumi.set(__self__, "dataphin", dataphin)
         if dataphin_count is not None:
-            _setter("dataphin_count", dataphin_count)
+            pulumi.set(__self__, "dataphin_count", dataphin_count)
         if logistics is not None:
-            _setter("logistics", logistics)
+            pulumi.set(__self__, "logistics", logistics)
         if modify_type is not None:
-            _setter("modify_type", modify_type)
+            pulumi.set(__self__, "modify_type", modify_type)
         if oss_size is not None:
-            _setter("oss_size", oss_size)
+            pulumi.set(__self__, "oss_size", oss_size)
         if renew_period is not None:
-            _setter("renew_period", renew_period)
+            pulumi.set(__self__, "renew_period", renew_period)
         if renewal_status is not None:
-            _setter("renewal_status", renewal_status)
+            pulumi.set(__self__, "renewal_status", renewal_status)
 
     @property
     @pulumi.getter(name="paymentType")
@@ -353,127 +284,48 @@ class _InstanceState:
         :param pulumi.Input[str] ud_cbool: Whether to use OSS. Valid values: `yes`,`no`.
         :param pulumi.Input[str] udc: OSS Size.
         """
-        _InstanceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            authed=authed,
-            dataphin=dataphin,
-            dataphin_count=dataphin_count,
-            instance_num=instance_num,
-            logistics=logistics,
-            modify_type=modify_type,
-            odps_set=odps_set,
-            oss_bucket_set=oss_bucket_set,
-            oss_size=oss_size,
-            payment_type=payment_type,
-            period=period,
-            rds_set=rds_set,
-            remain_days=remain_days,
-            renew_period=renew_period,
-            renewal_status=renewal_status,
-            sd_cbool=sd_cbool,
-            sdc=sdc,
-            sddp_version=sddp_version,
-            status=status,
-            ud_cbool=ud_cbool,
-            udc=udc,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             authed: Optional[pulumi.Input[bool]] = None,
-             dataphin: Optional[pulumi.Input[str]] = None,
-             dataphin_count: Optional[pulumi.Input[str]] = None,
-             instance_num: Optional[pulumi.Input[str]] = None,
-             logistics: Optional[pulumi.Input[str]] = None,
-             modify_type: Optional[pulumi.Input[str]] = None,
-             odps_set: Optional[pulumi.Input[bool]] = None,
-             oss_bucket_set: Optional[pulumi.Input[bool]] = None,
-             oss_size: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[int]] = None,
-             rds_set: Optional[pulumi.Input[bool]] = None,
-             remain_days: Optional[pulumi.Input[str]] = None,
-             renew_period: Optional[pulumi.Input[int]] = None,
-             renewal_status: Optional[pulumi.Input[str]] = None,
-             sd_cbool: Optional[pulumi.Input[str]] = None,
-             sdc: Optional[pulumi.Input[str]] = None,
-             sddp_version: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             ud_cbool: Optional[pulumi.Input[str]] = None,
-             udc: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dataphin_count is None and 'dataphinCount' in kwargs:
-            dataphin_count = kwargs['dataphinCount']
-        if instance_num is None and 'instanceNum' in kwargs:
-            instance_num = kwargs['instanceNum']
-        if modify_type is None and 'modifyType' in kwargs:
-            modify_type = kwargs['modifyType']
-        if odps_set is None and 'odpsSet' in kwargs:
-            odps_set = kwargs['odpsSet']
-        if oss_bucket_set is None and 'ossBucketSet' in kwargs:
-            oss_bucket_set = kwargs['ossBucketSet']
-        if oss_size is None and 'ossSize' in kwargs:
-            oss_size = kwargs['ossSize']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if rds_set is None and 'rdsSet' in kwargs:
-            rds_set = kwargs['rdsSet']
-        if remain_days is None and 'remainDays' in kwargs:
-            remain_days = kwargs['remainDays']
-        if renew_period is None and 'renewPeriod' in kwargs:
-            renew_period = kwargs['renewPeriod']
-        if renewal_status is None and 'renewalStatus' in kwargs:
-            renewal_status = kwargs['renewalStatus']
-        if sd_cbool is None and 'sdCbool' in kwargs:
-            sd_cbool = kwargs['sdCbool']
-        if sddp_version is None and 'sddpVersion' in kwargs:
-            sddp_version = kwargs['sddpVersion']
-        if ud_cbool is None and 'udCbool' in kwargs:
-            ud_cbool = kwargs['udCbool']
-
         if authed is not None:
-            _setter("authed", authed)
+            pulumi.set(__self__, "authed", authed)
         if dataphin is not None:
-            _setter("dataphin", dataphin)
+            pulumi.set(__self__, "dataphin", dataphin)
         if dataphin_count is not None:
-            _setter("dataphin_count", dataphin_count)
+            pulumi.set(__self__, "dataphin_count", dataphin_count)
         if instance_num is not None:
-            _setter("instance_num", instance_num)
+            pulumi.set(__self__, "instance_num", instance_num)
         if logistics is not None:
-            _setter("logistics", logistics)
+            pulumi.set(__self__, "logistics", logistics)
         if modify_type is not None:
-            _setter("modify_type", modify_type)
+            pulumi.set(__self__, "modify_type", modify_type)
         if odps_set is not None:
-            _setter("odps_set", odps_set)
+            pulumi.set(__self__, "odps_set", odps_set)
         if oss_bucket_set is not None:
-            _setter("oss_bucket_set", oss_bucket_set)
+            pulumi.set(__self__, "oss_bucket_set", oss_bucket_set)
         if oss_size is not None:
-            _setter("oss_size", oss_size)
+            pulumi.set(__self__, "oss_size", oss_size)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if rds_set is not None:
-            _setter("rds_set", rds_set)
+            pulumi.set(__self__, "rds_set", rds_set)
         if remain_days is not None:
-            _setter("remain_days", remain_days)
+            pulumi.set(__self__, "remain_days", remain_days)
         if renew_period is not None:
-            _setter("renew_period", renew_period)
+            pulumi.set(__self__, "renew_period", renew_period)
         if renewal_status is not None:
-            _setter("renewal_status", renewal_status)
+            pulumi.set(__self__, "renewal_status", renewal_status)
         if sd_cbool is not None:
-            _setter("sd_cbool", sd_cbool)
+            pulumi.set(__self__, "sd_cbool", sd_cbool)
         if sdc is not None:
-            _setter("sdc", sdc)
+            pulumi.set(__self__, "sdc", sdc)
         if sddp_version is not None:
-            _setter("sddp_version", sddp_version)
+            pulumi.set(__self__, "sddp_version", sddp_version)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if ud_cbool is not None:
-            _setter("ud_cbool", ud_cbool)
+            pulumi.set(__self__, "ud_cbool", ud_cbool)
         if udc is not None:
-            _setter("udc", udc)
+            pulumi.set(__self__, "udc", udc)
 
     @property
     @pulumi.getter
@@ -853,10 +705,6 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -32,44 +32,13 @@ class SchedulerRuleArgs:
         :param pulumi.Input[str] param: The scheduling rule for the Global Accelerator instance that interacts with Anti-DDoS Pro or Anti-DDoS Premium.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.
         """
-        SchedulerRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            rule_name=rule_name,
-            rule_type=rule_type,
-            rules=rules,
-            param=param,
-            resource_group_id=resource_group_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             rule_name: Optional[pulumi.Input[str]] = None,
-             rule_type: Optional[pulumi.Input[int]] = None,
-             rules: Optional[pulumi.Input[Sequence[pulumi.Input['SchedulerRuleRuleArgs']]]] = None,
-             param: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if rule_name is None and 'ruleName' in kwargs:
-            rule_name = kwargs['ruleName']
-        if rule_name is None:
-            raise TypeError("Missing 'rule_name' argument")
-        if rule_type is None and 'ruleType' in kwargs:
-            rule_type = kwargs['ruleType']
-        if rule_type is None:
-            raise TypeError("Missing 'rule_type' argument")
-        if rules is None:
-            raise TypeError("Missing 'rules' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-
-        _setter("rule_name", rule_name)
-        _setter("rule_type", rule_type)
-        _setter("rules", rules)
+        pulumi.set(__self__, "rule_name", rule_name)
+        pulumi.set(__self__, "rule_type", rule_type)
+        pulumi.set(__self__, "rules", rules)
         if param is not None:
-            _setter("param", param)
+            pulumi.set(__self__, "param", param)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
 
     @property
     @pulumi.getter(name="ruleName")
@@ -156,45 +125,18 @@ class _SchedulerRuleState:
                `6`: Cloud product interaction.
         :param pulumi.Input[Sequence[pulumi.Input['SchedulerRuleRuleArgs']]] rules: The information about the scheduling rules. See `rules` below.
         """
-        _SchedulerRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cname=cname,
-            param=param,
-            resource_group_id=resource_group_id,
-            rule_name=rule_name,
-            rule_type=rule_type,
-            rules=rules,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cname: Optional[pulumi.Input[str]] = None,
-             param: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             rule_name: Optional[pulumi.Input[str]] = None,
-             rule_type: Optional[pulumi.Input[int]] = None,
-             rules: Optional[pulumi.Input[Sequence[pulumi.Input['SchedulerRuleRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if rule_name is None and 'ruleName' in kwargs:
-            rule_name = kwargs['ruleName']
-        if rule_type is None and 'ruleType' in kwargs:
-            rule_type = kwargs['ruleType']
-
         if cname is not None:
-            _setter("cname", cname)
+            pulumi.set(__self__, "cname", cname)
         if param is not None:
-            _setter("param", param)
+            pulumi.set(__self__, "param", param)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if rule_name is not None:
-            _setter("rule_name", rule_name)
+            pulumi.set(__self__, "rule_name", rule_name)
         if rule_type is not None:
-            _setter("rule_type", rule_type)
+            pulumi.set(__self__, "rule_type", rule_type)
         if rules is not None:
-            _setter("rules", rules)
+            pulumi.set(__self__, "rules", rules)
 
     @property
     @pulumi.getter
@@ -402,10 +344,6 @@ class SchedulerRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SchedulerRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

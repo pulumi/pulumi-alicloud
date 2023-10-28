@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['CustomImageArgs', 'CustomImage']
@@ -29,44 +29,13 @@ class CustomImageArgs:
                
                **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
         """
-        CustomImageArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            custom_image_name=custom_image_name,
-            instance_id=instance_id,
-            system_snapshot_id=system_snapshot_id,
-            description=description,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             custom_image_name: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             system_snapshot_id: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if custom_image_name is None and 'customImageName' in kwargs:
-            custom_image_name = kwargs['customImageName']
-        if custom_image_name is None:
-            raise TypeError("Missing 'custom_image_name' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if system_snapshot_id is None and 'systemSnapshotId' in kwargs:
-            system_snapshot_id = kwargs['systemSnapshotId']
-        if system_snapshot_id is None:
-            raise TypeError("Missing 'system_snapshot_id' argument")
-
-        _setter("custom_image_name", custom_image_name)
-        _setter("instance_id", instance_id)
-        _setter("system_snapshot_id", system_snapshot_id)
+        pulumi.set(__self__, "custom_image_name", custom_image_name)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "system_snapshot_id", system_snapshot_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="customImageName")
@@ -149,41 +118,16 @@ class _CustomImageState:
                **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
         :param pulumi.Input[str] system_snapshot_id: The ID of the system snapshot.
         """
-        _CustomImageState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            custom_image_name=custom_image_name,
-            description=description,
-            instance_id=instance_id,
-            status=status,
-            system_snapshot_id=system_snapshot_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             custom_image_name: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             system_snapshot_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if custom_image_name is None and 'customImageName' in kwargs:
-            custom_image_name = kwargs['customImageName']
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if system_snapshot_id is None and 'systemSnapshotId' in kwargs:
-            system_snapshot_id = kwargs['systemSnapshotId']
-
         if custom_image_name is not None:
-            _setter("custom_image_name", custom_image_name)
+            pulumi.set(__self__, "custom_image_name", custom_image_name)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if system_snapshot_id is not None:
-            _setter("system_snapshot_id", system_snapshot_id)
+            pulumi.set(__self__, "system_snapshot_id", system_snapshot_id)
 
     @property
     @pulumi.getter(name="customImageName")
@@ -381,10 +325,6 @@ class CustomImage(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CustomImageArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

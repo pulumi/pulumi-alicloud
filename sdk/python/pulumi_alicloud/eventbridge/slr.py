@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SlrArgs', 'Slr']
@@ -18,22 +18,7 @@ class SlrArgs:
         """
         The set of arguments for constructing a Slr resource.
         """
-        SlrArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            product_name=product_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             product_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if product_name is None and 'productName' in kwargs:
-            product_name = kwargs['productName']
-        if product_name is None:
-            raise TypeError("Missing 'product_name' argument")
-
-        _setter("product_name", product_name)
+        pulumi.set(__self__, "product_name", product_name)
 
     @property
     @pulumi.getter(name="productName")
@@ -52,21 +37,8 @@ class _SlrState:
         """
         Input properties used for looking up and filtering Slr resources.
         """
-        _SlrState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            product_name=product_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             product_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if product_name is None and 'productName' in kwargs:
-            product_name = kwargs['productName']
-
         if product_name is not None:
-            _setter("product_name", product_name)
+            pulumi.set(__self__, "product_name", product_name)
 
     @property
     @pulumi.getter(name="productName")
@@ -108,10 +80,6 @@ class Slr(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SlrArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -43,94 +43,23 @@ class DbInstanceArgs:
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[str] zone_id: The zone ID of the resource.
         """
-        DbInstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            db_instance_category=db_instance_category,
-            db_instance_network_type=db_instance_network_type,
-            db_instance_storage_type=db_instance_storage_type,
-            db_node_class=db_node_class,
-            db_node_storage=db_node_storage,
-            db_version=db_version,
-            payment_type=payment_type,
-            db_instance_description=db_instance_description,
-            db_instance_ip_arrays=db_instance_ip_arrays,
-            vpc_id=vpc_id,
-            vswitch_id=vswitch_id,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             db_instance_category: Optional[pulumi.Input[str]] = None,
-             db_instance_network_type: Optional[pulumi.Input[str]] = None,
-             db_instance_storage_type: Optional[pulumi.Input[str]] = None,
-             db_node_class: Optional[pulumi.Input[str]] = None,
-             db_node_storage: Optional[pulumi.Input[int]] = None,
-             db_version: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             db_instance_description: Optional[pulumi.Input[str]] = None,
-             db_instance_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceDbInstanceIpArrayArgs']]]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if db_instance_category is None and 'dbInstanceCategory' in kwargs:
-            db_instance_category = kwargs['dbInstanceCategory']
-        if db_instance_category is None:
-            raise TypeError("Missing 'db_instance_category' argument")
-        if db_instance_network_type is None and 'dbInstanceNetworkType' in kwargs:
-            db_instance_network_type = kwargs['dbInstanceNetworkType']
-        if db_instance_network_type is None:
-            raise TypeError("Missing 'db_instance_network_type' argument")
-        if db_instance_storage_type is None and 'dbInstanceStorageType' in kwargs:
-            db_instance_storage_type = kwargs['dbInstanceStorageType']
-        if db_instance_storage_type is None:
-            raise TypeError("Missing 'db_instance_storage_type' argument")
-        if db_node_class is None and 'dbNodeClass' in kwargs:
-            db_node_class = kwargs['dbNodeClass']
-        if db_node_class is None:
-            raise TypeError("Missing 'db_node_class' argument")
-        if db_node_storage is None and 'dbNodeStorage' in kwargs:
-            db_node_storage = kwargs['dbNodeStorage']
-        if db_node_storage is None:
-            raise TypeError("Missing 'db_node_storage' argument")
-        if db_version is None and 'dbVersion' in kwargs:
-            db_version = kwargs['dbVersion']
-        if db_version is None:
-            raise TypeError("Missing 'db_version' argument")
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if payment_type is None:
-            raise TypeError("Missing 'payment_type' argument")
-        if db_instance_description is None and 'dbInstanceDescription' in kwargs:
-            db_instance_description = kwargs['dbInstanceDescription']
-        if db_instance_ip_arrays is None and 'dbInstanceIpArrays' in kwargs:
-            db_instance_ip_arrays = kwargs['dbInstanceIpArrays']
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
-        _setter("db_instance_category", db_instance_category)
-        _setter("db_instance_network_type", db_instance_network_type)
-        _setter("db_instance_storage_type", db_instance_storage_type)
-        _setter("db_node_class", db_node_class)
-        _setter("db_node_storage", db_node_storage)
-        _setter("db_version", db_version)
-        _setter("payment_type", payment_type)
+        pulumi.set(__self__, "db_instance_category", db_instance_category)
+        pulumi.set(__self__, "db_instance_network_type", db_instance_network_type)
+        pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
+        pulumi.set(__self__, "db_node_class", db_node_class)
+        pulumi.set(__self__, "db_node_storage", db_node_storage)
+        pulumi.set(__self__, "db_version", db_version)
+        pulumi.set(__self__, "payment_type", payment_type)
         if db_instance_description is not None:
-            _setter("db_instance_description", db_instance_description)
+            pulumi.set(__self__, "db_instance_description", db_instance_description)
         if db_instance_ip_arrays is not None:
-            _setter("db_instance_ip_arrays", db_instance_ip_arrays)
+            pulumi.set(__self__, "db_instance_ip_arrays", db_instance_ip_arrays)
         if vpc_id is not None:
-            _setter("vpc_id", vpc_id)
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="dbInstanceCategory")
@@ -313,101 +242,36 @@ class _DbInstanceState:
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[str] zone_id: The zone ID of the resource.
         """
-        _DbInstanceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            connection_string=connection_string,
-            db_instance_category=db_instance_category,
-            db_instance_description=db_instance_description,
-            db_instance_ip_arrays=db_instance_ip_arrays,
-            db_instance_network_type=db_instance_network_type,
-            db_instance_storage_type=db_instance_storage_type,
-            db_node_class=db_node_class,
-            db_node_storage=db_node_storage,
-            db_version=db_version,
-            payment_type=payment_type,
-            port=port,
-            status=status,
-            vpc_id=vpc_id,
-            vswitch_id=vswitch_id,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             connection_string: Optional[pulumi.Input[str]] = None,
-             db_instance_category: Optional[pulumi.Input[str]] = None,
-             db_instance_description: Optional[pulumi.Input[str]] = None,
-             db_instance_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceDbInstanceIpArrayArgs']]]] = None,
-             db_instance_network_type: Optional[pulumi.Input[str]] = None,
-             db_instance_storage_type: Optional[pulumi.Input[str]] = None,
-             db_node_class: Optional[pulumi.Input[str]] = None,
-             db_node_storage: Optional[pulumi.Input[int]] = None,
-             db_version: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             port: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if connection_string is None and 'connectionString' in kwargs:
-            connection_string = kwargs['connectionString']
-        if db_instance_category is None and 'dbInstanceCategory' in kwargs:
-            db_instance_category = kwargs['dbInstanceCategory']
-        if db_instance_description is None and 'dbInstanceDescription' in kwargs:
-            db_instance_description = kwargs['dbInstanceDescription']
-        if db_instance_ip_arrays is None and 'dbInstanceIpArrays' in kwargs:
-            db_instance_ip_arrays = kwargs['dbInstanceIpArrays']
-        if db_instance_network_type is None and 'dbInstanceNetworkType' in kwargs:
-            db_instance_network_type = kwargs['dbInstanceNetworkType']
-        if db_instance_storage_type is None and 'dbInstanceStorageType' in kwargs:
-            db_instance_storage_type = kwargs['dbInstanceStorageType']
-        if db_node_class is None and 'dbNodeClass' in kwargs:
-            db_node_class = kwargs['dbNodeClass']
-        if db_node_storage is None and 'dbNodeStorage' in kwargs:
-            db_node_storage = kwargs['dbNodeStorage']
-        if db_version is None and 'dbVersion' in kwargs:
-            db_version = kwargs['dbVersion']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if connection_string is not None:
-            _setter("connection_string", connection_string)
+            pulumi.set(__self__, "connection_string", connection_string)
         if db_instance_category is not None:
-            _setter("db_instance_category", db_instance_category)
+            pulumi.set(__self__, "db_instance_category", db_instance_category)
         if db_instance_description is not None:
-            _setter("db_instance_description", db_instance_description)
+            pulumi.set(__self__, "db_instance_description", db_instance_description)
         if db_instance_ip_arrays is not None:
-            _setter("db_instance_ip_arrays", db_instance_ip_arrays)
+            pulumi.set(__self__, "db_instance_ip_arrays", db_instance_ip_arrays)
         if db_instance_network_type is not None:
-            _setter("db_instance_network_type", db_instance_network_type)
+            pulumi.set(__self__, "db_instance_network_type", db_instance_network_type)
         if db_instance_storage_type is not None:
-            _setter("db_instance_storage_type", db_instance_storage_type)
+            pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
         if db_node_class is not None:
-            _setter("db_node_class", db_node_class)
+            pulumi.set(__self__, "db_node_class", db_node_class)
         if db_node_storage is not None:
-            _setter("db_node_storage", db_node_storage)
+            pulumi.set(__self__, "db_node_storage", db_node_storage)
         if db_version is not None:
-            _setter("db_version", db_version)
+            pulumi.set(__self__, "db_version", db_version)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if vpc_id is not None:
-            _setter("vpc_id", vpc_id)
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="connectionString")
@@ -715,10 +579,6 @@ class DbInstance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DbInstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

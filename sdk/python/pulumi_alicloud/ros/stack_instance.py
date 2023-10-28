@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,66 +35,19 @@ class StackInstanceArgs:
         :param pulumi.Input[bool] retain_stacks: Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retain_stacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
         :param pulumi.Input[str] timeout_in_minutes: The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
         """
-        StackInstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            stack_group_name=stack_group_name,
-            stack_instance_account_id=stack_instance_account_id,
-            stack_instance_region_id=stack_instance_region_id,
-            operation_description=operation_description,
-            operation_preferences=operation_preferences,
-            parameter_overrides=parameter_overrides,
-            retain_stacks=retain_stacks,
-            timeout_in_minutes=timeout_in_minutes,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             stack_group_name: Optional[pulumi.Input[str]] = None,
-             stack_instance_account_id: Optional[pulumi.Input[str]] = None,
-             stack_instance_region_id: Optional[pulumi.Input[str]] = None,
-             operation_description: Optional[pulumi.Input[str]] = None,
-             operation_preferences: Optional[pulumi.Input[str]] = None,
-             parameter_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['StackInstanceParameterOverrideArgs']]]] = None,
-             retain_stacks: Optional[pulumi.Input[bool]] = None,
-             timeout_in_minutes: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if stack_group_name is None and 'stackGroupName' in kwargs:
-            stack_group_name = kwargs['stackGroupName']
-        if stack_group_name is None:
-            raise TypeError("Missing 'stack_group_name' argument")
-        if stack_instance_account_id is None and 'stackInstanceAccountId' in kwargs:
-            stack_instance_account_id = kwargs['stackInstanceAccountId']
-        if stack_instance_account_id is None:
-            raise TypeError("Missing 'stack_instance_account_id' argument")
-        if stack_instance_region_id is None and 'stackInstanceRegionId' in kwargs:
-            stack_instance_region_id = kwargs['stackInstanceRegionId']
-        if stack_instance_region_id is None:
-            raise TypeError("Missing 'stack_instance_region_id' argument")
-        if operation_description is None and 'operationDescription' in kwargs:
-            operation_description = kwargs['operationDescription']
-        if operation_preferences is None and 'operationPreferences' in kwargs:
-            operation_preferences = kwargs['operationPreferences']
-        if parameter_overrides is None and 'parameterOverrides' in kwargs:
-            parameter_overrides = kwargs['parameterOverrides']
-        if retain_stacks is None and 'retainStacks' in kwargs:
-            retain_stacks = kwargs['retainStacks']
-        if timeout_in_minutes is None and 'timeoutInMinutes' in kwargs:
-            timeout_in_minutes = kwargs['timeoutInMinutes']
-
-        _setter("stack_group_name", stack_group_name)
-        _setter("stack_instance_account_id", stack_instance_account_id)
-        _setter("stack_instance_region_id", stack_instance_region_id)
+        pulumi.set(__self__, "stack_group_name", stack_group_name)
+        pulumi.set(__self__, "stack_instance_account_id", stack_instance_account_id)
+        pulumi.set(__self__, "stack_instance_region_id", stack_instance_region_id)
         if operation_description is not None:
-            _setter("operation_description", operation_description)
+            pulumi.set(__self__, "operation_description", operation_description)
         if operation_preferences is not None:
-            _setter("operation_preferences", operation_preferences)
+            pulumi.set(__self__, "operation_preferences", operation_preferences)
         if parameter_overrides is not None:
-            _setter("parameter_overrides", parameter_overrides)
+            pulumi.set(__self__, "parameter_overrides", parameter_overrides)
         if retain_stacks is not None:
-            _setter("retain_stacks", retain_stacks)
+            pulumi.set(__self__, "retain_stacks", retain_stacks)
         if timeout_in_minutes is not None:
-            _setter("timeout_in_minutes", timeout_in_minutes)
+            pulumi.set(__self__, "timeout_in_minutes", timeout_in_minutes)
 
     @property
     @pulumi.getter(name="stackGroupName")
@@ -217,67 +170,24 @@ class _StackInstanceState:
         :param pulumi.Input[str] status: The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
         :param pulumi.Input[str] timeout_in_minutes: The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
         """
-        _StackInstanceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            operation_description=operation_description,
-            operation_preferences=operation_preferences,
-            parameter_overrides=parameter_overrides,
-            retain_stacks=retain_stacks,
-            stack_group_name=stack_group_name,
-            stack_instance_account_id=stack_instance_account_id,
-            stack_instance_region_id=stack_instance_region_id,
-            status=status,
-            timeout_in_minutes=timeout_in_minutes,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             operation_description: Optional[pulumi.Input[str]] = None,
-             operation_preferences: Optional[pulumi.Input[str]] = None,
-             parameter_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['StackInstanceParameterOverrideArgs']]]] = None,
-             retain_stacks: Optional[pulumi.Input[bool]] = None,
-             stack_group_name: Optional[pulumi.Input[str]] = None,
-             stack_instance_account_id: Optional[pulumi.Input[str]] = None,
-             stack_instance_region_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             timeout_in_minutes: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if operation_description is None and 'operationDescription' in kwargs:
-            operation_description = kwargs['operationDescription']
-        if operation_preferences is None and 'operationPreferences' in kwargs:
-            operation_preferences = kwargs['operationPreferences']
-        if parameter_overrides is None and 'parameterOverrides' in kwargs:
-            parameter_overrides = kwargs['parameterOverrides']
-        if retain_stacks is None and 'retainStacks' in kwargs:
-            retain_stacks = kwargs['retainStacks']
-        if stack_group_name is None and 'stackGroupName' in kwargs:
-            stack_group_name = kwargs['stackGroupName']
-        if stack_instance_account_id is None and 'stackInstanceAccountId' in kwargs:
-            stack_instance_account_id = kwargs['stackInstanceAccountId']
-        if stack_instance_region_id is None and 'stackInstanceRegionId' in kwargs:
-            stack_instance_region_id = kwargs['stackInstanceRegionId']
-        if timeout_in_minutes is None and 'timeoutInMinutes' in kwargs:
-            timeout_in_minutes = kwargs['timeoutInMinutes']
-
         if operation_description is not None:
-            _setter("operation_description", operation_description)
+            pulumi.set(__self__, "operation_description", operation_description)
         if operation_preferences is not None:
-            _setter("operation_preferences", operation_preferences)
+            pulumi.set(__self__, "operation_preferences", operation_preferences)
         if parameter_overrides is not None:
-            _setter("parameter_overrides", parameter_overrides)
+            pulumi.set(__self__, "parameter_overrides", parameter_overrides)
         if retain_stacks is not None:
-            _setter("retain_stacks", retain_stacks)
+            pulumi.set(__self__, "retain_stacks", retain_stacks)
         if stack_group_name is not None:
-            _setter("stack_group_name", stack_group_name)
+            pulumi.set(__self__, "stack_group_name", stack_group_name)
         if stack_instance_account_id is not None:
-            _setter("stack_instance_account_id", stack_instance_account_id)
+            pulumi.set(__self__, "stack_instance_account_id", stack_instance_account_id)
         if stack_instance_region_id is not None:
-            _setter("stack_instance_region_id", stack_instance_region_id)
+            pulumi.set(__self__, "stack_instance_region_id", stack_instance_region_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if timeout_in_minutes is not None:
-            _setter("timeout_in_minutes", timeout_in_minutes)
+            pulumi.set(__self__, "timeout_in_minutes", timeout_in_minutes)
 
     @property
     @pulumi.getter(name="operationDescription")
@@ -527,10 +437,6 @@ class StackInstance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            StackInstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

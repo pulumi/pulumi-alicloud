@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -102,31 +102,12 @@ class ApplicationConfigMapMountDescV2(dict):
         :param str key: The key.
         :param str mount_path: The mount path.
         """
-        ApplicationConfigMapMountDescV2._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            config_map_id=config_map_id,
-            key=key,
-            mount_path=mount_path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             config_map_id: Optional[str] = None,
-             key: Optional[str] = None,
-             mount_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if config_map_id is None and 'configMapId' in kwargs:
-            config_map_id = kwargs['configMapId']
-        if mount_path is None and 'mountPath' in kwargs:
-            mount_path = kwargs['mountPath']
-
         if config_map_id is not None:
-            _setter("config_map_id", config_map_id)
+            pulumi.set(__self__, "config_map_id", config_map_id)
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if mount_path is not None:
-            _setter("mount_path", mount_path)
+            pulumi.set(__self__, "mount_path", mount_path)
 
     @property
     @pulumi.getter(name="configMapId")
@@ -179,25 +160,10 @@ class ApplicationCustomHostAliasV2(dict):
         :param str host_name: The domain name or hostname.
         :param str ip: The IP address.
         """
-        ApplicationCustomHostAliasV2._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            host_name=host_name,
-            ip=ip,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             host_name: Optional[str] = None,
-             ip: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if host_name is None and 'hostName' in kwargs:
-            host_name = kwargs['hostName']
-
         if host_name is not None:
-            _setter("host_name", host_name)
+            pulumi.set(__self__, "host_name", host_name)
         if ip is not None:
-            _setter("ip", ip)
+            pulumi.set(__self__, "ip", ip)
 
     @property
     @pulumi.getter(name="hostName")
@@ -248,33 +214,12 @@ class ApplicationKafkaConfigs(dict):
         :param str kafka_endpoint: The endpoint of the ApsaraMQ for Kafka API.
         :param str kafka_instance_id: The  ID of the ApsaraMQ for Kafka instance.
         """
-        ApplicationKafkaConfigs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            kafka_configs=kafka_configs,
-            kafka_endpoint=kafka_endpoint,
-            kafka_instance_id=kafka_instance_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             kafka_configs: Optional[Sequence['outputs.ApplicationKafkaConfigsKafkaConfig']] = None,
-             kafka_endpoint: Optional[str] = None,
-             kafka_instance_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if kafka_configs is None and 'kafkaConfigs' in kwargs:
-            kafka_configs = kwargs['kafkaConfigs']
-        if kafka_endpoint is None and 'kafkaEndpoint' in kwargs:
-            kafka_endpoint = kwargs['kafkaEndpoint']
-        if kafka_instance_id is None and 'kafkaInstanceId' in kwargs:
-            kafka_instance_id = kwargs['kafkaInstanceId']
-
         if kafka_configs is not None:
-            _setter("kafka_configs", kafka_configs)
+            pulumi.set(__self__, "kafka_configs", kafka_configs)
         if kafka_endpoint is not None:
-            _setter("kafka_endpoint", kafka_endpoint)
+            pulumi.set(__self__, "kafka_endpoint", kafka_endpoint)
         if kafka_instance_id is not None:
-            _setter("kafka_instance_id", kafka_instance_id)
+            pulumi.set(__self__, "kafka_instance_id", kafka_instance_id)
 
     @property
     @pulumi.getter(name="kafkaConfigs")
@@ -333,33 +278,12 @@ class ApplicationKafkaConfigsKafkaConfig(dict):
         :param str log_dir: The path in which logs are stored.
         :param str log_type: The type of the log.
         """
-        ApplicationKafkaConfigsKafkaConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            kafka_topic=kafka_topic,
-            log_dir=log_dir,
-            log_type=log_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             kafka_topic: Optional[str] = None,
-             log_dir: Optional[str] = None,
-             log_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if kafka_topic is None and 'kafkaTopic' in kwargs:
-            kafka_topic = kwargs['kafkaTopic']
-        if log_dir is None and 'logDir' in kwargs:
-            log_dir = kwargs['logDir']
-        if log_type is None and 'logType' in kwargs:
-            log_type = kwargs['logType']
-
         if kafka_topic is not None:
-            _setter("kafka_topic", kafka_topic)
+            pulumi.set(__self__, "kafka_topic", kafka_topic)
         if log_dir is not None:
-            _setter("log_dir", log_dir)
+            pulumi.set(__self__, "log_dir", log_dir)
         if log_type is not None:
-            _setter("log_type", log_type)
+            pulumi.set(__self__, "log_type", log_type)
 
     @property
     @pulumi.getter(name="kafkaTopic")
@@ -430,51 +354,18 @@ class ApplicationLivenessV2(dict):
         :param 'ApplicationLivenessV2TcpSocketArgs' tcp_socket: The liveness check settings of the container. See `tcp_socket` below.
         :param int timeout_seconds: The timeout period of the health check.
         """
-        ApplicationLivenessV2._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            exec_=exec_,
-            http_get=http_get,
-            initial_delay_seconds=initial_delay_seconds,
-            period_seconds=period_seconds,
-            tcp_socket=tcp_socket,
-            timeout_seconds=timeout_seconds,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             exec_: Optional['outputs.ApplicationLivenessV2Exec'] = None,
-             http_get: Optional['outputs.ApplicationLivenessV2HttpGet'] = None,
-             initial_delay_seconds: Optional[int] = None,
-             period_seconds: Optional[int] = None,
-             tcp_socket: Optional['outputs.ApplicationLivenessV2TcpSocket'] = None,
-             timeout_seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if exec_ is None and 'exec' in kwargs:
-            exec_ = kwargs['exec']
-        if http_get is None and 'httpGet' in kwargs:
-            http_get = kwargs['httpGet']
-        if initial_delay_seconds is None and 'initialDelaySeconds' in kwargs:
-            initial_delay_seconds = kwargs['initialDelaySeconds']
-        if period_seconds is None and 'periodSeconds' in kwargs:
-            period_seconds = kwargs['periodSeconds']
-        if tcp_socket is None and 'tcpSocket' in kwargs:
-            tcp_socket = kwargs['tcpSocket']
-        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
-            timeout_seconds = kwargs['timeoutSeconds']
-
         if exec_ is not None:
-            _setter("exec_", exec_)
+            pulumi.set(__self__, "exec_", exec_)
         if http_get is not None:
-            _setter("http_get", http_get)
+            pulumi.set(__self__, "http_get", http_get)
         if initial_delay_seconds is not None:
-            _setter("initial_delay_seconds", initial_delay_seconds)
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
         if period_seconds is not None:
-            _setter("period_seconds", period_seconds)
+            pulumi.set(__self__, "period_seconds", period_seconds)
         if tcp_socket is not None:
-            _setter("tcp_socket", tcp_socket)
+            pulumi.set(__self__, "tcp_socket", tcp_socket)
         if timeout_seconds is not None:
-            _setter("timeout_seconds", timeout_seconds)
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
 
     @property
     @pulumi.getter(name="exec")
@@ -532,19 +423,8 @@ class ApplicationLivenessV2Exec(dict):
         """
         :param Sequence[str] commands: Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
         """
-        ApplicationLivenessV2Exec._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            commands=commands,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             commands: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if commands is not None:
-            _setter("commands", commands)
+            pulumi.set(__self__, "commands", commands)
 
     @property
     @pulumi.getter
@@ -589,39 +469,16 @@ class ApplicationLivenessV2HttpGet(dict):
         :param int port: The port.
         :param str scheme: The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
         """
-        ApplicationLivenessV2HttpGet._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            is_contain_key_word=is_contain_key_word,
-            key_word=key_word,
-            path=path,
-            port=port,
-            scheme=scheme,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             is_contain_key_word: Optional[bool] = None,
-             key_word: Optional[str] = None,
-             path: Optional[str] = None,
-             port: Optional[int] = None,
-             scheme: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if is_contain_key_word is None and 'isContainKeyWord' in kwargs:
-            is_contain_key_word = kwargs['isContainKeyWord']
-        if key_word is None and 'keyWord' in kwargs:
-            key_word = kwargs['keyWord']
-
         if is_contain_key_word is not None:
-            _setter("is_contain_key_word", is_contain_key_word)
+            pulumi.set(__self__, "is_contain_key_word", is_contain_key_word)
         if key_word is not None:
-            _setter("key_word", key_word)
+            pulumi.set(__self__, "key_word", key_word)
         if path is not None:
-            _setter("path", path)
+            pulumi.set(__self__, "path", path)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if scheme is not None:
-            _setter("scheme", scheme)
+            pulumi.set(__self__, "scheme", scheme)
 
     @property
     @pulumi.getter(name="isContainKeyWord")
@@ -671,19 +528,8 @@ class ApplicationLivenessV2TcpSocket(dict):
         """
         :param int port: The port.
         """
-        ApplicationLivenessV2TcpSocket._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            port=port,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter
@@ -734,45 +580,16 @@ class ApplicationNasConfig(dict):
         :param str nas_path: The directory in the NAS file system.
         :param bool read_only: Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `read_only` to `false`, the application has the read and write permissions.
         """
-        ApplicationNasConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            mount_domain=mount_domain,
-            mount_path=mount_path,
-            nas_id=nas_id,
-            nas_path=nas_path,
-            read_only=read_only,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             mount_domain: Optional[str] = None,
-             mount_path: Optional[str] = None,
-             nas_id: Optional[str] = None,
-             nas_path: Optional[str] = None,
-             read_only: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if mount_domain is None and 'mountDomain' in kwargs:
-            mount_domain = kwargs['mountDomain']
-        if mount_path is None and 'mountPath' in kwargs:
-            mount_path = kwargs['mountPath']
-        if nas_id is None and 'nasId' in kwargs:
-            nas_id = kwargs['nasId']
-        if nas_path is None and 'nasPath' in kwargs:
-            nas_path = kwargs['nasPath']
-        if read_only is None and 'readOnly' in kwargs:
-            read_only = kwargs['readOnly']
-
         if mount_domain is not None:
-            _setter("mount_domain", mount_domain)
+            pulumi.set(__self__, "mount_domain", mount_domain)
         if mount_path is not None:
-            _setter("mount_path", mount_path)
+            pulumi.set(__self__, "mount_path", mount_path)
         if nas_id is not None:
-            _setter("nas_id", nas_id)
+            pulumi.set(__self__, "nas_id", nas_id)
         if nas_path is not None:
-            _setter("nas_path", nas_path)
+            pulumi.set(__self__, "nas_path", nas_path)
         if read_only is not None:
-            _setter("read_only", read_only)
+            pulumi.set(__self__, "read_only", read_only)
 
     @property
     @pulumi.getter(name="mountDomain")
@@ -851,39 +668,14 @@ class ApplicationOssMountDescsV2(dict):
         :param str mount_path: The mount path.
         :param bool read_only: Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `read_only` to `false`, the application has the read and write permissions.
         """
-        ApplicationOssMountDescsV2._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket_name=bucket_name,
-            bucket_path=bucket_path,
-            mount_path=mount_path,
-            read_only=read_only,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket_name: Optional[str] = None,
-             bucket_path: Optional[str] = None,
-             mount_path: Optional[str] = None,
-             read_only: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket_name is None and 'bucketName' in kwargs:
-            bucket_name = kwargs['bucketName']
-        if bucket_path is None and 'bucketPath' in kwargs:
-            bucket_path = kwargs['bucketPath']
-        if mount_path is None and 'mountPath' in kwargs:
-            mount_path = kwargs['mountPath']
-        if read_only is None and 'readOnly' in kwargs:
-            read_only = kwargs['readOnly']
-
         if bucket_name is not None:
-            _setter("bucket_name", bucket_name)
+            pulumi.set(__self__, "bucket_name", bucket_name)
         if bucket_path is not None:
-            _setter("bucket_path", bucket_path)
+            pulumi.set(__self__, "bucket_path", bucket_path)
         if mount_path is not None:
-            _setter("mount_path", mount_path)
+            pulumi.set(__self__, "mount_path", mount_path)
         if read_only is not None:
-            _setter("read_only", read_only)
+            pulumi.set(__self__, "read_only", read_only)
 
     @property
     @pulumi.getter(name="bucketName")
@@ -942,21 +734,8 @@ class ApplicationPostStartV2(dict):
         """
         :param 'ApplicationPostStartV2ExecArgs' exec_: Execute. See `exec` below.
         """
-        ApplicationPostStartV2._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            exec_=exec_,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             exec_: Optional['outputs.ApplicationPostStartV2Exec'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if exec_ is None and 'exec' in kwargs:
-            exec_ = kwargs['exec']
-
         if exec_ is not None:
-            _setter("exec_", exec_)
+            pulumi.set(__self__, "exec_", exec_)
 
     @property
     @pulumi.getter(name="exec")
@@ -974,19 +753,8 @@ class ApplicationPostStartV2Exec(dict):
         """
         :param Sequence[str] commands: Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
         """
-        ApplicationPostStartV2Exec._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            commands=commands,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             commands: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if commands is not None:
-            _setter("commands", commands)
+            pulumi.set(__self__, "commands", commands)
 
     @property
     @pulumi.getter
@@ -1021,21 +789,8 @@ class ApplicationPreStopV2(dict):
         """
         :param 'ApplicationPreStopV2ExecArgs' exec_: Execute. See `exec` below.
         """
-        ApplicationPreStopV2._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            exec_=exec_,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             exec_: Optional['outputs.ApplicationPreStopV2Exec'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if exec_ is None and 'exec' in kwargs:
-            exec_ = kwargs['exec']
-
         if exec_ is not None:
-            _setter("exec_", exec_)
+            pulumi.set(__self__, "exec_", exec_)
 
     @property
     @pulumi.getter(name="exec")
@@ -1053,19 +808,8 @@ class ApplicationPreStopV2Exec(dict):
         """
         :param Sequence[str] commands: Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
         """
-        ApplicationPreStopV2Exec._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            commands=commands,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             commands: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if commands is not None:
-            _setter("commands", commands)
+            pulumi.set(__self__, "commands", commands)
 
     @property
     @pulumi.getter
@@ -1110,37 +854,14 @@ class ApplicationPvtzDiscoverySvc(dict):
         :param Sequence['ApplicationPvtzDiscoverySvcPortProtocolArgs'] port_protocols: The port number and protocol. See `port_protocols` below.
         :param str service_name: The name of the Service.
         """
-        ApplicationPvtzDiscoverySvc._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enable=enable,
-            namespace_id=namespace_id,
-            port_protocols=port_protocols,
-            service_name=service_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enable: Optional[bool] = None,
-             namespace_id: Optional[str] = None,
-             port_protocols: Optional[Sequence['outputs.ApplicationPvtzDiscoverySvcPortProtocol']] = None,
-             service_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if namespace_id is None and 'namespaceId' in kwargs:
-            namespace_id = kwargs['namespaceId']
-        if port_protocols is None and 'portProtocols' in kwargs:
-            port_protocols = kwargs['portProtocols']
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-
         if enable is not None:
-            _setter("enable", enable)
+            pulumi.set(__self__, "enable", enable)
         if namespace_id is not None:
-            _setter("namespace_id", namespace_id)
+            pulumi.set(__self__, "namespace_id", namespace_id)
         if port_protocols is not None:
-            _setter("port_protocols", port_protocols)
+            pulumi.set(__self__, "port_protocols", port_protocols)
         if service_name is not None:
-            _setter("service_name", service_name)
+            pulumi.set(__self__, "service_name", service_name)
 
     @property
     @pulumi.getter
@@ -1184,23 +905,10 @@ class ApplicationPvtzDiscoverySvcPortProtocol(dict):
         :param int port: The port.
         :param str protocol: The protocol. Valid values: `TCP` and `UDP`.
         """
-        ApplicationPvtzDiscoverySvcPortProtocol._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            port=port,
-            protocol=protocol,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             port: Optional[int] = None,
-             protocol: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if protocol is not None:
-            _setter("protocol", protocol)
+            pulumi.set(__self__, "protocol", protocol)
 
     @property
     @pulumi.getter
@@ -1263,51 +971,18 @@ class ApplicationReadinessV2(dict):
         :param 'ApplicationReadinessV2TcpSocketArgs' tcp_socket: The liveness check settings of the container. See `tcp_socket` below.
         :param int timeout_seconds: The timeout period of the health check.
         """
-        ApplicationReadinessV2._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            exec_=exec_,
-            http_get=http_get,
-            initial_delay_seconds=initial_delay_seconds,
-            period_seconds=period_seconds,
-            tcp_socket=tcp_socket,
-            timeout_seconds=timeout_seconds,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             exec_: Optional['outputs.ApplicationReadinessV2Exec'] = None,
-             http_get: Optional['outputs.ApplicationReadinessV2HttpGet'] = None,
-             initial_delay_seconds: Optional[int] = None,
-             period_seconds: Optional[int] = None,
-             tcp_socket: Optional['outputs.ApplicationReadinessV2TcpSocket'] = None,
-             timeout_seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if exec_ is None and 'exec' in kwargs:
-            exec_ = kwargs['exec']
-        if http_get is None and 'httpGet' in kwargs:
-            http_get = kwargs['httpGet']
-        if initial_delay_seconds is None and 'initialDelaySeconds' in kwargs:
-            initial_delay_seconds = kwargs['initialDelaySeconds']
-        if period_seconds is None and 'periodSeconds' in kwargs:
-            period_seconds = kwargs['periodSeconds']
-        if tcp_socket is None and 'tcpSocket' in kwargs:
-            tcp_socket = kwargs['tcpSocket']
-        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
-            timeout_seconds = kwargs['timeoutSeconds']
-
         if exec_ is not None:
-            _setter("exec_", exec_)
+            pulumi.set(__self__, "exec_", exec_)
         if http_get is not None:
-            _setter("http_get", http_get)
+            pulumi.set(__self__, "http_get", http_get)
         if initial_delay_seconds is not None:
-            _setter("initial_delay_seconds", initial_delay_seconds)
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
         if period_seconds is not None:
-            _setter("period_seconds", period_seconds)
+            pulumi.set(__self__, "period_seconds", period_seconds)
         if tcp_socket is not None:
-            _setter("tcp_socket", tcp_socket)
+            pulumi.set(__self__, "tcp_socket", tcp_socket)
         if timeout_seconds is not None:
-            _setter("timeout_seconds", timeout_seconds)
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
 
     @property
     @pulumi.getter(name="exec")
@@ -1365,19 +1040,8 @@ class ApplicationReadinessV2Exec(dict):
         """
         :param Sequence[str] commands: Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
         """
-        ApplicationReadinessV2Exec._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            commands=commands,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             commands: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if commands is not None:
-            _setter("commands", commands)
+            pulumi.set(__self__, "commands", commands)
 
     @property
     @pulumi.getter
@@ -1422,39 +1086,16 @@ class ApplicationReadinessV2HttpGet(dict):
         :param int port: The port.
         :param str scheme: The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
         """
-        ApplicationReadinessV2HttpGet._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            is_contain_key_word=is_contain_key_word,
-            key_word=key_word,
-            path=path,
-            port=port,
-            scheme=scheme,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             is_contain_key_word: Optional[bool] = None,
-             key_word: Optional[str] = None,
-             path: Optional[str] = None,
-             port: Optional[int] = None,
-             scheme: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if is_contain_key_word is None and 'isContainKeyWord' in kwargs:
-            is_contain_key_word = kwargs['isContainKeyWord']
-        if key_word is None and 'keyWord' in kwargs:
-            key_word = kwargs['keyWord']
-
         if is_contain_key_word is not None:
-            _setter("is_contain_key_word", is_contain_key_word)
+            pulumi.set(__self__, "is_contain_key_word", is_contain_key_word)
         if key_word is not None:
-            _setter("key_word", key_word)
+            pulumi.set(__self__, "key_word", key_word)
         if path is not None:
-            _setter("path", path)
+            pulumi.set(__self__, "path", path)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if scheme is not None:
-            _setter("scheme", scheme)
+            pulumi.set(__self__, "scheme", scheme)
 
     @property
     @pulumi.getter(name="isContainKeyWord")
@@ -1504,19 +1145,8 @@ class ApplicationReadinessV2TcpSocket(dict):
         """
         :param int port: The port.
         """
-        ApplicationReadinessV2TcpSocket._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            port=port,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter
@@ -1565,43 +1195,16 @@ class ApplicationScalingRuleScalingRuleMetric(dict):
         :param 'ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs' scale_down_rules: Apply shrink rules. See `scale_down_rules` below.
         :param 'ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs' scale_up_rules: Apply expansion rules. See `scale_up_rules` below.
         """
-        ApplicationScalingRuleScalingRuleMetric._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            max_replicas=max_replicas,
-            metrics=metrics,
-            min_replicas=min_replicas,
-            scale_down_rules=scale_down_rules,
-            scale_up_rules=scale_up_rules,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             max_replicas: Optional[int] = None,
-             metrics: Optional[Sequence['outputs.ApplicationScalingRuleScalingRuleMetricMetric']] = None,
-             min_replicas: Optional[int] = None,
-             scale_down_rules: Optional['outputs.ApplicationScalingRuleScalingRuleMetricScaleDownRules'] = None,
-             scale_up_rules: Optional['outputs.ApplicationScalingRuleScalingRuleMetricScaleUpRules'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if max_replicas is None and 'maxReplicas' in kwargs:
-            max_replicas = kwargs['maxReplicas']
-        if min_replicas is None and 'minReplicas' in kwargs:
-            min_replicas = kwargs['minReplicas']
-        if scale_down_rules is None and 'scaleDownRules' in kwargs:
-            scale_down_rules = kwargs['scaleDownRules']
-        if scale_up_rules is None and 'scaleUpRules' in kwargs:
-            scale_up_rules = kwargs['scaleUpRules']
-
         if max_replicas is not None:
-            _setter("max_replicas", max_replicas)
+            pulumi.set(__self__, "max_replicas", max_replicas)
         if metrics is not None:
-            _setter("metrics", metrics)
+            pulumi.set(__self__, "metrics", metrics)
         if min_replicas is not None:
-            _setter("min_replicas", min_replicas)
+            pulumi.set(__self__, "min_replicas", min_replicas)
         if scale_down_rules is not None:
-            _setter("scale_down_rules", scale_down_rules)
+            pulumi.set(__self__, "scale_down_rules", scale_down_rules)
         if scale_up_rules is not None:
-            _setter("scale_up_rules", scale_up_rules)
+            pulumi.set(__self__, "scale_up_rules", scale_up_rules)
 
     @property
     @pulumi.getter(name="maxReplicas")
@@ -1696,49 +1299,18 @@ class ApplicationScalingRuleScalingRuleMetricMetric(dict):
         :param str slb_project: The project of the Log Service.
         :param str vport: SLB listening port.
         """
-        ApplicationScalingRuleScalingRuleMetricMetric._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            metric_target_average_utilization=metric_target_average_utilization,
-            metric_type=metric_type,
-            slb_id=slb_id,
-            slb_log_store=slb_log_store,
-            slb_project=slb_project,
-            vport=vport,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             metric_target_average_utilization: Optional[int] = None,
-             metric_type: Optional[str] = None,
-             slb_id: Optional[str] = None,
-             slb_log_store: Optional[str] = None,
-             slb_project: Optional[str] = None,
-             vport: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if metric_target_average_utilization is None and 'metricTargetAverageUtilization' in kwargs:
-            metric_target_average_utilization = kwargs['metricTargetAverageUtilization']
-        if metric_type is None and 'metricType' in kwargs:
-            metric_type = kwargs['metricType']
-        if slb_id is None and 'slbId' in kwargs:
-            slb_id = kwargs['slbId']
-        if slb_log_store is None and 'slbLogStore' in kwargs:
-            slb_log_store = kwargs['slbLogStore']
-        if slb_project is None and 'slbProject' in kwargs:
-            slb_project = kwargs['slbProject']
-
         if metric_target_average_utilization is not None:
-            _setter("metric_target_average_utilization", metric_target_average_utilization)
+            pulumi.set(__self__, "metric_target_average_utilization", metric_target_average_utilization)
         if metric_type is not None:
-            _setter("metric_type", metric_type)
+            pulumi.set(__self__, "metric_type", metric_type)
         if slb_id is not None:
-            _setter("slb_id", slb_id)
+            pulumi.set(__self__, "slb_id", slb_id)
         if slb_log_store is not None:
-            _setter("slb_log_store", slb_log_store)
+            pulumi.set(__self__, "slb_log_store", slb_log_store)
         if slb_project is not None:
-            _setter("slb_project", slb_project)
+            pulumi.set(__self__, "slb_project", slb_project)
         if vport is not None:
-            _setter("vport", vport)
+            pulumi.set(__self__, "vport", vport)
 
     @property
     @pulumi.getter(name="metricTargetAverageUtilization")
@@ -1827,29 +1399,12 @@ class ApplicationScalingRuleScalingRuleMetricScaleDownRules(dict):
         :param int stabilization_window_seconds: Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
         :param int step: Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
         """
-        ApplicationScalingRuleScalingRuleMetricScaleDownRules._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            disabled=disabled,
-            stabilization_window_seconds=stabilization_window_seconds,
-            step=step,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             disabled: Optional[bool] = None,
-             stabilization_window_seconds: Optional[int] = None,
-             step: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if stabilization_window_seconds is None and 'stabilizationWindowSeconds' in kwargs:
-            stabilization_window_seconds = kwargs['stabilizationWindowSeconds']
-
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if stabilization_window_seconds is not None:
-            _setter("stabilization_window_seconds", stabilization_window_seconds)
+            pulumi.set(__self__, "stabilization_window_seconds", stabilization_window_seconds)
         if step is not None:
-            _setter("step", step)
+            pulumi.set(__self__, "step", step)
 
     @property
     @pulumi.getter
@@ -1904,29 +1459,12 @@ class ApplicationScalingRuleScalingRuleMetricScaleUpRules(dict):
         :param int stabilization_window_seconds: Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
         :param int step: Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
         """
-        ApplicationScalingRuleScalingRuleMetricScaleUpRules._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            disabled=disabled,
-            stabilization_window_seconds=stabilization_window_seconds,
-            step=step,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             disabled: Optional[bool] = None,
-             stabilization_window_seconds: Optional[int] = None,
-             step: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if stabilization_window_seconds is None and 'stabilizationWindowSeconds' in kwargs:
-            stabilization_window_seconds = kwargs['stabilizationWindowSeconds']
-
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if stabilization_window_seconds is not None:
-            _setter("stabilization_window_seconds", stabilization_window_seconds)
+            pulumi.set(__self__, "stabilization_window_seconds", stabilization_window_seconds)
         if step is not None:
-            _setter("step", step)
+            pulumi.set(__self__, "step", step)
 
     @property
     @pulumi.getter
@@ -1985,35 +1523,14 @@ class ApplicationScalingRuleScalingRuleTimer(dict):
         :param str period: The period in which a timed elastic scaling strategy is executed.
         :param Sequence['ApplicationScalingRuleScalingRuleTimerScheduleArgs'] schedules: Resilient Scaling Strategy Trigger Timing. See `schedules` below.
         """
-        ApplicationScalingRuleScalingRuleTimer._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            begin_date=begin_date,
-            end_date=end_date,
-            period=period,
-            schedules=schedules,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             begin_date: Optional[str] = None,
-             end_date: Optional[str] = None,
-             period: Optional[str] = None,
-             schedules: Optional[Sequence['outputs.ApplicationScalingRuleScalingRuleTimerSchedule']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if begin_date is None and 'beginDate' in kwargs:
-            begin_date = kwargs['beginDate']
-        if end_date is None and 'endDate' in kwargs:
-            end_date = kwargs['endDate']
-
         if begin_date is not None:
-            _setter("begin_date", begin_date)
+            pulumi.set(__self__, "begin_date", begin_date)
         if end_date is not None:
-            _setter("end_date", end_date)
+            pulumi.set(__self__, "end_date", end_date)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if schedules is not None:
-            _setter("schedules", schedules)
+            pulumi.set(__self__, "schedules", schedules)
 
     @property
     @pulumi.getter(name="beginDate")
@@ -2084,39 +1601,14 @@ class ApplicationScalingRuleScalingRuleTimerSchedule(dict):
         :param int min_replicas: Minimum number of instances applied.
         :param int target_replicas: This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
         """
-        ApplicationScalingRuleScalingRuleTimerSchedule._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            at_time=at_time,
-            max_replicas=max_replicas,
-            min_replicas=min_replicas,
-            target_replicas=target_replicas,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             at_time: Optional[str] = None,
-             max_replicas: Optional[int] = None,
-             min_replicas: Optional[int] = None,
-             target_replicas: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if at_time is None and 'atTime' in kwargs:
-            at_time = kwargs['atTime']
-        if max_replicas is None and 'maxReplicas' in kwargs:
-            max_replicas = kwargs['maxReplicas']
-        if min_replicas is None and 'minReplicas' in kwargs:
-            min_replicas = kwargs['minReplicas']
-        if target_replicas is None and 'targetReplicas' in kwargs:
-            target_replicas = kwargs['targetReplicas']
-
         if at_time is not None:
-            _setter("at_time", at_time)
+            pulumi.set(__self__, "at_time", at_time)
         if max_replicas is not None:
-            _setter("max_replicas", max_replicas)
+            pulumi.set(__self__, "max_replicas", max_replicas)
         if min_replicas is not None:
-            _setter("min_replicas", min_replicas)
+            pulumi.set(__self__, "min_replicas", min_replicas)
         if target_replicas is not None:
-            _setter("target_replicas", target_replicas)
+            pulumi.set(__self__, "target_replicas", target_replicas)
 
     @property
     @pulumi.getter(name="atTime")
@@ -2189,43 +1681,16 @@ class ApplicationTomcatConfigV2(dict):
         :param str uri_encoding: The URI encoding scheme in the Tomcat container.
         :param str use_body_encoding_for_uri: Specifies whether to use the encoding scheme that is specified by BodyEncoding for URL.
         """
-        ApplicationTomcatConfigV2._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            context_path=context_path,
-            max_threads=max_threads,
-            port=port,
-            uri_encoding=uri_encoding,
-            use_body_encoding_for_uri=use_body_encoding_for_uri,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             context_path: Optional[str] = None,
-             max_threads: Optional[int] = None,
-             port: Optional[int] = None,
-             uri_encoding: Optional[str] = None,
-             use_body_encoding_for_uri: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if context_path is None and 'contextPath' in kwargs:
-            context_path = kwargs['contextPath']
-        if max_threads is None and 'maxThreads' in kwargs:
-            max_threads = kwargs['maxThreads']
-        if uri_encoding is None and 'uriEncoding' in kwargs:
-            uri_encoding = kwargs['uriEncoding']
-        if use_body_encoding_for_uri is None and 'useBodyEncodingForUri' in kwargs:
-            use_body_encoding_for_uri = kwargs['useBodyEncodingForUri']
-
         if context_path is not None:
-            _setter("context_path", context_path)
+            pulumi.set(__self__, "context_path", context_path)
         if max_threads is not None:
-            _setter("max_threads", max_threads)
+            pulumi.set(__self__, "max_threads", max_threads)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if uri_encoding is not None:
-            _setter("uri_encoding", uri_encoding)
+            pulumi.set(__self__, "uri_encoding", uri_encoding)
         if use_body_encoding_for_uri is not None:
-            _setter("use_body_encoding_for_uri", use_body_encoding_for_uri)
+            pulumi.set(__self__, "use_body_encoding_for_uri", use_body_encoding_for_uri)
 
     @property
     @pulumi.getter(name="contextPath")
@@ -2294,25 +1759,10 @@ class ApplicationUpdateStrategyV2(dict):
         :param 'ApplicationUpdateStrategyV2BatchUpdateArgs' batch_update: The phased release policy. See `batch_update` below.
         :param str type: The type of the release policy. Valid values: `GrayBatchUpdate` and `BatchUpdate`.
         """
-        ApplicationUpdateStrategyV2._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            batch_update=batch_update,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             batch_update: Optional['outputs.ApplicationUpdateStrategyV2BatchUpdate'] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if batch_update is None and 'batchUpdate' in kwargs:
-            batch_update = kwargs['batchUpdate']
-
         if batch_update is not None:
-            _setter("batch_update", batch_update)
+            pulumi.set(__self__, "batch_update", batch_update)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="batchUpdate")
@@ -2361,31 +1811,12 @@ class ApplicationUpdateStrategyV2BatchUpdate(dict):
         :param int batch_wait_time: The batch wait time.
         :param str release_type: The processing method for the batches. Valid values: `auto` and `manual`.
         """
-        ApplicationUpdateStrategyV2BatchUpdate._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            batch=batch,
-            batch_wait_time=batch_wait_time,
-            release_type=release_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             batch: Optional[int] = None,
-             batch_wait_time: Optional[int] = None,
-             release_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if batch_wait_time is None and 'batchWaitTime' in kwargs:
-            batch_wait_time = kwargs['batchWaitTime']
-        if release_type is None and 'releaseType' in kwargs:
-            release_type = kwargs['releaseType']
-
         if batch is not None:
-            _setter("batch", batch)
+            pulumi.set(__self__, "batch", batch)
         if batch_wait_time is not None:
-            _setter("batch_wait_time", batch_wait_time)
+            pulumi.set(__self__, "batch_wait_time", batch_wait_time)
         if release_type is not None:
-            _setter("release_type", release_type)
+            pulumi.set(__self__, "release_type", release_type)
 
     @property
     @pulumi.getter
@@ -2448,43 +1879,18 @@ class GreyTagRouteDubboRule(dict):
         :param str service_name: The service name.
         :param str version: The service version.
         """
-        GreyTagRouteDubboRule._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            condition=condition,
-            group=group,
-            items=items,
-            method_name=method_name,
-            service_name=service_name,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             condition: Optional[str] = None,
-             group: Optional[str] = None,
-             items: Optional[Sequence['outputs.GreyTagRouteDubboRuleItem']] = None,
-             method_name: Optional[str] = None,
-             service_name: Optional[str] = None,
-             version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if method_name is None and 'methodName' in kwargs:
-            method_name = kwargs['methodName']
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-
         if condition is not None:
-            _setter("condition", condition)
+            pulumi.set(__self__, "condition", condition)
         if group is not None:
-            _setter("group", group)
+            pulumi.set(__self__, "group", group)
         if items is not None:
-            _setter("items", items)
+            pulumi.set(__self__, "items", items)
         if method_name is not None:
-            _setter("method_name", method_name)
+            pulumi.set(__self__, "method_name", method_name)
         if service_name is not None:
-            _setter("service_name", service_name)
+            pulumi.set(__self__, "service_name", service_name)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -2550,35 +1956,16 @@ class GreyTagRouteDubboRuleItem(dict):
         :param str operator: The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`.
         :param str value: The value of the parameter.
         """
-        GreyTagRouteDubboRuleItem._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cond=cond,
-            expr=expr,
-            index=index,
-            operator=operator,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cond: Optional[str] = None,
-             expr: Optional[str] = None,
-             index: Optional[int] = None,
-             operator: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if cond is not None:
-            _setter("cond", cond)
+            pulumi.set(__self__, "cond", cond)
         if expr is not None:
-            _setter("expr", expr)
+            pulumi.set(__self__, "expr", expr)
         if index is not None:
-            _setter("index", index)
+            pulumi.set(__self__, "index", index)
         if operator is not None:
-            _setter("operator", operator)
+            pulumi.set(__self__, "operator", operator)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -2632,27 +2019,12 @@ class GreyTagRouteScRule(dict):
         :param Sequence['GreyTagRouteScRuleItemArgs'] items: A list of conditions items. See `items` below.
         :param str path: The path corresponding to the grayscale rule.
         """
-        GreyTagRouteScRule._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            condition=condition,
-            items=items,
-            path=path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             condition: Optional[str] = None,
-             items: Optional[Sequence['outputs.GreyTagRouteScRuleItem']] = None,
-             path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if condition is not None:
-            _setter("condition", condition)
+            pulumi.set(__self__, "condition", condition)
         if items is not None:
-            _setter("items", items)
+            pulumi.set(__self__, "items", items)
         if path is not None:
-            _setter("path", path)
+            pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter
@@ -2694,35 +2066,16 @@ class GreyTagRouteScRuleItem(dict):
         :param str type: The compare types. Valid values: `param`, `cookie`, `header`.
         :param str value: The value of the parameter.
         """
-        GreyTagRouteScRuleItem._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cond=cond,
-            name=name,
-            operator=operator,
-            type=type,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cond: Optional[str] = None,
-             name: Optional[str] = None,
-             operator: Optional[str] = None,
-             type: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if cond is not None:
-            _setter("cond", cond)
+            pulumi.set(__self__, "cond", cond)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if operator is not None:
-            _setter("operator", operator)
+            pulumi.set(__self__, "operator", operator)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -2797,33 +2150,12 @@ class IngressDefaultRule(dict):
         :param str app_name: Target application name.
         :param int container_port: Application backend port.
         """
-        IngressDefaultRule._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            app_id=app_id,
-            app_name=app_name,
-            container_port=container_port,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             app_id: Optional[str] = None,
-             app_name: Optional[str] = None,
-             container_port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if app_id is None and 'appId' in kwargs:
-            app_id = kwargs['appId']
-        if app_name is None and 'appName' in kwargs:
-            app_name = kwargs['appName']
-        if container_port is None and 'containerPort' in kwargs:
-            container_port = kwargs['containerPort']
-
         if app_id is not None:
-            _setter("app_id", app_id)
+            pulumi.set(__self__, "app_id", app_id)
         if app_name is not None:
-            _setter("app_name", app_name)
+            pulumi.set(__self__, "app_name", app_name)
         if container_port is not None:
-            _setter("container_port", container_port)
+            pulumi.set(__self__, "container_port", container_port)
 
     @property
     @pulumi.getter(name="appId")
@@ -2894,58 +2226,15 @@ class IngressRule(dict):
         :param str backend_protocol: The backend protocol.
         :param str rewrite_path: The rewrite path.
         """
-        IngressRule._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            app_id=app_id,
-            app_name=app_name,
-            container_port=container_port,
-            domain=domain,
-            path=path,
-            backend_protocol=backend_protocol,
-            rewrite_path=rewrite_path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             app_id: Optional[str] = None,
-             app_name: Optional[str] = None,
-             container_port: Optional[int] = None,
-             domain: Optional[str] = None,
-             path: Optional[str] = None,
-             backend_protocol: Optional[str] = None,
-             rewrite_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if app_id is None and 'appId' in kwargs:
-            app_id = kwargs['appId']
-        if app_id is None:
-            raise TypeError("Missing 'app_id' argument")
-        if app_name is None and 'appName' in kwargs:
-            app_name = kwargs['appName']
-        if app_name is None:
-            raise TypeError("Missing 'app_name' argument")
-        if container_port is None and 'containerPort' in kwargs:
-            container_port = kwargs['containerPort']
-        if container_port is None:
-            raise TypeError("Missing 'container_port' argument")
-        if domain is None:
-            raise TypeError("Missing 'domain' argument")
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-        if backend_protocol is None and 'backendProtocol' in kwargs:
-            backend_protocol = kwargs['backendProtocol']
-        if rewrite_path is None and 'rewritePath' in kwargs:
-            rewrite_path = kwargs['rewritePath']
-
-        _setter("app_id", app_id)
-        _setter("app_name", app_name)
-        _setter("container_port", container_port)
-        _setter("domain", domain)
-        _setter("path", path)
+        pulumi.set(__self__, "app_id", app_id)
+        pulumi.set(__self__, "app_name", app_name)
+        pulumi.set(__self__, "container_port", container_port)
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "path", path)
         if backend_protocol is not None:
-            _setter("backend_protocol", backend_protocol)
+            pulumi.set(__self__, "backend_protocol", backend_protocol)
         if rewrite_path is not None:
-            _setter("rewrite_path", rewrite_path)
+            pulumi.set(__self__, "rewrite_path", rewrite_path)
 
     @property
     @pulumi.getter(name="appId")
@@ -3036,35 +2325,14 @@ class LoadBalancerInternetInternet(dict):
         :param str protocol: The Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
         :param int target_port: The Container port.
         """
-        LoadBalancerInternetInternet._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            https_cert_id=https_cert_id,
-            port=port,
-            protocol=protocol,
-            target_port=target_port,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             https_cert_id: Optional[str] = None,
-             port: Optional[int] = None,
-             protocol: Optional[str] = None,
-             target_port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if https_cert_id is None and 'httpsCertId' in kwargs:
-            https_cert_id = kwargs['httpsCertId']
-        if target_port is None and 'targetPort' in kwargs:
-            target_port = kwargs['targetPort']
-
         if https_cert_id is not None:
-            _setter("https_cert_id", https_cert_id)
+            pulumi.set(__self__, "https_cert_id", https_cert_id)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if protocol is not None:
-            _setter("protocol", protocol)
+            pulumi.set(__self__, "protocol", protocol)
         if target_port is not None:
-            _setter("target_port", target_port)
+            pulumi.set(__self__, "target_port", target_port)
 
     @property
     @pulumi.getter(name="httpsCertId")
@@ -3131,35 +2399,14 @@ class LoadBalancerIntranetIntranet(dict):
         :param str protocol: The Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
         :param int target_port: The Container port.
         """
-        LoadBalancerIntranetIntranet._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            https_cert_id=https_cert_id,
-            port=port,
-            protocol=protocol,
-            target_port=target_port,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             https_cert_id: Optional[str] = None,
-             port: Optional[int] = None,
-             protocol: Optional[str] = None,
-             target_port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if https_cert_id is None and 'httpsCertId' in kwargs:
-            https_cert_id = kwargs['httpsCertId']
-        if target_port is None and 'targetPort' in kwargs:
-            target_port = kwargs['targetPort']
-
         if https_cert_id is not None:
-            _setter("https_cert_id", https_cert_id)
+            pulumi.set(__self__, "https_cert_id", https_cert_id)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if protocol is not None:
-            _setter("protocol", protocol)
+            pulumi.set(__self__, "protocol", protocol)
         if target_port is not None:
-            _setter("target_port", target_port)
+            pulumi.set(__self__, "target_port", target_port)
 
     @property
     @pulumi.getter(name="httpsCertId")
@@ -3215,69 +2462,14 @@ class GetApplicationScalingRulesRuleResult(dict):
         :param Sequence['GetApplicationScalingRulesRuleScalingRuleTimerArgs'] scaling_rule_timers: Timing elastic expansion.
         :param str scaling_rule_type: Flexible strategy type.
         """
-        GetApplicationScalingRulesRuleResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            app_id=app_id,
-            create_time=create_time,
-            id=id,
-            scaling_rule_enable=scaling_rule_enable,
-            scaling_rule_metrics=scaling_rule_metrics,
-            scaling_rule_name=scaling_rule_name,
-            scaling_rule_timers=scaling_rule_timers,
-            scaling_rule_type=scaling_rule_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             app_id: Optional[str] = None,
-             create_time: Optional[str] = None,
-             id: Optional[str] = None,
-             scaling_rule_enable: Optional[bool] = None,
-             scaling_rule_metrics: Optional[Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricResult']] = None,
-             scaling_rule_name: Optional[str] = None,
-             scaling_rule_timers: Optional[Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleTimerResult']] = None,
-             scaling_rule_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if app_id is None and 'appId' in kwargs:
-            app_id = kwargs['appId']
-        if app_id is None:
-            raise TypeError("Missing 'app_id' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if scaling_rule_enable is None and 'scalingRuleEnable' in kwargs:
-            scaling_rule_enable = kwargs['scalingRuleEnable']
-        if scaling_rule_enable is None:
-            raise TypeError("Missing 'scaling_rule_enable' argument")
-        if scaling_rule_metrics is None and 'scalingRuleMetrics' in kwargs:
-            scaling_rule_metrics = kwargs['scalingRuleMetrics']
-        if scaling_rule_metrics is None:
-            raise TypeError("Missing 'scaling_rule_metrics' argument")
-        if scaling_rule_name is None and 'scalingRuleName' in kwargs:
-            scaling_rule_name = kwargs['scalingRuleName']
-        if scaling_rule_name is None:
-            raise TypeError("Missing 'scaling_rule_name' argument")
-        if scaling_rule_timers is None and 'scalingRuleTimers' in kwargs:
-            scaling_rule_timers = kwargs['scalingRuleTimers']
-        if scaling_rule_timers is None:
-            raise TypeError("Missing 'scaling_rule_timers' argument")
-        if scaling_rule_type is None and 'scalingRuleType' in kwargs:
-            scaling_rule_type = kwargs['scalingRuleType']
-        if scaling_rule_type is None:
-            raise TypeError("Missing 'scaling_rule_type' argument")
-
-        _setter("app_id", app_id)
-        _setter("create_time", create_time)
-        _setter("id", id)
-        _setter("scaling_rule_enable", scaling_rule_enable)
-        _setter("scaling_rule_metrics", scaling_rule_metrics)
-        _setter("scaling_rule_name", scaling_rule_name)
-        _setter("scaling_rule_timers", scaling_rule_timers)
-        _setter("scaling_rule_type", scaling_rule_type)
+        pulumi.set(__self__, "app_id", app_id)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "scaling_rule_enable", scaling_rule_enable)
+        pulumi.set(__self__, "scaling_rule_metrics", scaling_rule_metrics)
+        pulumi.set(__self__, "scaling_rule_name", scaling_rule_name)
+        pulumi.set(__self__, "scaling_rule_timers", scaling_rule_timers)
+        pulumi.set(__self__, "scaling_rule_type", scaling_rule_type)
 
     @property
     @pulumi.getter(name="appId")
@@ -3361,55 +2553,12 @@ class GetApplicationScalingRulesRuleScalingRuleMetricResult(dict):
         :param Sequence['GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArgs'] scale_down_rules: The shrink rule.
         :param Sequence['GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArgs'] scale_up_rules: The expansion rules.
         """
-        GetApplicationScalingRulesRuleScalingRuleMetricResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            max_replicas=max_replicas,
-            metrics=metrics,
-            metrics_statuses=metrics_statuses,
-            min_replicas=min_replicas,
-            scale_down_rules=scale_down_rules,
-            scale_up_rules=scale_up_rules,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             max_replicas: Optional[int] = None,
-             metrics: Optional[Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricMetricResult']] = None,
-             metrics_statuses: Optional[Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusResult']] = None,
-             min_replicas: Optional[int] = None,
-             scale_down_rules: Optional[Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleResult']] = None,
-             scale_up_rules: Optional[Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleResult']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if max_replicas is None and 'maxReplicas' in kwargs:
-            max_replicas = kwargs['maxReplicas']
-        if max_replicas is None:
-            raise TypeError("Missing 'max_replicas' argument")
-        if metrics is None:
-            raise TypeError("Missing 'metrics' argument")
-        if metrics_statuses is None and 'metricsStatuses' in kwargs:
-            metrics_statuses = kwargs['metricsStatuses']
-        if metrics_statuses is None:
-            raise TypeError("Missing 'metrics_statuses' argument")
-        if min_replicas is None and 'minReplicas' in kwargs:
-            min_replicas = kwargs['minReplicas']
-        if min_replicas is None:
-            raise TypeError("Missing 'min_replicas' argument")
-        if scale_down_rules is None and 'scaleDownRules' in kwargs:
-            scale_down_rules = kwargs['scaleDownRules']
-        if scale_down_rules is None:
-            raise TypeError("Missing 'scale_down_rules' argument")
-        if scale_up_rules is None and 'scaleUpRules' in kwargs:
-            scale_up_rules = kwargs['scaleUpRules']
-        if scale_up_rules is None:
-            raise TypeError("Missing 'scale_up_rules' argument")
-
-        _setter("max_replicas", max_replicas)
-        _setter("metrics", metrics)
-        _setter("metrics_statuses", metrics_statuses)
-        _setter("min_replicas", min_replicas)
-        _setter("scale_down_rules", scale_down_rules)
-        _setter("scale_up_rules", scale_up_rules)
+        pulumi.set(__self__, "max_replicas", max_replicas)
+        pulumi.set(__self__, "metrics", metrics)
+        pulumi.set(__self__, "metrics_statuses", metrics_statuses)
+        pulumi.set(__self__, "min_replicas", min_replicas)
+        pulumi.set(__self__, "scale_down_rules", scale_down_rules)
+        pulumi.set(__self__, "scale_up_rules", scale_up_rules)
 
     @property
     @pulumi.getter(name="maxReplicas")
@@ -3469,29 +2618,8 @@ class GetApplicationScalingRulesRuleScalingRuleMetricMetricResult(dict):
         :param int metric_target_average_utilization: The target value of the monitoring indicator.
         :param str metric_type: The metric type of the Application Scaling Rule.
         """
-        GetApplicationScalingRulesRuleScalingRuleMetricMetricResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            metric_target_average_utilization=metric_target_average_utilization,
-            metric_type=metric_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             metric_target_average_utilization: Optional[int] = None,
-             metric_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if metric_target_average_utilization is None and 'metricTargetAverageUtilization' in kwargs:
-            metric_target_average_utilization = kwargs['metricTargetAverageUtilization']
-        if metric_target_average_utilization is None:
-            raise TypeError("Missing 'metric_target_average_utilization' argument")
-        if metric_type is None and 'metricType' in kwargs:
-            metric_type = kwargs['metricType']
-        if metric_type is None:
-            raise TypeError("Missing 'metric_type' argument")
-
-        _setter("metric_target_average_utilization", metric_target_average_utilization)
-        _setter("metric_type", metric_type)
+        pulumi.set(__self__, "metric_target_average_utilization", metric_target_average_utilization)
+        pulumi.set(__self__, "metric_type", metric_type)
 
     @property
     @pulumi.getter(name="metricTargetAverageUtilization")
@@ -3531,71 +2659,14 @@ class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusResult(dict):
         :param Sequence['GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArgs'] next_scale_metrics: Next monitoring indicator elasticity list
         :param int next_scale_time_period: The next cycle of monitoring indicator elasticity.
         """
-        GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            current_metrics=current_metrics,
-            current_replicas=current_replicas,
-            desired_replicas=desired_replicas,
-            last_scale_time=last_scale_time,
-            max_replicas=max_replicas,
-            min_replicas=min_replicas,
-            next_scale_metrics=next_scale_metrics,
-            next_scale_time_period=next_scale_time_period,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             current_metrics: Optional[Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricResult']] = None,
-             current_replicas: Optional[int] = None,
-             desired_replicas: Optional[int] = None,
-             last_scale_time: Optional[str] = None,
-             max_replicas: Optional[int] = None,
-             min_replicas: Optional[int] = None,
-             next_scale_metrics: Optional[Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricResult']] = None,
-             next_scale_time_period: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if current_metrics is None and 'currentMetrics' in kwargs:
-            current_metrics = kwargs['currentMetrics']
-        if current_metrics is None:
-            raise TypeError("Missing 'current_metrics' argument")
-        if current_replicas is None and 'currentReplicas' in kwargs:
-            current_replicas = kwargs['currentReplicas']
-        if current_replicas is None:
-            raise TypeError("Missing 'current_replicas' argument")
-        if desired_replicas is None and 'desiredReplicas' in kwargs:
-            desired_replicas = kwargs['desiredReplicas']
-        if desired_replicas is None:
-            raise TypeError("Missing 'desired_replicas' argument")
-        if last_scale_time is None and 'lastScaleTime' in kwargs:
-            last_scale_time = kwargs['lastScaleTime']
-        if last_scale_time is None:
-            raise TypeError("Missing 'last_scale_time' argument")
-        if max_replicas is None and 'maxReplicas' in kwargs:
-            max_replicas = kwargs['maxReplicas']
-        if max_replicas is None:
-            raise TypeError("Missing 'max_replicas' argument")
-        if min_replicas is None and 'minReplicas' in kwargs:
-            min_replicas = kwargs['minReplicas']
-        if min_replicas is None:
-            raise TypeError("Missing 'min_replicas' argument")
-        if next_scale_metrics is None and 'nextScaleMetrics' in kwargs:
-            next_scale_metrics = kwargs['nextScaleMetrics']
-        if next_scale_metrics is None:
-            raise TypeError("Missing 'next_scale_metrics' argument")
-        if next_scale_time_period is None and 'nextScaleTimePeriod' in kwargs:
-            next_scale_time_period = kwargs['nextScaleTimePeriod']
-        if next_scale_time_period is None:
-            raise TypeError("Missing 'next_scale_time_period' argument")
-
-        _setter("current_metrics", current_metrics)
-        _setter("current_replicas", current_replicas)
-        _setter("desired_replicas", desired_replicas)
-        _setter("last_scale_time", last_scale_time)
-        _setter("max_replicas", max_replicas)
-        _setter("min_replicas", min_replicas)
-        _setter("next_scale_metrics", next_scale_metrics)
-        _setter("next_scale_time_period", next_scale_time_period)
+        pulumi.set(__self__, "current_metrics", current_metrics)
+        pulumi.set(__self__, "current_replicas", current_replicas)
+        pulumi.set(__self__, "desired_replicas", desired_replicas)
+        pulumi.set(__self__, "last_scale_time", last_scale_time)
+        pulumi.set(__self__, "max_replicas", max_replicas)
+        pulumi.set(__self__, "min_replicas", min_replicas)
+        pulumi.set(__self__, "next_scale_metrics", next_scale_metrics)
+        pulumi.set(__self__, "next_scale_time_period", next_scale_time_period)
 
     @property
     @pulumi.getter(name="currentMetrics")
@@ -3673,32 +2744,9 @@ class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricR
         :param str name: The name of the trigger condition.
         :param str type: The metric type. Associated with monitoring indicators.
         """
-        GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            current_value=current_value,
-            name=name,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             current_value: Optional[int] = None,
-             name: Optional[str] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if current_value is None and 'currentValue' in kwargs:
-            current_value = kwargs['currentValue']
-        if current_value is None:
-            raise TypeError("Missing 'current_value' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("current_value", current_value)
-        _setter("name", name)
-        _setter("type", type)
+        pulumi.set(__self__, "current_value", current_value)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="currentValue")
@@ -3736,34 +2784,9 @@ class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetri
         :param int next_scale_in_average_utilization: The percentage value of the monitoring indicator elasticity that triggers the shrinkage condition next time.
         :param int next_scale_out_average_utilization: The percentage value of the monitoring indicator elasticity that triggers the expansion condition next time.
         """
-        GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            next_scale_in_average_utilization=next_scale_in_average_utilization,
-            next_scale_out_average_utilization=next_scale_out_average_utilization,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             next_scale_in_average_utilization: Optional[int] = None,
-             next_scale_out_average_utilization: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if next_scale_in_average_utilization is None and 'nextScaleInAverageUtilization' in kwargs:
-            next_scale_in_average_utilization = kwargs['nextScaleInAverageUtilization']
-        if next_scale_in_average_utilization is None:
-            raise TypeError("Missing 'next_scale_in_average_utilization' argument")
-        if next_scale_out_average_utilization is None and 'nextScaleOutAverageUtilization' in kwargs:
-            next_scale_out_average_utilization = kwargs['nextScaleOutAverageUtilization']
-        if next_scale_out_average_utilization is None:
-            raise TypeError("Missing 'next_scale_out_average_utilization' argument")
-
-        _setter("name", name)
-        _setter("next_scale_in_average_utilization", next_scale_in_average_utilization)
-        _setter("next_scale_out_average_utilization", next_scale_out_average_utilization)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "next_scale_in_average_utilization", next_scale_in_average_utilization)
+        pulumi.set(__self__, "next_scale_out_average_utilization", next_scale_out_average_utilization)
 
     @property
     @pulumi.getter
@@ -3801,32 +2824,9 @@ class GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleResult(dict):
         :param int stabilization_window_seconds: Expansion cooling time.
         :param int step: Flexible expansion step. The maximum number of instances per unit time.
         """
-        GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            disabled=disabled,
-            stabilization_window_seconds=stabilization_window_seconds,
-            step=step,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             disabled: Optional[bool] = None,
-             stabilization_window_seconds: Optional[int] = None,
-             step: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disabled is None:
-            raise TypeError("Missing 'disabled' argument")
-        if stabilization_window_seconds is None and 'stabilizationWindowSeconds' in kwargs:
-            stabilization_window_seconds = kwargs['stabilizationWindowSeconds']
-        if stabilization_window_seconds is None:
-            raise TypeError("Missing 'stabilization_window_seconds' argument")
-        if step is None:
-            raise TypeError("Missing 'step' argument")
-
-        _setter("disabled", disabled)
-        _setter("stabilization_window_seconds", stabilization_window_seconds)
-        _setter("step", step)
+        pulumi.set(__self__, "disabled", disabled)
+        pulumi.set(__self__, "stabilization_window_seconds", stabilization_window_seconds)
+        pulumi.set(__self__, "step", step)
 
     @property
     @pulumi.getter
@@ -3864,32 +2864,9 @@ class GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleResult(dict):
         :param int stabilization_window_seconds: Expansion cooling time.
         :param int step: Flexible expansion step. The maximum number of instances per unit time.
         """
-        GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            disabled=disabled,
-            stabilization_window_seconds=stabilization_window_seconds,
-            step=step,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             disabled: Optional[bool] = None,
-             stabilization_window_seconds: Optional[int] = None,
-             step: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disabled is None:
-            raise TypeError("Missing 'disabled' argument")
-        if stabilization_window_seconds is None and 'stabilizationWindowSeconds' in kwargs:
-            stabilization_window_seconds = kwargs['stabilizationWindowSeconds']
-        if stabilization_window_seconds is None:
-            raise TypeError("Missing 'stabilization_window_seconds' argument")
-        if step is None:
-            raise TypeError("Missing 'step' argument")
-
-        _setter("disabled", disabled)
-        _setter("stabilization_window_seconds", stabilization_window_seconds)
-        _setter("step", step)
+        pulumi.set(__self__, "disabled", disabled)
+        pulumi.set(__self__, "stabilization_window_seconds", stabilization_window_seconds)
+        pulumi.set(__self__, "step", step)
 
     @property
     @pulumi.getter
@@ -3929,39 +2906,10 @@ class GetApplicationScalingRulesRuleScalingRuleTimerResult(dict):
         :param str period: The period in which a timed elastic scaling strategy is executed.
         :param Sequence['GetApplicationScalingRulesRuleScalingRuleTimerScheduleArgs'] schedules: Trigger point in time within a single day.
         """
-        GetApplicationScalingRulesRuleScalingRuleTimerResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            begin_date=begin_date,
-            end_date=end_date,
-            period=period,
-            schedules=schedules,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             begin_date: Optional[str] = None,
-             end_date: Optional[str] = None,
-             period: Optional[str] = None,
-             schedules: Optional[Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleTimerScheduleResult']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if begin_date is None and 'beginDate' in kwargs:
-            begin_date = kwargs['beginDate']
-        if begin_date is None:
-            raise TypeError("Missing 'begin_date' argument")
-        if end_date is None and 'endDate' in kwargs:
-            end_date = kwargs['endDate']
-        if end_date is None:
-            raise TypeError("Missing 'end_date' argument")
-        if period is None:
-            raise TypeError("Missing 'period' argument")
-        if schedules is None:
-            raise TypeError("Missing 'schedules' argument")
-
-        _setter("begin_date", begin_date)
-        _setter("end_date", end_date)
-        _setter("period", period)
-        _setter("schedules", schedules)
+        pulumi.set(__self__, "begin_date", begin_date)
+        pulumi.set(__self__, "end_date", end_date)
+        pulumi.set(__self__, "period", period)
+        pulumi.set(__self__, "schedules", schedules)
 
     @property
     @pulumi.getter(name="beginDate")
@@ -4009,43 +2957,10 @@ class GetApplicationScalingRulesRuleScalingRuleTimerScheduleResult(dict):
         :param int min_replicas: The minimum number of instances.
         :param int target_replicas: The number of target instances.
         """
-        GetApplicationScalingRulesRuleScalingRuleTimerScheduleResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            at_time=at_time,
-            max_replicas=max_replicas,
-            min_replicas=min_replicas,
-            target_replicas=target_replicas,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             at_time: Optional[str] = None,
-             max_replicas: Optional[int] = None,
-             min_replicas: Optional[int] = None,
-             target_replicas: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if at_time is None and 'atTime' in kwargs:
-            at_time = kwargs['atTime']
-        if at_time is None:
-            raise TypeError("Missing 'at_time' argument")
-        if max_replicas is None and 'maxReplicas' in kwargs:
-            max_replicas = kwargs['maxReplicas']
-        if max_replicas is None:
-            raise TypeError("Missing 'max_replicas' argument")
-        if min_replicas is None and 'minReplicas' in kwargs:
-            min_replicas = kwargs['minReplicas']
-        if min_replicas is None:
-            raise TypeError("Missing 'min_replicas' argument")
-        if target_replicas is None and 'targetReplicas' in kwargs:
-            target_replicas = kwargs['targetReplicas']
-        if target_replicas is None:
-            raise TypeError("Missing 'target_replicas' argument")
-
-        _setter("at_time", at_time)
-        _setter("max_replicas", max_replicas)
-        _setter("min_replicas", min_replicas)
-        _setter("target_replicas", target_replicas)
+        pulumi.set(__self__, "at_time", at_time)
+        pulumi.set(__self__, "max_replicas", max_replicas)
+        pulumi.set(__self__, "min_replicas", min_replicas)
+        pulumi.set(__self__, "target_replicas", target_replicas)
 
     @property
     @pulumi.getter(name="atTime")
@@ -4189,369 +3104,60 @@ class GetApplicationsApplicationResult(dict):
         :param str war_start_options: WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap "$@" start.
         :param str web_container: The version of tomcat that the deployment package depends on. Image type applications are not supported.
         """
-        GetApplicationsApplicationResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            acr_assume_role_arn=acr_assume_role_arn,
-            acr_instance_id=acr_instance_id,
-            app_description=app_description,
-            app_name=app_name,
-            application_id=application_id,
-            command=command,
-            command_args=command_args,
-            config_map_mount_desc=config_map_mount_desc,
-            cpu=cpu,
-            create_time=create_time,
-            custom_host_alias=custom_host_alias,
-            edas_container_version=edas_container_version,
-            envs=envs,
-            id=id,
-            image_url=image_url,
-            jar_start_args=jar_start_args,
-            jar_start_options=jar_start_options,
-            jdk=jdk,
-            liveness=liveness,
-            memory=memory,
-            min_ready_instances=min_ready_instances,
-            mount_descs=mount_descs,
-            mount_host=mount_host,
-            namespace_id=namespace_id,
-            nas_id=nas_id,
-            oss_ak_id=oss_ak_id,
-            oss_ak_secret=oss_ak_secret,
-            oss_mount_descs=oss_mount_descs,
-            oss_mount_details=oss_mount_details,
-            package_type=package_type,
-            package_url=package_url,
-            package_version=package_version,
-            php_arms_config_location=php_arms_config_location,
-            php_config=php_config,
-            php_config_location=php_config_location,
-            post_start=post_start,
-            pre_stop=pre_stop,
-            readiness=readiness,
-            region_id=region_id,
-            replicas=replicas,
-            repo_name=repo_name,
-            repo_namespace=repo_namespace,
-            repo_origin_type=repo_origin_type,
-            security_group_id=security_group_id,
-            sls_configs=sls_configs,
-            status=status,
-            tags=tags,
-            termination_grace_period_seconds=termination_grace_period_seconds,
-            timezone=timezone,
-            tomcat_config=tomcat_config,
-            vpc_id=vpc_id,
-            vswitch_id=vswitch_id,
-            war_start_options=war_start_options,
-            web_container=web_container,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             acr_assume_role_arn: Optional[str] = None,
-             acr_instance_id: Optional[str] = None,
-             app_description: Optional[str] = None,
-             app_name: Optional[str] = None,
-             application_id: Optional[str] = None,
-             command: Optional[str] = None,
-             command_args: Optional[str] = None,
-             config_map_mount_desc: Optional[str] = None,
-             cpu: Optional[int] = None,
-             create_time: Optional[str] = None,
-             custom_host_alias: Optional[str] = None,
-             edas_container_version: Optional[str] = None,
-             envs: Optional[str] = None,
-             id: Optional[str] = None,
-             image_url: Optional[str] = None,
-             jar_start_args: Optional[str] = None,
-             jar_start_options: Optional[str] = None,
-             jdk: Optional[str] = None,
-             liveness: Optional[str] = None,
-             memory: Optional[int] = None,
-             min_ready_instances: Optional[int] = None,
-             mount_descs: Optional[Sequence['outputs.GetApplicationsApplicationMountDescResult']] = None,
-             mount_host: Optional[str] = None,
-             namespace_id: Optional[str] = None,
-             nas_id: Optional[str] = None,
-             oss_ak_id: Optional[str] = None,
-             oss_ak_secret: Optional[str] = None,
-             oss_mount_descs: Optional[str] = None,
-             oss_mount_details: Optional[Sequence['outputs.GetApplicationsApplicationOssMountDetailResult']] = None,
-             package_type: Optional[str] = None,
-             package_url: Optional[str] = None,
-             package_version: Optional[str] = None,
-             php_arms_config_location: Optional[str] = None,
-             php_config: Optional[str] = None,
-             php_config_location: Optional[str] = None,
-             post_start: Optional[str] = None,
-             pre_stop: Optional[str] = None,
-             readiness: Optional[str] = None,
-             region_id: Optional[str] = None,
-             replicas: Optional[int] = None,
-             repo_name: Optional[str] = None,
-             repo_namespace: Optional[str] = None,
-             repo_origin_type: Optional[str] = None,
-             security_group_id: Optional[str] = None,
-             sls_configs: Optional[str] = None,
-             status: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             termination_grace_period_seconds: Optional[int] = None,
-             timezone: Optional[str] = None,
-             tomcat_config: Optional[str] = None,
-             vpc_id: Optional[str] = None,
-             vswitch_id: Optional[str] = None,
-             war_start_options: Optional[str] = None,
-             web_container: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if acr_assume_role_arn is None and 'acrAssumeRoleArn' in kwargs:
-            acr_assume_role_arn = kwargs['acrAssumeRoleArn']
-        if acr_assume_role_arn is None:
-            raise TypeError("Missing 'acr_assume_role_arn' argument")
-        if acr_instance_id is None and 'acrInstanceId' in kwargs:
-            acr_instance_id = kwargs['acrInstanceId']
-        if acr_instance_id is None:
-            raise TypeError("Missing 'acr_instance_id' argument")
-        if app_description is None and 'appDescription' in kwargs:
-            app_description = kwargs['appDescription']
-        if app_description is None:
-            raise TypeError("Missing 'app_description' argument")
-        if app_name is None and 'appName' in kwargs:
-            app_name = kwargs['appName']
-        if app_name is None:
-            raise TypeError("Missing 'app_name' argument")
-        if application_id is None and 'applicationId' in kwargs:
-            application_id = kwargs['applicationId']
-        if application_id is None:
-            raise TypeError("Missing 'application_id' argument")
-        if command is None:
-            raise TypeError("Missing 'command' argument")
-        if command_args is None and 'commandArgs' in kwargs:
-            command_args = kwargs['commandArgs']
-        if command_args is None:
-            raise TypeError("Missing 'command_args' argument")
-        if config_map_mount_desc is None and 'configMapMountDesc' in kwargs:
-            config_map_mount_desc = kwargs['configMapMountDesc']
-        if config_map_mount_desc is None:
-            raise TypeError("Missing 'config_map_mount_desc' argument")
-        if cpu is None:
-            raise TypeError("Missing 'cpu' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if custom_host_alias is None and 'customHostAlias' in kwargs:
-            custom_host_alias = kwargs['customHostAlias']
-        if custom_host_alias is None:
-            raise TypeError("Missing 'custom_host_alias' argument")
-        if edas_container_version is None and 'edasContainerVersion' in kwargs:
-            edas_container_version = kwargs['edasContainerVersion']
-        if edas_container_version is None:
-            raise TypeError("Missing 'edas_container_version' argument")
-        if envs is None:
-            raise TypeError("Missing 'envs' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if image_url is None and 'imageUrl' in kwargs:
-            image_url = kwargs['imageUrl']
-        if image_url is None:
-            raise TypeError("Missing 'image_url' argument")
-        if jar_start_args is None and 'jarStartArgs' in kwargs:
-            jar_start_args = kwargs['jarStartArgs']
-        if jar_start_args is None:
-            raise TypeError("Missing 'jar_start_args' argument")
-        if jar_start_options is None and 'jarStartOptions' in kwargs:
-            jar_start_options = kwargs['jarStartOptions']
-        if jar_start_options is None:
-            raise TypeError("Missing 'jar_start_options' argument")
-        if jdk is None:
-            raise TypeError("Missing 'jdk' argument")
-        if liveness is None:
-            raise TypeError("Missing 'liveness' argument")
-        if memory is None:
-            raise TypeError("Missing 'memory' argument")
-        if min_ready_instances is None and 'minReadyInstances' in kwargs:
-            min_ready_instances = kwargs['minReadyInstances']
-        if min_ready_instances is None:
-            raise TypeError("Missing 'min_ready_instances' argument")
-        if mount_descs is None and 'mountDescs' in kwargs:
-            mount_descs = kwargs['mountDescs']
-        if mount_descs is None:
-            raise TypeError("Missing 'mount_descs' argument")
-        if mount_host is None and 'mountHost' in kwargs:
-            mount_host = kwargs['mountHost']
-        if mount_host is None:
-            raise TypeError("Missing 'mount_host' argument")
-        if namespace_id is None and 'namespaceId' in kwargs:
-            namespace_id = kwargs['namespaceId']
-        if namespace_id is None:
-            raise TypeError("Missing 'namespace_id' argument")
-        if nas_id is None and 'nasId' in kwargs:
-            nas_id = kwargs['nasId']
-        if nas_id is None:
-            raise TypeError("Missing 'nas_id' argument")
-        if oss_ak_id is None and 'ossAkId' in kwargs:
-            oss_ak_id = kwargs['ossAkId']
-        if oss_ak_id is None:
-            raise TypeError("Missing 'oss_ak_id' argument")
-        if oss_ak_secret is None and 'ossAkSecret' in kwargs:
-            oss_ak_secret = kwargs['ossAkSecret']
-        if oss_ak_secret is None:
-            raise TypeError("Missing 'oss_ak_secret' argument")
-        if oss_mount_descs is None and 'ossMountDescs' in kwargs:
-            oss_mount_descs = kwargs['ossMountDescs']
-        if oss_mount_descs is None:
-            raise TypeError("Missing 'oss_mount_descs' argument")
-        if oss_mount_details is None and 'ossMountDetails' in kwargs:
-            oss_mount_details = kwargs['ossMountDetails']
-        if oss_mount_details is None:
-            raise TypeError("Missing 'oss_mount_details' argument")
-        if package_type is None and 'packageType' in kwargs:
-            package_type = kwargs['packageType']
-        if package_type is None:
-            raise TypeError("Missing 'package_type' argument")
-        if package_url is None and 'packageUrl' in kwargs:
-            package_url = kwargs['packageUrl']
-        if package_url is None:
-            raise TypeError("Missing 'package_url' argument")
-        if package_version is None and 'packageVersion' in kwargs:
-            package_version = kwargs['packageVersion']
-        if package_version is None:
-            raise TypeError("Missing 'package_version' argument")
-        if php_arms_config_location is None and 'phpArmsConfigLocation' in kwargs:
-            php_arms_config_location = kwargs['phpArmsConfigLocation']
-        if php_arms_config_location is None:
-            raise TypeError("Missing 'php_arms_config_location' argument")
-        if php_config is None and 'phpConfig' in kwargs:
-            php_config = kwargs['phpConfig']
-        if php_config is None:
-            raise TypeError("Missing 'php_config' argument")
-        if php_config_location is None and 'phpConfigLocation' in kwargs:
-            php_config_location = kwargs['phpConfigLocation']
-        if php_config_location is None:
-            raise TypeError("Missing 'php_config_location' argument")
-        if post_start is None and 'postStart' in kwargs:
-            post_start = kwargs['postStart']
-        if post_start is None:
-            raise TypeError("Missing 'post_start' argument")
-        if pre_stop is None and 'preStop' in kwargs:
-            pre_stop = kwargs['preStop']
-        if pre_stop is None:
-            raise TypeError("Missing 'pre_stop' argument")
-        if readiness is None:
-            raise TypeError("Missing 'readiness' argument")
-        if region_id is None and 'regionId' in kwargs:
-            region_id = kwargs['regionId']
-        if region_id is None:
-            raise TypeError("Missing 'region_id' argument")
-        if replicas is None:
-            raise TypeError("Missing 'replicas' argument")
-        if repo_name is None and 'repoName' in kwargs:
-            repo_name = kwargs['repoName']
-        if repo_name is None:
-            raise TypeError("Missing 'repo_name' argument")
-        if repo_namespace is None and 'repoNamespace' in kwargs:
-            repo_namespace = kwargs['repoNamespace']
-        if repo_namespace is None:
-            raise TypeError("Missing 'repo_namespace' argument")
-        if repo_origin_type is None and 'repoOriginType' in kwargs:
-            repo_origin_type = kwargs['repoOriginType']
-        if repo_origin_type is None:
-            raise TypeError("Missing 'repo_origin_type' argument")
-        if security_group_id is None and 'securityGroupId' in kwargs:
-            security_group_id = kwargs['securityGroupId']
-        if security_group_id is None:
-            raise TypeError("Missing 'security_group_id' argument")
-        if sls_configs is None and 'slsConfigs' in kwargs:
-            sls_configs = kwargs['slsConfigs']
-        if sls_configs is None:
-            raise TypeError("Missing 'sls_configs' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-        if termination_grace_period_seconds is None and 'terminationGracePeriodSeconds' in kwargs:
-            termination_grace_period_seconds = kwargs['terminationGracePeriodSeconds']
-        if termination_grace_period_seconds is None:
-            raise TypeError("Missing 'termination_grace_period_seconds' argument")
-        if timezone is None:
-            raise TypeError("Missing 'timezone' argument")
-        if tomcat_config is None and 'tomcatConfig' in kwargs:
-            tomcat_config = kwargs['tomcatConfig']
-        if tomcat_config is None:
-            raise TypeError("Missing 'tomcat_config' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-        if war_start_options is None and 'warStartOptions' in kwargs:
-            war_start_options = kwargs['warStartOptions']
-        if war_start_options is None:
-            raise TypeError("Missing 'war_start_options' argument")
-        if web_container is None and 'webContainer' in kwargs:
-            web_container = kwargs['webContainer']
-        if web_container is None:
-            raise TypeError("Missing 'web_container' argument")
-
-        _setter("acr_assume_role_arn", acr_assume_role_arn)
-        _setter("acr_instance_id", acr_instance_id)
-        _setter("app_description", app_description)
-        _setter("app_name", app_name)
-        _setter("application_id", application_id)
-        _setter("command", command)
-        _setter("command_args", command_args)
-        _setter("config_map_mount_desc", config_map_mount_desc)
-        _setter("cpu", cpu)
-        _setter("create_time", create_time)
-        _setter("custom_host_alias", custom_host_alias)
-        _setter("edas_container_version", edas_container_version)
-        _setter("envs", envs)
-        _setter("id", id)
-        _setter("image_url", image_url)
-        _setter("jar_start_args", jar_start_args)
-        _setter("jar_start_options", jar_start_options)
-        _setter("jdk", jdk)
-        _setter("liveness", liveness)
-        _setter("memory", memory)
-        _setter("min_ready_instances", min_ready_instances)
-        _setter("mount_descs", mount_descs)
-        _setter("mount_host", mount_host)
-        _setter("namespace_id", namespace_id)
-        _setter("nas_id", nas_id)
-        _setter("oss_ak_id", oss_ak_id)
-        _setter("oss_ak_secret", oss_ak_secret)
-        _setter("oss_mount_descs", oss_mount_descs)
-        _setter("oss_mount_details", oss_mount_details)
-        _setter("package_type", package_type)
-        _setter("package_url", package_url)
-        _setter("package_version", package_version)
-        _setter("php_arms_config_location", php_arms_config_location)
-        _setter("php_config", php_config)
-        _setter("php_config_location", php_config_location)
-        _setter("post_start", post_start)
-        _setter("pre_stop", pre_stop)
-        _setter("readiness", readiness)
-        _setter("region_id", region_id)
-        _setter("replicas", replicas)
-        _setter("repo_name", repo_name)
-        _setter("repo_namespace", repo_namespace)
-        _setter("repo_origin_type", repo_origin_type)
-        _setter("security_group_id", security_group_id)
-        _setter("sls_configs", sls_configs)
-        _setter("status", status)
-        _setter("tags", tags)
-        _setter("termination_grace_period_seconds", termination_grace_period_seconds)
-        _setter("timezone", timezone)
-        _setter("tomcat_config", tomcat_config)
-        _setter("vpc_id", vpc_id)
-        _setter("vswitch_id", vswitch_id)
-        _setter("war_start_options", war_start_options)
-        _setter("web_container", web_container)
+        pulumi.set(__self__, "acr_assume_role_arn", acr_assume_role_arn)
+        pulumi.set(__self__, "acr_instance_id", acr_instance_id)
+        pulumi.set(__self__, "app_description", app_description)
+        pulumi.set(__self__, "app_name", app_name)
+        pulumi.set(__self__, "application_id", application_id)
+        pulumi.set(__self__, "command", command)
+        pulumi.set(__self__, "command_args", command_args)
+        pulumi.set(__self__, "config_map_mount_desc", config_map_mount_desc)
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "custom_host_alias", custom_host_alias)
+        pulumi.set(__self__, "edas_container_version", edas_container_version)
+        pulumi.set(__self__, "envs", envs)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "image_url", image_url)
+        pulumi.set(__self__, "jar_start_args", jar_start_args)
+        pulumi.set(__self__, "jar_start_options", jar_start_options)
+        pulumi.set(__self__, "jdk", jdk)
+        pulumi.set(__self__, "liveness", liveness)
+        pulumi.set(__self__, "memory", memory)
+        pulumi.set(__self__, "min_ready_instances", min_ready_instances)
+        pulumi.set(__self__, "mount_descs", mount_descs)
+        pulumi.set(__self__, "mount_host", mount_host)
+        pulumi.set(__self__, "namespace_id", namespace_id)
+        pulumi.set(__self__, "nas_id", nas_id)
+        pulumi.set(__self__, "oss_ak_id", oss_ak_id)
+        pulumi.set(__self__, "oss_ak_secret", oss_ak_secret)
+        pulumi.set(__self__, "oss_mount_descs", oss_mount_descs)
+        pulumi.set(__self__, "oss_mount_details", oss_mount_details)
+        pulumi.set(__self__, "package_type", package_type)
+        pulumi.set(__self__, "package_url", package_url)
+        pulumi.set(__self__, "package_version", package_version)
+        pulumi.set(__self__, "php_arms_config_location", php_arms_config_location)
+        pulumi.set(__self__, "php_config", php_config)
+        pulumi.set(__self__, "php_config_location", php_config_location)
+        pulumi.set(__self__, "post_start", post_start)
+        pulumi.set(__self__, "pre_stop", pre_stop)
+        pulumi.set(__self__, "readiness", readiness)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "replicas", replicas)
+        pulumi.set(__self__, "repo_name", repo_name)
+        pulumi.set(__self__, "repo_namespace", repo_namespace)
+        pulumi.set(__self__, "repo_origin_type", repo_origin_type)
+        pulumi.set(__self__, "security_group_id", security_group_id)
+        pulumi.set(__self__, "sls_configs", sls_configs)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "termination_grace_period_seconds", termination_grace_period_seconds)
+        pulumi.set(__self__, "timezone", timezone)
+        pulumi.set(__self__, "tomcat_config", tomcat_config)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "war_start_options", war_start_options)
+        pulumi.set(__self__, "web_container", web_container)
 
     @property
     @pulumi.getter(name="acrAssumeRoleArn")
@@ -4983,29 +3589,8 @@ class GetApplicationsApplicationMountDescResult(dict):
         :param str mount_path: The Container mount path.
         :param str nas_path: NAS relative file directory.
         """
-        GetApplicationsApplicationMountDescResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            mount_path=mount_path,
-            nas_path=nas_path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             mount_path: Optional[str] = None,
-             nas_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if mount_path is None and 'mountPath' in kwargs:
-            mount_path = kwargs['mountPath']
-        if mount_path is None:
-            raise TypeError("Missing 'mount_path' argument")
-        if nas_path is None and 'nasPath' in kwargs:
-            nas_path = kwargs['nasPath']
-        if nas_path is None:
-            raise TypeError("Missing 'nas_path' argument")
-
-        _setter("mount_path", mount_path)
-        _setter("nas_path", nas_path)
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "nas_path", nas_path)
 
     @property
     @pulumi.getter(name="mountPath")
@@ -5037,43 +3622,10 @@ class GetApplicationsApplicationOssMountDetailResult(dict):
         :param str mount_path: The Container mount path.
         :param bool read_only: Whether the container path has readable permission to mount directory resources.
         """
-        GetApplicationsApplicationOssMountDetailResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket_name=bucket_name,
-            bucket_path=bucket_path,
-            mount_path=mount_path,
-            read_only=read_only,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket_name: Optional[str] = None,
-             bucket_path: Optional[str] = None,
-             mount_path: Optional[str] = None,
-             read_only: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket_name is None and 'bucketName' in kwargs:
-            bucket_name = kwargs['bucketName']
-        if bucket_name is None:
-            raise TypeError("Missing 'bucket_name' argument")
-        if bucket_path is None and 'bucketPath' in kwargs:
-            bucket_path = kwargs['bucketPath']
-        if bucket_path is None:
-            raise TypeError("Missing 'bucket_path' argument")
-        if mount_path is None and 'mountPath' in kwargs:
-            mount_path = kwargs['mountPath']
-        if mount_path is None:
-            raise TypeError("Missing 'mount_path' argument")
-        if read_only is None and 'readOnly' in kwargs:
-            read_only = kwargs['readOnly']
-        if read_only is None:
-            raise TypeError("Missing 'read_only' argument")
-
-        _setter("bucket_name", bucket_name)
-        _setter("bucket_path", bucket_path)
-        _setter("mount_path", mount_path)
-        _setter("read_only", read_only)
+        pulumi.set(__self__, "bucket_name", bucket_name)
+        pulumi.set(__self__, "bucket_path", bucket_path)
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "read_only", read_only)
 
     @property
     @pulumi.getter(name="bucketName")
@@ -5127,56 +3679,13 @@ class GetConfigMapsMapResult(dict):
         :param str name: ConfigMap instance name.
         :param str namespace_id: The NamespaceId of Config Maps.
         """
-        GetConfigMapsMapResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            config_map_id=config_map_id,
-            create_time=create_time,
-            data=data,
-            description=description,
-            id=id,
-            name=name,
-            namespace_id=namespace_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             config_map_id: Optional[str] = None,
-             create_time: Optional[str] = None,
-             data: Optional[str] = None,
-             description: Optional[str] = None,
-             id: Optional[str] = None,
-             name: Optional[str] = None,
-             namespace_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if config_map_id is None and 'configMapId' in kwargs:
-            config_map_id = kwargs['configMapId']
-        if config_map_id is None:
-            raise TypeError("Missing 'config_map_id' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if data is None:
-            raise TypeError("Missing 'data' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if namespace_id is None and 'namespaceId' in kwargs:
-            namespace_id = kwargs['namespaceId']
-        if namespace_id is None:
-            raise TypeError("Missing 'namespace_id' argument")
-
-        _setter("config_map_id", config_map_id)
-        _setter("create_time", create_time)
-        _setter("data", data)
-        _setter("description", description)
-        _setter("id", id)
-        _setter("name", name)
-        _setter("namespace_id", namespace_id)
+        pulumi.set(__self__, "config_map_id", config_map_id)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "data", data)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "namespace_id", namespace_id)
 
     @property
     @pulumi.getter(name="configMapId")
@@ -5250,46 +3759,11 @@ class GetGreyTagRoutesRouteResult(dict):
         :param str id: The ID of the GreyTagRoute.
         :param Sequence['GetGreyTagRoutesRouteScRuleArgs'] sc_rules: The grayscale rule created for SpringCloud Application.
         """
-        GetGreyTagRoutesRouteResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            dubbo_rules=dubbo_rules,
-            grey_tag_route_name=grey_tag_route_name,
-            id=id,
-            sc_rules=sc_rules,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[str] = None,
-             dubbo_rules: Optional[Sequence['outputs.GetGreyTagRoutesRouteDubboRuleResult']] = None,
-             grey_tag_route_name: Optional[str] = None,
-             id: Optional[str] = None,
-             sc_rules: Optional[Sequence['outputs.GetGreyTagRoutesRouteScRuleResult']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if dubbo_rules is None and 'dubboRules' in kwargs:
-            dubbo_rules = kwargs['dubboRules']
-        if dubbo_rules is None:
-            raise TypeError("Missing 'dubbo_rules' argument")
-        if grey_tag_route_name is None and 'greyTagRouteName' in kwargs:
-            grey_tag_route_name = kwargs['greyTagRouteName']
-        if grey_tag_route_name is None:
-            raise TypeError("Missing 'grey_tag_route_name' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if sc_rules is None and 'scRules' in kwargs:
-            sc_rules = kwargs['scRules']
-        if sc_rules is None:
-            raise TypeError("Missing 'sc_rules' argument")
-
-        _setter("description", description)
-        _setter("dubbo_rules", dubbo_rules)
-        _setter("grey_tag_route_name", grey_tag_route_name)
-        _setter("id", id)
-        _setter("sc_rules", sc_rules)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "dubbo_rules", dubbo_rules)
+        pulumi.set(__self__, "grey_tag_route_name", grey_tag_route_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "sc_rules", sc_rules)
 
     @property
     @pulumi.getter
@@ -5349,49 +3823,12 @@ class GetGreyTagRoutesRouteDubboRuleResult(dict):
         :param str service_name: The service name.
         :param str version: The service version.
         """
-        GetGreyTagRoutesRouteDubboRuleResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            condition=condition,
-            group=group,
-            items=items,
-            method_name=method_name,
-            service_name=service_name,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             condition: Optional[str] = None,
-             group: Optional[str] = None,
-             items: Optional[Sequence['outputs.GetGreyTagRoutesRouteDubboRuleItemResult']] = None,
-             method_name: Optional[str] = None,
-             service_name: Optional[str] = None,
-             version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if condition is None:
-            raise TypeError("Missing 'condition' argument")
-        if group is None:
-            raise TypeError("Missing 'group' argument")
-        if items is None:
-            raise TypeError("Missing 'items' argument")
-        if method_name is None and 'methodName' in kwargs:
-            method_name = kwargs['methodName']
-        if method_name is None:
-            raise TypeError("Missing 'method_name' argument")
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-        if service_name is None:
-            raise TypeError("Missing 'service_name' argument")
-        if version is None:
-            raise TypeError("Missing 'version' argument")
-
-        _setter("condition", condition)
-        _setter("group", group)
-        _setter("items", items)
-        _setter("method_name", method_name)
-        _setter("service_name", service_name)
-        _setter("version", version)
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "group", group)
+        pulumi.set(__self__, "items", items)
+        pulumi.set(__self__, "method_name", method_name)
+        pulumi.set(__self__, "service_name", service_name)
+        pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -5457,40 +3894,11 @@ class GetGreyTagRoutesRouteDubboRuleItemResult(dict):
         :param str operator: The operator.
         :param str value: The value of the parameter.
         """
-        GetGreyTagRoutesRouteDubboRuleItemResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cond=cond,
-            expr=expr,
-            index=index,
-            operator=operator,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cond: Optional[str] = None,
-             expr: Optional[str] = None,
-             index: Optional[int] = None,
-             operator: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cond is None:
-            raise TypeError("Missing 'cond' argument")
-        if expr is None:
-            raise TypeError("Missing 'expr' argument")
-        if index is None:
-            raise TypeError("Missing 'index' argument")
-        if operator is None:
-            raise TypeError("Missing 'operator' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("cond", cond)
-        _setter("expr", expr)
-        _setter("index", index)
-        _setter("operator", operator)
-        _setter("value", value)
+        pulumi.set(__self__, "cond", cond)
+        pulumi.set(__self__, "expr", expr)
+        pulumi.set(__self__, "index", index)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -5544,30 +3952,9 @@ class GetGreyTagRoutesRouteScRuleResult(dict):
         :param Sequence['GetGreyTagRoutesRouteScRuleItemArgs'] items: A list of conditions items.
         :param str path: The path corresponding to the grayscale rule.
         """
-        GetGreyTagRoutesRouteScRuleResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            condition=condition,
-            items=items,
-            path=path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             condition: Optional[str] = None,
-             items: Optional[Sequence['outputs.GetGreyTagRoutesRouteScRuleItemResult']] = None,
-             path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if condition is None:
-            raise TypeError("Missing 'condition' argument")
-        if items is None:
-            raise TypeError("Missing 'items' argument")
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-
-        _setter("condition", condition)
-        _setter("items", items)
-        _setter("path", path)
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "items", items)
+        pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter
@@ -5609,40 +3996,11 @@ class GetGreyTagRoutesRouteScRuleItemResult(dict):
         :param str type: The Compare types.
         :param str value: The value of the parameter.
         """
-        GetGreyTagRoutesRouteScRuleItemResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cond=cond,
-            name=name,
-            operator=operator,
-            type=type,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cond: Optional[str] = None,
-             name: Optional[str] = None,
-             operator: Optional[str] = None,
-             type: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cond is None:
-            raise TypeError("Missing 'cond' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if operator is None:
-            raise TypeError("Missing 'operator' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("cond", cond)
-        _setter("name", name)
-        _setter("operator", operator)
-        _setter("type", type)
-        _setter("value", value)
+        pulumi.set(__self__, "cond", cond)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -5706,67 +4064,14 @@ class GetIngressesIngressResult(dict):
         :param str namespace_id: The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
         :param str slb_id: SLB ID.
         """
-        GetIngressesIngressResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cert_id=cert_id,
-            default_rule=default_rule,
-            description=description,
-            id=id,
-            ingress_id=ingress_id,
-            listener_port=listener_port,
-            namespace_id=namespace_id,
-            slb_id=slb_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cert_id: Optional[str] = None,
-             default_rule: Optional[str] = None,
-             description: Optional[str] = None,
-             id: Optional[str] = None,
-             ingress_id: Optional[str] = None,
-             listener_port: Optional[int] = None,
-             namespace_id: Optional[str] = None,
-             slb_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cert_id is None and 'certId' in kwargs:
-            cert_id = kwargs['certId']
-        if cert_id is None:
-            raise TypeError("Missing 'cert_id' argument")
-        if default_rule is None and 'defaultRule' in kwargs:
-            default_rule = kwargs['defaultRule']
-        if default_rule is None:
-            raise TypeError("Missing 'default_rule' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if ingress_id is None and 'ingressId' in kwargs:
-            ingress_id = kwargs['ingressId']
-        if ingress_id is None:
-            raise TypeError("Missing 'ingress_id' argument")
-        if listener_port is None and 'listenerPort' in kwargs:
-            listener_port = kwargs['listenerPort']
-        if listener_port is None:
-            raise TypeError("Missing 'listener_port' argument")
-        if namespace_id is None and 'namespaceId' in kwargs:
-            namespace_id = kwargs['namespaceId']
-        if namespace_id is None:
-            raise TypeError("Missing 'namespace_id' argument")
-        if slb_id is None and 'slbId' in kwargs:
-            slb_id = kwargs['slbId']
-        if slb_id is None:
-            raise TypeError("Missing 'slb_id' argument")
-
-        _setter("cert_id", cert_id)
-        _setter("default_rule", default_rule)
-        _setter("description", description)
-        _setter("id", id)
-        _setter("ingress_id", ingress_id)
-        _setter("listener_port", listener_port)
-        _setter("namespace_id", namespace_id)
-        _setter("slb_id", slb_id)
+        pulumi.set(__self__, "cert_id", cert_id)
+        pulumi.set(__self__, "default_rule", default_rule)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ingress_id", ingress_id)
+        pulumi.set(__self__, "listener_port", listener_port)
+        pulumi.set(__self__, "namespace_id", namespace_id)
+        pulumi.set(__self__, "slb_id", slb_id)
 
     @property
     @pulumi.getter(name="certId")
@@ -5852,54 +4157,13 @@ class GetInstanceSpecificationsSpecificationResult(dict):
         :param str spec_info: The specification configuration name.
         :param int version: The specification configuration version.
         """
-        GetInstanceSpecificationsSpecificationResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cpu=cpu,
-            enable=enable,
-            id=id,
-            instance_specification_id=instance_specification_id,
-            memory=memory,
-            spec_info=spec_info,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cpu: Optional[int] = None,
-             enable: Optional[bool] = None,
-             id: Optional[str] = None,
-             instance_specification_id: Optional[str] = None,
-             memory: Optional[int] = None,
-             spec_info: Optional[str] = None,
-             version: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cpu is None:
-            raise TypeError("Missing 'cpu' argument")
-        if enable is None:
-            raise TypeError("Missing 'enable' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_specification_id is None and 'instanceSpecificationId' in kwargs:
-            instance_specification_id = kwargs['instanceSpecificationId']
-        if instance_specification_id is None:
-            raise TypeError("Missing 'instance_specification_id' argument")
-        if memory is None:
-            raise TypeError("Missing 'memory' argument")
-        if spec_info is None and 'specInfo' in kwargs:
-            spec_info = kwargs['specInfo']
-        if spec_info is None:
-            raise TypeError("Missing 'spec_info' argument")
-        if version is None:
-            raise TypeError("Missing 'version' argument")
-
-        _setter("cpu", cpu)
-        _setter("enable", enable)
-        _setter("id", id)
-        _setter("instance_specification_id", instance_specification_id)
-        _setter("memory", memory)
-        _setter("spec_info", spec_info)
-        _setter("version", version)
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "enable", enable)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_specification_id", instance_specification_id)
+        pulumi.set(__self__, "memory", memory)
+        pulumi.set(__self__, "spec_info", spec_info)
+        pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -5971,41 +4235,10 @@ class GetNamespacesNamespaceResult(dict):
         :param str namespace_id: The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
         :param str namespace_name: The Name of Namespace.
         """
-        GetNamespacesNamespaceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            namespace_description=namespace_description,
-            namespace_id=namespace_id,
-            namespace_name=namespace_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             namespace_description: Optional[str] = None,
-             namespace_id: Optional[str] = None,
-             namespace_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if namespace_description is None and 'namespaceDescription' in kwargs:
-            namespace_description = kwargs['namespaceDescription']
-        if namespace_description is None:
-            raise TypeError("Missing 'namespace_description' argument")
-        if namespace_id is None and 'namespaceId' in kwargs:
-            namespace_id = kwargs['namespaceId']
-        if namespace_id is None:
-            raise TypeError("Missing 'namespace_id' argument")
-        if namespace_name is None and 'namespaceName' in kwargs:
-            namespace_name = kwargs['namespaceName']
-        if namespace_name is None:
-            raise TypeError("Missing 'namespace_name' argument")
-
-        _setter("id", id)
-        _setter("namespace_description", namespace_description)
-        _setter("namespace_id", namespace_id)
-        _setter("namespace_name", namespace_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "namespace_description", namespace_description)
+        pulumi.set(__self__, "namespace_id", namespace_id)
+        pulumi.set(__self__, "namespace_name", namespace_name)
 
     @property
     @pulumi.getter

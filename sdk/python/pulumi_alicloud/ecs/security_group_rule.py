@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SecurityGroupRuleArgs', 'SecurityGroupRule']
@@ -46,88 +46,29 @@ class SecurityGroupRuleArgs:
         :param pulumi.Input[str] source_group_owner_account: The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
         :param pulumi.Input[str] source_security_group_id: The target security group ID within the same region. If this field is specified, the `nic_type` can only select `intranet`.
         """
-        SecurityGroupRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ip_protocol=ip_protocol,
-            security_group_id=security_group_id,
-            type=type,
-            cidr_ip=cidr_ip,
-            description=description,
-            ipv6_cidr_ip=ipv6_cidr_ip,
-            nic_type=nic_type,
-            policy=policy,
-            port_range=port_range,
-            prefix_list_id=prefix_list_id,
-            priority=priority,
-            source_group_owner_account=source_group_owner_account,
-            source_security_group_id=source_security_group_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ip_protocol: Optional[pulumi.Input[str]] = None,
-             security_group_id: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             cidr_ip: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             ipv6_cidr_ip: Optional[pulumi.Input[str]] = None,
-             nic_type: Optional[pulumi.Input[str]] = None,
-             policy: Optional[pulumi.Input[str]] = None,
-             port_range: Optional[pulumi.Input[str]] = None,
-             prefix_list_id: Optional[pulumi.Input[str]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             source_group_owner_account: Optional[pulumi.Input[str]] = None,
-             source_security_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ip_protocol is None and 'ipProtocol' in kwargs:
-            ip_protocol = kwargs['ipProtocol']
-        if ip_protocol is None:
-            raise TypeError("Missing 'ip_protocol' argument")
-        if security_group_id is None and 'securityGroupId' in kwargs:
-            security_group_id = kwargs['securityGroupId']
-        if security_group_id is None:
-            raise TypeError("Missing 'security_group_id' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if cidr_ip is None and 'cidrIp' in kwargs:
-            cidr_ip = kwargs['cidrIp']
-        if ipv6_cidr_ip is None and 'ipv6CidrIp' in kwargs:
-            ipv6_cidr_ip = kwargs['ipv6CidrIp']
-        if nic_type is None and 'nicType' in kwargs:
-            nic_type = kwargs['nicType']
-        if port_range is None and 'portRange' in kwargs:
-            port_range = kwargs['portRange']
-        if prefix_list_id is None and 'prefixListId' in kwargs:
-            prefix_list_id = kwargs['prefixListId']
-        if source_group_owner_account is None and 'sourceGroupOwnerAccount' in kwargs:
-            source_group_owner_account = kwargs['sourceGroupOwnerAccount']
-        if source_security_group_id is None and 'sourceSecurityGroupId' in kwargs:
-            source_security_group_id = kwargs['sourceSecurityGroupId']
-
-        _setter("ip_protocol", ip_protocol)
-        _setter("security_group_id", security_group_id)
-        _setter("type", type)
+        pulumi.set(__self__, "ip_protocol", ip_protocol)
+        pulumi.set(__self__, "security_group_id", security_group_id)
+        pulumi.set(__self__, "type", type)
         if cidr_ip is not None:
-            _setter("cidr_ip", cidr_ip)
+            pulumi.set(__self__, "cidr_ip", cidr_ip)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if ipv6_cidr_ip is not None:
-            _setter("ipv6_cidr_ip", ipv6_cidr_ip)
+            pulumi.set(__self__, "ipv6_cidr_ip", ipv6_cidr_ip)
         if nic_type is not None:
-            _setter("nic_type", nic_type)
+            pulumi.set(__self__, "nic_type", nic_type)
         if policy is not None:
-            _setter("policy", policy)
+            pulumi.set(__self__, "policy", policy)
         if port_range is not None:
-            _setter("port_range", port_range)
+            pulumi.set(__self__, "port_range", port_range)
         if prefix_list_id is not None:
-            _setter("prefix_list_id", prefix_list_id)
+            pulumi.set(__self__, "prefix_list_id", prefix_list_id)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if source_group_owner_account is not None:
-            _setter("source_group_owner_account", source_group_owner_account)
+            pulumi.set(__self__, "source_group_owner_account", source_group_owner_account)
         if source_security_group_id is not None:
-            _setter("source_security_group_id", source_security_group_id)
+            pulumi.set(__self__, "source_security_group_id", source_security_group_id)
 
     @property
     @pulumi.getter(name="ipProtocol")
@@ -324,85 +265,32 @@ class _SecurityGroupRuleState:
         :param pulumi.Input[str] source_security_group_id: The target security group ID within the same region. If this field is specified, the `nic_type` can only select `intranet`.
         :param pulumi.Input[str] type: The type of rule being created. Valid options are `ingress` (inbound) or `egress` (outbound).
         """
-        _SecurityGroupRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cidr_ip=cidr_ip,
-            description=description,
-            ip_protocol=ip_protocol,
-            ipv6_cidr_ip=ipv6_cidr_ip,
-            nic_type=nic_type,
-            policy=policy,
-            port_range=port_range,
-            prefix_list_id=prefix_list_id,
-            priority=priority,
-            security_group_id=security_group_id,
-            source_group_owner_account=source_group_owner_account,
-            source_security_group_id=source_security_group_id,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cidr_ip: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             ip_protocol: Optional[pulumi.Input[str]] = None,
-             ipv6_cidr_ip: Optional[pulumi.Input[str]] = None,
-             nic_type: Optional[pulumi.Input[str]] = None,
-             policy: Optional[pulumi.Input[str]] = None,
-             port_range: Optional[pulumi.Input[str]] = None,
-             prefix_list_id: Optional[pulumi.Input[str]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             security_group_id: Optional[pulumi.Input[str]] = None,
-             source_group_owner_account: Optional[pulumi.Input[str]] = None,
-             source_security_group_id: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cidr_ip is None and 'cidrIp' in kwargs:
-            cidr_ip = kwargs['cidrIp']
-        if ip_protocol is None and 'ipProtocol' in kwargs:
-            ip_protocol = kwargs['ipProtocol']
-        if ipv6_cidr_ip is None and 'ipv6CidrIp' in kwargs:
-            ipv6_cidr_ip = kwargs['ipv6CidrIp']
-        if nic_type is None and 'nicType' in kwargs:
-            nic_type = kwargs['nicType']
-        if port_range is None and 'portRange' in kwargs:
-            port_range = kwargs['portRange']
-        if prefix_list_id is None and 'prefixListId' in kwargs:
-            prefix_list_id = kwargs['prefixListId']
-        if security_group_id is None and 'securityGroupId' in kwargs:
-            security_group_id = kwargs['securityGroupId']
-        if source_group_owner_account is None and 'sourceGroupOwnerAccount' in kwargs:
-            source_group_owner_account = kwargs['sourceGroupOwnerAccount']
-        if source_security_group_id is None and 'sourceSecurityGroupId' in kwargs:
-            source_security_group_id = kwargs['sourceSecurityGroupId']
-
         if cidr_ip is not None:
-            _setter("cidr_ip", cidr_ip)
+            pulumi.set(__self__, "cidr_ip", cidr_ip)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if ip_protocol is not None:
-            _setter("ip_protocol", ip_protocol)
+            pulumi.set(__self__, "ip_protocol", ip_protocol)
         if ipv6_cidr_ip is not None:
-            _setter("ipv6_cidr_ip", ipv6_cidr_ip)
+            pulumi.set(__self__, "ipv6_cidr_ip", ipv6_cidr_ip)
         if nic_type is not None:
-            _setter("nic_type", nic_type)
+            pulumi.set(__self__, "nic_type", nic_type)
         if policy is not None:
-            _setter("policy", policy)
+            pulumi.set(__self__, "policy", policy)
         if port_range is not None:
-            _setter("port_range", port_range)
+            pulumi.set(__self__, "port_range", port_range)
         if prefix_list_id is not None:
-            _setter("prefix_list_id", prefix_list_id)
+            pulumi.set(__self__, "prefix_list_id", prefix_list_id)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if security_group_id is not None:
-            _setter("security_group_id", security_group_id)
+            pulumi.set(__self__, "security_group_id", security_group_id)
         if source_group_owner_account is not None:
-            _setter("source_group_owner_account", source_group_owner_account)
+            pulumi.set(__self__, "source_group_owner_account", source_group_owner_account)
         if source_security_group_id is not None:
-            _setter("source_security_group_id", source_security_group_id)
+            pulumi.set(__self__, "source_security_group_id", source_security_group_id)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="cidrIp")
@@ -678,10 +566,6 @@ class SecurityGroupRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SecurityGroupRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

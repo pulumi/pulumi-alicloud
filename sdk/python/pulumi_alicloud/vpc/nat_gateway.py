@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['NatGatewayArgs', 'NatGateway']
@@ -54,106 +54,39 @@ class NatGatewayArgs:
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of NAT gateway.
         :param pulumi.Input[str] vswitch_id: The id of VSwitch.
         """
-        NatGatewayArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            vpc_id=vpc_id,
-            deletion_protection=deletion_protection,
-            description=description,
-            dry_run=dry_run,
-            eip_bind_mode=eip_bind_mode,
-            force=force,
-            instance_charge_type=instance_charge_type,
-            internet_charge_type=internet_charge_type,
-            name=name,
-            nat_gateway_name=nat_gateway_name,
-            nat_type=nat_type,
-            network_type=network_type,
-            payment_type=payment_type,
-            period=period,
-            specification=specification,
-            tags=tags,
-            vswitch_id=vswitch_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             deletion_protection: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             eip_bind_mode: Optional[pulumi.Input[str]] = None,
-             force: Optional[pulumi.Input[bool]] = None,
-             instance_charge_type: Optional[pulumi.Input[str]] = None,
-             internet_charge_type: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             nat_gateway_name: Optional[pulumi.Input[str]] = None,
-             nat_type: Optional[pulumi.Input[str]] = None,
-             network_type: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[int]] = None,
-             specification: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-        if deletion_protection is None and 'deletionProtection' in kwargs:
-            deletion_protection = kwargs['deletionProtection']
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-        if eip_bind_mode is None and 'eipBindMode' in kwargs:
-            eip_bind_mode = kwargs['eipBindMode']
-        if instance_charge_type is None and 'instanceChargeType' in kwargs:
-            instance_charge_type = kwargs['instanceChargeType']
-        if internet_charge_type is None and 'internetChargeType' in kwargs:
-            internet_charge_type = kwargs['internetChargeType']
-        if nat_gateway_name is None and 'natGatewayName' in kwargs:
-            nat_gateway_name = kwargs['natGatewayName']
-        if nat_type is None and 'natType' in kwargs:
-            nat_type = kwargs['natType']
-        if network_type is None and 'networkType' in kwargs:
-            network_type = kwargs['networkType']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-
-        _setter("vpc_id", vpc_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
         if deletion_protection is not None:
-            _setter("deletion_protection", deletion_protection)
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if eip_bind_mode is not None:
-            _setter("eip_bind_mode", eip_bind_mode)
+            pulumi.set(__self__, "eip_bind_mode", eip_bind_mode)
         if force is not None:
-            _setter("force", force)
+            pulumi.set(__self__, "force", force)
         if instance_charge_type is not None:
-            _setter("instance_charge_type", instance_charge_type)
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if internet_charge_type is not None:
-            _setter("internet_charge_type", internet_charge_type)
+            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if nat_gateway_name is not None:
-            _setter("nat_gateway_name", nat_gateway_name)
+            pulumi.set(__self__, "nat_gateway_name", nat_gateway_name)
         if nat_type is not None:
-            _setter("nat_type", nat_type)
+            pulumi.set(__self__, "nat_type", nat_type)
         if network_type is not None:
-            _setter("network_type", network_type)
+            pulumi.set(__self__, "network_type", network_type)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if specification is not None:
-            _setter("specification", specification)
+            pulumi.set(__self__, "specification", specification)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -412,121 +345,46 @@ class _NatGatewayState:
         :param pulumi.Input[str] vpc_id: The VPC ID.
         :param pulumi.Input[str] vswitch_id: The id of VSwitch.
         """
-        _NatGatewayState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            deletion_protection=deletion_protection,
-            description=description,
-            dry_run=dry_run,
-            eip_bind_mode=eip_bind_mode,
-            force=force,
-            forward_table_ids=forward_table_ids,
-            instance_charge_type=instance_charge_type,
-            internet_charge_type=internet_charge_type,
-            name=name,
-            nat_gateway_name=nat_gateway_name,
-            nat_type=nat_type,
-            network_type=network_type,
-            payment_type=payment_type,
-            period=period,
-            snat_table_ids=snat_table_ids,
-            specification=specification,
-            status=status,
-            tags=tags,
-            vpc_id=vpc_id,
-            vswitch_id=vswitch_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             deletion_protection: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             eip_bind_mode: Optional[pulumi.Input[str]] = None,
-             force: Optional[pulumi.Input[bool]] = None,
-             forward_table_ids: Optional[pulumi.Input[str]] = None,
-             instance_charge_type: Optional[pulumi.Input[str]] = None,
-             internet_charge_type: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             nat_gateway_name: Optional[pulumi.Input[str]] = None,
-             nat_type: Optional[pulumi.Input[str]] = None,
-             network_type: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[int]] = None,
-             snat_table_ids: Optional[pulumi.Input[str]] = None,
-             specification: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if deletion_protection is None and 'deletionProtection' in kwargs:
-            deletion_protection = kwargs['deletionProtection']
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-        if eip_bind_mode is None and 'eipBindMode' in kwargs:
-            eip_bind_mode = kwargs['eipBindMode']
-        if forward_table_ids is None and 'forwardTableIds' in kwargs:
-            forward_table_ids = kwargs['forwardTableIds']
-        if instance_charge_type is None and 'instanceChargeType' in kwargs:
-            instance_charge_type = kwargs['instanceChargeType']
-        if internet_charge_type is None and 'internetChargeType' in kwargs:
-            internet_charge_type = kwargs['internetChargeType']
-        if nat_gateway_name is None and 'natGatewayName' in kwargs:
-            nat_gateway_name = kwargs['natGatewayName']
-        if nat_type is None and 'natType' in kwargs:
-            nat_type = kwargs['natType']
-        if network_type is None and 'networkType' in kwargs:
-            network_type = kwargs['networkType']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if snat_table_ids is None and 'snatTableIds' in kwargs:
-            snat_table_ids = kwargs['snatTableIds']
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-
         if deletion_protection is not None:
-            _setter("deletion_protection", deletion_protection)
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if eip_bind_mode is not None:
-            _setter("eip_bind_mode", eip_bind_mode)
+            pulumi.set(__self__, "eip_bind_mode", eip_bind_mode)
         if force is not None:
-            _setter("force", force)
+            pulumi.set(__self__, "force", force)
         if forward_table_ids is not None:
-            _setter("forward_table_ids", forward_table_ids)
+            pulumi.set(__self__, "forward_table_ids", forward_table_ids)
         if instance_charge_type is not None:
-            _setter("instance_charge_type", instance_charge_type)
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if internet_charge_type is not None:
-            _setter("internet_charge_type", internet_charge_type)
+            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if nat_gateway_name is not None:
-            _setter("nat_gateway_name", nat_gateway_name)
+            pulumi.set(__self__, "nat_gateway_name", nat_gateway_name)
         if nat_type is not None:
-            _setter("nat_type", nat_type)
+            pulumi.set(__self__, "nat_type", nat_type)
         if network_type is not None:
-            _setter("network_type", network_type)
+            pulumi.set(__self__, "network_type", network_type)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if snat_table_ids is not None:
-            _setter("snat_table_ids", snat_table_ids)
+            pulumi.set(__self__, "snat_table_ids", snat_table_ids)
         if specification is not None:
-            _setter("specification", specification)
+            pulumi.set(__self__, "specification", specification)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if vpc_id is not None:
-            _setter("vpc_id", vpc_id)
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="deletionProtection")
@@ -852,10 +710,6 @@ class NatGateway(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            NatGatewayArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

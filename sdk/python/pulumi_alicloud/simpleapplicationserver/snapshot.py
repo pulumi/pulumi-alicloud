@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SnapshotArgs', 'Snapshot']
@@ -21,29 +21,8 @@ class SnapshotArgs:
         :param pulumi.Input[str] disk_id: The ID of the disk.
         :param pulumi.Input[str] snapshot_name: The name of the snapshot. The name must be `2` to `50` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.),and hyphens (-).
         """
-        SnapshotArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            disk_id=disk_id,
-            snapshot_name=snapshot_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             disk_id: Optional[pulumi.Input[str]] = None,
-             snapshot_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disk_id is None and 'diskId' in kwargs:
-            disk_id = kwargs['diskId']
-        if disk_id is None:
-            raise TypeError("Missing 'disk_id' argument")
-        if snapshot_name is None and 'snapshotName' in kwargs:
-            snapshot_name = kwargs['snapshotName']
-        if snapshot_name is None:
-            raise TypeError("Missing 'snapshot_name' argument")
-
-        _setter("disk_id", disk_id)
-        _setter("snapshot_name", snapshot_name)
+        pulumi.set(__self__, "disk_id", disk_id)
+        pulumi.set(__self__, "snapshot_name", snapshot_name)
 
     @property
     @pulumi.getter(name="diskId")
@@ -82,31 +61,12 @@ class _SnapshotState:
         :param pulumi.Input[str] snapshot_name: The name of the snapshot. The name must be `2` to `50` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.),and hyphens (-).
         :param pulumi.Input[str] status: The status of the snapshot. Valid values: `Progressing`, `Accomplished` and `Failed`.
         """
-        _SnapshotState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            disk_id=disk_id,
-            snapshot_name=snapshot_name,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             disk_id: Optional[pulumi.Input[str]] = None,
-             snapshot_name: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disk_id is None and 'diskId' in kwargs:
-            disk_id = kwargs['diskId']
-        if snapshot_name is None and 'snapshotName' in kwargs:
-            snapshot_name = kwargs['snapshotName']
-
         if disk_id is not None:
-            _setter("disk_id", disk_id)
+            pulumi.set(__self__, "disk_id", disk_id)
         if snapshot_name is not None:
-            _setter("snapshot_name", snapshot_name)
+            pulumi.set(__self__, "snapshot_name", snapshot_name)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="diskId")
@@ -258,10 +218,6 @@ class Snapshot(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SnapshotArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

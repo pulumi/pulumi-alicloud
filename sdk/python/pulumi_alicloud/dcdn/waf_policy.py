@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['WafPolicyArgs', 'WafPolicy']
@@ -25,41 +25,10 @@ class WafPolicyArgs:
         :param pulumi.Input[str] policy_type: The type of the protection policy. Valid values: `default`, `custom`.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `on`, `off`.
         """
-        WafPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            defense_scene=defense_scene,
-            policy_name=policy_name,
-            policy_type=policy_type,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             defense_scene: Optional[pulumi.Input[str]] = None,
-             policy_name: Optional[pulumi.Input[str]] = None,
-             policy_type: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if defense_scene is None and 'defenseScene' in kwargs:
-            defense_scene = kwargs['defenseScene']
-        if defense_scene is None:
-            raise TypeError("Missing 'defense_scene' argument")
-        if policy_name is None and 'policyName' in kwargs:
-            policy_name = kwargs['policyName']
-        if policy_name is None:
-            raise TypeError("Missing 'policy_name' argument")
-        if policy_type is None and 'policyType' in kwargs:
-            policy_type = kwargs['policyType']
-        if policy_type is None:
-            raise TypeError("Missing 'policy_type' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("defense_scene", defense_scene)
-        _setter("policy_name", policy_name)
-        _setter("policy_type", policy_type)
-        _setter("status", status)
+        pulumi.set(__self__, "defense_scene", defense_scene)
+        pulumi.set(__self__, "policy_name", policy_name)
+        pulumi.set(__self__, "policy_type", policy_type)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="defenseScene")
@@ -124,37 +93,14 @@ class _WafPolicyState:
         :param pulumi.Input[str] policy_type: The type of the protection policy. Valid values: `default`, `custom`.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `on`, `off`.
         """
-        _WafPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            defense_scene=defense_scene,
-            policy_name=policy_name,
-            policy_type=policy_type,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             defense_scene: Optional[pulumi.Input[str]] = None,
-             policy_name: Optional[pulumi.Input[str]] = None,
-             policy_type: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if defense_scene is None and 'defenseScene' in kwargs:
-            defense_scene = kwargs['defenseScene']
-        if policy_name is None and 'policyName' in kwargs:
-            policy_name = kwargs['policyName']
-        if policy_type is None and 'policyType' in kwargs:
-            policy_type = kwargs['policyType']
-
         if defense_scene is not None:
-            _setter("defense_scene", defense_scene)
+            pulumi.set(__self__, "defense_scene", defense_scene)
         if policy_name is not None:
-            _setter("policy_name", policy_name)
+            pulumi.set(__self__, "policy_name", policy_name)
         if policy_type is not None:
-            _setter("policy_type", policy_type)
+            pulumi.set(__self__, "policy_type", policy_type)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="defenseScene")
@@ -306,10 +252,6 @@ class WafPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            WafPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

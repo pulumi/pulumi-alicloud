@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EcsBackupClientArgs', 'EcsBackupClient']
@@ -39,80 +39,27 @@ class EcsBackupClientArgs:
         :param pulumi.Input[str] status: Status of client. Valid values: `ACTIVATED`, `STOPPED`. You can start or stop the client by specifying the status.
         :param pulumi.Input[bool] use_https: Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
         """
-        EcsBackupClientArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_id=instance_id,
-            data_network_type=data_network_type,
-            data_proxy_setting=data_proxy_setting,
-            max_cpu_core=max_cpu_core,
-            max_worker=max_worker,
-            proxy_host=proxy_host,
-            proxy_password=proxy_password,
-            proxy_port=proxy_port,
-            proxy_user=proxy_user,
-            status=status,
-            use_https=use_https,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_id: Optional[pulumi.Input[str]] = None,
-             data_network_type: Optional[pulumi.Input[str]] = None,
-             data_proxy_setting: Optional[pulumi.Input[str]] = None,
-             max_cpu_core: Optional[pulumi.Input[str]] = None,
-             max_worker: Optional[pulumi.Input[str]] = None,
-             proxy_host: Optional[pulumi.Input[str]] = None,
-             proxy_password: Optional[pulumi.Input[str]] = None,
-             proxy_port: Optional[pulumi.Input[str]] = None,
-             proxy_user: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             use_https: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if data_network_type is None and 'dataNetworkType' in kwargs:
-            data_network_type = kwargs['dataNetworkType']
-        if data_proxy_setting is None and 'dataProxySetting' in kwargs:
-            data_proxy_setting = kwargs['dataProxySetting']
-        if max_cpu_core is None and 'maxCpuCore' in kwargs:
-            max_cpu_core = kwargs['maxCpuCore']
-        if max_worker is None and 'maxWorker' in kwargs:
-            max_worker = kwargs['maxWorker']
-        if proxy_host is None and 'proxyHost' in kwargs:
-            proxy_host = kwargs['proxyHost']
-        if proxy_password is None and 'proxyPassword' in kwargs:
-            proxy_password = kwargs['proxyPassword']
-        if proxy_port is None and 'proxyPort' in kwargs:
-            proxy_port = kwargs['proxyPort']
-        if proxy_user is None and 'proxyUser' in kwargs:
-            proxy_user = kwargs['proxyUser']
-        if use_https is None and 'useHttps' in kwargs:
-            use_https = kwargs['useHttps']
-
-        _setter("instance_id", instance_id)
+        pulumi.set(__self__, "instance_id", instance_id)
         if data_network_type is not None:
-            _setter("data_network_type", data_network_type)
+            pulumi.set(__self__, "data_network_type", data_network_type)
         if data_proxy_setting is not None:
-            _setter("data_proxy_setting", data_proxy_setting)
+            pulumi.set(__self__, "data_proxy_setting", data_proxy_setting)
         if max_cpu_core is not None:
-            _setter("max_cpu_core", max_cpu_core)
+            pulumi.set(__self__, "max_cpu_core", max_cpu_core)
         if max_worker is not None:
-            _setter("max_worker", max_worker)
+            pulumi.set(__self__, "max_worker", max_worker)
         if proxy_host is not None:
-            _setter("proxy_host", proxy_host)
+            pulumi.set(__self__, "proxy_host", proxy_host)
         if proxy_password is not None:
-            _setter("proxy_password", proxy_password)
+            pulumi.set(__self__, "proxy_password", proxy_password)
         if proxy_port is not None:
-            _setter("proxy_port", proxy_port)
+            pulumi.set(__self__, "proxy_port", proxy_port)
         if proxy_user is not None:
-            _setter("proxy_user", proxy_user)
+            pulumi.set(__self__, "proxy_user", proxy_user)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if use_https is not None:
-            _setter("use_https", use_https)
+            pulumi.set(__self__, "use_https", use_https)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -275,79 +222,28 @@ class _EcsBackupClientState:
         :param pulumi.Input[str] status: Status of client. Valid values: `ACTIVATED`, `STOPPED`. You can start or stop the client by specifying the status.
         :param pulumi.Input[bool] use_https: Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
         """
-        _EcsBackupClientState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            data_network_type=data_network_type,
-            data_proxy_setting=data_proxy_setting,
-            instance_id=instance_id,
-            max_cpu_core=max_cpu_core,
-            max_worker=max_worker,
-            proxy_host=proxy_host,
-            proxy_password=proxy_password,
-            proxy_port=proxy_port,
-            proxy_user=proxy_user,
-            status=status,
-            use_https=use_https,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             data_network_type: Optional[pulumi.Input[str]] = None,
-             data_proxy_setting: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             max_cpu_core: Optional[pulumi.Input[str]] = None,
-             max_worker: Optional[pulumi.Input[str]] = None,
-             proxy_host: Optional[pulumi.Input[str]] = None,
-             proxy_password: Optional[pulumi.Input[str]] = None,
-             proxy_port: Optional[pulumi.Input[str]] = None,
-             proxy_user: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             use_https: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if data_network_type is None and 'dataNetworkType' in kwargs:
-            data_network_type = kwargs['dataNetworkType']
-        if data_proxy_setting is None and 'dataProxySetting' in kwargs:
-            data_proxy_setting = kwargs['dataProxySetting']
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if max_cpu_core is None and 'maxCpuCore' in kwargs:
-            max_cpu_core = kwargs['maxCpuCore']
-        if max_worker is None and 'maxWorker' in kwargs:
-            max_worker = kwargs['maxWorker']
-        if proxy_host is None and 'proxyHost' in kwargs:
-            proxy_host = kwargs['proxyHost']
-        if proxy_password is None and 'proxyPassword' in kwargs:
-            proxy_password = kwargs['proxyPassword']
-        if proxy_port is None and 'proxyPort' in kwargs:
-            proxy_port = kwargs['proxyPort']
-        if proxy_user is None and 'proxyUser' in kwargs:
-            proxy_user = kwargs['proxyUser']
-        if use_https is None and 'useHttps' in kwargs:
-            use_https = kwargs['useHttps']
-
         if data_network_type is not None:
-            _setter("data_network_type", data_network_type)
+            pulumi.set(__self__, "data_network_type", data_network_type)
         if data_proxy_setting is not None:
-            _setter("data_proxy_setting", data_proxy_setting)
+            pulumi.set(__self__, "data_proxy_setting", data_proxy_setting)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if max_cpu_core is not None:
-            _setter("max_cpu_core", max_cpu_core)
+            pulumi.set(__self__, "max_cpu_core", max_cpu_core)
         if max_worker is not None:
-            _setter("max_worker", max_worker)
+            pulumi.set(__self__, "max_worker", max_worker)
         if proxy_host is not None:
-            _setter("proxy_host", proxy_host)
+            pulumi.set(__self__, "proxy_host", proxy_host)
         if proxy_password is not None:
-            _setter("proxy_password", proxy_password)
+            pulumi.set(__self__, "proxy_password", proxy_password)
         if proxy_port is not None:
-            _setter("proxy_port", proxy_port)
+            pulumi.set(__self__, "proxy_port", proxy_port)
         if proxy_user is not None:
-            _setter("proxy_user", proxy_user)
+            pulumi.set(__self__, "proxy_user", proxy_user)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if use_https is not None:
-            _setter("use_https", use_https)
+            pulumi.set(__self__, "use_https", use_https)
 
     @property
     @pulumi.getter(name="dataNetworkType")
@@ -665,10 +561,6 @@ class EcsBackupClient(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            EcsBackupClientArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

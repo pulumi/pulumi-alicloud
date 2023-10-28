@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -53,33 +53,12 @@ class DbClusterDbClusterAccessWhiteList(dict):
         :param str db_cluster_ip_array_name: Whitelist group name.
         :param str security_ip_list: The IP address list under the whitelist group.
         """
-        DbClusterDbClusterAccessWhiteList._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            db_cluster_ip_array_attribute=db_cluster_ip_array_attribute,
-            db_cluster_ip_array_name=db_cluster_ip_array_name,
-            security_ip_list=security_ip_list,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             db_cluster_ip_array_attribute: Optional[str] = None,
-             db_cluster_ip_array_name: Optional[str] = None,
-             security_ip_list: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if db_cluster_ip_array_attribute is None and 'dbClusterIpArrayAttribute' in kwargs:
-            db_cluster_ip_array_attribute = kwargs['dbClusterIpArrayAttribute']
-        if db_cluster_ip_array_name is None and 'dbClusterIpArrayName' in kwargs:
-            db_cluster_ip_array_name = kwargs['dbClusterIpArrayName']
-        if security_ip_list is None and 'securityIpList' in kwargs:
-            security_ip_list = kwargs['securityIpList']
-
         if db_cluster_ip_array_attribute is not None:
-            _setter("db_cluster_ip_array_attribute", db_cluster_ip_array_attribute)
+            pulumi.set(__self__, "db_cluster_ip_array_attribute", db_cluster_ip_array_attribute)
         if db_cluster_ip_array_name is not None:
-            _setter("db_cluster_ip_array_name", db_cluster_ip_array_name)
+            pulumi.set(__self__, "db_cluster_ip_array_name", db_cluster_ip_array_name)
         if security_ip_list is not None:
-            _setter("security_ip_list", security_ip_list)
+            pulumi.set(__self__, "security_ip_list", security_ip_list)
 
     @property
     @pulumi.getter(name="dbClusterIpArrayAttribute")
@@ -123,53 +102,12 @@ class GetAccountsAccountResult(dict):
         :param str id: The ID of the Account. Its value is same as Queue Name.
         :param str status: The status of the resource.
         """
-        GetAccountsAccountResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_description=account_description,
-            account_name=account_name,
-            account_type=account_type,
-            db_cluster_id=db_cluster_id,
-            id=id,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_description: Optional[str] = None,
-             account_name: Optional[str] = None,
-             account_type: Optional[str] = None,
-             db_cluster_id: Optional[str] = None,
-             id: Optional[str] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_description is None and 'accountDescription' in kwargs:
-            account_description = kwargs['accountDescription']
-        if account_description is None:
-            raise TypeError("Missing 'account_description' argument")
-        if account_name is None and 'accountName' in kwargs:
-            account_name = kwargs['accountName']
-        if account_name is None:
-            raise TypeError("Missing 'account_name' argument")
-        if account_type is None and 'accountType' in kwargs:
-            account_type = kwargs['accountType']
-        if account_type is None:
-            raise TypeError("Missing 'account_type' argument")
-        if db_cluster_id is None and 'dbClusterId' in kwargs:
-            db_cluster_id = kwargs['dbClusterId']
-        if db_cluster_id is None:
-            raise TypeError("Missing 'db_cluster_id' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("account_description", account_description)
-        _setter("account_name", account_name)
-        _setter("account_type", account_type)
-        _setter("db_cluster_id", db_cluster_id)
-        _setter("id", id)
-        _setter("status", status)
+        pulumi.set(__self__, "account_description", account_description)
+        pulumi.set(__self__, "account_name", account_name)
+        pulumi.set(__self__, "account_type", account_type)
+        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="accountDescription")
@@ -237,53 +175,12 @@ class GetBackupPoliciesPolicyResult(dict):
         :param str preferred_backup_time: Backup Time, UTC time.
         :param str status: The status of the resource.
         """
-        GetBackupPoliciesPolicyResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            backup_retention_period=backup_retention_period,
-            db_cluster_id=db_cluster_id,
-            id=id,
-            preferred_backup_periods=preferred_backup_periods,
-            preferred_backup_time=preferred_backup_time,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             backup_retention_period: Optional[int] = None,
-             db_cluster_id: Optional[str] = None,
-             id: Optional[str] = None,
-             preferred_backup_periods: Optional[Sequence[str]] = None,
-             preferred_backup_time: Optional[str] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if backup_retention_period is None and 'backupRetentionPeriod' in kwargs:
-            backup_retention_period = kwargs['backupRetentionPeriod']
-        if backup_retention_period is None:
-            raise TypeError("Missing 'backup_retention_period' argument")
-        if db_cluster_id is None and 'dbClusterId' in kwargs:
-            db_cluster_id = kwargs['dbClusterId']
-        if db_cluster_id is None:
-            raise TypeError("Missing 'db_cluster_id' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if preferred_backup_periods is None and 'preferredBackupPeriods' in kwargs:
-            preferred_backup_periods = kwargs['preferredBackupPeriods']
-        if preferred_backup_periods is None:
-            raise TypeError("Missing 'preferred_backup_periods' argument")
-        if preferred_backup_time is None and 'preferredBackupTime' in kwargs:
-            preferred_backup_time = kwargs['preferredBackupTime']
-        if preferred_backup_time is None:
-            raise TypeError("Missing 'preferred_backup_time' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("backup_retention_period", backup_retention_period)
-        _setter("db_cluster_id", db_cluster_id)
-        _setter("id", id)
-        _setter("preferred_backup_periods", preferred_backup_periods)
-        _setter("preferred_backup_time", preferred_backup_time)
-        _setter("status", status)
+        pulumi.set(__self__, "backup_retention_period", backup_retention_period)
+        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "preferred_backup_periods", preferred_backup_periods)
+        pulumi.set(__self__, "preferred_backup_time", preferred_backup_time)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="backupRetentionPeriod")
@@ -416,276 +313,45 @@ class GetDbClustersClusterResult(dict):
         :param str vswitch_id: The vswitch id of the DBCluster.
         :param str zone_id: The zone ID of the DBCluster.
         """
-        GetDbClustersClusterResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ali_uid=ali_uid,
-            bid=bid,
-            category=category,
-            commodity_code=commodity_code,
-            connection_string=connection_string,
-            control_version=control_version,
-            create_time=create_time,
-            db_cluster_access_white_lists=db_cluster_access_white_lists,
-            db_cluster_description=db_cluster_description,
-            db_cluster_id=db_cluster_id,
-            db_cluster_network_type=db_cluster_network_type,
-            db_cluster_type=db_cluster_type,
-            db_node_class=db_node_class,
-            db_node_count=db_node_count,
-            db_node_storage=db_node_storage,
-            encryption_key=encryption_key,
-            encryption_type=encryption_type,
-            engine=engine,
-            engine_version=engine_version,
-            expire_time=expire_time,
-            id=id,
-            is_expired=is_expired,
-            lock_mode=lock_mode,
-            lock_reason=lock_reason,
-            maintain_time=maintain_time,
-            payment_type=payment_type,
-            port=port,
-            public_connection_string=public_connection_string,
-            public_port=public_port,
-            scale_out_statuses=scale_out_statuses,
-            status=status,
-            storage_type=storage_type,
-            support_backup=support_backup,
-            support_https_port=support_https_port,
-            support_mysql_port=support_mysql_port,
-            vpc_cloud_instance_id=vpc_cloud_instance_id,
-            vpc_id=vpc_id,
-            vswitch_id=vswitch_id,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ali_uid: Optional[str] = None,
-             bid: Optional[str] = None,
-             category: Optional[str] = None,
-             commodity_code: Optional[str] = None,
-             connection_string: Optional[str] = None,
-             control_version: Optional[str] = None,
-             create_time: Optional[str] = None,
-             db_cluster_access_white_lists: Optional[Sequence['outputs.GetDbClustersClusterDbClusterAccessWhiteListResult']] = None,
-             db_cluster_description: Optional[str] = None,
-             db_cluster_id: Optional[str] = None,
-             db_cluster_network_type: Optional[str] = None,
-             db_cluster_type: Optional[str] = None,
-             db_node_class: Optional[str] = None,
-             db_node_count: Optional[str] = None,
-             db_node_storage: Optional[str] = None,
-             encryption_key: Optional[str] = None,
-             encryption_type: Optional[str] = None,
-             engine: Optional[str] = None,
-             engine_version: Optional[str] = None,
-             expire_time: Optional[str] = None,
-             id: Optional[str] = None,
-             is_expired: Optional[str] = None,
-             lock_mode: Optional[str] = None,
-             lock_reason: Optional[str] = None,
-             maintain_time: Optional[str] = None,
-             payment_type: Optional[str] = None,
-             port: Optional[int] = None,
-             public_connection_string: Optional[str] = None,
-             public_port: Optional[str] = None,
-             scale_out_statuses: Optional[Sequence['outputs.GetDbClustersClusterScaleOutStatusResult']] = None,
-             status: Optional[str] = None,
-             storage_type: Optional[str] = None,
-             support_backup: Optional[int] = None,
-             support_https_port: Optional[bool] = None,
-             support_mysql_port: Optional[bool] = None,
-             vpc_cloud_instance_id: Optional[str] = None,
-             vpc_id: Optional[str] = None,
-             vswitch_id: Optional[str] = None,
-             zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ali_uid is None and 'aliUid' in kwargs:
-            ali_uid = kwargs['aliUid']
-        if ali_uid is None:
-            raise TypeError("Missing 'ali_uid' argument")
-        if bid is None:
-            raise TypeError("Missing 'bid' argument")
-        if category is None:
-            raise TypeError("Missing 'category' argument")
-        if commodity_code is None and 'commodityCode' in kwargs:
-            commodity_code = kwargs['commodityCode']
-        if commodity_code is None:
-            raise TypeError("Missing 'commodity_code' argument")
-        if connection_string is None and 'connectionString' in kwargs:
-            connection_string = kwargs['connectionString']
-        if connection_string is None:
-            raise TypeError("Missing 'connection_string' argument")
-        if control_version is None and 'controlVersion' in kwargs:
-            control_version = kwargs['controlVersion']
-        if control_version is None:
-            raise TypeError("Missing 'control_version' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if db_cluster_access_white_lists is None and 'dbClusterAccessWhiteLists' in kwargs:
-            db_cluster_access_white_lists = kwargs['dbClusterAccessWhiteLists']
-        if db_cluster_access_white_lists is None:
-            raise TypeError("Missing 'db_cluster_access_white_lists' argument")
-        if db_cluster_description is None and 'dbClusterDescription' in kwargs:
-            db_cluster_description = kwargs['dbClusterDescription']
-        if db_cluster_description is None:
-            raise TypeError("Missing 'db_cluster_description' argument")
-        if db_cluster_id is None and 'dbClusterId' in kwargs:
-            db_cluster_id = kwargs['dbClusterId']
-        if db_cluster_id is None:
-            raise TypeError("Missing 'db_cluster_id' argument")
-        if db_cluster_network_type is None and 'dbClusterNetworkType' in kwargs:
-            db_cluster_network_type = kwargs['dbClusterNetworkType']
-        if db_cluster_network_type is None:
-            raise TypeError("Missing 'db_cluster_network_type' argument")
-        if db_cluster_type is None and 'dbClusterType' in kwargs:
-            db_cluster_type = kwargs['dbClusterType']
-        if db_cluster_type is None:
-            raise TypeError("Missing 'db_cluster_type' argument")
-        if db_node_class is None and 'dbNodeClass' in kwargs:
-            db_node_class = kwargs['dbNodeClass']
-        if db_node_class is None:
-            raise TypeError("Missing 'db_node_class' argument")
-        if db_node_count is None and 'dbNodeCount' in kwargs:
-            db_node_count = kwargs['dbNodeCount']
-        if db_node_count is None:
-            raise TypeError("Missing 'db_node_count' argument")
-        if db_node_storage is None and 'dbNodeStorage' in kwargs:
-            db_node_storage = kwargs['dbNodeStorage']
-        if db_node_storage is None:
-            raise TypeError("Missing 'db_node_storage' argument")
-        if encryption_key is None and 'encryptionKey' in kwargs:
-            encryption_key = kwargs['encryptionKey']
-        if encryption_key is None:
-            raise TypeError("Missing 'encryption_key' argument")
-        if encryption_type is None and 'encryptionType' in kwargs:
-            encryption_type = kwargs['encryptionType']
-        if encryption_type is None:
-            raise TypeError("Missing 'encryption_type' argument")
-        if engine is None:
-            raise TypeError("Missing 'engine' argument")
-        if engine_version is None and 'engineVersion' in kwargs:
-            engine_version = kwargs['engineVersion']
-        if engine_version is None:
-            raise TypeError("Missing 'engine_version' argument")
-        if expire_time is None and 'expireTime' in kwargs:
-            expire_time = kwargs['expireTime']
-        if expire_time is None:
-            raise TypeError("Missing 'expire_time' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if is_expired is None and 'isExpired' in kwargs:
-            is_expired = kwargs['isExpired']
-        if is_expired is None:
-            raise TypeError("Missing 'is_expired' argument")
-        if lock_mode is None and 'lockMode' in kwargs:
-            lock_mode = kwargs['lockMode']
-        if lock_mode is None:
-            raise TypeError("Missing 'lock_mode' argument")
-        if lock_reason is None and 'lockReason' in kwargs:
-            lock_reason = kwargs['lockReason']
-        if lock_reason is None:
-            raise TypeError("Missing 'lock_reason' argument")
-        if maintain_time is None and 'maintainTime' in kwargs:
-            maintain_time = kwargs['maintainTime']
-        if maintain_time is None:
-            raise TypeError("Missing 'maintain_time' argument")
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if payment_type is None:
-            raise TypeError("Missing 'payment_type' argument")
-        if port is None:
-            raise TypeError("Missing 'port' argument")
-        if public_connection_string is None and 'publicConnectionString' in kwargs:
-            public_connection_string = kwargs['publicConnectionString']
-        if public_connection_string is None:
-            raise TypeError("Missing 'public_connection_string' argument")
-        if public_port is None and 'publicPort' in kwargs:
-            public_port = kwargs['publicPort']
-        if public_port is None:
-            raise TypeError("Missing 'public_port' argument")
-        if scale_out_statuses is None and 'scaleOutStatuses' in kwargs:
-            scale_out_statuses = kwargs['scaleOutStatuses']
-        if scale_out_statuses is None:
-            raise TypeError("Missing 'scale_out_statuses' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if storage_type is None and 'storageType' in kwargs:
-            storage_type = kwargs['storageType']
-        if storage_type is None:
-            raise TypeError("Missing 'storage_type' argument")
-        if support_backup is None and 'supportBackup' in kwargs:
-            support_backup = kwargs['supportBackup']
-        if support_backup is None:
-            raise TypeError("Missing 'support_backup' argument")
-        if support_https_port is None and 'supportHttpsPort' in kwargs:
-            support_https_port = kwargs['supportHttpsPort']
-        if support_https_port is None:
-            raise TypeError("Missing 'support_https_port' argument")
-        if support_mysql_port is None and 'supportMysqlPort' in kwargs:
-            support_mysql_port = kwargs['supportMysqlPort']
-        if support_mysql_port is None:
-            raise TypeError("Missing 'support_mysql_port' argument")
-        if vpc_cloud_instance_id is None and 'vpcCloudInstanceId' in kwargs:
-            vpc_cloud_instance_id = kwargs['vpcCloudInstanceId']
-        if vpc_cloud_instance_id is None:
-            raise TypeError("Missing 'vpc_cloud_instance_id' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("ali_uid", ali_uid)
-        _setter("bid", bid)
-        _setter("category", category)
-        _setter("commodity_code", commodity_code)
-        _setter("connection_string", connection_string)
-        _setter("control_version", control_version)
-        _setter("create_time", create_time)
-        _setter("db_cluster_access_white_lists", db_cluster_access_white_lists)
-        _setter("db_cluster_description", db_cluster_description)
-        _setter("db_cluster_id", db_cluster_id)
-        _setter("db_cluster_network_type", db_cluster_network_type)
-        _setter("db_cluster_type", db_cluster_type)
-        _setter("db_node_class", db_node_class)
-        _setter("db_node_count", db_node_count)
-        _setter("db_node_storage", db_node_storage)
-        _setter("encryption_key", encryption_key)
-        _setter("encryption_type", encryption_type)
-        _setter("engine", engine)
-        _setter("engine_version", engine_version)
-        _setter("expire_time", expire_time)
-        _setter("id", id)
-        _setter("is_expired", is_expired)
-        _setter("lock_mode", lock_mode)
-        _setter("lock_reason", lock_reason)
-        _setter("maintain_time", maintain_time)
-        _setter("payment_type", payment_type)
-        _setter("port", port)
-        _setter("public_connection_string", public_connection_string)
-        _setter("public_port", public_port)
-        _setter("scale_out_statuses", scale_out_statuses)
-        _setter("status", status)
-        _setter("storage_type", storage_type)
-        _setter("support_backup", support_backup)
-        _setter("support_https_port", support_https_port)
-        _setter("support_mysql_port", support_mysql_port)
-        _setter("vpc_cloud_instance_id", vpc_cloud_instance_id)
-        _setter("vpc_id", vpc_id)
-        _setter("vswitch_id", vswitch_id)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "ali_uid", ali_uid)
+        pulumi.set(__self__, "bid", bid)
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "commodity_code", commodity_code)
+        pulumi.set(__self__, "connection_string", connection_string)
+        pulumi.set(__self__, "control_version", control_version)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "db_cluster_access_white_lists", db_cluster_access_white_lists)
+        pulumi.set(__self__, "db_cluster_description", db_cluster_description)
+        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+        pulumi.set(__self__, "db_cluster_network_type", db_cluster_network_type)
+        pulumi.set(__self__, "db_cluster_type", db_cluster_type)
+        pulumi.set(__self__, "db_node_class", db_node_class)
+        pulumi.set(__self__, "db_node_count", db_node_count)
+        pulumi.set(__self__, "db_node_storage", db_node_storage)
+        pulumi.set(__self__, "encryption_key", encryption_key)
+        pulumi.set(__self__, "encryption_type", encryption_type)
+        pulumi.set(__self__, "engine", engine)
+        pulumi.set(__self__, "engine_version", engine_version)
+        pulumi.set(__self__, "expire_time", expire_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_expired", is_expired)
+        pulumi.set(__self__, "lock_mode", lock_mode)
+        pulumi.set(__self__, "lock_reason", lock_reason)
+        pulumi.set(__self__, "maintain_time", maintain_time)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "public_connection_string", public_connection_string)
+        pulumi.set(__self__, "public_port", public_port)
+        pulumi.set(__self__, "scale_out_statuses", scale_out_statuses)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "storage_type", storage_type)
+        pulumi.set(__self__, "support_backup", support_backup)
+        pulumi.set(__self__, "support_https_port", support_https_port)
+        pulumi.set(__self__, "support_mysql_port", support_mysql_port)
+        pulumi.set(__self__, "vpc_cloud_instance_id", vpc_cloud_instance_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="aliUid")
@@ -1008,36 +674,9 @@ class GetDbClustersClusterDbClusterAccessWhiteListResult(dict):
         :param str db_cluster_ip_array_name: Whitelist group name.
         :param str security_ip_list: The IP address list under the whitelist group.
         """
-        GetDbClustersClusterDbClusterAccessWhiteListResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            db_cluster_ip_array_attribute=db_cluster_ip_array_attribute,
-            db_cluster_ip_array_name=db_cluster_ip_array_name,
-            security_ip_list=security_ip_list,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             db_cluster_ip_array_attribute: Optional[str] = None,
-             db_cluster_ip_array_name: Optional[str] = None,
-             security_ip_list: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if db_cluster_ip_array_attribute is None and 'dbClusterIpArrayAttribute' in kwargs:
-            db_cluster_ip_array_attribute = kwargs['dbClusterIpArrayAttribute']
-        if db_cluster_ip_array_attribute is None:
-            raise TypeError("Missing 'db_cluster_ip_array_attribute' argument")
-        if db_cluster_ip_array_name is None and 'dbClusterIpArrayName' in kwargs:
-            db_cluster_ip_array_name = kwargs['dbClusterIpArrayName']
-        if db_cluster_ip_array_name is None:
-            raise TypeError("Missing 'db_cluster_ip_array_name' argument")
-        if security_ip_list is None and 'securityIpList' in kwargs:
-            security_ip_list = kwargs['securityIpList']
-        if security_ip_list is None:
-            raise TypeError("Missing 'security_ip_list' argument")
-
-        _setter("db_cluster_ip_array_attribute", db_cluster_ip_array_attribute)
-        _setter("db_cluster_ip_array_name", db_cluster_ip_array_name)
-        _setter("security_ip_list", security_ip_list)
+        pulumi.set(__self__, "db_cluster_ip_array_attribute", db_cluster_ip_array_attribute)
+        pulumi.set(__self__, "db_cluster_ip_array_name", db_cluster_ip_array_name)
+        pulumi.set(__self__, "security_ip_list", security_ip_list)
 
     @property
     @pulumi.getter(name="dbClusterIpArrayAttribute")
@@ -1073,25 +712,8 @@ class GetDbClustersClusterScaleOutStatusResult(dict):
         :param str progress: Process.
         :param str ratio: Efficiency.
         """
-        GetDbClustersClusterScaleOutStatusResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            progress=progress,
-            ratio=ratio,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             progress: Optional[str] = None,
-             ratio: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if progress is None:
-            raise TypeError("Missing 'progress' argument")
-        if ratio is None:
-            raise TypeError("Missing 'ratio' argument")
-
-        _setter("progress", progress)
-        _setter("ratio", ratio)
+        pulumi.set(__self__, "progress", progress)
+        pulumi.set(__self__, "ratio", ratio)
 
     @property
     @pulumi.getter
@@ -1119,29 +741,8 @@ class GetRegionsRegionResult(dict):
         :param str region_id: The Region ID.
         :param Sequence['GetRegionsRegionZoneIdArgs'] zone_ids: A list of available zone ids in the region_id.
         """
-        GetRegionsRegionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            region_id=region_id,
-            zone_ids=zone_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             region_id: Optional[str] = None,
-             zone_ids: Optional[Sequence['outputs.GetRegionsRegionZoneIdResult']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if region_id is None and 'regionId' in kwargs:
-            region_id = kwargs['regionId']
-        if region_id is None:
-            raise TypeError("Missing 'region_id' argument")
-        if zone_ids is None and 'zoneIds' in kwargs:
-            zone_ids = kwargs['zoneIds']
-        if zone_ids is None:
-            raise TypeError("Missing 'zone_ids' argument")
-
-        _setter("region_id", region_id)
-        _setter("zone_ids", zone_ids)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "zone_ids", zone_ids)
 
     @property
     @pulumi.getter(name="regionId")
@@ -1169,29 +770,8 @@ class GetRegionsRegionZoneIdResult(dict):
         :param bool vpc_enabled: Whether to support vpc network.
         :param str zone_id: The zone ID.
         """
-        GetRegionsRegionZoneIdResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            vpc_enabled=vpc_enabled,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             vpc_enabled: Optional[bool] = None,
-             zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if vpc_enabled is None and 'vpcEnabled' in kwargs:
-            vpc_enabled = kwargs['vpcEnabled']
-        if vpc_enabled is None:
-            raise TypeError("Missing 'vpc_enabled' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("vpc_enabled", vpc_enabled)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "vpc_enabled", vpc_enabled)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="vpcEnabled")

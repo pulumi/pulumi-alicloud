@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['MscSubContractArgs', 'MscSubContract']
@@ -27,37 +27,10 @@ class MscSubContractArgs:
                
                > **NOTE:** When the user creates a contact, the user should use `get_msc_sub_contact_verification_message` to receive the verification message and confirm it.
         """
-        MscSubContractArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            contact_name=contact_name,
-            email=email,
-            mobile=mobile,
-            position=position,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             contact_name: Optional[pulumi.Input[str]] = None,
-             email: Optional[pulumi.Input[str]] = None,
-             mobile: Optional[pulumi.Input[str]] = None,
-             position: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if contact_name is None and 'contactName' in kwargs:
-            contact_name = kwargs['contactName']
-        if contact_name is None:
-            raise TypeError("Missing 'contact_name' argument")
-        if email is None:
-            raise TypeError("Missing 'email' argument")
-        if mobile is None:
-            raise TypeError("Missing 'mobile' argument")
-        if position is None:
-            raise TypeError("Missing 'position' argument")
-
-        _setter("contact_name", contact_name)
-        _setter("email", email)
-        _setter("mobile", mobile)
-        _setter("position", position)
+        pulumi.set(__self__, "contact_name", contact_name)
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "mobile", mobile)
+        pulumi.set(__self__, "position", position)
 
     @property
     @pulumi.getter(name="contactName")
@@ -126,33 +99,14 @@ class _MscSubContractState:
                
                > **NOTE:** When the user creates a contact, the user should use `get_msc_sub_contact_verification_message` to receive the verification message and confirm it.
         """
-        _MscSubContractState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            contact_name=contact_name,
-            email=email,
-            mobile=mobile,
-            position=position,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             contact_name: Optional[pulumi.Input[str]] = None,
-             email: Optional[pulumi.Input[str]] = None,
-             mobile: Optional[pulumi.Input[str]] = None,
-             position: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if contact_name is None and 'contactName' in kwargs:
-            contact_name = kwargs['contactName']
-
         if contact_name is not None:
-            _setter("contact_name", contact_name)
+            pulumi.set(__self__, "contact_name", contact_name)
         if email is not None:
-            _setter("email", email)
+            pulumi.set(__self__, "email", email)
         if mobile is not None:
-            _setter("mobile", mobile)
+            pulumi.set(__self__, "mobile", mobile)
         if position is not None:
-            _setter("position", position)
+            pulumi.set(__self__, "position", position)
 
     @property
     @pulumi.getter(name="contactName")
@@ -304,10 +258,6 @@ class MscSubContract(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            MscSubContractArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

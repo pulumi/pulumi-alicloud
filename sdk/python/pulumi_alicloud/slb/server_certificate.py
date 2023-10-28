@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ServerCertificateArgs', 'ServerCertificate']
@@ -35,77 +35,32 @@ class ServerCertificateArgs:
         :param pulumi.Input[str] server_certificate: the content of the ssl certificate. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
-        ServerCertificateArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            alicloud_certifacte_id=alicloud_certifacte_id,
-            alicloud_certifacte_name=alicloud_certifacte_name,
-            alicloud_certificate_id=alicloud_certificate_id,
-            alicloud_certificate_name=alicloud_certificate_name,
-            alicloud_certificate_region_id=alicloud_certificate_region_id,
-            name=name,
-            private_key=private_key,
-            resource_group_id=resource_group_id,
-            server_certificate=server_certificate,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             alicloud_certifacte_id: Optional[pulumi.Input[str]] = None,
-             alicloud_certifacte_name: Optional[pulumi.Input[str]] = None,
-             alicloud_certificate_id: Optional[pulumi.Input[str]] = None,
-             alicloud_certificate_name: Optional[pulumi.Input[str]] = None,
-             alicloud_certificate_region_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             private_key: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             server_certificate: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if alicloud_certifacte_id is None and 'alicloudCertifacteId' in kwargs:
-            alicloud_certifacte_id = kwargs['alicloudCertifacteId']
-        if alicloud_certifacte_name is None and 'alicloudCertifacteName' in kwargs:
-            alicloud_certifacte_name = kwargs['alicloudCertifacteName']
-        if alicloud_certificate_id is None and 'alicloudCertificateId' in kwargs:
-            alicloud_certificate_id = kwargs['alicloudCertificateId']
-        if alicloud_certificate_name is None and 'alicloudCertificateName' in kwargs:
-            alicloud_certificate_name = kwargs['alicloudCertificateName']
-        if alicloud_certificate_region_id is None and 'alicloudCertificateRegionId' in kwargs:
-            alicloud_certificate_region_id = kwargs['alicloudCertificateRegionId']
-        if private_key is None and 'privateKey' in kwargs:
-            private_key = kwargs['privateKey']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if server_certificate is None and 'serverCertificate' in kwargs:
-            server_certificate = kwargs['serverCertificate']
-
         if alicloud_certifacte_id is not None:
             warnings.warn("""Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.""", DeprecationWarning)
             pulumi.log.warn("""alicloud_certifacte_id is deprecated: Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.""")
         if alicloud_certifacte_id is not None:
-            _setter("alicloud_certifacte_id", alicloud_certifacte_id)
+            pulumi.set(__self__, "alicloud_certifacte_id", alicloud_certifacte_id)
         if alicloud_certifacte_name is not None:
             warnings.warn("""Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.""", DeprecationWarning)
             pulumi.log.warn("""alicloud_certifacte_name is deprecated: Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.""")
         if alicloud_certifacte_name is not None:
-            _setter("alicloud_certifacte_name", alicloud_certifacte_name)
+            pulumi.set(__self__, "alicloud_certifacte_name", alicloud_certifacte_name)
         if alicloud_certificate_id is not None:
-            _setter("alicloud_certificate_id", alicloud_certificate_id)
+            pulumi.set(__self__, "alicloud_certificate_id", alicloud_certificate_id)
         if alicloud_certificate_name is not None:
-            _setter("alicloud_certificate_name", alicloud_certificate_name)
+            pulumi.set(__self__, "alicloud_certificate_name", alicloud_certificate_name)
         if alicloud_certificate_region_id is not None:
-            _setter("alicloud_certificate_region_id", alicloud_certificate_region_id)
+            pulumi.set(__self__, "alicloud_certificate_region_id", alicloud_certificate_region_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if private_key is not None:
-            _setter("private_key", private_key)
+            pulumi.set(__self__, "private_key", private_key)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if server_certificate is not None:
-            _setter("server_certificate", server_certificate)
+            pulumi.set(__self__, "server_certificate", server_certificate)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="alicloudCertifacteId")
@@ -252,77 +207,32 @@ class _ServerCertificateState:
         :param pulumi.Input[str] server_certificate: the content of the ssl certificate. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
-        _ServerCertificateState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            alicloud_certifacte_id=alicloud_certifacte_id,
-            alicloud_certifacte_name=alicloud_certifacte_name,
-            alicloud_certificate_id=alicloud_certificate_id,
-            alicloud_certificate_name=alicloud_certificate_name,
-            alicloud_certificate_region_id=alicloud_certificate_region_id,
-            name=name,
-            private_key=private_key,
-            resource_group_id=resource_group_id,
-            server_certificate=server_certificate,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             alicloud_certifacte_id: Optional[pulumi.Input[str]] = None,
-             alicloud_certifacte_name: Optional[pulumi.Input[str]] = None,
-             alicloud_certificate_id: Optional[pulumi.Input[str]] = None,
-             alicloud_certificate_name: Optional[pulumi.Input[str]] = None,
-             alicloud_certificate_region_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             private_key: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             server_certificate: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if alicloud_certifacte_id is None and 'alicloudCertifacteId' in kwargs:
-            alicloud_certifacte_id = kwargs['alicloudCertifacteId']
-        if alicloud_certifacte_name is None and 'alicloudCertifacteName' in kwargs:
-            alicloud_certifacte_name = kwargs['alicloudCertifacteName']
-        if alicloud_certificate_id is None and 'alicloudCertificateId' in kwargs:
-            alicloud_certificate_id = kwargs['alicloudCertificateId']
-        if alicloud_certificate_name is None and 'alicloudCertificateName' in kwargs:
-            alicloud_certificate_name = kwargs['alicloudCertificateName']
-        if alicloud_certificate_region_id is None and 'alicloudCertificateRegionId' in kwargs:
-            alicloud_certificate_region_id = kwargs['alicloudCertificateRegionId']
-        if private_key is None and 'privateKey' in kwargs:
-            private_key = kwargs['privateKey']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if server_certificate is None and 'serverCertificate' in kwargs:
-            server_certificate = kwargs['serverCertificate']
-
         if alicloud_certifacte_id is not None:
             warnings.warn("""Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.""", DeprecationWarning)
             pulumi.log.warn("""alicloud_certifacte_id is deprecated: Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.""")
         if alicloud_certifacte_id is not None:
-            _setter("alicloud_certifacte_id", alicloud_certifacte_id)
+            pulumi.set(__self__, "alicloud_certifacte_id", alicloud_certifacte_id)
         if alicloud_certifacte_name is not None:
             warnings.warn("""Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.""", DeprecationWarning)
             pulumi.log.warn("""alicloud_certifacte_name is deprecated: Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.""")
         if alicloud_certifacte_name is not None:
-            _setter("alicloud_certifacte_name", alicloud_certifacte_name)
+            pulumi.set(__self__, "alicloud_certifacte_name", alicloud_certifacte_name)
         if alicloud_certificate_id is not None:
-            _setter("alicloud_certificate_id", alicloud_certificate_id)
+            pulumi.set(__self__, "alicloud_certificate_id", alicloud_certificate_id)
         if alicloud_certificate_name is not None:
-            _setter("alicloud_certificate_name", alicloud_certificate_name)
+            pulumi.set(__self__, "alicloud_certificate_name", alicloud_certificate_name)
         if alicloud_certificate_region_id is not None:
-            _setter("alicloud_certificate_region_id", alicloud_certificate_region_id)
+            pulumi.set(__self__, "alicloud_certificate_region_id", alicloud_certificate_region_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if private_key is not None:
-            _setter("private_key", private_key)
+            pulumi.set(__self__, "private_key", private_key)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if server_certificate is not None:
-            _setter("server_certificate", server_certificate)
+            pulumi.set(__self__, "server_certificate", server_certificate)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="alicloudCertifacteId")
@@ -630,10 +540,6 @@ class ServerCertificate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ServerCertificateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

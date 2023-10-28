@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SystemGroupArgs', 'SystemGroup']
@@ -33,62 +33,17 @@ class SystemGroupArgs:
         :param pulumi.Input[str] description: The description of Group.
         :param pulumi.Input[bool] enabled: Whether to open Group.
         """
-        SystemGroupArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            group_name=group_name,
-            in_protocol=in_protocol,
-            out_protocol=out_protocol,
-            play_domain=play_domain,
-            push_domain=push_domain,
-            callback=callback,
-            description=description,
-            enabled=enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             group_name: Optional[pulumi.Input[str]] = None,
-             in_protocol: Optional[pulumi.Input[str]] = None,
-             out_protocol: Optional[pulumi.Input[str]] = None,
-             play_domain: Optional[pulumi.Input[str]] = None,
-             push_domain: Optional[pulumi.Input[str]] = None,
-             callback: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if group_name is None and 'groupName' in kwargs:
-            group_name = kwargs['groupName']
-        if group_name is None:
-            raise TypeError("Missing 'group_name' argument")
-        if in_protocol is None and 'inProtocol' in kwargs:
-            in_protocol = kwargs['inProtocol']
-        if in_protocol is None:
-            raise TypeError("Missing 'in_protocol' argument")
-        if out_protocol is None and 'outProtocol' in kwargs:
-            out_protocol = kwargs['outProtocol']
-        if out_protocol is None:
-            raise TypeError("Missing 'out_protocol' argument")
-        if play_domain is None and 'playDomain' in kwargs:
-            play_domain = kwargs['playDomain']
-        if play_domain is None:
-            raise TypeError("Missing 'play_domain' argument")
-        if push_domain is None and 'pushDomain' in kwargs:
-            push_domain = kwargs['pushDomain']
-        if push_domain is None:
-            raise TypeError("Missing 'push_domain' argument")
-
-        _setter("group_name", group_name)
-        _setter("in_protocol", in_protocol)
-        _setter("out_protocol", out_protocol)
-        _setter("play_domain", play_domain)
-        _setter("push_domain", push_domain)
+        pulumi.set(__self__, "group_name", group_name)
+        pulumi.set(__self__, "in_protocol", in_protocol)
+        pulumi.set(__self__, "out_protocol", out_protocol)
+        pulumi.set(__self__, "play_domain", play_domain)
+        pulumi.set(__self__, "push_domain", push_domain)
         if callback is not None:
-            _setter("callback", callback)
+            pulumi.set(__self__, "callback", callback)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter(name="groupName")
@@ -223,97 +178,36 @@ class _SystemGroupState:
         :param pulumi.Input[str] push_domain: The domain name of push streaming used by the group.
         :param pulumi.Input[bool] status: Whether to open Group. Valid values: `on`,`off`.
         """
-        _SystemGroupState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            callback=callback,
-            capture_image=capture_image,
-            capture_interval=capture_interval,
-            capture_oss_bucket=capture_oss_bucket,
-            capture_oss_path=capture_oss_path,
-            capture_video=capture_video,
-            description=description,
-            enabled=enabled,
-            group_name=group_name,
-            in_protocol=in_protocol,
-            lazy_pull=lazy_pull,
-            out_protocol=out_protocol,
-            play_domain=play_domain,
-            push_domain=push_domain,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             callback: Optional[pulumi.Input[str]] = None,
-             capture_image: Optional[pulumi.Input[int]] = None,
-             capture_interval: Optional[pulumi.Input[int]] = None,
-             capture_oss_bucket: Optional[pulumi.Input[str]] = None,
-             capture_oss_path: Optional[pulumi.Input[str]] = None,
-             capture_video: Optional[pulumi.Input[int]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             group_name: Optional[pulumi.Input[str]] = None,
-             in_protocol: Optional[pulumi.Input[str]] = None,
-             lazy_pull: Optional[pulumi.Input[bool]] = None,
-             out_protocol: Optional[pulumi.Input[str]] = None,
-             play_domain: Optional[pulumi.Input[str]] = None,
-             push_domain: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if capture_image is None and 'captureImage' in kwargs:
-            capture_image = kwargs['captureImage']
-        if capture_interval is None and 'captureInterval' in kwargs:
-            capture_interval = kwargs['captureInterval']
-        if capture_oss_bucket is None and 'captureOssBucket' in kwargs:
-            capture_oss_bucket = kwargs['captureOssBucket']
-        if capture_oss_path is None and 'captureOssPath' in kwargs:
-            capture_oss_path = kwargs['captureOssPath']
-        if capture_video is None and 'captureVideo' in kwargs:
-            capture_video = kwargs['captureVideo']
-        if group_name is None and 'groupName' in kwargs:
-            group_name = kwargs['groupName']
-        if in_protocol is None and 'inProtocol' in kwargs:
-            in_protocol = kwargs['inProtocol']
-        if lazy_pull is None and 'lazyPull' in kwargs:
-            lazy_pull = kwargs['lazyPull']
-        if out_protocol is None and 'outProtocol' in kwargs:
-            out_protocol = kwargs['outProtocol']
-        if play_domain is None and 'playDomain' in kwargs:
-            play_domain = kwargs['playDomain']
-        if push_domain is None and 'pushDomain' in kwargs:
-            push_domain = kwargs['pushDomain']
-
         if callback is not None:
-            _setter("callback", callback)
+            pulumi.set(__self__, "callback", callback)
         if capture_image is not None:
-            _setter("capture_image", capture_image)
+            pulumi.set(__self__, "capture_image", capture_image)
         if capture_interval is not None:
-            _setter("capture_interval", capture_interval)
+            pulumi.set(__self__, "capture_interval", capture_interval)
         if capture_oss_bucket is not None:
-            _setter("capture_oss_bucket", capture_oss_bucket)
+            pulumi.set(__self__, "capture_oss_bucket", capture_oss_bucket)
         if capture_oss_path is not None:
-            _setter("capture_oss_path", capture_oss_path)
+            pulumi.set(__self__, "capture_oss_path", capture_oss_path)
         if capture_video is not None:
-            _setter("capture_video", capture_video)
+            pulumi.set(__self__, "capture_video", capture_video)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if group_name is not None:
-            _setter("group_name", group_name)
+            pulumi.set(__self__, "group_name", group_name)
         if in_protocol is not None:
-            _setter("in_protocol", in_protocol)
+            pulumi.set(__self__, "in_protocol", in_protocol)
         if lazy_pull is not None:
-            _setter("lazy_pull", lazy_pull)
+            pulumi.set(__self__, "lazy_pull", lazy_pull)
         if out_protocol is not None:
-            _setter("out_protocol", out_protocol)
+            pulumi.set(__self__, "out_protocol", out_protocol)
         if play_domain is not None:
-            _setter("play_domain", play_domain)
+            pulumi.set(__self__, "play_domain", play_domain)
         if push_domain is not None:
-            _setter("push_domain", push_domain)
+            pulumi.set(__self__, "push_domain", push_domain)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -599,10 +493,6 @@ class SystemGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SystemGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

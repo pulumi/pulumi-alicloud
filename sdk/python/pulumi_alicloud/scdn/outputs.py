@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -62,45 +62,16 @@ class DomainCertInfo(dict):
         :param str ssl_protocol: Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
         :param str ssl_pub: If You Enable HTTPS Here Key.
         """
-        DomainCertInfo._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cert_name=cert_name,
-            cert_type=cert_type,
-            ssl_pri=ssl_pri,
-            ssl_protocol=ssl_protocol,
-            ssl_pub=ssl_pub,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cert_name: Optional[str] = None,
-             cert_type: Optional[str] = None,
-             ssl_pri: Optional[str] = None,
-             ssl_protocol: Optional[str] = None,
-             ssl_pub: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cert_name is None and 'certName' in kwargs:
-            cert_name = kwargs['certName']
-        if cert_type is None and 'certType' in kwargs:
-            cert_type = kwargs['certType']
-        if ssl_pri is None and 'sslPri' in kwargs:
-            ssl_pri = kwargs['sslPri']
-        if ssl_protocol is None and 'sslProtocol' in kwargs:
-            ssl_protocol = kwargs['sslProtocol']
-        if ssl_pub is None and 'sslPub' in kwargs:
-            ssl_pub = kwargs['sslPub']
-
         if cert_name is not None:
-            _setter("cert_name", cert_name)
+            pulumi.set(__self__, "cert_name", cert_name)
         if cert_type is not None:
-            _setter("cert_type", cert_type)
+            pulumi.set(__self__, "cert_type", cert_type)
         if ssl_pri is not None:
-            _setter("ssl_pri", ssl_pri)
+            pulumi.set(__self__, "ssl_pri", ssl_pri)
         if ssl_protocol is not None:
-            _setter("ssl_protocol", ssl_protocol)
+            pulumi.set(__self__, "ssl_protocol", ssl_protocol)
         if ssl_pub is not None:
-            _setter("ssl_pub", ssl_pub)
+            pulumi.set(__self__, "ssl_pub", ssl_pub)
 
     @property
     @pulumi.getter(name="certName")
@@ -174,29 +145,8 @@ class DomainConfigFunctionArg(dict):
         :param str arg_name: The name of arg.
         :param str arg_value: The value of arg.
         """
-        DomainConfigFunctionArg._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            arg_name=arg_name,
-            arg_value=arg_value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             arg_name: Optional[str] = None,
-             arg_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if arg_name is None and 'argName' in kwargs:
-            arg_name = kwargs['argName']
-        if arg_name is None:
-            raise TypeError("Missing 'arg_name' argument")
-        if arg_value is None and 'argValue' in kwargs:
-            arg_value = kwargs['argValue']
-        if arg_value is None:
-            raise TypeError("Missing 'arg_value' argument")
-
-        _setter("arg_name", arg_name)
-        _setter("arg_value", arg_value)
+        pulumi.set(__self__, "arg_name", arg_name)
+        pulumi.set(__self__, "arg_value", arg_value)
 
     @property
     @pulumi.getter(name="argName")
@@ -233,39 +183,12 @@ class DomainSource(dict):
                * oss: OSS Bucket as a Source Station.
         :param str enabled: The source status. Valid values: online, offline.
         """
-        DomainSource._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            content=content,
-            port=port,
-            priority=priority,
-            type=type,
-            enabled=enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             content: Optional[str] = None,
-             port: Optional[int] = None,
-             priority: Optional[str] = None,
-             type: Optional[str] = None,
-             enabled: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if content is None:
-            raise TypeError("Missing 'content' argument")
-        if port is None:
-            raise TypeError("Missing 'port' argument")
-        if priority is None:
-            raise TypeError("Missing 'priority' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("content", content)
-        _setter("port", port)
-        _setter("priority", priority)
-        _setter("type", type)
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "type", type)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
@@ -336,75 +259,16 @@ class GetDomainsDomainResult(dict):
         :param Sequence['GetDomainsDomainSourceArgs'] sources: the Origin Server Information.
         :param str status: The status of the resource.
         """
-        GetDomainsDomainResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cert_infos=cert_infos,
-            cname=cname,
-            create_time=create_time,
-            description=description,
-            domain_name=domain_name,
-            gmt_modified=gmt_modified,
-            id=id,
-            resource_group_id=resource_group_id,
-            sources=sources,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cert_infos: Optional[Sequence['outputs.GetDomainsDomainCertInfoResult']] = None,
-             cname: Optional[str] = None,
-             create_time: Optional[str] = None,
-             description: Optional[str] = None,
-             domain_name: Optional[str] = None,
-             gmt_modified: Optional[str] = None,
-             id: Optional[str] = None,
-             resource_group_id: Optional[str] = None,
-             sources: Optional[Sequence['outputs.GetDomainsDomainSourceResult']] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cert_infos is None and 'certInfos' in kwargs:
-            cert_infos = kwargs['certInfos']
-        if cert_infos is None:
-            raise TypeError("Missing 'cert_infos' argument")
-        if cname is None:
-            raise TypeError("Missing 'cname' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if domain_name is None and 'domainName' in kwargs:
-            domain_name = kwargs['domainName']
-        if domain_name is None:
-            raise TypeError("Missing 'domain_name' argument")
-        if gmt_modified is None and 'gmtModified' in kwargs:
-            gmt_modified = kwargs['gmtModified']
-        if gmt_modified is None:
-            raise TypeError("Missing 'gmt_modified' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if sources is None:
-            raise TypeError("Missing 'sources' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("cert_infos", cert_infos)
-        _setter("cname", cname)
-        _setter("create_time", create_time)
-        _setter("description", description)
-        _setter("domain_name", domain_name)
-        _setter("gmt_modified", gmt_modified)
-        _setter("id", id)
-        _setter("resource_group_id", resource_group_id)
-        _setter("sources", sources)
-        _setter("status", status)
+        pulumi.set(__self__, "cert_infos", cert_infos)
+        pulumi.set(__self__, "cname", cname)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "gmt_modified", gmt_modified)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "sources", sources)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="certInfos")
@@ -500,43 +364,10 @@ class GetDomainsDomainCertInfoResult(dict):
         :param str ssl_protocol: Whether to Enable SSL Certificate. Valid Values: on, off.
         :param str ssl_pub: If You Enable HTTPS Here Key.
         """
-        GetDomainsDomainCertInfoResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cert_name=cert_name,
-            cert_type=cert_type,
-            ssl_protocol=ssl_protocol,
-            ssl_pub=ssl_pub,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cert_name: Optional[str] = None,
-             cert_type: Optional[str] = None,
-             ssl_protocol: Optional[str] = None,
-             ssl_pub: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cert_name is None and 'certName' in kwargs:
-            cert_name = kwargs['certName']
-        if cert_name is None:
-            raise TypeError("Missing 'cert_name' argument")
-        if cert_type is None and 'certType' in kwargs:
-            cert_type = kwargs['certType']
-        if cert_type is None:
-            raise TypeError("Missing 'cert_type' argument")
-        if ssl_protocol is None and 'sslProtocol' in kwargs:
-            ssl_protocol = kwargs['sslProtocol']
-        if ssl_protocol is None:
-            raise TypeError("Missing 'ssl_protocol' argument")
-        if ssl_pub is None and 'sslPub' in kwargs:
-            ssl_pub = kwargs['sslPub']
-        if ssl_pub is None:
-            raise TypeError("Missing 'ssl_pub' argument")
-
-        _setter("cert_name", cert_name)
-        _setter("cert_type", cert_type)
-        _setter("ssl_protocol", ssl_protocol)
-        _setter("ssl_pub", ssl_pub)
+        pulumi.set(__self__, "cert_name", cert_name)
+        pulumi.set(__self__, "cert_type", cert_type)
+        pulumi.set(__self__, "ssl_protocol", ssl_protocol)
+        pulumi.set(__self__, "ssl_pub", ssl_pub)
 
     @property
     @pulumi.getter(name="certName")
@@ -586,40 +417,11 @@ class GetDomainsDomainSourceResult(dict):
         :param str priority: Priority.
         :param str type: the Origin Server Type. Valid Values: Ipaddr: IP Source Station Domain: the Domain Name, See Extra Domain Quota OSS: OSS Bucket as a Source Station.
         """
-        GetDomainsDomainSourceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            content=content,
-            enabled=enabled,
-            port=port,
-            priority=priority,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             content: Optional[str] = None,
-             enabled: Optional[str] = None,
-             port: Optional[int] = None,
-             priority: Optional[str] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if content is None:
-            raise TypeError("Missing 'content' argument")
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-        if port is None:
-            raise TypeError("Missing 'port' argument")
-        if priority is None:
-            raise TypeError("Missing 'priority' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("content", content)
-        _setter("enabled", enabled)
-        _setter("port", port)
-        _setter("priority", priority)
-        _setter("type", type)
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,47 +29,12 @@ class RuleArgs:
         :param pulumi.Input[str] zone_name: The name of the forwarding zone.
         :param pulumi.Input[str] type: The type of the rule. Valid values: `OUTBOUND`.
         """
-        RuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            endpoint_id=endpoint_id,
-            forward_ips=forward_ips,
-            rule_name=rule_name,
-            zone_name=zone_name,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             endpoint_id: Optional[pulumi.Input[str]] = None,
-             forward_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RuleForwardIpArgs']]]] = None,
-             rule_name: Optional[pulumi.Input[str]] = None,
-             zone_name: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if endpoint_id is None and 'endpointId' in kwargs:
-            endpoint_id = kwargs['endpointId']
-        if endpoint_id is None:
-            raise TypeError("Missing 'endpoint_id' argument")
-        if forward_ips is None and 'forwardIps' in kwargs:
-            forward_ips = kwargs['forwardIps']
-        if forward_ips is None:
-            raise TypeError("Missing 'forward_ips' argument")
-        if rule_name is None and 'ruleName' in kwargs:
-            rule_name = kwargs['ruleName']
-        if rule_name is None:
-            raise TypeError("Missing 'rule_name' argument")
-        if zone_name is None and 'zoneName' in kwargs:
-            zone_name = kwargs['zoneName']
-        if zone_name is None:
-            raise TypeError("Missing 'zone_name' argument")
-
-        _setter("endpoint_id", endpoint_id)
-        _setter("forward_ips", forward_ips)
-        _setter("rule_name", rule_name)
-        _setter("zone_name", zone_name)
+        pulumi.set(__self__, "endpoint_id", endpoint_id)
+        pulumi.set(__self__, "forward_ips", forward_ips)
+        pulumi.set(__self__, "rule_name", rule_name)
+        pulumi.set(__self__, "zone_name", zone_name)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="endpointId")
@@ -148,43 +113,16 @@ class _RuleState:
         :param pulumi.Input[str] type: The type of the rule. Valid values: `OUTBOUND`.
         :param pulumi.Input[str] zone_name: The name of the forwarding zone.
         """
-        _RuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            endpoint_id=endpoint_id,
-            forward_ips=forward_ips,
-            rule_name=rule_name,
-            type=type,
-            zone_name=zone_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             endpoint_id: Optional[pulumi.Input[str]] = None,
-             forward_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RuleForwardIpArgs']]]] = None,
-             rule_name: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             zone_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if endpoint_id is None and 'endpointId' in kwargs:
-            endpoint_id = kwargs['endpointId']
-        if forward_ips is None and 'forwardIps' in kwargs:
-            forward_ips = kwargs['forwardIps']
-        if rule_name is None and 'ruleName' in kwargs:
-            rule_name = kwargs['ruleName']
-        if zone_name is None and 'zoneName' in kwargs:
-            zone_name = kwargs['zoneName']
-
         if endpoint_id is not None:
-            _setter("endpoint_id", endpoint_id)
+            pulumi.set(__self__, "endpoint_id", endpoint_id)
         if forward_ips is not None:
-            _setter("forward_ips", forward_ips)
+            pulumi.set(__self__, "forward_ips", forward_ips)
         if rule_name is not None:
-            _setter("rule_name", rule_name)
+            pulumi.set(__self__, "rule_name", rule_name)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if zone_name is not None:
-            _setter("zone_name", zone_name)
+            pulumi.set(__self__, "zone_name", zone_name)
 
     @property
     @pulumi.getter(name="endpointId")
@@ -312,10 +250,6 @@ class Rule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

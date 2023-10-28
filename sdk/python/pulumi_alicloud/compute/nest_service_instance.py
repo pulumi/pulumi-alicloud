@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -45,89 +45,30 @@ class NestServiceInstanceArgs:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] template_name: The name of the template.
         """
-        NestServiceInstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            service_id=service_id,
-            service_version=service_version,
-            commodity=commodity,
-            enable_instance_ops=enable_instance_ops,
-            enable_user_prometheus=enable_user_prometheus,
-            operation_metadata=operation_metadata,
-            parameters=parameters,
-            payment_type=payment_type,
-            resource_group_id=resource_group_id,
-            service_instance_name=service_instance_name,
-            specification_name=specification_name,
-            tags=tags,
-            template_name=template_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             service_id: Optional[pulumi.Input[str]] = None,
-             service_version: Optional[pulumi.Input[str]] = None,
-             commodity: Optional[pulumi.Input['NestServiceInstanceCommodityArgs']] = None,
-             enable_instance_ops: Optional[pulumi.Input[bool]] = None,
-             enable_user_prometheus: Optional[pulumi.Input[bool]] = None,
-             operation_metadata: Optional[pulumi.Input['NestServiceInstanceOperationMetadataArgs']] = None,
-             parameters: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             service_instance_name: Optional[pulumi.Input[str]] = None,
-             specification_name: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             template_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if service_id is None and 'serviceId' in kwargs:
-            service_id = kwargs['serviceId']
-        if service_id is None:
-            raise TypeError("Missing 'service_id' argument")
-        if service_version is None and 'serviceVersion' in kwargs:
-            service_version = kwargs['serviceVersion']
-        if service_version is None:
-            raise TypeError("Missing 'service_version' argument")
-        if enable_instance_ops is None and 'enableInstanceOps' in kwargs:
-            enable_instance_ops = kwargs['enableInstanceOps']
-        if enable_user_prometheus is None and 'enableUserPrometheus' in kwargs:
-            enable_user_prometheus = kwargs['enableUserPrometheus']
-        if operation_metadata is None and 'operationMetadata' in kwargs:
-            operation_metadata = kwargs['operationMetadata']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if service_instance_name is None and 'serviceInstanceName' in kwargs:
-            service_instance_name = kwargs['serviceInstanceName']
-        if specification_name is None and 'specificationName' in kwargs:
-            specification_name = kwargs['specificationName']
-        if template_name is None and 'templateName' in kwargs:
-            template_name = kwargs['templateName']
-
-        _setter("service_id", service_id)
-        _setter("service_version", service_version)
+        pulumi.set(__self__, "service_id", service_id)
+        pulumi.set(__self__, "service_version", service_version)
         if commodity is not None:
-            _setter("commodity", commodity)
+            pulumi.set(__self__, "commodity", commodity)
         if enable_instance_ops is not None:
-            _setter("enable_instance_ops", enable_instance_ops)
+            pulumi.set(__self__, "enable_instance_ops", enable_instance_ops)
         if enable_user_prometheus is not None:
-            _setter("enable_user_prometheus", enable_user_prometheus)
+            pulumi.set(__self__, "enable_user_prometheus", enable_user_prometheus)
         if operation_metadata is not None:
-            _setter("operation_metadata", operation_metadata)
+            pulumi.set(__self__, "operation_metadata", operation_metadata)
         if parameters is not None:
-            _setter("parameters", parameters)
+            pulumi.set(__self__, "parameters", parameters)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if service_instance_name is not None:
-            _setter("service_instance_name", service_instance_name)
+            pulumi.set(__self__, "service_instance_name", service_instance_name)
         if specification_name is not None:
-            _setter("specification_name", specification_name)
+            pulumi.set(__self__, "specification_name", specification_name)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if template_name is not None:
-            _setter("template_name", template_name)
+            pulumi.set(__self__, "template_name", template_name)
 
     @property
     @pulumi.getter(name="serviceId")
@@ -320,91 +261,34 @@ class _NestServiceInstanceState:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] template_name: The name of the template.
         """
-        _NestServiceInstanceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            commodity=commodity,
-            enable_instance_ops=enable_instance_ops,
-            enable_user_prometheus=enable_user_prometheus,
-            operation_metadata=operation_metadata,
-            parameters=parameters,
-            payment_type=payment_type,
-            resource_group_id=resource_group_id,
-            service_id=service_id,
-            service_instance_name=service_instance_name,
-            service_version=service_version,
-            specification_name=specification_name,
-            status=status,
-            tags=tags,
-            template_name=template_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             commodity: Optional[pulumi.Input['NestServiceInstanceCommodityArgs']] = None,
-             enable_instance_ops: Optional[pulumi.Input[bool]] = None,
-             enable_user_prometheus: Optional[pulumi.Input[bool]] = None,
-             operation_metadata: Optional[pulumi.Input['NestServiceInstanceOperationMetadataArgs']] = None,
-             parameters: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             service_id: Optional[pulumi.Input[str]] = None,
-             service_instance_name: Optional[pulumi.Input[str]] = None,
-             service_version: Optional[pulumi.Input[str]] = None,
-             specification_name: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             template_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enable_instance_ops is None and 'enableInstanceOps' in kwargs:
-            enable_instance_ops = kwargs['enableInstanceOps']
-        if enable_user_prometheus is None and 'enableUserPrometheus' in kwargs:
-            enable_user_prometheus = kwargs['enableUserPrometheus']
-        if operation_metadata is None and 'operationMetadata' in kwargs:
-            operation_metadata = kwargs['operationMetadata']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if service_id is None and 'serviceId' in kwargs:
-            service_id = kwargs['serviceId']
-        if service_instance_name is None and 'serviceInstanceName' in kwargs:
-            service_instance_name = kwargs['serviceInstanceName']
-        if service_version is None and 'serviceVersion' in kwargs:
-            service_version = kwargs['serviceVersion']
-        if specification_name is None and 'specificationName' in kwargs:
-            specification_name = kwargs['specificationName']
-        if template_name is None and 'templateName' in kwargs:
-            template_name = kwargs['templateName']
-
         if commodity is not None:
-            _setter("commodity", commodity)
+            pulumi.set(__self__, "commodity", commodity)
         if enable_instance_ops is not None:
-            _setter("enable_instance_ops", enable_instance_ops)
+            pulumi.set(__self__, "enable_instance_ops", enable_instance_ops)
         if enable_user_prometheus is not None:
-            _setter("enable_user_prometheus", enable_user_prometheus)
+            pulumi.set(__self__, "enable_user_prometheus", enable_user_prometheus)
         if operation_metadata is not None:
-            _setter("operation_metadata", operation_metadata)
+            pulumi.set(__self__, "operation_metadata", operation_metadata)
         if parameters is not None:
-            _setter("parameters", parameters)
+            pulumi.set(__self__, "parameters", parameters)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if service_id is not None:
-            _setter("service_id", service_id)
+            pulumi.set(__self__, "service_id", service_id)
         if service_instance_name is not None:
-            _setter("service_instance_name", service_instance_name)
+            pulumi.set(__self__, "service_instance_name", service_instance_name)
         if service_version is not None:
-            _setter("service_version", service_version)
+            pulumi.set(__self__, "service_version", service_version)
         if specification_name is not None:
-            _setter("specification_name", specification_name)
+            pulumi.set(__self__, "specification_name", specification_name)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if template_name is not None:
-            _setter("template_name", template_name)
+            pulumi.set(__self__, "template_name", template_name)
 
     @property
     @pulumi.getter
@@ -784,10 +668,6 @@ class NestServiceInstance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            NestServiceInstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -815,11 +695,9 @@ class NestServiceInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NestServiceInstanceArgs.__new__(NestServiceInstanceArgs)
 
-            commodity = _utilities.configure(commodity, NestServiceInstanceCommodityArgs, True)
             __props__.__dict__["commodity"] = commodity
             __props__.__dict__["enable_instance_ops"] = enable_instance_ops
             __props__.__dict__["enable_user_prometheus"] = enable_user_prometheus
-            operation_metadata = _utilities.configure(operation_metadata, NestServiceInstanceOperationMetadataArgs, True)
             __props__.__dict__["operation_metadata"] = operation_metadata
             __props__.__dict__["parameters"] = parameters
             __props__.__dict__["payment_type"] = payment_type

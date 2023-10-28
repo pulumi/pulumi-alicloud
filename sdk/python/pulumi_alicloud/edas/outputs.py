@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -56,46 +56,15 @@ class K8sSlbAttachmentSlbConfig(dict):
         :param str slb_id: The ID of your SLB instance, if value is empty which means EDAS will purchase an SLB instance with 'specification' field.
         :param str specification: The instance specification of SLB, values can be found [here](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createloadbalancer-2#t4182.html), empty for 'slb.s1.small'.
         """
-        K8sSlbAttachmentSlbConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            port_mappings=port_mappings,
-            scheduler=scheduler,
-            type=type,
-            name=name,
-            slb_id=slb_id,
-            specification=specification,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             port_mappings: Optional[Sequence['outputs.K8sSlbAttachmentSlbConfigPortMapping']] = None,
-             scheduler: Optional[str] = None,
-             type: Optional[str] = None,
-             name: Optional[str] = None,
-             slb_id: Optional[str] = None,
-             specification: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if port_mappings is None and 'portMappings' in kwargs:
-            port_mappings = kwargs['portMappings']
-        if port_mappings is None:
-            raise TypeError("Missing 'port_mappings' argument")
-        if scheduler is None:
-            raise TypeError("Missing 'scheduler' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if slb_id is None and 'slbId' in kwargs:
-            slb_id = kwargs['slbId']
-
-        _setter("port_mappings", port_mappings)
-        _setter("scheduler", scheduler)
-        _setter("type", type)
+        pulumi.set(__self__, "port_mappings", port_mappings)
+        pulumi.set(__self__, "scheduler", scheduler)
+        pulumi.set(__self__, "type", type)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if slb_id is not None:
-            _setter("slb_id", slb_id)
+            pulumi.set(__self__, "slb_id", slb_id)
         if specification is not None:
-            _setter("specification", specification)
+            pulumi.set(__self__, "specification", specification)
 
     @property
     @pulumi.getter(name="portMappings")
@@ -178,35 +147,10 @@ class K8sSlbAttachmentSlbConfigPortMapping(dict):
         :param 'K8sSlbAttachmentSlbConfigPortMappingServicePortArgs' service_port: The backend k8s service configuration for SLB instance, which is supported for multiple configurations. See `service_port` below.
         :param str cert_id: The ID of your tls certification, this is used for 'HTTPS' protocol only.
         """
-        K8sSlbAttachmentSlbConfigPortMapping._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            loadbalancer_protocol=loadbalancer_protocol,
-            service_port=service_port,
-            cert_id=cert_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             loadbalancer_protocol: Optional[str] = None,
-             service_port: Optional['outputs.K8sSlbAttachmentSlbConfigPortMappingServicePort'] = None,
-             cert_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if loadbalancer_protocol is None and 'loadbalancerProtocol' in kwargs:
-            loadbalancer_protocol = kwargs['loadbalancerProtocol']
-        if loadbalancer_protocol is None:
-            raise TypeError("Missing 'loadbalancer_protocol' argument")
-        if service_port is None and 'servicePort' in kwargs:
-            service_port = kwargs['servicePort']
-        if service_port is None:
-            raise TypeError("Missing 'service_port' argument")
-        if cert_id is None and 'certId' in kwargs:
-            cert_id = kwargs['certId']
-
-        _setter("loadbalancer_protocol", loadbalancer_protocol)
-        _setter("service_port", service_port)
+        pulumi.set(__self__, "loadbalancer_protocol", loadbalancer_protocol)
+        pulumi.set(__self__, "service_port", service_port)
         if cert_id is not None:
-            _setter("cert_id", cert_id)
+            pulumi.set(__self__, "cert_id", cert_id)
 
     @property
     @pulumi.getter(name="loadbalancerProtocol")
@@ -261,32 +205,9 @@ class K8sSlbAttachmentSlbConfigPortMappingServicePort(dict):
         :param str protocol: The protocol of k8s service, values can be 'TCP' or 'UDP'.
         :param int target_port: The port of k8s pod, values should be within range [1, 65535].
         """
-        K8sSlbAttachmentSlbConfigPortMappingServicePort._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            port=port,
-            protocol=protocol,
-            target_port=target_port,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             port: Optional[int] = None,
-             protocol: Optional[str] = None,
-             target_port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if port is None:
-            raise TypeError("Missing 'port' argument")
-        if protocol is None:
-            raise TypeError("Missing 'protocol' argument")
-        if target_port is None and 'targetPort' in kwargs:
-            target_port = kwargs['targetPort']
-        if target_port is None:
-            raise TypeError("Missing 'target_port' argument")
-
-        _setter("port", port)
-        _setter("protocol", protocol)
-        _setter("target_port", target_port)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "target_port", target_port)
 
     @property
     @pulumi.getter
@@ -332,64 +253,13 @@ class GetApplicationsApplicationResult(dict):
         :param int cluster_type: The type of the cluster that you want to create. Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernates cluster.
         :param str region_id: The ID of the namespace the application belongs to.
         """
-        GetApplicationsApplicationResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            app_id=app_id,
-            app_name=app_name,
-            application_type=application_type,
-            build_package_id=build_package_id,
-            cluster_id=cluster_id,
-            cluster_type=cluster_type,
-            region_id=region_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             app_id: Optional[str] = None,
-             app_name: Optional[str] = None,
-             application_type: Optional[str] = None,
-             build_package_id: Optional[int] = None,
-             cluster_id: Optional[str] = None,
-             cluster_type: Optional[int] = None,
-             region_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if app_id is None and 'appId' in kwargs:
-            app_id = kwargs['appId']
-        if app_id is None:
-            raise TypeError("Missing 'app_id' argument")
-        if app_name is None and 'appName' in kwargs:
-            app_name = kwargs['appName']
-        if app_name is None:
-            raise TypeError("Missing 'app_name' argument")
-        if application_type is None and 'applicationType' in kwargs:
-            application_type = kwargs['applicationType']
-        if application_type is None:
-            raise TypeError("Missing 'application_type' argument")
-        if build_package_id is None and 'buildPackageId' in kwargs:
-            build_package_id = kwargs['buildPackageId']
-        if build_package_id is None:
-            raise TypeError("Missing 'build_package_id' argument")
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cluster_id is None:
-            raise TypeError("Missing 'cluster_id' argument")
-        if cluster_type is None and 'clusterType' in kwargs:
-            cluster_type = kwargs['clusterType']
-        if cluster_type is None:
-            raise TypeError("Missing 'cluster_type' argument")
-        if region_id is None and 'regionId' in kwargs:
-            region_id = kwargs['regionId']
-        if region_id is None:
-            raise TypeError("Missing 'region_id' argument")
-
-        _setter("app_id", app_id)
-        _setter("app_name", app_name)
-        _setter("application_type", application_type)
-        _setter("build_package_id", build_package_id)
-        _setter("cluster_id", cluster_id)
-        _setter("cluster_type", cluster_type)
-        _setter("region_id", region_id)
+        pulumi.set(__self__, "app_id", app_id)
+        pulumi.set(__self__, "app_name", app_name)
+        pulumi.set(__self__, "application_type", application_type)
+        pulumi.set(__self__, "build_package_id", build_package_id)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "cluster_type", cluster_type)
+        pulumi.set(__self__, "region_id", region_id)
 
     @property
     @pulumi.getter(name="appId")
@@ -479,102 +349,19 @@ class GetClustersClusterResult(dict):
         :param int update_time: The time when the cluster was last updated.
         :param str vpc_id: The ID of the Virtual Private Cloud (VPC) for the cluster.
         """
-        GetClustersClusterResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_id=cluster_id,
-            cluster_name=cluster_name,
-            cluster_type=cluster_type,
-            cpu=cpu,
-            cpu_used=cpu_used,
-            create_time=create_time,
-            mem=mem,
-            mem_used=mem_used,
-            network_mode=network_mode,
-            node_num=node_num,
-            region_id=region_id,
-            update_time=update_time,
-            vpc_id=vpc_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_id: Optional[str] = None,
-             cluster_name: Optional[str] = None,
-             cluster_type: Optional[int] = None,
-             cpu: Optional[int] = None,
-             cpu_used: Optional[int] = None,
-             create_time: Optional[int] = None,
-             mem: Optional[int] = None,
-             mem_used: Optional[int] = None,
-             network_mode: Optional[int] = None,
-             node_num: Optional[int] = None,
-             region_id: Optional[str] = None,
-             update_time: Optional[int] = None,
-             vpc_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cluster_id is None:
-            raise TypeError("Missing 'cluster_id' argument")
-        if cluster_name is None and 'clusterName' in kwargs:
-            cluster_name = kwargs['clusterName']
-        if cluster_name is None:
-            raise TypeError("Missing 'cluster_name' argument")
-        if cluster_type is None and 'clusterType' in kwargs:
-            cluster_type = kwargs['clusterType']
-        if cluster_type is None:
-            raise TypeError("Missing 'cluster_type' argument")
-        if cpu is None:
-            raise TypeError("Missing 'cpu' argument")
-        if cpu_used is None and 'cpuUsed' in kwargs:
-            cpu_used = kwargs['cpuUsed']
-        if cpu_used is None:
-            raise TypeError("Missing 'cpu_used' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if mem is None:
-            raise TypeError("Missing 'mem' argument")
-        if mem_used is None and 'memUsed' in kwargs:
-            mem_used = kwargs['memUsed']
-        if mem_used is None:
-            raise TypeError("Missing 'mem_used' argument")
-        if network_mode is None and 'networkMode' in kwargs:
-            network_mode = kwargs['networkMode']
-        if network_mode is None:
-            raise TypeError("Missing 'network_mode' argument")
-        if node_num is None and 'nodeNum' in kwargs:
-            node_num = kwargs['nodeNum']
-        if node_num is None:
-            raise TypeError("Missing 'node_num' argument")
-        if region_id is None and 'regionId' in kwargs:
-            region_id = kwargs['regionId']
-        if region_id is None:
-            raise TypeError("Missing 'region_id' argument")
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-        if update_time is None:
-            raise TypeError("Missing 'update_time' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-
-        _setter("cluster_id", cluster_id)
-        _setter("cluster_name", cluster_name)
-        _setter("cluster_type", cluster_type)
-        _setter("cpu", cpu)
-        _setter("cpu_used", cpu_used)
-        _setter("create_time", create_time)
-        _setter("mem", mem)
-        _setter("mem_used", mem_used)
-        _setter("network_mode", network_mode)
-        _setter("node_num", node_num)
-        _setter("region_id", region_id)
-        _setter("update_time", update_time)
-        _setter("vpc_id", vpc_id)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "cluster_name", cluster_name)
+        pulumi.set(__self__, "cluster_type", cluster_type)
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "cpu_used", cpu_used)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "mem", mem)
+        pulumi.set(__self__, "mem_used", mem_used)
+        pulumi.set(__self__, "network_mode", network_mode)
+        pulumi.set(__self__, "node_num", node_num)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "update_time", update_time)
+        pulumi.set(__self__, "vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -704,78 +491,15 @@ class GetDeployGroupsGroupResult(dict):
         :param str package_version_id: The version of the deployment package for the instance group that was created.
         :param int update_time: The time when the instance group was updated.
         """
-        GetDeployGroupsGroupResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            app_id=app_id,
-            app_version_id=app_version_id,
-            cluster_id=cluster_id,
-            create_time=create_time,
-            group_id=group_id,
-            group_name=group_name,
-            group_type=group_type,
-            package_version_id=package_version_id,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             app_id: Optional[str] = None,
-             app_version_id: Optional[str] = None,
-             cluster_id: Optional[str] = None,
-             create_time: Optional[int] = None,
-             group_id: Optional[str] = None,
-             group_name: Optional[str] = None,
-             group_type: Optional[int] = None,
-             package_version_id: Optional[str] = None,
-             update_time: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if app_id is None and 'appId' in kwargs:
-            app_id = kwargs['appId']
-        if app_id is None:
-            raise TypeError("Missing 'app_id' argument")
-        if app_version_id is None and 'appVersionId' in kwargs:
-            app_version_id = kwargs['appVersionId']
-        if app_version_id is None:
-            raise TypeError("Missing 'app_version_id' argument")
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cluster_id is None:
-            raise TypeError("Missing 'cluster_id' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if group_id is None and 'groupId' in kwargs:
-            group_id = kwargs['groupId']
-        if group_id is None:
-            raise TypeError("Missing 'group_id' argument")
-        if group_name is None and 'groupName' in kwargs:
-            group_name = kwargs['groupName']
-        if group_name is None:
-            raise TypeError("Missing 'group_name' argument")
-        if group_type is None and 'groupType' in kwargs:
-            group_type = kwargs['groupType']
-        if group_type is None:
-            raise TypeError("Missing 'group_type' argument")
-        if package_version_id is None and 'packageVersionId' in kwargs:
-            package_version_id = kwargs['packageVersionId']
-        if package_version_id is None:
-            raise TypeError("Missing 'package_version_id' argument")
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-        if update_time is None:
-            raise TypeError("Missing 'update_time' argument")
-
-        _setter("app_id", app_id)
-        _setter("app_version_id", app_version_id)
-        _setter("cluster_id", cluster_id)
-        _setter("create_time", create_time)
-        _setter("group_id", group_id)
-        _setter("group_name", group_name)
-        _setter("group_type", group_type)
-        _setter("package_version_id", package_version_id)
-        _setter("update_time", update_time)
+        pulumi.set(__self__, "app_id", app_id)
+        pulumi.set(__self__, "app_version_id", app_version_id)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "group_name", group_name)
+        pulumi.set(__self__, "group_type", group_type)
+        pulumi.set(__self__, "package_version_id", package_version_id)
+        pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="appId")
@@ -871,67 +595,14 @@ class GetNamespacesNamespaceResult(dict):
         :param str namespace_name: The name of the namespace.
         :param str user_id: The ID of the Alibaba Cloud account to which the namespace belongs.
         """
-        GetNamespacesNamespaceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            belong_region=belong_region,
-            debug_enable=debug_enable,
-            description=description,
-            id=id,
-            namespace_id=namespace_id,
-            namespace_logical_id=namespace_logical_id,
-            namespace_name=namespace_name,
-            user_id=user_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             belong_region: Optional[str] = None,
-             debug_enable: Optional[bool] = None,
-             description: Optional[str] = None,
-             id: Optional[str] = None,
-             namespace_id: Optional[str] = None,
-             namespace_logical_id: Optional[str] = None,
-             namespace_name: Optional[str] = None,
-             user_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if belong_region is None and 'belongRegion' in kwargs:
-            belong_region = kwargs['belongRegion']
-        if belong_region is None:
-            raise TypeError("Missing 'belong_region' argument")
-        if debug_enable is None and 'debugEnable' in kwargs:
-            debug_enable = kwargs['debugEnable']
-        if debug_enable is None:
-            raise TypeError("Missing 'debug_enable' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if namespace_id is None and 'namespaceId' in kwargs:
-            namespace_id = kwargs['namespaceId']
-        if namespace_id is None:
-            raise TypeError("Missing 'namespace_id' argument")
-        if namespace_logical_id is None and 'namespaceLogicalId' in kwargs:
-            namespace_logical_id = kwargs['namespaceLogicalId']
-        if namespace_logical_id is None:
-            raise TypeError("Missing 'namespace_logical_id' argument")
-        if namespace_name is None and 'namespaceName' in kwargs:
-            namespace_name = kwargs['namespaceName']
-        if namespace_name is None:
-            raise TypeError("Missing 'namespace_name' argument")
-        if user_id is None and 'userId' in kwargs:
-            user_id = kwargs['userId']
-        if user_id is None:
-            raise TypeError("Missing 'user_id' argument")
-
-        _setter("belong_region", belong_region)
-        _setter("debug_enable", debug_enable)
-        _setter("description", description)
-        _setter("id", id)
-        _setter("namespace_id", namespace_id)
-        _setter("namespace_logical_id", namespace_logical_id)
-        _setter("namespace_name", namespace_name)
-        _setter("user_id", user_id)
+        pulumi.set(__self__, "belong_region", belong_region)
+        pulumi.set(__self__, "debug_enable", debug_enable)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "namespace_id", namespace_id)
+        pulumi.set(__self__, "namespace_logical_id", namespace_logical_id)
+        pulumi.set(__self__, "namespace_name", namespace_name)
+        pulumi.set(__self__, "user_id", user_id)
 
     @property
     @pulumi.getter(name="belongRegion")

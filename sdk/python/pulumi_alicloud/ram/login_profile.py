@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['LoginProfileArgs', 'LoginProfile']
@@ -25,39 +25,12 @@ class LoginProfileArgs:
         :param pulumi.Input[bool] mfa_bind_required: This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
         :param pulumi.Input[bool] password_reset_required: This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
         """
-        LoginProfileArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            password=password,
-            user_name=user_name,
-            mfa_bind_required=mfa_bind_required,
-            password_reset_required=password_reset_required,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             password: Optional[pulumi.Input[str]] = None,
-             user_name: Optional[pulumi.Input[str]] = None,
-             mfa_bind_required: Optional[pulumi.Input[bool]] = None,
-             password_reset_required: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if password is None:
-            raise TypeError("Missing 'password' argument")
-        if user_name is None and 'userName' in kwargs:
-            user_name = kwargs['userName']
-        if user_name is None:
-            raise TypeError("Missing 'user_name' argument")
-        if mfa_bind_required is None and 'mfaBindRequired' in kwargs:
-            mfa_bind_required = kwargs['mfaBindRequired']
-        if password_reset_required is None and 'passwordResetRequired' in kwargs:
-            password_reset_required = kwargs['passwordResetRequired']
-
-        _setter("password", password)
-        _setter("user_name", user_name)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "user_name", user_name)
         if mfa_bind_required is not None:
-            _setter("mfa_bind_required", mfa_bind_required)
+            pulumi.set(__self__, "mfa_bind_required", mfa_bind_required)
         if password_reset_required is not None:
-            _setter("password_reset_required", password_reset_required)
+            pulumi.set(__self__, "password_reset_required", password_reset_required)
 
     @property
     @pulumi.getter
@@ -122,37 +95,14 @@ class _LoginProfileState:
         :param pulumi.Input[bool] password_reset_required: This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
         :param pulumi.Input[str] user_name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         """
-        _LoginProfileState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            mfa_bind_required=mfa_bind_required,
-            password=password,
-            password_reset_required=password_reset_required,
-            user_name=user_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             mfa_bind_required: Optional[pulumi.Input[bool]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             password_reset_required: Optional[pulumi.Input[bool]] = None,
-             user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if mfa_bind_required is None and 'mfaBindRequired' in kwargs:
-            mfa_bind_required = kwargs['mfaBindRequired']
-        if password_reset_required is None and 'passwordResetRequired' in kwargs:
-            password_reset_required = kwargs['passwordResetRequired']
-        if user_name is None and 'userName' in kwargs:
-            user_name = kwargs['userName']
-
         if mfa_bind_required is not None:
-            _setter("mfa_bind_required", mfa_bind_required)
+            pulumi.set(__self__, "mfa_bind_required", mfa_bind_required)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if password_reset_required is not None:
-            _setter("password_reset_required", password_reset_required)
+            pulumi.set(__self__, "password_reset_required", password_reset_required)
         if user_name is not None:
-            _setter("user_name", user_name)
+            pulumi.set(__self__, "user_name", user_name)
 
     @property
     @pulumi.getter(name="mfaBindRequired")
@@ -296,10 +246,6 @@ class LoginProfile(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            LoginProfileArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

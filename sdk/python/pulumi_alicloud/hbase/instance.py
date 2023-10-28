@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -70,150 +70,51 @@ class InstanceArgs:
         :param pulumi.Input[str] vswitch_id: If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
         :param pulumi.Input[str] zone_id: The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be "" or consistent.
         """
-        InstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            core_instance_type=core_instance_type,
-            engine_version=engine_version,
-            master_instance_type=master_instance_type,
-            account=account,
-            auto_renew=auto_renew,
-            cold_storage_size=cold_storage_size,
-            core_disk_size=core_disk_size,
-            core_disk_type=core_disk_type,
-            core_instance_quantity=core_instance_quantity,
-            deletion_protection=deletion_protection,
-            duration=duration,
-            engine=engine,
-            immediate_delete_flag=immediate_delete_flag,
-            ip_white=ip_white,
-            maintain_end_time=maintain_end_time,
-            maintain_start_time=maintain_start_time,
-            name=name,
-            password=password,
-            pay_type=pay_type,
-            security_groups=security_groups,
-            tags=tags,
-            vpc_id=vpc_id,
-            vswitch_id=vswitch_id,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             core_instance_type: Optional[pulumi.Input[str]] = None,
-             engine_version: Optional[pulumi.Input[str]] = None,
-             master_instance_type: Optional[pulumi.Input[str]] = None,
-             account: Optional[pulumi.Input[str]] = None,
-             auto_renew: Optional[pulumi.Input[bool]] = None,
-             cold_storage_size: Optional[pulumi.Input[int]] = None,
-             core_disk_size: Optional[pulumi.Input[int]] = None,
-             core_disk_type: Optional[pulumi.Input[str]] = None,
-             core_instance_quantity: Optional[pulumi.Input[int]] = None,
-             deletion_protection: Optional[pulumi.Input[bool]] = None,
-             duration: Optional[pulumi.Input[int]] = None,
-             engine: Optional[pulumi.Input[str]] = None,
-             immediate_delete_flag: Optional[pulumi.Input[bool]] = None,
-             ip_white: Optional[pulumi.Input[str]] = None,
-             maintain_end_time: Optional[pulumi.Input[str]] = None,
-             maintain_start_time: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             pay_type: Optional[pulumi.Input[str]] = None,
-             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if core_instance_type is None and 'coreInstanceType' in kwargs:
-            core_instance_type = kwargs['coreInstanceType']
-        if core_instance_type is None:
-            raise TypeError("Missing 'core_instance_type' argument")
-        if engine_version is None and 'engineVersion' in kwargs:
-            engine_version = kwargs['engineVersion']
-        if engine_version is None:
-            raise TypeError("Missing 'engine_version' argument")
-        if master_instance_type is None and 'masterInstanceType' in kwargs:
-            master_instance_type = kwargs['masterInstanceType']
-        if master_instance_type is None:
-            raise TypeError("Missing 'master_instance_type' argument")
-        if auto_renew is None and 'autoRenew' in kwargs:
-            auto_renew = kwargs['autoRenew']
-        if cold_storage_size is None and 'coldStorageSize' in kwargs:
-            cold_storage_size = kwargs['coldStorageSize']
-        if core_disk_size is None and 'coreDiskSize' in kwargs:
-            core_disk_size = kwargs['coreDiskSize']
-        if core_disk_type is None and 'coreDiskType' in kwargs:
-            core_disk_type = kwargs['coreDiskType']
-        if core_instance_quantity is None and 'coreInstanceQuantity' in kwargs:
-            core_instance_quantity = kwargs['coreInstanceQuantity']
-        if deletion_protection is None and 'deletionProtection' in kwargs:
-            deletion_protection = kwargs['deletionProtection']
-        if immediate_delete_flag is None and 'immediateDeleteFlag' in kwargs:
-            immediate_delete_flag = kwargs['immediateDeleteFlag']
-        if ip_white is None and 'ipWhite' in kwargs:
-            ip_white = kwargs['ipWhite']
-        if maintain_end_time is None and 'maintainEndTime' in kwargs:
-            maintain_end_time = kwargs['maintainEndTime']
-        if maintain_start_time is None and 'maintainStartTime' in kwargs:
-            maintain_start_time = kwargs['maintainStartTime']
-        if pay_type is None and 'payType' in kwargs:
-            pay_type = kwargs['payType']
-        if security_groups is None and 'securityGroups' in kwargs:
-            security_groups = kwargs['securityGroups']
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
-        _setter("core_instance_type", core_instance_type)
-        _setter("engine_version", engine_version)
-        _setter("master_instance_type", master_instance_type)
+        pulumi.set(__self__, "core_instance_type", core_instance_type)
+        pulumi.set(__self__, "engine_version", engine_version)
+        pulumi.set(__self__, "master_instance_type", master_instance_type)
         if account is not None:
-            _setter("account", account)
+            pulumi.set(__self__, "account", account)
         if auto_renew is not None:
-            _setter("auto_renew", auto_renew)
+            pulumi.set(__self__, "auto_renew", auto_renew)
         if cold_storage_size is not None:
-            _setter("cold_storage_size", cold_storage_size)
+            pulumi.set(__self__, "cold_storage_size", cold_storage_size)
         if core_disk_size is not None:
-            _setter("core_disk_size", core_disk_size)
+            pulumi.set(__self__, "core_disk_size", core_disk_size)
         if core_disk_type is not None:
-            _setter("core_disk_type", core_disk_type)
+            pulumi.set(__self__, "core_disk_type", core_disk_type)
         if core_instance_quantity is not None:
-            _setter("core_instance_quantity", core_instance_quantity)
+            pulumi.set(__self__, "core_instance_quantity", core_instance_quantity)
         if deletion_protection is not None:
-            _setter("deletion_protection", deletion_protection)
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if duration is not None:
-            _setter("duration", duration)
+            pulumi.set(__self__, "duration", duration)
         if engine is not None:
-            _setter("engine", engine)
+            pulumi.set(__self__, "engine", engine)
         if immediate_delete_flag is not None:
-            _setter("immediate_delete_flag", immediate_delete_flag)
+            pulumi.set(__self__, "immediate_delete_flag", immediate_delete_flag)
         if ip_white is not None:
-            _setter("ip_white", ip_white)
+            pulumi.set(__self__, "ip_white", ip_white)
         if maintain_end_time is not None:
-            _setter("maintain_end_time", maintain_end_time)
+            pulumi.set(__self__, "maintain_end_time", maintain_end_time)
         if maintain_start_time is not None:
-            _setter("maintain_start_time", maintain_start_time)
+            pulumi.set(__self__, "maintain_start_time", maintain_start_time)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if pay_type is not None:
-            _setter("pay_type", pay_type)
+            pulumi.set(__self__, "pay_type", pay_type)
         if security_groups is not None:
-            _setter("security_groups", security_groups)
+            pulumi.set(__self__, "security_groups", security_groups)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if vpc_id is not None:
-            _setter("vpc_id", vpc_id)
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="coreInstanceType")
@@ -574,171 +475,62 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceZkConnAddrArgs']]] zk_conn_addrs: The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
         :param pulumi.Input[str] zone_id: The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be "" or consistent.
         """
-        _InstanceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account=account,
-            auto_renew=auto_renew,
-            cold_storage_size=cold_storage_size,
-            core_disk_size=core_disk_size,
-            core_disk_type=core_disk_type,
-            core_instance_quantity=core_instance_quantity,
-            core_instance_type=core_instance_type,
-            deletion_protection=deletion_protection,
-            duration=duration,
-            engine=engine,
-            engine_version=engine_version,
-            immediate_delete_flag=immediate_delete_flag,
-            ip_white=ip_white,
-            maintain_end_time=maintain_end_time,
-            maintain_start_time=maintain_start_time,
-            master_instance_quantity=master_instance_quantity,
-            master_instance_type=master_instance_type,
-            name=name,
-            password=password,
-            pay_type=pay_type,
-            security_groups=security_groups,
-            slb_conn_addrs=slb_conn_addrs,
-            tags=tags,
-            ui_proxy_conn_addrs=ui_proxy_conn_addrs,
-            vpc_id=vpc_id,
-            vswitch_id=vswitch_id,
-            zk_conn_addrs=zk_conn_addrs,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account: Optional[pulumi.Input[str]] = None,
-             auto_renew: Optional[pulumi.Input[bool]] = None,
-             cold_storage_size: Optional[pulumi.Input[int]] = None,
-             core_disk_size: Optional[pulumi.Input[int]] = None,
-             core_disk_type: Optional[pulumi.Input[str]] = None,
-             core_instance_quantity: Optional[pulumi.Input[int]] = None,
-             core_instance_type: Optional[pulumi.Input[str]] = None,
-             deletion_protection: Optional[pulumi.Input[bool]] = None,
-             duration: Optional[pulumi.Input[int]] = None,
-             engine: Optional[pulumi.Input[str]] = None,
-             engine_version: Optional[pulumi.Input[str]] = None,
-             immediate_delete_flag: Optional[pulumi.Input[bool]] = None,
-             ip_white: Optional[pulumi.Input[str]] = None,
-             maintain_end_time: Optional[pulumi.Input[str]] = None,
-             maintain_start_time: Optional[pulumi.Input[str]] = None,
-             master_instance_quantity: Optional[pulumi.Input[int]] = None,
-             master_instance_type: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             pay_type: Optional[pulumi.Input[str]] = None,
-             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             slb_conn_addrs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSlbConnAddrArgs']]]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             ui_proxy_conn_addrs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceUiProxyConnAddrArgs']]]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             zk_conn_addrs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceZkConnAddrArgs']]]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_renew is None and 'autoRenew' in kwargs:
-            auto_renew = kwargs['autoRenew']
-        if cold_storage_size is None and 'coldStorageSize' in kwargs:
-            cold_storage_size = kwargs['coldStorageSize']
-        if core_disk_size is None and 'coreDiskSize' in kwargs:
-            core_disk_size = kwargs['coreDiskSize']
-        if core_disk_type is None and 'coreDiskType' in kwargs:
-            core_disk_type = kwargs['coreDiskType']
-        if core_instance_quantity is None and 'coreInstanceQuantity' in kwargs:
-            core_instance_quantity = kwargs['coreInstanceQuantity']
-        if core_instance_type is None and 'coreInstanceType' in kwargs:
-            core_instance_type = kwargs['coreInstanceType']
-        if deletion_protection is None and 'deletionProtection' in kwargs:
-            deletion_protection = kwargs['deletionProtection']
-        if engine_version is None and 'engineVersion' in kwargs:
-            engine_version = kwargs['engineVersion']
-        if immediate_delete_flag is None and 'immediateDeleteFlag' in kwargs:
-            immediate_delete_flag = kwargs['immediateDeleteFlag']
-        if ip_white is None and 'ipWhite' in kwargs:
-            ip_white = kwargs['ipWhite']
-        if maintain_end_time is None and 'maintainEndTime' in kwargs:
-            maintain_end_time = kwargs['maintainEndTime']
-        if maintain_start_time is None and 'maintainStartTime' in kwargs:
-            maintain_start_time = kwargs['maintainStartTime']
-        if master_instance_quantity is None and 'masterInstanceQuantity' in kwargs:
-            master_instance_quantity = kwargs['masterInstanceQuantity']
-        if master_instance_type is None and 'masterInstanceType' in kwargs:
-            master_instance_type = kwargs['masterInstanceType']
-        if pay_type is None and 'payType' in kwargs:
-            pay_type = kwargs['payType']
-        if security_groups is None and 'securityGroups' in kwargs:
-            security_groups = kwargs['securityGroups']
-        if slb_conn_addrs is None and 'slbConnAddrs' in kwargs:
-            slb_conn_addrs = kwargs['slbConnAddrs']
-        if ui_proxy_conn_addrs is None and 'uiProxyConnAddrs' in kwargs:
-            ui_proxy_conn_addrs = kwargs['uiProxyConnAddrs']
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if zk_conn_addrs is None and 'zkConnAddrs' in kwargs:
-            zk_conn_addrs = kwargs['zkConnAddrs']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if account is not None:
-            _setter("account", account)
+            pulumi.set(__self__, "account", account)
         if auto_renew is not None:
-            _setter("auto_renew", auto_renew)
+            pulumi.set(__self__, "auto_renew", auto_renew)
         if cold_storage_size is not None:
-            _setter("cold_storage_size", cold_storage_size)
+            pulumi.set(__self__, "cold_storage_size", cold_storage_size)
         if core_disk_size is not None:
-            _setter("core_disk_size", core_disk_size)
+            pulumi.set(__self__, "core_disk_size", core_disk_size)
         if core_disk_type is not None:
-            _setter("core_disk_type", core_disk_type)
+            pulumi.set(__self__, "core_disk_type", core_disk_type)
         if core_instance_quantity is not None:
-            _setter("core_instance_quantity", core_instance_quantity)
+            pulumi.set(__self__, "core_instance_quantity", core_instance_quantity)
         if core_instance_type is not None:
-            _setter("core_instance_type", core_instance_type)
+            pulumi.set(__self__, "core_instance_type", core_instance_type)
         if deletion_protection is not None:
-            _setter("deletion_protection", deletion_protection)
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if duration is not None:
-            _setter("duration", duration)
+            pulumi.set(__self__, "duration", duration)
         if engine is not None:
-            _setter("engine", engine)
+            pulumi.set(__self__, "engine", engine)
         if engine_version is not None:
-            _setter("engine_version", engine_version)
+            pulumi.set(__self__, "engine_version", engine_version)
         if immediate_delete_flag is not None:
-            _setter("immediate_delete_flag", immediate_delete_flag)
+            pulumi.set(__self__, "immediate_delete_flag", immediate_delete_flag)
         if ip_white is not None:
-            _setter("ip_white", ip_white)
+            pulumi.set(__self__, "ip_white", ip_white)
         if maintain_end_time is not None:
-            _setter("maintain_end_time", maintain_end_time)
+            pulumi.set(__self__, "maintain_end_time", maintain_end_time)
         if maintain_start_time is not None:
-            _setter("maintain_start_time", maintain_start_time)
+            pulumi.set(__self__, "maintain_start_time", maintain_start_time)
         if master_instance_quantity is not None:
-            _setter("master_instance_quantity", master_instance_quantity)
+            pulumi.set(__self__, "master_instance_quantity", master_instance_quantity)
         if master_instance_type is not None:
-            _setter("master_instance_type", master_instance_type)
+            pulumi.set(__self__, "master_instance_type", master_instance_type)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if pay_type is not None:
-            _setter("pay_type", pay_type)
+            pulumi.set(__self__, "pay_type", pay_type)
         if security_groups is not None:
-            _setter("security_groups", security_groups)
+            pulumi.set(__self__, "security_groups", security_groups)
         if slb_conn_addrs is not None:
-            _setter("slb_conn_addrs", slb_conn_addrs)
+            pulumi.set(__self__, "slb_conn_addrs", slb_conn_addrs)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if ui_proxy_conn_addrs is not None:
-            _setter("ui_proxy_conn_addrs", ui_proxy_conn_addrs)
+            pulumi.set(__self__, "ui_proxy_conn_addrs", ui_proxy_conn_addrs)
         if vpc_id is not None:
-            _setter("vpc_id", vpc_id)
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zk_conn_addrs is not None:
-            _setter("zk_conn_addrs", zk_conn_addrs)
+            pulumi.set(__self__, "zk_conn_addrs", zk_conn_addrs)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -1266,10 +1058,6 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

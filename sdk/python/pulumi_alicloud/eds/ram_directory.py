@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RamDirectoryArgs', 'RamDirectory']
@@ -27,47 +27,14 @@ class RamDirectoryArgs:
         :param pulumi.Input[bool] enable_admin_access: Whether to enable public network access.
         :param pulumi.Input[bool] enable_internet_access: Whether to grant local administrator rights to users who use cloud desktops.
         """
-        RamDirectoryArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ram_directory_name=ram_directory_name,
-            vswitch_ids=vswitch_ids,
-            desktop_access_type=desktop_access_type,
-            enable_admin_access=enable_admin_access,
-            enable_internet_access=enable_internet_access,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ram_directory_name: Optional[pulumi.Input[str]] = None,
-             vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             desktop_access_type: Optional[pulumi.Input[str]] = None,
-             enable_admin_access: Optional[pulumi.Input[bool]] = None,
-             enable_internet_access: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ram_directory_name is None and 'ramDirectoryName' in kwargs:
-            ram_directory_name = kwargs['ramDirectoryName']
-        if ram_directory_name is None:
-            raise TypeError("Missing 'ram_directory_name' argument")
-        if vswitch_ids is None and 'vswitchIds' in kwargs:
-            vswitch_ids = kwargs['vswitchIds']
-        if vswitch_ids is None:
-            raise TypeError("Missing 'vswitch_ids' argument")
-        if desktop_access_type is None and 'desktopAccessType' in kwargs:
-            desktop_access_type = kwargs['desktopAccessType']
-        if enable_admin_access is None and 'enableAdminAccess' in kwargs:
-            enable_admin_access = kwargs['enableAdminAccess']
-        if enable_internet_access is None and 'enableInternetAccess' in kwargs:
-            enable_internet_access = kwargs['enableInternetAccess']
-
-        _setter("ram_directory_name", ram_directory_name)
-        _setter("vswitch_ids", vswitch_ids)
+        pulumi.set(__self__, "ram_directory_name", ram_directory_name)
+        pulumi.set(__self__, "vswitch_ids", vswitch_ids)
         if desktop_access_type is not None:
-            _setter("desktop_access_type", desktop_access_type)
+            pulumi.set(__self__, "desktop_access_type", desktop_access_type)
         if enable_admin_access is not None:
-            _setter("enable_admin_access", enable_admin_access)
+            pulumi.set(__self__, "enable_admin_access", enable_admin_access)
         if enable_internet_access is not None:
-            _setter("enable_internet_access", enable_internet_access)
+            pulumi.set(__self__, "enable_internet_access", enable_internet_access)
 
     @property
     @pulumi.getter(name="ramDirectoryName")
@@ -148,49 +115,18 @@ class _RamDirectoryState:
         :param pulumi.Input[str] status: The status of directory.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: List of VSwitch IDs in the directory.
         """
-        _RamDirectoryState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            desktop_access_type=desktop_access_type,
-            enable_admin_access=enable_admin_access,
-            enable_internet_access=enable_internet_access,
-            ram_directory_name=ram_directory_name,
-            status=status,
-            vswitch_ids=vswitch_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             desktop_access_type: Optional[pulumi.Input[str]] = None,
-             enable_admin_access: Optional[pulumi.Input[bool]] = None,
-             enable_internet_access: Optional[pulumi.Input[bool]] = None,
-             ram_directory_name: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if desktop_access_type is None and 'desktopAccessType' in kwargs:
-            desktop_access_type = kwargs['desktopAccessType']
-        if enable_admin_access is None and 'enableAdminAccess' in kwargs:
-            enable_admin_access = kwargs['enableAdminAccess']
-        if enable_internet_access is None and 'enableInternetAccess' in kwargs:
-            enable_internet_access = kwargs['enableInternetAccess']
-        if ram_directory_name is None and 'ramDirectoryName' in kwargs:
-            ram_directory_name = kwargs['ramDirectoryName']
-        if vswitch_ids is None and 'vswitchIds' in kwargs:
-            vswitch_ids = kwargs['vswitchIds']
-
         if desktop_access_type is not None:
-            _setter("desktop_access_type", desktop_access_type)
+            pulumi.set(__self__, "desktop_access_type", desktop_access_type)
         if enable_admin_access is not None:
-            _setter("enable_admin_access", enable_admin_access)
+            pulumi.set(__self__, "enable_admin_access", enable_admin_access)
         if enable_internet_access is not None:
-            _setter("enable_internet_access", enable_internet_access)
+            pulumi.set(__self__, "enable_internet_access", enable_internet_access)
         if ram_directory_name is not None:
-            _setter("ram_directory_name", ram_directory_name)
+            pulumi.set(__self__, "ram_directory_name", ram_directory_name)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if vswitch_ids is not None:
-            _setter("vswitch_ids", vswitch_ids)
+            pulumi.set(__self__, "vswitch_ids", vswitch_ids)
 
     @property
     @pulumi.getter(name="desktopAccessType")
@@ -388,10 +324,6 @@ class RamDirectory(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RamDirectoryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

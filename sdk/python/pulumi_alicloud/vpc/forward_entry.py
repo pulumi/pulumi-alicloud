@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ForwardEntryArgs', 'ForwardEntry']
@@ -37,76 +37,21 @@ class ForwardEntryArgs:
                
                > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
         """
-        ForwardEntryArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            external_ip=external_ip,
-            external_port=external_port,
-            forward_table_id=forward_table_id,
-            internal_ip=internal_ip,
-            internal_port=internal_port,
-            ip_protocol=ip_protocol,
-            forward_entry_name=forward_entry_name,
-            name=name,
-            port_break=port_break,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             external_ip: Optional[pulumi.Input[str]] = None,
-             external_port: Optional[pulumi.Input[str]] = None,
-             forward_table_id: Optional[pulumi.Input[str]] = None,
-             internal_ip: Optional[pulumi.Input[str]] = None,
-             internal_port: Optional[pulumi.Input[str]] = None,
-             ip_protocol: Optional[pulumi.Input[str]] = None,
-             forward_entry_name: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             port_break: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if external_ip is None and 'externalIp' in kwargs:
-            external_ip = kwargs['externalIp']
-        if external_ip is None:
-            raise TypeError("Missing 'external_ip' argument")
-        if external_port is None and 'externalPort' in kwargs:
-            external_port = kwargs['externalPort']
-        if external_port is None:
-            raise TypeError("Missing 'external_port' argument")
-        if forward_table_id is None and 'forwardTableId' in kwargs:
-            forward_table_id = kwargs['forwardTableId']
-        if forward_table_id is None:
-            raise TypeError("Missing 'forward_table_id' argument")
-        if internal_ip is None and 'internalIp' in kwargs:
-            internal_ip = kwargs['internalIp']
-        if internal_ip is None:
-            raise TypeError("Missing 'internal_ip' argument")
-        if internal_port is None and 'internalPort' in kwargs:
-            internal_port = kwargs['internalPort']
-        if internal_port is None:
-            raise TypeError("Missing 'internal_port' argument")
-        if ip_protocol is None and 'ipProtocol' in kwargs:
-            ip_protocol = kwargs['ipProtocol']
-        if ip_protocol is None:
-            raise TypeError("Missing 'ip_protocol' argument")
-        if forward_entry_name is None and 'forwardEntryName' in kwargs:
-            forward_entry_name = kwargs['forwardEntryName']
-        if port_break is None and 'portBreak' in kwargs:
-            port_break = kwargs['portBreak']
-
-        _setter("external_ip", external_ip)
-        _setter("external_port", external_port)
-        _setter("forward_table_id", forward_table_id)
-        _setter("internal_ip", internal_ip)
-        _setter("internal_port", internal_port)
-        _setter("ip_protocol", ip_protocol)
+        pulumi.set(__self__, "external_ip", external_ip)
+        pulumi.set(__self__, "external_port", external_port)
+        pulumi.set(__self__, "forward_table_id", forward_table_id)
+        pulumi.set(__self__, "internal_ip", internal_ip)
+        pulumi.set(__self__, "internal_port", internal_port)
+        pulumi.set(__self__, "ip_protocol", ip_protocol)
         if forward_entry_name is not None:
-            _setter("forward_entry_name", forward_entry_name)
+            pulumi.set(__self__, "forward_entry_name", forward_entry_name)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.""")
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if port_break is not None:
-            _setter("port_break", port_break)
+            pulumi.set(__self__, "port_break", port_break)
 
     @property
     @pulumi.getter(name="externalIp")
@@ -252,80 +197,31 @@ class _ForwardEntryState:
                > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
         :param pulumi.Input[str] status: (Available in 1.119.1+) The status of forward entry.
         """
-        _ForwardEntryState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            external_ip=external_ip,
-            external_port=external_port,
-            forward_entry_id=forward_entry_id,
-            forward_entry_name=forward_entry_name,
-            forward_table_id=forward_table_id,
-            internal_ip=internal_ip,
-            internal_port=internal_port,
-            ip_protocol=ip_protocol,
-            name=name,
-            port_break=port_break,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             external_ip: Optional[pulumi.Input[str]] = None,
-             external_port: Optional[pulumi.Input[str]] = None,
-             forward_entry_id: Optional[pulumi.Input[str]] = None,
-             forward_entry_name: Optional[pulumi.Input[str]] = None,
-             forward_table_id: Optional[pulumi.Input[str]] = None,
-             internal_ip: Optional[pulumi.Input[str]] = None,
-             internal_port: Optional[pulumi.Input[str]] = None,
-             ip_protocol: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             port_break: Optional[pulumi.Input[bool]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if external_ip is None and 'externalIp' in kwargs:
-            external_ip = kwargs['externalIp']
-        if external_port is None and 'externalPort' in kwargs:
-            external_port = kwargs['externalPort']
-        if forward_entry_id is None and 'forwardEntryId' in kwargs:
-            forward_entry_id = kwargs['forwardEntryId']
-        if forward_entry_name is None and 'forwardEntryName' in kwargs:
-            forward_entry_name = kwargs['forwardEntryName']
-        if forward_table_id is None and 'forwardTableId' in kwargs:
-            forward_table_id = kwargs['forwardTableId']
-        if internal_ip is None and 'internalIp' in kwargs:
-            internal_ip = kwargs['internalIp']
-        if internal_port is None and 'internalPort' in kwargs:
-            internal_port = kwargs['internalPort']
-        if ip_protocol is None and 'ipProtocol' in kwargs:
-            ip_protocol = kwargs['ipProtocol']
-        if port_break is None and 'portBreak' in kwargs:
-            port_break = kwargs['portBreak']
-
         if external_ip is not None:
-            _setter("external_ip", external_ip)
+            pulumi.set(__self__, "external_ip", external_ip)
         if external_port is not None:
-            _setter("external_port", external_port)
+            pulumi.set(__self__, "external_port", external_port)
         if forward_entry_id is not None:
-            _setter("forward_entry_id", forward_entry_id)
+            pulumi.set(__self__, "forward_entry_id", forward_entry_id)
         if forward_entry_name is not None:
-            _setter("forward_entry_name", forward_entry_name)
+            pulumi.set(__self__, "forward_entry_name", forward_entry_name)
         if forward_table_id is not None:
-            _setter("forward_table_id", forward_table_id)
+            pulumi.set(__self__, "forward_table_id", forward_table_id)
         if internal_ip is not None:
-            _setter("internal_ip", internal_ip)
+            pulumi.set(__self__, "internal_ip", internal_ip)
         if internal_port is not None:
-            _setter("internal_port", internal_port)
+            pulumi.set(__self__, "internal_port", internal_port)
         if ip_protocol is not None:
-            _setter("ip_protocol", ip_protocol)
+            pulumi.set(__self__, "ip_protocol", ip_protocol)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.""")
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if port_break is not None:
-            _setter("port_break", port_break)
+            pulumi.set(__self__, "port_break", port_break)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="externalIp")
@@ -612,10 +508,6 @@ class ForwardEntry(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ForwardEntryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

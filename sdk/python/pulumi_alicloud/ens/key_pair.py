@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['KeyPairArgs', 'KeyPair']
@@ -21,27 +21,8 @@ class KeyPairArgs:
         :param pulumi.Input[str] key_pair_name: The name of the key pair.
         :param pulumi.Input[str] version: The version number.
         """
-        KeyPairArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key_pair_name=key_pair_name,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key_pair_name: Optional[pulumi.Input[str]] = None,
-             version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key_pair_name is None and 'keyPairName' in kwargs:
-            key_pair_name = kwargs['keyPairName']
-        if key_pair_name is None:
-            raise TypeError("Missing 'key_pair_name' argument")
-        if version is None:
-            raise TypeError("Missing 'version' argument")
-
-        _setter("key_pair_name", key_pair_name)
-        _setter("version", version)
+        pulumi.set(__self__, "key_pair_name", key_pair_name)
+        pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="keyPairName")
@@ -78,25 +59,10 @@ class _KeyPairState:
         :param pulumi.Input[str] key_pair_name: The name of the key pair.
         :param pulumi.Input[str] version: The version number.
         """
-        _KeyPairState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key_pair_name=key_pair_name,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key_pair_name: Optional[pulumi.Input[str]] = None,
-             version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key_pair_name is None and 'keyPairName' in kwargs:
-            key_pair_name = kwargs['keyPairName']
-
         if key_pair_name is not None:
-            _setter("key_pair_name", key_pair_name)
+            pulumi.set(__self__, "key_pair_name", key_pair_name)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="keyPairName")
@@ -216,10 +182,6 @@ class KeyPair(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            KeyPairArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

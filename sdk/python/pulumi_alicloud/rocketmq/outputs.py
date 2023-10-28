@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -36,63 +36,14 @@ class GetGroupsGroupResult(dict):
         :param str remark: Remark of the group.
         :param Mapping[str, Any] tags: A map of tags assigned to the Ons instance.
         """
-        GetGroupsGroupResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            group_name=group_name,
-            group_type=group_type,
-            id=id,
-            independent_naming=independent_naming,
-            instance_id=instance_id,
-            owner=owner,
-            remark=remark,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             group_name: Optional[str] = None,
-             group_type: Optional[str] = None,
-             id: Optional[str] = None,
-             independent_naming: Optional[bool] = None,
-             instance_id: Optional[str] = None,
-             owner: Optional[str] = None,
-             remark: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if group_name is None and 'groupName' in kwargs:
-            group_name = kwargs['groupName']
-        if group_name is None:
-            raise TypeError("Missing 'group_name' argument")
-        if group_type is None and 'groupType' in kwargs:
-            group_type = kwargs['groupType']
-        if group_type is None:
-            raise TypeError("Missing 'group_type' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if independent_naming is None and 'independentNaming' in kwargs:
-            independent_naming = kwargs['independentNaming']
-        if independent_naming is None:
-            raise TypeError("Missing 'independent_naming' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if owner is None:
-            raise TypeError("Missing 'owner' argument")
-        if remark is None:
-            raise TypeError("Missing 'remark' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-
-        _setter("group_name", group_name)
-        _setter("group_type", group_type)
-        _setter("id", id)
-        _setter("independent_naming", independent_naming)
-        _setter("instance_id", instance_id)
-        _setter("owner", owner)
-        _setter("remark", remark)
-        _setter("tags", tags)
+        pulumi.set(__self__, "group_name", group_name)
+        pulumi.set(__self__, "group_type", group_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "independent_naming", independent_naming)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "owner", owner)
+        pulumi.set(__self__, "remark", remark)
+        pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="groupName")
@@ -192,105 +143,20 @@ class GetInstancesInstanceResult(dict):
         :param Mapping[str, Any] tags: A map of tags assigned to the Ons instance.
         :param str tcp_endpoint: The TCP endpoint for the Message Queue for Apache RocketMQ instance.
         """
-        GetInstancesInstanceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            http_internal_endpoint=http_internal_endpoint,
-            http_internet_endpoint=http_internet_endpoint,
-            http_internet_secure_endpoint=http_internet_secure_endpoint,
-            id=id,
-            independent_naming=independent_naming,
-            instance_id=instance_id,
-            instance_name=instance_name,
-            instance_status=instance_status,
-            instance_type=instance_type,
-            release_time=release_time,
-            remark=remark,
-            status=status,
-            tags=tags,
-            tcp_endpoint=tcp_endpoint,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             http_internal_endpoint: Optional[str] = None,
-             http_internet_endpoint: Optional[str] = None,
-             http_internet_secure_endpoint: Optional[str] = None,
-             id: Optional[str] = None,
-             independent_naming: Optional[bool] = None,
-             instance_id: Optional[str] = None,
-             instance_name: Optional[str] = None,
-             instance_status: Optional[int] = None,
-             instance_type: Optional[int] = None,
-             release_time: Optional[str] = None,
-             remark: Optional[str] = None,
-             status: Optional[int] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             tcp_endpoint: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if http_internal_endpoint is None and 'httpInternalEndpoint' in kwargs:
-            http_internal_endpoint = kwargs['httpInternalEndpoint']
-        if http_internal_endpoint is None:
-            raise TypeError("Missing 'http_internal_endpoint' argument")
-        if http_internet_endpoint is None and 'httpInternetEndpoint' in kwargs:
-            http_internet_endpoint = kwargs['httpInternetEndpoint']
-        if http_internet_endpoint is None:
-            raise TypeError("Missing 'http_internet_endpoint' argument")
-        if http_internet_secure_endpoint is None and 'httpInternetSecureEndpoint' in kwargs:
-            http_internet_secure_endpoint = kwargs['httpInternetSecureEndpoint']
-        if http_internet_secure_endpoint is None:
-            raise TypeError("Missing 'http_internet_secure_endpoint' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if independent_naming is None and 'independentNaming' in kwargs:
-            independent_naming = kwargs['independentNaming']
-        if independent_naming is None:
-            raise TypeError("Missing 'independent_naming' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_name is None:
-            raise TypeError("Missing 'instance_name' argument")
-        if instance_status is None and 'instanceStatus' in kwargs:
-            instance_status = kwargs['instanceStatus']
-        if instance_status is None:
-            raise TypeError("Missing 'instance_status' argument")
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if instance_type is None:
-            raise TypeError("Missing 'instance_type' argument")
-        if release_time is None and 'releaseTime' in kwargs:
-            release_time = kwargs['releaseTime']
-        if release_time is None:
-            raise TypeError("Missing 'release_time' argument")
-        if remark is None:
-            raise TypeError("Missing 'remark' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-        if tcp_endpoint is None and 'tcpEndpoint' in kwargs:
-            tcp_endpoint = kwargs['tcpEndpoint']
-        if tcp_endpoint is None:
-            raise TypeError("Missing 'tcp_endpoint' argument")
-
-        _setter("http_internal_endpoint", http_internal_endpoint)
-        _setter("http_internet_endpoint", http_internet_endpoint)
-        _setter("http_internet_secure_endpoint", http_internet_secure_endpoint)
-        _setter("id", id)
-        _setter("independent_naming", independent_naming)
-        _setter("instance_id", instance_id)
-        _setter("instance_name", instance_name)
-        _setter("instance_status", instance_status)
-        _setter("instance_type", instance_type)
-        _setter("release_time", release_time)
-        _setter("remark", remark)
-        _setter("status", status)
-        _setter("tags", tags)
-        _setter("tcp_endpoint", tcp_endpoint)
+        pulumi.set(__self__, "http_internal_endpoint", http_internal_endpoint)
+        pulumi.set(__self__, "http_internet_endpoint", http_internet_endpoint)
+        pulumi.set(__self__, "http_internet_secure_endpoint", http_internet_secure_endpoint)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "independent_naming", independent_naming)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "instance_status", instance_status)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "release_time", release_time)
+        pulumi.set(__self__, "remark", remark)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "tcp_endpoint", tcp_endpoint)
 
     @property
     @pulumi.getter(name="httpInternalEndpoint")
@@ -434,85 +300,18 @@ class GetTopicsTopicResult(dict):
         :param str topic: The name of the topic.
         :param str topic_name: The name of the topic.
         """
-        GetTopicsTopicResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            independent_naming=independent_naming,
-            instance_id=instance_id,
-            message_type=message_type,
-            owner=owner,
-            perm=perm,
-            relation=relation,
-            relation_name=relation_name,
-            remark=remark,
-            tags=tags,
-            topic=topic,
-            topic_name=topic_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             independent_naming: Optional[bool] = None,
-             instance_id: Optional[str] = None,
-             message_type: Optional[int] = None,
-             owner: Optional[str] = None,
-             perm: Optional[int] = None,
-             relation: Optional[int] = None,
-             relation_name: Optional[str] = None,
-             remark: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             topic: Optional[str] = None,
-             topic_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if independent_naming is None and 'independentNaming' in kwargs:
-            independent_naming = kwargs['independentNaming']
-        if independent_naming is None:
-            raise TypeError("Missing 'independent_naming' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if message_type is None and 'messageType' in kwargs:
-            message_type = kwargs['messageType']
-        if message_type is None:
-            raise TypeError("Missing 'message_type' argument")
-        if owner is None:
-            raise TypeError("Missing 'owner' argument")
-        if perm is None:
-            raise TypeError("Missing 'perm' argument")
-        if relation is None:
-            raise TypeError("Missing 'relation' argument")
-        if relation_name is None and 'relationName' in kwargs:
-            relation_name = kwargs['relationName']
-        if relation_name is None:
-            raise TypeError("Missing 'relation_name' argument")
-        if remark is None:
-            raise TypeError("Missing 'remark' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-        if topic is None:
-            raise TypeError("Missing 'topic' argument")
-        if topic_name is None and 'topicName' in kwargs:
-            topic_name = kwargs['topicName']
-        if topic_name is None:
-            raise TypeError("Missing 'topic_name' argument")
-
-        _setter("id", id)
-        _setter("independent_naming", independent_naming)
-        _setter("instance_id", instance_id)
-        _setter("message_type", message_type)
-        _setter("owner", owner)
-        _setter("perm", perm)
-        _setter("relation", relation)
-        _setter("relation_name", relation_name)
-        _setter("remark", remark)
-        _setter("tags", tags)
-        _setter("topic", topic)
-        _setter("topic_name", topic_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "independent_naming", independent_naming)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "message_type", message_type)
+        pulumi.set(__self__, "owner", owner)
+        pulumi.set(__self__, "perm", perm)
+        pulumi.set(__self__, "relation", relation)
+        pulumi.set(__self__, "relation_name", relation_name)
+        pulumi.set(__self__, "remark", remark)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "topic", topic)
+        pulumi.set(__self__, "topic_name", topic_name)
 
     @property
     @pulumi.getter

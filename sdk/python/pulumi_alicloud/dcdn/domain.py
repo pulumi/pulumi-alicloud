@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -52,99 +52,34 @@ class DomainArgs:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] top_level_domain: The top-level domain name.
         """
-        DomainArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            domain_name=domain_name,
-            sources=sources,
-            cert_name=cert_name,
-            cert_type=cert_type,
-            check_url=check_url,
-            force_set=force_set,
-            resource_group_id=resource_group_id,
-            scope=scope,
-            security_token=security_token,
-            ssl_pri=ssl_pri,
-            ssl_protocol=ssl_protocol,
-            ssl_pub=ssl_pub,
-            status=status,
-            tags=tags,
-            top_level_domain=top_level_domain,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             domain_name: Optional[pulumi.Input[str]] = None,
-             sources: Optional[pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]]] = None,
-             cert_name: Optional[pulumi.Input[str]] = None,
-             cert_type: Optional[pulumi.Input[str]] = None,
-             check_url: Optional[pulumi.Input[str]] = None,
-             force_set: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             scope: Optional[pulumi.Input[str]] = None,
-             security_token: Optional[pulumi.Input[str]] = None,
-             ssl_pri: Optional[pulumi.Input[str]] = None,
-             ssl_protocol: Optional[pulumi.Input[str]] = None,
-             ssl_pub: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             top_level_domain: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if domain_name is None and 'domainName' in kwargs:
-            domain_name = kwargs['domainName']
-        if domain_name is None:
-            raise TypeError("Missing 'domain_name' argument")
-        if sources is None:
-            raise TypeError("Missing 'sources' argument")
-        if cert_name is None and 'certName' in kwargs:
-            cert_name = kwargs['certName']
-        if cert_type is None and 'certType' in kwargs:
-            cert_type = kwargs['certType']
-        if check_url is None and 'checkUrl' in kwargs:
-            check_url = kwargs['checkUrl']
-        if force_set is None and 'forceSet' in kwargs:
-            force_set = kwargs['forceSet']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if security_token is None and 'securityToken' in kwargs:
-            security_token = kwargs['securityToken']
-        if ssl_pri is None and 'sslPri' in kwargs:
-            ssl_pri = kwargs['sslPri']
-        if ssl_protocol is None and 'sslProtocol' in kwargs:
-            ssl_protocol = kwargs['sslProtocol']
-        if ssl_pub is None and 'sslPub' in kwargs:
-            ssl_pub = kwargs['sslPub']
-        if top_level_domain is None and 'topLevelDomain' in kwargs:
-            top_level_domain = kwargs['topLevelDomain']
-
-        _setter("domain_name", domain_name)
-        _setter("sources", sources)
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "sources", sources)
         if cert_name is not None:
-            _setter("cert_name", cert_name)
+            pulumi.set(__self__, "cert_name", cert_name)
         if cert_type is not None:
-            _setter("cert_type", cert_type)
+            pulumi.set(__self__, "cert_type", cert_type)
         if check_url is not None:
-            _setter("check_url", check_url)
+            pulumi.set(__self__, "check_url", check_url)
         if force_set is not None:
-            _setter("force_set", force_set)
+            pulumi.set(__self__, "force_set", force_set)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if scope is not None:
-            _setter("scope", scope)
+            pulumi.set(__self__, "scope", scope)
         if security_token is not None:
-            _setter("security_token", security_token)
+            pulumi.set(__self__, "security_token", security_token)
         if ssl_pri is not None:
-            _setter("ssl_pri", ssl_pri)
+            pulumi.set(__self__, "ssl_pri", ssl_pri)
         if ssl_protocol is not None:
-            _setter("ssl_protocol", ssl_protocol)
+            pulumi.set(__self__, "ssl_protocol", ssl_protocol)
         if ssl_pub is not None:
-            _setter("ssl_pub", ssl_pub)
+            pulumi.set(__self__, "ssl_pub", ssl_pub)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if top_level_domain is not None:
-            _setter("top_level_domain", top_level_domain)
+            pulumi.set(__self__, "top_level_domain", top_level_domain)
 
     @property
     @pulumi.getter(name="domainName")
@@ -371,101 +306,38 @@ class _DomainState:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] top_level_domain: The top-level domain name.
         """
-        _DomainState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cert_name=cert_name,
-            cert_type=cert_type,
-            check_url=check_url,
-            cname=cname,
-            domain_name=domain_name,
-            force_set=force_set,
-            resource_group_id=resource_group_id,
-            scope=scope,
-            security_token=security_token,
-            sources=sources,
-            ssl_pri=ssl_pri,
-            ssl_protocol=ssl_protocol,
-            ssl_pub=ssl_pub,
-            status=status,
-            tags=tags,
-            top_level_domain=top_level_domain,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cert_name: Optional[pulumi.Input[str]] = None,
-             cert_type: Optional[pulumi.Input[str]] = None,
-             check_url: Optional[pulumi.Input[str]] = None,
-             cname: Optional[pulumi.Input[str]] = None,
-             domain_name: Optional[pulumi.Input[str]] = None,
-             force_set: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             scope: Optional[pulumi.Input[str]] = None,
-             security_token: Optional[pulumi.Input[str]] = None,
-             sources: Optional[pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]]] = None,
-             ssl_pri: Optional[pulumi.Input[str]] = None,
-             ssl_protocol: Optional[pulumi.Input[str]] = None,
-             ssl_pub: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             top_level_domain: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cert_name is None and 'certName' in kwargs:
-            cert_name = kwargs['certName']
-        if cert_type is None and 'certType' in kwargs:
-            cert_type = kwargs['certType']
-        if check_url is None and 'checkUrl' in kwargs:
-            check_url = kwargs['checkUrl']
-        if domain_name is None and 'domainName' in kwargs:
-            domain_name = kwargs['domainName']
-        if force_set is None and 'forceSet' in kwargs:
-            force_set = kwargs['forceSet']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if security_token is None and 'securityToken' in kwargs:
-            security_token = kwargs['securityToken']
-        if ssl_pri is None and 'sslPri' in kwargs:
-            ssl_pri = kwargs['sslPri']
-        if ssl_protocol is None and 'sslProtocol' in kwargs:
-            ssl_protocol = kwargs['sslProtocol']
-        if ssl_pub is None and 'sslPub' in kwargs:
-            ssl_pub = kwargs['sslPub']
-        if top_level_domain is None and 'topLevelDomain' in kwargs:
-            top_level_domain = kwargs['topLevelDomain']
-
         if cert_name is not None:
-            _setter("cert_name", cert_name)
+            pulumi.set(__self__, "cert_name", cert_name)
         if cert_type is not None:
-            _setter("cert_type", cert_type)
+            pulumi.set(__self__, "cert_type", cert_type)
         if check_url is not None:
-            _setter("check_url", check_url)
+            pulumi.set(__self__, "check_url", check_url)
         if cname is not None:
-            _setter("cname", cname)
+            pulumi.set(__self__, "cname", cname)
         if domain_name is not None:
-            _setter("domain_name", domain_name)
+            pulumi.set(__self__, "domain_name", domain_name)
         if force_set is not None:
-            _setter("force_set", force_set)
+            pulumi.set(__self__, "force_set", force_set)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if scope is not None:
-            _setter("scope", scope)
+            pulumi.set(__self__, "scope", scope)
         if security_token is not None:
-            _setter("security_token", security_token)
+            pulumi.set(__self__, "security_token", security_token)
         if sources is not None:
-            _setter("sources", sources)
+            pulumi.set(__self__, "sources", sources)
         if ssl_pri is not None:
-            _setter("ssl_pri", ssl_pri)
+            pulumi.set(__self__, "ssl_pri", ssl_pri)
         if ssl_protocol is not None:
-            _setter("ssl_protocol", ssl_protocol)
+            pulumi.set(__self__, "ssl_protocol", ssl_protocol)
         if ssl_pub is not None:
-            _setter("ssl_pub", ssl_pub)
+            pulumi.set(__self__, "ssl_pub", ssl_pub)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if top_level_domain is not None:
-            _setter("top_level_domain", top_level_domain)
+            pulumi.set(__self__, "top_level_domain", top_level_domain)
 
     @property
     @pulumi.getter(name="certName")
@@ -807,10 +679,6 @@ class Domain(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DomainArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

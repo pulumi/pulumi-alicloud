@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['OrderArgs', 'Order']
@@ -33,60 +33,19 @@ class OrderArgs:
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
         :param pulumi.Input[int] quantity: The quantity of the market product will be purchased.
         """
-        OrderArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            package_version=package_version,
-            pricing_cycle=pricing_cycle,
-            product_code=product_code,
-            components=components,
-            coupon_id=coupon_id,
-            duration=duration,
-            pay_type=pay_type,
-            quantity=quantity,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             package_version: Optional[pulumi.Input[str]] = None,
-             pricing_cycle: Optional[pulumi.Input[str]] = None,
-             product_code: Optional[pulumi.Input[str]] = None,
-             components: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             coupon_id: Optional[pulumi.Input[str]] = None,
-             duration: Optional[pulumi.Input[int]] = None,
-             pay_type: Optional[pulumi.Input[str]] = None,
-             quantity: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if package_version is None and 'packageVersion' in kwargs:
-            package_version = kwargs['packageVersion']
-        if package_version is None:
-            raise TypeError("Missing 'package_version' argument")
-        if pricing_cycle is None and 'pricingCycle' in kwargs:
-            pricing_cycle = kwargs['pricingCycle']
-        if pricing_cycle is None:
-            raise TypeError("Missing 'pricing_cycle' argument")
-        if product_code is None and 'productCode' in kwargs:
-            product_code = kwargs['productCode']
-        if product_code is None:
-            raise TypeError("Missing 'product_code' argument")
-        if coupon_id is None and 'couponId' in kwargs:
-            coupon_id = kwargs['couponId']
-        if pay_type is None and 'payType' in kwargs:
-            pay_type = kwargs['payType']
-
-        _setter("package_version", package_version)
-        _setter("pricing_cycle", pricing_cycle)
-        _setter("product_code", product_code)
+        pulumi.set(__self__, "package_version", package_version)
+        pulumi.set(__self__, "pricing_cycle", pricing_cycle)
+        pulumi.set(__self__, "product_code", product_code)
         if components is not None:
-            _setter("components", components)
+            pulumi.set(__self__, "components", components)
         if coupon_id is not None:
-            _setter("coupon_id", coupon_id)
+            pulumi.set(__self__, "coupon_id", coupon_id)
         if duration is not None:
-            _setter("duration", duration)
+            pulumi.set(__self__, "duration", duration)
         if pay_type is not None:
-            _setter("pay_type", pay_type)
+            pulumi.set(__self__, "pay_type", pay_type)
         if quantity is not None:
-            _setter("quantity", quantity)
+            pulumi.set(__self__, "quantity", quantity)
 
     @property
     @pulumi.getter(name="packageVersion")
@@ -207,57 +166,22 @@ class _OrderState:
         :param pulumi.Input[str] product_code: The product_code of market place product.
         :param pulumi.Input[int] quantity: The quantity of the market product will be purchased.
         """
-        _OrderState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            components=components,
-            coupon_id=coupon_id,
-            duration=duration,
-            package_version=package_version,
-            pay_type=pay_type,
-            pricing_cycle=pricing_cycle,
-            product_code=product_code,
-            quantity=quantity,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             components: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             coupon_id: Optional[pulumi.Input[str]] = None,
-             duration: Optional[pulumi.Input[int]] = None,
-             package_version: Optional[pulumi.Input[str]] = None,
-             pay_type: Optional[pulumi.Input[str]] = None,
-             pricing_cycle: Optional[pulumi.Input[str]] = None,
-             product_code: Optional[pulumi.Input[str]] = None,
-             quantity: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if coupon_id is None and 'couponId' in kwargs:
-            coupon_id = kwargs['couponId']
-        if package_version is None and 'packageVersion' in kwargs:
-            package_version = kwargs['packageVersion']
-        if pay_type is None and 'payType' in kwargs:
-            pay_type = kwargs['payType']
-        if pricing_cycle is None and 'pricingCycle' in kwargs:
-            pricing_cycle = kwargs['pricingCycle']
-        if product_code is None and 'productCode' in kwargs:
-            product_code = kwargs['productCode']
-
         if components is not None:
-            _setter("components", components)
+            pulumi.set(__self__, "components", components)
         if coupon_id is not None:
-            _setter("coupon_id", coupon_id)
+            pulumi.set(__self__, "coupon_id", coupon_id)
         if duration is not None:
-            _setter("duration", duration)
+            pulumi.set(__self__, "duration", duration)
         if package_version is not None:
-            _setter("package_version", package_version)
+            pulumi.set(__self__, "package_version", package_version)
         if pay_type is not None:
-            _setter("pay_type", pay_type)
+            pulumi.set(__self__, "pay_type", pay_type)
         if pricing_cycle is not None:
-            _setter("pricing_cycle", pricing_cycle)
+            pulumi.set(__self__, "pricing_cycle", pricing_cycle)
         if product_code is not None:
-            _setter("product_code", product_code)
+            pulumi.set(__self__, "product_code", product_code)
         if quantity is not None:
-            _setter("quantity", quantity)
+            pulumi.set(__self__, "quantity", quantity)
 
     @property
     @pulumi.getter
@@ -451,10 +375,6 @@ class Order(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            OrderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

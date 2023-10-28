@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,47 +29,18 @@ class AclArgs:
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
-        AclArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address_ip_version=address_ip_version,
-            acl_entries=acl_entries,
-            acl_name=acl_name,
-            dry_run=dry_run,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address_ip_version: Optional[pulumi.Input[str]] = None,
-             acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]]] = None,
-             acl_name: Optional[pulumi.Input[str]] = None,
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address_ip_version is None and 'addressIpVersion' in kwargs:
-            address_ip_version = kwargs['addressIpVersion']
-        if address_ip_version is None:
-            raise TypeError("Missing 'address_ip_version' argument")
-        if acl_entries is None and 'aclEntries' in kwargs:
-            acl_entries = kwargs['aclEntries']
-        if acl_name is None and 'aclName' in kwargs:
-            acl_name = kwargs['aclName']
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-
-        _setter("address_ip_version", address_ip_version)
+        pulumi.set(__self__, "address_ip_version", address_ip_version)
         if acl_entries is not None:
             warnings.warn("""Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.""", DeprecationWarning)
             pulumi.log.warn("""acl_entries is deprecated: Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.""")
         if acl_entries is not None:
-            _setter("acl_entries", acl_entries)
+            pulumi.set(__self__, "acl_entries", acl_entries)
         if acl_name is not None:
-            _setter("acl_name", acl_name)
+            pulumi.set(__self__, "acl_name", acl_name)
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="addressIpVersion")
@@ -153,50 +124,21 @@ class _AclState:
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
-        _AclState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            acl_entries=acl_entries,
-            acl_name=acl_name,
-            address_ip_version=address_ip_version,
-            dry_run=dry_run,
-            status=status,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]]] = None,
-             acl_name: Optional[pulumi.Input[str]] = None,
-             address_ip_version: Optional[pulumi.Input[str]] = None,
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if acl_entries is None and 'aclEntries' in kwargs:
-            acl_entries = kwargs['aclEntries']
-        if acl_name is None and 'aclName' in kwargs:
-            acl_name = kwargs['aclName']
-        if address_ip_version is None and 'addressIpVersion' in kwargs:
-            address_ip_version = kwargs['addressIpVersion']
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-
         if acl_entries is not None:
             warnings.warn("""Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.""", DeprecationWarning)
             pulumi.log.warn("""acl_entries is deprecated: Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.""")
         if acl_entries is not None:
-            _setter("acl_entries", acl_entries)
+            pulumi.set(__self__, "acl_entries", acl_entries)
         if acl_name is not None:
-            _setter("acl_name", acl_name)
+            pulumi.set(__self__, "acl_name", acl_name)
         if address_ip_version is not None:
-            _setter("address_ip_version", address_ip_version)
+            pulumi.set(__self__, "address_ip_version", address_ip_version)
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="aclEntries")
@@ -373,10 +315,6 @@ class Acl(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AclArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['HandshakeArgs', 'Handshake']
@@ -23,33 +23,10 @@ class HandshakeArgs:
         :param pulumi.Input[str] target_type: Type of account being invited. Valid values: `Account`, `Email`.
         :param pulumi.Input[str] note: Remarks. The maximum length is 1024 characters.
         """
-        HandshakeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            target_entity=target_entity,
-            target_type=target_type,
-            note=note,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             target_entity: Optional[pulumi.Input[str]] = None,
-             target_type: Optional[pulumi.Input[str]] = None,
-             note: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if target_entity is None and 'targetEntity' in kwargs:
-            target_entity = kwargs['targetEntity']
-        if target_entity is None:
-            raise TypeError("Missing 'target_entity' argument")
-        if target_type is None and 'targetType' in kwargs:
-            target_type = kwargs['targetType']
-        if target_type is None:
-            raise TypeError("Missing 'target_type' argument")
-
-        _setter("target_entity", target_entity)
-        _setter("target_type", target_type)
+        pulumi.set(__self__, "target_entity", target_entity)
+        pulumi.set(__self__, "target_type", target_type)
         if note is not None:
-            _setter("note", note)
+            pulumi.set(__self__, "note", note)
 
     @property
     @pulumi.getter(name="targetEntity")
@@ -112,65 +89,24 @@ class _HandshakeState:
         :param pulumi.Input[str] target_entity: Invited account ID or login email.
         :param pulumi.Input[str] target_type: Type of account being invited. Valid values: `Account`, `Email`.
         """
-        _HandshakeState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expire_time=expire_time,
-            master_account_id=master_account_id,
-            master_account_name=master_account_name,
-            modify_time=modify_time,
-            note=note,
-            resource_directory_id=resource_directory_id,
-            status=status,
-            target_entity=target_entity,
-            target_type=target_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expire_time: Optional[pulumi.Input[str]] = None,
-             master_account_id: Optional[pulumi.Input[str]] = None,
-             master_account_name: Optional[pulumi.Input[str]] = None,
-             modify_time: Optional[pulumi.Input[str]] = None,
-             note: Optional[pulumi.Input[str]] = None,
-             resource_directory_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             target_entity: Optional[pulumi.Input[str]] = None,
-             target_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expire_time is None and 'expireTime' in kwargs:
-            expire_time = kwargs['expireTime']
-        if master_account_id is None and 'masterAccountId' in kwargs:
-            master_account_id = kwargs['masterAccountId']
-        if master_account_name is None and 'masterAccountName' in kwargs:
-            master_account_name = kwargs['masterAccountName']
-        if modify_time is None and 'modifyTime' in kwargs:
-            modify_time = kwargs['modifyTime']
-        if resource_directory_id is None and 'resourceDirectoryId' in kwargs:
-            resource_directory_id = kwargs['resourceDirectoryId']
-        if target_entity is None and 'targetEntity' in kwargs:
-            target_entity = kwargs['targetEntity']
-        if target_type is None and 'targetType' in kwargs:
-            target_type = kwargs['targetType']
-
         if expire_time is not None:
-            _setter("expire_time", expire_time)
+            pulumi.set(__self__, "expire_time", expire_time)
         if master_account_id is not None:
-            _setter("master_account_id", master_account_id)
+            pulumi.set(__self__, "master_account_id", master_account_id)
         if master_account_name is not None:
-            _setter("master_account_name", master_account_name)
+            pulumi.set(__self__, "master_account_name", master_account_name)
         if modify_time is not None:
-            _setter("modify_time", modify_time)
+            pulumi.set(__self__, "modify_time", modify_time)
         if note is not None:
-            _setter("note", note)
+            pulumi.set(__self__, "note", note)
         if resource_directory_id is not None:
-            _setter("resource_directory_id", resource_directory_id)
+            pulumi.set(__self__, "resource_directory_id", resource_directory_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if target_entity is not None:
-            _setter("target_entity", target_entity)
+            pulumi.set(__self__, "target_entity", target_entity)
         if target_type is not None:
-            _setter("target_type", target_type)
+            pulumi.set(__self__, "target_type", target_type)
 
     @property
     @pulumi.getter(name="expireTime")
@@ -366,10 +302,6 @@ class Handshake(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            HandshakeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

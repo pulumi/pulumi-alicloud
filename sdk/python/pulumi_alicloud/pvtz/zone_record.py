@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ZoneRecordArgs', 'ZoneRecord']
@@ -40,71 +40,28 @@ class ZoneRecordArgs:
                - DISABLE: pause parsing.
         :param pulumi.Input[int] ttl: The ttl of the Private Zone Record. Default to `60`.
         """
-        ZoneRecordArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            type=type,
-            value=value,
-            zone_id=zone_id,
-            lang=lang,
-            priority=priority,
-            remark=remark,
-            resource_record=resource_record,
-            rr=rr,
-            status=status,
-            ttl=ttl,
-            user_client_ip=user_client_ip,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             type: Optional[pulumi.Input[str]] = None,
-             value: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             lang: Optional[pulumi.Input[str]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             remark: Optional[pulumi.Input[str]] = None,
-             resource_record: Optional[pulumi.Input[str]] = None,
-             rr: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             ttl: Optional[pulumi.Input[int]] = None,
-             user_client_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-        if resource_record is None and 'resourceRecord' in kwargs:
-            resource_record = kwargs['resourceRecord']
-        if user_client_ip is None and 'userClientIp' in kwargs:
-            user_client_ip = kwargs['userClientIp']
-
-        _setter("type", type)
-        _setter("value", value)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "zone_id", zone_id)
         if lang is not None:
-            _setter("lang", lang)
+            pulumi.set(__self__, "lang", lang)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if remark is not None:
-            _setter("remark", remark)
+            pulumi.set(__self__, "remark", remark)
         if resource_record is not None:
             warnings.warn("""Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.""", DeprecationWarning)
             pulumi.log.warn("""resource_record is deprecated: Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.""")
         if resource_record is not None:
-            _setter("resource_record", resource_record)
+            pulumi.set(__self__, "resource_record", resource_record)
         if rr is not None:
-            _setter("rr", rr)
+            pulumi.set(__self__, "rr", rr)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if ttl is not None:
-            _setter("ttl", ttl)
+            pulumi.set(__self__, "ttl", ttl)
         if user_client_ip is not None:
-            _setter("user_client_ip", user_client_ip)
+            pulumi.set(__self__, "user_client_ip", user_client_ip)
 
     @property
     @pulumi.getter
@@ -272,74 +229,33 @@ class _ZoneRecordState:
         :param pulumi.Input[str] value: The value of the Private Zone Record.
         :param pulumi.Input[str] zone_id: The name of the Private Zone Record.
         """
-        _ZoneRecordState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            lang=lang,
-            priority=priority,
-            record_id=record_id,
-            remark=remark,
-            resource_record=resource_record,
-            rr=rr,
-            status=status,
-            ttl=ttl,
-            type=type,
-            user_client_ip=user_client_ip,
-            value=value,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             lang: Optional[pulumi.Input[str]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             record_id: Optional[pulumi.Input[str]] = None,
-             remark: Optional[pulumi.Input[str]] = None,
-             resource_record: Optional[pulumi.Input[str]] = None,
-             rr: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             ttl: Optional[pulumi.Input[int]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             user_client_ip: Optional[pulumi.Input[str]] = None,
-             value: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if record_id is None and 'recordId' in kwargs:
-            record_id = kwargs['recordId']
-        if resource_record is None and 'resourceRecord' in kwargs:
-            resource_record = kwargs['resourceRecord']
-        if user_client_ip is None and 'userClientIp' in kwargs:
-            user_client_ip = kwargs['userClientIp']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if lang is not None:
-            _setter("lang", lang)
+            pulumi.set(__self__, "lang", lang)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if record_id is not None:
-            _setter("record_id", record_id)
+            pulumi.set(__self__, "record_id", record_id)
         if remark is not None:
-            _setter("remark", remark)
+            pulumi.set(__self__, "remark", remark)
         if resource_record is not None:
             warnings.warn("""Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.""", DeprecationWarning)
             pulumi.log.warn("""resource_record is deprecated: Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.""")
         if resource_record is not None:
-            _setter("resource_record", resource_record)
+            pulumi.set(__self__, "resource_record", resource_record)
         if rr is not None:
-            _setter("rr", rr)
+            pulumi.set(__self__, "rr", rr)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if ttl is not None:
-            _setter("ttl", ttl)
+            pulumi.set(__self__, "ttl", ttl)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if user_client_ip is not None:
-            _setter("user_client_ip", user_client_ip)
+            pulumi.set(__self__, "user_client_ip", user_client_ip)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -588,10 +504,6 @@ class ZoneRecord(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ZoneRecordArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

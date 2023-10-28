@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -38,81 +38,16 @@ class GetDeviceGroupsGroupResult(dict):
         :param str id: The ID of the device group.
         :param bool success: Whether the call is successful.
         """
-        GetDeviceGroupsGroupResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            device_active=device_active,
-            device_count=device_count,
-            device_online=device_online,
-            error_message=error_message,
-            group_desc=group_desc,
-            group_id=group_id,
-            group_name=group_name,
-            id=id,
-            success=success,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[str] = None,
-             device_active: Optional[str] = None,
-             device_count: Optional[str] = None,
-             device_online: Optional[str] = None,
-             error_message: Optional[str] = None,
-             group_desc: Optional[str] = None,
-             group_id: Optional[str] = None,
-             group_name: Optional[str] = None,
-             id: Optional[str] = None,
-             success: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if device_active is None and 'deviceActive' in kwargs:
-            device_active = kwargs['deviceActive']
-        if device_active is None:
-            raise TypeError("Missing 'device_active' argument")
-        if device_count is None and 'deviceCount' in kwargs:
-            device_count = kwargs['deviceCount']
-        if device_count is None:
-            raise TypeError("Missing 'device_count' argument")
-        if device_online is None and 'deviceOnline' in kwargs:
-            device_online = kwargs['deviceOnline']
-        if device_online is None:
-            raise TypeError("Missing 'device_online' argument")
-        if error_message is None and 'errorMessage' in kwargs:
-            error_message = kwargs['errorMessage']
-        if error_message is None:
-            raise TypeError("Missing 'error_message' argument")
-        if group_desc is None and 'groupDesc' in kwargs:
-            group_desc = kwargs['groupDesc']
-        if group_desc is None:
-            raise TypeError("Missing 'group_desc' argument")
-        if group_id is None and 'groupId' in kwargs:
-            group_id = kwargs['groupId']
-        if group_id is None:
-            raise TypeError("Missing 'group_id' argument")
-        if group_name is None and 'groupName' in kwargs:
-            group_name = kwargs['groupName']
-        if group_name is None:
-            raise TypeError("Missing 'group_name' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if success is None:
-            raise TypeError("Missing 'success' argument")
-
-        _setter("create_time", create_time)
-        _setter("device_active", device_active)
-        _setter("device_count", device_count)
-        _setter("device_online", device_online)
-        _setter("error_message", error_message)
-        _setter("group_desc", group_desc)
-        _setter("group_id", group_id)
-        _setter("group_name", group_name)
-        _setter("id", id)
-        _setter("success", success)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "device_active", device_active)
+        pulumi.set(__self__, "device_count", device_count)
+        pulumi.set(__self__, "device_online", device_online)
+        pulumi.set(__self__, "error_message", error_message)
+        pulumi.set(__self__, "group_desc", group_desc)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "group_name", group_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "success", success)
 
     @property
     @pulumi.getter(name="createTime")

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -134,46 +134,13 @@ class AutoProvisioningGroupLaunchTemplateConfig(dict):
         :param str instance_type: The instance type of the Nth extended configurations of the launch template.
         :param str priority: The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
         """
-        AutoProvisioningGroupLaunchTemplateConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            max_price=max_price,
-            vswitch_id=vswitch_id,
-            weighted_capacity=weighted_capacity,
-            instance_type=instance_type,
-            priority=priority,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             max_price: Optional[str] = None,
-             vswitch_id: Optional[str] = None,
-             weighted_capacity: Optional[str] = None,
-             instance_type: Optional[str] = None,
-             priority: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if max_price is None and 'maxPrice' in kwargs:
-            max_price = kwargs['maxPrice']
-        if max_price is None:
-            raise TypeError("Missing 'max_price' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-        if weighted_capacity is None and 'weightedCapacity' in kwargs:
-            weighted_capacity = kwargs['weightedCapacity']
-        if weighted_capacity is None:
-            raise TypeError("Missing 'weighted_capacity' argument")
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-
-        _setter("max_price", max_price)
-        _setter("vswitch_id", vswitch_id)
-        _setter("weighted_capacity", weighted_capacity)
+        pulumi.set(__self__, "max_price", max_price)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "weighted_capacity", weighted_capacity)
         if instance_type is not None:
-            _setter("instance_type", instance_type)
+            pulumi.set(__self__, "instance_type", instance_type)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
 
     @property
     @pulumi.getter(name="maxPrice")
@@ -244,27 +211,10 @@ class DedicatedHostNetworkAttribute(dict):
         :param int slb_udp_timeout: The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Valid values: 15 to 310.
         :param int udp_timeout: The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds. Valid values: 15 to 310.
         """
-        DedicatedHostNetworkAttribute._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            slb_udp_timeout=slb_udp_timeout,
-            udp_timeout=udp_timeout,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             slb_udp_timeout: Optional[int] = None,
-             udp_timeout: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if slb_udp_timeout is None and 'slbUdpTimeout' in kwargs:
-            slb_udp_timeout = kwargs['slbUdpTimeout']
-        if udp_timeout is None and 'udpTimeout' in kwargs:
-            udp_timeout = kwargs['udpTimeout']
-
         if slb_udp_timeout is not None:
-            _setter("slb_udp_timeout", slb_udp_timeout)
+            pulumi.set(__self__, "slb_udp_timeout", slb_udp_timeout)
         if udp_timeout is not None:
-            _setter("udp_timeout", udp_timeout)
+            pulumi.set(__self__, "udp_timeout", udp_timeout)
 
     @property
     @pulumi.getter(name="slbUdpTimeout")
@@ -341,68 +291,23 @@ class EcsInstanceSetDataDisk(dict):
         :param str performance_level: The performance level of the ESSD used as data disk. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
         :param str snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
         """
-        EcsInstanceSetDataDisk._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            disk_size=disk_size,
-            auto_snapshot_policy_id=auto_snapshot_policy_id,
-            disk_category=disk_category,
-            disk_description=disk_description,
-            disk_name=disk_name,
-            encrypted=encrypted,
-            kms_key_id=kms_key_id,
-            performance_level=performance_level,
-            snapshot_id=snapshot_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             disk_size: Optional[int] = None,
-             auto_snapshot_policy_id: Optional[str] = None,
-             disk_category: Optional[str] = None,
-             disk_description: Optional[str] = None,
-             disk_name: Optional[str] = None,
-             encrypted: Optional[bool] = None,
-             kms_key_id: Optional[str] = None,
-             performance_level: Optional[str] = None,
-             snapshot_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disk_size is None and 'diskSize' in kwargs:
-            disk_size = kwargs['diskSize']
-        if disk_size is None:
-            raise TypeError("Missing 'disk_size' argument")
-        if auto_snapshot_policy_id is None and 'autoSnapshotPolicyId' in kwargs:
-            auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
-        if disk_category is None and 'diskCategory' in kwargs:
-            disk_category = kwargs['diskCategory']
-        if disk_description is None and 'diskDescription' in kwargs:
-            disk_description = kwargs['diskDescription']
-        if disk_name is None and 'diskName' in kwargs:
-            disk_name = kwargs['diskName']
-        if kms_key_id is None and 'kmsKeyId' in kwargs:
-            kms_key_id = kwargs['kmsKeyId']
-        if performance_level is None and 'performanceLevel' in kwargs:
-            performance_level = kwargs['performanceLevel']
-        if snapshot_id is None and 'snapshotId' in kwargs:
-            snapshot_id = kwargs['snapshotId']
-
-        _setter("disk_size", disk_size)
+        pulumi.set(__self__, "disk_size", disk_size)
         if auto_snapshot_policy_id is not None:
-            _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
+            pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
         if disk_category is not None:
-            _setter("disk_category", disk_category)
+            pulumi.set(__self__, "disk_category", disk_category)
         if disk_description is not None:
-            _setter("disk_description", disk_description)
+            pulumi.set(__self__, "disk_description", disk_description)
         if disk_name is not None:
-            _setter("disk_name", disk_name)
+            pulumi.set(__self__, "disk_name", disk_name)
         if encrypted is not None:
-            _setter("encrypted", encrypted)
+            pulumi.set(__self__, "encrypted", encrypted)
         if kms_key_id is not None:
-            _setter("kms_key_id", kms_key_id)
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if performance_level is not None:
-            _setter("performance_level", performance_level)
+            pulumi.set(__self__, "performance_level", performance_level)
         if snapshot_id is not None:
-            _setter("snapshot_id", snapshot_id)
+            pulumi.set(__self__, "snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter(name="diskSize")
@@ -490,25 +395,8 @@ class EcsInstanceSetExcludeInstanceFilter(dict):
         :param str key: The type of the excluded. Valid values: `InstanceId`, `InstanceName`.
         :param Sequence[str] values: The value of the excluded. The identification of the excluded instances. It is a list of instance Ids or names.
         """
-        EcsInstanceSetExcludeInstanceFilter._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            values=values,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if values is None:
-            raise TypeError("Missing 'values' argument")
-
-        _setter("key", key)
-        _setter("values", values)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
@@ -565,44 +453,15 @@ class EcsInstanceSetNetworkInterface(dict):
         :param str primary_ip_address: The primary private IP address of ENI.
         :param str vswitch_id: The ID of the vSwitch to which to connect ENI.
         """
-        EcsInstanceSetNetworkInterface._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            security_group_id=security_group_id,
-            description=description,
-            network_interface_name=network_interface_name,
-            primary_ip_address=primary_ip_address,
-            vswitch_id=vswitch_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             security_group_id: Optional[str] = None,
-             description: Optional[str] = None,
-             network_interface_name: Optional[str] = None,
-             primary_ip_address: Optional[str] = None,
-             vswitch_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if security_group_id is None and 'securityGroupId' in kwargs:
-            security_group_id = kwargs['securityGroupId']
-        if security_group_id is None:
-            raise TypeError("Missing 'security_group_id' argument")
-        if network_interface_name is None and 'networkInterfaceName' in kwargs:
-            network_interface_name = kwargs['networkInterfaceName']
-        if primary_ip_address is None and 'primaryIpAddress' in kwargs:
-            primary_ip_address = kwargs['primaryIpAddress']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-
-        _setter("security_group_id", security_group_id)
+        pulumi.set(__self__, "security_group_id", security_group_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if network_interface_name is not None:
-            _setter("network_interface_name", network_interface_name)
+            pulumi.set(__self__, "network_interface_name", network_interface_name)
         if primary_ip_address is not None:
-            _setter("primary_ip_address", primary_ip_address)
+            pulumi.set(__self__, "primary_ip_address", primary_ip_address)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="securityGroupId")
@@ -687,53 +546,22 @@ class EcsLaunchTemplateDataDisk(dict):
         :param int size: The size of the data disk.
         :param str snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
         """
-        EcsLaunchTemplateDataDisk._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            category=category,
-            delete_with_instance=delete_with_instance,
-            description=description,
-            encrypted=encrypted,
-            name=name,
-            performance_level=performance_level,
-            size=size,
-            snapshot_id=snapshot_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             category: Optional[str] = None,
-             delete_with_instance: Optional[bool] = None,
-             description: Optional[str] = None,
-             encrypted: Optional[bool] = None,
-             name: Optional[str] = None,
-             performance_level: Optional[str] = None,
-             size: Optional[int] = None,
-             snapshot_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
-            delete_with_instance = kwargs['deleteWithInstance']
-        if performance_level is None and 'performanceLevel' in kwargs:
-            performance_level = kwargs['performanceLevel']
-        if snapshot_id is None and 'snapshotId' in kwargs:
-            snapshot_id = kwargs['snapshotId']
-
         if category is not None:
-            _setter("category", category)
+            pulumi.set(__self__, "category", category)
         if delete_with_instance is not None:
-            _setter("delete_with_instance", delete_with_instance)
+            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if encrypted is not None:
-            _setter("encrypted", encrypted)
+            pulumi.set(__self__, "encrypted", encrypted)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if performance_level is not None:
-            _setter("performance_level", performance_level)
+            pulumi.set(__self__, "performance_level", performance_level)
         if size is not None:
-            _setter("size", size)
+            pulumi.set(__self__, "size", size)
         if snapshot_id is not None:
-            _setter("snapshot_id", snapshot_id)
+            pulumi.set(__self__, "snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter
@@ -836,41 +664,16 @@ class EcsLaunchTemplateNetworkInterfaces(dict):
         :param str security_group_id: The security group ID must be one in the same VPC.
         :param str vswitch_id: The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
         """
-        EcsLaunchTemplateNetworkInterfaces._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            name=name,
-            primary_ip=primary_ip,
-            security_group_id=security_group_id,
-            vswitch_id=vswitch_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[str] = None,
-             name: Optional[str] = None,
-             primary_ip: Optional[str] = None,
-             security_group_id: Optional[str] = None,
-             vswitch_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if primary_ip is None and 'primaryIp' in kwargs:
-            primary_ip = kwargs['primaryIp']
-        if security_group_id is None and 'securityGroupId' in kwargs:
-            security_group_id = kwargs['securityGroupId']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if primary_ip is not None:
-            _setter("primary_ip", primary_ip)
+            pulumi.set(__self__, "primary_ip", primary_ip)
         if security_group_id is not None:
-            _setter("security_group_id", security_group_id)
+            pulumi.set(__self__, "security_group_id", security_group_id)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter
@@ -953,51 +756,22 @@ class EcsLaunchTemplateSystemDisk(dict):
         :param str performance_level: The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
         :param int size: Size of the system disk, measured in GB. Value range: [20, 500].
         """
-        EcsLaunchTemplateSystemDisk._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            category=category,
-            delete_with_instance=delete_with_instance,
-            description=description,
-            encrypted=encrypted,
-            iops=iops,
-            name=name,
-            performance_level=performance_level,
-            size=size,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             category: Optional[str] = None,
-             delete_with_instance: Optional[bool] = None,
-             description: Optional[str] = None,
-             encrypted: Optional[bool] = None,
-             iops: Optional[str] = None,
-             name: Optional[str] = None,
-             performance_level: Optional[str] = None,
-             size: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
-            delete_with_instance = kwargs['deleteWithInstance']
-        if performance_level is None and 'performanceLevel' in kwargs:
-            performance_level = kwargs['performanceLevel']
-
         if category is not None:
-            _setter("category", category)
+            pulumi.set(__self__, "category", category)
         if delete_with_instance is not None:
-            _setter("delete_with_instance", delete_with_instance)
+            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if encrypted is not None:
-            _setter("encrypted", encrypted)
+            pulumi.set(__self__, "encrypted", encrypted)
         if iops is not None:
-            _setter("iops", iops)
+            pulumi.set(__self__, "iops", iops)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if performance_level is not None:
-            _setter("performance_level", performance_level)
+            pulumi.set(__self__, "performance_level", performance_level)
         if size is not None:
-            _setter("size", size)
+            pulumi.set(__self__, "size", size)
 
     @property
     @pulumi.getter
@@ -1079,23 +853,10 @@ class EcsPrefixListEntry(dict):
                * For more information about CIDR blocks, see the "What is CIDR block?" section of the [Network FAQ](https://www.alibabacloud.com/help/doc-detail/40637.htm) topic.  * The total number of entries must not exceed the `max_entries` value.
         :param str description: The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
         """
-        EcsPrefixListEntry._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cidr=cidr,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cidr: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if cidr is not None:
-            _setter("cidr", cidr)
+            pulumi.set(__self__, "cidr", cidr)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -1152,35 +913,14 @@ class ImageDiskDeviceMapping(dict):
         :param int size: Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
         :param str snapshot_id: Specifies a snapshot that is used to create a combined custom image.
         """
-        ImageDiskDeviceMapping._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            device=device,
-            disk_type=disk_type,
-            size=size,
-            snapshot_id=snapshot_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             device: Optional[str] = None,
-             disk_type: Optional[str] = None,
-             size: Optional[int] = None,
-             snapshot_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disk_type is None and 'diskType' in kwargs:
-            disk_type = kwargs['diskType']
-        if snapshot_id is None and 'snapshotId' in kwargs:
-            snapshot_id = kwargs['snapshotId']
-
         if device is not None:
-            _setter("device", device)
+            pulumi.set(__self__, "device", device)
         if disk_type is not None:
-            _setter("disk_type", disk_type)
+            pulumi.set(__self__, "disk_type", disk_type)
         if size is not None:
-            _setter("size", size)
+            pulumi.set(__self__, "size", size)
         if snapshot_id is not None:
-            _setter("snapshot_id", snapshot_id)
+            pulumi.set(__self__, "snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter
@@ -1253,41 +993,16 @@ class ImageImportDiskDeviceMapping(dict):
                
                > **NOTE:** The disk_device_mapping is a list and it's first item will be used to system disk and other items are used to data disks.
         """
-        ImageImportDiskDeviceMapping._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            device=device,
-            disk_image_size=disk_image_size,
-            format=format,
-            oss_bucket=oss_bucket,
-            oss_object=oss_object,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             device: Optional[str] = None,
-             disk_image_size: Optional[int] = None,
-             format: Optional[str] = None,
-             oss_bucket: Optional[str] = None,
-             oss_object: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disk_image_size is None and 'diskImageSize' in kwargs:
-            disk_image_size = kwargs['diskImageSize']
-        if oss_bucket is None and 'ossBucket' in kwargs:
-            oss_bucket = kwargs['ossBucket']
-        if oss_object is None and 'ossObject' in kwargs:
-            oss_object = kwargs['ossObject']
-
         if device is not None:
-            _setter("device", device)
+            pulumi.set(__self__, "device", device)
         if disk_image_size is not None:
-            _setter("disk_image_size", disk_image_size)
+            pulumi.set(__self__, "disk_image_size", disk_image_size)
         if format is not None:
-            _setter("format", format)
+            pulumi.set(__self__, "format", format)
         if oss_bucket is not None:
-            _setter("oss_bucket", oss_bucket)
+            pulumi.set(__self__, "oss_bucket", oss_bucket)
         if oss_object is not None:
-            _setter("oss_object", oss_object)
+            pulumi.set(__self__, "oss_object", oss_object)
 
     @property
     @pulumi.getter
@@ -1389,70 +1104,27 @@ class InstanceDataDisk(dict):
         :param str performance_level: The performance level of the ESSD used as data disk:
         :param str snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
         """
-        InstanceDataDisk._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            size=size,
-            auto_snapshot_policy_id=auto_snapshot_policy_id,
-            category=category,
-            delete_with_instance=delete_with_instance,
-            description=description,
-            device=device,
-            encrypted=encrypted,
-            kms_key_id=kms_key_id,
-            name=name,
-            performance_level=performance_level,
-            snapshot_id=snapshot_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             size: Optional[int] = None,
-             auto_snapshot_policy_id: Optional[str] = None,
-             category: Optional[str] = None,
-             delete_with_instance: Optional[bool] = None,
-             description: Optional[str] = None,
-             device: Optional[str] = None,
-             encrypted: Optional[bool] = None,
-             kms_key_id: Optional[str] = None,
-             name: Optional[str] = None,
-             performance_level: Optional[str] = None,
-             snapshot_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if size is None:
-            raise TypeError("Missing 'size' argument")
-        if auto_snapshot_policy_id is None and 'autoSnapshotPolicyId' in kwargs:
-            auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
-        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
-            delete_with_instance = kwargs['deleteWithInstance']
-        if kms_key_id is None and 'kmsKeyId' in kwargs:
-            kms_key_id = kwargs['kmsKeyId']
-        if performance_level is None and 'performanceLevel' in kwargs:
-            performance_level = kwargs['performanceLevel']
-        if snapshot_id is None and 'snapshotId' in kwargs:
-            snapshot_id = kwargs['snapshotId']
-
-        _setter("size", size)
+        pulumi.set(__self__, "size", size)
         if auto_snapshot_policy_id is not None:
-            _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
+            pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
         if category is not None:
-            _setter("category", category)
+            pulumi.set(__self__, "category", category)
         if delete_with_instance is not None:
-            _setter("delete_with_instance", delete_with_instance)
+            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if device is not None:
-            _setter("device", device)
+            pulumi.set(__self__, "device", device)
         if encrypted is not None:
-            _setter("encrypted", encrypted)
+            pulumi.set(__self__, "encrypted", encrypted)
         if kms_key_id is not None:
-            _setter("kms_key_id", kms_key_id)
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if performance_level is not None:
-            _setter("performance_level", performance_level)
+            pulumi.set(__self__, "performance_level", performance_level)
         if snapshot_id is not None:
-            _setter("snapshot_id", snapshot_id)
+            pulumi.set(__self__, "snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter
@@ -1576,27 +1248,10 @@ class InstanceMaintenanceTime(dict):
         :param str end_time: The end time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `start_time` and `end_time` parameters must be specified at the same time. The `end_time` value must be 1 to 23 hours later than the `start_time` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
         :param str start_time: The start time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `start_time` and `end_time` parameters must be specified at the same time. The `end_time` value must be 1 to 23 hours later than the `start_time` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
         """
-        InstanceMaintenanceTime._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            end_time=end_time,
-            start_time=start_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             end_time: Optional[str] = None,
-             start_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if end_time is None and 'endTime' in kwargs:
-            end_time = kwargs['endTime']
-        if start_time is None and 'startTime' in kwargs:
-            start_time = kwargs['startTime']
-
         if end_time is not None:
-            _setter("end_time", end_time)
+            pulumi.set(__self__, "end_time", end_time)
         if start_time is not None:
-            _setter("start_time", start_time)
+            pulumi.set(__self__, "start_time", start_time)
 
     @property
     @pulumi.getter(name="endTime")
@@ -1672,53 +1327,22 @@ class LaunchTemplateDataDisk(dict):
                - ephemeral_ssd: [5, 800]
         :param str snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
         """
-        LaunchTemplateDataDisk._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            category=category,
-            delete_with_instance=delete_with_instance,
-            description=description,
-            encrypted=encrypted,
-            name=name,
-            performance_level=performance_level,
-            size=size,
-            snapshot_id=snapshot_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             category: Optional[str] = None,
-             delete_with_instance: Optional[bool] = None,
-             description: Optional[str] = None,
-             encrypted: Optional[bool] = None,
-             name: Optional[str] = None,
-             performance_level: Optional[str] = None,
-             size: Optional[int] = None,
-             snapshot_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
-            delete_with_instance = kwargs['deleteWithInstance']
-        if performance_level is None and 'performanceLevel' in kwargs:
-            performance_level = kwargs['performanceLevel']
-        if snapshot_id is None and 'snapshotId' in kwargs:
-            snapshot_id = kwargs['snapshotId']
-
         if category is not None:
-            _setter("category", category)
+            pulumi.set(__self__, "category", category)
         if delete_with_instance is not None:
-            _setter("delete_with_instance", delete_with_instance)
+            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if encrypted is not None:
-            _setter("encrypted", encrypted)
+            pulumi.set(__self__, "encrypted", encrypted)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if performance_level is not None:
-            _setter("performance_level", performance_level)
+            pulumi.set(__self__, "performance_level", performance_level)
         if size is not None:
-            _setter("size", size)
+            pulumi.set(__self__, "size", size)
         if snapshot_id is not None:
-            _setter("snapshot_id", snapshot_id)
+            pulumi.set(__self__, "snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter
@@ -1834,41 +1458,16 @@ class LaunchTemplateNetworkInterfaces(dict):
         :param str security_group_id: The security group ID must be one in the same VPC.
         :param str vswitch_id: The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
         """
-        LaunchTemplateNetworkInterfaces._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            name=name,
-            primary_ip=primary_ip,
-            security_group_id=security_group_id,
-            vswitch_id=vswitch_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[str] = None,
-             name: Optional[str] = None,
-             primary_ip: Optional[str] = None,
-             security_group_id: Optional[str] = None,
-             vswitch_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if primary_ip is None and 'primaryIp' in kwargs:
-            primary_ip = kwargs['primaryIp']
-        if security_group_id is None and 'securityGroupId' in kwargs:
-            security_group_id = kwargs['securityGroupId']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if primary_ip is not None:
-            _setter("primary_ip", primary_ip)
+            pulumi.set(__self__, "primary_ip", primary_ip)
         if security_group_id is not None:
-            _setter("security_group_id", security_group_id)
+            pulumi.set(__self__, "security_group_id", security_group_id)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter
@@ -1965,51 +1564,22 @@ class LaunchTemplateSystemDisk(dict):
                - cloud_essd：[20, 32768]
                - ephemeral_ssd: [5, 800]
         """
-        LaunchTemplateSystemDisk._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            category=category,
-            delete_with_instance=delete_with_instance,
-            description=description,
-            encrypted=encrypted,
-            iops=iops,
-            name=name,
-            performance_level=performance_level,
-            size=size,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             category: Optional[str] = None,
-             delete_with_instance: Optional[bool] = None,
-             description: Optional[str] = None,
-             encrypted: Optional[bool] = None,
-             iops: Optional[str] = None,
-             name: Optional[str] = None,
-             performance_level: Optional[str] = None,
-             size: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
-            delete_with_instance = kwargs['deleteWithInstance']
-        if performance_level is None and 'performanceLevel' in kwargs:
-            performance_level = kwargs['performanceLevel']
-
         if category is not None:
-            _setter("category", category)
+            pulumi.set(__self__, "category", category)
         if delete_with_instance is not None:
-            _setter("delete_with_instance", delete_with_instance)
+            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if encrypted is not None:
-            _setter("encrypted", encrypted)
+            pulumi.set(__self__, "encrypted", encrypted)
         if iops is not None:
-            _setter("iops", iops)
+            pulumi.set(__self__, "iops", iops)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if performance_level is not None:
-            _setter("performance_level", performance_level)
+            pulumi.set(__self__, "performance_level", performance_level)
         if size is not None:
-            _setter("size", size)
+            pulumi.set(__self__, "size", size)
 
     @property
     @pulumi.getter
@@ -2110,21 +1680,8 @@ class ReservedInstanceOperationLock(dict):
         """
         :param str lock_reason: The reason why the reserved instance was locked.
         """
-        ReservedInstanceOperationLock._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            lock_reason=lock_reason,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             lock_reason: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if lock_reason is None and 'lockReason' in kwargs:
-            lock_reason = kwargs['lockReason']
-
         if lock_reason is not None:
-            _setter("lock_reason", lock_reason)
+            pulumi.set(__self__, "lock_reason", lock_reason)
 
     @property
     @pulumi.getter(name="lockReason")
@@ -2162,86 +1719,17 @@ class GetActivationsActivationResult(dict):
         :param int registered_count: The number of instances that were registered.
         :param int time_to_live_in_hours: The validity period of the activation code. Unit: hours.
         """
-        GetActivationsActivationResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            activation_id=activation_id,
-            create_time=create_time,
-            deregistered_count=deregistered_count,
-            description=description,
-            disabled=disabled,
-            id=id,
-            instance_count=instance_count,
-            instance_name=instance_name,
-            ip_address_range=ip_address_range,
-            registered_count=registered_count,
-            time_to_live_in_hours=time_to_live_in_hours,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             activation_id: Optional[str] = None,
-             create_time: Optional[str] = None,
-             deregistered_count: Optional[int] = None,
-             description: Optional[str] = None,
-             disabled: Optional[bool] = None,
-             id: Optional[str] = None,
-             instance_count: Optional[int] = None,
-             instance_name: Optional[str] = None,
-             ip_address_range: Optional[str] = None,
-             registered_count: Optional[int] = None,
-             time_to_live_in_hours: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if activation_id is None and 'activationId' in kwargs:
-            activation_id = kwargs['activationId']
-        if activation_id is None:
-            raise TypeError("Missing 'activation_id' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if deregistered_count is None and 'deregisteredCount' in kwargs:
-            deregistered_count = kwargs['deregisteredCount']
-        if deregistered_count is None:
-            raise TypeError("Missing 'deregistered_count' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if disabled is None:
-            raise TypeError("Missing 'disabled' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_count is None and 'instanceCount' in kwargs:
-            instance_count = kwargs['instanceCount']
-        if instance_count is None:
-            raise TypeError("Missing 'instance_count' argument")
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_name is None:
-            raise TypeError("Missing 'instance_name' argument")
-        if ip_address_range is None and 'ipAddressRange' in kwargs:
-            ip_address_range = kwargs['ipAddressRange']
-        if ip_address_range is None:
-            raise TypeError("Missing 'ip_address_range' argument")
-        if registered_count is None and 'registeredCount' in kwargs:
-            registered_count = kwargs['registeredCount']
-        if registered_count is None:
-            raise TypeError("Missing 'registered_count' argument")
-        if time_to_live_in_hours is None and 'timeToLiveInHours' in kwargs:
-            time_to_live_in_hours = kwargs['timeToLiveInHours']
-        if time_to_live_in_hours is None:
-            raise TypeError("Missing 'time_to_live_in_hours' argument")
-
-        _setter("activation_id", activation_id)
-        _setter("create_time", create_time)
-        _setter("deregistered_count", deregistered_count)
-        _setter("description", description)
-        _setter("disabled", disabled)
-        _setter("id", id)
-        _setter("instance_count", instance_count)
-        _setter("instance_name", instance_name)
-        _setter("ip_address_range", ip_address_range)
-        _setter("registered_count", registered_count)
-        _setter("time_to_live_in_hours", time_to_live_in_hours)
+        pulumi.set(__self__, "activation_id", activation_id)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "deregistered_count", deregistered_count)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "disabled", disabled)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_count", instance_count)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "ip_address_range", ip_address_range)
+        pulumi.set(__self__, "registered_count", registered_count)
+        pulumi.set(__self__, "time_to_live_in_hours", time_to_live_in_hours)
 
     @property
     @pulumi.getter(name="activationId")
@@ -2363,98 +1851,19 @@ class GetAutoSnapshotPoliciesPolicyResult(dict):
         :param Sequence[str] time_points: The automatic snapshot creation schedule, and the unit of measurement is hour.
         :param int volume_nums: The number of extended volumes on which this policy is enabled.
         """
-        GetAutoSnapshotPoliciesPolicyResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto_snapshot_policy_id=auto_snapshot_policy_id,
-            copied_snapshots_retention_days=copied_snapshots_retention_days,
-            disk_nums=disk_nums,
-            enable_cross_region_copy=enable_cross_region_copy,
-            id=id,
-            name=name,
-            repeat_weekdays=repeat_weekdays,
-            retention_days=retention_days,
-            status=status,
-            tags=tags,
-            target_copy_regions=target_copy_regions,
-            time_points=time_points,
-            volume_nums=volume_nums,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto_snapshot_policy_id: Optional[str] = None,
-             copied_snapshots_retention_days: Optional[int] = None,
-             disk_nums: Optional[int] = None,
-             enable_cross_region_copy: Optional[bool] = None,
-             id: Optional[str] = None,
-             name: Optional[str] = None,
-             repeat_weekdays: Optional[Sequence[str]] = None,
-             retention_days: Optional[int] = None,
-             status: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             target_copy_regions: Optional[Sequence[str]] = None,
-             time_points: Optional[Sequence[str]] = None,
-             volume_nums: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_snapshot_policy_id is None and 'autoSnapshotPolicyId' in kwargs:
-            auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
-        if auto_snapshot_policy_id is None:
-            raise TypeError("Missing 'auto_snapshot_policy_id' argument")
-        if copied_snapshots_retention_days is None and 'copiedSnapshotsRetentionDays' in kwargs:
-            copied_snapshots_retention_days = kwargs['copiedSnapshotsRetentionDays']
-        if copied_snapshots_retention_days is None:
-            raise TypeError("Missing 'copied_snapshots_retention_days' argument")
-        if disk_nums is None and 'diskNums' in kwargs:
-            disk_nums = kwargs['diskNums']
-        if disk_nums is None:
-            raise TypeError("Missing 'disk_nums' argument")
-        if enable_cross_region_copy is None and 'enableCrossRegionCopy' in kwargs:
-            enable_cross_region_copy = kwargs['enableCrossRegionCopy']
-        if enable_cross_region_copy is None:
-            raise TypeError("Missing 'enable_cross_region_copy' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if repeat_weekdays is None and 'repeatWeekdays' in kwargs:
-            repeat_weekdays = kwargs['repeatWeekdays']
-        if repeat_weekdays is None:
-            raise TypeError("Missing 'repeat_weekdays' argument")
-        if retention_days is None and 'retentionDays' in kwargs:
-            retention_days = kwargs['retentionDays']
-        if retention_days is None:
-            raise TypeError("Missing 'retention_days' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-        if target_copy_regions is None and 'targetCopyRegions' in kwargs:
-            target_copy_regions = kwargs['targetCopyRegions']
-        if target_copy_regions is None:
-            raise TypeError("Missing 'target_copy_regions' argument")
-        if time_points is None and 'timePoints' in kwargs:
-            time_points = kwargs['timePoints']
-        if time_points is None:
-            raise TypeError("Missing 'time_points' argument")
-        if volume_nums is None and 'volumeNums' in kwargs:
-            volume_nums = kwargs['volumeNums']
-        if volume_nums is None:
-            raise TypeError("Missing 'volume_nums' argument")
-
-        _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
-        _setter("copied_snapshots_retention_days", copied_snapshots_retention_days)
-        _setter("disk_nums", disk_nums)
-        _setter("enable_cross_region_copy", enable_cross_region_copy)
-        _setter("id", id)
-        _setter("name", name)
-        _setter("repeat_weekdays", repeat_weekdays)
-        _setter("retention_days", retention_days)
-        _setter("status", status)
-        _setter("tags", tags)
-        _setter("target_copy_regions", target_copy_regions)
-        _setter("time_points", time_points)
-        _setter("volume_nums", volume_nums)
+        pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
+        pulumi.set(__self__, "copied_snapshots_retention_days", copied_snapshots_retention_days)
+        pulumi.set(__self__, "disk_nums", disk_nums)
+        pulumi.set(__self__, "enable_cross_region_copy", enable_cross_region_copy)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "repeat_weekdays", repeat_weekdays)
+        pulumi.set(__self__, "retention_days", retention_days)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "target_copy_regions", target_copy_regions)
+        pulumi.set(__self__, "time_points", time_points)
+        pulumi.set(__self__, "volume_nums", volume_nums)
 
     @property
     @pulumi.getter(name="autoSnapshotPolicyId")
@@ -2602,130 +2011,25 @@ class GetCapacityReservationsReservationResult(dict):
         :param Sequence[str] zone_ids: The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
         :param Mapping[str, Any] tags: The tag of the resource.
         """
-        GetCapacityReservationsReservationResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            capacity_reservation_id=capacity_reservation_id,
-            capacity_reservation_name=capacity_reservation_name,
-            description=description,
-            end_time=end_time,
-            end_time_type=end_time_type,
-            id=id,
-            instance_amount=instance_amount,
-            instance_type=instance_type,
-            match_criteria=match_criteria,
-            payment_type=payment_type,
-            platform=platform,
-            resource_group_id=resource_group_id,
-            start_time=start_time,
-            start_time_type=start_time_type,
-            status=status,
-            time_slot=time_slot,
-            zone_ids=zone_ids,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             capacity_reservation_id: Optional[str] = None,
-             capacity_reservation_name: Optional[str] = None,
-             description: Optional[str] = None,
-             end_time: Optional[str] = None,
-             end_time_type: Optional[str] = None,
-             id: Optional[str] = None,
-             instance_amount: Optional[str] = None,
-             instance_type: Optional[str] = None,
-             match_criteria: Optional[str] = None,
-             payment_type: Optional[str] = None,
-             platform: Optional[str] = None,
-             resource_group_id: Optional[str] = None,
-             start_time: Optional[str] = None,
-             start_time_type: Optional[str] = None,
-             status: Optional[str] = None,
-             time_slot: Optional[str] = None,
-             zone_ids: Optional[Sequence[str]] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if capacity_reservation_id is None and 'capacityReservationId' in kwargs:
-            capacity_reservation_id = kwargs['capacityReservationId']
-        if capacity_reservation_id is None:
-            raise TypeError("Missing 'capacity_reservation_id' argument")
-        if capacity_reservation_name is None and 'capacityReservationName' in kwargs:
-            capacity_reservation_name = kwargs['capacityReservationName']
-        if capacity_reservation_name is None:
-            raise TypeError("Missing 'capacity_reservation_name' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if end_time is None and 'endTime' in kwargs:
-            end_time = kwargs['endTime']
-        if end_time is None:
-            raise TypeError("Missing 'end_time' argument")
-        if end_time_type is None and 'endTimeType' in kwargs:
-            end_time_type = kwargs['endTimeType']
-        if end_time_type is None:
-            raise TypeError("Missing 'end_time_type' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_amount is None and 'instanceAmount' in kwargs:
-            instance_amount = kwargs['instanceAmount']
-        if instance_amount is None:
-            raise TypeError("Missing 'instance_amount' argument")
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if instance_type is None:
-            raise TypeError("Missing 'instance_type' argument")
-        if match_criteria is None and 'matchCriteria' in kwargs:
-            match_criteria = kwargs['matchCriteria']
-        if match_criteria is None:
-            raise TypeError("Missing 'match_criteria' argument")
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if payment_type is None:
-            raise TypeError("Missing 'payment_type' argument")
-        if platform is None:
-            raise TypeError("Missing 'platform' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if start_time is None and 'startTime' in kwargs:
-            start_time = kwargs['startTime']
-        if start_time is None:
-            raise TypeError("Missing 'start_time' argument")
-        if start_time_type is None and 'startTimeType' in kwargs:
-            start_time_type = kwargs['startTimeType']
-        if start_time_type is None:
-            raise TypeError("Missing 'start_time_type' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if time_slot is None and 'timeSlot' in kwargs:
-            time_slot = kwargs['timeSlot']
-        if time_slot is None:
-            raise TypeError("Missing 'time_slot' argument")
-        if zone_ids is None and 'zoneIds' in kwargs:
-            zone_ids = kwargs['zoneIds']
-        if zone_ids is None:
-            raise TypeError("Missing 'zone_ids' argument")
-
-        _setter("capacity_reservation_id", capacity_reservation_id)
-        _setter("capacity_reservation_name", capacity_reservation_name)
-        _setter("description", description)
-        _setter("end_time", end_time)
-        _setter("end_time_type", end_time_type)
-        _setter("id", id)
-        _setter("instance_amount", instance_amount)
-        _setter("instance_type", instance_type)
-        _setter("match_criteria", match_criteria)
-        _setter("payment_type", payment_type)
-        _setter("platform", platform)
-        _setter("resource_group_id", resource_group_id)
-        _setter("start_time", start_time)
-        _setter("start_time_type", start_time_type)
-        _setter("status", status)
-        _setter("time_slot", time_slot)
-        _setter("zone_ids", zone_ids)
+        pulumi.set(__self__, "capacity_reservation_id", capacity_reservation_id)
+        pulumi.set(__self__, "capacity_reservation_name", capacity_reservation_name)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "end_time_type", end_time_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_amount", instance_amount)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "match_criteria", match_criteria)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "platform", platform)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "start_time_type", start_time_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "time_slot", time_slot)
+        pulumi.set(__self__, "zone_ids", zone_ids)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="capacityReservationId")
@@ -2897,75 +2201,16 @@ class GetCommandsCommandResult(dict):
         :param str type: The command type.
         :param str working_dir: The execution path of the command in the ECS instance.
         """
-        GetCommandsCommandResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            command_content=command_content,
-            command_id=command_id,
-            description=description,
-            enable_parameter=enable_parameter,
-            id=id,
-            name=name,
-            parameter_names=parameter_names,
-            timeout=timeout,
-            type=type,
-            working_dir=working_dir,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             command_content: Optional[str] = None,
-             command_id: Optional[str] = None,
-             description: Optional[str] = None,
-             enable_parameter: Optional[bool] = None,
-             id: Optional[str] = None,
-             name: Optional[str] = None,
-             parameter_names: Optional[Sequence[str]] = None,
-             timeout: Optional[int] = None,
-             type: Optional[str] = None,
-             working_dir: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if command_content is None and 'commandContent' in kwargs:
-            command_content = kwargs['commandContent']
-        if command_content is None:
-            raise TypeError("Missing 'command_content' argument")
-        if command_id is None and 'commandId' in kwargs:
-            command_id = kwargs['commandId']
-        if command_id is None:
-            raise TypeError("Missing 'command_id' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if enable_parameter is None and 'enableParameter' in kwargs:
-            enable_parameter = kwargs['enableParameter']
-        if enable_parameter is None:
-            raise TypeError("Missing 'enable_parameter' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if parameter_names is None and 'parameterNames' in kwargs:
-            parameter_names = kwargs['parameterNames']
-        if parameter_names is None:
-            raise TypeError("Missing 'parameter_names' argument")
-        if timeout is None:
-            raise TypeError("Missing 'timeout' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if working_dir is None and 'workingDir' in kwargs:
-            working_dir = kwargs['workingDir']
-        if working_dir is None:
-            raise TypeError("Missing 'working_dir' argument")
-
-        _setter("command_content", command_content)
-        _setter("command_id", command_id)
-        _setter("description", description)
-        _setter("enable_parameter", enable_parameter)
-        _setter("id", id)
-        _setter("name", name)
-        _setter("parameter_names", parameter_names)
-        _setter("timeout", timeout)
-        _setter("type", type)
-        _setter("working_dir", working_dir)
+        pulumi.set(__self__, "command_content", command_content)
+        pulumi.set(__self__, "command_id", command_id)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "enable_parameter", enable_parameter)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "parameter_names", parameter_names)
+        pulumi.set(__self__, "timeout", timeout)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "working_dir", working_dir)
 
     @property
     @pulumi.getter(name="commandContent")
@@ -3107,190 +2352,33 @@ class GetDedicatedHostsHostResult(dict):
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         :param str zone_id: The zone ID of the ECS Dedicated Host.
         """
-        GetDedicatedHostsHostResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action_on_maintenance=action_on_maintenance,
-            auto_placement=auto_placement,
-            auto_release_time=auto_release_time,
-            capacities=capacities,
-            cores=cores,
-            cpu_over_commit_ratio=cpu_over_commit_ratio,
-            dedicated_host_id=dedicated_host_id,
-            dedicated_host_name=dedicated_host_name,
-            dedicated_host_type=dedicated_host_type,
-            description=description,
-            expired_time=expired_time,
-            gpu_spec=gpu_spec,
-            id=id,
-            machine_id=machine_id,
-            network_attributes=network_attributes,
-            operation_locks=operation_locks,
-            payment_type=payment_type,
-            physical_gpus=physical_gpus,
-            resource_group_id=resource_group_id,
-            sale_cycle=sale_cycle,
-            sockets=sockets,
-            status=status,
-            supported_custom_instance_type_families=supported_custom_instance_type_families,
-            supported_instance_type_families=supported_instance_type_families,
-            supported_instance_types_lists=supported_instance_types_lists,
-            tags=tags,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action_on_maintenance: Optional[str] = None,
-             auto_placement: Optional[str] = None,
-             auto_release_time: Optional[str] = None,
-             capacities: Optional[Sequence['outputs.GetDedicatedHostsHostCapacityResult']] = None,
-             cores: Optional[int] = None,
-             cpu_over_commit_ratio: Optional[float] = None,
-             dedicated_host_id: Optional[str] = None,
-             dedicated_host_name: Optional[str] = None,
-             dedicated_host_type: Optional[str] = None,
-             description: Optional[str] = None,
-             expired_time: Optional[str] = None,
-             gpu_spec: Optional[str] = None,
-             id: Optional[str] = None,
-             machine_id: Optional[str] = None,
-             network_attributes: Optional[Sequence['outputs.GetDedicatedHostsHostNetworkAttributeResult']] = None,
-             operation_locks: Optional[Sequence['outputs.GetDedicatedHostsHostOperationLockResult']] = None,
-             payment_type: Optional[str] = None,
-             physical_gpus: Optional[int] = None,
-             resource_group_id: Optional[str] = None,
-             sale_cycle: Optional[str] = None,
-             sockets: Optional[int] = None,
-             status: Optional[str] = None,
-             supported_custom_instance_type_families: Optional[Sequence[str]] = None,
-             supported_instance_type_families: Optional[Sequence[str]] = None,
-             supported_instance_types_lists: Optional[Sequence[str]] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if action_on_maintenance is None and 'actionOnMaintenance' in kwargs:
-            action_on_maintenance = kwargs['actionOnMaintenance']
-        if action_on_maintenance is None:
-            raise TypeError("Missing 'action_on_maintenance' argument")
-        if auto_placement is None and 'autoPlacement' in kwargs:
-            auto_placement = kwargs['autoPlacement']
-        if auto_placement is None:
-            raise TypeError("Missing 'auto_placement' argument")
-        if auto_release_time is None and 'autoReleaseTime' in kwargs:
-            auto_release_time = kwargs['autoReleaseTime']
-        if auto_release_time is None:
-            raise TypeError("Missing 'auto_release_time' argument")
-        if capacities is None:
-            raise TypeError("Missing 'capacities' argument")
-        if cores is None:
-            raise TypeError("Missing 'cores' argument")
-        if cpu_over_commit_ratio is None and 'cpuOverCommitRatio' in kwargs:
-            cpu_over_commit_ratio = kwargs['cpuOverCommitRatio']
-        if cpu_over_commit_ratio is None:
-            raise TypeError("Missing 'cpu_over_commit_ratio' argument")
-        if dedicated_host_id is None and 'dedicatedHostId' in kwargs:
-            dedicated_host_id = kwargs['dedicatedHostId']
-        if dedicated_host_id is None:
-            raise TypeError("Missing 'dedicated_host_id' argument")
-        if dedicated_host_name is None and 'dedicatedHostName' in kwargs:
-            dedicated_host_name = kwargs['dedicatedHostName']
-        if dedicated_host_name is None:
-            raise TypeError("Missing 'dedicated_host_name' argument")
-        if dedicated_host_type is None and 'dedicatedHostType' in kwargs:
-            dedicated_host_type = kwargs['dedicatedHostType']
-        if dedicated_host_type is None:
-            raise TypeError("Missing 'dedicated_host_type' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if expired_time is None and 'expiredTime' in kwargs:
-            expired_time = kwargs['expiredTime']
-        if expired_time is None:
-            raise TypeError("Missing 'expired_time' argument")
-        if gpu_spec is None and 'gpuSpec' in kwargs:
-            gpu_spec = kwargs['gpuSpec']
-        if gpu_spec is None:
-            raise TypeError("Missing 'gpu_spec' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if machine_id is None and 'machineId' in kwargs:
-            machine_id = kwargs['machineId']
-        if machine_id is None:
-            raise TypeError("Missing 'machine_id' argument")
-        if network_attributes is None and 'networkAttributes' in kwargs:
-            network_attributes = kwargs['networkAttributes']
-        if network_attributes is None:
-            raise TypeError("Missing 'network_attributes' argument")
-        if operation_locks is None and 'operationLocks' in kwargs:
-            operation_locks = kwargs['operationLocks']
-        if operation_locks is None:
-            raise TypeError("Missing 'operation_locks' argument")
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if payment_type is None:
-            raise TypeError("Missing 'payment_type' argument")
-        if physical_gpus is None and 'physicalGpus' in kwargs:
-            physical_gpus = kwargs['physicalGpus']
-        if physical_gpus is None:
-            raise TypeError("Missing 'physical_gpus' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if sale_cycle is None and 'saleCycle' in kwargs:
-            sale_cycle = kwargs['saleCycle']
-        if sale_cycle is None:
-            raise TypeError("Missing 'sale_cycle' argument")
-        if sockets is None:
-            raise TypeError("Missing 'sockets' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if supported_custom_instance_type_families is None and 'supportedCustomInstanceTypeFamilies' in kwargs:
-            supported_custom_instance_type_families = kwargs['supportedCustomInstanceTypeFamilies']
-        if supported_custom_instance_type_families is None:
-            raise TypeError("Missing 'supported_custom_instance_type_families' argument")
-        if supported_instance_type_families is None and 'supportedInstanceTypeFamilies' in kwargs:
-            supported_instance_type_families = kwargs['supportedInstanceTypeFamilies']
-        if supported_instance_type_families is None:
-            raise TypeError("Missing 'supported_instance_type_families' argument")
-        if supported_instance_types_lists is None and 'supportedInstanceTypesLists' in kwargs:
-            supported_instance_types_lists = kwargs['supportedInstanceTypesLists']
-        if supported_instance_types_lists is None:
-            raise TypeError("Missing 'supported_instance_types_lists' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("action_on_maintenance", action_on_maintenance)
-        _setter("auto_placement", auto_placement)
-        _setter("auto_release_time", auto_release_time)
-        _setter("capacities", capacities)
-        _setter("cores", cores)
-        _setter("cpu_over_commit_ratio", cpu_over_commit_ratio)
-        _setter("dedicated_host_id", dedicated_host_id)
-        _setter("dedicated_host_name", dedicated_host_name)
-        _setter("dedicated_host_type", dedicated_host_type)
-        _setter("description", description)
-        _setter("expired_time", expired_time)
-        _setter("gpu_spec", gpu_spec)
-        _setter("id", id)
-        _setter("machine_id", machine_id)
-        _setter("network_attributes", network_attributes)
-        _setter("operation_locks", operation_locks)
-        _setter("payment_type", payment_type)
-        _setter("physical_gpus", physical_gpus)
-        _setter("resource_group_id", resource_group_id)
-        _setter("sale_cycle", sale_cycle)
-        _setter("sockets", sockets)
-        _setter("status", status)
-        _setter("supported_custom_instance_type_families", supported_custom_instance_type_families)
-        _setter("supported_instance_type_families", supported_instance_type_families)
-        _setter("supported_instance_types_lists", supported_instance_types_lists)
-        _setter("tags", tags)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "action_on_maintenance", action_on_maintenance)
+        pulumi.set(__self__, "auto_placement", auto_placement)
+        pulumi.set(__self__, "auto_release_time", auto_release_time)
+        pulumi.set(__self__, "capacities", capacities)
+        pulumi.set(__self__, "cores", cores)
+        pulumi.set(__self__, "cpu_over_commit_ratio", cpu_over_commit_ratio)
+        pulumi.set(__self__, "dedicated_host_id", dedicated_host_id)
+        pulumi.set(__self__, "dedicated_host_name", dedicated_host_name)
+        pulumi.set(__self__, "dedicated_host_type", dedicated_host_type)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "expired_time", expired_time)
+        pulumi.set(__self__, "gpu_spec", gpu_spec)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "machine_id", machine_id)
+        pulumi.set(__self__, "network_attributes", network_attributes)
+        pulumi.set(__self__, "operation_locks", operation_locks)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "physical_gpus", physical_gpus)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "sale_cycle", sale_cycle)
+        pulumi.set(__self__, "sockets", sockets)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "supported_custom_instance_type_families", supported_custom_instance_type_families)
+        pulumi.set(__self__, "supported_instance_type_families", supported_instance_type_families)
+        pulumi.set(__self__, "supported_instance_types_lists", supported_instance_types_lists)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="actionOnMaintenance")
@@ -3532,78 +2620,15 @@ class GetDedicatedHostsHostCapacityResult(dict):
         :param int total_vcpus: The total number of vCPU cores.
         :param int total_vgpus: The total number of virtual GPUs.
         """
-        GetDedicatedHostsHostCapacityResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            available_local_storage=available_local_storage,
-            available_memory=available_memory,
-            available_vcpus=available_vcpus,
-            available_vgpus=available_vgpus,
-            local_storage_category=local_storage_category,
-            total_local_storage=total_local_storage,
-            total_memory=total_memory,
-            total_vcpus=total_vcpus,
-            total_vgpus=total_vgpus,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             available_local_storage: Optional[int] = None,
-             available_memory: Optional[float] = None,
-             available_vcpus: Optional[int] = None,
-             available_vgpus: Optional[int] = None,
-             local_storage_category: Optional[str] = None,
-             total_local_storage: Optional[int] = None,
-             total_memory: Optional[float] = None,
-             total_vcpus: Optional[int] = None,
-             total_vgpus: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if available_local_storage is None and 'availableLocalStorage' in kwargs:
-            available_local_storage = kwargs['availableLocalStorage']
-        if available_local_storage is None:
-            raise TypeError("Missing 'available_local_storage' argument")
-        if available_memory is None and 'availableMemory' in kwargs:
-            available_memory = kwargs['availableMemory']
-        if available_memory is None:
-            raise TypeError("Missing 'available_memory' argument")
-        if available_vcpus is None and 'availableVcpus' in kwargs:
-            available_vcpus = kwargs['availableVcpus']
-        if available_vcpus is None:
-            raise TypeError("Missing 'available_vcpus' argument")
-        if available_vgpus is None and 'availableVgpus' in kwargs:
-            available_vgpus = kwargs['availableVgpus']
-        if available_vgpus is None:
-            raise TypeError("Missing 'available_vgpus' argument")
-        if local_storage_category is None and 'localStorageCategory' in kwargs:
-            local_storage_category = kwargs['localStorageCategory']
-        if local_storage_category is None:
-            raise TypeError("Missing 'local_storage_category' argument")
-        if total_local_storage is None and 'totalLocalStorage' in kwargs:
-            total_local_storage = kwargs['totalLocalStorage']
-        if total_local_storage is None:
-            raise TypeError("Missing 'total_local_storage' argument")
-        if total_memory is None and 'totalMemory' in kwargs:
-            total_memory = kwargs['totalMemory']
-        if total_memory is None:
-            raise TypeError("Missing 'total_memory' argument")
-        if total_vcpus is None and 'totalVcpus' in kwargs:
-            total_vcpus = kwargs['totalVcpus']
-        if total_vcpus is None:
-            raise TypeError("Missing 'total_vcpus' argument")
-        if total_vgpus is None and 'totalVgpus' in kwargs:
-            total_vgpus = kwargs['totalVgpus']
-        if total_vgpus is None:
-            raise TypeError("Missing 'total_vgpus' argument")
-
-        _setter("available_local_storage", available_local_storage)
-        _setter("available_memory", available_memory)
-        _setter("available_vcpus", available_vcpus)
-        _setter("available_vgpus", available_vgpus)
-        _setter("local_storage_category", local_storage_category)
-        _setter("total_local_storage", total_local_storage)
-        _setter("total_memory", total_memory)
-        _setter("total_vcpus", total_vcpus)
-        _setter("total_vgpus", total_vgpus)
+        pulumi.set(__self__, "available_local_storage", available_local_storage)
+        pulumi.set(__self__, "available_memory", available_memory)
+        pulumi.set(__self__, "available_vcpus", available_vcpus)
+        pulumi.set(__self__, "available_vgpus", available_vgpus)
+        pulumi.set(__self__, "local_storage_category", local_storage_category)
+        pulumi.set(__self__, "total_local_storage", total_local_storage)
+        pulumi.set(__self__, "total_memory", total_memory)
+        pulumi.set(__self__, "total_vcpus", total_vcpus)
+        pulumi.set(__self__, "total_vgpus", total_vgpus)
 
     @property
     @pulumi.getter(name="availableLocalStorage")
@@ -3687,29 +2712,8 @@ class GetDedicatedHostsHostNetworkAttributeResult(dict):
         :param int slb_udp_timeout: The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds.
         :param int udp_timeout: (Available in 1.123.1+) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
         """
-        GetDedicatedHostsHostNetworkAttributeResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            slb_udp_timeout=slb_udp_timeout,
-            udp_timeout=udp_timeout,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             slb_udp_timeout: Optional[int] = None,
-             udp_timeout: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if slb_udp_timeout is None and 'slbUdpTimeout' in kwargs:
-            slb_udp_timeout = kwargs['slbUdpTimeout']
-        if slb_udp_timeout is None:
-            raise TypeError("Missing 'slb_udp_timeout' argument")
-        if udp_timeout is None and 'udpTimeout' in kwargs:
-            udp_timeout = kwargs['udpTimeout']
-        if udp_timeout is None:
-            raise TypeError("Missing 'udp_timeout' argument")
-
-        _setter("slb_udp_timeout", slb_udp_timeout)
-        _setter("udp_timeout", udp_timeout)
+        pulumi.set(__self__, "slb_udp_timeout", slb_udp_timeout)
+        pulumi.set(__self__, "udp_timeout", udp_timeout)
 
     @property
     @pulumi.getter(name="slbUdpTimeout")
@@ -3735,22 +2739,7 @@ class GetDedicatedHostsHostOperationLockResult(dict):
         """
         :param str lock_reason: The reason why the dedicated host resource is locked.
         """
-        GetDedicatedHostsHostOperationLockResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            lock_reason=lock_reason,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             lock_reason: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if lock_reason is None and 'lockReason' in kwargs:
-            lock_reason = kwargs['lockReason']
-        if lock_reason is None:
-            raise TypeError("Missing 'lock_reason' argument")
-
-        _setter("lock_reason", lock_reason)
+        pulumi.set(__self__, "lock_reason", lock_reason)
 
     @property
     @pulumi.getter(name="lockReason")
@@ -3768,21 +2757,8 @@ class GetDedicatedHostsOperationLockResult(dict):
         """
         :param str lock_reason: The reason why the dedicated host resource is locked.
         """
-        GetDedicatedHostsOperationLockResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            lock_reason=lock_reason,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             lock_reason: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if lock_reason is None and 'lockReason' in kwargs:
-            lock_reason = kwargs['lockReason']
-
         if lock_reason is not None:
-            _setter("lock_reason", lock_reason)
+            pulumi.set(__self__, "lock_reason", lock_reason)
 
     @property
     @pulumi.getter(name="lockReason")
@@ -3865,271 +2841,46 @@ class GetDisksDiskResult(dict):
                ```
         :param str type: Disk type. Possible values: `system` and `data`.
         """
-        GetDisksDiskResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            attached_time=attached_time,
-            auto_snapshot_policy_id=auto_snapshot_policy_id,
-            availability_zone=availability_zone,
-            category=category,
-            creation_time=creation_time,
-            delete_auto_snapshot=delete_auto_snapshot,
-            delete_with_instance=delete_with_instance,
-            description=description,
-            detached_time=detached_time,
-            device=device,
-            disk_id=disk_id,
-            disk_name=disk_name,
-            disk_type=disk_type,
-            enable_auto_snapshot=enable_auto_snapshot,
-            enable_automated_snapshot_policy=enable_automated_snapshot_policy,
-            encrypted=encrypted,
-            expired_time=expired_time,
-            id=id,
-            image_id=image_id,
-            instance_id=instance_id,
-            iops=iops,
-            iops_read=iops_read,
-            iops_write=iops_write,
-            kms_key_id=kms_key_id,
-            mount_instance_num=mount_instance_num,
-            mount_instances=mount_instances,
-            name=name,
-            operation_locks=operation_locks,
-            payment_type=payment_type,
-            performance_level=performance_level,
-            portable=portable,
-            product_code=product_code,
-            region_id=region_id,
-            resource_group_id=resource_group_id,
-            size=size,
-            snapshot_id=snapshot_id,
-            status=status,
-            tags=tags,
-            type=type,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             attached_time: Optional[str] = None,
-             auto_snapshot_policy_id: Optional[str] = None,
-             availability_zone: Optional[str] = None,
-             category: Optional[str] = None,
-             creation_time: Optional[str] = None,
-             delete_auto_snapshot: Optional[bool] = None,
-             delete_with_instance: Optional[bool] = None,
-             description: Optional[str] = None,
-             detached_time: Optional[str] = None,
-             device: Optional[str] = None,
-             disk_id: Optional[str] = None,
-             disk_name: Optional[str] = None,
-             disk_type: Optional[str] = None,
-             enable_auto_snapshot: Optional[bool] = None,
-             enable_automated_snapshot_policy: Optional[bool] = None,
-             encrypted: Optional[str] = None,
-             expired_time: Optional[str] = None,
-             id: Optional[str] = None,
-             image_id: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             iops: Optional[int] = None,
-             iops_read: Optional[int] = None,
-             iops_write: Optional[int] = None,
-             kms_key_id: Optional[str] = None,
-             mount_instance_num: Optional[int] = None,
-             mount_instances: Optional[Sequence['outputs.GetDisksDiskMountInstanceResult']] = None,
-             name: Optional[str] = None,
-             operation_locks: Optional[Sequence['outputs.GetDisksDiskOperationLockResult']] = None,
-             payment_type: Optional[str] = None,
-             performance_level: Optional[str] = None,
-             portable: Optional[bool] = None,
-             product_code: Optional[str] = None,
-             region_id: Optional[str] = None,
-             resource_group_id: Optional[str] = None,
-             size: Optional[int] = None,
-             snapshot_id: Optional[str] = None,
-             status: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             type: Optional[str] = None,
-             zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if attached_time is None and 'attachedTime' in kwargs:
-            attached_time = kwargs['attachedTime']
-        if attached_time is None:
-            raise TypeError("Missing 'attached_time' argument")
-        if auto_snapshot_policy_id is None and 'autoSnapshotPolicyId' in kwargs:
-            auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
-        if auto_snapshot_policy_id is None:
-            raise TypeError("Missing 'auto_snapshot_policy_id' argument")
-        if availability_zone is None and 'availabilityZone' in kwargs:
-            availability_zone = kwargs['availabilityZone']
-        if availability_zone is None:
-            raise TypeError("Missing 'availability_zone' argument")
-        if category is None:
-            raise TypeError("Missing 'category' argument")
-        if creation_time is None and 'creationTime' in kwargs:
-            creation_time = kwargs['creationTime']
-        if creation_time is None:
-            raise TypeError("Missing 'creation_time' argument")
-        if delete_auto_snapshot is None and 'deleteAutoSnapshot' in kwargs:
-            delete_auto_snapshot = kwargs['deleteAutoSnapshot']
-        if delete_auto_snapshot is None:
-            raise TypeError("Missing 'delete_auto_snapshot' argument")
-        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
-            delete_with_instance = kwargs['deleteWithInstance']
-        if delete_with_instance is None:
-            raise TypeError("Missing 'delete_with_instance' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if detached_time is None and 'detachedTime' in kwargs:
-            detached_time = kwargs['detachedTime']
-        if detached_time is None:
-            raise TypeError("Missing 'detached_time' argument")
-        if device is None:
-            raise TypeError("Missing 'device' argument")
-        if disk_id is None and 'diskId' in kwargs:
-            disk_id = kwargs['diskId']
-        if disk_id is None:
-            raise TypeError("Missing 'disk_id' argument")
-        if disk_name is None and 'diskName' in kwargs:
-            disk_name = kwargs['diskName']
-        if disk_name is None:
-            raise TypeError("Missing 'disk_name' argument")
-        if disk_type is None and 'diskType' in kwargs:
-            disk_type = kwargs['diskType']
-        if disk_type is None:
-            raise TypeError("Missing 'disk_type' argument")
-        if enable_auto_snapshot is None and 'enableAutoSnapshot' in kwargs:
-            enable_auto_snapshot = kwargs['enableAutoSnapshot']
-        if enable_auto_snapshot is None:
-            raise TypeError("Missing 'enable_auto_snapshot' argument")
-        if enable_automated_snapshot_policy is None and 'enableAutomatedSnapshotPolicy' in kwargs:
-            enable_automated_snapshot_policy = kwargs['enableAutomatedSnapshotPolicy']
-        if enable_automated_snapshot_policy is None:
-            raise TypeError("Missing 'enable_automated_snapshot_policy' argument")
-        if encrypted is None:
-            raise TypeError("Missing 'encrypted' argument")
-        if expired_time is None and 'expiredTime' in kwargs:
-            expired_time = kwargs['expiredTime']
-        if expired_time is None:
-            raise TypeError("Missing 'expired_time' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-        if image_id is None:
-            raise TypeError("Missing 'image_id' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if iops is None:
-            raise TypeError("Missing 'iops' argument")
-        if iops_read is None and 'iopsRead' in kwargs:
-            iops_read = kwargs['iopsRead']
-        if iops_read is None:
-            raise TypeError("Missing 'iops_read' argument")
-        if iops_write is None and 'iopsWrite' in kwargs:
-            iops_write = kwargs['iopsWrite']
-        if iops_write is None:
-            raise TypeError("Missing 'iops_write' argument")
-        if kms_key_id is None and 'kmsKeyId' in kwargs:
-            kms_key_id = kwargs['kmsKeyId']
-        if kms_key_id is None:
-            raise TypeError("Missing 'kms_key_id' argument")
-        if mount_instance_num is None and 'mountInstanceNum' in kwargs:
-            mount_instance_num = kwargs['mountInstanceNum']
-        if mount_instance_num is None:
-            raise TypeError("Missing 'mount_instance_num' argument")
-        if mount_instances is None and 'mountInstances' in kwargs:
-            mount_instances = kwargs['mountInstances']
-        if mount_instances is None:
-            raise TypeError("Missing 'mount_instances' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if operation_locks is None and 'operationLocks' in kwargs:
-            operation_locks = kwargs['operationLocks']
-        if operation_locks is None:
-            raise TypeError("Missing 'operation_locks' argument")
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if payment_type is None:
-            raise TypeError("Missing 'payment_type' argument")
-        if performance_level is None and 'performanceLevel' in kwargs:
-            performance_level = kwargs['performanceLevel']
-        if performance_level is None:
-            raise TypeError("Missing 'performance_level' argument")
-        if portable is None:
-            raise TypeError("Missing 'portable' argument")
-        if product_code is None and 'productCode' in kwargs:
-            product_code = kwargs['productCode']
-        if product_code is None:
-            raise TypeError("Missing 'product_code' argument")
-        if region_id is None and 'regionId' in kwargs:
-            region_id = kwargs['regionId']
-        if region_id is None:
-            raise TypeError("Missing 'region_id' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if size is None:
-            raise TypeError("Missing 'size' argument")
-        if snapshot_id is None and 'snapshotId' in kwargs:
-            snapshot_id = kwargs['snapshotId']
-        if snapshot_id is None:
-            raise TypeError("Missing 'snapshot_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("attached_time", attached_time)
-        _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
-        _setter("availability_zone", availability_zone)
-        _setter("category", category)
-        _setter("creation_time", creation_time)
-        _setter("delete_auto_snapshot", delete_auto_snapshot)
-        _setter("delete_with_instance", delete_with_instance)
-        _setter("description", description)
-        _setter("detached_time", detached_time)
-        _setter("device", device)
-        _setter("disk_id", disk_id)
-        _setter("disk_name", disk_name)
-        _setter("disk_type", disk_type)
-        _setter("enable_auto_snapshot", enable_auto_snapshot)
-        _setter("enable_automated_snapshot_policy", enable_automated_snapshot_policy)
-        _setter("encrypted", encrypted)
-        _setter("expired_time", expired_time)
-        _setter("id", id)
-        _setter("image_id", image_id)
-        _setter("instance_id", instance_id)
-        _setter("iops", iops)
-        _setter("iops_read", iops_read)
-        _setter("iops_write", iops_write)
-        _setter("kms_key_id", kms_key_id)
-        _setter("mount_instance_num", mount_instance_num)
-        _setter("mount_instances", mount_instances)
-        _setter("name", name)
-        _setter("operation_locks", operation_locks)
-        _setter("payment_type", payment_type)
-        _setter("performance_level", performance_level)
-        _setter("portable", portable)
-        _setter("product_code", product_code)
-        _setter("region_id", region_id)
-        _setter("resource_group_id", resource_group_id)
-        _setter("size", size)
-        _setter("snapshot_id", snapshot_id)
-        _setter("status", status)
-        _setter("tags", tags)
-        _setter("type", type)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "attached_time", attached_time)
+        pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "delete_auto_snapshot", delete_auto_snapshot)
+        pulumi.set(__self__, "delete_with_instance", delete_with_instance)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "detached_time", detached_time)
+        pulumi.set(__self__, "device", device)
+        pulumi.set(__self__, "disk_id", disk_id)
+        pulumi.set(__self__, "disk_name", disk_name)
+        pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "enable_auto_snapshot", enable_auto_snapshot)
+        pulumi.set(__self__, "enable_automated_snapshot_policy", enable_automated_snapshot_policy)
+        pulumi.set(__self__, "encrypted", encrypted)
+        pulumi.set(__self__, "expired_time", expired_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "iops", iops)
+        pulumi.set(__self__, "iops_read", iops_read)
+        pulumi.set(__self__, "iops_write", iops_write)
+        pulumi.set(__self__, "kms_key_id", kms_key_id)
+        pulumi.set(__self__, "mount_instance_num", mount_instance_num)
+        pulumi.set(__self__, "mount_instances", mount_instances)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "operation_locks", operation_locks)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "performance_level", performance_level)
+        pulumi.set(__self__, "portable", portable)
+        pulumi.set(__self__, "product_code", product_code)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "snapshot_id", snapshot_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="attachedTime")
@@ -4405,34 +3156,9 @@ class GetDisksDiskMountInstanceResult(dict):
         :param str attached_time: Disk attachment time.
         :param str instance_id: Filter the results by the specified ECS instance ID.
         """
-        GetDisksDiskMountInstanceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            attached_time=attached_time,
-            device=device,
-            instance_id=instance_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             attached_time: Optional[str] = None,
-             device: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if attached_time is None and 'attachedTime' in kwargs:
-            attached_time = kwargs['attachedTime']
-        if attached_time is None:
-            raise TypeError("Missing 'attached_time' argument")
-        if device is None:
-            raise TypeError("Missing 'device' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-
-        _setter("attached_time", attached_time)
-        _setter("device", device)
-        _setter("instance_id", instance_id)
+        pulumi.set(__self__, "attached_time", attached_time)
+        pulumi.set(__self__, "device", device)
+        pulumi.set(__self__, "instance_id", instance_id)
 
     @property
     @pulumi.getter(name="attachedTime")
@@ -4460,22 +3186,7 @@ class GetDisksDiskMountInstanceResult(dict):
 class GetDisksDiskOperationLockResult(dict):
     def __init__(__self__, *,
                  lock_reason: str):
-        GetDisksDiskOperationLockResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            lock_reason=lock_reason,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             lock_reason: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if lock_reason is None and 'lockReason' in kwargs:
-            lock_reason = kwargs['lockReason']
-        if lock_reason is None:
-            raise TypeError("Missing 'lock_reason' argument")
-
-        _setter("lock_reason", lock_reason)
+        pulumi.set(__self__, "lock_reason", lock_reason)
 
     @property
     @pulumi.getter(name="lockReason")
@@ -4487,21 +3198,8 @@ class GetDisksDiskOperationLockResult(dict):
 class GetDisksOperationLockResult(dict):
     def __init__(__self__, *,
                  lock_reason: Optional[str] = None):
-        GetDisksOperationLockResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            lock_reason=lock_reason,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             lock_reason: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if lock_reason is None and 'lockReason' in kwargs:
-            lock_reason = kwargs['lockReason']
-
         if lock_reason is not None:
-            _setter("lock_reason", lock_reason)
+            pulumi.set(__self__, "lock_reason", lock_reason)
 
     @property
     @pulumi.getter(name="lockReason")
@@ -4532,72 +3230,15 @@ class GetEcsDedicatedHostClustersClusterResult(dict):
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         :param str zone_id: The zone ID of the dedicated host cluster.
         """
-        GetEcsDedicatedHostClustersClusterResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dedicated_host_cluster_capacities=dedicated_host_cluster_capacities,
-            dedicated_host_cluster_id=dedicated_host_cluster_id,
-            dedicated_host_cluster_name=dedicated_host_cluster_name,
-            dedicated_host_ids=dedicated_host_ids,
-            description=description,
-            id=id,
-            resource_group_id=resource_group_id,
-            tags=tags,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dedicated_host_cluster_capacities: Optional[Sequence['outputs.GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityResult']] = None,
-             dedicated_host_cluster_id: Optional[str] = None,
-             dedicated_host_cluster_name: Optional[str] = None,
-             dedicated_host_ids: Optional[Sequence[str]] = None,
-             description: Optional[str] = None,
-             id: Optional[str] = None,
-             resource_group_id: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dedicated_host_cluster_capacities is None and 'dedicatedHostClusterCapacities' in kwargs:
-            dedicated_host_cluster_capacities = kwargs['dedicatedHostClusterCapacities']
-        if dedicated_host_cluster_capacities is None:
-            raise TypeError("Missing 'dedicated_host_cluster_capacities' argument")
-        if dedicated_host_cluster_id is None and 'dedicatedHostClusterId' in kwargs:
-            dedicated_host_cluster_id = kwargs['dedicatedHostClusterId']
-        if dedicated_host_cluster_id is None:
-            raise TypeError("Missing 'dedicated_host_cluster_id' argument")
-        if dedicated_host_cluster_name is None and 'dedicatedHostClusterName' in kwargs:
-            dedicated_host_cluster_name = kwargs['dedicatedHostClusterName']
-        if dedicated_host_cluster_name is None:
-            raise TypeError("Missing 'dedicated_host_cluster_name' argument")
-        if dedicated_host_ids is None and 'dedicatedHostIds' in kwargs:
-            dedicated_host_ids = kwargs['dedicatedHostIds']
-        if dedicated_host_ids is None:
-            raise TypeError("Missing 'dedicated_host_ids' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("dedicated_host_cluster_capacities", dedicated_host_cluster_capacities)
-        _setter("dedicated_host_cluster_id", dedicated_host_cluster_id)
-        _setter("dedicated_host_cluster_name", dedicated_host_cluster_name)
-        _setter("dedicated_host_ids", dedicated_host_ids)
-        _setter("description", description)
-        _setter("id", id)
-        _setter("resource_group_id", resource_group_id)
-        _setter("tags", tags)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "dedicated_host_cluster_capacities", dedicated_host_cluster_capacities)
+        pulumi.set(__self__, "dedicated_host_cluster_id", dedicated_host_cluster_id)
+        pulumi.set(__self__, "dedicated_host_cluster_name", dedicated_host_cluster_name)
+        pulumi.set(__self__, "dedicated_host_ids", dedicated_host_ids)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="dedicatedHostClusterCapacities")
@@ -4687,50 +3328,11 @@ class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityResult(dict)
         :param int total_memory: The total memory size. Unit: `GiB`.
         :param int total_vcpus: The total number of vCPUs.
         """
-        GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            available_memory=available_memory,
-            available_vcpus=available_vcpus,
-            local_storage_capacities=local_storage_capacities,
-            total_memory=total_memory,
-            total_vcpus=total_vcpus,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             available_memory: Optional[int] = None,
-             available_vcpus: Optional[int] = None,
-             local_storage_capacities: Optional[Sequence['outputs.GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityResult']] = None,
-             total_memory: Optional[int] = None,
-             total_vcpus: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if available_memory is None and 'availableMemory' in kwargs:
-            available_memory = kwargs['availableMemory']
-        if available_memory is None:
-            raise TypeError("Missing 'available_memory' argument")
-        if available_vcpus is None and 'availableVcpus' in kwargs:
-            available_vcpus = kwargs['availableVcpus']
-        if available_vcpus is None:
-            raise TypeError("Missing 'available_vcpus' argument")
-        if local_storage_capacities is None and 'localStorageCapacities' in kwargs:
-            local_storage_capacities = kwargs['localStorageCapacities']
-        if local_storage_capacities is None:
-            raise TypeError("Missing 'local_storage_capacities' argument")
-        if total_memory is None and 'totalMemory' in kwargs:
-            total_memory = kwargs['totalMemory']
-        if total_memory is None:
-            raise TypeError("Missing 'total_memory' argument")
-        if total_vcpus is None and 'totalVcpus' in kwargs:
-            total_vcpus = kwargs['totalVcpus']
-        if total_vcpus is None:
-            raise TypeError("Missing 'total_vcpus' argument")
-
-        _setter("available_memory", available_memory)
-        _setter("available_vcpus", available_vcpus)
-        _setter("local_storage_capacities", local_storage_capacities)
-        _setter("total_memory", total_memory)
-        _setter("total_vcpus", total_vcpus)
+        pulumi.set(__self__, "available_memory", available_memory)
+        pulumi.set(__self__, "available_vcpus", available_vcpus)
+        pulumi.set(__self__, "local_storage_capacities", local_storage_capacities)
+        pulumi.set(__self__, "total_memory", total_memory)
+        pulumi.set(__self__, "total_vcpus", total_vcpus)
 
     @property
     @pulumi.getter(name="availableMemory")
@@ -4784,36 +3386,9 @@ class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorage
         :param str data_disk_category: The category of the data disk. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`, `cloud_essd`.
         :param int total_disk: The total capacity of the local disk. Unit: `GiB`.
         """
-        GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            available_disk=available_disk,
-            data_disk_category=data_disk_category,
-            total_disk=total_disk,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             available_disk: Optional[int] = None,
-             data_disk_category: Optional[str] = None,
-             total_disk: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if available_disk is None and 'availableDisk' in kwargs:
-            available_disk = kwargs['availableDisk']
-        if available_disk is None:
-            raise TypeError("Missing 'available_disk' argument")
-        if data_disk_category is None and 'dataDiskCategory' in kwargs:
-            data_disk_category = kwargs['dataDiskCategory']
-        if data_disk_category is None:
-            raise TypeError("Missing 'data_disk_category' argument")
-        if total_disk is None and 'totalDisk' in kwargs:
-            total_disk = kwargs['totalDisk']
-        if total_disk is None:
-            raise TypeError("Missing 'total_disk' argument")
-
-        _setter("available_disk", available_disk)
-        _setter("data_disk_category", data_disk_category)
-        _setter("total_disk", total_disk)
+        pulumi.set(__self__, "available_disk", available_disk)
+        pulumi.set(__self__, "data_disk_category", data_disk_category)
+        pulumi.set(__self__, "total_disk", total_disk)
 
     @property
     @pulumi.getter(name="availableDisk")
@@ -4865,75 +3440,16 @@ class GetEcsDeploymentSetsSetResult(dict):
         :param Sequence[str] instance_ids: The IDs of the instances in the deployment set.
         :param str strategy: The deployment strategy.
         """
-        GetEcsDeploymentSetsSetResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            deployment_set_id=deployment_set_id,
-            deployment_set_name=deployment_set_name,
-            description=description,
-            domain=domain,
-            granularity=granularity,
-            id=id,
-            instance_amount=instance_amount,
-            instance_ids=instance_ids,
-            strategy=strategy,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[str] = None,
-             deployment_set_id: Optional[str] = None,
-             deployment_set_name: Optional[str] = None,
-             description: Optional[str] = None,
-             domain: Optional[str] = None,
-             granularity: Optional[str] = None,
-             id: Optional[str] = None,
-             instance_amount: Optional[int] = None,
-             instance_ids: Optional[Sequence[str]] = None,
-             strategy: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if deployment_set_id is None and 'deploymentSetId' in kwargs:
-            deployment_set_id = kwargs['deploymentSetId']
-        if deployment_set_id is None:
-            raise TypeError("Missing 'deployment_set_id' argument")
-        if deployment_set_name is None and 'deploymentSetName' in kwargs:
-            deployment_set_name = kwargs['deploymentSetName']
-        if deployment_set_name is None:
-            raise TypeError("Missing 'deployment_set_name' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if domain is None:
-            raise TypeError("Missing 'domain' argument")
-        if granularity is None:
-            raise TypeError("Missing 'granularity' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_amount is None and 'instanceAmount' in kwargs:
-            instance_amount = kwargs['instanceAmount']
-        if instance_amount is None:
-            raise TypeError("Missing 'instance_amount' argument")
-        if instance_ids is None and 'instanceIds' in kwargs:
-            instance_ids = kwargs['instanceIds']
-        if instance_ids is None:
-            raise TypeError("Missing 'instance_ids' argument")
-        if strategy is None:
-            raise TypeError("Missing 'strategy' argument")
-
-        _setter("create_time", create_time)
-        _setter("deployment_set_id", deployment_set_id)
-        _setter("deployment_set_name", deployment_set_name)
-        _setter("description", description)
-        _setter("domain", domain)
-        _setter("granularity", granularity)
-        _setter("id", id)
-        _setter("instance_amount", instance_amount)
-        _setter("instance_ids", instance_ids)
-        _setter("strategy", strategy)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "deployment_set_id", deployment_set_id)
+        pulumi.set(__self__, "deployment_set_name", deployment_set_name)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "granularity", granularity)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_amount", instance_amount)
+        pulumi.set(__self__, "instance_ids", instance_ids)
+        pulumi.set(__self__, "strategy", strategy)
 
     @property
     @pulumi.getter(name="createTime")
@@ -5096,271 +3612,46 @@ class GetEcsDisksDiskResult(dict):
         :param str type: Disk type.
         :param str zone_id: The zone id.
         """
-        GetEcsDisksDiskResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            attached_time=attached_time,
-            auto_snapshot_policy_id=auto_snapshot_policy_id,
-            availability_zone=availability_zone,
-            category=category,
-            creation_time=creation_time,
-            delete_auto_snapshot=delete_auto_snapshot,
-            delete_with_instance=delete_with_instance,
-            description=description,
-            detached_time=detached_time,
-            device=device,
-            disk_id=disk_id,
-            disk_name=disk_name,
-            disk_type=disk_type,
-            enable_auto_snapshot=enable_auto_snapshot,
-            enable_automated_snapshot_policy=enable_automated_snapshot_policy,
-            encrypted=encrypted,
-            expired_time=expired_time,
-            id=id,
-            image_id=image_id,
-            instance_id=instance_id,
-            iops=iops,
-            iops_read=iops_read,
-            iops_write=iops_write,
-            kms_key_id=kms_key_id,
-            mount_instance_num=mount_instance_num,
-            mount_instances=mount_instances,
-            name=name,
-            operation_locks=operation_locks,
-            payment_type=payment_type,
-            performance_level=performance_level,
-            portable=portable,
-            product_code=product_code,
-            region_id=region_id,
-            resource_group_id=resource_group_id,
-            size=size,
-            snapshot_id=snapshot_id,
-            status=status,
-            tags=tags,
-            type=type,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             attached_time: Optional[str] = None,
-             auto_snapshot_policy_id: Optional[str] = None,
-             availability_zone: Optional[str] = None,
-             category: Optional[str] = None,
-             creation_time: Optional[str] = None,
-             delete_auto_snapshot: Optional[bool] = None,
-             delete_with_instance: Optional[bool] = None,
-             description: Optional[str] = None,
-             detached_time: Optional[str] = None,
-             device: Optional[str] = None,
-             disk_id: Optional[str] = None,
-             disk_name: Optional[str] = None,
-             disk_type: Optional[str] = None,
-             enable_auto_snapshot: Optional[bool] = None,
-             enable_automated_snapshot_policy: Optional[bool] = None,
-             encrypted: Optional[str] = None,
-             expired_time: Optional[str] = None,
-             id: Optional[str] = None,
-             image_id: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             iops: Optional[int] = None,
-             iops_read: Optional[int] = None,
-             iops_write: Optional[int] = None,
-             kms_key_id: Optional[str] = None,
-             mount_instance_num: Optional[int] = None,
-             mount_instances: Optional[Sequence['outputs.GetEcsDisksDiskMountInstanceResult']] = None,
-             name: Optional[str] = None,
-             operation_locks: Optional[Sequence['outputs.GetEcsDisksDiskOperationLockResult']] = None,
-             payment_type: Optional[str] = None,
-             performance_level: Optional[str] = None,
-             portable: Optional[bool] = None,
-             product_code: Optional[str] = None,
-             region_id: Optional[str] = None,
-             resource_group_id: Optional[str] = None,
-             size: Optional[int] = None,
-             snapshot_id: Optional[str] = None,
-             status: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             type: Optional[str] = None,
-             zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if attached_time is None and 'attachedTime' in kwargs:
-            attached_time = kwargs['attachedTime']
-        if attached_time is None:
-            raise TypeError("Missing 'attached_time' argument")
-        if auto_snapshot_policy_id is None and 'autoSnapshotPolicyId' in kwargs:
-            auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
-        if auto_snapshot_policy_id is None:
-            raise TypeError("Missing 'auto_snapshot_policy_id' argument")
-        if availability_zone is None and 'availabilityZone' in kwargs:
-            availability_zone = kwargs['availabilityZone']
-        if availability_zone is None:
-            raise TypeError("Missing 'availability_zone' argument")
-        if category is None:
-            raise TypeError("Missing 'category' argument")
-        if creation_time is None and 'creationTime' in kwargs:
-            creation_time = kwargs['creationTime']
-        if creation_time is None:
-            raise TypeError("Missing 'creation_time' argument")
-        if delete_auto_snapshot is None and 'deleteAutoSnapshot' in kwargs:
-            delete_auto_snapshot = kwargs['deleteAutoSnapshot']
-        if delete_auto_snapshot is None:
-            raise TypeError("Missing 'delete_auto_snapshot' argument")
-        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
-            delete_with_instance = kwargs['deleteWithInstance']
-        if delete_with_instance is None:
-            raise TypeError("Missing 'delete_with_instance' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if detached_time is None and 'detachedTime' in kwargs:
-            detached_time = kwargs['detachedTime']
-        if detached_time is None:
-            raise TypeError("Missing 'detached_time' argument")
-        if device is None:
-            raise TypeError("Missing 'device' argument")
-        if disk_id is None and 'diskId' in kwargs:
-            disk_id = kwargs['diskId']
-        if disk_id is None:
-            raise TypeError("Missing 'disk_id' argument")
-        if disk_name is None and 'diskName' in kwargs:
-            disk_name = kwargs['diskName']
-        if disk_name is None:
-            raise TypeError("Missing 'disk_name' argument")
-        if disk_type is None and 'diskType' in kwargs:
-            disk_type = kwargs['diskType']
-        if disk_type is None:
-            raise TypeError("Missing 'disk_type' argument")
-        if enable_auto_snapshot is None and 'enableAutoSnapshot' in kwargs:
-            enable_auto_snapshot = kwargs['enableAutoSnapshot']
-        if enable_auto_snapshot is None:
-            raise TypeError("Missing 'enable_auto_snapshot' argument")
-        if enable_automated_snapshot_policy is None and 'enableAutomatedSnapshotPolicy' in kwargs:
-            enable_automated_snapshot_policy = kwargs['enableAutomatedSnapshotPolicy']
-        if enable_automated_snapshot_policy is None:
-            raise TypeError("Missing 'enable_automated_snapshot_policy' argument")
-        if encrypted is None:
-            raise TypeError("Missing 'encrypted' argument")
-        if expired_time is None and 'expiredTime' in kwargs:
-            expired_time = kwargs['expiredTime']
-        if expired_time is None:
-            raise TypeError("Missing 'expired_time' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-        if image_id is None:
-            raise TypeError("Missing 'image_id' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if iops is None:
-            raise TypeError("Missing 'iops' argument")
-        if iops_read is None and 'iopsRead' in kwargs:
-            iops_read = kwargs['iopsRead']
-        if iops_read is None:
-            raise TypeError("Missing 'iops_read' argument")
-        if iops_write is None and 'iopsWrite' in kwargs:
-            iops_write = kwargs['iopsWrite']
-        if iops_write is None:
-            raise TypeError("Missing 'iops_write' argument")
-        if kms_key_id is None and 'kmsKeyId' in kwargs:
-            kms_key_id = kwargs['kmsKeyId']
-        if kms_key_id is None:
-            raise TypeError("Missing 'kms_key_id' argument")
-        if mount_instance_num is None and 'mountInstanceNum' in kwargs:
-            mount_instance_num = kwargs['mountInstanceNum']
-        if mount_instance_num is None:
-            raise TypeError("Missing 'mount_instance_num' argument")
-        if mount_instances is None and 'mountInstances' in kwargs:
-            mount_instances = kwargs['mountInstances']
-        if mount_instances is None:
-            raise TypeError("Missing 'mount_instances' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if operation_locks is None and 'operationLocks' in kwargs:
-            operation_locks = kwargs['operationLocks']
-        if operation_locks is None:
-            raise TypeError("Missing 'operation_locks' argument")
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if payment_type is None:
-            raise TypeError("Missing 'payment_type' argument")
-        if performance_level is None and 'performanceLevel' in kwargs:
-            performance_level = kwargs['performanceLevel']
-        if performance_level is None:
-            raise TypeError("Missing 'performance_level' argument")
-        if portable is None:
-            raise TypeError("Missing 'portable' argument")
-        if product_code is None and 'productCode' in kwargs:
-            product_code = kwargs['productCode']
-        if product_code is None:
-            raise TypeError("Missing 'product_code' argument")
-        if region_id is None and 'regionId' in kwargs:
-            region_id = kwargs['regionId']
-        if region_id is None:
-            raise TypeError("Missing 'region_id' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if size is None:
-            raise TypeError("Missing 'size' argument")
-        if snapshot_id is None and 'snapshotId' in kwargs:
-            snapshot_id = kwargs['snapshotId']
-        if snapshot_id is None:
-            raise TypeError("Missing 'snapshot_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("attached_time", attached_time)
-        _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
-        _setter("availability_zone", availability_zone)
-        _setter("category", category)
-        _setter("creation_time", creation_time)
-        _setter("delete_auto_snapshot", delete_auto_snapshot)
-        _setter("delete_with_instance", delete_with_instance)
-        _setter("description", description)
-        _setter("detached_time", detached_time)
-        _setter("device", device)
-        _setter("disk_id", disk_id)
-        _setter("disk_name", disk_name)
-        _setter("disk_type", disk_type)
-        _setter("enable_auto_snapshot", enable_auto_snapshot)
-        _setter("enable_automated_snapshot_policy", enable_automated_snapshot_policy)
-        _setter("encrypted", encrypted)
-        _setter("expired_time", expired_time)
-        _setter("id", id)
-        _setter("image_id", image_id)
-        _setter("instance_id", instance_id)
-        _setter("iops", iops)
-        _setter("iops_read", iops_read)
-        _setter("iops_write", iops_write)
-        _setter("kms_key_id", kms_key_id)
-        _setter("mount_instance_num", mount_instance_num)
-        _setter("mount_instances", mount_instances)
-        _setter("name", name)
-        _setter("operation_locks", operation_locks)
-        _setter("payment_type", payment_type)
-        _setter("performance_level", performance_level)
-        _setter("portable", portable)
-        _setter("product_code", product_code)
-        _setter("region_id", region_id)
-        _setter("resource_group_id", resource_group_id)
-        _setter("size", size)
-        _setter("snapshot_id", snapshot_id)
-        _setter("status", status)
-        _setter("tags", tags)
-        _setter("type", type)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "attached_time", attached_time)
+        pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "delete_auto_snapshot", delete_auto_snapshot)
+        pulumi.set(__self__, "delete_with_instance", delete_with_instance)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "detached_time", detached_time)
+        pulumi.set(__self__, "device", device)
+        pulumi.set(__self__, "disk_id", disk_id)
+        pulumi.set(__self__, "disk_name", disk_name)
+        pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "enable_auto_snapshot", enable_auto_snapshot)
+        pulumi.set(__self__, "enable_automated_snapshot_policy", enable_automated_snapshot_policy)
+        pulumi.set(__self__, "encrypted", encrypted)
+        pulumi.set(__self__, "expired_time", expired_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "iops", iops)
+        pulumi.set(__self__, "iops_read", iops_read)
+        pulumi.set(__self__, "iops_write", iops_write)
+        pulumi.set(__self__, "kms_key_id", kms_key_id)
+        pulumi.set(__self__, "mount_instance_num", mount_instance_num)
+        pulumi.set(__self__, "mount_instances", mount_instances)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "operation_locks", operation_locks)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "performance_level", performance_level)
+        pulumi.set(__self__, "portable", portable)
+        pulumi.set(__self__, "product_code", product_code)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "snapshot_id", snapshot_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="attachedTime")
@@ -5679,34 +3970,9 @@ class GetEcsDisksDiskMountInstanceResult(dict):
         :param str device: The mount point of the disk.
         :param str instance_id: The instance ID of the disk mount.
         """
-        GetEcsDisksDiskMountInstanceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            attached_time=attached_time,
-            device=device,
-            instance_id=instance_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             attached_time: Optional[str] = None,
-             device: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if attached_time is None and 'attachedTime' in kwargs:
-            attached_time = kwargs['attachedTime']
-        if attached_time is None:
-            raise TypeError("Missing 'attached_time' argument")
-        if device is None:
-            raise TypeError("Missing 'device' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-
-        _setter("attached_time", attached_time)
-        _setter("device", device)
-        _setter("instance_id", instance_id)
+        pulumi.set(__self__, "attached_time", attached_time)
+        pulumi.set(__self__, "device", device)
+        pulumi.set(__self__, "instance_id", instance_id)
 
     @property
     @pulumi.getter(name="attachedTime")
@@ -5737,22 +4003,7 @@ class GetEcsDisksDiskMountInstanceResult(dict):
 class GetEcsDisksDiskOperationLockResult(dict):
     def __init__(__self__, *,
                  lock_reason: str):
-        GetEcsDisksDiskOperationLockResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            lock_reason=lock_reason,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             lock_reason: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if lock_reason is None and 'lockReason' in kwargs:
-            lock_reason = kwargs['lockReason']
-        if lock_reason is None:
-            raise TypeError("Missing 'lock_reason' argument")
-
-        _setter("lock_reason", lock_reason)
+        pulumi.set(__self__, "lock_reason", lock_reason)
 
     @property
     @pulumi.getter(name="lockReason")
@@ -5764,21 +4015,8 @@ class GetEcsDisksDiskOperationLockResult(dict):
 class GetEcsDisksOperationLockResult(dict):
     def __init__(__self__, *,
                  lock_reason: Optional[str] = None):
-        GetEcsDisksOperationLockResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            lock_reason=lock_reason,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             lock_reason: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if lock_reason is None and 'lockReason' in kwargs:
-            lock_reason = kwargs['lockReason']
-
         if lock_reason is not None:
-            _setter("lock_reason", lock_reason)
+            pulumi.set(__self__, "lock_reason", lock_reason)
 
     @property
     @pulumi.getter(name="lockReason")
@@ -5813,82 +4051,17 @@ class GetEcsImageComponentsComponentResult(dict):
         :param str system_type: The operating system type supported by the image component.
         :param Mapping[str, Any] tags: List of label key-value pairs.
         """
-        GetEcsImageComponentsComponentResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            component_type=component_type,
-            content=content,
-            create_time=create_time,
-            description=description,
-            id=id,
-            image_component_id=image_component_id,
-            image_component_name=image_component_name,
-            owner=owner,
-            resource_group_id=resource_group_id,
-            system_type=system_type,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             component_type: Optional[str] = None,
-             content: Optional[str] = None,
-             create_time: Optional[str] = None,
-             description: Optional[str] = None,
-             id: Optional[str] = None,
-             image_component_id: Optional[str] = None,
-             image_component_name: Optional[str] = None,
-             owner: Optional[str] = None,
-             resource_group_id: Optional[str] = None,
-             system_type: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if component_type is None and 'componentType' in kwargs:
-            component_type = kwargs['componentType']
-        if component_type is None:
-            raise TypeError("Missing 'component_type' argument")
-        if content is None:
-            raise TypeError("Missing 'content' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if image_component_id is None and 'imageComponentId' in kwargs:
-            image_component_id = kwargs['imageComponentId']
-        if image_component_id is None:
-            raise TypeError("Missing 'image_component_id' argument")
-        if image_component_name is None and 'imageComponentName' in kwargs:
-            image_component_name = kwargs['imageComponentName']
-        if image_component_name is None:
-            raise TypeError("Missing 'image_component_name' argument")
-        if owner is None:
-            raise TypeError("Missing 'owner' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if system_type is None and 'systemType' in kwargs:
-            system_type = kwargs['systemType']
-        if system_type is None:
-            raise TypeError("Missing 'system_type' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-
-        _setter("component_type", component_type)
-        _setter("content", content)
-        _setter("create_time", create_time)
-        _setter("description", description)
-        _setter("id", id)
-        _setter("image_component_id", image_component_id)
-        _setter("image_component_name", image_component_name)
-        _setter("owner", owner)
-        _setter("resource_group_id", resource_group_id)
-        _setter("system_type", system_type)
-        _setter("tags", tags)
+        pulumi.set(__self__, "component_type", component_type)
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "image_component_id", image_component_id)
+        pulumi.set(__self__, "image_component_name", image_component_name)
+        pulumi.set(__self__, "owner", owner)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "system_type", system_type)
+        pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="componentType")
@@ -6020,132 +4193,25 @@ class GetEcsImagePipelinePipelineResult(dict):
         :param str vswitch_id: The vswitch id.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
-        GetEcsImagePipelinePipelineResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            add_accounts=add_accounts,
-            base_image=base_image,
-            base_image_type=base_image_type,
-            build_content=build_content,
-            creation_time=creation_time,
-            delete_instance_on_failure=delete_instance_on_failure,
-            description=description,
-            id=id,
-            image_name=image_name,
-            image_pipeline_id=image_pipeline_id,
-            instance_type=instance_type,
-            internet_max_bandwidth_out=internet_max_bandwidth_out,
-            name=name,
-            resource_group_id=resource_group_id,
-            system_disk_size=system_disk_size,
-            to_region_ids=to_region_ids,
-            vswitch_id=vswitch_id,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             add_accounts: Optional[Sequence[str]] = None,
-             base_image: Optional[str] = None,
-             base_image_type: Optional[str] = None,
-             build_content: Optional[str] = None,
-             creation_time: Optional[str] = None,
-             delete_instance_on_failure: Optional[bool] = None,
-             description: Optional[str] = None,
-             id: Optional[str] = None,
-             image_name: Optional[str] = None,
-             image_pipeline_id: Optional[str] = None,
-             instance_type: Optional[str] = None,
-             internet_max_bandwidth_out: Optional[int] = None,
-             name: Optional[str] = None,
-             resource_group_id: Optional[str] = None,
-             system_disk_size: Optional[int] = None,
-             to_region_ids: Optional[Sequence[str]] = None,
-             vswitch_id: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if add_accounts is None and 'addAccounts' in kwargs:
-            add_accounts = kwargs['addAccounts']
-        if add_accounts is None:
-            raise TypeError("Missing 'add_accounts' argument")
-        if base_image is None and 'baseImage' in kwargs:
-            base_image = kwargs['baseImage']
-        if base_image is None:
-            raise TypeError("Missing 'base_image' argument")
-        if base_image_type is None and 'baseImageType' in kwargs:
-            base_image_type = kwargs['baseImageType']
-        if base_image_type is None:
-            raise TypeError("Missing 'base_image_type' argument")
-        if build_content is None and 'buildContent' in kwargs:
-            build_content = kwargs['buildContent']
-        if build_content is None:
-            raise TypeError("Missing 'build_content' argument")
-        if creation_time is None and 'creationTime' in kwargs:
-            creation_time = kwargs['creationTime']
-        if creation_time is None:
-            raise TypeError("Missing 'creation_time' argument")
-        if delete_instance_on_failure is None and 'deleteInstanceOnFailure' in kwargs:
-            delete_instance_on_failure = kwargs['deleteInstanceOnFailure']
-        if delete_instance_on_failure is None:
-            raise TypeError("Missing 'delete_instance_on_failure' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if image_name is None and 'imageName' in kwargs:
-            image_name = kwargs['imageName']
-        if image_name is None:
-            raise TypeError("Missing 'image_name' argument")
-        if image_pipeline_id is None and 'imagePipelineId' in kwargs:
-            image_pipeline_id = kwargs['imagePipelineId']
-        if image_pipeline_id is None:
-            raise TypeError("Missing 'image_pipeline_id' argument")
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if instance_type is None:
-            raise TypeError("Missing 'instance_type' argument")
-        if internet_max_bandwidth_out is None and 'internetMaxBandwidthOut' in kwargs:
-            internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
-        if internet_max_bandwidth_out is None:
-            raise TypeError("Missing 'internet_max_bandwidth_out' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if system_disk_size is None and 'systemDiskSize' in kwargs:
-            system_disk_size = kwargs['systemDiskSize']
-        if system_disk_size is None:
-            raise TypeError("Missing 'system_disk_size' argument")
-        if to_region_ids is None and 'toRegionIds' in kwargs:
-            to_region_ids = kwargs['toRegionIds']
-        if to_region_ids is None:
-            raise TypeError("Missing 'to_region_ids' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-
-        _setter("add_accounts", add_accounts)
-        _setter("base_image", base_image)
-        _setter("base_image_type", base_image_type)
-        _setter("build_content", build_content)
-        _setter("creation_time", creation_time)
-        _setter("delete_instance_on_failure", delete_instance_on_failure)
-        _setter("description", description)
-        _setter("id", id)
-        _setter("image_name", image_name)
-        _setter("image_pipeline_id", image_pipeline_id)
-        _setter("instance_type", instance_type)
-        _setter("internet_max_bandwidth_out", internet_max_bandwidth_out)
-        _setter("name", name)
-        _setter("resource_group_id", resource_group_id)
-        _setter("system_disk_size", system_disk_size)
-        _setter("to_region_ids", to_region_ids)
-        _setter("vswitch_id", vswitch_id)
+        pulumi.set(__self__, "add_accounts", add_accounts)
+        pulumi.set(__self__, "base_image", base_image)
+        pulumi.set(__self__, "base_image_type", base_image_type)
+        pulumi.set(__self__, "build_content", build_content)
+        pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "delete_instance_on_failure", delete_instance_on_failure)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "image_name", image_name)
+        pulumi.set(__self__, "image_pipeline_id", image_pipeline_id)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "system_disk_size", system_disk_size)
+        pulumi.set(__self__, "to_region_ids", to_region_ids)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="addAccounts")
@@ -6329,110 +4395,21 @@ class GetEcsInvocationsInvocationResult(dict):
                * `instance_invoke_status	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
         :param str username: The username that was used to run the command on the instance.
         """
-        GetEcsInvocationsInvocationResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            command_content=command_content,
-            command_id=command_id,
-            command_name=command_name,
-            command_type=command_type,
-            create_time=create_time,
-            frequency=frequency,
-            id=id,
-            invocation_id=invocation_id,
-            invocation_status=invocation_status,
-            invoke_instances=invoke_instances,
-            invoke_status=invoke_status,
-            parameters=parameters,
-            repeat_mode=repeat_mode,
-            timed=timed,
-            username=username,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             command_content: Optional[str] = None,
-             command_id: Optional[str] = None,
-             command_name: Optional[str] = None,
-             command_type: Optional[str] = None,
-             create_time: Optional[str] = None,
-             frequency: Optional[str] = None,
-             id: Optional[str] = None,
-             invocation_id: Optional[str] = None,
-             invocation_status: Optional[str] = None,
-             invoke_instances: Optional[Sequence['outputs.GetEcsInvocationsInvocationInvokeInstanceResult']] = None,
-             invoke_status: Optional[str] = None,
-             parameters: Optional[str] = None,
-             repeat_mode: Optional[str] = None,
-             timed: Optional[bool] = None,
-             username: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if command_content is None and 'commandContent' in kwargs:
-            command_content = kwargs['commandContent']
-        if command_content is None:
-            raise TypeError("Missing 'command_content' argument")
-        if command_id is None and 'commandId' in kwargs:
-            command_id = kwargs['commandId']
-        if command_id is None:
-            raise TypeError("Missing 'command_id' argument")
-        if command_name is None and 'commandName' in kwargs:
-            command_name = kwargs['commandName']
-        if command_name is None:
-            raise TypeError("Missing 'command_name' argument")
-        if command_type is None and 'commandType' in kwargs:
-            command_type = kwargs['commandType']
-        if command_type is None:
-            raise TypeError("Missing 'command_type' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if frequency is None:
-            raise TypeError("Missing 'frequency' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if invocation_id is None and 'invocationId' in kwargs:
-            invocation_id = kwargs['invocationId']
-        if invocation_id is None:
-            raise TypeError("Missing 'invocation_id' argument")
-        if invocation_status is None and 'invocationStatus' in kwargs:
-            invocation_status = kwargs['invocationStatus']
-        if invocation_status is None:
-            raise TypeError("Missing 'invocation_status' argument")
-        if invoke_instances is None and 'invokeInstances' in kwargs:
-            invoke_instances = kwargs['invokeInstances']
-        if invoke_instances is None:
-            raise TypeError("Missing 'invoke_instances' argument")
-        if invoke_status is None and 'invokeStatus' in kwargs:
-            invoke_status = kwargs['invokeStatus']
-        if invoke_status is None:
-            raise TypeError("Missing 'invoke_status' argument")
-        if parameters is None:
-            raise TypeError("Missing 'parameters' argument")
-        if repeat_mode is None and 'repeatMode' in kwargs:
-            repeat_mode = kwargs['repeatMode']
-        if repeat_mode is None:
-            raise TypeError("Missing 'repeat_mode' argument")
-        if timed is None:
-            raise TypeError("Missing 'timed' argument")
-        if username is None:
-            raise TypeError("Missing 'username' argument")
-
-        _setter("command_content", command_content)
-        _setter("command_id", command_id)
-        _setter("command_name", command_name)
-        _setter("command_type", command_type)
-        _setter("create_time", create_time)
-        _setter("frequency", frequency)
-        _setter("id", id)
-        _setter("invocation_id", invocation_id)
-        _setter("invocation_status", invocation_status)
-        _setter("invoke_instances", invoke_instances)
-        _setter("invoke_status", invoke_status)
-        _setter("parameters", parameters)
-        _setter("repeat_mode", repeat_mode)
-        _setter("timed", timed)
-        _setter("username", username)
+        pulumi.set(__self__, "command_content", command_content)
+        pulumi.set(__self__, "command_id", command_id)
+        pulumi.set(__self__, "command_name", command_name)
+        pulumi.set(__self__, "command_type", command_type)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "frequency", frequency)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "invocation_id", invocation_id)
+        pulumi.set(__self__, "invocation_status", invocation_status)
+        pulumi.set(__self__, "invoke_instances", invoke_instances)
+        pulumi.set(__self__, "invoke_status", invoke_status)
+        pulumi.set(__self__, "parameters", parameters)
+        pulumi.set(__self__, "repeat_mode", repeat_mode)
+        pulumi.set(__self__, "timed", timed)
+        pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="commandContent")
@@ -6592,112 +4569,21 @@ class GetEcsInvocationsInvocationInvokeInstanceResult(dict):
                * `instance_invoke_status	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
         :param str update_time: The time when the execution state was updated.
         """
-        GetEcsInvocationsInvocationInvokeInstanceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            creation_time=creation_time,
-            dropped=dropped,
-            error_code=error_code,
-            error_info=error_info,
-            exit_code=exit_code,
-            finish_time=finish_time,
-            instance_id=instance_id,
-            instance_invoke_status=instance_invoke_status,
-            invocation_status=invocation_status,
-            output=output,
-            repeats=repeats,
-            start_time=start_time,
-            stop_time=stop_time,
-            timed=timed,
-            update_time=update_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             creation_time: Optional[str] = None,
-             dropped: Optional[int] = None,
-             error_code: Optional[str] = None,
-             error_info: Optional[str] = None,
-             exit_code: Optional[int] = None,
-             finish_time: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             instance_invoke_status: Optional[str] = None,
-             invocation_status: Optional[str] = None,
-             output: Optional[str] = None,
-             repeats: Optional[int] = None,
-             start_time: Optional[str] = None,
-             stop_time: Optional[str] = None,
-             timed: Optional[bool] = None,
-             update_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if creation_time is None and 'creationTime' in kwargs:
-            creation_time = kwargs['creationTime']
-        if creation_time is None:
-            raise TypeError("Missing 'creation_time' argument")
-        if dropped is None:
-            raise TypeError("Missing 'dropped' argument")
-        if error_code is None and 'errorCode' in kwargs:
-            error_code = kwargs['errorCode']
-        if error_code is None:
-            raise TypeError("Missing 'error_code' argument")
-        if error_info is None and 'errorInfo' in kwargs:
-            error_info = kwargs['errorInfo']
-        if error_info is None:
-            raise TypeError("Missing 'error_info' argument")
-        if exit_code is None and 'exitCode' in kwargs:
-            exit_code = kwargs['exitCode']
-        if exit_code is None:
-            raise TypeError("Missing 'exit_code' argument")
-        if finish_time is None and 'finishTime' in kwargs:
-            finish_time = kwargs['finishTime']
-        if finish_time is None:
-            raise TypeError("Missing 'finish_time' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if instance_invoke_status is None and 'instanceInvokeStatus' in kwargs:
-            instance_invoke_status = kwargs['instanceInvokeStatus']
-        if instance_invoke_status is None:
-            raise TypeError("Missing 'instance_invoke_status' argument")
-        if invocation_status is None and 'invocationStatus' in kwargs:
-            invocation_status = kwargs['invocationStatus']
-        if invocation_status is None:
-            raise TypeError("Missing 'invocation_status' argument")
-        if output is None:
-            raise TypeError("Missing 'output' argument")
-        if repeats is None:
-            raise TypeError("Missing 'repeats' argument")
-        if start_time is None and 'startTime' in kwargs:
-            start_time = kwargs['startTime']
-        if start_time is None:
-            raise TypeError("Missing 'start_time' argument")
-        if stop_time is None and 'stopTime' in kwargs:
-            stop_time = kwargs['stopTime']
-        if stop_time is None:
-            raise TypeError("Missing 'stop_time' argument")
-        if timed is None:
-            raise TypeError("Missing 'timed' argument")
-        if update_time is None and 'updateTime' in kwargs:
-            update_time = kwargs['updateTime']
-        if update_time is None:
-            raise TypeError("Missing 'update_time' argument")
-
-        _setter("creation_time", creation_time)
-        _setter("dropped", dropped)
-        _setter("error_code", error_code)
-        _setter("error_info", error_info)
-        _setter("exit_code", exit_code)
-        _setter("finish_time", finish_time)
-        _setter("instance_id", instance_id)
-        _setter("instance_invoke_status", instance_invoke_status)
-        _setter("invocation_status", invocation_status)
-        _setter("output", output)
-        _setter("repeats", repeats)
-        _setter("start_time", start_time)
-        _setter("stop_time", stop_time)
-        _setter("timed", timed)
-        _setter("update_time", update_time)
+        pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "dropped", dropped)
+        pulumi.set(__self__, "error_code", error_code)
+        pulumi.set(__self__, "error_info", error_info)
+        pulumi.set(__self__, "exit_code", exit_code)
+        pulumi.set(__self__, "finish_time", finish_time)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_invoke_status", instance_invoke_status)
+        pulumi.set(__self__, "invocation_status", invocation_status)
+        pulumi.set(__self__, "output", output)
+        pulumi.set(__self__, "repeats", repeats)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "stop_time", stop_time)
+        pulumi.set(__self__, "timed", timed)
+        pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="creationTime")
@@ -6834,58 +4720,13 @@ class GetEcsKeyPairsKeyPairResult(dict):
         :param str resource_group_id: The Resource Group Id.
         :param Mapping[str, Any] tags: The tags.
         """
-        GetEcsKeyPairsKeyPairResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            finger_print=finger_print,
-            id=id,
-            instances=instances,
-            key_name=key_name,
-            key_pair_name=key_pair_name,
-            resource_group_id=resource_group_id,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             finger_print: Optional[str] = None,
-             id: Optional[str] = None,
-             instances: Optional[Sequence['outputs.GetEcsKeyPairsKeyPairInstanceResult']] = None,
-             key_name: Optional[str] = None,
-             key_pair_name: Optional[str] = None,
-             resource_group_id: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if finger_print is None and 'fingerPrint' in kwargs:
-            finger_print = kwargs['fingerPrint']
-        if finger_print is None:
-            raise TypeError("Missing 'finger_print' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instances is None:
-            raise TypeError("Missing 'instances' argument")
-        if key_name is None and 'keyName' in kwargs:
-            key_name = kwargs['keyName']
-        if key_name is None:
-            raise TypeError("Missing 'key_name' argument")
-        if key_pair_name is None and 'keyPairName' in kwargs:
-            key_pair_name = kwargs['keyPairName']
-        if key_pair_name is None:
-            raise TypeError("Missing 'key_pair_name' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-
-        _setter("finger_print", finger_print)
-        _setter("id", id)
-        _setter("instances", instances)
-        _setter("key_name", key_name)
-        _setter("key_pair_name", key_pair_name)
-        _setter("resource_group_id", resource_group_id)
-        _setter("tags", tags)
+        pulumi.set(__self__, "finger_print", finger_print)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instances", instances)
+        pulumi.set(__self__, "key_name", key_name)
+        pulumi.set(__self__, "key_pair_name", key_pair_name)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="fingerPrint")
@@ -6965,95 +4806,18 @@ class GetEcsKeyPairsKeyPairInstanceResult(dict):
         :param str public_ip: The public IP address or EIP of the ECS instance.
         :param str vswitch_id: The ID of the VSwitch attached to the ECS instance.
         """
-        GetEcsKeyPairsKeyPairInstanceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            availability_zone=availability_zone,
-            description=description,
-            image_id=image_id,
-            instance_id=instance_id,
-            instance_name=instance_name,
-            instance_type=instance_type,
-            key_name=key_name,
-            private_ip=private_ip,
-            public_ip=public_ip,
-            region_id=region_id,
-            status=status,
-            vswitch_id=vswitch_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             availability_zone: Optional[str] = None,
-             description: Optional[str] = None,
-             image_id: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             instance_name: Optional[str] = None,
-             instance_type: Optional[str] = None,
-             key_name: Optional[str] = None,
-             private_ip: Optional[str] = None,
-             public_ip: Optional[str] = None,
-             region_id: Optional[str] = None,
-             status: Optional[str] = None,
-             vswitch_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if availability_zone is None and 'availabilityZone' in kwargs:
-            availability_zone = kwargs['availabilityZone']
-        if availability_zone is None:
-            raise TypeError("Missing 'availability_zone' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-        if image_id is None:
-            raise TypeError("Missing 'image_id' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_name is None:
-            raise TypeError("Missing 'instance_name' argument")
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if instance_type is None:
-            raise TypeError("Missing 'instance_type' argument")
-        if key_name is None and 'keyName' in kwargs:
-            key_name = kwargs['keyName']
-        if key_name is None:
-            raise TypeError("Missing 'key_name' argument")
-        if private_ip is None and 'privateIp' in kwargs:
-            private_ip = kwargs['privateIp']
-        if private_ip is None:
-            raise TypeError("Missing 'private_ip' argument")
-        if public_ip is None and 'publicIp' in kwargs:
-            public_ip = kwargs['publicIp']
-        if public_ip is None:
-            raise TypeError("Missing 'public_ip' argument")
-        if region_id is None and 'regionId' in kwargs:
-            region_id = kwargs['regionId']
-        if region_id is None:
-            raise TypeError("Missing 'region_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-
-        _setter("availability_zone", availability_zone)
-        _setter("description", description)
-        _setter("image_id", image_id)
-        _setter("instance_id", instance_id)
-        _setter("instance_name", instance_name)
-        _setter("instance_type", instance_type)
-        _setter("key_name", key_name)
-        _setter("private_ip", private_ip)
-        _setter("public_ip", public_ip)
-        _setter("region_id", region_id)
-        _setter("status", status)
-        _setter("vswitch_id", vswitch_id)
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "key_name", key_name)
+        pulumi.set(__self__, "private_ip", private_ip)
+        pulumi.set(__self__, "public_ip", public_ip)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -7155,58 +4919,13 @@ class GetEcsKeyPairsPairResult(dict):
         :param str resource_group_id: The Resource Group Id.
         :param Mapping[str, Any] tags: The tags.
         """
-        GetEcsKeyPairsPairResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            finger_print=finger_print,
-            id=id,
-            instances=instances,
-            key_name=key_name,
-            key_pair_name=key_pair_name,
-            resource_group_id=resource_group_id,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             finger_print: Optional[str] = None,
-             id: Optional[str] = None,
-             instances: Optional[Sequence['outputs.GetEcsKeyPairsPairInstanceResult']] = None,
-             key_name: Optional[str] = None,
-             key_pair_name: Optional[str] = None,
-             resource_group_id: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if finger_print is None and 'fingerPrint' in kwargs:
-            finger_print = kwargs['fingerPrint']
-        if finger_print is None:
-            raise TypeError("Missing 'finger_print' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instances is None:
-            raise TypeError("Missing 'instances' argument")
-        if key_name is None and 'keyName' in kwargs:
-            key_name = kwargs['keyName']
-        if key_name is None:
-            raise TypeError("Missing 'key_name' argument")
-        if key_pair_name is None and 'keyPairName' in kwargs:
-            key_pair_name = kwargs['keyPairName']
-        if key_pair_name is None:
-            raise TypeError("Missing 'key_pair_name' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-
-        _setter("finger_print", finger_print)
-        _setter("id", id)
-        _setter("instances", instances)
-        _setter("key_name", key_name)
-        _setter("key_pair_name", key_pair_name)
-        _setter("resource_group_id", resource_group_id)
-        _setter("tags", tags)
+        pulumi.set(__self__, "finger_print", finger_print)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instances", instances)
+        pulumi.set(__self__, "key_name", key_name)
+        pulumi.set(__self__, "key_pair_name", key_pair_name)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="fingerPrint")
@@ -7286,95 +5005,18 @@ class GetEcsKeyPairsPairInstanceResult(dict):
         :param str public_ip: The public IP address or EIP of the ECS instance.
         :param str vswitch_id: The ID of the VSwitch attached to the ECS instance.
         """
-        GetEcsKeyPairsPairInstanceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            availability_zone=availability_zone,
-            description=description,
-            image_id=image_id,
-            instance_id=instance_id,
-            instance_name=instance_name,
-            instance_type=instance_type,
-            key_name=key_name,
-            private_ip=private_ip,
-            public_ip=public_ip,
-            region_id=region_id,
-            status=status,
-            vswitch_id=vswitch_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             availability_zone: Optional[str] = None,
-             description: Optional[str] = None,
-             image_id: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             instance_name: Optional[str] = None,
-             instance_type: Optional[str] = None,
-             key_name: Optional[str] = None,
-             private_ip: Optional[str] = None,
-             public_ip: Optional[str] = None,
-             region_id: Optional[str] = None,
-             status: Optional[str] = None,
-             vswitch_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if availability_zone is None and 'availabilityZone' in kwargs:
-            availability_zone = kwargs['availabilityZone']
-        if availability_zone is None:
-            raise TypeError("Missing 'availability_zone' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-        if image_id is None:
-            raise TypeError("Missing 'image_id' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_name is None:
-            raise TypeError("Missing 'instance_name' argument")
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if instance_type is None:
-            raise TypeError("Missing 'instance_type' argument")
-        if key_name is None and 'keyName' in kwargs:
-            key_name = kwargs['keyName']
-        if key_name is None:
-            raise TypeError("Missing 'key_name' argument")
-        if private_ip is None and 'privateIp' in kwargs:
-            private_ip = kwargs['privateIp']
-        if private_ip is None:
-            raise TypeError("Missing 'private_ip' argument")
-        if public_ip is None and 'publicIp' in kwargs:
-            public_ip = kwargs['publicIp']
-        if public_ip is None:
-            raise TypeError("Missing 'public_ip' argument")
-        if region_id is None and 'regionId' in kwargs:
-            region_id = kwargs['regionId']
-        if region_id is None:
-            raise TypeError("Missing 'region_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-
-        _setter("availability_zone", availability_zone)
-        _setter("description", description)
-        _setter("image_id", image_id)
-        _setter("instance_id", instance_id)
-        _setter("instance_name", instance_name)
-        _setter("instance_type", instance_type)
-        _setter("key_name", key_name)
-        _setter("private_ip", private_ip)
-        _setter("public_ip", public_ip)
-        _setter("region_id", region_id)
-        _setter("status", status)
-        _setter("vswitch_id", vswitch_id)
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "key_name", key_name)
+        pulumi.set(__self__, "private_ip", private_ip)
+        pulumi.set(__self__, "public_ip", public_ip)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -7549,310 +5191,49 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
         :param str vswitch_id: The vswitch id.
         :param str zone_id: The Zone Id.
         """
-        GetEcsLaunchTemplatesTemplateResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto_release_time=auto_release_time,
-            created_by=created_by,
-            data_disks=data_disks,
-            default_version_number=default_version_number,
-            deployment_set_id=deployment_set_id,
-            description=description,
-            enable_vm_os_config=enable_vm_os_config,
-            host_name=host_name,
-            id=id,
-            image_id=image_id,
-            image_owner_alias=image_owner_alias,
-            instance_charge_type=instance_charge_type,
-            instance_name=instance_name,
-            instance_type=instance_type,
-            internet_charge_type=internet_charge_type,
-            internet_max_bandwidth_in=internet_max_bandwidth_in,
-            internet_max_bandwidth_out=internet_max_bandwidth_out,
-            io_optimized=io_optimized,
-            key_pair_name=key_pair_name,
-            latest_version_number=latest_version_number,
-            launch_template_id=launch_template_id,
-            launch_template_name=launch_template_name,
-            modified_time=modified_time,
-            network_interfaces=network_interfaces,
-            network_type=network_type,
-            password_inherit=password_inherit,
-            period=period,
-            private_ip_address=private_ip_address,
-            ram_role_name=ram_role_name,
-            resource_group_id=resource_group_id,
-            security_enhancement_strategy=security_enhancement_strategy,
-            security_group_id=security_group_id,
-            security_group_ids=security_group_ids,
-            spot_duration=spot_duration,
-            spot_price_limit=spot_price_limit,
-            spot_strategy=spot_strategy,
-            system_disks=system_disks,
-            template_tags=template_tags,
-            user_data=user_data,
-            version_description=version_description,
-            vpc_id=vpc_id,
-            vswitch_id=vswitch_id,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto_release_time: Optional[str] = None,
-             created_by: Optional[str] = None,
-             data_disks: Optional[Sequence['outputs.GetEcsLaunchTemplatesTemplateDataDiskResult']] = None,
-             default_version_number: Optional[int] = None,
-             deployment_set_id: Optional[str] = None,
-             description: Optional[str] = None,
-             enable_vm_os_config: Optional[bool] = None,
-             host_name: Optional[str] = None,
-             id: Optional[str] = None,
-             image_id: Optional[str] = None,
-             image_owner_alias: Optional[str] = None,
-             instance_charge_type: Optional[str] = None,
-             instance_name: Optional[str] = None,
-             instance_type: Optional[str] = None,
-             internet_charge_type: Optional[str] = None,
-             internet_max_bandwidth_in: Optional[int] = None,
-             internet_max_bandwidth_out: Optional[int] = None,
-             io_optimized: Optional[str] = None,
-             key_pair_name: Optional[str] = None,
-             latest_version_number: Optional[int] = None,
-             launch_template_id: Optional[str] = None,
-             launch_template_name: Optional[str] = None,
-             modified_time: Optional[str] = None,
-             network_interfaces: Optional[Sequence['outputs.GetEcsLaunchTemplatesTemplateNetworkInterfaceResult']] = None,
-             network_type: Optional[str] = None,
-             password_inherit: Optional[bool] = None,
-             period: Optional[int] = None,
-             private_ip_address: Optional[str] = None,
-             ram_role_name: Optional[str] = None,
-             resource_group_id: Optional[str] = None,
-             security_enhancement_strategy: Optional[str] = None,
-             security_group_id: Optional[str] = None,
-             security_group_ids: Optional[Sequence[str]] = None,
-             spot_duration: Optional[str] = None,
-             spot_price_limit: Optional[float] = None,
-             spot_strategy: Optional[str] = None,
-             system_disks: Optional[Sequence['outputs.GetEcsLaunchTemplatesTemplateSystemDiskResult']] = None,
-             template_tags: Optional[Mapping[str, Any]] = None,
-             user_data: Optional[str] = None,
-             version_description: Optional[str] = None,
-             vpc_id: Optional[str] = None,
-             vswitch_id: Optional[str] = None,
-             zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_release_time is None and 'autoReleaseTime' in kwargs:
-            auto_release_time = kwargs['autoReleaseTime']
-        if auto_release_time is None:
-            raise TypeError("Missing 'auto_release_time' argument")
-        if created_by is None and 'createdBy' in kwargs:
-            created_by = kwargs['createdBy']
-        if created_by is None:
-            raise TypeError("Missing 'created_by' argument")
-        if data_disks is None and 'dataDisks' in kwargs:
-            data_disks = kwargs['dataDisks']
-        if data_disks is None:
-            raise TypeError("Missing 'data_disks' argument")
-        if default_version_number is None and 'defaultVersionNumber' in kwargs:
-            default_version_number = kwargs['defaultVersionNumber']
-        if default_version_number is None:
-            raise TypeError("Missing 'default_version_number' argument")
-        if deployment_set_id is None and 'deploymentSetId' in kwargs:
-            deployment_set_id = kwargs['deploymentSetId']
-        if deployment_set_id is None:
-            raise TypeError("Missing 'deployment_set_id' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if enable_vm_os_config is None and 'enableVmOsConfig' in kwargs:
-            enable_vm_os_config = kwargs['enableVmOsConfig']
-        if enable_vm_os_config is None:
-            raise TypeError("Missing 'enable_vm_os_config' argument")
-        if host_name is None and 'hostName' in kwargs:
-            host_name = kwargs['hostName']
-        if host_name is None:
-            raise TypeError("Missing 'host_name' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-        if image_id is None:
-            raise TypeError("Missing 'image_id' argument")
-        if image_owner_alias is None and 'imageOwnerAlias' in kwargs:
-            image_owner_alias = kwargs['imageOwnerAlias']
-        if image_owner_alias is None:
-            raise TypeError("Missing 'image_owner_alias' argument")
-        if instance_charge_type is None and 'instanceChargeType' in kwargs:
-            instance_charge_type = kwargs['instanceChargeType']
-        if instance_charge_type is None:
-            raise TypeError("Missing 'instance_charge_type' argument")
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_name is None:
-            raise TypeError("Missing 'instance_name' argument")
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if instance_type is None:
-            raise TypeError("Missing 'instance_type' argument")
-        if internet_charge_type is None and 'internetChargeType' in kwargs:
-            internet_charge_type = kwargs['internetChargeType']
-        if internet_charge_type is None:
-            raise TypeError("Missing 'internet_charge_type' argument")
-        if internet_max_bandwidth_in is None and 'internetMaxBandwidthIn' in kwargs:
-            internet_max_bandwidth_in = kwargs['internetMaxBandwidthIn']
-        if internet_max_bandwidth_in is None:
-            raise TypeError("Missing 'internet_max_bandwidth_in' argument")
-        if internet_max_bandwidth_out is None and 'internetMaxBandwidthOut' in kwargs:
-            internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
-        if internet_max_bandwidth_out is None:
-            raise TypeError("Missing 'internet_max_bandwidth_out' argument")
-        if io_optimized is None and 'ioOptimized' in kwargs:
-            io_optimized = kwargs['ioOptimized']
-        if io_optimized is None:
-            raise TypeError("Missing 'io_optimized' argument")
-        if key_pair_name is None and 'keyPairName' in kwargs:
-            key_pair_name = kwargs['keyPairName']
-        if key_pair_name is None:
-            raise TypeError("Missing 'key_pair_name' argument")
-        if latest_version_number is None and 'latestVersionNumber' in kwargs:
-            latest_version_number = kwargs['latestVersionNumber']
-        if latest_version_number is None:
-            raise TypeError("Missing 'latest_version_number' argument")
-        if launch_template_id is None and 'launchTemplateId' in kwargs:
-            launch_template_id = kwargs['launchTemplateId']
-        if launch_template_id is None:
-            raise TypeError("Missing 'launch_template_id' argument")
-        if launch_template_name is None and 'launchTemplateName' in kwargs:
-            launch_template_name = kwargs['launchTemplateName']
-        if launch_template_name is None:
-            raise TypeError("Missing 'launch_template_name' argument")
-        if modified_time is None and 'modifiedTime' in kwargs:
-            modified_time = kwargs['modifiedTime']
-        if modified_time is None:
-            raise TypeError("Missing 'modified_time' argument")
-        if network_interfaces is None and 'networkInterfaces' in kwargs:
-            network_interfaces = kwargs['networkInterfaces']
-        if network_interfaces is None:
-            raise TypeError("Missing 'network_interfaces' argument")
-        if network_type is None and 'networkType' in kwargs:
-            network_type = kwargs['networkType']
-        if network_type is None:
-            raise TypeError("Missing 'network_type' argument")
-        if password_inherit is None and 'passwordInherit' in kwargs:
-            password_inherit = kwargs['passwordInherit']
-        if password_inherit is None:
-            raise TypeError("Missing 'password_inherit' argument")
-        if period is None:
-            raise TypeError("Missing 'period' argument")
-        if private_ip_address is None and 'privateIpAddress' in kwargs:
-            private_ip_address = kwargs['privateIpAddress']
-        if private_ip_address is None:
-            raise TypeError("Missing 'private_ip_address' argument")
-        if ram_role_name is None and 'ramRoleName' in kwargs:
-            ram_role_name = kwargs['ramRoleName']
-        if ram_role_name is None:
-            raise TypeError("Missing 'ram_role_name' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if security_enhancement_strategy is None and 'securityEnhancementStrategy' in kwargs:
-            security_enhancement_strategy = kwargs['securityEnhancementStrategy']
-        if security_enhancement_strategy is None:
-            raise TypeError("Missing 'security_enhancement_strategy' argument")
-        if security_group_id is None and 'securityGroupId' in kwargs:
-            security_group_id = kwargs['securityGroupId']
-        if security_group_id is None:
-            raise TypeError("Missing 'security_group_id' argument")
-        if security_group_ids is None and 'securityGroupIds' in kwargs:
-            security_group_ids = kwargs['securityGroupIds']
-        if security_group_ids is None:
-            raise TypeError("Missing 'security_group_ids' argument")
-        if spot_duration is None and 'spotDuration' in kwargs:
-            spot_duration = kwargs['spotDuration']
-        if spot_duration is None:
-            raise TypeError("Missing 'spot_duration' argument")
-        if spot_price_limit is None and 'spotPriceLimit' in kwargs:
-            spot_price_limit = kwargs['spotPriceLimit']
-        if spot_price_limit is None:
-            raise TypeError("Missing 'spot_price_limit' argument")
-        if spot_strategy is None and 'spotStrategy' in kwargs:
-            spot_strategy = kwargs['spotStrategy']
-        if spot_strategy is None:
-            raise TypeError("Missing 'spot_strategy' argument")
-        if system_disks is None and 'systemDisks' in kwargs:
-            system_disks = kwargs['systemDisks']
-        if system_disks is None:
-            raise TypeError("Missing 'system_disks' argument")
-        if template_tags is None and 'templateTags' in kwargs:
-            template_tags = kwargs['templateTags']
-        if template_tags is None:
-            raise TypeError("Missing 'template_tags' argument")
-        if user_data is None and 'userData' in kwargs:
-            user_data = kwargs['userData']
-        if user_data is None:
-            raise TypeError("Missing 'user_data' argument")
-        if version_description is None and 'versionDescription' in kwargs:
-            version_description = kwargs['versionDescription']
-        if version_description is None:
-            raise TypeError("Missing 'version_description' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("auto_release_time", auto_release_time)
-        _setter("created_by", created_by)
-        _setter("data_disks", data_disks)
-        _setter("default_version_number", default_version_number)
-        _setter("deployment_set_id", deployment_set_id)
-        _setter("description", description)
-        _setter("enable_vm_os_config", enable_vm_os_config)
-        _setter("host_name", host_name)
-        _setter("id", id)
-        _setter("image_id", image_id)
-        _setter("image_owner_alias", image_owner_alias)
-        _setter("instance_charge_type", instance_charge_type)
-        _setter("instance_name", instance_name)
-        _setter("instance_type", instance_type)
-        _setter("internet_charge_type", internet_charge_type)
-        _setter("internet_max_bandwidth_in", internet_max_bandwidth_in)
-        _setter("internet_max_bandwidth_out", internet_max_bandwidth_out)
-        _setter("io_optimized", io_optimized)
-        _setter("key_pair_name", key_pair_name)
-        _setter("latest_version_number", latest_version_number)
-        _setter("launch_template_id", launch_template_id)
-        _setter("launch_template_name", launch_template_name)
-        _setter("modified_time", modified_time)
-        _setter("network_interfaces", network_interfaces)
-        _setter("network_type", network_type)
-        _setter("password_inherit", password_inherit)
-        _setter("period", period)
-        _setter("private_ip_address", private_ip_address)
-        _setter("ram_role_name", ram_role_name)
-        _setter("resource_group_id", resource_group_id)
-        _setter("security_enhancement_strategy", security_enhancement_strategy)
-        _setter("security_group_id", security_group_id)
-        _setter("security_group_ids", security_group_ids)
-        _setter("spot_duration", spot_duration)
-        _setter("spot_price_limit", spot_price_limit)
-        _setter("spot_strategy", spot_strategy)
-        _setter("system_disks", system_disks)
-        _setter("template_tags", template_tags)
-        _setter("user_data", user_data)
-        _setter("version_description", version_description)
-        _setter("vpc_id", vpc_id)
-        _setter("vswitch_id", vswitch_id)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "auto_release_time", auto_release_time)
+        pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "data_disks", data_disks)
+        pulumi.set(__self__, "default_version_number", default_version_number)
+        pulumi.set(__self__, "deployment_set_id", deployment_set_id)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "enable_vm_os_config", enable_vm_os_config)
+        pulumi.set(__self__, "host_name", host_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "image_owner_alias", image_owner_alias)
+        pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        pulumi.set(__self__, "internet_max_bandwidth_in", internet_max_bandwidth_in)
+        pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
+        pulumi.set(__self__, "io_optimized", io_optimized)
+        pulumi.set(__self__, "key_pair_name", key_pair_name)
+        pulumi.set(__self__, "latest_version_number", latest_version_number)
+        pulumi.set(__self__, "launch_template_id", launch_template_id)
+        pulumi.set(__self__, "launch_template_name", launch_template_name)
+        pulumi.set(__self__, "modified_time", modified_time)
+        pulumi.set(__self__, "network_interfaces", network_interfaces)
+        pulumi.set(__self__, "network_type", network_type)
+        pulumi.set(__self__, "password_inherit", password_inherit)
+        pulumi.set(__self__, "period", period)
+        pulumi.set(__self__, "private_ip_address", private_ip_address)
+        pulumi.set(__self__, "ram_role_name", ram_role_name)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "security_enhancement_strategy", security_enhancement_strategy)
+        pulumi.set(__self__, "security_group_id", security_group_id)
+        pulumi.set(__self__, "security_group_ids", security_group_ids)
+        pulumi.set(__self__, "spot_duration", spot_duration)
+        pulumi.set(__self__, "spot_price_limit", spot_price_limit)
+        pulumi.set(__self__, "spot_strategy", spot_strategy)
+        pulumi.set(__self__, "system_disks", system_disks)
+        pulumi.set(__self__, "template_tags", template_tags)
+        pulumi.set(__self__, "user_data", user_data)
+        pulumi.set(__self__, "version_description", version_description)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="autoReleaseTime")
@@ -8220,61 +5601,14 @@ class GetEcsLaunchTemplatesTemplateDataDiskResult(dict):
         :param int size: Size of the system disk, measured in GB.
         :param str snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
         """
-        GetEcsLaunchTemplatesTemplateDataDiskResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            category=category,
-            delete_with_instance=delete_with_instance,
-            description=description,
-            encrypted=encrypted,
-            name=name,
-            performance_level=performance_level,
-            size=size,
-            snapshot_id=snapshot_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             category: Optional[str] = None,
-             delete_with_instance: Optional[bool] = None,
-             description: Optional[str] = None,
-             encrypted: Optional[bool] = None,
-             name: Optional[str] = None,
-             performance_level: Optional[str] = None,
-             size: Optional[int] = None,
-             snapshot_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if category is None:
-            raise TypeError("Missing 'category' argument")
-        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
-            delete_with_instance = kwargs['deleteWithInstance']
-        if delete_with_instance is None:
-            raise TypeError("Missing 'delete_with_instance' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if encrypted is None:
-            raise TypeError("Missing 'encrypted' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if performance_level is None and 'performanceLevel' in kwargs:
-            performance_level = kwargs['performanceLevel']
-        if performance_level is None:
-            raise TypeError("Missing 'performance_level' argument")
-        if size is None:
-            raise TypeError("Missing 'size' argument")
-        if snapshot_id is None and 'snapshotId' in kwargs:
-            snapshot_id = kwargs['snapshotId']
-        if snapshot_id is None:
-            raise TypeError("Missing 'snapshot_id' argument")
-
-        _setter("category", category)
-        _setter("delete_with_instance", delete_with_instance)
-        _setter("description", description)
-        _setter("encrypted", encrypted)
-        _setter("name", name)
-        _setter("performance_level", performance_level)
-        _setter("size", size)
-        _setter("snapshot_id", snapshot_id)
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "delete_with_instance", delete_with_instance)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "encrypted", encrypted)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "performance_level", performance_level)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter
@@ -8356,46 +5690,11 @@ class GetEcsLaunchTemplatesTemplateNetworkInterfaceResult(dict):
         :param str security_group_id: The security group ID.
         :param str vswitch_id: The vswitch id.
         """
-        GetEcsLaunchTemplatesTemplateNetworkInterfaceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            name=name,
-            primary_ip=primary_ip,
-            security_group_id=security_group_id,
-            vswitch_id=vswitch_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[str] = None,
-             name: Optional[str] = None,
-             primary_ip: Optional[str] = None,
-             security_group_id: Optional[str] = None,
-             vswitch_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if primary_ip is None and 'primaryIp' in kwargs:
-            primary_ip = kwargs['primaryIp']
-        if primary_ip is None:
-            raise TypeError("Missing 'primary_ip' argument")
-        if security_group_id is None and 'securityGroupId' in kwargs:
-            security_group_id = kwargs['securityGroupId']
-        if security_group_id is None:
-            raise TypeError("Missing 'security_group_id' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-
-        _setter("description", description)
-        _setter("name", name)
-        _setter("primary_ip", primary_ip)
-        _setter("security_group_id", security_group_id)
-        _setter("vswitch_id", vswitch_id)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "primary_ip", primary_ip)
+        pulumi.set(__self__, "security_group_id", security_group_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter
@@ -8457,54 +5756,13 @@ class GetEcsLaunchTemplatesTemplateSystemDiskResult(dict):
         :param str performance_level: The performance level of the ESSD used as the system disk.
         :param int size: Size of the system disk, measured in GB.
         """
-        GetEcsLaunchTemplatesTemplateSystemDiskResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            category=category,
-            delete_with_instance=delete_with_instance,
-            description=description,
-            iops=iops,
-            name=name,
-            performance_level=performance_level,
-            size=size,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             category: Optional[str] = None,
-             delete_with_instance: Optional[bool] = None,
-             description: Optional[str] = None,
-             iops: Optional[str] = None,
-             name: Optional[str] = None,
-             performance_level: Optional[str] = None,
-             size: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if category is None:
-            raise TypeError("Missing 'category' argument")
-        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
-            delete_with_instance = kwargs['deleteWithInstance']
-        if delete_with_instance is None:
-            raise TypeError("Missing 'delete_with_instance' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if iops is None:
-            raise TypeError("Missing 'iops' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if performance_level is None and 'performanceLevel' in kwargs:
-            performance_level = kwargs['performanceLevel']
-        if performance_level is None:
-            raise TypeError("Missing 'performance_level' argument")
-        if size is None:
-            raise TypeError("Missing 'size' argument")
-
-        _setter("category", category)
-        _setter("delete_with_instance", delete_with_instance)
-        _setter("description", description)
-        _setter("iops", iops)
-        _setter("name", name)
-        _setter("performance_level", performance_level)
-        _setter("size", size)
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "delete_with_instance", delete_with_instance)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "iops", iops)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "performance_level", performance_level)
+        pulumi.set(__self__, "size", size)
 
     @property
     @pulumi.getter
@@ -8582,58 +5840,13 @@ class GetEcsNetworkInterfacePermissionsPermissionResult(dict):
         :param str service_name: Alibaba Cloud service name.
         :param str status: The Status of the Network Interface Permissions.
         """
-        GetEcsNetworkInterfacePermissionsPermissionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            id=id,
-            network_interface_id=network_interface_id,
-            network_interface_permission_id=network_interface_permission_id,
-            permission=permission,
-            service_name=service_name,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[str] = None,
-             id: Optional[str] = None,
-             network_interface_id: Optional[str] = None,
-             network_interface_permission_id: Optional[str] = None,
-             permission: Optional[str] = None,
-             service_name: Optional[str] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if account_id is None:
-            raise TypeError("Missing 'account_id' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if network_interface_id is None and 'networkInterfaceId' in kwargs:
-            network_interface_id = kwargs['networkInterfaceId']
-        if network_interface_id is None:
-            raise TypeError("Missing 'network_interface_id' argument")
-        if network_interface_permission_id is None and 'networkInterfacePermissionId' in kwargs:
-            network_interface_permission_id = kwargs['networkInterfacePermissionId']
-        if network_interface_permission_id is None:
-            raise TypeError("Missing 'network_interface_permission_id' argument")
-        if permission is None:
-            raise TypeError("Missing 'permission' argument")
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-        if service_name is None:
-            raise TypeError("Missing 'service_name' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("account_id", account_id)
-        _setter("id", id)
-        _setter("network_interface_id", network_interface_id)
-        _setter("network_interface_permission_id", network_interface_permission_id)
-        _setter("permission", permission)
-        _setter("service_name", service_name)
-        _setter("status", status)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "network_interface_id", network_interface_id)
+        pulumi.set(__self__, "network_interface_permission_id", network_interface_permission_id)
+        pulumi.set(__self__, "permission", permission)
+        pulumi.set(__self__, "service_name", service_name)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="accountId")
@@ -8750,190 +5963,33 @@ class GetEcsNetworkInterfacesInterfaceResult(dict):
         :param str vswitch_id: The vswitch id.
         :param str zone_id: The zone id.
         """
-        GetEcsNetworkInterfacesInterfaceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            associated_public_ips=associated_public_ips,
-            creation_time=creation_time,
-            description=description,
-            id=id,
-            instance_id=instance_id,
-            mac=mac,
-            name=name,
-            network_interface_id=network_interface_id,
-            network_interface_name=network_interface_name,
-            network_interface_traffic_mode=network_interface_traffic_mode,
-            owner_id=owner_id,
-            primary_ip_address=primary_ip_address,
-            private_ip=private_ip,
-            private_ip_addresses=private_ip_addresses,
-            private_ips=private_ips,
-            queue_number=queue_number,
-            resource_group_id=resource_group_id,
-            security_group_ids=security_group_ids,
-            security_groups=security_groups,
-            service_id=service_id,
-            service_managed=service_managed,
-            status=status,
-            tags=tags,
-            type=type,
-            vpc_id=vpc_id,
-            vswitch_id=vswitch_id,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             associated_public_ips: Optional[Sequence['outputs.GetEcsNetworkInterfacesInterfaceAssociatedPublicIpResult']] = None,
-             creation_time: Optional[str] = None,
-             description: Optional[str] = None,
-             id: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             mac: Optional[str] = None,
-             name: Optional[str] = None,
-             network_interface_id: Optional[str] = None,
-             network_interface_name: Optional[str] = None,
-             network_interface_traffic_mode: Optional[str] = None,
-             owner_id: Optional[str] = None,
-             primary_ip_address: Optional[str] = None,
-             private_ip: Optional[str] = None,
-             private_ip_addresses: Optional[Sequence[str]] = None,
-             private_ips: Optional[Sequence[str]] = None,
-             queue_number: Optional[int] = None,
-             resource_group_id: Optional[str] = None,
-             security_group_ids: Optional[Sequence[str]] = None,
-             security_groups: Optional[Sequence[str]] = None,
-             service_id: Optional[int] = None,
-             service_managed: Optional[bool] = None,
-             status: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             type: Optional[str] = None,
-             vpc_id: Optional[str] = None,
-             vswitch_id: Optional[str] = None,
-             zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if associated_public_ips is None and 'associatedPublicIps' in kwargs:
-            associated_public_ips = kwargs['associatedPublicIps']
-        if associated_public_ips is None:
-            raise TypeError("Missing 'associated_public_ips' argument")
-        if creation_time is None and 'creationTime' in kwargs:
-            creation_time = kwargs['creationTime']
-        if creation_time is None:
-            raise TypeError("Missing 'creation_time' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if mac is None:
-            raise TypeError("Missing 'mac' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if network_interface_id is None and 'networkInterfaceId' in kwargs:
-            network_interface_id = kwargs['networkInterfaceId']
-        if network_interface_id is None:
-            raise TypeError("Missing 'network_interface_id' argument")
-        if network_interface_name is None and 'networkInterfaceName' in kwargs:
-            network_interface_name = kwargs['networkInterfaceName']
-        if network_interface_name is None:
-            raise TypeError("Missing 'network_interface_name' argument")
-        if network_interface_traffic_mode is None and 'networkInterfaceTrafficMode' in kwargs:
-            network_interface_traffic_mode = kwargs['networkInterfaceTrafficMode']
-        if network_interface_traffic_mode is None:
-            raise TypeError("Missing 'network_interface_traffic_mode' argument")
-        if owner_id is None and 'ownerId' in kwargs:
-            owner_id = kwargs['ownerId']
-        if owner_id is None:
-            raise TypeError("Missing 'owner_id' argument")
-        if primary_ip_address is None and 'primaryIpAddress' in kwargs:
-            primary_ip_address = kwargs['primaryIpAddress']
-        if primary_ip_address is None:
-            raise TypeError("Missing 'primary_ip_address' argument")
-        if private_ip is None and 'privateIp' in kwargs:
-            private_ip = kwargs['privateIp']
-        if private_ip is None:
-            raise TypeError("Missing 'private_ip' argument")
-        if private_ip_addresses is None and 'privateIpAddresses' in kwargs:
-            private_ip_addresses = kwargs['privateIpAddresses']
-        if private_ip_addresses is None:
-            raise TypeError("Missing 'private_ip_addresses' argument")
-        if private_ips is None and 'privateIps' in kwargs:
-            private_ips = kwargs['privateIps']
-        if private_ips is None:
-            raise TypeError("Missing 'private_ips' argument")
-        if queue_number is None and 'queueNumber' in kwargs:
-            queue_number = kwargs['queueNumber']
-        if queue_number is None:
-            raise TypeError("Missing 'queue_number' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if security_group_ids is None and 'securityGroupIds' in kwargs:
-            security_group_ids = kwargs['securityGroupIds']
-        if security_group_ids is None:
-            raise TypeError("Missing 'security_group_ids' argument")
-        if security_groups is None and 'securityGroups' in kwargs:
-            security_groups = kwargs['securityGroups']
-        if security_groups is None:
-            raise TypeError("Missing 'security_groups' argument")
-        if service_id is None and 'serviceId' in kwargs:
-            service_id = kwargs['serviceId']
-        if service_id is None:
-            raise TypeError("Missing 'service_id' argument")
-        if service_managed is None and 'serviceManaged' in kwargs:
-            service_managed = kwargs['serviceManaged']
-        if service_managed is None:
-            raise TypeError("Missing 'service_managed' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("associated_public_ips", associated_public_ips)
-        _setter("creation_time", creation_time)
-        _setter("description", description)
-        _setter("id", id)
-        _setter("instance_id", instance_id)
-        _setter("mac", mac)
-        _setter("name", name)
-        _setter("network_interface_id", network_interface_id)
-        _setter("network_interface_name", network_interface_name)
-        _setter("network_interface_traffic_mode", network_interface_traffic_mode)
-        _setter("owner_id", owner_id)
-        _setter("primary_ip_address", primary_ip_address)
-        _setter("private_ip", private_ip)
-        _setter("private_ip_addresses", private_ip_addresses)
-        _setter("private_ips", private_ips)
-        _setter("queue_number", queue_number)
-        _setter("resource_group_id", resource_group_id)
-        _setter("security_group_ids", security_group_ids)
-        _setter("security_groups", security_groups)
-        _setter("service_id", service_id)
-        _setter("service_managed", service_managed)
-        _setter("status", status)
-        _setter("tags", tags)
-        _setter("type", type)
-        _setter("vpc_id", vpc_id)
-        _setter("vswitch_id", vswitch_id)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "associated_public_ips", associated_public_ips)
+        pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "mac", mac)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network_interface_id", network_interface_id)
+        pulumi.set(__self__, "network_interface_name", network_interface_name)
+        pulumi.set(__self__, "network_interface_traffic_mode", network_interface_traffic_mode)
+        pulumi.set(__self__, "owner_id", owner_id)
+        pulumi.set(__self__, "primary_ip_address", primary_ip_address)
+        pulumi.set(__self__, "private_ip", private_ip)
+        pulumi.set(__self__, "private_ip_addresses", private_ip_addresses)
+        pulumi.set(__self__, "private_ips", private_ips)
+        pulumi.set(__self__, "queue_number", queue_number)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "security_group_ids", security_group_ids)
+        pulumi.set(__self__, "security_groups", security_groups)
+        pulumi.set(__self__, "service_id", service_id)
+        pulumi.set(__self__, "service_managed", service_managed)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="associatedPublicIps")
@@ -9156,22 +6212,7 @@ class GetEcsNetworkInterfacesInterfaceAssociatedPublicIpResult(dict):
         """
         :param str public_ip_address: The EIP of the ENI.
         """
-        GetEcsNetworkInterfacesInterfaceAssociatedPublicIpResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            public_ip_address=public_ip_address,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             public_ip_address: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if public_ip_address is None and 'publicIpAddress' in kwargs:
-            public_ip_address = kwargs['publicIpAddress']
-        if public_ip_address is None:
-            raise TypeError("Missing 'public_ip_address' argument")
-
-        _setter("public_ip_address", public_ip_address)
+        pulumi.set(__self__, "public_ip_address", public_ip_address)
 
     @property
     @pulumi.getter(name="publicIpAddress")
@@ -9204,72 +6245,15 @@ class GetEcsPrefixListsListResult(dict):
         :param str prefix_list_id: The ID of the prefix list.
         :param str prefix_list_name: The name of the prefix list.
         """
-        GetEcsPrefixListsListResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address_family=address_family,
-            association_count=association_count,
-            create_time=create_time,
-            description=description,
-            entries=entries,
-            id=id,
-            max_entries=max_entries,
-            prefix_list_id=prefix_list_id,
-            prefix_list_name=prefix_list_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address_family: Optional[str] = None,
-             association_count: Optional[int] = None,
-             create_time: Optional[str] = None,
-             description: Optional[str] = None,
-             entries: Optional[Sequence['outputs.GetEcsPrefixListsListEntryResult']] = None,
-             id: Optional[str] = None,
-             max_entries: Optional[int] = None,
-             prefix_list_id: Optional[str] = None,
-             prefix_list_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address_family is None and 'addressFamily' in kwargs:
-            address_family = kwargs['addressFamily']
-        if address_family is None:
-            raise TypeError("Missing 'address_family' argument")
-        if association_count is None and 'associationCount' in kwargs:
-            association_count = kwargs['associationCount']
-        if association_count is None:
-            raise TypeError("Missing 'association_count' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if entries is None:
-            raise TypeError("Missing 'entries' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if max_entries is None and 'maxEntries' in kwargs:
-            max_entries = kwargs['maxEntries']
-        if max_entries is None:
-            raise TypeError("Missing 'max_entries' argument")
-        if prefix_list_id is None and 'prefixListId' in kwargs:
-            prefix_list_id = kwargs['prefixListId']
-        if prefix_list_id is None:
-            raise TypeError("Missing 'prefix_list_id' argument")
-        if prefix_list_name is None and 'prefixListName' in kwargs:
-            prefix_list_name = kwargs['prefixListName']
-        if prefix_list_name is None:
-            raise TypeError("Missing 'prefix_list_name' argument")
-
-        _setter("address_family", address_family)
-        _setter("association_count", association_count)
-        _setter("create_time", create_time)
-        _setter("description", description)
-        _setter("entries", entries)
-        _setter("id", id)
-        _setter("max_entries", max_entries)
-        _setter("prefix_list_id", prefix_list_id)
-        _setter("prefix_list_name", prefix_list_name)
+        pulumi.set(__self__, "address_family", address_family)
+        pulumi.set(__self__, "association_count", association_count)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "entries", entries)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "max_entries", max_entries)
+        pulumi.set(__self__, "prefix_list_id", prefix_list_id)
+        pulumi.set(__self__, "prefix_list_name", prefix_list_name)
 
     @property
     @pulumi.getter(name="addressFamily")
@@ -9349,25 +6333,8 @@ class GetEcsPrefixListsListEntryResult(dict):
         """
         :param str description: The description of the prefix list.
         """
-        GetEcsPrefixListsListEntryResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cidr=cidr,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cidr: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cidr is None:
-            raise TypeError("Missing 'cidr' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-
-        _setter("cidr", cidr)
-        _setter("description", description)
+        pulumi.set(__self__, "cidr", cidr)
+        pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -9404,62 +6371,15 @@ class GetEcsSnapshotGroupsGroupResult(dict):
         :param str status: The status of the resource.
         :param Mapping[str, Any] tags: List of label key-value pairs.
         """
-        GetEcsSnapshotGroupsGroupResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            id=id,
-            instance_id=instance_id,
-            resource_group_id=resource_group_id,
-            snapshot_group_id=snapshot_group_id,
-            snapshot_group_name=snapshot_group_name,
-            status=status,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[str] = None,
-             id: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             resource_group_id: Optional[str] = None,
-             snapshot_group_id: Optional[str] = None,
-             snapshot_group_name: Optional[str] = None,
-             status: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if snapshot_group_id is None and 'snapshotGroupId' in kwargs:
-            snapshot_group_id = kwargs['snapshotGroupId']
-        if snapshot_group_id is None:
-            raise TypeError("Missing 'snapshot_group_id' argument")
-        if snapshot_group_name is None and 'snapshotGroupName' in kwargs:
-            snapshot_group_name = kwargs['snapshotGroupName']
-        if snapshot_group_name is None:
-            raise TypeError("Missing 'snapshot_group_name' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("description", description)
-        _setter("id", id)
-        _setter("instance_id", instance_id)
-        _setter("resource_group_id", resource_group_id)
-        _setter("snapshot_group_id", snapshot_group_id)
-        _setter("snapshot_group_name", snapshot_group_name)
-        _setter("status", status)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "snapshot_group_id", snapshot_group_id)
+        pulumi.set(__self__, "snapshot_group_name", snapshot_group_name)
+        pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -9579,177 +6499,32 @@ class GetEcsSnapshotsSnapshotResult(dict):
         :param Mapping[str, Any] tags: The tags.
         :param str usage: A resource type that has a reference relationship.
         """
-        GetEcsSnapshotsSnapshotResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            category=category,
-            creation_time=creation_time,
-            description=description,
-            disk_id=disk_id,
-            encrypted=encrypted,
-            id=id,
-            instant_access=instant_access,
-            instant_access_retention_days=instant_access_retention_days,
-            name=name,
-            product_code=product_code,
-            progress=progress,
-            remain_time=remain_time,
-            resource_group_id=resource_group_id,
-            retention_days=retention_days,
-            snapshot_id=snapshot_id,
-            snapshot_name=snapshot_name,
-            snapshot_sn=snapshot_sn,
-            snapshot_type=snapshot_type,
-            source_disk_id=source_disk_id,
-            source_disk_size=source_disk_size,
-            source_disk_type=source_disk_type,
-            source_storage_type=source_storage_type,
-            status=status,
-            tags=tags,
-            type=type,
-            usage=usage,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             category: Optional[str] = None,
-             creation_time: Optional[str] = None,
-             description: Optional[str] = None,
-             disk_id: Optional[str] = None,
-             encrypted: Optional[bool] = None,
-             id: Optional[str] = None,
-             instant_access: Optional[bool] = None,
-             instant_access_retention_days: Optional[int] = None,
-             name: Optional[str] = None,
-             product_code: Optional[str] = None,
-             progress: Optional[str] = None,
-             remain_time: Optional[int] = None,
-             resource_group_id: Optional[str] = None,
-             retention_days: Optional[int] = None,
-             snapshot_id: Optional[str] = None,
-             snapshot_name: Optional[str] = None,
-             snapshot_sn: Optional[str] = None,
-             snapshot_type: Optional[str] = None,
-             source_disk_id: Optional[str] = None,
-             source_disk_size: Optional[str] = None,
-             source_disk_type: Optional[str] = None,
-             source_storage_type: Optional[str] = None,
-             status: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             type: Optional[str] = None,
-             usage: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if category is None:
-            raise TypeError("Missing 'category' argument")
-        if creation_time is None and 'creationTime' in kwargs:
-            creation_time = kwargs['creationTime']
-        if creation_time is None:
-            raise TypeError("Missing 'creation_time' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if disk_id is None and 'diskId' in kwargs:
-            disk_id = kwargs['diskId']
-        if disk_id is None:
-            raise TypeError("Missing 'disk_id' argument")
-        if encrypted is None:
-            raise TypeError("Missing 'encrypted' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instant_access is None and 'instantAccess' in kwargs:
-            instant_access = kwargs['instantAccess']
-        if instant_access is None:
-            raise TypeError("Missing 'instant_access' argument")
-        if instant_access_retention_days is None and 'instantAccessRetentionDays' in kwargs:
-            instant_access_retention_days = kwargs['instantAccessRetentionDays']
-        if instant_access_retention_days is None:
-            raise TypeError("Missing 'instant_access_retention_days' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if product_code is None and 'productCode' in kwargs:
-            product_code = kwargs['productCode']
-        if product_code is None:
-            raise TypeError("Missing 'product_code' argument")
-        if progress is None:
-            raise TypeError("Missing 'progress' argument")
-        if remain_time is None and 'remainTime' in kwargs:
-            remain_time = kwargs['remainTime']
-        if remain_time is None:
-            raise TypeError("Missing 'remain_time' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if retention_days is None and 'retentionDays' in kwargs:
-            retention_days = kwargs['retentionDays']
-        if retention_days is None:
-            raise TypeError("Missing 'retention_days' argument")
-        if snapshot_id is None and 'snapshotId' in kwargs:
-            snapshot_id = kwargs['snapshotId']
-        if snapshot_id is None:
-            raise TypeError("Missing 'snapshot_id' argument")
-        if snapshot_name is None and 'snapshotName' in kwargs:
-            snapshot_name = kwargs['snapshotName']
-        if snapshot_name is None:
-            raise TypeError("Missing 'snapshot_name' argument")
-        if snapshot_sn is None and 'snapshotSn' in kwargs:
-            snapshot_sn = kwargs['snapshotSn']
-        if snapshot_sn is None:
-            raise TypeError("Missing 'snapshot_sn' argument")
-        if snapshot_type is None and 'snapshotType' in kwargs:
-            snapshot_type = kwargs['snapshotType']
-        if snapshot_type is None:
-            raise TypeError("Missing 'snapshot_type' argument")
-        if source_disk_id is None and 'sourceDiskId' in kwargs:
-            source_disk_id = kwargs['sourceDiskId']
-        if source_disk_id is None:
-            raise TypeError("Missing 'source_disk_id' argument")
-        if source_disk_size is None and 'sourceDiskSize' in kwargs:
-            source_disk_size = kwargs['sourceDiskSize']
-        if source_disk_size is None:
-            raise TypeError("Missing 'source_disk_size' argument")
-        if source_disk_type is None and 'sourceDiskType' in kwargs:
-            source_disk_type = kwargs['sourceDiskType']
-        if source_disk_type is None:
-            raise TypeError("Missing 'source_disk_type' argument")
-        if source_storage_type is None and 'sourceStorageType' in kwargs:
-            source_storage_type = kwargs['sourceStorageType']
-        if source_storage_type is None:
-            raise TypeError("Missing 'source_storage_type' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if usage is None:
-            raise TypeError("Missing 'usage' argument")
-
-        _setter("category", category)
-        _setter("creation_time", creation_time)
-        _setter("description", description)
-        _setter("disk_id", disk_id)
-        _setter("encrypted", encrypted)
-        _setter("id", id)
-        _setter("instant_access", instant_access)
-        _setter("instant_access_retention_days", instant_access_retention_days)
-        _setter("name", name)
-        _setter("product_code", product_code)
-        _setter("progress", progress)
-        _setter("remain_time", remain_time)
-        _setter("resource_group_id", resource_group_id)
-        _setter("retention_days", retention_days)
-        _setter("snapshot_id", snapshot_id)
-        _setter("snapshot_name", snapshot_name)
-        _setter("snapshot_sn", snapshot_sn)
-        _setter("snapshot_type", snapshot_type)
-        _setter("source_disk_id", source_disk_id)
-        _setter("source_disk_size", source_disk_size)
-        _setter("source_disk_type", source_disk_type)
-        _setter("source_storage_type", source_storage_type)
-        _setter("status", status)
-        _setter("tags", tags)
-        _setter("type", type)
-        _setter("usage", usage)
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "disk_id", disk_id)
+        pulumi.set(__self__, "encrypted", encrypted)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instant_access", instant_access)
+        pulumi.set(__self__, "instant_access_retention_days", instant_access_retention_days)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "product_code", product_code)
+        pulumi.set(__self__, "progress", progress)
+        pulumi.set(__self__, "remain_time", remain_time)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "retention_days", retention_days)
+        pulumi.set(__self__, "snapshot_id", snapshot_id)
+        pulumi.set(__self__, "snapshot_name", snapshot_name)
+        pulumi.set(__self__, "snapshot_sn", snapshot_sn)
+        pulumi.set(__self__, "snapshot_type", snapshot_type)
+        pulumi.set(__self__, "source_disk_id", source_disk_id)
+        pulumi.set(__self__, "source_disk_size", source_disk_size)
+        pulumi.set(__self__, "source_disk_type", source_disk_type)
+        pulumi.set(__self__, "source_storage_type", source_storage_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "usage", usage)
 
     @property
     @pulumi.getter
@@ -9973,77 +6748,16 @@ class GetEcsStorageCapacityUnitsUnitResult(dict):
         :param str storage_capacity_unit_id: The ID of Storage Capacity Unit.
         :param str storage_capacity_unit_name: The name of the Storage Capacity Unit.
         """
-        GetEcsStorageCapacityUnitsUnitResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allocation_status=allocation_status,
-            capacity=capacity,
-            create_time=create_time,
-            description=description,
-            expired_time=expired_time,
-            id=id,
-            start_time=start_time,
-            status=status,
-            storage_capacity_unit_id=storage_capacity_unit_id,
-            storage_capacity_unit_name=storage_capacity_unit_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allocation_status: Optional[str] = None,
-             capacity: Optional[int] = None,
-             create_time: Optional[str] = None,
-             description: Optional[str] = None,
-             expired_time: Optional[str] = None,
-             id: Optional[str] = None,
-             start_time: Optional[str] = None,
-             status: Optional[str] = None,
-             storage_capacity_unit_id: Optional[str] = None,
-             storage_capacity_unit_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allocation_status is None and 'allocationStatus' in kwargs:
-            allocation_status = kwargs['allocationStatus']
-        if allocation_status is None:
-            raise TypeError("Missing 'allocation_status' argument")
-        if capacity is None:
-            raise TypeError("Missing 'capacity' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if expired_time is None and 'expiredTime' in kwargs:
-            expired_time = kwargs['expiredTime']
-        if expired_time is None:
-            raise TypeError("Missing 'expired_time' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if start_time is None and 'startTime' in kwargs:
-            start_time = kwargs['startTime']
-        if start_time is None:
-            raise TypeError("Missing 'start_time' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if storage_capacity_unit_id is None and 'storageCapacityUnitId' in kwargs:
-            storage_capacity_unit_id = kwargs['storageCapacityUnitId']
-        if storage_capacity_unit_id is None:
-            raise TypeError("Missing 'storage_capacity_unit_id' argument")
-        if storage_capacity_unit_name is None and 'storageCapacityUnitName' in kwargs:
-            storage_capacity_unit_name = kwargs['storageCapacityUnitName']
-        if storage_capacity_unit_name is None:
-            raise TypeError("Missing 'storage_capacity_unit_name' argument")
-
-        _setter("allocation_status", allocation_status)
-        _setter("capacity", capacity)
-        _setter("create_time", create_time)
-        _setter("description", description)
-        _setter("expired_time", expired_time)
-        _setter("id", id)
-        _setter("start_time", start_time)
-        _setter("status", status)
-        _setter("storage_capacity_unit_id", storage_capacity_unit_id)
-        _setter("storage_capacity_unit_name", storage_capacity_unit_name)
+        pulumi.set(__self__, "allocation_status", allocation_status)
+        pulumi.set(__self__, "capacity", capacity)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "expired_time", expired_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "storage_capacity_unit_id", storage_capacity_unit_id)
+        pulumi.set(__self__, "storage_capacity_unit_name", storage_capacity_unit_name)
 
     @property
     @pulumi.getter(name="allocationStatus")
@@ -10193,220 +6907,37 @@ class GetEipAddressesAddressResult(dict):
         :param str status: The status of the EIP.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
-        GetEipAddressesAddressResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address_name=address_name,
-            allocation_id=allocation_id,
-            available_regions=available_regions,
-            bandwidth=bandwidth,
-            bandwidth_package_bandwidth=bandwidth_package_bandwidth,
-            bandwidth_package_id=bandwidth_package_id,
-            bandwidth_package_type=bandwidth_package_type,
-            create_time=create_time,
-            deletion_protection=deletion_protection,
-            description=description,
-            expired_time=expired_time,
-            has_reservation_data=has_reservation_data,
-            hd_monitor_status=hd_monitor_status,
-            id=id,
-            instance_id=instance_id,
-            instance_region_id=instance_region_id,
-            instance_type=instance_type,
-            internet_charge_type=internet_charge_type,
-            ip_address=ip_address,
-            isp=isp,
-            operation_locks=operation_locks,
-            payment_type=payment_type,
-            reservation_active_time=reservation_active_time,
-            reservation_bandwidth=reservation_bandwidth,
-            reservation_internet_charge_type=reservation_internet_charge_type,
-            reservation_order_type=reservation_order_type,
-            resource_group_id=resource_group_id,
-            second_limited=second_limited,
-            segment_instance_id=segment_instance_id,
-            status=status,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address_name: Optional[str] = None,
-             allocation_id: Optional[str] = None,
-             available_regions: Optional[Sequence[str]] = None,
-             bandwidth: Optional[str] = None,
-             bandwidth_package_bandwidth: Optional[str] = None,
-             bandwidth_package_id: Optional[str] = None,
-             bandwidth_package_type: Optional[str] = None,
-             create_time: Optional[str] = None,
-             deletion_protection: Optional[bool] = None,
-             description: Optional[str] = None,
-             expired_time: Optional[str] = None,
-             has_reservation_data: Optional[str] = None,
-             hd_monitor_status: Optional[str] = None,
-             id: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             instance_region_id: Optional[str] = None,
-             instance_type: Optional[str] = None,
-             internet_charge_type: Optional[str] = None,
-             ip_address: Optional[str] = None,
-             isp: Optional[str] = None,
-             operation_locks: Optional[Sequence[str]] = None,
-             payment_type: Optional[str] = None,
-             reservation_active_time: Optional[str] = None,
-             reservation_bandwidth: Optional[str] = None,
-             reservation_internet_charge_type: Optional[str] = None,
-             reservation_order_type: Optional[str] = None,
-             resource_group_id: Optional[str] = None,
-             second_limited: Optional[bool] = None,
-             segment_instance_id: Optional[str] = None,
-             status: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address_name is None and 'addressName' in kwargs:
-            address_name = kwargs['addressName']
-        if address_name is None:
-            raise TypeError("Missing 'address_name' argument")
-        if allocation_id is None and 'allocationId' in kwargs:
-            allocation_id = kwargs['allocationId']
-        if allocation_id is None:
-            raise TypeError("Missing 'allocation_id' argument")
-        if available_regions is None and 'availableRegions' in kwargs:
-            available_regions = kwargs['availableRegions']
-        if available_regions is None:
-            raise TypeError("Missing 'available_regions' argument")
-        if bandwidth is None:
-            raise TypeError("Missing 'bandwidth' argument")
-        if bandwidth_package_bandwidth is None and 'bandwidthPackageBandwidth' in kwargs:
-            bandwidth_package_bandwidth = kwargs['bandwidthPackageBandwidth']
-        if bandwidth_package_bandwidth is None:
-            raise TypeError("Missing 'bandwidth_package_bandwidth' argument")
-        if bandwidth_package_id is None and 'bandwidthPackageId' in kwargs:
-            bandwidth_package_id = kwargs['bandwidthPackageId']
-        if bandwidth_package_id is None:
-            raise TypeError("Missing 'bandwidth_package_id' argument")
-        if bandwidth_package_type is None and 'bandwidthPackageType' in kwargs:
-            bandwidth_package_type = kwargs['bandwidthPackageType']
-        if bandwidth_package_type is None:
-            raise TypeError("Missing 'bandwidth_package_type' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if deletion_protection is None and 'deletionProtection' in kwargs:
-            deletion_protection = kwargs['deletionProtection']
-        if deletion_protection is None:
-            raise TypeError("Missing 'deletion_protection' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if expired_time is None and 'expiredTime' in kwargs:
-            expired_time = kwargs['expiredTime']
-        if expired_time is None:
-            raise TypeError("Missing 'expired_time' argument")
-        if has_reservation_data is None and 'hasReservationData' in kwargs:
-            has_reservation_data = kwargs['hasReservationData']
-        if has_reservation_data is None:
-            raise TypeError("Missing 'has_reservation_data' argument")
-        if hd_monitor_status is None and 'hdMonitorStatus' in kwargs:
-            hd_monitor_status = kwargs['hdMonitorStatus']
-        if hd_monitor_status is None:
-            raise TypeError("Missing 'hd_monitor_status' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if instance_region_id is None and 'instanceRegionId' in kwargs:
-            instance_region_id = kwargs['instanceRegionId']
-        if instance_region_id is None:
-            raise TypeError("Missing 'instance_region_id' argument")
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if instance_type is None:
-            raise TypeError("Missing 'instance_type' argument")
-        if internet_charge_type is None and 'internetChargeType' in kwargs:
-            internet_charge_type = kwargs['internetChargeType']
-        if internet_charge_type is None:
-            raise TypeError("Missing 'internet_charge_type' argument")
-        if ip_address is None and 'ipAddress' in kwargs:
-            ip_address = kwargs['ipAddress']
-        if ip_address is None:
-            raise TypeError("Missing 'ip_address' argument")
-        if isp is None:
-            raise TypeError("Missing 'isp' argument")
-        if operation_locks is None and 'operationLocks' in kwargs:
-            operation_locks = kwargs['operationLocks']
-        if operation_locks is None:
-            raise TypeError("Missing 'operation_locks' argument")
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if payment_type is None:
-            raise TypeError("Missing 'payment_type' argument")
-        if reservation_active_time is None and 'reservationActiveTime' in kwargs:
-            reservation_active_time = kwargs['reservationActiveTime']
-        if reservation_active_time is None:
-            raise TypeError("Missing 'reservation_active_time' argument")
-        if reservation_bandwidth is None and 'reservationBandwidth' in kwargs:
-            reservation_bandwidth = kwargs['reservationBandwidth']
-        if reservation_bandwidth is None:
-            raise TypeError("Missing 'reservation_bandwidth' argument")
-        if reservation_internet_charge_type is None and 'reservationInternetChargeType' in kwargs:
-            reservation_internet_charge_type = kwargs['reservationInternetChargeType']
-        if reservation_internet_charge_type is None:
-            raise TypeError("Missing 'reservation_internet_charge_type' argument")
-        if reservation_order_type is None and 'reservationOrderType' in kwargs:
-            reservation_order_type = kwargs['reservationOrderType']
-        if reservation_order_type is None:
-            raise TypeError("Missing 'reservation_order_type' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if second_limited is None and 'secondLimited' in kwargs:
-            second_limited = kwargs['secondLimited']
-        if second_limited is None:
-            raise TypeError("Missing 'second_limited' argument")
-        if segment_instance_id is None and 'segmentInstanceId' in kwargs:
-            segment_instance_id = kwargs['segmentInstanceId']
-        if segment_instance_id is None:
-            raise TypeError("Missing 'segment_instance_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-
-        _setter("address_name", address_name)
-        _setter("allocation_id", allocation_id)
-        _setter("available_regions", available_regions)
-        _setter("bandwidth", bandwidth)
-        _setter("bandwidth_package_bandwidth", bandwidth_package_bandwidth)
-        _setter("bandwidth_package_id", bandwidth_package_id)
-        _setter("bandwidth_package_type", bandwidth_package_type)
-        _setter("create_time", create_time)
-        _setter("deletion_protection", deletion_protection)
-        _setter("description", description)
-        _setter("expired_time", expired_time)
-        _setter("has_reservation_data", has_reservation_data)
-        _setter("hd_monitor_status", hd_monitor_status)
-        _setter("id", id)
-        _setter("instance_id", instance_id)
-        _setter("instance_region_id", instance_region_id)
-        _setter("instance_type", instance_type)
-        _setter("internet_charge_type", internet_charge_type)
-        _setter("ip_address", ip_address)
-        _setter("isp", isp)
-        _setter("operation_locks", operation_locks)
-        _setter("payment_type", payment_type)
-        _setter("reservation_active_time", reservation_active_time)
-        _setter("reservation_bandwidth", reservation_bandwidth)
-        _setter("reservation_internet_charge_type", reservation_internet_charge_type)
-        _setter("reservation_order_type", reservation_order_type)
-        _setter("resource_group_id", resource_group_id)
-        _setter("second_limited", second_limited)
-        _setter("segment_instance_id", segment_instance_id)
-        _setter("status", status)
-        _setter("tags", tags)
+        pulumi.set(__self__, "address_name", address_name)
+        pulumi.set(__self__, "allocation_id", allocation_id)
+        pulumi.set(__self__, "available_regions", available_regions)
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "bandwidth_package_bandwidth", bandwidth_package_bandwidth)
+        pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
+        pulumi.set(__self__, "bandwidth_package_type", bandwidth_package_type)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "expired_time", expired_time)
+        pulumi.set(__self__, "has_reservation_data", has_reservation_data)
+        pulumi.set(__self__, "hd_monitor_status", hd_monitor_status)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_region_id", instance_region_id)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "isp", isp)
+        pulumi.set(__self__, "operation_locks", operation_locks)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "reservation_active_time", reservation_active_time)
+        pulumi.set(__self__, "reservation_bandwidth", reservation_bandwidth)
+        pulumi.set(__self__, "reservation_internet_charge_type", reservation_internet_charge_type)
+        pulumi.set(__self__, "reservation_order_type", reservation_order_type)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "second_limited", second_limited)
+        pulumi.set(__self__, "segment_instance_id", segment_instance_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="addressName")
@@ -10679,72 +7210,15 @@ class GetEipAddressesEipResult(dict):
         :param str ip_address: The IP address of the EIP.
         :param str status: The status of the EIP.
         """
-        GetEipAddressesEipResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bandwidth=bandwidth,
-            creation_time=creation_time,
-            deletion_protection=deletion_protection,
-            id=id,
-            instance_id=instance_id,
-            instance_type=instance_type,
-            internet_charge_type=internet_charge_type,
-            ip_address=ip_address,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bandwidth: Optional[str] = None,
-             creation_time: Optional[str] = None,
-             deletion_protection: Optional[bool] = None,
-             id: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             instance_type: Optional[str] = None,
-             internet_charge_type: Optional[str] = None,
-             ip_address: Optional[str] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bandwidth is None:
-            raise TypeError("Missing 'bandwidth' argument")
-        if creation_time is None and 'creationTime' in kwargs:
-            creation_time = kwargs['creationTime']
-        if creation_time is None:
-            raise TypeError("Missing 'creation_time' argument")
-        if deletion_protection is None and 'deletionProtection' in kwargs:
-            deletion_protection = kwargs['deletionProtection']
-        if deletion_protection is None:
-            raise TypeError("Missing 'deletion_protection' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if instance_type is None:
-            raise TypeError("Missing 'instance_type' argument")
-        if internet_charge_type is None and 'internetChargeType' in kwargs:
-            internet_charge_type = kwargs['internetChargeType']
-        if internet_charge_type is None:
-            raise TypeError("Missing 'internet_charge_type' argument")
-        if ip_address is None and 'ipAddress' in kwargs:
-            ip_address = kwargs['ipAddress']
-        if ip_address is None:
-            raise TypeError("Missing 'ip_address' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("bandwidth", bandwidth)
-        _setter("creation_time", creation_time)
-        _setter("deletion_protection", deletion_protection)
-        _setter("id", id)
-        _setter("instance_id", instance_id)
-        _setter("instance_type", instance_type)
-        _setter("internet_charge_type", internet_charge_type)
-        _setter("ip_address", ip_address)
-        _setter("status", status)
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -10862,220 +7336,37 @@ class GetEipsAddressResult(dict):
         :param str status: EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
-        GetEipsAddressResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address_name=address_name,
-            allocation_id=allocation_id,
-            available_regions=available_regions,
-            bandwidth=bandwidth,
-            bandwidth_package_bandwidth=bandwidth_package_bandwidth,
-            bandwidth_package_id=bandwidth_package_id,
-            bandwidth_package_type=bandwidth_package_type,
-            create_time=create_time,
-            deletion_protection=deletion_protection,
-            description=description,
-            expired_time=expired_time,
-            has_reservation_data=has_reservation_data,
-            hd_monitor_status=hd_monitor_status,
-            id=id,
-            instance_id=instance_id,
-            instance_region_id=instance_region_id,
-            instance_type=instance_type,
-            internet_charge_type=internet_charge_type,
-            ip_address=ip_address,
-            isp=isp,
-            operation_locks=operation_locks,
-            payment_type=payment_type,
-            reservation_active_time=reservation_active_time,
-            reservation_bandwidth=reservation_bandwidth,
-            reservation_internet_charge_type=reservation_internet_charge_type,
-            reservation_order_type=reservation_order_type,
-            resource_group_id=resource_group_id,
-            second_limited=second_limited,
-            segment_instance_id=segment_instance_id,
-            status=status,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address_name: Optional[str] = None,
-             allocation_id: Optional[str] = None,
-             available_regions: Optional[Sequence[str]] = None,
-             bandwidth: Optional[str] = None,
-             bandwidth_package_bandwidth: Optional[str] = None,
-             bandwidth_package_id: Optional[str] = None,
-             bandwidth_package_type: Optional[str] = None,
-             create_time: Optional[str] = None,
-             deletion_protection: Optional[bool] = None,
-             description: Optional[str] = None,
-             expired_time: Optional[str] = None,
-             has_reservation_data: Optional[str] = None,
-             hd_monitor_status: Optional[str] = None,
-             id: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             instance_region_id: Optional[str] = None,
-             instance_type: Optional[str] = None,
-             internet_charge_type: Optional[str] = None,
-             ip_address: Optional[str] = None,
-             isp: Optional[str] = None,
-             operation_locks: Optional[Sequence[str]] = None,
-             payment_type: Optional[str] = None,
-             reservation_active_time: Optional[str] = None,
-             reservation_bandwidth: Optional[str] = None,
-             reservation_internet_charge_type: Optional[str] = None,
-             reservation_order_type: Optional[str] = None,
-             resource_group_id: Optional[str] = None,
-             second_limited: Optional[bool] = None,
-             segment_instance_id: Optional[str] = None,
-             status: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address_name is None and 'addressName' in kwargs:
-            address_name = kwargs['addressName']
-        if address_name is None:
-            raise TypeError("Missing 'address_name' argument")
-        if allocation_id is None and 'allocationId' in kwargs:
-            allocation_id = kwargs['allocationId']
-        if allocation_id is None:
-            raise TypeError("Missing 'allocation_id' argument")
-        if available_regions is None and 'availableRegions' in kwargs:
-            available_regions = kwargs['availableRegions']
-        if available_regions is None:
-            raise TypeError("Missing 'available_regions' argument")
-        if bandwidth is None:
-            raise TypeError("Missing 'bandwidth' argument")
-        if bandwidth_package_bandwidth is None and 'bandwidthPackageBandwidth' in kwargs:
-            bandwidth_package_bandwidth = kwargs['bandwidthPackageBandwidth']
-        if bandwidth_package_bandwidth is None:
-            raise TypeError("Missing 'bandwidth_package_bandwidth' argument")
-        if bandwidth_package_id is None and 'bandwidthPackageId' in kwargs:
-            bandwidth_package_id = kwargs['bandwidthPackageId']
-        if bandwidth_package_id is None:
-            raise TypeError("Missing 'bandwidth_package_id' argument")
-        if bandwidth_package_type is None and 'bandwidthPackageType' in kwargs:
-            bandwidth_package_type = kwargs['bandwidthPackageType']
-        if bandwidth_package_type is None:
-            raise TypeError("Missing 'bandwidth_package_type' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if deletion_protection is None and 'deletionProtection' in kwargs:
-            deletion_protection = kwargs['deletionProtection']
-        if deletion_protection is None:
-            raise TypeError("Missing 'deletion_protection' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if expired_time is None and 'expiredTime' in kwargs:
-            expired_time = kwargs['expiredTime']
-        if expired_time is None:
-            raise TypeError("Missing 'expired_time' argument")
-        if has_reservation_data is None and 'hasReservationData' in kwargs:
-            has_reservation_data = kwargs['hasReservationData']
-        if has_reservation_data is None:
-            raise TypeError("Missing 'has_reservation_data' argument")
-        if hd_monitor_status is None and 'hdMonitorStatus' in kwargs:
-            hd_monitor_status = kwargs['hdMonitorStatus']
-        if hd_monitor_status is None:
-            raise TypeError("Missing 'hd_monitor_status' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if instance_region_id is None and 'instanceRegionId' in kwargs:
-            instance_region_id = kwargs['instanceRegionId']
-        if instance_region_id is None:
-            raise TypeError("Missing 'instance_region_id' argument")
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if instance_type is None:
-            raise TypeError("Missing 'instance_type' argument")
-        if internet_charge_type is None and 'internetChargeType' in kwargs:
-            internet_charge_type = kwargs['internetChargeType']
-        if internet_charge_type is None:
-            raise TypeError("Missing 'internet_charge_type' argument")
-        if ip_address is None and 'ipAddress' in kwargs:
-            ip_address = kwargs['ipAddress']
-        if ip_address is None:
-            raise TypeError("Missing 'ip_address' argument")
-        if isp is None:
-            raise TypeError("Missing 'isp' argument")
-        if operation_locks is None and 'operationLocks' in kwargs:
-            operation_locks = kwargs['operationLocks']
-        if operation_locks is None:
-            raise TypeError("Missing 'operation_locks' argument")
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if payment_type is None:
-            raise TypeError("Missing 'payment_type' argument")
-        if reservation_active_time is None and 'reservationActiveTime' in kwargs:
-            reservation_active_time = kwargs['reservationActiveTime']
-        if reservation_active_time is None:
-            raise TypeError("Missing 'reservation_active_time' argument")
-        if reservation_bandwidth is None and 'reservationBandwidth' in kwargs:
-            reservation_bandwidth = kwargs['reservationBandwidth']
-        if reservation_bandwidth is None:
-            raise TypeError("Missing 'reservation_bandwidth' argument")
-        if reservation_internet_charge_type is None and 'reservationInternetChargeType' in kwargs:
-            reservation_internet_charge_type = kwargs['reservationInternetChargeType']
-        if reservation_internet_charge_type is None:
-            raise TypeError("Missing 'reservation_internet_charge_type' argument")
-        if reservation_order_type is None and 'reservationOrderType' in kwargs:
-            reservation_order_type = kwargs['reservationOrderType']
-        if reservation_order_type is None:
-            raise TypeError("Missing 'reservation_order_type' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if second_limited is None and 'secondLimited' in kwargs:
-            second_limited = kwargs['secondLimited']
-        if second_limited is None:
-            raise TypeError("Missing 'second_limited' argument")
-        if segment_instance_id is None and 'segmentInstanceId' in kwargs:
-            segment_instance_id = kwargs['segmentInstanceId']
-        if segment_instance_id is None:
-            raise TypeError("Missing 'segment_instance_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-
-        _setter("address_name", address_name)
-        _setter("allocation_id", allocation_id)
-        _setter("available_regions", available_regions)
-        _setter("bandwidth", bandwidth)
-        _setter("bandwidth_package_bandwidth", bandwidth_package_bandwidth)
-        _setter("bandwidth_package_id", bandwidth_package_id)
-        _setter("bandwidth_package_type", bandwidth_package_type)
-        _setter("create_time", create_time)
-        _setter("deletion_protection", deletion_protection)
-        _setter("description", description)
-        _setter("expired_time", expired_time)
-        _setter("has_reservation_data", has_reservation_data)
-        _setter("hd_monitor_status", hd_monitor_status)
-        _setter("id", id)
-        _setter("instance_id", instance_id)
-        _setter("instance_region_id", instance_region_id)
-        _setter("instance_type", instance_type)
-        _setter("internet_charge_type", internet_charge_type)
-        _setter("ip_address", ip_address)
-        _setter("isp", isp)
-        _setter("operation_locks", operation_locks)
-        _setter("payment_type", payment_type)
-        _setter("reservation_active_time", reservation_active_time)
-        _setter("reservation_bandwidth", reservation_bandwidth)
-        _setter("reservation_internet_charge_type", reservation_internet_charge_type)
-        _setter("reservation_order_type", reservation_order_type)
-        _setter("resource_group_id", resource_group_id)
-        _setter("second_limited", second_limited)
-        _setter("segment_instance_id", segment_instance_id)
-        _setter("status", status)
-        _setter("tags", tags)
+        pulumi.set(__self__, "address_name", address_name)
+        pulumi.set(__self__, "allocation_id", allocation_id)
+        pulumi.set(__self__, "available_regions", available_regions)
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "bandwidth_package_bandwidth", bandwidth_package_bandwidth)
+        pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
+        pulumi.set(__self__, "bandwidth_package_type", bandwidth_package_type)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "expired_time", expired_time)
+        pulumi.set(__self__, "has_reservation_data", has_reservation_data)
+        pulumi.set(__self__, "hd_monitor_status", hd_monitor_status)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_region_id", instance_region_id)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "isp", isp)
+        pulumi.set(__self__, "operation_locks", operation_locks)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "reservation_active_time", reservation_active_time)
+        pulumi.set(__self__, "reservation_bandwidth", reservation_bandwidth)
+        pulumi.set(__self__, "reservation_internet_charge_type", reservation_internet_charge_type)
+        pulumi.set(__self__, "reservation_order_type", reservation_order_type)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "second_limited", second_limited)
+        pulumi.set(__self__, "segment_instance_id", segment_instance_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="addressName")
@@ -11286,72 +7577,15 @@ class GetEipsEipResult(dict):
         :param str ip_address: Public IP Address of the the EIP.
         :param str status: EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
         """
-        GetEipsEipResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bandwidth=bandwidth,
-            creation_time=creation_time,
-            deletion_protection=deletion_protection,
-            id=id,
-            instance_id=instance_id,
-            instance_type=instance_type,
-            internet_charge_type=internet_charge_type,
-            ip_address=ip_address,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bandwidth: Optional[str] = None,
-             creation_time: Optional[str] = None,
-             deletion_protection: Optional[bool] = None,
-             id: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             instance_type: Optional[str] = None,
-             internet_charge_type: Optional[str] = None,
-             ip_address: Optional[str] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bandwidth is None:
-            raise TypeError("Missing 'bandwidth' argument")
-        if creation_time is None and 'creationTime' in kwargs:
-            creation_time = kwargs['creationTime']
-        if creation_time is None:
-            raise TypeError("Missing 'creation_time' argument")
-        if deletion_protection is None and 'deletionProtection' in kwargs:
-            deletion_protection = kwargs['deletionProtection']
-        if deletion_protection is None:
-            raise TypeError("Missing 'deletion_protection' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if instance_type is None:
-            raise TypeError("Missing 'instance_type' argument")
-        if internet_charge_type is None and 'internetChargeType' in kwargs:
-            internet_charge_type = kwargs['internetChargeType']
-        if internet_charge_type is None:
-            raise TypeError("Missing 'internet_charge_type' argument")
-        if ip_address is None and 'ipAddress' in kwargs:
-            ip_address = kwargs['ipAddress']
-        if ip_address is None:
-            raise TypeError("Missing 'ip_address' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("bandwidth", bandwidth)
-        _setter("creation_time", creation_time)
-        _setter("deletion_protection", deletion_protection)
-        _setter("id", id)
-        _setter("instance_id", instance_id)
-        _setter("instance_type", instance_type)
-        _setter("internet_charge_type", internet_charge_type)
-        _setter("ip_address", ip_address)
-        _setter("status", status)
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -11463,118 +7697,23 @@ class GetElasticityAssurancesAssuranceResult(dict):
         :param int used_assurance_times: This parameter is not yet available.
         :param Mapping[str, Any] tags: The tag key-value pair information bound by the elastic guarantee service.
         """
-        GetElasticityAssurancesAssuranceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allocated_resources=allocated_resources,
-            description=description,
-            elasticity_assurance_id=elasticity_assurance_id,
-            end_time=end_time,
-            id=id,
-            instance_charge_type=instance_charge_type,
-            private_pool_options_id=private_pool_options_id,
-            private_pool_options_match_criteria=private_pool_options_match_criteria,
-            private_pool_options_name=private_pool_options_name,
-            resource_group_id=resource_group_id,
-            start_time=start_time,
-            start_time_type=start_time_type,
-            status=status,
-            total_assurance_times=total_assurance_times,
-            used_assurance_times=used_assurance_times,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allocated_resources: Optional[Sequence['outputs.GetElasticityAssurancesAssuranceAllocatedResourceResult']] = None,
-             description: Optional[str] = None,
-             elasticity_assurance_id: Optional[str] = None,
-             end_time: Optional[str] = None,
-             id: Optional[str] = None,
-             instance_charge_type: Optional[str] = None,
-             private_pool_options_id: Optional[str] = None,
-             private_pool_options_match_criteria: Optional[str] = None,
-             private_pool_options_name: Optional[str] = None,
-             resource_group_id: Optional[str] = None,
-             start_time: Optional[str] = None,
-             start_time_type: Optional[str] = None,
-             status: Optional[str] = None,
-             total_assurance_times: Optional[str] = None,
-             used_assurance_times: Optional[int] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allocated_resources is None and 'allocatedResources' in kwargs:
-            allocated_resources = kwargs['allocatedResources']
-        if allocated_resources is None:
-            raise TypeError("Missing 'allocated_resources' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if elasticity_assurance_id is None and 'elasticityAssuranceId' in kwargs:
-            elasticity_assurance_id = kwargs['elasticityAssuranceId']
-        if elasticity_assurance_id is None:
-            raise TypeError("Missing 'elasticity_assurance_id' argument")
-        if end_time is None and 'endTime' in kwargs:
-            end_time = kwargs['endTime']
-        if end_time is None:
-            raise TypeError("Missing 'end_time' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_charge_type is None and 'instanceChargeType' in kwargs:
-            instance_charge_type = kwargs['instanceChargeType']
-        if instance_charge_type is None:
-            raise TypeError("Missing 'instance_charge_type' argument")
-        if private_pool_options_id is None and 'privatePoolOptionsId' in kwargs:
-            private_pool_options_id = kwargs['privatePoolOptionsId']
-        if private_pool_options_id is None:
-            raise TypeError("Missing 'private_pool_options_id' argument")
-        if private_pool_options_match_criteria is None and 'privatePoolOptionsMatchCriteria' in kwargs:
-            private_pool_options_match_criteria = kwargs['privatePoolOptionsMatchCriteria']
-        if private_pool_options_match_criteria is None:
-            raise TypeError("Missing 'private_pool_options_match_criteria' argument")
-        if private_pool_options_name is None and 'privatePoolOptionsName' in kwargs:
-            private_pool_options_name = kwargs['privatePoolOptionsName']
-        if private_pool_options_name is None:
-            raise TypeError("Missing 'private_pool_options_name' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if start_time is None and 'startTime' in kwargs:
-            start_time = kwargs['startTime']
-        if start_time is None:
-            raise TypeError("Missing 'start_time' argument")
-        if start_time_type is None and 'startTimeType' in kwargs:
-            start_time_type = kwargs['startTimeType']
-        if start_time_type is None:
-            raise TypeError("Missing 'start_time_type' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if total_assurance_times is None and 'totalAssuranceTimes' in kwargs:
-            total_assurance_times = kwargs['totalAssuranceTimes']
-        if total_assurance_times is None:
-            raise TypeError("Missing 'total_assurance_times' argument")
-        if used_assurance_times is None and 'usedAssuranceTimes' in kwargs:
-            used_assurance_times = kwargs['usedAssuranceTimes']
-        if used_assurance_times is None:
-            raise TypeError("Missing 'used_assurance_times' argument")
-
-        _setter("allocated_resources", allocated_resources)
-        _setter("description", description)
-        _setter("elasticity_assurance_id", elasticity_assurance_id)
-        _setter("end_time", end_time)
-        _setter("id", id)
-        _setter("instance_charge_type", instance_charge_type)
-        _setter("private_pool_options_id", private_pool_options_id)
-        _setter("private_pool_options_match_criteria", private_pool_options_match_criteria)
-        _setter("private_pool_options_name", private_pool_options_name)
-        _setter("resource_group_id", resource_group_id)
-        _setter("start_time", start_time)
-        _setter("start_time_type", start_time_type)
-        _setter("status", status)
-        _setter("total_assurance_times", total_assurance_times)
-        _setter("used_assurance_times", used_assurance_times)
+        pulumi.set(__self__, "allocated_resources", allocated_resources)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "elasticity_assurance_id", elasticity_assurance_id)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        pulumi.set(__self__, "private_pool_options_id", private_pool_options_id)
+        pulumi.set(__self__, "private_pool_options_match_criteria", private_pool_options_match_criteria)
+        pulumi.set(__self__, "private_pool_options_name", private_pool_options_name)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "start_time_type", start_time_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "total_assurance_times", total_assurance_times)
+        pulumi.set(__self__, "used_assurance_times", used_assurance_times)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="allocatedResources")
@@ -11718,43 +7857,10 @@ class GetElasticityAssurancesAssuranceAllocatedResourceResult(dict):
         :param int used_amount: The number of instances that have been used.
         :param str zone_id: The zone ID.
         """
-        GetElasticityAssurancesAssuranceAllocatedResourceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_type=instance_type,
-            total_amount=total_amount,
-            used_amount=used_amount,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_type: Optional[str] = None,
-             total_amount: Optional[int] = None,
-             used_amount: Optional[int] = None,
-             zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if instance_type is None:
-            raise TypeError("Missing 'instance_type' argument")
-        if total_amount is None and 'totalAmount' in kwargs:
-            total_amount = kwargs['totalAmount']
-        if total_amount is None:
-            raise TypeError("Missing 'total_amount' argument")
-        if used_amount is None and 'usedAmount' in kwargs:
-            used_amount = kwargs['usedAmount']
-        if used_amount is None:
-            raise TypeError("Missing 'used_amount' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("instance_type", instance_type)
-        _setter("total_amount", total_amount)
-        _setter("used_amount", used_amount)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "total_amount", total_amount)
+        pulumi.set(__self__, "used_amount", used_amount)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="instanceType")
@@ -11802,37 +7908,10 @@ class GetHpcClustersClusterResult(dict):
         :param str id: The ID of the Hpc Cluster.
         :param str name: The name of ECS Hpc Cluster.
         """
-        GetHpcClustersClusterResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            hpc_cluster_id=hpc_cluster_id,
-            id=id,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[str] = None,
-             hpc_cluster_id: Optional[str] = None,
-             id: Optional[str] = None,
-             name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if hpc_cluster_id is None and 'hpcClusterId' in kwargs:
-            hpc_cluster_id = kwargs['hpcClusterId']
-        if hpc_cluster_id is None:
-            raise TypeError("Missing 'hpc_cluster_id' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("description", description)
-        _setter("hpc_cluster_id", hpc_cluster_id)
-        _setter("id", id)
-        _setter("name", name)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "hpc_cluster_id", hpc_cluster_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -11915,160 +7994,31 @@ class GetImagesImageResult(dict):
         :param str usage: Specifies whether to check the validity of the request without actually making the request. Valid values:
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
-        GetImagesImageResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            architecture=architecture,
-            creation_time=creation_time,
-            description=description,
-            disk_device_mappings=disk_device_mappings,
-            id=id,
-            image_id=image_id,
-            image_owner_alias=image_owner_alias,
-            image_version=image_version,
-            is_copied=is_copied,
-            is_self_shared=is_self_shared,
-            is_subscribed=is_subscribed,
-            is_support_io_optimized=is_support_io_optimized,
-            name=name,
-            os_name=os_name,
-            os_name_en=os_name_en,
-            os_type=os_type,
-            platform=platform,
-            product_code=product_code,
-            progress=progress,
-            size=size,
-            state=state,
-            status=status,
-            usage=usage,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             architecture: Optional[str] = None,
-             creation_time: Optional[str] = None,
-             description: Optional[str] = None,
-             disk_device_mappings: Optional[Sequence['outputs.GetImagesImageDiskDeviceMappingResult']] = None,
-             id: Optional[str] = None,
-             image_id: Optional[str] = None,
-             image_owner_alias: Optional[str] = None,
-             image_version: Optional[str] = None,
-             is_copied: Optional[bool] = None,
-             is_self_shared: Optional[str] = None,
-             is_subscribed: Optional[bool] = None,
-             is_support_io_optimized: Optional[bool] = None,
-             name: Optional[str] = None,
-             os_name: Optional[str] = None,
-             os_name_en: Optional[str] = None,
-             os_type: Optional[str] = None,
-             platform: Optional[str] = None,
-             product_code: Optional[str] = None,
-             progress: Optional[str] = None,
-             size: Optional[int] = None,
-             state: Optional[str] = None,
-             status: Optional[str] = None,
-             usage: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if architecture is None:
-            raise TypeError("Missing 'architecture' argument")
-        if creation_time is None and 'creationTime' in kwargs:
-            creation_time = kwargs['creationTime']
-        if creation_time is None:
-            raise TypeError("Missing 'creation_time' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if disk_device_mappings is None and 'diskDeviceMappings' in kwargs:
-            disk_device_mappings = kwargs['diskDeviceMappings']
-        if disk_device_mappings is None:
-            raise TypeError("Missing 'disk_device_mappings' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-        if image_id is None:
-            raise TypeError("Missing 'image_id' argument")
-        if image_owner_alias is None and 'imageOwnerAlias' in kwargs:
-            image_owner_alias = kwargs['imageOwnerAlias']
-        if image_owner_alias is None:
-            raise TypeError("Missing 'image_owner_alias' argument")
-        if image_version is None and 'imageVersion' in kwargs:
-            image_version = kwargs['imageVersion']
-        if image_version is None:
-            raise TypeError("Missing 'image_version' argument")
-        if is_copied is None and 'isCopied' in kwargs:
-            is_copied = kwargs['isCopied']
-        if is_copied is None:
-            raise TypeError("Missing 'is_copied' argument")
-        if is_self_shared is None and 'isSelfShared' in kwargs:
-            is_self_shared = kwargs['isSelfShared']
-        if is_self_shared is None:
-            raise TypeError("Missing 'is_self_shared' argument")
-        if is_subscribed is None and 'isSubscribed' in kwargs:
-            is_subscribed = kwargs['isSubscribed']
-        if is_subscribed is None:
-            raise TypeError("Missing 'is_subscribed' argument")
-        if is_support_io_optimized is None and 'isSupportIoOptimized' in kwargs:
-            is_support_io_optimized = kwargs['isSupportIoOptimized']
-        if is_support_io_optimized is None:
-            raise TypeError("Missing 'is_support_io_optimized' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if os_name is None and 'osName' in kwargs:
-            os_name = kwargs['osName']
-        if os_name is None:
-            raise TypeError("Missing 'os_name' argument")
-        if os_name_en is None and 'osNameEn' in kwargs:
-            os_name_en = kwargs['osNameEn']
-        if os_name_en is None:
-            raise TypeError("Missing 'os_name_en' argument")
-        if os_type is None and 'osType' in kwargs:
-            os_type = kwargs['osType']
-        if os_type is None:
-            raise TypeError("Missing 'os_type' argument")
-        if platform is None:
-            raise TypeError("Missing 'platform' argument")
-        if product_code is None and 'productCode' in kwargs:
-            product_code = kwargs['productCode']
-        if product_code is None:
-            raise TypeError("Missing 'product_code' argument")
-        if progress is None:
-            raise TypeError("Missing 'progress' argument")
-        if size is None:
-            raise TypeError("Missing 'size' argument")
-        if state is None:
-            raise TypeError("Missing 'state' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if usage is None:
-            raise TypeError("Missing 'usage' argument")
-
-        _setter("architecture", architecture)
-        _setter("creation_time", creation_time)
-        _setter("description", description)
-        _setter("disk_device_mappings", disk_device_mappings)
-        _setter("id", id)
-        _setter("image_id", image_id)
-        _setter("image_owner_alias", image_owner_alias)
-        _setter("image_version", image_version)
-        _setter("is_copied", is_copied)
-        _setter("is_self_shared", is_self_shared)
-        _setter("is_subscribed", is_subscribed)
-        _setter("is_support_io_optimized", is_support_io_optimized)
-        _setter("name", name)
-        _setter("os_name", os_name)
-        _setter("os_name_en", os_name_en)
-        _setter("os_type", os_type)
-        _setter("platform", platform)
-        _setter("product_code", product_code)
-        _setter("progress", progress)
-        _setter("size", size)
-        _setter("state", state)
-        _setter("status", status)
-        _setter("usage", usage)
+        pulumi.set(__self__, "architecture", architecture)
+        pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "disk_device_mappings", disk_device_mappings)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "image_owner_alias", image_owner_alias)
+        pulumi.set(__self__, "image_version", image_version)
+        pulumi.set(__self__, "is_copied", is_copied)
+        pulumi.set(__self__, "is_self_shared", is_self_shared)
+        pulumi.set(__self__, "is_subscribed", is_subscribed)
+        pulumi.set(__self__, "is_support_io_optimized", is_support_io_optimized)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "os_name", os_name)
+        pulumi.set(__self__, "os_name_en", os_name_en)
+        pulumi.set(__self__, "os_type", os_type)
+        pulumi.set(__self__, "platform", platform)
+        pulumi.set(__self__, "product_code", product_code)
+        pulumi.set(__self__, "progress", progress)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "usage", usage)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -12259,32 +8209,9 @@ class GetImagesImageDiskDeviceMappingResult(dict):
         :param str size: Size of the created disk.
         :param str snapshot_id: The ID of the snapshot used to create the custom image.
         """
-        GetImagesImageDiskDeviceMappingResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            device=device,
-            size=size,
-            snapshot_id=snapshot_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             device: Optional[str] = None,
-             size: Optional[str] = None,
-             snapshot_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if device is None:
-            raise TypeError("Missing 'device' argument")
-        if size is None:
-            raise TypeError("Missing 'size' argument")
-        if snapshot_id is None and 'snapshotId' in kwargs:
-            snapshot_id = kwargs['snapshotId']
-        if snapshot_id is None:
-            raise TypeError("Missing 'snapshot_id' argument")
-
-        _setter("device", device)
-        _setter("size", size)
-        _setter("snapshot_id", snapshot_id)
+        pulumi.set(__self__, "device", device)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter
@@ -12322,32 +8249,9 @@ class GetInstanceTypeFamiliesFamilyResult(dict):
         :param str id: ID of the instance type family.
         :param Sequence[str] zone_ids: A list of Zone to launch the instance.
         """
-        GetInstanceTypeFamiliesFamilyResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            generation=generation,
-            id=id,
-            zone_ids=zone_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             generation: Optional[str] = None,
-             id: Optional[str] = None,
-             zone_ids: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if generation is None:
-            raise TypeError("Missing 'generation' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if zone_ids is None and 'zoneIds' in kwargs:
-            zone_ids = kwargs['zoneIds']
-        if zone_ids is None:
-            raise TypeError("Missing 'zone_ids' argument")
-
-        _setter("generation", generation)
-        _setter("id", id)
-        _setter("zone_ids", zone_ids)
+        pulumi.set(__self__, "generation", generation)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "zone_ids", zone_ids)
 
     @property
     @pulumi.getter
@@ -12409,84 +8313,17 @@ class GetInstanceTypesInstanceTypeResult(dict):
                - required: The cloud disk can be attached by using the NVMe protocol.
                - unsupported: The cloud disk cannot be attached by using the NVMe protocol.
         """
-        GetInstanceTypesInstanceTypeResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            availability_zones=availability_zones,
-            burstable_instance=burstable_instance,
-            cpu_core_count=cpu_core_count,
-            eni_amount=eni_amount,
-            family=family,
-            gpu=gpu,
-            id=id,
-            local_storage=local_storage,
-            memory_size=memory_size,
-            nvme_support=nvme_support,
-            price=price,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             availability_zones: Optional[Sequence[str]] = None,
-             burstable_instance: Optional['outputs.GetInstanceTypesInstanceTypeBurstableInstanceResult'] = None,
-             cpu_core_count: Optional[int] = None,
-             eni_amount: Optional[int] = None,
-             family: Optional[str] = None,
-             gpu: Optional['outputs.GetInstanceTypesInstanceTypeGpuResult'] = None,
-             id: Optional[str] = None,
-             local_storage: Optional['outputs.GetInstanceTypesInstanceTypeLocalStorageResult'] = None,
-             memory_size: Optional[float] = None,
-             nvme_support: Optional[str] = None,
-             price: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if availability_zones is None and 'availabilityZones' in kwargs:
-            availability_zones = kwargs['availabilityZones']
-        if availability_zones is None:
-            raise TypeError("Missing 'availability_zones' argument")
-        if burstable_instance is None and 'burstableInstance' in kwargs:
-            burstable_instance = kwargs['burstableInstance']
-        if burstable_instance is None:
-            raise TypeError("Missing 'burstable_instance' argument")
-        if cpu_core_count is None and 'cpuCoreCount' in kwargs:
-            cpu_core_count = kwargs['cpuCoreCount']
-        if cpu_core_count is None:
-            raise TypeError("Missing 'cpu_core_count' argument")
-        if eni_amount is None and 'eniAmount' in kwargs:
-            eni_amount = kwargs['eniAmount']
-        if eni_amount is None:
-            raise TypeError("Missing 'eni_amount' argument")
-        if family is None:
-            raise TypeError("Missing 'family' argument")
-        if gpu is None:
-            raise TypeError("Missing 'gpu' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if local_storage is None and 'localStorage' in kwargs:
-            local_storage = kwargs['localStorage']
-        if local_storage is None:
-            raise TypeError("Missing 'local_storage' argument")
-        if memory_size is None and 'memorySize' in kwargs:
-            memory_size = kwargs['memorySize']
-        if memory_size is None:
-            raise TypeError("Missing 'memory_size' argument")
-        if nvme_support is None and 'nvmeSupport' in kwargs:
-            nvme_support = kwargs['nvmeSupport']
-        if nvme_support is None:
-            raise TypeError("Missing 'nvme_support' argument")
-        if price is None:
-            raise TypeError("Missing 'price' argument")
-
-        _setter("availability_zones", availability_zones)
-        _setter("burstable_instance", burstable_instance)
-        _setter("cpu_core_count", cpu_core_count)
-        _setter("eni_amount", eni_amount)
-        _setter("family", family)
-        _setter("gpu", gpu)
-        _setter("id", id)
-        _setter("local_storage", local_storage)
-        _setter("memory_size", memory_size)
-        _setter("nvme_support", nvme_support)
-        _setter("price", price)
+        pulumi.set(__self__, "availability_zones", availability_zones)
+        pulumi.set(__self__, "burstable_instance", burstable_instance)
+        pulumi.set(__self__, "cpu_core_count", cpu_core_count)
+        pulumi.set(__self__, "eni_amount", eni_amount)
+        pulumi.set(__self__, "family", family)
+        pulumi.set(__self__, "gpu", gpu)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "local_storage", local_storage)
+        pulumi.set(__self__, "memory_size", memory_size)
+        pulumi.set(__self__, "nvme_support", nvme_support)
+        pulumi.set(__self__, "price", price)
 
     @property
     @pulumi.getter(name="availabilityZones")
@@ -12588,29 +8425,8 @@ class GetInstanceTypesInstanceTypeBurstableInstanceResult(dict):
     def __init__(__self__, *,
                  baseline_credit: str,
                  initial_credit: str):
-        GetInstanceTypesInstanceTypeBurstableInstanceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            baseline_credit=baseline_credit,
-            initial_credit=initial_credit,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             baseline_credit: Optional[str] = None,
-             initial_credit: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if baseline_credit is None and 'baselineCredit' in kwargs:
-            baseline_credit = kwargs['baselineCredit']
-        if baseline_credit is None:
-            raise TypeError("Missing 'baseline_credit' argument")
-        if initial_credit is None and 'initialCredit' in kwargs:
-            initial_credit = kwargs['initialCredit']
-        if initial_credit is None:
-            raise TypeError("Missing 'initial_credit' argument")
-
-        _setter("baseline_credit", baseline_credit)
-        _setter("initial_credit", initial_credit)
+        pulumi.set(__self__, "baseline_credit", baseline_credit)
+        pulumi.set(__self__, "initial_credit", initial_credit)
 
     @property
     @pulumi.getter(name="baselineCredit")
@@ -12628,25 +8444,8 @@ class GetInstanceTypesInstanceTypeGpuResult(dict):
     def __init__(__self__, *,
                  amount: str,
                  category: str):
-        GetInstanceTypesInstanceTypeGpuResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            amount=amount,
-            category=category,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             amount: Optional[str] = None,
-             category: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if amount is None:
-            raise TypeError("Missing 'amount' argument")
-        if category is None:
-            raise TypeError("Missing 'category' argument")
-
-        _setter("amount", amount)
-        _setter("category", category)
+        pulumi.set(__self__, "amount", amount)
+        pulumi.set(__self__, "category", category)
 
     @property
     @pulumi.getter
@@ -12665,30 +8464,9 @@ class GetInstanceTypesInstanceTypeLocalStorageResult(dict):
                  amount: str,
                  capacity: str,
                  category: str):
-        GetInstanceTypesInstanceTypeLocalStorageResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            amount=amount,
-            capacity=capacity,
-            category=category,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             amount: Optional[str] = None,
-             capacity: Optional[str] = None,
-             category: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if amount is None:
-            raise TypeError("Missing 'amount' argument")
-        if capacity is None:
-            raise TypeError("Missing 'capacity' argument")
-        if category is None:
-            raise TypeError("Missing 'category' argument")
-
-        _setter("amount", amount)
-        _setter("capacity", capacity)
-        _setter("category", category)
+        pulumi.set(__self__, "amount", amount)
+        pulumi.set(__self__, "capacity", capacity)
+        pulumi.set(__self__, "category", category)
 
     @property
     @pulumi.getter
@@ -12768,170 +8546,31 @@ class GetInstancesInstanceResult(dict):
                })
                ```
         """
-        GetInstancesInstanceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            availability_zone=availability_zone,
-            creation_time=creation_time,
-            description=description,
-            disk_device_mappings=disk_device_mappings,
-            eip=eip,
-            id=id,
-            image_id=image_id,
-            instance_charge_type=instance_charge_type,
-            instance_type=instance_type,
-            internet_charge_type=internet_charge_type,
-            internet_max_bandwidth_out=internet_max_bandwidth_out,
-            key_name=key_name,
-            name=name,
-            private_ip=private_ip,
-            public_ip=public_ip,
-            ram_role_name=ram_role_name,
-            region_id=region_id,
-            resource_group_id=resource_group_id,
-            security_groups=security_groups,
-            spot_strategy=spot_strategy,
-            status=status,
-            vpc_id=vpc_id,
-            vswitch_id=vswitch_id,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             availability_zone: Optional[str] = None,
-             creation_time: Optional[str] = None,
-             description: Optional[str] = None,
-             disk_device_mappings: Optional[Sequence['outputs.GetInstancesInstanceDiskDeviceMappingResult']] = None,
-             eip: Optional[str] = None,
-             id: Optional[str] = None,
-             image_id: Optional[str] = None,
-             instance_charge_type: Optional[str] = None,
-             instance_type: Optional[str] = None,
-             internet_charge_type: Optional[str] = None,
-             internet_max_bandwidth_out: Optional[int] = None,
-             key_name: Optional[str] = None,
-             name: Optional[str] = None,
-             private_ip: Optional[str] = None,
-             public_ip: Optional[str] = None,
-             ram_role_name: Optional[str] = None,
-             region_id: Optional[str] = None,
-             resource_group_id: Optional[str] = None,
-             security_groups: Optional[Sequence[str]] = None,
-             spot_strategy: Optional[str] = None,
-             status: Optional[str] = None,
-             vpc_id: Optional[str] = None,
-             vswitch_id: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if availability_zone is None and 'availabilityZone' in kwargs:
-            availability_zone = kwargs['availabilityZone']
-        if availability_zone is None:
-            raise TypeError("Missing 'availability_zone' argument")
-        if creation_time is None and 'creationTime' in kwargs:
-            creation_time = kwargs['creationTime']
-        if creation_time is None:
-            raise TypeError("Missing 'creation_time' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if disk_device_mappings is None and 'diskDeviceMappings' in kwargs:
-            disk_device_mappings = kwargs['diskDeviceMappings']
-        if disk_device_mappings is None:
-            raise TypeError("Missing 'disk_device_mappings' argument")
-        if eip is None:
-            raise TypeError("Missing 'eip' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-        if image_id is None:
-            raise TypeError("Missing 'image_id' argument")
-        if instance_charge_type is None and 'instanceChargeType' in kwargs:
-            instance_charge_type = kwargs['instanceChargeType']
-        if instance_charge_type is None:
-            raise TypeError("Missing 'instance_charge_type' argument")
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if instance_type is None:
-            raise TypeError("Missing 'instance_type' argument")
-        if internet_charge_type is None and 'internetChargeType' in kwargs:
-            internet_charge_type = kwargs['internetChargeType']
-        if internet_charge_type is None:
-            raise TypeError("Missing 'internet_charge_type' argument")
-        if internet_max_bandwidth_out is None and 'internetMaxBandwidthOut' in kwargs:
-            internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
-        if internet_max_bandwidth_out is None:
-            raise TypeError("Missing 'internet_max_bandwidth_out' argument")
-        if key_name is None and 'keyName' in kwargs:
-            key_name = kwargs['keyName']
-        if key_name is None:
-            raise TypeError("Missing 'key_name' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if private_ip is None and 'privateIp' in kwargs:
-            private_ip = kwargs['privateIp']
-        if private_ip is None:
-            raise TypeError("Missing 'private_ip' argument")
-        if public_ip is None and 'publicIp' in kwargs:
-            public_ip = kwargs['publicIp']
-        if public_ip is None:
-            raise TypeError("Missing 'public_ip' argument")
-        if ram_role_name is None and 'ramRoleName' in kwargs:
-            ram_role_name = kwargs['ramRoleName']
-        if ram_role_name is None:
-            raise TypeError("Missing 'ram_role_name' argument")
-        if region_id is None and 'regionId' in kwargs:
-            region_id = kwargs['regionId']
-        if region_id is None:
-            raise TypeError("Missing 'region_id' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if security_groups is None and 'securityGroups' in kwargs:
-            security_groups = kwargs['securityGroups']
-        if security_groups is None:
-            raise TypeError("Missing 'security_groups' argument")
-        if spot_strategy is None and 'spotStrategy' in kwargs:
-            spot_strategy = kwargs['spotStrategy']
-        if spot_strategy is None:
-            raise TypeError("Missing 'spot_strategy' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-
-        _setter("availability_zone", availability_zone)
-        _setter("creation_time", creation_time)
-        _setter("description", description)
-        _setter("disk_device_mappings", disk_device_mappings)
-        _setter("eip", eip)
-        _setter("id", id)
-        _setter("image_id", image_id)
-        _setter("instance_charge_type", instance_charge_type)
-        _setter("instance_type", instance_type)
-        _setter("internet_charge_type", internet_charge_type)
-        _setter("internet_max_bandwidth_out", internet_max_bandwidth_out)
-        _setter("key_name", key_name)
-        _setter("name", name)
-        _setter("private_ip", private_ip)
-        _setter("public_ip", public_ip)
-        _setter("ram_role_name", ram_role_name)
-        _setter("region_id", region_id)
-        _setter("resource_group_id", resource_group_id)
-        _setter("security_groups", security_groups)
-        _setter("spot_strategy", spot_strategy)
-        _setter("status", status)
-        _setter("vpc_id", vpc_id)
-        _setter("vswitch_id", vswitch_id)
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "disk_device_mappings", disk_device_mappings)
+        pulumi.set(__self__, "eip", eip)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
+        pulumi.set(__self__, "key_name", key_name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "private_ip", private_ip)
+        pulumi.set(__self__, "public_ip", public_ip)
+        pulumi.set(__self__, "ram_role_name", ram_role_name)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "security_groups", security_groups)
+        pulumi.set(__self__, "spot_strategy", spot_strategy)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -13152,49 +8791,12 @@ class GetInstancesInstanceDiskDeviceMappingResult(dict):
         :param int size: Size of the created disk.
         :param str type: Cloud disk type: system disk or data disk.
         """
-        GetInstancesInstanceDiskDeviceMappingResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            category=category,
-            device=device,
-            disk_id=disk_id,
-            disk_name=disk_name,
-            size=size,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             category: Optional[str] = None,
-             device: Optional[str] = None,
-             disk_id: Optional[str] = None,
-             disk_name: Optional[str] = None,
-             size: Optional[int] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if category is None:
-            raise TypeError("Missing 'category' argument")
-        if device is None:
-            raise TypeError("Missing 'device' argument")
-        if disk_id is None and 'diskId' in kwargs:
-            disk_id = kwargs['diskId']
-        if disk_id is None:
-            raise TypeError("Missing 'disk_id' argument")
-        if disk_name is None and 'diskName' in kwargs:
-            disk_name = kwargs['diskName']
-        if disk_name is None:
-            raise TypeError("Missing 'disk_name' argument")
-        if size is None:
-            raise TypeError("Missing 'size' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("category", category)
-        _setter("device", device)
-        _setter("disk_id", disk_id)
-        _setter("disk_name", disk_name)
-        _setter("size", size)
-        _setter("type", type)
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "device", device)
+        pulumi.set(__self__, "disk_id", disk_id)
+        pulumi.set(__self__, "disk_name", disk_name)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -13263,58 +8865,13 @@ class GetKeyPairsKeyPairResult(dict):
         :param str resource_group_id: The Id of resource group which the key pair belongs.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
-        GetKeyPairsKeyPairResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            finger_print=finger_print,
-            id=id,
-            instances=instances,
-            key_name=key_name,
-            key_pair_name=key_pair_name,
-            resource_group_id=resource_group_id,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             finger_print: Optional[str] = None,
-             id: Optional[str] = None,
-             instances: Optional[Sequence['outputs.GetKeyPairsKeyPairInstanceResult']] = None,
-             key_name: Optional[str] = None,
-             key_pair_name: Optional[str] = None,
-             resource_group_id: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if finger_print is None and 'fingerPrint' in kwargs:
-            finger_print = kwargs['fingerPrint']
-        if finger_print is None:
-            raise TypeError("Missing 'finger_print' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instances is None:
-            raise TypeError("Missing 'instances' argument")
-        if key_name is None and 'keyName' in kwargs:
-            key_name = kwargs['keyName']
-        if key_name is None:
-            raise TypeError("Missing 'key_name' argument")
-        if key_pair_name is None and 'keyPairName' in kwargs:
-            key_pair_name = kwargs['keyPairName']
-        if key_pair_name is None:
-            raise TypeError("Missing 'key_pair_name' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-
-        _setter("finger_print", finger_print)
-        _setter("id", id)
-        _setter("instances", instances)
-        _setter("key_name", key_name)
-        _setter("key_pair_name", key_pair_name)
-        _setter("resource_group_id", resource_group_id)
-        _setter("tags", tags)
+        pulumi.set(__self__, "finger_print", finger_print)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instances", instances)
+        pulumi.set(__self__, "key_name", key_name)
+        pulumi.set(__self__, "key_pair_name", key_pair_name)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="fingerPrint")
@@ -13394,95 +8951,18 @@ class GetKeyPairsKeyPairInstanceResult(dict):
         :param str public_ip: The public IP address or EIP of the ECS instance.
         :param str vswitch_id: The ID of the VSwitch attached to the ECS instance.
         """
-        GetKeyPairsKeyPairInstanceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            availability_zone=availability_zone,
-            description=description,
-            image_id=image_id,
-            instance_id=instance_id,
-            instance_name=instance_name,
-            instance_type=instance_type,
-            key_name=key_name,
-            private_ip=private_ip,
-            public_ip=public_ip,
-            region_id=region_id,
-            status=status,
-            vswitch_id=vswitch_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             availability_zone: Optional[str] = None,
-             description: Optional[str] = None,
-             image_id: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             instance_name: Optional[str] = None,
-             instance_type: Optional[str] = None,
-             key_name: Optional[str] = None,
-             private_ip: Optional[str] = None,
-             public_ip: Optional[str] = None,
-             region_id: Optional[str] = None,
-             status: Optional[str] = None,
-             vswitch_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if availability_zone is None and 'availabilityZone' in kwargs:
-            availability_zone = kwargs['availabilityZone']
-        if availability_zone is None:
-            raise TypeError("Missing 'availability_zone' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-        if image_id is None:
-            raise TypeError("Missing 'image_id' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_name is None:
-            raise TypeError("Missing 'instance_name' argument")
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if instance_type is None:
-            raise TypeError("Missing 'instance_type' argument")
-        if key_name is None and 'keyName' in kwargs:
-            key_name = kwargs['keyName']
-        if key_name is None:
-            raise TypeError("Missing 'key_name' argument")
-        if private_ip is None and 'privateIp' in kwargs:
-            private_ip = kwargs['privateIp']
-        if private_ip is None:
-            raise TypeError("Missing 'private_ip' argument")
-        if public_ip is None and 'publicIp' in kwargs:
-            public_ip = kwargs['publicIp']
-        if public_ip is None:
-            raise TypeError("Missing 'public_ip' argument")
-        if region_id is None and 'regionId' in kwargs:
-            region_id = kwargs['regionId']
-        if region_id is None:
-            raise TypeError("Missing 'region_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-
-        _setter("availability_zone", availability_zone)
-        _setter("description", description)
-        _setter("image_id", image_id)
-        _setter("instance_id", instance_id)
-        _setter("instance_name", instance_name)
-        _setter("instance_type", instance_type)
-        _setter("key_name", key_name)
-        _setter("private_ip", private_ip)
-        _setter("public_ip", public_ip)
-        _setter("region_id", region_id)
-        _setter("status", status)
-        _setter("vswitch_id", vswitch_id)
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "key_name", key_name)
+        pulumi.set(__self__, "private_ip", private_ip)
+        pulumi.set(__self__, "public_ip", public_ip)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -13584,58 +9064,13 @@ class GetKeyPairsPairResult(dict):
         :param str resource_group_id: The Id of resource group which the key pair belongs.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
-        GetKeyPairsPairResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            finger_print=finger_print,
-            id=id,
-            instances=instances,
-            key_name=key_name,
-            key_pair_name=key_pair_name,
-            resource_group_id=resource_group_id,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             finger_print: Optional[str] = None,
-             id: Optional[str] = None,
-             instances: Optional[Sequence['outputs.GetKeyPairsPairInstanceResult']] = None,
-             key_name: Optional[str] = None,
-             key_pair_name: Optional[str] = None,
-             resource_group_id: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if finger_print is None and 'fingerPrint' in kwargs:
-            finger_print = kwargs['fingerPrint']
-        if finger_print is None:
-            raise TypeError("Missing 'finger_print' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instances is None:
-            raise TypeError("Missing 'instances' argument")
-        if key_name is None and 'keyName' in kwargs:
-            key_name = kwargs['keyName']
-        if key_name is None:
-            raise TypeError("Missing 'key_name' argument")
-        if key_pair_name is None and 'keyPairName' in kwargs:
-            key_pair_name = kwargs['keyPairName']
-        if key_pair_name is None:
-            raise TypeError("Missing 'key_pair_name' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-
-        _setter("finger_print", finger_print)
-        _setter("id", id)
-        _setter("instances", instances)
-        _setter("key_name", key_name)
-        _setter("key_pair_name", key_pair_name)
-        _setter("resource_group_id", resource_group_id)
-        _setter("tags", tags)
+        pulumi.set(__self__, "finger_print", finger_print)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instances", instances)
+        pulumi.set(__self__, "key_name", key_name)
+        pulumi.set(__self__, "key_pair_name", key_pair_name)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="fingerPrint")
@@ -13715,95 +9150,18 @@ class GetKeyPairsPairInstanceResult(dict):
         :param str public_ip: The public IP address or EIP of the ECS instance.
         :param str vswitch_id: The ID of the VSwitch attached to the ECS instance.
         """
-        GetKeyPairsPairInstanceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            availability_zone=availability_zone,
-            description=description,
-            image_id=image_id,
-            instance_id=instance_id,
-            instance_name=instance_name,
-            instance_type=instance_type,
-            key_name=key_name,
-            private_ip=private_ip,
-            public_ip=public_ip,
-            region_id=region_id,
-            status=status,
-            vswitch_id=vswitch_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             availability_zone: Optional[str] = None,
-             description: Optional[str] = None,
-             image_id: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             instance_name: Optional[str] = None,
-             instance_type: Optional[str] = None,
-             key_name: Optional[str] = None,
-             private_ip: Optional[str] = None,
-             public_ip: Optional[str] = None,
-             region_id: Optional[str] = None,
-             status: Optional[str] = None,
-             vswitch_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if availability_zone is None and 'availabilityZone' in kwargs:
-            availability_zone = kwargs['availabilityZone']
-        if availability_zone is None:
-            raise TypeError("Missing 'availability_zone' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-        if image_id is None:
-            raise TypeError("Missing 'image_id' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_name is None:
-            raise TypeError("Missing 'instance_name' argument")
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if instance_type is None:
-            raise TypeError("Missing 'instance_type' argument")
-        if key_name is None and 'keyName' in kwargs:
-            key_name = kwargs['keyName']
-        if key_name is None:
-            raise TypeError("Missing 'key_name' argument")
-        if private_ip is None and 'privateIp' in kwargs:
-            private_ip = kwargs['privateIp']
-        if private_ip is None:
-            raise TypeError("Missing 'private_ip' argument")
-        if public_ip is None and 'publicIp' in kwargs:
-            public_ip = kwargs['publicIp']
-        if public_ip is None:
-            raise TypeError("Missing 'public_ip' argument")
-        if region_id is None and 'regionId' in kwargs:
-            region_id = kwargs['regionId']
-        if region_id is None:
-            raise TypeError("Missing 'region_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-
-        _setter("availability_zone", availability_zone)
-        _setter("description", description)
-        _setter("image_id", image_id)
-        _setter("instance_id", instance_id)
-        _setter("instance_name", instance_name)
-        _setter("instance_type", instance_type)
-        _setter("key_name", key_name)
-        _setter("private_ip", private_ip)
-        _setter("public_ip", public_ip)
-        _setter("region_id", region_id)
-        _setter("status", status)
-        _setter("vswitch_id", vswitch_id)
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "key_name", key_name)
+        pulumi.set(__self__, "private_ip", private_ip)
+        pulumi.set(__self__, "public_ip", public_ip)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -13934,190 +9292,33 @@ class GetNetworkInterfacesInterfaceResult(dict):
         :param str vswitch_id: ID of the VSwitch that the ENI is linked to.
         :param str zone_id: ID of the availability zone that the ENI belongs to.
         """
-        GetNetworkInterfacesInterfaceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            associated_public_ips=associated_public_ips,
-            creation_time=creation_time,
-            description=description,
-            id=id,
-            instance_id=instance_id,
-            mac=mac,
-            name=name,
-            network_interface_id=network_interface_id,
-            network_interface_name=network_interface_name,
-            network_interface_traffic_mode=network_interface_traffic_mode,
-            owner_id=owner_id,
-            primary_ip_address=primary_ip_address,
-            private_ip=private_ip,
-            private_ip_addresses=private_ip_addresses,
-            private_ips=private_ips,
-            queue_number=queue_number,
-            resource_group_id=resource_group_id,
-            security_group_ids=security_group_ids,
-            security_groups=security_groups,
-            service_id=service_id,
-            service_managed=service_managed,
-            status=status,
-            tags=tags,
-            type=type,
-            vpc_id=vpc_id,
-            vswitch_id=vswitch_id,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             associated_public_ips: Optional[Sequence['outputs.GetNetworkInterfacesInterfaceAssociatedPublicIpResult']] = None,
-             creation_time: Optional[str] = None,
-             description: Optional[str] = None,
-             id: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             mac: Optional[str] = None,
-             name: Optional[str] = None,
-             network_interface_id: Optional[str] = None,
-             network_interface_name: Optional[str] = None,
-             network_interface_traffic_mode: Optional[str] = None,
-             owner_id: Optional[str] = None,
-             primary_ip_address: Optional[str] = None,
-             private_ip: Optional[str] = None,
-             private_ip_addresses: Optional[Sequence[str]] = None,
-             private_ips: Optional[Sequence[str]] = None,
-             queue_number: Optional[int] = None,
-             resource_group_id: Optional[str] = None,
-             security_group_ids: Optional[Sequence[str]] = None,
-             security_groups: Optional[Sequence[str]] = None,
-             service_id: Optional[int] = None,
-             service_managed: Optional[bool] = None,
-             status: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             type: Optional[str] = None,
-             vpc_id: Optional[str] = None,
-             vswitch_id: Optional[str] = None,
-             zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if associated_public_ips is None and 'associatedPublicIps' in kwargs:
-            associated_public_ips = kwargs['associatedPublicIps']
-        if associated_public_ips is None:
-            raise TypeError("Missing 'associated_public_ips' argument")
-        if creation_time is None and 'creationTime' in kwargs:
-            creation_time = kwargs['creationTime']
-        if creation_time is None:
-            raise TypeError("Missing 'creation_time' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if mac is None:
-            raise TypeError("Missing 'mac' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if network_interface_id is None and 'networkInterfaceId' in kwargs:
-            network_interface_id = kwargs['networkInterfaceId']
-        if network_interface_id is None:
-            raise TypeError("Missing 'network_interface_id' argument")
-        if network_interface_name is None and 'networkInterfaceName' in kwargs:
-            network_interface_name = kwargs['networkInterfaceName']
-        if network_interface_name is None:
-            raise TypeError("Missing 'network_interface_name' argument")
-        if network_interface_traffic_mode is None and 'networkInterfaceTrafficMode' in kwargs:
-            network_interface_traffic_mode = kwargs['networkInterfaceTrafficMode']
-        if network_interface_traffic_mode is None:
-            raise TypeError("Missing 'network_interface_traffic_mode' argument")
-        if owner_id is None and 'ownerId' in kwargs:
-            owner_id = kwargs['ownerId']
-        if owner_id is None:
-            raise TypeError("Missing 'owner_id' argument")
-        if primary_ip_address is None and 'primaryIpAddress' in kwargs:
-            primary_ip_address = kwargs['primaryIpAddress']
-        if primary_ip_address is None:
-            raise TypeError("Missing 'primary_ip_address' argument")
-        if private_ip is None and 'privateIp' in kwargs:
-            private_ip = kwargs['privateIp']
-        if private_ip is None:
-            raise TypeError("Missing 'private_ip' argument")
-        if private_ip_addresses is None and 'privateIpAddresses' in kwargs:
-            private_ip_addresses = kwargs['privateIpAddresses']
-        if private_ip_addresses is None:
-            raise TypeError("Missing 'private_ip_addresses' argument")
-        if private_ips is None and 'privateIps' in kwargs:
-            private_ips = kwargs['privateIps']
-        if private_ips is None:
-            raise TypeError("Missing 'private_ips' argument")
-        if queue_number is None and 'queueNumber' in kwargs:
-            queue_number = kwargs['queueNumber']
-        if queue_number is None:
-            raise TypeError("Missing 'queue_number' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if security_group_ids is None and 'securityGroupIds' in kwargs:
-            security_group_ids = kwargs['securityGroupIds']
-        if security_group_ids is None:
-            raise TypeError("Missing 'security_group_ids' argument")
-        if security_groups is None and 'securityGroups' in kwargs:
-            security_groups = kwargs['securityGroups']
-        if security_groups is None:
-            raise TypeError("Missing 'security_groups' argument")
-        if service_id is None and 'serviceId' in kwargs:
-            service_id = kwargs['serviceId']
-        if service_id is None:
-            raise TypeError("Missing 'service_id' argument")
-        if service_managed is None and 'serviceManaged' in kwargs:
-            service_managed = kwargs['serviceManaged']
-        if service_managed is None:
-            raise TypeError("Missing 'service_managed' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("associated_public_ips", associated_public_ips)
-        _setter("creation_time", creation_time)
-        _setter("description", description)
-        _setter("id", id)
-        _setter("instance_id", instance_id)
-        _setter("mac", mac)
-        _setter("name", name)
-        _setter("network_interface_id", network_interface_id)
-        _setter("network_interface_name", network_interface_name)
-        _setter("network_interface_traffic_mode", network_interface_traffic_mode)
-        _setter("owner_id", owner_id)
-        _setter("primary_ip_address", primary_ip_address)
-        _setter("private_ip", private_ip)
-        _setter("private_ip_addresses", private_ip_addresses)
-        _setter("private_ips", private_ips)
-        _setter("queue_number", queue_number)
-        _setter("resource_group_id", resource_group_id)
-        _setter("security_group_ids", security_group_ids)
-        _setter("security_groups", security_groups)
-        _setter("service_id", service_id)
-        _setter("service_managed", service_managed)
-        _setter("status", status)
-        _setter("tags", tags)
-        _setter("type", type)
-        _setter("vpc_id", vpc_id)
-        _setter("vswitch_id", vswitch_id)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "associated_public_ips", associated_public_ips)
+        pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "mac", mac)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network_interface_id", network_interface_id)
+        pulumi.set(__self__, "network_interface_name", network_interface_name)
+        pulumi.set(__self__, "network_interface_traffic_mode", network_interface_traffic_mode)
+        pulumi.set(__self__, "owner_id", owner_id)
+        pulumi.set(__self__, "primary_ip_address", primary_ip_address)
+        pulumi.set(__self__, "private_ip", private_ip)
+        pulumi.set(__self__, "private_ip_addresses", private_ip_addresses)
+        pulumi.set(__self__, "private_ips", private_ips)
+        pulumi.set(__self__, "queue_number", queue_number)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "security_group_ids", security_group_ids)
+        pulumi.set(__self__, "security_groups", security_groups)
+        pulumi.set(__self__, "service_id", service_id)
+        pulumi.set(__self__, "service_managed", service_managed)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="associatedPublicIps")
@@ -14304,22 +9505,7 @@ class GetNetworkInterfacesInterfaceResult(dict):
 class GetNetworkInterfacesInterfaceAssociatedPublicIpResult(dict):
     def __init__(__self__, *,
                  public_ip_address: str):
-        GetNetworkInterfacesInterfaceAssociatedPublicIpResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            public_ip_address=public_ip_address,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             public_ip_address: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if public_ip_address is None and 'publicIpAddress' in kwargs:
-            public_ip_address = kwargs['publicIpAddress']
-        if public_ip_address is None:
-            raise TypeError("Missing 'public_ip_address' argument")
-
-        _setter("public_ip_address", public_ip_address)
+        pulumi.set(__self__, "public_ip_address", public_ip_address)
 
     @property
     @pulumi.getter(name="publicIpAddress")
@@ -14358,98 +9544,19 @@ class GetSecurityGroupRulesRuleResult(dict):
         :param str source_group_id: Source security group ID for ingress authorization.
         :param str source_group_owner_account: Alibaba Cloud account of the source security group.
         """
-        GetSecurityGroupRulesRuleResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            dest_cidr_ip=dest_cidr_ip,
-            dest_group_id=dest_group_id,
-            dest_group_owner_account=dest_group_owner_account,
-            direction=direction,
-            ip_protocol=ip_protocol,
-            nic_type=nic_type,
-            policy=policy,
-            port_range=port_range,
-            priority=priority,
-            source_cidr_ip=source_cidr_ip,
-            source_group_id=source_group_id,
-            source_group_owner_account=source_group_owner_account,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[str] = None,
-             dest_cidr_ip: Optional[str] = None,
-             dest_group_id: Optional[str] = None,
-             dest_group_owner_account: Optional[str] = None,
-             direction: Optional[str] = None,
-             ip_protocol: Optional[str] = None,
-             nic_type: Optional[str] = None,
-             policy: Optional[str] = None,
-             port_range: Optional[str] = None,
-             priority: Optional[int] = None,
-             source_cidr_ip: Optional[str] = None,
-             source_group_id: Optional[str] = None,
-             source_group_owner_account: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if dest_cidr_ip is None and 'destCidrIp' in kwargs:
-            dest_cidr_ip = kwargs['destCidrIp']
-        if dest_cidr_ip is None:
-            raise TypeError("Missing 'dest_cidr_ip' argument")
-        if dest_group_id is None and 'destGroupId' in kwargs:
-            dest_group_id = kwargs['destGroupId']
-        if dest_group_id is None:
-            raise TypeError("Missing 'dest_group_id' argument")
-        if dest_group_owner_account is None and 'destGroupOwnerAccount' in kwargs:
-            dest_group_owner_account = kwargs['destGroupOwnerAccount']
-        if dest_group_owner_account is None:
-            raise TypeError("Missing 'dest_group_owner_account' argument")
-        if direction is None:
-            raise TypeError("Missing 'direction' argument")
-        if ip_protocol is None and 'ipProtocol' in kwargs:
-            ip_protocol = kwargs['ipProtocol']
-        if ip_protocol is None:
-            raise TypeError("Missing 'ip_protocol' argument")
-        if nic_type is None and 'nicType' in kwargs:
-            nic_type = kwargs['nicType']
-        if nic_type is None:
-            raise TypeError("Missing 'nic_type' argument")
-        if policy is None:
-            raise TypeError("Missing 'policy' argument")
-        if port_range is None and 'portRange' in kwargs:
-            port_range = kwargs['portRange']
-        if port_range is None:
-            raise TypeError("Missing 'port_range' argument")
-        if priority is None:
-            raise TypeError("Missing 'priority' argument")
-        if source_cidr_ip is None and 'sourceCidrIp' in kwargs:
-            source_cidr_ip = kwargs['sourceCidrIp']
-        if source_cidr_ip is None:
-            raise TypeError("Missing 'source_cidr_ip' argument")
-        if source_group_id is None and 'sourceGroupId' in kwargs:
-            source_group_id = kwargs['sourceGroupId']
-        if source_group_id is None:
-            raise TypeError("Missing 'source_group_id' argument")
-        if source_group_owner_account is None and 'sourceGroupOwnerAccount' in kwargs:
-            source_group_owner_account = kwargs['sourceGroupOwnerAccount']
-        if source_group_owner_account is None:
-            raise TypeError("Missing 'source_group_owner_account' argument")
-
-        _setter("description", description)
-        _setter("dest_cidr_ip", dest_cidr_ip)
-        _setter("dest_group_id", dest_group_id)
-        _setter("dest_group_owner_account", dest_group_owner_account)
-        _setter("direction", direction)
-        _setter("ip_protocol", ip_protocol)
-        _setter("nic_type", nic_type)
-        _setter("policy", policy)
-        _setter("port_range", port_range)
-        _setter("priority", priority)
-        _setter("source_cidr_ip", source_cidr_ip)
-        _setter("source_group_id", source_group_id)
-        _setter("source_group_owner_account", source_group_owner_account)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "dest_cidr_ip", dest_cidr_ip)
+        pulumi.set(__self__, "dest_group_id", dest_group_id)
+        pulumi.set(__self__, "dest_group_owner_account", dest_group_owner_account)
+        pulumi.set(__self__, "direction", direction)
+        pulumi.set(__self__, "ip_protocol", ip_protocol)
+        pulumi.set(__self__, "nic_type", nic_type)
+        pulumi.set(__self__, "policy", policy)
+        pulumi.set(__self__, "port_range", port_range)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "source_cidr_ip", source_cidr_ip)
+        pulumi.set(__self__, "source_group_id", source_group_id)
+        pulumi.set(__self__, "source_group_owner_account", source_group_owner_account)
 
     @property
     @pulumi.getter
@@ -14588,69 +9695,16 @@ class GetSecurityGroupsGroupResult(dict):
                })
                ```
         """
-        GetSecurityGroupsGroupResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            creation_time=creation_time,
-            description=description,
-            id=id,
-            inner_access=inner_access,
-            name=name,
-            resource_group_id=resource_group_id,
-            security_group_type=security_group_type,
-            vpc_id=vpc_id,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             creation_time: Optional[str] = None,
-             description: Optional[str] = None,
-             id: Optional[str] = None,
-             inner_access: Optional[bool] = None,
-             name: Optional[str] = None,
-             resource_group_id: Optional[str] = None,
-             security_group_type: Optional[str] = None,
-             vpc_id: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if creation_time is None and 'creationTime' in kwargs:
-            creation_time = kwargs['creationTime']
-        if creation_time is None:
-            raise TypeError("Missing 'creation_time' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if inner_access is None and 'innerAccess' in kwargs:
-            inner_access = kwargs['innerAccess']
-        if inner_access is None:
-            raise TypeError("Missing 'inner_access' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if security_group_type is None and 'securityGroupType' in kwargs:
-            security_group_type = kwargs['securityGroupType']
-        if security_group_type is None:
-            raise TypeError("Missing 'security_group_type' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-
-        _setter("creation_time", creation_time)
-        _setter("description", description)
-        _setter("id", id)
-        _setter("inner_access", inner_access)
-        _setter("name", name)
-        _setter("resource_group_id", resource_group_id)
-        _setter("security_group_type", security_group_type)
-        _setter("vpc_id", vpc_id)
+        pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "inner_access", inner_access)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "security_group_type", security_group_type)
+        pulumi.set(__self__, "vpc_id", vpc_id)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="creationTime")
@@ -14780,177 +9834,32 @@ class GetSnapshotsSnapshotResult(dict):
         :param Mapping[str, Any] tags: A map of tags assigned to the snapshot.
         :param str usage: Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
         """
-        GetSnapshotsSnapshotResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            category=category,
-            creation_time=creation_time,
-            description=description,
-            disk_id=disk_id,
-            encrypted=encrypted,
-            id=id,
-            instant_access=instant_access,
-            instant_access_retention_days=instant_access_retention_days,
-            name=name,
-            product_code=product_code,
-            progress=progress,
-            remain_time=remain_time,
-            resource_group_id=resource_group_id,
-            retention_days=retention_days,
-            snapshot_id=snapshot_id,
-            snapshot_name=snapshot_name,
-            snapshot_sn=snapshot_sn,
-            snapshot_type=snapshot_type,
-            source_disk_id=source_disk_id,
-            source_disk_size=source_disk_size,
-            source_disk_type=source_disk_type,
-            source_storage_type=source_storage_type,
-            status=status,
-            tags=tags,
-            type=type,
-            usage=usage,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             category: Optional[str] = None,
-             creation_time: Optional[str] = None,
-             description: Optional[str] = None,
-             disk_id: Optional[str] = None,
-             encrypted: Optional[bool] = None,
-             id: Optional[str] = None,
-             instant_access: Optional[bool] = None,
-             instant_access_retention_days: Optional[int] = None,
-             name: Optional[str] = None,
-             product_code: Optional[str] = None,
-             progress: Optional[str] = None,
-             remain_time: Optional[int] = None,
-             resource_group_id: Optional[str] = None,
-             retention_days: Optional[int] = None,
-             snapshot_id: Optional[str] = None,
-             snapshot_name: Optional[str] = None,
-             snapshot_sn: Optional[str] = None,
-             snapshot_type: Optional[str] = None,
-             source_disk_id: Optional[str] = None,
-             source_disk_size: Optional[str] = None,
-             source_disk_type: Optional[str] = None,
-             source_storage_type: Optional[str] = None,
-             status: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             type: Optional[str] = None,
-             usage: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if category is None:
-            raise TypeError("Missing 'category' argument")
-        if creation_time is None and 'creationTime' in kwargs:
-            creation_time = kwargs['creationTime']
-        if creation_time is None:
-            raise TypeError("Missing 'creation_time' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if disk_id is None and 'diskId' in kwargs:
-            disk_id = kwargs['diskId']
-        if disk_id is None:
-            raise TypeError("Missing 'disk_id' argument")
-        if encrypted is None:
-            raise TypeError("Missing 'encrypted' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instant_access is None and 'instantAccess' in kwargs:
-            instant_access = kwargs['instantAccess']
-        if instant_access is None:
-            raise TypeError("Missing 'instant_access' argument")
-        if instant_access_retention_days is None and 'instantAccessRetentionDays' in kwargs:
-            instant_access_retention_days = kwargs['instantAccessRetentionDays']
-        if instant_access_retention_days is None:
-            raise TypeError("Missing 'instant_access_retention_days' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if product_code is None and 'productCode' in kwargs:
-            product_code = kwargs['productCode']
-        if product_code is None:
-            raise TypeError("Missing 'product_code' argument")
-        if progress is None:
-            raise TypeError("Missing 'progress' argument")
-        if remain_time is None and 'remainTime' in kwargs:
-            remain_time = kwargs['remainTime']
-        if remain_time is None:
-            raise TypeError("Missing 'remain_time' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if retention_days is None and 'retentionDays' in kwargs:
-            retention_days = kwargs['retentionDays']
-        if retention_days is None:
-            raise TypeError("Missing 'retention_days' argument")
-        if snapshot_id is None and 'snapshotId' in kwargs:
-            snapshot_id = kwargs['snapshotId']
-        if snapshot_id is None:
-            raise TypeError("Missing 'snapshot_id' argument")
-        if snapshot_name is None and 'snapshotName' in kwargs:
-            snapshot_name = kwargs['snapshotName']
-        if snapshot_name is None:
-            raise TypeError("Missing 'snapshot_name' argument")
-        if snapshot_sn is None and 'snapshotSn' in kwargs:
-            snapshot_sn = kwargs['snapshotSn']
-        if snapshot_sn is None:
-            raise TypeError("Missing 'snapshot_sn' argument")
-        if snapshot_type is None and 'snapshotType' in kwargs:
-            snapshot_type = kwargs['snapshotType']
-        if snapshot_type is None:
-            raise TypeError("Missing 'snapshot_type' argument")
-        if source_disk_id is None and 'sourceDiskId' in kwargs:
-            source_disk_id = kwargs['sourceDiskId']
-        if source_disk_id is None:
-            raise TypeError("Missing 'source_disk_id' argument")
-        if source_disk_size is None and 'sourceDiskSize' in kwargs:
-            source_disk_size = kwargs['sourceDiskSize']
-        if source_disk_size is None:
-            raise TypeError("Missing 'source_disk_size' argument")
-        if source_disk_type is None and 'sourceDiskType' in kwargs:
-            source_disk_type = kwargs['sourceDiskType']
-        if source_disk_type is None:
-            raise TypeError("Missing 'source_disk_type' argument")
-        if source_storage_type is None and 'sourceStorageType' in kwargs:
-            source_storage_type = kwargs['sourceStorageType']
-        if source_storage_type is None:
-            raise TypeError("Missing 'source_storage_type' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if usage is None:
-            raise TypeError("Missing 'usage' argument")
-
-        _setter("category", category)
-        _setter("creation_time", creation_time)
-        _setter("description", description)
-        _setter("disk_id", disk_id)
-        _setter("encrypted", encrypted)
-        _setter("id", id)
-        _setter("instant_access", instant_access)
-        _setter("instant_access_retention_days", instant_access_retention_days)
-        _setter("name", name)
-        _setter("product_code", product_code)
-        _setter("progress", progress)
-        _setter("remain_time", remain_time)
-        _setter("resource_group_id", resource_group_id)
-        _setter("retention_days", retention_days)
-        _setter("snapshot_id", snapshot_id)
-        _setter("snapshot_name", snapshot_name)
-        _setter("snapshot_sn", snapshot_sn)
-        _setter("snapshot_type", snapshot_type)
-        _setter("source_disk_id", source_disk_id)
-        _setter("source_disk_size", source_disk_size)
-        _setter("source_disk_type", source_disk_type)
-        _setter("source_storage_type", source_storage_type)
-        _setter("status", status)
-        _setter("tags", tags)
-        _setter("type", type)
-        _setter("usage", usage)
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "disk_id", disk_id)
+        pulumi.set(__self__, "encrypted", encrypted)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instant_access", instant_access)
+        pulumi.set(__self__, "instant_access_retention_days", instant_access_retention_days)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "product_code", product_code)
+        pulumi.set(__self__, "progress", progress)
+        pulumi.set(__self__, "remain_time", remain_time)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "retention_days", retention_days)
+        pulumi.set(__self__, "snapshot_id", snapshot_id)
+        pulumi.set(__self__, "snapshot_name", snapshot_name)
+        pulumi.set(__self__, "snapshot_sn", snapshot_sn)
+        pulumi.set(__self__, "snapshot_type", snapshot_type)
+        pulumi.set(__self__, "source_disk_id", source_disk_id)
+        pulumi.set(__self__, "source_disk_size", source_disk_size)
+        pulumi.set(__self__, "source_disk_type", source_disk_type)
+        pulumi.set(__self__, "source_storage_type", source_storage_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "usage", usage)
 
     @property
     @pulumi.getter

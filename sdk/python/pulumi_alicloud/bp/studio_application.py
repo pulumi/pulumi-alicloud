@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,53 +33,18 @@ class StudioApplicationArgs:
         :param pulumi.Input[str] resource_group_id: The id of the resource group.
         :param pulumi.Input[Mapping[str, Any]] variables: The variables of the application.
         """
-        StudioApplicationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            application_name=application_name,
-            template_id=template_id,
-            area_id=area_id,
-            configuration=configuration,
-            instances=instances,
-            resource_group_id=resource_group_id,
-            variables=variables,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             application_name: Optional[pulumi.Input[str]] = None,
-             template_id: Optional[pulumi.Input[str]] = None,
-             area_id: Optional[pulumi.Input[str]] = None,
-             configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             instances: Optional[pulumi.Input[Sequence[pulumi.Input['StudioApplicationInstanceArgs']]]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if application_name is None and 'applicationName' in kwargs:
-            application_name = kwargs['applicationName']
-        if application_name is None:
-            raise TypeError("Missing 'application_name' argument")
-        if template_id is None and 'templateId' in kwargs:
-            template_id = kwargs['templateId']
-        if template_id is None:
-            raise TypeError("Missing 'template_id' argument")
-        if area_id is None and 'areaId' in kwargs:
-            area_id = kwargs['areaId']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-
-        _setter("application_name", application_name)
-        _setter("template_id", template_id)
+        pulumi.set(__self__, "application_name", application_name)
+        pulumi.set(__self__, "template_id", template_id)
         if area_id is not None:
-            _setter("area_id", area_id)
+            pulumi.set(__self__, "area_id", area_id)
         if configuration is not None:
-            _setter("configuration", configuration)
+            pulumi.set(__self__, "configuration", configuration)
         if instances is not None:
-            _setter("instances", instances)
+            pulumi.set(__self__, "instances", instances)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if variables is not None:
-            _setter("variables", variables)
+            pulumi.set(__self__, "variables", variables)
 
     @property
     @pulumi.getter(name="applicationName")
@@ -188,55 +153,22 @@ class _StudioApplicationState:
         :param pulumi.Input[str] template_id: The id of the template.
         :param pulumi.Input[Mapping[str, Any]] variables: The variables of the application.
         """
-        _StudioApplicationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            application_name=application_name,
-            area_id=area_id,
-            configuration=configuration,
-            instances=instances,
-            resource_group_id=resource_group_id,
-            status=status,
-            template_id=template_id,
-            variables=variables,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             application_name: Optional[pulumi.Input[str]] = None,
-             area_id: Optional[pulumi.Input[str]] = None,
-             configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             instances: Optional[pulumi.Input[Sequence[pulumi.Input['StudioApplicationInstanceArgs']]]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             template_id: Optional[pulumi.Input[str]] = None,
-             variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if application_name is None and 'applicationName' in kwargs:
-            application_name = kwargs['applicationName']
-        if area_id is None and 'areaId' in kwargs:
-            area_id = kwargs['areaId']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if template_id is None and 'templateId' in kwargs:
-            template_id = kwargs['templateId']
-
         if application_name is not None:
-            _setter("application_name", application_name)
+            pulumi.set(__self__, "application_name", application_name)
         if area_id is not None:
-            _setter("area_id", area_id)
+            pulumi.set(__self__, "area_id", area_id)
         if configuration is not None:
-            _setter("configuration", configuration)
+            pulumi.set(__self__, "configuration", configuration)
         if instances is not None:
-            _setter("instances", instances)
+            pulumi.set(__self__, "instances", instances)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if template_id is not None:
-            _setter("template_id", template_id)
+            pulumi.set(__self__, "template_id", template_id)
         if variables is not None:
-            _setter("variables", variables)
+            pulumi.set(__self__, "variables", variables)
 
     @property
     @pulumi.getter(name="applicationName")
@@ -456,10 +388,6 @@ class StudioApplication(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            StudioApplicationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -58,82 +58,23 @@ class BastionHostInstanceAdAuthServer(dict):
                  mobile_mapping: Optional[str] = None,
                  name_mapping: Optional[str] = None,
                  standby_server: Optional[str] = None):
-        BastionHostInstanceAdAuthServer._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account=account,
-            base_dn=base_dn,
-            domain=domain,
-            is_ssl=is_ssl,
-            password=password,
-            port=port,
-            server=server,
-            email_mapping=email_mapping,
-            filter=filter,
-            mobile_mapping=mobile_mapping,
-            name_mapping=name_mapping,
-            standby_server=standby_server,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account: Optional[str] = None,
-             base_dn: Optional[str] = None,
-             domain: Optional[str] = None,
-             is_ssl: Optional[bool] = None,
-             password: Optional[str] = None,
-             port: Optional[int] = None,
-             server: Optional[str] = None,
-             email_mapping: Optional[str] = None,
-             filter: Optional[str] = None,
-             mobile_mapping: Optional[str] = None,
-             name_mapping: Optional[str] = None,
-             standby_server: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account is None:
-            raise TypeError("Missing 'account' argument")
-        if base_dn is None and 'baseDn' in kwargs:
-            base_dn = kwargs['baseDn']
-        if base_dn is None:
-            raise TypeError("Missing 'base_dn' argument")
-        if domain is None:
-            raise TypeError("Missing 'domain' argument")
-        if is_ssl is None and 'isSsl' in kwargs:
-            is_ssl = kwargs['isSsl']
-        if is_ssl is None:
-            raise TypeError("Missing 'is_ssl' argument")
-        if password is None:
-            raise TypeError("Missing 'password' argument")
-        if port is None:
-            raise TypeError("Missing 'port' argument")
-        if server is None:
-            raise TypeError("Missing 'server' argument")
-        if email_mapping is None and 'emailMapping' in kwargs:
-            email_mapping = kwargs['emailMapping']
-        if mobile_mapping is None and 'mobileMapping' in kwargs:
-            mobile_mapping = kwargs['mobileMapping']
-        if name_mapping is None and 'nameMapping' in kwargs:
-            name_mapping = kwargs['nameMapping']
-        if standby_server is None and 'standbyServer' in kwargs:
-            standby_server = kwargs['standbyServer']
-
-        _setter("account", account)
-        _setter("base_dn", base_dn)
-        _setter("domain", domain)
-        _setter("is_ssl", is_ssl)
-        _setter("password", password)
-        _setter("port", port)
-        _setter("server", server)
+        pulumi.set(__self__, "account", account)
+        pulumi.set(__self__, "base_dn", base_dn)
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "is_ssl", is_ssl)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "server", server)
         if email_mapping is not None:
-            _setter("email_mapping", email_mapping)
+            pulumi.set(__self__, "email_mapping", email_mapping)
         if filter is not None:
-            _setter("filter", filter)
+            pulumi.set(__self__, "filter", filter)
         if mobile_mapping is not None:
-            _setter("mobile_mapping", mobile_mapping)
+            pulumi.set(__self__, "mobile_mapping", mobile_mapping)
         if name_mapping is not None:
-            _setter("name_mapping", name_mapping)
+            pulumi.set(__self__, "name_mapping", name_mapping)
         if standby_server is not None:
-            _setter("standby_server", standby_server)
+            pulumi.set(__self__, "standby_server", standby_server)
 
     @property
     @pulumi.getter
@@ -240,82 +181,25 @@ class BastionHostInstanceLdapAuthServer(dict):
                  mobile_mapping: Optional[str] = None,
                  name_mapping: Optional[str] = None,
                  standby_server: Optional[str] = None):
-        BastionHostInstanceLdapAuthServer._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account=account,
-            base_dn=base_dn,
-            password=password,
-            port=port,
-            server=server,
-            email_mapping=email_mapping,
-            filter=filter,
-            is_ssl=is_ssl,
-            login_name_mapping=login_name_mapping,
-            mobile_mapping=mobile_mapping,
-            name_mapping=name_mapping,
-            standby_server=standby_server,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account: Optional[str] = None,
-             base_dn: Optional[str] = None,
-             password: Optional[str] = None,
-             port: Optional[int] = None,
-             server: Optional[str] = None,
-             email_mapping: Optional[str] = None,
-             filter: Optional[str] = None,
-             is_ssl: Optional[bool] = None,
-             login_name_mapping: Optional[str] = None,
-             mobile_mapping: Optional[str] = None,
-             name_mapping: Optional[str] = None,
-             standby_server: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account is None:
-            raise TypeError("Missing 'account' argument")
-        if base_dn is None and 'baseDn' in kwargs:
-            base_dn = kwargs['baseDn']
-        if base_dn is None:
-            raise TypeError("Missing 'base_dn' argument")
-        if password is None:
-            raise TypeError("Missing 'password' argument")
-        if port is None:
-            raise TypeError("Missing 'port' argument")
-        if server is None:
-            raise TypeError("Missing 'server' argument")
-        if email_mapping is None and 'emailMapping' in kwargs:
-            email_mapping = kwargs['emailMapping']
-        if is_ssl is None and 'isSsl' in kwargs:
-            is_ssl = kwargs['isSsl']
-        if login_name_mapping is None and 'loginNameMapping' in kwargs:
-            login_name_mapping = kwargs['loginNameMapping']
-        if mobile_mapping is None and 'mobileMapping' in kwargs:
-            mobile_mapping = kwargs['mobileMapping']
-        if name_mapping is None and 'nameMapping' in kwargs:
-            name_mapping = kwargs['nameMapping']
-        if standby_server is None and 'standbyServer' in kwargs:
-            standby_server = kwargs['standbyServer']
-
-        _setter("account", account)
-        _setter("base_dn", base_dn)
-        _setter("password", password)
-        _setter("port", port)
-        _setter("server", server)
+        pulumi.set(__self__, "account", account)
+        pulumi.set(__self__, "base_dn", base_dn)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "server", server)
         if email_mapping is not None:
-            _setter("email_mapping", email_mapping)
+            pulumi.set(__self__, "email_mapping", email_mapping)
         if filter is not None:
-            _setter("filter", filter)
+            pulumi.set(__self__, "filter", filter)
         if is_ssl is not None:
-            _setter("is_ssl", is_ssl)
+            pulumi.set(__self__, "is_ssl", is_ssl)
         if login_name_mapping is not None:
-            _setter("login_name_mapping", login_name_mapping)
+            pulumi.set(__self__, "login_name_mapping", login_name_mapping)
         if mobile_mapping is not None:
-            _setter("mobile_mapping", mobile_mapping)
+            pulumi.set(__self__, "mobile_mapping", mobile_mapping)
         if name_mapping is not None:
-            _setter("name_mapping", name_mapping)
+            pulumi.set(__self__, "name_mapping", name_mapping)
         if standby_server is not None:
-            _setter("standby_server", standby_server)
+            pulumi.set(__self__, "standby_server", standby_server)
 
     @property
     @pulumi.getter
@@ -391,78 +275,17 @@ class GetBastionHostInstancesInstanceResult(dict):
                  security_group_ids: Sequence[str],
                  user_vswitch_id: str,
                  tags: Optional[Mapping[str, Any]] = None):
-        GetBastionHostInstancesInstanceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            id=id,
-            instance_status=instance_status,
-            license_code=license_code,
-            private_domain=private_domain,
-            public_domain=public_domain,
-            public_network_access=public_network_access,
-            security_group_ids=security_group_ids,
-            user_vswitch_id=user_vswitch_id,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[str] = None,
-             id: Optional[str] = None,
-             instance_status: Optional[str] = None,
-             license_code: Optional[str] = None,
-             private_domain: Optional[str] = None,
-             public_domain: Optional[str] = None,
-             public_network_access: Optional[bool] = None,
-             security_group_ids: Optional[Sequence[str]] = None,
-             user_vswitch_id: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_status is None and 'instanceStatus' in kwargs:
-            instance_status = kwargs['instanceStatus']
-        if instance_status is None:
-            raise TypeError("Missing 'instance_status' argument")
-        if license_code is None and 'licenseCode' in kwargs:
-            license_code = kwargs['licenseCode']
-        if license_code is None:
-            raise TypeError("Missing 'license_code' argument")
-        if private_domain is None and 'privateDomain' in kwargs:
-            private_domain = kwargs['privateDomain']
-        if private_domain is None:
-            raise TypeError("Missing 'private_domain' argument")
-        if public_domain is None and 'publicDomain' in kwargs:
-            public_domain = kwargs['publicDomain']
-        if public_domain is None:
-            raise TypeError("Missing 'public_domain' argument")
-        if public_network_access is None and 'publicNetworkAccess' in kwargs:
-            public_network_access = kwargs['publicNetworkAccess']
-        if public_network_access is None:
-            raise TypeError("Missing 'public_network_access' argument")
-        if security_group_ids is None and 'securityGroupIds' in kwargs:
-            security_group_ids = kwargs['securityGroupIds']
-        if security_group_ids is None:
-            raise TypeError("Missing 'security_group_ids' argument")
-        if user_vswitch_id is None and 'userVswitchId' in kwargs:
-            user_vswitch_id = kwargs['userVswitchId']
-        if user_vswitch_id is None:
-            raise TypeError("Missing 'user_vswitch_id' argument")
-
-        _setter("description", description)
-        _setter("id", id)
-        _setter("instance_status", instance_status)
-        _setter("license_code", license_code)
-        _setter("private_domain", private_domain)
-        _setter("public_domain", public_domain)
-        _setter("public_network_access", public_network_access)
-        _setter("security_group_ids", security_group_ids)
-        _setter("user_vswitch_id", user_vswitch_id)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_status", instance_status)
+        pulumi.set(__self__, "license_code", license_code)
+        pulumi.set(__self__, "private_domain", private_domain)
+        pulumi.set(__self__, "public_domain", public_domain)
+        pulumi.set(__self__, "public_network_access", public_network_access)
+        pulumi.set(__self__, "security_group_ids", security_group_ids)
+        pulumi.set(__self__, "user_vswitch_id", user_vswitch_id)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -527,71 +350,16 @@ class GetDBAuditInstanceInstanceResult(dict):
                  public_network_access: bool,
                  user_vswitch_id: str,
                  tags: Optional[Mapping[str, Any]] = None):
-        GetDBAuditInstanceInstanceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            id=id,
-            instance_status=instance_status,
-            license_code=license_code,
-            private_domain=private_domain,
-            public_domain=public_domain,
-            public_network_access=public_network_access,
-            user_vswitch_id=user_vswitch_id,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[str] = None,
-             id: Optional[str] = None,
-             instance_status: Optional[str] = None,
-             license_code: Optional[str] = None,
-             private_domain: Optional[str] = None,
-             public_domain: Optional[str] = None,
-             public_network_access: Optional[bool] = None,
-             user_vswitch_id: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_status is None and 'instanceStatus' in kwargs:
-            instance_status = kwargs['instanceStatus']
-        if instance_status is None:
-            raise TypeError("Missing 'instance_status' argument")
-        if license_code is None and 'licenseCode' in kwargs:
-            license_code = kwargs['licenseCode']
-        if license_code is None:
-            raise TypeError("Missing 'license_code' argument")
-        if private_domain is None and 'privateDomain' in kwargs:
-            private_domain = kwargs['privateDomain']
-        if private_domain is None:
-            raise TypeError("Missing 'private_domain' argument")
-        if public_domain is None and 'publicDomain' in kwargs:
-            public_domain = kwargs['publicDomain']
-        if public_domain is None:
-            raise TypeError("Missing 'public_domain' argument")
-        if public_network_access is None and 'publicNetworkAccess' in kwargs:
-            public_network_access = kwargs['publicNetworkAccess']
-        if public_network_access is None:
-            raise TypeError("Missing 'public_network_access' argument")
-        if user_vswitch_id is None and 'userVswitchId' in kwargs:
-            user_vswitch_id = kwargs['userVswitchId']
-        if user_vswitch_id is None:
-            raise TypeError("Missing 'user_vswitch_id' argument")
-
-        _setter("description", description)
-        _setter("id", id)
-        _setter("instance_status", instance_status)
-        _setter("license_code", license_code)
-        _setter("private_domain", private_domain)
-        _setter("public_domain", public_domain)
-        _setter("public_network_access", public_network_access)
-        _setter("user_vswitch_id", user_vswitch_id)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_status", instance_status)
+        pulumi.set(__self__, "license_code", license_code)
+        pulumi.set(__self__, "private_domain", private_domain)
+        pulumi.set(__self__, "public_domain", public_domain)
+        pulumi.set(__self__, "public_network_access", public_network_access)
+        pulumi.set(__self__, "user_vswitch_id", user_vswitch_id)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
