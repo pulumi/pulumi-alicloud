@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['FlowArgs', 'Flow']
@@ -27,40 +27,13 @@ class FlowArgs:
         :param pulumi.Input[str] name: The name of the flow. The name must be unique in an Alibaba Cloud account.
         :param pulumi.Input[str] role_arn: The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
         """
-        FlowArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            definition=definition,
-            description=description,
-            type=type,
-            name=name,
-            role_arn=role_arn,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             definition: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             role_arn: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if definition is None:
-            raise TypeError("Missing 'definition' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if role_arn is None and 'roleArn' in kwargs:
-            role_arn = kwargs['roleArn']
-
-        _setter("definition", definition)
-        _setter("description", description)
-        _setter("type", type)
+        pulumi.set(__self__, "definition", definition)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "type", type)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if role_arn is not None:
-            _setter("role_arn", role_arn)
+            pulumi.set(__self__, "role_arn", role_arn)
 
     @property
     @pulumi.getter
@@ -143,49 +116,20 @@ class _FlowState:
         :param pulumi.Input[str] role_arn: The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
         :param pulumi.Input[str] type: The type of the flow. Valid values are `FDL` or `DEFAULT`.
         """
-        _FlowState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            definition=definition,
-            description=description,
-            flow_id=flow_id,
-            last_modified_time=last_modified_time,
-            name=name,
-            role_arn=role_arn,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             definition: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             flow_id: Optional[pulumi.Input[str]] = None,
-             last_modified_time: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             role_arn: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if flow_id is None and 'flowId' in kwargs:
-            flow_id = kwargs['flowId']
-        if last_modified_time is None and 'lastModifiedTime' in kwargs:
-            last_modified_time = kwargs['lastModifiedTime']
-        if role_arn is None and 'roleArn' in kwargs:
-            role_arn = kwargs['roleArn']
-
         if definition is not None:
-            _setter("definition", definition)
+            pulumi.set(__self__, "definition", definition)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if flow_id is not None:
-            _setter("flow_id", flow_id)
+            pulumi.set(__self__, "flow_id", flow_id)
         if last_modified_time is not None:
-            _setter("last_modified_time", last_modified_time)
+            pulumi.set(__self__, "last_modified_time", last_modified_time)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if role_arn is not None:
-            _setter("role_arn", role_arn)
+            pulumi.set(__self__, "role_arn", role_arn)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -407,10 +351,6 @@ class Flow(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            FlowArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

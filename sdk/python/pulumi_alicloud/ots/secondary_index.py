@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SecondaryIndexArgs', 'SecondaryIndex']
@@ -31,63 +31,14 @@ class SecondaryIndexArgs:
         :param pulumi.Input[str] table_name: The name of the OTS table. If changed, a new table would be created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] defined_columns: A list of defined column for index, referenced from Table's primary keys or predefined columns.
         """
-        SecondaryIndexArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            include_base_data=include_base_data,
-            index_name=index_name,
-            index_type=index_type,
-            instance_name=instance_name,
-            primary_keys=primary_keys,
-            table_name=table_name,
-            defined_columns=defined_columns,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             include_base_data: Optional[pulumi.Input[bool]] = None,
-             index_name: Optional[pulumi.Input[str]] = None,
-             index_type: Optional[pulumi.Input[str]] = None,
-             instance_name: Optional[pulumi.Input[str]] = None,
-             primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             table_name: Optional[pulumi.Input[str]] = None,
-             defined_columns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if include_base_data is None and 'includeBaseData' in kwargs:
-            include_base_data = kwargs['includeBaseData']
-        if include_base_data is None:
-            raise TypeError("Missing 'include_base_data' argument")
-        if index_name is None and 'indexName' in kwargs:
-            index_name = kwargs['indexName']
-        if index_name is None:
-            raise TypeError("Missing 'index_name' argument")
-        if index_type is None and 'indexType' in kwargs:
-            index_type = kwargs['indexType']
-        if index_type is None:
-            raise TypeError("Missing 'index_type' argument")
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_name is None:
-            raise TypeError("Missing 'instance_name' argument")
-        if primary_keys is None and 'primaryKeys' in kwargs:
-            primary_keys = kwargs['primaryKeys']
-        if primary_keys is None:
-            raise TypeError("Missing 'primary_keys' argument")
-        if table_name is None and 'tableName' in kwargs:
-            table_name = kwargs['tableName']
-        if table_name is None:
-            raise TypeError("Missing 'table_name' argument")
-        if defined_columns is None and 'definedColumns' in kwargs:
-            defined_columns = kwargs['definedColumns']
-
-        _setter("include_base_data", include_base_data)
-        _setter("index_name", index_name)
-        _setter("index_type", index_type)
-        _setter("instance_name", instance_name)
-        _setter("primary_keys", primary_keys)
-        _setter("table_name", table_name)
+        pulumi.set(__self__, "include_base_data", include_base_data)
+        pulumi.set(__self__, "index_name", index_name)
+        pulumi.set(__self__, "index_type", index_type)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "primary_keys", primary_keys)
+        pulumi.set(__self__, "table_name", table_name)
         if defined_columns is not None:
-            _setter("defined_columns", defined_columns)
+            pulumi.set(__self__, "defined_columns", defined_columns)
 
     @property
     @pulumi.getter(name="includeBaseData")
@@ -194,57 +145,20 @@ class _SecondaryIndexState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] primary_keys: A list of primary keys for index, referenced from Table's primary keys or predefined columns.
         :param pulumi.Input[str] table_name: The name of the OTS table. If changed, a new table would be created.
         """
-        _SecondaryIndexState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            defined_columns=defined_columns,
-            include_base_data=include_base_data,
-            index_name=index_name,
-            index_type=index_type,
-            instance_name=instance_name,
-            primary_keys=primary_keys,
-            table_name=table_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             defined_columns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             include_base_data: Optional[pulumi.Input[bool]] = None,
-             index_name: Optional[pulumi.Input[str]] = None,
-             index_type: Optional[pulumi.Input[str]] = None,
-             instance_name: Optional[pulumi.Input[str]] = None,
-             primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             table_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if defined_columns is None and 'definedColumns' in kwargs:
-            defined_columns = kwargs['definedColumns']
-        if include_base_data is None and 'includeBaseData' in kwargs:
-            include_base_data = kwargs['includeBaseData']
-        if index_name is None and 'indexName' in kwargs:
-            index_name = kwargs['indexName']
-        if index_type is None and 'indexType' in kwargs:
-            index_type = kwargs['indexType']
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if primary_keys is None and 'primaryKeys' in kwargs:
-            primary_keys = kwargs['primaryKeys']
-        if table_name is None and 'tableName' in kwargs:
-            table_name = kwargs['tableName']
-
         if defined_columns is not None:
-            _setter("defined_columns", defined_columns)
+            pulumi.set(__self__, "defined_columns", defined_columns)
         if include_base_data is not None:
-            _setter("include_base_data", include_base_data)
+            pulumi.set(__self__, "include_base_data", include_base_data)
         if index_name is not None:
-            _setter("index_name", index_name)
+            pulumi.set(__self__, "index_name", index_name)
         if index_type is not None:
-            _setter("index_type", index_type)
+            pulumi.set(__self__, "index_type", index_type)
         if instance_name is not None:
-            _setter("instance_name", instance_name)
+            pulumi.set(__self__, "instance_name", instance_name)
         if primary_keys is not None:
-            _setter("primary_keys", primary_keys)
+            pulumi.set(__self__, "primary_keys", primary_keys)
         if table_name is not None:
-            _setter("table_name", table_name)
+            pulumi.set(__self__, "table_name", table_name)
 
     @property
     @pulumi.getter(name="definedColumns")
@@ -540,10 +454,6 @@ class SecondaryIndex(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SecondaryIndexArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

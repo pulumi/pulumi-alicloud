@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ApplicationScaleArgs', 'ApplicationScale']
@@ -25,42 +25,11 @@ class ApplicationScaleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ecu_infos: The IDs of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
         :param pulumi.Input[bool] force_status: This parameter specifies whether to forcibly remove an ECS instance where the application is deployed. It is set as true only after the ECS instance expires. In normal cases, this parameter do not need to be specified.
         """
-        ApplicationScaleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            app_id=app_id,
-            deploy_group=deploy_group,
-            ecu_infos=ecu_infos,
-            force_status=force_status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             app_id: Optional[pulumi.Input[str]] = None,
-             deploy_group: Optional[pulumi.Input[str]] = None,
-             ecu_infos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             force_status: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if app_id is None and 'appId' in kwargs:
-            app_id = kwargs['appId']
-        if app_id is None:
-            raise TypeError("Missing 'app_id' argument")
-        if deploy_group is None and 'deployGroup' in kwargs:
-            deploy_group = kwargs['deployGroup']
-        if deploy_group is None:
-            raise TypeError("Missing 'deploy_group' argument")
-        if ecu_infos is None and 'ecuInfos' in kwargs:
-            ecu_infos = kwargs['ecuInfos']
-        if ecu_infos is None:
-            raise TypeError("Missing 'ecu_infos' argument")
-        if force_status is None and 'forceStatus' in kwargs:
-            force_status = kwargs['forceStatus']
-
-        _setter("app_id", app_id)
-        _setter("deploy_group", deploy_group)
-        _setter("ecu_infos", ecu_infos)
+        pulumi.set(__self__, "app_id", app_id)
+        pulumi.set(__self__, "deploy_group", deploy_group)
+        pulumi.set(__self__, "ecu_infos", ecu_infos)
         if force_status is not None:
-            _setter("force_status", force_status)
+            pulumi.set(__self__, "force_status", force_status)
 
     @property
     @pulumi.getter(name="appId")
@@ -127,45 +96,16 @@ class _ApplicationScaleState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ecu_infos: The IDs of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
         :param pulumi.Input[bool] force_status: This parameter specifies whether to forcibly remove an ECS instance where the application is deployed. It is set as true only after the ECS instance expires. In normal cases, this parameter do not need to be specified.
         """
-        _ApplicationScaleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            app_id=app_id,
-            deploy_group=deploy_group,
-            ecc_info=ecc_info,
-            ecu_infos=ecu_infos,
-            force_status=force_status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             app_id: Optional[pulumi.Input[str]] = None,
-             deploy_group: Optional[pulumi.Input[str]] = None,
-             ecc_info: Optional[pulumi.Input[str]] = None,
-             ecu_infos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             force_status: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if app_id is None and 'appId' in kwargs:
-            app_id = kwargs['appId']
-        if deploy_group is None and 'deployGroup' in kwargs:
-            deploy_group = kwargs['deployGroup']
-        if ecc_info is None and 'eccInfo' in kwargs:
-            ecc_info = kwargs['eccInfo']
-        if ecu_infos is None and 'ecuInfos' in kwargs:
-            ecu_infos = kwargs['ecuInfos']
-        if force_status is None and 'forceStatus' in kwargs:
-            force_status = kwargs['forceStatus']
-
         if app_id is not None:
-            _setter("app_id", app_id)
+            pulumi.set(__self__, "app_id", app_id)
         if deploy_group is not None:
-            _setter("deploy_group", deploy_group)
+            pulumi.set(__self__, "deploy_group", deploy_group)
         if ecc_info is not None:
-            _setter("ecc_info", ecc_info)
+            pulumi.set(__self__, "ecc_info", ecc_info)
         if ecu_infos is not None:
-            _setter("ecu_infos", ecu_infos)
+            pulumi.set(__self__, "ecu_infos", ecu_infos)
         if force_status is not None:
-            _setter("force_status", force_status)
+            pulumi.set(__self__, "force_status", force_status)
 
     @property
     @pulumi.getter(name="appId")
@@ -395,10 +335,6 @@ class ApplicationScale(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ApplicationScaleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

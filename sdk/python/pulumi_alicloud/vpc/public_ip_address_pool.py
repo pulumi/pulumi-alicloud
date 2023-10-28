@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['PublicIpAddressPoolArgs', 'PublicIpAddressPool']
@@ -27,39 +27,16 @@ class PublicIpAddressPoolArgs:
         :param pulumi.Input[str] resource_group_id: The resource group ID of the VPC Public IP address pool.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of PrefixList.
         """
-        PublicIpAddressPoolArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            isp=isp,
-            public_ip_address_pool_name=public_ip_address_pool_name,
-            resource_group_id=resource_group_id,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             isp: Optional[pulumi.Input[str]] = None,
-             public_ip_address_pool_name: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if public_ip_address_pool_name is None and 'publicIpAddressPoolName' in kwargs:
-            public_ip_address_pool_name = kwargs['publicIpAddressPoolName']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if isp is not None:
-            _setter("isp", isp)
+            pulumi.set(__self__, "isp", isp)
         if public_ip_address_pool_name is not None:
-            _setter("public_ip_address_pool_name", public_ip_address_pool_name)
+            pulumi.set(__self__, "public_ip_address_pool_name", public_ip_address_pool_name)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -149,73 +126,28 @@ class _PublicIpAddressPoolState:
         :param pulumi.Input[int] total_ip_num: The total number of public IP address pools.
         :param pulumi.Input[int] used_ip_num: The number of used IP addresses in the public IP address pool.
         """
-        _PublicIpAddressPoolState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            description=description,
-            ip_address_remaining=ip_address_remaining,
-            isp=isp,
-            public_ip_address_pool_id=public_ip_address_pool_id,
-            public_ip_address_pool_name=public_ip_address_pool_name,
-            resource_group_id=resource_group_id,
-            status=status,
-            tags=tags,
-            total_ip_num=total_ip_num,
-            used_ip_num=used_ip_num,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             ip_address_remaining: Optional[pulumi.Input[bool]] = None,
-             isp: Optional[pulumi.Input[str]] = None,
-             public_ip_address_pool_id: Optional[pulumi.Input[str]] = None,
-             public_ip_address_pool_name: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             total_ip_num: Optional[pulumi.Input[int]] = None,
-             used_ip_num: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if ip_address_remaining is None and 'ipAddressRemaining' in kwargs:
-            ip_address_remaining = kwargs['ipAddressRemaining']
-        if public_ip_address_pool_id is None and 'publicIpAddressPoolId' in kwargs:
-            public_ip_address_pool_id = kwargs['publicIpAddressPoolId']
-        if public_ip_address_pool_name is None and 'publicIpAddressPoolName' in kwargs:
-            public_ip_address_pool_name = kwargs['publicIpAddressPoolName']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if total_ip_num is None and 'totalIpNum' in kwargs:
-            total_ip_num = kwargs['totalIpNum']
-        if used_ip_num is None and 'usedIpNum' in kwargs:
-            used_ip_num = kwargs['usedIpNum']
-
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if ip_address_remaining is not None:
-            _setter("ip_address_remaining", ip_address_remaining)
+            pulumi.set(__self__, "ip_address_remaining", ip_address_remaining)
         if isp is not None:
-            _setter("isp", isp)
+            pulumi.set(__self__, "isp", isp)
         if public_ip_address_pool_id is not None:
-            _setter("public_ip_address_pool_id", public_ip_address_pool_id)
+            pulumi.set(__self__, "public_ip_address_pool_id", public_ip_address_pool_id)
         if public_ip_address_pool_name is not None:
-            _setter("public_ip_address_pool_name", public_ip_address_pool_name)
+            pulumi.set(__self__, "public_ip_address_pool_name", public_ip_address_pool_name)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if total_ip_num is not None:
-            _setter("total_ip_num", total_ip_num)
+            pulumi.set(__self__, "total_ip_num", total_ip_num)
         if used_ip_num is not None:
-            _setter("used_ip_num", used_ip_num)
+            pulumi.set(__self__, "used_ip_num", used_ip_num)
 
     @property
     @pulumi.getter(name="createTime")
@@ -452,10 +384,6 @@ class PublicIpAddressPool(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            PublicIpAddressPoolArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

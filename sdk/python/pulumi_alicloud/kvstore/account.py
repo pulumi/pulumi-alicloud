@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AccountArgs', 'Account']
@@ -38,63 +38,20 @@ class AccountArgs:
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a KVStore account. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a KVStore account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
-        AccountArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_name=account_name,
-            instance_id=instance_id,
-            account_password=account_password,
-            account_privilege=account_privilege,
-            account_type=account_type,
-            description=description,
-            kms_encrypted_password=kms_encrypted_password,
-            kms_encryption_context=kms_encryption_context,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_name: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             account_password: Optional[pulumi.Input[str]] = None,
-             account_privilege: Optional[pulumi.Input[str]] = None,
-             account_type: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_name is None and 'accountName' in kwargs:
-            account_name = kwargs['accountName']
-        if account_name is None:
-            raise TypeError("Missing 'account_name' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if account_password is None and 'accountPassword' in kwargs:
-            account_password = kwargs['accountPassword']
-        if account_privilege is None and 'accountPrivilege' in kwargs:
-            account_privilege = kwargs['accountPrivilege']
-        if account_type is None and 'accountType' in kwargs:
-            account_type = kwargs['accountType']
-        if kms_encrypted_password is None and 'kmsEncryptedPassword' in kwargs:
-            kms_encrypted_password = kwargs['kmsEncryptedPassword']
-        if kms_encryption_context is None and 'kmsEncryptionContext' in kwargs:
-            kms_encryption_context = kwargs['kmsEncryptionContext']
-
-        _setter("account_name", account_name)
-        _setter("instance_id", instance_id)
+        pulumi.set(__self__, "account_name", account_name)
+        pulumi.set(__self__, "instance_id", instance_id)
         if account_password is not None:
-            _setter("account_password", account_password)
+            pulumi.set(__self__, "account_password", account_password)
         if account_privilege is not None:
-            _setter("account_privilege", account_privilege)
+            pulumi.set(__self__, "account_privilege", account_privilege)
         if account_type is not None:
-            _setter("account_type", account_type)
+            pulumi.set(__self__, "account_type", account_type)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if kms_encrypted_password is not None:
-            _setter("kms_encrypted_password", kms_encrypted_password)
+            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
-            _setter("kms_encryption_context", kms_encryption_context)
+            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
 
     @property
     @pulumi.getter(name="accountName")
@@ -227,65 +184,24 @@ class _AccountState:
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a KVStore account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] status: The status of KVStore Account.
         """
-        _AccountState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_name=account_name,
-            account_password=account_password,
-            account_privilege=account_privilege,
-            account_type=account_type,
-            description=description,
-            instance_id=instance_id,
-            kms_encrypted_password=kms_encrypted_password,
-            kms_encryption_context=kms_encryption_context,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_name: Optional[pulumi.Input[str]] = None,
-             account_password: Optional[pulumi.Input[str]] = None,
-             account_privilege: Optional[pulumi.Input[str]] = None,
-             account_type: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_name is None and 'accountName' in kwargs:
-            account_name = kwargs['accountName']
-        if account_password is None and 'accountPassword' in kwargs:
-            account_password = kwargs['accountPassword']
-        if account_privilege is None and 'accountPrivilege' in kwargs:
-            account_privilege = kwargs['accountPrivilege']
-        if account_type is None and 'accountType' in kwargs:
-            account_type = kwargs['accountType']
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if kms_encrypted_password is None and 'kmsEncryptedPassword' in kwargs:
-            kms_encrypted_password = kwargs['kmsEncryptedPassword']
-        if kms_encryption_context is None and 'kmsEncryptionContext' in kwargs:
-            kms_encryption_context = kwargs['kmsEncryptionContext']
-
         if account_name is not None:
-            _setter("account_name", account_name)
+            pulumi.set(__self__, "account_name", account_name)
         if account_password is not None:
-            _setter("account_password", account_password)
+            pulumi.set(__self__, "account_password", account_password)
         if account_privilege is not None:
-            _setter("account_privilege", account_privilege)
+            pulumi.set(__self__, "account_privilege", account_privilege)
         if account_type is not None:
-            _setter("account_type", account_type)
+            pulumi.set(__self__, "account_type", account_type)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if kms_encrypted_password is not None:
-            _setter("kms_encrypted_password", kms_encrypted_password)
+            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
-            _setter("kms_encryption_context", kms_encryption_context)
+            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="accountName")
@@ -567,10 +483,6 @@ class Account(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AccountArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

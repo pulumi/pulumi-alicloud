@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EndpointAddressArgs', 'EndpointAddress']
@@ -25,41 +25,12 @@ class EndpointAddressArgs:
         :param pulumi.Input[str] connection_prefix: Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
         :param pulumi.Input[str] net_type: Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
         """
-        EndpointAddressArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            db_cluster_id=db_cluster_id,
-            db_endpoint_id=db_endpoint_id,
-            connection_prefix=connection_prefix,
-            net_type=net_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             db_cluster_id: Optional[pulumi.Input[str]] = None,
-             db_endpoint_id: Optional[pulumi.Input[str]] = None,
-             connection_prefix: Optional[pulumi.Input[str]] = None,
-             net_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if db_cluster_id is None and 'dbClusterId' in kwargs:
-            db_cluster_id = kwargs['dbClusterId']
-        if db_cluster_id is None:
-            raise TypeError("Missing 'db_cluster_id' argument")
-        if db_endpoint_id is None and 'dbEndpointId' in kwargs:
-            db_endpoint_id = kwargs['dbEndpointId']
-        if db_endpoint_id is None:
-            raise TypeError("Missing 'db_endpoint_id' argument")
-        if connection_prefix is None and 'connectionPrefix' in kwargs:
-            connection_prefix = kwargs['connectionPrefix']
-        if net_type is None and 'netType' in kwargs:
-            net_type = kwargs['netType']
-
-        _setter("db_cluster_id", db_cluster_id)
-        _setter("db_endpoint_id", db_endpoint_id)
+        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+        pulumi.set(__self__, "db_endpoint_id", db_endpoint_id)
         if connection_prefix is not None:
-            _setter("connection_prefix", connection_prefix)
+            pulumi.set(__self__, "connection_prefix", connection_prefix)
         if net_type is not None:
-            _setter("net_type", net_type)
+            pulumi.set(__self__, "net_type", net_type)
 
     @property
     @pulumi.getter(name="dbClusterId")
@@ -130,55 +101,20 @@ class _EndpointAddressState:
         :param pulumi.Input[str] net_type: Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
         :param pulumi.Input[str] port: Connection cluster or endpoint port.
         """
-        _EndpointAddressState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            connection_prefix=connection_prefix,
-            connection_string=connection_string,
-            db_cluster_id=db_cluster_id,
-            db_endpoint_id=db_endpoint_id,
-            ip_address=ip_address,
-            net_type=net_type,
-            port=port,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             connection_prefix: Optional[pulumi.Input[str]] = None,
-             connection_string: Optional[pulumi.Input[str]] = None,
-             db_cluster_id: Optional[pulumi.Input[str]] = None,
-             db_endpoint_id: Optional[pulumi.Input[str]] = None,
-             ip_address: Optional[pulumi.Input[str]] = None,
-             net_type: Optional[pulumi.Input[str]] = None,
-             port: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if connection_prefix is None and 'connectionPrefix' in kwargs:
-            connection_prefix = kwargs['connectionPrefix']
-        if connection_string is None and 'connectionString' in kwargs:
-            connection_string = kwargs['connectionString']
-        if db_cluster_id is None and 'dbClusterId' in kwargs:
-            db_cluster_id = kwargs['dbClusterId']
-        if db_endpoint_id is None and 'dbEndpointId' in kwargs:
-            db_endpoint_id = kwargs['dbEndpointId']
-        if ip_address is None and 'ipAddress' in kwargs:
-            ip_address = kwargs['ipAddress']
-        if net_type is None and 'netType' in kwargs:
-            net_type = kwargs['netType']
-
         if connection_prefix is not None:
-            _setter("connection_prefix", connection_prefix)
+            pulumi.set(__self__, "connection_prefix", connection_prefix)
         if connection_string is not None:
-            _setter("connection_string", connection_string)
+            pulumi.set(__self__, "connection_string", connection_string)
         if db_cluster_id is not None:
-            _setter("db_cluster_id", db_cluster_id)
+            pulumi.set(__self__, "db_cluster_id", db_cluster_id)
         if db_endpoint_id is not None:
-            _setter("db_endpoint_id", db_endpoint_id)
+            pulumi.set(__self__, "db_endpoint_id", db_endpoint_id)
         if ip_address is not None:
-            _setter("ip_address", ip_address)
+            pulumi.set(__self__, "ip_address", ip_address)
         if net_type is not None:
-            _setter("net_type", net_type)
+            pulumi.set(__self__, "net_type", net_type)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter(name="connectionPrefix")
@@ -390,10 +326,6 @@ class EndpointAddress(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            EndpointAddressArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

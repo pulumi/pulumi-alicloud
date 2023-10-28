@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EndpointAclPolicyArgs', 'EndpointAclPolicy']
@@ -27,44 +27,13 @@ class EndpointAclPolicyArgs:
         :param pulumi.Input[str] description: The description of the entry.
         :param pulumi.Input[str] module_name: The module that needs to set the access policy. Valid values: `Registry`.
         """
-        EndpointAclPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            endpoint_type=endpoint_type,
-            entry=entry,
-            instance_id=instance_id,
-            description=description,
-            module_name=module_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             endpoint_type: Optional[pulumi.Input[str]] = None,
-             entry: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             module_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if endpoint_type is None and 'endpointType' in kwargs:
-            endpoint_type = kwargs['endpointType']
-        if endpoint_type is None:
-            raise TypeError("Missing 'endpoint_type' argument")
-        if entry is None:
-            raise TypeError("Missing 'entry' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if module_name is None and 'moduleName' in kwargs:
-            module_name = kwargs['moduleName']
-
-        _setter("endpoint_type", endpoint_type)
-        _setter("entry", entry)
-        _setter("instance_id", instance_id)
+        pulumi.set(__self__, "endpoint_type", endpoint_type)
+        pulumi.set(__self__, "entry", entry)
+        pulumi.set(__self__, "instance_id", instance_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if module_name is not None:
-            _setter("module_name", module_name)
+            pulumi.set(__self__, "module_name", module_name)
 
     @property
     @pulumi.getter(name="endpointType")
@@ -143,41 +112,16 @@ class _EndpointAclPolicyState:
         :param pulumi.Input[str] instance_id: The ID of the CR Instance.
         :param pulumi.Input[str] module_name: The module that needs to set the access policy. Valid values: `Registry`.
         """
-        _EndpointAclPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            endpoint_type=endpoint_type,
-            entry=entry,
-            instance_id=instance_id,
-            module_name=module_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             endpoint_type: Optional[pulumi.Input[str]] = None,
-             entry: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             module_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if endpoint_type is None and 'endpointType' in kwargs:
-            endpoint_type = kwargs['endpointType']
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if module_name is None and 'moduleName' in kwargs:
-            module_name = kwargs['moduleName']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if endpoint_type is not None:
-            _setter("endpoint_type", endpoint_type)
+            pulumi.set(__self__, "endpoint_type", endpoint_type)
         if entry is not None:
-            _setter("entry", entry)
+            pulumi.set(__self__, "entry", entry)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if module_name is not None:
-            _setter("module_name", module_name)
+            pulumi.set(__self__, "module_name", module_name)
 
     @property
     @pulumi.getter
@@ -365,10 +309,6 @@ class EndpointAclPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            EndpointAclPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

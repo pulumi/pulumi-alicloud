@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -55,125 +55,36 @@ class AccessStrategyArgs:
         :param pulumi.Input[str] lang: The lang.
         :param pulumi.Input[Sequence[pulumi.Input['AccessStrategyLineArgs']]] lines: The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
         """
-        AccessStrategyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            default_addr_pool_type=default_addr_pool_type,
-            default_addr_pools=default_addr_pools,
-            default_min_available_addr_num=default_min_available_addr_num,
-            instance_id=instance_id,
-            strategy_mode=strategy_mode,
-            strategy_name=strategy_name,
-            access_mode=access_mode,
-            default_latency_optimization=default_latency_optimization,
-            default_lba_strategy=default_lba_strategy,
-            default_max_return_addr_num=default_max_return_addr_num,
-            failover_addr_pool_type=failover_addr_pool_type,
-            failover_addr_pools=failover_addr_pools,
-            failover_latency_optimization=failover_latency_optimization,
-            failover_lba_strategy=failover_lba_strategy,
-            failover_max_return_addr_num=failover_max_return_addr_num,
-            failover_min_available_addr_num=failover_min_available_addr_num,
-            lang=lang,
-            lines=lines,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             default_addr_pool_type: Optional[pulumi.Input[str]] = None,
-             default_addr_pools: Optional[pulumi.Input[Sequence[pulumi.Input['AccessStrategyDefaultAddrPoolArgs']]]] = None,
-             default_min_available_addr_num: Optional[pulumi.Input[int]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             strategy_mode: Optional[pulumi.Input[str]] = None,
-             strategy_name: Optional[pulumi.Input[str]] = None,
-             access_mode: Optional[pulumi.Input[str]] = None,
-             default_latency_optimization: Optional[pulumi.Input[str]] = None,
-             default_lba_strategy: Optional[pulumi.Input[str]] = None,
-             default_max_return_addr_num: Optional[pulumi.Input[int]] = None,
-             failover_addr_pool_type: Optional[pulumi.Input[str]] = None,
-             failover_addr_pools: Optional[pulumi.Input[Sequence[pulumi.Input['AccessStrategyFailoverAddrPoolArgs']]]] = None,
-             failover_latency_optimization: Optional[pulumi.Input[str]] = None,
-             failover_lba_strategy: Optional[pulumi.Input[str]] = None,
-             failover_max_return_addr_num: Optional[pulumi.Input[int]] = None,
-             failover_min_available_addr_num: Optional[pulumi.Input[int]] = None,
-             lang: Optional[pulumi.Input[str]] = None,
-             lines: Optional[pulumi.Input[Sequence[pulumi.Input['AccessStrategyLineArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if default_addr_pool_type is None and 'defaultAddrPoolType' in kwargs:
-            default_addr_pool_type = kwargs['defaultAddrPoolType']
-        if default_addr_pool_type is None:
-            raise TypeError("Missing 'default_addr_pool_type' argument")
-        if default_addr_pools is None and 'defaultAddrPools' in kwargs:
-            default_addr_pools = kwargs['defaultAddrPools']
-        if default_addr_pools is None:
-            raise TypeError("Missing 'default_addr_pools' argument")
-        if default_min_available_addr_num is None and 'defaultMinAvailableAddrNum' in kwargs:
-            default_min_available_addr_num = kwargs['defaultMinAvailableAddrNum']
-        if default_min_available_addr_num is None:
-            raise TypeError("Missing 'default_min_available_addr_num' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if strategy_mode is None and 'strategyMode' in kwargs:
-            strategy_mode = kwargs['strategyMode']
-        if strategy_mode is None:
-            raise TypeError("Missing 'strategy_mode' argument")
-        if strategy_name is None and 'strategyName' in kwargs:
-            strategy_name = kwargs['strategyName']
-        if strategy_name is None:
-            raise TypeError("Missing 'strategy_name' argument")
-        if access_mode is None and 'accessMode' in kwargs:
-            access_mode = kwargs['accessMode']
-        if default_latency_optimization is None and 'defaultLatencyOptimization' in kwargs:
-            default_latency_optimization = kwargs['defaultLatencyOptimization']
-        if default_lba_strategy is None and 'defaultLbaStrategy' in kwargs:
-            default_lba_strategy = kwargs['defaultLbaStrategy']
-        if default_max_return_addr_num is None and 'defaultMaxReturnAddrNum' in kwargs:
-            default_max_return_addr_num = kwargs['defaultMaxReturnAddrNum']
-        if failover_addr_pool_type is None and 'failoverAddrPoolType' in kwargs:
-            failover_addr_pool_type = kwargs['failoverAddrPoolType']
-        if failover_addr_pools is None and 'failoverAddrPools' in kwargs:
-            failover_addr_pools = kwargs['failoverAddrPools']
-        if failover_latency_optimization is None and 'failoverLatencyOptimization' in kwargs:
-            failover_latency_optimization = kwargs['failoverLatencyOptimization']
-        if failover_lba_strategy is None and 'failoverLbaStrategy' in kwargs:
-            failover_lba_strategy = kwargs['failoverLbaStrategy']
-        if failover_max_return_addr_num is None and 'failoverMaxReturnAddrNum' in kwargs:
-            failover_max_return_addr_num = kwargs['failoverMaxReturnAddrNum']
-        if failover_min_available_addr_num is None and 'failoverMinAvailableAddrNum' in kwargs:
-            failover_min_available_addr_num = kwargs['failoverMinAvailableAddrNum']
-
-        _setter("default_addr_pool_type", default_addr_pool_type)
-        _setter("default_addr_pools", default_addr_pools)
-        _setter("default_min_available_addr_num", default_min_available_addr_num)
-        _setter("instance_id", instance_id)
-        _setter("strategy_mode", strategy_mode)
-        _setter("strategy_name", strategy_name)
+        pulumi.set(__self__, "default_addr_pool_type", default_addr_pool_type)
+        pulumi.set(__self__, "default_addr_pools", default_addr_pools)
+        pulumi.set(__self__, "default_min_available_addr_num", default_min_available_addr_num)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "strategy_mode", strategy_mode)
+        pulumi.set(__self__, "strategy_name", strategy_name)
         if access_mode is not None:
-            _setter("access_mode", access_mode)
+            pulumi.set(__self__, "access_mode", access_mode)
         if default_latency_optimization is not None:
-            _setter("default_latency_optimization", default_latency_optimization)
+            pulumi.set(__self__, "default_latency_optimization", default_latency_optimization)
         if default_lba_strategy is not None:
-            _setter("default_lba_strategy", default_lba_strategy)
+            pulumi.set(__self__, "default_lba_strategy", default_lba_strategy)
         if default_max_return_addr_num is not None:
-            _setter("default_max_return_addr_num", default_max_return_addr_num)
+            pulumi.set(__self__, "default_max_return_addr_num", default_max_return_addr_num)
         if failover_addr_pool_type is not None:
-            _setter("failover_addr_pool_type", failover_addr_pool_type)
+            pulumi.set(__self__, "failover_addr_pool_type", failover_addr_pool_type)
         if failover_addr_pools is not None:
-            _setter("failover_addr_pools", failover_addr_pools)
+            pulumi.set(__self__, "failover_addr_pools", failover_addr_pools)
         if failover_latency_optimization is not None:
-            _setter("failover_latency_optimization", failover_latency_optimization)
+            pulumi.set(__self__, "failover_latency_optimization", failover_latency_optimization)
         if failover_lba_strategy is not None:
-            _setter("failover_lba_strategy", failover_lba_strategy)
+            pulumi.set(__self__, "failover_lba_strategy", failover_lba_strategy)
         if failover_max_return_addr_num is not None:
-            _setter("failover_max_return_addr_num", failover_max_return_addr_num)
+            pulumi.set(__self__, "failover_max_return_addr_num", failover_max_return_addr_num)
         if failover_min_available_addr_num is not None:
-            _setter("failover_min_available_addr_num", failover_min_available_addr_num)
+            pulumi.set(__self__, "failover_min_available_addr_num", failover_min_available_addr_num)
         if lang is not None:
-            _setter("lang", lang)
+            pulumi.set(__self__, "lang", lang)
         if lines is not None:
-            _setter("lines", lines)
+            pulumi.set(__self__, "lines", lines)
 
     @property
     @pulumi.getter(name="defaultAddrPoolType")
@@ -434,119 +345,42 @@ class _AccessStrategyState:
         :param pulumi.Input[str] strategy_mode: The type of the access policy. Valid values: `GEO` or `LATENCY`. `GEO`: based on geographic location. `LATENCY`: Based on delay.
         :param pulumi.Input[str] strategy_name: The name of the access policy.
         """
-        _AccessStrategyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_mode=access_mode,
-            default_addr_pool_type=default_addr_pool_type,
-            default_addr_pools=default_addr_pools,
-            default_latency_optimization=default_latency_optimization,
-            default_lba_strategy=default_lba_strategy,
-            default_max_return_addr_num=default_max_return_addr_num,
-            default_min_available_addr_num=default_min_available_addr_num,
-            failover_addr_pool_type=failover_addr_pool_type,
-            failover_addr_pools=failover_addr_pools,
-            failover_latency_optimization=failover_latency_optimization,
-            failover_lba_strategy=failover_lba_strategy,
-            failover_max_return_addr_num=failover_max_return_addr_num,
-            failover_min_available_addr_num=failover_min_available_addr_num,
-            instance_id=instance_id,
-            lang=lang,
-            lines=lines,
-            strategy_mode=strategy_mode,
-            strategy_name=strategy_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_mode: Optional[pulumi.Input[str]] = None,
-             default_addr_pool_type: Optional[pulumi.Input[str]] = None,
-             default_addr_pools: Optional[pulumi.Input[Sequence[pulumi.Input['AccessStrategyDefaultAddrPoolArgs']]]] = None,
-             default_latency_optimization: Optional[pulumi.Input[str]] = None,
-             default_lba_strategy: Optional[pulumi.Input[str]] = None,
-             default_max_return_addr_num: Optional[pulumi.Input[int]] = None,
-             default_min_available_addr_num: Optional[pulumi.Input[int]] = None,
-             failover_addr_pool_type: Optional[pulumi.Input[str]] = None,
-             failover_addr_pools: Optional[pulumi.Input[Sequence[pulumi.Input['AccessStrategyFailoverAddrPoolArgs']]]] = None,
-             failover_latency_optimization: Optional[pulumi.Input[str]] = None,
-             failover_lba_strategy: Optional[pulumi.Input[str]] = None,
-             failover_max_return_addr_num: Optional[pulumi.Input[int]] = None,
-             failover_min_available_addr_num: Optional[pulumi.Input[int]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             lang: Optional[pulumi.Input[str]] = None,
-             lines: Optional[pulumi.Input[Sequence[pulumi.Input['AccessStrategyLineArgs']]]] = None,
-             strategy_mode: Optional[pulumi.Input[str]] = None,
-             strategy_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_mode is None and 'accessMode' in kwargs:
-            access_mode = kwargs['accessMode']
-        if default_addr_pool_type is None and 'defaultAddrPoolType' in kwargs:
-            default_addr_pool_type = kwargs['defaultAddrPoolType']
-        if default_addr_pools is None and 'defaultAddrPools' in kwargs:
-            default_addr_pools = kwargs['defaultAddrPools']
-        if default_latency_optimization is None and 'defaultLatencyOptimization' in kwargs:
-            default_latency_optimization = kwargs['defaultLatencyOptimization']
-        if default_lba_strategy is None and 'defaultLbaStrategy' in kwargs:
-            default_lba_strategy = kwargs['defaultLbaStrategy']
-        if default_max_return_addr_num is None and 'defaultMaxReturnAddrNum' in kwargs:
-            default_max_return_addr_num = kwargs['defaultMaxReturnAddrNum']
-        if default_min_available_addr_num is None and 'defaultMinAvailableAddrNum' in kwargs:
-            default_min_available_addr_num = kwargs['defaultMinAvailableAddrNum']
-        if failover_addr_pool_type is None and 'failoverAddrPoolType' in kwargs:
-            failover_addr_pool_type = kwargs['failoverAddrPoolType']
-        if failover_addr_pools is None and 'failoverAddrPools' in kwargs:
-            failover_addr_pools = kwargs['failoverAddrPools']
-        if failover_latency_optimization is None and 'failoverLatencyOptimization' in kwargs:
-            failover_latency_optimization = kwargs['failoverLatencyOptimization']
-        if failover_lba_strategy is None and 'failoverLbaStrategy' in kwargs:
-            failover_lba_strategy = kwargs['failoverLbaStrategy']
-        if failover_max_return_addr_num is None and 'failoverMaxReturnAddrNum' in kwargs:
-            failover_max_return_addr_num = kwargs['failoverMaxReturnAddrNum']
-        if failover_min_available_addr_num is None and 'failoverMinAvailableAddrNum' in kwargs:
-            failover_min_available_addr_num = kwargs['failoverMinAvailableAddrNum']
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if strategy_mode is None and 'strategyMode' in kwargs:
-            strategy_mode = kwargs['strategyMode']
-        if strategy_name is None and 'strategyName' in kwargs:
-            strategy_name = kwargs['strategyName']
-
         if access_mode is not None:
-            _setter("access_mode", access_mode)
+            pulumi.set(__self__, "access_mode", access_mode)
         if default_addr_pool_type is not None:
-            _setter("default_addr_pool_type", default_addr_pool_type)
+            pulumi.set(__self__, "default_addr_pool_type", default_addr_pool_type)
         if default_addr_pools is not None:
-            _setter("default_addr_pools", default_addr_pools)
+            pulumi.set(__self__, "default_addr_pools", default_addr_pools)
         if default_latency_optimization is not None:
-            _setter("default_latency_optimization", default_latency_optimization)
+            pulumi.set(__self__, "default_latency_optimization", default_latency_optimization)
         if default_lba_strategy is not None:
-            _setter("default_lba_strategy", default_lba_strategy)
+            pulumi.set(__self__, "default_lba_strategy", default_lba_strategy)
         if default_max_return_addr_num is not None:
-            _setter("default_max_return_addr_num", default_max_return_addr_num)
+            pulumi.set(__self__, "default_max_return_addr_num", default_max_return_addr_num)
         if default_min_available_addr_num is not None:
-            _setter("default_min_available_addr_num", default_min_available_addr_num)
+            pulumi.set(__self__, "default_min_available_addr_num", default_min_available_addr_num)
         if failover_addr_pool_type is not None:
-            _setter("failover_addr_pool_type", failover_addr_pool_type)
+            pulumi.set(__self__, "failover_addr_pool_type", failover_addr_pool_type)
         if failover_addr_pools is not None:
-            _setter("failover_addr_pools", failover_addr_pools)
+            pulumi.set(__self__, "failover_addr_pools", failover_addr_pools)
         if failover_latency_optimization is not None:
-            _setter("failover_latency_optimization", failover_latency_optimization)
+            pulumi.set(__self__, "failover_latency_optimization", failover_latency_optimization)
         if failover_lba_strategy is not None:
-            _setter("failover_lba_strategy", failover_lba_strategy)
+            pulumi.set(__self__, "failover_lba_strategy", failover_lba_strategy)
         if failover_max_return_addr_num is not None:
-            _setter("failover_max_return_addr_num", failover_max_return_addr_num)
+            pulumi.set(__self__, "failover_max_return_addr_num", failover_max_return_addr_num)
         if failover_min_available_addr_num is not None:
-            _setter("failover_min_available_addr_num", failover_min_available_addr_num)
+            pulumi.set(__self__, "failover_min_available_addr_num", failover_min_available_addr_num)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if lang is not None:
-            _setter("lang", lang)
+            pulumi.set(__self__, "lang", lang)
         if lines is not None:
-            _setter("lines", lines)
+            pulumi.set(__self__, "lines", lines)
         if strategy_mode is not None:
-            _setter("strategy_mode", strategy_mode)
+            pulumi.set(__self__, "strategy_mode", strategy_mode)
         if strategy_name is not None:
-            _setter("strategy_name", strategy_name)
+            pulumi.set(__self__, "strategy_name", strategy_name)
 
     @property
     @pulumi.getter(name="accessMode")
@@ -856,10 +690,6 @@ class AccessStrategy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AccessStrategyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

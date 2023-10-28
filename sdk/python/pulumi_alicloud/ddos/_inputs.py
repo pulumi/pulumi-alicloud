@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -23,27 +23,10 @@ class DomainResourceProxyTypeArgs:
         :param pulumi.Input[Sequence[pulumi.Input[int]]] proxy_ports: the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxy_ports` can be modified.
         :param pulumi.Input[str] proxy_type: the protocol type. This field is required and must be a string. Valid values: `http`, `https`, `websocket`, and `websockets`.
         """
-        DomainResourceProxyTypeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            proxy_ports=proxy_ports,
-            proxy_type=proxy_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             proxy_ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             proxy_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if proxy_ports is None and 'proxyPorts' in kwargs:
-            proxy_ports = kwargs['proxyPorts']
-        if proxy_type is None and 'proxyType' in kwargs:
-            proxy_type = kwargs['proxyType']
-
         if proxy_ports is not None:
-            _setter("proxy_ports", proxy_ports)
+            pulumi.set(__self__, "proxy_ports", proxy_ports)
         if proxy_type is not None:
-            _setter("proxy_type", proxy_type)
+            pulumi.set(__self__, "proxy_type", proxy_type)
 
     @property
     @pulumi.getter(name="proxyPorts")
@@ -93,43 +76,18 @@ class SchedulerRuleRuleArgs:
                `3`: the IP address used to accelerate access (in the network acceleration scenario)
                `6` the IP address of the interaction resource (in the cloud service interaction scenario)
         """
-        SchedulerRuleRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            priority=priority,
-            region_id=region_id,
-            status=status,
-            type=type,
-            value=value,
-            value_type=value_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             priority: Optional[pulumi.Input[int]] = None,
-             region_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[int]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             value: Optional[pulumi.Input[str]] = None,
-             value_type: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if region_id is None and 'regionId' in kwargs:
-            region_id = kwargs['regionId']
-        if value_type is None and 'valueType' in kwargs:
-            value_type = kwargs['valueType']
-
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if region_id is not None:
-            _setter("region_id", region_id)
+            pulumi.set(__self__, "region_id", region_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
         if value_type is not None:
-            _setter("value_type", value_type)
+            pulumi.set(__self__, "value_type", value_type)
 
     @property
     @pulumi.getter

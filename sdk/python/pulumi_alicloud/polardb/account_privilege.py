@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AccountPrivilegeArgs', 'AccountPrivilege']
@@ -25,42 +25,11 @@ class AccountPrivilegeArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] db_names: List of specified database name.
         :param pulumi.Input[str] account_privilege: The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"], ["DMLOnly", "DDLOnly"] added since version v1.101.0. Default to "ReadOnly".
         """
-        AccountPrivilegeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_name=account_name,
-            db_cluster_id=db_cluster_id,
-            db_names=db_names,
-            account_privilege=account_privilege,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_name: Optional[pulumi.Input[str]] = None,
-             db_cluster_id: Optional[pulumi.Input[str]] = None,
-             db_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             account_privilege: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_name is None and 'accountName' in kwargs:
-            account_name = kwargs['accountName']
-        if account_name is None:
-            raise TypeError("Missing 'account_name' argument")
-        if db_cluster_id is None and 'dbClusterId' in kwargs:
-            db_cluster_id = kwargs['dbClusterId']
-        if db_cluster_id is None:
-            raise TypeError("Missing 'db_cluster_id' argument")
-        if db_names is None and 'dbNames' in kwargs:
-            db_names = kwargs['dbNames']
-        if db_names is None:
-            raise TypeError("Missing 'db_names' argument")
-        if account_privilege is None and 'accountPrivilege' in kwargs:
-            account_privilege = kwargs['accountPrivilege']
-
-        _setter("account_name", account_name)
-        _setter("db_cluster_id", db_cluster_id)
-        _setter("db_names", db_names)
+        pulumi.set(__self__, "account_name", account_name)
+        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+        pulumi.set(__self__, "db_names", db_names)
         if account_privilege is not None:
-            _setter("account_privilege", account_privilege)
+            pulumi.set(__self__, "account_privilege", account_privilege)
 
     @property
     @pulumi.getter(name="accountName")
@@ -125,39 +94,14 @@ class _AccountPrivilegeState:
         :param pulumi.Input[str] db_cluster_id: The Id of cluster in which account belongs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] db_names: List of specified database name.
         """
-        _AccountPrivilegeState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_name=account_name,
-            account_privilege=account_privilege,
-            db_cluster_id=db_cluster_id,
-            db_names=db_names,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_name: Optional[pulumi.Input[str]] = None,
-             account_privilege: Optional[pulumi.Input[str]] = None,
-             db_cluster_id: Optional[pulumi.Input[str]] = None,
-             db_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_name is None and 'accountName' in kwargs:
-            account_name = kwargs['accountName']
-        if account_privilege is None and 'accountPrivilege' in kwargs:
-            account_privilege = kwargs['accountPrivilege']
-        if db_cluster_id is None and 'dbClusterId' in kwargs:
-            db_cluster_id = kwargs['dbClusterId']
-        if db_names is None and 'dbNames' in kwargs:
-            db_names = kwargs['dbNames']
-
         if account_name is not None:
-            _setter("account_name", account_name)
+            pulumi.set(__self__, "account_name", account_name)
         if account_privilege is not None:
-            _setter("account_privilege", account_privilege)
+            pulumi.set(__self__, "account_privilege", account_privilege)
         if db_cluster_id is not None:
-            _setter("db_cluster_id", db_cluster_id)
+            pulumi.set(__self__, "db_cluster_id", db_cluster_id)
         if db_names is not None:
-            _setter("db_names", db_names)
+            pulumi.set(__self__, "db_names", db_names)
 
     @property
     @pulumi.getter(name="accountName")
@@ -345,10 +289,6 @@ class AccountPrivilege(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AccountPrivilegeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

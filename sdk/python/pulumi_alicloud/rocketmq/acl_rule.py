@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AclRuleArgs', 'AclRule']
@@ -37,75 +37,18 @@ class AclRuleArgs:
         :param pulumi.Input[str] description: The description of the ACL rule. It must be 1 to 512 characters in length.
         :param pulumi.Input[int] priority: The priority of the ACL rule. Value range: 1 to 100.
         """
-        AclRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            acl_id=acl_id,
-            dest_cidr=dest_cidr,
-            dest_port_range=dest_port_range,
-            direction=direction,
-            ip_protocol=ip_protocol,
-            policy=policy,
-            source_cidr=source_cidr,
-            source_port_range=source_port_range,
-            description=description,
-            priority=priority,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             acl_id: Optional[pulumi.Input[str]] = None,
-             dest_cidr: Optional[pulumi.Input[str]] = None,
-             dest_port_range: Optional[pulumi.Input[str]] = None,
-             direction: Optional[pulumi.Input[str]] = None,
-             ip_protocol: Optional[pulumi.Input[str]] = None,
-             policy: Optional[pulumi.Input[str]] = None,
-             source_cidr: Optional[pulumi.Input[str]] = None,
-             source_port_range: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if acl_id is None and 'aclId' in kwargs:
-            acl_id = kwargs['aclId']
-        if acl_id is None:
-            raise TypeError("Missing 'acl_id' argument")
-        if dest_cidr is None and 'destCidr' in kwargs:
-            dest_cidr = kwargs['destCidr']
-        if dest_cidr is None:
-            raise TypeError("Missing 'dest_cidr' argument")
-        if dest_port_range is None and 'destPortRange' in kwargs:
-            dest_port_range = kwargs['destPortRange']
-        if dest_port_range is None:
-            raise TypeError("Missing 'dest_port_range' argument")
-        if direction is None:
-            raise TypeError("Missing 'direction' argument")
-        if ip_protocol is None and 'ipProtocol' in kwargs:
-            ip_protocol = kwargs['ipProtocol']
-        if ip_protocol is None:
-            raise TypeError("Missing 'ip_protocol' argument")
-        if policy is None:
-            raise TypeError("Missing 'policy' argument")
-        if source_cidr is None and 'sourceCidr' in kwargs:
-            source_cidr = kwargs['sourceCidr']
-        if source_cidr is None:
-            raise TypeError("Missing 'source_cidr' argument")
-        if source_port_range is None and 'sourcePortRange' in kwargs:
-            source_port_range = kwargs['sourcePortRange']
-        if source_port_range is None:
-            raise TypeError("Missing 'source_port_range' argument")
-
-        _setter("acl_id", acl_id)
-        _setter("dest_cidr", dest_cidr)
-        _setter("dest_port_range", dest_port_range)
-        _setter("direction", direction)
-        _setter("ip_protocol", ip_protocol)
-        _setter("policy", policy)
-        _setter("source_cidr", source_cidr)
-        _setter("source_port_range", source_port_range)
+        pulumi.set(__self__, "acl_id", acl_id)
+        pulumi.set(__self__, "dest_cidr", dest_cidr)
+        pulumi.set(__self__, "dest_port_range", dest_port_range)
+        pulumi.set(__self__, "direction", direction)
+        pulumi.set(__self__, "ip_protocol", ip_protocol)
+        pulumi.set(__self__, "policy", policy)
+        pulumi.set(__self__, "source_cidr", source_cidr)
+        pulumi.set(__self__, "source_port_range", source_port_range)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
 
     @property
     @pulumi.getter(name="aclId")
@@ -254,67 +197,26 @@ class _AclRuleState:
         :param pulumi.Input[str] source_cidr: The source address. It is an IPv4 address range in the CIDR format. Default value: 0.0.0.0/0.
         :param pulumi.Input[str] source_port_range: The range of the source port. Valid value: 80/80.
         """
-        _AclRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            acl_id=acl_id,
-            description=description,
-            dest_cidr=dest_cidr,
-            dest_port_range=dest_port_range,
-            direction=direction,
-            ip_protocol=ip_protocol,
-            policy=policy,
-            priority=priority,
-            source_cidr=source_cidr,
-            source_port_range=source_port_range,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             acl_id: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             dest_cidr: Optional[pulumi.Input[str]] = None,
-             dest_port_range: Optional[pulumi.Input[str]] = None,
-             direction: Optional[pulumi.Input[str]] = None,
-             ip_protocol: Optional[pulumi.Input[str]] = None,
-             policy: Optional[pulumi.Input[str]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             source_cidr: Optional[pulumi.Input[str]] = None,
-             source_port_range: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if acl_id is None and 'aclId' in kwargs:
-            acl_id = kwargs['aclId']
-        if dest_cidr is None and 'destCidr' in kwargs:
-            dest_cidr = kwargs['destCidr']
-        if dest_port_range is None and 'destPortRange' in kwargs:
-            dest_port_range = kwargs['destPortRange']
-        if ip_protocol is None and 'ipProtocol' in kwargs:
-            ip_protocol = kwargs['ipProtocol']
-        if source_cidr is None and 'sourceCidr' in kwargs:
-            source_cidr = kwargs['sourceCidr']
-        if source_port_range is None and 'sourcePortRange' in kwargs:
-            source_port_range = kwargs['sourcePortRange']
-
         if acl_id is not None:
-            _setter("acl_id", acl_id)
+            pulumi.set(__self__, "acl_id", acl_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if dest_cidr is not None:
-            _setter("dest_cidr", dest_cidr)
+            pulumi.set(__self__, "dest_cidr", dest_cidr)
         if dest_port_range is not None:
-            _setter("dest_port_range", dest_port_range)
+            pulumi.set(__self__, "dest_port_range", dest_port_range)
         if direction is not None:
-            _setter("direction", direction)
+            pulumi.set(__self__, "direction", direction)
         if ip_protocol is not None:
-            _setter("ip_protocol", ip_protocol)
+            pulumi.set(__self__, "ip_protocol", ip_protocol)
         if policy is not None:
-            _setter("policy", policy)
+            pulumi.set(__self__, "policy", policy)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if source_cidr is not None:
-            _setter("source_cidr", source_cidr)
+            pulumi.set(__self__, "source_cidr", source_cidr)
         if source_port_range is not None:
-            _setter("source_port_range", source_port_range)
+            pulumi.set(__self__, "source_port_range", source_port_range)
 
     @property
     @pulumi.getter(name="aclId")
@@ -568,10 +470,6 @@ class AclRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AclRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

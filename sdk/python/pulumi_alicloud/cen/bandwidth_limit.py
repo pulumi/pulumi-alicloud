@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BandwidthLimitArgs', 'BandwidthLimit']
@@ -25,36 +25,9 @@ class BandwidthLimitArgs:
         :param pulumi.Input[str] instance_id: The ID of the CEN.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] region_ids: List of the two regions to interconnect. Must be two different regions.
         """
-        BandwidthLimitArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bandwidth_limit=bandwidth_limit,
-            instance_id=instance_id,
-            region_ids=region_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bandwidth_limit: Optional[pulumi.Input[int]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bandwidth_limit is None and 'bandwidthLimit' in kwargs:
-            bandwidth_limit = kwargs['bandwidthLimit']
-        if bandwidth_limit is None:
-            raise TypeError("Missing 'bandwidth_limit' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if region_ids is None and 'regionIds' in kwargs:
-            region_ids = kwargs['regionIds']
-        if region_ids is None:
-            raise TypeError("Missing 'region_ids' argument")
-
-        _setter("bandwidth_limit", bandwidth_limit)
-        _setter("instance_id", instance_id)
-        _setter("region_ids", region_ids)
+        pulumi.set(__self__, "bandwidth_limit", bandwidth_limit)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "region_ids", region_ids)
 
     @property
     @pulumi.getter(name="bandwidthLimit")
@@ -109,33 +82,12 @@ class _BandwidthLimitState:
         :param pulumi.Input[str] instance_id: The ID of the CEN.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] region_ids: List of the two regions to interconnect. Must be two different regions.
         """
-        _BandwidthLimitState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bandwidth_limit=bandwidth_limit,
-            instance_id=instance_id,
-            region_ids=region_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bandwidth_limit: Optional[pulumi.Input[int]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bandwidth_limit is None and 'bandwidthLimit' in kwargs:
-            bandwidth_limit = kwargs['bandwidthLimit']
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if region_ids is None and 'regionIds' in kwargs:
-            region_ids = kwargs['regionIds']
-
         if bandwidth_limit is not None:
-            _setter("bandwidth_limit", bandwidth_limit)
+            pulumi.set(__self__, "bandwidth_limit", bandwidth_limit)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if region_ids is not None:
-            _setter("region_ids", region_ids)
+            pulumi.set(__self__, "region_ids", region_ids)
 
     @property
     @pulumi.getter(name="bandwidthLimit")
@@ -353,10 +305,6 @@ class BandwidthLimit(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            BandwidthLimitArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

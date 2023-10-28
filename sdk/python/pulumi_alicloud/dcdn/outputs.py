@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -96,29 +96,8 @@ class DomainConfigFunctionArg(dict):
         :param str arg_name: The name of arg.
         :param str arg_value: The value of arg.
         """
-        DomainConfigFunctionArg._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            arg_name=arg_name,
-            arg_value=arg_value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             arg_name: Optional[str] = None,
-             arg_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if arg_name is None and 'argName' in kwargs:
-            arg_name = kwargs['argName']
-        if arg_name is None:
-            raise TypeError("Missing 'arg_name' argument")
-        if arg_value is None and 'argValue' in kwargs:
-            arg_value = kwargs['argValue']
-        if arg_value is None:
-            raise TypeError("Missing 'arg_value' argument")
-
-        _setter("arg_name", arg_name)
-        _setter("arg_value", arg_value)
+        pulumi.set(__self__, "arg_name", arg_name)
+        pulumi.set(__self__, "arg_value", arg_value)
 
     @property
     @pulumi.getter(name="argName")
@@ -155,37 +134,14 @@ class DomainSource(dict):
         :param str priority: The priority of the origin if multiple origins are specified. Default to `20`.
         :param str weight: The weight of the origin if multiple origins are specified. Default to `10`.
         """
-        DomainSource._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            content=content,
-            type=type,
-            port=port,
-            priority=priority,
-            weight=weight,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             content: Optional[str] = None,
-             type: Optional[str] = None,
-             port: Optional[int] = None,
-             priority: Optional[str] = None,
-             weight: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if content is None:
-            raise TypeError("Missing 'content' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("content", content)
-        _setter("type", type)
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "type", type)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if weight is not None:
-            _setter("weight", weight)
+            pulumi.set(__self__, "weight", weight)
 
     @property
     @pulumi.getter
@@ -395,233 +351,80 @@ class ErEnvConf(dict):
         :param 'ErEnvConfProductionArgs' production: The configuration of a production environment. See `staging` below.
         :param 'ErEnvConfStagingArgs' staging: The configuration of a staging environment. See `staging` below.
         """
-        ErEnvConf._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            preset_canary_anhui=preset_canary_anhui,
-            preset_canary_beijing=preset_canary_beijing,
-            preset_canary_chongqing=preset_canary_chongqing,
-            preset_canary_fujian=preset_canary_fujian,
-            preset_canary_gansu=preset_canary_gansu,
-            preset_canary_guangdong=preset_canary_guangdong,
-            preset_canary_guangxi=preset_canary_guangxi,
-            preset_canary_guizhou=preset_canary_guizhou,
-            preset_canary_hainan=preset_canary_hainan,
-            preset_canary_hebei=preset_canary_hebei,
-            preset_canary_heilongjiang=preset_canary_heilongjiang,
-            preset_canary_henan=preset_canary_henan,
-            preset_canary_hong_kong=preset_canary_hong_kong,
-            preset_canary_hubei=preset_canary_hubei,
-            preset_canary_hunan=preset_canary_hunan,
-            preset_canary_jiangsu=preset_canary_jiangsu,
-            preset_canary_jiangxi=preset_canary_jiangxi,
-            preset_canary_jilin=preset_canary_jilin,
-            preset_canary_liaoning=preset_canary_liaoning,
-            preset_canary_macau=preset_canary_macau,
-            preset_canary_neimenggu=preset_canary_neimenggu,
-            preset_canary_ningxia=preset_canary_ningxia,
-            preset_canary_overseas=preset_canary_overseas,
-            preset_canary_qinghai=preset_canary_qinghai,
-            preset_canary_shaanxi=preset_canary_shaanxi,
-            preset_canary_shandong=preset_canary_shandong,
-            preset_canary_shanghai=preset_canary_shanghai,
-            preset_canary_shanxi=preset_canary_shanxi,
-            preset_canary_sichuan=preset_canary_sichuan,
-            preset_canary_taiwan=preset_canary_taiwan,
-            preset_canary_tianjin=preset_canary_tianjin,
-            preset_canary_xinjiang=preset_canary_xinjiang,
-            preset_canary_xizang=preset_canary_xizang,
-            preset_canary_yunnan=preset_canary_yunnan,
-            preset_canary_zhejiang=preset_canary_zhejiang,
-            production=production,
-            staging=staging,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             preset_canary_anhui: Optional['outputs.ErEnvConfPresetCanaryAnhui'] = None,
-             preset_canary_beijing: Optional['outputs.ErEnvConfPresetCanaryBeijing'] = None,
-             preset_canary_chongqing: Optional['outputs.ErEnvConfPresetCanaryChongqing'] = None,
-             preset_canary_fujian: Optional['outputs.ErEnvConfPresetCanaryFujian'] = None,
-             preset_canary_gansu: Optional['outputs.ErEnvConfPresetCanaryGansu'] = None,
-             preset_canary_guangdong: Optional['outputs.ErEnvConfPresetCanaryGuangdong'] = None,
-             preset_canary_guangxi: Optional['outputs.ErEnvConfPresetCanaryGuangxi'] = None,
-             preset_canary_guizhou: Optional['outputs.ErEnvConfPresetCanaryGuizhou'] = None,
-             preset_canary_hainan: Optional['outputs.ErEnvConfPresetCanaryHainan'] = None,
-             preset_canary_hebei: Optional['outputs.ErEnvConfPresetCanaryHebei'] = None,
-             preset_canary_heilongjiang: Optional['outputs.ErEnvConfPresetCanaryHeilongjiang'] = None,
-             preset_canary_henan: Optional['outputs.ErEnvConfPresetCanaryHenan'] = None,
-             preset_canary_hong_kong: Optional['outputs.ErEnvConfPresetCanaryHongKong'] = None,
-             preset_canary_hubei: Optional['outputs.ErEnvConfPresetCanaryHubei'] = None,
-             preset_canary_hunan: Optional['outputs.ErEnvConfPresetCanaryHunan'] = None,
-             preset_canary_jiangsu: Optional['outputs.ErEnvConfPresetCanaryJiangsu'] = None,
-             preset_canary_jiangxi: Optional['outputs.ErEnvConfPresetCanaryJiangxi'] = None,
-             preset_canary_jilin: Optional['outputs.ErEnvConfPresetCanaryJilin'] = None,
-             preset_canary_liaoning: Optional['outputs.ErEnvConfPresetCanaryLiaoning'] = None,
-             preset_canary_macau: Optional['outputs.ErEnvConfPresetCanaryMacau'] = None,
-             preset_canary_neimenggu: Optional['outputs.ErEnvConfPresetCanaryNeimenggu'] = None,
-             preset_canary_ningxia: Optional['outputs.ErEnvConfPresetCanaryNingxia'] = None,
-             preset_canary_overseas: Optional['outputs.ErEnvConfPresetCanaryOverseas'] = None,
-             preset_canary_qinghai: Optional['outputs.ErEnvConfPresetCanaryQinghai'] = None,
-             preset_canary_shaanxi: Optional['outputs.ErEnvConfPresetCanaryShaanxi'] = None,
-             preset_canary_shandong: Optional['outputs.ErEnvConfPresetCanaryShandong'] = None,
-             preset_canary_shanghai: Optional['outputs.ErEnvConfPresetCanaryShanghai'] = None,
-             preset_canary_shanxi: Optional['outputs.ErEnvConfPresetCanaryShanxi'] = None,
-             preset_canary_sichuan: Optional['outputs.ErEnvConfPresetCanarySichuan'] = None,
-             preset_canary_taiwan: Optional['outputs.ErEnvConfPresetCanaryTaiwan'] = None,
-             preset_canary_tianjin: Optional['outputs.ErEnvConfPresetCanaryTianjin'] = None,
-             preset_canary_xinjiang: Optional['outputs.ErEnvConfPresetCanaryXinjiang'] = None,
-             preset_canary_xizang: Optional['outputs.ErEnvConfPresetCanaryXizang'] = None,
-             preset_canary_yunnan: Optional['outputs.ErEnvConfPresetCanaryYunnan'] = None,
-             preset_canary_zhejiang: Optional['outputs.ErEnvConfPresetCanaryZhejiang'] = None,
-             production: Optional['outputs.ErEnvConfProduction'] = None,
-             staging: Optional['outputs.ErEnvConfStaging'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if preset_canary_anhui is None and 'presetCanaryAnhui' in kwargs:
-            preset_canary_anhui = kwargs['presetCanaryAnhui']
-        if preset_canary_beijing is None and 'presetCanaryBeijing' in kwargs:
-            preset_canary_beijing = kwargs['presetCanaryBeijing']
-        if preset_canary_chongqing is None and 'presetCanaryChongqing' in kwargs:
-            preset_canary_chongqing = kwargs['presetCanaryChongqing']
-        if preset_canary_fujian is None and 'presetCanaryFujian' in kwargs:
-            preset_canary_fujian = kwargs['presetCanaryFujian']
-        if preset_canary_gansu is None and 'presetCanaryGansu' in kwargs:
-            preset_canary_gansu = kwargs['presetCanaryGansu']
-        if preset_canary_guangdong is None and 'presetCanaryGuangdong' in kwargs:
-            preset_canary_guangdong = kwargs['presetCanaryGuangdong']
-        if preset_canary_guangxi is None and 'presetCanaryGuangxi' in kwargs:
-            preset_canary_guangxi = kwargs['presetCanaryGuangxi']
-        if preset_canary_guizhou is None and 'presetCanaryGuizhou' in kwargs:
-            preset_canary_guizhou = kwargs['presetCanaryGuizhou']
-        if preset_canary_hainan is None and 'presetCanaryHainan' in kwargs:
-            preset_canary_hainan = kwargs['presetCanaryHainan']
-        if preset_canary_hebei is None and 'presetCanaryHebei' in kwargs:
-            preset_canary_hebei = kwargs['presetCanaryHebei']
-        if preset_canary_heilongjiang is None and 'presetCanaryHeilongjiang' in kwargs:
-            preset_canary_heilongjiang = kwargs['presetCanaryHeilongjiang']
-        if preset_canary_henan is None and 'presetCanaryHenan' in kwargs:
-            preset_canary_henan = kwargs['presetCanaryHenan']
-        if preset_canary_hong_kong is None and 'presetCanaryHongKong' in kwargs:
-            preset_canary_hong_kong = kwargs['presetCanaryHongKong']
-        if preset_canary_hubei is None and 'presetCanaryHubei' in kwargs:
-            preset_canary_hubei = kwargs['presetCanaryHubei']
-        if preset_canary_hunan is None and 'presetCanaryHunan' in kwargs:
-            preset_canary_hunan = kwargs['presetCanaryHunan']
-        if preset_canary_jiangsu is None and 'presetCanaryJiangsu' in kwargs:
-            preset_canary_jiangsu = kwargs['presetCanaryJiangsu']
-        if preset_canary_jiangxi is None and 'presetCanaryJiangxi' in kwargs:
-            preset_canary_jiangxi = kwargs['presetCanaryJiangxi']
-        if preset_canary_jilin is None and 'presetCanaryJilin' in kwargs:
-            preset_canary_jilin = kwargs['presetCanaryJilin']
-        if preset_canary_liaoning is None and 'presetCanaryLiaoning' in kwargs:
-            preset_canary_liaoning = kwargs['presetCanaryLiaoning']
-        if preset_canary_macau is None and 'presetCanaryMacau' in kwargs:
-            preset_canary_macau = kwargs['presetCanaryMacau']
-        if preset_canary_neimenggu is None and 'presetCanaryNeimenggu' in kwargs:
-            preset_canary_neimenggu = kwargs['presetCanaryNeimenggu']
-        if preset_canary_ningxia is None and 'presetCanaryNingxia' in kwargs:
-            preset_canary_ningxia = kwargs['presetCanaryNingxia']
-        if preset_canary_overseas is None and 'presetCanaryOverseas' in kwargs:
-            preset_canary_overseas = kwargs['presetCanaryOverseas']
-        if preset_canary_qinghai is None and 'presetCanaryQinghai' in kwargs:
-            preset_canary_qinghai = kwargs['presetCanaryQinghai']
-        if preset_canary_shaanxi is None and 'presetCanaryShaanxi' in kwargs:
-            preset_canary_shaanxi = kwargs['presetCanaryShaanxi']
-        if preset_canary_shandong is None and 'presetCanaryShandong' in kwargs:
-            preset_canary_shandong = kwargs['presetCanaryShandong']
-        if preset_canary_shanghai is None and 'presetCanaryShanghai' in kwargs:
-            preset_canary_shanghai = kwargs['presetCanaryShanghai']
-        if preset_canary_shanxi is None and 'presetCanaryShanxi' in kwargs:
-            preset_canary_shanxi = kwargs['presetCanaryShanxi']
-        if preset_canary_sichuan is None and 'presetCanarySichuan' in kwargs:
-            preset_canary_sichuan = kwargs['presetCanarySichuan']
-        if preset_canary_taiwan is None and 'presetCanaryTaiwan' in kwargs:
-            preset_canary_taiwan = kwargs['presetCanaryTaiwan']
-        if preset_canary_tianjin is None and 'presetCanaryTianjin' in kwargs:
-            preset_canary_tianjin = kwargs['presetCanaryTianjin']
-        if preset_canary_xinjiang is None and 'presetCanaryXinjiang' in kwargs:
-            preset_canary_xinjiang = kwargs['presetCanaryXinjiang']
-        if preset_canary_xizang is None and 'presetCanaryXizang' in kwargs:
-            preset_canary_xizang = kwargs['presetCanaryXizang']
-        if preset_canary_yunnan is None and 'presetCanaryYunnan' in kwargs:
-            preset_canary_yunnan = kwargs['presetCanaryYunnan']
-        if preset_canary_zhejiang is None and 'presetCanaryZhejiang' in kwargs:
-            preset_canary_zhejiang = kwargs['presetCanaryZhejiang']
-
         if preset_canary_anhui is not None:
-            _setter("preset_canary_anhui", preset_canary_anhui)
+            pulumi.set(__self__, "preset_canary_anhui", preset_canary_anhui)
         if preset_canary_beijing is not None:
-            _setter("preset_canary_beijing", preset_canary_beijing)
+            pulumi.set(__self__, "preset_canary_beijing", preset_canary_beijing)
         if preset_canary_chongqing is not None:
-            _setter("preset_canary_chongqing", preset_canary_chongqing)
+            pulumi.set(__self__, "preset_canary_chongqing", preset_canary_chongqing)
         if preset_canary_fujian is not None:
-            _setter("preset_canary_fujian", preset_canary_fujian)
+            pulumi.set(__self__, "preset_canary_fujian", preset_canary_fujian)
         if preset_canary_gansu is not None:
-            _setter("preset_canary_gansu", preset_canary_gansu)
+            pulumi.set(__self__, "preset_canary_gansu", preset_canary_gansu)
         if preset_canary_guangdong is not None:
-            _setter("preset_canary_guangdong", preset_canary_guangdong)
+            pulumi.set(__self__, "preset_canary_guangdong", preset_canary_guangdong)
         if preset_canary_guangxi is not None:
-            _setter("preset_canary_guangxi", preset_canary_guangxi)
+            pulumi.set(__self__, "preset_canary_guangxi", preset_canary_guangxi)
         if preset_canary_guizhou is not None:
-            _setter("preset_canary_guizhou", preset_canary_guizhou)
+            pulumi.set(__self__, "preset_canary_guizhou", preset_canary_guizhou)
         if preset_canary_hainan is not None:
-            _setter("preset_canary_hainan", preset_canary_hainan)
+            pulumi.set(__self__, "preset_canary_hainan", preset_canary_hainan)
         if preset_canary_hebei is not None:
-            _setter("preset_canary_hebei", preset_canary_hebei)
+            pulumi.set(__self__, "preset_canary_hebei", preset_canary_hebei)
         if preset_canary_heilongjiang is not None:
-            _setter("preset_canary_heilongjiang", preset_canary_heilongjiang)
+            pulumi.set(__self__, "preset_canary_heilongjiang", preset_canary_heilongjiang)
         if preset_canary_henan is not None:
-            _setter("preset_canary_henan", preset_canary_henan)
+            pulumi.set(__self__, "preset_canary_henan", preset_canary_henan)
         if preset_canary_hong_kong is not None:
-            _setter("preset_canary_hong_kong", preset_canary_hong_kong)
+            pulumi.set(__self__, "preset_canary_hong_kong", preset_canary_hong_kong)
         if preset_canary_hubei is not None:
-            _setter("preset_canary_hubei", preset_canary_hubei)
+            pulumi.set(__self__, "preset_canary_hubei", preset_canary_hubei)
         if preset_canary_hunan is not None:
-            _setter("preset_canary_hunan", preset_canary_hunan)
+            pulumi.set(__self__, "preset_canary_hunan", preset_canary_hunan)
         if preset_canary_jiangsu is not None:
-            _setter("preset_canary_jiangsu", preset_canary_jiangsu)
+            pulumi.set(__self__, "preset_canary_jiangsu", preset_canary_jiangsu)
         if preset_canary_jiangxi is not None:
-            _setter("preset_canary_jiangxi", preset_canary_jiangxi)
+            pulumi.set(__self__, "preset_canary_jiangxi", preset_canary_jiangxi)
         if preset_canary_jilin is not None:
-            _setter("preset_canary_jilin", preset_canary_jilin)
+            pulumi.set(__self__, "preset_canary_jilin", preset_canary_jilin)
         if preset_canary_liaoning is not None:
-            _setter("preset_canary_liaoning", preset_canary_liaoning)
+            pulumi.set(__self__, "preset_canary_liaoning", preset_canary_liaoning)
         if preset_canary_macau is not None:
-            _setter("preset_canary_macau", preset_canary_macau)
+            pulumi.set(__self__, "preset_canary_macau", preset_canary_macau)
         if preset_canary_neimenggu is not None:
-            _setter("preset_canary_neimenggu", preset_canary_neimenggu)
+            pulumi.set(__self__, "preset_canary_neimenggu", preset_canary_neimenggu)
         if preset_canary_ningxia is not None:
-            _setter("preset_canary_ningxia", preset_canary_ningxia)
+            pulumi.set(__self__, "preset_canary_ningxia", preset_canary_ningxia)
         if preset_canary_overseas is not None:
-            _setter("preset_canary_overseas", preset_canary_overseas)
+            pulumi.set(__self__, "preset_canary_overseas", preset_canary_overseas)
         if preset_canary_qinghai is not None:
-            _setter("preset_canary_qinghai", preset_canary_qinghai)
+            pulumi.set(__self__, "preset_canary_qinghai", preset_canary_qinghai)
         if preset_canary_shaanxi is not None:
-            _setter("preset_canary_shaanxi", preset_canary_shaanxi)
+            pulumi.set(__self__, "preset_canary_shaanxi", preset_canary_shaanxi)
         if preset_canary_shandong is not None:
-            _setter("preset_canary_shandong", preset_canary_shandong)
+            pulumi.set(__self__, "preset_canary_shandong", preset_canary_shandong)
         if preset_canary_shanghai is not None:
-            _setter("preset_canary_shanghai", preset_canary_shanghai)
+            pulumi.set(__self__, "preset_canary_shanghai", preset_canary_shanghai)
         if preset_canary_shanxi is not None:
-            _setter("preset_canary_shanxi", preset_canary_shanxi)
+            pulumi.set(__self__, "preset_canary_shanxi", preset_canary_shanxi)
         if preset_canary_sichuan is not None:
-            _setter("preset_canary_sichuan", preset_canary_sichuan)
+            pulumi.set(__self__, "preset_canary_sichuan", preset_canary_sichuan)
         if preset_canary_taiwan is not None:
-            _setter("preset_canary_taiwan", preset_canary_taiwan)
+            pulumi.set(__self__, "preset_canary_taiwan", preset_canary_taiwan)
         if preset_canary_tianjin is not None:
-            _setter("preset_canary_tianjin", preset_canary_tianjin)
+            pulumi.set(__self__, "preset_canary_tianjin", preset_canary_tianjin)
         if preset_canary_xinjiang is not None:
-            _setter("preset_canary_xinjiang", preset_canary_xinjiang)
+            pulumi.set(__self__, "preset_canary_xinjiang", preset_canary_xinjiang)
         if preset_canary_xizang is not None:
-            _setter("preset_canary_xizang", preset_canary_xizang)
+            pulumi.set(__self__, "preset_canary_xizang", preset_canary_xizang)
         if preset_canary_yunnan is not None:
-            _setter("preset_canary_yunnan", preset_canary_yunnan)
+            pulumi.set(__self__, "preset_canary_yunnan", preset_canary_yunnan)
         if preset_canary_zhejiang is not None:
-            _setter("preset_canary_zhejiang", preset_canary_zhejiang)
+            pulumi.set(__self__, "preset_canary_zhejiang", preset_canary_zhejiang)
         if production is not None:
-            _setter("production", production)
+            pulumi.set(__self__, "production", production)
         if staging is not None:
-            _setter("staging", staging)
+            pulumi.set(__self__, "staging", staging)
 
     @property
     @pulumi.getter(name="presetCanaryAnhui")
@@ -952,33 +755,12 @@ class ErEnvConfPresetCanaryAnhui(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryAnhui._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -1037,33 +819,12 @@ class ErEnvConfPresetCanaryBeijing(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryBeijing._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -1122,33 +883,12 @@ class ErEnvConfPresetCanaryChongqing(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryChongqing._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -1207,33 +947,12 @@ class ErEnvConfPresetCanaryFujian(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryFujian._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -1292,33 +1011,12 @@ class ErEnvConfPresetCanaryGansu(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryGansu._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -1377,33 +1075,12 @@ class ErEnvConfPresetCanaryGuangdong(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryGuangdong._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -1462,33 +1139,12 @@ class ErEnvConfPresetCanaryGuangxi(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryGuangxi._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -1547,33 +1203,12 @@ class ErEnvConfPresetCanaryGuizhou(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryGuizhou._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -1632,33 +1267,12 @@ class ErEnvConfPresetCanaryHainan(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryHainan._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -1717,33 +1331,12 @@ class ErEnvConfPresetCanaryHebei(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryHebei._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -1802,33 +1395,12 @@ class ErEnvConfPresetCanaryHeilongjiang(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryHeilongjiang._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -1887,33 +1459,12 @@ class ErEnvConfPresetCanaryHenan(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryHenan._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -1972,33 +1523,12 @@ class ErEnvConfPresetCanaryHongKong(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryHongKong._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -2057,33 +1587,12 @@ class ErEnvConfPresetCanaryHubei(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryHubei._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -2142,33 +1651,12 @@ class ErEnvConfPresetCanaryHunan(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryHunan._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -2227,33 +1715,12 @@ class ErEnvConfPresetCanaryJiangsu(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryJiangsu._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -2312,33 +1779,12 @@ class ErEnvConfPresetCanaryJiangxi(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryJiangxi._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -2397,33 +1843,12 @@ class ErEnvConfPresetCanaryJilin(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryJilin._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -2482,33 +1907,12 @@ class ErEnvConfPresetCanaryLiaoning(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryLiaoning._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -2567,33 +1971,12 @@ class ErEnvConfPresetCanaryMacau(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryMacau._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -2652,33 +2035,12 @@ class ErEnvConfPresetCanaryNeimenggu(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryNeimenggu._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -2737,33 +2099,12 @@ class ErEnvConfPresetCanaryNingxia(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryNingxia._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -2822,33 +2163,12 @@ class ErEnvConfPresetCanaryOverseas(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryOverseas._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -2907,33 +2227,12 @@ class ErEnvConfPresetCanaryQinghai(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryQinghai._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -2992,33 +2291,12 @@ class ErEnvConfPresetCanaryShaanxi(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryShaanxi._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -3077,33 +2355,12 @@ class ErEnvConfPresetCanaryShandong(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryShandong._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -3162,33 +2419,12 @@ class ErEnvConfPresetCanaryShanghai(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryShanghai._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -3247,33 +2483,12 @@ class ErEnvConfPresetCanaryShanxi(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryShanxi._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -3332,33 +2547,12 @@ class ErEnvConfPresetCanarySichuan(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanarySichuan._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -3417,33 +2611,12 @@ class ErEnvConfPresetCanaryTaiwan(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryTaiwan._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -3502,33 +2675,12 @@ class ErEnvConfPresetCanaryTianjin(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryTianjin._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -3587,33 +2739,12 @@ class ErEnvConfPresetCanaryXinjiang(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryXinjiang._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -3672,33 +2803,12 @@ class ErEnvConfPresetCanaryXizang(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryXizang._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -3757,33 +2867,12 @@ class ErEnvConfPresetCanaryYunnan(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryYunnan._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -3842,33 +2931,12 @@ class ErEnvConfPresetCanaryZhejiang(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfPresetCanaryZhejiang._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -3927,33 +2995,12 @@ class ErEnvConfProduction(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfProduction._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -4012,33 +3059,12 @@ class ErEnvConfStaging(dict):
         :param str code_rev: The version number of the code.
         :param str spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
-        ErEnvConfStaging._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_hosts=allowed_hosts,
-            code_rev=code_rev,
-            spec_name=spec_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_hosts: Optional[Sequence[str]] = None,
-             code_rev: Optional[str] = None,
-             spec_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_hosts is None and 'allowedHosts' in kwargs:
-            allowed_hosts = kwargs['allowedHosts']
-        if code_rev is None and 'codeRev' in kwargs:
-            code_rev = kwargs['codeRev']
-        if spec_name is None and 'specName' in kwargs:
-            spec_name = kwargs['specName']
-
         if allowed_hosts is not None:
-            _setter("allowed_hosts", allowed_hosts)
+            pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
-            _setter("code_rev", code_rev)
+            pulumi.set(__self__, "code_rev", code_rev)
         if spec_name is not None:
-            _setter("spec_name", spec_name)
+            pulumi.set(__self__, "spec_name", spec_name)
 
     @property
     @pulumi.getter(name="allowedHosts")
@@ -4080,40 +3106,11 @@ class IpaDomainSource(dict):
         :param str type: The type of the origin server. Valid values: `ipaddr`, `domain`, `oss`.
         :param int weight: The weight of the origin server. You must specify a value that is less than `100`. Default value: `10`.
         """
-        IpaDomainSource._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            content=content,
-            port=port,
-            priority=priority,
-            type=type,
-            weight=weight,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             content: Optional[str] = None,
-             port: Optional[int] = None,
-             priority: Optional[str] = None,
-             type: Optional[str] = None,
-             weight: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if content is None:
-            raise TypeError("Missing 'content' argument")
-        if port is None:
-            raise TypeError("Missing 'port' argument")
-        if priority is None:
-            raise TypeError("Missing 'priority' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if weight is None:
-            raise TypeError("Missing 'weight' argument")
-
-        _setter("content", content)
-        _setter("port", port)
-        _setter("priority", priority)
-        _setter("type", type)
-        _setter("weight", weight)
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "weight", weight)
 
     @property
     @pulumi.getter
@@ -4188,37 +3185,12 @@ class WafRuleCondition(dict):
         :param str sub_key: The match subfield.
         :param str values: The match content. Separate multiple values with commas (,).
         """
-        WafRuleCondition._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            op_value=op_value,
-            sub_key=sub_key,
-            values=values,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             op_value: Optional[str] = None,
-             sub_key: Optional[str] = None,
-             values: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if op_value is None and 'opValue' in kwargs:
-            op_value = kwargs['opValue']
-        if op_value is None:
-            raise TypeError("Missing 'op_value' argument")
-        if sub_key is None and 'subKey' in kwargs:
-            sub_key = kwargs['subKey']
-
-        _setter("key", key)
-        _setter("op_value", op_value)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "op_value", op_value)
         if sub_key is not None:
-            _setter("sub_key", sub_key)
+            pulumi.set(__self__, "sub_key", sub_key)
         if values is not None:
-            _setter("values", values)
+            pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
@@ -4287,41 +3259,18 @@ class WafRuleRateLimit(dict):
         :param int threshold: The trigger threshold of rate limiting. Valid values: 2 to 500000. Unit: requests.
         :param int ttl: The validity period of the blacklist. Valid values: 60 to 86400. Unit: seconds.
         """
-        WafRuleRateLimit._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            interval=interval,
-            status=status,
-            sub_key=sub_key,
-            target=target,
-            threshold=threshold,
-            ttl=ttl,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             interval: Optional[int] = None,
-             status: Optional['outputs.WafRuleRateLimitStatus'] = None,
-             sub_key: Optional[str] = None,
-             target: Optional[str] = None,
-             threshold: Optional[int] = None,
-             ttl: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if sub_key is None and 'subKey' in kwargs:
-            sub_key = kwargs['subKey']
-
         if interval is not None:
-            _setter("interval", interval)
+            pulumi.set(__self__, "interval", interval)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if sub_key is not None:
-            _setter("sub_key", sub_key)
+            pulumi.set(__self__, "sub_key", sub_key)
         if target is not None:
-            _setter("target", target)
+            pulumi.set(__self__, "target", target)
         if threshold is not None:
-            _setter("threshold", threshold)
+            pulumi.set(__self__, "threshold", threshold)
         if ttl is not None:
-            _setter("ttl", ttl)
+            pulumi.set(__self__, "ttl", ttl)
 
     @property
     @pulumi.getter
@@ -4383,27 +3332,12 @@ class WafRuleRateLimitStatus(dict):
         :param int count: The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `ratio` and `count` fields.
         :param int ratio: The percentage of HTTP status codes. Valid values: 1 to 100. You can configure only one of the `ratio` and `count` fields.
         """
-        WafRuleRateLimitStatus._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            code=code,
-            count=count,
-            ratio=ratio,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             code: Optional[str] = None,
-             count: Optional[int] = None,
-             ratio: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if code is not None:
-            _setter("code", code)
+            pulumi.set(__self__, "code", code)
         if count is not None:
-            _setter("count", count)
+            pulumi.set(__self__, "count", count)
         if ratio is not None:
-            _setter("ratio", ratio)
+            pulumi.set(__self__, "ratio", ratio)
 
     @property
     @pulumi.getter
@@ -4459,87 +3393,18 @@ class GetDomainsDomainResult(dict):
         :param str ssl_pub: Indicates the public key of the certificate.
         :param str status: The status of DCDN Domain.
         """
-        GetDomainsDomainResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cert_name=cert_name,
-            cname=cname,
-            description=description,
-            domain_name=domain_name,
-            gmt_modified=gmt_modified,
-            id=id,
-            resource_group_id=resource_group_id,
-            scope=scope,
-            sources=sources,
-            ssl_protocol=ssl_protocol,
-            ssl_pub=ssl_pub,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cert_name: Optional[str] = None,
-             cname: Optional[str] = None,
-             description: Optional[str] = None,
-             domain_name: Optional[str] = None,
-             gmt_modified: Optional[str] = None,
-             id: Optional[str] = None,
-             resource_group_id: Optional[str] = None,
-             scope: Optional[str] = None,
-             sources: Optional[Sequence['outputs.GetDomainsDomainSourceResult']] = None,
-             ssl_protocol: Optional[str] = None,
-             ssl_pub: Optional[str] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cert_name is None and 'certName' in kwargs:
-            cert_name = kwargs['certName']
-        if cert_name is None:
-            raise TypeError("Missing 'cert_name' argument")
-        if cname is None:
-            raise TypeError("Missing 'cname' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if domain_name is None and 'domainName' in kwargs:
-            domain_name = kwargs['domainName']
-        if domain_name is None:
-            raise TypeError("Missing 'domain_name' argument")
-        if gmt_modified is None and 'gmtModified' in kwargs:
-            gmt_modified = kwargs['gmtModified']
-        if gmt_modified is None:
-            raise TypeError("Missing 'gmt_modified' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if scope is None:
-            raise TypeError("Missing 'scope' argument")
-        if sources is None:
-            raise TypeError("Missing 'sources' argument")
-        if ssl_protocol is None and 'sslProtocol' in kwargs:
-            ssl_protocol = kwargs['sslProtocol']
-        if ssl_protocol is None:
-            raise TypeError("Missing 'ssl_protocol' argument")
-        if ssl_pub is None and 'sslPub' in kwargs:
-            ssl_pub = kwargs['sslPub']
-        if ssl_pub is None:
-            raise TypeError("Missing 'ssl_pub' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("cert_name", cert_name)
-        _setter("cname", cname)
-        _setter("description", description)
-        _setter("domain_name", domain_name)
-        _setter("gmt_modified", gmt_modified)
-        _setter("id", id)
-        _setter("resource_group_id", resource_group_id)
-        _setter("scope", scope)
-        _setter("sources", sources)
-        _setter("ssl_protocol", ssl_protocol)
-        _setter("ssl_pub", ssl_pub)
-        _setter("status", status)
+        pulumi.set(__self__, "cert_name", cert_name)
+        pulumi.set(__self__, "cname", cname)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "gmt_modified", gmt_modified)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "scope", scope)
+        pulumi.set(__self__, "sources", sources)
+        pulumi.set(__self__, "ssl_protocol", ssl_protocol)
+        pulumi.set(__self__, "ssl_pub", ssl_pub)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="certName")
@@ -4655,45 +3520,12 @@ class GetDomainsDomainSourceResult(dict):
         :param str type: The type of the origin. Valid values:
         :param str weight: The weight of the origin if multiple origins are specified.
         """
-        GetDomainsDomainSourceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            content=content,
-            enabled=enabled,
-            port=port,
-            priority=priority,
-            type=type,
-            weight=weight,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             content: Optional[str] = None,
-             enabled: Optional[str] = None,
-             port: Optional[int] = None,
-             priority: Optional[str] = None,
-             type: Optional[str] = None,
-             weight: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if content is None:
-            raise TypeError("Missing 'content' argument")
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-        if port is None:
-            raise TypeError("Missing 'port' argument")
-        if priority is None:
-            raise TypeError("Missing 'priority' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if weight is None:
-            raise TypeError("Missing 'weight' argument")
-
-        _setter("content", content)
-        _setter("enabled", enabled)
-        _setter("port", port)
-        _setter("priority", priority)
-        _setter("type", type)
-        _setter("weight", weight)
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "weight", weight)
 
     @property
     @pulumi.getter
@@ -4773,87 +3605,18 @@ class GetIpaDomainsDomainResult(dict):
         :param str ssl_pub: Indicates the public key of the certificate if the HTTPS protocol is enabled.
         :param str status: The status of the accelerated domain name.
         """
-        GetIpaDomainsDomainResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cert_name=cert_name,
-            cname=cname,
-            create_time=create_time,
-            description=description,
-            domain_name=domain_name,
-            id=id,
-            resource_group_id=resource_group_id,
-            scope=scope,
-            sources=sources,
-            ssl_protocol=ssl_protocol,
-            ssl_pub=ssl_pub,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cert_name: Optional[str] = None,
-             cname: Optional[str] = None,
-             create_time: Optional[str] = None,
-             description: Optional[str] = None,
-             domain_name: Optional[str] = None,
-             id: Optional[str] = None,
-             resource_group_id: Optional[str] = None,
-             scope: Optional[str] = None,
-             sources: Optional[Sequence['outputs.GetIpaDomainsDomainSourceResult']] = None,
-             ssl_protocol: Optional[str] = None,
-             ssl_pub: Optional[str] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cert_name is None and 'certName' in kwargs:
-            cert_name = kwargs['certName']
-        if cert_name is None:
-            raise TypeError("Missing 'cert_name' argument")
-        if cname is None:
-            raise TypeError("Missing 'cname' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if domain_name is None and 'domainName' in kwargs:
-            domain_name = kwargs['domainName']
-        if domain_name is None:
-            raise TypeError("Missing 'domain_name' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if scope is None:
-            raise TypeError("Missing 'scope' argument")
-        if sources is None:
-            raise TypeError("Missing 'sources' argument")
-        if ssl_protocol is None and 'sslProtocol' in kwargs:
-            ssl_protocol = kwargs['sslProtocol']
-        if ssl_protocol is None:
-            raise TypeError("Missing 'ssl_protocol' argument")
-        if ssl_pub is None and 'sslPub' in kwargs:
-            ssl_pub = kwargs['sslPub']
-        if ssl_pub is None:
-            raise TypeError("Missing 'ssl_pub' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("cert_name", cert_name)
-        _setter("cname", cname)
-        _setter("create_time", create_time)
-        _setter("description", description)
-        _setter("domain_name", domain_name)
-        _setter("id", id)
-        _setter("resource_group_id", resource_group_id)
-        _setter("scope", scope)
-        _setter("sources", sources)
-        _setter("ssl_protocol", ssl_protocol)
-        _setter("ssl_pub", ssl_pub)
-        _setter("status", status)
+        pulumi.set(__self__, "cert_name", cert_name)
+        pulumi.set(__self__, "cname", cname)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "scope", scope)
+        pulumi.set(__self__, "sources", sources)
+        pulumi.set(__self__, "ssl_protocol", ssl_protocol)
+        pulumi.set(__self__, "ssl_pub", ssl_pub)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="certName")
@@ -4967,40 +3730,11 @@ class GetIpaDomainsDomainSourceResult(dict):
         :param str type: The type of the origin server.
         :param int weight: The weight of the origin server if multiple origin servers are specified.
         """
-        GetIpaDomainsDomainSourceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            content=content,
-            port=port,
-            priority=priority,
-            type=type,
-            weight=weight,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             content: Optional[str] = None,
-             port: Optional[int] = None,
-             priority: Optional[str] = None,
-             type: Optional[str] = None,
-             weight: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if content is None:
-            raise TypeError("Missing 'content' argument")
-        if port is None:
-            raise TypeError("Missing 'port' argument")
-        if priority is None:
-            raise TypeError("Missing 'priority' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if weight is None:
-            raise TypeError("Missing 'weight' argument")
-
-        _setter("content", content)
-        _setter("port", port)
-        _setter("priority", priority)
-        _setter("type", type)
-        _setter("weight", weight)
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "weight", weight)
 
     @property
     @pulumi.getter
@@ -5056,41 +3790,10 @@ class GetWafDomainsDomainResult(dict):
         :param str domain_name: The accelerated domain name.
         :param str id: The ID of the Waf Domain.
         """
-        GetWafDomainsDomainResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            client_ip_tag=client_ip_tag,
-            defense_scenes=defense_scenes,
-            domain_name=domain_name,
-            id=id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             client_ip_tag: Optional[str] = None,
-             defense_scenes: Optional[Sequence['outputs.GetWafDomainsDomainDefenseSceneResult']] = None,
-             domain_name: Optional[str] = None,
-             id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if client_ip_tag is None and 'clientIpTag' in kwargs:
-            client_ip_tag = kwargs['clientIpTag']
-        if client_ip_tag is None:
-            raise TypeError("Missing 'client_ip_tag' argument")
-        if defense_scenes is None and 'defenseScenes' in kwargs:
-            defense_scenes = kwargs['defenseScenes']
-        if defense_scenes is None:
-            raise TypeError("Missing 'defense_scenes' argument")
-        if domain_name is None and 'domainName' in kwargs:
-            domain_name = kwargs['domainName']
-        if domain_name is None:
-            raise TypeError("Missing 'domain_name' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-
-        _setter("client_ip_tag", client_ip_tag)
-        _setter("defense_scenes", defense_scenes)
-        _setter("domain_name", domain_name)
-        _setter("id", id)
+        pulumi.set(__self__, "client_ip_tag", client_ip_tag)
+        pulumi.set(__self__, "defense_scenes", defense_scenes)
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter(name="clientIpTag")
@@ -5134,29 +3837,8 @@ class GetWafDomainsDomainDefenseSceneResult(dict):
         :param str defense_scene: The type of protection policy.
         :param str policy_id: The protection policy ID.
         """
-        GetWafDomainsDomainDefenseSceneResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            defense_scene=defense_scene,
-            policy_id=policy_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             defense_scene: Optional[str] = None,
-             policy_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if defense_scene is None and 'defenseScene' in kwargs:
-            defense_scene = kwargs['defenseScene']
-        if defense_scene is None:
-            raise TypeError("Missing 'defense_scene' argument")
-        if policy_id is None and 'policyId' in kwargs:
-            policy_id = kwargs['policyId']
-        if policy_id is None:
-            raise TypeError("Missing 'policy_id' argument")
-
-        _setter("defense_scene", defense_scene)
-        _setter("policy_id", policy_id)
+        pulumi.set(__self__, "defense_scene", defense_scene)
+        pulumi.set(__self__, "policy_id", policy_id)
 
     @property
     @pulumi.getter(name="defenseScene")
@@ -5198,74 +3880,15 @@ class GetWafPoliciesPolicyResult(dict):
         :param str rule_count: The number of protection rules in this protection policy.
         :param str status: The status of the resource.
         """
-        GetWafPoliciesPolicyResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dcdn_waf_policy_id=dcdn_waf_policy_id,
-            defense_scene=defense_scene,
-            domain_count=domain_count,
-            gmt_modified=gmt_modified,
-            id=id,
-            policy_name=policy_name,
-            policy_type=policy_type,
-            rule_count=rule_count,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dcdn_waf_policy_id: Optional[str] = None,
-             defense_scene: Optional[str] = None,
-             domain_count: Optional[int] = None,
-             gmt_modified: Optional[str] = None,
-             id: Optional[str] = None,
-             policy_name: Optional[str] = None,
-             policy_type: Optional[str] = None,
-             rule_count: Optional[str] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dcdn_waf_policy_id is None and 'dcdnWafPolicyId' in kwargs:
-            dcdn_waf_policy_id = kwargs['dcdnWafPolicyId']
-        if dcdn_waf_policy_id is None:
-            raise TypeError("Missing 'dcdn_waf_policy_id' argument")
-        if defense_scene is None and 'defenseScene' in kwargs:
-            defense_scene = kwargs['defenseScene']
-        if defense_scene is None:
-            raise TypeError("Missing 'defense_scene' argument")
-        if domain_count is None and 'domainCount' in kwargs:
-            domain_count = kwargs['domainCount']
-        if domain_count is None:
-            raise TypeError("Missing 'domain_count' argument")
-        if gmt_modified is None and 'gmtModified' in kwargs:
-            gmt_modified = kwargs['gmtModified']
-        if gmt_modified is None:
-            raise TypeError("Missing 'gmt_modified' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if policy_name is None and 'policyName' in kwargs:
-            policy_name = kwargs['policyName']
-        if policy_name is None:
-            raise TypeError("Missing 'policy_name' argument")
-        if policy_type is None and 'policyType' in kwargs:
-            policy_type = kwargs['policyType']
-        if policy_type is None:
-            raise TypeError("Missing 'policy_type' argument")
-        if rule_count is None and 'ruleCount' in kwargs:
-            rule_count = kwargs['ruleCount']
-        if rule_count is None:
-            raise TypeError("Missing 'rule_count' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("dcdn_waf_policy_id", dcdn_waf_policy_id)
-        _setter("defense_scene", defense_scene)
-        _setter("domain_count", domain_count)
-        _setter("gmt_modified", gmt_modified)
-        _setter("id", id)
-        _setter("policy_name", policy_name)
-        _setter("policy_type", policy_type)
-        _setter("rule_count", rule_count)
-        _setter("status", status)
+        pulumi.set(__self__, "dcdn_waf_policy_id", dcdn_waf_policy_id)
+        pulumi.set(__self__, "defense_scene", defense_scene)
+        pulumi.set(__self__, "domain_count", domain_count)
+        pulumi.set(__self__, "gmt_modified", gmt_modified)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "policy_name", policy_name)
+        pulumi.set(__self__, "policy_type", policy_type)
+        pulumi.set(__self__, "rule_count", rule_count)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="dcdnWafPolicyId")
@@ -5383,136 +4006,25 @@ class GetWafRulesWafRuleResult(dict):
         :param str waf_group_ids: The id of the waf rule group.
         :param str waf_rule_id: The first ID of the resource
         """
-        GetWafRulesWafRuleResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action=action,
-            cc_status=cc_status,
-            cn_region_list=cn_region_list,
-            conditions=conditions,
-            defense_scene=defense_scene,
-            effect=effect,
-            gmt_modified=gmt_modified,
-            id=id,
-            other_region_list=other_region_list,
-            policy_id=policy_id,
-            rate_limits=rate_limits,
-            regular_rules=regular_rules,
-            regular_types=regular_types,
-            remote_addrs=remote_addrs,
-            rule_name=rule_name,
-            scenes=scenes,
-            status=status,
-            waf_group_ids=waf_group_ids,
-            waf_rule_id=waf_rule_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action: Optional[str] = None,
-             cc_status: Optional[str] = None,
-             cn_region_list: Optional[str] = None,
-             conditions: Optional[Sequence['outputs.GetWafRulesWafRuleConditionResult']] = None,
-             defense_scene: Optional[str] = None,
-             effect: Optional[str] = None,
-             gmt_modified: Optional[str] = None,
-             id: Optional[str] = None,
-             other_region_list: Optional[str] = None,
-             policy_id: Optional[str] = None,
-             rate_limits: Optional[Sequence['outputs.GetWafRulesWafRuleRateLimitResult']] = None,
-             regular_rules: Optional[Sequence[str]] = None,
-             regular_types: Optional[Sequence[str]] = None,
-             remote_addrs: Optional[Sequence[str]] = None,
-             rule_name: Optional[str] = None,
-             scenes: Optional[Sequence[str]] = None,
-             status: Optional[str] = None,
-             waf_group_ids: Optional[str] = None,
-             waf_rule_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if action is None:
-            raise TypeError("Missing 'action' argument")
-        if cc_status is None and 'ccStatus' in kwargs:
-            cc_status = kwargs['ccStatus']
-        if cc_status is None:
-            raise TypeError("Missing 'cc_status' argument")
-        if cn_region_list is None and 'cnRegionList' in kwargs:
-            cn_region_list = kwargs['cnRegionList']
-        if cn_region_list is None:
-            raise TypeError("Missing 'cn_region_list' argument")
-        if conditions is None:
-            raise TypeError("Missing 'conditions' argument")
-        if defense_scene is None and 'defenseScene' in kwargs:
-            defense_scene = kwargs['defenseScene']
-        if defense_scene is None:
-            raise TypeError("Missing 'defense_scene' argument")
-        if effect is None:
-            raise TypeError("Missing 'effect' argument")
-        if gmt_modified is None and 'gmtModified' in kwargs:
-            gmt_modified = kwargs['gmtModified']
-        if gmt_modified is None:
-            raise TypeError("Missing 'gmt_modified' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if other_region_list is None and 'otherRegionList' in kwargs:
-            other_region_list = kwargs['otherRegionList']
-        if other_region_list is None:
-            raise TypeError("Missing 'other_region_list' argument")
-        if policy_id is None and 'policyId' in kwargs:
-            policy_id = kwargs['policyId']
-        if policy_id is None:
-            raise TypeError("Missing 'policy_id' argument")
-        if rate_limits is None and 'rateLimits' in kwargs:
-            rate_limits = kwargs['rateLimits']
-        if rate_limits is None:
-            raise TypeError("Missing 'rate_limits' argument")
-        if regular_rules is None and 'regularRules' in kwargs:
-            regular_rules = kwargs['regularRules']
-        if regular_rules is None:
-            raise TypeError("Missing 'regular_rules' argument")
-        if regular_types is None and 'regularTypes' in kwargs:
-            regular_types = kwargs['regularTypes']
-        if regular_types is None:
-            raise TypeError("Missing 'regular_types' argument")
-        if remote_addrs is None and 'remoteAddrs' in kwargs:
-            remote_addrs = kwargs['remoteAddrs']
-        if remote_addrs is None:
-            raise TypeError("Missing 'remote_addrs' argument")
-        if rule_name is None and 'ruleName' in kwargs:
-            rule_name = kwargs['ruleName']
-        if rule_name is None:
-            raise TypeError("Missing 'rule_name' argument")
-        if scenes is None:
-            raise TypeError("Missing 'scenes' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if waf_group_ids is None and 'wafGroupIds' in kwargs:
-            waf_group_ids = kwargs['wafGroupIds']
-        if waf_group_ids is None:
-            raise TypeError("Missing 'waf_group_ids' argument")
-        if waf_rule_id is None and 'wafRuleId' in kwargs:
-            waf_rule_id = kwargs['wafRuleId']
-        if waf_rule_id is None:
-            raise TypeError("Missing 'waf_rule_id' argument")
-
-        _setter("action", action)
-        _setter("cc_status", cc_status)
-        _setter("cn_region_list", cn_region_list)
-        _setter("conditions", conditions)
-        _setter("defense_scene", defense_scene)
-        _setter("effect", effect)
-        _setter("gmt_modified", gmt_modified)
-        _setter("id", id)
-        _setter("other_region_list", other_region_list)
-        _setter("policy_id", policy_id)
-        _setter("rate_limits", rate_limits)
-        _setter("regular_rules", regular_rules)
-        _setter("regular_types", regular_types)
-        _setter("remote_addrs", remote_addrs)
-        _setter("rule_name", rule_name)
-        _setter("scenes", scenes)
-        _setter("status", status)
-        _setter("waf_group_ids", waf_group_ids)
-        _setter("waf_rule_id", waf_rule_id)
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "cc_status", cc_status)
+        pulumi.set(__self__, "cn_region_list", cn_region_list)
+        pulumi.set(__self__, "conditions", conditions)
+        pulumi.set(__self__, "defense_scene", defense_scene)
+        pulumi.set(__self__, "effect", effect)
+        pulumi.set(__self__, "gmt_modified", gmt_modified)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "other_region_list", other_region_list)
+        pulumi.set(__self__, "policy_id", policy_id)
+        pulumi.set(__self__, "rate_limits", rate_limits)
+        pulumi.set(__self__, "regular_rules", regular_rules)
+        pulumi.set(__self__, "regular_types", regular_types)
+        pulumi.set(__self__, "remote_addrs", remote_addrs)
+        pulumi.set(__self__, "rule_name", rule_name)
+        pulumi.set(__self__, "scenes", scenes)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "waf_group_ids", waf_group_ids)
+        pulumi.set(__self__, "waf_rule_id", waf_rule_id)
 
     @property
     @pulumi.getter
@@ -5680,39 +4192,10 @@ class GetWafRulesWafRuleConditionResult(dict):
         :param str sub_key: The subfield of the target field.
         :param str values: The match content. Separate multiple values with commas (,).
         """
-        GetWafRulesWafRuleConditionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            op_value=op_value,
-            sub_key=sub_key,
-            values=values,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             op_value: Optional[str] = None,
-             sub_key: Optional[str] = None,
-             values: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if op_value is None and 'opValue' in kwargs:
-            op_value = kwargs['opValue']
-        if op_value is None:
-            raise TypeError("Missing 'op_value' argument")
-        if sub_key is None and 'subKey' in kwargs:
-            sub_key = kwargs['subKey']
-        if sub_key is None:
-            raise TypeError("Missing 'sub_key' argument")
-        if values is None:
-            raise TypeError("Missing 'values' argument")
-
-        _setter("key", key)
-        _setter("op_value", op_value)
-        _setter("sub_key", sub_key)
-        _setter("values", values)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "op_value", op_value)
+        pulumi.set(__self__, "sub_key", sub_key)
+        pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
@@ -5764,47 +4247,12 @@ class GetWafRulesWafRuleRateLimitResult(dict):
         :param int threshold: The trigger threshold of rate limiting. Valid values: 2 to 500000. Unit: requests.
         :param int ttl: The validity period of the blacklist. Valid values: 60 to 86400. Unit: seconds.
         """
-        GetWafRulesWafRuleRateLimitResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            interval=interval,
-            statuses=statuses,
-            sub_key=sub_key,
-            target=target,
-            threshold=threshold,
-            ttl=ttl,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             interval: Optional[int] = None,
-             statuses: Optional[Sequence['outputs.GetWafRulesWafRuleRateLimitStatusResult']] = None,
-             sub_key: Optional[str] = None,
-             target: Optional[str] = None,
-             threshold: Optional[int] = None,
-             ttl: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if interval is None:
-            raise TypeError("Missing 'interval' argument")
-        if statuses is None:
-            raise TypeError("Missing 'statuses' argument")
-        if sub_key is None and 'subKey' in kwargs:
-            sub_key = kwargs['subKey']
-        if sub_key is None:
-            raise TypeError("Missing 'sub_key' argument")
-        if target is None:
-            raise TypeError("Missing 'target' argument")
-        if threshold is None:
-            raise TypeError("Missing 'threshold' argument")
-        if ttl is None:
-            raise TypeError("Missing 'ttl' argument")
-
-        _setter("interval", interval)
-        _setter("statuses", statuses)
-        _setter("sub_key", sub_key)
-        _setter("target", target)
-        _setter("threshold", threshold)
-        _setter("ttl", ttl)
+        pulumi.set(__self__, "interval", interval)
+        pulumi.set(__self__, "statuses", statuses)
+        pulumi.set(__self__, "sub_key", sub_key)
+        pulumi.set(__self__, "target", target)
+        pulumi.set(__self__, "threshold", threshold)
+        pulumi.set(__self__, "ttl", ttl)
 
     @property
     @pulumi.getter
@@ -5866,30 +4314,9 @@ class GetWafRulesWafRuleRateLimitStatusResult(dict):
         :param int count: The number of times that the HTTP status code that was returned.
         :param int ratio: The percentage of HTTP status codes.
         """
-        GetWafRulesWafRuleRateLimitStatusResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            code=code,
-            count=count,
-            ratio=ratio,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             code: Optional[str] = None,
-             count: Optional[int] = None,
-             ratio: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if code is None:
-            raise TypeError("Missing 'code' argument")
-        if count is None:
-            raise TypeError("Missing 'count' argument")
-        if ratio is None:
-            raise TypeError("Missing 'ratio' argument")
-
-        _setter("code", code)
-        _setter("count", count)
-        _setter("ratio", ratio)
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "ratio", ratio)
 
     @property
     @pulumi.getter

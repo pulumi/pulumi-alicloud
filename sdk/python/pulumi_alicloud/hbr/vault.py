@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['VaultArgs', 'Vault']
@@ -29,50 +29,17 @@ class VaultArgs:
         :param pulumi.Input[str] vault_storage_class: The storage class of Vault. Valid values: `STANDARD`.
         :param pulumi.Input[str] vault_type: The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
         """
-        VaultArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            vault_name=vault_name,
-            description=description,
-            encrypt_type=encrypt_type,
-            kms_key_id=kms_key_id,
-            vault_storage_class=vault_storage_class,
-            vault_type=vault_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             vault_name: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             encrypt_type: Optional[pulumi.Input[str]] = None,
-             kms_key_id: Optional[pulumi.Input[str]] = None,
-             vault_storage_class: Optional[pulumi.Input[str]] = None,
-             vault_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if vault_name is None and 'vaultName' in kwargs:
-            vault_name = kwargs['vaultName']
-        if vault_name is None:
-            raise TypeError("Missing 'vault_name' argument")
-        if encrypt_type is None and 'encryptType' in kwargs:
-            encrypt_type = kwargs['encryptType']
-        if kms_key_id is None and 'kmsKeyId' in kwargs:
-            kms_key_id = kwargs['kmsKeyId']
-        if vault_storage_class is None and 'vaultStorageClass' in kwargs:
-            vault_storage_class = kwargs['vaultStorageClass']
-        if vault_type is None and 'vaultType' in kwargs:
-            vault_type = kwargs['vaultType']
-
-        _setter("vault_name", vault_name)
+        pulumi.set(__self__, "vault_name", vault_name)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if encrypt_type is not None:
-            _setter("encrypt_type", encrypt_type)
+            pulumi.set(__self__, "encrypt_type", encrypt_type)
         if kms_key_id is not None:
-            _setter("kms_key_id", kms_key_id)
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if vault_storage_class is not None:
-            _setter("vault_storage_class", vault_storage_class)
+            pulumi.set(__self__, "vault_storage_class", vault_storage_class)
         if vault_type is not None:
-            _setter("vault_type", vault_type)
+            pulumi.set(__self__, "vault_type", vault_type)
 
     @property
     @pulumi.getter(name="vaultName")
@@ -167,53 +134,20 @@ class _VaultState:
         :param pulumi.Input[str] vault_storage_class: The storage class of Vault. Valid values: `STANDARD`.
         :param pulumi.Input[str] vault_type: The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
         """
-        _VaultState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            encrypt_type=encrypt_type,
-            kms_key_id=kms_key_id,
-            status=status,
-            vault_name=vault_name,
-            vault_storage_class=vault_storage_class,
-            vault_type=vault_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             encrypt_type: Optional[pulumi.Input[str]] = None,
-             kms_key_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             vault_name: Optional[pulumi.Input[str]] = None,
-             vault_storage_class: Optional[pulumi.Input[str]] = None,
-             vault_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if encrypt_type is None and 'encryptType' in kwargs:
-            encrypt_type = kwargs['encryptType']
-        if kms_key_id is None and 'kmsKeyId' in kwargs:
-            kms_key_id = kwargs['kmsKeyId']
-        if vault_name is None and 'vaultName' in kwargs:
-            vault_name = kwargs['vaultName']
-        if vault_storage_class is None and 'vaultStorageClass' in kwargs:
-            vault_storage_class = kwargs['vaultStorageClass']
-        if vault_type is None and 'vaultType' in kwargs:
-            vault_type = kwargs['vaultType']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if encrypt_type is not None:
-            _setter("encrypt_type", encrypt_type)
+            pulumi.set(__self__, "encrypt_type", encrypt_type)
         if kms_key_id is not None:
-            _setter("kms_key_id", kms_key_id)
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if vault_name is not None:
-            _setter("vault_name", vault_name)
+            pulumi.set(__self__, "vault_name", vault_name)
         if vault_storage_class is not None:
-            _setter("vault_storage_class", vault_storage_class)
+            pulumi.set(__self__, "vault_storage_class", vault_storage_class)
         if vault_type is not None:
-            _setter("vault_type", vault_type)
+            pulumi.set(__self__, "vault_type", vault_type)
 
     @property
     @pulumi.getter
@@ -389,10 +323,6 @@ class Vault(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            VaultArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

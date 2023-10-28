@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TransitRouterGrantAttachmentArgs', 'TransitRouterGrantAttachment']
@@ -27,49 +27,12 @@ class TransitRouterGrantAttachmentArgs:
         :param pulumi.Input[str] instance_type: The type of the network instance. Valid values: `VPC`, `ExpressConnect`, `VPN`.
         :param pulumi.Input[str] order_type: The entity that pays the fees of the network instance. Valid values: `PayByResourceOwner`, `PayByCenOwner`.
         """
-        TransitRouterGrantAttachmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cen_id=cen_id,
-            cen_owner_id=cen_owner_id,
-            instance_id=instance_id,
-            instance_type=instance_type,
-            order_type=order_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cen_id: Optional[pulumi.Input[str]] = None,
-             cen_owner_id: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             instance_type: Optional[pulumi.Input[str]] = None,
-             order_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cen_id is None and 'cenId' in kwargs:
-            cen_id = kwargs['cenId']
-        if cen_id is None:
-            raise TypeError("Missing 'cen_id' argument")
-        if cen_owner_id is None and 'cenOwnerId' in kwargs:
-            cen_owner_id = kwargs['cenOwnerId']
-        if cen_owner_id is None:
-            raise TypeError("Missing 'cen_owner_id' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if instance_type is None:
-            raise TypeError("Missing 'instance_type' argument")
-        if order_type is None and 'orderType' in kwargs:
-            order_type = kwargs['orderType']
-
-        _setter("cen_id", cen_id)
-        _setter("cen_owner_id", cen_owner_id)
-        _setter("instance_id", instance_id)
-        _setter("instance_type", instance_type)
+        pulumi.set(__self__, "cen_id", cen_id)
+        pulumi.set(__self__, "cen_owner_id", cen_owner_id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_type", instance_type)
         if order_type is not None:
-            _setter("order_type", order_type)
+            pulumi.set(__self__, "order_type", order_type)
 
     @property
     @pulumi.getter(name="cenId")
@@ -148,45 +111,16 @@ class _TransitRouterGrantAttachmentState:
         :param pulumi.Input[str] instance_type: The type of the network instance. Valid values: `VPC`, `ExpressConnect`, `VPN`.
         :param pulumi.Input[str] order_type: The entity that pays the fees of the network instance. Valid values: `PayByResourceOwner`, `PayByCenOwner`.
         """
-        _TransitRouterGrantAttachmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cen_id=cen_id,
-            cen_owner_id=cen_owner_id,
-            instance_id=instance_id,
-            instance_type=instance_type,
-            order_type=order_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cen_id: Optional[pulumi.Input[str]] = None,
-             cen_owner_id: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             instance_type: Optional[pulumi.Input[str]] = None,
-             order_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cen_id is None and 'cenId' in kwargs:
-            cen_id = kwargs['cenId']
-        if cen_owner_id is None and 'cenOwnerId' in kwargs:
-            cen_owner_id = kwargs['cenOwnerId']
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if order_type is None and 'orderType' in kwargs:
-            order_type = kwargs['orderType']
-
         if cen_id is not None:
-            _setter("cen_id", cen_id)
+            pulumi.set(__self__, "cen_id", cen_id)
         if cen_owner_id is not None:
-            _setter("cen_owner_id", cen_owner_id)
+            pulumi.set(__self__, "cen_owner_id", cen_owner_id)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if instance_type is not None:
-            _setter("instance_type", instance_type)
+            pulumi.set(__self__, "instance_type", instance_type)
         if order_type is not None:
-            _setter("order_type", order_type)
+            pulumi.set(__self__, "order_type", order_type)
 
     @property
     @pulumi.getter(name="cenId")
@@ -360,10 +294,6 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TransitRouterGrantAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

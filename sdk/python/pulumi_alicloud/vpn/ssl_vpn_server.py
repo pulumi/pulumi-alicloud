@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SslVpnServerArgs', 'SslVpnServer']
@@ -36,56 +36,19 @@ class SslVpnServerArgs:
         :param pulumi.Input[int] port: The port used by the SSL-VPN server. The default value is `1194`.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
         :param pulumi.Input[str] protocol: The protocol used by the SSL-VPN server. Valid value: UDP(default) |TCP
         """
-        SslVpnServerArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            client_ip_pool=client_ip_pool,
-            local_subnet=local_subnet,
-            vpn_gateway_id=vpn_gateway_id,
-            cipher=cipher,
-            compress=compress,
-            name=name,
-            port=port,
-            protocol=protocol,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             client_ip_pool: Optional[pulumi.Input[str]] = None,
-             local_subnet: Optional[pulumi.Input[str]] = None,
-             vpn_gateway_id: Optional[pulumi.Input[str]] = None,
-             cipher: Optional[pulumi.Input[str]] = None,
-             compress: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             port: Optional[pulumi.Input[int]] = None,
-             protocol: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if client_ip_pool is None and 'clientIpPool' in kwargs:
-            client_ip_pool = kwargs['clientIpPool']
-        if client_ip_pool is None:
-            raise TypeError("Missing 'client_ip_pool' argument")
-        if local_subnet is None and 'localSubnet' in kwargs:
-            local_subnet = kwargs['localSubnet']
-        if local_subnet is None:
-            raise TypeError("Missing 'local_subnet' argument")
-        if vpn_gateway_id is None and 'vpnGatewayId' in kwargs:
-            vpn_gateway_id = kwargs['vpnGatewayId']
-        if vpn_gateway_id is None:
-            raise TypeError("Missing 'vpn_gateway_id' argument")
-
-        _setter("client_ip_pool", client_ip_pool)
-        _setter("local_subnet", local_subnet)
-        _setter("vpn_gateway_id", vpn_gateway_id)
+        pulumi.set(__self__, "client_ip_pool", client_ip_pool)
+        pulumi.set(__self__, "local_subnet", local_subnet)
+        pulumi.set(__self__, "vpn_gateway_id", vpn_gateway_id)
         if cipher is not None:
-            _setter("cipher", cipher)
+            pulumi.set(__self__, "cipher", cipher)
         if compress is not None:
-            _setter("compress", compress)
+            pulumi.set(__self__, "compress", compress)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if protocol is not None:
-            _setter("protocol", protocol)
+            pulumi.set(__self__, "protocol", protocol)
 
     @property
     @pulumi.getter(name="clientIpPool")
@@ -218,69 +181,28 @@ class _SslVpnServerState:
         :param pulumi.Input[str] protocol: The protocol used by the SSL-VPN server. Valid value: UDP(default) |TCP
         :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
         """
-        _SslVpnServerState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cipher=cipher,
-            client_ip_pool=client_ip_pool,
-            compress=compress,
-            connections=connections,
-            internet_ip=internet_ip,
-            local_subnet=local_subnet,
-            max_connections=max_connections,
-            name=name,
-            port=port,
-            protocol=protocol,
-            vpn_gateway_id=vpn_gateway_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cipher: Optional[pulumi.Input[str]] = None,
-             client_ip_pool: Optional[pulumi.Input[str]] = None,
-             compress: Optional[pulumi.Input[bool]] = None,
-             connections: Optional[pulumi.Input[int]] = None,
-             internet_ip: Optional[pulumi.Input[str]] = None,
-             local_subnet: Optional[pulumi.Input[str]] = None,
-             max_connections: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             port: Optional[pulumi.Input[int]] = None,
-             protocol: Optional[pulumi.Input[str]] = None,
-             vpn_gateway_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if client_ip_pool is None and 'clientIpPool' in kwargs:
-            client_ip_pool = kwargs['clientIpPool']
-        if internet_ip is None and 'internetIp' in kwargs:
-            internet_ip = kwargs['internetIp']
-        if local_subnet is None and 'localSubnet' in kwargs:
-            local_subnet = kwargs['localSubnet']
-        if max_connections is None and 'maxConnections' in kwargs:
-            max_connections = kwargs['maxConnections']
-        if vpn_gateway_id is None and 'vpnGatewayId' in kwargs:
-            vpn_gateway_id = kwargs['vpnGatewayId']
-
         if cipher is not None:
-            _setter("cipher", cipher)
+            pulumi.set(__self__, "cipher", cipher)
         if client_ip_pool is not None:
-            _setter("client_ip_pool", client_ip_pool)
+            pulumi.set(__self__, "client_ip_pool", client_ip_pool)
         if compress is not None:
-            _setter("compress", compress)
+            pulumi.set(__self__, "compress", compress)
         if connections is not None:
-            _setter("connections", connections)
+            pulumi.set(__self__, "connections", connections)
         if internet_ip is not None:
-            _setter("internet_ip", internet_ip)
+            pulumi.set(__self__, "internet_ip", internet_ip)
         if local_subnet is not None:
-            _setter("local_subnet", local_subnet)
+            pulumi.set(__self__, "local_subnet", local_subnet)
         if max_connections is not None:
-            _setter("max_connections", max_connections)
+            pulumi.set(__self__, "max_connections", max_connections)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if protocol is not None:
-            _setter("protocol", protocol)
+            pulumi.set(__self__, "protocol", protocol)
         if vpn_gateway_id is not None:
-            _setter("vpn_gateway_id", vpn_gateway_id)
+            pulumi.set(__self__, "vpn_gateway_id", vpn_gateway_id)
 
     @property
     @pulumi.getter
@@ -480,10 +402,6 @@ class SslVpnServer(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SslVpnServerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

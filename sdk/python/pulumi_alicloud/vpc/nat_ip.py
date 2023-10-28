@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['NatIpArgs', 'NatIp']
@@ -31,58 +31,19 @@ class NatIpArgs:
         :param pulumi.Input[str] nat_ip_description: NAT IP ADDRESS description of information. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the` http://` Or `https://` at the beginning.
         :param pulumi.Input[str] nat_ip_name: NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
         """
-        NatIpArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            nat_gateway_id=nat_gateway_id,
-            dry_run=dry_run,
-            nat_ip=nat_ip,
-            nat_ip_cidr=nat_ip_cidr,
-            nat_ip_cidr_id=nat_ip_cidr_id,
-            nat_ip_description=nat_ip_description,
-            nat_ip_name=nat_ip_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             nat_gateway_id: Optional[pulumi.Input[str]] = None,
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             nat_ip: Optional[pulumi.Input[str]] = None,
-             nat_ip_cidr: Optional[pulumi.Input[str]] = None,
-             nat_ip_cidr_id: Optional[pulumi.Input[str]] = None,
-             nat_ip_description: Optional[pulumi.Input[str]] = None,
-             nat_ip_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if nat_gateway_id is None and 'natGatewayId' in kwargs:
-            nat_gateway_id = kwargs['natGatewayId']
-        if nat_gateway_id is None:
-            raise TypeError("Missing 'nat_gateway_id' argument")
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-        if nat_ip is None and 'natIp' in kwargs:
-            nat_ip = kwargs['natIp']
-        if nat_ip_cidr is None and 'natIpCidr' in kwargs:
-            nat_ip_cidr = kwargs['natIpCidr']
-        if nat_ip_cidr_id is None and 'natIpCidrId' in kwargs:
-            nat_ip_cidr_id = kwargs['natIpCidrId']
-        if nat_ip_description is None and 'natIpDescription' in kwargs:
-            nat_ip_description = kwargs['natIpDescription']
-        if nat_ip_name is None and 'natIpName' in kwargs:
-            nat_ip_name = kwargs['natIpName']
-
-        _setter("nat_gateway_id", nat_gateway_id)
+        pulumi.set(__self__, "nat_gateway_id", nat_gateway_id)
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if nat_ip is not None:
-            _setter("nat_ip", nat_ip)
+            pulumi.set(__self__, "nat_ip", nat_ip)
         if nat_ip_cidr is not None:
-            _setter("nat_ip_cidr", nat_ip_cidr)
+            pulumi.set(__self__, "nat_ip_cidr", nat_ip_cidr)
         if nat_ip_cidr_id is not None:
-            _setter("nat_ip_cidr_id", nat_ip_cidr_id)
+            pulumi.set(__self__, "nat_ip_cidr_id", nat_ip_cidr_id)
         if nat_ip_description is not None:
-            _setter("nat_ip_description", nat_ip_description)
+            pulumi.set(__self__, "nat_ip_description", nat_ip_description)
         if nat_ip_name is not None:
-            _setter("nat_ip_name", nat_ip_name)
+            pulumi.set(__self__, "nat_ip_name", nat_ip_name)
 
     @property
     @pulumi.getter(name="natGatewayId")
@@ -193,67 +154,24 @@ class _NatIpState:
         :param pulumi.Input[str] nat_ip_name: NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
         :param pulumi.Input[str] status: The status of the NAT IP address. Valid values: `Available`, `Deleting`, `Creating` and `Deleted`.
         """
-        _NatIpState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dry_run=dry_run,
-            nat_gateway_id=nat_gateway_id,
-            nat_ip=nat_ip,
-            nat_ip_cidr=nat_ip_cidr,
-            nat_ip_cidr_id=nat_ip_cidr_id,
-            nat_ip_description=nat_ip_description,
-            nat_ip_id=nat_ip_id,
-            nat_ip_name=nat_ip_name,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             nat_gateway_id: Optional[pulumi.Input[str]] = None,
-             nat_ip: Optional[pulumi.Input[str]] = None,
-             nat_ip_cidr: Optional[pulumi.Input[str]] = None,
-             nat_ip_cidr_id: Optional[pulumi.Input[str]] = None,
-             nat_ip_description: Optional[pulumi.Input[str]] = None,
-             nat_ip_id: Optional[pulumi.Input[str]] = None,
-             nat_ip_name: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-        if nat_gateway_id is None and 'natGatewayId' in kwargs:
-            nat_gateway_id = kwargs['natGatewayId']
-        if nat_ip is None and 'natIp' in kwargs:
-            nat_ip = kwargs['natIp']
-        if nat_ip_cidr is None and 'natIpCidr' in kwargs:
-            nat_ip_cidr = kwargs['natIpCidr']
-        if nat_ip_cidr_id is None and 'natIpCidrId' in kwargs:
-            nat_ip_cidr_id = kwargs['natIpCidrId']
-        if nat_ip_description is None and 'natIpDescription' in kwargs:
-            nat_ip_description = kwargs['natIpDescription']
-        if nat_ip_id is None and 'natIpId' in kwargs:
-            nat_ip_id = kwargs['natIpId']
-        if nat_ip_name is None and 'natIpName' in kwargs:
-            nat_ip_name = kwargs['natIpName']
-
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if nat_gateway_id is not None:
-            _setter("nat_gateway_id", nat_gateway_id)
+            pulumi.set(__self__, "nat_gateway_id", nat_gateway_id)
         if nat_ip is not None:
-            _setter("nat_ip", nat_ip)
+            pulumi.set(__self__, "nat_ip", nat_ip)
         if nat_ip_cidr is not None:
-            _setter("nat_ip_cidr", nat_ip_cidr)
+            pulumi.set(__self__, "nat_ip_cidr", nat_ip_cidr)
         if nat_ip_cidr_id is not None:
-            _setter("nat_ip_cidr_id", nat_ip_cidr_id)
+            pulumi.set(__self__, "nat_ip_cidr_id", nat_ip_cidr_id)
         if nat_ip_description is not None:
-            _setter("nat_ip_description", nat_ip_description)
+            pulumi.set(__self__, "nat_ip_description", nat_ip_description)
         if nat_ip_id is not None:
-            _setter("nat_ip_id", nat_ip_id)
+            pulumi.set(__self__, "nat_ip_id", nat_ip_id)
         if nat_ip_name is not None:
-            _setter("nat_ip_name", nat_ip_name)
+            pulumi.set(__self__, "nat_ip_name", nat_ip_name)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="dryRun")
@@ -509,10 +427,6 @@ class NatIp(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            NatIpArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

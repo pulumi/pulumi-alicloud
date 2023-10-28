@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -60,120 +60,43 @@ class FunctionArgs:
         :param pulumi.Input[str] oss_key: The OSS key of an object containing the function's deployment package. Conflicts with `filename`.
         :param pulumi.Input[int] timeout: The amount of time your function has to run in seconds.
         """
-        FunctionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            handler=handler,
-            runtime=runtime,
-            service=service,
-            ca_port=ca_port,
-            code_checksum=code_checksum,
-            custom_container_config=custom_container_config,
-            description=description,
-            environment_variables=environment_variables,
-            filename=filename,
-            initialization_timeout=initialization_timeout,
-            initializer=initializer,
-            instance_concurrency=instance_concurrency,
-            instance_type=instance_type,
-            layers=layers,
-            memory_size=memory_size,
-            name=name,
-            name_prefix=name_prefix,
-            oss_bucket=oss_bucket,
-            oss_key=oss_key,
-            timeout=timeout,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             handler: Optional[pulumi.Input[str]] = None,
-             runtime: Optional[pulumi.Input[str]] = None,
-             service: Optional[pulumi.Input[str]] = None,
-             ca_port: Optional[pulumi.Input[int]] = None,
-             code_checksum: Optional[pulumi.Input[str]] = None,
-             custom_container_config: Optional[pulumi.Input['FunctionCustomContainerConfigArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             filename: Optional[pulumi.Input[str]] = None,
-             initialization_timeout: Optional[pulumi.Input[int]] = None,
-             initializer: Optional[pulumi.Input[str]] = None,
-             instance_concurrency: Optional[pulumi.Input[int]] = None,
-             instance_type: Optional[pulumi.Input[str]] = None,
-             layers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             memory_size: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             name_prefix: Optional[pulumi.Input[str]] = None,
-             oss_bucket: Optional[pulumi.Input[str]] = None,
-             oss_key: Optional[pulumi.Input[str]] = None,
-             timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if handler is None:
-            raise TypeError("Missing 'handler' argument")
-        if runtime is None:
-            raise TypeError("Missing 'runtime' argument")
-        if service is None:
-            raise TypeError("Missing 'service' argument")
-        if ca_port is None and 'caPort' in kwargs:
-            ca_port = kwargs['caPort']
-        if code_checksum is None and 'codeChecksum' in kwargs:
-            code_checksum = kwargs['codeChecksum']
-        if custom_container_config is None and 'customContainerConfig' in kwargs:
-            custom_container_config = kwargs['customContainerConfig']
-        if environment_variables is None and 'environmentVariables' in kwargs:
-            environment_variables = kwargs['environmentVariables']
-        if initialization_timeout is None and 'initializationTimeout' in kwargs:
-            initialization_timeout = kwargs['initializationTimeout']
-        if instance_concurrency is None and 'instanceConcurrency' in kwargs:
-            instance_concurrency = kwargs['instanceConcurrency']
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if memory_size is None and 'memorySize' in kwargs:
-            memory_size = kwargs['memorySize']
-        if name_prefix is None and 'namePrefix' in kwargs:
-            name_prefix = kwargs['namePrefix']
-        if oss_bucket is None and 'ossBucket' in kwargs:
-            oss_bucket = kwargs['ossBucket']
-        if oss_key is None and 'ossKey' in kwargs:
-            oss_key = kwargs['ossKey']
-
-        _setter("handler", handler)
-        _setter("runtime", runtime)
-        _setter("service", service)
+        pulumi.set(__self__, "handler", handler)
+        pulumi.set(__self__, "runtime", runtime)
+        pulumi.set(__self__, "service", service)
         if ca_port is not None:
-            _setter("ca_port", ca_port)
+            pulumi.set(__self__, "ca_port", ca_port)
         if code_checksum is not None:
-            _setter("code_checksum", code_checksum)
+            pulumi.set(__self__, "code_checksum", code_checksum)
         if custom_container_config is not None:
-            _setter("custom_container_config", custom_container_config)
+            pulumi.set(__self__, "custom_container_config", custom_container_config)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if environment_variables is not None:
-            _setter("environment_variables", environment_variables)
+            pulumi.set(__self__, "environment_variables", environment_variables)
         if filename is not None:
-            _setter("filename", filename)
+            pulumi.set(__self__, "filename", filename)
         if initialization_timeout is not None:
-            _setter("initialization_timeout", initialization_timeout)
+            pulumi.set(__self__, "initialization_timeout", initialization_timeout)
         if initializer is not None:
-            _setter("initializer", initializer)
+            pulumi.set(__self__, "initializer", initializer)
         if instance_concurrency is not None:
-            _setter("instance_concurrency", instance_concurrency)
+            pulumi.set(__self__, "instance_concurrency", instance_concurrency)
         if instance_type is not None:
-            _setter("instance_type", instance_type)
+            pulumi.set(__self__, "instance_type", instance_type)
         if layers is not None:
-            _setter("layers", layers)
+            pulumi.set(__self__, "layers", layers)
         if memory_size is not None:
-            _setter("memory_size", memory_size)
+            pulumi.set(__self__, "memory_size", memory_size)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if name_prefix is not None:
-            _setter("name_prefix", name_prefix)
+            pulumi.set(__self__, "name_prefix", name_prefix)
         if oss_bucket is not None:
-            _setter("oss_bucket", oss_bucket)
+            pulumi.set(__self__, "oss_bucket", oss_bucket)
         if oss_key is not None:
-            _setter("oss_key", oss_key)
+            pulumi.set(__self__, "oss_key", oss_key)
         if timeout is not None:
-            _setter("timeout", timeout)
+            pulumi.set(__self__, "timeout", timeout)
 
     @property
     @pulumi.getter
@@ -468,129 +391,50 @@ class _FunctionState:
         :param pulumi.Input[str] service: The Function Compute service name.
         :param pulumi.Input[int] timeout: The amount of time your function has to run in seconds.
         """
-        _FunctionState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ca_port=ca_port,
-            code_checksum=code_checksum,
-            custom_container_config=custom_container_config,
-            description=description,
-            environment_variables=environment_variables,
-            filename=filename,
-            function_id=function_id,
-            handler=handler,
-            initialization_timeout=initialization_timeout,
-            initializer=initializer,
-            instance_concurrency=instance_concurrency,
-            instance_type=instance_type,
-            last_modified=last_modified,
-            layers=layers,
-            memory_size=memory_size,
-            name=name,
-            name_prefix=name_prefix,
-            oss_bucket=oss_bucket,
-            oss_key=oss_key,
-            runtime=runtime,
-            service=service,
-            timeout=timeout,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ca_port: Optional[pulumi.Input[int]] = None,
-             code_checksum: Optional[pulumi.Input[str]] = None,
-             custom_container_config: Optional[pulumi.Input['FunctionCustomContainerConfigArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             filename: Optional[pulumi.Input[str]] = None,
-             function_id: Optional[pulumi.Input[str]] = None,
-             handler: Optional[pulumi.Input[str]] = None,
-             initialization_timeout: Optional[pulumi.Input[int]] = None,
-             initializer: Optional[pulumi.Input[str]] = None,
-             instance_concurrency: Optional[pulumi.Input[int]] = None,
-             instance_type: Optional[pulumi.Input[str]] = None,
-             last_modified: Optional[pulumi.Input[str]] = None,
-             layers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             memory_size: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             name_prefix: Optional[pulumi.Input[str]] = None,
-             oss_bucket: Optional[pulumi.Input[str]] = None,
-             oss_key: Optional[pulumi.Input[str]] = None,
-             runtime: Optional[pulumi.Input[str]] = None,
-             service: Optional[pulumi.Input[str]] = None,
-             timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ca_port is None and 'caPort' in kwargs:
-            ca_port = kwargs['caPort']
-        if code_checksum is None and 'codeChecksum' in kwargs:
-            code_checksum = kwargs['codeChecksum']
-        if custom_container_config is None and 'customContainerConfig' in kwargs:
-            custom_container_config = kwargs['customContainerConfig']
-        if environment_variables is None and 'environmentVariables' in kwargs:
-            environment_variables = kwargs['environmentVariables']
-        if function_id is None and 'functionId' in kwargs:
-            function_id = kwargs['functionId']
-        if initialization_timeout is None and 'initializationTimeout' in kwargs:
-            initialization_timeout = kwargs['initializationTimeout']
-        if instance_concurrency is None and 'instanceConcurrency' in kwargs:
-            instance_concurrency = kwargs['instanceConcurrency']
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if last_modified is None and 'lastModified' in kwargs:
-            last_modified = kwargs['lastModified']
-        if memory_size is None and 'memorySize' in kwargs:
-            memory_size = kwargs['memorySize']
-        if name_prefix is None and 'namePrefix' in kwargs:
-            name_prefix = kwargs['namePrefix']
-        if oss_bucket is None and 'ossBucket' in kwargs:
-            oss_bucket = kwargs['ossBucket']
-        if oss_key is None and 'ossKey' in kwargs:
-            oss_key = kwargs['ossKey']
-
         if ca_port is not None:
-            _setter("ca_port", ca_port)
+            pulumi.set(__self__, "ca_port", ca_port)
         if code_checksum is not None:
-            _setter("code_checksum", code_checksum)
+            pulumi.set(__self__, "code_checksum", code_checksum)
         if custom_container_config is not None:
-            _setter("custom_container_config", custom_container_config)
+            pulumi.set(__self__, "custom_container_config", custom_container_config)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if environment_variables is not None:
-            _setter("environment_variables", environment_variables)
+            pulumi.set(__self__, "environment_variables", environment_variables)
         if filename is not None:
-            _setter("filename", filename)
+            pulumi.set(__self__, "filename", filename)
         if function_id is not None:
-            _setter("function_id", function_id)
+            pulumi.set(__self__, "function_id", function_id)
         if handler is not None:
-            _setter("handler", handler)
+            pulumi.set(__self__, "handler", handler)
         if initialization_timeout is not None:
-            _setter("initialization_timeout", initialization_timeout)
+            pulumi.set(__self__, "initialization_timeout", initialization_timeout)
         if initializer is not None:
-            _setter("initializer", initializer)
+            pulumi.set(__self__, "initializer", initializer)
         if instance_concurrency is not None:
-            _setter("instance_concurrency", instance_concurrency)
+            pulumi.set(__self__, "instance_concurrency", instance_concurrency)
         if instance_type is not None:
-            _setter("instance_type", instance_type)
+            pulumi.set(__self__, "instance_type", instance_type)
         if last_modified is not None:
-            _setter("last_modified", last_modified)
+            pulumi.set(__self__, "last_modified", last_modified)
         if layers is not None:
-            _setter("layers", layers)
+            pulumi.set(__self__, "layers", layers)
         if memory_size is not None:
-            _setter("memory_size", memory_size)
+            pulumi.set(__self__, "memory_size", memory_size)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if name_prefix is not None:
-            _setter("name_prefix", name_prefix)
+            pulumi.set(__self__, "name_prefix", name_prefix)
         if oss_bucket is not None:
-            _setter("oss_bucket", oss_bucket)
+            pulumi.set(__self__, "oss_bucket", oss_bucket)
         if oss_key is not None:
-            _setter("oss_key", oss_key)
+            pulumi.set(__self__, "oss_key", oss_key)
         if runtime is not None:
-            _setter("runtime", runtime)
+            pulumi.set(__self__, "runtime", runtime)
         if service is not None:
-            _setter("service", service)
+            pulumi.set(__self__, "service", service)
         if timeout is not None:
-            _setter("timeout", timeout)
+            pulumi.set(__self__, "timeout", timeout)
 
     @property
     @pulumi.getter(name="caPort")
@@ -1100,10 +944,6 @@ class Function(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            FunctionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1140,7 +980,6 @@ class Function(pulumi.CustomResource):
 
             __props__.__dict__["ca_port"] = ca_port
             __props__.__dict__["code_checksum"] = code_checksum
-            custom_container_config = _utilities.configure(custom_container_config, FunctionCustomContainerConfigArgs, True)
             __props__.__dict__["custom_container_config"] = custom_container_config
             __props__.__dict__["description"] = description
             __props__.__dict__["environment_variables"] = environment_variables

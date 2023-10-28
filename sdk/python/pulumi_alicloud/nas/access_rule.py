@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AccessRuleArgs', 'AccessRule']
@@ -27,45 +27,14 @@ class AccessRuleArgs:
         :param pulumi.Input[str] rw_access_type: Read-write permission type: `RDWR` (default), `RDONLY`.
         :param pulumi.Input[str] user_access_type: User permission type: `no_squash` (default), `root_squash`, `all_squash`.
         """
-        AccessRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_group_name=access_group_name,
-            source_cidr_ip=source_cidr_ip,
-            priority=priority,
-            rw_access_type=rw_access_type,
-            user_access_type=user_access_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_group_name: Optional[pulumi.Input[str]] = None,
-             source_cidr_ip: Optional[pulumi.Input[str]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             rw_access_type: Optional[pulumi.Input[str]] = None,
-             user_access_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_group_name is None and 'accessGroupName' in kwargs:
-            access_group_name = kwargs['accessGroupName']
-        if access_group_name is None:
-            raise TypeError("Missing 'access_group_name' argument")
-        if source_cidr_ip is None and 'sourceCidrIp' in kwargs:
-            source_cidr_ip = kwargs['sourceCidrIp']
-        if source_cidr_ip is None:
-            raise TypeError("Missing 'source_cidr_ip' argument")
-        if rw_access_type is None and 'rwAccessType' in kwargs:
-            rw_access_type = kwargs['rwAccessType']
-        if user_access_type is None and 'userAccessType' in kwargs:
-            user_access_type = kwargs['userAccessType']
-
-        _setter("access_group_name", access_group_name)
-        _setter("source_cidr_ip", source_cidr_ip)
+        pulumi.set(__self__, "access_group_name", access_group_name)
+        pulumi.set(__self__, "source_cidr_ip", source_cidr_ip)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if rw_access_type is not None:
-            _setter("rw_access_type", rw_access_type)
+            pulumi.set(__self__, "rw_access_type", rw_access_type)
         if user_access_type is not None:
-            _setter("user_access_type", user_access_type)
+            pulumi.set(__self__, "user_access_type", user_access_type)
 
     @property
     @pulumi.getter(name="accessGroupName")
@@ -146,49 +115,18 @@ class _AccessRuleState:
         :param pulumi.Input[str] source_cidr_ip: Address or address segment.
         :param pulumi.Input[str] user_access_type: User permission type: `no_squash` (default), `root_squash`, `all_squash`.
         """
-        _AccessRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_group_name=access_group_name,
-            access_rule_id=access_rule_id,
-            priority=priority,
-            rw_access_type=rw_access_type,
-            source_cidr_ip=source_cidr_ip,
-            user_access_type=user_access_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_group_name: Optional[pulumi.Input[str]] = None,
-             access_rule_id: Optional[pulumi.Input[str]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             rw_access_type: Optional[pulumi.Input[str]] = None,
-             source_cidr_ip: Optional[pulumi.Input[str]] = None,
-             user_access_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_group_name is None and 'accessGroupName' in kwargs:
-            access_group_name = kwargs['accessGroupName']
-        if access_rule_id is None and 'accessRuleId' in kwargs:
-            access_rule_id = kwargs['accessRuleId']
-        if rw_access_type is None and 'rwAccessType' in kwargs:
-            rw_access_type = kwargs['rwAccessType']
-        if source_cidr_ip is None and 'sourceCidrIp' in kwargs:
-            source_cidr_ip = kwargs['sourceCidrIp']
-        if user_access_type is None and 'userAccessType' in kwargs:
-            user_access_type = kwargs['userAccessType']
-
         if access_group_name is not None:
-            _setter("access_group_name", access_group_name)
+            pulumi.set(__self__, "access_group_name", access_group_name)
         if access_rule_id is not None:
-            _setter("access_rule_id", access_rule_id)
+            pulumi.set(__self__, "access_rule_id", access_rule_id)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if rw_access_type is not None:
-            _setter("rw_access_type", rw_access_type)
+            pulumi.set(__self__, "rw_access_type", rw_access_type)
         if source_cidr_ip is not None:
-            _setter("source_cidr_ip", source_cidr_ip)
+            pulumi.set(__self__, "source_cidr_ip", source_cidr_ip)
         if user_access_type is not None:
-            _setter("user_access_type", user_access_type)
+            pulumi.set(__self__, "user_access_type", user_access_type)
 
     @property
     @pulumi.getter(name="accessGroupName")
@@ -368,10 +306,6 @@ class AccessRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AccessRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

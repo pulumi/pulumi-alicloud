@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -33,23 +33,10 @@ class ApplicationInfoDimension(dict):
     def __init__(__self__, *,
                  key: Optional[str] = None,
                  value: Optional[str] = None):
-        ApplicationInfoDimension._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -71,23 +58,10 @@ class QuotaAlarmQuotaDimension(dict):
         :param str key: The Key of quota_dimensions.
         :param str value: The Value of quota_dimensions.
         """
-        QuotaAlarmQuotaDimension._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -115,23 +89,10 @@ class QuotaApplicationDimension(dict):
         :param str key: Key.
         :param str value: Value.
         """
-        QuotaApplicationDimension._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -159,23 +120,10 @@ class TemplateQuotaDimension(dict):
         :param str key: The Key of quota_dimensions.
         :param str value: The Value of quota_dimensions.
         """
-        TemplateQuotaDimension._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -213,119 +161,22 @@ class GetApplicationInfosApplicationResult(dict):
                  quota_unit: str,
                  reason: str,
                  status: str):
-        GetApplicationInfosApplicationResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            application_id=application_id,
-            approve_value=approve_value,
-            audit_reason=audit_reason,
-            desire_value=desire_value,
-            dimensions=dimensions,
-            effective_time=effective_time,
-            expire_time=expire_time,
-            id=id,
-            notice_type=notice_type,
-            product_code=product_code,
-            quota_action_code=quota_action_code,
-            quota_description=quota_description,
-            quota_name=quota_name,
-            quota_unit=quota_unit,
-            reason=reason,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             application_id: Optional[str] = None,
-             approve_value: Optional[str] = None,
-             audit_reason: Optional[str] = None,
-             desire_value: Optional[float] = None,
-             dimensions: Optional[Sequence['outputs.GetApplicationInfosApplicationDimensionResult']] = None,
-             effective_time: Optional[str] = None,
-             expire_time: Optional[str] = None,
-             id: Optional[str] = None,
-             notice_type: Optional[int] = None,
-             product_code: Optional[str] = None,
-             quota_action_code: Optional[str] = None,
-             quota_description: Optional[str] = None,
-             quota_name: Optional[str] = None,
-             quota_unit: Optional[str] = None,
-             reason: Optional[str] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if application_id is None and 'applicationId' in kwargs:
-            application_id = kwargs['applicationId']
-        if application_id is None:
-            raise TypeError("Missing 'application_id' argument")
-        if approve_value is None and 'approveValue' in kwargs:
-            approve_value = kwargs['approveValue']
-        if approve_value is None:
-            raise TypeError("Missing 'approve_value' argument")
-        if audit_reason is None and 'auditReason' in kwargs:
-            audit_reason = kwargs['auditReason']
-        if audit_reason is None:
-            raise TypeError("Missing 'audit_reason' argument")
-        if desire_value is None and 'desireValue' in kwargs:
-            desire_value = kwargs['desireValue']
-        if desire_value is None:
-            raise TypeError("Missing 'desire_value' argument")
-        if dimensions is None:
-            raise TypeError("Missing 'dimensions' argument")
-        if effective_time is None and 'effectiveTime' in kwargs:
-            effective_time = kwargs['effectiveTime']
-        if effective_time is None:
-            raise TypeError("Missing 'effective_time' argument")
-        if expire_time is None and 'expireTime' in kwargs:
-            expire_time = kwargs['expireTime']
-        if expire_time is None:
-            raise TypeError("Missing 'expire_time' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if notice_type is None and 'noticeType' in kwargs:
-            notice_type = kwargs['noticeType']
-        if notice_type is None:
-            raise TypeError("Missing 'notice_type' argument")
-        if product_code is None and 'productCode' in kwargs:
-            product_code = kwargs['productCode']
-        if product_code is None:
-            raise TypeError("Missing 'product_code' argument")
-        if quota_action_code is None and 'quotaActionCode' in kwargs:
-            quota_action_code = kwargs['quotaActionCode']
-        if quota_action_code is None:
-            raise TypeError("Missing 'quota_action_code' argument")
-        if quota_description is None and 'quotaDescription' in kwargs:
-            quota_description = kwargs['quotaDescription']
-        if quota_description is None:
-            raise TypeError("Missing 'quota_description' argument")
-        if quota_name is None and 'quotaName' in kwargs:
-            quota_name = kwargs['quotaName']
-        if quota_name is None:
-            raise TypeError("Missing 'quota_name' argument")
-        if quota_unit is None and 'quotaUnit' in kwargs:
-            quota_unit = kwargs['quotaUnit']
-        if quota_unit is None:
-            raise TypeError("Missing 'quota_unit' argument")
-        if reason is None:
-            raise TypeError("Missing 'reason' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("application_id", application_id)
-        _setter("approve_value", approve_value)
-        _setter("audit_reason", audit_reason)
-        _setter("desire_value", desire_value)
-        _setter("dimensions", dimensions)
-        _setter("effective_time", effective_time)
-        _setter("expire_time", expire_time)
-        _setter("id", id)
-        _setter("notice_type", notice_type)
-        _setter("product_code", product_code)
-        _setter("quota_action_code", quota_action_code)
-        _setter("quota_description", quota_description)
-        _setter("quota_name", quota_name)
-        _setter("quota_unit", quota_unit)
-        _setter("reason", reason)
-        _setter("status", status)
+        pulumi.set(__self__, "application_id", application_id)
+        pulumi.set(__self__, "approve_value", approve_value)
+        pulumi.set(__self__, "audit_reason", audit_reason)
+        pulumi.set(__self__, "desire_value", desire_value)
+        pulumi.set(__self__, "dimensions", dimensions)
+        pulumi.set(__self__, "effective_time", effective_time)
+        pulumi.set(__self__, "expire_time", expire_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "notice_type", notice_type)
+        pulumi.set(__self__, "product_code", product_code)
+        pulumi.set(__self__, "quota_action_code", quota_action_code)
+        pulumi.set(__self__, "quota_description", quota_description)
+        pulumi.set(__self__, "quota_name", quota_name)
+        pulumi.set(__self__, "quota_unit", quota_unit)
+        pulumi.set(__self__, "reason", reason)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -413,25 +264,8 @@ class GetApplicationInfosApplicationDimensionResult(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        GetApplicationInfosApplicationDimensionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("key", key)
-        _setter("value", value)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -449,23 +283,10 @@ class GetApplicationInfosDimensionResult(dict):
     def __init__(__self__, *,
                  key: Optional[str] = None,
                  value: Optional[str] = None):
-        GetApplicationInfosDimensionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -501,74 +322,15 @@ class GetQuotaAlarmsAlarmResult(dict):
         :param float threshold_percent: The threshold percent of Quota Alarm.
         :param str web_hook: The WebHook of Quota Alarm.
         """
-        GetQuotaAlarmsAlarmResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            alarm_id=alarm_id,
-            id=id,
-            product_code=product_code,
-            quota_action_code=quota_action_code,
-            quota_alarm_name=quota_alarm_name,
-            quota_dimensions=quota_dimensions,
-            threshold=threshold,
-            threshold_percent=threshold_percent,
-            web_hook=web_hook,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             alarm_id: Optional[str] = None,
-             id: Optional[str] = None,
-             product_code: Optional[str] = None,
-             quota_action_code: Optional[str] = None,
-             quota_alarm_name: Optional[str] = None,
-             quota_dimensions: Optional[Sequence['outputs.GetQuotaAlarmsAlarmQuotaDimensionResult']] = None,
-             threshold: Optional[float] = None,
-             threshold_percent: Optional[float] = None,
-             web_hook: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if alarm_id is None and 'alarmId' in kwargs:
-            alarm_id = kwargs['alarmId']
-        if alarm_id is None:
-            raise TypeError("Missing 'alarm_id' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if product_code is None and 'productCode' in kwargs:
-            product_code = kwargs['productCode']
-        if product_code is None:
-            raise TypeError("Missing 'product_code' argument")
-        if quota_action_code is None and 'quotaActionCode' in kwargs:
-            quota_action_code = kwargs['quotaActionCode']
-        if quota_action_code is None:
-            raise TypeError("Missing 'quota_action_code' argument")
-        if quota_alarm_name is None and 'quotaAlarmName' in kwargs:
-            quota_alarm_name = kwargs['quotaAlarmName']
-        if quota_alarm_name is None:
-            raise TypeError("Missing 'quota_alarm_name' argument")
-        if quota_dimensions is None and 'quotaDimensions' in kwargs:
-            quota_dimensions = kwargs['quotaDimensions']
-        if quota_dimensions is None:
-            raise TypeError("Missing 'quota_dimensions' argument")
-        if threshold is None:
-            raise TypeError("Missing 'threshold' argument")
-        if threshold_percent is None and 'thresholdPercent' in kwargs:
-            threshold_percent = kwargs['thresholdPercent']
-        if threshold_percent is None:
-            raise TypeError("Missing 'threshold_percent' argument")
-        if web_hook is None and 'webHook' in kwargs:
-            web_hook = kwargs['webHook']
-        if web_hook is None:
-            raise TypeError("Missing 'web_hook' argument")
-
-        _setter("alarm_id", alarm_id)
-        _setter("id", id)
-        _setter("product_code", product_code)
-        _setter("quota_action_code", quota_action_code)
-        _setter("quota_alarm_name", quota_alarm_name)
-        _setter("quota_dimensions", quota_dimensions)
-        _setter("threshold", threshold)
-        _setter("threshold_percent", threshold_percent)
-        _setter("web_hook", web_hook)
+        pulumi.set(__self__, "alarm_id", alarm_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "product_code", product_code)
+        pulumi.set(__self__, "quota_action_code", quota_action_code)
+        pulumi.set(__self__, "quota_alarm_name", quota_alarm_name)
+        pulumi.set(__self__, "quota_dimensions", quota_dimensions)
+        pulumi.set(__self__, "threshold", threshold)
+        pulumi.set(__self__, "threshold_percent", threshold_percent)
+        pulumi.set(__self__, "web_hook", web_hook)
 
     @property
     @pulumi.getter(name="alarmId")
@@ -652,25 +414,8 @@ class GetQuotaAlarmsAlarmQuotaDimensionResult(dict):
         :param str key: The key of quota_dimensions.
         :param str value: The value of quota_dimensions.
         """
-        GetQuotaAlarmsAlarmQuotaDimensionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("key", key)
-        _setter("value", value)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -698,23 +443,10 @@ class GetQuotaAlarmsQuotaDimensionResult(dict):
         :param str key: The key of quota_dimensions.
         :param str value: The value of quota_dimensions.
         """
-        GetQuotaAlarmsQuotaDimensionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -770,119 +502,22 @@ class GetQuotaApplicationsApplicationResult(dict):
         :param str reason: The reason of the quota application.
         :param str status: The status of the quota application.
         """
-        GetQuotaApplicationsApplicationResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            application_id=application_id,
-            approve_value=approve_value,
-            audit_reason=audit_reason,
-            desire_value=desire_value,
-            dimensions=dimensions,
-            effective_time=effective_time,
-            expire_time=expire_time,
-            id=id,
-            notice_type=notice_type,
-            product_code=product_code,
-            quota_action_code=quota_action_code,
-            quota_description=quota_description,
-            quota_name=quota_name,
-            quota_unit=quota_unit,
-            reason=reason,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             application_id: Optional[str] = None,
-             approve_value: Optional[str] = None,
-             audit_reason: Optional[str] = None,
-             desire_value: Optional[float] = None,
-             dimensions: Optional[Sequence['outputs.GetQuotaApplicationsApplicationDimensionResult']] = None,
-             effective_time: Optional[str] = None,
-             expire_time: Optional[str] = None,
-             id: Optional[str] = None,
-             notice_type: Optional[int] = None,
-             product_code: Optional[str] = None,
-             quota_action_code: Optional[str] = None,
-             quota_description: Optional[str] = None,
-             quota_name: Optional[str] = None,
-             quota_unit: Optional[str] = None,
-             reason: Optional[str] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if application_id is None and 'applicationId' in kwargs:
-            application_id = kwargs['applicationId']
-        if application_id is None:
-            raise TypeError("Missing 'application_id' argument")
-        if approve_value is None and 'approveValue' in kwargs:
-            approve_value = kwargs['approveValue']
-        if approve_value is None:
-            raise TypeError("Missing 'approve_value' argument")
-        if audit_reason is None and 'auditReason' in kwargs:
-            audit_reason = kwargs['auditReason']
-        if audit_reason is None:
-            raise TypeError("Missing 'audit_reason' argument")
-        if desire_value is None and 'desireValue' in kwargs:
-            desire_value = kwargs['desireValue']
-        if desire_value is None:
-            raise TypeError("Missing 'desire_value' argument")
-        if dimensions is None:
-            raise TypeError("Missing 'dimensions' argument")
-        if effective_time is None and 'effectiveTime' in kwargs:
-            effective_time = kwargs['effectiveTime']
-        if effective_time is None:
-            raise TypeError("Missing 'effective_time' argument")
-        if expire_time is None and 'expireTime' in kwargs:
-            expire_time = kwargs['expireTime']
-        if expire_time is None:
-            raise TypeError("Missing 'expire_time' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if notice_type is None and 'noticeType' in kwargs:
-            notice_type = kwargs['noticeType']
-        if notice_type is None:
-            raise TypeError("Missing 'notice_type' argument")
-        if product_code is None and 'productCode' in kwargs:
-            product_code = kwargs['productCode']
-        if product_code is None:
-            raise TypeError("Missing 'product_code' argument")
-        if quota_action_code is None and 'quotaActionCode' in kwargs:
-            quota_action_code = kwargs['quotaActionCode']
-        if quota_action_code is None:
-            raise TypeError("Missing 'quota_action_code' argument")
-        if quota_description is None and 'quotaDescription' in kwargs:
-            quota_description = kwargs['quotaDescription']
-        if quota_description is None:
-            raise TypeError("Missing 'quota_description' argument")
-        if quota_name is None and 'quotaName' in kwargs:
-            quota_name = kwargs['quotaName']
-        if quota_name is None:
-            raise TypeError("Missing 'quota_name' argument")
-        if quota_unit is None and 'quotaUnit' in kwargs:
-            quota_unit = kwargs['quotaUnit']
-        if quota_unit is None:
-            raise TypeError("Missing 'quota_unit' argument")
-        if reason is None:
-            raise TypeError("Missing 'reason' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("application_id", application_id)
-        _setter("approve_value", approve_value)
-        _setter("audit_reason", audit_reason)
-        _setter("desire_value", desire_value)
-        _setter("dimensions", dimensions)
-        _setter("effective_time", effective_time)
-        _setter("expire_time", expire_time)
-        _setter("id", id)
-        _setter("notice_type", notice_type)
-        _setter("product_code", product_code)
-        _setter("quota_action_code", quota_action_code)
-        _setter("quota_description", quota_description)
-        _setter("quota_name", quota_name)
-        _setter("quota_unit", quota_unit)
-        _setter("reason", reason)
-        _setter("status", status)
+        pulumi.set(__self__, "application_id", application_id)
+        pulumi.set(__self__, "approve_value", approve_value)
+        pulumi.set(__self__, "audit_reason", audit_reason)
+        pulumi.set(__self__, "desire_value", desire_value)
+        pulumi.set(__self__, "dimensions", dimensions)
+        pulumi.set(__self__, "effective_time", effective_time)
+        pulumi.set(__self__, "expire_time", expire_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "notice_type", notice_type)
+        pulumi.set(__self__, "product_code", product_code)
+        pulumi.set(__self__, "quota_action_code", quota_action_code)
+        pulumi.set(__self__, "quota_description", quota_description)
+        pulumi.set(__self__, "quota_name", quota_name)
+        pulumi.set(__self__, "quota_unit", quota_unit)
+        pulumi.set(__self__, "reason", reason)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -1022,25 +657,8 @@ class GetQuotaApplicationsApplicationDimensionResult(dict):
         :param str key: The key of dimensions.
         :param str value: The value of dimensions.
         """
-        GetQuotaApplicationsApplicationDimensionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("key", key)
-        _setter("value", value)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -1068,23 +686,10 @@ class GetQuotaApplicationsDimensionResult(dict):
         :param str key: The key of dimensions.
         :param str value: The value of dimensions.
         """
-        GetQuotaApplicationsDimensionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -1112,23 +717,10 @@ class GetQuotasDimensionResult(dict):
         :param str key: The key of dimensions.
         :param str value: The value of dimensions.
         """
-        GetQuotasDimensionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -1178,100 +770,19 @@ class GetQuotasQuotaResult(dict):
         :param float total_usage: The total of usage.
         :param str unadjustable_detail: The unadjustable detail.
         """
-        GetQuotasQuotaResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            adjustable=adjustable,
-            applicable_ranges=applicable_ranges,
-            applicable_type=applicable_type,
-            consumable=consumable,
-            id=id,
-            quota_action_code=quota_action_code,
-            quota_description=quota_description,
-            quota_name=quota_name,
-            quota_type=quota_type,
-            quota_unit=quota_unit,
-            total_quota=total_quota,
-            total_usage=total_usage,
-            unadjustable_detail=unadjustable_detail,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             adjustable: Optional[bool] = None,
-             applicable_ranges: Optional[Sequence[str]] = None,
-             applicable_type: Optional[str] = None,
-             consumable: Optional[bool] = None,
-             id: Optional[str] = None,
-             quota_action_code: Optional[str] = None,
-             quota_description: Optional[str] = None,
-             quota_name: Optional[str] = None,
-             quota_type: Optional[str] = None,
-             quota_unit: Optional[str] = None,
-             total_quota: Optional[float] = None,
-             total_usage: Optional[float] = None,
-             unadjustable_detail: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if adjustable is None:
-            raise TypeError("Missing 'adjustable' argument")
-        if applicable_ranges is None and 'applicableRanges' in kwargs:
-            applicable_ranges = kwargs['applicableRanges']
-        if applicable_ranges is None:
-            raise TypeError("Missing 'applicable_ranges' argument")
-        if applicable_type is None and 'applicableType' in kwargs:
-            applicable_type = kwargs['applicableType']
-        if applicable_type is None:
-            raise TypeError("Missing 'applicable_type' argument")
-        if consumable is None:
-            raise TypeError("Missing 'consumable' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if quota_action_code is None and 'quotaActionCode' in kwargs:
-            quota_action_code = kwargs['quotaActionCode']
-        if quota_action_code is None:
-            raise TypeError("Missing 'quota_action_code' argument")
-        if quota_description is None and 'quotaDescription' in kwargs:
-            quota_description = kwargs['quotaDescription']
-        if quota_description is None:
-            raise TypeError("Missing 'quota_description' argument")
-        if quota_name is None and 'quotaName' in kwargs:
-            quota_name = kwargs['quotaName']
-        if quota_name is None:
-            raise TypeError("Missing 'quota_name' argument")
-        if quota_type is None and 'quotaType' in kwargs:
-            quota_type = kwargs['quotaType']
-        if quota_type is None:
-            raise TypeError("Missing 'quota_type' argument")
-        if quota_unit is None and 'quotaUnit' in kwargs:
-            quota_unit = kwargs['quotaUnit']
-        if quota_unit is None:
-            raise TypeError("Missing 'quota_unit' argument")
-        if total_quota is None and 'totalQuota' in kwargs:
-            total_quota = kwargs['totalQuota']
-        if total_quota is None:
-            raise TypeError("Missing 'total_quota' argument")
-        if total_usage is None and 'totalUsage' in kwargs:
-            total_usage = kwargs['totalUsage']
-        if total_usage is None:
-            raise TypeError("Missing 'total_usage' argument")
-        if unadjustable_detail is None and 'unadjustableDetail' in kwargs:
-            unadjustable_detail = kwargs['unadjustableDetail']
-        if unadjustable_detail is None:
-            raise TypeError("Missing 'unadjustable_detail' argument")
-
-        _setter("adjustable", adjustable)
-        _setter("applicable_ranges", applicable_ranges)
-        _setter("applicable_type", applicable_type)
-        _setter("consumable", consumable)
-        _setter("id", id)
-        _setter("quota_action_code", quota_action_code)
-        _setter("quota_description", quota_description)
-        _setter("quota_name", quota_name)
-        _setter("quota_type", quota_type)
-        _setter("quota_unit", quota_unit)
-        _setter("total_quota", total_quota)
-        _setter("total_usage", total_usage)
-        _setter("unadjustable_detail", unadjustable_detail)
+        pulumi.set(__self__, "adjustable", adjustable)
+        pulumi.set(__self__, "applicable_ranges", applicable_ranges)
+        pulumi.set(__self__, "applicable_type", applicable_type)
+        pulumi.set(__self__, "consumable", consumable)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "quota_action_code", quota_action_code)
+        pulumi.set(__self__, "quota_description", quota_description)
+        pulumi.set(__self__, "quota_name", quota_name)
+        pulumi.set(__self__, "quota_type", quota_type)
+        pulumi.set(__self__, "quota_unit", quota_unit)
+        pulumi.set(__self__, "total_quota", total_quota)
+        pulumi.set(__self__, "total_usage", total_usage)
+        pulumi.set(__self__, "unadjustable_detail", unadjustable_detail)
 
     @property
     @pulumi.getter

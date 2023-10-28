@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ListenerAdditionalCertificateAttachmentArgs', 'ListenerAdditionalCertificateAttachment']
@@ -21,29 +21,8 @@ class ListenerAdditionalCertificateAttachmentArgs:
         :param pulumi.Input[str] certificate_id: The Certificate ID.
         :param pulumi.Input[str] listener_id: The ID of the ALB listener.
         """
-        ListenerAdditionalCertificateAttachmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            certificate_id=certificate_id,
-            listener_id=listener_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             certificate_id: Optional[pulumi.Input[str]] = None,
-             listener_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if certificate_id is None and 'certificateId' in kwargs:
-            certificate_id = kwargs['certificateId']
-        if certificate_id is None:
-            raise TypeError("Missing 'certificate_id' argument")
-        if listener_id is None and 'listenerId' in kwargs:
-            listener_id = kwargs['listenerId']
-        if listener_id is None:
-            raise TypeError("Missing 'listener_id' argument")
-
-        _setter("certificate_id", certificate_id)
-        _setter("listener_id", listener_id)
+        pulumi.set(__self__, "certificate_id", certificate_id)
+        pulumi.set(__self__, "listener_id", listener_id)
 
     @property
     @pulumi.getter(name="certificateId")
@@ -84,37 +63,14 @@ class _ListenerAdditionalCertificateAttachmentState:
         :param pulumi.Input[str] listener_id: The ID of the ALB listener.
         :param pulumi.Input[str] status: The status of the certificate.
         """
-        _ListenerAdditionalCertificateAttachmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            certificate_id=certificate_id,
-            certificate_type=certificate_type,
-            listener_id=listener_id,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             certificate_id: Optional[pulumi.Input[str]] = None,
-             certificate_type: Optional[pulumi.Input[str]] = None,
-             listener_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if certificate_id is None and 'certificateId' in kwargs:
-            certificate_id = kwargs['certificateId']
-        if certificate_type is None and 'certificateType' in kwargs:
-            certificate_type = kwargs['certificateType']
-        if listener_id is None and 'listenerId' in kwargs:
-            listener_id = kwargs['listenerId']
-
         if certificate_id is not None:
-            _setter("certificate_id", certificate_id)
+            pulumi.set(__self__, "certificate_id", certificate_id)
         if certificate_type is not None:
-            _setter("certificate_type", certificate_type)
+            pulumi.set(__self__, "certificate_type", certificate_type)
         if listener_id is not None:
-            _setter("listener_id", listener_id)
+            pulumi.set(__self__, "listener_id", listener_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="certificateId")
@@ -224,10 +180,6 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ListenerAdditionalCertificateAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,51 +31,14 @@ class FirewallVpcFirewallArgs:
         :param pulumi.Input[str] lang: The language type of the requested and received messages. Valid values:
         :param pulumi.Input[str] member_uid: The UID of the Alibaba Cloud member account.
         """
-        FirewallVpcFirewallArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            local_vpc=local_vpc,
-            peer_vpc=peer_vpc,
-            status=status,
-            vpc_firewall_name=vpc_firewall_name,
-            lang=lang,
-            member_uid=member_uid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             local_vpc: Optional[pulumi.Input['FirewallVpcFirewallLocalVpcArgs']] = None,
-             peer_vpc: Optional[pulumi.Input['FirewallVpcFirewallPeerVpcArgs']] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             vpc_firewall_name: Optional[pulumi.Input[str]] = None,
-             lang: Optional[pulumi.Input[str]] = None,
-             member_uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if local_vpc is None and 'localVpc' in kwargs:
-            local_vpc = kwargs['localVpc']
-        if local_vpc is None:
-            raise TypeError("Missing 'local_vpc' argument")
-        if peer_vpc is None and 'peerVpc' in kwargs:
-            peer_vpc = kwargs['peerVpc']
-        if peer_vpc is None:
-            raise TypeError("Missing 'peer_vpc' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if vpc_firewall_name is None and 'vpcFirewallName' in kwargs:
-            vpc_firewall_name = kwargs['vpcFirewallName']
-        if vpc_firewall_name is None:
-            raise TypeError("Missing 'vpc_firewall_name' argument")
-        if member_uid is None and 'memberUid' in kwargs:
-            member_uid = kwargs['memberUid']
-
-        _setter("local_vpc", local_vpc)
-        _setter("peer_vpc", peer_vpc)
-        _setter("status", status)
-        _setter("vpc_firewall_name", vpc_firewall_name)
+        pulumi.set(__self__, "local_vpc", local_vpc)
+        pulumi.set(__self__, "peer_vpc", peer_vpc)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vpc_firewall_name", vpc_firewall_name)
         if lang is not None:
-            _setter("lang", lang)
+            pulumi.set(__self__, "lang", lang)
         if member_uid is not None:
-            _setter("member_uid", member_uid)
+            pulumi.set(__self__, "member_uid", member_uid)
 
     @property
     @pulumi.getter(name="localVpc")
@@ -176,69 +139,26 @@ class _FirewallVpcFirewallState:
         :param pulumi.Input[str] vpc_firewall_id: The ID of the VPC firewall instance.
         :param pulumi.Input[str] vpc_firewall_name: The name of the VPC firewall instance.
         """
-        _FirewallVpcFirewallState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bandwidth=bandwidth,
-            connect_type=connect_type,
-            lang=lang,
-            local_vpc=local_vpc,
-            member_uid=member_uid,
-            peer_vpc=peer_vpc,
-            region_status=region_status,
-            status=status,
-            vpc_firewall_id=vpc_firewall_id,
-            vpc_firewall_name=vpc_firewall_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bandwidth: Optional[pulumi.Input[int]] = None,
-             connect_type: Optional[pulumi.Input[str]] = None,
-             lang: Optional[pulumi.Input[str]] = None,
-             local_vpc: Optional[pulumi.Input['FirewallVpcFirewallLocalVpcArgs']] = None,
-             member_uid: Optional[pulumi.Input[str]] = None,
-             peer_vpc: Optional[pulumi.Input['FirewallVpcFirewallPeerVpcArgs']] = None,
-             region_status: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             vpc_firewall_id: Optional[pulumi.Input[str]] = None,
-             vpc_firewall_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if connect_type is None and 'connectType' in kwargs:
-            connect_type = kwargs['connectType']
-        if local_vpc is None and 'localVpc' in kwargs:
-            local_vpc = kwargs['localVpc']
-        if member_uid is None and 'memberUid' in kwargs:
-            member_uid = kwargs['memberUid']
-        if peer_vpc is None and 'peerVpc' in kwargs:
-            peer_vpc = kwargs['peerVpc']
-        if region_status is None and 'regionStatus' in kwargs:
-            region_status = kwargs['regionStatus']
-        if vpc_firewall_id is None and 'vpcFirewallId' in kwargs:
-            vpc_firewall_id = kwargs['vpcFirewallId']
-        if vpc_firewall_name is None and 'vpcFirewallName' in kwargs:
-            vpc_firewall_name = kwargs['vpcFirewallName']
-
         if bandwidth is not None:
-            _setter("bandwidth", bandwidth)
+            pulumi.set(__self__, "bandwidth", bandwidth)
         if connect_type is not None:
-            _setter("connect_type", connect_type)
+            pulumi.set(__self__, "connect_type", connect_type)
         if lang is not None:
-            _setter("lang", lang)
+            pulumi.set(__self__, "lang", lang)
         if local_vpc is not None:
-            _setter("local_vpc", local_vpc)
+            pulumi.set(__self__, "local_vpc", local_vpc)
         if member_uid is not None:
-            _setter("member_uid", member_uid)
+            pulumi.set(__self__, "member_uid", member_uid)
         if peer_vpc is not None:
-            _setter("peer_vpc", peer_vpc)
+            pulumi.set(__self__, "peer_vpc", peer_vpc)
         if region_status is not None:
-            _setter("region_status", region_status)
+            pulumi.set(__self__, "region_status", region_status)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if vpc_firewall_id is not None:
-            _setter("vpc_firewall_id", vpc_firewall_id)
+            pulumi.set(__self__, "vpc_firewall_id", vpc_firewall_id)
         if vpc_firewall_name is not None:
-            _setter("vpc_firewall_name", vpc_firewall_name)
+            pulumi.set(__self__, "vpc_firewall_name", vpc_firewall_name)
 
     @property
     @pulumi.getter
@@ -502,10 +422,6 @@ class FirewallVpcFirewall(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            FirewallVpcFirewallArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -527,12 +443,10 @@ class FirewallVpcFirewall(pulumi.CustomResource):
             __props__ = FirewallVpcFirewallArgs.__new__(FirewallVpcFirewallArgs)
 
             __props__.__dict__["lang"] = lang
-            local_vpc = _utilities.configure(local_vpc, FirewallVpcFirewallLocalVpcArgs, True)
             if local_vpc is None and not opts.urn:
                 raise TypeError("Missing required property 'local_vpc'")
             __props__.__dict__["local_vpc"] = local_vpc
             __props__.__dict__["member_uid"] = member_uid
-            peer_vpc = _utilities.configure(peer_vpc, FirewallVpcFirewallPeerVpcArgs, True)
             if peer_vpc is None and not opts.urn:
                 raise TypeError("Missing required property 'peer_vpc'")
             __props__.__dict__["peer_vpc"] = peer_vpc

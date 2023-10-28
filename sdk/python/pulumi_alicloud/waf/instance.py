@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InstanceArgs', 'Instance']
@@ -55,117 +55,28 @@ class InstanceArgs:
                * ManualRenewal (default): The service time of WAF is renewed manually.Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
         :param pulumi.Input[str] resource_group_id: The resource group ID.
         """
-        InstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            big_screen=big_screen,
-            exclusive_ip_package=exclusive_ip_package,
-            ext_bandwidth=ext_bandwidth,
-            ext_domain_package=ext_domain_package,
-            log_storage=log_storage,
-            log_time=log_time,
-            package_code=package_code,
-            prefessional_service=prefessional_service,
-            subscription_type=subscription_type,
-            waf_log=waf_log,
-            modify_type=modify_type,
-            period=period,
-            region=region,
-            renew_period=renew_period,
-            renewal_status=renewal_status,
-            resource_group_id=resource_group_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             big_screen: Optional[pulumi.Input[str]] = None,
-             exclusive_ip_package: Optional[pulumi.Input[str]] = None,
-             ext_bandwidth: Optional[pulumi.Input[str]] = None,
-             ext_domain_package: Optional[pulumi.Input[str]] = None,
-             log_storage: Optional[pulumi.Input[str]] = None,
-             log_time: Optional[pulumi.Input[str]] = None,
-             package_code: Optional[pulumi.Input[str]] = None,
-             prefessional_service: Optional[pulumi.Input[str]] = None,
-             subscription_type: Optional[pulumi.Input[str]] = None,
-             waf_log: Optional[pulumi.Input[str]] = None,
-             modify_type: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[int]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             renew_period: Optional[pulumi.Input[int]] = None,
-             renewal_status: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if big_screen is None and 'bigScreen' in kwargs:
-            big_screen = kwargs['bigScreen']
-        if big_screen is None:
-            raise TypeError("Missing 'big_screen' argument")
-        if exclusive_ip_package is None and 'exclusiveIpPackage' in kwargs:
-            exclusive_ip_package = kwargs['exclusiveIpPackage']
-        if exclusive_ip_package is None:
-            raise TypeError("Missing 'exclusive_ip_package' argument")
-        if ext_bandwidth is None and 'extBandwidth' in kwargs:
-            ext_bandwidth = kwargs['extBandwidth']
-        if ext_bandwidth is None:
-            raise TypeError("Missing 'ext_bandwidth' argument")
-        if ext_domain_package is None and 'extDomainPackage' in kwargs:
-            ext_domain_package = kwargs['extDomainPackage']
-        if ext_domain_package is None:
-            raise TypeError("Missing 'ext_domain_package' argument")
-        if log_storage is None and 'logStorage' in kwargs:
-            log_storage = kwargs['logStorage']
-        if log_storage is None:
-            raise TypeError("Missing 'log_storage' argument")
-        if log_time is None and 'logTime' in kwargs:
-            log_time = kwargs['logTime']
-        if log_time is None:
-            raise TypeError("Missing 'log_time' argument")
-        if package_code is None and 'packageCode' in kwargs:
-            package_code = kwargs['packageCode']
-        if package_code is None:
-            raise TypeError("Missing 'package_code' argument")
-        if prefessional_service is None and 'prefessionalService' in kwargs:
-            prefessional_service = kwargs['prefessionalService']
-        if prefessional_service is None:
-            raise TypeError("Missing 'prefessional_service' argument")
-        if subscription_type is None and 'subscriptionType' in kwargs:
-            subscription_type = kwargs['subscriptionType']
-        if subscription_type is None:
-            raise TypeError("Missing 'subscription_type' argument")
-        if waf_log is None and 'wafLog' in kwargs:
-            waf_log = kwargs['wafLog']
-        if waf_log is None:
-            raise TypeError("Missing 'waf_log' argument")
-        if modify_type is None and 'modifyType' in kwargs:
-            modify_type = kwargs['modifyType']
-        if renew_period is None and 'renewPeriod' in kwargs:
-            renew_period = kwargs['renewPeriod']
-        if renewal_status is None and 'renewalStatus' in kwargs:
-            renewal_status = kwargs['renewalStatus']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-
-        _setter("big_screen", big_screen)
-        _setter("exclusive_ip_package", exclusive_ip_package)
-        _setter("ext_bandwidth", ext_bandwidth)
-        _setter("ext_domain_package", ext_domain_package)
-        _setter("log_storage", log_storage)
-        _setter("log_time", log_time)
-        _setter("package_code", package_code)
-        _setter("prefessional_service", prefessional_service)
-        _setter("subscription_type", subscription_type)
-        _setter("waf_log", waf_log)
+        pulumi.set(__self__, "big_screen", big_screen)
+        pulumi.set(__self__, "exclusive_ip_package", exclusive_ip_package)
+        pulumi.set(__self__, "ext_bandwidth", ext_bandwidth)
+        pulumi.set(__self__, "ext_domain_package", ext_domain_package)
+        pulumi.set(__self__, "log_storage", log_storage)
+        pulumi.set(__self__, "log_time", log_time)
+        pulumi.set(__self__, "package_code", package_code)
+        pulumi.set(__self__, "prefessional_service", prefessional_service)
+        pulumi.set(__self__, "subscription_type", subscription_type)
+        pulumi.set(__self__, "waf_log", waf_log)
         if modify_type is not None:
-            _setter("modify_type", modify_type)
+            pulumi.set(__self__, "modify_type", modify_type)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if renew_period is not None:
-            _setter("renew_period", renew_period)
+            pulumi.set(__self__, "renew_period", renew_period)
         if renewal_status is not None:
-            _setter("renewal_status", renewal_status)
+            pulumi.set(__self__, "renewal_status", renewal_status)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
 
     @property
     @pulumi.getter(name="bigScreen")
@@ -412,111 +323,40 @@ class _InstanceState:
         :param pulumi.Input[str] subscription_type: Subscription of WAF service. Valid values: ["Subscription", "PayAsYouGo"].
         :param pulumi.Input[str] waf_log: Specify whether Log service is supported. Valid values: ["true", "false"]
         """
-        _InstanceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            big_screen=big_screen,
-            exclusive_ip_package=exclusive_ip_package,
-            ext_bandwidth=ext_bandwidth,
-            ext_domain_package=ext_domain_package,
-            log_storage=log_storage,
-            log_time=log_time,
-            modify_type=modify_type,
-            package_code=package_code,
-            period=period,
-            prefessional_service=prefessional_service,
-            region=region,
-            renew_period=renew_period,
-            renewal_status=renewal_status,
-            resource_group_id=resource_group_id,
-            status=status,
-            subscription_type=subscription_type,
-            waf_log=waf_log,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             big_screen: Optional[pulumi.Input[str]] = None,
-             exclusive_ip_package: Optional[pulumi.Input[str]] = None,
-             ext_bandwidth: Optional[pulumi.Input[str]] = None,
-             ext_domain_package: Optional[pulumi.Input[str]] = None,
-             log_storage: Optional[pulumi.Input[str]] = None,
-             log_time: Optional[pulumi.Input[str]] = None,
-             modify_type: Optional[pulumi.Input[str]] = None,
-             package_code: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[int]] = None,
-             prefessional_service: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             renew_period: Optional[pulumi.Input[int]] = None,
-             renewal_status: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[int]] = None,
-             subscription_type: Optional[pulumi.Input[str]] = None,
-             waf_log: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if big_screen is None and 'bigScreen' in kwargs:
-            big_screen = kwargs['bigScreen']
-        if exclusive_ip_package is None and 'exclusiveIpPackage' in kwargs:
-            exclusive_ip_package = kwargs['exclusiveIpPackage']
-        if ext_bandwidth is None and 'extBandwidth' in kwargs:
-            ext_bandwidth = kwargs['extBandwidth']
-        if ext_domain_package is None and 'extDomainPackage' in kwargs:
-            ext_domain_package = kwargs['extDomainPackage']
-        if log_storage is None and 'logStorage' in kwargs:
-            log_storage = kwargs['logStorage']
-        if log_time is None and 'logTime' in kwargs:
-            log_time = kwargs['logTime']
-        if modify_type is None and 'modifyType' in kwargs:
-            modify_type = kwargs['modifyType']
-        if package_code is None and 'packageCode' in kwargs:
-            package_code = kwargs['packageCode']
-        if prefessional_service is None and 'prefessionalService' in kwargs:
-            prefessional_service = kwargs['prefessionalService']
-        if renew_period is None and 'renewPeriod' in kwargs:
-            renew_period = kwargs['renewPeriod']
-        if renewal_status is None and 'renewalStatus' in kwargs:
-            renewal_status = kwargs['renewalStatus']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if subscription_type is None and 'subscriptionType' in kwargs:
-            subscription_type = kwargs['subscriptionType']
-        if waf_log is None and 'wafLog' in kwargs:
-            waf_log = kwargs['wafLog']
-
         if big_screen is not None:
-            _setter("big_screen", big_screen)
+            pulumi.set(__self__, "big_screen", big_screen)
         if exclusive_ip_package is not None:
-            _setter("exclusive_ip_package", exclusive_ip_package)
+            pulumi.set(__self__, "exclusive_ip_package", exclusive_ip_package)
         if ext_bandwidth is not None:
-            _setter("ext_bandwidth", ext_bandwidth)
+            pulumi.set(__self__, "ext_bandwidth", ext_bandwidth)
         if ext_domain_package is not None:
-            _setter("ext_domain_package", ext_domain_package)
+            pulumi.set(__self__, "ext_domain_package", ext_domain_package)
         if log_storage is not None:
-            _setter("log_storage", log_storage)
+            pulumi.set(__self__, "log_storage", log_storage)
         if log_time is not None:
-            _setter("log_time", log_time)
+            pulumi.set(__self__, "log_time", log_time)
         if modify_type is not None:
-            _setter("modify_type", modify_type)
+            pulumi.set(__self__, "modify_type", modify_type)
         if package_code is not None:
-            _setter("package_code", package_code)
+            pulumi.set(__self__, "package_code", package_code)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if prefessional_service is not None:
-            _setter("prefessional_service", prefessional_service)
+            pulumi.set(__self__, "prefessional_service", prefessional_service)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if renew_period is not None:
-            _setter("renew_period", renew_period)
+            pulumi.set(__self__, "renew_period", renew_period)
         if renewal_status is not None:
-            _setter("renewal_status", renewal_status)
+            pulumi.set(__self__, "renewal_status", renewal_status)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if subscription_type is not None:
-            _setter("subscription_type", subscription_type)
+            pulumi.set(__self__, "subscription_type", subscription_type)
         if waf_log is not None:
-            _setter("waf_log", waf_log)
+            pulumi.set(__self__, "waf_log", waf_log)
 
     @property
     @pulumi.getter(name="bigScreen")
@@ -826,10 +666,6 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

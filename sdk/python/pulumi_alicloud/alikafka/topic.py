@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TopicArgs', 'Topic']
@@ -31,54 +31,17 @@ class TopicArgs:
         :param pulumi.Input[int] partition_num: The number of partitions of the topic. The number should between 1 and 48.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
-        TopicArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_id=instance_id,
-            remark=remark,
-            topic=topic,
-            compact_topic=compact_topic,
-            local_topic=local_topic,
-            partition_num=partition_num,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_id: Optional[pulumi.Input[str]] = None,
-             remark: Optional[pulumi.Input[str]] = None,
-             topic: Optional[pulumi.Input[str]] = None,
-             compact_topic: Optional[pulumi.Input[bool]] = None,
-             local_topic: Optional[pulumi.Input[bool]] = None,
-             partition_num: Optional[pulumi.Input[int]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if remark is None:
-            raise TypeError("Missing 'remark' argument")
-        if topic is None:
-            raise TypeError("Missing 'topic' argument")
-        if compact_topic is None and 'compactTopic' in kwargs:
-            compact_topic = kwargs['compactTopic']
-        if local_topic is None and 'localTopic' in kwargs:
-            local_topic = kwargs['localTopic']
-        if partition_num is None and 'partitionNum' in kwargs:
-            partition_num = kwargs['partitionNum']
-
-        _setter("instance_id", instance_id)
-        _setter("remark", remark)
-        _setter("topic", topic)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "remark", remark)
+        pulumi.set(__self__, "topic", topic)
         if compact_topic is not None:
-            _setter("compact_topic", compact_topic)
+            pulumi.set(__self__, "compact_topic", compact_topic)
         if local_topic is not None:
-            _setter("local_topic", local_topic)
+            pulumi.set(__self__, "local_topic", local_topic)
         if partition_num is not None:
-            _setter("partition_num", partition_num)
+            pulumi.set(__self__, "partition_num", partition_num)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -185,51 +148,20 @@ class _TopicState:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] topic: Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
         """
-        _TopicState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            compact_topic=compact_topic,
-            instance_id=instance_id,
-            local_topic=local_topic,
-            partition_num=partition_num,
-            remark=remark,
-            tags=tags,
-            topic=topic,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             compact_topic: Optional[pulumi.Input[bool]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             local_topic: Optional[pulumi.Input[bool]] = None,
-             partition_num: Optional[pulumi.Input[int]] = None,
-             remark: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             topic: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if compact_topic is None and 'compactTopic' in kwargs:
-            compact_topic = kwargs['compactTopic']
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if local_topic is None and 'localTopic' in kwargs:
-            local_topic = kwargs['localTopic']
-        if partition_num is None and 'partitionNum' in kwargs:
-            partition_num = kwargs['partitionNum']
-
         if compact_topic is not None:
-            _setter("compact_topic", compact_topic)
+            pulumi.set(__self__, "compact_topic", compact_topic)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if local_topic is not None:
-            _setter("local_topic", local_topic)
+            pulumi.set(__self__, "local_topic", local_topic)
         if partition_num is not None:
-            _setter("partition_num", partition_num)
+            pulumi.set(__self__, "partition_num", partition_num)
         if remark is not None:
-            _setter("remark", remark)
+            pulumi.set(__self__, "remark", remark)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if topic is not None:
-            _setter("topic", topic)
+            pulumi.set(__self__, "topic", topic)
 
     @property
     @pulumi.getter(name="compactTopic")
@@ -447,10 +379,6 @@ class Topic(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TopicArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

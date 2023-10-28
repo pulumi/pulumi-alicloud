@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -53,37 +53,14 @@ class ContainerGroupAcrRegistryInfoArgs:
         :param pulumi.Input[str] instance_name: The name of the ACR enterprise edition instance.
         :param pulumi.Input[str] region_id: The ACR enterprise edition instance belongs to the region.
         """
-        ContainerGroupAcrRegistryInfoArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            domains=domains,
-            instance_id=instance_id,
-            instance_name=instance_name,
-            region_id=region_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             instance_name: Optional[pulumi.Input[str]] = None,
-             region_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if region_id is None and 'regionId' in kwargs:
-            region_id = kwargs['regionId']
-
         if domains is not None:
-            _setter("domains", domains)
+            pulumi.set(__self__, "domains", domains)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if instance_name is not None:
-            _setter("instance_name", instance_name)
+            pulumi.set(__self__, "instance_name", instance_name)
         if region_id is not None:
-            _setter("region_id", region_id)
+            pulumi.set(__self__, "region_id", region_id)
 
     @property
     @pulumi.getter
@@ -171,95 +148,36 @@ class ContainerGroupContainerArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerVolumeMountArgs']]] volume_mounts: The structure of volumeMounts. See `volume_mounts` below.
         :param pulumi.Input[str] working_dir: The working directory of the container.
         """
-        ContainerGroupContainerArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            image=image,
-            name=name,
-            args=args,
-            commands=commands,
-            cpu=cpu,
-            environment_vars=environment_vars,
-            gpu=gpu,
-            image_pull_policy=image_pull_policy,
-            liveness_probes=liveness_probes,
-            memory=memory,
-            ports=ports,
-            readiness_probes=readiness_probes,
-            ready=ready,
-            restart_count=restart_count,
-            volume_mounts=volume_mounts,
-            working_dir=working_dir,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             image: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             cpu: Optional[pulumi.Input[float]] = None,
-             environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerEnvironmentVarArgs']]]] = None,
-             gpu: Optional[pulumi.Input[int]] = None,
-             image_pull_policy: Optional[pulumi.Input[str]] = None,
-             liveness_probes: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeArgs']]]] = None,
-             memory: Optional[pulumi.Input[float]] = None,
-             ports: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerPortArgs']]]] = None,
-             readiness_probes: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeArgs']]]] = None,
-             ready: Optional[pulumi.Input[bool]] = None,
-             restart_count: Optional[pulumi.Input[int]] = None,
-             volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerVolumeMountArgs']]]] = None,
-             working_dir: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if image is None:
-            raise TypeError("Missing 'image' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if environment_vars is None and 'environmentVars' in kwargs:
-            environment_vars = kwargs['environmentVars']
-        if image_pull_policy is None and 'imagePullPolicy' in kwargs:
-            image_pull_policy = kwargs['imagePullPolicy']
-        if liveness_probes is None and 'livenessProbes' in kwargs:
-            liveness_probes = kwargs['livenessProbes']
-        if readiness_probes is None and 'readinessProbes' in kwargs:
-            readiness_probes = kwargs['readinessProbes']
-        if restart_count is None and 'restartCount' in kwargs:
-            restart_count = kwargs['restartCount']
-        if volume_mounts is None and 'volumeMounts' in kwargs:
-            volume_mounts = kwargs['volumeMounts']
-        if working_dir is None and 'workingDir' in kwargs:
-            working_dir = kwargs['workingDir']
-
-        _setter("image", image)
-        _setter("name", name)
+        pulumi.set(__self__, "image", image)
+        pulumi.set(__self__, "name", name)
         if args is not None:
-            _setter("args", args)
+            pulumi.set(__self__, "args", args)
         if commands is not None:
-            _setter("commands", commands)
+            pulumi.set(__self__, "commands", commands)
         if cpu is not None:
-            _setter("cpu", cpu)
+            pulumi.set(__self__, "cpu", cpu)
         if environment_vars is not None:
-            _setter("environment_vars", environment_vars)
+            pulumi.set(__self__, "environment_vars", environment_vars)
         if gpu is not None:
-            _setter("gpu", gpu)
+            pulumi.set(__self__, "gpu", gpu)
         if image_pull_policy is not None:
-            _setter("image_pull_policy", image_pull_policy)
+            pulumi.set(__self__, "image_pull_policy", image_pull_policy)
         if liveness_probes is not None:
-            _setter("liveness_probes", liveness_probes)
+            pulumi.set(__self__, "liveness_probes", liveness_probes)
         if memory is not None:
-            _setter("memory", memory)
+            pulumi.set(__self__, "memory", memory)
         if ports is not None:
-            _setter("ports", ports)
+            pulumi.set(__self__, "ports", ports)
         if readiness_probes is not None:
-            _setter("readiness_probes", readiness_probes)
+            pulumi.set(__self__, "readiness_probes", readiness_probes)
         if ready is not None:
-            _setter("ready", ready)
+            pulumi.set(__self__, "ready", ready)
         if restart_count is not None:
-            _setter("restart_count", restart_count)
+            pulumi.set(__self__, "restart_count", restart_count)
         if volume_mounts is not None:
-            _setter("volume_mounts", volume_mounts)
+            pulumi.set(__self__, "volume_mounts", volume_mounts)
         if working_dir is not None:
-            _setter("working_dir", working_dir)
+            pulumi.set(__self__, "working_dir", working_dir)
 
     @property
     @pulumi.getter
@@ -463,23 +381,10 @@ class ContainerGroupContainerEnvironmentVarArgs:
         :param pulumi.Input[str] key: The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
         :param pulumi.Input[str] value: The value of the variable. The value can be 0 to 256 characters in length.
         """
-        ContainerGroupContainerEnvironmentVarArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[pulumi.Input[str]] = None,
-             value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -527,61 +432,22 @@ class ContainerGroupContainerLivenessProbeArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeTcpSocketArgs']]] tcp_sockets: Health check using TCP socket method. See `tcp_socket` below.
         :param pulumi.Input[int] timeout_seconds: Check the timeout, the default is 1 second, the minimum is 1 second.
         """
-        ContainerGroupContainerLivenessProbeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            execs=execs,
-            failure_threshold=failure_threshold,
-            http_gets=http_gets,
-            initial_delay_seconds=initial_delay_seconds,
-            period_seconds=period_seconds,
-            success_threshold=success_threshold,
-            tcp_sockets=tcp_sockets,
-            timeout_seconds=timeout_seconds,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             execs: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeExecArgs']]]] = None,
-             failure_threshold: Optional[pulumi.Input[int]] = None,
-             http_gets: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeHttpGetArgs']]]] = None,
-             initial_delay_seconds: Optional[pulumi.Input[int]] = None,
-             period_seconds: Optional[pulumi.Input[int]] = None,
-             success_threshold: Optional[pulumi.Input[int]] = None,
-             tcp_sockets: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeTcpSocketArgs']]]] = None,
-             timeout_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if failure_threshold is None and 'failureThreshold' in kwargs:
-            failure_threshold = kwargs['failureThreshold']
-        if http_gets is None and 'httpGets' in kwargs:
-            http_gets = kwargs['httpGets']
-        if initial_delay_seconds is None and 'initialDelaySeconds' in kwargs:
-            initial_delay_seconds = kwargs['initialDelaySeconds']
-        if period_seconds is None and 'periodSeconds' in kwargs:
-            period_seconds = kwargs['periodSeconds']
-        if success_threshold is None and 'successThreshold' in kwargs:
-            success_threshold = kwargs['successThreshold']
-        if tcp_sockets is None and 'tcpSockets' in kwargs:
-            tcp_sockets = kwargs['tcpSockets']
-        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
-            timeout_seconds = kwargs['timeoutSeconds']
-
         if execs is not None:
-            _setter("execs", execs)
+            pulumi.set(__self__, "execs", execs)
         if failure_threshold is not None:
-            _setter("failure_threshold", failure_threshold)
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
         if http_gets is not None:
-            _setter("http_gets", http_gets)
+            pulumi.set(__self__, "http_gets", http_gets)
         if initial_delay_seconds is not None:
-            _setter("initial_delay_seconds", initial_delay_seconds)
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
         if period_seconds is not None:
-            _setter("period_seconds", period_seconds)
+            pulumi.set(__self__, "period_seconds", period_seconds)
         if success_threshold is not None:
-            _setter("success_threshold", success_threshold)
+            pulumi.set(__self__, "success_threshold", success_threshold)
         if tcp_sockets is not None:
-            _setter("tcp_sockets", tcp_sockets)
+            pulumi.set(__self__, "tcp_sockets", tcp_sockets)
         if timeout_seconds is not None:
-            _setter("timeout_seconds", timeout_seconds)
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
 
     @property
     @pulumi.getter
@@ -687,19 +553,8 @@ class ContainerGroupContainerLivenessProbeExecArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Commands to be executed inside the container when performing health checks using the command line method.
         """
-        ContainerGroupContainerLivenessProbeExecArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            commands=commands,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if commands is not None:
-            _setter("commands", commands)
+            pulumi.set(__self__, "commands", commands)
 
     @property
     @pulumi.getter
@@ -725,27 +580,12 @@ class ContainerGroupContainerLivenessProbeHttpGetArgs:
         :param pulumi.Input[int] port: When using the HTTP request method for health check, the port number for HTTP Get request detection.
         :param pulumi.Input[str] scheme: The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
         """
-        ContainerGroupContainerLivenessProbeHttpGetArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            path=path,
-            port=port,
-            scheme=scheme,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             path: Optional[pulumi.Input[str]] = None,
-             port: Optional[pulumi.Input[int]] = None,
-             scheme: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if path is not None:
-            _setter("path", path)
+            pulumi.set(__self__, "path", path)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if scheme is not None:
-            _setter("scheme", scheme)
+            pulumi.set(__self__, "scheme", scheme)
 
     @property
     @pulumi.getter
@@ -791,19 +631,8 @@ class ContainerGroupContainerLivenessProbeTcpSocketArgs:
         """
         :param pulumi.Input[int] port: When using the HTTP request method for health check, the port number for HTTP Get request detection.
         """
-        ContainerGroupContainerLivenessProbeTcpSocketArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            port=port,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter
@@ -827,23 +656,10 @@ class ContainerGroupContainerPortArgs:
         :param pulumi.Input[int] port: When using the HTTP request method for health check, the port number for HTTP Get request detection.
         :param pulumi.Input[str] protocol: The type of the protocol. Valid values: `TCP` and `UDP`.
         """
-        ContainerGroupContainerPortArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            port=port,
-            protocol=protocol,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             port: Optional[pulumi.Input[int]] = None,
-             protocol: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if protocol is not None:
-            _setter("protocol", protocol)
+            pulumi.set(__self__, "protocol", protocol)
 
     @property
     @pulumi.getter
@@ -891,61 +707,22 @@ class ContainerGroupContainerReadinessProbeArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeTcpSocketArgs']]] tcp_sockets: Health check using TCP socket method. See `tcp_socket` below.
         :param pulumi.Input[int] timeout_seconds: Check the timeout, the default is 1 second, the minimum is 1 second.
         """
-        ContainerGroupContainerReadinessProbeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            execs=execs,
-            failure_threshold=failure_threshold,
-            http_gets=http_gets,
-            initial_delay_seconds=initial_delay_seconds,
-            period_seconds=period_seconds,
-            success_threshold=success_threshold,
-            tcp_sockets=tcp_sockets,
-            timeout_seconds=timeout_seconds,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             execs: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeExecArgs']]]] = None,
-             failure_threshold: Optional[pulumi.Input[int]] = None,
-             http_gets: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeHttpGetArgs']]]] = None,
-             initial_delay_seconds: Optional[pulumi.Input[int]] = None,
-             period_seconds: Optional[pulumi.Input[int]] = None,
-             success_threshold: Optional[pulumi.Input[int]] = None,
-             tcp_sockets: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeTcpSocketArgs']]]] = None,
-             timeout_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if failure_threshold is None and 'failureThreshold' in kwargs:
-            failure_threshold = kwargs['failureThreshold']
-        if http_gets is None and 'httpGets' in kwargs:
-            http_gets = kwargs['httpGets']
-        if initial_delay_seconds is None and 'initialDelaySeconds' in kwargs:
-            initial_delay_seconds = kwargs['initialDelaySeconds']
-        if period_seconds is None and 'periodSeconds' in kwargs:
-            period_seconds = kwargs['periodSeconds']
-        if success_threshold is None and 'successThreshold' in kwargs:
-            success_threshold = kwargs['successThreshold']
-        if tcp_sockets is None and 'tcpSockets' in kwargs:
-            tcp_sockets = kwargs['tcpSockets']
-        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
-            timeout_seconds = kwargs['timeoutSeconds']
-
         if execs is not None:
-            _setter("execs", execs)
+            pulumi.set(__self__, "execs", execs)
         if failure_threshold is not None:
-            _setter("failure_threshold", failure_threshold)
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
         if http_gets is not None:
-            _setter("http_gets", http_gets)
+            pulumi.set(__self__, "http_gets", http_gets)
         if initial_delay_seconds is not None:
-            _setter("initial_delay_seconds", initial_delay_seconds)
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
         if period_seconds is not None:
-            _setter("period_seconds", period_seconds)
+            pulumi.set(__self__, "period_seconds", period_seconds)
         if success_threshold is not None:
-            _setter("success_threshold", success_threshold)
+            pulumi.set(__self__, "success_threshold", success_threshold)
         if tcp_sockets is not None:
-            _setter("tcp_sockets", tcp_sockets)
+            pulumi.set(__self__, "tcp_sockets", tcp_sockets)
         if timeout_seconds is not None:
-            _setter("timeout_seconds", timeout_seconds)
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
 
     @property
     @pulumi.getter
@@ -1051,19 +828,8 @@ class ContainerGroupContainerReadinessProbeExecArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Commands to be executed inside the container when performing health checks using the command line method.
         """
-        ContainerGroupContainerReadinessProbeExecArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            commands=commands,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if commands is not None:
-            _setter("commands", commands)
+            pulumi.set(__self__, "commands", commands)
 
     @property
     @pulumi.getter
@@ -1089,27 +855,12 @@ class ContainerGroupContainerReadinessProbeHttpGetArgs:
         :param pulumi.Input[int] port: When using the HTTP request method for health check, the port number for HTTP Get request detection.
         :param pulumi.Input[str] scheme: The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
         """
-        ContainerGroupContainerReadinessProbeHttpGetArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            path=path,
-            port=port,
-            scheme=scheme,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             path: Optional[pulumi.Input[str]] = None,
-             port: Optional[pulumi.Input[int]] = None,
-             scheme: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if path is not None:
-            _setter("path", path)
+            pulumi.set(__self__, "path", path)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if scheme is not None:
-            _setter("scheme", scheme)
+            pulumi.set(__self__, "scheme", scheme)
 
     @property
     @pulumi.getter
@@ -1155,19 +906,8 @@ class ContainerGroupContainerReadinessProbeTcpSocketArgs:
         """
         :param pulumi.Input[int] port: When using the HTTP request method for health check, the port number for HTTP Get request detection.
         """
-        ContainerGroupContainerReadinessProbeTcpSocketArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            port=port,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter
@@ -1193,31 +933,12 @@ class ContainerGroupContainerVolumeMountArgs:
         :param pulumi.Input[str] name: The name of the mounted volume.
         :param pulumi.Input[bool] read_only: Specifies whether the volume is read-only. Default value: `false`.
         """
-        ContainerGroupContainerVolumeMountArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            mount_path=mount_path,
-            name=name,
-            read_only=read_only,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             mount_path: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             read_only: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if mount_path is None and 'mountPath' in kwargs:
-            mount_path = kwargs['mountPath']
-        if read_only is None and 'readOnly' in kwargs:
-            read_only = kwargs['readOnly']
-
         if mount_path is not None:
-            _setter("mount_path", mount_path)
+            pulumi.set(__self__, "mount_path", mount_path)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if read_only is not None:
-            _setter("read_only", read_only)
+            pulumi.set(__self__, "read_only", read_only)
 
     @property
     @pulumi.getter(name="mountPath")
@@ -1267,29 +988,12 @@ class ContainerGroupDnsConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupDnsConfigOptionArgs']]] options: The structure of options. See `options` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] searches: The list of DNS lookup domains.
         """
-        ContainerGroupDnsConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name_servers=name_servers,
-            options=options,
-            searches=searches,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             options: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupDnsConfigOptionArgs']]]] = None,
-             searches: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name_servers is None and 'nameServers' in kwargs:
-            name_servers = kwargs['nameServers']
-
         if name_servers is not None:
-            _setter("name_servers", name_servers)
+            pulumi.set(__self__, "name_servers", name_servers)
         if options is not None:
-            _setter("options", options)
+            pulumi.set(__self__, "options", options)
         if searches is not None:
-            _setter("searches", searches)
+            pulumi.set(__self__, "searches", searches)
 
     @property
     @pulumi.getter(name="nameServers")
@@ -1337,23 +1041,10 @@ class ContainerGroupDnsConfigOptionArgs:
         :param pulumi.Input[str] name: The name of the mounted volume.
         :param pulumi.Input[str] value: The value of the variable. The value can be 0 to 256 characters in length.
         """
-        ContainerGroupDnsConfigOptionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[pulumi.Input[str]] = None,
-             value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -1387,19 +1078,8 @@ class ContainerGroupEciSecurityContextArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupEciSecurityContextSysctlArgs']]] sysctls: Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctls` below.
         """
-        ContainerGroupEciSecurityContextArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            sysctls=sysctls,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             sysctls: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupEciSecurityContextSysctlArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if sysctls is not None:
-            _setter("sysctls", sysctls)
+            pulumi.set(__self__, "sysctls", sysctls)
 
     @property
     @pulumi.getter
@@ -1423,23 +1103,10 @@ class ContainerGroupEciSecurityContextSysctlArgs:
         :param pulumi.Input[str] name: The name of the mounted volume.
         :param pulumi.Input[str] value: The value of the variable. The value can be 0 to 256 characters in length.
         """
-        ContainerGroupEciSecurityContextSysctlArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[pulumi.Input[str]] = None,
-             value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -1475,23 +1142,10 @@ class ContainerGroupHostAliasArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: The information about the host.
         :param pulumi.Input[str] ip: The IP address of the host.
         """
-        ContainerGroupHostAliasArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            hostnames=hostnames,
-            ip=ip,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if hostnames is not None:
-            _setter("hostnames", hostnames)
+            pulumi.set(__self__, "hostnames", hostnames)
         if ip is not None:
-            _setter("ip", ip)
+            pulumi.set(__self__, "ip", ip)
 
     @property
     @pulumi.getter
@@ -1529,32 +1183,9 @@ class ContainerGroupImageRegistryCredentialArgs:
         :param pulumi.Input[str] server: The address of the image repository. It is required when `image_registry_credential` is configured.
         :param pulumi.Input[str] user_name: The username used to log on to the image repository. It is required when `image_registry_credential` is configured.
         """
-        ContainerGroupImageRegistryCredentialArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            password=password,
-            server=server,
-            user_name=user_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             password: Optional[pulumi.Input[str]] = None,
-             server: Optional[pulumi.Input[str]] = None,
-             user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if password is None:
-            raise TypeError("Missing 'password' argument")
-        if server is None:
-            raise TypeError("Missing 'server' argument")
-        if user_name is None and 'userName' in kwargs:
-            user_name = kwargs['userName']
-        if user_name is None:
-            raise TypeError("Missing 'user_name' argument")
-
-        _setter("password", password)
-        _setter("server", server)
-        _setter("user_name", user_name)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "server", server)
+        pulumi.set(__self__, "user_name", user_name)
 
     @property
     @pulumi.getter
@@ -1626,81 +1257,34 @@ class ContainerGroupInitContainerArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerVolumeMountArgs']]] volume_mounts: The structure of volumeMounts. See `volume_mounts` below.
         :param pulumi.Input[str] working_dir: The working directory of the container.
         """
-        ContainerGroupInitContainerArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            args=args,
-            commands=commands,
-            cpu=cpu,
-            environment_vars=environment_vars,
-            gpu=gpu,
-            image=image,
-            image_pull_policy=image_pull_policy,
-            memory=memory,
-            name=name,
-            ports=ports,
-            ready=ready,
-            restart_count=restart_count,
-            volume_mounts=volume_mounts,
-            working_dir=working_dir,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             cpu: Optional[pulumi.Input[float]] = None,
-             environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerEnvironmentVarArgs']]]] = None,
-             gpu: Optional[pulumi.Input[int]] = None,
-             image: Optional[pulumi.Input[str]] = None,
-             image_pull_policy: Optional[pulumi.Input[str]] = None,
-             memory: Optional[pulumi.Input[float]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             ports: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerPortArgs']]]] = None,
-             ready: Optional[pulumi.Input[bool]] = None,
-             restart_count: Optional[pulumi.Input[int]] = None,
-             volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerVolumeMountArgs']]]] = None,
-             working_dir: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if environment_vars is None and 'environmentVars' in kwargs:
-            environment_vars = kwargs['environmentVars']
-        if image_pull_policy is None and 'imagePullPolicy' in kwargs:
-            image_pull_policy = kwargs['imagePullPolicy']
-        if restart_count is None and 'restartCount' in kwargs:
-            restart_count = kwargs['restartCount']
-        if volume_mounts is None and 'volumeMounts' in kwargs:
-            volume_mounts = kwargs['volumeMounts']
-        if working_dir is None and 'workingDir' in kwargs:
-            working_dir = kwargs['workingDir']
-
         if args is not None:
-            _setter("args", args)
+            pulumi.set(__self__, "args", args)
         if commands is not None:
-            _setter("commands", commands)
+            pulumi.set(__self__, "commands", commands)
         if cpu is not None:
-            _setter("cpu", cpu)
+            pulumi.set(__self__, "cpu", cpu)
         if environment_vars is not None:
-            _setter("environment_vars", environment_vars)
+            pulumi.set(__self__, "environment_vars", environment_vars)
         if gpu is not None:
-            _setter("gpu", gpu)
+            pulumi.set(__self__, "gpu", gpu)
         if image is not None:
-            _setter("image", image)
+            pulumi.set(__self__, "image", image)
         if image_pull_policy is not None:
-            _setter("image_pull_policy", image_pull_policy)
+            pulumi.set(__self__, "image_pull_policy", image_pull_policy)
         if memory is not None:
-            _setter("memory", memory)
+            pulumi.set(__self__, "memory", memory)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if ports is not None:
-            _setter("ports", ports)
+            pulumi.set(__self__, "ports", ports)
         if ready is not None:
-            _setter("ready", ready)
+            pulumi.set(__self__, "ready", ready)
         if restart_count is not None:
-            _setter("restart_count", restart_count)
+            pulumi.set(__self__, "restart_count", restart_count)
         if volume_mounts is not None:
-            _setter("volume_mounts", volume_mounts)
+            pulumi.set(__self__, "volume_mounts", volume_mounts)
         if working_dir is not None:
-            _setter("working_dir", working_dir)
+            pulumi.set(__self__, "working_dir", working_dir)
 
     @property
     @pulumi.getter
@@ -1880,23 +1464,10 @@ class ContainerGroupInitContainerEnvironmentVarArgs:
         :param pulumi.Input[str] key: The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
         :param pulumi.Input[str] value: The value of the variable. The value can be 0 to 256 characters in length.
         """
-        ContainerGroupInitContainerEnvironmentVarArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[pulumi.Input[str]] = None,
-             value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -1932,23 +1503,10 @@ class ContainerGroupInitContainerPortArgs:
         :param pulumi.Input[int] port: When using the HTTP request method for health check, the port number for HTTP Get request detection.
         :param pulumi.Input[str] protocol: The type of the protocol. Valid values: `TCP` and `UDP`.
         """
-        ContainerGroupInitContainerPortArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            port=port,
-            protocol=protocol,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             port: Optional[pulumi.Input[int]] = None,
-             protocol: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if protocol is not None:
-            _setter("protocol", protocol)
+            pulumi.set(__self__, "protocol", protocol)
 
     @property
     @pulumi.getter
@@ -1986,31 +1544,12 @@ class ContainerGroupInitContainerVolumeMountArgs:
         :param pulumi.Input[str] name: The name of the mounted volume.
         :param pulumi.Input[bool] read_only: Specifies whether the volume is read-only. Default value: `false`.
         """
-        ContainerGroupInitContainerVolumeMountArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            mount_path=mount_path,
-            name=name,
-            read_only=read_only,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             mount_path: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             read_only: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if mount_path is None and 'mountPath' in kwargs:
-            mount_path = kwargs['mountPath']
-        if read_only is None and 'readOnly' in kwargs:
-            read_only = kwargs['readOnly']
-
         if mount_path is not None:
-            _setter("mount_path", mount_path)
+            pulumi.set(__self__, "mount_path", mount_path)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if read_only is not None:
-            _setter("read_only", read_only)
+            pulumi.set(__self__, "read_only", read_only)
 
     @property
     @pulumi.getter(name="mountPath")
@@ -2077,77 +1616,28 @@ class ContainerGroupVolumeArgs:
         :param pulumi.Input[str] nfs_volume_server: The address of the NFS server.
         :param pulumi.Input[str] type: The type of the volume.
         """
-        ContainerGroupVolumeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            config_file_volume_config_file_to_paths=config_file_volume_config_file_to_paths,
-            disk_volume_disk_id=disk_volume_disk_id,
-            disk_volume_fs_type=disk_volume_fs_type,
-            flex_volume_driver=flex_volume_driver,
-            flex_volume_fs_type=flex_volume_fs_type,
-            flex_volume_options=flex_volume_options,
-            name=name,
-            nfs_volume_path=nfs_volume_path,
-            nfs_volume_read_only=nfs_volume_read_only,
-            nfs_volume_server=nfs_volume_server,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             config_file_volume_config_file_to_paths: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs']]]] = None,
-             disk_volume_disk_id: Optional[pulumi.Input[str]] = None,
-             disk_volume_fs_type: Optional[pulumi.Input[str]] = None,
-             flex_volume_driver: Optional[pulumi.Input[str]] = None,
-             flex_volume_fs_type: Optional[pulumi.Input[str]] = None,
-             flex_volume_options: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             nfs_volume_path: Optional[pulumi.Input[str]] = None,
-             nfs_volume_read_only: Optional[pulumi.Input[bool]] = None,
-             nfs_volume_server: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if config_file_volume_config_file_to_paths is None and 'configFileVolumeConfigFileToPaths' in kwargs:
-            config_file_volume_config_file_to_paths = kwargs['configFileVolumeConfigFileToPaths']
-        if disk_volume_disk_id is None and 'diskVolumeDiskId' in kwargs:
-            disk_volume_disk_id = kwargs['diskVolumeDiskId']
-        if disk_volume_fs_type is None and 'diskVolumeFsType' in kwargs:
-            disk_volume_fs_type = kwargs['diskVolumeFsType']
-        if flex_volume_driver is None and 'flexVolumeDriver' in kwargs:
-            flex_volume_driver = kwargs['flexVolumeDriver']
-        if flex_volume_fs_type is None and 'flexVolumeFsType' in kwargs:
-            flex_volume_fs_type = kwargs['flexVolumeFsType']
-        if flex_volume_options is None and 'flexVolumeOptions' in kwargs:
-            flex_volume_options = kwargs['flexVolumeOptions']
-        if nfs_volume_path is None and 'nfsVolumePath' in kwargs:
-            nfs_volume_path = kwargs['nfsVolumePath']
-        if nfs_volume_read_only is None and 'nfsVolumeReadOnly' in kwargs:
-            nfs_volume_read_only = kwargs['nfsVolumeReadOnly']
-        if nfs_volume_server is None and 'nfsVolumeServer' in kwargs:
-            nfs_volume_server = kwargs['nfsVolumeServer']
-
         if config_file_volume_config_file_to_paths is not None:
-            _setter("config_file_volume_config_file_to_paths", config_file_volume_config_file_to_paths)
+            pulumi.set(__self__, "config_file_volume_config_file_to_paths", config_file_volume_config_file_to_paths)
         if disk_volume_disk_id is not None:
-            _setter("disk_volume_disk_id", disk_volume_disk_id)
+            pulumi.set(__self__, "disk_volume_disk_id", disk_volume_disk_id)
         if disk_volume_fs_type is not None:
-            _setter("disk_volume_fs_type", disk_volume_fs_type)
+            pulumi.set(__self__, "disk_volume_fs_type", disk_volume_fs_type)
         if flex_volume_driver is not None:
-            _setter("flex_volume_driver", flex_volume_driver)
+            pulumi.set(__self__, "flex_volume_driver", flex_volume_driver)
         if flex_volume_fs_type is not None:
-            _setter("flex_volume_fs_type", flex_volume_fs_type)
+            pulumi.set(__self__, "flex_volume_fs_type", flex_volume_fs_type)
         if flex_volume_options is not None:
-            _setter("flex_volume_options", flex_volume_options)
+            pulumi.set(__self__, "flex_volume_options", flex_volume_options)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if nfs_volume_path is not None:
-            _setter("nfs_volume_path", nfs_volume_path)
+            pulumi.set(__self__, "nfs_volume_path", nfs_volume_path)
         if nfs_volume_read_only is not None:
-            _setter("nfs_volume_read_only", nfs_volume_read_only)
+            pulumi.set(__self__, "nfs_volume_read_only", nfs_volume_read_only)
         if nfs_volume_server is not None:
-            _setter("nfs_volume_server", nfs_volume_server)
+            pulumi.set(__self__, "nfs_volume_server", nfs_volume_server)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="configFileVolumeConfigFileToPaths")
@@ -2292,23 +1782,10 @@ class ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs:
         :param pulumi.Input[str] content: The content of the configuration file. Maximum size: 32 KB.
         :param pulumi.Input[str] path: The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
         """
-        ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            content=content,
-            path=path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             content: Optional[pulumi.Input[str]] = None,
-             path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if content is not None:
-            _setter("content", content)
+            pulumi.set(__self__, "content", content)
         if path is not None:
-            _setter("path", path)
+            pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter
@@ -2346,29 +1823,12 @@ class ImageCacheImageRegistryCredentialArgs:
         :param pulumi.Input[str] server: The address of Image Registry without `http://` or `https://`.
         :param pulumi.Input[str] user_name: The user name of Image Registry.
         """
-        ImageCacheImageRegistryCredentialArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            password=password,
-            server=server,
-            user_name=user_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             password: Optional[pulumi.Input[str]] = None,
-             server: Optional[pulumi.Input[str]] = None,
-             user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if user_name is None and 'userName' in kwargs:
-            user_name = kwargs['userName']
-
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if server is not None:
-            _setter("server", server)
+            pulumi.set(__self__, "server", server)
         if user_name is not None:
-            _setter("user_name", user_name)
+            pulumi.set(__self__, "user_name", user_name)
 
     @property
     @pulumi.getter
@@ -2413,29 +1873,12 @@ class OpenApiImageCacheImageRegistryCredentialArgs:
                  password: Optional[pulumi.Input[str]] = None,
                  server: Optional[pulumi.Input[str]] = None,
                  user_name: Optional[pulumi.Input[str]] = None):
-        OpenApiImageCacheImageRegistryCredentialArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            password=password,
-            server=server,
-            user_name=user_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             password: Optional[pulumi.Input[str]] = None,
-             server: Optional[pulumi.Input[str]] = None,
-             user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if user_name is None and 'userName' in kwargs:
-            user_name = kwargs['userName']
-
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if server is not None:
-            _setter("server", server)
+            pulumi.set(__self__, "server", server)
         if user_name is not None:
-            _setter("user_name", user_name)
+            pulumi.set(__self__, "user_name", user_name)
 
     @property
     @pulumi.getter
@@ -2476,27 +1919,12 @@ class VirtualNodeTaintArgs:
         :param pulumi.Input[str] key: The key of the taint.
         :param pulumi.Input[str] value: The value of the taint.
         """
-        VirtualNodeTaintArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            effect=effect,
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             effect: Optional[pulumi.Input[str]] = None,
-             key: Optional[pulumi.Input[str]] = None,
-             value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if effect is not None:
-            _setter("effect", effect)
+            pulumi.set(__self__, "effect", effect)
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter

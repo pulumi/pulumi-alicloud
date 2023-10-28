@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EventSourceArgs', 'EventSource']
@@ -42,51 +42,16 @@ class EventSourceArgs:
         :param pulumi.Input[str] external_source_type: The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linked_external_source` is `true`, This field is valid.
         :param pulumi.Input[bool] linked_external_source: Whether to connect to an external data source. Default value: `false`
         """
-        EventSourceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            event_bus_name=event_bus_name,
-            event_source_name=event_source_name,
-            description=description,
-            external_source_config=external_source_config,
-            external_source_type=external_source_type,
-            linked_external_source=linked_external_source,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             event_bus_name: Optional[pulumi.Input[str]] = None,
-             event_source_name: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             external_source_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             external_source_type: Optional[pulumi.Input[str]] = None,
-             linked_external_source: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if event_bus_name is None and 'eventBusName' in kwargs:
-            event_bus_name = kwargs['eventBusName']
-        if event_bus_name is None:
-            raise TypeError("Missing 'event_bus_name' argument")
-        if event_source_name is None and 'eventSourceName' in kwargs:
-            event_source_name = kwargs['eventSourceName']
-        if event_source_name is None:
-            raise TypeError("Missing 'event_source_name' argument")
-        if external_source_config is None and 'externalSourceConfig' in kwargs:
-            external_source_config = kwargs['externalSourceConfig']
-        if external_source_type is None and 'externalSourceType' in kwargs:
-            external_source_type = kwargs['externalSourceType']
-        if linked_external_source is None and 'linkedExternalSource' in kwargs:
-            linked_external_source = kwargs['linkedExternalSource']
-
-        _setter("event_bus_name", event_bus_name)
-        _setter("event_source_name", event_source_name)
+        pulumi.set(__self__, "event_bus_name", event_bus_name)
+        pulumi.set(__self__, "event_source_name", event_source_name)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if external_source_config is not None:
-            _setter("external_source_config", external_source_config)
+            pulumi.set(__self__, "external_source_config", external_source_config)
         if external_source_type is not None:
-            _setter("external_source_type", external_source_type)
+            pulumi.set(__self__, "external_source_type", external_source_type)
         if linked_external_source is not None:
-            _setter("linked_external_source", linked_external_source)
+            pulumi.set(__self__, "linked_external_source", linked_external_source)
 
     @property
     @pulumi.getter(name="eventBusName")
@@ -205,49 +170,18 @@ class _EventSourceState:
         :param pulumi.Input[str] external_source_type: The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linked_external_source` is `true`, This field is valid.
         :param pulumi.Input[bool] linked_external_source: Whether to connect to an external data source. Default value: `false`
         """
-        _EventSourceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            event_bus_name=event_bus_name,
-            event_source_name=event_source_name,
-            external_source_config=external_source_config,
-            external_source_type=external_source_type,
-            linked_external_source=linked_external_source,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             event_bus_name: Optional[pulumi.Input[str]] = None,
-             event_source_name: Optional[pulumi.Input[str]] = None,
-             external_source_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             external_source_type: Optional[pulumi.Input[str]] = None,
-             linked_external_source: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if event_bus_name is None and 'eventBusName' in kwargs:
-            event_bus_name = kwargs['eventBusName']
-        if event_source_name is None and 'eventSourceName' in kwargs:
-            event_source_name = kwargs['eventSourceName']
-        if external_source_config is None and 'externalSourceConfig' in kwargs:
-            external_source_config = kwargs['externalSourceConfig']
-        if external_source_type is None and 'externalSourceType' in kwargs:
-            external_source_type = kwargs['externalSourceType']
-        if linked_external_source is None and 'linkedExternalSource' in kwargs:
-            linked_external_source = kwargs['linkedExternalSource']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if event_bus_name is not None:
-            _setter("event_bus_name", event_bus_name)
+            pulumi.set(__self__, "event_bus_name", event_bus_name)
         if event_source_name is not None:
-            _setter("event_source_name", event_source_name)
+            pulumi.set(__self__, "event_source_name", event_source_name)
         if external_source_config is not None:
-            _setter("external_source_config", external_source_config)
+            pulumi.set(__self__, "external_source_config", external_source_config)
         if external_source_type is not None:
-            _setter("external_source_type", external_source_type)
+            pulumi.set(__self__, "external_source_type", external_source_type)
         if linked_external_source is not None:
-            _setter("linked_external_source", linked_external_source)
+            pulumi.set(__self__, "linked_external_source", linked_external_source)
 
     @property
     @pulumi.getter
@@ -465,10 +399,6 @@ class EventSource(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            EventSourceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

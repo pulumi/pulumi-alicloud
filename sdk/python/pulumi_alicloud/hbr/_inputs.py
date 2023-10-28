@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -25,21 +25,8 @@ class OtsBackupPlanOtsDetailArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] table_names: The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
         """
-        OtsBackupPlanOtsDetailArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            table_names=table_names,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             table_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if table_names is None and 'tableNames' in kwargs:
-            table_names = kwargs['tableNames']
-
         if table_names is not None:
-            _setter("table_names", table_names)
+            pulumi.set(__self__, "table_names", table_names)
 
     @property
     @pulumi.getter(name="tableNames")
@@ -69,39 +56,16 @@ class OtsBackupPlanRuleArgs:
         :param pulumi.Input[str] rule_name: The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         """
-        OtsBackupPlanRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            backup_type=backup_type,
-            disabled=disabled,
-            retention=retention,
-            rule_name=rule_name,
-            schedule=schedule,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             backup_type: Optional[pulumi.Input[str]] = None,
-             disabled: Optional[pulumi.Input[bool]] = None,
-             retention: Optional[pulumi.Input[str]] = None,
-             rule_name: Optional[pulumi.Input[str]] = None,
-             schedule: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if backup_type is None and 'backupType' in kwargs:
-            backup_type = kwargs['backupType']
-        if rule_name is None and 'ruleName' in kwargs:
-            rule_name = kwargs['ruleName']
-
         if backup_type is not None:
-            _setter("backup_type", backup_type)
+            pulumi.set(__self__, "backup_type", backup_type)
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if retention is not None:
-            _setter("retention", retention)
+            pulumi.set(__self__, "retention", retention)
         if rule_name is not None:
-            _setter("rule_name", rule_name)
+            pulumi.set(__self__, "rule_name", rule_name)
         if schedule is not None:
-            _setter("schedule", schedule)
+            pulumi.set(__self__, "schedule", schedule)
 
     @property
     @pulumi.getter(name="backupType")
@@ -171,21 +135,8 @@ class RestoreJobOtsDetailArgs:
         """
         :param pulumi.Input[bool] overwrite_existing: Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
         """
-        RestoreJobOtsDetailArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            overwrite_existing=overwrite_existing,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             overwrite_existing: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if overwrite_existing is None and 'overwriteExisting' in kwargs:
-            overwrite_existing = kwargs['overwriteExisting']
-
         if overwrite_existing is not None:
-            _setter("overwrite_existing", overwrite_existing)
+            pulumi.set(__self__, "overwrite_existing", overwrite_existing)
 
     @property
     @pulumi.getter(name="overwriteExisting")
@@ -225,77 +176,24 @@ class ServerBackupPlanDetailArgs:
         :param pulumi.Input[str] pre_script_path: Only vaild for the linux system when AppConsistent is true. Apply the freeze script path (e.g. /tmp/prescript.sh). prescript.sh scripts must meet the following conditions: in terms of permissions, only root, as the owner, has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
         :param pulumi.Input[int] timeout_in_seconds: Only the Linux system is valid, and the IO freeze timeout period. The default is 30 seconds.
         """
-        ServerBackupPlanDetailArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            app_consistent=app_consistent,
-            snapshot_group=snapshot_group,
-            destination_region_id=destination_region_id,
-            destination_retention=destination_retention,
-            disk_id_lists=disk_id_lists,
-            do_copy=do_copy,
-            enable_fs_freeze=enable_fs_freeze,
-            post_script_path=post_script_path,
-            pre_script_path=pre_script_path,
-            timeout_in_seconds=timeout_in_seconds,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             app_consistent: Optional[pulumi.Input[bool]] = None,
-             snapshot_group: Optional[pulumi.Input[bool]] = None,
-             destination_region_id: Optional[pulumi.Input[str]] = None,
-             destination_retention: Optional[pulumi.Input[int]] = None,
-             disk_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             do_copy: Optional[pulumi.Input[bool]] = None,
-             enable_fs_freeze: Optional[pulumi.Input[bool]] = None,
-             post_script_path: Optional[pulumi.Input[str]] = None,
-             pre_script_path: Optional[pulumi.Input[str]] = None,
-             timeout_in_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if app_consistent is None and 'appConsistent' in kwargs:
-            app_consistent = kwargs['appConsistent']
-        if app_consistent is None:
-            raise TypeError("Missing 'app_consistent' argument")
-        if snapshot_group is None and 'snapshotGroup' in kwargs:
-            snapshot_group = kwargs['snapshotGroup']
-        if snapshot_group is None:
-            raise TypeError("Missing 'snapshot_group' argument")
-        if destination_region_id is None and 'destinationRegionId' in kwargs:
-            destination_region_id = kwargs['destinationRegionId']
-        if destination_retention is None and 'destinationRetention' in kwargs:
-            destination_retention = kwargs['destinationRetention']
-        if disk_id_lists is None and 'diskIdLists' in kwargs:
-            disk_id_lists = kwargs['diskIdLists']
-        if do_copy is None and 'doCopy' in kwargs:
-            do_copy = kwargs['doCopy']
-        if enable_fs_freeze is None and 'enableFsFreeze' in kwargs:
-            enable_fs_freeze = kwargs['enableFsFreeze']
-        if post_script_path is None and 'postScriptPath' in kwargs:
-            post_script_path = kwargs['postScriptPath']
-        if pre_script_path is None and 'preScriptPath' in kwargs:
-            pre_script_path = kwargs['preScriptPath']
-        if timeout_in_seconds is None and 'timeoutInSeconds' in kwargs:
-            timeout_in_seconds = kwargs['timeoutInSeconds']
-
-        _setter("app_consistent", app_consistent)
-        _setter("snapshot_group", snapshot_group)
+        pulumi.set(__self__, "app_consistent", app_consistent)
+        pulumi.set(__self__, "snapshot_group", snapshot_group)
         if destination_region_id is not None:
-            _setter("destination_region_id", destination_region_id)
+            pulumi.set(__self__, "destination_region_id", destination_region_id)
         if destination_retention is not None:
-            _setter("destination_retention", destination_retention)
+            pulumi.set(__self__, "destination_retention", destination_retention)
         if disk_id_lists is not None:
-            _setter("disk_id_lists", disk_id_lists)
+            pulumi.set(__self__, "disk_id_lists", disk_id_lists)
         if do_copy is not None:
-            _setter("do_copy", do_copy)
+            pulumi.set(__self__, "do_copy", do_copy)
         if enable_fs_freeze is not None:
-            _setter("enable_fs_freeze", enable_fs_freeze)
+            pulumi.set(__self__, "enable_fs_freeze", enable_fs_freeze)
         if post_script_path is not None:
-            _setter("post_script_path", post_script_path)
+            pulumi.set(__self__, "post_script_path", post_script_path)
         if pre_script_path is not None:
-            _setter("pre_script_path", pre_script_path)
+            pulumi.set(__self__, "pre_script_path", pre_script_path)
         if timeout_in_seconds is not None:
-            _setter("timeout_in_seconds", timeout_in_seconds)
+            pulumi.set(__self__, "timeout_in_seconds", timeout_in_seconds)
 
     @property
     @pulumi.getter(name="appConsistent")
@@ -431,27 +329,12 @@ class GetBackupJobsFilterArgs:
                
                > **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
         """
-        GetBackupJobsFilterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            operator=operator,
-            values=values,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             operator: Optional[str] = None,
-             values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if operator is not None:
-            _setter("operator", operator)
+            pulumi.set(__self__, "operator", operator)
         if values is not None:
-            _setter("values", values)
+            pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
@@ -501,23 +384,10 @@ class GetServerBackupPlansFilterArgs:
         :param str key: The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
         :param Sequence[str] values: Set of values that are accepted for the given field.
         """
-        GetServerBackupPlansFilterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            values=values,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if values is not None:
-            _setter("values", values)
+            pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter

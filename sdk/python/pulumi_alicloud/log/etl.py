@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -65,143 +65,46 @@ class EtlArgs:
         :param pulumi.Input[int] to_time: Deadline of processing job, if not set the value is 0, indicates that new data will be processed continuously.
         :param pulumi.Input[int] version: Log etl job version. the default value is `2`.
         """
-        EtlArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            display_name=display_name,
-            etl_name=etl_name,
-            etl_sinks=etl_sinks,
-            logstore=logstore,
-            project=project,
-            script=script,
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            create_time=create_time,
-            description=description,
-            etl_type=etl_type,
-            from_time=from_time,
-            kms_encrypted_access_key_id=kms_encrypted_access_key_id,
-            kms_encrypted_access_key_secret=kms_encrypted_access_key_secret,
-            kms_encryption_access_key_id_context=kms_encryption_access_key_id_context,
-            kms_encryption_access_key_secret_context=kms_encryption_access_key_secret_context,
-            last_modified_time=last_modified_time,
-            parameters=parameters,
-            role_arn=role_arn,
-            schedule=schedule,
-            status=status,
-            to_time=to_time,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             display_name: Optional[pulumi.Input[str]] = None,
-             etl_name: Optional[pulumi.Input[str]] = None,
-             etl_sinks: Optional[pulumi.Input[Sequence[pulumi.Input['EtlEtlSinkArgs']]]] = None,
-             logstore: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             script: Optional[pulumi.Input[str]] = None,
-             access_key_id: Optional[pulumi.Input[str]] = None,
-             access_key_secret: Optional[pulumi.Input[str]] = None,
-             create_time: Optional[pulumi.Input[int]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             etl_type: Optional[pulumi.Input[str]] = None,
-             from_time: Optional[pulumi.Input[int]] = None,
-             kms_encrypted_access_key_id: Optional[pulumi.Input[str]] = None,
-             kms_encrypted_access_key_secret: Optional[pulumi.Input[str]] = None,
-             kms_encryption_access_key_id_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             kms_encryption_access_key_secret_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             last_modified_time: Optional[pulumi.Input[int]] = None,
-             parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             role_arn: Optional[pulumi.Input[str]] = None,
-             schedule: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             to_time: Optional[pulumi.Input[int]] = None,
-             version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if etl_name is None and 'etlName' in kwargs:
-            etl_name = kwargs['etlName']
-        if etl_name is None:
-            raise TypeError("Missing 'etl_name' argument")
-        if etl_sinks is None and 'etlSinks' in kwargs:
-            etl_sinks = kwargs['etlSinks']
-        if etl_sinks is None:
-            raise TypeError("Missing 'etl_sinks' argument")
-        if logstore is None:
-            raise TypeError("Missing 'logstore' argument")
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-        if script is None:
-            raise TypeError("Missing 'script' argument")
-        if access_key_id is None and 'accessKeyId' in kwargs:
-            access_key_id = kwargs['accessKeyId']
-        if access_key_secret is None and 'accessKeySecret' in kwargs:
-            access_key_secret = kwargs['accessKeySecret']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if etl_type is None and 'etlType' in kwargs:
-            etl_type = kwargs['etlType']
-        if from_time is None and 'fromTime' in kwargs:
-            from_time = kwargs['fromTime']
-        if kms_encrypted_access_key_id is None and 'kmsEncryptedAccessKeyId' in kwargs:
-            kms_encrypted_access_key_id = kwargs['kmsEncryptedAccessKeyId']
-        if kms_encrypted_access_key_secret is None and 'kmsEncryptedAccessKeySecret' in kwargs:
-            kms_encrypted_access_key_secret = kwargs['kmsEncryptedAccessKeySecret']
-        if kms_encryption_access_key_id_context is None and 'kmsEncryptionAccessKeyIdContext' in kwargs:
-            kms_encryption_access_key_id_context = kwargs['kmsEncryptionAccessKeyIdContext']
-        if kms_encryption_access_key_secret_context is None and 'kmsEncryptionAccessKeySecretContext' in kwargs:
-            kms_encryption_access_key_secret_context = kwargs['kmsEncryptionAccessKeySecretContext']
-        if last_modified_time is None and 'lastModifiedTime' in kwargs:
-            last_modified_time = kwargs['lastModifiedTime']
-        if role_arn is None and 'roleArn' in kwargs:
-            role_arn = kwargs['roleArn']
-        if to_time is None and 'toTime' in kwargs:
-            to_time = kwargs['toTime']
-
-        _setter("display_name", display_name)
-        _setter("etl_name", etl_name)
-        _setter("etl_sinks", etl_sinks)
-        _setter("logstore", logstore)
-        _setter("project", project)
-        _setter("script", script)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "etl_name", etl_name)
+        pulumi.set(__self__, "etl_sinks", etl_sinks)
+        pulumi.set(__self__, "logstore", logstore)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "script", script)
         if access_key_id is not None:
-            _setter("access_key_id", access_key_id)
+            pulumi.set(__self__, "access_key_id", access_key_id)
         if access_key_secret is not None:
-            _setter("access_key_secret", access_key_secret)
+            pulumi.set(__self__, "access_key_secret", access_key_secret)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if etl_type is not None:
-            _setter("etl_type", etl_type)
+            pulumi.set(__self__, "etl_type", etl_type)
         if from_time is not None:
-            _setter("from_time", from_time)
+            pulumi.set(__self__, "from_time", from_time)
         if kms_encrypted_access_key_id is not None:
-            _setter("kms_encrypted_access_key_id", kms_encrypted_access_key_id)
+            pulumi.set(__self__, "kms_encrypted_access_key_id", kms_encrypted_access_key_id)
         if kms_encrypted_access_key_secret is not None:
-            _setter("kms_encrypted_access_key_secret", kms_encrypted_access_key_secret)
+            pulumi.set(__self__, "kms_encrypted_access_key_secret", kms_encrypted_access_key_secret)
         if kms_encryption_access_key_id_context is not None:
-            _setter("kms_encryption_access_key_id_context", kms_encryption_access_key_id_context)
+            pulumi.set(__self__, "kms_encryption_access_key_id_context", kms_encryption_access_key_id_context)
         if kms_encryption_access_key_secret_context is not None:
-            _setter("kms_encryption_access_key_secret_context", kms_encryption_access_key_secret_context)
+            pulumi.set(__self__, "kms_encryption_access_key_secret_context", kms_encryption_access_key_secret_context)
         if last_modified_time is not None:
-            _setter("last_modified_time", last_modified_time)
+            pulumi.set(__self__, "last_modified_time", last_modified_time)
         if parameters is not None:
-            _setter("parameters", parameters)
+            pulumi.set(__self__, "parameters", parameters)
         if role_arn is not None:
-            _setter("role_arn", role_arn)
+            pulumi.set(__self__, "role_arn", role_arn)
         if schedule is not None:
-            _setter("schedule", schedule)
+            pulumi.set(__self__, "schedule", schedule)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if to_time is not None:
-            _setter("to_time", to_time)
+            pulumi.set(__self__, "to_time", to_time)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="displayName")
@@ -532,137 +435,52 @@ class _EtlState:
         :param pulumi.Input[int] to_time: Deadline of processing job, if not set the value is 0, indicates that new data will be processed continuously.
         :param pulumi.Input[int] version: Log etl job version. the default value is `2`.
         """
-        _EtlState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            create_time=create_time,
-            description=description,
-            display_name=display_name,
-            etl_name=etl_name,
-            etl_sinks=etl_sinks,
-            etl_type=etl_type,
-            from_time=from_time,
-            kms_encrypted_access_key_id=kms_encrypted_access_key_id,
-            kms_encrypted_access_key_secret=kms_encrypted_access_key_secret,
-            kms_encryption_access_key_id_context=kms_encryption_access_key_id_context,
-            kms_encryption_access_key_secret_context=kms_encryption_access_key_secret_context,
-            last_modified_time=last_modified_time,
-            logstore=logstore,
-            parameters=parameters,
-            project=project,
-            role_arn=role_arn,
-            schedule=schedule,
-            script=script,
-            status=status,
-            to_time=to_time,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_key_id: Optional[pulumi.Input[str]] = None,
-             access_key_secret: Optional[pulumi.Input[str]] = None,
-             create_time: Optional[pulumi.Input[int]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             etl_name: Optional[pulumi.Input[str]] = None,
-             etl_sinks: Optional[pulumi.Input[Sequence[pulumi.Input['EtlEtlSinkArgs']]]] = None,
-             etl_type: Optional[pulumi.Input[str]] = None,
-             from_time: Optional[pulumi.Input[int]] = None,
-             kms_encrypted_access_key_id: Optional[pulumi.Input[str]] = None,
-             kms_encrypted_access_key_secret: Optional[pulumi.Input[str]] = None,
-             kms_encryption_access_key_id_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             kms_encryption_access_key_secret_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             last_modified_time: Optional[pulumi.Input[int]] = None,
-             logstore: Optional[pulumi.Input[str]] = None,
-             parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             role_arn: Optional[pulumi.Input[str]] = None,
-             schedule: Optional[pulumi.Input[str]] = None,
-             script: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             to_time: Optional[pulumi.Input[int]] = None,
-             version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_key_id is None and 'accessKeyId' in kwargs:
-            access_key_id = kwargs['accessKeyId']
-        if access_key_secret is None and 'accessKeySecret' in kwargs:
-            access_key_secret = kwargs['accessKeySecret']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if etl_name is None and 'etlName' in kwargs:
-            etl_name = kwargs['etlName']
-        if etl_sinks is None and 'etlSinks' in kwargs:
-            etl_sinks = kwargs['etlSinks']
-        if etl_type is None and 'etlType' in kwargs:
-            etl_type = kwargs['etlType']
-        if from_time is None and 'fromTime' in kwargs:
-            from_time = kwargs['fromTime']
-        if kms_encrypted_access_key_id is None and 'kmsEncryptedAccessKeyId' in kwargs:
-            kms_encrypted_access_key_id = kwargs['kmsEncryptedAccessKeyId']
-        if kms_encrypted_access_key_secret is None and 'kmsEncryptedAccessKeySecret' in kwargs:
-            kms_encrypted_access_key_secret = kwargs['kmsEncryptedAccessKeySecret']
-        if kms_encryption_access_key_id_context is None and 'kmsEncryptionAccessKeyIdContext' in kwargs:
-            kms_encryption_access_key_id_context = kwargs['kmsEncryptionAccessKeyIdContext']
-        if kms_encryption_access_key_secret_context is None and 'kmsEncryptionAccessKeySecretContext' in kwargs:
-            kms_encryption_access_key_secret_context = kwargs['kmsEncryptionAccessKeySecretContext']
-        if last_modified_time is None and 'lastModifiedTime' in kwargs:
-            last_modified_time = kwargs['lastModifiedTime']
-        if role_arn is None and 'roleArn' in kwargs:
-            role_arn = kwargs['roleArn']
-        if to_time is None and 'toTime' in kwargs:
-            to_time = kwargs['toTime']
-
         if access_key_id is not None:
-            _setter("access_key_id", access_key_id)
+            pulumi.set(__self__, "access_key_id", access_key_id)
         if access_key_secret is not None:
-            _setter("access_key_secret", access_key_secret)
+            pulumi.set(__self__, "access_key_secret", access_key_secret)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if etl_name is not None:
-            _setter("etl_name", etl_name)
+            pulumi.set(__self__, "etl_name", etl_name)
         if etl_sinks is not None:
-            _setter("etl_sinks", etl_sinks)
+            pulumi.set(__self__, "etl_sinks", etl_sinks)
         if etl_type is not None:
-            _setter("etl_type", etl_type)
+            pulumi.set(__self__, "etl_type", etl_type)
         if from_time is not None:
-            _setter("from_time", from_time)
+            pulumi.set(__self__, "from_time", from_time)
         if kms_encrypted_access_key_id is not None:
-            _setter("kms_encrypted_access_key_id", kms_encrypted_access_key_id)
+            pulumi.set(__self__, "kms_encrypted_access_key_id", kms_encrypted_access_key_id)
         if kms_encrypted_access_key_secret is not None:
-            _setter("kms_encrypted_access_key_secret", kms_encrypted_access_key_secret)
+            pulumi.set(__self__, "kms_encrypted_access_key_secret", kms_encrypted_access_key_secret)
         if kms_encryption_access_key_id_context is not None:
-            _setter("kms_encryption_access_key_id_context", kms_encryption_access_key_id_context)
+            pulumi.set(__self__, "kms_encryption_access_key_id_context", kms_encryption_access_key_id_context)
         if kms_encryption_access_key_secret_context is not None:
-            _setter("kms_encryption_access_key_secret_context", kms_encryption_access_key_secret_context)
+            pulumi.set(__self__, "kms_encryption_access_key_secret_context", kms_encryption_access_key_secret_context)
         if last_modified_time is not None:
-            _setter("last_modified_time", last_modified_time)
+            pulumi.set(__self__, "last_modified_time", last_modified_time)
         if logstore is not None:
-            _setter("logstore", logstore)
+            pulumi.set(__self__, "logstore", logstore)
         if parameters is not None:
-            _setter("parameters", parameters)
+            pulumi.set(__self__, "parameters", parameters)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if role_arn is not None:
-            _setter("role_arn", role_arn)
+            pulumi.set(__self__, "role_arn", role_arn)
         if schedule is not None:
-            _setter("schedule", schedule)
+            pulumi.set(__self__, "schedule", schedule)
         if script is not None:
-            _setter("script", script)
+            pulumi.set(__self__, "script", script)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if to_time is not None:
-            _setter("to_time", to_time)
+            pulumi.set(__self__, "to_time", to_time)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="accessKeyId")
@@ -1168,10 +986,6 @@ class Etl(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            EtlArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ApplicationAccessPointArgs', 'ApplicationAccessPoint']
@@ -23,31 +23,10 @@ class ApplicationAccessPointArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The policies that have bound to the Application Access Point (AAP).
         :param pulumi.Input[str] description: Description .
         """
-        ApplicationAccessPointArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            application_access_point_name=application_access_point_name,
-            policies=policies,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             application_access_point_name: Optional[pulumi.Input[str]] = None,
-             policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if application_access_point_name is None and 'applicationAccessPointName' in kwargs:
-            application_access_point_name = kwargs['applicationAccessPointName']
-        if application_access_point_name is None:
-            raise TypeError("Missing 'application_access_point_name' argument")
-        if policies is None:
-            raise TypeError("Missing 'policies' argument")
-
-        _setter("application_access_point_name", application_access_point_name)
-        _setter("policies", policies)
+        pulumi.set(__self__, "application_access_point_name", application_access_point_name)
+        pulumi.set(__self__, "policies", policies)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter(name="applicationAccessPointName")
@@ -98,29 +77,12 @@ class _ApplicationAccessPointState:
         :param pulumi.Input[str] description: Description .
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The policies that have bound to the Application Access Point (AAP).
         """
-        _ApplicationAccessPointState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            application_access_point_name=application_access_point_name,
-            description=description,
-            policies=policies,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             application_access_point_name: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if application_access_point_name is None and 'applicationAccessPointName' in kwargs:
-            application_access_point_name = kwargs['applicationAccessPointName']
-
         if application_access_point_name is not None:
-            _setter("application_access_point_name", application_access_point_name)
+            pulumi.set(__self__, "application_access_point_name", application_access_point_name)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if policies is not None:
-            _setter("policies", policies)
+            pulumi.set(__self__, "policies", policies)
 
     @property
     @pulumi.getter(name="applicationAccessPointName")
@@ -264,10 +226,6 @@ class ApplicationAccessPoint(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ApplicationAccessPointArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

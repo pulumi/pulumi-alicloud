@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RuleArgs', 'Rule']
@@ -47,96 +47,33 @@ class RuleArgs:
         :param pulumi.Input[str] target: The Target of rule.
         :param pulumi.Input[int] warn_level: The Level of Risk. Valid values:
         """
-        RuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            category=category,
-            content=content,
-            rule_name=rule_name,
-            content_category=content_category,
-            custom_type=custom_type,
-            description=description,
-            lang=lang,
-            product_code=product_code,
-            product_id=product_id,
-            risk_level_id=risk_level_id,
-            rule_type=rule_type,
-            stat_express=stat_express,
-            status=status,
-            target=target,
-            warn_level=warn_level,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             category: Optional[pulumi.Input[int]] = None,
-             content: Optional[pulumi.Input[str]] = None,
-             rule_name: Optional[pulumi.Input[str]] = None,
-             content_category: Optional[pulumi.Input[str]] = None,
-             custom_type: Optional[pulumi.Input[int]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             lang: Optional[pulumi.Input[str]] = None,
-             product_code: Optional[pulumi.Input[str]] = None,
-             product_id: Optional[pulumi.Input[str]] = None,
-             risk_level_id: Optional[pulumi.Input[str]] = None,
-             rule_type: Optional[pulumi.Input[int]] = None,
-             stat_express: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[int]] = None,
-             target: Optional[pulumi.Input[str]] = None,
-             warn_level: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if category is None:
-            raise TypeError("Missing 'category' argument")
-        if content is None:
-            raise TypeError("Missing 'content' argument")
-        if rule_name is None and 'ruleName' in kwargs:
-            rule_name = kwargs['ruleName']
-        if rule_name is None:
-            raise TypeError("Missing 'rule_name' argument")
-        if content_category is None and 'contentCategory' in kwargs:
-            content_category = kwargs['contentCategory']
-        if custom_type is None and 'customType' in kwargs:
-            custom_type = kwargs['customType']
-        if product_code is None and 'productCode' in kwargs:
-            product_code = kwargs['productCode']
-        if product_id is None and 'productId' in kwargs:
-            product_id = kwargs['productId']
-        if risk_level_id is None and 'riskLevelId' in kwargs:
-            risk_level_id = kwargs['riskLevelId']
-        if rule_type is None and 'ruleType' in kwargs:
-            rule_type = kwargs['ruleType']
-        if stat_express is None and 'statExpress' in kwargs:
-            stat_express = kwargs['statExpress']
-        if warn_level is None and 'warnLevel' in kwargs:
-            warn_level = kwargs['warnLevel']
-
-        _setter("category", category)
-        _setter("content", content)
-        _setter("rule_name", rule_name)
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "rule_name", rule_name)
         if content_category is not None:
-            _setter("content_category", content_category)
+            pulumi.set(__self__, "content_category", content_category)
         if custom_type is not None:
-            _setter("custom_type", custom_type)
+            pulumi.set(__self__, "custom_type", custom_type)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if lang is not None:
-            _setter("lang", lang)
+            pulumi.set(__self__, "lang", lang)
         if product_code is not None:
-            _setter("product_code", product_code)
+            pulumi.set(__self__, "product_code", product_code)
         if product_id is not None:
-            _setter("product_id", product_id)
+            pulumi.set(__self__, "product_id", product_id)
         if risk_level_id is not None:
-            _setter("risk_level_id", risk_level_id)
+            pulumi.set(__self__, "risk_level_id", risk_level_id)
         if rule_type is not None:
-            _setter("rule_type", rule_type)
+            pulumi.set(__self__, "rule_type", rule_type)
         if stat_express is not None:
-            _setter("stat_express", stat_express)
+            pulumi.set(__self__, "stat_express", stat_express)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if target is not None:
-            _setter("target", target)
+            pulumi.set(__self__, "target", target)
         if warn_level is not None:
-            _setter("warn_level", warn_level)
+            pulumi.set(__self__, "warn_level", warn_level)
 
     @property
     @pulumi.getter
@@ -355,93 +292,36 @@ class _RuleState:
         :param pulumi.Input[str] target: The Target of rule.
         :param pulumi.Input[int] warn_level: The Level of Risk. Valid values:
         """
-        _RuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            category=category,
-            content=content,
-            content_category=content_category,
-            custom_type=custom_type,
-            description=description,
-            lang=lang,
-            product_code=product_code,
-            product_id=product_id,
-            risk_level_id=risk_level_id,
-            rule_name=rule_name,
-            rule_type=rule_type,
-            stat_express=stat_express,
-            status=status,
-            target=target,
-            warn_level=warn_level,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             category: Optional[pulumi.Input[int]] = None,
-             content: Optional[pulumi.Input[str]] = None,
-             content_category: Optional[pulumi.Input[str]] = None,
-             custom_type: Optional[pulumi.Input[int]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             lang: Optional[pulumi.Input[str]] = None,
-             product_code: Optional[pulumi.Input[str]] = None,
-             product_id: Optional[pulumi.Input[str]] = None,
-             risk_level_id: Optional[pulumi.Input[str]] = None,
-             rule_name: Optional[pulumi.Input[str]] = None,
-             rule_type: Optional[pulumi.Input[int]] = None,
-             stat_express: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[int]] = None,
-             target: Optional[pulumi.Input[str]] = None,
-             warn_level: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if content_category is None and 'contentCategory' in kwargs:
-            content_category = kwargs['contentCategory']
-        if custom_type is None and 'customType' in kwargs:
-            custom_type = kwargs['customType']
-        if product_code is None and 'productCode' in kwargs:
-            product_code = kwargs['productCode']
-        if product_id is None and 'productId' in kwargs:
-            product_id = kwargs['productId']
-        if risk_level_id is None and 'riskLevelId' in kwargs:
-            risk_level_id = kwargs['riskLevelId']
-        if rule_name is None and 'ruleName' in kwargs:
-            rule_name = kwargs['ruleName']
-        if rule_type is None and 'ruleType' in kwargs:
-            rule_type = kwargs['ruleType']
-        if stat_express is None and 'statExpress' in kwargs:
-            stat_express = kwargs['statExpress']
-        if warn_level is None and 'warnLevel' in kwargs:
-            warn_level = kwargs['warnLevel']
-
         if category is not None:
-            _setter("category", category)
+            pulumi.set(__self__, "category", category)
         if content is not None:
-            _setter("content", content)
+            pulumi.set(__self__, "content", content)
         if content_category is not None:
-            _setter("content_category", content_category)
+            pulumi.set(__self__, "content_category", content_category)
         if custom_type is not None:
-            _setter("custom_type", custom_type)
+            pulumi.set(__self__, "custom_type", custom_type)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if lang is not None:
-            _setter("lang", lang)
+            pulumi.set(__self__, "lang", lang)
         if product_code is not None:
-            _setter("product_code", product_code)
+            pulumi.set(__self__, "product_code", product_code)
         if product_id is not None:
-            _setter("product_id", product_id)
+            pulumi.set(__self__, "product_id", product_id)
         if risk_level_id is not None:
-            _setter("risk_level_id", risk_level_id)
+            pulumi.set(__self__, "risk_level_id", risk_level_id)
         if rule_name is not None:
-            _setter("rule_name", rule_name)
+            pulumi.set(__self__, "rule_name", rule_name)
         if rule_type is not None:
-            _setter("rule_type", rule_type)
+            pulumi.set(__self__, "rule_type", rule_type)
         if stat_express is not None:
-            _setter("stat_express", stat_express)
+            pulumi.set(__self__, "stat_express", stat_express)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if target is not None:
-            _setter("target", target)
+            pulumi.set(__self__, "target", target)
         if warn_level is not None:
-            _setter("warn_level", warn_level)
+            pulumi.set(__self__, "warn_level", warn_level)
 
     @property
     @pulumi.getter
@@ -749,10 +629,6 @@ class Rule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

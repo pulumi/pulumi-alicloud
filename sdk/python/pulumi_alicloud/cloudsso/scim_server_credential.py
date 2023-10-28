@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ScimServerCredentialArgs', 'ScimServerCredential']
@@ -21,26 +21,9 @@ class ScimServerCredentialArgs:
         :param pulumi.Input[str] directory_id: The ID of the Directory.
         :param pulumi.Input[str] status: The Status of the resource. Valid values: `Disabled`, `Enabled`.
         """
-        ScimServerCredentialArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            directory_id=directory_id,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             directory_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if directory_id is None and 'directoryId' in kwargs:
-            directory_id = kwargs['directoryId']
-        if directory_id is None:
-            raise TypeError("Missing 'directory_id' argument")
-
-        _setter("directory_id", directory_id)
+        pulumi.set(__self__, "directory_id", directory_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="directoryId")
@@ -79,31 +62,12 @@ class _ScimServerCredentialState:
         :param pulumi.Input[str] directory_id: The ID of the Directory.
         :param pulumi.Input[str] status: The Status of the resource. Valid values: `Disabled`, `Enabled`.
         """
-        _ScimServerCredentialState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            credential_id=credential_id,
-            directory_id=directory_id,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             credential_id: Optional[pulumi.Input[str]] = None,
-             directory_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if credential_id is None and 'credentialId' in kwargs:
-            credential_id = kwargs['credentialId']
-        if directory_id is None and 'directoryId' in kwargs:
-            directory_id = kwargs['directoryId']
-
         if credential_id is not None:
-            _setter("credential_id", credential_id)
+            pulumi.set(__self__, "credential_id", credential_id)
         if directory_id is not None:
-            _setter("directory_id", directory_id)
+            pulumi.set(__self__, "directory_id", directory_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="credentialId")
@@ -205,10 +169,6 @@ class ScimServerCredential(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ScimServerCredentialArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

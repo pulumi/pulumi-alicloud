@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -28,23 +28,10 @@ class InstanceDataDisk(dict):
                - local_ssd：Local disk ssd.
         :param int size: Data disk size, cloud_efficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
         """
-        InstanceDataDisk._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            category=category,
-            size=size,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             category: Optional[str] = None,
-             size: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if category is not None:
-            _setter("category", category)
+            pulumi.set(__self__, "category", category)
         if size is not None:
-            _setter("size", size)
+            pulumi.set(__self__, "size", size)
 
     @property
     @pulumi.getter
@@ -74,19 +61,8 @@ class InstanceSystemDisk(dict):
         """
         :param int size: System disk size, cloud_efficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
         """
-        InstanceSystemDisk._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            size=size,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             size: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if size is not None:
-            _setter("size", size)
+            pulumi.set(__self__, "size", size)
 
     @property
     @pulumi.getter
@@ -112,46 +88,11 @@ class GetKeyPairsPairResult(dict):
         :param str key_pair_name: The name of the key pair.
         :param str version: The version number.
         """
-        GetKeyPairsPairResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            id=id,
-            key_pair_finger_print=key_pair_finger_print,
-            key_pair_name=key_pair_name,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[str] = None,
-             id: Optional[str] = None,
-             key_pair_finger_print: Optional[str] = None,
-             key_pair_name: Optional[str] = None,
-             version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if key_pair_finger_print is None and 'keyPairFingerPrint' in kwargs:
-            key_pair_finger_print = kwargs['keyPairFingerPrint']
-        if key_pair_finger_print is None:
-            raise TypeError("Missing 'key_pair_finger_print' argument")
-        if key_pair_name is None and 'keyPairName' in kwargs:
-            key_pair_name = kwargs['keyPairName']
-        if key_pair_name is None:
-            raise TypeError("Missing 'key_pair_name' argument")
-        if version is None:
-            raise TypeError("Missing 'version' argument")
-
-        _setter("create_time", create_time)
-        _setter("id", id)
-        _setter("key_pair_finger_print", key_pair_finger_print)
-        _setter("key_pair_name", key_pair_name)
-        _setter("version", version)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "key_pair_finger_print", key_pair_finger_print)
+        pulumi.set(__self__, "key_pair_name", key_pair_name)
+        pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="createTime")

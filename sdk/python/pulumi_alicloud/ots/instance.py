@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InstanceArgs', 'Instance']
@@ -27,39 +27,16 @@ class InstanceArgs:
         :param pulumi.Input[str] name: The name of the instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the instance.
         """
-        InstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            accessed_by=accessed_by,
-            description=description,
-            instance_type=instance_type,
-            name=name,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             accessed_by: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             instance_type: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if accessed_by is None and 'accessedBy' in kwargs:
-            accessed_by = kwargs['accessedBy']
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-
         if accessed_by is not None:
-            _setter("accessed_by", accessed_by)
+            pulumi.set(__self__, "accessed_by", accessed_by)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if instance_type is not None:
-            _setter("instance_type", instance_type)
+            pulumi.set(__self__, "instance_type", instance_type)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="accessedBy")
@@ -138,39 +115,16 @@ class _InstanceState:
         :param pulumi.Input[str] name: The name of the instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the instance.
         """
-        _InstanceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            accessed_by=accessed_by,
-            description=description,
-            instance_type=instance_type,
-            name=name,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             accessed_by: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             instance_type: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if accessed_by is None and 'accessedBy' in kwargs:
-            accessed_by = kwargs['accessedBy']
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-
         if accessed_by is not None:
-            _setter("accessed_by", accessed_by)
+            pulumi.set(__self__, "accessed_by", accessed_by)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if instance_type is not None:
-            _setter("instance_type", instance_type)
+            pulumi.set(__self__, "instance_type", instance_type)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="accessedBy")
@@ -334,10 +288,6 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

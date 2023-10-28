@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['PortArgs', 'Port']
@@ -27,49 +27,12 @@ class PortArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] real_servers: List of source IP addresses.
         :param pulumi.Input[str] backend_port: The port of the origin server. Valid values: [1~65535].
         """
-        PortArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            frontend_port=frontend_port,
-            frontend_protocol=frontend_protocol,
-            instance_id=instance_id,
-            real_servers=real_servers,
-            backend_port=backend_port,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             frontend_port: Optional[pulumi.Input[str]] = None,
-             frontend_protocol: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             backend_port: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if frontend_port is None and 'frontendPort' in kwargs:
-            frontend_port = kwargs['frontendPort']
-        if frontend_port is None:
-            raise TypeError("Missing 'frontend_port' argument")
-        if frontend_protocol is None and 'frontendProtocol' in kwargs:
-            frontend_protocol = kwargs['frontendProtocol']
-        if frontend_protocol is None:
-            raise TypeError("Missing 'frontend_protocol' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if real_servers is None and 'realServers' in kwargs:
-            real_servers = kwargs['realServers']
-        if real_servers is None:
-            raise TypeError("Missing 'real_servers' argument")
-        if backend_port is None and 'backendPort' in kwargs:
-            backend_port = kwargs['backendPort']
-
-        _setter("frontend_port", frontend_port)
-        _setter("frontend_protocol", frontend_protocol)
-        _setter("instance_id", instance_id)
-        _setter("real_servers", real_servers)
+        pulumi.set(__self__, "frontend_port", frontend_port)
+        pulumi.set(__self__, "frontend_protocol", frontend_protocol)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "real_servers", real_servers)
         if backend_port is not None:
-            _setter("backend_port", backend_port)
+            pulumi.set(__self__, "backend_port", backend_port)
 
     @property
     @pulumi.getter(name="frontendPort")
@@ -148,45 +111,16 @@ class _PortState:
         :param pulumi.Input[str] instance_id: The ID of Ddoscoo instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] real_servers: List of source IP addresses.
         """
-        _PortState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            backend_port=backend_port,
-            frontend_port=frontend_port,
-            frontend_protocol=frontend_protocol,
-            instance_id=instance_id,
-            real_servers=real_servers,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             backend_port: Optional[pulumi.Input[str]] = None,
-             frontend_port: Optional[pulumi.Input[str]] = None,
-             frontend_protocol: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if backend_port is None and 'backendPort' in kwargs:
-            backend_port = kwargs['backendPort']
-        if frontend_port is None and 'frontendPort' in kwargs:
-            frontend_port = kwargs['frontendPort']
-        if frontend_protocol is None and 'frontendProtocol' in kwargs:
-            frontend_protocol = kwargs['frontendProtocol']
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if real_servers is None and 'realServers' in kwargs:
-            real_servers = kwargs['realServers']
-
         if backend_port is not None:
-            _setter("backend_port", backend_port)
+            pulumi.set(__self__, "backend_port", backend_port)
         if frontend_port is not None:
-            _setter("frontend_port", frontend_port)
+            pulumi.set(__self__, "frontend_port", frontend_port)
         if frontend_protocol is not None:
-            _setter("frontend_protocol", frontend_protocol)
+            pulumi.set(__self__, "frontend_protocol", frontend_protocol)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if real_servers is not None:
-            _setter("real_servers", real_servers)
+            pulumi.set(__self__, "real_servers", real_servers)
 
     @property
     @pulumi.getter(name="backendPort")
@@ -376,10 +310,6 @@ class Port(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            PortArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

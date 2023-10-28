@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['PortfolioArgs', 'Portfolio']
@@ -23,33 +23,10 @@ class PortfolioArgs:
         :param pulumi.Input[str] provider_name: The provider name of the portfolio. The value must be 1 to 128 characters in length.
         :param pulumi.Input[str] description: The description of the portfolio. The value must be 1 to 128 characters in length.
         """
-        PortfolioArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            portfolio_name=portfolio_name,
-            provider_name=provider_name,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             portfolio_name: Optional[pulumi.Input[str]] = None,
-             provider_name: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if portfolio_name is None and 'portfolioName' in kwargs:
-            portfolio_name = kwargs['portfolioName']
-        if portfolio_name is None:
-            raise TypeError("Missing 'portfolio_name' argument")
-        if provider_name is None and 'providerName' in kwargs:
-            provider_name = kwargs['providerName']
-        if provider_name is None:
-            raise TypeError("Missing 'provider_name' argument")
-
-        _setter("portfolio_name", portfolio_name)
-        _setter("provider_name", provider_name)
+        pulumi.set(__self__, "portfolio_name", portfolio_name)
+        pulumi.set(__self__, "provider_name", provider_name)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter(name="portfolioName")
@@ -104,43 +81,16 @@ class _PortfolioState:
         :param pulumi.Input[str] portfolio_name: The name of the portfolio. The value must be 1 to 128 characters in length.
         :param pulumi.Input[str] provider_name: The provider name of the portfolio. The value must be 1 to 128 characters in length.
         """
-        _PortfolioState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_time=create_time,
-            description=description,
-            portfolio_arn=portfolio_arn,
-            portfolio_name=portfolio_name,
-            provider_name=provider_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_time: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             portfolio_arn: Optional[pulumi.Input[str]] = None,
-             portfolio_name: Optional[pulumi.Input[str]] = None,
-             provider_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if portfolio_arn is None and 'portfolioArn' in kwargs:
-            portfolio_arn = kwargs['portfolioArn']
-        if portfolio_name is None and 'portfolioName' in kwargs:
-            portfolio_name = kwargs['portfolioName']
-        if provider_name is None and 'providerName' in kwargs:
-            provider_name = kwargs['providerName']
-
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if portfolio_arn is not None:
-            _setter("portfolio_arn", portfolio_arn)
+            pulumi.set(__self__, "portfolio_arn", portfolio_arn)
         if portfolio_name is not None:
-            _setter("portfolio_name", portfolio_name)
+            pulumi.set(__self__, "portfolio_name", portfolio_name)
         if provider_name is not None:
-            _setter("provider_name", provider_name)
+            pulumi.set(__self__, "provider_name", provider_name)
 
     @property
     @pulumi.getter(name="createTime")
@@ -298,10 +248,6 @@ class Portfolio(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            PortfolioArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

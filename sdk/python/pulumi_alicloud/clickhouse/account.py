@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AccountArgs', 'Account']
@@ -37,78 +37,23 @@ class AccountArgs:
         :param pulumi.Input[str] total_databases: The list of all databases. Separate databases with commas (,).
         :param pulumi.Input[str] total_dictionaries: The list of all dictionaries. Separate dictionaries with commas (,).
         """
-        AccountArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_name=account_name,
-            account_password=account_password,
-            db_cluster_id=db_cluster_id,
-            account_description=account_description,
-            allow_databases=allow_databases,
-            allow_dictionaries=allow_dictionaries,
-            ddl_authority=ddl_authority,
-            dml_authority=dml_authority,
-            total_databases=total_databases,
-            total_dictionaries=total_dictionaries,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_name: Optional[pulumi.Input[str]] = None,
-             account_password: Optional[pulumi.Input[str]] = None,
-             db_cluster_id: Optional[pulumi.Input[str]] = None,
-             account_description: Optional[pulumi.Input[str]] = None,
-             allow_databases: Optional[pulumi.Input[str]] = None,
-             allow_dictionaries: Optional[pulumi.Input[str]] = None,
-             ddl_authority: Optional[pulumi.Input[bool]] = None,
-             dml_authority: Optional[pulumi.Input[str]] = None,
-             total_databases: Optional[pulumi.Input[str]] = None,
-             total_dictionaries: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_name is None and 'accountName' in kwargs:
-            account_name = kwargs['accountName']
-        if account_name is None:
-            raise TypeError("Missing 'account_name' argument")
-        if account_password is None and 'accountPassword' in kwargs:
-            account_password = kwargs['accountPassword']
-        if account_password is None:
-            raise TypeError("Missing 'account_password' argument")
-        if db_cluster_id is None and 'dbClusterId' in kwargs:
-            db_cluster_id = kwargs['dbClusterId']
-        if db_cluster_id is None:
-            raise TypeError("Missing 'db_cluster_id' argument")
-        if account_description is None and 'accountDescription' in kwargs:
-            account_description = kwargs['accountDescription']
-        if allow_databases is None and 'allowDatabases' in kwargs:
-            allow_databases = kwargs['allowDatabases']
-        if allow_dictionaries is None and 'allowDictionaries' in kwargs:
-            allow_dictionaries = kwargs['allowDictionaries']
-        if ddl_authority is None and 'ddlAuthority' in kwargs:
-            ddl_authority = kwargs['ddlAuthority']
-        if dml_authority is None and 'dmlAuthority' in kwargs:
-            dml_authority = kwargs['dmlAuthority']
-        if total_databases is None and 'totalDatabases' in kwargs:
-            total_databases = kwargs['totalDatabases']
-        if total_dictionaries is None and 'totalDictionaries' in kwargs:
-            total_dictionaries = kwargs['totalDictionaries']
-
-        _setter("account_name", account_name)
-        _setter("account_password", account_password)
-        _setter("db_cluster_id", db_cluster_id)
+        pulumi.set(__self__, "account_name", account_name)
+        pulumi.set(__self__, "account_password", account_password)
+        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
         if account_description is not None:
-            _setter("account_description", account_description)
+            pulumi.set(__self__, "account_description", account_description)
         if allow_databases is not None:
-            _setter("allow_databases", allow_databases)
+            pulumi.set(__self__, "allow_databases", allow_databases)
         if allow_dictionaries is not None:
-            _setter("allow_dictionaries", allow_dictionaries)
+            pulumi.set(__self__, "allow_dictionaries", allow_dictionaries)
         if ddl_authority is not None:
-            _setter("ddl_authority", ddl_authority)
+            pulumi.set(__self__, "ddl_authority", ddl_authority)
         if dml_authority is not None:
-            _setter("dml_authority", dml_authority)
+            pulumi.set(__self__, "dml_authority", dml_authority)
         if total_databases is not None:
-            _setter("total_databases", total_databases)
+            pulumi.set(__self__, "total_databases", total_databases)
         if total_dictionaries is not None:
-            _setter("total_dictionaries", total_dictionaries)
+            pulumi.set(__self__, "total_dictionaries", total_dictionaries)
 
     @property
     @pulumi.getter(name="accountName")
@@ -261,83 +206,30 @@ class _AccountState:
         :param pulumi.Input[str] total_dictionaries: The list of all dictionaries. Separate dictionaries with commas (,).
         :param pulumi.Input[str] type: The type of the database account. Valid values: `Normal` or `Super`.
         """
-        _AccountState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_description=account_description,
-            account_name=account_name,
-            account_password=account_password,
-            allow_databases=allow_databases,
-            allow_dictionaries=allow_dictionaries,
-            db_cluster_id=db_cluster_id,
-            ddl_authority=ddl_authority,
-            dml_authority=dml_authority,
-            status=status,
-            total_databases=total_databases,
-            total_dictionaries=total_dictionaries,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_description: Optional[pulumi.Input[str]] = None,
-             account_name: Optional[pulumi.Input[str]] = None,
-             account_password: Optional[pulumi.Input[str]] = None,
-             allow_databases: Optional[pulumi.Input[str]] = None,
-             allow_dictionaries: Optional[pulumi.Input[str]] = None,
-             db_cluster_id: Optional[pulumi.Input[str]] = None,
-             ddl_authority: Optional[pulumi.Input[bool]] = None,
-             dml_authority: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             total_databases: Optional[pulumi.Input[str]] = None,
-             total_dictionaries: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_description is None and 'accountDescription' in kwargs:
-            account_description = kwargs['accountDescription']
-        if account_name is None and 'accountName' in kwargs:
-            account_name = kwargs['accountName']
-        if account_password is None and 'accountPassword' in kwargs:
-            account_password = kwargs['accountPassword']
-        if allow_databases is None and 'allowDatabases' in kwargs:
-            allow_databases = kwargs['allowDatabases']
-        if allow_dictionaries is None and 'allowDictionaries' in kwargs:
-            allow_dictionaries = kwargs['allowDictionaries']
-        if db_cluster_id is None and 'dbClusterId' in kwargs:
-            db_cluster_id = kwargs['dbClusterId']
-        if ddl_authority is None and 'ddlAuthority' in kwargs:
-            ddl_authority = kwargs['ddlAuthority']
-        if dml_authority is None and 'dmlAuthority' in kwargs:
-            dml_authority = kwargs['dmlAuthority']
-        if total_databases is None and 'totalDatabases' in kwargs:
-            total_databases = kwargs['totalDatabases']
-        if total_dictionaries is None and 'totalDictionaries' in kwargs:
-            total_dictionaries = kwargs['totalDictionaries']
-
         if account_description is not None:
-            _setter("account_description", account_description)
+            pulumi.set(__self__, "account_description", account_description)
         if account_name is not None:
-            _setter("account_name", account_name)
+            pulumi.set(__self__, "account_name", account_name)
         if account_password is not None:
-            _setter("account_password", account_password)
+            pulumi.set(__self__, "account_password", account_password)
         if allow_databases is not None:
-            _setter("allow_databases", allow_databases)
+            pulumi.set(__self__, "allow_databases", allow_databases)
         if allow_dictionaries is not None:
-            _setter("allow_dictionaries", allow_dictionaries)
+            pulumi.set(__self__, "allow_dictionaries", allow_dictionaries)
         if db_cluster_id is not None:
-            _setter("db_cluster_id", db_cluster_id)
+            pulumi.set(__self__, "db_cluster_id", db_cluster_id)
         if ddl_authority is not None:
-            _setter("ddl_authority", ddl_authority)
+            pulumi.set(__self__, "ddl_authority", ddl_authority)
         if dml_authority is not None:
-            _setter("dml_authority", dml_authority)
+            pulumi.set(__self__, "dml_authority", dml_authority)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if total_databases is not None:
-            _setter("total_databases", total_databases)
+            pulumi.set(__self__, "total_databases", total_databases)
         if total_dictionaries is not None:
-            _setter("total_dictionaries", total_dictionaries)
+            pulumi.set(__self__, "total_dictionaries", total_dictionaries)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="accountDescription")
@@ -637,10 +529,6 @@ class Account(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AccountArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

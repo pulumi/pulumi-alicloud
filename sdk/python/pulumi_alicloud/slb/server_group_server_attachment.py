@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ServerGroupServerAttachmentArgs', 'ServerGroupServerAttachment']
@@ -29,46 +29,15 @@ class ServerGroupServerAttachmentArgs:
         :param pulumi.Input[str] type: The type of backend server. Valid values: `ecs`, `eni`.
         :param pulumi.Input[int] weight: The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the backend server.
         """
-        ServerGroupServerAttachmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            port=port,
-            server_group_id=server_group_id,
-            server_id=server_id,
-            description=description,
-            type=type,
-            weight=weight,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             port: Optional[pulumi.Input[int]] = None,
-             server_group_id: Optional[pulumi.Input[str]] = None,
-             server_id: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if port is None:
-            raise TypeError("Missing 'port' argument")
-        if server_group_id is None and 'serverGroupId' in kwargs:
-            server_group_id = kwargs['serverGroupId']
-        if server_group_id is None:
-            raise TypeError("Missing 'server_group_id' argument")
-        if server_id is None and 'serverId' in kwargs:
-            server_id = kwargs['serverId']
-        if server_id is None:
-            raise TypeError("Missing 'server_id' argument")
-
-        _setter("port", port)
-        _setter("server_group_id", server_group_id)
-        _setter("server_id", server_id)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "server_group_id", server_group_id)
+        pulumi.set(__self__, "server_id", server_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if weight is not None:
-            _setter("weight", weight)
+            pulumi.set(__self__, "weight", weight)
 
     @property
     @pulumi.getter
@@ -161,43 +130,18 @@ class _ServerGroupServerAttachmentState:
         :param pulumi.Input[str] type: The type of backend server. Valid values: `ecs`, `eni`.
         :param pulumi.Input[int] weight: The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the backend server.
         """
-        _ServerGroupServerAttachmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            port=port,
-            server_group_id=server_group_id,
-            server_id=server_id,
-            type=type,
-            weight=weight,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             port: Optional[pulumi.Input[int]] = None,
-             server_group_id: Optional[pulumi.Input[str]] = None,
-             server_id: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if server_group_id is None and 'serverGroupId' in kwargs:
-            server_group_id = kwargs['serverGroupId']
-        if server_id is None and 'serverId' in kwargs:
-            server_id = kwargs['serverId']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if server_group_id is not None:
-            _setter("server_group_id", server_group_id)
+            pulumi.set(__self__, "server_group_id", server_group_id)
         if server_id is not None:
-            _setter("server_id", server_id)
+            pulumi.set(__self__, "server_id", server_id)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if weight is not None:
-            _setter("weight", weight)
+            pulumi.set(__self__, "weight", weight)
 
     @property
     @pulumi.getter
@@ -341,10 +285,6 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ServerGroupServerAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -29,37 +29,14 @@ class DomainAuthConfigArgs:
                  master_key: Optional[pulumi.Input[str]] = None,
                  slave_key: Optional[pulumi.Input[str]] = None,
                  timeout: Optional[pulumi.Input[int]] = None):
-        DomainAuthConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auth_type=auth_type,
-            master_key=master_key,
-            slave_key=slave_key,
-            timeout=timeout,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auth_type: Optional[pulumi.Input[str]] = None,
-             master_key: Optional[pulumi.Input[str]] = None,
-             slave_key: Optional[pulumi.Input[str]] = None,
-             timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auth_type is None and 'authType' in kwargs:
-            auth_type = kwargs['authType']
-        if master_key is None and 'masterKey' in kwargs:
-            master_key = kwargs['masterKey']
-        if slave_key is None and 'slaveKey' in kwargs:
-            slave_key = kwargs['slaveKey']
-
         if auth_type is not None:
-            _setter("auth_type", auth_type)
+            pulumi.set(__self__, "auth_type", auth_type)
         if master_key is not None:
-            _setter("master_key", master_key)
+            pulumi.set(__self__, "master_key", master_key)
         if slave_key is not None:
-            _setter("slave_key", slave_key)
+            pulumi.set(__self__, "slave_key", slave_key)
         if timeout is not None:
-            _setter("timeout", timeout)
+            pulumi.set(__self__, "timeout", timeout)
 
     @property
     @pulumi.getter(name="authType")
@@ -106,44 +83,13 @@ class DomainCacheConfigArgs:
                  ttl: pulumi.Input[int],
                  cache_id: Optional[pulumi.Input[str]] = None,
                  weight: Optional[pulumi.Input[int]] = None):
-        DomainCacheConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cache_content=cache_content,
-            cache_type=cache_type,
-            ttl=ttl,
-            cache_id=cache_id,
-            weight=weight,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cache_content: Optional[pulumi.Input[str]] = None,
-             cache_type: Optional[pulumi.Input[str]] = None,
-             ttl: Optional[pulumi.Input[int]] = None,
-             cache_id: Optional[pulumi.Input[str]] = None,
-             weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cache_content is None and 'cacheContent' in kwargs:
-            cache_content = kwargs['cacheContent']
-        if cache_content is None:
-            raise TypeError("Missing 'cache_content' argument")
-        if cache_type is None and 'cacheType' in kwargs:
-            cache_type = kwargs['cacheType']
-        if cache_type is None:
-            raise TypeError("Missing 'cache_type' argument")
-        if ttl is None:
-            raise TypeError("Missing 'ttl' argument")
-        if cache_id is None and 'cacheId' in kwargs:
-            cache_id = kwargs['cacheId']
-
-        _setter("cache_content", cache_content)
-        _setter("cache_type", cache_type)
-        _setter("ttl", ttl)
+        pulumi.set(__self__, "cache_content", cache_content)
+        pulumi.set(__self__, "cache_type", cache_type)
+        pulumi.set(__self__, "ttl", ttl)
         if cache_id is not None:
-            _setter("cache_id", cache_id)
+            pulumi.set(__self__, "cache_id", cache_id)
         if weight is not None:
-            _setter("weight", weight)
+            pulumi.set(__self__, "weight", weight)
 
     @property
     @pulumi.getter(name="cacheContent")
@@ -197,33 +143,12 @@ class DomainCertificateConfigArgs:
                  private_key: Optional[pulumi.Input[str]] = None,
                  server_certificate: Optional[pulumi.Input[str]] = None,
                  server_certificate_status: Optional[pulumi.Input[str]] = None):
-        DomainCertificateConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            private_key=private_key,
-            server_certificate=server_certificate,
-            server_certificate_status=server_certificate_status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             private_key: Optional[pulumi.Input[str]] = None,
-             server_certificate: Optional[pulumi.Input[str]] = None,
-             server_certificate_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if private_key is None and 'privateKey' in kwargs:
-            private_key = kwargs['privateKey']
-        if server_certificate is None and 'serverCertificate' in kwargs:
-            server_certificate = kwargs['serverCertificate']
-        if server_certificate_status is None and 'serverCertificateStatus' in kwargs:
-            server_certificate_status = kwargs['serverCertificateStatus']
-
         if private_key is not None:
-            _setter("private_key", private_key)
+            pulumi.set(__self__, "private_key", private_key)
         if server_certificate is not None:
-            _setter("server_certificate", server_certificate)
+            pulumi.set(__self__, "server_certificate", server_certificate)
         if server_certificate_status is not None:
-            _setter("server_certificate_status", server_certificate_status)
+            pulumi.set(__self__, "server_certificate_status", server_certificate_status)
 
     @property
     @pulumi.getter(name="privateKey")
@@ -262,29 +187,8 @@ class DomainConfigFunctionArgArgs:
         :param pulumi.Input[str] arg_name: The name of arg.
         :param pulumi.Input[str] arg_value: The value of arg.
         """
-        DomainConfigFunctionArgArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            arg_name=arg_name,
-            arg_value=arg_value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             arg_name: Optional[pulumi.Input[str]] = None,
-             arg_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if arg_name is None and 'argName' in kwargs:
-            arg_name = kwargs['argName']
-        if arg_name is None:
-            raise TypeError("Missing 'arg_name' argument")
-        if arg_value is None and 'argValue' in kwargs:
-            arg_value = kwargs['argValue']
-        if arg_value is None:
-            raise TypeError("Missing 'arg_value' argument")
-
-        _setter("arg_name", arg_name)
-        _setter("arg_value", arg_value)
+        pulumi.set(__self__, "arg_name", arg_name)
+        pulumi.set(__self__, "arg_value", arg_value)
 
     @property
     @pulumi.getter(name="argName")
@@ -317,35 +221,10 @@ class DomainHttpHeaderConfigArgs:
                  header_key: pulumi.Input[str],
                  header_value: pulumi.Input[str],
                  header_id: Optional[pulumi.Input[str]] = None):
-        DomainHttpHeaderConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            header_key=header_key,
-            header_value=header_value,
-            header_id=header_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             header_key: Optional[pulumi.Input[str]] = None,
-             header_value: Optional[pulumi.Input[str]] = None,
-             header_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if header_key is None and 'headerKey' in kwargs:
-            header_key = kwargs['headerKey']
-        if header_key is None:
-            raise TypeError("Missing 'header_key' argument")
-        if header_value is None and 'headerValue' in kwargs:
-            header_value = kwargs['headerValue']
-        if header_value is None:
-            raise TypeError("Missing 'header_value' argument")
-        if header_id is None and 'headerId' in kwargs:
-            header_id = kwargs['headerId']
-
-        _setter("header_key", header_key)
-        _setter("header_value", header_value)
+        pulumi.set(__self__, "header_key", header_key)
+        pulumi.set(__self__, "header_value", header_value)
         if header_id is not None:
-            _setter("header_id", header_id)
+            pulumi.set(__self__, "header_id", header_id)
 
     @property
     @pulumi.getter(name="headerKey")
@@ -402,63 +281,22 @@ class DomainNewCertificateConfigArgs:
                - **on**(default): enabled.
                - **off** : not enabled.
         """
-        DomainNewCertificateConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cert_id=cert_id,
-            cert_name=cert_name,
-            cert_region=cert_region,
-            cert_type=cert_type,
-            force_set=force_set,
-            private_key=private_key,
-            server_certificate=server_certificate,
-            server_certificate_status=server_certificate_status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cert_id: Optional[pulumi.Input[str]] = None,
-             cert_name: Optional[pulumi.Input[str]] = None,
-             cert_region: Optional[pulumi.Input[str]] = None,
-             cert_type: Optional[pulumi.Input[str]] = None,
-             force_set: Optional[pulumi.Input[str]] = None,
-             private_key: Optional[pulumi.Input[str]] = None,
-             server_certificate: Optional[pulumi.Input[str]] = None,
-             server_certificate_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cert_id is None and 'certId' in kwargs:
-            cert_id = kwargs['certId']
-        if cert_name is None and 'certName' in kwargs:
-            cert_name = kwargs['certName']
-        if cert_region is None and 'certRegion' in kwargs:
-            cert_region = kwargs['certRegion']
-        if cert_type is None and 'certType' in kwargs:
-            cert_type = kwargs['certType']
-        if force_set is None and 'forceSet' in kwargs:
-            force_set = kwargs['forceSet']
-        if private_key is None and 'privateKey' in kwargs:
-            private_key = kwargs['privateKey']
-        if server_certificate is None and 'serverCertificate' in kwargs:
-            server_certificate = kwargs['serverCertificate']
-        if server_certificate_status is None and 'serverCertificateStatus' in kwargs:
-            server_certificate_status = kwargs['serverCertificateStatus']
-
         if cert_id is not None:
-            _setter("cert_id", cert_id)
+            pulumi.set(__self__, "cert_id", cert_id)
         if cert_name is not None:
-            _setter("cert_name", cert_name)
+            pulumi.set(__self__, "cert_name", cert_name)
         if cert_region is not None:
-            _setter("cert_region", cert_region)
+            pulumi.set(__self__, "cert_region", cert_region)
         if cert_type is not None:
-            _setter("cert_type", cert_type)
+            pulumi.set(__self__, "cert_type", cert_type)
         if force_set is not None:
-            _setter("force_set", force_set)
+            pulumi.set(__self__, "force_set", force_set)
         if private_key is not None:
-            _setter("private_key", private_key)
+            pulumi.set(__self__, "private_key", private_key)
         if server_certificate is not None:
-            _setter("server_certificate", server_certificate)
+            pulumi.set(__self__, "server_certificate", server_certificate)
         if server_certificate_status is not None:
-            _setter("server_certificate_status", server_certificate_status)
+            pulumi.set(__self__, "server_certificate_status", server_certificate_status)
 
     @property
     @pulumi.getter(name="certId")
@@ -578,35 +416,16 @@ class DomainNewSourceArgs:
         :param pulumi.Input[str] type: The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
         :param pulumi.Input[int] weight: Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
         """
-        DomainNewSourceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            content=content,
-            port=port,
-            priority=priority,
-            type=type,
-            weight=weight,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             content: Optional[pulumi.Input[str]] = None,
-             port: Optional[pulumi.Input[int]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if content is not None:
-            _setter("content", content)
+            pulumi.set(__self__, "content", content)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if weight is not None:
-            _setter("weight", weight)
+            pulumi.set(__self__, "weight", weight)
 
     @property
     @pulumi.getter
@@ -675,33 +494,12 @@ class DomainPage404ConfigArgs:
                  custom_page_url: Optional[pulumi.Input[str]] = None,
                  error_code: Optional[pulumi.Input[str]] = None,
                  page_type: Optional[pulumi.Input[str]] = None):
-        DomainPage404ConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            custom_page_url=custom_page_url,
-            error_code=error_code,
-            page_type=page_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             custom_page_url: Optional[pulumi.Input[str]] = None,
-             error_code: Optional[pulumi.Input[str]] = None,
-             page_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if custom_page_url is None and 'customPageUrl' in kwargs:
-            custom_page_url = kwargs['customPageUrl']
-        if error_code is None and 'errorCode' in kwargs:
-            error_code = kwargs['errorCode']
-        if page_type is None and 'pageType' in kwargs:
-            page_type = kwargs['pageType']
-
         if custom_page_url is not None:
-            _setter("custom_page_url", custom_page_url)
+            pulumi.set(__self__, "custom_page_url", custom_page_url)
         if error_code is not None:
-            _setter("error_code", error_code)
+            pulumi.set(__self__, "error_code", error_code)
         if page_type is not None:
-            _setter("page_type", page_type)
+            pulumi.set(__self__, "page_type", page_type)
 
     @property
     @pulumi.getter(name="customPageUrl")
@@ -736,25 +534,10 @@ class DomainParameterFilterConfigArgs:
     def __init__(__self__, *,
                  enable: Optional[pulumi.Input[str]] = None,
                  hash_key_args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        DomainParameterFilterConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enable=enable,
-            hash_key_args=hash_key_args,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enable: Optional[pulumi.Input[str]] = None,
-             hash_key_args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if hash_key_args is None and 'hashKeyArgs' in kwargs:
-            hash_key_args = kwargs['hashKeyArgs']
-
         if enable is not None:
-            _setter("enable", enable)
+            pulumi.set(__self__, "enable", enable)
         if hash_key_args is not None:
-            _setter("hash_key_args", hash_key_args)
+            pulumi.set(__self__, "hash_key_args", hash_key_args)
 
     @property
     @pulumi.getter
@@ -781,34 +564,11 @@ class DomainReferConfigArgs:
                  refer_lists: pulumi.Input[Sequence[pulumi.Input[str]]],
                  allow_empty: Optional[pulumi.Input[str]] = None,
                  refer_type: Optional[pulumi.Input[str]] = None):
-        DomainReferConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            refer_lists=refer_lists,
-            allow_empty=allow_empty,
-            refer_type=refer_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             refer_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             allow_empty: Optional[pulumi.Input[str]] = None,
-             refer_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if refer_lists is None and 'referLists' in kwargs:
-            refer_lists = kwargs['referLists']
-        if refer_lists is None:
-            raise TypeError("Missing 'refer_lists' argument")
-        if allow_empty is None and 'allowEmpty' in kwargs:
-            allow_empty = kwargs['allowEmpty']
-        if refer_type is None and 'referType' in kwargs:
-            refer_type = kwargs['referType']
-
-        _setter("refer_lists", refer_lists)
+        pulumi.set(__self__, "refer_lists", refer_lists)
         if allow_empty is not None:
-            _setter("allow_empty", allow_empty)
+            pulumi.set(__self__, "allow_empty", allow_empty)
         if refer_type is not None:
-            _setter("refer_type", refer_type)
+            pulumi.set(__self__, "refer_type", refer_type)
 
     @property
     @pulumi.getter(name="referLists")

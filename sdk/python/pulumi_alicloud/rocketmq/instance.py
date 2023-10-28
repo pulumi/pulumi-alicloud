@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InstanceArgs', 'Instance']
@@ -27,36 +27,17 @@ class InstanceArgs:
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         """
-        InstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_name=instance_name,
-            name=name,
-            remark=remark,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_name: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             remark: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-
         if instance_name is not None:
-            _setter("instance_name", instance_name)
+            pulumi.set(__self__, "instance_name", instance_name)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead.""")
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if remark is not None:
-            _setter("remark", remark)
+            pulumi.set(__self__, "remark", remark)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="instanceName")
@@ -136,58 +117,25 @@ class _InstanceState:
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         """
-        _InstanceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_name=instance_name,
-            instance_status=instance_status,
-            instance_type=instance_type,
-            name=name,
-            release_time=release_time,
-            remark=remark,
-            status=status,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_name: Optional[pulumi.Input[str]] = None,
-             instance_status: Optional[pulumi.Input[int]] = None,
-             instance_type: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             release_time: Optional[pulumi.Input[str]] = None,
-             remark: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[int]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_status is None and 'instanceStatus' in kwargs:
-            instance_status = kwargs['instanceStatus']
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if release_time is None and 'releaseTime' in kwargs:
-            release_time = kwargs['releaseTime']
-
         if instance_name is not None:
-            _setter("instance_name", instance_name)
+            pulumi.set(__self__, "instance_name", instance_name)
         if instance_status is not None:
-            _setter("instance_status", instance_status)
+            pulumi.set(__self__, "instance_status", instance_status)
         if instance_type is not None:
-            _setter("instance_type", instance_type)
+            pulumi.set(__self__, "instance_type", instance_type)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead.""")
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if release_time is not None:
-            _setter("release_time", release_time)
+            pulumi.set(__self__, "release_time", release_time)
         if remark is not None:
-            _setter("remark", remark)
+            pulumi.set(__self__, "remark", remark)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="instanceName")
@@ -386,10 +334,6 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

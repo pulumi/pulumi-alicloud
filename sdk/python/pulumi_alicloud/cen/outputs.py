@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -79,27 +79,10 @@ class TransitRouterVpcAttachmentZoneMapping(dict):
         :param str vswitch_id: The VSwitch id of attachment.
         :param str zone_id: The zone Id of VSwitch.
         """
-        TransitRouterVpcAttachmentZoneMapping._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            vswitch_id=vswitch_id,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             vswitch_id: Optional[str] = None,
-             zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="vswitchId")
@@ -142,22 +125,7 @@ class TransitRouterVpnAttachmentZone(dict):
         """
         :param str zone_id: The id of the zone.
         """
-        TransitRouterVpnAttachmentZone._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -183,48 +151,11 @@ class GetBandwidthLimitsLimitResult(dict):
         :param str opposite_region_id: ID of opposite region.
         :param str status: Status of the CEN Bandwidth Limit, including "Active" and "Modifying".
         """
-        GetBandwidthLimitsLimitResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bandwidth_limit=bandwidth_limit,
-            instance_id=instance_id,
-            local_region_id=local_region_id,
-            opposite_region_id=opposite_region_id,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bandwidth_limit: Optional[int] = None,
-             instance_id: Optional[str] = None,
-             local_region_id: Optional[str] = None,
-             opposite_region_id: Optional[str] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bandwidth_limit is None and 'bandwidthLimit' in kwargs:
-            bandwidth_limit = kwargs['bandwidthLimit']
-        if bandwidth_limit is None:
-            raise TypeError("Missing 'bandwidth_limit' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if local_region_id is None and 'localRegionId' in kwargs:
-            local_region_id = kwargs['localRegionId']
-        if local_region_id is None:
-            raise TypeError("Missing 'local_region_id' argument")
-        if opposite_region_id is None and 'oppositeRegionId' in kwargs:
-            opposite_region_id = kwargs['oppositeRegionId']
-        if opposite_region_id is None:
-            raise TypeError("Missing 'opposite_region_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("bandwidth_limit", bandwidth_limit)
-        _setter("instance_id", instance_id)
-        _setter("local_region_id", local_region_id)
-        _setter("opposite_region_id", opposite_region_id)
-        _setter("status", status)
+        pulumi.set(__self__, "bandwidth_limit", bandwidth_limit)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "local_region_id", local_region_id)
+        pulumi.set(__self__, "opposite_region_id", opposite_region_id)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="bandwidthLimit")
@@ -315,159 +246,28 @@ class GetBandwidthPackagesPackageResult(dict):
         :param str reservation_order_type: The type of the configuration change.
         :param str status: Status of the CEN Bandwidth Package in CEN instance, Valid value: `Idle` and `InUse`.
         """
-        GetBandwidthPackagesPackageResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bandwidth=bandwidth,
-            bandwidth_package_charge_type=bandwidth_package_charge_type,
-            business_status=business_status,
-            cen_bandwidth_package_id=cen_bandwidth_package_id,
-            cen_bandwidth_package_name=cen_bandwidth_package_name,
-            cen_ids=cen_ids,
-            description=description,
-            expired_time=expired_time,
-            geographic_region_a_id=geographic_region_a_id,
-            geographic_region_b_id=geographic_region_b_id,
-            geographic_span_id=geographic_span_id,
-            has_reservation_data=has_reservation_data,
-            id=id,
-            instance_id=instance_id,
-            is_cross_border=is_cross_border,
-            name=name,
-            payment_type=payment_type,
-            reservation_active_time=reservation_active_time,
-            reservation_bandwidth=reservation_bandwidth,
-            reservation_internet_charge_type=reservation_internet_charge_type,
-            reservation_order_type=reservation_order_type,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bandwidth: Optional[int] = None,
-             bandwidth_package_charge_type: Optional[str] = None,
-             business_status: Optional[str] = None,
-             cen_bandwidth_package_id: Optional[str] = None,
-             cen_bandwidth_package_name: Optional[str] = None,
-             cen_ids: Optional[Sequence[str]] = None,
-             description: Optional[str] = None,
-             expired_time: Optional[str] = None,
-             geographic_region_a_id: Optional[str] = None,
-             geographic_region_b_id: Optional[str] = None,
-             geographic_span_id: Optional[str] = None,
-             has_reservation_data: Optional[str] = None,
-             id: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             is_cross_border: Optional[bool] = None,
-             name: Optional[str] = None,
-             payment_type: Optional[str] = None,
-             reservation_active_time: Optional[str] = None,
-             reservation_bandwidth: Optional[str] = None,
-             reservation_internet_charge_type: Optional[str] = None,
-             reservation_order_type: Optional[str] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bandwidth is None:
-            raise TypeError("Missing 'bandwidth' argument")
-        if bandwidth_package_charge_type is None and 'bandwidthPackageChargeType' in kwargs:
-            bandwidth_package_charge_type = kwargs['bandwidthPackageChargeType']
-        if bandwidth_package_charge_type is None:
-            raise TypeError("Missing 'bandwidth_package_charge_type' argument")
-        if business_status is None and 'businessStatus' in kwargs:
-            business_status = kwargs['businessStatus']
-        if business_status is None:
-            raise TypeError("Missing 'business_status' argument")
-        if cen_bandwidth_package_id is None and 'cenBandwidthPackageId' in kwargs:
-            cen_bandwidth_package_id = kwargs['cenBandwidthPackageId']
-        if cen_bandwidth_package_id is None:
-            raise TypeError("Missing 'cen_bandwidth_package_id' argument")
-        if cen_bandwidth_package_name is None and 'cenBandwidthPackageName' in kwargs:
-            cen_bandwidth_package_name = kwargs['cenBandwidthPackageName']
-        if cen_bandwidth_package_name is None:
-            raise TypeError("Missing 'cen_bandwidth_package_name' argument")
-        if cen_ids is None and 'cenIds' in kwargs:
-            cen_ids = kwargs['cenIds']
-        if cen_ids is None:
-            raise TypeError("Missing 'cen_ids' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if expired_time is None and 'expiredTime' in kwargs:
-            expired_time = kwargs['expiredTime']
-        if expired_time is None:
-            raise TypeError("Missing 'expired_time' argument")
-        if geographic_region_a_id is None and 'geographicRegionAId' in kwargs:
-            geographic_region_a_id = kwargs['geographicRegionAId']
-        if geographic_region_a_id is None:
-            raise TypeError("Missing 'geographic_region_a_id' argument")
-        if geographic_region_b_id is None and 'geographicRegionBId' in kwargs:
-            geographic_region_b_id = kwargs['geographicRegionBId']
-        if geographic_region_b_id is None:
-            raise TypeError("Missing 'geographic_region_b_id' argument")
-        if geographic_span_id is None and 'geographicSpanId' in kwargs:
-            geographic_span_id = kwargs['geographicSpanId']
-        if geographic_span_id is None:
-            raise TypeError("Missing 'geographic_span_id' argument")
-        if has_reservation_data is None and 'hasReservationData' in kwargs:
-            has_reservation_data = kwargs['hasReservationData']
-        if has_reservation_data is None:
-            raise TypeError("Missing 'has_reservation_data' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if is_cross_border is None and 'isCrossBorder' in kwargs:
-            is_cross_border = kwargs['isCrossBorder']
-        if is_cross_border is None:
-            raise TypeError("Missing 'is_cross_border' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if payment_type is None:
-            raise TypeError("Missing 'payment_type' argument")
-        if reservation_active_time is None and 'reservationActiveTime' in kwargs:
-            reservation_active_time = kwargs['reservationActiveTime']
-        if reservation_active_time is None:
-            raise TypeError("Missing 'reservation_active_time' argument")
-        if reservation_bandwidth is None and 'reservationBandwidth' in kwargs:
-            reservation_bandwidth = kwargs['reservationBandwidth']
-        if reservation_bandwidth is None:
-            raise TypeError("Missing 'reservation_bandwidth' argument")
-        if reservation_internet_charge_type is None and 'reservationInternetChargeType' in kwargs:
-            reservation_internet_charge_type = kwargs['reservationInternetChargeType']
-        if reservation_internet_charge_type is None:
-            raise TypeError("Missing 'reservation_internet_charge_type' argument")
-        if reservation_order_type is None and 'reservationOrderType' in kwargs:
-            reservation_order_type = kwargs['reservationOrderType']
-        if reservation_order_type is None:
-            raise TypeError("Missing 'reservation_order_type' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("bandwidth", bandwidth)
-        _setter("bandwidth_package_charge_type", bandwidth_package_charge_type)
-        _setter("business_status", business_status)
-        _setter("cen_bandwidth_package_id", cen_bandwidth_package_id)
-        _setter("cen_bandwidth_package_name", cen_bandwidth_package_name)
-        _setter("cen_ids", cen_ids)
-        _setter("description", description)
-        _setter("expired_time", expired_time)
-        _setter("geographic_region_a_id", geographic_region_a_id)
-        _setter("geographic_region_b_id", geographic_region_b_id)
-        _setter("geographic_span_id", geographic_span_id)
-        _setter("has_reservation_data", has_reservation_data)
-        _setter("id", id)
-        _setter("instance_id", instance_id)
-        _setter("is_cross_border", is_cross_border)
-        _setter("name", name)
-        _setter("payment_type", payment_type)
-        _setter("reservation_active_time", reservation_active_time)
-        _setter("reservation_bandwidth", reservation_bandwidth)
-        _setter("reservation_internet_charge_type", reservation_internet_charge_type)
-        _setter("reservation_order_type", reservation_order_type)
-        _setter("status", status)
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "bandwidth_package_charge_type", bandwidth_package_charge_type)
+        pulumi.set(__self__, "business_status", business_status)
+        pulumi.set(__self__, "cen_bandwidth_package_id", cen_bandwidth_package_id)
+        pulumi.set(__self__, "cen_bandwidth_package_name", cen_bandwidth_package_name)
+        pulumi.set(__self__, "cen_ids", cen_ids)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "expired_time", expired_time)
+        pulumi.set(__self__, "geographic_region_a_id", geographic_region_a_id)
+        pulumi.set(__self__, "geographic_region_b_id", geographic_region_b_id)
+        pulumi.set(__self__, "geographic_span_id", geographic_span_id)
+        pulumi.set(__self__, "has_reservation_data", has_reservation_data)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "is_cross_border", is_cross_border)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "reservation_active_time", reservation_active_time)
+        pulumi.set(__self__, "reservation_bandwidth", reservation_bandwidth)
+        pulumi.set(__self__, "reservation_internet_charge_type", reservation_internet_charge_type)
+        pulumi.set(__self__, "reservation_order_type", reservation_order_type)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -662,60 +462,13 @@ class GetChildInstanceRouteEntryToAttachmentsAttachmentResult(dict):
         :param str status: The status of the resource
         :param str transit_router_attachment_id: TransitRouterAttachmentId
         """
-        GetChildInstanceRouteEntryToAttachmentsAttachmentResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cen_id=cen_id,
-            child_instance_route_table_id=child_instance_route_table_id,
-            destination_cidr_block=destination_cidr_block,
-            id=id,
-            service_type=service_type,
-            status=status,
-            transit_router_attachment_id=transit_router_attachment_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cen_id: Optional[str] = None,
-             child_instance_route_table_id: Optional[str] = None,
-             destination_cidr_block: Optional[str] = None,
-             id: Optional[str] = None,
-             service_type: Optional[str] = None,
-             status: Optional[str] = None,
-             transit_router_attachment_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cen_id is None and 'cenId' in kwargs:
-            cen_id = kwargs['cenId']
-        if cen_id is None:
-            raise TypeError("Missing 'cen_id' argument")
-        if child_instance_route_table_id is None and 'childInstanceRouteTableId' in kwargs:
-            child_instance_route_table_id = kwargs['childInstanceRouteTableId']
-        if child_instance_route_table_id is None:
-            raise TypeError("Missing 'child_instance_route_table_id' argument")
-        if destination_cidr_block is None and 'destinationCidrBlock' in kwargs:
-            destination_cidr_block = kwargs['destinationCidrBlock']
-        if destination_cidr_block is None:
-            raise TypeError("Missing 'destination_cidr_block' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if service_type is None and 'serviceType' in kwargs:
-            service_type = kwargs['serviceType']
-        if service_type is None:
-            raise TypeError("Missing 'service_type' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if transit_router_attachment_id is None and 'transitRouterAttachmentId' in kwargs:
-            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
-        if transit_router_attachment_id is None:
-            raise TypeError("Missing 'transit_router_attachment_id' argument")
-
-        _setter("cen_id", cen_id)
-        _setter("child_instance_route_table_id", child_instance_route_table_id)
-        _setter("destination_cidr_block", destination_cidr_block)
-        _setter("id", id)
-        _setter("service_type", service_type)
-        _setter("status", status)
-        _setter("transit_router_attachment_id", transit_router_attachment_id)
+        pulumi.set(__self__, "cen_id", cen_id)
+        pulumi.set(__self__, "child_instance_route_table_id", child_instance_route_table_id)
+        pulumi.set(__self__, "destination_cidr_block", destination_cidr_block)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "service_type", service_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
 
     @property
     @pulumi.getter(name="cenId")
@@ -795,65 +548,14 @@ class GetFlowlogsFlowlogResult(dict):
         :param str project_name: The name of the SLS project.
         :param str status: The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
         """
-        GetFlowlogsFlowlogResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cen_id=cen_id,
-            description=description,
-            flow_log_id=flow_log_id,
-            flow_log_name=flow_log_name,
-            id=id,
-            log_store_name=log_store_name,
-            project_name=project_name,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cen_id: Optional[str] = None,
-             description: Optional[str] = None,
-             flow_log_id: Optional[str] = None,
-             flow_log_name: Optional[str] = None,
-             id: Optional[str] = None,
-             log_store_name: Optional[str] = None,
-             project_name: Optional[str] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cen_id is None and 'cenId' in kwargs:
-            cen_id = kwargs['cenId']
-        if cen_id is None:
-            raise TypeError("Missing 'cen_id' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if flow_log_id is None and 'flowLogId' in kwargs:
-            flow_log_id = kwargs['flowLogId']
-        if flow_log_id is None:
-            raise TypeError("Missing 'flow_log_id' argument")
-        if flow_log_name is None and 'flowLogName' in kwargs:
-            flow_log_name = kwargs['flowLogName']
-        if flow_log_name is None:
-            raise TypeError("Missing 'flow_log_name' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if log_store_name is None and 'logStoreName' in kwargs:
-            log_store_name = kwargs['logStoreName']
-        if log_store_name is None:
-            raise TypeError("Missing 'log_store_name' argument")
-        if project_name is None and 'projectName' in kwargs:
-            project_name = kwargs['projectName']
-        if project_name is None:
-            raise TypeError("Missing 'project_name' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("cen_id", cen_id)
-        _setter("description", description)
-        _setter("flow_log_id", flow_log_id)
-        _setter("flow_log_name", flow_log_name)
-        _setter("id", id)
-        _setter("log_store_name", log_store_name)
-        _setter("project_name", project_name)
-        _setter("status", status)
+        pulumi.set(__self__, "cen_id", cen_id)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "flow_log_id", flow_log_id)
+        pulumi.set(__self__, "flow_log_name", flow_log_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "log_store_name", log_store_name)
+        pulumi.set(__self__, "project_name", project_name)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="cenId")
@@ -941,67 +643,14 @@ class GetInstanceAttachmentsAttachmentResult(dict):
         :param str instance_id: The ID of the CEN instance.
         :param str status: The status of the Cen Child Instance Attachment. Valid value: `Attaching`, `Attached` and `Aetaching`.
         """
-        GetInstanceAttachmentsAttachmentResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            child_instance_attach_time=child_instance_attach_time,
-            child_instance_id=child_instance_id,
-            child_instance_owner_id=child_instance_owner_id,
-            child_instance_region_id=child_instance_region_id,
-            child_instance_type=child_instance_type,
-            id=id,
-            instance_id=instance_id,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             child_instance_attach_time: Optional[str] = None,
-             child_instance_id: Optional[str] = None,
-             child_instance_owner_id: Optional[int] = None,
-             child_instance_region_id: Optional[str] = None,
-             child_instance_type: Optional[str] = None,
-             id: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if child_instance_attach_time is None and 'childInstanceAttachTime' in kwargs:
-            child_instance_attach_time = kwargs['childInstanceAttachTime']
-        if child_instance_attach_time is None:
-            raise TypeError("Missing 'child_instance_attach_time' argument")
-        if child_instance_id is None and 'childInstanceId' in kwargs:
-            child_instance_id = kwargs['childInstanceId']
-        if child_instance_id is None:
-            raise TypeError("Missing 'child_instance_id' argument")
-        if child_instance_owner_id is None and 'childInstanceOwnerId' in kwargs:
-            child_instance_owner_id = kwargs['childInstanceOwnerId']
-        if child_instance_owner_id is None:
-            raise TypeError("Missing 'child_instance_owner_id' argument")
-        if child_instance_region_id is None and 'childInstanceRegionId' in kwargs:
-            child_instance_region_id = kwargs['childInstanceRegionId']
-        if child_instance_region_id is None:
-            raise TypeError("Missing 'child_instance_region_id' argument")
-        if child_instance_type is None and 'childInstanceType' in kwargs:
-            child_instance_type = kwargs['childInstanceType']
-        if child_instance_type is None:
-            raise TypeError("Missing 'child_instance_type' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("child_instance_attach_time", child_instance_attach_time)
-        _setter("child_instance_id", child_instance_id)
-        _setter("child_instance_owner_id", child_instance_owner_id)
-        _setter("child_instance_region_id", child_instance_region_id)
-        _setter("child_instance_type", child_instance_type)
-        _setter("id", id)
-        _setter("instance_id", instance_id)
-        _setter("status", status)
+        pulumi.set(__self__, "child_instance_attach_time", child_instance_attach_time)
+        pulumi.set(__self__, "child_instance_id", child_instance_id)
+        pulumi.set(__self__, "child_instance_owner_id", child_instance_owner_id)
+        pulumi.set(__self__, "child_instance_region_id", child_instance_region_id)
+        pulumi.set(__self__, "child_instance_type", child_instance_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="childInstanceAttachTime")
@@ -1093,75 +742,16 @@ class GetInstancesInstanceResult(dict):
         :param str status: The status of CEN instance. Valid value: `Active`, `Creating` and `Deleting`.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
-        GetInstancesInstanceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cen_bandwidth_package_ids=cen_bandwidth_package_ids,
-            cen_id=cen_id,
-            cen_instance_name=cen_instance_name,
-            create_time=create_time,
-            description=description,
-            id=id,
-            name=name,
-            protection_level=protection_level,
-            status=status,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cen_bandwidth_package_ids: Optional[Sequence[str]] = None,
-             cen_id: Optional[str] = None,
-             cen_instance_name: Optional[str] = None,
-             create_time: Optional[str] = None,
-             description: Optional[str] = None,
-             id: Optional[str] = None,
-             name: Optional[str] = None,
-             protection_level: Optional[str] = None,
-             status: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cen_bandwidth_package_ids is None and 'cenBandwidthPackageIds' in kwargs:
-            cen_bandwidth_package_ids = kwargs['cenBandwidthPackageIds']
-        if cen_bandwidth_package_ids is None:
-            raise TypeError("Missing 'cen_bandwidth_package_ids' argument")
-        if cen_id is None and 'cenId' in kwargs:
-            cen_id = kwargs['cenId']
-        if cen_id is None:
-            raise TypeError("Missing 'cen_id' argument")
-        if cen_instance_name is None and 'cenInstanceName' in kwargs:
-            cen_instance_name = kwargs['cenInstanceName']
-        if cen_instance_name is None:
-            raise TypeError("Missing 'cen_instance_name' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if protection_level is None and 'protectionLevel' in kwargs:
-            protection_level = kwargs['protectionLevel']
-        if protection_level is None:
-            raise TypeError("Missing 'protection_level' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-
-        _setter("cen_bandwidth_package_ids", cen_bandwidth_package_ids)
-        _setter("cen_id", cen_id)
-        _setter("cen_instance_name", cen_instance_name)
-        _setter("create_time", create_time)
-        _setter("description", description)
-        _setter("id", id)
-        _setter("name", name)
-        _setter("protection_level", protection_level)
-        _setter("status", status)
-        _setter("tags", tags)
+        pulumi.set(__self__, "cen_bandwidth_package_ids", cen_bandwidth_package_ids)
+        pulumi.set(__self__, "cen_id", cen_id)
+        pulumi.set(__self__, "cen_instance_name", cen_instance_name)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "protection_level", protection_level)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="cenBandwidthPackageIds")
@@ -1263,60 +853,13 @@ class GetInterRegionTrafficQosPoliciesPolicyResult(dict):
         :param str transit_router_attachment_id: The ID of the inter-region connection.
         :param str transit_router_id: The ID of the transit router.
         """
-        GetInterRegionTrafficQosPoliciesPolicyResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            inter_region_traffic_qos_policy_description=inter_region_traffic_qos_policy_description,
-            inter_region_traffic_qos_policy_id=inter_region_traffic_qos_policy_id,
-            inter_region_traffic_qos_policy_name=inter_region_traffic_qos_policy_name,
-            status=status,
-            transit_router_attachment_id=transit_router_attachment_id,
-            transit_router_id=transit_router_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             inter_region_traffic_qos_policy_description: Optional[str] = None,
-             inter_region_traffic_qos_policy_id: Optional[str] = None,
-             inter_region_traffic_qos_policy_name: Optional[str] = None,
-             status: Optional[str] = None,
-             transit_router_attachment_id: Optional[str] = None,
-             transit_router_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if inter_region_traffic_qos_policy_description is None and 'interRegionTrafficQosPolicyDescription' in kwargs:
-            inter_region_traffic_qos_policy_description = kwargs['interRegionTrafficQosPolicyDescription']
-        if inter_region_traffic_qos_policy_description is None:
-            raise TypeError("Missing 'inter_region_traffic_qos_policy_description' argument")
-        if inter_region_traffic_qos_policy_id is None and 'interRegionTrafficQosPolicyId' in kwargs:
-            inter_region_traffic_qos_policy_id = kwargs['interRegionTrafficQosPolicyId']
-        if inter_region_traffic_qos_policy_id is None:
-            raise TypeError("Missing 'inter_region_traffic_qos_policy_id' argument")
-        if inter_region_traffic_qos_policy_name is None and 'interRegionTrafficQosPolicyName' in kwargs:
-            inter_region_traffic_qos_policy_name = kwargs['interRegionTrafficQosPolicyName']
-        if inter_region_traffic_qos_policy_name is None:
-            raise TypeError("Missing 'inter_region_traffic_qos_policy_name' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if transit_router_attachment_id is None and 'transitRouterAttachmentId' in kwargs:
-            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
-        if transit_router_attachment_id is None:
-            raise TypeError("Missing 'transit_router_attachment_id' argument")
-        if transit_router_id is None and 'transitRouterId' in kwargs:
-            transit_router_id = kwargs['transitRouterId']
-        if transit_router_id is None:
-            raise TypeError("Missing 'transit_router_id' argument")
-
-        _setter("id", id)
-        _setter("inter_region_traffic_qos_policy_description", inter_region_traffic_qos_policy_description)
-        _setter("inter_region_traffic_qos_policy_id", inter_region_traffic_qos_policy_id)
-        _setter("inter_region_traffic_qos_policy_name", inter_region_traffic_qos_policy_name)
-        _setter("status", status)
-        _setter("transit_router_attachment_id", transit_router_attachment_id)
-        _setter("transit_router_id", transit_router_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "inter_region_traffic_qos_policy_description", inter_region_traffic_qos_policy_description)
+        pulumi.set(__self__, "inter_region_traffic_qos_policy_id", inter_region_traffic_qos_policy_id)
+        pulumi.set(__self__, "inter_region_traffic_qos_policy_name", inter_region_traffic_qos_policy_name)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
+        pulumi.set(__self__, "transit_router_id", transit_router_id)
 
     @property
     @pulumi.getter
@@ -1395,65 +938,14 @@ class GetInterRegionTrafficQosQueuesQueueResult(dict):
         :param str status: The status of the traffic scheduling policy. -**Creating**: The function is being created.-**Active**: available.-**Modifying**: is being modified.-**Deleting**: Deleted.-**Deleted**: Deleted.
         :param str traffic_qos_policy_id: The ID of the traffic scheduling policy.
         """
-        GetInterRegionTrafficQosQueuesQueueResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dscps=dscps,
-            id=id,
-            inter_region_traffic_qos_queue_description=inter_region_traffic_qos_queue_description,
-            inter_region_traffic_qos_queue_id=inter_region_traffic_qos_queue_id,
-            inter_region_traffic_qos_queue_name=inter_region_traffic_qos_queue_name,
-            remain_bandwidth_percent=remain_bandwidth_percent,
-            status=status,
-            traffic_qos_policy_id=traffic_qos_policy_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dscps: Optional[Sequence[str]] = None,
-             id: Optional[str] = None,
-             inter_region_traffic_qos_queue_description: Optional[str] = None,
-             inter_region_traffic_qos_queue_id: Optional[str] = None,
-             inter_region_traffic_qos_queue_name: Optional[str] = None,
-             remain_bandwidth_percent: Optional[int] = None,
-             status: Optional[str] = None,
-             traffic_qos_policy_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dscps is None:
-            raise TypeError("Missing 'dscps' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if inter_region_traffic_qos_queue_description is None and 'interRegionTrafficQosQueueDescription' in kwargs:
-            inter_region_traffic_qos_queue_description = kwargs['interRegionTrafficQosQueueDescription']
-        if inter_region_traffic_qos_queue_description is None:
-            raise TypeError("Missing 'inter_region_traffic_qos_queue_description' argument")
-        if inter_region_traffic_qos_queue_id is None and 'interRegionTrafficQosQueueId' in kwargs:
-            inter_region_traffic_qos_queue_id = kwargs['interRegionTrafficQosQueueId']
-        if inter_region_traffic_qos_queue_id is None:
-            raise TypeError("Missing 'inter_region_traffic_qos_queue_id' argument")
-        if inter_region_traffic_qos_queue_name is None and 'interRegionTrafficQosQueueName' in kwargs:
-            inter_region_traffic_qos_queue_name = kwargs['interRegionTrafficQosQueueName']
-        if inter_region_traffic_qos_queue_name is None:
-            raise TypeError("Missing 'inter_region_traffic_qos_queue_name' argument")
-        if remain_bandwidth_percent is None and 'remainBandwidthPercent' in kwargs:
-            remain_bandwidth_percent = kwargs['remainBandwidthPercent']
-        if remain_bandwidth_percent is None:
-            raise TypeError("Missing 'remain_bandwidth_percent' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if traffic_qos_policy_id is None and 'trafficQosPolicyId' in kwargs:
-            traffic_qos_policy_id = kwargs['trafficQosPolicyId']
-        if traffic_qos_policy_id is None:
-            raise TypeError("Missing 'traffic_qos_policy_id' argument")
-
-        _setter("dscps", dscps)
-        _setter("id", id)
-        _setter("inter_region_traffic_qos_queue_description", inter_region_traffic_qos_queue_description)
-        _setter("inter_region_traffic_qos_queue_id", inter_region_traffic_qos_queue_id)
-        _setter("inter_region_traffic_qos_queue_name", inter_region_traffic_qos_queue_name)
-        _setter("remain_bandwidth_percent", remain_bandwidth_percent)
-        _setter("status", status)
-        _setter("traffic_qos_policy_id", traffic_qos_policy_id)
+        pulumi.set(__self__, "dscps", dscps)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "inter_region_traffic_qos_queue_description", inter_region_traffic_qos_queue_description)
+        pulumi.set(__self__, "inter_region_traffic_qos_queue_id", inter_region_traffic_qos_queue_id)
+        pulumi.set(__self__, "inter_region_traffic_qos_queue_name", inter_region_traffic_qos_queue_name)
+        pulumi.set(__self__, "remain_bandwidth_percent", remain_bandwidth_percent)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "traffic_qos_policy_id", traffic_qos_policy_id)
 
     @property
     @pulumi.getter
@@ -1536,60 +1028,13 @@ class GetPrivateZonesZoneResult(dict):
         :param str private_zone_dns_servers: The DNS IP addresses of the PrivateZone service.
         :param str status: The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.
         """
-        GetPrivateZonesZoneResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_region_id=access_region_id,
-            cen_id=cen_id,
-            host_region_id=host_region_id,
-            host_vpc_id=host_vpc_id,
-            id=id,
-            private_zone_dns_servers=private_zone_dns_servers,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_region_id: Optional[str] = None,
-             cen_id: Optional[str] = None,
-             host_region_id: Optional[str] = None,
-             host_vpc_id: Optional[str] = None,
-             id: Optional[str] = None,
-             private_zone_dns_servers: Optional[str] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_region_id is None and 'accessRegionId' in kwargs:
-            access_region_id = kwargs['accessRegionId']
-        if access_region_id is None:
-            raise TypeError("Missing 'access_region_id' argument")
-        if cen_id is None and 'cenId' in kwargs:
-            cen_id = kwargs['cenId']
-        if cen_id is None:
-            raise TypeError("Missing 'cen_id' argument")
-        if host_region_id is None and 'hostRegionId' in kwargs:
-            host_region_id = kwargs['hostRegionId']
-        if host_region_id is None:
-            raise TypeError("Missing 'host_region_id' argument")
-        if host_vpc_id is None and 'hostVpcId' in kwargs:
-            host_vpc_id = kwargs['hostVpcId']
-        if host_vpc_id is None:
-            raise TypeError("Missing 'host_vpc_id' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if private_zone_dns_servers is None and 'privateZoneDnsServers' in kwargs:
-            private_zone_dns_servers = kwargs['privateZoneDnsServers']
-        if private_zone_dns_servers is None:
-            raise TypeError("Missing 'private_zone_dns_servers' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("access_region_id", access_region_id)
-        _setter("cen_id", cen_id)
-        _setter("host_region_id", host_region_id)
-        _setter("host_vpc_id", host_vpc_id)
-        _setter("id", id)
-        _setter("private_zone_dns_servers", private_zone_dns_servers)
-        _setter("status", status)
+        pulumi.set(__self__, "access_region_id", access_region_id)
+        pulumi.set(__self__, "cen_id", cen_id)
+        pulumi.set(__self__, "host_region_id", host_region_id)
+        pulumi.set(__self__, "host_vpc_id", host_vpc_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "private_zone_dns_servers", private_zone_dns_servers)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="accessRegionId")
@@ -1663,48 +1108,11 @@ class GetRegionRouteEntriesEntryResult(dict):
         :param str next_hop_type: Type of the next hop.
         :param str type: Type of the route entry.
         """
-        GetRegionRouteEntriesEntryResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cidr_block=cidr_block,
-            next_hop_id=next_hop_id,
-            next_hop_region_id=next_hop_region_id,
-            next_hop_type=next_hop_type,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cidr_block: Optional[str] = None,
-             next_hop_id: Optional[str] = None,
-             next_hop_region_id: Optional[str] = None,
-             next_hop_type: Optional[str] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cidr_block is None and 'cidrBlock' in kwargs:
-            cidr_block = kwargs['cidrBlock']
-        if cidr_block is None:
-            raise TypeError("Missing 'cidr_block' argument")
-        if next_hop_id is None and 'nextHopId' in kwargs:
-            next_hop_id = kwargs['nextHopId']
-        if next_hop_id is None:
-            raise TypeError("Missing 'next_hop_id' argument")
-        if next_hop_region_id is None and 'nextHopRegionId' in kwargs:
-            next_hop_region_id = kwargs['nextHopRegionId']
-        if next_hop_region_id is None:
-            raise TypeError("Missing 'next_hop_region_id' argument")
-        if next_hop_type is None and 'nextHopType' in kwargs:
-            next_hop_type = kwargs['nextHopType']
-        if next_hop_type is None:
-            raise TypeError("Missing 'next_hop_type' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("cidr_block", cidr_block)
-        _setter("next_hop_id", next_hop_id)
-        _setter("next_hop_region_id", next_hop_region_id)
-        _setter("next_hop_type", next_hop_type)
-        _setter("type", type)
+        pulumi.set(__self__, "cidr_block", cidr_block)
+        pulumi.set(__self__, "next_hop_id", next_hop_id)
+        pulumi.set(__self__, "next_hop_region_id", next_hop_region_id)
+        pulumi.set(__self__, "next_hop_type", next_hop_type)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -1768,69 +1176,14 @@ class GetRouteEntriesEntryResult(dict):
         :param str route_table_id: ID of the route table of the VPC or VBR.
         :param str route_type: Type of the route entry, including "System", "Custom" and "BGP".
         """
-        GetRouteEntriesEntryResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cidr_block=cidr_block,
-            conflicts=conflicts,
-            next_hop_id=next_hop_id,
-            next_hop_type=next_hop_type,
-            operational_mode=operational_mode,
-            publish_status=publish_status,
-            route_table_id=route_table_id,
-            route_type=route_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cidr_block: Optional[str] = None,
-             conflicts: Optional[Sequence['outputs.GetRouteEntriesEntryConflictResult']] = None,
-             next_hop_id: Optional[str] = None,
-             next_hop_type: Optional[str] = None,
-             operational_mode: Optional[bool] = None,
-             publish_status: Optional[str] = None,
-             route_table_id: Optional[str] = None,
-             route_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cidr_block is None and 'cidrBlock' in kwargs:
-            cidr_block = kwargs['cidrBlock']
-        if cidr_block is None:
-            raise TypeError("Missing 'cidr_block' argument")
-        if conflicts is None:
-            raise TypeError("Missing 'conflicts' argument")
-        if next_hop_id is None and 'nextHopId' in kwargs:
-            next_hop_id = kwargs['nextHopId']
-        if next_hop_id is None:
-            raise TypeError("Missing 'next_hop_id' argument")
-        if next_hop_type is None and 'nextHopType' in kwargs:
-            next_hop_type = kwargs['nextHopType']
-        if next_hop_type is None:
-            raise TypeError("Missing 'next_hop_type' argument")
-        if operational_mode is None and 'operationalMode' in kwargs:
-            operational_mode = kwargs['operationalMode']
-        if operational_mode is None:
-            raise TypeError("Missing 'operational_mode' argument")
-        if publish_status is None and 'publishStatus' in kwargs:
-            publish_status = kwargs['publishStatus']
-        if publish_status is None:
-            raise TypeError("Missing 'publish_status' argument")
-        if route_table_id is None and 'routeTableId' in kwargs:
-            route_table_id = kwargs['routeTableId']
-        if route_table_id is None:
-            raise TypeError("Missing 'route_table_id' argument")
-        if route_type is None and 'routeType' in kwargs:
-            route_type = kwargs['routeType']
-        if route_type is None:
-            raise TypeError("Missing 'route_type' argument")
-
-        _setter("cidr_block", cidr_block)
-        _setter("conflicts", conflicts)
-        _setter("next_hop_id", next_hop_id)
-        _setter("next_hop_type", next_hop_type)
-        _setter("operational_mode", operational_mode)
-        _setter("publish_status", publish_status)
-        _setter("route_table_id", route_table_id)
-        _setter("route_type", route_type)
+        pulumi.set(__self__, "cidr_block", cidr_block)
+        pulumi.set(__self__, "conflicts", conflicts)
+        pulumi.set(__self__, "next_hop_id", next_hop_id)
+        pulumi.set(__self__, "next_hop_type", next_hop_type)
+        pulumi.set(__self__, "operational_mode", operational_mode)
+        pulumi.set(__self__, "publish_status", publish_status)
+        pulumi.set(__self__, "route_table_id", route_table_id)
+        pulumi.set(__self__, "route_type", route_type)
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -1912,48 +1265,11 @@ class GetRouteEntriesEntryConflictResult(dict):
         :param str region_id: ID of the region where the conflicted route entry is located.
         :param str status: Reasons of exceptions.
         """
-        GetRouteEntriesEntryConflictResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cidr_block=cidr_block,
-            instance_id=instance_id,
-            instance_type=instance_type,
-            region_id=region_id,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cidr_block: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             instance_type: Optional[str] = None,
-             region_id: Optional[str] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cidr_block is None and 'cidrBlock' in kwargs:
-            cidr_block = kwargs['cidrBlock']
-        if cidr_block is None:
-            raise TypeError("Missing 'cidr_block' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if instance_type is None:
-            raise TypeError("Missing 'instance_type' argument")
-        if region_id is None and 'regionId' in kwargs:
-            region_id = kwargs['regionId']
-        if region_id is None:
-            raise TypeError("Missing 'region_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("cidr_block", cidr_block)
-        _setter("instance_id", instance_id)
-        _setter("instance_type", instance_type)
-        _setter("region_id", region_id)
-        _setter("status", status)
+        pulumi.set(__self__, "cidr_block", cidr_block)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -2061,215 +1377,36 @@ class GetRouteMapsMapResult(dict):
         :param str status: The status of the route map, including `Creating`, `Active` and `Deleting`.
         :param str transmit_direction: The direction in which the route map is applied, including `RegionIn` and `RegionOut`.
         """
-        GetRouteMapsMapResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            as_path_match_mode=as_path_match_mode,
-            cen_id=cen_id,
-            cen_region_id=cen_region_id,
-            cidr_match_mode=cidr_match_mode,
-            community_match_mode=community_match_mode,
-            community_operate_mode=community_operate_mode,
-            description=description,
-            destination_child_instance_types=destination_child_instance_types,
-            destination_cidr_blocks=destination_cidr_blocks,
-            destination_instance_ids=destination_instance_ids,
-            destination_instance_ids_reverse_match=destination_instance_ids_reverse_match,
-            destination_route_table_ids=destination_route_table_ids,
-            id=id,
-            map_result=map_result,
-            match_asns=match_asns,
-            match_community_sets=match_community_sets,
-            next_priority=next_priority,
-            operate_community_sets=operate_community_sets,
-            preference=preference,
-            prepend_as_paths=prepend_as_paths,
-            priority=priority,
-            route_map_id=route_map_id,
-            route_types=route_types,
-            source_child_instance_types=source_child_instance_types,
-            source_instance_ids=source_instance_ids,
-            source_instance_ids_reverse_match=source_instance_ids_reverse_match,
-            source_region_ids=source_region_ids,
-            source_route_table_ids=source_route_table_ids,
-            status=status,
-            transmit_direction=transmit_direction,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             as_path_match_mode: Optional[str] = None,
-             cen_id: Optional[str] = None,
-             cen_region_id: Optional[str] = None,
-             cidr_match_mode: Optional[str] = None,
-             community_match_mode: Optional[str] = None,
-             community_operate_mode: Optional[str] = None,
-             description: Optional[str] = None,
-             destination_child_instance_types: Optional[Sequence[str]] = None,
-             destination_cidr_blocks: Optional[Sequence[str]] = None,
-             destination_instance_ids: Optional[Sequence[str]] = None,
-             destination_instance_ids_reverse_match: Optional[bool] = None,
-             destination_route_table_ids: Optional[Sequence[str]] = None,
-             id: Optional[str] = None,
-             map_result: Optional[str] = None,
-             match_asns: Optional[Sequence[str]] = None,
-             match_community_sets: Optional[Sequence[str]] = None,
-             next_priority: Optional[int] = None,
-             operate_community_sets: Optional[Sequence[str]] = None,
-             preference: Optional[int] = None,
-             prepend_as_paths: Optional[Sequence[str]] = None,
-             priority: Optional[int] = None,
-             route_map_id: Optional[str] = None,
-             route_types: Optional[Sequence[str]] = None,
-             source_child_instance_types: Optional[Sequence[str]] = None,
-             source_instance_ids: Optional[Sequence[str]] = None,
-             source_instance_ids_reverse_match: Optional[bool] = None,
-             source_region_ids: Optional[Sequence[str]] = None,
-             source_route_table_ids: Optional[Sequence[str]] = None,
-             status: Optional[str] = None,
-             transmit_direction: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if as_path_match_mode is None and 'asPathMatchMode' in kwargs:
-            as_path_match_mode = kwargs['asPathMatchMode']
-        if as_path_match_mode is None:
-            raise TypeError("Missing 'as_path_match_mode' argument")
-        if cen_id is None and 'cenId' in kwargs:
-            cen_id = kwargs['cenId']
-        if cen_id is None:
-            raise TypeError("Missing 'cen_id' argument")
-        if cen_region_id is None and 'cenRegionId' in kwargs:
-            cen_region_id = kwargs['cenRegionId']
-        if cen_region_id is None:
-            raise TypeError("Missing 'cen_region_id' argument")
-        if cidr_match_mode is None and 'cidrMatchMode' in kwargs:
-            cidr_match_mode = kwargs['cidrMatchMode']
-        if cidr_match_mode is None:
-            raise TypeError("Missing 'cidr_match_mode' argument")
-        if community_match_mode is None and 'communityMatchMode' in kwargs:
-            community_match_mode = kwargs['communityMatchMode']
-        if community_match_mode is None:
-            raise TypeError("Missing 'community_match_mode' argument")
-        if community_operate_mode is None and 'communityOperateMode' in kwargs:
-            community_operate_mode = kwargs['communityOperateMode']
-        if community_operate_mode is None:
-            raise TypeError("Missing 'community_operate_mode' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if destination_child_instance_types is None and 'destinationChildInstanceTypes' in kwargs:
-            destination_child_instance_types = kwargs['destinationChildInstanceTypes']
-        if destination_child_instance_types is None:
-            raise TypeError("Missing 'destination_child_instance_types' argument")
-        if destination_cidr_blocks is None and 'destinationCidrBlocks' in kwargs:
-            destination_cidr_blocks = kwargs['destinationCidrBlocks']
-        if destination_cidr_blocks is None:
-            raise TypeError("Missing 'destination_cidr_blocks' argument")
-        if destination_instance_ids is None and 'destinationInstanceIds' in kwargs:
-            destination_instance_ids = kwargs['destinationInstanceIds']
-        if destination_instance_ids is None:
-            raise TypeError("Missing 'destination_instance_ids' argument")
-        if destination_instance_ids_reverse_match is None and 'destinationInstanceIdsReverseMatch' in kwargs:
-            destination_instance_ids_reverse_match = kwargs['destinationInstanceIdsReverseMatch']
-        if destination_instance_ids_reverse_match is None:
-            raise TypeError("Missing 'destination_instance_ids_reverse_match' argument")
-        if destination_route_table_ids is None and 'destinationRouteTableIds' in kwargs:
-            destination_route_table_ids = kwargs['destinationRouteTableIds']
-        if destination_route_table_ids is None:
-            raise TypeError("Missing 'destination_route_table_ids' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if map_result is None and 'mapResult' in kwargs:
-            map_result = kwargs['mapResult']
-        if map_result is None:
-            raise TypeError("Missing 'map_result' argument")
-        if match_asns is None and 'matchAsns' in kwargs:
-            match_asns = kwargs['matchAsns']
-        if match_asns is None:
-            raise TypeError("Missing 'match_asns' argument")
-        if match_community_sets is None and 'matchCommunitySets' in kwargs:
-            match_community_sets = kwargs['matchCommunitySets']
-        if match_community_sets is None:
-            raise TypeError("Missing 'match_community_sets' argument")
-        if next_priority is None and 'nextPriority' in kwargs:
-            next_priority = kwargs['nextPriority']
-        if next_priority is None:
-            raise TypeError("Missing 'next_priority' argument")
-        if operate_community_sets is None and 'operateCommunitySets' in kwargs:
-            operate_community_sets = kwargs['operateCommunitySets']
-        if operate_community_sets is None:
-            raise TypeError("Missing 'operate_community_sets' argument")
-        if preference is None:
-            raise TypeError("Missing 'preference' argument")
-        if prepend_as_paths is None and 'prependAsPaths' in kwargs:
-            prepend_as_paths = kwargs['prependAsPaths']
-        if prepend_as_paths is None:
-            raise TypeError("Missing 'prepend_as_paths' argument")
-        if priority is None:
-            raise TypeError("Missing 'priority' argument")
-        if route_map_id is None and 'routeMapId' in kwargs:
-            route_map_id = kwargs['routeMapId']
-        if route_map_id is None:
-            raise TypeError("Missing 'route_map_id' argument")
-        if route_types is None and 'routeTypes' in kwargs:
-            route_types = kwargs['routeTypes']
-        if route_types is None:
-            raise TypeError("Missing 'route_types' argument")
-        if source_child_instance_types is None and 'sourceChildInstanceTypes' in kwargs:
-            source_child_instance_types = kwargs['sourceChildInstanceTypes']
-        if source_child_instance_types is None:
-            raise TypeError("Missing 'source_child_instance_types' argument")
-        if source_instance_ids is None and 'sourceInstanceIds' in kwargs:
-            source_instance_ids = kwargs['sourceInstanceIds']
-        if source_instance_ids is None:
-            raise TypeError("Missing 'source_instance_ids' argument")
-        if source_instance_ids_reverse_match is None and 'sourceInstanceIdsReverseMatch' in kwargs:
-            source_instance_ids_reverse_match = kwargs['sourceInstanceIdsReverseMatch']
-        if source_instance_ids_reverse_match is None:
-            raise TypeError("Missing 'source_instance_ids_reverse_match' argument")
-        if source_region_ids is None and 'sourceRegionIds' in kwargs:
-            source_region_ids = kwargs['sourceRegionIds']
-        if source_region_ids is None:
-            raise TypeError("Missing 'source_region_ids' argument")
-        if source_route_table_ids is None and 'sourceRouteTableIds' in kwargs:
-            source_route_table_ids = kwargs['sourceRouteTableIds']
-        if source_route_table_ids is None:
-            raise TypeError("Missing 'source_route_table_ids' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if transmit_direction is None and 'transmitDirection' in kwargs:
-            transmit_direction = kwargs['transmitDirection']
-        if transmit_direction is None:
-            raise TypeError("Missing 'transmit_direction' argument")
-
-        _setter("as_path_match_mode", as_path_match_mode)
-        _setter("cen_id", cen_id)
-        _setter("cen_region_id", cen_region_id)
-        _setter("cidr_match_mode", cidr_match_mode)
-        _setter("community_match_mode", community_match_mode)
-        _setter("community_operate_mode", community_operate_mode)
-        _setter("description", description)
-        _setter("destination_child_instance_types", destination_child_instance_types)
-        _setter("destination_cidr_blocks", destination_cidr_blocks)
-        _setter("destination_instance_ids", destination_instance_ids)
-        _setter("destination_instance_ids_reverse_match", destination_instance_ids_reverse_match)
-        _setter("destination_route_table_ids", destination_route_table_ids)
-        _setter("id", id)
-        _setter("map_result", map_result)
-        _setter("match_asns", match_asns)
-        _setter("match_community_sets", match_community_sets)
-        _setter("next_priority", next_priority)
-        _setter("operate_community_sets", operate_community_sets)
-        _setter("preference", preference)
-        _setter("prepend_as_paths", prepend_as_paths)
-        _setter("priority", priority)
-        _setter("route_map_id", route_map_id)
-        _setter("route_types", route_types)
-        _setter("source_child_instance_types", source_child_instance_types)
-        _setter("source_instance_ids", source_instance_ids)
-        _setter("source_instance_ids_reverse_match", source_instance_ids_reverse_match)
-        _setter("source_region_ids", source_region_ids)
-        _setter("source_route_table_ids", source_route_table_ids)
-        _setter("status", status)
-        _setter("transmit_direction", transmit_direction)
+        pulumi.set(__self__, "as_path_match_mode", as_path_match_mode)
+        pulumi.set(__self__, "cen_id", cen_id)
+        pulumi.set(__self__, "cen_region_id", cen_region_id)
+        pulumi.set(__self__, "cidr_match_mode", cidr_match_mode)
+        pulumi.set(__self__, "community_match_mode", community_match_mode)
+        pulumi.set(__self__, "community_operate_mode", community_operate_mode)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "destination_child_instance_types", destination_child_instance_types)
+        pulumi.set(__self__, "destination_cidr_blocks", destination_cidr_blocks)
+        pulumi.set(__self__, "destination_instance_ids", destination_instance_ids)
+        pulumi.set(__self__, "destination_instance_ids_reverse_match", destination_instance_ids_reverse_match)
+        pulumi.set(__self__, "destination_route_table_ids", destination_route_table_ids)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "map_result", map_result)
+        pulumi.set(__self__, "match_asns", match_asns)
+        pulumi.set(__self__, "match_community_sets", match_community_sets)
+        pulumi.set(__self__, "next_priority", next_priority)
+        pulumi.set(__self__, "operate_community_sets", operate_community_sets)
+        pulumi.set(__self__, "preference", preference)
+        pulumi.set(__self__, "prepend_as_paths", prepend_as_paths)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "route_map_id", route_map_id)
+        pulumi.set(__self__, "route_types", route_types)
+        pulumi.set(__self__, "source_child_instance_types", source_child_instance_types)
+        pulumi.set(__self__, "source_instance_ids", source_instance_ids)
+        pulumi.set(__self__, "source_instance_ids_reverse_match", source_instance_ids_reverse_match)
+        pulumi.set(__self__, "source_region_ids", source_region_ids)
+        pulumi.set(__self__, "source_route_table_ids", source_route_table_ids)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transmit_direction", transmit_direction)
 
     @property
     @pulumi.getter(name="asPathMatchMode")
@@ -2537,75 +1674,16 @@ class GetRouteServicesServiceResult(dict):
         :param str status: The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.
         :param str update_interval: The update interval. Default value: 5. The value cannot be modified.
         """
-        GetRouteServicesServiceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_region_id=access_region_id,
-            cen_id=cen_id,
-            cidrs=cidrs,
-            description=description,
-            host=host,
-            host_region_id=host_region_id,
-            host_vpc_id=host_vpc_id,
-            id=id,
-            status=status,
-            update_interval=update_interval,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_region_id: Optional[str] = None,
-             cen_id: Optional[str] = None,
-             cidrs: Optional[Sequence[str]] = None,
-             description: Optional[str] = None,
-             host: Optional[str] = None,
-             host_region_id: Optional[str] = None,
-             host_vpc_id: Optional[str] = None,
-             id: Optional[str] = None,
-             status: Optional[str] = None,
-             update_interval: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_region_id is None and 'accessRegionId' in kwargs:
-            access_region_id = kwargs['accessRegionId']
-        if access_region_id is None:
-            raise TypeError("Missing 'access_region_id' argument")
-        if cen_id is None and 'cenId' in kwargs:
-            cen_id = kwargs['cenId']
-        if cen_id is None:
-            raise TypeError("Missing 'cen_id' argument")
-        if cidrs is None:
-            raise TypeError("Missing 'cidrs' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if host is None:
-            raise TypeError("Missing 'host' argument")
-        if host_region_id is None and 'hostRegionId' in kwargs:
-            host_region_id = kwargs['hostRegionId']
-        if host_region_id is None:
-            raise TypeError("Missing 'host_region_id' argument")
-        if host_vpc_id is None and 'hostVpcId' in kwargs:
-            host_vpc_id = kwargs['hostVpcId']
-        if host_vpc_id is None:
-            raise TypeError("Missing 'host_vpc_id' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if update_interval is None and 'updateInterval' in kwargs:
-            update_interval = kwargs['updateInterval']
-        if update_interval is None:
-            raise TypeError("Missing 'update_interval' argument")
-
-        _setter("access_region_id", access_region_id)
-        _setter("cen_id", cen_id)
-        _setter("cidrs", cidrs)
-        _setter("description", description)
-        _setter("host", host)
-        _setter("host_region_id", host_region_id)
-        _setter("host_vpc_id", host_vpc_id)
-        _setter("id", id)
-        _setter("status", status)
-        _setter("update_interval", update_interval)
+        pulumi.set(__self__, "access_region_id", access_region_id)
+        pulumi.set(__self__, "cen_id", cen_id)
+        pulumi.set(__self__, "cidrs", cidrs)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "host_region_id", host_region_id)
+        pulumi.set(__self__, "host_vpc_id", host_vpc_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "update_interval", update_interval)
 
     @property
     @pulumi.getter(name="accessRegionId")
@@ -2709,63 +1787,14 @@ class GetTrafficMarkingPoliciesPolicyResult(dict):
         :param str traffic_marking_policy_name: The name of the Traffic Marking Policy.
         :param str transit_router_id: The ID of the transit router.
         """
-        GetTrafficMarkingPoliciesPolicyResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            id=id,
-            marking_dscp=marking_dscp,
-            priority=priority,
-            status=status,
-            traffic_marking_policy_id=traffic_marking_policy_id,
-            traffic_marking_policy_name=traffic_marking_policy_name,
-            transit_router_id=transit_router_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[str] = None,
-             id: Optional[str] = None,
-             marking_dscp: Optional[int] = None,
-             priority: Optional[int] = None,
-             status: Optional[str] = None,
-             traffic_marking_policy_id: Optional[str] = None,
-             traffic_marking_policy_name: Optional[str] = None,
-             transit_router_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if marking_dscp is None and 'markingDscp' in kwargs:
-            marking_dscp = kwargs['markingDscp']
-        if marking_dscp is None:
-            raise TypeError("Missing 'marking_dscp' argument")
-        if priority is None:
-            raise TypeError("Missing 'priority' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if traffic_marking_policy_id is None and 'trafficMarkingPolicyId' in kwargs:
-            traffic_marking_policy_id = kwargs['trafficMarkingPolicyId']
-        if traffic_marking_policy_id is None:
-            raise TypeError("Missing 'traffic_marking_policy_id' argument")
-        if traffic_marking_policy_name is None and 'trafficMarkingPolicyName' in kwargs:
-            traffic_marking_policy_name = kwargs['trafficMarkingPolicyName']
-        if traffic_marking_policy_name is None:
-            raise TypeError("Missing 'traffic_marking_policy_name' argument")
-        if transit_router_id is None and 'transitRouterId' in kwargs:
-            transit_router_id = kwargs['transitRouterId']
-        if transit_router_id is None:
-            raise TypeError("Missing 'transit_router_id' argument")
-
-        _setter("description", description)
-        _setter("id", id)
-        _setter("marking_dscp", marking_dscp)
-        _setter("priority", priority)
-        _setter("status", status)
-        _setter("traffic_marking_policy_id", traffic_marking_policy_id)
-        _setter("traffic_marking_policy_name", traffic_marking_policy_name)
-        _setter("transit_router_id", transit_router_id)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "marking_dscp", marking_dscp)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "traffic_marking_policy_id", traffic_marking_policy_id)
+        pulumi.set(__self__, "traffic_marking_policy_name", traffic_marking_policy_name)
+        pulumi.set(__self__, "transit_router_id", transit_router_id)
 
     @property
     @pulumi.getter
@@ -2853,67 +1882,14 @@ class GetTransitRouteTableAggregationsTransitRouteTableAggregationResult(dict):
         :param str transit_route_table_aggregation_scope: The scope of networks that you want to advertise the aggregate route.
         :param str transit_route_table_id: The ID of the route table of the Enterprise Edition transit router.
         """
-        GetTransitRouteTableAggregationsTransitRouteTableAggregationResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            route_type=route_type,
-            status=status,
-            transit_route_table_aggregation_cidr=transit_route_table_aggregation_cidr,
-            transit_route_table_aggregation_description=transit_route_table_aggregation_description,
-            transit_route_table_aggregation_name=transit_route_table_aggregation_name,
-            transit_route_table_aggregation_scope=transit_route_table_aggregation_scope,
-            transit_route_table_id=transit_route_table_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             route_type: Optional[str] = None,
-             status: Optional[str] = None,
-             transit_route_table_aggregation_cidr: Optional[str] = None,
-             transit_route_table_aggregation_description: Optional[str] = None,
-             transit_route_table_aggregation_name: Optional[str] = None,
-             transit_route_table_aggregation_scope: Optional[str] = None,
-             transit_route_table_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if route_type is None and 'routeType' in kwargs:
-            route_type = kwargs['routeType']
-        if route_type is None:
-            raise TypeError("Missing 'route_type' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if transit_route_table_aggregation_cidr is None and 'transitRouteTableAggregationCidr' in kwargs:
-            transit_route_table_aggregation_cidr = kwargs['transitRouteTableAggregationCidr']
-        if transit_route_table_aggregation_cidr is None:
-            raise TypeError("Missing 'transit_route_table_aggregation_cidr' argument")
-        if transit_route_table_aggregation_description is None and 'transitRouteTableAggregationDescription' in kwargs:
-            transit_route_table_aggregation_description = kwargs['transitRouteTableAggregationDescription']
-        if transit_route_table_aggregation_description is None:
-            raise TypeError("Missing 'transit_route_table_aggregation_description' argument")
-        if transit_route_table_aggregation_name is None and 'transitRouteTableAggregationName' in kwargs:
-            transit_route_table_aggregation_name = kwargs['transitRouteTableAggregationName']
-        if transit_route_table_aggregation_name is None:
-            raise TypeError("Missing 'transit_route_table_aggregation_name' argument")
-        if transit_route_table_aggregation_scope is None and 'transitRouteTableAggregationScope' in kwargs:
-            transit_route_table_aggregation_scope = kwargs['transitRouteTableAggregationScope']
-        if transit_route_table_aggregation_scope is None:
-            raise TypeError("Missing 'transit_route_table_aggregation_scope' argument")
-        if transit_route_table_id is None and 'transitRouteTableId' in kwargs:
-            transit_route_table_id = kwargs['transitRouteTableId']
-        if transit_route_table_id is None:
-            raise TypeError("Missing 'transit_route_table_id' argument")
-
-        _setter("id", id)
-        _setter("route_type", route_type)
-        _setter("status", status)
-        _setter("transit_route_table_aggregation_cidr", transit_route_table_aggregation_cidr)
-        _setter("transit_route_table_aggregation_description", transit_route_table_aggregation_description)
-        _setter("transit_route_table_aggregation_name", transit_route_table_aggregation_name)
-        _setter("transit_route_table_aggregation_scope", transit_route_table_aggregation_scope)
-        _setter("transit_route_table_id", transit_route_table_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "route_type", route_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transit_route_table_aggregation_cidr", transit_route_table_aggregation_cidr)
+        pulumi.set(__self__, "transit_route_table_aggregation_description", transit_route_table_aggregation_description)
+        pulumi.set(__self__, "transit_route_table_aggregation_name", transit_route_table_aggregation_name)
+        pulumi.set(__self__, "transit_route_table_aggregation_scope", transit_route_table_aggregation_scope)
+        pulumi.set(__self__, "transit_route_table_id", transit_route_table_id)
 
     @property
     @pulumi.getter
@@ -2989,29 +1965,8 @@ class GetTransitRouterAvailableResourcesResourceResult(dict):
         :param Sequence[str] master_zones: The list of primary zones.
         :param Sequence[str] slave_zones: The list of secondary zones.
         """
-        GetTransitRouterAvailableResourcesResourceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            master_zones=master_zones,
-            slave_zones=slave_zones,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             master_zones: Optional[Sequence[str]] = None,
-             slave_zones: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if master_zones is None and 'masterZones' in kwargs:
-            master_zones = kwargs['masterZones']
-        if master_zones is None:
-            raise TypeError("Missing 'master_zones' argument")
-        if slave_zones is None and 'slaveZones' in kwargs:
-            slave_zones = kwargs['slaveZones']
-        if slave_zones is None:
-            raise TypeError("Missing 'slave_zones' argument")
-
-        _setter("master_zones", master_zones)
-        _setter("slave_zones", slave_zones)
+        pulumi.set(__self__, "master_zones", master_zones)
+        pulumi.set(__self__, "slave_zones", slave_zones)
 
     @property
     @pulumi.getter(name="masterZones")
@@ -3051,63 +2006,14 @@ class GetTransitRouterCidrsCidrResult(dict):
         :param str transit_router_cidr_name: The name of the transit router.
         :param str transit_router_id: The ID of the transit router.
         """
-        GetTransitRouterCidrsCidrResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cidr=cidr,
-            description=description,
-            family=family,
-            id=id,
-            publish_cidr_route=publish_cidr_route,
-            transit_router_cidr_id=transit_router_cidr_id,
-            transit_router_cidr_name=transit_router_cidr_name,
-            transit_router_id=transit_router_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cidr: Optional[str] = None,
-             description: Optional[str] = None,
-             family: Optional[str] = None,
-             id: Optional[str] = None,
-             publish_cidr_route: Optional[bool] = None,
-             transit_router_cidr_id: Optional[str] = None,
-             transit_router_cidr_name: Optional[str] = None,
-             transit_router_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cidr is None:
-            raise TypeError("Missing 'cidr' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if family is None:
-            raise TypeError("Missing 'family' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if publish_cidr_route is None and 'publishCidrRoute' in kwargs:
-            publish_cidr_route = kwargs['publishCidrRoute']
-        if publish_cidr_route is None:
-            raise TypeError("Missing 'publish_cidr_route' argument")
-        if transit_router_cidr_id is None and 'transitRouterCidrId' in kwargs:
-            transit_router_cidr_id = kwargs['transitRouterCidrId']
-        if transit_router_cidr_id is None:
-            raise TypeError("Missing 'transit_router_cidr_id' argument")
-        if transit_router_cidr_name is None and 'transitRouterCidrName' in kwargs:
-            transit_router_cidr_name = kwargs['transitRouterCidrName']
-        if transit_router_cidr_name is None:
-            raise TypeError("Missing 'transit_router_cidr_name' argument")
-        if transit_router_id is None and 'transitRouterId' in kwargs:
-            transit_router_id = kwargs['transitRouterId']
-        if transit_router_id is None:
-            raise TypeError("Missing 'transit_router_id' argument")
-
-        _setter("cidr", cidr)
-        _setter("description", description)
-        _setter("family", family)
-        _setter("id", id)
-        _setter("publish_cidr_route", publish_cidr_route)
-        _setter("transit_router_cidr_id", transit_router_cidr_id)
-        _setter("transit_router_cidr_name", transit_router_cidr_name)
-        _setter("transit_router_id", transit_router_id)
+        pulumi.set(__self__, "cidr", cidr)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "family", family)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "publish_cidr_route", publish_cidr_route)
+        pulumi.set(__self__, "transit_router_cidr_id", transit_router_cidr_id)
+        pulumi.set(__self__, "transit_router_cidr_name", transit_router_cidr_name)
+        pulumi.set(__self__, "transit_router_id", transit_router_id)
 
     @property
     @pulumi.getter
@@ -3195,67 +2101,14 @@ class GetTransitRouterMulticastDomainAssociationsAssociationResult(dict):
         :param str transit_router_multicast_domain_id: The ID of the multicast domain.
         :param str vswitch_id: The ID of the vSwitch.
         """
-        GetTransitRouterMulticastDomainAssociationsAssociationResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            resource_id=resource_id,
-            resource_owner_id=resource_owner_id,
-            resource_type=resource_type,
-            status=status,
-            transit_router_attachment_id=transit_router_attachment_id,
-            transit_router_multicast_domain_id=transit_router_multicast_domain_id,
-            vswitch_id=vswitch_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             resource_id: Optional[str] = None,
-             resource_owner_id: Optional[int] = None,
-             resource_type: Optional[str] = None,
-             status: Optional[str] = None,
-             transit_router_attachment_id: Optional[str] = None,
-             transit_router_multicast_domain_id: Optional[str] = None,
-             vswitch_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if resource_id is None and 'resourceId' in kwargs:
-            resource_id = kwargs['resourceId']
-        if resource_id is None:
-            raise TypeError("Missing 'resource_id' argument")
-        if resource_owner_id is None and 'resourceOwnerId' in kwargs:
-            resource_owner_id = kwargs['resourceOwnerId']
-        if resource_owner_id is None:
-            raise TypeError("Missing 'resource_owner_id' argument")
-        if resource_type is None and 'resourceType' in kwargs:
-            resource_type = kwargs['resourceType']
-        if resource_type is None:
-            raise TypeError("Missing 'resource_type' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if transit_router_attachment_id is None and 'transitRouterAttachmentId' in kwargs:
-            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
-        if transit_router_attachment_id is None:
-            raise TypeError("Missing 'transit_router_attachment_id' argument")
-        if transit_router_multicast_domain_id is None and 'transitRouterMulticastDomainId' in kwargs:
-            transit_router_multicast_domain_id = kwargs['transitRouterMulticastDomainId']
-        if transit_router_multicast_domain_id is None:
-            raise TypeError("Missing 'transit_router_multicast_domain_id' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-
-        _setter("id", id)
-        _setter("resource_id", resource_id)
-        _setter("resource_owner_id", resource_owner_id)
-        _setter("resource_type", resource_type)
-        _setter("status", status)
-        _setter("transit_router_attachment_id", transit_router_attachment_id)
-        _setter("transit_router_multicast_domain_id", transit_router_multicast_domain_id)
-        _setter("vswitch_id", vswitch_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource_id", resource_id)
+        pulumi.set(__self__, "resource_owner_id", resource_owner_id)
+        pulumi.set(__self__, "resource_type", resource_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
+        pulumi.set(__self__, "transit_router_multicast_domain_id", transit_router_multicast_domain_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter
@@ -3339,53 +2192,12 @@ class GetTransitRouterMulticastDomainMembersMemberResult(dict):
         :param str transit_router_multicast_domain_id: The ID of the multicast domain to which the multicast member belongs.
         :param str vpc_id: The VPC to which the ENI of the multicast member belongs. This field is mandatory for VPCs owned by another accounts.
         """
-        GetTransitRouterMulticastDomainMembersMemberResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            group_ip_address=group_ip_address,
-            id=id,
-            network_interface_id=network_interface_id,
-            status=status,
-            transit_router_multicast_domain_id=transit_router_multicast_domain_id,
-            vpc_id=vpc_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             group_ip_address: Optional[str] = None,
-             id: Optional[str] = None,
-             network_interface_id: Optional[str] = None,
-             status: Optional[str] = None,
-             transit_router_multicast_domain_id: Optional[str] = None,
-             vpc_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if group_ip_address is None and 'groupIpAddress' in kwargs:
-            group_ip_address = kwargs['groupIpAddress']
-        if group_ip_address is None:
-            raise TypeError("Missing 'group_ip_address' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if network_interface_id is None and 'networkInterfaceId' in kwargs:
-            network_interface_id = kwargs['networkInterfaceId']
-        if network_interface_id is None:
-            raise TypeError("Missing 'network_interface_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if transit_router_multicast_domain_id is None and 'transitRouterMulticastDomainId' in kwargs:
-            transit_router_multicast_domain_id = kwargs['transitRouterMulticastDomainId']
-        if transit_router_multicast_domain_id is None:
-            raise TypeError("Missing 'transit_router_multicast_domain_id' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-
-        _setter("group_ip_address", group_ip_address)
-        _setter("id", id)
-        _setter("network_interface_id", network_interface_id)
-        _setter("status", status)
-        _setter("transit_router_multicast_domain_id", transit_router_multicast_domain_id)
-        _setter("vpc_id", vpc_id)
+        pulumi.set(__self__, "group_ip_address", group_ip_address)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "network_interface_id", network_interface_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transit_router_multicast_domain_id", transit_router_multicast_domain_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="groupIpAddress")
@@ -3451,46 +2263,11 @@ class GetTransitRouterMulticastDomainPeerMembersMemberResult(dict):
         :param str status: The status of the resource
         :param str transit_router_multicast_domain_id: The ID of the multicast domain to which the multicast member belongs.
         """
-        GetTransitRouterMulticastDomainPeerMembersMemberResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            group_ip_address=group_ip_address,
-            id=id,
-            peer_transit_router_multicast_domain_id=peer_transit_router_multicast_domain_id,
-            status=status,
-            transit_router_multicast_domain_id=transit_router_multicast_domain_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             group_ip_address: Optional[str] = None,
-             id: Optional[str] = None,
-             peer_transit_router_multicast_domain_id: Optional[str] = None,
-             status: Optional[str] = None,
-             transit_router_multicast_domain_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if group_ip_address is None and 'groupIpAddress' in kwargs:
-            group_ip_address = kwargs['groupIpAddress']
-        if group_ip_address is None:
-            raise TypeError("Missing 'group_ip_address' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if peer_transit_router_multicast_domain_id is None and 'peerTransitRouterMulticastDomainId' in kwargs:
-            peer_transit_router_multicast_domain_id = kwargs['peerTransitRouterMulticastDomainId']
-        if peer_transit_router_multicast_domain_id is None:
-            raise TypeError("Missing 'peer_transit_router_multicast_domain_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if transit_router_multicast_domain_id is None and 'transitRouterMulticastDomainId' in kwargs:
-            transit_router_multicast_domain_id = kwargs['transitRouterMulticastDomainId']
-        if transit_router_multicast_domain_id is None:
-            raise TypeError("Missing 'transit_router_multicast_domain_id' argument")
-
-        _setter("group_ip_address", group_ip_address)
-        _setter("id", id)
-        _setter("peer_transit_router_multicast_domain_id", peer_transit_router_multicast_domain_id)
-        _setter("status", status)
-        _setter("transit_router_multicast_domain_id", transit_router_multicast_domain_id)
+        pulumi.set(__self__, "group_ip_address", group_ip_address)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "peer_transit_router_multicast_domain_id", peer_transit_router_multicast_domain_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transit_router_multicast_domain_id", transit_router_multicast_domain_id)
 
     @property
     @pulumi.getter(name="groupIpAddress")
@@ -3550,53 +2327,12 @@ class GetTransitRouterMulticastDomainSourcesSourceResult(dict):
         :param str transit_router_multicast_domain_id: The ID of the multicast domain to which the multicast source belongs.
         :param str vpc_id: The VPC to which the ENI of the multicast source belongs. This field is mandatory for VPCs that is owned by another accounts.
         """
-        GetTransitRouterMulticastDomainSourcesSourceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            group_ip_address=group_ip_address,
-            id=id,
-            network_interface_id=network_interface_id,
-            status=status,
-            transit_router_multicast_domain_id=transit_router_multicast_domain_id,
-            vpc_id=vpc_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             group_ip_address: Optional[str] = None,
-             id: Optional[str] = None,
-             network_interface_id: Optional[str] = None,
-             status: Optional[str] = None,
-             transit_router_multicast_domain_id: Optional[str] = None,
-             vpc_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if group_ip_address is None and 'groupIpAddress' in kwargs:
-            group_ip_address = kwargs['groupIpAddress']
-        if group_ip_address is None:
-            raise TypeError("Missing 'group_ip_address' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if network_interface_id is None and 'networkInterfaceId' in kwargs:
-            network_interface_id = kwargs['networkInterfaceId']
-        if network_interface_id is None:
-            raise TypeError("Missing 'network_interface_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if transit_router_multicast_domain_id is None and 'transitRouterMulticastDomainId' in kwargs:
-            transit_router_multicast_domain_id = kwargs['transitRouterMulticastDomainId']
-        if transit_router_multicast_domain_id is None:
-            raise TypeError("Missing 'transit_router_multicast_domain_id' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-
-        _setter("group_ip_address", group_ip_address)
-        _setter("id", id)
-        _setter("network_interface_id", network_interface_id)
-        _setter("status", status)
-        _setter("transit_router_multicast_domain_id", transit_router_multicast_domain_id)
-        _setter("vpc_id", vpc_id)
+        pulumi.set(__self__, "group_ip_address", group_ip_address)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "network_interface_id", network_interface_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transit_router_multicast_domain_id", transit_router_multicast_domain_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="groupIpAddress")
@@ -3664,53 +2400,12 @@ class GetTransitRouterMulticastDomainsDomainResult(dict):
         :param str transit_router_multicast_domain_id: The ID of the multicast domain.
         :param str transit_router_multicast_domain_name: The name of the Transit Router Multicast Domain.
         """
-        GetTransitRouterMulticastDomainsDomainResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            status=status,
-            transit_router_id=transit_router_id,
-            transit_router_multicast_domain_description=transit_router_multicast_domain_description,
-            transit_router_multicast_domain_id=transit_router_multicast_domain_id,
-            transit_router_multicast_domain_name=transit_router_multicast_domain_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             status: Optional[str] = None,
-             transit_router_id: Optional[str] = None,
-             transit_router_multicast_domain_description: Optional[str] = None,
-             transit_router_multicast_domain_id: Optional[str] = None,
-             transit_router_multicast_domain_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if transit_router_id is None and 'transitRouterId' in kwargs:
-            transit_router_id = kwargs['transitRouterId']
-        if transit_router_id is None:
-            raise TypeError("Missing 'transit_router_id' argument")
-        if transit_router_multicast_domain_description is None and 'transitRouterMulticastDomainDescription' in kwargs:
-            transit_router_multicast_domain_description = kwargs['transitRouterMulticastDomainDescription']
-        if transit_router_multicast_domain_description is None:
-            raise TypeError("Missing 'transit_router_multicast_domain_description' argument")
-        if transit_router_multicast_domain_id is None and 'transitRouterMulticastDomainId' in kwargs:
-            transit_router_multicast_domain_id = kwargs['transitRouterMulticastDomainId']
-        if transit_router_multicast_domain_id is None:
-            raise TypeError("Missing 'transit_router_multicast_domain_id' argument")
-        if transit_router_multicast_domain_name is None and 'transitRouterMulticastDomainName' in kwargs:
-            transit_router_multicast_domain_name = kwargs['transitRouterMulticastDomainName']
-        if transit_router_multicast_domain_name is None:
-            raise TypeError("Missing 'transit_router_multicast_domain_name' argument")
-
-        _setter("id", id)
-        _setter("status", status)
-        _setter("transit_router_id", transit_router_id)
-        _setter("transit_router_multicast_domain_description", transit_router_multicast_domain_description)
-        _setter("transit_router_multicast_domain_id", transit_router_multicast_domain_id)
-        _setter("transit_router_multicast_domain_name", transit_router_multicast_domain_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transit_router_id", transit_router_id)
+        pulumi.set(__self__, "transit_router_multicast_domain_description", transit_router_multicast_domain_description)
+        pulumi.set(__self__, "transit_router_multicast_domain_id", transit_router_multicast_domain_id)
+        pulumi.set(__self__, "transit_router_multicast_domain_name", transit_router_multicast_domain_name)
 
     @property
     @pulumi.getter
@@ -3794,107 +2489,20 @@ class GetTransitRouterPeerAttachmentsAttachmentResult(dict):
         :param str transit_router_attachment_name: Name of the transit router attachment.
         :param str transit_router_id: The ID of transit router.
         """
-        GetTransitRouterPeerAttachmentsAttachmentResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto_publish_route_enabled=auto_publish_route_enabled,
-            bandwidth=bandwidth,
-            cen_bandwidth_package_id=cen_bandwidth_package_id,
-            geographic_span_id=geographic_span_id,
-            id=id,
-            peer_transit_router_id=peer_transit_router_id,
-            peer_transit_router_owner_id=peer_transit_router_owner_id,
-            peer_transit_router_region_id=peer_transit_router_region_id,
-            resource_type=resource_type,
-            status=status,
-            transit_router_attachment_description=transit_router_attachment_description,
-            transit_router_attachment_id=transit_router_attachment_id,
-            transit_router_attachment_name=transit_router_attachment_name,
-            transit_router_id=transit_router_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto_publish_route_enabled: Optional[bool] = None,
-             bandwidth: Optional[int] = None,
-             cen_bandwidth_package_id: Optional[str] = None,
-             geographic_span_id: Optional[str] = None,
-             id: Optional[str] = None,
-             peer_transit_router_id: Optional[str] = None,
-             peer_transit_router_owner_id: Optional[str] = None,
-             peer_transit_router_region_id: Optional[str] = None,
-             resource_type: Optional[str] = None,
-             status: Optional[str] = None,
-             transit_router_attachment_description: Optional[str] = None,
-             transit_router_attachment_id: Optional[str] = None,
-             transit_router_attachment_name: Optional[str] = None,
-             transit_router_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_publish_route_enabled is None and 'autoPublishRouteEnabled' in kwargs:
-            auto_publish_route_enabled = kwargs['autoPublishRouteEnabled']
-        if auto_publish_route_enabled is None:
-            raise TypeError("Missing 'auto_publish_route_enabled' argument")
-        if bandwidth is None:
-            raise TypeError("Missing 'bandwidth' argument")
-        if cen_bandwidth_package_id is None and 'cenBandwidthPackageId' in kwargs:
-            cen_bandwidth_package_id = kwargs['cenBandwidthPackageId']
-        if cen_bandwidth_package_id is None:
-            raise TypeError("Missing 'cen_bandwidth_package_id' argument")
-        if geographic_span_id is None and 'geographicSpanId' in kwargs:
-            geographic_span_id = kwargs['geographicSpanId']
-        if geographic_span_id is None:
-            raise TypeError("Missing 'geographic_span_id' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if peer_transit_router_id is None and 'peerTransitRouterId' in kwargs:
-            peer_transit_router_id = kwargs['peerTransitRouterId']
-        if peer_transit_router_id is None:
-            raise TypeError("Missing 'peer_transit_router_id' argument")
-        if peer_transit_router_owner_id is None and 'peerTransitRouterOwnerId' in kwargs:
-            peer_transit_router_owner_id = kwargs['peerTransitRouterOwnerId']
-        if peer_transit_router_owner_id is None:
-            raise TypeError("Missing 'peer_transit_router_owner_id' argument")
-        if peer_transit_router_region_id is None and 'peerTransitRouterRegionId' in kwargs:
-            peer_transit_router_region_id = kwargs['peerTransitRouterRegionId']
-        if peer_transit_router_region_id is None:
-            raise TypeError("Missing 'peer_transit_router_region_id' argument")
-        if resource_type is None and 'resourceType' in kwargs:
-            resource_type = kwargs['resourceType']
-        if resource_type is None:
-            raise TypeError("Missing 'resource_type' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if transit_router_attachment_description is None and 'transitRouterAttachmentDescription' in kwargs:
-            transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
-        if transit_router_attachment_description is None:
-            raise TypeError("Missing 'transit_router_attachment_description' argument")
-        if transit_router_attachment_id is None and 'transitRouterAttachmentId' in kwargs:
-            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
-        if transit_router_attachment_id is None:
-            raise TypeError("Missing 'transit_router_attachment_id' argument")
-        if transit_router_attachment_name is None and 'transitRouterAttachmentName' in kwargs:
-            transit_router_attachment_name = kwargs['transitRouterAttachmentName']
-        if transit_router_attachment_name is None:
-            raise TypeError("Missing 'transit_router_attachment_name' argument")
-        if transit_router_id is None and 'transitRouterId' in kwargs:
-            transit_router_id = kwargs['transitRouterId']
-        if transit_router_id is None:
-            raise TypeError("Missing 'transit_router_id' argument")
-
-        _setter("auto_publish_route_enabled", auto_publish_route_enabled)
-        _setter("bandwidth", bandwidth)
-        _setter("cen_bandwidth_package_id", cen_bandwidth_package_id)
-        _setter("geographic_span_id", geographic_span_id)
-        _setter("id", id)
-        _setter("peer_transit_router_id", peer_transit_router_id)
-        _setter("peer_transit_router_owner_id", peer_transit_router_owner_id)
-        _setter("peer_transit_router_region_id", peer_transit_router_region_id)
-        _setter("resource_type", resource_type)
-        _setter("status", status)
-        _setter("transit_router_attachment_description", transit_router_attachment_description)
-        _setter("transit_router_attachment_id", transit_router_attachment_id)
-        _setter("transit_router_attachment_name", transit_router_attachment_name)
-        _setter("transit_router_id", transit_router_id)
+        pulumi.set(__self__, "auto_publish_route_enabled", auto_publish_route_enabled)
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "cen_bandwidth_package_id", cen_bandwidth_package_id)
+        pulumi.set(__self__, "geographic_span_id", geographic_span_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "peer_transit_router_id", peer_transit_router_id)
+        pulumi.set(__self__, "peer_transit_router_owner_id", peer_transit_router_owner_id)
+        pulumi.set(__self__, "peer_transit_router_region_id", peer_transit_router_region_id)
+        pulumi.set(__self__, "resource_type", resource_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transit_router_attachment_description", transit_router_attachment_description)
+        pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
+        pulumi.set(__self__, "transit_router_attachment_name", transit_router_attachment_name)
+        pulumi.set(__self__, "transit_router_id", transit_router_id)
 
     @property
     @pulumi.getter(name="autoPublishRouteEnabled")
@@ -4032,74 +2640,15 @@ class GetTransitRouterPrefixListAssociationsAssociationResult(dict):
         :param str transit_router_id: The ID of the transit router.
         :param str transit_router_table_id: The ID of the route table of the transit router.
         """
-        GetTransitRouterPrefixListAssociationsAssociationResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            next_hop=next_hop,
-            next_hop_instance_id=next_hop_instance_id,
-            next_hop_type=next_hop_type,
-            owner_uid=owner_uid,
-            prefix_list_id=prefix_list_id,
-            status=status,
-            transit_router_id=transit_router_id,
-            transit_router_table_id=transit_router_table_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             next_hop: Optional[str] = None,
-             next_hop_instance_id: Optional[str] = None,
-             next_hop_type: Optional[str] = None,
-             owner_uid: Optional[int] = None,
-             prefix_list_id: Optional[str] = None,
-             status: Optional[str] = None,
-             transit_router_id: Optional[str] = None,
-             transit_router_table_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if next_hop is None and 'nextHop' in kwargs:
-            next_hop = kwargs['nextHop']
-        if next_hop is None:
-            raise TypeError("Missing 'next_hop' argument")
-        if next_hop_instance_id is None and 'nextHopInstanceId' in kwargs:
-            next_hop_instance_id = kwargs['nextHopInstanceId']
-        if next_hop_instance_id is None:
-            raise TypeError("Missing 'next_hop_instance_id' argument")
-        if next_hop_type is None and 'nextHopType' in kwargs:
-            next_hop_type = kwargs['nextHopType']
-        if next_hop_type is None:
-            raise TypeError("Missing 'next_hop_type' argument")
-        if owner_uid is None and 'ownerUid' in kwargs:
-            owner_uid = kwargs['ownerUid']
-        if owner_uid is None:
-            raise TypeError("Missing 'owner_uid' argument")
-        if prefix_list_id is None and 'prefixListId' in kwargs:
-            prefix_list_id = kwargs['prefixListId']
-        if prefix_list_id is None:
-            raise TypeError("Missing 'prefix_list_id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if transit_router_id is None and 'transitRouterId' in kwargs:
-            transit_router_id = kwargs['transitRouterId']
-        if transit_router_id is None:
-            raise TypeError("Missing 'transit_router_id' argument")
-        if transit_router_table_id is None and 'transitRouterTableId' in kwargs:
-            transit_router_table_id = kwargs['transitRouterTableId']
-        if transit_router_table_id is None:
-            raise TypeError("Missing 'transit_router_table_id' argument")
-
-        _setter("id", id)
-        _setter("next_hop", next_hop)
-        _setter("next_hop_instance_id", next_hop_instance_id)
-        _setter("next_hop_type", next_hop_type)
-        _setter("owner_uid", owner_uid)
-        _setter("prefix_list_id", prefix_list_id)
-        _setter("status", status)
-        _setter("transit_router_id", transit_router_id)
-        _setter("transit_router_table_id", transit_router_table_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "next_hop", next_hop)
+        pulumi.set(__self__, "next_hop_instance_id", next_hop_instance_id)
+        pulumi.set(__self__, "next_hop_type", next_hop_type)
+        pulumi.set(__self__, "owner_uid", owner_uid)
+        pulumi.set(__self__, "prefix_list_id", prefix_list_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transit_router_id", transit_router_id)
+        pulumi.set(__self__, "transit_router_table_id", transit_router_table_id)
 
     @property
     @pulumi.getter
@@ -4192,74 +2741,15 @@ class GetTransitRouterRouteEntriesEntryResult(dict):
         :param str transit_router_route_entry_next_hop_type: Type of the next hop.
         :param str transit_router_route_entry_type: Type of the route entry.
         """
-        GetTransitRouterRouteEntriesEntryResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            status=status,
-            transit_router_route_entry_description=transit_router_route_entry_description,
-            transit_router_route_entry_destination_cidr_block=transit_router_route_entry_destination_cidr_block,
-            transit_router_route_entry_id=transit_router_route_entry_id,
-            transit_router_route_entry_name=transit_router_route_entry_name,
-            transit_router_route_entry_next_hop_id=transit_router_route_entry_next_hop_id,
-            transit_router_route_entry_next_hop_type=transit_router_route_entry_next_hop_type,
-            transit_router_route_entry_type=transit_router_route_entry_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             status: Optional[str] = None,
-             transit_router_route_entry_description: Optional[str] = None,
-             transit_router_route_entry_destination_cidr_block: Optional[str] = None,
-             transit_router_route_entry_id: Optional[str] = None,
-             transit_router_route_entry_name: Optional[str] = None,
-             transit_router_route_entry_next_hop_id: Optional[str] = None,
-             transit_router_route_entry_next_hop_type: Optional[str] = None,
-             transit_router_route_entry_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if transit_router_route_entry_description is None and 'transitRouterRouteEntryDescription' in kwargs:
-            transit_router_route_entry_description = kwargs['transitRouterRouteEntryDescription']
-        if transit_router_route_entry_description is None:
-            raise TypeError("Missing 'transit_router_route_entry_description' argument")
-        if transit_router_route_entry_destination_cidr_block is None and 'transitRouterRouteEntryDestinationCidrBlock' in kwargs:
-            transit_router_route_entry_destination_cidr_block = kwargs['transitRouterRouteEntryDestinationCidrBlock']
-        if transit_router_route_entry_destination_cidr_block is None:
-            raise TypeError("Missing 'transit_router_route_entry_destination_cidr_block' argument")
-        if transit_router_route_entry_id is None and 'transitRouterRouteEntryId' in kwargs:
-            transit_router_route_entry_id = kwargs['transitRouterRouteEntryId']
-        if transit_router_route_entry_id is None:
-            raise TypeError("Missing 'transit_router_route_entry_id' argument")
-        if transit_router_route_entry_name is None and 'transitRouterRouteEntryName' in kwargs:
-            transit_router_route_entry_name = kwargs['transitRouterRouteEntryName']
-        if transit_router_route_entry_name is None:
-            raise TypeError("Missing 'transit_router_route_entry_name' argument")
-        if transit_router_route_entry_next_hop_id is None and 'transitRouterRouteEntryNextHopId' in kwargs:
-            transit_router_route_entry_next_hop_id = kwargs['transitRouterRouteEntryNextHopId']
-        if transit_router_route_entry_next_hop_id is None:
-            raise TypeError("Missing 'transit_router_route_entry_next_hop_id' argument")
-        if transit_router_route_entry_next_hop_type is None and 'transitRouterRouteEntryNextHopType' in kwargs:
-            transit_router_route_entry_next_hop_type = kwargs['transitRouterRouteEntryNextHopType']
-        if transit_router_route_entry_next_hop_type is None:
-            raise TypeError("Missing 'transit_router_route_entry_next_hop_type' argument")
-        if transit_router_route_entry_type is None and 'transitRouterRouteEntryType' in kwargs:
-            transit_router_route_entry_type = kwargs['transitRouterRouteEntryType']
-        if transit_router_route_entry_type is None:
-            raise TypeError("Missing 'transit_router_route_entry_type' argument")
-
-        _setter("id", id)
-        _setter("status", status)
-        _setter("transit_router_route_entry_description", transit_router_route_entry_description)
-        _setter("transit_router_route_entry_destination_cidr_block", transit_router_route_entry_destination_cidr_block)
-        _setter("transit_router_route_entry_id", transit_router_route_entry_id)
-        _setter("transit_router_route_entry_name", transit_router_route_entry_name)
-        _setter("transit_router_route_entry_next_hop_id", transit_router_route_entry_next_hop_id)
-        _setter("transit_router_route_entry_next_hop_type", transit_router_route_entry_next_hop_type)
-        _setter("transit_router_route_entry_type", transit_router_route_entry_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transit_router_route_entry_description", transit_router_route_entry_description)
+        pulumi.set(__self__, "transit_router_route_entry_destination_cidr_block", transit_router_route_entry_destination_cidr_block)
+        pulumi.set(__self__, "transit_router_route_entry_id", transit_router_route_entry_id)
+        pulumi.set(__self__, "transit_router_route_entry_name", transit_router_route_entry_name)
+        pulumi.set(__self__, "transit_router_route_entry_next_hop_id", transit_router_route_entry_next_hop_id)
+        pulumi.set(__self__, "transit_router_route_entry_next_hop_type", transit_router_route_entry_next_hop_type)
+        pulumi.set(__self__, "transit_router_route_entry_type", transit_router_route_entry_type)
 
     @property
     @pulumi.getter
@@ -4335,53 +2825,12 @@ class GetTransitRouterRouteTableAssociationsAssociationResult(dict):
         :param str transit_router_attachment_id: The ID of the network instance connection.
         :param str transit_router_route_table_id: The ID of the route table of the Enterprise Edition transit router.
         """
-        GetTransitRouterRouteTableAssociationsAssociationResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            resource_id=resource_id,
-            resource_type=resource_type,
-            status=status,
-            transit_router_attachment_id=transit_router_attachment_id,
-            transit_router_route_table_id=transit_router_route_table_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             resource_id: Optional[str] = None,
-             resource_type: Optional[str] = None,
-             status: Optional[str] = None,
-             transit_router_attachment_id: Optional[str] = None,
-             transit_router_route_table_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if resource_id is None and 'resourceId' in kwargs:
-            resource_id = kwargs['resourceId']
-        if resource_id is None:
-            raise TypeError("Missing 'resource_id' argument")
-        if resource_type is None and 'resourceType' in kwargs:
-            resource_type = kwargs['resourceType']
-        if resource_type is None:
-            raise TypeError("Missing 'resource_type' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if transit_router_attachment_id is None and 'transitRouterAttachmentId' in kwargs:
-            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
-        if transit_router_attachment_id is None:
-            raise TypeError("Missing 'transit_router_attachment_id' argument")
-        if transit_router_route_table_id is None and 'transitRouterRouteTableId' in kwargs:
-            transit_router_route_table_id = kwargs['transitRouterRouteTableId']
-        if transit_router_route_table_id is None:
-            raise TypeError("Missing 'transit_router_route_table_id' argument")
-
-        _setter("id", id)
-        _setter("resource_id", resource_id)
-        _setter("resource_type", resource_type)
-        _setter("status", status)
-        _setter("transit_router_attachment_id", transit_router_attachment_id)
-        _setter("transit_router_route_table_id", transit_router_route_table_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource_id", resource_id)
+        pulumi.set(__self__, "resource_type", resource_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
+        pulumi.set(__self__, "transit_router_route_table_id", transit_router_route_table_id)
 
     @property
     @pulumi.getter
@@ -4443,46 +2892,11 @@ class GetTransitRouterRouteTablePropagationsPropagationResult(dict):
         :param str status: The status of the route table, including `Active`, `Enabling`, `Disabling`, `Deleted`.
         :param str transit_router_attachment_id: ID of the cen transit router attachment.
         """
-        GetTransitRouterRouteTablePropagationsPropagationResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            resource_id=resource_id,
-            resource_type=resource_type,
-            status=status,
-            transit_router_attachment_id=transit_router_attachment_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             resource_id: Optional[str] = None,
-             resource_type: Optional[str] = None,
-             status: Optional[str] = None,
-             transit_router_attachment_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if resource_id is None and 'resourceId' in kwargs:
-            resource_id = kwargs['resourceId']
-        if resource_id is None:
-            raise TypeError("Missing 'resource_id' argument")
-        if resource_type is None and 'resourceType' in kwargs:
-            resource_type = kwargs['resourceType']
-        if resource_type is None:
-            raise TypeError("Missing 'resource_type' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if transit_router_attachment_id is None and 'transitRouterAttachmentId' in kwargs:
-            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
-        if transit_router_attachment_id is None:
-            raise TypeError("Missing 'transit_router_attachment_id' argument")
-
-        _setter("id", id)
-        _setter("resource_id", resource_id)
-        _setter("resource_type", resource_type)
-        _setter("status", status)
-        _setter("transit_router_attachment_id", transit_router_attachment_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource_id", resource_id)
+        pulumi.set(__self__, "resource_type", resource_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
 
     @property
     @pulumi.getter
@@ -4538,53 +2952,12 @@ class GetTransitRouterRouteTablesTableResult(dict):
         :param str transit_router_route_table_name: Name of the transit router route table.
         :param str transit_router_route_table_type: The type of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
         """
-        GetTransitRouterRouteTablesTableResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            status=status,
-            transit_router_route_table_description=transit_router_route_table_description,
-            transit_router_route_table_id=transit_router_route_table_id,
-            transit_router_route_table_name=transit_router_route_table_name,
-            transit_router_route_table_type=transit_router_route_table_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             status: Optional[str] = None,
-             transit_router_route_table_description: Optional[str] = None,
-             transit_router_route_table_id: Optional[str] = None,
-             transit_router_route_table_name: Optional[str] = None,
-             transit_router_route_table_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if transit_router_route_table_description is None and 'transitRouterRouteTableDescription' in kwargs:
-            transit_router_route_table_description = kwargs['transitRouterRouteTableDescription']
-        if transit_router_route_table_description is None:
-            raise TypeError("Missing 'transit_router_route_table_description' argument")
-        if transit_router_route_table_id is None and 'transitRouterRouteTableId' in kwargs:
-            transit_router_route_table_id = kwargs['transitRouterRouteTableId']
-        if transit_router_route_table_id is None:
-            raise TypeError("Missing 'transit_router_route_table_id' argument")
-        if transit_router_route_table_name is None and 'transitRouterRouteTableName' in kwargs:
-            transit_router_route_table_name = kwargs['transitRouterRouteTableName']
-        if transit_router_route_table_name is None:
-            raise TypeError("Missing 'transit_router_route_table_name' argument")
-        if transit_router_route_table_type is None and 'transitRouterRouteTableType' in kwargs:
-            transit_router_route_table_type = kwargs['transitRouterRouteTableType']
-        if transit_router_route_table_type is None:
-            raise TypeError("Missing 'transit_router_route_table_type' argument")
-
-        _setter("id", id)
-        _setter("status", status)
-        _setter("transit_router_route_table_description", transit_router_route_table_description)
-        _setter("transit_router_route_table_id", transit_router_route_table_id)
-        _setter("transit_router_route_table_name", transit_router_route_table_name)
-        _setter("transit_router_route_table_type", transit_router_route_table_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transit_router_route_table_description", transit_router_route_table_description)
+        pulumi.set(__self__, "transit_router_route_table_id", transit_router_route_table_id)
+        pulumi.set(__self__, "transit_router_route_table_name", transit_router_route_table_name)
+        pulumi.set(__self__, "transit_router_route_table_type", transit_router_route_table_type)
 
     @property
     @pulumi.getter
@@ -4653,74 +3026,15 @@ class GetTransitRouterVbrAttachmentsAttachmentResult(dict):
         :param str vbr_id: ID of the VBR.
         :param str vbr_owner_id: The Owner ID of the VBR.
         """
-        GetTransitRouterVbrAttachmentsAttachmentResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto_publish_route_enabled=auto_publish_route_enabled,
-            id=id,
-            resource_type=resource_type,
-            status=status,
-            transit_router_attachment_description=transit_router_attachment_description,
-            transit_router_attachment_id=transit_router_attachment_id,
-            transit_router_attachment_name=transit_router_attachment_name,
-            vbr_id=vbr_id,
-            vbr_owner_id=vbr_owner_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto_publish_route_enabled: Optional[bool] = None,
-             id: Optional[str] = None,
-             resource_type: Optional[str] = None,
-             status: Optional[str] = None,
-             transit_router_attachment_description: Optional[str] = None,
-             transit_router_attachment_id: Optional[str] = None,
-             transit_router_attachment_name: Optional[str] = None,
-             vbr_id: Optional[str] = None,
-             vbr_owner_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_publish_route_enabled is None and 'autoPublishRouteEnabled' in kwargs:
-            auto_publish_route_enabled = kwargs['autoPublishRouteEnabled']
-        if auto_publish_route_enabled is None:
-            raise TypeError("Missing 'auto_publish_route_enabled' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if resource_type is None and 'resourceType' in kwargs:
-            resource_type = kwargs['resourceType']
-        if resource_type is None:
-            raise TypeError("Missing 'resource_type' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if transit_router_attachment_description is None and 'transitRouterAttachmentDescription' in kwargs:
-            transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
-        if transit_router_attachment_description is None:
-            raise TypeError("Missing 'transit_router_attachment_description' argument")
-        if transit_router_attachment_id is None and 'transitRouterAttachmentId' in kwargs:
-            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
-        if transit_router_attachment_id is None:
-            raise TypeError("Missing 'transit_router_attachment_id' argument")
-        if transit_router_attachment_name is None and 'transitRouterAttachmentName' in kwargs:
-            transit_router_attachment_name = kwargs['transitRouterAttachmentName']
-        if transit_router_attachment_name is None:
-            raise TypeError("Missing 'transit_router_attachment_name' argument")
-        if vbr_id is None and 'vbrId' in kwargs:
-            vbr_id = kwargs['vbrId']
-        if vbr_id is None:
-            raise TypeError("Missing 'vbr_id' argument")
-        if vbr_owner_id is None and 'vbrOwnerId' in kwargs:
-            vbr_owner_id = kwargs['vbrOwnerId']
-        if vbr_owner_id is None:
-            raise TypeError("Missing 'vbr_owner_id' argument")
-
-        _setter("auto_publish_route_enabled", auto_publish_route_enabled)
-        _setter("id", id)
-        _setter("resource_type", resource_type)
-        _setter("status", status)
-        _setter("transit_router_attachment_description", transit_router_attachment_description)
-        _setter("transit_router_attachment_id", transit_router_attachment_id)
-        _setter("transit_router_attachment_name", transit_router_attachment_name)
-        _setter("vbr_id", vbr_id)
-        _setter("vbr_owner_id", vbr_owner_id)
+        pulumi.set(__self__, "auto_publish_route_enabled", auto_publish_route_enabled)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource_type", resource_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transit_router_attachment_description", transit_router_attachment_description)
+        pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
+        pulumi.set(__self__, "transit_router_attachment_name", transit_router_attachment_name)
+        pulumi.set(__self__, "vbr_id", vbr_id)
+        pulumi.set(__self__, "vbr_owner_id", vbr_owner_id)
 
     @property
     @pulumi.getter(name="autoPublishRouteEnabled")
@@ -4814,81 +3128,16 @@ class GetTransitRouterVpcAttachmentsAttachmentResult(dict):
         :param str vpc_owner_id: The Owner ID of the VPC.
         :param Sequence['GetTransitRouterVpcAttachmentsAttachmentZoneMappingArgs'] zone_mappings: The mappings of zone
         """
-        GetTransitRouterVpcAttachmentsAttachmentResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            payment_type=payment_type,
-            resource_type=resource_type,
-            status=status,
-            transit_router_attachment_description=transit_router_attachment_description,
-            transit_router_attachment_id=transit_router_attachment_id,
-            transit_router_attachment_name=transit_router_attachment_name,
-            vpc_id=vpc_id,
-            vpc_owner_id=vpc_owner_id,
-            zone_mappings=zone_mappings,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             payment_type: Optional[str] = None,
-             resource_type: Optional[str] = None,
-             status: Optional[str] = None,
-             transit_router_attachment_description: Optional[str] = None,
-             transit_router_attachment_id: Optional[str] = None,
-             transit_router_attachment_name: Optional[str] = None,
-             vpc_id: Optional[str] = None,
-             vpc_owner_id: Optional[str] = None,
-             zone_mappings: Optional[Sequence['outputs.GetTransitRouterVpcAttachmentsAttachmentZoneMappingResult']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if payment_type is None:
-            raise TypeError("Missing 'payment_type' argument")
-        if resource_type is None and 'resourceType' in kwargs:
-            resource_type = kwargs['resourceType']
-        if resource_type is None:
-            raise TypeError("Missing 'resource_type' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if transit_router_attachment_description is None and 'transitRouterAttachmentDescription' in kwargs:
-            transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
-        if transit_router_attachment_description is None:
-            raise TypeError("Missing 'transit_router_attachment_description' argument")
-        if transit_router_attachment_id is None and 'transitRouterAttachmentId' in kwargs:
-            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
-        if transit_router_attachment_id is None:
-            raise TypeError("Missing 'transit_router_attachment_id' argument")
-        if transit_router_attachment_name is None and 'transitRouterAttachmentName' in kwargs:
-            transit_router_attachment_name = kwargs['transitRouterAttachmentName']
-        if transit_router_attachment_name is None:
-            raise TypeError("Missing 'transit_router_attachment_name' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-        if vpc_owner_id is None and 'vpcOwnerId' in kwargs:
-            vpc_owner_id = kwargs['vpcOwnerId']
-        if vpc_owner_id is None:
-            raise TypeError("Missing 'vpc_owner_id' argument")
-        if zone_mappings is None and 'zoneMappings' in kwargs:
-            zone_mappings = kwargs['zoneMappings']
-        if zone_mappings is None:
-            raise TypeError("Missing 'zone_mappings' argument")
-
-        _setter("id", id)
-        _setter("payment_type", payment_type)
-        _setter("resource_type", resource_type)
-        _setter("status", status)
-        _setter("transit_router_attachment_description", transit_router_attachment_description)
-        _setter("transit_router_attachment_id", transit_router_attachment_id)
-        _setter("transit_router_attachment_name", transit_router_attachment_name)
-        _setter("vpc_id", vpc_id)
-        _setter("vpc_owner_id", vpc_owner_id)
-        _setter("zone_mappings", zone_mappings)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "resource_type", resource_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transit_router_attachment_description", transit_router_attachment_description)
+        pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
+        pulumi.set(__self__, "transit_router_attachment_name", transit_router_attachment_name)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vpc_owner_id", vpc_owner_id)
+        pulumi.set(__self__, "zone_mappings", zone_mappings)
 
     @property
     @pulumi.getter
@@ -4980,29 +3229,8 @@ class GetTransitRouterVpcAttachmentsAttachmentZoneMappingResult(dict):
         :param str vswitch_id: The VSwitch ID.
         :param str zone_id: The zone ID.
         """
-        GetTransitRouterVpcAttachmentsAttachmentZoneMappingResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            vswitch_id=vswitch_id,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             vswitch_id: Optional[str] = None,
-             zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("vswitch_id", vswitch_id)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="vswitchId")
@@ -5048,93 +3276,18 @@ class GetTransitRouterVpnAttachmentsAttachmentResult(dict):
         :param str vpn_owner_id: The owner id of vpn.
         :param Sequence['GetTransitRouterVpnAttachmentsAttachmentZoneArgs'] zones: The list of zone mapping.
         """
-        GetTransitRouterVpnAttachmentsAttachmentResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto_publish_route_enabled=auto_publish_route_enabled,
-            create_time=create_time,
-            id=id,
-            resource_type=resource_type,
-            status=status,
-            transit_router_attachment_description=transit_router_attachment_description,
-            transit_router_attachment_id=transit_router_attachment_id,
-            transit_router_attachment_name=transit_router_attachment_name,
-            transit_router_id=transit_router_id,
-            vpn_id=vpn_id,
-            vpn_owner_id=vpn_owner_id,
-            zones=zones,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto_publish_route_enabled: Optional[bool] = None,
-             create_time: Optional[str] = None,
-             id: Optional[str] = None,
-             resource_type: Optional[str] = None,
-             status: Optional[str] = None,
-             transit_router_attachment_description: Optional[str] = None,
-             transit_router_attachment_id: Optional[str] = None,
-             transit_router_attachment_name: Optional[str] = None,
-             transit_router_id: Optional[str] = None,
-             vpn_id: Optional[str] = None,
-             vpn_owner_id: Optional[str] = None,
-             zones: Optional[Sequence['outputs.GetTransitRouterVpnAttachmentsAttachmentZoneResult']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_publish_route_enabled is None and 'autoPublishRouteEnabled' in kwargs:
-            auto_publish_route_enabled = kwargs['autoPublishRouteEnabled']
-        if auto_publish_route_enabled is None:
-            raise TypeError("Missing 'auto_publish_route_enabled' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if resource_type is None and 'resourceType' in kwargs:
-            resource_type = kwargs['resourceType']
-        if resource_type is None:
-            raise TypeError("Missing 'resource_type' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if transit_router_attachment_description is None and 'transitRouterAttachmentDescription' in kwargs:
-            transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
-        if transit_router_attachment_description is None:
-            raise TypeError("Missing 'transit_router_attachment_description' argument")
-        if transit_router_attachment_id is None and 'transitRouterAttachmentId' in kwargs:
-            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
-        if transit_router_attachment_id is None:
-            raise TypeError("Missing 'transit_router_attachment_id' argument")
-        if transit_router_attachment_name is None and 'transitRouterAttachmentName' in kwargs:
-            transit_router_attachment_name = kwargs['transitRouterAttachmentName']
-        if transit_router_attachment_name is None:
-            raise TypeError("Missing 'transit_router_attachment_name' argument")
-        if transit_router_id is None and 'transitRouterId' in kwargs:
-            transit_router_id = kwargs['transitRouterId']
-        if transit_router_id is None:
-            raise TypeError("Missing 'transit_router_id' argument")
-        if vpn_id is None and 'vpnId' in kwargs:
-            vpn_id = kwargs['vpnId']
-        if vpn_id is None:
-            raise TypeError("Missing 'vpn_id' argument")
-        if vpn_owner_id is None and 'vpnOwnerId' in kwargs:
-            vpn_owner_id = kwargs['vpnOwnerId']
-        if vpn_owner_id is None:
-            raise TypeError("Missing 'vpn_owner_id' argument")
-        if zones is None:
-            raise TypeError("Missing 'zones' argument")
-
-        _setter("auto_publish_route_enabled", auto_publish_route_enabled)
-        _setter("create_time", create_time)
-        _setter("id", id)
-        _setter("resource_type", resource_type)
-        _setter("status", status)
-        _setter("transit_router_attachment_description", transit_router_attachment_description)
-        _setter("transit_router_attachment_id", transit_router_attachment_id)
-        _setter("transit_router_attachment_name", transit_router_attachment_name)
-        _setter("transit_router_id", transit_router_id)
-        _setter("vpn_id", vpn_id)
-        _setter("vpn_owner_id", vpn_owner_id)
-        _setter("zones", zones)
+        pulumi.set(__self__, "auto_publish_route_enabled", auto_publish_route_enabled)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource_type", resource_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transit_router_attachment_description", transit_router_attachment_description)
+        pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
+        pulumi.set(__self__, "transit_router_attachment_name", transit_router_attachment_name)
+        pulumi.set(__self__, "transit_router_id", transit_router_id)
+        pulumi.set(__self__, "vpn_id", vpn_id)
+        pulumi.set(__self__, "vpn_owner_id", vpn_owner_id)
+        pulumi.set(__self__, "zones", zones)
 
     @property
     @pulumi.getter(name="autoPublishRouteEnabled")
@@ -5234,22 +3387,7 @@ class GetTransitRouterVpnAttachmentsAttachmentZoneResult(dict):
         """
         :param str zone_id: The id of the zone.
         """
-        GetTransitRouterVpnAttachmentsAttachmentZoneResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -5283,72 +3421,15 @@ class GetTransitRoutersTransitRouterResult(dict):
         :param str type: The Type of the transit router.
         :param str xgw_vip: The vip of the XGW.
         """
-        GetTransitRoutersTransitRouterResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ali_uid=ali_uid,
-            cen_id=cen_id,
-            id=id,
-            status=status,
-            transit_router_description=transit_router_description,
-            transit_router_id=transit_router_id,
-            transit_router_name=transit_router_name,
-            type=type,
-            xgw_vip=xgw_vip,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ali_uid: Optional[str] = None,
-             cen_id: Optional[str] = None,
-             id: Optional[str] = None,
-             status: Optional[str] = None,
-             transit_router_description: Optional[str] = None,
-             transit_router_id: Optional[str] = None,
-             transit_router_name: Optional[str] = None,
-             type: Optional[str] = None,
-             xgw_vip: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ali_uid is None and 'aliUid' in kwargs:
-            ali_uid = kwargs['aliUid']
-        if ali_uid is None:
-            raise TypeError("Missing 'ali_uid' argument")
-        if cen_id is None and 'cenId' in kwargs:
-            cen_id = kwargs['cenId']
-        if cen_id is None:
-            raise TypeError("Missing 'cen_id' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if transit_router_description is None and 'transitRouterDescription' in kwargs:
-            transit_router_description = kwargs['transitRouterDescription']
-        if transit_router_description is None:
-            raise TypeError("Missing 'transit_router_description' argument")
-        if transit_router_id is None and 'transitRouterId' in kwargs:
-            transit_router_id = kwargs['transitRouterId']
-        if transit_router_id is None:
-            raise TypeError("Missing 'transit_router_id' argument")
-        if transit_router_name is None and 'transitRouterName' in kwargs:
-            transit_router_name = kwargs['transitRouterName']
-        if transit_router_name is None:
-            raise TypeError("Missing 'transit_router_name' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if xgw_vip is None and 'xgwVip' in kwargs:
-            xgw_vip = kwargs['xgwVip']
-        if xgw_vip is None:
-            raise TypeError("Missing 'xgw_vip' argument")
-
-        _setter("ali_uid", ali_uid)
-        _setter("cen_id", cen_id)
-        _setter("id", id)
-        _setter("status", status)
-        _setter("transit_router_description", transit_router_description)
-        _setter("transit_router_id", transit_router_id)
-        _setter("transit_router_name", transit_router_name)
-        _setter("type", type)
-        _setter("xgw_vip", xgw_vip)
+        pulumi.set(__self__, "ali_uid", ali_uid)
+        pulumi.set(__self__, "cen_id", cen_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transit_router_description", transit_router_description)
+        pulumi.set(__self__, "transit_router_id", transit_router_id)
+        pulumi.set(__self__, "transit_router_name", transit_router_name)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "xgw_vip", xgw_vip)
 
     @property
     @pulumi.getter(name="aliUid")
@@ -5444,69 +3525,14 @@ class GetVbrHealthChecksCheckResult(dict):
         :param str vbr_instance_id: The ID of the VBR instance.
         :param str vbr_instance_region_id: The ID of the region where the VBR instance is deployed.
         """
-        GetVbrHealthChecksCheckResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cen_id=cen_id,
-            health_check_interval=health_check_interval,
-            health_check_source_ip=health_check_source_ip,
-            health_check_target_ip=health_check_target_ip,
-            healthy_threshold=healthy_threshold,
-            id=id,
-            vbr_instance_id=vbr_instance_id,
-            vbr_instance_region_id=vbr_instance_region_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cen_id: Optional[str] = None,
-             health_check_interval: Optional[int] = None,
-             health_check_source_ip: Optional[str] = None,
-             health_check_target_ip: Optional[str] = None,
-             healthy_threshold: Optional[int] = None,
-             id: Optional[str] = None,
-             vbr_instance_id: Optional[str] = None,
-             vbr_instance_region_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cen_id is None and 'cenId' in kwargs:
-            cen_id = kwargs['cenId']
-        if cen_id is None:
-            raise TypeError("Missing 'cen_id' argument")
-        if health_check_interval is None and 'healthCheckInterval' in kwargs:
-            health_check_interval = kwargs['healthCheckInterval']
-        if health_check_interval is None:
-            raise TypeError("Missing 'health_check_interval' argument")
-        if health_check_source_ip is None and 'healthCheckSourceIp' in kwargs:
-            health_check_source_ip = kwargs['healthCheckSourceIp']
-        if health_check_source_ip is None:
-            raise TypeError("Missing 'health_check_source_ip' argument")
-        if health_check_target_ip is None and 'healthCheckTargetIp' in kwargs:
-            health_check_target_ip = kwargs['healthCheckTargetIp']
-        if health_check_target_ip is None:
-            raise TypeError("Missing 'health_check_target_ip' argument")
-        if healthy_threshold is None and 'healthyThreshold' in kwargs:
-            healthy_threshold = kwargs['healthyThreshold']
-        if healthy_threshold is None:
-            raise TypeError("Missing 'healthy_threshold' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if vbr_instance_id is None and 'vbrInstanceId' in kwargs:
-            vbr_instance_id = kwargs['vbrInstanceId']
-        if vbr_instance_id is None:
-            raise TypeError("Missing 'vbr_instance_id' argument")
-        if vbr_instance_region_id is None and 'vbrInstanceRegionId' in kwargs:
-            vbr_instance_region_id = kwargs['vbrInstanceRegionId']
-        if vbr_instance_region_id is None:
-            raise TypeError("Missing 'vbr_instance_region_id' argument")
-
-        _setter("cen_id", cen_id)
-        _setter("health_check_interval", health_check_interval)
-        _setter("health_check_source_ip", health_check_source_ip)
-        _setter("health_check_target_ip", health_check_target_ip)
-        _setter("healthy_threshold", healthy_threshold)
-        _setter("id", id)
-        _setter("vbr_instance_id", vbr_instance_id)
-        _setter("vbr_instance_region_id", vbr_instance_region_id)
+        pulumi.set(__self__, "cen_id", cen_id)
+        pulumi.set(__self__, "health_check_interval", health_check_interval)
+        pulumi.set(__self__, "health_check_source_ip", health_check_source_ip)
+        pulumi.set(__self__, "health_check_target_ip", health_check_target_ip)
+        pulumi.set(__self__, "healthy_threshold", healthy_threshold)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "vbr_instance_id", vbr_instance_id)
+        pulumi.set(__self__, "vbr_instance_region_id", vbr_instance_region_id)
 
     @property
     @pulumi.getter(name="cenId")

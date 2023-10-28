@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['CertificateArgs', 'Certificate']
@@ -25,42 +25,17 @@ class CertificateArgs:
         :param pulumi.Input[str] key: Key of the Certificate in which the Certificate will add.
         :param pulumi.Input[str] name: Name of the Certificate. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         """
-        CertificateArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cert=cert,
-            key=key,
-            certificate_name=certificate_name,
-            lang=lang,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cert: Optional[pulumi.Input[str]] = None,
-             key: Optional[pulumi.Input[str]] = None,
-             certificate_name: Optional[pulumi.Input[str]] = None,
-             lang: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cert is None:
-            raise TypeError("Missing 'cert' argument")
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if certificate_name is None and 'certificateName' in kwargs:
-            certificate_name = kwargs['certificateName']
-
-        _setter("cert", cert)
-        _setter("key", key)
+        pulumi.set(__self__, "cert", cert)
+        pulumi.set(__self__, "key", key)
         if certificate_name is not None:
-            _setter("certificate_name", certificate_name)
+            pulumi.set(__self__, "certificate_name", certificate_name)
         if lang is not None:
-            _setter("lang", lang)
+            pulumi.set(__self__, "lang", lang)
         if name is not None:
             warnings.warn("""attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""")
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -134,40 +109,19 @@ class _CertificateState:
         :param pulumi.Input[str] key: Key of the Certificate in which the Certificate will add.
         :param pulumi.Input[str] name: Name of the Certificate. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         """
-        _CertificateState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cert=cert,
-            certificate_name=certificate_name,
-            key=key,
-            lang=lang,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cert: Optional[pulumi.Input[str]] = None,
-             certificate_name: Optional[pulumi.Input[str]] = None,
-             key: Optional[pulumi.Input[str]] = None,
-             lang: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if certificate_name is None and 'certificateName' in kwargs:
-            certificate_name = kwargs['certificateName']
-
         if cert is not None:
-            _setter("cert", cert)
+            pulumi.set(__self__, "cert", cert)
         if certificate_name is not None:
-            _setter("certificate_name", certificate_name)
+            pulumi.set(__self__, "certificate_name", certificate_name)
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if lang is not None:
-            _setter("lang", lang)
+            pulumi.set(__self__, "lang", lang)
         if name is not None:
             warnings.warn("""attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""")
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -311,10 +265,6 @@ class Certificate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CertificateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

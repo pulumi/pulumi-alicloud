@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EipArgs', 'Eip']
@@ -54,137 +54,56 @@ class EipArgs:
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the eip belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
-        EipArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            activity_id=activity_id,
-            address_name=address_name,
-            auto_pay=auto_pay,
-            bandwidth=bandwidth,
-            deletion_protection=deletion_protection,
-            description=description,
-            high_definition_monitor_log_status=high_definition_monitor_log_status,
-            instance_charge_type=instance_charge_type,
-            internet_charge_type=internet_charge_type,
-            isp=isp,
-            log_project=log_project,
-            log_store=log_store,
-            name=name,
-            netmode=netmode,
-            payment_type=payment_type,
-            period=period,
-            pricing_cycle=pricing_cycle,
-            public_ip_address_pool_id=public_ip_address_pool_id,
-            resource_group_id=resource_group_id,
-            security_protection_types=security_protection_types,
-            tags=tags,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             activity_id: Optional[pulumi.Input[str]] = None,
-             address_name: Optional[pulumi.Input[str]] = None,
-             auto_pay: Optional[pulumi.Input[bool]] = None,
-             bandwidth: Optional[pulumi.Input[str]] = None,
-             deletion_protection: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             high_definition_monitor_log_status: Optional[pulumi.Input[str]] = None,
-             instance_charge_type: Optional[pulumi.Input[str]] = None,
-             internet_charge_type: Optional[pulumi.Input[str]] = None,
-             isp: Optional[pulumi.Input[str]] = None,
-             log_project: Optional[pulumi.Input[str]] = None,
-             log_store: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             netmode: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[int]] = None,
-             pricing_cycle: Optional[pulumi.Input[str]] = None,
-             public_ip_address_pool_id: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if activity_id is None and 'activityId' in kwargs:
-            activity_id = kwargs['activityId']
-        if address_name is None and 'addressName' in kwargs:
-            address_name = kwargs['addressName']
-        if auto_pay is None and 'autoPay' in kwargs:
-            auto_pay = kwargs['autoPay']
-        if deletion_protection is None and 'deletionProtection' in kwargs:
-            deletion_protection = kwargs['deletionProtection']
-        if high_definition_monitor_log_status is None and 'highDefinitionMonitorLogStatus' in kwargs:
-            high_definition_monitor_log_status = kwargs['highDefinitionMonitorLogStatus']
-        if instance_charge_type is None and 'instanceChargeType' in kwargs:
-            instance_charge_type = kwargs['instanceChargeType']
-        if internet_charge_type is None and 'internetChargeType' in kwargs:
-            internet_charge_type = kwargs['internetChargeType']
-        if log_project is None and 'logProject' in kwargs:
-            log_project = kwargs['logProject']
-        if log_store is None and 'logStore' in kwargs:
-            log_store = kwargs['logStore']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if pricing_cycle is None and 'pricingCycle' in kwargs:
-            pricing_cycle = kwargs['pricingCycle']
-        if public_ip_address_pool_id is None and 'publicIpAddressPoolId' in kwargs:
-            public_ip_address_pool_id = kwargs['publicIpAddressPoolId']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if security_protection_types is None and 'securityProtectionTypes' in kwargs:
-            security_protection_types = kwargs['securityProtectionTypes']
-
         if activity_id is not None:
-            _setter("activity_id", activity_id)
+            pulumi.set(__self__, "activity_id", activity_id)
         if address_name is not None:
-            _setter("address_name", address_name)
+            pulumi.set(__self__, "address_name", address_name)
         if auto_pay is not None:
-            _setter("auto_pay", auto_pay)
+            pulumi.set(__self__, "auto_pay", auto_pay)
         if bandwidth is not None:
-            _setter("bandwidth", bandwidth)
+            pulumi.set(__self__, "bandwidth", bandwidth)
         if deletion_protection is not None:
-            _setter("deletion_protection", deletion_protection)
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if high_definition_monitor_log_status is not None:
-            _setter("high_definition_monitor_log_status", high_definition_monitor_log_status)
+            pulumi.set(__self__, "high_definition_monitor_log_status", high_definition_monitor_log_status)
         if instance_charge_type is not None:
             warnings.warn("""Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""", DeprecationWarning)
             pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""")
         if instance_charge_type is not None:
-            _setter("instance_charge_type", instance_charge_type)
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if internet_charge_type is not None:
-            _setter("internet_charge_type", internet_charge_type)
+            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
         if isp is not None:
-            _setter("isp", isp)
+            pulumi.set(__self__, "isp", isp)
         if log_project is not None:
-            _setter("log_project", log_project)
+            pulumi.set(__self__, "log_project", log_project)
         if log_store is not None:
-            _setter("log_store", log_store)
+            pulumi.set(__self__, "log_store", log_store)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""")
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if netmode is not None:
-            _setter("netmode", netmode)
+            pulumi.set(__self__, "netmode", netmode)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if pricing_cycle is not None:
-            _setter("pricing_cycle", pricing_cycle)
+            pulumi.set(__self__, "pricing_cycle", pricing_cycle)
         if public_ip_address_pool_id is not None:
-            _setter("public_ip_address_pool_id", public_ip_address_pool_id)
+            pulumi.set(__self__, "public_ip_address_pool_id", public_ip_address_pool_id)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_protection_types is not None:
-            _setter("security_protection_types", security_protection_types)
+            pulumi.set(__self__, "security_protection_types", security_protection_types)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="activityId")
@@ -478,153 +397,62 @@ class _EipState:
         :param pulumi.Input[str] status: The EIP current status.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
-        _EipState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            activity_id=activity_id,
-            address_name=address_name,
-            auto_pay=auto_pay,
-            bandwidth=bandwidth,
-            create_time=create_time,
-            deletion_protection=deletion_protection,
-            description=description,
-            high_definition_monitor_log_status=high_definition_monitor_log_status,
-            instance_charge_type=instance_charge_type,
-            internet_charge_type=internet_charge_type,
-            ip_address=ip_address,
-            isp=isp,
-            log_project=log_project,
-            log_store=log_store,
-            name=name,
-            netmode=netmode,
-            payment_type=payment_type,
-            period=period,
-            pricing_cycle=pricing_cycle,
-            public_ip_address_pool_id=public_ip_address_pool_id,
-            resource_group_id=resource_group_id,
-            security_protection_types=security_protection_types,
-            status=status,
-            tags=tags,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             activity_id: Optional[pulumi.Input[str]] = None,
-             address_name: Optional[pulumi.Input[str]] = None,
-             auto_pay: Optional[pulumi.Input[bool]] = None,
-             bandwidth: Optional[pulumi.Input[str]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             deletion_protection: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             high_definition_monitor_log_status: Optional[pulumi.Input[str]] = None,
-             instance_charge_type: Optional[pulumi.Input[str]] = None,
-             internet_charge_type: Optional[pulumi.Input[str]] = None,
-             ip_address: Optional[pulumi.Input[str]] = None,
-             isp: Optional[pulumi.Input[str]] = None,
-             log_project: Optional[pulumi.Input[str]] = None,
-             log_store: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             netmode: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[int]] = None,
-             pricing_cycle: Optional[pulumi.Input[str]] = None,
-             public_ip_address_pool_id: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if activity_id is None and 'activityId' in kwargs:
-            activity_id = kwargs['activityId']
-        if address_name is None and 'addressName' in kwargs:
-            address_name = kwargs['addressName']
-        if auto_pay is None and 'autoPay' in kwargs:
-            auto_pay = kwargs['autoPay']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if deletion_protection is None and 'deletionProtection' in kwargs:
-            deletion_protection = kwargs['deletionProtection']
-        if high_definition_monitor_log_status is None and 'highDefinitionMonitorLogStatus' in kwargs:
-            high_definition_monitor_log_status = kwargs['highDefinitionMonitorLogStatus']
-        if instance_charge_type is None and 'instanceChargeType' in kwargs:
-            instance_charge_type = kwargs['instanceChargeType']
-        if internet_charge_type is None and 'internetChargeType' in kwargs:
-            internet_charge_type = kwargs['internetChargeType']
-        if ip_address is None and 'ipAddress' in kwargs:
-            ip_address = kwargs['ipAddress']
-        if log_project is None and 'logProject' in kwargs:
-            log_project = kwargs['logProject']
-        if log_store is None and 'logStore' in kwargs:
-            log_store = kwargs['logStore']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if pricing_cycle is None and 'pricingCycle' in kwargs:
-            pricing_cycle = kwargs['pricingCycle']
-        if public_ip_address_pool_id is None and 'publicIpAddressPoolId' in kwargs:
-            public_ip_address_pool_id = kwargs['publicIpAddressPoolId']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if security_protection_types is None and 'securityProtectionTypes' in kwargs:
-            security_protection_types = kwargs['securityProtectionTypes']
-
         if activity_id is not None:
-            _setter("activity_id", activity_id)
+            pulumi.set(__self__, "activity_id", activity_id)
         if address_name is not None:
-            _setter("address_name", address_name)
+            pulumi.set(__self__, "address_name", address_name)
         if auto_pay is not None:
-            _setter("auto_pay", auto_pay)
+            pulumi.set(__self__, "auto_pay", auto_pay)
         if bandwidth is not None:
-            _setter("bandwidth", bandwidth)
+            pulumi.set(__self__, "bandwidth", bandwidth)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if deletion_protection is not None:
-            _setter("deletion_protection", deletion_protection)
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if high_definition_monitor_log_status is not None:
-            _setter("high_definition_monitor_log_status", high_definition_monitor_log_status)
+            pulumi.set(__self__, "high_definition_monitor_log_status", high_definition_monitor_log_status)
         if instance_charge_type is not None:
             warnings.warn("""Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""", DeprecationWarning)
             pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""")
         if instance_charge_type is not None:
-            _setter("instance_charge_type", instance_charge_type)
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if internet_charge_type is not None:
-            _setter("internet_charge_type", internet_charge_type)
+            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
         if ip_address is not None:
-            _setter("ip_address", ip_address)
+            pulumi.set(__self__, "ip_address", ip_address)
         if isp is not None:
-            _setter("isp", isp)
+            pulumi.set(__self__, "isp", isp)
         if log_project is not None:
-            _setter("log_project", log_project)
+            pulumi.set(__self__, "log_project", log_project)
         if log_store is not None:
-            _setter("log_store", log_store)
+            pulumi.set(__self__, "log_store", log_store)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""")
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if netmode is not None:
-            _setter("netmode", netmode)
+            pulumi.set(__self__, "netmode", netmode)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if pricing_cycle is not None:
-            _setter("pricing_cycle", pricing_cycle)
+            pulumi.set(__self__, "pricing_cycle", pricing_cycle)
         if public_ip_address_pool_id is not None:
-            _setter("public_ip_address_pool_id", public_ip_address_pool_id)
+            pulumi.set(__self__, "public_ip_address_pool_id", public_ip_address_pool_id)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_protection_types is not None:
-            _setter("security_protection_types", security_protection_types)
+            pulumi.set(__self__, "security_protection_types", security_protection_types)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="activityId")
@@ -1038,10 +866,6 @@ class Eip(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            EipArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

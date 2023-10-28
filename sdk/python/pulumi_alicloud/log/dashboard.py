@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DashboardArgs', 'Dashboard']
@@ -27,46 +27,13 @@ class DashboardArgs:
         :param pulumi.Input[str] attribute: Dashboard attribute.
         :param pulumi.Input[str] display_name: Dashboard alias.
         """
-        DashboardArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            char_list=char_list,
-            dashboard_name=dashboard_name,
-            project_name=project_name,
-            attribute=attribute,
-            display_name=display_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             char_list: Optional[pulumi.Input[str]] = None,
-             dashboard_name: Optional[pulumi.Input[str]] = None,
-             project_name: Optional[pulumi.Input[str]] = None,
-             attribute: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if char_list is None and 'charList' in kwargs:
-            char_list = kwargs['charList']
-        if char_list is None:
-            raise TypeError("Missing 'char_list' argument")
-        if dashboard_name is None and 'dashboardName' in kwargs:
-            dashboard_name = kwargs['dashboardName']
-        if dashboard_name is None:
-            raise TypeError("Missing 'dashboard_name' argument")
-        if project_name is None and 'projectName' in kwargs:
-            project_name = kwargs['projectName']
-        if project_name is None:
-            raise TypeError("Missing 'project_name' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-
-        _setter("char_list", char_list)
-        _setter("dashboard_name", dashboard_name)
-        _setter("project_name", project_name)
+        pulumi.set(__self__, "char_list", char_list)
+        pulumi.set(__self__, "dashboard_name", dashboard_name)
+        pulumi.set(__self__, "project_name", project_name)
         if attribute is not None:
-            _setter("attribute", attribute)
+            pulumi.set(__self__, "attribute", attribute)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
 
     @property
     @pulumi.getter(name="charList")
@@ -145,43 +112,16 @@ class _DashboardState:
         :param pulumi.Input[str] display_name: Dashboard alias.
         :param pulumi.Input[str] project_name: The name of the log project. It is the only in one Alicloud account.
         """
-        _DashboardState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            attribute=attribute,
-            char_list=char_list,
-            dashboard_name=dashboard_name,
-            display_name=display_name,
-            project_name=project_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             attribute: Optional[pulumi.Input[str]] = None,
-             char_list: Optional[pulumi.Input[str]] = None,
-             dashboard_name: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             project_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if char_list is None and 'charList' in kwargs:
-            char_list = kwargs['charList']
-        if dashboard_name is None and 'dashboardName' in kwargs:
-            dashboard_name = kwargs['dashboardName']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if project_name is None and 'projectName' in kwargs:
-            project_name = kwargs['projectName']
-
         if attribute is not None:
-            _setter("attribute", attribute)
+            pulumi.set(__self__, "attribute", attribute)
         if char_list is not None:
-            _setter("char_list", char_list)
+            pulumi.set(__self__, "char_list", char_list)
         if dashboard_name is not None:
-            _setter("dashboard_name", dashboard_name)
+            pulumi.set(__self__, "dashboard_name", dashboard_name)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if project_name is not None:
-            _setter("project_name", project_name)
+            pulumi.set(__self__, "project_name", project_name)
 
     @property
     @pulumi.getter
@@ -413,10 +353,6 @@ class Dashboard(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DashboardArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['KubernetesAddonInitArgs', 'KubernetesAddon']
@@ -25,35 +25,12 @@ class KubernetesAddonInitArgs:
         :param pulumi.Input[str] config: The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `cs_get_kubernetes_addon_metadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs_get_kubernetes_addons`.
         :param pulumi.Input[str] name: The name of addon.
         """
-        KubernetesAddonInitArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_id=cluster_id,
-            version=version,
-            config=config,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             version: Optional[pulumi.Input[str]] = None,
-             config: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cluster_id is None:
-            raise TypeError("Missing 'cluster_id' argument")
-        if version is None:
-            raise TypeError("Missing 'version' argument")
-
-        _setter("cluster_id", cluster_id)
-        _setter("version", version)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "version", version)
         if config is not None:
-            _setter("config", config)
+            pulumi.set(__self__, "config", config)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -124,49 +101,20 @@ class _KubernetesAddonState:
         :param pulumi.Input[bool] required: Is it a mandatory addon to be installed.
         :param pulumi.Input[str] version: The current version of addon.
         """
-        _KubernetesAddonState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            can_upgrade=can_upgrade,
-            cluster_id=cluster_id,
-            config=config,
-            name=name,
-            next_version=next_version,
-            required=required,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             can_upgrade: Optional[pulumi.Input[bool]] = None,
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             config: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             next_version: Optional[pulumi.Input[str]] = None,
-             required: Optional[pulumi.Input[bool]] = None,
-             version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if can_upgrade is None and 'canUpgrade' in kwargs:
-            can_upgrade = kwargs['canUpgrade']
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if next_version is None and 'nextVersion' in kwargs:
-            next_version = kwargs['nextVersion']
-
         if can_upgrade is not None:
-            _setter("can_upgrade", can_upgrade)
+            pulumi.set(__self__, "can_upgrade", can_upgrade)
         if cluster_id is not None:
-            _setter("cluster_id", cluster_id)
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if config is not None:
-            _setter("config", config)
+            pulumi.set(__self__, "config", config)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if next_version is not None:
-            _setter("next_version", next_version)
+            pulumi.set(__self__, "next_version", next_version)
         if required is not None:
-            _setter("required", required)
+            pulumi.set(__self__, "required", required)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="canUpgrade")
@@ -316,10 +264,6 @@ class KubernetesAddon(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            KubernetesAddonInitArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

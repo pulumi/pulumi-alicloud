@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,72 +37,19 @@ class DbInstancePlanArgs:
         :param pulumi.Input[str] plan_start_date: The start time of the Plan.
         :param pulumi.Input[str] status: The Status of the Plan. Valid values: `active`, `cancel`.
         """
-        DbInstancePlanArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            db_instance_id=db_instance_id,
-            db_instance_plan_name=db_instance_plan_name,
-            plan_configs=plan_configs,
-            plan_schedule_type=plan_schedule_type,
-            plan_type=plan_type,
-            plan_desc=plan_desc,
-            plan_end_date=plan_end_date,
-            plan_start_date=plan_start_date,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             db_instance_id: Optional[pulumi.Input[str]] = None,
-             db_instance_plan_name: Optional[pulumi.Input[str]] = None,
-             plan_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DbInstancePlanPlanConfigArgs']]]] = None,
-             plan_schedule_type: Optional[pulumi.Input[str]] = None,
-             plan_type: Optional[pulumi.Input[str]] = None,
-             plan_desc: Optional[pulumi.Input[str]] = None,
-             plan_end_date: Optional[pulumi.Input[str]] = None,
-             plan_start_date: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if db_instance_id is None and 'dbInstanceId' in kwargs:
-            db_instance_id = kwargs['dbInstanceId']
-        if db_instance_id is None:
-            raise TypeError("Missing 'db_instance_id' argument")
-        if db_instance_plan_name is None and 'dbInstancePlanName' in kwargs:
-            db_instance_plan_name = kwargs['dbInstancePlanName']
-        if db_instance_plan_name is None:
-            raise TypeError("Missing 'db_instance_plan_name' argument")
-        if plan_configs is None and 'planConfigs' in kwargs:
-            plan_configs = kwargs['planConfigs']
-        if plan_configs is None:
-            raise TypeError("Missing 'plan_configs' argument")
-        if plan_schedule_type is None and 'planScheduleType' in kwargs:
-            plan_schedule_type = kwargs['planScheduleType']
-        if plan_schedule_type is None:
-            raise TypeError("Missing 'plan_schedule_type' argument")
-        if plan_type is None and 'planType' in kwargs:
-            plan_type = kwargs['planType']
-        if plan_type is None:
-            raise TypeError("Missing 'plan_type' argument")
-        if plan_desc is None and 'planDesc' in kwargs:
-            plan_desc = kwargs['planDesc']
-        if plan_end_date is None and 'planEndDate' in kwargs:
-            plan_end_date = kwargs['planEndDate']
-        if plan_start_date is None and 'planStartDate' in kwargs:
-            plan_start_date = kwargs['planStartDate']
-
-        _setter("db_instance_id", db_instance_id)
-        _setter("db_instance_plan_name", db_instance_plan_name)
-        _setter("plan_configs", plan_configs)
-        _setter("plan_schedule_type", plan_schedule_type)
-        _setter("plan_type", plan_type)
+        pulumi.set(__self__, "db_instance_id", db_instance_id)
+        pulumi.set(__self__, "db_instance_plan_name", db_instance_plan_name)
+        pulumi.set(__self__, "plan_configs", plan_configs)
+        pulumi.set(__self__, "plan_schedule_type", plan_schedule_type)
+        pulumi.set(__self__, "plan_type", plan_type)
         if plan_desc is not None:
-            _setter("plan_desc", plan_desc)
+            pulumi.set(__self__, "plan_desc", plan_desc)
         if plan_end_date is not None:
-            _setter("plan_end_date", plan_end_date)
+            pulumi.set(__self__, "plan_end_date", plan_end_date)
         if plan_start_date is not None:
-            _setter("plan_start_date", plan_start_date)
+            pulumi.set(__self__, "plan_start_date", plan_start_date)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="dbInstanceId")
@@ -239,73 +186,26 @@ class _DbInstancePlanState:
         :param pulumi.Input[str] plan_type: The type of the Plan. Valid values: `PauseResume`, `Resize`.
         :param pulumi.Input[str] status: The Status of the Plan. Valid values: `active`, `cancel`.
         """
-        _DbInstancePlanState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            db_instance_id=db_instance_id,
-            db_instance_plan_name=db_instance_plan_name,
-            plan_configs=plan_configs,
-            plan_desc=plan_desc,
-            plan_end_date=plan_end_date,
-            plan_id=plan_id,
-            plan_schedule_type=plan_schedule_type,
-            plan_start_date=plan_start_date,
-            plan_type=plan_type,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             db_instance_id: Optional[pulumi.Input[str]] = None,
-             db_instance_plan_name: Optional[pulumi.Input[str]] = None,
-             plan_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DbInstancePlanPlanConfigArgs']]]] = None,
-             plan_desc: Optional[pulumi.Input[str]] = None,
-             plan_end_date: Optional[pulumi.Input[str]] = None,
-             plan_id: Optional[pulumi.Input[str]] = None,
-             plan_schedule_type: Optional[pulumi.Input[str]] = None,
-             plan_start_date: Optional[pulumi.Input[str]] = None,
-             plan_type: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if db_instance_id is None and 'dbInstanceId' in kwargs:
-            db_instance_id = kwargs['dbInstanceId']
-        if db_instance_plan_name is None and 'dbInstancePlanName' in kwargs:
-            db_instance_plan_name = kwargs['dbInstancePlanName']
-        if plan_configs is None and 'planConfigs' in kwargs:
-            plan_configs = kwargs['planConfigs']
-        if plan_desc is None and 'planDesc' in kwargs:
-            plan_desc = kwargs['planDesc']
-        if plan_end_date is None and 'planEndDate' in kwargs:
-            plan_end_date = kwargs['planEndDate']
-        if plan_id is None and 'planId' in kwargs:
-            plan_id = kwargs['planId']
-        if plan_schedule_type is None and 'planScheduleType' in kwargs:
-            plan_schedule_type = kwargs['planScheduleType']
-        if plan_start_date is None and 'planStartDate' in kwargs:
-            plan_start_date = kwargs['planStartDate']
-        if plan_type is None and 'planType' in kwargs:
-            plan_type = kwargs['planType']
-
         if db_instance_id is not None:
-            _setter("db_instance_id", db_instance_id)
+            pulumi.set(__self__, "db_instance_id", db_instance_id)
         if db_instance_plan_name is not None:
-            _setter("db_instance_plan_name", db_instance_plan_name)
+            pulumi.set(__self__, "db_instance_plan_name", db_instance_plan_name)
         if plan_configs is not None:
-            _setter("plan_configs", plan_configs)
+            pulumi.set(__self__, "plan_configs", plan_configs)
         if plan_desc is not None:
-            _setter("plan_desc", plan_desc)
+            pulumi.set(__self__, "plan_desc", plan_desc)
         if plan_end_date is not None:
-            _setter("plan_end_date", plan_end_date)
+            pulumi.set(__self__, "plan_end_date", plan_end_date)
         if plan_id is not None:
-            _setter("plan_id", plan_id)
+            pulumi.set(__self__, "plan_id", plan_id)
         if plan_schedule_type is not None:
-            _setter("plan_schedule_type", plan_schedule_type)
+            pulumi.set(__self__, "plan_schedule_type", plan_schedule_type)
         if plan_start_date is not None:
-            _setter("plan_start_date", plan_start_date)
+            pulumi.set(__self__, "plan_start_date", plan_start_date)
         if plan_type is not None:
-            _setter("plan_type", plan_type)
+            pulumi.set(__self__, "plan_type", plan_type)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="dbInstanceId")
@@ -501,10 +401,6 @@ class DbInstancePlan(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DbInstancePlanArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

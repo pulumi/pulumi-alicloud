@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -23,23 +23,10 @@ class DomainLogHeader(dict):
     def __init__(__self__, *,
                  key: Optional[str] = None,
                  value: Optional[str] = None):
-        DomainLogHeader._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -71,65 +58,14 @@ class GetCertificatesCertificateResult(dict):
         :param str id: The ID of the Certificate.
         :param str instance_id: WAF instance ID.
         """
-        GetCertificatesCertificateResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            certificate_id=certificate_id,
-            certificate_name=certificate_name,
-            common_name=common_name,
-            domain=domain,
-            id=id,
-            instance_id=instance_id,
-            is_using=is_using,
-            sans=sans,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             certificate_id: Optional[str] = None,
-             certificate_name: Optional[str] = None,
-             common_name: Optional[str] = None,
-             domain: Optional[str] = None,
-             id: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             is_using: Optional[bool] = None,
-             sans: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if certificate_id is None and 'certificateId' in kwargs:
-            certificate_id = kwargs['certificateId']
-        if certificate_id is None:
-            raise TypeError("Missing 'certificate_id' argument")
-        if certificate_name is None and 'certificateName' in kwargs:
-            certificate_name = kwargs['certificateName']
-        if certificate_name is None:
-            raise TypeError("Missing 'certificate_name' argument")
-        if common_name is None and 'commonName' in kwargs:
-            common_name = kwargs['commonName']
-        if common_name is None:
-            raise TypeError("Missing 'common_name' argument")
-        if domain is None:
-            raise TypeError("Missing 'domain' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if is_using is None and 'isUsing' in kwargs:
-            is_using = kwargs['isUsing']
-        if is_using is None:
-            raise TypeError("Missing 'is_using' argument")
-        if sans is None:
-            raise TypeError("Missing 'sans' argument")
-
-        _setter("certificate_id", certificate_id)
-        _setter("certificate_name", certificate_name)
-        _setter("common_name", common_name)
-        _setter("domain", domain)
-        _setter("id", id)
-        _setter("instance_id", instance_id)
-        _setter("is_using", is_using)
-        _setter("sans", sans)
+        pulumi.set(__self__, "certificate_id", certificate_id)
+        pulumi.set(__self__, "certificate_name", certificate_name)
+        pulumi.set(__self__, "common_name", common_name)
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "is_using", is_using)
+        pulumi.set(__self__, "sans", sans)
 
     @property
     @pulumi.getter(name="certificateId")
@@ -233,140 +169,25 @@ class GetDomainsDomainResult(dict):
         :param int version: The system data identifier that is used to control optimistic locking.
         :param int write_time: The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
         """
-        GetDomainsDomainResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_type=cluster_type,
-            cname=cname,
-            connection_time=connection_time,
-            domain=domain,
-            domain_name=domain_name,
-            http2_ports=http2_ports,
-            http_ports=http_ports,
-            http_to_user_ip=http_to_user_ip,
-            https_ports=https_ports,
-            https_redirect=https_redirect,
-            id=id,
-            is_access_product=is_access_product,
-            load_balancing=load_balancing,
-            log_headers=log_headers,
-            read_time=read_time,
-            resource_group_id=resource_group_id,
-            source_ips=source_ips,
-            version=version,
-            write_time=write_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_type: Optional[str] = None,
-             cname: Optional[str] = None,
-             connection_time: Optional[int] = None,
-             domain: Optional[str] = None,
-             domain_name: Optional[str] = None,
-             http2_ports: Optional[Sequence[str]] = None,
-             http_ports: Optional[Sequence[str]] = None,
-             http_to_user_ip: Optional[str] = None,
-             https_ports: Optional[Sequence[str]] = None,
-             https_redirect: Optional[str] = None,
-             id: Optional[str] = None,
-             is_access_product: Optional[str] = None,
-             load_balancing: Optional[str] = None,
-             log_headers: Optional[Sequence['outputs.GetDomainsDomainLogHeaderResult']] = None,
-             read_time: Optional[int] = None,
-             resource_group_id: Optional[str] = None,
-             source_ips: Optional[Sequence[str]] = None,
-             version: Optional[int] = None,
-             write_time: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_type is None and 'clusterType' in kwargs:
-            cluster_type = kwargs['clusterType']
-        if cluster_type is None:
-            raise TypeError("Missing 'cluster_type' argument")
-        if cname is None:
-            raise TypeError("Missing 'cname' argument")
-        if connection_time is None and 'connectionTime' in kwargs:
-            connection_time = kwargs['connectionTime']
-        if connection_time is None:
-            raise TypeError("Missing 'connection_time' argument")
-        if domain is None:
-            raise TypeError("Missing 'domain' argument")
-        if domain_name is None and 'domainName' in kwargs:
-            domain_name = kwargs['domainName']
-        if domain_name is None:
-            raise TypeError("Missing 'domain_name' argument")
-        if http2_ports is None and 'http2Ports' in kwargs:
-            http2_ports = kwargs['http2Ports']
-        if http2_ports is None:
-            raise TypeError("Missing 'http2_ports' argument")
-        if http_ports is None and 'httpPorts' in kwargs:
-            http_ports = kwargs['httpPorts']
-        if http_ports is None:
-            raise TypeError("Missing 'http_ports' argument")
-        if http_to_user_ip is None and 'httpToUserIp' in kwargs:
-            http_to_user_ip = kwargs['httpToUserIp']
-        if http_to_user_ip is None:
-            raise TypeError("Missing 'http_to_user_ip' argument")
-        if https_ports is None and 'httpsPorts' in kwargs:
-            https_ports = kwargs['httpsPorts']
-        if https_ports is None:
-            raise TypeError("Missing 'https_ports' argument")
-        if https_redirect is None and 'httpsRedirect' in kwargs:
-            https_redirect = kwargs['httpsRedirect']
-        if https_redirect is None:
-            raise TypeError("Missing 'https_redirect' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if is_access_product is None and 'isAccessProduct' in kwargs:
-            is_access_product = kwargs['isAccessProduct']
-        if is_access_product is None:
-            raise TypeError("Missing 'is_access_product' argument")
-        if load_balancing is None and 'loadBalancing' in kwargs:
-            load_balancing = kwargs['loadBalancing']
-        if load_balancing is None:
-            raise TypeError("Missing 'load_balancing' argument")
-        if log_headers is None and 'logHeaders' in kwargs:
-            log_headers = kwargs['logHeaders']
-        if log_headers is None:
-            raise TypeError("Missing 'log_headers' argument")
-        if read_time is None and 'readTime' in kwargs:
-            read_time = kwargs['readTime']
-        if read_time is None:
-            raise TypeError("Missing 'read_time' argument")
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if resource_group_id is None:
-            raise TypeError("Missing 'resource_group_id' argument")
-        if source_ips is None and 'sourceIps' in kwargs:
-            source_ips = kwargs['sourceIps']
-        if source_ips is None:
-            raise TypeError("Missing 'source_ips' argument")
-        if version is None:
-            raise TypeError("Missing 'version' argument")
-        if write_time is None and 'writeTime' in kwargs:
-            write_time = kwargs['writeTime']
-        if write_time is None:
-            raise TypeError("Missing 'write_time' argument")
-
-        _setter("cluster_type", cluster_type)
-        _setter("cname", cname)
-        _setter("connection_time", connection_time)
-        _setter("domain", domain)
-        _setter("domain_name", domain_name)
-        _setter("http2_ports", http2_ports)
-        _setter("http_ports", http_ports)
-        _setter("http_to_user_ip", http_to_user_ip)
-        _setter("https_ports", https_ports)
-        _setter("https_redirect", https_redirect)
-        _setter("id", id)
-        _setter("is_access_product", is_access_product)
-        _setter("load_balancing", load_balancing)
-        _setter("log_headers", log_headers)
-        _setter("read_time", read_time)
-        _setter("resource_group_id", resource_group_id)
-        _setter("source_ips", source_ips)
-        _setter("version", version)
-        _setter("write_time", write_time)
+        pulumi.set(__self__, "cluster_type", cluster_type)
+        pulumi.set(__self__, "cname", cname)
+        pulumi.set(__self__, "connection_time", connection_time)
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "http2_ports", http2_ports)
+        pulumi.set(__self__, "http_ports", http_ports)
+        pulumi.set(__self__, "http_to_user_ip", http_to_user_ip)
+        pulumi.set(__self__, "https_ports", https_ports)
+        pulumi.set(__self__, "https_redirect", https_redirect)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_access_product", is_access_product)
+        pulumi.set(__self__, "load_balancing", load_balancing)
+        pulumi.set(__self__, "log_headers", log_headers)
+        pulumi.set(__self__, "read_time", read_time)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "source_ips", source_ips)
+        pulumi.set(__self__, "version", version)
+        pulumi.set(__self__, "write_time", write_time)
 
     @property
     @pulumi.getter(name="clusterType")
@@ -530,25 +351,8 @@ class GetDomainsDomainLogHeaderResult(dict):
         :param str key: The key of label.
         :param str value: The value of label.
         """
-        GetDomainsDomainLogHeaderResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("key", key)
-        _setter("value", value)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -587,65 +391,14 @@ class GetInstancesInstanceResult(dict):
         :param int status: The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.
         :param int trial: Indicates whether this is a trial instance.
         """
-        GetInstancesInstanceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            end_date=end_date,
-            id=id,
-            in_debt=in_debt,
-            instance_id=instance_id,
-            remain_day=remain_day,
-            status=status,
-            subscription_type=subscription_type,
-            trial=trial,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             end_date: Optional[int] = None,
-             id: Optional[str] = None,
-             in_debt: Optional[int] = None,
-             instance_id: Optional[str] = None,
-             remain_day: Optional[int] = None,
-             status: Optional[int] = None,
-             subscription_type: Optional[str] = None,
-             trial: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if end_date is None and 'endDate' in kwargs:
-            end_date = kwargs['endDate']
-        if end_date is None:
-            raise TypeError("Missing 'end_date' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if in_debt is None and 'inDebt' in kwargs:
-            in_debt = kwargs['inDebt']
-        if in_debt is None:
-            raise TypeError("Missing 'in_debt' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if remain_day is None and 'remainDay' in kwargs:
-            remain_day = kwargs['remainDay']
-        if remain_day is None:
-            raise TypeError("Missing 'remain_day' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if subscription_type is None and 'subscriptionType' in kwargs:
-            subscription_type = kwargs['subscriptionType']
-        if subscription_type is None:
-            raise TypeError("Missing 'subscription_type' argument")
-        if trial is None:
-            raise TypeError("Missing 'trial' argument")
-
-        _setter("end_date", end_date)
-        _setter("id", id)
-        _setter("in_debt", in_debt)
-        _setter("instance_id", instance_id)
-        _setter("remain_day", remain_day)
-        _setter("status", status)
-        _setter("subscription_type", subscription_type)
-        _setter("trial", trial)
+        pulumi.set(__self__, "end_date", end_date)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "in_debt", in_debt)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "remain_day", remain_day)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "subscription_type", subscription_type)
+        pulumi.set(__self__, "trial", trial)
 
     @property
     @pulumi.getter(name="endDate")

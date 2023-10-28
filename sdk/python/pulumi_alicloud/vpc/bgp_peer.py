@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BgpPeerArgs', 'BgpPeer']
@@ -27,46 +27,15 @@ class BgpPeerArgs:
         :param pulumi.Input[str] ip_version: The IP version.
         :param pulumi.Input[str] peer_ip_address: The IP address of the BGP peer.
         """
-        BgpPeerArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bgp_group_id=bgp_group_id,
-            bfd_multi_hop=bfd_multi_hop,
-            enable_bfd=enable_bfd,
-            ip_version=ip_version,
-            peer_ip_address=peer_ip_address,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bgp_group_id: Optional[pulumi.Input[str]] = None,
-             bfd_multi_hop: Optional[pulumi.Input[int]] = None,
-             enable_bfd: Optional[pulumi.Input[bool]] = None,
-             ip_version: Optional[pulumi.Input[str]] = None,
-             peer_ip_address: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bgp_group_id is None and 'bgpGroupId' in kwargs:
-            bgp_group_id = kwargs['bgpGroupId']
-        if bgp_group_id is None:
-            raise TypeError("Missing 'bgp_group_id' argument")
-        if bfd_multi_hop is None and 'bfdMultiHop' in kwargs:
-            bfd_multi_hop = kwargs['bfdMultiHop']
-        if enable_bfd is None and 'enableBfd' in kwargs:
-            enable_bfd = kwargs['enableBfd']
-        if ip_version is None and 'ipVersion' in kwargs:
-            ip_version = kwargs['ipVersion']
-        if peer_ip_address is None and 'peerIpAddress' in kwargs:
-            peer_ip_address = kwargs['peerIpAddress']
-
-        _setter("bgp_group_id", bgp_group_id)
+        pulumi.set(__self__, "bgp_group_id", bgp_group_id)
         if bfd_multi_hop is not None:
-            _setter("bfd_multi_hop", bfd_multi_hop)
+            pulumi.set(__self__, "bfd_multi_hop", bfd_multi_hop)
         if enable_bfd is not None:
-            _setter("enable_bfd", enable_bfd)
+            pulumi.set(__self__, "enable_bfd", enable_bfd)
         if ip_version is not None:
-            _setter("ip_version", ip_version)
+            pulumi.set(__self__, "ip_version", ip_version)
         if peer_ip_address is not None:
-            _setter("peer_ip_address", peer_ip_address)
+            pulumi.set(__self__, "peer_ip_address", peer_ip_address)
 
     @property
     @pulumi.getter(name="bgpGroupId")
@@ -147,49 +116,18 @@ class _BgpPeerState:
         :param pulumi.Input[str] peer_ip_address: The IP address of the BGP peer.
         :param pulumi.Input[str] status: The status of the BGP peer.
         """
-        _BgpPeerState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bfd_multi_hop=bfd_multi_hop,
-            bgp_group_id=bgp_group_id,
-            enable_bfd=enable_bfd,
-            ip_version=ip_version,
-            peer_ip_address=peer_ip_address,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bfd_multi_hop: Optional[pulumi.Input[int]] = None,
-             bgp_group_id: Optional[pulumi.Input[str]] = None,
-             enable_bfd: Optional[pulumi.Input[bool]] = None,
-             ip_version: Optional[pulumi.Input[str]] = None,
-             peer_ip_address: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bfd_multi_hop is None and 'bfdMultiHop' in kwargs:
-            bfd_multi_hop = kwargs['bfdMultiHop']
-        if bgp_group_id is None and 'bgpGroupId' in kwargs:
-            bgp_group_id = kwargs['bgpGroupId']
-        if enable_bfd is None and 'enableBfd' in kwargs:
-            enable_bfd = kwargs['enableBfd']
-        if ip_version is None and 'ipVersion' in kwargs:
-            ip_version = kwargs['ipVersion']
-        if peer_ip_address is None and 'peerIpAddress' in kwargs:
-            peer_ip_address = kwargs['peerIpAddress']
-
         if bfd_multi_hop is not None:
-            _setter("bfd_multi_hop", bfd_multi_hop)
+            pulumi.set(__self__, "bfd_multi_hop", bfd_multi_hop)
         if bgp_group_id is not None:
-            _setter("bgp_group_id", bgp_group_id)
+            pulumi.set(__self__, "bgp_group_id", bgp_group_id)
         if enable_bfd is not None:
-            _setter("enable_bfd", enable_bfd)
+            pulumi.set(__self__, "enable_bfd", enable_bfd)
         if ip_version is not None:
-            _setter("ip_version", ip_version)
+            pulumi.set(__self__, "ip_version", ip_version)
         if peer_ip_address is not None:
-            _setter("peer_ip_address", peer_ip_address)
+            pulumi.set(__self__, "peer_ip_address", peer_ip_address)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="bfdMultiHop")
@@ -413,10 +351,6 @@ class BgpPeer(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            BgpPeerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

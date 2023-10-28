@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,62 +35,21 @@ class TemplateScratchArgs:
         :param pulumi.Input[Sequence[pulumi.Input['TemplateScratchSourceResourceArgs']]] source_resources: Source resource. See the following `Block source_resources`.
         :param pulumi.Input['TemplateScratchSourceTagArgs'] source_tag: Source tag. See the following `Block source_tag`.
         """
-        TemplateScratchArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            template_scratch_type=template_scratch_type,
-            description=description,
-            execution_mode=execution_mode,
-            logical_id_strategy=logical_id_strategy,
-            preference_parameters=preference_parameters,
-            source_resource_group=source_resource_group,
-            source_resources=source_resources,
-            source_tag=source_tag,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             template_scratch_type: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             execution_mode: Optional[pulumi.Input[str]] = None,
-             logical_id_strategy: Optional[pulumi.Input[str]] = None,
-             preference_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['TemplateScratchPreferenceParameterArgs']]]] = None,
-             source_resource_group: Optional[pulumi.Input['TemplateScratchSourceResourceGroupArgs']] = None,
-             source_resources: Optional[pulumi.Input[Sequence[pulumi.Input['TemplateScratchSourceResourceArgs']]]] = None,
-             source_tag: Optional[pulumi.Input['TemplateScratchSourceTagArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if template_scratch_type is None and 'templateScratchType' in kwargs:
-            template_scratch_type = kwargs['templateScratchType']
-        if template_scratch_type is None:
-            raise TypeError("Missing 'template_scratch_type' argument")
-        if execution_mode is None and 'executionMode' in kwargs:
-            execution_mode = kwargs['executionMode']
-        if logical_id_strategy is None and 'logicalIdStrategy' in kwargs:
-            logical_id_strategy = kwargs['logicalIdStrategy']
-        if preference_parameters is None and 'preferenceParameters' in kwargs:
-            preference_parameters = kwargs['preferenceParameters']
-        if source_resource_group is None and 'sourceResourceGroup' in kwargs:
-            source_resource_group = kwargs['sourceResourceGroup']
-        if source_resources is None and 'sourceResources' in kwargs:
-            source_resources = kwargs['sourceResources']
-        if source_tag is None and 'sourceTag' in kwargs:
-            source_tag = kwargs['sourceTag']
-
-        _setter("template_scratch_type", template_scratch_type)
+        pulumi.set(__self__, "template_scratch_type", template_scratch_type)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if execution_mode is not None:
-            _setter("execution_mode", execution_mode)
+            pulumi.set(__self__, "execution_mode", execution_mode)
         if logical_id_strategy is not None:
-            _setter("logical_id_strategy", logical_id_strategy)
+            pulumi.set(__self__, "logical_id_strategy", logical_id_strategy)
         if preference_parameters is not None:
-            _setter("preference_parameters", preference_parameters)
+            pulumi.set(__self__, "preference_parameters", preference_parameters)
         if source_resource_group is not None:
-            _setter("source_resource_group", source_resource_group)
+            pulumi.set(__self__, "source_resource_group", source_resource_group)
         if source_resources is not None:
-            _setter("source_resources", source_resources)
+            pulumi.set(__self__, "source_resources", source_resources)
         if source_tag is not None:
-            _setter("source_tag", source_tag)
+            pulumi.set(__self__, "source_tag", source_tag)
 
     @property
     @pulumi.getter(name="templateScratchType")
@@ -213,65 +172,24 @@ class _TemplateScratchState:
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[str] template_scratch_type: The type of the Template scan. Valid Values: `ResourceImport` or `ArchitectureReplication`.
         """
-        _TemplateScratchState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            execution_mode=execution_mode,
-            logical_id_strategy=logical_id_strategy,
-            preference_parameters=preference_parameters,
-            source_resource_group=source_resource_group,
-            source_resources=source_resources,
-            source_tag=source_tag,
-            status=status,
-            template_scratch_type=template_scratch_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             execution_mode: Optional[pulumi.Input[str]] = None,
-             logical_id_strategy: Optional[pulumi.Input[str]] = None,
-             preference_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['TemplateScratchPreferenceParameterArgs']]]] = None,
-             source_resource_group: Optional[pulumi.Input['TemplateScratchSourceResourceGroupArgs']] = None,
-             source_resources: Optional[pulumi.Input[Sequence[pulumi.Input['TemplateScratchSourceResourceArgs']]]] = None,
-             source_tag: Optional[pulumi.Input['TemplateScratchSourceTagArgs']] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             template_scratch_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if execution_mode is None and 'executionMode' in kwargs:
-            execution_mode = kwargs['executionMode']
-        if logical_id_strategy is None and 'logicalIdStrategy' in kwargs:
-            logical_id_strategy = kwargs['logicalIdStrategy']
-        if preference_parameters is None and 'preferenceParameters' in kwargs:
-            preference_parameters = kwargs['preferenceParameters']
-        if source_resource_group is None and 'sourceResourceGroup' in kwargs:
-            source_resource_group = kwargs['sourceResourceGroup']
-        if source_resources is None and 'sourceResources' in kwargs:
-            source_resources = kwargs['sourceResources']
-        if source_tag is None and 'sourceTag' in kwargs:
-            source_tag = kwargs['sourceTag']
-        if template_scratch_type is None and 'templateScratchType' in kwargs:
-            template_scratch_type = kwargs['templateScratchType']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if execution_mode is not None:
-            _setter("execution_mode", execution_mode)
+            pulumi.set(__self__, "execution_mode", execution_mode)
         if logical_id_strategy is not None:
-            _setter("logical_id_strategy", logical_id_strategy)
+            pulumi.set(__self__, "logical_id_strategy", logical_id_strategy)
         if preference_parameters is not None:
-            _setter("preference_parameters", preference_parameters)
+            pulumi.set(__self__, "preference_parameters", preference_parameters)
         if source_resource_group is not None:
-            _setter("source_resource_group", source_resource_group)
+            pulumi.set(__self__, "source_resource_group", source_resource_group)
         if source_resources is not None:
-            _setter("source_resources", source_resources)
+            pulumi.set(__self__, "source_resources", source_resources)
         if source_tag is not None:
-            _setter("source_tag", source_tag)
+            pulumi.set(__self__, "source_tag", source_tag)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if template_scratch_type is not None:
-            _setter("template_scratch_type", template_scratch_type)
+            pulumi.set(__self__, "template_scratch_type", template_scratch_type)
 
     @property
     @pulumi.getter
@@ -497,10 +415,6 @@ class TemplateScratch(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TemplateScratchArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -527,10 +441,8 @@ class TemplateScratch(pulumi.CustomResource):
             __props__.__dict__["execution_mode"] = execution_mode
             __props__.__dict__["logical_id_strategy"] = logical_id_strategy
             __props__.__dict__["preference_parameters"] = preference_parameters
-            source_resource_group = _utilities.configure(source_resource_group, TemplateScratchSourceResourceGroupArgs, True)
             __props__.__dict__["source_resource_group"] = source_resource_group
             __props__.__dict__["source_resources"] = source_resources
-            source_tag = _utilities.configure(source_tag, TemplateScratchSourceTagArgs, True)
             __props__.__dict__["source_tag"] = source_tag
             if template_scratch_type is None and not opts.urn:
                 raise TypeError("Missing required property 'template_scratch_type'")

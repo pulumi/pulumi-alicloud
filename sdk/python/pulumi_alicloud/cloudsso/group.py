@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['GroupArgs', 'Group']
@@ -23,33 +23,10 @@ class GroupArgs:
         :param pulumi.Input[str] group_name: The Name of the group. The name must be `1` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         :param pulumi.Input[str] description: The Description of the group. The description can be up to `1024` characters long.
         """
-        GroupArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            directory_id=directory_id,
-            group_name=group_name,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             directory_id: Optional[pulumi.Input[str]] = None,
-             group_name: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if directory_id is None and 'directoryId' in kwargs:
-            directory_id = kwargs['directoryId']
-        if directory_id is None:
-            raise TypeError("Missing 'directory_id' argument")
-        if group_name is None and 'groupName' in kwargs:
-            group_name = kwargs['groupName']
-        if group_name is None:
-            raise TypeError("Missing 'group_name' argument")
-
-        _setter("directory_id", directory_id)
-        _setter("group_name", group_name)
+        pulumi.set(__self__, "directory_id", directory_id)
+        pulumi.set(__self__, "group_name", group_name)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter(name="directoryId")
@@ -102,37 +79,14 @@ class _GroupState:
         :param pulumi.Input[str] group_id: The GroupId of the group.
         :param pulumi.Input[str] group_name: The Name of the group. The name must be `1` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         """
-        _GroupState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            directory_id=directory_id,
-            group_id=group_id,
-            group_name=group_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             directory_id: Optional[pulumi.Input[str]] = None,
-             group_id: Optional[pulumi.Input[str]] = None,
-             group_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if directory_id is None and 'directoryId' in kwargs:
-            directory_id = kwargs['directoryId']
-        if group_id is None and 'groupId' in kwargs:
-            group_id = kwargs['groupId']
-        if group_name is None and 'groupName' in kwargs:
-            group_name = kwargs['groupName']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if directory_id is not None:
-            _setter("directory_id", directory_id)
+            pulumi.set(__self__, "directory_id", directory_id)
         if group_id is not None:
-            _setter("group_id", group_id)
+            pulumi.set(__self__, "group_id", group_id)
         if group_name is not None:
-            _setter("group_name", group_name)
+            pulumi.set(__self__, "group_name", group_name)
 
     @property
     @pulumi.getter
@@ -244,10 +198,6 @@ class Group(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            GroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

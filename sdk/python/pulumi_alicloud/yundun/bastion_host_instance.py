@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -36,114 +36,33 @@ class BastionHostInstanceArgs:
         """
         The set of arguments for constructing a BastionHostInstance resource.
         """
-        BastionHostInstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bandwidth=bandwidth,
-            description=description,
-            license_code=license_code,
-            plan_code=plan_code,
-            security_group_ids=security_group_ids,
-            storage=storage,
-            vswitch_id=vswitch_id,
-            ad_auth_servers=ad_auth_servers,
-            enable_public_access=enable_public_access,
-            ldap_auth_servers=ldap_auth_servers,
-            period=period,
-            public_white_lists=public_white_lists,
-            renew_period=renew_period,
-            renewal_period_unit=renewal_period_unit,
-            renewal_status=renewal_status,
-            resource_group_id=resource_group_id,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bandwidth: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             license_code: Optional[pulumi.Input[str]] = None,
-             plan_code: Optional[pulumi.Input[str]] = None,
-             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             storage: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             ad_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceAdAuthServerArgs']]]] = None,
-             enable_public_access: Optional[pulumi.Input[bool]] = None,
-             ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceLdapAuthServerArgs']]]] = None,
-             period: Optional[pulumi.Input[int]] = None,
-             public_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             renew_period: Optional[pulumi.Input[int]] = None,
-             renewal_period_unit: Optional[pulumi.Input[str]] = None,
-             renewal_status: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bandwidth is None:
-            raise TypeError("Missing 'bandwidth' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if license_code is None and 'licenseCode' in kwargs:
-            license_code = kwargs['licenseCode']
-        if license_code is None:
-            raise TypeError("Missing 'license_code' argument")
-        if plan_code is None and 'planCode' in kwargs:
-            plan_code = kwargs['planCode']
-        if plan_code is None:
-            raise TypeError("Missing 'plan_code' argument")
-        if security_group_ids is None and 'securityGroupIds' in kwargs:
-            security_group_ids = kwargs['securityGroupIds']
-        if security_group_ids is None:
-            raise TypeError("Missing 'security_group_ids' argument")
-        if storage is None:
-            raise TypeError("Missing 'storage' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-        if ad_auth_servers is None and 'adAuthServers' in kwargs:
-            ad_auth_servers = kwargs['adAuthServers']
-        if enable_public_access is None and 'enablePublicAccess' in kwargs:
-            enable_public_access = kwargs['enablePublicAccess']
-        if ldap_auth_servers is None and 'ldapAuthServers' in kwargs:
-            ldap_auth_servers = kwargs['ldapAuthServers']
-        if public_white_lists is None and 'publicWhiteLists' in kwargs:
-            public_white_lists = kwargs['publicWhiteLists']
-        if renew_period is None and 'renewPeriod' in kwargs:
-            renew_period = kwargs['renewPeriod']
-        if renewal_period_unit is None and 'renewalPeriodUnit' in kwargs:
-            renewal_period_unit = kwargs['renewalPeriodUnit']
-        if renewal_status is None and 'renewalStatus' in kwargs:
-            renewal_status = kwargs['renewalStatus']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-
-        _setter("bandwidth", bandwidth)
-        _setter("description", description)
-        _setter("license_code", license_code)
-        _setter("plan_code", plan_code)
-        _setter("security_group_ids", security_group_ids)
-        _setter("storage", storage)
-        _setter("vswitch_id", vswitch_id)
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "license_code", license_code)
+        pulumi.set(__self__, "plan_code", plan_code)
+        pulumi.set(__self__, "security_group_ids", security_group_ids)
+        pulumi.set(__self__, "storage", storage)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
         if ad_auth_servers is not None:
-            _setter("ad_auth_servers", ad_auth_servers)
+            pulumi.set(__self__, "ad_auth_servers", ad_auth_servers)
         if enable_public_access is not None:
-            _setter("enable_public_access", enable_public_access)
+            pulumi.set(__self__, "enable_public_access", enable_public_access)
         if ldap_auth_servers is not None:
-            _setter("ldap_auth_servers", ldap_auth_servers)
+            pulumi.set(__self__, "ldap_auth_servers", ldap_auth_servers)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if public_white_lists is not None:
-            _setter("public_white_lists", public_white_lists)
+            pulumi.set(__self__, "public_white_lists", public_white_lists)
         if renew_period is not None:
-            _setter("renew_period", renew_period)
+            pulumi.set(__self__, "renew_period", renew_period)
         if renewal_period_unit is not None:
-            _setter("renewal_period_unit", renewal_period_unit)
+            pulumi.set(__self__, "renewal_period_unit", renewal_period_unit)
         if renewal_status is not None:
-            _setter("renewal_status", renewal_status)
+            pulumi.set(__self__, "renewal_status", renewal_status)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -322,107 +241,40 @@ class _BastionHostInstanceState:
         """
         Input properties used for looking up and filtering BastionHostInstance resources.
         """
-        _BastionHostInstanceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ad_auth_servers=ad_auth_servers,
-            bandwidth=bandwidth,
-            description=description,
-            enable_public_access=enable_public_access,
-            ldap_auth_servers=ldap_auth_servers,
-            license_code=license_code,
-            period=period,
-            plan_code=plan_code,
-            public_white_lists=public_white_lists,
-            renew_period=renew_period,
-            renewal_period_unit=renewal_period_unit,
-            renewal_status=renewal_status,
-            resource_group_id=resource_group_id,
-            security_group_ids=security_group_ids,
-            storage=storage,
-            tags=tags,
-            vswitch_id=vswitch_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ad_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceAdAuthServerArgs']]]] = None,
-             bandwidth: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             enable_public_access: Optional[pulumi.Input[bool]] = None,
-             ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceLdapAuthServerArgs']]]] = None,
-             license_code: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[int]] = None,
-             plan_code: Optional[pulumi.Input[str]] = None,
-             public_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             renew_period: Optional[pulumi.Input[int]] = None,
-             renewal_period_unit: Optional[pulumi.Input[str]] = None,
-             renewal_status: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             storage: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ad_auth_servers is None and 'adAuthServers' in kwargs:
-            ad_auth_servers = kwargs['adAuthServers']
-        if enable_public_access is None and 'enablePublicAccess' in kwargs:
-            enable_public_access = kwargs['enablePublicAccess']
-        if ldap_auth_servers is None and 'ldapAuthServers' in kwargs:
-            ldap_auth_servers = kwargs['ldapAuthServers']
-        if license_code is None and 'licenseCode' in kwargs:
-            license_code = kwargs['licenseCode']
-        if plan_code is None and 'planCode' in kwargs:
-            plan_code = kwargs['planCode']
-        if public_white_lists is None and 'publicWhiteLists' in kwargs:
-            public_white_lists = kwargs['publicWhiteLists']
-        if renew_period is None and 'renewPeriod' in kwargs:
-            renew_period = kwargs['renewPeriod']
-        if renewal_period_unit is None and 'renewalPeriodUnit' in kwargs:
-            renewal_period_unit = kwargs['renewalPeriodUnit']
-        if renewal_status is None and 'renewalStatus' in kwargs:
-            renewal_status = kwargs['renewalStatus']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if security_group_ids is None and 'securityGroupIds' in kwargs:
-            security_group_ids = kwargs['securityGroupIds']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-
         if ad_auth_servers is not None:
-            _setter("ad_auth_servers", ad_auth_servers)
+            pulumi.set(__self__, "ad_auth_servers", ad_auth_servers)
         if bandwidth is not None:
-            _setter("bandwidth", bandwidth)
+            pulumi.set(__self__, "bandwidth", bandwidth)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if enable_public_access is not None:
-            _setter("enable_public_access", enable_public_access)
+            pulumi.set(__self__, "enable_public_access", enable_public_access)
         if ldap_auth_servers is not None:
-            _setter("ldap_auth_servers", ldap_auth_servers)
+            pulumi.set(__self__, "ldap_auth_servers", ldap_auth_servers)
         if license_code is not None:
-            _setter("license_code", license_code)
+            pulumi.set(__self__, "license_code", license_code)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if plan_code is not None:
-            _setter("plan_code", plan_code)
+            pulumi.set(__self__, "plan_code", plan_code)
         if public_white_lists is not None:
-            _setter("public_white_lists", public_white_lists)
+            pulumi.set(__self__, "public_white_lists", public_white_lists)
         if renew_period is not None:
-            _setter("renew_period", renew_period)
+            pulumi.set(__self__, "renew_period", renew_period)
         if renewal_period_unit is not None:
-            _setter("renewal_period_unit", renewal_period_unit)
+            pulumi.set(__self__, "renewal_period_unit", renewal_period_unit)
         if renewal_status is not None:
-            _setter("renewal_status", renewal_status)
+            pulumi.set(__self__, "renewal_status", renewal_status)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_group_ids is not None:
-            _setter("security_group_ids", security_group_ids)
+            pulumi.set(__self__, "security_group_ids", security_group_ids)
         if storage is not None:
-            _setter("storage", storage)
+            pulumi.set(__self__, "storage", storage)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="adAuthServers")
@@ -624,10 +476,6 @@ class BastionHostInstance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            BastionHostInstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

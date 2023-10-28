@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DedicatedHostArgs', 'DedicatedHost']
@@ -46,94 +46,27 @@ class DedicatedHostArgs:
                * If the Period parameter is set to `Month`, the value of the UsedTime parameter ranges from `1` to `9`.
                * If the Period parameter is set to `Week`, the value of the UsedTime parameter ranges from `1`, `2` and `3`.
         """
-        DedicatedHostArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dedicated_host_group_id=dedicated_host_group_id,
-            host_class=host_class,
-            payment_type=payment_type,
-            vswitch_id=vswitch_id,
-            zone_id=zone_id,
-            allocation_status=allocation_status,
-            auto_renew=auto_renew,
-            host_name=host_name,
-            image_category=image_category,
-            os_password=os_password,
-            period=period,
-            tags=tags,
-            used_time=used_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
-             host_class: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             allocation_status: Optional[pulumi.Input[str]] = None,
-             auto_renew: Optional[pulumi.Input[bool]] = None,
-             host_name: Optional[pulumi.Input[str]] = None,
-             image_category: Optional[pulumi.Input[str]] = None,
-             os_password: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             used_time: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dedicated_host_group_id is None and 'dedicatedHostGroupId' in kwargs:
-            dedicated_host_group_id = kwargs['dedicatedHostGroupId']
-        if dedicated_host_group_id is None:
-            raise TypeError("Missing 'dedicated_host_group_id' argument")
-        if host_class is None and 'hostClass' in kwargs:
-            host_class = kwargs['hostClass']
-        if host_class is None:
-            raise TypeError("Missing 'host_class' argument")
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if payment_type is None:
-            raise TypeError("Missing 'payment_type' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-        if allocation_status is None and 'allocationStatus' in kwargs:
-            allocation_status = kwargs['allocationStatus']
-        if auto_renew is None and 'autoRenew' in kwargs:
-            auto_renew = kwargs['autoRenew']
-        if host_name is None and 'hostName' in kwargs:
-            host_name = kwargs['hostName']
-        if image_category is None and 'imageCategory' in kwargs:
-            image_category = kwargs['imageCategory']
-        if os_password is None and 'osPassword' in kwargs:
-            os_password = kwargs['osPassword']
-        if used_time is None and 'usedTime' in kwargs:
-            used_time = kwargs['usedTime']
-
-        _setter("dedicated_host_group_id", dedicated_host_group_id)
-        _setter("host_class", host_class)
-        _setter("payment_type", payment_type)
-        _setter("vswitch_id", vswitch_id)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "dedicated_host_group_id", dedicated_host_group_id)
+        pulumi.set(__self__, "host_class", host_class)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
         if allocation_status is not None:
-            _setter("allocation_status", allocation_status)
+            pulumi.set(__self__, "allocation_status", allocation_status)
         if auto_renew is not None:
-            _setter("auto_renew", auto_renew)
+            pulumi.set(__self__, "auto_renew", auto_renew)
         if host_name is not None:
-            _setter("host_name", host_name)
+            pulumi.set(__self__, "host_name", host_name)
         if image_category is not None:
-            _setter("image_category", image_category)
+            pulumi.set(__self__, "image_category", image_category)
         if os_password is not None:
-            _setter("os_password", os_password)
+            pulumi.set(__self__, "os_password", os_password)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if used_time is not None:
-            _setter("used_time", used_time)
+            pulumi.set(__self__, "used_time", used_time)
 
     @property
     @pulumi.getter(name="dedicatedHostGroupId")
@@ -334,99 +267,36 @@ class _DedicatedHostState:
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch to which the host is connected.
         :param pulumi.Input[str] zone_id: The ID of the zone.
         """
-        _DedicatedHostState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allocation_status=allocation_status,
-            auto_renew=auto_renew,
-            dedicated_host_group_id=dedicated_host_group_id,
-            dedicated_host_id=dedicated_host_id,
-            host_class=host_class,
-            host_name=host_name,
-            image_category=image_category,
-            os_password=os_password,
-            payment_type=payment_type,
-            period=period,
-            status=status,
-            tags=tags,
-            used_time=used_time,
-            vswitch_id=vswitch_id,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allocation_status: Optional[pulumi.Input[str]] = None,
-             auto_renew: Optional[pulumi.Input[bool]] = None,
-             dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
-             dedicated_host_id: Optional[pulumi.Input[str]] = None,
-             host_class: Optional[pulumi.Input[str]] = None,
-             host_name: Optional[pulumi.Input[str]] = None,
-             image_category: Optional[pulumi.Input[str]] = None,
-             os_password: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             used_time: Optional[pulumi.Input[int]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allocation_status is None and 'allocationStatus' in kwargs:
-            allocation_status = kwargs['allocationStatus']
-        if auto_renew is None and 'autoRenew' in kwargs:
-            auto_renew = kwargs['autoRenew']
-        if dedicated_host_group_id is None and 'dedicatedHostGroupId' in kwargs:
-            dedicated_host_group_id = kwargs['dedicatedHostGroupId']
-        if dedicated_host_id is None and 'dedicatedHostId' in kwargs:
-            dedicated_host_id = kwargs['dedicatedHostId']
-        if host_class is None and 'hostClass' in kwargs:
-            host_class = kwargs['hostClass']
-        if host_name is None and 'hostName' in kwargs:
-            host_name = kwargs['hostName']
-        if image_category is None and 'imageCategory' in kwargs:
-            image_category = kwargs['imageCategory']
-        if os_password is None and 'osPassword' in kwargs:
-            os_password = kwargs['osPassword']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if used_time is None and 'usedTime' in kwargs:
-            used_time = kwargs['usedTime']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if allocation_status is not None:
-            _setter("allocation_status", allocation_status)
+            pulumi.set(__self__, "allocation_status", allocation_status)
         if auto_renew is not None:
-            _setter("auto_renew", auto_renew)
+            pulumi.set(__self__, "auto_renew", auto_renew)
         if dedicated_host_group_id is not None:
-            _setter("dedicated_host_group_id", dedicated_host_group_id)
+            pulumi.set(__self__, "dedicated_host_group_id", dedicated_host_group_id)
         if dedicated_host_id is not None:
-            _setter("dedicated_host_id", dedicated_host_id)
+            pulumi.set(__self__, "dedicated_host_id", dedicated_host_id)
         if host_class is not None:
-            _setter("host_class", host_class)
+            pulumi.set(__self__, "host_class", host_class)
         if host_name is not None:
-            _setter("host_name", host_name)
+            pulumi.set(__self__, "host_name", host_name)
         if image_category is not None:
-            _setter("image_category", image_category)
+            pulumi.set(__self__, "image_category", image_category)
         if os_password is not None:
-            _setter("os_password", os_password)
+            pulumi.set(__self__, "os_password", os_password)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if used_time is not None:
-            _setter("used_time", used_time)
+            pulumi.set(__self__, "used_time", used_time)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="allocationStatus")
@@ -684,10 +554,6 @@ class DedicatedHost(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DedicatedHostArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

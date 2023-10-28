@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -22,29 +22,16 @@ class InstanceParameterArgs:
         :param pulumi.Input[str] name: Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
         :param pulumi.Input[str] value: Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
         """
-        InstanceParameterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[pulumi.Input[str]] = None,
-             value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if name is not None:
             warnings.warn("""Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""")
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if value is not None:
             warnings.warn("""Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""", DeprecationWarning)
             pulumi.log.warn("""value is deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""")
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter

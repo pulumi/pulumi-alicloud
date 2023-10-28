@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ResourceDirectoryArgs', 'ResourceDirectory']
@@ -21,25 +21,10 @@ class ResourceDirectoryArgs:
         :param pulumi.Input[str] member_deletion_status: Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
         :param pulumi.Input[str] status: The status of control policy. Valid values:`Enabled` and `Disabled`.
         """
-        ResourceDirectoryArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            member_deletion_status=member_deletion_status,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             member_deletion_status: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if member_deletion_status is None and 'memberDeletionStatus' in kwargs:
-            member_deletion_status = kwargs['memberDeletionStatus']
-
         if member_deletion_status is not None:
-            _setter("member_deletion_status", member_deletion_status)
+            pulumi.set(__self__, "member_deletion_status", member_deletion_status)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="memberDeletionStatus")
@@ -82,43 +67,16 @@ class _ResourceDirectoryState:
         :param pulumi.Input[str] root_folder_id: The ID of the root folder.
         :param pulumi.Input[str] status: The status of control policy. Valid values:`Enabled` and `Disabled`.
         """
-        _ResourceDirectoryState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            master_account_id=master_account_id,
-            master_account_name=master_account_name,
-            member_deletion_status=member_deletion_status,
-            root_folder_id=root_folder_id,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             master_account_id: Optional[pulumi.Input[str]] = None,
-             master_account_name: Optional[pulumi.Input[str]] = None,
-             member_deletion_status: Optional[pulumi.Input[str]] = None,
-             root_folder_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if master_account_id is None and 'masterAccountId' in kwargs:
-            master_account_id = kwargs['masterAccountId']
-        if master_account_name is None and 'masterAccountName' in kwargs:
-            master_account_name = kwargs['masterAccountName']
-        if member_deletion_status is None and 'memberDeletionStatus' in kwargs:
-            member_deletion_status = kwargs['memberDeletionStatus']
-        if root_folder_id is None and 'rootFolderId' in kwargs:
-            root_folder_id = kwargs['rootFolderId']
-
         if master_account_id is not None:
-            _setter("master_account_id", master_account_id)
+            pulumi.set(__self__, "master_account_id", master_account_id)
         if master_account_name is not None:
-            _setter("master_account_name", master_account_name)
+            pulumi.set(__self__, "master_account_name", master_account_name)
         if member_deletion_status is not None:
-            _setter("member_deletion_status", member_deletion_status)
+            pulumi.set(__self__, "member_deletion_status", member_deletion_status)
         if root_folder_id is not None:
-            _setter("root_folder_id", root_folder_id)
+            pulumi.set(__self__, "root_folder_id", root_folder_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="masterAccountId")
@@ -252,10 +210,6 @@ class ResourceDirectory(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ResourceDirectoryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

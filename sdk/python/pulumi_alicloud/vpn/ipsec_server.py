@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,76 +39,23 @@ class IpsecServerArgs:
         :param pulumi.Input[str] psk: The pre-shared key. The pre-shared key is used to authenticate the VPN gateway and the client. By default, the system generates a random string that is 16 bits in length. You can also specify the pre-shared key. It can contain at most 100 characters.
         :param pulumi.Input[bool] psk_enabled: Whether to enable the pre-shared key authentication method. The value is only `true`, which indicates that the pre-shared key authentication method is enabled.
         """
-        IpsecServerArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            client_ip_pool=client_ip_pool,
-            local_subnet=local_subnet,
-            vpn_gateway_id=vpn_gateway_id,
-            dry_run=dry_run,
-            effect_immediately=effect_immediately,
-            ike_configs=ike_configs,
-            ipsec_configs=ipsec_configs,
-            ipsec_server_name=ipsec_server_name,
-            psk=psk,
-            psk_enabled=psk_enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             client_ip_pool: Optional[pulumi.Input[str]] = None,
-             local_subnet: Optional[pulumi.Input[str]] = None,
-             vpn_gateway_id: Optional[pulumi.Input[str]] = None,
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             effect_immediately: Optional[pulumi.Input[bool]] = None,
-             ike_configs: Optional[pulumi.Input[Sequence[pulumi.Input['IpsecServerIkeConfigArgs']]]] = None,
-             ipsec_configs: Optional[pulumi.Input[Sequence[pulumi.Input['IpsecServerIpsecConfigArgs']]]] = None,
-             ipsec_server_name: Optional[pulumi.Input[str]] = None,
-             psk: Optional[pulumi.Input[str]] = None,
-             psk_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if client_ip_pool is None and 'clientIpPool' in kwargs:
-            client_ip_pool = kwargs['clientIpPool']
-        if client_ip_pool is None:
-            raise TypeError("Missing 'client_ip_pool' argument")
-        if local_subnet is None and 'localSubnet' in kwargs:
-            local_subnet = kwargs['localSubnet']
-        if local_subnet is None:
-            raise TypeError("Missing 'local_subnet' argument")
-        if vpn_gateway_id is None and 'vpnGatewayId' in kwargs:
-            vpn_gateway_id = kwargs['vpnGatewayId']
-        if vpn_gateway_id is None:
-            raise TypeError("Missing 'vpn_gateway_id' argument")
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-        if effect_immediately is None and 'effectImmediately' in kwargs:
-            effect_immediately = kwargs['effectImmediately']
-        if ike_configs is None and 'ikeConfigs' in kwargs:
-            ike_configs = kwargs['ikeConfigs']
-        if ipsec_configs is None and 'ipsecConfigs' in kwargs:
-            ipsec_configs = kwargs['ipsecConfigs']
-        if ipsec_server_name is None and 'ipsecServerName' in kwargs:
-            ipsec_server_name = kwargs['ipsecServerName']
-        if psk_enabled is None and 'pskEnabled' in kwargs:
-            psk_enabled = kwargs['pskEnabled']
-
-        _setter("client_ip_pool", client_ip_pool)
-        _setter("local_subnet", local_subnet)
-        _setter("vpn_gateway_id", vpn_gateway_id)
+        pulumi.set(__self__, "client_ip_pool", client_ip_pool)
+        pulumi.set(__self__, "local_subnet", local_subnet)
+        pulumi.set(__self__, "vpn_gateway_id", vpn_gateway_id)
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if effect_immediately is not None:
-            _setter("effect_immediately", effect_immediately)
+            pulumi.set(__self__, "effect_immediately", effect_immediately)
         if ike_configs is not None:
-            _setter("ike_configs", ike_configs)
+            pulumi.set(__self__, "ike_configs", ike_configs)
         if ipsec_configs is not None:
-            _setter("ipsec_configs", ipsec_configs)
+            pulumi.set(__self__, "ipsec_configs", ipsec_configs)
         if ipsec_server_name is not None:
-            _setter("ipsec_server_name", ipsec_server_name)
+            pulumi.set(__self__, "ipsec_server_name", ipsec_server_name)
         if psk is not None:
-            _setter("psk", psk)
+            pulumi.set(__self__, "psk", psk)
         if psk_enabled is not None:
-            _setter("psk_enabled", psk_enabled)
+            pulumi.set(__self__, "psk_enabled", psk_enabled)
 
     @property
     @pulumi.getter(name="clientIpPool")
@@ -257,73 +204,26 @@ class _IpsecServerState:
         :param pulumi.Input[bool] psk_enabled: Whether to enable the pre-shared key authentication method. The value is only `true`, which indicates that the pre-shared key authentication method is enabled.
         :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
         """
-        _IpsecServerState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            client_ip_pool=client_ip_pool,
-            dry_run=dry_run,
-            effect_immediately=effect_immediately,
-            ike_configs=ike_configs,
-            ipsec_configs=ipsec_configs,
-            ipsec_server_name=ipsec_server_name,
-            local_subnet=local_subnet,
-            psk=psk,
-            psk_enabled=psk_enabled,
-            vpn_gateway_id=vpn_gateway_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             client_ip_pool: Optional[pulumi.Input[str]] = None,
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             effect_immediately: Optional[pulumi.Input[bool]] = None,
-             ike_configs: Optional[pulumi.Input[Sequence[pulumi.Input['IpsecServerIkeConfigArgs']]]] = None,
-             ipsec_configs: Optional[pulumi.Input[Sequence[pulumi.Input['IpsecServerIpsecConfigArgs']]]] = None,
-             ipsec_server_name: Optional[pulumi.Input[str]] = None,
-             local_subnet: Optional[pulumi.Input[str]] = None,
-             psk: Optional[pulumi.Input[str]] = None,
-             psk_enabled: Optional[pulumi.Input[bool]] = None,
-             vpn_gateway_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if client_ip_pool is None and 'clientIpPool' in kwargs:
-            client_ip_pool = kwargs['clientIpPool']
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-        if effect_immediately is None and 'effectImmediately' in kwargs:
-            effect_immediately = kwargs['effectImmediately']
-        if ike_configs is None and 'ikeConfigs' in kwargs:
-            ike_configs = kwargs['ikeConfigs']
-        if ipsec_configs is None and 'ipsecConfigs' in kwargs:
-            ipsec_configs = kwargs['ipsecConfigs']
-        if ipsec_server_name is None and 'ipsecServerName' in kwargs:
-            ipsec_server_name = kwargs['ipsecServerName']
-        if local_subnet is None and 'localSubnet' in kwargs:
-            local_subnet = kwargs['localSubnet']
-        if psk_enabled is None and 'pskEnabled' in kwargs:
-            psk_enabled = kwargs['pskEnabled']
-        if vpn_gateway_id is None and 'vpnGatewayId' in kwargs:
-            vpn_gateway_id = kwargs['vpnGatewayId']
-
         if client_ip_pool is not None:
-            _setter("client_ip_pool", client_ip_pool)
+            pulumi.set(__self__, "client_ip_pool", client_ip_pool)
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if effect_immediately is not None:
-            _setter("effect_immediately", effect_immediately)
+            pulumi.set(__self__, "effect_immediately", effect_immediately)
         if ike_configs is not None:
-            _setter("ike_configs", ike_configs)
+            pulumi.set(__self__, "ike_configs", ike_configs)
         if ipsec_configs is not None:
-            _setter("ipsec_configs", ipsec_configs)
+            pulumi.set(__self__, "ipsec_configs", ipsec_configs)
         if ipsec_server_name is not None:
-            _setter("ipsec_server_name", ipsec_server_name)
+            pulumi.set(__self__, "ipsec_server_name", ipsec_server_name)
         if local_subnet is not None:
-            _setter("local_subnet", local_subnet)
+            pulumi.set(__self__, "local_subnet", local_subnet)
         if psk is not None:
-            _setter("psk", psk)
+            pulumi.set(__self__, "psk", psk)
         if psk_enabled is not None:
-            _setter("psk_enabled", psk_enabled)
+            pulumi.set(__self__, "psk_enabled", psk_enabled)
         if vpn_gateway_id is not None:
-            _setter("vpn_gateway_id", vpn_gateway_id)
+            pulumi.set(__self__, "vpn_gateway_id", vpn_gateway_id)
 
     @property
     @pulumi.getter(name="clientIpPool")
@@ -585,10 +485,6 @@ class IpsecServer(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            IpsecServerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

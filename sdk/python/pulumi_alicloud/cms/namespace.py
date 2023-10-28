@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['NamespaceArgs', 'Namespace']
@@ -29,28 +29,11 @@ class NamespaceArgs:
                - `cms.s1.6xlarge`: Data storage duration 185 days.
                - `cms.s1.12xlarge`: Data storage duration 376 days.
         """
-        NamespaceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            namespace=namespace,
-            description=description,
-            specification=specification,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             namespace: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             specification: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if namespace is None:
-            raise TypeError("Missing 'namespace' argument")
-
-        _setter("namespace", namespace)
+        pulumi.set(__self__, "namespace", namespace)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if specification is not None:
-            _setter("specification", specification)
+            pulumi.set(__self__, "specification", specification)
 
     @property
     @pulumi.getter
@@ -113,27 +96,12 @@ class _NamespaceState:
                - `cms.s1.6xlarge`: Data storage duration 185 days.
                - `cms.s1.12xlarge`: Data storage duration 376 days.
         """
-        _NamespaceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            namespace=namespace,
-            specification=specification,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             namespace: Optional[pulumi.Input[str]] = None,
-             specification: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if namespace is not None:
-            _setter("namespace", namespace)
+            pulumi.set(__self__, "namespace", namespace)
         if specification is not None:
-            _setter("specification", specification)
+            pulumi.set(__self__, "specification", specification)
 
     @property
     @pulumi.getter
@@ -271,10 +239,6 @@ class Namespace(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            NamespaceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

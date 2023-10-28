@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BandwidthPackageArgs', 'BandwidthPackage']
@@ -52,107 +52,38 @@ class BandwidthPackageArgs:
         :param pulumi.Input[str] renewal_status: Whether to renew a bandwidth packet. automatically or not. Valid values:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
-        BandwidthPackageArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bandwidth=bandwidth,
-            type=type,
-            auto_pay=auto_pay,
-            auto_renew_duration=auto_renew_duration,
-            auto_use_coupon=auto_use_coupon,
-            bandwidth_package_name=bandwidth_package_name,
-            bandwidth_type=bandwidth_type,
-            billing_type=billing_type,
-            cbn_geographic_region_ida=cbn_geographic_region_ida,
-            cbn_geographic_region_idb=cbn_geographic_region_idb,
-            description=description,
-            duration=duration,
-            payment_type=payment_type,
-            promotion_option_no=promotion_option_no,
-            ratio=ratio,
-            renewal_status=renewal_status,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bandwidth: Optional[pulumi.Input[int]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             auto_pay: Optional[pulumi.Input[bool]] = None,
-             auto_renew_duration: Optional[pulumi.Input[int]] = None,
-             auto_use_coupon: Optional[pulumi.Input[bool]] = None,
-             bandwidth_package_name: Optional[pulumi.Input[str]] = None,
-             bandwidth_type: Optional[pulumi.Input[str]] = None,
-             billing_type: Optional[pulumi.Input[str]] = None,
-             cbn_geographic_region_ida: Optional[pulumi.Input[str]] = None,
-             cbn_geographic_region_idb: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             duration: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             promotion_option_no: Optional[pulumi.Input[str]] = None,
-             ratio: Optional[pulumi.Input[int]] = None,
-             renewal_status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bandwidth is None:
-            raise TypeError("Missing 'bandwidth' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if auto_pay is None and 'autoPay' in kwargs:
-            auto_pay = kwargs['autoPay']
-        if auto_renew_duration is None and 'autoRenewDuration' in kwargs:
-            auto_renew_duration = kwargs['autoRenewDuration']
-        if auto_use_coupon is None and 'autoUseCoupon' in kwargs:
-            auto_use_coupon = kwargs['autoUseCoupon']
-        if bandwidth_package_name is None and 'bandwidthPackageName' in kwargs:
-            bandwidth_package_name = kwargs['bandwidthPackageName']
-        if bandwidth_type is None and 'bandwidthType' in kwargs:
-            bandwidth_type = kwargs['bandwidthType']
-        if billing_type is None and 'billingType' in kwargs:
-            billing_type = kwargs['billingType']
-        if cbn_geographic_region_ida is None and 'cbnGeographicRegionIda' in kwargs:
-            cbn_geographic_region_ida = kwargs['cbnGeographicRegionIda']
-        if cbn_geographic_region_idb is None and 'cbnGeographicRegionIdb' in kwargs:
-            cbn_geographic_region_idb = kwargs['cbnGeographicRegionIdb']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if promotion_option_no is None and 'promotionOptionNo' in kwargs:
-            promotion_option_no = kwargs['promotionOptionNo']
-        if renewal_status is None and 'renewalStatus' in kwargs:
-            renewal_status = kwargs['renewalStatus']
-
-        _setter("bandwidth", bandwidth)
-        _setter("type", type)
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "type", type)
         if auto_pay is not None:
-            _setter("auto_pay", auto_pay)
+            pulumi.set(__self__, "auto_pay", auto_pay)
         if auto_renew_duration is not None:
-            _setter("auto_renew_duration", auto_renew_duration)
+            pulumi.set(__self__, "auto_renew_duration", auto_renew_duration)
         if auto_use_coupon is not None:
-            _setter("auto_use_coupon", auto_use_coupon)
+            pulumi.set(__self__, "auto_use_coupon", auto_use_coupon)
         if bandwidth_package_name is not None:
-            _setter("bandwidth_package_name", bandwidth_package_name)
+            pulumi.set(__self__, "bandwidth_package_name", bandwidth_package_name)
         if bandwidth_type is not None:
-            _setter("bandwidth_type", bandwidth_type)
+            pulumi.set(__self__, "bandwidth_type", bandwidth_type)
         if billing_type is not None:
-            _setter("billing_type", billing_type)
+            pulumi.set(__self__, "billing_type", billing_type)
         if cbn_geographic_region_ida is not None:
-            _setter("cbn_geographic_region_ida", cbn_geographic_region_ida)
+            pulumi.set(__self__, "cbn_geographic_region_ida", cbn_geographic_region_ida)
         if cbn_geographic_region_idb is not None:
-            _setter("cbn_geographic_region_idb", cbn_geographic_region_idb)
+            pulumi.set(__self__, "cbn_geographic_region_idb", cbn_geographic_region_idb)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if duration is not None:
-            _setter("duration", duration)
+            pulumi.set(__self__, "duration", duration)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if promotion_option_no is not None:
-            _setter("promotion_option_no", promotion_option_no)
+            pulumi.set(__self__, "promotion_option_no", promotion_option_no)
         if ratio is not None:
-            _setter("ratio", ratio)
+            pulumi.set(__self__, "ratio", ratio)
         if renewal_status is not None:
-            _setter("renewal_status", renewal_status)
+            pulumi.set(__self__, "renewal_status", renewal_status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -403,109 +334,42 @@ class _BandwidthPackageState:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] type: The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
         """
-        _BandwidthPackageState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto_pay=auto_pay,
-            auto_renew_duration=auto_renew_duration,
-            auto_use_coupon=auto_use_coupon,
-            bandwidth=bandwidth,
-            bandwidth_package_name=bandwidth_package_name,
-            bandwidth_type=bandwidth_type,
-            billing_type=billing_type,
-            cbn_geographic_region_ida=cbn_geographic_region_ida,
-            cbn_geographic_region_idb=cbn_geographic_region_idb,
-            description=description,
-            duration=duration,
-            payment_type=payment_type,
-            promotion_option_no=promotion_option_no,
-            ratio=ratio,
-            renewal_status=renewal_status,
-            status=status,
-            tags=tags,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto_pay: Optional[pulumi.Input[bool]] = None,
-             auto_renew_duration: Optional[pulumi.Input[int]] = None,
-             auto_use_coupon: Optional[pulumi.Input[bool]] = None,
-             bandwidth: Optional[pulumi.Input[int]] = None,
-             bandwidth_package_name: Optional[pulumi.Input[str]] = None,
-             bandwidth_type: Optional[pulumi.Input[str]] = None,
-             billing_type: Optional[pulumi.Input[str]] = None,
-             cbn_geographic_region_ida: Optional[pulumi.Input[str]] = None,
-             cbn_geographic_region_idb: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             duration: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             promotion_option_no: Optional[pulumi.Input[str]] = None,
-             ratio: Optional[pulumi.Input[int]] = None,
-             renewal_status: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_pay is None and 'autoPay' in kwargs:
-            auto_pay = kwargs['autoPay']
-        if auto_renew_duration is None and 'autoRenewDuration' in kwargs:
-            auto_renew_duration = kwargs['autoRenewDuration']
-        if auto_use_coupon is None and 'autoUseCoupon' in kwargs:
-            auto_use_coupon = kwargs['autoUseCoupon']
-        if bandwidth_package_name is None and 'bandwidthPackageName' in kwargs:
-            bandwidth_package_name = kwargs['bandwidthPackageName']
-        if bandwidth_type is None and 'bandwidthType' in kwargs:
-            bandwidth_type = kwargs['bandwidthType']
-        if billing_type is None and 'billingType' in kwargs:
-            billing_type = kwargs['billingType']
-        if cbn_geographic_region_ida is None and 'cbnGeographicRegionIda' in kwargs:
-            cbn_geographic_region_ida = kwargs['cbnGeographicRegionIda']
-        if cbn_geographic_region_idb is None and 'cbnGeographicRegionIdb' in kwargs:
-            cbn_geographic_region_idb = kwargs['cbnGeographicRegionIdb']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if promotion_option_no is None and 'promotionOptionNo' in kwargs:
-            promotion_option_no = kwargs['promotionOptionNo']
-        if renewal_status is None and 'renewalStatus' in kwargs:
-            renewal_status = kwargs['renewalStatus']
-
         if auto_pay is not None:
-            _setter("auto_pay", auto_pay)
+            pulumi.set(__self__, "auto_pay", auto_pay)
         if auto_renew_duration is not None:
-            _setter("auto_renew_duration", auto_renew_duration)
+            pulumi.set(__self__, "auto_renew_duration", auto_renew_duration)
         if auto_use_coupon is not None:
-            _setter("auto_use_coupon", auto_use_coupon)
+            pulumi.set(__self__, "auto_use_coupon", auto_use_coupon)
         if bandwidth is not None:
-            _setter("bandwidth", bandwidth)
+            pulumi.set(__self__, "bandwidth", bandwidth)
         if bandwidth_package_name is not None:
-            _setter("bandwidth_package_name", bandwidth_package_name)
+            pulumi.set(__self__, "bandwidth_package_name", bandwidth_package_name)
         if bandwidth_type is not None:
-            _setter("bandwidth_type", bandwidth_type)
+            pulumi.set(__self__, "bandwidth_type", bandwidth_type)
         if billing_type is not None:
-            _setter("billing_type", billing_type)
+            pulumi.set(__self__, "billing_type", billing_type)
         if cbn_geographic_region_ida is not None:
-            _setter("cbn_geographic_region_ida", cbn_geographic_region_ida)
+            pulumi.set(__self__, "cbn_geographic_region_ida", cbn_geographic_region_ida)
         if cbn_geographic_region_idb is not None:
-            _setter("cbn_geographic_region_idb", cbn_geographic_region_idb)
+            pulumi.set(__self__, "cbn_geographic_region_idb", cbn_geographic_region_idb)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if duration is not None:
-            _setter("duration", duration)
+            pulumi.set(__self__, "duration", duration)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if promotion_option_no is not None:
-            _setter("promotion_option_no", promotion_option_no)
+            pulumi.set(__self__, "promotion_option_no", promotion_option_no)
         if ratio is not None:
-            _setter("ratio", ratio)
+            pulumi.set(__self__, "ratio", ratio)
         if renewal_status is not None:
-            _setter("renewal_status", renewal_status)
+            pulumi.set(__self__, "renewal_status", renewal_status)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="autoPay")
@@ -853,10 +717,6 @@ class BandwidthPackage(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            BandwidthPackageArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

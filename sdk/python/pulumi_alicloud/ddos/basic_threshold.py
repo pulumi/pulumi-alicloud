@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BasicThresholdArgs', 'BasicThreshold']
@@ -27,46 +27,11 @@ class BasicThresholdArgs:
         :param pulumi.Input[str] internet_ip: The IP address of the public IP address asset.
         :param pulumi.Input[int] pps: The current message number cleaning threshold. Unit: pps.
         """
-        BasicThresholdArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bps=bps,
-            instance_id=instance_id,
-            instance_type=instance_type,
-            internet_ip=internet_ip,
-            pps=pps,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bps: Optional[pulumi.Input[int]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             instance_type: Optional[pulumi.Input[str]] = None,
-             internet_ip: Optional[pulumi.Input[str]] = None,
-             pps: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bps is None:
-            raise TypeError("Missing 'bps' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if instance_type is None:
-            raise TypeError("Missing 'instance_type' argument")
-        if internet_ip is None and 'internetIp' in kwargs:
-            internet_ip = kwargs['internetIp']
-        if internet_ip is None:
-            raise TypeError("Missing 'internet_ip' argument")
-        if pps is None:
-            raise TypeError("Missing 'pps' argument")
-
-        _setter("bps", bps)
-        _setter("instance_id", instance_id)
-        _setter("instance_type", instance_type)
-        _setter("internet_ip", internet_ip)
-        _setter("pps", pps)
+        pulumi.set(__self__, "bps", bps)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "internet_ip", internet_ip)
+        pulumi.set(__self__, "pps", pps)
 
     @property
     @pulumi.getter
@@ -149,53 +114,20 @@ class _BasicThresholdState:
         :param pulumi.Input[int] max_pps: The maximum number of messages cleaning threshold. Unit: pps.
         :param pulumi.Input[int] pps: The current message number cleaning threshold. Unit: pps.
         """
-        _BasicThresholdState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bps=bps,
-            instance_id=instance_id,
-            instance_type=instance_type,
-            internet_ip=internet_ip,
-            max_bps=max_bps,
-            max_pps=max_pps,
-            pps=pps,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bps: Optional[pulumi.Input[int]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             instance_type: Optional[pulumi.Input[str]] = None,
-             internet_ip: Optional[pulumi.Input[str]] = None,
-             max_bps: Optional[pulumi.Input[int]] = None,
-             max_pps: Optional[pulumi.Input[int]] = None,
-             pps: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if internet_ip is None and 'internetIp' in kwargs:
-            internet_ip = kwargs['internetIp']
-        if max_bps is None and 'maxBps' in kwargs:
-            max_bps = kwargs['maxBps']
-        if max_pps is None and 'maxPps' in kwargs:
-            max_pps = kwargs['maxPps']
-
         if bps is not None:
-            _setter("bps", bps)
+            pulumi.set(__self__, "bps", bps)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if instance_type is not None:
-            _setter("instance_type", instance_type)
+            pulumi.set(__self__, "instance_type", instance_type)
         if internet_ip is not None:
-            _setter("internet_ip", internet_ip)
+            pulumi.set(__self__, "internet_ip", internet_ip)
         if max_bps is not None:
-            _setter("max_bps", max_bps)
+            pulumi.set(__self__, "max_bps", max_bps)
         if max_pps is not None:
-            _setter("max_pps", max_pps)
+            pulumi.set(__self__, "max_pps", max_pps)
         if pps is not None:
-            _setter("pps", pps)
+            pulumi.set(__self__, "pps", pps)
 
     @property
     @pulumi.getter
@@ -439,10 +371,6 @@ class BasicThreshold(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            BasicThresholdArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

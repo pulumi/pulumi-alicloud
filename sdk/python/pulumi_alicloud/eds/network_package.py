@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['NetworkPackageArgs', 'NetworkPackage']
@@ -21,27 +21,8 @@ class NetworkPackageArgs:
         :param pulumi.Input[int] bandwidth: The bandwidth of package public network bandwidth peak. Valid values: 1~200. Unit:Mbps.
         :param pulumi.Input[str] office_site_id: The ID of office site.
         """
-        NetworkPackageArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bandwidth=bandwidth,
-            office_site_id=office_site_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bandwidth: Optional[pulumi.Input[int]] = None,
-             office_site_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bandwidth is None:
-            raise TypeError("Missing 'bandwidth' argument")
-        if office_site_id is None and 'officeSiteId' in kwargs:
-            office_site_id = kwargs['officeSiteId']
-        if office_site_id is None:
-            raise TypeError("Missing 'office_site_id' argument")
-
-        _setter("bandwidth", bandwidth)
-        _setter("office_site_id", office_site_id)
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "office_site_id", office_site_id)
 
     @property
     @pulumi.getter
@@ -82,35 +63,14 @@ class _NetworkPackageState:
         :param pulumi.Input[str] office_site_id: The ID of office site.
         :param pulumi.Input[str] status: The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
         """
-        _NetworkPackageState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bandwidth=bandwidth,
-            internet_charge_type=internet_charge_type,
-            office_site_id=office_site_id,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bandwidth: Optional[pulumi.Input[int]] = None,
-             internet_charge_type: Optional[pulumi.Input[str]] = None,
-             office_site_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if internet_charge_type is None and 'internetChargeType' in kwargs:
-            internet_charge_type = kwargs['internetChargeType']
-        if office_site_id is None and 'officeSiteId' in kwargs:
-            office_site_id = kwargs['officeSiteId']
-
         if bandwidth is not None:
-            _setter("bandwidth", bandwidth)
+            pulumi.set(__self__, "bandwidth", bandwidth)
         if internet_charge_type is not None:
-            _setter("internet_charge_type", internet_charge_type)
+            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
         if office_site_id is not None:
-            _setter("office_site_id", office_site_id)
+            pulumi.set(__self__, "office_site_id", office_site_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -264,10 +224,6 @@ class NetworkPackage(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            NetworkPackageArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

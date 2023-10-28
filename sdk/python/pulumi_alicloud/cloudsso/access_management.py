@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AccessManagementArgs', 'AccessManagement']
@@ -31,63 +31,14 @@ class AccessManagementArgs:
         :param pulumi.Input[str] target_type: The type of the resource range target to be accessed. Valid values: `RD-Account`.
         :param pulumi.Input[str] deprovision_strategy: The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
         """
-        AccessManagementArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_configuration_id=access_configuration_id,
-            directory_id=directory_id,
-            principal_id=principal_id,
-            principal_type=principal_type,
-            target_id=target_id,
-            target_type=target_type,
-            deprovision_strategy=deprovision_strategy,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_configuration_id: Optional[pulumi.Input[str]] = None,
-             directory_id: Optional[pulumi.Input[str]] = None,
-             principal_id: Optional[pulumi.Input[str]] = None,
-             principal_type: Optional[pulumi.Input[str]] = None,
-             target_id: Optional[pulumi.Input[str]] = None,
-             target_type: Optional[pulumi.Input[str]] = None,
-             deprovision_strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_configuration_id is None and 'accessConfigurationId' in kwargs:
-            access_configuration_id = kwargs['accessConfigurationId']
-        if access_configuration_id is None:
-            raise TypeError("Missing 'access_configuration_id' argument")
-        if directory_id is None and 'directoryId' in kwargs:
-            directory_id = kwargs['directoryId']
-        if directory_id is None:
-            raise TypeError("Missing 'directory_id' argument")
-        if principal_id is None and 'principalId' in kwargs:
-            principal_id = kwargs['principalId']
-        if principal_id is None:
-            raise TypeError("Missing 'principal_id' argument")
-        if principal_type is None and 'principalType' in kwargs:
-            principal_type = kwargs['principalType']
-        if principal_type is None:
-            raise TypeError("Missing 'principal_type' argument")
-        if target_id is None and 'targetId' in kwargs:
-            target_id = kwargs['targetId']
-        if target_id is None:
-            raise TypeError("Missing 'target_id' argument")
-        if target_type is None and 'targetType' in kwargs:
-            target_type = kwargs['targetType']
-        if target_type is None:
-            raise TypeError("Missing 'target_type' argument")
-        if deprovision_strategy is None and 'deprovisionStrategy' in kwargs:
-            deprovision_strategy = kwargs['deprovisionStrategy']
-
-        _setter("access_configuration_id", access_configuration_id)
-        _setter("directory_id", directory_id)
-        _setter("principal_id", principal_id)
-        _setter("principal_type", principal_type)
-        _setter("target_id", target_id)
-        _setter("target_type", target_type)
+        pulumi.set(__self__, "access_configuration_id", access_configuration_id)
+        pulumi.set(__self__, "directory_id", directory_id)
+        pulumi.set(__self__, "principal_id", principal_id)
+        pulumi.set(__self__, "principal_type", principal_type)
+        pulumi.set(__self__, "target_id", target_id)
+        pulumi.set(__self__, "target_type", target_type)
         if deprovision_strategy is not None:
-            _setter("deprovision_strategy", deprovision_strategy)
+            pulumi.set(__self__, "deprovision_strategy", deprovision_strategy)
 
     @property
     @pulumi.getter(name="accessConfigurationId")
@@ -194,57 +145,20 @@ class _AccessManagementState:
         :param pulumi.Input[str] target_id: The ID of the target to create the resource range.
         :param pulumi.Input[str] target_type: The type of the resource range target to be accessed. Valid values: `RD-Account`.
         """
-        _AccessManagementState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_configuration_id=access_configuration_id,
-            deprovision_strategy=deprovision_strategy,
-            directory_id=directory_id,
-            principal_id=principal_id,
-            principal_type=principal_type,
-            target_id=target_id,
-            target_type=target_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_configuration_id: Optional[pulumi.Input[str]] = None,
-             deprovision_strategy: Optional[pulumi.Input[str]] = None,
-             directory_id: Optional[pulumi.Input[str]] = None,
-             principal_id: Optional[pulumi.Input[str]] = None,
-             principal_type: Optional[pulumi.Input[str]] = None,
-             target_id: Optional[pulumi.Input[str]] = None,
-             target_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_configuration_id is None and 'accessConfigurationId' in kwargs:
-            access_configuration_id = kwargs['accessConfigurationId']
-        if deprovision_strategy is None and 'deprovisionStrategy' in kwargs:
-            deprovision_strategy = kwargs['deprovisionStrategy']
-        if directory_id is None and 'directoryId' in kwargs:
-            directory_id = kwargs['directoryId']
-        if principal_id is None and 'principalId' in kwargs:
-            principal_id = kwargs['principalId']
-        if principal_type is None and 'principalType' in kwargs:
-            principal_type = kwargs['principalType']
-        if target_id is None and 'targetId' in kwargs:
-            target_id = kwargs['targetId']
-        if target_type is None and 'targetType' in kwargs:
-            target_type = kwargs['targetType']
-
         if access_configuration_id is not None:
-            _setter("access_configuration_id", access_configuration_id)
+            pulumi.set(__self__, "access_configuration_id", access_configuration_id)
         if deprovision_strategy is not None:
-            _setter("deprovision_strategy", deprovision_strategy)
+            pulumi.set(__self__, "deprovision_strategy", deprovision_strategy)
         if directory_id is not None:
-            _setter("directory_id", directory_id)
+            pulumi.set(__self__, "directory_id", directory_id)
         if principal_id is not None:
-            _setter("principal_id", principal_id)
+            pulumi.set(__self__, "principal_id", principal_id)
         if principal_type is not None:
-            _setter("principal_type", principal_type)
+            pulumi.set(__self__, "principal_type", principal_type)
         if target_id is not None:
-            _setter("target_id", target_id)
+            pulumi.set(__self__, "target_id", target_id)
         if target_type is not None:
-            _setter("target_type", target_type)
+            pulumi.set(__self__, "target_type", target_type)
 
     @property
     @pulumi.getter(name="accessConfigurationId")
@@ -408,10 +322,6 @@ class AccessManagement(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AccessManagementArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

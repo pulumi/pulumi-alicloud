@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ConfigMapArgs', 'ConfigMap']
@@ -25,35 +25,12 @@ class ConfigMapArgs:
         :param pulumi.Input[str] description: The Description of ConfigMap.
         :param pulumi.Input[str] name: ConfigMap instance name.
         """
-        ConfigMapArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            data=data,
-            namespace_id=namespace_id,
-            description=description,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             data: Optional[pulumi.Input[str]] = None,
-             namespace_id: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if data is None:
-            raise TypeError("Missing 'data' argument")
-        if namespace_id is None and 'namespaceId' in kwargs:
-            namespace_id = kwargs['namespaceId']
-        if namespace_id is None:
-            raise TypeError("Missing 'namespace_id' argument")
-
-        _setter("data", data)
-        _setter("namespace_id", namespace_id)
+        pulumi.set(__self__, "data", data)
+        pulumi.set(__self__, "namespace_id", namespace_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -118,33 +95,14 @@ class _ConfigMapState:
         :param pulumi.Input[str] name: ConfigMap instance name.
         :param pulumi.Input[str] namespace_id: The NamespaceId of ConfigMap.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
         """
-        _ConfigMapState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            data=data,
-            description=description,
-            name=name,
-            namespace_id=namespace_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             data: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             namespace_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if namespace_id is None and 'namespaceId' in kwargs:
-            namespace_id = kwargs['namespaceId']
-
         if data is not None:
-            _setter("data", data)
+            pulumi.set(__self__, "data", data)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if namespace_id is not None:
-            _setter("namespace_id", namespace_id)
+            pulumi.set(__self__, "namespace_id", namespace_id)
 
     @property
     @pulumi.getter
@@ -320,10 +278,6 @@ class ConfigMap(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ConfigMapArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

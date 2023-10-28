@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ChartRepositoryArgs', 'ChartRepository']
@@ -27,46 +27,13 @@ class ChartRepositoryArgs:
         :param pulumi.Input[str] repo_type: The default repository type. Valid values: `PUBLIC`,`PRIVATE`.
         :param pulumi.Input[str] summary: The summary about the repository.
         """
-        ChartRepositoryArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_id=instance_id,
-            repo_name=repo_name,
-            repo_namespace_name=repo_namespace_name,
-            repo_type=repo_type,
-            summary=summary,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_id: Optional[pulumi.Input[str]] = None,
-             repo_name: Optional[pulumi.Input[str]] = None,
-             repo_namespace_name: Optional[pulumi.Input[str]] = None,
-             repo_type: Optional[pulumi.Input[str]] = None,
-             summary: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if repo_name is None and 'repoName' in kwargs:
-            repo_name = kwargs['repoName']
-        if repo_name is None:
-            raise TypeError("Missing 'repo_name' argument")
-        if repo_namespace_name is None and 'repoNamespaceName' in kwargs:
-            repo_namespace_name = kwargs['repoNamespaceName']
-        if repo_namespace_name is None:
-            raise TypeError("Missing 'repo_namespace_name' argument")
-        if repo_type is None and 'repoType' in kwargs:
-            repo_type = kwargs['repoType']
-
-        _setter("instance_id", instance_id)
-        _setter("repo_name", repo_name)
-        _setter("repo_namespace_name", repo_namespace_name)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "repo_name", repo_name)
+        pulumi.set(__self__, "repo_namespace_name", repo_namespace_name)
         if repo_type is not None:
-            _setter("repo_type", repo_type)
+            pulumi.set(__self__, "repo_type", repo_type)
         if summary is not None:
-            _setter("summary", summary)
+            pulumi.set(__self__, "summary", summary)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -145,43 +112,16 @@ class _ChartRepositoryState:
         :param pulumi.Input[str] repo_type: The default repository type. Valid values: `PUBLIC`,`PRIVATE`.
         :param pulumi.Input[str] summary: The summary about the repository.
         """
-        _ChartRepositoryState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_id=instance_id,
-            repo_name=repo_name,
-            repo_namespace_name=repo_namespace_name,
-            repo_type=repo_type,
-            summary=summary,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_id: Optional[pulumi.Input[str]] = None,
-             repo_name: Optional[pulumi.Input[str]] = None,
-             repo_namespace_name: Optional[pulumi.Input[str]] = None,
-             repo_type: Optional[pulumi.Input[str]] = None,
-             summary: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if repo_name is None and 'repoName' in kwargs:
-            repo_name = kwargs['repoName']
-        if repo_namespace_name is None and 'repoNamespaceName' in kwargs:
-            repo_namespace_name = kwargs['repoNamespaceName']
-        if repo_type is None and 'repoType' in kwargs:
-            repo_type = kwargs['repoType']
-
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if repo_name is not None:
-            _setter("repo_name", repo_name)
+            pulumi.set(__self__, "repo_name", repo_name)
         if repo_namespace_name is not None:
-            _setter("repo_namespace_name", repo_namespace_name)
+            pulumi.set(__self__, "repo_namespace_name", repo_namespace_name)
         if repo_type is not None:
-            _setter("repo_type", repo_type)
+            pulumi.set(__self__, "repo_type", repo_type)
         if summary is not None:
-            _setter("summary", summary)
+            pulumi.set(__self__, "summary", summary)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -365,10 +305,6 @@ class ChartRepository(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ChartRepositoryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

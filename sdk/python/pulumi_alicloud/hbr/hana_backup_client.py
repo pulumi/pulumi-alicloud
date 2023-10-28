@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['HanaBackupClientArgs', 'HanaBackupClient']
@@ -25,40 +25,13 @@ class HanaBackupClientArgs:
         :param pulumi.Input[str] client_info: The installation information of the HBR clients.
         :param pulumi.Input[bool] use_https: Specifies whether to transmit data over HTTPS. Valid values: `true`, `false`.
         """
-        HanaBackupClientArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            vault_id=vault_id,
-            alert_setting=alert_setting,
-            client_info=client_info,
-            use_https=use_https,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             vault_id: Optional[pulumi.Input[str]] = None,
-             alert_setting: Optional[pulumi.Input[str]] = None,
-             client_info: Optional[pulumi.Input[str]] = None,
-             use_https: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if vault_id is None and 'vaultId' in kwargs:
-            vault_id = kwargs['vaultId']
-        if vault_id is None:
-            raise TypeError("Missing 'vault_id' argument")
-        if alert_setting is None and 'alertSetting' in kwargs:
-            alert_setting = kwargs['alertSetting']
-        if client_info is None and 'clientInfo' in kwargs:
-            client_info = kwargs['clientInfo']
-        if use_https is None and 'useHttps' in kwargs:
-            use_https = kwargs['useHttps']
-
-        _setter("vault_id", vault_id)
+        pulumi.set(__self__, "vault_id", vault_id)
         if alert_setting is not None:
-            _setter("alert_setting", alert_setting)
+            pulumi.set(__self__, "alert_setting", alert_setting)
         if client_info is not None:
-            _setter("client_info", client_info)
+            pulumi.set(__self__, "client_info", client_info)
         if use_https is not None:
-            _setter("use_https", use_https)
+            pulumi.set(__self__, "use_https", use_https)
 
     @property
     @pulumi.getter(name="vaultId")
@@ -131,61 +104,22 @@ class _HanaBackupClientState:
         :param pulumi.Input[bool] use_https: Specifies whether to transmit data over HTTPS. Valid values: `true`, `false`.
         :param pulumi.Input[str] vault_id: The ID of the backup vault.
         """
-        _HanaBackupClientState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            alert_setting=alert_setting,
-            client_id=client_id,
-            client_info=client_info,
-            cluster_id=cluster_id,
-            instance_id=instance_id,
-            status=status,
-            use_https=use_https,
-            vault_id=vault_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             alert_setting: Optional[pulumi.Input[str]] = None,
-             client_id: Optional[pulumi.Input[str]] = None,
-             client_info: Optional[pulumi.Input[str]] = None,
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             use_https: Optional[pulumi.Input[bool]] = None,
-             vault_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if alert_setting is None and 'alertSetting' in kwargs:
-            alert_setting = kwargs['alertSetting']
-        if client_id is None and 'clientId' in kwargs:
-            client_id = kwargs['clientId']
-        if client_info is None and 'clientInfo' in kwargs:
-            client_info = kwargs['clientInfo']
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if use_https is None and 'useHttps' in kwargs:
-            use_https = kwargs['useHttps']
-        if vault_id is None and 'vaultId' in kwargs:
-            vault_id = kwargs['vaultId']
-
         if alert_setting is not None:
-            _setter("alert_setting", alert_setting)
+            pulumi.set(__self__, "alert_setting", alert_setting)
         if client_id is not None:
-            _setter("client_id", client_id)
+            pulumi.set(__self__, "client_id", client_id)
         if client_info is not None:
-            _setter("client_info", client_info)
+            pulumi.set(__self__, "client_info", client_info)
         if cluster_id is not None:
-            _setter("cluster_id", cluster_id)
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if use_https is not None:
-            _setter("use_https", use_https)
+            pulumi.set(__self__, "use_https", use_https)
         if vault_id is not None:
-            _setter("vault_id", vault_id)
+            pulumi.set(__self__, "vault_id", vault_id)
 
     @property
     @pulumi.getter(name="alertSetting")
@@ -451,10 +385,6 @@ class HanaBackupClient(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            HanaBackupClientArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

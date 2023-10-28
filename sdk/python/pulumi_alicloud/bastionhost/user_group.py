@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['UserGroupArgs', 'UserGroup']
@@ -23,33 +23,10 @@ class UserGroupArgs:
         :param pulumi.Input[str] user_group_name: Specify the New Group Name. Supports up to 128 Characters.
         :param pulumi.Input[str] comment: Specify the New Group of Remark Information. Supports up to 500 Characters.
         """
-        UserGroupArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_id=instance_id,
-            user_group_name=user_group_name,
-            comment=comment,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_id: Optional[pulumi.Input[str]] = None,
-             user_group_name: Optional[pulumi.Input[str]] = None,
-             comment: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if user_group_name is None and 'userGroupName' in kwargs:
-            user_group_name = kwargs['userGroupName']
-        if user_group_name is None:
-            raise TypeError("Missing 'user_group_name' argument")
-
-        _setter("instance_id", instance_id)
-        _setter("user_group_name", user_group_name)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "user_group_name", user_group_name)
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -102,37 +79,14 @@ class _UserGroupState:
         :param pulumi.Input[str] user_group_id: The User Group self ID.
         :param pulumi.Input[str] user_group_name: Specify the New Group Name. Supports up to 128 Characters.
         """
-        _UserGroupState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            comment=comment,
-            instance_id=instance_id,
-            user_group_id=user_group_id,
-            user_group_name=user_group_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             comment: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             user_group_id: Optional[pulumi.Input[str]] = None,
-             user_group_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if user_group_id is None and 'userGroupId' in kwargs:
-            user_group_id = kwargs['userGroupId']
-        if user_group_name is None and 'userGroupName' in kwargs:
-            user_group_name = kwargs['userGroupName']
-
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if user_group_id is not None:
-            _setter("user_group_id", user_group_id)
+            pulumi.set(__self__, "user_group_id", user_group_id)
         if user_group_name is not None:
-            _setter("user_group_name", user_group_name)
+            pulumi.set(__self__, "user_group_name", user_group_name)
 
     @property
     @pulumi.getter
@@ -316,10 +270,6 @@ class UserGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            UserGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TransitRouterMulticastDomainSourceArgs', 'TransitRouterMulticastDomainSource']
@@ -25,42 +25,11 @@ class TransitRouterMulticastDomainSourceArgs:
         :param pulumi.Input[str] transit_router_multicast_domain_id: The ID of the multicast domain to which the multicast source belongs.
         :param pulumi.Input[str] vpc_id: The VPC to which the ENI of the multicast source belongs. This field is mandatory for VPCs that is owned by another accounts.
         """
-        TransitRouterMulticastDomainSourceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            group_ip_address=group_ip_address,
-            network_interface_id=network_interface_id,
-            transit_router_multicast_domain_id=transit_router_multicast_domain_id,
-            vpc_id=vpc_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             group_ip_address: Optional[pulumi.Input[str]] = None,
-             network_interface_id: Optional[pulumi.Input[str]] = None,
-             transit_router_multicast_domain_id: Optional[pulumi.Input[str]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if group_ip_address is None and 'groupIpAddress' in kwargs:
-            group_ip_address = kwargs['groupIpAddress']
-        if group_ip_address is None:
-            raise TypeError("Missing 'group_ip_address' argument")
-        if network_interface_id is None and 'networkInterfaceId' in kwargs:
-            network_interface_id = kwargs['networkInterfaceId']
-        if network_interface_id is None:
-            raise TypeError("Missing 'network_interface_id' argument")
-        if transit_router_multicast_domain_id is None and 'transitRouterMulticastDomainId' in kwargs:
-            transit_router_multicast_domain_id = kwargs['transitRouterMulticastDomainId']
-        if transit_router_multicast_domain_id is None:
-            raise TypeError("Missing 'transit_router_multicast_domain_id' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-
-        _setter("group_ip_address", group_ip_address)
-        _setter("network_interface_id", network_interface_id)
-        _setter("transit_router_multicast_domain_id", transit_router_multicast_domain_id)
+        pulumi.set(__self__, "group_ip_address", group_ip_address)
+        pulumi.set(__self__, "network_interface_id", network_interface_id)
+        pulumi.set(__self__, "transit_router_multicast_domain_id", transit_router_multicast_domain_id)
         if vpc_id is not None:
-            _setter("vpc_id", vpc_id)
+            pulumi.set(__self__, "vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="groupIpAddress")
@@ -127,43 +96,16 @@ class _TransitRouterMulticastDomainSourceState:
         :param pulumi.Input[str] transit_router_multicast_domain_id: The ID of the multicast domain to which the multicast source belongs.
         :param pulumi.Input[str] vpc_id: The VPC to which the ENI of the multicast source belongs. This field is mandatory for VPCs that is owned by another accounts.
         """
-        _TransitRouterMulticastDomainSourceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            group_ip_address=group_ip_address,
-            network_interface_id=network_interface_id,
-            status=status,
-            transit_router_multicast_domain_id=transit_router_multicast_domain_id,
-            vpc_id=vpc_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             group_ip_address: Optional[pulumi.Input[str]] = None,
-             network_interface_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             transit_router_multicast_domain_id: Optional[pulumi.Input[str]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if group_ip_address is None and 'groupIpAddress' in kwargs:
-            group_ip_address = kwargs['groupIpAddress']
-        if network_interface_id is None and 'networkInterfaceId' in kwargs:
-            network_interface_id = kwargs['networkInterfaceId']
-        if transit_router_multicast_domain_id is None and 'transitRouterMulticastDomainId' in kwargs:
-            transit_router_multicast_domain_id = kwargs['transitRouterMulticastDomainId']
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-
         if group_ip_address is not None:
-            _setter("group_ip_address", group_ip_address)
+            pulumi.set(__self__, "group_ip_address", group_ip_address)
         if network_interface_id is not None:
-            _setter("network_interface_id", network_interface_id)
+            pulumi.set(__self__, "network_interface_id", network_interface_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if transit_router_multicast_domain_id is not None:
-            _setter("transit_router_multicast_domain_id", transit_router_multicast_domain_id)
+            pulumi.set(__self__, "transit_router_multicast_domain_id", transit_router_multicast_domain_id)
         if vpc_id is not None:
-            _setter("vpc_id", vpc_id)
+            pulumi.set(__self__, "vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="groupIpAddress")
@@ -289,10 +231,6 @@ class TransitRouterMulticastDomainSource(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TransitRouterMulticastDomainSourceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SynchronizationJobArgs', 'SynchronizationJob']
@@ -103,247 +103,72 @@ class SynchronizationJobArgs:
                > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instance_class`, you must also modify the property `instance_class` of it's instance to keep them consistent.
         :param pulumi.Input[str] synchronization_direction: Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `sync_architecture` of the `dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
         """
-        SynchronizationJobArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            data_initialization=data_initialization,
-            data_synchronization=data_synchronization,
-            db_list=db_list,
-            destination_endpoint_engine_name=destination_endpoint_engine_name,
-            destination_endpoint_instance_type=destination_endpoint_instance_type,
-            dts_instance_id=dts_instance_id,
-            dts_job_name=dts_job_name,
-            source_endpoint_engine_name=source_endpoint_engine_name,
-            source_endpoint_instance_type=source_endpoint_instance_type,
-            structure_initialization=structure_initialization,
-            checkpoint=checkpoint,
-            delay_notice=delay_notice,
-            delay_phone=delay_phone,
-            delay_rule_time=delay_rule_time,
-            destination_endpoint_database_name=destination_endpoint_database_name,
-            destination_endpoint_instance_id=destination_endpoint_instance_id,
-            destination_endpoint_ip=destination_endpoint_ip,
-            destination_endpoint_oracle_sid=destination_endpoint_oracle_sid,
-            destination_endpoint_password=destination_endpoint_password,
-            destination_endpoint_port=destination_endpoint_port,
-            destination_endpoint_region=destination_endpoint_region,
-            destination_endpoint_user_name=destination_endpoint_user_name,
-            error_notice=error_notice,
-            error_phone=error_phone,
-            instance_class=instance_class,
-            reserve=reserve,
-            source_endpoint_database_name=source_endpoint_database_name,
-            source_endpoint_instance_id=source_endpoint_instance_id,
-            source_endpoint_ip=source_endpoint_ip,
-            source_endpoint_oracle_sid=source_endpoint_oracle_sid,
-            source_endpoint_owner_id=source_endpoint_owner_id,
-            source_endpoint_password=source_endpoint_password,
-            source_endpoint_port=source_endpoint_port,
-            source_endpoint_region=source_endpoint_region,
-            source_endpoint_role=source_endpoint_role,
-            source_endpoint_user_name=source_endpoint_user_name,
-            status=status,
-            synchronization_direction=synchronization_direction,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             data_initialization: Optional[pulumi.Input[bool]] = None,
-             data_synchronization: Optional[pulumi.Input[bool]] = None,
-             db_list: Optional[pulumi.Input[str]] = None,
-             destination_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
-             destination_endpoint_instance_type: Optional[pulumi.Input[str]] = None,
-             dts_instance_id: Optional[pulumi.Input[str]] = None,
-             dts_job_name: Optional[pulumi.Input[str]] = None,
-             source_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
-             source_endpoint_instance_type: Optional[pulumi.Input[str]] = None,
-             structure_initialization: Optional[pulumi.Input[bool]] = None,
-             checkpoint: Optional[pulumi.Input[str]] = None,
-             delay_notice: Optional[pulumi.Input[bool]] = None,
-             delay_phone: Optional[pulumi.Input[str]] = None,
-             delay_rule_time: Optional[pulumi.Input[str]] = None,
-             destination_endpoint_database_name: Optional[pulumi.Input[str]] = None,
-             destination_endpoint_instance_id: Optional[pulumi.Input[str]] = None,
-             destination_endpoint_ip: Optional[pulumi.Input[str]] = None,
-             destination_endpoint_oracle_sid: Optional[pulumi.Input[str]] = None,
-             destination_endpoint_password: Optional[pulumi.Input[str]] = None,
-             destination_endpoint_port: Optional[pulumi.Input[str]] = None,
-             destination_endpoint_region: Optional[pulumi.Input[str]] = None,
-             destination_endpoint_user_name: Optional[pulumi.Input[str]] = None,
-             error_notice: Optional[pulumi.Input[bool]] = None,
-             error_phone: Optional[pulumi.Input[str]] = None,
-             instance_class: Optional[pulumi.Input[str]] = None,
-             reserve: Optional[pulumi.Input[str]] = None,
-             source_endpoint_database_name: Optional[pulumi.Input[str]] = None,
-             source_endpoint_instance_id: Optional[pulumi.Input[str]] = None,
-             source_endpoint_ip: Optional[pulumi.Input[str]] = None,
-             source_endpoint_oracle_sid: Optional[pulumi.Input[str]] = None,
-             source_endpoint_owner_id: Optional[pulumi.Input[str]] = None,
-             source_endpoint_password: Optional[pulumi.Input[str]] = None,
-             source_endpoint_port: Optional[pulumi.Input[str]] = None,
-             source_endpoint_region: Optional[pulumi.Input[str]] = None,
-             source_endpoint_role: Optional[pulumi.Input[str]] = None,
-             source_endpoint_user_name: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             synchronization_direction: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if data_initialization is None and 'dataInitialization' in kwargs:
-            data_initialization = kwargs['dataInitialization']
-        if data_initialization is None:
-            raise TypeError("Missing 'data_initialization' argument")
-        if data_synchronization is None and 'dataSynchronization' in kwargs:
-            data_synchronization = kwargs['dataSynchronization']
-        if data_synchronization is None:
-            raise TypeError("Missing 'data_synchronization' argument")
-        if db_list is None and 'dbList' in kwargs:
-            db_list = kwargs['dbList']
-        if db_list is None:
-            raise TypeError("Missing 'db_list' argument")
-        if destination_endpoint_engine_name is None and 'destinationEndpointEngineName' in kwargs:
-            destination_endpoint_engine_name = kwargs['destinationEndpointEngineName']
-        if destination_endpoint_engine_name is None:
-            raise TypeError("Missing 'destination_endpoint_engine_name' argument")
-        if destination_endpoint_instance_type is None and 'destinationEndpointInstanceType' in kwargs:
-            destination_endpoint_instance_type = kwargs['destinationEndpointInstanceType']
-        if destination_endpoint_instance_type is None:
-            raise TypeError("Missing 'destination_endpoint_instance_type' argument")
-        if dts_instance_id is None and 'dtsInstanceId' in kwargs:
-            dts_instance_id = kwargs['dtsInstanceId']
-        if dts_instance_id is None:
-            raise TypeError("Missing 'dts_instance_id' argument")
-        if dts_job_name is None and 'dtsJobName' in kwargs:
-            dts_job_name = kwargs['dtsJobName']
-        if dts_job_name is None:
-            raise TypeError("Missing 'dts_job_name' argument")
-        if source_endpoint_engine_name is None and 'sourceEndpointEngineName' in kwargs:
-            source_endpoint_engine_name = kwargs['sourceEndpointEngineName']
-        if source_endpoint_engine_name is None:
-            raise TypeError("Missing 'source_endpoint_engine_name' argument")
-        if source_endpoint_instance_type is None and 'sourceEndpointInstanceType' in kwargs:
-            source_endpoint_instance_type = kwargs['sourceEndpointInstanceType']
-        if source_endpoint_instance_type is None:
-            raise TypeError("Missing 'source_endpoint_instance_type' argument")
-        if structure_initialization is None and 'structureInitialization' in kwargs:
-            structure_initialization = kwargs['structureInitialization']
-        if structure_initialization is None:
-            raise TypeError("Missing 'structure_initialization' argument")
-        if delay_notice is None and 'delayNotice' in kwargs:
-            delay_notice = kwargs['delayNotice']
-        if delay_phone is None and 'delayPhone' in kwargs:
-            delay_phone = kwargs['delayPhone']
-        if delay_rule_time is None and 'delayRuleTime' in kwargs:
-            delay_rule_time = kwargs['delayRuleTime']
-        if destination_endpoint_database_name is None and 'destinationEndpointDatabaseName' in kwargs:
-            destination_endpoint_database_name = kwargs['destinationEndpointDatabaseName']
-        if destination_endpoint_instance_id is None and 'destinationEndpointInstanceId' in kwargs:
-            destination_endpoint_instance_id = kwargs['destinationEndpointInstanceId']
-        if destination_endpoint_ip is None and 'destinationEndpointIp' in kwargs:
-            destination_endpoint_ip = kwargs['destinationEndpointIp']
-        if destination_endpoint_oracle_sid is None and 'destinationEndpointOracleSid' in kwargs:
-            destination_endpoint_oracle_sid = kwargs['destinationEndpointOracleSid']
-        if destination_endpoint_password is None and 'destinationEndpointPassword' in kwargs:
-            destination_endpoint_password = kwargs['destinationEndpointPassword']
-        if destination_endpoint_port is None and 'destinationEndpointPort' in kwargs:
-            destination_endpoint_port = kwargs['destinationEndpointPort']
-        if destination_endpoint_region is None and 'destinationEndpointRegion' in kwargs:
-            destination_endpoint_region = kwargs['destinationEndpointRegion']
-        if destination_endpoint_user_name is None and 'destinationEndpointUserName' in kwargs:
-            destination_endpoint_user_name = kwargs['destinationEndpointUserName']
-        if error_notice is None and 'errorNotice' in kwargs:
-            error_notice = kwargs['errorNotice']
-        if error_phone is None and 'errorPhone' in kwargs:
-            error_phone = kwargs['errorPhone']
-        if instance_class is None and 'instanceClass' in kwargs:
-            instance_class = kwargs['instanceClass']
-        if source_endpoint_database_name is None and 'sourceEndpointDatabaseName' in kwargs:
-            source_endpoint_database_name = kwargs['sourceEndpointDatabaseName']
-        if source_endpoint_instance_id is None and 'sourceEndpointInstanceId' in kwargs:
-            source_endpoint_instance_id = kwargs['sourceEndpointInstanceId']
-        if source_endpoint_ip is None and 'sourceEndpointIp' in kwargs:
-            source_endpoint_ip = kwargs['sourceEndpointIp']
-        if source_endpoint_oracle_sid is None and 'sourceEndpointOracleSid' in kwargs:
-            source_endpoint_oracle_sid = kwargs['sourceEndpointOracleSid']
-        if source_endpoint_owner_id is None and 'sourceEndpointOwnerId' in kwargs:
-            source_endpoint_owner_id = kwargs['sourceEndpointOwnerId']
-        if source_endpoint_password is None and 'sourceEndpointPassword' in kwargs:
-            source_endpoint_password = kwargs['sourceEndpointPassword']
-        if source_endpoint_port is None and 'sourceEndpointPort' in kwargs:
-            source_endpoint_port = kwargs['sourceEndpointPort']
-        if source_endpoint_region is None and 'sourceEndpointRegion' in kwargs:
-            source_endpoint_region = kwargs['sourceEndpointRegion']
-        if source_endpoint_role is None and 'sourceEndpointRole' in kwargs:
-            source_endpoint_role = kwargs['sourceEndpointRole']
-        if source_endpoint_user_name is None and 'sourceEndpointUserName' in kwargs:
-            source_endpoint_user_name = kwargs['sourceEndpointUserName']
-        if synchronization_direction is None and 'synchronizationDirection' in kwargs:
-            synchronization_direction = kwargs['synchronizationDirection']
-
-        _setter("data_initialization", data_initialization)
-        _setter("data_synchronization", data_synchronization)
-        _setter("db_list", db_list)
-        _setter("destination_endpoint_engine_name", destination_endpoint_engine_name)
-        _setter("destination_endpoint_instance_type", destination_endpoint_instance_type)
-        _setter("dts_instance_id", dts_instance_id)
-        _setter("dts_job_name", dts_job_name)
-        _setter("source_endpoint_engine_name", source_endpoint_engine_name)
-        _setter("source_endpoint_instance_type", source_endpoint_instance_type)
-        _setter("structure_initialization", structure_initialization)
+        pulumi.set(__self__, "data_initialization", data_initialization)
+        pulumi.set(__self__, "data_synchronization", data_synchronization)
+        pulumi.set(__self__, "db_list", db_list)
+        pulumi.set(__self__, "destination_endpoint_engine_name", destination_endpoint_engine_name)
+        pulumi.set(__self__, "destination_endpoint_instance_type", destination_endpoint_instance_type)
+        pulumi.set(__self__, "dts_instance_id", dts_instance_id)
+        pulumi.set(__self__, "dts_job_name", dts_job_name)
+        pulumi.set(__self__, "source_endpoint_engine_name", source_endpoint_engine_name)
+        pulumi.set(__self__, "source_endpoint_instance_type", source_endpoint_instance_type)
+        pulumi.set(__self__, "structure_initialization", structure_initialization)
         if checkpoint is not None:
-            _setter("checkpoint", checkpoint)
+            pulumi.set(__self__, "checkpoint", checkpoint)
         if delay_notice is not None:
-            _setter("delay_notice", delay_notice)
+            pulumi.set(__self__, "delay_notice", delay_notice)
         if delay_phone is not None:
-            _setter("delay_phone", delay_phone)
+            pulumi.set(__self__, "delay_phone", delay_phone)
         if delay_rule_time is not None:
-            _setter("delay_rule_time", delay_rule_time)
+            pulumi.set(__self__, "delay_rule_time", delay_rule_time)
         if destination_endpoint_database_name is not None:
-            _setter("destination_endpoint_database_name", destination_endpoint_database_name)
+            pulumi.set(__self__, "destination_endpoint_database_name", destination_endpoint_database_name)
         if destination_endpoint_instance_id is not None:
-            _setter("destination_endpoint_instance_id", destination_endpoint_instance_id)
+            pulumi.set(__self__, "destination_endpoint_instance_id", destination_endpoint_instance_id)
         if destination_endpoint_ip is not None:
-            _setter("destination_endpoint_ip", destination_endpoint_ip)
+            pulumi.set(__self__, "destination_endpoint_ip", destination_endpoint_ip)
         if destination_endpoint_oracle_sid is not None:
-            _setter("destination_endpoint_oracle_sid", destination_endpoint_oracle_sid)
+            pulumi.set(__self__, "destination_endpoint_oracle_sid", destination_endpoint_oracle_sid)
         if destination_endpoint_password is not None:
-            _setter("destination_endpoint_password", destination_endpoint_password)
+            pulumi.set(__self__, "destination_endpoint_password", destination_endpoint_password)
         if destination_endpoint_port is not None:
-            _setter("destination_endpoint_port", destination_endpoint_port)
+            pulumi.set(__self__, "destination_endpoint_port", destination_endpoint_port)
         if destination_endpoint_region is not None:
-            _setter("destination_endpoint_region", destination_endpoint_region)
+            pulumi.set(__self__, "destination_endpoint_region", destination_endpoint_region)
         if destination_endpoint_user_name is not None:
-            _setter("destination_endpoint_user_name", destination_endpoint_user_name)
+            pulumi.set(__self__, "destination_endpoint_user_name", destination_endpoint_user_name)
         if error_notice is not None:
-            _setter("error_notice", error_notice)
+            pulumi.set(__self__, "error_notice", error_notice)
         if error_phone is not None:
-            _setter("error_phone", error_phone)
+            pulumi.set(__self__, "error_phone", error_phone)
         if instance_class is not None:
-            _setter("instance_class", instance_class)
+            pulumi.set(__self__, "instance_class", instance_class)
         if reserve is not None:
-            _setter("reserve", reserve)
+            pulumi.set(__self__, "reserve", reserve)
         if source_endpoint_database_name is not None:
-            _setter("source_endpoint_database_name", source_endpoint_database_name)
+            pulumi.set(__self__, "source_endpoint_database_name", source_endpoint_database_name)
         if source_endpoint_instance_id is not None:
-            _setter("source_endpoint_instance_id", source_endpoint_instance_id)
+            pulumi.set(__self__, "source_endpoint_instance_id", source_endpoint_instance_id)
         if source_endpoint_ip is not None:
-            _setter("source_endpoint_ip", source_endpoint_ip)
+            pulumi.set(__self__, "source_endpoint_ip", source_endpoint_ip)
         if source_endpoint_oracle_sid is not None:
-            _setter("source_endpoint_oracle_sid", source_endpoint_oracle_sid)
+            pulumi.set(__self__, "source_endpoint_oracle_sid", source_endpoint_oracle_sid)
         if source_endpoint_owner_id is not None:
-            _setter("source_endpoint_owner_id", source_endpoint_owner_id)
+            pulumi.set(__self__, "source_endpoint_owner_id", source_endpoint_owner_id)
         if source_endpoint_password is not None:
-            _setter("source_endpoint_password", source_endpoint_password)
+            pulumi.set(__self__, "source_endpoint_password", source_endpoint_password)
         if source_endpoint_port is not None:
-            _setter("source_endpoint_port", source_endpoint_port)
+            pulumi.set(__self__, "source_endpoint_port", source_endpoint_port)
         if source_endpoint_region is not None:
-            _setter("source_endpoint_region", source_endpoint_region)
+            pulumi.set(__self__, "source_endpoint_region", source_endpoint_region)
         if source_endpoint_role is not None:
-            _setter("source_endpoint_role", source_endpoint_role)
+            pulumi.set(__self__, "source_endpoint_role", source_endpoint_role)
         if source_endpoint_user_name is not None:
-            _setter("source_endpoint_user_name", source_endpoint_user_name)
+            pulumi.set(__self__, "source_endpoint_user_name", source_endpoint_user_name)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if synchronization_direction is not None:
-            _setter("synchronization_direction", synchronization_direction)
+            pulumi.set(__self__, "synchronization_direction", synchronization_direction)
 
     @property
     @pulumi.getter(name="dataInitialization")
@@ -904,237 +729,82 @@ class _SynchronizationJobState:
         :param pulumi.Input[bool] structure_initialization: Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
         :param pulumi.Input[str] synchronization_direction: Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `sync_architecture` of the `dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
         """
-        _SynchronizationJobState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            checkpoint=checkpoint,
-            data_initialization=data_initialization,
-            data_synchronization=data_synchronization,
-            db_list=db_list,
-            delay_notice=delay_notice,
-            delay_phone=delay_phone,
-            delay_rule_time=delay_rule_time,
-            destination_endpoint_database_name=destination_endpoint_database_name,
-            destination_endpoint_engine_name=destination_endpoint_engine_name,
-            destination_endpoint_instance_id=destination_endpoint_instance_id,
-            destination_endpoint_instance_type=destination_endpoint_instance_type,
-            destination_endpoint_ip=destination_endpoint_ip,
-            destination_endpoint_oracle_sid=destination_endpoint_oracle_sid,
-            destination_endpoint_password=destination_endpoint_password,
-            destination_endpoint_port=destination_endpoint_port,
-            destination_endpoint_region=destination_endpoint_region,
-            destination_endpoint_user_name=destination_endpoint_user_name,
-            dts_instance_id=dts_instance_id,
-            dts_job_name=dts_job_name,
-            error_notice=error_notice,
-            error_phone=error_phone,
-            instance_class=instance_class,
-            reserve=reserve,
-            source_endpoint_database_name=source_endpoint_database_name,
-            source_endpoint_engine_name=source_endpoint_engine_name,
-            source_endpoint_instance_id=source_endpoint_instance_id,
-            source_endpoint_instance_type=source_endpoint_instance_type,
-            source_endpoint_ip=source_endpoint_ip,
-            source_endpoint_oracle_sid=source_endpoint_oracle_sid,
-            source_endpoint_owner_id=source_endpoint_owner_id,
-            source_endpoint_password=source_endpoint_password,
-            source_endpoint_port=source_endpoint_port,
-            source_endpoint_region=source_endpoint_region,
-            source_endpoint_role=source_endpoint_role,
-            source_endpoint_user_name=source_endpoint_user_name,
-            status=status,
-            structure_initialization=structure_initialization,
-            synchronization_direction=synchronization_direction,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             checkpoint: Optional[pulumi.Input[str]] = None,
-             data_initialization: Optional[pulumi.Input[bool]] = None,
-             data_synchronization: Optional[pulumi.Input[bool]] = None,
-             db_list: Optional[pulumi.Input[str]] = None,
-             delay_notice: Optional[pulumi.Input[bool]] = None,
-             delay_phone: Optional[pulumi.Input[str]] = None,
-             delay_rule_time: Optional[pulumi.Input[str]] = None,
-             destination_endpoint_database_name: Optional[pulumi.Input[str]] = None,
-             destination_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
-             destination_endpoint_instance_id: Optional[pulumi.Input[str]] = None,
-             destination_endpoint_instance_type: Optional[pulumi.Input[str]] = None,
-             destination_endpoint_ip: Optional[pulumi.Input[str]] = None,
-             destination_endpoint_oracle_sid: Optional[pulumi.Input[str]] = None,
-             destination_endpoint_password: Optional[pulumi.Input[str]] = None,
-             destination_endpoint_port: Optional[pulumi.Input[str]] = None,
-             destination_endpoint_region: Optional[pulumi.Input[str]] = None,
-             destination_endpoint_user_name: Optional[pulumi.Input[str]] = None,
-             dts_instance_id: Optional[pulumi.Input[str]] = None,
-             dts_job_name: Optional[pulumi.Input[str]] = None,
-             error_notice: Optional[pulumi.Input[bool]] = None,
-             error_phone: Optional[pulumi.Input[str]] = None,
-             instance_class: Optional[pulumi.Input[str]] = None,
-             reserve: Optional[pulumi.Input[str]] = None,
-             source_endpoint_database_name: Optional[pulumi.Input[str]] = None,
-             source_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
-             source_endpoint_instance_id: Optional[pulumi.Input[str]] = None,
-             source_endpoint_instance_type: Optional[pulumi.Input[str]] = None,
-             source_endpoint_ip: Optional[pulumi.Input[str]] = None,
-             source_endpoint_oracle_sid: Optional[pulumi.Input[str]] = None,
-             source_endpoint_owner_id: Optional[pulumi.Input[str]] = None,
-             source_endpoint_password: Optional[pulumi.Input[str]] = None,
-             source_endpoint_port: Optional[pulumi.Input[str]] = None,
-             source_endpoint_region: Optional[pulumi.Input[str]] = None,
-             source_endpoint_role: Optional[pulumi.Input[str]] = None,
-             source_endpoint_user_name: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             structure_initialization: Optional[pulumi.Input[bool]] = None,
-             synchronization_direction: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if data_initialization is None and 'dataInitialization' in kwargs:
-            data_initialization = kwargs['dataInitialization']
-        if data_synchronization is None and 'dataSynchronization' in kwargs:
-            data_synchronization = kwargs['dataSynchronization']
-        if db_list is None and 'dbList' in kwargs:
-            db_list = kwargs['dbList']
-        if delay_notice is None and 'delayNotice' in kwargs:
-            delay_notice = kwargs['delayNotice']
-        if delay_phone is None and 'delayPhone' in kwargs:
-            delay_phone = kwargs['delayPhone']
-        if delay_rule_time is None and 'delayRuleTime' in kwargs:
-            delay_rule_time = kwargs['delayRuleTime']
-        if destination_endpoint_database_name is None and 'destinationEndpointDatabaseName' in kwargs:
-            destination_endpoint_database_name = kwargs['destinationEndpointDatabaseName']
-        if destination_endpoint_engine_name is None and 'destinationEndpointEngineName' in kwargs:
-            destination_endpoint_engine_name = kwargs['destinationEndpointEngineName']
-        if destination_endpoint_instance_id is None and 'destinationEndpointInstanceId' in kwargs:
-            destination_endpoint_instance_id = kwargs['destinationEndpointInstanceId']
-        if destination_endpoint_instance_type is None and 'destinationEndpointInstanceType' in kwargs:
-            destination_endpoint_instance_type = kwargs['destinationEndpointInstanceType']
-        if destination_endpoint_ip is None and 'destinationEndpointIp' in kwargs:
-            destination_endpoint_ip = kwargs['destinationEndpointIp']
-        if destination_endpoint_oracle_sid is None and 'destinationEndpointOracleSid' in kwargs:
-            destination_endpoint_oracle_sid = kwargs['destinationEndpointOracleSid']
-        if destination_endpoint_password is None and 'destinationEndpointPassword' in kwargs:
-            destination_endpoint_password = kwargs['destinationEndpointPassword']
-        if destination_endpoint_port is None and 'destinationEndpointPort' in kwargs:
-            destination_endpoint_port = kwargs['destinationEndpointPort']
-        if destination_endpoint_region is None and 'destinationEndpointRegion' in kwargs:
-            destination_endpoint_region = kwargs['destinationEndpointRegion']
-        if destination_endpoint_user_name is None and 'destinationEndpointUserName' in kwargs:
-            destination_endpoint_user_name = kwargs['destinationEndpointUserName']
-        if dts_instance_id is None and 'dtsInstanceId' in kwargs:
-            dts_instance_id = kwargs['dtsInstanceId']
-        if dts_job_name is None and 'dtsJobName' in kwargs:
-            dts_job_name = kwargs['dtsJobName']
-        if error_notice is None and 'errorNotice' in kwargs:
-            error_notice = kwargs['errorNotice']
-        if error_phone is None and 'errorPhone' in kwargs:
-            error_phone = kwargs['errorPhone']
-        if instance_class is None and 'instanceClass' in kwargs:
-            instance_class = kwargs['instanceClass']
-        if source_endpoint_database_name is None and 'sourceEndpointDatabaseName' in kwargs:
-            source_endpoint_database_name = kwargs['sourceEndpointDatabaseName']
-        if source_endpoint_engine_name is None and 'sourceEndpointEngineName' in kwargs:
-            source_endpoint_engine_name = kwargs['sourceEndpointEngineName']
-        if source_endpoint_instance_id is None and 'sourceEndpointInstanceId' in kwargs:
-            source_endpoint_instance_id = kwargs['sourceEndpointInstanceId']
-        if source_endpoint_instance_type is None and 'sourceEndpointInstanceType' in kwargs:
-            source_endpoint_instance_type = kwargs['sourceEndpointInstanceType']
-        if source_endpoint_ip is None and 'sourceEndpointIp' in kwargs:
-            source_endpoint_ip = kwargs['sourceEndpointIp']
-        if source_endpoint_oracle_sid is None and 'sourceEndpointOracleSid' in kwargs:
-            source_endpoint_oracle_sid = kwargs['sourceEndpointOracleSid']
-        if source_endpoint_owner_id is None and 'sourceEndpointOwnerId' in kwargs:
-            source_endpoint_owner_id = kwargs['sourceEndpointOwnerId']
-        if source_endpoint_password is None and 'sourceEndpointPassword' in kwargs:
-            source_endpoint_password = kwargs['sourceEndpointPassword']
-        if source_endpoint_port is None and 'sourceEndpointPort' in kwargs:
-            source_endpoint_port = kwargs['sourceEndpointPort']
-        if source_endpoint_region is None and 'sourceEndpointRegion' in kwargs:
-            source_endpoint_region = kwargs['sourceEndpointRegion']
-        if source_endpoint_role is None and 'sourceEndpointRole' in kwargs:
-            source_endpoint_role = kwargs['sourceEndpointRole']
-        if source_endpoint_user_name is None and 'sourceEndpointUserName' in kwargs:
-            source_endpoint_user_name = kwargs['sourceEndpointUserName']
-        if structure_initialization is None and 'structureInitialization' in kwargs:
-            structure_initialization = kwargs['structureInitialization']
-        if synchronization_direction is None and 'synchronizationDirection' in kwargs:
-            synchronization_direction = kwargs['synchronizationDirection']
-
         if checkpoint is not None:
-            _setter("checkpoint", checkpoint)
+            pulumi.set(__self__, "checkpoint", checkpoint)
         if data_initialization is not None:
-            _setter("data_initialization", data_initialization)
+            pulumi.set(__self__, "data_initialization", data_initialization)
         if data_synchronization is not None:
-            _setter("data_synchronization", data_synchronization)
+            pulumi.set(__self__, "data_synchronization", data_synchronization)
         if db_list is not None:
-            _setter("db_list", db_list)
+            pulumi.set(__self__, "db_list", db_list)
         if delay_notice is not None:
-            _setter("delay_notice", delay_notice)
+            pulumi.set(__self__, "delay_notice", delay_notice)
         if delay_phone is not None:
-            _setter("delay_phone", delay_phone)
+            pulumi.set(__self__, "delay_phone", delay_phone)
         if delay_rule_time is not None:
-            _setter("delay_rule_time", delay_rule_time)
+            pulumi.set(__self__, "delay_rule_time", delay_rule_time)
         if destination_endpoint_database_name is not None:
-            _setter("destination_endpoint_database_name", destination_endpoint_database_name)
+            pulumi.set(__self__, "destination_endpoint_database_name", destination_endpoint_database_name)
         if destination_endpoint_engine_name is not None:
-            _setter("destination_endpoint_engine_name", destination_endpoint_engine_name)
+            pulumi.set(__self__, "destination_endpoint_engine_name", destination_endpoint_engine_name)
         if destination_endpoint_instance_id is not None:
-            _setter("destination_endpoint_instance_id", destination_endpoint_instance_id)
+            pulumi.set(__self__, "destination_endpoint_instance_id", destination_endpoint_instance_id)
         if destination_endpoint_instance_type is not None:
-            _setter("destination_endpoint_instance_type", destination_endpoint_instance_type)
+            pulumi.set(__self__, "destination_endpoint_instance_type", destination_endpoint_instance_type)
         if destination_endpoint_ip is not None:
-            _setter("destination_endpoint_ip", destination_endpoint_ip)
+            pulumi.set(__self__, "destination_endpoint_ip", destination_endpoint_ip)
         if destination_endpoint_oracle_sid is not None:
-            _setter("destination_endpoint_oracle_sid", destination_endpoint_oracle_sid)
+            pulumi.set(__self__, "destination_endpoint_oracle_sid", destination_endpoint_oracle_sid)
         if destination_endpoint_password is not None:
-            _setter("destination_endpoint_password", destination_endpoint_password)
+            pulumi.set(__self__, "destination_endpoint_password", destination_endpoint_password)
         if destination_endpoint_port is not None:
-            _setter("destination_endpoint_port", destination_endpoint_port)
+            pulumi.set(__self__, "destination_endpoint_port", destination_endpoint_port)
         if destination_endpoint_region is not None:
-            _setter("destination_endpoint_region", destination_endpoint_region)
+            pulumi.set(__self__, "destination_endpoint_region", destination_endpoint_region)
         if destination_endpoint_user_name is not None:
-            _setter("destination_endpoint_user_name", destination_endpoint_user_name)
+            pulumi.set(__self__, "destination_endpoint_user_name", destination_endpoint_user_name)
         if dts_instance_id is not None:
-            _setter("dts_instance_id", dts_instance_id)
+            pulumi.set(__self__, "dts_instance_id", dts_instance_id)
         if dts_job_name is not None:
-            _setter("dts_job_name", dts_job_name)
+            pulumi.set(__self__, "dts_job_name", dts_job_name)
         if error_notice is not None:
-            _setter("error_notice", error_notice)
+            pulumi.set(__self__, "error_notice", error_notice)
         if error_phone is not None:
-            _setter("error_phone", error_phone)
+            pulumi.set(__self__, "error_phone", error_phone)
         if instance_class is not None:
-            _setter("instance_class", instance_class)
+            pulumi.set(__self__, "instance_class", instance_class)
         if reserve is not None:
-            _setter("reserve", reserve)
+            pulumi.set(__self__, "reserve", reserve)
         if source_endpoint_database_name is not None:
-            _setter("source_endpoint_database_name", source_endpoint_database_name)
+            pulumi.set(__self__, "source_endpoint_database_name", source_endpoint_database_name)
         if source_endpoint_engine_name is not None:
-            _setter("source_endpoint_engine_name", source_endpoint_engine_name)
+            pulumi.set(__self__, "source_endpoint_engine_name", source_endpoint_engine_name)
         if source_endpoint_instance_id is not None:
-            _setter("source_endpoint_instance_id", source_endpoint_instance_id)
+            pulumi.set(__self__, "source_endpoint_instance_id", source_endpoint_instance_id)
         if source_endpoint_instance_type is not None:
-            _setter("source_endpoint_instance_type", source_endpoint_instance_type)
+            pulumi.set(__self__, "source_endpoint_instance_type", source_endpoint_instance_type)
         if source_endpoint_ip is not None:
-            _setter("source_endpoint_ip", source_endpoint_ip)
+            pulumi.set(__self__, "source_endpoint_ip", source_endpoint_ip)
         if source_endpoint_oracle_sid is not None:
-            _setter("source_endpoint_oracle_sid", source_endpoint_oracle_sid)
+            pulumi.set(__self__, "source_endpoint_oracle_sid", source_endpoint_oracle_sid)
         if source_endpoint_owner_id is not None:
-            _setter("source_endpoint_owner_id", source_endpoint_owner_id)
+            pulumi.set(__self__, "source_endpoint_owner_id", source_endpoint_owner_id)
         if source_endpoint_password is not None:
-            _setter("source_endpoint_password", source_endpoint_password)
+            pulumi.set(__self__, "source_endpoint_password", source_endpoint_password)
         if source_endpoint_port is not None:
-            _setter("source_endpoint_port", source_endpoint_port)
+            pulumi.set(__self__, "source_endpoint_port", source_endpoint_port)
         if source_endpoint_region is not None:
-            _setter("source_endpoint_region", source_endpoint_region)
+            pulumi.set(__self__, "source_endpoint_region", source_endpoint_region)
         if source_endpoint_role is not None:
-            _setter("source_endpoint_role", source_endpoint_role)
+            pulumi.set(__self__, "source_endpoint_role", source_endpoint_role)
         if source_endpoint_user_name is not None:
-            _setter("source_endpoint_user_name", source_endpoint_user_name)
+            pulumi.set(__self__, "source_endpoint_user_name", source_endpoint_user_name)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if structure_initialization is not None:
-            _setter("structure_initialization", structure_initialization)
+            pulumi.set(__self__, "structure_initialization", structure_initialization)
         if synchronization_direction is not None:
-            _setter("synchronization_direction", synchronization_direction)
+            pulumi.set(__self__, "synchronization_direction", synchronization_direction)
 
     @property
     @pulumi.getter
@@ -1762,10 +1432,6 @@ class SynchronizationJob(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SynchronizationJobArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

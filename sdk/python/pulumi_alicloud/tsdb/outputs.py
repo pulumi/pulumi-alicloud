@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -55,137 +55,24 @@ class GetInstancesInstanceResult(dict):
         :param str vswitch_id: The vswitch id.
         :param str zone_id: The zone ID of the instance.
         """
-        GetInstancesInstanceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto_renew=auto_renew,
-            cpu_number=cpu_number,
-            disk_category=disk_category,
-            engine_type=engine_type,
-            expired_time=expired_time,
-            id=id,
-            instance_alias=instance_alias,
-            instance_class=instance_class,
-            instance_id=instance_id,
-            instance_storage=instance_storage,
-            memory_size=memory_size,
-            network_type=network_type,
-            payment_type=payment_type,
-            status=status,
-            vpc_connection_address=vpc_connection_address,
-            vpc_id=vpc_id,
-            vswitch_id=vswitch_id,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto_renew: Optional[str] = None,
-             cpu_number: Optional[str] = None,
-             disk_category: Optional[str] = None,
-             engine_type: Optional[str] = None,
-             expired_time: Optional[int] = None,
-             id: Optional[str] = None,
-             instance_alias: Optional[str] = None,
-             instance_class: Optional[str] = None,
-             instance_id: Optional[str] = None,
-             instance_storage: Optional[str] = None,
-             memory_size: Optional[str] = None,
-             network_type: Optional[str] = None,
-             payment_type: Optional[str] = None,
-             status: Optional[str] = None,
-             vpc_connection_address: Optional[str] = None,
-             vpc_id: Optional[str] = None,
-             vswitch_id: Optional[str] = None,
-             zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_renew is None and 'autoRenew' in kwargs:
-            auto_renew = kwargs['autoRenew']
-        if auto_renew is None:
-            raise TypeError("Missing 'auto_renew' argument")
-        if cpu_number is None and 'cpuNumber' in kwargs:
-            cpu_number = kwargs['cpuNumber']
-        if cpu_number is None:
-            raise TypeError("Missing 'cpu_number' argument")
-        if disk_category is None and 'diskCategory' in kwargs:
-            disk_category = kwargs['diskCategory']
-        if disk_category is None:
-            raise TypeError("Missing 'disk_category' argument")
-        if engine_type is None and 'engineType' in kwargs:
-            engine_type = kwargs['engineType']
-        if engine_type is None:
-            raise TypeError("Missing 'engine_type' argument")
-        if expired_time is None and 'expiredTime' in kwargs:
-            expired_time = kwargs['expiredTime']
-        if expired_time is None:
-            raise TypeError("Missing 'expired_time' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if instance_alias is None and 'instanceAlias' in kwargs:
-            instance_alias = kwargs['instanceAlias']
-        if instance_alias is None:
-            raise TypeError("Missing 'instance_alias' argument")
-        if instance_class is None and 'instanceClass' in kwargs:
-            instance_class = kwargs['instanceClass']
-        if instance_class is None:
-            raise TypeError("Missing 'instance_class' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if instance_storage is None and 'instanceStorage' in kwargs:
-            instance_storage = kwargs['instanceStorage']
-        if instance_storage is None:
-            raise TypeError("Missing 'instance_storage' argument")
-        if memory_size is None and 'memorySize' in kwargs:
-            memory_size = kwargs['memorySize']
-        if memory_size is None:
-            raise TypeError("Missing 'memory_size' argument")
-        if network_type is None and 'networkType' in kwargs:
-            network_type = kwargs['networkType']
-        if network_type is None:
-            raise TypeError("Missing 'network_type' argument")
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if payment_type is None:
-            raise TypeError("Missing 'payment_type' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if vpc_connection_address is None and 'vpcConnectionAddress' in kwargs:
-            vpc_connection_address = kwargs['vpcConnectionAddress']
-        if vpc_connection_address is None:
-            raise TypeError("Missing 'vpc_connection_address' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("auto_renew", auto_renew)
-        _setter("cpu_number", cpu_number)
-        _setter("disk_category", disk_category)
-        _setter("engine_type", engine_type)
-        _setter("expired_time", expired_time)
-        _setter("id", id)
-        _setter("instance_alias", instance_alias)
-        _setter("instance_class", instance_class)
-        _setter("instance_id", instance_id)
-        _setter("instance_storage", instance_storage)
-        _setter("memory_size", memory_size)
-        _setter("network_type", network_type)
-        _setter("payment_type", payment_type)
-        _setter("status", status)
-        _setter("vpc_connection_address", vpc_connection_address)
-        _setter("vpc_id", vpc_id)
-        _setter("vswitch_id", vswitch_id)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "auto_renew", auto_renew)
+        pulumi.set(__self__, "cpu_number", cpu_number)
+        pulumi.set(__self__, "disk_category", disk_category)
+        pulumi.set(__self__, "engine_type", engine_type)
+        pulumi.set(__self__, "expired_time", expired_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_alias", instance_alias)
+        pulumi.set(__self__, "instance_class", instance_class)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_storage", instance_storage)
+        pulumi.set(__self__, "memory_size", memory_size)
+        pulumi.set(__self__, "network_type", network_type)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vpc_connection_address", vpc_connection_address)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="autoRenew")
@@ -343,34 +230,9 @@ class GetZonesZoneResult(dict):
         :param str local_name: The local name.
         :param str zone_id: The zone ID.
         """
-        GetZonesZoneResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            local_name=local_name,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             local_name: Optional[str] = None,
-             zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if local_name is None and 'localName' in kwargs:
-            local_name = kwargs['localName']
-        if local_name is None:
-            raise TypeError("Missing 'local_name' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("id", id)
-        _setter("local_name", local_name)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "local_name", local_name)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter

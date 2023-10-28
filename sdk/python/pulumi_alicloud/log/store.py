@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -43,82 +43,29 @@ class StoreArgs:
         :param pulumi.Input[int] shard_count: The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
         :param pulumi.Input[str] telemetry_type: Determines whether store type is metric. `Metrics` means metric store, empty means log store.
         """
-        StoreArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project=project,
-            append_meta=append_meta,
-            auto_split=auto_split,
-            enable_web_tracking=enable_web_tracking,
-            encrypt_conf=encrypt_conf,
-            hot_ttl=hot_ttl,
-            max_split_shard_count=max_split_shard_count,
-            mode=mode,
-            name=name,
-            retention_period=retention_period,
-            shard_count=shard_count,
-            telemetry_type=telemetry_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project: Optional[pulumi.Input[str]] = None,
-             append_meta: Optional[pulumi.Input[bool]] = None,
-             auto_split: Optional[pulumi.Input[bool]] = None,
-             enable_web_tracking: Optional[pulumi.Input[bool]] = None,
-             encrypt_conf: Optional[pulumi.Input['StoreEncryptConfArgs']] = None,
-             hot_ttl: Optional[pulumi.Input[int]] = None,
-             max_split_shard_count: Optional[pulumi.Input[int]] = None,
-             mode: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             retention_period: Optional[pulumi.Input[int]] = None,
-             shard_count: Optional[pulumi.Input[int]] = None,
-             telemetry_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-        if append_meta is None and 'appendMeta' in kwargs:
-            append_meta = kwargs['appendMeta']
-        if auto_split is None and 'autoSplit' in kwargs:
-            auto_split = kwargs['autoSplit']
-        if enable_web_tracking is None and 'enableWebTracking' in kwargs:
-            enable_web_tracking = kwargs['enableWebTracking']
-        if encrypt_conf is None and 'encryptConf' in kwargs:
-            encrypt_conf = kwargs['encryptConf']
-        if hot_ttl is None and 'hotTtl' in kwargs:
-            hot_ttl = kwargs['hotTtl']
-        if max_split_shard_count is None and 'maxSplitShardCount' in kwargs:
-            max_split_shard_count = kwargs['maxSplitShardCount']
-        if retention_period is None and 'retentionPeriod' in kwargs:
-            retention_period = kwargs['retentionPeriod']
-        if shard_count is None and 'shardCount' in kwargs:
-            shard_count = kwargs['shardCount']
-        if telemetry_type is None and 'telemetryType' in kwargs:
-            telemetry_type = kwargs['telemetryType']
-
-        _setter("project", project)
+        pulumi.set(__self__, "project", project)
         if append_meta is not None:
-            _setter("append_meta", append_meta)
+            pulumi.set(__self__, "append_meta", append_meta)
         if auto_split is not None:
-            _setter("auto_split", auto_split)
+            pulumi.set(__self__, "auto_split", auto_split)
         if enable_web_tracking is not None:
-            _setter("enable_web_tracking", enable_web_tracking)
+            pulumi.set(__self__, "enable_web_tracking", enable_web_tracking)
         if encrypt_conf is not None:
-            _setter("encrypt_conf", encrypt_conf)
+            pulumi.set(__self__, "encrypt_conf", encrypt_conf)
         if hot_ttl is not None:
-            _setter("hot_ttl", hot_ttl)
+            pulumi.set(__self__, "hot_ttl", hot_ttl)
         if max_split_shard_count is not None:
-            _setter("max_split_shard_count", max_split_shard_count)
+            pulumi.set(__self__, "max_split_shard_count", max_split_shard_count)
         if mode is not None:
-            _setter("mode", mode)
+            pulumi.set(__self__, "mode", mode)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if retention_period is not None:
-            _setter("retention_period", retention_period)
+            pulumi.set(__self__, "retention_period", retention_period)
         if shard_count is not None:
-            _setter("shard_count", shard_count)
+            pulumi.set(__self__, "shard_count", shard_count)
         if telemetry_type is not None:
-            _setter("telemetry_type", telemetry_type)
+            pulumi.set(__self__, "telemetry_type", telemetry_type)
 
     @property
     @pulumi.getter
@@ -297,85 +244,32 @@ class _StoreState:
         :param pulumi.Input[Sequence[pulumi.Input['StoreShardArgs']]] shards: The shard attribute.
         :param pulumi.Input[str] telemetry_type: Determines whether store type is metric. `Metrics` means metric store, empty means log store.
         """
-        _StoreState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            append_meta=append_meta,
-            auto_split=auto_split,
-            enable_web_tracking=enable_web_tracking,
-            encrypt_conf=encrypt_conf,
-            hot_ttl=hot_ttl,
-            max_split_shard_count=max_split_shard_count,
-            mode=mode,
-            name=name,
-            project=project,
-            retention_period=retention_period,
-            shard_count=shard_count,
-            shards=shards,
-            telemetry_type=telemetry_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             append_meta: Optional[pulumi.Input[bool]] = None,
-             auto_split: Optional[pulumi.Input[bool]] = None,
-             enable_web_tracking: Optional[pulumi.Input[bool]] = None,
-             encrypt_conf: Optional[pulumi.Input['StoreEncryptConfArgs']] = None,
-             hot_ttl: Optional[pulumi.Input[int]] = None,
-             max_split_shard_count: Optional[pulumi.Input[int]] = None,
-             mode: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             retention_period: Optional[pulumi.Input[int]] = None,
-             shard_count: Optional[pulumi.Input[int]] = None,
-             shards: Optional[pulumi.Input[Sequence[pulumi.Input['StoreShardArgs']]]] = None,
-             telemetry_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if append_meta is None and 'appendMeta' in kwargs:
-            append_meta = kwargs['appendMeta']
-        if auto_split is None and 'autoSplit' in kwargs:
-            auto_split = kwargs['autoSplit']
-        if enable_web_tracking is None and 'enableWebTracking' in kwargs:
-            enable_web_tracking = kwargs['enableWebTracking']
-        if encrypt_conf is None and 'encryptConf' in kwargs:
-            encrypt_conf = kwargs['encryptConf']
-        if hot_ttl is None and 'hotTtl' in kwargs:
-            hot_ttl = kwargs['hotTtl']
-        if max_split_shard_count is None and 'maxSplitShardCount' in kwargs:
-            max_split_shard_count = kwargs['maxSplitShardCount']
-        if retention_period is None and 'retentionPeriod' in kwargs:
-            retention_period = kwargs['retentionPeriod']
-        if shard_count is None and 'shardCount' in kwargs:
-            shard_count = kwargs['shardCount']
-        if telemetry_type is None and 'telemetryType' in kwargs:
-            telemetry_type = kwargs['telemetryType']
-
         if append_meta is not None:
-            _setter("append_meta", append_meta)
+            pulumi.set(__self__, "append_meta", append_meta)
         if auto_split is not None:
-            _setter("auto_split", auto_split)
+            pulumi.set(__self__, "auto_split", auto_split)
         if enable_web_tracking is not None:
-            _setter("enable_web_tracking", enable_web_tracking)
+            pulumi.set(__self__, "enable_web_tracking", enable_web_tracking)
         if encrypt_conf is not None:
-            _setter("encrypt_conf", encrypt_conf)
+            pulumi.set(__self__, "encrypt_conf", encrypt_conf)
         if hot_ttl is not None:
-            _setter("hot_ttl", hot_ttl)
+            pulumi.set(__self__, "hot_ttl", hot_ttl)
         if max_split_shard_count is not None:
-            _setter("max_split_shard_count", max_split_shard_count)
+            pulumi.set(__self__, "max_split_shard_count", max_split_shard_count)
         if mode is not None:
-            _setter("mode", mode)
+            pulumi.set(__self__, "mode", mode)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if retention_period is not None:
-            _setter("retention_period", retention_period)
+            pulumi.set(__self__, "retention_period", retention_period)
         if shard_count is not None:
-            _setter("shard_count", shard_count)
+            pulumi.set(__self__, "shard_count", shard_count)
         if shards is not None:
-            _setter("shards", shards)
+            pulumi.set(__self__, "shards", shards)
         if telemetry_type is not None:
-            _setter("telemetry_type", telemetry_type)
+            pulumi.set(__self__, "telemetry_type", telemetry_type)
 
     @property
     @pulumi.getter(name="appendMeta")
@@ -731,10 +625,6 @@ class Store(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            StoreArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -764,7 +654,6 @@ class Store(pulumi.CustomResource):
             __props__.__dict__["append_meta"] = append_meta
             __props__.__dict__["auto_split"] = auto_split
             __props__.__dict__["enable_web_tracking"] = enable_web_tracking
-            encrypt_conf = _utilities.configure(encrypt_conf, StoreEncryptConfArgs, True)
             __props__.__dict__["encrypt_conf"] = encrypt_conf
             __props__.__dict__["hot_ttl"] = hot_ttl
             __props__.__dict__["max_split_shard_count"] = max_split_shard_count

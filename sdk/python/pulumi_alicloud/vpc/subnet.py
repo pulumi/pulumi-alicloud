@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SubnetArgs', 'Subnet']
@@ -27,77 +27,30 @@ class SubnetArgs:
         """
         The set of arguments for constructing a Subnet resource.
         """
-        SubnetArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cidr_block=cidr_block,
-            vpc_id=vpc_id,
-            availability_zone=availability_zone,
-            description=description,
-            enable_ipv6=enable_ipv6,
-            ipv6_cidr_block_mask=ipv6_cidr_block_mask,
-            name=name,
-            tags=tags,
-            vswitch_name=vswitch_name,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cidr_block: Optional[pulumi.Input[str]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             availability_zone: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             enable_ipv6: Optional[pulumi.Input[bool]] = None,
-             ipv6_cidr_block_mask: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             vswitch_name: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cidr_block is None and 'cidrBlock' in kwargs:
-            cidr_block = kwargs['cidrBlock']
-        if cidr_block is None:
-            raise TypeError("Missing 'cidr_block' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-        if availability_zone is None and 'availabilityZone' in kwargs:
-            availability_zone = kwargs['availabilityZone']
-        if enable_ipv6 is None and 'enableIpv6' in kwargs:
-            enable_ipv6 = kwargs['enableIpv6']
-        if ipv6_cidr_block_mask is None and 'ipv6CidrBlockMask' in kwargs:
-            ipv6_cidr_block_mask = kwargs['ipv6CidrBlockMask']
-        if vswitch_name is None and 'vswitchName' in kwargs:
-            vswitch_name = kwargs['vswitchName']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
-        _setter("cidr_block", cidr_block)
-        _setter("vpc_id", vpc_id)
+        pulumi.set(__self__, "cidr_block", cidr_block)
+        pulumi.set(__self__, "vpc_id", vpc_id)
         if availability_zone is not None:
             warnings.warn("""Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.""", DeprecationWarning)
             pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.""")
         if availability_zone is not None:
-            _setter("availability_zone", availability_zone)
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if enable_ipv6 is not None:
-            _setter("enable_ipv6", enable_ipv6)
+            pulumi.set(__self__, "enable_ipv6", enable_ipv6)
         if ipv6_cidr_block_mask is not None:
-            _setter("ipv6_cidr_block_mask", ipv6_cidr_block_mask)
+            pulumi.set(__self__, "ipv6_cidr_block_mask", ipv6_cidr_block_mask)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""")
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if vswitch_name is not None:
-            _setter("vswitch_name", vswitch_name)
+            pulumi.set(__self__, "vswitch_name", vswitch_name)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -215,91 +168,38 @@ class _SubnetState:
         """
         Input properties used for looking up and filtering Subnet resources.
         """
-        _SubnetState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            availability_zone=availability_zone,
-            cidr_block=cidr_block,
-            create_time=create_time,
-            description=description,
-            enable_ipv6=enable_ipv6,
-            ipv6_cidr_block=ipv6_cidr_block,
-            ipv6_cidr_block_mask=ipv6_cidr_block_mask,
-            name=name,
-            status=status,
-            tags=tags,
-            vpc_id=vpc_id,
-            vswitch_name=vswitch_name,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             availability_zone: Optional[pulumi.Input[str]] = None,
-             cidr_block: Optional[pulumi.Input[str]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             enable_ipv6: Optional[pulumi.Input[bool]] = None,
-             ipv6_cidr_block: Optional[pulumi.Input[str]] = None,
-             ipv6_cidr_block_mask: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             vswitch_name: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if availability_zone is None and 'availabilityZone' in kwargs:
-            availability_zone = kwargs['availabilityZone']
-        if cidr_block is None and 'cidrBlock' in kwargs:
-            cidr_block = kwargs['cidrBlock']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if enable_ipv6 is None and 'enableIpv6' in kwargs:
-            enable_ipv6 = kwargs['enableIpv6']
-        if ipv6_cidr_block is None and 'ipv6CidrBlock' in kwargs:
-            ipv6_cidr_block = kwargs['ipv6CidrBlock']
-        if ipv6_cidr_block_mask is None and 'ipv6CidrBlockMask' in kwargs:
-            ipv6_cidr_block_mask = kwargs['ipv6CidrBlockMask']
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vswitch_name is None and 'vswitchName' in kwargs:
-            vswitch_name = kwargs['vswitchName']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if availability_zone is not None:
             warnings.warn("""Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.""", DeprecationWarning)
             pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.""")
         if availability_zone is not None:
-            _setter("availability_zone", availability_zone)
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if cidr_block is not None:
-            _setter("cidr_block", cidr_block)
+            pulumi.set(__self__, "cidr_block", cidr_block)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if enable_ipv6 is not None:
-            _setter("enable_ipv6", enable_ipv6)
+            pulumi.set(__self__, "enable_ipv6", enable_ipv6)
         if ipv6_cidr_block is not None:
-            _setter("ipv6_cidr_block", ipv6_cidr_block)
+            pulumi.set(__self__, "ipv6_cidr_block", ipv6_cidr_block)
         if ipv6_cidr_block_mask is not None:
-            _setter("ipv6_cidr_block_mask", ipv6_cidr_block_mask)
+            pulumi.set(__self__, "ipv6_cidr_block_mask", ipv6_cidr_block_mask)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""")
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if vpc_id is not None:
-            _setter("vpc_id", vpc_id)
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_name is not None:
-            _setter("vswitch_name", vswitch_name)
+            pulumi.set(__self__, "vswitch_name", vswitch_name)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -469,10 +369,6 @@ class Subnet(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SubnetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

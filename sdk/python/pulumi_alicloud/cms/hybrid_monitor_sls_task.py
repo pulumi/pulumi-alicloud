@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,57 +33,16 @@ class HybridMonitorSlsTaskArgs:
         :param pulumi.Input[int] collect_interval: The interval at which metrics are collected. Valid values: `15`, `60`(default value). Unit: seconds.
         :param pulumi.Input[str] description: The description of the metric import task.
         """
-        HybridMonitorSlsTaskArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            collect_target_type=collect_target_type,
-            namespace=namespace,
-            sls_process_config=sls_process_config,
-            task_name=task_name,
-            attach_labels=attach_labels,
-            collect_interval=collect_interval,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             collect_target_type: Optional[pulumi.Input[str]] = None,
-             namespace: Optional[pulumi.Input[str]] = None,
-             sls_process_config: Optional[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigArgs']] = None,
-             task_name: Optional[pulumi.Input[str]] = None,
-             attach_labels: Optional[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskAttachLabelArgs']]]] = None,
-             collect_interval: Optional[pulumi.Input[int]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if collect_target_type is None and 'collectTargetType' in kwargs:
-            collect_target_type = kwargs['collectTargetType']
-        if collect_target_type is None:
-            raise TypeError("Missing 'collect_target_type' argument")
-        if namespace is None:
-            raise TypeError("Missing 'namespace' argument")
-        if sls_process_config is None and 'slsProcessConfig' in kwargs:
-            sls_process_config = kwargs['slsProcessConfig']
-        if sls_process_config is None:
-            raise TypeError("Missing 'sls_process_config' argument")
-        if task_name is None and 'taskName' in kwargs:
-            task_name = kwargs['taskName']
-        if task_name is None:
-            raise TypeError("Missing 'task_name' argument")
-        if attach_labels is None and 'attachLabels' in kwargs:
-            attach_labels = kwargs['attachLabels']
-        if collect_interval is None and 'collectInterval' in kwargs:
-            collect_interval = kwargs['collectInterval']
-
-        _setter("collect_target_type", collect_target_type)
-        _setter("namespace", namespace)
-        _setter("sls_process_config", sls_process_config)
-        _setter("task_name", task_name)
+        pulumi.set(__self__, "collect_target_type", collect_target_type)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "sls_process_config", sls_process_config)
+        pulumi.set(__self__, "task_name", task_name)
         if attach_labels is not None:
-            _setter("attach_labels", attach_labels)
+            pulumi.set(__self__, "attach_labels", attach_labels)
         if collect_interval is not None:
-            _setter("collect_interval", collect_interval)
+            pulumi.set(__self__, "collect_interval", collect_interval)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter(name="collectTargetType")
@@ -190,53 +149,20 @@ class _HybridMonitorSlsTaskState:
         :param pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigArgs'] sls_process_config: The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
         :param pulumi.Input[str] task_name: The name of the metric import task, enter the name of the metric for logs imported from Log Service.
         """
-        _HybridMonitorSlsTaskState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            attach_labels=attach_labels,
-            collect_interval=collect_interval,
-            collect_target_type=collect_target_type,
-            description=description,
-            namespace=namespace,
-            sls_process_config=sls_process_config,
-            task_name=task_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             attach_labels: Optional[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskAttachLabelArgs']]]] = None,
-             collect_interval: Optional[pulumi.Input[int]] = None,
-             collect_target_type: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             namespace: Optional[pulumi.Input[str]] = None,
-             sls_process_config: Optional[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigArgs']] = None,
-             task_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if attach_labels is None and 'attachLabels' in kwargs:
-            attach_labels = kwargs['attachLabels']
-        if collect_interval is None and 'collectInterval' in kwargs:
-            collect_interval = kwargs['collectInterval']
-        if collect_target_type is None and 'collectTargetType' in kwargs:
-            collect_target_type = kwargs['collectTargetType']
-        if sls_process_config is None and 'slsProcessConfig' in kwargs:
-            sls_process_config = kwargs['slsProcessConfig']
-        if task_name is None and 'taskName' in kwargs:
-            task_name = kwargs['taskName']
-
         if attach_labels is not None:
-            _setter("attach_labels", attach_labels)
+            pulumi.set(__self__, "attach_labels", attach_labels)
         if collect_interval is not None:
-            _setter("collect_interval", collect_interval)
+            pulumi.set(__self__, "collect_interval", collect_interval)
         if collect_target_type is not None:
-            _setter("collect_target_type", collect_target_type)
+            pulumi.set(__self__, "collect_target_type", collect_target_type)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if namespace is not None:
-            _setter("namespace", namespace)
+            pulumi.set(__self__, "namespace", namespace)
         if sls_process_config is not None:
-            _setter("sls_process_config", sls_process_config)
+            pulumi.set(__self__, "sls_process_config", sls_process_config)
         if task_name is not None:
-            _setter("task_name", task_name)
+            pulumi.set(__self__, "task_name", task_name)
 
     @property
     @pulumi.getter(name="attachLabels")
@@ -392,10 +318,6 @@ class HybridMonitorSlsTask(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            HybridMonitorSlsTaskArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -426,7 +348,6 @@ class HybridMonitorSlsTask(pulumi.CustomResource):
             if namespace is None and not opts.urn:
                 raise TypeError("Missing required property 'namespace'")
             __props__.__dict__["namespace"] = namespace
-            sls_process_config = _utilities.configure(sls_process_config, HybridMonitorSlsTaskSlsProcessConfigArgs, True)
             if sls_process_config is None and not opts.urn:
                 raise TypeError("Missing required property 'sls_process_config'")
             __props__.__dict__["sls_process_config"] = sls_process_config

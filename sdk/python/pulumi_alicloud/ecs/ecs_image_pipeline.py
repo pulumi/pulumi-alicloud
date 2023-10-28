@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EcsImagePipelineArgs', 'EcsImagePipeline']
@@ -49,101 +49,34 @@ class EcsImagePipelineArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] to_region_ids: The ID of region to which to distribute the created image.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch. If you do not specify this parameter, a virtual private cloud (VPC) and a vSwitch are created by default.
         """
-        EcsImagePipelineArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            base_image=base_image,
-            base_image_type=base_image_type,
-            add_accounts=add_accounts,
-            build_content=build_content,
-            delete_instance_on_failure=delete_instance_on_failure,
-            description=description,
-            image_name=image_name,
-            instance_type=instance_type,
-            internet_max_bandwidth_out=internet_max_bandwidth_out,
-            name=name,
-            resource_group_id=resource_group_id,
-            system_disk_size=system_disk_size,
-            tags=tags,
-            to_region_ids=to_region_ids,
-            vswitch_id=vswitch_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             base_image: Optional[pulumi.Input[str]] = None,
-             base_image_type: Optional[pulumi.Input[str]] = None,
-             add_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             build_content: Optional[pulumi.Input[str]] = None,
-             delete_instance_on_failure: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             image_name: Optional[pulumi.Input[str]] = None,
-             instance_type: Optional[pulumi.Input[str]] = None,
-             internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             system_disk_size: Optional[pulumi.Input[int]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             to_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if base_image is None and 'baseImage' in kwargs:
-            base_image = kwargs['baseImage']
-        if base_image is None:
-            raise TypeError("Missing 'base_image' argument")
-        if base_image_type is None and 'baseImageType' in kwargs:
-            base_image_type = kwargs['baseImageType']
-        if base_image_type is None:
-            raise TypeError("Missing 'base_image_type' argument")
-        if add_accounts is None and 'addAccounts' in kwargs:
-            add_accounts = kwargs['addAccounts']
-        if build_content is None and 'buildContent' in kwargs:
-            build_content = kwargs['buildContent']
-        if delete_instance_on_failure is None and 'deleteInstanceOnFailure' in kwargs:
-            delete_instance_on_failure = kwargs['deleteInstanceOnFailure']
-        if image_name is None and 'imageName' in kwargs:
-            image_name = kwargs['imageName']
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if internet_max_bandwidth_out is None and 'internetMaxBandwidthOut' in kwargs:
-            internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if system_disk_size is None and 'systemDiskSize' in kwargs:
-            system_disk_size = kwargs['systemDiskSize']
-        if to_region_ids is None and 'toRegionIds' in kwargs:
-            to_region_ids = kwargs['toRegionIds']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-
-        _setter("base_image", base_image)
-        _setter("base_image_type", base_image_type)
+        pulumi.set(__self__, "base_image", base_image)
+        pulumi.set(__self__, "base_image_type", base_image_type)
         if add_accounts is not None:
-            _setter("add_accounts", add_accounts)
+            pulumi.set(__self__, "add_accounts", add_accounts)
         if build_content is not None:
-            _setter("build_content", build_content)
+            pulumi.set(__self__, "build_content", build_content)
         if delete_instance_on_failure is not None:
-            _setter("delete_instance_on_failure", delete_instance_on_failure)
+            pulumi.set(__self__, "delete_instance_on_failure", delete_instance_on_failure)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if image_name is not None:
-            _setter("image_name", image_name)
+            pulumi.set(__self__, "image_name", image_name)
         if instance_type is not None:
-            _setter("instance_type", instance_type)
+            pulumi.set(__self__, "instance_type", instance_type)
         if internet_max_bandwidth_out is not None:
-            _setter("internet_max_bandwidth_out", internet_max_bandwidth_out)
+            pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if system_disk_size is not None:
-            _setter("system_disk_size", system_disk_size)
+            pulumi.set(__self__, "system_disk_size", system_disk_size)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if to_region_ids is not None:
-            _setter("to_region_ids", to_region_ids)
+            pulumi.set(__self__, "to_region_ids", to_region_ids)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="baseImage")
@@ -366,99 +299,36 @@ class _EcsImagePipelineState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] to_region_ids: The ID of region to which to distribute the created image.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch. If you do not specify this parameter, a virtual private cloud (VPC) and a vSwitch are created by default.
         """
-        _EcsImagePipelineState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            add_accounts=add_accounts,
-            base_image=base_image,
-            base_image_type=base_image_type,
-            build_content=build_content,
-            delete_instance_on_failure=delete_instance_on_failure,
-            description=description,
-            image_name=image_name,
-            instance_type=instance_type,
-            internet_max_bandwidth_out=internet_max_bandwidth_out,
-            name=name,
-            resource_group_id=resource_group_id,
-            system_disk_size=system_disk_size,
-            tags=tags,
-            to_region_ids=to_region_ids,
-            vswitch_id=vswitch_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             add_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             base_image: Optional[pulumi.Input[str]] = None,
-             base_image_type: Optional[pulumi.Input[str]] = None,
-             build_content: Optional[pulumi.Input[str]] = None,
-             delete_instance_on_failure: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             image_name: Optional[pulumi.Input[str]] = None,
-             instance_type: Optional[pulumi.Input[str]] = None,
-             internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             system_disk_size: Optional[pulumi.Input[int]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             to_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if add_accounts is None and 'addAccounts' in kwargs:
-            add_accounts = kwargs['addAccounts']
-        if base_image is None and 'baseImage' in kwargs:
-            base_image = kwargs['baseImage']
-        if base_image_type is None and 'baseImageType' in kwargs:
-            base_image_type = kwargs['baseImageType']
-        if build_content is None and 'buildContent' in kwargs:
-            build_content = kwargs['buildContent']
-        if delete_instance_on_failure is None and 'deleteInstanceOnFailure' in kwargs:
-            delete_instance_on_failure = kwargs['deleteInstanceOnFailure']
-        if image_name is None and 'imageName' in kwargs:
-            image_name = kwargs['imageName']
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if internet_max_bandwidth_out is None and 'internetMaxBandwidthOut' in kwargs:
-            internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if system_disk_size is None and 'systemDiskSize' in kwargs:
-            system_disk_size = kwargs['systemDiskSize']
-        if to_region_ids is None and 'toRegionIds' in kwargs:
-            to_region_ids = kwargs['toRegionIds']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-
         if add_accounts is not None:
-            _setter("add_accounts", add_accounts)
+            pulumi.set(__self__, "add_accounts", add_accounts)
         if base_image is not None:
-            _setter("base_image", base_image)
+            pulumi.set(__self__, "base_image", base_image)
         if base_image_type is not None:
-            _setter("base_image_type", base_image_type)
+            pulumi.set(__self__, "base_image_type", base_image_type)
         if build_content is not None:
-            _setter("build_content", build_content)
+            pulumi.set(__self__, "build_content", build_content)
         if delete_instance_on_failure is not None:
-            _setter("delete_instance_on_failure", delete_instance_on_failure)
+            pulumi.set(__self__, "delete_instance_on_failure", delete_instance_on_failure)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if image_name is not None:
-            _setter("image_name", image_name)
+            pulumi.set(__self__, "image_name", image_name)
         if instance_type is not None:
-            _setter("instance_type", instance_type)
+            pulumi.set(__self__, "instance_type", instance_type)
         if internet_max_bandwidth_out is not None:
-            _setter("internet_max_bandwidth_out", internet_max_bandwidth_out)
+            pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if system_disk_size is not None:
-            _setter("system_disk_size", system_disk_size)
+            pulumi.set(__self__, "system_disk_size", system_disk_size)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if to_region_ids is not None:
-            _setter("to_region_ids", to_region_ids)
+            pulumi.set(__self__, "to_region_ids", to_region_ids)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="addAccounts")
@@ -822,10 +692,6 @@ class EcsImagePipeline(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            EcsImagePipelineArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

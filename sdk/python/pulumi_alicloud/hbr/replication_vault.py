@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ReplicationVaultArgs', 'ReplicationVault']
@@ -27,46 +27,13 @@ class ReplicationVaultArgs:
         :param pulumi.Input[str] description: The description of the backup vault. The description must be 0 to 255 characters in length.
         :param pulumi.Input[str] vault_storage_class: The storage type of the backup vault. Valid values: `STANDARD`.
         """
-        ReplicationVaultArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            replication_source_region_id=replication_source_region_id,
-            replication_source_vault_id=replication_source_vault_id,
-            vault_name=vault_name,
-            description=description,
-            vault_storage_class=vault_storage_class,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             replication_source_region_id: Optional[pulumi.Input[str]] = None,
-             replication_source_vault_id: Optional[pulumi.Input[str]] = None,
-             vault_name: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             vault_storage_class: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if replication_source_region_id is None and 'replicationSourceRegionId' in kwargs:
-            replication_source_region_id = kwargs['replicationSourceRegionId']
-        if replication_source_region_id is None:
-            raise TypeError("Missing 'replication_source_region_id' argument")
-        if replication_source_vault_id is None and 'replicationSourceVaultId' in kwargs:
-            replication_source_vault_id = kwargs['replicationSourceVaultId']
-        if replication_source_vault_id is None:
-            raise TypeError("Missing 'replication_source_vault_id' argument")
-        if vault_name is None and 'vaultName' in kwargs:
-            vault_name = kwargs['vaultName']
-        if vault_name is None:
-            raise TypeError("Missing 'vault_name' argument")
-        if vault_storage_class is None and 'vaultStorageClass' in kwargs:
-            vault_storage_class = kwargs['vaultStorageClass']
-
-        _setter("replication_source_region_id", replication_source_region_id)
-        _setter("replication_source_vault_id", replication_source_vault_id)
-        _setter("vault_name", vault_name)
+        pulumi.set(__self__, "replication_source_region_id", replication_source_region_id)
+        pulumi.set(__self__, "replication_source_vault_id", replication_source_vault_id)
+        pulumi.set(__self__, "vault_name", vault_name)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if vault_storage_class is not None:
-            _setter("vault_storage_class", vault_storage_class)
+            pulumi.set(__self__, "vault_storage_class", vault_storage_class)
 
     @property
     @pulumi.getter(name="replicationSourceRegionId")
@@ -147,47 +114,18 @@ class _ReplicationVaultState:
         :param pulumi.Input[str] vault_name: The name of the backup vault. The name must be 1 to 64 characters in length.
         :param pulumi.Input[str] vault_storage_class: The storage type of the backup vault. Valid values: `STANDARD`.
         """
-        _ReplicationVaultState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            replication_source_region_id=replication_source_region_id,
-            replication_source_vault_id=replication_source_vault_id,
-            status=status,
-            vault_name=vault_name,
-            vault_storage_class=vault_storage_class,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             replication_source_region_id: Optional[pulumi.Input[str]] = None,
-             replication_source_vault_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             vault_name: Optional[pulumi.Input[str]] = None,
-             vault_storage_class: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if replication_source_region_id is None and 'replicationSourceRegionId' in kwargs:
-            replication_source_region_id = kwargs['replicationSourceRegionId']
-        if replication_source_vault_id is None and 'replicationSourceVaultId' in kwargs:
-            replication_source_vault_id = kwargs['replicationSourceVaultId']
-        if vault_name is None and 'vaultName' in kwargs:
-            vault_name = kwargs['vaultName']
-        if vault_storage_class is None and 'vaultStorageClass' in kwargs:
-            vault_storage_class = kwargs['vaultStorageClass']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if replication_source_region_id is not None:
-            _setter("replication_source_region_id", replication_source_region_id)
+            pulumi.set(__self__, "replication_source_region_id", replication_source_region_id)
         if replication_source_vault_id is not None:
-            _setter("replication_source_vault_id", replication_source_vault_id)
+            pulumi.set(__self__, "replication_source_vault_id", replication_source_vault_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if vault_name is not None:
-            _setter("vault_name", vault_name)
+            pulumi.set(__self__, "vault_name", vault_name)
         if vault_storage_class is not None:
-            _setter("vault_storage_class", vault_storage_class)
+            pulumi.set(__self__, "vault_storage_class", vault_storage_class)
 
     @property
     @pulumi.getter
@@ -379,10 +317,6 @@ class ReplicationVault(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ReplicationVaultArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

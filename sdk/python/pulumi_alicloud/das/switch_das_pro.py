@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SwitchDasProArgs', 'SwitchDasPro']
@@ -23,34 +23,11 @@ class SwitchDasProArgs:
         :param pulumi.Input[int] sql_retention: The storage duration of SQL Explorer data. Valid values: `30`, `180`, `365`, `1095`, `1825`. Unit: days. Default value: `30`.
         :param pulumi.Input[str] user_id: The ID of the Alibaba Cloud account that is used to create the database instance.
         """
-        SwitchDasProArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_id=instance_id,
-            sql_retention=sql_retention,
-            user_id=user_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_id: Optional[pulumi.Input[str]] = None,
-             sql_retention: Optional[pulumi.Input[int]] = None,
-             user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if sql_retention is None and 'sqlRetention' in kwargs:
-            sql_retention = kwargs['sqlRetention']
-        if user_id is None and 'userId' in kwargs:
-            user_id = kwargs['userId']
-
-        _setter("instance_id", instance_id)
+        pulumi.set(__self__, "instance_id", instance_id)
         if sql_retention is not None:
-            _setter("sql_retention", sql_retention)
+            pulumi.set(__self__, "sql_retention", sql_retention)
         if user_id is not None:
-            _setter("user_id", user_id)
+            pulumi.set(__self__, "user_id", user_id)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -103,37 +80,14 @@ class _SwitchDasProState:
         :param pulumi.Input[bool] status: Whether the database instance has DAS professional.
         :param pulumi.Input[str] user_id: The ID of the Alibaba Cloud account that is used to create the database instance.
         """
-        _SwitchDasProState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_id=instance_id,
-            sql_retention=sql_retention,
-            status=status,
-            user_id=user_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_id: Optional[pulumi.Input[str]] = None,
-             sql_retention: Optional[pulumi.Input[int]] = None,
-             status: Optional[pulumi.Input[bool]] = None,
-             user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if sql_retention is None and 'sqlRetention' in kwargs:
-            sql_retention = kwargs['sqlRetention']
-        if user_id is None and 'userId' in kwargs:
-            user_id = kwargs['userId']
-
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if sql_retention is not None:
-            _setter("sql_retention", sql_retention)
+            pulumi.set(__self__, "sql_retention", sql_retention)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if user_id is not None:
-            _setter("user_id", user_id)
+            pulumi.set(__self__, "user_id", user_id)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -333,10 +287,6 @@ class SwitchDasPro(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SwitchDasProArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BundleArgs', 'Bundle']
@@ -37,69 +37,20 @@ class BundleArgs:
         :param pulumi.Input[str] root_disk_performance_level: The root disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
         :param pulumi.Input[str] user_disk_performance_level: The user disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
         """
-        BundleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            desktop_type=desktop_type,
-            image_id=image_id,
-            root_disk_size_gib=root_disk_size_gib,
-            user_disk_size_gibs=user_disk_size_gibs,
-            bundle_name=bundle_name,
-            description=description,
-            language=language,
-            root_disk_performance_level=root_disk_performance_level,
-            user_disk_performance_level=user_disk_performance_level,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             desktop_type: Optional[pulumi.Input[str]] = None,
-             image_id: Optional[pulumi.Input[str]] = None,
-             root_disk_size_gib: Optional[pulumi.Input[int]] = None,
-             user_disk_size_gibs: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             bundle_name: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             language: Optional[pulumi.Input[str]] = None,
-             root_disk_performance_level: Optional[pulumi.Input[str]] = None,
-             user_disk_performance_level: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if desktop_type is None and 'desktopType' in kwargs:
-            desktop_type = kwargs['desktopType']
-        if desktop_type is None:
-            raise TypeError("Missing 'desktop_type' argument")
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-        if image_id is None:
-            raise TypeError("Missing 'image_id' argument")
-        if root_disk_size_gib is None and 'rootDiskSizeGib' in kwargs:
-            root_disk_size_gib = kwargs['rootDiskSizeGib']
-        if root_disk_size_gib is None:
-            raise TypeError("Missing 'root_disk_size_gib' argument")
-        if user_disk_size_gibs is None and 'userDiskSizeGibs' in kwargs:
-            user_disk_size_gibs = kwargs['userDiskSizeGibs']
-        if user_disk_size_gibs is None:
-            raise TypeError("Missing 'user_disk_size_gibs' argument")
-        if bundle_name is None and 'bundleName' in kwargs:
-            bundle_name = kwargs['bundleName']
-        if root_disk_performance_level is None and 'rootDiskPerformanceLevel' in kwargs:
-            root_disk_performance_level = kwargs['rootDiskPerformanceLevel']
-        if user_disk_performance_level is None and 'userDiskPerformanceLevel' in kwargs:
-            user_disk_performance_level = kwargs['userDiskPerformanceLevel']
-
-        _setter("desktop_type", desktop_type)
-        _setter("image_id", image_id)
-        _setter("root_disk_size_gib", root_disk_size_gib)
-        _setter("user_disk_size_gibs", user_disk_size_gibs)
+        pulumi.set(__self__, "desktop_type", desktop_type)
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "root_disk_size_gib", root_disk_size_gib)
+        pulumi.set(__self__, "user_disk_size_gibs", user_disk_size_gibs)
         if bundle_name is not None:
-            _setter("bundle_name", bundle_name)
+            pulumi.set(__self__, "bundle_name", bundle_name)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if language is not None:
-            _setter("language", language)
+            pulumi.set(__self__, "language", language)
         if root_disk_performance_level is not None:
-            _setter("root_disk_performance_level", root_disk_performance_level)
+            pulumi.set(__self__, "root_disk_performance_level", root_disk_performance_level)
         if user_disk_performance_level is not None:
-            _setter("user_disk_performance_level", user_disk_performance_level)
+            pulumi.set(__self__, "user_disk_performance_level", user_disk_performance_level)
 
     @property
     @pulumi.getter(name="desktopType")
@@ -238,65 +189,24 @@ class _BundleState:
                - The size of the data disk that supports the setting corresponds to the specification. For more information, see [Overview of Desktop Specifications](https://help.aliyun.com/document_detail/188609.htm?spm=a2c4g.11186623.0.0.6406297bE0U5DG).
                - The data disk size (user_disk_size_gib) set in the template must be greater than the data disk size (data_disk_size) in the mirror.
         """
-        _BundleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bundle_name=bundle_name,
-            description=description,
-            desktop_type=desktop_type,
-            image_id=image_id,
-            language=language,
-            root_disk_performance_level=root_disk_performance_level,
-            root_disk_size_gib=root_disk_size_gib,
-            user_disk_performance_level=user_disk_performance_level,
-            user_disk_size_gibs=user_disk_size_gibs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bundle_name: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             desktop_type: Optional[pulumi.Input[str]] = None,
-             image_id: Optional[pulumi.Input[str]] = None,
-             language: Optional[pulumi.Input[str]] = None,
-             root_disk_performance_level: Optional[pulumi.Input[str]] = None,
-             root_disk_size_gib: Optional[pulumi.Input[int]] = None,
-             user_disk_performance_level: Optional[pulumi.Input[str]] = None,
-             user_disk_size_gibs: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bundle_name is None and 'bundleName' in kwargs:
-            bundle_name = kwargs['bundleName']
-        if desktop_type is None and 'desktopType' in kwargs:
-            desktop_type = kwargs['desktopType']
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-        if root_disk_performance_level is None and 'rootDiskPerformanceLevel' in kwargs:
-            root_disk_performance_level = kwargs['rootDiskPerformanceLevel']
-        if root_disk_size_gib is None and 'rootDiskSizeGib' in kwargs:
-            root_disk_size_gib = kwargs['rootDiskSizeGib']
-        if user_disk_performance_level is None and 'userDiskPerformanceLevel' in kwargs:
-            user_disk_performance_level = kwargs['userDiskPerformanceLevel']
-        if user_disk_size_gibs is None and 'userDiskSizeGibs' in kwargs:
-            user_disk_size_gibs = kwargs['userDiskSizeGibs']
-
         if bundle_name is not None:
-            _setter("bundle_name", bundle_name)
+            pulumi.set(__self__, "bundle_name", bundle_name)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if desktop_type is not None:
-            _setter("desktop_type", desktop_type)
+            pulumi.set(__self__, "desktop_type", desktop_type)
         if image_id is not None:
-            _setter("image_id", image_id)
+            pulumi.set(__self__, "image_id", image_id)
         if language is not None:
-            _setter("language", language)
+            pulumi.set(__self__, "language", language)
         if root_disk_performance_level is not None:
-            _setter("root_disk_performance_level", root_disk_performance_level)
+            pulumi.set(__self__, "root_disk_performance_level", root_disk_performance_level)
         if root_disk_size_gib is not None:
-            _setter("root_disk_size_gib", root_disk_size_gib)
+            pulumi.set(__self__, "root_disk_size_gib", root_disk_size_gib)
         if user_disk_performance_level is not None:
-            _setter("user_disk_performance_level", user_disk_performance_level)
+            pulumi.set(__self__, "user_disk_performance_level", user_disk_performance_level)
         if user_disk_size_gibs is not None:
-            _setter("user_disk_size_gibs", user_disk_size_gibs)
+            pulumi.set(__self__, "user_disk_size_gibs", user_disk_size_gibs)
 
     @property
     @pulumi.getter(name="bundleName")
@@ -542,10 +452,6 @@ class Bundle(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            BundleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

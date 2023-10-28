@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -59,132 +59,45 @@ class DedicatedHostArgs:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] zone_id: The zone ID of the dedicated host. This parameter is empty by default. If you do not specify this parameter, the system automatically selects a zone.
         """
-        DedicatedHostArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dedicated_host_type=dedicated_host_type,
-            action_on_maintenance=action_on_maintenance,
-            auto_placement=auto_placement,
-            auto_release_time=auto_release_time,
-            auto_renew=auto_renew,
-            auto_renew_period=auto_renew_period,
-            cpu_over_commit_ratio=cpu_over_commit_ratio,
-            dedicated_host_cluster_id=dedicated_host_cluster_id,
-            dedicated_host_name=dedicated_host_name,
-            description=description,
-            detail_fee=detail_fee,
-            dry_run=dry_run,
-            expired_time=expired_time,
-            min_quantity=min_quantity,
-            network_attributes=network_attributes,
-            payment_type=payment_type,
-            resource_group_id=resource_group_id,
-            sale_cycle=sale_cycle,
-            tags=tags,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dedicated_host_type: Optional[pulumi.Input[str]] = None,
-             action_on_maintenance: Optional[pulumi.Input[str]] = None,
-             auto_placement: Optional[pulumi.Input[str]] = None,
-             auto_release_time: Optional[pulumi.Input[str]] = None,
-             auto_renew: Optional[pulumi.Input[bool]] = None,
-             auto_renew_period: Optional[pulumi.Input[int]] = None,
-             cpu_over_commit_ratio: Optional[pulumi.Input[float]] = None,
-             dedicated_host_cluster_id: Optional[pulumi.Input[str]] = None,
-             dedicated_host_name: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             detail_fee: Optional[pulumi.Input[bool]] = None,
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             expired_time: Optional[pulumi.Input[str]] = None,
-             min_quantity: Optional[pulumi.Input[int]] = None,
-             network_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['DedicatedHostNetworkAttributeArgs']]]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             sale_cycle: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dedicated_host_type is None and 'dedicatedHostType' in kwargs:
-            dedicated_host_type = kwargs['dedicatedHostType']
-        if dedicated_host_type is None:
-            raise TypeError("Missing 'dedicated_host_type' argument")
-        if action_on_maintenance is None and 'actionOnMaintenance' in kwargs:
-            action_on_maintenance = kwargs['actionOnMaintenance']
-        if auto_placement is None and 'autoPlacement' in kwargs:
-            auto_placement = kwargs['autoPlacement']
-        if auto_release_time is None and 'autoReleaseTime' in kwargs:
-            auto_release_time = kwargs['autoReleaseTime']
-        if auto_renew is None and 'autoRenew' in kwargs:
-            auto_renew = kwargs['autoRenew']
-        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
-            auto_renew_period = kwargs['autoRenewPeriod']
-        if cpu_over_commit_ratio is None and 'cpuOverCommitRatio' in kwargs:
-            cpu_over_commit_ratio = kwargs['cpuOverCommitRatio']
-        if dedicated_host_cluster_id is None and 'dedicatedHostClusterId' in kwargs:
-            dedicated_host_cluster_id = kwargs['dedicatedHostClusterId']
-        if dedicated_host_name is None and 'dedicatedHostName' in kwargs:
-            dedicated_host_name = kwargs['dedicatedHostName']
-        if detail_fee is None and 'detailFee' in kwargs:
-            detail_fee = kwargs['detailFee']
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-        if expired_time is None and 'expiredTime' in kwargs:
-            expired_time = kwargs['expiredTime']
-        if min_quantity is None and 'minQuantity' in kwargs:
-            min_quantity = kwargs['minQuantity']
-        if network_attributes is None and 'networkAttributes' in kwargs:
-            network_attributes = kwargs['networkAttributes']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if sale_cycle is None and 'saleCycle' in kwargs:
-            sale_cycle = kwargs['saleCycle']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
-        _setter("dedicated_host_type", dedicated_host_type)
+        pulumi.set(__self__, "dedicated_host_type", dedicated_host_type)
         if action_on_maintenance is not None:
-            _setter("action_on_maintenance", action_on_maintenance)
+            pulumi.set(__self__, "action_on_maintenance", action_on_maintenance)
         if auto_placement is not None:
-            _setter("auto_placement", auto_placement)
+            pulumi.set(__self__, "auto_placement", auto_placement)
         if auto_release_time is not None:
-            _setter("auto_release_time", auto_release_time)
+            pulumi.set(__self__, "auto_release_time", auto_release_time)
         if auto_renew is not None:
-            _setter("auto_renew", auto_renew)
+            pulumi.set(__self__, "auto_renew", auto_renew)
         if auto_renew_period is not None:
-            _setter("auto_renew_period", auto_renew_period)
+            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if cpu_over_commit_ratio is not None:
-            _setter("cpu_over_commit_ratio", cpu_over_commit_ratio)
+            pulumi.set(__self__, "cpu_over_commit_ratio", cpu_over_commit_ratio)
         if dedicated_host_cluster_id is not None:
-            _setter("dedicated_host_cluster_id", dedicated_host_cluster_id)
+            pulumi.set(__self__, "dedicated_host_cluster_id", dedicated_host_cluster_id)
         if dedicated_host_name is not None:
-            _setter("dedicated_host_name", dedicated_host_name)
+            pulumi.set(__self__, "dedicated_host_name", dedicated_host_name)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if detail_fee is not None:
-            _setter("detail_fee", detail_fee)
+            pulumi.set(__self__, "detail_fee", detail_fee)
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if expired_time is not None:
-            _setter("expired_time", expired_time)
+            pulumi.set(__self__, "expired_time", expired_time)
         if min_quantity is not None:
-            _setter("min_quantity", min_quantity)
+            pulumi.set(__self__, "min_quantity", min_quantity)
         if network_attributes is not None:
-            _setter("network_attributes", network_attributes)
+            pulumi.set(__self__, "network_attributes", network_attributes)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if sale_cycle is not None:
-            _setter("sale_cycle", sale_cycle)
+            pulumi.set(__self__, "sale_cycle", sale_cycle)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="dedicatedHostType")
@@ -475,135 +388,48 @@ class _DedicatedHostState:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] zone_id: The zone ID of the dedicated host. This parameter is empty by default. If you do not specify this parameter, the system automatically selects a zone.
         """
-        _DedicatedHostState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action_on_maintenance=action_on_maintenance,
-            auto_placement=auto_placement,
-            auto_release_time=auto_release_time,
-            auto_renew=auto_renew,
-            auto_renew_period=auto_renew_period,
-            cpu_over_commit_ratio=cpu_over_commit_ratio,
-            dedicated_host_cluster_id=dedicated_host_cluster_id,
-            dedicated_host_name=dedicated_host_name,
-            dedicated_host_type=dedicated_host_type,
-            description=description,
-            detail_fee=detail_fee,
-            dry_run=dry_run,
-            expired_time=expired_time,
-            min_quantity=min_quantity,
-            network_attributes=network_attributes,
-            payment_type=payment_type,
-            resource_group_id=resource_group_id,
-            sale_cycle=sale_cycle,
-            status=status,
-            tags=tags,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action_on_maintenance: Optional[pulumi.Input[str]] = None,
-             auto_placement: Optional[pulumi.Input[str]] = None,
-             auto_release_time: Optional[pulumi.Input[str]] = None,
-             auto_renew: Optional[pulumi.Input[bool]] = None,
-             auto_renew_period: Optional[pulumi.Input[int]] = None,
-             cpu_over_commit_ratio: Optional[pulumi.Input[float]] = None,
-             dedicated_host_cluster_id: Optional[pulumi.Input[str]] = None,
-             dedicated_host_name: Optional[pulumi.Input[str]] = None,
-             dedicated_host_type: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             detail_fee: Optional[pulumi.Input[bool]] = None,
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             expired_time: Optional[pulumi.Input[str]] = None,
-             min_quantity: Optional[pulumi.Input[int]] = None,
-             network_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['DedicatedHostNetworkAttributeArgs']]]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             sale_cycle: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if action_on_maintenance is None and 'actionOnMaintenance' in kwargs:
-            action_on_maintenance = kwargs['actionOnMaintenance']
-        if auto_placement is None and 'autoPlacement' in kwargs:
-            auto_placement = kwargs['autoPlacement']
-        if auto_release_time is None and 'autoReleaseTime' in kwargs:
-            auto_release_time = kwargs['autoReleaseTime']
-        if auto_renew is None and 'autoRenew' in kwargs:
-            auto_renew = kwargs['autoRenew']
-        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
-            auto_renew_period = kwargs['autoRenewPeriod']
-        if cpu_over_commit_ratio is None and 'cpuOverCommitRatio' in kwargs:
-            cpu_over_commit_ratio = kwargs['cpuOverCommitRatio']
-        if dedicated_host_cluster_id is None and 'dedicatedHostClusterId' in kwargs:
-            dedicated_host_cluster_id = kwargs['dedicatedHostClusterId']
-        if dedicated_host_name is None and 'dedicatedHostName' in kwargs:
-            dedicated_host_name = kwargs['dedicatedHostName']
-        if dedicated_host_type is None and 'dedicatedHostType' in kwargs:
-            dedicated_host_type = kwargs['dedicatedHostType']
-        if detail_fee is None and 'detailFee' in kwargs:
-            detail_fee = kwargs['detailFee']
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-        if expired_time is None and 'expiredTime' in kwargs:
-            expired_time = kwargs['expiredTime']
-        if min_quantity is None and 'minQuantity' in kwargs:
-            min_quantity = kwargs['minQuantity']
-        if network_attributes is None and 'networkAttributes' in kwargs:
-            network_attributes = kwargs['networkAttributes']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if sale_cycle is None and 'saleCycle' in kwargs:
-            sale_cycle = kwargs['saleCycle']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if action_on_maintenance is not None:
-            _setter("action_on_maintenance", action_on_maintenance)
+            pulumi.set(__self__, "action_on_maintenance", action_on_maintenance)
         if auto_placement is not None:
-            _setter("auto_placement", auto_placement)
+            pulumi.set(__self__, "auto_placement", auto_placement)
         if auto_release_time is not None:
-            _setter("auto_release_time", auto_release_time)
+            pulumi.set(__self__, "auto_release_time", auto_release_time)
         if auto_renew is not None:
-            _setter("auto_renew", auto_renew)
+            pulumi.set(__self__, "auto_renew", auto_renew)
         if auto_renew_period is not None:
-            _setter("auto_renew_period", auto_renew_period)
+            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if cpu_over_commit_ratio is not None:
-            _setter("cpu_over_commit_ratio", cpu_over_commit_ratio)
+            pulumi.set(__self__, "cpu_over_commit_ratio", cpu_over_commit_ratio)
         if dedicated_host_cluster_id is not None:
-            _setter("dedicated_host_cluster_id", dedicated_host_cluster_id)
+            pulumi.set(__self__, "dedicated_host_cluster_id", dedicated_host_cluster_id)
         if dedicated_host_name is not None:
-            _setter("dedicated_host_name", dedicated_host_name)
+            pulumi.set(__self__, "dedicated_host_name", dedicated_host_name)
         if dedicated_host_type is not None:
-            _setter("dedicated_host_type", dedicated_host_type)
+            pulumi.set(__self__, "dedicated_host_type", dedicated_host_type)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if detail_fee is not None:
-            _setter("detail_fee", detail_fee)
+            pulumi.set(__self__, "detail_fee", detail_fee)
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if expired_time is not None:
-            _setter("expired_time", expired_time)
+            pulumi.set(__self__, "expired_time", expired_time)
         if min_quantity is not None:
-            _setter("min_quantity", min_quantity)
+            pulumi.set(__self__, "min_quantity", min_quantity)
         if network_attributes is not None:
-            _setter("network_attributes", network_attributes)
+            pulumi.set(__self__, "network_attributes", network_attributes)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if sale_cycle is not None:
-            _setter("sale_cycle", sale_cycle)
+            pulumi.set(__self__, "sale_cycle", sale_cycle)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="actionOnMaintenance")
@@ -941,10 +767,6 @@ class DedicatedHost(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DedicatedHostArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

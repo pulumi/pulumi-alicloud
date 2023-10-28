@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RemediationArgs', 'Remediation']
@@ -31,54 +31,13 @@ class RemediationArgs:
                The following arguments will be discarded. Please use new fields as soon as possible:
         :param pulumi.Input[str] remediation_source_type: Remediation resource type, valid values: `ALIYUN` , `CUSTOMER`.
         """
-        RemediationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            config_rule_id=config_rule_id,
-            invoke_type=invoke_type,
-            params=params,
-            remediation_template_id=remediation_template_id,
-            remediation_type=remediation_type,
-            remediation_source_type=remediation_source_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             config_rule_id: Optional[pulumi.Input[str]] = None,
-             invoke_type: Optional[pulumi.Input[str]] = None,
-             params: Optional[pulumi.Input[str]] = None,
-             remediation_template_id: Optional[pulumi.Input[str]] = None,
-             remediation_type: Optional[pulumi.Input[str]] = None,
-             remediation_source_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if config_rule_id is None and 'configRuleId' in kwargs:
-            config_rule_id = kwargs['configRuleId']
-        if config_rule_id is None:
-            raise TypeError("Missing 'config_rule_id' argument")
-        if invoke_type is None and 'invokeType' in kwargs:
-            invoke_type = kwargs['invokeType']
-        if invoke_type is None:
-            raise TypeError("Missing 'invoke_type' argument")
-        if params is None:
-            raise TypeError("Missing 'params' argument")
-        if remediation_template_id is None and 'remediationTemplateId' in kwargs:
-            remediation_template_id = kwargs['remediationTemplateId']
-        if remediation_template_id is None:
-            raise TypeError("Missing 'remediation_template_id' argument")
-        if remediation_type is None and 'remediationType' in kwargs:
-            remediation_type = kwargs['remediationType']
-        if remediation_type is None:
-            raise TypeError("Missing 'remediation_type' argument")
-        if remediation_source_type is None and 'remediationSourceType' in kwargs:
-            remediation_source_type = kwargs['remediationSourceType']
-
-        _setter("config_rule_id", config_rule_id)
-        _setter("invoke_type", invoke_type)
-        _setter("params", params)
-        _setter("remediation_template_id", remediation_template_id)
-        _setter("remediation_type", remediation_type)
+        pulumi.set(__self__, "config_rule_id", config_rule_id)
+        pulumi.set(__self__, "invoke_type", invoke_type)
+        pulumi.set(__self__, "params", params)
+        pulumi.set(__self__, "remediation_template_id", remediation_template_id)
+        pulumi.set(__self__, "remediation_type", remediation_type)
         if remediation_source_type is not None:
-            _setter("remediation_source_type", remediation_source_type)
+            pulumi.set(__self__, "remediation_source_type", remediation_source_type)
 
     @property
     @pulumi.getter(name="configRuleId")
@@ -177,55 +136,20 @@ class _RemediationState:
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
-        _RemediationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            config_rule_id=config_rule_id,
-            invoke_type=invoke_type,
-            params=params,
-            remediation_id=remediation_id,
-            remediation_source_type=remediation_source_type,
-            remediation_template_id=remediation_template_id,
-            remediation_type=remediation_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             config_rule_id: Optional[pulumi.Input[str]] = None,
-             invoke_type: Optional[pulumi.Input[str]] = None,
-             params: Optional[pulumi.Input[str]] = None,
-             remediation_id: Optional[pulumi.Input[str]] = None,
-             remediation_source_type: Optional[pulumi.Input[str]] = None,
-             remediation_template_id: Optional[pulumi.Input[str]] = None,
-             remediation_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if config_rule_id is None and 'configRuleId' in kwargs:
-            config_rule_id = kwargs['configRuleId']
-        if invoke_type is None and 'invokeType' in kwargs:
-            invoke_type = kwargs['invokeType']
-        if remediation_id is None and 'remediationId' in kwargs:
-            remediation_id = kwargs['remediationId']
-        if remediation_source_type is None and 'remediationSourceType' in kwargs:
-            remediation_source_type = kwargs['remediationSourceType']
-        if remediation_template_id is None and 'remediationTemplateId' in kwargs:
-            remediation_template_id = kwargs['remediationTemplateId']
-        if remediation_type is None and 'remediationType' in kwargs:
-            remediation_type = kwargs['remediationType']
-
         if config_rule_id is not None:
-            _setter("config_rule_id", config_rule_id)
+            pulumi.set(__self__, "config_rule_id", config_rule_id)
         if invoke_type is not None:
-            _setter("invoke_type", invoke_type)
+            pulumi.set(__self__, "invoke_type", invoke_type)
         if params is not None:
-            _setter("params", params)
+            pulumi.set(__self__, "params", params)
         if remediation_id is not None:
-            _setter("remediation_id", remediation_id)
+            pulumi.set(__self__, "remediation_id", remediation_id)
         if remediation_source_type is not None:
-            _setter("remediation_source_type", remediation_source_type)
+            pulumi.set(__self__, "remediation_source_type", remediation_source_type)
         if remediation_template_id is not None:
-            _setter("remediation_template_id", remediation_template_id)
+            pulumi.set(__self__, "remediation_template_id", remediation_template_id)
         if remediation_type is not None:
-            _setter("remediation_type", remediation_type)
+            pulumi.set(__self__, "remediation_type", remediation_type)
 
     @property
     @pulumi.getter(name="configRuleId")
@@ -461,10 +385,6 @@ class Remediation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RemediationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

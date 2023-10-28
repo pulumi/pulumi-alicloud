@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InstanceArgs', 'Instance']
@@ -45,100 +45,29 @@ class InstanceArgs:
         :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
         :param pulumi.Input[str] storage_size: The storage size. It is valid when `instance_type` is vip.
         """
-        InstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_type=instance_type,
-            max_tps=max_tps,
-            payment_type=payment_type,
-            queue_capacity=queue_capacity,
-            support_eip=support_eip,
-            instance_name=instance_name,
-            logistics=logistics,
-            max_eip_tps=max_eip_tps,
-            modify_type=modify_type,
-            period=period,
-            renewal_duration=renewal_duration,
-            renewal_duration_unit=renewal_duration_unit,
-            renewal_status=renewal_status,
-            storage_size=storage_size,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_type: Optional[pulumi.Input[str]] = None,
-             max_tps: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             queue_capacity: Optional[pulumi.Input[str]] = None,
-             support_eip: Optional[pulumi.Input[bool]] = None,
-             instance_name: Optional[pulumi.Input[str]] = None,
-             logistics: Optional[pulumi.Input[str]] = None,
-             max_eip_tps: Optional[pulumi.Input[str]] = None,
-             modify_type: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[int]] = None,
-             renewal_duration: Optional[pulumi.Input[int]] = None,
-             renewal_duration_unit: Optional[pulumi.Input[str]] = None,
-             renewal_status: Optional[pulumi.Input[str]] = None,
-             storage_size: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if instance_type is None:
-            raise TypeError("Missing 'instance_type' argument")
-        if max_tps is None and 'maxTps' in kwargs:
-            max_tps = kwargs['maxTps']
-        if max_tps is None:
-            raise TypeError("Missing 'max_tps' argument")
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if payment_type is None:
-            raise TypeError("Missing 'payment_type' argument")
-        if queue_capacity is None and 'queueCapacity' in kwargs:
-            queue_capacity = kwargs['queueCapacity']
-        if queue_capacity is None:
-            raise TypeError("Missing 'queue_capacity' argument")
-        if support_eip is None and 'supportEip' in kwargs:
-            support_eip = kwargs['supportEip']
-        if support_eip is None:
-            raise TypeError("Missing 'support_eip' argument")
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if max_eip_tps is None and 'maxEipTps' in kwargs:
-            max_eip_tps = kwargs['maxEipTps']
-        if modify_type is None and 'modifyType' in kwargs:
-            modify_type = kwargs['modifyType']
-        if renewal_duration is None and 'renewalDuration' in kwargs:
-            renewal_duration = kwargs['renewalDuration']
-        if renewal_duration_unit is None and 'renewalDurationUnit' in kwargs:
-            renewal_duration_unit = kwargs['renewalDurationUnit']
-        if renewal_status is None and 'renewalStatus' in kwargs:
-            renewal_status = kwargs['renewalStatus']
-        if storage_size is None and 'storageSize' in kwargs:
-            storage_size = kwargs['storageSize']
-
-        _setter("instance_type", instance_type)
-        _setter("max_tps", max_tps)
-        _setter("payment_type", payment_type)
-        _setter("queue_capacity", queue_capacity)
-        _setter("support_eip", support_eip)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "max_tps", max_tps)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "queue_capacity", queue_capacity)
+        pulumi.set(__self__, "support_eip", support_eip)
         if instance_name is not None:
-            _setter("instance_name", instance_name)
+            pulumi.set(__self__, "instance_name", instance_name)
         if logistics is not None:
-            _setter("logistics", logistics)
+            pulumi.set(__self__, "logistics", logistics)
         if max_eip_tps is not None:
-            _setter("max_eip_tps", max_eip_tps)
+            pulumi.set(__self__, "max_eip_tps", max_eip_tps)
         if modify_type is not None:
-            _setter("modify_type", modify_type)
+            pulumi.set(__self__, "modify_type", modify_type)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if renewal_duration is not None:
-            _setter("renewal_duration", renewal_duration)
+            pulumi.set(__self__, "renewal_duration", renewal_duration)
         if renewal_duration_unit is not None:
-            _setter("renewal_duration_unit", renewal_duration_unit)
+            pulumi.set(__self__, "renewal_duration_unit", renewal_duration_unit)
         if renewal_status is not None:
-            _setter("renewal_status", renewal_status)
+            pulumi.set(__self__, "renewal_status", renewal_status)
         if storage_size is not None:
-            _setter("storage_size", storage_size)
+            pulumi.set(__self__, "storage_size", storage_size)
 
     @property
     @pulumi.getter(name="instanceType")
@@ -345,99 +274,36 @@ class _InstanceState:
         :param pulumi.Input[str] storage_size: The storage size. It is valid when `instance_type` is vip.
         :param pulumi.Input[bool] support_eip: Whether to support EIP.
         """
-        _InstanceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_name=instance_name,
-            instance_type=instance_type,
-            logistics=logistics,
-            max_eip_tps=max_eip_tps,
-            max_tps=max_tps,
-            modify_type=modify_type,
-            payment_type=payment_type,
-            period=period,
-            queue_capacity=queue_capacity,
-            renewal_duration=renewal_duration,
-            renewal_duration_unit=renewal_duration_unit,
-            renewal_status=renewal_status,
-            status=status,
-            storage_size=storage_size,
-            support_eip=support_eip,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_name: Optional[pulumi.Input[str]] = None,
-             instance_type: Optional[pulumi.Input[str]] = None,
-             logistics: Optional[pulumi.Input[str]] = None,
-             max_eip_tps: Optional[pulumi.Input[str]] = None,
-             max_tps: Optional[pulumi.Input[str]] = None,
-             modify_type: Optional[pulumi.Input[str]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[int]] = None,
-             queue_capacity: Optional[pulumi.Input[str]] = None,
-             renewal_duration: Optional[pulumi.Input[int]] = None,
-             renewal_duration_unit: Optional[pulumi.Input[str]] = None,
-             renewal_status: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             storage_size: Optional[pulumi.Input[str]] = None,
-             support_eip: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if max_eip_tps is None and 'maxEipTps' in kwargs:
-            max_eip_tps = kwargs['maxEipTps']
-        if max_tps is None and 'maxTps' in kwargs:
-            max_tps = kwargs['maxTps']
-        if modify_type is None and 'modifyType' in kwargs:
-            modify_type = kwargs['modifyType']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if queue_capacity is None and 'queueCapacity' in kwargs:
-            queue_capacity = kwargs['queueCapacity']
-        if renewal_duration is None and 'renewalDuration' in kwargs:
-            renewal_duration = kwargs['renewalDuration']
-        if renewal_duration_unit is None and 'renewalDurationUnit' in kwargs:
-            renewal_duration_unit = kwargs['renewalDurationUnit']
-        if renewal_status is None and 'renewalStatus' in kwargs:
-            renewal_status = kwargs['renewalStatus']
-        if storage_size is None and 'storageSize' in kwargs:
-            storage_size = kwargs['storageSize']
-        if support_eip is None and 'supportEip' in kwargs:
-            support_eip = kwargs['supportEip']
-
         if instance_name is not None:
-            _setter("instance_name", instance_name)
+            pulumi.set(__self__, "instance_name", instance_name)
         if instance_type is not None:
-            _setter("instance_type", instance_type)
+            pulumi.set(__self__, "instance_type", instance_type)
         if logistics is not None:
-            _setter("logistics", logistics)
+            pulumi.set(__self__, "logistics", logistics)
         if max_eip_tps is not None:
-            _setter("max_eip_tps", max_eip_tps)
+            pulumi.set(__self__, "max_eip_tps", max_eip_tps)
         if max_tps is not None:
-            _setter("max_tps", max_tps)
+            pulumi.set(__self__, "max_tps", max_tps)
         if modify_type is not None:
-            _setter("modify_type", modify_type)
+            pulumi.set(__self__, "modify_type", modify_type)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if queue_capacity is not None:
-            _setter("queue_capacity", queue_capacity)
+            pulumi.set(__self__, "queue_capacity", queue_capacity)
         if renewal_duration is not None:
-            _setter("renewal_duration", renewal_duration)
+            pulumi.set(__self__, "renewal_duration", renewal_duration)
         if renewal_duration_unit is not None:
-            _setter("renewal_duration_unit", renewal_duration_unit)
+            pulumi.set(__self__, "renewal_duration_unit", renewal_duration_unit)
         if renewal_status is not None:
-            _setter("renewal_status", renewal_status)
+            pulumi.set(__self__, "renewal_status", renewal_status)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if storage_size is not None:
-            _setter("storage_size", storage_size)
+            pulumi.set(__self__, "storage_size", storage_size)
         if support_eip is not None:
-            _setter("support_eip", support_eip)
+            pulumi.set(__self__, "support_eip", support_eip)
 
     @property
     @pulumi.getter(name="instanceName")
@@ -691,10 +557,6 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

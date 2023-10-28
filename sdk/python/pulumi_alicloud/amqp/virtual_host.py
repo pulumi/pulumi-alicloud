@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['VirtualHostArgs', 'VirtualHost']
@@ -21,29 +21,8 @@ class VirtualHostArgs:
         :param pulumi.Input[str] instance_id: InstanceId.
         :param pulumi.Input[str] virtual_host_name: VirtualHostName.
         """
-        VirtualHostArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_id=instance_id,
-            virtual_host_name=virtual_host_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_id: Optional[pulumi.Input[str]] = None,
-             virtual_host_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if virtual_host_name is None and 'virtualHostName' in kwargs:
-            virtual_host_name = kwargs['virtualHostName']
-        if virtual_host_name is None:
-            raise TypeError("Missing 'virtual_host_name' argument")
-
-        _setter("instance_id", instance_id)
-        _setter("virtual_host_name", virtual_host_name)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "virtual_host_name", virtual_host_name)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -80,27 +59,10 @@ class _VirtualHostState:
         :param pulumi.Input[str] instance_id: InstanceId.
         :param pulumi.Input[str] virtual_host_name: VirtualHostName.
         """
-        _VirtualHostState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_id=instance_id,
-            virtual_host_name=virtual_host_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_id: Optional[pulumi.Input[str]] = None,
-             virtual_host_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if virtual_host_name is None and 'virtualHostName' in kwargs:
-            virtual_host_name = kwargs['virtualHostName']
-
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if virtual_host_name is not None:
-            _setter("virtual_host_name", virtual_host_name)
+            pulumi.set(__self__, "virtual_host_name", virtual_host_name)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -228,10 +190,6 @@ class VirtualHost(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            VirtualHostArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -23,27 +23,8 @@ class RuleAttachmentArgs:
         :param pulumi.Input[str] rule_id: The ID of the rule.
         :param pulumi.Input[Sequence[pulumi.Input['RuleAttachmentVpcArgs']]] vpcs: The List of the VPC. See `vpcs` below.
         """
-        RuleAttachmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            rule_id=rule_id,
-            vpcs=vpcs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             rule_id: Optional[pulumi.Input[str]] = None,
-             vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['RuleAttachmentVpcArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if rule_id is None and 'ruleId' in kwargs:
-            rule_id = kwargs['ruleId']
-        if rule_id is None:
-            raise TypeError("Missing 'rule_id' argument")
-        if vpcs is None:
-            raise TypeError("Missing 'vpcs' argument")
-
-        _setter("rule_id", rule_id)
-        _setter("vpcs", vpcs)
+        pulumi.set(__self__, "rule_id", rule_id)
+        pulumi.set(__self__, "vpcs", vpcs)
 
     @property
     @pulumi.getter(name="ruleId")
@@ -80,25 +61,10 @@ class _RuleAttachmentState:
         :param pulumi.Input[str] rule_id: The ID of the rule.
         :param pulumi.Input[Sequence[pulumi.Input['RuleAttachmentVpcArgs']]] vpcs: The List of the VPC. See `vpcs` below.
         """
-        _RuleAttachmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            rule_id=rule_id,
-            vpcs=vpcs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             rule_id: Optional[pulumi.Input[str]] = None,
-             vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['RuleAttachmentVpcArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if rule_id is None and 'ruleId' in kwargs:
-            rule_id = kwargs['ruleId']
-
         if rule_id is not None:
-            _setter("rule_id", rule_id)
+            pulumi.set(__self__, "rule_id", rule_id)
         if vpcs is not None:
-            _setter("vpcs", vpcs)
+            pulumi.set(__self__, "vpcs", vpcs)
 
     @property
     @pulumi.getter(name="ruleId")
@@ -184,10 +150,6 @@ class RuleAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RuleAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

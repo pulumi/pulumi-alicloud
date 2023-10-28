@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DbInstanceEndpointAddressArgs', 'DbInstanceEndpointAddress']
@@ -25,41 +25,10 @@ class DbInstanceEndpointAddressArgs:
         :param pulumi.Input[str] db_instance_id: The ID of the instance.
         :param pulumi.Input[str] port: The port number of the public endpoint.
         """
-        DbInstanceEndpointAddressArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            connection_string_prefix=connection_string_prefix,
-            db_instance_endpoint_id=db_instance_endpoint_id,
-            db_instance_id=db_instance_id,
-            port=port,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             connection_string_prefix: Optional[pulumi.Input[str]] = None,
-             db_instance_endpoint_id: Optional[pulumi.Input[str]] = None,
-             db_instance_id: Optional[pulumi.Input[str]] = None,
-             port: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if connection_string_prefix is None and 'connectionStringPrefix' in kwargs:
-            connection_string_prefix = kwargs['connectionStringPrefix']
-        if connection_string_prefix is None:
-            raise TypeError("Missing 'connection_string_prefix' argument")
-        if db_instance_endpoint_id is None and 'dbInstanceEndpointId' in kwargs:
-            db_instance_endpoint_id = kwargs['dbInstanceEndpointId']
-        if db_instance_endpoint_id is None:
-            raise TypeError("Missing 'db_instance_endpoint_id' argument")
-        if db_instance_id is None and 'dbInstanceId' in kwargs:
-            db_instance_id = kwargs['dbInstanceId']
-        if db_instance_id is None:
-            raise TypeError("Missing 'db_instance_id' argument")
-        if port is None:
-            raise TypeError("Missing 'port' argument")
-
-        _setter("connection_string_prefix", connection_string_prefix)
-        _setter("db_instance_endpoint_id", db_instance_endpoint_id)
-        _setter("db_instance_id", db_instance_id)
-        _setter("port", port)
+        pulumi.set(__self__, "connection_string_prefix", connection_string_prefix)
+        pulumi.set(__self__, "db_instance_endpoint_id", db_instance_endpoint_id)
+        pulumi.set(__self__, "db_instance_id", db_instance_id)
+        pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter(name="connectionStringPrefix")
@@ -130,55 +99,20 @@ class _DbInstanceEndpointAddressState:
         :param pulumi.Input[str] ip_type: The type of the IP address.
         :param pulumi.Input[str] port: The port number of the public endpoint.
         """
-        _DbInstanceEndpointAddressState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            connection_string=connection_string,
-            connection_string_prefix=connection_string_prefix,
-            db_instance_endpoint_id=db_instance_endpoint_id,
-            db_instance_id=db_instance_id,
-            ip_address=ip_address,
-            ip_type=ip_type,
-            port=port,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             connection_string: Optional[pulumi.Input[str]] = None,
-             connection_string_prefix: Optional[pulumi.Input[str]] = None,
-             db_instance_endpoint_id: Optional[pulumi.Input[str]] = None,
-             db_instance_id: Optional[pulumi.Input[str]] = None,
-             ip_address: Optional[pulumi.Input[str]] = None,
-             ip_type: Optional[pulumi.Input[str]] = None,
-             port: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if connection_string is None and 'connectionString' in kwargs:
-            connection_string = kwargs['connectionString']
-        if connection_string_prefix is None and 'connectionStringPrefix' in kwargs:
-            connection_string_prefix = kwargs['connectionStringPrefix']
-        if db_instance_endpoint_id is None and 'dbInstanceEndpointId' in kwargs:
-            db_instance_endpoint_id = kwargs['dbInstanceEndpointId']
-        if db_instance_id is None and 'dbInstanceId' in kwargs:
-            db_instance_id = kwargs['dbInstanceId']
-        if ip_address is None and 'ipAddress' in kwargs:
-            ip_address = kwargs['ipAddress']
-        if ip_type is None and 'ipType' in kwargs:
-            ip_type = kwargs['ipType']
-
         if connection_string is not None:
-            _setter("connection_string", connection_string)
+            pulumi.set(__self__, "connection_string", connection_string)
         if connection_string_prefix is not None:
-            _setter("connection_string_prefix", connection_string_prefix)
+            pulumi.set(__self__, "connection_string_prefix", connection_string_prefix)
         if db_instance_endpoint_id is not None:
-            _setter("db_instance_endpoint_id", db_instance_endpoint_id)
+            pulumi.set(__self__, "db_instance_endpoint_id", db_instance_endpoint_id)
         if db_instance_id is not None:
-            _setter("db_instance_id", db_instance_id)
+            pulumi.set(__self__, "db_instance_id", db_instance_id)
         if ip_address is not None:
-            _setter("ip_address", ip_address)
+            pulumi.set(__self__, "ip_address", ip_address)
         if ip_type is not None:
-            _setter("ip_type", ip_type)
+            pulumi.set(__self__, "ip_type", ip_type)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter(name="connectionString")
@@ -328,10 +262,6 @@ class DbInstanceEndpointAddress(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DbInstanceEndpointAddressArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

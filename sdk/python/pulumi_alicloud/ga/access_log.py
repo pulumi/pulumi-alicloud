@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AccessLogArgs', 'AccessLog']
@@ -29,57 +29,12 @@ class AccessLogArgs:
         :param pulumi.Input[str] sls_project_name: The name of the Log Service project.
         :param pulumi.Input[str] sls_region_id: The region ID of the Log Service project.
         """
-        AccessLogArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            accelerator_id=accelerator_id,
-            endpoint_group_id=endpoint_group_id,
-            listener_id=listener_id,
-            sls_log_store_name=sls_log_store_name,
-            sls_project_name=sls_project_name,
-            sls_region_id=sls_region_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             accelerator_id: Optional[pulumi.Input[str]] = None,
-             endpoint_group_id: Optional[pulumi.Input[str]] = None,
-             listener_id: Optional[pulumi.Input[str]] = None,
-             sls_log_store_name: Optional[pulumi.Input[str]] = None,
-             sls_project_name: Optional[pulumi.Input[str]] = None,
-             sls_region_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if accelerator_id is None and 'acceleratorId' in kwargs:
-            accelerator_id = kwargs['acceleratorId']
-        if accelerator_id is None:
-            raise TypeError("Missing 'accelerator_id' argument")
-        if endpoint_group_id is None and 'endpointGroupId' in kwargs:
-            endpoint_group_id = kwargs['endpointGroupId']
-        if endpoint_group_id is None:
-            raise TypeError("Missing 'endpoint_group_id' argument")
-        if listener_id is None and 'listenerId' in kwargs:
-            listener_id = kwargs['listenerId']
-        if listener_id is None:
-            raise TypeError("Missing 'listener_id' argument")
-        if sls_log_store_name is None and 'slsLogStoreName' in kwargs:
-            sls_log_store_name = kwargs['slsLogStoreName']
-        if sls_log_store_name is None:
-            raise TypeError("Missing 'sls_log_store_name' argument")
-        if sls_project_name is None and 'slsProjectName' in kwargs:
-            sls_project_name = kwargs['slsProjectName']
-        if sls_project_name is None:
-            raise TypeError("Missing 'sls_project_name' argument")
-        if sls_region_id is None and 'slsRegionId' in kwargs:
-            sls_region_id = kwargs['slsRegionId']
-        if sls_region_id is None:
-            raise TypeError("Missing 'sls_region_id' argument")
-
-        _setter("accelerator_id", accelerator_id)
-        _setter("endpoint_group_id", endpoint_group_id)
-        _setter("listener_id", listener_id)
-        _setter("sls_log_store_name", sls_log_store_name)
-        _setter("sls_project_name", sls_project_name)
-        _setter("sls_region_id", sls_region_id)
+        pulumi.set(__self__, "accelerator_id", accelerator_id)
+        pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
+        pulumi.set(__self__, "listener_id", listener_id)
+        pulumi.set(__self__, "sls_log_store_name", sls_log_store_name)
+        pulumi.set(__self__, "sls_project_name", sls_project_name)
+        pulumi.set(__self__, "sls_region_id", sls_region_id)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -174,55 +129,20 @@ class _AccessLogState:
         :param pulumi.Input[str] sls_region_id: The region ID of the Log Service project.
         :param pulumi.Input[str] status: Whether access log is enabled.
         """
-        _AccessLogState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            accelerator_id=accelerator_id,
-            endpoint_group_id=endpoint_group_id,
-            listener_id=listener_id,
-            sls_log_store_name=sls_log_store_name,
-            sls_project_name=sls_project_name,
-            sls_region_id=sls_region_id,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             accelerator_id: Optional[pulumi.Input[str]] = None,
-             endpoint_group_id: Optional[pulumi.Input[str]] = None,
-             listener_id: Optional[pulumi.Input[str]] = None,
-             sls_log_store_name: Optional[pulumi.Input[str]] = None,
-             sls_project_name: Optional[pulumi.Input[str]] = None,
-             sls_region_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if accelerator_id is None and 'acceleratorId' in kwargs:
-            accelerator_id = kwargs['acceleratorId']
-        if endpoint_group_id is None and 'endpointGroupId' in kwargs:
-            endpoint_group_id = kwargs['endpointGroupId']
-        if listener_id is None and 'listenerId' in kwargs:
-            listener_id = kwargs['listenerId']
-        if sls_log_store_name is None and 'slsLogStoreName' in kwargs:
-            sls_log_store_name = kwargs['slsLogStoreName']
-        if sls_project_name is None and 'slsProjectName' in kwargs:
-            sls_project_name = kwargs['slsProjectName']
-        if sls_region_id is None and 'slsRegionId' in kwargs:
-            sls_region_id = kwargs['slsRegionId']
-
         if accelerator_id is not None:
-            _setter("accelerator_id", accelerator_id)
+            pulumi.set(__self__, "accelerator_id", accelerator_id)
         if endpoint_group_id is not None:
-            _setter("endpoint_group_id", endpoint_group_id)
+            pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
         if listener_id is not None:
-            _setter("listener_id", listener_id)
+            pulumi.set(__self__, "listener_id", listener_id)
         if sls_log_store_name is not None:
-            _setter("sls_log_store_name", sls_log_store_name)
+            pulumi.set(__self__, "sls_log_store_name", sls_log_store_name)
         if sls_project_name is not None:
-            _setter("sls_project_name", sls_project_name)
+            pulumi.set(__self__, "sls_project_name", sls_project_name)
         if sls_region_id is not None:
-            _setter("sls_region_id", sls_region_id)
+            pulumi.set(__self__, "sls_region_id", sls_region_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -500,10 +420,6 @@ class AccessLog(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AccessLogArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

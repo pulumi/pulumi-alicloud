@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['HAVipArgs', 'HAVip']
@@ -31,57 +31,22 @@ class HAVipArgs:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the HAVIP belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: The list of tags.
         """
-        HAVipArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            vswitch_id=vswitch_id,
-            description=description,
-            ha_vip_name=ha_vip_name,
-            havip_name=havip_name,
-            ip_address=ip_address,
-            resource_group_id=resource_group_id,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             ha_vip_name: Optional[pulumi.Input[str]] = None,
-             havip_name: Optional[pulumi.Input[str]] = None,
-             ip_address: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-        if ha_vip_name is None and 'haVipName' in kwargs:
-            ha_vip_name = kwargs['haVipName']
-        if havip_name is None and 'havipName' in kwargs:
-            havip_name = kwargs['havipName']
-        if ip_address is None and 'ipAddress' in kwargs:
-            ip_address = kwargs['ipAddress']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-
-        _setter("vswitch_id", vswitch_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if ha_vip_name is not None:
-            _setter("ha_vip_name", ha_vip_name)
+            pulumi.set(__self__, "ha_vip_name", ha_vip_name)
         if havip_name is not None:
             warnings.warn("""Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""havip_name is deprecated: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""")
         if havip_name is not None:
-            _setter("havip_name", havip_name)
+            pulumi.set(__self__, "havip_name", havip_name)
         if ip_address is not None:
-            _setter("ip_address", ip_address)
+            pulumi.set(__self__, "ip_address", ip_address)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="vswitchId")
@@ -207,102 +172,39 @@ class _HAVipState:
         :param pulumi.Input[str] vpc_id: The ID of the VPC to which the HAVIP belongs.
         :param pulumi.Input[str] vswitch_id: The vswitch_id of the HaVip, the field can't be changed.
         """
-        _HAVipState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            associated_eip_addresses=associated_eip_addresses,
-            associated_instance_type=associated_instance_type,
-            associated_instances=associated_instances,
-            create_time=create_time,
-            description=description,
-            ha_vip_id=ha_vip_id,
-            ha_vip_name=ha_vip_name,
-            havip_name=havip_name,
-            ip_address=ip_address,
-            master_instance_id=master_instance_id,
-            resource_group_id=resource_group_id,
-            status=status,
-            tags=tags,
-            vpc_id=vpc_id,
-            vswitch_id=vswitch_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             associated_eip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             associated_instance_type: Optional[pulumi.Input[str]] = None,
-             associated_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             ha_vip_id: Optional[pulumi.Input[str]] = None,
-             ha_vip_name: Optional[pulumi.Input[str]] = None,
-             havip_name: Optional[pulumi.Input[str]] = None,
-             ip_address: Optional[pulumi.Input[str]] = None,
-             master_instance_id: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if associated_eip_addresses is None and 'associatedEipAddresses' in kwargs:
-            associated_eip_addresses = kwargs['associatedEipAddresses']
-        if associated_instance_type is None and 'associatedInstanceType' in kwargs:
-            associated_instance_type = kwargs['associatedInstanceType']
-        if associated_instances is None and 'associatedInstances' in kwargs:
-            associated_instances = kwargs['associatedInstances']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if ha_vip_id is None and 'haVipId' in kwargs:
-            ha_vip_id = kwargs['haVipId']
-        if ha_vip_name is None and 'haVipName' in kwargs:
-            ha_vip_name = kwargs['haVipName']
-        if havip_name is None and 'havipName' in kwargs:
-            havip_name = kwargs['havipName']
-        if ip_address is None and 'ipAddress' in kwargs:
-            ip_address = kwargs['ipAddress']
-        if master_instance_id is None and 'masterInstanceId' in kwargs:
-            master_instance_id = kwargs['masterInstanceId']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-
         if associated_eip_addresses is not None:
-            _setter("associated_eip_addresses", associated_eip_addresses)
+            pulumi.set(__self__, "associated_eip_addresses", associated_eip_addresses)
         if associated_instance_type is not None:
-            _setter("associated_instance_type", associated_instance_type)
+            pulumi.set(__self__, "associated_instance_type", associated_instance_type)
         if associated_instances is not None:
-            _setter("associated_instances", associated_instances)
+            pulumi.set(__self__, "associated_instances", associated_instances)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if ha_vip_id is not None:
-            _setter("ha_vip_id", ha_vip_id)
+            pulumi.set(__self__, "ha_vip_id", ha_vip_id)
         if ha_vip_name is not None:
-            _setter("ha_vip_name", ha_vip_name)
+            pulumi.set(__self__, "ha_vip_name", ha_vip_name)
         if havip_name is not None:
             warnings.warn("""Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""havip_name is deprecated: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""")
         if havip_name is not None:
-            _setter("havip_name", havip_name)
+            pulumi.set(__self__, "havip_name", havip_name)
         if ip_address is not None:
-            _setter("ip_address", ip_address)
+            pulumi.set(__self__, "ip_address", ip_address)
         if master_instance_id is not None:
-            _setter("master_instance_id", master_instance_id)
+            pulumi.set(__self__, "master_instance_id", master_instance_id)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if vpc_id is not None:
-            _setter("vpc_id", vpc_id)
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="associatedEipAddresses")
@@ -597,10 +499,6 @@ class HAVip(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            HAVipArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

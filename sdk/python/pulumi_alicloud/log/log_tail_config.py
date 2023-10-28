@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['LogTailConfigArgs', 'LogTailConfig']
@@ -31,56 +31,15 @@ class LogTailConfigArgs:
         :param pulumi.Input[str] log_sample: （Optional）The log sample of the Logtail configuration. The log size cannot exceed 1,000 bytes.
         :param pulumi.Input[str] name: The Logtail configuration name, which is unique in the same project.
         """
-        LogTailConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            input_detail=input_detail,
-            input_type=input_type,
-            logstore=logstore,
-            output_type=output_type,
-            project=project,
-            log_sample=log_sample,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             input_detail: Optional[pulumi.Input[str]] = None,
-             input_type: Optional[pulumi.Input[str]] = None,
-             logstore: Optional[pulumi.Input[str]] = None,
-             output_type: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             log_sample: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if input_detail is None and 'inputDetail' in kwargs:
-            input_detail = kwargs['inputDetail']
-        if input_detail is None:
-            raise TypeError("Missing 'input_detail' argument")
-        if input_type is None and 'inputType' in kwargs:
-            input_type = kwargs['inputType']
-        if input_type is None:
-            raise TypeError("Missing 'input_type' argument")
-        if logstore is None:
-            raise TypeError("Missing 'logstore' argument")
-        if output_type is None and 'outputType' in kwargs:
-            output_type = kwargs['outputType']
-        if output_type is None:
-            raise TypeError("Missing 'output_type' argument")
-        if project is None:
-            raise TypeError("Missing 'project' argument")
-        if log_sample is None and 'logSample' in kwargs:
-            log_sample = kwargs['logSample']
-
-        _setter("input_detail", input_detail)
-        _setter("input_type", input_type)
-        _setter("logstore", logstore)
-        _setter("output_type", output_type)
-        _setter("project", project)
+        pulumi.set(__self__, "input_detail", input_detail)
+        pulumi.set(__self__, "input_type", input_type)
+        pulumi.set(__self__, "logstore", logstore)
+        pulumi.set(__self__, "output_type", output_type)
+        pulumi.set(__self__, "project", project)
         if log_sample is not None:
-            _setter("log_sample", log_sample)
+            pulumi.set(__self__, "log_sample", log_sample)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="inputDetail")
@@ -187,51 +146,20 @@ class _LogTailConfigState:
         :param pulumi.Input[str] output_type: The output type. Currently, only LogService is supported.
         :param pulumi.Input[str] project: The project name to the log store belongs.
         """
-        _LogTailConfigState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            input_detail=input_detail,
-            input_type=input_type,
-            log_sample=log_sample,
-            logstore=logstore,
-            name=name,
-            output_type=output_type,
-            project=project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             input_detail: Optional[pulumi.Input[str]] = None,
-             input_type: Optional[pulumi.Input[str]] = None,
-             log_sample: Optional[pulumi.Input[str]] = None,
-             logstore: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             output_type: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if input_detail is None and 'inputDetail' in kwargs:
-            input_detail = kwargs['inputDetail']
-        if input_type is None and 'inputType' in kwargs:
-            input_type = kwargs['inputType']
-        if log_sample is None and 'logSample' in kwargs:
-            log_sample = kwargs['logSample']
-        if output_type is None and 'outputType' in kwargs:
-            output_type = kwargs['outputType']
-
         if input_detail is not None:
-            _setter("input_detail", input_detail)
+            pulumi.set(__self__, "input_detail", input_detail)
         if input_type is not None:
-            _setter("input_type", input_type)
+            pulumi.set(__self__, "input_type", input_type)
         if log_sample is not None:
-            _setter("log_sample", log_sample)
+            pulumi.set(__self__, "log_sample", log_sample)
         if logstore is not None:
-            _setter("logstore", logstore)
+            pulumi.set(__self__, "logstore", logstore)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if output_type is not None:
-            _setter("output_type", output_type)
+            pulumi.set(__self__, "output_type", output_type)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="inputDetail")
@@ -467,10 +395,6 @@ class LogTailConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            LogTailConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

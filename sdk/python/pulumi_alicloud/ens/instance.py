@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -69,161 +69,52 @@ class InstanceArgs:
         :param pulumi.Input[bool] unique_suffix: Specifies whether to automatically append sequential suffixes to the hostnames specified by the HostName parameter and instance names specified by the InstanceName parameter when you create multiple instances at a time. The sequential suffix ranges from 001 to 999. Valid values:  true false Default value: false.
         :param pulumi.Input[str] user_data: User defined data, with a maximum support of 16KB. You can input UserData information. UserData encoded in Base64 format.
         """
-        InstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_type=instance_type,
-            internet_max_bandwidth_out=internet_max_bandwidth_out,
-            payment_type=payment_type,
-            schedule_area_level=schedule_area_level,
-            auto_renew=auto_renew,
-            carrier=carrier,
-            data_disks=data_disks,
-            ens_region_id=ens_region_id,
-            host_name=host_name,
-            image_id=image_id,
-            instance_charge_strategy=instance_charge_strategy,
-            instance_name=instance_name,
-            internet_charge_type=internet_charge_type,
-            net_district_code=net_district_code,
-            password=password,
-            password_inherit=password_inherit,
-            period=period,
-            period_unit=period_unit,
-            public_ip_identification=public_ip_identification,
-            quantity=quantity,
-            scheduling_price_strategy=scheduling_price_strategy,
-            scheduling_strategy=scheduling_strategy,
-            system_disk=system_disk,
-            unique_suffix=unique_suffix,
-            user_data=user_data,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_type: Optional[pulumi.Input[str]] = None,
-             internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             schedule_area_level: Optional[pulumi.Input[str]] = None,
-             auto_renew: Optional[pulumi.Input[bool]] = None,
-             carrier: Optional[pulumi.Input[str]] = None,
-             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]]] = None,
-             ens_region_id: Optional[pulumi.Input[str]] = None,
-             host_name: Optional[pulumi.Input[str]] = None,
-             image_id: Optional[pulumi.Input[str]] = None,
-             instance_charge_strategy: Optional[pulumi.Input[str]] = None,
-             instance_name: Optional[pulumi.Input[str]] = None,
-             internet_charge_type: Optional[pulumi.Input[str]] = None,
-             net_district_code: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             password_inherit: Optional[pulumi.Input[bool]] = None,
-             period: Optional[pulumi.Input[int]] = None,
-             period_unit: Optional[pulumi.Input[str]] = None,
-             public_ip_identification: Optional[pulumi.Input[bool]] = None,
-             quantity: Optional[pulumi.Input[str]] = None,
-             scheduling_price_strategy: Optional[pulumi.Input[str]] = None,
-             scheduling_strategy: Optional[pulumi.Input[str]] = None,
-             system_disk: Optional[pulumi.Input['InstanceSystemDiskArgs']] = None,
-             unique_suffix: Optional[pulumi.Input[bool]] = None,
-             user_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if instance_type is None:
-            raise TypeError("Missing 'instance_type' argument")
-        if internet_max_bandwidth_out is None and 'internetMaxBandwidthOut' in kwargs:
-            internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
-        if internet_max_bandwidth_out is None:
-            raise TypeError("Missing 'internet_max_bandwidth_out' argument")
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if payment_type is None:
-            raise TypeError("Missing 'payment_type' argument")
-        if schedule_area_level is None and 'scheduleAreaLevel' in kwargs:
-            schedule_area_level = kwargs['scheduleAreaLevel']
-        if schedule_area_level is None:
-            raise TypeError("Missing 'schedule_area_level' argument")
-        if auto_renew is None and 'autoRenew' in kwargs:
-            auto_renew = kwargs['autoRenew']
-        if data_disks is None and 'dataDisks' in kwargs:
-            data_disks = kwargs['dataDisks']
-        if ens_region_id is None and 'ensRegionId' in kwargs:
-            ens_region_id = kwargs['ensRegionId']
-        if host_name is None and 'hostName' in kwargs:
-            host_name = kwargs['hostName']
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-        if instance_charge_strategy is None and 'instanceChargeStrategy' in kwargs:
-            instance_charge_strategy = kwargs['instanceChargeStrategy']
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if internet_charge_type is None and 'internetChargeType' in kwargs:
-            internet_charge_type = kwargs['internetChargeType']
-        if net_district_code is None and 'netDistrictCode' in kwargs:
-            net_district_code = kwargs['netDistrictCode']
-        if password_inherit is None and 'passwordInherit' in kwargs:
-            password_inherit = kwargs['passwordInherit']
-        if period_unit is None and 'periodUnit' in kwargs:
-            period_unit = kwargs['periodUnit']
-        if public_ip_identification is None and 'publicIpIdentification' in kwargs:
-            public_ip_identification = kwargs['publicIpIdentification']
-        if scheduling_price_strategy is None and 'schedulingPriceStrategy' in kwargs:
-            scheduling_price_strategy = kwargs['schedulingPriceStrategy']
-        if scheduling_strategy is None and 'schedulingStrategy' in kwargs:
-            scheduling_strategy = kwargs['schedulingStrategy']
-        if system_disk is None and 'systemDisk' in kwargs:
-            system_disk = kwargs['systemDisk']
-        if unique_suffix is None and 'uniqueSuffix' in kwargs:
-            unique_suffix = kwargs['uniqueSuffix']
-        if user_data is None and 'userData' in kwargs:
-            user_data = kwargs['userData']
-
-        _setter("instance_type", instance_type)
-        _setter("internet_max_bandwidth_out", internet_max_bandwidth_out)
-        _setter("payment_type", payment_type)
-        _setter("schedule_area_level", schedule_area_level)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "schedule_area_level", schedule_area_level)
         if auto_renew is not None:
-            _setter("auto_renew", auto_renew)
+            pulumi.set(__self__, "auto_renew", auto_renew)
         if carrier is not None:
-            _setter("carrier", carrier)
+            pulumi.set(__self__, "carrier", carrier)
         if data_disks is not None:
-            _setter("data_disks", data_disks)
+            pulumi.set(__self__, "data_disks", data_disks)
         if ens_region_id is not None:
-            _setter("ens_region_id", ens_region_id)
+            pulumi.set(__self__, "ens_region_id", ens_region_id)
         if host_name is not None:
-            _setter("host_name", host_name)
+            pulumi.set(__self__, "host_name", host_name)
         if image_id is not None:
-            _setter("image_id", image_id)
+            pulumi.set(__self__, "image_id", image_id)
         if instance_charge_strategy is not None:
-            _setter("instance_charge_strategy", instance_charge_strategy)
+            pulumi.set(__self__, "instance_charge_strategy", instance_charge_strategy)
         if instance_name is not None:
-            _setter("instance_name", instance_name)
+            pulumi.set(__self__, "instance_name", instance_name)
         if internet_charge_type is not None:
-            _setter("internet_charge_type", internet_charge_type)
+            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
         if net_district_code is not None:
-            _setter("net_district_code", net_district_code)
+            pulumi.set(__self__, "net_district_code", net_district_code)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if password_inherit is not None:
-            _setter("password_inherit", password_inherit)
+            pulumi.set(__self__, "password_inherit", password_inherit)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if period_unit is not None:
-            _setter("period_unit", period_unit)
+            pulumi.set(__self__, "period_unit", period_unit)
         if public_ip_identification is not None:
-            _setter("public_ip_identification", public_ip_identification)
+            pulumi.set(__self__, "public_ip_identification", public_ip_identification)
         if quantity is not None:
-            _setter("quantity", quantity)
+            pulumi.set(__self__, "quantity", quantity)
         if scheduling_price_strategy is not None:
-            _setter("scheduling_price_strategy", scheduling_price_strategy)
+            pulumi.set(__self__, "scheduling_price_strategy", scheduling_price_strategy)
         if scheduling_strategy is not None:
-            _setter("scheduling_strategy", scheduling_strategy)
+            pulumi.set(__self__, "scheduling_strategy", scheduling_strategy)
         if system_disk is not None:
-            _setter("system_disk", system_disk)
+            pulumi.set(__self__, "system_disk", system_disk)
         if unique_suffix is not None:
-            _setter("unique_suffix", unique_suffix)
+            pulumi.set(__self__, "unique_suffix", unique_suffix)
         if user_data is not None:
-            _setter("user_data", user_data)
+            pulumi.set(__self__, "user_data", user_data)
 
     @property
     @pulumi.getter(name="instanceType")
@@ -584,161 +475,58 @@ class _InstanceState:
         :param pulumi.Input[bool] unique_suffix: Specifies whether to automatically append sequential suffixes to the hostnames specified by the HostName parameter and instance names specified by the InstanceName parameter when you create multiple instances at a time. The sequential suffix ranges from 001 to 999. Valid values:  true false Default value: false.
         :param pulumi.Input[str] user_data: User defined data, with a maximum support of 16KB. You can input UserData information. UserData encoded in Base64 format.
         """
-        _InstanceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto_renew=auto_renew,
-            carrier=carrier,
-            data_disks=data_disks,
-            ens_region_id=ens_region_id,
-            host_name=host_name,
-            image_id=image_id,
-            instance_charge_strategy=instance_charge_strategy,
-            instance_name=instance_name,
-            instance_type=instance_type,
-            internet_charge_type=internet_charge_type,
-            internet_max_bandwidth_out=internet_max_bandwidth_out,
-            net_district_code=net_district_code,
-            password=password,
-            password_inherit=password_inherit,
-            payment_type=payment_type,
-            period=period,
-            period_unit=period_unit,
-            public_ip_identification=public_ip_identification,
-            quantity=quantity,
-            schedule_area_level=schedule_area_level,
-            scheduling_price_strategy=scheduling_price_strategy,
-            scheduling_strategy=scheduling_strategy,
-            status=status,
-            system_disk=system_disk,
-            unique_suffix=unique_suffix,
-            user_data=user_data,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto_renew: Optional[pulumi.Input[bool]] = None,
-             carrier: Optional[pulumi.Input[str]] = None,
-             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]]] = None,
-             ens_region_id: Optional[pulumi.Input[str]] = None,
-             host_name: Optional[pulumi.Input[str]] = None,
-             image_id: Optional[pulumi.Input[str]] = None,
-             instance_charge_strategy: Optional[pulumi.Input[str]] = None,
-             instance_name: Optional[pulumi.Input[str]] = None,
-             instance_type: Optional[pulumi.Input[str]] = None,
-             internet_charge_type: Optional[pulumi.Input[str]] = None,
-             internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
-             net_district_code: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             password_inherit: Optional[pulumi.Input[bool]] = None,
-             payment_type: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[int]] = None,
-             period_unit: Optional[pulumi.Input[str]] = None,
-             public_ip_identification: Optional[pulumi.Input[bool]] = None,
-             quantity: Optional[pulumi.Input[str]] = None,
-             schedule_area_level: Optional[pulumi.Input[str]] = None,
-             scheduling_price_strategy: Optional[pulumi.Input[str]] = None,
-             scheduling_strategy: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             system_disk: Optional[pulumi.Input['InstanceSystemDiskArgs']] = None,
-             unique_suffix: Optional[pulumi.Input[bool]] = None,
-             user_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_renew is None and 'autoRenew' in kwargs:
-            auto_renew = kwargs['autoRenew']
-        if data_disks is None and 'dataDisks' in kwargs:
-            data_disks = kwargs['dataDisks']
-        if ens_region_id is None and 'ensRegionId' in kwargs:
-            ens_region_id = kwargs['ensRegionId']
-        if host_name is None and 'hostName' in kwargs:
-            host_name = kwargs['hostName']
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-        if instance_charge_strategy is None and 'instanceChargeStrategy' in kwargs:
-            instance_charge_strategy = kwargs['instanceChargeStrategy']
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if internet_charge_type is None and 'internetChargeType' in kwargs:
-            internet_charge_type = kwargs['internetChargeType']
-        if internet_max_bandwidth_out is None and 'internetMaxBandwidthOut' in kwargs:
-            internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
-        if net_district_code is None and 'netDistrictCode' in kwargs:
-            net_district_code = kwargs['netDistrictCode']
-        if password_inherit is None and 'passwordInherit' in kwargs:
-            password_inherit = kwargs['passwordInherit']
-        if payment_type is None and 'paymentType' in kwargs:
-            payment_type = kwargs['paymentType']
-        if period_unit is None and 'periodUnit' in kwargs:
-            period_unit = kwargs['periodUnit']
-        if public_ip_identification is None and 'publicIpIdentification' in kwargs:
-            public_ip_identification = kwargs['publicIpIdentification']
-        if schedule_area_level is None and 'scheduleAreaLevel' in kwargs:
-            schedule_area_level = kwargs['scheduleAreaLevel']
-        if scheduling_price_strategy is None and 'schedulingPriceStrategy' in kwargs:
-            scheduling_price_strategy = kwargs['schedulingPriceStrategy']
-        if scheduling_strategy is None and 'schedulingStrategy' in kwargs:
-            scheduling_strategy = kwargs['schedulingStrategy']
-        if system_disk is None and 'systemDisk' in kwargs:
-            system_disk = kwargs['systemDisk']
-        if unique_suffix is None and 'uniqueSuffix' in kwargs:
-            unique_suffix = kwargs['uniqueSuffix']
-        if user_data is None and 'userData' in kwargs:
-            user_data = kwargs['userData']
-
         if auto_renew is not None:
-            _setter("auto_renew", auto_renew)
+            pulumi.set(__self__, "auto_renew", auto_renew)
         if carrier is not None:
-            _setter("carrier", carrier)
+            pulumi.set(__self__, "carrier", carrier)
         if data_disks is not None:
-            _setter("data_disks", data_disks)
+            pulumi.set(__self__, "data_disks", data_disks)
         if ens_region_id is not None:
-            _setter("ens_region_id", ens_region_id)
+            pulumi.set(__self__, "ens_region_id", ens_region_id)
         if host_name is not None:
-            _setter("host_name", host_name)
+            pulumi.set(__self__, "host_name", host_name)
         if image_id is not None:
-            _setter("image_id", image_id)
+            pulumi.set(__self__, "image_id", image_id)
         if instance_charge_strategy is not None:
-            _setter("instance_charge_strategy", instance_charge_strategy)
+            pulumi.set(__self__, "instance_charge_strategy", instance_charge_strategy)
         if instance_name is not None:
-            _setter("instance_name", instance_name)
+            pulumi.set(__self__, "instance_name", instance_name)
         if instance_type is not None:
-            _setter("instance_type", instance_type)
+            pulumi.set(__self__, "instance_type", instance_type)
         if internet_charge_type is not None:
-            _setter("internet_charge_type", internet_charge_type)
+            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
         if internet_max_bandwidth_out is not None:
-            _setter("internet_max_bandwidth_out", internet_max_bandwidth_out)
+            pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
         if net_district_code is not None:
-            _setter("net_district_code", net_district_code)
+            pulumi.set(__self__, "net_district_code", net_district_code)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if password_inherit is not None:
-            _setter("password_inherit", password_inherit)
+            pulumi.set(__self__, "password_inherit", password_inherit)
         if payment_type is not None:
-            _setter("payment_type", payment_type)
+            pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if period_unit is not None:
-            _setter("period_unit", period_unit)
+            pulumi.set(__self__, "period_unit", period_unit)
         if public_ip_identification is not None:
-            _setter("public_ip_identification", public_ip_identification)
+            pulumi.set(__self__, "public_ip_identification", public_ip_identification)
         if quantity is not None:
-            _setter("quantity", quantity)
+            pulumi.set(__self__, "quantity", quantity)
         if schedule_area_level is not None:
-            _setter("schedule_area_level", schedule_area_level)
+            pulumi.set(__self__, "schedule_area_level", schedule_area_level)
         if scheduling_price_strategy is not None:
-            _setter("scheduling_price_strategy", scheduling_price_strategy)
+            pulumi.set(__self__, "scheduling_price_strategy", scheduling_price_strategy)
         if scheduling_strategy is not None:
-            _setter("scheduling_strategy", scheduling_strategy)
+            pulumi.set(__self__, "scheduling_strategy", scheduling_strategy)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if system_disk is not None:
-            _setter("system_disk", system_disk)
+            pulumi.set(__self__, "system_disk", system_disk)
         if unique_suffix is not None:
-            _setter("unique_suffix", unique_suffix)
+            pulumi.set(__self__, "unique_suffix", unique_suffix)
         if user_data is not None:
-            _setter("user_data", user_data)
+            pulumi.set(__self__, "user_data", user_data)
 
     @property
     @pulumi.getter(name="autoRenew")
@@ -1146,10 +934,6 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1219,7 +1003,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["schedule_area_level"] = schedule_area_level
             __props__.__dict__["scheduling_price_strategy"] = scheduling_price_strategy
             __props__.__dict__["scheduling_strategy"] = scheduling_strategy
-            system_disk = _utilities.configure(system_disk, InstanceSystemDiskArgs, True)
             __props__.__dict__["system_disk"] = system_disk
             __props__.__dict__["unique_suffix"] = unique_suffix
             __props__.__dict__["user_data"] = user_data

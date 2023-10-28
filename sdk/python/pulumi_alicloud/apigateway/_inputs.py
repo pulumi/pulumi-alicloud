@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -33,36 +33,11 @@ class ApiConstantParameterArgs:
         :param pulumi.Input[str] value: Constant parameter value.
         :param pulumi.Input[str] description: The description of Constant parameter.
         """
-        ApiConstantParameterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            in_=in_,
-            name=name,
-            value=value,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             in_: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             value: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if in_ is None and 'in' in kwargs:
-            in_ = kwargs['in']
-        if in_ is None:
-            raise TypeError("Missing 'in_' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("in_", in_)
-        _setter("name", name)
-        _setter("value", value)
+        pulumi.set(__self__, "in_", in_)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter(name="in")
@@ -128,45 +103,12 @@ class ApiFcServiceConfigArgs:
         :param pulumi.Input[int] timeout: Backend service time-out time; unit: millisecond.
         :param pulumi.Input[str] arn_role: RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
         """
-        ApiFcServiceConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            function_name=function_name,
-            region=region,
-            service_name=service_name,
-            timeout=timeout,
-            arn_role=arn_role,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             function_name: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             service_name: Optional[pulumi.Input[str]] = None,
-             timeout: Optional[pulumi.Input[int]] = None,
-             arn_role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if function_name is None and 'functionName' in kwargs:
-            function_name = kwargs['functionName']
-        if function_name is None:
-            raise TypeError("Missing 'function_name' argument")
-        if region is None:
-            raise TypeError("Missing 'region' argument")
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-        if service_name is None:
-            raise TypeError("Missing 'service_name' argument")
-        if timeout is None:
-            raise TypeError("Missing 'timeout' argument")
-        if arn_role is None and 'arnRole' in kwargs:
-            arn_role = kwargs['arnRole']
-
-        _setter("function_name", function_name)
-        _setter("region", region)
-        _setter("service_name", service_name)
-        _setter("timeout", timeout)
+        pulumi.set(__self__, "function_name", function_name)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "service_name", service_name)
+        pulumi.set(__self__, "timeout", timeout)
         if arn_role is not None:
-            _setter("arn_role", arn_role)
+            pulumi.set(__self__, "arn_role", arn_role)
 
     @property
     @pulumi.getter(name="functionName")
@@ -244,41 +186,12 @@ class ApiHttpServiceConfigArgs:
         :param pulumi.Input[int] timeout: Backend service time-out time; unit: millisecond.
         :param pulumi.Input[str] aone_name: The name of aone.
         """
-        ApiHttpServiceConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            method=method,
-            path=path,
-            timeout=timeout,
-            aone_name=aone_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[pulumi.Input[str]] = None,
-             method: Optional[pulumi.Input[str]] = None,
-             path: Optional[pulumi.Input[str]] = None,
-             timeout: Optional[pulumi.Input[int]] = None,
-             aone_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address is None:
-            raise TypeError("Missing 'address' argument")
-        if method is None:
-            raise TypeError("Missing 'method' argument")
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-        if timeout is None:
-            raise TypeError("Missing 'timeout' argument")
-        if aone_name is None and 'aoneName' in kwargs:
-            aone_name = kwargs['aoneName']
-
-        _setter("address", address)
-        _setter("method", method)
-        _setter("path", path)
-        _setter("timeout", timeout)
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "method", method)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "timeout", timeout)
         if aone_name is not None:
-            _setter("aone_name", aone_name)
+            pulumi.set(__self__, "aone_name", aone_name)
 
     @property
     @pulumi.getter
@@ -356,41 +269,12 @@ class ApiHttpVpcServiceConfigArgs:
         :param pulumi.Input[int] timeout: Backend service time-out time. Unit: millisecond.
         :param pulumi.Input[str] aone_name: The name of aone.
         """
-        ApiHttpVpcServiceConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            method=method,
-            name=name,
-            path=path,
-            timeout=timeout,
-            aone_name=aone_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             method: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             path: Optional[pulumi.Input[str]] = None,
-             timeout: Optional[pulumi.Input[int]] = None,
-             aone_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if method is None:
-            raise TypeError("Missing 'method' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-        if timeout is None:
-            raise TypeError("Missing 'timeout' argument")
-        if aone_name is None and 'aoneName' in kwargs:
-            aone_name = kwargs['aoneName']
-
-        _setter("method", method)
-        _setter("name", name)
-        _setter("path", path)
-        _setter("timeout", timeout)
+        pulumi.set(__self__, "method", method)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "timeout", timeout)
         if aone_name is not None:
-            _setter("aone_name", aone_name)
+            pulumi.set(__self__, "aone_name", aone_name)
 
     @property
     @pulumi.getter
@@ -462,26 +346,9 @@ class ApiMockServiceConfigArgs:
         :param pulumi.Input[str] result: The result of the mock service.
         :param pulumi.Input[str] aone_name: The name of aone.
         """
-        ApiMockServiceConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            result=result,
-            aone_name=aone_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             result: Optional[pulumi.Input[str]] = None,
-             aone_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if result is None:
-            raise TypeError("Missing 'result' argument")
-        if aone_name is None and 'aoneName' in kwargs:
-            aone_name = kwargs['aoneName']
-
-        _setter("result", result)
+        pulumi.set(__self__, "result", result)
         if aone_name is not None:
-            _setter("aone_name", aone_name)
+            pulumi.set(__self__, "aone_name", aone_name)
 
     @property
     @pulumi.getter
@@ -523,41 +390,12 @@ class ApiRequestConfigArgs:
         :param pulumi.Input[str] protocol: The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'.
         :param pulumi.Input[str] body_format: The body format of the api, which support the values of 'STREAM' and 'FORM'.
         """
-        ApiRequestConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            method=method,
-            mode=mode,
-            path=path,
-            protocol=protocol,
-            body_format=body_format,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             method: Optional[pulumi.Input[str]] = None,
-             mode: Optional[pulumi.Input[str]] = None,
-             path: Optional[pulumi.Input[str]] = None,
-             protocol: Optional[pulumi.Input[str]] = None,
-             body_format: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if method is None:
-            raise TypeError("Missing 'method' argument")
-        if mode is None:
-            raise TypeError("Missing 'mode' argument")
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-        if protocol is None:
-            raise TypeError("Missing 'protocol' argument")
-        if body_format is None and 'bodyFormat' in kwargs:
-            body_format = kwargs['bodyFormat']
-
-        _setter("method", method)
-        _setter("mode", mode)
-        _setter("path", path)
-        _setter("protocol", protocol)
+        pulumi.set(__self__, "method", method)
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "protocol", protocol)
         if body_format is not None:
-            _setter("body_format", body_format)
+            pulumi.set(__self__, "body_format", body_format)
 
     @property
     @pulumi.getter
@@ -641,61 +479,16 @@ class ApiRequestParameterArgs:
         :param pulumi.Input[str] default_value: The default value of the parameter.
         :param pulumi.Input[str] description: The description of parameter.
         """
-        ApiRequestParameterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            in_=in_,
-            in_service=in_service,
-            name=name,
-            name_service=name_service,
-            required=required,
-            type=type,
-            default_value=default_value,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             in_: Optional[pulumi.Input[str]] = None,
-             in_service: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             name_service: Optional[pulumi.Input[str]] = None,
-             required: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             default_value: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if in_ is None and 'in' in kwargs:
-            in_ = kwargs['in']
-        if in_ is None:
-            raise TypeError("Missing 'in_' argument")
-        if in_service is None and 'inService' in kwargs:
-            in_service = kwargs['inService']
-        if in_service is None:
-            raise TypeError("Missing 'in_service' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if name_service is None and 'nameService' in kwargs:
-            name_service = kwargs['nameService']
-        if name_service is None:
-            raise TypeError("Missing 'name_service' argument")
-        if required is None:
-            raise TypeError("Missing 'required' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if default_value is None and 'defaultValue' in kwargs:
-            default_value = kwargs['defaultValue']
-
-        _setter("in_", in_)
-        _setter("in_service", in_service)
-        _setter("name", name)
-        _setter("name_service", name_service)
-        _setter("required", required)
-        _setter("type", type)
+        pulumi.set(__self__, "in_", in_)
+        pulumi.set(__self__, "in_service", in_service)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "name_service", name_service)
+        pulumi.set(__self__, "required", required)
+        pulumi.set(__self__, "type", type)
         if default_value is not None:
-            _setter("default_value", default_value)
+            pulumi.set(__self__, "default_value", default_value)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter(name="in")
@@ -805,34 +598,9 @@ class ApiSystemParameterArgs:
         :param pulumi.Input[str] name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         :param pulumi.Input[str] name_service: Backend service's parameter name.
         """
-        ApiSystemParameterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            in_=in_,
-            name=name,
-            name_service=name_service,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             in_: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             name_service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if in_ is None and 'in' in kwargs:
-            in_ = kwargs['in']
-        if in_ is None:
-            raise TypeError("Missing 'in_' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if name_service is None and 'nameService' in kwargs:
-            name_service = kwargs['nameService']
-        if name_service is None:
-            raise TypeError("Missing 'name_service' argument")
-
-        _setter("in_", in_)
-        _setter("name", name)
-        _setter("name_service", name_service)
+        pulumi.set(__self__, "in_", in_)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "name_service", name_service)
 
     @property
     @pulumi.getter(name="in")

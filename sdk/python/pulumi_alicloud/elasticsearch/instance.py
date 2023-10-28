@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InstanceArgs', 'Instance']
@@ -85,213 +85,68 @@ class InstanceArgs:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] zone_count: The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
         """
-        InstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            data_node_amount=data_node_amount,
-            data_node_disk_size=data_node_disk_size,
-            data_node_disk_type=data_node_disk_type,
-            data_node_spec=data_node_spec,
-            version=version,
-            vswitch_id=vswitch_id,
-            auto_renew_duration=auto_renew_duration,
-            client_node_amount=client_node_amount,
-            client_node_spec=client_node_spec,
-            data_node_disk_encrypted=data_node_disk_encrypted,
-            data_node_disk_performance_level=data_node_disk_performance_level,
-            description=description,
-            enable_kibana_private_network=enable_kibana_private_network,
-            enable_kibana_public_network=enable_kibana_public_network,
-            enable_public=enable_public,
-            instance_charge_type=instance_charge_type,
-            kibana_node_spec=kibana_node_spec,
-            kibana_private_whitelists=kibana_private_whitelists,
-            kibana_whitelists=kibana_whitelists,
-            kms_encrypted_password=kms_encrypted_password,
-            kms_encryption_context=kms_encryption_context,
-            master_node_disk_type=master_node_disk_type,
-            master_node_spec=master_node_spec,
-            password=password,
-            period=period,
-            private_whitelists=private_whitelists,
-            protocol=protocol,
-            public_whitelists=public_whitelists,
-            renew_status=renew_status,
-            renewal_duration_unit=renewal_duration_unit,
-            resource_group_id=resource_group_id,
-            setting_config=setting_config,
-            tags=tags,
-            zone_count=zone_count,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             data_node_amount: Optional[pulumi.Input[int]] = None,
-             data_node_disk_size: Optional[pulumi.Input[int]] = None,
-             data_node_disk_type: Optional[pulumi.Input[str]] = None,
-             data_node_spec: Optional[pulumi.Input[str]] = None,
-             version: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             auto_renew_duration: Optional[pulumi.Input[int]] = None,
-             client_node_amount: Optional[pulumi.Input[int]] = None,
-             client_node_spec: Optional[pulumi.Input[str]] = None,
-             data_node_disk_encrypted: Optional[pulumi.Input[bool]] = None,
-             data_node_disk_performance_level: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             enable_kibana_private_network: Optional[pulumi.Input[bool]] = None,
-             enable_kibana_public_network: Optional[pulumi.Input[bool]] = None,
-             enable_public: Optional[pulumi.Input[bool]] = None,
-             instance_charge_type: Optional[pulumi.Input[str]] = None,
-             kibana_node_spec: Optional[pulumi.Input[str]] = None,
-             kibana_private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             master_node_disk_type: Optional[pulumi.Input[str]] = None,
-             master_node_spec: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[int]] = None,
-             private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             protocol: Optional[pulumi.Input[str]] = None,
-             public_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             renew_status: Optional[pulumi.Input[str]] = None,
-             renewal_duration_unit: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             setting_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             zone_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if data_node_amount is None and 'dataNodeAmount' in kwargs:
-            data_node_amount = kwargs['dataNodeAmount']
-        if data_node_amount is None:
-            raise TypeError("Missing 'data_node_amount' argument")
-        if data_node_disk_size is None and 'dataNodeDiskSize' in kwargs:
-            data_node_disk_size = kwargs['dataNodeDiskSize']
-        if data_node_disk_size is None:
-            raise TypeError("Missing 'data_node_disk_size' argument")
-        if data_node_disk_type is None and 'dataNodeDiskType' in kwargs:
-            data_node_disk_type = kwargs['dataNodeDiskType']
-        if data_node_disk_type is None:
-            raise TypeError("Missing 'data_node_disk_type' argument")
-        if data_node_spec is None and 'dataNodeSpec' in kwargs:
-            data_node_spec = kwargs['dataNodeSpec']
-        if data_node_spec is None:
-            raise TypeError("Missing 'data_node_spec' argument")
-        if version is None:
-            raise TypeError("Missing 'version' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-        if auto_renew_duration is None and 'autoRenewDuration' in kwargs:
-            auto_renew_duration = kwargs['autoRenewDuration']
-        if client_node_amount is None and 'clientNodeAmount' in kwargs:
-            client_node_amount = kwargs['clientNodeAmount']
-        if client_node_spec is None and 'clientNodeSpec' in kwargs:
-            client_node_spec = kwargs['clientNodeSpec']
-        if data_node_disk_encrypted is None and 'dataNodeDiskEncrypted' in kwargs:
-            data_node_disk_encrypted = kwargs['dataNodeDiskEncrypted']
-        if data_node_disk_performance_level is None and 'dataNodeDiskPerformanceLevel' in kwargs:
-            data_node_disk_performance_level = kwargs['dataNodeDiskPerformanceLevel']
-        if enable_kibana_private_network is None and 'enableKibanaPrivateNetwork' in kwargs:
-            enable_kibana_private_network = kwargs['enableKibanaPrivateNetwork']
-        if enable_kibana_public_network is None and 'enableKibanaPublicNetwork' in kwargs:
-            enable_kibana_public_network = kwargs['enableKibanaPublicNetwork']
-        if enable_public is None and 'enablePublic' in kwargs:
-            enable_public = kwargs['enablePublic']
-        if instance_charge_type is None and 'instanceChargeType' in kwargs:
-            instance_charge_type = kwargs['instanceChargeType']
-        if kibana_node_spec is None and 'kibanaNodeSpec' in kwargs:
-            kibana_node_spec = kwargs['kibanaNodeSpec']
-        if kibana_private_whitelists is None and 'kibanaPrivateWhitelists' in kwargs:
-            kibana_private_whitelists = kwargs['kibanaPrivateWhitelists']
-        if kibana_whitelists is None and 'kibanaWhitelists' in kwargs:
-            kibana_whitelists = kwargs['kibanaWhitelists']
-        if kms_encrypted_password is None and 'kmsEncryptedPassword' in kwargs:
-            kms_encrypted_password = kwargs['kmsEncryptedPassword']
-        if kms_encryption_context is None and 'kmsEncryptionContext' in kwargs:
-            kms_encryption_context = kwargs['kmsEncryptionContext']
-        if master_node_disk_type is None and 'masterNodeDiskType' in kwargs:
-            master_node_disk_type = kwargs['masterNodeDiskType']
-        if master_node_spec is None and 'masterNodeSpec' in kwargs:
-            master_node_spec = kwargs['masterNodeSpec']
-        if private_whitelists is None and 'privateWhitelists' in kwargs:
-            private_whitelists = kwargs['privateWhitelists']
-        if public_whitelists is None and 'publicWhitelists' in kwargs:
-            public_whitelists = kwargs['publicWhitelists']
-        if renew_status is None and 'renewStatus' in kwargs:
-            renew_status = kwargs['renewStatus']
-        if renewal_duration_unit is None and 'renewalDurationUnit' in kwargs:
-            renewal_duration_unit = kwargs['renewalDurationUnit']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if setting_config is None and 'settingConfig' in kwargs:
-            setting_config = kwargs['settingConfig']
-        if zone_count is None and 'zoneCount' in kwargs:
-            zone_count = kwargs['zoneCount']
-
-        _setter("data_node_amount", data_node_amount)
-        _setter("data_node_disk_size", data_node_disk_size)
-        _setter("data_node_disk_type", data_node_disk_type)
-        _setter("data_node_spec", data_node_spec)
-        _setter("version", version)
-        _setter("vswitch_id", vswitch_id)
+        pulumi.set(__self__, "data_node_amount", data_node_amount)
+        pulumi.set(__self__, "data_node_disk_size", data_node_disk_size)
+        pulumi.set(__self__, "data_node_disk_type", data_node_disk_type)
+        pulumi.set(__self__, "data_node_spec", data_node_spec)
+        pulumi.set(__self__, "version", version)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
         if auto_renew_duration is not None:
-            _setter("auto_renew_duration", auto_renew_duration)
+            pulumi.set(__self__, "auto_renew_duration", auto_renew_duration)
         if client_node_amount is not None:
-            _setter("client_node_amount", client_node_amount)
+            pulumi.set(__self__, "client_node_amount", client_node_amount)
         if client_node_spec is not None:
-            _setter("client_node_spec", client_node_spec)
+            pulumi.set(__self__, "client_node_spec", client_node_spec)
         if data_node_disk_encrypted is not None:
-            _setter("data_node_disk_encrypted", data_node_disk_encrypted)
+            pulumi.set(__self__, "data_node_disk_encrypted", data_node_disk_encrypted)
         if data_node_disk_performance_level is not None:
-            _setter("data_node_disk_performance_level", data_node_disk_performance_level)
+            pulumi.set(__self__, "data_node_disk_performance_level", data_node_disk_performance_level)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if enable_kibana_private_network is not None:
-            _setter("enable_kibana_private_network", enable_kibana_private_network)
+            pulumi.set(__self__, "enable_kibana_private_network", enable_kibana_private_network)
         if enable_kibana_public_network is not None:
-            _setter("enable_kibana_public_network", enable_kibana_public_network)
+            pulumi.set(__self__, "enable_kibana_public_network", enable_kibana_public_network)
         if enable_public is not None:
-            _setter("enable_public", enable_public)
+            pulumi.set(__self__, "enable_public", enable_public)
         if instance_charge_type is not None:
-            _setter("instance_charge_type", instance_charge_type)
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if kibana_node_spec is not None:
-            _setter("kibana_node_spec", kibana_node_spec)
+            pulumi.set(__self__, "kibana_node_spec", kibana_node_spec)
         if kibana_private_whitelists is not None:
-            _setter("kibana_private_whitelists", kibana_private_whitelists)
+            pulumi.set(__self__, "kibana_private_whitelists", kibana_private_whitelists)
         if kibana_whitelists is not None:
-            _setter("kibana_whitelists", kibana_whitelists)
+            pulumi.set(__self__, "kibana_whitelists", kibana_whitelists)
         if kms_encrypted_password is not None:
-            _setter("kms_encrypted_password", kms_encrypted_password)
+            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
-            _setter("kms_encryption_context", kms_encryption_context)
+            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
         if master_node_disk_type is not None:
-            _setter("master_node_disk_type", master_node_disk_type)
+            pulumi.set(__self__, "master_node_disk_type", master_node_disk_type)
         if master_node_spec is not None:
-            _setter("master_node_spec", master_node_spec)
+            pulumi.set(__self__, "master_node_spec", master_node_spec)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if private_whitelists is not None:
-            _setter("private_whitelists", private_whitelists)
+            pulumi.set(__self__, "private_whitelists", private_whitelists)
         if protocol is not None:
-            _setter("protocol", protocol)
+            pulumi.set(__self__, "protocol", protocol)
         if public_whitelists is not None:
-            _setter("public_whitelists", public_whitelists)
+            pulumi.set(__self__, "public_whitelists", public_whitelists)
         if renew_status is not None:
-            _setter("renew_status", renew_status)
+            pulumi.set(__self__, "renew_status", renew_status)
         if renewal_duration_unit is not None:
-            _setter("renewal_duration_unit", renewal_duration_unit)
+            pulumi.set(__self__, "renewal_duration_unit", renewal_duration_unit)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if setting_config is not None:
-            _setter("setting_config", setting_config)
+            pulumi.set(__self__, "setting_config", setting_config)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if zone_count is not None:
-            _setter("zone_count", zone_count)
+            pulumi.set(__self__, "zone_count", zone_count)
 
     @property
     @pulumi.getter(name="dataNodeAmount")
@@ -790,243 +645,88 @@ class _InstanceState:
         :param pulumi.Input[str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[int] zone_count: The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
         """
-        _InstanceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto_renew_duration=auto_renew_duration,
-            client_node_amount=client_node_amount,
-            client_node_spec=client_node_spec,
-            data_node_amount=data_node_amount,
-            data_node_disk_encrypted=data_node_disk_encrypted,
-            data_node_disk_performance_level=data_node_disk_performance_level,
-            data_node_disk_size=data_node_disk_size,
-            data_node_disk_type=data_node_disk_type,
-            data_node_spec=data_node_spec,
-            description=description,
-            domain=domain,
-            enable_kibana_private_network=enable_kibana_private_network,
-            enable_kibana_public_network=enable_kibana_public_network,
-            enable_public=enable_public,
-            instance_charge_type=instance_charge_type,
-            kibana_domain=kibana_domain,
-            kibana_node_spec=kibana_node_spec,
-            kibana_port=kibana_port,
-            kibana_private_whitelists=kibana_private_whitelists,
-            kibana_whitelists=kibana_whitelists,
-            kms_encrypted_password=kms_encrypted_password,
-            kms_encryption_context=kms_encryption_context,
-            master_node_disk_type=master_node_disk_type,
-            master_node_spec=master_node_spec,
-            password=password,
-            period=period,
-            port=port,
-            private_whitelists=private_whitelists,
-            protocol=protocol,
-            public_domain=public_domain,
-            public_port=public_port,
-            public_whitelists=public_whitelists,
-            renew_status=renew_status,
-            renewal_duration_unit=renewal_duration_unit,
-            resource_group_id=resource_group_id,
-            setting_config=setting_config,
-            status=status,
-            tags=tags,
-            version=version,
-            vswitch_id=vswitch_id,
-            zone_count=zone_count,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto_renew_duration: Optional[pulumi.Input[int]] = None,
-             client_node_amount: Optional[pulumi.Input[int]] = None,
-             client_node_spec: Optional[pulumi.Input[str]] = None,
-             data_node_amount: Optional[pulumi.Input[int]] = None,
-             data_node_disk_encrypted: Optional[pulumi.Input[bool]] = None,
-             data_node_disk_performance_level: Optional[pulumi.Input[str]] = None,
-             data_node_disk_size: Optional[pulumi.Input[int]] = None,
-             data_node_disk_type: Optional[pulumi.Input[str]] = None,
-             data_node_spec: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             domain: Optional[pulumi.Input[str]] = None,
-             enable_kibana_private_network: Optional[pulumi.Input[bool]] = None,
-             enable_kibana_public_network: Optional[pulumi.Input[bool]] = None,
-             enable_public: Optional[pulumi.Input[bool]] = None,
-             instance_charge_type: Optional[pulumi.Input[str]] = None,
-             kibana_domain: Optional[pulumi.Input[str]] = None,
-             kibana_node_spec: Optional[pulumi.Input[str]] = None,
-             kibana_port: Optional[pulumi.Input[int]] = None,
-             kibana_private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             master_node_disk_type: Optional[pulumi.Input[str]] = None,
-             master_node_spec: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[int]] = None,
-             port: Optional[pulumi.Input[int]] = None,
-             private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             protocol: Optional[pulumi.Input[str]] = None,
-             public_domain: Optional[pulumi.Input[str]] = None,
-             public_port: Optional[pulumi.Input[int]] = None,
-             public_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             renew_status: Optional[pulumi.Input[str]] = None,
-             renewal_duration_unit: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             setting_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             version: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             zone_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_renew_duration is None and 'autoRenewDuration' in kwargs:
-            auto_renew_duration = kwargs['autoRenewDuration']
-        if client_node_amount is None and 'clientNodeAmount' in kwargs:
-            client_node_amount = kwargs['clientNodeAmount']
-        if client_node_spec is None and 'clientNodeSpec' in kwargs:
-            client_node_spec = kwargs['clientNodeSpec']
-        if data_node_amount is None and 'dataNodeAmount' in kwargs:
-            data_node_amount = kwargs['dataNodeAmount']
-        if data_node_disk_encrypted is None and 'dataNodeDiskEncrypted' in kwargs:
-            data_node_disk_encrypted = kwargs['dataNodeDiskEncrypted']
-        if data_node_disk_performance_level is None and 'dataNodeDiskPerformanceLevel' in kwargs:
-            data_node_disk_performance_level = kwargs['dataNodeDiskPerformanceLevel']
-        if data_node_disk_size is None and 'dataNodeDiskSize' in kwargs:
-            data_node_disk_size = kwargs['dataNodeDiskSize']
-        if data_node_disk_type is None and 'dataNodeDiskType' in kwargs:
-            data_node_disk_type = kwargs['dataNodeDiskType']
-        if data_node_spec is None and 'dataNodeSpec' in kwargs:
-            data_node_spec = kwargs['dataNodeSpec']
-        if enable_kibana_private_network is None and 'enableKibanaPrivateNetwork' in kwargs:
-            enable_kibana_private_network = kwargs['enableKibanaPrivateNetwork']
-        if enable_kibana_public_network is None and 'enableKibanaPublicNetwork' in kwargs:
-            enable_kibana_public_network = kwargs['enableKibanaPublicNetwork']
-        if enable_public is None and 'enablePublic' in kwargs:
-            enable_public = kwargs['enablePublic']
-        if instance_charge_type is None and 'instanceChargeType' in kwargs:
-            instance_charge_type = kwargs['instanceChargeType']
-        if kibana_domain is None and 'kibanaDomain' in kwargs:
-            kibana_domain = kwargs['kibanaDomain']
-        if kibana_node_spec is None and 'kibanaNodeSpec' in kwargs:
-            kibana_node_spec = kwargs['kibanaNodeSpec']
-        if kibana_port is None and 'kibanaPort' in kwargs:
-            kibana_port = kwargs['kibanaPort']
-        if kibana_private_whitelists is None and 'kibanaPrivateWhitelists' in kwargs:
-            kibana_private_whitelists = kwargs['kibanaPrivateWhitelists']
-        if kibana_whitelists is None and 'kibanaWhitelists' in kwargs:
-            kibana_whitelists = kwargs['kibanaWhitelists']
-        if kms_encrypted_password is None and 'kmsEncryptedPassword' in kwargs:
-            kms_encrypted_password = kwargs['kmsEncryptedPassword']
-        if kms_encryption_context is None and 'kmsEncryptionContext' in kwargs:
-            kms_encryption_context = kwargs['kmsEncryptionContext']
-        if master_node_disk_type is None and 'masterNodeDiskType' in kwargs:
-            master_node_disk_type = kwargs['masterNodeDiskType']
-        if master_node_spec is None and 'masterNodeSpec' in kwargs:
-            master_node_spec = kwargs['masterNodeSpec']
-        if private_whitelists is None and 'privateWhitelists' in kwargs:
-            private_whitelists = kwargs['privateWhitelists']
-        if public_domain is None and 'publicDomain' in kwargs:
-            public_domain = kwargs['publicDomain']
-        if public_port is None and 'publicPort' in kwargs:
-            public_port = kwargs['publicPort']
-        if public_whitelists is None and 'publicWhitelists' in kwargs:
-            public_whitelists = kwargs['publicWhitelists']
-        if renew_status is None and 'renewStatus' in kwargs:
-            renew_status = kwargs['renewStatus']
-        if renewal_duration_unit is None and 'renewalDurationUnit' in kwargs:
-            renewal_duration_unit = kwargs['renewalDurationUnit']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if setting_config is None and 'settingConfig' in kwargs:
-            setting_config = kwargs['settingConfig']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if zone_count is None and 'zoneCount' in kwargs:
-            zone_count = kwargs['zoneCount']
-
         if auto_renew_duration is not None:
-            _setter("auto_renew_duration", auto_renew_duration)
+            pulumi.set(__self__, "auto_renew_duration", auto_renew_duration)
         if client_node_amount is not None:
-            _setter("client_node_amount", client_node_amount)
+            pulumi.set(__self__, "client_node_amount", client_node_amount)
         if client_node_spec is not None:
-            _setter("client_node_spec", client_node_spec)
+            pulumi.set(__self__, "client_node_spec", client_node_spec)
         if data_node_amount is not None:
-            _setter("data_node_amount", data_node_amount)
+            pulumi.set(__self__, "data_node_amount", data_node_amount)
         if data_node_disk_encrypted is not None:
-            _setter("data_node_disk_encrypted", data_node_disk_encrypted)
+            pulumi.set(__self__, "data_node_disk_encrypted", data_node_disk_encrypted)
         if data_node_disk_performance_level is not None:
-            _setter("data_node_disk_performance_level", data_node_disk_performance_level)
+            pulumi.set(__self__, "data_node_disk_performance_level", data_node_disk_performance_level)
         if data_node_disk_size is not None:
-            _setter("data_node_disk_size", data_node_disk_size)
+            pulumi.set(__self__, "data_node_disk_size", data_node_disk_size)
         if data_node_disk_type is not None:
-            _setter("data_node_disk_type", data_node_disk_type)
+            pulumi.set(__self__, "data_node_disk_type", data_node_disk_type)
         if data_node_spec is not None:
-            _setter("data_node_spec", data_node_spec)
+            pulumi.set(__self__, "data_node_spec", data_node_spec)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if domain is not None:
-            _setter("domain", domain)
+            pulumi.set(__self__, "domain", domain)
         if enable_kibana_private_network is not None:
-            _setter("enable_kibana_private_network", enable_kibana_private_network)
+            pulumi.set(__self__, "enable_kibana_private_network", enable_kibana_private_network)
         if enable_kibana_public_network is not None:
-            _setter("enable_kibana_public_network", enable_kibana_public_network)
+            pulumi.set(__self__, "enable_kibana_public_network", enable_kibana_public_network)
         if enable_public is not None:
-            _setter("enable_public", enable_public)
+            pulumi.set(__self__, "enable_public", enable_public)
         if instance_charge_type is not None:
-            _setter("instance_charge_type", instance_charge_type)
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if kibana_domain is not None:
-            _setter("kibana_domain", kibana_domain)
+            pulumi.set(__self__, "kibana_domain", kibana_domain)
         if kibana_node_spec is not None:
-            _setter("kibana_node_spec", kibana_node_spec)
+            pulumi.set(__self__, "kibana_node_spec", kibana_node_spec)
         if kibana_port is not None:
-            _setter("kibana_port", kibana_port)
+            pulumi.set(__self__, "kibana_port", kibana_port)
         if kibana_private_whitelists is not None:
-            _setter("kibana_private_whitelists", kibana_private_whitelists)
+            pulumi.set(__self__, "kibana_private_whitelists", kibana_private_whitelists)
         if kibana_whitelists is not None:
-            _setter("kibana_whitelists", kibana_whitelists)
+            pulumi.set(__self__, "kibana_whitelists", kibana_whitelists)
         if kms_encrypted_password is not None:
-            _setter("kms_encrypted_password", kms_encrypted_password)
+            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
-            _setter("kms_encryption_context", kms_encryption_context)
+            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
         if master_node_disk_type is not None:
-            _setter("master_node_disk_type", master_node_disk_type)
+            pulumi.set(__self__, "master_node_disk_type", master_node_disk_type)
         if master_node_spec is not None:
-            _setter("master_node_spec", master_node_spec)
+            pulumi.set(__self__, "master_node_spec", master_node_spec)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if private_whitelists is not None:
-            _setter("private_whitelists", private_whitelists)
+            pulumi.set(__self__, "private_whitelists", private_whitelists)
         if protocol is not None:
-            _setter("protocol", protocol)
+            pulumi.set(__self__, "protocol", protocol)
         if public_domain is not None:
-            _setter("public_domain", public_domain)
+            pulumi.set(__self__, "public_domain", public_domain)
         if public_port is not None:
-            _setter("public_port", public_port)
+            pulumi.set(__self__, "public_port", public_port)
         if public_whitelists is not None:
-            _setter("public_whitelists", public_whitelists)
+            pulumi.set(__self__, "public_whitelists", public_whitelists)
         if renew_status is not None:
-            _setter("renew_status", renew_status)
+            pulumi.set(__self__, "renew_status", renew_status)
         if renewal_duration_unit is not None:
-            _setter("renewal_duration_unit", renewal_duration_unit)
+            pulumi.set(__self__, "renewal_duration_unit", renewal_duration_unit)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if setting_config is not None:
-            _setter("setting_config", setting_config)
+            pulumi.set(__self__, "setting_config", setting_config)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_count is not None:
-            _setter("zone_count", zone_count)
+            pulumi.set(__self__, "zone_count", zone_count)
 
     @property
     @pulumi.getter(name="autoRenewDuration")
@@ -1632,10 +1332,6 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

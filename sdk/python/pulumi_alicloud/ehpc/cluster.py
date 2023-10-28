@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -145,358 +145,115 @@ class ClusterArgs:
         :param pulumi.Input[bool] without_elastic_ip: Specifies whether the logon node uses an elastic IP address (EIP). Default value: `false`.
         :param pulumi.Input[str] zone_id: The ID of the zone.
         """
-        ClusterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_name=cluster_name,
-            compute_count=compute_count,
-            compute_instance_type=compute_instance_type,
-            login_count=login_count,
-            login_instance_type=login_instance_type,
-            manager_instance_type=manager_instance_type,
-            os_tag=os_tag,
-            account_type=account_type,
-            additional_volumes=additional_volumes,
-            applications=applications,
-            auto_renew=auto_renew,
-            auto_renew_period=auto_renew_period,
-            client_version=client_version,
-            cluster_version=cluster_version,
-            compute_enable_ht=compute_enable_ht,
-            compute_spot_price_limit=compute_spot_price_limit,
-            compute_spot_strategy=compute_spot_strategy,
-            deploy_mode=deploy_mode,
-            description=description,
-            domain=domain,
-            ecs_charge_type=ecs_charge_type,
-            ehpc_version=ehpc_version,
-            ha_enable=ha_enable,
-            image_id=image_id,
-            image_owner_alias=image_owner_alias,
-            input_file_url=input_file_url,
-            is_compute_ess=is_compute_ess,
-            job_queue=job_queue,
-            key_pair_name=key_pair_name,
-            manager_count=manager_count,
-            password=password,
-            period=period,
-            period_unit=period_unit,
-            plugin=plugin,
-            post_install_scripts=post_install_scripts,
-            ram_node_types=ram_node_types,
-            ram_role_name=ram_role_name,
-            release_instance=release_instance,
-            remote_directory=remote_directory,
-            remote_vis_enable=remote_vis_enable,
-            resource_group_id=resource_group_id,
-            scc_cluster_id=scc_cluster_id,
-            scheduler_type=scheduler_type,
-            security_group_id=security_group_id,
-            security_group_name=security_group_name,
-            system_disk_level=system_disk_level,
-            system_disk_size=system_disk_size,
-            system_disk_type=system_disk_type,
-            volume_id=volume_id,
-            volume_mount_option=volume_mount_option,
-            volume_mountpoint=volume_mountpoint,
-            volume_protocol=volume_protocol,
-            volume_type=volume_type,
-            vpc_id=vpc_id,
-            vswitch_id=vswitch_id,
-            without_agent=without_agent,
-            without_elastic_ip=without_elastic_ip,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_name: Optional[pulumi.Input[str]] = None,
-             compute_count: Optional[pulumi.Input[int]] = None,
-             compute_instance_type: Optional[pulumi.Input[str]] = None,
-             login_count: Optional[pulumi.Input[int]] = None,
-             login_instance_type: Optional[pulumi.Input[str]] = None,
-             manager_instance_type: Optional[pulumi.Input[str]] = None,
-             os_tag: Optional[pulumi.Input[str]] = None,
-             account_type: Optional[pulumi.Input[str]] = None,
-             additional_volumes: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAdditionalVolumeArgs']]]] = None,
-             applications: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterApplicationArgs']]]] = None,
-             auto_renew: Optional[pulumi.Input[bool]] = None,
-             auto_renew_period: Optional[pulumi.Input[int]] = None,
-             client_version: Optional[pulumi.Input[str]] = None,
-             cluster_version: Optional[pulumi.Input[str]] = None,
-             compute_enable_ht: Optional[pulumi.Input[bool]] = None,
-             compute_spot_price_limit: Optional[pulumi.Input[str]] = None,
-             compute_spot_strategy: Optional[pulumi.Input[str]] = None,
-             deploy_mode: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             domain: Optional[pulumi.Input[str]] = None,
-             ecs_charge_type: Optional[pulumi.Input[str]] = None,
-             ehpc_version: Optional[pulumi.Input[str]] = None,
-             ha_enable: Optional[pulumi.Input[bool]] = None,
-             image_id: Optional[pulumi.Input[str]] = None,
-             image_owner_alias: Optional[pulumi.Input[str]] = None,
-             input_file_url: Optional[pulumi.Input[str]] = None,
-             is_compute_ess: Optional[pulumi.Input[bool]] = None,
-             job_queue: Optional[pulumi.Input[str]] = None,
-             key_pair_name: Optional[pulumi.Input[str]] = None,
-             manager_count: Optional[pulumi.Input[int]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[int]] = None,
-             period_unit: Optional[pulumi.Input[str]] = None,
-             plugin: Optional[pulumi.Input[str]] = None,
-             post_install_scripts: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPostInstallScriptArgs']]]] = None,
-             ram_node_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             ram_role_name: Optional[pulumi.Input[str]] = None,
-             release_instance: Optional[pulumi.Input[bool]] = None,
-             remote_directory: Optional[pulumi.Input[str]] = None,
-             remote_vis_enable: Optional[pulumi.Input[bool]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             scc_cluster_id: Optional[pulumi.Input[str]] = None,
-             scheduler_type: Optional[pulumi.Input[str]] = None,
-             security_group_id: Optional[pulumi.Input[str]] = None,
-             security_group_name: Optional[pulumi.Input[str]] = None,
-             system_disk_level: Optional[pulumi.Input[str]] = None,
-             system_disk_size: Optional[pulumi.Input[int]] = None,
-             system_disk_type: Optional[pulumi.Input[str]] = None,
-             volume_id: Optional[pulumi.Input[str]] = None,
-             volume_mount_option: Optional[pulumi.Input[str]] = None,
-             volume_mountpoint: Optional[pulumi.Input[str]] = None,
-             volume_protocol: Optional[pulumi.Input[str]] = None,
-             volume_type: Optional[pulumi.Input[str]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             without_agent: Optional[pulumi.Input[bool]] = None,
-             without_elastic_ip: Optional[pulumi.Input[bool]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_name is None and 'clusterName' in kwargs:
-            cluster_name = kwargs['clusterName']
-        if cluster_name is None:
-            raise TypeError("Missing 'cluster_name' argument")
-        if compute_count is None and 'computeCount' in kwargs:
-            compute_count = kwargs['computeCount']
-        if compute_count is None:
-            raise TypeError("Missing 'compute_count' argument")
-        if compute_instance_type is None and 'computeInstanceType' in kwargs:
-            compute_instance_type = kwargs['computeInstanceType']
-        if compute_instance_type is None:
-            raise TypeError("Missing 'compute_instance_type' argument")
-        if login_count is None and 'loginCount' in kwargs:
-            login_count = kwargs['loginCount']
-        if login_count is None:
-            raise TypeError("Missing 'login_count' argument")
-        if login_instance_type is None and 'loginInstanceType' in kwargs:
-            login_instance_type = kwargs['loginInstanceType']
-        if login_instance_type is None:
-            raise TypeError("Missing 'login_instance_type' argument")
-        if manager_instance_type is None and 'managerInstanceType' in kwargs:
-            manager_instance_type = kwargs['managerInstanceType']
-        if manager_instance_type is None:
-            raise TypeError("Missing 'manager_instance_type' argument")
-        if os_tag is None and 'osTag' in kwargs:
-            os_tag = kwargs['osTag']
-        if os_tag is None:
-            raise TypeError("Missing 'os_tag' argument")
-        if account_type is None and 'accountType' in kwargs:
-            account_type = kwargs['accountType']
-        if additional_volumes is None and 'additionalVolumes' in kwargs:
-            additional_volumes = kwargs['additionalVolumes']
-        if auto_renew is None and 'autoRenew' in kwargs:
-            auto_renew = kwargs['autoRenew']
-        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
-            auto_renew_period = kwargs['autoRenewPeriod']
-        if client_version is None and 'clientVersion' in kwargs:
-            client_version = kwargs['clientVersion']
-        if cluster_version is None and 'clusterVersion' in kwargs:
-            cluster_version = kwargs['clusterVersion']
-        if compute_enable_ht is None and 'computeEnableHt' in kwargs:
-            compute_enable_ht = kwargs['computeEnableHt']
-        if compute_spot_price_limit is None and 'computeSpotPriceLimit' in kwargs:
-            compute_spot_price_limit = kwargs['computeSpotPriceLimit']
-        if compute_spot_strategy is None and 'computeSpotStrategy' in kwargs:
-            compute_spot_strategy = kwargs['computeSpotStrategy']
-        if deploy_mode is None and 'deployMode' in kwargs:
-            deploy_mode = kwargs['deployMode']
-        if ecs_charge_type is None and 'ecsChargeType' in kwargs:
-            ecs_charge_type = kwargs['ecsChargeType']
-        if ehpc_version is None and 'ehpcVersion' in kwargs:
-            ehpc_version = kwargs['ehpcVersion']
-        if ha_enable is None and 'haEnable' in kwargs:
-            ha_enable = kwargs['haEnable']
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-        if image_owner_alias is None and 'imageOwnerAlias' in kwargs:
-            image_owner_alias = kwargs['imageOwnerAlias']
-        if input_file_url is None and 'inputFileUrl' in kwargs:
-            input_file_url = kwargs['inputFileUrl']
-        if is_compute_ess is None and 'isComputeEss' in kwargs:
-            is_compute_ess = kwargs['isComputeEss']
-        if job_queue is None and 'jobQueue' in kwargs:
-            job_queue = kwargs['jobQueue']
-        if key_pair_name is None and 'keyPairName' in kwargs:
-            key_pair_name = kwargs['keyPairName']
-        if manager_count is None and 'managerCount' in kwargs:
-            manager_count = kwargs['managerCount']
-        if period_unit is None and 'periodUnit' in kwargs:
-            period_unit = kwargs['periodUnit']
-        if post_install_scripts is None and 'postInstallScripts' in kwargs:
-            post_install_scripts = kwargs['postInstallScripts']
-        if ram_node_types is None and 'ramNodeTypes' in kwargs:
-            ram_node_types = kwargs['ramNodeTypes']
-        if ram_role_name is None and 'ramRoleName' in kwargs:
-            ram_role_name = kwargs['ramRoleName']
-        if release_instance is None and 'releaseInstance' in kwargs:
-            release_instance = kwargs['releaseInstance']
-        if remote_directory is None and 'remoteDirectory' in kwargs:
-            remote_directory = kwargs['remoteDirectory']
-        if remote_vis_enable is None and 'remoteVisEnable' in kwargs:
-            remote_vis_enable = kwargs['remoteVisEnable']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if scc_cluster_id is None and 'sccClusterId' in kwargs:
-            scc_cluster_id = kwargs['sccClusterId']
-        if scheduler_type is None and 'schedulerType' in kwargs:
-            scheduler_type = kwargs['schedulerType']
-        if security_group_id is None and 'securityGroupId' in kwargs:
-            security_group_id = kwargs['securityGroupId']
-        if security_group_name is None and 'securityGroupName' in kwargs:
-            security_group_name = kwargs['securityGroupName']
-        if system_disk_level is None and 'systemDiskLevel' in kwargs:
-            system_disk_level = kwargs['systemDiskLevel']
-        if system_disk_size is None and 'systemDiskSize' in kwargs:
-            system_disk_size = kwargs['systemDiskSize']
-        if system_disk_type is None and 'systemDiskType' in kwargs:
-            system_disk_type = kwargs['systemDiskType']
-        if volume_id is None and 'volumeId' in kwargs:
-            volume_id = kwargs['volumeId']
-        if volume_mount_option is None and 'volumeMountOption' in kwargs:
-            volume_mount_option = kwargs['volumeMountOption']
-        if volume_mountpoint is None and 'volumeMountpoint' in kwargs:
-            volume_mountpoint = kwargs['volumeMountpoint']
-        if volume_protocol is None and 'volumeProtocol' in kwargs:
-            volume_protocol = kwargs['volumeProtocol']
-        if volume_type is None and 'volumeType' in kwargs:
-            volume_type = kwargs['volumeType']
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if without_agent is None and 'withoutAgent' in kwargs:
-            without_agent = kwargs['withoutAgent']
-        if without_elastic_ip is None and 'withoutElasticIp' in kwargs:
-            without_elastic_ip = kwargs['withoutElasticIp']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
-        _setter("cluster_name", cluster_name)
-        _setter("compute_count", compute_count)
-        _setter("compute_instance_type", compute_instance_type)
-        _setter("login_count", login_count)
-        _setter("login_instance_type", login_instance_type)
-        _setter("manager_instance_type", manager_instance_type)
-        _setter("os_tag", os_tag)
+        pulumi.set(__self__, "cluster_name", cluster_name)
+        pulumi.set(__self__, "compute_count", compute_count)
+        pulumi.set(__self__, "compute_instance_type", compute_instance_type)
+        pulumi.set(__self__, "login_count", login_count)
+        pulumi.set(__self__, "login_instance_type", login_instance_type)
+        pulumi.set(__self__, "manager_instance_type", manager_instance_type)
+        pulumi.set(__self__, "os_tag", os_tag)
         if account_type is not None:
-            _setter("account_type", account_type)
+            pulumi.set(__self__, "account_type", account_type)
         if additional_volumes is not None:
-            _setter("additional_volumes", additional_volumes)
+            pulumi.set(__self__, "additional_volumes", additional_volumes)
         if applications is not None:
-            _setter("applications", applications)
+            pulumi.set(__self__, "applications", applications)
         if auto_renew is not None:
-            _setter("auto_renew", auto_renew)
+            pulumi.set(__self__, "auto_renew", auto_renew)
         if auto_renew_period is not None:
-            _setter("auto_renew_period", auto_renew_period)
+            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if client_version is not None:
-            _setter("client_version", client_version)
+            pulumi.set(__self__, "client_version", client_version)
         if cluster_version is not None:
-            _setter("cluster_version", cluster_version)
+            pulumi.set(__self__, "cluster_version", cluster_version)
         if compute_enable_ht is not None:
-            _setter("compute_enable_ht", compute_enable_ht)
+            pulumi.set(__self__, "compute_enable_ht", compute_enable_ht)
         if compute_spot_price_limit is not None:
-            _setter("compute_spot_price_limit", compute_spot_price_limit)
+            pulumi.set(__self__, "compute_spot_price_limit", compute_spot_price_limit)
         if compute_spot_strategy is not None:
-            _setter("compute_spot_strategy", compute_spot_strategy)
+            pulumi.set(__self__, "compute_spot_strategy", compute_spot_strategy)
         if deploy_mode is not None:
-            _setter("deploy_mode", deploy_mode)
+            pulumi.set(__self__, "deploy_mode", deploy_mode)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if domain is not None:
-            _setter("domain", domain)
+            pulumi.set(__self__, "domain", domain)
         if ecs_charge_type is not None:
-            _setter("ecs_charge_type", ecs_charge_type)
+            pulumi.set(__self__, "ecs_charge_type", ecs_charge_type)
         if ehpc_version is not None:
-            _setter("ehpc_version", ehpc_version)
+            pulumi.set(__self__, "ehpc_version", ehpc_version)
         if ha_enable is not None:
-            _setter("ha_enable", ha_enable)
+            pulumi.set(__self__, "ha_enable", ha_enable)
         if image_id is not None:
-            _setter("image_id", image_id)
+            pulumi.set(__self__, "image_id", image_id)
         if image_owner_alias is not None:
-            _setter("image_owner_alias", image_owner_alias)
+            pulumi.set(__self__, "image_owner_alias", image_owner_alias)
         if input_file_url is not None:
-            _setter("input_file_url", input_file_url)
+            pulumi.set(__self__, "input_file_url", input_file_url)
         if is_compute_ess is not None:
-            _setter("is_compute_ess", is_compute_ess)
+            pulumi.set(__self__, "is_compute_ess", is_compute_ess)
         if job_queue is not None:
-            _setter("job_queue", job_queue)
+            pulumi.set(__self__, "job_queue", job_queue)
         if key_pair_name is not None:
-            _setter("key_pair_name", key_pair_name)
+            pulumi.set(__self__, "key_pair_name", key_pair_name)
         if manager_count is not None:
-            _setter("manager_count", manager_count)
+            pulumi.set(__self__, "manager_count", manager_count)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if period_unit is not None:
-            _setter("period_unit", period_unit)
+            pulumi.set(__self__, "period_unit", period_unit)
         if plugin is not None:
-            _setter("plugin", plugin)
+            pulumi.set(__self__, "plugin", plugin)
         if post_install_scripts is not None:
-            _setter("post_install_scripts", post_install_scripts)
+            pulumi.set(__self__, "post_install_scripts", post_install_scripts)
         if ram_node_types is not None:
-            _setter("ram_node_types", ram_node_types)
+            pulumi.set(__self__, "ram_node_types", ram_node_types)
         if ram_role_name is not None:
-            _setter("ram_role_name", ram_role_name)
+            pulumi.set(__self__, "ram_role_name", ram_role_name)
         if release_instance is not None:
-            _setter("release_instance", release_instance)
+            pulumi.set(__self__, "release_instance", release_instance)
         if remote_directory is not None:
-            _setter("remote_directory", remote_directory)
+            pulumi.set(__self__, "remote_directory", remote_directory)
         if remote_vis_enable is not None:
-            _setter("remote_vis_enable", remote_vis_enable)
+            pulumi.set(__self__, "remote_vis_enable", remote_vis_enable)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if scc_cluster_id is not None:
-            _setter("scc_cluster_id", scc_cluster_id)
+            pulumi.set(__self__, "scc_cluster_id", scc_cluster_id)
         if scheduler_type is not None:
-            _setter("scheduler_type", scheduler_type)
+            pulumi.set(__self__, "scheduler_type", scheduler_type)
         if security_group_id is not None:
-            _setter("security_group_id", security_group_id)
+            pulumi.set(__self__, "security_group_id", security_group_id)
         if security_group_name is not None:
-            _setter("security_group_name", security_group_name)
+            pulumi.set(__self__, "security_group_name", security_group_name)
         if system_disk_level is not None:
-            _setter("system_disk_level", system_disk_level)
+            pulumi.set(__self__, "system_disk_level", system_disk_level)
         if system_disk_size is not None:
-            _setter("system_disk_size", system_disk_size)
+            pulumi.set(__self__, "system_disk_size", system_disk_size)
         if system_disk_type is not None:
-            _setter("system_disk_type", system_disk_type)
+            pulumi.set(__self__, "system_disk_type", system_disk_type)
         if volume_id is not None:
-            _setter("volume_id", volume_id)
+            pulumi.set(__self__, "volume_id", volume_id)
         if volume_mount_option is not None:
-            _setter("volume_mount_option", volume_mount_option)
+            pulumi.set(__self__, "volume_mount_option", volume_mount_option)
         if volume_mountpoint is not None:
-            _setter("volume_mountpoint", volume_mountpoint)
+            pulumi.set(__self__, "volume_mountpoint", volume_mountpoint)
         if volume_protocol is not None:
-            _setter("volume_protocol", volume_protocol)
+            pulumi.set(__self__, "volume_protocol", volume_protocol)
         if volume_type is not None:
-            _setter("volume_type", volume_type)
+            pulumi.set(__self__, "volume_type", volume_type)
         if vpc_id is not None:
-            _setter("vpc_id", vpc_id)
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
         if without_agent is not None:
-            _setter("without_agent", without_agent)
+            pulumi.set(__self__, "without_agent", without_agent)
         if without_elastic_ip is not None:
-            _setter("without_elastic_ip", without_elastic_ip)
+            pulumi.set(__self__, "without_elastic_ip", without_elastic_ip)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="clusterName")
@@ -1339,355 +1096,124 @@ class _ClusterState:
         :param pulumi.Input[bool] without_elastic_ip: Specifies whether the logon node uses an elastic IP address (EIP). Default value: `false`.
         :param pulumi.Input[str] zone_id: The ID of the zone.
         """
-        _ClusterState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_type=account_type,
-            additional_volumes=additional_volumes,
-            applications=applications,
-            auto_renew=auto_renew,
-            auto_renew_period=auto_renew_period,
-            client_version=client_version,
-            cluster_name=cluster_name,
-            cluster_version=cluster_version,
-            compute_count=compute_count,
-            compute_enable_ht=compute_enable_ht,
-            compute_instance_type=compute_instance_type,
-            compute_spot_price_limit=compute_spot_price_limit,
-            compute_spot_strategy=compute_spot_strategy,
-            deploy_mode=deploy_mode,
-            description=description,
-            domain=domain,
-            ecs_charge_type=ecs_charge_type,
-            ehpc_version=ehpc_version,
-            ha_enable=ha_enable,
-            image_id=image_id,
-            image_owner_alias=image_owner_alias,
-            input_file_url=input_file_url,
-            is_compute_ess=is_compute_ess,
-            job_queue=job_queue,
-            key_pair_name=key_pair_name,
-            login_count=login_count,
-            login_instance_type=login_instance_type,
-            manager_count=manager_count,
-            manager_instance_type=manager_instance_type,
-            os_tag=os_tag,
-            password=password,
-            period=period,
-            period_unit=period_unit,
-            plugin=plugin,
-            post_install_scripts=post_install_scripts,
-            ram_node_types=ram_node_types,
-            ram_role_name=ram_role_name,
-            release_instance=release_instance,
-            remote_directory=remote_directory,
-            remote_vis_enable=remote_vis_enable,
-            resource_group_id=resource_group_id,
-            scc_cluster_id=scc_cluster_id,
-            scheduler_type=scheduler_type,
-            security_group_id=security_group_id,
-            security_group_name=security_group_name,
-            status=status,
-            system_disk_level=system_disk_level,
-            system_disk_size=system_disk_size,
-            system_disk_type=system_disk_type,
-            volume_id=volume_id,
-            volume_mount_option=volume_mount_option,
-            volume_mountpoint=volume_mountpoint,
-            volume_protocol=volume_protocol,
-            volume_type=volume_type,
-            vpc_id=vpc_id,
-            vswitch_id=vswitch_id,
-            without_agent=without_agent,
-            without_elastic_ip=without_elastic_ip,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_type: Optional[pulumi.Input[str]] = None,
-             additional_volumes: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAdditionalVolumeArgs']]]] = None,
-             applications: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterApplicationArgs']]]] = None,
-             auto_renew: Optional[pulumi.Input[bool]] = None,
-             auto_renew_period: Optional[pulumi.Input[int]] = None,
-             client_version: Optional[pulumi.Input[str]] = None,
-             cluster_name: Optional[pulumi.Input[str]] = None,
-             cluster_version: Optional[pulumi.Input[str]] = None,
-             compute_count: Optional[pulumi.Input[int]] = None,
-             compute_enable_ht: Optional[pulumi.Input[bool]] = None,
-             compute_instance_type: Optional[pulumi.Input[str]] = None,
-             compute_spot_price_limit: Optional[pulumi.Input[str]] = None,
-             compute_spot_strategy: Optional[pulumi.Input[str]] = None,
-             deploy_mode: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             domain: Optional[pulumi.Input[str]] = None,
-             ecs_charge_type: Optional[pulumi.Input[str]] = None,
-             ehpc_version: Optional[pulumi.Input[str]] = None,
-             ha_enable: Optional[pulumi.Input[bool]] = None,
-             image_id: Optional[pulumi.Input[str]] = None,
-             image_owner_alias: Optional[pulumi.Input[str]] = None,
-             input_file_url: Optional[pulumi.Input[str]] = None,
-             is_compute_ess: Optional[pulumi.Input[bool]] = None,
-             job_queue: Optional[pulumi.Input[str]] = None,
-             key_pair_name: Optional[pulumi.Input[str]] = None,
-             login_count: Optional[pulumi.Input[int]] = None,
-             login_instance_type: Optional[pulumi.Input[str]] = None,
-             manager_count: Optional[pulumi.Input[int]] = None,
-             manager_instance_type: Optional[pulumi.Input[str]] = None,
-             os_tag: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             period: Optional[pulumi.Input[int]] = None,
-             period_unit: Optional[pulumi.Input[str]] = None,
-             plugin: Optional[pulumi.Input[str]] = None,
-             post_install_scripts: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPostInstallScriptArgs']]]] = None,
-             ram_node_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             ram_role_name: Optional[pulumi.Input[str]] = None,
-             release_instance: Optional[pulumi.Input[bool]] = None,
-             remote_directory: Optional[pulumi.Input[str]] = None,
-             remote_vis_enable: Optional[pulumi.Input[bool]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             scc_cluster_id: Optional[pulumi.Input[str]] = None,
-             scheduler_type: Optional[pulumi.Input[str]] = None,
-             security_group_id: Optional[pulumi.Input[str]] = None,
-             security_group_name: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             system_disk_level: Optional[pulumi.Input[str]] = None,
-             system_disk_size: Optional[pulumi.Input[int]] = None,
-             system_disk_type: Optional[pulumi.Input[str]] = None,
-             volume_id: Optional[pulumi.Input[str]] = None,
-             volume_mount_option: Optional[pulumi.Input[str]] = None,
-             volume_mountpoint: Optional[pulumi.Input[str]] = None,
-             volume_protocol: Optional[pulumi.Input[str]] = None,
-             volume_type: Optional[pulumi.Input[str]] = None,
-             vpc_id: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             without_agent: Optional[pulumi.Input[bool]] = None,
-             without_elastic_ip: Optional[pulumi.Input[bool]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_type is None and 'accountType' in kwargs:
-            account_type = kwargs['accountType']
-        if additional_volumes is None and 'additionalVolumes' in kwargs:
-            additional_volumes = kwargs['additionalVolumes']
-        if auto_renew is None and 'autoRenew' in kwargs:
-            auto_renew = kwargs['autoRenew']
-        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
-            auto_renew_period = kwargs['autoRenewPeriod']
-        if client_version is None and 'clientVersion' in kwargs:
-            client_version = kwargs['clientVersion']
-        if cluster_name is None and 'clusterName' in kwargs:
-            cluster_name = kwargs['clusterName']
-        if cluster_version is None and 'clusterVersion' in kwargs:
-            cluster_version = kwargs['clusterVersion']
-        if compute_count is None and 'computeCount' in kwargs:
-            compute_count = kwargs['computeCount']
-        if compute_enable_ht is None and 'computeEnableHt' in kwargs:
-            compute_enable_ht = kwargs['computeEnableHt']
-        if compute_instance_type is None and 'computeInstanceType' in kwargs:
-            compute_instance_type = kwargs['computeInstanceType']
-        if compute_spot_price_limit is None and 'computeSpotPriceLimit' in kwargs:
-            compute_spot_price_limit = kwargs['computeSpotPriceLimit']
-        if compute_spot_strategy is None and 'computeSpotStrategy' in kwargs:
-            compute_spot_strategy = kwargs['computeSpotStrategy']
-        if deploy_mode is None and 'deployMode' in kwargs:
-            deploy_mode = kwargs['deployMode']
-        if ecs_charge_type is None and 'ecsChargeType' in kwargs:
-            ecs_charge_type = kwargs['ecsChargeType']
-        if ehpc_version is None and 'ehpcVersion' in kwargs:
-            ehpc_version = kwargs['ehpcVersion']
-        if ha_enable is None and 'haEnable' in kwargs:
-            ha_enable = kwargs['haEnable']
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-        if image_owner_alias is None and 'imageOwnerAlias' in kwargs:
-            image_owner_alias = kwargs['imageOwnerAlias']
-        if input_file_url is None and 'inputFileUrl' in kwargs:
-            input_file_url = kwargs['inputFileUrl']
-        if is_compute_ess is None and 'isComputeEss' in kwargs:
-            is_compute_ess = kwargs['isComputeEss']
-        if job_queue is None and 'jobQueue' in kwargs:
-            job_queue = kwargs['jobQueue']
-        if key_pair_name is None and 'keyPairName' in kwargs:
-            key_pair_name = kwargs['keyPairName']
-        if login_count is None and 'loginCount' in kwargs:
-            login_count = kwargs['loginCount']
-        if login_instance_type is None and 'loginInstanceType' in kwargs:
-            login_instance_type = kwargs['loginInstanceType']
-        if manager_count is None and 'managerCount' in kwargs:
-            manager_count = kwargs['managerCount']
-        if manager_instance_type is None and 'managerInstanceType' in kwargs:
-            manager_instance_type = kwargs['managerInstanceType']
-        if os_tag is None and 'osTag' in kwargs:
-            os_tag = kwargs['osTag']
-        if period_unit is None and 'periodUnit' in kwargs:
-            period_unit = kwargs['periodUnit']
-        if post_install_scripts is None and 'postInstallScripts' in kwargs:
-            post_install_scripts = kwargs['postInstallScripts']
-        if ram_node_types is None and 'ramNodeTypes' in kwargs:
-            ram_node_types = kwargs['ramNodeTypes']
-        if ram_role_name is None and 'ramRoleName' in kwargs:
-            ram_role_name = kwargs['ramRoleName']
-        if release_instance is None and 'releaseInstance' in kwargs:
-            release_instance = kwargs['releaseInstance']
-        if remote_directory is None and 'remoteDirectory' in kwargs:
-            remote_directory = kwargs['remoteDirectory']
-        if remote_vis_enable is None and 'remoteVisEnable' in kwargs:
-            remote_vis_enable = kwargs['remoteVisEnable']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if scc_cluster_id is None and 'sccClusterId' in kwargs:
-            scc_cluster_id = kwargs['sccClusterId']
-        if scheduler_type is None and 'schedulerType' in kwargs:
-            scheduler_type = kwargs['schedulerType']
-        if security_group_id is None and 'securityGroupId' in kwargs:
-            security_group_id = kwargs['securityGroupId']
-        if security_group_name is None and 'securityGroupName' in kwargs:
-            security_group_name = kwargs['securityGroupName']
-        if system_disk_level is None and 'systemDiskLevel' in kwargs:
-            system_disk_level = kwargs['systemDiskLevel']
-        if system_disk_size is None and 'systemDiskSize' in kwargs:
-            system_disk_size = kwargs['systemDiskSize']
-        if system_disk_type is None and 'systemDiskType' in kwargs:
-            system_disk_type = kwargs['systemDiskType']
-        if volume_id is None and 'volumeId' in kwargs:
-            volume_id = kwargs['volumeId']
-        if volume_mount_option is None and 'volumeMountOption' in kwargs:
-            volume_mount_option = kwargs['volumeMountOption']
-        if volume_mountpoint is None and 'volumeMountpoint' in kwargs:
-            volume_mountpoint = kwargs['volumeMountpoint']
-        if volume_protocol is None and 'volumeProtocol' in kwargs:
-            volume_protocol = kwargs['volumeProtocol']
-        if volume_type is None and 'volumeType' in kwargs:
-            volume_type = kwargs['volumeType']
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if without_agent is None and 'withoutAgent' in kwargs:
-            without_agent = kwargs['withoutAgent']
-        if without_elastic_ip is None and 'withoutElasticIp' in kwargs:
-            without_elastic_ip = kwargs['withoutElasticIp']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if account_type is not None:
-            _setter("account_type", account_type)
+            pulumi.set(__self__, "account_type", account_type)
         if additional_volumes is not None:
-            _setter("additional_volumes", additional_volumes)
+            pulumi.set(__self__, "additional_volumes", additional_volumes)
         if applications is not None:
-            _setter("applications", applications)
+            pulumi.set(__self__, "applications", applications)
         if auto_renew is not None:
-            _setter("auto_renew", auto_renew)
+            pulumi.set(__self__, "auto_renew", auto_renew)
         if auto_renew_period is not None:
-            _setter("auto_renew_period", auto_renew_period)
+            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if client_version is not None:
-            _setter("client_version", client_version)
+            pulumi.set(__self__, "client_version", client_version)
         if cluster_name is not None:
-            _setter("cluster_name", cluster_name)
+            pulumi.set(__self__, "cluster_name", cluster_name)
         if cluster_version is not None:
-            _setter("cluster_version", cluster_version)
+            pulumi.set(__self__, "cluster_version", cluster_version)
         if compute_count is not None:
-            _setter("compute_count", compute_count)
+            pulumi.set(__self__, "compute_count", compute_count)
         if compute_enable_ht is not None:
-            _setter("compute_enable_ht", compute_enable_ht)
+            pulumi.set(__self__, "compute_enable_ht", compute_enable_ht)
         if compute_instance_type is not None:
-            _setter("compute_instance_type", compute_instance_type)
+            pulumi.set(__self__, "compute_instance_type", compute_instance_type)
         if compute_spot_price_limit is not None:
-            _setter("compute_spot_price_limit", compute_spot_price_limit)
+            pulumi.set(__self__, "compute_spot_price_limit", compute_spot_price_limit)
         if compute_spot_strategy is not None:
-            _setter("compute_spot_strategy", compute_spot_strategy)
+            pulumi.set(__self__, "compute_spot_strategy", compute_spot_strategy)
         if deploy_mode is not None:
-            _setter("deploy_mode", deploy_mode)
+            pulumi.set(__self__, "deploy_mode", deploy_mode)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if domain is not None:
-            _setter("domain", domain)
+            pulumi.set(__self__, "domain", domain)
         if ecs_charge_type is not None:
-            _setter("ecs_charge_type", ecs_charge_type)
+            pulumi.set(__self__, "ecs_charge_type", ecs_charge_type)
         if ehpc_version is not None:
-            _setter("ehpc_version", ehpc_version)
+            pulumi.set(__self__, "ehpc_version", ehpc_version)
         if ha_enable is not None:
-            _setter("ha_enable", ha_enable)
+            pulumi.set(__self__, "ha_enable", ha_enable)
         if image_id is not None:
-            _setter("image_id", image_id)
+            pulumi.set(__self__, "image_id", image_id)
         if image_owner_alias is not None:
-            _setter("image_owner_alias", image_owner_alias)
+            pulumi.set(__self__, "image_owner_alias", image_owner_alias)
         if input_file_url is not None:
-            _setter("input_file_url", input_file_url)
+            pulumi.set(__self__, "input_file_url", input_file_url)
         if is_compute_ess is not None:
-            _setter("is_compute_ess", is_compute_ess)
+            pulumi.set(__self__, "is_compute_ess", is_compute_ess)
         if job_queue is not None:
-            _setter("job_queue", job_queue)
+            pulumi.set(__self__, "job_queue", job_queue)
         if key_pair_name is not None:
-            _setter("key_pair_name", key_pair_name)
+            pulumi.set(__self__, "key_pair_name", key_pair_name)
         if login_count is not None:
-            _setter("login_count", login_count)
+            pulumi.set(__self__, "login_count", login_count)
         if login_instance_type is not None:
-            _setter("login_instance_type", login_instance_type)
+            pulumi.set(__self__, "login_instance_type", login_instance_type)
         if manager_count is not None:
-            _setter("manager_count", manager_count)
+            pulumi.set(__self__, "manager_count", manager_count)
         if manager_instance_type is not None:
-            _setter("manager_instance_type", manager_instance_type)
+            pulumi.set(__self__, "manager_instance_type", manager_instance_type)
         if os_tag is not None:
-            _setter("os_tag", os_tag)
+            pulumi.set(__self__, "os_tag", os_tag)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if period_unit is not None:
-            _setter("period_unit", period_unit)
+            pulumi.set(__self__, "period_unit", period_unit)
         if plugin is not None:
-            _setter("plugin", plugin)
+            pulumi.set(__self__, "plugin", plugin)
         if post_install_scripts is not None:
-            _setter("post_install_scripts", post_install_scripts)
+            pulumi.set(__self__, "post_install_scripts", post_install_scripts)
         if ram_node_types is not None:
-            _setter("ram_node_types", ram_node_types)
+            pulumi.set(__self__, "ram_node_types", ram_node_types)
         if ram_role_name is not None:
-            _setter("ram_role_name", ram_role_name)
+            pulumi.set(__self__, "ram_role_name", ram_role_name)
         if release_instance is not None:
-            _setter("release_instance", release_instance)
+            pulumi.set(__self__, "release_instance", release_instance)
         if remote_directory is not None:
-            _setter("remote_directory", remote_directory)
+            pulumi.set(__self__, "remote_directory", remote_directory)
         if remote_vis_enable is not None:
-            _setter("remote_vis_enable", remote_vis_enable)
+            pulumi.set(__self__, "remote_vis_enable", remote_vis_enable)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if scc_cluster_id is not None:
-            _setter("scc_cluster_id", scc_cluster_id)
+            pulumi.set(__self__, "scc_cluster_id", scc_cluster_id)
         if scheduler_type is not None:
-            _setter("scheduler_type", scheduler_type)
+            pulumi.set(__self__, "scheduler_type", scheduler_type)
         if security_group_id is not None:
-            _setter("security_group_id", security_group_id)
+            pulumi.set(__self__, "security_group_id", security_group_id)
         if security_group_name is not None:
-            _setter("security_group_name", security_group_name)
+            pulumi.set(__self__, "security_group_name", security_group_name)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if system_disk_level is not None:
-            _setter("system_disk_level", system_disk_level)
+            pulumi.set(__self__, "system_disk_level", system_disk_level)
         if system_disk_size is not None:
-            _setter("system_disk_size", system_disk_size)
+            pulumi.set(__self__, "system_disk_size", system_disk_size)
         if system_disk_type is not None:
-            _setter("system_disk_type", system_disk_type)
+            pulumi.set(__self__, "system_disk_type", system_disk_type)
         if volume_id is not None:
-            _setter("volume_id", volume_id)
+            pulumi.set(__self__, "volume_id", volume_id)
         if volume_mount_option is not None:
-            _setter("volume_mount_option", volume_mount_option)
+            pulumi.set(__self__, "volume_mount_option", volume_mount_option)
         if volume_mountpoint is not None:
-            _setter("volume_mountpoint", volume_mountpoint)
+            pulumi.set(__self__, "volume_mountpoint", volume_mountpoint)
         if volume_protocol is not None:
-            _setter("volume_protocol", volume_protocol)
+            pulumi.set(__self__, "volume_protocol", volume_protocol)
         if volume_type is not None:
-            _setter("volume_type", volume_type)
+            pulumi.set(__self__, "volume_type", volume_type)
         if vpc_id is not None:
-            _setter("vpc_id", vpc_id)
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
         if without_agent is not None:
-            _setter("without_agent", without_agent)
+            pulumi.set(__self__, "without_agent", without_agent)
         if without_elastic_ip is not None:
-            _setter("without_elastic_ip", without_elastic_ip)
+            pulumi.set(__self__, "without_elastic_ip", without_elastic_ip)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="accountType")
@@ -2699,10 +2225,6 @@ class Cluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

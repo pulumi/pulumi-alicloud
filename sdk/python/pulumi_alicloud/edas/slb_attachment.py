@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SlbAttachmentArgs', 'SlbAttachment']
@@ -29,53 +29,14 @@ class SlbAttachmentArgs:
         :param pulumi.Input[int] listener_port: The listening port for the bound SLB instance.
         :param pulumi.Input[str] vserver_group_id: The ID of the virtual server (VServer) group associated with the intranet SLB instance.
         """
-        SlbAttachmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            app_id=app_id,
-            slb_id=slb_id,
-            slb_ip=slb_ip,
-            type=type,
-            listener_port=listener_port,
-            vserver_group_id=vserver_group_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             app_id: Optional[pulumi.Input[str]] = None,
-             slb_id: Optional[pulumi.Input[str]] = None,
-             slb_ip: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             listener_port: Optional[pulumi.Input[int]] = None,
-             vserver_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if app_id is None and 'appId' in kwargs:
-            app_id = kwargs['appId']
-        if app_id is None:
-            raise TypeError("Missing 'app_id' argument")
-        if slb_id is None and 'slbId' in kwargs:
-            slb_id = kwargs['slbId']
-        if slb_id is None:
-            raise TypeError("Missing 'slb_id' argument")
-        if slb_ip is None and 'slbIp' in kwargs:
-            slb_ip = kwargs['slbIp']
-        if slb_ip is None:
-            raise TypeError("Missing 'slb_ip' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if listener_port is None and 'listenerPort' in kwargs:
-            listener_port = kwargs['listenerPort']
-        if vserver_group_id is None and 'vserverGroupId' in kwargs:
-            vserver_group_id = kwargs['vserverGroupId']
-
-        _setter("app_id", app_id)
-        _setter("slb_id", slb_id)
-        _setter("slb_ip", slb_ip)
-        _setter("type", type)
+        pulumi.set(__self__, "app_id", app_id)
+        pulumi.set(__self__, "slb_id", slb_id)
+        pulumi.set(__self__, "slb_ip", slb_ip)
+        pulumi.set(__self__, "type", type)
         if listener_port is not None:
-            _setter("listener_port", listener_port)
+            pulumi.set(__self__, "listener_port", listener_port)
         if vserver_group_id is not None:
-            _setter("vserver_group_id", vserver_group_id)
+            pulumi.set(__self__, "vserver_group_id", vserver_group_id)
 
     @property
     @pulumi.getter(name="appId")
@@ -172,61 +133,22 @@ class _SlbAttachmentState:
         :param pulumi.Input[str] vserver_group_id: The ID of the virtual server (VServer) group associated with the intranet SLB instance.
         :param pulumi.Input[str] vswitch_id: VPC related vswitch ID.
         """
-        _SlbAttachmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            app_id=app_id,
-            listener_port=listener_port,
-            slb_id=slb_id,
-            slb_ip=slb_ip,
-            slb_status=slb_status,
-            type=type,
-            vserver_group_id=vserver_group_id,
-            vswitch_id=vswitch_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             app_id: Optional[pulumi.Input[str]] = None,
-             listener_port: Optional[pulumi.Input[int]] = None,
-             slb_id: Optional[pulumi.Input[str]] = None,
-             slb_ip: Optional[pulumi.Input[str]] = None,
-             slb_status: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             vserver_group_id: Optional[pulumi.Input[str]] = None,
-             vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if app_id is None and 'appId' in kwargs:
-            app_id = kwargs['appId']
-        if listener_port is None and 'listenerPort' in kwargs:
-            listener_port = kwargs['listenerPort']
-        if slb_id is None and 'slbId' in kwargs:
-            slb_id = kwargs['slbId']
-        if slb_ip is None and 'slbIp' in kwargs:
-            slb_ip = kwargs['slbIp']
-        if slb_status is None and 'slbStatus' in kwargs:
-            slb_status = kwargs['slbStatus']
-        if vserver_group_id is None and 'vserverGroupId' in kwargs:
-            vserver_group_id = kwargs['vserverGroupId']
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-
         if app_id is not None:
-            _setter("app_id", app_id)
+            pulumi.set(__self__, "app_id", app_id)
         if listener_port is not None:
-            _setter("listener_port", listener_port)
+            pulumi.set(__self__, "listener_port", listener_port)
         if slb_id is not None:
-            _setter("slb_id", slb_id)
+            pulumi.set(__self__, "slb_id", slb_id)
         if slb_ip is not None:
-            _setter("slb_ip", slb_ip)
+            pulumi.set(__self__, "slb_ip", slb_ip)
         if slb_status is not None:
-            _setter("slb_status", slb_status)
+            pulumi.set(__self__, "slb_status", slb_status)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if vserver_group_id is not None:
-            _setter("vserver_group_id", vserver_group_id)
+            pulumi.set(__self__, "vserver_group_id", vserver_group_id)
         if vswitch_id is not None:
-            _setter("vswitch_id", vswitch_id)
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="appId")
@@ -500,10 +422,6 @@ class SlbAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SlbAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

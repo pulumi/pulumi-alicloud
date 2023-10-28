@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['CommandArgs', 'Command']
@@ -27,46 +27,13 @@ class CommandArgs:
         :param pulumi.Input[str] content_encoding: That Returns the Data Encoding Method. Valid values: `Base64`, `PlainText`.
         :param pulumi.Input[str] timeout: The timeout period for script execution the unit is seconds. Default to: `60`.
         """
-        CommandArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            command_content=command_content,
-            command_type=command_type,
-            desktop_id=desktop_id,
-            content_encoding=content_encoding,
-            timeout=timeout,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             command_content: Optional[pulumi.Input[str]] = None,
-             command_type: Optional[pulumi.Input[str]] = None,
-             desktop_id: Optional[pulumi.Input[str]] = None,
-             content_encoding: Optional[pulumi.Input[str]] = None,
-             timeout: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if command_content is None and 'commandContent' in kwargs:
-            command_content = kwargs['commandContent']
-        if command_content is None:
-            raise TypeError("Missing 'command_content' argument")
-        if command_type is None and 'commandType' in kwargs:
-            command_type = kwargs['commandType']
-        if command_type is None:
-            raise TypeError("Missing 'command_type' argument")
-        if desktop_id is None and 'desktopId' in kwargs:
-            desktop_id = kwargs['desktopId']
-        if desktop_id is None:
-            raise TypeError("Missing 'desktop_id' argument")
-        if content_encoding is None and 'contentEncoding' in kwargs:
-            content_encoding = kwargs['contentEncoding']
-
-        _setter("command_content", command_content)
-        _setter("command_type", command_type)
-        _setter("desktop_id", desktop_id)
+        pulumi.set(__self__, "command_content", command_content)
+        pulumi.set(__self__, "command_type", command_type)
+        pulumi.set(__self__, "desktop_id", desktop_id)
         if content_encoding is not None:
-            _setter("content_encoding", content_encoding)
+            pulumi.set(__self__, "content_encoding", content_encoding)
         if timeout is not None:
-            _setter("timeout", timeout)
+            pulumi.set(__self__, "timeout", timeout)
 
     @property
     @pulumi.getter(name="commandContent")
@@ -147,47 +114,18 @@ class _CommandState:
         :param pulumi.Input[str] status: Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
         :param pulumi.Input[str] timeout: The timeout period for script execution the unit is seconds. Default to: `60`.
         """
-        _CommandState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            command_content=command_content,
-            command_type=command_type,
-            content_encoding=content_encoding,
-            desktop_id=desktop_id,
-            status=status,
-            timeout=timeout,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             command_content: Optional[pulumi.Input[str]] = None,
-             command_type: Optional[pulumi.Input[str]] = None,
-             content_encoding: Optional[pulumi.Input[str]] = None,
-             desktop_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             timeout: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if command_content is None and 'commandContent' in kwargs:
-            command_content = kwargs['commandContent']
-        if command_type is None and 'commandType' in kwargs:
-            command_type = kwargs['commandType']
-        if content_encoding is None and 'contentEncoding' in kwargs:
-            content_encoding = kwargs['contentEncoding']
-        if desktop_id is None and 'desktopId' in kwargs:
-            desktop_id = kwargs['desktopId']
-
         if command_content is not None:
-            _setter("command_content", command_content)
+            pulumi.set(__self__, "command_content", command_content)
         if command_type is not None:
-            _setter("command_type", command_type)
+            pulumi.set(__self__, "command_type", command_type)
         if content_encoding is not None:
-            _setter("content_encoding", content_encoding)
+            pulumi.set(__self__, "content_encoding", content_encoding)
         if desktop_id is not None:
-            _setter("desktop_id", desktop_id)
+            pulumi.set(__self__, "desktop_id", desktop_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if timeout is not None:
-            _setter("timeout", timeout)
+            pulumi.set(__self__, "timeout", timeout)
 
     @property
     @pulumi.getter(name="commandContent")
@@ -423,10 +361,6 @@ class Command(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CommandArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

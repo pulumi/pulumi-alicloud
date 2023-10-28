@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -37,67 +37,14 @@ class GetBackupPlansPlanResult(dict):
         :param str id: The ID of the Backup Plan.
         :param int retention_period: The duration for which you want to retain the backup. Valid values: 1 to 30. Unit: days.
         """
-        GetBackupPlansPlanResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            active=active,
-            backup_period=backup_period,
-            backup_time=backup_time,
-            cluster_id=cluster_id,
-            create_time=create_time,
-            data_center_id=data_center_id,
-            id=id,
-            retention_period=retention_period,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             active: Optional[bool] = None,
-             backup_period: Optional[str] = None,
-             backup_time: Optional[str] = None,
-             cluster_id: Optional[str] = None,
-             create_time: Optional[str] = None,
-             data_center_id: Optional[str] = None,
-             id: Optional[str] = None,
-             retention_period: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if active is None:
-            raise TypeError("Missing 'active' argument")
-        if backup_period is None and 'backupPeriod' in kwargs:
-            backup_period = kwargs['backupPeriod']
-        if backup_period is None:
-            raise TypeError("Missing 'backup_period' argument")
-        if backup_time is None and 'backupTime' in kwargs:
-            backup_time = kwargs['backupTime']
-        if backup_time is None:
-            raise TypeError("Missing 'backup_time' argument")
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cluster_id is None:
-            raise TypeError("Missing 'cluster_id' argument")
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if create_time is None:
-            raise TypeError("Missing 'create_time' argument")
-        if data_center_id is None and 'dataCenterId' in kwargs:
-            data_center_id = kwargs['dataCenterId']
-        if data_center_id is None:
-            raise TypeError("Missing 'data_center_id' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if retention_period is None and 'retentionPeriod' in kwargs:
-            retention_period = kwargs['retentionPeriod']
-        if retention_period is None:
-            raise TypeError("Missing 'retention_period' argument")
-
-        _setter("active", active)
-        _setter("backup_period", backup_period)
-        _setter("backup_time", backup_time)
-        _setter("cluster_id", cluster_id)
-        _setter("create_time", create_time)
-        _setter("data_center_id", data_center_id)
-        _setter("id", id)
-        _setter("retention_period", retention_period)
+        pulumi.set(__self__, "active", active)
+        pulumi.set(__self__, "backup_period", backup_period)
+        pulumi.set(__self__, "backup_time", backup_time)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "data_center_id", data_center_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "retention_period", retention_period)
 
     @property
     @pulumi.getter
@@ -192,92 +139,19 @@ class GetClustersClusterResult(dict):
         :param str status: Status of the cluster.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
-        GetClustersClusterResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_id=cluster_id,
-            cluster_name=cluster_name,
-            created_time=created_time,
-            data_center_count=data_center_count,
-            expire_time=expire_time,
-            id=id,
-            lock_mode=lock_mode,
-            major_version=major_version,
-            minor_version=minor_version,
-            pay_type=pay_type,
-            status=status,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_id: Optional[str] = None,
-             cluster_name: Optional[str] = None,
-             created_time: Optional[str] = None,
-             data_center_count: Optional[int] = None,
-             expire_time: Optional[str] = None,
-             id: Optional[str] = None,
-             lock_mode: Optional[str] = None,
-             major_version: Optional[str] = None,
-             minor_version: Optional[str] = None,
-             pay_type: Optional[str] = None,
-             status: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cluster_id is None:
-            raise TypeError("Missing 'cluster_id' argument")
-        if cluster_name is None and 'clusterName' in kwargs:
-            cluster_name = kwargs['clusterName']
-        if cluster_name is None:
-            raise TypeError("Missing 'cluster_name' argument")
-        if created_time is None and 'createdTime' in kwargs:
-            created_time = kwargs['createdTime']
-        if created_time is None:
-            raise TypeError("Missing 'created_time' argument")
-        if data_center_count is None and 'dataCenterCount' in kwargs:
-            data_center_count = kwargs['dataCenterCount']
-        if data_center_count is None:
-            raise TypeError("Missing 'data_center_count' argument")
-        if expire_time is None and 'expireTime' in kwargs:
-            expire_time = kwargs['expireTime']
-        if expire_time is None:
-            raise TypeError("Missing 'expire_time' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if lock_mode is None and 'lockMode' in kwargs:
-            lock_mode = kwargs['lockMode']
-        if lock_mode is None:
-            raise TypeError("Missing 'lock_mode' argument")
-        if major_version is None and 'majorVersion' in kwargs:
-            major_version = kwargs['majorVersion']
-        if major_version is None:
-            raise TypeError("Missing 'major_version' argument")
-        if minor_version is None and 'minorVersion' in kwargs:
-            minor_version = kwargs['minorVersion']
-        if minor_version is None:
-            raise TypeError("Missing 'minor_version' argument")
-        if pay_type is None and 'payType' in kwargs:
-            pay_type = kwargs['payType']
-        if pay_type is None:
-            raise TypeError("Missing 'pay_type' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("cluster_id", cluster_id)
-        _setter("cluster_name", cluster_name)
-        _setter("created_time", created_time)
-        _setter("data_center_count", data_center_count)
-        _setter("expire_time", expire_time)
-        _setter("id", id)
-        _setter("lock_mode", lock_mode)
-        _setter("major_version", major_version)
-        _setter("minor_version", minor_version)
-        _setter("pay_type", pay_type)
-        _setter("status", status)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "cluster_name", cluster_name)
+        pulumi.set(__self__, "created_time", created_time)
+        pulumi.set(__self__, "data_center_count", data_center_count)
+        pulumi.set(__self__, "expire_time", expire_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "lock_mode", lock_mode)
+        pulumi.set(__self__, "major_version", major_version)
+        pulumi.set(__self__, "minor_version", minor_version)
+        pulumi.set(__self__, "pay_type", pay_type)
+        pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -409,125 +283,22 @@ class GetDataCentersCenterResult(dict):
         :param str vswitch_id: VSwitch ID the dataCenter belongs to.
         :param str zone_id: Zone ID the dataCenter belongs to.
         """
-        GetDataCentersCenterResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_id=cluster_id,
-            commodity_instance=commodity_instance,
-            created_time=created_time,
-            data_center_id=data_center_id,
-            data_center_name=data_center_name,
-            disk_size=disk_size,
-            disk_type=disk_type,
-            expire_time=expire_time,
-            instance_type=instance_type,
-            lock_mode=lock_mode,
-            node_count=node_count,
-            pay_type=pay_type,
-            status=status,
-            vpc_id=vpc_id,
-            vswitch_id=vswitch_id,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_id: Optional[str] = None,
-             commodity_instance: Optional[str] = None,
-             created_time: Optional[str] = None,
-             data_center_id: Optional[str] = None,
-             data_center_name: Optional[str] = None,
-             disk_size: Optional[int] = None,
-             disk_type: Optional[str] = None,
-             expire_time: Optional[str] = None,
-             instance_type: Optional[str] = None,
-             lock_mode: Optional[str] = None,
-             node_count: Optional[int] = None,
-             pay_type: Optional[str] = None,
-             status: Optional[str] = None,
-             vpc_id: Optional[str] = None,
-             vswitch_id: Optional[str] = None,
-             zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cluster_id is None:
-            raise TypeError("Missing 'cluster_id' argument")
-        if commodity_instance is None and 'commodityInstance' in kwargs:
-            commodity_instance = kwargs['commodityInstance']
-        if commodity_instance is None:
-            raise TypeError("Missing 'commodity_instance' argument")
-        if created_time is None and 'createdTime' in kwargs:
-            created_time = kwargs['createdTime']
-        if created_time is None:
-            raise TypeError("Missing 'created_time' argument")
-        if data_center_id is None and 'dataCenterId' in kwargs:
-            data_center_id = kwargs['dataCenterId']
-        if data_center_id is None:
-            raise TypeError("Missing 'data_center_id' argument")
-        if data_center_name is None and 'dataCenterName' in kwargs:
-            data_center_name = kwargs['dataCenterName']
-        if data_center_name is None:
-            raise TypeError("Missing 'data_center_name' argument")
-        if disk_size is None and 'diskSize' in kwargs:
-            disk_size = kwargs['diskSize']
-        if disk_size is None:
-            raise TypeError("Missing 'disk_size' argument")
-        if disk_type is None and 'diskType' in kwargs:
-            disk_type = kwargs['diskType']
-        if disk_type is None:
-            raise TypeError("Missing 'disk_type' argument")
-        if expire_time is None and 'expireTime' in kwargs:
-            expire_time = kwargs['expireTime']
-        if expire_time is None:
-            raise TypeError("Missing 'expire_time' argument")
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if instance_type is None:
-            raise TypeError("Missing 'instance_type' argument")
-        if lock_mode is None and 'lockMode' in kwargs:
-            lock_mode = kwargs['lockMode']
-        if lock_mode is None:
-            raise TypeError("Missing 'lock_mode' argument")
-        if node_count is None and 'nodeCount' in kwargs:
-            node_count = kwargs['nodeCount']
-        if node_count is None:
-            raise TypeError("Missing 'node_count' argument")
-        if pay_type is None and 'payType' in kwargs:
-            pay_type = kwargs['payType']
-        if pay_type is None:
-            raise TypeError("Missing 'pay_type' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-        if vswitch_id is None and 'vswitchId' in kwargs:
-            vswitch_id = kwargs['vswitchId']
-        if vswitch_id is None:
-            raise TypeError("Missing 'vswitch_id' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("cluster_id", cluster_id)
-        _setter("commodity_instance", commodity_instance)
-        _setter("created_time", created_time)
-        _setter("data_center_id", data_center_id)
-        _setter("data_center_name", data_center_name)
-        _setter("disk_size", disk_size)
-        _setter("disk_type", disk_type)
-        _setter("expire_time", expire_time)
-        _setter("instance_type", instance_type)
-        _setter("lock_mode", lock_mode)
-        _setter("node_count", node_count)
-        _setter("pay_type", pay_type)
-        _setter("status", status)
-        _setter("vpc_id", vpc_id)
-        _setter("vswitch_id", vswitch_id)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "commodity_instance", commodity_instance)
+        pulumi.set(__self__, "created_time", created_time)
+        pulumi.set(__self__, "data_center_id", data_center_id)
+        pulumi.set(__self__, "data_center_name", data_center_name)
+        pulumi.set(__self__, "disk_size", disk_size)
+        pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "expire_time", expire_time)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "lock_mode", lock_mode)
+        pulumi.set(__self__, "node_count", node_count)
+        pulumi.set(__self__, "pay_type", pay_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -664,27 +435,8 @@ class GetZonesZoneResult(dict):
         :param str id: ID of the zone.
         :param Sequence[str] multi_zone_ids: A list of zone ids in which the multi zone.
         """
-        GetZonesZoneResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            multi_zone_ids=multi_zone_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             multi_zone_ids: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if multi_zone_ids is None and 'multiZoneIds' in kwargs:
-            multi_zone_ids = kwargs['multiZoneIds']
-        if multi_zone_ids is None:
-            raise TypeError("Missing 'multi_zone_ids' argument")
-
-        _setter("id", id)
-        _setter("multi_zone_ids", multi_zone_ids)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "multi_zone_ids", multi_zone_ids)
 
     @property
     @pulumi.getter

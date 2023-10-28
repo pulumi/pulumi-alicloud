@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TransitRouterMulticastDomainArgs', 'TransitRouterMulticastDomain']
@@ -25,38 +25,13 @@ class TransitRouterMulticastDomainArgs:
         :param pulumi.Input[str] transit_router_multicast_domain_description: The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
         :param pulumi.Input[str] transit_router_multicast_domain_name: The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
         """
-        TransitRouterMulticastDomainArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            transit_router_id=transit_router_id,
-            tags=tags,
-            transit_router_multicast_domain_description=transit_router_multicast_domain_description,
-            transit_router_multicast_domain_name=transit_router_multicast_domain_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             transit_router_id: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             transit_router_multicast_domain_description: Optional[pulumi.Input[str]] = None,
-             transit_router_multicast_domain_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if transit_router_id is None and 'transitRouterId' in kwargs:
-            transit_router_id = kwargs['transitRouterId']
-        if transit_router_id is None:
-            raise TypeError("Missing 'transit_router_id' argument")
-        if transit_router_multicast_domain_description is None and 'transitRouterMulticastDomainDescription' in kwargs:
-            transit_router_multicast_domain_description = kwargs['transitRouterMulticastDomainDescription']
-        if transit_router_multicast_domain_name is None and 'transitRouterMulticastDomainName' in kwargs:
-            transit_router_multicast_domain_name = kwargs['transitRouterMulticastDomainName']
-
-        _setter("transit_router_id", transit_router_id)
+        pulumi.set(__self__, "transit_router_id", transit_router_id)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if transit_router_multicast_domain_description is not None:
-            _setter("transit_router_multicast_domain_description", transit_router_multicast_domain_description)
+            pulumi.set(__self__, "transit_router_multicast_domain_description", transit_router_multicast_domain_description)
         if transit_router_multicast_domain_name is not None:
-            _setter("transit_router_multicast_domain_name", transit_router_multicast_domain_name)
+            pulumi.set(__self__, "transit_router_multicast_domain_name", transit_router_multicast_domain_name)
 
     @property
     @pulumi.getter(name="transitRouterId")
@@ -123,41 +98,16 @@ class _TransitRouterMulticastDomainState:
         :param pulumi.Input[str] transit_router_multicast_domain_description: The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
         :param pulumi.Input[str] transit_router_multicast_domain_name: The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
         """
-        _TransitRouterMulticastDomainState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            status=status,
-            tags=tags,
-            transit_router_id=transit_router_id,
-            transit_router_multicast_domain_description=transit_router_multicast_domain_description,
-            transit_router_multicast_domain_name=transit_router_multicast_domain_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             transit_router_id: Optional[pulumi.Input[str]] = None,
-             transit_router_multicast_domain_description: Optional[pulumi.Input[str]] = None,
-             transit_router_multicast_domain_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if transit_router_id is None and 'transitRouterId' in kwargs:
-            transit_router_id = kwargs['transitRouterId']
-        if transit_router_multicast_domain_description is None and 'transitRouterMulticastDomainDescription' in kwargs:
-            transit_router_multicast_domain_description = kwargs['transitRouterMulticastDomainDescription']
-        if transit_router_multicast_domain_name is None and 'transitRouterMulticastDomainName' in kwargs:
-            transit_router_multicast_domain_name = kwargs['transitRouterMulticastDomainName']
-
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if transit_router_id is not None:
-            _setter("transit_router_id", transit_router_id)
+            pulumi.set(__self__, "transit_router_id", transit_router_id)
         if transit_router_multicast_domain_description is not None:
-            _setter("transit_router_multicast_domain_description", transit_router_multicast_domain_description)
+            pulumi.set(__self__, "transit_router_multicast_domain_description", transit_router_multicast_domain_description)
         if transit_router_multicast_domain_name is not None:
-            _setter("transit_router_multicast_domain_name", transit_router_multicast_domain_name)
+            pulumi.set(__self__, "transit_router_multicast_domain_name", transit_router_multicast_domain_name)
 
     @property
     @pulumi.getter
@@ -325,10 +275,6 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TransitRouterMulticastDomainArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

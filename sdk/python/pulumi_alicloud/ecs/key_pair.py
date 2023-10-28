@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['KeyPairArgs', 'KeyPair']
@@ -28,58 +28,23 @@ class KeyPairArgs:
         :param pulumi.Input[str] public_key: You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the key pair belongs.
         """
-        KeyPairArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key_file=key_file,
-            key_name=key_name,
-            key_name_prefix=key_name_prefix,
-            key_pair_name=key_pair_name,
-            public_key=public_key,
-            resource_group_id=resource_group_id,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key_file: Optional[pulumi.Input[str]] = None,
-             key_name: Optional[pulumi.Input[str]] = None,
-             key_name_prefix: Optional[pulumi.Input[str]] = None,
-             key_pair_name: Optional[pulumi.Input[str]] = None,
-             public_key: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key_file is None and 'keyFile' in kwargs:
-            key_file = kwargs['keyFile']
-        if key_name is None and 'keyName' in kwargs:
-            key_name = kwargs['keyName']
-        if key_name_prefix is None and 'keyNamePrefix' in kwargs:
-            key_name_prefix = kwargs['keyNamePrefix']
-        if key_pair_name is None and 'keyPairName' in kwargs:
-            key_pair_name = kwargs['keyPairName']
-        if public_key is None and 'publicKey' in kwargs:
-            public_key = kwargs['publicKey']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-
         if key_file is not None:
-            _setter("key_file", key_file)
+            pulumi.set(__self__, "key_file", key_file)
         if key_name is not None:
             warnings.warn("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
         if key_name is not None:
-            _setter("key_name", key_name)
+            pulumi.set(__self__, "key_name", key_name)
         if key_name_prefix is not None:
-            _setter("key_name_prefix", key_name_prefix)
+            pulumi.set(__self__, "key_name_prefix", key_name_prefix)
         if key_pair_name is not None:
-            _setter("key_pair_name", key_pair_name)
+            pulumi.set(__self__, "key_pair_name", key_pair_name)
         if public_key is not None:
-            _setter("public_key", public_key)
+            pulumi.set(__self__, "public_key", public_key)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="keyFile")
@@ -178,64 +143,25 @@ class _KeyPairState:
         :param pulumi.Input[str] public_key: You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the key pair belongs.
         """
-        _KeyPairState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            finger_print=finger_print,
-            key_file=key_file,
-            key_name=key_name,
-            key_name_prefix=key_name_prefix,
-            key_pair_name=key_pair_name,
-            public_key=public_key,
-            resource_group_id=resource_group_id,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             finger_print: Optional[pulumi.Input[str]] = None,
-             key_file: Optional[pulumi.Input[str]] = None,
-             key_name: Optional[pulumi.Input[str]] = None,
-             key_name_prefix: Optional[pulumi.Input[str]] = None,
-             key_pair_name: Optional[pulumi.Input[str]] = None,
-             public_key: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if finger_print is None and 'fingerPrint' in kwargs:
-            finger_print = kwargs['fingerPrint']
-        if key_file is None and 'keyFile' in kwargs:
-            key_file = kwargs['keyFile']
-        if key_name is None and 'keyName' in kwargs:
-            key_name = kwargs['keyName']
-        if key_name_prefix is None and 'keyNamePrefix' in kwargs:
-            key_name_prefix = kwargs['keyNamePrefix']
-        if key_pair_name is None and 'keyPairName' in kwargs:
-            key_pair_name = kwargs['keyPairName']
-        if public_key is None and 'publicKey' in kwargs:
-            public_key = kwargs['publicKey']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-
         if finger_print is not None:
-            _setter("finger_print", finger_print)
+            pulumi.set(__self__, "finger_print", finger_print)
         if key_file is not None:
-            _setter("key_file", key_file)
+            pulumi.set(__self__, "key_file", key_file)
         if key_name is not None:
             warnings.warn("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
         if key_name is not None:
-            _setter("key_name", key_name)
+            pulumi.set(__self__, "key_name", key_name)
         if key_name_prefix is not None:
-            _setter("key_name_prefix", key_name_prefix)
+            pulumi.set(__self__, "key_name_prefix", key_name_prefix)
         if key_pair_name is not None:
-            _setter("key_pair_name", key_pair_name)
+            pulumi.set(__self__, "key_pair_name", key_pair_name)
         if public_key is not None:
-            _setter("public_key", public_key)
+            pulumi.set(__self__, "public_key", public_key)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="fingerPrint")
@@ -421,10 +347,6 @@ class KeyPair(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            KeyPairArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

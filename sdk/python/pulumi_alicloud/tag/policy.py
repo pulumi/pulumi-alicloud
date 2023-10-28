@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['PolicyArgs', 'Policy']
@@ -26,41 +26,12 @@ class PolicyArgs:
         :param pulumi.Input[str] policy_desc: The description of the policy. The description must be 1 to 512 characters in length.
         :param pulumi.Input[str] user_type: The type of the tag policy. Valid values: `USER`, `RD`.
         """
-        PolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            policy_content=policy_content,
-            policy_name=policy_name,
-            policy_desc=policy_desc,
-            user_type=user_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             policy_content: Optional[pulumi.Input[str]] = None,
-             policy_name: Optional[pulumi.Input[str]] = None,
-             policy_desc: Optional[pulumi.Input[str]] = None,
-             user_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if policy_content is None and 'policyContent' in kwargs:
-            policy_content = kwargs['policyContent']
-        if policy_content is None:
-            raise TypeError("Missing 'policy_content' argument")
-        if policy_name is None and 'policyName' in kwargs:
-            policy_name = kwargs['policyName']
-        if policy_name is None:
-            raise TypeError("Missing 'policy_name' argument")
-        if policy_desc is None and 'policyDesc' in kwargs:
-            policy_desc = kwargs['policyDesc']
-        if user_type is None and 'userType' in kwargs:
-            user_type = kwargs['userType']
-
-        _setter("policy_content", policy_content)
-        _setter("policy_name", policy_name)
+        pulumi.set(__self__, "policy_content", policy_content)
+        pulumi.set(__self__, "policy_name", policy_name)
         if policy_desc is not None:
-            _setter("policy_desc", policy_desc)
+            pulumi.set(__self__, "policy_desc", policy_desc)
         if user_type is not None:
-            _setter("user_type", user_type)
+            pulumi.set(__self__, "user_type", user_type)
 
     @property
     @pulumi.getter(name="policyContent")
@@ -127,39 +98,14 @@ class _PolicyState:
                digits, and hyphens (-).
         :param pulumi.Input[str] user_type: The type of the tag policy. Valid values: `USER`, `RD`.
         """
-        _PolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            policy_content=policy_content,
-            policy_desc=policy_desc,
-            policy_name=policy_name,
-            user_type=user_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             policy_content: Optional[pulumi.Input[str]] = None,
-             policy_desc: Optional[pulumi.Input[str]] = None,
-             policy_name: Optional[pulumi.Input[str]] = None,
-             user_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if policy_content is None and 'policyContent' in kwargs:
-            policy_content = kwargs['policyContent']
-        if policy_desc is None and 'policyDesc' in kwargs:
-            policy_desc = kwargs['policyDesc']
-        if policy_name is None and 'policyName' in kwargs:
-            policy_name = kwargs['policyName']
-        if user_type is None and 'userType' in kwargs:
-            user_type = kwargs['userType']
-
         if policy_content is not None:
-            _setter("policy_content", policy_content)
+            pulumi.set(__self__, "policy_content", policy_content)
         if policy_desc is not None:
-            _setter("policy_desc", policy_desc)
+            pulumi.set(__self__, "policy_desc", policy_desc)
         if policy_name is not None:
-            _setter("policy_name", policy_name)
+            pulumi.set(__self__, "policy_name", policy_name)
         if user_type is not None:
-            _setter("user_type", user_type)
+            pulumi.set(__self__, "user_type", user_type)
 
     @property
     @pulumi.getter(name="policyContent")
@@ -315,10 +261,6 @@ class Policy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            PolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

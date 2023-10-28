@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,51 +31,14 @@ class KubernetesAutoscalerArgs:
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesAutoscalerNodepoolArgs']]] nodepools: The list of the node pools. See `nodepools` below.
         :param pulumi.Input[bool] use_ecs_ram_role_token: Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
         """
-        KubernetesAutoscalerArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_id=cluster_id,
-            cool_down_duration=cool_down_duration,
-            defer_scale_in_duration=defer_scale_in_duration,
-            utilization=utilization,
-            nodepools=nodepools,
-            use_ecs_ram_role_token=use_ecs_ram_role_token,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             cool_down_duration: Optional[pulumi.Input[str]] = None,
-             defer_scale_in_duration: Optional[pulumi.Input[str]] = None,
-             utilization: Optional[pulumi.Input[str]] = None,
-             nodepools: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesAutoscalerNodepoolArgs']]]] = None,
-             use_ecs_ram_role_token: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cluster_id is None:
-            raise TypeError("Missing 'cluster_id' argument")
-        if cool_down_duration is None and 'coolDownDuration' in kwargs:
-            cool_down_duration = kwargs['coolDownDuration']
-        if cool_down_duration is None:
-            raise TypeError("Missing 'cool_down_duration' argument")
-        if defer_scale_in_duration is None and 'deferScaleInDuration' in kwargs:
-            defer_scale_in_duration = kwargs['deferScaleInDuration']
-        if defer_scale_in_duration is None:
-            raise TypeError("Missing 'defer_scale_in_duration' argument")
-        if utilization is None:
-            raise TypeError("Missing 'utilization' argument")
-        if use_ecs_ram_role_token is None and 'useEcsRamRoleToken' in kwargs:
-            use_ecs_ram_role_token = kwargs['useEcsRamRoleToken']
-
-        _setter("cluster_id", cluster_id)
-        _setter("cool_down_duration", cool_down_duration)
-        _setter("defer_scale_in_duration", defer_scale_in_duration)
-        _setter("utilization", utilization)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "cool_down_duration", cool_down_duration)
+        pulumi.set(__self__, "defer_scale_in_duration", defer_scale_in_duration)
+        pulumi.set(__self__, "utilization", utilization)
         if nodepools is not None:
-            _setter("nodepools", nodepools)
+            pulumi.set(__self__, "nodepools", nodepools)
         if use_ecs_ram_role_token is not None:
-            _setter("use_ecs_ram_role_token", use_ecs_ram_role_token)
+            pulumi.set(__self__, "use_ecs_ram_role_token", use_ecs_ram_role_token)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -168,47 +131,18 @@ class _KubernetesAutoscalerState:
         :param pulumi.Input[bool] use_ecs_ram_role_token: Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
         :param pulumi.Input[str] utilization: The utilization option of cluster-autoscaler.
         """
-        _KubernetesAutoscalerState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_id=cluster_id,
-            cool_down_duration=cool_down_duration,
-            defer_scale_in_duration=defer_scale_in_duration,
-            nodepools=nodepools,
-            use_ecs_ram_role_token=use_ecs_ram_role_token,
-            utilization=utilization,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             cool_down_duration: Optional[pulumi.Input[str]] = None,
-             defer_scale_in_duration: Optional[pulumi.Input[str]] = None,
-             nodepools: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesAutoscalerNodepoolArgs']]]] = None,
-             use_ecs_ram_role_token: Optional[pulumi.Input[bool]] = None,
-             utilization: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cool_down_duration is None and 'coolDownDuration' in kwargs:
-            cool_down_duration = kwargs['coolDownDuration']
-        if defer_scale_in_duration is None and 'deferScaleInDuration' in kwargs:
-            defer_scale_in_duration = kwargs['deferScaleInDuration']
-        if use_ecs_ram_role_token is None and 'useEcsRamRoleToken' in kwargs:
-            use_ecs_ram_role_token = kwargs['useEcsRamRoleToken']
-
         if cluster_id is not None:
-            _setter("cluster_id", cluster_id)
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if cool_down_duration is not None:
-            _setter("cool_down_duration", cool_down_duration)
+            pulumi.set(__self__, "cool_down_duration", cool_down_duration)
         if defer_scale_in_duration is not None:
-            _setter("defer_scale_in_duration", defer_scale_in_duration)
+            pulumi.set(__self__, "defer_scale_in_duration", defer_scale_in_duration)
         if nodepools is not None:
-            _setter("nodepools", nodepools)
+            pulumi.set(__self__, "nodepools", nodepools)
         if use_ecs_ram_role_token is not None:
-            _setter("use_ecs_ram_role_token", use_ecs_ram_role_token)
+            pulumi.set(__self__, "use_ecs_ram_role_token", use_ecs_ram_role_token)
         if utilization is not None:
-            _setter("utilization", utilization)
+            pulumi.set(__self__, "utilization", utilization)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -324,10 +258,6 @@ class KubernetesAutoscaler(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            KubernetesAutoscalerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

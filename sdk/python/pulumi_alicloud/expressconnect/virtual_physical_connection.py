@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['VirtualPhysicalConnectionArgs', 'VirtualPhysicalConnection']
@@ -39,76 +39,21 @@ class VirtualPhysicalConnectionArgs:
         :param pulumi.Input[str] resource_group_id: The resource group id.
         :param pulumi.Input[str] virtual_physical_connection_name: The name of the physical connection.
         """
-        VirtualPhysicalConnectionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            order_mode=order_mode,
-            parent_physical_connection_id=parent_physical_connection_id,
-            spec=spec,
-            vlan_id=vlan_id,
-            vpconn_ali_uid=vpconn_ali_uid,
-            description=description,
-            dry_run=dry_run,
-            expect_spec=expect_spec,
-            resource_group_id=resource_group_id,
-            virtual_physical_connection_name=virtual_physical_connection_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             order_mode: Optional[pulumi.Input[str]] = None,
-             parent_physical_connection_id: Optional[pulumi.Input[str]] = None,
-             spec: Optional[pulumi.Input[str]] = None,
-             vlan_id: Optional[pulumi.Input[int]] = None,
-             vpconn_ali_uid: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             expect_spec: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             virtual_physical_connection_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if order_mode is None and 'orderMode' in kwargs:
-            order_mode = kwargs['orderMode']
-        if order_mode is None:
-            raise TypeError("Missing 'order_mode' argument")
-        if parent_physical_connection_id is None and 'parentPhysicalConnectionId' in kwargs:
-            parent_physical_connection_id = kwargs['parentPhysicalConnectionId']
-        if parent_physical_connection_id is None:
-            raise TypeError("Missing 'parent_physical_connection_id' argument")
-        if spec is None:
-            raise TypeError("Missing 'spec' argument")
-        if vlan_id is None and 'vlanId' in kwargs:
-            vlan_id = kwargs['vlanId']
-        if vlan_id is None:
-            raise TypeError("Missing 'vlan_id' argument")
-        if vpconn_ali_uid is None and 'vpconnAliUid' in kwargs:
-            vpconn_ali_uid = kwargs['vpconnAliUid']
-        if vpconn_ali_uid is None:
-            raise TypeError("Missing 'vpconn_ali_uid' argument")
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-        if expect_spec is None and 'expectSpec' in kwargs:
-            expect_spec = kwargs['expectSpec']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if virtual_physical_connection_name is None and 'virtualPhysicalConnectionName' in kwargs:
-            virtual_physical_connection_name = kwargs['virtualPhysicalConnectionName']
-
-        _setter("order_mode", order_mode)
-        _setter("parent_physical_connection_id", parent_physical_connection_id)
-        _setter("spec", spec)
-        _setter("vlan_id", vlan_id)
-        _setter("vpconn_ali_uid", vpconn_ali_uid)
+        pulumi.set(__self__, "order_mode", order_mode)
+        pulumi.set(__self__, "parent_physical_connection_id", parent_physical_connection_id)
+        pulumi.set(__self__, "spec", spec)
+        pulumi.set(__self__, "vlan_id", vlan_id)
+        pulumi.set(__self__, "vpconn_ali_uid", vpconn_ali_uid)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if expect_spec is not None:
-            _setter("expect_spec", expect_spec)
+            pulumi.set(__self__, "expect_spec", expect_spec)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if virtual_physical_connection_name is not None:
-            _setter("virtual_physical_connection_name", virtual_physical_connection_name)
+            pulumi.set(__self__, "virtual_physical_connection_name", virtual_physical_connection_name)
 
     @property
     @pulumi.getter(name="orderMode")
@@ -295,169 +240,60 @@ class _VirtualPhysicalConnectionState:
         :param pulumi.Input[int] vlan_id: The VLAN ID of the shared leased line. Valid values: `0` to `2999`.
         :param pulumi.Input[str] vpconn_ali_uid: The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
         """
-        _VirtualPhysicalConnectionState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_point_id=access_point_id,
-            ad_location=ad_location,
-            bandwidth=bandwidth,
-            business_status=business_status,
-            circuit_code=circuit_code,
-            create_time=create_time,
-            description=description,
-            dry_run=dry_run,
-            enabled_time=enabled_time,
-            end_time=end_time,
-            expect_spec=expect_spec,
-            line_operator=line_operator,
-            loa_status=loa_status,
-            order_mode=order_mode,
-            parent_physical_connection_ali_uid=parent_physical_connection_ali_uid,
-            parent_physical_connection_id=parent_physical_connection_id,
-            peer_location=peer_location,
-            port_number=port_number,
-            port_type=port_type,
-            redundant_physical_connection_id=redundant_physical_connection_id,
-            resource_group_id=resource_group_id,
-            spec=spec,
-            status=status,
-            virtual_physical_connection_name=virtual_physical_connection_name,
-            virtual_physical_connection_status=virtual_physical_connection_status,
-            vlan_id=vlan_id,
-            vpconn_ali_uid=vpconn_ali_uid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_point_id: Optional[pulumi.Input[str]] = None,
-             ad_location: Optional[pulumi.Input[str]] = None,
-             bandwidth: Optional[pulumi.Input[str]] = None,
-             business_status: Optional[pulumi.Input[str]] = None,
-             circuit_code: Optional[pulumi.Input[str]] = None,
-             create_time: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             enabled_time: Optional[pulumi.Input[str]] = None,
-             end_time: Optional[pulumi.Input[str]] = None,
-             expect_spec: Optional[pulumi.Input[str]] = None,
-             line_operator: Optional[pulumi.Input[str]] = None,
-             loa_status: Optional[pulumi.Input[str]] = None,
-             order_mode: Optional[pulumi.Input[str]] = None,
-             parent_physical_connection_ali_uid: Optional[pulumi.Input[str]] = None,
-             parent_physical_connection_id: Optional[pulumi.Input[str]] = None,
-             peer_location: Optional[pulumi.Input[str]] = None,
-             port_number: Optional[pulumi.Input[str]] = None,
-             port_type: Optional[pulumi.Input[str]] = None,
-             redundant_physical_connection_id: Optional[pulumi.Input[str]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             spec: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             virtual_physical_connection_name: Optional[pulumi.Input[str]] = None,
-             virtual_physical_connection_status: Optional[pulumi.Input[str]] = None,
-             vlan_id: Optional[pulumi.Input[int]] = None,
-             vpconn_ali_uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_point_id is None and 'accessPointId' in kwargs:
-            access_point_id = kwargs['accessPointId']
-        if ad_location is None and 'adLocation' in kwargs:
-            ad_location = kwargs['adLocation']
-        if business_status is None and 'businessStatus' in kwargs:
-            business_status = kwargs['businessStatus']
-        if circuit_code is None and 'circuitCode' in kwargs:
-            circuit_code = kwargs['circuitCode']
-        if create_time is None and 'createTime' in kwargs:
-            create_time = kwargs['createTime']
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-        if enabled_time is None and 'enabledTime' in kwargs:
-            enabled_time = kwargs['enabledTime']
-        if end_time is None and 'endTime' in kwargs:
-            end_time = kwargs['endTime']
-        if expect_spec is None and 'expectSpec' in kwargs:
-            expect_spec = kwargs['expectSpec']
-        if line_operator is None and 'lineOperator' in kwargs:
-            line_operator = kwargs['lineOperator']
-        if loa_status is None and 'loaStatus' in kwargs:
-            loa_status = kwargs['loaStatus']
-        if order_mode is None and 'orderMode' in kwargs:
-            order_mode = kwargs['orderMode']
-        if parent_physical_connection_ali_uid is None and 'parentPhysicalConnectionAliUid' in kwargs:
-            parent_physical_connection_ali_uid = kwargs['parentPhysicalConnectionAliUid']
-        if parent_physical_connection_id is None and 'parentPhysicalConnectionId' in kwargs:
-            parent_physical_connection_id = kwargs['parentPhysicalConnectionId']
-        if peer_location is None and 'peerLocation' in kwargs:
-            peer_location = kwargs['peerLocation']
-        if port_number is None and 'portNumber' in kwargs:
-            port_number = kwargs['portNumber']
-        if port_type is None and 'portType' in kwargs:
-            port_type = kwargs['portType']
-        if redundant_physical_connection_id is None and 'redundantPhysicalConnectionId' in kwargs:
-            redundant_physical_connection_id = kwargs['redundantPhysicalConnectionId']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if virtual_physical_connection_name is None and 'virtualPhysicalConnectionName' in kwargs:
-            virtual_physical_connection_name = kwargs['virtualPhysicalConnectionName']
-        if virtual_physical_connection_status is None and 'virtualPhysicalConnectionStatus' in kwargs:
-            virtual_physical_connection_status = kwargs['virtualPhysicalConnectionStatus']
-        if vlan_id is None and 'vlanId' in kwargs:
-            vlan_id = kwargs['vlanId']
-        if vpconn_ali_uid is None and 'vpconnAliUid' in kwargs:
-            vpconn_ali_uid = kwargs['vpconnAliUid']
-
         if access_point_id is not None:
-            _setter("access_point_id", access_point_id)
+            pulumi.set(__self__, "access_point_id", access_point_id)
         if ad_location is not None:
-            _setter("ad_location", ad_location)
+            pulumi.set(__self__, "ad_location", ad_location)
         if bandwidth is not None:
-            _setter("bandwidth", bandwidth)
+            pulumi.set(__self__, "bandwidth", bandwidth)
         if business_status is not None:
-            _setter("business_status", business_status)
+            pulumi.set(__self__, "business_status", business_status)
         if circuit_code is not None:
-            _setter("circuit_code", circuit_code)
+            pulumi.set(__self__, "circuit_code", circuit_code)
         if create_time is not None:
-            _setter("create_time", create_time)
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if enabled_time is not None:
-            _setter("enabled_time", enabled_time)
+            pulumi.set(__self__, "enabled_time", enabled_time)
         if end_time is not None:
-            _setter("end_time", end_time)
+            pulumi.set(__self__, "end_time", end_time)
         if expect_spec is not None:
-            _setter("expect_spec", expect_spec)
+            pulumi.set(__self__, "expect_spec", expect_spec)
         if line_operator is not None:
-            _setter("line_operator", line_operator)
+            pulumi.set(__self__, "line_operator", line_operator)
         if loa_status is not None:
-            _setter("loa_status", loa_status)
+            pulumi.set(__self__, "loa_status", loa_status)
         if order_mode is not None:
-            _setter("order_mode", order_mode)
+            pulumi.set(__self__, "order_mode", order_mode)
         if parent_physical_connection_ali_uid is not None:
-            _setter("parent_physical_connection_ali_uid", parent_physical_connection_ali_uid)
+            pulumi.set(__self__, "parent_physical_connection_ali_uid", parent_physical_connection_ali_uid)
         if parent_physical_connection_id is not None:
-            _setter("parent_physical_connection_id", parent_physical_connection_id)
+            pulumi.set(__self__, "parent_physical_connection_id", parent_physical_connection_id)
         if peer_location is not None:
-            _setter("peer_location", peer_location)
+            pulumi.set(__self__, "peer_location", peer_location)
         if port_number is not None:
-            _setter("port_number", port_number)
+            pulumi.set(__self__, "port_number", port_number)
         if port_type is not None:
-            _setter("port_type", port_type)
+            pulumi.set(__self__, "port_type", port_type)
         if redundant_physical_connection_id is not None:
-            _setter("redundant_physical_connection_id", redundant_physical_connection_id)
+            pulumi.set(__self__, "redundant_physical_connection_id", redundant_physical_connection_id)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if spec is not None:
-            _setter("spec", spec)
+            pulumi.set(__self__, "spec", spec)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if virtual_physical_connection_name is not None:
-            _setter("virtual_physical_connection_name", virtual_physical_connection_name)
+            pulumi.set(__self__, "virtual_physical_connection_name", virtual_physical_connection_name)
         if virtual_physical_connection_status is not None:
-            _setter("virtual_physical_connection_status", virtual_physical_connection_status)
+            pulumi.set(__self__, "virtual_physical_connection_status", virtual_physical_connection_status)
         if vlan_id is not None:
-            _setter("vlan_id", vlan_id)
+            pulumi.set(__self__, "vlan_id", vlan_id)
         if vpconn_ali_uid is not None:
-            _setter("vpconn_ali_uid", vpconn_ali_uid)
+            pulumi.set(__self__, "vpconn_ali_uid", vpconn_ali_uid)
 
     @property
     @pulumi.getter(name="accessPointId")
@@ -919,10 +755,6 @@ class VirtualPhysicalConnection(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            VirtualPhysicalConnectionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

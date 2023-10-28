@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,58 +33,15 @@ class RuleArgs:
         :param pulumi.Input[str] direction: The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck this request.
         """
-        RuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            listener_id=listener_id,
-            priority=priority,
-            rule_actions=rule_actions,
-            rule_conditions=rule_conditions,
-            rule_name=rule_name,
-            direction=direction,
-            dry_run=dry_run,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             listener_id: Optional[pulumi.Input[str]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             rule_actions: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleActionArgs']]]] = None,
-             rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionArgs']]]] = None,
-             rule_name: Optional[pulumi.Input[str]] = None,
-             direction: Optional[pulumi.Input[str]] = None,
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if listener_id is None and 'listenerId' in kwargs:
-            listener_id = kwargs['listenerId']
-        if listener_id is None:
-            raise TypeError("Missing 'listener_id' argument")
-        if priority is None:
-            raise TypeError("Missing 'priority' argument")
-        if rule_actions is None and 'ruleActions' in kwargs:
-            rule_actions = kwargs['ruleActions']
-        if rule_actions is None:
-            raise TypeError("Missing 'rule_actions' argument")
-        if rule_conditions is None and 'ruleConditions' in kwargs:
-            rule_conditions = kwargs['ruleConditions']
-        if rule_conditions is None:
-            raise TypeError("Missing 'rule_conditions' argument")
-        if rule_name is None and 'ruleName' in kwargs:
-            rule_name = kwargs['ruleName']
-        if rule_name is None:
-            raise TypeError("Missing 'rule_name' argument")
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-
-        _setter("listener_id", listener_id)
-        _setter("priority", priority)
-        _setter("rule_actions", rule_actions)
-        _setter("rule_conditions", rule_conditions)
-        _setter("rule_name", rule_name)
+        pulumi.set(__self__, "listener_id", listener_id)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "rule_actions", rule_actions)
+        pulumi.set(__self__, "rule_conditions", rule_conditions)
+        pulumi.set(__self__, "rule_name", rule_name)
         if direction is not None:
-            _setter("direction", direction)
+            pulumi.set(__self__, "direction", direction)
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
 
     @property
     @pulumi.getter(name="listenerId")
@@ -193,57 +150,22 @@ class _RuleState:
         :param pulumi.Input[str] rule_name: The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[str] status: The status of the resource.
         """
-        _RuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            direction=direction,
-            dry_run=dry_run,
-            listener_id=listener_id,
-            priority=priority,
-            rule_actions=rule_actions,
-            rule_conditions=rule_conditions,
-            rule_name=rule_name,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             direction: Optional[pulumi.Input[str]] = None,
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             listener_id: Optional[pulumi.Input[str]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             rule_actions: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleActionArgs']]]] = None,
-             rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionArgs']]]] = None,
-             rule_name: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-        if listener_id is None and 'listenerId' in kwargs:
-            listener_id = kwargs['listenerId']
-        if rule_actions is None and 'ruleActions' in kwargs:
-            rule_actions = kwargs['ruleActions']
-        if rule_conditions is None and 'ruleConditions' in kwargs:
-            rule_conditions = kwargs['ruleConditions']
-        if rule_name is None and 'ruleName' in kwargs:
-            rule_name = kwargs['ruleName']
-
         if direction is not None:
-            _setter("direction", direction)
+            pulumi.set(__self__, "direction", direction)
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if listener_id is not None:
-            _setter("listener_id", listener_id)
+            pulumi.set(__self__, "listener_id", listener_id)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if rule_actions is not None:
-            _setter("rule_actions", rule_actions)
+            pulumi.set(__self__, "rule_actions", rule_actions)
         if rule_conditions is not None:
-            _setter("rule_conditions", rule_conditions)
+            pulumi.set(__self__, "rule_conditions", rule_conditions)
         if rule_name is not None:
-            _setter("rule_name", rule_name)
+            pulumi.set(__self__, "rule_name", rule_name)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -415,10 +337,6 @@ class Rule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

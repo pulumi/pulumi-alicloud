@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['GatewayEndpointRouteTableAttachmentArgs', 'GatewayEndpointRouteTableAttachment']
@@ -21,29 +21,8 @@ class GatewayEndpointRouteTableAttachmentArgs:
         :param pulumi.Input[str] gateway_endpoint_id: The ID of the gateway endpoint instance to which you want to associate the route table.
         :param pulumi.Input[str] route_table_id: Routing table ID.
         """
-        GatewayEndpointRouteTableAttachmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            gateway_endpoint_id=gateway_endpoint_id,
-            route_table_id=route_table_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             gateway_endpoint_id: Optional[pulumi.Input[str]] = None,
-             route_table_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if gateway_endpoint_id is None and 'gatewayEndpointId' in kwargs:
-            gateway_endpoint_id = kwargs['gatewayEndpointId']
-        if gateway_endpoint_id is None:
-            raise TypeError("Missing 'gateway_endpoint_id' argument")
-        if route_table_id is None and 'routeTableId' in kwargs:
-            route_table_id = kwargs['routeTableId']
-        if route_table_id is None:
-            raise TypeError("Missing 'route_table_id' argument")
-
-        _setter("gateway_endpoint_id", gateway_endpoint_id)
-        _setter("route_table_id", route_table_id)
+        pulumi.set(__self__, "gateway_endpoint_id", gateway_endpoint_id)
+        pulumi.set(__self__, "route_table_id", route_table_id)
 
     @property
     @pulumi.getter(name="gatewayEndpointId")
@@ -82,31 +61,12 @@ class _GatewayEndpointRouteTableAttachmentState:
         :param pulumi.Input[str] route_table_id: Routing table ID.
         :param pulumi.Input[str] status: Status of the gateway endpoint.
         """
-        _GatewayEndpointRouteTableAttachmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            gateway_endpoint_id=gateway_endpoint_id,
-            route_table_id=route_table_id,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             gateway_endpoint_id: Optional[pulumi.Input[str]] = None,
-             route_table_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if gateway_endpoint_id is None and 'gatewayEndpointId' in kwargs:
-            gateway_endpoint_id = kwargs['gatewayEndpointId']
-        if route_table_id is None and 'routeTableId' in kwargs:
-            route_table_id = kwargs['routeTableId']
-
         if gateway_endpoint_id is not None:
-            _setter("gateway_endpoint_id", gateway_endpoint_id)
+            pulumi.set(__self__, "gateway_endpoint_id", gateway_endpoint_id)
         if route_table_id is not None:
-            _setter("route_table_id", route_table_id)
+            pulumi.set(__self__, "route_table_id", route_table_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="gatewayEndpointId")
@@ -258,10 +218,6 @@ class GatewayEndpointRouteTableAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            GatewayEndpointRouteTableAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

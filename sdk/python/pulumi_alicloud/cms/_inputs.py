@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -58,33 +58,14 @@ class AlarmEscalationsCriticalArgs:
         :param pulumi.Input[str] threshold: Critical level alarm threshold value, which must be a numeric value currently.
         :param pulumi.Input[int] times: Critical level alarm retry times. Default to 3.
         """
-        AlarmEscalationsCriticalArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            comparison_operator=comparison_operator,
-            statistics=statistics,
-            threshold=threshold,
-            times=times,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             comparison_operator: Optional[pulumi.Input[str]] = None,
-             statistics: Optional[pulumi.Input[str]] = None,
-             threshold: Optional[pulumi.Input[str]] = None,
-             times: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if comparison_operator is None and 'comparisonOperator' in kwargs:
-            comparison_operator = kwargs['comparisonOperator']
-
         if comparison_operator is not None:
-            _setter("comparison_operator", comparison_operator)
+            pulumi.set(__self__, "comparison_operator", comparison_operator)
         if statistics is not None:
-            _setter("statistics", statistics)
+            pulumi.set(__self__, "statistics", statistics)
         if threshold is not None:
-            _setter("threshold", threshold)
+            pulumi.set(__self__, "threshold", threshold)
         if times is not None:
-            _setter("times", times)
+            pulumi.set(__self__, "times", times)
 
     @property
     @pulumi.getter(name="comparisonOperator")
@@ -148,33 +129,14 @@ class AlarmEscalationsInfoArgs:
         :param pulumi.Input[str] threshold: Critical level alarm threshold value, which must be a numeric value currently.
         :param pulumi.Input[int] times: Critical level alarm retry times. Default to 3.
         """
-        AlarmEscalationsInfoArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            comparison_operator=comparison_operator,
-            statistics=statistics,
-            threshold=threshold,
-            times=times,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             comparison_operator: Optional[pulumi.Input[str]] = None,
-             statistics: Optional[pulumi.Input[str]] = None,
-             threshold: Optional[pulumi.Input[str]] = None,
-             times: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if comparison_operator is None and 'comparisonOperator' in kwargs:
-            comparison_operator = kwargs['comparisonOperator']
-
         if comparison_operator is not None:
-            _setter("comparison_operator", comparison_operator)
+            pulumi.set(__self__, "comparison_operator", comparison_operator)
         if statistics is not None:
-            _setter("statistics", statistics)
+            pulumi.set(__self__, "statistics", statistics)
         if threshold is not None:
-            _setter("threshold", threshold)
+            pulumi.set(__self__, "threshold", threshold)
         if times is not None:
-            _setter("times", times)
+            pulumi.set(__self__, "times", times)
 
     @property
     @pulumi.getter(name="comparisonOperator")
@@ -238,33 +200,14 @@ class AlarmEscalationsWarnArgs:
         :param pulumi.Input[str] threshold: Critical level alarm threshold value, which must be a numeric value currently.
         :param pulumi.Input[int] times: Critical level alarm retry times. Default to 3.
         """
-        AlarmEscalationsWarnArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            comparison_operator=comparison_operator,
-            statistics=statistics,
-            threshold=threshold,
-            times=times,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             comparison_operator: Optional[pulumi.Input[str]] = None,
-             statistics: Optional[pulumi.Input[str]] = None,
-             threshold: Optional[pulumi.Input[str]] = None,
-             times: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if comparison_operator is None and 'comparisonOperator' in kwargs:
-            comparison_operator = kwargs['comparisonOperator']
-
         if comparison_operator is not None:
-            _setter("comparison_operator", comparison_operator)
+            pulumi.set(__self__, "comparison_operator", comparison_operator)
         if statistics is not None:
-            _setter("statistics", statistics)
+            pulumi.set(__self__, "statistics", statistics)
         if threshold is not None:
-            _setter("threshold", threshold)
+            pulumi.set(__self__, "threshold", threshold)
         if times is not None:
-            _setter("times", times)
+            pulumi.set(__self__, "times", times)
 
     @property
     @pulumi.getter(name="comparisonOperator")
@@ -328,33 +271,14 @@ class AlarmPrometheusArgs:
         :param pulumi.Input[str] prom_ql: The PromQL query statement. **Note:** The data obtained by using the PromQL query statement is the monitoring data. You must include the alert threshold in this statement.
         :param pulumi.Input[int] times: The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
         """
-        AlarmPrometheusArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            annotations=annotations,
-            level=level,
-            prom_ql=prom_ql,
-            times=times,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             level: Optional[pulumi.Input[str]] = None,
-             prom_ql: Optional[pulumi.Input[str]] = None,
-             times: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if prom_ql is None and 'promQl' in kwargs:
-            prom_ql = kwargs['promQl']
-
         if annotations is not None:
-            _setter("annotations", annotations)
+            pulumi.set(__self__, "annotations", annotations)
         if level is not None:
-            _setter("level", level)
+            pulumi.set(__self__, "level", level)
         if prom_ql is not None:
-            _setter("prom_ql", prom_ql)
+            pulumi.set(__self__, "prom_ql", prom_ql)
         if times is not None:
-            _setter("times", times)
+            pulumi.set(__self__, "times", times)
 
     @property
     @pulumi.getter
@@ -414,29 +338,8 @@ class DynamicTagGroupMatchExpressArgs:
         :param pulumi.Input[str] tag_value: The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
         :param pulumi.Input[str] tag_value_match_function: Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
         """
-        DynamicTagGroupMatchExpressArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            tag_value=tag_value,
-            tag_value_match_function=tag_value_match_function,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             tag_value: Optional[pulumi.Input[str]] = None,
-             tag_value_match_function: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if tag_value is None and 'tagValue' in kwargs:
-            tag_value = kwargs['tagValue']
-        if tag_value is None:
-            raise TypeError("Missing 'tag_value' argument")
-        if tag_value_match_function is None and 'tagValueMatchFunction' in kwargs:
-            tag_value_match_function = kwargs['tagValueMatchFunction']
-        if tag_value_match_function is None:
-            raise TypeError("Missing 'tag_value_match_function' argument")
-
-        _setter("tag_value", tag_value)
-        _setter("tag_value_match_function", tag_value_match_function)
+        pulumi.set(__self__, "tag_value", tag_value)
+        pulumi.set(__self__, "tag_value_match_function", tag_value_match_function)
 
     @property
     @pulumi.getter(name="tagValue")
@@ -474,31 +377,12 @@ class EventRuleContactParameterArgs:
         :param pulumi.Input[str] contact_parameters_id: The ID of the recipient that receives alert notifications.
         :param pulumi.Input[str] level: The alert level and the corresponding notification methods.
         """
-        EventRuleContactParameterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            contact_group_name=contact_group_name,
-            contact_parameters_id=contact_parameters_id,
-            level=level,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             contact_group_name: Optional[pulumi.Input[str]] = None,
-             contact_parameters_id: Optional[pulumi.Input[str]] = None,
-             level: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if contact_group_name is None and 'contactGroupName' in kwargs:
-            contact_group_name = kwargs['contactGroupName']
-        if contact_parameters_id is None and 'contactParametersId' in kwargs:
-            contact_parameters_id = kwargs['contactParametersId']
-
         if contact_group_name is not None:
-            _setter("contact_group_name", contact_group_name)
+            pulumi.set(__self__, "contact_group_name", contact_group_name)
         if contact_parameters_id is not None:
-            _setter("contact_parameters_id", contact_parameters_id)
+            pulumi.set(__self__, "contact_parameters_id", contact_parameters_id)
         if level is not None:
-            _setter("level", level)
+            pulumi.set(__self__, "level", level)
 
     @property
     @pulumi.getter(name="contactGroupName")
@@ -552,44 +436,15 @@ class EventRuleEventPatternArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] name_lists: The name of the event-triggered alert rule.
         :param pulumi.Input[str] sql_filter: The SQL condition that is used to filter events. If the content of an event meets the specified SQL condition, an alert is automatically triggered.
         """
-        EventRuleEventPatternArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            product=product,
-            event_type_lists=event_type_lists,
-            level_lists=level_lists,
-            name_lists=name_lists,
-            sql_filter=sql_filter,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             product: Optional[pulumi.Input[str]] = None,
-             event_type_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             level_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             name_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             sql_filter: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if product is None:
-            raise TypeError("Missing 'product' argument")
-        if event_type_lists is None and 'eventTypeLists' in kwargs:
-            event_type_lists = kwargs['eventTypeLists']
-        if level_lists is None and 'levelLists' in kwargs:
-            level_lists = kwargs['levelLists']
-        if name_lists is None and 'nameLists' in kwargs:
-            name_lists = kwargs['nameLists']
-        if sql_filter is None and 'sqlFilter' in kwargs:
-            sql_filter = kwargs['sqlFilter']
-
-        _setter("product", product)
+        pulumi.set(__self__, "product", product)
         if event_type_lists is not None:
-            _setter("event_type_lists", event_type_lists)
+            pulumi.set(__self__, "event_type_lists", event_type_lists)
         if level_lists is not None:
-            _setter("level_lists", level_lists)
+            pulumi.set(__self__, "level_lists", level_lists)
         if name_lists is not None:
-            _setter("name_lists", name_lists)
+            pulumi.set(__self__, "name_lists", name_lists)
         if sql_filter is not None:
-            _setter("sql_filter", sql_filter)
+            pulumi.set(__self__, "sql_filter", sql_filter)
 
     @property
     @pulumi.getter
@@ -667,41 +522,16 @@ class EventRuleFcParameterArgs:
         :param pulumi.Input[str] region: The region where Function Compute is deployed.
         :param pulumi.Input[str] service_name: The name of the Function Compute service.
         """
-        EventRuleFcParameterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            arn=arn,
-            fc_parameters_id=fc_parameters_id,
-            function_name=function_name,
-            region=region,
-            service_name=service_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             arn: Optional[pulumi.Input[str]] = None,
-             fc_parameters_id: Optional[pulumi.Input[str]] = None,
-             function_name: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             service_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if fc_parameters_id is None and 'fcParametersId' in kwargs:
-            fc_parameters_id = kwargs['fcParametersId']
-        if function_name is None and 'functionName' in kwargs:
-            function_name = kwargs['functionName']
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-
         if arn is not None:
-            _setter("arn", arn)
+            pulumi.set(__self__, "arn", arn)
         if fc_parameters_id is not None:
-            _setter("fc_parameters_id", fc_parameters_id)
+            pulumi.set(__self__, "fc_parameters_id", fc_parameters_id)
         if function_name is not None:
-            _setter("function_name", function_name)
+            pulumi.set(__self__, "function_name", function_name)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if service_name is not None:
-            _setter("service_name", service_name)
+            pulumi.set(__self__, "service_name", service_name)
 
     @property
     @pulumi.getter
@@ -779,37 +609,16 @@ class EventRuleMnsParameterArgs:
         :param pulumi.Input[str] region: The region where Message Service (MNS) is deployed.
         :param pulumi.Input[str] topic: The MNS topic.
         """
-        EventRuleMnsParameterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            arn=arn,
-            mns_parameters_id=mns_parameters_id,
-            queue=queue,
-            region=region,
-            topic=topic,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             arn: Optional[pulumi.Input[str]] = None,
-             mns_parameters_id: Optional[pulumi.Input[str]] = None,
-             queue: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             topic: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if mns_parameters_id is None and 'mnsParametersId' in kwargs:
-            mns_parameters_id = kwargs['mnsParametersId']
-
         if arn is not None:
-            _setter("arn", arn)
+            pulumi.set(__self__, "arn", arn)
         if mns_parameters_id is not None:
-            _setter("mns_parameters_id", mns_parameters_id)
+            pulumi.set(__self__, "mns_parameters_id", mns_parameters_id)
         if queue is not None:
-            _setter("queue", queue)
+            pulumi.set(__self__, "queue", queue)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if topic is not None:
-            _setter("topic", topic)
+            pulumi.set(__self__, "topic", topic)
 
     @property
     @pulumi.getter
@@ -891,45 +700,20 @@ class EventRuleOpenApiParameterArgs:
         :param pulumi.Input[str] role: The name of the role.
         :param pulumi.Input[str] version: The version of the API.
         """
-        EventRuleOpenApiParameterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action=action,
-            arn=arn,
-            open_api_parameters_id=open_api_parameters_id,
-            product=product,
-            region=region,
-            role=role,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action: Optional[pulumi.Input[str]] = None,
-             arn: Optional[pulumi.Input[str]] = None,
-             open_api_parameters_id: Optional[pulumi.Input[str]] = None,
-             product: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if open_api_parameters_id is None and 'openApiParametersId' in kwargs:
-            open_api_parameters_id = kwargs['openApiParametersId']
-
         if action is not None:
-            _setter("action", action)
+            pulumi.set(__self__, "action", action)
         if arn is not None:
-            _setter("arn", arn)
+            pulumi.set(__self__, "arn", arn)
         if open_api_parameters_id is not None:
-            _setter("open_api_parameters_id", open_api_parameters_id)
+            pulumi.set(__self__, "open_api_parameters_id", open_api_parameters_id)
         if product is not None:
-            _setter("product", product)
+            pulumi.set(__self__, "product", product)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if role is not None:
-            _setter("role", role)
+            pulumi.set(__self__, "role", role)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -1031,39 +815,16 @@ class EventRuleSlsParameterArgs:
         :param pulumi.Input[str] region: The region where Simple Log Service is deployed.
         :param pulumi.Input[str] sls_parameters_id: The ID of the recipient that receives alert notifications.
         """
-        EventRuleSlsParameterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            arn=arn,
-            log_store=log_store,
-            project=project,
-            region=region,
-            sls_parameters_id=sls_parameters_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             arn: Optional[pulumi.Input[str]] = None,
-             log_store: Optional[pulumi.Input[str]] = None,
-             project: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             sls_parameters_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if log_store is None and 'logStore' in kwargs:
-            log_store = kwargs['logStore']
-        if sls_parameters_id is None and 'slsParametersId' in kwargs:
-            sls_parameters_id = kwargs['slsParametersId']
-
         if arn is not None:
-            _setter("arn", arn)
+            pulumi.set(__self__, "arn", arn)
         if log_store is not None:
-            _setter("log_store", log_store)
+            pulumi.set(__self__, "log_store", log_store)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if sls_parameters_id is not None:
-            _setter("sls_parameters_id", sls_parameters_id)
+            pulumi.set(__self__, "sls_parameters_id", sls_parameters_id)
 
     @property
     @pulumi.getter
@@ -1139,33 +900,14 @@ class EventRuleWebhookParameterArgs:
         :param pulumi.Input[str] url: The callback URL.
         :param pulumi.Input[str] webhook_parameters_id: The ID of the recipient that receives alert notifications.
         """
-        EventRuleWebhookParameterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            method=method,
-            protocol=protocol,
-            url=url,
-            webhook_parameters_id=webhook_parameters_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             method: Optional[pulumi.Input[str]] = None,
-             protocol: Optional[pulumi.Input[str]] = None,
-             url: Optional[pulumi.Input[str]] = None,
-             webhook_parameters_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if webhook_parameters_id is None and 'webhookParametersId' in kwargs:
-            webhook_parameters_id = kwargs['webhookParametersId']
-
         if method is not None:
-            _setter("method", method)
+            pulumi.set(__self__, "method", method)
         if protocol is not None:
-            _setter("protocol", protocol)
+            pulumi.set(__self__, "protocol", protocol)
         if url is not None:
-            _setter("url", url)
+            pulumi.set(__self__, "url", url)
         if webhook_parameters_id is not None:
-            _setter("webhook_parameters_id", webhook_parameters_id)
+            pulumi.set(__self__, "webhook_parameters_id", webhook_parameters_id)
 
     @property
     @pulumi.getter
@@ -1227,27 +969,12 @@ class GroupMetricRuleEscalationsArgs:
         :param pulumi.Input['GroupMetricRuleEscalationsInfoArgs'] info: The info level. See `info` below.
         :param pulumi.Input['GroupMetricRuleEscalationsWarnArgs'] warn: The warn level. See `warn` below.
         """
-        GroupMetricRuleEscalationsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            critical=critical,
-            info=info,
-            warn=warn,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             critical: Optional[pulumi.Input['GroupMetricRuleEscalationsCriticalArgs']] = None,
-             info: Optional[pulumi.Input['GroupMetricRuleEscalationsInfoArgs']] = None,
-             warn: Optional[pulumi.Input['GroupMetricRuleEscalationsWarnArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if critical is not None:
-            _setter("critical", critical)
+            pulumi.set(__self__, "critical", critical)
         if info is not None:
-            _setter("info", info)
+            pulumi.set(__self__, "info", info)
         if warn is not None:
-            _setter("warn", warn)
+            pulumi.set(__self__, "warn", warn)
 
     @property
     @pulumi.getter
@@ -1299,33 +1026,14 @@ class GroupMetricRuleEscalationsCriticalArgs:
         :param pulumi.Input[str] threshold: The threshold for warn-level alerts.
         :param pulumi.Input[int] times: The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
-        GroupMetricRuleEscalationsCriticalArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            comparison_operator=comparison_operator,
-            statistics=statistics,
-            threshold=threshold,
-            times=times,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             comparison_operator: Optional[pulumi.Input[str]] = None,
-             statistics: Optional[pulumi.Input[str]] = None,
-             threshold: Optional[pulumi.Input[str]] = None,
-             times: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if comparison_operator is None and 'comparisonOperator' in kwargs:
-            comparison_operator = kwargs['comparisonOperator']
-
         if comparison_operator is not None:
-            _setter("comparison_operator", comparison_operator)
+            pulumi.set(__self__, "comparison_operator", comparison_operator)
         if statistics is not None:
-            _setter("statistics", statistics)
+            pulumi.set(__self__, "statistics", statistics)
         if threshold is not None:
-            _setter("threshold", threshold)
+            pulumi.set(__self__, "threshold", threshold)
         if times is not None:
-            _setter("times", times)
+            pulumi.set(__self__, "times", times)
 
     @property
     @pulumi.getter(name="comparisonOperator")
@@ -1389,33 +1097,14 @@ class GroupMetricRuleEscalationsInfoArgs:
         :param pulumi.Input[str] threshold: The threshold for warn-level alerts.
         :param pulumi.Input[int] times: The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
-        GroupMetricRuleEscalationsInfoArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            comparison_operator=comparison_operator,
-            statistics=statistics,
-            threshold=threshold,
-            times=times,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             comparison_operator: Optional[pulumi.Input[str]] = None,
-             statistics: Optional[pulumi.Input[str]] = None,
-             threshold: Optional[pulumi.Input[str]] = None,
-             times: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if comparison_operator is None and 'comparisonOperator' in kwargs:
-            comparison_operator = kwargs['comparisonOperator']
-
         if comparison_operator is not None:
-            _setter("comparison_operator", comparison_operator)
+            pulumi.set(__self__, "comparison_operator", comparison_operator)
         if statistics is not None:
-            _setter("statistics", statistics)
+            pulumi.set(__self__, "statistics", statistics)
         if threshold is not None:
-            _setter("threshold", threshold)
+            pulumi.set(__self__, "threshold", threshold)
         if times is not None:
-            _setter("times", times)
+            pulumi.set(__self__, "times", times)
 
     @property
     @pulumi.getter(name="comparisonOperator")
@@ -1479,33 +1168,14 @@ class GroupMetricRuleEscalationsWarnArgs:
         :param pulumi.Input[str] threshold: The threshold for warn-level alerts.
         :param pulumi.Input[int] times: The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
-        GroupMetricRuleEscalationsWarnArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            comparison_operator=comparison_operator,
-            statistics=statistics,
-            threshold=threshold,
-            times=times,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             comparison_operator: Optional[pulumi.Input[str]] = None,
-             statistics: Optional[pulumi.Input[str]] = None,
-             threshold: Optional[pulumi.Input[str]] = None,
-             times: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if comparison_operator is None and 'comparisonOperator' in kwargs:
-            comparison_operator = kwargs['comparisonOperator']
-
         if comparison_operator is not None:
-            _setter("comparison_operator", comparison_operator)
+            pulumi.set(__self__, "comparison_operator", comparison_operator)
         if statistics is not None:
-            _setter("statistics", statistics)
+            pulumi.set(__self__, "statistics", statistics)
         if threshold is not None:
-            _setter("threshold", threshold)
+            pulumi.set(__self__, "threshold", threshold)
         if times is not None:
-            _setter("times", times)
+            pulumi.set(__self__, "times", times)
 
     @property
     @pulumi.getter(name="comparisonOperator")
@@ -1571,33 +1241,14 @@ class GroupMetricRuleTargetArgs:
                > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
         :param pulumi.Input[str] level: The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
         """
-        GroupMetricRuleTargetArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            arn=arn,
-            id=id,
-            json_params=json_params,
-            level=level,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             arn: Optional[pulumi.Input[str]] = None,
-             id: Optional[pulumi.Input[str]] = None,
-             json_params: Optional[pulumi.Input[str]] = None,
-             level: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if json_params is None and 'jsonParams' in kwargs:
-            json_params = kwargs['jsonParams']
-
         if arn is not None:
-            _setter("arn", arn)
+            pulumi.set(__self__, "arn", arn)
         if id is not None:
-            _setter("id", id)
+            pulumi.set(__self__, "id", id)
         if json_params is not None:
-            _setter("json_params", json_params)
+            pulumi.set(__self__, "json_params", json_params)
         if level is not None:
-            _setter("level", level)
+            pulumi.set(__self__, "level", level)
 
     @property
     @pulumi.getter
@@ -1659,23 +1310,10 @@ class HybridMonitorSlsTaskAttachLabelArgs:
         :param pulumi.Input[str] name: The tag key of the metric.
         :param pulumi.Input[str] value: The tag value of the metric.
         """
-        HybridMonitorSlsTaskAttachLabelArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[pulumi.Input[str]] = None,
-             value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -1715,33 +1353,14 @@ class HybridMonitorSlsTaskSlsProcessConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigGroupByArgs']]] group_bies: The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `group_by` below.
         :param pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigStatisticArgs']]] statistics: The method that is used to aggregate logs imported from Log Service. See `statistics` below.
         """
-        HybridMonitorSlsTaskSlsProcessConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expresses=expresses,
-            filter=filter,
-            group_bies=group_bies,
-            statistics=statistics,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expresses: Optional[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigExpressArgs']]]] = None,
-             filter: Optional[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigFilterArgs']] = None,
-             group_bies: Optional[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigGroupByArgs']]]] = None,
-             statistics: Optional[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigStatisticArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if group_bies is None and 'groupBies' in kwargs:
-            group_bies = kwargs['groupBies']
-
         if expresses is not None:
-            _setter("expresses", expresses)
+            pulumi.set(__self__, "expresses", expresses)
         if filter is not None:
-            _setter("filter", filter)
+            pulumi.set(__self__, "filter", filter)
         if group_bies is not None:
-            _setter("group_bies", group_bies)
+            pulumi.set(__self__, "group_bies", group_bies)
         if statistics is not None:
-            _setter("statistics", statistics)
+            pulumi.set(__self__, "statistics", statistics)
 
     @property
     @pulumi.getter
@@ -1801,23 +1420,10 @@ class HybridMonitorSlsTaskSlsProcessConfigExpressArgs:
         :param pulumi.Input[str] alias: The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
         :param pulumi.Input[str] express: The extended field that specifies the result of basic operations that are performed on aggregation results.
         """
-        HybridMonitorSlsTaskSlsProcessConfigExpressArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            alias=alias,
-            express=express,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             alias: Optional[pulumi.Input[str]] = None,
-             express: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if alias is not None:
-            _setter("alias", alias)
+            pulumi.set(__self__, "alias", alias)
         if express is not None:
-            _setter("express", express)
+            pulumi.set(__self__, "express", express)
 
     @property
     @pulumi.getter
@@ -1853,23 +1459,10 @@ class HybridMonitorSlsTaskSlsProcessConfigFilterArgs:
         :param pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs']]] filters: The conditions that are used to filter logs imported from Log Service. See `filters` below.
         :param pulumi.Input[str] relation: The relationship between multiple filter conditions. Valid values: `and`(default value), `or`.
         """
-        HybridMonitorSlsTaskSlsProcessConfigFilterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            filters=filters,
-            relation=relation,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             filters: Optional[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs']]]] = None,
-             relation: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if filters is not None:
-            _setter("filters", filters)
+            pulumi.set(__self__, "filters", filters)
         if relation is not None:
-            _setter("relation", relation)
+            pulumi.set(__self__, "relation", relation)
 
     @property
     @pulumi.getter
@@ -1907,29 +1500,12 @@ class HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs:
         :param pulumi.Input[str] sls_key_name: The name of the key that is used to filter logs imported from Log Service.
         :param pulumi.Input[str] value: The tag value of the metric.
         """
-        HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            operator=operator,
-            sls_key_name=sls_key_name,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             operator: Optional[pulumi.Input[str]] = None,
-             sls_key_name: Optional[pulumi.Input[str]] = None,
-             value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if sls_key_name is None and 'slsKeyName' in kwargs:
-            sls_key_name = kwargs['slsKeyName']
-
         if operator is not None:
-            _setter("operator", operator)
+            pulumi.set(__self__, "operator", operator)
         if sls_key_name is not None:
-            _setter("sls_key_name", sls_key_name)
+            pulumi.set(__self__, "sls_key_name", sls_key_name)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -1977,25 +1553,10 @@ class HybridMonitorSlsTaskSlsProcessConfigGroupByArgs:
         :param pulumi.Input[str] alias: The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
         :param pulumi.Input[str] sls_key_name: The name of the key that is used to filter logs imported from Log Service.
         """
-        HybridMonitorSlsTaskSlsProcessConfigGroupByArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            alias=alias,
-            sls_key_name=sls_key_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             alias: Optional[pulumi.Input[str]] = None,
-             sls_key_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if sls_key_name is None and 'slsKeyName' in kwargs:
-            sls_key_name = kwargs['slsKeyName']
-
         if alias is not None:
-            _setter("alias", alias)
+            pulumi.set(__self__, "alias", alias)
         if sls_key_name is not None:
-            _setter("sls_key_name", sls_key_name)
+            pulumi.set(__self__, "sls_key_name", sls_key_name)
 
     @property
     @pulumi.getter
@@ -2039,41 +1600,16 @@ class HybridMonitorSlsTaskSlsProcessConfigStatisticArgs:
         :param pulumi.Input[str] parameter_two: The value of the function that is used to aggregate logs imported from Log Service. **Note:** This parameter is required only if the `function` parameter is set to `distribution`. This parameter specifies the upper limit of the statistical interval.
         :param pulumi.Input[str] sls_key_name: The name of the key that is used to filter logs imported from Log Service.
         """
-        HybridMonitorSlsTaskSlsProcessConfigStatisticArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            alias=alias,
-            function=function,
-            parameter_one=parameter_one,
-            parameter_two=parameter_two,
-            sls_key_name=sls_key_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             alias: Optional[pulumi.Input[str]] = None,
-             function: Optional[pulumi.Input[str]] = None,
-             parameter_one: Optional[pulumi.Input[str]] = None,
-             parameter_two: Optional[pulumi.Input[str]] = None,
-             sls_key_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if parameter_one is None and 'parameterOne' in kwargs:
-            parameter_one = kwargs['parameterOne']
-        if parameter_two is None and 'parameterTwo' in kwargs:
-            parameter_two = kwargs['parameterTwo']
-        if sls_key_name is None and 'slsKeyName' in kwargs:
-            sls_key_name = kwargs['slsKeyName']
-
         if alias is not None:
-            _setter("alias", alias)
+            pulumi.set(__self__, "alias", alias)
         if function is not None:
-            _setter("function", function)
+            pulumi.set(__self__, "function", function)
         if parameter_one is not None:
-            _setter("parameter_one", parameter_one)
+            pulumi.set(__self__, "parameter_one", parameter_one)
         if parameter_two is not None:
-            _setter("parameter_two", parameter_two)
+            pulumi.set(__self__, "parameter_two", parameter_two)
         if sls_key_name is not None:
-            _setter("sls_key_name", sls_key_name)
+            pulumi.set(__self__, "sls_key_name", sls_key_name)
 
     @property
     @pulumi.getter
@@ -2147,26 +1683,9 @@ class MetricRuleBlackListMetricArgs:
         :param pulumi.Input[str] metric_name: The name of the monitoring indicator.
         :param pulumi.Input[str] resource: The extended dimension information of the instance. For example, '{"device":"C:"}' indicates that the blacklist policy is applied to all C disks under the ECS instance.
         """
-        MetricRuleBlackListMetricArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            metric_name=metric_name,
-            resource=resource,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             metric_name: Optional[pulumi.Input[str]] = None,
-             resource: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if metric_name is None and 'metricName' in kwargs:
-            metric_name = kwargs['metricName']
-        if metric_name is None:
-            raise TypeError("Missing 'metric_name' argument")
-
-        _setter("metric_name", metric_name)
+        pulumi.set(__self__, "metric_name", metric_name)
         if resource is not None:
-            _setter("resource", resource)
+            pulumi.set(__self__, "resource", resource)
 
     @property
     @pulumi.getter(name="metricName")
@@ -2214,47 +1733,14 @@ class MetricRuleTemplateAlertTemplateArgs:
         :param pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsArgs'] escalations: The information about the trigger condition based on the alert level. See `escalations` below.
         :param pulumi.Input[str] webhook: The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
         """
-        MetricRuleTemplateAlertTemplateArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            category=category,
-            metric_name=metric_name,
-            namespace=namespace,
-            rule_name=rule_name,
-            escalations=escalations,
-            webhook=webhook,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             category: Optional[pulumi.Input[str]] = None,
-             metric_name: Optional[pulumi.Input[str]] = None,
-             namespace: Optional[pulumi.Input[str]] = None,
-             rule_name: Optional[pulumi.Input[str]] = None,
-             escalations: Optional[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsArgs']] = None,
-             webhook: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if category is None:
-            raise TypeError("Missing 'category' argument")
-        if metric_name is None and 'metricName' in kwargs:
-            metric_name = kwargs['metricName']
-        if metric_name is None:
-            raise TypeError("Missing 'metric_name' argument")
-        if namespace is None:
-            raise TypeError("Missing 'namespace' argument")
-        if rule_name is None and 'ruleName' in kwargs:
-            rule_name = kwargs['ruleName']
-        if rule_name is None:
-            raise TypeError("Missing 'rule_name' argument")
-
-        _setter("category", category)
-        _setter("metric_name", metric_name)
-        _setter("namespace", namespace)
-        _setter("rule_name", rule_name)
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "metric_name", metric_name)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "rule_name", rule_name)
         if escalations is not None:
-            _setter("escalations", escalations)
+            pulumi.set(__self__, "escalations", escalations)
         if webhook is not None:
-            _setter("webhook", webhook)
+            pulumi.set(__self__, "webhook", webhook)
 
     @property
     @pulumi.getter
@@ -2344,27 +1830,12 @@ class MetricRuleTemplateAlertTemplateEscalationsArgs:
         :param pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsInfoArgs'] info: The condition for triggering info-level alerts. See `info` below.
         :param pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsWarnArgs'] warn: The condition for triggering warn-level alerts. See `warn` below.
         """
-        MetricRuleTemplateAlertTemplateEscalationsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            critical=critical,
-            info=info,
-            warn=warn,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             critical: Optional[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsCriticalArgs']] = None,
-             info: Optional[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsInfoArgs']] = None,
-             warn: Optional[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsWarnArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if critical is not None:
-            _setter("critical", critical)
+            pulumi.set(__self__, "critical", critical)
         if info is not None:
-            _setter("info", info)
+            pulumi.set(__self__, "info", info)
         if warn is not None:
-            _setter("warn", warn)
+            pulumi.set(__self__, "warn", warn)
 
     @property
     @pulumi.getter
@@ -2416,33 +1887,14 @@ class MetricRuleTemplateAlertTemplateEscalationsCriticalArgs:
         :param pulumi.Input[str] threshold: The threshold for critical-level alerts.
         :param pulumi.Input[str] times: The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
         """
-        MetricRuleTemplateAlertTemplateEscalationsCriticalArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            comparison_operator=comparison_operator,
-            statistics=statistics,
-            threshold=threshold,
-            times=times,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             comparison_operator: Optional[pulumi.Input[str]] = None,
-             statistics: Optional[pulumi.Input[str]] = None,
-             threshold: Optional[pulumi.Input[str]] = None,
-             times: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if comparison_operator is None and 'comparisonOperator' in kwargs:
-            comparison_operator = kwargs['comparisonOperator']
-
         if comparison_operator is not None:
-            _setter("comparison_operator", comparison_operator)
+            pulumi.set(__self__, "comparison_operator", comparison_operator)
         if statistics is not None:
-            _setter("statistics", statistics)
+            pulumi.set(__self__, "statistics", statistics)
         if threshold is not None:
-            _setter("threshold", threshold)
+            pulumi.set(__self__, "threshold", threshold)
         if times is not None:
-            _setter("times", times)
+            pulumi.set(__self__, "times", times)
 
     @property
     @pulumi.getter(name="comparisonOperator")
@@ -2506,33 +1958,14 @@ class MetricRuleTemplateAlertTemplateEscalationsInfoArgs:
         :param pulumi.Input[str] threshold: The threshold for critical-level alerts.
         :param pulumi.Input[str] times: The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
         """
-        MetricRuleTemplateAlertTemplateEscalationsInfoArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            comparison_operator=comparison_operator,
-            statistics=statistics,
-            threshold=threshold,
-            times=times,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             comparison_operator: Optional[pulumi.Input[str]] = None,
-             statistics: Optional[pulumi.Input[str]] = None,
-             threshold: Optional[pulumi.Input[str]] = None,
-             times: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if comparison_operator is None and 'comparisonOperator' in kwargs:
-            comparison_operator = kwargs['comparisonOperator']
-
         if comparison_operator is not None:
-            _setter("comparison_operator", comparison_operator)
+            pulumi.set(__self__, "comparison_operator", comparison_operator)
         if statistics is not None:
-            _setter("statistics", statistics)
+            pulumi.set(__self__, "statistics", statistics)
         if threshold is not None:
-            _setter("threshold", threshold)
+            pulumi.set(__self__, "threshold", threshold)
         if times is not None:
-            _setter("times", times)
+            pulumi.set(__self__, "times", times)
 
     @property
     @pulumi.getter(name="comparisonOperator")
@@ -2596,33 +2029,14 @@ class MetricRuleTemplateAlertTemplateEscalationsWarnArgs:
         :param pulumi.Input[str] threshold: The threshold for critical-level alerts.
         :param pulumi.Input[str] times: The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
         """
-        MetricRuleTemplateAlertTemplateEscalationsWarnArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            comparison_operator=comparison_operator,
-            statistics=statistics,
-            threshold=threshold,
-            times=times,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             comparison_operator: Optional[pulumi.Input[str]] = None,
-             statistics: Optional[pulumi.Input[str]] = None,
-             threshold: Optional[pulumi.Input[str]] = None,
-             times: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if comparison_operator is None and 'comparisonOperator' in kwargs:
-            comparison_operator = kwargs['comparisonOperator']
-
         if comparison_operator is not None:
-            _setter("comparison_operator", comparison_operator)
+            pulumi.set(__self__, "comparison_operator", comparison_operator)
         if statistics is not None:
-            _setter("statistics", statistics)
+            pulumi.set(__self__, "statistics", statistics)
         if threshold is not None:
-            _setter("threshold", threshold)
+            pulumi.set(__self__, "threshold", threshold)
         if times is not None:
-            _setter("times", times)
+            pulumi.set(__self__, "times", times)
 
     @property
     @pulumi.getter(name="comparisonOperator")
@@ -2686,41 +2100,10 @@ class MonitorGroupInstancesInstanceArgs:
         :param pulumi.Input[str] instance_name: The name of instance.
         :param pulumi.Input[str] region_id: The region id of instance.
         """
-        MonitorGroupInstancesInstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            category=category,
-            instance_id=instance_id,
-            instance_name=instance_name,
-            region_id=region_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             category: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             instance_name: Optional[pulumi.Input[str]] = None,
-             region_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if category is None:
-            raise TypeError("Missing 'category' argument")
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_name is None:
-            raise TypeError("Missing 'instance_name' argument")
-        if region_id is None and 'regionId' in kwargs:
-            region_id = kwargs['regionId']
-        if region_id is None:
-            raise TypeError("Missing 'region_id' argument")
-
-        _setter("category", category)
-        _setter("instance_id", instance_id)
-        _setter("instance_name", instance_name)
-        _setter("region_id", region_id)
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "region_id", region_id)
 
     @property
     @pulumi.getter
@@ -2780,25 +2163,8 @@ class SiteMonitorIspCityArgs:
         :param pulumi.Input[str] city: The ID of the city.
         :param pulumi.Input[str] isp: The ID of the carrier.
         """
-        SiteMonitorIspCityArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            city=city,
-            isp=isp,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             city: Optional[pulumi.Input[str]] = None,
-             isp: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if city is None:
-            raise TypeError("Missing 'city' argument")
-        if isp is None:
-            raise TypeError("Missing 'isp' argument")
-
-        _setter("city", city)
-        _setter("isp", isp)
+        pulumi.set(__self__, "city", city)
+        pulumi.set(__self__, "isp", isp)
 
     @property
     @pulumi.getter
@@ -2838,42 +2204,11 @@ class SlsGroupSlsGroupConfigArgs:
         :param pulumi.Input[str] sls_region: The Sls Region.
         :param pulumi.Input[str] sls_user_id: The ID of the Sls User.
         """
-        SlsGroupSlsGroupConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            sls_logstore=sls_logstore,
-            sls_project=sls_project,
-            sls_region=sls_region,
-            sls_user_id=sls_user_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             sls_logstore: Optional[pulumi.Input[str]] = None,
-             sls_project: Optional[pulumi.Input[str]] = None,
-             sls_region: Optional[pulumi.Input[str]] = None,
-             sls_user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if sls_logstore is None and 'slsLogstore' in kwargs:
-            sls_logstore = kwargs['slsLogstore']
-        if sls_logstore is None:
-            raise TypeError("Missing 'sls_logstore' argument")
-        if sls_project is None and 'slsProject' in kwargs:
-            sls_project = kwargs['slsProject']
-        if sls_project is None:
-            raise TypeError("Missing 'sls_project' argument")
-        if sls_region is None and 'slsRegion' in kwargs:
-            sls_region = kwargs['slsRegion']
-        if sls_region is None:
-            raise TypeError("Missing 'sls_region' argument")
-        if sls_user_id is None and 'slsUserId' in kwargs:
-            sls_user_id = kwargs['slsUserId']
-
-        _setter("sls_logstore", sls_logstore)
-        _setter("sls_project", sls_project)
-        _setter("sls_region", sls_region)
+        pulumi.set(__self__, "sls_logstore", sls_logstore)
+        pulumi.set(__self__, "sls_project", sls_project)
+        pulumi.set(__self__, "sls_region", sls_region)
         if sls_user_id is not None:
-            _setter("sls_user_id", sls_user_id)
+            pulumi.set(__self__, "sls_user_id", sls_user_id)
 
     @property
     @pulumi.getter(name="slsLogstore")

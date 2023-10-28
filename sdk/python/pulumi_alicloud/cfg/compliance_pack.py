@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,55 +31,18 @@ class CompliancePackArgs:
         :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]] config_rule_ids: A list of Config Rule IDs. See `config_rule_ids` below.
         :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]] config_rules: A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         """
-        CompliancePackArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            compliance_pack_name=compliance_pack_name,
-            description=description,
-            risk_level=risk_level,
-            compliance_pack_template_id=compliance_pack_template_id,
-            config_rule_ids=config_rule_ids,
-            config_rules=config_rules,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             compliance_pack_name: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             risk_level: Optional[pulumi.Input[int]] = None,
-             compliance_pack_template_id: Optional[pulumi.Input[str]] = None,
-             config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]]] = None,
-             config_rules: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if compliance_pack_name is None and 'compliancePackName' in kwargs:
-            compliance_pack_name = kwargs['compliancePackName']
-        if compliance_pack_name is None:
-            raise TypeError("Missing 'compliance_pack_name' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if risk_level is None and 'riskLevel' in kwargs:
-            risk_level = kwargs['riskLevel']
-        if risk_level is None:
-            raise TypeError("Missing 'risk_level' argument")
-        if compliance_pack_template_id is None and 'compliancePackTemplateId' in kwargs:
-            compliance_pack_template_id = kwargs['compliancePackTemplateId']
-        if config_rule_ids is None and 'configRuleIds' in kwargs:
-            config_rule_ids = kwargs['configRuleIds']
-        if config_rules is None and 'configRules' in kwargs:
-            config_rules = kwargs['configRules']
-
-        _setter("compliance_pack_name", compliance_pack_name)
-        _setter("description", description)
-        _setter("risk_level", risk_level)
+        pulumi.set(__self__, "compliance_pack_name", compliance_pack_name)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "risk_level", risk_level)
         if compliance_pack_template_id is not None:
-            _setter("compliance_pack_template_id", compliance_pack_template_id)
+            pulumi.set(__self__, "compliance_pack_template_id", compliance_pack_template_id)
         if config_rule_ids is not None:
-            _setter("config_rule_ids", config_rule_ids)
+            pulumi.set(__self__, "config_rule_ids", config_rule_ids)
         if config_rules is not None:
             warnings.warn("""Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""", DeprecationWarning)
             pulumi.log.warn("""config_rules is deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""")
         if config_rules is not None:
-            _setter("config_rules", config_rules)
+            pulumi.set(__self__, "config_rules", config_rules)
 
     @property
     @pulumi.getter(name="compliancePackName")
@@ -177,56 +140,23 @@ class _CompliancePackState:
         :param pulumi.Input[int] risk_level: The Risk Level. Valid values:
         :param pulumi.Input[str] status: The status of the Compliance Pack.
         """
-        _CompliancePackState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            compliance_pack_name=compliance_pack_name,
-            compliance_pack_template_id=compliance_pack_template_id,
-            config_rule_ids=config_rule_ids,
-            config_rules=config_rules,
-            description=description,
-            risk_level=risk_level,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             compliance_pack_name: Optional[pulumi.Input[str]] = None,
-             compliance_pack_template_id: Optional[pulumi.Input[str]] = None,
-             config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]]] = None,
-             config_rules: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             risk_level: Optional[pulumi.Input[int]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if compliance_pack_name is None and 'compliancePackName' in kwargs:
-            compliance_pack_name = kwargs['compliancePackName']
-        if compliance_pack_template_id is None and 'compliancePackTemplateId' in kwargs:
-            compliance_pack_template_id = kwargs['compliancePackTemplateId']
-        if config_rule_ids is None and 'configRuleIds' in kwargs:
-            config_rule_ids = kwargs['configRuleIds']
-        if config_rules is None and 'configRules' in kwargs:
-            config_rules = kwargs['configRules']
-        if risk_level is None and 'riskLevel' in kwargs:
-            risk_level = kwargs['riskLevel']
-
         if compliance_pack_name is not None:
-            _setter("compliance_pack_name", compliance_pack_name)
+            pulumi.set(__self__, "compliance_pack_name", compliance_pack_name)
         if compliance_pack_template_id is not None:
-            _setter("compliance_pack_template_id", compliance_pack_template_id)
+            pulumi.set(__self__, "compliance_pack_template_id", compliance_pack_template_id)
         if config_rule_ids is not None:
-            _setter("config_rule_ids", config_rule_ids)
+            pulumi.set(__self__, "config_rule_ids", config_rule_ids)
         if config_rules is not None:
             warnings.warn("""Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""", DeprecationWarning)
             pulumi.log.warn("""config_rules is deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""")
         if config_rules is not None:
-            _setter("config_rules", config_rules)
+            pulumi.set(__self__, "config_rules", config_rules)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if risk_level is not None:
-            _setter("risk_level", risk_level)
+            pulumi.set(__self__, "risk_level", risk_level)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="compliancePackName")
@@ -487,10 +417,6 @@ class CompliancePack(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CompliancePackArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

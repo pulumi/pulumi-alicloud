@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TrafficMirrorSessionArgs', 'TrafficMirrorSession']
@@ -45,92 +45,27 @@ class TrafficMirrorSessionArgs:
         :param pulumi.Input[str] traffic_mirror_session_name: The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
         :param pulumi.Input[int] virtual_network_id: The VXLAN network identifier (VNI) that is used to distinguish different mirrored traffic. Valid values: `0` to `16777215`. You can specify VNIs for the traffic mirror destination to identify mirrored traffic from different sessions. If you do not specify a VNI, the system randomly allocates a VNI. If you want the system to randomly allocate a VNI, ignore this parameter.
         """
-        TrafficMirrorSessionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            priority=priority,
-            traffic_mirror_filter_id=traffic_mirror_filter_id,
-            traffic_mirror_source_ids=traffic_mirror_source_ids,
-            traffic_mirror_target_id=traffic_mirror_target_id,
-            traffic_mirror_target_type=traffic_mirror_target_type,
-            dry_run=dry_run,
-            enabled=enabled,
-            packet_length=packet_length,
-            resource_group_id=resource_group_id,
-            tags=tags,
-            traffic_mirror_session_description=traffic_mirror_session_description,
-            traffic_mirror_session_name=traffic_mirror_session_name,
-            virtual_network_id=virtual_network_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             priority: Optional[pulumi.Input[int]] = None,
-             traffic_mirror_filter_id: Optional[pulumi.Input[str]] = None,
-             traffic_mirror_source_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             traffic_mirror_target_id: Optional[pulumi.Input[str]] = None,
-             traffic_mirror_target_type: Optional[pulumi.Input[str]] = None,
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             packet_length: Optional[pulumi.Input[int]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             traffic_mirror_session_description: Optional[pulumi.Input[str]] = None,
-             traffic_mirror_session_name: Optional[pulumi.Input[str]] = None,
-             virtual_network_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if priority is None:
-            raise TypeError("Missing 'priority' argument")
-        if traffic_mirror_filter_id is None and 'trafficMirrorFilterId' in kwargs:
-            traffic_mirror_filter_id = kwargs['trafficMirrorFilterId']
-        if traffic_mirror_filter_id is None:
-            raise TypeError("Missing 'traffic_mirror_filter_id' argument")
-        if traffic_mirror_source_ids is None and 'trafficMirrorSourceIds' in kwargs:
-            traffic_mirror_source_ids = kwargs['trafficMirrorSourceIds']
-        if traffic_mirror_source_ids is None:
-            raise TypeError("Missing 'traffic_mirror_source_ids' argument")
-        if traffic_mirror_target_id is None and 'trafficMirrorTargetId' in kwargs:
-            traffic_mirror_target_id = kwargs['trafficMirrorTargetId']
-        if traffic_mirror_target_id is None:
-            raise TypeError("Missing 'traffic_mirror_target_id' argument")
-        if traffic_mirror_target_type is None and 'trafficMirrorTargetType' in kwargs:
-            traffic_mirror_target_type = kwargs['trafficMirrorTargetType']
-        if traffic_mirror_target_type is None:
-            raise TypeError("Missing 'traffic_mirror_target_type' argument")
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-        if packet_length is None and 'packetLength' in kwargs:
-            packet_length = kwargs['packetLength']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if traffic_mirror_session_description is None and 'trafficMirrorSessionDescription' in kwargs:
-            traffic_mirror_session_description = kwargs['trafficMirrorSessionDescription']
-        if traffic_mirror_session_name is None and 'trafficMirrorSessionName' in kwargs:
-            traffic_mirror_session_name = kwargs['trafficMirrorSessionName']
-        if virtual_network_id is None and 'virtualNetworkId' in kwargs:
-            virtual_network_id = kwargs['virtualNetworkId']
-
-        _setter("priority", priority)
-        _setter("traffic_mirror_filter_id", traffic_mirror_filter_id)
-        _setter("traffic_mirror_source_ids", traffic_mirror_source_ids)
-        _setter("traffic_mirror_target_id", traffic_mirror_target_id)
-        _setter("traffic_mirror_target_type", traffic_mirror_target_type)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "traffic_mirror_filter_id", traffic_mirror_filter_id)
+        pulumi.set(__self__, "traffic_mirror_source_ids", traffic_mirror_source_ids)
+        pulumi.set(__self__, "traffic_mirror_target_id", traffic_mirror_target_id)
+        pulumi.set(__self__, "traffic_mirror_target_type", traffic_mirror_target_type)
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if packet_length is not None:
-            _setter("packet_length", packet_length)
+            pulumi.set(__self__, "packet_length", packet_length)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if traffic_mirror_session_description is not None:
-            _setter("traffic_mirror_session_description", traffic_mirror_session_description)
+            pulumi.set(__self__, "traffic_mirror_session_description", traffic_mirror_session_description)
         if traffic_mirror_session_name is not None:
-            _setter("traffic_mirror_session_name", traffic_mirror_session_name)
+            pulumi.set(__self__, "traffic_mirror_session_name", traffic_mirror_session_name)
         if virtual_network_id is not None:
-            _setter("virtual_network_id", virtual_network_id)
+            pulumi.set(__self__, "virtual_network_id", virtual_network_id)
 
     @property
     @pulumi.getter
@@ -327,91 +262,34 @@ class _TrafficMirrorSessionState:
         :param pulumi.Input[str] traffic_mirror_target_type: The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance.
         :param pulumi.Input[int] virtual_network_id: The VXLAN network identifier (VNI) that is used to distinguish different mirrored traffic. Valid values: `0` to `16777215`. You can specify VNIs for the traffic mirror destination to identify mirrored traffic from different sessions. If you do not specify a VNI, the system randomly allocates a VNI. If you want the system to randomly allocate a VNI, ignore this parameter.
         """
-        _TrafficMirrorSessionState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dry_run=dry_run,
-            enabled=enabled,
-            packet_length=packet_length,
-            priority=priority,
-            resource_group_id=resource_group_id,
-            status=status,
-            tags=tags,
-            traffic_mirror_filter_id=traffic_mirror_filter_id,
-            traffic_mirror_session_description=traffic_mirror_session_description,
-            traffic_mirror_session_name=traffic_mirror_session_name,
-            traffic_mirror_source_ids=traffic_mirror_source_ids,
-            traffic_mirror_target_id=traffic_mirror_target_id,
-            traffic_mirror_target_type=traffic_mirror_target_type,
-            virtual_network_id=virtual_network_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dry_run: Optional[pulumi.Input[bool]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             packet_length: Optional[pulumi.Input[int]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             resource_group_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             traffic_mirror_filter_id: Optional[pulumi.Input[str]] = None,
-             traffic_mirror_session_description: Optional[pulumi.Input[str]] = None,
-             traffic_mirror_session_name: Optional[pulumi.Input[str]] = None,
-             traffic_mirror_source_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             traffic_mirror_target_id: Optional[pulumi.Input[str]] = None,
-             traffic_mirror_target_type: Optional[pulumi.Input[str]] = None,
-             virtual_network_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dry_run is None and 'dryRun' in kwargs:
-            dry_run = kwargs['dryRun']
-        if packet_length is None and 'packetLength' in kwargs:
-            packet_length = kwargs['packetLength']
-        if resource_group_id is None and 'resourceGroupId' in kwargs:
-            resource_group_id = kwargs['resourceGroupId']
-        if traffic_mirror_filter_id is None and 'trafficMirrorFilterId' in kwargs:
-            traffic_mirror_filter_id = kwargs['trafficMirrorFilterId']
-        if traffic_mirror_session_description is None and 'trafficMirrorSessionDescription' in kwargs:
-            traffic_mirror_session_description = kwargs['trafficMirrorSessionDescription']
-        if traffic_mirror_session_name is None and 'trafficMirrorSessionName' in kwargs:
-            traffic_mirror_session_name = kwargs['trafficMirrorSessionName']
-        if traffic_mirror_source_ids is None and 'trafficMirrorSourceIds' in kwargs:
-            traffic_mirror_source_ids = kwargs['trafficMirrorSourceIds']
-        if traffic_mirror_target_id is None and 'trafficMirrorTargetId' in kwargs:
-            traffic_mirror_target_id = kwargs['trafficMirrorTargetId']
-        if traffic_mirror_target_type is None and 'trafficMirrorTargetType' in kwargs:
-            traffic_mirror_target_type = kwargs['trafficMirrorTargetType']
-        if virtual_network_id is None and 'virtualNetworkId' in kwargs:
-            virtual_network_id = kwargs['virtualNetworkId']
-
         if dry_run is not None:
-            _setter("dry_run", dry_run)
+            pulumi.set(__self__, "dry_run", dry_run)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if packet_length is not None:
-            _setter("packet_length", packet_length)
+            pulumi.set(__self__, "packet_length", packet_length)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if resource_group_id is not None:
-            _setter("resource_group_id", resource_group_id)
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if traffic_mirror_filter_id is not None:
-            _setter("traffic_mirror_filter_id", traffic_mirror_filter_id)
+            pulumi.set(__self__, "traffic_mirror_filter_id", traffic_mirror_filter_id)
         if traffic_mirror_session_description is not None:
-            _setter("traffic_mirror_session_description", traffic_mirror_session_description)
+            pulumi.set(__self__, "traffic_mirror_session_description", traffic_mirror_session_description)
         if traffic_mirror_session_name is not None:
-            _setter("traffic_mirror_session_name", traffic_mirror_session_name)
+            pulumi.set(__self__, "traffic_mirror_session_name", traffic_mirror_session_name)
         if traffic_mirror_source_ids is not None:
-            _setter("traffic_mirror_source_ids", traffic_mirror_source_ids)
+            pulumi.set(__self__, "traffic_mirror_source_ids", traffic_mirror_source_ids)
         if traffic_mirror_target_id is not None:
-            _setter("traffic_mirror_target_id", traffic_mirror_target_id)
+            pulumi.set(__self__, "traffic_mirror_target_id", traffic_mirror_target_id)
         if traffic_mirror_target_type is not None:
-            _setter("traffic_mirror_target_type", traffic_mirror_target_type)
+            pulumi.set(__self__, "traffic_mirror_target_type", traffic_mirror_target_type)
         if virtual_network_id is not None:
-            _setter("virtual_network_id", virtual_network_id)
+            pulumi.set(__self__, "virtual_network_id", virtual_network_id)
 
     @property
     @pulumi.getter(name="dryRun")
@@ -797,10 +675,6 @@ class TrafficMirrorSession(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TrafficMirrorSessionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

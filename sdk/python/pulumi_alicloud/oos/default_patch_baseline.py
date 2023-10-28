@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DefaultPatchBaselineArgs', 'DefaultPatchBaseline']
@@ -19,22 +19,7 @@ class DefaultPatchBaselineArgs:
         The set of arguments for constructing a DefaultPatchBaseline resource.
         :param pulumi.Input[str] patch_baseline_name: The name of the patch baseline.
         """
-        DefaultPatchBaselineArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            patch_baseline_name=patch_baseline_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             patch_baseline_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if patch_baseline_name is None and 'patchBaselineName' in kwargs:
-            patch_baseline_name = kwargs['patchBaselineName']
-        if patch_baseline_name is None:
-            raise TypeError("Missing 'patch_baseline_name' argument")
-
-        _setter("patch_baseline_name", patch_baseline_name)
+        pulumi.set(__self__, "patch_baseline_name", patch_baseline_name)
 
     @property
     @pulumi.getter(name="patchBaselineName")
@@ -59,27 +44,10 @@ class _DefaultPatchBaselineState:
         :param pulumi.Input[str] patch_baseline_id: The ID of the patch baseline.
         :param pulumi.Input[str] patch_baseline_name: The name of the patch baseline.
         """
-        _DefaultPatchBaselineState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            patch_baseline_id=patch_baseline_id,
-            patch_baseline_name=patch_baseline_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             patch_baseline_id: Optional[pulumi.Input[str]] = None,
-             patch_baseline_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if patch_baseline_id is None and 'patchBaselineId' in kwargs:
-            patch_baseline_id = kwargs['patchBaselineId']
-        if patch_baseline_name is None and 'patchBaselineName' in kwargs:
-            patch_baseline_name = kwargs['patchBaselineName']
-
         if patch_baseline_id is not None:
-            _setter("patch_baseline_id", patch_baseline_id)
+            pulumi.set(__self__, "patch_baseline_id", patch_baseline_id)
         if patch_baseline_name is not None:
-            _setter("patch_baseline_name", patch_baseline_name)
+            pulumi.set(__self__, "patch_baseline_name", patch_baseline_name)
 
     @property
     @pulumi.getter(name="patchBaselineId")
@@ -195,10 +163,6 @@ class DefaultPatchBaseline(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DefaultPatchBaselineArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

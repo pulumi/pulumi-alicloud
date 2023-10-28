@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -43,84 +43,29 @@ class StackGroupArgs:
         :param pulumi.Input[str] template_url: The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
         :param pulumi.Input[str] template_version: The version of the template.
         """
-        StackGroupArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            stack_group_name=stack_group_name,
-            account_ids=account_ids,
-            administration_role_name=administration_role_name,
-            description=description,
-            execution_role_name=execution_role_name,
-            operation_description=operation_description,
-            operation_preferences=operation_preferences,
-            parameters=parameters,
-            region_ids=region_ids,
-            template_body=template_body,
-            template_url=template_url,
-            template_version=template_version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             stack_group_name: Optional[pulumi.Input[str]] = None,
-             account_ids: Optional[pulumi.Input[str]] = None,
-             administration_role_name: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             execution_role_name: Optional[pulumi.Input[str]] = None,
-             operation_description: Optional[pulumi.Input[str]] = None,
-             operation_preferences: Optional[pulumi.Input[str]] = None,
-             parameters: Optional[pulumi.Input[Sequence[pulumi.Input['StackGroupParameterArgs']]]] = None,
-             region_ids: Optional[pulumi.Input[str]] = None,
-             template_body: Optional[pulumi.Input[str]] = None,
-             template_url: Optional[pulumi.Input[str]] = None,
-             template_version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if stack_group_name is None and 'stackGroupName' in kwargs:
-            stack_group_name = kwargs['stackGroupName']
-        if stack_group_name is None:
-            raise TypeError("Missing 'stack_group_name' argument")
-        if account_ids is None and 'accountIds' in kwargs:
-            account_ids = kwargs['accountIds']
-        if administration_role_name is None and 'administrationRoleName' in kwargs:
-            administration_role_name = kwargs['administrationRoleName']
-        if execution_role_name is None and 'executionRoleName' in kwargs:
-            execution_role_name = kwargs['executionRoleName']
-        if operation_description is None and 'operationDescription' in kwargs:
-            operation_description = kwargs['operationDescription']
-        if operation_preferences is None and 'operationPreferences' in kwargs:
-            operation_preferences = kwargs['operationPreferences']
-        if region_ids is None and 'regionIds' in kwargs:
-            region_ids = kwargs['regionIds']
-        if template_body is None and 'templateBody' in kwargs:
-            template_body = kwargs['templateBody']
-        if template_url is None and 'templateUrl' in kwargs:
-            template_url = kwargs['templateUrl']
-        if template_version is None and 'templateVersion' in kwargs:
-            template_version = kwargs['templateVersion']
-
-        _setter("stack_group_name", stack_group_name)
+        pulumi.set(__self__, "stack_group_name", stack_group_name)
         if account_ids is not None:
-            _setter("account_ids", account_ids)
+            pulumi.set(__self__, "account_ids", account_ids)
         if administration_role_name is not None:
-            _setter("administration_role_name", administration_role_name)
+            pulumi.set(__self__, "administration_role_name", administration_role_name)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if execution_role_name is not None:
-            _setter("execution_role_name", execution_role_name)
+            pulumi.set(__self__, "execution_role_name", execution_role_name)
         if operation_description is not None:
-            _setter("operation_description", operation_description)
+            pulumi.set(__self__, "operation_description", operation_description)
         if operation_preferences is not None:
-            _setter("operation_preferences", operation_preferences)
+            pulumi.set(__self__, "operation_preferences", operation_preferences)
         if parameters is not None:
-            _setter("parameters", parameters)
+            pulumi.set(__self__, "parameters", parameters)
         if region_ids is not None:
-            _setter("region_ids", region_ids)
+            pulumi.set(__self__, "region_ids", region_ids)
         if template_body is not None:
-            _setter("template_body", template_body)
+            pulumi.set(__self__, "template_body", template_body)
         if template_url is not None:
-            _setter("template_url", template_url)
+            pulumi.set(__self__, "template_url", template_url)
         if template_version is not None:
-            _setter("template_version", template_version)
+            pulumi.set(__self__, "template_version", template_version)
 
     @property
     @pulumi.getter(name="stackGroupName")
@@ -301,93 +246,34 @@ class _StackGroupState:
         :param pulumi.Input[str] template_url: The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
         :param pulumi.Input[str] template_version: The version of the template.
         """
-        _StackGroupState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_ids=account_ids,
-            administration_role_name=administration_role_name,
-            description=description,
-            execution_role_name=execution_role_name,
-            operation_description=operation_description,
-            operation_preferences=operation_preferences,
-            parameters=parameters,
-            region_ids=region_ids,
-            stack_group_id=stack_group_id,
-            stack_group_name=stack_group_name,
-            status=status,
-            template_body=template_body,
-            template_url=template_url,
-            template_version=template_version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_ids: Optional[pulumi.Input[str]] = None,
-             administration_role_name: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             execution_role_name: Optional[pulumi.Input[str]] = None,
-             operation_description: Optional[pulumi.Input[str]] = None,
-             operation_preferences: Optional[pulumi.Input[str]] = None,
-             parameters: Optional[pulumi.Input[Sequence[pulumi.Input['StackGroupParameterArgs']]]] = None,
-             region_ids: Optional[pulumi.Input[str]] = None,
-             stack_group_id: Optional[pulumi.Input[str]] = None,
-             stack_group_name: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             template_body: Optional[pulumi.Input[str]] = None,
-             template_url: Optional[pulumi.Input[str]] = None,
-             template_version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_ids is None and 'accountIds' in kwargs:
-            account_ids = kwargs['accountIds']
-        if administration_role_name is None and 'administrationRoleName' in kwargs:
-            administration_role_name = kwargs['administrationRoleName']
-        if execution_role_name is None and 'executionRoleName' in kwargs:
-            execution_role_name = kwargs['executionRoleName']
-        if operation_description is None and 'operationDescription' in kwargs:
-            operation_description = kwargs['operationDescription']
-        if operation_preferences is None and 'operationPreferences' in kwargs:
-            operation_preferences = kwargs['operationPreferences']
-        if region_ids is None and 'regionIds' in kwargs:
-            region_ids = kwargs['regionIds']
-        if stack_group_id is None and 'stackGroupId' in kwargs:
-            stack_group_id = kwargs['stackGroupId']
-        if stack_group_name is None and 'stackGroupName' in kwargs:
-            stack_group_name = kwargs['stackGroupName']
-        if template_body is None and 'templateBody' in kwargs:
-            template_body = kwargs['templateBody']
-        if template_url is None and 'templateUrl' in kwargs:
-            template_url = kwargs['templateUrl']
-        if template_version is None and 'templateVersion' in kwargs:
-            template_version = kwargs['templateVersion']
-
         if account_ids is not None:
-            _setter("account_ids", account_ids)
+            pulumi.set(__self__, "account_ids", account_ids)
         if administration_role_name is not None:
-            _setter("administration_role_name", administration_role_name)
+            pulumi.set(__self__, "administration_role_name", administration_role_name)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if execution_role_name is not None:
-            _setter("execution_role_name", execution_role_name)
+            pulumi.set(__self__, "execution_role_name", execution_role_name)
         if operation_description is not None:
-            _setter("operation_description", operation_description)
+            pulumi.set(__self__, "operation_description", operation_description)
         if operation_preferences is not None:
-            _setter("operation_preferences", operation_preferences)
+            pulumi.set(__self__, "operation_preferences", operation_preferences)
         if parameters is not None:
-            _setter("parameters", parameters)
+            pulumi.set(__self__, "parameters", parameters)
         if region_ids is not None:
-            _setter("region_ids", region_ids)
+            pulumi.set(__self__, "region_ids", region_ids)
         if stack_group_id is not None:
-            _setter("stack_group_id", stack_group_id)
+            pulumi.set(__self__, "stack_group_id", stack_group_id)
         if stack_group_name is not None:
-            _setter("stack_group_name", stack_group_name)
+            pulumi.set(__self__, "stack_group_name", stack_group_name)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if template_body is not None:
-            _setter("template_body", template_body)
+            pulumi.set(__self__, "template_body", template_body)
         if template_url is not None:
-            _setter("template_url", template_url)
+            pulumi.set(__self__, "template_url", template_url)
         if template_version is not None:
-            _setter("template_version", template_version)
+            pulumi.set(__self__, "template_version", template_version)
 
     @property
     @pulumi.getter(name="accountIds")
@@ -671,10 +557,6 @@ class StackGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            StackGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
