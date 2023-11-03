@@ -17,3 +17,11 @@ plugins:
   - name: random 
     version: "4.3.1"
 team: ecosystem
+license:
+  ignore:
+    - github.com/alibabacloud-go/endpoint-util/service
+    - github.com/alibabacloud-go/tea-roa-utils/service
+    - github.com/alibabacloud-go/tea-roa/client
+    - github.com/alibabacloud-go/tea-rpc-utils/service
+    - github.com/alibabacloud-go/tea-rpc/client
+    - github.com/alibabacloud-go/tea-xml/service
