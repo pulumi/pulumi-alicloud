@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DAS Switch Das Pro resource.
@@ -228,12 +227,6 @@ func (i *SwitchDasPro) ToSwitchDasProOutputWithContext(ctx context.Context) Swit
 	return pulumi.ToOutputWithContext(ctx, i).(SwitchDasProOutput)
 }
 
-func (i *SwitchDasPro) ToOutput(ctx context.Context) pulumix.Output[*SwitchDasPro] {
-	return pulumix.Output[*SwitchDasPro]{
-		OutputState: i.ToSwitchDasProOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SwitchDasProArrayInput is an input type that accepts SwitchDasProArray and SwitchDasProArrayOutput values.
 // You can construct a concrete instance of `SwitchDasProArrayInput` via:
 //
@@ -257,12 +250,6 @@ func (i SwitchDasProArray) ToSwitchDasProArrayOutput() SwitchDasProArrayOutput {
 
 func (i SwitchDasProArray) ToSwitchDasProArrayOutputWithContext(ctx context.Context) SwitchDasProArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SwitchDasProArrayOutput)
-}
-
-func (i SwitchDasProArray) ToOutput(ctx context.Context) pulumix.Output[[]*SwitchDasPro] {
-	return pulumix.Output[[]*SwitchDasPro]{
-		OutputState: i.ToSwitchDasProArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SwitchDasProMapInput is an input type that accepts SwitchDasProMap and SwitchDasProMapOutput values.
@@ -290,12 +277,6 @@ func (i SwitchDasProMap) ToSwitchDasProMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(SwitchDasProMapOutput)
 }
 
-func (i SwitchDasProMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SwitchDasPro] {
-	return pulumix.Output[map[string]*SwitchDasPro]{
-		OutputState: i.ToSwitchDasProMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SwitchDasProOutput struct{ *pulumi.OutputState }
 
 func (SwitchDasProOutput) ElementType() reflect.Type {
@@ -308,12 +289,6 @@ func (o SwitchDasProOutput) ToSwitchDasProOutput() SwitchDasProOutput {
 
 func (o SwitchDasProOutput) ToSwitchDasProOutputWithContext(ctx context.Context) SwitchDasProOutput {
 	return o
-}
-
-func (o SwitchDasProOutput) ToOutput(ctx context.Context) pulumix.Output[*SwitchDasPro] {
-	return pulumix.Output[*SwitchDasPro]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the database instance.
@@ -350,12 +325,6 @@ func (o SwitchDasProArrayOutput) ToSwitchDasProArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o SwitchDasProArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SwitchDasPro] {
-	return pulumix.Output[[]*SwitchDasPro]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SwitchDasProArrayOutput) Index(i pulumi.IntInput) SwitchDasProOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SwitchDasPro {
 		return vs[0].([]*SwitchDasPro)[vs[1].(int)]
@@ -374,12 +343,6 @@ func (o SwitchDasProMapOutput) ToSwitchDasProMapOutput() SwitchDasProMapOutput {
 
 func (o SwitchDasProMapOutput) ToSwitchDasProMapOutputWithContext(ctx context.Context) SwitchDasProMapOutput {
 	return o
-}
-
-func (o SwitchDasProMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SwitchDasPro] {
-	return pulumix.Output[map[string]*SwitchDasPro]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SwitchDasProMapOutput) MapIndex(k pulumi.StringInput) SwitchDasProOutput {

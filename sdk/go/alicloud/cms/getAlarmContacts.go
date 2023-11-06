@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a list of alarm contact owned by an Alibaba Cloud account.
@@ -134,12 +133,6 @@ func (o GetAlarmContactsResultOutput) ToGetAlarmContactsResultOutput() GetAlarmC
 
 func (o GetAlarmContactsResultOutput) ToGetAlarmContactsResultOutputWithContext(ctx context.Context) GetAlarmContactsResultOutput {
 	return o
-}
-
-func (o GetAlarmContactsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAlarmContactsResult] {
-	return pulumix.Output[GetAlarmContactsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAlarmContactsResultOutput) ChanelType() pulumi.StringPtrOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Using this data source can open Threat Detection Log Shipper automatically. If the service has been enabled, it will return `Opened`.
@@ -120,12 +119,6 @@ func (o GetLogShipperResultOutput) ToGetLogShipperResultOutput() GetLogShipperRe
 
 func (o GetLogShipperResultOutput) ToGetLogShipperResultOutputWithContext(ctx context.Context) GetLogShipperResultOutput {
 	return o
-}
-
-func (o GetLogShipperResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetLogShipperResult] {
-	return pulumix.Output[GetLogShipperResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Log Analysis Service authorization status.

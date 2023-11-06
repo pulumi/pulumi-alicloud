@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Message Notification Service Subscriptions of the current Alibaba Cloud user.
@@ -143,12 +142,6 @@ func (o GetServiceSubscriptionsResultOutput) ToGetServiceSubscriptionsResultOutp
 
 func (o GetServiceSubscriptionsResultOutput) ToGetServiceSubscriptionsResultOutputWithContext(ctx context.Context) GetServiceSubscriptionsResultOutput {
 	return o
-}
-
-func (o GetServiceSubscriptionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetServiceSubscriptionsResult] {
-	return pulumix.Output[GetServiceSubscriptionsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

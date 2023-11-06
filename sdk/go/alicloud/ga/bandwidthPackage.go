@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Global Accelerator (GA) Bandwidth Package resource.
@@ -324,12 +323,6 @@ func (i *BandwidthPackage) ToBandwidthPackageOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(BandwidthPackageOutput)
 }
 
-func (i *BandwidthPackage) ToOutput(ctx context.Context) pulumix.Output[*BandwidthPackage] {
-	return pulumix.Output[*BandwidthPackage]{
-		OutputState: i.ToBandwidthPackageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BandwidthPackageArrayInput is an input type that accepts BandwidthPackageArray and BandwidthPackageArrayOutput values.
 // You can construct a concrete instance of `BandwidthPackageArrayInput` via:
 //
@@ -353,12 +346,6 @@ func (i BandwidthPackageArray) ToBandwidthPackageArrayOutput() BandwidthPackageA
 
 func (i BandwidthPackageArray) ToBandwidthPackageArrayOutputWithContext(ctx context.Context) BandwidthPackageArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BandwidthPackageArrayOutput)
-}
-
-func (i BandwidthPackageArray) ToOutput(ctx context.Context) pulumix.Output[[]*BandwidthPackage] {
-	return pulumix.Output[[]*BandwidthPackage]{
-		OutputState: i.ToBandwidthPackageArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BandwidthPackageMapInput is an input type that accepts BandwidthPackageMap and BandwidthPackageMapOutput values.
@@ -386,12 +373,6 @@ func (i BandwidthPackageMap) ToBandwidthPackageMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(BandwidthPackageMapOutput)
 }
 
-func (i BandwidthPackageMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BandwidthPackage] {
-	return pulumix.Output[map[string]*BandwidthPackage]{
-		OutputState: i.ToBandwidthPackageMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BandwidthPackageOutput struct{ *pulumi.OutputState }
 
 func (BandwidthPackageOutput) ElementType() reflect.Type {
@@ -404,12 +385,6 @@ func (o BandwidthPackageOutput) ToBandwidthPackageOutput() BandwidthPackageOutpu
 
 func (o BandwidthPackageOutput) ToBandwidthPackageOutputWithContext(ctx context.Context) BandwidthPackageOutput {
 	return o
-}
-
-func (o BandwidthPackageOutput) ToOutput(ctx context.Context) pulumix.Output[*BandwidthPackage] {
-	return pulumix.Output[*BandwidthPackage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to pay automatically. Valid values:
@@ -517,12 +492,6 @@ func (o BandwidthPackageArrayOutput) ToBandwidthPackageArrayOutputWithContext(ct
 	return o
 }
 
-func (o BandwidthPackageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BandwidthPackage] {
-	return pulumix.Output[[]*BandwidthPackage]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BandwidthPackageArrayOutput) Index(i pulumi.IntInput) BandwidthPackageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BandwidthPackage {
 		return vs[0].([]*BandwidthPackage)[vs[1].(int)]
@@ -541,12 +510,6 @@ func (o BandwidthPackageMapOutput) ToBandwidthPackageMapOutput() BandwidthPackag
 
 func (o BandwidthPackageMapOutput) ToBandwidthPackageMapOutputWithContext(ctx context.Context) BandwidthPackageMapOutput {
 	return o
-}
-
-func (o BandwidthPackageMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BandwidthPackage] {
-	return pulumix.Output[map[string]*BandwidthPackage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BandwidthPackageMapOutput) MapIndex(k pulumi.StringInput) BandwidthPackageOutput {

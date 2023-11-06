@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cassandra dataCenter resource supports replica set dataCenters only. The Cassandra provides stable, reliable, and automatic scalable database services.
@@ -333,12 +332,6 @@ func (i *DataCenter) ToDataCenterOutputWithContext(ctx context.Context) DataCent
 	return pulumi.ToOutputWithContext(ctx, i).(DataCenterOutput)
 }
 
-func (i *DataCenter) ToOutput(ctx context.Context) pulumix.Output[*DataCenter] {
-	return pulumix.Output[*DataCenter]{
-		OutputState: i.ToDataCenterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DataCenterArrayInput is an input type that accepts DataCenterArray and DataCenterArrayOutput values.
 // You can construct a concrete instance of `DataCenterArrayInput` via:
 //
@@ -362,12 +355,6 @@ func (i DataCenterArray) ToDataCenterArrayOutput() DataCenterArrayOutput {
 
 func (i DataCenterArray) ToDataCenterArrayOutputWithContext(ctx context.Context) DataCenterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DataCenterArrayOutput)
-}
-
-func (i DataCenterArray) ToOutput(ctx context.Context) pulumix.Output[[]*DataCenter] {
-	return pulumix.Output[[]*DataCenter]{
-		OutputState: i.ToDataCenterArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DataCenterMapInput is an input type that accepts DataCenterMap and DataCenterMapOutput values.
@@ -395,12 +382,6 @@ func (i DataCenterMap) ToDataCenterMapOutputWithContext(ctx context.Context) Dat
 	return pulumi.ToOutputWithContext(ctx, i).(DataCenterMapOutput)
 }
 
-func (i DataCenterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DataCenter] {
-	return pulumix.Output[map[string]*DataCenter]{
-		OutputState: i.ToDataCenterMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataCenterOutput struct{ *pulumi.OutputState }
 
 func (DataCenterOutput) ElementType() reflect.Type {
@@ -413,12 +394,6 @@ func (o DataCenterOutput) ToDataCenterOutput() DataCenterOutput {
 
 func (o DataCenterOutput) ToDataCenterOutputWithContext(ctx context.Context) DataCenterOutput {
 	return o
-}
-
-func (o DataCenterOutput) ToOutput(ctx context.Context) pulumix.Output[*DataCenter] {
-	return pulumix.Output[*DataCenter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when payType = Subscription.
@@ -518,12 +493,6 @@ func (o DataCenterArrayOutput) ToDataCenterArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o DataCenterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DataCenter] {
-	return pulumix.Output[[]*DataCenter]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DataCenterArrayOutput) Index(i pulumi.IntInput) DataCenterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DataCenter {
 		return vs[0].([]*DataCenter)[vs[1].(int)]
@@ -542,12 +511,6 @@ func (o DataCenterMapOutput) ToDataCenterMapOutput() DataCenterMapOutput {
 
 func (o DataCenterMapOutput) ToDataCenterMapOutputWithContext(ctx context.Context) DataCenterMapOutput {
 	return o
-}
-
-func (o DataCenterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DataCenter] {
-	return pulumix.Output[map[string]*DataCenter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataCenterMapOutput) MapIndex(k pulumi.StringInput) DataCenterOutput {

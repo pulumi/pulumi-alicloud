@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a RAM cloud account alias.
@@ -145,12 +144,6 @@ func (i *AccountAlias) ToAccountAliasOutputWithContext(ctx context.Context) Acco
 	return pulumi.ToOutputWithContext(ctx, i).(AccountAliasOutput)
 }
 
-func (i *AccountAlias) ToOutput(ctx context.Context) pulumix.Output[*AccountAlias] {
-	return pulumix.Output[*AccountAlias]{
-		OutputState: i.ToAccountAliasOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccountAliasArrayInput is an input type that accepts AccountAliasArray and AccountAliasArrayOutput values.
 // You can construct a concrete instance of `AccountAliasArrayInput` via:
 //
@@ -174,12 +167,6 @@ func (i AccountAliasArray) ToAccountAliasArrayOutput() AccountAliasArrayOutput {
 
 func (i AccountAliasArray) ToAccountAliasArrayOutputWithContext(ctx context.Context) AccountAliasArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccountAliasArrayOutput)
-}
-
-func (i AccountAliasArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccountAlias] {
-	return pulumix.Output[[]*AccountAlias]{
-		OutputState: i.ToAccountAliasArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AccountAliasMapInput is an input type that accepts AccountAliasMap and AccountAliasMapOutput values.
@@ -207,12 +194,6 @@ func (i AccountAliasMap) ToAccountAliasMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AccountAliasMapOutput)
 }
 
-func (i AccountAliasMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccountAlias] {
-	return pulumix.Output[map[string]*AccountAlias]{
-		OutputState: i.ToAccountAliasMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccountAliasOutput struct{ *pulumi.OutputState }
 
 func (AccountAliasOutput) ElementType() reflect.Type {
@@ -225,12 +206,6 @@ func (o AccountAliasOutput) ToAccountAliasOutput() AccountAliasOutput {
 
 func (o AccountAliasOutput) ToAccountAliasOutputWithContext(ctx context.Context) AccountAliasOutput {
 	return o
-}
-
-func (o AccountAliasOutput) ToOutput(ctx context.Context) pulumix.Output[*AccountAlias] {
-	return pulumix.Output[*AccountAlias]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
@@ -252,12 +227,6 @@ func (o AccountAliasArrayOutput) ToAccountAliasArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o AccountAliasArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccountAlias] {
-	return pulumix.Output[[]*AccountAlias]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccountAliasArrayOutput) Index(i pulumi.IntInput) AccountAliasOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccountAlias {
 		return vs[0].([]*AccountAlias)[vs[1].(int)]
@@ -276,12 +245,6 @@ func (o AccountAliasMapOutput) ToAccountAliasMapOutput() AccountAliasMapOutput {
 
 func (o AccountAliasMapOutput) ToAccountAliasMapOutputWithContext(ctx context.Context) AccountAliasMapOutput {
 	return o
-}
-
-func (o AccountAliasMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccountAlias] {
-	return pulumix.Output[map[string]*AccountAlias]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccountAliasMapOutput) MapIndex(k pulumi.StringInput) AccountAliasOutput {

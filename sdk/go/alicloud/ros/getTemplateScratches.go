@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ros Template Scratches of the current Alibaba Cloud user.
@@ -140,12 +139,6 @@ func (o GetTemplateScratchesResultOutput) ToGetTemplateScratchesResultOutput() G
 
 func (o GetTemplateScratchesResultOutput) ToGetTemplateScratchesResultOutputWithContext(ctx context.Context) GetTemplateScratchesResultOutput {
 	return o
-}
-
-func (o GetTemplateScratchesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTemplateScratchesResult] {
-	return pulumix.Output[GetTemplateScratchesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetTemplateScratchesResultOutput) EnableDetails() pulumi.BoolPtrOutput {

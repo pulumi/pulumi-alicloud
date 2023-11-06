@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The data transformation of the log service is a hosted, highly available, and scalable data processing service,
@@ -461,12 +460,6 @@ func (i *Etl) ToEtlOutputWithContext(ctx context.Context) EtlOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EtlOutput)
 }
 
-func (i *Etl) ToOutput(ctx context.Context) pulumix.Output[*Etl] {
-	return pulumix.Output[*Etl]{
-		OutputState: i.ToEtlOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EtlArrayInput is an input type that accepts EtlArray and EtlArrayOutput values.
 // You can construct a concrete instance of `EtlArrayInput` via:
 //
@@ -490,12 +483,6 @@ func (i EtlArray) ToEtlArrayOutput() EtlArrayOutput {
 
 func (i EtlArray) ToEtlArrayOutputWithContext(ctx context.Context) EtlArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EtlArrayOutput)
-}
-
-func (i EtlArray) ToOutput(ctx context.Context) pulumix.Output[[]*Etl] {
-	return pulumix.Output[[]*Etl]{
-		OutputState: i.ToEtlArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EtlMapInput is an input type that accepts EtlMap and EtlMapOutput values.
@@ -523,12 +510,6 @@ func (i EtlMap) ToEtlMapOutputWithContext(ctx context.Context) EtlMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EtlMapOutput)
 }
 
-func (i EtlMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Etl] {
-	return pulumix.Output[map[string]*Etl]{
-		OutputState: i.ToEtlMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EtlOutput struct{ *pulumi.OutputState }
 
 func (EtlOutput) ElementType() reflect.Type {
@@ -541,12 +522,6 @@ func (o EtlOutput) ToEtlOutput() EtlOutput {
 
 func (o EtlOutput) ToEtlOutputWithContext(ctx context.Context) EtlOutput {
 	return o
-}
-
-func (o EtlOutput) ToOutput(ctx context.Context) pulumix.Output[*Etl] {
-	return pulumix.Output[*Etl]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Delivery target logstore access key id.
@@ -678,12 +653,6 @@ func (o EtlArrayOutput) ToEtlArrayOutputWithContext(ctx context.Context) EtlArra
 	return o
 }
 
-func (o EtlArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Etl] {
-	return pulumix.Output[[]*Etl]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EtlArrayOutput) Index(i pulumi.IntInput) EtlOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Etl {
 		return vs[0].([]*Etl)[vs[1].(int)]
@@ -702,12 +671,6 @@ func (o EtlMapOutput) ToEtlMapOutput() EtlMapOutput {
 
 func (o EtlMapOutput) ToEtlMapOutputWithContext(ctx context.Context) EtlMapOutput {
 	return o
-}
-
-func (o EtlMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Etl] {
-	return pulumix.Output[map[string]*Etl]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EtlMapOutput) MapIndex(k pulumi.StringInput) EtlOutput {

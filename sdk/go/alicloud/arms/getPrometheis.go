@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Arms Prometheis of the current Alibaba Cloud user.
@@ -138,12 +137,6 @@ func (o GetPrometheisResultOutput) ToGetPrometheisResultOutput() GetPrometheisRe
 
 func (o GetPrometheisResultOutput) ToGetPrometheisResultOutputWithContext(ctx context.Context) GetPrometheisResultOutput {
 	return o
-}
-
-func (o GetPrometheisResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPrometheisResult] {
-	return pulumix.Output[GetPrometheisResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

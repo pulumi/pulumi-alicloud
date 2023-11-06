@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides metadata of kubernetes cluster addons.
@@ -115,12 +114,6 @@ func (o GetKubernetesAddonMetadataResultOutput) ToGetKubernetesAddonMetadataResu
 
 func (o GetKubernetesAddonMetadataResultOutput) ToGetKubernetesAddonMetadataResultOutputWithContext(ctx context.Context) GetKubernetesAddonMetadataResultOutput {
 	return o
-}
-
-func (o GetKubernetesAddonMetadataResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetKubernetesAddonMetadataResult] {
-	return pulumix.Output[GetKubernetesAddonMetadataResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetKubernetesAddonMetadataResultOutput) ClusterId() pulumi.StringOutput {

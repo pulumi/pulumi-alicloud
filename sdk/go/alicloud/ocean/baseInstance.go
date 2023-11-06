@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Ocean Base Instance resource.
@@ -472,12 +471,6 @@ func (i *BaseInstance) ToBaseInstanceOutputWithContext(ctx context.Context) Base
 	return pulumi.ToOutputWithContext(ctx, i).(BaseInstanceOutput)
 }
 
-func (i *BaseInstance) ToOutput(ctx context.Context) pulumix.Output[*BaseInstance] {
-	return pulumix.Output[*BaseInstance]{
-		OutputState: i.ToBaseInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BaseInstanceArrayInput is an input type that accepts BaseInstanceArray and BaseInstanceArrayOutput values.
 // You can construct a concrete instance of `BaseInstanceArrayInput` via:
 //
@@ -501,12 +494,6 @@ func (i BaseInstanceArray) ToBaseInstanceArrayOutput() BaseInstanceArrayOutput {
 
 func (i BaseInstanceArray) ToBaseInstanceArrayOutputWithContext(ctx context.Context) BaseInstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BaseInstanceArrayOutput)
-}
-
-func (i BaseInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*BaseInstance] {
-	return pulumix.Output[[]*BaseInstance]{
-		OutputState: i.ToBaseInstanceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BaseInstanceMapInput is an input type that accepts BaseInstanceMap and BaseInstanceMapOutput values.
@@ -534,12 +521,6 @@ func (i BaseInstanceMap) ToBaseInstanceMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(BaseInstanceMapOutput)
 }
 
-func (i BaseInstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BaseInstance] {
-	return pulumix.Output[map[string]*BaseInstance]{
-		OutputState: i.ToBaseInstanceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BaseInstanceOutput struct{ *pulumi.OutputState }
 
 func (BaseInstanceOutput) ElementType() reflect.Type {
@@ -552,12 +533,6 @@ func (o BaseInstanceOutput) ToBaseInstanceOutput() BaseInstanceOutput {
 
 func (o BaseInstanceOutput) ToBaseInstanceOutputWithContext(ctx context.Context) BaseInstanceOutput {
 	return o
-}
-
-func (o BaseInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*BaseInstance] {
-	return pulumix.Output[*BaseInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to automatically renew.
@@ -694,12 +669,6 @@ func (o BaseInstanceArrayOutput) ToBaseInstanceArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o BaseInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BaseInstance] {
-	return pulumix.Output[[]*BaseInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BaseInstanceArrayOutput) Index(i pulumi.IntInput) BaseInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BaseInstance {
 		return vs[0].([]*BaseInstance)[vs[1].(int)]
@@ -718,12 +687,6 @@ func (o BaseInstanceMapOutput) ToBaseInstanceMapOutput() BaseInstanceMapOutput {
 
 func (o BaseInstanceMapOutput) ToBaseInstanceMapOutputWithContext(ctx context.Context) BaseInstanceMapOutput {
 	return o
-}
-
-func (o BaseInstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BaseInstance] {
-	return pulumix.Output[map[string]*BaseInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BaseInstanceMapOutput) MapIndex(k pulumi.StringInput) BaseInstanceOutput {

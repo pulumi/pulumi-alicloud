@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -79,12 +78,6 @@ func (i GetOpenApiPricingModulesModuleArgs) ToGetOpenApiPricingModulesModuleOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetOpenApiPricingModulesModuleOutput)
 }
 
-func (i GetOpenApiPricingModulesModuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetOpenApiPricingModulesModule] {
-	return pulumix.Output[GetOpenApiPricingModulesModule]{
-		OutputState: i.ToGetOpenApiPricingModulesModuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetOpenApiPricingModulesModuleArrayInput is an input type that accepts GetOpenApiPricingModulesModuleArray and GetOpenApiPricingModulesModuleArrayOutput values.
 // You can construct a concrete instance of `GetOpenApiPricingModulesModuleArrayInput` via:
 //
@@ -110,12 +103,6 @@ func (i GetOpenApiPricingModulesModuleArray) ToGetOpenApiPricingModulesModuleArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetOpenApiPricingModulesModuleArrayOutput)
 }
 
-func (i GetOpenApiPricingModulesModuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetOpenApiPricingModulesModule] {
-	return pulumix.Output[[]GetOpenApiPricingModulesModule]{
-		OutputState: i.ToGetOpenApiPricingModulesModuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetOpenApiPricingModulesModuleOutput struct{ *pulumi.OutputState }
 
 func (GetOpenApiPricingModulesModuleOutput) ElementType() reflect.Type {
@@ -128,12 +115,6 @@ func (o GetOpenApiPricingModulesModuleOutput) ToGetOpenApiPricingModulesModuleOu
 
 func (o GetOpenApiPricingModulesModuleOutput) ToGetOpenApiPricingModulesModuleOutputWithContext(ctx context.Context) GetOpenApiPricingModulesModuleOutput {
 	return o
-}
-
-func (o GetOpenApiPricingModulesModuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetOpenApiPricingModulesModule] {
-	return pulumix.Output[GetOpenApiPricingModulesModule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Property Code.
@@ -190,12 +171,6 @@ func (o GetOpenApiPricingModulesModuleArrayOutput) ToGetOpenApiPricingModulesMod
 
 func (o GetOpenApiPricingModulesModuleArrayOutput) ToGetOpenApiPricingModulesModuleArrayOutputWithContext(ctx context.Context) GetOpenApiPricingModulesModuleArrayOutput {
 	return o
-}
-
-func (o GetOpenApiPricingModulesModuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetOpenApiPricingModulesModule] {
-	return pulumix.Output[[]GetOpenApiPricingModulesModule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetOpenApiPricingModulesModuleArrayOutput) Index(i pulumi.IntInput) GetOpenApiPricingModulesModuleOutput {
@@ -255,12 +230,6 @@ func (i GetOpenApiPricingModulesModuleValueArgs) ToGetOpenApiPricingModulesModul
 	return pulumi.ToOutputWithContext(ctx, i).(GetOpenApiPricingModulesModuleValueOutput)
 }
 
-func (i GetOpenApiPricingModulesModuleValueArgs) ToOutput(ctx context.Context) pulumix.Output[GetOpenApiPricingModulesModuleValue] {
-	return pulumix.Output[GetOpenApiPricingModulesModuleValue]{
-		OutputState: i.ToGetOpenApiPricingModulesModuleValueOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetOpenApiPricingModulesModuleValueArrayInput is an input type that accepts GetOpenApiPricingModulesModuleValueArray and GetOpenApiPricingModulesModuleValueArrayOutput values.
 // You can construct a concrete instance of `GetOpenApiPricingModulesModuleValueArrayInput` via:
 //
@@ -286,12 +255,6 @@ func (i GetOpenApiPricingModulesModuleValueArray) ToGetOpenApiPricingModulesModu
 	return pulumi.ToOutputWithContext(ctx, i).(GetOpenApiPricingModulesModuleValueArrayOutput)
 }
 
-func (i GetOpenApiPricingModulesModuleValueArray) ToOutput(ctx context.Context) pulumix.Output[[]GetOpenApiPricingModulesModuleValue] {
-	return pulumix.Output[[]GetOpenApiPricingModulesModuleValue]{
-		OutputState: i.ToGetOpenApiPricingModulesModuleValueArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetOpenApiPricingModulesModuleValueOutput struct{ *pulumi.OutputState }
 
 func (GetOpenApiPricingModulesModuleValueOutput) ElementType() reflect.Type {
@@ -304,12 +267,6 @@ func (o GetOpenApiPricingModulesModuleValueOutput) ToGetOpenApiPricingModulesMod
 
 func (o GetOpenApiPricingModulesModuleValueOutput) ToGetOpenApiPricingModulesModuleValueOutputWithContext(ctx context.Context) GetOpenApiPricingModulesModuleValueOutput {
 	return o
-}
-
-func (o GetOpenApiPricingModulesModuleValueOutput) ToOutput(ctx context.Context) pulumix.Output[GetOpenApiPricingModulesModuleValue] {
-	return pulumix.Output[GetOpenApiPricingModulesModuleValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The module Code corresponds to the attribute value.
@@ -347,12 +304,6 @@ func (o GetOpenApiPricingModulesModuleValueArrayOutput) ToGetOpenApiPricingModul
 
 func (o GetOpenApiPricingModulesModuleValueArrayOutput) ToGetOpenApiPricingModulesModuleValueArrayOutputWithContext(ctx context.Context) GetOpenApiPricingModulesModuleValueArrayOutput {
 	return o
-}
-
-func (o GetOpenApiPricingModulesModuleValueArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetOpenApiPricingModulesModuleValue] {
-	return pulumix.Output[[]GetOpenApiPricingModulesModuleValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetOpenApiPricingModulesModuleValueArrayOutput) Index(i pulumi.IntInput) GetOpenApiPricingModulesModuleValueOutput {
@@ -414,12 +365,6 @@ func (i GetOpenApiProductsProductArgs) ToGetOpenApiProductsProductOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetOpenApiProductsProductOutput)
 }
 
-func (i GetOpenApiProductsProductArgs) ToOutput(ctx context.Context) pulumix.Output[GetOpenApiProductsProduct] {
-	return pulumix.Output[GetOpenApiProductsProduct]{
-		OutputState: i.ToGetOpenApiProductsProductOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetOpenApiProductsProductArrayInput is an input type that accepts GetOpenApiProductsProductArray and GetOpenApiProductsProductArrayOutput values.
 // You can construct a concrete instance of `GetOpenApiProductsProductArrayInput` via:
 //
@@ -445,12 +390,6 @@ func (i GetOpenApiProductsProductArray) ToGetOpenApiProductsProductArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetOpenApiProductsProductArrayOutput)
 }
 
-func (i GetOpenApiProductsProductArray) ToOutput(ctx context.Context) pulumix.Output[[]GetOpenApiProductsProduct] {
-	return pulumix.Output[[]GetOpenApiProductsProduct]{
-		OutputState: i.ToGetOpenApiProductsProductArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetOpenApiProductsProductOutput struct{ *pulumi.OutputState }
 
 func (GetOpenApiProductsProductOutput) ElementType() reflect.Type {
@@ -463,12 +402,6 @@ func (o GetOpenApiProductsProductOutput) ToGetOpenApiProductsProductOutput() Get
 
 func (o GetOpenApiProductsProductOutput) ToGetOpenApiProductsProductOutputWithContext(ctx context.Context) GetOpenApiProductsProductOutput {
 	return o
-}
-
-func (o GetOpenApiProductsProductOutput) ToOutput(ctx context.Context) pulumix.Output[GetOpenApiProductsProduct] {
-	return pulumix.Output[GetOpenApiProductsProduct]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the product. The value is formulated as `<product_code>:<product_type>:<subscription_type>`.
@@ -510,12 +443,6 @@ func (o GetOpenApiProductsProductArrayOutput) ToGetOpenApiProductsProductArrayOu
 
 func (o GetOpenApiProductsProductArrayOutput) ToGetOpenApiProductsProductArrayOutputWithContext(ctx context.Context) GetOpenApiProductsProductArrayOutput {
 	return o
-}
-
-func (o GetOpenApiProductsProductArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetOpenApiProductsProduct] {
-	return pulumix.Output[[]GetOpenApiProductsProduct]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetOpenApiProductsProductArrayOutput) Index(i pulumi.IntInput) GetOpenApiProductsProductOutput {

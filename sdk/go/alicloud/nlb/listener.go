@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a NLB Listener resource.
@@ -457,12 +456,6 @@ func (i *Listener) ToListenerOutputWithContext(ctx context.Context) ListenerOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ListenerOutput)
 }
 
-func (i *Listener) ToOutput(ctx context.Context) pulumix.Output[*Listener] {
-	return pulumix.Output[*Listener]{
-		OutputState: i.ToListenerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ListenerArrayInput is an input type that accepts ListenerArray and ListenerArrayOutput values.
 // You can construct a concrete instance of `ListenerArrayInput` via:
 //
@@ -486,12 +479,6 @@ func (i ListenerArray) ToListenerArrayOutput() ListenerArrayOutput {
 
 func (i ListenerArray) ToListenerArrayOutputWithContext(ctx context.Context) ListenerArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ListenerArrayOutput)
-}
-
-func (i ListenerArray) ToOutput(ctx context.Context) pulumix.Output[[]*Listener] {
-	return pulumix.Output[[]*Listener]{
-		OutputState: i.ToListenerArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ListenerMapInput is an input type that accepts ListenerMap and ListenerMapOutput values.
@@ -519,12 +506,6 @@ func (i ListenerMap) ToListenerMapOutputWithContext(ctx context.Context) Listene
 	return pulumi.ToOutputWithContext(ctx, i).(ListenerMapOutput)
 }
 
-func (i ListenerMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Listener] {
-	return pulumix.Output[map[string]*Listener]{
-		OutputState: i.ToListenerMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ListenerOutput struct{ *pulumi.OutputState }
 
 func (ListenerOutput) ElementType() reflect.Type {
@@ -537,12 +518,6 @@ func (o ListenerOutput) ToListenerOutput() ListenerOutput {
 
 func (o ListenerOutput) ToListenerOutputWithContext(ctx context.Context) ListenerOutput {
 	return o
-}
-
-func (o ListenerOutput) ToOutput(ctx context.Context) pulumix.Output[*Listener] {
-	return pulumix.Output[*Listener]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies whether to enable Application-Layer Protocol Negotiation (ALPN).
@@ -656,12 +631,6 @@ func (o ListenerArrayOutput) ToListenerArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o ListenerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Listener] {
-	return pulumix.Output[[]*Listener]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ListenerArrayOutput) Index(i pulumi.IntInput) ListenerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Listener {
 		return vs[0].([]*Listener)[vs[1].(int)]
@@ -680,12 +649,6 @@ func (o ListenerMapOutput) ToListenerMapOutput() ListenerMapOutput {
 
 func (o ListenerMapOutput) ToListenerMapOutputWithContext(ctx context.Context) ListenerMapOutput {
 	return o
-}
-
-func (o ListenerMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Listener] {
-	return pulumix.Output[map[string]*Listener]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ListenerMapOutput) MapIndex(k pulumi.StringInput) ListenerOutput {

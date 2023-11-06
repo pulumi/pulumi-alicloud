@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a VPC Traffic Mirror Session resource. Traffic mirroring session.
@@ -409,12 +408,6 @@ func (i *TrafficMirrorSession) ToTrafficMirrorSessionOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(TrafficMirrorSessionOutput)
 }
 
-func (i *TrafficMirrorSession) ToOutput(ctx context.Context) pulumix.Output[*TrafficMirrorSession] {
-	return pulumix.Output[*TrafficMirrorSession]{
-		OutputState: i.ToTrafficMirrorSessionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TrafficMirrorSessionArrayInput is an input type that accepts TrafficMirrorSessionArray and TrafficMirrorSessionArrayOutput values.
 // You can construct a concrete instance of `TrafficMirrorSessionArrayInput` via:
 //
@@ -438,12 +431,6 @@ func (i TrafficMirrorSessionArray) ToTrafficMirrorSessionArrayOutput() TrafficMi
 
 func (i TrafficMirrorSessionArray) ToTrafficMirrorSessionArrayOutputWithContext(ctx context.Context) TrafficMirrorSessionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TrafficMirrorSessionArrayOutput)
-}
-
-func (i TrafficMirrorSessionArray) ToOutput(ctx context.Context) pulumix.Output[[]*TrafficMirrorSession] {
-	return pulumix.Output[[]*TrafficMirrorSession]{
-		OutputState: i.ToTrafficMirrorSessionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TrafficMirrorSessionMapInput is an input type that accepts TrafficMirrorSessionMap and TrafficMirrorSessionMapOutput values.
@@ -471,12 +458,6 @@ func (i TrafficMirrorSessionMap) ToTrafficMirrorSessionMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(TrafficMirrorSessionMapOutput)
 }
 
-func (i TrafficMirrorSessionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TrafficMirrorSession] {
-	return pulumix.Output[map[string]*TrafficMirrorSession]{
-		OutputState: i.ToTrafficMirrorSessionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TrafficMirrorSessionOutput struct{ *pulumi.OutputState }
 
 func (TrafficMirrorSessionOutput) ElementType() reflect.Type {
@@ -489,12 +470,6 @@ func (o TrafficMirrorSessionOutput) ToTrafficMirrorSessionOutput() TrafficMirror
 
 func (o TrafficMirrorSessionOutput) ToTrafficMirrorSessionOutputWithContext(ctx context.Context) TrafficMirrorSessionOutput {
 	return o
-}
-
-func (o TrafficMirrorSessionOutput) ToOutput(ctx context.Context) pulumix.Output[*TrafficMirrorSession] {
-	return pulumix.Output[*TrafficMirrorSession]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to PreCheck only this request, value:
@@ -583,12 +558,6 @@ func (o TrafficMirrorSessionArrayOutput) ToTrafficMirrorSessionArrayOutputWithCo
 	return o
 }
 
-func (o TrafficMirrorSessionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TrafficMirrorSession] {
-	return pulumix.Output[[]*TrafficMirrorSession]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TrafficMirrorSessionArrayOutput) Index(i pulumi.IntInput) TrafficMirrorSessionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TrafficMirrorSession {
 		return vs[0].([]*TrafficMirrorSession)[vs[1].(int)]
@@ -607,12 +576,6 @@ func (o TrafficMirrorSessionMapOutput) ToTrafficMirrorSessionMapOutput() Traffic
 
 func (o TrafficMirrorSessionMapOutput) ToTrafficMirrorSessionMapOutputWithContext(ctx context.Context) TrafficMirrorSessionMapOutput {
 	return o
-}
-
-func (o TrafficMirrorSessionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TrafficMirrorSession] {
-	return pulumix.Output[map[string]*TrafficMirrorSession]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TrafficMirrorSessionMapOutput) MapIndex(k pulumi.StringInput) TrafficMirrorSessionOutput {

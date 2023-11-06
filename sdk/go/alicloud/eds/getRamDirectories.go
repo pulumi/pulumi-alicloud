@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ecd Ram Directories of the current Alibaba Cloud user.
@@ -129,12 +128,6 @@ func (o GetRamDirectoriesResultOutput) ToGetRamDirectoriesResultOutput() GetRamD
 
 func (o GetRamDirectoriesResultOutput) ToGetRamDirectoriesResultOutputWithContext(ctx context.Context) GetRamDirectoriesResultOutput {
 	return o
-}
-
-func (o GetRamDirectoriesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRamDirectoriesResult] {
-	return pulumix.Output[GetRamDirectoriesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRamDirectoriesResultOutput) Directories() GetRamDirectoriesDirectoryArrayOutput {

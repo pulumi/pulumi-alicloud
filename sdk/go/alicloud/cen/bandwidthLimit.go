@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a CEN cross-regional interconnection bandwidth resource. To connect networks in different regions, you must set cross-region interconnection bandwidth after buying a bandwidth package. The total bandwidth set for all the interconnected regions of a bandwidth package cannot exceed the bandwidth of the bandwidth package. By default, 1 Kbps bandwidth is provided for connectivity test. To run normal business, you must buy a bandwidth package and set a proper interconnection bandwidth.
@@ -265,12 +264,6 @@ func (i *BandwidthLimit) ToBandwidthLimitOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(BandwidthLimitOutput)
 }
 
-func (i *BandwidthLimit) ToOutput(ctx context.Context) pulumix.Output[*BandwidthLimit] {
-	return pulumix.Output[*BandwidthLimit]{
-		OutputState: i.ToBandwidthLimitOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BandwidthLimitArrayInput is an input type that accepts BandwidthLimitArray and BandwidthLimitArrayOutput values.
 // You can construct a concrete instance of `BandwidthLimitArrayInput` via:
 //
@@ -294,12 +287,6 @@ func (i BandwidthLimitArray) ToBandwidthLimitArrayOutput() BandwidthLimitArrayOu
 
 func (i BandwidthLimitArray) ToBandwidthLimitArrayOutputWithContext(ctx context.Context) BandwidthLimitArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BandwidthLimitArrayOutput)
-}
-
-func (i BandwidthLimitArray) ToOutput(ctx context.Context) pulumix.Output[[]*BandwidthLimit] {
-	return pulumix.Output[[]*BandwidthLimit]{
-		OutputState: i.ToBandwidthLimitArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BandwidthLimitMapInput is an input type that accepts BandwidthLimitMap and BandwidthLimitMapOutput values.
@@ -327,12 +314,6 @@ func (i BandwidthLimitMap) ToBandwidthLimitMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(BandwidthLimitMapOutput)
 }
 
-func (i BandwidthLimitMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BandwidthLimit] {
-	return pulumix.Output[map[string]*BandwidthLimit]{
-		OutputState: i.ToBandwidthLimitMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BandwidthLimitOutput struct{ *pulumi.OutputState }
 
 func (BandwidthLimitOutput) ElementType() reflect.Type {
@@ -345,12 +326,6 @@ func (o BandwidthLimitOutput) ToBandwidthLimitOutput() BandwidthLimitOutput {
 
 func (o BandwidthLimitOutput) ToBandwidthLimitOutputWithContext(ctx context.Context) BandwidthLimitOutput {
 	return o
-}
-
-func (o BandwidthLimitOutput) ToOutput(ctx context.Context) pulumix.Output[*BandwidthLimit] {
-	return pulumix.Output[*BandwidthLimit]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The bandwidth configured for the interconnected regions communication.
@@ -384,12 +359,6 @@ func (o BandwidthLimitArrayOutput) ToBandwidthLimitArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o BandwidthLimitArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BandwidthLimit] {
-	return pulumix.Output[[]*BandwidthLimit]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BandwidthLimitArrayOutput) Index(i pulumi.IntInput) BandwidthLimitOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BandwidthLimit {
 		return vs[0].([]*BandwidthLimit)[vs[1].(int)]
@@ -408,12 +377,6 @@ func (o BandwidthLimitMapOutput) ToBandwidthLimitMapOutput() BandwidthLimitMapOu
 
 func (o BandwidthLimitMapOutput) ToBandwidthLimitMapOutputWithContext(ctx context.Context) BandwidthLimitMapOutput {
 	return o
-}
-
-func (o BandwidthLimitMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BandwidthLimit] {
-	return pulumix.Output[map[string]*BandwidthLimit]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BandwidthLimitMapOutput) MapIndex(k pulumi.StringInput) BandwidthLimitOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Storage Gateway Gateway Logging resource.
@@ -151,12 +150,6 @@ func (i *GatewayLogging) ToGatewayLoggingOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayLoggingOutput)
 }
 
-func (i *GatewayLogging) ToOutput(ctx context.Context) pulumix.Output[*GatewayLogging] {
-	return pulumix.Output[*GatewayLogging]{
-		OutputState: i.ToGatewayLoggingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GatewayLoggingArrayInput is an input type that accepts GatewayLoggingArray and GatewayLoggingArrayOutput values.
 // You can construct a concrete instance of `GatewayLoggingArrayInput` via:
 //
@@ -180,12 +173,6 @@ func (i GatewayLoggingArray) ToGatewayLoggingArrayOutput() GatewayLoggingArrayOu
 
 func (i GatewayLoggingArray) ToGatewayLoggingArrayOutputWithContext(ctx context.Context) GatewayLoggingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayLoggingArrayOutput)
-}
-
-func (i GatewayLoggingArray) ToOutput(ctx context.Context) pulumix.Output[[]*GatewayLogging] {
-	return pulumix.Output[[]*GatewayLogging]{
-		OutputState: i.ToGatewayLoggingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GatewayLoggingMapInput is an input type that accepts GatewayLoggingMap and GatewayLoggingMapOutput values.
@@ -213,12 +200,6 @@ func (i GatewayLoggingMap) ToGatewayLoggingMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayLoggingMapOutput)
 }
 
-func (i GatewayLoggingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GatewayLogging] {
-	return pulumix.Output[map[string]*GatewayLogging]{
-		OutputState: i.ToGatewayLoggingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GatewayLoggingOutput struct{ *pulumi.OutputState }
 
 func (GatewayLoggingOutput) ElementType() reflect.Type {
@@ -231,12 +212,6 @@ func (o GatewayLoggingOutput) ToGatewayLoggingOutput() GatewayLoggingOutput {
 
 func (o GatewayLoggingOutput) ToGatewayLoggingOutputWithContext(ctx context.Context) GatewayLoggingOutput {
 	return o
-}
-
-func (o GatewayLoggingOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewayLogging] {
-	return pulumix.Output[*GatewayLogging]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Gateway.
@@ -273,12 +248,6 @@ func (o GatewayLoggingArrayOutput) ToGatewayLoggingArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o GatewayLoggingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GatewayLogging] {
-	return pulumix.Output[[]*GatewayLogging]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GatewayLoggingArrayOutput) Index(i pulumi.IntInput) GatewayLoggingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GatewayLogging {
 		return vs[0].([]*GatewayLogging)[vs[1].(int)]
@@ -297,12 +266,6 @@ func (o GatewayLoggingMapOutput) ToGatewayLoggingMapOutput() GatewayLoggingMapOu
 
 func (o GatewayLoggingMapOutput) ToGatewayLoggingMapOutputWithContext(ctx context.Context) GatewayLoggingMapOutput {
 	return o
-}
-
-func (o GatewayLoggingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GatewayLogging] {
-	return pulumix.Output[map[string]*GatewayLogging]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GatewayLoggingMapOutput) MapIndex(k pulumi.StringInput) GatewayLoggingOutput {

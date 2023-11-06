@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cen Inter Region Traffic Qos Queue resource.
@@ -287,12 +286,6 @@ func (i *InterRegionTrafficQosQueue) ToInterRegionTrafficQosQueueOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(InterRegionTrafficQosQueueOutput)
 }
 
-func (i *InterRegionTrafficQosQueue) ToOutput(ctx context.Context) pulumix.Output[*InterRegionTrafficQosQueue] {
-	return pulumix.Output[*InterRegionTrafficQosQueue]{
-		OutputState: i.ToInterRegionTrafficQosQueueOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InterRegionTrafficQosQueueArrayInput is an input type that accepts InterRegionTrafficQosQueueArray and InterRegionTrafficQosQueueArrayOutput values.
 // You can construct a concrete instance of `InterRegionTrafficQosQueueArrayInput` via:
 //
@@ -316,12 +309,6 @@ func (i InterRegionTrafficQosQueueArray) ToInterRegionTrafficQosQueueArrayOutput
 
 func (i InterRegionTrafficQosQueueArray) ToInterRegionTrafficQosQueueArrayOutputWithContext(ctx context.Context) InterRegionTrafficQosQueueArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InterRegionTrafficQosQueueArrayOutput)
-}
-
-func (i InterRegionTrafficQosQueueArray) ToOutput(ctx context.Context) pulumix.Output[[]*InterRegionTrafficQosQueue] {
-	return pulumix.Output[[]*InterRegionTrafficQosQueue]{
-		OutputState: i.ToInterRegionTrafficQosQueueArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InterRegionTrafficQosQueueMapInput is an input type that accepts InterRegionTrafficQosQueueMap and InterRegionTrafficQosQueueMapOutput values.
@@ -349,12 +336,6 @@ func (i InterRegionTrafficQosQueueMap) ToInterRegionTrafficQosQueueMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(InterRegionTrafficQosQueueMapOutput)
 }
 
-func (i InterRegionTrafficQosQueueMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InterRegionTrafficQosQueue] {
-	return pulumix.Output[map[string]*InterRegionTrafficQosQueue]{
-		OutputState: i.ToInterRegionTrafficQosQueueMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InterRegionTrafficQosQueueOutput struct{ *pulumi.OutputState }
 
 func (InterRegionTrafficQosQueueOutput) ElementType() reflect.Type {
@@ -367,12 +348,6 @@ func (o InterRegionTrafficQosQueueOutput) ToInterRegionTrafficQosQueueOutput() I
 
 func (o InterRegionTrafficQosQueueOutput) ToInterRegionTrafficQosQueueOutputWithContext(ctx context.Context) InterRegionTrafficQosQueueOutput {
 	return o
-}
-
-func (o InterRegionTrafficQosQueueOutput) ToOutput(ctx context.Context) pulumix.Output[*InterRegionTrafficQosQueue] {
-	return pulumix.Output[*InterRegionTrafficQosQueue]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
@@ -421,12 +396,6 @@ func (o InterRegionTrafficQosQueueArrayOutput) ToInterRegionTrafficQosQueueArray
 	return o
 }
 
-func (o InterRegionTrafficQosQueueArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InterRegionTrafficQosQueue] {
-	return pulumix.Output[[]*InterRegionTrafficQosQueue]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InterRegionTrafficQosQueueArrayOutput) Index(i pulumi.IntInput) InterRegionTrafficQosQueueOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InterRegionTrafficQosQueue {
 		return vs[0].([]*InterRegionTrafficQosQueue)[vs[1].(int)]
@@ -445,12 +414,6 @@ func (o InterRegionTrafficQosQueueMapOutput) ToInterRegionTrafficQosQueueMapOutp
 
 func (o InterRegionTrafficQosQueueMapOutput) ToInterRegionTrafficQosQueueMapOutputWithContext(ctx context.Context) InterRegionTrafficQosQueueMapOutput {
 	return o
-}
-
-func (o InterRegionTrafficQosQueueMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InterRegionTrafficQosQueue] {
-	return pulumix.Output[map[string]*InterRegionTrafficQosQueue]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InterRegionTrafficQosQueueMapOutput) MapIndex(k pulumi.StringInput) InterRegionTrafficQosQueueOutput {

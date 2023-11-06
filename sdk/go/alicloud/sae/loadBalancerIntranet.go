@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an Alicloud Serverless App Engine (SAE) Application Load Balancer Attachment resource.
@@ -272,12 +271,6 @@ func (i *LoadBalancerIntranet) ToLoadBalancerIntranetOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerIntranetOutput)
 }
 
-func (i *LoadBalancerIntranet) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancerIntranet] {
-	return pulumix.Output[*LoadBalancerIntranet]{
-		OutputState: i.ToLoadBalancerIntranetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LoadBalancerIntranetArrayInput is an input type that accepts LoadBalancerIntranetArray and LoadBalancerIntranetArrayOutput values.
 // You can construct a concrete instance of `LoadBalancerIntranetArrayInput` via:
 //
@@ -301,12 +294,6 @@ func (i LoadBalancerIntranetArray) ToLoadBalancerIntranetArrayOutput() LoadBalan
 
 func (i LoadBalancerIntranetArray) ToLoadBalancerIntranetArrayOutputWithContext(ctx context.Context) LoadBalancerIntranetArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerIntranetArrayOutput)
-}
-
-func (i LoadBalancerIntranetArray) ToOutput(ctx context.Context) pulumix.Output[[]*LoadBalancerIntranet] {
-	return pulumix.Output[[]*LoadBalancerIntranet]{
-		OutputState: i.ToLoadBalancerIntranetArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // LoadBalancerIntranetMapInput is an input type that accepts LoadBalancerIntranetMap and LoadBalancerIntranetMapOutput values.
@@ -334,12 +321,6 @@ func (i LoadBalancerIntranetMap) ToLoadBalancerIntranetMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerIntranetMapOutput)
 }
 
-func (i LoadBalancerIntranetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LoadBalancerIntranet] {
-	return pulumix.Output[map[string]*LoadBalancerIntranet]{
-		OutputState: i.ToLoadBalancerIntranetMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LoadBalancerIntranetOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerIntranetOutput) ElementType() reflect.Type {
@@ -352,12 +333,6 @@ func (o LoadBalancerIntranetOutput) ToLoadBalancerIntranetOutput() LoadBalancerI
 
 func (o LoadBalancerIntranetOutput) ToLoadBalancerIntranetOutputWithContext(ctx context.Context) LoadBalancerIntranetOutput {
 	return o
-}
-
-func (o LoadBalancerIntranetOutput) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancerIntranet] {
-	return pulumix.Output[*LoadBalancerIntranet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The target application ID that needs to be bound to the SLB.
@@ -394,12 +369,6 @@ func (o LoadBalancerIntranetArrayOutput) ToLoadBalancerIntranetArrayOutputWithCo
 	return o
 }
 
-func (o LoadBalancerIntranetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LoadBalancerIntranet] {
-	return pulumix.Output[[]*LoadBalancerIntranet]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LoadBalancerIntranetArrayOutput) Index(i pulumi.IntInput) LoadBalancerIntranetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LoadBalancerIntranet {
 		return vs[0].([]*LoadBalancerIntranet)[vs[1].(int)]
@@ -418,12 +387,6 @@ func (o LoadBalancerIntranetMapOutput) ToLoadBalancerIntranetMapOutput() LoadBal
 
 func (o LoadBalancerIntranetMapOutput) ToLoadBalancerIntranetMapOutputWithContext(ctx context.Context) LoadBalancerIntranetMapOutput {
 	return o
-}
-
-func (o LoadBalancerIntranetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LoadBalancerIntranet] {
-	return pulumix.Output[map[string]*LoadBalancerIntranet]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LoadBalancerIntranetMapOutput) MapIndex(k pulumi.StringInput) LoadBalancerIntranetOutput {

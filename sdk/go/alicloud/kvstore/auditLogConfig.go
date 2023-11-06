@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Redis And Memcache (KVStore) Audit Log Config resource.
@@ -262,12 +261,6 @@ func (i *AuditLogConfig) ToAuditLogConfigOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigOutput)
 }
 
-func (i *AuditLogConfig) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfig] {
-	return pulumix.Output[*AuditLogConfig]{
-		OutputState: i.ToAuditLogConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
@@ -291,12 +284,6 @@ func (i AuditLogConfigArray) ToAuditLogConfigArrayOutput() AuditLogConfigArrayOu
 
 func (i AuditLogConfigArray) ToAuditLogConfigArrayOutputWithContext(ctx context.Context) AuditLogConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigArrayOutput)
-}
-
-func (i AuditLogConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*AuditLogConfig] {
-	return pulumix.Output[[]*AuditLogConfig]{
-		OutputState: i.ToAuditLogConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AuditLogConfigMapInput is an input type that accepts AuditLogConfigMap and AuditLogConfigMapOutput values.
@@ -324,12 +311,6 @@ func (i AuditLogConfigMap) ToAuditLogConfigMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigMapOutput)
 }
 
-func (i AuditLogConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuditLogConfig] {
-	return pulumix.Output[map[string]*AuditLogConfig]{
-		OutputState: i.ToAuditLogConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AuditLogConfigOutput struct{ *pulumi.OutputState }
 
 func (AuditLogConfigOutput) ElementType() reflect.Type {
@@ -342,12 +323,6 @@ func (o AuditLogConfigOutput) ToAuditLogConfigOutput() AuditLogConfigOutput {
 
 func (o AuditLogConfigOutput) ToAuditLogConfigOutputWithContext(ctx context.Context) AuditLogConfigOutput {
 	return o
-}
-
-func (o AuditLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfig] {
-	return pulumix.Output[*AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Instance Creation Time.
@@ -395,12 +370,6 @@ func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o AuditLogConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AuditLogConfig] {
-	return pulumix.Output[[]*AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AuditLogConfig {
 		return vs[0].([]*AuditLogConfig)[vs[1].(int)]
@@ -419,12 +388,6 @@ func (o AuditLogConfigMapOutput) ToAuditLogConfigMapOutput() AuditLogConfigMapOu
 
 func (o AuditLogConfigMapOutput) ToAuditLogConfigMapOutputWithContext(ctx context.Context) AuditLogConfigMapOutput {
 	return o
-}
-
-func (o AuditLogConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuditLogConfig] {
-	return pulumix.Output[map[string]*AuditLogConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuditLogConfigMapOutput) MapIndex(k pulumi.StringInput) AuditLogConfigOutput {

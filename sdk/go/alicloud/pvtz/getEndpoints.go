@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Pvtz Endpoints of the current Alibaba Cloud user.
@@ -129,12 +128,6 @@ func (o GetEndpointsResultOutput) ToGetEndpointsResultOutput() GetEndpointsResul
 
 func (o GetEndpointsResultOutput) ToGetEndpointsResultOutputWithContext(ctx context.Context) GetEndpointsResultOutput {
 	return o
-}
-
-func (o GetEndpointsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEndpointsResult] {
-	return pulumix.Output[GetEndpointsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEndpointsResultOutput) Endpoints() GetEndpointsEndpointArrayOutput {

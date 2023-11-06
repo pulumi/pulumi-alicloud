@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Ecs Elasticity Assurance available to the user.
@@ -132,12 +131,6 @@ func (o GetElasticityAssurancesResultOutput) ToGetElasticityAssurancesResultOutp
 
 func (o GetElasticityAssurancesResultOutput) ToGetElasticityAssurancesResultOutputWithContext(ctx context.Context) GetElasticityAssurancesResultOutput {
 	return o
-}
-
-func (o GetElasticityAssurancesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetElasticityAssurancesResult] {
-	return pulumix.Output[GetElasticityAssurancesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of Elasticity Assurance Entries. Each element contains the following attributes:

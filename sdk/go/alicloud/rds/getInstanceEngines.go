@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the RDS instance engines resource available info of Alibaba Cloud.
@@ -146,12 +145,6 @@ func (o GetInstanceEnginesResultOutput) ToGetInstanceEnginesResultOutput() GetIn
 
 func (o GetInstanceEnginesResultOutput) ToGetInstanceEnginesResultOutputWithContext(ctx context.Context) GetInstanceEnginesResultOutput {
 	return o
-}
-
-func (o GetInstanceEnginesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceEnginesResult] {
-	return pulumix.Output[GetInstanceEnginesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // DB Instance category.

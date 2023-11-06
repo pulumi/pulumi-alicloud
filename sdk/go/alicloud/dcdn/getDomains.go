@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a collection of DCDN Domains to the specified filters.
@@ -129,12 +128,6 @@ func (o GetDomainsResultOutput) ToGetDomainsResultOutput() GetDomainsResultOutpu
 
 func (o GetDomainsResultOutput) ToGetDomainsResultOutputWithContext(ctx context.Context) GetDomainsResultOutput {
 	return o
-}
-
-func (o GetDomainsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDomainsResult] {
-	return pulumix.Output[GetDomainsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDomainsResultOutput) ChangeEndTime() pulumi.StringPtrOutput {

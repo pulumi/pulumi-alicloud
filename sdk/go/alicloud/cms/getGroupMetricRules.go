@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cms Group Metric Rules of the current Alibaba Cloud user.
@@ -153,12 +152,6 @@ func (o GetGroupMetricRulesResultOutput) ToGetGroupMetricRulesResultOutput() Get
 
 func (o GetGroupMetricRulesResultOutput) ToGetGroupMetricRulesResultOutputWithContext(ctx context.Context) GetGroupMetricRulesResultOutput {
 	return o
-}
-
-func (o GetGroupMetricRulesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupMetricRulesResult] {
-	return pulumix.Output[GetGroupMetricRulesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetGroupMetricRulesResultOutput) Dimensions() pulumi.StringPtrOutput {

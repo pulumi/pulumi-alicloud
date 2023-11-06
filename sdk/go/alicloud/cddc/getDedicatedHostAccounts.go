@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cddc Dedicated Host Accounts of the current Alibaba Cloud user.
@@ -124,12 +123,6 @@ func (o GetDedicatedHostAccountsResultOutput) ToGetDedicatedHostAccountsResultOu
 
 func (o GetDedicatedHostAccountsResultOutput) ToGetDedicatedHostAccountsResultOutputWithContext(ctx context.Context) GetDedicatedHostAccountsResultOutput {
 	return o
-}
-
-func (o GetDedicatedHostAccountsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDedicatedHostAccountsResult] {
-	return pulumix.Output[GetDedicatedHostAccountsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDedicatedHostAccountsResultOutput) Accounts() GetDedicatedHostAccountsAccountArrayOutput {

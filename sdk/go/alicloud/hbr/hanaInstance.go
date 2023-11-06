@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Hybrid Backup Recovery (HBR) Hana Instance resource.
@@ -297,12 +296,6 @@ func (i *HanaInstance) ToHanaInstanceOutputWithContext(ctx context.Context) Hana
 	return pulumi.ToOutputWithContext(ctx, i).(HanaInstanceOutput)
 }
 
-func (i *HanaInstance) ToOutput(ctx context.Context) pulumix.Output[*HanaInstance] {
-	return pulumix.Output[*HanaInstance]{
-		OutputState: i.ToHanaInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HanaInstanceArrayInput is an input type that accepts HanaInstanceArray and HanaInstanceArrayOutput values.
 // You can construct a concrete instance of `HanaInstanceArrayInput` via:
 //
@@ -326,12 +319,6 @@ func (i HanaInstanceArray) ToHanaInstanceArrayOutput() HanaInstanceArrayOutput {
 
 func (i HanaInstanceArray) ToHanaInstanceArrayOutputWithContext(ctx context.Context) HanaInstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HanaInstanceArrayOutput)
-}
-
-func (i HanaInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*HanaInstance] {
-	return pulumix.Output[[]*HanaInstance]{
-		OutputState: i.ToHanaInstanceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HanaInstanceMapInput is an input type that accepts HanaInstanceMap and HanaInstanceMapOutput values.
@@ -359,12 +346,6 @@ func (i HanaInstanceMap) ToHanaInstanceMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(HanaInstanceMapOutput)
 }
 
-func (i HanaInstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HanaInstance] {
-	return pulumix.Output[map[string]*HanaInstance]{
-		OutputState: i.ToHanaInstanceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HanaInstanceOutput struct{ *pulumi.OutputState }
 
 func (HanaInstanceOutput) ElementType() reflect.Type {
@@ -377,12 +358,6 @@ func (o HanaInstanceOutput) ToHanaInstanceOutput() HanaInstanceOutput {
 
 func (o HanaInstanceOutput) ToHanaInstanceOutputWithContext(ctx context.Context) HanaInstanceOutput {
 	return o
-}
-
-func (o HanaInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*HanaInstance] {
-	return pulumix.Output[*HanaInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The alert settings. Valid value: `INHERITED`, which indicates that the backup client sends alert notifications in the same way as the backup vault.
@@ -469,12 +444,6 @@ func (o HanaInstanceArrayOutput) ToHanaInstanceArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o HanaInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HanaInstance] {
-	return pulumix.Output[[]*HanaInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HanaInstanceArrayOutput) Index(i pulumi.IntInput) HanaInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HanaInstance {
 		return vs[0].([]*HanaInstance)[vs[1].(int)]
@@ -493,12 +462,6 @@ func (o HanaInstanceMapOutput) ToHanaInstanceMapOutput() HanaInstanceMapOutput {
 
 func (o HanaInstanceMapOutput) ToHanaInstanceMapOutputWithContext(ctx context.Context) HanaInstanceMapOutput {
 	return o
-}
-
-func (o HanaInstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HanaInstance] {
-	return pulumix.Output[map[string]*HanaInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HanaInstanceMapOutput) MapIndex(k pulumi.StringInput) HanaInstanceOutput {

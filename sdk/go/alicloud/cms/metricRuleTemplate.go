@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Monitor Service Metric Rule Template resource.
@@ -285,12 +284,6 @@ func (i *MetricRuleTemplate) ToMetricRuleTemplateOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleTemplateOutput)
 }
 
-func (i *MetricRuleTemplate) ToOutput(ctx context.Context) pulumix.Output[*MetricRuleTemplate] {
-	return pulumix.Output[*MetricRuleTemplate]{
-		OutputState: i.ToMetricRuleTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MetricRuleTemplateArrayInput is an input type that accepts MetricRuleTemplateArray and MetricRuleTemplateArrayOutput values.
 // You can construct a concrete instance of `MetricRuleTemplateArrayInput` via:
 //
@@ -314,12 +307,6 @@ func (i MetricRuleTemplateArray) ToMetricRuleTemplateArrayOutput() MetricRuleTem
 
 func (i MetricRuleTemplateArray) ToMetricRuleTemplateArrayOutputWithContext(ctx context.Context) MetricRuleTemplateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleTemplateArrayOutput)
-}
-
-func (i MetricRuleTemplateArray) ToOutput(ctx context.Context) pulumix.Output[[]*MetricRuleTemplate] {
-	return pulumix.Output[[]*MetricRuleTemplate]{
-		OutputState: i.ToMetricRuleTemplateArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MetricRuleTemplateMapInput is an input type that accepts MetricRuleTemplateMap and MetricRuleTemplateMapOutput values.
@@ -347,12 +334,6 @@ func (i MetricRuleTemplateMap) ToMetricRuleTemplateMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleTemplateMapOutput)
 }
 
-func (i MetricRuleTemplateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetricRuleTemplate] {
-	return pulumix.Output[map[string]*MetricRuleTemplate]{
-		OutputState: i.ToMetricRuleTemplateMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetricRuleTemplateOutput struct{ *pulumi.OutputState }
 
 func (MetricRuleTemplateOutput) ElementType() reflect.Type {
@@ -365,12 +346,6 @@ func (o MetricRuleTemplateOutput) ToMetricRuleTemplateOutput() MetricRuleTemplat
 
 func (o MetricRuleTemplateOutput) ToMetricRuleTemplateOutputWithContext(ctx context.Context) MetricRuleTemplateOutput {
 	return o
-}
-
-func (o MetricRuleTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricRuleTemplate] {
-	return pulumix.Output[*MetricRuleTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The details of alert rules that are generated based on the alert template. See `alertTemplates` below.
@@ -446,12 +421,6 @@ func (o MetricRuleTemplateArrayOutput) ToMetricRuleTemplateArrayOutputWithContex
 	return o
 }
 
-func (o MetricRuleTemplateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MetricRuleTemplate] {
-	return pulumix.Output[[]*MetricRuleTemplate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MetricRuleTemplateArrayOutput) Index(i pulumi.IntInput) MetricRuleTemplateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MetricRuleTemplate {
 		return vs[0].([]*MetricRuleTemplate)[vs[1].(int)]
@@ -470,12 +439,6 @@ func (o MetricRuleTemplateMapOutput) ToMetricRuleTemplateMapOutput() MetricRuleT
 
 func (o MetricRuleTemplateMapOutput) ToMetricRuleTemplateMapOutputWithContext(ctx context.Context) MetricRuleTemplateMapOutput {
 	return o
-}
-
-func (o MetricRuleTemplateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetricRuleTemplate] {
-	return pulumix.Output[map[string]*MetricRuleTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetricRuleTemplateMapOutput) MapIndex(k pulumi.StringInput) MetricRuleTemplateOutput {

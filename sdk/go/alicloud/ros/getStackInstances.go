@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ros Stack Instances of the current Alibaba Cloud user.
@@ -166,12 +165,6 @@ func (o GetStackInstancesResultOutput) ToGetStackInstancesResultOutput() GetStac
 
 func (o GetStackInstancesResultOutput) ToGetStackInstancesResultOutputWithContext(ctx context.Context) GetStackInstancesResultOutput {
 	return o
-}
-
-func (o GetStackInstancesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetStackInstancesResult] {
-	return pulumix.Output[GetStackInstancesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetStackInstancesResultOutput) EnableDetails() pulumi.BoolPtrOutput {

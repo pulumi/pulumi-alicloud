@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Application Real-Time Monitoring Service (ARMS) Alert Dispatch Rule resource.
@@ -270,12 +269,6 @@ func (i *DispatchRule) ToDispatchRuleOutputWithContext(ctx context.Context) Disp
 	return pulumi.ToOutputWithContext(ctx, i).(DispatchRuleOutput)
 }
 
-func (i *DispatchRule) ToOutput(ctx context.Context) pulumix.Output[*DispatchRule] {
-	return pulumix.Output[*DispatchRule]{
-		OutputState: i.ToDispatchRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DispatchRuleArrayInput is an input type that accepts DispatchRuleArray and DispatchRuleArrayOutput values.
 // You can construct a concrete instance of `DispatchRuleArrayInput` via:
 //
@@ -299,12 +292,6 @@ func (i DispatchRuleArray) ToDispatchRuleArrayOutput() DispatchRuleArrayOutput {
 
 func (i DispatchRuleArray) ToDispatchRuleArrayOutputWithContext(ctx context.Context) DispatchRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DispatchRuleArrayOutput)
-}
-
-func (i DispatchRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*DispatchRule] {
-	return pulumix.Output[[]*DispatchRule]{
-		OutputState: i.ToDispatchRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DispatchRuleMapInput is an input type that accepts DispatchRuleMap and DispatchRuleMapOutput values.
@@ -332,12 +319,6 @@ func (i DispatchRuleMap) ToDispatchRuleMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(DispatchRuleMapOutput)
 }
 
-func (i DispatchRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DispatchRule] {
-	return pulumix.Output[map[string]*DispatchRule]{
-		OutputState: i.ToDispatchRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DispatchRuleOutput struct{ *pulumi.OutputState }
 
 func (DispatchRuleOutput) ElementType() reflect.Type {
@@ -350,12 +331,6 @@ func (o DispatchRuleOutput) ToDispatchRuleOutput() DispatchRuleOutput {
 
 func (o DispatchRuleOutput) ToDispatchRuleOutputWithContext(ctx context.Context) DispatchRuleOutput {
 	return o
-}
-
-func (o DispatchRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*DispatchRule] {
-	return pulumix.Output[*DispatchRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the dispatch policy.
@@ -409,12 +384,6 @@ func (o DispatchRuleArrayOutput) ToDispatchRuleArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o DispatchRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DispatchRule] {
-	return pulumix.Output[[]*DispatchRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DispatchRuleArrayOutput) Index(i pulumi.IntInput) DispatchRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DispatchRule {
 		return vs[0].([]*DispatchRule)[vs[1].(int)]
@@ -433,12 +402,6 @@ func (o DispatchRuleMapOutput) ToDispatchRuleMapOutput() DispatchRuleMapOutput {
 
 func (o DispatchRuleMapOutput) ToDispatchRuleMapOutputWithContext(ctx context.Context) DispatchRuleMapOutput {
 	return o
-}
-
-func (o DispatchRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DispatchRule] {
-	return pulumix.Output[map[string]*DispatchRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DispatchRuleMapOutput) MapIndex(k pulumi.StringInput) DispatchRuleOutput {

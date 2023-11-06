@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ecs Deployment Sets of the current Alibaba Cloud user.
@@ -134,12 +133,6 @@ func (o GetEcsDeploymentSetsResultOutput) ToGetEcsDeploymentSetsResultOutput() G
 
 func (o GetEcsDeploymentSetsResultOutput) ToGetEcsDeploymentSetsResultOutputWithContext(ctx context.Context) GetEcsDeploymentSetsResultOutput {
 	return o
-}
-
-func (o GetEcsDeploymentSetsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEcsDeploymentSetsResult] {
-	return pulumix.Output[GetEcsDeploymentSetsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEcsDeploymentSetsResultOutput) DeploymentSetName() pulumi.StringPtrOutput {

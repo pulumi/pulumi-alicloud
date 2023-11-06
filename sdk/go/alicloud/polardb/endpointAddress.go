@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a PolarDB endpoint address resource to allocate an Internet endpoint address string for PolarDB instance.
@@ -236,12 +235,6 @@ func (i *EndpointAddress) ToEndpointAddressOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointAddressOutput)
 }
 
-func (i *EndpointAddress) ToOutput(ctx context.Context) pulumix.Output[*EndpointAddress] {
-	return pulumix.Output[*EndpointAddress]{
-		OutputState: i.ToEndpointAddressOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EndpointAddressArrayInput is an input type that accepts EndpointAddressArray and EndpointAddressArrayOutput values.
 // You can construct a concrete instance of `EndpointAddressArrayInput` via:
 //
@@ -265,12 +258,6 @@ func (i EndpointAddressArray) ToEndpointAddressArrayOutput() EndpointAddressArra
 
 func (i EndpointAddressArray) ToEndpointAddressArrayOutputWithContext(ctx context.Context) EndpointAddressArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointAddressArrayOutput)
-}
-
-func (i EndpointAddressArray) ToOutput(ctx context.Context) pulumix.Output[[]*EndpointAddress] {
-	return pulumix.Output[[]*EndpointAddress]{
-		OutputState: i.ToEndpointAddressArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EndpointAddressMapInput is an input type that accepts EndpointAddressMap and EndpointAddressMapOutput values.
@@ -298,12 +285,6 @@ func (i EndpointAddressMap) ToEndpointAddressMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointAddressMapOutput)
 }
 
-func (i EndpointAddressMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EndpointAddress] {
-	return pulumix.Output[map[string]*EndpointAddress]{
-		OutputState: i.ToEndpointAddressMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EndpointAddressOutput struct{ *pulumi.OutputState }
 
 func (EndpointAddressOutput) ElementType() reflect.Type {
@@ -316,12 +297,6 @@ func (o EndpointAddressOutput) ToEndpointAddressOutput() EndpointAddressOutput {
 
 func (o EndpointAddressOutput) ToEndpointAddressOutputWithContext(ctx context.Context) EndpointAddressOutput {
 	return o
-}
-
-func (o EndpointAddressOutput) ToOutput(ctx context.Context) pulumix.Output[*EndpointAddress] {
-	return pulumix.Output[*EndpointAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
@@ -373,12 +348,6 @@ func (o EndpointAddressArrayOutput) ToEndpointAddressArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o EndpointAddressArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EndpointAddress] {
-	return pulumix.Output[[]*EndpointAddress]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EndpointAddressArrayOutput) Index(i pulumi.IntInput) EndpointAddressOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EndpointAddress {
 		return vs[0].([]*EndpointAddress)[vs[1].(int)]
@@ -397,12 +366,6 @@ func (o EndpointAddressMapOutput) ToEndpointAddressMapOutput() EndpointAddressMa
 
 func (o EndpointAddressMapOutput) ToEndpointAddressMapOutputWithContext(ctx context.Context) EndpointAddressMapOutput {
 	return o
-}
-
-func (o EndpointAddressMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EndpointAddress] {
-	return pulumix.Output[map[string]*EndpointAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EndpointAddressMapOutput) MapIndex(k pulumi.StringInput) EndpointAddressOutput {

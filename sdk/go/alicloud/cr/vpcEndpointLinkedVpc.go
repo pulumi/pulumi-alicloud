@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a CR Vpc Endpoint Linked Vpc resource.
@@ -243,12 +242,6 @@ func (i *VpcEndpointLinkedVpc) ToVpcEndpointLinkedVpcOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointLinkedVpcOutput)
 }
 
-func (i *VpcEndpointLinkedVpc) ToOutput(ctx context.Context) pulumix.Output[*VpcEndpointLinkedVpc] {
-	return pulumix.Output[*VpcEndpointLinkedVpc]{
-		OutputState: i.ToVpcEndpointLinkedVpcOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VpcEndpointLinkedVpcArrayInput is an input type that accepts VpcEndpointLinkedVpcArray and VpcEndpointLinkedVpcArrayOutput values.
 // You can construct a concrete instance of `VpcEndpointLinkedVpcArrayInput` via:
 //
@@ -272,12 +265,6 @@ func (i VpcEndpointLinkedVpcArray) ToVpcEndpointLinkedVpcArrayOutput() VpcEndpoi
 
 func (i VpcEndpointLinkedVpcArray) ToVpcEndpointLinkedVpcArrayOutputWithContext(ctx context.Context) VpcEndpointLinkedVpcArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointLinkedVpcArrayOutput)
-}
-
-func (i VpcEndpointLinkedVpcArray) ToOutput(ctx context.Context) pulumix.Output[[]*VpcEndpointLinkedVpc] {
-	return pulumix.Output[[]*VpcEndpointLinkedVpc]{
-		OutputState: i.ToVpcEndpointLinkedVpcArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // VpcEndpointLinkedVpcMapInput is an input type that accepts VpcEndpointLinkedVpcMap and VpcEndpointLinkedVpcMapOutput values.
@@ -305,12 +292,6 @@ func (i VpcEndpointLinkedVpcMap) ToVpcEndpointLinkedVpcMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointLinkedVpcMapOutput)
 }
 
-func (i VpcEndpointLinkedVpcMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VpcEndpointLinkedVpc] {
-	return pulumix.Output[map[string]*VpcEndpointLinkedVpc]{
-		OutputState: i.ToVpcEndpointLinkedVpcMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VpcEndpointLinkedVpcOutput struct{ *pulumi.OutputState }
 
 func (VpcEndpointLinkedVpcOutput) ElementType() reflect.Type {
@@ -323,12 +304,6 @@ func (o VpcEndpointLinkedVpcOutput) ToVpcEndpointLinkedVpcOutput() VpcEndpointLi
 
 func (o VpcEndpointLinkedVpcOutput) ToVpcEndpointLinkedVpcOutputWithContext(ctx context.Context) VpcEndpointLinkedVpcOutput {
 	return o
-}
-
-func (o VpcEndpointLinkedVpcOutput) ToOutput(ctx context.Context) pulumix.Output[*VpcEndpointLinkedVpc] {
-	return pulumix.Output[*VpcEndpointLinkedVpc]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies whether to automatically create an Alibaba Cloud DNS PrivateZone record. Valid Values:
@@ -375,12 +350,6 @@ func (o VpcEndpointLinkedVpcArrayOutput) ToVpcEndpointLinkedVpcArrayOutputWithCo
 	return o
 }
 
-func (o VpcEndpointLinkedVpcArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VpcEndpointLinkedVpc] {
-	return pulumix.Output[[]*VpcEndpointLinkedVpc]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VpcEndpointLinkedVpcArrayOutput) Index(i pulumi.IntInput) VpcEndpointLinkedVpcOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VpcEndpointLinkedVpc {
 		return vs[0].([]*VpcEndpointLinkedVpc)[vs[1].(int)]
@@ -399,12 +368,6 @@ func (o VpcEndpointLinkedVpcMapOutput) ToVpcEndpointLinkedVpcMapOutput() VpcEndp
 
 func (o VpcEndpointLinkedVpcMapOutput) ToVpcEndpointLinkedVpcMapOutputWithContext(ctx context.Context) VpcEndpointLinkedVpcMapOutput {
 	return o
-}
-
-func (o VpcEndpointLinkedVpcMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VpcEndpointLinkedVpc] {
-	return pulumix.Output[map[string]*VpcEndpointLinkedVpc]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VpcEndpointLinkedVpcMapOutput) MapIndex(k pulumi.StringInput) VpcEndpointLinkedVpcOutput {

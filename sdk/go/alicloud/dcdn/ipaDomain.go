@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DCDN Ipa Domain resource.
@@ -209,12 +208,6 @@ func (i *IpaDomain) ToIpaDomainOutputWithContext(ctx context.Context) IpaDomainO
 	return pulumi.ToOutputWithContext(ctx, i).(IpaDomainOutput)
 }
 
-func (i *IpaDomain) ToOutput(ctx context.Context) pulumix.Output[*IpaDomain] {
-	return pulumix.Output[*IpaDomain]{
-		OutputState: i.ToIpaDomainOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IpaDomainArrayInput is an input type that accepts IpaDomainArray and IpaDomainArrayOutput values.
 // You can construct a concrete instance of `IpaDomainArrayInput` via:
 //
@@ -238,12 +231,6 @@ func (i IpaDomainArray) ToIpaDomainArrayOutput() IpaDomainArrayOutput {
 
 func (i IpaDomainArray) ToIpaDomainArrayOutputWithContext(ctx context.Context) IpaDomainArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IpaDomainArrayOutput)
-}
-
-func (i IpaDomainArray) ToOutput(ctx context.Context) pulumix.Output[[]*IpaDomain] {
-	return pulumix.Output[[]*IpaDomain]{
-		OutputState: i.ToIpaDomainArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IpaDomainMapInput is an input type that accepts IpaDomainMap and IpaDomainMapOutput values.
@@ -271,12 +258,6 @@ func (i IpaDomainMap) ToIpaDomainMapOutputWithContext(ctx context.Context) IpaDo
 	return pulumi.ToOutputWithContext(ctx, i).(IpaDomainMapOutput)
 }
 
-func (i IpaDomainMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IpaDomain] {
-	return pulumix.Output[map[string]*IpaDomain]{
-		OutputState: i.ToIpaDomainMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IpaDomainOutput struct{ *pulumi.OutputState }
 
 func (IpaDomainOutput) ElementType() reflect.Type {
@@ -289,12 +270,6 @@ func (o IpaDomainOutput) ToIpaDomainOutput() IpaDomainOutput {
 
 func (o IpaDomainOutput) ToIpaDomainOutputWithContext(ctx context.Context) IpaDomainOutput {
 	return o
-}
-
-func (o IpaDomainOutput) ToOutput(ctx context.Context) pulumix.Output[*IpaDomain] {
-	return pulumix.Output[*IpaDomain]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The domain name to be added to IPA. Wildcard domain names are supported. A wildcard domain name must start with a period (.).
@@ -336,12 +311,6 @@ func (o IpaDomainArrayOutput) ToIpaDomainArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o IpaDomainArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IpaDomain] {
-	return pulumix.Output[[]*IpaDomain]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IpaDomainArrayOutput) Index(i pulumi.IntInput) IpaDomainOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IpaDomain {
 		return vs[0].([]*IpaDomain)[vs[1].(int)]
@@ -360,12 +329,6 @@ func (o IpaDomainMapOutput) ToIpaDomainMapOutput() IpaDomainMapOutput {
 
 func (o IpaDomainMapOutput) ToIpaDomainMapOutputWithContext(ctx context.Context) IpaDomainMapOutput {
 	return o
-}
-
-func (o IpaDomainMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IpaDomain] {
-	return pulumix.Output[map[string]*IpaDomain]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IpaDomainMapOutput) MapIndex(k pulumi.StringInput) IpaDomainOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // HTTPS listeners of guaranteed-performance SLB support configuring multiple certificates, allowing you to forward requests with different domain names to different backend servers.
@@ -312,12 +311,6 @@ func (i *DomainExtension) ToDomainExtensionOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(DomainExtensionOutput)
 }
 
-func (i *DomainExtension) ToOutput(ctx context.Context) pulumix.Output[*DomainExtension] {
-	return pulumix.Output[*DomainExtension]{
-		OutputState: i.ToDomainExtensionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DomainExtensionArrayInput is an input type that accepts DomainExtensionArray and DomainExtensionArrayOutput values.
 // You can construct a concrete instance of `DomainExtensionArrayInput` via:
 //
@@ -341,12 +334,6 @@ func (i DomainExtensionArray) ToDomainExtensionArrayOutput() DomainExtensionArra
 
 func (i DomainExtensionArray) ToDomainExtensionArrayOutputWithContext(ctx context.Context) DomainExtensionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainExtensionArrayOutput)
-}
-
-func (i DomainExtensionArray) ToOutput(ctx context.Context) pulumix.Output[[]*DomainExtension] {
-	return pulumix.Output[[]*DomainExtension]{
-		OutputState: i.ToDomainExtensionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DomainExtensionMapInput is an input type that accepts DomainExtensionMap and DomainExtensionMapOutput values.
@@ -374,12 +361,6 @@ func (i DomainExtensionMap) ToDomainExtensionMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DomainExtensionMapOutput)
 }
 
-func (i DomainExtensionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DomainExtension] {
-	return pulumix.Output[map[string]*DomainExtension]{
-		OutputState: i.ToDomainExtensionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DomainExtensionOutput struct{ *pulumi.OutputState }
 
 func (DomainExtensionOutput) ElementType() reflect.Type {
@@ -392,12 +373,6 @@ func (o DomainExtensionOutput) ToDomainExtensionOutput() DomainExtensionOutput {
 
 func (o DomainExtensionOutput) ToDomainExtensionOutputWithContext(ctx context.Context) DomainExtensionOutput {
 	return o
-}
-
-func (o DomainExtensionOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainExtension] {
-	return pulumix.Output[*DomainExtension]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
@@ -439,12 +414,6 @@ func (o DomainExtensionArrayOutput) ToDomainExtensionArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o DomainExtensionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DomainExtension] {
-	return pulumix.Output[[]*DomainExtension]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DomainExtensionArrayOutput) Index(i pulumi.IntInput) DomainExtensionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DomainExtension {
 		return vs[0].([]*DomainExtension)[vs[1].(int)]
@@ -463,12 +432,6 @@ func (o DomainExtensionMapOutput) ToDomainExtensionMapOutput() DomainExtensionMa
 
 func (o DomainExtensionMapOutput) ToDomainExtensionMapOutputWithContext(ctx context.Context) DomainExtensionMapOutput {
 	return o
-}
-
-func (o DomainExtensionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DomainExtension] {
-	return pulumix.Output[map[string]*DomainExtension]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DomainExtensionMapOutput) MapIndex(k pulumi.StringInput) DomainExtensionOutput {

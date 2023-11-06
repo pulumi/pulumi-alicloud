@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a VPC Nat Ip Cidr resource.
@@ -226,12 +225,6 @@ func (i *NatIpCidr) ToNatIpCidrOutputWithContext(ctx context.Context) NatIpCidrO
 	return pulumi.ToOutputWithContext(ctx, i).(NatIpCidrOutput)
 }
 
-func (i *NatIpCidr) ToOutput(ctx context.Context) pulumix.Output[*NatIpCidr] {
-	return pulumix.Output[*NatIpCidr]{
-		OutputState: i.ToNatIpCidrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NatIpCidrArrayInput is an input type that accepts NatIpCidrArray and NatIpCidrArrayOutput values.
 // You can construct a concrete instance of `NatIpCidrArrayInput` via:
 //
@@ -255,12 +248,6 @@ func (i NatIpCidrArray) ToNatIpCidrArrayOutput() NatIpCidrArrayOutput {
 
 func (i NatIpCidrArray) ToNatIpCidrArrayOutputWithContext(ctx context.Context) NatIpCidrArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NatIpCidrArrayOutput)
-}
-
-func (i NatIpCidrArray) ToOutput(ctx context.Context) pulumix.Output[[]*NatIpCidr] {
-	return pulumix.Output[[]*NatIpCidr]{
-		OutputState: i.ToNatIpCidrArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NatIpCidrMapInput is an input type that accepts NatIpCidrMap and NatIpCidrMapOutput values.
@@ -288,12 +275,6 @@ func (i NatIpCidrMap) ToNatIpCidrMapOutputWithContext(ctx context.Context) NatIp
 	return pulumi.ToOutputWithContext(ctx, i).(NatIpCidrMapOutput)
 }
 
-func (i NatIpCidrMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NatIpCidr] {
-	return pulumix.Output[map[string]*NatIpCidr]{
-		OutputState: i.ToNatIpCidrMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NatIpCidrOutput struct{ *pulumi.OutputState }
 
 func (NatIpCidrOutput) ElementType() reflect.Type {
@@ -306,12 +287,6 @@ func (o NatIpCidrOutput) ToNatIpCidrOutput() NatIpCidrOutput {
 
 func (o NatIpCidrOutput) ToNatIpCidrOutputWithContext(ctx context.Context) NatIpCidrOutput {
 	return o
-}
-
-func (o NatIpCidrOutput) ToOutput(ctx context.Context) pulumix.Output[*NatIpCidr] {
-	return pulumix.Output[*NatIpCidr]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies whether to precheck this request only. Valid values: `true` and `false`.
@@ -358,12 +333,6 @@ func (o NatIpCidrArrayOutput) ToNatIpCidrArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o NatIpCidrArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NatIpCidr] {
-	return pulumix.Output[[]*NatIpCidr]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NatIpCidrArrayOutput) Index(i pulumi.IntInput) NatIpCidrOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NatIpCidr {
 		return vs[0].([]*NatIpCidr)[vs[1].(int)]
@@ -382,12 +351,6 @@ func (o NatIpCidrMapOutput) ToNatIpCidrMapOutput() NatIpCidrMapOutput {
 
 func (o NatIpCidrMapOutput) ToNatIpCidrMapOutputWithContext(ctx context.Context) NatIpCidrMapOutput {
 	return o
-}
-
-func (o NatIpCidrMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NatIpCidr] {
-	return pulumix.Output[map[string]*NatIpCidr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NatIpCidrMapOutput) MapIndex(k pulumi.StringInput) NatIpCidrOutput {

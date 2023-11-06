@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Vpc Peer Connection Accepter resource.
@@ -262,12 +261,6 @@ func (i *PeerConnectionAccepter) ToPeerConnectionAccepterOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(PeerConnectionAccepterOutput)
 }
 
-func (i *PeerConnectionAccepter) ToOutput(ctx context.Context) pulumix.Output[*PeerConnectionAccepter] {
-	return pulumix.Output[*PeerConnectionAccepter]{
-		OutputState: i.ToPeerConnectionAccepterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PeerConnectionAccepterArrayInput is an input type that accepts PeerConnectionAccepterArray and PeerConnectionAccepterArrayOutput values.
 // You can construct a concrete instance of `PeerConnectionAccepterArrayInput` via:
 //
@@ -291,12 +284,6 @@ func (i PeerConnectionAccepterArray) ToPeerConnectionAccepterArrayOutput() PeerC
 
 func (i PeerConnectionAccepterArray) ToPeerConnectionAccepterArrayOutputWithContext(ctx context.Context) PeerConnectionAccepterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PeerConnectionAccepterArrayOutput)
-}
-
-func (i PeerConnectionAccepterArray) ToOutput(ctx context.Context) pulumix.Output[[]*PeerConnectionAccepter] {
-	return pulumix.Output[[]*PeerConnectionAccepter]{
-		OutputState: i.ToPeerConnectionAccepterArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PeerConnectionAccepterMapInput is an input type that accepts PeerConnectionAccepterMap and PeerConnectionAccepterMapOutput values.
@@ -324,12 +311,6 @@ func (i PeerConnectionAccepterMap) ToPeerConnectionAccepterMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(PeerConnectionAccepterMapOutput)
 }
 
-func (i PeerConnectionAccepterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PeerConnectionAccepter] {
-	return pulumix.Output[map[string]*PeerConnectionAccepter]{
-		OutputState: i.ToPeerConnectionAccepterMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PeerConnectionAccepterOutput struct{ *pulumi.OutputState }
 
 func (PeerConnectionAccepterOutput) ElementType() reflect.Type {
@@ -342,12 +323,6 @@ func (o PeerConnectionAccepterOutput) ToPeerConnectionAccepterOutput() PeerConne
 
 func (o PeerConnectionAccepterOutput) ToPeerConnectionAccepterOutputWithContext(ctx context.Context) PeerConnectionAccepterOutput {
 	return o
-}
-
-func (o PeerConnectionAccepterOutput) ToOutput(ctx context.Context) pulumix.Output[*PeerConnectionAccepter] {
-	return pulumix.Output[*PeerConnectionAccepter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.-Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.-Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.> If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
@@ -414,12 +389,6 @@ func (o PeerConnectionAccepterArrayOutput) ToPeerConnectionAccepterArrayOutputWi
 	return o
 }
 
-func (o PeerConnectionAccepterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PeerConnectionAccepter] {
-	return pulumix.Output[[]*PeerConnectionAccepter]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PeerConnectionAccepterArrayOutput) Index(i pulumi.IntInput) PeerConnectionAccepterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PeerConnectionAccepter {
 		return vs[0].([]*PeerConnectionAccepter)[vs[1].(int)]
@@ -438,12 +407,6 @@ func (o PeerConnectionAccepterMapOutput) ToPeerConnectionAccepterMapOutput() Pee
 
 func (o PeerConnectionAccepterMapOutput) ToPeerConnectionAccepterMapOutputWithContext(ctx context.Context) PeerConnectionAccepterMapOutput {
 	return o
-}
-
-func (o PeerConnectionAccepterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PeerConnectionAccepter] {
-	return pulumix.Output[map[string]*PeerConnectionAccepter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PeerConnectionAccepterMapOutput) MapIndex(k pulumi.StringInput) PeerConnectionAccepterOutput {

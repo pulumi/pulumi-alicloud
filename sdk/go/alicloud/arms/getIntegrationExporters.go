@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Arms Integration Exporters of the current Alibaba Cloud user.
@@ -126,12 +125,6 @@ func (o GetIntegrationExportersResultOutput) ToGetIntegrationExportersResultOutp
 
 func (o GetIntegrationExportersResultOutput) ToGetIntegrationExportersResultOutputWithContext(ctx context.Context) GetIntegrationExportersResultOutput {
 	return o
-}
-
-func (o GetIntegrationExportersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetIntegrationExportersResult] {
-	return pulumix.Output[GetIntegrationExportersResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Prometheus instance.

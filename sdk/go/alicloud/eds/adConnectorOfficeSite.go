@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECD Ad Connector Office Site resource.
@@ -379,12 +378,6 @@ func (i *AdConnectorOfficeSite) ToAdConnectorOfficeSiteOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(AdConnectorOfficeSiteOutput)
 }
 
-func (i *AdConnectorOfficeSite) ToOutput(ctx context.Context) pulumix.Output[*AdConnectorOfficeSite] {
-	return pulumix.Output[*AdConnectorOfficeSite]{
-		OutputState: i.ToAdConnectorOfficeSiteOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AdConnectorOfficeSiteArrayInput is an input type that accepts AdConnectorOfficeSiteArray and AdConnectorOfficeSiteArrayOutput values.
 // You can construct a concrete instance of `AdConnectorOfficeSiteArrayInput` via:
 //
@@ -408,12 +401,6 @@ func (i AdConnectorOfficeSiteArray) ToAdConnectorOfficeSiteArrayOutput() AdConne
 
 func (i AdConnectorOfficeSiteArray) ToAdConnectorOfficeSiteArrayOutputWithContext(ctx context.Context) AdConnectorOfficeSiteArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AdConnectorOfficeSiteArrayOutput)
-}
-
-func (i AdConnectorOfficeSiteArray) ToOutput(ctx context.Context) pulumix.Output[[]*AdConnectorOfficeSite] {
-	return pulumix.Output[[]*AdConnectorOfficeSite]{
-		OutputState: i.ToAdConnectorOfficeSiteArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AdConnectorOfficeSiteMapInput is an input type that accepts AdConnectorOfficeSiteMap and AdConnectorOfficeSiteMapOutput values.
@@ -441,12 +428,6 @@ func (i AdConnectorOfficeSiteMap) ToAdConnectorOfficeSiteMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(AdConnectorOfficeSiteMapOutput)
 }
 
-func (i AdConnectorOfficeSiteMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AdConnectorOfficeSite] {
-	return pulumix.Output[map[string]*AdConnectorOfficeSite]{
-		OutputState: i.ToAdConnectorOfficeSiteMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AdConnectorOfficeSiteOutput struct{ *pulumi.OutputState }
 
 func (AdConnectorOfficeSiteOutput) ElementType() reflect.Type {
@@ -459,12 +440,6 @@ func (o AdConnectorOfficeSiteOutput) ToAdConnectorOfficeSiteOutput() AdConnector
 
 func (o AdConnectorOfficeSiteOutput) ToAdConnectorOfficeSiteOutputWithContext(ctx context.Context) AdConnectorOfficeSiteOutput {
 	return o
-}
-
-func (o AdConnectorOfficeSiteOutput) ToOutput(ctx context.Context) pulumix.Output[*AdConnectorOfficeSite] {
-	return pulumix.Output[*AdConnectorOfficeSite]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the workspace. The name must be 2 to 255 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), and hyphens (-).
@@ -581,12 +556,6 @@ func (o AdConnectorOfficeSiteArrayOutput) ToAdConnectorOfficeSiteArrayOutputWith
 	return o
 }
 
-func (o AdConnectorOfficeSiteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AdConnectorOfficeSite] {
-	return pulumix.Output[[]*AdConnectorOfficeSite]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AdConnectorOfficeSiteArrayOutput) Index(i pulumi.IntInput) AdConnectorOfficeSiteOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AdConnectorOfficeSite {
 		return vs[0].([]*AdConnectorOfficeSite)[vs[1].(int)]
@@ -605,12 +574,6 @@ func (o AdConnectorOfficeSiteMapOutput) ToAdConnectorOfficeSiteMapOutput() AdCon
 
 func (o AdConnectorOfficeSiteMapOutput) ToAdConnectorOfficeSiteMapOutputWithContext(ctx context.Context) AdConnectorOfficeSiteMapOutput {
 	return o
-}
-
-func (o AdConnectorOfficeSiteMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AdConnectorOfficeSite] {
-	return pulumix.Output[map[string]*AdConnectorOfficeSite]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AdConnectorOfficeSiteMapOutput) MapIndex(k pulumi.StringInput) AdConnectorOfficeSiteOutput {

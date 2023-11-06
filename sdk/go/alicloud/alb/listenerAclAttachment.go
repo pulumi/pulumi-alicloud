@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ALB Listener Acl Attachment resource. Associating ACL to listening.
@@ -161,12 +160,6 @@ func (i *ListenerAclAttachment) ToListenerAclAttachmentOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ListenerAclAttachmentOutput)
 }
 
-func (i *ListenerAclAttachment) ToOutput(ctx context.Context) pulumix.Output[*ListenerAclAttachment] {
-	return pulumix.Output[*ListenerAclAttachment]{
-		OutputState: i.ToListenerAclAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ListenerAclAttachmentArrayInput is an input type that accepts ListenerAclAttachmentArray and ListenerAclAttachmentArrayOutput values.
 // You can construct a concrete instance of `ListenerAclAttachmentArrayInput` via:
 //
@@ -190,12 +183,6 @@ func (i ListenerAclAttachmentArray) ToListenerAclAttachmentArrayOutput() Listene
 
 func (i ListenerAclAttachmentArray) ToListenerAclAttachmentArrayOutputWithContext(ctx context.Context) ListenerAclAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ListenerAclAttachmentArrayOutput)
-}
-
-func (i ListenerAclAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*ListenerAclAttachment] {
-	return pulumix.Output[[]*ListenerAclAttachment]{
-		OutputState: i.ToListenerAclAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ListenerAclAttachmentMapInput is an input type that accepts ListenerAclAttachmentMap and ListenerAclAttachmentMapOutput values.
@@ -223,12 +210,6 @@ func (i ListenerAclAttachmentMap) ToListenerAclAttachmentMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ListenerAclAttachmentMapOutput)
 }
 
-func (i ListenerAclAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ListenerAclAttachment] {
-	return pulumix.Output[map[string]*ListenerAclAttachment]{
-		OutputState: i.ToListenerAclAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ListenerAclAttachmentOutput struct{ *pulumi.OutputState }
 
 func (ListenerAclAttachmentOutput) ElementType() reflect.Type {
@@ -241,12 +222,6 @@ func (o ListenerAclAttachmentOutput) ToListenerAclAttachmentOutput() ListenerAcl
 
 func (o ListenerAclAttachmentOutput) ToListenerAclAttachmentOutputWithContext(ctx context.Context) ListenerAclAttachmentOutput {
 	return o
-}
-
-func (o ListenerAclAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*ListenerAclAttachment] {
-	return pulumix.Output[*ListenerAclAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID list of the access policy group bound by the listener.
@@ -285,12 +260,6 @@ func (o ListenerAclAttachmentArrayOutput) ToListenerAclAttachmentArrayOutputWith
 	return o
 }
 
-func (o ListenerAclAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ListenerAclAttachment] {
-	return pulumix.Output[[]*ListenerAclAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ListenerAclAttachmentArrayOutput) Index(i pulumi.IntInput) ListenerAclAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ListenerAclAttachment {
 		return vs[0].([]*ListenerAclAttachment)[vs[1].(int)]
@@ -309,12 +278,6 @@ func (o ListenerAclAttachmentMapOutput) ToListenerAclAttachmentMapOutput() Liste
 
 func (o ListenerAclAttachmentMapOutput) ToListenerAclAttachmentMapOutputWithContext(ctx context.Context) ListenerAclAttachmentMapOutput {
 	return o
-}
-
-func (o ListenerAclAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ListenerAclAttachment] {
-	return pulumix.Output[map[string]*ListenerAclAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ListenerAclAttachmentMapOutput) MapIndex(k pulumi.StringInput) ListenerAclAttachmentOutput {

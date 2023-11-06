@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Bastion Host Share Key resource.
@@ -261,12 +260,6 @@ func (i *HostShareKey) ToHostShareKeyOutputWithContext(ctx context.Context) Host
 	return pulumi.ToOutputWithContext(ctx, i).(HostShareKeyOutput)
 }
 
-func (i *HostShareKey) ToOutput(ctx context.Context) pulumix.Output[*HostShareKey] {
-	return pulumix.Output[*HostShareKey]{
-		OutputState: i.ToHostShareKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HostShareKeyArrayInput is an input type that accepts HostShareKeyArray and HostShareKeyArrayOutput values.
 // You can construct a concrete instance of `HostShareKeyArrayInput` via:
 //
@@ -290,12 +283,6 @@ func (i HostShareKeyArray) ToHostShareKeyArrayOutput() HostShareKeyArrayOutput {
 
 func (i HostShareKeyArray) ToHostShareKeyArrayOutputWithContext(ctx context.Context) HostShareKeyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostShareKeyArrayOutput)
-}
-
-func (i HostShareKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]*HostShareKey] {
-	return pulumix.Output[[]*HostShareKey]{
-		OutputState: i.ToHostShareKeyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HostShareKeyMapInput is an input type that accepts HostShareKeyMap and HostShareKeyMapOutput values.
@@ -323,12 +310,6 @@ func (i HostShareKeyMap) ToHostShareKeyMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(HostShareKeyMapOutput)
 }
 
-func (i HostShareKeyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostShareKey] {
-	return pulumix.Output[map[string]*HostShareKey]{
-		OutputState: i.ToHostShareKeyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HostShareKeyOutput struct{ *pulumi.OutputState }
 
 func (HostShareKeyOutput) ElementType() reflect.Type {
@@ -341,12 +322,6 @@ func (o HostShareKeyOutput) ToHostShareKeyOutput() HostShareKeyOutput {
 
 func (o HostShareKeyOutput) ToHostShareKeyOutputWithContext(ctx context.Context) HostShareKeyOutput {
 	return o
-}
-
-func (o HostShareKeyOutput) ToOutput(ctx context.Context) pulumix.Output[*HostShareKey] {
-	return pulumix.Output[*HostShareKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The first ID of the resource.
@@ -393,12 +368,6 @@ func (o HostShareKeyArrayOutput) ToHostShareKeyArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o HostShareKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HostShareKey] {
-	return pulumix.Output[[]*HostShareKey]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HostShareKeyArrayOutput) Index(i pulumi.IntInput) HostShareKeyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HostShareKey {
 		return vs[0].([]*HostShareKey)[vs[1].(int)]
@@ -417,12 +386,6 @@ func (o HostShareKeyMapOutput) ToHostShareKeyMapOutput() HostShareKeyMapOutput {
 
 func (o HostShareKeyMapOutput) ToHostShareKeyMapOutputWithContext(ctx context.Context) HostShareKeyMapOutput {
 	return o
-}
-
-func (o HostShareKeyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostShareKey] {
-	return pulumix.Output[map[string]*HostShareKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HostShareKeyMapOutput) MapIndex(k pulumi.StringInput) HostShareKeyOutput {

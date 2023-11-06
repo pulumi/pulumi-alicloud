@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cloud Storage Gateway Express Syncs of the current Alibaba Cloud user.
@@ -120,12 +119,6 @@ func (o GetExpressSyncsResultOutput) ToGetExpressSyncsResultOutput() GetExpressS
 
 func (o GetExpressSyncsResultOutput) ToGetExpressSyncsResultOutputWithContext(ctx context.Context) GetExpressSyncsResultOutput {
 	return o
-}
-
-func (o GetExpressSyncsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetExpressSyncsResult] {
-	return pulumix.Output[GetExpressSyncsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

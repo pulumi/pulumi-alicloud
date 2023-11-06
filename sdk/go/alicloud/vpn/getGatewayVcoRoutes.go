@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Vpn Gateway Vco Routes of the current Alibaba Cloud user.
@@ -223,12 +222,6 @@ func (o GetGatewayVcoRoutesResultOutput) ToGetGatewayVcoRoutesResultOutput() Get
 
 func (o GetGatewayVcoRoutesResultOutput) ToGetGatewayVcoRoutesResultOutputWithContext(ctx context.Context) GetGatewayVcoRoutesResultOutput {
 	return o
-}
-
-func (o GetGatewayVcoRoutesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGatewayVcoRoutesResult] {
-	return pulumix.Output[GetGatewayVcoRoutesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

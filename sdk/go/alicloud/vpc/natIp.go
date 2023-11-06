@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a VPC Nat Ip resource.
@@ -263,12 +262,6 @@ func (i *NatIp) ToNatIpOutputWithContext(ctx context.Context) NatIpOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NatIpOutput)
 }
 
-func (i *NatIp) ToOutput(ctx context.Context) pulumix.Output[*NatIp] {
-	return pulumix.Output[*NatIp]{
-		OutputState: i.ToNatIpOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NatIpArrayInput is an input type that accepts NatIpArray and NatIpArrayOutput values.
 // You can construct a concrete instance of `NatIpArrayInput` via:
 //
@@ -292,12 +285,6 @@ func (i NatIpArray) ToNatIpArrayOutput() NatIpArrayOutput {
 
 func (i NatIpArray) ToNatIpArrayOutputWithContext(ctx context.Context) NatIpArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NatIpArrayOutput)
-}
-
-func (i NatIpArray) ToOutput(ctx context.Context) pulumix.Output[[]*NatIp] {
-	return pulumix.Output[[]*NatIp]{
-		OutputState: i.ToNatIpArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NatIpMapInput is an input type that accepts NatIpMap and NatIpMapOutput values.
@@ -325,12 +312,6 @@ func (i NatIpMap) ToNatIpMapOutputWithContext(ctx context.Context) NatIpMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(NatIpMapOutput)
 }
 
-func (i NatIpMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NatIp] {
-	return pulumix.Output[map[string]*NatIp]{
-		OutputState: i.ToNatIpMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NatIpOutput struct{ *pulumi.OutputState }
 
 func (NatIpOutput) ElementType() reflect.Type {
@@ -343,12 +324,6 @@ func (o NatIpOutput) ToNatIpOutput() NatIpOutput {
 
 func (o NatIpOutput) ToNatIpOutputWithContext(ctx context.Context) NatIpOutput {
 	return o
-}
-
-func (o NatIpOutput) ToOutput(ctx context.Context) pulumix.Output[*NatIp] {
-	return pulumix.Output[*NatIp]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies whether to check the validity of the request without actually making the request.
@@ -410,12 +385,6 @@ func (o NatIpArrayOutput) ToNatIpArrayOutputWithContext(ctx context.Context) Nat
 	return o
 }
 
-func (o NatIpArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NatIp] {
-	return pulumix.Output[[]*NatIp]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NatIpArrayOutput) Index(i pulumi.IntInput) NatIpOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NatIp {
 		return vs[0].([]*NatIp)[vs[1].(int)]
@@ -434,12 +403,6 @@ func (o NatIpMapOutput) ToNatIpMapOutput() NatIpMapOutput {
 
 func (o NatIpMapOutput) ToNatIpMapOutputWithContext(ctx context.Context) NatIpMapOutput {
 	return o
-}
-
-func (o NatIpMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NatIp] {
-	return pulumix.Output[map[string]*NatIp]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NatIpMapOutput) MapIndex(k pulumi.StringInput) NatIpOutput {

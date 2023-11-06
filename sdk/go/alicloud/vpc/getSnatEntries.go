@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list of Snat Entries owned by an Alibaba Cloud account.
@@ -203,12 +202,6 @@ func (o GetSnatEntriesResultOutput) ToGetSnatEntriesResultOutput() GetSnatEntrie
 
 func (o GetSnatEntriesResultOutput) ToGetSnatEntriesResultOutputWithContext(ctx context.Context) GetSnatEntriesResultOutput {
 	return o
-}
-
-func (o GetSnatEntriesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSnatEntriesResult] {
-	return pulumix.Output[GetSnatEntriesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of Snat Entries. Each element contains the following attributes:

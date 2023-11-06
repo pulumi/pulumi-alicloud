@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a VPC Gateway Endpoint resource. VPC gateway endpoint.
@@ -247,12 +246,6 @@ func (i *GatewayEndpoint) ToGatewayEndpointOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayEndpointOutput)
 }
 
-func (i *GatewayEndpoint) ToOutput(ctx context.Context) pulumix.Output[*GatewayEndpoint] {
-	return pulumix.Output[*GatewayEndpoint]{
-		OutputState: i.ToGatewayEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GatewayEndpointArrayInput is an input type that accepts GatewayEndpointArray and GatewayEndpointArrayOutput values.
 // You can construct a concrete instance of `GatewayEndpointArrayInput` via:
 //
@@ -276,12 +269,6 @@ func (i GatewayEndpointArray) ToGatewayEndpointArrayOutput() GatewayEndpointArra
 
 func (i GatewayEndpointArray) ToGatewayEndpointArrayOutputWithContext(ctx context.Context) GatewayEndpointArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayEndpointArrayOutput)
-}
-
-func (i GatewayEndpointArray) ToOutput(ctx context.Context) pulumix.Output[[]*GatewayEndpoint] {
-	return pulumix.Output[[]*GatewayEndpoint]{
-		OutputState: i.ToGatewayEndpointArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GatewayEndpointMapInput is an input type that accepts GatewayEndpointMap and GatewayEndpointMapOutput values.
@@ -309,12 +296,6 @@ func (i GatewayEndpointMap) ToGatewayEndpointMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayEndpointMapOutput)
 }
 
-func (i GatewayEndpointMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GatewayEndpoint] {
-	return pulumix.Output[map[string]*GatewayEndpoint]{
-		OutputState: i.ToGatewayEndpointMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GatewayEndpointOutput struct{ *pulumi.OutputState }
 
 func (GatewayEndpointOutput) ElementType() reflect.Type {
@@ -327,12 +308,6 @@ func (o GatewayEndpointOutput) ToGatewayEndpointOutput() GatewayEndpointOutput {
 
 func (o GatewayEndpointOutput) ToGatewayEndpointOutputWithContext(ctx context.Context) GatewayEndpointOutput {
 	return o
-}
-
-func (o GatewayEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewayEndpoint] {
-	return pulumix.Output[*GatewayEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation time of the gateway endpoint.
@@ -394,12 +369,6 @@ func (o GatewayEndpointArrayOutput) ToGatewayEndpointArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o GatewayEndpointArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GatewayEndpoint] {
-	return pulumix.Output[[]*GatewayEndpoint]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GatewayEndpointArrayOutput) Index(i pulumi.IntInput) GatewayEndpointOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GatewayEndpoint {
 		return vs[0].([]*GatewayEndpoint)[vs[1].(int)]
@@ -418,12 +387,6 @@ func (o GatewayEndpointMapOutput) ToGatewayEndpointMapOutput() GatewayEndpointMa
 
 func (o GatewayEndpointMapOutput) ToGatewayEndpointMapOutputWithContext(ctx context.Context) GatewayEndpointMapOutput {
 	return o
-}
-
-func (o GatewayEndpointMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GatewayEndpoint] {
-	return pulumix.Output[map[string]*GatewayEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GatewayEndpointMapOutput) MapIndex(k pulumi.StringInput) GatewayEndpointOutput {

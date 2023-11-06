@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Vpc Ipv6 Internet Bandwidths of the current Alibaba Cloud user.
@@ -147,12 +146,6 @@ func (o GetIpv6InternetBandwidthsResultOutput) ToGetIpv6InternetBandwidthsResult
 
 func (o GetIpv6InternetBandwidthsResultOutput) ToGetIpv6InternetBandwidthsResultOutputWithContext(ctx context.Context) GetIpv6InternetBandwidthsResultOutput {
 	return o
-}
-
-func (o GetIpv6InternetBandwidthsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetIpv6InternetBandwidthsResult] {
-	return pulumix.Output[GetIpv6InternetBandwidthsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetIpv6InternetBandwidthsResultOutput) Bandwidths() GetIpv6InternetBandwidthsBandwidthArrayOutput {

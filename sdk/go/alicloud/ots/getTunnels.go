@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the ots tunnels of the current Alibaba Cloud user.
@@ -133,12 +132,6 @@ func (o GetTunnelsResultOutput) ToGetTunnelsResultOutput() GetTunnelsResultOutpu
 
 func (o GetTunnelsResultOutput) ToGetTunnelsResultOutputWithContext(ctx context.Context) GetTunnelsResultOutput {
 	return o
-}
-
-func (o GetTunnelsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTunnelsResult] {
-	return pulumix.Output[GetTunnelsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

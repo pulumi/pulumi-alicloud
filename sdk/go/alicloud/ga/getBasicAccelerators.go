@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Global Accelerator (GA) Basic Accelerators of the current Alibaba Cloud user.
@@ -143,12 +142,6 @@ func (o GetBasicAcceleratorsResultOutput) ToGetBasicAcceleratorsResultOutput() G
 
 func (o GetBasicAcceleratorsResultOutput) ToGetBasicAcceleratorsResultOutputWithContext(ctx context.Context) GetBasicAcceleratorsResultOutput {
 	return o
-}
-
-func (o GetBasicAcceleratorsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBasicAcceleratorsResult] {
-	return pulumix.Output[GetBasicAcceleratorsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetBasicAcceleratorsResultOutput) AcceleratorId() pulumi.StringPtrOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Alidns Record resource. For information about Alidns Domain Record and how to use it, see [What is Resource Alidns Record](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/adding-a-dns-record).
@@ -272,12 +271,6 @@ func (i *AlidnsRecord) ToAlidnsRecordOutputWithContext(ctx context.Context) Alid
 	return pulumi.ToOutputWithContext(ctx, i).(AlidnsRecordOutput)
 }
 
-func (i *AlidnsRecord) ToOutput(ctx context.Context) pulumix.Output[*AlidnsRecord] {
-	return pulumix.Output[*AlidnsRecord]{
-		OutputState: i.ToAlidnsRecordOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AlidnsRecordArrayInput is an input type that accepts AlidnsRecordArray and AlidnsRecordArrayOutput values.
 // You can construct a concrete instance of `AlidnsRecordArrayInput` via:
 //
@@ -301,12 +294,6 @@ func (i AlidnsRecordArray) ToAlidnsRecordArrayOutput() AlidnsRecordArrayOutput {
 
 func (i AlidnsRecordArray) ToAlidnsRecordArrayOutputWithContext(ctx context.Context) AlidnsRecordArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlidnsRecordArrayOutput)
-}
-
-func (i AlidnsRecordArray) ToOutput(ctx context.Context) pulumix.Output[[]*AlidnsRecord] {
-	return pulumix.Output[[]*AlidnsRecord]{
-		OutputState: i.ToAlidnsRecordArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AlidnsRecordMapInput is an input type that accepts AlidnsRecordMap and AlidnsRecordMapOutput values.
@@ -334,12 +321,6 @@ func (i AlidnsRecordMap) ToAlidnsRecordMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AlidnsRecordMapOutput)
 }
 
-func (i AlidnsRecordMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AlidnsRecord] {
-	return pulumix.Output[map[string]*AlidnsRecord]{
-		OutputState: i.ToAlidnsRecordMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AlidnsRecordOutput struct{ *pulumi.OutputState }
 
 func (AlidnsRecordOutput) ElementType() reflect.Type {
@@ -352,12 +333,6 @@ func (o AlidnsRecordOutput) ToAlidnsRecordOutput() AlidnsRecordOutput {
 
 func (o AlidnsRecordOutput) ToAlidnsRecordOutputWithContext(ctx context.Context) AlidnsRecordOutput {
 	return o
-}
-
-func (o AlidnsRecordOutput) ToOutput(ctx context.Context) pulumix.Output[*AlidnsRecord] {
-	return pulumix.Output[*AlidnsRecord]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
@@ -429,12 +404,6 @@ func (o AlidnsRecordArrayOutput) ToAlidnsRecordArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o AlidnsRecordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AlidnsRecord] {
-	return pulumix.Output[[]*AlidnsRecord]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AlidnsRecordArrayOutput) Index(i pulumi.IntInput) AlidnsRecordOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AlidnsRecord {
 		return vs[0].([]*AlidnsRecord)[vs[1].(int)]
@@ -453,12 +422,6 @@ func (o AlidnsRecordMapOutput) ToAlidnsRecordMapOutput() AlidnsRecordMapOutput {
 
 func (o AlidnsRecordMapOutput) ToAlidnsRecordMapOutputWithContext(ctx context.Context) AlidnsRecordMapOutput {
 	return o
-}
-
-func (o AlidnsRecordMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AlidnsRecord] {
-	return pulumix.Output[map[string]*AlidnsRecord]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AlidnsRecordMapOutput) MapIndex(k pulumi.StringInput) AlidnsRecordOutput {

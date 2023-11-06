@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **DEPRECATED:** This datasource has been renamed to ecs.getEcsSnapshots from version 1.120.0.
@@ -204,12 +203,6 @@ func (o GetSnapshotsResultOutput) ToGetSnapshotsResultOutput() GetSnapshotsResul
 
 func (o GetSnapshotsResultOutput) ToGetSnapshotsResultOutputWithContext(ctx context.Context) GetSnapshotsResultOutput {
 	return o
-}
-
-func (o GetSnapshotsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSnapshotsResult] {
-	return pulumix.Output[GetSnapshotsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSnapshotsResultOutput) Category() pulumi.StringPtrOutput {

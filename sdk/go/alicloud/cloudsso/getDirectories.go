@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cloud Sso Directories of the current Alibaba Cloud user.
@@ -131,12 +130,6 @@ func (o GetDirectoriesResultOutput) ToGetDirectoriesResultOutput() GetDirectorie
 
 func (o GetDirectoriesResultOutput) ToGetDirectoriesResultOutputWithContext(ctx context.Context) GetDirectoriesResultOutput {
 	return o
-}
-
-func (o GetDirectoriesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDirectoriesResult] {
-	return pulumix.Output[GetDirectoriesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDirectoriesResultOutput) Directories() GetDirectoriesDirectoryArrayOutput {

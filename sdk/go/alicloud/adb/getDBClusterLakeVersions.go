@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
@@ -132,12 +131,6 @@ func (o GetDBClusterLakeVersionsResultOutput) ToGetDBClusterLakeVersionsResultOu
 
 func (o GetDBClusterLakeVersionsResultOutput) ToGetDBClusterLakeVersionsResultOutputWithContext(ctx context.Context) GetDBClusterLakeVersionsResultOutput {
 	return o
-}
-
-func (o GetDBClusterLakeVersionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDBClusterLakeVersionsResult] {
-	return pulumix.Output[GetDBClusterLakeVersionsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDBClusterLakeVersionsResultOutput) EnableDetails() pulumi.BoolPtrOutput {

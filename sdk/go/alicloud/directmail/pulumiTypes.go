@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -123,12 +122,6 @@ func (i GetDomainsDomainArgs) ToGetDomainsDomainOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainOutput)
 }
 
-func (i GetDomainsDomainArgs) ToOutput(ctx context.Context) pulumix.Output[GetDomainsDomain] {
-	return pulumix.Output[GetDomainsDomain]{
-		OutputState: i.ToGetDomainsDomainOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDomainsDomainArrayInput is an input type that accepts GetDomainsDomainArray and GetDomainsDomainArrayOutput values.
 // You can construct a concrete instance of `GetDomainsDomainArrayInput` via:
 //
@@ -154,12 +147,6 @@ func (i GetDomainsDomainArray) ToGetDomainsDomainArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainArrayOutput)
 }
 
-func (i GetDomainsDomainArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainsDomain] {
-	return pulumix.Output[[]GetDomainsDomain]{
-		OutputState: i.ToGetDomainsDomainArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDomainsDomainOutput struct{ *pulumi.OutputState }
 
 func (GetDomainsDomainOutput) ElementType() reflect.Type {
@@ -172,12 +159,6 @@ func (o GetDomainsDomainOutput) ToGetDomainsDomainOutput() GetDomainsDomainOutpu
 
 func (o GetDomainsDomainOutput) ToGetDomainsDomainOutputWithContext(ctx context.Context) GetDomainsDomainOutput {
 	return o
-}
-
-func (o GetDomainsDomainOutput) ToOutput(ctx context.Context) pulumix.Output[GetDomainsDomain] {
-	return pulumix.Output[GetDomainsDomain]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Track verification.
@@ -294,12 +275,6 @@ func (o GetDomainsDomainArrayOutput) ToGetDomainsDomainArrayOutputWithContext(ct
 	return o
 }
 
-func (o GetDomainsDomainArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainsDomain] {
-	return pulumix.Output[[]GetDomainsDomain]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetDomainsDomainArrayOutput) Index(i pulumi.IntInput) GetDomainsDomainOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDomainsDomain {
 		return vs[0].([]GetDomainsDomain)[vs[1].(int)]
@@ -387,12 +362,6 @@ func (i GetMailAddressesAddressArgs) ToGetMailAddressesAddressOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetMailAddressesAddressOutput)
 }
 
-func (i GetMailAddressesAddressArgs) ToOutput(ctx context.Context) pulumix.Output[GetMailAddressesAddress] {
-	return pulumix.Output[GetMailAddressesAddress]{
-		OutputState: i.ToGetMailAddressesAddressOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetMailAddressesAddressArrayInput is an input type that accepts GetMailAddressesAddressArray and GetMailAddressesAddressArrayOutput values.
 // You can construct a concrete instance of `GetMailAddressesAddressArrayInput` via:
 //
@@ -418,12 +387,6 @@ func (i GetMailAddressesAddressArray) ToGetMailAddressesAddressArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetMailAddressesAddressArrayOutput)
 }
 
-func (i GetMailAddressesAddressArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMailAddressesAddress] {
-	return pulumix.Output[[]GetMailAddressesAddress]{
-		OutputState: i.ToGetMailAddressesAddressArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetMailAddressesAddressOutput struct{ *pulumi.OutputState }
 
 func (GetMailAddressesAddressOutput) ElementType() reflect.Type {
@@ -436,12 +399,6 @@ func (o GetMailAddressesAddressOutput) ToGetMailAddressesAddressOutput() GetMail
 
 func (o GetMailAddressesAddressOutput) ToGetMailAddressesAddressOutputWithContext(ctx context.Context) GetMailAddressesAddressOutput {
 	return o
-}
-
-func (o GetMailAddressesAddressOutput) ToOutput(ctx context.Context) pulumix.Output[GetMailAddressesAddress] {
-	return pulumix.Output[GetMailAddressesAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The sender address.
@@ -523,12 +480,6 @@ func (o GetMailAddressesAddressArrayOutput) ToGetMailAddressesAddressArrayOutput
 	return o
 }
 
-func (o GetMailAddressesAddressArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMailAddressesAddress] {
-	return pulumix.Output[[]GetMailAddressesAddress]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetMailAddressesAddressArrayOutput) Index(i pulumi.IntInput) GetMailAddressesAddressOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMailAddressesAddress {
 		return vs[0].([]GetMailAddressesAddress)[vs[1].(int)]
@@ -592,12 +543,6 @@ func (i GetReceiversReceiverseArgs) ToGetReceiversReceiverseOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetReceiversReceiverseOutput)
 }
 
-func (i GetReceiversReceiverseArgs) ToOutput(ctx context.Context) pulumix.Output[GetReceiversReceiverse] {
-	return pulumix.Output[GetReceiversReceiverse]{
-		OutputState: i.ToGetReceiversReceiverseOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetReceiversReceiverseArrayInput is an input type that accepts GetReceiversReceiverseArray and GetReceiversReceiverseArrayOutput values.
 // You can construct a concrete instance of `GetReceiversReceiverseArrayInput` via:
 //
@@ -623,12 +568,6 @@ func (i GetReceiversReceiverseArray) ToGetReceiversReceiverseArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetReceiversReceiverseArrayOutput)
 }
 
-func (i GetReceiversReceiverseArray) ToOutput(ctx context.Context) pulumix.Output[[]GetReceiversReceiverse] {
-	return pulumix.Output[[]GetReceiversReceiverse]{
-		OutputState: i.ToGetReceiversReceiverseArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetReceiversReceiverseOutput struct{ *pulumi.OutputState }
 
 func (GetReceiversReceiverseOutput) ElementType() reflect.Type {
@@ -641,12 +580,6 @@ func (o GetReceiversReceiverseOutput) ToGetReceiversReceiverseOutput() GetReceiv
 
 func (o GetReceiversReceiverseOutput) ToGetReceiversReceiverseOutputWithContext(ctx context.Context) GetReceiversReceiverseOutput {
 	return o
-}
-
-func (o GetReceiversReceiverseOutput) ToOutput(ctx context.Context) pulumix.Output[GetReceiversReceiverse] {
-	return pulumix.Output[GetReceiversReceiverse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation time of the resource.
@@ -698,12 +631,6 @@ func (o GetReceiversReceiverseArrayOutput) ToGetReceiversReceiverseArrayOutputWi
 	return o
 }
 
-func (o GetReceiversReceiverseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetReceiversReceiverse] {
-	return pulumix.Output[[]GetReceiversReceiverse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetReceiversReceiverseArrayOutput) Index(i pulumi.IntInput) GetReceiversReceiverseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReceiversReceiverse {
 		return vs[0].([]GetReceiversReceiverse)[vs[1].(int)]
@@ -751,12 +678,6 @@ func (i GetTagsTagArgs) ToGetTagsTagOutputWithContext(ctx context.Context) GetTa
 	return pulumi.ToOutputWithContext(ctx, i).(GetTagsTagOutput)
 }
 
-func (i GetTagsTagArgs) ToOutput(ctx context.Context) pulumix.Output[GetTagsTag] {
-	return pulumix.Output[GetTagsTag]{
-		OutputState: i.ToGetTagsTagOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetTagsTagArrayInput is an input type that accepts GetTagsTagArray and GetTagsTagArrayOutput values.
 // You can construct a concrete instance of `GetTagsTagArrayInput` via:
 //
@@ -782,12 +703,6 @@ func (i GetTagsTagArray) ToGetTagsTagArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GetTagsTagArrayOutput)
 }
 
-func (i GetTagsTagArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTagsTag] {
-	return pulumix.Output[[]GetTagsTag]{
-		OutputState: i.ToGetTagsTagArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetTagsTagOutput struct{ *pulumi.OutputState }
 
 func (GetTagsTagOutput) ElementType() reflect.Type {
@@ -800,12 +715,6 @@ func (o GetTagsTagOutput) ToGetTagsTagOutput() GetTagsTagOutput {
 
 func (o GetTagsTagOutput) ToGetTagsTagOutputWithContext(ctx context.Context) GetTagsTagOutput {
 	return o
-}
-
-func (o GetTagsTagOutput) ToOutput(ctx context.Context) pulumix.Output[GetTagsTag] {
-	return pulumix.Output[GetTagsTag]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the tag.
@@ -835,12 +744,6 @@ func (o GetTagsTagArrayOutput) ToGetTagsTagArrayOutput() GetTagsTagArrayOutput {
 
 func (o GetTagsTagArrayOutput) ToGetTagsTagArrayOutputWithContext(ctx context.Context) GetTagsTagArrayOutput {
 	return o
-}
-
-func (o GetTagsTagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTagsTag] {
-	return pulumix.Output[[]GetTagsTag]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetTagsTagArrayOutput) Index(i pulumi.IntInput) GetTagsTagOutput {

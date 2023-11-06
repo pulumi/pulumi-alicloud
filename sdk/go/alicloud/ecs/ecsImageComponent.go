@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECS Image Component resource.
@@ -218,12 +217,6 @@ func (i *EcsImageComponent) ToEcsImageComponentOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(EcsImageComponentOutput)
 }
 
-func (i *EcsImageComponent) ToOutput(ctx context.Context) pulumix.Output[*EcsImageComponent] {
-	return pulumix.Output[*EcsImageComponent]{
-		OutputState: i.ToEcsImageComponentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EcsImageComponentArrayInput is an input type that accepts EcsImageComponentArray and EcsImageComponentArrayOutput values.
 // You can construct a concrete instance of `EcsImageComponentArrayInput` via:
 //
@@ -247,12 +240,6 @@ func (i EcsImageComponentArray) ToEcsImageComponentArrayOutput() EcsImageCompone
 
 func (i EcsImageComponentArray) ToEcsImageComponentArrayOutputWithContext(ctx context.Context) EcsImageComponentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EcsImageComponentArrayOutput)
-}
-
-func (i EcsImageComponentArray) ToOutput(ctx context.Context) pulumix.Output[[]*EcsImageComponent] {
-	return pulumix.Output[[]*EcsImageComponent]{
-		OutputState: i.ToEcsImageComponentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EcsImageComponentMapInput is an input type that accepts EcsImageComponentMap and EcsImageComponentMapOutput values.
@@ -280,12 +267,6 @@ func (i EcsImageComponentMap) ToEcsImageComponentMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(EcsImageComponentMapOutput)
 }
 
-func (i EcsImageComponentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsImageComponent] {
-	return pulumix.Output[map[string]*EcsImageComponent]{
-		OutputState: i.ToEcsImageComponentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EcsImageComponentOutput struct{ *pulumi.OutputState }
 
 func (EcsImageComponentOutput) ElementType() reflect.Type {
@@ -298,12 +279,6 @@ func (o EcsImageComponentOutput) ToEcsImageComponentOutput() EcsImageComponentOu
 
 func (o EcsImageComponentOutput) ToEcsImageComponentOutputWithContext(ctx context.Context) EcsImageComponentOutput {
 	return o
-}
-
-func (o EcsImageComponentOutput) ToOutput(ctx context.Context) pulumix.Output[*EcsImageComponent] {
-	return pulumix.Output[*EcsImageComponent]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of the image component. Only image building components are supported. Valid values: `Build`.
@@ -355,12 +330,6 @@ func (o EcsImageComponentArrayOutput) ToEcsImageComponentArrayOutputWithContext(
 	return o
 }
 
-func (o EcsImageComponentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EcsImageComponent] {
-	return pulumix.Output[[]*EcsImageComponent]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EcsImageComponentArrayOutput) Index(i pulumi.IntInput) EcsImageComponentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EcsImageComponent {
 		return vs[0].([]*EcsImageComponent)[vs[1].(int)]
@@ -379,12 +348,6 @@ func (o EcsImageComponentMapOutput) ToEcsImageComponentMapOutput() EcsImageCompo
 
 func (o EcsImageComponentMapOutput) ToEcsImageComponentMapOutputWithContext(ctx context.Context) EcsImageComponentMapOutput {
 	return o
-}
-
-func (o EcsImageComponentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsImageComponent] {
-	return pulumix.Output[map[string]*EcsImageComponent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EcsImageComponentMapOutput) MapIndex(k pulumi.StringInput) EcsImageComponentOutput {

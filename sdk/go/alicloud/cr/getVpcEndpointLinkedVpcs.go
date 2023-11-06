@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the CR Vpc Endpoint Linked Vpcs of the current Alibaba Cloud user.
@@ -132,12 +131,6 @@ func (o GetVpcEndpointLinkedVpcsResultOutput) ToGetVpcEndpointLinkedVpcsResultOu
 
 func (o GetVpcEndpointLinkedVpcsResultOutput) ToGetVpcEndpointLinkedVpcsResultOutputWithContext(ctx context.Context) GetVpcEndpointLinkedVpcsResultOutput {
 	return o
-}
-
-func (o GetVpcEndpointLinkedVpcsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpcEndpointLinkedVpcsResult] {
-	return pulumix.Output[GetVpcEndpointLinkedVpcsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

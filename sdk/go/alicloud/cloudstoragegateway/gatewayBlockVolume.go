@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Storage Gateway Gateway Block Volume resource.
@@ -279,12 +278,6 @@ func (i *GatewayBlockVolume) ToGatewayBlockVolumeOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayBlockVolumeOutput)
 }
 
-func (i *GatewayBlockVolume) ToOutput(ctx context.Context) pulumix.Output[*GatewayBlockVolume] {
-	return pulumix.Output[*GatewayBlockVolume]{
-		OutputState: i.ToGatewayBlockVolumeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GatewayBlockVolumeArrayInput is an input type that accepts GatewayBlockVolumeArray and GatewayBlockVolumeArrayOutput values.
 // You can construct a concrete instance of `GatewayBlockVolumeArrayInput` via:
 //
@@ -308,12 +301,6 @@ func (i GatewayBlockVolumeArray) ToGatewayBlockVolumeArrayOutput() GatewayBlockV
 
 func (i GatewayBlockVolumeArray) ToGatewayBlockVolumeArrayOutputWithContext(ctx context.Context) GatewayBlockVolumeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayBlockVolumeArrayOutput)
-}
-
-func (i GatewayBlockVolumeArray) ToOutput(ctx context.Context) pulumix.Output[[]*GatewayBlockVolume] {
-	return pulumix.Output[[]*GatewayBlockVolume]{
-		OutputState: i.ToGatewayBlockVolumeArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GatewayBlockVolumeMapInput is an input type that accepts GatewayBlockVolumeMap and GatewayBlockVolumeMapOutput values.
@@ -341,12 +328,6 @@ func (i GatewayBlockVolumeMap) ToGatewayBlockVolumeMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayBlockVolumeMapOutput)
 }
 
-func (i GatewayBlockVolumeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GatewayBlockVolume] {
-	return pulumix.Output[map[string]*GatewayBlockVolume]{
-		OutputState: i.ToGatewayBlockVolumeMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GatewayBlockVolumeOutput struct{ *pulumi.OutputState }
 
 func (GatewayBlockVolumeOutput) ElementType() reflect.Type {
@@ -359,12 +340,6 @@ func (o GatewayBlockVolumeOutput) ToGatewayBlockVolumeOutput() GatewayBlockVolum
 
 func (o GatewayBlockVolumeOutput) ToGatewayBlockVolumeOutputWithContext(ctx context.Context) GatewayBlockVolumeOutput {
 	return o
-}
-
-func (o GatewayBlockVolumeOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewayBlockVolume] {
-	return pulumix.Output[*GatewayBlockVolume]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
@@ -466,12 +441,6 @@ func (o GatewayBlockVolumeArrayOutput) ToGatewayBlockVolumeArrayOutputWithContex
 	return o
 }
 
-func (o GatewayBlockVolumeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GatewayBlockVolume] {
-	return pulumix.Output[[]*GatewayBlockVolume]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GatewayBlockVolumeArrayOutput) Index(i pulumi.IntInput) GatewayBlockVolumeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GatewayBlockVolume {
 		return vs[0].([]*GatewayBlockVolume)[vs[1].(int)]
@@ -490,12 +459,6 @@ func (o GatewayBlockVolumeMapOutput) ToGatewayBlockVolumeMapOutput() GatewayBloc
 
 func (o GatewayBlockVolumeMapOutput) ToGatewayBlockVolumeMapOutputWithContext(ctx context.Context) GatewayBlockVolumeMapOutput {
 	return o
-}
-
-func (o GatewayBlockVolumeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GatewayBlockVolume] {
-	return pulumix.Output[map[string]*GatewayBlockVolume]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GatewayBlockVolumeMapOutput) MapIndex(k pulumi.StringInput) GatewayBlockVolumeOutput {

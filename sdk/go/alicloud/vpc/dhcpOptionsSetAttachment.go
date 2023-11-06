@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a VPC Dhcp Options Set Attachment resource.
@@ -195,12 +194,6 @@ func (i *DhcpOptionsSetAttachment) ToDhcpOptionsSetAttachmentOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(DhcpOptionsSetAttachmentOutput)
 }
 
-func (i *DhcpOptionsSetAttachment) ToOutput(ctx context.Context) pulumix.Output[*DhcpOptionsSetAttachment] {
-	return pulumix.Output[*DhcpOptionsSetAttachment]{
-		OutputState: i.ToDhcpOptionsSetAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DhcpOptionsSetAttachmentArrayInput is an input type that accepts DhcpOptionsSetAttachmentArray and DhcpOptionsSetAttachmentArrayOutput values.
 // You can construct a concrete instance of `DhcpOptionsSetAttachmentArrayInput` via:
 //
@@ -224,12 +217,6 @@ func (i DhcpOptionsSetAttachmentArray) ToDhcpOptionsSetAttachmentArrayOutput() D
 
 func (i DhcpOptionsSetAttachmentArray) ToDhcpOptionsSetAttachmentArrayOutputWithContext(ctx context.Context) DhcpOptionsSetAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DhcpOptionsSetAttachmentArrayOutput)
-}
-
-func (i DhcpOptionsSetAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*DhcpOptionsSetAttachment] {
-	return pulumix.Output[[]*DhcpOptionsSetAttachment]{
-		OutputState: i.ToDhcpOptionsSetAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DhcpOptionsSetAttachmentMapInput is an input type that accepts DhcpOptionsSetAttachmentMap and DhcpOptionsSetAttachmentMapOutput values.
@@ -257,12 +244,6 @@ func (i DhcpOptionsSetAttachmentMap) ToDhcpOptionsSetAttachmentMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(DhcpOptionsSetAttachmentMapOutput)
 }
 
-func (i DhcpOptionsSetAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DhcpOptionsSetAttachment] {
-	return pulumix.Output[map[string]*DhcpOptionsSetAttachment]{
-		OutputState: i.ToDhcpOptionsSetAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DhcpOptionsSetAttachmentOutput struct{ *pulumi.OutputState }
 
 func (DhcpOptionsSetAttachmentOutput) ElementType() reflect.Type {
@@ -275,12 +256,6 @@ func (o DhcpOptionsSetAttachmentOutput) ToDhcpOptionsSetAttachmentOutput() DhcpO
 
 func (o DhcpOptionsSetAttachmentOutput) ToDhcpOptionsSetAttachmentOutputWithContext(ctx context.Context) DhcpOptionsSetAttachmentOutput {
 	return o
-}
-
-func (o DhcpOptionsSetAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*DhcpOptionsSetAttachment] {
-	return pulumix.Output[*DhcpOptionsSetAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the DHCP options set.
@@ -317,12 +292,6 @@ func (o DhcpOptionsSetAttachmentArrayOutput) ToDhcpOptionsSetAttachmentArrayOutp
 	return o
 }
 
-func (o DhcpOptionsSetAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DhcpOptionsSetAttachment] {
-	return pulumix.Output[[]*DhcpOptionsSetAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DhcpOptionsSetAttachmentArrayOutput) Index(i pulumi.IntInput) DhcpOptionsSetAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DhcpOptionsSetAttachment {
 		return vs[0].([]*DhcpOptionsSetAttachment)[vs[1].(int)]
@@ -341,12 +310,6 @@ func (o DhcpOptionsSetAttachmentMapOutput) ToDhcpOptionsSetAttachmentMapOutput()
 
 func (o DhcpOptionsSetAttachmentMapOutput) ToDhcpOptionsSetAttachmentMapOutputWithContext(ctx context.Context) DhcpOptionsSetAttachmentMapOutput {
 	return o
-}
-
-func (o DhcpOptionsSetAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DhcpOptionsSetAttachment] {
-	return pulumix.Output[map[string]*DhcpOptionsSetAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DhcpOptionsSetAttachmentMapOutput) MapIndex(k pulumi.StringInput) DhcpOptionsSetAttachmentOutput {

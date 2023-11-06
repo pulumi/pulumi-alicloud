@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Serverless Workflow Flow resource.
@@ -234,12 +233,6 @@ func (i *Flow) ToFlowOutputWithContext(ctx context.Context) FlowOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlowOutput)
 }
 
-func (i *Flow) ToOutput(ctx context.Context) pulumix.Output[*Flow] {
-	return pulumix.Output[*Flow]{
-		OutputState: i.ToFlowOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FlowArrayInput is an input type that accepts FlowArray and FlowArrayOutput values.
 // You can construct a concrete instance of `FlowArrayInput` via:
 //
@@ -263,12 +256,6 @@ func (i FlowArray) ToFlowArrayOutput() FlowArrayOutput {
 
 func (i FlowArray) ToFlowArrayOutputWithContext(ctx context.Context) FlowArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlowArrayOutput)
-}
-
-func (i FlowArray) ToOutput(ctx context.Context) pulumix.Output[[]*Flow] {
-	return pulumix.Output[[]*Flow]{
-		OutputState: i.ToFlowArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FlowMapInput is an input type that accepts FlowMap and FlowMapOutput values.
@@ -296,12 +283,6 @@ func (i FlowMap) ToFlowMapOutputWithContext(ctx context.Context) FlowMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlowMapOutput)
 }
 
-func (i FlowMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Flow] {
-	return pulumix.Output[map[string]*Flow]{
-		OutputState: i.ToFlowMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlowOutput struct{ *pulumi.OutputState }
 
 func (FlowOutput) ElementType() reflect.Type {
@@ -314,12 +295,6 @@ func (o FlowOutput) ToFlowOutput() FlowOutput {
 
 func (o FlowOutput) ToFlowOutputWithContext(ctx context.Context) FlowOutput {
 	return o
-}
-
-func (o FlowOutput) ToOutput(ctx context.Context) pulumix.Output[*Flow] {
-	return pulumix.Output[*Flow]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The definition of the flow. It must comply with the Flow Definition Language (FDL) syntax.
@@ -371,12 +346,6 @@ func (o FlowArrayOutput) ToFlowArrayOutputWithContext(ctx context.Context) FlowA
 	return o
 }
 
-func (o FlowArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Flow] {
-	return pulumix.Output[[]*Flow]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FlowArrayOutput) Index(i pulumi.IntInput) FlowOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Flow {
 		return vs[0].([]*Flow)[vs[1].(int)]
@@ -395,12 +364,6 @@ func (o FlowMapOutput) ToFlowMapOutput() FlowMapOutput {
 
 func (o FlowMapOutput) ToFlowMapOutputWithContext(ctx context.Context) FlowMapOutput {
 	return o
-}
-
-func (o FlowMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Flow] {
-	return pulumix.Output[map[string]*Flow]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlowMapOutput) MapIndex(k pulumi.StringInput) FlowOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cloud Sso Access Configurations of the current Alibaba Cloud user.
@@ -139,12 +138,6 @@ func (o GetAccessConfigurationsResultOutput) ToGetAccessConfigurationsResultOutp
 
 func (o GetAccessConfigurationsResultOutput) ToGetAccessConfigurationsResultOutputWithContext(ctx context.Context) GetAccessConfigurationsResultOutput {
 	return o
-}
-
-func (o GetAccessConfigurationsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccessConfigurationsResult] {
-	return pulumix.Output[GetAccessConfigurationsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAccessConfigurationsResultOutput) Configurations() GetAccessConfigurationsConfigurationArrayOutput {

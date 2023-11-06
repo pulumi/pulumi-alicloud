@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Monitor Service Hybrid Double Write resource.
@@ -198,12 +197,6 @@ func (i *ServiceHybridDoubleWrite) ToServiceHybridDoubleWriteOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceHybridDoubleWriteOutput)
 }
 
-func (i *ServiceHybridDoubleWrite) ToOutput(ctx context.Context) pulumix.Output[*ServiceHybridDoubleWrite] {
-	return pulumix.Output[*ServiceHybridDoubleWrite]{
-		OutputState: i.ToServiceHybridDoubleWriteOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceHybridDoubleWriteArrayInput is an input type that accepts ServiceHybridDoubleWriteArray and ServiceHybridDoubleWriteArrayOutput values.
 // You can construct a concrete instance of `ServiceHybridDoubleWriteArrayInput` via:
 //
@@ -227,12 +220,6 @@ func (i ServiceHybridDoubleWriteArray) ToServiceHybridDoubleWriteArrayOutput() S
 
 func (i ServiceHybridDoubleWriteArray) ToServiceHybridDoubleWriteArrayOutputWithContext(ctx context.Context) ServiceHybridDoubleWriteArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceHybridDoubleWriteArrayOutput)
-}
-
-func (i ServiceHybridDoubleWriteArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceHybridDoubleWrite] {
-	return pulumix.Output[[]*ServiceHybridDoubleWrite]{
-		OutputState: i.ToServiceHybridDoubleWriteArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServiceHybridDoubleWriteMapInput is an input type that accepts ServiceHybridDoubleWriteMap and ServiceHybridDoubleWriteMapOutput values.
@@ -260,12 +247,6 @@ func (i ServiceHybridDoubleWriteMap) ToServiceHybridDoubleWriteMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceHybridDoubleWriteMapOutput)
 }
 
-func (i ServiceHybridDoubleWriteMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceHybridDoubleWrite] {
-	return pulumix.Output[map[string]*ServiceHybridDoubleWrite]{
-		OutputState: i.ToServiceHybridDoubleWriteMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceHybridDoubleWriteOutput struct{ *pulumi.OutputState }
 
 func (ServiceHybridDoubleWriteOutput) ElementType() reflect.Type {
@@ -278,12 +259,6 @@ func (o ServiceHybridDoubleWriteOutput) ToServiceHybridDoubleWriteOutput() Servi
 
 func (o ServiceHybridDoubleWriteOutput) ToServiceHybridDoubleWriteOutputWithContext(ctx context.Context) ServiceHybridDoubleWriteOutput {
 	return o
-}
-
-func (o ServiceHybridDoubleWriteOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceHybridDoubleWrite] {
-	return pulumix.Output[*ServiceHybridDoubleWrite]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Target Namespace.
@@ -320,12 +295,6 @@ func (o ServiceHybridDoubleWriteArrayOutput) ToServiceHybridDoubleWriteArrayOutp
 	return o
 }
 
-func (o ServiceHybridDoubleWriteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceHybridDoubleWrite] {
-	return pulumix.Output[[]*ServiceHybridDoubleWrite]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceHybridDoubleWriteArrayOutput) Index(i pulumi.IntInput) ServiceHybridDoubleWriteOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServiceHybridDoubleWrite {
 		return vs[0].([]*ServiceHybridDoubleWrite)[vs[1].(int)]
@@ -344,12 +313,6 @@ func (o ServiceHybridDoubleWriteMapOutput) ToServiceHybridDoubleWriteMapOutput()
 
 func (o ServiceHybridDoubleWriteMapOutput) ToServiceHybridDoubleWriteMapOutputWithContext(ctx context.Context) ServiceHybridDoubleWriteMapOutput {
 	return o
-}
-
-func (o ServiceHybridDoubleWriteMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceHybridDoubleWrite] {
-	return pulumix.Output[map[string]*ServiceHybridDoubleWrite]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceHybridDoubleWriteMapOutput) MapIndex(k pulumi.StringInput) ServiceHybridDoubleWriteOutput {

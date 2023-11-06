@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a NLB Loadbalancer Common Bandwidth Package Attachment resource. Bandwidth Package Operation.
@@ -245,12 +244,6 @@ func (i *LoadbalancerCommonBandwidthPackageAttachment) ToLoadbalancerCommonBandw
 	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerCommonBandwidthPackageAttachmentOutput)
 }
 
-func (i *LoadbalancerCommonBandwidthPackageAttachment) ToOutput(ctx context.Context) pulumix.Output[*LoadbalancerCommonBandwidthPackageAttachment] {
-	return pulumix.Output[*LoadbalancerCommonBandwidthPackageAttachment]{
-		OutputState: i.ToLoadbalancerCommonBandwidthPackageAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LoadbalancerCommonBandwidthPackageAttachmentArrayInput is an input type that accepts LoadbalancerCommonBandwidthPackageAttachmentArray and LoadbalancerCommonBandwidthPackageAttachmentArrayOutput values.
 // You can construct a concrete instance of `LoadbalancerCommonBandwidthPackageAttachmentArrayInput` via:
 //
@@ -274,12 +267,6 @@ func (i LoadbalancerCommonBandwidthPackageAttachmentArray) ToLoadbalancerCommonB
 
 func (i LoadbalancerCommonBandwidthPackageAttachmentArray) ToLoadbalancerCommonBandwidthPackageAttachmentArrayOutputWithContext(ctx context.Context) LoadbalancerCommonBandwidthPackageAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerCommonBandwidthPackageAttachmentArrayOutput)
-}
-
-func (i LoadbalancerCommonBandwidthPackageAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*LoadbalancerCommonBandwidthPackageAttachment] {
-	return pulumix.Output[[]*LoadbalancerCommonBandwidthPackageAttachment]{
-		OutputState: i.ToLoadbalancerCommonBandwidthPackageAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // LoadbalancerCommonBandwidthPackageAttachmentMapInput is an input type that accepts LoadbalancerCommonBandwidthPackageAttachmentMap and LoadbalancerCommonBandwidthPackageAttachmentMapOutput values.
@@ -307,12 +294,6 @@ func (i LoadbalancerCommonBandwidthPackageAttachmentMap) ToLoadbalancerCommonBan
 	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerCommonBandwidthPackageAttachmentMapOutput)
 }
 
-func (i LoadbalancerCommonBandwidthPackageAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LoadbalancerCommonBandwidthPackageAttachment] {
-	return pulumix.Output[map[string]*LoadbalancerCommonBandwidthPackageAttachment]{
-		OutputState: i.ToLoadbalancerCommonBandwidthPackageAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LoadbalancerCommonBandwidthPackageAttachmentOutput struct{ *pulumi.OutputState }
 
 func (LoadbalancerCommonBandwidthPackageAttachmentOutput) ElementType() reflect.Type {
@@ -325,12 +306,6 @@ func (o LoadbalancerCommonBandwidthPackageAttachmentOutput) ToLoadbalancerCommon
 
 func (o LoadbalancerCommonBandwidthPackageAttachmentOutput) ToLoadbalancerCommonBandwidthPackageAttachmentOutputWithContext(ctx context.Context) LoadbalancerCommonBandwidthPackageAttachmentOutput {
 	return o
-}
-
-func (o LoadbalancerCommonBandwidthPackageAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*LoadbalancerCommonBandwidthPackageAttachment] {
-	return pulumix.Output[*LoadbalancerCommonBandwidthPackageAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the bound shared bandwidth package.
@@ -362,12 +337,6 @@ func (o LoadbalancerCommonBandwidthPackageAttachmentArrayOutput) ToLoadbalancerC
 	return o
 }
 
-func (o LoadbalancerCommonBandwidthPackageAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LoadbalancerCommonBandwidthPackageAttachment] {
-	return pulumix.Output[[]*LoadbalancerCommonBandwidthPackageAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LoadbalancerCommonBandwidthPackageAttachmentArrayOutput) Index(i pulumi.IntInput) LoadbalancerCommonBandwidthPackageAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LoadbalancerCommonBandwidthPackageAttachment {
 		return vs[0].([]*LoadbalancerCommonBandwidthPackageAttachment)[vs[1].(int)]
@@ -386,12 +355,6 @@ func (o LoadbalancerCommonBandwidthPackageAttachmentMapOutput) ToLoadbalancerCom
 
 func (o LoadbalancerCommonBandwidthPackageAttachmentMapOutput) ToLoadbalancerCommonBandwidthPackageAttachmentMapOutputWithContext(ctx context.Context) LoadbalancerCommonBandwidthPackageAttachmentMapOutput {
 	return o
-}
-
-func (o LoadbalancerCommonBandwidthPackageAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LoadbalancerCommonBandwidthPackageAttachment] {
-	return pulumix.Output[map[string]*LoadbalancerCommonBandwidthPackageAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LoadbalancerCommonBandwidthPackageAttachmentMapOutput) MapIndex(k pulumi.StringInput) LoadbalancerCommonBandwidthPackageAttachmentOutput {

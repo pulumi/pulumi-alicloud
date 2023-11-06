@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i OtsBackupPlanOtsDetailArgs) ToOtsBackupPlanOtsDetailOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(OtsBackupPlanOtsDetailOutput)
 }
 
-func (i OtsBackupPlanOtsDetailArgs) ToOutput(ctx context.Context) pulumix.Output[OtsBackupPlanOtsDetail] {
-	return pulumix.Output[OtsBackupPlanOtsDetail]{
-		OutputState: i.ToOtsBackupPlanOtsDetailOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OtsBackupPlanOtsDetailArrayInput is an input type that accepts OtsBackupPlanOtsDetailArray and OtsBackupPlanOtsDetailArrayOutput values.
 // You can construct a concrete instance of `OtsBackupPlanOtsDetailArrayInput` via:
 //
@@ -78,12 +71,6 @@ func (i OtsBackupPlanOtsDetailArray) ToOtsBackupPlanOtsDetailArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(OtsBackupPlanOtsDetailArrayOutput)
 }
 
-func (i OtsBackupPlanOtsDetailArray) ToOutput(ctx context.Context) pulumix.Output[[]OtsBackupPlanOtsDetail] {
-	return pulumix.Output[[]OtsBackupPlanOtsDetail]{
-		OutputState: i.ToOtsBackupPlanOtsDetailArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OtsBackupPlanOtsDetailOutput struct{ *pulumi.OutputState }
 
 func (OtsBackupPlanOtsDetailOutput) ElementType() reflect.Type {
@@ -96,12 +83,6 @@ func (o OtsBackupPlanOtsDetailOutput) ToOtsBackupPlanOtsDetailOutput() OtsBackup
 
 func (o OtsBackupPlanOtsDetailOutput) ToOtsBackupPlanOtsDetailOutputWithContext(ctx context.Context) OtsBackupPlanOtsDetailOutput {
 	return o
-}
-
-func (o OtsBackupPlanOtsDetailOutput) ToOutput(ctx context.Context) pulumix.Output[OtsBackupPlanOtsDetail] {
-	return pulumix.Output[OtsBackupPlanOtsDetail]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The names of the destination tables in the Tablestore instance. **Note:** Required while sourceType equals `OTS_TABLE`.
@@ -121,12 +102,6 @@ func (o OtsBackupPlanOtsDetailArrayOutput) ToOtsBackupPlanOtsDetailArrayOutput()
 
 func (o OtsBackupPlanOtsDetailArrayOutput) ToOtsBackupPlanOtsDetailArrayOutputWithContext(ctx context.Context) OtsBackupPlanOtsDetailArrayOutput {
 	return o
-}
-
-func (o OtsBackupPlanOtsDetailArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OtsBackupPlanOtsDetail] {
-	return pulumix.Output[[]OtsBackupPlanOtsDetail]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OtsBackupPlanOtsDetailArrayOutput) Index(i pulumi.IntInput) OtsBackupPlanOtsDetailOutput {
@@ -184,12 +159,6 @@ func (i OtsBackupPlanRuleArgs) ToOtsBackupPlanRuleOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(OtsBackupPlanRuleOutput)
 }
 
-func (i OtsBackupPlanRuleArgs) ToOutput(ctx context.Context) pulumix.Output[OtsBackupPlanRule] {
-	return pulumix.Output[OtsBackupPlanRule]{
-		OutputState: i.ToOtsBackupPlanRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OtsBackupPlanRuleArrayInput is an input type that accepts OtsBackupPlanRuleArray and OtsBackupPlanRuleArrayOutput values.
 // You can construct a concrete instance of `OtsBackupPlanRuleArrayInput` via:
 //
@@ -215,12 +184,6 @@ func (i OtsBackupPlanRuleArray) ToOtsBackupPlanRuleArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(OtsBackupPlanRuleArrayOutput)
 }
 
-func (i OtsBackupPlanRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]OtsBackupPlanRule] {
-	return pulumix.Output[[]OtsBackupPlanRule]{
-		OutputState: i.ToOtsBackupPlanRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OtsBackupPlanRuleOutput struct{ *pulumi.OutputState }
 
 func (OtsBackupPlanRuleOutput) ElementType() reflect.Type {
@@ -233,12 +196,6 @@ func (o OtsBackupPlanRuleOutput) ToOtsBackupPlanRuleOutput() OtsBackupPlanRuleOu
 
 func (o OtsBackupPlanRuleOutput) ToOtsBackupPlanRuleOutputWithContext(ctx context.Context) OtsBackupPlanRuleOutput {
 	return o
-}
-
-func (o OtsBackupPlanRuleOutput) ToOutput(ctx context.Context) pulumix.Output[OtsBackupPlanRule] {
-	return pulumix.Output[OtsBackupPlanRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Backup type. Valid values: `COMPLETE`.
@@ -280,12 +237,6 @@ func (o OtsBackupPlanRuleArrayOutput) ToOtsBackupPlanRuleArrayOutputWithContext(
 	return o
 }
 
-func (o OtsBackupPlanRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OtsBackupPlanRule] {
-	return pulumix.Output[[]OtsBackupPlanRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OtsBackupPlanRuleArrayOutput) Index(i pulumi.IntInput) OtsBackupPlanRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OtsBackupPlanRule {
 		return vs[0].([]OtsBackupPlanRule)[vs[1].(int)]
@@ -323,12 +274,6 @@ func (i RestoreJobOtsDetailArgs) ToRestoreJobOtsDetailOutput() RestoreJobOtsDeta
 
 func (i RestoreJobOtsDetailArgs) ToRestoreJobOtsDetailOutputWithContext(ctx context.Context) RestoreJobOtsDetailOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RestoreJobOtsDetailOutput)
-}
-
-func (i RestoreJobOtsDetailArgs) ToOutput(ctx context.Context) pulumix.Output[RestoreJobOtsDetail] {
-	return pulumix.Output[RestoreJobOtsDetail]{
-		OutputState: i.ToRestoreJobOtsDetailOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i RestoreJobOtsDetailArgs) ToRestoreJobOtsDetailPtrOutput() RestoreJobOtsDetailPtrOutput {
@@ -372,12 +317,6 @@ func (i *restoreJobOtsDetailPtrType) ToRestoreJobOtsDetailPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(RestoreJobOtsDetailPtrOutput)
 }
 
-func (i *restoreJobOtsDetailPtrType) ToOutput(ctx context.Context) pulumix.Output[*RestoreJobOtsDetail] {
-	return pulumix.Output[*RestoreJobOtsDetail]{
-		OutputState: i.ToRestoreJobOtsDetailPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RestoreJobOtsDetailOutput struct{ *pulumi.OutputState }
 
 func (RestoreJobOtsDetailOutput) ElementType() reflect.Type {
@@ -402,12 +341,6 @@ func (o RestoreJobOtsDetailOutput) ToRestoreJobOtsDetailPtrOutputWithContext(ctx
 	}).(RestoreJobOtsDetailPtrOutput)
 }
 
-func (o RestoreJobOtsDetailOutput) ToOutput(ctx context.Context) pulumix.Output[RestoreJobOtsDetail] {
-	return pulumix.Output[RestoreJobOtsDetail]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
 func (o RestoreJobOtsDetailOutput) OverwriteExisting() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RestoreJobOtsDetail) *bool { return v.OverwriteExisting }).(pulumi.BoolPtrOutput)
@@ -425,12 +358,6 @@ func (o RestoreJobOtsDetailPtrOutput) ToRestoreJobOtsDetailPtrOutput() RestoreJo
 
 func (o RestoreJobOtsDetailPtrOutput) ToRestoreJobOtsDetailPtrOutputWithContext(ctx context.Context) RestoreJobOtsDetailPtrOutput {
 	return o
-}
-
-func (o RestoreJobOtsDetailPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RestoreJobOtsDetail] {
-	return pulumix.Output[*RestoreJobOtsDetail]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RestoreJobOtsDetailPtrOutput) Elem() RestoreJobOtsDetailOutput {
@@ -522,12 +449,6 @@ func (i ServerBackupPlanDetailArgs) ToServerBackupPlanDetailOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ServerBackupPlanDetailOutput)
 }
 
-func (i ServerBackupPlanDetailArgs) ToOutput(ctx context.Context) pulumix.Output[ServerBackupPlanDetail] {
-	return pulumix.Output[ServerBackupPlanDetail]{
-		OutputState: i.ToServerBackupPlanDetailOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServerBackupPlanDetailArrayInput is an input type that accepts ServerBackupPlanDetailArray and ServerBackupPlanDetailArrayOutput values.
 // You can construct a concrete instance of `ServerBackupPlanDetailArrayInput` via:
 //
@@ -553,12 +474,6 @@ func (i ServerBackupPlanDetailArray) ToServerBackupPlanDetailArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ServerBackupPlanDetailArrayOutput)
 }
 
-func (i ServerBackupPlanDetailArray) ToOutput(ctx context.Context) pulumix.Output[[]ServerBackupPlanDetail] {
-	return pulumix.Output[[]ServerBackupPlanDetail]{
-		OutputState: i.ToServerBackupPlanDetailArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServerBackupPlanDetailOutput struct{ *pulumi.OutputState }
 
 func (ServerBackupPlanDetailOutput) ElementType() reflect.Type {
@@ -571,12 +486,6 @@ func (o ServerBackupPlanDetailOutput) ToServerBackupPlanDetailOutput() ServerBac
 
 func (o ServerBackupPlanDetailOutput) ToServerBackupPlanDetailOutputWithContext(ctx context.Context) ServerBackupPlanDetailOutput {
 	return o
-}
-
-func (o ServerBackupPlanDetailOutput) ToOutput(ctx context.Context) pulumix.Output[ServerBackupPlanDetail] {
-	return pulumix.Output[ServerBackupPlanDetail]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to turn on application consistency. The application consistency snapshot backs up memory data and ongoing database transactions at the time of snapshot creation to ensure the consistency of application system data and database transactions. By applying consistent snapshots, there is no data damage or loss, so as to avoid log rollback during database startup and ensure that the application is in a consistent startup state. Valid values: `true`, `false`.
@@ -643,12 +552,6 @@ func (o ServerBackupPlanDetailArrayOutput) ToServerBackupPlanDetailArrayOutputWi
 	return o
 }
 
-func (o ServerBackupPlanDetailArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServerBackupPlanDetail] {
-	return pulumix.Output[[]ServerBackupPlanDetail]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServerBackupPlanDetailArrayOutput) Index(i pulumi.IntInput) ServerBackupPlanDetailOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerBackupPlanDetail {
 		return vs[0].([]ServerBackupPlanDetail)[vs[1].(int)]
@@ -700,12 +603,6 @@ func (i GetBackupJobsFilterArgs) ToGetBackupJobsFilterOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetBackupJobsFilterOutput)
 }
 
-func (i GetBackupJobsFilterArgs) ToOutput(ctx context.Context) pulumix.Output[GetBackupJobsFilter] {
-	return pulumix.Output[GetBackupJobsFilter]{
-		OutputState: i.ToGetBackupJobsFilterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetBackupJobsFilterArrayInput is an input type that accepts GetBackupJobsFilterArray and GetBackupJobsFilterArrayOutput values.
 // You can construct a concrete instance of `GetBackupJobsFilterArrayInput` via:
 //
@@ -731,12 +628,6 @@ func (i GetBackupJobsFilterArray) ToGetBackupJobsFilterArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetBackupJobsFilterArrayOutput)
 }
 
-func (i GetBackupJobsFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetBackupJobsFilter] {
-	return pulumix.Output[[]GetBackupJobsFilter]{
-		OutputState: i.ToGetBackupJobsFilterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetBackupJobsFilterOutput struct{ *pulumi.OutputState }
 
 func (GetBackupJobsFilterOutput) ElementType() reflect.Type {
@@ -749,12 +640,6 @@ func (o GetBackupJobsFilterOutput) ToGetBackupJobsFilterOutput() GetBackupJobsFi
 
 func (o GetBackupJobsFilterOutput) ToGetBackupJobsFilterOutputWithContext(ctx context.Context) GetBackupJobsFilterOutput {
 	return o
-}
-
-func (o GetBackupJobsFilterOutput) ToOutput(ctx context.Context) pulumix.Output[GetBackupJobsFilter] {
-	return pulumix.Output[GetBackupJobsFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
@@ -786,12 +671,6 @@ func (o GetBackupJobsFilterArrayOutput) ToGetBackupJobsFilterArrayOutput() GetBa
 
 func (o GetBackupJobsFilterArrayOutput) ToGetBackupJobsFilterArrayOutputWithContext(ctx context.Context) GetBackupJobsFilterArrayOutput {
 	return o
-}
-
-func (o GetBackupJobsFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetBackupJobsFilter] {
-	return pulumix.Output[[]GetBackupJobsFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetBackupJobsFilterArrayOutput) Index(i pulumi.IntInput) GetBackupJobsFilterOutput {
@@ -955,12 +834,6 @@ func (i GetBackupJobsJobArgs) ToGetBackupJobsJobOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetBackupJobsJobOutput)
 }
 
-func (i GetBackupJobsJobArgs) ToOutput(ctx context.Context) pulumix.Output[GetBackupJobsJob] {
-	return pulumix.Output[GetBackupJobsJob]{
-		OutputState: i.ToGetBackupJobsJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetBackupJobsJobArrayInput is an input type that accepts GetBackupJobsJobArray and GetBackupJobsJobArrayOutput values.
 // You can construct a concrete instance of `GetBackupJobsJobArrayInput` via:
 //
@@ -986,12 +859,6 @@ func (i GetBackupJobsJobArray) ToGetBackupJobsJobArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetBackupJobsJobArrayOutput)
 }
 
-func (i GetBackupJobsJobArray) ToOutput(ctx context.Context) pulumix.Output[[]GetBackupJobsJob] {
-	return pulumix.Output[[]GetBackupJobsJob]{
-		OutputState: i.ToGetBackupJobsJobArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetBackupJobsJobOutput struct{ *pulumi.OutputState }
 
 func (GetBackupJobsJobOutput) ElementType() reflect.Type {
@@ -1004,12 +871,6 @@ func (o GetBackupJobsJobOutput) ToGetBackupJobsJobOutput() GetBackupJobsJobOutpu
 
 func (o GetBackupJobsJobOutput) ToGetBackupJobsJobOutputWithContext(ctx context.Context) GetBackupJobsJobOutput {
 	return o
-}
-
-func (o GetBackupJobsJobOutput) ToOutput(ctx context.Context) pulumix.Output[GetBackupJobsJob] {
-	return pulumix.Output[GetBackupJobsJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The actual data volume of the backup task (After deduplication) . Unit byte.
@@ -1185,12 +1046,6 @@ func (o GetBackupJobsJobArrayOutput) ToGetBackupJobsJobArrayOutputWithContext(ct
 	return o
 }
 
-func (o GetBackupJobsJobArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetBackupJobsJob] {
-	return pulumix.Output[[]GetBackupJobsJob]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetBackupJobsJobArrayOutput) Index(i pulumi.IntInput) GetBackupJobsJobOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackupJobsJob {
 		return vs[0].([]GetBackupJobsJob)[vs[1].(int)]
@@ -1228,12 +1083,6 @@ func (i GetBackupJobsJobOtsDetailArgs) ToGetBackupJobsJobOtsDetailOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetBackupJobsJobOtsDetailOutput)
 }
 
-func (i GetBackupJobsJobOtsDetailArgs) ToOutput(ctx context.Context) pulumix.Output[GetBackupJobsJobOtsDetail] {
-	return pulumix.Output[GetBackupJobsJobOtsDetail]{
-		OutputState: i.ToGetBackupJobsJobOtsDetailOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetBackupJobsJobOtsDetailArrayInput is an input type that accepts GetBackupJobsJobOtsDetailArray and GetBackupJobsJobOtsDetailArrayOutput values.
 // You can construct a concrete instance of `GetBackupJobsJobOtsDetailArrayInput` via:
 //
@@ -1259,12 +1108,6 @@ func (i GetBackupJobsJobOtsDetailArray) ToGetBackupJobsJobOtsDetailArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetBackupJobsJobOtsDetailArrayOutput)
 }
 
-func (i GetBackupJobsJobOtsDetailArray) ToOutput(ctx context.Context) pulumix.Output[[]GetBackupJobsJobOtsDetail] {
-	return pulumix.Output[[]GetBackupJobsJobOtsDetail]{
-		OutputState: i.ToGetBackupJobsJobOtsDetailArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetBackupJobsJobOtsDetailOutput struct{ *pulumi.OutputState }
 
 func (GetBackupJobsJobOtsDetailOutput) ElementType() reflect.Type {
@@ -1277,12 +1120,6 @@ func (o GetBackupJobsJobOtsDetailOutput) ToGetBackupJobsJobOtsDetailOutput() Get
 
 func (o GetBackupJobsJobOtsDetailOutput) ToGetBackupJobsJobOtsDetailOutputWithContext(ctx context.Context) GetBackupJobsJobOtsDetailOutput {
 	return o
-}
-
-func (o GetBackupJobsJobOtsDetailOutput) ToOutput(ctx context.Context) pulumix.Output[GetBackupJobsJobOtsDetail] {
-	return pulumix.Output[GetBackupJobsJobOtsDetail]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetBackupJobsJobOtsDetailOutput) TableNames() pulumi.StringArrayOutput {
@@ -1301,12 +1138,6 @@ func (o GetBackupJobsJobOtsDetailArrayOutput) ToGetBackupJobsJobOtsDetailArrayOu
 
 func (o GetBackupJobsJobOtsDetailArrayOutput) ToGetBackupJobsJobOtsDetailArrayOutputWithContext(ctx context.Context) GetBackupJobsJobOtsDetailArrayOutput {
 	return o
-}
-
-func (o GetBackupJobsJobOtsDetailArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetBackupJobsJobOtsDetail] {
-	return pulumix.Output[[]GetBackupJobsJobOtsDetail]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetBackupJobsJobOtsDetailArrayOutput) Index(i pulumi.IntInput) GetBackupJobsJobOtsDetailOutput {
@@ -1448,12 +1279,6 @@ func (i GetEcsBackupClientsClientArgs) ToGetEcsBackupClientsClientOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetEcsBackupClientsClientOutput)
 }
 
-func (i GetEcsBackupClientsClientArgs) ToOutput(ctx context.Context) pulumix.Output[GetEcsBackupClientsClient] {
-	return pulumix.Output[GetEcsBackupClientsClient]{
-		OutputState: i.ToGetEcsBackupClientsClientOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetEcsBackupClientsClientArrayInput is an input type that accepts GetEcsBackupClientsClientArray and GetEcsBackupClientsClientArrayOutput values.
 // You can construct a concrete instance of `GetEcsBackupClientsClientArrayInput` via:
 //
@@ -1479,12 +1304,6 @@ func (i GetEcsBackupClientsClientArray) ToGetEcsBackupClientsClientArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetEcsBackupClientsClientArrayOutput)
 }
 
-func (i GetEcsBackupClientsClientArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEcsBackupClientsClient] {
-	return pulumix.Output[[]GetEcsBackupClientsClient]{
-		OutputState: i.ToGetEcsBackupClientsClientArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetEcsBackupClientsClientOutput struct{ *pulumi.OutputState }
 
 func (GetEcsBackupClientsClientOutput) ElementType() reflect.Type {
@@ -1497,12 +1316,6 @@ func (o GetEcsBackupClientsClientOutput) ToGetEcsBackupClientsClientOutput() Get
 
 func (o GetEcsBackupClientsClientOutput) ToGetEcsBackupClientsClientOutputWithContext(ctx context.Context) GetEcsBackupClientsClientOutput {
 	return o
-}
-
-func (o GetEcsBackupClientsClientOutput) ToOutput(ctx context.Context) pulumix.Output[GetEcsBackupClientsClient] {
-	return pulumix.Output[GetEcsBackupClientsClient]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The system architecture of client, only the ECS File Backup Client is available. Valid values: `AMD64` , `386`.
@@ -1649,12 +1462,6 @@ func (o GetEcsBackupClientsClientArrayOutput) ToGetEcsBackupClientsClientArrayOu
 	return o
 }
 
-func (o GetEcsBackupClientsClientArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEcsBackupClientsClient] {
-	return pulumix.Output[[]GetEcsBackupClientsClient]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetEcsBackupClientsClientArrayOutput) Index(i pulumi.IntInput) GetEcsBackupClientsClientOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsBackupClientsClient {
 		return vs[0].([]GetEcsBackupClientsClient)[vs[1].(int)]
@@ -1762,12 +1569,6 @@ func (i GetEcsBackupPlansPlanArgs) ToGetEcsBackupPlansPlanOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetEcsBackupPlansPlanOutput)
 }
 
-func (i GetEcsBackupPlansPlanArgs) ToOutput(ctx context.Context) pulumix.Output[GetEcsBackupPlansPlan] {
-	return pulumix.Output[GetEcsBackupPlansPlan]{
-		OutputState: i.ToGetEcsBackupPlansPlanOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetEcsBackupPlansPlanArrayInput is an input type that accepts GetEcsBackupPlansPlanArray and GetEcsBackupPlansPlanArrayOutput values.
 // You can construct a concrete instance of `GetEcsBackupPlansPlanArrayInput` via:
 //
@@ -1793,12 +1594,6 @@ func (i GetEcsBackupPlansPlanArray) ToGetEcsBackupPlansPlanArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetEcsBackupPlansPlanArrayOutput)
 }
 
-func (i GetEcsBackupPlansPlanArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEcsBackupPlansPlan] {
-	return pulumix.Output[[]GetEcsBackupPlansPlan]{
-		OutputState: i.ToGetEcsBackupPlansPlanArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetEcsBackupPlansPlanOutput struct{ *pulumi.OutputState }
 
 func (GetEcsBackupPlansPlanOutput) ElementType() reflect.Type {
@@ -1811,12 +1606,6 @@ func (o GetEcsBackupPlansPlanOutput) ToGetEcsBackupPlansPlanOutput() GetEcsBacku
 
 func (o GetEcsBackupPlansPlanOutput) ToGetEcsBackupPlansPlanOutputWithContext(ctx context.Context) GetEcsBackupPlansPlanOutput {
 	return o
-}
-
-func (o GetEcsBackupPlansPlanOutput) ToOutput(ctx context.Context) pulumix.Output[GetEcsBackupPlansPlan] {
-	return pulumix.Output[GetEcsBackupPlansPlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Backup type. Valid values: `COMPLETE`.
@@ -1926,12 +1715,6 @@ func (o GetEcsBackupPlansPlanArrayOutput) ToGetEcsBackupPlansPlanArrayOutputWith
 	return o
 }
 
-func (o GetEcsBackupPlansPlanArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEcsBackupPlansPlan] {
-	return pulumix.Output[[]GetEcsBackupPlansPlan]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetEcsBackupPlansPlanArrayOutput) Index(i pulumi.IntInput) GetEcsBackupPlansPlanOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsBackupPlansPlan {
 		return vs[0].([]GetEcsBackupPlansPlan)[vs[1].(int)]
@@ -2027,12 +1810,6 @@ func (i GetHanaBackupClientsHanaBackupClientArgs) ToGetHanaBackupClientsHanaBack
 	return pulumi.ToOutputWithContext(ctx, i).(GetHanaBackupClientsHanaBackupClientOutput)
 }
 
-func (i GetHanaBackupClientsHanaBackupClientArgs) ToOutput(ctx context.Context) pulumix.Output[GetHanaBackupClientsHanaBackupClient] {
-	return pulumix.Output[GetHanaBackupClientsHanaBackupClient]{
-		OutputState: i.ToGetHanaBackupClientsHanaBackupClientOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetHanaBackupClientsHanaBackupClientArrayInput is an input type that accepts GetHanaBackupClientsHanaBackupClientArray and GetHanaBackupClientsHanaBackupClientArrayOutput values.
 // You can construct a concrete instance of `GetHanaBackupClientsHanaBackupClientArrayInput` via:
 //
@@ -2058,12 +1835,6 @@ func (i GetHanaBackupClientsHanaBackupClientArray) ToGetHanaBackupClientsHanaBac
 	return pulumi.ToOutputWithContext(ctx, i).(GetHanaBackupClientsHanaBackupClientArrayOutput)
 }
 
-func (i GetHanaBackupClientsHanaBackupClientArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHanaBackupClientsHanaBackupClient] {
-	return pulumix.Output[[]GetHanaBackupClientsHanaBackupClient]{
-		OutputState: i.ToGetHanaBackupClientsHanaBackupClientArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetHanaBackupClientsHanaBackupClientOutput struct{ *pulumi.OutputState }
 
 func (GetHanaBackupClientsHanaBackupClientOutput) ElementType() reflect.Type {
@@ -2076,12 +1847,6 @@ func (o GetHanaBackupClientsHanaBackupClientOutput) ToGetHanaBackupClientsHanaBa
 
 func (o GetHanaBackupClientsHanaBackupClientOutput) ToGetHanaBackupClientsHanaBackupClientOutputWithContext(ctx context.Context) GetHanaBackupClientsHanaBackupClientOutput {
 	return o
-}
-
-func (o GetHanaBackupClientsHanaBackupClientOutput) ToOutput(ctx context.Context) pulumix.Output[GetHanaBackupClientsHanaBackupClient] {
-	return pulumix.Output[GetHanaBackupClientsHanaBackupClient]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The alert settings.
@@ -2173,12 +1938,6 @@ func (o GetHanaBackupClientsHanaBackupClientArrayOutput) ToGetHanaBackupClientsH
 	return o
 }
 
-func (o GetHanaBackupClientsHanaBackupClientArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHanaBackupClientsHanaBackupClient] {
-	return pulumix.Output[[]GetHanaBackupClientsHanaBackupClient]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetHanaBackupClientsHanaBackupClientArrayOutput) Index(i pulumi.IntInput) GetHanaBackupClientsHanaBackupClientOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHanaBackupClientsHanaBackupClient {
 		return vs[0].([]GetHanaBackupClientsHanaBackupClient)[vs[1].(int)]
@@ -2256,12 +2015,6 @@ func (i GetHanaBackupPlansPlanArgs) ToGetHanaBackupPlansPlanOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetHanaBackupPlansPlanOutput)
 }
 
-func (i GetHanaBackupPlansPlanArgs) ToOutput(ctx context.Context) pulumix.Output[GetHanaBackupPlansPlan] {
-	return pulumix.Output[GetHanaBackupPlansPlan]{
-		OutputState: i.ToGetHanaBackupPlansPlanOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetHanaBackupPlansPlanArrayInput is an input type that accepts GetHanaBackupPlansPlanArray and GetHanaBackupPlansPlanArrayOutput values.
 // You can construct a concrete instance of `GetHanaBackupPlansPlanArrayInput` via:
 //
@@ -2287,12 +2040,6 @@ func (i GetHanaBackupPlansPlanArray) ToGetHanaBackupPlansPlanArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetHanaBackupPlansPlanArrayOutput)
 }
 
-func (i GetHanaBackupPlansPlanArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHanaBackupPlansPlan] {
-	return pulumix.Output[[]GetHanaBackupPlansPlan]{
-		OutputState: i.ToGetHanaBackupPlansPlanArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetHanaBackupPlansPlanOutput struct{ *pulumi.OutputState }
 
 func (GetHanaBackupPlansPlanOutput) ElementType() reflect.Type {
@@ -2305,12 +2052,6 @@ func (o GetHanaBackupPlansPlanOutput) ToGetHanaBackupPlansPlanOutput() GetHanaBa
 
 func (o GetHanaBackupPlansPlanOutput) ToGetHanaBackupPlansPlanOutputWithContext(ctx context.Context) GetHanaBackupPlansPlanOutput {
 	return o
-}
-
-func (o GetHanaBackupPlansPlanOutput) ToOutput(ctx context.Context) pulumix.Output[GetHanaBackupPlansPlan] {
-	return pulumix.Output[GetHanaBackupPlansPlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The backup prefix.
@@ -2379,12 +2120,6 @@ func (o GetHanaBackupPlansPlanArrayOutput) ToGetHanaBackupPlansPlanArrayOutput()
 
 func (o GetHanaBackupPlansPlanArrayOutput) ToGetHanaBackupPlansPlanArrayOutputWithContext(ctx context.Context) GetHanaBackupPlansPlanArrayOutput {
 	return o
-}
-
-func (o GetHanaBackupPlansPlanArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHanaBackupPlansPlan] {
-	return pulumix.Output[[]GetHanaBackupPlansPlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetHanaBackupPlansPlanArrayOutput) Index(i pulumi.IntInput) GetHanaBackupPlansPlanOutput {
@@ -2474,12 +2209,6 @@ func (i GetHanaInstancesInstanceArgs) ToGetHanaInstancesInstanceOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetHanaInstancesInstanceOutput)
 }
 
-func (i GetHanaInstancesInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetHanaInstancesInstance] {
-	return pulumix.Output[GetHanaInstancesInstance]{
-		OutputState: i.ToGetHanaInstancesInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetHanaInstancesInstanceArrayInput is an input type that accepts GetHanaInstancesInstanceArray and GetHanaInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetHanaInstancesInstanceArrayInput` via:
 //
@@ -2505,12 +2234,6 @@ func (i GetHanaInstancesInstanceArray) ToGetHanaInstancesInstanceArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetHanaInstancesInstanceArrayOutput)
 }
 
-func (i GetHanaInstancesInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHanaInstancesInstance] {
-	return pulumix.Output[[]GetHanaInstancesInstance]{
-		OutputState: i.ToGetHanaInstancesInstanceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetHanaInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetHanaInstancesInstanceOutput) ElementType() reflect.Type {
@@ -2523,12 +2246,6 @@ func (o GetHanaInstancesInstanceOutput) ToGetHanaInstancesInstanceOutput() GetHa
 
 func (o GetHanaInstancesInstanceOutput) ToGetHanaInstancesInstanceOutputWithContext(ctx context.Context) GetHanaInstancesInstanceOutput {
 	return o
-}
-
-func (o GetHanaInstancesInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetHanaInstancesInstance] {
-	return pulumix.Output[GetHanaInstancesInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The alert settings. Valid value: `INHERITED`, which indicates that the backup client sends alert notifications in the same way as the backup vault.
@@ -2608,12 +2325,6 @@ func (o GetHanaInstancesInstanceArrayOutput) ToGetHanaInstancesInstanceArrayOutp
 
 func (o GetHanaInstancesInstanceArrayOutput) ToGetHanaInstancesInstanceArrayOutputWithContext(ctx context.Context) GetHanaInstancesInstanceArrayOutput {
 	return o
-}
-
-func (o GetHanaInstancesInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHanaInstancesInstance] {
-	return pulumix.Output[[]GetHanaInstancesInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetHanaInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetHanaInstancesInstanceOutput {
@@ -2707,12 +2418,6 @@ func (i GetNasBackupPlansPlanArgs) ToGetNasBackupPlansPlanOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetNasBackupPlansPlanOutput)
 }
 
-func (i GetNasBackupPlansPlanArgs) ToOutput(ctx context.Context) pulumix.Output[GetNasBackupPlansPlan] {
-	return pulumix.Output[GetNasBackupPlansPlan]{
-		OutputState: i.ToGetNasBackupPlansPlanOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetNasBackupPlansPlanArrayInput is an input type that accepts GetNasBackupPlansPlanArray and GetNasBackupPlansPlanArrayOutput values.
 // You can construct a concrete instance of `GetNasBackupPlansPlanArrayInput` via:
 //
@@ -2738,12 +2443,6 @@ func (i GetNasBackupPlansPlanArray) ToGetNasBackupPlansPlanArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetNasBackupPlansPlanArrayOutput)
 }
 
-func (i GetNasBackupPlansPlanArray) ToOutput(ctx context.Context) pulumix.Output[[]GetNasBackupPlansPlan] {
-	return pulumix.Output[[]GetNasBackupPlansPlan]{
-		OutputState: i.ToGetNasBackupPlansPlanArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetNasBackupPlansPlanOutput struct{ *pulumi.OutputState }
 
 func (GetNasBackupPlansPlanOutput) ElementType() reflect.Type {
@@ -2756,12 +2455,6 @@ func (o GetNasBackupPlansPlanOutput) ToGetNasBackupPlansPlanOutput() GetNasBacku
 
 func (o GetNasBackupPlansPlanOutput) ToGetNasBackupPlansPlanOutputWithContext(ctx context.Context) GetNasBackupPlansPlanOutput {
 	return o
-}
-
-func (o GetNasBackupPlansPlanOutput) ToOutput(ctx context.Context) pulumix.Output[GetNasBackupPlansPlan] {
-	return pulumix.Output[GetNasBackupPlansPlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Backup type. Valid values: `COMPLETE`.
@@ -2848,12 +2541,6 @@ func (o GetNasBackupPlansPlanArrayOutput) ToGetNasBackupPlansPlanArrayOutputWith
 	return o
 }
 
-func (o GetNasBackupPlansPlanArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetNasBackupPlansPlan] {
-	return pulumix.Output[[]GetNasBackupPlansPlan]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetNasBackupPlansPlanArrayOutput) Index(i pulumi.IntInput) GetNasBackupPlansPlanOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNasBackupPlansPlan {
 		return vs[0].([]GetNasBackupPlansPlan)[vs[1].(int)]
@@ -2937,12 +2624,6 @@ func (i GetOssBackupPlansPlanArgs) ToGetOssBackupPlansPlanOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetOssBackupPlansPlanOutput)
 }
 
-func (i GetOssBackupPlansPlanArgs) ToOutput(ctx context.Context) pulumix.Output[GetOssBackupPlansPlan] {
-	return pulumix.Output[GetOssBackupPlansPlan]{
-		OutputState: i.ToGetOssBackupPlansPlanOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetOssBackupPlansPlanArrayInput is an input type that accepts GetOssBackupPlansPlanArray and GetOssBackupPlansPlanArrayOutput values.
 // You can construct a concrete instance of `GetOssBackupPlansPlanArrayInput` via:
 //
@@ -2968,12 +2649,6 @@ func (i GetOssBackupPlansPlanArray) ToGetOssBackupPlansPlanArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetOssBackupPlansPlanArrayOutput)
 }
 
-func (i GetOssBackupPlansPlanArray) ToOutput(ctx context.Context) pulumix.Output[[]GetOssBackupPlansPlan] {
-	return pulumix.Output[[]GetOssBackupPlansPlan]{
-		OutputState: i.ToGetOssBackupPlansPlanArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetOssBackupPlansPlanOutput struct{ *pulumi.OutputState }
 
 func (GetOssBackupPlansPlanOutput) ElementType() reflect.Type {
@@ -2986,12 +2661,6 @@ func (o GetOssBackupPlansPlanOutput) ToGetOssBackupPlansPlanOutput() GetOssBacku
 
 func (o GetOssBackupPlansPlanOutput) ToGetOssBackupPlansPlanOutputWithContext(ctx context.Context) GetOssBackupPlansPlanOutput {
 	return o
-}
-
-func (o GetOssBackupPlansPlanOutput) ToOutput(ctx context.Context) pulumix.Output[GetOssBackupPlansPlan] {
-	return pulumix.Output[GetOssBackupPlansPlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Backup type. Valid values: `COMPLETE`.
@@ -3066,12 +2735,6 @@ func (o GetOssBackupPlansPlanArrayOutput) ToGetOssBackupPlansPlanArrayOutput() G
 
 func (o GetOssBackupPlansPlanArrayOutput) ToGetOssBackupPlansPlanArrayOutputWithContext(ctx context.Context) GetOssBackupPlansPlanArrayOutput {
 	return o
-}
-
-func (o GetOssBackupPlansPlanArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetOssBackupPlansPlan] {
-	return pulumix.Output[[]GetOssBackupPlansPlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetOssBackupPlansPlanArrayOutput) Index(i pulumi.IntInput) GetOssBackupPlansPlanOutput {
@@ -3157,12 +2820,6 @@ func (i GetOtsBackupPlansPlanArgs) ToGetOtsBackupPlansPlanOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetOtsBackupPlansPlanOutput)
 }
 
-func (i GetOtsBackupPlansPlanArgs) ToOutput(ctx context.Context) pulumix.Output[GetOtsBackupPlansPlan] {
-	return pulumix.Output[GetOtsBackupPlansPlan]{
-		OutputState: i.ToGetOtsBackupPlansPlanOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetOtsBackupPlansPlanArrayInput is an input type that accepts GetOtsBackupPlansPlanArray and GetOtsBackupPlansPlanArrayOutput values.
 // You can construct a concrete instance of `GetOtsBackupPlansPlanArrayInput` via:
 //
@@ -3188,12 +2845,6 @@ func (i GetOtsBackupPlansPlanArray) ToGetOtsBackupPlansPlanArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetOtsBackupPlansPlanArrayOutput)
 }
 
-func (i GetOtsBackupPlansPlanArray) ToOutput(ctx context.Context) pulumix.Output[[]GetOtsBackupPlansPlan] {
-	return pulumix.Output[[]GetOtsBackupPlansPlan]{
-		OutputState: i.ToGetOtsBackupPlansPlanArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetOtsBackupPlansPlanOutput struct{ *pulumi.OutputState }
 
 func (GetOtsBackupPlansPlanOutput) ElementType() reflect.Type {
@@ -3206,12 +2857,6 @@ func (o GetOtsBackupPlansPlanOutput) ToGetOtsBackupPlansPlanOutput() GetOtsBacku
 
 func (o GetOtsBackupPlansPlanOutput) ToGetOtsBackupPlansPlanOutputWithContext(ctx context.Context) GetOtsBackupPlansPlanOutput {
 	return o
-}
-
-func (o GetOtsBackupPlansPlanOutput) ToOutput(ctx context.Context) pulumix.Output[GetOtsBackupPlansPlan] {
-	return pulumix.Output[GetOtsBackupPlansPlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Backup type. Valid values: `COMPLETE`.
@@ -3288,12 +2933,6 @@ func (o GetOtsBackupPlansPlanArrayOutput) ToGetOtsBackupPlansPlanArrayOutputWith
 	return o
 }
 
-func (o GetOtsBackupPlansPlanArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetOtsBackupPlansPlan] {
-	return pulumix.Output[[]GetOtsBackupPlansPlan]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetOtsBackupPlansPlanArrayOutput) Index(i pulumi.IntInput) GetOtsBackupPlansPlanOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOtsBackupPlansPlan {
 		return vs[0].([]GetOtsBackupPlansPlan)[vs[1].(int)]
@@ -3331,12 +2970,6 @@ func (i GetOtsBackupPlansPlanOtsDetailArgs) ToGetOtsBackupPlansPlanOtsDetailOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetOtsBackupPlansPlanOtsDetailOutput)
 }
 
-func (i GetOtsBackupPlansPlanOtsDetailArgs) ToOutput(ctx context.Context) pulumix.Output[GetOtsBackupPlansPlanOtsDetail] {
-	return pulumix.Output[GetOtsBackupPlansPlanOtsDetail]{
-		OutputState: i.ToGetOtsBackupPlansPlanOtsDetailOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetOtsBackupPlansPlanOtsDetailArrayInput is an input type that accepts GetOtsBackupPlansPlanOtsDetailArray and GetOtsBackupPlansPlanOtsDetailArrayOutput values.
 // You can construct a concrete instance of `GetOtsBackupPlansPlanOtsDetailArrayInput` via:
 //
@@ -3362,12 +2995,6 @@ func (i GetOtsBackupPlansPlanOtsDetailArray) ToGetOtsBackupPlansPlanOtsDetailArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetOtsBackupPlansPlanOtsDetailArrayOutput)
 }
 
-func (i GetOtsBackupPlansPlanOtsDetailArray) ToOutput(ctx context.Context) pulumix.Output[[]GetOtsBackupPlansPlanOtsDetail] {
-	return pulumix.Output[[]GetOtsBackupPlansPlanOtsDetail]{
-		OutputState: i.ToGetOtsBackupPlansPlanOtsDetailArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetOtsBackupPlansPlanOtsDetailOutput struct{ *pulumi.OutputState }
 
 func (GetOtsBackupPlansPlanOtsDetailOutput) ElementType() reflect.Type {
@@ -3380,12 +3007,6 @@ func (o GetOtsBackupPlansPlanOtsDetailOutput) ToGetOtsBackupPlansPlanOtsDetailOu
 
 func (o GetOtsBackupPlansPlanOtsDetailOutput) ToGetOtsBackupPlansPlanOtsDetailOutputWithContext(ctx context.Context) GetOtsBackupPlansPlanOtsDetailOutput {
 	return o
-}
-
-func (o GetOtsBackupPlansPlanOtsDetailOutput) ToOutput(ctx context.Context) pulumix.Output[GetOtsBackupPlansPlanOtsDetail] {
-	return pulumix.Output[GetOtsBackupPlansPlanOtsDetail]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetOtsBackupPlansPlanOtsDetailOutput) TableNames() pulumi.StringArrayOutput {
@@ -3404,12 +3025,6 @@ func (o GetOtsBackupPlansPlanOtsDetailArrayOutput) ToGetOtsBackupPlansPlanOtsDet
 
 func (o GetOtsBackupPlansPlanOtsDetailArrayOutput) ToGetOtsBackupPlansPlanOtsDetailArrayOutputWithContext(ctx context.Context) GetOtsBackupPlansPlanOtsDetailArrayOutput {
 	return o
-}
-
-func (o GetOtsBackupPlansPlanOtsDetailArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetOtsBackupPlansPlanOtsDetail] {
-	return pulumix.Output[[]GetOtsBackupPlansPlanOtsDetail]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetOtsBackupPlansPlanOtsDetailArrayOutput) Index(i pulumi.IntInput) GetOtsBackupPlansPlanOtsDetailOutput {
@@ -3531,12 +3146,6 @@ func (i GetOtsSnapshotsSnapshotArgs) ToGetOtsSnapshotsSnapshotOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetOtsSnapshotsSnapshotOutput)
 }
 
-func (i GetOtsSnapshotsSnapshotArgs) ToOutput(ctx context.Context) pulumix.Output[GetOtsSnapshotsSnapshot] {
-	return pulumix.Output[GetOtsSnapshotsSnapshot]{
-		OutputState: i.ToGetOtsSnapshotsSnapshotOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetOtsSnapshotsSnapshotArrayInput is an input type that accepts GetOtsSnapshotsSnapshotArray and GetOtsSnapshotsSnapshotArrayOutput values.
 // You can construct a concrete instance of `GetOtsSnapshotsSnapshotArrayInput` via:
 //
@@ -3562,12 +3171,6 @@ func (i GetOtsSnapshotsSnapshotArray) ToGetOtsSnapshotsSnapshotArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetOtsSnapshotsSnapshotArrayOutput)
 }
 
-func (i GetOtsSnapshotsSnapshotArray) ToOutput(ctx context.Context) pulumix.Output[[]GetOtsSnapshotsSnapshot] {
-	return pulumix.Output[[]GetOtsSnapshotsSnapshot]{
-		OutputState: i.ToGetOtsSnapshotsSnapshotArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetOtsSnapshotsSnapshotOutput struct{ *pulumi.OutputState }
 
 func (GetOtsSnapshotsSnapshotOutput) ElementType() reflect.Type {
@@ -3580,12 +3183,6 @@ func (o GetOtsSnapshotsSnapshotOutput) ToGetOtsSnapshotsSnapshotOutput() GetOtsS
 
 func (o GetOtsSnapshotsSnapshotOutput) ToGetOtsSnapshotsSnapshotOutputWithContext(ctx context.Context) GetOtsSnapshotsSnapshotOutput {
 	return o
-}
-
-func (o GetOtsSnapshotsSnapshotOutput) ToOutput(ctx context.Context) pulumix.Output[GetOtsSnapshotsSnapshot] {
-	return pulumix.Output[GetOtsSnapshotsSnapshot]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The actual amount of backup snapshots after duplicates are removed. Unit: bytes.
@@ -3707,12 +3304,6 @@ func (o GetOtsSnapshotsSnapshotArrayOutput) ToGetOtsSnapshotsSnapshotArrayOutput
 	return o
 }
 
-func (o GetOtsSnapshotsSnapshotArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetOtsSnapshotsSnapshot] {
-	return pulumix.Output[[]GetOtsSnapshotsSnapshot]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetOtsSnapshotsSnapshotArrayOutput) Index(i pulumi.IntInput) GetOtsSnapshotsSnapshotOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOtsSnapshotsSnapshot {
 		return vs[0].([]GetOtsSnapshotsSnapshot)[vs[1].(int)]
@@ -3752,12 +3343,6 @@ func (i GetReplicationVaultRegionsRegionArgs) ToGetReplicationVaultRegionsRegion
 	return pulumi.ToOutputWithContext(ctx, i).(GetReplicationVaultRegionsRegionOutput)
 }
 
-func (i GetReplicationVaultRegionsRegionArgs) ToOutput(ctx context.Context) pulumix.Output[GetReplicationVaultRegionsRegion] {
-	return pulumix.Output[GetReplicationVaultRegionsRegion]{
-		OutputState: i.ToGetReplicationVaultRegionsRegionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetReplicationVaultRegionsRegionArrayInput is an input type that accepts GetReplicationVaultRegionsRegionArray and GetReplicationVaultRegionsRegionArrayOutput values.
 // You can construct a concrete instance of `GetReplicationVaultRegionsRegionArrayInput` via:
 //
@@ -3783,12 +3368,6 @@ func (i GetReplicationVaultRegionsRegionArray) ToGetReplicationVaultRegionsRegio
 	return pulumi.ToOutputWithContext(ctx, i).(GetReplicationVaultRegionsRegionArrayOutput)
 }
 
-func (i GetReplicationVaultRegionsRegionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetReplicationVaultRegionsRegion] {
-	return pulumix.Output[[]GetReplicationVaultRegionsRegion]{
-		OutputState: i.ToGetReplicationVaultRegionsRegionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetReplicationVaultRegionsRegionOutput struct{ *pulumi.OutputState }
 
 func (GetReplicationVaultRegionsRegionOutput) ElementType() reflect.Type {
@@ -3801,12 +3380,6 @@ func (o GetReplicationVaultRegionsRegionOutput) ToGetReplicationVaultRegionsRegi
 
 func (o GetReplicationVaultRegionsRegionOutput) ToGetReplicationVaultRegionsRegionOutputWithContext(ctx context.Context) GetReplicationVaultRegionsRegionOutput {
 	return o
-}
-
-func (o GetReplicationVaultRegionsRegionOutput) ToOutput(ctx context.Context) pulumix.Output[GetReplicationVaultRegionsRegion] {
-	return pulumix.Output[GetReplicationVaultRegionsRegion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the replication region.
@@ -3826,12 +3399,6 @@ func (o GetReplicationVaultRegionsRegionArrayOutput) ToGetReplicationVaultRegion
 
 func (o GetReplicationVaultRegionsRegionArrayOutput) ToGetReplicationVaultRegionsRegionArrayOutputWithContext(ctx context.Context) GetReplicationVaultRegionsRegionArrayOutput {
 	return o
-}
-
-func (o GetReplicationVaultRegionsRegionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetReplicationVaultRegionsRegion] {
-	return pulumix.Output[[]GetReplicationVaultRegionsRegion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetReplicationVaultRegionsRegionArrayOutput) Index(i pulumi.IntInput) GetReplicationVaultRegionsRegionOutput {
@@ -3989,12 +3556,6 @@ func (i GetRestoreJobsJobArgs) ToGetRestoreJobsJobOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetRestoreJobsJobOutput)
 }
 
-func (i GetRestoreJobsJobArgs) ToOutput(ctx context.Context) pulumix.Output[GetRestoreJobsJob] {
-	return pulumix.Output[GetRestoreJobsJob]{
-		OutputState: i.ToGetRestoreJobsJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetRestoreJobsJobArrayInput is an input type that accepts GetRestoreJobsJobArray and GetRestoreJobsJobArrayOutput values.
 // You can construct a concrete instance of `GetRestoreJobsJobArrayInput` via:
 //
@@ -4020,12 +3581,6 @@ func (i GetRestoreJobsJobArray) ToGetRestoreJobsJobArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetRestoreJobsJobArrayOutput)
 }
 
-func (i GetRestoreJobsJobArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRestoreJobsJob] {
-	return pulumix.Output[[]GetRestoreJobsJob]{
-		OutputState: i.ToGetRestoreJobsJobArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetRestoreJobsJobOutput struct{ *pulumi.OutputState }
 
 func (GetRestoreJobsJobOutput) ElementType() reflect.Type {
@@ -4038,12 +3593,6 @@ func (o GetRestoreJobsJobOutput) ToGetRestoreJobsJobOutput() GetRestoreJobsJobOu
 
 func (o GetRestoreJobsJobOutput) ToGetRestoreJobsJobOutputWithContext(ctx context.Context) GetRestoreJobsJobOutput {
 	return o
-}
-
-func (o GetRestoreJobsJobOutput) ToOutput(ctx context.Context) pulumix.Output[GetRestoreJobsJob] {
-	return pulumix.Output[GetRestoreJobsJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The actual size of Snapshot.
@@ -4216,12 +3765,6 @@ func (o GetRestoreJobsJobArrayOutput) ToGetRestoreJobsJobArrayOutputWithContext(
 	return o
 }
 
-func (o GetRestoreJobsJobArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRestoreJobsJob] {
-	return pulumix.Output[[]GetRestoreJobsJob]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetRestoreJobsJobArrayOutput) Index(i pulumi.IntInput) GetRestoreJobsJobOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRestoreJobsJob {
 		return vs[0].([]GetRestoreJobsJob)[vs[1].(int)]
@@ -4265,12 +3808,6 @@ func (i GetServerBackupPlansFilterArgs) ToGetServerBackupPlansFilterOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetServerBackupPlansFilterOutput)
 }
 
-func (i GetServerBackupPlansFilterArgs) ToOutput(ctx context.Context) pulumix.Output[GetServerBackupPlansFilter] {
-	return pulumix.Output[GetServerBackupPlansFilter]{
-		OutputState: i.ToGetServerBackupPlansFilterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetServerBackupPlansFilterArrayInput is an input type that accepts GetServerBackupPlansFilterArray and GetServerBackupPlansFilterArrayOutput values.
 // You can construct a concrete instance of `GetServerBackupPlansFilterArrayInput` via:
 //
@@ -4296,12 +3833,6 @@ func (i GetServerBackupPlansFilterArray) ToGetServerBackupPlansFilterArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetServerBackupPlansFilterArrayOutput)
 }
 
-func (i GetServerBackupPlansFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetServerBackupPlansFilter] {
-	return pulumix.Output[[]GetServerBackupPlansFilter]{
-		OutputState: i.ToGetServerBackupPlansFilterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetServerBackupPlansFilterOutput struct{ *pulumi.OutputState }
 
 func (GetServerBackupPlansFilterOutput) ElementType() reflect.Type {
@@ -4314,12 +3845,6 @@ func (o GetServerBackupPlansFilterOutput) ToGetServerBackupPlansFilterOutput() G
 
 func (o GetServerBackupPlansFilterOutput) ToGetServerBackupPlansFilterOutputWithContext(ctx context.Context) GetServerBackupPlansFilterOutput {
 	return o
-}
-
-func (o GetServerBackupPlansFilterOutput) ToOutput(ctx context.Context) pulumix.Output[GetServerBackupPlansFilter] {
-	return pulumix.Output[GetServerBackupPlansFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
@@ -4344,12 +3869,6 @@ func (o GetServerBackupPlansFilterArrayOutput) ToGetServerBackupPlansFilterArray
 
 func (o GetServerBackupPlansFilterArrayOutput) ToGetServerBackupPlansFilterArrayOutputWithContext(ctx context.Context) GetServerBackupPlansFilterArrayOutput {
 	return o
-}
-
-func (o GetServerBackupPlansFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetServerBackupPlansFilter] {
-	return pulumix.Output[[]GetServerBackupPlansFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetServerBackupPlansFilterArrayOutput) Index(i pulumi.IntInput) GetServerBackupPlansFilterOutput {
@@ -4423,12 +3942,6 @@ func (i GetServerBackupPlansPlanArgs) ToGetServerBackupPlansPlanOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetServerBackupPlansPlanOutput)
 }
 
-func (i GetServerBackupPlansPlanArgs) ToOutput(ctx context.Context) pulumix.Output[GetServerBackupPlansPlan] {
-	return pulumix.Output[GetServerBackupPlansPlan]{
-		OutputState: i.ToGetServerBackupPlansPlanOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetServerBackupPlansPlanArrayInput is an input type that accepts GetServerBackupPlansPlanArray and GetServerBackupPlansPlanArrayOutput values.
 // You can construct a concrete instance of `GetServerBackupPlansPlanArrayInput` via:
 //
@@ -4454,12 +3967,6 @@ func (i GetServerBackupPlansPlanArray) ToGetServerBackupPlansPlanArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetServerBackupPlansPlanArrayOutput)
 }
 
-func (i GetServerBackupPlansPlanArray) ToOutput(ctx context.Context) pulumix.Output[[]GetServerBackupPlansPlan] {
-	return pulumix.Output[[]GetServerBackupPlansPlan]{
-		OutputState: i.ToGetServerBackupPlansPlanArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetServerBackupPlansPlanOutput struct{ *pulumi.OutputState }
 
 func (GetServerBackupPlansPlanOutput) ElementType() reflect.Type {
@@ -4472,12 +3979,6 @@ func (o GetServerBackupPlansPlanOutput) ToGetServerBackupPlansPlanOutput() GetSe
 
 func (o GetServerBackupPlansPlanOutput) ToGetServerBackupPlansPlanOutputWithContext(ctx context.Context) GetServerBackupPlansPlanOutput {
 	return o
-}
-
-func (o GetServerBackupPlansPlanOutput) ToOutput(ctx context.Context) pulumix.Output[GetServerBackupPlansPlan] {
-	return pulumix.Output[GetServerBackupPlansPlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation time of backup plan.
@@ -4537,12 +4038,6 @@ func (o GetServerBackupPlansPlanArrayOutput) ToGetServerBackupPlansPlanArrayOutp
 
 func (o GetServerBackupPlansPlanArrayOutput) ToGetServerBackupPlansPlanArrayOutputWithContext(ctx context.Context) GetServerBackupPlansPlanArrayOutput {
 	return o
-}
-
-func (o GetServerBackupPlansPlanArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetServerBackupPlansPlan] {
-	return pulumix.Output[[]GetServerBackupPlansPlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetServerBackupPlansPlanArrayOutput) Index(i pulumi.IntInput) GetServerBackupPlansPlanOutput {
@@ -4620,12 +4115,6 @@ func (i GetServerBackupPlansPlanDetailArgs) ToGetServerBackupPlansPlanDetailOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetServerBackupPlansPlanDetailOutput)
 }
 
-func (i GetServerBackupPlansPlanDetailArgs) ToOutput(ctx context.Context) pulumix.Output[GetServerBackupPlansPlanDetail] {
-	return pulumix.Output[GetServerBackupPlansPlanDetail]{
-		OutputState: i.ToGetServerBackupPlansPlanDetailOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetServerBackupPlansPlanDetailArrayInput is an input type that accepts GetServerBackupPlansPlanDetailArray and GetServerBackupPlansPlanDetailArrayOutput values.
 // You can construct a concrete instance of `GetServerBackupPlansPlanDetailArrayInput` via:
 //
@@ -4651,12 +4140,6 @@ func (i GetServerBackupPlansPlanDetailArray) ToGetServerBackupPlansPlanDetailArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetServerBackupPlansPlanDetailArrayOutput)
 }
 
-func (i GetServerBackupPlansPlanDetailArray) ToOutput(ctx context.Context) pulumix.Output[[]GetServerBackupPlansPlanDetail] {
-	return pulumix.Output[[]GetServerBackupPlansPlanDetail]{
-		OutputState: i.ToGetServerBackupPlansPlanDetailArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetServerBackupPlansPlanDetailOutput struct{ *pulumi.OutputState }
 
 func (GetServerBackupPlansPlanDetailOutput) ElementType() reflect.Type {
@@ -4669,12 +4152,6 @@ func (o GetServerBackupPlansPlanDetailOutput) ToGetServerBackupPlansPlanDetailOu
 
 func (o GetServerBackupPlansPlanDetailOutput) ToGetServerBackupPlansPlanDetailOutputWithContext(ctx context.Context) GetServerBackupPlansPlanDetailOutput {
 	return o
-}
-
-func (o GetServerBackupPlansPlanDetailOutput) ToOutput(ctx context.Context) pulumix.Output[GetServerBackupPlansPlanDetail] {
-	return pulumix.Output[GetServerBackupPlansPlanDetail]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to turn on application consistency. The application consistency snapshot backs up memory data and ongoing database transactions at the time of snapshot creation to ensure the consistency of application system data and database transactions. By applying consistent snapshots, there is no data damage or loss, so as to avoid log rollback during database startup and ensure that the application is in a consistent startup state. Valid values: `true`, `false`.
@@ -4739,12 +4216,6 @@ func (o GetServerBackupPlansPlanDetailArrayOutput) ToGetServerBackupPlansPlanDet
 
 func (o GetServerBackupPlansPlanDetailArrayOutput) ToGetServerBackupPlansPlanDetailArrayOutputWithContext(ctx context.Context) GetServerBackupPlansPlanDetailArrayOutput {
 	return o
-}
-
-func (o GetServerBackupPlansPlanDetailArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetServerBackupPlansPlanDetail] {
-	return pulumix.Output[[]GetServerBackupPlansPlanDetail]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetServerBackupPlansPlanDetailArrayOutput) Index(i pulumi.IntInput) GetServerBackupPlansPlanDetailOutput {
@@ -4888,12 +4359,6 @@ func (i GetSnapshotsSnapshotArgs) ToGetSnapshotsSnapshotOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetSnapshotsSnapshotOutput)
 }
 
-func (i GetSnapshotsSnapshotArgs) ToOutput(ctx context.Context) pulumix.Output[GetSnapshotsSnapshot] {
-	return pulumix.Output[GetSnapshotsSnapshot]{
-		OutputState: i.ToGetSnapshotsSnapshotOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetSnapshotsSnapshotArrayInput is an input type that accepts GetSnapshotsSnapshotArray and GetSnapshotsSnapshotArrayOutput values.
 // You can construct a concrete instance of `GetSnapshotsSnapshotArrayInput` via:
 //
@@ -4919,12 +4384,6 @@ func (i GetSnapshotsSnapshotArray) ToGetSnapshotsSnapshotArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetSnapshotsSnapshotArrayOutput)
 }
 
-func (i GetSnapshotsSnapshotArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSnapshotsSnapshot] {
-	return pulumix.Output[[]GetSnapshotsSnapshot]{
-		OutputState: i.ToGetSnapshotsSnapshotArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetSnapshotsSnapshotOutput struct{ *pulumi.OutputState }
 
 func (GetSnapshotsSnapshotOutput) ElementType() reflect.Type {
@@ -4937,12 +4396,6 @@ func (o GetSnapshotsSnapshotOutput) ToGetSnapshotsSnapshotOutput() GetSnapshotsS
 
 func (o GetSnapshotsSnapshotOutput) ToGetSnapshotsSnapshotOutputWithContext(ctx context.Context) GetSnapshotsSnapshotOutput {
 	return o
-}
-
-func (o GetSnapshotsSnapshotOutput) ToOutput(ctx context.Context) pulumix.Output[GetSnapshotsSnapshot] {
-	return pulumix.Output[GetSnapshotsSnapshot]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The actual data volume of the snapshot. Unit byte.
@@ -5093,12 +4546,6 @@ func (o GetSnapshotsSnapshotArrayOutput) ToGetSnapshotsSnapshotArrayOutputWithCo
 	return o
 }
 
-func (o GetSnapshotsSnapshotArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSnapshotsSnapshot] {
-	return pulumix.Output[[]GetSnapshotsSnapshot]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetSnapshotsSnapshotArrayOutput) Index(i pulumi.IntInput) GetSnapshotsSnapshotOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSnapshotsSnapshot {
 		return vs[0].([]GetSnapshotsSnapshot)[vs[1].(int)]
@@ -5232,12 +4679,6 @@ func (i GetVaultsVaultArgs) ToGetVaultsVaultOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetVaultsVaultOutput)
 }
 
-func (i GetVaultsVaultArgs) ToOutput(ctx context.Context) pulumix.Output[GetVaultsVault] {
-	return pulumix.Output[GetVaultsVault]{
-		OutputState: i.ToGetVaultsVaultOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetVaultsVaultArrayInput is an input type that accepts GetVaultsVaultArray and GetVaultsVaultArrayOutput values.
 // You can construct a concrete instance of `GetVaultsVaultArrayInput` via:
 //
@@ -5263,12 +4704,6 @@ func (i GetVaultsVaultArray) ToGetVaultsVaultArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetVaultsVaultArrayOutput)
 }
 
-func (i GetVaultsVaultArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVaultsVault] {
-	return pulumix.Output[[]GetVaultsVault]{
-		OutputState: i.ToGetVaultsVaultArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetVaultsVaultOutput struct{ *pulumi.OutputState }
 
 func (GetVaultsVaultOutput) ElementType() reflect.Type {
@@ -5281,12 +4716,6 @@ func (o GetVaultsVaultOutput) ToGetVaultsVaultOutput() GetVaultsVaultOutput {
 
 func (o GetVaultsVaultOutput) ToGetVaultsVaultOutputWithContext(ctx context.Context) GetVaultsVaultOutput {
 	return o
-}
-
-func (o GetVaultsVaultOutput) ToOutput(ctx context.Context) pulumix.Output[GetVaultsVault] {
-	return pulumix.Output[GetVaultsVault]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the OSS bucket of the Vault.
@@ -5425,12 +4854,6 @@ func (o GetVaultsVaultArrayOutput) ToGetVaultsVaultArrayOutput() GetVaultsVaultA
 
 func (o GetVaultsVaultArrayOutput) ToGetVaultsVaultArrayOutputWithContext(ctx context.Context) GetVaultsVaultArrayOutput {
 	return o
-}
-
-func (o GetVaultsVaultArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVaultsVault] {
-	return pulumix.Output[[]GetVaultsVault]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetVaultsVaultArrayOutput) Index(i pulumi.IntInput) GetVaultsVaultOutput {

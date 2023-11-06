@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Compute Nest Service Instance resource.
@@ -373,12 +372,6 @@ func (i *NestServiceInstance) ToNestServiceInstanceOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(NestServiceInstanceOutput)
 }
 
-func (i *NestServiceInstance) ToOutput(ctx context.Context) pulumix.Output[*NestServiceInstance] {
-	return pulumix.Output[*NestServiceInstance]{
-		OutputState: i.ToNestServiceInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NestServiceInstanceArrayInput is an input type that accepts NestServiceInstanceArray and NestServiceInstanceArrayOutput values.
 // You can construct a concrete instance of `NestServiceInstanceArrayInput` via:
 //
@@ -402,12 +395,6 @@ func (i NestServiceInstanceArray) ToNestServiceInstanceArrayOutput() NestService
 
 func (i NestServiceInstanceArray) ToNestServiceInstanceArrayOutputWithContext(ctx context.Context) NestServiceInstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NestServiceInstanceArrayOutput)
-}
-
-func (i NestServiceInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*NestServiceInstance] {
-	return pulumix.Output[[]*NestServiceInstance]{
-		OutputState: i.ToNestServiceInstanceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NestServiceInstanceMapInput is an input type that accepts NestServiceInstanceMap and NestServiceInstanceMapOutput values.
@@ -435,12 +422,6 @@ func (i NestServiceInstanceMap) ToNestServiceInstanceMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(NestServiceInstanceMapOutput)
 }
 
-func (i NestServiceInstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NestServiceInstance] {
-	return pulumix.Output[map[string]*NestServiceInstance]{
-		OutputState: i.ToNestServiceInstanceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NestServiceInstanceOutput struct{ *pulumi.OutputState }
 
 func (NestServiceInstanceOutput) ElementType() reflect.Type {
@@ -453,12 +434,6 @@ func (o NestServiceInstanceOutput) ToNestServiceInstanceOutput() NestServiceInst
 
 func (o NestServiceInstanceOutput) ToNestServiceInstanceOutputWithContext(ctx context.Context) NestServiceInstanceOutput {
 	return o
-}
-
-func (o NestServiceInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*NestServiceInstance] {
-	return pulumix.Output[*NestServiceInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The order information of cloud market. See `commodity` below.
@@ -545,12 +520,6 @@ func (o NestServiceInstanceArrayOutput) ToNestServiceInstanceArrayOutputWithCont
 	return o
 }
 
-func (o NestServiceInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NestServiceInstance] {
-	return pulumix.Output[[]*NestServiceInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NestServiceInstanceArrayOutput) Index(i pulumi.IntInput) NestServiceInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NestServiceInstance {
 		return vs[0].([]*NestServiceInstance)[vs[1].(int)]
@@ -569,12 +538,6 @@ func (o NestServiceInstanceMapOutput) ToNestServiceInstanceMapOutput() NestServi
 
 func (o NestServiceInstanceMapOutput) ToNestServiceInstanceMapOutputWithContext(ctx context.Context) NestServiceInstanceMapOutput {
 	return o
-}
-
-func (o NestServiceInstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NestServiceInstance] {
-	return pulumix.Output[map[string]*NestServiceInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NestServiceInstanceMapOutput) MapIndex(k pulumi.StringInput) NestServiceInstanceOutput {

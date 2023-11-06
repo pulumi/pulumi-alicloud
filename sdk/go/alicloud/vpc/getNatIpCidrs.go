@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Vpc Nat Ip Cidrs of the current Alibaba Cloud user.
@@ -178,12 +177,6 @@ func (o GetNatIpCidrsResultOutput) ToGetNatIpCidrsResultOutput() GetNatIpCidrsRe
 
 func (o GetNatIpCidrsResultOutput) ToGetNatIpCidrsResultOutputWithContext(ctx context.Context) GetNatIpCidrsResultOutput {
 	return o
-}
-
-func (o GetNatIpCidrsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetNatIpCidrsResult] {
-	return pulumix.Output[GetNatIpCidrsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetNatIpCidrsResultOutput) Cidrs() GetNatIpCidrsCidrArrayOutput {

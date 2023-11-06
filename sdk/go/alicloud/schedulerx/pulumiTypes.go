@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -59,12 +58,6 @@ func (i GetNamespacesNamespaceArgs) ToGetNamespacesNamespaceOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetNamespacesNamespaceOutput)
 }
 
-func (i GetNamespacesNamespaceArgs) ToOutput(ctx context.Context) pulumix.Output[GetNamespacesNamespace] {
-	return pulumix.Output[GetNamespacesNamespace]{
-		OutputState: i.ToGetNamespacesNamespaceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetNamespacesNamespaceArrayInput is an input type that accepts GetNamespacesNamespaceArray and GetNamespacesNamespaceArrayOutput values.
 // You can construct a concrete instance of `GetNamespacesNamespaceArrayInput` via:
 //
@@ -90,12 +83,6 @@ func (i GetNamespacesNamespaceArray) ToGetNamespacesNamespaceArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetNamespacesNamespaceArrayOutput)
 }
 
-func (i GetNamespacesNamespaceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetNamespacesNamespace] {
-	return pulumix.Output[[]GetNamespacesNamespace]{
-		OutputState: i.ToGetNamespacesNamespaceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetNamespacesNamespaceOutput struct{ *pulumi.OutputState }
 
 func (GetNamespacesNamespaceOutput) ElementType() reflect.Type {
@@ -108,12 +95,6 @@ func (o GetNamespacesNamespaceOutput) ToGetNamespacesNamespaceOutput() GetNamesp
 
 func (o GetNamespacesNamespaceOutput) ToGetNamespacesNamespaceOutputWithContext(ctx context.Context) GetNamespacesNamespaceOutput {
 	return o
-}
-
-func (o GetNamespacesNamespaceOutput) ToOutput(ctx context.Context) pulumix.Output[GetNamespacesNamespace] {
-	return pulumix.Output[GetNamespacesNamespace]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of the resource.
@@ -148,12 +129,6 @@ func (o GetNamespacesNamespaceArrayOutput) ToGetNamespacesNamespaceArrayOutput()
 
 func (o GetNamespacesNamespaceArrayOutput) ToGetNamespacesNamespaceArrayOutputWithContext(ctx context.Context) GetNamespacesNamespaceArrayOutput {
 	return o
-}
-
-func (o GetNamespacesNamespaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetNamespacesNamespace] {
-	return pulumix.Output[[]GetNamespacesNamespace]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetNamespacesNamespaceArrayOutput) Index(i pulumi.IntInput) GetNamespacesNamespaceOutput {

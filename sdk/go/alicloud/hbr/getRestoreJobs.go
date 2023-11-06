@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Hbr Restore Jobs of the current Alibaba Cloud user.
@@ -154,12 +153,6 @@ func (o GetRestoreJobsResultOutput) ToGetRestoreJobsResultOutput() GetRestoreJob
 
 func (o GetRestoreJobsResultOutput) ToGetRestoreJobsResultOutputWithContext(ctx context.Context) GetRestoreJobsResultOutput {
 	return o
-}
-
-func (o GetRestoreJobsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRestoreJobsResult] {
-	return pulumix.Output[GetRestoreJobsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Function Compute triggers of the current Alibaba Cloud user.
@@ -126,12 +125,6 @@ func (o GetTriggersResultOutput) ToGetTriggersResultOutput() GetTriggersResultOu
 
 func (o GetTriggersResultOutput) ToGetTriggersResultOutputWithContext(ctx context.Context) GetTriggersResultOutput {
 	return o
-}
-
-func (o GetTriggersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggersResult] {
-	return pulumix.Output[GetTriggersResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetTriggersResultOutput) FunctionName() pulumi.StringOutput {

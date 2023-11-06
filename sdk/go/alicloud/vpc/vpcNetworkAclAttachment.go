@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a VPC Network Acl Attachment resource. Resources associated with network Acl.
@@ -147,12 +146,6 @@ func (i *VpcNetworkAclAttachment) ToVpcNetworkAclAttachmentOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(VpcNetworkAclAttachmentOutput)
 }
 
-func (i *VpcNetworkAclAttachment) ToOutput(ctx context.Context) pulumix.Output[*VpcNetworkAclAttachment] {
-	return pulumix.Output[*VpcNetworkAclAttachment]{
-		OutputState: i.ToVpcNetworkAclAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VpcNetworkAclAttachmentArrayInput is an input type that accepts VpcNetworkAclAttachmentArray and VpcNetworkAclAttachmentArrayOutput values.
 // You can construct a concrete instance of `VpcNetworkAclAttachmentArrayInput` via:
 //
@@ -176,12 +169,6 @@ func (i VpcNetworkAclAttachmentArray) ToVpcNetworkAclAttachmentArrayOutput() Vpc
 
 func (i VpcNetworkAclAttachmentArray) ToVpcNetworkAclAttachmentArrayOutputWithContext(ctx context.Context) VpcNetworkAclAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcNetworkAclAttachmentArrayOutput)
-}
-
-func (i VpcNetworkAclAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*VpcNetworkAclAttachment] {
-	return pulumix.Output[[]*VpcNetworkAclAttachment]{
-		OutputState: i.ToVpcNetworkAclAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // VpcNetworkAclAttachmentMapInput is an input type that accepts VpcNetworkAclAttachmentMap and VpcNetworkAclAttachmentMapOutput values.
@@ -209,12 +196,6 @@ func (i VpcNetworkAclAttachmentMap) ToVpcNetworkAclAttachmentMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(VpcNetworkAclAttachmentMapOutput)
 }
 
-func (i VpcNetworkAclAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VpcNetworkAclAttachment] {
-	return pulumix.Output[map[string]*VpcNetworkAclAttachment]{
-		OutputState: i.ToVpcNetworkAclAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VpcNetworkAclAttachmentOutput struct{ *pulumi.OutputState }
 
 func (VpcNetworkAclAttachmentOutput) ElementType() reflect.Type {
@@ -227,12 +208,6 @@ func (o VpcNetworkAclAttachmentOutput) ToVpcNetworkAclAttachmentOutput() VpcNetw
 
 func (o VpcNetworkAclAttachmentOutput) ToVpcNetworkAclAttachmentOutputWithContext(ctx context.Context) VpcNetworkAclAttachmentOutput {
 	return o
-}
-
-func (o VpcNetworkAclAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*VpcNetworkAclAttachment] {
-	return pulumix.Output[*VpcNetworkAclAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the network ACL.
@@ -269,12 +244,6 @@ func (o VpcNetworkAclAttachmentArrayOutput) ToVpcNetworkAclAttachmentArrayOutput
 	return o
 }
 
-func (o VpcNetworkAclAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VpcNetworkAclAttachment] {
-	return pulumix.Output[[]*VpcNetworkAclAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VpcNetworkAclAttachmentArrayOutput) Index(i pulumi.IntInput) VpcNetworkAclAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VpcNetworkAclAttachment {
 		return vs[0].([]*VpcNetworkAclAttachment)[vs[1].(int)]
@@ -293,12 +262,6 @@ func (o VpcNetworkAclAttachmentMapOutput) ToVpcNetworkAclAttachmentMapOutput() V
 
 func (o VpcNetworkAclAttachmentMapOutput) ToVpcNetworkAclAttachmentMapOutputWithContext(ctx context.Context) VpcNetworkAclAttachmentMapOutput {
 	return o
-}
-
-func (o VpcNetworkAclAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VpcNetworkAclAttachment] {
-	return pulumix.Output[map[string]*VpcNetworkAclAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VpcNetworkAclAttachmentMapOutput) MapIndex(k pulumi.StringInput) VpcNetworkAclAttachmentOutput {

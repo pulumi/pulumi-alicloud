@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func LookupDBAuditInstance(ctx *pulumi.Context, args *LookupDBAuditInstanceArgs, opts ...pulumi.InvokeOption) (*LookupDBAuditInstanceResult, error) {
@@ -80,12 +79,6 @@ func (o LookupDBAuditInstanceResultOutput) ToLookupDBAuditInstanceResultOutput()
 
 func (o LookupDBAuditInstanceResultOutput) ToLookupDBAuditInstanceResultOutputWithContext(ctx context.Context) LookupDBAuditInstanceResultOutput {
 	return o
-}
-
-func (o LookupDBAuditInstanceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDBAuditInstanceResult] {
-	return pulumix.Output[LookupDBAuditInstanceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupDBAuditInstanceResultOutput) DescriptionRegex() pulumi.StringPtrOutput {

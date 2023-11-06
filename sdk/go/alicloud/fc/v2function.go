@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type V2Function struct {
@@ -222,12 +221,6 @@ func (i *V2Function) ToV2FunctionOutputWithContext(ctx context.Context) V2Functi
 	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionOutput)
 }
 
-func (i *V2Function) ToOutput(ctx context.Context) pulumix.Output[*V2Function] {
-	return pulumix.Output[*V2Function]{
-		OutputState: i.ToV2FunctionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // V2FunctionArrayInput is an input type that accepts V2FunctionArray and V2FunctionArrayOutput values.
 // You can construct a concrete instance of `V2FunctionArrayInput` via:
 //
@@ -251,12 +244,6 @@ func (i V2FunctionArray) ToV2FunctionArrayOutput() V2FunctionArrayOutput {
 
 func (i V2FunctionArray) ToV2FunctionArrayOutputWithContext(ctx context.Context) V2FunctionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionArrayOutput)
-}
-
-func (i V2FunctionArray) ToOutput(ctx context.Context) pulumix.Output[[]*V2Function] {
-	return pulumix.Output[[]*V2Function]{
-		OutputState: i.ToV2FunctionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // V2FunctionMapInput is an input type that accepts V2FunctionMap and V2FunctionMapOutput values.
@@ -284,12 +271,6 @@ func (i V2FunctionMap) ToV2FunctionMapOutputWithContext(ctx context.Context) V2F
 	return pulumi.ToOutputWithContext(ctx, i).(V2FunctionMapOutput)
 }
 
-func (i V2FunctionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*V2Function] {
-	return pulumix.Output[map[string]*V2Function]{
-		OutputState: i.ToV2FunctionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type V2FunctionOutput struct{ *pulumi.OutputState }
 
 func (V2FunctionOutput) ElementType() reflect.Type {
@@ -302,12 +283,6 @@ func (o V2FunctionOutput) ToV2FunctionOutput() V2FunctionOutput {
 
 func (o V2FunctionOutput) ToV2FunctionOutputWithContext(ctx context.Context) V2FunctionOutput {
 	return o
-}
-
-func (o V2FunctionOutput) ToOutput(ctx context.Context) pulumix.Output[*V2Function] {
-	return pulumix.Output[*V2Function]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o V2FunctionOutput) CaPort() pulumi.IntOutput {
@@ -424,12 +399,6 @@ func (o V2FunctionArrayOutput) ToV2FunctionArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o V2FunctionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*V2Function] {
-	return pulumix.Output[[]*V2Function]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o V2FunctionArrayOutput) Index(i pulumi.IntInput) V2FunctionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *V2Function {
 		return vs[0].([]*V2Function)[vs[1].(int)]
@@ -448,12 +417,6 @@ func (o V2FunctionMapOutput) ToV2FunctionMapOutput() V2FunctionMapOutput {
 
 func (o V2FunctionMapOutput) ToV2FunctionMapOutputWithContext(ctx context.Context) V2FunctionMapOutput {
 	return o
-}
-
-func (o V2FunctionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*V2Function] {
-	return pulumix.Output[map[string]*V2Function]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o V2FunctionMapOutput) MapIndex(k pulumi.StringInput) V2FunctionOutput {

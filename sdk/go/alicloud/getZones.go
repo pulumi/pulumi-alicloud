@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides availability zones that can be accessed by an Alibaba Cloud account within the region configured in the provider.
@@ -168,12 +167,6 @@ func (o GetZonesResultOutput) ToGetZonesResultOutput() GetZonesResultOutput {
 
 func (o GetZonesResultOutput) ToGetZonesResultOutputWithContext(ctx context.Context) GetZonesResultOutput {
 	return o
-}
-
-func (o GetZonesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetZonesResult] {
-	return pulumix.Output[GetZonesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetZonesResultOutput) AvailableDiskCategory() pulumi.StringPtrOutput {

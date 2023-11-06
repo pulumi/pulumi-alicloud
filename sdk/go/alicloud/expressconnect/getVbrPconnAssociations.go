@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Express Connect Vbr Pconn Association available to the user.
@@ -123,12 +122,6 @@ func (o GetVbrPconnAssociationsResultOutput) ToGetVbrPconnAssociationsResultOutp
 
 func (o GetVbrPconnAssociationsResultOutput) ToGetVbrPconnAssociationsResultOutputWithContext(ctx context.Context) GetVbrPconnAssociationsResultOutput {
 	return o
-}
-
-func (o GetVbrPconnAssociationsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetVbrPconnAssociationsResult] {
-	return pulumix.Output[GetVbrPconnAssociationsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of Vbr Pconn Association Entries. Each element contains the following attributes:

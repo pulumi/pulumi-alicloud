@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode)
@@ -134,12 +133,6 @@ func (o GetHoneypotNodesResultOutput) ToGetHoneypotNodesResultOutput() GetHoneyp
 
 func (o GetHoneypotNodesResultOutput) ToGetHoneypotNodesResultOutputWithContext(ctx context.Context) GetHoneypotNodesResultOutput {
 	return o
-}
-
-func (o GetHoneypotNodesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetHoneypotNodesResult] {
-	return pulumix.Output[GetHoneypotNodesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

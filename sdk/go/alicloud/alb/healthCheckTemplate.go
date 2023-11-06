@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Application Load Balancer (ALB) Health Check Template resource.
@@ -263,12 +262,6 @@ func (i *HealthCheckTemplate) ToHealthCheckTemplateOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(HealthCheckTemplateOutput)
 }
 
-func (i *HealthCheckTemplate) ToOutput(ctx context.Context) pulumix.Output[*HealthCheckTemplate] {
-	return pulumix.Output[*HealthCheckTemplate]{
-		OutputState: i.ToHealthCheckTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HealthCheckTemplateArrayInput is an input type that accepts HealthCheckTemplateArray and HealthCheckTemplateArrayOutput values.
 // You can construct a concrete instance of `HealthCheckTemplateArrayInput` via:
 //
@@ -292,12 +285,6 @@ func (i HealthCheckTemplateArray) ToHealthCheckTemplateArrayOutput() HealthCheck
 
 func (i HealthCheckTemplateArray) ToHealthCheckTemplateArrayOutputWithContext(ctx context.Context) HealthCheckTemplateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HealthCheckTemplateArrayOutput)
-}
-
-func (i HealthCheckTemplateArray) ToOutput(ctx context.Context) pulumix.Output[[]*HealthCheckTemplate] {
-	return pulumix.Output[[]*HealthCheckTemplate]{
-		OutputState: i.ToHealthCheckTemplateArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HealthCheckTemplateMapInput is an input type that accepts HealthCheckTemplateMap and HealthCheckTemplateMapOutput values.
@@ -325,12 +312,6 @@ func (i HealthCheckTemplateMap) ToHealthCheckTemplateMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(HealthCheckTemplateMapOutput)
 }
 
-func (i HealthCheckTemplateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HealthCheckTemplate] {
-	return pulumix.Output[map[string]*HealthCheckTemplate]{
-		OutputState: i.ToHealthCheckTemplateMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HealthCheckTemplateOutput struct{ *pulumi.OutputState }
 
 func (HealthCheckTemplateOutput) ElementType() reflect.Type {
@@ -343,12 +324,6 @@ func (o HealthCheckTemplateOutput) ToHealthCheckTemplateOutput() HealthCheckTemp
 
 func (o HealthCheckTemplateOutput) ToHealthCheckTemplateOutputWithContext(ctx context.Context) HealthCheckTemplateOutput {
 	return o
-}
-
-func (o HealthCheckTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*HealthCheckTemplate] {
-	return pulumix.Output[*HealthCheckTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to precheck the API request.
@@ -430,12 +405,6 @@ func (o HealthCheckTemplateArrayOutput) ToHealthCheckTemplateArrayOutputWithCont
 	return o
 }
 
-func (o HealthCheckTemplateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HealthCheckTemplate] {
-	return pulumix.Output[[]*HealthCheckTemplate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HealthCheckTemplateArrayOutput) Index(i pulumi.IntInput) HealthCheckTemplateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HealthCheckTemplate {
 		return vs[0].([]*HealthCheckTemplate)[vs[1].(int)]
@@ -454,12 +423,6 @@ func (o HealthCheckTemplateMapOutput) ToHealthCheckTemplateMapOutput() HealthChe
 
 func (o HealthCheckTemplateMapOutput) ToHealthCheckTemplateMapOutputWithContext(ctx context.Context) HealthCheckTemplateMapOutput {
 	return o
-}
-
-func (o HealthCheckTemplateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HealthCheckTemplate] {
-	return pulumix.Output[map[string]*HealthCheckTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HealthCheckTemplateMapOutput) MapIndex(k pulumi.StringInput) HealthCheckTemplateOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -135,12 +134,6 @@ func (i DomainListenArgs) ToDomainListenOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DomainListenOutput)
 }
 
-func (i DomainListenArgs) ToOutput(ctx context.Context) pulumix.Output[DomainListen] {
-	return pulumix.Output[DomainListen]{
-		OutputState: i.ToDomainListenOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DomainListenArgs) ToDomainListenPtrOutput() DomainListenPtrOutput {
 	return i.ToDomainListenPtrOutputWithContext(context.Background())
 }
@@ -182,12 +175,6 @@ func (i *domainListenPtrType) ToDomainListenPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(DomainListenPtrOutput)
 }
 
-func (i *domainListenPtrType) ToOutput(ctx context.Context) pulumix.Output[*DomainListen] {
-	return pulumix.Output[*DomainListen]{
-		OutputState: i.ToDomainListenPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DomainListenOutput struct{ *pulumi.OutputState }
 
 func (DomainListenOutput) ElementType() reflect.Type {
@@ -210,12 +197,6 @@ func (o DomainListenOutput) ToDomainListenPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainListen) *DomainListen {
 		return &v
 	}).(DomainListenPtrOutput)
-}
-
-func (o DomainListenOutput) ToOutput(ctx context.Context) pulumix.Output[DomainListen] {
-	return pulumix.Output[DomainListen]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the certificate to be added. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
@@ -318,12 +299,6 @@ func (o DomainListenPtrOutput) ToDomainListenPtrOutput() DomainListenPtrOutput {
 
 func (o DomainListenPtrOutput) ToDomainListenPtrOutputWithContext(ctx context.Context) DomainListenPtrOutput {
 	return o
-}
-
-func (o DomainListenPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainListen] {
-	return pulumix.Output[*DomainListen]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DomainListenPtrOutput) Elem() DomainListenOutput {
@@ -603,12 +578,6 @@ func (i DomainRedirectArgs) ToDomainRedirectOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(DomainRedirectOutput)
 }
 
-func (i DomainRedirectArgs) ToOutput(ctx context.Context) pulumix.Output[DomainRedirect] {
-	return pulumix.Output[DomainRedirect]{
-		OutputState: i.ToDomainRedirectOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DomainRedirectArgs) ToDomainRedirectPtrOutput() DomainRedirectPtrOutput {
 	return i.ToDomainRedirectPtrOutputWithContext(context.Background())
 }
@@ -650,12 +619,6 @@ func (i *domainRedirectPtrType) ToDomainRedirectPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(DomainRedirectPtrOutput)
 }
 
-func (i *domainRedirectPtrType) ToOutput(ctx context.Context) pulumix.Output[*DomainRedirect] {
-	return pulumix.Output[*DomainRedirect]{
-		OutputState: i.ToDomainRedirectPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DomainRedirectOutput struct{ *pulumi.OutputState }
 
 func (DomainRedirectOutput) ElementType() reflect.Type {
@@ -678,12 +641,6 @@ func (o DomainRedirectOutput) ToDomainRedirectPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainRedirect) *DomainRedirect {
 		return &v
 	}).(DomainRedirectPtrOutput)
-}
-
-func (o DomainRedirectOutput) ToOutput(ctx context.Context) pulumix.Output[DomainRedirect] {
-	return pulumix.Output[DomainRedirect]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IP address of the origin server corresponding to the domain name or the back-to-origin domain name of the server.
@@ -777,12 +734,6 @@ func (o DomainRedirectPtrOutput) ToDomainRedirectPtrOutput() DomainRedirectPtrOu
 
 func (o DomainRedirectPtrOutput) ToDomainRedirectPtrOutputWithContext(ctx context.Context) DomainRedirectPtrOutput {
 	return o
-}
-
-func (o DomainRedirectPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainRedirect] {
-	return pulumix.Output[*DomainRedirect]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DomainRedirectPtrOutput) Elem() DomainRedirectOutput {
@@ -976,12 +927,6 @@ func (i DomainRedirectRequestHeaderArgs) ToDomainRedirectRequestHeaderOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(DomainRedirectRequestHeaderOutput)
 }
 
-func (i DomainRedirectRequestHeaderArgs) ToOutput(ctx context.Context) pulumix.Output[DomainRedirectRequestHeader] {
-	return pulumix.Output[DomainRedirectRequestHeader]{
-		OutputState: i.ToDomainRedirectRequestHeaderOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DomainRedirectRequestHeaderArrayInput is an input type that accepts DomainRedirectRequestHeaderArray and DomainRedirectRequestHeaderArrayOutput values.
 // You can construct a concrete instance of `DomainRedirectRequestHeaderArrayInput` via:
 //
@@ -1007,12 +952,6 @@ func (i DomainRedirectRequestHeaderArray) ToDomainRedirectRequestHeaderArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DomainRedirectRequestHeaderArrayOutput)
 }
 
-func (i DomainRedirectRequestHeaderArray) ToOutput(ctx context.Context) pulumix.Output[[]DomainRedirectRequestHeader] {
-	return pulumix.Output[[]DomainRedirectRequestHeader]{
-		OutputState: i.ToDomainRedirectRequestHeaderArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DomainRedirectRequestHeaderOutput struct{ *pulumi.OutputState }
 
 func (DomainRedirectRequestHeaderOutput) ElementType() reflect.Type {
@@ -1025,12 +964,6 @@ func (o DomainRedirectRequestHeaderOutput) ToDomainRedirectRequestHeaderOutput()
 
 func (o DomainRedirectRequestHeaderOutput) ToDomainRedirectRequestHeaderOutputWithContext(ctx context.Context) DomainRedirectRequestHeaderOutput {
 	return o
-}
-
-func (o DomainRedirectRequestHeaderOutput) ToOutput(ctx context.Context) pulumix.Output[DomainRedirectRequestHeader] {
-	return pulumix.Output[DomainRedirectRequestHeader]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
@@ -1055,12 +988,6 @@ func (o DomainRedirectRequestHeaderArrayOutput) ToDomainRedirectRequestHeaderArr
 
 func (o DomainRedirectRequestHeaderArrayOutput) ToDomainRedirectRequestHeaderArrayOutputWithContext(ctx context.Context) DomainRedirectRequestHeaderArrayOutput {
 	return o
-}
-
-func (o DomainRedirectRequestHeaderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DomainRedirectRequestHeader] {
-	return pulumix.Output[[]DomainRedirectRequestHeader]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DomainRedirectRequestHeaderArrayOutput) Index(i pulumi.IntInput) DomainRedirectRequestHeaderOutput {
@@ -1122,12 +1049,6 @@ func (i GetDomainsDomainArgs) ToGetDomainsDomainOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainOutput)
 }
 
-func (i GetDomainsDomainArgs) ToOutput(ctx context.Context) pulumix.Output[GetDomainsDomain] {
-	return pulumix.Output[GetDomainsDomain]{
-		OutputState: i.ToGetDomainsDomainOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDomainsDomainArrayInput is an input type that accepts GetDomainsDomainArray and GetDomainsDomainArrayOutput values.
 // You can construct a concrete instance of `GetDomainsDomainArrayInput` via:
 //
@@ -1153,12 +1074,6 @@ func (i GetDomainsDomainArray) ToGetDomainsDomainArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainArrayOutput)
 }
 
-func (i GetDomainsDomainArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainsDomain] {
-	return pulumix.Output[[]GetDomainsDomain]{
-		OutputState: i.ToGetDomainsDomainArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDomainsDomainOutput struct{ *pulumi.OutputState }
 
 func (GetDomainsDomainOutput) ElementType() reflect.Type {
@@ -1171,12 +1086,6 @@ func (o GetDomainsDomainOutput) ToGetDomainsDomainOutput() GetDomainsDomainOutpu
 
 func (o GetDomainsDomainOutput) ToGetDomainsDomainOutputWithContext(ctx context.Context) GetDomainsDomainOutput {
 	return o
-}
-
-func (o GetDomainsDomainOutput) ToOutput(ctx context.Context) pulumix.Output[GetDomainsDomain] {
-	return pulumix.Output[GetDomainsDomain]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the domain name to query.
@@ -1221,12 +1130,6 @@ func (o GetDomainsDomainArrayOutput) ToGetDomainsDomainArrayOutput() GetDomainsD
 
 func (o GetDomainsDomainArrayOutput) ToGetDomainsDomainArrayOutputWithContext(ctx context.Context) GetDomainsDomainArrayOutput {
 	return o
-}
-
-func (o GetDomainsDomainArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainsDomain] {
-	return pulumix.Output[[]GetDomainsDomain]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDomainsDomainArrayOutput) Index(i pulumi.IntInput) GetDomainsDomainOutput {
@@ -1320,12 +1223,6 @@ func (i GetDomainsDomainListenArgs) ToGetDomainsDomainListenOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainListenOutput)
 }
 
-func (i GetDomainsDomainListenArgs) ToOutput(ctx context.Context) pulumix.Output[GetDomainsDomainListen] {
-	return pulumix.Output[GetDomainsDomainListen]{
-		OutputState: i.ToGetDomainsDomainListenOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDomainsDomainListenArrayInput is an input type that accepts GetDomainsDomainListenArray and GetDomainsDomainListenArrayOutput values.
 // You can construct a concrete instance of `GetDomainsDomainListenArrayInput` via:
 //
@@ -1351,12 +1248,6 @@ func (i GetDomainsDomainListenArray) ToGetDomainsDomainListenArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainListenArrayOutput)
 }
 
-func (i GetDomainsDomainListenArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainsDomainListen] {
-	return pulumix.Output[[]GetDomainsDomainListen]{
-		OutputState: i.ToGetDomainsDomainListenArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDomainsDomainListenOutput struct{ *pulumi.OutputState }
 
 func (GetDomainsDomainListenOutput) ElementType() reflect.Type {
@@ -1369,12 +1260,6 @@ func (o GetDomainsDomainListenOutput) ToGetDomainsDomainListenOutput() GetDomain
 
 func (o GetDomainsDomainListenOutput) ToGetDomainsDomainListenOutputWithContext(ctx context.Context) GetDomainsDomainListenOutput {
 	return o
-}
-
-func (o GetDomainsDomainListenOutput) ToOutput(ctx context.Context) pulumix.Output[GetDomainsDomainListen] {
-	return pulumix.Output[GetDomainsDomainListen]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the certificate to be added. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
@@ -1459,12 +1344,6 @@ func (o GetDomainsDomainListenArrayOutput) ToGetDomainsDomainListenArrayOutput()
 
 func (o GetDomainsDomainListenArrayOutput) ToGetDomainsDomainListenArrayOutputWithContext(ctx context.Context) GetDomainsDomainListenArrayOutput {
 	return o
-}
-
-func (o GetDomainsDomainListenArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainsDomainListen] {
-	return pulumix.Output[[]GetDomainsDomainListen]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDomainsDomainListenArrayOutput) Index(i pulumi.IntInput) GetDomainsDomainListenOutput {
@@ -1554,12 +1433,6 @@ func (i GetDomainsDomainRedirectArgs) ToGetDomainsDomainRedirectOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainRedirectOutput)
 }
 
-func (i GetDomainsDomainRedirectArgs) ToOutput(ctx context.Context) pulumix.Output[GetDomainsDomainRedirect] {
-	return pulumix.Output[GetDomainsDomainRedirect]{
-		OutputState: i.ToGetDomainsDomainRedirectOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDomainsDomainRedirectArrayInput is an input type that accepts GetDomainsDomainRedirectArray and GetDomainsDomainRedirectArrayOutput values.
 // You can construct a concrete instance of `GetDomainsDomainRedirectArrayInput` via:
 //
@@ -1585,12 +1458,6 @@ func (i GetDomainsDomainRedirectArray) ToGetDomainsDomainRedirectArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainRedirectArrayOutput)
 }
 
-func (i GetDomainsDomainRedirectArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainsDomainRedirect] {
-	return pulumix.Output[[]GetDomainsDomainRedirect]{
-		OutputState: i.ToGetDomainsDomainRedirectArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDomainsDomainRedirectOutput struct{ *pulumi.OutputState }
 
 func (GetDomainsDomainRedirectOutput) ElementType() reflect.Type {
@@ -1603,12 +1470,6 @@ func (o GetDomainsDomainRedirectOutput) ToGetDomainsDomainRedirectOutput() GetDo
 
 func (o GetDomainsDomainRedirectOutput) ToGetDomainsDomainRedirectOutputWithContext(ctx context.Context) GetDomainsDomainRedirectOutput {
 	return o
-}
-
-func (o GetDomainsDomainRedirectOutput) ToOutput(ctx context.Context) pulumix.Output[GetDomainsDomainRedirect] {
-	return pulumix.Output[GetDomainsDomainRedirect]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IP address of the origin server corresponding to the domain name or the back-to-origin domain name of the server.
@@ -1690,12 +1551,6 @@ func (o GetDomainsDomainRedirectArrayOutput) ToGetDomainsDomainRedirectArrayOutp
 	return o
 }
 
-func (o GetDomainsDomainRedirectArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainsDomainRedirect] {
-	return pulumix.Output[[]GetDomainsDomainRedirect]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetDomainsDomainRedirectArrayOutput) Index(i pulumi.IntInput) GetDomainsDomainRedirectOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDomainsDomainRedirect {
 		return vs[0].([]GetDomainsDomainRedirect)[vs[1].(int)]
@@ -1739,12 +1594,6 @@ func (i GetDomainsDomainRedirectRequestHeaderArgs) ToGetDomainsDomainRedirectReq
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainRedirectRequestHeaderOutput)
 }
 
-func (i GetDomainsDomainRedirectRequestHeaderArgs) ToOutput(ctx context.Context) pulumix.Output[GetDomainsDomainRedirectRequestHeader] {
-	return pulumix.Output[GetDomainsDomainRedirectRequestHeader]{
-		OutputState: i.ToGetDomainsDomainRedirectRequestHeaderOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDomainsDomainRedirectRequestHeaderArrayInput is an input type that accepts GetDomainsDomainRedirectRequestHeaderArray and GetDomainsDomainRedirectRequestHeaderArrayOutput values.
 // You can construct a concrete instance of `GetDomainsDomainRedirectRequestHeaderArrayInput` via:
 //
@@ -1770,12 +1619,6 @@ func (i GetDomainsDomainRedirectRequestHeaderArray) ToGetDomainsDomainRedirectRe
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainRedirectRequestHeaderArrayOutput)
 }
 
-func (i GetDomainsDomainRedirectRequestHeaderArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainsDomainRedirectRequestHeader] {
-	return pulumix.Output[[]GetDomainsDomainRedirectRequestHeader]{
-		OutputState: i.ToGetDomainsDomainRedirectRequestHeaderArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDomainsDomainRedirectRequestHeaderOutput struct{ *pulumi.OutputState }
 
 func (GetDomainsDomainRedirectRequestHeaderOutput) ElementType() reflect.Type {
@@ -1788,12 +1631,6 @@ func (o GetDomainsDomainRedirectRequestHeaderOutput) ToGetDomainsDomainRedirectR
 
 func (o GetDomainsDomainRedirectRequestHeaderOutput) ToGetDomainsDomainRedirectRequestHeaderOutputWithContext(ctx context.Context) GetDomainsDomainRedirectRequestHeaderOutput {
 	return o
-}
-
-func (o GetDomainsDomainRedirectRequestHeaderOutput) ToOutput(ctx context.Context) pulumix.Output[GetDomainsDomainRedirectRequestHeader] {
-	return pulumix.Output[GetDomainsDomainRedirectRequestHeader]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
@@ -1818,12 +1655,6 @@ func (o GetDomainsDomainRedirectRequestHeaderArrayOutput) ToGetDomainsDomainRedi
 
 func (o GetDomainsDomainRedirectRequestHeaderArrayOutput) ToGetDomainsDomainRedirectRequestHeaderArrayOutputWithContext(ctx context.Context) GetDomainsDomainRedirectRequestHeaderArrayOutput {
 	return o
-}
-
-func (o GetDomainsDomainRedirectRequestHeaderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainsDomainRedirectRequestHeader] {
-	return pulumix.Output[[]GetDomainsDomainRedirectRequestHeader]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDomainsDomainRedirectRequestHeaderArrayOutput) Index(i pulumi.IntInput) GetDomainsDomainRedirectRequestHeaderOutput {
@@ -1877,12 +1708,6 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceOutput)
 }
 
-func (i GetInstancesInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstance] {
-	return pulumix.Output[GetInstancesInstance]{
-		OutputState: i.ToGetInstancesInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
 //
@@ -1908,12 +1733,6 @@ func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
 }
 
-func (i GetInstancesInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstance] {
-	return pulumix.Output[[]GetInstancesInstance]{
-		OutputState: i.ToGetInstancesInstanceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceOutput) ElementType() reflect.Type {
@@ -1926,12 +1745,6 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutput() GetInstancesI
 
 func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
 	return o
-}
-
-func (o GetInstancesInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstance] {
-	return pulumix.Output[GetInstancesInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation time of the resource.
@@ -1966,12 +1779,6 @@ func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutput() Get
 
 func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceArrayOutput {
 	return o
-}
-
-func (o GetInstancesInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstance] {
-	return pulumix.Output[[]GetInstancesInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {

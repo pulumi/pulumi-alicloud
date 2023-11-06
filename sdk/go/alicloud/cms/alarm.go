@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource provides a alarm rule resource and it can be used to monitor several cloud services according different metrics.
@@ -537,12 +536,6 @@ func (i *Alarm) ToAlarmOutputWithContext(ctx context.Context) AlarmOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlarmOutput)
 }
 
-func (i *Alarm) ToOutput(ctx context.Context) pulumix.Output[*Alarm] {
-	return pulumix.Output[*Alarm]{
-		OutputState: i.ToAlarmOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AlarmArrayInput is an input type that accepts AlarmArray and AlarmArrayOutput values.
 // You can construct a concrete instance of `AlarmArrayInput` via:
 //
@@ -566,12 +559,6 @@ func (i AlarmArray) ToAlarmArrayOutput() AlarmArrayOutput {
 
 func (i AlarmArray) ToAlarmArrayOutputWithContext(ctx context.Context) AlarmArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlarmArrayOutput)
-}
-
-func (i AlarmArray) ToOutput(ctx context.Context) pulumix.Output[[]*Alarm] {
-	return pulumix.Output[[]*Alarm]{
-		OutputState: i.ToAlarmArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AlarmMapInput is an input type that accepts AlarmMap and AlarmMapOutput values.
@@ -599,12 +586,6 @@ func (i AlarmMap) ToAlarmMapOutputWithContext(ctx context.Context) AlarmMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(AlarmMapOutput)
 }
 
-func (i AlarmMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Alarm] {
-	return pulumix.Output[map[string]*Alarm]{
-		OutputState: i.ToAlarmMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AlarmOutput struct{ *pulumi.OutputState }
 
 func (AlarmOutput) ElementType() reflect.Type {
@@ -617,12 +598,6 @@ func (o AlarmOutput) ToAlarmOutput() AlarmOutput {
 
 func (o AlarmOutput) ToAlarmOutputWithContext(ctx context.Context) AlarmOutput {
 	return o
-}
-
-func (o AlarmOutput) ToOutput(ctx context.Context) pulumix.Output[*Alarm] {
-	return pulumix.Output[*Alarm]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List contact groups of the alarm rule, which must have been created on the console.
@@ -771,12 +746,6 @@ func (o AlarmArrayOutput) ToAlarmArrayOutputWithContext(ctx context.Context) Ala
 	return o
 }
 
-func (o AlarmArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Alarm] {
-	return pulumix.Output[[]*Alarm]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AlarmArrayOutput) Index(i pulumi.IntInput) AlarmOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Alarm {
 		return vs[0].([]*Alarm)[vs[1].(int)]
@@ -795,12 +764,6 @@ func (o AlarmMapOutput) ToAlarmMapOutput() AlarmMapOutput {
 
 func (o AlarmMapOutput) ToAlarmMapOutputWithContext(ctx context.Context) AlarmMapOutput {
 	return o
-}
-
-func (o AlarmMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Alarm] {
-	return pulumix.Output[map[string]*Alarm]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AlarmMapOutput) MapIndex(k pulumi.StringInput) AlarmOutput {

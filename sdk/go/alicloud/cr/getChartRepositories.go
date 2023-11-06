@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cr Chart Repositories of the current Alibaba Cloud user.
@@ -124,12 +123,6 @@ func (o GetChartRepositoriesResultOutput) ToGetChartRepositoriesResultOutput() G
 
 func (o GetChartRepositoriesResultOutput) ToGetChartRepositoriesResultOutputWithContext(ctx context.Context) GetChartRepositoriesResultOutput {
 	return o
-}
-
-func (o GetChartRepositoriesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetChartRepositoriesResult] {
-	return pulumix.Output[GetChartRepositoriesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

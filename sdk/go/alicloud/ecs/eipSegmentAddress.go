@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a EIP Segment Address resource.
@@ -270,12 +269,6 @@ func (i *EipSegmentAddress) ToEipSegmentAddressOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(EipSegmentAddressOutput)
 }
 
-func (i *EipSegmentAddress) ToOutput(ctx context.Context) pulumix.Output[*EipSegmentAddress] {
-	return pulumix.Output[*EipSegmentAddress]{
-		OutputState: i.ToEipSegmentAddressOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EipSegmentAddressArrayInput is an input type that accepts EipSegmentAddressArray and EipSegmentAddressArrayOutput values.
 // You can construct a concrete instance of `EipSegmentAddressArrayInput` via:
 //
@@ -299,12 +292,6 @@ func (i EipSegmentAddressArray) ToEipSegmentAddressArrayOutput() EipSegmentAddre
 
 func (i EipSegmentAddressArray) ToEipSegmentAddressArrayOutputWithContext(ctx context.Context) EipSegmentAddressArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EipSegmentAddressArrayOutput)
-}
-
-func (i EipSegmentAddressArray) ToOutput(ctx context.Context) pulumix.Output[[]*EipSegmentAddress] {
-	return pulumix.Output[[]*EipSegmentAddress]{
-		OutputState: i.ToEipSegmentAddressArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EipSegmentAddressMapInput is an input type that accepts EipSegmentAddressMap and EipSegmentAddressMapOutput values.
@@ -332,12 +319,6 @@ func (i EipSegmentAddressMap) ToEipSegmentAddressMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(EipSegmentAddressMapOutput)
 }
 
-func (i EipSegmentAddressMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EipSegmentAddress] {
-	return pulumix.Output[map[string]*EipSegmentAddress]{
-		OutputState: i.ToEipSegmentAddressMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EipSegmentAddressOutput struct{ *pulumi.OutputState }
 
 func (EipSegmentAddressOutput) ElementType() reflect.Type {
@@ -350,12 +331,6 @@ func (o EipSegmentAddressOutput) ToEipSegmentAddressOutput() EipSegmentAddressOu
 
 func (o EipSegmentAddressOutput) ToEipSegmentAddressOutputWithContext(ctx context.Context) EipSegmentAddressOutput {
 	return o
-}
-
-func (o EipSegmentAddressOutput) ToOutput(ctx context.Context) pulumix.Output[*EipSegmentAddress] {
-	return pulumix.Output[*EipSegmentAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The peak bandwidth of the EIP. Unit: Mbps. When the value of instancargetype is PostPaid and the value of InternetChargeType is PayByBandwidth, the range of Bandwidth is 1 to 500. If the value of instancargetype is PostPaid and the value of InternetChargeType is PayByTraffic, the range of Bandwidth is 1 to 200. When instancargetype is set to PrePaid, the range of Bandwidth is 1 to 1000. The default value is 5 Mbps.
@@ -420,12 +395,6 @@ func (o EipSegmentAddressArrayOutput) ToEipSegmentAddressArrayOutputWithContext(
 	return o
 }
 
-func (o EipSegmentAddressArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EipSegmentAddress] {
-	return pulumix.Output[[]*EipSegmentAddress]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EipSegmentAddressArrayOutput) Index(i pulumi.IntInput) EipSegmentAddressOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EipSegmentAddress {
 		return vs[0].([]*EipSegmentAddress)[vs[1].(int)]
@@ -444,12 +413,6 @@ func (o EipSegmentAddressMapOutput) ToEipSegmentAddressMapOutput() EipSegmentAdd
 
 func (o EipSegmentAddressMapOutput) ToEipSegmentAddressMapOutputWithContext(ctx context.Context) EipSegmentAddressMapOutput {
 	return o
-}
-
-func (o EipSegmentAddressMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EipSegmentAddress] {
-	return pulumix.Output[map[string]*EipSegmentAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EipSegmentAddressMapOutput) MapIndex(k pulumi.StringInput) EipSegmentAddressOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Alidns Domain Group resource. For information about Alidns Domain Group and how to use it, see [What is Resource Alidns Domain Group](https://www.alibabacloud.com/help/en/doc-detail/29762.htm).
@@ -165,12 +164,6 @@ func (i *DomainGroup) ToDomainGroupOutputWithContext(ctx context.Context) Domain
 	return pulumi.ToOutputWithContext(ctx, i).(DomainGroupOutput)
 }
 
-func (i *DomainGroup) ToOutput(ctx context.Context) pulumix.Output[*DomainGroup] {
-	return pulumix.Output[*DomainGroup]{
-		OutputState: i.ToDomainGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DomainGroupArrayInput is an input type that accepts DomainGroupArray and DomainGroupArrayOutput values.
 // You can construct a concrete instance of `DomainGroupArrayInput` via:
 //
@@ -194,12 +187,6 @@ func (i DomainGroupArray) ToDomainGroupArrayOutput() DomainGroupArrayOutput {
 
 func (i DomainGroupArray) ToDomainGroupArrayOutputWithContext(ctx context.Context) DomainGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainGroupArrayOutput)
-}
-
-func (i DomainGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*DomainGroup] {
-	return pulumix.Output[[]*DomainGroup]{
-		OutputState: i.ToDomainGroupArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DomainGroupMapInput is an input type that accepts DomainGroupMap and DomainGroupMapOutput values.
@@ -227,12 +214,6 @@ func (i DomainGroupMap) ToDomainGroupMapOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DomainGroupMapOutput)
 }
 
-func (i DomainGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DomainGroup] {
-	return pulumix.Output[map[string]*DomainGroup]{
-		OutputState: i.ToDomainGroupMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DomainGroupOutput struct{ *pulumi.OutputState }
 
 func (DomainGroupOutput) ElementType() reflect.Type {
@@ -245,12 +226,6 @@ func (o DomainGroupOutput) ToDomainGroupOutput() DomainGroupOutput {
 
 func (o DomainGroupOutput) ToDomainGroupOutputWithContext(ctx context.Context) DomainGroupOutput {
 	return o
-}
-
-func (o DomainGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainGroup] {
-	return pulumix.Output[*DomainGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Name of the domain group. The `domainGroupName` is required when the value of the `groupName`  is Empty.
@@ -284,12 +259,6 @@ func (o DomainGroupArrayOutput) ToDomainGroupArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o DomainGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DomainGroup] {
-	return pulumix.Output[[]*DomainGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DomainGroupArrayOutput) Index(i pulumi.IntInput) DomainGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DomainGroup {
 		return vs[0].([]*DomainGroup)[vs[1].(int)]
@@ -308,12 +277,6 @@ func (o DomainGroupMapOutput) ToDomainGroupMapOutput() DomainGroupMapOutput {
 
 func (o DomainGroupMapOutput) ToDomainGroupMapOutputWithContext(ctx context.Context) DomainGroupMapOutput {
 	return o
-}
-
-func (o DomainGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DomainGroup] {
-	return pulumix.Output[map[string]*DomainGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DomainGroupMapOutput) MapIndex(k pulumi.StringInput) DomainGroupOutput {

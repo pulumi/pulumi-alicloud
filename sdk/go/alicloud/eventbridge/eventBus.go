@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Event Bridge Event Bus resource.
@@ -159,12 +158,6 @@ func (i *EventBus) ToEventBusOutputWithContext(ctx context.Context) EventBusOutp
 	return pulumi.ToOutputWithContext(ctx, i).(EventBusOutput)
 }
 
-func (i *EventBus) ToOutput(ctx context.Context) pulumix.Output[*EventBus] {
-	return pulumix.Output[*EventBus]{
-		OutputState: i.ToEventBusOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EventBusArrayInput is an input type that accepts EventBusArray and EventBusArrayOutput values.
 // You can construct a concrete instance of `EventBusArrayInput` via:
 //
@@ -188,12 +181,6 @@ func (i EventBusArray) ToEventBusArrayOutput() EventBusArrayOutput {
 
 func (i EventBusArray) ToEventBusArrayOutputWithContext(ctx context.Context) EventBusArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EventBusArrayOutput)
-}
-
-func (i EventBusArray) ToOutput(ctx context.Context) pulumix.Output[[]*EventBus] {
-	return pulumix.Output[[]*EventBus]{
-		OutputState: i.ToEventBusArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EventBusMapInput is an input type that accepts EventBusMap and EventBusMapOutput values.
@@ -221,12 +208,6 @@ func (i EventBusMap) ToEventBusMapOutputWithContext(ctx context.Context) EventBu
 	return pulumi.ToOutputWithContext(ctx, i).(EventBusMapOutput)
 }
 
-func (i EventBusMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EventBus] {
-	return pulumix.Output[map[string]*EventBus]{
-		OutputState: i.ToEventBusMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EventBusOutput struct{ *pulumi.OutputState }
 
 func (EventBusOutput) ElementType() reflect.Type {
@@ -239,12 +220,6 @@ func (o EventBusOutput) ToEventBusOutput() EventBusOutput {
 
 func (o EventBusOutput) ToEventBusOutputWithContext(ctx context.Context) EventBusOutput {
 	return o
-}
-
-func (o EventBusOutput) ToOutput(ctx context.Context) pulumix.Output[*EventBus] {
-	return pulumix.Output[*EventBus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of event bus.
@@ -271,12 +246,6 @@ func (o EventBusArrayOutput) ToEventBusArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o EventBusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EventBus] {
-	return pulumix.Output[[]*EventBus]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EventBusArrayOutput) Index(i pulumi.IntInput) EventBusOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EventBus {
 		return vs[0].([]*EventBus)[vs[1].(int)]
@@ -295,12 +264,6 @@ func (o EventBusMapOutput) ToEventBusMapOutput() EventBusMapOutput {
 
 func (o EventBusMapOutput) ToEventBusMapOutputWithContext(ctx context.Context) EventBusMapOutput {
 	return o
-}
-
-func (o EventBusMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EventBus] {
-	return pulumix.Output[map[string]*EventBus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EventBusMapOutput) MapIndex(k pulumi.StringInput) EventBusOutput {

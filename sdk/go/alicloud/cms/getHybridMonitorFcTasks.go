@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cms Hybrid Monitor Fc Tasks of the current Alibaba Cloud user.
@@ -122,12 +121,6 @@ func (o GetHybridMonitorFcTasksResultOutput) ToGetHybridMonitorFcTasksResultOutp
 
 func (o GetHybridMonitorFcTasksResultOutput) ToGetHybridMonitorFcTasksResultOutputWithContext(ctx context.Context) GetHybridMonitorFcTasksResultOutput {
 	return o
-}
-
-func (o GetHybridMonitorFcTasksResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetHybridMonitorFcTasksResult] {
-	return pulumix.Output[GetHybridMonitorFcTasksResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

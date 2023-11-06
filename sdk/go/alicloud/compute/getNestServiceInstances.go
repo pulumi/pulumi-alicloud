@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Compute Nest Service Instances of the current Alibaba Cloud user.
@@ -143,12 +142,6 @@ func (o GetNestServiceInstancesResultOutput) ToGetNestServiceInstancesResultOutp
 
 func (o GetNestServiceInstancesResultOutput) ToGetNestServiceInstancesResultOutputWithContext(ctx context.Context) GetNestServiceInstancesResultOutput {
 	return o
-}
-
-func (o GetNestServiceInstancesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetNestServiceInstancesResult] {
-	return pulumix.Output[GetNestServiceInstancesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetNestServiceInstancesResultOutput) Filters() GetNestServiceInstancesFilterArrayOutput {

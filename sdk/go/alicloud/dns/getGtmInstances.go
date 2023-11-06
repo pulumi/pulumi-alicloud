@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Alidns Gtm Instances of the current Alibaba Cloud user.
@@ -113,12 +112,6 @@ func (o GetGtmInstancesResultOutput) ToGetGtmInstancesResultOutput() GetGtmInsta
 
 func (o GetGtmInstancesResultOutput) ToGetGtmInstancesResultOutputWithContext(ctx context.Context) GetGtmInstancesResultOutput {
 	return o
-}
-
-func (o GetGtmInstancesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGtmInstancesResult] {
-	return pulumix.Output[GetGtmInstancesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

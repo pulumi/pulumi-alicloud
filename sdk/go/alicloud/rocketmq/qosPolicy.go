@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Sag qos policy resource.
@@ -236,12 +235,6 @@ func (i *QosPolicy) ToQosPolicyOutputWithContext(ctx context.Context) QosPolicyO
 	return pulumi.ToOutputWithContext(ctx, i).(QosPolicyOutput)
 }
 
-func (i *QosPolicy) ToOutput(ctx context.Context) pulumix.Output[*QosPolicy] {
-	return pulumix.Output[*QosPolicy]{
-		OutputState: i.ToQosPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // QosPolicyArrayInput is an input type that accepts QosPolicyArray and QosPolicyArrayOutput values.
 // You can construct a concrete instance of `QosPolicyArrayInput` via:
 //
@@ -265,12 +258,6 @@ func (i QosPolicyArray) ToQosPolicyArrayOutput() QosPolicyArrayOutput {
 
 func (i QosPolicyArray) ToQosPolicyArrayOutputWithContext(ctx context.Context) QosPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QosPolicyArrayOutput)
-}
-
-func (i QosPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*QosPolicy] {
-	return pulumix.Output[[]*QosPolicy]{
-		OutputState: i.ToQosPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // QosPolicyMapInput is an input type that accepts QosPolicyMap and QosPolicyMapOutput values.
@@ -298,12 +285,6 @@ func (i QosPolicyMap) ToQosPolicyMapOutputWithContext(ctx context.Context) QosPo
 	return pulumi.ToOutputWithContext(ctx, i).(QosPolicyMapOutput)
 }
 
-func (i QosPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*QosPolicy] {
-	return pulumix.Output[map[string]*QosPolicy]{
-		OutputState: i.ToQosPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type QosPolicyOutput struct{ *pulumi.OutputState }
 
 func (QosPolicyOutput) ElementType() reflect.Type {
@@ -316,12 +297,6 @@ func (o QosPolicyOutput) ToQosPolicyOutput() QosPolicyOutput {
 
 func (o QosPolicyOutput) ToQosPolicyOutputWithContext(ctx context.Context) QosPolicyOutput {
 	return o
-}
-
-func (o QosPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*QosPolicy] {
-	return pulumix.Output[*QosPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of the QoS policy.
@@ -393,12 +368,6 @@ func (o QosPolicyArrayOutput) ToQosPolicyArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o QosPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*QosPolicy] {
-	return pulumix.Output[[]*QosPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o QosPolicyArrayOutput) Index(i pulumi.IntInput) QosPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *QosPolicy {
 		return vs[0].([]*QosPolicy)[vs[1].(int)]
@@ -417,12 +386,6 @@ func (o QosPolicyMapOutput) ToQosPolicyMapOutput() QosPolicyMapOutput {
 
 func (o QosPolicyMapOutput) ToQosPolicyMapOutputWithContext(ctx context.Context) QosPolicyMapOutput {
 	return o
-}
-
-func (o QosPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*QosPolicy] {
-	return pulumix.Output[map[string]*QosPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QosPolicyMapOutput) MapIndex(k pulumi.StringInput) QosPolicyOutput {

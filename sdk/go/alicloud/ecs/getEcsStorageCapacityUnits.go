@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ecs Storage Capacity Units of the current Alibaba Cloud user.
@@ -125,12 +124,6 @@ func (o GetEcsStorageCapacityUnitsResultOutput) ToGetEcsStorageCapacityUnitsResu
 
 func (o GetEcsStorageCapacityUnitsResultOutput) ToGetEcsStorageCapacityUnitsResultOutputWithContext(ctx context.Context) GetEcsStorageCapacityUnitsResultOutput {
 	return o
-}
-
-func (o GetEcsStorageCapacityUnitsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEcsStorageCapacityUnitsResult] {
-	return pulumix.Output[GetEcsStorageCapacityUnitsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

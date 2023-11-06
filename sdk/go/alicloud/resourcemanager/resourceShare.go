@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Resource Manager Resource Share resource.
@@ -161,12 +160,6 @@ func (i *ResourceShare) ToResourceShareOutputWithContext(ctx context.Context) Re
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceShareOutput)
 }
 
-func (i *ResourceShare) ToOutput(ctx context.Context) pulumix.Output[*ResourceShare] {
-	return pulumix.Output[*ResourceShare]{
-		OutputState: i.ToResourceShareOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ResourceShareArrayInput is an input type that accepts ResourceShareArray and ResourceShareArrayOutput values.
 // You can construct a concrete instance of `ResourceShareArrayInput` via:
 //
@@ -190,12 +183,6 @@ func (i ResourceShareArray) ToResourceShareArrayOutput() ResourceShareArrayOutpu
 
 func (i ResourceShareArray) ToResourceShareArrayOutputWithContext(ctx context.Context) ResourceShareArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceShareArrayOutput)
-}
-
-func (i ResourceShareArray) ToOutput(ctx context.Context) pulumix.Output[[]*ResourceShare] {
-	return pulumix.Output[[]*ResourceShare]{
-		OutputState: i.ToResourceShareArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ResourceShareMapInput is an input type that accepts ResourceShareMap and ResourceShareMapOutput values.
@@ -223,12 +210,6 @@ func (i ResourceShareMap) ToResourceShareMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceShareMapOutput)
 }
 
-func (i ResourceShareMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ResourceShare] {
-	return pulumix.Output[map[string]*ResourceShare]{
-		OutputState: i.ToResourceShareMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ResourceShareOutput struct{ *pulumi.OutputState }
 
 func (ResourceShareOutput) ElementType() reflect.Type {
@@ -241,12 +222,6 @@ func (o ResourceShareOutput) ToResourceShareOutput() ResourceShareOutput {
 
 func (o ResourceShareOutput) ToResourceShareOutputWithContext(ctx context.Context) ResourceShareOutput {
 	return o
-}
-
-func (o ResourceShareOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceShare] {
-	return pulumix.Output[*ResourceShare]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of resource share.
@@ -278,12 +253,6 @@ func (o ResourceShareArrayOutput) ToResourceShareArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o ResourceShareArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ResourceShare] {
-	return pulumix.Output[[]*ResourceShare]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ResourceShareArrayOutput) Index(i pulumi.IntInput) ResourceShareOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ResourceShare {
 		return vs[0].([]*ResourceShare)[vs[1].(int)]
@@ -302,12 +271,6 @@ func (o ResourceShareMapOutput) ToResourceShareMapOutput() ResourceShareMapOutpu
 
 func (o ResourceShareMapOutput) ToResourceShareMapOutputWithContext(ctx context.Context) ResourceShareMapOutput {
 	return o
-}
-
-func (o ResourceShareMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ResourceShare] {
-	return pulumix.Output[map[string]*ResourceShare]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceShareMapOutput) MapIndex(k pulumi.StringInput) ResourceShareOutput {

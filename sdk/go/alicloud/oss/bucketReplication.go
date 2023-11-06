@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an independent replication configuration resource for OSS bucket.
@@ -348,12 +347,6 @@ func (i *BucketReplication) ToBucketReplicationOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationOutput)
 }
 
-func (i *BucketReplication) ToOutput(ctx context.Context) pulumix.Output[*BucketReplication] {
-	return pulumix.Output[*BucketReplication]{
-		OutputState: i.ToBucketReplicationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BucketReplicationArrayInput is an input type that accepts BucketReplicationArray and BucketReplicationArrayOutput values.
 // You can construct a concrete instance of `BucketReplicationArrayInput` via:
 //
@@ -377,12 +370,6 @@ func (i BucketReplicationArray) ToBucketReplicationArrayOutput() BucketReplicati
 
 func (i BucketReplicationArray) ToBucketReplicationArrayOutputWithContext(ctx context.Context) BucketReplicationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationArrayOutput)
-}
-
-func (i BucketReplicationArray) ToOutput(ctx context.Context) pulumix.Output[[]*BucketReplication] {
-	return pulumix.Output[[]*BucketReplication]{
-		OutputState: i.ToBucketReplicationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BucketReplicationMapInput is an input type that accepts BucketReplicationMap and BucketReplicationMapOutput values.
@@ -410,12 +397,6 @@ func (i BucketReplicationMap) ToBucketReplicationMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationMapOutput)
 }
 
-func (i BucketReplicationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BucketReplication] {
-	return pulumix.Output[map[string]*BucketReplication]{
-		OutputState: i.ToBucketReplicationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BucketReplicationOutput struct{ *pulumi.OutputState }
 
 func (BucketReplicationOutput) ElementType() reflect.Type {
@@ -428,12 +409,6 @@ func (o BucketReplicationOutput) ToBucketReplicationOutput() BucketReplicationOu
 
 func (o BucketReplicationOutput) ToBucketReplicationOutputWithContext(ctx context.Context) BucketReplicationOutput {
 	return o
-}
-
-func (o BucketReplicationOutput) ToOutput(ctx context.Context) pulumix.Output[*BucketReplication] {
-	return pulumix.Output[*BucketReplication]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The operations that can be synchronized to the destination bucket. You can set action to one or more of the following operation types. Valid values: `ALL`(contains PUT, DELETE, and ABORT), `PUT`, `DELETE` and `ABORT`. Defaults to `ALL`.
@@ -509,12 +484,6 @@ func (o BucketReplicationArrayOutput) ToBucketReplicationArrayOutputWithContext(
 	return o
 }
 
-func (o BucketReplicationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BucketReplication] {
-	return pulumix.Output[[]*BucketReplication]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BucketReplicationArrayOutput) Index(i pulumi.IntInput) BucketReplicationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BucketReplication {
 		return vs[0].([]*BucketReplication)[vs[1].(int)]
@@ -533,12 +502,6 @@ func (o BucketReplicationMapOutput) ToBucketReplicationMapOutput() BucketReplica
 
 func (o BucketReplicationMapOutput) ToBucketReplicationMapOutputWithContext(ctx context.Context) BucketReplicationMapOutput {
 	return o
-}
-
-func (o BucketReplicationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BucketReplication] {
-	return pulumix.Output[map[string]*BucketReplication]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BucketReplicationMapOutput) MapIndex(k pulumi.StringInput) BucketReplicationOutput {

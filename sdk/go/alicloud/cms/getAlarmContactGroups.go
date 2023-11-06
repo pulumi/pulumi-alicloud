@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the CMS Groups of the current Alibaba Cloud user.
@@ -114,12 +113,6 @@ func (o GetAlarmContactGroupsResultOutput) ToGetAlarmContactGroupsResultOutput()
 
 func (o GetAlarmContactGroupsResultOutput) ToGetAlarmContactGroupsResultOutputWithContext(ctx context.Context) GetAlarmContactGroupsResultOutput {
 	return o
-}
-
-func (o GetAlarmContactGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAlarmContactGroupsResult] {
-	return pulumix.Output[GetAlarmContactGroupsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAlarmContactGroupsResultOutput) Groups() GetAlarmContactGroupsGroupArrayOutput {

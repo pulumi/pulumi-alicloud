@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Sae Ingresses of the current Alibaba Cloud user.
@@ -90,12 +89,6 @@ func (o GetIngressesResultOutput) ToGetIngressesResultOutput() GetIngressesResul
 
 func (o GetIngressesResultOutput) ToGetIngressesResultOutputWithContext(ctx context.Context) GetIngressesResultOutput {
 	return o
-}
-
-func (o GetIngressesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetIngressesResult] {
-	return pulumix.Output[GetIngressesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetIngressesResultOutput) EnableDetails() pulumi.BoolPtrOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a VPC Network Acl resource.
@@ -305,12 +304,6 @@ func (i *NetworkAcl) ToNetworkAclOutputWithContext(ctx context.Context) NetworkA
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclOutput)
 }
 
-func (i *NetworkAcl) ToOutput(ctx context.Context) pulumix.Output[*NetworkAcl] {
-	return pulumix.Output[*NetworkAcl]{
-		OutputState: i.ToNetworkAclOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NetworkAclArrayInput is an input type that accepts NetworkAclArray and NetworkAclArrayOutput values.
 // You can construct a concrete instance of `NetworkAclArrayInput` via:
 //
@@ -334,12 +327,6 @@ func (i NetworkAclArray) ToNetworkAclArrayOutput() NetworkAclArrayOutput {
 
 func (i NetworkAclArray) ToNetworkAclArrayOutputWithContext(ctx context.Context) NetworkAclArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclArrayOutput)
-}
-
-func (i NetworkAclArray) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkAcl] {
-	return pulumix.Output[[]*NetworkAcl]{
-		OutputState: i.ToNetworkAclArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NetworkAclMapInput is an input type that accepts NetworkAclMap and NetworkAclMapOutput values.
@@ -367,12 +354,6 @@ func (i NetworkAclMap) ToNetworkAclMapOutputWithContext(ctx context.Context) Net
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclMapOutput)
 }
 
-func (i NetworkAclMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkAcl] {
-	return pulumix.Output[map[string]*NetworkAcl]{
-		OutputState: i.ToNetworkAclMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NetworkAclOutput struct{ *pulumi.OutputState }
 
 func (NetworkAclOutput) ElementType() reflect.Type {
@@ -385,12 +366,6 @@ func (o NetworkAclOutput) ToNetworkAclOutput() NetworkAclOutput {
 
 func (o NetworkAclOutput) ToNetworkAclOutputWithContext(ctx context.Context) NetworkAclOutput {
 	return o
-}
-
-func (o NetworkAclOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkAcl] {
-	return pulumix.Output[*NetworkAcl]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation time of the resource.
@@ -461,12 +436,6 @@ func (o NetworkAclArrayOutput) ToNetworkAclArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o NetworkAclArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkAcl] {
-	return pulumix.Output[[]*NetworkAcl]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NetworkAclArrayOutput) Index(i pulumi.IntInput) NetworkAclOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NetworkAcl {
 		return vs[0].([]*NetworkAcl)[vs[1].(int)]
@@ -485,12 +454,6 @@ func (o NetworkAclMapOutput) ToNetworkAclMapOutput() NetworkAclMapOutput {
 
 func (o NetworkAclMapOutput) ToNetworkAclMapOutputWithContext(ctx context.Context) NetworkAclMapOutput {
 	return o
-}
-
-func (o NetworkAclMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkAcl] {
-	return pulumix.Output[map[string]*NetworkAcl]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkAclMapOutput) MapIndex(k pulumi.StringInput) NetworkAclOutput {

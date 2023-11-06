@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ecs Key Pairs of the current Alibaba Cloud user.
@@ -135,12 +134,6 @@ func (o GetEcsKeyPairsResultOutput) ToGetEcsKeyPairsResultOutput() GetEcsKeyPair
 
 func (o GetEcsKeyPairsResultOutput) ToGetEcsKeyPairsResultOutputWithContext(ctx context.Context) GetEcsKeyPairsResultOutput {
 	return o
-}
-
-func (o GetEcsKeyPairsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEcsKeyPairsResult] {
-	return pulumix.Output[GetEcsKeyPairsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEcsKeyPairsResultOutput) FingerPrint() pulumi.StringPtrOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cloud Sso Access Assignments of the current Alibaba Cloud user.
@@ -140,12 +139,6 @@ func (o GetAccessAssignmentsResultOutput) ToGetAccessAssignmentsResultOutput() G
 
 func (o GetAccessAssignmentsResultOutput) ToGetAccessAssignmentsResultOutputWithContext(ctx context.Context) GetAccessAssignmentsResultOutput {
 	return o
-}
-
-func (o GetAccessAssignmentsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccessAssignmentsResult] {
-	return pulumix.Output[GetAccessAssignmentsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAccessAssignmentsResultOutput) AccessConfigurationId() pulumi.StringPtrOutput {

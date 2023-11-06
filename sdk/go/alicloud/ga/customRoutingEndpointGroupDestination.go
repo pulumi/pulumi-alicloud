@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Global Accelerator (GA) Custom Routing Endpoint Group Destination resource.
@@ -266,12 +265,6 @@ func (i *CustomRoutingEndpointGroupDestination) ToCustomRoutingEndpointGroupDest
 	return pulumi.ToOutputWithContext(ctx, i).(CustomRoutingEndpointGroupDestinationOutput)
 }
 
-func (i *CustomRoutingEndpointGroupDestination) ToOutput(ctx context.Context) pulumix.Output[*CustomRoutingEndpointGroupDestination] {
-	return pulumix.Output[*CustomRoutingEndpointGroupDestination]{
-		OutputState: i.ToCustomRoutingEndpointGroupDestinationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CustomRoutingEndpointGroupDestinationArrayInput is an input type that accepts CustomRoutingEndpointGroupDestinationArray and CustomRoutingEndpointGroupDestinationArrayOutput values.
 // You can construct a concrete instance of `CustomRoutingEndpointGroupDestinationArrayInput` via:
 //
@@ -295,12 +288,6 @@ func (i CustomRoutingEndpointGroupDestinationArray) ToCustomRoutingEndpointGroup
 
 func (i CustomRoutingEndpointGroupDestinationArray) ToCustomRoutingEndpointGroupDestinationArrayOutputWithContext(ctx context.Context) CustomRoutingEndpointGroupDestinationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomRoutingEndpointGroupDestinationArrayOutput)
-}
-
-func (i CustomRoutingEndpointGroupDestinationArray) ToOutput(ctx context.Context) pulumix.Output[[]*CustomRoutingEndpointGroupDestination] {
-	return pulumix.Output[[]*CustomRoutingEndpointGroupDestination]{
-		OutputState: i.ToCustomRoutingEndpointGroupDestinationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CustomRoutingEndpointGroupDestinationMapInput is an input type that accepts CustomRoutingEndpointGroupDestinationMap and CustomRoutingEndpointGroupDestinationMapOutput values.
@@ -328,12 +315,6 @@ func (i CustomRoutingEndpointGroupDestinationMap) ToCustomRoutingEndpointGroupDe
 	return pulumi.ToOutputWithContext(ctx, i).(CustomRoutingEndpointGroupDestinationMapOutput)
 }
 
-func (i CustomRoutingEndpointGroupDestinationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomRoutingEndpointGroupDestination] {
-	return pulumix.Output[map[string]*CustomRoutingEndpointGroupDestination]{
-		OutputState: i.ToCustomRoutingEndpointGroupDestinationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CustomRoutingEndpointGroupDestinationOutput struct{ *pulumi.OutputState }
 
 func (CustomRoutingEndpointGroupDestinationOutput) ElementType() reflect.Type {
@@ -346,12 +327,6 @@ func (o CustomRoutingEndpointGroupDestinationOutput) ToCustomRoutingEndpointGrou
 
 func (o CustomRoutingEndpointGroupDestinationOutput) ToCustomRoutingEndpointGroupDestinationOutputWithContext(ctx context.Context) CustomRoutingEndpointGroupDestinationOutput {
 	return o
-}
-
-func (o CustomRoutingEndpointGroupDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomRoutingEndpointGroupDestination] {
-	return pulumix.Output[*CustomRoutingEndpointGroupDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the GA instance.
@@ -410,12 +385,6 @@ func (o CustomRoutingEndpointGroupDestinationArrayOutput) ToCustomRoutingEndpoin
 	return o
 }
 
-func (o CustomRoutingEndpointGroupDestinationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CustomRoutingEndpointGroupDestination] {
-	return pulumix.Output[[]*CustomRoutingEndpointGroupDestination]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CustomRoutingEndpointGroupDestinationArrayOutput) Index(i pulumi.IntInput) CustomRoutingEndpointGroupDestinationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CustomRoutingEndpointGroupDestination {
 		return vs[0].([]*CustomRoutingEndpointGroupDestination)[vs[1].(int)]
@@ -434,12 +403,6 @@ func (o CustomRoutingEndpointGroupDestinationMapOutput) ToCustomRoutingEndpointG
 
 func (o CustomRoutingEndpointGroupDestinationMapOutput) ToCustomRoutingEndpointGroupDestinationMapOutputWithContext(ctx context.Context) CustomRoutingEndpointGroupDestinationMapOutput {
 	return o
-}
-
-func (o CustomRoutingEndpointGroupDestinationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomRoutingEndpointGroupDestination] {
-	return pulumix.Output[map[string]*CustomRoutingEndpointGroupDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CustomRoutingEndpointGroupDestinationMapOutput) MapIndex(k pulumi.StringInput) CustomRoutingEndpointGroupDestinationOutput {

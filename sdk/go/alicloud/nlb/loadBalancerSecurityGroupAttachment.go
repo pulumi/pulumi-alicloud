@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Nlb Load Balancer Security Group Attachment resource.
@@ -240,12 +239,6 @@ func (i *LoadBalancerSecurityGroupAttachment) ToLoadBalancerSecurityGroupAttachm
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerSecurityGroupAttachmentOutput)
 }
 
-func (i *LoadBalancerSecurityGroupAttachment) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancerSecurityGroupAttachment] {
-	return pulumix.Output[*LoadBalancerSecurityGroupAttachment]{
-		OutputState: i.ToLoadBalancerSecurityGroupAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LoadBalancerSecurityGroupAttachmentArrayInput is an input type that accepts LoadBalancerSecurityGroupAttachmentArray and LoadBalancerSecurityGroupAttachmentArrayOutput values.
 // You can construct a concrete instance of `LoadBalancerSecurityGroupAttachmentArrayInput` via:
 //
@@ -269,12 +262,6 @@ func (i LoadBalancerSecurityGroupAttachmentArray) ToLoadBalancerSecurityGroupAtt
 
 func (i LoadBalancerSecurityGroupAttachmentArray) ToLoadBalancerSecurityGroupAttachmentArrayOutputWithContext(ctx context.Context) LoadBalancerSecurityGroupAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerSecurityGroupAttachmentArrayOutput)
-}
-
-func (i LoadBalancerSecurityGroupAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*LoadBalancerSecurityGroupAttachment] {
-	return pulumix.Output[[]*LoadBalancerSecurityGroupAttachment]{
-		OutputState: i.ToLoadBalancerSecurityGroupAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // LoadBalancerSecurityGroupAttachmentMapInput is an input type that accepts LoadBalancerSecurityGroupAttachmentMap and LoadBalancerSecurityGroupAttachmentMapOutput values.
@@ -302,12 +289,6 @@ func (i LoadBalancerSecurityGroupAttachmentMap) ToLoadBalancerSecurityGroupAttac
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerSecurityGroupAttachmentMapOutput)
 }
 
-func (i LoadBalancerSecurityGroupAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LoadBalancerSecurityGroupAttachment] {
-	return pulumix.Output[map[string]*LoadBalancerSecurityGroupAttachment]{
-		OutputState: i.ToLoadBalancerSecurityGroupAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LoadBalancerSecurityGroupAttachmentOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerSecurityGroupAttachmentOutput) ElementType() reflect.Type {
@@ -320,12 +301,6 @@ func (o LoadBalancerSecurityGroupAttachmentOutput) ToLoadBalancerSecurityGroupAt
 
 func (o LoadBalancerSecurityGroupAttachmentOutput) ToLoadBalancerSecurityGroupAttachmentOutputWithContext(ctx context.Context) LoadBalancerSecurityGroupAttachmentOutput {
 	return o
-}
-
-func (o LoadBalancerSecurityGroupAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancerSecurityGroupAttachment] {
-	return pulumix.Output[*LoadBalancerSecurityGroupAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
@@ -357,12 +332,6 @@ func (o LoadBalancerSecurityGroupAttachmentArrayOutput) ToLoadBalancerSecurityGr
 	return o
 }
 
-func (o LoadBalancerSecurityGroupAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LoadBalancerSecurityGroupAttachment] {
-	return pulumix.Output[[]*LoadBalancerSecurityGroupAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LoadBalancerSecurityGroupAttachmentArrayOutput) Index(i pulumi.IntInput) LoadBalancerSecurityGroupAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LoadBalancerSecurityGroupAttachment {
 		return vs[0].([]*LoadBalancerSecurityGroupAttachment)[vs[1].(int)]
@@ -381,12 +350,6 @@ func (o LoadBalancerSecurityGroupAttachmentMapOutput) ToLoadBalancerSecurityGrou
 
 func (o LoadBalancerSecurityGroupAttachmentMapOutput) ToLoadBalancerSecurityGroupAttachmentMapOutputWithContext(ctx context.Context) LoadBalancerSecurityGroupAttachmentMapOutput {
 	return o
-}
-
-func (o LoadBalancerSecurityGroupAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LoadBalancerSecurityGroupAttachment] {
-	return pulumix.Output[map[string]*LoadBalancerSecurityGroupAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LoadBalancerSecurityGroupAttachmentMapOutput) MapIndex(k pulumi.StringInput) LoadBalancerSecurityGroupAttachmentOutput {

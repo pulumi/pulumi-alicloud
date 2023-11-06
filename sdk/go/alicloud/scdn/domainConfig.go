@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a SCDN Accelerated Domain resource.
@@ -155,12 +154,6 @@ func (i *DomainConfig) ToDomainConfigOutputWithContext(ctx context.Context) Doma
 	return pulumi.ToOutputWithContext(ctx, i).(DomainConfigOutput)
 }
 
-func (i *DomainConfig) ToOutput(ctx context.Context) pulumix.Output[*DomainConfig] {
-	return pulumix.Output[*DomainConfig]{
-		OutputState: i.ToDomainConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DomainConfigArrayInput is an input type that accepts DomainConfigArray and DomainConfigArrayOutput values.
 // You can construct a concrete instance of `DomainConfigArrayInput` via:
 //
@@ -184,12 +177,6 @@ func (i DomainConfigArray) ToDomainConfigArrayOutput() DomainConfigArrayOutput {
 
 func (i DomainConfigArray) ToDomainConfigArrayOutputWithContext(ctx context.Context) DomainConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainConfigArrayOutput)
-}
-
-func (i DomainConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*DomainConfig] {
-	return pulumix.Output[[]*DomainConfig]{
-		OutputState: i.ToDomainConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DomainConfigMapInput is an input type that accepts DomainConfigMap and DomainConfigMapOutput values.
@@ -217,12 +204,6 @@ func (i DomainConfigMap) ToDomainConfigMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(DomainConfigMapOutput)
 }
 
-func (i DomainConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DomainConfig] {
-	return pulumix.Output[map[string]*DomainConfig]{
-		OutputState: i.ToDomainConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DomainConfigOutput struct{ *pulumi.OutputState }
 
 func (DomainConfigOutput) ElementType() reflect.Type {
@@ -235,12 +216,6 @@ func (o DomainConfigOutput) ToDomainConfigOutput() DomainConfigOutput {
 
 func (o DomainConfigOutput) ToDomainConfigOutputWithContext(ctx context.Context) DomainConfigOutput {
 	return o
-}
-
-func (o DomainConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainConfig] {
-	return pulumix.Output[*DomainConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The SCDN domain config id.
@@ -282,12 +257,6 @@ func (o DomainConfigArrayOutput) ToDomainConfigArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o DomainConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DomainConfig] {
-	return pulumix.Output[[]*DomainConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DomainConfigArrayOutput) Index(i pulumi.IntInput) DomainConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DomainConfig {
 		return vs[0].([]*DomainConfig)[vs[1].(int)]
@@ -306,12 +275,6 @@ func (o DomainConfigMapOutput) ToDomainConfigMapOutput() DomainConfigMapOutput {
 
 func (o DomainConfigMapOutput) ToDomainConfigMapOutputWithContext(ctx context.Context) DomainConfigMapOutput {
 	return o
-}
-
-func (o DomainConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DomainConfig] {
-	return pulumix.Output[map[string]*DomainConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DomainConfigMapOutput) MapIndex(k pulumi.StringInput) DomainConfigOutput {

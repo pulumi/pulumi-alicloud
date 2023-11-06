@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the server certificate list.
@@ -124,12 +123,6 @@ func (o GetServerCertificatesResultOutput) ToGetServerCertificatesResultOutput()
 
 func (o GetServerCertificatesResultOutput) ToGetServerCertificatesResultOutputWithContext(ctx context.Context) GetServerCertificatesResultOutput {
 	return o
-}
-
-func (o GetServerCertificatesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetServerCertificatesResult] {
-	return pulumix.Output[GetServerCertificatesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of SLB server certificates. Each element contains the following attributes:

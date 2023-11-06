@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -81,12 +80,6 @@ func (i GetMongoInstancesInstanceArgs) ToGetMongoInstancesInstanceOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetMongoInstancesInstanceOutput)
 }
 
-func (i GetMongoInstancesInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetMongoInstancesInstance] {
-	return pulumix.Output[GetMongoInstancesInstance]{
-		OutputState: i.ToGetMongoInstancesInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetMongoInstancesInstanceArrayInput is an input type that accepts GetMongoInstancesInstanceArray and GetMongoInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetMongoInstancesInstanceArrayInput` via:
 //
@@ -112,12 +105,6 @@ func (i GetMongoInstancesInstanceArray) ToGetMongoInstancesInstanceArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetMongoInstancesInstanceArrayOutput)
 }
 
-func (i GetMongoInstancesInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMongoInstancesInstance] {
-	return pulumix.Output[[]GetMongoInstancesInstance]{
-		OutputState: i.ToGetMongoInstancesInstanceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetMongoInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetMongoInstancesInstanceOutput) ElementType() reflect.Type {
@@ -130,12 +117,6 @@ func (o GetMongoInstancesInstanceOutput) ToGetMongoInstancesInstanceOutput() Get
 
 func (o GetMongoInstancesInstanceOutput) ToGetMongoInstancesInstanceOutputWithContext(ctx context.Context) GetMongoInstancesInstanceOutput {
 	return o
-}
-
-func (o GetMongoInstancesInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetMongoInstancesInstance] {
-	return pulumix.Output[GetMongoInstancesInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetMongoInstancesInstanceOutput) AvailabilityZone() pulumi.StringOutput {
@@ -228,12 +209,6 @@ func (o GetMongoInstancesInstanceArrayOutput) ToGetMongoInstancesInstanceArrayOu
 	return o
 }
 
-func (o GetMongoInstancesInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMongoInstancesInstance] {
-	return pulumix.Output[[]GetMongoInstancesInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetMongoInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetMongoInstancesInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMongoInstancesInstance {
 		return vs[0].([]GetMongoInstancesInstance)[vs[1].(int)]
@@ -275,12 +250,6 @@ func (i GetMongoInstancesInstanceMongoArgs) ToGetMongoInstancesInstanceMongoOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetMongoInstancesInstanceMongoOutput)
 }
 
-func (i GetMongoInstancesInstanceMongoArgs) ToOutput(ctx context.Context) pulumix.Output[GetMongoInstancesInstanceMongo] {
-	return pulumix.Output[GetMongoInstancesInstanceMongo]{
-		OutputState: i.ToGetMongoInstancesInstanceMongoOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetMongoInstancesInstanceMongoArrayInput is an input type that accepts GetMongoInstancesInstanceMongoArray and GetMongoInstancesInstanceMongoArrayOutput values.
 // You can construct a concrete instance of `GetMongoInstancesInstanceMongoArrayInput` via:
 //
@@ -306,12 +275,6 @@ func (i GetMongoInstancesInstanceMongoArray) ToGetMongoInstancesInstanceMongoArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetMongoInstancesInstanceMongoArrayOutput)
 }
 
-func (i GetMongoInstancesInstanceMongoArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMongoInstancesInstanceMongo] {
-	return pulumix.Output[[]GetMongoInstancesInstanceMongo]{
-		OutputState: i.ToGetMongoInstancesInstanceMongoArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetMongoInstancesInstanceMongoOutput struct{ *pulumi.OutputState }
 
 func (GetMongoInstancesInstanceMongoOutput) ElementType() reflect.Type {
@@ -324,12 +287,6 @@ func (o GetMongoInstancesInstanceMongoOutput) ToGetMongoInstancesInstanceMongoOu
 
 func (o GetMongoInstancesInstanceMongoOutput) ToGetMongoInstancesInstanceMongoOutputWithContext(ctx context.Context) GetMongoInstancesInstanceMongoOutput {
 	return o
-}
-
-func (o GetMongoInstancesInstanceMongoOutput) ToOutput(ctx context.Context) pulumix.Output[GetMongoInstancesInstanceMongo] {
-	return pulumix.Output[GetMongoInstancesInstanceMongo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetMongoInstancesInstanceMongoOutput) Class() pulumi.StringOutput {
@@ -356,12 +313,6 @@ func (o GetMongoInstancesInstanceMongoArrayOutput) ToGetMongoInstancesInstanceMo
 
 func (o GetMongoInstancesInstanceMongoArrayOutput) ToGetMongoInstancesInstanceMongoArrayOutputWithContext(ctx context.Context) GetMongoInstancesInstanceMongoArrayOutput {
 	return o
-}
-
-func (o GetMongoInstancesInstanceMongoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMongoInstancesInstanceMongo] {
-	return pulumix.Output[[]GetMongoInstancesInstanceMongo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetMongoInstancesInstanceMongoArrayOutput) Index(i pulumi.IntInput) GetMongoInstancesInstanceMongoOutput {
@@ -407,12 +358,6 @@ func (i GetMongoInstancesInstanceShardArgs) ToGetMongoInstancesInstanceShardOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetMongoInstancesInstanceShardOutput)
 }
 
-func (i GetMongoInstancesInstanceShardArgs) ToOutput(ctx context.Context) pulumix.Output[GetMongoInstancesInstanceShard] {
-	return pulumix.Output[GetMongoInstancesInstanceShard]{
-		OutputState: i.ToGetMongoInstancesInstanceShardOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetMongoInstancesInstanceShardArrayInput is an input type that accepts GetMongoInstancesInstanceShardArray and GetMongoInstancesInstanceShardArrayOutput values.
 // You can construct a concrete instance of `GetMongoInstancesInstanceShardArrayInput` via:
 //
@@ -438,12 +383,6 @@ func (i GetMongoInstancesInstanceShardArray) ToGetMongoInstancesInstanceShardArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetMongoInstancesInstanceShardArrayOutput)
 }
 
-func (i GetMongoInstancesInstanceShardArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMongoInstancesInstanceShard] {
-	return pulumix.Output[[]GetMongoInstancesInstanceShard]{
-		OutputState: i.ToGetMongoInstancesInstanceShardArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetMongoInstancesInstanceShardOutput struct{ *pulumi.OutputState }
 
 func (GetMongoInstancesInstanceShardOutput) ElementType() reflect.Type {
@@ -456,12 +395,6 @@ func (o GetMongoInstancesInstanceShardOutput) ToGetMongoInstancesInstanceShardOu
 
 func (o GetMongoInstancesInstanceShardOutput) ToGetMongoInstancesInstanceShardOutputWithContext(ctx context.Context) GetMongoInstancesInstanceShardOutput {
 	return o
-}
-
-func (o GetMongoInstancesInstanceShardOutput) ToOutput(ctx context.Context) pulumix.Output[GetMongoInstancesInstanceShard] {
-	return pulumix.Output[GetMongoInstancesInstanceShard]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetMongoInstancesInstanceShardOutput) Class() pulumi.StringOutput {
@@ -492,12 +425,6 @@ func (o GetMongoInstancesInstanceShardArrayOutput) ToGetMongoInstancesInstanceSh
 
 func (o GetMongoInstancesInstanceShardArrayOutput) ToGetMongoInstancesInstanceShardArrayOutputWithContext(ctx context.Context) GetMongoInstancesInstanceShardArrayOutput {
 	return o
-}
-
-func (o GetMongoInstancesInstanceShardArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMongoInstancesInstanceShard] {
-	return pulumix.Output[[]GetMongoInstancesInstanceShard]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetMongoInstancesInstanceShardArrayOutput) Index(i pulumi.IntInput) GetMongoInstancesInstanceShardOutput {

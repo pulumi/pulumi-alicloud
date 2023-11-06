@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Express Connect Virtual Border Routers of the current Alibaba Cloud user.
@@ -151,12 +150,6 @@ func (o GetVirtualBorderRoutersResultOutput) ToGetVirtualBorderRoutersResultOutp
 
 func (o GetVirtualBorderRoutersResultOutput) ToGetVirtualBorderRoutersResultOutputWithContext(ctx context.Context) GetVirtualBorderRoutersResultOutput {
 	return o
-}
-
-func (o GetVirtualBorderRoutersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetVirtualBorderRoutersResult] {
-	return pulumix.Output[GetVirtualBorderRoutersResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetVirtualBorderRoutersResultOutput) Filters() GetVirtualBorderRoutersFilterArrayOutput {

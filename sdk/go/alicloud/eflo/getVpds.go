@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Eflo Vpd available to the user.[What is Vpd](https://help.aliyun.com/document_detail/604976.html)
@@ -153,12 +152,6 @@ func (o GetVpdsResultOutput) ToGetVpdsResultOutput() GetVpdsResultOutput {
 
 func (o GetVpdsResultOutput) ToGetVpdsResultOutputWithContext(ctx context.Context) GetVpdsResultOutput {
 	return o
-}
-
-func (o GetVpdsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpdsResult] {
-	return pulumix.Output[GetVpdsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetVpdsResultOutput) EnableDetails() pulumi.BoolPtrOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -55,12 +54,6 @@ func (i DbClusterDbClusterAccessWhiteListArgs) ToDbClusterDbClusterAccessWhiteLi
 	return pulumi.ToOutputWithContext(ctx, i).(DbClusterDbClusterAccessWhiteListOutput)
 }
 
-func (i DbClusterDbClusterAccessWhiteListArgs) ToOutput(ctx context.Context) pulumix.Output[DbClusterDbClusterAccessWhiteList] {
-	return pulumix.Output[DbClusterDbClusterAccessWhiteList]{
-		OutputState: i.ToDbClusterDbClusterAccessWhiteListOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DbClusterDbClusterAccessWhiteListArrayInput is an input type that accepts DbClusterDbClusterAccessWhiteListArray and DbClusterDbClusterAccessWhiteListArrayOutput values.
 // You can construct a concrete instance of `DbClusterDbClusterAccessWhiteListArrayInput` via:
 //
@@ -86,12 +79,6 @@ func (i DbClusterDbClusterAccessWhiteListArray) ToDbClusterDbClusterAccessWhiteL
 	return pulumi.ToOutputWithContext(ctx, i).(DbClusterDbClusterAccessWhiteListArrayOutput)
 }
 
-func (i DbClusterDbClusterAccessWhiteListArray) ToOutput(ctx context.Context) pulumix.Output[[]DbClusterDbClusterAccessWhiteList] {
-	return pulumix.Output[[]DbClusterDbClusterAccessWhiteList]{
-		OutputState: i.ToDbClusterDbClusterAccessWhiteListArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DbClusterDbClusterAccessWhiteListOutput struct{ *pulumi.OutputState }
 
 func (DbClusterDbClusterAccessWhiteListOutput) ElementType() reflect.Type {
@@ -104,12 +91,6 @@ func (o DbClusterDbClusterAccessWhiteListOutput) ToDbClusterDbClusterAccessWhite
 
 func (o DbClusterDbClusterAccessWhiteListOutput) ToDbClusterDbClusterAccessWhiteListOutputWithContext(ctx context.Context) DbClusterDbClusterAccessWhiteListOutput {
 	return o
-}
-
-func (o DbClusterDbClusterAccessWhiteListOutput) ToOutput(ctx context.Context) pulumix.Output[DbClusterDbClusterAccessWhiteList] {
-	return pulumix.Output[DbClusterDbClusterAccessWhiteList]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Field `dbClusterIpArrayAttribute` has been removed from provider.
@@ -139,12 +120,6 @@ func (o DbClusterDbClusterAccessWhiteListArrayOutput) ToDbClusterDbClusterAccess
 
 func (o DbClusterDbClusterAccessWhiteListArrayOutput) ToDbClusterDbClusterAccessWhiteListArrayOutputWithContext(ctx context.Context) DbClusterDbClusterAccessWhiteListArrayOutput {
 	return o
-}
-
-func (o DbClusterDbClusterAccessWhiteListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DbClusterDbClusterAccessWhiteList] {
-	return pulumix.Output[[]DbClusterDbClusterAccessWhiteList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DbClusterDbClusterAccessWhiteListArrayOutput) Index(i pulumi.IntInput) DbClusterDbClusterAccessWhiteListOutput {
@@ -206,12 +181,6 @@ func (i GetAccountsAccountArgs) ToGetAccountsAccountOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccountsAccountOutput)
 }
 
-func (i GetAccountsAccountArgs) ToOutput(ctx context.Context) pulumix.Output[GetAccountsAccount] {
-	return pulumix.Output[GetAccountsAccount]{
-		OutputState: i.ToGetAccountsAccountOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAccountsAccountArrayInput is an input type that accepts GetAccountsAccountArray and GetAccountsAccountArrayOutput values.
 // You can construct a concrete instance of `GetAccountsAccountArrayInput` via:
 //
@@ -237,12 +206,6 @@ func (i GetAccountsAccountArray) ToGetAccountsAccountArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccountsAccountArrayOutput)
 }
 
-func (i GetAccountsAccountArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAccountsAccount] {
-	return pulumix.Output[[]GetAccountsAccount]{
-		OutputState: i.ToGetAccountsAccountArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAccountsAccountOutput struct{ *pulumi.OutputState }
 
 func (GetAccountsAccountOutput) ElementType() reflect.Type {
@@ -255,12 +218,6 @@ func (o GetAccountsAccountOutput) ToGetAccountsAccountOutput() GetAccountsAccoun
 
 func (o GetAccountsAccountOutput) ToGetAccountsAccountOutputWithContext(ctx context.Context) GetAccountsAccountOutput {
 	return o
-}
-
-func (o GetAccountsAccountOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccountsAccount] {
-	return pulumix.Output[GetAccountsAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 // In Chinese, English letter. May contain Chinese and English characters, lowercase letters, numbers, and underscores (_), the dash (-). Cannot start with http:// and https:// at the beginning. Length is from 2 to 256 characters.
@@ -305,12 +262,6 @@ func (o GetAccountsAccountArrayOutput) ToGetAccountsAccountArrayOutput() GetAcco
 
 func (o GetAccountsAccountArrayOutput) ToGetAccountsAccountArrayOutputWithContext(ctx context.Context) GetAccountsAccountArrayOutput {
 	return o
-}
-
-func (o GetAccountsAccountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAccountsAccount] {
-	return pulumix.Output[[]GetAccountsAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAccountsAccountArrayOutput) Index(i pulumi.IntInput) GetAccountsAccountOutput {
@@ -372,12 +323,6 @@ func (i GetBackupPoliciesPolicyArgs) ToGetBackupPoliciesPolicyOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPoliciesPolicyOutput)
 }
 
-func (i GetBackupPoliciesPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GetBackupPoliciesPolicy] {
-	return pulumix.Output[GetBackupPoliciesPolicy]{
-		OutputState: i.ToGetBackupPoliciesPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetBackupPoliciesPolicyArrayInput is an input type that accepts GetBackupPoliciesPolicyArray and GetBackupPoliciesPolicyArrayOutput values.
 // You can construct a concrete instance of `GetBackupPoliciesPolicyArrayInput` via:
 //
@@ -403,12 +348,6 @@ func (i GetBackupPoliciesPolicyArray) ToGetBackupPoliciesPolicyArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPoliciesPolicyArrayOutput)
 }
 
-func (i GetBackupPoliciesPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetBackupPoliciesPolicy] {
-	return pulumix.Output[[]GetBackupPoliciesPolicy]{
-		OutputState: i.ToGetBackupPoliciesPolicyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetBackupPoliciesPolicyOutput struct{ *pulumi.OutputState }
 
 func (GetBackupPoliciesPolicyOutput) ElementType() reflect.Type {
@@ -421,12 +360,6 @@ func (o GetBackupPoliciesPolicyOutput) ToGetBackupPoliciesPolicyOutput() GetBack
 
 func (o GetBackupPoliciesPolicyOutput) ToGetBackupPoliciesPolicyOutputWithContext(ctx context.Context) GetBackupPoliciesPolicyOutput {
 	return o
-}
-
-func (o GetBackupPoliciesPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GetBackupPoliciesPolicy] {
-	return pulumix.Output[GetBackupPoliciesPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Data backup days. Valid values: `7` to `730`.
@@ -471,12 +404,6 @@ func (o GetBackupPoliciesPolicyArrayOutput) ToGetBackupPoliciesPolicyArrayOutput
 
 func (o GetBackupPoliciesPolicyArrayOutput) ToGetBackupPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetBackupPoliciesPolicyArrayOutput {
 	return o
-}
-
-func (o GetBackupPoliciesPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetBackupPoliciesPolicy] {
-	return pulumix.Output[[]GetBackupPoliciesPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetBackupPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetBackupPoliciesPolicyOutput {
@@ -668,12 +595,6 @@ func (i GetDbClustersClusterArgs) ToGetDbClustersClusterOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbClustersClusterOutput)
 }
 
-func (i GetDbClustersClusterArgs) ToOutput(ctx context.Context) pulumix.Output[GetDbClustersCluster] {
-	return pulumix.Output[GetDbClustersCluster]{
-		OutputState: i.ToGetDbClustersClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDbClustersClusterArrayInput is an input type that accepts GetDbClustersClusterArray and GetDbClustersClusterArrayOutput values.
 // You can construct a concrete instance of `GetDbClustersClusterArrayInput` via:
 //
@@ -699,12 +620,6 @@ func (i GetDbClustersClusterArray) ToGetDbClustersClusterArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbClustersClusterArrayOutput)
 }
 
-func (i GetDbClustersClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDbClustersCluster] {
-	return pulumix.Output[[]GetDbClustersCluster]{
-		OutputState: i.ToGetDbClustersClusterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDbClustersClusterOutput struct{ *pulumi.OutputState }
 
 func (GetDbClustersClusterOutput) ElementType() reflect.Type {
@@ -717,12 +632,6 @@ func (o GetDbClustersClusterOutput) ToGetDbClustersClusterOutput() GetDbClusters
 
 func (o GetDbClustersClusterOutput) ToGetDbClustersClusterOutputWithContext(ctx context.Context) GetDbClustersClusterOutput {
 	return o
-}
-
-func (o GetDbClustersClusterOutput) ToOutput(ctx context.Context) pulumix.Output[GetDbClustersCluster] {
-	return pulumix.Output[GetDbClustersCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Alibaba Cloud account Id.
@@ -935,12 +844,6 @@ func (o GetDbClustersClusterArrayOutput) ToGetDbClustersClusterArrayOutputWithCo
 	return o
 }
 
-func (o GetDbClustersClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDbClustersCluster] {
-	return pulumix.Output[[]GetDbClustersCluster]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetDbClustersClusterArrayOutput) Index(i pulumi.IntInput) GetDbClustersClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDbClustersCluster {
 		return vs[0].([]GetDbClustersCluster)[vs[1].(int)]
@@ -988,12 +891,6 @@ func (i GetDbClustersClusterDbClusterAccessWhiteListArgs) ToGetDbClustersCluster
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbClustersClusterDbClusterAccessWhiteListOutput)
 }
 
-func (i GetDbClustersClusterDbClusterAccessWhiteListArgs) ToOutput(ctx context.Context) pulumix.Output[GetDbClustersClusterDbClusterAccessWhiteList] {
-	return pulumix.Output[GetDbClustersClusterDbClusterAccessWhiteList]{
-		OutputState: i.ToGetDbClustersClusterDbClusterAccessWhiteListOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDbClustersClusterDbClusterAccessWhiteListArrayInput is an input type that accepts GetDbClustersClusterDbClusterAccessWhiteListArray and GetDbClustersClusterDbClusterAccessWhiteListArrayOutput values.
 // You can construct a concrete instance of `GetDbClustersClusterDbClusterAccessWhiteListArrayInput` via:
 //
@@ -1019,12 +916,6 @@ func (i GetDbClustersClusterDbClusterAccessWhiteListArray) ToGetDbClustersCluste
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbClustersClusterDbClusterAccessWhiteListArrayOutput)
 }
 
-func (i GetDbClustersClusterDbClusterAccessWhiteListArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDbClustersClusterDbClusterAccessWhiteList] {
-	return pulumix.Output[[]GetDbClustersClusterDbClusterAccessWhiteList]{
-		OutputState: i.ToGetDbClustersClusterDbClusterAccessWhiteListArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDbClustersClusterDbClusterAccessWhiteListOutput struct{ *pulumi.OutputState }
 
 func (GetDbClustersClusterDbClusterAccessWhiteListOutput) ElementType() reflect.Type {
@@ -1037,12 +928,6 @@ func (o GetDbClustersClusterDbClusterAccessWhiteListOutput) ToGetDbClustersClust
 
 func (o GetDbClustersClusterDbClusterAccessWhiteListOutput) ToGetDbClustersClusterDbClusterAccessWhiteListOutputWithContext(ctx context.Context) GetDbClustersClusterDbClusterAccessWhiteListOutput {
 	return o
-}
-
-func (o GetDbClustersClusterDbClusterAccessWhiteListOutput) ToOutput(ctx context.Context) pulumix.Output[GetDbClustersClusterDbClusterAccessWhiteList] {
-	return pulumix.Output[GetDbClustersClusterDbClusterAccessWhiteList]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Field `dbClusterIpArrayAttribute` has been removed from provider.
@@ -1072,12 +957,6 @@ func (o GetDbClustersClusterDbClusterAccessWhiteListArrayOutput) ToGetDbClusters
 
 func (o GetDbClustersClusterDbClusterAccessWhiteListArrayOutput) ToGetDbClustersClusterDbClusterAccessWhiteListArrayOutputWithContext(ctx context.Context) GetDbClustersClusterDbClusterAccessWhiteListArrayOutput {
 	return o
-}
-
-func (o GetDbClustersClusterDbClusterAccessWhiteListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDbClustersClusterDbClusterAccessWhiteList] {
-	return pulumix.Output[[]GetDbClustersClusterDbClusterAccessWhiteList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDbClustersClusterDbClusterAccessWhiteListArrayOutput) Index(i pulumi.IntInput) GetDbClustersClusterDbClusterAccessWhiteListOutput {
@@ -1123,12 +1002,6 @@ func (i GetDbClustersClusterScaleOutStatusArgs) ToGetDbClustersClusterScaleOutSt
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbClustersClusterScaleOutStatusOutput)
 }
 
-func (i GetDbClustersClusterScaleOutStatusArgs) ToOutput(ctx context.Context) pulumix.Output[GetDbClustersClusterScaleOutStatus] {
-	return pulumix.Output[GetDbClustersClusterScaleOutStatus]{
-		OutputState: i.ToGetDbClustersClusterScaleOutStatusOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDbClustersClusterScaleOutStatusArrayInput is an input type that accepts GetDbClustersClusterScaleOutStatusArray and GetDbClustersClusterScaleOutStatusArrayOutput values.
 // You can construct a concrete instance of `GetDbClustersClusterScaleOutStatusArrayInput` via:
 //
@@ -1154,12 +1027,6 @@ func (i GetDbClustersClusterScaleOutStatusArray) ToGetDbClustersClusterScaleOutS
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbClustersClusterScaleOutStatusArrayOutput)
 }
 
-func (i GetDbClustersClusterScaleOutStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDbClustersClusterScaleOutStatus] {
-	return pulumix.Output[[]GetDbClustersClusterScaleOutStatus]{
-		OutputState: i.ToGetDbClustersClusterScaleOutStatusArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDbClustersClusterScaleOutStatusOutput struct{ *pulumi.OutputState }
 
 func (GetDbClustersClusterScaleOutStatusOutput) ElementType() reflect.Type {
@@ -1172,12 +1039,6 @@ func (o GetDbClustersClusterScaleOutStatusOutput) ToGetDbClustersClusterScaleOut
 
 func (o GetDbClustersClusterScaleOutStatusOutput) ToGetDbClustersClusterScaleOutStatusOutputWithContext(ctx context.Context) GetDbClustersClusterScaleOutStatusOutput {
 	return o
-}
-
-func (o GetDbClustersClusterScaleOutStatusOutput) ToOutput(ctx context.Context) pulumix.Output[GetDbClustersClusterScaleOutStatus] {
-	return pulumix.Output[GetDbClustersClusterScaleOutStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Process.
@@ -1202,12 +1063,6 @@ func (o GetDbClustersClusterScaleOutStatusArrayOutput) ToGetDbClustersClusterSca
 
 func (o GetDbClustersClusterScaleOutStatusArrayOutput) ToGetDbClustersClusterScaleOutStatusArrayOutputWithContext(ctx context.Context) GetDbClustersClusterScaleOutStatusArrayOutput {
 	return o
-}
-
-func (o GetDbClustersClusterScaleOutStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDbClustersClusterScaleOutStatus] {
-	return pulumix.Output[[]GetDbClustersClusterScaleOutStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDbClustersClusterScaleOutStatusArrayOutput) Index(i pulumi.IntInput) GetDbClustersClusterScaleOutStatusOutput {
@@ -1253,12 +1108,6 @@ func (i GetRegionsRegionArgs) ToGetRegionsRegionOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsRegionOutput)
 }
 
-func (i GetRegionsRegionArgs) ToOutput(ctx context.Context) pulumix.Output[GetRegionsRegion] {
-	return pulumix.Output[GetRegionsRegion]{
-		OutputState: i.ToGetRegionsRegionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetRegionsRegionArrayInput is an input type that accepts GetRegionsRegionArray and GetRegionsRegionArrayOutput values.
 // You can construct a concrete instance of `GetRegionsRegionArrayInput` via:
 //
@@ -1284,12 +1133,6 @@ func (i GetRegionsRegionArray) ToGetRegionsRegionArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsRegionArrayOutput)
 }
 
-func (i GetRegionsRegionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRegionsRegion] {
-	return pulumix.Output[[]GetRegionsRegion]{
-		OutputState: i.ToGetRegionsRegionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetRegionsRegionOutput struct{ *pulumi.OutputState }
 
 func (GetRegionsRegionOutput) ElementType() reflect.Type {
@@ -1302,12 +1145,6 @@ func (o GetRegionsRegionOutput) ToGetRegionsRegionOutput() GetRegionsRegionOutpu
 
 func (o GetRegionsRegionOutput) ToGetRegionsRegionOutputWithContext(ctx context.Context) GetRegionsRegionOutput {
 	return o
-}
-
-func (o GetRegionsRegionOutput) ToOutput(ctx context.Context) pulumix.Output[GetRegionsRegion] {
-	return pulumix.Output[GetRegionsRegion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Region ID.
@@ -1332,12 +1169,6 @@ func (o GetRegionsRegionArrayOutput) ToGetRegionsRegionArrayOutput() GetRegionsR
 
 func (o GetRegionsRegionArrayOutput) ToGetRegionsRegionArrayOutputWithContext(ctx context.Context) GetRegionsRegionArrayOutput {
 	return o
-}
-
-func (o GetRegionsRegionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRegionsRegion] {
-	return pulumix.Output[[]GetRegionsRegion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRegionsRegionArrayOutput) Index(i pulumi.IntInput) GetRegionsRegionOutput {
@@ -1383,12 +1214,6 @@ func (i GetRegionsRegionZoneIdArgs) ToGetRegionsRegionZoneIdOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsRegionZoneIdOutput)
 }
 
-func (i GetRegionsRegionZoneIdArgs) ToOutput(ctx context.Context) pulumix.Output[GetRegionsRegionZoneId] {
-	return pulumix.Output[GetRegionsRegionZoneId]{
-		OutputState: i.ToGetRegionsRegionZoneIdOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetRegionsRegionZoneIdArrayInput is an input type that accepts GetRegionsRegionZoneIdArray and GetRegionsRegionZoneIdArrayOutput values.
 // You can construct a concrete instance of `GetRegionsRegionZoneIdArrayInput` via:
 //
@@ -1414,12 +1239,6 @@ func (i GetRegionsRegionZoneIdArray) ToGetRegionsRegionZoneIdArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsRegionZoneIdArrayOutput)
 }
 
-func (i GetRegionsRegionZoneIdArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRegionsRegionZoneId] {
-	return pulumix.Output[[]GetRegionsRegionZoneId]{
-		OutputState: i.ToGetRegionsRegionZoneIdArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetRegionsRegionZoneIdOutput struct{ *pulumi.OutputState }
 
 func (GetRegionsRegionZoneIdOutput) ElementType() reflect.Type {
@@ -1432,12 +1251,6 @@ func (o GetRegionsRegionZoneIdOutput) ToGetRegionsRegionZoneIdOutput() GetRegion
 
 func (o GetRegionsRegionZoneIdOutput) ToGetRegionsRegionZoneIdOutputWithContext(ctx context.Context) GetRegionsRegionZoneIdOutput {
 	return o
-}
-
-func (o GetRegionsRegionZoneIdOutput) ToOutput(ctx context.Context) pulumix.Output[GetRegionsRegionZoneId] {
-	return pulumix.Output[GetRegionsRegionZoneId]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to support vpc network.
@@ -1462,12 +1275,6 @@ func (o GetRegionsRegionZoneIdArrayOutput) ToGetRegionsRegionZoneIdArrayOutput()
 
 func (o GetRegionsRegionZoneIdArrayOutput) ToGetRegionsRegionZoneIdArrayOutputWithContext(ctx context.Context) GetRegionsRegionZoneIdArrayOutput {
 	return o
-}
-
-func (o GetRegionsRegionZoneIdArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRegionsRegionZoneId] {
-	return pulumix.Output[[]GetRegionsRegionZoneId]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRegionsRegionZoneIdArrayOutput) Index(i pulumi.IntInput) GetRegionsRegionZoneIdOutput {

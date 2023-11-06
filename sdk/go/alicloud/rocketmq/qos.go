@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Sag Qos resource. Smart Access Gateway (SAG) supports quintuple-based QoS functions to differentiate traffic of different services and ensure high-priority traffic bandwidth.
@@ -139,12 +138,6 @@ func (i *Qos) ToQosOutputWithContext(ctx context.Context) QosOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QosOutput)
 }
 
-func (i *Qos) ToOutput(ctx context.Context) pulumix.Output[*Qos] {
-	return pulumix.Output[*Qos]{
-		OutputState: i.ToQosOutputWithContext(ctx).OutputState,
-	}
-}
-
 // QosArrayInput is an input type that accepts QosArray and QosArrayOutput values.
 // You can construct a concrete instance of `QosArrayInput` via:
 //
@@ -168,12 +161,6 @@ func (i QosArray) ToQosArrayOutput() QosArrayOutput {
 
 func (i QosArray) ToQosArrayOutputWithContext(ctx context.Context) QosArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QosArrayOutput)
-}
-
-func (i QosArray) ToOutput(ctx context.Context) pulumix.Output[[]*Qos] {
-	return pulumix.Output[[]*Qos]{
-		OutputState: i.ToQosArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // QosMapInput is an input type that accepts QosMap and QosMapOutput values.
@@ -201,12 +188,6 @@ func (i QosMap) ToQosMapOutputWithContext(ctx context.Context) QosMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QosMapOutput)
 }
 
-func (i QosMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Qos] {
-	return pulumix.Output[map[string]*Qos]{
-		OutputState: i.ToQosMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type QosOutput struct{ *pulumi.OutputState }
 
 func (QosOutput) ElementType() reflect.Type {
@@ -219,12 +200,6 @@ func (o QosOutput) ToQosOutput() QosOutput {
 
 func (o QosOutput) ToQosOutputWithContext(ctx context.Context) QosOutput {
 	return o
-}
-
-func (o QosOutput) ToOutput(ctx context.Context) pulumix.Output[*Qos] {
-	return pulumix.Output[*Qos]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the QoS policy to be created. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
@@ -246,12 +221,6 @@ func (o QosArrayOutput) ToQosArrayOutputWithContext(ctx context.Context) QosArra
 	return o
 }
 
-func (o QosArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Qos] {
-	return pulumix.Output[[]*Qos]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o QosArrayOutput) Index(i pulumi.IntInput) QosOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Qos {
 		return vs[0].([]*Qos)[vs[1].(int)]
@@ -270,12 +239,6 @@ func (o QosMapOutput) ToQosMapOutput() QosMapOutput {
 
 func (o QosMapOutput) ToQosMapOutputWithContext(ctx context.Context) QosMapOutput {
 	return o
-}
-
-func (o QosMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Qos] {
-	return pulumix.Output[map[string]*Qos]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QosMapOutput) MapIndex(k pulumi.StringInput) QosOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Anti-DDoS Advanced instance resource. "Ddosbgp" is the short term of this product.
@@ -235,12 +234,6 @@ func (i *DdosBgpInstance) ToDdosBgpInstanceOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(DdosBgpInstanceOutput)
 }
 
-func (i *DdosBgpInstance) ToOutput(ctx context.Context) pulumix.Output[*DdosBgpInstance] {
-	return pulumix.Output[*DdosBgpInstance]{
-		OutputState: i.ToDdosBgpInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DdosBgpInstanceArrayInput is an input type that accepts DdosBgpInstanceArray and DdosBgpInstanceArrayOutput values.
 // You can construct a concrete instance of `DdosBgpInstanceArrayInput` via:
 //
@@ -264,12 +257,6 @@ func (i DdosBgpInstanceArray) ToDdosBgpInstanceArrayOutput() DdosBgpInstanceArra
 
 func (i DdosBgpInstanceArray) ToDdosBgpInstanceArrayOutputWithContext(ctx context.Context) DdosBgpInstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DdosBgpInstanceArrayOutput)
-}
-
-func (i DdosBgpInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*DdosBgpInstance] {
-	return pulumix.Output[[]*DdosBgpInstance]{
-		OutputState: i.ToDdosBgpInstanceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DdosBgpInstanceMapInput is an input type that accepts DdosBgpInstanceMap and DdosBgpInstanceMapOutput values.
@@ -297,12 +284,6 @@ func (i DdosBgpInstanceMap) ToDdosBgpInstanceMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DdosBgpInstanceMapOutput)
 }
 
-func (i DdosBgpInstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DdosBgpInstance] {
-	return pulumix.Output[map[string]*DdosBgpInstance]{
-		OutputState: i.ToDdosBgpInstanceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DdosBgpInstanceOutput struct{ *pulumi.OutputState }
 
 func (DdosBgpInstanceOutput) ElementType() reflect.Type {
@@ -315,12 +296,6 @@ func (o DdosBgpInstanceOutput) ToDdosBgpInstanceOutput() DdosBgpInstanceOutput {
 
 func (o DdosBgpInstanceOutput) ToDdosBgpInstanceOutputWithContext(ctx context.Context) DdosBgpInstanceOutput {
 	return o
-}
-
-func (o DdosBgpInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*DdosBgpInstance] {
-	return pulumix.Output[*DdosBgpInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 51,91,101,201,301. The unit is Gbps.
@@ -377,12 +352,6 @@ func (o DdosBgpInstanceArrayOutput) ToDdosBgpInstanceArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o DdosBgpInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DdosBgpInstance] {
-	return pulumix.Output[[]*DdosBgpInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DdosBgpInstanceArrayOutput) Index(i pulumi.IntInput) DdosBgpInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DdosBgpInstance {
 		return vs[0].([]*DdosBgpInstance)[vs[1].(int)]
@@ -401,12 +370,6 @@ func (o DdosBgpInstanceMapOutput) ToDdosBgpInstanceMapOutput() DdosBgpInstanceMa
 
 func (o DdosBgpInstanceMapOutput) ToDdosBgpInstanceMapOutputWithContext(ctx context.Context) DdosBgpInstanceMapOutput {
 	return o
-}
-
-func (o DdosBgpInstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DdosBgpInstance] {
-	return pulumix.Output[map[string]*DdosBgpInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DdosBgpInstanceMapOutput) MapIndex(k pulumi.StringInput) DdosBgpInstanceOutput {

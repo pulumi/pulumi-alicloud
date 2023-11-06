@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Network Attached Storage (NAS) Fileset resource.
@@ -226,12 +225,6 @@ func (i *Fileset) ToFilesetOutputWithContext(ctx context.Context) FilesetOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(FilesetOutput)
 }
 
-func (i *Fileset) ToOutput(ctx context.Context) pulumix.Output[*Fileset] {
-	return pulumix.Output[*Fileset]{
-		OutputState: i.ToFilesetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FilesetArrayInput is an input type that accepts FilesetArray and FilesetArrayOutput values.
 // You can construct a concrete instance of `FilesetArrayInput` via:
 //
@@ -255,12 +248,6 @@ func (i FilesetArray) ToFilesetArrayOutput() FilesetArrayOutput {
 
 func (i FilesetArray) ToFilesetArrayOutputWithContext(ctx context.Context) FilesetArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FilesetArrayOutput)
-}
-
-func (i FilesetArray) ToOutput(ctx context.Context) pulumix.Output[[]*Fileset] {
-	return pulumix.Output[[]*Fileset]{
-		OutputState: i.ToFilesetArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FilesetMapInput is an input type that accepts FilesetMap and FilesetMapOutput values.
@@ -288,12 +275,6 @@ func (i FilesetMap) ToFilesetMapOutputWithContext(ctx context.Context) FilesetMa
 	return pulumi.ToOutputWithContext(ctx, i).(FilesetMapOutput)
 }
 
-func (i FilesetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Fileset] {
-	return pulumix.Output[map[string]*Fileset]{
-		OutputState: i.ToFilesetMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FilesetOutput struct{ *pulumi.OutputState }
 
 func (FilesetOutput) ElementType() reflect.Type {
@@ -306,12 +287,6 @@ func (o FilesetOutput) ToFilesetOutput() FilesetOutput {
 
 func (o FilesetOutput) ToFilesetOutputWithContext(ctx context.Context) FilesetOutput {
 	return o
-}
-
-func (o FilesetOutput) ToOutput(ctx context.Context) pulumix.Output[*Fileset] {
-	return pulumix.Output[*Fileset]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
@@ -358,12 +333,6 @@ func (o FilesetArrayOutput) ToFilesetArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o FilesetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Fileset] {
-	return pulumix.Output[[]*Fileset]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FilesetArrayOutput) Index(i pulumi.IntInput) FilesetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Fileset {
 		return vs[0].([]*Fileset)[vs[1].(int)]
@@ -382,12 +351,6 @@ func (o FilesetMapOutput) ToFilesetMapOutput() FilesetMapOutput {
 
 func (o FilesetMapOutput) ToFilesetMapOutputWithContext(ctx context.Context) FilesetMapOutput {
 	return o
-}
-
-func (o FilesetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Fileset] {
-	return pulumix.Output[map[string]*Fileset]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FilesetMapOutput) MapIndex(k pulumi.StringInput) FilesetOutput {

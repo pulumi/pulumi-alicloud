@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cms Metric Rule Templates of the current Alibaba Cloud user.
@@ -158,12 +157,6 @@ func (o GetMetricRuleTemplatesResultOutput) ToGetMetricRuleTemplatesResultOutput
 
 func (o GetMetricRuleTemplatesResultOutput) ToGetMetricRuleTemplatesResultOutputWithContext(ctx context.Context) GetMetricRuleTemplatesResultOutput {
 	return o
-}
-
-func (o GetMetricRuleTemplatesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetMetricRuleTemplatesResult] {
-	return pulumix.Output[GetMetricRuleTemplatesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetMetricRuleTemplatesResultOutput) EnableDetails() pulumi.BoolPtrOutput {

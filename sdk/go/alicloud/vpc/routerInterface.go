@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a VPC router interface resource aim to build a connection between two VPCs.
@@ -354,12 +353,6 @@ func (i *RouterInterface) ToRouterInterfaceOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(RouterInterfaceOutput)
 }
 
-func (i *RouterInterface) ToOutput(ctx context.Context) pulumix.Output[*RouterInterface] {
-	return pulumix.Output[*RouterInterface]{
-		OutputState: i.ToRouterInterfaceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RouterInterfaceArrayInput is an input type that accepts RouterInterfaceArray and RouterInterfaceArrayOutput values.
 // You can construct a concrete instance of `RouterInterfaceArrayInput` via:
 //
@@ -383,12 +376,6 @@ func (i RouterInterfaceArray) ToRouterInterfaceArrayOutput() RouterInterfaceArra
 
 func (i RouterInterfaceArray) ToRouterInterfaceArrayOutputWithContext(ctx context.Context) RouterInterfaceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RouterInterfaceArrayOutput)
-}
-
-func (i RouterInterfaceArray) ToOutput(ctx context.Context) pulumix.Output[[]*RouterInterface] {
-	return pulumix.Output[[]*RouterInterface]{
-		OutputState: i.ToRouterInterfaceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RouterInterfaceMapInput is an input type that accepts RouterInterfaceMap and RouterInterfaceMapOutput values.
@@ -416,12 +403,6 @@ func (i RouterInterfaceMap) ToRouterInterfaceMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(RouterInterfaceMapOutput)
 }
 
-func (i RouterInterfaceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RouterInterface] {
-	return pulumix.Output[map[string]*RouterInterface]{
-		OutputState: i.ToRouterInterfaceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RouterInterfaceOutput struct{ *pulumi.OutputState }
 
 func (RouterInterfaceOutput) ElementType() reflect.Type {
@@ -434,12 +415,6 @@ func (o RouterInterfaceOutput) ToRouterInterfaceOutput() RouterInterfaceOutput {
 
 func (o RouterInterfaceOutput) ToRouterInterfaceOutputWithContext(ctx context.Context) RouterInterfaceOutput {
 	return o
-}
-
-func (o RouterInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[*RouterInterface] {
-	return pulumix.Output[*RouterInterface]{
-		OutputState: o.OutputState,
-	}
 }
 
 // It has been deprecated from version 1.11.0.
@@ -555,12 +530,6 @@ func (o RouterInterfaceArrayOutput) ToRouterInterfaceArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o RouterInterfaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RouterInterface] {
-	return pulumix.Output[[]*RouterInterface]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RouterInterfaceArrayOutput) Index(i pulumi.IntInput) RouterInterfaceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RouterInterface {
 		return vs[0].([]*RouterInterface)[vs[1].(int)]
@@ -579,12 +548,6 @@ func (o RouterInterfaceMapOutput) ToRouterInterfaceMapOutput() RouterInterfaceMa
 
 func (o RouterInterfaceMapOutput) ToRouterInterfaceMapOutputWithContext(ctx context.Context) RouterInterfaceMapOutput {
 	return o
-}
-
-func (o RouterInterfaceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RouterInterface] {
-	return pulumix.Output[map[string]*RouterInterface]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RouterInterfaceMapOutput) MapIndex(k pulumi.StringInput) RouterInterfaceOutput {

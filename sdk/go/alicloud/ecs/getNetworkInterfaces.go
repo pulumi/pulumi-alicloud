@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **DEPRECATED:** This datasource has been renamed to ecs.getEcsNetworkInterfaces from version 1.123.1.
@@ -282,12 +281,6 @@ func (o GetNetworkInterfacesResultOutput) ToGetNetworkInterfacesResultOutput() G
 
 func (o GetNetworkInterfacesResultOutput) ToGetNetworkInterfacesResultOutputWithContext(ctx context.Context) GetNetworkInterfacesResultOutput {
 	return o
-}
-
-func (o GetNetworkInterfacesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetNetworkInterfacesResult] {
-	return pulumix.Output[GetNetworkInterfacesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

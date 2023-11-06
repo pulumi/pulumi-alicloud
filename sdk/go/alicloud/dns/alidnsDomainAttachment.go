@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides bind the domain name to the Alidns instance resource.
@@ -182,12 +181,6 @@ func (i *AlidnsDomainAttachment) ToAlidnsDomainAttachmentOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(AlidnsDomainAttachmentOutput)
 }
 
-func (i *AlidnsDomainAttachment) ToOutput(ctx context.Context) pulumix.Output[*AlidnsDomainAttachment] {
-	return pulumix.Output[*AlidnsDomainAttachment]{
-		OutputState: i.ToAlidnsDomainAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AlidnsDomainAttachmentArrayInput is an input type that accepts AlidnsDomainAttachmentArray and AlidnsDomainAttachmentArrayOutput values.
 // You can construct a concrete instance of `AlidnsDomainAttachmentArrayInput` via:
 //
@@ -211,12 +204,6 @@ func (i AlidnsDomainAttachmentArray) ToAlidnsDomainAttachmentArrayOutput() Alidn
 
 func (i AlidnsDomainAttachmentArray) ToAlidnsDomainAttachmentArrayOutputWithContext(ctx context.Context) AlidnsDomainAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlidnsDomainAttachmentArrayOutput)
-}
-
-func (i AlidnsDomainAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*AlidnsDomainAttachment] {
-	return pulumix.Output[[]*AlidnsDomainAttachment]{
-		OutputState: i.ToAlidnsDomainAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AlidnsDomainAttachmentMapInput is an input type that accepts AlidnsDomainAttachmentMap and AlidnsDomainAttachmentMapOutput values.
@@ -244,12 +231,6 @@ func (i AlidnsDomainAttachmentMap) ToAlidnsDomainAttachmentMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(AlidnsDomainAttachmentMapOutput)
 }
 
-func (i AlidnsDomainAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AlidnsDomainAttachment] {
-	return pulumix.Output[map[string]*AlidnsDomainAttachment]{
-		OutputState: i.ToAlidnsDomainAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AlidnsDomainAttachmentOutput struct{ *pulumi.OutputState }
 
 func (AlidnsDomainAttachmentOutput) ElementType() reflect.Type {
@@ -262,12 +243,6 @@ func (o AlidnsDomainAttachmentOutput) ToAlidnsDomainAttachmentOutput() AlidnsDom
 
 func (o AlidnsDomainAttachmentOutput) ToAlidnsDomainAttachmentOutputWithContext(ctx context.Context) AlidnsDomainAttachmentOutput {
 	return o
-}
-
-func (o AlidnsDomainAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*AlidnsDomainAttachment] {
-	return pulumix.Output[*AlidnsDomainAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The domain names bound to the DNS instance.
@@ -294,12 +269,6 @@ func (o AlidnsDomainAttachmentArrayOutput) ToAlidnsDomainAttachmentArrayOutputWi
 	return o
 }
 
-func (o AlidnsDomainAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AlidnsDomainAttachment] {
-	return pulumix.Output[[]*AlidnsDomainAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AlidnsDomainAttachmentArrayOutput) Index(i pulumi.IntInput) AlidnsDomainAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AlidnsDomainAttachment {
 		return vs[0].([]*AlidnsDomainAttachment)[vs[1].(int)]
@@ -318,12 +287,6 @@ func (o AlidnsDomainAttachmentMapOutput) ToAlidnsDomainAttachmentMapOutput() Ali
 
 func (o AlidnsDomainAttachmentMapOutput) ToAlidnsDomainAttachmentMapOutputWithContext(ctx context.Context) AlidnsDomainAttachmentMapOutput {
 	return o
-}
-
-func (o AlidnsDomainAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AlidnsDomainAttachment] {
-	return pulumix.Output[map[string]*AlidnsDomainAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AlidnsDomainAttachmentMapOutput) MapIndex(k pulumi.StringInput) AlidnsDomainAttachmentOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -59,12 +58,6 @@ func (i GetAgentsAgentArgs) ToGetAgentsAgentOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetAgentsAgentOutput)
 }
 
-func (i GetAgentsAgentArgs) ToOutput(ctx context.Context) pulumix.Output[GetAgentsAgent] {
-	return pulumix.Output[GetAgentsAgent]{
-		OutputState: i.ToGetAgentsAgentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAgentsAgentArrayInput is an input type that accepts GetAgentsAgentArray and GetAgentsAgentArrayOutput values.
 // You can construct a concrete instance of `GetAgentsAgentArrayInput` via:
 //
@@ -90,12 +83,6 @@ func (i GetAgentsAgentArray) ToGetAgentsAgentArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetAgentsAgentArrayOutput)
 }
 
-func (i GetAgentsAgentArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAgentsAgent] {
-	return pulumix.Output[[]GetAgentsAgent]{
-		OutputState: i.ToGetAgentsAgentArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAgentsAgentOutput struct{ *pulumi.OutputState }
 
 func (GetAgentsAgentOutput) ElementType() reflect.Type {
@@ -108,12 +95,6 @@ func (o GetAgentsAgentOutput) ToGetAgentsAgentOutput() GetAgentsAgentOutput {
 
 func (o GetAgentsAgentOutput) ToGetAgentsAgentOutputWithContext(ctx context.Context) GetAgentsAgentOutput {
 	return o
-}
-
-func (o GetAgentsAgentOutput) ToOutput(ctx context.Context) pulumix.Output[GetAgentsAgent] {
-	return pulumix.Output[GetAgentsAgent]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The agent id.
@@ -148,12 +129,6 @@ func (o GetAgentsAgentArrayOutput) ToGetAgentsAgentArrayOutput() GetAgentsAgentA
 
 func (o GetAgentsAgentArrayOutput) ToGetAgentsAgentArrayOutputWithContext(ctx context.Context) GetAgentsAgentArrayOutput {
 	return o
-}
-
-func (o GetAgentsAgentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAgentsAgent] {
-	return pulumix.Output[[]GetAgentsAgent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAgentsAgentArrayOutput) Index(i pulumi.IntInput) GetAgentsAgentOutput {

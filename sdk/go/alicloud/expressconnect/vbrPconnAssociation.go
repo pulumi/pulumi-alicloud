@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Express Connect Vbr Pconn Association resource.
@@ -310,12 +309,6 @@ func (i *VbrPconnAssociation) ToVbrPconnAssociationOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(VbrPconnAssociationOutput)
 }
 
-func (i *VbrPconnAssociation) ToOutput(ctx context.Context) pulumix.Output[*VbrPconnAssociation] {
-	return pulumix.Output[*VbrPconnAssociation]{
-		OutputState: i.ToVbrPconnAssociationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VbrPconnAssociationArrayInput is an input type that accepts VbrPconnAssociationArray and VbrPconnAssociationArrayOutput values.
 // You can construct a concrete instance of `VbrPconnAssociationArrayInput` via:
 //
@@ -339,12 +332,6 @@ func (i VbrPconnAssociationArray) ToVbrPconnAssociationArrayOutput() VbrPconnAss
 
 func (i VbrPconnAssociationArray) ToVbrPconnAssociationArrayOutputWithContext(ctx context.Context) VbrPconnAssociationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VbrPconnAssociationArrayOutput)
-}
-
-func (i VbrPconnAssociationArray) ToOutput(ctx context.Context) pulumix.Output[[]*VbrPconnAssociation] {
-	return pulumix.Output[[]*VbrPconnAssociation]{
-		OutputState: i.ToVbrPconnAssociationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // VbrPconnAssociationMapInput is an input type that accepts VbrPconnAssociationMap and VbrPconnAssociationMapOutput values.
@@ -372,12 +359,6 @@ func (i VbrPconnAssociationMap) ToVbrPconnAssociationMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(VbrPconnAssociationMapOutput)
 }
 
-func (i VbrPconnAssociationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VbrPconnAssociation] {
-	return pulumix.Output[map[string]*VbrPconnAssociation]{
-		OutputState: i.ToVbrPconnAssociationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VbrPconnAssociationOutput struct{ *pulumi.OutputState }
 
 func (VbrPconnAssociationOutput) ElementType() reflect.Type {
@@ -390,12 +371,6 @@ func (o VbrPconnAssociationOutput) ToVbrPconnAssociationOutput() VbrPconnAssocia
 
 func (o VbrPconnAssociationOutput) ToVbrPconnAssociationOutputWithContext(ctx context.Context) VbrPconnAssociationOutput {
 	return o
-}
-
-func (o VbrPconnAssociationOutput) ToOutput(ctx context.Context) pulumix.Output[*VbrPconnAssociation] {
-	return pulumix.Output[*VbrPconnAssociation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The circuit code provided by the operator for the physical connection.
@@ -474,12 +449,6 @@ func (o VbrPconnAssociationArrayOutput) ToVbrPconnAssociationArrayOutputWithCont
 	return o
 }
 
-func (o VbrPconnAssociationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VbrPconnAssociation] {
-	return pulumix.Output[[]*VbrPconnAssociation]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VbrPconnAssociationArrayOutput) Index(i pulumi.IntInput) VbrPconnAssociationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VbrPconnAssociation {
 		return vs[0].([]*VbrPconnAssociation)[vs[1].(int)]
@@ -498,12 +467,6 @@ func (o VbrPconnAssociationMapOutput) ToVbrPconnAssociationMapOutput() VbrPconnA
 
 func (o VbrPconnAssociationMapOutput) ToVbrPconnAssociationMapOutputWithContext(ctx context.Context) VbrPconnAssociationMapOutput {
 	return o
-}
-
-func (o VbrPconnAssociationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VbrPconnAssociation] {
-	return pulumix.Output[map[string]*VbrPconnAssociation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VbrPconnAssociationMapOutput) MapIndex(k pulumi.StringInput) VbrPconnAssociationOutput {

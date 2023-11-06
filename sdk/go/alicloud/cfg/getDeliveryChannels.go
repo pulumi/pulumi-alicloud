@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **DEPRECATED:**  This resource is based on Config's old version OpenAPI, and it has been deprecated from version `1.173.0`.
@@ -130,12 +129,6 @@ func (o GetDeliveryChannelsResultOutput) ToGetDeliveryChannelsResultOutput() Get
 
 func (o GetDeliveryChannelsResultOutput) ToGetDeliveryChannelsResultOutputWithContext(ctx context.Context) GetDeliveryChannelsResultOutput {
 	return o
-}
-
-func (o GetDeliveryChannelsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDeliveryChannelsResult] {
-	return pulumix.Output[GetDeliveryChannelsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of Config Delivery Channels. Each element contains the following attributes:

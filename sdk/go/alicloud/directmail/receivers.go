@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Direct Mail Receivers resource.
@@ -144,12 +143,6 @@ func (i *Receivers) ToReceiversOutputWithContext(ctx context.Context) ReceiversO
 	return pulumi.ToOutputWithContext(ctx, i).(ReceiversOutput)
 }
 
-func (i *Receivers) ToOutput(ctx context.Context) pulumix.Output[*Receivers] {
-	return pulumix.Output[*Receivers]{
-		OutputState: i.ToReceiversOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ReceiversArrayInput is an input type that accepts ReceiversArray and ReceiversArrayOutput values.
 // You can construct a concrete instance of `ReceiversArrayInput` via:
 //
@@ -173,12 +166,6 @@ func (i ReceiversArray) ToReceiversArrayOutput() ReceiversArrayOutput {
 
 func (i ReceiversArray) ToReceiversArrayOutputWithContext(ctx context.Context) ReceiversArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReceiversArrayOutput)
-}
-
-func (i ReceiversArray) ToOutput(ctx context.Context) pulumix.Output[[]*Receivers] {
-	return pulumix.Output[[]*Receivers]{
-		OutputState: i.ToReceiversArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ReceiversMapInput is an input type that accepts ReceiversMap and ReceiversMapOutput values.
@@ -206,12 +193,6 @@ func (i ReceiversMap) ToReceiversMapOutputWithContext(ctx context.Context) Recei
 	return pulumi.ToOutputWithContext(ctx, i).(ReceiversMapOutput)
 }
 
-func (i ReceiversMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Receivers] {
-	return pulumix.Output[map[string]*Receivers]{
-		OutputState: i.ToReceiversMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ReceiversOutput struct{ *pulumi.OutputState }
 
 func (ReceiversOutput) ElementType() reflect.Type {
@@ -224,12 +205,6 @@ func (o ReceiversOutput) ToReceiversOutput() ReceiversOutput {
 
 func (o ReceiversOutput) ToReceiversOutputWithContext(ctx context.Context) ReceiversOutput {
 	return o
-}
-
-func (o ReceiversOutput) ToOutput(ctx context.Context) pulumix.Output[*Receivers] {
-	return pulumix.Output[*Receivers]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of receivers and 1-50 characters in length.
@@ -266,12 +241,6 @@ func (o ReceiversArrayOutput) ToReceiversArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o ReceiversArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Receivers] {
-	return pulumix.Output[[]*Receivers]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ReceiversArrayOutput) Index(i pulumi.IntInput) ReceiversOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Receivers {
 		return vs[0].([]*Receivers)[vs[1].(int)]
@@ -290,12 +259,6 @@ func (o ReceiversMapOutput) ToReceiversMapOutput() ReceiversMapOutput {
 
 func (o ReceiversMapOutput) ToReceiversMapOutputWithContext(ctx context.Context) ReceiversMapOutput {
 	return o
-}
-
-func (o ReceiversMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Receivers] {
-	return pulumix.Output[map[string]*Receivers]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReceiversMapOutput) MapIndex(k pulumi.StringInput) ReceiversOutput {

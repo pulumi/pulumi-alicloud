@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the acls in the region.
@@ -139,12 +138,6 @@ func (o GetAclsResultOutput) ToGetAclsResultOutput() GetAclsResultOutput {
 
 func (o GetAclsResultOutput) ToGetAclsResultOutputWithContext(ctx context.Context) GetAclsResultOutput {
 	return o
-}
-
-func (o GetAclsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAclsResult] {
-	return pulumix.Output[GetAclsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of SLB  acls. Each element contains the following attributes:

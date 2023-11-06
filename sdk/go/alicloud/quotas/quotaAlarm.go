@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Quotas Quota Alarm resource.
@@ -251,12 +250,6 @@ func (i *QuotaAlarm) ToQuotaAlarmOutputWithContext(ctx context.Context) QuotaAla
 	return pulumi.ToOutputWithContext(ctx, i).(QuotaAlarmOutput)
 }
 
-func (i *QuotaAlarm) ToOutput(ctx context.Context) pulumix.Output[*QuotaAlarm] {
-	return pulumix.Output[*QuotaAlarm]{
-		OutputState: i.ToQuotaAlarmOutputWithContext(ctx).OutputState,
-	}
-}
-
 // QuotaAlarmArrayInput is an input type that accepts QuotaAlarmArray and QuotaAlarmArrayOutput values.
 // You can construct a concrete instance of `QuotaAlarmArrayInput` via:
 //
@@ -280,12 +273,6 @@ func (i QuotaAlarmArray) ToQuotaAlarmArrayOutput() QuotaAlarmArrayOutput {
 
 func (i QuotaAlarmArray) ToQuotaAlarmArrayOutputWithContext(ctx context.Context) QuotaAlarmArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QuotaAlarmArrayOutput)
-}
-
-func (i QuotaAlarmArray) ToOutput(ctx context.Context) pulumix.Output[[]*QuotaAlarm] {
-	return pulumix.Output[[]*QuotaAlarm]{
-		OutputState: i.ToQuotaAlarmArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // QuotaAlarmMapInput is an input type that accepts QuotaAlarmMap and QuotaAlarmMapOutput values.
@@ -313,12 +300,6 @@ func (i QuotaAlarmMap) ToQuotaAlarmMapOutputWithContext(ctx context.Context) Quo
 	return pulumi.ToOutputWithContext(ctx, i).(QuotaAlarmMapOutput)
 }
 
-func (i QuotaAlarmMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*QuotaAlarm] {
-	return pulumix.Output[map[string]*QuotaAlarm]{
-		OutputState: i.ToQuotaAlarmMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type QuotaAlarmOutput struct{ *pulumi.OutputState }
 
 func (QuotaAlarmOutput) ElementType() reflect.Type {
@@ -331,12 +312,6 @@ func (o QuotaAlarmOutput) ToQuotaAlarmOutput() QuotaAlarmOutput {
 
 func (o QuotaAlarmOutput) ToQuotaAlarmOutputWithContext(ctx context.Context) QuotaAlarmOutput {
 	return o
-}
-
-func (o QuotaAlarmOutput) ToOutput(ctx context.Context) pulumix.Output[*QuotaAlarm] {
-	return pulumix.Output[*QuotaAlarm]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation time of the resource.
@@ -400,12 +375,6 @@ func (o QuotaAlarmArrayOutput) ToQuotaAlarmArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o QuotaAlarmArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*QuotaAlarm] {
-	return pulumix.Output[[]*QuotaAlarm]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o QuotaAlarmArrayOutput) Index(i pulumi.IntInput) QuotaAlarmOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *QuotaAlarm {
 		return vs[0].([]*QuotaAlarm)[vs[1].(int)]
@@ -424,12 +393,6 @@ func (o QuotaAlarmMapOutput) ToQuotaAlarmMapOutput() QuotaAlarmMapOutput {
 
 func (o QuotaAlarmMapOutput) ToQuotaAlarmMapOutputWithContext(ctx context.Context) QuotaAlarmMapOutput {
 	return o
-}
-
-func (o QuotaAlarmMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*QuotaAlarm] {
-	return pulumix.Output[map[string]*QuotaAlarm]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QuotaAlarmMapOutput) MapIndex(k pulumi.StringInput) QuotaAlarmOutput {

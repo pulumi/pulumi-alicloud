@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -115,12 +114,6 @@ func (o LookupCiphertextResultOutput) ToLookupCiphertextResultOutput() LookupCip
 
 func (o LookupCiphertextResultOutput) ToLookupCiphertextResultOutputWithContext(ctx context.Context) LookupCiphertextResultOutput {
 	return o
-}
-
-func (o LookupCiphertextResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCiphertextResult] {
-	return pulumix.Output[LookupCiphertextResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ciphertext of the data key encrypted with the primary CMK version.

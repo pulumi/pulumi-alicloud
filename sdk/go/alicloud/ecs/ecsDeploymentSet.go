@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECS Deployment Set resource.
@@ -193,12 +192,6 @@ func (i *EcsDeploymentSet) ToEcsDeploymentSetOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(EcsDeploymentSetOutput)
 }
 
-func (i *EcsDeploymentSet) ToOutput(ctx context.Context) pulumix.Output[*EcsDeploymentSet] {
-	return pulumix.Output[*EcsDeploymentSet]{
-		OutputState: i.ToEcsDeploymentSetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EcsDeploymentSetArrayInput is an input type that accepts EcsDeploymentSetArray and EcsDeploymentSetArrayOutput values.
 // You can construct a concrete instance of `EcsDeploymentSetArrayInput` via:
 //
@@ -222,12 +215,6 @@ func (i EcsDeploymentSetArray) ToEcsDeploymentSetArrayOutput() EcsDeploymentSetA
 
 func (i EcsDeploymentSetArray) ToEcsDeploymentSetArrayOutputWithContext(ctx context.Context) EcsDeploymentSetArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EcsDeploymentSetArrayOutput)
-}
-
-func (i EcsDeploymentSetArray) ToOutput(ctx context.Context) pulumix.Output[[]*EcsDeploymentSet] {
-	return pulumix.Output[[]*EcsDeploymentSet]{
-		OutputState: i.ToEcsDeploymentSetArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EcsDeploymentSetMapInput is an input type that accepts EcsDeploymentSetMap and EcsDeploymentSetMapOutput values.
@@ -255,12 +242,6 @@ func (i EcsDeploymentSetMap) ToEcsDeploymentSetMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(EcsDeploymentSetMapOutput)
 }
 
-func (i EcsDeploymentSetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsDeploymentSet] {
-	return pulumix.Output[map[string]*EcsDeploymentSet]{
-		OutputState: i.ToEcsDeploymentSetMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EcsDeploymentSetOutput struct{ *pulumi.OutputState }
 
 func (EcsDeploymentSetOutput) ElementType() reflect.Type {
@@ -273,12 +254,6 @@ func (o EcsDeploymentSetOutput) ToEcsDeploymentSetOutput() EcsDeploymentSetOutpu
 
 func (o EcsDeploymentSetOutput) ToEcsDeploymentSetOutputWithContext(ctx context.Context) EcsDeploymentSetOutput {
 	return o
-}
-
-func (o EcsDeploymentSetOutput) ToOutput(ctx context.Context) pulumix.Output[*EcsDeploymentSet] {
-	return pulumix.Output[*EcsDeploymentSet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
@@ -325,12 +300,6 @@ func (o EcsDeploymentSetArrayOutput) ToEcsDeploymentSetArrayOutputWithContext(ct
 	return o
 }
 
-func (o EcsDeploymentSetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EcsDeploymentSet] {
-	return pulumix.Output[[]*EcsDeploymentSet]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EcsDeploymentSetArrayOutput) Index(i pulumi.IntInput) EcsDeploymentSetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EcsDeploymentSet {
 		return vs[0].([]*EcsDeploymentSet)[vs[1].(int)]
@@ -349,12 +318,6 @@ func (o EcsDeploymentSetMapOutput) ToEcsDeploymentSetMapOutput() EcsDeploymentSe
 
 func (o EcsDeploymentSetMapOutput) ToEcsDeploymentSetMapOutputWithContext(ctx context.Context) EcsDeploymentSetMapOutput {
 	return o
-}
-
-func (o EcsDeploymentSetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsDeploymentSet] {
-	return pulumix.Output[map[string]*EcsDeploymentSet]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EcsDeploymentSetMapOutput) MapIndex(k pulumi.StringInput) EcsDeploymentSetOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetRdsParameterGroups(ctx *pulumi.Context, args *GetRdsParameterGroupsArgs, opts ...pulumi.InvokeOption) (*GetRdsParameterGroupsResult, error) {
@@ -80,12 +79,6 @@ func (o GetRdsParameterGroupsResultOutput) ToGetRdsParameterGroupsResultOutput()
 
 func (o GetRdsParameterGroupsResultOutput) ToGetRdsParameterGroupsResultOutputWithContext(ctx context.Context) GetRdsParameterGroupsResultOutput {
 	return o
-}
-
-func (o GetRdsParameterGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRdsParameterGroupsResult] {
-	return pulumix.Output[GetRdsParameterGroupsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRdsParameterGroupsResultOutput) EnableDetails() pulumi.BoolPtrOutput {
