@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['FileSystemArgs', 'FileSystem']
@@ -50,26 +50,77 @@ class FileSystemArgs:
         :param pulumi.Input[str] vswitch_id: The id of the vSwitch. The `vswitch_id` is required when the `file_system_type` is `cpfs`.
         :param pulumi.Input[str] zone_id: The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocol_type` and `storage_type` configuration.
         """
-        pulumi.set(__self__, "protocol_type", protocol_type)
-        pulumi.set(__self__, "storage_type", storage_type)
+        FileSystemArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            protocol_type=protocol_type,
+            storage_type=storage_type,
+            capacity=capacity,
+            description=description,
+            encrypt_type=encrypt_type,
+            file_system_type=file_system_type,
+            kms_key_id=kms_key_id,
+            tags=tags,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             protocol_type: Optional[pulumi.Input[str]] = None,
+             storage_type: Optional[pulumi.Input[str]] = None,
+             capacity: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             encrypt_type: Optional[pulumi.Input[int]] = None,
+             file_system_type: Optional[pulumi.Input[str]] = None,
+             kms_key_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if protocol_type is None and 'protocolType' in kwargs:
+            protocol_type = kwargs['protocolType']
+        if protocol_type is None:
+            raise TypeError("Missing 'protocol_type' argument")
+        if storage_type is None and 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+        if storage_type is None:
+            raise TypeError("Missing 'storage_type' argument")
+        if encrypt_type is None and 'encryptType' in kwargs:
+            encrypt_type = kwargs['encryptType']
+        if file_system_type is None and 'fileSystemType' in kwargs:
+            file_system_type = kwargs['fileSystemType']
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
+        _setter("protocol_type", protocol_type)
+        _setter("storage_type", storage_type)
         if capacity is not None:
-            pulumi.set(__self__, "capacity", capacity)
+            _setter("capacity", capacity)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if encrypt_type is not None:
-            pulumi.set(__self__, "encrypt_type", encrypt_type)
+            _setter("encrypt_type", encrypt_type)
         if file_system_type is not None:
-            pulumi.set(__self__, "file_system_type", file_system_type)
+            _setter("file_system_type", file_system_type)
         if kms_key_id is not None:
-            pulumi.set(__self__, "kms_key_id", kms_key_id)
+            _setter("kms_key_id", kms_key_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="protocolType")
@@ -254,28 +305,75 @@ class _FileSystemState:
         :param pulumi.Input[str] vswitch_id: The id of the vSwitch. The `vswitch_id` is required when the `file_system_type` is `cpfs`.
         :param pulumi.Input[str] zone_id: The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocol_type` and `storage_type` configuration.
         """
+        _FileSystemState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            capacity=capacity,
+            description=description,
+            encrypt_type=encrypt_type,
+            file_system_type=file_system_type,
+            kms_key_id=kms_key_id,
+            protocol_type=protocol_type,
+            storage_type=storage_type,
+            tags=tags,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             capacity: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             encrypt_type: Optional[pulumi.Input[int]] = None,
+             file_system_type: Optional[pulumi.Input[str]] = None,
+             kms_key_id: Optional[pulumi.Input[str]] = None,
+             protocol_type: Optional[pulumi.Input[str]] = None,
+             storage_type: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if encrypt_type is None and 'encryptType' in kwargs:
+            encrypt_type = kwargs['encryptType']
+        if file_system_type is None and 'fileSystemType' in kwargs:
+            file_system_type = kwargs['fileSystemType']
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if protocol_type is None and 'protocolType' in kwargs:
+            protocol_type = kwargs['protocolType']
+        if storage_type is None and 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if capacity is not None:
-            pulumi.set(__self__, "capacity", capacity)
+            _setter("capacity", capacity)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if encrypt_type is not None:
-            pulumi.set(__self__, "encrypt_type", encrypt_type)
+            _setter("encrypt_type", encrypt_type)
         if file_system_type is not None:
-            pulumi.set(__self__, "file_system_type", file_system_type)
+            _setter("file_system_type", file_system_type)
         if kms_key_id is not None:
-            pulumi.set(__self__, "kms_key_id", kms_key_id)
+            _setter("kms_key_id", kms_key_id)
         if protocol_type is not None:
-            pulumi.set(__self__, "protocol_type", protocol_type)
+            _setter("protocol_type", protocol_type)
         if storage_type is not None:
-            pulumi.set(__self__, "storage_type", storage_type)
+            _setter("storage_type", storage_type)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -623,6 +721,10 @@ class FileSystem(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FileSystemArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

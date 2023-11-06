@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['QosCarArgs', 'QosCar']
@@ -37,23 +37,72 @@ class QosCarArgs:
         :param pulumi.Input[str] name: The name of the QoS speed limiting rule..
         :param pulumi.Input[str] percent_source_type: The bandwidth type when the speed is limited based on percentage. Valid values: CcnBandwidth, InternetUpBandwidth.The default value is InternetUpBandwidth.
         """
-        pulumi.set(__self__, "limit_type", limit_type)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "qos_id", qos_id)
+        QosCarArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            limit_type=limit_type,
+            priority=priority,
+            qos_id=qos_id,
+            description=description,
+            max_bandwidth_abs=max_bandwidth_abs,
+            max_bandwidth_percent=max_bandwidth_percent,
+            min_bandwidth_abs=min_bandwidth_abs,
+            min_bandwidth_percent=min_bandwidth_percent,
+            name=name,
+            percent_source_type=percent_source_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             limit_type: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             qos_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             max_bandwidth_abs: Optional[pulumi.Input[int]] = None,
+             max_bandwidth_percent: Optional[pulumi.Input[int]] = None,
+             min_bandwidth_abs: Optional[pulumi.Input[int]] = None,
+             min_bandwidth_percent: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             percent_source_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if limit_type is None and 'limitType' in kwargs:
+            limit_type = kwargs['limitType']
+        if limit_type is None:
+            raise TypeError("Missing 'limit_type' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if qos_id is None and 'qosId' in kwargs:
+            qos_id = kwargs['qosId']
+        if qos_id is None:
+            raise TypeError("Missing 'qos_id' argument")
+        if max_bandwidth_abs is None and 'maxBandwidthAbs' in kwargs:
+            max_bandwidth_abs = kwargs['maxBandwidthAbs']
+        if max_bandwidth_percent is None and 'maxBandwidthPercent' in kwargs:
+            max_bandwidth_percent = kwargs['maxBandwidthPercent']
+        if min_bandwidth_abs is None and 'minBandwidthAbs' in kwargs:
+            min_bandwidth_abs = kwargs['minBandwidthAbs']
+        if min_bandwidth_percent is None and 'minBandwidthPercent' in kwargs:
+            min_bandwidth_percent = kwargs['minBandwidthPercent']
+        if percent_source_type is None and 'percentSourceType' in kwargs:
+            percent_source_type = kwargs['percentSourceType']
+
+        _setter("limit_type", limit_type)
+        _setter("priority", priority)
+        _setter("qos_id", qos_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if max_bandwidth_abs is not None:
-            pulumi.set(__self__, "max_bandwidth_abs", max_bandwidth_abs)
+            _setter("max_bandwidth_abs", max_bandwidth_abs)
         if max_bandwidth_percent is not None:
-            pulumi.set(__self__, "max_bandwidth_percent", max_bandwidth_percent)
+            _setter("max_bandwidth_percent", max_bandwidth_percent)
         if min_bandwidth_abs is not None:
-            pulumi.set(__self__, "min_bandwidth_abs", min_bandwidth_abs)
+            _setter("min_bandwidth_abs", min_bandwidth_abs)
         if min_bandwidth_percent is not None:
-            pulumi.set(__self__, "min_bandwidth_percent", min_bandwidth_percent)
+            _setter("min_bandwidth_percent", min_bandwidth_percent)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if percent_source_type is not None:
-            pulumi.set(__self__, "percent_source_type", percent_source_type)
+            _setter("percent_source_type", percent_source_type)
 
     @property
     @pulumi.getter(name="limitType")
@@ -202,26 +251,69 @@ class _QosCarState:
         :param pulumi.Input[int] priority: The priority of the specified stream.
         :param pulumi.Input[str] qos_id: The instance ID of the QoS.
         """
+        _QosCarState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            limit_type=limit_type,
+            max_bandwidth_abs=max_bandwidth_abs,
+            max_bandwidth_percent=max_bandwidth_percent,
+            min_bandwidth_abs=min_bandwidth_abs,
+            min_bandwidth_percent=min_bandwidth_percent,
+            name=name,
+            percent_source_type=percent_source_type,
+            priority=priority,
+            qos_id=qos_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             limit_type: Optional[pulumi.Input[str]] = None,
+             max_bandwidth_abs: Optional[pulumi.Input[int]] = None,
+             max_bandwidth_percent: Optional[pulumi.Input[int]] = None,
+             min_bandwidth_abs: Optional[pulumi.Input[int]] = None,
+             min_bandwidth_percent: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             percent_source_type: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             qos_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if limit_type is None and 'limitType' in kwargs:
+            limit_type = kwargs['limitType']
+        if max_bandwidth_abs is None and 'maxBandwidthAbs' in kwargs:
+            max_bandwidth_abs = kwargs['maxBandwidthAbs']
+        if max_bandwidth_percent is None and 'maxBandwidthPercent' in kwargs:
+            max_bandwidth_percent = kwargs['maxBandwidthPercent']
+        if min_bandwidth_abs is None and 'minBandwidthAbs' in kwargs:
+            min_bandwidth_abs = kwargs['minBandwidthAbs']
+        if min_bandwidth_percent is None and 'minBandwidthPercent' in kwargs:
+            min_bandwidth_percent = kwargs['minBandwidthPercent']
+        if percent_source_type is None and 'percentSourceType' in kwargs:
+            percent_source_type = kwargs['percentSourceType']
+        if qos_id is None and 'qosId' in kwargs:
+            qos_id = kwargs['qosId']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if limit_type is not None:
-            pulumi.set(__self__, "limit_type", limit_type)
+            _setter("limit_type", limit_type)
         if max_bandwidth_abs is not None:
-            pulumi.set(__self__, "max_bandwidth_abs", max_bandwidth_abs)
+            _setter("max_bandwidth_abs", max_bandwidth_abs)
         if max_bandwidth_percent is not None:
-            pulumi.set(__self__, "max_bandwidth_percent", max_bandwidth_percent)
+            _setter("max_bandwidth_percent", max_bandwidth_percent)
         if min_bandwidth_abs is not None:
-            pulumi.set(__self__, "min_bandwidth_abs", min_bandwidth_abs)
+            _setter("min_bandwidth_abs", min_bandwidth_abs)
         if min_bandwidth_percent is not None:
-            pulumi.set(__self__, "min_bandwidth_percent", min_bandwidth_percent)
+            _setter("min_bandwidth_percent", min_bandwidth_percent)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if percent_source_type is not None:
-            pulumi.set(__self__, "percent_source_type", percent_source_type)
+            _setter("percent_source_type", percent_source_type)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if qos_id is not None:
-            pulumi.set(__self__, "qos_id", qos_id)
+            _setter("qos_id", qos_id)
 
     @property
     @pulumi.getter
@@ -475,6 +567,10 @@ class QosCar(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            QosCarArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

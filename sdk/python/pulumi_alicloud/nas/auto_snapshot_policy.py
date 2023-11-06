@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AutoSnapshotPolicyArgs', 'AutoSnapshotPolicy']
@@ -34,12 +34,41 @@ class AutoSnapshotPolicyArgs:
         :param pulumi.Input[int] retention_days: The number of days for which you want to retain auto snapshots. Unit: days. Valid values:
                - `-1`: the default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
         """
-        pulumi.set(__self__, "repeat_weekdays", repeat_weekdays)
-        pulumi.set(__self__, "time_points", time_points)
+        AutoSnapshotPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            repeat_weekdays=repeat_weekdays,
+            time_points=time_points,
+            auto_snapshot_policy_name=auto_snapshot_policy_name,
+            retention_days=retention_days,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             time_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             auto_snapshot_policy_name: Optional[pulumi.Input[str]] = None,
+             retention_days: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if repeat_weekdays is None and 'repeatWeekdays' in kwargs:
+            repeat_weekdays = kwargs['repeatWeekdays']
+        if repeat_weekdays is None:
+            raise TypeError("Missing 'repeat_weekdays' argument")
+        if time_points is None and 'timePoints' in kwargs:
+            time_points = kwargs['timePoints']
+        if time_points is None:
+            raise TypeError("Missing 'time_points' argument")
+        if auto_snapshot_policy_name is None and 'autoSnapshotPolicyName' in kwargs:
+            auto_snapshot_policy_name = kwargs['autoSnapshotPolicyName']
+        if retention_days is None and 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+
+        _setter("repeat_weekdays", repeat_weekdays)
+        _setter("time_points", time_points)
         if auto_snapshot_policy_name is not None:
-            pulumi.set(__self__, "auto_snapshot_policy_name", auto_snapshot_policy_name)
+            _setter("auto_snapshot_policy_name", auto_snapshot_policy_name)
         if retention_days is not None:
-            pulumi.set(__self__, "retention_days", retention_days)
+            _setter("retention_days", retention_days)
 
     @property
     @pulumi.getter(name="repeatWeekdays")
@@ -124,16 +153,43 @@ class _AutoSnapshotPolicyState:
                - A maximum of 24 time points can be selected.
                - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
         """
+        _AutoSnapshotPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_snapshot_policy_name=auto_snapshot_policy_name,
+            repeat_weekdays=repeat_weekdays,
+            retention_days=retention_days,
+            status=status,
+            time_points=time_points,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_snapshot_policy_name: Optional[pulumi.Input[str]] = None,
+             repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             retention_days: Optional[pulumi.Input[int]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             time_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_snapshot_policy_name is None and 'autoSnapshotPolicyName' in kwargs:
+            auto_snapshot_policy_name = kwargs['autoSnapshotPolicyName']
+        if repeat_weekdays is None and 'repeatWeekdays' in kwargs:
+            repeat_weekdays = kwargs['repeatWeekdays']
+        if retention_days is None and 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+        if time_points is None and 'timePoints' in kwargs:
+            time_points = kwargs['timePoints']
+
         if auto_snapshot_policy_name is not None:
-            pulumi.set(__self__, "auto_snapshot_policy_name", auto_snapshot_policy_name)
+            _setter("auto_snapshot_policy_name", auto_snapshot_policy_name)
         if repeat_weekdays is not None:
-            pulumi.set(__self__, "repeat_weekdays", repeat_weekdays)
+            _setter("repeat_weekdays", repeat_weekdays)
         if retention_days is not None:
-            pulumi.set(__self__, "retention_days", retention_days)
+            _setter("retention_days", retention_days)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if time_points is not None:
-            pulumi.set(__self__, "time_points", time_points)
+            _setter("time_points", time_points)
 
     @property
     @pulumi.getter(name="autoSnapshotPolicyName")
@@ -323,6 +379,10 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AutoSnapshotPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

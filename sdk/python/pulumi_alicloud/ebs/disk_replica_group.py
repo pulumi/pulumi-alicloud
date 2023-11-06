@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DiskReplicaGroupArgs', 'DiskReplicaGroup']
@@ -31,16 +31,57 @@ class DiskReplicaGroupArgs:
         :param pulumi.Input[str] group_name: Consistent replication group name.
         :param pulumi.Input[int] rpo: The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
         """
-        pulumi.set(__self__, "destination_region_id", destination_region_id)
-        pulumi.set(__self__, "destination_zone_id", destination_zone_id)
-        pulumi.set(__self__, "source_region_id", source_region_id)
-        pulumi.set(__self__, "source_zone_id", source_zone_id)
+        DiskReplicaGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            destination_region_id=destination_region_id,
+            destination_zone_id=destination_zone_id,
+            source_region_id=source_region_id,
+            source_zone_id=source_zone_id,
+            description=description,
+            group_name=group_name,
+            rpo=rpo,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             destination_region_id: Optional[pulumi.Input[str]] = None,
+             destination_zone_id: Optional[pulumi.Input[str]] = None,
+             source_region_id: Optional[pulumi.Input[str]] = None,
+             source_zone_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             group_name: Optional[pulumi.Input[str]] = None,
+             rpo: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if destination_region_id is None and 'destinationRegionId' in kwargs:
+            destination_region_id = kwargs['destinationRegionId']
+        if destination_region_id is None:
+            raise TypeError("Missing 'destination_region_id' argument")
+        if destination_zone_id is None and 'destinationZoneId' in kwargs:
+            destination_zone_id = kwargs['destinationZoneId']
+        if destination_zone_id is None:
+            raise TypeError("Missing 'destination_zone_id' argument")
+        if source_region_id is None and 'sourceRegionId' in kwargs:
+            source_region_id = kwargs['sourceRegionId']
+        if source_region_id is None:
+            raise TypeError("Missing 'source_region_id' argument")
+        if source_zone_id is None and 'sourceZoneId' in kwargs:
+            source_zone_id = kwargs['sourceZoneId']
+        if source_zone_id is None:
+            raise TypeError("Missing 'source_zone_id' argument")
+        if group_name is None and 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+
+        _setter("destination_region_id", destination_region_id)
+        _setter("destination_zone_id", destination_zone_id)
+        _setter("source_region_id", source_region_id)
+        _setter("source_zone_id", source_zone_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if group_name is not None:
-            pulumi.set(__self__, "group_name", group_name)
+            _setter("group_name", group_name)
         if rpo is not None:
-            pulumi.set(__self__, "rpo", rpo)
+            _setter("rpo", rpo)
 
     @property
     @pulumi.getter(name="destinationRegionId")
@@ -149,22 +190,57 @@ class _DiskReplicaGroupState:
         :param pulumi.Input[str] source_zone_id: The ID of the zone to which the production site belongs.
         :param pulumi.Input[str] status: The status of the consistent replication group.
         """
+        _DiskReplicaGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            destination_region_id=destination_region_id,
+            destination_zone_id=destination_zone_id,
+            group_name=group_name,
+            rpo=rpo,
+            source_region_id=source_region_id,
+            source_zone_id=source_zone_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             destination_region_id: Optional[pulumi.Input[str]] = None,
+             destination_zone_id: Optional[pulumi.Input[str]] = None,
+             group_name: Optional[pulumi.Input[str]] = None,
+             rpo: Optional[pulumi.Input[int]] = None,
+             source_region_id: Optional[pulumi.Input[str]] = None,
+             source_zone_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if destination_region_id is None and 'destinationRegionId' in kwargs:
+            destination_region_id = kwargs['destinationRegionId']
+        if destination_zone_id is None and 'destinationZoneId' in kwargs:
+            destination_zone_id = kwargs['destinationZoneId']
+        if group_name is None and 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if source_region_id is None and 'sourceRegionId' in kwargs:
+            source_region_id = kwargs['sourceRegionId']
+        if source_zone_id is None and 'sourceZoneId' in kwargs:
+            source_zone_id = kwargs['sourceZoneId']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if destination_region_id is not None:
-            pulumi.set(__self__, "destination_region_id", destination_region_id)
+            _setter("destination_region_id", destination_region_id)
         if destination_zone_id is not None:
-            pulumi.set(__self__, "destination_zone_id", destination_zone_id)
+            _setter("destination_zone_id", destination_zone_id)
         if group_name is not None:
-            pulumi.set(__self__, "group_name", group_name)
+            _setter("group_name", group_name)
         if rpo is not None:
-            pulumi.set(__self__, "rpo", rpo)
+            _setter("rpo", rpo)
         if source_region_id is not None:
-            pulumi.set(__self__, "source_region_id", source_region_id)
+            _setter("source_region_id", source_region_id)
         if source_zone_id is not None:
-            pulumi.set(__self__, "source_zone_id", source_zone_id)
+            _setter("source_zone_id", source_zone_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter
@@ -332,6 +408,10 @@ class DiskReplicaGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DiskReplicaGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

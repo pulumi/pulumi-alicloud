@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AuditLogConfigArgs', 'AuditLogConfig']
@@ -29,11 +29,32 @@ class AuditLogConfigArgs:
                
                > **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
         """
-        pulumi.set(__self__, "instance_id", instance_id)
+        AuditLogConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_id=instance_id,
+            db_audit=db_audit,
+            retention=retention,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_id: Optional[pulumi.Input[str]] = None,
+             db_audit: Optional[pulumi.Input[bool]] = None,
+             retention: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if db_audit is None and 'dbAudit' in kwargs:
+            db_audit = kwargs['dbAudit']
+
+        _setter("instance_id", instance_id)
         if db_audit is not None:
-            pulumi.set(__self__, "db_audit", db_audit)
+            _setter("db_audit", db_audit)
         if retention is not None:
-            pulumi.set(__self__, "retention", retention)
+            _setter("retention", retention)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -100,16 +121,41 @@ class _AuditLogConfigState:
                > **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
         :param pulumi.Input[str] status: The status of the resource.
         """
+        _AuditLogConfigState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            db_audit=db_audit,
+            instance_id=instance_id,
+            retention=retention,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             db_audit: Optional[pulumi.Input[bool]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             retention: Optional[pulumi.Input[int]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if db_audit is None and 'dbAudit' in kwargs:
+            db_audit = kwargs['dbAudit']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if db_audit is not None:
-            pulumi.set(__self__, "db_audit", db_audit)
+            _setter("db_audit", db_audit)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if retention is not None:
-            pulumi.set(__self__, "retention", retention)
+            _setter("retention", retention)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="createTime")
@@ -331,6 +377,10 @@ class AuditLogConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AuditLogConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

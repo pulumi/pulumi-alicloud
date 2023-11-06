@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AlidnsRecordArgs', 'AlidnsRecord']
@@ -39,24 +39,67 @@ class AlidnsRecordArgs:
         :param pulumi.Input[int] ttl: The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.
         :param pulumi.Input[str] user_client_ip: The IP address of the client.
         """
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "rr", rr)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "value", value)
+        AlidnsRecordArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain_name=domain_name,
+            rr=rr,
+            type=type,
+            value=value,
+            lang=lang,
+            line=line,
+            priority=priority,
+            remark=remark,
+            status=status,
+            ttl=ttl,
+            user_client_ip=user_client_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain_name: Optional[pulumi.Input[str]] = None,
+             rr: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             lang: Optional[pulumi.Input[str]] = None,
+             line: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             remark: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             ttl: Optional[pulumi.Input[int]] = None,
+             user_client_ip: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if domain_name is None and 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if rr is None:
+            raise TypeError("Missing 'rr' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if user_client_ip is None and 'userClientIp' in kwargs:
+            user_client_ip = kwargs['userClientIp']
+
+        _setter("domain_name", domain_name)
+        _setter("rr", rr)
+        _setter("type", type)
+        _setter("value", value)
         if lang is not None:
-            pulumi.set(__self__, "lang", lang)
+            _setter("lang", lang)
         if line is not None:
-            pulumi.set(__self__, "line", line)
+            _setter("line", line)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if remark is not None:
-            pulumi.set(__self__, "remark", remark)
+            _setter("remark", remark)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if ttl is not None:
-            pulumi.set(__self__, "ttl", ttl)
+            _setter("ttl", ttl)
         if user_client_ip is not None:
-            pulumi.set(__self__, "user_client_ip", user_client_ip)
+            _setter("user_client_ip", user_client_ip)
 
     @property
     @pulumi.getter(name="domainName")
@@ -219,28 +262,63 @@ class _AlidnsRecordState:
         :param pulumi.Input[str] user_client_ip: The IP address of the client.
         :param pulumi.Input[str] value: The value of domain record, When the `type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `value` as a fully qualified domain name, so it's no need to add a `.` at the end.
         """
+        _AlidnsRecordState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain_name=domain_name,
+            lang=lang,
+            line=line,
+            priority=priority,
+            remark=remark,
+            rr=rr,
+            status=status,
+            ttl=ttl,
+            type=type,
+            user_client_ip=user_client_ip,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain_name: Optional[pulumi.Input[str]] = None,
+             lang: Optional[pulumi.Input[str]] = None,
+             line: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             remark: Optional[pulumi.Input[str]] = None,
+             rr: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             ttl: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             user_client_ip: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if domain_name is None and 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if user_client_ip is None and 'userClientIp' in kwargs:
+            user_client_ip = kwargs['userClientIp']
+
         if domain_name is not None:
-            pulumi.set(__self__, "domain_name", domain_name)
+            _setter("domain_name", domain_name)
         if lang is not None:
-            pulumi.set(__self__, "lang", lang)
+            _setter("lang", lang)
         if line is not None:
-            pulumi.set(__self__, "line", line)
+            _setter("line", line)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if remark is not None:
-            pulumi.set(__self__, "remark", remark)
+            _setter("remark", remark)
         if rr is not None:
-            pulumi.set(__self__, "rr", rr)
+            _setter("rr", rr)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if ttl is not None:
-            pulumi.set(__self__, "ttl", ttl)
+            _setter("ttl", ttl)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if user_client_ip is not None:
-            pulumi.set(__self__, "user_client_ip", user_client_ip)
+            _setter("user_client_ip", user_client_ip)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter(name="domainName")
@@ -498,6 +576,10 @@ class AlidnsRecord(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AlidnsRecordArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

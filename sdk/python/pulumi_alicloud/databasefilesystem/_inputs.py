@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -20,8 +20,21 @@ class InstanceEcsListArgs:
         """
         :param pulumi.Input[str] ecs_id: The ID of the ECS instance.
         """
+        InstanceEcsListArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ecs_id=ecs_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ecs_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ecs_id is None and 'ecsId' in kwargs:
+            ecs_id = kwargs['ecsId']
+
         if ecs_id is not None:
-            pulumi.set(__self__, "ecs_id", ecs_id)
+            _setter("ecs_id", ecs_id)
 
     @property
     @pulumi.getter(name="ecsId")

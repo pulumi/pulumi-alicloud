@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['NamespaceArgs', 'Namespace']
@@ -27,12 +27,39 @@ class NamespaceArgs:
         :param pulumi.Input[bool] debug_enable: Specifies whether to enable remote debugging.
         :param pulumi.Input[str] description: The description of the namespace, The description can be up to `128` characters in length.
         """
-        pulumi.set(__self__, "namespace_logical_id", namespace_logical_id)
-        pulumi.set(__self__, "namespace_name", namespace_name)
+        NamespaceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            namespace_logical_id=namespace_logical_id,
+            namespace_name=namespace_name,
+            debug_enable=debug_enable,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             namespace_logical_id: Optional[pulumi.Input[str]] = None,
+             namespace_name: Optional[pulumi.Input[str]] = None,
+             debug_enable: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if namespace_logical_id is None and 'namespaceLogicalId' in kwargs:
+            namespace_logical_id = kwargs['namespaceLogicalId']
+        if namespace_logical_id is None:
+            raise TypeError("Missing 'namespace_logical_id' argument")
+        if namespace_name is None and 'namespaceName' in kwargs:
+            namespace_name = kwargs['namespaceName']
+        if namespace_name is None:
+            raise TypeError("Missing 'namespace_name' argument")
+        if debug_enable is None and 'debugEnable' in kwargs:
+            debug_enable = kwargs['debugEnable']
+
+        _setter("namespace_logical_id", namespace_logical_id)
+        _setter("namespace_name", namespace_name)
         if debug_enable is not None:
-            pulumi.set(__self__, "debug_enable", debug_enable)
+            _setter("debug_enable", debug_enable)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="namespaceLogicalId")
@@ -101,14 +128,37 @@ class _NamespaceState:
                - The ID of the default namespace is in the `region ID` format. An example is cn-beijing.
         :param pulumi.Input[str] namespace_name: The name of the namespace, The name can be up to `63` characters in length.
         """
+        _NamespaceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            debug_enable=debug_enable,
+            description=description,
+            namespace_logical_id=namespace_logical_id,
+            namespace_name=namespace_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             debug_enable: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             namespace_logical_id: Optional[pulumi.Input[str]] = None,
+             namespace_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if debug_enable is None and 'debugEnable' in kwargs:
+            debug_enable = kwargs['debugEnable']
+        if namespace_logical_id is None and 'namespaceLogicalId' in kwargs:
+            namespace_logical_id = kwargs['namespaceLogicalId']
+        if namespace_name is None and 'namespaceName' in kwargs:
+            namespace_name = kwargs['namespaceName']
+
         if debug_enable is not None:
-            pulumi.set(__self__, "debug_enable", debug_enable)
+            _setter("debug_enable", debug_enable)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if namespace_logical_id is not None:
-            pulumi.set(__self__, "namespace_logical_id", namespace_logical_id)
+            _setter("namespace_logical_id", namespace_logical_id)
         if namespace_name is not None:
-            pulumi.set(__self__, "namespace_name", namespace_name)
+            _setter("namespace_name", namespace_name)
 
     @property
     @pulumi.getter(name="debugEnable")
@@ -266,6 +316,10 @@ class Namespace(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NamespaceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

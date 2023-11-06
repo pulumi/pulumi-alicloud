@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DnatEntryArgs', 'DnatEntry']
@@ -31,14 +31,61 @@ class DnatEntryArgs:
         :param pulumi.Input[str] type: The DNAT type. Valid values: Intranet: DNAT of private IP addresses. Internet: DNAT of public IP addresses
         :param pulumi.Input[str] external_ip: The external public IP address.when "type" is "Internet",automatically identify the external ip.
         """
-        pulumi.set(__self__, "external_port", external_port)
-        pulumi.set(__self__, "internal_ip", internal_ip)
-        pulumi.set(__self__, "internal_port", internal_port)
-        pulumi.set(__self__, "ip_protocol", ip_protocol)
-        pulumi.set(__self__, "sag_id", sag_id)
-        pulumi.set(__self__, "type", type)
+        DnatEntryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            external_port=external_port,
+            internal_ip=internal_ip,
+            internal_port=internal_port,
+            ip_protocol=ip_protocol,
+            sag_id=sag_id,
+            type=type,
+            external_ip=external_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             external_port: Optional[pulumi.Input[str]] = None,
+             internal_ip: Optional[pulumi.Input[str]] = None,
+             internal_port: Optional[pulumi.Input[str]] = None,
+             ip_protocol: Optional[pulumi.Input[str]] = None,
+             sag_id: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             external_ip: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if external_port is None and 'externalPort' in kwargs:
+            external_port = kwargs['externalPort']
+        if external_port is None:
+            raise TypeError("Missing 'external_port' argument")
+        if internal_ip is None and 'internalIp' in kwargs:
+            internal_ip = kwargs['internalIp']
+        if internal_ip is None:
+            raise TypeError("Missing 'internal_ip' argument")
+        if internal_port is None and 'internalPort' in kwargs:
+            internal_port = kwargs['internalPort']
+        if internal_port is None:
+            raise TypeError("Missing 'internal_port' argument")
+        if ip_protocol is None and 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if ip_protocol is None:
+            raise TypeError("Missing 'ip_protocol' argument")
+        if sag_id is None and 'sagId' in kwargs:
+            sag_id = kwargs['sagId']
+        if sag_id is None:
+            raise TypeError("Missing 'sag_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if external_ip is None and 'externalIp' in kwargs:
+            external_ip = kwargs['externalIp']
+
+        _setter("external_port", external_port)
+        _setter("internal_ip", internal_ip)
+        _setter("internal_port", internal_port)
+        _setter("ip_protocol", ip_protocol)
+        _setter("sag_id", sag_id)
+        _setter("type", type)
         if external_ip is not None:
-            pulumi.set(__self__, "external_ip", external_ip)
+            _setter("external_ip", external_ip)
 
     @property
     @pulumi.getter(name="externalPort")
@@ -145,20 +192,55 @@ class _DnatEntryState:
         :param pulumi.Input[str] sag_id: The ID of the SAG instance.
         :param pulumi.Input[str] type: The DNAT type. Valid values: Intranet: DNAT of private IP addresses. Internet: DNAT of public IP addresses
         """
+        _DnatEntryState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            external_ip=external_ip,
+            external_port=external_port,
+            internal_ip=internal_ip,
+            internal_port=internal_port,
+            ip_protocol=ip_protocol,
+            sag_id=sag_id,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             external_ip: Optional[pulumi.Input[str]] = None,
+             external_port: Optional[pulumi.Input[str]] = None,
+             internal_ip: Optional[pulumi.Input[str]] = None,
+             internal_port: Optional[pulumi.Input[str]] = None,
+             ip_protocol: Optional[pulumi.Input[str]] = None,
+             sag_id: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if external_ip is None and 'externalIp' in kwargs:
+            external_ip = kwargs['externalIp']
+        if external_port is None and 'externalPort' in kwargs:
+            external_port = kwargs['externalPort']
+        if internal_ip is None and 'internalIp' in kwargs:
+            internal_ip = kwargs['internalIp']
+        if internal_port is None and 'internalPort' in kwargs:
+            internal_port = kwargs['internalPort']
+        if ip_protocol is None and 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if sag_id is None and 'sagId' in kwargs:
+            sag_id = kwargs['sagId']
+
         if external_ip is not None:
-            pulumi.set(__self__, "external_ip", external_ip)
+            _setter("external_ip", external_ip)
         if external_port is not None:
-            pulumi.set(__self__, "external_port", external_port)
+            _setter("external_port", external_port)
         if internal_ip is not None:
-            pulumi.set(__self__, "internal_ip", internal_ip)
+            _setter("internal_ip", internal_ip)
         if internal_port is not None:
-            pulumi.set(__self__, "internal_port", internal_port)
+            _setter("internal_port", internal_port)
         if ip_protocol is not None:
-            pulumi.set(__self__, "ip_protocol", ip_protocol)
+            _setter("ip_protocol", ip_protocol)
         if sag_id is not None:
-            pulumi.set(__self__, "sag_id", sag_id)
+            _setter("sag_id", sag_id)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="externalIp")
@@ -362,6 +444,10 @@ class DnatEntry(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DnatEntryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

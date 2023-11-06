@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RouterInterfaceConnectionArgs', 'RouterInterfaceConnection']
@@ -29,14 +29,47 @@ class RouterInterfaceConnectionArgs:
                
                > **NOTE:** The value of "opposite_interface_owner_id" or "account_id" must be main account and not be sub account.
         """
-        pulumi.set(__self__, "interface_id", interface_id)
-        pulumi.set(__self__, "opposite_interface_id", opposite_interface_id)
+        RouterInterfaceConnectionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            interface_id=interface_id,
+            opposite_interface_id=opposite_interface_id,
+            opposite_interface_owner_id=opposite_interface_owner_id,
+            opposite_router_id=opposite_router_id,
+            opposite_router_type=opposite_router_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             interface_id: Optional[pulumi.Input[str]] = None,
+             opposite_interface_id: Optional[pulumi.Input[str]] = None,
+             opposite_interface_owner_id: Optional[pulumi.Input[str]] = None,
+             opposite_router_id: Optional[pulumi.Input[str]] = None,
+             opposite_router_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if interface_id is None and 'interfaceId' in kwargs:
+            interface_id = kwargs['interfaceId']
+        if interface_id is None:
+            raise TypeError("Missing 'interface_id' argument")
+        if opposite_interface_id is None and 'oppositeInterfaceId' in kwargs:
+            opposite_interface_id = kwargs['oppositeInterfaceId']
+        if opposite_interface_id is None:
+            raise TypeError("Missing 'opposite_interface_id' argument")
+        if opposite_interface_owner_id is None and 'oppositeInterfaceOwnerId' in kwargs:
+            opposite_interface_owner_id = kwargs['oppositeInterfaceOwnerId']
+        if opposite_router_id is None and 'oppositeRouterId' in kwargs:
+            opposite_router_id = kwargs['oppositeRouterId']
+        if opposite_router_type is None and 'oppositeRouterType' in kwargs:
+            opposite_router_type = kwargs['oppositeRouterType']
+
+        _setter("interface_id", interface_id)
+        _setter("opposite_interface_id", opposite_interface_id)
         if opposite_interface_owner_id is not None:
-            pulumi.set(__self__, "opposite_interface_owner_id", opposite_interface_owner_id)
+            _setter("opposite_interface_owner_id", opposite_interface_owner_id)
         if opposite_router_id is not None:
-            pulumi.set(__self__, "opposite_router_id", opposite_router_id)
+            _setter("opposite_router_id", opposite_router_id)
         if opposite_router_type is not None:
-            pulumi.set(__self__, "opposite_router_type", opposite_router_type)
+            _setter("opposite_router_type", opposite_router_type)
 
     @property
     @pulumi.getter(name="interfaceId")
@@ -119,16 +152,45 @@ class _RouterInterfaceConnectionState:
                
                > **NOTE:** The value of "opposite_interface_owner_id" or "account_id" must be main account and not be sub account.
         """
+        _RouterInterfaceConnectionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            interface_id=interface_id,
+            opposite_interface_id=opposite_interface_id,
+            opposite_interface_owner_id=opposite_interface_owner_id,
+            opposite_router_id=opposite_router_id,
+            opposite_router_type=opposite_router_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             interface_id: Optional[pulumi.Input[str]] = None,
+             opposite_interface_id: Optional[pulumi.Input[str]] = None,
+             opposite_interface_owner_id: Optional[pulumi.Input[str]] = None,
+             opposite_router_id: Optional[pulumi.Input[str]] = None,
+             opposite_router_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if interface_id is None and 'interfaceId' in kwargs:
+            interface_id = kwargs['interfaceId']
+        if opposite_interface_id is None and 'oppositeInterfaceId' in kwargs:
+            opposite_interface_id = kwargs['oppositeInterfaceId']
+        if opposite_interface_owner_id is None and 'oppositeInterfaceOwnerId' in kwargs:
+            opposite_interface_owner_id = kwargs['oppositeInterfaceOwnerId']
+        if opposite_router_id is None and 'oppositeRouterId' in kwargs:
+            opposite_router_id = kwargs['oppositeRouterId']
+        if opposite_router_type is None and 'oppositeRouterType' in kwargs:
+            opposite_router_type = kwargs['oppositeRouterType']
+
         if interface_id is not None:
-            pulumi.set(__self__, "interface_id", interface_id)
+            _setter("interface_id", interface_id)
         if opposite_interface_id is not None:
-            pulumi.set(__self__, "opposite_interface_id", opposite_interface_id)
+            _setter("opposite_interface_id", opposite_interface_id)
         if opposite_interface_owner_id is not None:
-            pulumi.set(__self__, "opposite_interface_owner_id", opposite_interface_owner_id)
+            _setter("opposite_interface_owner_id", opposite_interface_owner_id)
         if opposite_router_id is not None:
-            pulumi.set(__self__, "opposite_router_id", opposite_router_id)
+            _setter("opposite_router_id", opposite_router_id)
         if opposite_router_type is not None:
-            pulumi.set(__self__, "opposite_router_type", opposite_router_type)
+            _setter("opposite_router_type", opposite_router_type)
 
     @property
     @pulumi.getter(name="interfaceId")
@@ -370,6 +432,10 @@ class RouterInterfaceConnection(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RouterInterfaceConnectionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

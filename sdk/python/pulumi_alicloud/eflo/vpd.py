@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['VpdArgs', 'Vpd']
@@ -23,10 +23,33 @@ class VpdArgs:
         :param pulumi.Input[str] vpd_name: The Name of the VPD.
         :param pulumi.Input[str] resource_group_id: The Resource group id.
         """
-        pulumi.set(__self__, "cidr", cidr)
-        pulumi.set(__self__, "vpd_name", vpd_name)
+        VpdArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr=cidr,
+            vpd_name=vpd_name,
+            resource_group_id=resource_group_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr: Optional[pulumi.Input[str]] = None,
+             vpd_name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cidr is None:
+            raise TypeError("Missing 'cidr' argument")
+        if vpd_name is None and 'vpdName' in kwargs:
+            vpd_name = kwargs['vpdName']
+        if vpd_name is None:
+            raise TypeError("Missing 'vpd_name' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
+        _setter("cidr", cidr)
+        _setter("vpd_name", vpd_name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
 
     @property
     @pulumi.getter
@@ -83,18 +106,47 @@ class _VpdState:
         :param pulumi.Input[str] status: The Vpd status.
         :param pulumi.Input[str] vpd_name: The Name of the VPD.
         """
+        _VpdState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr=cidr,
+            create_time=create_time,
+            gmt_modified=gmt_modified,
+            resource_group_id=resource_group_id,
+            status=status,
+            vpd_name=vpd_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             gmt_modified: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             vpd_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if gmt_modified is None and 'gmtModified' in kwargs:
+            gmt_modified = kwargs['gmtModified']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if vpd_name is None and 'vpdName' in kwargs:
+            vpd_name = kwargs['vpdName']
+
         if cidr is not None:
-            pulumi.set(__self__, "cidr", cidr)
+            _setter("cidr", cidr)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if gmt_modified is not None:
-            pulumi.set(__self__, "gmt_modified", gmt_modified)
+            _setter("gmt_modified", gmt_modified)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if vpd_name is not None:
-            pulumi.set(__self__, "vpd_name", vpd_name)
+            _setter("vpd_name", vpd_name)
 
     @property
     @pulumi.getter
@@ -268,6 +320,10 @@ class Vpd(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            VpdArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

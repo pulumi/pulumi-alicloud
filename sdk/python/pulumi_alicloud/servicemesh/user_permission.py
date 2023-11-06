@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -23,9 +23,26 @@ class UserPermissionArgs:
         :param pulumi.Input[str] sub_account_user_id: The configuration of the Load Balancer. See the following `Block load_balancer`.
         :param pulumi.Input[Sequence[pulumi.Input['UserPermissionPermissionArgs']]] permissions: List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
         """
-        pulumi.set(__self__, "sub_account_user_id", sub_account_user_id)
+        UserPermissionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            sub_account_user_id=sub_account_user_id,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             sub_account_user_id: Optional[pulumi.Input[str]] = None,
+             permissions: Optional[pulumi.Input[Sequence[pulumi.Input['UserPermissionPermissionArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if sub_account_user_id is None and 'subAccountUserId' in kwargs:
+            sub_account_user_id = kwargs['subAccountUserId']
+        if sub_account_user_id is None:
+            raise TypeError("Missing 'sub_account_user_id' argument")
+
+        _setter("sub_account_user_id", sub_account_user_id)
         if permissions is not None:
-            pulumi.set(__self__, "permissions", permissions)
+            _setter("permissions", permissions)
 
     @property
     @pulumi.getter(name="subAccountUserId")
@@ -62,10 +79,25 @@ class _UserPermissionState:
         :param pulumi.Input[Sequence[pulumi.Input['UserPermissionPermissionArgs']]] permissions: List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
         :param pulumi.Input[str] sub_account_user_id: The configuration of the Load Balancer. See the following `Block load_balancer`.
         """
+        _UserPermissionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            permissions=permissions,
+            sub_account_user_id=sub_account_user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             permissions: Optional[pulumi.Input[Sequence[pulumi.Input['UserPermissionPermissionArgs']]]] = None,
+             sub_account_user_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if sub_account_user_id is None and 'subAccountUserId' in kwargs:
+            sub_account_user_id = kwargs['subAccountUserId']
+
         if permissions is not None:
-            pulumi.set(__self__, "permissions", permissions)
+            _setter("permissions", permissions)
         if sub_account_user_id is not None:
-            pulumi.set(__self__, "sub_account_user_id", sub_account_user_id)
+            _setter("sub_account_user_id", sub_account_user_id)
 
     @property
     @pulumi.getter
@@ -151,6 +183,10 @@ class UserPermission(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            UserPermissionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

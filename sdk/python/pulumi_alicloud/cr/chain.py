@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,16 +31,51 @@ class ChainArgs:
         :param pulumi.Input[str] repo_name: The name of CR Enterprise Edition repository. **NOTE:** This parameter must specify a correct value, otherwise the created resource will be incorrect.
         :param pulumi.Input[str] repo_namespace_name: The name of CR Enterprise Edition namespace. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
         """
-        pulumi.set(__self__, "chain_name", chain_name)
-        pulumi.set(__self__, "instance_id", instance_id)
+        ChainArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            chain_name=chain_name,
+            instance_id=instance_id,
+            chain_configs=chain_configs,
+            description=description,
+            repo_name=repo_name,
+            repo_namespace_name=repo_namespace_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             chain_name: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             chain_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             repo_name: Optional[pulumi.Input[str]] = None,
+             repo_namespace_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if chain_name is None and 'chainName' in kwargs:
+            chain_name = kwargs['chainName']
+        if chain_name is None:
+            raise TypeError("Missing 'chain_name' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if chain_configs is None and 'chainConfigs' in kwargs:
+            chain_configs = kwargs['chainConfigs']
+        if repo_name is None and 'repoName' in kwargs:
+            repo_name = kwargs['repoName']
+        if repo_namespace_name is None and 'repoNamespaceName' in kwargs:
+            repo_namespace_name = kwargs['repoNamespaceName']
+
+        _setter("chain_name", chain_name)
+        _setter("instance_id", instance_id)
         if chain_configs is not None:
-            pulumi.set(__self__, "chain_configs", chain_configs)
+            _setter("chain_configs", chain_configs)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if repo_name is not None:
-            pulumi.set(__self__, "repo_name", repo_name)
+            _setter("repo_name", repo_name)
         if repo_namespace_name is not None:
-            pulumi.set(__self__, "repo_namespace_name", repo_namespace_name)
+            _setter("repo_namespace_name", repo_namespace_name)
 
     @property
     @pulumi.getter(name="chainName")
@@ -135,20 +170,55 @@ class _ChainState:
         :param pulumi.Input[str] repo_name: The name of CR Enterprise Edition repository. **NOTE:** This parameter must specify a correct value, otherwise the created resource will be incorrect.
         :param pulumi.Input[str] repo_namespace_name: The name of CR Enterprise Edition namespace. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
         """
+        _ChainState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            chain_configs=chain_configs,
+            chain_id=chain_id,
+            chain_name=chain_name,
+            description=description,
+            instance_id=instance_id,
+            repo_name=repo_name,
+            repo_namespace_name=repo_namespace_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             chain_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigArgs']]]] = None,
+             chain_id: Optional[pulumi.Input[str]] = None,
+             chain_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             repo_name: Optional[pulumi.Input[str]] = None,
+             repo_namespace_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if chain_configs is None and 'chainConfigs' in kwargs:
+            chain_configs = kwargs['chainConfigs']
+        if chain_id is None and 'chainId' in kwargs:
+            chain_id = kwargs['chainId']
+        if chain_name is None and 'chainName' in kwargs:
+            chain_name = kwargs['chainName']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if repo_name is None and 'repoName' in kwargs:
+            repo_name = kwargs['repoName']
+        if repo_namespace_name is None and 'repoNamespaceName' in kwargs:
+            repo_namespace_name = kwargs['repoNamespaceName']
+
         if chain_configs is not None:
-            pulumi.set(__self__, "chain_configs", chain_configs)
+            _setter("chain_configs", chain_configs)
         if chain_id is not None:
-            pulumi.set(__self__, "chain_id", chain_id)
+            _setter("chain_id", chain_id)
         if chain_name is not None:
-            pulumi.set(__self__, "chain_name", chain_name)
+            _setter("chain_name", chain_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if repo_name is not None:
-            pulumi.set(__self__, "repo_name", repo_name)
+            _setter("repo_name", repo_name)
         if repo_namespace_name is not None:
-            pulumi.set(__self__, "repo_namespace_name", repo_namespace_name)
+            _setter("repo_namespace_name", repo_namespace_name)
 
     @property
     @pulumi.getter(name="chainConfigs")
@@ -592,6 +662,10 @@ class Chain(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ChainArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -39,14 +39,67 @@ class GetBindingsBindingResult(dict):
         :param str source_exchange: The Source Exchange Name.
         :param str virtual_host_name: Virtualhost Name.
         """
-        pulumi.set(__self__, "argument", argument)
-        pulumi.set(__self__, "binding_key", binding_key)
-        pulumi.set(__self__, "binding_type", binding_type)
-        pulumi.set(__self__, "destination_name", destination_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "source_exchange", source_exchange)
-        pulumi.set(__self__, "virtual_host_name", virtual_host_name)
+        GetBindingsBindingResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            argument=argument,
+            binding_key=binding_key,
+            binding_type=binding_type,
+            destination_name=destination_name,
+            id=id,
+            instance_id=instance_id,
+            source_exchange=source_exchange,
+            virtual_host_name=virtual_host_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             argument: Optional[str] = None,
+             binding_key: Optional[str] = None,
+             binding_type: Optional[str] = None,
+             destination_name: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             source_exchange: Optional[str] = None,
+             virtual_host_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if argument is None:
+            raise TypeError("Missing 'argument' argument")
+        if binding_key is None and 'bindingKey' in kwargs:
+            binding_key = kwargs['bindingKey']
+        if binding_key is None:
+            raise TypeError("Missing 'binding_key' argument")
+        if binding_type is None and 'bindingType' in kwargs:
+            binding_type = kwargs['bindingType']
+        if binding_type is None:
+            raise TypeError("Missing 'binding_type' argument")
+        if destination_name is None and 'destinationName' in kwargs:
+            destination_name = kwargs['destinationName']
+        if destination_name is None:
+            raise TypeError("Missing 'destination_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if source_exchange is None and 'sourceExchange' in kwargs:
+            source_exchange = kwargs['sourceExchange']
+        if source_exchange is None:
+            raise TypeError("Missing 'source_exchange' argument")
+        if virtual_host_name is None and 'virtualHostName' in kwargs:
+            virtual_host_name = kwargs['virtualHostName']
+        if virtual_host_name is None:
+            raise TypeError("Missing 'virtual_host_name' argument")
+
+        _setter("argument", argument)
+        _setter("binding_key", binding_key)
+        _setter("binding_type", binding_type)
+        _setter("destination_name", destination_name)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("source_exchange", source_exchange)
+        _setter("virtual_host_name", virtual_host_name)
 
     @property
     @pulumi.getter
@@ -134,14 +187,67 @@ class GetExchangesExchangeResult(dict):
         :param str instance_id: The ID of the instance.
         :param str virtual_host_name: The name of virtual host where an exchange resides.
         """
-        pulumi.set(__self__, "attributes", attributes)
-        pulumi.set(__self__, "auto_delete_state", auto_delete_state)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "exchange_name", exchange_name)
-        pulumi.set(__self__, "exchange_type", exchange_type)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "virtual_host_name", virtual_host_name)
+        GetExchangesExchangeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attributes=attributes,
+            auto_delete_state=auto_delete_state,
+            create_time=create_time,
+            exchange_name=exchange_name,
+            exchange_type=exchange_type,
+            id=id,
+            instance_id=instance_id,
+            virtual_host_name=virtual_host_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attributes: Optional[Mapping[str, Any]] = None,
+             auto_delete_state: Optional[bool] = None,
+             create_time: Optional[str] = None,
+             exchange_name: Optional[str] = None,
+             exchange_type: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             virtual_host_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if attributes is None:
+            raise TypeError("Missing 'attributes' argument")
+        if auto_delete_state is None and 'autoDeleteState' in kwargs:
+            auto_delete_state = kwargs['autoDeleteState']
+        if auto_delete_state is None:
+            raise TypeError("Missing 'auto_delete_state' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if exchange_name is None and 'exchangeName' in kwargs:
+            exchange_name = kwargs['exchangeName']
+        if exchange_name is None:
+            raise TypeError("Missing 'exchange_name' argument")
+        if exchange_type is None and 'exchangeType' in kwargs:
+            exchange_type = kwargs['exchangeType']
+        if exchange_type is None:
+            raise TypeError("Missing 'exchange_type' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if virtual_host_name is None and 'virtualHostName' in kwargs:
+            virtual_host_name = kwargs['virtualHostName']
+        if virtual_host_name is None:
+            raise TypeError("Missing 'virtual_host_name' argument")
+
+        _setter("attributes", attributes)
+        _setter("auto_delete_state", auto_delete_state)
+        _setter("create_time", create_time)
+        _setter("exchange_name", exchange_name)
+        _setter("exchange_type", exchange_type)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("virtual_host_name", virtual_host_name)
 
     @property
     @pulumi.getter
@@ -241,20 +347,109 @@ class GetInstancesInstanceResult(dict):
         :param str status: The status of the resource.
         :param bool support_eip: Whether to support eip.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "expire_time", expire_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "private_end_point", private_end_point)
-        pulumi.set(__self__, "public_endpoint", public_endpoint)
-        pulumi.set(__self__, "renewal_duration", renewal_duration)
-        pulumi.set(__self__, "renewal_duration_unit", renewal_duration_unit)
-        pulumi.set(__self__, "renewal_status", renewal_status)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "support_eip", support_eip)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            expire_time=expire_time,
+            id=id,
+            instance_id=instance_id,
+            instance_name=instance_name,
+            instance_type=instance_type,
+            payment_type=payment_type,
+            private_end_point=private_end_point,
+            public_endpoint=public_endpoint,
+            renewal_duration=renewal_duration,
+            renewal_duration_unit=renewal_duration_unit,
+            renewal_status=renewal_status,
+            status=status,
+            support_eip=support_eip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[str] = None,
+             expire_time: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             instance_name: Optional[str] = None,
+             instance_type: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             private_end_point: Optional[str] = None,
+             public_endpoint: Optional[str] = None,
+             renewal_duration: Optional[int] = None,
+             renewal_duration_unit: Optional[str] = None,
+             renewal_status: Optional[str] = None,
+             status: Optional[str] = None,
+             support_eip: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if expire_time is None and 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if expire_time is None:
+            raise TypeError("Missing 'expire_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if instance_type is None and 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if private_end_point is None and 'privateEndPoint' in kwargs:
+            private_end_point = kwargs['privateEndPoint']
+        if private_end_point is None:
+            raise TypeError("Missing 'private_end_point' argument")
+        if public_endpoint is None and 'publicEndpoint' in kwargs:
+            public_endpoint = kwargs['publicEndpoint']
+        if public_endpoint is None:
+            raise TypeError("Missing 'public_endpoint' argument")
+        if renewal_duration is None and 'renewalDuration' in kwargs:
+            renewal_duration = kwargs['renewalDuration']
+        if renewal_duration is None:
+            raise TypeError("Missing 'renewal_duration' argument")
+        if renewal_duration_unit is None and 'renewalDurationUnit' in kwargs:
+            renewal_duration_unit = kwargs['renewalDurationUnit']
+        if renewal_duration_unit is None:
+            raise TypeError("Missing 'renewal_duration_unit' argument")
+        if renewal_status is None and 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if renewal_status is None:
+            raise TypeError("Missing 'renewal_status' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if support_eip is None and 'supportEip' in kwargs:
+            support_eip = kwargs['supportEip']
+        if support_eip is None:
+            raise TypeError("Missing 'support_eip' argument")
+
+        _setter("create_time", create_time)
+        _setter("expire_time", expire_time)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("instance_name", instance_name)
+        _setter("instance_type", instance_type)
+        _setter("payment_type", payment_type)
+        _setter("private_end_point", private_end_point)
+        _setter("public_endpoint", public_endpoint)
+        _setter("renewal_duration", renewal_duration)
+        _setter("renewal_duration_unit", renewal_duration_unit)
+        _setter("renewal_status", renewal_status)
+        _setter("status", status)
+        _setter("support_eip", support_eip)
 
     @property
     @pulumi.getter(name="createTime")
@@ -392,15 +587,74 @@ class GetQueuesQueueResult(dict):
         :param str queue_name: The queue name.
         :param str virtual_host_name: The name of the virtual host.
         """
-        pulumi.set(__self__, "attributes", attributes)
-        pulumi.set(__self__, "auto_delete_state", auto_delete_state)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "exclusive_state", exclusive_state)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "last_consume_time", last_consume_time)
-        pulumi.set(__self__, "queue_name", queue_name)
-        pulumi.set(__self__, "virtual_host_name", virtual_host_name)
+        GetQueuesQueueResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attributes=attributes,
+            auto_delete_state=auto_delete_state,
+            create_time=create_time,
+            exclusive_state=exclusive_state,
+            id=id,
+            instance_id=instance_id,
+            last_consume_time=last_consume_time,
+            queue_name=queue_name,
+            virtual_host_name=virtual_host_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attributes: Optional[Mapping[str, Any]] = None,
+             auto_delete_state: Optional[bool] = None,
+             create_time: Optional[str] = None,
+             exclusive_state: Optional[bool] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             last_consume_time: Optional[str] = None,
+             queue_name: Optional[str] = None,
+             virtual_host_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if attributes is None:
+            raise TypeError("Missing 'attributes' argument")
+        if auto_delete_state is None and 'autoDeleteState' in kwargs:
+            auto_delete_state = kwargs['autoDeleteState']
+        if auto_delete_state is None:
+            raise TypeError("Missing 'auto_delete_state' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if exclusive_state is None and 'exclusiveState' in kwargs:
+            exclusive_state = kwargs['exclusiveState']
+        if exclusive_state is None:
+            raise TypeError("Missing 'exclusive_state' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if last_consume_time is None and 'lastConsumeTime' in kwargs:
+            last_consume_time = kwargs['lastConsumeTime']
+        if last_consume_time is None:
+            raise TypeError("Missing 'last_consume_time' argument")
+        if queue_name is None and 'queueName' in kwargs:
+            queue_name = kwargs['queueName']
+        if queue_name is None:
+            raise TypeError("Missing 'queue_name' argument")
+        if virtual_host_name is None and 'virtualHostName' in kwargs:
+            virtual_host_name = kwargs['virtualHostName']
+        if virtual_host_name is None:
+            raise TypeError("Missing 'virtual_host_name' argument")
+
+        _setter("attributes", attributes)
+        _setter("auto_delete_state", auto_delete_state)
+        _setter("create_time", create_time)
+        _setter("exclusive_state", exclusive_state)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("last_consume_time", last_consume_time)
+        _setter("queue_name", queue_name)
+        _setter("virtual_host_name", virtual_host_name)
 
     @property
     @pulumi.getter
@@ -494,13 +748,60 @@ class GetStaticAccountsAccountResult(dict):
         :param str password: Static password.
         :param str user_name: Static username.
         """
-        pulumi.set(__self__, "access_key", access_key)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "master_uid", master_uid)
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "user_name", user_name)
+        GetStaticAccountsAccountResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_key=access_key,
+            create_time=create_time,
+            id=id,
+            instance_id=instance_id,
+            master_uid=master_uid,
+            password=password,
+            user_name=user_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_key: Optional[str] = None,
+             create_time: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             master_uid: Optional[str] = None,
+             password: Optional[str] = None,
+             user_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_key is None and 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if access_key is None:
+            raise TypeError("Missing 'access_key' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if master_uid is None and 'masterUid' in kwargs:
+            master_uid = kwargs['masterUid']
+        if master_uid is None:
+            raise TypeError("Missing 'master_uid' argument")
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if user_name is None and 'userName' in kwargs:
+            user_name = kwargs['userName']
+        if user_name is None:
+            raise TypeError("Missing 'user_name' argument")
+
+        _setter("access_key", access_key)
+        _setter("create_time", create_time)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("master_uid", master_uid)
+        _setter("password", password)
+        _setter("user_name", user_name)
 
     @property
     @pulumi.getter(name="accessKey")
@@ -570,9 +871,34 @@ class GetVirtualHostsHostResult(dict):
         :param str instance_id: InstanceId.
         :param str virtual_host_name: VirtualHostName.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "virtual_host_name", virtual_host_name)
+        GetVirtualHostsHostResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            instance_id=instance_id,
+            virtual_host_name=virtual_host_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             virtual_host_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if virtual_host_name is None and 'virtualHostName' in kwargs:
+            virtual_host_name = kwargs['virtualHostName']
+        if virtual_host_name is None:
+            raise TypeError("Missing 'virtual_host_name' argument")
+
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("virtual_host_name", virtual_host_name)
 
     @property
     @pulumi.getter

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TagArgs', 'Tag']
@@ -19,7 +19,22 @@ class TagArgs:
         The set of arguments for constructing a Tag resource.
         :param pulumi.Input[str] tag_name: The name of the tag. The name must be `1` to `50` characters in length, and can contain letters and digits.
         """
-        pulumi.set(__self__, "tag_name", tag_name)
+        TagArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            tag_name=tag_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             tag_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if tag_name is None and 'tagName' in kwargs:
+            tag_name = kwargs['tagName']
+        if tag_name is None:
+            raise TypeError("Missing 'tag_name' argument")
+
+        _setter("tag_name", tag_name)
 
     @property
     @pulumi.getter(name="tagName")
@@ -42,8 +57,21 @@ class _TagState:
         Input properties used for looking up and filtering Tag resources.
         :param pulumi.Input[str] tag_name: The name of the tag. The name must be `1` to `50` characters in length, and can contain letters and digits.
         """
+        _TagState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            tag_name=tag_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             tag_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if tag_name is None and 'tagName' in kwargs:
+            tag_name = kwargs['tagName']
+
         if tag_name is not None:
-            pulumi.set(__self__, "tag_name", tag_name)
+            _setter("tag_name", tag_name)
 
     @property
     @pulumi.getter(name="tagName")
@@ -145,6 +173,10 @@ class Tag(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TagArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

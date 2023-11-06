@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -30,11 +30,40 @@ class EndpointIpConfigArgs:
         :param pulumi.Input[str] zone_id: The Zone ID.
         :param pulumi.Input[str] ip: The IP address within the parameter range of the subnet mask.  It is recommended to use the IP address assigned by the system.
         """
-        pulumi.set(__self__, "cidr_block", cidr_block)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        EndpointIpConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_block=cidr_block,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+            ip=ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_block: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             ip: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cidr_block is None and 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if cidr_block is None:
+            raise TypeError("Missing 'cidr_block' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+
+        _setter("cidr_block", cidr_block)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
         if ip is not None:
-            pulumi.set(__self__, "ip", ip)
+            _setter("ip", ip)
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -94,8 +123,29 @@ class RuleAttachmentVpcArgs:
         :param pulumi.Input[str] region_id: The region of the vpc. If not set, the current region will instead of.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.  **NOTE:** The VPC that can be associated with the forwarding rule must belong to the same region as the Endpoint.
         """
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        RuleAttachmentVpcArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            region_id=region_id,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             region_id: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if region_id is None and 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+
+        _setter("region_id", region_id)
+        _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="regionId")
@@ -131,8 +181,25 @@ class RuleForwardIpArgs:
         :param pulumi.Input[str] ip: The ip of the forwarding destination.
         :param pulumi.Input[int] port: The port of the forwarding destination.
         """
-        pulumi.set(__self__, "ip", ip)
-        pulumi.set(__self__, "port", port)
+        RuleForwardIpArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip=ip,
+            port=port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip is None:
+            raise TypeError("Missing 'ip' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+
+        _setter("ip", ip)
+        _setter("port", port)
 
     @property
     @pulumi.getter
@@ -168,9 +235,28 @@ class ZoneAttachmentVpcArgs:
         :param pulumi.Input[str] vpc_id: The Id of the vpc.
         :param pulumi.Input[str] region_id: The region of the vpc. If not set, the current region will instead of.
         """
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        ZoneAttachmentVpcArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            vpc_id=vpc_id,
+            region_id=region_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             region_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if region_id is None and 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+
+        _setter("vpc_id", vpc_id)
         if region_id is not None:
-            pulumi.set(__self__, "region_id", region_id)
+            _setter("region_id", region_id)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -206,10 +292,27 @@ class ZoneUserInfoArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] region_ids: The list of the region IDs.
         :param pulumi.Input[str] user_id: The user ID belonging to the region is used for cross-account synchronization scenarios.
         """
+        ZoneUserInfoArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            region_ids=region_ids,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if region_ids is None and 'regionIds' in kwargs:
+            region_ids = kwargs['regionIds']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if region_ids is not None:
-            pulumi.set(__self__, "region_ids", region_ids)
+            _setter("region_ids", region_ids)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="regionIds")

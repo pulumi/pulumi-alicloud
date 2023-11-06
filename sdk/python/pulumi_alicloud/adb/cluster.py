@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ClusterArgs', 'Cluster']
@@ -62,60 +62,165 @@ class ClusterArgs:
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB cluster.
         """
-        pulumi.set(__self__, "db_cluster_category", db_cluster_category)
-        pulumi.set(__self__, "mode", mode)
+        ClusterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_cluster_category=db_cluster_category,
+            mode=mode,
+            auto_renew_period=auto_renew_period,
+            compute_resource=compute_resource,
+            db_cluster_class=db_cluster_class,
+            db_cluster_version=db_cluster_version,
+            db_node_class=db_node_class,
+            db_node_count=db_node_count,
+            db_node_storage=db_node_storage,
+            description=description,
+            disk_performance_level=disk_performance_level,
+            elastic_io_resource=elastic_io_resource,
+            elastic_io_resource_size=elastic_io_resource_size,
+            maintain_time=maintain_time,
+            modify_type=modify_type,
+            pay_type=pay_type,
+            payment_type=payment_type,
+            period=period,
+            renewal_status=renewal_status,
+            resource_group_id=resource_group_id,
+            security_ips=security_ips,
+            tags=tags,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_cluster_category: Optional[pulumi.Input[str]] = None,
+             mode: Optional[pulumi.Input[str]] = None,
+             auto_renew_period: Optional[pulumi.Input[int]] = None,
+             compute_resource: Optional[pulumi.Input[str]] = None,
+             db_cluster_class: Optional[pulumi.Input[str]] = None,
+             db_cluster_version: Optional[pulumi.Input[str]] = None,
+             db_node_class: Optional[pulumi.Input[str]] = None,
+             db_node_count: Optional[pulumi.Input[int]] = None,
+             db_node_storage: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disk_performance_level: Optional[pulumi.Input[str]] = None,
+             elastic_io_resource: Optional[pulumi.Input[int]] = None,
+             elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
+             maintain_time: Optional[pulumi.Input[str]] = None,
+             modify_type: Optional[pulumi.Input[str]] = None,
+             pay_type: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             renewal_status: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if db_cluster_category is None and 'dbClusterCategory' in kwargs:
+            db_cluster_category = kwargs['dbClusterCategory']
+        if db_cluster_category is None:
+            raise TypeError("Missing 'db_cluster_category' argument")
+        if mode is None:
+            raise TypeError("Missing 'mode' argument")
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if compute_resource is None and 'computeResource' in kwargs:
+            compute_resource = kwargs['computeResource']
+        if db_cluster_class is None and 'dbClusterClass' in kwargs:
+            db_cluster_class = kwargs['dbClusterClass']
+        if db_cluster_version is None and 'dbClusterVersion' in kwargs:
+            db_cluster_version = kwargs['dbClusterVersion']
+        if db_node_class is None and 'dbNodeClass' in kwargs:
+            db_node_class = kwargs['dbNodeClass']
+        if db_node_count is None and 'dbNodeCount' in kwargs:
+            db_node_count = kwargs['dbNodeCount']
+        if db_node_storage is None and 'dbNodeStorage' in kwargs:
+            db_node_storage = kwargs['dbNodeStorage']
+        if disk_performance_level is None and 'diskPerformanceLevel' in kwargs:
+            disk_performance_level = kwargs['diskPerformanceLevel']
+        if elastic_io_resource is None and 'elasticIoResource' in kwargs:
+            elastic_io_resource = kwargs['elasticIoResource']
+        if elastic_io_resource_size is None and 'elasticIoResourceSize' in kwargs:
+            elastic_io_resource_size = kwargs['elasticIoResourceSize']
+        if maintain_time is None and 'maintainTime' in kwargs:
+            maintain_time = kwargs['maintainTime']
+        if modify_type is None and 'modifyType' in kwargs:
+            modify_type = kwargs['modifyType']
+        if pay_type is None and 'payType' in kwargs:
+            pay_type = kwargs['payType']
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if renewal_status is None and 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if security_ips is None and 'securityIps' in kwargs:
+            security_ips = kwargs['securityIps']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
+        _setter("db_cluster_category", db_cluster_category)
+        _setter("mode", mode)
         if auto_renew_period is not None:
-            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+            _setter("auto_renew_period", auto_renew_period)
         if compute_resource is not None:
-            pulumi.set(__self__, "compute_resource", compute_resource)
+            _setter("compute_resource", compute_resource)
         if db_cluster_class is not None:
             warnings.warn("""It duplicates with attribute db_node_class and is deprecated from 1.121.2.""", DeprecationWarning)
             pulumi.log.warn("""db_cluster_class is deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.""")
         if db_cluster_class is not None:
-            pulumi.set(__self__, "db_cluster_class", db_cluster_class)
+            _setter("db_cluster_class", db_cluster_class)
         if db_cluster_version is not None:
-            pulumi.set(__self__, "db_cluster_version", db_cluster_version)
+            _setter("db_cluster_version", db_cluster_version)
         if db_node_class is not None:
-            pulumi.set(__self__, "db_node_class", db_node_class)
+            _setter("db_node_class", db_node_class)
         if db_node_count is not None:
-            pulumi.set(__self__, "db_node_count", db_node_count)
+            _setter("db_node_count", db_node_count)
         if db_node_storage is not None:
-            pulumi.set(__self__, "db_node_storage", db_node_storage)
+            _setter("db_node_storage", db_node_storage)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disk_performance_level is not None:
-            pulumi.set(__self__, "disk_performance_level", disk_performance_level)
+            _setter("disk_performance_level", disk_performance_level)
         if elastic_io_resource is not None:
-            pulumi.set(__self__, "elastic_io_resource", elastic_io_resource)
+            _setter("elastic_io_resource", elastic_io_resource)
         if elastic_io_resource_size is not None:
-            pulumi.set(__self__, "elastic_io_resource_size", elastic_io_resource_size)
+            _setter("elastic_io_resource_size", elastic_io_resource_size)
         if maintain_time is not None:
-            pulumi.set(__self__, "maintain_time", maintain_time)
+            _setter("maintain_time", maintain_time)
         if modify_type is not None:
-            pulumi.set(__self__, "modify_type", modify_type)
+            _setter("modify_type", modify_type)
         if pay_type is not None:
             warnings.warn("""Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""", DeprecationWarning)
             pulumi.log.warn("""pay_type is deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""")
         if pay_type is not None:
-            pulumi.set(__self__, "pay_type", pay_type)
+            _setter("pay_type", pay_type)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if renewal_status is not None:
-            pulumi.set(__self__, "renewal_status", renewal_status)
+            _setter("renewal_status", renewal_status)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if security_ips is not None:
-            pulumi.set(__self__, "security_ips", security_ips)
+            _setter("security_ips", security_ips)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="dbClusterCategory")
@@ -457,68 +562,177 @@ class _ClusterState:
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB cluster.
         """
+        _ClusterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_renew_period=auto_renew_period,
+            compute_resource=compute_resource,
+            connection_string=connection_string,
+            db_cluster_category=db_cluster_category,
+            db_cluster_class=db_cluster_class,
+            db_cluster_version=db_cluster_version,
+            db_node_class=db_node_class,
+            db_node_count=db_node_count,
+            db_node_storage=db_node_storage,
+            description=description,
+            disk_performance_level=disk_performance_level,
+            elastic_io_resource=elastic_io_resource,
+            elastic_io_resource_size=elastic_io_resource_size,
+            maintain_time=maintain_time,
+            mode=mode,
+            modify_type=modify_type,
+            pay_type=pay_type,
+            payment_type=payment_type,
+            period=period,
+            port=port,
+            renewal_status=renewal_status,
+            resource_group_id=resource_group_id,
+            security_ips=security_ips,
+            status=status,
+            tags=tags,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_renew_period: Optional[pulumi.Input[int]] = None,
+             compute_resource: Optional[pulumi.Input[str]] = None,
+             connection_string: Optional[pulumi.Input[str]] = None,
+             db_cluster_category: Optional[pulumi.Input[str]] = None,
+             db_cluster_class: Optional[pulumi.Input[str]] = None,
+             db_cluster_version: Optional[pulumi.Input[str]] = None,
+             db_node_class: Optional[pulumi.Input[str]] = None,
+             db_node_count: Optional[pulumi.Input[int]] = None,
+             db_node_storage: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disk_performance_level: Optional[pulumi.Input[str]] = None,
+             elastic_io_resource: Optional[pulumi.Input[int]] = None,
+             elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
+             maintain_time: Optional[pulumi.Input[str]] = None,
+             mode: Optional[pulumi.Input[str]] = None,
+             modify_type: Optional[pulumi.Input[str]] = None,
+             pay_type: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             port: Optional[pulumi.Input[str]] = None,
+             renewal_status: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if compute_resource is None and 'computeResource' in kwargs:
+            compute_resource = kwargs['computeResource']
+        if connection_string is None and 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if db_cluster_category is None and 'dbClusterCategory' in kwargs:
+            db_cluster_category = kwargs['dbClusterCategory']
+        if db_cluster_class is None and 'dbClusterClass' in kwargs:
+            db_cluster_class = kwargs['dbClusterClass']
+        if db_cluster_version is None and 'dbClusterVersion' in kwargs:
+            db_cluster_version = kwargs['dbClusterVersion']
+        if db_node_class is None and 'dbNodeClass' in kwargs:
+            db_node_class = kwargs['dbNodeClass']
+        if db_node_count is None and 'dbNodeCount' in kwargs:
+            db_node_count = kwargs['dbNodeCount']
+        if db_node_storage is None and 'dbNodeStorage' in kwargs:
+            db_node_storage = kwargs['dbNodeStorage']
+        if disk_performance_level is None and 'diskPerformanceLevel' in kwargs:
+            disk_performance_level = kwargs['diskPerformanceLevel']
+        if elastic_io_resource is None and 'elasticIoResource' in kwargs:
+            elastic_io_resource = kwargs['elasticIoResource']
+        if elastic_io_resource_size is None and 'elasticIoResourceSize' in kwargs:
+            elastic_io_resource_size = kwargs['elasticIoResourceSize']
+        if maintain_time is None and 'maintainTime' in kwargs:
+            maintain_time = kwargs['maintainTime']
+        if modify_type is None and 'modifyType' in kwargs:
+            modify_type = kwargs['modifyType']
+        if pay_type is None and 'payType' in kwargs:
+            pay_type = kwargs['payType']
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if renewal_status is None and 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if security_ips is None and 'securityIps' in kwargs:
+            security_ips = kwargs['securityIps']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if auto_renew_period is not None:
-            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+            _setter("auto_renew_period", auto_renew_period)
         if compute_resource is not None:
-            pulumi.set(__self__, "compute_resource", compute_resource)
+            _setter("compute_resource", compute_resource)
         if connection_string is not None:
-            pulumi.set(__self__, "connection_string", connection_string)
+            _setter("connection_string", connection_string)
         if db_cluster_category is not None:
-            pulumi.set(__self__, "db_cluster_category", db_cluster_category)
+            _setter("db_cluster_category", db_cluster_category)
         if db_cluster_class is not None:
             warnings.warn("""It duplicates with attribute db_node_class and is deprecated from 1.121.2.""", DeprecationWarning)
             pulumi.log.warn("""db_cluster_class is deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.""")
         if db_cluster_class is not None:
-            pulumi.set(__self__, "db_cluster_class", db_cluster_class)
+            _setter("db_cluster_class", db_cluster_class)
         if db_cluster_version is not None:
-            pulumi.set(__self__, "db_cluster_version", db_cluster_version)
+            _setter("db_cluster_version", db_cluster_version)
         if db_node_class is not None:
-            pulumi.set(__self__, "db_node_class", db_node_class)
+            _setter("db_node_class", db_node_class)
         if db_node_count is not None:
-            pulumi.set(__self__, "db_node_count", db_node_count)
+            _setter("db_node_count", db_node_count)
         if db_node_storage is not None:
-            pulumi.set(__self__, "db_node_storage", db_node_storage)
+            _setter("db_node_storage", db_node_storage)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disk_performance_level is not None:
-            pulumi.set(__self__, "disk_performance_level", disk_performance_level)
+            _setter("disk_performance_level", disk_performance_level)
         if elastic_io_resource is not None:
-            pulumi.set(__self__, "elastic_io_resource", elastic_io_resource)
+            _setter("elastic_io_resource", elastic_io_resource)
         if elastic_io_resource_size is not None:
-            pulumi.set(__self__, "elastic_io_resource_size", elastic_io_resource_size)
+            _setter("elastic_io_resource_size", elastic_io_resource_size)
         if maintain_time is not None:
-            pulumi.set(__self__, "maintain_time", maintain_time)
+            _setter("maintain_time", maintain_time)
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
         if modify_type is not None:
-            pulumi.set(__self__, "modify_type", modify_type)
+            _setter("modify_type", modify_type)
         if pay_type is not None:
             warnings.warn("""Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""", DeprecationWarning)
             pulumi.log.warn("""pay_type is deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""")
         if pay_type is not None:
-            pulumi.set(__self__, "pay_type", pay_type)
+            _setter("pay_type", pay_type)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if renewal_status is not None:
-            pulumi.set(__self__, "renewal_status", renewal_status)
+            _setter("renewal_status", renewal_status)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if security_ips is not None:
-            pulumi.set(__self__, "security_ips", security_ips)
+            _setter("security_ips", security_ips)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="autoRenewPeriod")
@@ -1009,6 +1223,10 @@ class Cluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

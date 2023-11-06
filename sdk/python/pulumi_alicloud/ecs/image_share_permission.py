@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ImageSharePermissionArgs', 'ImageSharePermission']
@@ -21,8 +21,29 @@ class ImageSharePermissionArgs:
         :param pulumi.Input[str] account_id: Alibaba Cloud Account ID. It is used to share images.
         :param pulumi.Input[str] image_id: The source image ID.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "image_id", image_id)
+        ImageSharePermissionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            image_id=image_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             image_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+
+        _setter("account_id", account_id)
+        _setter("image_id", image_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -59,10 +80,27 @@ class _ImageSharePermissionState:
         :param pulumi.Input[str] account_id: Alibaba Cloud Account ID. It is used to share images.
         :param pulumi.Input[str] image_id: The source image ID.
         """
+        _ImageSharePermissionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            image_id=image_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             image_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if image_id is not None:
-            pulumi.set(__self__, "image_id", image_id)
+            _setter("image_id", image_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -246,6 +284,10 @@ class ImageSharePermission(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ImageSharePermissionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

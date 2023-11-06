@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AlertContactArgs', 'AlertContact']
@@ -27,16 +27,43 @@ class AlertContactArgs:
         :param pulumi.Input[str] phone_num: The mobile number of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         :param pulumi.Input[bool] system_noc: Specifies whether the alert contact receives system notifications. Valid values:  true: receives system notifications. false: does not receive system notifications.
         """
+        AlertContactArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alert_contact_name=alert_contact_name,
+            ding_robot_webhook_url=ding_robot_webhook_url,
+            email=email,
+            phone_num=phone_num,
+            system_noc=system_noc,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alert_contact_name: Optional[pulumi.Input[str]] = None,
+             ding_robot_webhook_url: Optional[pulumi.Input[str]] = None,
+             email: Optional[pulumi.Input[str]] = None,
+             phone_num: Optional[pulumi.Input[str]] = None,
+             system_noc: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if alert_contact_name is None and 'alertContactName' in kwargs:
+            alert_contact_name = kwargs['alertContactName']
+        if ding_robot_webhook_url is None and 'dingRobotWebhookUrl' in kwargs:
+            ding_robot_webhook_url = kwargs['dingRobotWebhookUrl']
+        if phone_num is None and 'phoneNum' in kwargs:
+            phone_num = kwargs['phoneNum']
+        if system_noc is None and 'systemNoc' in kwargs:
+            system_noc = kwargs['systemNoc']
+
         if alert_contact_name is not None:
-            pulumi.set(__self__, "alert_contact_name", alert_contact_name)
+            _setter("alert_contact_name", alert_contact_name)
         if ding_robot_webhook_url is not None:
-            pulumi.set(__self__, "ding_robot_webhook_url", ding_robot_webhook_url)
+            _setter("ding_robot_webhook_url", ding_robot_webhook_url)
         if email is not None:
-            pulumi.set(__self__, "email", email)
+            _setter("email", email)
         if phone_num is not None:
-            pulumi.set(__self__, "phone_num", phone_num)
+            _setter("phone_num", phone_num)
         if system_noc is not None:
-            pulumi.set(__self__, "system_noc", system_noc)
+            _setter("system_noc", system_noc)
 
     @property
     @pulumi.getter(name="alertContactName")
@@ -115,16 +142,43 @@ class _AlertContactState:
         :param pulumi.Input[str] phone_num: The mobile number of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         :param pulumi.Input[bool] system_noc: Specifies whether the alert contact receives system notifications. Valid values:  true: receives system notifications. false: does not receive system notifications.
         """
+        _AlertContactState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alert_contact_name=alert_contact_name,
+            ding_robot_webhook_url=ding_robot_webhook_url,
+            email=email,
+            phone_num=phone_num,
+            system_noc=system_noc,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alert_contact_name: Optional[pulumi.Input[str]] = None,
+             ding_robot_webhook_url: Optional[pulumi.Input[str]] = None,
+             email: Optional[pulumi.Input[str]] = None,
+             phone_num: Optional[pulumi.Input[str]] = None,
+             system_noc: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if alert_contact_name is None and 'alertContactName' in kwargs:
+            alert_contact_name = kwargs['alertContactName']
+        if ding_robot_webhook_url is None and 'dingRobotWebhookUrl' in kwargs:
+            ding_robot_webhook_url = kwargs['dingRobotWebhookUrl']
+        if phone_num is None and 'phoneNum' in kwargs:
+            phone_num = kwargs['phoneNum']
+        if system_noc is None and 'systemNoc' in kwargs:
+            system_noc = kwargs['systemNoc']
+
         if alert_contact_name is not None:
-            pulumi.set(__self__, "alert_contact_name", alert_contact_name)
+            _setter("alert_contact_name", alert_contact_name)
         if ding_robot_webhook_url is not None:
-            pulumi.set(__self__, "ding_robot_webhook_url", ding_robot_webhook_url)
+            _setter("ding_robot_webhook_url", ding_robot_webhook_url)
         if email is not None:
-            pulumi.set(__self__, "email", email)
+            _setter("email", email)
         if phone_num is not None:
-            pulumi.set(__self__, "phone_num", phone_num)
+            _setter("phone_num", phone_num)
         if system_noc is not None:
-            pulumi.set(__self__, "system_noc", system_noc)
+            _setter("system_noc", system_noc)
 
     @property
     @pulumi.getter(name="alertContactName")
@@ -282,6 +336,10 @@ class AlertContact(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AlertContactArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

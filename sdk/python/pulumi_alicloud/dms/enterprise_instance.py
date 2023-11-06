@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EnterpriseInstanceArgs', 'EnterpriseInstance']
@@ -69,49 +69,178 @@ class EnterpriseInstanceArgs:
         :param pulumi.Input[int] use_dsql: Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
         :param pulumi.Input[str] vpc_id: VPC ID. This value must be passed when the value of InstanceSource is VPC dedicated line IDC.
         """
-        pulumi.set(__self__, "database_password", database_password)
-        pulumi.set(__self__, "database_user", database_user)
-        pulumi.set(__self__, "dba_uid", dba_uid)
-        pulumi.set(__self__, "env_type", env_type)
-        pulumi.set(__self__, "export_timeout", export_timeout)
-        pulumi.set(__self__, "host", host)
-        pulumi.set(__self__, "instance_source", instance_source)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "query_timeout", query_timeout)
-        pulumi.set(__self__, "safe_rule", safe_rule)
+        EnterpriseInstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            database_password=database_password,
+            database_user=database_user,
+            dba_uid=dba_uid,
+            env_type=env_type,
+            export_timeout=export_timeout,
+            host=host,
+            instance_source=instance_source,
+            instance_type=instance_type,
+            network_type=network_type,
+            port=port,
+            query_timeout=query_timeout,
+            safe_rule=safe_rule,
+            data_link_name=data_link_name,
+            dba_id=dba_id,
+            ddl_online=ddl_online,
+            ecs_instance_id=ecs_instance_id,
+            ecs_region=ecs_region,
+            instance_alias=instance_alias,
+            instance_id=instance_id,
+            instance_name=instance_name,
+            safe_rule_id=safe_rule_id,
+            sid=sid,
+            skip_test=skip_test,
+            tid=tid,
+            use_dsql=use_dsql,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             database_password: Optional[pulumi.Input[str]] = None,
+             database_user: Optional[pulumi.Input[str]] = None,
+             dba_uid: Optional[pulumi.Input[int]] = None,
+             env_type: Optional[pulumi.Input[str]] = None,
+             export_timeout: Optional[pulumi.Input[int]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             instance_source: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             network_type: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             query_timeout: Optional[pulumi.Input[int]] = None,
+             safe_rule: Optional[pulumi.Input[str]] = None,
+             data_link_name: Optional[pulumi.Input[str]] = None,
+             dba_id: Optional[pulumi.Input[str]] = None,
+             ddl_online: Optional[pulumi.Input[int]] = None,
+             ecs_instance_id: Optional[pulumi.Input[str]] = None,
+             ecs_region: Optional[pulumi.Input[str]] = None,
+             instance_alias: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             safe_rule_id: Optional[pulumi.Input[str]] = None,
+             sid: Optional[pulumi.Input[str]] = None,
+             skip_test: Optional[pulumi.Input[bool]] = None,
+             tid: Optional[pulumi.Input[int]] = None,
+             use_dsql: Optional[pulumi.Input[int]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if database_password is None and 'databasePassword' in kwargs:
+            database_password = kwargs['databasePassword']
+        if database_password is None:
+            raise TypeError("Missing 'database_password' argument")
+        if database_user is None and 'databaseUser' in kwargs:
+            database_user = kwargs['databaseUser']
+        if database_user is None:
+            raise TypeError("Missing 'database_user' argument")
+        if dba_uid is None and 'dbaUid' in kwargs:
+            dba_uid = kwargs['dbaUid']
+        if dba_uid is None:
+            raise TypeError("Missing 'dba_uid' argument")
+        if env_type is None and 'envType' in kwargs:
+            env_type = kwargs['envType']
+        if env_type is None:
+            raise TypeError("Missing 'env_type' argument")
+        if export_timeout is None and 'exportTimeout' in kwargs:
+            export_timeout = kwargs['exportTimeout']
+        if export_timeout is None:
+            raise TypeError("Missing 'export_timeout' argument")
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if instance_source is None and 'instanceSource' in kwargs:
+            instance_source = kwargs['instanceSource']
+        if instance_source is None:
+            raise TypeError("Missing 'instance_source' argument")
+        if instance_type is None and 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if network_type is None and 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if network_type is None:
+            raise TypeError("Missing 'network_type' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if query_timeout is None and 'queryTimeout' in kwargs:
+            query_timeout = kwargs['queryTimeout']
+        if query_timeout is None:
+            raise TypeError("Missing 'query_timeout' argument")
+        if safe_rule is None and 'safeRule' in kwargs:
+            safe_rule = kwargs['safeRule']
+        if safe_rule is None:
+            raise TypeError("Missing 'safe_rule' argument")
+        if data_link_name is None and 'dataLinkName' in kwargs:
+            data_link_name = kwargs['dataLinkName']
+        if dba_id is None and 'dbaId' in kwargs:
+            dba_id = kwargs['dbaId']
+        if ddl_online is None and 'ddlOnline' in kwargs:
+            ddl_online = kwargs['ddlOnline']
+        if ecs_instance_id is None and 'ecsInstanceId' in kwargs:
+            ecs_instance_id = kwargs['ecsInstanceId']
+        if ecs_region is None and 'ecsRegion' in kwargs:
+            ecs_region = kwargs['ecsRegion']
+        if instance_alias is None and 'instanceAlias' in kwargs:
+            instance_alias = kwargs['instanceAlias']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if safe_rule_id is None and 'safeRuleId' in kwargs:
+            safe_rule_id = kwargs['safeRuleId']
+        if skip_test is None and 'skipTest' in kwargs:
+            skip_test = kwargs['skipTest']
+        if use_dsql is None and 'useDsql' in kwargs:
+            use_dsql = kwargs['useDsql']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
+        _setter("database_password", database_password)
+        _setter("database_user", database_user)
+        _setter("dba_uid", dba_uid)
+        _setter("env_type", env_type)
+        _setter("export_timeout", export_timeout)
+        _setter("host", host)
+        _setter("instance_source", instance_source)
+        _setter("instance_type", instance_type)
+        _setter("network_type", network_type)
+        _setter("port", port)
+        _setter("query_timeout", query_timeout)
+        _setter("safe_rule", safe_rule)
         if data_link_name is not None:
-            pulumi.set(__self__, "data_link_name", data_link_name)
+            _setter("data_link_name", data_link_name)
         if dba_id is not None:
-            pulumi.set(__self__, "dba_id", dba_id)
+            _setter("dba_id", dba_id)
         if ddl_online is not None:
-            pulumi.set(__self__, "ddl_online", ddl_online)
+            _setter("ddl_online", ddl_online)
         if ecs_instance_id is not None:
-            pulumi.set(__self__, "ecs_instance_id", ecs_instance_id)
+            _setter("ecs_instance_id", ecs_instance_id)
         if ecs_region is not None:
-            pulumi.set(__self__, "ecs_region", ecs_region)
+            _setter("ecs_region", ecs_region)
         if instance_alias is not None:
             warnings.warn("""Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""instance_alias is deprecated: Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.""")
         if instance_alias is not None:
-            pulumi.set(__self__, "instance_alias", instance_alias)
+            _setter("instance_alias", instance_alias)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if safe_rule_id is not None:
-            pulumi.set(__self__, "safe_rule_id", safe_rule_id)
+            _setter("safe_rule_id", safe_rule_id)
         if sid is not None:
-            pulumi.set(__self__, "sid", sid)
+            _setter("sid", sid)
         if skip_test is not None:
-            pulumi.set(__self__, "skip_test", skip_test)
+            _setter("skip_test", skip_test)
         if tid is not None:
-            pulumi.set(__self__, "tid", tid)
+            _setter("tid", tid)
         if use_dsql is not None:
-            pulumi.set(__self__, "use_dsql", use_dsql)
+            _setter("use_dsql", use_dsql)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="databasePassword")
@@ -493,70 +622,183 @@ class _EnterpriseInstanceState:
         :param pulumi.Input[int] use_dsql: Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
         :param pulumi.Input[str] vpc_id: VPC ID. This value must be passed when the value of InstanceSource is VPC dedicated line IDC.
         """
+        _EnterpriseInstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            data_link_name=data_link_name,
+            database_password=database_password,
+            database_user=database_user,
+            dba_id=dba_id,
+            dba_nick_name=dba_nick_name,
+            dba_uid=dba_uid,
+            ddl_online=ddl_online,
+            ecs_instance_id=ecs_instance_id,
+            ecs_region=ecs_region,
+            env_type=env_type,
+            export_timeout=export_timeout,
+            host=host,
+            instance_alias=instance_alias,
+            instance_id=instance_id,
+            instance_name=instance_name,
+            instance_source=instance_source,
+            instance_type=instance_type,
+            network_type=network_type,
+            port=port,
+            query_timeout=query_timeout,
+            safe_rule=safe_rule,
+            safe_rule_id=safe_rule_id,
+            sid=sid,
+            skip_test=skip_test,
+            state=state,
+            status=status,
+            tid=tid,
+            use_dsql=use_dsql,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             data_link_name: Optional[pulumi.Input[str]] = None,
+             database_password: Optional[pulumi.Input[str]] = None,
+             database_user: Optional[pulumi.Input[str]] = None,
+             dba_id: Optional[pulumi.Input[str]] = None,
+             dba_nick_name: Optional[pulumi.Input[str]] = None,
+             dba_uid: Optional[pulumi.Input[int]] = None,
+             ddl_online: Optional[pulumi.Input[int]] = None,
+             ecs_instance_id: Optional[pulumi.Input[str]] = None,
+             ecs_region: Optional[pulumi.Input[str]] = None,
+             env_type: Optional[pulumi.Input[str]] = None,
+             export_timeout: Optional[pulumi.Input[int]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             instance_alias: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             instance_source: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             network_type: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             query_timeout: Optional[pulumi.Input[int]] = None,
+             safe_rule: Optional[pulumi.Input[str]] = None,
+             safe_rule_id: Optional[pulumi.Input[str]] = None,
+             sid: Optional[pulumi.Input[str]] = None,
+             skip_test: Optional[pulumi.Input[bool]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tid: Optional[pulumi.Input[int]] = None,
+             use_dsql: Optional[pulumi.Input[int]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if data_link_name is None and 'dataLinkName' in kwargs:
+            data_link_name = kwargs['dataLinkName']
+        if database_password is None and 'databasePassword' in kwargs:
+            database_password = kwargs['databasePassword']
+        if database_user is None and 'databaseUser' in kwargs:
+            database_user = kwargs['databaseUser']
+        if dba_id is None and 'dbaId' in kwargs:
+            dba_id = kwargs['dbaId']
+        if dba_nick_name is None and 'dbaNickName' in kwargs:
+            dba_nick_name = kwargs['dbaNickName']
+        if dba_uid is None and 'dbaUid' in kwargs:
+            dba_uid = kwargs['dbaUid']
+        if ddl_online is None and 'ddlOnline' in kwargs:
+            ddl_online = kwargs['ddlOnline']
+        if ecs_instance_id is None and 'ecsInstanceId' in kwargs:
+            ecs_instance_id = kwargs['ecsInstanceId']
+        if ecs_region is None and 'ecsRegion' in kwargs:
+            ecs_region = kwargs['ecsRegion']
+        if env_type is None and 'envType' in kwargs:
+            env_type = kwargs['envType']
+        if export_timeout is None and 'exportTimeout' in kwargs:
+            export_timeout = kwargs['exportTimeout']
+        if instance_alias is None and 'instanceAlias' in kwargs:
+            instance_alias = kwargs['instanceAlias']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if instance_source is None and 'instanceSource' in kwargs:
+            instance_source = kwargs['instanceSource']
+        if instance_type is None and 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if network_type is None and 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if query_timeout is None and 'queryTimeout' in kwargs:
+            query_timeout = kwargs['queryTimeout']
+        if safe_rule is None and 'safeRule' in kwargs:
+            safe_rule = kwargs['safeRule']
+        if safe_rule_id is None and 'safeRuleId' in kwargs:
+            safe_rule_id = kwargs['safeRuleId']
+        if skip_test is None and 'skipTest' in kwargs:
+            skip_test = kwargs['skipTest']
+        if use_dsql is None and 'useDsql' in kwargs:
+            use_dsql = kwargs['useDsql']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if data_link_name is not None:
-            pulumi.set(__self__, "data_link_name", data_link_name)
+            _setter("data_link_name", data_link_name)
         if database_password is not None:
-            pulumi.set(__self__, "database_password", database_password)
+            _setter("database_password", database_password)
         if database_user is not None:
-            pulumi.set(__self__, "database_user", database_user)
+            _setter("database_user", database_user)
         if dba_id is not None:
-            pulumi.set(__self__, "dba_id", dba_id)
+            _setter("dba_id", dba_id)
         if dba_nick_name is not None:
-            pulumi.set(__self__, "dba_nick_name", dba_nick_name)
+            _setter("dba_nick_name", dba_nick_name)
         if dba_uid is not None:
-            pulumi.set(__self__, "dba_uid", dba_uid)
+            _setter("dba_uid", dba_uid)
         if ddl_online is not None:
-            pulumi.set(__self__, "ddl_online", ddl_online)
+            _setter("ddl_online", ddl_online)
         if ecs_instance_id is not None:
-            pulumi.set(__self__, "ecs_instance_id", ecs_instance_id)
+            _setter("ecs_instance_id", ecs_instance_id)
         if ecs_region is not None:
-            pulumi.set(__self__, "ecs_region", ecs_region)
+            _setter("ecs_region", ecs_region)
         if env_type is not None:
-            pulumi.set(__self__, "env_type", env_type)
+            _setter("env_type", env_type)
         if export_timeout is not None:
-            pulumi.set(__self__, "export_timeout", export_timeout)
+            _setter("export_timeout", export_timeout)
         if host is not None:
-            pulumi.set(__self__, "host", host)
+            _setter("host", host)
         if instance_alias is not None:
             warnings.warn("""Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""instance_alias is deprecated: Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.""")
         if instance_alias is not None:
-            pulumi.set(__self__, "instance_alias", instance_alias)
+            _setter("instance_alias", instance_alias)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if instance_source is not None:
-            pulumi.set(__self__, "instance_source", instance_source)
+            _setter("instance_source", instance_source)
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if network_type is not None:
-            pulumi.set(__self__, "network_type", network_type)
+            _setter("network_type", network_type)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if query_timeout is not None:
-            pulumi.set(__self__, "query_timeout", query_timeout)
+            _setter("query_timeout", query_timeout)
         if safe_rule is not None:
-            pulumi.set(__self__, "safe_rule", safe_rule)
+            _setter("safe_rule", safe_rule)
         if safe_rule_id is not None:
-            pulumi.set(__self__, "safe_rule_id", safe_rule_id)
+            _setter("safe_rule_id", safe_rule_id)
         if sid is not None:
-            pulumi.set(__self__, "sid", sid)
+            _setter("sid", sid)
         if skip_test is not None:
-            pulumi.set(__self__, "skip_test", skip_test)
+            _setter("skip_test", skip_test)
         if state is not None:
             warnings.warn("""Field 'state' has been deprecated from version 1.100.0. Use 'status' instead.""", DeprecationWarning)
             pulumi.log.warn("""state is deprecated: Field 'state' has been deprecated from version 1.100.0. Use 'status' instead.""")
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tid is not None:
-            pulumi.set(__self__, "tid", tid)
+            _setter("tid", tid)
         if use_dsql is not None:
-            pulumi.set(__self__, "use_dsql", use_dsql)
+            _setter("use_dsql", use_dsql)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="dataLinkName")
@@ -1164,6 +1406,10 @@ class EnterpriseInstance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EnterpriseInstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

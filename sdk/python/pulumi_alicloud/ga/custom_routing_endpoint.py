@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['CustomRoutingEndpointArgs', 'CustomRoutingEndpoint']
@@ -25,11 +25,38 @@ class CustomRoutingEndpointArgs:
         :param pulumi.Input[str] type: The backend service type of the endpoint. Valid values: `PrivateSubNet`.
         :param pulumi.Input[str] traffic_to_endpoint_policy: The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
         """
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
-        pulumi.set(__self__, "type", type)
+        CustomRoutingEndpointArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            endpoint=endpoint,
+            endpoint_group_id=endpoint_group_id,
+            type=type,
+            traffic_to_endpoint_policy=traffic_to_endpoint_policy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             endpoint: Optional[pulumi.Input[str]] = None,
+             endpoint_group_id: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             traffic_to_endpoint_policy: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if endpoint_group_id is None and 'endpointGroupId' in kwargs:
+            endpoint_group_id = kwargs['endpointGroupId']
+        if endpoint_group_id is None:
+            raise TypeError("Missing 'endpoint_group_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if traffic_to_endpoint_policy is None and 'trafficToEndpointPolicy' in kwargs:
+            traffic_to_endpoint_policy = kwargs['trafficToEndpointPolicy']
+
+        _setter("endpoint", endpoint)
+        _setter("endpoint_group_id", endpoint_group_id)
+        _setter("type", type)
         if traffic_to_endpoint_policy is not None:
-            pulumi.set(__self__, "traffic_to_endpoint_policy", traffic_to_endpoint_policy)
+            _setter("traffic_to_endpoint_policy", traffic_to_endpoint_policy)
 
     @property
     @pulumi.getter
@@ -102,22 +129,57 @@ class _CustomRoutingEndpointState:
         :param pulumi.Input[str] traffic_to_endpoint_policy: The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
         :param pulumi.Input[str] type: The backend service type of the endpoint. Valid values: `PrivateSubNet`.
         """
+        _CustomRoutingEndpointState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_id=accelerator_id,
+            custom_routing_endpoint_id=custom_routing_endpoint_id,
+            endpoint=endpoint,
+            endpoint_group_id=endpoint_group_id,
+            listener_id=listener_id,
+            status=status,
+            traffic_to_endpoint_policy=traffic_to_endpoint_policy,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_id: Optional[pulumi.Input[str]] = None,
+             custom_routing_endpoint_id: Optional[pulumi.Input[str]] = None,
+             endpoint: Optional[pulumi.Input[str]] = None,
+             endpoint_group_id: Optional[pulumi.Input[str]] = None,
+             listener_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             traffic_to_endpoint_policy: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accelerator_id is None and 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if custom_routing_endpoint_id is None and 'customRoutingEndpointId' in kwargs:
+            custom_routing_endpoint_id = kwargs['customRoutingEndpointId']
+        if endpoint_group_id is None and 'endpointGroupId' in kwargs:
+            endpoint_group_id = kwargs['endpointGroupId']
+        if listener_id is None and 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if traffic_to_endpoint_policy is None and 'trafficToEndpointPolicy' in kwargs:
+            traffic_to_endpoint_policy = kwargs['trafficToEndpointPolicy']
+
         if accelerator_id is not None:
-            pulumi.set(__self__, "accelerator_id", accelerator_id)
+            _setter("accelerator_id", accelerator_id)
         if custom_routing_endpoint_id is not None:
-            pulumi.set(__self__, "custom_routing_endpoint_id", custom_routing_endpoint_id)
+            _setter("custom_routing_endpoint_id", custom_routing_endpoint_id)
         if endpoint is not None:
-            pulumi.set(__self__, "endpoint", endpoint)
+            _setter("endpoint", endpoint)
         if endpoint_group_id is not None:
-            pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
+            _setter("endpoint_group_id", endpoint_group_id)
         if listener_id is not None:
-            pulumi.set(__self__, "listener_id", listener_id)
+            _setter("listener_id", listener_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if traffic_to_endpoint_policy is not None:
-            pulumi.set(__self__, "traffic_to_endpoint_policy", traffic_to_endpoint_policy)
+            _setter("traffic_to_endpoint_policy", traffic_to_endpoint_policy)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -389,6 +451,10 @@ class CustomRoutingEndpoint(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CustomRoutingEndpointArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

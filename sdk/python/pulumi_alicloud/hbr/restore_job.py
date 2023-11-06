@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -69,51 +69,164 @@ class RestoreJobArgs:
         :param pulumi.Input[str] target_time: The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while source_type equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the End time of the snapshot.
         :param pulumi.Input[str] udm_detail: The full machine backup details.
         """
-        pulumi.set(__self__, "restore_type", restore_type)
-        pulumi.set(__self__, "snapshot_hash", snapshot_hash)
-        pulumi.set(__self__, "snapshot_id", snapshot_id)
-        pulumi.set(__self__, "source_type", source_type)
-        pulumi.set(__self__, "vault_id", vault_id)
+        RestoreJobArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            restore_type=restore_type,
+            snapshot_hash=snapshot_hash,
+            snapshot_id=snapshot_id,
+            source_type=source_type,
+            vault_id=vault_id,
+            cross_account_role_name=cross_account_role_name,
+            cross_account_type=cross_account_type,
+            cross_account_user_id=cross_account_user_id,
+            exclude=exclude,
+            include=include,
+            options=options,
+            ots_detail=ots_detail,
+            restore_job_id=restore_job_id,
+            target_bucket=target_bucket,
+            target_client_id=target_client_id,
+            target_create_time=target_create_time,
+            target_data_source_id=target_data_source_id,
+            target_file_system_id=target_file_system_id,
+            target_instance_id=target_instance_id,
+            target_instance_name=target_instance_name,
+            target_path=target_path,
+            target_prefix=target_prefix,
+            target_table_name=target_table_name,
+            target_time=target_time,
+            udm_detail=udm_detail,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             restore_type: Optional[pulumi.Input[str]] = None,
+             snapshot_hash: Optional[pulumi.Input[str]] = None,
+             snapshot_id: Optional[pulumi.Input[str]] = None,
+             source_type: Optional[pulumi.Input[str]] = None,
+             vault_id: Optional[pulumi.Input[str]] = None,
+             cross_account_role_name: Optional[pulumi.Input[str]] = None,
+             cross_account_type: Optional[pulumi.Input[str]] = None,
+             cross_account_user_id: Optional[pulumi.Input[int]] = None,
+             exclude: Optional[pulumi.Input[str]] = None,
+             include: Optional[pulumi.Input[str]] = None,
+             options: Optional[pulumi.Input[str]] = None,
+             ots_detail: Optional[pulumi.Input['RestoreJobOtsDetailArgs']] = None,
+             restore_job_id: Optional[pulumi.Input[str]] = None,
+             target_bucket: Optional[pulumi.Input[str]] = None,
+             target_client_id: Optional[pulumi.Input[str]] = None,
+             target_create_time: Optional[pulumi.Input[str]] = None,
+             target_data_source_id: Optional[pulumi.Input[str]] = None,
+             target_file_system_id: Optional[pulumi.Input[str]] = None,
+             target_instance_id: Optional[pulumi.Input[str]] = None,
+             target_instance_name: Optional[pulumi.Input[str]] = None,
+             target_path: Optional[pulumi.Input[str]] = None,
+             target_prefix: Optional[pulumi.Input[str]] = None,
+             target_table_name: Optional[pulumi.Input[str]] = None,
+             target_time: Optional[pulumi.Input[str]] = None,
+             udm_detail: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if restore_type is None and 'restoreType' in kwargs:
+            restore_type = kwargs['restoreType']
+        if restore_type is None:
+            raise TypeError("Missing 'restore_type' argument")
+        if snapshot_hash is None and 'snapshotHash' in kwargs:
+            snapshot_hash = kwargs['snapshotHash']
+        if snapshot_hash is None:
+            raise TypeError("Missing 'snapshot_hash' argument")
+        if snapshot_id is None and 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if snapshot_id is None:
+            raise TypeError("Missing 'snapshot_id' argument")
+        if source_type is None and 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+        if source_type is None:
+            raise TypeError("Missing 'source_type' argument")
+        if vault_id is None and 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+        if vault_id is None:
+            raise TypeError("Missing 'vault_id' argument")
+        if cross_account_role_name is None and 'crossAccountRoleName' in kwargs:
+            cross_account_role_name = kwargs['crossAccountRoleName']
+        if cross_account_type is None and 'crossAccountType' in kwargs:
+            cross_account_type = kwargs['crossAccountType']
+        if cross_account_user_id is None and 'crossAccountUserId' in kwargs:
+            cross_account_user_id = kwargs['crossAccountUserId']
+        if ots_detail is None and 'otsDetail' in kwargs:
+            ots_detail = kwargs['otsDetail']
+        if restore_job_id is None and 'restoreJobId' in kwargs:
+            restore_job_id = kwargs['restoreJobId']
+        if target_bucket is None and 'targetBucket' in kwargs:
+            target_bucket = kwargs['targetBucket']
+        if target_client_id is None and 'targetClientId' in kwargs:
+            target_client_id = kwargs['targetClientId']
+        if target_create_time is None and 'targetCreateTime' in kwargs:
+            target_create_time = kwargs['targetCreateTime']
+        if target_data_source_id is None and 'targetDataSourceId' in kwargs:
+            target_data_source_id = kwargs['targetDataSourceId']
+        if target_file_system_id is None and 'targetFileSystemId' in kwargs:
+            target_file_system_id = kwargs['targetFileSystemId']
+        if target_instance_id is None and 'targetInstanceId' in kwargs:
+            target_instance_id = kwargs['targetInstanceId']
+        if target_instance_name is None and 'targetInstanceName' in kwargs:
+            target_instance_name = kwargs['targetInstanceName']
+        if target_path is None and 'targetPath' in kwargs:
+            target_path = kwargs['targetPath']
+        if target_prefix is None and 'targetPrefix' in kwargs:
+            target_prefix = kwargs['targetPrefix']
+        if target_table_name is None and 'targetTableName' in kwargs:
+            target_table_name = kwargs['targetTableName']
+        if target_time is None and 'targetTime' in kwargs:
+            target_time = kwargs['targetTime']
+        if udm_detail is None and 'udmDetail' in kwargs:
+            udm_detail = kwargs['udmDetail']
+
+        _setter("restore_type", restore_type)
+        _setter("snapshot_hash", snapshot_hash)
+        _setter("snapshot_id", snapshot_id)
+        _setter("source_type", source_type)
+        _setter("vault_id", vault_id)
         if cross_account_role_name is not None:
-            pulumi.set(__self__, "cross_account_role_name", cross_account_role_name)
+            _setter("cross_account_role_name", cross_account_role_name)
         if cross_account_type is not None:
-            pulumi.set(__self__, "cross_account_type", cross_account_type)
+            _setter("cross_account_type", cross_account_type)
         if cross_account_user_id is not None:
-            pulumi.set(__self__, "cross_account_user_id", cross_account_user_id)
+            _setter("cross_account_user_id", cross_account_user_id)
         if exclude is not None:
-            pulumi.set(__self__, "exclude", exclude)
+            _setter("exclude", exclude)
         if include is not None:
-            pulumi.set(__self__, "include", include)
+            _setter("include", include)
         if options is not None:
-            pulumi.set(__self__, "options", options)
+            _setter("options", options)
         if ots_detail is not None:
-            pulumi.set(__self__, "ots_detail", ots_detail)
+            _setter("ots_detail", ots_detail)
         if restore_job_id is not None:
-            pulumi.set(__self__, "restore_job_id", restore_job_id)
+            _setter("restore_job_id", restore_job_id)
         if target_bucket is not None:
-            pulumi.set(__self__, "target_bucket", target_bucket)
+            _setter("target_bucket", target_bucket)
         if target_client_id is not None:
-            pulumi.set(__self__, "target_client_id", target_client_id)
+            _setter("target_client_id", target_client_id)
         if target_create_time is not None:
-            pulumi.set(__self__, "target_create_time", target_create_time)
+            _setter("target_create_time", target_create_time)
         if target_data_source_id is not None:
-            pulumi.set(__self__, "target_data_source_id", target_data_source_id)
+            _setter("target_data_source_id", target_data_source_id)
         if target_file_system_id is not None:
-            pulumi.set(__self__, "target_file_system_id", target_file_system_id)
+            _setter("target_file_system_id", target_file_system_id)
         if target_instance_id is not None:
-            pulumi.set(__self__, "target_instance_id", target_instance_id)
+            _setter("target_instance_id", target_instance_id)
         if target_instance_name is not None:
-            pulumi.set(__self__, "target_instance_name", target_instance_name)
+            _setter("target_instance_name", target_instance_name)
         if target_path is not None:
-            pulumi.set(__self__, "target_path", target_path)
+            _setter("target_path", target_path)
         if target_prefix is not None:
-            pulumi.set(__self__, "target_prefix", target_prefix)
+            _setter("target_prefix", target_prefix)
         if target_table_name is not None:
-            pulumi.set(__self__, "target_table_name", target_table_name)
+            _setter("target_table_name", target_table_name)
         if target_time is not None:
-            pulumi.set(__self__, "target_time", target_time)
+            _setter("target_time", target_time)
         if udm_detail is not None:
-            pulumi.set(__self__, "udm_detail", udm_detail)
+            _setter("udm_detail", udm_detail)
 
     @property
     @pulumi.getter(name="restoreType")
@@ -474,58 +587,163 @@ class _RestoreJobState:
         :param pulumi.Input[str] udm_detail: The full machine backup details.
         :param pulumi.Input[str] vault_id: The ID of backup vault.
         """
+        _RestoreJobState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cross_account_role_name=cross_account_role_name,
+            cross_account_type=cross_account_type,
+            cross_account_user_id=cross_account_user_id,
+            exclude=exclude,
+            include=include,
+            options=options,
+            ots_detail=ots_detail,
+            restore_job_id=restore_job_id,
+            restore_type=restore_type,
+            snapshot_hash=snapshot_hash,
+            snapshot_id=snapshot_id,
+            source_type=source_type,
+            status=status,
+            target_bucket=target_bucket,
+            target_client_id=target_client_id,
+            target_create_time=target_create_time,
+            target_data_source_id=target_data_source_id,
+            target_file_system_id=target_file_system_id,
+            target_instance_id=target_instance_id,
+            target_instance_name=target_instance_name,
+            target_path=target_path,
+            target_prefix=target_prefix,
+            target_table_name=target_table_name,
+            target_time=target_time,
+            udm_detail=udm_detail,
+            vault_id=vault_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cross_account_role_name: Optional[pulumi.Input[str]] = None,
+             cross_account_type: Optional[pulumi.Input[str]] = None,
+             cross_account_user_id: Optional[pulumi.Input[int]] = None,
+             exclude: Optional[pulumi.Input[str]] = None,
+             include: Optional[pulumi.Input[str]] = None,
+             options: Optional[pulumi.Input[str]] = None,
+             ots_detail: Optional[pulumi.Input['RestoreJobOtsDetailArgs']] = None,
+             restore_job_id: Optional[pulumi.Input[str]] = None,
+             restore_type: Optional[pulumi.Input[str]] = None,
+             snapshot_hash: Optional[pulumi.Input[str]] = None,
+             snapshot_id: Optional[pulumi.Input[str]] = None,
+             source_type: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             target_bucket: Optional[pulumi.Input[str]] = None,
+             target_client_id: Optional[pulumi.Input[str]] = None,
+             target_create_time: Optional[pulumi.Input[str]] = None,
+             target_data_source_id: Optional[pulumi.Input[str]] = None,
+             target_file_system_id: Optional[pulumi.Input[str]] = None,
+             target_instance_id: Optional[pulumi.Input[str]] = None,
+             target_instance_name: Optional[pulumi.Input[str]] = None,
+             target_path: Optional[pulumi.Input[str]] = None,
+             target_prefix: Optional[pulumi.Input[str]] = None,
+             target_table_name: Optional[pulumi.Input[str]] = None,
+             target_time: Optional[pulumi.Input[str]] = None,
+             udm_detail: Optional[pulumi.Input[str]] = None,
+             vault_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cross_account_role_name is None and 'crossAccountRoleName' in kwargs:
+            cross_account_role_name = kwargs['crossAccountRoleName']
+        if cross_account_type is None and 'crossAccountType' in kwargs:
+            cross_account_type = kwargs['crossAccountType']
+        if cross_account_user_id is None and 'crossAccountUserId' in kwargs:
+            cross_account_user_id = kwargs['crossAccountUserId']
+        if ots_detail is None and 'otsDetail' in kwargs:
+            ots_detail = kwargs['otsDetail']
+        if restore_job_id is None and 'restoreJobId' in kwargs:
+            restore_job_id = kwargs['restoreJobId']
+        if restore_type is None and 'restoreType' in kwargs:
+            restore_type = kwargs['restoreType']
+        if snapshot_hash is None and 'snapshotHash' in kwargs:
+            snapshot_hash = kwargs['snapshotHash']
+        if snapshot_id is None and 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if source_type is None and 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+        if target_bucket is None and 'targetBucket' in kwargs:
+            target_bucket = kwargs['targetBucket']
+        if target_client_id is None and 'targetClientId' in kwargs:
+            target_client_id = kwargs['targetClientId']
+        if target_create_time is None and 'targetCreateTime' in kwargs:
+            target_create_time = kwargs['targetCreateTime']
+        if target_data_source_id is None and 'targetDataSourceId' in kwargs:
+            target_data_source_id = kwargs['targetDataSourceId']
+        if target_file_system_id is None and 'targetFileSystemId' in kwargs:
+            target_file_system_id = kwargs['targetFileSystemId']
+        if target_instance_id is None and 'targetInstanceId' in kwargs:
+            target_instance_id = kwargs['targetInstanceId']
+        if target_instance_name is None and 'targetInstanceName' in kwargs:
+            target_instance_name = kwargs['targetInstanceName']
+        if target_path is None and 'targetPath' in kwargs:
+            target_path = kwargs['targetPath']
+        if target_prefix is None and 'targetPrefix' in kwargs:
+            target_prefix = kwargs['targetPrefix']
+        if target_table_name is None and 'targetTableName' in kwargs:
+            target_table_name = kwargs['targetTableName']
+        if target_time is None and 'targetTime' in kwargs:
+            target_time = kwargs['targetTime']
+        if udm_detail is None and 'udmDetail' in kwargs:
+            udm_detail = kwargs['udmDetail']
+        if vault_id is None and 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+
         if cross_account_role_name is not None:
-            pulumi.set(__self__, "cross_account_role_name", cross_account_role_name)
+            _setter("cross_account_role_name", cross_account_role_name)
         if cross_account_type is not None:
-            pulumi.set(__self__, "cross_account_type", cross_account_type)
+            _setter("cross_account_type", cross_account_type)
         if cross_account_user_id is not None:
-            pulumi.set(__self__, "cross_account_user_id", cross_account_user_id)
+            _setter("cross_account_user_id", cross_account_user_id)
         if exclude is not None:
-            pulumi.set(__self__, "exclude", exclude)
+            _setter("exclude", exclude)
         if include is not None:
-            pulumi.set(__self__, "include", include)
+            _setter("include", include)
         if options is not None:
-            pulumi.set(__self__, "options", options)
+            _setter("options", options)
         if ots_detail is not None:
-            pulumi.set(__self__, "ots_detail", ots_detail)
+            _setter("ots_detail", ots_detail)
         if restore_job_id is not None:
-            pulumi.set(__self__, "restore_job_id", restore_job_id)
+            _setter("restore_job_id", restore_job_id)
         if restore_type is not None:
-            pulumi.set(__self__, "restore_type", restore_type)
+            _setter("restore_type", restore_type)
         if snapshot_hash is not None:
-            pulumi.set(__self__, "snapshot_hash", snapshot_hash)
+            _setter("snapshot_hash", snapshot_hash)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
         if source_type is not None:
-            pulumi.set(__self__, "source_type", source_type)
+            _setter("source_type", source_type)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if target_bucket is not None:
-            pulumi.set(__self__, "target_bucket", target_bucket)
+            _setter("target_bucket", target_bucket)
         if target_client_id is not None:
-            pulumi.set(__self__, "target_client_id", target_client_id)
+            _setter("target_client_id", target_client_id)
         if target_create_time is not None:
-            pulumi.set(__self__, "target_create_time", target_create_time)
+            _setter("target_create_time", target_create_time)
         if target_data_source_id is not None:
-            pulumi.set(__self__, "target_data_source_id", target_data_source_id)
+            _setter("target_data_source_id", target_data_source_id)
         if target_file_system_id is not None:
-            pulumi.set(__self__, "target_file_system_id", target_file_system_id)
+            _setter("target_file_system_id", target_file_system_id)
         if target_instance_id is not None:
-            pulumi.set(__self__, "target_instance_id", target_instance_id)
+            _setter("target_instance_id", target_instance_id)
         if target_instance_name is not None:
-            pulumi.set(__self__, "target_instance_name", target_instance_name)
+            _setter("target_instance_name", target_instance_name)
         if target_path is not None:
-            pulumi.set(__self__, "target_path", target_path)
+            _setter("target_path", target_path)
         if target_prefix is not None:
-            pulumi.set(__self__, "target_prefix", target_prefix)
+            _setter("target_prefix", target_prefix)
         if target_table_name is not None:
-            pulumi.set(__self__, "target_table_name", target_table_name)
+            _setter("target_table_name", target_table_name)
         if target_time is not None:
-            pulumi.set(__self__, "target_time", target_time)
+            _setter("target_time", target_time)
         if udm_detail is not None:
-            pulumi.set(__self__, "udm_detail", udm_detail)
+            _setter("udm_detail", udm_detail)
         if vault_id is not None:
-            pulumi.set(__self__, "vault_id", vault_id)
+            _setter("vault_id", vault_id)
 
     @property
     @pulumi.getter(name="crossAccountRoleName")
@@ -1049,6 +1267,10 @@ class RestoreJob(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RestoreJobArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1094,6 +1316,11 @@ class RestoreJob(pulumi.CustomResource):
             __props__.__dict__["exclude"] = exclude
             __props__.__dict__["include"] = include
             __props__.__dict__["options"] = options
+            if ots_detail is not None and not isinstance(ots_detail, RestoreJobOtsDetailArgs):
+                ots_detail = ots_detail or {}
+                def _setter(key, value):
+                    ots_detail[key] = value
+                RestoreJobOtsDetailArgs._configure(_setter, **ots_detail)
             __props__.__dict__["ots_detail"] = ots_detail
             __props__.__dict__["restore_job_id"] = restore_job_id
             if restore_type is None and not opts.urn:

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EcsDeploymentSetArgs', 'EcsDeploymentSet']
@@ -29,18 +29,43 @@ class EcsDeploymentSetArgs:
         :param pulumi.Input[str] on_unable_to_redeploy_failed_instance: The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
         :param pulumi.Input[str] strategy: The deployment strategy. Valid values: `Availability`.
         """
+        EcsDeploymentSetArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            deployment_set_name=deployment_set_name,
+            description=description,
+            domain=domain,
+            granularity=granularity,
+            on_unable_to_redeploy_failed_instance=on_unable_to_redeploy_failed_instance,
+            strategy=strategy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             deployment_set_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             domain: Optional[pulumi.Input[str]] = None,
+             granularity: Optional[pulumi.Input[str]] = None,
+             on_unable_to_redeploy_failed_instance: Optional[pulumi.Input[str]] = None,
+             strategy: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if deployment_set_name is None and 'deploymentSetName' in kwargs:
+            deployment_set_name = kwargs['deploymentSetName']
+        if on_unable_to_redeploy_failed_instance is None and 'onUnableToRedeployFailedInstance' in kwargs:
+            on_unable_to_redeploy_failed_instance = kwargs['onUnableToRedeployFailedInstance']
+
         if deployment_set_name is not None:
-            pulumi.set(__self__, "deployment_set_name", deployment_set_name)
+            _setter("deployment_set_name", deployment_set_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if domain is not None:
-            pulumi.set(__self__, "domain", domain)
+            _setter("domain", domain)
         if granularity is not None:
-            pulumi.set(__self__, "granularity", granularity)
+            _setter("granularity", granularity)
         if on_unable_to_redeploy_failed_instance is not None:
-            pulumi.set(__self__, "on_unable_to_redeploy_failed_instance", on_unable_to_redeploy_failed_instance)
+            _setter("on_unable_to_redeploy_failed_instance", on_unable_to_redeploy_failed_instance)
         if strategy is not None:
-            pulumi.set(__self__, "strategy", strategy)
+            _setter("strategy", strategy)
 
     @property
     @pulumi.getter(name="deploymentSetName")
@@ -133,18 +158,43 @@ class _EcsDeploymentSetState:
         :param pulumi.Input[str] on_unable_to_redeploy_failed_instance: The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
         :param pulumi.Input[str] strategy: The deployment strategy. Valid values: `Availability`.
         """
+        _EcsDeploymentSetState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            deployment_set_name=deployment_set_name,
+            description=description,
+            domain=domain,
+            granularity=granularity,
+            on_unable_to_redeploy_failed_instance=on_unable_to_redeploy_failed_instance,
+            strategy=strategy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             deployment_set_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             domain: Optional[pulumi.Input[str]] = None,
+             granularity: Optional[pulumi.Input[str]] = None,
+             on_unable_to_redeploy_failed_instance: Optional[pulumi.Input[str]] = None,
+             strategy: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if deployment_set_name is None and 'deploymentSetName' in kwargs:
+            deployment_set_name = kwargs['deploymentSetName']
+        if on_unable_to_redeploy_failed_instance is None and 'onUnableToRedeployFailedInstance' in kwargs:
+            on_unable_to_redeploy_failed_instance = kwargs['onUnableToRedeployFailedInstance']
+
         if deployment_set_name is not None:
-            pulumi.set(__self__, "deployment_set_name", deployment_set_name)
+            _setter("deployment_set_name", deployment_set_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if domain is not None:
-            pulumi.set(__self__, "domain", domain)
+            _setter("domain", domain)
         if granularity is not None:
-            pulumi.set(__self__, "granularity", granularity)
+            _setter("granularity", granularity)
         if on_unable_to_redeploy_failed_instance is not None:
-            pulumi.set(__self__, "on_unable_to_redeploy_failed_instance", on_unable_to_redeploy_failed_instance)
+            _setter("on_unable_to_redeploy_failed_instance", on_unable_to_redeploy_failed_instance)
         if strategy is not None:
-            pulumi.set(__self__, "strategy", strategy)
+            _setter("strategy", strategy)
 
     @property
     @pulumi.getter(name="deploymentSetName")
@@ -318,6 +368,10 @@ class EcsDeploymentSet(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EcsDeploymentSetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

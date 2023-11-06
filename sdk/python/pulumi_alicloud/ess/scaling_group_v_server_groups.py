@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,10 +25,33 @@ class ScalingGroupVServerGroupsArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupArgs']]] vserver_groups: A list of vserver groups attached on scaling group. See `vserver_groups` below.
         :param pulumi.Input[bool] force: If instances of scaling group are attached/removed from slb backend server when attach/detach vserver group from scaling group. Default to true.
         """
-        pulumi.set(__self__, "scaling_group_id", scaling_group_id)
-        pulumi.set(__self__, "vserver_groups", vserver_groups)
+        ScalingGroupVServerGroupsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            scaling_group_id=scaling_group_id,
+            vserver_groups=vserver_groups,
+            force=force,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             scaling_group_id: Optional[pulumi.Input[str]] = None,
+             vserver_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupArgs']]]] = None,
+             force: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if scaling_group_id is None and 'scalingGroupId' in kwargs:
+            scaling_group_id = kwargs['scalingGroupId']
+        if scaling_group_id is None:
+            raise TypeError("Missing 'scaling_group_id' argument")
+        if vserver_groups is None and 'vserverGroups' in kwargs:
+            vserver_groups = kwargs['vserverGroups']
+        if vserver_groups is None:
+            raise TypeError("Missing 'vserver_groups' argument")
+
+        _setter("scaling_group_id", scaling_group_id)
+        _setter("vserver_groups", vserver_groups)
         if force is not None:
-            pulumi.set(__self__, "force", force)
+            _setter("force", force)
 
     @property
     @pulumi.getter(name="scalingGroupId")
@@ -79,12 +102,31 @@ class _ScalingGroupVServerGroupsState:
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupArgs']]] vserver_groups: A list of vserver groups attached on scaling group. See `vserver_groups` below.
         """
+        _ScalingGroupVServerGroupsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            force=force,
+            scaling_group_id=scaling_group_id,
+            vserver_groups=vserver_groups,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             force: Optional[pulumi.Input[bool]] = None,
+             scaling_group_id: Optional[pulumi.Input[str]] = None,
+             vserver_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if scaling_group_id is None and 'scalingGroupId' in kwargs:
+            scaling_group_id = kwargs['scalingGroupId']
+        if vserver_groups is None and 'vserverGroups' in kwargs:
+            vserver_groups = kwargs['vserverGroups']
+
         if force is not None:
-            pulumi.set(__self__, "force", force)
+            _setter("force", force)
         if scaling_group_id is not None:
-            pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+            _setter("scaling_group_id", scaling_group_id)
         if vserver_groups is not None:
-            pulumi.set(__self__, "vserver_groups", vserver_groups)
+            _setter("vserver_groups", vserver_groups)
 
     @property
     @pulumi.getter
@@ -212,6 +254,10 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ScalingGroupVServerGroupsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

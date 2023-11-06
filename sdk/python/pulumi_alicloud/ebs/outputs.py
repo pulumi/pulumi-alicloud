@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -56,23 +56,124 @@ class GetDedicatedBlockStorageClustersClusterResult(dict):
         :param str used_capacity: The used (created disk) capacity of the current cluster, in GB
         :param str zone_id: The zone ID  of the resource
         """
-        pulumi.set(__self__, "available_capacity", available_capacity)
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "dedicated_block_storage_cluster_id", dedicated_block_storage_cluster_id)
-        pulumi.set(__self__, "dedicated_block_storage_cluster_name", dedicated_block_storage_cluster_name)
-        pulumi.set(__self__, "delivery_capacity", delivery_capacity)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "performance_level", performance_level)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "supported_category", supported_category)
-        pulumi.set(__self__, "total_capacity", total_capacity)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "used_capacity", used_capacity)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetDedicatedBlockStorageClustersClusterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            available_capacity=available_capacity,
+            category=category,
+            create_time=create_time,
+            dedicated_block_storage_cluster_id=dedicated_block_storage_cluster_id,
+            dedicated_block_storage_cluster_name=dedicated_block_storage_cluster_name,
+            delivery_capacity=delivery_capacity,
+            description=description,
+            expired_time=expired_time,
+            id=id,
+            performance_level=performance_level,
+            resource_group_id=resource_group_id,
+            status=status,
+            supported_category=supported_category,
+            total_capacity=total_capacity,
+            type=type,
+            used_capacity=used_capacity,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             available_capacity: Optional[str] = None,
+             category: Optional[str] = None,
+             create_time: Optional[str] = None,
+             dedicated_block_storage_cluster_id: Optional[str] = None,
+             dedicated_block_storage_cluster_name: Optional[str] = None,
+             delivery_capacity: Optional[str] = None,
+             description: Optional[str] = None,
+             expired_time: Optional[str] = None,
+             id: Optional[str] = None,
+             performance_level: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             status: Optional[str] = None,
+             supported_category: Optional[str] = None,
+             total_capacity: Optional[str] = None,
+             type: Optional[str] = None,
+             used_capacity: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if available_capacity is None and 'availableCapacity' in kwargs:
+            available_capacity = kwargs['availableCapacity']
+        if available_capacity is None:
+            raise TypeError("Missing 'available_capacity' argument")
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if dedicated_block_storage_cluster_id is None and 'dedicatedBlockStorageClusterId' in kwargs:
+            dedicated_block_storage_cluster_id = kwargs['dedicatedBlockStorageClusterId']
+        if dedicated_block_storage_cluster_id is None:
+            raise TypeError("Missing 'dedicated_block_storage_cluster_id' argument")
+        if dedicated_block_storage_cluster_name is None and 'dedicatedBlockStorageClusterName' in kwargs:
+            dedicated_block_storage_cluster_name = kwargs['dedicatedBlockStorageClusterName']
+        if dedicated_block_storage_cluster_name is None:
+            raise TypeError("Missing 'dedicated_block_storage_cluster_name' argument")
+        if delivery_capacity is None and 'deliveryCapacity' in kwargs:
+            delivery_capacity = kwargs['deliveryCapacity']
+        if delivery_capacity is None:
+            raise TypeError("Missing 'delivery_capacity' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if expired_time is None and 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if expired_time is None:
+            raise TypeError("Missing 'expired_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if performance_level is None and 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+        if performance_level is None:
+            raise TypeError("Missing 'performance_level' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if supported_category is None and 'supportedCategory' in kwargs:
+            supported_category = kwargs['supportedCategory']
+        if supported_category is None:
+            raise TypeError("Missing 'supported_category' argument")
+        if total_capacity is None and 'totalCapacity' in kwargs:
+            total_capacity = kwargs['totalCapacity']
+        if total_capacity is None:
+            raise TypeError("Missing 'total_capacity' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if used_capacity is None and 'usedCapacity' in kwargs:
+            used_capacity = kwargs['usedCapacity']
+        if used_capacity is None:
+            raise TypeError("Missing 'used_capacity' argument")
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+
+        _setter("available_capacity", available_capacity)
+        _setter("category", category)
+        _setter("create_time", create_time)
+        _setter("dedicated_block_storage_cluster_id", dedicated_block_storage_cluster_id)
+        _setter("dedicated_block_storage_cluster_name", dedicated_block_storage_cluster_name)
+        _setter("delivery_capacity", delivery_capacity)
+        _setter("description", description)
+        _setter("expired_time", expired_time)
+        _setter("id", id)
+        _setter("performance_level", performance_level)
+        _setter("resource_group_id", resource_group_id)
+        _setter("status", status)
+        _setter("supported_category", supported_category)
+        _setter("total_capacity", total_capacity)
+        _setter("type", type)
+        _setter("used_capacity", used_capacity)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="availableCapacity")
@@ -244,22 +345,117 @@ class GetDiskReplicaGroupsGroupResult(dict):
         :param str standby_zone: The initial destination zone of the replication group.
         :param str status: The status of the consistent replication group. Possible values:
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "destination_region_id", destination_region_id)
-        pulumi.set(__self__, "destination_zone_id", destination_zone_id)
-        pulumi.set(__self__, "group_name", group_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "last_recover_point", last_recover_point)
-        pulumi.set(__self__, "primary_region", primary_region)
-        pulumi.set(__self__, "primary_zone", primary_zone)
-        pulumi.set(__self__, "replica_group_id", replica_group_id)
-        pulumi.set(__self__, "rpo", rpo)
-        pulumi.set(__self__, "site", site)
-        pulumi.set(__self__, "source_region_id", source_region_id)
-        pulumi.set(__self__, "source_zone_id", source_zone_id)
-        pulumi.set(__self__, "standby_region", standby_region)
-        pulumi.set(__self__, "standby_zone", standby_zone)
-        pulumi.set(__self__, "status", status)
+        GetDiskReplicaGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            destination_region_id=destination_region_id,
+            destination_zone_id=destination_zone_id,
+            group_name=group_name,
+            id=id,
+            last_recover_point=last_recover_point,
+            primary_region=primary_region,
+            primary_zone=primary_zone,
+            replica_group_id=replica_group_id,
+            rpo=rpo,
+            site=site,
+            source_region_id=source_region_id,
+            source_zone_id=source_zone_id,
+            standby_region=standby_region,
+            standby_zone=standby_zone,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[str] = None,
+             destination_region_id: Optional[str] = None,
+             destination_zone_id: Optional[str] = None,
+             group_name: Optional[str] = None,
+             id: Optional[str] = None,
+             last_recover_point: Optional[str] = None,
+             primary_region: Optional[str] = None,
+             primary_zone: Optional[str] = None,
+             replica_group_id: Optional[str] = None,
+             rpo: Optional[int] = None,
+             site: Optional[str] = None,
+             source_region_id: Optional[str] = None,
+             source_zone_id: Optional[str] = None,
+             standby_region: Optional[str] = None,
+             standby_zone: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if destination_region_id is None and 'destinationRegionId' in kwargs:
+            destination_region_id = kwargs['destinationRegionId']
+        if destination_region_id is None:
+            raise TypeError("Missing 'destination_region_id' argument")
+        if destination_zone_id is None and 'destinationZoneId' in kwargs:
+            destination_zone_id = kwargs['destinationZoneId']
+        if destination_zone_id is None:
+            raise TypeError("Missing 'destination_zone_id' argument")
+        if group_name is None and 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if group_name is None:
+            raise TypeError("Missing 'group_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if last_recover_point is None and 'lastRecoverPoint' in kwargs:
+            last_recover_point = kwargs['lastRecoverPoint']
+        if last_recover_point is None:
+            raise TypeError("Missing 'last_recover_point' argument")
+        if primary_region is None and 'primaryRegion' in kwargs:
+            primary_region = kwargs['primaryRegion']
+        if primary_region is None:
+            raise TypeError("Missing 'primary_region' argument")
+        if primary_zone is None and 'primaryZone' in kwargs:
+            primary_zone = kwargs['primaryZone']
+        if primary_zone is None:
+            raise TypeError("Missing 'primary_zone' argument")
+        if replica_group_id is None and 'replicaGroupId' in kwargs:
+            replica_group_id = kwargs['replicaGroupId']
+        if replica_group_id is None:
+            raise TypeError("Missing 'replica_group_id' argument")
+        if rpo is None:
+            raise TypeError("Missing 'rpo' argument")
+        if site is None:
+            raise TypeError("Missing 'site' argument")
+        if source_region_id is None and 'sourceRegionId' in kwargs:
+            source_region_id = kwargs['sourceRegionId']
+        if source_region_id is None:
+            raise TypeError("Missing 'source_region_id' argument")
+        if source_zone_id is None and 'sourceZoneId' in kwargs:
+            source_zone_id = kwargs['sourceZoneId']
+        if source_zone_id is None:
+            raise TypeError("Missing 'source_zone_id' argument")
+        if standby_region is None and 'standbyRegion' in kwargs:
+            standby_region = kwargs['standbyRegion']
+        if standby_region is None:
+            raise TypeError("Missing 'standby_region' argument")
+        if standby_zone is None and 'standbyZone' in kwargs:
+            standby_zone = kwargs['standbyZone']
+        if standby_zone is None:
+            raise TypeError("Missing 'standby_zone' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+
+        _setter("description", description)
+        _setter("destination_region_id", destination_region_id)
+        _setter("destination_zone_id", destination_zone_id)
+        _setter("group_name", group_name)
+        _setter("id", id)
+        _setter("last_recover_point", last_recover_point)
+        _setter("primary_region", primary_region)
+        _setter("primary_zone", primary_zone)
+        _setter("replica_group_id", replica_group_id)
+        _setter("rpo", rpo)
+        _setter("site", site)
+        _setter("source_region_id", source_region_id)
+        _setter("source_zone_id", source_zone_id)
+        _setter("standby_region", standby_region)
+        _setter("standby_zone", standby_zone)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -419,20 +615,103 @@ class GetDiskReplicaPairsPairResult(dict):
         :param str source_zone_id: The ID of the zone to which the production site belongs.
         :param str status: The status of the resource.
         """
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "destination_disk_id", destination_disk_id)
-        pulumi.set(__self__, "destination_region_id", destination_region_id)
-        pulumi.set(__self__, "destination_zone_id", destination_zone_id)
-        pulumi.set(__self__, "disk_id", disk_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "pair_name", pair_name)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "replica_pair_id", replica_pair_id)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "rpo", rpo)
-        pulumi.set(__self__, "source_zone_id", source_zone_id)
-        pulumi.set(__self__, "status", status)
+        GetDiskReplicaPairsPairResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            description=description,
+            destination_disk_id=destination_disk_id,
+            destination_region_id=destination_region_id,
+            destination_zone_id=destination_zone_id,
+            disk_id=disk_id,
+            id=id,
+            pair_name=pair_name,
+            payment_type=payment_type,
+            replica_pair_id=replica_pair_id,
+            resource_group_id=resource_group_id,
+            rpo=rpo,
+            source_zone_id=source_zone_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: Optional[str] = None,
+             description: Optional[str] = None,
+             destination_disk_id: Optional[str] = None,
+             destination_region_id: Optional[str] = None,
+             destination_zone_id: Optional[str] = None,
+             disk_id: Optional[str] = None,
+             id: Optional[str] = None,
+             pair_name: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             replica_pair_id: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             rpo: Optional[str] = None,
+             source_zone_id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if destination_disk_id is None and 'destinationDiskId' in kwargs:
+            destination_disk_id = kwargs['destinationDiskId']
+        if destination_disk_id is None:
+            raise TypeError("Missing 'destination_disk_id' argument")
+        if destination_region_id is None and 'destinationRegionId' in kwargs:
+            destination_region_id = kwargs['destinationRegionId']
+        if destination_region_id is None:
+            raise TypeError("Missing 'destination_region_id' argument")
+        if destination_zone_id is None and 'destinationZoneId' in kwargs:
+            destination_zone_id = kwargs['destinationZoneId']
+        if destination_zone_id is None:
+            raise TypeError("Missing 'destination_zone_id' argument")
+        if disk_id is None and 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if disk_id is None:
+            raise TypeError("Missing 'disk_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if pair_name is None and 'pairName' in kwargs:
+            pair_name = kwargs['pairName']
+        if pair_name is None:
+            raise TypeError("Missing 'pair_name' argument")
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if replica_pair_id is None and 'replicaPairId' in kwargs:
+            replica_pair_id = kwargs['replicaPairId']
+        if replica_pair_id is None:
+            raise TypeError("Missing 'replica_pair_id' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if rpo is None:
+            raise TypeError("Missing 'rpo' argument")
+        if source_zone_id is None and 'sourceZoneId' in kwargs:
+            source_zone_id = kwargs['sourceZoneId']
+        if source_zone_id is None:
+            raise TypeError("Missing 'source_zone_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+
+        _setter("bandwidth", bandwidth)
+        _setter("description", description)
+        _setter("destination_disk_id", destination_disk_id)
+        _setter("destination_region_id", destination_region_id)
+        _setter("destination_zone_id", destination_zone_id)
+        _setter("disk_id", disk_id)
+        _setter("id", id)
+        _setter("pair_name", pair_name)
+        _setter("payment_type", payment_type)
+        _setter("replica_pair_id", replica_pair_id)
+        _setter("resource_group_id", resource_group_id)
+        _setter("rpo", rpo)
+        _setter("source_zone_id", source_zone_id)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -553,8 +832,27 @@ class GetRegionsRegionResult(dict):
         :param str region_id: The ID of the region.
         :param Sequence['GetRegionsRegionZoneArgs'] zones: A list of Ebs Zones.
         """
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "zones", zones)
+        GetRegionsRegionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            region_id=region_id,
+            zones=zones,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             region_id: Optional[str] = None,
+             zones: Optional[Sequence['outputs.GetRegionsRegionZoneResult']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if region_id is None and 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if zones is None:
+            raise TypeError("Missing 'zones' argument")
+
+        _setter("region_id", region_id)
+        _setter("zones", zones)
 
     @property
     @pulumi.getter(name="regionId")
@@ -580,7 +878,22 @@ class GetRegionsRegionZoneResult(dict):
         """
         :param str zone_id: The ID of the zone.
         """
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetRegionsRegionZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="zoneId")

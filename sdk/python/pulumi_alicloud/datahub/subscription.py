@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SubscriptionArgs', 'Subscription']
@@ -23,10 +23,33 @@ class SubscriptionArgs:
         :param pulumi.Input[str] topic_name: The name of the datahub topic that the subscription belongs to. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
         :param pulumi.Input[str] comment: Comment of the datahub subscription. It cannot be longer than 255 characters.
         """
-        pulumi.set(__self__, "project_name", project_name)
-        pulumi.set(__self__, "topic_name", topic_name)
+        SubscriptionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project_name=project_name,
+            topic_name=topic_name,
+            comment=comment,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project_name: Optional[pulumi.Input[str]] = None,
+             topic_name: Optional[pulumi.Input[str]] = None,
+             comment: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project_name is None and 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if project_name is None:
+            raise TypeError("Missing 'project_name' argument")
+        if topic_name is None and 'topicName' in kwargs:
+            topic_name = kwargs['topicName']
+        if topic_name is None:
+            raise TypeError("Missing 'topic_name' argument")
+
+        _setter("project_name", project_name)
+        _setter("topic_name", topic_name)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
 
     @property
     @pulumi.getter(name="projectName")
@@ -83,18 +106,49 @@ class _SubscriptionState:
         :param pulumi.Input[str] sub_id: The identidy of the subscription, generate from server side.
         :param pulumi.Input[str] topic_name: The name of the datahub topic that the subscription belongs to. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
         """
+        _SubscriptionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comment=comment,
+            create_time=create_time,
+            last_modify_time=last_modify_time,
+            project_name=project_name,
+            sub_id=sub_id,
+            topic_name=topic_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comment: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             last_modify_time: Optional[pulumi.Input[str]] = None,
+             project_name: Optional[pulumi.Input[str]] = None,
+             sub_id: Optional[pulumi.Input[str]] = None,
+             topic_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if last_modify_time is None and 'lastModifyTime' in kwargs:
+            last_modify_time = kwargs['lastModifyTime']
+        if project_name is None and 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if sub_id is None and 'subId' in kwargs:
+            sub_id = kwargs['subId']
+        if topic_name is None and 'topicName' in kwargs:
+            topic_name = kwargs['topicName']
+
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if last_modify_time is not None:
-            pulumi.set(__self__, "last_modify_time", last_modify_time)
+            _setter("last_modify_time", last_modify_time)
         if project_name is not None:
-            pulumi.set(__self__, "project_name", project_name)
+            _setter("project_name", project_name)
         if sub_id is not None:
-            pulumi.set(__self__, "sub_id", sub_id)
+            _setter("sub_id", sub_id)
         if topic_name is not None:
-            pulumi.set(__self__, "topic_name", topic_name)
+            _setter("topic_name", topic_name)
 
     @property
     @pulumi.getter
@@ -276,6 +330,10 @@ class Subscription(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SubscriptionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

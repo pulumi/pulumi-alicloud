@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BandwidthPackageAttachmentArgs', 'BandwidthPackageAttachment']
@@ -21,8 +21,29 @@ class BandwidthPackageAttachmentArgs:
         :param pulumi.Input[str] bandwidth_package_id: The ID of the bandwidth package.
         :param pulumi.Input[str] instance_id: The ID of the CEN.
         """
-        pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
-        pulumi.set(__self__, "instance_id", instance_id)
+        BandwidthPackageAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth_package_id=bandwidth_package_id,
+            instance_id=instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth_package_id: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bandwidth_package_id is None and 'bandwidthPackageId' in kwargs:
+            bandwidth_package_id = kwargs['bandwidthPackageId']
+        if bandwidth_package_id is None:
+            raise TypeError("Missing 'bandwidth_package_id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+
+        _setter("bandwidth_package_id", bandwidth_package_id)
+        _setter("instance_id", instance_id)
 
     @property
     @pulumi.getter(name="bandwidthPackageId")
@@ -59,10 +80,27 @@ class _BandwidthPackageAttachmentState:
         :param pulumi.Input[str] bandwidth_package_id: The ID of the bandwidth package.
         :param pulumi.Input[str] instance_id: The ID of the CEN.
         """
+        _BandwidthPackageAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth_package_id=bandwidth_package_id,
+            instance_id=instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth_package_id: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bandwidth_package_id is None and 'bandwidthPackageId' in kwargs:
+            bandwidth_package_id = kwargs['bandwidthPackageId']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if bandwidth_package_id is not None:
-            pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
+            _setter("bandwidth_package_id", bandwidth_package_id)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
 
     @property
     @pulumi.getter(name="bandwidthPackageId")
@@ -186,6 +224,10 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BandwidthPackageAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

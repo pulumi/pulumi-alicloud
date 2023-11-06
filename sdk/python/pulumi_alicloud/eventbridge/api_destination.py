@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,11 +27,40 @@ class ApiDestinationArgs:
         :param pulumi.Input['ApiDestinationHttpApiParametersArgs'] http_api_parameters: The parameters that are configured for the API destination. See `http_api_parameters` below.
         :param pulumi.Input[str] description: The description of the API destination.
         """
-        pulumi.set(__self__, "api_destination_name", api_destination_name)
-        pulumi.set(__self__, "connection_name", connection_name)
-        pulumi.set(__self__, "http_api_parameters", http_api_parameters)
+        ApiDestinationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_destination_name=api_destination_name,
+            connection_name=connection_name,
+            http_api_parameters=http_api_parameters,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_destination_name: Optional[pulumi.Input[str]] = None,
+             connection_name: Optional[pulumi.Input[str]] = None,
+             http_api_parameters: Optional[pulumi.Input['ApiDestinationHttpApiParametersArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api_destination_name is None and 'apiDestinationName' in kwargs:
+            api_destination_name = kwargs['apiDestinationName']
+        if api_destination_name is None:
+            raise TypeError("Missing 'api_destination_name' argument")
+        if connection_name is None and 'connectionName' in kwargs:
+            connection_name = kwargs['connectionName']
+        if connection_name is None:
+            raise TypeError("Missing 'connection_name' argument")
+        if http_api_parameters is None and 'httpApiParameters' in kwargs:
+            http_api_parameters = kwargs['httpApiParameters']
+        if http_api_parameters is None:
+            raise TypeError("Missing 'http_api_parameters' argument")
+
+        _setter("api_destination_name", api_destination_name)
+        _setter("connection_name", connection_name)
+        _setter("http_api_parameters", http_api_parameters)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="apiDestinationName")
@@ -98,16 +127,43 @@ class _ApiDestinationState:
         :param pulumi.Input[str] description: The description of the API destination.
         :param pulumi.Input['ApiDestinationHttpApiParametersArgs'] http_api_parameters: The parameters that are configured for the API destination. See `http_api_parameters` below.
         """
+        _ApiDestinationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_destination_name=api_destination_name,
+            connection_name=connection_name,
+            create_time=create_time,
+            description=description,
+            http_api_parameters=http_api_parameters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_destination_name: Optional[pulumi.Input[str]] = None,
+             connection_name: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             http_api_parameters: Optional[pulumi.Input['ApiDestinationHttpApiParametersArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api_destination_name is None and 'apiDestinationName' in kwargs:
+            api_destination_name = kwargs['apiDestinationName']
+        if connection_name is None and 'connectionName' in kwargs:
+            connection_name = kwargs['connectionName']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if http_api_parameters is None and 'httpApiParameters' in kwargs:
+            http_api_parameters = kwargs['httpApiParameters']
+
         if api_destination_name is not None:
-            pulumi.set(__self__, "api_destination_name", api_destination_name)
+            _setter("api_destination_name", api_destination_name)
         if connection_name is not None:
-            pulumi.set(__self__, "connection_name", connection_name)
+            _setter("connection_name", connection_name)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if http_api_parameters is not None:
-            pulumi.set(__self__, "http_api_parameters", http_api_parameters)
+            _setter("http_api_parameters", http_api_parameters)
 
     @property
     @pulumi.getter(name="apiDestinationName")
@@ -293,6 +349,10 @@ class ApiDestination(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ApiDestinationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -318,6 +378,11 @@ class ApiDestination(pulumi.CustomResource):
                 raise TypeError("Missing required property 'connection_name'")
             __props__.__dict__["connection_name"] = connection_name
             __props__.__dict__["description"] = description
+            if http_api_parameters is not None and not isinstance(http_api_parameters, ApiDestinationHttpApiParametersArgs):
+                http_api_parameters = http_api_parameters or {}
+                def _setter(key, value):
+                    http_api_parameters[key] = value
+                ApiDestinationHttpApiParametersArgs._configure(_setter, **http_api_parameters)
             if http_api_parameters is None and not opts.urn:
                 raise TypeError("Missing required property 'http_api_parameters'")
             __props__.__dict__["http_api_parameters"] = http_api_parameters

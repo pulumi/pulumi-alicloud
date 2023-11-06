@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ConnectionArgs', 'Connection']
@@ -21,9 +21,28 @@ class ConnectionArgs:
         :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
         :param pulumi.Input[str] connection_prefix: Prefix of the cluster public endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter. Default to `<db_cluster_id> + tf`.
         """
-        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+        ConnectionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_cluster_id=db_cluster_id,
+            connection_prefix=connection_prefix,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_cluster_id: Optional[pulumi.Input[str]] = None,
+             connection_prefix: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if db_cluster_id is None and 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+        if db_cluster_id is None:
+            raise TypeError("Missing 'db_cluster_id' argument")
+        if connection_prefix is None and 'connectionPrefix' in kwargs:
+            connection_prefix = kwargs['connectionPrefix']
+
+        _setter("db_cluster_id", db_cluster_id)
         if connection_prefix is not None:
-            pulumi.set(__self__, "connection_prefix", connection_prefix)
+            _setter("connection_prefix", connection_prefix)
 
     @property
     @pulumi.getter(name="dbClusterId")
@@ -66,16 +85,43 @@ class _ConnectionState:
         :param pulumi.Input[str] ip_address: The ip address of connection string.
         :param pulumi.Input[str] port: Connection cluster port.
         """
+        _ConnectionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connection_prefix=connection_prefix,
+            connection_string=connection_string,
+            db_cluster_id=db_cluster_id,
+            ip_address=ip_address,
+            port=port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connection_prefix: Optional[pulumi.Input[str]] = None,
+             connection_string: Optional[pulumi.Input[str]] = None,
+             db_cluster_id: Optional[pulumi.Input[str]] = None,
+             ip_address: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connection_prefix is None and 'connectionPrefix' in kwargs:
+            connection_prefix = kwargs['connectionPrefix']
+        if connection_string is None and 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if db_cluster_id is None and 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         if connection_prefix is not None:
-            pulumi.set(__self__, "connection_prefix", connection_prefix)
+            _setter("connection_prefix", connection_prefix)
         if connection_string is not None:
-            pulumi.set(__self__, "connection_string", connection_string)
+            _setter("connection_string", connection_string)
         if db_cluster_id is not None:
-            pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+            _setter("db_cluster_id", db_cluster_id)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
 
     @property
     @pulumi.getter(name="connectionPrefix")
@@ -289,6 +335,10 @@ class Connection(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ConnectionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

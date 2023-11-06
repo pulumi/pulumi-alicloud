@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TransitRouterRouteEntryArgs', 'TransitRouterRouteEntry']
@@ -34,17 +34,60 @@ class TransitRouterRouteEntryArgs:
         :param pulumi.Input[str] transit_router_route_entry_name: The name of the transit router route entry.
         :param pulumi.Input[str] transit_router_route_entry_next_hop_id: The ID of the transit router route entry next hop.
         """
-        pulumi.set(__self__, "transit_router_route_entry_destination_cidr_block", transit_router_route_entry_destination_cidr_block)
-        pulumi.set(__self__, "transit_router_route_entry_next_hop_type", transit_router_route_entry_next_hop_type)
-        pulumi.set(__self__, "transit_router_route_table_id", transit_router_route_table_id)
+        TransitRouterRouteEntryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            transit_router_route_entry_destination_cidr_block=transit_router_route_entry_destination_cidr_block,
+            transit_router_route_entry_next_hop_type=transit_router_route_entry_next_hop_type,
+            transit_router_route_table_id=transit_router_route_table_id,
+            dry_run=dry_run,
+            transit_router_route_entry_description=transit_router_route_entry_description,
+            transit_router_route_entry_name=transit_router_route_entry_name,
+            transit_router_route_entry_next_hop_id=transit_router_route_entry_next_hop_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             transit_router_route_entry_destination_cidr_block: Optional[pulumi.Input[str]] = None,
+             transit_router_route_entry_next_hop_type: Optional[pulumi.Input[str]] = None,
+             transit_router_route_table_id: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             transit_router_route_entry_description: Optional[pulumi.Input[str]] = None,
+             transit_router_route_entry_name: Optional[pulumi.Input[str]] = None,
+             transit_router_route_entry_next_hop_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if transit_router_route_entry_destination_cidr_block is None and 'transitRouterRouteEntryDestinationCidrBlock' in kwargs:
+            transit_router_route_entry_destination_cidr_block = kwargs['transitRouterRouteEntryDestinationCidrBlock']
+        if transit_router_route_entry_destination_cidr_block is None:
+            raise TypeError("Missing 'transit_router_route_entry_destination_cidr_block' argument")
+        if transit_router_route_entry_next_hop_type is None and 'transitRouterRouteEntryNextHopType' in kwargs:
+            transit_router_route_entry_next_hop_type = kwargs['transitRouterRouteEntryNextHopType']
+        if transit_router_route_entry_next_hop_type is None:
+            raise TypeError("Missing 'transit_router_route_entry_next_hop_type' argument")
+        if transit_router_route_table_id is None and 'transitRouterRouteTableId' in kwargs:
+            transit_router_route_table_id = kwargs['transitRouterRouteTableId']
+        if transit_router_route_table_id is None:
+            raise TypeError("Missing 'transit_router_route_table_id' argument")
+        if dry_run is None and 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if transit_router_route_entry_description is None and 'transitRouterRouteEntryDescription' in kwargs:
+            transit_router_route_entry_description = kwargs['transitRouterRouteEntryDescription']
+        if transit_router_route_entry_name is None and 'transitRouterRouteEntryName' in kwargs:
+            transit_router_route_entry_name = kwargs['transitRouterRouteEntryName']
+        if transit_router_route_entry_next_hop_id is None and 'transitRouterRouteEntryNextHopId' in kwargs:
+            transit_router_route_entry_next_hop_id = kwargs['transitRouterRouteEntryNextHopId']
+
+        _setter("transit_router_route_entry_destination_cidr_block", transit_router_route_entry_destination_cidr_block)
+        _setter("transit_router_route_entry_next_hop_type", transit_router_route_entry_next_hop_type)
+        _setter("transit_router_route_table_id", transit_router_route_table_id)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if transit_router_route_entry_description is not None:
-            pulumi.set(__self__, "transit_router_route_entry_description", transit_router_route_entry_description)
+            _setter("transit_router_route_entry_description", transit_router_route_entry_description)
         if transit_router_route_entry_name is not None:
-            pulumi.set(__self__, "transit_router_route_entry_name", transit_router_route_entry_name)
+            _setter("transit_router_route_entry_name", transit_router_route_entry_name)
         if transit_router_route_entry_next_hop_id is not None:
-            pulumi.set(__self__, "transit_router_route_entry_next_hop_id", transit_router_route_entry_next_hop_id)
+            _setter("transit_router_route_entry_next_hop_id", transit_router_route_entry_next_hop_id)
 
     @property
     @pulumi.getter(name="transitRouterRouteEntryDestinationCidrBlock")
@@ -161,24 +204,67 @@ class _TransitRouterRouteEntryState:
         :param pulumi.Input[str] transit_router_route_entry_next_hop_type: The Type of the transit router route entry next hop,Valid values `Attachment` and `BlackHole`.
         :param pulumi.Input[str] transit_router_route_table_id: The ID of the transit router route table.
         """
+        _TransitRouterRouteEntryState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dry_run=dry_run,
+            status=status,
+            transit_router_route_entry_description=transit_router_route_entry_description,
+            transit_router_route_entry_destination_cidr_block=transit_router_route_entry_destination_cidr_block,
+            transit_router_route_entry_id=transit_router_route_entry_id,
+            transit_router_route_entry_name=transit_router_route_entry_name,
+            transit_router_route_entry_next_hop_id=transit_router_route_entry_next_hop_id,
+            transit_router_route_entry_next_hop_type=transit_router_route_entry_next_hop_type,
+            transit_router_route_table_id=transit_router_route_table_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             transit_router_route_entry_description: Optional[pulumi.Input[str]] = None,
+             transit_router_route_entry_destination_cidr_block: Optional[pulumi.Input[str]] = None,
+             transit_router_route_entry_id: Optional[pulumi.Input[str]] = None,
+             transit_router_route_entry_name: Optional[pulumi.Input[str]] = None,
+             transit_router_route_entry_next_hop_id: Optional[pulumi.Input[str]] = None,
+             transit_router_route_entry_next_hop_type: Optional[pulumi.Input[str]] = None,
+             transit_router_route_table_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dry_run is None and 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if transit_router_route_entry_description is None and 'transitRouterRouteEntryDescription' in kwargs:
+            transit_router_route_entry_description = kwargs['transitRouterRouteEntryDescription']
+        if transit_router_route_entry_destination_cidr_block is None and 'transitRouterRouteEntryDestinationCidrBlock' in kwargs:
+            transit_router_route_entry_destination_cidr_block = kwargs['transitRouterRouteEntryDestinationCidrBlock']
+        if transit_router_route_entry_id is None and 'transitRouterRouteEntryId' in kwargs:
+            transit_router_route_entry_id = kwargs['transitRouterRouteEntryId']
+        if transit_router_route_entry_name is None and 'transitRouterRouteEntryName' in kwargs:
+            transit_router_route_entry_name = kwargs['transitRouterRouteEntryName']
+        if transit_router_route_entry_next_hop_id is None and 'transitRouterRouteEntryNextHopId' in kwargs:
+            transit_router_route_entry_next_hop_id = kwargs['transitRouterRouteEntryNextHopId']
+        if transit_router_route_entry_next_hop_type is None and 'transitRouterRouteEntryNextHopType' in kwargs:
+            transit_router_route_entry_next_hop_type = kwargs['transitRouterRouteEntryNextHopType']
+        if transit_router_route_table_id is None and 'transitRouterRouteTableId' in kwargs:
+            transit_router_route_table_id = kwargs['transitRouterRouteTableId']
+
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if transit_router_route_entry_description is not None:
-            pulumi.set(__self__, "transit_router_route_entry_description", transit_router_route_entry_description)
+            _setter("transit_router_route_entry_description", transit_router_route_entry_description)
         if transit_router_route_entry_destination_cidr_block is not None:
-            pulumi.set(__self__, "transit_router_route_entry_destination_cidr_block", transit_router_route_entry_destination_cidr_block)
+            _setter("transit_router_route_entry_destination_cidr_block", transit_router_route_entry_destination_cidr_block)
         if transit_router_route_entry_id is not None:
-            pulumi.set(__self__, "transit_router_route_entry_id", transit_router_route_entry_id)
+            _setter("transit_router_route_entry_id", transit_router_route_entry_id)
         if transit_router_route_entry_name is not None:
-            pulumi.set(__self__, "transit_router_route_entry_name", transit_router_route_entry_name)
+            _setter("transit_router_route_entry_name", transit_router_route_entry_name)
         if transit_router_route_entry_next_hop_id is not None:
-            pulumi.set(__self__, "transit_router_route_entry_next_hop_id", transit_router_route_entry_next_hop_id)
+            _setter("transit_router_route_entry_next_hop_id", transit_router_route_entry_next_hop_id)
         if transit_router_route_entry_next_hop_type is not None:
-            pulumi.set(__self__, "transit_router_route_entry_next_hop_type", transit_router_route_entry_next_hop_type)
+            _setter("transit_router_route_entry_next_hop_type", transit_router_route_entry_next_hop_type)
         if transit_router_route_table_id is not None:
-            pulumi.set(__self__, "transit_router_route_table_id", transit_router_route_table_id)
+            _setter("transit_router_route_table_id", transit_router_route_table_id)
 
     @property
     @pulumi.getter(name="dryRun")
@@ -460,6 +546,10 @@ class TransitRouterRouteEntry(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TransitRouterRouteEntryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['FilesetArgs', 'Fileset']
@@ -25,12 +25,39 @@ class FilesetArgs:
         :param pulumi.Input[str] description: The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
         :param pulumi.Input[bool] dry_run: The dry run.
         """
-        pulumi.set(__self__, "file_system_id", file_system_id)
-        pulumi.set(__self__, "file_system_path", file_system_path)
+        FilesetArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            file_system_id=file_system_id,
+            file_system_path=file_system_path,
+            description=description,
+            dry_run=dry_run,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             file_system_id: Optional[pulumi.Input[str]] = None,
+             file_system_path: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if file_system_id is None and 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if file_system_id is None:
+            raise TypeError("Missing 'file_system_id' argument")
+        if file_system_path is None and 'fileSystemPath' in kwargs:
+            file_system_path = kwargs['fileSystemPath']
+        if file_system_path is None:
+            raise TypeError("Missing 'file_system_path' argument")
+        if dry_run is None and 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+
+        _setter("file_system_id", file_system_id)
+        _setter("file_system_path", file_system_path)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
 
     @property
     @pulumi.getter(name="fileSystemId")
@@ -99,18 +126,47 @@ class _FilesetState:
         :param pulumi.Input[str] fileset_id: The first ID of the resource.
         :param pulumi.Input[str] status: The status of the fileset.
         """
+        _FilesetState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            dry_run=dry_run,
+            file_system_id=file_system_id,
+            file_system_path=file_system_path,
+            fileset_id=fileset_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             file_system_id: Optional[pulumi.Input[str]] = None,
+             file_system_path: Optional[pulumi.Input[str]] = None,
+             fileset_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dry_run is None and 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if file_system_id is None and 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if file_system_path is None and 'fileSystemPath' in kwargs:
+            file_system_path = kwargs['fileSystemPath']
+        if fileset_id is None and 'filesetId' in kwargs:
+            fileset_id = kwargs['filesetId']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if file_system_id is not None:
-            pulumi.set(__self__, "file_system_id", file_system_id)
+            _setter("file_system_id", file_system_id)
         if file_system_path is not None:
-            pulumi.set(__self__, "file_system_path", file_system_path)
+            _setter("file_system_path", file_system_path)
         if fileset_id is not None:
-            pulumi.set(__self__, "fileset_id", fileset_id)
+            _setter("fileset_id", fileset_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter
@@ -312,6 +368,10 @@ class Fileset(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FilesetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

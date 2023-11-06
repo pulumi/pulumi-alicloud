@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -32,12 +32,55 @@ class GetInstanceTypesInstanceTypeResult(dict):
         :param str name: The name of the current instance type.
         :param str name_en: The English name of the current instance type.
         """
-        pulumi.set(__self__, "cpu_core_count", cpu_core_count)
-        pulumi.set(__self__, "default_resolution", default_resolution)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "instance_type_family", instance_type_family)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "name_en", name_en)
+        GetInstanceTypesInstanceTypeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cpu_core_count=cpu_core_count,
+            default_resolution=default_resolution,
+            instance_type=instance_type,
+            instance_type_family=instance_type_family,
+            name=name,
+            name_en=name_en,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cpu_core_count: Optional[int] = None,
+             default_resolution: Optional[str] = None,
+             instance_type: Optional[str] = None,
+             instance_type_family: Optional[str] = None,
+             name: Optional[str] = None,
+             name_en: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cpu_core_count is None and 'cpuCoreCount' in kwargs:
+            cpu_core_count = kwargs['cpuCoreCount']
+        if cpu_core_count is None:
+            raise TypeError("Missing 'cpu_core_count' argument")
+        if default_resolution is None and 'defaultResolution' in kwargs:
+            default_resolution = kwargs['defaultResolution']
+        if default_resolution is None:
+            raise TypeError("Missing 'default_resolution' argument")
+        if instance_type is None and 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if instance_type_family is None and 'instanceTypeFamily' in kwargs:
+            instance_type_family = kwargs['instanceTypeFamily']
+        if instance_type_family is None:
+            raise TypeError("Missing 'instance_type_family' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if name_en is None and 'nameEn' in kwargs:
+            name_en = kwargs['nameEn']
+        if name_en is None:
+            raise TypeError("Missing 'name_en' argument")
+
+        _setter("cpu_core_count", cpu_core_count)
+        _setter("default_resolution", default_resolution)
+        _setter("instance_type", instance_type)
+        _setter("instance_type_family", instance_type_family)
+        _setter("name", name)
+        _setter("name_en", name_en)
 
     @property
     @pulumi.getter(name="cpuCoreCount")
@@ -117,20 +160,105 @@ class GetInstancesInstanceResult(dict):
         :param str vnc_url: VNC login address.
         :param str vswitch_id: The vswitch id.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "key_pair_name", key_pair_name)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "resolution", resolution)
-        pulumi.set(__self__, "security_group_id", security_group_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vnc_url", vnc_url)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            id=id,
+            image_id=image_id,
+            instance_id=instance_id,
+            instance_name=instance_name,
+            instance_type=instance_type,
+            key_pair_name=key_pair_name,
+            payment_type=payment_type,
+            resolution=resolution,
+            security_group_id=security_group_id,
+            status=status,
+            vnc_url=vnc_url,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             image_id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             instance_name: Optional[str] = None,
+             instance_type: Optional[str] = None,
+             key_pair_name: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             resolution: Optional[str] = None,
+             security_group_id: Optional[str] = None,
+             status: Optional[str] = None,
+             vnc_url: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if instance_type is None and 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if key_pair_name is None and 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+        if key_pair_name is None:
+            raise TypeError("Missing 'key_pair_name' argument")
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if resolution is None:
+            raise TypeError("Missing 'resolution' argument")
+        if security_group_id is None and 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vnc_url is None and 'vncUrl' in kwargs:
+            vnc_url = kwargs['vncUrl']
+        if vnc_url is None:
+            raise TypeError("Missing 'vnc_url' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+
+        _setter("description", description)
+        _setter("id", id)
+        _setter("image_id", image_id)
+        _setter("instance_id", instance_id)
+        _setter("instance_name", instance_name)
+        _setter("instance_type", instance_type)
+        _setter("key_pair_name", key_pair_name)
+        _setter("payment_type", payment_type)
+        _setter("resolution", resolution)
+        _setter("security_group_id", security_group_id)
+        _setter("status", status)
+        _setter("vnc_url", vnc_url)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -253,9 +381,34 @@ class GetKeyPairsPairResult(dict):
         :param str key_pair_finger_print: The Private Key of the Fingerprint.
         :param str key_pair_name: The Key Name.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "key_pair_finger_print", key_pair_finger_print)
-        pulumi.set(__self__, "key_pair_name", key_pair_name)
+        GetKeyPairsPairResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            key_pair_finger_print=key_pair_finger_print,
+            key_pair_name=key_pair_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             key_pair_finger_print: Optional[str] = None,
+             key_pair_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if key_pair_finger_print is None and 'keyPairFingerPrint' in kwargs:
+            key_pair_finger_print = kwargs['keyPairFingerPrint']
+        if key_pair_finger_print is None:
+            raise TypeError("Missing 'key_pair_finger_print' argument")
+        if key_pair_name is None and 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+        if key_pair_name is None:
+            raise TypeError("Missing 'key_pair_name' argument")
+
+        _setter("id", id)
+        _setter("key_pair_finger_print", key_pair_finger_print)
+        _setter("key_pair_name", key_pair_name)
 
     @property
     @pulumi.getter
@@ -289,7 +442,22 @@ class GetZonesZoneResult(dict):
         """
         :param str zone_id: String to filter results by zone id.
         """
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetZonesZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="zoneId")

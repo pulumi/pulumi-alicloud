@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -63,36 +63,135 @@ class OssShipperArgs:
         :param pulumi.Input[str] oss_prefix: The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
         :param pulumi.Input[str] role_arn: Used for access control, the OSS Bucket owner creates the role mark, such as `acs:ram::13234:role/logrole`
         """
-        pulumi.set(__self__, "buffer_interval", buffer_interval)
-        pulumi.set(__self__, "buffer_size", buffer_size)
-        pulumi.set(__self__, "format", format)
-        pulumi.set(__self__, "logstore_name", logstore_name)
-        pulumi.set(__self__, "oss_bucket", oss_bucket)
-        pulumi.set(__self__, "path_format", path_format)
-        pulumi.set(__self__, "project_name", project_name)
-        pulumi.set(__self__, "shipper_name", shipper_name)
+        OssShipperArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            buffer_interval=buffer_interval,
+            buffer_size=buffer_size,
+            format=format,
+            logstore_name=logstore_name,
+            oss_bucket=oss_bucket,
+            path_format=path_format,
+            project_name=project_name,
+            shipper_name=shipper_name,
+            compress_type=compress_type,
+            csv_config_columns=csv_config_columns,
+            csv_config_delimiter=csv_config_delimiter,
+            csv_config_header=csv_config_header,
+            csv_config_linefeed=csv_config_linefeed,
+            csv_config_nullidentifier=csv_config_nullidentifier,
+            csv_config_quote=csv_config_quote,
+            json_enable_tag=json_enable_tag,
+            oss_prefix=oss_prefix,
+            parquet_configs=parquet_configs,
+            role_arn=role_arn,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             buffer_interval: Optional[pulumi.Input[int]] = None,
+             buffer_size: Optional[pulumi.Input[int]] = None,
+             format: Optional[pulumi.Input[str]] = None,
+             logstore_name: Optional[pulumi.Input[str]] = None,
+             oss_bucket: Optional[pulumi.Input[str]] = None,
+             path_format: Optional[pulumi.Input[str]] = None,
+             project_name: Optional[pulumi.Input[str]] = None,
+             shipper_name: Optional[pulumi.Input[str]] = None,
+             compress_type: Optional[pulumi.Input[str]] = None,
+             csv_config_columns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             csv_config_delimiter: Optional[pulumi.Input[str]] = None,
+             csv_config_header: Optional[pulumi.Input[bool]] = None,
+             csv_config_linefeed: Optional[pulumi.Input[str]] = None,
+             csv_config_nullidentifier: Optional[pulumi.Input[str]] = None,
+             csv_config_quote: Optional[pulumi.Input[str]] = None,
+             json_enable_tag: Optional[pulumi.Input[bool]] = None,
+             oss_prefix: Optional[pulumi.Input[str]] = None,
+             parquet_configs: Optional[pulumi.Input[Sequence[pulumi.Input['OssShipperParquetConfigArgs']]]] = None,
+             role_arn: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if buffer_interval is None and 'bufferInterval' in kwargs:
+            buffer_interval = kwargs['bufferInterval']
+        if buffer_interval is None:
+            raise TypeError("Missing 'buffer_interval' argument")
+        if buffer_size is None and 'bufferSize' in kwargs:
+            buffer_size = kwargs['bufferSize']
+        if buffer_size is None:
+            raise TypeError("Missing 'buffer_size' argument")
+        if format is None:
+            raise TypeError("Missing 'format' argument")
+        if logstore_name is None and 'logstoreName' in kwargs:
+            logstore_name = kwargs['logstoreName']
+        if logstore_name is None:
+            raise TypeError("Missing 'logstore_name' argument")
+        if oss_bucket is None and 'ossBucket' in kwargs:
+            oss_bucket = kwargs['ossBucket']
+        if oss_bucket is None:
+            raise TypeError("Missing 'oss_bucket' argument")
+        if path_format is None and 'pathFormat' in kwargs:
+            path_format = kwargs['pathFormat']
+        if path_format is None:
+            raise TypeError("Missing 'path_format' argument")
+        if project_name is None and 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if project_name is None:
+            raise TypeError("Missing 'project_name' argument")
+        if shipper_name is None and 'shipperName' in kwargs:
+            shipper_name = kwargs['shipperName']
+        if shipper_name is None:
+            raise TypeError("Missing 'shipper_name' argument")
+        if compress_type is None and 'compressType' in kwargs:
+            compress_type = kwargs['compressType']
+        if csv_config_columns is None and 'csvConfigColumns' in kwargs:
+            csv_config_columns = kwargs['csvConfigColumns']
+        if csv_config_delimiter is None and 'csvConfigDelimiter' in kwargs:
+            csv_config_delimiter = kwargs['csvConfigDelimiter']
+        if csv_config_header is None and 'csvConfigHeader' in kwargs:
+            csv_config_header = kwargs['csvConfigHeader']
+        if csv_config_linefeed is None and 'csvConfigLinefeed' in kwargs:
+            csv_config_linefeed = kwargs['csvConfigLinefeed']
+        if csv_config_nullidentifier is None and 'csvConfigNullidentifier' in kwargs:
+            csv_config_nullidentifier = kwargs['csvConfigNullidentifier']
+        if csv_config_quote is None and 'csvConfigQuote' in kwargs:
+            csv_config_quote = kwargs['csvConfigQuote']
+        if json_enable_tag is None and 'jsonEnableTag' in kwargs:
+            json_enable_tag = kwargs['jsonEnableTag']
+        if oss_prefix is None and 'ossPrefix' in kwargs:
+            oss_prefix = kwargs['ossPrefix']
+        if parquet_configs is None and 'parquetConfigs' in kwargs:
+            parquet_configs = kwargs['parquetConfigs']
+        if role_arn is None and 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+
+        _setter("buffer_interval", buffer_interval)
+        _setter("buffer_size", buffer_size)
+        _setter("format", format)
+        _setter("logstore_name", logstore_name)
+        _setter("oss_bucket", oss_bucket)
+        _setter("path_format", path_format)
+        _setter("project_name", project_name)
+        _setter("shipper_name", shipper_name)
         if compress_type is not None:
-            pulumi.set(__self__, "compress_type", compress_type)
+            _setter("compress_type", compress_type)
         if csv_config_columns is not None:
-            pulumi.set(__self__, "csv_config_columns", csv_config_columns)
+            _setter("csv_config_columns", csv_config_columns)
         if csv_config_delimiter is not None:
-            pulumi.set(__self__, "csv_config_delimiter", csv_config_delimiter)
+            _setter("csv_config_delimiter", csv_config_delimiter)
         if csv_config_header is not None:
-            pulumi.set(__self__, "csv_config_header", csv_config_header)
+            _setter("csv_config_header", csv_config_header)
         if csv_config_linefeed is not None:
-            pulumi.set(__self__, "csv_config_linefeed", csv_config_linefeed)
+            _setter("csv_config_linefeed", csv_config_linefeed)
         if csv_config_nullidentifier is not None:
-            pulumi.set(__self__, "csv_config_nullidentifier", csv_config_nullidentifier)
+            _setter("csv_config_nullidentifier", csv_config_nullidentifier)
         if csv_config_quote is not None:
-            pulumi.set(__self__, "csv_config_quote", csv_config_quote)
+            _setter("csv_config_quote", csv_config_quote)
         if json_enable_tag is not None:
-            pulumi.set(__self__, "json_enable_tag", json_enable_tag)
+            _setter("json_enable_tag", json_enable_tag)
         if oss_prefix is not None:
-            pulumi.set(__self__, "oss_prefix", oss_prefix)
+            _setter("oss_prefix", oss_prefix)
         if parquet_configs is not None:
-            pulumi.set(__self__, "parquet_configs", parquet_configs)
+            _setter("parquet_configs", parquet_configs)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
 
     @property
     @pulumi.getter(name="bufferInterval")
@@ -363,44 +462,127 @@ class _OssShipperState:
         :param pulumi.Input[str] role_arn: Used for access control, the OSS Bucket owner creates the role mark, such as `acs:ram::13234:role/logrole`
         :param pulumi.Input[str] shipper_name: Delivery configuration name, it can only contain lowercase letters, numbers, dashes `-` and underscores `_`. It must start and end with lowercase letters or numbers, and the name must be 2 to 128 characters long.
         """
+        _OssShipperState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            buffer_interval=buffer_interval,
+            buffer_size=buffer_size,
+            compress_type=compress_type,
+            csv_config_columns=csv_config_columns,
+            csv_config_delimiter=csv_config_delimiter,
+            csv_config_header=csv_config_header,
+            csv_config_linefeed=csv_config_linefeed,
+            csv_config_nullidentifier=csv_config_nullidentifier,
+            csv_config_quote=csv_config_quote,
+            format=format,
+            json_enable_tag=json_enable_tag,
+            logstore_name=logstore_name,
+            oss_bucket=oss_bucket,
+            oss_prefix=oss_prefix,
+            parquet_configs=parquet_configs,
+            path_format=path_format,
+            project_name=project_name,
+            role_arn=role_arn,
+            shipper_name=shipper_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             buffer_interval: Optional[pulumi.Input[int]] = None,
+             buffer_size: Optional[pulumi.Input[int]] = None,
+             compress_type: Optional[pulumi.Input[str]] = None,
+             csv_config_columns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             csv_config_delimiter: Optional[pulumi.Input[str]] = None,
+             csv_config_header: Optional[pulumi.Input[bool]] = None,
+             csv_config_linefeed: Optional[pulumi.Input[str]] = None,
+             csv_config_nullidentifier: Optional[pulumi.Input[str]] = None,
+             csv_config_quote: Optional[pulumi.Input[str]] = None,
+             format: Optional[pulumi.Input[str]] = None,
+             json_enable_tag: Optional[pulumi.Input[bool]] = None,
+             logstore_name: Optional[pulumi.Input[str]] = None,
+             oss_bucket: Optional[pulumi.Input[str]] = None,
+             oss_prefix: Optional[pulumi.Input[str]] = None,
+             parquet_configs: Optional[pulumi.Input[Sequence[pulumi.Input['OssShipperParquetConfigArgs']]]] = None,
+             path_format: Optional[pulumi.Input[str]] = None,
+             project_name: Optional[pulumi.Input[str]] = None,
+             role_arn: Optional[pulumi.Input[str]] = None,
+             shipper_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if buffer_interval is None and 'bufferInterval' in kwargs:
+            buffer_interval = kwargs['bufferInterval']
+        if buffer_size is None and 'bufferSize' in kwargs:
+            buffer_size = kwargs['bufferSize']
+        if compress_type is None and 'compressType' in kwargs:
+            compress_type = kwargs['compressType']
+        if csv_config_columns is None and 'csvConfigColumns' in kwargs:
+            csv_config_columns = kwargs['csvConfigColumns']
+        if csv_config_delimiter is None and 'csvConfigDelimiter' in kwargs:
+            csv_config_delimiter = kwargs['csvConfigDelimiter']
+        if csv_config_header is None and 'csvConfigHeader' in kwargs:
+            csv_config_header = kwargs['csvConfigHeader']
+        if csv_config_linefeed is None and 'csvConfigLinefeed' in kwargs:
+            csv_config_linefeed = kwargs['csvConfigLinefeed']
+        if csv_config_nullidentifier is None and 'csvConfigNullidentifier' in kwargs:
+            csv_config_nullidentifier = kwargs['csvConfigNullidentifier']
+        if csv_config_quote is None and 'csvConfigQuote' in kwargs:
+            csv_config_quote = kwargs['csvConfigQuote']
+        if json_enable_tag is None and 'jsonEnableTag' in kwargs:
+            json_enable_tag = kwargs['jsonEnableTag']
+        if logstore_name is None and 'logstoreName' in kwargs:
+            logstore_name = kwargs['logstoreName']
+        if oss_bucket is None and 'ossBucket' in kwargs:
+            oss_bucket = kwargs['ossBucket']
+        if oss_prefix is None and 'ossPrefix' in kwargs:
+            oss_prefix = kwargs['ossPrefix']
+        if parquet_configs is None and 'parquetConfigs' in kwargs:
+            parquet_configs = kwargs['parquetConfigs']
+        if path_format is None and 'pathFormat' in kwargs:
+            path_format = kwargs['pathFormat']
+        if project_name is None and 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if role_arn is None and 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if shipper_name is None and 'shipperName' in kwargs:
+            shipper_name = kwargs['shipperName']
+
         if buffer_interval is not None:
-            pulumi.set(__self__, "buffer_interval", buffer_interval)
+            _setter("buffer_interval", buffer_interval)
         if buffer_size is not None:
-            pulumi.set(__self__, "buffer_size", buffer_size)
+            _setter("buffer_size", buffer_size)
         if compress_type is not None:
-            pulumi.set(__self__, "compress_type", compress_type)
+            _setter("compress_type", compress_type)
         if csv_config_columns is not None:
-            pulumi.set(__self__, "csv_config_columns", csv_config_columns)
+            _setter("csv_config_columns", csv_config_columns)
         if csv_config_delimiter is not None:
-            pulumi.set(__self__, "csv_config_delimiter", csv_config_delimiter)
+            _setter("csv_config_delimiter", csv_config_delimiter)
         if csv_config_header is not None:
-            pulumi.set(__self__, "csv_config_header", csv_config_header)
+            _setter("csv_config_header", csv_config_header)
         if csv_config_linefeed is not None:
-            pulumi.set(__self__, "csv_config_linefeed", csv_config_linefeed)
+            _setter("csv_config_linefeed", csv_config_linefeed)
         if csv_config_nullidentifier is not None:
-            pulumi.set(__self__, "csv_config_nullidentifier", csv_config_nullidentifier)
+            _setter("csv_config_nullidentifier", csv_config_nullidentifier)
         if csv_config_quote is not None:
-            pulumi.set(__self__, "csv_config_quote", csv_config_quote)
+            _setter("csv_config_quote", csv_config_quote)
         if format is not None:
-            pulumi.set(__self__, "format", format)
+            _setter("format", format)
         if json_enable_tag is not None:
-            pulumi.set(__self__, "json_enable_tag", json_enable_tag)
+            _setter("json_enable_tag", json_enable_tag)
         if logstore_name is not None:
-            pulumi.set(__self__, "logstore_name", logstore_name)
+            _setter("logstore_name", logstore_name)
         if oss_bucket is not None:
-            pulumi.set(__self__, "oss_bucket", oss_bucket)
+            _setter("oss_bucket", oss_bucket)
         if oss_prefix is not None:
-            pulumi.set(__self__, "oss_prefix", oss_prefix)
+            _setter("oss_prefix", oss_prefix)
         if parquet_configs is not None:
-            pulumi.set(__self__, "parquet_configs", parquet_configs)
+            _setter("parquet_configs", parquet_configs)
         if path_format is not None:
-            pulumi.set(__self__, "path_format", path_format)
+            _setter("path_format", path_format)
         if project_name is not None:
-            pulumi.set(__self__, "project_name", project_name)
+            _setter("project_name", project_name)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
         if shipper_name is not None:
-            pulumi.set(__self__, "shipper_name", shipper_name)
+            _setter("shipper_name", shipper_name)
 
     @property
     @pulumi.getter(name="bufferInterval")
@@ -794,6 +976,10 @@ class OssShipper(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OssShipperArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

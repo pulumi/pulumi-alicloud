@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,14 +29,45 @@ class GreyTagRouteArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GreyTagRouteDubboRuleArgs']]] dubbo_rules: The grayscale rule created for Dubbo Application. See `dubbo_rules` below.
         :param pulumi.Input[Sequence[pulumi.Input['GreyTagRouteScRuleArgs']]] sc_rules: The grayscale rule created for SpringCloud Application. See `sc_rules` below.
         """
-        pulumi.set(__self__, "app_id", app_id)
-        pulumi.set(__self__, "grey_tag_route_name", grey_tag_route_name)
+        GreyTagRouteArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_id=app_id,
+            grey_tag_route_name=grey_tag_route_name,
+            description=description,
+            dubbo_rules=dubbo_rules,
+            sc_rules=sc_rules,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_id: Optional[pulumi.Input[str]] = None,
+             grey_tag_route_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dubbo_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteDubboRuleArgs']]]] = None,
+             sc_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteScRuleArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_id is None and 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if app_id is None:
+            raise TypeError("Missing 'app_id' argument")
+        if grey_tag_route_name is None and 'greyTagRouteName' in kwargs:
+            grey_tag_route_name = kwargs['greyTagRouteName']
+        if grey_tag_route_name is None:
+            raise TypeError("Missing 'grey_tag_route_name' argument")
+        if dubbo_rules is None and 'dubboRules' in kwargs:
+            dubbo_rules = kwargs['dubboRules']
+        if sc_rules is None and 'scRules' in kwargs:
+            sc_rules = kwargs['scRules']
+
+        _setter("app_id", app_id)
+        _setter("grey_tag_route_name", grey_tag_route_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dubbo_rules is not None:
-            pulumi.set(__self__, "dubbo_rules", dubbo_rules)
+            _setter("dubbo_rules", dubbo_rules)
         if sc_rules is not None:
-            pulumi.set(__self__, "sc_rules", sc_rules)
+            _setter("sc_rules", sc_rules)
 
     @property
     @pulumi.getter(name="appId")
@@ -115,16 +146,43 @@ class _GreyTagRouteState:
         :param pulumi.Input[str] grey_tag_route_name: The name of GreyTagRoute.
         :param pulumi.Input[Sequence[pulumi.Input['GreyTagRouteScRuleArgs']]] sc_rules: The grayscale rule created for SpringCloud Application. See `sc_rules` below.
         """
+        _GreyTagRouteState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_id=app_id,
+            description=description,
+            dubbo_rules=dubbo_rules,
+            grey_tag_route_name=grey_tag_route_name,
+            sc_rules=sc_rules,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dubbo_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteDubboRuleArgs']]]] = None,
+             grey_tag_route_name: Optional[pulumi.Input[str]] = None,
+             sc_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteScRuleArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_id is None and 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if dubbo_rules is None and 'dubboRules' in kwargs:
+            dubbo_rules = kwargs['dubboRules']
+        if grey_tag_route_name is None and 'greyTagRouteName' in kwargs:
+            grey_tag_route_name = kwargs['greyTagRouteName']
+        if sc_rules is None and 'scRules' in kwargs:
+            sc_rules = kwargs['scRules']
+
         if app_id is not None:
-            pulumi.set(__self__, "app_id", app_id)
+            _setter("app_id", app_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dubbo_rules is not None:
-            pulumi.set(__self__, "dubbo_rules", dubbo_rules)
+            _setter("dubbo_rules", dubbo_rules)
         if grey_tag_route_name is not None:
-            pulumi.set(__self__, "grey_tag_route_name", grey_tag_route_name)
+            _setter("grey_tag_route_name", grey_tag_route_name)
         if sc_rules is not None:
-            pulumi.set(__self__, "sc_rules", sc_rules)
+            _setter("sc_rules", sc_rules)
 
     @property
     @pulumi.getter(name="appId")
@@ -396,6 +454,10 @@ class GreyTagRoute(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GreyTagRouteArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

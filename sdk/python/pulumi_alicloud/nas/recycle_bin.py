@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RecycleBinArgs', 'RecycleBin']
@@ -21,9 +21,28 @@ class RecycleBinArgs:
         :param pulumi.Input[str] file_system_id: The ID of the file system for which you want to enable the recycle bin feature.
         :param pulumi.Input[int] reserved_days: The period for which the files in the recycle bin are retained. Unit: days. Valid values: `1` to `180`.
         """
-        pulumi.set(__self__, "file_system_id", file_system_id)
+        RecycleBinArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            file_system_id=file_system_id,
+            reserved_days=reserved_days,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             file_system_id: Optional[pulumi.Input[str]] = None,
+             reserved_days: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if file_system_id is None and 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if file_system_id is None:
+            raise TypeError("Missing 'file_system_id' argument")
+        if reserved_days is None and 'reservedDays' in kwargs:
+            reserved_days = kwargs['reservedDays']
+
+        _setter("file_system_id", file_system_id)
         if reserved_days is not None:
-            pulumi.set(__self__, "reserved_days", reserved_days)
+            _setter("reserved_days", reserved_days)
 
     @property
     @pulumi.getter(name="fileSystemId")
@@ -62,12 +81,31 @@ class _RecycleBinState:
         :param pulumi.Input[int] reserved_days: The period for which the files in the recycle bin are retained. Unit: days. Valid values: `1` to `180`.
         :param pulumi.Input[str] status: The status of the recycle bin.
         """
+        _RecycleBinState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            file_system_id=file_system_id,
+            reserved_days=reserved_days,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             file_system_id: Optional[pulumi.Input[str]] = None,
+             reserved_days: Optional[pulumi.Input[int]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if file_system_id is None and 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if reserved_days is None and 'reservedDays' in kwargs:
+            reserved_days = kwargs['reservedDays']
+
         if file_system_id is not None:
-            pulumi.set(__self__, "file_system_id", file_system_id)
+            _setter("file_system_id", file_system_id)
         if reserved_days is not None:
-            pulumi.set(__self__, "reserved_days", reserved_days)
+            _setter("reserved_days", reserved_days)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="fileSystemId")
@@ -205,6 +243,10 @@ class RecycleBin(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RecycleBinArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SnapshotArgs', 'Snapshot']
@@ -25,11 +25,40 @@ class SnapshotArgs:
         :param pulumi.Input[str] source_disk_type: The type of the disk for which to create a snapshot. Valid values: `SYSTEM`, `DATA`.
         :param pulumi.Input[str] description: The description of the Snapshot.
         """
-        pulumi.set(__self__, "desktop_id", desktop_id)
-        pulumi.set(__self__, "snapshot_name", snapshot_name)
-        pulumi.set(__self__, "source_disk_type", source_disk_type)
+        SnapshotArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            desktop_id=desktop_id,
+            snapshot_name=snapshot_name,
+            source_disk_type=source_disk_type,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             desktop_id: Optional[pulumi.Input[str]] = None,
+             snapshot_name: Optional[pulumi.Input[str]] = None,
+             source_disk_type: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if desktop_id is None and 'desktopId' in kwargs:
+            desktop_id = kwargs['desktopId']
+        if desktop_id is None:
+            raise TypeError("Missing 'desktop_id' argument")
+        if snapshot_name is None and 'snapshotName' in kwargs:
+            snapshot_name = kwargs['snapshotName']
+        if snapshot_name is None:
+            raise TypeError("Missing 'snapshot_name' argument")
+        if source_disk_type is None and 'sourceDiskType' in kwargs:
+            source_disk_type = kwargs['sourceDiskType']
+        if source_disk_type is None:
+            raise TypeError("Missing 'source_disk_type' argument")
+
+        _setter("desktop_id", desktop_id)
+        _setter("snapshot_name", snapshot_name)
+        _setter("source_disk_type", source_disk_type)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="desktopId")
@@ -96,16 +125,41 @@ class _SnapshotState:
         :param pulumi.Input[str] source_disk_type: The type of the disk for which to create a snapshot. Valid values: `SYSTEM`, `DATA`.
         :param pulumi.Input[str] status: The status of the snapshot.
         """
+        _SnapshotState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            desktop_id=desktop_id,
+            snapshot_name=snapshot_name,
+            source_disk_type=source_disk_type,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             desktop_id: Optional[pulumi.Input[str]] = None,
+             snapshot_name: Optional[pulumi.Input[str]] = None,
+             source_disk_type: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if desktop_id is None and 'desktopId' in kwargs:
+            desktop_id = kwargs['desktopId']
+        if snapshot_name is None and 'snapshotName' in kwargs:
+            snapshot_name = kwargs['snapshotName']
+        if source_disk_type is None and 'sourceDiskType' in kwargs:
+            source_disk_type = kwargs['sourceDiskType']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if desktop_id is not None:
-            pulumi.set(__self__, "desktop_id", desktop_id)
+            _setter("desktop_id", desktop_id)
         if snapshot_name is not None:
-            pulumi.set(__self__, "snapshot_name", snapshot_name)
+            _setter("snapshot_name", snapshot_name)
         if source_disk_type is not None:
-            pulumi.set(__self__, "source_disk_type", source_disk_type)
+            _setter("source_disk_type", source_disk_type)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter
@@ -329,6 +383,10 @@ class Snapshot(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SnapshotArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

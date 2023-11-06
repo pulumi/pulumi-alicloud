@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ClientKeyArgs', 'ClientKey']
@@ -27,14 +27,45 @@ class ClientKeyArgs:
         :param pulumi.Input[str] not_before: The valid start time of the ClientKey. Example: "2022-08-10 T08:03:30Z".
         :param pulumi.Input[str] private_key_data_file: The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
         """
-        pulumi.set(__self__, "aap_name", aap_name)
-        pulumi.set(__self__, "password", password)
+        ClientKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            aap_name=aap_name,
+            password=password,
+            not_after=not_after,
+            not_before=not_before,
+            private_key_data_file=private_key_data_file,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             aap_name: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             not_after: Optional[pulumi.Input[str]] = None,
+             not_before: Optional[pulumi.Input[str]] = None,
+             private_key_data_file: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if aap_name is None and 'aapName' in kwargs:
+            aap_name = kwargs['aapName']
+        if aap_name is None:
+            raise TypeError("Missing 'aap_name' argument")
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if not_after is None and 'notAfter' in kwargs:
+            not_after = kwargs['notAfter']
+        if not_before is None and 'notBefore' in kwargs:
+            not_before = kwargs['notBefore']
+        if private_key_data_file is None and 'privateKeyDataFile' in kwargs:
+            private_key_data_file = kwargs['privateKeyDataFile']
+
+        _setter("aap_name", aap_name)
+        _setter("password", password)
         if not_after is not None:
-            pulumi.set(__self__, "not_after", not_after)
+            _setter("not_after", not_after)
         if not_before is not None:
-            pulumi.set(__self__, "not_before", not_before)
+            _setter("not_before", not_before)
         if private_key_data_file is not None:
-            pulumi.set(__self__, "private_key_data_file", private_key_data_file)
+            _setter("private_key_data_file", private_key_data_file)
 
     @property
     @pulumi.getter(name="aapName")
@@ -115,18 +146,49 @@ class _ClientKeyState:
         :param pulumi.Input[str] password: To enhance security, set a password for the downloaded Client Key,When an application accesses KMS, you must use the ClientKey content and this password to initialize the SDK client.
         :param pulumi.Input[str] private_key_data_file: The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
         """
+        _ClientKeyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            aap_name=aap_name,
+            create_time=create_time,
+            not_after=not_after,
+            not_before=not_before,
+            password=password,
+            private_key_data_file=private_key_data_file,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             aap_name: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             not_after: Optional[pulumi.Input[str]] = None,
+             not_before: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             private_key_data_file: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if aap_name is None and 'aapName' in kwargs:
+            aap_name = kwargs['aapName']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if not_after is None and 'notAfter' in kwargs:
+            not_after = kwargs['notAfter']
+        if not_before is None and 'notBefore' in kwargs:
+            not_before = kwargs['notBefore']
+        if private_key_data_file is None and 'privateKeyDataFile' in kwargs:
+            private_key_data_file = kwargs['privateKeyDataFile']
+
         if aap_name is not None:
-            pulumi.set(__self__, "aap_name", aap_name)
+            _setter("aap_name", aap_name)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if not_after is not None:
-            pulumi.set(__self__, "not_after", not_after)
+            _setter("not_after", not_after)
         if not_before is not None:
-            pulumi.set(__self__, "not_before", not_before)
+            _setter("not_before", not_before)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if private_key_data_file is not None:
-            pulumi.set(__self__, "private_key_data_file", private_key_data_file)
+            _setter("private_key_data_file", private_key_data_file)
 
     @property
     @pulumi.getter(name="aapName")
@@ -318,6 +380,10 @@ class ClientKey(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ClientKeyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

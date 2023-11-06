@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BackupPolicyArgs', 'BackupPolicy']
@@ -27,12 +27,47 @@ class BackupPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] uuid_lists: Specify the Protection of Server UUID List.
         :param pulumi.Input[str] policy_region_id: The region ID of the non-Alibaba cloud server. You can call the [DescribeSupportRegion](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describesupportregion) interface to view the region supported by anti-ransomware, and then select the region supported by anti-ransomware according to the region where your non-Alibaba cloud server is located.
         """
-        pulumi.set(__self__, "backup_policy_name", backup_policy_name)
-        pulumi.set(__self__, "policy", policy)
-        pulumi.set(__self__, "policy_version", policy_version)
-        pulumi.set(__self__, "uuid_lists", uuid_lists)
+        BackupPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_policy_name=backup_policy_name,
+            policy=policy,
+            policy_version=policy_version,
+            uuid_lists=uuid_lists,
+            policy_region_id=policy_region_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_policy_name: Optional[pulumi.Input[str]] = None,
+             policy: Optional[pulumi.Input[str]] = None,
+             policy_version: Optional[pulumi.Input[str]] = None,
+             uuid_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             policy_region_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backup_policy_name is None and 'backupPolicyName' in kwargs:
+            backup_policy_name = kwargs['backupPolicyName']
+        if backup_policy_name is None:
+            raise TypeError("Missing 'backup_policy_name' argument")
+        if policy is None:
+            raise TypeError("Missing 'policy' argument")
+        if policy_version is None and 'policyVersion' in kwargs:
+            policy_version = kwargs['policyVersion']
+        if policy_version is None:
+            raise TypeError("Missing 'policy_version' argument")
+        if uuid_lists is None and 'uuidLists' in kwargs:
+            uuid_lists = kwargs['uuidLists']
+        if uuid_lists is None:
+            raise TypeError("Missing 'uuid_lists' argument")
+        if policy_region_id is None and 'policyRegionId' in kwargs:
+            policy_region_id = kwargs['policyRegionId']
+
+        _setter("backup_policy_name", backup_policy_name)
+        _setter("policy", policy)
+        _setter("policy_version", policy_version)
+        _setter("uuid_lists", uuid_lists)
         if policy_region_id is not None:
-            pulumi.set(__self__, "policy_region_id", policy_region_id)
+            _setter("policy_region_id", policy_region_id)
 
     @property
     @pulumi.getter(name="backupPolicyName")
@@ -113,18 +148,47 @@ class _BackupPolicyState:
         :param pulumi.Input[str] status: The status of the Backup Policy instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] uuid_lists: Specify the Protection of Server UUID List.
         """
+        _BackupPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_policy_name=backup_policy_name,
+            policy=policy,
+            policy_region_id=policy_region_id,
+            policy_version=policy_version,
+            status=status,
+            uuid_lists=uuid_lists,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_policy_name: Optional[pulumi.Input[str]] = None,
+             policy: Optional[pulumi.Input[str]] = None,
+             policy_region_id: Optional[pulumi.Input[str]] = None,
+             policy_version: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             uuid_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backup_policy_name is None and 'backupPolicyName' in kwargs:
+            backup_policy_name = kwargs['backupPolicyName']
+        if policy_region_id is None and 'policyRegionId' in kwargs:
+            policy_region_id = kwargs['policyRegionId']
+        if policy_version is None and 'policyVersion' in kwargs:
+            policy_version = kwargs['policyVersion']
+        if uuid_lists is None and 'uuidLists' in kwargs:
+            uuid_lists = kwargs['uuidLists']
+
         if backup_policy_name is not None:
-            pulumi.set(__self__, "backup_policy_name", backup_policy_name)
+            _setter("backup_policy_name", backup_policy_name)
         if policy is not None:
-            pulumi.set(__self__, "policy", policy)
+            _setter("policy", policy)
         if policy_region_id is not None:
-            pulumi.set(__self__, "policy_region_id", policy_region_id)
+            _setter("policy_region_id", policy_region_id)
         if policy_version is not None:
-            pulumi.set(__self__, "policy_version", policy_version)
+            _setter("policy_version", policy_version)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if uuid_lists is not None:
-            pulumi.set(__self__, "uuid_lists", uuid_lists)
+            _setter("uuid_lists", uuid_lists)
 
     @property
     @pulumi.getter(name="backupPolicyName")
@@ -296,6 +360,10 @@ class BackupPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BackupPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

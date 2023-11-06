@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ApplicationArgs', 'Application']
@@ -39,25 +39,82 @@ class ApplicationArgs:
         :param pulumi.Input[str] package_version: The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
         :param pulumi.Input[str] war_url: The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
         """
-        pulumi.set(__self__, "application_name", application_name)
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "package_type", package_type)
+        ApplicationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_name=application_name,
+            cluster_id=cluster_id,
+            package_type=package_type,
+            build_pack_id=build_pack_id,
+            descriotion=descriotion,
+            ecu_infos=ecu_infos,
+            group_id=group_id,
+            health_check_url=health_check_url,
+            logical_region_id=logical_region_id,
+            package_version=package_version,
+            war_url=war_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_name: Optional[pulumi.Input[str]] = None,
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             package_type: Optional[pulumi.Input[str]] = None,
+             build_pack_id: Optional[pulumi.Input[int]] = None,
+             descriotion: Optional[pulumi.Input[str]] = None,
+             ecu_infos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             health_check_url: Optional[pulumi.Input[str]] = None,
+             logical_region_id: Optional[pulumi.Input[str]] = None,
+             package_version: Optional[pulumi.Input[str]] = None,
+             war_url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if application_name is None and 'applicationName' in kwargs:
+            application_name = kwargs['applicationName']
+        if application_name is None:
+            raise TypeError("Missing 'application_name' argument")
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if package_type is None and 'packageType' in kwargs:
+            package_type = kwargs['packageType']
+        if package_type is None:
+            raise TypeError("Missing 'package_type' argument")
+        if build_pack_id is None and 'buildPackId' in kwargs:
+            build_pack_id = kwargs['buildPackId']
+        if ecu_infos is None and 'ecuInfos' in kwargs:
+            ecu_infos = kwargs['ecuInfos']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if health_check_url is None and 'healthCheckUrl' in kwargs:
+            health_check_url = kwargs['healthCheckUrl']
+        if logical_region_id is None and 'logicalRegionId' in kwargs:
+            logical_region_id = kwargs['logicalRegionId']
+        if package_version is None and 'packageVersion' in kwargs:
+            package_version = kwargs['packageVersion']
+        if war_url is None and 'warUrl' in kwargs:
+            war_url = kwargs['warUrl']
+
+        _setter("application_name", application_name)
+        _setter("cluster_id", cluster_id)
+        _setter("package_type", package_type)
         if build_pack_id is not None:
-            pulumi.set(__self__, "build_pack_id", build_pack_id)
+            _setter("build_pack_id", build_pack_id)
         if descriotion is not None:
-            pulumi.set(__self__, "descriotion", descriotion)
+            _setter("descriotion", descriotion)
         if ecu_infos is not None:
-            pulumi.set(__self__, "ecu_infos", ecu_infos)
+            _setter("ecu_infos", ecu_infos)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if health_check_url is not None:
-            pulumi.set(__self__, "health_check_url", health_check_url)
+            _setter("health_check_url", health_check_url)
         if logical_region_id is not None:
-            pulumi.set(__self__, "logical_region_id", logical_region_id)
+            _setter("logical_region_id", logical_region_id)
         if package_version is not None:
-            pulumi.set(__self__, "package_version", package_version)
+            _setter("package_version", package_version)
         if war_url is not None:
-            pulumi.set(__self__, "war_url", war_url)
+            _setter("war_url", war_url)
 
     @property
     @pulumi.getter(name="applicationName")
@@ -220,28 +277,79 @@ class _ApplicationState:
         :param pulumi.Input[str] package_version: The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
         :param pulumi.Input[str] war_url: The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
         """
+        _ApplicationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_name=application_name,
+            build_pack_id=build_pack_id,
+            cluster_id=cluster_id,
+            descriotion=descriotion,
+            ecu_infos=ecu_infos,
+            group_id=group_id,
+            health_check_url=health_check_url,
+            logical_region_id=logical_region_id,
+            package_type=package_type,
+            package_version=package_version,
+            war_url=war_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_name: Optional[pulumi.Input[str]] = None,
+             build_pack_id: Optional[pulumi.Input[int]] = None,
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             descriotion: Optional[pulumi.Input[str]] = None,
+             ecu_infos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             health_check_url: Optional[pulumi.Input[str]] = None,
+             logical_region_id: Optional[pulumi.Input[str]] = None,
+             package_type: Optional[pulumi.Input[str]] = None,
+             package_version: Optional[pulumi.Input[str]] = None,
+             war_url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if application_name is None and 'applicationName' in kwargs:
+            application_name = kwargs['applicationName']
+        if build_pack_id is None and 'buildPackId' in kwargs:
+            build_pack_id = kwargs['buildPackId']
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if ecu_infos is None and 'ecuInfos' in kwargs:
+            ecu_infos = kwargs['ecuInfos']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if health_check_url is None and 'healthCheckUrl' in kwargs:
+            health_check_url = kwargs['healthCheckUrl']
+        if logical_region_id is None and 'logicalRegionId' in kwargs:
+            logical_region_id = kwargs['logicalRegionId']
+        if package_type is None and 'packageType' in kwargs:
+            package_type = kwargs['packageType']
+        if package_version is None and 'packageVersion' in kwargs:
+            package_version = kwargs['packageVersion']
+        if war_url is None and 'warUrl' in kwargs:
+            war_url = kwargs['warUrl']
+
         if application_name is not None:
-            pulumi.set(__self__, "application_name", application_name)
+            _setter("application_name", application_name)
         if build_pack_id is not None:
-            pulumi.set(__self__, "build_pack_id", build_pack_id)
+            _setter("build_pack_id", build_pack_id)
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if descriotion is not None:
-            pulumi.set(__self__, "descriotion", descriotion)
+            _setter("descriotion", descriotion)
         if ecu_infos is not None:
-            pulumi.set(__self__, "ecu_infos", ecu_infos)
+            _setter("ecu_infos", ecu_infos)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if health_check_url is not None:
-            pulumi.set(__self__, "health_check_url", health_check_url)
+            _setter("health_check_url", health_check_url)
         if logical_region_id is not None:
-            pulumi.set(__self__, "logical_region_id", logical_region_id)
+            _setter("logical_region_id", logical_region_id)
         if package_type is not None:
-            pulumi.set(__self__, "package_type", package_type)
+            _setter("package_type", package_type)
         if package_version is not None:
-            pulumi.set(__self__, "package_version", package_version)
+            _setter("package_version", package_version)
         if war_url is not None:
-            pulumi.set(__self__, "war_url", war_url)
+            _setter("war_url", war_url)
 
     @property
     @pulumi.getter(name="applicationName")
@@ -505,6 +613,10 @@ class Application(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ApplicationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

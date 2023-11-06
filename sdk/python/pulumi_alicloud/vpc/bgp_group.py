@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BgpGroupArgs', 'BgpGroup']
@@ -31,18 +31,57 @@ class BgpGroupArgs:
         :param pulumi.Input[bool] is_fake_asn: The is fake asn. A router that runs BGP typically belongs to only one AS. In some cases, for example, the AS needs to be migrated or is merged with another AS, a new AS number replaces the original one.
         :param pulumi.Input[int] local_asn: The AS number on the Alibaba Cloud side.
         """
-        pulumi.set(__self__, "peer_asn", peer_asn)
-        pulumi.set(__self__, "router_id", router_id)
+        BgpGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            peer_asn=peer_asn,
+            router_id=router_id,
+            auth_key=auth_key,
+            bgp_group_name=bgp_group_name,
+            description=description,
+            is_fake_asn=is_fake_asn,
+            local_asn=local_asn,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             peer_asn: Optional[pulumi.Input[int]] = None,
+             router_id: Optional[pulumi.Input[str]] = None,
+             auth_key: Optional[pulumi.Input[str]] = None,
+             bgp_group_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             is_fake_asn: Optional[pulumi.Input[bool]] = None,
+             local_asn: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if peer_asn is None and 'peerAsn' in kwargs:
+            peer_asn = kwargs['peerAsn']
+        if peer_asn is None:
+            raise TypeError("Missing 'peer_asn' argument")
+        if router_id is None and 'routerId' in kwargs:
+            router_id = kwargs['routerId']
+        if router_id is None:
+            raise TypeError("Missing 'router_id' argument")
+        if auth_key is None and 'authKey' in kwargs:
+            auth_key = kwargs['authKey']
+        if bgp_group_name is None and 'bgpGroupName' in kwargs:
+            bgp_group_name = kwargs['bgpGroupName']
+        if is_fake_asn is None and 'isFakeAsn' in kwargs:
+            is_fake_asn = kwargs['isFakeAsn']
+        if local_asn is None and 'localAsn' in kwargs:
+            local_asn = kwargs['localAsn']
+
+        _setter("peer_asn", peer_asn)
+        _setter("router_id", router_id)
         if auth_key is not None:
-            pulumi.set(__self__, "auth_key", auth_key)
+            _setter("auth_key", auth_key)
         if bgp_group_name is not None:
-            pulumi.set(__self__, "bgp_group_name", bgp_group_name)
+            _setter("bgp_group_name", bgp_group_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if is_fake_asn is not None:
-            pulumi.set(__self__, "is_fake_asn", is_fake_asn)
+            _setter("is_fake_asn", is_fake_asn)
         if local_asn is not None:
-            pulumi.set(__self__, "local_asn", local_asn)
+            _setter("local_asn", local_asn)
 
     @property
     @pulumi.getter(name="peerAsn")
@@ -151,22 +190,59 @@ class _BgpGroupState:
         :param pulumi.Input[str] router_id: The ID of the VBR.
         :param pulumi.Input[str] status: The status of the resource.
         """
+        _BgpGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auth_key=auth_key,
+            bgp_group_name=bgp_group_name,
+            description=description,
+            is_fake_asn=is_fake_asn,
+            local_asn=local_asn,
+            peer_asn=peer_asn,
+            router_id=router_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auth_key: Optional[pulumi.Input[str]] = None,
+             bgp_group_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             is_fake_asn: Optional[pulumi.Input[bool]] = None,
+             local_asn: Optional[pulumi.Input[int]] = None,
+             peer_asn: Optional[pulumi.Input[int]] = None,
+             router_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auth_key is None and 'authKey' in kwargs:
+            auth_key = kwargs['authKey']
+        if bgp_group_name is None and 'bgpGroupName' in kwargs:
+            bgp_group_name = kwargs['bgpGroupName']
+        if is_fake_asn is None and 'isFakeAsn' in kwargs:
+            is_fake_asn = kwargs['isFakeAsn']
+        if local_asn is None and 'localAsn' in kwargs:
+            local_asn = kwargs['localAsn']
+        if peer_asn is None and 'peerAsn' in kwargs:
+            peer_asn = kwargs['peerAsn']
+        if router_id is None and 'routerId' in kwargs:
+            router_id = kwargs['routerId']
+
         if auth_key is not None:
-            pulumi.set(__self__, "auth_key", auth_key)
+            _setter("auth_key", auth_key)
         if bgp_group_name is not None:
-            pulumi.set(__self__, "bgp_group_name", bgp_group_name)
+            _setter("bgp_group_name", bgp_group_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if is_fake_asn is not None:
-            pulumi.set(__self__, "is_fake_asn", is_fake_asn)
+            _setter("is_fake_asn", is_fake_asn)
         if local_asn is not None:
-            pulumi.set(__self__, "local_asn", local_asn)
+            _setter("local_asn", local_asn)
         if peer_asn is not None:
-            pulumi.set(__self__, "peer_asn", peer_asn)
+            _setter("peer_asn", peer_asn)
         if router_id is not None:
-            pulumi.set(__self__, "router_id", router_id)
+            _setter("router_id", router_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="authKey")
@@ -406,6 +482,10 @@ class BgpGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BgpGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

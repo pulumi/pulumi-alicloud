@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['PeerConnectionArgs', 'PeerConnection']
@@ -46,25 +46,76 @@ class PeerConnectionArgs:
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of PrefixList.
         """
-        pulumi.set(__self__, "accepting_region_id", accepting_region_id)
-        pulumi.set(__self__, "accepting_vpc_id", accepting_vpc_id)
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        PeerConnectionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accepting_region_id=accepting_region_id,
+            accepting_vpc_id=accepting_vpc_id,
+            vpc_id=vpc_id,
+            accepting_ali_uid=accepting_ali_uid,
+            bandwidth=bandwidth,
+            description=description,
+            dry_run=dry_run,
+            peer_connection_name=peer_connection_name,
+            resource_group_id=resource_group_id,
+            status=status,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accepting_region_id: Optional[pulumi.Input[str]] = None,
+             accepting_vpc_id: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             accepting_ali_uid: Optional[pulumi.Input[int]] = None,
+             bandwidth: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             peer_connection_name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accepting_region_id is None and 'acceptingRegionId' in kwargs:
+            accepting_region_id = kwargs['acceptingRegionId']
+        if accepting_region_id is None:
+            raise TypeError("Missing 'accepting_region_id' argument")
+        if accepting_vpc_id is None and 'acceptingVpcId' in kwargs:
+            accepting_vpc_id = kwargs['acceptingVpcId']
+        if accepting_vpc_id is None:
+            raise TypeError("Missing 'accepting_vpc_id' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if accepting_ali_uid is None and 'acceptingAliUid' in kwargs:
+            accepting_ali_uid = kwargs['acceptingAliUid']
+        if dry_run is None and 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if peer_connection_name is None and 'peerConnectionName' in kwargs:
+            peer_connection_name = kwargs['peerConnectionName']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
+        _setter("accepting_region_id", accepting_region_id)
+        _setter("accepting_vpc_id", accepting_vpc_id)
+        _setter("vpc_id", vpc_id)
         if accepting_ali_uid is not None:
-            pulumi.set(__self__, "accepting_ali_uid", accepting_ali_uid)
+            _setter("accepting_ali_uid", accepting_ali_uid)
         if bandwidth is not None:
-            pulumi.set(__self__, "bandwidth", bandwidth)
+            _setter("bandwidth", bandwidth)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if peer_connection_name is not None:
-            pulumi.set(__self__, "peer_connection_name", peer_connection_name)
+            _setter("peer_connection_name", peer_connection_name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="acceptingRegionId")
@@ -243,30 +294,79 @@ class _PeerConnectionState:
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of PrefixList.
         :param pulumi.Input[str] vpc_id: You must create a VPC ID on the initiator of a VPC peer connection.
         """
+        _PeerConnectionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accepting_ali_uid=accepting_ali_uid,
+            accepting_region_id=accepting_region_id,
+            accepting_vpc_id=accepting_vpc_id,
+            bandwidth=bandwidth,
+            create_time=create_time,
+            description=description,
+            dry_run=dry_run,
+            peer_connection_name=peer_connection_name,
+            resource_group_id=resource_group_id,
+            status=status,
+            tags=tags,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accepting_ali_uid: Optional[pulumi.Input[int]] = None,
+             accepting_region_id: Optional[pulumi.Input[str]] = None,
+             accepting_vpc_id: Optional[pulumi.Input[str]] = None,
+             bandwidth: Optional[pulumi.Input[int]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             peer_connection_name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accepting_ali_uid is None and 'acceptingAliUid' in kwargs:
+            accepting_ali_uid = kwargs['acceptingAliUid']
+        if accepting_region_id is None and 'acceptingRegionId' in kwargs:
+            accepting_region_id = kwargs['acceptingRegionId']
+        if accepting_vpc_id is None and 'acceptingVpcId' in kwargs:
+            accepting_vpc_id = kwargs['acceptingVpcId']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if dry_run is None and 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if peer_connection_name is None and 'peerConnectionName' in kwargs:
+            peer_connection_name = kwargs['peerConnectionName']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if accepting_ali_uid is not None:
-            pulumi.set(__self__, "accepting_ali_uid", accepting_ali_uid)
+            _setter("accepting_ali_uid", accepting_ali_uid)
         if accepting_region_id is not None:
-            pulumi.set(__self__, "accepting_region_id", accepting_region_id)
+            _setter("accepting_region_id", accepting_region_id)
         if accepting_vpc_id is not None:
-            pulumi.set(__self__, "accepting_vpc_id", accepting_vpc_id)
+            _setter("accepting_vpc_id", accepting_vpc_id)
         if bandwidth is not None:
-            pulumi.set(__self__, "bandwidth", bandwidth)
+            _setter("bandwidth", bandwidth)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if peer_connection_name is not None:
-            pulumi.set(__self__, "peer_connection_name", peer_connection_name)
+            _setter("peer_connection_name", peer_connection_name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="acceptingAliUid")
@@ -570,6 +670,10 @@ class PeerConnection(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PeerConnectionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

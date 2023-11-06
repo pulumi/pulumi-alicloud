@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,9 +25,36 @@ class DomainConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]] function_args: The args of the domain config.
         :param pulumi.Input[str] function_name: The name of the domain config.
         """
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "function_args", function_args)
-        pulumi.set(__self__, "function_name", function_name)
+        DomainConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain_name=domain_name,
+            function_args=function_args,
+            function_name=function_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain_name: Optional[pulumi.Input[str]] = None,
+             function_args: Optional[pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]]] = None,
+             function_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if domain_name is None and 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if function_args is None and 'functionArgs' in kwargs:
+            function_args = kwargs['functionArgs']
+        if function_args is None:
+            raise TypeError("Missing 'function_args' argument")
+        if function_name is None and 'functionName' in kwargs:
+            function_name = kwargs['functionName']
+        if function_name is None:
+            raise TypeError("Missing 'function_name' argument")
+
+        _setter("domain_name", domain_name)
+        _setter("function_args", function_args)
+        _setter("function_name", function_name)
 
     @property
     @pulumi.getter(name="domainName")
@@ -82,16 +109,43 @@ class _DomainConfigState:
         :param pulumi.Input[str] function_name: The name of the domain config.
         :param pulumi.Input[str] status: The status of this resource.
         """
+        _DomainConfigState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config_id=config_id,
+            domain_name=domain_name,
+            function_args=function_args,
+            function_name=function_name,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config_id: Optional[pulumi.Input[str]] = None,
+             domain_name: Optional[pulumi.Input[str]] = None,
+             function_args: Optional[pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]]] = None,
+             function_name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if config_id is None and 'configId' in kwargs:
+            config_id = kwargs['configId']
+        if domain_name is None and 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if function_args is None and 'functionArgs' in kwargs:
+            function_args = kwargs['functionArgs']
+        if function_name is None and 'functionName' in kwargs:
+            function_name = kwargs['functionName']
+
         if config_id is not None:
-            pulumi.set(__self__, "config_id", config_id)
+            _setter("config_id", config_id)
         if domain_name is not None:
-            pulumi.set(__self__, "domain_name", domain_name)
+            _setter("domain_name", domain_name)
         if function_args is not None:
-            pulumi.set(__self__, "function_args", function_args)
+            _setter("function_args", function_args)
         if function_name is not None:
-            pulumi.set(__self__, "function_name", function_name)
+            _setter("function_name", function_name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="configId")
@@ -219,6 +273,10 @@ class DomainConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DomainConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

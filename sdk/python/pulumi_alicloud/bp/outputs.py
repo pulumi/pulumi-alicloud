@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -44,12 +44,31 @@ class StudioApplicationInstance(dict):
         :param str node_name: The name of the instance.
         :param str node_type: The type of the instance.
         """
+        StudioApplicationInstance._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            node_name=node_name,
+            node_type=node_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             node_name: Optional[str] = None,
+             node_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_name is None and 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+        if node_type is None and 'nodeType' in kwargs:
+            node_type = kwargs['nodeType']
+
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if node_name is not None:
-            pulumi.set(__self__, "node_name", node_name)
+            _setter("node_name", node_name)
         if node_type is not None:
-            pulumi.set(__self__, "node_type", node_type)
+            _setter("node_type", node_type)
 
     @property
     @pulumi.getter
@@ -97,14 +116,67 @@ class GetStudioApplicationsApplicationResult(dict):
         :param str status: The status of the Application. Valid values: `success`, `release`.
         :param str topo_url: The topo url of the Application.
         """
-        pulumi.set(__self__, "application_id", application_id)
-        pulumi.set(__self__, "application_name", application_name)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "image_url", image_url)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "topo_url", topo_url)
+        GetStudioApplicationsApplicationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_id=application_id,
+            application_name=application_name,
+            create_time=create_time,
+            id=id,
+            image_url=image_url,
+            resource_group_id=resource_group_id,
+            status=status,
+            topo_url=topo_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_id: Optional[str] = None,
+             application_name: Optional[str] = None,
+             create_time: Optional[str] = None,
+             id: Optional[str] = None,
+             image_url: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             status: Optional[str] = None,
+             topo_url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if application_id is None and 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if application_id is None:
+            raise TypeError("Missing 'application_id' argument")
+        if application_name is None and 'applicationName' in kwargs:
+            application_name = kwargs['applicationName']
+        if application_name is None:
+            raise TypeError("Missing 'application_name' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if image_url is None and 'imageUrl' in kwargs:
+            image_url = kwargs['imageUrl']
+        if image_url is None:
+            raise TypeError("Missing 'image_url' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if topo_url is None and 'topoUrl' in kwargs:
+            topo_url = kwargs['topoUrl']
+        if topo_url is None:
+            raise TypeError("Missing 'topo_url' argument")
+
+        _setter("application_id", application_id)
+        _setter("application_name", application_name)
+        _setter("create_time", create_time)
+        _setter("id", id)
+        _setter("image_url", image_url)
+        _setter("resource_group_id", resource_group_id)
+        _setter("status", status)
+        _setter("topo_url", topo_url)
 
     @property
     @pulumi.getter(name="applicationId")

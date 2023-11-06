@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DomainArgs', 'Domain']
@@ -21,8 +21,27 @@ class DomainArgs:
         :param pulumi.Input[str] accelerator_id: The ID of the global acceleration instance.
         :param pulumi.Input[str] domain: The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
         """
-        pulumi.set(__self__, "accelerator_id", accelerator_id)
-        pulumi.set(__self__, "domain", domain)
+        DomainArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_id=accelerator_id,
+            domain=domain,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_id: Optional[pulumi.Input[str]] = None,
+             domain: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accelerator_id is None and 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if accelerator_id is None:
+            raise TypeError("Missing 'accelerator_id' argument")
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+
+        _setter("accelerator_id", accelerator_id)
+        _setter("domain", domain)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -61,12 +80,29 @@ class _DomainState:
         :param pulumi.Input[str] domain: The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
         :param pulumi.Input[str] status: The status of the resource
         """
+        _DomainState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_id=accelerator_id,
+            domain=domain,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_id: Optional[pulumi.Input[str]] = None,
+             domain: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accelerator_id is None and 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+
         if accelerator_id is not None:
-            pulumi.set(__self__, "accelerator_id", accelerator_id)
+            _setter("accelerator_id", accelerator_id)
         if domain is not None:
-            pulumi.set(__self__, "domain", domain)
+            _setter("domain", domain)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -198,6 +234,10 @@ class Domain(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DomainArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

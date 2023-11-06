@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -26,10 +26,41 @@ class GetGroupsGroupResult(dict):
         :param str group_name: The name of Group.
         :param str id: The ID of the Group(same as the group_id).
         """
-        pulumi.set(__self__, "group_flag", group_flag)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "group_name", group_name)
-        pulumi.set(__self__, "id", id)
+        GetGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_flag=group_flag,
+            group_id=group_id,
+            group_name=group_name,
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_flag: Optional[int] = None,
+             group_id: Optional[str] = None,
+             group_name: Optional[str] = None,
+             id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if group_flag is None and 'groupFlag' in kwargs:
+            group_flag = kwargs['groupFlag']
+        if group_flag is None:
+            raise TypeError("Missing 'group_flag' argument")
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if group_name is None and 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if group_name is None:
+            raise TypeError("Missing 'group_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+
+        _setter("group_flag", group_flag)
+        _setter("group_id", group_id)
+        _setter("group_name", group_name)
+        _setter("id", id)
 
     @property
     @pulumi.getter(name="groupFlag")

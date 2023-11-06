@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ElasticityAssuranceArgs', 'ElasticityAssurance']
@@ -43,27 +43,84 @@ class ElasticityAssuranceArgs:
         :param pulumi.Input[str] start_time: Flexible guarantee service effective time.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag key-value pair information bound by the elastic guarantee service.
         """
-        pulumi.set(__self__, "instance_amount", instance_amount)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "zone_ids", zone_ids)
+        ElasticityAssuranceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_amount=instance_amount,
+            instance_type=instance_type,
+            zone_ids=zone_ids,
+            assurance_times=assurance_times,
+            description=description,
+            period=period,
+            period_unit=period_unit,
+            private_pool_options_match_criteria=private_pool_options_match_criteria,
+            private_pool_options_name=private_pool_options_name,
+            resource_group_id=resource_group_id,
+            start_time=start_time,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_amount: Optional[pulumi.Input[int]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             assurance_times: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             period_unit: Optional[pulumi.Input[str]] = None,
+             private_pool_options_match_criteria: Optional[pulumi.Input[str]] = None,
+             private_pool_options_name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             start_time: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_amount is None and 'instanceAmount' in kwargs:
+            instance_amount = kwargs['instanceAmount']
+        if instance_amount is None:
+            raise TypeError("Missing 'instance_amount' argument")
+        if instance_type is None and 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if zone_ids is None and 'zoneIds' in kwargs:
+            zone_ids = kwargs['zoneIds']
+        if zone_ids is None:
+            raise TypeError("Missing 'zone_ids' argument")
+        if assurance_times is None and 'assuranceTimes' in kwargs:
+            assurance_times = kwargs['assuranceTimes']
+        if period_unit is None and 'periodUnit' in kwargs:
+            period_unit = kwargs['periodUnit']
+        if private_pool_options_match_criteria is None and 'privatePoolOptionsMatchCriteria' in kwargs:
+            private_pool_options_match_criteria = kwargs['privatePoolOptionsMatchCriteria']
+        if private_pool_options_name is None and 'privatePoolOptionsName' in kwargs:
+            private_pool_options_name = kwargs['privatePoolOptionsName']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+
+        _setter("instance_amount", instance_amount)
+        _setter("instance_type", instance_type)
+        _setter("zone_ids", zone_ids)
         if assurance_times is not None:
-            pulumi.set(__self__, "assurance_times", assurance_times)
+            _setter("assurance_times", assurance_times)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if period_unit is not None:
-            pulumi.set(__self__, "period_unit", period_unit)
+            _setter("period_unit", period_unit)
         if private_pool_options_match_criteria is not None:
-            pulumi.set(__self__, "private_pool_options_match_criteria", private_pool_options_match_criteria)
+            _setter("private_pool_options_match_criteria", private_pool_options_match_criteria)
         if private_pool_options_name is not None:
-            pulumi.set(__self__, "private_pool_options_name", private_pool_options_name)
+            _setter("private_pool_options_name", private_pool_options_name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="instanceAmount")
@@ -256,42 +313,115 @@ class _ElasticityAssuranceState:
         :param pulumi.Input[int] used_assurance_times: This parameter is not yet available.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_ids: The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
         """
+        _ElasticityAssuranceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            assurance_times=assurance_times,
+            description=description,
+            elasticity_assurance_id=elasticity_assurance_id,
+            end_time=end_time,
+            instance_amount=instance_amount,
+            instance_charge_type=instance_charge_type,
+            instance_type=instance_type,
+            period=period,
+            period_unit=period_unit,
+            private_pool_options_match_criteria=private_pool_options_match_criteria,
+            private_pool_options_name=private_pool_options_name,
+            resource_group_id=resource_group_id,
+            start_time=start_time,
+            start_time_type=start_time_type,
+            status=status,
+            tags=tags,
+            used_assurance_times=used_assurance_times,
+            zone_ids=zone_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             assurance_times: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             elasticity_assurance_id: Optional[pulumi.Input[str]] = None,
+             end_time: Optional[pulumi.Input[str]] = None,
+             instance_amount: Optional[pulumi.Input[int]] = None,
+             instance_charge_type: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             period_unit: Optional[pulumi.Input[str]] = None,
+             private_pool_options_match_criteria: Optional[pulumi.Input[str]] = None,
+             private_pool_options_name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             start_time: Optional[pulumi.Input[str]] = None,
+             start_time_type: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             used_assurance_times: Optional[pulumi.Input[int]] = None,
+             zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if assurance_times is None and 'assuranceTimes' in kwargs:
+            assurance_times = kwargs['assuranceTimes']
+        if elasticity_assurance_id is None and 'elasticityAssuranceId' in kwargs:
+            elasticity_assurance_id = kwargs['elasticityAssuranceId']
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if instance_amount is None and 'instanceAmount' in kwargs:
+            instance_amount = kwargs['instanceAmount']
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if instance_type is None and 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if period_unit is None and 'periodUnit' in kwargs:
+            period_unit = kwargs['periodUnit']
+        if private_pool_options_match_criteria is None and 'privatePoolOptionsMatchCriteria' in kwargs:
+            private_pool_options_match_criteria = kwargs['privatePoolOptionsMatchCriteria']
+        if private_pool_options_name is None and 'privatePoolOptionsName' in kwargs:
+            private_pool_options_name = kwargs['privatePoolOptionsName']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if start_time_type is None and 'startTimeType' in kwargs:
+            start_time_type = kwargs['startTimeType']
+        if used_assurance_times is None and 'usedAssuranceTimes' in kwargs:
+            used_assurance_times = kwargs['usedAssuranceTimes']
+        if zone_ids is None and 'zoneIds' in kwargs:
+            zone_ids = kwargs['zoneIds']
+
         if assurance_times is not None:
-            pulumi.set(__self__, "assurance_times", assurance_times)
+            _setter("assurance_times", assurance_times)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if elasticity_assurance_id is not None:
-            pulumi.set(__self__, "elasticity_assurance_id", elasticity_assurance_id)
+            _setter("elasticity_assurance_id", elasticity_assurance_id)
         if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
+            _setter("end_time", end_time)
         if instance_amount is not None:
-            pulumi.set(__self__, "instance_amount", instance_amount)
+            _setter("instance_amount", instance_amount)
         if instance_charge_type is not None:
-            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+            _setter("instance_charge_type", instance_charge_type)
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if period_unit is not None:
-            pulumi.set(__self__, "period_unit", period_unit)
+            _setter("period_unit", period_unit)
         if private_pool_options_match_criteria is not None:
-            pulumi.set(__self__, "private_pool_options_match_criteria", private_pool_options_match_criteria)
+            _setter("private_pool_options_match_criteria", private_pool_options_match_criteria)
         if private_pool_options_name is not None:
-            pulumi.set(__self__, "private_pool_options_name", private_pool_options_name)
+            _setter("private_pool_options_name", private_pool_options_name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
         if start_time_type is not None:
-            pulumi.set(__self__, "start_time_type", start_time_type)
+            _setter("start_time_type", start_time_type)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if used_assurance_times is not None:
-            pulumi.set(__self__, "used_assurance_times", used_assurance_times)
+            _setter("used_assurance_times", used_assurance_times)
         if zone_ids is not None:
-            pulumi.set(__self__, "zone_ids", zone_ids)
+            _setter("zone_ids", zone_ids)
 
     @property
     @pulumi.getter(name="assuranceTimes")
@@ -593,6 +723,10 @@ class ElasticityAssurance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ElasticityAssuranceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

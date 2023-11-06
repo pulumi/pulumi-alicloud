@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['QosPolicyArgs', 'QosPolicy']
@@ -39,21 +39,82 @@ class QosPolicyArgs:
         :param pulumi.Input[str] name: The name of the QoS policy.
         :param pulumi.Input[str] start_time: The time when the quintuple rule takes effect.
         """
-        pulumi.set(__self__, "dest_cidr", dest_cidr)
-        pulumi.set(__self__, "dest_port_range", dest_port_range)
-        pulumi.set(__self__, "ip_protocol", ip_protocol)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "qos_id", qos_id)
-        pulumi.set(__self__, "source_cidr", source_cidr)
-        pulumi.set(__self__, "source_port_range", source_port_range)
+        QosPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dest_cidr=dest_cidr,
+            dest_port_range=dest_port_range,
+            ip_protocol=ip_protocol,
+            priority=priority,
+            qos_id=qos_id,
+            source_cidr=source_cidr,
+            source_port_range=source_port_range,
+            description=description,
+            end_time=end_time,
+            name=name,
+            start_time=start_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dest_cidr: Optional[pulumi.Input[str]] = None,
+             dest_port_range: Optional[pulumi.Input[str]] = None,
+             ip_protocol: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             qos_id: Optional[pulumi.Input[str]] = None,
+             source_cidr: Optional[pulumi.Input[str]] = None,
+             source_port_range: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             end_time: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             start_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dest_cidr is None and 'destCidr' in kwargs:
+            dest_cidr = kwargs['destCidr']
+        if dest_cidr is None:
+            raise TypeError("Missing 'dest_cidr' argument")
+        if dest_port_range is None and 'destPortRange' in kwargs:
+            dest_port_range = kwargs['destPortRange']
+        if dest_port_range is None:
+            raise TypeError("Missing 'dest_port_range' argument")
+        if ip_protocol is None and 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if ip_protocol is None:
+            raise TypeError("Missing 'ip_protocol' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if qos_id is None and 'qosId' in kwargs:
+            qos_id = kwargs['qosId']
+        if qos_id is None:
+            raise TypeError("Missing 'qos_id' argument")
+        if source_cidr is None and 'sourceCidr' in kwargs:
+            source_cidr = kwargs['sourceCidr']
+        if source_cidr is None:
+            raise TypeError("Missing 'source_cidr' argument")
+        if source_port_range is None and 'sourcePortRange' in kwargs:
+            source_port_range = kwargs['sourcePortRange']
+        if source_port_range is None:
+            raise TypeError("Missing 'source_port_range' argument")
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+
+        _setter("dest_cidr", dest_cidr)
+        _setter("dest_port_range", dest_port_range)
+        _setter("ip_protocol", ip_protocol)
+        _setter("priority", priority)
+        _setter("qos_id", qos_id)
+        _setter("source_cidr", source_cidr)
+        _setter("source_port_range", source_port_range)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
+            _setter("end_time", end_time)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
 
     @property
     @pulumi.getter(name="destCidr")
@@ -216,28 +277,75 @@ class _QosPolicyState:
         :param pulumi.Input[str] source_port_range: The source port range of the transport layer.
         :param pulumi.Input[str] start_time: The time when the quintuple rule takes effect.
         """
+        _QosPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            dest_cidr=dest_cidr,
+            dest_port_range=dest_port_range,
+            end_time=end_time,
+            ip_protocol=ip_protocol,
+            name=name,
+            priority=priority,
+            qos_id=qos_id,
+            source_cidr=source_cidr,
+            source_port_range=source_port_range,
+            start_time=start_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             dest_cidr: Optional[pulumi.Input[str]] = None,
+             dest_port_range: Optional[pulumi.Input[str]] = None,
+             end_time: Optional[pulumi.Input[str]] = None,
+             ip_protocol: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             qos_id: Optional[pulumi.Input[str]] = None,
+             source_cidr: Optional[pulumi.Input[str]] = None,
+             source_port_range: Optional[pulumi.Input[str]] = None,
+             start_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dest_cidr is None and 'destCidr' in kwargs:
+            dest_cidr = kwargs['destCidr']
+        if dest_port_range is None and 'destPortRange' in kwargs:
+            dest_port_range = kwargs['destPortRange']
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if ip_protocol is None and 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if qos_id is None and 'qosId' in kwargs:
+            qos_id = kwargs['qosId']
+        if source_cidr is None and 'sourceCidr' in kwargs:
+            source_cidr = kwargs['sourceCidr']
+        if source_port_range is None and 'sourcePortRange' in kwargs:
+            source_port_range = kwargs['sourcePortRange']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dest_cidr is not None:
-            pulumi.set(__self__, "dest_cidr", dest_cidr)
+            _setter("dest_cidr", dest_cidr)
         if dest_port_range is not None:
-            pulumi.set(__self__, "dest_port_range", dest_port_range)
+            _setter("dest_port_range", dest_port_range)
         if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
+            _setter("end_time", end_time)
         if ip_protocol is not None:
-            pulumi.set(__self__, "ip_protocol", ip_protocol)
+            _setter("ip_protocol", ip_protocol)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if qos_id is not None:
-            pulumi.set(__self__, "qos_id", qos_id)
+            _setter("qos_id", qos_id)
         if source_cidr is not None:
-            pulumi.set(__self__, "source_cidr", source_cidr)
+            _setter("source_cidr", source_cidr)
         if source_port_range is not None:
-            pulumi.set(__self__, "source_port_range", source_port_range)
+            _setter("source_port_range", source_port_range)
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
 
     @property
     @pulumi.getter
@@ -455,6 +563,10 @@ class QosPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            QosPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

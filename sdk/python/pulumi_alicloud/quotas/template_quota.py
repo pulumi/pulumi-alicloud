@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -44,21 +44,70 @@ class TemplateQuotaArgs:
                - WhiteListLabel: Equity quota.
                - FlowControl:API rate quota.
         """
-        pulumi.set(__self__, "desire_value", desire_value)
-        pulumi.set(__self__, "product_code", product_code)
-        pulumi.set(__self__, "quota_action_code", quota_action_code)
+        TemplateQuotaArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            desire_value=desire_value,
+            product_code=product_code,
+            quota_action_code=quota_action_code,
+            dimensions=dimensions,
+            effective_time=effective_time,
+            env_language=env_language,
+            expire_time=expire_time,
+            notice_type=notice_type,
+            quota_category=quota_category,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             desire_value: Optional[pulumi.Input[float]] = None,
+             product_code: Optional[pulumi.Input[str]] = None,
+             quota_action_code: Optional[pulumi.Input[str]] = None,
+             dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['TemplateQuotaDimensionArgs']]]] = None,
+             effective_time: Optional[pulumi.Input[str]] = None,
+             env_language: Optional[pulumi.Input[str]] = None,
+             expire_time: Optional[pulumi.Input[str]] = None,
+             notice_type: Optional[pulumi.Input[int]] = None,
+             quota_category: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if desire_value is None and 'desireValue' in kwargs:
+            desire_value = kwargs['desireValue']
+        if desire_value is None:
+            raise TypeError("Missing 'desire_value' argument")
+        if product_code is None and 'productCode' in kwargs:
+            product_code = kwargs['productCode']
+        if product_code is None:
+            raise TypeError("Missing 'product_code' argument")
+        if quota_action_code is None and 'quotaActionCode' in kwargs:
+            quota_action_code = kwargs['quotaActionCode']
+        if quota_action_code is None:
+            raise TypeError("Missing 'quota_action_code' argument")
+        if effective_time is None and 'effectiveTime' in kwargs:
+            effective_time = kwargs['effectiveTime']
+        if env_language is None and 'envLanguage' in kwargs:
+            env_language = kwargs['envLanguage']
+        if expire_time is None and 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if notice_type is None and 'noticeType' in kwargs:
+            notice_type = kwargs['noticeType']
+        if quota_category is None and 'quotaCategory' in kwargs:
+            quota_category = kwargs['quotaCategory']
+
+        _setter("desire_value", desire_value)
+        _setter("product_code", product_code)
+        _setter("quota_action_code", quota_action_code)
         if dimensions is not None:
-            pulumi.set(__self__, "dimensions", dimensions)
+            _setter("dimensions", dimensions)
         if effective_time is not None:
-            pulumi.set(__self__, "effective_time", effective_time)
+            _setter("effective_time", effective_time)
         if env_language is not None:
-            pulumi.set(__self__, "env_language", env_language)
+            _setter("env_language", env_language)
         if expire_time is not None:
-            pulumi.set(__self__, "expire_time", expire_time)
+            _setter("expire_time", expire_time)
         if notice_type is not None:
-            pulumi.set(__self__, "notice_type", notice_type)
+            _setter("notice_type", notice_type)
         if quota_category is not None:
-            pulumi.set(__self__, "quota_category", quota_category)
+            _setter("quota_category", quota_category)
 
     @property
     @pulumi.getter(name="desireValue")
@@ -207,24 +256,67 @@ class _TemplateQuotaState:
                - WhiteListLabel: Equity quota.
                - FlowControl:API rate quota.
         """
+        _TemplateQuotaState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            desire_value=desire_value,
+            dimensions=dimensions,
+            effective_time=effective_time,
+            env_language=env_language,
+            expire_time=expire_time,
+            notice_type=notice_type,
+            product_code=product_code,
+            quota_action_code=quota_action_code,
+            quota_category=quota_category,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             desire_value: Optional[pulumi.Input[float]] = None,
+             dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['TemplateQuotaDimensionArgs']]]] = None,
+             effective_time: Optional[pulumi.Input[str]] = None,
+             env_language: Optional[pulumi.Input[str]] = None,
+             expire_time: Optional[pulumi.Input[str]] = None,
+             notice_type: Optional[pulumi.Input[int]] = None,
+             product_code: Optional[pulumi.Input[str]] = None,
+             quota_action_code: Optional[pulumi.Input[str]] = None,
+             quota_category: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if desire_value is None and 'desireValue' in kwargs:
+            desire_value = kwargs['desireValue']
+        if effective_time is None and 'effectiveTime' in kwargs:
+            effective_time = kwargs['effectiveTime']
+        if env_language is None and 'envLanguage' in kwargs:
+            env_language = kwargs['envLanguage']
+        if expire_time is None and 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if notice_type is None and 'noticeType' in kwargs:
+            notice_type = kwargs['noticeType']
+        if product_code is None and 'productCode' in kwargs:
+            product_code = kwargs['productCode']
+        if quota_action_code is None and 'quotaActionCode' in kwargs:
+            quota_action_code = kwargs['quotaActionCode']
+        if quota_category is None and 'quotaCategory' in kwargs:
+            quota_category = kwargs['quotaCategory']
+
         if desire_value is not None:
-            pulumi.set(__self__, "desire_value", desire_value)
+            _setter("desire_value", desire_value)
         if dimensions is not None:
-            pulumi.set(__self__, "dimensions", dimensions)
+            _setter("dimensions", dimensions)
         if effective_time is not None:
-            pulumi.set(__self__, "effective_time", effective_time)
+            _setter("effective_time", effective_time)
         if env_language is not None:
-            pulumi.set(__self__, "env_language", env_language)
+            _setter("env_language", env_language)
         if expire_time is not None:
-            pulumi.set(__self__, "expire_time", expire_time)
+            _setter("expire_time", expire_time)
         if notice_type is not None:
-            pulumi.set(__self__, "notice_type", notice_type)
+            _setter("notice_type", notice_type)
         if product_code is not None:
-            pulumi.set(__self__, "product_code", product_code)
+            _setter("product_code", product_code)
         if quota_action_code is not None:
-            pulumi.set(__self__, "quota_action_code", quota_action_code)
+            _setter("quota_action_code", quota_action_code)
         if quota_category is not None:
-            pulumi.set(__self__, "quota_category", quota_category)
+            _setter("quota_category", quota_category)
 
     @property
     @pulumi.getter(name="desireValue")
@@ -472,6 +564,10 @@ class TemplateQuota(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TemplateQuotaArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

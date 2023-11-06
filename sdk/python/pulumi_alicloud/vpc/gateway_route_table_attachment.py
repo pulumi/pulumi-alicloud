@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['GatewayRouteTableAttachmentArgs', 'GatewayRouteTableAttachment']
@@ -23,10 +23,35 @@ class GatewayRouteTableAttachmentArgs:
         :param pulumi.Input[str] route_table_id: The ID of the Gateway route table to be bound.
         :param pulumi.Input[bool] dry_run: Specifies whether to only precheck this request. Default value: `false`.
         """
-        pulumi.set(__self__, "ipv4_gateway_id", ipv4_gateway_id)
-        pulumi.set(__self__, "route_table_id", route_table_id)
+        GatewayRouteTableAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ipv4_gateway_id=ipv4_gateway_id,
+            route_table_id=route_table_id,
+            dry_run=dry_run,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ipv4_gateway_id: Optional[pulumi.Input[str]] = None,
+             route_table_id: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ipv4_gateway_id is None and 'ipv4GatewayId' in kwargs:
+            ipv4_gateway_id = kwargs['ipv4GatewayId']
+        if ipv4_gateway_id is None:
+            raise TypeError("Missing 'ipv4_gateway_id' argument")
+        if route_table_id is None and 'routeTableId' in kwargs:
+            route_table_id = kwargs['routeTableId']
+        if route_table_id is None:
+            raise TypeError("Missing 'route_table_id' argument")
+        if dry_run is None and 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+
+        _setter("ipv4_gateway_id", ipv4_gateway_id)
+        _setter("route_table_id", route_table_id)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
 
     @property
     @pulumi.getter(name="ipv4GatewayId")
@@ -87,16 +112,43 @@ class _GatewayRouteTableAttachmentState:
                - **Deleted**: Deleted.
                - **Activating**: enabled.
         """
+        _GatewayRouteTableAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            dry_run=dry_run,
+            ipv4_gateway_id=ipv4_gateway_id,
+            route_table_id=route_table_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             ipv4_gateway_id: Optional[pulumi.Input[str]] = None,
+             route_table_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if dry_run is None and 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if ipv4_gateway_id is None and 'ipv4GatewayId' in kwargs:
+            ipv4_gateway_id = kwargs['ipv4GatewayId']
+        if route_table_id is None and 'routeTableId' in kwargs:
+            route_table_id = kwargs['routeTableId']
+
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if ipv4_gateway_id is not None:
-            pulumi.set(__self__, "ipv4_gateway_id", ipv4_gateway_id)
+            _setter("ipv4_gateway_id", ipv4_gateway_id)
         if route_table_id is not None:
-            pulumi.set(__self__, "route_table_id", route_table_id)
+            _setter("route_table_id", route_table_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="createTime")
@@ -276,6 +328,10 @@ class GatewayRouteTableAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GatewayRouteTableAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

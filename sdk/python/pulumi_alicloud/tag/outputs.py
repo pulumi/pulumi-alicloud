@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -24,9 +24,34 @@ class GetMetaTagsTagResult(dict):
         :param str key_name: The name of the key.
         :param str value_name: The name of the value.
         """
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "key_name", key_name)
-        pulumi.set(__self__, "value_name", value_name)
+        GetMetaTagsTagResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            key_name=key_name,
+            value_name=value_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: Optional[str] = None,
+             key_name: Optional[str] = None,
+             value_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if key_name is None and 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if key_name is None:
+            raise TypeError("Missing 'key_name' argument")
+        if value_name is None and 'valueName' in kwargs:
+            value_name = kwargs['valueName']
+        if value_name is None:
+            raise TypeError("Missing 'value_name' argument")
+
+        _setter("category", category)
+        _setter("key_name", key_name)
+        _setter("value_name", value_name)
 
     @property
     @pulumi.getter

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -43,30 +43,85 @@ class OtsBackupPlanArgs:
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         :param pulumi.Input[str] vault_id: The ID of backup vault.
         """
-        pulumi.set(__self__, "backup_type", backup_type)
-        pulumi.set(__self__, "ots_backup_plan_name", ots_backup_plan_name)
-        pulumi.set(__self__, "retention", retention)
+        OtsBackupPlanArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_type=backup_type,
+            ots_backup_plan_name=ots_backup_plan_name,
+            retention=retention,
+            cross_account_role_name=cross_account_role_name,
+            cross_account_type=cross_account_type,
+            cross_account_user_id=cross_account_user_id,
+            disabled=disabled,
+            instance_name=instance_name,
+            ots_details=ots_details,
+            rules=rules,
+            schedule=schedule,
+            vault_id=vault_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_type: Optional[pulumi.Input[str]] = None,
+             ots_backup_plan_name: Optional[pulumi.Input[str]] = None,
+             retention: Optional[pulumi.Input[str]] = None,
+             cross_account_role_name: Optional[pulumi.Input[str]] = None,
+             cross_account_type: Optional[pulumi.Input[str]] = None,
+             cross_account_user_id: Optional[pulumi.Input[int]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             ots_details: Optional[pulumi.Input[Sequence[pulumi.Input['OtsBackupPlanOtsDetailArgs']]]] = None,
+             rules: Optional[pulumi.Input[Sequence[pulumi.Input['OtsBackupPlanRuleArgs']]]] = None,
+             schedule: Optional[pulumi.Input[str]] = None,
+             vault_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backup_type is None and 'backupType' in kwargs:
+            backup_type = kwargs['backupType']
+        if backup_type is None:
+            raise TypeError("Missing 'backup_type' argument")
+        if ots_backup_plan_name is None and 'otsBackupPlanName' in kwargs:
+            ots_backup_plan_name = kwargs['otsBackupPlanName']
+        if ots_backup_plan_name is None:
+            raise TypeError("Missing 'ots_backup_plan_name' argument")
+        if retention is None:
+            raise TypeError("Missing 'retention' argument")
+        if cross_account_role_name is None and 'crossAccountRoleName' in kwargs:
+            cross_account_role_name = kwargs['crossAccountRoleName']
+        if cross_account_type is None and 'crossAccountType' in kwargs:
+            cross_account_type = kwargs['crossAccountType']
+        if cross_account_user_id is None and 'crossAccountUserId' in kwargs:
+            cross_account_user_id = kwargs['crossAccountUserId']
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if ots_details is None and 'otsDetails' in kwargs:
+            ots_details = kwargs['otsDetails']
+        if vault_id is None and 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+
+        _setter("backup_type", backup_type)
+        _setter("ots_backup_plan_name", ots_backup_plan_name)
+        _setter("retention", retention)
         if cross_account_role_name is not None:
-            pulumi.set(__self__, "cross_account_role_name", cross_account_role_name)
+            _setter("cross_account_role_name", cross_account_role_name)
         if cross_account_type is not None:
-            pulumi.set(__self__, "cross_account_type", cross_account_type)
+            _setter("cross_account_type", cross_account_type)
         if cross_account_user_id is not None:
-            pulumi.set(__self__, "cross_account_user_id", cross_account_user_id)
+            _setter("cross_account_user_id", cross_account_user_id)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if ots_details is not None:
-            pulumi.set(__self__, "ots_details", ots_details)
+            _setter("ots_details", ots_details)
         if rules is not None:
-            pulumi.set(__self__, "rules", rules)
+            _setter("rules", rules)
         if schedule is not None:
             warnings.warn("""Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.""", DeprecationWarning)
             pulumi.log.warn("""schedule is deprecated: Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.""")
         if schedule is not None:
-            pulumi.set(__self__, "schedule", schedule)
+            _setter("schedule", schedule)
         if vault_id is not None:
-            pulumi.set(__self__, "vault_id", vault_id)
+            _setter("vault_id", vault_id)
 
     @property
     @pulumi.getter(name="backupType")
@@ -246,33 +301,82 @@ class _OtsBackupPlanState:
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         :param pulumi.Input[str] vault_id: The ID of backup vault.
         """
+        _OtsBackupPlanState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_type=backup_type,
+            cross_account_role_name=cross_account_role_name,
+            cross_account_type=cross_account_type,
+            cross_account_user_id=cross_account_user_id,
+            disabled=disabled,
+            instance_name=instance_name,
+            ots_backup_plan_name=ots_backup_plan_name,
+            ots_details=ots_details,
+            retention=retention,
+            rules=rules,
+            schedule=schedule,
+            vault_id=vault_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_type: Optional[pulumi.Input[str]] = None,
+             cross_account_role_name: Optional[pulumi.Input[str]] = None,
+             cross_account_type: Optional[pulumi.Input[str]] = None,
+             cross_account_user_id: Optional[pulumi.Input[int]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             ots_backup_plan_name: Optional[pulumi.Input[str]] = None,
+             ots_details: Optional[pulumi.Input[Sequence[pulumi.Input['OtsBackupPlanOtsDetailArgs']]]] = None,
+             retention: Optional[pulumi.Input[str]] = None,
+             rules: Optional[pulumi.Input[Sequence[pulumi.Input['OtsBackupPlanRuleArgs']]]] = None,
+             schedule: Optional[pulumi.Input[str]] = None,
+             vault_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backup_type is None and 'backupType' in kwargs:
+            backup_type = kwargs['backupType']
+        if cross_account_role_name is None and 'crossAccountRoleName' in kwargs:
+            cross_account_role_name = kwargs['crossAccountRoleName']
+        if cross_account_type is None and 'crossAccountType' in kwargs:
+            cross_account_type = kwargs['crossAccountType']
+        if cross_account_user_id is None and 'crossAccountUserId' in kwargs:
+            cross_account_user_id = kwargs['crossAccountUserId']
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if ots_backup_plan_name is None and 'otsBackupPlanName' in kwargs:
+            ots_backup_plan_name = kwargs['otsBackupPlanName']
+        if ots_details is None and 'otsDetails' in kwargs:
+            ots_details = kwargs['otsDetails']
+        if vault_id is None and 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+
         if backup_type is not None:
-            pulumi.set(__self__, "backup_type", backup_type)
+            _setter("backup_type", backup_type)
         if cross_account_role_name is not None:
-            pulumi.set(__self__, "cross_account_role_name", cross_account_role_name)
+            _setter("cross_account_role_name", cross_account_role_name)
         if cross_account_type is not None:
-            pulumi.set(__self__, "cross_account_type", cross_account_type)
+            _setter("cross_account_type", cross_account_type)
         if cross_account_user_id is not None:
-            pulumi.set(__self__, "cross_account_user_id", cross_account_user_id)
+            _setter("cross_account_user_id", cross_account_user_id)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if ots_backup_plan_name is not None:
-            pulumi.set(__self__, "ots_backup_plan_name", ots_backup_plan_name)
+            _setter("ots_backup_plan_name", ots_backup_plan_name)
         if ots_details is not None:
-            pulumi.set(__self__, "ots_details", ots_details)
+            _setter("ots_details", ots_details)
         if retention is not None:
-            pulumi.set(__self__, "retention", retention)
+            _setter("retention", retention)
         if rules is not None:
-            pulumi.set(__self__, "rules", rules)
+            _setter("rules", rules)
         if schedule is not None:
             warnings.warn("""Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.""", DeprecationWarning)
             pulumi.log.warn("""schedule is deprecated: Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.""")
         if schedule is not None:
-            pulumi.set(__self__, "schedule", schedule)
+            _setter("schedule", schedule)
         if vault_id is not None:
-            pulumi.set(__self__, "vault_id", vault_id)
+            _setter("vault_id", vault_id)
 
     @property
     @pulumi.getter(name="backupType")
@@ -643,6 +747,10 @@ class OtsBackupPlan(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OtsBackupPlanArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

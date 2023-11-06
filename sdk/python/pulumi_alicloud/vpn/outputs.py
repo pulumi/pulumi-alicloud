@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -70,14 +70,37 @@ class ConnectionBgpConfig(dict):
         :param str local_bgp_ip: The BGP IP address on the Alibaba Cloud side.
         :param str tunnel_cidr: The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
         """
+        ConnectionBgpConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enable=enable,
+            local_asn=local_asn,
+            local_bgp_ip=local_bgp_ip,
+            tunnel_cidr=tunnel_cidr,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enable: Optional[bool] = None,
+             local_asn: Optional[str] = None,
+             local_bgp_ip: Optional[str] = None,
+             tunnel_cidr: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if local_asn is None and 'localAsn' in kwargs:
+            local_asn = kwargs['localAsn']
+        if local_bgp_ip is None and 'localBgpIp' in kwargs:
+            local_bgp_ip = kwargs['localBgpIp']
+        if tunnel_cidr is None and 'tunnelCidr' in kwargs:
+            tunnel_cidr = kwargs['tunnelCidr']
+
         if enable is not None:
-            pulumi.set(__self__, "enable", enable)
+            _setter("enable", enable)
         if local_asn is not None:
-            pulumi.set(__self__, "local_asn", local_asn)
+            _setter("local_asn", local_asn)
         if local_bgp_ip is not None:
-            pulumi.set(__self__, "local_bgp_ip", local_bgp_ip)
+            _setter("local_bgp_ip", local_bgp_ip)
         if tunnel_cidr is not None:
-            pulumi.set(__self__, "tunnel_cidr", tunnel_cidr)
+            _setter("tunnel_cidr", tunnel_cidr)
 
     @property
     @pulumi.getter
@@ -127,16 +150,35 @@ class ConnectionHealthCheckConfig(dict):
         :param int retry: The maximum number of health check retries.
         :param str sip: The source IP address.
         """
+        ConnectionHealthCheckConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dip=dip,
+            enable=enable,
+            interval=interval,
+            retry=retry,
+            sip=sip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dip: Optional[str] = None,
+             enable: Optional[bool] = None,
+             interval: Optional[int] = None,
+             retry: Optional[int] = None,
+             sip: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if dip is not None:
-            pulumi.set(__self__, "dip", dip)
+            _setter("dip", dip)
         if enable is not None:
-            pulumi.set(__self__, "enable", enable)
+            _setter("enable", enable)
         if interval is not None:
-            pulumi.set(__self__, "interval", interval)
+            _setter("interval", interval)
         if retry is not None:
-            pulumi.set(__self__, "retry", retry)
+            _setter("retry", retry)
         if sip is not None:
-            pulumi.set(__self__, "sip", sip)
+            _setter("sip", sip)
 
     @property
     @pulumi.getter
@@ -233,24 +275,67 @@ class ConnectionIkeConfig(dict):
         :param str ike_version: The version of the IKE protocol. Valid value: ikev1 | ikev2. Default value: ikev1
         :param str psk: Used for authentication between the IPsec VPN gateway and the customer gateway.
         """
+        ConnectionIkeConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ike_auth_alg=ike_auth_alg,
+            ike_enc_alg=ike_enc_alg,
+            ike_lifetime=ike_lifetime,
+            ike_local_id=ike_local_id,
+            ike_mode=ike_mode,
+            ike_pfs=ike_pfs,
+            ike_remote_id=ike_remote_id,
+            ike_version=ike_version,
+            psk=psk,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ike_auth_alg: Optional[str] = None,
+             ike_enc_alg: Optional[str] = None,
+             ike_lifetime: Optional[int] = None,
+             ike_local_id: Optional[str] = None,
+             ike_mode: Optional[str] = None,
+             ike_pfs: Optional[str] = None,
+             ike_remote_id: Optional[str] = None,
+             ike_version: Optional[str] = None,
+             psk: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ike_auth_alg is None and 'ikeAuthAlg' in kwargs:
+            ike_auth_alg = kwargs['ikeAuthAlg']
+        if ike_enc_alg is None and 'ikeEncAlg' in kwargs:
+            ike_enc_alg = kwargs['ikeEncAlg']
+        if ike_lifetime is None and 'ikeLifetime' in kwargs:
+            ike_lifetime = kwargs['ikeLifetime']
+        if ike_local_id is None and 'ikeLocalId' in kwargs:
+            ike_local_id = kwargs['ikeLocalId']
+        if ike_mode is None and 'ikeMode' in kwargs:
+            ike_mode = kwargs['ikeMode']
+        if ike_pfs is None and 'ikePfs' in kwargs:
+            ike_pfs = kwargs['ikePfs']
+        if ike_remote_id is None and 'ikeRemoteId' in kwargs:
+            ike_remote_id = kwargs['ikeRemoteId']
+        if ike_version is None and 'ikeVersion' in kwargs:
+            ike_version = kwargs['ikeVersion']
+
         if ike_auth_alg is not None:
-            pulumi.set(__self__, "ike_auth_alg", ike_auth_alg)
+            _setter("ike_auth_alg", ike_auth_alg)
         if ike_enc_alg is not None:
-            pulumi.set(__self__, "ike_enc_alg", ike_enc_alg)
+            _setter("ike_enc_alg", ike_enc_alg)
         if ike_lifetime is not None:
-            pulumi.set(__self__, "ike_lifetime", ike_lifetime)
+            _setter("ike_lifetime", ike_lifetime)
         if ike_local_id is not None:
-            pulumi.set(__self__, "ike_local_id", ike_local_id)
+            _setter("ike_local_id", ike_local_id)
         if ike_mode is not None:
-            pulumi.set(__self__, "ike_mode", ike_mode)
+            _setter("ike_mode", ike_mode)
         if ike_pfs is not None:
-            pulumi.set(__self__, "ike_pfs", ike_pfs)
+            _setter("ike_pfs", ike_pfs)
         if ike_remote_id is not None:
-            pulumi.set(__self__, "ike_remote_id", ike_remote_id)
+            _setter("ike_remote_id", ike_remote_id)
         if ike_version is not None:
-            pulumi.set(__self__, "ike_version", ike_version)
+            _setter("ike_version", ike_version)
         if psk is not None:
-            pulumi.set(__self__, "psk", psk)
+            _setter("psk", psk)
 
     @property
     @pulumi.getter(name="ikeAuthAlg")
@@ -361,14 +446,39 @@ class ConnectionIpsecConfig(dict):
         :param int ipsec_lifetime: The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
         :param str ipsec_pfs: The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
         """
+        ConnectionIpsecConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ipsec_auth_alg=ipsec_auth_alg,
+            ipsec_enc_alg=ipsec_enc_alg,
+            ipsec_lifetime=ipsec_lifetime,
+            ipsec_pfs=ipsec_pfs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ipsec_auth_alg: Optional[str] = None,
+             ipsec_enc_alg: Optional[str] = None,
+             ipsec_lifetime: Optional[int] = None,
+             ipsec_pfs: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ipsec_auth_alg is None and 'ipsecAuthAlg' in kwargs:
+            ipsec_auth_alg = kwargs['ipsecAuthAlg']
+        if ipsec_enc_alg is None and 'ipsecEncAlg' in kwargs:
+            ipsec_enc_alg = kwargs['ipsecEncAlg']
+        if ipsec_lifetime is None and 'ipsecLifetime' in kwargs:
+            ipsec_lifetime = kwargs['ipsecLifetime']
+        if ipsec_pfs is None and 'ipsecPfs' in kwargs:
+            ipsec_pfs = kwargs['ipsecPfs']
+
         if ipsec_auth_alg is not None:
-            pulumi.set(__self__, "ipsec_auth_alg", ipsec_auth_alg)
+            _setter("ipsec_auth_alg", ipsec_auth_alg)
         if ipsec_enc_alg is not None:
-            pulumi.set(__self__, "ipsec_enc_alg", ipsec_enc_alg)
+            _setter("ipsec_enc_alg", ipsec_enc_alg)
         if ipsec_lifetime is not None:
-            pulumi.set(__self__, "ipsec_lifetime", ipsec_lifetime)
+            _setter("ipsec_lifetime", ipsec_lifetime)
         if ipsec_pfs is not None:
-            pulumi.set(__self__, "ipsec_pfs", ipsec_pfs)
+            _setter("ipsec_pfs", ipsec_pfs)
 
     @property
     @pulumi.getter(name="ipsecAuthAlg")
@@ -437,14 +547,37 @@ class GatewayVpnAttachmentBgpConfig(dict):
         :param str local_bgp_ip: The BGP IP address on the Alibaba Cloud side.
         :param str tunnel_cidr: The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
         """
+        GatewayVpnAttachmentBgpConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enable=enable,
+            local_asn=local_asn,
+            local_bgp_ip=local_bgp_ip,
+            tunnel_cidr=tunnel_cidr,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enable: Optional[bool] = None,
+             local_asn: Optional[int] = None,
+             local_bgp_ip: Optional[str] = None,
+             tunnel_cidr: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if local_asn is None and 'localAsn' in kwargs:
+            local_asn = kwargs['localAsn']
+        if local_bgp_ip is None and 'localBgpIp' in kwargs:
+            local_bgp_ip = kwargs['localBgpIp']
+        if tunnel_cidr is None and 'tunnelCidr' in kwargs:
+            tunnel_cidr = kwargs['tunnelCidr']
+
         if enable is not None:
-            pulumi.set(__self__, "enable", enable)
+            _setter("enable", enable)
         if local_asn is not None:
-            pulumi.set(__self__, "local_asn", local_asn)
+            _setter("local_asn", local_asn)
         if local_bgp_ip is not None:
-            pulumi.set(__self__, "local_bgp_ip", local_bgp_ip)
+            _setter("local_bgp_ip", local_bgp_ip)
         if tunnel_cidr is not None:
-            pulumi.set(__self__, "tunnel_cidr", tunnel_cidr)
+            _setter("tunnel_cidr", tunnel_cidr)
 
     @property
     @pulumi.getter
@@ -496,18 +629,39 @@ class GatewayVpnAttachmentHealthCheckConfig(dict):
         :param int retry: The maximum number of health check retries.
         :param str sip: The source IP address that is used for health checks.
         """
+        GatewayVpnAttachmentHealthCheckConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dip=dip,
+            enable=enable,
+            interval=interval,
+            policy=policy,
+            retry=retry,
+            sip=sip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dip: Optional[str] = None,
+             enable: Optional[bool] = None,
+             interval: Optional[int] = None,
+             policy: Optional[str] = None,
+             retry: Optional[int] = None,
+             sip: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if dip is not None:
-            pulumi.set(__self__, "dip", dip)
+            _setter("dip", dip)
         if enable is not None:
-            pulumi.set(__self__, "enable", enable)
+            _setter("enable", enable)
         if interval is not None:
-            pulumi.set(__self__, "interval", interval)
+            _setter("interval", interval)
         if policy is not None:
-            pulumi.set(__self__, "policy", policy)
+            _setter("policy", policy)
         if retry is not None:
-            pulumi.set(__self__, "retry", retry)
+            _setter("retry", retry)
         if sip is not None:
-            pulumi.set(__self__, "sip", sip)
+            _setter("sip", sip)
 
     @property
     @pulumi.getter
@@ -612,24 +766,67 @@ class GatewayVpnAttachmentIkeConfig(dict):
         :param str psk: Used for authentication between the IPsec VPN gateway and the customer gateway.
         :param str remote_id: The peer ID, which supports FQDN and IP formats. By default, the IP address of the currently selected user gateway.
         """
+        GatewayVpnAttachmentIkeConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ike_auth_alg=ike_auth_alg,
+            ike_enc_alg=ike_enc_alg,
+            ike_lifetime=ike_lifetime,
+            ike_mode=ike_mode,
+            ike_pfs=ike_pfs,
+            ike_version=ike_version,
+            local_id=local_id,
+            psk=psk,
+            remote_id=remote_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ike_auth_alg: Optional[str] = None,
+             ike_enc_alg: Optional[str] = None,
+             ike_lifetime: Optional[int] = None,
+             ike_mode: Optional[str] = None,
+             ike_pfs: Optional[str] = None,
+             ike_version: Optional[str] = None,
+             local_id: Optional[str] = None,
+             psk: Optional[str] = None,
+             remote_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ike_auth_alg is None and 'ikeAuthAlg' in kwargs:
+            ike_auth_alg = kwargs['ikeAuthAlg']
+        if ike_enc_alg is None and 'ikeEncAlg' in kwargs:
+            ike_enc_alg = kwargs['ikeEncAlg']
+        if ike_lifetime is None and 'ikeLifetime' in kwargs:
+            ike_lifetime = kwargs['ikeLifetime']
+        if ike_mode is None and 'ikeMode' in kwargs:
+            ike_mode = kwargs['ikeMode']
+        if ike_pfs is None and 'ikePfs' in kwargs:
+            ike_pfs = kwargs['ikePfs']
+        if ike_version is None and 'ikeVersion' in kwargs:
+            ike_version = kwargs['ikeVersion']
+        if local_id is None and 'localId' in kwargs:
+            local_id = kwargs['localId']
+        if remote_id is None and 'remoteId' in kwargs:
+            remote_id = kwargs['remoteId']
+
         if ike_auth_alg is not None:
-            pulumi.set(__self__, "ike_auth_alg", ike_auth_alg)
+            _setter("ike_auth_alg", ike_auth_alg)
         if ike_enc_alg is not None:
-            pulumi.set(__self__, "ike_enc_alg", ike_enc_alg)
+            _setter("ike_enc_alg", ike_enc_alg)
         if ike_lifetime is not None:
-            pulumi.set(__self__, "ike_lifetime", ike_lifetime)
+            _setter("ike_lifetime", ike_lifetime)
         if ike_mode is not None:
-            pulumi.set(__self__, "ike_mode", ike_mode)
+            _setter("ike_mode", ike_mode)
         if ike_pfs is not None:
-            pulumi.set(__self__, "ike_pfs", ike_pfs)
+            _setter("ike_pfs", ike_pfs)
         if ike_version is not None:
-            pulumi.set(__self__, "ike_version", ike_version)
+            _setter("ike_version", ike_version)
         if local_id is not None:
-            pulumi.set(__self__, "local_id", local_id)
+            _setter("local_id", local_id)
         if psk is not None:
-            pulumi.set(__self__, "psk", psk)
+            _setter("psk", psk)
         if remote_id is not None:
-            pulumi.set(__self__, "remote_id", remote_id)
+            _setter("remote_id", remote_id)
 
     @property
     @pulumi.getter(name="ikeAuthAlg")
@@ -740,14 +937,39 @@ class GatewayVpnAttachmentIpsecConfig(dict):
         :param int ipsec_lifetime: The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
         :param str ipsec_pfs: The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
         """
+        GatewayVpnAttachmentIpsecConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ipsec_auth_alg=ipsec_auth_alg,
+            ipsec_enc_alg=ipsec_enc_alg,
+            ipsec_lifetime=ipsec_lifetime,
+            ipsec_pfs=ipsec_pfs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ipsec_auth_alg: Optional[str] = None,
+             ipsec_enc_alg: Optional[str] = None,
+             ipsec_lifetime: Optional[int] = None,
+             ipsec_pfs: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ipsec_auth_alg is None and 'ipsecAuthAlg' in kwargs:
+            ipsec_auth_alg = kwargs['ipsecAuthAlg']
+        if ipsec_enc_alg is None and 'ipsecEncAlg' in kwargs:
+            ipsec_enc_alg = kwargs['ipsecEncAlg']
+        if ipsec_lifetime is None and 'ipsecLifetime' in kwargs:
+            ipsec_lifetime = kwargs['ipsecLifetime']
+        if ipsec_pfs is None and 'ipsecPfs' in kwargs:
+            ipsec_pfs = kwargs['ipsecPfs']
+
         if ipsec_auth_alg is not None:
-            pulumi.set(__self__, "ipsec_auth_alg", ipsec_auth_alg)
+            _setter("ipsec_auth_alg", ipsec_auth_alg)
         if ipsec_enc_alg is not None:
-            pulumi.set(__self__, "ipsec_enc_alg", ipsec_enc_alg)
+            _setter("ipsec_enc_alg", ipsec_enc_alg)
         if ipsec_lifetime is not None:
-            pulumi.set(__self__, "ipsec_lifetime", ipsec_lifetime)
+            _setter("ipsec_lifetime", ipsec_lifetime)
         if ipsec_pfs is not None:
-            pulumi.set(__self__, "ipsec_pfs", ipsec_pfs)
+            _setter("ipsec_pfs", ipsec_pfs)
 
     @property
     @pulumi.getter(name="ipsecAuthAlg")
@@ -834,22 +1056,63 @@ class IpsecServerIkeConfig(dict):
         :param str local_id: The identifier of the IPsec server. The value can be a fully qualified domain name (FQDN) or an IP address. The default value is the public IP address of the VPN gateway.
         :param str remote_id: The identifier of the customer gateway. The value can be an FQDN or an IP address. By default, this parameter is not specified.
         """
+        IpsecServerIkeConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ike_auth_alg=ike_auth_alg,
+            ike_enc_alg=ike_enc_alg,
+            ike_lifetime=ike_lifetime,
+            ike_mode=ike_mode,
+            ike_pfs=ike_pfs,
+            ike_version=ike_version,
+            local_id=local_id,
+            remote_id=remote_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ike_auth_alg: Optional[str] = None,
+             ike_enc_alg: Optional[str] = None,
+             ike_lifetime: Optional[int] = None,
+             ike_mode: Optional[str] = None,
+             ike_pfs: Optional[str] = None,
+             ike_version: Optional[str] = None,
+             local_id: Optional[str] = None,
+             remote_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ike_auth_alg is None and 'ikeAuthAlg' in kwargs:
+            ike_auth_alg = kwargs['ikeAuthAlg']
+        if ike_enc_alg is None and 'ikeEncAlg' in kwargs:
+            ike_enc_alg = kwargs['ikeEncAlg']
+        if ike_lifetime is None and 'ikeLifetime' in kwargs:
+            ike_lifetime = kwargs['ikeLifetime']
+        if ike_mode is None and 'ikeMode' in kwargs:
+            ike_mode = kwargs['ikeMode']
+        if ike_pfs is None and 'ikePfs' in kwargs:
+            ike_pfs = kwargs['ikePfs']
+        if ike_version is None and 'ikeVersion' in kwargs:
+            ike_version = kwargs['ikeVersion']
+        if local_id is None and 'localId' in kwargs:
+            local_id = kwargs['localId']
+        if remote_id is None and 'remoteId' in kwargs:
+            remote_id = kwargs['remoteId']
+
         if ike_auth_alg is not None:
-            pulumi.set(__self__, "ike_auth_alg", ike_auth_alg)
+            _setter("ike_auth_alg", ike_auth_alg)
         if ike_enc_alg is not None:
-            pulumi.set(__self__, "ike_enc_alg", ike_enc_alg)
+            _setter("ike_enc_alg", ike_enc_alg)
         if ike_lifetime is not None:
-            pulumi.set(__self__, "ike_lifetime", ike_lifetime)
+            _setter("ike_lifetime", ike_lifetime)
         if ike_mode is not None:
-            pulumi.set(__self__, "ike_mode", ike_mode)
+            _setter("ike_mode", ike_mode)
         if ike_pfs is not None:
-            pulumi.set(__self__, "ike_pfs", ike_pfs)
+            _setter("ike_pfs", ike_pfs)
         if ike_version is not None:
-            pulumi.set(__self__, "ike_version", ike_version)
+            _setter("ike_version", ike_version)
         if local_id is not None:
-            pulumi.set(__self__, "local_id", local_id)
+            _setter("local_id", local_id)
         if remote_id is not None:
-            pulumi.set(__self__, "remote_id", remote_id)
+            _setter("remote_id", remote_id)
 
     @property
     @pulumi.getter(name="ikeAuthAlg")
@@ -952,14 +1215,39 @@ class IpsecServerIpsecConfig(dict):
         :param int ipsec_lifetime: The SA lifetime determined by Phase 2 negotiations. Valid values: `0` to `86400`. Default value: `86400`. Unit: `seconds`.
         :param str ipsec_pfs: Forwards packets of all protocols. The Diffie-Hellman key exchange algorithm used in Phase 2 negotiations. Default value: `group2`.
         """
+        IpsecServerIpsecConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ipsec_auth_alg=ipsec_auth_alg,
+            ipsec_enc_alg=ipsec_enc_alg,
+            ipsec_lifetime=ipsec_lifetime,
+            ipsec_pfs=ipsec_pfs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ipsec_auth_alg: Optional[str] = None,
+             ipsec_enc_alg: Optional[str] = None,
+             ipsec_lifetime: Optional[int] = None,
+             ipsec_pfs: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ipsec_auth_alg is None and 'ipsecAuthAlg' in kwargs:
+            ipsec_auth_alg = kwargs['ipsecAuthAlg']
+        if ipsec_enc_alg is None and 'ipsecEncAlg' in kwargs:
+            ipsec_enc_alg = kwargs['ipsecEncAlg']
+        if ipsec_lifetime is None and 'ipsecLifetime' in kwargs:
+            ipsec_lifetime = kwargs['ipsecLifetime']
+        if ipsec_pfs is None and 'ipsecPfs' in kwargs:
+            ipsec_pfs = kwargs['ipsecPfs']
+
         if ipsec_auth_alg is not None:
-            pulumi.set(__self__, "ipsec_auth_alg", ipsec_auth_alg)
+            _setter("ipsec_auth_alg", ipsec_auth_alg)
         if ipsec_enc_alg is not None:
-            pulumi.set(__self__, "ipsec_enc_alg", ipsec_enc_alg)
+            _setter("ipsec_enc_alg", ipsec_enc_alg)
         if ipsec_lifetime is not None:
-            pulumi.set(__self__, "ipsec_lifetime", ipsec_lifetime)
+            _setter("ipsec_lifetime", ipsec_lifetime)
         if ipsec_pfs is not None:
-            pulumi.set(__self__, "ipsec_pfs", ipsec_pfs)
+            _setter("ipsec_pfs", ipsec_pfs)
 
     @property
     @pulumi.getter(name="ipsecAuthAlg")
@@ -1026,25 +1314,110 @@ class GetConnectionsConnectionResult(dict):
         :param Sequence['GetConnectionsConnectionIpsecConfigArgs'] ipsec_configs: The configurations of phase-two negotiation.
         :param Sequence['GetConnectionsConnectionVpnBgpConfigArgs'] vpn_bgp_configs: The configuration information for BGP.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "customer_gateway_id", customer_gateway_id)
-        pulumi.set(__self__, "effect_immediately", effect_immediately)
-        pulumi.set(__self__, "enable_dpd", enable_dpd)
-        pulumi.set(__self__, "enable_nat_traversal", enable_nat_traversal)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "local_subnet", local_subnet)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "remote_subnet", remote_subnet)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vpn_gateway_id", vpn_gateway_id)
+        GetConnectionsConnectionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            customer_gateway_id=customer_gateway_id,
+            effect_immediately=effect_immediately,
+            enable_dpd=enable_dpd,
+            enable_nat_traversal=enable_nat_traversal,
+            id=id,
+            local_subnet=local_subnet,
+            name=name,
+            remote_subnet=remote_subnet,
+            status=status,
+            vpn_gateway_id=vpn_gateway_id,
+            ike_configs=ike_configs,
+            ipsec_configs=ipsec_configs,
+            vco_health_checks=vco_health_checks,
+            vpn_bgp_configs=vpn_bgp_configs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[str] = None,
+             customer_gateway_id: Optional[str] = None,
+             effect_immediately: Optional[bool] = None,
+             enable_dpd: Optional[bool] = None,
+             enable_nat_traversal: Optional[bool] = None,
+             id: Optional[str] = None,
+             local_subnet: Optional[str] = None,
+             name: Optional[str] = None,
+             remote_subnet: Optional[str] = None,
+             status: Optional[str] = None,
+             vpn_gateway_id: Optional[str] = None,
+             ike_configs: Optional[Sequence['outputs.GetConnectionsConnectionIkeConfigResult']] = None,
+             ipsec_configs: Optional[Sequence['outputs.GetConnectionsConnectionIpsecConfigResult']] = None,
+             vco_health_checks: Optional[Sequence['outputs.GetConnectionsConnectionVcoHealthCheckResult']] = None,
+             vpn_bgp_configs: Optional[Sequence['outputs.GetConnectionsConnectionVpnBgpConfigResult']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if customer_gateway_id is None and 'customerGatewayId' in kwargs:
+            customer_gateway_id = kwargs['customerGatewayId']
+        if customer_gateway_id is None:
+            raise TypeError("Missing 'customer_gateway_id' argument")
+        if effect_immediately is None and 'effectImmediately' in kwargs:
+            effect_immediately = kwargs['effectImmediately']
+        if effect_immediately is None:
+            raise TypeError("Missing 'effect_immediately' argument")
+        if enable_dpd is None and 'enableDpd' in kwargs:
+            enable_dpd = kwargs['enableDpd']
+        if enable_dpd is None:
+            raise TypeError("Missing 'enable_dpd' argument")
+        if enable_nat_traversal is None and 'enableNatTraversal' in kwargs:
+            enable_nat_traversal = kwargs['enableNatTraversal']
+        if enable_nat_traversal is None:
+            raise TypeError("Missing 'enable_nat_traversal' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if local_subnet is None and 'localSubnet' in kwargs:
+            local_subnet = kwargs['localSubnet']
+        if local_subnet is None:
+            raise TypeError("Missing 'local_subnet' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if remote_subnet is None and 'remoteSubnet' in kwargs:
+            remote_subnet = kwargs['remoteSubnet']
+        if remote_subnet is None:
+            raise TypeError("Missing 'remote_subnet' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vpn_gateway_id is None and 'vpnGatewayId' in kwargs:
+            vpn_gateway_id = kwargs['vpnGatewayId']
+        if vpn_gateway_id is None:
+            raise TypeError("Missing 'vpn_gateway_id' argument")
+        if ike_configs is None and 'ikeConfigs' in kwargs:
+            ike_configs = kwargs['ikeConfigs']
+        if ipsec_configs is None and 'ipsecConfigs' in kwargs:
+            ipsec_configs = kwargs['ipsecConfigs']
+        if vco_health_checks is None and 'vcoHealthChecks' in kwargs:
+            vco_health_checks = kwargs['vcoHealthChecks']
+        if vpn_bgp_configs is None and 'vpnBgpConfigs' in kwargs:
+            vpn_bgp_configs = kwargs['vpnBgpConfigs']
+
+        _setter("create_time", create_time)
+        _setter("customer_gateway_id", customer_gateway_id)
+        _setter("effect_immediately", effect_immediately)
+        _setter("enable_dpd", enable_dpd)
+        _setter("enable_nat_traversal", enable_nat_traversal)
+        _setter("id", id)
+        _setter("local_subnet", local_subnet)
+        _setter("name", name)
+        _setter("remote_subnet", remote_subnet)
+        _setter("status", status)
+        _setter("vpn_gateway_id", vpn_gateway_id)
         if ike_configs is not None:
-            pulumi.set(__self__, "ike_configs", ike_configs)
+            _setter("ike_configs", ike_configs)
         if ipsec_configs is not None:
-            pulumi.set(__self__, "ipsec_configs", ipsec_configs)
+            _setter("ipsec_configs", ipsec_configs)
         if vco_health_checks is not None:
-            pulumi.set(__self__, "vco_health_checks", vco_health_checks)
+            _setter("vco_health_checks", vco_health_checks)
         if vpn_bgp_configs is not None:
-            pulumi.set(__self__, "vpn_bgp_configs", vpn_bgp_configs)
+            _setter("vpn_bgp_configs", vpn_bgp_configs)
 
     @property
     @pulumi.getter(name="createTime")
@@ -1181,24 +1554,67 @@ class GetConnectionsConnectionIkeConfigResult(dict):
         :param str ike_version: The version of the IKE protocol.
         :param str psk: Used for authentication between the IPsec VPN gateway and the customer gateway.
         """
+        GetConnectionsConnectionIkeConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ike_auth_alg=ike_auth_alg,
+            ike_enc_alg=ike_enc_alg,
+            ike_lifetime=ike_lifetime,
+            ike_local_id=ike_local_id,
+            ike_mode=ike_mode,
+            ike_pfs=ike_pfs,
+            ike_remote_id=ike_remote_id,
+            ike_version=ike_version,
+            psk=psk,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ike_auth_alg: Optional[str] = None,
+             ike_enc_alg: Optional[str] = None,
+             ike_lifetime: Optional[int] = None,
+             ike_local_id: Optional[str] = None,
+             ike_mode: Optional[str] = None,
+             ike_pfs: Optional[str] = None,
+             ike_remote_id: Optional[str] = None,
+             ike_version: Optional[str] = None,
+             psk: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ike_auth_alg is None and 'ikeAuthAlg' in kwargs:
+            ike_auth_alg = kwargs['ikeAuthAlg']
+        if ike_enc_alg is None and 'ikeEncAlg' in kwargs:
+            ike_enc_alg = kwargs['ikeEncAlg']
+        if ike_lifetime is None and 'ikeLifetime' in kwargs:
+            ike_lifetime = kwargs['ikeLifetime']
+        if ike_local_id is None and 'ikeLocalId' in kwargs:
+            ike_local_id = kwargs['ikeLocalId']
+        if ike_mode is None and 'ikeMode' in kwargs:
+            ike_mode = kwargs['ikeMode']
+        if ike_pfs is None and 'ikePfs' in kwargs:
+            ike_pfs = kwargs['ikePfs']
+        if ike_remote_id is None and 'ikeRemoteId' in kwargs:
+            ike_remote_id = kwargs['ikeRemoteId']
+        if ike_version is None and 'ikeVersion' in kwargs:
+            ike_version = kwargs['ikeVersion']
+
         if ike_auth_alg is not None:
-            pulumi.set(__self__, "ike_auth_alg", ike_auth_alg)
+            _setter("ike_auth_alg", ike_auth_alg)
         if ike_enc_alg is not None:
-            pulumi.set(__self__, "ike_enc_alg", ike_enc_alg)
+            _setter("ike_enc_alg", ike_enc_alg)
         if ike_lifetime is not None:
-            pulumi.set(__self__, "ike_lifetime", ike_lifetime)
+            _setter("ike_lifetime", ike_lifetime)
         if ike_local_id is not None:
-            pulumi.set(__self__, "ike_local_id", ike_local_id)
+            _setter("ike_local_id", ike_local_id)
         if ike_mode is not None:
-            pulumi.set(__self__, "ike_mode", ike_mode)
+            _setter("ike_mode", ike_mode)
         if ike_pfs is not None:
-            pulumi.set(__self__, "ike_pfs", ike_pfs)
+            _setter("ike_pfs", ike_pfs)
         if ike_remote_id is not None:
-            pulumi.set(__self__, "ike_remote_id", ike_remote_id)
+            _setter("ike_remote_id", ike_remote_id)
         if ike_version is not None:
-            pulumi.set(__self__, "ike_version", ike_version)
+            _setter("ike_version", ike_version)
         if psk is not None:
-            pulumi.set(__self__, "psk", psk)
+            _setter("psk", psk)
 
     @property
     @pulumi.getter(name="ikeAuthAlg")
@@ -1286,14 +1702,39 @@ class GetConnectionsConnectionIpsecConfigResult(dict):
         :param int ipsec_lifetime: The SA lifecycle as the result of phase-two negotiation.
         :param str ipsec_pfs: The Diffie-Hellman key exchange algorithm used by phase-two negotiation.
         """
+        GetConnectionsConnectionIpsecConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ipsec_auth_alg=ipsec_auth_alg,
+            ipsec_enc_alg=ipsec_enc_alg,
+            ipsec_lifetime=ipsec_lifetime,
+            ipsec_pfs=ipsec_pfs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ipsec_auth_alg: Optional[str] = None,
+             ipsec_enc_alg: Optional[str] = None,
+             ipsec_lifetime: Optional[int] = None,
+             ipsec_pfs: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ipsec_auth_alg is None and 'ipsecAuthAlg' in kwargs:
+            ipsec_auth_alg = kwargs['ipsecAuthAlg']
+        if ipsec_enc_alg is None and 'ipsecEncAlg' in kwargs:
+            ipsec_enc_alg = kwargs['ipsecEncAlg']
+        if ipsec_lifetime is None and 'ipsecLifetime' in kwargs:
+            ipsec_lifetime = kwargs['ipsecLifetime']
+        if ipsec_pfs is None and 'ipsecPfs' in kwargs:
+            ipsec_pfs = kwargs['ipsecPfs']
+
         if ipsec_auth_alg is not None:
-            pulumi.set(__self__, "ipsec_auth_alg", ipsec_auth_alg)
+            _setter("ipsec_auth_alg", ipsec_auth_alg)
         if ipsec_enc_alg is not None:
-            pulumi.set(__self__, "ipsec_enc_alg", ipsec_enc_alg)
+            _setter("ipsec_enc_alg", ipsec_enc_alg)
         if ipsec_lifetime is not None:
-            pulumi.set(__self__, "ipsec_lifetime", ipsec_lifetime)
+            _setter("ipsec_lifetime", ipsec_lifetime)
         if ipsec_pfs is not None:
-            pulumi.set(__self__, "ipsec_pfs", ipsec_pfs)
+            _setter("ipsec_pfs", ipsec_pfs)
 
     @property
     @pulumi.getter(name="ipsecAuthAlg")
@@ -1345,18 +1786,39 @@ class GetConnectionsConnectionVcoHealthCheckResult(dict):
         :param str sip: The source ip address.
         :param str status: The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
         """
+        GetConnectionsConnectionVcoHealthCheckResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dip=dip,
+            enable=enable,
+            interval=interval,
+            retry=retry,
+            sip=sip,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dip: Optional[str] = None,
+             enable: Optional[str] = None,
+             interval: Optional[int] = None,
+             retry: Optional[int] = None,
+             sip: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if dip is not None:
-            pulumi.set(__self__, "dip", dip)
+            _setter("dip", dip)
         if enable is not None:
-            pulumi.set(__self__, "enable", enable)
+            _setter("enable", enable)
         if interval is not None:
-            pulumi.set(__self__, "interval", interval)
+            _setter("interval", interval)
         if retry is not None:
-            pulumi.set(__self__, "retry", retry)
+            _setter("retry", retry)
         if sip is not None:
-            pulumi.set(__self__, "sip", sip)
+            _setter("sip", sip)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter
@@ -1426,20 +1888,55 @@ class GetConnectionsConnectionVpnBgpConfigResult(dict):
         :param str status: The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
         :param str tunnel_cidr: The ipsec tunnel segments.
         """
+        GetConnectionsConnectionVpnBgpConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auth_key=auth_key,
+            local_asn=local_asn,
+            local_bgp_ip=local_bgp_ip,
+            peer_asn=peer_asn,
+            peer_bgp_ip=peer_bgp_ip,
+            status=status,
+            tunnel_cidr=tunnel_cidr,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auth_key: Optional[str] = None,
+             local_asn: Optional[int] = None,
+             local_bgp_ip: Optional[str] = None,
+             peer_asn: Optional[int] = None,
+             peer_bgp_ip: Optional[str] = None,
+             status: Optional[str] = None,
+             tunnel_cidr: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auth_key is None and 'authKey' in kwargs:
+            auth_key = kwargs['authKey']
+        if local_asn is None and 'localAsn' in kwargs:
+            local_asn = kwargs['localAsn']
+        if local_bgp_ip is None and 'localBgpIp' in kwargs:
+            local_bgp_ip = kwargs['localBgpIp']
+        if peer_asn is None and 'peerAsn' in kwargs:
+            peer_asn = kwargs['peerAsn']
+        if peer_bgp_ip is None and 'peerBgpIp' in kwargs:
+            peer_bgp_ip = kwargs['peerBgpIp']
+        if tunnel_cidr is None and 'tunnelCidr' in kwargs:
+            tunnel_cidr = kwargs['tunnelCidr']
+
         if auth_key is not None:
-            pulumi.set(__self__, "auth_key", auth_key)
+            _setter("auth_key", auth_key)
         if local_asn is not None:
-            pulumi.set(__self__, "local_asn", local_asn)
+            _setter("local_asn", local_asn)
         if local_bgp_ip is not None:
-            pulumi.set(__self__, "local_bgp_ip", local_bgp_ip)
+            _setter("local_bgp_ip", local_bgp_ip)
         if peer_asn is not None:
-            pulumi.set(__self__, "peer_asn", peer_asn)
+            _setter("peer_asn", peer_asn)
         if peer_bgp_ip is not None:
-            pulumi.set(__self__, "peer_bgp_ip", peer_bgp_ip)
+            _setter("peer_bgp_ip", peer_bgp_ip)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tunnel_cidr is not None:
-            pulumi.set(__self__, "tunnel_cidr", tunnel_cidr)
+            _setter("tunnel_cidr", tunnel_cidr)
 
     @property
     @pulumi.getter(name="authKey")
@@ -1515,12 +2012,49 @@ class GetCustomerGatewaysGatewayResult(dict):
         :param str ip_address: The ip address of the VPN customer gateway.
         :param str name: The name of the VPN customer gateway.
         """
-        pulumi.set(__self__, "asn", asn)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "name", name)
+        GetCustomerGatewaysGatewayResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            asn=asn,
+            create_time=create_time,
+            description=description,
+            id=id,
+            ip_address=ip_address,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             asn: Optional[int] = None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             ip_address: Optional[str] = None,
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if asn is None:
+            raise TypeError("Missing 'asn' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
+        _setter("asn", asn)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("ip_address", ip_address)
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -1594,15 +2128,70 @@ class GetGatewayVcoRoutesRouteResult(dict):
         :param str vpn_connection_id: The id of the vpn connection.
         :param int weight: The weight value of the destination route.
         """
-        pulumi.set(__self__, "as_path", as_path)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "next_hop", next_hop)
-        pulumi.set(__self__, "route_dest", route_dest)
-        pulumi.set(__self__, "source", source)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vpn_connection_id", vpn_connection_id)
-        pulumi.set(__self__, "weight", weight)
+        GetGatewayVcoRoutesRouteResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            as_path=as_path,
+            create_time=create_time,
+            id=id,
+            next_hop=next_hop,
+            route_dest=route_dest,
+            source=source,
+            status=status,
+            vpn_connection_id=vpn_connection_id,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             as_path: Optional[str] = None,
+             create_time: Optional[str] = None,
+             id: Optional[str] = None,
+             next_hop: Optional[str] = None,
+             route_dest: Optional[str] = None,
+             source: Optional[str] = None,
+             status: Optional[str] = None,
+             vpn_connection_id: Optional[str] = None,
+             weight: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if as_path is None and 'asPath' in kwargs:
+            as_path = kwargs['asPath']
+        if as_path is None:
+            raise TypeError("Missing 'as_path' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if next_hop is None and 'nextHop' in kwargs:
+            next_hop = kwargs['nextHop']
+        if next_hop is None:
+            raise TypeError("Missing 'next_hop' argument")
+        if route_dest is None and 'routeDest' in kwargs:
+            route_dest = kwargs['routeDest']
+        if route_dest is None:
+            raise TypeError("Missing 'route_dest' argument")
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vpn_connection_id is None and 'vpnConnectionId' in kwargs:
+            vpn_connection_id = kwargs['vpnConnectionId']
+        if vpn_connection_id is None:
+            raise TypeError("Missing 'vpn_connection_id' argument")
+        if weight is None:
+            raise TypeError("Missing 'weight' argument")
+
+        _setter("as_path", as_path)
+        _setter("create_time", create_time)
+        _setter("id", id)
+        _setter("next_hop", next_hop)
+        _setter("route_dest", route_dest)
+        _setter("source", source)
+        _setter("status", status)
+        _setter("vpn_connection_id", vpn_connection_id)
+        _setter("weight", weight)
 
     @property
     @pulumi.getter(name="asPath")
@@ -1714,22 +2303,123 @@ class GetGatewayVpnAttachmentsAttachmentResult(dict):
         :param str vpn_attachment_name: The name of the IPsec-VPN connection.
         :param str vpn_connection_id: The first ID of the resource.
         """
-        pulumi.set(__self__, "bgp_configs", bgp_configs)
-        pulumi.set(__self__, "connection_status", connection_status)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "customer_gateway_id", customer_gateway_id)
-        pulumi.set(__self__, "effect_immediately", effect_immediately)
-        pulumi.set(__self__, "health_check_configs", health_check_configs)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "ike_configs", ike_configs)
-        pulumi.set(__self__, "internet_ip", internet_ip)
-        pulumi.set(__self__, "ipsec_configs", ipsec_configs)
-        pulumi.set(__self__, "local_subnet", local_subnet)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "remote_subnet", remote_subnet)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vpn_attachment_name", vpn_attachment_name)
-        pulumi.set(__self__, "vpn_connection_id", vpn_connection_id)
+        GetGatewayVpnAttachmentsAttachmentResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bgp_configs=bgp_configs,
+            connection_status=connection_status,
+            create_time=create_time,
+            customer_gateway_id=customer_gateway_id,
+            effect_immediately=effect_immediately,
+            health_check_configs=health_check_configs,
+            id=id,
+            ike_configs=ike_configs,
+            internet_ip=internet_ip,
+            ipsec_configs=ipsec_configs,
+            local_subnet=local_subnet,
+            network_type=network_type,
+            remote_subnet=remote_subnet,
+            status=status,
+            vpn_attachment_name=vpn_attachment_name,
+            vpn_connection_id=vpn_connection_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bgp_configs: Optional[Sequence['outputs.GetGatewayVpnAttachmentsAttachmentBgpConfigResult']] = None,
+             connection_status: Optional[str] = None,
+             create_time: Optional[str] = None,
+             customer_gateway_id: Optional[str] = None,
+             effect_immediately: Optional[bool] = None,
+             health_check_configs: Optional[Sequence['outputs.GetGatewayVpnAttachmentsAttachmentHealthCheckConfigResult']] = None,
+             id: Optional[str] = None,
+             ike_configs: Optional[Sequence['outputs.GetGatewayVpnAttachmentsAttachmentIkeConfigResult']] = None,
+             internet_ip: Optional[str] = None,
+             ipsec_configs: Optional[Sequence['outputs.GetGatewayVpnAttachmentsAttachmentIpsecConfigResult']] = None,
+             local_subnet: Optional[str] = None,
+             network_type: Optional[str] = None,
+             remote_subnet: Optional[str] = None,
+             status: Optional[str] = None,
+             vpn_attachment_name: Optional[str] = None,
+             vpn_connection_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bgp_configs is None and 'bgpConfigs' in kwargs:
+            bgp_configs = kwargs['bgpConfigs']
+        if bgp_configs is None:
+            raise TypeError("Missing 'bgp_configs' argument")
+        if connection_status is None and 'connectionStatus' in kwargs:
+            connection_status = kwargs['connectionStatus']
+        if connection_status is None:
+            raise TypeError("Missing 'connection_status' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if customer_gateway_id is None and 'customerGatewayId' in kwargs:
+            customer_gateway_id = kwargs['customerGatewayId']
+        if customer_gateway_id is None:
+            raise TypeError("Missing 'customer_gateway_id' argument")
+        if effect_immediately is None and 'effectImmediately' in kwargs:
+            effect_immediately = kwargs['effectImmediately']
+        if effect_immediately is None:
+            raise TypeError("Missing 'effect_immediately' argument")
+        if health_check_configs is None and 'healthCheckConfigs' in kwargs:
+            health_check_configs = kwargs['healthCheckConfigs']
+        if health_check_configs is None:
+            raise TypeError("Missing 'health_check_configs' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if ike_configs is None and 'ikeConfigs' in kwargs:
+            ike_configs = kwargs['ikeConfigs']
+        if ike_configs is None:
+            raise TypeError("Missing 'ike_configs' argument")
+        if internet_ip is None and 'internetIp' in kwargs:
+            internet_ip = kwargs['internetIp']
+        if internet_ip is None:
+            raise TypeError("Missing 'internet_ip' argument")
+        if ipsec_configs is None and 'ipsecConfigs' in kwargs:
+            ipsec_configs = kwargs['ipsecConfigs']
+        if ipsec_configs is None:
+            raise TypeError("Missing 'ipsec_configs' argument")
+        if local_subnet is None and 'localSubnet' in kwargs:
+            local_subnet = kwargs['localSubnet']
+        if local_subnet is None:
+            raise TypeError("Missing 'local_subnet' argument")
+        if network_type is None and 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if network_type is None:
+            raise TypeError("Missing 'network_type' argument")
+        if remote_subnet is None and 'remoteSubnet' in kwargs:
+            remote_subnet = kwargs['remoteSubnet']
+        if remote_subnet is None:
+            raise TypeError("Missing 'remote_subnet' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vpn_attachment_name is None and 'vpnAttachmentName' in kwargs:
+            vpn_attachment_name = kwargs['vpnAttachmentName']
+        if vpn_attachment_name is None:
+            raise TypeError("Missing 'vpn_attachment_name' argument")
+        if vpn_connection_id is None and 'vpnConnectionId' in kwargs:
+            vpn_connection_id = kwargs['vpnConnectionId']
+        if vpn_connection_id is None:
+            raise TypeError("Missing 'vpn_connection_id' argument")
+
+        _setter("bgp_configs", bgp_configs)
+        _setter("connection_status", connection_status)
+        _setter("create_time", create_time)
+        _setter("customer_gateway_id", customer_gateway_id)
+        _setter("effect_immediately", effect_immediately)
+        _setter("health_check_configs", health_check_configs)
+        _setter("id", id)
+        _setter("ike_configs", ike_configs)
+        _setter("internet_ip", internet_ip)
+        _setter("ipsec_configs", ipsec_configs)
+        _setter("local_subnet", local_subnet)
+        _setter("network_type", network_type)
+        _setter("remote_subnet", remote_subnet)
+        _setter("status", status)
+        _setter("vpn_attachment_name", vpn_attachment_name)
+        _setter("vpn_connection_id", vpn_connection_id)
 
     @property
     @pulumi.getter(name="bgpConfigs")
@@ -1873,10 +2563,41 @@ class GetGatewayVpnAttachmentsAttachmentBgpConfigResult(dict):
         :param str status: The status of the resource.
         :param str tunnel_cidr: The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
         """
-        pulumi.set(__self__, "local_asn", local_asn)
-        pulumi.set(__self__, "local_bgp_ip", local_bgp_ip)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tunnel_cidr", tunnel_cidr)
+        GetGatewayVpnAttachmentsAttachmentBgpConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            local_asn=local_asn,
+            local_bgp_ip=local_bgp_ip,
+            status=status,
+            tunnel_cidr=tunnel_cidr,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             local_asn: Optional[str] = None,
+             local_bgp_ip: Optional[str] = None,
+             status: Optional[str] = None,
+             tunnel_cidr: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if local_asn is None and 'localAsn' in kwargs:
+            local_asn = kwargs['localAsn']
+        if local_asn is None:
+            raise TypeError("Missing 'local_asn' argument")
+        if local_bgp_ip is None and 'localBgpIp' in kwargs:
+            local_bgp_ip = kwargs['localBgpIp']
+        if local_bgp_ip is None:
+            raise TypeError("Missing 'local_bgp_ip' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tunnel_cidr is None and 'tunnelCidr' in kwargs:
+            tunnel_cidr = kwargs['tunnelCidr']
+        if tunnel_cidr is None:
+            raise TypeError("Missing 'tunnel_cidr' argument")
+
+        _setter("local_asn", local_asn)
+        _setter("local_bgp_ip", local_bgp_ip)
+        _setter("status", status)
+        _setter("tunnel_cidr", tunnel_cidr)
 
     @property
     @pulumi.getter(name="localAsn")
@@ -1930,13 +2651,50 @@ class GetGatewayVpnAttachmentsAttachmentHealthCheckConfigResult(dict):
         :param str sip: The source IP address.
         :param str status: The status of the resource.
         """
-        pulumi.set(__self__, "dip", dip)
-        pulumi.set(__self__, "enable", enable)
-        pulumi.set(__self__, "interval", interval)
-        pulumi.set(__self__, "policy", policy)
-        pulumi.set(__self__, "retry", retry)
-        pulumi.set(__self__, "sip", sip)
-        pulumi.set(__self__, "status", status)
+        GetGatewayVpnAttachmentsAttachmentHealthCheckConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dip=dip,
+            enable=enable,
+            interval=interval,
+            policy=policy,
+            retry=retry,
+            sip=sip,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dip: Optional[str] = None,
+             enable: Optional[bool] = None,
+             interval: Optional[int] = None,
+             policy: Optional[str] = None,
+             retry: Optional[int] = None,
+             sip: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dip is None:
+            raise TypeError("Missing 'dip' argument")
+        if enable is None:
+            raise TypeError("Missing 'enable' argument")
+        if interval is None:
+            raise TypeError("Missing 'interval' argument")
+        if policy is None:
+            raise TypeError("Missing 'policy' argument")
+        if retry is None:
+            raise TypeError("Missing 'retry' argument")
+        if sip is None:
+            raise TypeError("Missing 'sip' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+
+        _setter("dip", dip)
+        _setter("enable", enable)
+        _setter("interval", interval)
+        _setter("policy", policy)
+        _setter("retry", retry)
+        _setter("sip", sip)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -2018,15 +2776,76 @@ class GetGatewayVpnAttachmentsAttachmentIkeConfigResult(dict):
         :param str psk: The pre-shared key.
         :param str remote_id: The identifier of the peer. The default value is the IP address of the VPN gateway. The value can be a fully qualified domain name (FQDN) or an IP address.
         """
-        pulumi.set(__self__, "ike_auth_alg", ike_auth_alg)
-        pulumi.set(__self__, "ike_enc_alg", ike_enc_alg)
-        pulumi.set(__self__, "ike_lifetime", ike_lifetime)
-        pulumi.set(__self__, "ike_mode", ike_mode)
-        pulumi.set(__self__, "ike_pfs", ike_pfs)
-        pulumi.set(__self__, "ike_version", ike_version)
-        pulumi.set(__self__, "local_id", local_id)
-        pulumi.set(__self__, "psk", psk)
-        pulumi.set(__self__, "remote_id", remote_id)
+        GetGatewayVpnAttachmentsAttachmentIkeConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ike_auth_alg=ike_auth_alg,
+            ike_enc_alg=ike_enc_alg,
+            ike_lifetime=ike_lifetime,
+            ike_mode=ike_mode,
+            ike_pfs=ike_pfs,
+            ike_version=ike_version,
+            local_id=local_id,
+            psk=psk,
+            remote_id=remote_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ike_auth_alg: Optional[str] = None,
+             ike_enc_alg: Optional[str] = None,
+             ike_lifetime: Optional[str] = None,
+             ike_mode: Optional[str] = None,
+             ike_pfs: Optional[str] = None,
+             ike_version: Optional[str] = None,
+             local_id: Optional[str] = None,
+             psk: Optional[str] = None,
+             remote_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ike_auth_alg is None and 'ikeAuthAlg' in kwargs:
+            ike_auth_alg = kwargs['ikeAuthAlg']
+        if ike_auth_alg is None:
+            raise TypeError("Missing 'ike_auth_alg' argument")
+        if ike_enc_alg is None and 'ikeEncAlg' in kwargs:
+            ike_enc_alg = kwargs['ikeEncAlg']
+        if ike_enc_alg is None:
+            raise TypeError("Missing 'ike_enc_alg' argument")
+        if ike_lifetime is None and 'ikeLifetime' in kwargs:
+            ike_lifetime = kwargs['ikeLifetime']
+        if ike_lifetime is None:
+            raise TypeError("Missing 'ike_lifetime' argument")
+        if ike_mode is None and 'ikeMode' in kwargs:
+            ike_mode = kwargs['ikeMode']
+        if ike_mode is None:
+            raise TypeError("Missing 'ike_mode' argument")
+        if ike_pfs is None and 'ikePfs' in kwargs:
+            ike_pfs = kwargs['ikePfs']
+        if ike_pfs is None:
+            raise TypeError("Missing 'ike_pfs' argument")
+        if ike_version is None and 'ikeVersion' in kwargs:
+            ike_version = kwargs['ikeVersion']
+        if ike_version is None:
+            raise TypeError("Missing 'ike_version' argument")
+        if local_id is None and 'localId' in kwargs:
+            local_id = kwargs['localId']
+        if local_id is None:
+            raise TypeError("Missing 'local_id' argument")
+        if psk is None:
+            raise TypeError("Missing 'psk' argument")
+        if remote_id is None and 'remoteId' in kwargs:
+            remote_id = kwargs['remoteId']
+        if remote_id is None:
+            raise TypeError("Missing 'remote_id' argument")
+
+        _setter("ike_auth_alg", ike_auth_alg)
+        _setter("ike_enc_alg", ike_enc_alg)
+        _setter("ike_lifetime", ike_lifetime)
+        _setter("ike_mode", ike_mode)
+        _setter("ike_pfs", ike_pfs)
+        _setter("ike_version", ike_version)
+        _setter("local_id", local_id)
+        _setter("psk", psk)
+        _setter("remote_id", remote_id)
 
     @property
     @pulumi.getter(name="ikeAuthAlg")
@@ -2114,10 +2933,43 @@ class GetGatewayVpnAttachmentsAttachmentIpsecConfigResult(dict):
         :param str ipsec_lifetime: The IPsec lifetime. Unit: seconds.
         :param str ipsec_pfs: The DH group.
         """
-        pulumi.set(__self__, "ipsec_auth_alg", ipsec_auth_alg)
-        pulumi.set(__self__, "ipsec_enc_alg", ipsec_enc_alg)
-        pulumi.set(__self__, "ipsec_lifetime", ipsec_lifetime)
-        pulumi.set(__self__, "ipsec_pfs", ipsec_pfs)
+        GetGatewayVpnAttachmentsAttachmentIpsecConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ipsec_auth_alg=ipsec_auth_alg,
+            ipsec_enc_alg=ipsec_enc_alg,
+            ipsec_lifetime=ipsec_lifetime,
+            ipsec_pfs=ipsec_pfs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ipsec_auth_alg: Optional[str] = None,
+             ipsec_enc_alg: Optional[str] = None,
+             ipsec_lifetime: Optional[str] = None,
+             ipsec_pfs: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ipsec_auth_alg is None and 'ipsecAuthAlg' in kwargs:
+            ipsec_auth_alg = kwargs['ipsecAuthAlg']
+        if ipsec_auth_alg is None:
+            raise TypeError("Missing 'ipsec_auth_alg' argument")
+        if ipsec_enc_alg is None and 'ipsecEncAlg' in kwargs:
+            ipsec_enc_alg = kwargs['ipsecEncAlg']
+        if ipsec_enc_alg is None:
+            raise TypeError("Missing 'ipsec_enc_alg' argument")
+        if ipsec_lifetime is None and 'ipsecLifetime' in kwargs:
+            ipsec_lifetime = kwargs['ipsecLifetime']
+        if ipsec_lifetime is None:
+            raise TypeError("Missing 'ipsec_lifetime' argument")
+        if ipsec_pfs is None and 'ipsecPfs' in kwargs:
+            ipsec_pfs = kwargs['ipsecPfs']
+        if ipsec_pfs is None:
+            raise TypeError("Missing 'ipsec_pfs' argument")
+
+        _setter("ipsec_auth_alg", ipsec_auth_alg)
+        _setter("ipsec_enc_alg", ipsec_enc_alg)
+        _setter("ipsec_lifetime", ipsec_lifetime)
+        _setter("ipsec_pfs", ipsec_pfs)
 
     @property
     @pulumi.getter(name="ipsecAuthAlg")
@@ -2189,22 +3041,117 @@ class GetGatewaysGatewayResult(dict):
         :param str status: Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
         :param str vpc_id: Use the VPC ID as the search key.
         """
-        pulumi.set(__self__, "auto_propagate", auto_propagate)
-        pulumi.set(__self__, "business_status", business_status)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "enable_ipsec", enable_ipsec)
-        pulumi.set(__self__, "enable_ssl", enable_ssl)
-        pulumi.set(__self__, "end_time", end_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_charge_type", instance_charge_type)
-        pulumi.set(__self__, "internet_ip", internet_ip)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "specification", specification)
-        pulumi.set(__self__, "ssl_connections", ssl_connections)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        GetGatewaysGatewayResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_propagate=auto_propagate,
+            business_status=business_status,
+            create_time=create_time,
+            description=description,
+            enable_ipsec=enable_ipsec,
+            enable_ssl=enable_ssl,
+            end_time=end_time,
+            id=id,
+            instance_charge_type=instance_charge_type,
+            internet_ip=internet_ip,
+            name=name,
+            network_type=network_type,
+            specification=specification,
+            ssl_connections=ssl_connections,
+            status=status,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_propagate: Optional[str] = None,
+             business_status: Optional[str] = None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             enable_ipsec: Optional[str] = None,
+             enable_ssl: Optional[str] = None,
+             end_time: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_charge_type: Optional[str] = None,
+             internet_ip: Optional[str] = None,
+             name: Optional[str] = None,
+             network_type: Optional[str] = None,
+             specification: Optional[str] = None,
+             ssl_connections: Optional[int] = None,
+             status: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_propagate is None and 'autoPropagate' in kwargs:
+            auto_propagate = kwargs['autoPropagate']
+        if auto_propagate is None:
+            raise TypeError("Missing 'auto_propagate' argument")
+        if business_status is None and 'businessStatus' in kwargs:
+            business_status = kwargs['businessStatus']
+        if business_status is None:
+            raise TypeError("Missing 'business_status' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if enable_ipsec is None and 'enableIpsec' in kwargs:
+            enable_ipsec = kwargs['enableIpsec']
+        if enable_ipsec is None:
+            raise TypeError("Missing 'enable_ipsec' argument")
+        if enable_ssl is None and 'enableSsl' in kwargs:
+            enable_ssl = kwargs['enableSsl']
+        if enable_ssl is None:
+            raise TypeError("Missing 'enable_ssl' argument")
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if end_time is None:
+            raise TypeError("Missing 'end_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if instance_charge_type is None:
+            raise TypeError("Missing 'instance_charge_type' argument")
+        if internet_ip is None and 'internetIp' in kwargs:
+            internet_ip = kwargs['internetIp']
+        if internet_ip is None:
+            raise TypeError("Missing 'internet_ip' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if network_type is None and 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if network_type is None:
+            raise TypeError("Missing 'network_type' argument")
+        if specification is None:
+            raise TypeError("Missing 'specification' argument")
+        if ssl_connections is None and 'sslConnections' in kwargs:
+            ssl_connections = kwargs['sslConnections']
+        if ssl_connections is None:
+            raise TypeError("Missing 'ssl_connections' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+
+        _setter("auto_propagate", auto_propagate)
+        _setter("business_status", business_status)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("enable_ipsec", enable_ipsec)
+        _setter("enable_ssl", enable_ssl)
+        _setter("end_time", end_time)
+        _setter("id", id)
+        _setter("instance_charge_type", instance_charge_type)
+        _setter("internet_ip", internet_ip)
+        _setter("name", name)
+        _setter("network_type", network_type)
+        _setter("specification", specification)
+        _setter("ssl_connections", ssl_connections)
+        _setter("status", status)
+        _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="autoPropagate")

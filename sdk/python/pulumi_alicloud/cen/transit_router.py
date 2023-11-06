@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TransitRouterArgs', 'TransitRouter']
@@ -29,17 +29,50 @@ class TransitRouterArgs:
         :param pulumi.Input[str] transit_router_description: The description of the transit router.
         :param pulumi.Input[str] transit_router_name: The name of the transit router.
         """
-        pulumi.set(__self__, "cen_id", cen_id)
+        TransitRouterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cen_id=cen_id,
+            dry_run=dry_run,
+            support_multicast=support_multicast,
+            tags=tags,
+            transit_router_description=transit_router_description,
+            transit_router_name=transit_router_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cen_id: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             support_multicast: Optional[pulumi.Input[bool]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             transit_router_description: Optional[pulumi.Input[str]] = None,
+             transit_router_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cen_id is None and 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if cen_id is None:
+            raise TypeError("Missing 'cen_id' argument")
+        if dry_run is None and 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if support_multicast is None and 'supportMulticast' in kwargs:
+            support_multicast = kwargs['supportMulticast']
+        if transit_router_description is None and 'transitRouterDescription' in kwargs:
+            transit_router_description = kwargs['transitRouterDescription']
+        if transit_router_name is None and 'transitRouterName' in kwargs:
+            transit_router_name = kwargs['transitRouterName']
+
+        _setter("cen_id", cen_id)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if support_multicast is not None:
-            pulumi.set(__self__, "support_multicast", support_multicast)
+            _setter("support_multicast", support_multicast)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if transit_router_description is not None:
-            pulumi.set(__self__, "transit_router_description", transit_router_description)
+            _setter("transit_router_description", transit_router_description)
         if transit_router_name is not None:
-            pulumi.set(__self__, "transit_router_name", transit_router_name)
+            _setter("transit_router_name", transit_router_name)
 
     @property
     @pulumi.getter(name="cenId")
@@ -138,24 +171,63 @@ class _TransitRouterState:
         :param pulumi.Input[str] transit_router_name: The name of the transit router.
         :param pulumi.Input[str] type: The Type of the Transit Router. Valid values: `Enterprise`, `Basic`.
         """
+        _TransitRouterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cen_id=cen_id,
+            dry_run=dry_run,
+            status=status,
+            support_multicast=support_multicast,
+            tags=tags,
+            transit_router_description=transit_router_description,
+            transit_router_id=transit_router_id,
+            transit_router_name=transit_router_name,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cen_id: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             support_multicast: Optional[pulumi.Input[bool]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             transit_router_description: Optional[pulumi.Input[str]] = None,
+             transit_router_id: Optional[pulumi.Input[str]] = None,
+             transit_router_name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cen_id is None and 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if dry_run is None and 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if support_multicast is None and 'supportMulticast' in kwargs:
+            support_multicast = kwargs['supportMulticast']
+        if transit_router_description is None and 'transitRouterDescription' in kwargs:
+            transit_router_description = kwargs['transitRouterDescription']
+        if transit_router_id is None and 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+        if transit_router_name is None and 'transitRouterName' in kwargs:
+            transit_router_name = kwargs['transitRouterName']
+
         if cen_id is not None:
-            pulumi.set(__self__, "cen_id", cen_id)
+            _setter("cen_id", cen_id)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if support_multicast is not None:
-            pulumi.set(__self__, "support_multicast", support_multicast)
+            _setter("support_multicast", support_multicast)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if transit_router_description is not None:
-            pulumi.set(__self__, "transit_router_description", transit_router_description)
+            _setter("transit_router_description", transit_router_description)
         if transit_router_id is not None:
-            pulumi.set(__self__, "transit_router_id", transit_router_id)
+            _setter("transit_router_id", transit_router_id)
         if transit_router_name is not None:
-            pulumi.set(__self__, "transit_router_name", transit_router_name)
+            _setter("transit_router_name", transit_router_name)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="cenId")
@@ -361,6 +433,10 @@ class TransitRouter(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TransitRouterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

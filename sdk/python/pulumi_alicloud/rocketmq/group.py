@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['GroupArgs', 'Group']
@@ -33,22 +33,57 @@ class GroupArgs:
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         """
-        pulumi.set(__self__, "instance_id", instance_id)
+        GroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_id=instance_id,
+            group_id=group_id,
+            group_name=group_name,
+            group_type=group_type,
+            read_enable=read_enable,
+            remark=remark,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_id: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             group_name: Optional[pulumi.Input[str]] = None,
+             group_type: Optional[pulumi.Input[str]] = None,
+             read_enable: Optional[pulumi.Input[bool]] = None,
+             remark: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if group_name is None and 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if group_type is None and 'groupType' in kwargs:
+            group_type = kwargs['groupType']
+        if read_enable is None and 'readEnable' in kwargs:
+            read_enable = kwargs['readEnable']
+
+        _setter("instance_id", instance_id)
         if group_id is not None:
             warnings.warn("""Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""group_id is deprecated: Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""")
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if group_name is not None:
-            pulumi.set(__self__, "group_name", group_name)
+            _setter("group_name", group_name)
         if group_type is not None:
-            pulumi.set(__self__, "group_type", group_type)
+            _setter("group_type", group_type)
         if read_enable is not None:
-            pulumi.set(__self__, "read_enable", read_enable)
+            _setter("read_enable", read_enable)
         if remark is not None:
-            pulumi.set(__self__, "remark", remark)
+            _setter("remark", remark)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -162,23 +197,56 @@ class _GroupState:
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         """
+        _GroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_id=group_id,
+            group_name=group_name,
+            group_type=group_type,
+            instance_id=instance_id,
+            read_enable=read_enable,
+            remark=remark,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_id: Optional[pulumi.Input[str]] = None,
+             group_name: Optional[pulumi.Input[str]] = None,
+             group_type: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             read_enable: Optional[pulumi.Input[bool]] = None,
+             remark: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if group_name is None and 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if group_type is None and 'groupType' in kwargs:
+            group_type = kwargs['groupType']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if read_enable is None and 'readEnable' in kwargs:
+            read_enable = kwargs['readEnable']
+
         if group_id is not None:
             warnings.warn("""Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""group_id is deprecated: Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""")
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if group_name is not None:
-            pulumi.set(__self__, "group_name", group_name)
+            _setter("group_name", group_name)
         if group_type is not None:
-            pulumi.set(__self__, "group_type", group_type)
+            _setter("group_type", group_type)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if read_enable is not None:
-            pulumi.set(__self__, "read_enable", read_enable)
+            _setter("read_enable", read_enable)
         if remark is not None:
-            pulumi.set(__self__, "remark", remark)
+            _setter("remark", remark)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="groupId")
@@ -385,6 +453,10 @@ class Group(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

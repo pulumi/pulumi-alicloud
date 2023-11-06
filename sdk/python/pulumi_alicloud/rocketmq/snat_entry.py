@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SnatEntryArgs', 'SnatEntry']
@@ -23,9 +23,36 @@ class SnatEntryArgs:
         :param pulumi.Input[str] sag_id: The ID of the SAG instance.
         :param pulumi.Input[str] snat_ip: The public IP address.
         """
-        pulumi.set(__self__, "cidr_block", cidr_block)
-        pulumi.set(__self__, "sag_id", sag_id)
-        pulumi.set(__self__, "snat_ip", snat_ip)
+        SnatEntryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_block=cidr_block,
+            sag_id=sag_id,
+            snat_ip=snat_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_block: Optional[pulumi.Input[str]] = None,
+             sag_id: Optional[pulumi.Input[str]] = None,
+             snat_ip: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cidr_block is None and 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if cidr_block is None:
+            raise TypeError("Missing 'cidr_block' argument")
+        if sag_id is None and 'sagId' in kwargs:
+            sag_id = kwargs['sagId']
+        if sag_id is None:
+            raise TypeError("Missing 'sag_id' argument")
+        if snat_ip is None and 'snatIp' in kwargs:
+            snat_ip = kwargs['snatIp']
+        if snat_ip is None:
+            raise TypeError("Missing 'snat_ip' argument")
+
+        _setter("cidr_block", cidr_block)
+        _setter("sag_id", sag_id)
+        _setter("snat_ip", snat_ip)
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -76,12 +103,33 @@ class _SnatEntryState:
         :param pulumi.Input[str] sag_id: The ID of the SAG instance.
         :param pulumi.Input[str] snat_ip: The public IP address.
         """
+        _SnatEntryState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_block=cidr_block,
+            sag_id=sag_id,
+            snat_ip=snat_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_block: Optional[pulumi.Input[str]] = None,
+             sag_id: Optional[pulumi.Input[str]] = None,
+             snat_ip: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cidr_block is None and 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if sag_id is None and 'sagId' in kwargs:
+            sag_id = kwargs['sagId']
+        if snat_ip is None and 'snatIp' in kwargs:
+            snat_ip = kwargs['snatIp']
+
         if cidr_block is not None:
-            pulumi.set(__self__, "cidr_block", cidr_block)
+            _setter("cidr_block", cidr_block)
         if sag_id is not None:
-            pulumi.set(__self__, "sag_id", sag_id)
+            _setter("sag_id", sag_id)
         if snat_ip is not None:
-            pulumi.set(__self__, "snat_ip", snat_ip)
+            _setter("snat_ip", snat_ip)
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -221,6 +269,10 @@ class SnatEntry(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SnatEntryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

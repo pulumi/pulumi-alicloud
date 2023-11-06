@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -33,12 +33,49 @@ class GetConfigsConfigResult(dict):
         :param str id: The ID of the Config.
         :param str value: The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different.
         """
-        pulumi.set(__self__, "code", code)
-        pulumi.set(__self__, "config_id", config_id)
-        pulumi.set(__self__, "default_value", default_value)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "value", value)
+        GetConfigsConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            code=code,
+            config_id=config_id,
+            default_value=default_value,
+            description=description,
+            id=id,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             code: Optional[str] = None,
+             config_id: Optional[str] = None,
+             default_value: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if code is None:
+            raise TypeError("Missing 'code' argument")
+        if config_id is None and 'configId' in kwargs:
+            config_id = kwargs['configId']
+        if config_id is None:
+            raise TypeError("Missing 'config_id' argument")
+        if default_value is None and 'defaultValue' in kwargs:
+            default_value = kwargs['defaultValue']
+        if default_value is None:
+            raise TypeError("Missing 'default_value' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
+        _setter("code", code)
+        _setter("config_id", config_id)
+        _setter("default_value", default_value)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -116,17 +153,88 @@ class GetDataLimitsLimitResult(dict):
         :param str resource_type: The type of the service to which the data asset belongs.
         :param str user_name: The name of the user who owns the data asset.
         """
-        pulumi.set(__self__, "audit_status", audit_status)
-        pulumi.set(__self__, "check_status", check_status)
-        pulumi.set(__self__, "data_limit_id", data_limit_id)
-        pulumi.set(__self__, "engine_type", engine_type)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "local_name", local_name)
-        pulumi.set(__self__, "log_store_day", log_store_day)
-        pulumi.set(__self__, "parent_id", parent_id)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "resource_type", resource_type)
-        pulumi.set(__self__, "user_name", user_name)
+        GetDataLimitsLimitResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            audit_status=audit_status,
+            check_status=check_status,
+            data_limit_id=data_limit_id,
+            engine_type=engine_type,
+            id=id,
+            local_name=local_name,
+            log_store_day=log_store_day,
+            parent_id=parent_id,
+            port=port,
+            resource_type=resource_type,
+            user_name=user_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             audit_status: Optional[int] = None,
+             check_status: Optional[int] = None,
+             data_limit_id: Optional[str] = None,
+             engine_type: Optional[str] = None,
+             id: Optional[str] = None,
+             local_name: Optional[str] = None,
+             log_store_day: Optional[int] = None,
+             parent_id: Optional[str] = None,
+             port: Optional[int] = None,
+             resource_type: Optional[str] = None,
+             user_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if audit_status is None and 'auditStatus' in kwargs:
+            audit_status = kwargs['auditStatus']
+        if audit_status is None:
+            raise TypeError("Missing 'audit_status' argument")
+        if check_status is None and 'checkStatus' in kwargs:
+            check_status = kwargs['checkStatus']
+        if check_status is None:
+            raise TypeError("Missing 'check_status' argument")
+        if data_limit_id is None and 'dataLimitId' in kwargs:
+            data_limit_id = kwargs['dataLimitId']
+        if data_limit_id is None:
+            raise TypeError("Missing 'data_limit_id' argument")
+        if engine_type is None and 'engineType' in kwargs:
+            engine_type = kwargs['engineType']
+        if engine_type is None:
+            raise TypeError("Missing 'engine_type' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if local_name is None and 'localName' in kwargs:
+            local_name = kwargs['localName']
+        if local_name is None:
+            raise TypeError("Missing 'local_name' argument")
+        if log_store_day is None and 'logStoreDay' in kwargs:
+            log_store_day = kwargs['logStoreDay']
+        if log_store_day is None:
+            raise TypeError("Missing 'log_store_day' argument")
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if parent_id is None:
+            raise TypeError("Missing 'parent_id' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if resource_type is None and 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+        if resource_type is None:
+            raise TypeError("Missing 'resource_type' argument")
+        if user_name is None and 'userName' in kwargs:
+            user_name = kwargs['userName']
+        if user_name is None:
+            raise TypeError("Missing 'user_name' argument")
+
+        _setter("audit_status", audit_status)
+        _setter("check_status", check_status)
+        _setter("data_limit_id", data_limit_id)
+        _setter("engine_type", engine_type)
+        _setter("id", id)
+        _setter("local_name", local_name)
+        _setter("log_store_day", log_store_day)
+        _setter("parent_id", parent_id)
+        _setter("port", port)
+        _setter("resource_type", resource_type)
+        _setter("user_name", user_name)
 
     @property
     @pulumi.getter(name="auditStatus")
@@ -241,16 +349,79 @@ class GetInstancesInstanceResult(dict):
         :param bool rds_set: Whether the authorized rds assets.
         :param str status: The status of the resource.
         """
-        pulumi.set(__self__, "authed", authed)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_num", instance_num)
-        pulumi.set(__self__, "odps_set", odps_set)
-        pulumi.set(__self__, "oss_bucket_set", oss_bucket_set)
-        pulumi.set(__self__, "oss_size", oss_size)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "rds_set", rds_set)
-        pulumi.set(__self__, "status", status)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            authed=authed,
+            id=id,
+            instance_id=instance_id,
+            instance_num=instance_num,
+            odps_set=odps_set,
+            oss_bucket_set=oss_bucket_set,
+            oss_size=oss_size,
+            payment_type=payment_type,
+            rds_set=rds_set,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             authed: Optional[bool] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             instance_num: Optional[str] = None,
+             odps_set: Optional[bool] = None,
+             oss_bucket_set: Optional[bool] = None,
+             oss_size: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             rds_set: Optional[bool] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if authed is None:
+            raise TypeError("Missing 'authed' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_num is None and 'instanceNum' in kwargs:
+            instance_num = kwargs['instanceNum']
+        if instance_num is None:
+            raise TypeError("Missing 'instance_num' argument")
+        if odps_set is None and 'odpsSet' in kwargs:
+            odps_set = kwargs['odpsSet']
+        if odps_set is None:
+            raise TypeError("Missing 'odps_set' argument")
+        if oss_bucket_set is None and 'ossBucketSet' in kwargs:
+            oss_bucket_set = kwargs['ossBucketSet']
+        if oss_bucket_set is None:
+            raise TypeError("Missing 'oss_bucket_set' argument")
+        if oss_size is None and 'ossSize' in kwargs:
+            oss_size = kwargs['ossSize']
+        if oss_size is None:
+            raise TypeError("Missing 'oss_size' argument")
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if rds_set is None and 'rdsSet' in kwargs:
+            rds_set = kwargs['rdsSet']
+        if rds_set is None:
+            raise TypeError("Missing 'rds_set' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+
+        _setter("authed", authed)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("instance_num", instance_num)
+        _setter("odps_set", odps_set)
+        _setter("oss_bucket_set", oss_bucket_set)
+        _setter("oss_size", oss_size)
+        _setter("payment_type", payment_type)
+        _setter("rds_set", rds_set)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -381,29 +552,162 @@ class GetRulesRuleResult(dict):
         :param str user_id: The User ID.
         :param int warn_level: The Level of Risk.
         """
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "category_name", category_name)
-        pulumi.set(__self__, "content", content)
-        pulumi.set(__self__, "content_category", content_category)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "custom_type", custom_type)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "gmt_modified", gmt_modified)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "login_name", login_name)
-        pulumi.set(__self__, "major_key", major_key)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "product_code", product_code)
-        pulumi.set(__self__, "product_id", product_id)
-        pulumi.set(__self__, "risk_level_id", risk_level_id)
-        pulumi.set(__self__, "risk_level_name", risk_level_name)
-        pulumi.set(__self__, "rule_id", rule_id)
-        pulumi.set(__self__, "stat_express", stat_express)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "target", target)
-        pulumi.set(__self__, "user_id", user_id)
-        pulumi.set(__self__, "warn_level", warn_level)
+        GetRulesRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            category_name=category_name,
+            content=content,
+            content_category=content_category,
+            create_time=create_time,
+            custom_type=custom_type,
+            description=description,
+            display_name=display_name,
+            gmt_modified=gmt_modified,
+            id=id,
+            login_name=login_name,
+            major_key=major_key,
+            name=name,
+            product_code=product_code,
+            product_id=product_id,
+            risk_level_id=risk_level_id,
+            risk_level_name=risk_level_name,
+            rule_id=rule_id,
+            stat_express=stat_express,
+            status=status,
+            target=target,
+            user_id=user_id,
+            warn_level=warn_level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: Optional[int] = None,
+             category_name: Optional[str] = None,
+             content: Optional[str] = None,
+             content_category: Optional[str] = None,
+             create_time: Optional[str] = None,
+             custom_type: Optional[int] = None,
+             description: Optional[str] = None,
+             display_name: Optional[str] = None,
+             gmt_modified: Optional[str] = None,
+             id: Optional[str] = None,
+             login_name: Optional[str] = None,
+             major_key: Optional[str] = None,
+             name: Optional[str] = None,
+             product_code: Optional[str] = None,
+             product_id: Optional[str] = None,
+             risk_level_id: Optional[str] = None,
+             risk_level_name: Optional[str] = None,
+             rule_id: Optional[str] = None,
+             stat_express: Optional[str] = None,
+             status: Optional[int] = None,
+             target: Optional[str] = None,
+             user_id: Optional[str] = None,
+             warn_level: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if category_name is None and 'categoryName' in kwargs:
+            category_name = kwargs['categoryName']
+        if category_name is None:
+            raise TypeError("Missing 'category_name' argument")
+        if content is None:
+            raise TypeError("Missing 'content' argument")
+        if content_category is None and 'contentCategory' in kwargs:
+            content_category = kwargs['contentCategory']
+        if content_category is None:
+            raise TypeError("Missing 'content_category' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if custom_type is None and 'customType' in kwargs:
+            custom_type = kwargs['customType']
+        if custom_type is None:
+            raise TypeError("Missing 'custom_type' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if gmt_modified is None and 'gmtModified' in kwargs:
+            gmt_modified = kwargs['gmtModified']
+        if gmt_modified is None:
+            raise TypeError("Missing 'gmt_modified' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if login_name is None and 'loginName' in kwargs:
+            login_name = kwargs['loginName']
+        if login_name is None:
+            raise TypeError("Missing 'login_name' argument")
+        if major_key is None and 'majorKey' in kwargs:
+            major_key = kwargs['majorKey']
+        if major_key is None:
+            raise TypeError("Missing 'major_key' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if product_code is None and 'productCode' in kwargs:
+            product_code = kwargs['productCode']
+        if product_code is None:
+            raise TypeError("Missing 'product_code' argument")
+        if product_id is None and 'productId' in kwargs:
+            product_id = kwargs['productId']
+        if product_id is None:
+            raise TypeError("Missing 'product_id' argument")
+        if risk_level_id is None and 'riskLevelId' in kwargs:
+            risk_level_id = kwargs['riskLevelId']
+        if risk_level_id is None:
+            raise TypeError("Missing 'risk_level_id' argument")
+        if risk_level_name is None and 'riskLevelName' in kwargs:
+            risk_level_name = kwargs['riskLevelName']
+        if risk_level_name is None:
+            raise TypeError("Missing 'risk_level_name' argument")
+        if rule_id is None and 'ruleId' in kwargs:
+            rule_id = kwargs['ruleId']
+        if rule_id is None:
+            raise TypeError("Missing 'rule_id' argument")
+        if stat_express is None and 'statExpress' in kwargs:
+            stat_express = kwargs['statExpress']
+        if stat_express is None:
+            raise TypeError("Missing 'stat_express' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if target is None:
+            raise TypeError("Missing 'target' argument")
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
+        if warn_level is None and 'warnLevel' in kwargs:
+            warn_level = kwargs['warnLevel']
+        if warn_level is None:
+            raise TypeError("Missing 'warn_level' argument")
+
+        _setter("category", category)
+        _setter("category_name", category_name)
+        _setter("content", content)
+        _setter("content_category", content_category)
+        _setter("create_time", create_time)
+        _setter("custom_type", custom_type)
+        _setter("description", description)
+        _setter("display_name", display_name)
+        _setter("gmt_modified", gmt_modified)
+        _setter("id", id)
+        _setter("login_name", login_name)
+        _setter("major_key", major_key)
+        _setter("name", name)
+        _setter("product_code", product_code)
+        _setter("product_id", product_id)
+        _setter("risk_level_id", risk_level_id)
+        _setter("risk_level_name", risk_level_name)
+        _setter("rule_id", rule_id)
+        _setter("stat_express", stat_express)
+        _setter("status", status)
+        _setter("target", target)
+        _setter("user_id", user_id)
+        _setter("warn_level", warn_level)
 
     @property
     @pulumi.getter

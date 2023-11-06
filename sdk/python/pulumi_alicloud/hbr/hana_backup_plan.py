@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['HanaBackupPlanArgs', 'HanaBackupPlan']
@@ -35,18 +35,71 @@ class HanaBackupPlanArgs:
         :param pulumi.Input[str] resource_group_id: The resource attribute field that represents the resource group ID.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Enabled`, `Disabled`.
         """
-        pulumi.set(__self__, "backup_type", backup_type)
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "database_name", database_name)
-        pulumi.set(__self__, "plan_name", plan_name)
-        pulumi.set(__self__, "schedule", schedule)
-        pulumi.set(__self__, "vault_id", vault_id)
+        HanaBackupPlanArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_type=backup_type,
+            cluster_id=cluster_id,
+            database_name=database_name,
+            plan_name=plan_name,
+            schedule=schedule,
+            vault_id=vault_id,
+            backup_prefix=backup_prefix,
+            resource_group_id=resource_group_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_type: Optional[pulumi.Input[str]] = None,
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             database_name: Optional[pulumi.Input[str]] = None,
+             plan_name: Optional[pulumi.Input[str]] = None,
+             schedule: Optional[pulumi.Input[str]] = None,
+             vault_id: Optional[pulumi.Input[str]] = None,
+             backup_prefix: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backup_type is None and 'backupType' in kwargs:
+            backup_type = kwargs['backupType']
+        if backup_type is None:
+            raise TypeError("Missing 'backup_type' argument")
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if database_name is None and 'databaseName' in kwargs:
+            database_name = kwargs['databaseName']
+        if database_name is None:
+            raise TypeError("Missing 'database_name' argument")
+        if plan_name is None and 'planName' in kwargs:
+            plan_name = kwargs['planName']
+        if plan_name is None:
+            raise TypeError("Missing 'plan_name' argument")
+        if schedule is None:
+            raise TypeError("Missing 'schedule' argument")
+        if vault_id is None and 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+        if vault_id is None:
+            raise TypeError("Missing 'vault_id' argument")
+        if backup_prefix is None and 'backupPrefix' in kwargs:
+            backup_prefix = kwargs['backupPrefix']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
+        _setter("backup_type", backup_type)
+        _setter("cluster_id", cluster_id)
+        _setter("database_name", database_name)
+        _setter("plan_name", plan_name)
+        _setter("schedule", schedule)
+        _setter("vault_id", vault_id)
         if backup_prefix is not None:
-            pulumi.set(__self__, "backup_prefix", backup_prefix)
+            _setter("backup_prefix", backup_prefix)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="backupType")
@@ -183,26 +236,71 @@ class _HanaBackupPlanState:
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Enabled`, `Disabled`.
         :param pulumi.Input[str] vault_id: The ID of the backup vault.
         """
+        _HanaBackupPlanState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_prefix=backup_prefix,
+            backup_type=backup_type,
+            cluster_id=cluster_id,
+            database_name=database_name,
+            plan_id=plan_id,
+            plan_name=plan_name,
+            resource_group_id=resource_group_id,
+            schedule=schedule,
+            status=status,
+            vault_id=vault_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_prefix: Optional[pulumi.Input[str]] = None,
+             backup_type: Optional[pulumi.Input[str]] = None,
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             database_name: Optional[pulumi.Input[str]] = None,
+             plan_id: Optional[pulumi.Input[str]] = None,
+             plan_name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             schedule: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             vault_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backup_prefix is None and 'backupPrefix' in kwargs:
+            backup_prefix = kwargs['backupPrefix']
+        if backup_type is None and 'backupType' in kwargs:
+            backup_type = kwargs['backupType']
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if database_name is None and 'databaseName' in kwargs:
+            database_name = kwargs['databaseName']
+        if plan_id is None and 'planId' in kwargs:
+            plan_id = kwargs['planId']
+        if plan_name is None and 'planName' in kwargs:
+            plan_name = kwargs['planName']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if vault_id is None and 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+
         if backup_prefix is not None:
-            pulumi.set(__self__, "backup_prefix", backup_prefix)
+            _setter("backup_prefix", backup_prefix)
         if backup_type is not None:
-            pulumi.set(__self__, "backup_type", backup_type)
+            _setter("backup_type", backup_type)
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if database_name is not None:
-            pulumi.set(__self__, "database_name", database_name)
+            _setter("database_name", database_name)
         if plan_id is not None:
-            pulumi.set(__self__, "plan_id", plan_id)
+            _setter("plan_id", plan_id)
         if plan_name is not None:
-            pulumi.set(__self__, "plan_name", plan_name)
+            _setter("plan_name", plan_name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if schedule is not None:
-            pulumi.set(__self__, "schedule", schedule)
+            _setter("schedule", schedule)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if vault_id is not None:
-            pulumi.set(__self__, "vault_id", vault_id)
+            _setter("vault_id", vault_id)
 
     @property
     @pulumi.getter(name="backupPrefix")
@@ -464,6 +562,10 @@ class HanaBackupPlan(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            HanaBackupPlanArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

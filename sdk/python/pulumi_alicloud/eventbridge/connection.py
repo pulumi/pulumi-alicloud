@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,12 +27,39 @@ class ConnectionArgs:
         :param pulumi.Input['ConnectionAuthParametersArgs'] auth_parameters: The parameters that are configured for authentication. See `auth_parameters` below.
         :param pulumi.Input[str] description: The description of the connection.
         """
-        pulumi.set(__self__, "connection_name", connection_name)
-        pulumi.set(__self__, "network_parameters", network_parameters)
+        ConnectionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connection_name=connection_name,
+            network_parameters=network_parameters,
+            auth_parameters=auth_parameters,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connection_name: Optional[pulumi.Input[str]] = None,
+             network_parameters: Optional[pulumi.Input['ConnectionNetworkParametersArgs']] = None,
+             auth_parameters: Optional[pulumi.Input['ConnectionAuthParametersArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connection_name is None and 'connectionName' in kwargs:
+            connection_name = kwargs['connectionName']
+        if connection_name is None:
+            raise TypeError("Missing 'connection_name' argument")
+        if network_parameters is None and 'networkParameters' in kwargs:
+            network_parameters = kwargs['networkParameters']
+        if network_parameters is None:
+            raise TypeError("Missing 'network_parameters' argument")
+        if auth_parameters is None and 'authParameters' in kwargs:
+            auth_parameters = kwargs['authParameters']
+
+        _setter("connection_name", connection_name)
+        _setter("network_parameters", network_parameters)
         if auth_parameters is not None:
-            pulumi.set(__self__, "auth_parameters", auth_parameters)
+            _setter("auth_parameters", auth_parameters)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="connectionName")
@@ -99,16 +126,43 @@ class _ConnectionState:
         :param pulumi.Input[str] description: The description of the connection.
         :param pulumi.Input['ConnectionNetworkParametersArgs'] network_parameters: The parameters that are configured for the network. See `network_parameters` below.
         """
+        _ConnectionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auth_parameters=auth_parameters,
+            connection_name=connection_name,
+            create_time=create_time,
+            description=description,
+            network_parameters=network_parameters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auth_parameters: Optional[pulumi.Input['ConnectionAuthParametersArgs']] = None,
+             connection_name: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             network_parameters: Optional[pulumi.Input['ConnectionNetworkParametersArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auth_parameters is None and 'authParameters' in kwargs:
+            auth_parameters = kwargs['authParameters']
+        if connection_name is None and 'connectionName' in kwargs:
+            connection_name = kwargs['connectionName']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if network_parameters is None and 'networkParameters' in kwargs:
+            network_parameters = kwargs['networkParameters']
+
         if auth_parameters is not None:
-            pulumi.set(__self__, "auth_parameters", auth_parameters)
+            _setter("auth_parameters", auth_parameters)
         if connection_name is not None:
-            pulumi.set(__self__, "connection_name", connection_name)
+            _setter("connection_name", connection_name)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if network_parameters is not None:
-            pulumi.set(__self__, "network_parameters", network_parameters)
+            _setter("network_parameters", network_parameters)
 
     @property
     @pulumi.getter(name="authParameters")
@@ -378,6 +432,10 @@ class Connection(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ConnectionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -396,11 +454,21 @@ class Connection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectionArgs.__new__(ConnectionArgs)
 
+            if auth_parameters is not None and not isinstance(auth_parameters, ConnectionAuthParametersArgs):
+                auth_parameters = auth_parameters or {}
+                def _setter(key, value):
+                    auth_parameters[key] = value
+                ConnectionAuthParametersArgs._configure(_setter, **auth_parameters)
             __props__.__dict__["auth_parameters"] = auth_parameters
             if connection_name is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_name'")
             __props__.__dict__["connection_name"] = connection_name
             __props__.__dict__["description"] = description
+            if network_parameters is not None and not isinstance(network_parameters, ConnectionNetworkParametersArgs):
+                network_parameters = network_parameters or {}
+                def _setter(key, value):
+                    network_parameters[key] = value
+                ConnectionNetworkParametersArgs._configure(_setter, **network_parameters)
             if network_parameters is None and not opts.urn:
                 raise TypeError("Missing required property 'network_parameters'")
             __props__.__dict__["network_parameters"] = network_parameters

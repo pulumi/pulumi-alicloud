@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['IpSetArgs', 'IpSet']
@@ -28,14 +28,45 @@ class IpSetArgs:
         :param pulumi.Input[str] ip_version: The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
         :param pulumi.Input[str] isp_type: The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
         """
-        pulumi.set(__self__, "accelerate_region_id", accelerate_region_id)
-        pulumi.set(__self__, "accelerator_id", accelerator_id)
+        IpSetArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerate_region_id=accelerate_region_id,
+            accelerator_id=accelerator_id,
+            bandwidth=bandwidth,
+            ip_version=ip_version,
+            isp_type=isp_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerate_region_id: Optional[pulumi.Input[str]] = None,
+             accelerator_id: Optional[pulumi.Input[str]] = None,
+             bandwidth: Optional[pulumi.Input[int]] = None,
+             ip_version: Optional[pulumi.Input[str]] = None,
+             isp_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accelerate_region_id is None and 'accelerateRegionId' in kwargs:
+            accelerate_region_id = kwargs['accelerateRegionId']
+        if accelerate_region_id is None:
+            raise TypeError("Missing 'accelerate_region_id' argument")
+        if accelerator_id is None and 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if accelerator_id is None:
+            raise TypeError("Missing 'accelerator_id' argument")
+        if ip_version is None and 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if isp_type is None and 'ispType' in kwargs:
+            isp_type = kwargs['ispType']
+
+        _setter("accelerate_region_id", accelerate_region_id)
+        _setter("accelerator_id", accelerator_id)
         if bandwidth is not None:
-            pulumi.set(__self__, "bandwidth", bandwidth)
+            _setter("bandwidth", bandwidth)
         if ip_version is not None:
-            pulumi.set(__self__, "ip_version", ip_version)
+            _setter("ip_version", ip_version)
         if isp_type is not None:
-            pulumi.set(__self__, "isp_type", isp_type)
+            _setter("isp_type", isp_type)
 
     @property
     @pulumi.getter(name="accelerateRegionId")
@@ -120,20 +151,53 @@ class _IpSetState:
         :param pulumi.Input[str] isp_type: The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
         :param pulumi.Input[str] status: The status of the acceleration region.
         """
+        _IpSetState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerate_region_id=accelerate_region_id,
+            accelerator_id=accelerator_id,
+            bandwidth=bandwidth,
+            ip_address_lists=ip_address_lists,
+            ip_version=ip_version,
+            isp_type=isp_type,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerate_region_id: Optional[pulumi.Input[str]] = None,
+             accelerator_id: Optional[pulumi.Input[str]] = None,
+             bandwidth: Optional[pulumi.Input[int]] = None,
+             ip_address_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             ip_version: Optional[pulumi.Input[str]] = None,
+             isp_type: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accelerate_region_id is None and 'accelerateRegionId' in kwargs:
+            accelerate_region_id = kwargs['accelerateRegionId']
+        if accelerator_id is None and 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if ip_address_lists is None and 'ipAddressLists' in kwargs:
+            ip_address_lists = kwargs['ipAddressLists']
+        if ip_version is None and 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if isp_type is None and 'ispType' in kwargs:
+            isp_type = kwargs['ispType']
+
         if accelerate_region_id is not None:
-            pulumi.set(__self__, "accelerate_region_id", accelerate_region_id)
+            _setter("accelerate_region_id", accelerate_region_id)
         if accelerator_id is not None:
-            pulumi.set(__self__, "accelerator_id", accelerator_id)
+            _setter("accelerator_id", accelerator_id)
         if bandwidth is not None:
-            pulumi.set(__self__, "bandwidth", bandwidth)
+            _setter("bandwidth", bandwidth)
         if ip_address_lists is not None:
-            pulumi.set(__self__, "ip_address_lists", ip_address_lists)
+            _setter("ip_address_lists", ip_address_lists)
         if ip_version is not None:
-            pulumi.set(__self__, "ip_version", ip_version)
+            _setter("ip_version", ip_version)
         if isp_type is not None:
-            pulumi.set(__self__, "isp_type", isp_type)
+            _setter("isp_type", isp_type)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="accelerateRegionId")
@@ -351,6 +415,10 @@ class IpSet(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            IpSetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SecretArgs', 'Secret']
@@ -47,33 +47,104 @@ class SecretArgs:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] version_stages: ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
         """
-        pulumi.set(__self__, "secret_data", secret_data)
-        pulumi.set(__self__, "secret_name", secret_name)
-        pulumi.set(__self__, "version_id", version_id)
+        SecretArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            secret_data=secret_data,
+            secret_name=secret_name,
+            version_id=version_id,
+            description=description,
+            dkms_instance_id=dkms_instance_id,
+            enable_automatic_rotation=enable_automatic_rotation,
+            encryption_key_id=encryption_key_id,
+            extended_config=extended_config,
+            force_delete_without_recovery=force_delete_without_recovery,
+            recovery_window_in_days=recovery_window_in_days,
+            rotation_interval=rotation_interval,
+            secret_data_type=secret_data_type,
+            secret_type=secret_type,
+            tags=tags,
+            version_stages=version_stages,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             secret_data: Optional[pulumi.Input[str]] = None,
+             secret_name: Optional[pulumi.Input[str]] = None,
+             version_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dkms_instance_id: Optional[pulumi.Input[str]] = None,
+             enable_automatic_rotation: Optional[pulumi.Input[bool]] = None,
+             encryption_key_id: Optional[pulumi.Input[str]] = None,
+             extended_config: Optional[pulumi.Input[str]] = None,
+             force_delete_without_recovery: Optional[pulumi.Input[bool]] = None,
+             recovery_window_in_days: Optional[pulumi.Input[int]] = None,
+             rotation_interval: Optional[pulumi.Input[str]] = None,
+             secret_data_type: Optional[pulumi.Input[str]] = None,
+             secret_type: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             version_stages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if secret_data is None and 'secretData' in kwargs:
+            secret_data = kwargs['secretData']
+        if secret_data is None:
+            raise TypeError("Missing 'secret_data' argument")
+        if secret_name is None and 'secretName' in kwargs:
+            secret_name = kwargs['secretName']
+        if secret_name is None:
+            raise TypeError("Missing 'secret_name' argument")
+        if version_id is None and 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+        if version_id is None:
+            raise TypeError("Missing 'version_id' argument")
+        if dkms_instance_id is None and 'dkmsInstanceId' in kwargs:
+            dkms_instance_id = kwargs['dkmsInstanceId']
+        if enable_automatic_rotation is None and 'enableAutomaticRotation' in kwargs:
+            enable_automatic_rotation = kwargs['enableAutomaticRotation']
+        if encryption_key_id is None and 'encryptionKeyId' in kwargs:
+            encryption_key_id = kwargs['encryptionKeyId']
+        if extended_config is None and 'extendedConfig' in kwargs:
+            extended_config = kwargs['extendedConfig']
+        if force_delete_without_recovery is None and 'forceDeleteWithoutRecovery' in kwargs:
+            force_delete_without_recovery = kwargs['forceDeleteWithoutRecovery']
+        if recovery_window_in_days is None and 'recoveryWindowInDays' in kwargs:
+            recovery_window_in_days = kwargs['recoveryWindowInDays']
+        if rotation_interval is None and 'rotationInterval' in kwargs:
+            rotation_interval = kwargs['rotationInterval']
+        if secret_data_type is None and 'secretDataType' in kwargs:
+            secret_data_type = kwargs['secretDataType']
+        if secret_type is None and 'secretType' in kwargs:
+            secret_type = kwargs['secretType']
+        if version_stages is None and 'versionStages' in kwargs:
+            version_stages = kwargs['versionStages']
+
+        _setter("secret_data", secret_data)
+        _setter("secret_name", secret_name)
+        _setter("version_id", version_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dkms_instance_id is not None:
-            pulumi.set(__self__, "dkms_instance_id", dkms_instance_id)
+            _setter("dkms_instance_id", dkms_instance_id)
         if enable_automatic_rotation is not None:
-            pulumi.set(__self__, "enable_automatic_rotation", enable_automatic_rotation)
+            _setter("enable_automatic_rotation", enable_automatic_rotation)
         if encryption_key_id is not None:
-            pulumi.set(__self__, "encryption_key_id", encryption_key_id)
+            _setter("encryption_key_id", encryption_key_id)
         if extended_config is not None:
-            pulumi.set(__self__, "extended_config", extended_config)
+            _setter("extended_config", extended_config)
         if force_delete_without_recovery is not None:
-            pulumi.set(__self__, "force_delete_without_recovery", force_delete_without_recovery)
+            _setter("force_delete_without_recovery", force_delete_without_recovery)
         if recovery_window_in_days is not None:
-            pulumi.set(__self__, "recovery_window_in_days", recovery_window_in_days)
+            _setter("recovery_window_in_days", recovery_window_in_days)
         if rotation_interval is not None:
-            pulumi.set(__self__, "rotation_interval", rotation_interval)
+            _setter("rotation_interval", rotation_interval)
         if secret_data_type is not None:
-            pulumi.set(__self__, "secret_data_type", secret_data_type)
+            _setter("secret_data_type", secret_data_type)
         if secret_type is not None:
-            pulumi.set(__self__, "secret_type", secret_type)
+            _setter("secret_type", secret_type)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if version_stages is not None:
-            pulumi.set(__self__, "version_stages", version_stages)
+            _setter("version_stages", version_stages)
 
     @property
     @pulumi.getter(name="secretData")
@@ -296,40 +367,111 @@ class _SecretState:
         :param pulumi.Input[str] version_id: The version number of the initial version. Version numbers are unique in each secret object.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] version_stages: ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
         """
+        _SecretState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arn=arn,
+            description=description,
+            dkms_instance_id=dkms_instance_id,
+            enable_automatic_rotation=enable_automatic_rotation,
+            encryption_key_id=encryption_key_id,
+            extended_config=extended_config,
+            force_delete_without_recovery=force_delete_without_recovery,
+            planned_delete_time=planned_delete_time,
+            recovery_window_in_days=recovery_window_in_days,
+            rotation_interval=rotation_interval,
+            secret_data=secret_data,
+            secret_data_type=secret_data_type,
+            secret_name=secret_name,
+            secret_type=secret_type,
+            tags=tags,
+            version_id=version_id,
+            version_stages=version_stages,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arn: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dkms_instance_id: Optional[pulumi.Input[str]] = None,
+             enable_automatic_rotation: Optional[pulumi.Input[bool]] = None,
+             encryption_key_id: Optional[pulumi.Input[str]] = None,
+             extended_config: Optional[pulumi.Input[str]] = None,
+             force_delete_without_recovery: Optional[pulumi.Input[bool]] = None,
+             planned_delete_time: Optional[pulumi.Input[str]] = None,
+             recovery_window_in_days: Optional[pulumi.Input[int]] = None,
+             rotation_interval: Optional[pulumi.Input[str]] = None,
+             secret_data: Optional[pulumi.Input[str]] = None,
+             secret_data_type: Optional[pulumi.Input[str]] = None,
+             secret_name: Optional[pulumi.Input[str]] = None,
+             secret_type: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             version_id: Optional[pulumi.Input[str]] = None,
+             version_stages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dkms_instance_id is None and 'dkmsInstanceId' in kwargs:
+            dkms_instance_id = kwargs['dkmsInstanceId']
+        if enable_automatic_rotation is None and 'enableAutomaticRotation' in kwargs:
+            enable_automatic_rotation = kwargs['enableAutomaticRotation']
+        if encryption_key_id is None and 'encryptionKeyId' in kwargs:
+            encryption_key_id = kwargs['encryptionKeyId']
+        if extended_config is None and 'extendedConfig' in kwargs:
+            extended_config = kwargs['extendedConfig']
+        if force_delete_without_recovery is None and 'forceDeleteWithoutRecovery' in kwargs:
+            force_delete_without_recovery = kwargs['forceDeleteWithoutRecovery']
+        if planned_delete_time is None and 'plannedDeleteTime' in kwargs:
+            planned_delete_time = kwargs['plannedDeleteTime']
+        if recovery_window_in_days is None and 'recoveryWindowInDays' in kwargs:
+            recovery_window_in_days = kwargs['recoveryWindowInDays']
+        if rotation_interval is None and 'rotationInterval' in kwargs:
+            rotation_interval = kwargs['rotationInterval']
+        if secret_data is None and 'secretData' in kwargs:
+            secret_data = kwargs['secretData']
+        if secret_data_type is None and 'secretDataType' in kwargs:
+            secret_data_type = kwargs['secretDataType']
+        if secret_name is None and 'secretName' in kwargs:
+            secret_name = kwargs['secretName']
+        if secret_type is None and 'secretType' in kwargs:
+            secret_type = kwargs['secretType']
+        if version_id is None and 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+        if version_stages is None and 'versionStages' in kwargs:
+            version_stages = kwargs['versionStages']
+
         if arn is not None:
-            pulumi.set(__self__, "arn", arn)
+            _setter("arn", arn)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dkms_instance_id is not None:
-            pulumi.set(__self__, "dkms_instance_id", dkms_instance_id)
+            _setter("dkms_instance_id", dkms_instance_id)
         if enable_automatic_rotation is not None:
-            pulumi.set(__self__, "enable_automatic_rotation", enable_automatic_rotation)
+            _setter("enable_automatic_rotation", enable_automatic_rotation)
         if encryption_key_id is not None:
-            pulumi.set(__self__, "encryption_key_id", encryption_key_id)
+            _setter("encryption_key_id", encryption_key_id)
         if extended_config is not None:
-            pulumi.set(__self__, "extended_config", extended_config)
+            _setter("extended_config", extended_config)
         if force_delete_without_recovery is not None:
-            pulumi.set(__self__, "force_delete_without_recovery", force_delete_without_recovery)
+            _setter("force_delete_without_recovery", force_delete_without_recovery)
         if planned_delete_time is not None:
-            pulumi.set(__self__, "planned_delete_time", planned_delete_time)
+            _setter("planned_delete_time", planned_delete_time)
         if recovery_window_in_days is not None:
-            pulumi.set(__self__, "recovery_window_in_days", recovery_window_in_days)
+            _setter("recovery_window_in_days", recovery_window_in_days)
         if rotation_interval is not None:
-            pulumi.set(__self__, "rotation_interval", rotation_interval)
+            _setter("rotation_interval", rotation_interval)
         if secret_data is not None:
-            pulumi.set(__self__, "secret_data", secret_data)
+            _setter("secret_data", secret_data)
         if secret_data_type is not None:
-            pulumi.set(__self__, "secret_data_type", secret_data_type)
+            _setter("secret_data_type", secret_data_type)
         if secret_name is not None:
-            pulumi.set(__self__, "secret_name", secret_name)
+            _setter("secret_name", secret_name)
         if secret_type is not None:
-            pulumi.set(__self__, "secret_type", secret_type)
+            _setter("secret_type", secret_type)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if version_id is not None:
-            pulumi.set(__self__, "version_id", version_id)
+            _setter("version_id", version_id)
         if version_stages is not None:
-            pulumi.set(__self__, "version_stages", version_stages)
+            _setter("version_stages", version_stages)
 
     @property
     @pulumi.getter
@@ -649,6 +791,10 @@ class Secret(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SecretArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

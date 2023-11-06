@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RdsBackupArgs', 'RdsBackup']
@@ -33,17 +33,52 @@ class RdsBackupArgs:
         :param pulumi.Input[str] db_name: The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
         :param pulumi.Input[bool] remove_from_state: Remove form state when resource cannot be deleted. Valid values: `true` and `false`.
         """
-        pulumi.set(__self__, "db_instance_id", db_instance_id)
+        RdsBackupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_instance_id=db_instance_id,
+            backup_method=backup_method,
+            backup_strategy=backup_strategy,
+            backup_type=backup_type,
+            db_name=db_name,
+            remove_from_state=remove_from_state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_instance_id: Optional[pulumi.Input[str]] = None,
+             backup_method: Optional[pulumi.Input[str]] = None,
+             backup_strategy: Optional[pulumi.Input[str]] = None,
+             backup_type: Optional[pulumi.Input[str]] = None,
+             db_name: Optional[pulumi.Input[str]] = None,
+             remove_from_state: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if db_instance_id is None and 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if db_instance_id is None:
+            raise TypeError("Missing 'db_instance_id' argument")
+        if backup_method is None and 'backupMethod' in kwargs:
+            backup_method = kwargs['backupMethod']
+        if backup_strategy is None and 'backupStrategy' in kwargs:
+            backup_strategy = kwargs['backupStrategy']
+        if backup_type is None and 'backupType' in kwargs:
+            backup_type = kwargs['backupType']
+        if db_name is None and 'dbName' in kwargs:
+            db_name = kwargs['dbName']
+        if remove_from_state is None and 'removeFromState' in kwargs:
+            remove_from_state = kwargs['removeFromState']
+
+        _setter("db_instance_id", db_instance_id)
         if backup_method is not None:
-            pulumi.set(__self__, "backup_method", backup_method)
+            _setter("backup_method", backup_method)
         if backup_strategy is not None:
-            pulumi.set(__self__, "backup_strategy", backup_strategy)
+            _setter("backup_strategy", backup_strategy)
         if backup_type is not None:
-            pulumi.set(__self__, "backup_type", backup_type)
+            _setter("backup_type", backup_type)
         if db_name is not None:
-            pulumi.set(__self__, "db_name", db_name)
+            _setter("db_name", db_name)
         if remove_from_state is not None:
-            pulumi.set(__self__, "remove_from_state", remove_from_state)
+            _setter("remove_from_state", remove_from_state)
 
     @property
     @pulumi.getter(name="dbInstanceId")
@@ -148,22 +183,63 @@ class _RdsBackupState:
         :param pulumi.Input[bool] remove_from_state: Remove form state when resource cannot be deleted. Valid values: `true` and `false`.
         :param pulumi.Input[str] store_status: Indicates whether the data backup file can be deleted. Valid values: `Enabled` and `Disabled`.
         """
+        _RdsBackupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_id=backup_id,
+            backup_method=backup_method,
+            backup_strategy=backup_strategy,
+            backup_type=backup_type,
+            db_instance_id=db_instance_id,
+            db_name=db_name,
+            remove_from_state=remove_from_state,
+            store_status=store_status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_id: Optional[pulumi.Input[str]] = None,
+             backup_method: Optional[pulumi.Input[str]] = None,
+             backup_strategy: Optional[pulumi.Input[str]] = None,
+             backup_type: Optional[pulumi.Input[str]] = None,
+             db_instance_id: Optional[pulumi.Input[str]] = None,
+             db_name: Optional[pulumi.Input[str]] = None,
+             remove_from_state: Optional[pulumi.Input[bool]] = None,
+             store_status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backup_id is None and 'backupId' in kwargs:
+            backup_id = kwargs['backupId']
+        if backup_method is None and 'backupMethod' in kwargs:
+            backup_method = kwargs['backupMethod']
+        if backup_strategy is None and 'backupStrategy' in kwargs:
+            backup_strategy = kwargs['backupStrategy']
+        if backup_type is None and 'backupType' in kwargs:
+            backup_type = kwargs['backupType']
+        if db_instance_id is None and 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if db_name is None and 'dbName' in kwargs:
+            db_name = kwargs['dbName']
+        if remove_from_state is None and 'removeFromState' in kwargs:
+            remove_from_state = kwargs['removeFromState']
+        if store_status is None and 'storeStatus' in kwargs:
+            store_status = kwargs['storeStatus']
+
         if backup_id is not None:
-            pulumi.set(__self__, "backup_id", backup_id)
+            _setter("backup_id", backup_id)
         if backup_method is not None:
-            pulumi.set(__self__, "backup_method", backup_method)
+            _setter("backup_method", backup_method)
         if backup_strategy is not None:
-            pulumi.set(__self__, "backup_strategy", backup_strategy)
+            _setter("backup_strategy", backup_strategy)
         if backup_type is not None:
-            pulumi.set(__self__, "backup_type", backup_type)
+            _setter("backup_type", backup_type)
         if db_instance_id is not None:
-            pulumi.set(__self__, "db_instance_id", db_instance_id)
+            _setter("db_instance_id", db_instance_id)
         if db_name is not None:
-            pulumi.set(__self__, "db_name", db_name)
+            _setter("db_name", db_name)
         if remove_from_state is not None:
-            pulumi.set(__self__, "remove_from_state", remove_from_state)
+            _setter("remove_from_state", remove_from_state)
         if store_status is not None:
-            pulumi.set(__self__, "store_status", store_status)
+            _setter("store_status", store_status)
 
     @property
     @pulumi.getter(name="backupId")
@@ -373,6 +449,10 @@ class RdsBackup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RdsBackupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

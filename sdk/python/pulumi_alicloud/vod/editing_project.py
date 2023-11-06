@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EditingProjectArgs', 'EditingProject']
@@ -27,15 +27,40 @@ class EditingProjectArgs:
         :param pulumi.Input[str] editing_project_name: The description of the online editing project.
         :param pulumi.Input[str] timeline: The timeline of the online editing project, in JSON format. For more information about the structure, see [Timeline](https://www.alibabacloud.com/help/en/apsaravideo-for-vod/latest/basic-structures). If you do not specify this parameter, an empty timeline is created and the duration of the online editing project is zero.
         """
-        pulumi.set(__self__, "title", title)
+        EditingProjectArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            title=title,
+            cover_url=cover_url,
+            division=division,
+            editing_project_name=editing_project_name,
+            timeline=timeline,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             title: Optional[pulumi.Input[str]] = None,
+             cover_url: Optional[pulumi.Input[str]] = None,
+             division: Optional[pulumi.Input[str]] = None,
+             editing_project_name: Optional[pulumi.Input[str]] = None,
+             timeline: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+        if cover_url is None and 'coverUrl' in kwargs:
+            cover_url = kwargs['coverUrl']
+        if editing_project_name is None and 'editingProjectName' in kwargs:
+            editing_project_name = kwargs['editingProjectName']
+
+        _setter("title", title)
         if cover_url is not None:
-            pulumi.set(__self__, "cover_url", cover_url)
+            _setter("cover_url", cover_url)
         if division is not None:
-            pulumi.set(__self__, "division", division)
+            _setter("division", division)
         if editing_project_name is not None:
-            pulumi.set(__self__, "editing_project_name", editing_project_name)
+            _setter("editing_project_name", editing_project_name)
         if timeline is not None:
-            pulumi.set(__self__, "timeline", timeline)
+            _setter("timeline", timeline)
 
     @property
     @pulumi.getter
@@ -116,18 +141,43 @@ class _EditingProjectState:
         :param pulumi.Input[str] timeline: The timeline of the online editing project, in JSON format. For more information about the structure, see [Timeline](https://www.alibabacloud.com/help/en/apsaravideo-for-vod/latest/basic-structures). If you do not specify this parameter, an empty timeline is created and the duration of the online editing project is zero.
         :param pulumi.Input[str] title: The title of the online editing project.
         """
+        _EditingProjectState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cover_url=cover_url,
+            division=division,
+            editing_project_name=editing_project_name,
+            status=status,
+            timeline=timeline,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cover_url: Optional[pulumi.Input[str]] = None,
+             division: Optional[pulumi.Input[str]] = None,
+             editing_project_name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             timeline: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cover_url is None and 'coverUrl' in kwargs:
+            cover_url = kwargs['coverUrl']
+        if editing_project_name is None and 'editingProjectName' in kwargs:
+            editing_project_name = kwargs['editingProjectName']
+
         if cover_url is not None:
-            pulumi.set(__self__, "cover_url", cover_url)
+            _setter("cover_url", cover_url)
         if division is not None:
-            pulumi.set(__self__, "division", division)
+            _setter("division", division)
         if editing_project_name is not None:
-            pulumi.set(__self__, "editing_project_name", editing_project_name)
+            _setter("editing_project_name", editing_project_name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if timeline is not None:
-            pulumi.set(__self__, "timeline", timeline)
+            _setter("timeline", timeline)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter(name="coverUrl")
@@ -333,6 +383,10 @@ class EditingProject(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EditingProjectArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

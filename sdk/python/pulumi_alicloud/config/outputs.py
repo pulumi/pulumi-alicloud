@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -22,15 +22,44 @@ class AssumeRole(dict):
                  policy: Optional[str] = None,
                  session_expiration: Optional[int] = None,
                  session_name: Optional[str] = None):
-        pulumi.set(__self__, "role_arn", role_arn)
+        AssumeRole._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            role_arn=role_arn,
+            external_id=external_id,
+            policy=policy,
+            session_expiration=session_expiration,
+            session_name=session_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             role_arn: Optional[str] = None,
+             external_id: Optional[str] = None,
+             policy: Optional[str] = None,
+             session_expiration: Optional[int] = None,
+             session_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if role_arn is None and 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if role_arn is None:
+            raise TypeError("Missing 'role_arn' argument")
+        if external_id is None and 'externalId' in kwargs:
+            external_id = kwargs['externalId']
+        if session_expiration is None and 'sessionExpiration' in kwargs:
+            session_expiration = kwargs['sessionExpiration']
+        if session_name is None and 'sessionName' in kwargs:
+            session_name = kwargs['sessionName']
+
+        _setter("role_arn", role_arn)
         if external_id is not None:
-            pulumi.set(__self__, "external_id", external_id)
+            _setter("external_id", external_id)
         if policy is not None:
-            pulumi.set(__self__, "policy", policy)
+            _setter("policy", policy)
         if session_expiration is not None:
-            pulumi.set(__self__, "session_expiration", session_expiration)
+            _setter("session_expiration", session_expiration)
         if session_name is not None:
-            pulumi.set(__self__, "session_name", session_name)
+            _setter("session_name", session_name)
 
     @property
     @pulumi.getter(name="roleArn")
@@ -190,264 +219,541 @@ class Endpoints(dict):
                  vs: Optional[str] = None,
                  waf: Optional[str] = None,
                  waf_openapi: Optional[str] = None):
+        Endpoints._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acr=acr,
+            actiontrail=actiontrail,
+            adb=adb,
+            alb=alb,
+            alidfs=alidfs,
+            alidns=alidns,
+            alikafka=alikafka,
+            apigateway=apigateway,
+            arms=arms,
+            bastionhost=bastionhost,
+            beebot=beebot,
+            bpstudio=bpstudio,
+            brain_industrial=brain_industrial,
+            bssopenapi=bssopenapi,
+            cas=cas,
+            cassandra=cassandra,
+            cbn=cbn,
+            cbs=cbs,
+            cddc=cddc,
+            cdn=cdn,
+            cds=cds,
+            clickhouse=clickhouse,
+            cloudauth=cloudauth,
+            cloudfirewall=cloudfirewall,
+            cloudfw=cloudfw,
+            cloudphone=cloudphone,
+            cloudsso=cloudsso,
+            cms=cms,
+            computenest=computenest,
+            config=config,
+            cr=cr,
+            cs=cs,
+            das=das,
+            datahub=datahub,
+            dataworkspublic=dataworkspublic,
+            dbfs=dbfs,
+            dcdn=dcdn,
+            ddosbasic=ddosbasic,
+            ddosbgp=ddosbgp,
+            ddoscoo=ddoscoo,
+            dds=dds,
+            devopsrdc=devopsrdc,
+            dg=dg,
+            dm=dm,
+            dms_enterprise=dms_enterprise,
+            dmsenterprise=dmsenterprise,
+            dns=dns,
+            drds=drds,
+            dts=dts,
+            dysms=dysms,
+            eais=eais,
+            ebs=ebs,
+            eci=eci,
+            ecs=ecs,
+            edas=edas,
+            edasschedulerx=edasschedulerx,
+            edsuser=edsuser,
+            eflo=eflo,
+            ehpc=ehpc,
+            ehs=ehs,
+            eipanycast=eipanycast,
+            elasticsearch=elasticsearch,
+            emr=emr,
+            ens=ens,
+            ess=ess,
+            eventbridge=eventbridge,
+            fc=fc,
+            fnf=fnf,
+            ga=ga,
+            gaplus=gaplus,
+            gds=gds,
+            gpdb=gpdb,
+            gwsecd=gwsecd,
+            hbr=hbr,
+            hcs_sgw=hcs_sgw,
+            hitsdb=hitsdb,
+            imm=imm,
+            imp=imp,
+            ims=ims,
+            iot=iot,
+            kms=kms,
+            kvstore=kvstore,
+            location=location,
+            log=log,
+            market=market,
+            maxcompute=maxcompute,
+            mhub=mhub,
+            mns=mns,
+            mscopensubscription=mscopensubscription,
+            mse=mse,
+            nas=nas,
+            nlb=nlb,
+            oceanbase=oceanbase,
+            ons=ons,
+            onsproxy=onsproxy,
+            oos=oos,
+            opensearch=opensearch,
+            oss=oss,
+            ots=ots,
+            polardb=polardb,
+            privatelink=privatelink,
+            pvtz=pvtz,
+            quickbi=quickbi,
+            quotas=quotas,
+            r_kvstore=r_kvstore,
+            ram=ram,
+            rds=rds,
+            redisa=redisa,
+            resourcemanager=resourcemanager,
+            resourcesharing=resourcesharing,
+            ros=ros,
+            sas=sas,
+            scdn=scdn,
+            sddp=sddp,
+            serverless=serverless,
+            servicemesh=servicemesh,
+            sgw=sgw,
+            slb=slb,
+            smartag=smartag,
+            srvcatalog=srvcatalog,
+            sts=sts,
+            swas=swas,
+            tag=tag,
+            vod=vod,
+            vpc=vpc,
+            vpcpeer=vpcpeer,
+            vs=vs,
+            waf=waf,
+            waf_openapi=waf_openapi,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acr: Optional[str] = None,
+             actiontrail: Optional[str] = None,
+             adb: Optional[str] = None,
+             alb: Optional[str] = None,
+             alidfs: Optional[str] = None,
+             alidns: Optional[str] = None,
+             alikafka: Optional[str] = None,
+             apigateway: Optional[str] = None,
+             arms: Optional[str] = None,
+             bastionhost: Optional[str] = None,
+             beebot: Optional[str] = None,
+             bpstudio: Optional[str] = None,
+             brain_industrial: Optional[str] = None,
+             bssopenapi: Optional[str] = None,
+             cas: Optional[str] = None,
+             cassandra: Optional[str] = None,
+             cbn: Optional[str] = None,
+             cbs: Optional[str] = None,
+             cddc: Optional[str] = None,
+             cdn: Optional[str] = None,
+             cds: Optional[str] = None,
+             clickhouse: Optional[str] = None,
+             cloudauth: Optional[str] = None,
+             cloudfirewall: Optional[str] = None,
+             cloudfw: Optional[str] = None,
+             cloudphone: Optional[str] = None,
+             cloudsso: Optional[str] = None,
+             cms: Optional[str] = None,
+             computenest: Optional[str] = None,
+             config: Optional[str] = None,
+             cr: Optional[str] = None,
+             cs: Optional[str] = None,
+             das: Optional[str] = None,
+             datahub: Optional[str] = None,
+             dataworkspublic: Optional[str] = None,
+             dbfs: Optional[str] = None,
+             dcdn: Optional[str] = None,
+             ddosbasic: Optional[str] = None,
+             ddosbgp: Optional[str] = None,
+             ddoscoo: Optional[str] = None,
+             dds: Optional[str] = None,
+             devopsrdc: Optional[str] = None,
+             dg: Optional[str] = None,
+             dm: Optional[str] = None,
+             dms_enterprise: Optional[str] = None,
+             dmsenterprise: Optional[str] = None,
+             dns: Optional[str] = None,
+             drds: Optional[str] = None,
+             dts: Optional[str] = None,
+             dysms: Optional[str] = None,
+             eais: Optional[str] = None,
+             ebs: Optional[str] = None,
+             eci: Optional[str] = None,
+             ecs: Optional[str] = None,
+             edas: Optional[str] = None,
+             edasschedulerx: Optional[str] = None,
+             edsuser: Optional[str] = None,
+             eflo: Optional[str] = None,
+             ehpc: Optional[str] = None,
+             ehs: Optional[str] = None,
+             eipanycast: Optional[str] = None,
+             elasticsearch: Optional[str] = None,
+             emr: Optional[str] = None,
+             ens: Optional[str] = None,
+             ess: Optional[str] = None,
+             eventbridge: Optional[str] = None,
+             fc: Optional[str] = None,
+             fnf: Optional[str] = None,
+             ga: Optional[str] = None,
+             gaplus: Optional[str] = None,
+             gds: Optional[str] = None,
+             gpdb: Optional[str] = None,
+             gwsecd: Optional[str] = None,
+             hbr: Optional[str] = None,
+             hcs_sgw: Optional[str] = None,
+             hitsdb: Optional[str] = None,
+             imm: Optional[str] = None,
+             imp: Optional[str] = None,
+             ims: Optional[str] = None,
+             iot: Optional[str] = None,
+             kms: Optional[str] = None,
+             kvstore: Optional[str] = None,
+             location: Optional[str] = None,
+             log: Optional[str] = None,
+             market: Optional[str] = None,
+             maxcompute: Optional[str] = None,
+             mhub: Optional[str] = None,
+             mns: Optional[str] = None,
+             mscopensubscription: Optional[str] = None,
+             mse: Optional[str] = None,
+             nas: Optional[str] = None,
+             nlb: Optional[str] = None,
+             oceanbase: Optional[str] = None,
+             ons: Optional[str] = None,
+             onsproxy: Optional[str] = None,
+             oos: Optional[str] = None,
+             opensearch: Optional[str] = None,
+             oss: Optional[str] = None,
+             ots: Optional[str] = None,
+             polardb: Optional[str] = None,
+             privatelink: Optional[str] = None,
+             pvtz: Optional[str] = None,
+             quickbi: Optional[str] = None,
+             quotas: Optional[str] = None,
+             r_kvstore: Optional[str] = None,
+             ram: Optional[str] = None,
+             rds: Optional[str] = None,
+             redisa: Optional[str] = None,
+             resourcemanager: Optional[str] = None,
+             resourcesharing: Optional[str] = None,
+             ros: Optional[str] = None,
+             sas: Optional[str] = None,
+             scdn: Optional[str] = None,
+             sddp: Optional[str] = None,
+             serverless: Optional[str] = None,
+             servicemesh: Optional[str] = None,
+             sgw: Optional[str] = None,
+             slb: Optional[str] = None,
+             smartag: Optional[str] = None,
+             srvcatalog: Optional[str] = None,
+             sts: Optional[str] = None,
+             swas: Optional[str] = None,
+             tag: Optional[str] = None,
+             vod: Optional[str] = None,
+             vpc: Optional[str] = None,
+             vpcpeer: Optional[str] = None,
+             vs: Optional[str] = None,
+             waf: Optional[str] = None,
+             waf_openapi: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if brain_industrial is None and 'brainIndustrial' in kwargs:
+            brain_industrial = kwargs['brainIndustrial']
+        if dms_enterprise is None and 'dmsEnterprise' in kwargs:
+            dms_enterprise = kwargs['dmsEnterprise']
+        if hcs_sgw is None and 'hcsSgw' in kwargs:
+            hcs_sgw = kwargs['hcsSgw']
+        if r_kvstore is None and 'rKvstore' in kwargs:
+            r_kvstore = kwargs['rKvstore']
+        if waf_openapi is None and 'wafOpenapi' in kwargs:
+            waf_openapi = kwargs['wafOpenapi']
+
         if acr is not None:
-            pulumi.set(__self__, "acr", acr)
+            _setter("acr", acr)
         if actiontrail is not None:
-            pulumi.set(__self__, "actiontrail", actiontrail)
+            _setter("actiontrail", actiontrail)
         if adb is not None:
-            pulumi.set(__self__, "adb", adb)
+            _setter("adb", adb)
         if alb is not None:
-            pulumi.set(__self__, "alb", alb)
+            _setter("alb", alb)
         if alidfs is not None:
-            pulumi.set(__self__, "alidfs", alidfs)
+            _setter("alidfs", alidfs)
         if alidns is not None:
-            pulumi.set(__self__, "alidns", alidns)
+            _setter("alidns", alidns)
         if alikafka is not None:
-            pulumi.set(__self__, "alikafka", alikafka)
+            _setter("alikafka", alikafka)
         if apigateway is not None:
-            pulumi.set(__self__, "apigateway", apigateway)
+            _setter("apigateway", apigateway)
         if arms is not None:
-            pulumi.set(__self__, "arms", arms)
+            _setter("arms", arms)
         if bastionhost is not None:
-            pulumi.set(__self__, "bastionhost", bastionhost)
+            _setter("bastionhost", bastionhost)
         if beebot is not None:
-            pulumi.set(__self__, "beebot", beebot)
+            _setter("beebot", beebot)
         if bpstudio is not None:
-            pulumi.set(__self__, "bpstudio", bpstudio)
+            _setter("bpstudio", bpstudio)
         if brain_industrial is not None:
-            pulumi.set(__self__, "brain_industrial", brain_industrial)
+            _setter("brain_industrial", brain_industrial)
         if bssopenapi is not None:
-            pulumi.set(__self__, "bssopenapi", bssopenapi)
+            _setter("bssopenapi", bssopenapi)
         if cas is not None:
-            pulumi.set(__self__, "cas", cas)
+            _setter("cas", cas)
         if cassandra is not None:
-            pulumi.set(__self__, "cassandra", cassandra)
+            _setter("cassandra", cassandra)
         if cbn is not None:
-            pulumi.set(__self__, "cbn", cbn)
+            _setter("cbn", cbn)
         if cbs is not None:
-            pulumi.set(__self__, "cbs", cbs)
+            _setter("cbs", cbs)
         if cddc is not None:
-            pulumi.set(__self__, "cddc", cddc)
+            _setter("cddc", cddc)
         if cdn is not None:
-            pulumi.set(__self__, "cdn", cdn)
+            _setter("cdn", cdn)
         if cds is not None:
-            pulumi.set(__self__, "cds", cds)
+            _setter("cds", cds)
         if clickhouse is not None:
-            pulumi.set(__self__, "clickhouse", clickhouse)
+            _setter("clickhouse", clickhouse)
         if cloudauth is not None:
-            pulumi.set(__self__, "cloudauth", cloudauth)
+            _setter("cloudauth", cloudauth)
         if cloudfirewall is not None:
-            pulumi.set(__self__, "cloudfirewall", cloudfirewall)
+            _setter("cloudfirewall", cloudfirewall)
         if cloudfw is not None:
-            pulumi.set(__self__, "cloudfw", cloudfw)
+            _setter("cloudfw", cloudfw)
         if cloudphone is not None:
-            pulumi.set(__self__, "cloudphone", cloudphone)
+            _setter("cloudphone", cloudphone)
         if cloudsso is not None:
-            pulumi.set(__self__, "cloudsso", cloudsso)
+            _setter("cloudsso", cloudsso)
         if cms is not None:
-            pulumi.set(__self__, "cms", cms)
+            _setter("cms", cms)
         if computenest is not None:
-            pulumi.set(__self__, "computenest", computenest)
+            _setter("computenest", computenest)
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if cr is not None:
-            pulumi.set(__self__, "cr", cr)
+            _setter("cr", cr)
         if cs is not None:
-            pulumi.set(__self__, "cs", cs)
+            _setter("cs", cs)
         if das is not None:
-            pulumi.set(__self__, "das", das)
+            _setter("das", das)
         if datahub is not None:
-            pulumi.set(__self__, "datahub", datahub)
+            _setter("datahub", datahub)
         if dataworkspublic is not None:
-            pulumi.set(__self__, "dataworkspublic", dataworkspublic)
+            _setter("dataworkspublic", dataworkspublic)
         if dbfs is not None:
-            pulumi.set(__self__, "dbfs", dbfs)
+            _setter("dbfs", dbfs)
         if dcdn is not None:
-            pulumi.set(__self__, "dcdn", dcdn)
+            _setter("dcdn", dcdn)
         if ddosbasic is not None:
-            pulumi.set(__self__, "ddosbasic", ddosbasic)
+            _setter("ddosbasic", ddosbasic)
         if ddosbgp is not None:
-            pulumi.set(__self__, "ddosbgp", ddosbgp)
+            _setter("ddosbgp", ddosbgp)
         if ddoscoo is not None:
-            pulumi.set(__self__, "ddoscoo", ddoscoo)
+            _setter("ddoscoo", ddoscoo)
         if dds is not None:
-            pulumi.set(__self__, "dds", dds)
+            _setter("dds", dds)
         if devopsrdc is not None:
-            pulumi.set(__self__, "devopsrdc", devopsrdc)
+            _setter("devopsrdc", devopsrdc)
         if dg is not None:
-            pulumi.set(__self__, "dg", dg)
+            _setter("dg", dg)
         if dm is not None:
-            pulumi.set(__self__, "dm", dm)
+            _setter("dm", dm)
         if dms_enterprise is not None:
-            pulumi.set(__self__, "dms_enterprise", dms_enterprise)
+            _setter("dms_enterprise", dms_enterprise)
         if dmsenterprise is not None:
-            pulumi.set(__self__, "dmsenterprise", dmsenterprise)
+            _setter("dmsenterprise", dmsenterprise)
         if dns is not None:
-            pulumi.set(__self__, "dns", dns)
+            _setter("dns", dns)
         if drds is not None:
-            pulumi.set(__self__, "drds", drds)
+            _setter("drds", drds)
         if dts is not None:
-            pulumi.set(__self__, "dts", dts)
+            _setter("dts", dts)
         if dysms is not None:
-            pulumi.set(__self__, "dysms", dysms)
+            _setter("dysms", dysms)
         if eais is not None:
-            pulumi.set(__self__, "eais", eais)
+            _setter("eais", eais)
         if ebs is not None:
-            pulumi.set(__self__, "ebs", ebs)
+            _setter("ebs", ebs)
         if eci is not None:
-            pulumi.set(__self__, "eci", eci)
+            _setter("eci", eci)
         if ecs is not None:
-            pulumi.set(__self__, "ecs", ecs)
+            _setter("ecs", ecs)
         if edas is not None:
-            pulumi.set(__self__, "edas", edas)
+            _setter("edas", edas)
         if edasschedulerx is not None:
-            pulumi.set(__self__, "edasschedulerx", edasschedulerx)
+            _setter("edasschedulerx", edasschedulerx)
         if edsuser is not None:
-            pulumi.set(__self__, "edsuser", edsuser)
+            _setter("edsuser", edsuser)
         if eflo is not None:
-            pulumi.set(__self__, "eflo", eflo)
+            _setter("eflo", eflo)
         if ehpc is not None:
-            pulumi.set(__self__, "ehpc", ehpc)
+            _setter("ehpc", ehpc)
         if ehs is not None:
-            pulumi.set(__self__, "ehs", ehs)
+            _setter("ehs", ehs)
         if eipanycast is not None:
-            pulumi.set(__self__, "eipanycast", eipanycast)
+            _setter("eipanycast", eipanycast)
         if elasticsearch is not None:
-            pulumi.set(__self__, "elasticsearch", elasticsearch)
+            _setter("elasticsearch", elasticsearch)
         if emr is not None:
-            pulumi.set(__self__, "emr", emr)
+            _setter("emr", emr)
         if ens is not None:
-            pulumi.set(__self__, "ens", ens)
+            _setter("ens", ens)
         if ess is not None:
-            pulumi.set(__self__, "ess", ess)
+            _setter("ess", ess)
         if eventbridge is not None:
-            pulumi.set(__self__, "eventbridge", eventbridge)
+            _setter("eventbridge", eventbridge)
         if fc is not None:
-            pulumi.set(__self__, "fc", fc)
+            _setter("fc", fc)
         if fnf is not None:
-            pulumi.set(__self__, "fnf", fnf)
+            _setter("fnf", fnf)
         if ga is not None:
-            pulumi.set(__self__, "ga", ga)
+            _setter("ga", ga)
         if gaplus is not None:
-            pulumi.set(__self__, "gaplus", gaplus)
+            _setter("gaplus", gaplus)
         if gds is not None:
-            pulumi.set(__self__, "gds", gds)
+            _setter("gds", gds)
         if gpdb is not None:
-            pulumi.set(__self__, "gpdb", gpdb)
+            _setter("gpdb", gpdb)
         if gwsecd is not None:
-            pulumi.set(__self__, "gwsecd", gwsecd)
+            _setter("gwsecd", gwsecd)
         if hbr is not None:
-            pulumi.set(__self__, "hbr", hbr)
+            _setter("hbr", hbr)
         if hcs_sgw is not None:
-            pulumi.set(__self__, "hcs_sgw", hcs_sgw)
+            _setter("hcs_sgw", hcs_sgw)
         if hitsdb is not None:
-            pulumi.set(__self__, "hitsdb", hitsdb)
+            _setter("hitsdb", hitsdb)
         if imm is not None:
-            pulumi.set(__self__, "imm", imm)
+            _setter("imm", imm)
         if imp is not None:
-            pulumi.set(__self__, "imp", imp)
+            _setter("imp", imp)
         if ims is not None:
-            pulumi.set(__self__, "ims", ims)
+            _setter("ims", ims)
         if iot is not None:
-            pulumi.set(__self__, "iot", iot)
+            _setter("iot", iot)
         if kms is not None:
-            pulumi.set(__self__, "kms", kms)
+            _setter("kms", kms)
         if kvstore is not None:
-            pulumi.set(__self__, "kvstore", kvstore)
+            _setter("kvstore", kvstore)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if log is not None:
-            pulumi.set(__self__, "log", log)
+            _setter("log", log)
         if market is not None:
-            pulumi.set(__self__, "market", market)
+            _setter("market", market)
         if maxcompute is not None:
-            pulumi.set(__self__, "maxcompute", maxcompute)
+            _setter("maxcompute", maxcompute)
         if mhub is not None:
-            pulumi.set(__self__, "mhub", mhub)
+            _setter("mhub", mhub)
         if mns is not None:
-            pulumi.set(__self__, "mns", mns)
+            _setter("mns", mns)
         if mscopensubscription is not None:
-            pulumi.set(__self__, "mscopensubscription", mscopensubscription)
+            _setter("mscopensubscription", mscopensubscription)
         if mse is not None:
-            pulumi.set(__self__, "mse", mse)
+            _setter("mse", mse)
         if nas is not None:
-            pulumi.set(__self__, "nas", nas)
+            _setter("nas", nas)
         if nlb is not None:
-            pulumi.set(__self__, "nlb", nlb)
+            _setter("nlb", nlb)
         if oceanbase is not None:
-            pulumi.set(__self__, "oceanbase", oceanbase)
+            _setter("oceanbase", oceanbase)
         if ons is not None:
-            pulumi.set(__self__, "ons", ons)
+            _setter("ons", ons)
         if onsproxy is not None:
-            pulumi.set(__self__, "onsproxy", onsproxy)
+            _setter("onsproxy", onsproxy)
         if oos is not None:
-            pulumi.set(__self__, "oos", oos)
+            _setter("oos", oos)
         if opensearch is not None:
-            pulumi.set(__self__, "opensearch", opensearch)
+            _setter("opensearch", opensearch)
         if oss is not None:
-            pulumi.set(__self__, "oss", oss)
+            _setter("oss", oss)
         if ots is not None:
-            pulumi.set(__self__, "ots", ots)
+            _setter("ots", ots)
         if polardb is not None:
-            pulumi.set(__self__, "polardb", polardb)
+            _setter("polardb", polardb)
         if privatelink is not None:
-            pulumi.set(__self__, "privatelink", privatelink)
+            _setter("privatelink", privatelink)
         if pvtz is not None:
-            pulumi.set(__self__, "pvtz", pvtz)
+            _setter("pvtz", pvtz)
         if quickbi is not None:
-            pulumi.set(__self__, "quickbi", quickbi)
+            _setter("quickbi", quickbi)
         if quotas is not None:
-            pulumi.set(__self__, "quotas", quotas)
+            _setter("quotas", quotas)
         if r_kvstore is not None:
-            pulumi.set(__self__, "r_kvstore", r_kvstore)
+            _setter("r_kvstore", r_kvstore)
         if ram is not None:
-            pulumi.set(__self__, "ram", ram)
+            _setter("ram", ram)
         if rds is not None:
-            pulumi.set(__self__, "rds", rds)
+            _setter("rds", rds)
         if redisa is not None:
-            pulumi.set(__self__, "redisa", redisa)
+            _setter("redisa", redisa)
         if resourcemanager is not None:
-            pulumi.set(__self__, "resourcemanager", resourcemanager)
+            _setter("resourcemanager", resourcemanager)
         if resourcesharing is not None:
-            pulumi.set(__self__, "resourcesharing", resourcesharing)
+            _setter("resourcesharing", resourcesharing)
         if ros is not None:
-            pulumi.set(__self__, "ros", ros)
+            _setter("ros", ros)
         if sas is not None:
-            pulumi.set(__self__, "sas", sas)
+            _setter("sas", sas)
         if scdn is not None:
-            pulumi.set(__self__, "scdn", scdn)
+            _setter("scdn", scdn)
         if sddp is not None:
-            pulumi.set(__self__, "sddp", sddp)
+            _setter("sddp", sddp)
         if serverless is not None:
-            pulumi.set(__self__, "serverless", serverless)
+            _setter("serverless", serverless)
         if servicemesh is not None:
-            pulumi.set(__self__, "servicemesh", servicemesh)
+            _setter("servicemesh", servicemesh)
         if sgw is not None:
-            pulumi.set(__self__, "sgw", sgw)
+            _setter("sgw", sgw)
         if slb is not None:
-            pulumi.set(__self__, "slb", slb)
+            _setter("slb", slb)
         if smartag is not None:
-            pulumi.set(__self__, "smartag", smartag)
+            _setter("smartag", smartag)
         if srvcatalog is not None:
-            pulumi.set(__self__, "srvcatalog", srvcatalog)
+            _setter("srvcatalog", srvcatalog)
         if sts is not None:
-            pulumi.set(__self__, "sts", sts)
+            _setter("sts", sts)
         if swas is not None:
-            pulumi.set(__self__, "swas", swas)
+            _setter("swas", swas)
         if tag is not None:
-            pulumi.set(__self__, "tag", tag)
+            _setter("tag", tag)
         if vod is not None:
-            pulumi.set(__self__, "vod", vod)
+            _setter("vod", vod)
         if vpc is not None:
-            pulumi.set(__self__, "vpc", vpc)
+            _setter("vpc", vpc)
         if vpcpeer is not None:
-            pulumi.set(__self__, "vpcpeer", vpcpeer)
+            _setter("vpcpeer", vpcpeer)
         if vs is not None:
-            pulumi.set(__self__, "vs", vs)
+            _setter("vs", vs)
         if waf is not None:
-            pulumi.set(__self__, "waf", waf)
+            _setter("waf", waf)
         if waf_openapi is not None:
-            pulumi.set(__self__, "waf_openapi", waf_openapi)
+            _setter("waf_openapi", waf_openapi)
 
     @property
     @pulumi.getter

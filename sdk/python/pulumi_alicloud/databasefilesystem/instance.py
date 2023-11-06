@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -45,32 +45,91 @@ class InstanceArgs:
         :param pulumi.Input[str] snapshot_id: The snapshot id of the Database file system.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "size", size)
-        pulumi.set(__self__, "zone_id", zone_id)
+        InstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_name=instance_name,
+            size=size,
+            zone_id=zone_id,
+            category=category,
+            delete_snapshot=delete_snapshot,
+            ecs_lists=ecs_lists,
+            enable_raid=enable_raid,
+            encryption=encryption,
+            kms_key_id=kms_key_id,
+            performance_level=performance_level,
+            raid_stripe_unit_number=raid_stripe_unit_number,
+            snapshot_id=snapshot_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_name: Optional[pulumi.Input[str]] = None,
+             size: Optional[pulumi.Input[int]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             category: Optional[pulumi.Input[str]] = None,
+             delete_snapshot: Optional[pulumi.Input[bool]] = None,
+             ecs_lists: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]]] = None,
+             enable_raid: Optional[pulumi.Input[bool]] = None,
+             encryption: Optional[pulumi.Input[bool]] = None,
+             kms_key_id: Optional[pulumi.Input[str]] = None,
+             performance_level: Optional[pulumi.Input[str]] = None,
+             raid_stripe_unit_number: Optional[pulumi.Input[str]] = None,
+             snapshot_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if delete_snapshot is None and 'deleteSnapshot' in kwargs:
+            delete_snapshot = kwargs['deleteSnapshot']
+        if ecs_lists is None and 'ecsLists' in kwargs:
+            ecs_lists = kwargs['ecsLists']
+        if enable_raid is None and 'enableRaid' in kwargs:
+            enable_raid = kwargs['enableRaid']
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if performance_level is None and 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+        if raid_stripe_unit_number is None and 'raidStripeUnitNumber' in kwargs:
+            raid_stripe_unit_number = kwargs['raidStripeUnitNumber']
+        if snapshot_id is None and 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+
+        _setter("instance_name", instance_name)
+        _setter("size", size)
+        _setter("zone_id", zone_id)
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if delete_snapshot is not None:
-            pulumi.set(__self__, "delete_snapshot", delete_snapshot)
+            _setter("delete_snapshot", delete_snapshot)
         if ecs_lists is not None:
             warnings.warn("""Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""", DeprecationWarning)
             pulumi.log.warn("""ecs_lists is deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""")
         if ecs_lists is not None:
-            pulumi.set(__self__, "ecs_lists", ecs_lists)
+            _setter("ecs_lists", ecs_lists)
         if enable_raid is not None:
-            pulumi.set(__self__, "enable_raid", enable_raid)
+            _setter("enable_raid", enable_raid)
         if encryption is not None:
-            pulumi.set(__self__, "encryption", encryption)
+            _setter("encryption", encryption)
         if kms_key_id is not None:
-            pulumi.set(__self__, "kms_key_id", kms_key_id)
+            _setter("kms_key_id", kms_key_id)
         if performance_level is not None:
-            pulumi.set(__self__, "performance_level", performance_level)
+            _setter("performance_level", performance_level)
         if raid_stripe_unit_number is not None:
-            pulumi.set(__self__, "raid_stripe_unit_number", raid_stripe_unit_number)
+            _setter("raid_stripe_unit_number", raid_stripe_unit_number)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="instanceName")
@@ -266,37 +325,92 @@ class _InstanceState:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] zone_id: The Zone ID of the Database file system.
         """
+        _InstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            delete_snapshot=delete_snapshot,
+            ecs_lists=ecs_lists,
+            enable_raid=enable_raid,
+            encryption=encryption,
+            instance_name=instance_name,
+            kms_key_id=kms_key_id,
+            performance_level=performance_level,
+            raid_stripe_unit_number=raid_stripe_unit_number,
+            size=size,
+            snapshot_id=snapshot_id,
+            status=status,
+            tags=tags,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: Optional[pulumi.Input[str]] = None,
+             delete_snapshot: Optional[pulumi.Input[bool]] = None,
+             ecs_lists: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]]] = None,
+             enable_raid: Optional[pulumi.Input[bool]] = None,
+             encryption: Optional[pulumi.Input[bool]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             kms_key_id: Optional[pulumi.Input[str]] = None,
+             performance_level: Optional[pulumi.Input[str]] = None,
+             raid_stripe_unit_number: Optional[pulumi.Input[str]] = None,
+             size: Optional[pulumi.Input[int]] = None,
+             snapshot_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if delete_snapshot is None and 'deleteSnapshot' in kwargs:
+            delete_snapshot = kwargs['deleteSnapshot']
+        if ecs_lists is None and 'ecsLists' in kwargs:
+            ecs_lists = kwargs['ecsLists']
+        if enable_raid is None and 'enableRaid' in kwargs:
+            enable_raid = kwargs['enableRaid']
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if performance_level is None and 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+        if raid_stripe_unit_number is None and 'raidStripeUnitNumber' in kwargs:
+            raid_stripe_unit_number = kwargs['raidStripeUnitNumber']
+        if snapshot_id is None and 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if delete_snapshot is not None:
-            pulumi.set(__self__, "delete_snapshot", delete_snapshot)
+            _setter("delete_snapshot", delete_snapshot)
         if ecs_lists is not None:
             warnings.warn("""Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""", DeprecationWarning)
             pulumi.log.warn("""ecs_lists is deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""")
         if ecs_lists is not None:
-            pulumi.set(__self__, "ecs_lists", ecs_lists)
+            _setter("ecs_lists", ecs_lists)
         if enable_raid is not None:
-            pulumi.set(__self__, "enable_raid", enable_raid)
+            _setter("enable_raid", enable_raid)
         if encryption is not None:
-            pulumi.set(__self__, "encryption", encryption)
+            _setter("encryption", encryption)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if kms_key_id is not None:
-            pulumi.set(__self__, "kms_key_id", kms_key_id)
+            _setter("kms_key_id", kms_key_id)
         if performance_level is not None:
-            pulumi.set(__self__, "performance_level", performance_level)
+            _setter("performance_level", performance_level)
         if raid_stripe_unit_number is not None:
-            pulumi.set(__self__, "raid_stripe_unit_number", raid_stripe_unit_number)
+            _setter("raid_stripe_unit_number", raid_stripe_unit_number)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -591,6 +705,10 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

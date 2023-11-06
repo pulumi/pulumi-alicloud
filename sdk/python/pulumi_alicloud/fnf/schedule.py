@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ScheduleArgs', 'Schedule']
@@ -29,15 +29,48 @@ class ScheduleArgs:
         :param pulumi.Input[bool] enable: Specifies whether to enable the time-based schedule you want to create. Valid values: `false`, `true`.
         :param pulumi.Input[str] payload: The trigger message of the time-based schedule to be created. It must be in JSON object format.
         """
-        pulumi.set(__self__, "cron_expression", cron_expression)
-        pulumi.set(__self__, "flow_name", flow_name)
-        pulumi.set(__self__, "schedule_name", schedule_name)
+        ScheduleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cron_expression=cron_expression,
+            flow_name=flow_name,
+            schedule_name=schedule_name,
+            description=description,
+            enable=enable,
+            payload=payload,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cron_expression: Optional[pulumi.Input[str]] = None,
+             flow_name: Optional[pulumi.Input[str]] = None,
+             schedule_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enable: Optional[pulumi.Input[bool]] = None,
+             payload: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cron_expression is None and 'cronExpression' in kwargs:
+            cron_expression = kwargs['cronExpression']
+        if cron_expression is None:
+            raise TypeError("Missing 'cron_expression' argument")
+        if flow_name is None and 'flowName' in kwargs:
+            flow_name = kwargs['flowName']
+        if flow_name is None:
+            raise TypeError("Missing 'flow_name' argument")
+        if schedule_name is None and 'scheduleName' in kwargs:
+            schedule_name = kwargs['scheduleName']
+        if schedule_name is None:
+            raise TypeError("Missing 'schedule_name' argument")
+
+        _setter("cron_expression", cron_expression)
+        _setter("flow_name", flow_name)
+        _setter("schedule_name", schedule_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enable is not None:
-            pulumi.set(__self__, "enable", enable)
+            _setter("enable", enable)
         if payload is not None:
-            pulumi.set(__self__, "payload", payload)
+            _setter("payload", payload)
 
     @property
     @pulumi.getter(name="cronExpression")
@@ -134,22 +167,57 @@ class _ScheduleState:
         :param pulumi.Input[str] schedule_id: The ID of the time-based schedule.
         :param pulumi.Input[str] schedule_name: The name of the time-based schedule to be created.
         """
+        _ScheduleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cron_expression=cron_expression,
+            description=description,
+            enable=enable,
+            flow_name=flow_name,
+            last_modified_time=last_modified_time,
+            payload=payload,
+            schedule_id=schedule_id,
+            schedule_name=schedule_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cron_expression: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enable: Optional[pulumi.Input[bool]] = None,
+             flow_name: Optional[pulumi.Input[str]] = None,
+             last_modified_time: Optional[pulumi.Input[str]] = None,
+             payload: Optional[pulumi.Input[str]] = None,
+             schedule_id: Optional[pulumi.Input[str]] = None,
+             schedule_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cron_expression is None and 'cronExpression' in kwargs:
+            cron_expression = kwargs['cronExpression']
+        if flow_name is None and 'flowName' in kwargs:
+            flow_name = kwargs['flowName']
+        if last_modified_time is None and 'lastModifiedTime' in kwargs:
+            last_modified_time = kwargs['lastModifiedTime']
+        if schedule_id is None and 'scheduleId' in kwargs:
+            schedule_id = kwargs['scheduleId']
+        if schedule_name is None and 'scheduleName' in kwargs:
+            schedule_name = kwargs['scheduleName']
+
         if cron_expression is not None:
-            pulumi.set(__self__, "cron_expression", cron_expression)
+            _setter("cron_expression", cron_expression)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enable is not None:
-            pulumi.set(__self__, "enable", enable)
+            _setter("enable", enable)
         if flow_name is not None:
-            pulumi.set(__self__, "flow_name", flow_name)
+            _setter("flow_name", flow_name)
         if last_modified_time is not None:
-            pulumi.set(__self__, "last_modified_time", last_modified_time)
+            _setter("last_modified_time", last_modified_time)
         if payload is not None:
-            pulumi.set(__self__, "payload", payload)
+            _setter("payload", payload)
         if schedule_id is not None:
-            pulumi.set(__self__, "schedule_id", schedule_id)
+            _setter("schedule_id", schedule_id)
         if schedule_name is not None:
-            pulumi.set(__self__, "schedule_name", schedule_name)
+            _setter("schedule_name", schedule_name)
 
     @property
     @pulumi.getter(name="cronExpression")
@@ -367,6 +435,10 @@ class Schedule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ScheduleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

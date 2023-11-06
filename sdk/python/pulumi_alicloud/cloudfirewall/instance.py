@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InstanceArgs', 'Instance']
@@ -51,37 +51,120 @@ class InstanceArgs:
         :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
         """
-        pulumi.set(__self__, "band_width", band_width)
-        pulumi.set(__self__, "cfw_log", cfw_log)
-        pulumi.set(__self__, "ip_number", ip_number)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "period", period)
-        pulumi.set(__self__, "spec", spec)
+        InstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            band_width=band_width,
+            cfw_log=cfw_log,
+            ip_number=ip_number,
+            payment_type=payment_type,
+            period=period,
+            spec=spec,
+            account_number=account_number,
+            cfw_account=cfw_account,
+            cfw_log_storage=cfw_log_storage,
+            fw_vpc_number=fw_vpc_number,
+            instance_count=instance_count,
+            logistics=logistics,
+            modify_type=modify_type,
+            renew_period=renew_period,
+            renewal_duration=renewal_duration,
+            renewal_duration_unit=renewal_duration_unit,
+            renewal_status=renewal_status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             band_width: Optional[pulumi.Input[int]] = None,
+             cfw_log: Optional[pulumi.Input[bool]] = None,
+             ip_number: Optional[pulumi.Input[int]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             spec: Optional[pulumi.Input[str]] = None,
+             account_number: Optional[pulumi.Input[int]] = None,
+             cfw_account: Optional[pulumi.Input[bool]] = None,
+             cfw_log_storage: Optional[pulumi.Input[int]] = None,
+             fw_vpc_number: Optional[pulumi.Input[int]] = None,
+             instance_count: Optional[pulumi.Input[int]] = None,
+             logistics: Optional[pulumi.Input[str]] = None,
+             modify_type: Optional[pulumi.Input[str]] = None,
+             renew_period: Optional[pulumi.Input[int]] = None,
+             renewal_duration: Optional[pulumi.Input[int]] = None,
+             renewal_duration_unit: Optional[pulumi.Input[str]] = None,
+             renewal_status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if band_width is None and 'bandWidth' in kwargs:
+            band_width = kwargs['bandWidth']
+        if band_width is None:
+            raise TypeError("Missing 'band_width' argument")
+        if cfw_log is None and 'cfwLog' in kwargs:
+            cfw_log = kwargs['cfwLog']
+        if cfw_log is None:
+            raise TypeError("Missing 'cfw_log' argument")
+        if ip_number is None and 'ipNumber' in kwargs:
+            ip_number = kwargs['ipNumber']
+        if ip_number is None:
+            raise TypeError("Missing 'ip_number' argument")
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if period is None:
+            raise TypeError("Missing 'period' argument")
+        if spec is None:
+            raise TypeError("Missing 'spec' argument")
+        if account_number is None and 'accountNumber' in kwargs:
+            account_number = kwargs['accountNumber']
+        if cfw_account is None and 'cfwAccount' in kwargs:
+            cfw_account = kwargs['cfwAccount']
+        if cfw_log_storage is None and 'cfwLogStorage' in kwargs:
+            cfw_log_storage = kwargs['cfwLogStorage']
+        if fw_vpc_number is None and 'fwVpcNumber' in kwargs:
+            fw_vpc_number = kwargs['fwVpcNumber']
+        if instance_count is None and 'instanceCount' in kwargs:
+            instance_count = kwargs['instanceCount']
+        if modify_type is None and 'modifyType' in kwargs:
+            modify_type = kwargs['modifyType']
+        if renew_period is None and 'renewPeriod' in kwargs:
+            renew_period = kwargs['renewPeriod']
+        if renewal_duration is None and 'renewalDuration' in kwargs:
+            renewal_duration = kwargs['renewalDuration']
+        if renewal_duration_unit is None and 'renewalDurationUnit' in kwargs:
+            renewal_duration_unit = kwargs['renewalDurationUnit']
+        if renewal_status is None and 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+
+        _setter("band_width", band_width)
+        _setter("cfw_log", cfw_log)
+        _setter("ip_number", ip_number)
+        _setter("payment_type", payment_type)
+        _setter("period", period)
+        _setter("spec", spec)
         if account_number is not None:
-            pulumi.set(__self__, "account_number", account_number)
+            _setter("account_number", account_number)
         if cfw_account is not None:
-            pulumi.set(__self__, "cfw_account", cfw_account)
+            _setter("cfw_account", cfw_account)
         if cfw_log_storage is not None:
-            pulumi.set(__self__, "cfw_log_storage", cfw_log_storage)
+            _setter("cfw_log_storage", cfw_log_storage)
         if fw_vpc_number is not None:
-            pulumi.set(__self__, "fw_vpc_number", fw_vpc_number)
+            _setter("fw_vpc_number", fw_vpc_number)
         if instance_count is not None:
-            pulumi.set(__self__, "instance_count", instance_count)
+            _setter("instance_count", instance_count)
         if logistics is not None:
-            pulumi.set(__self__, "logistics", logistics)
+            _setter("logistics", logistics)
         if modify_type is not None:
-            pulumi.set(__self__, "modify_type", modify_type)
+            _setter("modify_type", modify_type)
         if renew_period is not None:
             warnings.warn("""Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""", DeprecationWarning)
             pulumi.log.warn("""renew_period is deprecated: Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""")
         if renew_period is not None:
-            pulumi.set(__self__, "renew_period", renew_period)
+            _setter("renew_period", renew_period)
         if renewal_duration is not None:
-            pulumi.set(__self__, "renewal_duration", renewal_duration)
+            _setter("renewal_duration", renewal_duration)
         if renewal_duration_unit is not None:
-            pulumi.set(__self__, "renewal_duration_unit", renewal_duration_unit)
+            _setter("renewal_duration_unit", renewal_duration_unit)
         if renewal_status is not None:
-            pulumi.set(__self__, "renewal_status", renewal_status)
+            _setter("renewal_status", renewal_status)
 
     @property
     @pulumi.getter(name="bandWidth")
@@ -339,51 +422,136 @@ class _InstanceState:
         :param pulumi.Input[str] spec: Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
         :param pulumi.Input[str] status: The status of Instance.
         """
+        _InstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_number=account_number,
+            band_width=band_width,
+            cfw_account=cfw_account,
+            cfw_log=cfw_log,
+            cfw_log_storage=cfw_log_storage,
+            create_time=create_time,
+            end_time=end_time,
+            fw_vpc_number=fw_vpc_number,
+            instance_count=instance_count,
+            ip_number=ip_number,
+            logistics=logistics,
+            modify_type=modify_type,
+            payment_type=payment_type,
+            period=period,
+            release_time=release_time,
+            renew_period=renew_period,
+            renewal_duration=renewal_duration,
+            renewal_duration_unit=renewal_duration_unit,
+            renewal_status=renewal_status,
+            spec=spec,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_number: Optional[pulumi.Input[int]] = None,
+             band_width: Optional[pulumi.Input[int]] = None,
+             cfw_account: Optional[pulumi.Input[bool]] = None,
+             cfw_log: Optional[pulumi.Input[bool]] = None,
+             cfw_log_storage: Optional[pulumi.Input[int]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             end_time: Optional[pulumi.Input[str]] = None,
+             fw_vpc_number: Optional[pulumi.Input[int]] = None,
+             instance_count: Optional[pulumi.Input[int]] = None,
+             ip_number: Optional[pulumi.Input[int]] = None,
+             logistics: Optional[pulumi.Input[str]] = None,
+             modify_type: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             release_time: Optional[pulumi.Input[str]] = None,
+             renew_period: Optional[pulumi.Input[int]] = None,
+             renewal_duration: Optional[pulumi.Input[int]] = None,
+             renewal_duration_unit: Optional[pulumi.Input[str]] = None,
+             renewal_status: Optional[pulumi.Input[str]] = None,
+             spec: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_number is None and 'accountNumber' in kwargs:
+            account_number = kwargs['accountNumber']
+        if band_width is None and 'bandWidth' in kwargs:
+            band_width = kwargs['bandWidth']
+        if cfw_account is None and 'cfwAccount' in kwargs:
+            cfw_account = kwargs['cfwAccount']
+        if cfw_log is None and 'cfwLog' in kwargs:
+            cfw_log = kwargs['cfwLog']
+        if cfw_log_storage is None and 'cfwLogStorage' in kwargs:
+            cfw_log_storage = kwargs['cfwLogStorage']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if fw_vpc_number is None and 'fwVpcNumber' in kwargs:
+            fw_vpc_number = kwargs['fwVpcNumber']
+        if instance_count is None and 'instanceCount' in kwargs:
+            instance_count = kwargs['instanceCount']
+        if ip_number is None and 'ipNumber' in kwargs:
+            ip_number = kwargs['ipNumber']
+        if modify_type is None and 'modifyType' in kwargs:
+            modify_type = kwargs['modifyType']
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if release_time is None and 'releaseTime' in kwargs:
+            release_time = kwargs['releaseTime']
+        if renew_period is None and 'renewPeriod' in kwargs:
+            renew_period = kwargs['renewPeriod']
+        if renewal_duration is None and 'renewalDuration' in kwargs:
+            renewal_duration = kwargs['renewalDuration']
+        if renewal_duration_unit is None and 'renewalDurationUnit' in kwargs:
+            renewal_duration_unit = kwargs['renewalDurationUnit']
+        if renewal_status is None and 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+
         if account_number is not None:
-            pulumi.set(__self__, "account_number", account_number)
+            _setter("account_number", account_number)
         if band_width is not None:
-            pulumi.set(__self__, "band_width", band_width)
+            _setter("band_width", band_width)
         if cfw_account is not None:
-            pulumi.set(__self__, "cfw_account", cfw_account)
+            _setter("cfw_account", cfw_account)
         if cfw_log is not None:
-            pulumi.set(__self__, "cfw_log", cfw_log)
+            _setter("cfw_log", cfw_log)
         if cfw_log_storage is not None:
-            pulumi.set(__self__, "cfw_log_storage", cfw_log_storage)
+            _setter("cfw_log_storage", cfw_log_storage)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
+            _setter("end_time", end_time)
         if fw_vpc_number is not None:
-            pulumi.set(__self__, "fw_vpc_number", fw_vpc_number)
+            _setter("fw_vpc_number", fw_vpc_number)
         if instance_count is not None:
-            pulumi.set(__self__, "instance_count", instance_count)
+            _setter("instance_count", instance_count)
         if ip_number is not None:
-            pulumi.set(__self__, "ip_number", ip_number)
+            _setter("ip_number", ip_number)
         if logistics is not None:
-            pulumi.set(__self__, "logistics", logistics)
+            _setter("logistics", logistics)
         if modify_type is not None:
-            pulumi.set(__self__, "modify_type", modify_type)
+            _setter("modify_type", modify_type)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if release_time is not None:
-            pulumi.set(__self__, "release_time", release_time)
+            _setter("release_time", release_time)
         if renew_period is not None:
             warnings.warn("""Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""", DeprecationWarning)
             pulumi.log.warn("""renew_period is deprecated: Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""")
         if renew_period is not None:
-            pulumi.set(__self__, "renew_period", renew_period)
+            _setter("renew_period", renew_period)
         if renewal_duration is not None:
-            pulumi.set(__self__, "renewal_duration", renewal_duration)
+            _setter("renewal_duration", renewal_duration)
         if renewal_duration_unit is not None:
-            pulumi.set(__self__, "renewal_duration_unit", renewal_duration_unit)
+            _setter("renewal_duration_unit", renewal_duration_unit)
         if renewal_status is not None:
-            pulumi.set(__self__, "renewal_status", renewal_status)
+            _setter("renewal_status", renewal_status)
         if spec is not None:
-            pulumi.set(__self__, "spec", spec)
+            _setter("spec", spec)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="accountNumber")
@@ -766,6 +934,10 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

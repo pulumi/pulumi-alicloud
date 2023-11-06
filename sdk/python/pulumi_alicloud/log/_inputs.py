@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -40,8 +40,25 @@ class AlertAnnotationArgs:
         :param pulumi.Input[str] key: Annotations's key for new alert.
         :param pulumi.Input[str] value: Annotations's value for new alert.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        AlertAnnotationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -76,9 +93,24 @@ class AlertGroupConfigurationArgs:
         """
         :param pulumi.Input[str] type: including FixedRate,Hourly,Daily,Weekly,Cron.
         """
-        pulumi.set(__self__, "type", type)
+        AlertGroupConfigurationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            fields=fields,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: Optional[pulumi.Input[str]] = None,
+             fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
+        _setter("type", type)
         if fields is not None:
-            pulumi.set(__self__, "fields", fields)
+            _setter("fields", fields)
 
     @property
     @pulumi.getter
@@ -111,8 +143,25 @@ class AlertJoinConfigurationArgs:
         :param pulumi.Input[str] condition: Join condition.
         :param pulumi.Input[str] type: including FixedRate,Hourly,Daily,Weekly,Cron.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "type", type)
+        AlertJoinConfigurationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
+        _setter("condition", condition)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -148,8 +197,25 @@ class AlertLabelArgs:
         :param pulumi.Input[str] key: Annotations's key for new alert.
         :param pulumi.Input[str] value: Annotations's value for new alert.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        AlertLabelArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -191,14 +257,43 @@ class AlertNotificationListArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mobile_lists: SMS sending mobile number.
         :param pulumi.Input[str] service_uri: Request address.
         """
-        pulumi.set(__self__, "content", content)
-        pulumi.set(__self__, "type", type)
+        AlertNotificationListArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            content=content,
+            type=type,
+            email_lists=email_lists,
+            mobile_lists=mobile_lists,
+            service_uri=service_uri,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             content: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             email_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             mobile_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             service_uri: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if content is None:
+            raise TypeError("Missing 'content' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if email_lists is None and 'emailLists' in kwargs:
+            email_lists = kwargs['emailLists']
+        if mobile_lists is None and 'mobileLists' in kwargs:
+            mobile_lists = kwargs['mobileLists']
+        if service_uri is None and 'serviceUri' in kwargs:
+            service_uri = kwargs['serviceUri']
+
+        _setter("content", content)
+        _setter("type", type)
         if email_lists is not None:
-            pulumi.set(__self__, "email_lists", email_lists)
+            _setter("email_lists", email_lists)
         if mobile_lists is not None:
-            pulumi.set(__self__, "mobile_lists", mobile_lists)
+            _setter("mobile_lists", mobile_lists)
         if service_uri is not None:
-            pulumi.set(__self__, "service_uri", service_uri)
+            _setter("service_uri", service_uri)
 
     @property
     @pulumi.getter
@@ -272,10 +367,35 @@ class AlertPolicyConfigurationArgs:
         :param pulumi.Input[str] repeat_interval: Repeat interval used by alert policy, 1h, 1m.e.g.
         :param pulumi.Input[str] action_policy_id: Action Policy Id.
         """
-        pulumi.set(__self__, "alert_policy_id", alert_policy_id)
-        pulumi.set(__self__, "repeat_interval", repeat_interval)
+        AlertPolicyConfigurationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alert_policy_id=alert_policy_id,
+            repeat_interval=repeat_interval,
+            action_policy_id=action_policy_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alert_policy_id: Optional[pulumi.Input[str]] = None,
+             repeat_interval: Optional[pulumi.Input[str]] = None,
+             action_policy_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if alert_policy_id is None and 'alertPolicyId' in kwargs:
+            alert_policy_id = kwargs['alertPolicyId']
+        if alert_policy_id is None:
+            raise TypeError("Missing 'alert_policy_id' argument")
+        if repeat_interval is None and 'repeatInterval' in kwargs:
+            repeat_interval = kwargs['repeatInterval']
+        if repeat_interval is None:
+            raise TypeError("Missing 'repeat_interval' argument")
+        if action_policy_id is None and 'actionPolicyId' in kwargs:
+            action_policy_id = kwargs['actionPolicyId']
+
+        _setter("alert_policy_id", alert_policy_id)
+        _setter("repeat_interval", repeat_interval)
         if action_policy_id is not None:
-            pulumi.set(__self__, "action_policy_id", action_policy_id)
+            _setter("action_policy_id", action_policy_id)
 
     @property
     @pulumi.getter(name="alertPolicyId")
@@ -345,32 +465,85 @@ class AlertQueryListArgs:
         :param pulumi.Input[str] store_type: Query store type for new alert, including log,metric,meta.
         :param pulumi.Input[str] time_span_type: default Custom. No need to configure this parameter.
         """
-        pulumi.set(__self__, "end", end)
-        pulumi.set(__self__, "query", query)
-        pulumi.set(__self__, "start", start)
+        AlertQueryListArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            end=end,
+            query=query,
+            start=start,
+            chart_title=chart_title,
+            dashboard_id=dashboard_id,
+            logstore=logstore,
+            power_sql_mode=power_sql_mode,
+            project=project,
+            region=region,
+            role_arn=role_arn,
+            store=store,
+            store_type=store_type,
+            time_span_type=time_span_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             end: Optional[pulumi.Input[str]] = None,
+             query: Optional[pulumi.Input[str]] = None,
+             start: Optional[pulumi.Input[str]] = None,
+             chart_title: Optional[pulumi.Input[str]] = None,
+             dashboard_id: Optional[pulumi.Input[str]] = None,
+             logstore: Optional[pulumi.Input[str]] = None,
+             power_sql_mode: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             role_arn: Optional[pulumi.Input[str]] = None,
+             store: Optional[pulumi.Input[str]] = None,
+             store_type: Optional[pulumi.Input[str]] = None,
+             time_span_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if end is None:
+            raise TypeError("Missing 'end' argument")
+        if query is None:
+            raise TypeError("Missing 'query' argument")
+        if start is None:
+            raise TypeError("Missing 'start' argument")
+        if chart_title is None and 'chartTitle' in kwargs:
+            chart_title = kwargs['chartTitle']
+        if dashboard_id is None and 'dashboardId' in kwargs:
+            dashboard_id = kwargs['dashboardId']
+        if power_sql_mode is None and 'powerSqlMode' in kwargs:
+            power_sql_mode = kwargs['powerSqlMode']
+        if role_arn is None and 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if store_type is None and 'storeType' in kwargs:
+            store_type = kwargs['storeType']
+        if time_span_type is None and 'timeSpanType' in kwargs:
+            time_span_type = kwargs['timeSpanType']
+
+        _setter("end", end)
+        _setter("query", query)
+        _setter("start", start)
         if chart_title is not None:
-            pulumi.set(__self__, "chart_title", chart_title)
+            _setter("chart_title", chart_title)
         if dashboard_id is not None:
-            pulumi.set(__self__, "dashboard_id", dashboard_id)
+            _setter("dashboard_id", dashboard_id)
         if logstore is not None:
             warnings.warn("""Deprecated from 1.161.0+, use store""", DeprecationWarning)
             pulumi.log.warn("""logstore is deprecated: Deprecated from 1.161.0+, use store""")
         if logstore is not None:
-            pulumi.set(__self__, "logstore", logstore)
+            _setter("logstore", logstore)
         if power_sql_mode is not None:
-            pulumi.set(__self__, "power_sql_mode", power_sql_mode)
+            _setter("power_sql_mode", power_sql_mode)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
         if store is not None:
-            pulumi.set(__self__, "store", store)
+            _setter("store", store)
         if store_type is not None:
-            pulumi.set(__self__, "store_type", store_type)
+            _setter("store_type", store_type)
         if time_span_type is not None:
-            pulumi.set(__self__, "time_span_type", time_span_type)
+            _setter("time_span_type", time_span_type)
 
     @property
     @pulumi.getter
@@ -551,21 +724,56 @@ class AlertScheduleArgs:
         :param pulumi.Input[str] interval: Execution interval. 60 seconds minimum, such as 60s, 1h. used when type is FixedRate.
         :param pulumi.Input[str] time_zone: Time zone for schedule.
         """
-        pulumi.set(__self__, "type", type)
+        AlertScheduleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            cron_expression=cron_expression,
+            day_of_week=day_of_week,
+            delay=delay,
+            hour=hour,
+            interval=interval,
+            run_immediately=run_immediately,
+            time_zone=time_zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: Optional[pulumi.Input[str]] = None,
+             cron_expression: Optional[pulumi.Input[str]] = None,
+             day_of_week: Optional[pulumi.Input[int]] = None,
+             delay: Optional[pulumi.Input[int]] = None,
+             hour: Optional[pulumi.Input[int]] = None,
+             interval: Optional[pulumi.Input[str]] = None,
+             run_immediately: Optional[pulumi.Input[bool]] = None,
+             time_zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if cron_expression is None and 'cronExpression' in kwargs:
+            cron_expression = kwargs['cronExpression']
+        if day_of_week is None and 'dayOfWeek' in kwargs:
+            day_of_week = kwargs['dayOfWeek']
+        if run_immediately is None and 'runImmediately' in kwargs:
+            run_immediately = kwargs['runImmediately']
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
+        _setter("type", type)
         if cron_expression is not None:
-            pulumi.set(__self__, "cron_expression", cron_expression)
+            _setter("cron_expression", cron_expression)
         if day_of_week is not None:
-            pulumi.set(__self__, "day_of_week", day_of_week)
+            _setter("day_of_week", day_of_week)
         if delay is not None:
-            pulumi.set(__self__, "delay", delay)
+            _setter("delay", delay)
         if hour is not None:
-            pulumi.set(__self__, "hour", hour)
+            _setter("hour", hour)
         if interval is not None:
-            pulumi.set(__self__, "interval", interval)
+            _setter("interval", interval)
         if run_immediately is not None:
-            pulumi.set(__self__, "run_immediately", run_immediately)
+            _setter("run_immediately", run_immediately)
         if time_zone is not None:
-            pulumi.set(__self__, "time_zone", time_zone)
+            _setter("time_zone", time_zone)
 
     @property
     @pulumi.getter
@@ -667,8 +875,27 @@ class AlertSeverityConfigurationArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] eval_condition: Severity when this condition is met.
         :param pulumi.Input[int] severity: Severity for new alert, including 2,4,6,8,10 for Report,Low,Medium,High,Critical.
         """
-        pulumi.set(__self__, "eval_condition", eval_condition)
-        pulumi.set(__self__, "severity", severity)
+        AlertSeverityConfigurationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            eval_condition=eval_condition,
+            severity=severity,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             eval_condition: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             severity: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if eval_condition is None and 'evalCondition' in kwargs:
+            eval_condition = kwargs['evalCondition']
+        if eval_condition is None:
+            raise TypeError("Missing 'eval_condition' argument")
+        if severity is None:
+            raise TypeError("Missing 'severity' argument")
+
+        _setter("eval_condition", eval_condition)
+        _setter("severity", severity)
 
     @property
     @pulumi.getter(name="evalCondition")
@@ -710,14 +937,37 @@ class AlertTemplateConfigurationArgs:
         :param pulumi.Input[str] lang: Alert template language including `cn`, `en`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tokens: Alert template tokens.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "type", type)
+        AlertTemplateConfigurationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            type=type,
+            annotations=annotations,
+            lang=lang,
+            tokens=tokens,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             lang: Optional[pulumi.Input[str]] = None,
+             tokens: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
+        _setter("id", id)
+        _setter("type", type)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if lang is not None:
-            pulumi.set(__self__, "lang", lang)
+            _setter("lang", lang)
         if tokens is not None:
-            pulumi.set(__self__, "tokens", tokens)
+            _setter("tokens", tokens)
 
     @property
     @pulumi.getter
@@ -807,22 +1057,69 @@ class EtlEtlSinkArgs:
                
                > **Note:** `from_time` and `to_time` no modification allowed after successful creation.
         """
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "logstore", logstore)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "project", project)
+        EtlEtlSinkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            endpoint=endpoint,
+            logstore=logstore,
+            name=name,
+            project=project,
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            kms_encrypted_access_key_id=kms_encrypted_access_key_id,
+            kms_encrypted_access_key_secret=kms_encrypted_access_key_secret,
+            role_arn=role_arn,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             endpoint: Optional[pulumi.Input[str]] = None,
+             logstore: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             access_key_id: Optional[pulumi.Input[str]] = None,
+             access_key_secret: Optional[pulumi.Input[str]] = None,
+             kms_encrypted_access_key_id: Optional[pulumi.Input[str]] = None,
+             kms_encrypted_access_key_secret: Optional[pulumi.Input[str]] = None,
+             role_arn: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if logstore is None:
+            raise TypeError("Missing 'logstore' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if access_key_id is None and 'accessKeyId' in kwargs:
+            access_key_id = kwargs['accessKeyId']
+        if access_key_secret is None and 'accessKeySecret' in kwargs:
+            access_key_secret = kwargs['accessKeySecret']
+        if kms_encrypted_access_key_id is None and 'kmsEncryptedAccessKeyId' in kwargs:
+            kms_encrypted_access_key_id = kwargs['kmsEncryptedAccessKeyId']
+        if kms_encrypted_access_key_secret is None and 'kmsEncryptedAccessKeySecret' in kwargs:
+            kms_encrypted_access_key_secret = kwargs['kmsEncryptedAccessKeySecret']
+        if role_arn is None and 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+
+        _setter("endpoint", endpoint)
+        _setter("logstore", logstore)
+        _setter("name", name)
+        _setter("project", project)
         if access_key_id is not None:
-            pulumi.set(__self__, "access_key_id", access_key_id)
+            _setter("access_key_id", access_key_id)
         if access_key_secret is not None:
-            pulumi.set(__self__, "access_key_secret", access_key_secret)
+            _setter("access_key_secret", access_key_secret)
         if kms_encrypted_access_key_id is not None:
-            pulumi.set(__self__, "kms_encrypted_access_key_id", kms_encrypted_access_key_id)
+            _setter("kms_encrypted_access_key_id", kms_encrypted_access_key_id)
         if kms_encrypted_access_key_secret is not None:
-            pulumi.set(__self__, "kms_encrypted_access_key_secret", kms_encrypted_access_key_secret)
+            _setter("kms_encrypted_access_key_secret", kms_encrypted_access_key_secret)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -956,8 +1253,25 @@ class OssExportConfigColumnArgs:
         :param pulumi.Input[str] name: The name of the key.
         :param pulumi.Input[str] type: Type of configuration name.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "type", type)
+        OssExportConfigColumnArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
+        _setter("name", name)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -989,8 +1303,25 @@ class OssShipperParquetConfigArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  type: pulumi.Input[str]):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "type", type)
+        OssShipperParquetConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
+        _setter("name", name)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -1025,12 +1356,31 @@ class StoreEncryptConfArgs:
                import pulumi
                ```
         """
+        StoreEncryptConfArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enable=enable,
+            encrypt_type=encrypt_type,
+            user_cmk_info=user_cmk_info,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enable: Optional[pulumi.Input[bool]] = None,
+             encrypt_type: Optional[pulumi.Input[str]] = None,
+             user_cmk_info: Optional[pulumi.Input['StoreEncryptConfUserCmkInfoArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if encrypt_type is None and 'encryptType' in kwargs:
+            encrypt_type = kwargs['encryptType']
+        if user_cmk_info is None and 'userCmkInfo' in kwargs:
+            user_cmk_info = kwargs['userCmkInfo']
+
         if enable is not None:
-            pulumi.set(__self__, "enable", enable)
+            _setter("enable", enable)
         if encrypt_type is not None:
-            pulumi.set(__self__, "encrypt_type", encrypt_type)
+            _setter("encrypt_type", encrypt_type)
         if user_cmk_info is not None:
-            pulumi.set(__self__, "user_cmk_info", user_cmk_info)
+            _setter("user_cmk_info", user_cmk_info)
 
     @property
     @pulumi.getter
@@ -1083,9 +1433,34 @@ class StoreEncryptConfUserCmkInfoArgs:
         :param pulumi.Input[str] cmk_key_id: User master key id.
         :param pulumi.Input[str] region_id: Region id where the  user master key id is located.
         """
-        pulumi.set(__self__, "arn", arn)
-        pulumi.set(__self__, "cmk_key_id", cmk_key_id)
-        pulumi.set(__self__, "region_id", region_id)
+        StoreEncryptConfUserCmkInfoArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arn=arn,
+            cmk_key_id=cmk_key_id,
+            region_id=region_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arn: Optional[pulumi.Input[str]] = None,
+             cmk_key_id: Optional[pulumi.Input[str]] = None,
+             region_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if arn is None:
+            raise TypeError("Missing 'arn' argument")
+        if cmk_key_id is None and 'cmkKeyId' in kwargs:
+            cmk_key_id = kwargs['cmkKeyId']
+        if cmk_key_id is None:
+            raise TypeError("Missing 'cmk_key_id' argument")
+        if region_id is None and 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+
+        _setter("arn", arn)
+        _setter("cmk_key_id", cmk_key_id)
+        _setter("region_id", region_id)
 
     @property
     @pulumi.getter
@@ -1145,21 +1520,56 @@ class StoreIndexFieldSearchArgs:
         :param pulumi.Input[str] token: The string of several split words, like "\\r", "#". It is valid when "type" is "text" or "json".
         :param pulumi.Input[str] type: The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
         """
-        pulumi.set(__self__, "name", name)
+        StoreIndexFieldSearchArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            alias=alias,
+            case_sensitive=case_sensitive,
+            enable_analytics=enable_analytics,
+            include_chinese=include_chinese,
+            json_keys=json_keys,
+            token=token,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             alias: Optional[pulumi.Input[str]] = None,
+             case_sensitive: Optional[pulumi.Input[bool]] = None,
+             enable_analytics: Optional[pulumi.Input[bool]] = None,
+             include_chinese: Optional[pulumi.Input[bool]] = None,
+             json_keys: Optional[pulumi.Input[Sequence[pulumi.Input['StoreIndexFieldSearchJsonKeyArgs']]]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if case_sensitive is None and 'caseSensitive' in kwargs:
+            case_sensitive = kwargs['caseSensitive']
+        if enable_analytics is None and 'enableAnalytics' in kwargs:
+            enable_analytics = kwargs['enableAnalytics']
+        if include_chinese is None and 'includeChinese' in kwargs:
+            include_chinese = kwargs['includeChinese']
+        if json_keys is None and 'jsonKeys' in kwargs:
+            json_keys = kwargs['jsonKeys']
+
+        _setter("name", name)
         if alias is not None:
-            pulumi.set(__self__, "alias", alias)
+            _setter("alias", alias)
         if case_sensitive is not None:
-            pulumi.set(__self__, "case_sensitive", case_sensitive)
+            _setter("case_sensitive", case_sensitive)
         if enable_analytics is not None:
-            pulumi.set(__self__, "enable_analytics", enable_analytics)
+            _setter("enable_analytics", enable_analytics)
         if include_chinese is not None:
-            pulumi.set(__self__, "include_chinese", include_chinese)
+            _setter("include_chinese", include_chinese)
         if json_keys is not None:
-            pulumi.set(__self__, "json_keys", json_keys)
+            _setter("json_keys", json_keys)
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -1273,13 +1683,34 @@ class StoreIndexFieldSearchJsonKeyArgs:
                > **Note:** At least one of the "full_text" and "field_search" should be specified.
         :param pulumi.Input[str] type: The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
         """
-        pulumi.set(__self__, "name", name)
+        StoreIndexFieldSearchJsonKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            alias=alias,
+            doc_value=doc_value,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             alias: Optional[pulumi.Input[str]] = None,
+             doc_value: Optional[pulumi.Input[bool]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if doc_value is None and 'docValue' in kwargs:
+            doc_value = kwargs['docValue']
+
+        _setter("name", name)
         if alias is not None:
-            pulumi.set(__self__, "alias", alias)
+            _setter("alias", alias)
         if doc_value is not None:
-            pulumi.set(__self__, "doc_value", doc_value)
+            _setter("doc_value", doc_value)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -1343,12 +1774,31 @@ class StoreIndexFullTextArgs:
         :param pulumi.Input[bool] include_chinese: Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
         :param pulumi.Input[str] token: The string of several split words, like "\\r", "#". It is valid when "type" is "text" or "json".
         """
+        StoreIndexFullTextArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            case_sensitive=case_sensitive,
+            include_chinese=include_chinese,
+            token=token,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             case_sensitive: Optional[pulumi.Input[bool]] = None,
+             include_chinese: Optional[pulumi.Input[bool]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if case_sensitive is None and 'caseSensitive' in kwargs:
+            case_sensitive = kwargs['caseSensitive']
+        if include_chinese is None and 'includeChinese' in kwargs:
+            include_chinese = kwargs['includeChinese']
+
         if case_sensitive is not None:
-            pulumi.set(__self__, "case_sensitive", case_sensitive)
+            _setter("case_sensitive", case_sensitive)
         if include_chinese is not None:
-            pulumi.set(__self__, "include_chinese", include_chinese)
+            _setter("include_chinese", include_chinese)
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
 
     @property
     @pulumi.getter(name="caseSensitive")
@@ -1400,14 +1850,35 @@ class StoreShardArgs:
         :param pulumi.Input[int] id: The ID of the shard.
         :param pulumi.Input[str] status: Shard status, only two status of `readwrite` and `readonly`.
         """
+        StoreShardArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            begin_key=begin_key,
+            end_key=end_key,
+            id=id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             begin_key: Optional[pulumi.Input[str]] = None,
+             end_key: Optional[pulumi.Input[str]] = None,
+             id: Optional[pulumi.Input[int]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if begin_key is None and 'beginKey' in kwargs:
+            begin_key = kwargs['beginKey']
+        if end_key is None and 'endKey' in kwargs:
+            end_key = kwargs['endKey']
+
         if begin_key is not None:
-            pulumi.set(__self__, "begin_key", begin_key)
+            _setter("begin_key", begin_key)
         if end_key is not None:
-            pulumi.set(__self__, "end_key", end_key)
+            _setter("end_key", end_key)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="beginKey")

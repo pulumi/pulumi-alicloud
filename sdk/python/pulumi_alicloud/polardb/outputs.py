@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -65,12 +65,33 @@ class ClusterDbClusterIpArray(dict):
                **NOTE:** There does not recommend setting modify_mode to `Append` or `Delete` and it will bring a potential diff error.
         :param Sequence[str] security_ips: List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         """
+        ClusterDbClusterIpArray._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_cluster_ip_array_name=db_cluster_ip_array_name,
+            modify_mode=modify_mode,
+            security_ips=security_ips,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_cluster_ip_array_name: Optional[str] = None,
+             modify_mode: Optional[str] = None,
+             security_ips: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if db_cluster_ip_array_name is None and 'dbClusterIpArrayName' in kwargs:
+            db_cluster_ip_array_name = kwargs['dbClusterIpArrayName']
+        if modify_mode is None and 'modifyMode' in kwargs:
+            modify_mode = kwargs['modifyMode']
+        if security_ips is None and 'securityIps' in kwargs:
+            security_ips = kwargs['securityIps']
+
         if db_cluster_ip_array_name is not None:
-            pulumi.set(__self__, "db_cluster_ip_array_name", db_cluster_ip_array_name)
+            _setter("db_cluster_ip_array_name", db_cluster_ip_array_name)
         if modify_mode is not None:
-            pulumi.set(__self__, "modify_mode", modify_mode)
+            _setter("modify_mode", modify_mode)
         if security_ips is not None:
-            pulumi.set(__self__, "security_ips", security_ips)
+            _setter("security_ips", security_ips)
 
     @property
     @pulumi.getter(name="dbClusterIpArrayName")
@@ -108,8 +129,25 @@ class ClusterParameter(dict):
         :param str name: Kernel parameter name.
         :param str value: Kernel parameter value.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        ClusterParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
+        _setter("name", name)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -156,8 +194,29 @@ class ParameterGroupParameter(dict):
         :param str param_name: The name of a parameter in the parameter template.
         :param str param_value: The value of a parameter in the parameter template.
         """
-        pulumi.set(__self__, "param_name", param_name)
-        pulumi.set(__self__, "param_value", param_value)
+        ParameterGroupParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            param_name=param_name,
+            param_value=param_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             param_name: Optional[str] = None,
+             param_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if param_name is None and 'paramName' in kwargs:
+            param_name = kwargs['paramName']
+        if param_name is None:
+            raise TypeError("Missing 'param_name' argument")
+        if param_value is None and 'paramValue' in kwargs:
+            param_value = kwargs['paramValue']
+        if param_value is None:
+            raise TypeError("Missing 'param_value' argument")
+
+        _setter("param_name", param_name)
+        _setter("param_value", param_value)
 
     @property
     @pulumi.getter(name="paramName")
@@ -193,12 +252,57 @@ class GetAccountsAccountResult(dict):
         :param str account_type: Account type, Valid values are `Normal`, `Super`.
         :param Sequence['GetAccountsAccountDatabasePrivilegeArgs'] database_privileges: A list of database privilege. Each element contains the following attributes.
         """
-        pulumi.set(__self__, "account_description", account_description)
-        pulumi.set(__self__, "account_lock_state", account_lock_state)
-        pulumi.set(__self__, "account_name", account_name)
-        pulumi.set(__self__, "account_status", account_status)
-        pulumi.set(__self__, "account_type", account_type)
-        pulumi.set(__self__, "database_privileges", database_privileges)
+        GetAccountsAccountResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_description=account_description,
+            account_lock_state=account_lock_state,
+            account_name=account_name,
+            account_status=account_status,
+            account_type=account_type,
+            database_privileges=database_privileges,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_description: Optional[str] = None,
+             account_lock_state: Optional[str] = None,
+             account_name: Optional[str] = None,
+             account_status: Optional[str] = None,
+             account_type: Optional[str] = None,
+             database_privileges: Optional[Sequence['outputs.GetAccountsAccountDatabasePrivilegeResult']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_description is None and 'accountDescription' in kwargs:
+            account_description = kwargs['accountDescription']
+        if account_description is None:
+            raise TypeError("Missing 'account_description' argument")
+        if account_lock_state is None and 'accountLockState' in kwargs:
+            account_lock_state = kwargs['accountLockState']
+        if account_lock_state is None:
+            raise TypeError("Missing 'account_lock_state' argument")
+        if account_name is None and 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+        if account_status is None and 'accountStatus' in kwargs:
+            account_status = kwargs['accountStatus']
+        if account_status is None:
+            raise TypeError("Missing 'account_status' argument")
+        if account_type is None and 'accountType' in kwargs:
+            account_type = kwargs['accountType']
+        if account_type is None:
+            raise TypeError("Missing 'account_type' argument")
+        if database_privileges is None and 'databasePrivileges' in kwargs:
+            database_privileges = kwargs['databasePrivileges']
+        if database_privileges is None:
+            raise TypeError("Missing 'database_privileges' argument")
+
+        _setter("account_description", account_description)
+        _setter("account_lock_state", account_lock_state)
+        _setter("account_name", account_name)
+        _setter("account_status", account_status)
+        _setter("account_type", account_type)
+        _setter("database_privileges", database_privileges)
 
     @property
     @pulumi.getter(name="accountDescription")
@@ -258,8 +362,29 @@ class GetAccountsAccountDatabasePrivilegeResult(dict):
         :param str account_privilege: Account privilege of database
         :param str db_name: The account owned database name
         """
-        pulumi.set(__self__, "account_privilege", account_privilege)
-        pulumi.set(__self__, "db_name", db_name)
+        GetAccountsAccountDatabasePrivilegeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_privilege=account_privilege,
+            db_name=db_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_privilege: Optional[str] = None,
+             db_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_privilege is None and 'accountPrivilege' in kwargs:
+            account_privilege = kwargs['accountPrivilege']
+        if account_privilege is None:
+            raise TypeError("Missing 'account_privilege' argument")
+        if db_name is None and 'dbName' in kwargs:
+            db_name = kwargs['dbName']
+        if db_name is None:
+            raise TypeError("Missing 'db_name' argument")
+
+        _setter("account_privilege", account_privilege)
+        _setter("db_name", db_name)
 
     @property
     @pulumi.getter(name="accountPrivilege")
@@ -327,28 +452,157 @@ class GetClustersClusterResult(dict):
         :param str vpc_id: ID of the VPC the cluster belongs to.
         :param str zone_id: The zone_id of the db_nodes.
         """
-        pulumi.set(__self__, "charge_type", charge_type)
-        pulumi.set(__self__, "connection_string", connection_string)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "db_node_class", db_node_class)
-        pulumi.set(__self__, "db_node_number", db_node_number)
-        pulumi.set(__self__, "db_nodes", db_nodes)
-        pulumi.set(__self__, "db_type", db_type)
-        pulumi.set(__self__, "db_version", db_version)
-        pulumi.set(__self__, "delete_lock", delete_lock)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "expire_time", expire_time)
-        pulumi.set(__self__, "expired", expired)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "lock_mode", lock_mode)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "storage_used", storage_used)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetClustersClusterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            charge_type=charge_type,
+            connection_string=connection_string,
+            create_time=create_time,
+            db_node_class=db_node_class,
+            db_node_number=db_node_number,
+            db_nodes=db_nodes,
+            db_type=db_type,
+            db_version=db_version,
+            delete_lock=delete_lock,
+            description=description,
+            engine=engine,
+            expire_time=expire_time,
+            expired=expired,
+            id=id,
+            lock_mode=lock_mode,
+            network_type=network_type,
+            port=port,
+            region_id=region_id,
+            status=status,
+            storage_used=storage_used,
+            vpc_id=vpc_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             charge_type: Optional[str] = None,
+             connection_string: Optional[str] = None,
+             create_time: Optional[str] = None,
+             db_node_class: Optional[str] = None,
+             db_node_number: Optional[int] = None,
+             db_nodes: Optional[Sequence['outputs.GetClustersClusterDbNodeResult']] = None,
+             db_type: Optional[str] = None,
+             db_version: Optional[str] = None,
+             delete_lock: Optional[int] = None,
+             description: Optional[str] = None,
+             engine: Optional[str] = None,
+             expire_time: Optional[str] = None,
+             expired: Optional[str] = None,
+             id: Optional[str] = None,
+             lock_mode: Optional[str] = None,
+             network_type: Optional[str] = None,
+             port: Optional[str] = None,
+             region_id: Optional[str] = None,
+             status: Optional[str] = None,
+             storage_used: Optional[int] = None,
+             vpc_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if charge_type is None and 'chargeType' in kwargs:
+            charge_type = kwargs['chargeType']
+        if charge_type is None:
+            raise TypeError("Missing 'charge_type' argument")
+        if connection_string is None and 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if connection_string is None:
+            raise TypeError("Missing 'connection_string' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if db_node_class is None and 'dbNodeClass' in kwargs:
+            db_node_class = kwargs['dbNodeClass']
+        if db_node_class is None:
+            raise TypeError("Missing 'db_node_class' argument")
+        if db_node_number is None and 'dbNodeNumber' in kwargs:
+            db_node_number = kwargs['dbNodeNumber']
+        if db_node_number is None:
+            raise TypeError("Missing 'db_node_number' argument")
+        if db_nodes is None and 'dbNodes' in kwargs:
+            db_nodes = kwargs['dbNodes']
+        if db_nodes is None:
+            raise TypeError("Missing 'db_nodes' argument")
+        if db_type is None and 'dbType' in kwargs:
+            db_type = kwargs['dbType']
+        if db_type is None:
+            raise TypeError("Missing 'db_type' argument")
+        if db_version is None and 'dbVersion' in kwargs:
+            db_version = kwargs['dbVersion']
+        if db_version is None:
+            raise TypeError("Missing 'db_version' argument")
+        if delete_lock is None and 'deleteLock' in kwargs:
+            delete_lock = kwargs['deleteLock']
+        if delete_lock is None:
+            raise TypeError("Missing 'delete_lock' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if engine is None:
+            raise TypeError("Missing 'engine' argument")
+        if expire_time is None and 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if expire_time is None:
+            raise TypeError("Missing 'expire_time' argument")
+        if expired is None:
+            raise TypeError("Missing 'expired' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if lock_mode is None and 'lockMode' in kwargs:
+            lock_mode = kwargs['lockMode']
+        if lock_mode is None:
+            raise TypeError("Missing 'lock_mode' argument")
+        if network_type is None and 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if network_type is None:
+            raise TypeError("Missing 'network_type' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if region_id is None and 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if storage_used is None and 'storageUsed' in kwargs:
+            storage_used = kwargs['storageUsed']
+        if storage_used is None:
+            raise TypeError("Missing 'storage_used' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+
+        _setter("charge_type", charge_type)
+        _setter("connection_string", connection_string)
+        _setter("create_time", create_time)
+        _setter("db_node_class", db_node_class)
+        _setter("db_node_number", db_node_number)
+        _setter("db_nodes", db_nodes)
+        _setter("db_type", db_type)
+        _setter("db_version", db_version)
+        _setter("delete_lock", delete_lock)
+        _setter("description", description)
+        _setter("engine", engine)
+        _setter("expire_time", expire_time)
+        _setter("expired", expired)
+        _setter("id", id)
+        _setter("lock_mode", lock_mode)
+        _setter("network_type", network_type)
+        _setter("port", port)
+        _setter("region_id", region_id)
+        _setter("status", status)
+        _setter("storage_used", storage_used)
+        _setter("vpc_id", vpc_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="chargeType")
@@ -550,15 +804,78 @@ class GetClustersClusterDbNodeResult(dict):
         :param str region_id: The region_id of the db_nodes.
         :param str zone_id: The zone_id of the db_nodes.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "db_node_class", db_node_class)
-        pulumi.set(__self__, "db_node_id", db_node_id)
-        pulumi.set(__self__, "db_node_role", db_node_role)
-        pulumi.set(__self__, "db_node_status", db_node_status)
-        pulumi.set(__self__, "max_connections", max_connections)
-        pulumi.set(__self__, "max_iops", max_iops)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetClustersClusterDbNodeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            db_node_class=db_node_class,
+            db_node_id=db_node_id,
+            db_node_role=db_node_role,
+            db_node_status=db_node_status,
+            max_connections=max_connections,
+            max_iops=max_iops,
+            region_id=region_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[str] = None,
+             db_node_class: Optional[str] = None,
+             db_node_id: Optional[str] = None,
+             db_node_role: Optional[str] = None,
+             db_node_status: Optional[str] = None,
+             max_connections: Optional[int] = None,
+             max_iops: Optional[int] = None,
+             region_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if db_node_class is None and 'dbNodeClass' in kwargs:
+            db_node_class = kwargs['dbNodeClass']
+        if db_node_class is None:
+            raise TypeError("Missing 'db_node_class' argument")
+        if db_node_id is None and 'dbNodeId' in kwargs:
+            db_node_id = kwargs['dbNodeId']
+        if db_node_id is None:
+            raise TypeError("Missing 'db_node_id' argument")
+        if db_node_role is None and 'dbNodeRole' in kwargs:
+            db_node_role = kwargs['dbNodeRole']
+        if db_node_role is None:
+            raise TypeError("Missing 'db_node_role' argument")
+        if db_node_status is None and 'dbNodeStatus' in kwargs:
+            db_node_status = kwargs['dbNodeStatus']
+        if db_node_status is None:
+            raise TypeError("Missing 'db_node_status' argument")
+        if max_connections is None and 'maxConnections' in kwargs:
+            max_connections = kwargs['maxConnections']
+        if max_connections is None:
+            raise TypeError("Missing 'max_connections' argument")
+        if max_iops is None and 'maxIops' in kwargs:
+            max_iops = kwargs['maxIops']
+        if max_iops is None:
+            raise TypeError("Missing 'max_iops' argument")
+        if region_id is None and 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+
+        _setter("create_time", create_time)
+        _setter("db_node_class", db_node_class)
+        _setter("db_node_id", db_node_id)
+        _setter("db_node_role", db_node_role)
+        _setter("db_node_status", db_node_status)
+        _setter("max_connections", max_connections)
+        _setter("max_iops", max_iops)
+        _setter("region_id", region_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="createTime")
@@ -650,12 +967,53 @@ class GetDatabasesDatabaseResult(dict):
         :param str db_status: The status of database.
         :param str engine: The engine of database.
         """
-        pulumi.set(__self__, "accounts", accounts)
-        pulumi.set(__self__, "character_set_name", character_set_name)
-        pulumi.set(__self__, "db_description", db_description)
-        pulumi.set(__self__, "db_name", db_name)
-        pulumi.set(__self__, "db_status", db_status)
-        pulumi.set(__self__, "engine", engine)
+        GetDatabasesDatabaseResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accounts=accounts,
+            character_set_name=character_set_name,
+            db_description=db_description,
+            db_name=db_name,
+            db_status=db_status,
+            engine=engine,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accounts: Optional[Sequence['outputs.GetDatabasesDatabaseAccountResult']] = None,
+             character_set_name: Optional[str] = None,
+             db_description: Optional[str] = None,
+             db_name: Optional[str] = None,
+             db_status: Optional[str] = None,
+             engine: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accounts is None:
+            raise TypeError("Missing 'accounts' argument")
+        if character_set_name is None and 'characterSetName' in kwargs:
+            character_set_name = kwargs['characterSetName']
+        if character_set_name is None:
+            raise TypeError("Missing 'character_set_name' argument")
+        if db_description is None and 'dbDescription' in kwargs:
+            db_description = kwargs['dbDescription']
+        if db_description is None:
+            raise TypeError("Missing 'db_description' argument")
+        if db_name is None and 'dbName' in kwargs:
+            db_name = kwargs['dbName']
+        if db_name is None:
+            raise TypeError("Missing 'db_name' argument")
+        if db_status is None and 'dbStatus' in kwargs:
+            db_status = kwargs['dbStatus']
+        if db_status is None:
+            raise TypeError("Missing 'db_status' argument")
+        if engine is None:
+            raise TypeError("Missing 'engine' argument")
+
+        _setter("accounts", accounts)
+        _setter("character_set_name", character_set_name)
+        _setter("db_description", db_description)
+        _setter("db_name", db_name)
+        _setter("db_status", db_status)
+        _setter("engine", engine)
 
     @property
     @pulumi.getter
@@ -717,9 +1075,36 @@ class GetDatabasesDatabaseAccountResult(dict):
         :param str account_status: Account status.
         :param str privilege_status: The privilege status of account.
         """
-        pulumi.set(__self__, "account_name", account_name)
-        pulumi.set(__self__, "account_status", account_status)
-        pulumi.set(__self__, "privilege_status", privilege_status)
+        GetDatabasesDatabaseAccountResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_name=account_name,
+            account_status=account_status,
+            privilege_status=privilege_status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_name: Optional[str] = None,
+             account_status: Optional[str] = None,
+             privilege_status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_name is None and 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+        if account_status is None and 'accountStatus' in kwargs:
+            account_status = kwargs['accountStatus']
+        if account_status is None:
+            raise TypeError("Missing 'account_status' argument")
+        if privilege_status is None and 'privilegeStatus' in kwargs:
+            privilege_status = kwargs['privilegeStatus']
+        if privilege_status is None:
+            raise TypeError("Missing 'privilege_status' argument")
+
+        _setter("account_name", account_name)
+        _setter("account_status", account_status)
+        _setter("privilege_status", privilege_status)
 
     @property
     @pulumi.getter(name="accountName")
@@ -765,13 +1150,62 @@ class GetEndpointsEndpointResult(dict):
         :param str nodes: A list of nodes that connect to the address configuration.
         :param str read_write_mode: Read-write mode:`ReadWrite`: readable and writable (automatic read-write separation).`ReadOnly`: ReadOnly.
         """
-        pulumi.set(__self__, "address_items", address_items)
-        pulumi.set(__self__, "auto_add_new_nodes", auto_add_new_nodes)
-        pulumi.set(__self__, "db_endpoint_id", db_endpoint_id)
-        pulumi.set(__self__, "endpoint_config", endpoint_config)
-        pulumi.set(__self__, "endpoint_type", endpoint_type)
-        pulumi.set(__self__, "nodes", nodes)
-        pulumi.set(__self__, "read_write_mode", read_write_mode)
+        GetEndpointsEndpointResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address_items=address_items,
+            auto_add_new_nodes=auto_add_new_nodes,
+            db_endpoint_id=db_endpoint_id,
+            endpoint_config=endpoint_config,
+            endpoint_type=endpoint_type,
+            nodes=nodes,
+            read_write_mode=read_write_mode,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address_items: Optional[Sequence['outputs.GetEndpointsEndpointAddressItemResult']] = None,
+             auto_add_new_nodes: Optional[str] = None,
+             db_endpoint_id: Optional[str] = None,
+             endpoint_config: Optional[str] = None,
+             endpoint_type: Optional[str] = None,
+             nodes: Optional[str] = None,
+             read_write_mode: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if address_items is None and 'addressItems' in kwargs:
+            address_items = kwargs['addressItems']
+        if address_items is None:
+            raise TypeError("Missing 'address_items' argument")
+        if auto_add_new_nodes is None and 'autoAddNewNodes' in kwargs:
+            auto_add_new_nodes = kwargs['autoAddNewNodes']
+        if auto_add_new_nodes is None:
+            raise TypeError("Missing 'auto_add_new_nodes' argument")
+        if db_endpoint_id is None and 'dbEndpointId' in kwargs:
+            db_endpoint_id = kwargs['dbEndpointId']
+        if db_endpoint_id is None:
+            raise TypeError("Missing 'db_endpoint_id' argument")
+        if endpoint_config is None and 'endpointConfig' in kwargs:
+            endpoint_config = kwargs['endpointConfig']
+        if endpoint_config is None:
+            raise TypeError("Missing 'endpoint_config' argument")
+        if endpoint_type is None and 'endpointType' in kwargs:
+            endpoint_type = kwargs['endpointType']
+        if endpoint_type is None:
+            raise TypeError("Missing 'endpoint_type' argument")
+        if nodes is None:
+            raise TypeError("Missing 'nodes' argument")
+        if read_write_mode is None and 'readWriteMode' in kwargs:
+            read_write_mode = kwargs['readWriteMode']
+        if read_write_mode is None:
+            raise TypeError("Missing 'read_write_mode' argument")
+
+        _setter("address_items", address_items)
+        _setter("auto_add_new_nodes", auto_add_new_nodes)
+        _setter("db_endpoint_id", db_endpoint_id)
+        _setter("endpoint_config", endpoint_config)
+        _setter("endpoint_type", endpoint_type)
+        _setter("nodes", nodes)
+        _setter("read_write_mode", read_write_mode)
 
     @property
     @pulumi.getter(name="addressItems")
@@ -847,12 +1281,55 @@ class GetEndpointsEndpointAddressItemResult(dict):
         :param str vpc_id: ID of the VPC the instance belongs to.
         :param str vswitch_id: ID of the VSwitch the cluster belongs to.
         """
-        pulumi.set(__self__, "connection_string", connection_string)
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "net_type", net_type)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetEndpointsEndpointAddressItemResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connection_string=connection_string,
+            ip_address=ip_address,
+            net_type=net_type,
+            port=port,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connection_string: Optional[str] = None,
+             ip_address: Optional[str] = None,
+             net_type: Optional[str] = None,
+             port: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connection_string is None and 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if connection_string is None:
+            raise TypeError("Missing 'connection_string' argument")
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+        if net_type is None and 'netType' in kwargs:
+            net_type = kwargs['netType']
+        if net_type is None:
+            raise TypeError("Missing 'net_type' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+
+        _setter("connection_string", connection_string)
+        _setter("ip_address", ip_address)
+        _setter("net_type", net_type)
+        _setter("port", port)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="connectionString")
@@ -924,14 +1401,65 @@ class GetGlobalDatabaseNetworksNetworkResult(dict):
         :param str id: The ID of the Global Database Network.
         :param str status: The status of the Global Database Network. Valid values:
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "db_clusters", db_clusters)
-        pulumi.set(__self__, "db_type", db_type)
-        pulumi.set(__self__, "db_version", db_version)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "gdn_id", gdn_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "status", status)
+        GetGlobalDatabaseNetworksNetworkResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            db_clusters=db_clusters,
+            db_type=db_type,
+            db_version=db_version,
+            description=description,
+            gdn_id=gdn_id,
+            id=id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[str] = None,
+             db_clusters: Optional[Sequence['outputs.GetGlobalDatabaseNetworksNetworkDbClusterResult']] = None,
+             db_type: Optional[str] = None,
+             db_version: Optional[str] = None,
+             description: Optional[str] = None,
+             gdn_id: Optional[str] = None,
+             id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if db_clusters is None and 'dbClusters' in kwargs:
+            db_clusters = kwargs['dbClusters']
+        if db_clusters is None:
+            raise TypeError("Missing 'db_clusters' argument")
+        if db_type is None and 'dbType' in kwargs:
+            db_type = kwargs['dbType']
+        if db_type is None:
+            raise TypeError("Missing 'db_type' argument")
+        if db_version is None and 'dbVersion' in kwargs:
+            db_version = kwargs['dbVersion']
+        if db_version is None:
+            raise TypeError("Missing 'db_version' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if gdn_id is None and 'gdnId' in kwargs:
+            gdn_id = kwargs['gdnId']
+        if gdn_id is None:
+            raise TypeError("Missing 'gdn_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+
+        _setter("create_time", create_time)
+        _setter("db_clusters", db_clusters)
+        _setter("db_type", db_type)
+        _setter("db_version", db_version)
+        _setter("description", description)
+        _setter("gdn_id", gdn_id)
+        _setter("id", id)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="createTime")
@@ -1009,9 +1537,34 @@ class GetGlobalDatabaseNetworksNetworkDbClusterResult(dict):
         :param str region_id: The region ID of the cluster.
         :param str role: The role of the cluster.
         """
-        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "role", role)
+        GetGlobalDatabaseNetworksNetworkDbClusterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_cluster_id=db_cluster_id,
+            region_id=region_id,
+            role=role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_cluster_id: Optional[str] = None,
+             region_id: Optional[str] = None,
+             role: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if db_cluster_id is None and 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+        if db_cluster_id is None:
+            raise TypeError("Missing 'db_cluster_id' argument")
+        if region_id is None and 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
+        _setter("db_cluster_id", db_cluster_id)
+        _setter("region_id", region_id)
+        _setter("role", role)
 
     @property
     @pulumi.getter(name="dbClusterId")
@@ -1047,8 +1600,29 @@ class GetNodeClassesClassResult(dict):
         :param Sequence['GetNodeClassesClassSupportedEngineArgs'] supported_engines: A list of PolarDB node classes in the zone.
         :param str zone_id: The Zone to launch the PolarDB cluster.
         """
-        pulumi.set(__self__, "supported_engines", supported_engines)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetNodeClassesClassResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            supported_engines=supported_engines,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             supported_engines: Optional[Sequence['outputs.GetNodeClassesClassSupportedEngineResult']] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if supported_engines is None and 'supportedEngines' in kwargs:
+            supported_engines = kwargs['supportedEngines']
+        if supported_engines is None:
+            raise TypeError("Missing 'supported_engines' argument")
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+
+        _setter("supported_engines", supported_engines)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="supportedEngines")
@@ -1076,8 +1650,27 @@ class GetNodeClassesClassSupportedEngineResult(dict):
         :param Sequence['GetNodeClassesClassSupportedEngineAvailableResourceArgs'] available_resources: A list of PolarDB node available classes.
         :param str engine: In the zone, the database type supports classes in the following available_resources.
         """
-        pulumi.set(__self__, "available_resources", available_resources)
-        pulumi.set(__self__, "engine", engine)
+        GetNodeClassesClassSupportedEngineResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            available_resources=available_resources,
+            engine=engine,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             available_resources: Optional[Sequence['outputs.GetNodeClassesClassSupportedEngineAvailableResourceResult']] = None,
+             engine: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if available_resources is None and 'availableResources' in kwargs:
+            available_resources = kwargs['availableResources']
+        if available_resources is None:
+            raise TypeError("Missing 'available_resources' argument")
+        if engine is None:
+            raise TypeError("Missing 'engine' argument")
+
+        _setter("available_resources", available_resources)
+        _setter("engine", engine)
 
     @property
     @pulumi.getter(name="availableResources")
@@ -1103,7 +1696,22 @@ class GetNodeClassesClassSupportedEngineAvailableResourceResult(dict):
         """
         :param str db_node_class: The PolarDB node class type by the user.
         """
-        pulumi.set(__self__, "db_node_class", db_node_class)
+        GetNodeClassesClassSupportedEngineAvailableResourceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_node_class=db_node_class,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_node_class: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if db_node_class is None and 'dbNodeClass' in kwargs:
+            db_node_class = kwargs['dbNodeClass']
+        if db_node_class is None:
+            raise TypeError("Missing 'db_node_class' argument")
+
+        _setter("db_node_class", db_node_class)
 
     @property
     @pulumi.getter(name="dbNodeClass")
@@ -1139,16 +1747,83 @@ class GetParameterGroupsGroupResult(dict):
         :param str parameter_group_name: The name of the parameter template.
         :param str parameter_group_type: The type of the parameter template.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "db_type", db_type)
-        pulumi.set(__self__, "db_version", db_version)
-        pulumi.set(__self__, "force_restart", force_restart)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "parameter_counts", parameter_counts)
-        pulumi.set(__self__, "parameter_group_desc", parameter_group_desc)
-        pulumi.set(__self__, "parameter_group_id", parameter_group_id)
-        pulumi.set(__self__, "parameter_group_name", parameter_group_name)
-        pulumi.set(__self__, "parameter_group_type", parameter_group_type)
+        GetParameterGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            db_type=db_type,
+            db_version=db_version,
+            force_restart=force_restart,
+            id=id,
+            parameter_counts=parameter_counts,
+            parameter_group_desc=parameter_group_desc,
+            parameter_group_id=parameter_group_id,
+            parameter_group_name=parameter_group_name,
+            parameter_group_type=parameter_group_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[str] = None,
+             db_type: Optional[str] = None,
+             db_version: Optional[str] = None,
+             force_restart: Optional[str] = None,
+             id: Optional[str] = None,
+             parameter_counts: Optional[int] = None,
+             parameter_group_desc: Optional[str] = None,
+             parameter_group_id: Optional[str] = None,
+             parameter_group_name: Optional[str] = None,
+             parameter_group_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if db_type is None and 'dbType' in kwargs:
+            db_type = kwargs['dbType']
+        if db_type is None:
+            raise TypeError("Missing 'db_type' argument")
+        if db_version is None and 'dbVersion' in kwargs:
+            db_version = kwargs['dbVersion']
+        if db_version is None:
+            raise TypeError("Missing 'db_version' argument")
+        if force_restart is None and 'forceRestart' in kwargs:
+            force_restart = kwargs['forceRestart']
+        if force_restart is None:
+            raise TypeError("Missing 'force_restart' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if parameter_counts is None and 'parameterCounts' in kwargs:
+            parameter_counts = kwargs['parameterCounts']
+        if parameter_counts is None:
+            raise TypeError("Missing 'parameter_counts' argument")
+        if parameter_group_desc is None and 'parameterGroupDesc' in kwargs:
+            parameter_group_desc = kwargs['parameterGroupDesc']
+        if parameter_group_desc is None:
+            raise TypeError("Missing 'parameter_group_desc' argument")
+        if parameter_group_id is None and 'parameterGroupId' in kwargs:
+            parameter_group_id = kwargs['parameterGroupId']
+        if parameter_group_id is None:
+            raise TypeError("Missing 'parameter_group_id' argument")
+        if parameter_group_name is None and 'parameterGroupName' in kwargs:
+            parameter_group_name = kwargs['parameterGroupName']
+        if parameter_group_name is None:
+            raise TypeError("Missing 'parameter_group_name' argument")
+        if parameter_group_type is None and 'parameterGroupType' in kwargs:
+            parameter_group_type = kwargs['parameterGroupType']
+        if parameter_group_type is None:
+            raise TypeError("Missing 'parameter_group_type' argument")
+
+        _setter("create_time", create_time)
+        _setter("db_type", db_type)
+        _setter("db_version", db_version)
+        _setter("force_restart", force_restart)
+        _setter("id", id)
+        _setter("parameter_counts", parameter_counts)
+        _setter("parameter_group_desc", parameter_group_desc)
+        _setter("parameter_group_id", parameter_group_id)
+        _setter("parameter_group_name", parameter_group_name)
+        _setter("parameter_group_type", parameter_group_type)
 
     @property
     @pulumi.getter(name="createTime")
@@ -1240,8 +1915,27 @@ class GetZonesZoneResult(dict):
         :param str id: ID of the zone.
         :param Sequence[str] multi_zone_ids: A list of zone ids in which the multi zone.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "multi_zone_ids", multi_zone_ids)
+        GetZonesZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            multi_zone_ids=multi_zone_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             multi_zone_ids: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if multi_zone_ids is None and 'multiZoneIds' in kwargs:
+            multi_zone_ids = kwargs['multiZoneIds']
+        if multi_zone_ids is None:
+            raise TypeError("Missing 'multi_zone_ids' argument")
+
+        _setter("id", id)
+        _setter("multi_zone_ids", multi_zone_ids)
 
     @property
     @pulumi.getter

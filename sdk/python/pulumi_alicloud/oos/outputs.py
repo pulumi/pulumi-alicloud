@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -45,16 +45,81 @@ class GetApplicationGroupsGroupResult(dict):
         :param str import_tag_value: Label value.
         :param str update_time: The Update time of the resource.
         """
-        pulumi.set(__self__, "application_group_name", application_group_name)
-        pulumi.set(__self__, "application_name", application_name)
-        pulumi.set(__self__, "cms_group_id", cms_group_id)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "deploy_region_id", deploy_region_id)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "import_tag_key", import_tag_key)
-        pulumi.set(__self__, "import_tag_value", import_tag_value)
-        pulumi.set(__self__, "update_time", update_time)
+        GetApplicationGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_group_name=application_group_name,
+            application_name=application_name,
+            cms_group_id=cms_group_id,
+            create_time=create_time,
+            deploy_region_id=deploy_region_id,
+            description=description,
+            id=id,
+            import_tag_key=import_tag_key,
+            import_tag_value=import_tag_value,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_group_name: Optional[str] = None,
+             application_name: Optional[str] = None,
+             cms_group_id: Optional[str] = None,
+             create_time: Optional[str] = None,
+             deploy_region_id: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             import_tag_key: Optional[str] = None,
+             import_tag_value: Optional[str] = None,
+             update_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if application_group_name is None and 'applicationGroupName' in kwargs:
+            application_group_name = kwargs['applicationGroupName']
+        if application_group_name is None:
+            raise TypeError("Missing 'application_group_name' argument")
+        if application_name is None and 'applicationName' in kwargs:
+            application_name = kwargs['applicationName']
+        if application_name is None:
+            raise TypeError("Missing 'application_name' argument")
+        if cms_group_id is None and 'cmsGroupId' in kwargs:
+            cms_group_id = kwargs['cmsGroupId']
+        if cms_group_id is None:
+            raise TypeError("Missing 'cms_group_id' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if deploy_region_id is None and 'deployRegionId' in kwargs:
+            deploy_region_id = kwargs['deployRegionId']
+        if deploy_region_id is None:
+            raise TypeError("Missing 'deploy_region_id' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if import_tag_key is None and 'importTagKey' in kwargs:
+            import_tag_key = kwargs['importTagKey']
+        if import_tag_key is None:
+            raise TypeError("Missing 'import_tag_key' argument")
+        if import_tag_value is None and 'importTagValue' in kwargs:
+            import_tag_value = kwargs['importTagValue']
+        if import_tag_value is None:
+            raise TypeError("Missing 'import_tag_value' argument")
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if update_time is None:
+            raise TypeError("Missing 'update_time' argument")
+
+        _setter("application_group_name", application_group_name)
+        _setter("application_name", application_name)
+        _setter("cms_group_id", cms_group_id)
+        _setter("create_time", create_time)
+        _setter("deploy_region_id", deploy_region_id)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("import_tag_key", import_tag_key)
+        _setter("import_tag_value", import_tag_value)
+        _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="applicationGroupName")
@@ -156,13 +221,58 @@ class GetApplicationsApplicationResult(dict):
         :param Mapping[str, Any] tags: The tag of the resource.
         :param str update_time: The Updated time of the application.
         """
-        pulumi.set(__self__, "application_name", application_name)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "update_time", update_time)
+        GetApplicationsApplicationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_name=application_name,
+            create_time=create_time,
+            description=description,
+            id=id,
+            resource_group_id=resource_group_id,
+            tags=tags,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_name: Optional[str] = None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             update_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if application_name is None and 'applicationName' in kwargs:
+            application_name = kwargs['applicationName']
+        if application_name is None:
+            raise TypeError("Missing 'application_name' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if update_time is None:
+            raise TypeError("Missing 'update_time' argument")
+
+        _setter("application_name", application_name)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("resource_group_id", resource_group_id)
+        _setter("tags", tags)
+        _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="applicationName")
@@ -268,27 +378,148 @@ class GetExecutionsExecutionResult(dict):
         :param str template_version: The version of execution template.
         :param str update_date: The time when the template was updated.
         """
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "counters", counters)
-        pulumi.set(__self__, "create_date", create_date)
-        pulumi.set(__self__, "end_date", end_date)
-        pulumi.set(__self__, "executed_by", executed_by)
-        pulumi.set(__self__, "execution_id", execution_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_parent", is_parent)
-        pulumi.set(__self__, "mode", mode)
-        pulumi.set(__self__, "outputs", outputs)
-        pulumi.set(__self__, "parameters", parameters)
-        pulumi.set(__self__, "parent_execution_id", parent_execution_id)
-        pulumi.set(__self__, "ram_role", ram_role)
-        pulumi.set(__self__, "start_date", start_date)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "status_message", status_message)
-        pulumi.set(__self__, "status_reason", status_reason)
-        pulumi.set(__self__, "template_id", template_id)
-        pulumi.set(__self__, "template_name", template_name)
-        pulumi.set(__self__, "template_version", template_version)
-        pulumi.set(__self__, "update_date", update_date)
+        GetExecutionsExecutionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            counters=counters,
+            create_date=create_date,
+            end_date=end_date,
+            executed_by=executed_by,
+            execution_id=execution_id,
+            id=id,
+            is_parent=is_parent,
+            mode=mode,
+            outputs=outputs,
+            parameters=parameters,
+            parent_execution_id=parent_execution_id,
+            ram_role=ram_role,
+            start_date=start_date,
+            status=status,
+            status_message=status_message,
+            status_reason=status_reason,
+            template_id=template_id,
+            template_name=template_name,
+            template_version=template_version,
+            update_date=update_date,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: Optional[str] = None,
+             counters: Optional[str] = None,
+             create_date: Optional[str] = None,
+             end_date: Optional[str] = None,
+             executed_by: Optional[str] = None,
+             execution_id: Optional[str] = None,
+             id: Optional[str] = None,
+             is_parent: Optional[bool] = None,
+             mode: Optional[str] = None,
+             outputs: Optional[str] = None,
+             parameters: Optional[str] = None,
+             parent_execution_id: Optional[str] = None,
+             ram_role: Optional[str] = None,
+             start_date: Optional[str] = None,
+             status: Optional[str] = None,
+             status_message: Optional[str] = None,
+             status_reason: Optional[str] = None,
+             template_id: Optional[str] = None,
+             template_name: Optional[str] = None,
+             template_version: Optional[str] = None,
+             update_date: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if counters is None:
+            raise TypeError("Missing 'counters' argument")
+        if create_date is None and 'createDate' in kwargs:
+            create_date = kwargs['createDate']
+        if create_date is None:
+            raise TypeError("Missing 'create_date' argument")
+        if end_date is None and 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+        if end_date is None:
+            raise TypeError("Missing 'end_date' argument")
+        if executed_by is None and 'executedBy' in kwargs:
+            executed_by = kwargs['executedBy']
+        if executed_by is None:
+            raise TypeError("Missing 'executed_by' argument")
+        if execution_id is None and 'executionId' in kwargs:
+            execution_id = kwargs['executionId']
+        if execution_id is None:
+            raise TypeError("Missing 'execution_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if is_parent is None and 'isParent' in kwargs:
+            is_parent = kwargs['isParent']
+        if is_parent is None:
+            raise TypeError("Missing 'is_parent' argument")
+        if mode is None:
+            raise TypeError("Missing 'mode' argument")
+        if outputs is None:
+            raise TypeError("Missing 'outputs' argument")
+        if parameters is None:
+            raise TypeError("Missing 'parameters' argument")
+        if parent_execution_id is None and 'parentExecutionId' in kwargs:
+            parent_execution_id = kwargs['parentExecutionId']
+        if parent_execution_id is None:
+            raise TypeError("Missing 'parent_execution_id' argument")
+        if ram_role is None and 'ramRole' in kwargs:
+            ram_role = kwargs['ramRole']
+        if ram_role is None:
+            raise TypeError("Missing 'ram_role' argument")
+        if start_date is None and 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+        if start_date is None:
+            raise TypeError("Missing 'start_date' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if status_message is None and 'statusMessage' in kwargs:
+            status_message = kwargs['statusMessage']
+        if status_message is None:
+            raise TypeError("Missing 'status_message' argument")
+        if status_reason is None and 'statusReason' in kwargs:
+            status_reason = kwargs['statusReason']
+        if status_reason is None:
+            raise TypeError("Missing 'status_reason' argument")
+        if template_id is None and 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+        if template_id is None:
+            raise TypeError("Missing 'template_id' argument")
+        if template_name is None and 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+        if template_name is None:
+            raise TypeError("Missing 'template_name' argument")
+        if template_version is None and 'templateVersion' in kwargs:
+            template_version = kwargs['templateVersion']
+        if template_version is None:
+            raise TypeError("Missing 'template_version' argument")
+        if update_date is None and 'updateDate' in kwargs:
+            update_date = kwargs['updateDate']
+        if update_date is None:
+            raise TypeError("Missing 'update_date' argument")
+
+        _setter("category", category)
+        _setter("counters", counters)
+        _setter("create_date", create_date)
+        _setter("end_date", end_date)
+        _setter("executed_by", executed_by)
+        _setter("execution_id", execution_id)
+        _setter("id", id)
+        _setter("is_parent", is_parent)
+        _setter("mode", mode)
+        _setter("outputs", outputs)
+        _setter("parameters", parameters)
+        _setter("parent_execution_id", parent_execution_id)
+        _setter("ram_role", ram_role)
+        _setter("start_date", start_date)
+        _setter("status", status)
+        _setter("status_message", status_message)
+        _setter("status_reason", status_reason)
+        _setter("template_id", template_id)
+        _setter("template_name", template_name)
+        _setter("template_version", template_version)
+        _setter("update_date", update_date)
 
     @property
     @pulumi.getter
@@ -494,21 +725,108 @@ class GetParametersParameterResult(dict):
         :param str updated_date: The time when the common parameter was updated.
         :param str value: The value of the common parameter.
         """
-        pulumi.set(__self__, "constraints", constraints)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "created_by", created_by)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "parameter_id", parameter_id)
-        pulumi.set(__self__, "parameter_name", parameter_name)
-        pulumi.set(__self__, "parameter_version", parameter_version)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "share_type", share_type)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "updated_by", updated_by)
-        pulumi.set(__self__, "updated_date", updated_date)
-        pulumi.set(__self__, "value", value)
+        GetParametersParameterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            constraints=constraints,
+            create_time=create_time,
+            created_by=created_by,
+            description=description,
+            id=id,
+            parameter_id=parameter_id,
+            parameter_name=parameter_name,
+            parameter_version=parameter_version,
+            resource_group_id=resource_group_id,
+            share_type=share_type,
+            tags=tags,
+            type=type,
+            updated_by=updated_by,
+            updated_date=updated_date,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             constraints: Optional[str] = None,
+             create_time: Optional[str] = None,
+             created_by: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             parameter_id: Optional[str] = None,
+             parameter_name: Optional[str] = None,
+             parameter_version: Optional[int] = None,
+             resource_group_id: Optional[str] = None,
+             share_type: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             type: Optional[str] = None,
+             updated_by: Optional[str] = None,
+             updated_date: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if constraints is None:
+            raise TypeError("Missing 'constraints' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if created_by is None and 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if created_by is None:
+            raise TypeError("Missing 'created_by' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if parameter_id is None and 'parameterId' in kwargs:
+            parameter_id = kwargs['parameterId']
+        if parameter_id is None:
+            raise TypeError("Missing 'parameter_id' argument")
+        if parameter_name is None and 'parameterName' in kwargs:
+            parameter_name = kwargs['parameterName']
+        if parameter_name is None:
+            raise TypeError("Missing 'parameter_name' argument")
+        if parameter_version is None and 'parameterVersion' in kwargs:
+            parameter_version = kwargs['parameterVersion']
+        if parameter_version is None:
+            raise TypeError("Missing 'parameter_version' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if share_type is None and 'shareType' in kwargs:
+            share_type = kwargs['shareType']
+        if share_type is None:
+            raise TypeError("Missing 'share_type' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if updated_by is None and 'updatedBy' in kwargs:
+            updated_by = kwargs['updatedBy']
+        if updated_by is None:
+            raise TypeError("Missing 'updated_by' argument")
+        if updated_date is None and 'updatedDate' in kwargs:
+            updated_date = kwargs['updatedDate']
+        if updated_date is None:
+            raise TypeError("Missing 'updated_date' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
+        _setter("constraints", constraints)
+        _setter("create_time", create_time)
+        _setter("created_by", created_by)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("parameter_id", parameter_id)
+        _setter("parameter_name", parameter_name)
+        _setter("parameter_version", parameter_version)
+        _setter("resource_group_id", resource_group_id)
+        _setter("share_type", share_type)
+        _setter("tags", tags)
+        _setter("type", type)
+        _setter("updated_by", updated_by)
+        _setter("updated_date", updated_date)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -660,18 +978,95 @@ class GetPatchBaselinesBaselineResult(dict):
         :param str updated_by: The user who updated the patch baselines.
         :param str updated_date: The update time of patch baselines.
         """
-        pulumi.set(__self__, "approval_rules", approval_rules)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "created_by", created_by)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_default", is_default)
-        pulumi.set(__self__, "operation_system", operation_system)
-        pulumi.set(__self__, "patch_baseline_id", patch_baseline_id)
-        pulumi.set(__self__, "patch_baseline_name", patch_baseline_name)
-        pulumi.set(__self__, "share_type", share_type)
-        pulumi.set(__self__, "updated_by", updated_by)
-        pulumi.set(__self__, "updated_date", updated_date)
+        GetPatchBaselinesBaselineResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            approval_rules=approval_rules,
+            create_time=create_time,
+            created_by=created_by,
+            description=description,
+            id=id,
+            is_default=is_default,
+            operation_system=operation_system,
+            patch_baseline_id=patch_baseline_id,
+            patch_baseline_name=patch_baseline_name,
+            share_type=share_type,
+            updated_by=updated_by,
+            updated_date=updated_date,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             approval_rules: Optional[str] = None,
+             create_time: Optional[str] = None,
+             created_by: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             is_default: Optional[bool] = None,
+             operation_system: Optional[str] = None,
+             patch_baseline_id: Optional[str] = None,
+             patch_baseline_name: Optional[str] = None,
+             share_type: Optional[str] = None,
+             updated_by: Optional[str] = None,
+             updated_date: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if approval_rules is None and 'approvalRules' in kwargs:
+            approval_rules = kwargs['approvalRules']
+        if approval_rules is None:
+            raise TypeError("Missing 'approval_rules' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if created_by is None and 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if created_by is None:
+            raise TypeError("Missing 'created_by' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if is_default is None and 'isDefault' in kwargs:
+            is_default = kwargs['isDefault']
+        if is_default is None:
+            raise TypeError("Missing 'is_default' argument")
+        if operation_system is None and 'operationSystem' in kwargs:
+            operation_system = kwargs['operationSystem']
+        if operation_system is None:
+            raise TypeError("Missing 'operation_system' argument")
+        if patch_baseline_id is None and 'patchBaselineId' in kwargs:
+            patch_baseline_id = kwargs['patchBaselineId']
+        if patch_baseline_id is None:
+            raise TypeError("Missing 'patch_baseline_id' argument")
+        if patch_baseline_name is None and 'patchBaselineName' in kwargs:
+            patch_baseline_name = kwargs['patchBaselineName']
+        if patch_baseline_name is None:
+            raise TypeError("Missing 'patch_baseline_name' argument")
+        if share_type is None and 'shareType' in kwargs:
+            share_type = kwargs['shareType']
+        if share_type is None:
+            raise TypeError("Missing 'share_type' argument")
+        if updated_by is None and 'updatedBy' in kwargs:
+            updated_by = kwargs['updatedBy']
+        if updated_by is None:
+            raise TypeError("Missing 'updated_by' argument")
+        if updated_date is None and 'updatedDate' in kwargs:
+            updated_date = kwargs['updatedDate']
+        if updated_date is None:
+            raise TypeError("Missing 'updated_date' argument")
+
+        _setter("approval_rules", approval_rules)
+        _setter("create_time", create_time)
+        _setter("created_by", created_by)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("is_default", is_default)
+        _setter("operation_system", operation_system)
+        _setter("patch_baseline_id", patch_baseline_id)
+        _setter("patch_baseline_name", patch_baseline_name)
+        _setter("share_type", share_type)
+        _setter("updated_by", updated_by)
+        _setter("updated_date", updated_date)
 
     @property
     @pulumi.getter(name="approvalRules")
@@ -805,21 +1200,110 @@ class GetSecretParametersParameterResult(dict):
         :param str updated_by: The user who updated the encryption parameter.
         :param str updated_date: The time when the encryption parameter was updated.
         """
-        pulumi.set(__self__, "constraints", constraints)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "created_by", created_by)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "key_id", key_id)
-        pulumi.set(__self__, "parameter_version", parameter_version)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "secret_parameter_id", secret_parameter_id)
-        pulumi.set(__self__, "secret_parameter_name", secret_parameter_name)
-        pulumi.set(__self__, "share_type", share_type)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "updated_by", updated_by)
-        pulumi.set(__self__, "updated_date", updated_date)
+        GetSecretParametersParameterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            constraints=constraints,
+            create_time=create_time,
+            created_by=created_by,
+            description=description,
+            id=id,
+            key_id=key_id,
+            parameter_version=parameter_version,
+            resource_group_id=resource_group_id,
+            secret_parameter_id=secret_parameter_id,
+            secret_parameter_name=secret_parameter_name,
+            share_type=share_type,
+            tags=tags,
+            type=type,
+            updated_by=updated_by,
+            updated_date=updated_date,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             constraints: Optional[str] = None,
+             create_time: Optional[str] = None,
+             created_by: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             key_id: Optional[str] = None,
+             parameter_version: Optional[int] = None,
+             resource_group_id: Optional[str] = None,
+             secret_parameter_id: Optional[str] = None,
+             secret_parameter_name: Optional[str] = None,
+             share_type: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             type: Optional[str] = None,
+             updated_by: Optional[str] = None,
+             updated_date: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if constraints is None:
+            raise TypeError("Missing 'constraints' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if created_by is None and 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if created_by is None:
+            raise TypeError("Missing 'created_by' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if key_id is None and 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if key_id is None:
+            raise TypeError("Missing 'key_id' argument")
+        if parameter_version is None and 'parameterVersion' in kwargs:
+            parameter_version = kwargs['parameterVersion']
+        if parameter_version is None:
+            raise TypeError("Missing 'parameter_version' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if secret_parameter_id is None and 'secretParameterId' in kwargs:
+            secret_parameter_id = kwargs['secretParameterId']
+        if secret_parameter_id is None:
+            raise TypeError("Missing 'secret_parameter_id' argument")
+        if secret_parameter_name is None and 'secretParameterName' in kwargs:
+            secret_parameter_name = kwargs['secretParameterName']
+        if secret_parameter_name is None:
+            raise TypeError("Missing 'secret_parameter_name' argument")
+        if share_type is None and 'shareType' in kwargs:
+            share_type = kwargs['shareType']
+        if share_type is None:
+            raise TypeError("Missing 'share_type' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if updated_by is None and 'updatedBy' in kwargs:
+            updated_by = kwargs['updatedBy']
+        if updated_by is None:
+            raise TypeError("Missing 'updated_by' argument")
+        if updated_date is None and 'updatedDate' in kwargs:
+            updated_date = kwargs['updatedDate']
+        if updated_date is None:
+            raise TypeError("Missing 'updated_date' argument")
+
+        _setter("constraints", constraints)
+        _setter("create_time", create_time)
+        _setter("created_by", created_by)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("key_id", key_id)
+        _setter("parameter_version", parameter_version)
+        _setter("resource_group_id", resource_group_id)
+        _setter("secret_parameter_id", secret_parameter_id)
+        _setter("secret_parameter_name", secret_parameter_name)
+        _setter("share_type", share_type)
+        _setter("tags", tags)
+        _setter("type", type)
+        _setter("updated_by", updated_by)
+        _setter("updated_date", updated_date)
 
     @property
     @pulumi.getter
@@ -977,21 +1461,110 @@ class GetStateConfigurationsConfigurationResult(dict):
         :param str template_version: The version of the template.
         :param str update_time: The time when the configuration is updated.
         """
-        pulumi.set(__self__, "configure_mode", configure_mode)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "parameters", parameters)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "schedule_expression", schedule_expression)
-        pulumi.set(__self__, "schedule_type", schedule_type)
-        pulumi.set(__self__, "state_configuration_id", state_configuration_id)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "targets", targets)
-        pulumi.set(__self__, "template_id", template_id)
-        pulumi.set(__self__, "template_name", template_name)
-        pulumi.set(__self__, "template_version", template_version)
-        pulumi.set(__self__, "update_time", update_time)
+        GetStateConfigurationsConfigurationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            configure_mode=configure_mode,
+            create_time=create_time,
+            description=description,
+            id=id,
+            parameters=parameters,
+            resource_group_id=resource_group_id,
+            schedule_expression=schedule_expression,
+            schedule_type=schedule_type,
+            state_configuration_id=state_configuration_id,
+            tags=tags,
+            targets=targets,
+            template_id=template_id,
+            template_name=template_name,
+            template_version=template_version,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             configure_mode: Optional[str] = None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             parameters: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             schedule_expression: Optional[str] = None,
+             schedule_type: Optional[str] = None,
+             state_configuration_id: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             targets: Optional[str] = None,
+             template_id: Optional[str] = None,
+             template_name: Optional[str] = None,
+             template_version: Optional[str] = None,
+             update_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if configure_mode is None and 'configureMode' in kwargs:
+            configure_mode = kwargs['configureMode']
+        if configure_mode is None:
+            raise TypeError("Missing 'configure_mode' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if parameters is None:
+            raise TypeError("Missing 'parameters' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if schedule_expression is None and 'scheduleExpression' in kwargs:
+            schedule_expression = kwargs['scheduleExpression']
+        if schedule_expression is None:
+            raise TypeError("Missing 'schedule_expression' argument")
+        if schedule_type is None and 'scheduleType' in kwargs:
+            schedule_type = kwargs['scheduleType']
+        if schedule_type is None:
+            raise TypeError("Missing 'schedule_type' argument")
+        if state_configuration_id is None and 'stateConfigurationId' in kwargs:
+            state_configuration_id = kwargs['stateConfigurationId']
+        if state_configuration_id is None:
+            raise TypeError("Missing 'state_configuration_id' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if targets is None:
+            raise TypeError("Missing 'targets' argument")
+        if template_id is None and 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+        if template_id is None:
+            raise TypeError("Missing 'template_id' argument")
+        if template_name is None and 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+        if template_name is None:
+            raise TypeError("Missing 'template_name' argument")
+        if template_version is None and 'templateVersion' in kwargs:
+            template_version = kwargs['templateVersion']
+        if template_version is None:
+            raise TypeError("Missing 'template_version' argument")
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if update_time is None:
+            raise TypeError("Missing 'update_time' argument")
+
+        _setter("configure_mode", configure_mode)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("parameters", parameters)
+        _setter("resource_group_id", resource_group_id)
+        _setter("schedule_expression", schedule_expression)
+        _setter("schedule_type", schedule_type)
+        _setter("state_configuration_id", state_configuration_id)
+        _setter("tags", tags)
+        _setter("targets", targets)
+        _setter("template_id", template_id)
+        _setter("template_name", template_name)
+        _setter("template_version", template_version)
+        _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="configureMode")
@@ -1149,21 +1722,112 @@ class GetTemplatesTemplateResult(dict):
         :param str updated_by: The user who updated the template.
         :param str updated_date: The time when the template was updated.
         """
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "created_by", created_by)
-        pulumi.set(__self__, "created_date", created_date)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "has_trigger", has_trigger)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "share_type", share_type)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "template_format", template_format)
-        pulumi.set(__self__, "template_id", template_id)
-        pulumi.set(__self__, "template_name", template_name)
-        pulumi.set(__self__, "template_type", template_type)
-        pulumi.set(__self__, "template_version", template_version)
-        pulumi.set(__self__, "updated_by", updated_by)
-        pulumi.set(__self__, "updated_date", updated_date)
+        GetTemplatesTemplateResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            created_by=created_by,
+            created_date=created_date,
+            description=description,
+            has_trigger=has_trigger,
+            id=id,
+            share_type=share_type,
+            tags=tags,
+            template_format=template_format,
+            template_id=template_id,
+            template_name=template_name,
+            template_type=template_type,
+            template_version=template_version,
+            updated_by=updated_by,
+            updated_date=updated_date,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: Optional[str] = None,
+             created_by: Optional[str] = None,
+             created_date: Optional[str] = None,
+             description: Optional[str] = None,
+             has_trigger: Optional[bool] = None,
+             id: Optional[str] = None,
+             share_type: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             template_format: Optional[str] = None,
+             template_id: Optional[str] = None,
+             template_name: Optional[str] = None,
+             template_type: Optional[str] = None,
+             template_version: Optional[str] = None,
+             updated_by: Optional[str] = None,
+             updated_date: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if created_by is None and 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if created_by is None:
+            raise TypeError("Missing 'created_by' argument")
+        if created_date is None and 'createdDate' in kwargs:
+            created_date = kwargs['createdDate']
+        if created_date is None:
+            raise TypeError("Missing 'created_date' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if has_trigger is None and 'hasTrigger' in kwargs:
+            has_trigger = kwargs['hasTrigger']
+        if has_trigger is None:
+            raise TypeError("Missing 'has_trigger' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if share_type is None and 'shareType' in kwargs:
+            share_type = kwargs['shareType']
+        if share_type is None:
+            raise TypeError("Missing 'share_type' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if template_format is None and 'templateFormat' in kwargs:
+            template_format = kwargs['templateFormat']
+        if template_format is None:
+            raise TypeError("Missing 'template_format' argument")
+        if template_id is None and 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+        if template_id is None:
+            raise TypeError("Missing 'template_id' argument")
+        if template_name is None and 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+        if template_name is None:
+            raise TypeError("Missing 'template_name' argument")
+        if template_type is None and 'templateType' in kwargs:
+            template_type = kwargs['templateType']
+        if template_type is None:
+            raise TypeError("Missing 'template_type' argument")
+        if template_version is None and 'templateVersion' in kwargs:
+            template_version = kwargs['templateVersion']
+        if template_version is None:
+            raise TypeError("Missing 'template_version' argument")
+        if updated_by is None and 'updatedBy' in kwargs:
+            updated_by = kwargs['updatedBy']
+        if updated_by is None:
+            raise TypeError("Missing 'updated_by' argument")
+        if updated_date is None and 'updatedDate' in kwargs:
+            updated_date = kwargs['updatedDate']
+        if updated_date is None:
+            raise TypeError("Missing 'updated_date' argument")
+
+        _setter("category", category)
+        _setter("created_by", created_by)
+        _setter("created_date", created_date)
+        _setter("description", description)
+        _setter("has_trigger", has_trigger)
+        _setter("id", id)
+        _setter("share_type", share_type)
+        _setter("tags", tags)
+        _setter("template_format", template_format)
+        _setter("template_id", template_id)
+        _setter("template_name", template_name)
+        _setter("template_type", template_type)
+        _setter("template_version", template_version)
+        _setter("updated_by", updated_by)
+        _setter("updated_date", updated_date)
 
     @property
     @pulumi.getter

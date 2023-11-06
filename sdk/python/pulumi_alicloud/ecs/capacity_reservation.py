@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['CapacityReservationArgs', 'CapacityReservation']
@@ -41,27 +41,84 @@ class CapacityReservationArgs:
         :param pulumi.Input[str] resource_group_id: The resource group id.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         """
-        pulumi.set(__self__, "instance_amount", instance_amount)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "zone_ids", zone_ids)
+        CapacityReservationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_amount=instance_amount,
+            instance_type=instance_type,
+            zone_ids=zone_ids,
+            capacity_reservation_name=capacity_reservation_name,
+            description=description,
+            dry_run=dry_run,
+            end_time=end_time,
+            end_time_type=end_time_type,
+            match_criteria=match_criteria,
+            platform=platform,
+            resource_group_id=resource_group_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_amount: Optional[pulumi.Input[int]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             capacity_reservation_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             end_time: Optional[pulumi.Input[str]] = None,
+             end_time_type: Optional[pulumi.Input[str]] = None,
+             match_criteria: Optional[pulumi.Input[str]] = None,
+             platform: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_amount is None and 'instanceAmount' in kwargs:
+            instance_amount = kwargs['instanceAmount']
+        if instance_amount is None:
+            raise TypeError("Missing 'instance_amount' argument")
+        if instance_type is None and 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if zone_ids is None and 'zoneIds' in kwargs:
+            zone_ids = kwargs['zoneIds']
+        if zone_ids is None:
+            raise TypeError("Missing 'zone_ids' argument")
+        if capacity_reservation_name is None and 'capacityReservationName' in kwargs:
+            capacity_reservation_name = kwargs['capacityReservationName']
+        if dry_run is None and 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if end_time_type is None and 'endTimeType' in kwargs:
+            end_time_type = kwargs['endTimeType']
+        if match_criteria is None and 'matchCriteria' in kwargs:
+            match_criteria = kwargs['matchCriteria']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
+        _setter("instance_amount", instance_amount)
+        _setter("instance_type", instance_type)
+        _setter("zone_ids", zone_ids)
         if capacity_reservation_name is not None:
-            pulumi.set(__self__, "capacity_reservation_name", capacity_reservation_name)
+            _setter("capacity_reservation_name", capacity_reservation_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
+            _setter("end_time", end_time)
         if end_time_type is not None:
-            pulumi.set(__self__, "end_time_type", end_time_type)
+            _setter("end_time_type", end_time_type)
         if match_criteria is not None:
-            pulumi.set(__self__, "match_criteria", match_criteria)
+            _setter("match_criteria", match_criteria)
         if platform is not None:
-            pulumi.set(__self__, "platform", platform)
+            _setter("platform", platform)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="instanceAmount")
@@ -248,40 +305,109 @@ class _CapacityReservationState:
         :param pulumi.Input[str] time_slot: This parameter is under test and is not yet open for use.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_ids: The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
         """
+        _CapacityReservationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            capacity_reservation_name=capacity_reservation_name,
+            description=description,
+            dry_run=dry_run,
+            end_time=end_time,
+            end_time_type=end_time_type,
+            instance_amount=instance_amount,
+            instance_type=instance_type,
+            match_criteria=match_criteria,
+            payment_type=payment_type,
+            platform=platform,
+            resource_group_id=resource_group_id,
+            start_time=start_time,
+            start_time_type=start_time_type,
+            status=status,
+            tags=tags,
+            time_slot=time_slot,
+            zone_ids=zone_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             capacity_reservation_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             end_time: Optional[pulumi.Input[str]] = None,
+             end_time_type: Optional[pulumi.Input[str]] = None,
+             instance_amount: Optional[pulumi.Input[int]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             match_criteria: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             platform: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             start_time: Optional[pulumi.Input[str]] = None,
+             start_time_type: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             time_slot: Optional[pulumi.Input[str]] = None,
+             zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if capacity_reservation_name is None and 'capacityReservationName' in kwargs:
+            capacity_reservation_name = kwargs['capacityReservationName']
+        if dry_run is None and 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if end_time_type is None and 'endTimeType' in kwargs:
+            end_time_type = kwargs['endTimeType']
+        if instance_amount is None and 'instanceAmount' in kwargs:
+            instance_amount = kwargs['instanceAmount']
+        if instance_type is None and 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if match_criteria is None and 'matchCriteria' in kwargs:
+            match_criteria = kwargs['matchCriteria']
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if start_time_type is None and 'startTimeType' in kwargs:
+            start_time_type = kwargs['startTimeType']
+        if time_slot is None and 'timeSlot' in kwargs:
+            time_slot = kwargs['timeSlot']
+        if zone_ids is None and 'zoneIds' in kwargs:
+            zone_ids = kwargs['zoneIds']
+
         if capacity_reservation_name is not None:
-            pulumi.set(__self__, "capacity_reservation_name", capacity_reservation_name)
+            _setter("capacity_reservation_name", capacity_reservation_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
+            _setter("end_time", end_time)
         if end_time_type is not None:
-            pulumi.set(__self__, "end_time_type", end_time_type)
+            _setter("end_time_type", end_time_type)
         if instance_amount is not None:
-            pulumi.set(__self__, "instance_amount", instance_amount)
+            _setter("instance_amount", instance_amount)
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if match_criteria is not None:
-            pulumi.set(__self__, "match_criteria", match_criteria)
+            _setter("match_criteria", match_criteria)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if platform is not None:
-            pulumi.set(__self__, "platform", platform)
+            _setter("platform", platform)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
         if start_time_type is not None:
-            pulumi.set(__self__, "start_time_type", start_time_type)
+            _setter("start_time_type", start_time_type)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if time_slot is not None:
-            pulumi.set(__self__, "time_slot", time_slot)
+            _setter("time_slot", time_slot)
         if zone_ids is not None:
-            pulumi.set(__self__, "zone_ids", zone_ids)
+            _setter("zone_ids", zone_ids)
 
     @property
     @pulumi.getter(name="capacityReservationName")
@@ -621,6 +747,10 @@ class CapacityReservation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CapacityReservationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

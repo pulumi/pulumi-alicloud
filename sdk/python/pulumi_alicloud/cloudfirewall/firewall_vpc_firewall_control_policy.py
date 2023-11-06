@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['FirewallVpcFirewallControlPolicyArgs', 'FirewallVpcFirewallControlPolicy']
@@ -54,28 +54,107 @@ class FirewallVpcFirewallControlPolicyArgs:
         :param pulumi.Input[str] member_uid: The UID of the member account of the current Alibaba cloud account.
         :param pulumi.Input[bool] release: The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
         """
-        pulumi.set(__self__, "acl_action", acl_action)
-        pulumi.set(__self__, "application_name", application_name)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "destination", destination)
-        pulumi.set(__self__, "destination_type", destination_type)
-        pulumi.set(__self__, "order", order)
-        pulumi.set(__self__, "proto", proto)
-        pulumi.set(__self__, "source", source)
-        pulumi.set(__self__, "source_type", source_type)
-        pulumi.set(__self__, "vpc_firewall_id", vpc_firewall_id)
+        FirewallVpcFirewallControlPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl_action=acl_action,
+            application_name=application_name,
+            description=description,
+            destination=destination,
+            destination_type=destination_type,
+            order=order,
+            proto=proto,
+            source=source,
+            source_type=source_type,
+            vpc_firewall_id=vpc_firewall_id,
+            dest_port=dest_port,
+            dest_port_group=dest_port_group,
+            dest_port_type=dest_port_type,
+            lang=lang,
+            member_uid=member_uid,
+            release=release,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl_action: Optional[pulumi.Input[str]] = None,
+             application_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             destination: Optional[pulumi.Input[str]] = None,
+             destination_type: Optional[pulumi.Input[str]] = None,
+             order: Optional[pulumi.Input[int]] = None,
+             proto: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             source_type: Optional[pulumi.Input[str]] = None,
+             vpc_firewall_id: Optional[pulumi.Input[str]] = None,
+             dest_port: Optional[pulumi.Input[str]] = None,
+             dest_port_group: Optional[pulumi.Input[str]] = None,
+             dest_port_type: Optional[pulumi.Input[str]] = None,
+             lang: Optional[pulumi.Input[str]] = None,
+             member_uid: Optional[pulumi.Input[str]] = None,
+             release: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if acl_action is None and 'aclAction' in kwargs:
+            acl_action = kwargs['aclAction']
+        if acl_action is None:
+            raise TypeError("Missing 'acl_action' argument")
+        if application_name is None and 'applicationName' in kwargs:
+            application_name = kwargs['applicationName']
+        if application_name is None:
+            raise TypeError("Missing 'application_name' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if destination is None:
+            raise TypeError("Missing 'destination' argument")
+        if destination_type is None and 'destinationType' in kwargs:
+            destination_type = kwargs['destinationType']
+        if destination_type is None:
+            raise TypeError("Missing 'destination_type' argument")
+        if order is None:
+            raise TypeError("Missing 'order' argument")
+        if proto is None:
+            raise TypeError("Missing 'proto' argument")
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if source_type is None and 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+        if source_type is None:
+            raise TypeError("Missing 'source_type' argument")
+        if vpc_firewall_id is None and 'vpcFirewallId' in kwargs:
+            vpc_firewall_id = kwargs['vpcFirewallId']
+        if vpc_firewall_id is None:
+            raise TypeError("Missing 'vpc_firewall_id' argument")
+        if dest_port is None and 'destPort' in kwargs:
+            dest_port = kwargs['destPort']
+        if dest_port_group is None and 'destPortGroup' in kwargs:
+            dest_port_group = kwargs['destPortGroup']
+        if dest_port_type is None and 'destPortType' in kwargs:
+            dest_port_type = kwargs['destPortType']
+        if member_uid is None and 'memberUid' in kwargs:
+            member_uid = kwargs['memberUid']
+
+        _setter("acl_action", acl_action)
+        _setter("application_name", application_name)
+        _setter("description", description)
+        _setter("destination", destination)
+        _setter("destination_type", destination_type)
+        _setter("order", order)
+        _setter("proto", proto)
+        _setter("source", source)
+        _setter("source_type", source_type)
+        _setter("vpc_firewall_id", vpc_firewall_id)
         if dest_port is not None:
-            pulumi.set(__self__, "dest_port", dest_port)
+            _setter("dest_port", dest_port)
         if dest_port_group is not None:
-            pulumi.set(__self__, "dest_port_group", dest_port_group)
+            _setter("dest_port_group", dest_port_group)
         if dest_port_type is not None:
-            pulumi.set(__self__, "dest_port_type", dest_port_type)
+            _setter("dest_port_type", dest_port_type)
         if lang is not None:
-            pulumi.set(__self__, "lang", lang)
+            _setter("lang", lang)
         if member_uid is not None:
-            pulumi.set(__self__, "member_uid", member_uid)
+            _setter("member_uid", member_uid)
         if release is not None:
-            pulumi.set(__self__, "release", release)
+            _setter("release", release)
 
     @property
     @pulumi.getter(name="aclAction")
@@ -334,54 +413,145 @@ class _FirewallVpcFirewallControlPolicyState:
                - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
                - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
         """
+        _FirewallVpcFirewallControlPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl_action=acl_action,
+            acl_uuid=acl_uuid,
+            application_id=application_id,
+            application_name=application_name,
+            description=description,
+            dest_port=dest_port,
+            dest_port_group=dest_port_group,
+            dest_port_group_ports=dest_port_group_ports,
+            dest_port_type=dest_port_type,
+            destination=destination,
+            destination_group_cidrs=destination_group_cidrs,
+            destination_group_type=destination_group_type,
+            destination_type=destination_type,
+            hit_times=hit_times,
+            lang=lang,
+            member_uid=member_uid,
+            order=order,
+            proto=proto,
+            release=release,
+            source=source,
+            source_group_cidrs=source_group_cidrs,
+            source_group_type=source_group_type,
+            source_type=source_type,
+            vpc_firewall_id=vpc_firewall_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl_action: Optional[pulumi.Input[str]] = None,
+             acl_uuid: Optional[pulumi.Input[str]] = None,
+             application_id: Optional[pulumi.Input[str]] = None,
+             application_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dest_port: Optional[pulumi.Input[str]] = None,
+             dest_port_group: Optional[pulumi.Input[str]] = None,
+             dest_port_group_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             dest_port_type: Optional[pulumi.Input[str]] = None,
+             destination: Optional[pulumi.Input[str]] = None,
+             destination_group_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             destination_group_type: Optional[pulumi.Input[str]] = None,
+             destination_type: Optional[pulumi.Input[str]] = None,
+             hit_times: Optional[pulumi.Input[int]] = None,
+             lang: Optional[pulumi.Input[str]] = None,
+             member_uid: Optional[pulumi.Input[str]] = None,
+             order: Optional[pulumi.Input[int]] = None,
+             proto: Optional[pulumi.Input[str]] = None,
+             release: Optional[pulumi.Input[bool]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             source_group_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             source_group_type: Optional[pulumi.Input[str]] = None,
+             source_type: Optional[pulumi.Input[str]] = None,
+             vpc_firewall_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if acl_action is None and 'aclAction' in kwargs:
+            acl_action = kwargs['aclAction']
+        if acl_uuid is None and 'aclUuid' in kwargs:
+            acl_uuid = kwargs['aclUuid']
+        if application_id is None and 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if application_name is None and 'applicationName' in kwargs:
+            application_name = kwargs['applicationName']
+        if dest_port is None and 'destPort' in kwargs:
+            dest_port = kwargs['destPort']
+        if dest_port_group is None and 'destPortGroup' in kwargs:
+            dest_port_group = kwargs['destPortGroup']
+        if dest_port_group_ports is None and 'destPortGroupPorts' in kwargs:
+            dest_port_group_ports = kwargs['destPortGroupPorts']
+        if dest_port_type is None and 'destPortType' in kwargs:
+            dest_port_type = kwargs['destPortType']
+        if destination_group_cidrs is None and 'destinationGroupCidrs' in kwargs:
+            destination_group_cidrs = kwargs['destinationGroupCidrs']
+        if destination_group_type is None and 'destinationGroupType' in kwargs:
+            destination_group_type = kwargs['destinationGroupType']
+        if destination_type is None and 'destinationType' in kwargs:
+            destination_type = kwargs['destinationType']
+        if hit_times is None and 'hitTimes' in kwargs:
+            hit_times = kwargs['hitTimes']
+        if member_uid is None and 'memberUid' in kwargs:
+            member_uid = kwargs['memberUid']
+        if source_group_cidrs is None and 'sourceGroupCidrs' in kwargs:
+            source_group_cidrs = kwargs['sourceGroupCidrs']
+        if source_group_type is None and 'sourceGroupType' in kwargs:
+            source_group_type = kwargs['sourceGroupType']
+        if source_type is None and 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+        if vpc_firewall_id is None and 'vpcFirewallId' in kwargs:
+            vpc_firewall_id = kwargs['vpcFirewallId']
+
         if acl_action is not None:
-            pulumi.set(__self__, "acl_action", acl_action)
+            _setter("acl_action", acl_action)
         if acl_uuid is not None:
-            pulumi.set(__self__, "acl_uuid", acl_uuid)
+            _setter("acl_uuid", acl_uuid)
         if application_id is not None:
-            pulumi.set(__self__, "application_id", application_id)
+            _setter("application_id", application_id)
         if application_name is not None:
-            pulumi.set(__self__, "application_name", application_name)
+            _setter("application_name", application_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dest_port is not None:
-            pulumi.set(__self__, "dest_port", dest_port)
+            _setter("dest_port", dest_port)
         if dest_port_group is not None:
-            pulumi.set(__self__, "dest_port_group", dest_port_group)
+            _setter("dest_port_group", dest_port_group)
         if dest_port_group_ports is not None:
-            pulumi.set(__self__, "dest_port_group_ports", dest_port_group_ports)
+            _setter("dest_port_group_ports", dest_port_group_ports)
         if dest_port_type is not None:
-            pulumi.set(__self__, "dest_port_type", dest_port_type)
+            _setter("dest_port_type", dest_port_type)
         if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+            _setter("destination", destination)
         if destination_group_cidrs is not None:
-            pulumi.set(__self__, "destination_group_cidrs", destination_group_cidrs)
+            _setter("destination_group_cidrs", destination_group_cidrs)
         if destination_group_type is not None:
-            pulumi.set(__self__, "destination_group_type", destination_group_type)
+            _setter("destination_group_type", destination_group_type)
         if destination_type is not None:
-            pulumi.set(__self__, "destination_type", destination_type)
+            _setter("destination_type", destination_type)
         if hit_times is not None:
-            pulumi.set(__self__, "hit_times", hit_times)
+            _setter("hit_times", hit_times)
         if lang is not None:
-            pulumi.set(__self__, "lang", lang)
+            _setter("lang", lang)
         if member_uid is not None:
-            pulumi.set(__self__, "member_uid", member_uid)
+            _setter("member_uid", member_uid)
         if order is not None:
-            pulumi.set(__self__, "order", order)
+            _setter("order", order)
         if proto is not None:
-            pulumi.set(__self__, "proto", proto)
+            _setter("proto", proto)
         if release is not None:
-            pulumi.set(__self__, "release", release)
+            _setter("release", release)
         if source is not None:
-            pulumi.set(__self__, "source", source)
+            _setter("source", source)
         if source_group_cidrs is not None:
-            pulumi.set(__self__, "source_group_cidrs", source_group_cidrs)
+            _setter("source_group_cidrs", source_group_cidrs)
         if source_group_type is not None:
-            pulumi.set(__self__, "source_group_type", source_group_type)
+            _setter("source_group_type", source_group_type)
         if source_type is not None:
-            pulumi.set(__self__, "source_type", source_type)
+            _setter("source_type", source_type)
         if vpc_firewall_id is not None:
-            pulumi.set(__self__, "vpc_firewall_id", vpc_firewall_id)
+            _setter("vpc_firewall_id", vpc_firewall_id)
 
     @property
     @pulumi.getter(name="aclAction")
@@ -837,6 +1007,10 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FirewallVpcFirewallControlPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

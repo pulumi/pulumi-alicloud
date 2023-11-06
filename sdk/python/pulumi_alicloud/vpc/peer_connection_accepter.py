@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['PeerConnectionAccepterArgs', 'PeerConnectionAccepter']
@@ -21,9 +21,28 @@ class PeerConnectionAccepterArgs:
         :param pulumi.Input[str] instance_id: The ID of the instance of the created VPC peer connection.
         :param pulumi.Input[bool] dry_run: The dry run.
         """
-        pulumi.set(__self__, "instance_id", instance_id)
+        PeerConnectionAccepterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_id=instance_id,
+            dry_run=dry_run,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_id: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if dry_run is None and 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+
+        _setter("instance_id", instance_id)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -76,26 +95,69 @@ class _PeerConnectionAccepterState:
         :param pulumi.Input[str] status: The status of the resource
         :param pulumi.Input[str] vpc_id: You must create a VPC ID on the initiator of a VPC peer connection.
         """
+        _PeerConnectionAccepterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accepting_owner_uid=accepting_owner_uid,
+            accepting_region_id=accepting_region_id,
+            accepting_vpc_id=accepting_vpc_id,
+            bandwidth=bandwidth,
+            description=description,
+            dry_run=dry_run,
+            instance_id=instance_id,
+            peer_connection_accepter_name=peer_connection_accepter_name,
+            status=status,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accepting_owner_uid: Optional[pulumi.Input[int]] = None,
+             accepting_region_id: Optional[pulumi.Input[str]] = None,
+             accepting_vpc_id: Optional[pulumi.Input[str]] = None,
+             bandwidth: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             peer_connection_accepter_name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accepting_owner_uid is None and 'acceptingOwnerUid' in kwargs:
+            accepting_owner_uid = kwargs['acceptingOwnerUid']
+        if accepting_region_id is None and 'acceptingRegionId' in kwargs:
+            accepting_region_id = kwargs['acceptingRegionId']
+        if accepting_vpc_id is None and 'acceptingVpcId' in kwargs:
+            accepting_vpc_id = kwargs['acceptingVpcId']
+        if dry_run is None and 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if peer_connection_accepter_name is None and 'peerConnectionAccepterName' in kwargs:
+            peer_connection_accepter_name = kwargs['peerConnectionAccepterName']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if accepting_owner_uid is not None:
-            pulumi.set(__self__, "accepting_owner_uid", accepting_owner_uid)
+            _setter("accepting_owner_uid", accepting_owner_uid)
         if accepting_region_id is not None:
-            pulumi.set(__self__, "accepting_region_id", accepting_region_id)
+            _setter("accepting_region_id", accepting_region_id)
         if accepting_vpc_id is not None:
-            pulumi.set(__self__, "accepting_vpc_id", accepting_vpc_id)
+            _setter("accepting_vpc_id", accepting_vpc_id)
         if bandwidth is not None:
-            pulumi.set(__self__, "bandwidth", bandwidth)
+            _setter("bandwidth", bandwidth)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if peer_connection_accepter_name is not None:
-            pulumi.set(__self__, "peer_connection_accepter_name", peer_connection_accepter_name)
+            _setter("peer_connection_accepter_name", peer_connection_accepter_name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="acceptingOwnerUid")
@@ -383,6 +445,10 @@ class PeerConnectionAccepter(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PeerConnectionAccepterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

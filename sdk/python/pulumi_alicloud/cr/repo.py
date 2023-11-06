@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,13 +29,40 @@ class RepoArgs:
         :param pulumi.Input[str] detail: The repository specific information. MarkDown format is supported, and the length limit is 2000.
         :param pulumi.Input[str] name: Name of container registry repository.
         """
-        pulumi.set(__self__, "namespace", namespace)
-        pulumi.set(__self__, "repo_type", repo_type)
-        pulumi.set(__self__, "summary", summary)
+        RepoArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            namespace=namespace,
+            repo_type=repo_type,
+            summary=summary,
+            detail=detail,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             namespace: Optional[pulumi.Input[str]] = None,
+             repo_type: Optional[pulumi.Input[str]] = None,
+             summary: Optional[pulumi.Input[str]] = None,
+             detail: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+        if repo_type is None and 'repoType' in kwargs:
+            repo_type = kwargs['repoType']
+        if repo_type is None:
+            raise TypeError("Missing 'repo_type' argument")
+        if summary is None:
+            raise TypeError("Missing 'summary' argument")
+
+        _setter("namespace", namespace)
+        _setter("repo_type", repo_type)
+        _setter("summary", summary)
         if detail is not None:
-            pulumi.set(__self__, "detail", detail)
+            _setter("detail", detail)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -116,18 +143,43 @@ class _RepoState:
         :param pulumi.Input[str] repo_type: `PUBLIC` or `PRIVATE`, repo's visibility.
         :param pulumi.Input[str] summary: The repository general information. It can contain 1 to 80 characters.
         """
+        _RepoState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            detail=detail,
+            domain_list=domain_list,
+            name=name,
+            namespace=namespace,
+            repo_type=repo_type,
+            summary=summary,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             detail: Optional[pulumi.Input[str]] = None,
+             domain_list: Optional[pulumi.Input['RepoDomainListArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             repo_type: Optional[pulumi.Input[str]] = None,
+             summary: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if domain_list is None and 'domainList' in kwargs:
+            domain_list = kwargs['domainList']
+        if repo_type is None and 'repoType' in kwargs:
+            repo_type = kwargs['repoType']
+
         if detail is not None:
-            pulumi.set(__self__, "detail", detail)
+            _setter("detail", detail)
         if domain_list is not None:
-            pulumi.set(__self__, "domain_list", domain_list)
+            _setter("domain_list", domain_list)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if repo_type is not None:
-            pulumi.set(__self__, "repo_type", repo_type)
+            _setter("repo_type", repo_type)
         if summary is not None:
-            pulumi.set(__self__, "summary", summary)
+            _setter("summary", summary)
 
     @property
     @pulumi.getter
@@ -311,6 +363,10 @@ class Repo(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RepoArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

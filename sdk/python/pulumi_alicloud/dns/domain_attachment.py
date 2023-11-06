@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DomainAttachmentArgs', 'DomainAttachment']
@@ -21,8 +21,29 @@ class DomainAttachmentArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_names: The domain names bound to the DNS instance.
         :param pulumi.Input[str] instance_id: The id of the DNS instance.
         """
-        pulumi.set(__self__, "domain_names", domain_names)
-        pulumi.set(__self__, "instance_id", instance_id)
+        DomainAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain_names=domain_names,
+            instance_id=instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if domain_names is None and 'domainNames' in kwargs:
+            domain_names = kwargs['domainNames']
+        if domain_names is None:
+            raise TypeError("Missing 'domain_names' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+
+        _setter("domain_names", domain_names)
+        _setter("instance_id", instance_id)
 
     @property
     @pulumi.getter(name="domainNames")
@@ -59,10 +80,27 @@ class _DomainAttachmentState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_names: The domain names bound to the DNS instance.
         :param pulumi.Input[str] instance_id: The id of the DNS instance.
         """
+        _DomainAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain_names=domain_names,
+            instance_id=instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if domain_names is None and 'domainNames' in kwargs:
+            domain_names = kwargs['domainNames']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if domain_names is not None:
-            pulumi.set(__self__, "domain_names", domain_names)
+            _setter("domain_names", domain_names)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
 
     @property
     @pulumi.getter(name="domainNames")
@@ -176,6 +214,10 @@ class DomainAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DomainAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

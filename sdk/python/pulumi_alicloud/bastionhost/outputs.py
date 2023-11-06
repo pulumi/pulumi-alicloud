@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -79,23 +79,82 @@ class InstanceAdAuthServer(dict):
         :param str name_mapping: The field that is used to indicate the name of a user on the AD server.
         :param str standby_server: The address of the secondary AD server.
         """
-        pulumi.set(__self__, "account", account)
-        pulumi.set(__self__, "base_dn", base_dn)
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "is_ssl", is_ssl)
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "server", server)
+        InstanceAdAuthServer._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account=account,
+            base_dn=base_dn,
+            domain=domain,
+            is_ssl=is_ssl,
+            password=password,
+            port=port,
+            server=server,
+            email_mapping=email_mapping,
+            filter=filter,
+            mobile_mapping=mobile_mapping,
+            name_mapping=name_mapping,
+            standby_server=standby_server,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account: Optional[str] = None,
+             base_dn: Optional[str] = None,
+             domain: Optional[str] = None,
+             is_ssl: Optional[bool] = None,
+             password: Optional[str] = None,
+             port: Optional[int] = None,
+             server: Optional[str] = None,
+             email_mapping: Optional[str] = None,
+             filter: Optional[str] = None,
+             mobile_mapping: Optional[str] = None,
+             name_mapping: Optional[str] = None,
+             standby_server: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account is None:
+            raise TypeError("Missing 'account' argument")
+        if base_dn is None and 'baseDn' in kwargs:
+            base_dn = kwargs['baseDn']
+        if base_dn is None:
+            raise TypeError("Missing 'base_dn' argument")
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if is_ssl is None and 'isSsl' in kwargs:
+            is_ssl = kwargs['isSsl']
+        if is_ssl is None:
+            raise TypeError("Missing 'is_ssl' argument")
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if server is None:
+            raise TypeError("Missing 'server' argument")
+        if email_mapping is None and 'emailMapping' in kwargs:
+            email_mapping = kwargs['emailMapping']
+        if mobile_mapping is None and 'mobileMapping' in kwargs:
+            mobile_mapping = kwargs['mobileMapping']
+        if name_mapping is None and 'nameMapping' in kwargs:
+            name_mapping = kwargs['nameMapping']
+        if standby_server is None and 'standbyServer' in kwargs:
+            standby_server = kwargs['standbyServer']
+
+        _setter("account", account)
+        _setter("base_dn", base_dn)
+        _setter("domain", domain)
+        _setter("is_ssl", is_ssl)
+        _setter("password", password)
+        _setter("port", port)
+        _setter("server", server)
         if email_mapping is not None:
-            pulumi.set(__self__, "email_mapping", email_mapping)
+            _setter("email_mapping", email_mapping)
         if filter is not None:
-            pulumi.set(__self__, "filter", filter)
+            _setter("filter", filter)
         if mobile_mapping is not None:
-            pulumi.set(__self__, "mobile_mapping", mobile_mapping)
+            _setter("mobile_mapping", mobile_mapping)
         if name_mapping is not None:
-            pulumi.set(__self__, "name_mapping", name_mapping)
+            _setter("name_mapping", name_mapping)
         if standby_server is not None:
-            pulumi.set(__self__, "standby_server", standby_server)
+            _setter("standby_server", standby_server)
 
     @property
     @pulumi.getter
@@ -252,25 +311,82 @@ class InstanceLdapAuthServer(dict):
         :param str name_mapping: The field that is used to indicate the name of a user on the LDAP server.
         :param str standby_server: The address of the secondary LDAP server.
         """
-        pulumi.set(__self__, "account", account)
-        pulumi.set(__self__, "base_dn", base_dn)
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "server", server)
+        InstanceLdapAuthServer._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account=account,
+            base_dn=base_dn,
+            password=password,
+            port=port,
+            server=server,
+            email_mapping=email_mapping,
+            filter=filter,
+            is_ssl=is_ssl,
+            login_name_mapping=login_name_mapping,
+            mobile_mapping=mobile_mapping,
+            name_mapping=name_mapping,
+            standby_server=standby_server,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account: Optional[str] = None,
+             base_dn: Optional[str] = None,
+             password: Optional[str] = None,
+             port: Optional[int] = None,
+             server: Optional[str] = None,
+             email_mapping: Optional[str] = None,
+             filter: Optional[str] = None,
+             is_ssl: Optional[bool] = None,
+             login_name_mapping: Optional[str] = None,
+             mobile_mapping: Optional[str] = None,
+             name_mapping: Optional[str] = None,
+             standby_server: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account is None:
+            raise TypeError("Missing 'account' argument")
+        if base_dn is None and 'baseDn' in kwargs:
+            base_dn = kwargs['baseDn']
+        if base_dn is None:
+            raise TypeError("Missing 'base_dn' argument")
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if server is None:
+            raise TypeError("Missing 'server' argument")
+        if email_mapping is None and 'emailMapping' in kwargs:
+            email_mapping = kwargs['emailMapping']
+        if is_ssl is None and 'isSsl' in kwargs:
+            is_ssl = kwargs['isSsl']
+        if login_name_mapping is None and 'loginNameMapping' in kwargs:
+            login_name_mapping = kwargs['loginNameMapping']
+        if mobile_mapping is None and 'mobileMapping' in kwargs:
+            mobile_mapping = kwargs['mobileMapping']
+        if name_mapping is None and 'nameMapping' in kwargs:
+            name_mapping = kwargs['nameMapping']
+        if standby_server is None and 'standbyServer' in kwargs:
+            standby_server = kwargs['standbyServer']
+
+        _setter("account", account)
+        _setter("base_dn", base_dn)
+        _setter("password", password)
+        _setter("port", port)
+        _setter("server", server)
         if email_mapping is not None:
-            pulumi.set(__self__, "email_mapping", email_mapping)
+            _setter("email_mapping", email_mapping)
         if filter is not None:
-            pulumi.set(__self__, "filter", filter)
+            _setter("filter", filter)
         if is_ssl is not None:
-            pulumi.set(__self__, "is_ssl", is_ssl)
+            _setter("is_ssl", is_ssl)
         if login_name_mapping is not None:
-            pulumi.set(__self__, "login_name_mapping", login_name_mapping)
+            _setter("login_name_mapping", login_name_mapping)
         if mobile_mapping is not None:
-            pulumi.set(__self__, "mobile_mapping", mobile_mapping)
+            _setter("mobile_mapping", mobile_mapping)
         if name_mapping is not None:
-            pulumi.set(__self__, "name_mapping", name_mapping)
+            _setter("name_mapping", name_mapping)
         if standby_server is not None:
-            pulumi.set(__self__, "standby_server", standby_server)
+            _setter("standby_server", standby_server)
 
     @property
     @pulumi.getter
@@ -390,14 +506,69 @@ class GetHostAccountsAccountResult(dict):
         :param str private_key_fingerprint: The situation where the private keys of the fingerprint information.
         :param str protocol_name: Specify the new hosting account of the agreement name. Valid values: USING SSH and RDP.
         """
-        pulumi.set(__self__, "has_password", has_password)
-        pulumi.set(__self__, "host_account_id", host_account_id)
-        pulumi.set(__self__, "host_account_name", host_account_name)
-        pulumi.set(__self__, "host_id", host_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "private_key_fingerprint", private_key_fingerprint)
-        pulumi.set(__self__, "protocol_name", protocol_name)
+        GetHostAccountsAccountResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            has_password=has_password,
+            host_account_id=host_account_id,
+            host_account_name=host_account_name,
+            host_id=host_id,
+            id=id,
+            instance_id=instance_id,
+            private_key_fingerprint=private_key_fingerprint,
+            protocol_name=protocol_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             has_password: Optional[bool] = None,
+             host_account_id: Optional[str] = None,
+             host_account_name: Optional[str] = None,
+             host_id: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             private_key_fingerprint: Optional[str] = None,
+             protocol_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if has_password is None and 'hasPassword' in kwargs:
+            has_password = kwargs['hasPassword']
+        if has_password is None:
+            raise TypeError("Missing 'has_password' argument")
+        if host_account_id is None and 'hostAccountId' in kwargs:
+            host_account_id = kwargs['hostAccountId']
+        if host_account_id is None:
+            raise TypeError("Missing 'host_account_id' argument")
+        if host_account_name is None and 'hostAccountName' in kwargs:
+            host_account_name = kwargs['hostAccountName']
+        if host_account_name is None:
+            raise TypeError("Missing 'host_account_name' argument")
+        if host_id is None and 'hostId' in kwargs:
+            host_id = kwargs['hostId']
+        if host_id is None:
+            raise TypeError("Missing 'host_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if private_key_fingerprint is None and 'privateKeyFingerprint' in kwargs:
+            private_key_fingerprint = kwargs['privateKeyFingerprint']
+        if private_key_fingerprint is None:
+            raise TypeError("Missing 'private_key_fingerprint' argument")
+        if protocol_name is None and 'protocolName' in kwargs:
+            protocol_name = kwargs['protocolName']
+        if protocol_name is None:
+            raise TypeError("Missing 'protocol_name' argument")
+
+        _setter("has_password", has_password)
+        _setter("host_account_id", host_account_id)
+        _setter("host_account_name", host_account_name)
+        _setter("host_id", host_id)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("private_key_fingerprint", private_key_fingerprint)
+        _setter("protocol_name", protocol_name)
 
     @property
     @pulumi.getter(name="hasPassword")
@@ -479,11 +650,46 @@ class GetHostGroupsGroupResult(dict):
         :param str id: The ID of the Host Group.
         :param str instance_id: Specify the New Host Group Where the Bastion Host ID of.
         """
-        pulumi.set(__self__, "comment", comment)
-        pulumi.set(__self__, "host_group_id", host_group_id)
-        pulumi.set(__self__, "host_group_name", host_group_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
+        GetHostGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comment=comment,
+            host_group_id=host_group_id,
+            host_group_name=host_group_name,
+            id=id,
+            instance_id=instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comment: Optional[str] = None,
+             host_group_id: Optional[str] = None,
+             host_group_name: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if comment is None:
+            raise TypeError("Missing 'comment' argument")
+        if host_group_id is None and 'hostGroupId' in kwargs:
+            host_group_id = kwargs['hostGroupId']
+        if host_group_id is None:
+            raise TypeError("Missing 'host_group_id' argument")
+        if host_group_name is None and 'hostGroupName' in kwargs:
+            host_group_name = kwargs['hostGroupName']
+        if host_group_name is None:
+            raise TypeError("Missing 'host_group_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+
+        _setter("comment", comment)
+        _setter("host_group_id", host_group_id)
+        _setter("host_group_name", host_group_name)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
 
     @property
     @pulumi.getter
@@ -541,11 +747,48 @@ class GetHostShareKeysKeyResult(dict):
         :param str instance_id: The ID of the Bastion instance.
         :param str private_key_finger_print: The fingerprint of the private key.
         """
-        pulumi.set(__self__, "host_share_key_id", host_share_key_id)
-        pulumi.set(__self__, "host_share_key_name", host_share_key_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "private_key_finger_print", private_key_finger_print)
+        GetHostShareKeysKeyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host_share_key_id=host_share_key_id,
+            host_share_key_name=host_share_key_name,
+            id=id,
+            instance_id=instance_id,
+            private_key_finger_print=private_key_finger_print,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host_share_key_id: Optional[str] = None,
+             host_share_key_name: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             private_key_finger_print: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if host_share_key_id is None and 'hostShareKeyId' in kwargs:
+            host_share_key_id = kwargs['hostShareKeyId']
+        if host_share_key_id is None:
+            raise TypeError("Missing 'host_share_key_id' argument")
+        if host_share_key_name is None and 'hostShareKeyName' in kwargs:
+            host_share_key_name = kwargs['hostShareKeyName']
+        if host_share_key_name is None:
+            raise TypeError("Missing 'host_share_key_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if private_key_finger_print is None and 'privateKeyFingerPrint' in kwargs:
+            private_key_finger_print = kwargs['privateKeyFingerPrint']
+        if private_key_finger_print is None:
+            raise TypeError("Missing 'private_key_finger_print' argument")
+
+        _setter("host_share_key_id", host_share_key_id)
+        _setter("host_share_key_name", host_share_key_name)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("private_key_finger_print", private_key_finger_print)
 
     @property
     @pulumi.getter(name="hostShareKeyId")
@@ -617,18 +860,91 @@ class GetHostsHostResult(dict):
         :param str source: Specify the new create a host of source. Valid values: Local: localhost Ecs:ECS instance Rds:RDS exclusive cluster host.
         :param str source_instance_id: Specify the newly created ECS instance ID or dedicated cluster host ID.
         """
-        pulumi.set(__self__, "active_address_type", active_address_type)
-        pulumi.set(__self__, "comment", comment)
-        pulumi.set(__self__, "host_id", host_id)
-        pulumi.set(__self__, "host_name", host_name)
-        pulumi.set(__self__, "host_private_address", host_private_address)
-        pulumi.set(__self__, "host_public_address", host_public_address)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "os_type", os_type)
-        pulumi.set(__self__, "protocols", protocols)
-        pulumi.set(__self__, "source", source)
-        pulumi.set(__self__, "source_instance_id", source_instance_id)
+        GetHostsHostResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            active_address_type=active_address_type,
+            comment=comment,
+            host_id=host_id,
+            host_name=host_name,
+            host_private_address=host_private_address,
+            host_public_address=host_public_address,
+            id=id,
+            instance_id=instance_id,
+            os_type=os_type,
+            protocols=protocols,
+            source=source,
+            source_instance_id=source_instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             active_address_type: Optional[str] = None,
+             comment: Optional[str] = None,
+             host_id: Optional[str] = None,
+             host_name: Optional[str] = None,
+             host_private_address: Optional[str] = None,
+             host_public_address: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             os_type: Optional[str] = None,
+             protocols: Optional[Sequence['outputs.GetHostsHostProtocolResult']] = None,
+             source: Optional[str] = None,
+             source_instance_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if active_address_type is None and 'activeAddressType' in kwargs:
+            active_address_type = kwargs['activeAddressType']
+        if active_address_type is None:
+            raise TypeError("Missing 'active_address_type' argument")
+        if comment is None:
+            raise TypeError("Missing 'comment' argument")
+        if host_id is None and 'hostId' in kwargs:
+            host_id = kwargs['hostId']
+        if host_id is None:
+            raise TypeError("Missing 'host_id' argument")
+        if host_name is None and 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if host_name is None:
+            raise TypeError("Missing 'host_name' argument")
+        if host_private_address is None and 'hostPrivateAddress' in kwargs:
+            host_private_address = kwargs['hostPrivateAddress']
+        if host_private_address is None:
+            raise TypeError("Missing 'host_private_address' argument")
+        if host_public_address is None and 'hostPublicAddress' in kwargs:
+            host_public_address = kwargs['hostPublicAddress']
+        if host_public_address is None:
+            raise TypeError("Missing 'host_public_address' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if os_type is None and 'osType' in kwargs:
+            os_type = kwargs['osType']
+        if os_type is None:
+            raise TypeError("Missing 'os_type' argument")
+        if protocols is None:
+            raise TypeError("Missing 'protocols' argument")
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if source_instance_id is None and 'sourceInstanceId' in kwargs:
+            source_instance_id = kwargs['sourceInstanceId']
+        if source_instance_id is None:
+            raise TypeError("Missing 'source_instance_id' argument")
+
+        _setter("active_address_type", active_address_type)
+        _setter("comment", comment)
+        _setter("host_id", host_id)
+        _setter("host_name", host_name)
+        _setter("host_private_address", host_private_address)
+        _setter("host_public_address", host_public_address)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("os_type", os_type)
+        _setter("protocols", protocols)
+        _setter("source", source)
+        _setter("source_instance_id", source_instance_id)
 
     @property
     @pulumi.getter(name="activeAddressType")
@@ -738,9 +1054,34 @@ class GetHostsHostProtocolResult(dict):
         :param int port: Host the service port of the RDS.
         :param str protocol_name: The host uses the protocol name.
         """
-        pulumi.set(__self__, "host_finger_print", host_finger_print)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "protocol_name", protocol_name)
+        GetHostsHostProtocolResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host_finger_print=host_finger_print,
+            port=port,
+            protocol_name=protocol_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host_finger_print: Optional[str] = None,
+             port: Optional[int] = None,
+             protocol_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if host_finger_print is None and 'hostFingerPrint' in kwargs:
+            host_finger_print = kwargs['hostFingerPrint']
+        if host_finger_print is None:
+            raise TypeError("Missing 'host_finger_print' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if protocol_name is None and 'protocolName' in kwargs:
+            protocol_name = kwargs['protocolName']
+        if protocol_name is None:
+            raise TypeError("Missing 'protocol_name' argument")
+
+        _setter("host_finger_print", host_finger_print)
+        _setter("port", port)
+        _setter("protocol_name", protocol_name)
 
     @property
     @pulumi.getter(name="hostFingerPrint")
@@ -799,17 +1140,78 @@ class GetInstancesInstanceResult(dict):
                })
                ```
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_status", instance_status)
-        pulumi.set(__self__, "license_code", license_code)
-        pulumi.set(__self__, "private_domain", private_domain)
-        pulumi.set(__self__, "public_domain", public_domain)
-        pulumi.set(__self__, "public_network_access", public_network_access)
-        pulumi.set(__self__, "security_group_ids", security_group_ids)
-        pulumi.set(__self__, "user_vswitch_id", user_vswitch_id)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            id=id,
+            instance_status=instance_status,
+            license_code=license_code,
+            private_domain=private_domain,
+            public_domain=public_domain,
+            public_network_access=public_network_access,
+            security_group_ids=security_group_ids,
+            user_vswitch_id=user_vswitch_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_status: Optional[str] = None,
+             license_code: Optional[str] = None,
+             private_domain: Optional[str] = None,
+             public_domain: Optional[str] = None,
+             public_network_access: Optional[bool] = None,
+             security_group_ids: Optional[Sequence[str]] = None,
+             user_vswitch_id: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_status is None and 'instanceStatus' in kwargs:
+            instance_status = kwargs['instanceStatus']
+        if instance_status is None:
+            raise TypeError("Missing 'instance_status' argument")
+        if license_code is None and 'licenseCode' in kwargs:
+            license_code = kwargs['licenseCode']
+        if license_code is None:
+            raise TypeError("Missing 'license_code' argument")
+        if private_domain is None and 'privateDomain' in kwargs:
+            private_domain = kwargs['privateDomain']
+        if private_domain is None:
+            raise TypeError("Missing 'private_domain' argument")
+        if public_domain is None and 'publicDomain' in kwargs:
+            public_domain = kwargs['publicDomain']
+        if public_domain is None:
+            raise TypeError("Missing 'public_domain' argument")
+        if public_network_access is None and 'publicNetworkAccess' in kwargs:
+            public_network_access = kwargs['publicNetworkAccess']
+        if public_network_access is None:
+            raise TypeError("Missing 'public_network_access' argument")
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if security_group_ids is None:
+            raise TypeError("Missing 'security_group_ids' argument")
+        if user_vswitch_id is None and 'userVswitchId' in kwargs:
+            user_vswitch_id = kwargs['userVswitchId']
+        if user_vswitch_id is None:
+            raise TypeError("Missing 'user_vswitch_id' argument")
+
+        _setter("description", description)
+        _setter("id", id)
+        _setter("instance_status", instance_status)
+        _setter("license_code", license_code)
+        _setter("private_domain", private_domain)
+        _setter("public_domain", public_domain)
+        _setter("public_network_access", public_network_access)
+        _setter("security_group_ids", security_group_ids)
+        _setter("user_vswitch_id", user_vswitch_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -912,11 +1314,46 @@ class GetUserGroupsGroupResult(dict):
         :param str user_group_id: The User Group ID.
         :param str user_group_name: Specify the New Group Name. Supports up to 128 Characters.
         """
-        pulumi.set(__self__, "comment", comment)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "user_group_id", user_group_id)
-        pulumi.set(__self__, "user_group_name", user_group_name)
+        GetUserGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comment=comment,
+            id=id,
+            instance_id=instance_id,
+            user_group_id=user_group_id,
+            user_group_name=user_group_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comment: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             user_group_id: Optional[str] = None,
+             user_group_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if comment is None:
+            raise TypeError("Missing 'comment' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if user_group_id is None and 'userGroupId' in kwargs:
+            user_group_id = kwargs['userGroupId']
+        if user_group_id is None:
+            raise TypeError("Missing 'user_group_id' argument")
+        if user_group_name is None and 'userGroupName' in kwargs:
+            user_group_name = kwargs['userGroupName']
+        if user_group_name is None:
+            raise TypeError("Missing 'user_group_name' argument")
+
+        _setter("comment", comment)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("user_group_id", user_group_id)
+        _setter("user_group_name", user_group_name)
 
     @property
     @pulumi.getter
@@ -988,18 +1425,87 @@ class GetUsersUserResult(dict):
         :param str user_id: The User ID.
         :param str user_name: Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
         """
-        pulumi.set(__self__, "comment", comment)
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "email", email)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "mobile", mobile)
-        pulumi.set(__self__, "mobile_country_code", mobile_country_code)
-        pulumi.set(__self__, "source", source)
-        pulumi.set(__self__, "source_user_id", source_user_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "user_id", user_id)
-        pulumi.set(__self__, "user_name", user_name)
+        GetUsersUserResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comment=comment,
+            display_name=display_name,
+            email=email,
+            id=id,
+            instance_id=instance_id,
+            mobile=mobile,
+            mobile_country_code=mobile_country_code,
+            source=source,
+            source_user_id=source_user_id,
+            status=status,
+            user_id=user_id,
+            user_name=user_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comment: Optional[str] = None,
+             display_name: Optional[str] = None,
+             email: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             mobile: Optional[str] = None,
+             mobile_country_code: Optional[str] = None,
+             source: Optional[str] = None,
+             source_user_id: Optional[str] = None,
+             status: Optional[str] = None,
+             user_id: Optional[str] = None,
+             user_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if comment is None:
+            raise TypeError("Missing 'comment' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if email is None:
+            raise TypeError("Missing 'email' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if mobile is None:
+            raise TypeError("Missing 'mobile' argument")
+        if mobile_country_code is None and 'mobileCountryCode' in kwargs:
+            mobile_country_code = kwargs['mobileCountryCode']
+        if mobile_country_code is None:
+            raise TypeError("Missing 'mobile_country_code' argument")
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if source_user_id is None and 'sourceUserId' in kwargs:
+            source_user_id = kwargs['sourceUserId']
+        if source_user_id is None:
+            raise TypeError("Missing 'source_user_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
+        if user_name is None and 'userName' in kwargs:
+            user_name = kwargs['userName']
+        if user_name is None:
+            raise TypeError("Missing 'user_name' argument")
+
+        _setter("comment", comment)
+        _setter("display_name", display_name)
+        _setter("email", email)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("mobile", mobile)
+        _setter("mobile_country_code", mobile_country_code)
+        _setter("source", source)
+        _setter("source_user_id", source_user_id)
+        _setter("status", status)
+        _setter("user_id", user_id)
+        _setter("user_name", user_name)
 
     @property
     @pulumi.getter

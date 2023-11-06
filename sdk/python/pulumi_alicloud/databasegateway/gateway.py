@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['GatewayArgs', 'Gateway']
@@ -21,9 +21,28 @@ class GatewayArgs:
         :param pulumi.Input[str] gateway_name: The name of the Gateway.
         :param pulumi.Input[str] gateway_desc: The description of Gateway.
         """
-        pulumi.set(__self__, "gateway_name", gateway_name)
+        GatewayArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            gateway_name=gateway_name,
+            gateway_desc=gateway_desc,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             gateway_name: Optional[pulumi.Input[str]] = None,
+             gateway_desc: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gateway_name is None and 'gatewayName' in kwargs:
+            gateway_name = kwargs['gatewayName']
+        if gateway_name is None:
+            raise TypeError("Missing 'gateway_name' argument")
+        if gateway_desc is None and 'gatewayDesc' in kwargs:
+            gateway_desc = kwargs['gatewayDesc']
+
+        _setter("gateway_name", gateway_name)
         if gateway_desc is not None:
-            pulumi.set(__self__, "gateway_desc", gateway_desc)
+            _setter("gateway_desc", gateway_desc)
 
     @property
     @pulumi.getter(name="gatewayName")
@@ -62,12 +81,31 @@ class _GatewayState:
         :param pulumi.Input[str] gateway_name: The name of the Gateway.
         :param pulumi.Input[str] status: The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
         """
+        _GatewayState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            gateway_desc=gateway_desc,
+            gateway_name=gateway_name,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             gateway_desc: Optional[pulumi.Input[str]] = None,
+             gateway_name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gateway_desc is None and 'gatewayDesc' in kwargs:
+            gateway_desc = kwargs['gatewayDesc']
+        if gateway_name is None and 'gatewayName' in kwargs:
+            gateway_name = kwargs['gatewayName']
+
         if gateway_desc is not None:
-            pulumi.set(__self__, "gateway_desc", gateway_desc)
+            _setter("gateway_desc", gateway_desc)
         if gateway_name is not None:
-            pulumi.set(__self__, "gateway_name", gateway_name)
+            _setter("gateway_name", gateway_name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="gatewayDesc")
@@ -187,6 +225,10 @@ class Gateway(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GatewayArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

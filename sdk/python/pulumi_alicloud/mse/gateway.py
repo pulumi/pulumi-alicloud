@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,22 +39,75 @@ class GatewayArgs:
         :param pulumi.Input[str] internet_slb_spec: Public network SLB specifications.
         :param pulumi.Input[str] slb_spec: Private network SLB specifications.
         """
-        pulumi.set(__self__, "replica", replica)
-        pulumi.set(__self__, "spec", spec)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GatewayArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            replica=replica,
+            spec=spec,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            backup_vswitch_id=backup_vswitch_id,
+            delete_slb=delete_slb,
+            enterprise_security_group=enterprise_security_group,
+            gateway_name=gateway_name,
+            internet_slb_spec=internet_slb_spec,
+            slb_spec=slb_spec,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             replica: Optional[pulumi.Input[int]] = None,
+             spec: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             backup_vswitch_id: Optional[pulumi.Input[str]] = None,
+             delete_slb: Optional[pulumi.Input[bool]] = None,
+             enterprise_security_group: Optional[pulumi.Input[bool]] = None,
+             gateway_name: Optional[pulumi.Input[str]] = None,
+             internet_slb_spec: Optional[pulumi.Input[str]] = None,
+             slb_spec: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if replica is None:
+            raise TypeError("Missing 'replica' argument")
+        if spec is None:
+            raise TypeError("Missing 'spec' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if backup_vswitch_id is None and 'backupVswitchId' in kwargs:
+            backup_vswitch_id = kwargs['backupVswitchId']
+        if delete_slb is None and 'deleteSlb' in kwargs:
+            delete_slb = kwargs['deleteSlb']
+        if enterprise_security_group is None and 'enterpriseSecurityGroup' in kwargs:
+            enterprise_security_group = kwargs['enterpriseSecurityGroup']
+        if gateway_name is None and 'gatewayName' in kwargs:
+            gateway_name = kwargs['gatewayName']
+        if internet_slb_spec is None and 'internetSlbSpec' in kwargs:
+            internet_slb_spec = kwargs['internetSlbSpec']
+        if slb_spec is None and 'slbSpec' in kwargs:
+            slb_spec = kwargs['slbSpec']
+
+        _setter("replica", replica)
+        _setter("spec", spec)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
         if backup_vswitch_id is not None:
-            pulumi.set(__self__, "backup_vswitch_id", backup_vswitch_id)
+            _setter("backup_vswitch_id", backup_vswitch_id)
         if delete_slb is not None:
-            pulumi.set(__self__, "delete_slb", delete_slb)
+            _setter("delete_slb", delete_slb)
         if enterprise_security_group is not None:
-            pulumi.set(__self__, "enterprise_security_group", enterprise_security_group)
+            _setter("enterprise_security_group", enterprise_security_group)
         if gateway_name is not None:
-            pulumi.set(__self__, "gateway_name", gateway_name)
+            _setter("gateway_name", gateway_name)
         if internet_slb_spec is not None:
-            pulumi.set(__self__, "internet_slb_spec", internet_slb_spec)
+            _setter("internet_slb_spec", internet_slb_spec)
         if slb_spec is not None:
-            pulumi.set(__self__, "slb_spec", slb_spec)
+            _setter("slb_spec", slb_spec)
 
     @property
     @pulumi.getter
@@ -207,30 +260,81 @@ class _GatewayState:
         :param pulumi.Input[str] vpc_id: The ID of the vpc.
         :param pulumi.Input[str] vswitch_id: The ID of the vswitch.
         """
+        _GatewayState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_vswitch_id=backup_vswitch_id,
+            delete_slb=delete_slb,
+            enterprise_security_group=enterprise_security_group,
+            gateway_name=gateway_name,
+            internet_slb_spec=internet_slb_spec,
+            replica=replica,
+            slb_lists=slb_lists,
+            slb_spec=slb_spec,
+            spec=spec,
+            status=status,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_vswitch_id: Optional[pulumi.Input[str]] = None,
+             delete_slb: Optional[pulumi.Input[bool]] = None,
+             enterprise_security_group: Optional[pulumi.Input[bool]] = None,
+             gateway_name: Optional[pulumi.Input[str]] = None,
+             internet_slb_spec: Optional[pulumi.Input[str]] = None,
+             replica: Optional[pulumi.Input[int]] = None,
+             slb_lists: Optional[pulumi.Input[Sequence[pulumi.Input['GatewaySlbListArgs']]]] = None,
+             slb_spec: Optional[pulumi.Input[str]] = None,
+             spec: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backup_vswitch_id is None and 'backupVswitchId' in kwargs:
+            backup_vswitch_id = kwargs['backupVswitchId']
+        if delete_slb is None and 'deleteSlb' in kwargs:
+            delete_slb = kwargs['deleteSlb']
+        if enterprise_security_group is None and 'enterpriseSecurityGroup' in kwargs:
+            enterprise_security_group = kwargs['enterpriseSecurityGroup']
+        if gateway_name is None and 'gatewayName' in kwargs:
+            gateway_name = kwargs['gatewayName']
+        if internet_slb_spec is None and 'internetSlbSpec' in kwargs:
+            internet_slb_spec = kwargs['internetSlbSpec']
+        if slb_lists is None and 'slbLists' in kwargs:
+            slb_lists = kwargs['slbLists']
+        if slb_spec is None and 'slbSpec' in kwargs:
+            slb_spec = kwargs['slbSpec']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if backup_vswitch_id is not None:
-            pulumi.set(__self__, "backup_vswitch_id", backup_vswitch_id)
+            _setter("backup_vswitch_id", backup_vswitch_id)
         if delete_slb is not None:
-            pulumi.set(__self__, "delete_slb", delete_slb)
+            _setter("delete_slb", delete_slb)
         if enterprise_security_group is not None:
-            pulumi.set(__self__, "enterprise_security_group", enterprise_security_group)
+            _setter("enterprise_security_group", enterprise_security_group)
         if gateway_name is not None:
-            pulumi.set(__self__, "gateway_name", gateway_name)
+            _setter("gateway_name", gateway_name)
         if internet_slb_spec is not None:
-            pulumi.set(__self__, "internet_slb_spec", internet_slb_spec)
+            _setter("internet_slb_spec", internet_slb_spec)
         if replica is not None:
-            pulumi.set(__self__, "replica", replica)
+            _setter("replica", replica)
         if slb_lists is not None:
-            pulumi.set(__self__, "slb_lists", slb_lists)
+            _setter("slb_lists", slb_lists)
         if slb_spec is not None:
-            pulumi.set(__self__, "slb_spec", slb_spec)
+            _setter("slb_spec", slb_spec)
         if spec is not None:
-            pulumi.set(__self__, "spec", spec)
+            _setter("spec", spec)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="backupVswitchId")
@@ -452,6 +556,10 @@ class Gateway(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GatewayArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

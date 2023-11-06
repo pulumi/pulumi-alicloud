@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -38,16 +38,79 @@ class GetUsersUserResult(dict):
         :param str user_id: The ID of the User.
         :param str user_type: The members of the organization of the type of role separately. Valid values: `Analyst`, `Developer` and `Visitor`.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "account_name", account_name)
-        pulumi.set(__self__, "admin_user", admin_user)
-        pulumi.set(__self__, "auth_admin_user", auth_admin_user)
-        pulumi.set(__self__, "email", email)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "nick_name", nick_name)
-        pulumi.set(__self__, "phone", phone)
-        pulumi.set(__self__, "user_id", user_id)
-        pulumi.set(__self__, "user_type", user_type)
+        GetUsersUserResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            account_name=account_name,
+            admin_user=admin_user,
+            auth_admin_user=auth_admin_user,
+            email=email,
+            id=id,
+            nick_name=nick_name,
+            phone=phone,
+            user_id=user_id,
+            user_type=user_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[str] = None,
+             account_name: Optional[str] = None,
+             admin_user: Optional[bool] = None,
+             auth_admin_user: Optional[bool] = None,
+             email: Optional[str] = None,
+             id: Optional[str] = None,
+             nick_name: Optional[str] = None,
+             phone: Optional[str] = None,
+             user_id: Optional[str] = None,
+             user_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if account_name is None and 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+        if admin_user is None and 'adminUser' in kwargs:
+            admin_user = kwargs['adminUser']
+        if admin_user is None:
+            raise TypeError("Missing 'admin_user' argument")
+        if auth_admin_user is None and 'authAdminUser' in kwargs:
+            auth_admin_user = kwargs['authAdminUser']
+        if auth_admin_user is None:
+            raise TypeError("Missing 'auth_admin_user' argument")
+        if email is None:
+            raise TypeError("Missing 'email' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if nick_name is None and 'nickName' in kwargs:
+            nick_name = kwargs['nickName']
+        if nick_name is None:
+            raise TypeError("Missing 'nick_name' argument")
+        if phone is None:
+            raise TypeError("Missing 'phone' argument")
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
+        if user_type is None and 'userType' in kwargs:
+            user_type = kwargs['userType']
+        if user_type is None:
+            raise TypeError("Missing 'user_type' argument")
+
+        _setter("account_id", account_id)
+        _setter("account_name", account_name)
+        _setter("admin_user", admin_user)
+        _setter("auth_admin_user", auth_admin_user)
+        _setter("email", email)
+        _setter("id", id)
+        _setter("nick_name", nick_name)
+        _setter("phone", phone)
+        _setter("user_id", user_id)
+        _setter("user_type", user_type)
 
     @property
     @pulumi.getter(name="accountId")

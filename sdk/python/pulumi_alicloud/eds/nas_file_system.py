@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['NasFileSystemArgs', 'NasFileSystem']
@@ -29,17 +29,48 @@ class NasFileSystemArgs:
         :param pulumi.Input[str] nas_file_system_name: The name of nas file system.
         :param pulumi.Input[bool] reset: The mount point is in an inactive state, reset the mount point of the NAS file system. Default to `false`.
         """
-        pulumi.set(__self__, "office_site_id", office_site_id)
+        NasFileSystemArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            office_site_id=office_site_id,
+            description=description,
+            file_system_id=file_system_id,
+            mount_target_domain=mount_target_domain,
+            nas_file_system_name=nas_file_system_name,
+            reset=reset,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             office_site_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             file_system_id: Optional[pulumi.Input[str]] = None,
+             mount_target_domain: Optional[pulumi.Input[str]] = None,
+             nas_file_system_name: Optional[pulumi.Input[str]] = None,
+             reset: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if office_site_id is None and 'officeSiteId' in kwargs:
+            office_site_id = kwargs['officeSiteId']
+        if office_site_id is None:
+            raise TypeError("Missing 'office_site_id' argument")
+        if file_system_id is None and 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if mount_target_domain is None and 'mountTargetDomain' in kwargs:
+            mount_target_domain = kwargs['mountTargetDomain']
+        if nas_file_system_name is None and 'nasFileSystemName' in kwargs:
+            nas_file_system_name = kwargs['nasFileSystemName']
+
+        _setter("office_site_id", office_site_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if file_system_id is not None:
-            pulumi.set(__self__, "file_system_id", file_system_id)
+            _setter("file_system_id", file_system_id)
         if mount_target_domain is not None:
-            pulumi.set(__self__, "mount_target_domain", mount_target_domain)
+            _setter("mount_target_domain", mount_target_domain)
         if nas_file_system_name is not None:
-            pulumi.set(__self__, "nas_file_system_name", nas_file_system_name)
+            _setter("nas_file_system_name", nas_file_system_name)
         if reset is not None:
-            pulumi.set(__self__, "reset", reset)
+            _setter("reset", reset)
 
     @property
     @pulumi.getter(name="officeSiteId")
@@ -134,20 +165,51 @@ class _NasFileSystemState:
         :param pulumi.Input[bool] reset: The mount point is in an inactive state, reset the mount point of the NAS file system. Default to `false`.
         :param pulumi.Input[str] status: The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
         """
+        _NasFileSystemState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            file_system_id=file_system_id,
+            mount_target_domain=mount_target_domain,
+            nas_file_system_name=nas_file_system_name,
+            office_site_id=office_site_id,
+            reset=reset,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             file_system_id: Optional[pulumi.Input[str]] = None,
+             mount_target_domain: Optional[pulumi.Input[str]] = None,
+             nas_file_system_name: Optional[pulumi.Input[str]] = None,
+             office_site_id: Optional[pulumi.Input[str]] = None,
+             reset: Optional[pulumi.Input[bool]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if file_system_id is None and 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if mount_target_domain is None and 'mountTargetDomain' in kwargs:
+            mount_target_domain = kwargs['mountTargetDomain']
+        if nas_file_system_name is None and 'nasFileSystemName' in kwargs:
+            nas_file_system_name = kwargs['nasFileSystemName']
+        if office_site_id is None and 'officeSiteId' in kwargs:
+            office_site_id = kwargs['officeSiteId']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if file_system_id is not None:
-            pulumi.set(__self__, "file_system_id", file_system_id)
+            _setter("file_system_id", file_system_id)
         if mount_target_domain is not None:
-            pulumi.set(__self__, "mount_target_domain", mount_target_domain)
+            _setter("mount_target_domain", mount_target_domain)
         if nas_file_system_name is not None:
-            pulumi.set(__self__, "nas_file_system_name", nas_file_system_name)
+            _setter("nas_file_system_name", nas_file_system_name)
         if office_site_id is not None:
-            pulumi.set(__self__, "office_site_id", office_site_id)
+            _setter("office_site_id", office_site_id)
         if reset is not None:
-            pulumi.set(__self__, "reset", reset)
+            _setter("reset", reset)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter
@@ -347,6 +409,10 @@ class NasFileSystem(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NasFileSystemArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

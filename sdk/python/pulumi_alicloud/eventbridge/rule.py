@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,14 +31,49 @@ class RuleArgs:
         :param pulumi.Input[str] description: The description of rule.
         :param pulumi.Input[str] status: Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
         """
-        pulumi.set(__self__, "event_bus_name", event_bus_name)
-        pulumi.set(__self__, "filter_pattern", filter_pattern)
-        pulumi.set(__self__, "rule_name", rule_name)
-        pulumi.set(__self__, "targets", targets)
+        RuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            event_bus_name=event_bus_name,
+            filter_pattern=filter_pattern,
+            rule_name=rule_name,
+            targets=targets,
+            description=description,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             event_bus_name: Optional[pulumi.Input[str]] = None,
+             filter_pattern: Optional[pulumi.Input[str]] = None,
+             rule_name: Optional[pulumi.Input[str]] = None,
+             targets: Optional[pulumi.Input[Sequence[pulumi.Input['RuleTargetArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if event_bus_name is None and 'eventBusName' in kwargs:
+            event_bus_name = kwargs['eventBusName']
+        if event_bus_name is None:
+            raise TypeError("Missing 'event_bus_name' argument")
+        if filter_pattern is None and 'filterPattern' in kwargs:
+            filter_pattern = kwargs['filterPattern']
+        if filter_pattern is None:
+            raise TypeError("Missing 'filter_pattern' argument")
+        if rule_name is None and 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+        if rule_name is None:
+            raise TypeError("Missing 'rule_name' argument")
+        if targets is None:
+            raise TypeError("Missing 'targets' argument")
+
+        _setter("event_bus_name", event_bus_name)
+        _setter("filter_pattern", filter_pattern)
+        _setter("rule_name", rule_name)
+        _setter("targets", targets)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="eventBusName")
@@ -131,18 +166,45 @@ class _RuleState:
         :param pulumi.Input[str] status: Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
         :param pulumi.Input[Sequence[pulumi.Input['RuleTargetArgs']]] targets: The target of rule. See `targets` below.
         """
+        _RuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            event_bus_name=event_bus_name,
+            filter_pattern=filter_pattern,
+            rule_name=rule_name,
+            status=status,
+            targets=targets,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             event_bus_name: Optional[pulumi.Input[str]] = None,
+             filter_pattern: Optional[pulumi.Input[str]] = None,
+             rule_name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             targets: Optional[pulumi.Input[Sequence[pulumi.Input['RuleTargetArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if event_bus_name is None and 'eventBusName' in kwargs:
+            event_bus_name = kwargs['eventBusName']
+        if filter_pattern is None and 'filterPattern' in kwargs:
+            filter_pattern = kwargs['filterPattern']
+        if rule_name is None and 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if event_bus_name is not None:
-            pulumi.set(__self__, "event_bus_name", event_bus_name)
+            _setter("event_bus_name", event_bus_name)
         if filter_pattern is not None:
-            pulumi.set(__self__, "filter_pattern", filter_pattern)
+            _setter("filter_pattern", filter_pattern)
         if rule_name is not None:
-            pulumi.set(__self__, "rule_name", rule_name)
+            _setter("rule_name", rule_name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if targets is not None:
-            pulumi.set(__self__, "targets", targets)
+            _setter("targets", targets)
 
     @property
     @pulumi.getter
@@ -348,6 +410,10 @@ class Rule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

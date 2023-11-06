@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -50,21 +50,108 @@ class GetSystemGroupsGroupResult(dict):
         :param str push_domain: The domain name of push streaming used by the group.
         :param Sequence['GetSystemGroupsGroupStatArgs'] stats: The Device statistics of Group.
         """
-        pulumi.set(__self__, "app", app)
-        pulumi.set(__self__, "callback", callback)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "gb_id", gb_id)
-        pulumi.set(__self__, "gb_ip", gb_ip)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "group_name", group_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "in_protocol", in_protocol)
-        pulumi.set(__self__, "out_protocol", out_protocol)
-        pulumi.set(__self__, "play_domain", play_domain)
-        pulumi.set(__self__, "push_domain", push_domain)
-        pulumi.set(__self__, "stats", stats)
+        GetSystemGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app=app,
+            callback=callback,
+            create_time=create_time,
+            description=description,
+            enabled=enabled,
+            gb_id=gb_id,
+            gb_ip=gb_ip,
+            group_id=group_id,
+            group_name=group_name,
+            id=id,
+            in_protocol=in_protocol,
+            out_protocol=out_protocol,
+            play_domain=play_domain,
+            push_domain=push_domain,
+            stats=stats,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app: Optional[str] = None,
+             callback: Optional[str] = None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             enabled: Optional[bool] = None,
+             gb_id: Optional[str] = None,
+             gb_ip: Optional[str] = None,
+             group_id: Optional[str] = None,
+             group_name: Optional[str] = None,
+             id: Optional[str] = None,
+             in_protocol: Optional[str] = None,
+             out_protocol: Optional[str] = None,
+             play_domain: Optional[str] = None,
+             push_domain: Optional[str] = None,
+             stats: Optional[Sequence['outputs.GetSystemGroupsGroupStatResult']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app is None:
+            raise TypeError("Missing 'app' argument")
+        if callback is None:
+            raise TypeError("Missing 'callback' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if gb_id is None and 'gbId' in kwargs:
+            gb_id = kwargs['gbId']
+        if gb_id is None:
+            raise TypeError("Missing 'gb_id' argument")
+        if gb_ip is None and 'gbIp' in kwargs:
+            gb_ip = kwargs['gbIp']
+        if gb_ip is None:
+            raise TypeError("Missing 'gb_ip' argument")
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if group_name is None and 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if group_name is None:
+            raise TypeError("Missing 'group_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if in_protocol is None and 'inProtocol' in kwargs:
+            in_protocol = kwargs['inProtocol']
+        if in_protocol is None:
+            raise TypeError("Missing 'in_protocol' argument")
+        if out_protocol is None and 'outProtocol' in kwargs:
+            out_protocol = kwargs['outProtocol']
+        if out_protocol is None:
+            raise TypeError("Missing 'out_protocol' argument")
+        if play_domain is None and 'playDomain' in kwargs:
+            play_domain = kwargs['playDomain']
+        if play_domain is None:
+            raise TypeError("Missing 'play_domain' argument")
+        if push_domain is None and 'pushDomain' in kwargs:
+            push_domain = kwargs['pushDomain']
+        if push_domain is None:
+            raise TypeError("Missing 'push_domain' argument")
+        if stats is None:
+            raise TypeError("Missing 'stats' argument")
+
+        _setter("app", app)
+        _setter("callback", callback)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("enabled", enabled)
+        _setter("gb_id", gb_id)
+        _setter("gb_ip", gb_ip)
+        _setter("group_id", group_id)
+        _setter("group_name", group_name)
+        _setter("id", id)
+        _setter("in_protocol", in_protocol)
+        _setter("out_protocol", out_protocol)
+        _setter("play_domain", play_domain)
+        _setter("push_domain", push_domain)
+        _setter("stats", stats)
 
     @property
     @pulumi.getter
@@ -200,10 +287,43 @@ class GetSystemGroupsGroupStatResult(dict):
         :param str ipc_num: The total number of cameras in the group.
         :param str platform_num: The total number of platforms in the group.
         """
-        pulumi.set(__self__, "device_num", device_num)
-        pulumi.set(__self__, "ied_num", ied_num)
-        pulumi.set(__self__, "ipc_num", ipc_num)
-        pulumi.set(__self__, "platform_num", platform_num)
+        GetSystemGroupsGroupStatResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            device_num=device_num,
+            ied_num=ied_num,
+            ipc_num=ipc_num,
+            platform_num=platform_num,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             device_num: Optional[str] = None,
+             ied_num: Optional[str] = None,
+             ipc_num: Optional[str] = None,
+             platform_num: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if device_num is None and 'deviceNum' in kwargs:
+            device_num = kwargs['deviceNum']
+        if device_num is None:
+            raise TypeError("Missing 'device_num' argument")
+        if ied_num is None and 'iedNum' in kwargs:
+            ied_num = kwargs['iedNum']
+        if ied_num is None:
+            raise TypeError("Missing 'ied_num' argument")
+        if ipc_num is None and 'ipcNum' in kwargs:
+            ipc_num = kwargs['ipcNum']
+        if ipc_num is None:
+            raise TypeError("Missing 'ipc_num' argument")
+        if platform_num is None and 'platformNum' in kwargs:
+            platform_num = kwargs['platformNum']
+        if platform_num is None:
+            raise TypeError("Missing 'platform_num' argument")
+
+        _setter("device_num", device_num)
+        _setter("ied_num", ied_num)
+        _setter("ipc_num", ipc_num)
+        _setter("platform_num", platform_num)
 
     @property
     @pulumi.getter(name="deviceNum")

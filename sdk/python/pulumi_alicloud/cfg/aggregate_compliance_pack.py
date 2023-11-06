@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,19 +33,62 @@ class AggregateCompliancePackArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleIdArgs']]] config_rule_ids: A list of Config Rule IDs. See `config_rule_ids` below.
         :param pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]] config_rules: A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         """
-        pulumi.set(__self__, "aggregate_compliance_pack_name", aggregate_compliance_pack_name)
-        pulumi.set(__self__, "aggregator_id", aggregator_id)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "risk_level", risk_level)
+        AggregateCompliancePackArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            aggregate_compliance_pack_name=aggregate_compliance_pack_name,
+            aggregator_id=aggregator_id,
+            description=description,
+            risk_level=risk_level,
+            compliance_pack_template_id=compliance_pack_template_id,
+            config_rule_ids=config_rule_ids,
+            config_rules=config_rules,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             aggregate_compliance_pack_name: Optional[pulumi.Input[str]] = None,
+             aggregator_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             risk_level: Optional[pulumi.Input[int]] = None,
+             compliance_pack_template_id: Optional[pulumi.Input[str]] = None,
+             config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleIdArgs']]]] = None,
+             config_rules: Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if aggregate_compliance_pack_name is None and 'aggregateCompliancePackName' in kwargs:
+            aggregate_compliance_pack_name = kwargs['aggregateCompliancePackName']
+        if aggregate_compliance_pack_name is None:
+            raise TypeError("Missing 'aggregate_compliance_pack_name' argument")
+        if aggregator_id is None and 'aggregatorId' in kwargs:
+            aggregator_id = kwargs['aggregatorId']
+        if aggregator_id is None:
+            raise TypeError("Missing 'aggregator_id' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if risk_level is None and 'riskLevel' in kwargs:
+            risk_level = kwargs['riskLevel']
+        if risk_level is None:
+            raise TypeError("Missing 'risk_level' argument")
+        if compliance_pack_template_id is None and 'compliancePackTemplateId' in kwargs:
+            compliance_pack_template_id = kwargs['compliancePackTemplateId']
+        if config_rule_ids is None and 'configRuleIds' in kwargs:
+            config_rule_ids = kwargs['configRuleIds']
+        if config_rules is None and 'configRules' in kwargs:
+            config_rules = kwargs['configRules']
+
+        _setter("aggregate_compliance_pack_name", aggregate_compliance_pack_name)
+        _setter("aggregator_id", aggregator_id)
+        _setter("description", description)
+        _setter("risk_level", risk_level)
         if compliance_pack_template_id is not None:
-            pulumi.set(__self__, "compliance_pack_template_id", compliance_pack_template_id)
+            _setter("compliance_pack_template_id", compliance_pack_template_id)
         if config_rule_ids is not None:
-            pulumi.set(__self__, "config_rule_ids", config_rule_ids)
+            _setter("config_rule_ids", config_rule_ids)
         if config_rules is not None:
             warnings.warn("""Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""", DeprecationWarning)
             pulumi.log.warn("""config_rules is deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""")
         if config_rules is not None:
-            pulumi.set(__self__, "config_rules", config_rules)
+            _setter("config_rules", config_rules)
 
     @property
     @pulumi.getter(name="aggregateCompliancePackName")
@@ -159,27 +202,68 @@ class _AggregateCompliancePackState:
         :param pulumi.Input[int] risk_level: The Risk Level. Valid values:
         :param pulumi.Input[str] status: The status of the Aggregate Compliance Pack.
         """
+        _AggregateCompliancePackState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            aggregate_compliance_pack_name=aggregate_compliance_pack_name,
+            aggregator_compliance_pack_id=aggregator_compliance_pack_id,
+            aggregator_id=aggregator_id,
+            compliance_pack_template_id=compliance_pack_template_id,
+            config_rule_ids=config_rule_ids,
+            config_rules=config_rules,
+            description=description,
+            risk_level=risk_level,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             aggregate_compliance_pack_name: Optional[pulumi.Input[str]] = None,
+             aggregator_compliance_pack_id: Optional[pulumi.Input[str]] = None,
+             aggregator_id: Optional[pulumi.Input[str]] = None,
+             compliance_pack_template_id: Optional[pulumi.Input[str]] = None,
+             config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleIdArgs']]]] = None,
+             config_rules: Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             risk_level: Optional[pulumi.Input[int]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if aggregate_compliance_pack_name is None and 'aggregateCompliancePackName' in kwargs:
+            aggregate_compliance_pack_name = kwargs['aggregateCompliancePackName']
+        if aggregator_compliance_pack_id is None and 'aggregatorCompliancePackId' in kwargs:
+            aggregator_compliance_pack_id = kwargs['aggregatorCompliancePackId']
+        if aggregator_id is None and 'aggregatorId' in kwargs:
+            aggregator_id = kwargs['aggregatorId']
+        if compliance_pack_template_id is None and 'compliancePackTemplateId' in kwargs:
+            compliance_pack_template_id = kwargs['compliancePackTemplateId']
+        if config_rule_ids is None and 'configRuleIds' in kwargs:
+            config_rule_ids = kwargs['configRuleIds']
+        if config_rules is None and 'configRules' in kwargs:
+            config_rules = kwargs['configRules']
+        if risk_level is None and 'riskLevel' in kwargs:
+            risk_level = kwargs['riskLevel']
+
         if aggregate_compliance_pack_name is not None:
-            pulumi.set(__self__, "aggregate_compliance_pack_name", aggregate_compliance_pack_name)
+            _setter("aggregate_compliance_pack_name", aggregate_compliance_pack_name)
         if aggregator_compliance_pack_id is not None:
-            pulumi.set(__self__, "aggregator_compliance_pack_id", aggregator_compliance_pack_id)
+            _setter("aggregator_compliance_pack_id", aggregator_compliance_pack_id)
         if aggregator_id is not None:
-            pulumi.set(__self__, "aggregator_id", aggregator_id)
+            _setter("aggregator_id", aggregator_id)
         if compliance_pack_template_id is not None:
-            pulumi.set(__self__, "compliance_pack_template_id", compliance_pack_template_id)
+            _setter("compliance_pack_template_id", compliance_pack_template_id)
         if config_rule_ids is not None:
-            pulumi.set(__self__, "config_rule_ids", config_rule_ids)
+            _setter("config_rule_ids", config_rule_ids)
         if config_rules is not None:
             warnings.warn("""Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""", DeprecationWarning)
             pulumi.log.warn("""config_rules is deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""")
         if config_rules is not None:
-            pulumi.set(__self__, "config_rules", config_rules)
+            _setter("config_rules", config_rules)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if risk_level is not None:
-            pulumi.set(__self__, "risk_level", risk_level)
+            _setter("risk_level", risk_level)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="aggregateCompliancePackName")
@@ -452,6 +536,10 @@ class AggregateCompliancePack(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AggregateCompliancePackArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

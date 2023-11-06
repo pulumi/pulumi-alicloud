@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RealTimeLogDeliveryArgs', 'RealTimeLogDelivery']
@@ -27,10 +27,37 @@ class RealTimeLogDeliveryArgs:
                
                > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
         """
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "logstore", logstore)
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "sls_region", sls_region)
+        RealTimeLogDeliveryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain=domain,
+            logstore=logstore,
+            project=project,
+            sls_region=sls_region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain: Optional[pulumi.Input[str]] = None,
+             logstore: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             sls_region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if logstore is None:
+            raise TypeError("Missing 'logstore' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if sls_region is None and 'slsRegion' in kwargs:
+            sls_region = kwargs['slsRegion']
+        if sls_region is None:
+            raise TypeError("Missing 'sls_region' argument")
+
+        _setter("domain", domain)
+        _setter("logstore", logstore)
+        _setter("project", project)
+        _setter("sls_region", sls_region)
 
     @property
     @pulumi.getter
@@ -101,16 +128,37 @@ class _RealTimeLogDeliveryState:
                > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
         :param pulumi.Input[str] status: The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
         """
+        _RealTimeLogDeliveryState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain=domain,
+            logstore=logstore,
+            project=project,
+            sls_region=sls_region,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain: Optional[pulumi.Input[str]] = None,
+             logstore: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             sls_region: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if sls_region is None and 'slsRegion' in kwargs:
+            sls_region = kwargs['slsRegion']
+
         if domain is not None:
-            pulumi.set(__self__, "domain", domain)
+            _setter("domain", domain)
         if logstore is not None:
-            pulumi.set(__self__, "logstore", logstore)
+            _setter("logstore", logstore)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if sls_region is not None:
-            pulumi.set(__self__, "sls_region", sls_region)
+            _setter("sls_region", sls_region)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter
@@ -316,6 +364,10 @@ class RealTimeLogDelivery(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RealTimeLogDeliveryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

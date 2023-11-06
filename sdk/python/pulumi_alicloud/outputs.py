@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
@@ -48,19 +48,98 @@ class GetMscSubContactsContactResult(dict):
         :param str mobile: The User's Telephone.
         :param str position: The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
         """
-        pulumi.set(__self__, "account_uid", account_uid)
-        pulumi.set(__self__, "contact_id", contact_id)
-        pulumi.set(__self__, "contact_name", contact_name)
-        pulumi.set(__self__, "email", email)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_account", is_account)
-        pulumi.set(__self__, "is_obsolete", is_obsolete)
-        pulumi.set(__self__, "is_verified_email", is_verified_email)
-        pulumi.set(__self__, "is_verified_mobile", is_verified_mobile)
-        pulumi.set(__self__, "last_email_verification_time_stamp", last_email_verification_time_stamp)
-        pulumi.set(__self__, "last_mobile_verification_time_stamp", last_mobile_verification_time_stamp)
-        pulumi.set(__self__, "mobile", mobile)
-        pulumi.set(__self__, "position", position)
+        GetMscSubContactsContactResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_uid=account_uid,
+            contact_id=contact_id,
+            contact_name=contact_name,
+            email=email,
+            id=id,
+            is_account=is_account,
+            is_obsolete=is_obsolete,
+            is_verified_email=is_verified_email,
+            is_verified_mobile=is_verified_mobile,
+            last_email_verification_time_stamp=last_email_verification_time_stamp,
+            last_mobile_verification_time_stamp=last_mobile_verification_time_stamp,
+            mobile=mobile,
+            position=position,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_uid: Optional[str] = None,
+             contact_id: Optional[str] = None,
+             contact_name: Optional[str] = None,
+             email: Optional[str] = None,
+             id: Optional[str] = None,
+             is_account: Optional[bool] = None,
+             is_obsolete: Optional[bool] = None,
+             is_verified_email: Optional[bool] = None,
+             is_verified_mobile: Optional[bool] = None,
+             last_email_verification_time_stamp: Optional[str] = None,
+             last_mobile_verification_time_stamp: Optional[str] = None,
+             mobile: Optional[str] = None,
+             position: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_uid is None and 'accountUid' in kwargs:
+            account_uid = kwargs['accountUid']
+        if account_uid is None:
+            raise TypeError("Missing 'account_uid' argument")
+        if contact_id is None and 'contactId' in kwargs:
+            contact_id = kwargs['contactId']
+        if contact_id is None:
+            raise TypeError("Missing 'contact_id' argument")
+        if contact_name is None and 'contactName' in kwargs:
+            contact_name = kwargs['contactName']
+        if contact_name is None:
+            raise TypeError("Missing 'contact_name' argument")
+        if email is None:
+            raise TypeError("Missing 'email' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if is_account is None and 'isAccount' in kwargs:
+            is_account = kwargs['isAccount']
+        if is_account is None:
+            raise TypeError("Missing 'is_account' argument")
+        if is_obsolete is None and 'isObsolete' in kwargs:
+            is_obsolete = kwargs['isObsolete']
+        if is_obsolete is None:
+            raise TypeError("Missing 'is_obsolete' argument")
+        if is_verified_email is None and 'isVerifiedEmail' in kwargs:
+            is_verified_email = kwargs['isVerifiedEmail']
+        if is_verified_email is None:
+            raise TypeError("Missing 'is_verified_email' argument")
+        if is_verified_mobile is None and 'isVerifiedMobile' in kwargs:
+            is_verified_mobile = kwargs['isVerifiedMobile']
+        if is_verified_mobile is None:
+            raise TypeError("Missing 'is_verified_mobile' argument")
+        if last_email_verification_time_stamp is None and 'lastEmailVerificationTimeStamp' in kwargs:
+            last_email_verification_time_stamp = kwargs['lastEmailVerificationTimeStamp']
+        if last_email_verification_time_stamp is None:
+            raise TypeError("Missing 'last_email_verification_time_stamp' argument")
+        if last_mobile_verification_time_stamp is None and 'lastMobileVerificationTimeStamp' in kwargs:
+            last_mobile_verification_time_stamp = kwargs['lastMobileVerificationTimeStamp']
+        if last_mobile_verification_time_stamp is None:
+            raise TypeError("Missing 'last_mobile_verification_time_stamp' argument")
+        if mobile is None:
+            raise TypeError("Missing 'mobile' argument")
+        if position is None:
+            raise TypeError("Missing 'position' argument")
+
+        _setter("account_uid", account_uid)
+        _setter("contact_id", contact_id)
+        _setter("contact_name", contact_name)
+        _setter("email", email)
+        _setter("id", id)
+        _setter("is_account", is_account)
+        _setter("is_obsolete", is_obsolete)
+        _setter("is_verified_email", is_verified_email)
+        _setter("is_verified_mobile", is_verified_mobile)
+        _setter("last_email_verification_time_stamp", last_email_verification_time_stamp)
+        _setter("last_mobile_verification_time_stamp", last_mobile_verification_time_stamp)
+        _setter("mobile", mobile)
+        _setter("position", position)
 
     @property
     @pulumi.getter(name="accountUid")
@@ -196,18 +275,93 @@ class GetMscSubSubscriptionsSubscriptionResult(dict):
         :param Sequence[int] webhook_ids: The ids of subscribed webhooks.
         :param int webhook_status: The status of webhook subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
         """
-        pulumi.set(__self__, "channel", channel)
-        pulumi.set(__self__, "contact_ids", contact_ids)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "email_status", email_status)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "item_id", item_id)
-        pulumi.set(__self__, "item_name", item_name)
-        pulumi.set(__self__, "pmsg_status", pmsg_status)
-        pulumi.set(__self__, "sms_status", sms_status)
-        pulumi.set(__self__, "tts_status", tts_status)
-        pulumi.set(__self__, "webhook_ids", webhook_ids)
-        pulumi.set(__self__, "webhook_status", webhook_status)
+        GetMscSubSubscriptionsSubscriptionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            channel=channel,
+            contact_ids=contact_ids,
+            description=description,
+            email_status=email_status,
+            id=id,
+            item_id=item_id,
+            item_name=item_name,
+            pmsg_status=pmsg_status,
+            sms_status=sms_status,
+            tts_status=tts_status,
+            webhook_ids=webhook_ids,
+            webhook_status=webhook_status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             channel: Optional[str] = None,
+             contact_ids: Optional[Sequence[int]] = None,
+             description: Optional[str] = None,
+             email_status: Optional[int] = None,
+             id: Optional[str] = None,
+             item_id: Optional[str] = None,
+             item_name: Optional[str] = None,
+             pmsg_status: Optional[int] = None,
+             sms_status: Optional[int] = None,
+             tts_status: Optional[int] = None,
+             webhook_ids: Optional[Sequence[int]] = None,
+             webhook_status: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if channel is None:
+            raise TypeError("Missing 'channel' argument")
+        if contact_ids is None and 'contactIds' in kwargs:
+            contact_ids = kwargs['contactIds']
+        if contact_ids is None:
+            raise TypeError("Missing 'contact_ids' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if email_status is None and 'emailStatus' in kwargs:
+            email_status = kwargs['emailStatus']
+        if email_status is None:
+            raise TypeError("Missing 'email_status' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if item_id is None and 'itemId' in kwargs:
+            item_id = kwargs['itemId']
+        if item_id is None:
+            raise TypeError("Missing 'item_id' argument")
+        if item_name is None and 'itemName' in kwargs:
+            item_name = kwargs['itemName']
+        if item_name is None:
+            raise TypeError("Missing 'item_name' argument")
+        if pmsg_status is None and 'pmsgStatus' in kwargs:
+            pmsg_status = kwargs['pmsgStatus']
+        if pmsg_status is None:
+            raise TypeError("Missing 'pmsg_status' argument")
+        if sms_status is None and 'smsStatus' in kwargs:
+            sms_status = kwargs['smsStatus']
+        if sms_status is None:
+            raise TypeError("Missing 'sms_status' argument")
+        if tts_status is None and 'ttsStatus' in kwargs:
+            tts_status = kwargs['ttsStatus']
+        if tts_status is None:
+            raise TypeError("Missing 'tts_status' argument")
+        if webhook_ids is None and 'webhookIds' in kwargs:
+            webhook_ids = kwargs['webhookIds']
+        if webhook_ids is None:
+            raise TypeError("Missing 'webhook_ids' argument")
+        if webhook_status is None and 'webhookStatus' in kwargs:
+            webhook_status = kwargs['webhookStatus']
+        if webhook_status is None:
+            raise TypeError("Missing 'webhook_status' argument")
+
+        _setter("channel", channel)
+        _setter("contact_ids", contact_ids)
+        _setter("description", description)
+        _setter("email_status", email_status)
+        _setter("id", id)
+        _setter("item_id", item_id)
+        _setter("item_name", item_name)
+        _setter("pmsg_status", pmsg_status)
+        _setter("sms_status", sms_status)
+        _setter("tts_status", tts_status)
+        _setter("webhook_ids", webhook_ids)
+        _setter("webhook_status", webhook_status)
 
     @property
     @pulumi.getter
@@ -319,10 +473,41 @@ class GetMscSubWebhooksWebhookResult(dict):
         :param str webhook_id: The first ID of the resource.
         :param str webhook_name: The name of the Webhook. **Note:** The name must be `2` to `12` characters in length, and can contain uppercase and lowercase letters.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "server_url", server_url)
-        pulumi.set(__self__, "webhook_id", webhook_id)
-        pulumi.set(__self__, "webhook_name", webhook_name)
+        GetMscSubWebhooksWebhookResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            server_url=server_url,
+            webhook_id=webhook_id,
+            webhook_name=webhook_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             server_url: Optional[str] = None,
+             webhook_id: Optional[str] = None,
+             webhook_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if server_url is None and 'serverUrl' in kwargs:
+            server_url = kwargs['serverUrl']
+        if server_url is None:
+            raise TypeError("Missing 'server_url' argument")
+        if webhook_id is None and 'webhookId' in kwargs:
+            webhook_id = kwargs['webhookId']
+        if webhook_id is None:
+            raise TypeError("Missing 'webhook_id' argument")
+        if webhook_name is None and 'webhookName' in kwargs:
+            webhook_name = kwargs['webhookName']
+        if webhook_name is None:
+            raise TypeError("Missing 'webhook_name' argument")
+
+        _setter("id", id)
+        _setter("server_url", server_url)
+        _setter("webhook_id", webhook_id)
+        _setter("webhook_name", webhook_name)
 
     @property
     @pulumi.getter
@@ -367,9 +552,34 @@ class GetRegionsRegionResult(dict):
         :param str id: ID of the region.
         :param str local_name: Name of the region in the local language.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "local_name", local_name)
-        pulumi.set(__self__, "region_id", region_id)
+        GetRegionsRegionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            local_name=local_name,
+            region_id=region_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             local_name: Optional[str] = None,
+             region_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if local_name is None and 'localName' in kwargs:
+            local_name = kwargs['localName']
+        if local_name is None:
+            raise TypeError("Missing 'local_name' argument")
+        if region_id is None and 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+
+        _setter("id", id)
+        _setter("local_name", local_name)
+        _setter("region_id", region_id)
 
     @property
     @pulumi.getter
@@ -416,13 +626,62 @@ class GetZonesZoneResult(dict):
         :param Sequence[str] multi_zone_ids: A list of zone ids in which the multi zone.
         :param Sequence[str] slb_slave_zone_ids: A list of slb slave zone ids in which the slb master zone.
         """
-        pulumi.set(__self__, "available_disk_categories", available_disk_categories)
-        pulumi.set(__self__, "available_instance_types", available_instance_types)
-        pulumi.set(__self__, "available_resource_creations", available_resource_creations)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "local_name", local_name)
-        pulumi.set(__self__, "multi_zone_ids", multi_zone_ids)
-        pulumi.set(__self__, "slb_slave_zone_ids", slb_slave_zone_ids)
+        GetZonesZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            available_disk_categories=available_disk_categories,
+            available_instance_types=available_instance_types,
+            available_resource_creations=available_resource_creations,
+            id=id,
+            local_name=local_name,
+            multi_zone_ids=multi_zone_ids,
+            slb_slave_zone_ids=slb_slave_zone_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             available_disk_categories: Optional[Sequence[str]] = None,
+             available_instance_types: Optional[Sequence[str]] = None,
+             available_resource_creations: Optional[Sequence[str]] = None,
+             id: Optional[str] = None,
+             local_name: Optional[str] = None,
+             multi_zone_ids: Optional[Sequence[str]] = None,
+             slb_slave_zone_ids: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if available_disk_categories is None and 'availableDiskCategories' in kwargs:
+            available_disk_categories = kwargs['availableDiskCategories']
+        if available_disk_categories is None:
+            raise TypeError("Missing 'available_disk_categories' argument")
+        if available_instance_types is None and 'availableInstanceTypes' in kwargs:
+            available_instance_types = kwargs['availableInstanceTypes']
+        if available_instance_types is None:
+            raise TypeError("Missing 'available_instance_types' argument")
+        if available_resource_creations is None and 'availableResourceCreations' in kwargs:
+            available_resource_creations = kwargs['availableResourceCreations']
+        if available_resource_creations is None:
+            raise TypeError("Missing 'available_resource_creations' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if local_name is None and 'localName' in kwargs:
+            local_name = kwargs['localName']
+        if local_name is None:
+            raise TypeError("Missing 'local_name' argument")
+        if multi_zone_ids is None and 'multiZoneIds' in kwargs:
+            multi_zone_ids = kwargs['multiZoneIds']
+        if multi_zone_ids is None:
+            raise TypeError("Missing 'multi_zone_ids' argument")
+        if slb_slave_zone_ids is None and 'slbSlaveZoneIds' in kwargs:
+            slb_slave_zone_ids = kwargs['slbSlaveZoneIds']
+        if slb_slave_zone_ids is None:
+            raise TypeError("Missing 'slb_slave_zone_ids' argument")
+
+        _setter("available_disk_categories", available_disk_categories)
+        _setter("available_instance_types", available_instance_types)
+        _setter("available_resource_creations", available_resource_creations)
+        _setter("id", id)
+        _setter("local_name", local_name)
+        _setter("multi_zone_ids", multi_zone_ids)
+        _setter("slb_slave_zone_ids", slb_slave_zone_ids)
 
     @property
     @pulumi.getter(name="availableDiskCategories")

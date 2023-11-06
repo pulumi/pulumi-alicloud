@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -46,18 +46,89 @@ class GetSubnetsSubnetResult(dict):
         :param str vpd_id: The Eflo VPD ID.
         :param str zone_id: The zone ID of the resource.
         """
-        pulumi.set(__self__, "cidr", cidr)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "gmt_modified", gmt_modified)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "message", message)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "subnet_id", subnet_id)
-        pulumi.set(__self__, "subnet_name", subnet_name)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "vpd_id", vpd_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetSubnetsSubnetResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr=cidr,
+            create_time=create_time,
+            gmt_modified=gmt_modified,
+            id=id,
+            message=message,
+            resource_group_id=resource_group_id,
+            status=status,
+            subnet_id=subnet_id,
+            subnet_name=subnet_name,
+            type=type,
+            vpd_id=vpd_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr: Optional[str] = None,
+             create_time: Optional[str] = None,
+             gmt_modified: Optional[str] = None,
+             id: Optional[str] = None,
+             message: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             status: Optional[str] = None,
+             subnet_id: Optional[str] = None,
+             subnet_name: Optional[str] = None,
+             type: Optional[str] = None,
+             vpd_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cidr is None:
+            raise TypeError("Missing 'cidr' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if gmt_modified is None and 'gmtModified' in kwargs:
+            gmt_modified = kwargs['gmtModified']
+        if gmt_modified is None:
+            raise TypeError("Missing 'gmt_modified' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if message is None:
+            raise TypeError("Missing 'message' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if subnet_id is None:
+            raise TypeError("Missing 'subnet_id' argument")
+        if subnet_name is None and 'subnetName' in kwargs:
+            subnet_name = kwargs['subnetName']
+        if subnet_name is None:
+            raise TypeError("Missing 'subnet_name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if vpd_id is None and 'vpdId' in kwargs:
+            vpd_id = kwargs['vpdId']
+        if vpd_id is None:
+            raise TypeError("Missing 'vpd_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+
+        _setter("cidr", cidr)
+        _setter("create_time", create_time)
+        _setter("gmt_modified", gmt_modified)
+        _setter("id", id)
+        _setter("message", message)
+        _setter("resource_group_id", resource_group_id)
+        _setter("status", status)
+        _setter("subnet_id", subnet_id)
+        _setter("subnet_name", subnet_name)
+        _setter("type", type)
+        _setter("vpd_id", vpd_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -180,14 +251,65 @@ class GetVpdsVpdResult(dict):
         :param str vpd_id: The id of the vpd.
         :param str vpd_name: The Name of the VPD.
         """
-        pulumi.set(__self__, "cidr", cidr)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "gmt_modified", gmt_modified)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vpd_id", vpd_id)
-        pulumi.set(__self__, "vpd_name", vpd_name)
+        GetVpdsVpdResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr=cidr,
+            create_time=create_time,
+            gmt_modified=gmt_modified,
+            id=id,
+            resource_group_id=resource_group_id,
+            status=status,
+            vpd_id=vpd_id,
+            vpd_name=vpd_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr: Optional[str] = None,
+             create_time: Optional[str] = None,
+             gmt_modified: Optional[str] = None,
+             id: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             status: Optional[str] = None,
+             vpd_id: Optional[str] = None,
+             vpd_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cidr is None:
+            raise TypeError("Missing 'cidr' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if gmt_modified is None and 'gmtModified' in kwargs:
+            gmt_modified = kwargs['gmtModified']
+        if gmt_modified is None:
+            raise TypeError("Missing 'gmt_modified' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if vpd_id is None and 'vpdId' in kwargs:
+            vpd_id = kwargs['vpdId']
+        if vpd_id is None:
+            raise TypeError("Missing 'vpd_id' argument")
+        if vpd_name is None and 'vpdName' in kwargs:
+            vpd_name = kwargs['vpdName']
+        if vpd_name is None:
+            raise TypeError("Missing 'vpd_name' argument")
+
+        _setter("cidr", cidr)
+        _setter("create_time", create_time)
+        _setter("gmt_modified", gmt_modified)
+        _setter("id", id)
+        _setter("resource_group_id", resource_group_id)
+        _setter("status", status)
+        _setter("vpd_id", vpd_id)
+        _setter("vpd_name", vpd_name)
 
     @property
     @pulumi.getter

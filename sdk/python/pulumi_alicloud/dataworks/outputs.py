@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -25,10 +25,41 @@ class GetFoldersFolderResult(dict):
         :param str id: The Folder ID.
         :param str project_id: The ID of the project.
         """
-        pulumi.set(__self__, "folder_id", folder_id)
-        pulumi.set(__self__, "folder_path", folder_path)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "project_id", project_id)
+        GetFoldersFolderResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            folder_id=folder_id,
+            folder_path=folder_path,
+            id=id,
+            project_id=project_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             folder_id: Optional[str] = None,
+             folder_path: Optional[str] = None,
+             id: Optional[str] = None,
+             project_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if folder_id is None and 'folderId' in kwargs:
+            folder_id = kwargs['folderId']
+        if folder_id is None:
+            raise TypeError("Missing 'folder_id' argument")
+        if folder_path is None and 'folderPath' in kwargs:
+            folder_path = kwargs['folderPath']
+        if folder_path is None:
+            raise TypeError("Missing 'folder_path' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+
+        _setter("folder_id", folder_id)
+        _setter("folder_path", folder_path)
+        _setter("id", id)
+        _setter("project_id", project_id)
 
     @property
     @pulumi.getter(name="folderId")

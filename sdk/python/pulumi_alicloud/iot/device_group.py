@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DeviceGroupArgs', 'DeviceGroup']
@@ -25,13 +25,40 @@ class DeviceGroupArgs:
         :param pulumi.Input[str] iot_instance_id: The id of the Iot Instance.
         :param pulumi.Input[str] super_group_id: The id of the SuperGroup.
         """
-        pulumi.set(__self__, "group_name", group_name)
+        DeviceGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_name=group_name,
+            group_desc=group_desc,
+            iot_instance_id=iot_instance_id,
+            super_group_id=super_group_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_name: Optional[pulumi.Input[str]] = None,
+             group_desc: Optional[pulumi.Input[str]] = None,
+             iot_instance_id: Optional[pulumi.Input[str]] = None,
+             super_group_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if group_name is None and 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if group_name is None:
+            raise TypeError("Missing 'group_name' argument")
+        if group_desc is None and 'groupDesc' in kwargs:
+            group_desc = kwargs['groupDesc']
+        if iot_instance_id is None and 'iotInstanceId' in kwargs:
+            iot_instance_id = kwargs['iotInstanceId']
+        if super_group_id is None and 'superGroupId' in kwargs:
+            super_group_id = kwargs['superGroupId']
+
+        _setter("group_name", group_name)
         if group_desc is not None:
-            pulumi.set(__self__, "group_desc", group_desc)
+            _setter("group_desc", group_desc)
         if iot_instance_id is not None:
-            pulumi.set(__self__, "iot_instance_id", iot_instance_id)
+            _setter("iot_instance_id", iot_instance_id)
         if super_group_id is not None:
-            pulumi.set(__self__, "super_group_id", super_group_id)
+            _setter("super_group_id", super_group_id)
 
     @property
     @pulumi.getter(name="groupName")
@@ -96,14 +123,39 @@ class _DeviceGroupState:
         :param pulumi.Input[str] iot_instance_id: The id of the Iot Instance.
         :param pulumi.Input[str] super_group_id: The id of the SuperGroup.
         """
+        _DeviceGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_desc=group_desc,
+            group_name=group_name,
+            iot_instance_id=iot_instance_id,
+            super_group_id=super_group_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_desc: Optional[pulumi.Input[str]] = None,
+             group_name: Optional[pulumi.Input[str]] = None,
+             iot_instance_id: Optional[pulumi.Input[str]] = None,
+             super_group_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if group_desc is None and 'groupDesc' in kwargs:
+            group_desc = kwargs['groupDesc']
+        if group_name is None and 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if iot_instance_id is None and 'iotInstanceId' in kwargs:
+            iot_instance_id = kwargs['iotInstanceId']
+        if super_group_id is None and 'superGroupId' in kwargs:
+            super_group_id = kwargs['superGroupId']
+
         if group_desc is not None:
-            pulumi.set(__self__, "group_desc", group_desc)
+            _setter("group_desc", group_desc)
         if group_name is not None:
-            pulumi.set(__self__, "group_name", group_name)
+            _setter("group_name", group_name)
         if iot_instance_id is not None:
-            pulumi.set(__self__, "iot_instance_id", iot_instance_id)
+            _setter("iot_instance_id", iot_instance_id)
         if super_group_id is not None:
-            pulumi.set(__self__, "super_group_id", super_group_id)
+            _setter("super_group_id", super_group_id)
 
     @property
     @pulumi.getter(name="groupDesc")
@@ -247,6 +299,10 @@ class DeviceGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DeviceGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

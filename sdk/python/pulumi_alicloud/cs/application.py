@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -28,22 +28,61 @@ class ApplicationArgs:
         """
         The set of arguments for constructing a Application resource.
         """
-        pulumi.set(__self__, "cluster_name", cluster_name)
-        pulumi.set(__self__, "template", template)
+        ApplicationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_name=cluster_name,
+            template=template,
+            blue_green=blue_green,
+            blue_green_confirm=blue_green_confirm,
+            description=description,
+            environment=environment,
+            latest_image=latest_image,
+            name=name,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_name: Optional[pulumi.Input[str]] = None,
+             template: Optional[pulumi.Input[str]] = None,
+             blue_green: Optional[pulumi.Input[bool]] = None,
+             blue_green_confirm: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             environment: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             latest_image: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_name is None and 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if cluster_name is None:
+            raise TypeError("Missing 'cluster_name' argument")
+        if template is None:
+            raise TypeError("Missing 'template' argument")
+        if blue_green is None and 'blueGreen' in kwargs:
+            blue_green = kwargs['blueGreen']
+        if blue_green_confirm is None and 'blueGreenConfirm' in kwargs:
+            blue_green_confirm = kwargs['blueGreenConfirm']
+        if latest_image is None and 'latestImage' in kwargs:
+            latest_image = kwargs['latestImage']
+
+        _setter("cluster_name", cluster_name)
+        _setter("template", template)
         if blue_green is not None:
-            pulumi.set(__self__, "blue_green", blue_green)
+            _setter("blue_green", blue_green)
         if blue_green_confirm is not None:
-            pulumi.set(__self__, "blue_green_confirm", blue_green_confirm)
+            _setter("blue_green_confirm", blue_green_confirm)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if environment is not None:
-            pulumi.set(__self__, "environment", environment)
+            _setter("environment", environment)
         if latest_image is not None:
-            pulumi.set(__self__, "latest_image", latest_image)
+            _setter("latest_image", latest_image)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter(name="clusterName")
@@ -144,28 +183,69 @@ class _ApplicationState:
         """
         Input properties used for looking up and filtering Application resources.
         """
+        _ApplicationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            blue_green=blue_green,
+            blue_green_confirm=blue_green_confirm,
+            cluster_name=cluster_name,
+            default_domain=default_domain,
+            description=description,
+            environment=environment,
+            latest_image=latest_image,
+            name=name,
+            services=services,
+            template=template,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             blue_green: Optional[pulumi.Input[bool]] = None,
+             blue_green_confirm: Optional[pulumi.Input[bool]] = None,
+             cluster_name: Optional[pulumi.Input[str]] = None,
+             default_domain: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             environment: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             latest_image: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             services: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationServiceArgs']]]] = None,
+             template: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if blue_green is None and 'blueGreen' in kwargs:
+            blue_green = kwargs['blueGreen']
+        if blue_green_confirm is None and 'blueGreenConfirm' in kwargs:
+            blue_green_confirm = kwargs['blueGreenConfirm']
+        if cluster_name is None and 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if default_domain is None and 'defaultDomain' in kwargs:
+            default_domain = kwargs['defaultDomain']
+        if latest_image is None and 'latestImage' in kwargs:
+            latest_image = kwargs['latestImage']
+
         if blue_green is not None:
-            pulumi.set(__self__, "blue_green", blue_green)
+            _setter("blue_green", blue_green)
         if blue_green_confirm is not None:
-            pulumi.set(__self__, "blue_green_confirm", blue_green_confirm)
+            _setter("blue_green_confirm", blue_green_confirm)
         if cluster_name is not None:
-            pulumi.set(__self__, "cluster_name", cluster_name)
+            _setter("cluster_name", cluster_name)
         if default_domain is not None:
-            pulumi.set(__self__, "default_domain", default_domain)
+            _setter("default_domain", default_domain)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if environment is not None:
-            pulumi.set(__self__, "environment", environment)
+            _setter("environment", environment)
         if latest_image is not None:
-            pulumi.set(__self__, "latest_image", latest_image)
+            _setter("latest_image", latest_image)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if services is not None:
-            pulumi.set(__self__, "services", services)
+            _setter("services", services)
         if template is not None:
-            pulumi.set(__self__, "template", template)
+            _setter("template", template)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter(name="blueGreen")
@@ -305,6 +385,10 @@ class Application(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ApplicationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ProtectionModuleArgs', 'ProtectionModule']
@@ -32,12 +32,43 @@ class ProtectionModuleArgs:
                * The `defense_type` is `normalized`. `0`: warn mode. `1`: block mode.
         :param pulumi.Input[int] status: The status of the resource. Valid values: `0`, `1`.
         """
-        pulumi.set(__self__, "defense_type", defense_type)
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "mode", mode)
+        ProtectionModuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            defense_type=defense_type,
+            domain=domain,
+            instance_id=instance_id,
+            mode=mode,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             defense_type: Optional[pulumi.Input[str]] = None,
+             domain: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             mode: Optional[pulumi.Input[int]] = None,
+             status: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if defense_type is None and 'defenseType' in kwargs:
+            defense_type = kwargs['defenseType']
+        if defense_type is None:
+            raise TypeError("Missing 'defense_type' argument")
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if mode is None:
+            raise TypeError("Missing 'mode' argument")
+
+        _setter("defense_type", defense_type)
+        _setter("domain", domain)
+        _setter("instance_id", instance_id)
+        _setter("mode", mode)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="defenseType")
@@ -126,16 +157,39 @@ class _ProtectionModuleState:
                * The `defense_type` is `normalized`. `0`: warn mode. `1`: block mode.
         :param pulumi.Input[int] status: The status of the resource. Valid values: `0`, `1`.
         """
+        _ProtectionModuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            defense_type=defense_type,
+            domain=domain,
+            instance_id=instance_id,
+            mode=mode,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             defense_type: Optional[pulumi.Input[str]] = None,
+             domain: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             mode: Optional[pulumi.Input[int]] = None,
+             status: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if defense_type is None and 'defenseType' in kwargs:
+            defense_type = kwargs['defenseType']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if defense_type is not None:
-            pulumi.set(__self__, "defense_type", defense_type)
+            _setter("defense_type", defense_type)
         if domain is not None:
-            pulumi.set(__self__, "domain", domain)
+            _setter("domain", domain)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="defenseType")
@@ -339,6 +393,10 @@ class ProtectionModule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProtectionModuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

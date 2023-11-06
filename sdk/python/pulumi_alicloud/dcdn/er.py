@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,11 +25,32 @@ class ErArgs:
         :param pulumi.Input[str] description: Routine The description of the routine.
         :param pulumi.Input['ErEnvConfArgs'] env_conf: The configurations of the specified environment. See `env_conf` below.
         """
-        pulumi.set(__self__, "er_name", er_name)
+        ErArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            er_name=er_name,
+            description=description,
+            env_conf=env_conf,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             er_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             env_conf: Optional[pulumi.Input['ErEnvConfArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if er_name is None and 'erName' in kwargs:
+            er_name = kwargs['erName']
+        if er_name is None:
+            raise TypeError("Missing 'er_name' argument")
+        if env_conf is None and 'envConf' in kwargs:
+            env_conf = kwargs['envConf']
+
+        _setter("er_name", er_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if env_conf is not None:
-            pulumi.set(__self__, "env_conf", env_conf)
+            _setter("env_conf", env_conf)
 
     @property
     @pulumi.getter(name="erName")
@@ -80,12 +101,31 @@ class _ErState:
         :param pulumi.Input['ErEnvConfArgs'] env_conf: The configurations of the specified environment. See `env_conf` below.
         :param pulumi.Input[str] er_name: The name of the routine. The name must be unique among the routines that belong to the same Alibaba Cloud account.
         """
+        _ErState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            env_conf=env_conf,
+            er_name=er_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             env_conf: Optional[pulumi.Input['ErEnvConfArgs']] = None,
+             er_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if env_conf is None and 'envConf' in kwargs:
+            env_conf = kwargs['envConf']
+        if er_name is None and 'erName' in kwargs:
+            er_name = kwargs['erName']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if env_conf is not None:
-            pulumi.set(__self__, "env_conf", env_conf)
+            _setter("env_conf", env_conf)
         if er_name is not None:
-            pulumi.set(__self__, "er_name", er_name)
+            _setter("er_name", er_name)
 
     @property
     @pulumi.getter
@@ -239,6 +279,10 @@ class Er(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ErArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -257,6 +301,11 @@ class Er(pulumi.CustomResource):
             __props__ = ErArgs.__new__(ErArgs)
 
             __props__.__dict__["description"] = description
+            if env_conf is not None and not isinstance(env_conf, ErEnvConfArgs):
+                env_conf = env_conf or {}
+                def _setter(key, value):
+                    env_conf[key] = value
+                ErEnvConfArgs._configure(_setter, **env_conf)
             __props__.__dict__["env_conf"] = env_conf
             if er_name is None and not opts.urn:
                 raise TypeError("Missing required property 'er_name'")

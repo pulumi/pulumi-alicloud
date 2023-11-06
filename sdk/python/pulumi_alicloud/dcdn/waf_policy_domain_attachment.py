@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['WafPolicyDomainAttachmentArgs', 'WafPolicyDomainAttachment']
@@ -21,8 +21,29 @@ class WafPolicyDomainAttachmentArgs:
         :param pulumi.Input[str] domain_name: Access the accelerated domain name of the specified protection policy.
         :param pulumi.Input[str] policy_id: The protection policy ID. Only one input is supported.
         """
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "policy_id", policy_id)
+        WafPolicyDomainAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain_name=domain_name,
+            policy_id=policy_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain_name: Optional[pulumi.Input[str]] = None,
+             policy_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if domain_name is None and 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if policy_id is None and 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if policy_id is None:
+            raise TypeError("Missing 'policy_id' argument")
+
+        _setter("domain_name", domain_name)
+        _setter("policy_id", policy_id)
 
     @property
     @pulumi.getter(name="domainName")
@@ -59,10 +80,27 @@ class _WafPolicyDomainAttachmentState:
         :param pulumi.Input[str] domain_name: Access the accelerated domain name of the specified protection policy.
         :param pulumi.Input[str] policy_id: The protection policy ID. Only one input is supported.
         """
+        _WafPolicyDomainAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain_name=domain_name,
+            policy_id=policy_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain_name: Optional[pulumi.Input[str]] = None,
+             policy_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if domain_name is None and 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if policy_id is None and 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+
         if domain_name is not None:
-            pulumi.set(__self__, "domain_name", domain_name)
+            _setter("domain_name", domain_name)
         if policy_id is not None:
-            pulumi.set(__self__, "policy_id", policy_id)
+            _setter("policy_id", policy_id)
 
     @property
     @pulumi.getter(name="domainName")
@@ -224,6 +262,10 @@ class WafPolicyDomainAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            WafPolicyDomainAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

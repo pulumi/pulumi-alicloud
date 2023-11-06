@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RouteEntryArgs', 'RouteEntry']
@@ -29,20 +29,53 @@ class RouteEntryArgs:
         :param pulumi.Input[str] nexthop_type: The next hop type. Available values:
         :param pulumi.Input[str] router_id: This argument has been deprecated. Please use other arguments to launch a custom route entry.
         """
-        pulumi.set(__self__, "route_table_id", route_table_id)
+        RouteEntryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            route_table_id=route_table_id,
+            destination_cidrblock=destination_cidrblock,
+            name=name,
+            nexthop_id=nexthop_id,
+            nexthop_type=nexthop_type,
+            router_id=router_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             route_table_id: Optional[pulumi.Input[str]] = None,
+             destination_cidrblock: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             nexthop_id: Optional[pulumi.Input[str]] = None,
+             nexthop_type: Optional[pulumi.Input[str]] = None,
+             router_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if route_table_id is None and 'routeTableId' in kwargs:
+            route_table_id = kwargs['routeTableId']
+        if route_table_id is None:
+            raise TypeError("Missing 'route_table_id' argument")
+        if destination_cidrblock is None and 'destinationCidrblock' in kwargs:
+            destination_cidrblock = kwargs['destinationCidrblock']
+        if nexthop_id is None and 'nexthopId' in kwargs:
+            nexthop_id = kwargs['nexthopId']
+        if nexthop_type is None and 'nexthopType' in kwargs:
+            nexthop_type = kwargs['nexthopType']
+        if router_id is None and 'routerId' in kwargs:
+            router_id = kwargs['routerId']
+
+        _setter("route_table_id", route_table_id)
         if destination_cidrblock is not None:
-            pulumi.set(__self__, "destination_cidrblock", destination_cidrblock)
+            _setter("destination_cidrblock", destination_cidrblock)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if nexthop_id is not None:
-            pulumi.set(__self__, "nexthop_id", nexthop_id)
+            _setter("nexthop_id", nexthop_id)
         if nexthop_type is not None:
-            pulumi.set(__self__, "nexthop_type", nexthop_type)
+            _setter("nexthop_type", nexthop_type)
         if router_id is not None:
             warnings.warn("""Attribute router_id has been deprecated and suggest removing it from your template.""", DeprecationWarning)
             pulumi.log.warn("""router_id is deprecated: Attribute router_id has been deprecated and suggest removing it from your template.""")
         if router_id is not None:
-            pulumi.set(__self__, "router_id", router_id)
+            _setter("router_id", router_id)
 
     @property
     @pulumi.getter(name="routeTableId")
@@ -138,21 +171,52 @@ class _RouteEntryState:
         :param pulumi.Input[str] route_table_id: The ID of the route table.
         :param pulumi.Input[str] router_id: This argument has been deprecated. Please use other arguments to launch a custom route entry.
         """
+        _RouteEntryState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            destination_cidrblock=destination_cidrblock,
+            name=name,
+            nexthop_id=nexthop_id,
+            nexthop_type=nexthop_type,
+            route_table_id=route_table_id,
+            router_id=router_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             destination_cidrblock: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             nexthop_id: Optional[pulumi.Input[str]] = None,
+             nexthop_type: Optional[pulumi.Input[str]] = None,
+             route_table_id: Optional[pulumi.Input[str]] = None,
+             router_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if destination_cidrblock is None and 'destinationCidrblock' in kwargs:
+            destination_cidrblock = kwargs['destinationCidrblock']
+        if nexthop_id is None and 'nexthopId' in kwargs:
+            nexthop_id = kwargs['nexthopId']
+        if nexthop_type is None and 'nexthopType' in kwargs:
+            nexthop_type = kwargs['nexthopType']
+        if route_table_id is None and 'routeTableId' in kwargs:
+            route_table_id = kwargs['routeTableId']
+        if router_id is None and 'routerId' in kwargs:
+            router_id = kwargs['routerId']
+
         if destination_cidrblock is not None:
-            pulumi.set(__self__, "destination_cidrblock", destination_cidrblock)
+            _setter("destination_cidrblock", destination_cidrblock)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if nexthop_id is not None:
-            pulumi.set(__self__, "nexthop_id", nexthop_id)
+            _setter("nexthop_id", nexthop_id)
         if nexthop_type is not None:
-            pulumi.set(__self__, "nexthop_type", nexthop_type)
+            _setter("nexthop_type", nexthop_type)
         if route_table_id is not None:
-            pulumi.set(__self__, "route_table_id", route_table_id)
+            _setter("route_table_id", route_table_id)
         if router_id is not None:
             warnings.warn("""Attribute router_id has been deprecated and suggest removing it from your template.""", DeprecationWarning)
             pulumi.log.warn("""router_id is deprecated: Attribute router_id has been deprecated and suggest removing it from your template.""")
         if router_id is not None:
-            pulumi.set(__self__, "router_id", router_id)
+            _setter("router_id", router_id)
 
     @property
     @pulumi.getter(name="destinationCidrblock")
@@ -409,6 +473,10 @@ class RouteEntry(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RouteEntryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

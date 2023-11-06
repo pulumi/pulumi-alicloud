@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -34,13 +34,48 @@ class ShardingNetworkPrivateAddressArgs:
                - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
                - The password must be 8 to 32 characters in length.
         """
-        pulumi.set(__self__, "db_instance_id", db_instance_id)
-        pulumi.set(__self__, "node_id", node_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        ShardingNetworkPrivateAddressArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_instance_id=db_instance_id,
+            node_id=node_id,
+            zone_id=zone_id,
+            account_name=account_name,
+            account_password=account_password,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_instance_id: Optional[pulumi.Input[str]] = None,
+             node_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             account_name: Optional[pulumi.Input[str]] = None,
+             account_password: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if db_instance_id is None and 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if db_instance_id is None:
+            raise TypeError("Missing 'db_instance_id' argument")
+        if node_id is None and 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if node_id is None:
+            raise TypeError("Missing 'node_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if account_name is None and 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if account_password is None and 'accountPassword' in kwargs:
+            account_password = kwargs['accountPassword']
+
+        _setter("db_instance_id", db_instance_id)
+        _setter("node_id", node_id)
+        _setter("zone_id", zone_id)
         if account_name is not None:
-            pulumi.set(__self__, "account_name", account_name)
+            _setter("account_name", account_name)
         if account_password is not None:
-            pulumi.set(__self__, "account_password", account_password)
+            _setter("account_password", account_password)
 
     @property
     @pulumi.getter(name="dbInstanceId")
@@ -131,18 +166,51 @@ class _ShardingNetworkPrivateAddressState:
         :param pulumi.Input[str] node_id: The ID of the Shard node or the ConfigServer node.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
+        _ShardingNetworkPrivateAddressState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_name=account_name,
+            account_password=account_password,
+            db_instance_id=db_instance_id,
+            network_addresses=network_addresses,
+            node_id=node_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_name: Optional[pulumi.Input[str]] = None,
+             account_password: Optional[pulumi.Input[str]] = None,
+             db_instance_id: Optional[pulumi.Input[str]] = None,
+             network_addresses: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingNetworkPrivateAddressNetworkAddressArgs']]]] = None,
+             node_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_name is None and 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if account_password is None and 'accountPassword' in kwargs:
+            account_password = kwargs['accountPassword']
+        if db_instance_id is None and 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if network_addresses is None and 'networkAddresses' in kwargs:
+            network_addresses = kwargs['networkAddresses']
+        if node_id is None and 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if account_name is not None:
-            pulumi.set(__self__, "account_name", account_name)
+            _setter("account_name", account_name)
         if account_password is not None:
-            pulumi.set(__self__, "account_password", account_password)
+            _setter("account_password", account_password)
         if db_instance_id is not None:
-            pulumi.set(__self__, "db_instance_id", db_instance_id)
+            _setter("db_instance_id", db_instance_id)
         if network_addresses is not None:
-            pulumi.set(__self__, "network_addresses", network_addresses)
+            _setter("network_addresses", network_addresses)
         if node_id is not None:
-            pulumi.set(__self__, "node_id", node_id)
+            _setter("node_id", node_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="accountName")
@@ -400,6 +468,10 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ShardingNetworkPrivateAddressArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

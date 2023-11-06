@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['MachineGroupArgs', 'MachineGroup']
@@ -27,14 +27,41 @@ class MachineGroupArgs:
         :param pulumi.Input[str] name: The machine group name, which is unique in the same project.
         :param pulumi.Input[str] topic: The topic of a machine group.
         """
-        pulumi.set(__self__, "identify_lists", identify_lists)
-        pulumi.set(__self__, "project", project)
+        MachineGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            identify_lists=identify_lists,
+            project=project,
+            identify_type=identify_type,
+            name=name,
+            topic=topic,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             identify_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             identify_type: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             topic: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if identify_lists is None and 'identifyLists' in kwargs:
+            identify_lists = kwargs['identifyLists']
+        if identify_lists is None:
+            raise TypeError("Missing 'identify_lists' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if identify_type is None and 'identifyType' in kwargs:
+            identify_type = kwargs['identifyType']
+
+        _setter("identify_lists", identify_lists)
+        _setter("project", project)
         if identify_type is not None:
-            pulumi.set(__self__, "identify_type", identify_type)
+            _setter("identify_type", identify_type)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if topic is not None:
-            pulumi.set(__self__, "topic", topic)
+            _setter("topic", topic)
 
     @property
     @pulumi.getter(name="identifyLists")
@@ -113,16 +140,39 @@ class _MachineGroupState:
         :param pulumi.Input[str] project: The project name to the machine group belongs.
         :param pulumi.Input[str] topic: The topic of a machine group.
         """
+        _MachineGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            identify_lists=identify_lists,
+            identify_type=identify_type,
+            name=name,
+            project=project,
+            topic=topic,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             identify_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             identify_type: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             topic: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if identify_lists is None and 'identifyLists' in kwargs:
+            identify_lists = kwargs['identifyLists']
+        if identify_type is None and 'identifyType' in kwargs:
+            identify_type = kwargs['identifyType']
+
         if identify_lists is not None:
-            pulumi.set(__self__, "identify_lists", identify_lists)
+            _setter("identify_lists", identify_lists)
         if identify_type is not None:
-            pulumi.set(__self__, "identify_type", identify_type)
+            _setter("identify_type", identify_type)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if topic is not None:
-            pulumi.set(__self__, "topic", topic)
+            _setter("topic", topic)
 
     @property
     @pulumi.getter(name="identifyLists")
@@ -298,6 +348,10 @@ class MachineGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MachineGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

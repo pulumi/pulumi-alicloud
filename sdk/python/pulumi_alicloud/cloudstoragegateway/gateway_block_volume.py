@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['GatewayBlockVolumeArgs', 'GatewayBlockVolume']
@@ -47,31 +47,104 @@ class GatewayBlockVolumeArgs:
         :param pulumi.Input[bool] recovery: The recovery.
         :param pulumi.Input[int] size: The Volume size. Valid values: `1` to `262144`. Unit: `Byte`.
         """
-        pulumi.set(__self__, "gateway_block_volume_name", gateway_block_volume_name)
-        pulumi.set(__self__, "gateway_id", gateway_id)
-        pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
-        pulumi.set(__self__, "oss_endpoint", oss_endpoint)
-        pulumi.set(__self__, "protocol", protocol)
+        GatewayBlockVolumeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            gateway_block_volume_name=gateway_block_volume_name,
+            gateway_id=gateway_id,
+            oss_bucket_name=oss_bucket_name,
+            oss_endpoint=oss_endpoint,
+            protocol=protocol,
+            cache_mode=cache_mode,
+            chap_enabled=chap_enabled,
+            chap_in_password=chap_in_password,
+            chap_in_user=chap_in_user,
+            chunk_size=chunk_size,
+            is_source_deletion=is_source_deletion,
+            local_path=local_path,
+            oss_bucket_ssl=oss_bucket_ssl,
+            recovery=recovery,
+            size=size,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             gateway_block_volume_name: Optional[pulumi.Input[str]] = None,
+             gateway_id: Optional[pulumi.Input[str]] = None,
+             oss_bucket_name: Optional[pulumi.Input[str]] = None,
+             oss_endpoint: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             cache_mode: Optional[pulumi.Input[str]] = None,
+             chap_enabled: Optional[pulumi.Input[bool]] = None,
+             chap_in_password: Optional[pulumi.Input[str]] = None,
+             chap_in_user: Optional[pulumi.Input[str]] = None,
+             chunk_size: Optional[pulumi.Input[int]] = None,
+             is_source_deletion: Optional[pulumi.Input[bool]] = None,
+             local_path: Optional[pulumi.Input[str]] = None,
+             oss_bucket_ssl: Optional[pulumi.Input[bool]] = None,
+             recovery: Optional[pulumi.Input[bool]] = None,
+             size: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gateway_block_volume_name is None and 'gatewayBlockVolumeName' in kwargs:
+            gateway_block_volume_name = kwargs['gatewayBlockVolumeName']
+        if gateway_block_volume_name is None:
+            raise TypeError("Missing 'gateway_block_volume_name' argument")
+        if gateway_id is None and 'gatewayId' in kwargs:
+            gateway_id = kwargs['gatewayId']
+        if gateway_id is None:
+            raise TypeError("Missing 'gateway_id' argument")
+        if oss_bucket_name is None and 'ossBucketName' in kwargs:
+            oss_bucket_name = kwargs['ossBucketName']
+        if oss_bucket_name is None:
+            raise TypeError("Missing 'oss_bucket_name' argument")
+        if oss_endpoint is None and 'ossEndpoint' in kwargs:
+            oss_endpoint = kwargs['ossEndpoint']
+        if oss_endpoint is None:
+            raise TypeError("Missing 'oss_endpoint' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if cache_mode is None and 'cacheMode' in kwargs:
+            cache_mode = kwargs['cacheMode']
+        if chap_enabled is None and 'chapEnabled' in kwargs:
+            chap_enabled = kwargs['chapEnabled']
+        if chap_in_password is None and 'chapInPassword' in kwargs:
+            chap_in_password = kwargs['chapInPassword']
+        if chap_in_user is None and 'chapInUser' in kwargs:
+            chap_in_user = kwargs['chapInUser']
+        if chunk_size is None and 'chunkSize' in kwargs:
+            chunk_size = kwargs['chunkSize']
+        if is_source_deletion is None and 'isSourceDeletion' in kwargs:
+            is_source_deletion = kwargs['isSourceDeletion']
+        if local_path is None and 'localPath' in kwargs:
+            local_path = kwargs['localPath']
+        if oss_bucket_ssl is None and 'ossBucketSsl' in kwargs:
+            oss_bucket_ssl = kwargs['ossBucketSsl']
+
+        _setter("gateway_block_volume_name", gateway_block_volume_name)
+        _setter("gateway_id", gateway_id)
+        _setter("oss_bucket_name", oss_bucket_name)
+        _setter("oss_endpoint", oss_endpoint)
+        _setter("protocol", protocol)
         if cache_mode is not None:
-            pulumi.set(__self__, "cache_mode", cache_mode)
+            _setter("cache_mode", cache_mode)
         if chap_enabled is not None:
-            pulumi.set(__self__, "chap_enabled", chap_enabled)
+            _setter("chap_enabled", chap_enabled)
         if chap_in_password is not None:
-            pulumi.set(__self__, "chap_in_password", chap_in_password)
+            _setter("chap_in_password", chap_in_password)
         if chap_in_user is not None:
-            pulumi.set(__self__, "chap_in_user", chap_in_user)
+            _setter("chap_in_user", chap_in_user)
         if chunk_size is not None:
-            pulumi.set(__self__, "chunk_size", chunk_size)
+            _setter("chunk_size", chunk_size)
         if is_source_deletion is not None:
-            pulumi.set(__self__, "is_source_deletion", is_source_deletion)
+            _setter("is_source_deletion", is_source_deletion)
         if local_path is not None:
-            pulumi.set(__self__, "local_path", local_path)
+            _setter("local_path", local_path)
         if oss_bucket_ssl is not None:
-            pulumi.set(__self__, "oss_bucket_ssl", oss_bucket_ssl)
+            _setter("oss_bucket_ssl", oss_bucket_ssl)
         if recovery is not None:
-            pulumi.set(__self__, "recovery", recovery)
+            _setter("recovery", recovery)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
 
     @property
     @pulumi.getter(name="gatewayBlockVolumeName")
@@ -294,40 +367,109 @@ class _GatewayBlockVolumeState:
         :param pulumi.Input[int] size: The Volume size. Valid values: `1` to `262144`. Unit: `Byte`.
         :param pulumi.Input[str] status: The status of volume. Valid values:
         """
+        _GatewayBlockVolumeState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cache_mode=cache_mode,
+            chap_enabled=chap_enabled,
+            chap_in_password=chap_in_password,
+            chap_in_user=chap_in_user,
+            chunk_size=chunk_size,
+            gateway_block_volume_name=gateway_block_volume_name,
+            gateway_id=gateway_id,
+            index_id=index_id,
+            is_source_deletion=is_source_deletion,
+            local_path=local_path,
+            oss_bucket_name=oss_bucket_name,
+            oss_bucket_ssl=oss_bucket_ssl,
+            oss_endpoint=oss_endpoint,
+            protocol=protocol,
+            recovery=recovery,
+            size=size,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cache_mode: Optional[pulumi.Input[str]] = None,
+             chap_enabled: Optional[pulumi.Input[bool]] = None,
+             chap_in_password: Optional[pulumi.Input[str]] = None,
+             chap_in_user: Optional[pulumi.Input[str]] = None,
+             chunk_size: Optional[pulumi.Input[int]] = None,
+             gateway_block_volume_name: Optional[pulumi.Input[str]] = None,
+             gateway_id: Optional[pulumi.Input[str]] = None,
+             index_id: Optional[pulumi.Input[str]] = None,
+             is_source_deletion: Optional[pulumi.Input[bool]] = None,
+             local_path: Optional[pulumi.Input[str]] = None,
+             oss_bucket_name: Optional[pulumi.Input[str]] = None,
+             oss_bucket_ssl: Optional[pulumi.Input[bool]] = None,
+             oss_endpoint: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             recovery: Optional[pulumi.Input[bool]] = None,
+             size: Optional[pulumi.Input[int]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cache_mode is None and 'cacheMode' in kwargs:
+            cache_mode = kwargs['cacheMode']
+        if chap_enabled is None and 'chapEnabled' in kwargs:
+            chap_enabled = kwargs['chapEnabled']
+        if chap_in_password is None and 'chapInPassword' in kwargs:
+            chap_in_password = kwargs['chapInPassword']
+        if chap_in_user is None and 'chapInUser' in kwargs:
+            chap_in_user = kwargs['chapInUser']
+        if chunk_size is None and 'chunkSize' in kwargs:
+            chunk_size = kwargs['chunkSize']
+        if gateway_block_volume_name is None and 'gatewayBlockVolumeName' in kwargs:
+            gateway_block_volume_name = kwargs['gatewayBlockVolumeName']
+        if gateway_id is None and 'gatewayId' in kwargs:
+            gateway_id = kwargs['gatewayId']
+        if index_id is None and 'indexId' in kwargs:
+            index_id = kwargs['indexId']
+        if is_source_deletion is None and 'isSourceDeletion' in kwargs:
+            is_source_deletion = kwargs['isSourceDeletion']
+        if local_path is None and 'localPath' in kwargs:
+            local_path = kwargs['localPath']
+        if oss_bucket_name is None and 'ossBucketName' in kwargs:
+            oss_bucket_name = kwargs['ossBucketName']
+        if oss_bucket_ssl is None and 'ossBucketSsl' in kwargs:
+            oss_bucket_ssl = kwargs['ossBucketSsl']
+        if oss_endpoint is None and 'ossEndpoint' in kwargs:
+            oss_endpoint = kwargs['ossEndpoint']
+
         if cache_mode is not None:
-            pulumi.set(__self__, "cache_mode", cache_mode)
+            _setter("cache_mode", cache_mode)
         if chap_enabled is not None:
-            pulumi.set(__self__, "chap_enabled", chap_enabled)
+            _setter("chap_enabled", chap_enabled)
         if chap_in_password is not None:
-            pulumi.set(__self__, "chap_in_password", chap_in_password)
+            _setter("chap_in_password", chap_in_password)
         if chap_in_user is not None:
-            pulumi.set(__self__, "chap_in_user", chap_in_user)
+            _setter("chap_in_user", chap_in_user)
         if chunk_size is not None:
-            pulumi.set(__self__, "chunk_size", chunk_size)
+            _setter("chunk_size", chunk_size)
         if gateway_block_volume_name is not None:
-            pulumi.set(__self__, "gateway_block_volume_name", gateway_block_volume_name)
+            _setter("gateway_block_volume_name", gateway_block_volume_name)
         if gateway_id is not None:
-            pulumi.set(__self__, "gateway_id", gateway_id)
+            _setter("gateway_id", gateway_id)
         if index_id is not None:
-            pulumi.set(__self__, "index_id", index_id)
+            _setter("index_id", index_id)
         if is_source_deletion is not None:
-            pulumi.set(__self__, "is_source_deletion", is_source_deletion)
+            _setter("is_source_deletion", is_source_deletion)
         if local_path is not None:
-            pulumi.set(__self__, "local_path", local_path)
+            _setter("local_path", local_path)
         if oss_bucket_name is not None:
-            pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
+            _setter("oss_bucket_name", oss_bucket_name)
         if oss_bucket_ssl is not None:
-            pulumi.set(__self__, "oss_bucket_ssl", oss_bucket_ssl)
+            _setter("oss_bucket_ssl", oss_bucket_ssl)
         if oss_endpoint is not None:
-            pulumi.set(__self__, "oss_endpoint", oss_endpoint)
+            _setter("oss_endpoint", oss_endpoint)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if recovery is not None:
-            pulumi.set(__self__, "recovery", recovery)
+            _setter("recovery", recovery)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="cacheMode")
@@ -619,6 +761,10 @@ class GatewayBlockVolume(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GatewayBlockVolumeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

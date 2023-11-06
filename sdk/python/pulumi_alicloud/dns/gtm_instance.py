@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -59,40 +59,135 @@ class GtmInstanceArgs:
         :param pulumi.Input[str] strategy_mode: The type of the access policy. Valid values: `GEO`, `LATENCY`.
         :param pulumi.Input[int] ttl: The global time to live. Valid values: `60`, `120`, `300`, `600`. Unit: second.
         """
-        pulumi.set(__self__, "health_check_task_count", health_check_task_count)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "package_edition", package_edition)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "period", period)
-        pulumi.set(__self__, "sms_notification_count", sms_notification_count)
+        GtmInstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            health_check_task_count=health_check_task_count,
+            instance_name=instance_name,
+            package_edition=package_edition,
+            payment_type=payment_type,
+            period=period,
+            sms_notification_count=sms_notification_count,
+            alert_configs=alert_configs,
+            alert_groups=alert_groups,
+            cname_type=cname_type,
+            force_update=force_update,
+            lang=lang,
+            public_cname_mode=public_cname_mode,
+            public_rr=public_rr,
+            public_user_domain_name=public_user_domain_name,
+            public_zone_name=public_zone_name,
+            renew_period=renew_period,
+            renewal_status=renewal_status,
+            resource_group_id=resource_group_id,
+            strategy_mode=strategy_mode,
+            ttl=ttl,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             health_check_task_count: Optional[pulumi.Input[int]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             package_edition: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             sms_notification_count: Optional[pulumi.Input[int]] = None,
+             alert_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GtmInstanceAlertConfigArgs']]]] = None,
+             alert_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             cname_type: Optional[pulumi.Input[str]] = None,
+             force_update: Optional[pulumi.Input[bool]] = None,
+             lang: Optional[pulumi.Input[str]] = None,
+             public_cname_mode: Optional[pulumi.Input[str]] = None,
+             public_rr: Optional[pulumi.Input[str]] = None,
+             public_user_domain_name: Optional[pulumi.Input[str]] = None,
+             public_zone_name: Optional[pulumi.Input[str]] = None,
+             renew_period: Optional[pulumi.Input[int]] = None,
+             renewal_status: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             strategy_mode: Optional[pulumi.Input[str]] = None,
+             ttl: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if health_check_task_count is None and 'healthCheckTaskCount' in kwargs:
+            health_check_task_count = kwargs['healthCheckTaskCount']
+        if health_check_task_count is None:
+            raise TypeError("Missing 'health_check_task_count' argument")
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if package_edition is None and 'packageEdition' in kwargs:
+            package_edition = kwargs['packageEdition']
+        if package_edition is None:
+            raise TypeError("Missing 'package_edition' argument")
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if period is None:
+            raise TypeError("Missing 'period' argument")
+        if sms_notification_count is None and 'smsNotificationCount' in kwargs:
+            sms_notification_count = kwargs['smsNotificationCount']
+        if sms_notification_count is None:
+            raise TypeError("Missing 'sms_notification_count' argument")
+        if alert_configs is None and 'alertConfigs' in kwargs:
+            alert_configs = kwargs['alertConfigs']
+        if alert_groups is None and 'alertGroups' in kwargs:
+            alert_groups = kwargs['alertGroups']
+        if cname_type is None and 'cnameType' in kwargs:
+            cname_type = kwargs['cnameType']
+        if force_update is None and 'forceUpdate' in kwargs:
+            force_update = kwargs['forceUpdate']
+        if public_cname_mode is None and 'publicCnameMode' in kwargs:
+            public_cname_mode = kwargs['publicCnameMode']
+        if public_rr is None and 'publicRr' in kwargs:
+            public_rr = kwargs['publicRr']
+        if public_user_domain_name is None and 'publicUserDomainName' in kwargs:
+            public_user_domain_name = kwargs['publicUserDomainName']
+        if public_zone_name is None and 'publicZoneName' in kwargs:
+            public_zone_name = kwargs['publicZoneName']
+        if renew_period is None and 'renewPeriod' in kwargs:
+            renew_period = kwargs['renewPeriod']
+        if renewal_status is None and 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if strategy_mode is None and 'strategyMode' in kwargs:
+            strategy_mode = kwargs['strategyMode']
+
+        _setter("health_check_task_count", health_check_task_count)
+        _setter("instance_name", instance_name)
+        _setter("package_edition", package_edition)
+        _setter("payment_type", payment_type)
+        _setter("period", period)
+        _setter("sms_notification_count", sms_notification_count)
         if alert_configs is not None:
-            pulumi.set(__self__, "alert_configs", alert_configs)
+            _setter("alert_configs", alert_configs)
         if alert_groups is not None:
-            pulumi.set(__self__, "alert_groups", alert_groups)
+            _setter("alert_groups", alert_groups)
         if cname_type is not None:
-            pulumi.set(__self__, "cname_type", cname_type)
+            _setter("cname_type", cname_type)
         if force_update is not None:
-            pulumi.set(__self__, "force_update", force_update)
+            _setter("force_update", force_update)
         if lang is not None:
-            pulumi.set(__self__, "lang", lang)
+            _setter("lang", lang)
         if public_cname_mode is not None:
-            pulumi.set(__self__, "public_cname_mode", public_cname_mode)
+            _setter("public_cname_mode", public_cname_mode)
         if public_rr is not None:
-            pulumi.set(__self__, "public_rr", public_rr)
+            _setter("public_rr", public_rr)
         if public_user_domain_name is not None:
-            pulumi.set(__self__, "public_user_domain_name", public_user_domain_name)
+            _setter("public_user_domain_name", public_user_domain_name)
         if public_zone_name is not None:
-            pulumi.set(__self__, "public_zone_name", public_zone_name)
+            _setter("public_zone_name", public_zone_name)
         if renew_period is not None:
-            pulumi.set(__self__, "renew_period", renew_period)
+            _setter("renew_period", renew_period)
         if renewal_status is not None:
-            pulumi.set(__self__, "renewal_status", renewal_status)
+            _setter("renewal_status", renewal_status)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if strategy_mode is not None:
-            pulumi.set(__self__, "strategy_mode", strategy_mode)
+            _setter("strategy_mode", strategy_mode)
         if ttl is not None:
-            pulumi.set(__self__, "ttl", ttl)
+            _setter("ttl", ttl)
 
     @property
     @pulumi.getter(name="healthCheckTaskCount")
@@ -381,46 +476,129 @@ class _GtmInstanceState:
         :param pulumi.Input[str] strategy_mode: The type of the access policy. Valid values: `GEO`, `LATENCY`.
         :param pulumi.Input[int] ttl: The global time to live. Valid values: `60`, `120`, `300`, `600`. Unit: second.
         """
+        _GtmInstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alert_configs=alert_configs,
+            alert_groups=alert_groups,
+            cname_type=cname_type,
+            force_update=force_update,
+            health_check_task_count=health_check_task_count,
+            instance_name=instance_name,
+            lang=lang,
+            package_edition=package_edition,
+            payment_type=payment_type,
+            period=period,
+            public_cname_mode=public_cname_mode,
+            public_rr=public_rr,
+            public_user_domain_name=public_user_domain_name,
+            public_zone_name=public_zone_name,
+            renew_period=renew_period,
+            renewal_status=renewal_status,
+            resource_group_id=resource_group_id,
+            sms_notification_count=sms_notification_count,
+            strategy_mode=strategy_mode,
+            ttl=ttl,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alert_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GtmInstanceAlertConfigArgs']]]] = None,
+             alert_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             cname_type: Optional[pulumi.Input[str]] = None,
+             force_update: Optional[pulumi.Input[bool]] = None,
+             health_check_task_count: Optional[pulumi.Input[int]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             lang: Optional[pulumi.Input[str]] = None,
+             package_edition: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             public_cname_mode: Optional[pulumi.Input[str]] = None,
+             public_rr: Optional[pulumi.Input[str]] = None,
+             public_user_domain_name: Optional[pulumi.Input[str]] = None,
+             public_zone_name: Optional[pulumi.Input[str]] = None,
+             renew_period: Optional[pulumi.Input[int]] = None,
+             renewal_status: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             sms_notification_count: Optional[pulumi.Input[int]] = None,
+             strategy_mode: Optional[pulumi.Input[str]] = None,
+             ttl: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if alert_configs is None and 'alertConfigs' in kwargs:
+            alert_configs = kwargs['alertConfigs']
+        if alert_groups is None and 'alertGroups' in kwargs:
+            alert_groups = kwargs['alertGroups']
+        if cname_type is None and 'cnameType' in kwargs:
+            cname_type = kwargs['cnameType']
+        if force_update is None and 'forceUpdate' in kwargs:
+            force_update = kwargs['forceUpdate']
+        if health_check_task_count is None and 'healthCheckTaskCount' in kwargs:
+            health_check_task_count = kwargs['healthCheckTaskCount']
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if package_edition is None and 'packageEdition' in kwargs:
+            package_edition = kwargs['packageEdition']
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if public_cname_mode is None and 'publicCnameMode' in kwargs:
+            public_cname_mode = kwargs['publicCnameMode']
+        if public_rr is None and 'publicRr' in kwargs:
+            public_rr = kwargs['publicRr']
+        if public_user_domain_name is None and 'publicUserDomainName' in kwargs:
+            public_user_domain_name = kwargs['publicUserDomainName']
+        if public_zone_name is None and 'publicZoneName' in kwargs:
+            public_zone_name = kwargs['publicZoneName']
+        if renew_period is None and 'renewPeriod' in kwargs:
+            renew_period = kwargs['renewPeriod']
+        if renewal_status is None and 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if sms_notification_count is None and 'smsNotificationCount' in kwargs:
+            sms_notification_count = kwargs['smsNotificationCount']
+        if strategy_mode is None and 'strategyMode' in kwargs:
+            strategy_mode = kwargs['strategyMode']
+
         if alert_configs is not None:
-            pulumi.set(__self__, "alert_configs", alert_configs)
+            _setter("alert_configs", alert_configs)
         if alert_groups is not None:
-            pulumi.set(__self__, "alert_groups", alert_groups)
+            _setter("alert_groups", alert_groups)
         if cname_type is not None:
-            pulumi.set(__self__, "cname_type", cname_type)
+            _setter("cname_type", cname_type)
         if force_update is not None:
-            pulumi.set(__self__, "force_update", force_update)
+            _setter("force_update", force_update)
         if health_check_task_count is not None:
-            pulumi.set(__self__, "health_check_task_count", health_check_task_count)
+            _setter("health_check_task_count", health_check_task_count)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if lang is not None:
-            pulumi.set(__self__, "lang", lang)
+            _setter("lang", lang)
         if package_edition is not None:
-            pulumi.set(__self__, "package_edition", package_edition)
+            _setter("package_edition", package_edition)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if public_cname_mode is not None:
-            pulumi.set(__self__, "public_cname_mode", public_cname_mode)
+            _setter("public_cname_mode", public_cname_mode)
         if public_rr is not None:
-            pulumi.set(__self__, "public_rr", public_rr)
+            _setter("public_rr", public_rr)
         if public_user_domain_name is not None:
-            pulumi.set(__self__, "public_user_domain_name", public_user_domain_name)
+            _setter("public_user_domain_name", public_user_domain_name)
         if public_zone_name is not None:
-            pulumi.set(__self__, "public_zone_name", public_zone_name)
+            _setter("public_zone_name", public_zone_name)
         if renew_period is not None:
-            pulumi.set(__self__, "renew_period", renew_period)
+            _setter("renew_period", renew_period)
         if renewal_status is not None:
-            pulumi.set(__self__, "renewal_status", renewal_status)
+            _setter("renewal_status", renewal_status)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if sms_notification_count is not None:
-            pulumi.set(__self__, "sms_notification_count", sms_notification_count)
+            _setter("sms_notification_count", sms_notification_count)
         if strategy_mode is not None:
-            pulumi.set(__self__, "strategy_mode", strategy_mode)
+            _setter("strategy_mode", strategy_mode)
         if ttl is not None:
-            pulumi.set(__self__, "ttl", ttl)
+            _setter("ttl", ttl)
 
     @property
     @pulumi.getter(name="alertConfigs")
@@ -830,6 +1008,10 @@ class GtmInstance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GtmInstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

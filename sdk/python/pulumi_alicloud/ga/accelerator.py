@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AcceleratorArgs', 'Accelerator']
@@ -47,34 +47,91 @@ class AcceleratorArgs:
         :param pulumi.Input[str] spec: The instance type of the GA instance. Specification of global acceleration instance. Valid values:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
+        AcceleratorArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_name=accelerator_name,
+            auto_renew_duration=auto_renew_duration,
+            auto_use_coupon=auto_use_coupon,
+            bandwidth_billing_type=bandwidth_billing_type,
+            cross_border_mode=cross_border_mode,
+            cross_border_status=cross_border_status,
+            description=description,
+            duration=duration,
+            payment_type=payment_type,
+            pricing_cycle=pricing_cycle,
+            promotion_option_no=promotion_option_no,
+            renewal_status=renewal_status,
+            spec=spec,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_name: Optional[pulumi.Input[str]] = None,
+             auto_renew_duration: Optional[pulumi.Input[int]] = None,
+             auto_use_coupon: Optional[pulumi.Input[bool]] = None,
+             bandwidth_billing_type: Optional[pulumi.Input[str]] = None,
+             cross_border_mode: Optional[pulumi.Input[str]] = None,
+             cross_border_status: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             duration: Optional[pulumi.Input[int]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             pricing_cycle: Optional[pulumi.Input[str]] = None,
+             promotion_option_no: Optional[pulumi.Input[str]] = None,
+             renewal_status: Optional[pulumi.Input[str]] = None,
+             spec: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accelerator_name is None and 'acceleratorName' in kwargs:
+            accelerator_name = kwargs['acceleratorName']
+        if auto_renew_duration is None and 'autoRenewDuration' in kwargs:
+            auto_renew_duration = kwargs['autoRenewDuration']
+        if auto_use_coupon is None and 'autoUseCoupon' in kwargs:
+            auto_use_coupon = kwargs['autoUseCoupon']
+        if bandwidth_billing_type is None and 'bandwidthBillingType' in kwargs:
+            bandwidth_billing_type = kwargs['bandwidthBillingType']
+        if cross_border_mode is None and 'crossBorderMode' in kwargs:
+            cross_border_mode = kwargs['crossBorderMode']
+        if cross_border_status is None and 'crossBorderStatus' in kwargs:
+            cross_border_status = kwargs['crossBorderStatus']
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if pricing_cycle is None and 'pricingCycle' in kwargs:
+            pricing_cycle = kwargs['pricingCycle']
+        if promotion_option_no is None and 'promotionOptionNo' in kwargs:
+            promotion_option_no = kwargs['promotionOptionNo']
+        if renewal_status is None and 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+
         if accelerator_name is not None:
-            pulumi.set(__self__, "accelerator_name", accelerator_name)
+            _setter("accelerator_name", accelerator_name)
         if auto_renew_duration is not None:
-            pulumi.set(__self__, "auto_renew_duration", auto_renew_duration)
+            _setter("auto_renew_duration", auto_renew_duration)
         if auto_use_coupon is not None:
-            pulumi.set(__self__, "auto_use_coupon", auto_use_coupon)
+            _setter("auto_use_coupon", auto_use_coupon)
         if bandwidth_billing_type is not None:
-            pulumi.set(__self__, "bandwidth_billing_type", bandwidth_billing_type)
+            _setter("bandwidth_billing_type", bandwidth_billing_type)
         if cross_border_mode is not None:
-            pulumi.set(__self__, "cross_border_mode", cross_border_mode)
+            _setter("cross_border_mode", cross_border_mode)
         if cross_border_status is not None:
-            pulumi.set(__self__, "cross_border_status", cross_border_status)
+            _setter("cross_border_status", cross_border_status)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if duration is not None:
-            pulumi.set(__self__, "duration", duration)
+            _setter("duration", duration)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if pricing_cycle is not None:
-            pulumi.set(__self__, "pricing_cycle", pricing_cycle)
+            _setter("pricing_cycle", pricing_cycle)
         if promotion_option_no is not None:
-            pulumi.set(__self__, "promotion_option_no", promotion_option_no)
+            _setter("promotion_option_no", promotion_option_no)
         if renewal_status is not None:
-            pulumi.set(__self__, "renewal_status", renewal_status)
+            _setter("renewal_status", renewal_status)
         if spec is not None:
-            pulumi.set(__self__, "spec", spec)
+            _setter("spec", spec)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="acceleratorName")
@@ -285,36 +342,95 @@ class _AcceleratorState:
         :param pulumi.Input[str] status: The status of the GA instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
+        _AcceleratorState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_name=accelerator_name,
+            auto_renew_duration=auto_renew_duration,
+            auto_use_coupon=auto_use_coupon,
+            bandwidth_billing_type=bandwidth_billing_type,
+            cross_border_mode=cross_border_mode,
+            cross_border_status=cross_border_status,
+            description=description,
+            duration=duration,
+            payment_type=payment_type,
+            pricing_cycle=pricing_cycle,
+            promotion_option_no=promotion_option_no,
+            renewal_status=renewal_status,
+            spec=spec,
+            status=status,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_name: Optional[pulumi.Input[str]] = None,
+             auto_renew_duration: Optional[pulumi.Input[int]] = None,
+             auto_use_coupon: Optional[pulumi.Input[bool]] = None,
+             bandwidth_billing_type: Optional[pulumi.Input[str]] = None,
+             cross_border_mode: Optional[pulumi.Input[str]] = None,
+             cross_border_status: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             duration: Optional[pulumi.Input[int]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             pricing_cycle: Optional[pulumi.Input[str]] = None,
+             promotion_option_no: Optional[pulumi.Input[str]] = None,
+             renewal_status: Optional[pulumi.Input[str]] = None,
+             spec: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accelerator_name is None and 'acceleratorName' in kwargs:
+            accelerator_name = kwargs['acceleratorName']
+        if auto_renew_duration is None and 'autoRenewDuration' in kwargs:
+            auto_renew_duration = kwargs['autoRenewDuration']
+        if auto_use_coupon is None and 'autoUseCoupon' in kwargs:
+            auto_use_coupon = kwargs['autoUseCoupon']
+        if bandwidth_billing_type is None and 'bandwidthBillingType' in kwargs:
+            bandwidth_billing_type = kwargs['bandwidthBillingType']
+        if cross_border_mode is None and 'crossBorderMode' in kwargs:
+            cross_border_mode = kwargs['crossBorderMode']
+        if cross_border_status is None and 'crossBorderStatus' in kwargs:
+            cross_border_status = kwargs['crossBorderStatus']
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if pricing_cycle is None and 'pricingCycle' in kwargs:
+            pricing_cycle = kwargs['pricingCycle']
+        if promotion_option_no is None and 'promotionOptionNo' in kwargs:
+            promotion_option_no = kwargs['promotionOptionNo']
+        if renewal_status is None and 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+
         if accelerator_name is not None:
-            pulumi.set(__self__, "accelerator_name", accelerator_name)
+            _setter("accelerator_name", accelerator_name)
         if auto_renew_duration is not None:
-            pulumi.set(__self__, "auto_renew_duration", auto_renew_duration)
+            _setter("auto_renew_duration", auto_renew_duration)
         if auto_use_coupon is not None:
-            pulumi.set(__self__, "auto_use_coupon", auto_use_coupon)
+            _setter("auto_use_coupon", auto_use_coupon)
         if bandwidth_billing_type is not None:
-            pulumi.set(__self__, "bandwidth_billing_type", bandwidth_billing_type)
+            _setter("bandwidth_billing_type", bandwidth_billing_type)
         if cross_border_mode is not None:
-            pulumi.set(__self__, "cross_border_mode", cross_border_mode)
+            _setter("cross_border_mode", cross_border_mode)
         if cross_border_status is not None:
-            pulumi.set(__self__, "cross_border_status", cross_border_status)
+            _setter("cross_border_status", cross_border_status)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if duration is not None:
-            pulumi.set(__self__, "duration", duration)
+            _setter("duration", duration)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if pricing_cycle is not None:
-            pulumi.set(__self__, "pricing_cycle", pricing_cycle)
+            _setter("pricing_cycle", pricing_cycle)
         if promotion_option_no is not None:
-            pulumi.set(__self__, "promotion_option_no", promotion_option_no)
+            _setter("promotion_option_no", promotion_option_no)
         if renewal_status is not None:
-            pulumi.set(__self__, "renewal_status", renewal_status)
+            _setter("renewal_status", renewal_status)
         if spec is not None:
-            pulumi.set(__self__, "spec", spec)
+            _setter("spec", spec)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="acceleratorName")
@@ -612,6 +728,10 @@ class Accelerator(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AcceleratorArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

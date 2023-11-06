@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,15 +29,42 @@ class ZoneAttachmentArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vpc_ids: The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
         :param pulumi.Input[Sequence[pulumi.Input['ZoneAttachmentVpcArgs']]] vpcs: See `vpcs` below.Recommend to use `vpcs`.
         """
-        pulumi.set(__self__, "zone_id", zone_id)
+        ZoneAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            zone_id=zone_id,
+            lang=lang,
+            user_client_ip=user_client_ip,
+            vpc_ids=vpc_ids,
+            vpcs=vpcs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             zone_id: Optional[pulumi.Input[str]] = None,
+             lang: Optional[pulumi.Input[str]] = None,
+             user_client_ip: Optional[pulumi.Input[str]] = None,
+             vpc_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneAttachmentVpcArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if user_client_ip is None and 'userClientIp' in kwargs:
+            user_client_ip = kwargs['userClientIp']
+        if vpc_ids is None and 'vpcIds' in kwargs:
+            vpc_ids = kwargs['vpcIds']
+
+        _setter("zone_id", zone_id)
         if lang is not None:
-            pulumi.set(__self__, "lang", lang)
+            _setter("lang", lang)
         if user_client_ip is not None:
-            pulumi.set(__self__, "user_client_ip", user_client_ip)
+            _setter("user_client_ip", user_client_ip)
         if vpc_ids is not None:
-            pulumi.set(__self__, "vpc_ids", vpc_ids)
+            _setter("vpc_ids", vpc_ids)
         if vpcs is not None:
-            pulumi.set(__self__, "vpcs", vpcs)
+            _setter("vpcs", vpcs)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -116,16 +143,41 @@ class _ZoneAttachmentState:
         :param pulumi.Input[Sequence[pulumi.Input['ZoneAttachmentVpcArgs']]] vpcs: See `vpcs` below.Recommend to use `vpcs`.
         :param pulumi.Input[str] zone_id: The name of the Private Zone Record.
         """
+        _ZoneAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            lang=lang,
+            user_client_ip=user_client_ip,
+            vpc_ids=vpc_ids,
+            vpcs=vpcs,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             lang: Optional[pulumi.Input[str]] = None,
+             user_client_ip: Optional[pulumi.Input[str]] = None,
+             vpc_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneAttachmentVpcArgs']]]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if user_client_ip is None and 'userClientIp' in kwargs:
+            user_client_ip = kwargs['userClientIp']
+        if vpc_ids is None and 'vpcIds' in kwargs:
+            vpc_ids = kwargs['vpcIds']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if lang is not None:
-            pulumi.set(__self__, "lang", lang)
+            _setter("lang", lang)
         if user_client_ip is not None:
-            pulumi.set(__self__, "user_client_ip", user_client_ip)
+            _setter("user_client_ip", user_client_ip)
         if vpc_ids is not None:
-            pulumi.set(__self__, "vpc_ids", vpc_ids)
+            _setter("vpc_ids", vpc_ids)
         if vpcs is not None:
-            pulumi.set(__self__, "vpcs", vpcs)
+            _setter("vpcs", vpcs)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -405,6 +457,10 @@ class ZoneAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ZoneAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,28 +41,73 @@ class ServerGroupArgs:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The ID of the VPC that you want to access.
         """
+        ServerGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dry_run=dry_run,
+            health_check_config=health_check_config,
+            protocol=protocol,
+            resource_group_id=resource_group_id,
+            scheduler=scheduler,
+            server_group_name=server_group_name,
+            server_group_type=server_group_type,
+            servers=servers,
+            sticky_session_config=sticky_session_config,
+            tags=tags,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             health_check_config: Optional[pulumi.Input['ServerGroupHealthCheckConfigArgs']] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             scheduler: Optional[pulumi.Input[str]] = None,
+             server_group_name: Optional[pulumi.Input[str]] = None,
+             server_group_type: Optional[pulumi.Input[str]] = None,
+             servers: Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]] = None,
+             sticky_session_config: Optional[pulumi.Input['ServerGroupStickySessionConfigArgs']] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dry_run is None and 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if health_check_config is None and 'healthCheckConfig' in kwargs:
+            health_check_config = kwargs['healthCheckConfig']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if server_group_name is None and 'serverGroupName' in kwargs:
+            server_group_name = kwargs['serverGroupName']
+        if server_group_type is None and 'serverGroupType' in kwargs:
+            server_group_type = kwargs['serverGroupType']
+        if sticky_session_config is None and 'stickySessionConfig' in kwargs:
+            sticky_session_config = kwargs['stickySessionConfig']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if health_check_config is not None:
-            pulumi.set(__self__, "health_check_config", health_check_config)
+            _setter("health_check_config", health_check_config)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if scheduler is not None:
-            pulumi.set(__self__, "scheduler", scheduler)
+            _setter("scheduler", scheduler)
         if server_group_name is not None:
-            pulumi.set(__self__, "server_group_name", server_group_name)
+            _setter("server_group_name", server_group_name)
         if server_group_type is not None:
-            pulumi.set(__self__, "server_group_type", server_group_type)
+            _setter("server_group_type", server_group_type)
         if servers is not None:
-            pulumi.set(__self__, "servers", servers)
+            _setter("servers", servers)
         if sticky_session_config is not None:
-            pulumi.set(__self__, "sticky_session_config", sticky_session_config)
+            _setter("sticky_session_config", sticky_session_config)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="dryRun")
@@ -227,30 +272,77 @@ class _ServerGroupState:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The ID of the VPC that you want to access.
         """
+        _ServerGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dry_run=dry_run,
+            health_check_config=health_check_config,
+            protocol=protocol,
+            resource_group_id=resource_group_id,
+            scheduler=scheduler,
+            server_group_name=server_group_name,
+            server_group_type=server_group_type,
+            servers=servers,
+            status=status,
+            sticky_session_config=sticky_session_config,
+            tags=tags,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             health_check_config: Optional[pulumi.Input['ServerGroupHealthCheckConfigArgs']] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             scheduler: Optional[pulumi.Input[str]] = None,
+             server_group_name: Optional[pulumi.Input[str]] = None,
+             server_group_type: Optional[pulumi.Input[str]] = None,
+             servers: Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             sticky_session_config: Optional[pulumi.Input['ServerGroupStickySessionConfigArgs']] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dry_run is None and 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if health_check_config is None and 'healthCheckConfig' in kwargs:
+            health_check_config = kwargs['healthCheckConfig']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if server_group_name is None and 'serverGroupName' in kwargs:
+            server_group_name = kwargs['serverGroupName']
+        if server_group_type is None and 'serverGroupType' in kwargs:
+            server_group_type = kwargs['serverGroupType']
+        if sticky_session_config is None and 'stickySessionConfig' in kwargs:
+            sticky_session_config = kwargs['stickySessionConfig']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if health_check_config is not None:
-            pulumi.set(__self__, "health_check_config", health_check_config)
+            _setter("health_check_config", health_check_config)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if scheduler is not None:
-            pulumi.set(__self__, "scheduler", scheduler)
+            _setter("scheduler", scheduler)
         if server_group_name is not None:
-            pulumi.set(__self__, "server_group_name", server_group_name)
+            _setter("server_group_name", server_group_name)
         if server_group_type is not None:
-            pulumi.set(__self__, "server_group_type", server_group_type)
+            _setter("server_group_type", server_group_type)
         if servers is not None:
-            pulumi.set(__self__, "servers", servers)
+            _setter("servers", servers)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if sticky_session_config is not None:
-            pulumi.set(__self__, "sticky_session_config", sticky_session_config)
+            _setter("sticky_session_config", sticky_session_config)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="dryRun")
@@ -632,6 +724,10 @@ class ServerGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ServerGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -658,6 +754,11 @@ class ServerGroup(pulumi.CustomResource):
             __props__ = ServerGroupArgs.__new__(ServerGroupArgs)
 
             __props__.__dict__["dry_run"] = dry_run
+            if health_check_config is not None and not isinstance(health_check_config, ServerGroupHealthCheckConfigArgs):
+                health_check_config = health_check_config or {}
+                def _setter(key, value):
+                    health_check_config[key] = value
+                ServerGroupHealthCheckConfigArgs._configure(_setter, **health_check_config)
             __props__.__dict__["health_check_config"] = health_check_config
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["resource_group_id"] = resource_group_id
@@ -665,6 +766,11 @@ class ServerGroup(pulumi.CustomResource):
             __props__.__dict__["server_group_name"] = server_group_name
             __props__.__dict__["server_group_type"] = server_group_type
             __props__.__dict__["servers"] = servers
+            if sticky_session_config is not None and not isinstance(sticky_session_config, ServerGroupStickySessionConfigArgs):
+                sticky_session_config = sticky_session_config or {}
+                def _setter(key, value):
+                    sticky_session_config[key] = value
+                ServerGroupStickySessionConfigArgs._configure(_setter, **sticky_session_config)
             __props__.__dict__["sticky_session_config"] = sticky_session_config
             __props__.__dict__["tags"] = tags
             __props__.__dict__["vpc_id"] = vpc_id

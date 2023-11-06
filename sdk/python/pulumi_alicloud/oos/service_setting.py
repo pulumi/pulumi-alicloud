@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ServiceSettingArgs', 'ServiceSetting']
@@ -27,16 +27,45 @@ class ServiceSettingArgs:
         :param pulumi.Input[bool] delivery_sls_enabled: Is the execution record function to SLS delivery Template turned on.
         :param pulumi.Input[str] delivery_sls_project_name: The name of SLS  Project. **NOTE:** When the `delivery_sls_enabled` is `true`, The `delivery_sls_project_name` is valid.
         """
+        ServiceSettingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            delivery_oss_bucket_name=delivery_oss_bucket_name,
+            delivery_oss_enabled=delivery_oss_enabled,
+            delivery_oss_key_prefix=delivery_oss_key_prefix,
+            delivery_sls_enabled=delivery_sls_enabled,
+            delivery_sls_project_name=delivery_sls_project_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             delivery_oss_bucket_name: Optional[pulumi.Input[str]] = None,
+             delivery_oss_enabled: Optional[pulumi.Input[bool]] = None,
+             delivery_oss_key_prefix: Optional[pulumi.Input[str]] = None,
+             delivery_sls_enabled: Optional[pulumi.Input[bool]] = None,
+             delivery_sls_project_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if delivery_oss_bucket_name is None and 'deliveryOssBucketName' in kwargs:
+            delivery_oss_bucket_name = kwargs['deliveryOssBucketName']
+        if delivery_oss_enabled is None and 'deliveryOssEnabled' in kwargs:
+            delivery_oss_enabled = kwargs['deliveryOssEnabled']
+        if delivery_oss_key_prefix is None and 'deliveryOssKeyPrefix' in kwargs:
+            delivery_oss_key_prefix = kwargs['deliveryOssKeyPrefix']
+        if delivery_sls_enabled is None and 'deliverySlsEnabled' in kwargs:
+            delivery_sls_enabled = kwargs['deliverySlsEnabled']
+        if delivery_sls_project_name is None and 'deliverySlsProjectName' in kwargs:
+            delivery_sls_project_name = kwargs['deliverySlsProjectName']
+
         if delivery_oss_bucket_name is not None:
-            pulumi.set(__self__, "delivery_oss_bucket_name", delivery_oss_bucket_name)
+            _setter("delivery_oss_bucket_name", delivery_oss_bucket_name)
         if delivery_oss_enabled is not None:
-            pulumi.set(__self__, "delivery_oss_enabled", delivery_oss_enabled)
+            _setter("delivery_oss_enabled", delivery_oss_enabled)
         if delivery_oss_key_prefix is not None:
-            pulumi.set(__self__, "delivery_oss_key_prefix", delivery_oss_key_prefix)
+            _setter("delivery_oss_key_prefix", delivery_oss_key_prefix)
         if delivery_sls_enabled is not None:
-            pulumi.set(__self__, "delivery_sls_enabled", delivery_sls_enabled)
+            _setter("delivery_sls_enabled", delivery_sls_enabled)
         if delivery_sls_project_name is not None:
-            pulumi.set(__self__, "delivery_sls_project_name", delivery_sls_project_name)
+            _setter("delivery_sls_project_name", delivery_sls_project_name)
 
     @property
     @pulumi.getter(name="deliveryOssBucketName")
@@ -115,16 +144,45 @@ class _ServiceSettingState:
         :param pulumi.Input[bool] delivery_sls_enabled: Is the execution record function to SLS delivery Template turned on.
         :param pulumi.Input[str] delivery_sls_project_name: The name of SLS  Project. **NOTE:** When the `delivery_sls_enabled` is `true`, The `delivery_sls_project_name` is valid.
         """
+        _ServiceSettingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            delivery_oss_bucket_name=delivery_oss_bucket_name,
+            delivery_oss_enabled=delivery_oss_enabled,
+            delivery_oss_key_prefix=delivery_oss_key_prefix,
+            delivery_sls_enabled=delivery_sls_enabled,
+            delivery_sls_project_name=delivery_sls_project_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             delivery_oss_bucket_name: Optional[pulumi.Input[str]] = None,
+             delivery_oss_enabled: Optional[pulumi.Input[bool]] = None,
+             delivery_oss_key_prefix: Optional[pulumi.Input[str]] = None,
+             delivery_sls_enabled: Optional[pulumi.Input[bool]] = None,
+             delivery_sls_project_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if delivery_oss_bucket_name is None and 'deliveryOssBucketName' in kwargs:
+            delivery_oss_bucket_name = kwargs['deliveryOssBucketName']
+        if delivery_oss_enabled is None and 'deliveryOssEnabled' in kwargs:
+            delivery_oss_enabled = kwargs['deliveryOssEnabled']
+        if delivery_oss_key_prefix is None and 'deliveryOssKeyPrefix' in kwargs:
+            delivery_oss_key_prefix = kwargs['deliveryOssKeyPrefix']
+        if delivery_sls_enabled is None and 'deliverySlsEnabled' in kwargs:
+            delivery_sls_enabled = kwargs['deliverySlsEnabled']
+        if delivery_sls_project_name is None and 'deliverySlsProjectName' in kwargs:
+            delivery_sls_project_name = kwargs['deliverySlsProjectName']
+
         if delivery_oss_bucket_name is not None:
-            pulumi.set(__self__, "delivery_oss_bucket_name", delivery_oss_bucket_name)
+            _setter("delivery_oss_bucket_name", delivery_oss_bucket_name)
         if delivery_oss_enabled is not None:
-            pulumi.set(__self__, "delivery_oss_enabled", delivery_oss_enabled)
+            _setter("delivery_oss_enabled", delivery_oss_enabled)
         if delivery_oss_key_prefix is not None:
-            pulumi.set(__self__, "delivery_oss_key_prefix", delivery_oss_key_prefix)
+            _setter("delivery_oss_key_prefix", delivery_oss_key_prefix)
         if delivery_sls_enabled is not None:
-            pulumi.set(__self__, "delivery_sls_enabled", delivery_sls_enabled)
+            _setter("delivery_sls_enabled", delivery_sls_enabled)
         if delivery_sls_project_name is not None:
-            pulumi.set(__self__, "delivery_sls_project_name", delivery_sls_project_name)
+            _setter("delivery_sls_project_name", delivery_sls_project_name)
 
     @property
     @pulumi.getter(name="deliveryOssBucketName")
@@ -300,6 +358,10 @@ class ServiceSetting(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ServiceSettingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

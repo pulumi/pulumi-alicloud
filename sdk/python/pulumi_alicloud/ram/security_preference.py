@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SecurityPreferenceArgs', 'SecurityPreference']
@@ -34,20 +34,57 @@ class SecurityPreferenceArgs:
                * If you need to specify multiple subnet masks, separate the subnet masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
         :param pulumi.Input[int] login_session_duration: The validity period of the logon session of RAM users. Valid values: 6 to 24. Unit: hours. Default value: 6.
         """
+        SecurityPreferenceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_user_to_change_password=allow_user_to_change_password,
+            allow_user_to_manage_access_keys=allow_user_to_manage_access_keys,
+            allow_user_to_manage_mfa_devices=allow_user_to_manage_mfa_devices,
+            enable_save_mfa_ticket=enable_save_mfa_ticket,
+            enforce_mfa_for_login=enforce_mfa_for_login,
+            login_network_masks=login_network_masks,
+            login_session_duration=login_session_duration,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_user_to_change_password: Optional[pulumi.Input[bool]] = None,
+             allow_user_to_manage_access_keys: Optional[pulumi.Input[bool]] = None,
+             allow_user_to_manage_mfa_devices: Optional[pulumi.Input[bool]] = None,
+             enable_save_mfa_ticket: Optional[pulumi.Input[bool]] = None,
+             enforce_mfa_for_login: Optional[pulumi.Input[bool]] = None,
+             login_network_masks: Optional[pulumi.Input[str]] = None,
+             login_session_duration: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_user_to_change_password is None and 'allowUserToChangePassword' in kwargs:
+            allow_user_to_change_password = kwargs['allowUserToChangePassword']
+        if allow_user_to_manage_access_keys is None and 'allowUserToManageAccessKeys' in kwargs:
+            allow_user_to_manage_access_keys = kwargs['allowUserToManageAccessKeys']
+        if allow_user_to_manage_mfa_devices is None and 'allowUserToManageMfaDevices' in kwargs:
+            allow_user_to_manage_mfa_devices = kwargs['allowUserToManageMfaDevices']
+        if enable_save_mfa_ticket is None and 'enableSaveMfaTicket' in kwargs:
+            enable_save_mfa_ticket = kwargs['enableSaveMfaTicket']
+        if enforce_mfa_for_login is None and 'enforceMfaForLogin' in kwargs:
+            enforce_mfa_for_login = kwargs['enforceMfaForLogin']
+        if login_network_masks is None and 'loginNetworkMasks' in kwargs:
+            login_network_masks = kwargs['loginNetworkMasks']
+        if login_session_duration is None and 'loginSessionDuration' in kwargs:
+            login_session_duration = kwargs['loginSessionDuration']
+
         if allow_user_to_change_password is not None:
-            pulumi.set(__self__, "allow_user_to_change_password", allow_user_to_change_password)
+            _setter("allow_user_to_change_password", allow_user_to_change_password)
         if allow_user_to_manage_access_keys is not None:
-            pulumi.set(__self__, "allow_user_to_manage_access_keys", allow_user_to_manage_access_keys)
+            _setter("allow_user_to_manage_access_keys", allow_user_to_manage_access_keys)
         if allow_user_to_manage_mfa_devices is not None:
-            pulumi.set(__self__, "allow_user_to_manage_mfa_devices", allow_user_to_manage_mfa_devices)
+            _setter("allow_user_to_manage_mfa_devices", allow_user_to_manage_mfa_devices)
         if enable_save_mfa_ticket is not None:
-            pulumi.set(__self__, "enable_save_mfa_ticket", enable_save_mfa_ticket)
+            _setter("enable_save_mfa_ticket", enable_save_mfa_ticket)
         if enforce_mfa_for_login is not None:
-            pulumi.set(__self__, "enforce_mfa_for_login", enforce_mfa_for_login)
+            _setter("enforce_mfa_for_login", enforce_mfa_for_login)
         if login_network_masks is not None:
-            pulumi.set(__self__, "login_network_masks", login_network_masks)
+            _setter("login_network_masks", login_network_masks)
         if login_session_duration is not None:
-            pulumi.set(__self__, "login_session_duration", login_session_duration)
+            _setter("login_session_duration", login_session_duration)
 
     @property
     @pulumi.getter(name="allowUserToChangePassword")
@@ -160,20 +197,57 @@ class _SecurityPreferenceState:
                * If you need to specify multiple subnet masks, separate the subnet masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
         :param pulumi.Input[int] login_session_duration: The validity period of the logon session of RAM users. Valid values: 6 to 24. Unit: hours. Default value: 6.
         """
+        _SecurityPreferenceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_user_to_change_password=allow_user_to_change_password,
+            allow_user_to_manage_access_keys=allow_user_to_manage_access_keys,
+            allow_user_to_manage_mfa_devices=allow_user_to_manage_mfa_devices,
+            enable_save_mfa_ticket=enable_save_mfa_ticket,
+            enforce_mfa_for_login=enforce_mfa_for_login,
+            login_network_masks=login_network_masks,
+            login_session_duration=login_session_duration,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_user_to_change_password: Optional[pulumi.Input[bool]] = None,
+             allow_user_to_manage_access_keys: Optional[pulumi.Input[bool]] = None,
+             allow_user_to_manage_mfa_devices: Optional[pulumi.Input[bool]] = None,
+             enable_save_mfa_ticket: Optional[pulumi.Input[bool]] = None,
+             enforce_mfa_for_login: Optional[pulumi.Input[bool]] = None,
+             login_network_masks: Optional[pulumi.Input[str]] = None,
+             login_session_duration: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_user_to_change_password is None and 'allowUserToChangePassword' in kwargs:
+            allow_user_to_change_password = kwargs['allowUserToChangePassword']
+        if allow_user_to_manage_access_keys is None and 'allowUserToManageAccessKeys' in kwargs:
+            allow_user_to_manage_access_keys = kwargs['allowUserToManageAccessKeys']
+        if allow_user_to_manage_mfa_devices is None and 'allowUserToManageMfaDevices' in kwargs:
+            allow_user_to_manage_mfa_devices = kwargs['allowUserToManageMfaDevices']
+        if enable_save_mfa_ticket is None and 'enableSaveMfaTicket' in kwargs:
+            enable_save_mfa_ticket = kwargs['enableSaveMfaTicket']
+        if enforce_mfa_for_login is None and 'enforceMfaForLogin' in kwargs:
+            enforce_mfa_for_login = kwargs['enforceMfaForLogin']
+        if login_network_masks is None and 'loginNetworkMasks' in kwargs:
+            login_network_masks = kwargs['loginNetworkMasks']
+        if login_session_duration is None and 'loginSessionDuration' in kwargs:
+            login_session_duration = kwargs['loginSessionDuration']
+
         if allow_user_to_change_password is not None:
-            pulumi.set(__self__, "allow_user_to_change_password", allow_user_to_change_password)
+            _setter("allow_user_to_change_password", allow_user_to_change_password)
         if allow_user_to_manage_access_keys is not None:
-            pulumi.set(__self__, "allow_user_to_manage_access_keys", allow_user_to_manage_access_keys)
+            _setter("allow_user_to_manage_access_keys", allow_user_to_manage_access_keys)
         if allow_user_to_manage_mfa_devices is not None:
-            pulumi.set(__self__, "allow_user_to_manage_mfa_devices", allow_user_to_manage_mfa_devices)
+            _setter("allow_user_to_manage_mfa_devices", allow_user_to_manage_mfa_devices)
         if enable_save_mfa_ticket is not None:
-            pulumi.set(__self__, "enable_save_mfa_ticket", enable_save_mfa_ticket)
+            _setter("enable_save_mfa_ticket", enable_save_mfa_ticket)
         if enforce_mfa_for_login is not None:
-            pulumi.set(__self__, "enforce_mfa_for_login", enforce_mfa_for_login)
+            _setter("enforce_mfa_for_login", enforce_mfa_for_login)
         if login_network_masks is not None:
-            pulumi.set(__self__, "login_network_masks", login_network_masks)
+            _setter("login_network_masks", login_network_masks)
         if login_session_duration is not None:
-            pulumi.set(__self__, "login_session_duration", login_session_duration)
+            _setter("login_session_duration", login_session_duration)
 
     @property
     @pulumi.getter(name="allowUserToChangePassword")
@@ -361,6 +435,10 @@ class SecurityPreference(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SecurityPreferenceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

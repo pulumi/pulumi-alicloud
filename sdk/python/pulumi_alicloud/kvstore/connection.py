@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ConnectionArgs', 'Connection']
@@ -23,9 +23,34 @@ class ConnectionArgs:
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] port: The service port number of the instance.
         """
-        pulumi.set(__self__, "connection_string_prefix", connection_string_prefix)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "port", port)
+        ConnectionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connection_string_prefix=connection_string_prefix,
+            instance_id=instance_id,
+            port=port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connection_string_prefix: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connection_string_prefix is None and 'connectionStringPrefix' in kwargs:
+            connection_string_prefix = kwargs['connectionStringPrefix']
+        if connection_string_prefix is None:
+            raise TypeError("Missing 'connection_string_prefix' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+
+        _setter("connection_string_prefix", connection_string_prefix)
+        _setter("instance_id", instance_id)
+        _setter("port", port)
 
     @property
     @pulumi.getter(name="connectionStringPrefix")
@@ -78,14 +103,37 @@ class _ConnectionState:
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] port: The service port number of the instance.
         """
+        _ConnectionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connection_string=connection_string,
+            connection_string_prefix=connection_string_prefix,
+            instance_id=instance_id,
+            port=port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connection_string: Optional[pulumi.Input[str]] = None,
+             connection_string_prefix: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connection_string is None and 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if connection_string_prefix is None and 'connectionStringPrefix' in kwargs:
+            connection_string_prefix = kwargs['connectionStringPrefix']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if connection_string is not None:
-            pulumi.set(__self__, "connection_string", connection_string)
+            _setter("connection_string", connection_string)
         if connection_string_prefix is not None:
-            pulumi.set(__self__, "connection_string_prefix", connection_string_prefix)
+            _setter("connection_string_prefix", connection_string_prefix)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
 
     @property
     @pulumi.getter(name="connectionString")
@@ -283,6 +331,10 @@ class Connection(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ConnectionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

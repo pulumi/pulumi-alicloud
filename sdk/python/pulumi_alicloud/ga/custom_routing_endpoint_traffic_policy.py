@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,10 +25,33 @@ class CustomRoutingEndpointTrafficPolicyArgs:
         :param pulumi.Input[str] endpoint_id: The ID of the Custom Routing Endpoint.
         :param pulumi.Input[Sequence[pulumi.Input['CustomRoutingEndpointTrafficPolicyPortRangeArgs']]] port_ranges: Port rangeSee the following. See `port_ranges` below.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "endpoint_id", endpoint_id)
+        CustomRoutingEndpointTrafficPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            endpoint_id=endpoint_id,
+            port_ranges=port_ranges,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: Optional[pulumi.Input[str]] = None,
+             endpoint_id: Optional[pulumi.Input[str]] = None,
+             port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['CustomRoutingEndpointTrafficPolicyPortRangeArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if endpoint_id is None and 'endpointId' in kwargs:
+            endpoint_id = kwargs['endpointId']
+        if endpoint_id is None:
+            raise TypeError("Missing 'endpoint_id' argument")
+        if port_ranges is None and 'portRanges' in kwargs:
+            port_ranges = kwargs['portRanges']
+
+        _setter("address", address)
+        _setter("endpoint_id", endpoint_id)
         if port_ranges is not None:
-            pulumi.set(__self__, "port_ranges", port_ranges)
+            _setter("port_ranges", port_ranges)
 
     @property
     @pulumi.getter
@@ -89,22 +112,59 @@ class _CustomRoutingEndpointTrafficPolicyState:
         :param pulumi.Input[Sequence[pulumi.Input['CustomRoutingEndpointTrafficPolicyPortRangeArgs']]] port_ranges: Port rangeSee the following. See `port_ranges` below.
         :param pulumi.Input[str] status: The status of the Custom Routing Endpoint Traffic Policy.
         """
+        _CustomRoutingEndpointTrafficPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_id=accelerator_id,
+            address=address,
+            custom_routing_endpoint_traffic_policy_id=custom_routing_endpoint_traffic_policy_id,
+            endpoint_group_id=endpoint_group_id,
+            endpoint_id=endpoint_id,
+            listener_id=listener_id,
+            port_ranges=port_ranges,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_id: Optional[pulumi.Input[str]] = None,
+             address: Optional[pulumi.Input[str]] = None,
+             custom_routing_endpoint_traffic_policy_id: Optional[pulumi.Input[str]] = None,
+             endpoint_group_id: Optional[pulumi.Input[str]] = None,
+             endpoint_id: Optional[pulumi.Input[str]] = None,
+             listener_id: Optional[pulumi.Input[str]] = None,
+             port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['CustomRoutingEndpointTrafficPolicyPortRangeArgs']]]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accelerator_id is None and 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if custom_routing_endpoint_traffic_policy_id is None and 'customRoutingEndpointTrafficPolicyId' in kwargs:
+            custom_routing_endpoint_traffic_policy_id = kwargs['customRoutingEndpointTrafficPolicyId']
+        if endpoint_group_id is None and 'endpointGroupId' in kwargs:
+            endpoint_group_id = kwargs['endpointGroupId']
+        if endpoint_id is None and 'endpointId' in kwargs:
+            endpoint_id = kwargs['endpointId']
+        if listener_id is None and 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if port_ranges is None and 'portRanges' in kwargs:
+            port_ranges = kwargs['portRanges']
+
         if accelerator_id is not None:
-            pulumi.set(__self__, "accelerator_id", accelerator_id)
+            _setter("accelerator_id", accelerator_id)
         if address is not None:
-            pulumi.set(__self__, "address", address)
+            _setter("address", address)
         if custom_routing_endpoint_traffic_policy_id is not None:
-            pulumi.set(__self__, "custom_routing_endpoint_traffic_policy_id", custom_routing_endpoint_traffic_policy_id)
+            _setter("custom_routing_endpoint_traffic_policy_id", custom_routing_endpoint_traffic_policy_id)
         if endpoint_group_id is not None:
-            pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
+            _setter("endpoint_group_id", endpoint_group_id)
         if endpoint_id is not None:
-            pulumi.set(__self__, "endpoint_id", endpoint_id)
+            _setter("endpoint_id", endpoint_id)
         if listener_id is not None:
-            pulumi.set(__self__, "listener_id", listener_id)
+            _setter("listener_id", listener_id)
         if port_ranges is not None:
-            pulumi.set(__self__, "port_ranges", port_ranges)
+            _setter("port_ranges", port_ranges)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -398,6 +458,10 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CustomRoutingEndpointTrafficPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

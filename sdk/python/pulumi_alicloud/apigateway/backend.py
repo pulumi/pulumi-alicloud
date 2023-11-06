@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BackendArgs', 'Backend']
@@ -25,12 +25,39 @@ class BackendArgs:
         :param pulumi.Input[bool] create_event_bridge_service_linked_role: Whether to create an Event bus service association role.
         :param pulumi.Input[str] description: The description of the Backend.
         """
-        pulumi.set(__self__, "backend_name", backend_name)
-        pulumi.set(__self__, "backend_type", backend_type)
+        BackendArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backend_name=backend_name,
+            backend_type=backend_type,
+            create_event_bridge_service_linked_role=create_event_bridge_service_linked_role,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backend_name: Optional[pulumi.Input[str]] = None,
+             backend_type: Optional[pulumi.Input[str]] = None,
+             create_event_bridge_service_linked_role: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backend_name is None and 'backendName' in kwargs:
+            backend_name = kwargs['backendName']
+        if backend_name is None:
+            raise TypeError("Missing 'backend_name' argument")
+        if backend_type is None and 'backendType' in kwargs:
+            backend_type = kwargs['backendType']
+        if backend_type is None:
+            raise TypeError("Missing 'backend_type' argument")
+        if create_event_bridge_service_linked_role is None and 'createEventBridgeServiceLinkedRole' in kwargs:
+            create_event_bridge_service_linked_role = kwargs['createEventBridgeServiceLinkedRole']
+
+        _setter("backend_name", backend_name)
+        _setter("backend_type", backend_type)
         if create_event_bridge_service_linked_role is not None:
-            pulumi.set(__self__, "create_event_bridge_service_linked_role", create_event_bridge_service_linked_role)
+            _setter("create_event_bridge_service_linked_role", create_event_bridge_service_linked_role)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="backendName")
@@ -95,14 +122,37 @@ class _BackendState:
         :param pulumi.Input[bool] create_event_bridge_service_linked_role: Whether to create an Event bus service association role.
         :param pulumi.Input[str] description: The description of the Backend.
         """
+        _BackendState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backend_name=backend_name,
+            backend_type=backend_type,
+            create_event_bridge_service_linked_role=create_event_bridge_service_linked_role,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backend_name: Optional[pulumi.Input[str]] = None,
+             backend_type: Optional[pulumi.Input[str]] = None,
+             create_event_bridge_service_linked_role: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backend_name is None and 'backendName' in kwargs:
+            backend_name = kwargs['backendName']
+        if backend_type is None and 'backendType' in kwargs:
+            backend_type = kwargs['backendType']
+        if create_event_bridge_service_linked_role is None and 'createEventBridgeServiceLinkedRole' in kwargs:
+            create_event_bridge_service_linked_role = kwargs['createEventBridgeServiceLinkedRole']
+
         if backend_name is not None:
-            pulumi.set(__self__, "backend_name", backend_name)
+            _setter("backend_name", backend_name)
         if backend_type is not None:
-            pulumi.set(__self__, "backend_type", backend_type)
+            _setter("backend_type", backend_type)
         if create_event_bridge_service_linked_role is not None:
-            pulumi.set(__self__, "create_event_bridge_service_linked_role", create_event_bridge_service_linked_role)
+            _setter("create_event_bridge_service_linked_role", create_event_bridge_service_linked_role)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="backendName")
@@ -252,6 +302,10 @@ class Backend(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BackendArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

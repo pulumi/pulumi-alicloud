@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['VbrHaArgs', 'VbrHa']
@@ -27,14 +27,45 @@ class VbrHaArgs:
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[str] vbr_ha_name: The name of the VBR failover group.
         """
-        pulumi.set(__self__, "peer_vbr_id", peer_vbr_id)
-        pulumi.set(__self__, "vbr_id", vbr_id)
+        VbrHaArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            peer_vbr_id=peer_vbr_id,
+            vbr_id=vbr_id,
+            description=description,
+            dry_run=dry_run,
+            vbr_ha_name=vbr_ha_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             peer_vbr_id: Optional[pulumi.Input[str]] = None,
+             vbr_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             vbr_ha_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if peer_vbr_id is None and 'peerVbrId' in kwargs:
+            peer_vbr_id = kwargs['peerVbrId']
+        if peer_vbr_id is None:
+            raise TypeError("Missing 'peer_vbr_id' argument")
+        if vbr_id is None and 'vbrId' in kwargs:
+            vbr_id = kwargs['vbrId']
+        if vbr_id is None:
+            raise TypeError("Missing 'vbr_id' argument")
+        if dry_run is None and 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if vbr_ha_name is None and 'vbrHaName' in kwargs:
+            vbr_ha_name = kwargs['vbrHaName']
+
+        _setter("peer_vbr_id", peer_vbr_id)
+        _setter("vbr_id", vbr_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if vbr_ha_name is not None:
-            pulumi.set(__self__, "vbr_ha_name", vbr_ha_name)
+            _setter("vbr_ha_name", vbr_ha_name)
 
     @property
     @pulumi.getter(name="peerVbrId")
@@ -115,18 +146,47 @@ class _VbrHaState:
         :param pulumi.Input[str] vbr_ha_name: The name of the VBR failover group.
         :param pulumi.Input[str] vbr_id: The ID of the VBR instance.
         """
+        _VbrHaState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            dry_run=dry_run,
+            peer_vbr_id=peer_vbr_id,
+            status=status,
+            vbr_ha_name=vbr_ha_name,
+            vbr_id=vbr_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             peer_vbr_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             vbr_ha_name: Optional[pulumi.Input[str]] = None,
+             vbr_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dry_run is None and 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if peer_vbr_id is None and 'peerVbrId' in kwargs:
+            peer_vbr_id = kwargs['peerVbrId']
+        if vbr_ha_name is None and 'vbrHaName' in kwargs:
+            vbr_ha_name = kwargs['vbrHaName']
+        if vbr_id is None and 'vbrId' in kwargs:
+            vbr_id = kwargs['vbrId']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if peer_vbr_id is not None:
-            pulumi.set(__self__, "peer_vbr_id", peer_vbr_id)
+            _setter("peer_vbr_id", peer_vbr_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if vbr_ha_name is not None:
-            pulumi.set(__self__, "vbr_ha_name", vbr_ha_name)
+            _setter("vbr_ha_name", vbr_ha_name)
         if vbr_id is not None:
-            pulumi.set(__self__, "vbr_id", vbr_id)
+            _setter("vbr_id", vbr_id)
 
     @property
     @pulumi.getter
@@ -266,6 +326,10 @@ class VbrHa(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            VbrHaArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

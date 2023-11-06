@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['PluginArgs', 'Plugin']
@@ -33,13 +33,44 @@ class PluginArgs:
         :param pulumi.Input[str] description: The description of the plug-in, which cannot exceed 200 characters.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
-        pulumi.set(__self__, "plugin_data", plugin_data)
-        pulumi.set(__self__, "plugin_name", plugin_name)
-        pulumi.set(__self__, "plugin_type", plugin_type)
+        PluginArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            plugin_data=plugin_data,
+            plugin_name=plugin_name,
+            plugin_type=plugin_type,
+            description=description,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             plugin_data: Optional[pulumi.Input[str]] = None,
+             plugin_name: Optional[pulumi.Input[str]] = None,
+             plugin_type: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if plugin_data is None and 'pluginData' in kwargs:
+            plugin_data = kwargs['pluginData']
+        if plugin_data is None:
+            raise TypeError("Missing 'plugin_data' argument")
+        if plugin_name is None and 'pluginName' in kwargs:
+            plugin_name = kwargs['pluginName']
+        if plugin_name is None:
+            raise TypeError("Missing 'plugin_name' argument")
+        if plugin_type is None and 'pluginType' in kwargs:
+            plugin_type = kwargs['pluginType']
+        if plugin_type is None:
+            raise TypeError("Missing 'plugin_type' argument")
+
+        _setter("plugin_data", plugin_data)
+        _setter("plugin_name", plugin_name)
+        _setter("plugin_type", plugin_type)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="pluginData")
@@ -130,16 +161,41 @@ class _PluginState:
                - caching: indicates caching.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
+        _PluginState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            plugin_data=plugin_data,
+            plugin_name=plugin_name,
+            plugin_type=plugin_type,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             plugin_data: Optional[pulumi.Input[str]] = None,
+             plugin_name: Optional[pulumi.Input[str]] = None,
+             plugin_type: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if plugin_data is None and 'pluginData' in kwargs:
+            plugin_data = kwargs['pluginData']
+        if plugin_name is None and 'pluginName' in kwargs:
+            plugin_name = kwargs['pluginName']
+        if plugin_type is None and 'pluginType' in kwargs:
+            plugin_type = kwargs['pluginType']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if plugin_data is not None:
-            pulumi.set(__self__, "plugin_data", plugin_data)
+            _setter("plugin_data", plugin_data)
         if plugin_name is not None:
-            pulumi.set(__self__, "plugin_name", plugin_name)
+            _setter("plugin_name", plugin_name)
         if plugin_type is not None:
-            pulumi.set(__self__, "plugin_type", plugin_type)
+            _setter("plugin_type", plugin_type)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -317,6 +373,10 @@ class Plugin(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PluginArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

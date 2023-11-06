@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -26,11 +26,32 @@ class HoneypotPresetMetaArgs:
         :param pulumi.Input[bool] portrait_option: Social traceability.
         :param pulumi.Input[str] trojan_git: Git countered.
         """
-        pulumi.set(__self__, "burp", burp)
+        HoneypotPresetMetaArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            burp=burp,
+            portrait_option=portrait_option,
+            trojan_git=trojan_git,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             burp: Optional[pulumi.Input[str]] = None,
+             portrait_option: Optional[pulumi.Input[bool]] = None,
+             trojan_git: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if burp is None:
+            raise TypeError("Missing 'burp' argument")
+        if portrait_option is None and 'portraitOption' in kwargs:
+            portrait_option = kwargs['portraitOption']
+        if trojan_git is None and 'trojanGit' in kwargs:
+            trojan_git = kwargs['trojanGit']
+
+        _setter("burp", burp)
         if portrait_option is not None:
-            pulumi.set(__self__, "portrait_option", portrait_option)
+            _setter("portrait_option", portrait_option)
         if trojan_git is not None:
-            pulumi.set(__self__, "trojan_git", trojan_git)
+            _setter("trojan_git", trojan_git)
 
     @property
     @pulumi.getter
@@ -78,10 +99,27 @@ class HoneypotProbeHoneypotBindListArgs:
         :param pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListBindPortListArgs']]] bind_port_lists: List of listening ports.See the following `Block BindPortList`.
         :param pulumi.Input[str] honeypot_id: Honeypot ID.
         """
+        HoneypotProbeHoneypotBindListArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bind_port_lists=bind_port_lists,
+            honeypot_id=honeypot_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bind_port_lists: Optional[pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListBindPortListArgs']]]] = None,
+             honeypot_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bind_port_lists is None and 'bindPortLists' in kwargs:
+            bind_port_lists = kwargs['bindPortLists']
+        if honeypot_id is None and 'honeypotId' in kwargs:
+            honeypot_id = kwargs['honeypotId']
+
         if bind_port_lists is not None:
-            pulumi.set(__self__, "bind_port_lists", bind_port_lists)
+            _setter("bind_port_lists", bind_port_lists)
         if honeypot_id is not None:
-            pulumi.set(__self__, "honeypot_id", honeypot_id)
+            _setter("honeypot_id", honeypot_id)
 
     @property
     @pulumi.getter(name="bindPortLists")
@@ -123,16 +161,43 @@ class HoneypotProbeHoneypotBindListBindPortListArgs:
         :param pulumi.Input[int] start_port: Start port.
         :param pulumi.Input[int] target_port: Destination port.
         """
+        HoneypotProbeHoneypotBindListBindPortListArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bind_port=bind_port,
+            end_port=end_port,
+            fixed=fixed,
+            start_port=start_port,
+            target_port=target_port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bind_port: Optional[pulumi.Input[bool]] = None,
+             end_port: Optional[pulumi.Input[int]] = None,
+             fixed: Optional[pulumi.Input[bool]] = None,
+             start_port: Optional[pulumi.Input[int]] = None,
+             target_port: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bind_port is None and 'bindPort' in kwargs:
+            bind_port = kwargs['bindPort']
+        if end_port is None and 'endPort' in kwargs:
+            end_port = kwargs['endPort']
+        if start_port is None and 'startPort' in kwargs:
+            start_port = kwargs['startPort']
+        if target_port is None and 'targetPort' in kwargs:
+            target_port = kwargs['targetPort']
+
         if bind_port is not None:
-            pulumi.set(__self__, "bind_port", bind_port)
+            _setter("bind_port", bind_port)
         if end_port is not None:
-            pulumi.set(__self__, "end_port", end_port)
+            _setter("end_port", end_port)
         if fixed is not None:
-            pulumi.set(__self__, "fixed", fixed)
+            _setter("fixed", fixed)
         if start_port is not None:
-            pulumi.set(__self__, "start_port", start_port)
+            _setter("start_port", start_port)
         if target_port is not None:
-            pulumi.set(__self__, "target_port", target_port)
+            _setter("target_port", target_port)
 
     @property
     @pulumi.getter(name="bindPort")

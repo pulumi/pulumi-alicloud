@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InstanceArgs', 'Instance']
@@ -27,19 +27,42 @@ class InstanceArgs:
         :param pulumi.Input[str] protection_level: Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
+        InstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cen_instance_name=cen_instance_name,
+            description=description,
+            name=name,
+            protection_level=protection_level,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cen_instance_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             protection_level: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cen_instance_name is None and 'cenInstanceName' in kwargs:
+            cen_instance_name = kwargs['cenInstanceName']
+        if protection_level is None and 'protectionLevel' in kwargs:
+            protection_level = kwargs['protectionLevel']
+
         if cen_instance_name is not None:
-            pulumi.set(__self__, "cen_instance_name", cen_instance_name)
+            _setter("cen_instance_name", cen_instance_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
             warnings.warn("""attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""")
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if protection_level is not None:
-            pulumi.set(__self__, "protection_level", protection_level)
+            _setter("protection_level", protection_level)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="cenInstanceName")
@@ -123,21 +146,46 @@ class _InstanceState:
         :param pulumi.Input[str] status: The Cen Instance current status.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
+        _InstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cen_instance_name=cen_instance_name,
+            description=description,
+            name=name,
+            protection_level=protection_level,
+            status=status,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cen_instance_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             protection_level: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cen_instance_name is None and 'cenInstanceName' in kwargs:
+            cen_instance_name = kwargs['cenInstanceName']
+        if protection_level is None and 'protectionLevel' in kwargs:
+            protection_level = kwargs['protectionLevel']
+
         if cen_instance_name is not None:
-            pulumi.set(__self__, "cen_instance_name", cen_instance_name)
+            _setter("cen_instance_name", cen_instance_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
             warnings.warn("""attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""")
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if protection_level is not None:
-            pulumi.set(__self__, "protection_level", protection_level)
+            _setter("protection_level", protection_level)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="cenInstanceName")
@@ -306,6 +354,10 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,18 +35,57 @@ class AccessConfigurationArgs:
         :param pulumi.Input[str] relay_state: The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
         :param pulumi.Input[int] session_duration: The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
         """
-        pulumi.set(__self__, "access_configuration_name", access_configuration_name)
-        pulumi.set(__self__, "directory_id", directory_id)
+        AccessConfigurationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_configuration_name=access_configuration_name,
+            directory_id=directory_id,
+            description=description,
+            force_remove_permission_policies=force_remove_permission_policies,
+            permission_policies=permission_policies,
+            relay_state=relay_state,
+            session_duration=session_duration,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_configuration_name: Optional[pulumi.Input[str]] = None,
+             directory_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             force_remove_permission_policies: Optional[pulumi.Input[bool]] = None,
+             permission_policies: Optional[pulumi.Input[Sequence[pulumi.Input['AccessConfigurationPermissionPolicyArgs']]]] = None,
+             relay_state: Optional[pulumi.Input[str]] = None,
+             session_duration: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_configuration_name is None and 'accessConfigurationName' in kwargs:
+            access_configuration_name = kwargs['accessConfigurationName']
+        if access_configuration_name is None:
+            raise TypeError("Missing 'access_configuration_name' argument")
+        if directory_id is None and 'directoryId' in kwargs:
+            directory_id = kwargs['directoryId']
+        if directory_id is None:
+            raise TypeError("Missing 'directory_id' argument")
+        if force_remove_permission_policies is None and 'forceRemovePermissionPolicies' in kwargs:
+            force_remove_permission_policies = kwargs['forceRemovePermissionPolicies']
+        if permission_policies is None and 'permissionPolicies' in kwargs:
+            permission_policies = kwargs['permissionPolicies']
+        if relay_state is None and 'relayState' in kwargs:
+            relay_state = kwargs['relayState']
+        if session_duration is None and 'sessionDuration' in kwargs:
+            session_duration = kwargs['sessionDuration']
+
+        _setter("access_configuration_name", access_configuration_name)
+        _setter("directory_id", directory_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if force_remove_permission_policies is not None:
-            pulumi.set(__self__, "force_remove_permission_policies", force_remove_permission_policies)
+            _setter("force_remove_permission_policies", force_remove_permission_policies)
         if permission_policies is not None:
-            pulumi.set(__self__, "permission_policies", permission_policies)
+            _setter("permission_policies", permission_policies)
         if relay_state is not None:
-            pulumi.set(__self__, "relay_state", relay_state)
+            _setter("relay_state", relay_state)
         if session_duration is not None:
-            pulumi.set(__self__, "session_duration", session_duration)
+            _setter("session_duration", session_duration)
 
     @property
     @pulumi.getter(name="accessConfigurationName")
@@ -159,22 +198,61 @@ class _AccessConfigurationState:
         :param pulumi.Input[str] relay_state: The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
         :param pulumi.Input[int] session_duration: The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
         """
+        _AccessConfigurationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_configuration_id=access_configuration_id,
+            access_configuration_name=access_configuration_name,
+            description=description,
+            directory_id=directory_id,
+            force_remove_permission_policies=force_remove_permission_policies,
+            permission_policies=permission_policies,
+            relay_state=relay_state,
+            session_duration=session_duration,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_configuration_id: Optional[pulumi.Input[str]] = None,
+             access_configuration_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             directory_id: Optional[pulumi.Input[str]] = None,
+             force_remove_permission_policies: Optional[pulumi.Input[bool]] = None,
+             permission_policies: Optional[pulumi.Input[Sequence[pulumi.Input['AccessConfigurationPermissionPolicyArgs']]]] = None,
+             relay_state: Optional[pulumi.Input[str]] = None,
+             session_duration: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_configuration_id is None and 'accessConfigurationId' in kwargs:
+            access_configuration_id = kwargs['accessConfigurationId']
+        if access_configuration_name is None and 'accessConfigurationName' in kwargs:
+            access_configuration_name = kwargs['accessConfigurationName']
+        if directory_id is None and 'directoryId' in kwargs:
+            directory_id = kwargs['directoryId']
+        if force_remove_permission_policies is None and 'forceRemovePermissionPolicies' in kwargs:
+            force_remove_permission_policies = kwargs['forceRemovePermissionPolicies']
+        if permission_policies is None and 'permissionPolicies' in kwargs:
+            permission_policies = kwargs['permissionPolicies']
+        if relay_state is None and 'relayState' in kwargs:
+            relay_state = kwargs['relayState']
+        if session_duration is None and 'sessionDuration' in kwargs:
+            session_duration = kwargs['sessionDuration']
+
         if access_configuration_id is not None:
-            pulumi.set(__self__, "access_configuration_id", access_configuration_id)
+            _setter("access_configuration_id", access_configuration_id)
         if access_configuration_name is not None:
-            pulumi.set(__self__, "access_configuration_name", access_configuration_name)
+            _setter("access_configuration_name", access_configuration_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if directory_id is not None:
-            pulumi.set(__self__, "directory_id", directory_id)
+            _setter("directory_id", directory_id)
         if force_remove_permission_policies is not None:
-            pulumi.set(__self__, "force_remove_permission_policies", force_remove_permission_policies)
+            _setter("force_remove_permission_policies", force_remove_permission_policies)
         if permission_policies is not None:
-            pulumi.set(__self__, "permission_policies", permission_policies)
+            _setter("permission_policies", permission_policies)
         if relay_state is not None:
-            pulumi.set(__self__, "relay_state", relay_state)
+            _setter("relay_state", relay_state)
         if session_duration is not None:
-            pulumi.set(__self__, "session_duration", session_duration)
+            _setter("session_duration", session_duration)
 
     @property
     @pulumi.getter(name="accessConfigurationId")
@@ -350,6 +428,10 @@ class AccessConfiguration(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AccessConfigurationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

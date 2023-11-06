@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RegistryEnterpriseInstanceArgs', 'RegistryEnterpriseInstance']
@@ -37,24 +37,73 @@ class RegistryEnterpriseInstanceArgs:
         :param pulumi.Input[int] renew_period: Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
         :param pulumi.Input[str] renewal_status: Renewal status of Container Registry Enterprise Edition instance. Valid values: `AutoRenewal`, `ManualRenewal`.
         """
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "instance_type", instance_type)
+        RegistryEnterpriseInstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_name=instance_name,
+            instance_type=instance_type,
+            custom_oss_bucket=custom_oss_bucket,
+            kms_encrypted_password=kms_encrypted_password,
+            kms_encryption_context=kms_encryption_context,
+            password=password,
+            payment_type=payment_type,
+            period=period,
+            renew_period=renew_period,
+            renewal_status=renewal_status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_name: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             custom_oss_bucket: Optional[pulumi.Input[str]] = None,
+             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
+             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             renew_period: Optional[pulumi.Input[int]] = None,
+             renewal_status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if instance_type is None and 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if custom_oss_bucket is None and 'customOssBucket' in kwargs:
+            custom_oss_bucket = kwargs['customOssBucket']
+        if kms_encrypted_password is None and 'kmsEncryptedPassword' in kwargs:
+            kms_encrypted_password = kwargs['kmsEncryptedPassword']
+        if kms_encryption_context is None and 'kmsEncryptionContext' in kwargs:
+            kms_encryption_context = kwargs['kmsEncryptionContext']
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if renew_period is None and 'renewPeriod' in kwargs:
+            renew_period = kwargs['renewPeriod']
+        if renewal_status is None and 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+
+        _setter("instance_name", instance_name)
+        _setter("instance_type", instance_type)
         if custom_oss_bucket is not None:
-            pulumi.set(__self__, "custom_oss_bucket", custom_oss_bucket)
+            _setter("custom_oss_bucket", custom_oss_bucket)
         if kms_encrypted_password is not None:
-            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
+            _setter("kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
-            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+            _setter("kms_encryption_context", kms_encryption_context)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if renew_period is not None:
-            pulumi.set(__self__, "renew_period", renew_period)
+            _setter("renew_period", renew_period)
         if renewal_status is not None:
-            pulumi.set(__self__, "renewal_status", renewal_status)
+            _setter("renewal_status", renewal_status)
 
     @property
     @pulumi.getter(name="instanceName")
@@ -209,32 +258,87 @@ class _RegistryEnterpriseInstanceState:
         :param pulumi.Input[str] renewal_status: Renewal status of Container Registry Enterprise Edition instance. Valid values: `AutoRenewal`, `ManualRenewal`.
         :param pulumi.Input[str] status: Status of Container Registry Enterprise Edition instance.
         """
+        _RegistryEnterpriseInstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created_time=created_time,
+            custom_oss_bucket=custom_oss_bucket,
+            end_time=end_time,
+            instance_name=instance_name,
+            instance_type=instance_type,
+            kms_encrypted_password=kms_encrypted_password,
+            kms_encryption_context=kms_encryption_context,
+            password=password,
+            payment_type=payment_type,
+            period=period,
+            renew_period=renew_period,
+            renewal_status=renewal_status,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created_time: Optional[pulumi.Input[str]] = None,
+             custom_oss_bucket: Optional[pulumi.Input[str]] = None,
+             end_time: Optional[pulumi.Input[str]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
+             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             renew_period: Optional[pulumi.Input[int]] = None,
+             renewal_status: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if created_time is None and 'createdTime' in kwargs:
+            created_time = kwargs['createdTime']
+        if custom_oss_bucket is None and 'customOssBucket' in kwargs:
+            custom_oss_bucket = kwargs['customOssBucket']
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if instance_type is None and 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if kms_encrypted_password is None and 'kmsEncryptedPassword' in kwargs:
+            kms_encrypted_password = kwargs['kmsEncryptedPassword']
+        if kms_encryption_context is None and 'kmsEncryptionContext' in kwargs:
+            kms_encryption_context = kwargs['kmsEncryptionContext']
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if renew_period is None and 'renewPeriod' in kwargs:
+            renew_period = kwargs['renewPeriod']
+        if renewal_status is None and 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+
         if created_time is not None:
-            pulumi.set(__self__, "created_time", created_time)
+            _setter("created_time", created_time)
         if custom_oss_bucket is not None:
-            pulumi.set(__self__, "custom_oss_bucket", custom_oss_bucket)
+            _setter("custom_oss_bucket", custom_oss_bucket)
         if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
+            _setter("end_time", end_time)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if kms_encrypted_password is not None:
-            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
+            _setter("kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
-            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+            _setter("kms_encryption_context", kms_encryption_context)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if renew_period is not None:
-            pulumi.set(__self__, "renew_period", renew_period)
+            _setter("renew_period", renew_period)
         if renewal_status is not None:
-            pulumi.set(__self__, "renewal_status", renewal_status)
+            _setter("renewal_status", renewal_status)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="createdTime")
@@ -456,6 +560,10 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RegistryEnterpriseInstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,18 +33,57 @@ class FunctionAsyncInvokeConfigArgs:
         :param pulumi.Input[str] qualifier: Function Compute Function published version, `LATEST`, or Function Compute Alias name. The default value is `LATEST`.
         :param pulumi.Input[bool] stateful_invocation: Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
         """
-        pulumi.set(__self__, "function_name", function_name)
-        pulumi.set(__self__, "service_name", service_name)
+        FunctionAsyncInvokeConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            function_name=function_name,
+            service_name=service_name,
+            destination_config=destination_config,
+            maximum_event_age_in_seconds=maximum_event_age_in_seconds,
+            maximum_retry_attempts=maximum_retry_attempts,
+            qualifier=qualifier,
+            stateful_invocation=stateful_invocation,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             function_name: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             destination_config: Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigArgs']] = None,
+             maximum_event_age_in_seconds: Optional[pulumi.Input[int]] = None,
+             maximum_retry_attempts: Optional[pulumi.Input[int]] = None,
+             qualifier: Optional[pulumi.Input[str]] = None,
+             stateful_invocation: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if function_name is None and 'functionName' in kwargs:
+            function_name = kwargs['functionName']
+        if function_name is None:
+            raise TypeError("Missing 'function_name' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if destination_config is None and 'destinationConfig' in kwargs:
+            destination_config = kwargs['destinationConfig']
+        if maximum_event_age_in_seconds is None and 'maximumEventAgeInSeconds' in kwargs:
+            maximum_event_age_in_seconds = kwargs['maximumEventAgeInSeconds']
+        if maximum_retry_attempts is None and 'maximumRetryAttempts' in kwargs:
+            maximum_retry_attempts = kwargs['maximumRetryAttempts']
+        if stateful_invocation is None and 'statefulInvocation' in kwargs:
+            stateful_invocation = kwargs['statefulInvocation']
+
+        _setter("function_name", function_name)
+        _setter("service_name", service_name)
         if destination_config is not None:
-            pulumi.set(__self__, "destination_config", destination_config)
+            _setter("destination_config", destination_config)
         if maximum_event_age_in_seconds is not None:
-            pulumi.set(__self__, "maximum_event_age_in_seconds", maximum_event_age_in_seconds)
+            _setter("maximum_event_age_in_seconds", maximum_event_age_in_seconds)
         if maximum_retry_attempts is not None:
-            pulumi.set(__self__, "maximum_retry_attempts", maximum_retry_attempts)
+            _setter("maximum_retry_attempts", maximum_retry_attempts)
         if qualifier is not None:
-            pulumi.set(__self__, "qualifier", qualifier)
+            _setter("qualifier", qualifier)
         if stateful_invocation is not None:
-            pulumi.set(__self__, "stateful_invocation", stateful_invocation)
+            _setter("stateful_invocation", stateful_invocation)
 
     @property
     @pulumi.getter(name="functionName")
@@ -155,24 +194,67 @@ class _FunctionAsyncInvokeConfigState:
         :param pulumi.Input[str] service_name: Name of the Function Compute Function, omitting any version or alias qualifier.
         :param pulumi.Input[bool] stateful_invocation: Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
         """
+        _FunctionAsyncInvokeConfigState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created_time=created_time,
+            destination_config=destination_config,
+            function_name=function_name,
+            last_modified_time=last_modified_time,
+            maximum_event_age_in_seconds=maximum_event_age_in_seconds,
+            maximum_retry_attempts=maximum_retry_attempts,
+            qualifier=qualifier,
+            service_name=service_name,
+            stateful_invocation=stateful_invocation,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created_time: Optional[pulumi.Input[str]] = None,
+             destination_config: Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigArgs']] = None,
+             function_name: Optional[pulumi.Input[str]] = None,
+             last_modified_time: Optional[pulumi.Input[str]] = None,
+             maximum_event_age_in_seconds: Optional[pulumi.Input[int]] = None,
+             maximum_retry_attempts: Optional[pulumi.Input[int]] = None,
+             qualifier: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             stateful_invocation: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if created_time is None and 'createdTime' in kwargs:
+            created_time = kwargs['createdTime']
+        if destination_config is None and 'destinationConfig' in kwargs:
+            destination_config = kwargs['destinationConfig']
+        if function_name is None and 'functionName' in kwargs:
+            function_name = kwargs['functionName']
+        if last_modified_time is None and 'lastModifiedTime' in kwargs:
+            last_modified_time = kwargs['lastModifiedTime']
+        if maximum_event_age_in_seconds is None and 'maximumEventAgeInSeconds' in kwargs:
+            maximum_event_age_in_seconds = kwargs['maximumEventAgeInSeconds']
+        if maximum_retry_attempts is None and 'maximumRetryAttempts' in kwargs:
+            maximum_retry_attempts = kwargs['maximumRetryAttempts']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if stateful_invocation is None and 'statefulInvocation' in kwargs:
+            stateful_invocation = kwargs['statefulInvocation']
+
         if created_time is not None:
-            pulumi.set(__self__, "created_time", created_time)
+            _setter("created_time", created_time)
         if destination_config is not None:
-            pulumi.set(__self__, "destination_config", destination_config)
+            _setter("destination_config", destination_config)
         if function_name is not None:
-            pulumi.set(__self__, "function_name", function_name)
+            _setter("function_name", function_name)
         if last_modified_time is not None:
-            pulumi.set(__self__, "last_modified_time", last_modified_time)
+            _setter("last_modified_time", last_modified_time)
         if maximum_event_age_in_seconds is not None:
-            pulumi.set(__self__, "maximum_event_age_in_seconds", maximum_event_age_in_seconds)
+            _setter("maximum_event_age_in_seconds", maximum_event_age_in_seconds)
         if maximum_retry_attempts is not None:
-            pulumi.set(__self__, "maximum_retry_attempts", maximum_retry_attempts)
+            _setter("maximum_retry_attempts", maximum_retry_attempts)
         if qualifier is not None:
-            pulumi.set(__self__, "qualifier", qualifier)
+            _setter("qualifier", qualifier)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
         if stateful_invocation is not None:
-            pulumi.set(__self__, "stateful_invocation", stateful_invocation)
+            _setter("stateful_invocation", stateful_invocation)
 
     @property
     @pulumi.getter(name="createdTime")
@@ -532,6 +614,10 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FunctionAsyncInvokeConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -553,6 +639,11 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FunctionAsyncInvokeConfigArgs.__new__(FunctionAsyncInvokeConfigArgs)
 
+            if destination_config is not None and not isinstance(destination_config, FunctionAsyncInvokeConfigDestinationConfigArgs):
+                destination_config = destination_config or {}
+                def _setter(key, value):
+                    destination_config[key] = value
+                FunctionAsyncInvokeConfigDestinationConfigArgs._configure(_setter, **destination_config)
             __props__.__dict__["destination_config"] = destination_config
             if function_name is None and not opts.urn:
                 raise TypeError("Missing required property 'function_name'")

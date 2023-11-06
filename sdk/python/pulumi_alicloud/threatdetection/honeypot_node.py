@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['HoneypotNodeArgs', 'HoneypotNode']
@@ -25,12 +25,41 @@ class HoneypotNodeArgs:
         :param pulumi.Input[bool] allow_honeypot_access_internet: Whether to allow honeypot access to the external network. Value:-**true**: Allow-**false**: Disabled
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_probe_ip_lists: Release the collection of network segments.
         """
-        pulumi.set(__self__, "available_probe_num", available_probe_num)
-        pulumi.set(__self__, "node_name", node_name)
+        HoneypotNodeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            available_probe_num=available_probe_num,
+            node_name=node_name,
+            allow_honeypot_access_internet=allow_honeypot_access_internet,
+            security_group_probe_ip_lists=security_group_probe_ip_lists,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             available_probe_num: Optional[pulumi.Input[int]] = None,
+             node_name: Optional[pulumi.Input[str]] = None,
+             allow_honeypot_access_internet: Optional[pulumi.Input[bool]] = None,
+             security_group_probe_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if available_probe_num is None and 'availableProbeNum' in kwargs:
+            available_probe_num = kwargs['availableProbeNum']
+        if available_probe_num is None:
+            raise TypeError("Missing 'available_probe_num' argument")
+        if node_name is None and 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+        if node_name is None:
+            raise TypeError("Missing 'node_name' argument")
+        if allow_honeypot_access_internet is None and 'allowHoneypotAccessInternet' in kwargs:
+            allow_honeypot_access_internet = kwargs['allowHoneypotAccessInternet']
+        if security_group_probe_ip_lists is None and 'securityGroupProbeIpLists' in kwargs:
+            security_group_probe_ip_lists = kwargs['securityGroupProbeIpLists']
+
+        _setter("available_probe_num", available_probe_num)
+        _setter("node_name", node_name)
         if allow_honeypot_access_internet is not None:
-            pulumi.set(__self__, "allow_honeypot_access_internet", allow_honeypot_access_internet)
+            _setter("allow_honeypot_access_internet", allow_honeypot_access_internet)
         if security_group_probe_ip_lists is not None:
-            pulumi.set(__self__, "security_group_probe_ip_lists", security_group_probe_ip_lists)
+            _setter("security_group_probe_ip_lists", security_group_probe_ip_lists)
 
     @property
     @pulumi.getter(name="availableProbeNum")
@@ -99,18 +128,49 @@ class _HoneypotNodeState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_probe_ip_lists: Release the collection of network segments.
         :param pulumi.Input[int] status: The status of the resource
         """
+        _HoneypotNodeState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_honeypot_access_internet=allow_honeypot_access_internet,
+            available_probe_num=available_probe_num,
+            create_time=create_time,
+            node_name=node_name,
+            security_group_probe_ip_lists=security_group_probe_ip_lists,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_honeypot_access_internet: Optional[pulumi.Input[bool]] = None,
+             available_probe_num: Optional[pulumi.Input[int]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             node_name: Optional[pulumi.Input[str]] = None,
+             security_group_probe_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             status: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_honeypot_access_internet is None and 'allowHoneypotAccessInternet' in kwargs:
+            allow_honeypot_access_internet = kwargs['allowHoneypotAccessInternet']
+        if available_probe_num is None and 'availableProbeNum' in kwargs:
+            available_probe_num = kwargs['availableProbeNum']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if node_name is None and 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+        if security_group_probe_ip_lists is None and 'securityGroupProbeIpLists' in kwargs:
+            security_group_probe_ip_lists = kwargs['securityGroupProbeIpLists']
+
         if allow_honeypot_access_internet is not None:
-            pulumi.set(__self__, "allow_honeypot_access_internet", allow_honeypot_access_internet)
+            _setter("allow_honeypot_access_internet", allow_honeypot_access_internet)
         if available_probe_num is not None:
-            pulumi.set(__self__, "available_probe_num", available_probe_num)
+            _setter("available_probe_num", available_probe_num)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if node_name is not None:
-            pulumi.set(__self__, "node_name", node_name)
+            _setter("node_name", node_name)
         if security_group_probe_ip_lists is not None:
-            pulumi.set(__self__, "security_group_probe_ip_lists", security_group_probe_ip_lists)
+            _setter("security_group_probe_ip_lists", security_group_probe_ip_lists)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="allowHoneypotAccessInternet")
@@ -284,6 +344,10 @@ class HoneypotNode(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            HoneypotNodeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

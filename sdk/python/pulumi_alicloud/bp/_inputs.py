@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -24,12 +24,31 @@ class StudioApplicationInstanceArgs:
         :param pulumi.Input[str] node_name: The name of the instance.
         :param pulumi.Input[str] node_type: The type of the instance.
         """
+        StudioApplicationInstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            node_name=node_name,
+            node_type=node_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[pulumi.Input[str]] = None,
+             node_name: Optional[pulumi.Input[str]] = None,
+             node_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_name is None and 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+        if node_type is None and 'nodeType' in kwargs:
+            node_type = kwargs['nodeType']
+
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if node_name is not None:
-            pulumi.set(__self__, "node_name", node_name)
+            _setter("node_name", node_name)
         if node_type is not None:
-            pulumi.set(__self__, "node_type", node_type)
+            _setter("node_type", node_type)
 
     @property
     @pulumi.getter

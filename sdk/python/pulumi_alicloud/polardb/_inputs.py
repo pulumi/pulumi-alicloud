@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -28,12 +28,33 @@ class ClusterDbClusterIpArrayArgs:
                **NOTE:** There does not recommend setting modify_mode to `Append` or `Delete` and it will bring a potential diff error.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         """
+        ClusterDbClusterIpArrayArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_cluster_ip_array_name=db_cluster_ip_array_name,
+            modify_mode=modify_mode,
+            security_ips=security_ips,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_cluster_ip_array_name: Optional[pulumi.Input[str]] = None,
+             modify_mode: Optional[pulumi.Input[str]] = None,
+             security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if db_cluster_ip_array_name is None and 'dbClusterIpArrayName' in kwargs:
+            db_cluster_ip_array_name = kwargs['dbClusterIpArrayName']
+        if modify_mode is None and 'modifyMode' in kwargs:
+            modify_mode = kwargs['modifyMode']
+        if security_ips is None and 'securityIps' in kwargs:
+            security_ips = kwargs['securityIps']
+
         if db_cluster_ip_array_name is not None:
-            pulumi.set(__self__, "db_cluster_ip_array_name", db_cluster_ip_array_name)
+            _setter("db_cluster_ip_array_name", db_cluster_ip_array_name)
         if modify_mode is not None:
-            pulumi.set(__self__, "modify_mode", modify_mode)
+            _setter("modify_mode", modify_mode)
         if security_ips is not None:
-            pulumi.set(__self__, "security_ips", security_ips)
+            _setter("security_ips", security_ips)
 
     @property
     @pulumi.getter(name="dbClusterIpArrayName")
@@ -83,8 +104,25 @@ class ClusterParameterArgs:
         :param pulumi.Input[str] name: Kernel parameter name.
         :param pulumi.Input[str] value: Kernel parameter value.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        ClusterParameterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
+        _setter("name", name)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -120,8 +158,29 @@ class ParameterGroupParameterArgs:
         :param pulumi.Input[str] param_name: The name of a parameter in the parameter template.
         :param pulumi.Input[str] param_value: The value of a parameter in the parameter template.
         """
-        pulumi.set(__self__, "param_name", param_name)
-        pulumi.set(__self__, "param_value", param_value)
+        ParameterGroupParameterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            param_name=param_name,
+            param_value=param_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             param_name: Optional[pulumi.Input[str]] = None,
+             param_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if param_name is None and 'paramName' in kwargs:
+            param_name = kwargs['paramName']
+        if param_name is None:
+            raise TypeError("Missing 'param_name' argument")
+        if param_value is None and 'paramValue' in kwargs:
+            param_value = kwargs['paramValue']
+        if param_value is None:
+            raise TypeError("Missing 'param_value' argument")
+
+        _setter("param_name", param_name)
+        _setter("param_value", param_value)
 
     @property
     @pulumi.getter(name="paramName")

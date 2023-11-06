@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['GatewayLoggingArgs', 'GatewayLogging']
@@ -25,11 +25,40 @@ class GatewayLoggingArgs:
         :param pulumi.Input[str] sls_project: The name of the Project.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Enabled`, `Disable`.
         """
-        pulumi.set(__self__, "gateway_id", gateway_id)
-        pulumi.set(__self__, "sls_logstore", sls_logstore)
-        pulumi.set(__self__, "sls_project", sls_project)
+        GatewayLoggingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            gateway_id=gateway_id,
+            sls_logstore=sls_logstore,
+            sls_project=sls_project,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             gateway_id: Optional[pulumi.Input[str]] = None,
+             sls_logstore: Optional[pulumi.Input[str]] = None,
+             sls_project: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gateway_id is None and 'gatewayId' in kwargs:
+            gateway_id = kwargs['gatewayId']
+        if gateway_id is None:
+            raise TypeError("Missing 'gateway_id' argument")
+        if sls_logstore is None and 'slsLogstore' in kwargs:
+            sls_logstore = kwargs['slsLogstore']
+        if sls_logstore is None:
+            raise TypeError("Missing 'sls_logstore' argument")
+        if sls_project is None and 'slsProject' in kwargs:
+            sls_project = kwargs['slsProject']
+        if sls_project is None:
+            raise TypeError("Missing 'sls_project' argument")
+
+        _setter("gateway_id", gateway_id)
+        _setter("sls_logstore", sls_logstore)
+        _setter("sls_project", sls_project)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="gatewayId")
@@ -94,14 +123,37 @@ class _GatewayLoggingState:
         :param pulumi.Input[str] sls_project: The name of the Project.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Enabled`, `Disable`.
         """
+        _GatewayLoggingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            gateway_id=gateway_id,
+            sls_logstore=sls_logstore,
+            sls_project=sls_project,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             gateway_id: Optional[pulumi.Input[str]] = None,
+             sls_logstore: Optional[pulumi.Input[str]] = None,
+             sls_project: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if gateway_id is None and 'gatewayId' in kwargs:
+            gateway_id = kwargs['gatewayId']
+        if sls_logstore is None and 'slsLogstore' in kwargs:
+            sls_logstore = kwargs['slsLogstore']
+        if sls_project is None and 'slsProject' in kwargs:
+            sls_project = kwargs['slsProject']
+
         if gateway_id is not None:
-            pulumi.set(__self__, "gateway_id", gateway_id)
+            _setter("gateway_id", gateway_id)
         if sls_logstore is not None:
-            pulumi.set(__self__, "sls_logstore", sls_logstore)
+            _setter("sls_logstore", sls_logstore)
         if sls_project is not None:
-            pulumi.set(__self__, "sls_project", sls_project)
+            _setter("sls_project", sls_project)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="gatewayId")
@@ -215,6 +267,10 @@ class GatewayLogging(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GatewayLoggingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

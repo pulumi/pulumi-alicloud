@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -40,8 +40,21 @@ class AliasRoutingConfigArgs:
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[float]]] additional_version_weights: A map that defines the proportion of events that should be sent to different versions of a Function Compute service.
         """
+        AliasRoutingConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            additional_version_weights=additional_version_weights,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             additional_version_weights: Optional[pulumi.Input[Mapping[str, pulumi.Input[float]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if additional_version_weights is None and 'additionalVersionWeights' in kwargs:
+            additional_version_weights = kwargs['additionalVersionWeights']
+
         if additional_version_weights is not None:
-            pulumi.set(__self__, "additional_version_weights", additional_version_weights)
+            _setter("additional_version_weights", additional_version_weights)
 
     @property
     @pulumi.getter(name="additionalVersionWeights")
@@ -67,9 +80,34 @@ class CustomDomainCertConfigArgs:
         :param pulumi.Input[str] certificate: Certificate data of the HTTPS certificates, follow the 'pem' format.
         :param pulumi.Input[str] private_key: Private key of the HTTPS certificates, follow the 'pem' format.
         """
-        pulumi.set(__self__, "cert_name", cert_name)
-        pulumi.set(__self__, "certificate", certificate)
-        pulumi.set(__self__, "private_key", private_key)
+        CustomDomainCertConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cert_name=cert_name,
+            certificate=certificate,
+            private_key=private_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cert_name: Optional[pulumi.Input[str]] = None,
+             certificate: Optional[pulumi.Input[str]] = None,
+             private_key: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cert_name is None and 'certName' in kwargs:
+            cert_name = kwargs['certName']
+        if cert_name is None:
+            raise TypeError("Missing 'cert_name' argument")
+        if certificate is None:
+            raise TypeError("Missing 'certificate' argument")
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if private_key is None:
+            raise TypeError("Missing 'private_key' argument")
+
+        _setter("cert_name", cert_name)
+        _setter("certificate", certificate)
+        _setter("private_key", private_key)
 
     @property
     @pulumi.getter(name="certName")
@@ -123,13 +161,42 @@ class CustomDomainRouteConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] methods: The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
         :param pulumi.Input[str] qualifier: The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about version and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
         """
-        pulumi.set(__self__, "function_name", function_name)
-        pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "service_name", service_name)
+        CustomDomainRouteConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            function_name=function_name,
+            path=path,
+            service_name=service_name,
+            methods=methods,
+            qualifier=qualifier,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             function_name: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             qualifier: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if function_name is None and 'functionName' in kwargs:
+            function_name = kwargs['functionName']
+        if function_name is None:
+            raise TypeError("Missing 'function_name' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+
+        _setter("function_name", function_name)
+        _setter("path", path)
+        _setter("service_name", service_name)
         if methods is not None:
-            pulumi.set(__self__, "methods", methods)
+            _setter("methods", methods)
         if qualifier is not None:
-            pulumi.set(__self__, "qualifier", qualifier)
+            _setter("qualifier", qualifier)
 
     @property
     @pulumi.getter(name="functionName")
@@ -201,10 +268,27 @@ class FunctionAsyncInvokeConfigDestinationConfigArgs:
         :param pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs'] on_failure: Configuration block with destination configuration for failed asynchronous invocations. See `on_failure` below.
         :param pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs'] on_success: Configuration block with destination configuration for successful asynchronous invocations. See `on_success` below.
         """
+        FunctionAsyncInvokeConfigDestinationConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            on_failure=on_failure,
+            on_success=on_success,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             on_failure: Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs']] = None,
+             on_success: Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if on_failure is None and 'onFailure' in kwargs:
+            on_failure = kwargs['onFailure']
+        if on_success is None and 'onSuccess' in kwargs:
+            on_success = kwargs['onSuccess']
+
         if on_failure is not None:
-            pulumi.set(__self__, "on_failure", on_failure)
+            _setter("on_failure", on_failure)
         if on_success is not None:
-            pulumi.set(__self__, "on_success", on_success)
+            _setter("on_success", on_success)
 
     @property
     @pulumi.getter(name="onFailure")
@@ -238,7 +322,20 @@ class FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs:
         """
         :param pulumi.Input[str] destination: Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
         """
-        pulumi.set(__self__, "destination", destination)
+        FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            destination=destination,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             destination: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if destination is None:
+            raise TypeError("Missing 'destination' argument")
+
+        _setter("destination", destination)
 
     @property
     @pulumi.getter
@@ -260,7 +357,20 @@ class FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs:
         """
         :param pulumi.Input[str] destination: Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
         """
-        pulumi.set(__self__, "destination", destination)
+        FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            destination=destination,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             destination: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if destination is None:
+            raise TypeError("Missing 'destination' argument")
+
+        _setter("destination", destination)
 
     @property
     @pulumi.getter
@@ -286,11 +396,28 @@ class FunctionCustomContainerConfigArgs:
         :param pulumi.Input[str] args: The args field specifies the arguments passed to the command.
         :param pulumi.Input[str] command: The entry point of the container, which specifies the actual command run by the container.
         """
-        pulumi.set(__self__, "image", image)
+        FunctionCustomContainerConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            image=image,
+            args=args,
+            command=command,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             image: Optional[pulumi.Input[str]] = None,
+             args: Optional[pulumi.Input[str]] = None,
+             command: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if image is None:
+            raise TypeError("Missing 'image' argument")
+
+        _setter("image", image)
         if args is not None:
-            pulumi.set(__self__, "args", args)
+            _setter("args", args)
         if command is not None:
-            pulumi.set(__self__, "command", command)
+            _setter("command", command)
 
     @property
     @pulumi.getter
@@ -342,12 +469,37 @@ class ServiceLogConfigArgs:
         :param pulumi.Input[bool] enable_instance_metrics: Enable instance level metrics.
         :param pulumi.Input[bool] enable_request_metrics: Enable request level metrics.
         """
-        pulumi.set(__self__, "logstore", logstore)
-        pulumi.set(__self__, "project", project)
+        ServiceLogConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            logstore=logstore,
+            project=project,
+            enable_instance_metrics=enable_instance_metrics,
+            enable_request_metrics=enable_request_metrics,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             logstore: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             enable_instance_metrics: Optional[pulumi.Input[bool]] = None,
+             enable_request_metrics: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if logstore is None:
+            raise TypeError("Missing 'logstore' argument")
+        if project is None:
+            raise TypeError("Missing 'project' argument")
+        if enable_instance_metrics is None and 'enableInstanceMetrics' in kwargs:
+            enable_instance_metrics = kwargs['enableInstanceMetrics']
+        if enable_request_metrics is None and 'enableRequestMetrics' in kwargs:
+            enable_request_metrics = kwargs['enableRequestMetrics']
+
+        _setter("logstore", logstore)
+        _setter("project", project)
         if enable_instance_metrics is not None:
-            pulumi.set(__self__, "enable_instance_metrics", enable_instance_metrics)
+            _setter("enable_instance_metrics", enable_instance_metrics)
         if enable_request_metrics is not None:
-            pulumi.set(__self__, "enable_request_metrics", enable_request_metrics)
+            _setter("enable_request_metrics", enable_request_metrics)
 
     @property
     @pulumi.getter
@@ -409,9 +561,36 @@ class ServiceNasConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ServiceNasConfigMountPointArgs']]] mount_points: Config the NAS mount points.See `mount_points` below.
         :param pulumi.Input[int] user_id: The user id of your NAS file system.
         """
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "mount_points", mount_points)
-        pulumi.set(__self__, "user_id", user_id)
+        ServiceNasConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_id=group_id,
+            mount_points=mount_points,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_id: Optional[pulumi.Input[int]] = None,
+             mount_points: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceNasConfigMountPointArgs']]]] = None,
+             user_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if mount_points is None and 'mountPoints' in kwargs:
+            mount_points = kwargs['mountPoints']
+        if mount_points is None:
+            raise TypeError("Missing 'mount_points' argument")
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
+
+        _setter("group_id", group_id)
+        _setter("mount_points", mount_points)
+        _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="groupId")
@@ -459,8 +638,29 @@ class ServiceNasConfigMountPointArgs:
         :param pulumi.Input[str] mount_dir: The local address where to mount your remote NAS directory.
         :param pulumi.Input[str] server_addr: The address of the remote NAS directory.
         """
-        pulumi.set(__self__, "mount_dir", mount_dir)
-        pulumi.set(__self__, "server_addr", server_addr)
+        ServiceNasConfigMountPointArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            mount_dir=mount_dir,
+            server_addr=server_addr,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             mount_dir: Optional[pulumi.Input[str]] = None,
+             server_addr: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if mount_dir is None and 'mountDir' in kwargs:
+            mount_dir = kwargs['mountDir']
+        if mount_dir is None:
+            raise TypeError("Missing 'mount_dir' argument")
+        if server_addr is None and 'serverAddr' in kwargs:
+            server_addr = kwargs['serverAddr']
+        if server_addr is None:
+            raise TypeError("Missing 'server_addr' argument")
+
+        _setter("mount_dir", mount_dir)
+        _setter("server_addr", server_addr)
 
     @property
     @pulumi.getter(name="mountDir")
@@ -496,8 +696,25 @@ class ServiceTracingConfigArgs:
         :param pulumi.Input[Mapping[str, Any]] params: Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
         :param pulumi.Input[str] type: Tracing protocol type. Currently, only Jaeger is supported.
         """
-        pulumi.set(__self__, "params", params)
-        pulumi.set(__self__, "type", type)
+        ServiceTracingConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            params=params,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             params: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if params is None:
+            raise TypeError("Missing 'params' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
+        _setter("params", params)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -535,10 +752,35 @@ class ServiceVpcConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: A list of vswitch IDs associated with the Function Compute Service.
         :param pulumi.Input[str] vpc_id: A vpc ID associated with the Function Compute Service.
         """
-        pulumi.set(__self__, "security_group_id", security_group_id)
-        pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+        ServiceVpcConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            security_group_id=security_group_id,
+            vswitch_ids=vswitch_ids,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if security_group_id is None and 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if vswitch_ids is None and 'vswitchIds' in kwargs:
+            vswitch_ids = kwargs['vswitchIds']
+        if vswitch_ids is None:
+            raise TypeError("Missing 'vswitch_ids' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
+        _setter("security_group_id", security_group_id)
+        _setter("vswitch_ids", vswitch_ids)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="securityGroupId")
@@ -588,12 +830,33 @@ class V2FunctionCodeArgs:
         :param pulumi.Input[str] oss_object_name: The OSS object name of the function code package.
         :param pulumi.Input[str] zip_file: Upload the base64 encoding of the code zip package directly in the request body.
         """
+        V2FunctionCodeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            oss_bucket_name=oss_bucket_name,
+            oss_object_name=oss_object_name,
+            zip_file=zip_file,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             oss_bucket_name: Optional[pulumi.Input[str]] = None,
+             oss_object_name: Optional[pulumi.Input[str]] = None,
+             zip_file: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if oss_bucket_name is None and 'ossBucketName' in kwargs:
+            oss_bucket_name = kwargs['ossBucketName']
+        if oss_object_name is None and 'ossObjectName' in kwargs:
+            oss_object_name = kwargs['ossObjectName']
+        if zip_file is None and 'zipFile' in kwargs:
+            zip_file = kwargs['zipFile']
+
         if oss_bucket_name is not None:
-            pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
+            _setter("oss_bucket_name", oss_bucket_name)
         if oss_object_name is not None:
-            pulumi.set(__self__, "oss_object_name", oss_object_name)
+            _setter("oss_object_name", oss_object_name)
         if zip_file is not None:
-            pulumi.set(__self__, "zip_file", zip_file)
+            _setter("zip_file", zip_file)
 
     @property
     @pulumi.getter(name="ossBucketName")
@@ -647,16 +910,39 @@ class V2FunctionCustomContainerConfigArgs:
         :param pulumi.Input[str] image: Container Image address. Example value: registry-vpc.cn-hangzhou.aliyuncs.com/fc-demo/helloworld:v1beta1.
         :param pulumi.Input[bool] web_server_mode: Whether the image is run in Web Server mode. The value of true needs to implement the Web Server in the container image to listen to the port and process the request. The value of false needs to actively exit the process after the container runs, and the ExitCode needs to be 0. Default true.
         """
+        V2FunctionCustomContainerConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acceleration_type=acceleration_type,
+            args=args,
+            command=command,
+            image=image,
+            web_server_mode=web_server_mode,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acceleration_type: Optional[pulumi.Input[str]] = None,
+             args: Optional[pulumi.Input[str]] = None,
+             command: Optional[pulumi.Input[str]] = None,
+             image: Optional[pulumi.Input[str]] = None,
+             web_server_mode: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if acceleration_type is None and 'accelerationType' in kwargs:
+            acceleration_type = kwargs['accelerationType']
+        if web_server_mode is None and 'webServerMode' in kwargs:
+            web_server_mode = kwargs['webServerMode']
+
         if acceleration_type is not None:
-            pulumi.set(__self__, "acceleration_type", acceleration_type)
+            _setter("acceleration_type", acceleration_type)
         if args is not None:
-            pulumi.set(__self__, "args", args)
+            _setter("args", args)
         if command is not None:
-            pulumi.set(__self__, "command", command)
+            _setter("command", command)
         if image is not None:
-            pulumi.set(__self__, "image", image)
+            _setter("image", image)
         if web_server_mode is not None:
-            pulumi.set(__self__, "web_server_mode", web_server_mode)
+            _setter("web_server_mode", web_server_mode)
 
     @property
     @pulumi.getter(name="accelerationType")
@@ -730,12 +1016,31 @@ class V2FunctionCustomDnsArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: List of IP addresses of DNS servers.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] searches: List of DNS search domains.
         """
+        V2FunctionCustomDnsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dns_options=dns_options,
+            name_servers=name_servers,
+            searches=searches,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dns_options: Optional[pulumi.Input[Sequence[pulumi.Input['V2FunctionCustomDnsDnsOptionArgs']]]] = None,
+             name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             searches: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dns_options is None and 'dnsOptions' in kwargs:
+            dns_options = kwargs['dnsOptions']
+        if name_servers is None and 'nameServers' in kwargs:
+            name_servers = kwargs['nameServers']
+
         if dns_options is not None:
-            pulumi.set(__self__, "dns_options", dns_options)
+            _setter("dns_options", dns_options)
         if name_servers is not None:
-            pulumi.set(__self__, "name_servers", name_servers)
+            _setter("name_servers", name_servers)
         if searches is not None:
-            pulumi.set(__self__, "searches", searches)
+            _setter("searches", searches)
 
     @property
     @pulumi.getter(name="dnsOptions")
@@ -783,10 +1088,23 @@ class V2FunctionCustomDnsDnsOptionArgs:
         :param pulumi.Input[str] name: DNS option name.
         :param pulumi.Input[str] value: DNS option value.
         """
+        V2FunctionCustomDnsDnsOptionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -830,18 +1148,51 @@ class V2FunctionCustomHealthCheckConfigArgs:
         :param pulumi.Input[int] success_threshold: The threshold for the number of successful health checks. After the health check is reached, the system considers the check successful.
         :param pulumi.Input[int] timeout_seconds: Health check timeout.
         """
+        V2FunctionCustomHealthCheckConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            failure_threshold=failure_threshold,
+            http_get_url=http_get_url,
+            initial_delay_seconds=initial_delay_seconds,
+            period_seconds=period_seconds,
+            success_threshold=success_threshold,
+            timeout_seconds=timeout_seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             failure_threshold: Optional[pulumi.Input[int]] = None,
+             http_get_url: Optional[pulumi.Input[str]] = None,
+             initial_delay_seconds: Optional[pulumi.Input[int]] = None,
+             period_seconds: Optional[pulumi.Input[int]] = None,
+             success_threshold: Optional[pulumi.Input[int]] = None,
+             timeout_seconds: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if failure_threshold is None and 'failureThreshold' in kwargs:
+            failure_threshold = kwargs['failureThreshold']
+        if http_get_url is None and 'httpGetUrl' in kwargs:
+            http_get_url = kwargs['httpGetUrl']
+        if initial_delay_seconds is None and 'initialDelaySeconds' in kwargs:
+            initial_delay_seconds = kwargs['initialDelaySeconds']
+        if period_seconds is None and 'periodSeconds' in kwargs:
+            period_seconds = kwargs['periodSeconds']
+        if success_threshold is None and 'successThreshold' in kwargs:
+            success_threshold = kwargs['successThreshold']
+        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
+            timeout_seconds = kwargs['timeoutSeconds']
+
         if failure_threshold is not None:
-            pulumi.set(__self__, "failure_threshold", failure_threshold)
+            _setter("failure_threshold", failure_threshold)
         if http_get_url is not None:
-            pulumi.set(__self__, "http_get_url", http_get_url)
+            _setter("http_get_url", http_get_url)
         if initial_delay_seconds is not None:
-            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+            _setter("initial_delay_seconds", initial_delay_seconds)
         if period_seconds is not None:
-            pulumi.set(__self__, "period_seconds", period_seconds)
+            _setter("period_seconds", period_seconds)
         if success_threshold is not None:
-            pulumi.set(__self__, "success_threshold", success_threshold)
+            _setter("success_threshold", success_threshold)
         if timeout_seconds is not None:
-            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+            _setter("timeout_seconds", timeout_seconds)
 
     @property
     @pulumi.getter(name="failureThreshold")
@@ -925,10 +1276,23 @@ class V2FunctionCustomRuntimeConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Parameters received by the start entry command.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: List of Custom entry commands started by Custom Runtime. When there are multiple commands in the list, they are spliced in sequence.
         """
+        V2FunctionCustomRuntimeConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            args=args,
+            commands=commands,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if args is not None:
-            pulumi.set(__self__, "args", args)
+            _setter("args", args)
         if commands is not None:
-            pulumi.set(__self__, "commands", commands)
+            _setter("commands", commands)
 
     @property
     @pulumi.getter
@@ -964,10 +1328,27 @@ class V2FunctionInstanceLifecycleConfigArgs:
         :param pulumi.Input['V2FunctionInstanceLifecycleConfigPreFreezeArgs'] pre_freeze: PreFreeze function configuration. See `pre_freeze` below.
         :param pulumi.Input['V2FunctionInstanceLifecycleConfigPreStopArgs'] pre_stop: PreStop function configuration. See `pre_stop` below.
         """
+        V2FunctionInstanceLifecycleConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pre_freeze=pre_freeze,
+            pre_stop=pre_stop,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pre_freeze: Optional[pulumi.Input['V2FunctionInstanceLifecycleConfigPreFreezeArgs']] = None,
+             pre_stop: Optional[pulumi.Input['V2FunctionInstanceLifecycleConfigPreStopArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pre_freeze is None and 'preFreeze' in kwargs:
+            pre_freeze = kwargs['preFreeze']
+        if pre_stop is None and 'preStop' in kwargs:
+            pre_stop = kwargs['preStop']
+
         if pre_freeze is not None:
-            pulumi.set(__self__, "pre_freeze", pre_freeze)
+            _setter("pre_freeze", pre_freeze)
         if pre_stop is not None:
-            pulumi.set(__self__, "pre_stop", pre_stop)
+            _setter("pre_stop", pre_stop)
 
     @property
     @pulumi.getter(name="preFreeze")
@@ -1003,10 +1384,23 @@ class V2FunctionInstanceLifecycleConfigPreFreezeArgs:
         :param pulumi.Input[str] handler: entry point of function.
         :param pulumi.Input[int] timeout: max running time of function.
         """
+        V2FunctionInstanceLifecycleConfigPreFreezeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            handler=handler,
+            timeout=timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             handler: Optional[pulumi.Input[str]] = None,
+             timeout: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if handler is not None:
-            pulumi.set(__self__, "handler", handler)
+            _setter("handler", handler)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
 
     @property
     @pulumi.getter
@@ -1042,10 +1436,23 @@ class V2FunctionInstanceLifecycleConfigPreStopArgs:
         :param pulumi.Input[str] handler: entry point of function.
         :param pulumi.Input[int] timeout: max running time of function.
         """
+        V2FunctionInstanceLifecycleConfigPreStopArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            handler=handler,
+            timeout=timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             handler: Optional[pulumi.Input[str]] = None,
+             timeout: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if handler is not None:
-            pulumi.set(__self__, "handler", handler)
+            _setter("handler", handler)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
 
     @property
     @pulumi.getter

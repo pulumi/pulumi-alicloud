@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AnycastEipAddressArgs', 'AnycastEipAddress']
@@ -33,21 +33,58 @@ class AnycastEipAddressArgs:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: List of resource-bound tags.
         """
-        pulumi.set(__self__, "service_location", service_location)
+        AnycastEipAddressArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            service_location=service_location,
+            anycast_eip_address_name=anycast_eip_address_name,
+            bandwidth=bandwidth,
+            description=description,
+            internet_charge_type=internet_charge_type,
+            payment_type=payment_type,
+            resource_group_id=resource_group_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             service_location: Optional[pulumi.Input[str]] = None,
+             anycast_eip_address_name: Optional[pulumi.Input[str]] = None,
+             bandwidth: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             internet_charge_type: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service_location is None and 'serviceLocation' in kwargs:
+            service_location = kwargs['serviceLocation']
+        if service_location is None:
+            raise TypeError("Missing 'service_location' argument")
+        if anycast_eip_address_name is None and 'anycastEipAddressName' in kwargs:
+            anycast_eip_address_name = kwargs['anycastEipAddressName']
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
+        _setter("service_location", service_location)
         if anycast_eip_address_name is not None:
-            pulumi.set(__self__, "anycast_eip_address_name", anycast_eip_address_name)
+            _setter("anycast_eip_address_name", anycast_eip_address_name)
         if bandwidth is not None:
-            pulumi.set(__self__, "bandwidth", bandwidth)
+            _setter("bandwidth", bandwidth)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if internet_charge_type is not None:
-            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+            _setter("internet_charge_type", internet_charge_type)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="serviceLocation")
@@ -172,26 +209,67 @@ class _AnycastEipAddressState:
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, Any]] tags: List of resource-bound tags.
         """
+        _AnycastEipAddressState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            anycast_eip_address_name=anycast_eip_address_name,
+            bandwidth=bandwidth,
+            create_time=create_time,
+            description=description,
+            internet_charge_type=internet_charge_type,
+            payment_type=payment_type,
+            resource_group_id=resource_group_id,
+            service_location=service_location,
+            status=status,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             anycast_eip_address_name: Optional[pulumi.Input[str]] = None,
+             bandwidth: Optional[pulumi.Input[int]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             internet_charge_type: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             service_location: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if anycast_eip_address_name is None and 'anycastEipAddressName' in kwargs:
+            anycast_eip_address_name = kwargs['anycastEipAddressName']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if service_location is None and 'serviceLocation' in kwargs:
+            service_location = kwargs['serviceLocation']
+
         if anycast_eip_address_name is not None:
-            pulumi.set(__self__, "anycast_eip_address_name", anycast_eip_address_name)
+            _setter("anycast_eip_address_name", anycast_eip_address_name)
         if bandwidth is not None:
-            pulumi.set(__self__, "bandwidth", bandwidth)
+            _setter("bandwidth", bandwidth)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if internet_charge_type is not None:
-            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+            _setter("internet_charge_type", internet_charge_type)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if service_location is not None:
-            pulumi.set(__self__, "service_location", service_location)
+            _setter("service_location", service_location)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="anycastEipAddressName")
@@ -427,6 +505,10 @@ class AnycastEipAddress(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AnycastEipAddressArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

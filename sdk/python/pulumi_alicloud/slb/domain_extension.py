@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DomainExtensionArgs', 'DomainExtension']
@@ -27,12 +27,47 @@ class DomainExtensionArgs:
         :param pulumi.Input[str] server_certificate_id: The ID of the certificate used by the domain name.
         :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         """
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "frontend_port", frontend_port)
-        pulumi.set(__self__, "load_balancer_id", load_balancer_id)
-        pulumi.set(__self__, "server_certificate_id", server_certificate_id)
+        DomainExtensionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain=domain,
+            frontend_port=frontend_port,
+            load_balancer_id=load_balancer_id,
+            server_certificate_id=server_certificate_id,
+            delete_protection_validation=delete_protection_validation,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain: Optional[pulumi.Input[str]] = None,
+             frontend_port: Optional[pulumi.Input[int]] = None,
+             load_balancer_id: Optional[pulumi.Input[str]] = None,
+             server_certificate_id: Optional[pulumi.Input[str]] = None,
+             delete_protection_validation: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if frontend_port is None and 'frontendPort' in kwargs:
+            frontend_port = kwargs['frontendPort']
+        if frontend_port is None:
+            raise TypeError("Missing 'frontend_port' argument")
+        if load_balancer_id is None and 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if load_balancer_id is None:
+            raise TypeError("Missing 'load_balancer_id' argument")
+        if server_certificate_id is None and 'serverCertificateId' in kwargs:
+            server_certificate_id = kwargs['serverCertificateId']
+        if server_certificate_id is None:
+            raise TypeError("Missing 'server_certificate_id' argument")
+        if delete_protection_validation is None and 'deleteProtectionValidation' in kwargs:
+            delete_protection_validation = kwargs['deleteProtectionValidation']
+
+        _setter("domain", domain)
+        _setter("frontend_port", frontend_port)
+        _setter("load_balancer_id", load_balancer_id)
+        _setter("server_certificate_id", server_certificate_id)
         if delete_protection_validation is not None:
-            pulumi.set(__self__, "delete_protection_validation", delete_protection_validation)
+            _setter("delete_protection_validation", delete_protection_validation)
 
     @property
     @pulumi.getter
@@ -111,16 +146,43 @@ class _DomainExtensionState:
         :param pulumi.Input[str] load_balancer_id: The ID of the SLB instance.
         :param pulumi.Input[str] server_certificate_id: The ID of the certificate used by the domain name.
         """
+        _DomainExtensionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            delete_protection_validation=delete_protection_validation,
+            domain=domain,
+            frontend_port=frontend_port,
+            load_balancer_id=load_balancer_id,
+            server_certificate_id=server_certificate_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             delete_protection_validation: Optional[pulumi.Input[bool]] = None,
+             domain: Optional[pulumi.Input[str]] = None,
+             frontend_port: Optional[pulumi.Input[int]] = None,
+             load_balancer_id: Optional[pulumi.Input[str]] = None,
+             server_certificate_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if delete_protection_validation is None and 'deleteProtectionValidation' in kwargs:
+            delete_protection_validation = kwargs['deleteProtectionValidation']
+        if frontend_port is None and 'frontendPort' in kwargs:
+            frontend_port = kwargs['frontendPort']
+        if load_balancer_id is None and 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if server_certificate_id is None and 'serverCertificateId' in kwargs:
+            server_certificate_id = kwargs['serverCertificateId']
+
         if delete_protection_validation is not None:
-            pulumi.set(__self__, "delete_protection_validation", delete_protection_validation)
+            _setter("delete_protection_validation", delete_protection_validation)
         if domain is not None:
-            pulumi.set(__self__, "domain", domain)
+            _setter("domain", domain)
         if frontend_port is not None:
-            pulumi.set(__self__, "frontend_port", frontend_port)
+            _setter("frontend_port", frontend_port)
         if load_balancer_id is not None:
-            pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+            _setter("load_balancer_id", load_balancer_id)
         if server_certificate_id is not None:
-            pulumi.set(__self__, "server_certificate_id", server_certificate_id)
+            _setter("server_certificate_id", server_certificate_id)
 
     @property
     @pulumi.getter(name="deleteProtectionValidation")
@@ -444,6 +506,10 @@ class DomainExtension(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DomainExtensionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

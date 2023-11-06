@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -81,19 +81,66 @@ class DedicatedPropreHostEcsClassList(dict):
                - **cloud_auto**: ESSD AutoPL cloud disk.
         :param str system_disk_performance_level: System disk PL level.
         """
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "sys_disk_capacity", sys_disk_capacity)
-        pulumi.set(__self__, "sys_disk_type", sys_disk_type)
+        DedicatedPropreHostEcsClassList._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_type=instance_type,
+            sys_disk_capacity=sys_disk_capacity,
+            sys_disk_type=sys_disk_type,
+            data_disk_performance_level=data_disk_performance_level,
+            disk_capacity=disk_capacity,
+            disk_count=disk_count,
+            disk_type=disk_type,
+            system_disk_performance_level=system_disk_performance_level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_type: Optional[str] = None,
+             sys_disk_capacity: Optional[int] = None,
+             sys_disk_type: Optional[str] = None,
+             data_disk_performance_level: Optional[str] = None,
+             disk_capacity: Optional[int] = None,
+             disk_count: Optional[int] = None,
+             disk_type: Optional[str] = None,
+             system_disk_performance_level: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_type is None and 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if sys_disk_capacity is None and 'sysDiskCapacity' in kwargs:
+            sys_disk_capacity = kwargs['sysDiskCapacity']
+        if sys_disk_capacity is None:
+            raise TypeError("Missing 'sys_disk_capacity' argument")
+        if sys_disk_type is None and 'sysDiskType' in kwargs:
+            sys_disk_type = kwargs['sysDiskType']
+        if sys_disk_type is None:
+            raise TypeError("Missing 'sys_disk_type' argument")
+        if data_disk_performance_level is None and 'dataDiskPerformanceLevel' in kwargs:
+            data_disk_performance_level = kwargs['dataDiskPerformanceLevel']
+        if disk_capacity is None and 'diskCapacity' in kwargs:
+            disk_capacity = kwargs['diskCapacity']
+        if disk_count is None and 'diskCount' in kwargs:
+            disk_count = kwargs['diskCount']
+        if disk_type is None and 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if system_disk_performance_level is None and 'systemDiskPerformanceLevel' in kwargs:
+            system_disk_performance_level = kwargs['systemDiskPerformanceLevel']
+
+        _setter("instance_type", instance_type)
+        _setter("sys_disk_capacity", sys_disk_capacity)
+        _setter("sys_disk_type", sys_disk_type)
         if data_disk_performance_level is not None:
-            pulumi.set(__self__, "data_disk_performance_level", data_disk_performance_level)
+            _setter("data_disk_performance_level", data_disk_performance_level)
         if disk_capacity is not None:
-            pulumi.set(__self__, "disk_capacity", disk_capacity)
+            _setter("disk_capacity", disk_capacity)
         if disk_count is not None:
-            pulumi.set(__self__, "disk_count", disk_count)
+            _setter("disk_count", disk_count)
         if disk_type is not None:
-            pulumi.set(__self__, "disk_type", disk_type)
+            _setter("disk_type", disk_type)
         if system_disk_performance_level is not None:
-            pulumi.set(__self__, "system_disk_performance_level", system_disk_performance_level)
+            _setter("system_disk_performance_level", system_disk_performance_level)
 
     @property
     @pulumi.getter(name="instanceType")
@@ -179,9 +226,34 @@ class GetDedicatedHostAccountsAccountResult(dict):
         :param str dedicated_host_id: The ID of the Dedicated host.
         :param str id: The ID of the Dedicated Host Account. The value formats as `<dedicated_host_id>:<account_name>`.
         """
-        pulumi.set(__self__, "account_name", account_name)
-        pulumi.set(__self__, "dedicated_host_id", dedicated_host_id)
-        pulumi.set(__self__, "id", id)
+        GetDedicatedHostAccountsAccountResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_name=account_name,
+            dedicated_host_id=dedicated_host_id,
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_name: Optional[str] = None,
+             dedicated_host_id: Optional[str] = None,
+             id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_name is None and 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+        if dedicated_host_id is None and 'dedicatedHostId' in kwargs:
+            dedicated_host_id = kwargs['dedicatedHostId']
+        if dedicated_host_id is None:
+            raise TypeError("Missing 'dedicated_host_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+
+        _setter("account_name", account_name)
+        _setter("dedicated_host_id", dedicated_host_id)
+        _setter("id", id)
 
     @property
     @pulumi.getter(name="accountName")
@@ -269,34 +341,205 @@ class GetDedicatedHostGroupsGroupResult(dict):
         :param str vpc_id: The virtual private cloud (VPC) ID of the dedicated cluster.
         :param Sequence['GetDedicatedHostGroupsGroupZoneIdListArgs'] zone_id_lists: The ZoneIDList of the Dedicated Host Group.
         """
-        pulumi.set(__self__, "allocation_policy", allocation_policy)
-        pulumi.set(__self__, "bastion_instance_id", bastion_instance_id)
-        pulumi.set(__self__, "cpu_allocate_ration", cpu_allocate_ration)
-        pulumi.set(__self__, "cpu_allocated_amount", cpu_allocated_amount)
-        pulumi.set(__self__, "cpu_allocation_ratio", cpu_allocation_ratio)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "dedicated_host_count_group_by_host_types", dedicated_host_count_group_by_host_types)
-        pulumi.set(__self__, "dedicated_host_group_desc", dedicated_host_group_desc)
-        pulumi.set(__self__, "dedicated_host_group_id", dedicated_host_group_id)
-        pulumi.set(__self__, "deploy_type", deploy_type)
-        pulumi.set(__self__, "disk_allocate_ration", disk_allocate_ration)
-        pulumi.set(__self__, "disk_allocated_amount", disk_allocated_amount)
-        pulumi.set(__self__, "disk_allocation_ratio", disk_allocation_ratio)
-        pulumi.set(__self__, "disk_used_amount", disk_used_amount)
-        pulumi.set(__self__, "disk_utility", disk_utility)
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "host_number", host_number)
-        pulumi.set(__self__, "host_replace_policy", host_replace_policy)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_number", instance_number)
-        pulumi.set(__self__, "mem_allocate_ration", mem_allocate_ration)
-        pulumi.set(__self__, "mem_allocated_amount", mem_allocated_amount)
-        pulumi.set(__self__, "mem_allocation_ratio", mem_allocation_ratio)
-        pulumi.set(__self__, "mem_used_amount", mem_used_amount)
-        pulumi.set(__self__, "mem_utility", mem_utility)
-        pulumi.set(__self__, "text", text)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "zone_id_lists", zone_id_lists)
+        GetDedicatedHostGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allocation_policy=allocation_policy,
+            bastion_instance_id=bastion_instance_id,
+            cpu_allocate_ration=cpu_allocate_ration,
+            cpu_allocated_amount=cpu_allocated_amount,
+            cpu_allocation_ratio=cpu_allocation_ratio,
+            create_time=create_time,
+            dedicated_host_count_group_by_host_types=dedicated_host_count_group_by_host_types,
+            dedicated_host_group_desc=dedicated_host_group_desc,
+            dedicated_host_group_id=dedicated_host_group_id,
+            deploy_type=deploy_type,
+            disk_allocate_ration=disk_allocate_ration,
+            disk_allocated_amount=disk_allocated_amount,
+            disk_allocation_ratio=disk_allocation_ratio,
+            disk_used_amount=disk_used_amount,
+            disk_utility=disk_utility,
+            engine=engine,
+            host_number=host_number,
+            host_replace_policy=host_replace_policy,
+            id=id,
+            instance_number=instance_number,
+            mem_allocate_ration=mem_allocate_ration,
+            mem_allocated_amount=mem_allocated_amount,
+            mem_allocation_ratio=mem_allocation_ratio,
+            mem_used_amount=mem_used_amount,
+            mem_utility=mem_utility,
+            text=text,
+            vpc_id=vpc_id,
+            zone_id_lists=zone_id_lists,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allocation_policy: Optional[str] = None,
+             bastion_instance_id: Optional[str] = None,
+             cpu_allocate_ration: Optional[float] = None,
+             cpu_allocated_amount: Optional[float] = None,
+             cpu_allocation_ratio: Optional[int] = None,
+             create_time: Optional[str] = None,
+             dedicated_host_count_group_by_host_types: Optional[Sequence['outputs.GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeResult']] = None,
+             dedicated_host_group_desc: Optional[str] = None,
+             dedicated_host_group_id: Optional[str] = None,
+             deploy_type: Optional[str] = None,
+             disk_allocate_ration: Optional[float] = None,
+             disk_allocated_amount: Optional[float] = None,
+             disk_allocation_ratio: Optional[int] = None,
+             disk_used_amount: Optional[float] = None,
+             disk_utility: Optional[float] = None,
+             engine: Optional[str] = None,
+             host_number: Optional[int] = None,
+             host_replace_policy: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_number: Optional[int] = None,
+             mem_allocate_ration: Optional[float] = None,
+             mem_allocated_amount: Optional[float] = None,
+             mem_allocation_ratio: Optional[int] = None,
+             mem_used_amount: Optional[float] = None,
+             mem_utility: Optional[float] = None,
+             text: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             zone_id_lists: Optional[Sequence['outputs.GetDedicatedHostGroupsGroupZoneIdListResult']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allocation_policy is None and 'allocationPolicy' in kwargs:
+            allocation_policy = kwargs['allocationPolicy']
+        if allocation_policy is None:
+            raise TypeError("Missing 'allocation_policy' argument")
+        if bastion_instance_id is None and 'bastionInstanceId' in kwargs:
+            bastion_instance_id = kwargs['bastionInstanceId']
+        if bastion_instance_id is None:
+            raise TypeError("Missing 'bastion_instance_id' argument")
+        if cpu_allocate_ration is None and 'cpuAllocateRation' in kwargs:
+            cpu_allocate_ration = kwargs['cpuAllocateRation']
+        if cpu_allocate_ration is None:
+            raise TypeError("Missing 'cpu_allocate_ration' argument")
+        if cpu_allocated_amount is None and 'cpuAllocatedAmount' in kwargs:
+            cpu_allocated_amount = kwargs['cpuAllocatedAmount']
+        if cpu_allocated_amount is None:
+            raise TypeError("Missing 'cpu_allocated_amount' argument")
+        if cpu_allocation_ratio is None and 'cpuAllocationRatio' in kwargs:
+            cpu_allocation_ratio = kwargs['cpuAllocationRatio']
+        if cpu_allocation_ratio is None:
+            raise TypeError("Missing 'cpu_allocation_ratio' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if dedicated_host_count_group_by_host_types is None and 'dedicatedHostCountGroupByHostTypes' in kwargs:
+            dedicated_host_count_group_by_host_types = kwargs['dedicatedHostCountGroupByHostTypes']
+        if dedicated_host_count_group_by_host_types is None:
+            raise TypeError("Missing 'dedicated_host_count_group_by_host_types' argument")
+        if dedicated_host_group_desc is None and 'dedicatedHostGroupDesc' in kwargs:
+            dedicated_host_group_desc = kwargs['dedicatedHostGroupDesc']
+        if dedicated_host_group_desc is None:
+            raise TypeError("Missing 'dedicated_host_group_desc' argument")
+        if dedicated_host_group_id is None and 'dedicatedHostGroupId' in kwargs:
+            dedicated_host_group_id = kwargs['dedicatedHostGroupId']
+        if dedicated_host_group_id is None:
+            raise TypeError("Missing 'dedicated_host_group_id' argument")
+        if deploy_type is None and 'deployType' in kwargs:
+            deploy_type = kwargs['deployType']
+        if deploy_type is None:
+            raise TypeError("Missing 'deploy_type' argument")
+        if disk_allocate_ration is None and 'diskAllocateRation' in kwargs:
+            disk_allocate_ration = kwargs['diskAllocateRation']
+        if disk_allocate_ration is None:
+            raise TypeError("Missing 'disk_allocate_ration' argument")
+        if disk_allocated_amount is None and 'diskAllocatedAmount' in kwargs:
+            disk_allocated_amount = kwargs['diskAllocatedAmount']
+        if disk_allocated_amount is None:
+            raise TypeError("Missing 'disk_allocated_amount' argument")
+        if disk_allocation_ratio is None and 'diskAllocationRatio' in kwargs:
+            disk_allocation_ratio = kwargs['diskAllocationRatio']
+        if disk_allocation_ratio is None:
+            raise TypeError("Missing 'disk_allocation_ratio' argument")
+        if disk_used_amount is None and 'diskUsedAmount' in kwargs:
+            disk_used_amount = kwargs['diskUsedAmount']
+        if disk_used_amount is None:
+            raise TypeError("Missing 'disk_used_amount' argument")
+        if disk_utility is None and 'diskUtility' in kwargs:
+            disk_utility = kwargs['diskUtility']
+        if disk_utility is None:
+            raise TypeError("Missing 'disk_utility' argument")
+        if engine is None:
+            raise TypeError("Missing 'engine' argument")
+        if host_number is None and 'hostNumber' in kwargs:
+            host_number = kwargs['hostNumber']
+        if host_number is None:
+            raise TypeError("Missing 'host_number' argument")
+        if host_replace_policy is None and 'hostReplacePolicy' in kwargs:
+            host_replace_policy = kwargs['hostReplacePolicy']
+        if host_replace_policy is None:
+            raise TypeError("Missing 'host_replace_policy' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_number is None and 'instanceNumber' in kwargs:
+            instance_number = kwargs['instanceNumber']
+        if instance_number is None:
+            raise TypeError("Missing 'instance_number' argument")
+        if mem_allocate_ration is None and 'memAllocateRation' in kwargs:
+            mem_allocate_ration = kwargs['memAllocateRation']
+        if mem_allocate_ration is None:
+            raise TypeError("Missing 'mem_allocate_ration' argument")
+        if mem_allocated_amount is None and 'memAllocatedAmount' in kwargs:
+            mem_allocated_amount = kwargs['memAllocatedAmount']
+        if mem_allocated_amount is None:
+            raise TypeError("Missing 'mem_allocated_amount' argument")
+        if mem_allocation_ratio is None and 'memAllocationRatio' in kwargs:
+            mem_allocation_ratio = kwargs['memAllocationRatio']
+        if mem_allocation_ratio is None:
+            raise TypeError("Missing 'mem_allocation_ratio' argument")
+        if mem_used_amount is None and 'memUsedAmount' in kwargs:
+            mem_used_amount = kwargs['memUsedAmount']
+        if mem_used_amount is None:
+            raise TypeError("Missing 'mem_used_amount' argument")
+        if mem_utility is None and 'memUtility' in kwargs:
+            mem_utility = kwargs['memUtility']
+        if mem_utility is None:
+            raise TypeError("Missing 'mem_utility' argument")
+        if text is None:
+            raise TypeError("Missing 'text' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if zone_id_lists is None and 'zoneIdLists' in kwargs:
+            zone_id_lists = kwargs['zoneIdLists']
+        if zone_id_lists is None:
+            raise TypeError("Missing 'zone_id_lists' argument")
+
+        _setter("allocation_policy", allocation_policy)
+        _setter("bastion_instance_id", bastion_instance_id)
+        _setter("cpu_allocate_ration", cpu_allocate_ration)
+        _setter("cpu_allocated_amount", cpu_allocated_amount)
+        _setter("cpu_allocation_ratio", cpu_allocation_ratio)
+        _setter("create_time", create_time)
+        _setter("dedicated_host_count_group_by_host_types", dedicated_host_count_group_by_host_types)
+        _setter("dedicated_host_group_desc", dedicated_host_group_desc)
+        _setter("dedicated_host_group_id", dedicated_host_group_id)
+        _setter("deploy_type", deploy_type)
+        _setter("disk_allocate_ration", disk_allocate_ration)
+        _setter("disk_allocated_amount", disk_allocated_amount)
+        _setter("disk_allocation_ratio", disk_allocation_ratio)
+        _setter("disk_used_amount", disk_used_amount)
+        _setter("disk_utility", disk_utility)
+        _setter("engine", engine)
+        _setter("host_number", host_number)
+        _setter("host_replace_policy", host_replace_policy)
+        _setter("id", id)
+        _setter("instance_number", instance_number)
+        _setter("mem_allocate_ration", mem_allocate_ration)
+        _setter("mem_allocated_amount", mem_allocated_amount)
+        _setter("mem_allocation_ratio", mem_allocation_ratio)
+        _setter("mem_used_amount", mem_used_amount)
+        _setter("mem_utility", mem_utility)
+        _setter("text", text)
+        _setter("vpc_id", vpc_id)
+        _setter("zone_id_lists", zone_id_lists)
 
     @property
     @pulumi.getter(name="allocationPolicy")
@@ -527,7 +770,22 @@ class GetDedicatedHostGroupsGroupResult(dict):
 class GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeResult(dict):
     def __init__(__self__, *,
                  place_holder: str):
-        pulumi.set(__self__, "place_holder", place_holder)
+        GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            place_holder=place_holder,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             place_holder: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if place_holder is None and 'placeHolder' in kwargs:
+            place_holder = kwargs['placeHolder']
+        if place_holder is None:
+            raise TypeError("Missing 'place_holder' argument")
+
+        _setter("place_holder", place_holder)
 
     @property
     @pulumi.getter(name="placeHolder")
@@ -542,7 +800,22 @@ class GetDedicatedHostGroupsGroupZoneIdListResult(dict):
         """
         :param Sequence[str] zone_id_lists: The ZoneIDList of the Dedicated Host Group.
         """
-        pulumi.set(__self__, "zone_id_lists", zone_id_lists)
+        GetDedicatedHostGroupsGroupZoneIdListResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            zone_id_lists=zone_id_lists,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             zone_id_lists: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if zone_id_lists is None and 'zoneIdLists' in kwargs:
+            zone_id_lists = kwargs['zoneIdLists']
+        if zone_id_lists is None:
+            raise TypeError("Missing 'zone_id_lists' argument")
+
+        _setter("zone_id_lists", zone_id_lists)
 
     @property
     @pulumi.getter(name="zoneIdLists")
@@ -618,36 +891,217 @@ class GetDedicatedHostsHostResult(dict):
         :param str vswitch_id: The ID of the vSwitch.
         :param str zone_id: The zone ID of the host.
         """
-        pulumi.set(__self__, "allocation_status", allocation_status)
-        pulumi.set(__self__, "bastion_instance_id", bastion_instance_id)
-        pulumi.set(__self__, "cpu_allocation_ratio", cpu_allocation_ratio)
-        pulumi.set(__self__, "cpu_used", cpu_used)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "dedicated_host_group_id", dedicated_host_group_id)
-        pulumi.set(__self__, "dedicated_host_id", dedicated_host_id)
-        pulumi.set(__self__, "disk_allocation_ratio", disk_allocation_ratio)
-        pulumi.set(__self__, "ecs_class_code", ecs_class_code)
-        pulumi.set(__self__, "end_time", end_time)
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "host_class", host_class)
-        pulumi.set(__self__, "host_cpu", host_cpu)
-        pulumi.set(__self__, "host_mem", host_mem)
-        pulumi.set(__self__, "host_name", host_name)
-        pulumi.set(__self__, "host_storage", host_storage)
-        pulumi.set(__self__, "host_type", host_type)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "image_category", image_category)
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "mem_allocation_ratio", mem_allocation_ratio)
-        pulumi.set(__self__, "memory_used", memory_used)
-        pulumi.set(__self__, "open_permission", open_permission)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "storage_used", storage_used)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetDedicatedHostsHostResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allocation_status=allocation_status,
+            bastion_instance_id=bastion_instance_id,
+            cpu_allocation_ratio=cpu_allocation_ratio,
+            cpu_used=cpu_used,
+            create_time=create_time,
+            dedicated_host_group_id=dedicated_host_group_id,
+            dedicated_host_id=dedicated_host_id,
+            disk_allocation_ratio=disk_allocation_ratio,
+            ecs_class_code=ecs_class_code,
+            end_time=end_time,
+            engine=engine,
+            expired_time=expired_time,
+            host_class=host_class,
+            host_cpu=host_cpu,
+            host_mem=host_mem,
+            host_name=host_name,
+            host_storage=host_storage,
+            host_type=host_type,
+            id=id,
+            image_category=image_category,
+            ip_address=ip_address,
+            mem_allocation_ratio=mem_allocation_ratio,
+            memory_used=memory_used,
+            open_permission=open_permission,
+            status=status,
+            storage_used=storage_used,
+            tags=tags,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allocation_status: Optional[str] = None,
+             bastion_instance_id: Optional[str] = None,
+             cpu_allocation_ratio: Optional[str] = None,
+             cpu_used: Optional[str] = None,
+             create_time: Optional[str] = None,
+             dedicated_host_group_id: Optional[str] = None,
+             dedicated_host_id: Optional[str] = None,
+             disk_allocation_ratio: Optional[str] = None,
+             ecs_class_code: Optional[str] = None,
+             end_time: Optional[str] = None,
+             engine: Optional[str] = None,
+             expired_time: Optional[str] = None,
+             host_class: Optional[str] = None,
+             host_cpu: Optional[str] = None,
+             host_mem: Optional[str] = None,
+             host_name: Optional[str] = None,
+             host_storage: Optional[str] = None,
+             host_type: Optional[str] = None,
+             id: Optional[str] = None,
+             image_category: Optional[str] = None,
+             ip_address: Optional[str] = None,
+             mem_allocation_ratio: Optional[str] = None,
+             memory_used: Optional[str] = None,
+             open_permission: Optional[str] = None,
+             status: Optional[str] = None,
+             storage_used: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allocation_status is None and 'allocationStatus' in kwargs:
+            allocation_status = kwargs['allocationStatus']
+        if allocation_status is None:
+            raise TypeError("Missing 'allocation_status' argument")
+        if bastion_instance_id is None and 'bastionInstanceId' in kwargs:
+            bastion_instance_id = kwargs['bastionInstanceId']
+        if bastion_instance_id is None:
+            raise TypeError("Missing 'bastion_instance_id' argument")
+        if cpu_allocation_ratio is None and 'cpuAllocationRatio' in kwargs:
+            cpu_allocation_ratio = kwargs['cpuAllocationRatio']
+        if cpu_allocation_ratio is None:
+            raise TypeError("Missing 'cpu_allocation_ratio' argument")
+        if cpu_used is None and 'cpuUsed' in kwargs:
+            cpu_used = kwargs['cpuUsed']
+        if cpu_used is None:
+            raise TypeError("Missing 'cpu_used' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if dedicated_host_group_id is None and 'dedicatedHostGroupId' in kwargs:
+            dedicated_host_group_id = kwargs['dedicatedHostGroupId']
+        if dedicated_host_group_id is None:
+            raise TypeError("Missing 'dedicated_host_group_id' argument")
+        if dedicated_host_id is None and 'dedicatedHostId' in kwargs:
+            dedicated_host_id = kwargs['dedicatedHostId']
+        if dedicated_host_id is None:
+            raise TypeError("Missing 'dedicated_host_id' argument")
+        if disk_allocation_ratio is None and 'diskAllocationRatio' in kwargs:
+            disk_allocation_ratio = kwargs['diskAllocationRatio']
+        if disk_allocation_ratio is None:
+            raise TypeError("Missing 'disk_allocation_ratio' argument")
+        if ecs_class_code is None and 'ecsClassCode' in kwargs:
+            ecs_class_code = kwargs['ecsClassCode']
+        if ecs_class_code is None:
+            raise TypeError("Missing 'ecs_class_code' argument")
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if end_time is None:
+            raise TypeError("Missing 'end_time' argument")
+        if engine is None:
+            raise TypeError("Missing 'engine' argument")
+        if expired_time is None and 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if expired_time is None:
+            raise TypeError("Missing 'expired_time' argument")
+        if host_class is None and 'hostClass' in kwargs:
+            host_class = kwargs['hostClass']
+        if host_class is None:
+            raise TypeError("Missing 'host_class' argument")
+        if host_cpu is None and 'hostCpu' in kwargs:
+            host_cpu = kwargs['hostCpu']
+        if host_cpu is None:
+            raise TypeError("Missing 'host_cpu' argument")
+        if host_mem is None and 'hostMem' in kwargs:
+            host_mem = kwargs['hostMem']
+        if host_mem is None:
+            raise TypeError("Missing 'host_mem' argument")
+        if host_name is None and 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if host_name is None:
+            raise TypeError("Missing 'host_name' argument")
+        if host_storage is None and 'hostStorage' in kwargs:
+            host_storage = kwargs['hostStorage']
+        if host_storage is None:
+            raise TypeError("Missing 'host_storage' argument")
+        if host_type is None and 'hostType' in kwargs:
+            host_type = kwargs['hostType']
+        if host_type is None:
+            raise TypeError("Missing 'host_type' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if image_category is None and 'imageCategory' in kwargs:
+            image_category = kwargs['imageCategory']
+        if image_category is None:
+            raise TypeError("Missing 'image_category' argument")
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+        if mem_allocation_ratio is None and 'memAllocationRatio' in kwargs:
+            mem_allocation_ratio = kwargs['memAllocationRatio']
+        if mem_allocation_ratio is None:
+            raise TypeError("Missing 'mem_allocation_ratio' argument")
+        if memory_used is None and 'memoryUsed' in kwargs:
+            memory_used = kwargs['memoryUsed']
+        if memory_used is None:
+            raise TypeError("Missing 'memory_used' argument")
+        if open_permission is None and 'openPermission' in kwargs:
+            open_permission = kwargs['openPermission']
+        if open_permission is None:
+            raise TypeError("Missing 'open_permission' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if storage_used is None and 'storageUsed' in kwargs:
+            storage_used = kwargs['storageUsed']
+        if storage_used is None:
+            raise TypeError("Missing 'storage_used' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+
+        _setter("allocation_status", allocation_status)
+        _setter("bastion_instance_id", bastion_instance_id)
+        _setter("cpu_allocation_ratio", cpu_allocation_ratio)
+        _setter("cpu_used", cpu_used)
+        _setter("create_time", create_time)
+        _setter("dedicated_host_group_id", dedicated_host_group_id)
+        _setter("dedicated_host_id", dedicated_host_id)
+        _setter("disk_allocation_ratio", disk_allocation_ratio)
+        _setter("ecs_class_code", ecs_class_code)
+        _setter("end_time", end_time)
+        _setter("engine", engine)
+        _setter("expired_time", expired_time)
+        _setter("host_class", host_class)
+        _setter("host_cpu", host_cpu)
+        _setter("host_mem", host_mem)
+        _setter("host_name", host_name)
+        _setter("host_storage", host_storage)
+        _setter("host_type", host_type)
+        _setter("id", id)
+        _setter("image_category", image_category)
+        _setter("ip_address", ip_address)
+        _setter("mem_allocation_ratio", mem_allocation_ratio)
+        _setter("memory_used", memory_used)
+        _setter("open_permission", open_permission)
+        _setter("status", status)
+        _setter("storage_used", storage_used)
+        _setter("tags", tags)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="allocationStatus")
@@ -903,10 +1357,41 @@ class GetHostEcsLevelInfosInfoResult(dict):
         :param str ecs_class_code: The Elastic Compute Service (ECS) instance type.
         :param str res_class_code: The ApsaraDB RDS instance type of the host ecs level info.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "ecs_class", ecs_class)
-        pulumi.set(__self__, "ecs_class_code", ecs_class_code)
-        pulumi.set(__self__, "res_class_code", res_class_code)
+        GetHostEcsLevelInfosInfoResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            ecs_class=ecs_class,
+            ecs_class_code=ecs_class_code,
+            res_class_code=res_class_code,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[str] = None,
+             ecs_class: Optional[str] = None,
+             ecs_class_code: Optional[str] = None,
+             res_class_code: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if ecs_class is None and 'ecsClass' in kwargs:
+            ecs_class = kwargs['ecsClass']
+        if ecs_class is None:
+            raise TypeError("Missing 'ecs_class' argument")
+        if ecs_class_code is None and 'ecsClassCode' in kwargs:
+            ecs_class_code = kwargs['ecsClassCode']
+        if ecs_class_code is None:
+            raise TypeError("Missing 'ecs_class_code' argument")
+        if res_class_code is None and 'resClassCode' in kwargs:
+            res_class_code = kwargs['resClassCode']
+        if res_class_code is None:
+            raise TypeError("Missing 'res_class_code' argument")
+
+        _setter("description", description)
+        _setter("ecs_class", ecs_class)
+        _setter("ecs_class_code", ecs_class_code)
+        _setter("res_class_code", res_class_code)
 
     @property
     @pulumi.getter
@@ -952,9 +1437,34 @@ class GetZonesZoneResult(dict):
         :param str region_id: The ID of the region.
         :param str zone_id: The ID of the zone.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetZonesZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            region_id=region_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             region_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if region_id is None and 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+
+        _setter("id", id)
+        _setter("region_id", region_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter

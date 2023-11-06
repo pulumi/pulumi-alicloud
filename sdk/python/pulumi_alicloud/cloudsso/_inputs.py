@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -25,10 +25,35 @@ class AccessConfigurationPermissionPolicyArgs:
         :param pulumi.Input[str] permission_policy_type: The Policy Type of policy. Valid values: `System`, `Inline`.
         :param pulumi.Input[str] permission_policy_document: The Content of Policy.
         """
-        pulumi.set(__self__, "permission_policy_name", permission_policy_name)
-        pulumi.set(__self__, "permission_policy_type", permission_policy_type)
+        AccessConfigurationPermissionPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            permission_policy_name=permission_policy_name,
+            permission_policy_type=permission_policy_type,
+            permission_policy_document=permission_policy_document,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             permission_policy_name: Optional[pulumi.Input[str]] = None,
+             permission_policy_type: Optional[pulumi.Input[str]] = None,
+             permission_policy_document: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if permission_policy_name is None and 'permissionPolicyName' in kwargs:
+            permission_policy_name = kwargs['permissionPolicyName']
+        if permission_policy_name is None:
+            raise TypeError("Missing 'permission_policy_name' argument")
+        if permission_policy_type is None and 'permissionPolicyType' in kwargs:
+            permission_policy_type = kwargs['permissionPolicyType']
+        if permission_policy_type is None:
+            raise TypeError("Missing 'permission_policy_type' argument")
+        if permission_policy_document is None and 'permissionPolicyDocument' in kwargs:
+            permission_policy_document = kwargs['permissionPolicyDocument']
+
+        _setter("permission_policy_name", permission_policy_name)
+        _setter("permission_policy_type", permission_policy_type)
         if permission_policy_document is not None:
-            pulumi.set(__self__, "permission_policy_document", permission_policy_document)
+            _setter("permission_policy_document", permission_policy_document)
 
     @property
     @pulumi.getter(name="permissionPolicyName")
@@ -76,10 +101,27 @@ class DirectorySamlIdentityProviderConfigurationArgs:
         :param pulumi.Input[str] encoded_metadata_document: Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `sso_status` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `sso_status` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
         :param pulumi.Input[str] sso_status: SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
         """
+        DirectorySamlIdentityProviderConfigurationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            encoded_metadata_document=encoded_metadata_document,
+            sso_status=sso_status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             encoded_metadata_document: Optional[pulumi.Input[str]] = None,
+             sso_status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if encoded_metadata_document is None and 'encodedMetadataDocument' in kwargs:
+            encoded_metadata_document = kwargs['encodedMetadataDocument']
+        if sso_status is None and 'ssoStatus' in kwargs:
+            sso_status = kwargs['ssoStatus']
+
         if encoded_metadata_document is not None:
-            pulumi.set(__self__, "encoded_metadata_document", encoded_metadata_document)
+            _setter("encoded_metadata_document", encoded_metadata_document)
         if sso_status is not None:
-            pulumi.set(__self__, "sso_status", sso_status)
+            _setter("sso_status", sso_status)
 
     @property
     @pulumi.getter(name="encodedMetadataDocument")

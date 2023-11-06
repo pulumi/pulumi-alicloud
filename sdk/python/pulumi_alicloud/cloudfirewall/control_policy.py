@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ControlPolicyArgs', 'ControlPolicy']
@@ -49,29 +49,106 @@ class ControlPolicyArgs:
         :param pulumi.Input[str] release: Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
         :param pulumi.Input[str] source_ip: The source ip.
         """
-        pulumi.set(__self__, "acl_action", acl_action)
-        pulumi.set(__self__, "application_name", application_name)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "destination", destination)
-        pulumi.set(__self__, "destination_type", destination_type)
-        pulumi.set(__self__, "direction", direction)
-        pulumi.set(__self__, "proto", proto)
-        pulumi.set(__self__, "source", source)
-        pulumi.set(__self__, "source_type", source_type)
+        ControlPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl_action=acl_action,
+            application_name=application_name,
+            description=description,
+            destination=destination,
+            destination_type=destination_type,
+            direction=direction,
+            proto=proto,
+            source=source,
+            source_type=source_type,
+            dest_port=dest_port,
+            dest_port_group=dest_port_group,
+            dest_port_type=dest_port_type,
+            ip_version=ip_version,
+            lang=lang,
+            release=release,
+            source_ip=source_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl_action: Optional[pulumi.Input[str]] = None,
+             application_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             destination: Optional[pulumi.Input[str]] = None,
+             destination_type: Optional[pulumi.Input[str]] = None,
+             direction: Optional[pulumi.Input[str]] = None,
+             proto: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             source_type: Optional[pulumi.Input[str]] = None,
+             dest_port: Optional[pulumi.Input[str]] = None,
+             dest_port_group: Optional[pulumi.Input[str]] = None,
+             dest_port_type: Optional[pulumi.Input[str]] = None,
+             ip_version: Optional[pulumi.Input[str]] = None,
+             lang: Optional[pulumi.Input[str]] = None,
+             release: Optional[pulumi.Input[str]] = None,
+             source_ip: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if acl_action is None and 'aclAction' in kwargs:
+            acl_action = kwargs['aclAction']
+        if acl_action is None:
+            raise TypeError("Missing 'acl_action' argument")
+        if application_name is None and 'applicationName' in kwargs:
+            application_name = kwargs['applicationName']
+        if application_name is None:
+            raise TypeError("Missing 'application_name' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if destination is None:
+            raise TypeError("Missing 'destination' argument")
+        if destination_type is None and 'destinationType' in kwargs:
+            destination_type = kwargs['destinationType']
+        if destination_type is None:
+            raise TypeError("Missing 'destination_type' argument")
+        if direction is None:
+            raise TypeError("Missing 'direction' argument")
+        if proto is None:
+            raise TypeError("Missing 'proto' argument")
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if source_type is None and 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+        if source_type is None:
+            raise TypeError("Missing 'source_type' argument")
+        if dest_port is None and 'destPort' in kwargs:
+            dest_port = kwargs['destPort']
+        if dest_port_group is None and 'destPortGroup' in kwargs:
+            dest_port_group = kwargs['destPortGroup']
+        if dest_port_type is None and 'destPortType' in kwargs:
+            dest_port_type = kwargs['destPortType']
+        if ip_version is None and 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if source_ip is None and 'sourceIp' in kwargs:
+            source_ip = kwargs['sourceIp']
+
+        _setter("acl_action", acl_action)
+        _setter("application_name", application_name)
+        _setter("description", description)
+        _setter("destination", destination)
+        _setter("destination_type", destination_type)
+        _setter("direction", direction)
+        _setter("proto", proto)
+        _setter("source", source)
+        _setter("source_type", source_type)
         if dest_port is not None:
-            pulumi.set(__self__, "dest_port", dest_port)
+            _setter("dest_port", dest_port)
         if dest_port_group is not None:
-            pulumi.set(__self__, "dest_port_group", dest_port_group)
+            _setter("dest_port_group", dest_port_group)
         if dest_port_type is not None:
-            pulumi.set(__self__, "dest_port_type", dest_port_type)
+            _setter("dest_port_type", dest_port_type)
         if ip_version is not None:
-            pulumi.set(__self__, "ip_version", ip_version)
+            _setter("ip_version", ip_version)
         if lang is not None:
-            pulumi.set(__self__, "lang", lang)
+            _setter("lang", lang)
         if release is not None:
-            pulumi.set(__self__, "release", release)
+            _setter("release", release)
         if source_ip is not None:
-            pulumi.set(__self__, "source_ip", source_ip)
+            _setter("source_ip", source_ip)
 
     @property
     @pulumi.getter(name="aclAction")
@@ -306,40 +383,103 @@ class _ControlPolicyState:
         :param pulumi.Input[str] source_ip: The source ip.
         :param pulumi.Input[str] source_type: SourceType. Valid values: If `direction` is `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
         """
+        _ControlPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl_action=acl_action,
+            acl_uuid=acl_uuid,
+            application_name=application_name,
+            description=description,
+            dest_port=dest_port,
+            dest_port_group=dest_port_group,
+            dest_port_type=dest_port_type,
+            destination=destination,
+            destination_type=destination_type,
+            direction=direction,
+            ip_version=ip_version,
+            lang=lang,
+            proto=proto,
+            release=release,
+            source=source,
+            source_ip=source_ip,
+            source_type=source_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl_action: Optional[pulumi.Input[str]] = None,
+             acl_uuid: Optional[pulumi.Input[str]] = None,
+             application_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dest_port: Optional[pulumi.Input[str]] = None,
+             dest_port_group: Optional[pulumi.Input[str]] = None,
+             dest_port_type: Optional[pulumi.Input[str]] = None,
+             destination: Optional[pulumi.Input[str]] = None,
+             destination_type: Optional[pulumi.Input[str]] = None,
+             direction: Optional[pulumi.Input[str]] = None,
+             ip_version: Optional[pulumi.Input[str]] = None,
+             lang: Optional[pulumi.Input[str]] = None,
+             proto: Optional[pulumi.Input[str]] = None,
+             release: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             source_ip: Optional[pulumi.Input[str]] = None,
+             source_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if acl_action is None and 'aclAction' in kwargs:
+            acl_action = kwargs['aclAction']
+        if acl_uuid is None and 'aclUuid' in kwargs:
+            acl_uuid = kwargs['aclUuid']
+        if application_name is None and 'applicationName' in kwargs:
+            application_name = kwargs['applicationName']
+        if dest_port is None and 'destPort' in kwargs:
+            dest_port = kwargs['destPort']
+        if dest_port_group is None and 'destPortGroup' in kwargs:
+            dest_port_group = kwargs['destPortGroup']
+        if dest_port_type is None and 'destPortType' in kwargs:
+            dest_port_type = kwargs['destPortType']
+        if destination_type is None and 'destinationType' in kwargs:
+            destination_type = kwargs['destinationType']
+        if ip_version is None and 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if source_ip is None and 'sourceIp' in kwargs:
+            source_ip = kwargs['sourceIp']
+        if source_type is None and 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+
         if acl_action is not None:
-            pulumi.set(__self__, "acl_action", acl_action)
+            _setter("acl_action", acl_action)
         if acl_uuid is not None:
-            pulumi.set(__self__, "acl_uuid", acl_uuid)
+            _setter("acl_uuid", acl_uuid)
         if application_name is not None:
-            pulumi.set(__self__, "application_name", application_name)
+            _setter("application_name", application_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dest_port is not None:
-            pulumi.set(__self__, "dest_port", dest_port)
+            _setter("dest_port", dest_port)
         if dest_port_group is not None:
-            pulumi.set(__self__, "dest_port_group", dest_port_group)
+            _setter("dest_port_group", dest_port_group)
         if dest_port_type is not None:
-            pulumi.set(__self__, "dest_port_type", dest_port_type)
+            _setter("dest_port_type", dest_port_type)
         if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+            _setter("destination", destination)
         if destination_type is not None:
-            pulumi.set(__self__, "destination_type", destination_type)
+            _setter("destination_type", destination_type)
         if direction is not None:
-            pulumi.set(__self__, "direction", direction)
+            _setter("direction", direction)
         if ip_version is not None:
-            pulumi.set(__self__, "ip_version", ip_version)
+            _setter("ip_version", ip_version)
         if lang is not None:
-            pulumi.set(__self__, "lang", lang)
+            _setter("lang", lang)
         if proto is not None:
-            pulumi.set(__self__, "proto", proto)
+            _setter("proto", proto)
         if release is not None:
-            pulumi.set(__self__, "release", release)
+            _setter("release", release)
         if source is not None:
-            pulumi.set(__self__, "source", source)
+            _setter("source", source)
         if source_ip is not None:
-            pulumi.set(__self__, "source_ip", source_ip)
+            _setter("source_ip", source_ip)
         if source_type is not None:
-            pulumi.set(__self__, "source_type", source_type)
+            _setter("source_type", source_type)
 
     @property
     @pulumi.getter(name="aclAction")
@@ -673,6 +813,10 @@ class ControlPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ControlPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

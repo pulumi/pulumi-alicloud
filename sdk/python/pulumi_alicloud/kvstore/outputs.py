@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -28,10 +28,23 @@ class InstanceParameter(dict):
         :param str name: Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
         :param str value: Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
         """
+        InstanceParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -75,13 +88,58 @@ class GetAccountsAccountResult(dict):
         :param str instance_id: The Id of instance in which account belongs.
         :param str status: The status of account.
         """
-        pulumi.set(__self__, "account_name", account_name)
-        pulumi.set(__self__, "account_privilege", account_privilege)
-        pulumi.set(__self__, "account_type", account_type)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "status", status)
+        GetAccountsAccountResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_name=account_name,
+            account_privilege=account_privilege,
+            account_type=account_type,
+            description=description,
+            id=id,
+            instance_id=instance_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_name: Optional[str] = None,
+             account_privilege: Optional[str] = None,
+             account_type: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_name is None and 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+        if account_privilege is None and 'accountPrivilege' in kwargs:
+            account_privilege = kwargs['accountPrivilege']
+        if account_privilege is None:
+            raise TypeError("Missing 'account_privilege' argument")
+        if account_type is None and 'accountType' in kwargs:
+            account_type = kwargs['accountType']
+        if account_type is None:
+            raise TypeError("Missing 'account_type' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+
+        _setter("account_name", account_name)
+        _setter("account_privilege", account_privilege)
+        _setter("account_type", account_type)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="accountName")
@@ -165,17 +223,86 @@ class GetConnectionsConnectionResult(dict):
         :param str vpc_instance_id: The ID of the instance. It is returned only when the value of the DBInstanceNetType parameter is 2 (indicating VPC).
         :param str vswitch_id: The ID of the VSwitch.
         """
-        pulumi.set(__self__, "connection_string", connection_string)
-        pulumi.set(__self__, "db_instance_net_type", db_instance_net_type)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "upgradeable", upgradeable)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vpc_instance_id", vpc_instance_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetConnectionsConnectionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connection_string=connection_string,
+            db_instance_net_type=db_instance_net_type,
+            expired_time=expired_time,
+            id=id,
+            instance_id=instance_id,
+            ip_address=ip_address,
+            port=port,
+            upgradeable=upgradeable,
+            vpc_id=vpc_id,
+            vpc_instance_id=vpc_instance_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connection_string: Optional[str] = None,
+             db_instance_net_type: Optional[str] = None,
+             expired_time: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             ip_address: Optional[str] = None,
+             port: Optional[str] = None,
+             upgradeable: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vpc_instance_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connection_string is None and 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if connection_string is None:
+            raise TypeError("Missing 'connection_string' argument")
+        if db_instance_net_type is None and 'dbInstanceNetType' in kwargs:
+            db_instance_net_type = kwargs['dbInstanceNetType']
+        if db_instance_net_type is None:
+            raise TypeError("Missing 'db_instance_net_type' argument")
+        if expired_time is None and 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if expired_time is None:
+            raise TypeError("Missing 'expired_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if upgradeable is None:
+            raise TypeError("Missing 'upgradeable' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vpc_instance_id is None and 'vpcInstanceId' in kwargs:
+            vpc_instance_id = kwargs['vpcInstanceId']
+        if vpc_instance_id is None:
+            raise TypeError("Missing 'vpc_instance_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+
+        _setter("connection_string", connection_string)
+        _setter("db_instance_net_type", db_instance_net_type)
+        _setter("expired_time", expired_time)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("ip_address", ip_address)
+        _setter("port", port)
+        _setter("upgradeable", upgradeable)
+        _setter("vpc_id", vpc_id)
+        _setter("vpc_instance_id", vpc_instance_id)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="connectionString")
@@ -268,8 +395,27 @@ class GetInstanceClassesClassResult(dict):
         """
         :param str instance_class: KVStore available instance class.
         """
-        pulumi.set(__self__, "instance_class", instance_class)
-        pulumi.set(__self__, "price", price)
+        GetInstanceClassesClassResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_class=instance_class,
+            price=price,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_class: Optional[str] = None,
+             price: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_class is None and 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if instance_class is None:
+            raise TypeError("Missing 'instance_class' argument")
+        if price is None:
+            raise TypeError("Missing 'price' argument")
+
+        _setter("instance_class", instance_class)
+        _setter("price", price)
 
     @property
     @pulumi.getter(name="instanceClass")
@@ -296,9 +442,34 @@ class GetInstanceEnginesInstanceEngineResult(dict):
         :param str engine_version: Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
         :param str zone_id: The Zone to launch the KVStore instance.
         """
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "engine_version", engine_version)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetInstanceEnginesInstanceEngineResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            engine=engine,
+            engine_version=engine_version,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             engine: Optional[str] = None,
+             engine_version: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if engine is None:
+            raise TypeError("Missing 'engine' argument")
+        if engine_version is None and 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if engine_version is None:
+            raise TypeError("Missing 'engine_version' argument")
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+
+        _setter("engine", engine)
+        _setter("engine_version", engine_version)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -425,59 +596,366 @@ class GetInstancesInstanceResult(dict):
         :param str vswitch_id: Used to retrieve instances belong to specified `vswitch` resources.
         :param str zone_id: The ID of the zone.
         """
-        pulumi.set(__self__, "architecture_type", architecture_type)
-        pulumi.set(__self__, "auto_renew", auto_renew)
-        pulumi.set(__self__, "auto_renew_period", auto_renew_period)
-        pulumi.set(__self__, "availability_zone", availability_zone)
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "capacity", capacity)
-        pulumi.set(__self__, "charge_type", charge_type)
-        pulumi.set(__self__, "config", config)
-        pulumi.set(__self__, "connection_domain", connection_domain)
-        pulumi.set(__self__, "connection_mode", connection_mode)
-        pulumi.set(__self__, "connections", connections)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "db_instance_id", db_instance_id)
-        pulumi.set(__self__, "db_instance_name", db_instance_name)
-        pulumi.set(__self__, "destroy_time", destroy_time)
-        pulumi.set(__self__, "end_time", end_time)
-        pulumi.set(__self__, "engine_version", engine_version)
-        pulumi.set(__self__, "expire_time", expire_time)
-        pulumi.set(__self__, "has_renew_change_order", has_renew_change_order)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_class", instance_class)
-        pulumi.set(__self__, "instance_release_protection", instance_release_protection)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "is_rds", is_rds)
-        pulumi.set(__self__, "maintain_end_time", maintain_end_time)
-        pulumi.set(__self__, "maintain_start_time", maintain_start_time)
-        pulumi.set(__self__, "max_connections", max_connections)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "node_type", node_type)
-        pulumi.set(__self__, "package_type", package_type)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "private_ip", private_ip)
-        pulumi.set(__self__, "qps", qps)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "replacate_id", replacate_id)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "search_key", search_key)
-        pulumi.set(__self__, "secondary_zone_id", secondary_zone_id)
-        pulumi.set(__self__, "security_group_id", security_group_id)
-        pulumi.set(__self__, "security_ip_group_attribute", security_ip_group_attribute)
-        pulumi.set(__self__, "security_ip_group_name", security_ip_group_name)
-        pulumi.set(__self__, "security_ips", security_ips)
-        pulumi.set(__self__, "ssl_enable", ssl_enable)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "user_name", user_name)
-        pulumi.set(__self__, "vpc_auth_mode", vpc_auth_mode)
-        pulumi.set(__self__, "vpc_cloud_instance_id", vpc_cloud_instance_id)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            architecture_type=architecture_type,
+            auto_renew=auto_renew,
+            auto_renew_period=auto_renew_period,
+            availability_zone=availability_zone,
+            bandwidth=bandwidth,
+            capacity=capacity,
+            charge_type=charge_type,
+            config=config,
+            connection_domain=connection_domain,
+            connection_mode=connection_mode,
+            connections=connections,
+            create_time=create_time,
+            db_instance_id=db_instance_id,
+            db_instance_name=db_instance_name,
+            destroy_time=destroy_time,
+            end_time=end_time,
+            engine_version=engine_version,
+            expire_time=expire_time,
+            has_renew_change_order=has_renew_change_order,
+            id=id,
+            instance_class=instance_class,
+            instance_release_protection=instance_release_protection,
+            instance_type=instance_type,
+            is_rds=is_rds,
+            maintain_end_time=maintain_end_time,
+            maintain_start_time=maintain_start_time,
+            max_connections=max_connections,
+            name=name,
+            network_type=network_type,
+            node_type=node_type,
+            package_type=package_type,
+            payment_type=payment_type,
+            port=port,
+            private_ip=private_ip,
+            qps=qps,
+            region_id=region_id,
+            replacate_id=replacate_id,
+            resource_group_id=resource_group_id,
+            search_key=search_key,
+            secondary_zone_id=secondary_zone_id,
+            security_group_id=security_group_id,
+            security_ip_group_attribute=security_ip_group_attribute,
+            security_ip_group_name=security_ip_group_name,
+            security_ips=security_ips,
+            ssl_enable=ssl_enable,
+            status=status,
+            tags=tags,
+            user_name=user_name,
+            vpc_auth_mode=vpc_auth_mode,
+            vpc_cloud_instance_id=vpc_cloud_instance_id,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             architecture_type: Optional[str] = None,
+             auto_renew: Optional[bool] = None,
+             auto_renew_period: Optional[int] = None,
+             availability_zone: Optional[str] = None,
+             bandwidth: Optional[int] = None,
+             capacity: Optional[int] = None,
+             charge_type: Optional[str] = None,
+             config: Optional[Mapping[str, Any]] = None,
+             connection_domain: Optional[str] = None,
+             connection_mode: Optional[str] = None,
+             connections: Optional[int] = None,
+             create_time: Optional[str] = None,
+             db_instance_id: Optional[str] = None,
+             db_instance_name: Optional[str] = None,
+             destroy_time: Optional[str] = None,
+             end_time: Optional[str] = None,
+             engine_version: Optional[str] = None,
+             expire_time: Optional[str] = None,
+             has_renew_change_order: Optional[bool] = None,
+             id: Optional[str] = None,
+             instance_class: Optional[str] = None,
+             instance_release_protection: Optional[bool] = None,
+             instance_type: Optional[str] = None,
+             is_rds: Optional[bool] = None,
+             maintain_end_time: Optional[str] = None,
+             maintain_start_time: Optional[str] = None,
+             max_connections: Optional[int] = None,
+             name: Optional[str] = None,
+             network_type: Optional[str] = None,
+             node_type: Optional[str] = None,
+             package_type: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             port: Optional[int] = None,
+             private_ip: Optional[str] = None,
+             qps: Optional[int] = None,
+             region_id: Optional[str] = None,
+             replacate_id: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             search_key: Optional[str] = None,
+             secondary_zone_id: Optional[str] = None,
+             security_group_id: Optional[str] = None,
+             security_ip_group_attribute: Optional[str] = None,
+             security_ip_group_name: Optional[str] = None,
+             security_ips: Optional[Sequence[str]] = None,
+             ssl_enable: Optional[str] = None,
+             status: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             user_name: Optional[str] = None,
+             vpc_auth_mode: Optional[str] = None,
+             vpc_cloud_instance_id: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if architecture_type is None and 'architectureType' in kwargs:
+            architecture_type = kwargs['architectureType']
+        if architecture_type is None:
+            raise TypeError("Missing 'architecture_type' argument")
+        if auto_renew is None and 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if auto_renew is None:
+            raise TypeError("Missing 'auto_renew' argument")
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if auto_renew_period is None:
+            raise TypeError("Missing 'auto_renew_period' argument")
+        if availability_zone is None and 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if availability_zone is None:
+            raise TypeError("Missing 'availability_zone' argument")
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if capacity is None:
+            raise TypeError("Missing 'capacity' argument")
+        if charge_type is None and 'chargeType' in kwargs:
+            charge_type = kwargs['chargeType']
+        if charge_type is None:
+            raise TypeError("Missing 'charge_type' argument")
+        if config is None:
+            raise TypeError("Missing 'config' argument")
+        if connection_domain is None and 'connectionDomain' in kwargs:
+            connection_domain = kwargs['connectionDomain']
+        if connection_domain is None:
+            raise TypeError("Missing 'connection_domain' argument")
+        if connection_mode is None and 'connectionMode' in kwargs:
+            connection_mode = kwargs['connectionMode']
+        if connection_mode is None:
+            raise TypeError("Missing 'connection_mode' argument")
+        if connections is None:
+            raise TypeError("Missing 'connections' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if db_instance_id is None and 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if db_instance_id is None:
+            raise TypeError("Missing 'db_instance_id' argument")
+        if db_instance_name is None and 'dbInstanceName' in kwargs:
+            db_instance_name = kwargs['dbInstanceName']
+        if db_instance_name is None:
+            raise TypeError("Missing 'db_instance_name' argument")
+        if destroy_time is None and 'destroyTime' in kwargs:
+            destroy_time = kwargs['destroyTime']
+        if destroy_time is None:
+            raise TypeError("Missing 'destroy_time' argument")
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if end_time is None:
+            raise TypeError("Missing 'end_time' argument")
+        if engine_version is None and 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if engine_version is None:
+            raise TypeError("Missing 'engine_version' argument")
+        if expire_time is None and 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if expire_time is None:
+            raise TypeError("Missing 'expire_time' argument")
+        if has_renew_change_order is None and 'hasRenewChangeOrder' in kwargs:
+            has_renew_change_order = kwargs['hasRenewChangeOrder']
+        if has_renew_change_order is None:
+            raise TypeError("Missing 'has_renew_change_order' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_class is None and 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if instance_class is None:
+            raise TypeError("Missing 'instance_class' argument")
+        if instance_release_protection is None and 'instanceReleaseProtection' in kwargs:
+            instance_release_protection = kwargs['instanceReleaseProtection']
+        if instance_release_protection is None:
+            raise TypeError("Missing 'instance_release_protection' argument")
+        if instance_type is None and 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if is_rds is None and 'isRds' in kwargs:
+            is_rds = kwargs['isRds']
+        if is_rds is None:
+            raise TypeError("Missing 'is_rds' argument")
+        if maintain_end_time is None and 'maintainEndTime' in kwargs:
+            maintain_end_time = kwargs['maintainEndTime']
+        if maintain_end_time is None:
+            raise TypeError("Missing 'maintain_end_time' argument")
+        if maintain_start_time is None and 'maintainStartTime' in kwargs:
+            maintain_start_time = kwargs['maintainStartTime']
+        if maintain_start_time is None:
+            raise TypeError("Missing 'maintain_start_time' argument")
+        if max_connections is None and 'maxConnections' in kwargs:
+            max_connections = kwargs['maxConnections']
+        if max_connections is None:
+            raise TypeError("Missing 'max_connections' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if network_type is None and 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if network_type is None:
+            raise TypeError("Missing 'network_type' argument")
+        if node_type is None and 'nodeType' in kwargs:
+            node_type = kwargs['nodeType']
+        if node_type is None:
+            raise TypeError("Missing 'node_type' argument")
+        if package_type is None and 'packageType' in kwargs:
+            package_type = kwargs['packageType']
+        if package_type is None:
+            raise TypeError("Missing 'package_type' argument")
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if private_ip is None and 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+        if private_ip is None:
+            raise TypeError("Missing 'private_ip' argument")
+        if qps is None:
+            raise TypeError("Missing 'qps' argument")
+        if region_id is None and 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if replacate_id is None and 'replacateId' in kwargs:
+            replacate_id = kwargs['replacateId']
+        if replacate_id is None:
+            raise TypeError("Missing 'replacate_id' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if search_key is None and 'searchKey' in kwargs:
+            search_key = kwargs['searchKey']
+        if search_key is None:
+            raise TypeError("Missing 'search_key' argument")
+        if secondary_zone_id is None and 'secondaryZoneId' in kwargs:
+            secondary_zone_id = kwargs['secondaryZoneId']
+        if secondary_zone_id is None:
+            raise TypeError("Missing 'secondary_zone_id' argument")
+        if security_group_id is None and 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if security_ip_group_attribute is None and 'securityIpGroupAttribute' in kwargs:
+            security_ip_group_attribute = kwargs['securityIpGroupAttribute']
+        if security_ip_group_attribute is None:
+            raise TypeError("Missing 'security_ip_group_attribute' argument")
+        if security_ip_group_name is None and 'securityIpGroupName' in kwargs:
+            security_ip_group_name = kwargs['securityIpGroupName']
+        if security_ip_group_name is None:
+            raise TypeError("Missing 'security_ip_group_name' argument")
+        if security_ips is None and 'securityIps' in kwargs:
+            security_ips = kwargs['securityIps']
+        if security_ips is None:
+            raise TypeError("Missing 'security_ips' argument")
+        if ssl_enable is None and 'sslEnable' in kwargs:
+            ssl_enable = kwargs['sslEnable']
+        if ssl_enable is None:
+            raise TypeError("Missing 'ssl_enable' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if user_name is None and 'userName' in kwargs:
+            user_name = kwargs['userName']
+        if user_name is None:
+            raise TypeError("Missing 'user_name' argument")
+        if vpc_auth_mode is None and 'vpcAuthMode' in kwargs:
+            vpc_auth_mode = kwargs['vpcAuthMode']
+        if vpc_auth_mode is None:
+            raise TypeError("Missing 'vpc_auth_mode' argument")
+        if vpc_cloud_instance_id is None and 'vpcCloudInstanceId' in kwargs:
+            vpc_cloud_instance_id = kwargs['vpcCloudInstanceId']
+        if vpc_cloud_instance_id is None:
+            raise TypeError("Missing 'vpc_cloud_instance_id' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+
+        _setter("architecture_type", architecture_type)
+        _setter("auto_renew", auto_renew)
+        _setter("auto_renew_period", auto_renew_period)
+        _setter("availability_zone", availability_zone)
+        _setter("bandwidth", bandwidth)
+        _setter("capacity", capacity)
+        _setter("charge_type", charge_type)
+        _setter("config", config)
+        _setter("connection_domain", connection_domain)
+        _setter("connection_mode", connection_mode)
+        _setter("connections", connections)
+        _setter("create_time", create_time)
+        _setter("db_instance_id", db_instance_id)
+        _setter("db_instance_name", db_instance_name)
+        _setter("destroy_time", destroy_time)
+        _setter("end_time", end_time)
+        _setter("engine_version", engine_version)
+        _setter("expire_time", expire_time)
+        _setter("has_renew_change_order", has_renew_change_order)
+        _setter("id", id)
+        _setter("instance_class", instance_class)
+        _setter("instance_release_protection", instance_release_protection)
+        _setter("instance_type", instance_type)
+        _setter("is_rds", is_rds)
+        _setter("maintain_end_time", maintain_end_time)
+        _setter("maintain_start_time", maintain_start_time)
+        _setter("max_connections", max_connections)
+        _setter("name", name)
+        _setter("network_type", network_type)
+        _setter("node_type", node_type)
+        _setter("package_type", package_type)
+        _setter("payment_type", payment_type)
+        _setter("port", port)
+        _setter("private_ip", private_ip)
+        _setter("qps", qps)
+        _setter("region_id", region_id)
+        _setter("replacate_id", replacate_id)
+        _setter("resource_group_id", resource_group_id)
+        _setter("search_key", search_key)
+        _setter("secondary_zone_id", secondary_zone_id)
+        _setter("security_group_id", security_group_id)
+        _setter("security_ip_group_attribute", security_ip_group_attribute)
+        _setter("security_ip_group_name", security_ip_group_name)
+        _setter("security_ips", security_ips)
+        _setter("ssl_enable", ssl_enable)
+        _setter("status", status)
+        _setter("tags", tags)
+        _setter("user_name", user_name)
+        _setter("vpc_auth_mode", vpc_auth_mode)
+        _setter("vpc_cloud_instance_id", vpc_cloud_instance_id)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="architectureType")
@@ -880,8 +1358,27 @@ class GetZonesZoneResult(dict):
         :param str id: ID of the zone.
         :param Sequence[str] multi_zone_ids: A list of zone ids in which the multi zone.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "multi_zone_ids", multi_zone_ids)
+        GetZonesZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            multi_zone_ids=multi_zone_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             multi_zone_ids: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if multi_zone_ids is None and 'multiZoneIds' in kwargs:
+            multi_zone_ids = kwargs['multiZoneIds']
+        if multi_zone_ids is None:
+            raise TypeError("Missing 'multi_zone_ids' argument")
+
+        _setter("id", id)
+        _setter("multi_zone_ids", multi_zone_ids)
 
     @property
     @pulumi.getter

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -25,12 +25,31 @@ class ProvisionedProductOutputArgs:
         :param pulumi.Input[str] output_key: The name of the output value defined in the template.
         :param pulumi.Input[str] output_value: The content of the output value defined in the template.
         """
+        ProvisionedProductOutputArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            output_key=output_key,
+            output_value=output_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             output_key: Optional[pulumi.Input[str]] = None,
+             output_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if output_key is None and 'outputKey' in kwargs:
+            output_key = kwargs['outputKey']
+        if output_value is None and 'outputValue' in kwargs:
+            output_value = kwargs['outputValue']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if output_key is not None:
-            pulumi.set(__self__, "output_key", output_key)
+            _setter("output_key", output_key)
         if output_value is not None:
-            pulumi.set(__self__, "output_value", output_value)
+            _setter("output_value", output_value)
 
     @property
     @pulumi.getter
@@ -78,10 +97,27 @@ class ProvisionedProductParameterArgs:
         :param pulumi.Input[str] parameter_key: The name of the parameter defined in the template.
         :param pulumi.Input[str] parameter_value: The Template parameter value entered by the user.
         """
+        ProvisionedProductParameterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parameter_key=parameter_key,
+            parameter_value=parameter_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parameter_key: Optional[pulumi.Input[str]] = None,
+             parameter_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if parameter_key is None and 'parameterKey' in kwargs:
+            parameter_key = kwargs['parameterKey']
+        if parameter_value is None and 'parameterValue' in kwargs:
+            parameter_value = kwargs['parameterValue']
+
         if parameter_key is not None:
-            pulumi.set(__self__, "parameter_key", parameter_key)
+            _setter("parameter_key", parameter_key)
         if parameter_value is not None:
-            pulumi.set(__self__, "parameter_value", parameter_value)
+            _setter("parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterKey")

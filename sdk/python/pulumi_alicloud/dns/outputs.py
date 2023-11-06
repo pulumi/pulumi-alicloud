@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -71,9 +71,28 @@ class AccessStrategyDefaultAddrPool(dict):
         :param str addr_pool_id: The ID of the address pool in the primary address pool group.
         :param int lba_weight: The weight of the address pool in the primary address pool group.
         """
-        pulumi.set(__self__, "addr_pool_id", addr_pool_id)
+        AccessStrategyDefaultAddrPool._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            addr_pool_id=addr_pool_id,
+            lba_weight=lba_weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             addr_pool_id: Optional[str] = None,
+             lba_weight: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if addr_pool_id is None and 'addrPoolId' in kwargs:
+            addr_pool_id = kwargs['addrPoolId']
+        if addr_pool_id is None:
+            raise TypeError("Missing 'addr_pool_id' argument")
+        if lba_weight is None and 'lbaWeight' in kwargs:
+            lba_weight = kwargs['lbaWeight']
+
+        _setter("addr_pool_id", addr_pool_id)
         if lba_weight is not None:
-            pulumi.set(__self__, "lba_weight", lba_weight)
+            _setter("lba_weight", lba_weight)
 
     @property
     @pulumi.getter(name="addrPoolId")
@@ -120,10 +139,27 @@ class AccessStrategyFailoverAddrPool(dict):
         :param str addr_pool_id: The ID of the address pool in the secondary address pool group.
         :param int lba_weight: The weight of the address pool in the secondary address pool group.
         """
+        AccessStrategyFailoverAddrPool._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            addr_pool_id=addr_pool_id,
+            lba_weight=lba_weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             addr_pool_id: Optional[str] = None,
+             lba_weight: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if addr_pool_id is None and 'addrPoolId' in kwargs:
+            addr_pool_id = kwargs['addrPoolId']
+        if lba_weight is None and 'lbaWeight' in kwargs:
+            lba_weight = kwargs['lbaWeight']
+
         if addr_pool_id is not None:
-            pulumi.set(__self__, "addr_pool_id", addr_pool_id)
+            _setter("addr_pool_id", addr_pool_id)
         if lba_weight is not None:
-            pulumi.set(__self__, "lba_weight", lba_weight)
+            _setter("lba_weight", lba_weight)
 
     @property
     @pulumi.getter(name="addrPoolId")
@@ -166,8 +202,21 @@ class AccessStrategyLine(dict):
         """
         :param str line_code: The line code of the source region.
         """
+        AccessStrategyLine._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            line_code=line_code,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             line_code: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if line_code is None and 'lineCode' in kwargs:
+            line_code = kwargs['lineCode']
+
         if line_code is not None:
-            pulumi.set(__self__, "line_code", line_code)
+            _setter("line_code", line_code)
 
     @property
     @pulumi.getter(name="lineCode")
@@ -212,13 +261,42 @@ class AddressPoolAddress(dict):
         :param int lba_weight: The weight of the address. **NOTE:** The attribute is valid when the attribute `lba_strategy` is `RATIO`.
         :param str remark: The description of the address.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "attribute_info", attribute_info)
-        pulumi.set(__self__, "mode", mode)
+        AddressPoolAddress._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            attribute_info=attribute_info,
+            mode=mode,
+            lba_weight=lba_weight,
+            remark=remark,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: Optional[str] = None,
+             attribute_info: Optional[str] = None,
+             mode: Optional[str] = None,
+             lba_weight: Optional[int] = None,
+             remark: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if attribute_info is None and 'attributeInfo' in kwargs:
+            attribute_info = kwargs['attributeInfo']
+        if attribute_info is None:
+            raise TypeError("Missing 'attribute_info' argument")
+        if mode is None:
+            raise TypeError("Missing 'mode' argument")
+        if lba_weight is None and 'lbaWeight' in kwargs:
+            lba_weight = kwargs['lbaWeight']
+
+        _setter("address", address)
+        _setter("attribute_info", attribute_info)
+        _setter("mode", mode)
         if lba_weight is not None:
-            pulumi.set(__self__, "lba_weight", lba_weight)
+            _setter("lba_weight", lba_weight)
         if remark is not None:
-            pulumi.set(__self__, "remark", remark)
+            _setter("remark", remark)
 
     @property
     @pulumi.getter
@@ -289,8 +367,29 @@ class CustomLineIpSegmentList(dict):
         :param str end_ip: The end IP address of the CIDR block.
         :param str start_ip: The start IP address of the CIDR block.
         """
-        pulumi.set(__self__, "end_ip", end_ip)
-        pulumi.set(__self__, "start_ip", start_ip)
+        CustomLineIpSegmentList._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            end_ip=end_ip,
+            start_ip=start_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             end_ip: Optional[str] = None,
+             start_ip: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if end_ip is None and 'endIp' in kwargs:
+            end_ip = kwargs['endIp']
+        if end_ip is None:
+            raise TypeError("Missing 'end_ip' argument")
+        if start_ip is None and 'startIp' in kwargs:
+            start_ip = kwargs['startIp']
+        if start_ip is None:
+            raise TypeError("Missing 'start_ip' argument")
+
+        _setter("end_ip", end_ip)
+        _setter("start_ip", start_ip)
 
     @property
     @pulumi.getter(name="endIp")
@@ -345,14 +444,39 @@ class GtmInstanceAlertConfig(dict):
         :param str notice_type: The Alarm Event Type.
         :param bool sms_notice: Whether to configure SMS notification. Valid values: `true`, `false`.
         """
+        GtmInstanceAlertConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dingtalk_notice=dingtalk_notice,
+            email_notice=email_notice,
+            notice_type=notice_type,
+            sms_notice=sms_notice,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dingtalk_notice: Optional[bool] = None,
+             email_notice: Optional[bool] = None,
+             notice_type: Optional[str] = None,
+             sms_notice: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dingtalk_notice is None and 'dingtalkNotice' in kwargs:
+            dingtalk_notice = kwargs['dingtalkNotice']
+        if email_notice is None and 'emailNotice' in kwargs:
+            email_notice = kwargs['emailNotice']
+        if notice_type is None and 'noticeType' in kwargs:
+            notice_type = kwargs['noticeType']
+        if sms_notice is None and 'smsNotice' in kwargs:
+            sms_notice = kwargs['smsNotice']
+
         if dingtalk_notice is not None:
-            pulumi.set(__self__, "dingtalk_notice", dingtalk_notice)
+            _setter("dingtalk_notice", dingtalk_notice)
         if email_notice is not None:
-            pulumi.set(__self__, "email_notice", email_notice)
+            _setter("email_notice", email_notice)
         if notice_type is not None:
-            pulumi.set(__self__, "notice_type", notice_type)
+            _setter("notice_type", notice_type)
         if sms_notice is not None:
-            pulumi.set(__self__, "sms_notice", sms_notice)
+            _setter("sms_notice", sms_notice)
 
     @property
     @pulumi.getter(name="dingtalkNotice")
@@ -415,8 +539,29 @@ class MonitorConfigIspCityNode(dict):
         :param str city_code: The code of the city node to monitor.
         :param str isp_code: The code of the Internet provider service (ISP) node to monitor.
         """
-        pulumi.set(__self__, "city_code", city_code)
-        pulumi.set(__self__, "isp_code", isp_code)
+        MonitorConfigIspCityNode._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            city_code=city_code,
+            isp_code=isp_code,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             city_code: Optional[str] = None,
+             isp_code: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if city_code is None and 'cityCode' in kwargs:
+            city_code = kwargs['cityCode']
+        if city_code is None:
+            raise TypeError("Missing 'city_code' argument")
+        if isp_code is None and 'ispCode' in kwargs:
+            isp_code = kwargs['ispCode']
+        if isp_code is None:
+            raise TypeError("Missing 'isp_code' argument")
+
+        _setter("city_code", city_code)
+        _setter("isp_code", isp_code)
 
     @property
     @pulumi.getter(name="cityCode")
@@ -488,30 +633,179 @@ class GetAccessStrategiesStrategyResult(dict):
         :param str strategy_mode: The type of the access policy.
         :param str strategy_name: The name of the access policy.
         """
-        pulumi.set(__self__, "access_mode", access_mode)
-        pulumi.set(__self__, "access_strategy_id", access_strategy_id)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "create_timestamp", create_timestamp)
-        pulumi.set(__self__, "default_addr_pool_type", default_addr_pool_type)
-        pulumi.set(__self__, "default_addr_pools", default_addr_pools)
-        pulumi.set(__self__, "default_available_addr_num", default_available_addr_num)
-        pulumi.set(__self__, "default_latency_optimization", default_latency_optimization)
-        pulumi.set(__self__, "default_lba_strategy", default_lba_strategy)
-        pulumi.set(__self__, "default_max_return_addr_num", default_max_return_addr_num)
-        pulumi.set(__self__, "default_min_available_addr_num", default_min_available_addr_num)
-        pulumi.set(__self__, "effective_addr_pool_group_type", effective_addr_pool_group_type)
-        pulumi.set(__self__, "failover_addr_pool_type", failover_addr_pool_type)
-        pulumi.set(__self__, "failover_addr_pools", failover_addr_pools)
-        pulumi.set(__self__, "failover_available_addr_num", failover_available_addr_num)
-        pulumi.set(__self__, "failover_latency_optimization", failover_latency_optimization)
-        pulumi.set(__self__, "failover_lba_strategy", failover_lba_strategy)
-        pulumi.set(__self__, "failover_max_return_addr_num", failover_max_return_addr_num)
-        pulumi.set(__self__, "failover_min_available_addr_num", failover_min_available_addr_num)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "lines", lines)
-        pulumi.set(__self__, "strategy_mode", strategy_mode)
-        pulumi.set(__self__, "strategy_name", strategy_name)
+        GetAccessStrategiesStrategyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_mode=access_mode,
+            access_strategy_id=access_strategy_id,
+            create_time=create_time,
+            create_timestamp=create_timestamp,
+            default_addr_pool_type=default_addr_pool_type,
+            default_addr_pools=default_addr_pools,
+            default_available_addr_num=default_available_addr_num,
+            default_latency_optimization=default_latency_optimization,
+            default_lba_strategy=default_lba_strategy,
+            default_max_return_addr_num=default_max_return_addr_num,
+            default_min_available_addr_num=default_min_available_addr_num,
+            effective_addr_pool_group_type=effective_addr_pool_group_type,
+            failover_addr_pool_type=failover_addr_pool_type,
+            failover_addr_pools=failover_addr_pools,
+            failover_available_addr_num=failover_available_addr_num,
+            failover_latency_optimization=failover_latency_optimization,
+            failover_lba_strategy=failover_lba_strategy,
+            failover_max_return_addr_num=failover_max_return_addr_num,
+            failover_min_available_addr_num=failover_min_available_addr_num,
+            id=id,
+            instance_id=instance_id,
+            lines=lines,
+            strategy_mode=strategy_mode,
+            strategy_name=strategy_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_mode: Optional[str] = None,
+             access_strategy_id: Optional[str] = None,
+             create_time: Optional[str] = None,
+             create_timestamp: Optional[str] = None,
+             default_addr_pool_type: Optional[str] = None,
+             default_addr_pools: Optional[Sequence['outputs.GetAccessStrategiesStrategyDefaultAddrPoolResult']] = None,
+             default_available_addr_num: Optional[int] = None,
+             default_latency_optimization: Optional[str] = None,
+             default_lba_strategy: Optional[str] = None,
+             default_max_return_addr_num: Optional[int] = None,
+             default_min_available_addr_num: Optional[int] = None,
+             effective_addr_pool_group_type: Optional[str] = None,
+             failover_addr_pool_type: Optional[str] = None,
+             failover_addr_pools: Optional[Sequence['outputs.GetAccessStrategiesStrategyFailoverAddrPoolResult']] = None,
+             failover_available_addr_num: Optional[int] = None,
+             failover_latency_optimization: Optional[str] = None,
+             failover_lba_strategy: Optional[str] = None,
+             failover_max_return_addr_num: Optional[int] = None,
+             failover_min_available_addr_num: Optional[int] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             lines: Optional[Sequence['outputs.GetAccessStrategiesStrategyLineResult']] = None,
+             strategy_mode: Optional[str] = None,
+             strategy_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_mode is None and 'accessMode' in kwargs:
+            access_mode = kwargs['accessMode']
+        if access_mode is None:
+            raise TypeError("Missing 'access_mode' argument")
+        if access_strategy_id is None and 'accessStrategyId' in kwargs:
+            access_strategy_id = kwargs['accessStrategyId']
+        if access_strategy_id is None:
+            raise TypeError("Missing 'access_strategy_id' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if create_timestamp is None and 'createTimestamp' in kwargs:
+            create_timestamp = kwargs['createTimestamp']
+        if create_timestamp is None:
+            raise TypeError("Missing 'create_timestamp' argument")
+        if default_addr_pool_type is None and 'defaultAddrPoolType' in kwargs:
+            default_addr_pool_type = kwargs['defaultAddrPoolType']
+        if default_addr_pool_type is None:
+            raise TypeError("Missing 'default_addr_pool_type' argument")
+        if default_addr_pools is None and 'defaultAddrPools' in kwargs:
+            default_addr_pools = kwargs['defaultAddrPools']
+        if default_addr_pools is None:
+            raise TypeError("Missing 'default_addr_pools' argument")
+        if default_available_addr_num is None and 'defaultAvailableAddrNum' in kwargs:
+            default_available_addr_num = kwargs['defaultAvailableAddrNum']
+        if default_available_addr_num is None:
+            raise TypeError("Missing 'default_available_addr_num' argument")
+        if default_latency_optimization is None and 'defaultLatencyOptimization' in kwargs:
+            default_latency_optimization = kwargs['defaultLatencyOptimization']
+        if default_latency_optimization is None:
+            raise TypeError("Missing 'default_latency_optimization' argument")
+        if default_lba_strategy is None and 'defaultLbaStrategy' in kwargs:
+            default_lba_strategy = kwargs['defaultLbaStrategy']
+        if default_lba_strategy is None:
+            raise TypeError("Missing 'default_lba_strategy' argument")
+        if default_max_return_addr_num is None and 'defaultMaxReturnAddrNum' in kwargs:
+            default_max_return_addr_num = kwargs['defaultMaxReturnAddrNum']
+        if default_max_return_addr_num is None:
+            raise TypeError("Missing 'default_max_return_addr_num' argument")
+        if default_min_available_addr_num is None and 'defaultMinAvailableAddrNum' in kwargs:
+            default_min_available_addr_num = kwargs['defaultMinAvailableAddrNum']
+        if default_min_available_addr_num is None:
+            raise TypeError("Missing 'default_min_available_addr_num' argument")
+        if effective_addr_pool_group_type is None and 'effectiveAddrPoolGroupType' in kwargs:
+            effective_addr_pool_group_type = kwargs['effectiveAddrPoolGroupType']
+        if effective_addr_pool_group_type is None:
+            raise TypeError("Missing 'effective_addr_pool_group_type' argument")
+        if failover_addr_pool_type is None and 'failoverAddrPoolType' in kwargs:
+            failover_addr_pool_type = kwargs['failoverAddrPoolType']
+        if failover_addr_pool_type is None:
+            raise TypeError("Missing 'failover_addr_pool_type' argument")
+        if failover_addr_pools is None and 'failoverAddrPools' in kwargs:
+            failover_addr_pools = kwargs['failoverAddrPools']
+        if failover_addr_pools is None:
+            raise TypeError("Missing 'failover_addr_pools' argument")
+        if failover_available_addr_num is None and 'failoverAvailableAddrNum' in kwargs:
+            failover_available_addr_num = kwargs['failoverAvailableAddrNum']
+        if failover_available_addr_num is None:
+            raise TypeError("Missing 'failover_available_addr_num' argument")
+        if failover_latency_optimization is None and 'failoverLatencyOptimization' in kwargs:
+            failover_latency_optimization = kwargs['failoverLatencyOptimization']
+        if failover_latency_optimization is None:
+            raise TypeError("Missing 'failover_latency_optimization' argument")
+        if failover_lba_strategy is None and 'failoverLbaStrategy' in kwargs:
+            failover_lba_strategy = kwargs['failoverLbaStrategy']
+        if failover_lba_strategy is None:
+            raise TypeError("Missing 'failover_lba_strategy' argument")
+        if failover_max_return_addr_num is None and 'failoverMaxReturnAddrNum' in kwargs:
+            failover_max_return_addr_num = kwargs['failoverMaxReturnAddrNum']
+        if failover_max_return_addr_num is None:
+            raise TypeError("Missing 'failover_max_return_addr_num' argument")
+        if failover_min_available_addr_num is None and 'failoverMinAvailableAddrNum' in kwargs:
+            failover_min_available_addr_num = kwargs['failoverMinAvailableAddrNum']
+        if failover_min_available_addr_num is None:
+            raise TypeError("Missing 'failover_min_available_addr_num' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if lines is None:
+            raise TypeError("Missing 'lines' argument")
+        if strategy_mode is None and 'strategyMode' in kwargs:
+            strategy_mode = kwargs['strategyMode']
+        if strategy_mode is None:
+            raise TypeError("Missing 'strategy_mode' argument")
+        if strategy_name is None and 'strategyName' in kwargs:
+            strategy_name = kwargs['strategyName']
+        if strategy_name is None:
+            raise TypeError("Missing 'strategy_name' argument")
+
+        _setter("access_mode", access_mode)
+        _setter("access_strategy_id", access_strategy_id)
+        _setter("create_time", create_time)
+        _setter("create_timestamp", create_timestamp)
+        _setter("default_addr_pool_type", default_addr_pool_type)
+        _setter("default_addr_pools", default_addr_pools)
+        _setter("default_available_addr_num", default_available_addr_num)
+        _setter("default_latency_optimization", default_latency_optimization)
+        _setter("default_lba_strategy", default_lba_strategy)
+        _setter("default_max_return_addr_num", default_max_return_addr_num)
+        _setter("default_min_available_addr_num", default_min_available_addr_num)
+        _setter("effective_addr_pool_group_type", effective_addr_pool_group_type)
+        _setter("failover_addr_pool_type", failover_addr_pool_type)
+        _setter("failover_addr_pools", failover_addr_pools)
+        _setter("failover_available_addr_num", failover_available_addr_num)
+        _setter("failover_latency_optimization", failover_latency_optimization)
+        _setter("failover_lba_strategy", failover_lba_strategy)
+        _setter("failover_max_return_addr_num", failover_max_return_addr_num)
+        _setter("failover_min_available_addr_num", failover_min_available_addr_num)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("lines", lines)
+        _setter("strategy_mode", strategy_mode)
+        _setter("strategy_name", strategy_name)
 
     @property
     @pulumi.getter(name="accessMode")
@@ -719,10 +1013,41 @@ class GetAccessStrategiesStrategyDefaultAddrPoolResult(dict):
         :param int lba_weight: The weight of the address pool.
         :param str name: The name of the address pool.
         """
-        pulumi.set(__self__, "addr_count", addr_count)
-        pulumi.set(__self__, "addr_pool_id", addr_pool_id)
-        pulumi.set(__self__, "lba_weight", lba_weight)
-        pulumi.set(__self__, "name", name)
+        GetAccessStrategiesStrategyDefaultAddrPoolResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            addr_count=addr_count,
+            addr_pool_id=addr_pool_id,
+            lba_weight=lba_weight,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             addr_count: Optional[int] = None,
+             addr_pool_id: Optional[str] = None,
+             lba_weight: Optional[int] = None,
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if addr_count is None and 'addrCount' in kwargs:
+            addr_count = kwargs['addrCount']
+        if addr_count is None:
+            raise TypeError("Missing 'addr_count' argument")
+        if addr_pool_id is None and 'addrPoolId' in kwargs:
+            addr_pool_id = kwargs['addrPoolId']
+        if addr_pool_id is None:
+            raise TypeError("Missing 'addr_pool_id' argument")
+        if lba_weight is None and 'lbaWeight' in kwargs:
+            lba_weight = kwargs['lbaWeight']
+        if lba_weight is None:
+            raise TypeError("Missing 'lba_weight' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
+        _setter("addr_count", addr_count)
+        _setter("addr_pool_id", addr_pool_id)
+        _setter("lba_weight", lba_weight)
+        _setter("name", name)
 
     @property
     @pulumi.getter(name="addrCount")
@@ -770,10 +1095,41 @@ class GetAccessStrategiesStrategyFailoverAddrPoolResult(dict):
         :param int lba_weight: The weight of the address pool.
         :param str name: The name of the address pool.
         """
-        pulumi.set(__self__, "addr_count", addr_count)
-        pulumi.set(__self__, "addr_pool_id", addr_pool_id)
-        pulumi.set(__self__, "lba_weight", lba_weight)
-        pulumi.set(__self__, "name", name)
+        GetAccessStrategiesStrategyFailoverAddrPoolResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            addr_count=addr_count,
+            addr_pool_id=addr_pool_id,
+            lba_weight=lba_weight,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             addr_count: Optional[int] = None,
+             addr_pool_id: Optional[str] = None,
+             lba_weight: Optional[int] = None,
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if addr_count is None and 'addrCount' in kwargs:
+            addr_count = kwargs['addrCount']
+        if addr_count is None:
+            raise TypeError("Missing 'addr_count' argument")
+        if addr_pool_id is None and 'addrPoolId' in kwargs:
+            addr_pool_id = kwargs['addrPoolId']
+        if addr_pool_id is None:
+            raise TypeError("Missing 'addr_pool_id' argument")
+        if lba_weight is None and 'lbaWeight' in kwargs:
+            lba_weight = kwargs['lbaWeight']
+        if lba_weight is None:
+            raise TypeError("Missing 'lba_weight' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
+        _setter("addr_count", addr_count)
+        _setter("addr_pool_id", addr_pool_id)
+        _setter("lba_weight", lba_weight)
+        _setter("name", name)
 
     @property
     @pulumi.getter(name="addrCount")
@@ -821,10 +1177,43 @@ class GetAccessStrategiesStrategyLineResult(dict):
         :param str line_code: The line code of the source region.
         :param str line_name: The line name of the source region.
         """
-        pulumi.set(__self__, "group_code", group_code)
-        pulumi.set(__self__, "group_name", group_name)
-        pulumi.set(__self__, "line_code", line_code)
-        pulumi.set(__self__, "line_name", line_name)
+        GetAccessStrategiesStrategyLineResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_code=group_code,
+            group_name=group_name,
+            line_code=line_code,
+            line_name=line_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_code: Optional[str] = None,
+             group_name: Optional[str] = None,
+             line_code: Optional[str] = None,
+             line_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if group_code is None and 'groupCode' in kwargs:
+            group_code = kwargs['groupCode']
+        if group_code is None:
+            raise TypeError("Missing 'group_code' argument")
+        if group_name is None and 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if group_name is None:
+            raise TypeError("Missing 'group_name' argument")
+        if line_code is None and 'lineCode' in kwargs:
+            line_code = kwargs['lineCode']
+        if line_code is None:
+            raise TypeError("Missing 'line_code' argument")
+        if line_name is None and 'lineName' in kwargs:
+            line_name = kwargs['lineName']
+        if line_name is None:
+            raise TypeError("Missing 'line_name' argument")
+
+        _setter("group_code", group_code)
+        _setter("group_name", group_name)
+        _setter("line_code", line_code)
+        _setter("line_name", line_name)
 
     @property
     @pulumi.getter(name="groupCode")
@@ -890,19 +1279,100 @@ class GetAddressPoolsPoolResult(dict):
         :param str update_time: The time when the address pool was updated.
         :param str update_timestamp: The timestamp that indicates when the address pool was updated.
         """
-        pulumi.set(__self__, "address_pool_id", address_pool_id)
-        pulumi.set(__self__, "address_pool_name", address_pool_name)
-        pulumi.set(__self__, "addresses", addresses)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "create_timestamp", create_timestamp)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "lba_strategy", lba_strategy)
-        pulumi.set(__self__, "monitor_config_id", monitor_config_id)
-        pulumi.set(__self__, "monitor_status", monitor_status)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "update_time", update_time)
-        pulumi.set(__self__, "update_timestamp", update_timestamp)
+        GetAddressPoolsPoolResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address_pool_id=address_pool_id,
+            address_pool_name=address_pool_name,
+            addresses=addresses,
+            create_time=create_time,
+            create_timestamp=create_timestamp,
+            id=id,
+            instance_id=instance_id,
+            lba_strategy=lba_strategy,
+            monitor_config_id=monitor_config_id,
+            monitor_status=monitor_status,
+            type=type,
+            update_time=update_time,
+            update_timestamp=update_timestamp,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address_pool_id: Optional[str] = None,
+             address_pool_name: Optional[str] = None,
+             addresses: Optional[Sequence['outputs.GetAddressPoolsPoolAddressResult']] = None,
+             create_time: Optional[str] = None,
+             create_timestamp: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             lba_strategy: Optional[str] = None,
+             monitor_config_id: Optional[str] = None,
+             monitor_status: Optional[str] = None,
+             type: Optional[str] = None,
+             update_time: Optional[str] = None,
+             update_timestamp: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if address_pool_id is None and 'addressPoolId' in kwargs:
+            address_pool_id = kwargs['addressPoolId']
+        if address_pool_id is None:
+            raise TypeError("Missing 'address_pool_id' argument")
+        if address_pool_name is None and 'addressPoolName' in kwargs:
+            address_pool_name = kwargs['addressPoolName']
+        if address_pool_name is None:
+            raise TypeError("Missing 'address_pool_name' argument")
+        if addresses is None:
+            raise TypeError("Missing 'addresses' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if create_timestamp is None and 'createTimestamp' in kwargs:
+            create_timestamp = kwargs['createTimestamp']
+        if create_timestamp is None:
+            raise TypeError("Missing 'create_timestamp' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if lba_strategy is None and 'lbaStrategy' in kwargs:
+            lba_strategy = kwargs['lbaStrategy']
+        if lba_strategy is None:
+            raise TypeError("Missing 'lba_strategy' argument")
+        if monitor_config_id is None and 'monitorConfigId' in kwargs:
+            monitor_config_id = kwargs['monitorConfigId']
+        if monitor_config_id is None:
+            raise TypeError("Missing 'monitor_config_id' argument")
+        if monitor_status is None and 'monitorStatus' in kwargs:
+            monitor_status = kwargs['monitorStatus']
+        if monitor_status is None:
+            raise TypeError("Missing 'monitor_status' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if update_time is None:
+            raise TypeError("Missing 'update_time' argument")
+        if update_timestamp is None and 'updateTimestamp' in kwargs:
+            update_timestamp = kwargs['updateTimestamp']
+        if update_timestamp is None:
+            raise TypeError("Missing 'update_timestamp' argument")
+
+        _setter("address_pool_id", address_pool_id)
+        _setter("address_pool_name", address_pool_name)
+        _setter("addresses", addresses)
+        _setter("create_time", create_time)
+        _setter("create_timestamp", create_timestamp)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("lba_strategy", lba_strategy)
+        _setter("monitor_config_id", monitor_config_id)
+        _setter("monitor_status", monitor_status)
+        _setter("type", type)
+        _setter("update_time", update_time)
+        _setter("update_timestamp", update_timestamp)
 
     @property
     @pulumi.getter(name="addressPoolId")
@@ -1024,11 +1494,44 @@ class GetAddressPoolsPoolAddressResult(dict):
         :param str mode: The type of the address.
         :param str remark: The description of the address.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "attribute_info", attribute_info)
-        pulumi.set(__self__, "lba_weight", lba_weight)
-        pulumi.set(__self__, "mode", mode)
-        pulumi.set(__self__, "remark", remark)
+        GetAddressPoolsPoolAddressResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            attribute_info=attribute_info,
+            lba_weight=lba_weight,
+            mode=mode,
+            remark=remark,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: Optional[str] = None,
+             attribute_info: Optional[str] = None,
+             lba_weight: Optional[int] = None,
+             mode: Optional[str] = None,
+             remark: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if attribute_info is None and 'attributeInfo' in kwargs:
+            attribute_info = kwargs['attributeInfo']
+        if attribute_info is None:
+            raise TypeError("Missing 'attribute_info' argument")
+        if lba_weight is None and 'lbaWeight' in kwargs:
+            lba_weight = kwargs['lbaWeight']
+        if lba_weight is None:
+            raise TypeError("Missing 'lba_weight' argument")
+        if mode is None:
+            raise TypeError("Missing 'mode' argument")
+        if remark is None:
+            raise TypeError("Missing 'remark' argument")
+
+        _setter("address", address)
+        _setter("attribute_info", attribute_info)
+        _setter("lba_weight", lba_weight)
+        _setter("mode", mode)
+        _setter("remark", remark)
 
     @property
     @pulumi.getter
@@ -1084,10 +1587,41 @@ class GetAlidnsDomainGroupsGroupResult(dict):
         :param str group_name: The name of the domain group.
         :param str id: Id of the instance.
         """
-        pulumi.set(__self__, "domain_count", domain_count)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "group_name", group_name)
-        pulumi.set(__self__, "id", id)
+        GetAlidnsDomainGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain_count=domain_count,
+            group_id=group_id,
+            group_name=group_name,
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain_count: Optional[int] = None,
+             group_id: Optional[str] = None,
+             group_name: Optional[str] = None,
+             id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if domain_count is None and 'domainCount' in kwargs:
+            domain_count = kwargs['domainCount']
+        if domain_count is None:
+            raise TypeError("Missing 'domain_count' argument")
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if group_name is None and 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if group_name is None:
+            raise TypeError("Missing 'group_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+
+        _setter("domain_count", domain_count)
+        _setter("group_id", group_id)
+        _setter("group_name", group_name)
+        _setter("id", id)
 
     @property
     @pulumi.getter(name="domainCount")
@@ -1171,29 +1705,170 @@ class GetAlidnsDomainsDomainResult(dict):
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         :param str version_code: Cloud analysis version code.
         """
-        pulumi.set(__self__, "ali_domain", ali_domain)
-        pulumi.set(__self__, "available_ttls", available_ttls)
-        pulumi.set(__self__, "dns_servers", dns_servers)
-        pulumi.set(__self__, "domain_id", domain_id)
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "group_name", group_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "in_black_hole", in_black_hole)
-        pulumi.set(__self__, "in_clean", in_clean)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "line_type", line_type)
-        pulumi.set(__self__, "min_ttl", min_ttl)
-        pulumi.set(__self__, "puny_code", puny_code)
-        pulumi.set(__self__, "record_line_tree_json", record_line_tree_json)
-        pulumi.set(__self__, "record_lines", record_lines)
-        pulumi.set(__self__, "region_lines", region_lines)
-        pulumi.set(__self__, "remark", remark)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "slave_dns", slave_dns)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "version_code", version_code)
-        pulumi.set(__self__, "version_name", version_name)
+        GetAlidnsDomainsDomainResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ali_domain=ali_domain,
+            available_ttls=available_ttls,
+            dns_servers=dns_servers,
+            domain_id=domain_id,
+            domain_name=domain_name,
+            group_id=group_id,
+            group_name=group_name,
+            id=id,
+            in_black_hole=in_black_hole,
+            in_clean=in_clean,
+            instance_id=instance_id,
+            line_type=line_type,
+            min_ttl=min_ttl,
+            puny_code=puny_code,
+            record_line_tree_json=record_line_tree_json,
+            record_lines=record_lines,
+            region_lines=region_lines,
+            remark=remark,
+            resource_group_id=resource_group_id,
+            slave_dns=slave_dns,
+            tags=tags,
+            version_code=version_code,
+            version_name=version_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ali_domain: Optional[bool] = None,
+             available_ttls: Optional[Sequence[int]] = None,
+             dns_servers: Optional[Sequence[str]] = None,
+             domain_id: Optional[str] = None,
+             domain_name: Optional[str] = None,
+             group_id: Optional[str] = None,
+             group_name: Optional[str] = None,
+             id: Optional[str] = None,
+             in_black_hole: Optional[bool] = None,
+             in_clean: Optional[bool] = None,
+             instance_id: Optional[str] = None,
+             line_type: Optional[str] = None,
+             min_ttl: Optional[int] = None,
+             puny_code: Optional[str] = None,
+             record_line_tree_json: Optional[str] = None,
+             record_lines: Optional[Sequence['outputs.GetAlidnsDomainsDomainRecordLineResult']] = None,
+             region_lines: Optional[bool] = None,
+             remark: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             slave_dns: Optional[bool] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             version_code: Optional[str] = None,
+             version_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ali_domain is None and 'aliDomain' in kwargs:
+            ali_domain = kwargs['aliDomain']
+        if ali_domain is None:
+            raise TypeError("Missing 'ali_domain' argument")
+        if available_ttls is None and 'availableTtls' in kwargs:
+            available_ttls = kwargs['availableTtls']
+        if available_ttls is None:
+            raise TypeError("Missing 'available_ttls' argument")
+        if dns_servers is None and 'dnsServers' in kwargs:
+            dns_servers = kwargs['dnsServers']
+        if dns_servers is None:
+            raise TypeError("Missing 'dns_servers' argument")
+        if domain_id is None and 'domainId' in kwargs:
+            domain_id = kwargs['domainId']
+        if domain_id is None:
+            raise TypeError("Missing 'domain_id' argument")
+        if domain_name is None and 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if group_name is None and 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if group_name is None:
+            raise TypeError("Missing 'group_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if in_black_hole is None and 'inBlackHole' in kwargs:
+            in_black_hole = kwargs['inBlackHole']
+        if in_black_hole is None:
+            raise TypeError("Missing 'in_black_hole' argument")
+        if in_clean is None and 'inClean' in kwargs:
+            in_clean = kwargs['inClean']
+        if in_clean is None:
+            raise TypeError("Missing 'in_clean' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if line_type is None and 'lineType' in kwargs:
+            line_type = kwargs['lineType']
+        if line_type is None:
+            raise TypeError("Missing 'line_type' argument")
+        if min_ttl is None and 'minTtl' in kwargs:
+            min_ttl = kwargs['minTtl']
+        if min_ttl is None:
+            raise TypeError("Missing 'min_ttl' argument")
+        if puny_code is None and 'punyCode' in kwargs:
+            puny_code = kwargs['punyCode']
+        if puny_code is None:
+            raise TypeError("Missing 'puny_code' argument")
+        if record_line_tree_json is None and 'recordLineTreeJson' in kwargs:
+            record_line_tree_json = kwargs['recordLineTreeJson']
+        if record_line_tree_json is None:
+            raise TypeError("Missing 'record_line_tree_json' argument")
+        if record_lines is None and 'recordLines' in kwargs:
+            record_lines = kwargs['recordLines']
+        if record_lines is None:
+            raise TypeError("Missing 'record_lines' argument")
+        if region_lines is None and 'regionLines' in kwargs:
+            region_lines = kwargs['regionLines']
+        if region_lines is None:
+            raise TypeError("Missing 'region_lines' argument")
+        if remark is None:
+            raise TypeError("Missing 'remark' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if slave_dns is None and 'slaveDns' in kwargs:
+            slave_dns = kwargs['slaveDns']
+        if slave_dns is None:
+            raise TypeError("Missing 'slave_dns' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if version_code is None and 'versionCode' in kwargs:
+            version_code = kwargs['versionCode']
+        if version_code is None:
+            raise TypeError("Missing 'version_code' argument")
+        if version_name is None and 'versionName' in kwargs:
+            version_name = kwargs['versionName']
+        if version_name is None:
+            raise TypeError("Missing 'version_name' argument")
+
+        _setter("ali_domain", ali_domain)
+        _setter("available_ttls", available_ttls)
+        _setter("dns_servers", dns_servers)
+        _setter("domain_id", domain_id)
+        _setter("domain_name", domain_name)
+        _setter("group_id", group_id)
+        _setter("group_name", group_name)
+        _setter("id", id)
+        _setter("in_black_hole", in_black_hole)
+        _setter("in_clean", in_clean)
+        _setter("instance_id", instance_id)
+        _setter("line_type", line_type)
+        _setter("min_ttl", min_ttl)
+        _setter("puny_code", puny_code)
+        _setter("record_line_tree_json", record_line_tree_json)
+        _setter("record_lines", record_lines)
+        _setter("region_lines", region_lines)
+        _setter("remark", remark)
+        _setter("resource_group_id", resource_group_id)
+        _setter("slave_dns", slave_dns)
+        _setter("tags", tags)
+        _setter("version_code", version_code)
+        _setter("version_name", version_name)
 
     @property
     @pulumi.getter(name="aliDomain")
@@ -1387,10 +2062,43 @@ class GetAlidnsDomainsDomainRecordLineResult(dict):
         :param str line_display_name: Parent line display name.
         :param str line_name: Sub-line display name.
         """
-        pulumi.set(__self__, "father_code", father_code)
-        pulumi.set(__self__, "line_code", line_code)
-        pulumi.set(__self__, "line_display_name", line_display_name)
-        pulumi.set(__self__, "line_name", line_name)
+        GetAlidnsDomainsDomainRecordLineResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            father_code=father_code,
+            line_code=line_code,
+            line_display_name=line_display_name,
+            line_name=line_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             father_code: Optional[str] = None,
+             line_code: Optional[str] = None,
+             line_display_name: Optional[str] = None,
+             line_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if father_code is None and 'fatherCode' in kwargs:
+            father_code = kwargs['fatherCode']
+        if father_code is None:
+            raise TypeError("Missing 'father_code' argument")
+        if line_code is None and 'lineCode' in kwargs:
+            line_code = kwargs['lineCode']
+        if line_code is None:
+            raise TypeError("Missing 'line_code' argument")
+        if line_display_name is None and 'lineDisplayName' in kwargs:
+            line_display_name = kwargs['lineDisplayName']
+        if line_display_name is None:
+            raise TypeError("Missing 'line_display_name' argument")
+        if line_name is None and 'lineName' in kwargs:
+            line_name = kwargs['lineName']
+        if line_name is None:
+            raise TypeError("Missing 'line_name' argument")
+
+        _setter("father_code", father_code)
+        _setter("line_code", line_code)
+        _setter("line_display_name", line_display_name)
+        _setter("line_name", line_name)
 
     @property
     @pulumi.getter(name="fatherCode")
@@ -1446,14 +2154,67 @@ class GetAlidnsInstancesInstanceResult(dict):
         :param str version_code: Paid package version.
         :param str version_name: Paid package version name.
         """
-        pulumi.set(__self__, "dns_security", dns_security)
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "domain_numbers", domain_numbers)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "version_code", version_code)
-        pulumi.set(__self__, "version_name", version_name)
+        GetAlidnsInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dns_security=dns_security,
+            domain=domain,
+            domain_numbers=domain_numbers,
+            id=id,
+            instance_id=instance_id,
+            payment_type=payment_type,
+            version_code=version_code,
+            version_name=version_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dns_security: Optional[str] = None,
+             domain: Optional[str] = None,
+             domain_numbers: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             version_code: Optional[str] = None,
+             version_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dns_security is None and 'dnsSecurity' in kwargs:
+            dns_security = kwargs['dnsSecurity']
+        if dns_security is None:
+            raise TypeError("Missing 'dns_security' argument")
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if domain_numbers is None and 'domainNumbers' in kwargs:
+            domain_numbers = kwargs['domainNumbers']
+        if domain_numbers is None:
+            raise TypeError("Missing 'domain_numbers' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if version_code is None and 'versionCode' in kwargs:
+            version_code = kwargs['versionCode']
+        if version_code is None:
+            raise TypeError("Missing 'version_code' argument")
+        if version_name is None and 'versionName' in kwargs:
+            version_name = kwargs['versionName']
+        if version_name is None:
+            raise TypeError("Missing 'version_name' argument")
+
+        _setter("dns_security", dns_security)
+        _setter("domain", domain)
+        _setter("domain_numbers", domain_numbers)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("payment_type", payment_type)
+        _setter("version_code", version_code)
+        _setter("version_name", version_name)
 
     @property
     @pulumi.getter(name="dnsSecurity")
@@ -1549,18 +2310,79 @@ class GetAlidnsRecordsRecordResult(dict):
         :param str type: Record type. Valid values: `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
         :param str value: Host record value of the domain.
         """
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "line", line)
-        pulumi.set(__self__, "locked", locked)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "record_id", record_id)
-        pulumi.set(__self__, "remark", remark)
-        pulumi.set(__self__, "rr", rr)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "ttl", ttl)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "value", value)
+        GetAlidnsRecordsRecordResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain_name=domain_name,
+            id=id,
+            line=line,
+            locked=locked,
+            priority=priority,
+            record_id=record_id,
+            remark=remark,
+            rr=rr,
+            status=status,
+            ttl=ttl,
+            type=type,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain_name: Optional[str] = None,
+             id: Optional[str] = None,
+             line: Optional[str] = None,
+             locked: Optional[bool] = None,
+             priority: Optional[int] = None,
+             record_id: Optional[str] = None,
+             remark: Optional[str] = None,
+             rr: Optional[str] = None,
+             status: Optional[str] = None,
+             ttl: Optional[int] = None,
+             type: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if domain_name is None and 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if line is None:
+            raise TypeError("Missing 'line' argument")
+        if locked is None:
+            raise TypeError("Missing 'locked' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if record_id is None and 'recordId' in kwargs:
+            record_id = kwargs['recordId']
+        if record_id is None:
+            raise TypeError("Missing 'record_id' argument")
+        if remark is None:
+            raise TypeError("Missing 'remark' argument")
+        if rr is None:
+            raise TypeError("Missing 'rr' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if ttl is None:
+            raise TypeError("Missing 'ttl' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
+        _setter("domain_name", domain_name)
+        _setter("id", id)
+        _setter("line", line)
+        _setter("locked", locked)
+        _setter("priority", priority)
+        _setter("record_id", record_id)
+        _setter("remark", remark)
+        _setter("rr", rr)
+        _setter("status", status)
+        _setter("ttl", ttl)
+        _setter("type", type)
+        _setter("value", value)
 
     @property
     @pulumi.getter(name="domainName")
@@ -1676,12 +2498,53 @@ class GetCustomLinesLineResult(dict):
         :param str id: The ID of the Custom Line.
         :param Sequence['GetCustomLinesLineIpSegmentListArgs'] ip_segment_lists: The IP segment list.
         """
-        pulumi.set(__self__, "code", code)
-        pulumi.set(__self__, "custom_line_id", custom_line_id)
-        pulumi.set(__self__, "custom_line_name", custom_line_name)
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "ip_segment_lists", ip_segment_lists)
+        GetCustomLinesLineResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            code=code,
+            custom_line_id=custom_line_id,
+            custom_line_name=custom_line_name,
+            domain_name=domain_name,
+            id=id,
+            ip_segment_lists=ip_segment_lists,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             code: Optional[str] = None,
+             custom_line_id: Optional[str] = None,
+             custom_line_name: Optional[str] = None,
+             domain_name: Optional[str] = None,
+             id: Optional[str] = None,
+             ip_segment_lists: Optional[Sequence['outputs.GetCustomLinesLineIpSegmentListResult']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if code is None:
+            raise TypeError("Missing 'code' argument")
+        if custom_line_id is None and 'customLineId' in kwargs:
+            custom_line_id = kwargs['customLineId']
+        if custom_line_id is None:
+            raise TypeError("Missing 'custom_line_id' argument")
+        if custom_line_name is None and 'customLineName' in kwargs:
+            custom_line_name = kwargs['customLineName']
+        if custom_line_name is None:
+            raise TypeError("Missing 'custom_line_name' argument")
+        if domain_name is None and 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if ip_segment_lists is None and 'ipSegmentLists' in kwargs:
+            ip_segment_lists = kwargs['ipSegmentLists']
+        if ip_segment_lists is None:
+            raise TypeError("Missing 'ip_segment_lists' argument")
+
+        _setter("code", code)
+        _setter("custom_line_id", custom_line_id)
+        _setter("custom_line_name", custom_line_name)
+        _setter("domain_name", domain_name)
+        _setter("id", id)
+        _setter("ip_segment_lists", ip_segment_lists)
 
     @property
     @pulumi.getter
@@ -1741,8 +2604,29 @@ class GetCustomLinesLineIpSegmentListResult(dict):
         :param str end_ip: The end IP address of the CIDR block.
         :param str start_ip: The start IP address of the CIDR block.
         """
-        pulumi.set(__self__, "end_ip", end_ip)
-        pulumi.set(__self__, "start_ip", start_ip)
+        GetCustomLinesLineIpSegmentListResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            end_ip=end_ip,
+            start_ip=start_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             end_ip: Optional[str] = None,
+             start_ip: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if end_ip is None and 'endIp' in kwargs:
+            end_ip = kwargs['endIp']
+        if end_ip is None:
+            raise TypeError("Missing 'end_ip' argument")
+        if start_ip is None and 'startIp' in kwargs:
+            start_ip = kwargs['startIp']
+        if start_ip is None:
+            raise TypeError("Missing 'start_ip' argument")
+
+        _setter("end_ip", end_ip)
+        _setter("start_ip", start_ip)
 
     @property
     @pulumi.getter(name="endIp")
@@ -1766,8 +2650,29 @@ class GetDomainGroupsGroupResult(dict):
     def __init__(__self__, *,
                  group_id: str,
                  group_name: str):
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "group_name", group_name)
+        GetDomainGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_id=group_id,
+            group_name=group_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_id: Optional[str] = None,
+             group_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if group_name is None and 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if group_name is None:
+            raise TypeError("Missing 'group_name' argument")
+
+        _setter("group_id", group_id)
+        _setter("group_name", group_name)
 
     @property
     @pulumi.getter(name="groupId")
@@ -1793,16 +2698,71 @@ class GetDomainRecordsRecordResult(dict):
                  ttl: float,
                  type: str,
                  value: str):
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "host_record", host_record)
-        pulumi.set(__self__, "line", line)
-        pulumi.set(__self__, "locked", locked)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "record_id", record_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "ttl", ttl)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "value", value)
+        GetDomainRecordsRecordResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain_name=domain_name,
+            host_record=host_record,
+            line=line,
+            locked=locked,
+            priority=priority,
+            record_id=record_id,
+            status=status,
+            ttl=ttl,
+            type=type,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain_name: Optional[str] = None,
+             host_record: Optional[str] = None,
+             line: Optional[str] = None,
+             locked: Optional[bool] = None,
+             priority: Optional[int] = None,
+             record_id: Optional[str] = None,
+             status: Optional[str] = None,
+             ttl: Optional[float] = None,
+             type: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if domain_name is None and 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if host_record is None and 'hostRecord' in kwargs:
+            host_record = kwargs['hostRecord']
+        if host_record is None:
+            raise TypeError("Missing 'host_record' argument")
+        if line is None:
+            raise TypeError("Missing 'line' argument")
+        if locked is None:
+            raise TypeError("Missing 'locked' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if record_id is None and 'recordId' in kwargs:
+            record_id = kwargs['recordId']
+        if record_id is None:
+            raise TypeError("Missing 'record_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if ttl is None:
+            raise TypeError("Missing 'ttl' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
+        _setter("domain_name", domain_name)
+        _setter("host_record", host_record)
+        _setter("line", line)
+        _setter("locked", locked)
+        _setter("priority", priority)
+        _setter("record_id", record_id)
+        _setter("status", status)
+        _setter("ttl", ttl)
+        _setter("type", type)
+        _setter("value", value)
 
     @property
     @pulumi.getter(name="domainName")
@@ -1902,29 +2862,170 @@ class GetDomainsDomainResult(dict):
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         :param str version_code: Cloud analysis version code.
         """
-        pulumi.set(__self__, "ali_domain", ali_domain)
-        pulumi.set(__self__, "available_ttls", available_ttls)
-        pulumi.set(__self__, "dns_servers", dns_servers)
-        pulumi.set(__self__, "domain_id", domain_id)
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "group_name", group_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "in_black_hole", in_black_hole)
-        pulumi.set(__self__, "in_clean", in_clean)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "line_type", line_type)
-        pulumi.set(__self__, "min_ttl", min_ttl)
-        pulumi.set(__self__, "puny_code", puny_code)
-        pulumi.set(__self__, "record_line_tree_json", record_line_tree_json)
-        pulumi.set(__self__, "record_lines", record_lines)
-        pulumi.set(__self__, "region_lines", region_lines)
-        pulumi.set(__self__, "remark", remark)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "slave_dns", slave_dns)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "version_code", version_code)
-        pulumi.set(__self__, "version_name", version_name)
+        GetDomainsDomainResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ali_domain=ali_domain,
+            available_ttls=available_ttls,
+            dns_servers=dns_servers,
+            domain_id=domain_id,
+            domain_name=domain_name,
+            group_id=group_id,
+            group_name=group_name,
+            id=id,
+            in_black_hole=in_black_hole,
+            in_clean=in_clean,
+            instance_id=instance_id,
+            line_type=line_type,
+            min_ttl=min_ttl,
+            puny_code=puny_code,
+            record_line_tree_json=record_line_tree_json,
+            record_lines=record_lines,
+            region_lines=region_lines,
+            remark=remark,
+            resource_group_id=resource_group_id,
+            slave_dns=slave_dns,
+            tags=tags,
+            version_code=version_code,
+            version_name=version_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ali_domain: Optional[bool] = None,
+             available_ttls: Optional[Sequence[int]] = None,
+             dns_servers: Optional[Sequence[str]] = None,
+             domain_id: Optional[str] = None,
+             domain_name: Optional[str] = None,
+             group_id: Optional[str] = None,
+             group_name: Optional[str] = None,
+             id: Optional[str] = None,
+             in_black_hole: Optional[bool] = None,
+             in_clean: Optional[bool] = None,
+             instance_id: Optional[str] = None,
+             line_type: Optional[str] = None,
+             min_ttl: Optional[int] = None,
+             puny_code: Optional[str] = None,
+             record_line_tree_json: Optional[str] = None,
+             record_lines: Optional[Sequence['outputs.GetDomainsDomainRecordLineResult']] = None,
+             region_lines: Optional[bool] = None,
+             remark: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             slave_dns: Optional[bool] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             version_code: Optional[str] = None,
+             version_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ali_domain is None and 'aliDomain' in kwargs:
+            ali_domain = kwargs['aliDomain']
+        if ali_domain is None:
+            raise TypeError("Missing 'ali_domain' argument")
+        if available_ttls is None and 'availableTtls' in kwargs:
+            available_ttls = kwargs['availableTtls']
+        if available_ttls is None:
+            raise TypeError("Missing 'available_ttls' argument")
+        if dns_servers is None and 'dnsServers' in kwargs:
+            dns_servers = kwargs['dnsServers']
+        if dns_servers is None:
+            raise TypeError("Missing 'dns_servers' argument")
+        if domain_id is None and 'domainId' in kwargs:
+            domain_id = kwargs['domainId']
+        if domain_id is None:
+            raise TypeError("Missing 'domain_id' argument")
+        if domain_name is None and 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if group_name is None and 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if group_name is None:
+            raise TypeError("Missing 'group_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if in_black_hole is None and 'inBlackHole' in kwargs:
+            in_black_hole = kwargs['inBlackHole']
+        if in_black_hole is None:
+            raise TypeError("Missing 'in_black_hole' argument")
+        if in_clean is None and 'inClean' in kwargs:
+            in_clean = kwargs['inClean']
+        if in_clean is None:
+            raise TypeError("Missing 'in_clean' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if line_type is None and 'lineType' in kwargs:
+            line_type = kwargs['lineType']
+        if line_type is None:
+            raise TypeError("Missing 'line_type' argument")
+        if min_ttl is None and 'minTtl' in kwargs:
+            min_ttl = kwargs['minTtl']
+        if min_ttl is None:
+            raise TypeError("Missing 'min_ttl' argument")
+        if puny_code is None and 'punyCode' in kwargs:
+            puny_code = kwargs['punyCode']
+        if puny_code is None:
+            raise TypeError("Missing 'puny_code' argument")
+        if record_line_tree_json is None and 'recordLineTreeJson' in kwargs:
+            record_line_tree_json = kwargs['recordLineTreeJson']
+        if record_line_tree_json is None:
+            raise TypeError("Missing 'record_line_tree_json' argument")
+        if record_lines is None and 'recordLines' in kwargs:
+            record_lines = kwargs['recordLines']
+        if record_lines is None:
+            raise TypeError("Missing 'record_lines' argument")
+        if region_lines is None and 'regionLines' in kwargs:
+            region_lines = kwargs['regionLines']
+        if region_lines is None:
+            raise TypeError("Missing 'region_lines' argument")
+        if remark is None:
+            raise TypeError("Missing 'remark' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if slave_dns is None and 'slaveDns' in kwargs:
+            slave_dns = kwargs['slaveDns']
+        if slave_dns is None:
+            raise TypeError("Missing 'slave_dns' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if version_code is None and 'versionCode' in kwargs:
+            version_code = kwargs['versionCode']
+        if version_code is None:
+            raise TypeError("Missing 'version_code' argument")
+        if version_name is None and 'versionName' in kwargs:
+            version_name = kwargs['versionName']
+        if version_name is None:
+            raise TypeError("Missing 'version_name' argument")
+
+        _setter("ali_domain", ali_domain)
+        _setter("available_ttls", available_ttls)
+        _setter("dns_servers", dns_servers)
+        _setter("domain_id", domain_id)
+        _setter("domain_name", domain_name)
+        _setter("group_id", group_id)
+        _setter("group_name", group_name)
+        _setter("id", id)
+        _setter("in_black_hole", in_black_hole)
+        _setter("in_clean", in_clean)
+        _setter("instance_id", instance_id)
+        _setter("line_type", line_type)
+        _setter("min_ttl", min_ttl)
+        _setter("puny_code", puny_code)
+        _setter("record_line_tree_json", record_line_tree_json)
+        _setter("record_lines", record_lines)
+        _setter("region_lines", region_lines)
+        _setter("remark", remark)
+        _setter("resource_group_id", resource_group_id)
+        _setter("slave_dns", slave_dns)
+        _setter("tags", tags)
+        _setter("version_code", version_code)
+        _setter("version_name", version_name)
 
     @property
     @pulumi.getter(name="aliDomain")
@@ -2106,10 +3207,43 @@ class GetDomainsDomainRecordLineResult(dict):
                  line_code: str,
                  line_display_name: str,
                  line_name: str):
-        pulumi.set(__self__, "father_code", father_code)
-        pulumi.set(__self__, "line_code", line_code)
-        pulumi.set(__self__, "line_display_name", line_display_name)
-        pulumi.set(__self__, "line_name", line_name)
+        GetDomainsDomainRecordLineResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            father_code=father_code,
+            line_code=line_code,
+            line_display_name=line_display_name,
+            line_name=line_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             father_code: Optional[str] = None,
+             line_code: Optional[str] = None,
+             line_display_name: Optional[str] = None,
+             line_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if father_code is None and 'fatherCode' in kwargs:
+            father_code = kwargs['fatherCode']
+        if father_code is None:
+            raise TypeError("Missing 'father_code' argument")
+        if line_code is None and 'lineCode' in kwargs:
+            line_code = kwargs['lineCode']
+        if line_code is None:
+            raise TypeError("Missing 'line_code' argument")
+        if line_display_name is None and 'lineDisplayName' in kwargs:
+            line_display_name = kwargs['lineDisplayName']
+        if line_display_name is None:
+            raise TypeError("Missing 'line_display_name' argument")
+        if line_name is None and 'lineName' in kwargs:
+            line_name = kwargs['lineName']
+        if line_name is None:
+            raise TypeError("Missing 'line_name' argument")
+
+        _setter("father_code", father_code)
+        _setter("line_code", line_code)
+        _setter("line_display_name", line_display_name)
+        _setter("line_name", line_name)
 
     @property
     @pulumi.getter(name="fatherCode")
@@ -2141,8 +3275,29 @@ class GetGroupsGroupResult(dict):
         :param str group_id: Id of the group.
         :param str group_name: Name of the group.
         """
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "group_name", group_name)
+        GetGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_id=group_id,
+            group_name=group_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_id: Optional[str] = None,
+             group_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if group_name is None and 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if group_name is None:
+            raise TypeError("Missing 'group_name' argument")
+
+        _setter("group_id", group_id)
+        _setter("group_name", group_name)
 
     @property
     @pulumi.getter(name="groupId")
@@ -2200,23 +3355,130 @@ class GetGtmInstancesInstanceResult(dict):
         :param str strategy_mode: The type of the access policy.
         :param int ttl: The global time to live.
         """
-        pulumi.set(__self__, "alert_configs", alert_configs)
-        pulumi.set(__self__, "alert_groups", alert_groups)
-        pulumi.set(__self__, "cname_type", cname_type)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "expire_time", expire_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "package_edition", package_edition)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "public_cname_mode", public_cname_mode)
-        pulumi.set(__self__, "public_rr", public_rr)
-        pulumi.set(__self__, "public_user_domain_name", public_user_domain_name)
-        pulumi.set(__self__, "public_zone_name", public_zone_name)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "strategy_mode", strategy_mode)
-        pulumi.set(__self__, "ttl", ttl)
+        GetGtmInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alert_configs=alert_configs,
+            alert_groups=alert_groups,
+            cname_type=cname_type,
+            create_time=create_time,
+            expire_time=expire_time,
+            id=id,
+            instance_id=instance_id,
+            instance_name=instance_name,
+            package_edition=package_edition,
+            payment_type=payment_type,
+            public_cname_mode=public_cname_mode,
+            public_rr=public_rr,
+            public_user_domain_name=public_user_domain_name,
+            public_zone_name=public_zone_name,
+            resource_group_id=resource_group_id,
+            strategy_mode=strategy_mode,
+            ttl=ttl,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alert_configs: Optional[Sequence['outputs.GetGtmInstancesInstanceAlertConfigResult']] = None,
+             alert_groups: Optional[Sequence[str]] = None,
+             cname_type: Optional[str] = None,
+             create_time: Optional[str] = None,
+             expire_time: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             instance_name: Optional[str] = None,
+             package_edition: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             public_cname_mode: Optional[str] = None,
+             public_rr: Optional[str] = None,
+             public_user_domain_name: Optional[str] = None,
+             public_zone_name: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             strategy_mode: Optional[str] = None,
+             ttl: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if alert_configs is None and 'alertConfigs' in kwargs:
+            alert_configs = kwargs['alertConfigs']
+        if alert_configs is None:
+            raise TypeError("Missing 'alert_configs' argument")
+        if alert_groups is None and 'alertGroups' in kwargs:
+            alert_groups = kwargs['alertGroups']
+        if alert_groups is None:
+            raise TypeError("Missing 'alert_groups' argument")
+        if cname_type is None and 'cnameType' in kwargs:
+            cname_type = kwargs['cnameType']
+        if cname_type is None:
+            raise TypeError("Missing 'cname_type' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if expire_time is None and 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if expire_time is None:
+            raise TypeError("Missing 'expire_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if package_edition is None and 'packageEdition' in kwargs:
+            package_edition = kwargs['packageEdition']
+        if package_edition is None:
+            raise TypeError("Missing 'package_edition' argument")
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if public_cname_mode is None and 'publicCnameMode' in kwargs:
+            public_cname_mode = kwargs['publicCnameMode']
+        if public_cname_mode is None:
+            raise TypeError("Missing 'public_cname_mode' argument")
+        if public_rr is None and 'publicRr' in kwargs:
+            public_rr = kwargs['publicRr']
+        if public_rr is None:
+            raise TypeError("Missing 'public_rr' argument")
+        if public_user_domain_name is None and 'publicUserDomainName' in kwargs:
+            public_user_domain_name = kwargs['publicUserDomainName']
+        if public_user_domain_name is None:
+            raise TypeError("Missing 'public_user_domain_name' argument")
+        if public_zone_name is None and 'publicZoneName' in kwargs:
+            public_zone_name = kwargs['publicZoneName']
+        if public_zone_name is None:
+            raise TypeError("Missing 'public_zone_name' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if strategy_mode is None and 'strategyMode' in kwargs:
+            strategy_mode = kwargs['strategyMode']
+        if strategy_mode is None:
+            raise TypeError("Missing 'strategy_mode' argument")
+        if ttl is None:
+            raise TypeError("Missing 'ttl' argument")
+
+        _setter("alert_configs", alert_configs)
+        _setter("alert_groups", alert_groups)
+        _setter("cname_type", cname_type)
+        _setter("create_time", create_time)
+        _setter("expire_time", expire_time)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("instance_name", instance_name)
+        _setter("package_edition", package_edition)
+        _setter("payment_type", payment_type)
+        _setter("public_cname_mode", public_cname_mode)
+        _setter("public_rr", public_rr)
+        _setter("public_user_domain_name", public_user_domain_name)
+        _setter("public_zone_name", public_zone_name)
+        _setter("resource_group_id", resource_group_id)
+        _setter("strategy_mode", strategy_mode)
+        _setter("ttl", ttl)
 
     @property
     @pulumi.getter(name="alertConfigs")
@@ -2368,10 +3630,43 @@ class GetGtmInstancesInstanceAlertConfigResult(dict):
         :param str notice_type: The Alarm Event Type.
         :param bool sms_notice: Whether to configure SMS notification.
         """
-        pulumi.set(__self__, "dingtalk_notice", dingtalk_notice)
-        pulumi.set(__self__, "email_notice", email_notice)
-        pulumi.set(__self__, "notice_type", notice_type)
-        pulumi.set(__self__, "sms_notice", sms_notice)
+        GetGtmInstancesInstanceAlertConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dingtalk_notice=dingtalk_notice,
+            email_notice=email_notice,
+            notice_type=notice_type,
+            sms_notice=sms_notice,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dingtalk_notice: Optional[bool] = None,
+             email_notice: Optional[bool] = None,
+             notice_type: Optional[str] = None,
+             sms_notice: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dingtalk_notice is None and 'dingtalkNotice' in kwargs:
+            dingtalk_notice = kwargs['dingtalkNotice']
+        if dingtalk_notice is None:
+            raise TypeError("Missing 'dingtalk_notice' argument")
+        if email_notice is None and 'emailNotice' in kwargs:
+            email_notice = kwargs['emailNotice']
+        if email_notice is None:
+            raise TypeError("Missing 'email_notice' argument")
+        if notice_type is None and 'noticeType' in kwargs:
+            notice_type = kwargs['noticeType']
+        if notice_type is None:
+            raise TypeError("Missing 'notice_type' argument")
+        if sms_notice is None and 'smsNotice' in kwargs:
+            sms_notice = kwargs['smsNotice']
+        if sms_notice is None:
+            raise TypeError("Missing 'sms_notice' argument")
+
+        _setter("dingtalk_notice", dingtalk_notice)
+        _setter("email_notice", email_notice)
+        _setter("notice_type", notice_type)
+        _setter("sms_notice", sms_notice)
 
     @property
     @pulumi.getter(name="dingtalkNotice")
@@ -2425,14 +3720,67 @@ class GetInstancesInstanceResult(dict):
         :param str version_code: Paid package version.
         :param str version_name: Paid package version name.
         """
-        pulumi.set(__self__, "dns_security", dns_security)
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "domain_numbers", domain_numbers)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "version_code", version_code)
-        pulumi.set(__self__, "version_name", version_name)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dns_security=dns_security,
+            domain=domain,
+            domain_numbers=domain_numbers,
+            id=id,
+            instance_id=instance_id,
+            payment_type=payment_type,
+            version_code=version_code,
+            version_name=version_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dns_security: Optional[str] = None,
+             domain: Optional[str] = None,
+             domain_numbers: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             version_code: Optional[str] = None,
+             version_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dns_security is None and 'dnsSecurity' in kwargs:
+            dns_security = kwargs['dnsSecurity']
+        if dns_security is None:
+            raise TypeError("Missing 'dns_security' argument")
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if domain_numbers is None and 'domainNumbers' in kwargs:
+            domain_numbers = kwargs['domainNumbers']
+        if domain_numbers is None:
+            raise TypeError("Missing 'domain_numbers' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if version_code is None and 'versionCode' in kwargs:
+            version_code = kwargs['versionCode']
+        if version_code is None:
+            raise TypeError("Missing 'version_code' argument")
+        if version_name is None and 'versionName' in kwargs:
+            version_name = kwargs['versionName']
+        if version_name is None:
+            raise TypeError("Missing 'version_name' argument")
+
+        _setter("dns_security", dns_security)
+        _setter("domain", domain)
+        _setter("domain_numbers", domain_numbers)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("payment_type", payment_type)
+        _setter("version_code", version_code)
+        _setter("version_name", version_name)
 
     @property
     @pulumi.getter(name="dnsSecurity")
@@ -2518,16 +3866,71 @@ class GetRecordsRecordResult(dict):
         :param str type: Record type. Valid items are `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
         :param str value: Host record value of the domain.
         """
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "host_record", host_record)
-        pulumi.set(__self__, "line", line)
-        pulumi.set(__self__, "locked", locked)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "record_id", record_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "ttl", ttl)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "value", value)
+        GetRecordsRecordResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain_name=domain_name,
+            host_record=host_record,
+            line=line,
+            locked=locked,
+            priority=priority,
+            record_id=record_id,
+            status=status,
+            ttl=ttl,
+            type=type,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain_name: Optional[str] = None,
+             host_record: Optional[str] = None,
+             line: Optional[str] = None,
+             locked: Optional[bool] = None,
+             priority: Optional[int] = None,
+             record_id: Optional[str] = None,
+             status: Optional[str] = None,
+             ttl: Optional[float] = None,
+             type: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if domain_name is None and 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if host_record is None and 'hostRecord' in kwargs:
+            host_record = kwargs['hostRecord']
+        if host_record is None:
+            raise TypeError("Missing 'host_record' argument")
+        if line is None:
+            raise TypeError("Missing 'line' argument")
+        if locked is None:
+            raise TypeError("Missing 'locked' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if record_id is None and 'recordId' in kwargs:
+            record_id = kwargs['recordId']
+        if record_id is None:
+            raise TypeError("Missing 'record_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if ttl is None:
+            raise TypeError("Missing 'ttl' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
+        _setter("domain_name", domain_name)
+        _setter("host_record", host_record)
+        _setter("line", line)
+        _setter("locked", locked)
+        _setter("priority", priority)
+        _setter("record_id", record_id)
+        _setter("status", status)
+        _setter("ttl", ttl)
+        _setter("type", type)
+        _setter("value", value)
 
     @property
     @pulumi.getter(name="domainName")
@@ -2620,9 +4023,36 @@ class GetResolutionLinesLineResult(dict):
         :param str line_display_name: Line display name.
         :param str line_name: Line name.
         """
-        pulumi.set(__self__, "line_code", line_code)
-        pulumi.set(__self__, "line_display_name", line_display_name)
-        pulumi.set(__self__, "line_name", line_name)
+        GetResolutionLinesLineResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            line_code=line_code,
+            line_display_name=line_display_name,
+            line_name=line_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             line_code: Optional[str] = None,
+             line_display_name: Optional[str] = None,
+             line_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if line_code is None and 'lineCode' in kwargs:
+            line_code = kwargs['lineCode']
+        if line_code is None:
+            raise TypeError("Missing 'line_code' argument")
+        if line_display_name is None and 'lineDisplayName' in kwargs:
+            line_display_name = kwargs['lineDisplayName']
+        if line_display_name is None:
+            raise TypeError("Missing 'line_display_name' argument")
+        if line_name is None and 'lineName' in kwargs:
+            line_name = kwargs['lineName']
+        if line_name is None:
+            raise TypeError("Missing 'line_name' argument")
+
+        _setter("line_code", line_code)
+        _setter("line_display_name", line_display_name)
+        _setter("line_name", line_name)
 
     @property
     @pulumi.getter(name="lineCode")

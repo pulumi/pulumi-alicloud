@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RuleArgs', 'Rule']
@@ -65,47 +65,140 @@ class RuleArgs:
         :param pulumi.Input[str] url: Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
                and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
         """
-        pulumi.set(__self__, "frontend_port", frontend_port)
-        pulumi.set(__self__, "load_balancer_id", load_balancer_id)
-        pulumi.set(__self__, "server_group_id", server_group_id)
+        RuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            frontend_port=frontend_port,
+            load_balancer_id=load_balancer_id,
+            server_group_id=server_group_id,
+            cookie=cookie,
+            cookie_timeout=cookie_timeout,
+            delete_protection_validation=delete_protection_validation,
+            domain=domain,
+            health_check=health_check,
+            health_check_connect_port=health_check_connect_port,
+            health_check_domain=health_check_domain,
+            health_check_http_code=health_check_http_code,
+            health_check_interval=health_check_interval,
+            health_check_timeout=health_check_timeout,
+            health_check_uri=health_check_uri,
+            healthy_threshold=healthy_threshold,
+            listener_sync=listener_sync,
+            name=name,
+            scheduler=scheduler,
+            sticky_session=sticky_session,
+            sticky_session_type=sticky_session_type,
+            unhealthy_threshold=unhealthy_threshold,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             frontend_port: Optional[pulumi.Input[int]] = None,
+             load_balancer_id: Optional[pulumi.Input[str]] = None,
+             server_group_id: Optional[pulumi.Input[str]] = None,
+             cookie: Optional[pulumi.Input[str]] = None,
+             cookie_timeout: Optional[pulumi.Input[int]] = None,
+             delete_protection_validation: Optional[pulumi.Input[bool]] = None,
+             domain: Optional[pulumi.Input[str]] = None,
+             health_check: Optional[pulumi.Input[str]] = None,
+             health_check_connect_port: Optional[pulumi.Input[int]] = None,
+             health_check_domain: Optional[pulumi.Input[str]] = None,
+             health_check_http_code: Optional[pulumi.Input[str]] = None,
+             health_check_interval: Optional[pulumi.Input[int]] = None,
+             health_check_timeout: Optional[pulumi.Input[int]] = None,
+             health_check_uri: Optional[pulumi.Input[str]] = None,
+             healthy_threshold: Optional[pulumi.Input[int]] = None,
+             listener_sync: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             scheduler: Optional[pulumi.Input[str]] = None,
+             sticky_session: Optional[pulumi.Input[str]] = None,
+             sticky_session_type: Optional[pulumi.Input[str]] = None,
+             unhealthy_threshold: Optional[pulumi.Input[int]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if frontend_port is None and 'frontendPort' in kwargs:
+            frontend_port = kwargs['frontendPort']
+        if frontend_port is None:
+            raise TypeError("Missing 'frontend_port' argument")
+        if load_balancer_id is None and 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if load_balancer_id is None:
+            raise TypeError("Missing 'load_balancer_id' argument")
+        if server_group_id is None and 'serverGroupId' in kwargs:
+            server_group_id = kwargs['serverGroupId']
+        if server_group_id is None:
+            raise TypeError("Missing 'server_group_id' argument")
+        if cookie_timeout is None and 'cookieTimeout' in kwargs:
+            cookie_timeout = kwargs['cookieTimeout']
+        if delete_protection_validation is None and 'deleteProtectionValidation' in kwargs:
+            delete_protection_validation = kwargs['deleteProtectionValidation']
+        if health_check is None and 'healthCheck' in kwargs:
+            health_check = kwargs['healthCheck']
+        if health_check_connect_port is None and 'healthCheckConnectPort' in kwargs:
+            health_check_connect_port = kwargs['healthCheckConnectPort']
+        if health_check_domain is None and 'healthCheckDomain' in kwargs:
+            health_check_domain = kwargs['healthCheckDomain']
+        if health_check_http_code is None and 'healthCheckHttpCode' in kwargs:
+            health_check_http_code = kwargs['healthCheckHttpCode']
+        if health_check_interval is None and 'healthCheckInterval' in kwargs:
+            health_check_interval = kwargs['healthCheckInterval']
+        if health_check_timeout is None and 'healthCheckTimeout' in kwargs:
+            health_check_timeout = kwargs['healthCheckTimeout']
+        if health_check_uri is None and 'healthCheckUri' in kwargs:
+            health_check_uri = kwargs['healthCheckUri']
+        if healthy_threshold is None and 'healthyThreshold' in kwargs:
+            healthy_threshold = kwargs['healthyThreshold']
+        if listener_sync is None and 'listenerSync' in kwargs:
+            listener_sync = kwargs['listenerSync']
+        if sticky_session is None and 'stickySession' in kwargs:
+            sticky_session = kwargs['stickySession']
+        if sticky_session_type is None and 'stickySessionType' in kwargs:
+            sticky_session_type = kwargs['stickySessionType']
+        if unhealthy_threshold is None and 'unhealthyThreshold' in kwargs:
+            unhealthy_threshold = kwargs['unhealthyThreshold']
+
+        _setter("frontend_port", frontend_port)
+        _setter("load_balancer_id", load_balancer_id)
+        _setter("server_group_id", server_group_id)
         if cookie is not None:
-            pulumi.set(__self__, "cookie", cookie)
+            _setter("cookie", cookie)
         if cookie_timeout is not None:
-            pulumi.set(__self__, "cookie_timeout", cookie_timeout)
+            _setter("cookie_timeout", cookie_timeout)
         if delete_protection_validation is not None:
-            pulumi.set(__self__, "delete_protection_validation", delete_protection_validation)
+            _setter("delete_protection_validation", delete_protection_validation)
         if domain is not None:
-            pulumi.set(__self__, "domain", domain)
+            _setter("domain", domain)
         if health_check is not None:
-            pulumi.set(__self__, "health_check", health_check)
+            _setter("health_check", health_check)
         if health_check_connect_port is not None:
-            pulumi.set(__self__, "health_check_connect_port", health_check_connect_port)
+            _setter("health_check_connect_port", health_check_connect_port)
         if health_check_domain is not None:
-            pulumi.set(__self__, "health_check_domain", health_check_domain)
+            _setter("health_check_domain", health_check_domain)
         if health_check_http_code is not None:
-            pulumi.set(__self__, "health_check_http_code", health_check_http_code)
+            _setter("health_check_http_code", health_check_http_code)
         if health_check_interval is not None:
-            pulumi.set(__self__, "health_check_interval", health_check_interval)
+            _setter("health_check_interval", health_check_interval)
         if health_check_timeout is not None:
-            pulumi.set(__self__, "health_check_timeout", health_check_timeout)
+            _setter("health_check_timeout", health_check_timeout)
         if health_check_uri is not None:
-            pulumi.set(__self__, "health_check_uri", health_check_uri)
+            _setter("health_check_uri", health_check_uri)
         if healthy_threshold is not None:
-            pulumi.set(__self__, "healthy_threshold", healthy_threshold)
+            _setter("healthy_threshold", healthy_threshold)
         if listener_sync is not None:
-            pulumi.set(__self__, "listener_sync", listener_sync)
+            _setter("listener_sync", listener_sync)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if scheduler is not None:
-            pulumi.set(__self__, "scheduler", scheduler)
+            _setter("scheduler", scheduler)
         if sticky_session is not None:
-            pulumi.set(__self__, "sticky_session", sticky_session)
+            _setter("sticky_session", sticky_session)
         if sticky_session_type is not None:
-            pulumi.set(__self__, "sticky_session_type", sticky_session_type)
+            _setter("sticky_session_type", sticky_session_type)
         if unhealthy_threshold is not None:
-            pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
+            _setter("unhealthy_threshold", unhealthy_threshold)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
 
     @property
     @pulumi.getter(name="frontendPort")
@@ -430,50 +523,137 @@ class _RuleState:
         :param pulumi.Input[str] url: Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
                and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
         """
+        _RuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cookie=cookie,
+            cookie_timeout=cookie_timeout,
+            delete_protection_validation=delete_protection_validation,
+            domain=domain,
+            frontend_port=frontend_port,
+            health_check=health_check,
+            health_check_connect_port=health_check_connect_port,
+            health_check_domain=health_check_domain,
+            health_check_http_code=health_check_http_code,
+            health_check_interval=health_check_interval,
+            health_check_timeout=health_check_timeout,
+            health_check_uri=health_check_uri,
+            healthy_threshold=healthy_threshold,
+            listener_sync=listener_sync,
+            load_balancer_id=load_balancer_id,
+            name=name,
+            scheduler=scheduler,
+            server_group_id=server_group_id,
+            sticky_session=sticky_session,
+            sticky_session_type=sticky_session_type,
+            unhealthy_threshold=unhealthy_threshold,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cookie: Optional[pulumi.Input[str]] = None,
+             cookie_timeout: Optional[pulumi.Input[int]] = None,
+             delete_protection_validation: Optional[pulumi.Input[bool]] = None,
+             domain: Optional[pulumi.Input[str]] = None,
+             frontend_port: Optional[pulumi.Input[int]] = None,
+             health_check: Optional[pulumi.Input[str]] = None,
+             health_check_connect_port: Optional[pulumi.Input[int]] = None,
+             health_check_domain: Optional[pulumi.Input[str]] = None,
+             health_check_http_code: Optional[pulumi.Input[str]] = None,
+             health_check_interval: Optional[pulumi.Input[int]] = None,
+             health_check_timeout: Optional[pulumi.Input[int]] = None,
+             health_check_uri: Optional[pulumi.Input[str]] = None,
+             healthy_threshold: Optional[pulumi.Input[int]] = None,
+             listener_sync: Optional[pulumi.Input[str]] = None,
+             load_balancer_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             scheduler: Optional[pulumi.Input[str]] = None,
+             server_group_id: Optional[pulumi.Input[str]] = None,
+             sticky_session: Optional[pulumi.Input[str]] = None,
+             sticky_session_type: Optional[pulumi.Input[str]] = None,
+             unhealthy_threshold: Optional[pulumi.Input[int]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cookie_timeout is None and 'cookieTimeout' in kwargs:
+            cookie_timeout = kwargs['cookieTimeout']
+        if delete_protection_validation is None and 'deleteProtectionValidation' in kwargs:
+            delete_protection_validation = kwargs['deleteProtectionValidation']
+        if frontend_port is None and 'frontendPort' in kwargs:
+            frontend_port = kwargs['frontendPort']
+        if health_check is None and 'healthCheck' in kwargs:
+            health_check = kwargs['healthCheck']
+        if health_check_connect_port is None and 'healthCheckConnectPort' in kwargs:
+            health_check_connect_port = kwargs['healthCheckConnectPort']
+        if health_check_domain is None and 'healthCheckDomain' in kwargs:
+            health_check_domain = kwargs['healthCheckDomain']
+        if health_check_http_code is None and 'healthCheckHttpCode' in kwargs:
+            health_check_http_code = kwargs['healthCheckHttpCode']
+        if health_check_interval is None and 'healthCheckInterval' in kwargs:
+            health_check_interval = kwargs['healthCheckInterval']
+        if health_check_timeout is None and 'healthCheckTimeout' in kwargs:
+            health_check_timeout = kwargs['healthCheckTimeout']
+        if health_check_uri is None and 'healthCheckUri' in kwargs:
+            health_check_uri = kwargs['healthCheckUri']
+        if healthy_threshold is None and 'healthyThreshold' in kwargs:
+            healthy_threshold = kwargs['healthyThreshold']
+        if listener_sync is None and 'listenerSync' in kwargs:
+            listener_sync = kwargs['listenerSync']
+        if load_balancer_id is None and 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if server_group_id is None and 'serverGroupId' in kwargs:
+            server_group_id = kwargs['serverGroupId']
+        if sticky_session is None and 'stickySession' in kwargs:
+            sticky_session = kwargs['stickySession']
+        if sticky_session_type is None and 'stickySessionType' in kwargs:
+            sticky_session_type = kwargs['stickySessionType']
+        if unhealthy_threshold is None and 'unhealthyThreshold' in kwargs:
+            unhealthy_threshold = kwargs['unhealthyThreshold']
+
         if cookie is not None:
-            pulumi.set(__self__, "cookie", cookie)
+            _setter("cookie", cookie)
         if cookie_timeout is not None:
-            pulumi.set(__self__, "cookie_timeout", cookie_timeout)
+            _setter("cookie_timeout", cookie_timeout)
         if delete_protection_validation is not None:
-            pulumi.set(__self__, "delete_protection_validation", delete_protection_validation)
+            _setter("delete_protection_validation", delete_protection_validation)
         if domain is not None:
-            pulumi.set(__self__, "domain", domain)
+            _setter("domain", domain)
         if frontend_port is not None:
-            pulumi.set(__self__, "frontend_port", frontend_port)
+            _setter("frontend_port", frontend_port)
         if health_check is not None:
-            pulumi.set(__self__, "health_check", health_check)
+            _setter("health_check", health_check)
         if health_check_connect_port is not None:
-            pulumi.set(__self__, "health_check_connect_port", health_check_connect_port)
+            _setter("health_check_connect_port", health_check_connect_port)
         if health_check_domain is not None:
-            pulumi.set(__self__, "health_check_domain", health_check_domain)
+            _setter("health_check_domain", health_check_domain)
         if health_check_http_code is not None:
-            pulumi.set(__self__, "health_check_http_code", health_check_http_code)
+            _setter("health_check_http_code", health_check_http_code)
         if health_check_interval is not None:
-            pulumi.set(__self__, "health_check_interval", health_check_interval)
+            _setter("health_check_interval", health_check_interval)
         if health_check_timeout is not None:
-            pulumi.set(__self__, "health_check_timeout", health_check_timeout)
+            _setter("health_check_timeout", health_check_timeout)
         if health_check_uri is not None:
-            pulumi.set(__self__, "health_check_uri", health_check_uri)
+            _setter("health_check_uri", health_check_uri)
         if healthy_threshold is not None:
-            pulumi.set(__self__, "healthy_threshold", healthy_threshold)
+            _setter("healthy_threshold", healthy_threshold)
         if listener_sync is not None:
-            pulumi.set(__self__, "listener_sync", listener_sync)
+            _setter("listener_sync", listener_sync)
         if load_balancer_id is not None:
-            pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+            _setter("load_balancer_id", load_balancer_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if scheduler is not None:
-            pulumi.set(__self__, "scheduler", scheduler)
+            _setter("scheduler", scheduler)
         if server_group_id is not None:
-            pulumi.set(__self__, "server_group_id", server_group_id)
+            _setter("server_group_id", server_group_id)
         if sticky_session is not None:
-            pulumi.set(__self__, "sticky_session", sticky_session)
+            _setter("sticky_session", sticky_session)
         if sticky_session_type is not None:
-            pulumi.set(__self__, "sticky_session_type", sticky_session_type)
+            _setter("sticky_session_type", sticky_session_type)
         if unhealthy_threshold is not None:
-            pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
+            _setter("unhealthy_threshold", unhealthy_threshold)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
 
     @property
     @pulumi.getter
@@ -1007,6 +1187,10 @@ class Rule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

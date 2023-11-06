@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -34,13 +34,60 @@ class GetQueuesQueueResult(dict):
         :param int polling_wait_seconds: Long polling is measured in seconds. When this attribute is set to 0, long polling is disabled. When it is not set to 0, long polling is enabled and message dequeue requests will be processed only when valid messages are received or when long polling times out.
         :param int visibility_timeouts: Dequeued messages change from active (visible) status to inactive (invisible) status. This attribute defines the length of time, in seconds, that messages remain invisible. Messages return to active status after the set period.
         """
-        pulumi.set(__self__, "delay_seconds", delay_seconds)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "maximum_message_size", maximum_message_size)
-        pulumi.set(__self__, "message_retention_period", message_retention_period)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "polling_wait_seconds", polling_wait_seconds)
-        pulumi.set(__self__, "visibility_timeouts", visibility_timeouts)
+        GetQueuesQueueResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            delay_seconds=delay_seconds,
+            id=id,
+            maximum_message_size=maximum_message_size,
+            message_retention_period=message_retention_period,
+            name=name,
+            polling_wait_seconds=polling_wait_seconds,
+            visibility_timeouts=visibility_timeouts,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             delay_seconds: Optional[int] = None,
+             id: Optional[str] = None,
+             maximum_message_size: Optional[int] = None,
+             message_retention_period: Optional[int] = None,
+             name: Optional[str] = None,
+             polling_wait_seconds: Optional[int] = None,
+             visibility_timeouts: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if delay_seconds is None and 'delaySeconds' in kwargs:
+            delay_seconds = kwargs['delaySeconds']
+        if delay_seconds is None:
+            raise TypeError("Missing 'delay_seconds' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if maximum_message_size is None and 'maximumMessageSize' in kwargs:
+            maximum_message_size = kwargs['maximumMessageSize']
+        if maximum_message_size is None:
+            raise TypeError("Missing 'maximum_message_size' argument")
+        if message_retention_period is None and 'messageRetentionPeriod' in kwargs:
+            message_retention_period = kwargs['messageRetentionPeriod']
+        if message_retention_period is None:
+            raise TypeError("Missing 'message_retention_period' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if polling_wait_seconds is None and 'pollingWaitSeconds' in kwargs:
+            polling_wait_seconds = kwargs['pollingWaitSeconds']
+        if polling_wait_seconds is None:
+            raise TypeError("Missing 'polling_wait_seconds' argument")
+        if visibility_timeouts is None and 'visibilityTimeouts' in kwargs:
+            visibility_timeouts = kwargs['visibilityTimeouts']
+        if visibility_timeouts is None:
+            raise TypeError("Missing 'visibility_timeouts' argument")
+
+        _setter("delay_seconds", delay_seconds)
+        _setter("id", id)
+        _setter("maximum_message_size", maximum_message_size)
+        _setter("message_retention_period", message_retention_period)
+        _setter("name", name)
+        _setter("polling_wait_seconds", polling_wait_seconds)
+        _setter("visibility_timeouts", visibility_timeouts)
 
     @property
     @pulumi.getter(name="delaySeconds")
@@ -118,13 +165,58 @@ class GetTopicSubscriptionsSubscriptionResult(dict):
         :param str notify_strategy: The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails.
         :param str topic_name: Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
         """
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "filter_tag", filter_tag)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "notify_content_format", notify_content_format)
-        pulumi.set(__self__, "notify_strategy", notify_strategy)
-        pulumi.set(__self__, "topic_name", topic_name)
+        GetTopicSubscriptionsSubscriptionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            endpoint=endpoint,
+            filter_tag=filter_tag,
+            id=id,
+            name=name,
+            notify_content_format=notify_content_format,
+            notify_strategy=notify_strategy,
+            topic_name=topic_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             endpoint: Optional[str] = None,
+             filter_tag: Optional[str] = None,
+             id: Optional[str] = None,
+             name: Optional[str] = None,
+             notify_content_format: Optional[str] = None,
+             notify_strategy: Optional[str] = None,
+             topic_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if filter_tag is None and 'filterTag' in kwargs:
+            filter_tag = kwargs['filterTag']
+        if filter_tag is None:
+            raise TypeError("Missing 'filter_tag' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if notify_content_format is None and 'notifyContentFormat' in kwargs:
+            notify_content_format = kwargs['notifyContentFormat']
+        if notify_content_format is None:
+            raise TypeError("Missing 'notify_content_format' argument")
+        if notify_strategy is None and 'notifyStrategy' in kwargs:
+            notify_strategy = kwargs['notifyStrategy']
+        if notify_strategy is None:
+            raise TypeError("Missing 'notify_strategy' argument")
+        if topic_name is None and 'topicName' in kwargs:
+            topic_name = kwargs['topicName']
+        if topic_name is None:
+            raise TypeError("Missing 'topic_name' argument")
+
+        _setter("endpoint", endpoint)
+        _setter("filter_tag", filter_tag)
+        _setter("id", id)
+        _setter("name", name)
+        _setter("notify_content_format", notify_content_format)
+        _setter("notify_strategy", notify_strategy)
+        _setter("topic_name", topic_name)
 
     @property
     @pulumi.getter
@@ -196,10 +288,39 @@ class GetTopicsTopicResult(dict):
         :param int maximum_message_size: This indicates the maximum length, in bytes, of any message body sent to the topic.
         :param str name: The name of the topic.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "logging_enabled", logging_enabled)
-        pulumi.set(__self__, "maximum_message_size", maximum_message_size)
-        pulumi.set(__self__, "name", name)
+        GetTopicsTopicResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            logging_enabled=logging_enabled,
+            maximum_message_size=maximum_message_size,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             logging_enabled: Optional[bool] = None,
+             maximum_message_size: Optional[int] = None,
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if logging_enabled is None and 'loggingEnabled' in kwargs:
+            logging_enabled = kwargs['loggingEnabled']
+        if logging_enabled is None:
+            raise TypeError("Missing 'logging_enabled' argument")
+        if maximum_message_size is None and 'maximumMessageSize' in kwargs:
+            maximum_message_size = kwargs['maximumMessageSize']
+        if maximum_message_size is None:
+            raise TypeError("Missing 'maximum_message_size' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
+        _setter("id", id)
+        _setter("logging_enabled", logging_enabled)
+        _setter("maximum_message_size", maximum_message_size)
+        _setter("name", name)
 
     @property
     @pulumi.getter

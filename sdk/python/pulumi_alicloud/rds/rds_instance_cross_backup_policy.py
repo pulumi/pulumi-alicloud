@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RdsInstanceCrossBackupPolicyArgs', 'RdsInstanceCrossBackupPolicy']
@@ -27,12 +27,39 @@ class RdsInstanceCrossBackupPolicyArgs:
                - Disabled: Disables the feature.
         :param pulumi.Input[int] retention: The number of days for which the cross-region backup files of the instance are retained. Valid values: 7 to 1825. Default value: 7.
         """
-        pulumi.set(__self__, "cross_backup_region", cross_backup_region)
-        pulumi.set(__self__, "instance_id", instance_id)
+        RdsInstanceCrossBackupPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cross_backup_region=cross_backup_region,
+            instance_id=instance_id,
+            log_backup_enabled=log_backup_enabled,
+            retention=retention,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cross_backup_region: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             log_backup_enabled: Optional[pulumi.Input[str]] = None,
+             retention: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cross_backup_region is None and 'crossBackupRegion' in kwargs:
+            cross_backup_region = kwargs['crossBackupRegion']
+        if cross_backup_region is None:
+            raise TypeError("Missing 'cross_backup_region' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if log_backup_enabled is None and 'logBackupEnabled' in kwargs:
+            log_backup_enabled = kwargs['logBackupEnabled']
+
+        _setter("cross_backup_region", cross_backup_region)
+        _setter("instance_id", instance_id)
         if log_backup_enabled is not None:
-            pulumi.set(__self__, "log_backup_enabled", log_backup_enabled)
+            _setter("log_backup_enabled", log_backup_enabled)
         if retention is not None:
-            pulumi.set(__self__, "retention", retention)
+            _setter("retention", retention)
 
     @property
     @pulumi.getter(name="crossBackupRegion")
@@ -122,28 +149,79 @@ class _RdsInstanceCrossBackupPolicyState:
         :param pulumi.Input[str] retent_type: The policy that is used to retain cross-region backups of the instance. Default value: 1. The default value 1 indicate that cross-region backups are retained based on the specified retention period.
         :param pulumi.Input[int] retention: The number of days for which the cross-region backup files of the instance are retained. Valid values: 7 to 1825. Default value: 7.
         """
+        _RdsInstanceCrossBackupPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_enabled=backup_enabled,
+            backup_enabled_time=backup_enabled_time,
+            cross_backup_region=cross_backup_region,
+            cross_backup_type=cross_backup_type,
+            db_instance_status=db_instance_status,
+            instance_id=instance_id,
+            lock_mode=lock_mode,
+            log_backup_enabled=log_backup_enabled,
+            log_backup_enabled_time=log_backup_enabled_time,
+            retent_type=retent_type,
+            retention=retention,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_enabled: Optional[pulumi.Input[str]] = None,
+             backup_enabled_time: Optional[pulumi.Input[str]] = None,
+             cross_backup_region: Optional[pulumi.Input[str]] = None,
+             cross_backup_type: Optional[pulumi.Input[str]] = None,
+             db_instance_status: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             lock_mode: Optional[pulumi.Input[str]] = None,
+             log_backup_enabled: Optional[pulumi.Input[str]] = None,
+             log_backup_enabled_time: Optional[pulumi.Input[str]] = None,
+             retent_type: Optional[pulumi.Input[str]] = None,
+             retention: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backup_enabled is None and 'backupEnabled' in kwargs:
+            backup_enabled = kwargs['backupEnabled']
+        if backup_enabled_time is None and 'backupEnabledTime' in kwargs:
+            backup_enabled_time = kwargs['backupEnabledTime']
+        if cross_backup_region is None and 'crossBackupRegion' in kwargs:
+            cross_backup_region = kwargs['crossBackupRegion']
+        if cross_backup_type is None and 'crossBackupType' in kwargs:
+            cross_backup_type = kwargs['crossBackupType']
+        if db_instance_status is None and 'dbInstanceStatus' in kwargs:
+            db_instance_status = kwargs['dbInstanceStatus']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if lock_mode is None and 'lockMode' in kwargs:
+            lock_mode = kwargs['lockMode']
+        if log_backup_enabled is None and 'logBackupEnabled' in kwargs:
+            log_backup_enabled = kwargs['logBackupEnabled']
+        if log_backup_enabled_time is None and 'logBackupEnabledTime' in kwargs:
+            log_backup_enabled_time = kwargs['logBackupEnabledTime']
+        if retent_type is None and 'retentType' in kwargs:
+            retent_type = kwargs['retentType']
+
         if backup_enabled is not None:
-            pulumi.set(__self__, "backup_enabled", backup_enabled)
+            _setter("backup_enabled", backup_enabled)
         if backup_enabled_time is not None:
-            pulumi.set(__self__, "backup_enabled_time", backup_enabled_time)
+            _setter("backup_enabled_time", backup_enabled_time)
         if cross_backup_region is not None:
-            pulumi.set(__self__, "cross_backup_region", cross_backup_region)
+            _setter("cross_backup_region", cross_backup_region)
         if cross_backup_type is not None:
-            pulumi.set(__self__, "cross_backup_type", cross_backup_type)
+            _setter("cross_backup_type", cross_backup_type)
         if db_instance_status is not None:
-            pulumi.set(__self__, "db_instance_status", db_instance_status)
+            _setter("db_instance_status", db_instance_status)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if lock_mode is not None:
-            pulumi.set(__self__, "lock_mode", lock_mode)
+            _setter("lock_mode", lock_mode)
         if log_backup_enabled is not None:
-            pulumi.set(__self__, "log_backup_enabled", log_backup_enabled)
+            _setter("log_backup_enabled", log_backup_enabled)
         if log_backup_enabled_time is not None:
-            pulumi.set(__self__, "log_backup_enabled_time", log_backup_enabled_time)
+            _setter("log_backup_enabled_time", log_backup_enabled_time)
         if retent_type is not None:
-            pulumi.set(__self__, "retent_type", retent_type)
+            _setter("retent_type", retent_type)
         if retention is not None:
-            pulumi.set(__self__, "retention", retention)
+            _setter("retention", retention)
 
     @property
     @pulumi.getter(name="backupEnabled")
@@ -438,6 +516,10 @@ class RdsInstanceCrossBackupPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RdsInstanceCrossBackupPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

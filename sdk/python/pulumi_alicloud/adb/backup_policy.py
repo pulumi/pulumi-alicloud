@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BackupPolicyArgs', 'BackupPolicy']
@@ -23,9 +23,36 @@ class BackupPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_backup_periods: ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
         :param pulumi.Input[str] preferred_backup_time: ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. China time is 8 hours behind it.
         """
-        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
-        pulumi.set(__self__, "preferred_backup_periods", preferred_backup_periods)
-        pulumi.set(__self__, "preferred_backup_time", preferred_backup_time)
+        BackupPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_cluster_id=db_cluster_id,
+            preferred_backup_periods=preferred_backup_periods,
+            preferred_backup_time=preferred_backup_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_cluster_id: Optional[pulumi.Input[str]] = None,
+             preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             preferred_backup_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if db_cluster_id is None and 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+        if db_cluster_id is None:
+            raise TypeError("Missing 'db_cluster_id' argument")
+        if preferred_backup_periods is None and 'preferredBackupPeriods' in kwargs:
+            preferred_backup_periods = kwargs['preferredBackupPeriods']
+        if preferred_backup_periods is None:
+            raise TypeError("Missing 'preferred_backup_periods' argument")
+        if preferred_backup_time is None and 'preferredBackupTime' in kwargs:
+            preferred_backup_time = kwargs['preferredBackupTime']
+        if preferred_backup_time is None:
+            raise TypeError("Missing 'preferred_backup_time' argument")
+
+        _setter("db_cluster_id", db_cluster_id)
+        _setter("preferred_backup_periods", preferred_backup_periods)
+        _setter("preferred_backup_time", preferred_backup_time)
 
     @property
     @pulumi.getter(name="dbClusterId")
@@ -78,14 +105,39 @@ class _BackupPolicyState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_backup_periods: ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
         :param pulumi.Input[str] preferred_backup_time: ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. China time is 8 hours behind it.
         """
+        _BackupPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_retention_period=backup_retention_period,
+            db_cluster_id=db_cluster_id,
+            preferred_backup_periods=preferred_backup_periods,
+            preferred_backup_time=preferred_backup_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_retention_period: Optional[pulumi.Input[str]] = None,
+             db_cluster_id: Optional[pulumi.Input[str]] = None,
+             preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             preferred_backup_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backup_retention_period is None and 'backupRetentionPeriod' in kwargs:
+            backup_retention_period = kwargs['backupRetentionPeriod']
+        if db_cluster_id is None and 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+        if preferred_backup_periods is None and 'preferredBackupPeriods' in kwargs:
+            preferred_backup_periods = kwargs['preferredBackupPeriods']
+        if preferred_backup_time is None and 'preferredBackupTime' in kwargs:
+            preferred_backup_time = kwargs['preferredBackupTime']
+
         if backup_retention_period is not None:
-            pulumi.set(__self__, "backup_retention_period", backup_retention_period)
+            _setter("backup_retention_period", backup_retention_period)
         if db_cluster_id is not None:
-            pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+            _setter("db_cluster_id", db_cluster_id)
         if preferred_backup_periods is not None:
-            pulumi.set(__self__, "preferred_backup_periods", preferred_backup_periods)
+            _setter("preferred_backup_periods", preferred_backup_periods)
         if preferred_backup_time is not None:
-            pulumi.set(__self__, "preferred_backup_time", preferred_backup_time)
+            _setter("preferred_backup_time", preferred_backup_time)
 
     @property
     @pulumi.getter(name="backupRetentionPeriod")
@@ -185,6 +237,10 @@ class BackupPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BackupPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

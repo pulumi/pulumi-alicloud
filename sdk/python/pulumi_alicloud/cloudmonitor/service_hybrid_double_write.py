@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ServiceHybridDoubleWriteArgs', 'ServiceHybridDoubleWrite']
@@ -25,10 +25,41 @@ class ServiceHybridDoubleWriteArgs:
         :param pulumi.Input[str] source_user_id: Source UserId.
         :param pulumi.Input[str] user_id: Target UserId.
         """
-        pulumi.set(__self__, "namespace", namespace)
-        pulumi.set(__self__, "source_namespace", source_namespace)
-        pulumi.set(__self__, "source_user_id", source_user_id)
-        pulumi.set(__self__, "user_id", user_id)
+        ServiceHybridDoubleWriteArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            namespace=namespace,
+            source_namespace=source_namespace,
+            source_user_id=source_user_id,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             namespace: Optional[pulumi.Input[str]] = None,
+             source_namespace: Optional[pulumi.Input[str]] = None,
+             source_user_id: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+        if source_namespace is None and 'sourceNamespace' in kwargs:
+            source_namespace = kwargs['sourceNamespace']
+        if source_namespace is None:
+            raise TypeError("Missing 'source_namespace' argument")
+        if source_user_id is None and 'sourceUserId' in kwargs:
+            source_user_id = kwargs['sourceUserId']
+        if source_user_id is None:
+            raise TypeError("Missing 'source_user_id' argument")
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
+
+        _setter("namespace", namespace)
+        _setter("source_namespace", source_namespace)
+        _setter("source_user_id", source_user_id)
+        _setter("user_id", user_id)
 
     @property
     @pulumi.getter
@@ -93,14 +124,37 @@ class _ServiceHybridDoubleWriteState:
         :param pulumi.Input[str] source_user_id: Source UserId.
         :param pulumi.Input[str] user_id: Target UserId.
         """
+        _ServiceHybridDoubleWriteState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            namespace=namespace,
+            source_namespace=source_namespace,
+            source_user_id=source_user_id,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             namespace: Optional[pulumi.Input[str]] = None,
+             source_namespace: Optional[pulumi.Input[str]] = None,
+             source_user_id: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if source_namespace is None and 'sourceNamespace' in kwargs:
+            source_namespace = kwargs['sourceNamespace']
+        if source_user_id is None and 'sourceUserId' in kwargs:
+            source_user_id = kwargs['sourceUserId']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if source_namespace is not None:
-            pulumi.set(__self__, "source_namespace", source_namespace)
+            _setter("source_namespace", source_namespace)
         if source_user_id is not None:
-            pulumi.set(__self__, "source_user_id", source_user_id)
+            _setter("source_user_id", source_user_id)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter
@@ -248,6 +302,10 @@ class ServiceHybridDoubleWrite(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ServiceHybridDoubleWriteArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

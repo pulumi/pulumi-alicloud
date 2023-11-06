@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InstanceArgs', 'Instance']
@@ -37,23 +37,72 @@ class InstanceArgs:
         :param pulumi.Input[str] payment_type: The paymen type of the resource. Valid values: `Subscription`.
         :param pulumi.Input[str] status: The status of the simple application server. Valid values: `Resetting`, `Running`, `Stopped`.
         """
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "period", period)
-        pulumi.set(__self__, "plan_id", plan_id)
+        InstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            image_id=image_id,
+            period=period,
+            plan_id=plan_id,
+            auto_renew=auto_renew,
+            auto_renew_period=auto_renew_period,
+            data_disk_size=data_disk_size,
+            instance_name=instance_name,
+            password=password,
+            payment_type=payment_type,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             image_id: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             plan_id: Optional[pulumi.Input[str]] = None,
+             auto_renew: Optional[pulumi.Input[bool]] = None,
+             auto_renew_period: Optional[pulumi.Input[int]] = None,
+             data_disk_size: Optional[pulumi.Input[int]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+        if period is None:
+            raise TypeError("Missing 'period' argument")
+        if plan_id is None and 'planId' in kwargs:
+            plan_id = kwargs['planId']
+        if plan_id is None:
+            raise TypeError("Missing 'plan_id' argument")
+        if auto_renew is None and 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if data_disk_size is None and 'dataDiskSize' in kwargs:
+            data_disk_size = kwargs['dataDiskSize']
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+
+        _setter("image_id", image_id)
+        _setter("period", period)
+        _setter("plan_id", plan_id)
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if auto_renew_period is not None:
-            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+            _setter("auto_renew_period", auto_renew_period)
         if data_disk_size is not None:
-            pulumi.set(__self__, "data_disk_size", data_disk_size)
+            _setter("data_disk_size", data_disk_size)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="imageId")
@@ -202,26 +251,69 @@ class _InstanceState:
         :param pulumi.Input[str] plan_id: The ID of the plan. You can use the `simpleapplicationserver_get_server_plans`  to query all the plans provided by Simple Application Server in the specified region.
         :param pulumi.Input[str] status: The status of the simple application server. Valid values: `Resetting`, `Running`, `Stopped`.
         """
+        _InstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_renew=auto_renew,
+            auto_renew_period=auto_renew_period,
+            data_disk_size=data_disk_size,
+            image_id=image_id,
+            instance_name=instance_name,
+            password=password,
+            payment_type=payment_type,
+            period=period,
+            plan_id=plan_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_renew: Optional[pulumi.Input[bool]] = None,
+             auto_renew_period: Optional[pulumi.Input[int]] = None,
+             data_disk_size: Optional[pulumi.Input[int]] = None,
+             image_id: Optional[pulumi.Input[str]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             plan_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_renew is None and 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if data_disk_size is None and 'dataDiskSize' in kwargs:
+            data_disk_size = kwargs['dataDiskSize']
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if plan_id is None and 'planId' in kwargs:
+            plan_id = kwargs['planId']
+
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if auto_renew_period is not None:
-            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+            _setter("auto_renew_period", auto_renew_period)
         if data_disk_size is not None:
-            pulumi.set(__self__, "data_disk_size", data_disk_size)
+            _setter("data_disk_size", data_disk_size)
         if image_id is not None:
-            pulumi.set(__self__, "image_id", image_id)
+            _setter("image_id", image_id)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if plan_id is not None:
-            pulumi.set(__self__, "plan_id", plan_id)
+            _setter("plan_id", plan_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="autoRenew")
@@ -407,6 +499,10 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

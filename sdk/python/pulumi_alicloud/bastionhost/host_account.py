@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['HostAccountArgs', 'HostAccount']
@@ -31,16 +31,59 @@ class HostAccountArgs:
         :param pulumi.Input[str] password: The password of the host account.
         :param pulumi.Input[str] private_key: The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`
         """
-        pulumi.set(__self__, "host_account_name", host_account_name)
-        pulumi.set(__self__, "host_id", host_id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "protocol_name", protocol_name)
+        HostAccountArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host_account_name=host_account_name,
+            host_id=host_id,
+            instance_id=instance_id,
+            protocol_name=protocol_name,
+            pass_phrase=pass_phrase,
+            password=password,
+            private_key=private_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host_account_name: Optional[pulumi.Input[str]] = None,
+             host_id: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             protocol_name: Optional[pulumi.Input[str]] = None,
+             pass_phrase: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             private_key: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if host_account_name is None and 'hostAccountName' in kwargs:
+            host_account_name = kwargs['hostAccountName']
+        if host_account_name is None:
+            raise TypeError("Missing 'host_account_name' argument")
+        if host_id is None and 'hostId' in kwargs:
+            host_id = kwargs['hostId']
+        if host_id is None:
+            raise TypeError("Missing 'host_id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if protocol_name is None and 'protocolName' in kwargs:
+            protocol_name = kwargs['protocolName']
+        if protocol_name is None:
+            raise TypeError("Missing 'protocol_name' argument")
+        if pass_phrase is None and 'passPhrase' in kwargs:
+            pass_phrase = kwargs['passPhrase']
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+
+        _setter("host_account_name", host_account_name)
+        _setter("host_id", host_id)
+        _setter("instance_id", instance_id)
+        _setter("protocol_name", protocol_name)
         if pass_phrase is not None:
-            pulumi.set(__self__, "pass_phrase", pass_phrase)
+            _setter("pass_phrase", pass_phrase)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if private_key is not None:
-            pulumi.set(__self__, "private_key", private_key)
+            _setter("private_key", private_key)
 
     @property
     @pulumi.getter(name="hostAccountName")
@@ -149,22 +192,61 @@ class _HostAccountState:
         :param pulumi.Input[str] private_key: The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`
         :param pulumi.Input[str] protocol_name: The protocol used by the host account. Valid values: SSH,RDP
         """
+        _HostAccountState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host_account_id=host_account_id,
+            host_account_name=host_account_name,
+            host_id=host_id,
+            instance_id=instance_id,
+            pass_phrase=pass_phrase,
+            password=password,
+            private_key=private_key,
+            protocol_name=protocol_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host_account_id: Optional[pulumi.Input[str]] = None,
+             host_account_name: Optional[pulumi.Input[str]] = None,
+             host_id: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             pass_phrase: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             private_key: Optional[pulumi.Input[str]] = None,
+             protocol_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if host_account_id is None and 'hostAccountId' in kwargs:
+            host_account_id = kwargs['hostAccountId']
+        if host_account_name is None and 'hostAccountName' in kwargs:
+            host_account_name = kwargs['hostAccountName']
+        if host_id is None and 'hostId' in kwargs:
+            host_id = kwargs['hostId']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if pass_phrase is None and 'passPhrase' in kwargs:
+            pass_phrase = kwargs['passPhrase']
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if protocol_name is None and 'protocolName' in kwargs:
+            protocol_name = kwargs['protocolName']
+
         if host_account_id is not None:
-            pulumi.set(__self__, "host_account_id", host_account_id)
+            _setter("host_account_id", host_account_id)
         if host_account_name is not None:
-            pulumi.set(__self__, "host_account_name", host_account_name)
+            _setter("host_account_name", host_account_name)
         if host_id is not None:
-            pulumi.set(__self__, "host_id", host_id)
+            _setter("host_id", host_id)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if pass_phrase is not None:
-            pulumi.set(__self__, "pass_phrase", pass_phrase)
+            _setter("pass_phrase", pass_phrase)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if private_key is not None:
-            pulumi.set(__self__, "private_key", private_key)
+            _setter("private_key", private_key)
         if protocol_name is not None:
-            pulumi.set(__self__, "protocol_name", protocol_name)
+            _setter("protocol_name", protocol_name)
 
     @property
     @pulumi.getter(name="hostAccountId")
@@ -424,6 +506,10 @@ class HostAccount(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            HostAccountArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

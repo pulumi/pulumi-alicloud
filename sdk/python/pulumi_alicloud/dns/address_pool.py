@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,11 +29,46 @@ class AddressPoolArgs:
         :param pulumi.Input[str] lba_strategy: The load balancing policy of the address pool. Valid values:`ALL_RR` or `RATIO`. `ALL_RR`: returns all addresses. `RATIO`: returns addresses by weight.
         :param pulumi.Input[str] type: The type of the address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
         """
-        pulumi.set(__self__, "address_pool_name", address_pool_name)
-        pulumi.set(__self__, "addresses", addresses)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "lba_strategy", lba_strategy)
-        pulumi.set(__self__, "type", type)
+        AddressPoolArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address_pool_name=address_pool_name,
+            addresses=addresses,
+            instance_id=instance_id,
+            lba_strategy=lba_strategy,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address_pool_name: Optional[pulumi.Input[str]] = None,
+             addresses: Optional[pulumi.Input[Sequence[pulumi.Input['AddressPoolAddressArgs']]]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             lba_strategy: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if address_pool_name is None and 'addressPoolName' in kwargs:
+            address_pool_name = kwargs['addressPoolName']
+        if address_pool_name is None:
+            raise TypeError("Missing 'address_pool_name' argument")
+        if addresses is None:
+            raise TypeError("Missing 'addresses' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if lba_strategy is None and 'lbaStrategy' in kwargs:
+            lba_strategy = kwargs['lbaStrategy']
+        if lba_strategy is None:
+            raise TypeError("Missing 'lba_strategy' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
+        _setter("address_pool_name", address_pool_name)
+        _setter("addresses", addresses)
+        _setter("instance_id", instance_id)
+        _setter("lba_strategy", lba_strategy)
+        _setter("type", type)
 
     @property
     @pulumi.getter(name="addressPoolName")
@@ -112,16 +147,41 @@ class _AddressPoolState:
         :param pulumi.Input[str] lba_strategy: The load balancing policy of the address pool. Valid values:`ALL_RR` or `RATIO`. `ALL_RR`: returns all addresses. `RATIO`: returns addresses by weight.
         :param pulumi.Input[str] type: The type of the address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
         """
+        _AddressPoolState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address_pool_name=address_pool_name,
+            addresses=addresses,
+            instance_id=instance_id,
+            lba_strategy=lba_strategy,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address_pool_name: Optional[pulumi.Input[str]] = None,
+             addresses: Optional[pulumi.Input[Sequence[pulumi.Input['AddressPoolAddressArgs']]]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             lba_strategy: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if address_pool_name is None and 'addressPoolName' in kwargs:
+            address_pool_name = kwargs['addressPoolName']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if lba_strategy is None and 'lbaStrategy' in kwargs:
+            lba_strategy = kwargs['lbaStrategy']
+
         if address_pool_name is not None:
-            pulumi.set(__self__, "address_pool_name", address_pool_name)
+            _setter("address_pool_name", address_pool_name)
         if addresses is not None:
-            pulumi.set(__self__, "addresses", addresses)
+            _setter("addresses", addresses)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if lba_strategy is not None:
-            pulumi.set(__self__, "lba_strategy", lba_strategy)
+            _setter("lba_strategy", lba_strategy)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="addressPoolName")
@@ -351,6 +411,10 @@ class AddressPool(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AddressPoolArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

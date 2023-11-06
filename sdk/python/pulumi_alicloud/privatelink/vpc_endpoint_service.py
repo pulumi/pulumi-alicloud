@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['VpcEndpointServiceArgs', 'VpcEndpointService']
@@ -29,16 +29,43 @@ class VpcEndpointServiceArgs:
                
                > **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
         """
+        VpcEndpointServiceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_accept_connection=auto_accept_connection,
+            connect_bandwidth=connect_bandwidth,
+            dry_run=dry_run,
+            payer=payer,
+            service_description=service_description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_accept_connection: Optional[pulumi.Input[bool]] = None,
+             connect_bandwidth: Optional[pulumi.Input[int]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             payer: Optional[pulumi.Input[str]] = None,
+             service_description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_accept_connection is None and 'autoAcceptConnection' in kwargs:
+            auto_accept_connection = kwargs['autoAcceptConnection']
+        if connect_bandwidth is None and 'connectBandwidth' in kwargs:
+            connect_bandwidth = kwargs['connectBandwidth']
+        if dry_run is None and 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if service_description is None and 'serviceDescription' in kwargs:
+            service_description = kwargs['serviceDescription']
+
         if auto_accept_connection is not None:
-            pulumi.set(__self__, "auto_accept_connection", auto_accept_connection)
+            _setter("auto_accept_connection", auto_accept_connection)
         if connect_bandwidth is not None:
-            pulumi.set(__self__, "connect_bandwidth", connect_bandwidth)
+            _setter("connect_bandwidth", connect_bandwidth)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if payer is not None:
-            pulumi.set(__self__, "payer", payer)
+            _setter("payer", payer)
         if service_description is not None:
-            pulumi.set(__self__, "service_description", service_description)
+            _setter("service_description", service_description)
 
     @property
     @pulumi.getter(name="autoAcceptConnection")
@@ -127,22 +154,59 @@ class _VpcEndpointServiceState:
         :param pulumi.Input[str] service_domain: Service Domain.
         :param pulumi.Input[str] status: The status of Vpc Endpoint Service.
         """
+        _VpcEndpointServiceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_accept_connection=auto_accept_connection,
+            connect_bandwidth=connect_bandwidth,
+            dry_run=dry_run,
+            payer=payer,
+            service_business_status=service_business_status,
+            service_description=service_description,
+            service_domain=service_domain,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_accept_connection: Optional[pulumi.Input[bool]] = None,
+             connect_bandwidth: Optional[pulumi.Input[int]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             payer: Optional[pulumi.Input[str]] = None,
+             service_business_status: Optional[pulumi.Input[str]] = None,
+             service_description: Optional[pulumi.Input[str]] = None,
+             service_domain: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_accept_connection is None and 'autoAcceptConnection' in kwargs:
+            auto_accept_connection = kwargs['autoAcceptConnection']
+        if connect_bandwidth is None and 'connectBandwidth' in kwargs:
+            connect_bandwidth = kwargs['connectBandwidth']
+        if dry_run is None and 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if service_business_status is None and 'serviceBusinessStatus' in kwargs:
+            service_business_status = kwargs['serviceBusinessStatus']
+        if service_description is None and 'serviceDescription' in kwargs:
+            service_description = kwargs['serviceDescription']
+        if service_domain is None and 'serviceDomain' in kwargs:
+            service_domain = kwargs['serviceDomain']
+
         if auto_accept_connection is not None:
-            pulumi.set(__self__, "auto_accept_connection", auto_accept_connection)
+            _setter("auto_accept_connection", auto_accept_connection)
         if connect_bandwidth is not None:
-            pulumi.set(__self__, "connect_bandwidth", connect_bandwidth)
+            _setter("connect_bandwidth", connect_bandwidth)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if payer is not None:
-            pulumi.set(__self__, "payer", payer)
+            _setter("payer", payer)
         if service_business_status is not None:
-            pulumi.set(__self__, "service_business_status", service_business_status)
+            _setter("service_business_status", service_business_status)
         if service_description is not None:
-            pulumi.set(__self__, "service_description", service_description)
+            _setter("service_description", service_description)
         if service_domain is not None:
-            pulumi.set(__self__, "service_domain", service_domain)
+            _setter("service_domain", service_domain)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="autoAcceptConnection")
@@ -346,6 +410,10 @@ class VpcEndpointService(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            VpcEndpointServiceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

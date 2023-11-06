@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,19 +35,52 @@ class ImageImportArgs:
                More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
                **NOTE**: It's default value is Ubuntu before version 1.197.0.
         """
-        pulumi.set(__self__, "disk_device_mappings", disk_device_mappings)
+        ImageImportArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disk_device_mappings=disk_device_mappings,
+            architecture=architecture,
+            description=description,
+            image_name=image_name,
+            license_type=license_type,
+            os_type=os_type,
+            platform=platform,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disk_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['ImageImportDiskDeviceMappingArgs']]]] = None,
+             architecture: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             image_name: Optional[pulumi.Input[str]] = None,
+             license_type: Optional[pulumi.Input[str]] = None,
+             os_type: Optional[pulumi.Input[str]] = None,
+             platform: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disk_device_mappings is None and 'diskDeviceMappings' in kwargs:
+            disk_device_mappings = kwargs['diskDeviceMappings']
+        if disk_device_mappings is None:
+            raise TypeError("Missing 'disk_device_mappings' argument")
+        if image_name is None and 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+        if license_type is None and 'licenseType' in kwargs:
+            license_type = kwargs['licenseType']
+        if os_type is None and 'osType' in kwargs:
+            os_type = kwargs['osType']
+
+        _setter("disk_device_mappings", disk_device_mappings)
         if architecture is not None:
-            pulumi.set(__self__, "architecture", architecture)
+            _setter("architecture", architecture)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if image_name is not None:
-            pulumi.set(__self__, "image_name", image_name)
+            _setter("image_name", image_name)
         if license_type is not None:
-            pulumi.set(__self__, "license_type", license_type)
+            _setter("license_type", license_type)
         if os_type is not None:
-            pulumi.set(__self__, "os_type", os_type)
+            _setter("os_type", os_type)
         if platform is not None:
-            pulumi.set(__self__, "platform", platform)
+            _setter("platform", platform)
 
     @property
     @pulumi.getter(name="diskDeviceMappings")
@@ -158,20 +191,51 @@ class _ImageImportState:
                More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
                **NOTE**: It's default value is Ubuntu before version 1.197.0.
         """
+        _ImageImportState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            architecture=architecture,
+            description=description,
+            disk_device_mappings=disk_device_mappings,
+            image_name=image_name,
+            license_type=license_type,
+            os_type=os_type,
+            platform=platform,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             architecture: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disk_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['ImageImportDiskDeviceMappingArgs']]]] = None,
+             image_name: Optional[pulumi.Input[str]] = None,
+             license_type: Optional[pulumi.Input[str]] = None,
+             os_type: Optional[pulumi.Input[str]] = None,
+             platform: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disk_device_mappings is None and 'diskDeviceMappings' in kwargs:
+            disk_device_mappings = kwargs['diskDeviceMappings']
+        if image_name is None and 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+        if license_type is None and 'licenseType' in kwargs:
+            license_type = kwargs['licenseType']
+        if os_type is None and 'osType' in kwargs:
+            os_type = kwargs['osType']
+
         if architecture is not None:
-            pulumi.set(__self__, "architecture", architecture)
+            _setter("architecture", architecture)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disk_device_mappings is not None:
-            pulumi.set(__self__, "disk_device_mappings", disk_device_mappings)
+            _setter("disk_device_mappings", disk_device_mappings)
         if image_name is not None:
-            pulumi.set(__self__, "image_name", image_name)
+            _setter("image_name", image_name)
         if license_type is not None:
-            pulumi.set(__self__, "license_type", license_type)
+            _setter("license_type", license_type)
         if os_type is not None:
-            pulumi.set(__self__, "os_type", os_type)
+            _setter("os_type", os_type)
         if platform is not None:
-            pulumi.set(__self__, "platform", platform)
+            _setter("platform", platform)
 
     @property
     @pulumi.getter
@@ -385,6 +449,10 @@ class ImageImport(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ImageImportArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

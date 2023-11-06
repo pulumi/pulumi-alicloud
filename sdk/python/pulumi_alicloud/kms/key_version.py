@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['KeyVersionArgs', 'KeyVersion']
@@ -21,7 +21,22 @@ class KeyVersionArgs:
                
                > **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
         """
-        pulumi.set(__self__, "key_id", key_id)
+        KeyVersionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key_id=key_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key_id is None and 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if key_id is None:
+            raise TypeError("Missing 'key_id' argument")
+
+        _setter("key_id", key_id)
 
     @property
     @pulumi.getter(name="keyId")
@@ -50,10 +65,27 @@ class _KeyVersionState:
                > **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
         :param pulumi.Input[str] key_version_id: The id of the Alikms key version.
         """
+        _KeyVersionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key_id=key_id,
+            key_version_id=key_version_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key_id: Optional[pulumi.Input[str]] = None,
+             key_version_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key_id is None and 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if key_version_id is None and 'keyVersionId' in kwargs:
+            key_version_id = kwargs['keyVersionId']
+
         if key_id is not None:
-            pulumi.set(__self__, "key_id", key_id)
+            _setter("key_id", key_id)
         if key_version_id is not None:
-            pulumi.set(__self__, "key_version_id", key_version_id)
+            _setter("key_version_id", key_version_id)
 
     @property
     @pulumi.getter(name="keyId")
@@ -161,6 +193,10 @@ class KeyVersion(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            KeyVersionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

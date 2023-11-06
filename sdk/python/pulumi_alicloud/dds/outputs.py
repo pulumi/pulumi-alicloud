@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -38,25 +38,130 @@ class GetMongoInstancesInstanceResult(dict):
                  status: str,
                  storage: int,
                  tags: Mapping[str, Any]):
-        pulumi.set(__self__, "availability_zone", availability_zone)
-        pulumi.set(__self__, "charge_type", charge_type)
-        pulumi.set(__self__, "creation_time", creation_time)
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "engine_version", engine_version)
-        pulumi.set(__self__, "expiration_time", expiration_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_class", instance_class)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "lock_mode", lock_mode)
-        pulumi.set(__self__, "mongos", mongos)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "replication", replication)
-        pulumi.set(__self__, "shards", shards)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "storage", storage)
-        pulumi.set(__self__, "tags", tags)
+        GetMongoInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            availability_zone=availability_zone,
+            charge_type=charge_type,
+            creation_time=creation_time,
+            engine=engine,
+            engine_version=engine_version,
+            expiration_time=expiration_time,
+            id=id,
+            instance_class=instance_class,
+            instance_type=instance_type,
+            lock_mode=lock_mode,
+            mongos=mongos,
+            name=name,
+            network_type=network_type,
+            region_id=region_id,
+            replication=replication,
+            shards=shards,
+            status=status,
+            storage=storage,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             availability_zone: Optional[str] = None,
+             charge_type: Optional[str] = None,
+             creation_time: Optional[str] = None,
+             engine: Optional[str] = None,
+             engine_version: Optional[str] = None,
+             expiration_time: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_class: Optional[str] = None,
+             instance_type: Optional[str] = None,
+             lock_mode: Optional[str] = None,
+             mongos: Optional[Sequence['outputs.GetMongoInstancesInstanceMongoResult']] = None,
+             name: Optional[str] = None,
+             network_type: Optional[str] = None,
+             region_id: Optional[str] = None,
+             replication: Optional[str] = None,
+             shards: Optional[Sequence['outputs.GetMongoInstancesInstanceShardResult']] = None,
+             status: Optional[str] = None,
+             storage: Optional[int] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if availability_zone is None and 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if availability_zone is None:
+            raise TypeError("Missing 'availability_zone' argument")
+        if charge_type is None and 'chargeType' in kwargs:
+            charge_type = kwargs['chargeType']
+        if charge_type is None:
+            raise TypeError("Missing 'charge_type' argument")
+        if creation_time is None and 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if creation_time is None:
+            raise TypeError("Missing 'creation_time' argument")
+        if engine is None:
+            raise TypeError("Missing 'engine' argument")
+        if engine_version is None and 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if engine_version is None:
+            raise TypeError("Missing 'engine_version' argument")
+        if expiration_time is None and 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+        if expiration_time is None:
+            raise TypeError("Missing 'expiration_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_class is None and 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if instance_class is None:
+            raise TypeError("Missing 'instance_class' argument")
+        if instance_type is None and 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if lock_mode is None and 'lockMode' in kwargs:
+            lock_mode = kwargs['lockMode']
+        if lock_mode is None:
+            raise TypeError("Missing 'lock_mode' argument")
+        if mongos is None:
+            raise TypeError("Missing 'mongos' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if network_type is None and 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if network_type is None:
+            raise TypeError("Missing 'network_type' argument")
+        if region_id is None and 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if replication is None:
+            raise TypeError("Missing 'replication' argument")
+        if shards is None:
+            raise TypeError("Missing 'shards' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if storage is None:
+            raise TypeError("Missing 'storage' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+
+        _setter("availability_zone", availability_zone)
+        _setter("charge_type", charge_type)
+        _setter("creation_time", creation_time)
+        _setter("engine", engine)
+        _setter("engine_version", engine_version)
+        _setter("expiration_time", expiration_time)
+        _setter("id", id)
+        _setter("instance_class", instance_class)
+        _setter("instance_type", instance_type)
+        _setter("lock_mode", lock_mode)
+        _setter("mongos", mongos)
+        _setter("name", name)
+        _setter("network_type", network_type)
+        _setter("region_id", region_id)
+        _setter("replication", replication)
+        _setter("shards", shards)
+        _setter("status", status)
+        _setter("storage", storage)
+        _setter("tags", tags)
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -160,9 +265,34 @@ class GetMongoInstancesInstanceMongoResult(dict):
                  class_: str,
                  description: str,
                  node_id: str):
-        pulumi.set(__self__, "class_", class_)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "node_id", node_id)
+        GetMongoInstancesInstanceMongoResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            class_=class_,
+            description=description,
+            node_id=node_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             class_: Optional[str] = None,
+             description: Optional[str] = None,
+             node_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if class_ is None and 'class' in kwargs:
+            class_ = kwargs['class']
+        if class_ is None:
+            raise TypeError("Missing 'class_' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if node_id is None and 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if node_id is None:
+            raise TypeError("Missing 'node_id' argument")
+
+        _setter("class_", class_)
+        _setter("description", description)
+        _setter("node_id", node_id)
 
     @property
     @pulumi.getter(name="class")
@@ -187,10 +317,39 @@ class GetMongoInstancesInstanceShardResult(dict):
                  description: str,
                  node_id: str,
                  storage: int):
-        pulumi.set(__self__, "class_", class_)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "node_id", node_id)
-        pulumi.set(__self__, "storage", storage)
+        GetMongoInstancesInstanceShardResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            class_=class_,
+            description=description,
+            node_id=node_id,
+            storage=storage,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             class_: Optional[str] = None,
+             description: Optional[str] = None,
+             node_id: Optional[str] = None,
+             storage: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if class_ is None and 'class' in kwargs:
+            class_ = kwargs['class']
+        if class_ is None:
+            raise TypeError("Missing 'class_' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if node_id is None and 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if node_id is None:
+            raise TypeError("Missing 'node_id' argument")
+        if storage is None:
+            raise TypeError("Missing 'storage' argument")
+
+        _setter("class_", class_)
+        _setter("description", description)
+        _setter("node_id", node_id)
+        _setter("storage", storage)
 
     @property
     @pulumi.getter(name="class")

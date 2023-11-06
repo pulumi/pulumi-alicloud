@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,22 +37,63 @@ class BucketReplicationArgs:
         :param pulumi.Input['BucketReplicationSourceSelectionCriteriaArgs'] source_selection_criteria: Specifies other conditions used to filter the source objects to replicate(See the following block `source_selection_criteria`).
         :param pulumi.Input[str] sync_role: Specifies the role that you authorize OSS to use to replicate data. If SSE-KMS is specified to encrypt the objects replicated to the destination bucket, it must be specified.
         """
-        pulumi.set(__self__, "bucket", bucket)
-        pulumi.set(__self__, "destination", destination)
+        BucketReplicationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bucket=bucket,
+            destination=destination,
+            action=action,
+            encryption_configuration=encryption_configuration,
+            historical_object_replication=historical_object_replication,
+            prefix_set=prefix_set,
+            progress=progress,
+            source_selection_criteria=source_selection_criteria,
+            sync_role=sync_role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bucket: Optional[pulumi.Input[str]] = None,
+             destination: Optional[pulumi.Input['BucketReplicationDestinationArgs']] = None,
+             action: Optional[pulumi.Input[str]] = None,
+             encryption_configuration: Optional[pulumi.Input['BucketReplicationEncryptionConfigurationArgs']] = None,
+             historical_object_replication: Optional[pulumi.Input[str]] = None,
+             prefix_set: Optional[pulumi.Input['BucketReplicationPrefixSetArgs']] = None,
+             progress: Optional[pulumi.Input['BucketReplicationProgressArgs']] = None,
+             source_selection_criteria: Optional[pulumi.Input['BucketReplicationSourceSelectionCriteriaArgs']] = None,
+             sync_role: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if destination is None:
+            raise TypeError("Missing 'destination' argument")
+        if encryption_configuration is None and 'encryptionConfiguration' in kwargs:
+            encryption_configuration = kwargs['encryptionConfiguration']
+        if historical_object_replication is None and 'historicalObjectReplication' in kwargs:
+            historical_object_replication = kwargs['historicalObjectReplication']
+        if prefix_set is None and 'prefixSet' in kwargs:
+            prefix_set = kwargs['prefixSet']
+        if source_selection_criteria is None and 'sourceSelectionCriteria' in kwargs:
+            source_selection_criteria = kwargs['sourceSelectionCriteria']
+        if sync_role is None and 'syncRole' in kwargs:
+            sync_role = kwargs['syncRole']
+
+        _setter("bucket", bucket)
+        _setter("destination", destination)
         if action is not None:
-            pulumi.set(__self__, "action", action)
+            _setter("action", action)
         if encryption_configuration is not None:
-            pulumi.set(__self__, "encryption_configuration", encryption_configuration)
+            _setter("encryption_configuration", encryption_configuration)
         if historical_object_replication is not None:
-            pulumi.set(__self__, "historical_object_replication", historical_object_replication)
+            _setter("historical_object_replication", historical_object_replication)
         if prefix_set is not None:
-            pulumi.set(__self__, "prefix_set", prefix_set)
+            _setter("prefix_set", prefix_set)
         if progress is not None:
-            pulumi.set(__self__, "progress", progress)
+            _setter("progress", progress)
         if source_selection_criteria is not None:
-            pulumi.set(__self__, "source_selection_criteria", source_selection_criteria)
+            _setter("source_selection_criteria", source_selection_criteria)
         if sync_role is not None:
-            pulumi.set(__self__, "sync_role", sync_role)
+            _setter("sync_role", sync_role)
 
     @property
     @pulumi.getter
@@ -191,28 +232,71 @@ class _BucketReplicationState:
         :param pulumi.Input[str] status: Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
         :param pulumi.Input[str] sync_role: Specifies the role that you authorize OSS to use to replicate data. If SSE-KMS is specified to encrypt the objects replicated to the destination bucket, it must be specified.
         """
+        _BucketReplicationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            bucket=bucket,
+            destination=destination,
+            encryption_configuration=encryption_configuration,
+            historical_object_replication=historical_object_replication,
+            prefix_set=prefix_set,
+            progress=progress,
+            rule_id=rule_id,
+            source_selection_criteria=source_selection_criteria,
+            status=status,
+            sync_role=sync_role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: Optional[pulumi.Input[str]] = None,
+             bucket: Optional[pulumi.Input[str]] = None,
+             destination: Optional[pulumi.Input['BucketReplicationDestinationArgs']] = None,
+             encryption_configuration: Optional[pulumi.Input['BucketReplicationEncryptionConfigurationArgs']] = None,
+             historical_object_replication: Optional[pulumi.Input[str]] = None,
+             prefix_set: Optional[pulumi.Input['BucketReplicationPrefixSetArgs']] = None,
+             progress: Optional[pulumi.Input['BucketReplicationProgressArgs']] = None,
+             rule_id: Optional[pulumi.Input[str]] = None,
+             source_selection_criteria: Optional[pulumi.Input['BucketReplicationSourceSelectionCriteriaArgs']] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             sync_role: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if encryption_configuration is None and 'encryptionConfiguration' in kwargs:
+            encryption_configuration = kwargs['encryptionConfiguration']
+        if historical_object_replication is None and 'historicalObjectReplication' in kwargs:
+            historical_object_replication = kwargs['historicalObjectReplication']
+        if prefix_set is None and 'prefixSet' in kwargs:
+            prefix_set = kwargs['prefixSet']
+        if rule_id is None and 'ruleId' in kwargs:
+            rule_id = kwargs['ruleId']
+        if source_selection_criteria is None and 'sourceSelectionCriteria' in kwargs:
+            source_selection_criteria = kwargs['sourceSelectionCriteria']
+        if sync_role is None and 'syncRole' in kwargs:
+            sync_role = kwargs['syncRole']
+
         if action is not None:
-            pulumi.set(__self__, "action", action)
+            _setter("action", action)
         if bucket is not None:
-            pulumi.set(__self__, "bucket", bucket)
+            _setter("bucket", bucket)
         if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+            _setter("destination", destination)
         if encryption_configuration is not None:
-            pulumi.set(__self__, "encryption_configuration", encryption_configuration)
+            _setter("encryption_configuration", encryption_configuration)
         if historical_object_replication is not None:
-            pulumi.set(__self__, "historical_object_replication", historical_object_replication)
+            _setter("historical_object_replication", historical_object_replication)
         if prefix_set is not None:
-            pulumi.set(__self__, "prefix_set", prefix_set)
+            _setter("prefix_set", prefix_set)
         if progress is not None:
-            pulumi.set(__self__, "progress", progress)
+            _setter("progress", progress)
         if rule_id is not None:
-            pulumi.set(__self__, "rule_id", rule_id)
+            _setter("rule_id", rule_id)
         if source_selection_criteria is not None:
-            pulumi.set(__self__, "source_selection_criteria", source_selection_criteria)
+            _setter("source_selection_criteria", source_selection_criteria)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if sync_role is not None:
-            pulumi.set(__self__, "sync_role", sync_role)
+            _setter("sync_role", sync_role)
 
     @property
     @pulumi.getter
@@ -580,6 +664,10 @@ class BucketReplication(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BucketReplicationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -607,13 +695,38 @@ class BucketReplication(pulumi.CustomResource):
             if bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket'")
             __props__.__dict__["bucket"] = bucket
+            if destination is not None and not isinstance(destination, BucketReplicationDestinationArgs):
+                destination = destination or {}
+                def _setter(key, value):
+                    destination[key] = value
+                BucketReplicationDestinationArgs._configure(_setter, **destination)
             if destination is None and not opts.urn:
                 raise TypeError("Missing required property 'destination'")
             __props__.__dict__["destination"] = destination
+            if encryption_configuration is not None and not isinstance(encryption_configuration, BucketReplicationEncryptionConfigurationArgs):
+                encryption_configuration = encryption_configuration or {}
+                def _setter(key, value):
+                    encryption_configuration[key] = value
+                BucketReplicationEncryptionConfigurationArgs._configure(_setter, **encryption_configuration)
             __props__.__dict__["encryption_configuration"] = encryption_configuration
             __props__.__dict__["historical_object_replication"] = historical_object_replication
+            if prefix_set is not None and not isinstance(prefix_set, BucketReplicationPrefixSetArgs):
+                prefix_set = prefix_set or {}
+                def _setter(key, value):
+                    prefix_set[key] = value
+                BucketReplicationPrefixSetArgs._configure(_setter, **prefix_set)
             __props__.__dict__["prefix_set"] = prefix_set
+            if progress is not None and not isinstance(progress, BucketReplicationProgressArgs):
+                progress = progress or {}
+                def _setter(key, value):
+                    progress[key] = value
+                BucketReplicationProgressArgs._configure(_setter, **progress)
             __props__.__dict__["progress"] = progress
+            if source_selection_criteria is not None and not isinstance(source_selection_criteria, BucketReplicationSourceSelectionCriteriaArgs):
+                source_selection_criteria = source_selection_criteria or {}
+                def _setter(key, value):
+                    source_selection_criteria[key] = value
+                BucketReplicationSourceSelectionCriteriaArgs._configure(_setter, **source_selection_criteria)
             __props__.__dict__["source_selection_criteria"] = source_selection_criteria
             __props__.__dict__["sync_role"] = sync_role
             __props__.__dict__["rule_id"] = None

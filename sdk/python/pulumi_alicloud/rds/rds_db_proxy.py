@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -84,37 +84,128 @@ class RdsDbProxyArgs:
                - Immediate: ApsaraDB RDS immediately performs the upgrade.
                - SpecificTime: ApsaraDB RDS performs the upgrade at a specified point in time.
         """
-        pulumi.set(__self__, "db_proxy_instance_num", db_proxy_instance_num)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_network_type", instance_network_type)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        RdsDbProxyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_proxy_instance_num=db_proxy_instance_num,
+            instance_id=instance_id,
+            instance_network_type=instance_network_type,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            db_proxy_connect_string_port=db_proxy_connect_string_port,
+            db_proxy_connection_prefix=db_proxy_connection_prefix,
+            db_proxy_endpoint_read_write_mode=db_proxy_endpoint_read_write_mode,
+            db_proxy_features=db_proxy_features,
+            db_proxy_ssl_enabled=db_proxy_ssl_enabled,
+            effective_specific_time=effective_specific_time,
+            effective_time=effective_time,
+            read_only_instance_distribution_type=read_only_instance_distribution_type,
+            read_only_instance_max_delay_time=read_only_instance_max_delay_time,
+            read_only_instance_weights=read_only_instance_weights,
+            resource_group_id=resource_group_id,
+            switch_time=switch_time,
+            upgrade_time=upgrade_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_proxy_instance_num: Optional[pulumi.Input[int]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             instance_network_type: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             db_proxy_connect_string_port: Optional[pulumi.Input[int]] = None,
+             db_proxy_connection_prefix: Optional[pulumi.Input[str]] = None,
+             db_proxy_endpoint_read_write_mode: Optional[pulumi.Input[str]] = None,
+             db_proxy_features: Optional[pulumi.Input[str]] = None,
+             db_proxy_ssl_enabled: Optional[pulumi.Input[str]] = None,
+             effective_specific_time: Optional[pulumi.Input[str]] = None,
+             effective_time: Optional[pulumi.Input[str]] = None,
+             read_only_instance_distribution_type: Optional[pulumi.Input[str]] = None,
+             read_only_instance_max_delay_time: Optional[pulumi.Input[int]] = None,
+             read_only_instance_weights: Optional[pulumi.Input[Sequence[pulumi.Input['RdsDbProxyReadOnlyInstanceWeightArgs']]]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             switch_time: Optional[pulumi.Input[str]] = None,
+             upgrade_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if db_proxy_instance_num is None and 'dbProxyInstanceNum' in kwargs:
+            db_proxy_instance_num = kwargs['dbProxyInstanceNum']
+        if db_proxy_instance_num is None:
+            raise TypeError("Missing 'db_proxy_instance_num' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_network_type is None and 'instanceNetworkType' in kwargs:
+            instance_network_type = kwargs['instanceNetworkType']
+        if instance_network_type is None:
+            raise TypeError("Missing 'instance_network_type' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if db_proxy_connect_string_port is None and 'dbProxyConnectStringPort' in kwargs:
+            db_proxy_connect_string_port = kwargs['dbProxyConnectStringPort']
+        if db_proxy_connection_prefix is None and 'dbProxyConnectionPrefix' in kwargs:
+            db_proxy_connection_prefix = kwargs['dbProxyConnectionPrefix']
+        if db_proxy_endpoint_read_write_mode is None and 'dbProxyEndpointReadWriteMode' in kwargs:
+            db_proxy_endpoint_read_write_mode = kwargs['dbProxyEndpointReadWriteMode']
+        if db_proxy_features is None and 'dbProxyFeatures' in kwargs:
+            db_proxy_features = kwargs['dbProxyFeatures']
+        if db_proxy_ssl_enabled is None and 'dbProxySslEnabled' in kwargs:
+            db_proxy_ssl_enabled = kwargs['dbProxySslEnabled']
+        if effective_specific_time is None and 'effectiveSpecificTime' in kwargs:
+            effective_specific_time = kwargs['effectiveSpecificTime']
+        if effective_time is None and 'effectiveTime' in kwargs:
+            effective_time = kwargs['effectiveTime']
+        if read_only_instance_distribution_type is None and 'readOnlyInstanceDistributionType' in kwargs:
+            read_only_instance_distribution_type = kwargs['readOnlyInstanceDistributionType']
+        if read_only_instance_max_delay_time is None and 'readOnlyInstanceMaxDelayTime' in kwargs:
+            read_only_instance_max_delay_time = kwargs['readOnlyInstanceMaxDelayTime']
+        if read_only_instance_weights is None and 'readOnlyInstanceWeights' in kwargs:
+            read_only_instance_weights = kwargs['readOnlyInstanceWeights']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if switch_time is None and 'switchTime' in kwargs:
+            switch_time = kwargs['switchTime']
+        if upgrade_time is None and 'upgradeTime' in kwargs:
+            upgrade_time = kwargs['upgradeTime']
+
+        _setter("db_proxy_instance_num", db_proxy_instance_num)
+        _setter("instance_id", instance_id)
+        _setter("instance_network_type", instance_network_type)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
         if db_proxy_connect_string_port is not None:
-            pulumi.set(__self__, "db_proxy_connect_string_port", db_proxy_connect_string_port)
+            _setter("db_proxy_connect_string_port", db_proxy_connect_string_port)
         if db_proxy_connection_prefix is not None:
-            pulumi.set(__self__, "db_proxy_connection_prefix", db_proxy_connection_prefix)
+            _setter("db_proxy_connection_prefix", db_proxy_connection_prefix)
         if db_proxy_endpoint_read_write_mode is not None:
-            pulumi.set(__self__, "db_proxy_endpoint_read_write_mode", db_proxy_endpoint_read_write_mode)
+            _setter("db_proxy_endpoint_read_write_mode", db_proxy_endpoint_read_write_mode)
         if db_proxy_features is not None:
-            pulumi.set(__self__, "db_proxy_features", db_proxy_features)
+            _setter("db_proxy_features", db_proxy_features)
         if db_proxy_ssl_enabled is not None:
-            pulumi.set(__self__, "db_proxy_ssl_enabled", db_proxy_ssl_enabled)
+            _setter("db_proxy_ssl_enabled", db_proxy_ssl_enabled)
         if effective_specific_time is not None:
-            pulumi.set(__self__, "effective_specific_time", effective_specific_time)
+            _setter("effective_specific_time", effective_specific_time)
         if effective_time is not None:
-            pulumi.set(__self__, "effective_time", effective_time)
+            _setter("effective_time", effective_time)
         if read_only_instance_distribution_type is not None:
-            pulumi.set(__self__, "read_only_instance_distribution_type", read_only_instance_distribution_type)
+            _setter("read_only_instance_distribution_type", read_only_instance_distribution_type)
         if read_only_instance_max_delay_time is not None:
-            pulumi.set(__self__, "read_only_instance_max_delay_time", read_only_instance_max_delay_time)
+            _setter("read_only_instance_max_delay_time", read_only_instance_max_delay_time)
         if read_only_instance_weights is not None:
-            pulumi.set(__self__, "read_only_instance_weights", read_only_instance_weights)
+            _setter("read_only_instance_weights", read_only_instance_weights)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if switch_time is not None:
-            pulumi.set(__self__, "switch_time", switch_time)
+            _setter("switch_time", switch_time)
         if upgrade_time is not None:
-            pulumi.set(__self__, "upgrade_time", upgrade_time)
+            _setter("upgrade_time", upgrade_time)
 
     @property
     @pulumi.getter(name="dbProxyInstanceNum")
@@ -443,52 +534,153 @@ class _RdsDbProxyState:
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC) to which the instance belongs.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch that is associated with the specified VPC.
         """
+        _RdsDbProxyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_proxy_connect_string_port=db_proxy_connect_string_port,
+            db_proxy_connection_prefix=db_proxy_connection_prefix,
+            db_proxy_connection_string=db_proxy_connection_string,
+            db_proxy_endpoint_aliases=db_proxy_endpoint_aliases,
+            db_proxy_endpoint_id=db_proxy_endpoint_id,
+            db_proxy_endpoint_read_write_mode=db_proxy_endpoint_read_write_mode,
+            db_proxy_features=db_proxy_features,
+            db_proxy_instance_num=db_proxy_instance_num,
+            db_proxy_ssl_enabled=db_proxy_ssl_enabled,
+            effective_specific_time=effective_specific_time,
+            effective_time=effective_time,
+            instance_id=instance_id,
+            instance_network_type=instance_network_type,
+            net_type=net_type,
+            read_only_instance_distribution_type=read_only_instance_distribution_type,
+            read_only_instance_max_delay_time=read_only_instance_max_delay_time,
+            read_only_instance_weights=read_only_instance_weights,
+            resource_group_id=resource_group_id,
+            ssl_expired_time=ssl_expired_time,
+            switch_time=switch_time,
+            upgrade_time=upgrade_time,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_proxy_connect_string_port: Optional[pulumi.Input[int]] = None,
+             db_proxy_connection_prefix: Optional[pulumi.Input[str]] = None,
+             db_proxy_connection_string: Optional[pulumi.Input[str]] = None,
+             db_proxy_endpoint_aliases: Optional[pulumi.Input[str]] = None,
+             db_proxy_endpoint_id: Optional[pulumi.Input[str]] = None,
+             db_proxy_endpoint_read_write_mode: Optional[pulumi.Input[str]] = None,
+             db_proxy_features: Optional[pulumi.Input[str]] = None,
+             db_proxy_instance_num: Optional[pulumi.Input[int]] = None,
+             db_proxy_ssl_enabled: Optional[pulumi.Input[str]] = None,
+             effective_specific_time: Optional[pulumi.Input[str]] = None,
+             effective_time: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             instance_network_type: Optional[pulumi.Input[str]] = None,
+             net_type: Optional[pulumi.Input[str]] = None,
+             read_only_instance_distribution_type: Optional[pulumi.Input[str]] = None,
+             read_only_instance_max_delay_time: Optional[pulumi.Input[int]] = None,
+             read_only_instance_weights: Optional[pulumi.Input[Sequence[pulumi.Input['RdsDbProxyReadOnlyInstanceWeightArgs']]]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             ssl_expired_time: Optional[pulumi.Input[str]] = None,
+             switch_time: Optional[pulumi.Input[str]] = None,
+             upgrade_time: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if db_proxy_connect_string_port is None and 'dbProxyConnectStringPort' in kwargs:
+            db_proxy_connect_string_port = kwargs['dbProxyConnectStringPort']
+        if db_proxy_connection_prefix is None and 'dbProxyConnectionPrefix' in kwargs:
+            db_proxy_connection_prefix = kwargs['dbProxyConnectionPrefix']
+        if db_proxy_connection_string is None and 'dbProxyConnectionString' in kwargs:
+            db_proxy_connection_string = kwargs['dbProxyConnectionString']
+        if db_proxy_endpoint_aliases is None and 'dbProxyEndpointAliases' in kwargs:
+            db_proxy_endpoint_aliases = kwargs['dbProxyEndpointAliases']
+        if db_proxy_endpoint_id is None and 'dbProxyEndpointId' in kwargs:
+            db_proxy_endpoint_id = kwargs['dbProxyEndpointId']
+        if db_proxy_endpoint_read_write_mode is None and 'dbProxyEndpointReadWriteMode' in kwargs:
+            db_proxy_endpoint_read_write_mode = kwargs['dbProxyEndpointReadWriteMode']
+        if db_proxy_features is None and 'dbProxyFeatures' in kwargs:
+            db_proxy_features = kwargs['dbProxyFeatures']
+        if db_proxy_instance_num is None and 'dbProxyInstanceNum' in kwargs:
+            db_proxy_instance_num = kwargs['dbProxyInstanceNum']
+        if db_proxy_ssl_enabled is None and 'dbProxySslEnabled' in kwargs:
+            db_proxy_ssl_enabled = kwargs['dbProxySslEnabled']
+        if effective_specific_time is None and 'effectiveSpecificTime' in kwargs:
+            effective_specific_time = kwargs['effectiveSpecificTime']
+        if effective_time is None and 'effectiveTime' in kwargs:
+            effective_time = kwargs['effectiveTime']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_network_type is None and 'instanceNetworkType' in kwargs:
+            instance_network_type = kwargs['instanceNetworkType']
+        if net_type is None and 'netType' in kwargs:
+            net_type = kwargs['netType']
+        if read_only_instance_distribution_type is None and 'readOnlyInstanceDistributionType' in kwargs:
+            read_only_instance_distribution_type = kwargs['readOnlyInstanceDistributionType']
+        if read_only_instance_max_delay_time is None and 'readOnlyInstanceMaxDelayTime' in kwargs:
+            read_only_instance_max_delay_time = kwargs['readOnlyInstanceMaxDelayTime']
+        if read_only_instance_weights is None and 'readOnlyInstanceWeights' in kwargs:
+            read_only_instance_weights = kwargs['readOnlyInstanceWeights']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if ssl_expired_time is None and 'sslExpiredTime' in kwargs:
+            ssl_expired_time = kwargs['sslExpiredTime']
+        if switch_time is None and 'switchTime' in kwargs:
+            switch_time = kwargs['switchTime']
+        if upgrade_time is None and 'upgradeTime' in kwargs:
+            upgrade_time = kwargs['upgradeTime']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if db_proxy_connect_string_port is not None:
-            pulumi.set(__self__, "db_proxy_connect_string_port", db_proxy_connect_string_port)
+            _setter("db_proxy_connect_string_port", db_proxy_connect_string_port)
         if db_proxy_connection_prefix is not None:
-            pulumi.set(__self__, "db_proxy_connection_prefix", db_proxy_connection_prefix)
+            _setter("db_proxy_connection_prefix", db_proxy_connection_prefix)
         if db_proxy_connection_string is not None:
-            pulumi.set(__self__, "db_proxy_connection_string", db_proxy_connection_string)
+            _setter("db_proxy_connection_string", db_proxy_connection_string)
         if db_proxy_endpoint_aliases is not None:
-            pulumi.set(__self__, "db_proxy_endpoint_aliases", db_proxy_endpoint_aliases)
+            _setter("db_proxy_endpoint_aliases", db_proxy_endpoint_aliases)
         if db_proxy_endpoint_id is not None:
-            pulumi.set(__self__, "db_proxy_endpoint_id", db_proxy_endpoint_id)
+            _setter("db_proxy_endpoint_id", db_proxy_endpoint_id)
         if db_proxy_endpoint_read_write_mode is not None:
-            pulumi.set(__self__, "db_proxy_endpoint_read_write_mode", db_proxy_endpoint_read_write_mode)
+            _setter("db_proxy_endpoint_read_write_mode", db_proxy_endpoint_read_write_mode)
         if db_proxy_features is not None:
-            pulumi.set(__self__, "db_proxy_features", db_proxy_features)
+            _setter("db_proxy_features", db_proxy_features)
         if db_proxy_instance_num is not None:
-            pulumi.set(__self__, "db_proxy_instance_num", db_proxy_instance_num)
+            _setter("db_proxy_instance_num", db_proxy_instance_num)
         if db_proxy_ssl_enabled is not None:
-            pulumi.set(__self__, "db_proxy_ssl_enabled", db_proxy_ssl_enabled)
+            _setter("db_proxy_ssl_enabled", db_proxy_ssl_enabled)
         if effective_specific_time is not None:
-            pulumi.set(__self__, "effective_specific_time", effective_specific_time)
+            _setter("effective_specific_time", effective_specific_time)
         if effective_time is not None:
-            pulumi.set(__self__, "effective_time", effective_time)
+            _setter("effective_time", effective_time)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if instance_network_type is not None:
-            pulumi.set(__self__, "instance_network_type", instance_network_type)
+            _setter("instance_network_type", instance_network_type)
         if net_type is not None:
-            pulumi.set(__self__, "net_type", net_type)
+            _setter("net_type", net_type)
         if read_only_instance_distribution_type is not None:
-            pulumi.set(__self__, "read_only_instance_distribution_type", read_only_instance_distribution_type)
+            _setter("read_only_instance_distribution_type", read_only_instance_distribution_type)
         if read_only_instance_max_delay_time is not None:
-            pulumi.set(__self__, "read_only_instance_max_delay_time", read_only_instance_max_delay_time)
+            _setter("read_only_instance_max_delay_time", read_only_instance_max_delay_time)
         if read_only_instance_weights is not None:
-            pulumi.set(__self__, "read_only_instance_weights", read_only_instance_weights)
+            _setter("read_only_instance_weights", read_only_instance_weights)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if ssl_expired_time is not None:
-            pulumi.set(__self__, "ssl_expired_time", ssl_expired_time)
+            _setter("ssl_expired_time", ssl_expired_time)
         if switch_time is not None:
-            pulumi.set(__self__, "switch_time", switch_time)
+            _setter("switch_time", switch_time)
         if upgrade_time is not None:
-            pulumi.set(__self__, "upgrade_time", upgrade_time)
+            _setter("upgrade_time", upgrade_time)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="dbProxyConnectStringPort")
@@ -1040,6 +1232,10 @@ class RdsDbProxy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RdsDbProxyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

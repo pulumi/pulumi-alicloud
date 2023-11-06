@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['MscSubWebhookArgs', 'MscSubWebhook']
@@ -21,8 +21,29 @@ class MscSubWebhookArgs:
         :param pulumi.Input[str] server_url: The serverUrl of the Webhook. This url must start with `https://oapi.dingtalk.com/robot/send?access_token=`.
         :param pulumi.Input[str] webhook_name: The name of the Webhook. **Note:** The name must be `2` to `12` characters in length, and can contain uppercase and lowercase letters.
         """
-        pulumi.set(__self__, "server_url", server_url)
-        pulumi.set(__self__, "webhook_name", webhook_name)
+        MscSubWebhookArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            server_url=server_url,
+            webhook_name=webhook_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             server_url: Optional[pulumi.Input[str]] = None,
+             webhook_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if server_url is None and 'serverUrl' in kwargs:
+            server_url = kwargs['serverUrl']
+        if server_url is None:
+            raise TypeError("Missing 'server_url' argument")
+        if webhook_name is None and 'webhookName' in kwargs:
+            webhook_name = kwargs['webhookName']
+        if webhook_name is None:
+            raise TypeError("Missing 'webhook_name' argument")
+
+        _setter("server_url", server_url)
+        _setter("webhook_name", webhook_name)
 
     @property
     @pulumi.getter(name="serverUrl")
@@ -59,10 +80,27 @@ class _MscSubWebhookState:
         :param pulumi.Input[str] server_url: The serverUrl of the Webhook. This url must start with `https://oapi.dingtalk.com/robot/send?access_token=`.
         :param pulumi.Input[str] webhook_name: The name of the Webhook. **Note:** The name must be `2` to `12` characters in length, and can contain uppercase and lowercase letters.
         """
+        _MscSubWebhookState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            server_url=server_url,
+            webhook_name=webhook_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             server_url: Optional[pulumi.Input[str]] = None,
+             webhook_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if server_url is None and 'serverUrl' in kwargs:
+            server_url = kwargs['serverUrl']
+        if webhook_name is None and 'webhookName' in kwargs:
+            webhook_name = kwargs['webhookName']
+
         if server_url is not None:
-            pulumi.set(__self__, "server_url", server_url)
+            _setter("server_url", server_url)
         if webhook_name is not None:
-            pulumi.set(__self__, "webhook_name", webhook_name)
+            _setter("webhook_name", webhook_name)
 
     @property
     @pulumi.getter(name="serverUrl")
@@ -144,6 +182,10 @@ class MscSubWebhook(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MscSubWebhookArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

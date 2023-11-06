@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,25 +41,78 @@ class HoneypotProbeArgs:
         :param pulumi.Input[str] uuid: Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
         :param pulumi.Input[str] vpc_id: The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
         """
-        pulumi.set(__self__, "control_node_id", control_node_id)
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "probe_type", probe_type)
+        HoneypotProbeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            control_node_id=control_node_id,
+            display_name=display_name,
+            probe_type=probe_type,
+            arp=arp,
+            honeypot_bind_lists=honeypot_bind_lists,
+            ping=ping,
+            probe_version=probe_version,
+            proxy_ip=proxy_ip,
+            service_ip_lists=service_ip_lists,
+            uuid=uuid,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             control_node_id: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             probe_type: Optional[pulumi.Input[str]] = None,
+             arp: Optional[pulumi.Input[bool]] = None,
+             honeypot_bind_lists: Optional[pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListArgs']]]] = None,
+             ping: Optional[pulumi.Input[bool]] = None,
+             probe_version: Optional[pulumi.Input[str]] = None,
+             proxy_ip: Optional[pulumi.Input[str]] = None,
+             service_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             uuid: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if control_node_id is None and 'controlNodeId' in kwargs:
+            control_node_id = kwargs['controlNodeId']
+        if control_node_id is None:
+            raise TypeError("Missing 'control_node_id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if probe_type is None and 'probeType' in kwargs:
+            probe_type = kwargs['probeType']
+        if probe_type is None:
+            raise TypeError("Missing 'probe_type' argument")
+        if honeypot_bind_lists is None and 'honeypotBindLists' in kwargs:
+            honeypot_bind_lists = kwargs['honeypotBindLists']
+        if probe_version is None and 'probeVersion' in kwargs:
+            probe_version = kwargs['probeVersion']
+        if proxy_ip is None and 'proxyIp' in kwargs:
+            proxy_ip = kwargs['proxyIp']
+        if service_ip_lists is None and 'serviceIpLists' in kwargs:
+            service_ip_lists = kwargs['serviceIpLists']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
+        _setter("control_node_id", control_node_id)
+        _setter("display_name", display_name)
+        _setter("probe_type", probe_type)
         if arp is not None:
-            pulumi.set(__self__, "arp", arp)
+            _setter("arp", arp)
         if honeypot_bind_lists is not None:
-            pulumi.set(__self__, "honeypot_bind_lists", honeypot_bind_lists)
+            _setter("honeypot_bind_lists", honeypot_bind_lists)
         if ping is not None:
-            pulumi.set(__self__, "ping", ping)
+            _setter("ping", ping)
         if probe_version is not None:
-            pulumi.set(__self__, "probe_version", probe_version)
+            _setter("probe_version", probe_version)
         if proxy_ip is not None:
-            pulumi.set(__self__, "proxy_ip", proxy_ip)
+            _setter("proxy_ip", proxy_ip)
         if service_ip_lists is not None:
-            pulumi.set(__self__, "service_ip_lists", service_ip_lists)
+            _setter("service_ip_lists", service_ip_lists)
         if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+            _setter("uuid", uuid)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="controlNodeId")
@@ -226,32 +279,85 @@ class _HoneypotProbeState:
         :param pulumi.Input[str] uuid: Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
         :param pulumi.Input[str] vpc_id: The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
         """
+        _HoneypotProbeState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arp=arp,
+            control_node_id=control_node_id,
+            display_name=display_name,
+            honeypot_bind_lists=honeypot_bind_lists,
+            honeypot_probe_id=honeypot_probe_id,
+            ping=ping,
+            probe_type=probe_type,
+            probe_version=probe_version,
+            proxy_ip=proxy_ip,
+            service_ip_lists=service_ip_lists,
+            status=status,
+            uuid=uuid,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arp: Optional[pulumi.Input[bool]] = None,
+             control_node_id: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             honeypot_bind_lists: Optional[pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListArgs']]]] = None,
+             honeypot_probe_id: Optional[pulumi.Input[str]] = None,
+             ping: Optional[pulumi.Input[bool]] = None,
+             probe_type: Optional[pulumi.Input[str]] = None,
+             probe_version: Optional[pulumi.Input[str]] = None,
+             proxy_ip: Optional[pulumi.Input[str]] = None,
+             service_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             uuid: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if control_node_id is None and 'controlNodeId' in kwargs:
+            control_node_id = kwargs['controlNodeId']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if honeypot_bind_lists is None and 'honeypotBindLists' in kwargs:
+            honeypot_bind_lists = kwargs['honeypotBindLists']
+        if honeypot_probe_id is None and 'honeypotProbeId' in kwargs:
+            honeypot_probe_id = kwargs['honeypotProbeId']
+        if probe_type is None and 'probeType' in kwargs:
+            probe_type = kwargs['probeType']
+        if probe_version is None and 'probeVersion' in kwargs:
+            probe_version = kwargs['probeVersion']
+        if proxy_ip is None and 'proxyIp' in kwargs:
+            proxy_ip = kwargs['proxyIp']
+        if service_ip_lists is None and 'serviceIpLists' in kwargs:
+            service_ip_lists = kwargs['serviceIpLists']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if arp is not None:
-            pulumi.set(__self__, "arp", arp)
+            _setter("arp", arp)
         if control_node_id is not None:
-            pulumi.set(__self__, "control_node_id", control_node_id)
+            _setter("control_node_id", control_node_id)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if honeypot_bind_lists is not None:
-            pulumi.set(__self__, "honeypot_bind_lists", honeypot_bind_lists)
+            _setter("honeypot_bind_lists", honeypot_bind_lists)
         if honeypot_probe_id is not None:
-            pulumi.set(__self__, "honeypot_probe_id", honeypot_probe_id)
+            _setter("honeypot_probe_id", honeypot_probe_id)
         if ping is not None:
-            pulumi.set(__self__, "ping", ping)
+            _setter("ping", ping)
         if probe_type is not None:
-            pulumi.set(__self__, "probe_type", probe_type)
+            _setter("probe_type", probe_type)
         if probe_version is not None:
-            pulumi.set(__self__, "probe_version", probe_version)
+            _setter("probe_version", probe_version)
         if proxy_ip is not None:
-            pulumi.set(__self__, "proxy_ip", proxy_ip)
+            _setter("proxy_ip", proxy_ip)
         if service_ip_lists is not None:
-            pulumi.set(__self__, "service_ip_lists", service_ip_lists)
+            _setter("service_ip_lists", service_ip_lists)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+            _setter("uuid", uuid)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter
@@ -535,6 +641,10 @@ class HoneypotProbe(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            HoneypotProbeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

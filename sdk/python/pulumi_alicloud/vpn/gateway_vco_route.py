@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['GatewayVcoRouteArgs', 'GatewayVcoRoute']
@@ -25,10 +25,41 @@ class GatewayVcoRouteArgs:
         :param pulumi.Input[str] vpn_connection_id: The id of the vpn attachment.
         :param pulumi.Input[int] weight: The weight value of the destination route. Valid values: `0`, `100`.
         """
-        pulumi.set(__self__, "next_hop", next_hop)
-        pulumi.set(__self__, "route_dest", route_dest)
-        pulumi.set(__self__, "vpn_connection_id", vpn_connection_id)
-        pulumi.set(__self__, "weight", weight)
+        GatewayVcoRouteArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            next_hop=next_hop,
+            route_dest=route_dest,
+            vpn_connection_id=vpn_connection_id,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             next_hop: Optional[pulumi.Input[str]] = None,
+             route_dest: Optional[pulumi.Input[str]] = None,
+             vpn_connection_id: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if next_hop is None and 'nextHop' in kwargs:
+            next_hop = kwargs['nextHop']
+        if next_hop is None:
+            raise TypeError("Missing 'next_hop' argument")
+        if route_dest is None and 'routeDest' in kwargs:
+            route_dest = kwargs['routeDest']
+        if route_dest is None:
+            raise TypeError("Missing 'route_dest' argument")
+        if vpn_connection_id is None and 'vpnConnectionId' in kwargs:
+            vpn_connection_id = kwargs['vpnConnectionId']
+        if vpn_connection_id is None:
+            raise TypeError("Missing 'vpn_connection_id' argument")
+        if weight is None:
+            raise TypeError("Missing 'weight' argument")
+
+        _setter("next_hop", next_hop)
+        _setter("route_dest", route_dest)
+        _setter("vpn_connection_id", vpn_connection_id)
+        _setter("weight", weight)
 
     @property
     @pulumi.getter(name="nextHop")
@@ -95,16 +126,41 @@ class _GatewayVcoRouteState:
         :param pulumi.Input[str] vpn_connection_id: The id of the vpn attachment.
         :param pulumi.Input[int] weight: The weight value of the destination route. Valid values: `0`, `100`.
         """
+        _GatewayVcoRouteState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            next_hop=next_hop,
+            route_dest=route_dest,
+            status=status,
+            vpn_connection_id=vpn_connection_id,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             next_hop: Optional[pulumi.Input[str]] = None,
+             route_dest: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             vpn_connection_id: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if next_hop is None and 'nextHop' in kwargs:
+            next_hop = kwargs['nextHop']
+        if route_dest is None and 'routeDest' in kwargs:
+            route_dest = kwargs['routeDest']
+        if vpn_connection_id is None and 'vpnConnectionId' in kwargs:
+            vpn_connection_id = kwargs['vpnConnectionId']
+
         if next_hop is not None:
-            pulumi.set(__self__, "next_hop", next_hop)
+            _setter("next_hop", next_hop)
         if route_dest is not None:
-            pulumi.set(__self__, "route_dest", route_dest)
+            _setter("route_dest", route_dest)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if vpn_connection_id is not None:
-            pulumi.set(__self__, "vpn_connection_id", vpn_connection_id)
+            _setter("vpn_connection_id", vpn_connection_id)
         if weight is not None:
-            pulumi.set(__self__, "weight", weight)
+            _setter("weight", weight)
 
     @property
     @pulumi.getter(name="nextHop")
@@ -380,6 +436,10 @@ class GatewayVcoRoute(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GatewayVcoRouteArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['KeyPairArgs', 'KeyPair']
@@ -21,8 +21,29 @@ class KeyPairArgs:
         :param pulumi.Input[str] key_pair_name: The Key Name.
         :param pulumi.Input[str] public_key_body: The public key body.
         """
-        pulumi.set(__self__, "key_pair_name", key_pair_name)
-        pulumi.set(__self__, "public_key_body", public_key_body)
+        KeyPairArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key_pair_name=key_pair_name,
+            public_key_body=public_key_body,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key_pair_name: Optional[pulumi.Input[str]] = None,
+             public_key_body: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key_pair_name is None and 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+        if key_pair_name is None:
+            raise TypeError("Missing 'key_pair_name' argument")
+        if public_key_body is None and 'publicKeyBody' in kwargs:
+            public_key_body = kwargs['publicKeyBody']
+        if public_key_body is None:
+            raise TypeError("Missing 'public_key_body' argument")
+
+        _setter("key_pair_name", key_pair_name)
+        _setter("public_key_body", public_key_body)
 
     @property
     @pulumi.getter(name="keyPairName")
@@ -59,10 +80,27 @@ class _KeyPairState:
         :param pulumi.Input[str] key_pair_name: The Key Name.
         :param pulumi.Input[str] public_key_body: The public key body.
         """
+        _KeyPairState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key_pair_name=key_pair_name,
+            public_key_body=public_key_body,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key_pair_name: Optional[pulumi.Input[str]] = None,
+             public_key_body: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key_pair_name is None and 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+        if public_key_body is None and 'publicKeyBody' in kwargs:
+            public_key_body = kwargs['publicKeyBody']
+
         if key_pair_name is not None:
-            pulumi.set(__self__, "key_pair_name", key_pair_name)
+            _setter("key_pair_name", key_pair_name)
         if public_key_body is not None:
-            pulumi.set(__self__, "public_key_body", public_key_body)
+            _setter("public_key_body", public_key_body)
 
     @property
     @pulumi.getter(name="keyPairName")
@@ -174,6 +212,10 @@ class KeyPair(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            KeyPairArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

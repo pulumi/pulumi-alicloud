@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,19 +33,54 @@ class ProjectArgs:
         :param pulumi.Input['ProjectPropertiesArgs'] properties: Project base attributes. See `properties` below.
         :param pulumi.Input['ProjectSecurityPropertiesArgs'] security_properties: Security-related attributes. See `security_properties` below.
         """
-        pulumi.set(__self__, "project_name", project_name)
+        ProjectArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project_name=project_name,
+            comment=comment,
+            default_quota=default_quota,
+            ip_white_list=ip_white_list,
+            product_type=product_type,
+            properties=properties,
+            security_properties=security_properties,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project_name: Optional[pulumi.Input[str]] = None,
+             comment: Optional[pulumi.Input[str]] = None,
+             default_quota: Optional[pulumi.Input[str]] = None,
+             ip_white_list: Optional[pulumi.Input['ProjectIpWhiteListArgs']] = None,
+             product_type: Optional[pulumi.Input[str]] = None,
+             properties: Optional[pulumi.Input['ProjectPropertiesArgs']] = None,
+             security_properties: Optional[pulumi.Input['ProjectSecurityPropertiesArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project_name is None and 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if project_name is None:
+            raise TypeError("Missing 'project_name' argument")
+        if default_quota is None and 'defaultQuota' in kwargs:
+            default_quota = kwargs['defaultQuota']
+        if ip_white_list is None and 'ipWhiteList' in kwargs:
+            ip_white_list = kwargs['ipWhiteList']
+        if product_type is None and 'productType' in kwargs:
+            product_type = kwargs['productType']
+        if security_properties is None and 'securityProperties' in kwargs:
+            security_properties = kwargs['securityProperties']
+
+        _setter("project_name", project_name)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if default_quota is not None:
-            pulumi.set(__self__, "default_quota", default_quota)
+            _setter("default_quota", default_quota)
         if ip_white_list is not None:
-            pulumi.set(__self__, "ip_white_list", ip_white_list)
+            _setter("ip_white_list", ip_white_list)
         if product_type is not None:
-            pulumi.set(__self__, "product_type", product_type)
+            _setter("product_type", product_type)
         if properties is not None:
-            pulumi.set(__self__, "properties", properties)
+            _setter("properties", properties)
         if security_properties is not None:
-            pulumi.set(__self__, "security_properties", security_properties)
+            _setter("security_properties", security_properties)
 
     @property
     @pulumi.getter(name="projectName")
@@ -158,26 +193,65 @@ class _ProjectState:
         :param pulumi.Input[str] status: The status of the resource
         :param pulumi.Input[str] type: Life cycle type.
         """
+        _ProjectState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comment=comment,
+            default_quota=default_quota,
+            ip_white_list=ip_white_list,
+            owner=owner,
+            product_type=product_type,
+            project_name=project_name,
+            properties=properties,
+            security_properties=security_properties,
+            status=status,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comment: Optional[pulumi.Input[str]] = None,
+             default_quota: Optional[pulumi.Input[str]] = None,
+             ip_white_list: Optional[pulumi.Input['ProjectIpWhiteListArgs']] = None,
+             owner: Optional[pulumi.Input[str]] = None,
+             product_type: Optional[pulumi.Input[str]] = None,
+             project_name: Optional[pulumi.Input[str]] = None,
+             properties: Optional[pulumi.Input['ProjectPropertiesArgs']] = None,
+             security_properties: Optional[pulumi.Input['ProjectSecurityPropertiesArgs']] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default_quota is None and 'defaultQuota' in kwargs:
+            default_quota = kwargs['defaultQuota']
+        if ip_white_list is None and 'ipWhiteList' in kwargs:
+            ip_white_list = kwargs['ipWhiteList']
+        if product_type is None and 'productType' in kwargs:
+            product_type = kwargs['productType']
+        if project_name is None and 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if security_properties is None and 'securityProperties' in kwargs:
+            security_properties = kwargs['securityProperties']
+
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if default_quota is not None:
-            pulumi.set(__self__, "default_quota", default_quota)
+            _setter("default_quota", default_quota)
         if ip_white_list is not None:
-            pulumi.set(__self__, "ip_white_list", ip_white_list)
+            _setter("ip_white_list", ip_white_list)
         if owner is not None:
-            pulumi.set(__self__, "owner", owner)
+            _setter("owner", owner)
         if product_type is not None:
-            pulumi.set(__self__, "product_type", product_type)
+            _setter("product_type", product_type)
         if project_name is not None:
-            pulumi.set(__self__, "project_name", project_name)
+            _setter("project_name", project_name)
         if properties is not None:
-            pulumi.set(__self__, "properties", properties)
+            _setter("properties", properties)
         if security_properties is not None:
-            pulumi.set(__self__, "security_properties", security_properties)
+            _setter("security_properties", security_properties)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -391,6 +465,10 @@ class Project(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProjectArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -414,12 +492,27 @@ class Project(pulumi.CustomResource):
 
             __props__.__dict__["comment"] = comment
             __props__.__dict__["default_quota"] = default_quota
+            if ip_white_list is not None and not isinstance(ip_white_list, ProjectIpWhiteListArgs):
+                ip_white_list = ip_white_list or {}
+                def _setter(key, value):
+                    ip_white_list[key] = value
+                ProjectIpWhiteListArgs._configure(_setter, **ip_white_list)
             __props__.__dict__["ip_white_list"] = ip_white_list
             __props__.__dict__["product_type"] = product_type
             if project_name is None and not opts.urn:
                 raise TypeError("Missing required property 'project_name'")
             __props__.__dict__["project_name"] = project_name
+            if properties is not None and not isinstance(properties, ProjectPropertiesArgs):
+                properties = properties or {}
+                def _setter(key, value):
+                    properties[key] = value
+                ProjectPropertiesArgs._configure(_setter, **properties)
             __props__.__dict__["properties"] = properties
+            if security_properties is not None and not isinstance(security_properties, ProjectSecurityPropertiesArgs):
+                security_properties = security_properties or {}
+                def _setter(key, value):
+                    security_properties[key] = value
+                ProjectSecurityPropertiesArgs._configure(_setter, **security_properties)
             __props__.__dict__["security_properties"] = security_properties
             __props__.__dict__["owner"] = None
             __props__.__dict__["status"] = None

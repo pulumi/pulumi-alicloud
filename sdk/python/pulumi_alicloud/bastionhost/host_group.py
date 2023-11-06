@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['HostGroupArgs', 'HostGroup']
@@ -23,10 +23,33 @@ class HostGroupArgs:
         :param pulumi.Input[str] instance_id: Specify the New Host Group Where the Bastion Host ID of.
         :param pulumi.Input[str] comment: Specify the New Host Group of Notes, Supports up to 500 Characters.
         """
-        pulumi.set(__self__, "host_group_name", host_group_name)
-        pulumi.set(__self__, "instance_id", instance_id)
+        HostGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host_group_name=host_group_name,
+            instance_id=instance_id,
+            comment=comment,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host_group_name: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             comment: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if host_group_name is None and 'hostGroupName' in kwargs:
+            host_group_name = kwargs['hostGroupName']
+        if host_group_name is None:
+            raise TypeError("Missing 'host_group_name' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+
+        _setter("host_group_name", host_group_name)
+        _setter("instance_id", instance_id)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
 
     @property
     @pulumi.getter(name="hostGroupName")
@@ -79,14 +102,37 @@ class _HostGroupState:
         :param pulumi.Input[str] host_group_name: Specify the New Host Group Name, Supports up to 128 Characters.
         :param pulumi.Input[str] instance_id: Specify the New Host Group Where the Bastion Host ID of.
         """
+        _HostGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comment=comment,
+            host_group_id=host_group_id,
+            host_group_name=host_group_name,
+            instance_id=instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comment: Optional[pulumi.Input[str]] = None,
+             host_group_id: Optional[pulumi.Input[str]] = None,
+             host_group_name: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if host_group_id is None and 'hostGroupId' in kwargs:
+            host_group_id = kwargs['hostGroupId']
+        if host_group_name is None and 'hostGroupName' in kwargs:
+            host_group_name = kwargs['hostGroupName']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if host_group_id is not None:
-            pulumi.set(__self__, "host_group_id", host_group_id)
+            _setter("host_group_id", host_group_id)
         if host_group_name is not None:
-            pulumi.set(__self__, "host_group_name", host_group_name)
+            _setter("host_group_name", host_group_name)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
 
     @property
     @pulumi.getter
@@ -270,6 +316,10 @@ class HostGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            HostGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -57,11 +57,36 @@ class ApiConstantParameter(dict):
         :param str value: Constant parameter value.
         :param str description: The description of Constant parameter.
         """
-        pulumi.set(__self__, "in_", in_)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        ApiConstantParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            in_=in_,
+            name=name,
+            value=value,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             in_: Optional[str] = None,
+             name: Optional[str] = None,
+             value: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if in_ is None and 'in' in kwargs:
+            in_ = kwargs['in']
+        if in_ is None:
+            raise TypeError("Missing 'in_' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
+        _setter("in_", in_)
+        _setter("name", name)
+        _setter("value", value)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="in")
@@ -132,12 +157,45 @@ class ApiFcServiceConfig(dict):
         :param int timeout: Backend service time-out time; unit: millisecond.
         :param str arn_role: RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
         """
-        pulumi.set(__self__, "function_name", function_name)
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "service_name", service_name)
-        pulumi.set(__self__, "timeout", timeout)
+        ApiFcServiceConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            function_name=function_name,
+            region=region,
+            service_name=service_name,
+            timeout=timeout,
+            arn_role=arn_role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             function_name: Optional[str] = None,
+             region: Optional[str] = None,
+             service_name: Optional[str] = None,
+             timeout: Optional[int] = None,
+             arn_role: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if function_name is None and 'functionName' in kwargs:
+            function_name = kwargs['functionName']
+        if function_name is None:
+            raise TypeError("Missing 'function_name' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if timeout is None:
+            raise TypeError("Missing 'timeout' argument")
+        if arn_role is None and 'arnRole' in kwargs:
+            arn_role = kwargs['arnRole']
+
+        _setter("function_name", function_name)
+        _setter("region", region)
+        _setter("service_name", service_name)
+        _setter("timeout", timeout)
         if arn_role is not None:
-            pulumi.set(__self__, "arn_role", arn_role)
+            _setter("arn_role", arn_role)
 
     @property
     @pulumi.getter(name="functionName")
@@ -212,12 +270,41 @@ class ApiHttpServiceConfig(dict):
         :param int timeout: Backend service time-out time; unit: millisecond.
         :param str aone_name: The name of aone.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "method", method)
-        pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "timeout", timeout)
+        ApiHttpServiceConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            method=method,
+            path=path,
+            timeout=timeout,
+            aone_name=aone_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: Optional[str] = None,
+             method: Optional[str] = None,
+             path: Optional[str] = None,
+             timeout: Optional[int] = None,
+             aone_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if method is None:
+            raise TypeError("Missing 'method' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if timeout is None:
+            raise TypeError("Missing 'timeout' argument")
+        if aone_name is None and 'aoneName' in kwargs:
+            aone_name = kwargs['aoneName']
+
+        _setter("address", address)
+        _setter("method", method)
+        _setter("path", path)
+        _setter("timeout", timeout)
         if aone_name is not None:
-            pulumi.set(__self__, "aone_name", aone_name)
+            _setter("aone_name", aone_name)
 
     @property
     @pulumi.getter
@@ -292,12 +379,41 @@ class ApiHttpVpcServiceConfig(dict):
         :param int timeout: Backend service time-out time. Unit: millisecond.
         :param str aone_name: The name of aone.
         """
-        pulumi.set(__self__, "method", method)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "timeout", timeout)
+        ApiHttpVpcServiceConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            method=method,
+            name=name,
+            path=path,
+            timeout=timeout,
+            aone_name=aone_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             method: Optional[str] = None,
+             name: Optional[str] = None,
+             path: Optional[str] = None,
+             timeout: Optional[int] = None,
+             aone_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if method is None:
+            raise TypeError("Missing 'method' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if timeout is None:
+            raise TypeError("Missing 'timeout' argument")
+        if aone_name is None and 'aoneName' in kwargs:
+            aone_name = kwargs['aoneName']
+
+        _setter("method", method)
+        _setter("name", name)
+        _setter("path", path)
+        _setter("timeout", timeout)
         if aone_name is not None:
-            pulumi.set(__self__, "aone_name", aone_name)
+            _setter("aone_name", aone_name)
 
     @property
     @pulumi.getter
@@ -366,9 +482,26 @@ class ApiMockServiceConfig(dict):
         :param str result: The result of the mock service.
         :param str aone_name: The name of aone.
         """
-        pulumi.set(__self__, "result", result)
+        ApiMockServiceConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            result=result,
+            aone_name=aone_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             result: Optional[str] = None,
+             aone_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if result is None:
+            raise TypeError("Missing 'result' argument")
+        if aone_name is None and 'aoneName' in kwargs:
+            aone_name = kwargs['aoneName']
+
+        _setter("result", result)
         if aone_name is not None:
-            pulumi.set(__self__, "aone_name", aone_name)
+            _setter("aone_name", aone_name)
 
     @property
     @pulumi.getter
@@ -419,12 +552,41 @@ class ApiRequestConfig(dict):
         :param str protocol: The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'.
         :param str body_format: The body format of the api, which support the values of 'STREAM' and 'FORM'.
         """
-        pulumi.set(__self__, "method", method)
-        pulumi.set(__self__, "mode", mode)
-        pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "protocol", protocol)
+        ApiRequestConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            method=method,
+            mode=mode,
+            path=path,
+            protocol=protocol,
+            body_format=body_format,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             method: Optional[str] = None,
+             mode: Optional[str] = None,
+             path: Optional[str] = None,
+             protocol: Optional[str] = None,
+             body_format: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if method is None:
+            raise TypeError("Missing 'method' argument")
+        if mode is None:
+            raise TypeError("Missing 'mode' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if body_format is None and 'bodyFormat' in kwargs:
+            body_format = kwargs['bodyFormat']
+
+        _setter("method", method)
+        _setter("mode", mode)
+        _setter("path", path)
+        _setter("protocol", protocol)
         if body_format is not None:
-            pulumi.set(__self__, "body_format", body_format)
+            _setter("body_format", body_format)
 
     @property
     @pulumi.getter
@@ -511,16 +673,61 @@ class ApiRequestParameter(dict):
         :param str default_value: The default value of the parameter.
         :param str description: The description of parameter.
         """
-        pulumi.set(__self__, "in_", in_)
-        pulumi.set(__self__, "in_service", in_service)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "name_service", name_service)
-        pulumi.set(__self__, "required", required)
-        pulumi.set(__self__, "type", type)
+        ApiRequestParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            in_=in_,
+            in_service=in_service,
+            name=name,
+            name_service=name_service,
+            required=required,
+            type=type,
+            default_value=default_value,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             in_: Optional[str] = None,
+             in_service: Optional[str] = None,
+             name: Optional[str] = None,
+             name_service: Optional[str] = None,
+             required: Optional[str] = None,
+             type: Optional[str] = None,
+             default_value: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if in_ is None and 'in' in kwargs:
+            in_ = kwargs['in']
+        if in_ is None:
+            raise TypeError("Missing 'in_' argument")
+        if in_service is None and 'inService' in kwargs:
+            in_service = kwargs['inService']
+        if in_service is None:
+            raise TypeError("Missing 'in_service' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if name_service is None and 'nameService' in kwargs:
+            name_service = kwargs['nameService']
+        if name_service is None:
+            raise TypeError("Missing 'name_service' argument")
+        if required is None:
+            raise TypeError("Missing 'required' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if default_value is None and 'defaultValue' in kwargs:
+            default_value = kwargs['defaultValue']
+
+        _setter("in_", in_)
+        _setter("in_service", in_service)
+        _setter("name", name)
+        _setter("name_service", name_service)
+        _setter("required", required)
+        _setter("type", type)
         if default_value is not None:
-            pulumi.set(__self__, "default_value", default_value)
+            _setter("default_value", default_value)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="in")
@@ -617,9 +824,34 @@ class ApiSystemParameter(dict):
         :param str name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
         :param str name_service: Backend service's parameter name.
         """
-        pulumi.set(__self__, "in_", in_)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "name_service", name_service)
+        ApiSystemParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            in_=in_,
+            name=name,
+            name_service=name_service,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             in_: Optional[str] = None,
+             name: Optional[str] = None,
+             name_service: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if in_ is None and 'in' in kwargs:
+            in_ = kwargs['in']
+        if in_ is None:
+            raise TypeError("Missing 'in_' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if name_service is None and 'nameService' in kwargs:
+            name_service = kwargs['nameService']
+        if name_service is None:
+            raise TypeError("Missing 'name_service' argument")
+
+        _setter("in_", in_)
+        _setter("name", name)
+        _setter("name_service", name_service)
 
     @property
     @pulumi.getter(name="in")
@@ -663,12 +895,51 @@ class GetApisApiResult(dict):
         :param str name: API name.
         :param str region_id: The ID of the region where the API is located.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "group_name", group_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "region_id", region_id)
+        GetApisApiResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            group_id=group_id,
+            group_name=group_name,
+            id=id,
+            name=name,
+            region_id=region_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[str] = None,
+             group_id: Optional[str] = None,
+             group_name: Optional[str] = None,
+             id: Optional[str] = None,
+             name: Optional[str] = None,
+             region_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if group_name is None and 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if group_name is None:
+            raise TypeError("Missing 'group_name' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if region_id is None and 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+
+        _setter("description", description)
+        _setter("group_id", group_id)
+        _setter("group_name", group_name)
+        _setter("id", id)
+        _setter("name", name)
+        _setter("region_id", region_id)
 
     @property
     @pulumi.getter
@@ -736,12 +1007,51 @@ class GetAppsAppResult(dict):
         :param str modified_time: Last modification time (Greenwich mean time).
         :param str name: App name.
         """
-        pulumi.set(__self__, "app_code", app_code)
-        pulumi.set(__self__, "created_time", created_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "modified_time", modified_time)
-        pulumi.set(__self__, "name", name)
+        GetAppsAppResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_code=app_code,
+            created_time=created_time,
+            description=description,
+            id=id,
+            modified_time=modified_time,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_code: Optional[str] = None,
+             created_time: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[int] = None,
+             modified_time: Optional[str] = None,
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_code is None and 'appCode' in kwargs:
+            app_code = kwargs['appCode']
+        if app_code is None:
+            raise TypeError("Missing 'app_code' argument")
+        if created_time is None and 'createdTime' in kwargs:
+            created_time = kwargs['createdTime']
+        if created_time is None:
+            raise TypeError("Missing 'created_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if modified_time is None and 'modifiedTime' in kwargs:
+            modified_time = kwargs['modifiedTime']
+        if modified_time is None:
+            raise TypeError("Missing 'modified_time' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
+        _setter("app_code", app_code)
+        _setter("created_time", created_time)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("modified_time", modified_time)
+        _setter("name", name)
 
     @property
     @pulumi.getter(name="appCode")
@@ -810,13 +1120,60 @@ class GetBackendsBackendResult(dict):
         :param str description: The description of the Backend.
         :param str modified_time: The modified time of the Backend.
         """
-        pulumi.set(__self__, "backend_id", backend_id)
-        pulumi.set(__self__, "backend_name", backend_name)
-        pulumi.set(__self__, "backend_type", backend_type)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "modified_time", modified_time)
+        GetBackendsBackendResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backend_id=backend_id,
+            backend_name=backend_name,
+            backend_type=backend_type,
+            create_time=create_time,
+            description=description,
+            id=id,
+            modified_time=modified_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backend_id: Optional[str] = None,
+             backend_name: Optional[str] = None,
+             backend_type: Optional[str] = None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             modified_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backend_id is None and 'backendId' in kwargs:
+            backend_id = kwargs['backendId']
+        if backend_id is None:
+            raise TypeError("Missing 'backend_id' argument")
+        if backend_name is None and 'backendName' in kwargs:
+            backend_name = kwargs['backendName']
+        if backend_name is None:
+            raise TypeError("Missing 'backend_name' argument")
+        if backend_type is None and 'backendType' in kwargs:
+            backend_type = kwargs['backendType']
+        if backend_type is None:
+            raise TypeError("Missing 'backend_type' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if modified_time is None and 'modifiedTime' in kwargs:
+            modified_time = kwargs['modifiedTime']
+        if modified_time is None:
+            raise TypeError("Missing 'modified_time' argument")
+
+        _setter("backend_id", backend_id)
+        _setter("backend_name", backend_name)
+        _setter("backend_type", backend_type)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("modified_time", modified_time)
 
     @property
     @pulumi.getter(name="backendId")
@@ -901,16 +1258,79 @@ class GetGroupsGroupResult(dict):
         :param str sub_domain: Second-level domain name automatically assigned to the API group.
         :param int traffic_limit: Upper QPS limit of the API group; default value: 500, which can be increased by submitting an application.
         """
-        pulumi.set(__self__, "billing_status", billing_status)
-        pulumi.set(__self__, "created_time", created_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "illegal_status", illegal_status)
-        pulumi.set(__self__, "modified_time", modified_time)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "sub_domain", sub_domain)
-        pulumi.set(__self__, "traffic_limit", traffic_limit)
+        GetGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            billing_status=billing_status,
+            created_time=created_time,
+            description=description,
+            id=id,
+            illegal_status=illegal_status,
+            modified_time=modified_time,
+            name=name,
+            region_id=region_id,
+            sub_domain=sub_domain,
+            traffic_limit=traffic_limit,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             billing_status: Optional[str] = None,
+             created_time: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             illegal_status: Optional[str] = None,
+             modified_time: Optional[str] = None,
+             name: Optional[str] = None,
+             region_id: Optional[str] = None,
+             sub_domain: Optional[str] = None,
+             traffic_limit: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if billing_status is None and 'billingStatus' in kwargs:
+            billing_status = kwargs['billingStatus']
+        if billing_status is None:
+            raise TypeError("Missing 'billing_status' argument")
+        if created_time is None and 'createdTime' in kwargs:
+            created_time = kwargs['createdTime']
+        if created_time is None:
+            raise TypeError("Missing 'created_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if illegal_status is None and 'illegalStatus' in kwargs:
+            illegal_status = kwargs['illegalStatus']
+        if illegal_status is None:
+            raise TypeError("Missing 'illegal_status' argument")
+        if modified_time is None and 'modifiedTime' in kwargs:
+            modified_time = kwargs['modifiedTime']
+        if modified_time is None:
+            raise TypeError("Missing 'modified_time' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if region_id is None and 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if sub_domain is None and 'subDomain' in kwargs:
+            sub_domain = kwargs['subDomain']
+        if sub_domain is None:
+            raise TypeError("Missing 'sub_domain' argument")
+        if traffic_limit is None and 'trafficLimit' in kwargs:
+            traffic_limit = kwargs['trafficLimit']
+        if traffic_limit is None:
+            raise TypeError("Missing 'traffic_limit' argument")
+
+        _setter("billing_status", billing_status)
+        _setter("created_time", created_time)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("illegal_status", illegal_status)
+        _setter("modified_time", modified_time)
+        _setter("name", name)
+        _setter("region_id", region_id)
+        _setter("sub_domain", sub_domain)
+        _setter("traffic_limit", traffic_limit)
 
     @property
     @pulumi.getter(name="billingStatus")
@@ -1012,11 +1432,48 @@ class GetLogConfigsConfigResult(dict):
         :param str sls_log_store: The name of the Log Store.
         :param str sls_project: The name of the Project.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "log_type", log_type)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "sls_log_store", sls_log_store)
-        pulumi.set(__self__, "sls_project", sls_project)
+        GetLogConfigsConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            log_type=log_type,
+            region_id=region_id,
+            sls_log_store=sls_log_store,
+            sls_project=sls_project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             log_type: Optional[str] = None,
+             region_id: Optional[str] = None,
+             sls_log_store: Optional[str] = None,
+             sls_project: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if log_type is None and 'logType' in kwargs:
+            log_type = kwargs['logType']
+        if log_type is None:
+            raise TypeError("Missing 'log_type' argument")
+        if region_id is None and 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if sls_log_store is None and 'slsLogStore' in kwargs:
+            sls_log_store = kwargs['slsLogStore']
+        if sls_log_store is None:
+            raise TypeError("Missing 'sls_log_store' argument")
+        if sls_project is None and 'slsProject' in kwargs:
+            sls_project = kwargs['slsProject']
+        if sls_project is None:
+            raise TypeError("Missing 'sls_project' argument")
+
+        _setter("id", id)
+        _setter("log_type", log_type)
+        _setter("region_id", region_id)
+        _setter("sls_log_store", sls_log_store)
+        _setter("sls_project", sls_project)
 
     @property
     @pulumi.getter
@@ -1082,15 +1539,72 @@ class GetModelsModelResult(dict):
         :param str modified_time: The modified time of the model.
         :param str schema: The schema of the model.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "model_id", model_id)
-        pulumi.set(__self__, "model_name", model_name)
-        pulumi.set(__self__, "model_ref", model_ref)
-        pulumi.set(__self__, "modified_time", modified_time)
-        pulumi.set(__self__, "schema", schema)
+        GetModelsModelResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            group_id=group_id,
+            id=id,
+            model_id=model_id,
+            model_name=model_name,
+            model_ref=model_ref,
+            modified_time=modified_time,
+            schema=schema,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             group_id: Optional[str] = None,
+             id: Optional[str] = None,
+             model_id: Optional[str] = None,
+             model_name: Optional[str] = None,
+             model_ref: Optional[str] = None,
+             modified_time: Optional[str] = None,
+             schema: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if model_id is None and 'modelId' in kwargs:
+            model_id = kwargs['modelId']
+        if model_id is None:
+            raise TypeError("Missing 'model_id' argument")
+        if model_name is None and 'modelName' in kwargs:
+            model_name = kwargs['modelName']
+        if model_name is None:
+            raise TypeError("Missing 'model_name' argument")
+        if model_ref is None and 'modelRef' in kwargs:
+            model_ref = kwargs['modelRef']
+        if model_ref is None:
+            raise TypeError("Missing 'model_ref' argument")
+        if modified_time is None and 'modifiedTime' in kwargs:
+            modified_time = kwargs['modifiedTime']
+        if modified_time is None:
+            raise TypeError("Missing 'modified_time' argument")
+        if schema is None:
+            raise TypeError("Missing 'schema' argument")
+
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("group_id", group_id)
+        _setter("id", id)
+        _setter("model_id", model_id)
+        _setter("model_name", model_name)
+        _setter("model_ref", model_ref)
+        _setter("modified_time", modified_time)
+        _setter("schema", schema)
 
     @property
     @pulumi.getter(name="createTime")
@@ -1188,15 +1702,72 @@ class GetPluginsPluginResult(dict):
         :param str plugin_type: The type of the plug-in.
         :param Mapping[str, Any] tags: The tag of the resource.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "modified_time", modified_time)
-        pulumi.set(__self__, "plugin_data", plugin_data)
-        pulumi.set(__self__, "plugin_id", plugin_id)
-        pulumi.set(__self__, "plugin_name", plugin_name)
-        pulumi.set(__self__, "plugin_type", plugin_type)
-        pulumi.set(__self__, "tags", tags)
+        GetPluginsPluginResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            id=id,
+            modified_time=modified_time,
+            plugin_data=plugin_data,
+            plugin_id=plugin_id,
+            plugin_name=plugin_name,
+            plugin_type=plugin_type,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             modified_time: Optional[str] = None,
+             plugin_data: Optional[str] = None,
+             plugin_id: Optional[str] = None,
+             plugin_name: Optional[str] = None,
+             plugin_type: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if modified_time is None and 'modifiedTime' in kwargs:
+            modified_time = kwargs['modifiedTime']
+        if modified_time is None:
+            raise TypeError("Missing 'modified_time' argument")
+        if plugin_data is None and 'pluginData' in kwargs:
+            plugin_data = kwargs['pluginData']
+        if plugin_data is None:
+            raise TypeError("Missing 'plugin_data' argument")
+        if plugin_id is None and 'pluginId' in kwargs:
+            plugin_id = kwargs['pluginId']
+        if plugin_id is None:
+            raise TypeError("Missing 'plugin_id' argument")
+        if plugin_name is None and 'pluginName' in kwargs:
+            plugin_name = kwargs['pluginName']
+        if plugin_name is None:
+            raise TypeError("Missing 'plugin_name' argument")
+        if plugin_type is None and 'pluginType' in kwargs:
+            plugin_type = kwargs['pluginType']
+        if plugin_type is None:
+            raise TypeError("Missing 'plugin_type' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("modified_time", modified_time)
+        _setter("plugin_data", plugin_data)
+        _setter("plugin_id", plugin_id)
+        _setter("plugin_name", plugin_name)
+        _setter("plugin_type", plugin_type)
+        _setter("tags", tags)
 
     @property
     @pulumi.getter(name="createTime")

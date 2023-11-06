@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TransitRouteTableAggregationArgs', 'TransitRouteTableAggregation']
@@ -27,13 +27,48 @@ class TransitRouteTableAggregationArgs:
         :param pulumi.Input[str] transit_route_table_aggregation_description: The description of the aggregate route.
         :param pulumi.Input[str] transit_route_table_aggregation_name: The name of the aggregate route.
         """
-        pulumi.set(__self__, "transit_route_table_aggregation_cidr", transit_route_table_aggregation_cidr)
-        pulumi.set(__self__, "transit_route_table_aggregation_scope", transit_route_table_aggregation_scope)
-        pulumi.set(__self__, "transit_route_table_id", transit_route_table_id)
+        TransitRouteTableAggregationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            transit_route_table_aggregation_cidr=transit_route_table_aggregation_cidr,
+            transit_route_table_aggregation_scope=transit_route_table_aggregation_scope,
+            transit_route_table_id=transit_route_table_id,
+            transit_route_table_aggregation_description=transit_route_table_aggregation_description,
+            transit_route_table_aggregation_name=transit_route_table_aggregation_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             transit_route_table_aggregation_cidr: Optional[pulumi.Input[str]] = None,
+             transit_route_table_aggregation_scope: Optional[pulumi.Input[str]] = None,
+             transit_route_table_id: Optional[pulumi.Input[str]] = None,
+             transit_route_table_aggregation_description: Optional[pulumi.Input[str]] = None,
+             transit_route_table_aggregation_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if transit_route_table_aggregation_cidr is None and 'transitRouteTableAggregationCidr' in kwargs:
+            transit_route_table_aggregation_cidr = kwargs['transitRouteTableAggregationCidr']
+        if transit_route_table_aggregation_cidr is None:
+            raise TypeError("Missing 'transit_route_table_aggregation_cidr' argument")
+        if transit_route_table_aggregation_scope is None and 'transitRouteTableAggregationScope' in kwargs:
+            transit_route_table_aggregation_scope = kwargs['transitRouteTableAggregationScope']
+        if transit_route_table_aggregation_scope is None:
+            raise TypeError("Missing 'transit_route_table_aggregation_scope' argument")
+        if transit_route_table_id is None and 'transitRouteTableId' in kwargs:
+            transit_route_table_id = kwargs['transitRouteTableId']
+        if transit_route_table_id is None:
+            raise TypeError("Missing 'transit_route_table_id' argument")
+        if transit_route_table_aggregation_description is None and 'transitRouteTableAggregationDescription' in kwargs:
+            transit_route_table_aggregation_description = kwargs['transitRouteTableAggregationDescription']
+        if transit_route_table_aggregation_name is None and 'transitRouteTableAggregationName' in kwargs:
+            transit_route_table_aggregation_name = kwargs['transitRouteTableAggregationName']
+
+        _setter("transit_route_table_aggregation_cidr", transit_route_table_aggregation_cidr)
+        _setter("transit_route_table_aggregation_scope", transit_route_table_aggregation_scope)
+        _setter("transit_route_table_id", transit_route_table_id)
         if transit_route_table_aggregation_description is not None:
-            pulumi.set(__self__, "transit_route_table_aggregation_description", transit_route_table_aggregation_description)
+            _setter("transit_route_table_aggregation_description", transit_route_table_aggregation_description)
         if transit_route_table_aggregation_name is not None:
-            pulumi.set(__self__, "transit_route_table_aggregation_name", transit_route_table_aggregation_name)
+            _setter("transit_route_table_aggregation_name", transit_route_table_aggregation_name)
 
     @property
     @pulumi.getter(name="transitRouteTableAggregationCidr")
@@ -114,18 +149,49 @@ class _TransitRouteTableAggregationState:
         :param pulumi.Input[str] transit_route_table_aggregation_scope: The scope of networks that you want to advertise the aggregate route. Valid Value: `VPC`.
         :param pulumi.Input[str] transit_route_table_id: The ID of the route table of the Enterprise Edition transit router.
         """
+        _TransitRouteTableAggregationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            status=status,
+            transit_route_table_aggregation_cidr=transit_route_table_aggregation_cidr,
+            transit_route_table_aggregation_description=transit_route_table_aggregation_description,
+            transit_route_table_aggregation_name=transit_route_table_aggregation_name,
+            transit_route_table_aggregation_scope=transit_route_table_aggregation_scope,
+            transit_route_table_id=transit_route_table_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             status: Optional[pulumi.Input[str]] = None,
+             transit_route_table_aggregation_cidr: Optional[pulumi.Input[str]] = None,
+             transit_route_table_aggregation_description: Optional[pulumi.Input[str]] = None,
+             transit_route_table_aggregation_name: Optional[pulumi.Input[str]] = None,
+             transit_route_table_aggregation_scope: Optional[pulumi.Input[str]] = None,
+             transit_route_table_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if transit_route_table_aggregation_cidr is None and 'transitRouteTableAggregationCidr' in kwargs:
+            transit_route_table_aggregation_cidr = kwargs['transitRouteTableAggregationCidr']
+        if transit_route_table_aggregation_description is None and 'transitRouteTableAggregationDescription' in kwargs:
+            transit_route_table_aggregation_description = kwargs['transitRouteTableAggregationDescription']
+        if transit_route_table_aggregation_name is None and 'transitRouteTableAggregationName' in kwargs:
+            transit_route_table_aggregation_name = kwargs['transitRouteTableAggregationName']
+        if transit_route_table_aggregation_scope is None and 'transitRouteTableAggregationScope' in kwargs:
+            transit_route_table_aggregation_scope = kwargs['transitRouteTableAggregationScope']
+        if transit_route_table_id is None and 'transitRouteTableId' in kwargs:
+            transit_route_table_id = kwargs['transitRouteTableId']
+
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if transit_route_table_aggregation_cidr is not None:
-            pulumi.set(__self__, "transit_route_table_aggregation_cidr", transit_route_table_aggregation_cidr)
+            _setter("transit_route_table_aggregation_cidr", transit_route_table_aggregation_cidr)
         if transit_route_table_aggregation_description is not None:
-            pulumi.set(__self__, "transit_route_table_aggregation_description", transit_route_table_aggregation_description)
+            _setter("transit_route_table_aggregation_description", transit_route_table_aggregation_description)
         if transit_route_table_aggregation_name is not None:
-            pulumi.set(__self__, "transit_route_table_aggregation_name", transit_route_table_aggregation_name)
+            _setter("transit_route_table_aggregation_name", transit_route_table_aggregation_name)
         if transit_route_table_aggregation_scope is not None:
-            pulumi.set(__self__, "transit_route_table_aggregation_scope", transit_route_table_aggregation_scope)
+            _setter("transit_route_table_aggregation_scope", transit_route_table_aggregation_scope)
         if transit_route_table_id is not None:
-            pulumi.set(__self__, "transit_route_table_id", transit_route_table_id)
+            _setter("transit_route_table_id", transit_route_table_id)
 
     @property
     @pulumi.getter
@@ -311,6 +377,10 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TransitRouteTableAggregationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

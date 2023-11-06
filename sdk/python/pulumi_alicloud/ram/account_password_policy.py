@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AccountPasswordPolicyArgs', 'AccountPasswordPolicy']
@@ -35,24 +35,69 @@ class AccountPasswordPolicyArgs:
         :param pulumi.Input[bool] require_symbols: Specifies if the occurrence of a special character in the password is mandatory. Default to true.
         :param pulumi.Input[bool] require_uppercase_characters: Specifies if the occurrence of an uppercase character in the password is mandatory. Default to true.
         """
+        AccountPasswordPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hard_expiry=hard_expiry,
+            max_login_attempts=max_login_attempts,
+            max_password_age=max_password_age,
+            minimum_password_length=minimum_password_length,
+            password_reuse_prevention=password_reuse_prevention,
+            require_lowercase_characters=require_lowercase_characters,
+            require_numbers=require_numbers,
+            require_symbols=require_symbols,
+            require_uppercase_characters=require_uppercase_characters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hard_expiry: Optional[pulumi.Input[bool]] = None,
+             max_login_attempts: Optional[pulumi.Input[int]] = None,
+             max_password_age: Optional[pulumi.Input[int]] = None,
+             minimum_password_length: Optional[pulumi.Input[int]] = None,
+             password_reuse_prevention: Optional[pulumi.Input[int]] = None,
+             require_lowercase_characters: Optional[pulumi.Input[bool]] = None,
+             require_numbers: Optional[pulumi.Input[bool]] = None,
+             require_symbols: Optional[pulumi.Input[bool]] = None,
+             require_uppercase_characters: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if hard_expiry is None and 'hardExpiry' in kwargs:
+            hard_expiry = kwargs['hardExpiry']
+        if max_login_attempts is None and 'maxLoginAttempts' in kwargs:
+            max_login_attempts = kwargs['maxLoginAttempts']
+        if max_password_age is None and 'maxPasswordAge' in kwargs:
+            max_password_age = kwargs['maxPasswordAge']
+        if minimum_password_length is None and 'minimumPasswordLength' in kwargs:
+            minimum_password_length = kwargs['minimumPasswordLength']
+        if password_reuse_prevention is None and 'passwordReusePrevention' in kwargs:
+            password_reuse_prevention = kwargs['passwordReusePrevention']
+        if require_lowercase_characters is None and 'requireLowercaseCharacters' in kwargs:
+            require_lowercase_characters = kwargs['requireLowercaseCharacters']
+        if require_numbers is None and 'requireNumbers' in kwargs:
+            require_numbers = kwargs['requireNumbers']
+        if require_symbols is None and 'requireSymbols' in kwargs:
+            require_symbols = kwargs['requireSymbols']
+        if require_uppercase_characters is None and 'requireUppercaseCharacters' in kwargs:
+            require_uppercase_characters = kwargs['requireUppercaseCharacters']
+
         if hard_expiry is not None:
-            pulumi.set(__self__, "hard_expiry", hard_expiry)
+            _setter("hard_expiry", hard_expiry)
         if max_login_attempts is not None:
-            pulumi.set(__self__, "max_login_attempts", max_login_attempts)
+            _setter("max_login_attempts", max_login_attempts)
         if max_password_age is not None:
-            pulumi.set(__self__, "max_password_age", max_password_age)
+            _setter("max_password_age", max_password_age)
         if minimum_password_length is not None:
-            pulumi.set(__self__, "minimum_password_length", minimum_password_length)
+            _setter("minimum_password_length", minimum_password_length)
         if password_reuse_prevention is not None:
-            pulumi.set(__self__, "password_reuse_prevention", password_reuse_prevention)
+            _setter("password_reuse_prevention", password_reuse_prevention)
         if require_lowercase_characters is not None:
-            pulumi.set(__self__, "require_lowercase_characters", require_lowercase_characters)
+            _setter("require_lowercase_characters", require_lowercase_characters)
         if require_numbers is not None:
-            pulumi.set(__self__, "require_numbers", require_numbers)
+            _setter("require_numbers", require_numbers)
         if require_symbols is not None:
-            pulumi.set(__self__, "require_symbols", require_symbols)
+            _setter("require_symbols", require_symbols)
         if require_uppercase_characters is not None:
-            pulumi.set(__self__, "require_uppercase_characters", require_uppercase_characters)
+            _setter("require_uppercase_characters", require_uppercase_characters)
 
     @property
     @pulumi.getter(name="hardExpiry")
@@ -187,24 +232,69 @@ class _AccountPasswordPolicyState:
         :param pulumi.Input[bool] require_symbols: Specifies if the occurrence of a special character in the password is mandatory. Default to true.
         :param pulumi.Input[bool] require_uppercase_characters: Specifies if the occurrence of an uppercase character in the password is mandatory. Default to true.
         """
+        _AccountPasswordPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hard_expiry=hard_expiry,
+            max_login_attempts=max_login_attempts,
+            max_password_age=max_password_age,
+            minimum_password_length=minimum_password_length,
+            password_reuse_prevention=password_reuse_prevention,
+            require_lowercase_characters=require_lowercase_characters,
+            require_numbers=require_numbers,
+            require_symbols=require_symbols,
+            require_uppercase_characters=require_uppercase_characters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hard_expiry: Optional[pulumi.Input[bool]] = None,
+             max_login_attempts: Optional[pulumi.Input[int]] = None,
+             max_password_age: Optional[pulumi.Input[int]] = None,
+             minimum_password_length: Optional[pulumi.Input[int]] = None,
+             password_reuse_prevention: Optional[pulumi.Input[int]] = None,
+             require_lowercase_characters: Optional[pulumi.Input[bool]] = None,
+             require_numbers: Optional[pulumi.Input[bool]] = None,
+             require_symbols: Optional[pulumi.Input[bool]] = None,
+             require_uppercase_characters: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if hard_expiry is None and 'hardExpiry' in kwargs:
+            hard_expiry = kwargs['hardExpiry']
+        if max_login_attempts is None and 'maxLoginAttempts' in kwargs:
+            max_login_attempts = kwargs['maxLoginAttempts']
+        if max_password_age is None and 'maxPasswordAge' in kwargs:
+            max_password_age = kwargs['maxPasswordAge']
+        if minimum_password_length is None and 'minimumPasswordLength' in kwargs:
+            minimum_password_length = kwargs['minimumPasswordLength']
+        if password_reuse_prevention is None and 'passwordReusePrevention' in kwargs:
+            password_reuse_prevention = kwargs['passwordReusePrevention']
+        if require_lowercase_characters is None and 'requireLowercaseCharacters' in kwargs:
+            require_lowercase_characters = kwargs['requireLowercaseCharacters']
+        if require_numbers is None and 'requireNumbers' in kwargs:
+            require_numbers = kwargs['requireNumbers']
+        if require_symbols is None and 'requireSymbols' in kwargs:
+            require_symbols = kwargs['requireSymbols']
+        if require_uppercase_characters is None and 'requireUppercaseCharacters' in kwargs:
+            require_uppercase_characters = kwargs['requireUppercaseCharacters']
+
         if hard_expiry is not None:
-            pulumi.set(__self__, "hard_expiry", hard_expiry)
+            _setter("hard_expiry", hard_expiry)
         if max_login_attempts is not None:
-            pulumi.set(__self__, "max_login_attempts", max_login_attempts)
+            _setter("max_login_attempts", max_login_attempts)
         if max_password_age is not None:
-            pulumi.set(__self__, "max_password_age", max_password_age)
+            _setter("max_password_age", max_password_age)
         if minimum_password_length is not None:
-            pulumi.set(__self__, "minimum_password_length", minimum_password_length)
+            _setter("minimum_password_length", minimum_password_length)
         if password_reuse_prevention is not None:
-            pulumi.set(__self__, "password_reuse_prevention", password_reuse_prevention)
+            _setter("password_reuse_prevention", password_reuse_prevention)
         if require_lowercase_characters is not None:
-            pulumi.set(__self__, "require_lowercase_characters", require_lowercase_characters)
+            _setter("require_lowercase_characters", require_lowercase_characters)
         if require_numbers is not None:
-            pulumi.set(__self__, "require_numbers", require_numbers)
+            _setter("require_numbers", require_numbers)
         if require_symbols is not None:
-            pulumi.set(__self__, "require_symbols", require_symbols)
+            _setter("require_symbols", require_symbols)
         if require_uppercase_characters is not None:
-            pulumi.set(__self__, "require_uppercase_characters", require_uppercase_characters)
+            _setter("require_uppercase_characters", require_uppercase_characters)
 
     @property
     @pulumi.getter(name="hardExpiry")
@@ -432,6 +522,10 @@ class AccountPasswordPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AccountPasswordPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

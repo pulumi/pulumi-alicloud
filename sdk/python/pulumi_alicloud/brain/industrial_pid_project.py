@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['IndustrialPidProjectArgs', 'IndustrialPidProject']
@@ -23,10 +23,35 @@ class IndustrialPidProjectArgs:
         :param pulumi.Input[str] pid_project_name: The name of Pid Project.
         :param pulumi.Input[str] pid_project_desc: The description of Pid Project.
         """
-        pulumi.set(__self__, "pid_organization_id", pid_organization_id)
-        pulumi.set(__self__, "pid_project_name", pid_project_name)
+        IndustrialPidProjectArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pid_organization_id=pid_organization_id,
+            pid_project_name=pid_project_name,
+            pid_project_desc=pid_project_desc,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pid_organization_id: Optional[pulumi.Input[str]] = None,
+             pid_project_name: Optional[pulumi.Input[str]] = None,
+             pid_project_desc: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pid_organization_id is None and 'pidOrganizationId' in kwargs:
+            pid_organization_id = kwargs['pidOrganizationId']
+        if pid_organization_id is None:
+            raise TypeError("Missing 'pid_organization_id' argument")
+        if pid_project_name is None and 'pidProjectName' in kwargs:
+            pid_project_name = kwargs['pidProjectName']
+        if pid_project_name is None:
+            raise TypeError("Missing 'pid_project_name' argument")
+        if pid_project_desc is None and 'pidProjectDesc' in kwargs:
+            pid_project_desc = kwargs['pidProjectDesc']
+
+        _setter("pid_organization_id", pid_organization_id)
+        _setter("pid_project_name", pid_project_name)
         if pid_project_desc is not None:
-            pulumi.set(__self__, "pid_project_desc", pid_project_desc)
+            _setter("pid_project_desc", pid_project_desc)
 
     @property
     @pulumi.getter(name="pidOrganizationId")
@@ -77,12 +102,33 @@ class _IndustrialPidProjectState:
         :param pulumi.Input[str] pid_project_desc: The description of Pid Project.
         :param pulumi.Input[str] pid_project_name: The name of Pid Project.
         """
+        _IndustrialPidProjectState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pid_organization_id=pid_organization_id,
+            pid_project_desc=pid_project_desc,
+            pid_project_name=pid_project_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pid_organization_id: Optional[pulumi.Input[str]] = None,
+             pid_project_desc: Optional[pulumi.Input[str]] = None,
+             pid_project_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pid_organization_id is None and 'pidOrganizationId' in kwargs:
+            pid_organization_id = kwargs['pidOrganizationId']
+        if pid_project_desc is None and 'pidProjectDesc' in kwargs:
+            pid_project_desc = kwargs['pidProjectDesc']
+        if pid_project_name is None and 'pidProjectName' in kwargs:
+            pid_project_name = kwargs['pidProjectName']
+
         if pid_organization_id is not None:
-            pulumi.set(__self__, "pid_organization_id", pid_organization_id)
+            _setter("pid_organization_id", pid_organization_id)
         if pid_project_desc is not None:
-            pulumi.set(__self__, "pid_project_desc", pid_project_desc)
+            _setter("pid_project_desc", pid_project_desc)
         if pid_project_name is not None:
-            pulumi.set(__self__, "pid_project_name", pid_project_name)
+            _setter("pid_project_name", pid_project_name)
 
     @property
     @pulumi.getter(name="pidOrganizationId")
@@ -204,6 +250,10 @@ class IndustrialPidProject(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            IndustrialPidProjectArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

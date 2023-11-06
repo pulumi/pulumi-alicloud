@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -171,125 +171,376 @@ class ClusterArgs:
                > **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB cluster. it supports multiple zone.
         """
-        pulumi.set(__self__, "db_node_class", db_node_class)
-        pulumi.set(__self__, "db_type", db_type)
-        pulumi.set(__self__, "db_version", db_version)
+        ClusterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_node_class=db_node_class,
+            db_type=db_type,
+            db_version=db_version,
+            allow_shut_down=allow_shut_down,
+            auto_renew_period=auto_renew_period,
+            backup_retention_policy_on_cluster_deletion=backup_retention_policy_on_cluster_deletion,
+            clone_data_point=clone_data_point,
+            collector_status=collector_status,
+            creation_category=creation_category,
+            creation_option=creation_option,
+            db_cluster_ip_arrays=db_cluster_ip_arrays,
+            db_node_count=db_node_count,
+            db_node_id=db_node_id,
+            db_node_num=db_node_num,
+            default_time_zone=default_time_zone,
+            deletion_lock=deletion_lock,
+            description=description,
+            encrypt_new_tables=encrypt_new_tables,
+            encryption_key=encryption_key,
+            from_time_service=from_time_service,
+            gdn_id=gdn_id,
+            hot_replica_mode=hot_replica_mode,
+            hot_standby_cluster=hot_standby_cluster,
+            imci_switch=imci_switch,
+            loose_polar_log_bin=loose_polar_log_bin,
+            lower_case_table_names=lower_case_table_names,
+            maintain_time=maintain_time,
+            modify_type=modify_type,
+            parameter_group_id=parameter_group_id,
+            parameters=parameters,
+            pay_type=pay_type,
+            period=period,
+            planned_end_time=planned_end_time,
+            planned_start_time=planned_start_time,
+            proxy_class=proxy_class,
+            proxy_type=proxy_type,
+            renewal_status=renewal_status,
+            resource_group_id=resource_group_id,
+            role_arn=role_arn,
+            scale_ap_ro_num_max=scale_ap_ro_num_max,
+            scale_ap_ro_num_min=scale_ap_ro_num_min,
+            scale_max=scale_max,
+            scale_min=scale_min,
+            scale_ro_num_max=scale_ro_num_max,
+            scale_ro_num_min=scale_ro_num_min,
+            seconds_until_auto_pause=seconds_until_auto_pause,
+            security_group_ids=security_group_ids,
+            security_ips=security_ips,
+            serverless_steady_switch=serverless_steady_switch,
+            serverless_type=serverless_type,
+            source_resource_id=source_resource_id,
+            storage_pay_type=storage_pay_type,
+            storage_space=storage_space,
+            storage_type=storage_type,
+            sub_category=sub_category,
+            tags=tags,
+            tde_status=tde_status,
+            upgrade_type=upgrade_type,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_node_class: Optional[pulumi.Input[str]] = None,
+             db_type: Optional[pulumi.Input[str]] = None,
+             db_version: Optional[pulumi.Input[str]] = None,
+             allow_shut_down: Optional[pulumi.Input[str]] = None,
+             auto_renew_period: Optional[pulumi.Input[int]] = None,
+             backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[str]] = None,
+             clone_data_point: Optional[pulumi.Input[str]] = None,
+             collector_status: Optional[pulumi.Input[str]] = None,
+             creation_category: Optional[pulumi.Input[str]] = None,
+             creation_option: Optional[pulumi.Input[str]] = None,
+             db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]] = None,
+             db_node_count: Optional[pulumi.Input[int]] = None,
+             db_node_id: Optional[pulumi.Input[str]] = None,
+             db_node_num: Optional[pulumi.Input[int]] = None,
+             default_time_zone: Optional[pulumi.Input[str]] = None,
+             deletion_lock: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             encrypt_new_tables: Optional[pulumi.Input[str]] = None,
+             encryption_key: Optional[pulumi.Input[str]] = None,
+             from_time_service: Optional[pulumi.Input[str]] = None,
+             gdn_id: Optional[pulumi.Input[str]] = None,
+             hot_replica_mode: Optional[pulumi.Input[str]] = None,
+             hot_standby_cluster: Optional[pulumi.Input[str]] = None,
+             imci_switch: Optional[pulumi.Input[str]] = None,
+             loose_polar_log_bin: Optional[pulumi.Input[str]] = None,
+             lower_case_table_names: Optional[pulumi.Input[int]] = None,
+             maintain_time: Optional[pulumi.Input[str]] = None,
+             modify_type: Optional[pulumi.Input[str]] = None,
+             parameter_group_id: Optional[pulumi.Input[str]] = None,
+             parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]]] = None,
+             pay_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             planned_end_time: Optional[pulumi.Input[str]] = None,
+             planned_start_time: Optional[pulumi.Input[str]] = None,
+             proxy_class: Optional[pulumi.Input[str]] = None,
+             proxy_type: Optional[pulumi.Input[str]] = None,
+             renewal_status: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             role_arn: Optional[pulumi.Input[str]] = None,
+             scale_ap_ro_num_max: Optional[pulumi.Input[int]] = None,
+             scale_ap_ro_num_min: Optional[pulumi.Input[int]] = None,
+             scale_max: Optional[pulumi.Input[int]] = None,
+             scale_min: Optional[pulumi.Input[int]] = None,
+             scale_ro_num_max: Optional[pulumi.Input[int]] = None,
+             scale_ro_num_min: Optional[pulumi.Input[int]] = None,
+             seconds_until_auto_pause: Optional[pulumi.Input[int]] = None,
+             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             serverless_steady_switch: Optional[pulumi.Input[str]] = None,
+             serverless_type: Optional[pulumi.Input[str]] = None,
+             source_resource_id: Optional[pulumi.Input[str]] = None,
+             storage_pay_type: Optional[pulumi.Input[str]] = None,
+             storage_space: Optional[pulumi.Input[int]] = None,
+             storage_type: Optional[pulumi.Input[str]] = None,
+             sub_category: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             tde_status: Optional[pulumi.Input[str]] = None,
+             upgrade_type: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if db_node_class is None and 'dbNodeClass' in kwargs:
+            db_node_class = kwargs['dbNodeClass']
+        if db_node_class is None:
+            raise TypeError("Missing 'db_node_class' argument")
+        if db_type is None and 'dbType' in kwargs:
+            db_type = kwargs['dbType']
+        if db_type is None:
+            raise TypeError("Missing 'db_type' argument")
+        if db_version is None and 'dbVersion' in kwargs:
+            db_version = kwargs['dbVersion']
+        if db_version is None:
+            raise TypeError("Missing 'db_version' argument")
+        if allow_shut_down is None and 'allowShutDown' in kwargs:
+            allow_shut_down = kwargs['allowShutDown']
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if backup_retention_policy_on_cluster_deletion is None and 'backupRetentionPolicyOnClusterDeletion' in kwargs:
+            backup_retention_policy_on_cluster_deletion = kwargs['backupRetentionPolicyOnClusterDeletion']
+        if clone_data_point is None and 'cloneDataPoint' in kwargs:
+            clone_data_point = kwargs['cloneDataPoint']
+        if collector_status is None and 'collectorStatus' in kwargs:
+            collector_status = kwargs['collectorStatus']
+        if creation_category is None and 'creationCategory' in kwargs:
+            creation_category = kwargs['creationCategory']
+        if creation_option is None and 'creationOption' in kwargs:
+            creation_option = kwargs['creationOption']
+        if db_cluster_ip_arrays is None and 'dbClusterIpArrays' in kwargs:
+            db_cluster_ip_arrays = kwargs['dbClusterIpArrays']
+        if db_node_count is None and 'dbNodeCount' in kwargs:
+            db_node_count = kwargs['dbNodeCount']
+        if db_node_id is None and 'dbNodeId' in kwargs:
+            db_node_id = kwargs['dbNodeId']
+        if db_node_num is None and 'dbNodeNum' in kwargs:
+            db_node_num = kwargs['dbNodeNum']
+        if default_time_zone is None and 'defaultTimeZone' in kwargs:
+            default_time_zone = kwargs['defaultTimeZone']
+        if deletion_lock is None and 'deletionLock' in kwargs:
+            deletion_lock = kwargs['deletionLock']
+        if encrypt_new_tables is None and 'encryptNewTables' in kwargs:
+            encrypt_new_tables = kwargs['encryptNewTables']
+        if encryption_key is None and 'encryptionKey' in kwargs:
+            encryption_key = kwargs['encryptionKey']
+        if from_time_service is None and 'fromTimeService' in kwargs:
+            from_time_service = kwargs['fromTimeService']
+        if gdn_id is None and 'gdnId' in kwargs:
+            gdn_id = kwargs['gdnId']
+        if hot_replica_mode is None and 'hotReplicaMode' in kwargs:
+            hot_replica_mode = kwargs['hotReplicaMode']
+        if hot_standby_cluster is None and 'hotStandbyCluster' in kwargs:
+            hot_standby_cluster = kwargs['hotStandbyCluster']
+        if imci_switch is None and 'imciSwitch' in kwargs:
+            imci_switch = kwargs['imciSwitch']
+        if loose_polar_log_bin is None and 'loosePolarLogBin' in kwargs:
+            loose_polar_log_bin = kwargs['loosePolarLogBin']
+        if lower_case_table_names is None and 'lowerCaseTableNames' in kwargs:
+            lower_case_table_names = kwargs['lowerCaseTableNames']
+        if maintain_time is None and 'maintainTime' in kwargs:
+            maintain_time = kwargs['maintainTime']
+        if modify_type is None and 'modifyType' in kwargs:
+            modify_type = kwargs['modifyType']
+        if parameter_group_id is None and 'parameterGroupId' in kwargs:
+            parameter_group_id = kwargs['parameterGroupId']
+        if pay_type is None and 'payType' in kwargs:
+            pay_type = kwargs['payType']
+        if planned_end_time is None and 'plannedEndTime' in kwargs:
+            planned_end_time = kwargs['plannedEndTime']
+        if planned_start_time is None and 'plannedStartTime' in kwargs:
+            planned_start_time = kwargs['plannedStartTime']
+        if proxy_class is None and 'proxyClass' in kwargs:
+            proxy_class = kwargs['proxyClass']
+        if proxy_type is None and 'proxyType' in kwargs:
+            proxy_type = kwargs['proxyType']
+        if renewal_status is None and 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if role_arn is None and 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if scale_ap_ro_num_max is None and 'scaleApRoNumMax' in kwargs:
+            scale_ap_ro_num_max = kwargs['scaleApRoNumMax']
+        if scale_ap_ro_num_min is None and 'scaleApRoNumMin' in kwargs:
+            scale_ap_ro_num_min = kwargs['scaleApRoNumMin']
+        if scale_max is None and 'scaleMax' in kwargs:
+            scale_max = kwargs['scaleMax']
+        if scale_min is None and 'scaleMin' in kwargs:
+            scale_min = kwargs['scaleMin']
+        if scale_ro_num_max is None and 'scaleRoNumMax' in kwargs:
+            scale_ro_num_max = kwargs['scaleRoNumMax']
+        if scale_ro_num_min is None and 'scaleRoNumMin' in kwargs:
+            scale_ro_num_min = kwargs['scaleRoNumMin']
+        if seconds_until_auto_pause is None and 'secondsUntilAutoPause' in kwargs:
+            seconds_until_auto_pause = kwargs['secondsUntilAutoPause']
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if security_ips is None and 'securityIps' in kwargs:
+            security_ips = kwargs['securityIps']
+        if serverless_steady_switch is None and 'serverlessSteadySwitch' in kwargs:
+            serverless_steady_switch = kwargs['serverlessSteadySwitch']
+        if serverless_type is None and 'serverlessType' in kwargs:
+            serverless_type = kwargs['serverlessType']
+        if source_resource_id is None and 'sourceResourceId' in kwargs:
+            source_resource_id = kwargs['sourceResourceId']
+        if storage_pay_type is None and 'storagePayType' in kwargs:
+            storage_pay_type = kwargs['storagePayType']
+        if storage_space is None and 'storageSpace' in kwargs:
+            storage_space = kwargs['storageSpace']
+        if storage_type is None and 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+        if sub_category is None and 'subCategory' in kwargs:
+            sub_category = kwargs['subCategory']
+        if tde_status is None and 'tdeStatus' in kwargs:
+            tde_status = kwargs['tdeStatus']
+        if upgrade_type is None and 'upgradeType' in kwargs:
+            upgrade_type = kwargs['upgradeType']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
+        _setter("db_node_class", db_node_class)
+        _setter("db_type", db_type)
+        _setter("db_version", db_version)
         if allow_shut_down is not None:
-            pulumi.set(__self__, "allow_shut_down", allow_shut_down)
+            _setter("allow_shut_down", allow_shut_down)
         if auto_renew_period is not None:
-            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+            _setter("auto_renew_period", auto_renew_period)
         if backup_retention_policy_on_cluster_deletion is not None:
-            pulumi.set(__self__, "backup_retention_policy_on_cluster_deletion", backup_retention_policy_on_cluster_deletion)
+            _setter("backup_retention_policy_on_cluster_deletion", backup_retention_policy_on_cluster_deletion)
         if clone_data_point is not None:
-            pulumi.set(__self__, "clone_data_point", clone_data_point)
+            _setter("clone_data_point", clone_data_point)
         if collector_status is not None:
-            pulumi.set(__self__, "collector_status", collector_status)
+            _setter("collector_status", collector_status)
         if creation_category is not None:
-            pulumi.set(__self__, "creation_category", creation_category)
+            _setter("creation_category", creation_category)
         if creation_option is not None:
-            pulumi.set(__self__, "creation_option", creation_option)
+            _setter("creation_option", creation_option)
         if db_cluster_ip_arrays is not None:
-            pulumi.set(__self__, "db_cluster_ip_arrays", db_cluster_ip_arrays)
+            _setter("db_cluster_ip_arrays", db_cluster_ip_arrays)
         if db_node_count is not None:
-            pulumi.set(__self__, "db_node_count", db_node_count)
+            _setter("db_node_count", db_node_count)
         if db_node_id is not None:
-            pulumi.set(__self__, "db_node_id", db_node_id)
+            _setter("db_node_id", db_node_id)
         if db_node_num is not None:
-            pulumi.set(__self__, "db_node_num", db_node_num)
+            _setter("db_node_num", db_node_num)
         if default_time_zone is not None:
-            pulumi.set(__self__, "default_time_zone", default_time_zone)
+            _setter("default_time_zone", default_time_zone)
         if deletion_lock is not None:
-            pulumi.set(__self__, "deletion_lock", deletion_lock)
+            _setter("deletion_lock", deletion_lock)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if encrypt_new_tables is not None:
-            pulumi.set(__self__, "encrypt_new_tables", encrypt_new_tables)
+            _setter("encrypt_new_tables", encrypt_new_tables)
         if encryption_key is not None:
-            pulumi.set(__self__, "encryption_key", encryption_key)
+            _setter("encryption_key", encryption_key)
         if from_time_service is not None:
-            pulumi.set(__self__, "from_time_service", from_time_service)
+            _setter("from_time_service", from_time_service)
         if gdn_id is not None:
-            pulumi.set(__self__, "gdn_id", gdn_id)
+            _setter("gdn_id", gdn_id)
         if hot_replica_mode is not None:
-            pulumi.set(__self__, "hot_replica_mode", hot_replica_mode)
+            _setter("hot_replica_mode", hot_replica_mode)
         if hot_standby_cluster is not None:
-            pulumi.set(__self__, "hot_standby_cluster", hot_standby_cluster)
+            _setter("hot_standby_cluster", hot_standby_cluster)
         if imci_switch is not None:
-            pulumi.set(__self__, "imci_switch", imci_switch)
+            _setter("imci_switch", imci_switch)
         if loose_polar_log_bin is not None:
-            pulumi.set(__self__, "loose_polar_log_bin", loose_polar_log_bin)
+            _setter("loose_polar_log_bin", loose_polar_log_bin)
         if lower_case_table_names is not None:
-            pulumi.set(__self__, "lower_case_table_names", lower_case_table_names)
+            _setter("lower_case_table_names", lower_case_table_names)
         if maintain_time is not None:
-            pulumi.set(__self__, "maintain_time", maintain_time)
+            _setter("maintain_time", maintain_time)
         if modify_type is not None:
-            pulumi.set(__self__, "modify_type", modify_type)
+            _setter("modify_type", modify_type)
         if parameter_group_id is not None:
-            pulumi.set(__self__, "parameter_group_id", parameter_group_id)
+            _setter("parameter_group_id", parameter_group_id)
         if parameters is not None:
-            pulumi.set(__self__, "parameters", parameters)
+            _setter("parameters", parameters)
         if pay_type is not None:
-            pulumi.set(__self__, "pay_type", pay_type)
+            _setter("pay_type", pay_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if planned_end_time is not None:
-            pulumi.set(__self__, "planned_end_time", planned_end_time)
+            _setter("planned_end_time", planned_end_time)
         if planned_start_time is not None:
-            pulumi.set(__self__, "planned_start_time", planned_start_time)
+            _setter("planned_start_time", planned_start_time)
         if proxy_class is not None:
-            pulumi.set(__self__, "proxy_class", proxy_class)
+            _setter("proxy_class", proxy_class)
         if proxy_type is not None:
-            pulumi.set(__self__, "proxy_type", proxy_type)
+            _setter("proxy_type", proxy_type)
         if renewal_status is not None:
-            pulumi.set(__self__, "renewal_status", renewal_status)
+            _setter("renewal_status", renewal_status)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
         if scale_ap_ro_num_max is not None:
-            pulumi.set(__self__, "scale_ap_ro_num_max", scale_ap_ro_num_max)
+            _setter("scale_ap_ro_num_max", scale_ap_ro_num_max)
         if scale_ap_ro_num_min is not None:
-            pulumi.set(__self__, "scale_ap_ro_num_min", scale_ap_ro_num_min)
+            _setter("scale_ap_ro_num_min", scale_ap_ro_num_min)
         if scale_max is not None:
-            pulumi.set(__self__, "scale_max", scale_max)
+            _setter("scale_max", scale_max)
         if scale_min is not None:
-            pulumi.set(__self__, "scale_min", scale_min)
+            _setter("scale_min", scale_min)
         if scale_ro_num_max is not None:
-            pulumi.set(__self__, "scale_ro_num_max", scale_ro_num_max)
+            _setter("scale_ro_num_max", scale_ro_num_max)
         if scale_ro_num_min is not None:
-            pulumi.set(__self__, "scale_ro_num_min", scale_ro_num_min)
+            _setter("scale_ro_num_min", scale_ro_num_min)
         if seconds_until_auto_pause is not None:
-            pulumi.set(__self__, "seconds_until_auto_pause", seconds_until_auto_pause)
+            _setter("seconds_until_auto_pause", seconds_until_auto_pause)
         if security_group_ids is not None:
-            pulumi.set(__self__, "security_group_ids", security_group_ids)
+            _setter("security_group_ids", security_group_ids)
         if security_ips is not None:
-            pulumi.set(__self__, "security_ips", security_ips)
+            _setter("security_ips", security_ips)
         if serverless_steady_switch is not None:
-            pulumi.set(__self__, "serverless_steady_switch", serverless_steady_switch)
+            _setter("serverless_steady_switch", serverless_steady_switch)
         if serverless_type is not None:
-            pulumi.set(__self__, "serverless_type", serverless_type)
+            _setter("serverless_type", serverless_type)
         if source_resource_id is not None:
-            pulumi.set(__self__, "source_resource_id", source_resource_id)
+            _setter("source_resource_id", source_resource_id)
         if storage_pay_type is not None:
-            pulumi.set(__self__, "storage_pay_type", storage_pay_type)
+            _setter("storage_pay_type", storage_pay_type)
         if storage_space is not None:
-            pulumi.set(__self__, "storage_space", storage_space)
+            _setter("storage_space", storage_space)
         if storage_type is not None:
-            pulumi.set(__self__, "storage_type", storage_type)
+            _setter("storage_type", storage_type)
         if sub_category is not None:
-            pulumi.set(__self__, "sub_category", sub_category)
+            _setter("sub_category", sub_category)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if tde_status is not None:
-            pulumi.set(__self__, "tde_status", tde_status)
+            _setter("tde_status", tde_status)
         if upgrade_type is not None:
-            pulumi.set(__self__, "upgrade_type", upgrade_type)
+            _setter("upgrade_type", upgrade_type)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="dbNodeClass")
@@ -1224,138 +1475,399 @@ class _ClusterState:
                > **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB cluster. it supports multiple zone.
         """
+        _ClusterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_shut_down=allow_shut_down,
+            auto_renew_period=auto_renew_period,
+            backup_retention_policy_on_cluster_deletion=backup_retention_policy_on_cluster_deletion,
+            clone_data_point=clone_data_point,
+            collector_status=collector_status,
+            connection_string=connection_string,
+            create_time=create_time,
+            creation_category=creation_category,
+            creation_option=creation_option,
+            db_cluster_ip_arrays=db_cluster_ip_arrays,
+            db_node_class=db_node_class,
+            db_node_count=db_node_count,
+            db_node_id=db_node_id,
+            db_node_num=db_node_num,
+            db_type=db_type,
+            db_version=db_version,
+            default_time_zone=default_time_zone,
+            deletion_lock=deletion_lock,
+            description=description,
+            encrypt_new_tables=encrypt_new_tables,
+            encryption_key=encryption_key,
+            from_time_service=from_time_service,
+            gdn_id=gdn_id,
+            hot_replica_mode=hot_replica_mode,
+            hot_standby_cluster=hot_standby_cluster,
+            imci_switch=imci_switch,
+            loose_polar_log_bin=loose_polar_log_bin,
+            lower_case_table_names=lower_case_table_names,
+            maintain_time=maintain_time,
+            modify_type=modify_type,
+            parameter_group_id=parameter_group_id,
+            parameters=parameters,
+            pay_type=pay_type,
+            period=period,
+            planned_end_time=planned_end_time,
+            planned_start_time=planned_start_time,
+            port=port,
+            proxy_class=proxy_class,
+            proxy_type=proxy_type,
+            renewal_status=renewal_status,
+            resource_group_id=resource_group_id,
+            role_arn=role_arn,
+            scale_ap_ro_num_max=scale_ap_ro_num_max,
+            scale_ap_ro_num_min=scale_ap_ro_num_min,
+            scale_max=scale_max,
+            scale_min=scale_min,
+            scale_ro_num_max=scale_ro_num_max,
+            scale_ro_num_min=scale_ro_num_min,
+            seconds_until_auto_pause=seconds_until_auto_pause,
+            security_group_ids=security_group_ids,
+            security_ips=security_ips,
+            serverless_steady_switch=serverless_steady_switch,
+            serverless_type=serverless_type,
+            source_resource_id=source_resource_id,
+            status=status,
+            storage_pay_type=storage_pay_type,
+            storage_space=storage_space,
+            storage_type=storage_type,
+            sub_category=sub_category,
+            tags=tags,
+            tde_region=tde_region,
+            tde_status=tde_status,
+            upgrade_type=upgrade_type,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_shut_down: Optional[pulumi.Input[str]] = None,
+             auto_renew_period: Optional[pulumi.Input[int]] = None,
+             backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[str]] = None,
+             clone_data_point: Optional[pulumi.Input[str]] = None,
+             collector_status: Optional[pulumi.Input[str]] = None,
+             connection_string: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             creation_category: Optional[pulumi.Input[str]] = None,
+             creation_option: Optional[pulumi.Input[str]] = None,
+             db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]] = None,
+             db_node_class: Optional[pulumi.Input[str]] = None,
+             db_node_count: Optional[pulumi.Input[int]] = None,
+             db_node_id: Optional[pulumi.Input[str]] = None,
+             db_node_num: Optional[pulumi.Input[int]] = None,
+             db_type: Optional[pulumi.Input[str]] = None,
+             db_version: Optional[pulumi.Input[str]] = None,
+             default_time_zone: Optional[pulumi.Input[str]] = None,
+             deletion_lock: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             encrypt_new_tables: Optional[pulumi.Input[str]] = None,
+             encryption_key: Optional[pulumi.Input[str]] = None,
+             from_time_service: Optional[pulumi.Input[str]] = None,
+             gdn_id: Optional[pulumi.Input[str]] = None,
+             hot_replica_mode: Optional[pulumi.Input[str]] = None,
+             hot_standby_cluster: Optional[pulumi.Input[str]] = None,
+             imci_switch: Optional[pulumi.Input[str]] = None,
+             loose_polar_log_bin: Optional[pulumi.Input[str]] = None,
+             lower_case_table_names: Optional[pulumi.Input[int]] = None,
+             maintain_time: Optional[pulumi.Input[str]] = None,
+             modify_type: Optional[pulumi.Input[str]] = None,
+             parameter_group_id: Optional[pulumi.Input[str]] = None,
+             parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]]] = None,
+             pay_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             planned_end_time: Optional[pulumi.Input[str]] = None,
+             planned_start_time: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[str]] = None,
+             proxy_class: Optional[pulumi.Input[str]] = None,
+             proxy_type: Optional[pulumi.Input[str]] = None,
+             renewal_status: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             role_arn: Optional[pulumi.Input[str]] = None,
+             scale_ap_ro_num_max: Optional[pulumi.Input[int]] = None,
+             scale_ap_ro_num_min: Optional[pulumi.Input[int]] = None,
+             scale_max: Optional[pulumi.Input[int]] = None,
+             scale_min: Optional[pulumi.Input[int]] = None,
+             scale_ro_num_max: Optional[pulumi.Input[int]] = None,
+             scale_ro_num_min: Optional[pulumi.Input[int]] = None,
+             seconds_until_auto_pause: Optional[pulumi.Input[int]] = None,
+             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             serverless_steady_switch: Optional[pulumi.Input[str]] = None,
+             serverless_type: Optional[pulumi.Input[str]] = None,
+             source_resource_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             storage_pay_type: Optional[pulumi.Input[str]] = None,
+             storage_space: Optional[pulumi.Input[int]] = None,
+             storage_type: Optional[pulumi.Input[str]] = None,
+             sub_category: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             tde_region: Optional[pulumi.Input[str]] = None,
+             tde_status: Optional[pulumi.Input[str]] = None,
+             upgrade_type: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_shut_down is None and 'allowShutDown' in kwargs:
+            allow_shut_down = kwargs['allowShutDown']
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if backup_retention_policy_on_cluster_deletion is None and 'backupRetentionPolicyOnClusterDeletion' in kwargs:
+            backup_retention_policy_on_cluster_deletion = kwargs['backupRetentionPolicyOnClusterDeletion']
+        if clone_data_point is None and 'cloneDataPoint' in kwargs:
+            clone_data_point = kwargs['cloneDataPoint']
+        if collector_status is None and 'collectorStatus' in kwargs:
+            collector_status = kwargs['collectorStatus']
+        if connection_string is None and 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if creation_category is None and 'creationCategory' in kwargs:
+            creation_category = kwargs['creationCategory']
+        if creation_option is None and 'creationOption' in kwargs:
+            creation_option = kwargs['creationOption']
+        if db_cluster_ip_arrays is None and 'dbClusterIpArrays' in kwargs:
+            db_cluster_ip_arrays = kwargs['dbClusterIpArrays']
+        if db_node_class is None and 'dbNodeClass' in kwargs:
+            db_node_class = kwargs['dbNodeClass']
+        if db_node_count is None and 'dbNodeCount' in kwargs:
+            db_node_count = kwargs['dbNodeCount']
+        if db_node_id is None and 'dbNodeId' in kwargs:
+            db_node_id = kwargs['dbNodeId']
+        if db_node_num is None and 'dbNodeNum' in kwargs:
+            db_node_num = kwargs['dbNodeNum']
+        if db_type is None and 'dbType' in kwargs:
+            db_type = kwargs['dbType']
+        if db_version is None and 'dbVersion' in kwargs:
+            db_version = kwargs['dbVersion']
+        if default_time_zone is None and 'defaultTimeZone' in kwargs:
+            default_time_zone = kwargs['defaultTimeZone']
+        if deletion_lock is None and 'deletionLock' in kwargs:
+            deletion_lock = kwargs['deletionLock']
+        if encrypt_new_tables is None and 'encryptNewTables' in kwargs:
+            encrypt_new_tables = kwargs['encryptNewTables']
+        if encryption_key is None and 'encryptionKey' in kwargs:
+            encryption_key = kwargs['encryptionKey']
+        if from_time_service is None and 'fromTimeService' in kwargs:
+            from_time_service = kwargs['fromTimeService']
+        if gdn_id is None and 'gdnId' in kwargs:
+            gdn_id = kwargs['gdnId']
+        if hot_replica_mode is None and 'hotReplicaMode' in kwargs:
+            hot_replica_mode = kwargs['hotReplicaMode']
+        if hot_standby_cluster is None and 'hotStandbyCluster' in kwargs:
+            hot_standby_cluster = kwargs['hotStandbyCluster']
+        if imci_switch is None and 'imciSwitch' in kwargs:
+            imci_switch = kwargs['imciSwitch']
+        if loose_polar_log_bin is None and 'loosePolarLogBin' in kwargs:
+            loose_polar_log_bin = kwargs['loosePolarLogBin']
+        if lower_case_table_names is None and 'lowerCaseTableNames' in kwargs:
+            lower_case_table_names = kwargs['lowerCaseTableNames']
+        if maintain_time is None and 'maintainTime' in kwargs:
+            maintain_time = kwargs['maintainTime']
+        if modify_type is None and 'modifyType' in kwargs:
+            modify_type = kwargs['modifyType']
+        if parameter_group_id is None and 'parameterGroupId' in kwargs:
+            parameter_group_id = kwargs['parameterGroupId']
+        if pay_type is None and 'payType' in kwargs:
+            pay_type = kwargs['payType']
+        if planned_end_time is None and 'plannedEndTime' in kwargs:
+            planned_end_time = kwargs['plannedEndTime']
+        if planned_start_time is None and 'plannedStartTime' in kwargs:
+            planned_start_time = kwargs['plannedStartTime']
+        if proxy_class is None and 'proxyClass' in kwargs:
+            proxy_class = kwargs['proxyClass']
+        if proxy_type is None and 'proxyType' in kwargs:
+            proxy_type = kwargs['proxyType']
+        if renewal_status is None and 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if role_arn is None and 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if scale_ap_ro_num_max is None and 'scaleApRoNumMax' in kwargs:
+            scale_ap_ro_num_max = kwargs['scaleApRoNumMax']
+        if scale_ap_ro_num_min is None and 'scaleApRoNumMin' in kwargs:
+            scale_ap_ro_num_min = kwargs['scaleApRoNumMin']
+        if scale_max is None and 'scaleMax' in kwargs:
+            scale_max = kwargs['scaleMax']
+        if scale_min is None and 'scaleMin' in kwargs:
+            scale_min = kwargs['scaleMin']
+        if scale_ro_num_max is None and 'scaleRoNumMax' in kwargs:
+            scale_ro_num_max = kwargs['scaleRoNumMax']
+        if scale_ro_num_min is None and 'scaleRoNumMin' in kwargs:
+            scale_ro_num_min = kwargs['scaleRoNumMin']
+        if seconds_until_auto_pause is None and 'secondsUntilAutoPause' in kwargs:
+            seconds_until_auto_pause = kwargs['secondsUntilAutoPause']
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if security_ips is None and 'securityIps' in kwargs:
+            security_ips = kwargs['securityIps']
+        if serverless_steady_switch is None and 'serverlessSteadySwitch' in kwargs:
+            serverless_steady_switch = kwargs['serverlessSteadySwitch']
+        if serverless_type is None and 'serverlessType' in kwargs:
+            serverless_type = kwargs['serverlessType']
+        if source_resource_id is None and 'sourceResourceId' in kwargs:
+            source_resource_id = kwargs['sourceResourceId']
+        if storage_pay_type is None and 'storagePayType' in kwargs:
+            storage_pay_type = kwargs['storagePayType']
+        if storage_space is None and 'storageSpace' in kwargs:
+            storage_space = kwargs['storageSpace']
+        if storage_type is None and 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+        if sub_category is None and 'subCategory' in kwargs:
+            sub_category = kwargs['subCategory']
+        if tde_region is None and 'tdeRegion' in kwargs:
+            tde_region = kwargs['tdeRegion']
+        if tde_status is None and 'tdeStatus' in kwargs:
+            tde_status = kwargs['tdeStatus']
+        if upgrade_type is None and 'upgradeType' in kwargs:
+            upgrade_type = kwargs['upgradeType']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if allow_shut_down is not None:
-            pulumi.set(__self__, "allow_shut_down", allow_shut_down)
+            _setter("allow_shut_down", allow_shut_down)
         if auto_renew_period is not None:
-            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+            _setter("auto_renew_period", auto_renew_period)
         if backup_retention_policy_on_cluster_deletion is not None:
-            pulumi.set(__self__, "backup_retention_policy_on_cluster_deletion", backup_retention_policy_on_cluster_deletion)
+            _setter("backup_retention_policy_on_cluster_deletion", backup_retention_policy_on_cluster_deletion)
         if clone_data_point is not None:
-            pulumi.set(__self__, "clone_data_point", clone_data_point)
+            _setter("clone_data_point", clone_data_point)
         if collector_status is not None:
-            pulumi.set(__self__, "collector_status", collector_status)
+            _setter("collector_status", collector_status)
         if connection_string is not None:
-            pulumi.set(__self__, "connection_string", connection_string)
+            _setter("connection_string", connection_string)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if creation_category is not None:
-            pulumi.set(__self__, "creation_category", creation_category)
+            _setter("creation_category", creation_category)
         if creation_option is not None:
-            pulumi.set(__self__, "creation_option", creation_option)
+            _setter("creation_option", creation_option)
         if db_cluster_ip_arrays is not None:
-            pulumi.set(__self__, "db_cluster_ip_arrays", db_cluster_ip_arrays)
+            _setter("db_cluster_ip_arrays", db_cluster_ip_arrays)
         if db_node_class is not None:
-            pulumi.set(__self__, "db_node_class", db_node_class)
+            _setter("db_node_class", db_node_class)
         if db_node_count is not None:
-            pulumi.set(__self__, "db_node_count", db_node_count)
+            _setter("db_node_count", db_node_count)
         if db_node_id is not None:
-            pulumi.set(__self__, "db_node_id", db_node_id)
+            _setter("db_node_id", db_node_id)
         if db_node_num is not None:
-            pulumi.set(__self__, "db_node_num", db_node_num)
+            _setter("db_node_num", db_node_num)
         if db_type is not None:
-            pulumi.set(__self__, "db_type", db_type)
+            _setter("db_type", db_type)
         if db_version is not None:
-            pulumi.set(__self__, "db_version", db_version)
+            _setter("db_version", db_version)
         if default_time_zone is not None:
-            pulumi.set(__self__, "default_time_zone", default_time_zone)
+            _setter("default_time_zone", default_time_zone)
         if deletion_lock is not None:
-            pulumi.set(__self__, "deletion_lock", deletion_lock)
+            _setter("deletion_lock", deletion_lock)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if encrypt_new_tables is not None:
-            pulumi.set(__self__, "encrypt_new_tables", encrypt_new_tables)
+            _setter("encrypt_new_tables", encrypt_new_tables)
         if encryption_key is not None:
-            pulumi.set(__self__, "encryption_key", encryption_key)
+            _setter("encryption_key", encryption_key)
         if from_time_service is not None:
-            pulumi.set(__self__, "from_time_service", from_time_service)
+            _setter("from_time_service", from_time_service)
         if gdn_id is not None:
-            pulumi.set(__self__, "gdn_id", gdn_id)
+            _setter("gdn_id", gdn_id)
         if hot_replica_mode is not None:
-            pulumi.set(__self__, "hot_replica_mode", hot_replica_mode)
+            _setter("hot_replica_mode", hot_replica_mode)
         if hot_standby_cluster is not None:
-            pulumi.set(__self__, "hot_standby_cluster", hot_standby_cluster)
+            _setter("hot_standby_cluster", hot_standby_cluster)
         if imci_switch is not None:
-            pulumi.set(__self__, "imci_switch", imci_switch)
+            _setter("imci_switch", imci_switch)
         if loose_polar_log_bin is not None:
-            pulumi.set(__self__, "loose_polar_log_bin", loose_polar_log_bin)
+            _setter("loose_polar_log_bin", loose_polar_log_bin)
         if lower_case_table_names is not None:
-            pulumi.set(__self__, "lower_case_table_names", lower_case_table_names)
+            _setter("lower_case_table_names", lower_case_table_names)
         if maintain_time is not None:
-            pulumi.set(__self__, "maintain_time", maintain_time)
+            _setter("maintain_time", maintain_time)
         if modify_type is not None:
-            pulumi.set(__self__, "modify_type", modify_type)
+            _setter("modify_type", modify_type)
         if parameter_group_id is not None:
-            pulumi.set(__self__, "parameter_group_id", parameter_group_id)
+            _setter("parameter_group_id", parameter_group_id)
         if parameters is not None:
-            pulumi.set(__self__, "parameters", parameters)
+            _setter("parameters", parameters)
         if pay_type is not None:
-            pulumi.set(__self__, "pay_type", pay_type)
+            _setter("pay_type", pay_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if planned_end_time is not None:
-            pulumi.set(__self__, "planned_end_time", planned_end_time)
+            _setter("planned_end_time", planned_end_time)
         if planned_start_time is not None:
-            pulumi.set(__self__, "planned_start_time", planned_start_time)
+            _setter("planned_start_time", planned_start_time)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if proxy_class is not None:
-            pulumi.set(__self__, "proxy_class", proxy_class)
+            _setter("proxy_class", proxy_class)
         if proxy_type is not None:
-            pulumi.set(__self__, "proxy_type", proxy_type)
+            _setter("proxy_type", proxy_type)
         if renewal_status is not None:
-            pulumi.set(__self__, "renewal_status", renewal_status)
+            _setter("renewal_status", renewal_status)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
         if scale_ap_ro_num_max is not None:
-            pulumi.set(__self__, "scale_ap_ro_num_max", scale_ap_ro_num_max)
+            _setter("scale_ap_ro_num_max", scale_ap_ro_num_max)
         if scale_ap_ro_num_min is not None:
-            pulumi.set(__self__, "scale_ap_ro_num_min", scale_ap_ro_num_min)
+            _setter("scale_ap_ro_num_min", scale_ap_ro_num_min)
         if scale_max is not None:
-            pulumi.set(__self__, "scale_max", scale_max)
+            _setter("scale_max", scale_max)
         if scale_min is not None:
-            pulumi.set(__self__, "scale_min", scale_min)
+            _setter("scale_min", scale_min)
         if scale_ro_num_max is not None:
-            pulumi.set(__self__, "scale_ro_num_max", scale_ro_num_max)
+            _setter("scale_ro_num_max", scale_ro_num_max)
         if scale_ro_num_min is not None:
-            pulumi.set(__self__, "scale_ro_num_min", scale_ro_num_min)
+            _setter("scale_ro_num_min", scale_ro_num_min)
         if seconds_until_auto_pause is not None:
-            pulumi.set(__self__, "seconds_until_auto_pause", seconds_until_auto_pause)
+            _setter("seconds_until_auto_pause", seconds_until_auto_pause)
         if security_group_ids is not None:
-            pulumi.set(__self__, "security_group_ids", security_group_ids)
+            _setter("security_group_ids", security_group_ids)
         if security_ips is not None:
-            pulumi.set(__self__, "security_ips", security_ips)
+            _setter("security_ips", security_ips)
         if serverless_steady_switch is not None:
-            pulumi.set(__self__, "serverless_steady_switch", serverless_steady_switch)
+            _setter("serverless_steady_switch", serverless_steady_switch)
         if serverless_type is not None:
-            pulumi.set(__self__, "serverless_type", serverless_type)
+            _setter("serverless_type", serverless_type)
         if source_resource_id is not None:
-            pulumi.set(__self__, "source_resource_id", source_resource_id)
+            _setter("source_resource_id", source_resource_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if storage_pay_type is not None:
-            pulumi.set(__self__, "storage_pay_type", storage_pay_type)
+            _setter("storage_pay_type", storage_pay_type)
         if storage_space is not None:
-            pulumi.set(__self__, "storage_space", storage_space)
+            _setter("storage_space", storage_space)
         if storage_type is not None:
-            pulumi.set(__self__, "storage_type", storage_type)
+            _setter("storage_type", storage_type)
         if sub_category is not None:
-            pulumi.set(__self__, "sub_category", sub_category)
+            _setter("sub_category", sub_category)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if tde_region is not None:
-            pulumi.set(__self__, "tde_region", tde_region)
+            _setter("tde_region", tde_region)
         if tde_status is not None:
-            pulumi.set(__self__, "tde_status", tde_status)
+            _setter("tde_status", tde_status)
         if upgrade_type is not None:
-            pulumi.set(__self__, "upgrade_type", upgrade_type)
+            _setter("upgrade_type", upgrade_type)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="allowShutDown")
@@ -2377,6 +2889,10 @@ class Cluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

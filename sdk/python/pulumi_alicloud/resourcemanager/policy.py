@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['PolicyArgs', 'Policy']
@@ -25,15 +25,42 @@ class PolicyArgs:
         :param pulumi.Input[str] default_version: The version of the policy. Default to v1.
         :param pulumi.Input[str] description: The description of the policy. The description must be 1 to 1,024 characters in length.
         """
-        pulumi.set(__self__, "policy_document", policy_document)
-        pulumi.set(__self__, "policy_name", policy_name)
+        PolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            policy_document=policy_document,
+            policy_name=policy_name,
+            default_version=default_version,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             policy_document: Optional[pulumi.Input[str]] = None,
+             policy_name: Optional[pulumi.Input[str]] = None,
+             default_version: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_document is None and 'policyDocument' in kwargs:
+            policy_document = kwargs['policyDocument']
+        if policy_document is None:
+            raise TypeError("Missing 'policy_document' argument")
+        if policy_name is None and 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if policy_name is None:
+            raise TypeError("Missing 'policy_name' argument")
+        if default_version is None and 'defaultVersion' in kwargs:
+            default_version = kwargs['defaultVersion']
+
+        _setter("policy_document", policy_document)
+        _setter("policy_name", policy_name)
         if default_version is not None:
             warnings.warn("""Field 'default_version' has been deprecated from provider version 1.90.0""", DeprecationWarning)
             pulumi.log.warn("""default_version is deprecated: Field 'default_version' has been deprecated from provider version 1.90.0""")
         if default_version is not None:
-            pulumi.set(__self__, "default_version", default_version)
+            _setter("default_version", default_version)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="policyDocument")
@@ -103,19 +130,46 @@ class _PolicyState:
         :param pulumi.Input[str] policy_name: The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         :param pulumi.Input[str] policy_type: The type of the policy. Valid values: `Custom`, `System`.
         """
+        _PolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default_version=default_version,
+            description=description,
+            policy_document=policy_document,
+            policy_name=policy_name,
+            policy_type=policy_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default_version: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             policy_document: Optional[pulumi.Input[str]] = None,
+             policy_name: Optional[pulumi.Input[str]] = None,
+             policy_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default_version is None and 'defaultVersion' in kwargs:
+            default_version = kwargs['defaultVersion']
+        if policy_document is None and 'policyDocument' in kwargs:
+            policy_document = kwargs['policyDocument']
+        if policy_name is None and 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if policy_type is None and 'policyType' in kwargs:
+            policy_type = kwargs['policyType']
+
         if default_version is not None:
             warnings.warn("""Field 'default_version' has been deprecated from provider version 1.90.0""", DeprecationWarning)
             pulumi.log.warn("""default_version is deprecated: Field 'default_version' has been deprecated from provider version 1.90.0""")
         if default_version is not None:
-            pulumi.set(__self__, "default_version", default_version)
+            _setter("default_version", default_version)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if policy_document is not None:
-            pulumi.set(__self__, "policy_document", policy_document)
+            _setter("policy_document", policy_document)
         if policy_name is not None:
-            pulumi.set(__self__, "policy_name", policy_name)
+            _setter("policy_name", policy_name)
         if policy_type is not None:
-            pulumi.set(__self__, "policy_type", policy_type)
+            _setter("policy_type", policy_type)
 
     @property
     @pulumi.getter(name="defaultVersion")
@@ -292,6 +346,10 @@ class Policy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

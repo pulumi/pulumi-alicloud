@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TransitRouterVbrAttachmentArgs', 'TransitRouterVbrAttachment']
@@ -43,28 +43,87 @@ class TransitRouterVbrAttachmentArgs:
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] vbr_owner_id: The owner id of the transit router vbr attachment.
         """
-        pulumi.set(__self__, "cen_id", cen_id)
-        pulumi.set(__self__, "vbr_id", vbr_id)
+        TransitRouterVbrAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cen_id=cen_id,
+            vbr_id=vbr_id,
+            auto_publish_route_enabled=auto_publish_route_enabled,
+            dry_run=dry_run,
+            resource_type=resource_type,
+            route_table_association_enabled=route_table_association_enabled,
+            route_table_propagation_enabled=route_table_propagation_enabled,
+            tags=tags,
+            transit_router_attachment_description=transit_router_attachment_description,
+            transit_router_attachment_name=transit_router_attachment_name,
+            transit_router_id=transit_router_id,
+            vbr_owner_id=vbr_owner_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cen_id: Optional[pulumi.Input[str]] = None,
+             vbr_id: Optional[pulumi.Input[str]] = None,
+             auto_publish_route_enabled: Optional[pulumi.Input[bool]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             resource_type: Optional[pulumi.Input[str]] = None,
+             route_table_association_enabled: Optional[pulumi.Input[bool]] = None,
+             route_table_propagation_enabled: Optional[pulumi.Input[bool]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             transit_router_attachment_description: Optional[pulumi.Input[str]] = None,
+             transit_router_attachment_name: Optional[pulumi.Input[str]] = None,
+             transit_router_id: Optional[pulumi.Input[str]] = None,
+             vbr_owner_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cen_id is None and 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if cen_id is None:
+            raise TypeError("Missing 'cen_id' argument")
+        if vbr_id is None and 'vbrId' in kwargs:
+            vbr_id = kwargs['vbrId']
+        if vbr_id is None:
+            raise TypeError("Missing 'vbr_id' argument")
+        if auto_publish_route_enabled is None and 'autoPublishRouteEnabled' in kwargs:
+            auto_publish_route_enabled = kwargs['autoPublishRouteEnabled']
+        if dry_run is None and 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if resource_type is None and 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+        if route_table_association_enabled is None and 'routeTableAssociationEnabled' in kwargs:
+            route_table_association_enabled = kwargs['routeTableAssociationEnabled']
+        if route_table_propagation_enabled is None and 'routeTablePropagationEnabled' in kwargs:
+            route_table_propagation_enabled = kwargs['routeTablePropagationEnabled']
+        if transit_router_attachment_description is None and 'transitRouterAttachmentDescription' in kwargs:
+            transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
+        if transit_router_attachment_name is None and 'transitRouterAttachmentName' in kwargs:
+            transit_router_attachment_name = kwargs['transitRouterAttachmentName']
+        if transit_router_id is None and 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+        if vbr_owner_id is None and 'vbrOwnerId' in kwargs:
+            vbr_owner_id = kwargs['vbrOwnerId']
+
+        _setter("cen_id", cen_id)
+        _setter("vbr_id", vbr_id)
         if auto_publish_route_enabled is not None:
-            pulumi.set(__self__, "auto_publish_route_enabled", auto_publish_route_enabled)
+            _setter("auto_publish_route_enabled", auto_publish_route_enabled)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if resource_type is not None:
-            pulumi.set(__self__, "resource_type", resource_type)
+            _setter("resource_type", resource_type)
         if route_table_association_enabled is not None:
-            pulumi.set(__self__, "route_table_association_enabled", route_table_association_enabled)
+            _setter("route_table_association_enabled", route_table_association_enabled)
         if route_table_propagation_enabled is not None:
-            pulumi.set(__self__, "route_table_propagation_enabled", route_table_propagation_enabled)
+            _setter("route_table_propagation_enabled", route_table_propagation_enabled)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if transit_router_attachment_description is not None:
-            pulumi.set(__self__, "transit_router_attachment_description", transit_router_attachment_description)
+            _setter("transit_router_attachment_description", transit_router_attachment_description)
         if transit_router_attachment_name is not None:
-            pulumi.set(__self__, "transit_router_attachment_name", transit_router_attachment_name)
+            _setter("transit_router_attachment_name", transit_router_attachment_name)
         if transit_router_id is not None:
-            pulumi.set(__self__, "transit_router_id", transit_router_id)
+            _setter("transit_router_id", transit_router_id)
         if vbr_owner_id is not None:
-            pulumi.set(__self__, "vbr_owner_id", vbr_owner_id)
+            _setter("vbr_owner_id", vbr_owner_id)
 
     @property
     @pulumi.getter(name="cenId")
@@ -249,34 +308,95 @@ class _TransitRouterVbrAttachmentState:
         :param pulumi.Input[str] vbr_id: The ID of the VBR.
         :param pulumi.Input[str] vbr_owner_id: The owner id of the transit router vbr attachment.
         """
+        _TransitRouterVbrAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_publish_route_enabled=auto_publish_route_enabled,
+            cen_id=cen_id,
+            dry_run=dry_run,
+            resource_type=resource_type,
+            route_table_association_enabled=route_table_association_enabled,
+            route_table_propagation_enabled=route_table_propagation_enabled,
+            status=status,
+            tags=tags,
+            transit_router_attachment_description=transit_router_attachment_description,
+            transit_router_attachment_id=transit_router_attachment_id,
+            transit_router_attachment_name=transit_router_attachment_name,
+            transit_router_id=transit_router_id,
+            vbr_id=vbr_id,
+            vbr_owner_id=vbr_owner_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_publish_route_enabled: Optional[pulumi.Input[bool]] = None,
+             cen_id: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             resource_type: Optional[pulumi.Input[str]] = None,
+             route_table_association_enabled: Optional[pulumi.Input[bool]] = None,
+             route_table_propagation_enabled: Optional[pulumi.Input[bool]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             transit_router_attachment_description: Optional[pulumi.Input[str]] = None,
+             transit_router_attachment_id: Optional[pulumi.Input[str]] = None,
+             transit_router_attachment_name: Optional[pulumi.Input[str]] = None,
+             transit_router_id: Optional[pulumi.Input[str]] = None,
+             vbr_id: Optional[pulumi.Input[str]] = None,
+             vbr_owner_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_publish_route_enabled is None and 'autoPublishRouteEnabled' in kwargs:
+            auto_publish_route_enabled = kwargs['autoPublishRouteEnabled']
+        if cen_id is None and 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if dry_run is None and 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if resource_type is None and 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+        if route_table_association_enabled is None and 'routeTableAssociationEnabled' in kwargs:
+            route_table_association_enabled = kwargs['routeTableAssociationEnabled']
+        if route_table_propagation_enabled is None and 'routeTablePropagationEnabled' in kwargs:
+            route_table_propagation_enabled = kwargs['routeTablePropagationEnabled']
+        if transit_router_attachment_description is None and 'transitRouterAttachmentDescription' in kwargs:
+            transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
+        if transit_router_attachment_id is None and 'transitRouterAttachmentId' in kwargs:
+            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
+        if transit_router_attachment_name is None and 'transitRouterAttachmentName' in kwargs:
+            transit_router_attachment_name = kwargs['transitRouterAttachmentName']
+        if transit_router_id is None and 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+        if vbr_id is None and 'vbrId' in kwargs:
+            vbr_id = kwargs['vbrId']
+        if vbr_owner_id is None and 'vbrOwnerId' in kwargs:
+            vbr_owner_id = kwargs['vbrOwnerId']
+
         if auto_publish_route_enabled is not None:
-            pulumi.set(__self__, "auto_publish_route_enabled", auto_publish_route_enabled)
+            _setter("auto_publish_route_enabled", auto_publish_route_enabled)
         if cen_id is not None:
-            pulumi.set(__self__, "cen_id", cen_id)
+            _setter("cen_id", cen_id)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if resource_type is not None:
-            pulumi.set(__self__, "resource_type", resource_type)
+            _setter("resource_type", resource_type)
         if route_table_association_enabled is not None:
-            pulumi.set(__self__, "route_table_association_enabled", route_table_association_enabled)
+            _setter("route_table_association_enabled", route_table_association_enabled)
         if route_table_propagation_enabled is not None:
-            pulumi.set(__self__, "route_table_propagation_enabled", route_table_propagation_enabled)
+            _setter("route_table_propagation_enabled", route_table_propagation_enabled)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if transit_router_attachment_description is not None:
-            pulumi.set(__self__, "transit_router_attachment_description", transit_router_attachment_description)
+            _setter("transit_router_attachment_description", transit_router_attachment_description)
         if transit_router_attachment_id is not None:
-            pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
+            _setter("transit_router_attachment_id", transit_router_attachment_id)
         if transit_router_attachment_name is not None:
-            pulumi.set(__self__, "transit_router_attachment_name", transit_router_attachment_name)
+            _setter("transit_router_attachment_name", transit_router_attachment_name)
         if transit_router_id is not None:
-            pulumi.set(__self__, "transit_router_id", transit_router_id)
+            _setter("transit_router_id", transit_router_id)
         if vbr_id is not None:
-            pulumi.set(__self__, "vbr_id", vbr_id)
+            _setter("vbr_id", vbr_id)
         if vbr_owner_id is not None:
-            pulumi.set(__self__, "vbr_owner_id", vbr_owner_id)
+            _setter("vbr_owner_id", vbr_owner_id)
 
     @property
     @pulumi.getter(name="autoPublishRouteEnabled")
@@ -596,6 +716,10 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TransitRouterVbrAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -65,9 +65,28 @@ class AggregateCompliancePackConfigRule(dict):
         :param str managed_rule_identifier: The Managed Rule Identifier.
         :param Sequence['AggregateCompliancePackConfigRuleConfigRuleParameterArgs'] config_rule_parameters: A list of parameter rules. See `config_rule_parameters` below.
         """
-        pulumi.set(__self__, "managed_rule_identifier", managed_rule_identifier)
+        AggregateCompliancePackConfigRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            managed_rule_identifier=managed_rule_identifier,
+            config_rule_parameters=config_rule_parameters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             managed_rule_identifier: Optional[str] = None,
+             config_rule_parameters: Optional[Sequence['outputs.AggregateCompliancePackConfigRuleConfigRuleParameter']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if managed_rule_identifier is None and 'managedRuleIdentifier' in kwargs:
+            managed_rule_identifier = kwargs['managedRuleIdentifier']
+        if managed_rule_identifier is None:
+            raise TypeError("Missing 'managed_rule_identifier' argument")
+        if config_rule_parameters is None and 'configRuleParameters' in kwargs:
+            config_rule_parameters = kwargs['configRuleParameters']
+
+        _setter("managed_rule_identifier", managed_rule_identifier)
         if config_rule_parameters is not None:
-            pulumi.set(__self__, "config_rule_parameters", config_rule_parameters)
+            _setter("config_rule_parameters", config_rule_parameters)
 
     @property
     @pulumi.getter(name="managedRuleIdentifier")
@@ -114,10 +133,27 @@ class AggregateCompliancePackConfigRuleConfigRuleParameter(dict):
         :param str parameter_name: The Parameter Name.
         :param str parameter_value: The Parameter Value.
         """
+        AggregateCompliancePackConfigRuleConfigRuleParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parameter_name=parameter_name,
+            parameter_value=parameter_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parameter_name: Optional[str] = None,
+             parameter_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if parameter_name is None and 'parameterName' in kwargs:
+            parameter_name = kwargs['parameterName']
+        if parameter_value is None and 'parameterValue' in kwargs:
+            parameter_value = kwargs['parameterValue']
+
         if parameter_name is not None:
-            pulumi.set(__self__, "parameter_name", parameter_name)
+            _setter("parameter_name", parameter_name)
         if parameter_value is not None:
-            pulumi.set(__self__, "parameter_value", parameter_value)
+            _setter("parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterName")
@@ -160,8 +196,21 @@ class AggregateCompliancePackConfigRuleId(dict):
         """
         :param str config_rule_id: The rule ID of Aggregate Config Rule.
         """
+        AggregateCompliancePackConfigRuleId._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config_rule_id=config_rule_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config_rule_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if config_rule_id is None and 'configRuleId' in kwargs:
+            config_rule_id = kwargs['configRuleId']
+
         if config_rule_id is not None:
-            pulumi.set(__self__, "config_rule_id", config_rule_id)
+            _setter("config_rule_id", config_rule_id)
 
     @property
     @pulumi.getter(name="configRuleId")
@@ -204,9 +253,36 @@ class AggregatorAggregatorAccount(dict):
         :param str account_name: Aggregator account name.
         :param str account_type: Aggregator account source type. Valid values: `ResourceDirectory`.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "account_name", account_name)
-        pulumi.set(__self__, "account_type", account_type)
+        AggregatorAggregatorAccount._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            account_name=account_name,
+            account_type=account_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[str] = None,
+             account_name: Optional[str] = None,
+             account_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if account_name is None and 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+        if account_type is None and 'accountType' in kwargs:
+            account_type = kwargs['accountType']
+        if account_type is None:
+            raise TypeError("Missing 'account_type' argument")
+
+        _setter("account_id", account_id)
+        _setter("account_name", account_name)
+        _setter("account_type", account_type)
 
     @property
     @pulumi.getter(name="accountId")
@@ -261,9 +337,28 @@ class CompliancePackConfigRule(dict):
         :param str managed_rule_identifier: The Managed Rule Identifier.
         :param Sequence['CompliancePackConfigRuleConfigRuleParameterArgs'] config_rule_parameters: A list of Config Rule Parameters. See `config_rule_parameters` below.
         """
-        pulumi.set(__self__, "managed_rule_identifier", managed_rule_identifier)
+        CompliancePackConfigRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            managed_rule_identifier=managed_rule_identifier,
+            config_rule_parameters=config_rule_parameters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             managed_rule_identifier: Optional[str] = None,
+             config_rule_parameters: Optional[Sequence['outputs.CompliancePackConfigRuleConfigRuleParameter']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if managed_rule_identifier is None and 'managedRuleIdentifier' in kwargs:
+            managed_rule_identifier = kwargs['managedRuleIdentifier']
+        if managed_rule_identifier is None:
+            raise TypeError("Missing 'managed_rule_identifier' argument")
+        if config_rule_parameters is None and 'configRuleParameters' in kwargs:
+            config_rule_parameters = kwargs['configRuleParameters']
+
+        _setter("managed_rule_identifier", managed_rule_identifier)
         if config_rule_parameters is not None:
-            pulumi.set(__self__, "config_rule_parameters", config_rule_parameters)
+            _setter("config_rule_parameters", config_rule_parameters)
 
     @property
     @pulumi.getter(name="managedRuleIdentifier")
@@ -310,10 +405,27 @@ class CompliancePackConfigRuleConfigRuleParameter(dict):
         :param str parameter_name: The parameter name.
         :param str parameter_value: The parameter value.
         """
+        CompliancePackConfigRuleConfigRuleParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parameter_name=parameter_name,
+            parameter_value=parameter_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parameter_name: Optional[str] = None,
+             parameter_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if parameter_name is None and 'parameterName' in kwargs:
+            parameter_name = kwargs['parameterName']
+        if parameter_value is None and 'parameterValue' in kwargs:
+            parameter_value = kwargs['parameterValue']
+
         if parameter_name is not None:
-            pulumi.set(__self__, "parameter_name", parameter_name)
+            _setter("parameter_name", parameter_name)
         if parameter_value is not None:
-            pulumi.set(__self__, "parameter_value", parameter_value)
+            _setter("parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterName")
@@ -356,8 +468,21 @@ class CompliancePackConfigRuleId(dict):
         """
         :param str config_rule_id: The rule ID of Config Rule.
         """
+        CompliancePackConfigRuleId._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config_rule_id=config_rule_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config_rule_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if config_rule_id is None and 'configRuleId' in kwargs:
+            config_rule_id = kwargs['configRuleId']
+
         if config_rule_id is not None:
-            pulumi.set(__self__, "config_rule_id", config_rule_id)
+            _setter("config_rule_id", config_rule_id)
 
     @property
     @pulumi.getter(name="configRuleId")
@@ -394,10 +519,25 @@ class RuleCompliance(dict):
         :param str compliance_type: The type of compliance. Valid values: `COMPLIANT`, `NON_COMPLIANT`, `NOT_APPLICABLE`, `INSUFFICIENT_DATA`.
         :param int count: The count of compliance.
         """
+        RuleCompliance._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compliance_type=compliance_type,
+            count=count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compliance_type: Optional[str] = None,
+             count: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if compliance_type is None and 'complianceType' in kwargs:
+            compliance_type = kwargs['complianceType']
+
         if compliance_type is not None:
-            pulumi.set(__self__, "compliance_type", compliance_type)
+            _setter("compliance_type", compliance_type)
         if count is not None:
-            pulumi.set(__self__, "count", count)
+            _setter("count", count)
 
     @property
     @pulumi.getter(name="complianceType")
@@ -439,15 +579,72 @@ class GetAggregateCompliancePacksPackResult(dict):
         :param int risk_level: The Risk Level.
         :param str status: The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "aggregate_compliance_pack_name", aggregate_compliance_pack_name)
-        pulumi.set(__self__, "aggregator_compliance_pack_id", aggregator_compliance_pack_id)
-        pulumi.set(__self__, "compliance_pack_template_id", compliance_pack_template_id)
-        pulumi.set(__self__, "config_rules", config_rules)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "risk_level", risk_level)
-        pulumi.set(__self__, "status", status)
+        GetAggregateCompliancePacksPackResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            aggregate_compliance_pack_name=aggregate_compliance_pack_name,
+            aggregator_compliance_pack_id=aggregator_compliance_pack_id,
+            compliance_pack_template_id=compliance_pack_template_id,
+            config_rules=config_rules,
+            description=description,
+            id=id,
+            risk_level=risk_level,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[str] = None,
+             aggregate_compliance_pack_name: Optional[str] = None,
+             aggregator_compliance_pack_id: Optional[str] = None,
+             compliance_pack_template_id: Optional[str] = None,
+             config_rules: Optional[Sequence['outputs.GetAggregateCompliancePacksPackConfigRuleResult']] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             risk_level: Optional[int] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if aggregate_compliance_pack_name is None and 'aggregateCompliancePackName' in kwargs:
+            aggregate_compliance_pack_name = kwargs['aggregateCompliancePackName']
+        if aggregate_compliance_pack_name is None:
+            raise TypeError("Missing 'aggregate_compliance_pack_name' argument")
+        if aggregator_compliance_pack_id is None and 'aggregatorCompliancePackId' in kwargs:
+            aggregator_compliance_pack_id = kwargs['aggregatorCompliancePackId']
+        if aggregator_compliance_pack_id is None:
+            raise TypeError("Missing 'aggregator_compliance_pack_id' argument")
+        if compliance_pack_template_id is None and 'compliancePackTemplateId' in kwargs:
+            compliance_pack_template_id = kwargs['compliancePackTemplateId']
+        if compliance_pack_template_id is None:
+            raise TypeError("Missing 'compliance_pack_template_id' argument")
+        if config_rules is None and 'configRules' in kwargs:
+            config_rules = kwargs['configRules']
+        if config_rules is None:
+            raise TypeError("Missing 'config_rules' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if risk_level is None and 'riskLevel' in kwargs:
+            risk_level = kwargs['riskLevel']
+        if risk_level is None:
+            raise TypeError("Missing 'risk_level' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+
+        _setter("account_id", account_id)
+        _setter("aggregate_compliance_pack_name", aggregate_compliance_pack_name)
+        _setter("aggregator_compliance_pack_id", aggregator_compliance_pack_id)
+        _setter("compliance_pack_template_id", compliance_pack_template_id)
+        _setter("config_rules", config_rules)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("risk_level", risk_level)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="accountId")
@@ -533,9 +730,36 @@ class GetAggregateCompliancePacksPackConfigRuleResult(dict):
         :param Sequence['GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArgs'] config_rule_parameters: A list of parameter rules.
         :param str managed_rule_identifier: Managed Rule Identifier.
         """
-        pulumi.set(__self__, "config_rule_id", config_rule_id)
-        pulumi.set(__self__, "config_rule_parameters", config_rule_parameters)
-        pulumi.set(__self__, "managed_rule_identifier", managed_rule_identifier)
+        GetAggregateCompliancePacksPackConfigRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config_rule_id=config_rule_id,
+            config_rule_parameters=config_rule_parameters,
+            managed_rule_identifier=managed_rule_identifier,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config_rule_id: Optional[str] = None,
+             config_rule_parameters: Optional[Sequence['outputs.GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterResult']] = None,
+             managed_rule_identifier: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if config_rule_id is None and 'configRuleId' in kwargs:
+            config_rule_id = kwargs['configRuleId']
+        if config_rule_id is None:
+            raise TypeError("Missing 'config_rule_id' argument")
+        if config_rule_parameters is None and 'configRuleParameters' in kwargs:
+            config_rule_parameters = kwargs['configRuleParameters']
+        if config_rule_parameters is None:
+            raise TypeError("Missing 'config_rule_parameters' argument")
+        if managed_rule_identifier is None and 'managedRuleIdentifier' in kwargs:
+            managed_rule_identifier = kwargs['managedRuleIdentifier']
+        if managed_rule_identifier is None:
+            raise TypeError("Missing 'managed_rule_identifier' argument")
+
+        _setter("config_rule_id", config_rule_id)
+        _setter("config_rule_parameters", config_rule_parameters)
+        _setter("managed_rule_identifier", managed_rule_identifier)
 
     @property
     @pulumi.getter(name="configRuleId")
@@ -573,9 +797,34 @@ class GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterResult(dict):
         :param str parameter_value: The Parameter Value.
         :param bool required: Required.
         """
-        pulumi.set(__self__, "parameter_name", parameter_name)
-        pulumi.set(__self__, "parameter_value", parameter_value)
-        pulumi.set(__self__, "required", required)
+        GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parameter_name=parameter_name,
+            parameter_value=parameter_value,
+            required=required,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parameter_name: Optional[str] = None,
+             parameter_value: Optional[str] = None,
+             required: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if parameter_name is None and 'parameterName' in kwargs:
+            parameter_name = kwargs['parameterName']
+        if parameter_name is None:
+            raise TypeError("Missing 'parameter_name' argument")
+        if parameter_value is None and 'parameterValue' in kwargs:
+            parameter_value = kwargs['parameterValue']
+        if parameter_value is None:
+            raise TypeError("Missing 'parameter_value' argument")
+        if required is None:
+            raise TypeError("Missing 'required' argument")
+
+        _setter("parameter_name", parameter_name)
+        _setter("parameter_value", parameter_value)
+        _setter("required", required)
 
     @property
     @pulumi.getter(name="parameterName")
@@ -654,30 +903,175 @@ class GetAggregateConfigRulesRuleResult(dict):
         :param str tag_key_scope: The scope of tay key.
         :param str tag_value_scope: The scope of tay value.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "aggregate_config_rule_name", aggregate_config_rule_name)
-        pulumi.set(__self__, "aggregator_id", aggregator_id)
-        pulumi.set(__self__, "compliance_pack_id", compliance_pack_id)
-        pulumi.set(__self__, "compliances", compliances)
-        pulumi.set(__self__, "config_rule_arn", config_rule_arn)
-        pulumi.set(__self__, "config_rule_id", config_rule_id)
-        pulumi.set(__self__, "config_rule_trigger_types", config_rule_trigger_types)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "event_source", event_source)
-        pulumi.set(__self__, "exclude_resource_ids_scope", exclude_resource_ids_scope)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "input_parameters", input_parameters)
-        pulumi.set(__self__, "maximum_execution_frequency", maximum_execution_frequency)
-        pulumi.set(__self__, "modified_timestamp", modified_timestamp)
-        pulumi.set(__self__, "region_ids_scope", region_ids_scope)
-        pulumi.set(__self__, "resource_group_ids_scope", resource_group_ids_scope)
-        pulumi.set(__self__, "resource_types_scopes", resource_types_scopes)
-        pulumi.set(__self__, "risk_level", risk_level)
-        pulumi.set(__self__, "source_identifier", source_identifier)
-        pulumi.set(__self__, "source_owner", source_owner)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tag_key_scope", tag_key_scope)
-        pulumi.set(__self__, "tag_value_scope", tag_value_scope)
+        GetAggregateConfigRulesRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            aggregate_config_rule_name=aggregate_config_rule_name,
+            aggregator_id=aggregator_id,
+            compliance_pack_id=compliance_pack_id,
+            compliances=compliances,
+            config_rule_arn=config_rule_arn,
+            config_rule_id=config_rule_id,
+            config_rule_trigger_types=config_rule_trigger_types,
+            description=description,
+            event_source=event_source,
+            exclude_resource_ids_scope=exclude_resource_ids_scope,
+            id=id,
+            input_parameters=input_parameters,
+            maximum_execution_frequency=maximum_execution_frequency,
+            modified_timestamp=modified_timestamp,
+            region_ids_scope=region_ids_scope,
+            resource_group_ids_scope=resource_group_ids_scope,
+            resource_types_scopes=resource_types_scopes,
+            risk_level=risk_level,
+            source_identifier=source_identifier,
+            source_owner=source_owner,
+            status=status,
+            tag_key_scope=tag_key_scope,
+            tag_value_scope=tag_value_scope,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[str] = None,
+             aggregate_config_rule_name: Optional[str] = None,
+             aggregator_id: Optional[str] = None,
+             compliance_pack_id: Optional[str] = None,
+             compliances: Optional[Sequence['outputs.GetAggregateConfigRulesRuleComplianceResult']] = None,
+             config_rule_arn: Optional[str] = None,
+             config_rule_id: Optional[str] = None,
+             config_rule_trigger_types: Optional[str] = None,
+             description: Optional[str] = None,
+             event_source: Optional[str] = None,
+             exclude_resource_ids_scope: Optional[str] = None,
+             id: Optional[str] = None,
+             input_parameters: Optional[Mapping[str, Any]] = None,
+             maximum_execution_frequency: Optional[str] = None,
+             modified_timestamp: Optional[str] = None,
+             region_ids_scope: Optional[str] = None,
+             resource_group_ids_scope: Optional[str] = None,
+             resource_types_scopes: Optional[Sequence[str]] = None,
+             risk_level: Optional[int] = None,
+             source_identifier: Optional[str] = None,
+             source_owner: Optional[str] = None,
+             status: Optional[str] = None,
+             tag_key_scope: Optional[str] = None,
+             tag_value_scope: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if aggregate_config_rule_name is None and 'aggregateConfigRuleName' in kwargs:
+            aggregate_config_rule_name = kwargs['aggregateConfigRuleName']
+        if aggregate_config_rule_name is None:
+            raise TypeError("Missing 'aggregate_config_rule_name' argument")
+        if aggregator_id is None and 'aggregatorId' in kwargs:
+            aggregator_id = kwargs['aggregatorId']
+        if aggregator_id is None:
+            raise TypeError("Missing 'aggregator_id' argument")
+        if compliance_pack_id is None and 'compliancePackId' in kwargs:
+            compliance_pack_id = kwargs['compliancePackId']
+        if compliance_pack_id is None:
+            raise TypeError("Missing 'compliance_pack_id' argument")
+        if compliances is None:
+            raise TypeError("Missing 'compliances' argument")
+        if config_rule_arn is None and 'configRuleArn' in kwargs:
+            config_rule_arn = kwargs['configRuleArn']
+        if config_rule_arn is None:
+            raise TypeError("Missing 'config_rule_arn' argument")
+        if config_rule_id is None and 'configRuleId' in kwargs:
+            config_rule_id = kwargs['configRuleId']
+        if config_rule_id is None:
+            raise TypeError("Missing 'config_rule_id' argument")
+        if config_rule_trigger_types is None and 'configRuleTriggerTypes' in kwargs:
+            config_rule_trigger_types = kwargs['configRuleTriggerTypes']
+        if config_rule_trigger_types is None:
+            raise TypeError("Missing 'config_rule_trigger_types' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if event_source is None and 'eventSource' in kwargs:
+            event_source = kwargs['eventSource']
+        if event_source is None:
+            raise TypeError("Missing 'event_source' argument")
+        if exclude_resource_ids_scope is None and 'excludeResourceIdsScope' in kwargs:
+            exclude_resource_ids_scope = kwargs['excludeResourceIdsScope']
+        if exclude_resource_ids_scope is None:
+            raise TypeError("Missing 'exclude_resource_ids_scope' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if input_parameters is None and 'inputParameters' in kwargs:
+            input_parameters = kwargs['inputParameters']
+        if input_parameters is None:
+            raise TypeError("Missing 'input_parameters' argument")
+        if maximum_execution_frequency is None and 'maximumExecutionFrequency' in kwargs:
+            maximum_execution_frequency = kwargs['maximumExecutionFrequency']
+        if maximum_execution_frequency is None:
+            raise TypeError("Missing 'maximum_execution_frequency' argument")
+        if modified_timestamp is None and 'modifiedTimestamp' in kwargs:
+            modified_timestamp = kwargs['modifiedTimestamp']
+        if modified_timestamp is None:
+            raise TypeError("Missing 'modified_timestamp' argument")
+        if region_ids_scope is None and 'regionIdsScope' in kwargs:
+            region_ids_scope = kwargs['regionIdsScope']
+        if region_ids_scope is None:
+            raise TypeError("Missing 'region_ids_scope' argument")
+        if resource_group_ids_scope is None and 'resourceGroupIdsScope' in kwargs:
+            resource_group_ids_scope = kwargs['resourceGroupIdsScope']
+        if resource_group_ids_scope is None:
+            raise TypeError("Missing 'resource_group_ids_scope' argument")
+        if resource_types_scopes is None and 'resourceTypesScopes' in kwargs:
+            resource_types_scopes = kwargs['resourceTypesScopes']
+        if resource_types_scopes is None:
+            raise TypeError("Missing 'resource_types_scopes' argument")
+        if risk_level is None and 'riskLevel' in kwargs:
+            risk_level = kwargs['riskLevel']
+        if risk_level is None:
+            raise TypeError("Missing 'risk_level' argument")
+        if source_identifier is None and 'sourceIdentifier' in kwargs:
+            source_identifier = kwargs['sourceIdentifier']
+        if source_identifier is None:
+            raise TypeError("Missing 'source_identifier' argument")
+        if source_owner is None and 'sourceOwner' in kwargs:
+            source_owner = kwargs['sourceOwner']
+        if source_owner is None:
+            raise TypeError("Missing 'source_owner' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tag_key_scope is None and 'tagKeyScope' in kwargs:
+            tag_key_scope = kwargs['tagKeyScope']
+        if tag_key_scope is None:
+            raise TypeError("Missing 'tag_key_scope' argument")
+        if tag_value_scope is None and 'tagValueScope' in kwargs:
+            tag_value_scope = kwargs['tagValueScope']
+        if tag_value_scope is None:
+            raise TypeError("Missing 'tag_value_scope' argument")
+
+        _setter("account_id", account_id)
+        _setter("aggregate_config_rule_name", aggregate_config_rule_name)
+        _setter("aggregator_id", aggregator_id)
+        _setter("compliance_pack_id", compliance_pack_id)
+        _setter("compliances", compliances)
+        _setter("config_rule_arn", config_rule_arn)
+        _setter("config_rule_id", config_rule_id)
+        _setter("config_rule_trigger_types", config_rule_trigger_types)
+        _setter("description", description)
+        _setter("event_source", event_source)
+        _setter("exclude_resource_ids_scope", exclude_resource_ids_scope)
+        _setter("id", id)
+        _setter("input_parameters", input_parameters)
+        _setter("maximum_execution_frequency", maximum_execution_frequency)
+        _setter("modified_timestamp", modified_timestamp)
+        _setter("region_ids_scope", region_ids_scope)
+        _setter("resource_group_ids_scope", resource_group_ids_scope)
+        _setter("resource_types_scopes", resource_types_scopes)
+        _setter("risk_level", risk_level)
+        _setter("source_identifier", source_identifier)
+        _setter("source_owner", source_owner)
+        _setter("status", status)
+        _setter("tag_key_scope", tag_key_scope)
+        _setter("tag_value_scope", tag_value_scope)
 
     @property
     @pulumi.getter(name="accountId")
@@ -878,8 +1272,27 @@ class GetAggregateConfigRulesRuleComplianceResult(dict):
         :param str compliance_type: The Compliance Type.
         :param int count: The Count.
         """
-        pulumi.set(__self__, "compliance_type", compliance_type)
-        pulumi.set(__self__, "count", count)
+        GetAggregateConfigRulesRuleComplianceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compliance_type=compliance_type,
+            count=count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compliance_type: Optional[str] = None,
+             count: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if compliance_type is None and 'complianceType' in kwargs:
+            compliance_type = kwargs['complianceType']
+        if compliance_type is None:
+            raise TypeError("Missing 'compliance_type' argument")
+        if count is None:
+            raise TypeError("Missing 'count' argument")
+
+        _setter("compliance_type", compliance_type)
+        _setter("count", count)
 
     @property
     @pulumi.getter(name="complianceType")
@@ -933,21 +1346,114 @@ class GetAggregateDeliveriesDeliveryResult(dict):
         :param str oversized_data_oss_target_arn: The oss ARN of the delivery channel when the value data oversized limit.
         :param int status: The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "aggregator_id", aggregator_id)
-        pulumi.set(__self__, "configuration_item_change_notification", configuration_item_change_notification)
-        pulumi.set(__self__, "configuration_snapshot", configuration_snapshot)
-        pulumi.set(__self__, "delivery_channel_assume_role_arn", delivery_channel_assume_role_arn)
-        pulumi.set(__self__, "delivery_channel_condition", delivery_channel_condition)
-        pulumi.set(__self__, "delivery_channel_id", delivery_channel_id)
-        pulumi.set(__self__, "delivery_channel_name", delivery_channel_name)
-        pulumi.set(__self__, "delivery_channel_target_arn", delivery_channel_target_arn)
-        pulumi.set(__self__, "delivery_channel_type", delivery_channel_type)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "non_compliant_notification", non_compliant_notification)
-        pulumi.set(__self__, "oversized_data_oss_target_arn", oversized_data_oss_target_arn)
-        pulumi.set(__self__, "status", status)
+        GetAggregateDeliveriesDeliveryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            aggregator_id=aggregator_id,
+            configuration_item_change_notification=configuration_item_change_notification,
+            configuration_snapshot=configuration_snapshot,
+            delivery_channel_assume_role_arn=delivery_channel_assume_role_arn,
+            delivery_channel_condition=delivery_channel_condition,
+            delivery_channel_id=delivery_channel_id,
+            delivery_channel_name=delivery_channel_name,
+            delivery_channel_target_arn=delivery_channel_target_arn,
+            delivery_channel_type=delivery_channel_type,
+            description=description,
+            id=id,
+            non_compliant_notification=non_compliant_notification,
+            oversized_data_oss_target_arn=oversized_data_oss_target_arn,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[str] = None,
+             aggregator_id: Optional[str] = None,
+             configuration_item_change_notification: Optional[bool] = None,
+             configuration_snapshot: Optional[bool] = None,
+             delivery_channel_assume_role_arn: Optional[str] = None,
+             delivery_channel_condition: Optional[str] = None,
+             delivery_channel_id: Optional[str] = None,
+             delivery_channel_name: Optional[str] = None,
+             delivery_channel_target_arn: Optional[str] = None,
+             delivery_channel_type: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             non_compliant_notification: Optional[bool] = None,
+             oversized_data_oss_target_arn: Optional[str] = None,
+             status: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if aggregator_id is None and 'aggregatorId' in kwargs:
+            aggregator_id = kwargs['aggregatorId']
+        if aggregator_id is None:
+            raise TypeError("Missing 'aggregator_id' argument")
+        if configuration_item_change_notification is None and 'configurationItemChangeNotification' in kwargs:
+            configuration_item_change_notification = kwargs['configurationItemChangeNotification']
+        if configuration_item_change_notification is None:
+            raise TypeError("Missing 'configuration_item_change_notification' argument")
+        if configuration_snapshot is None and 'configurationSnapshot' in kwargs:
+            configuration_snapshot = kwargs['configurationSnapshot']
+        if configuration_snapshot is None:
+            raise TypeError("Missing 'configuration_snapshot' argument")
+        if delivery_channel_assume_role_arn is None and 'deliveryChannelAssumeRoleArn' in kwargs:
+            delivery_channel_assume_role_arn = kwargs['deliveryChannelAssumeRoleArn']
+        if delivery_channel_assume_role_arn is None:
+            raise TypeError("Missing 'delivery_channel_assume_role_arn' argument")
+        if delivery_channel_condition is None and 'deliveryChannelCondition' in kwargs:
+            delivery_channel_condition = kwargs['deliveryChannelCondition']
+        if delivery_channel_condition is None:
+            raise TypeError("Missing 'delivery_channel_condition' argument")
+        if delivery_channel_id is None and 'deliveryChannelId' in kwargs:
+            delivery_channel_id = kwargs['deliveryChannelId']
+        if delivery_channel_id is None:
+            raise TypeError("Missing 'delivery_channel_id' argument")
+        if delivery_channel_name is None and 'deliveryChannelName' in kwargs:
+            delivery_channel_name = kwargs['deliveryChannelName']
+        if delivery_channel_name is None:
+            raise TypeError("Missing 'delivery_channel_name' argument")
+        if delivery_channel_target_arn is None and 'deliveryChannelTargetArn' in kwargs:
+            delivery_channel_target_arn = kwargs['deliveryChannelTargetArn']
+        if delivery_channel_target_arn is None:
+            raise TypeError("Missing 'delivery_channel_target_arn' argument")
+        if delivery_channel_type is None and 'deliveryChannelType' in kwargs:
+            delivery_channel_type = kwargs['deliveryChannelType']
+        if delivery_channel_type is None:
+            raise TypeError("Missing 'delivery_channel_type' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if non_compliant_notification is None and 'nonCompliantNotification' in kwargs:
+            non_compliant_notification = kwargs['nonCompliantNotification']
+        if non_compliant_notification is None:
+            raise TypeError("Missing 'non_compliant_notification' argument")
+        if oversized_data_oss_target_arn is None and 'oversizedDataOssTargetArn' in kwargs:
+            oversized_data_oss_target_arn = kwargs['oversizedDataOssTargetArn']
+        if oversized_data_oss_target_arn is None:
+            raise TypeError("Missing 'oversized_data_oss_target_arn' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+
+        _setter("account_id", account_id)
+        _setter("aggregator_id", aggregator_id)
+        _setter("configuration_item_change_notification", configuration_item_change_notification)
+        _setter("configuration_snapshot", configuration_snapshot)
+        _setter("delivery_channel_assume_role_arn", delivery_channel_assume_role_arn)
+        _setter("delivery_channel_condition", delivery_channel_condition)
+        _setter("delivery_channel_id", delivery_channel_id)
+        _setter("delivery_channel_name", delivery_channel_name)
+        _setter("delivery_channel_target_arn", delivery_channel_target_arn)
+        _setter("delivery_channel_type", delivery_channel_type)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("non_compliant_notification", non_compliant_notification)
+        _setter("oversized_data_oss_target_arn", oversized_data_oss_target_arn)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="accountId")
@@ -1091,14 +1597,65 @@ class GetAggregatorsAggregatorResult(dict):
         :param str id: The id of the aggregator.
         :param str status: The status of the resource. Valid Values:  `0`: creating `1`: normal `2`: deleting.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "aggregator_accounts", aggregator_accounts)
-        pulumi.set(__self__, "aggregator_id", aggregator_id)
-        pulumi.set(__self__, "aggregator_name", aggregator_name)
-        pulumi.set(__self__, "aggregator_type", aggregator_type)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "status", status)
+        GetAggregatorsAggregatorResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            aggregator_accounts=aggregator_accounts,
+            aggregator_id=aggregator_id,
+            aggregator_name=aggregator_name,
+            aggregator_type=aggregator_type,
+            description=description,
+            id=id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[str] = None,
+             aggregator_accounts: Optional[Sequence['outputs.GetAggregatorsAggregatorAggregatorAccountResult']] = None,
+             aggregator_id: Optional[str] = None,
+             aggregator_name: Optional[str] = None,
+             aggregator_type: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if aggregator_accounts is None and 'aggregatorAccounts' in kwargs:
+            aggregator_accounts = kwargs['aggregatorAccounts']
+        if aggregator_accounts is None:
+            raise TypeError("Missing 'aggregator_accounts' argument")
+        if aggregator_id is None and 'aggregatorId' in kwargs:
+            aggregator_id = kwargs['aggregatorId']
+        if aggregator_id is None:
+            raise TypeError("Missing 'aggregator_id' argument")
+        if aggregator_name is None and 'aggregatorName' in kwargs:
+            aggregator_name = kwargs['aggregatorName']
+        if aggregator_name is None:
+            raise TypeError("Missing 'aggregator_name' argument")
+        if aggregator_type is None and 'aggregatorType' in kwargs:
+            aggregator_type = kwargs['aggregatorType']
+        if aggregator_type is None:
+            raise TypeError("Missing 'aggregator_type' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+
+        _setter("account_id", account_id)
+        _setter("aggregator_accounts", aggregator_accounts)
+        _setter("aggregator_id", aggregator_id)
+        _setter("aggregator_name", aggregator_name)
+        _setter("aggregator_type", aggregator_type)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="accountId")
@@ -1176,9 +1733,36 @@ class GetAggregatorsAggregatorAggregatorAccountResult(dict):
         :param str account_name: Aggregator account name.
         :param str account_type: Aggregator account source type.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "account_name", account_name)
-        pulumi.set(__self__, "account_type", account_type)
+        GetAggregatorsAggregatorAggregatorAccountResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            account_name=account_name,
+            account_type=account_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[str] = None,
+             account_name: Optional[str] = None,
+             account_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if account_name is None and 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+        if account_type is None and 'accountType' in kwargs:
+            account_type = kwargs['accountType']
+        if account_type is None:
+            raise TypeError("Missing 'account_type' argument")
+
+        _setter("account_id", account_id)
+        _setter("account_name", account_name)
+        _setter("account_type", account_type)
 
     @property
     @pulumi.getter(name="accountId")
@@ -1228,15 +1812,72 @@ class GetCompliancePacksPackResult(dict):
         :param int risk_level: The Ris Level.
         :param str status: The status of the resource. Valid values `ACTIVE`, `CREATING`.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "compliance_pack_id", compliance_pack_id)
-        pulumi.set(__self__, "compliance_pack_name", compliance_pack_name)
-        pulumi.set(__self__, "compliance_pack_template_id", compliance_pack_template_id)
-        pulumi.set(__self__, "config_rules", config_rules)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "risk_level", risk_level)
-        pulumi.set(__self__, "status", status)
+        GetCompliancePacksPackResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            compliance_pack_id=compliance_pack_id,
+            compliance_pack_name=compliance_pack_name,
+            compliance_pack_template_id=compliance_pack_template_id,
+            config_rules=config_rules,
+            description=description,
+            id=id,
+            risk_level=risk_level,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[str] = None,
+             compliance_pack_id: Optional[str] = None,
+             compliance_pack_name: Optional[str] = None,
+             compliance_pack_template_id: Optional[str] = None,
+             config_rules: Optional[Sequence['outputs.GetCompliancePacksPackConfigRuleResult']] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             risk_level: Optional[int] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if compliance_pack_id is None and 'compliancePackId' in kwargs:
+            compliance_pack_id = kwargs['compliancePackId']
+        if compliance_pack_id is None:
+            raise TypeError("Missing 'compliance_pack_id' argument")
+        if compliance_pack_name is None and 'compliancePackName' in kwargs:
+            compliance_pack_name = kwargs['compliancePackName']
+        if compliance_pack_name is None:
+            raise TypeError("Missing 'compliance_pack_name' argument")
+        if compliance_pack_template_id is None and 'compliancePackTemplateId' in kwargs:
+            compliance_pack_template_id = kwargs['compliancePackTemplateId']
+        if compliance_pack_template_id is None:
+            raise TypeError("Missing 'compliance_pack_template_id' argument")
+        if config_rules is None and 'configRules' in kwargs:
+            config_rules = kwargs['configRules']
+        if config_rules is None:
+            raise TypeError("Missing 'config_rules' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if risk_level is None and 'riskLevel' in kwargs:
+            risk_level = kwargs['riskLevel']
+        if risk_level is None:
+            raise TypeError("Missing 'risk_level' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+
+        _setter("account_id", account_id)
+        _setter("compliance_pack_id", compliance_pack_id)
+        _setter("compliance_pack_name", compliance_pack_name)
+        _setter("compliance_pack_template_id", compliance_pack_template_id)
+        _setter("config_rules", config_rules)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("risk_level", risk_level)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="accountId")
@@ -1322,9 +1963,36 @@ class GetCompliancePacksPackConfigRuleResult(dict):
         :param Sequence['GetCompliancePacksPackConfigRuleConfigRuleParameterArgs'] config_rule_parameters: A list of parameter rules.
         :param str managed_rule_identifier: Managed Rule Identifier.
         """
-        pulumi.set(__self__, "config_rule_id", config_rule_id)
-        pulumi.set(__self__, "config_rule_parameters", config_rule_parameters)
-        pulumi.set(__self__, "managed_rule_identifier", managed_rule_identifier)
+        GetCompliancePacksPackConfigRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config_rule_id=config_rule_id,
+            config_rule_parameters=config_rule_parameters,
+            managed_rule_identifier=managed_rule_identifier,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config_rule_id: Optional[str] = None,
+             config_rule_parameters: Optional[Sequence['outputs.GetCompliancePacksPackConfigRuleConfigRuleParameterResult']] = None,
+             managed_rule_identifier: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if config_rule_id is None and 'configRuleId' in kwargs:
+            config_rule_id = kwargs['configRuleId']
+        if config_rule_id is None:
+            raise TypeError("Missing 'config_rule_id' argument")
+        if config_rule_parameters is None and 'configRuleParameters' in kwargs:
+            config_rule_parameters = kwargs['configRuleParameters']
+        if config_rule_parameters is None:
+            raise TypeError("Missing 'config_rule_parameters' argument")
+        if managed_rule_identifier is None and 'managedRuleIdentifier' in kwargs:
+            managed_rule_identifier = kwargs['managedRuleIdentifier']
+        if managed_rule_identifier is None:
+            raise TypeError("Missing 'managed_rule_identifier' argument")
+
+        _setter("config_rule_id", config_rule_id)
+        _setter("config_rule_parameters", config_rule_parameters)
+        _setter("managed_rule_identifier", managed_rule_identifier)
 
     @property
     @pulumi.getter(name="configRuleId")
@@ -1362,9 +2030,34 @@ class GetCompliancePacksPackConfigRuleConfigRuleParameterResult(dict):
         :param str parameter_value: The Parameter Value.
         :param bool required: Required.
         """
-        pulumi.set(__self__, "parameter_name", parameter_name)
-        pulumi.set(__self__, "parameter_value", parameter_value)
-        pulumi.set(__self__, "required", required)
+        GetCompliancePacksPackConfigRuleConfigRuleParameterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parameter_name=parameter_name,
+            parameter_value=parameter_value,
+            required=required,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parameter_name: Optional[str] = None,
+             parameter_value: Optional[str] = None,
+             required: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if parameter_name is None and 'parameterName' in kwargs:
+            parameter_name = kwargs['parameterName']
+        if parameter_name is None:
+            raise TypeError("Missing 'parameter_name' argument")
+        if parameter_value is None and 'parameterValue' in kwargs:
+            parameter_value = kwargs['parameterValue']
+        if parameter_value is None:
+            raise TypeError("Missing 'parameter_value' argument")
+        if required is None:
+            raise TypeError("Missing 'required' argument")
+
+        _setter("parameter_name", parameter_name)
+        _setter("parameter_value", parameter_value)
+        _setter("required", required)
 
     @property
     @pulumi.getter(name="parameterName")
@@ -1408,12 +2101,53 @@ class GetConfigurationRecordersRecorderResult(dict):
         :param Sequence[str] resource_types: A list of resource types to be monitored.
         :param str status: Status of resource monitoring.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "organization_enable_status", organization_enable_status)
-        pulumi.set(__self__, "organization_master_id", organization_master_id)
-        pulumi.set(__self__, "resource_types", resource_types)
-        pulumi.set(__self__, "status", status)
+        GetConfigurationRecordersRecorderResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            id=id,
+            organization_enable_status=organization_enable_status,
+            organization_master_id=organization_master_id,
+            resource_types=resource_types,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[str] = None,
+             id: Optional[str] = None,
+             organization_enable_status: Optional[str] = None,
+             organization_master_id: Optional[int] = None,
+             resource_types: Optional[Sequence[str]] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if organization_enable_status is None and 'organizationEnableStatus' in kwargs:
+            organization_enable_status = kwargs['organizationEnableStatus']
+        if organization_enable_status is None:
+            raise TypeError("Missing 'organization_enable_status' argument")
+        if organization_master_id is None and 'organizationMasterId' in kwargs:
+            organization_master_id = kwargs['organizationMasterId']
+        if organization_master_id is None:
+            raise TypeError("Missing 'organization_master_id' argument")
+        if resource_types is None and 'resourceTypes' in kwargs:
+            resource_types = kwargs['resourceTypes']
+        if resource_types is None:
+            raise TypeError("Missing 'resource_types' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+
+        _setter("account_id", account_id)
+        _setter("id", id)
+        _setter("organization_enable_status", organization_enable_status)
+        _setter("organization_master_id", organization_master_id)
+        _setter("resource_types", resource_types)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="accountId")
@@ -1497,20 +2231,107 @@ class GetDeliveriesDeliveryResult(dict):
         :param str oversized_data_oss_target_arn: The oss ARN of the delivery channel when the value data oversized limit.
         :param int status: The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "configuration_item_change_notification", configuration_item_change_notification)
-        pulumi.set(__self__, "configuration_snapshot", configuration_snapshot)
-        pulumi.set(__self__, "delivery_channel_assume_role_arn", delivery_channel_assume_role_arn)
-        pulumi.set(__self__, "delivery_channel_condition", delivery_channel_condition)
-        pulumi.set(__self__, "delivery_channel_id", delivery_channel_id)
-        pulumi.set(__self__, "delivery_channel_name", delivery_channel_name)
-        pulumi.set(__self__, "delivery_channel_target_arn", delivery_channel_target_arn)
-        pulumi.set(__self__, "delivery_channel_type", delivery_channel_type)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "non_compliant_notification", non_compliant_notification)
-        pulumi.set(__self__, "oversized_data_oss_target_arn", oversized_data_oss_target_arn)
-        pulumi.set(__self__, "status", status)
+        GetDeliveriesDeliveryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            configuration_item_change_notification=configuration_item_change_notification,
+            configuration_snapshot=configuration_snapshot,
+            delivery_channel_assume_role_arn=delivery_channel_assume_role_arn,
+            delivery_channel_condition=delivery_channel_condition,
+            delivery_channel_id=delivery_channel_id,
+            delivery_channel_name=delivery_channel_name,
+            delivery_channel_target_arn=delivery_channel_target_arn,
+            delivery_channel_type=delivery_channel_type,
+            description=description,
+            id=id,
+            non_compliant_notification=non_compliant_notification,
+            oversized_data_oss_target_arn=oversized_data_oss_target_arn,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[str] = None,
+             configuration_item_change_notification: Optional[bool] = None,
+             configuration_snapshot: Optional[bool] = None,
+             delivery_channel_assume_role_arn: Optional[str] = None,
+             delivery_channel_condition: Optional[str] = None,
+             delivery_channel_id: Optional[str] = None,
+             delivery_channel_name: Optional[str] = None,
+             delivery_channel_target_arn: Optional[str] = None,
+             delivery_channel_type: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             non_compliant_notification: Optional[bool] = None,
+             oversized_data_oss_target_arn: Optional[str] = None,
+             status: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if configuration_item_change_notification is None and 'configurationItemChangeNotification' in kwargs:
+            configuration_item_change_notification = kwargs['configurationItemChangeNotification']
+        if configuration_item_change_notification is None:
+            raise TypeError("Missing 'configuration_item_change_notification' argument")
+        if configuration_snapshot is None and 'configurationSnapshot' in kwargs:
+            configuration_snapshot = kwargs['configurationSnapshot']
+        if configuration_snapshot is None:
+            raise TypeError("Missing 'configuration_snapshot' argument")
+        if delivery_channel_assume_role_arn is None and 'deliveryChannelAssumeRoleArn' in kwargs:
+            delivery_channel_assume_role_arn = kwargs['deliveryChannelAssumeRoleArn']
+        if delivery_channel_assume_role_arn is None:
+            raise TypeError("Missing 'delivery_channel_assume_role_arn' argument")
+        if delivery_channel_condition is None and 'deliveryChannelCondition' in kwargs:
+            delivery_channel_condition = kwargs['deliveryChannelCondition']
+        if delivery_channel_condition is None:
+            raise TypeError("Missing 'delivery_channel_condition' argument")
+        if delivery_channel_id is None and 'deliveryChannelId' in kwargs:
+            delivery_channel_id = kwargs['deliveryChannelId']
+        if delivery_channel_id is None:
+            raise TypeError("Missing 'delivery_channel_id' argument")
+        if delivery_channel_name is None and 'deliveryChannelName' in kwargs:
+            delivery_channel_name = kwargs['deliveryChannelName']
+        if delivery_channel_name is None:
+            raise TypeError("Missing 'delivery_channel_name' argument")
+        if delivery_channel_target_arn is None and 'deliveryChannelTargetArn' in kwargs:
+            delivery_channel_target_arn = kwargs['deliveryChannelTargetArn']
+        if delivery_channel_target_arn is None:
+            raise TypeError("Missing 'delivery_channel_target_arn' argument")
+        if delivery_channel_type is None and 'deliveryChannelType' in kwargs:
+            delivery_channel_type = kwargs['deliveryChannelType']
+        if delivery_channel_type is None:
+            raise TypeError("Missing 'delivery_channel_type' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if non_compliant_notification is None and 'nonCompliantNotification' in kwargs:
+            non_compliant_notification = kwargs['nonCompliantNotification']
+        if non_compliant_notification is None:
+            raise TypeError("Missing 'non_compliant_notification' argument")
+        if oversized_data_oss_target_arn is None and 'oversizedDataOssTargetArn' in kwargs:
+            oversized_data_oss_target_arn = kwargs['oversizedDataOssTargetArn']
+        if oversized_data_oss_target_arn is None:
+            raise TypeError("Missing 'oversized_data_oss_target_arn' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+
+        _setter("account_id", account_id)
+        _setter("configuration_item_change_notification", configuration_item_change_notification)
+        _setter("configuration_snapshot", configuration_snapshot)
+        _setter("delivery_channel_assume_role_arn", delivery_channel_assume_role_arn)
+        _setter("delivery_channel_condition", delivery_channel_condition)
+        _setter("delivery_channel_id", delivery_channel_id)
+        _setter("delivery_channel_name", delivery_channel_name)
+        _setter("delivery_channel_target_arn", delivery_channel_target_arn)
+        _setter("delivery_channel_type", delivery_channel_type)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("non_compliant_notification", non_compliant_notification)
+        _setter("oversized_data_oss_target_arn", oversized_data_oss_target_arn)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="accountId")
@@ -1648,15 +2469,72 @@ class GetDeliveryChannelsChannelResult(dict):
         :param str id: The ID of the Config Delivery Channel.
         :param int status: The status of the config delivery channel. Valid values `0`: Disable delivery channel, `1`: Enable delivery channel.
         """
-        pulumi.set(__self__, "delivery_channel_assume_role_arn", delivery_channel_assume_role_arn)
-        pulumi.set(__self__, "delivery_channel_condition", delivery_channel_condition)
-        pulumi.set(__self__, "delivery_channel_id", delivery_channel_id)
-        pulumi.set(__self__, "delivery_channel_name", delivery_channel_name)
-        pulumi.set(__self__, "delivery_channel_target_arn", delivery_channel_target_arn)
-        pulumi.set(__self__, "delivery_channel_type", delivery_channel_type)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "status", status)
+        GetDeliveryChannelsChannelResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            delivery_channel_assume_role_arn=delivery_channel_assume_role_arn,
+            delivery_channel_condition=delivery_channel_condition,
+            delivery_channel_id=delivery_channel_id,
+            delivery_channel_name=delivery_channel_name,
+            delivery_channel_target_arn=delivery_channel_target_arn,
+            delivery_channel_type=delivery_channel_type,
+            description=description,
+            id=id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             delivery_channel_assume_role_arn: Optional[str] = None,
+             delivery_channel_condition: Optional[str] = None,
+             delivery_channel_id: Optional[str] = None,
+             delivery_channel_name: Optional[str] = None,
+             delivery_channel_target_arn: Optional[str] = None,
+             delivery_channel_type: Optional[str] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             status: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if delivery_channel_assume_role_arn is None and 'deliveryChannelAssumeRoleArn' in kwargs:
+            delivery_channel_assume_role_arn = kwargs['deliveryChannelAssumeRoleArn']
+        if delivery_channel_assume_role_arn is None:
+            raise TypeError("Missing 'delivery_channel_assume_role_arn' argument")
+        if delivery_channel_condition is None and 'deliveryChannelCondition' in kwargs:
+            delivery_channel_condition = kwargs['deliveryChannelCondition']
+        if delivery_channel_condition is None:
+            raise TypeError("Missing 'delivery_channel_condition' argument")
+        if delivery_channel_id is None and 'deliveryChannelId' in kwargs:
+            delivery_channel_id = kwargs['deliveryChannelId']
+        if delivery_channel_id is None:
+            raise TypeError("Missing 'delivery_channel_id' argument")
+        if delivery_channel_name is None and 'deliveryChannelName' in kwargs:
+            delivery_channel_name = kwargs['deliveryChannelName']
+        if delivery_channel_name is None:
+            raise TypeError("Missing 'delivery_channel_name' argument")
+        if delivery_channel_target_arn is None and 'deliveryChannelTargetArn' in kwargs:
+            delivery_channel_target_arn = kwargs['deliveryChannelTargetArn']
+        if delivery_channel_target_arn is None:
+            raise TypeError("Missing 'delivery_channel_target_arn' argument")
+        if delivery_channel_type is None and 'deliveryChannelType' in kwargs:
+            delivery_channel_type = kwargs['deliveryChannelType']
+        if delivery_channel_type is None:
+            raise TypeError("Missing 'delivery_channel_type' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+
+        _setter("delivery_channel_assume_role_arn", delivery_channel_assume_role_arn)
+        _setter("delivery_channel_condition", delivery_channel_condition)
+        _setter("delivery_channel_id", delivery_channel_id)
+        _setter("delivery_channel_name", delivery_channel_name)
+        _setter("delivery_channel_target_arn", delivery_channel_target_arn)
+        _setter("delivery_channel_type", delivery_channel_type)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="deliveryChannelAssumeRoleArn")
@@ -1789,33 +2667,196 @@ class GetRulesRuleResult(dict):
         :param str tag_key_scope: (Available in 1.124.1+) The scope of tag key.
         :param str tag_value_scope: (Available in 1.124.1+) The scope of tag value.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "compliance_pack_id", compliance_pack_id)
-        pulumi.set(__self__, "compliances", compliances)
-        pulumi.set(__self__, "config_rule_arn", config_rule_arn)
-        pulumi.set(__self__, "config_rule_id", config_rule_id)
-        pulumi.set(__self__, "config_rule_state", config_rule_state)
-        pulumi.set(__self__, "config_rule_trigger_types", config_rule_trigger_types)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "event_source", event_source)
-        pulumi.set(__self__, "exclude_resource_ids_scope", exclude_resource_ids_scope)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "input_parameters", input_parameters)
-        pulumi.set(__self__, "maximum_execution_frequency", maximum_execution_frequency)
-        pulumi.set(__self__, "modified_timestamp", modified_timestamp)
-        pulumi.set(__self__, "region_ids_scope", region_ids_scope)
-        pulumi.set(__self__, "resource_group_ids_scope", resource_group_ids_scope)
-        pulumi.set(__self__, "resource_types_scopes", resource_types_scopes)
-        pulumi.set(__self__, "risk_level", risk_level)
-        pulumi.set(__self__, "rule_name", rule_name)
-        pulumi.set(__self__, "scope_compliance_resource_types", scope_compliance_resource_types)
-        pulumi.set(__self__, "source_detail_message_type", source_detail_message_type)
-        pulumi.set(__self__, "source_identifier", source_identifier)
-        pulumi.set(__self__, "source_maximum_execution_frequency", source_maximum_execution_frequency)
-        pulumi.set(__self__, "source_owner", source_owner)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tag_key_scope", tag_key_scope)
-        pulumi.set(__self__, "tag_value_scope", tag_value_scope)
+        GetRulesRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            compliance_pack_id=compliance_pack_id,
+            compliances=compliances,
+            config_rule_arn=config_rule_arn,
+            config_rule_id=config_rule_id,
+            config_rule_state=config_rule_state,
+            config_rule_trigger_types=config_rule_trigger_types,
+            description=description,
+            event_source=event_source,
+            exclude_resource_ids_scope=exclude_resource_ids_scope,
+            id=id,
+            input_parameters=input_parameters,
+            maximum_execution_frequency=maximum_execution_frequency,
+            modified_timestamp=modified_timestamp,
+            region_ids_scope=region_ids_scope,
+            resource_group_ids_scope=resource_group_ids_scope,
+            resource_types_scopes=resource_types_scopes,
+            risk_level=risk_level,
+            rule_name=rule_name,
+            scope_compliance_resource_types=scope_compliance_resource_types,
+            source_detail_message_type=source_detail_message_type,
+            source_identifier=source_identifier,
+            source_maximum_execution_frequency=source_maximum_execution_frequency,
+            source_owner=source_owner,
+            status=status,
+            tag_key_scope=tag_key_scope,
+            tag_value_scope=tag_value_scope,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[str] = None,
+             compliance_pack_id: Optional[str] = None,
+             compliances: Optional[Sequence['outputs.GetRulesRuleComplianceResult']] = None,
+             config_rule_arn: Optional[str] = None,
+             config_rule_id: Optional[str] = None,
+             config_rule_state: Optional[str] = None,
+             config_rule_trigger_types: Optional[str] = None,
+             description: Optional[str] = None,
+             event_source: Optional[str] = None,
+             exclude_resource_ids_scope: Optional[str] = None,
+             id: Optional[str] = None,
+             input_parameters: Optional[Mapping[str, Any]] = None,
+             maximum_execution_frequency: Optional[str] = None,
+             modified_timestamp: Optional[str] = None,
+             region_ids_scope: Optional[str] = None,
+             resource_group_ids_scope: Optional[str] = None,
+             resource_types_scopes: Optional[Sequence[str]] = None,
+             risk_level: Optional[int] = None,
+             rule_name: Optional[str] = None,
+             scope_compliance_resource_types: Optional[Sequence[str]] = None,
+             source_detail_message_type: Optional[str] = None,
+             source_identifier: Optional[str] = None,
+             source_maximum_execution_frequency: Optional[str] = None,
+             source_owner: Optional[str] = None,
+             status: Optional[str] = None,
+             tag_key_scope: Optional[str] = None,
+             tag_value_scope: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if compliance_pack_id is None and 'compliancePackId' in kwargs:
+            compliance_pack_id = kwargs['compliancePackId']
+        if compliance_pack_id is None:
+            raise TypeError("Missing 'compliance_pack_id' argument")
+        if compliances is None:
+            raise TypeError("Missing 'compliances' argument")
+        if config_rule_arn is None and 'configRuleArn' in kwargs:
+            config_rule_arn = kwargs['configRuleArn']
+        if config_rule_arn is None:
+            raise TypeError("Missing 'config_rule_arn' argument")
+        if config_rule_id is None and 'configRuleId' in kwargs:
+            config_rule_id = kwargs['configRuleId']
+        if config_rule_id is None:
+            raise TypeError("Missing 'config_rule_id' argument")
+        if config_rule_state is None and 'configRuleState' in kwargs:
+            config_rule_state = kwargs['configRuleState']
+        if config_rule_state is None:
+            raise TypeError("Missing 'config_rule_state' argument")
+        if config_rule_trigger_types is None and 'configRuleTriggerTypes' in kwargs:
+            config_rule_trigger_types = kwargs['configRuleTriggerTypes']
+        if config_rule_trigger_types is None:
+            raise TypeError("Missing 'config_rule_trigger_types' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if event_source is None and 'eventSource' in kwargs:
+            event_source = kwargs['eventSource']
+        if event_source is None:
+            raise TypeError("Missing 'event_source' argument")
+        if exclude_resource_ids_scope is None and 'excludeResourceIdsScope' in kwargs:
+            exclude_resource_ids_scope = kwargs['excludeResourceIdsScope']
+        if exclude_resource_ids_scope is None:
+            raise TypeError("Missing 'exclude_resource_ids_scope' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if input_parameters is None and 'inputParameters' in kwargs:
+            input_parameters = kwargs['inputParameters']
+        if input_parameters is None:
+            raise TypeError("Missing 'input_parameters' argument")
+        if maximum_execution_frequency is None and 'maximumExecutionFrequency' in kwargs:
+            maximum_execution_frequency = kwargs['maximumExecutionFrequency']
+        if maximum_execution_frequency is None:
+            raise TypeError("Missing 'maximum_execution_frequency' argument")
+        if modified_timestamp is None and 'modifiedTimestamp' in kwargs:
+            modified_timestamp = kwargs['modifiedTimestamp']
+        if modified_timestamp is None:
+            raise TypeError("Missing 'modified_timestamp' argument")
+        if region_ids_scope is None and 'regionIdsScope' in kwargs:
+            region_ids_scope = kwargs['regionIdsScope']
+        if region_ids_scope is None:
+            raise TypeError("Missing 'region_ids_scope' argument")
+        if resource_group_ids_scope is None and 'resourceGroupIdsScope' in kwargs:
+            resource_group_ids_scope = kwargs['resourceGroupIdsScope']
+        if resource_group_ids_scope is None:
+            raise TypeError("Missing 'resource_group_ids_scope' argument")
+        if resource_types_scopes is None and 'resourceTypesScopes' in kwargs:
+            resource_types_scopes = kwargs['resourceTypesScopes']
+        if resource_types_scopes is None:
+            raise TypeError("Missing 'resource_types_scopes' argument")
+        if risk_level is None and 'riskLevel' in kwargs:
+            risk_level = kwargs['riskLevel']
+        if risk_level is None:
+            raise TypeError("Missing 'risk_level' argument")
+        if rule_name is None and 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+        if rule_name is None:
+            raise TypeError("Missing 'rule_name' argument")
+        if scope_compliance_resource_types is None and 'scopeComplianceResourceTypes' in kwargs:
+            scope_compliance_resource_types = kwargs['scopeComplianceResourceTypes']
+        if scope_compliance_resource_types is None:
+            raise TypeError("Missing 'scope_compliance_resource_types' argument")
+        if source_detail_message_type is None and 'sourceDetailMessageType' in kwargs:
+            source_detail_message_type = kwargs['sourceDetailMessageType']
+        if source_detail_message_type is None:
+            raise TypeError("Missing 'source_detail_message_type' argument")
+        if source_identifier is None and 'sourceIdentifier' in kwargs:
+            source_identifier = kwargs['sourceIdentifier']
+        if source_identifier is None:
+            raise TypeError("Missing 'source_identifier' argument")
+        if source_maximum_execution_frequency is None and 'sourceMaximumExecutionFrequency' in kwargs:
+            source_maximum_execution_frequency = kwargs['sourceMaximumExecutionFrequency']
+        if source_maximum_execution_frequency is None:
+            raise TypeError("Missing 'source_maximum_execution_frequency' argument")
+        if source_owner is None and 'sourceOwner' in kwargs:
+            source_owner = kwargs['sourceOwner']
+        if source_owner is None:
+            raise TypeError("Missing 'source_owner' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tag_key_scope is None and 'tagKeyScope' in kwargs:
+            tag_key_scope = kwargs['tagKeyScope']
+        if tag_key_scope is None:
+            raise TypeError("Missing 'tag_key_scope' argument")
+        if tag_value_scope is None and 'tagValueScope' in kwargs:
+            tag_value_scope = kwargs['tagValueScope']
+        if tag_value_scope is None:
+            raise TypeError("Missing 'tag_value_scope' argument")
+
+        _setter("account_id", account_id)
+        _setter("compliance_pack_id", compliance_pack_id)
+        _setter("compliances", compliances)
+        _setter("config_rule_arn", config_rule_arn)
+        _setter("config_rule_id", config_rule_id)
+        _setter("config_rule_state", config_rule_state)
+        _setter("config_rule_trigger_types", config_rule_trigger_types)
+        _setter("description", description)
+        _setter("event_source", event_source)
+        _setter("exclude_resource_ids_scope", exclude_resource_ids_scope)
+        _setter("id", id)
+        _setter("input_parameters", input_parameters)
+        _setter("maximum_execution_frequency", maximum_execution_frequency)
+        _setter("modified_timestamp", modified_timestamp)
+        _setter("region_ids_scope", region_ids_scope)
+        _setter("resource_group_ids_scope", resource_group_ids_scope)
+        _setter("resource_types_scopes", resource_types_scopes)
+        _setter("risk_level", risk_level)
+        _setter("rule_name", rule_name)
+        _setter("scope_compliance_resource_types", scope_compliance_resource_types)
+        _setter("source_detail_message_type", source_detail_message_type)
+        _setter("source_identifier", source_identifier)
+        _setter("source_maximum_execution_frequency", source_maximum_execution_frequency)
+        _setter("source_owner", source_owner)
+        _setter("status", status)
+        _setter("tag_key_scope", tag_key_scope)
+        _setter("tag_value_scope", tag_value_scope)
 
     @property
     @pulumi.getter(name="accountId")
@@ -2040,8 +3081,27 @@ class GetRulesRuleComplianceResult(dict):
         :param str compliance_type: The compliance evaluation result of the target resources.
         :param int count: The number of resources with the specified compliance evaluation result.
         """
-        pulumi.set(__self__, "compliance_type", compliance_type)
-        pulumi.set(__self__, "count", count)
+        GetRulesRuleComplianceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compliance_type=compliance_type,
+            count=count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compliance_type: Optional[str] = None,
+             count: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if compliance_type is None and 'complianceType' in kwargs:
+            compliance_type = kwargs['complianceType']
+        if compliance_type is None:
+            raise TypeError("Missing 'compliance_type' argument")
+        if count is None:
+            raise TypeError("Missing 'count' argument")
+
+        _setter("compliance_type", compliance_type)
+        _setter("count", count)
 
     @property
     @pulumi.getter(name="complianceType")

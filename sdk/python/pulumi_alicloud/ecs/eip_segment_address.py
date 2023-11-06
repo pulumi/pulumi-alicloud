@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EipSegmentAddressArgs', 'EipSegmentAddress']
@@ -40,15 +40,40 @@ class EipSegmentAddressArgs:
                If you are a user of Hangzhou Financial Cloud, this field is required. The value is `BGP_FinanceCloud`.
         :param pulumi.Input[str] netmode: The network type. Set the value to **public**.
         """
-        pulumi.set(__self__, "eip_mask", eip_mask)
+        EipSegmentAddressArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            eip_mask=eip_mask,
+            bandwidth=bandwidth,
+            internet_charge_type=internet_charge_type,
+            isp=isp,
+            netmode=netmode,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             eip_mask: Optional[pulumi.Input[str]] = None,
+             bandwidth: Optional[pulumi.Input[str]] = None,
+             internet_charge_type: Optional[pulumi.Input[str]] = None,
+             isp: Optional[pulumi.Input[str]] = None,
+             netmode: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if eip_mask is None and 'eipMask' in kwargs:
+            eip_mask = kwargs['eipMask']
+        if eip_mask is None:
+            raise TypeError("Missing 'eip_mask' argument")
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+
+        _setter("eip_mask", eip_mask)
         if bandwidth is not None:
-            pulumi.set(__self__, "bandwidth", bandwidth)
+            _setter("bandwidth", bandwidth)
         if internet_charge_type is not None:
-            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+            _setter("internet_charge_type", internet_charge_type)
         if isp is not None:
-            pulumi.set(__self__, "isp", isp)
+            _setter("isp", isp)
         if netmode is not None:
-            pulumi.set(__self__, "netmode", netmode)
+            _setter("netmode", netmode)
 
     @property
     @pulumi.getter(name="eipMask")
@@ -157,20 +182,49 @@ class _EipSegmentAddressState:
         :param pulumi.Input[str] netmode: The network type. Set the value to **public**.
         :param pulumi.Input[str] status: The status of the resource.
         """
+        _EipSegmentAddressState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            create_time=create_time,
+            eip_mask=eip_mask,
+            internet_charge_type=internet_charge_type,
+            isp=isp,
+            netmode=netmode,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             eip_mask: Optional[pulumi.Input[str]] = None,
+             internet_charge_type: Optional[pulumi.Input[str]] = None,
+             isp: Optional[pulumi.Input[str]] = None,
+             netmode: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if eip_mask is None and 'eipMask' in kwargs:
+            eip_mask = kwargs['eipMask']
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+
         if bandwidth is not None:
-            pulumi.set(__self__, "bandwidth", bandwidth)
+            _setter("bandwidth", bandwidth)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if eip_mask is not None:
-            pulumi.set(__self__, "eip_mask", eip_mask)
+            _setter("eip_mask", eip_mask)
         if internet_charge_type is not None:
-            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+            _setter("internet_charge_type", internet_charge_type)
         if isp is not None:
-            pulumi.set(__self__, "isp", isp)
+            _setter("isp", isp)
         if netmode is not None:
-            pulumi.set(__self__, "netmode", netmode)
+            _setter("netmode", netmode)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter
@@ -388,6 +442,10 @@ class EipSegmentAddress(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EipSegmentAddressArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -39,14 +39,63 @@ class GetOpenApiPricingModulesModuleResult(dict):
         :param str unit: Attribute unit.
         :param Sequence['GetOpenApiPricingModulesModuleValueArgs'] values: Property.
         """
-        pulumi.set(__self__, "code", code)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "pricing_module_name", pricing_module_name)
-        pulumi.set(__self__, "product_code", product_code)
-        pulumi.set(__self__, "product_type", product_type)
-        pulumi.set(__self__, "subscription_type", subscription_type)
-        pulumi.set(__self__, "unit", unit)
-        pulumi.set(__self__, "values", values)
+        GetOpenApiPricingModulesModuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            code=code,
+            id=id,
+            pricing_module_name=pricing_module_name,
+            product_code=product_code,
+            product_type=product_type,
+            subscription_type=subscription_type,
+            unit=unit,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             code: Optional[str] = None,
+             id: Optional[str] = None,
+             pricing_module_name: Optional[str] = None,
+             product_code: Optional[str] = None,
+             product_type: Optional[str] = None,
+             subscription_type: Optional[str] = None,
+             unit: Optional[str] = None,
+             values: Optional[Sequence['outputs.GetOpenApiPricingModulesModuleValueResult']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if code is None:
+            raise TypeError("Missing 'code' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if pricing_module_name is None and 'pricingModuleName' in kwargs:
+            pricing_module_name = kwargs['pricingModuleName']
+        if pricing_module_name is None:
+            raise TypeError("Missing 'pricing_module_name' argument")
+        if product_code is None and 'productCode' in kwargs:
+            product_code = kwargs['productCode']
+        if product_code is None:
+            raise TypeError("Missing 'product_code' argument")
+        if product_type is None and 'productType' in kwargs:
+            product_type = kwargs['productType']
+        if product_type is None:
+            raise TypeError("Missing 'product_type' argument")
+        if subscription_type is None and 'subscriptionType' in kwargs:
+            subscription_type = kwargs['subscriptionType']
+        if subscription_type is None:
+            raise TypeError("Missing 'subscription_type' argument")
+        if unit is None:
+            raise TypeError("Missing 'unit' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
+        _setter("code", code)
+        _setter("id", id)
+        _setter("pricing_module_name", pricing_module_name)
+        _setter("product_code", product_code)
+        _setter("product_type", product_type)
+        _setter("subscription_type", subscription_type)
+        _setter("unit", unit)
+        _setter("values", values)
 
     @property
     @pulumi.getter
@@ -131,10 +180,35 @@ class GetOpenApiPricingModulesModuleValueResult(dict):
         :param str value: The module Code corresponds to the attribute value.
                > format 1024-1024000 when Type = range_float: 1024 means from 1024 to 1024000, step size 1024.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "remark", remark)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "value", value)
+        GetOpenApiPricingModulesModuleValueResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            remark=remark,
+            type=type,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[str] = None,
+             remark: Optional[str] = None,
+             type: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if remark is None:
+            raise TypeError("Missing 'remark' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
+        _setter("name", name)
+        _setter("remark", remark)
+        _setter("type", type)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -189,11 +263,48 @@ class GetOpenApiProductsProductResult(dict):
                * Subscription: Prepaid.
                * PayAsYouGo: postpaid.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "product_code", product_code)
-        pulumi.set(__self__, "product_name", product_name)
-        pulumi.set(__self__, "product_type", product_type)
-        pulumi.set(__self__, "subscription_type", subscription_type)
+        GetOpenApiProductsProductResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            product_code=product_code,
+            product_name=product_name,
+            product_type=product_type,
+            subscription_type=subscription_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             product_code: Optional[str] = None,
+             product_name: Optional[str] = None,
+             product_type: Optional[str] = None,
+             subscription_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if product_code is None and 'productCode' in kwargs:
+            product_code = kwargs['productCode']
+        if product_code is None:
+            raise TypeError("Missing 'product_code' argument")
+        if product_name is None and 'productName' in kwargs:
+            product_name = kwargs['productName']
+        if product_name is None:
+            raise TypeError("Missing 'product_name' argument")
+        if product_type is None and 'productType' in kwargs:
+            product_type = kwargs['productType']
+        if product_type is None:
+            raise TypeError("Missing 'product_type' argument")
+        if subscription_type is None and 'subscriptionType' in kwargs:
+            subscription_type = kwargs['subscriptionType']
+        if subscription_type is None:
+            raise TypeError("Missing 'subscription_type' argument")
+
+        _setter("id", id)
+        _setter("product_code", product_code)
+        _setter("product_name", product_name)
+        _setter("product_type", product_type)
+        _setter("subscription_type", subscription_type)
 
     @property
     @pulumi.getter

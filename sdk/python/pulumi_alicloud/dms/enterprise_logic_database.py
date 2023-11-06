@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EnterpriseLogicDatabaseArgs', 'EnterpriseLogicDatabase']
@@ -23,10 +23,33 @@ class EnterpriseLogicDatabaseArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] database_ids: Sub-Database ID
         :param pulumi.Input[str] logic_database_id: The ID of the logical Library.
         """
-        pulumi.set(__self__, "alias", alias)
-        pulumi.set(__self__, "database_ids", database_ids)
+        EnterpriseLogicDatabaseArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alias=alias,
+            database_ids=database_ids,
+            logic_database_id=logic_database_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alias: Optional[pulumi.Input[str]] = None,
+             database_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             logic_database_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if alias is None:
+            raise TypeError("Missing 'alias' argument")
+        if database_ids is None and 'databaseIds' in kwargs:
+            database_ids = kwargs['databaseIds']
+        if database_ids is None:
+            raise TypeError("Missing 'database_ids' argument")
+        if logic_database_id is None and 'logicDatabaseId' in kwargs:
+            logic_database_id = kwargs['logicDatabaseId']
+
+        _setter("alias", alias)
+        _setter("database_ids", database_ids)
         if logic_database_id is not None:
-            pulumi.set(__self__, "logic_database_id", logic_database_id)
+            _setter("logic_database_id", logic_database_id)
 
     @property
     @pulumi.getter
@@ -91,26 +114,71 @@ class _EnterpriseLogicDatabaseState:
         :param pulumi.Input[str] schema_name: Logical Library name.
         :param pulumi.Input[str] search_name: Logical library search name.
         """
+        _EnterpriseLogicDatabaseState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alias=alias,
+            database_ids=database_ids,
+            db_type=db_type,
+            env_type=env_type,
+            logic=logic,
+            logic_database_id=logic_database_id,
+            owner_id_lists=owner_id_lists,
+            owner_name_lists=owner_name_lists,
+            schema_name=schema_name,
+            search_name=search_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alias: Optional[pulumi.Input[str]] = None,
+             database_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             db_type: Optional[pulumi.Input[str]] = None,
+             env_type: Optional[pulumi.Input[str]] = None,
+             logic: Optional[pulumi.Input[bool]] = None,
+             logic_database_id: Optional[pulumi.Input[str]] = None,
+             owner_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             owner_name_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             schema_name: Optional[pulumi.Input[str]] = None,
+             search_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if database_ids is None and 'databaseIds' in kwargs:
+            database_ids = kwargs['databaseIds']
+        if db_type is None and 'dbType' in kwargs:
+            db_type = kwargs['dbType']
+        if env_type is None and 'envType' in kwargs:
+            env_type = kwargs['envType']
+        if logic_database_id is None and 'logicDatabaseId' in kwargs:
+            logic_database_id = kwargs['logicDatabaseId']
+        if owner_id_lists is None and 'ownerIdLists' in kwargs:
+            owner_id_lists = kwargs['ownerIdLists']
+        if owner_name_lists is None and 'ownerNameLists' in kwargs:
+            owner_name_lists = kwargs['ownerNameLists']
+        if schema_name is None and 'schemaName' in kwargs:
+            schema_name = kwargs['schemaName']
+        if search_name is None and 'searchName' in kwargs:
+            search_name = kwargs['searchName']
+
         if alias is not None:
-            pulumi.set(__self__, "alias", alias)
+            _setter("alias", alias)
         if database_ids is not None:
-            pulumi.set(__self__, "database_ids", database_ids)
+            _setter("database_ids", database_ids)
         if db_type is not None:
-            pulumi.set(__self__, "db_type", db_type)
+            _setter("db_type", db_type)
         if env_type is not None:
-            pulumi.set(__self__, "env_type", env_type)
+            _setter("env_type", env_type)
         if logic is not None:
-            pulumi.set(__self__, "logic", logic)
+            _setter("logic", logic)
         if logic_database_id is not None:
-            pulumi.set(__self__, "logic_database_id", logic_database_id)
+            _setter("logic_database_id", logic_database_id)
         if owner_id_lists is not None:
-            pulumi.set(__self__, "owner_id_lists", owner_id_lists)
+            _setter("owner_id_lists", owner_id_lists)
         if owner_name_lists is not None:
-            pulumi.set(__self__, "owner_name_lists", owner_name_lists)
+            _setter("owner_name_lists", owner_name_lists)
         if schema_name is not None:
-            pulumi.set(__self__, "schema_name", schema_name)
+            _setter("schema_name", schema_name)
         if search_name is not None:
-            pulumi.set(__self__, "search_name", search_name)
+            _setter("search_name", search_name)
 
     @property
     @pulumi.getter
@@ -326,6 +394,10 @@ class EnterpriseLogicDatabase(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EnterpriseLogicDatabaseArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

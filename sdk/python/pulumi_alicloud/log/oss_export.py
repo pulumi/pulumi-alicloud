@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -70,47 +70,168 @@ class OssExportArgs:
         :param pulumi.Input[str] role_arn: Used to write to oss bucket, the OSS Bucket owner creates the role mark which has the oss bucket write policy, such as `acs:ram::13234:role/logrole`.
         :param pulumi.Input[str] suffix: The suffix for the objects in which the shipped data is stored.
         """
-        pulumi.set(__self__, "bucket", bucket)
-        pulumi.set(__self__, "buffer_interval", buffer_interval)
-        pulumi.set(__self__, "buffer_size", buffer_size)
-        pulumi.set(__self__, "content_type", content_type)
-        pulumi.set(__self__, "export_name", export_name)
-        pulumi.set(__self__, "logstore_name", logstore_name)
-        pulumi.set(__self__, "path_format", path_format)
-        pulumi.set(__self__, "project_name", project_name)
-        pulumi.set(__self__, "time_zone", time_zone)
+        OssExportArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bucket=bucket,
+            buffer_interval=buffer_interval,
+            buffer_size=buffer_size,
+            content_type=content_type,
+            export_name=export_name,
+            logstore_name=logstore_name,
+            path_format=path_format,
+            project_name=project_name,
+            time_zone=time_zone,
+            compress_type=compress_type,
+            config_columns=config_columns,
+            csv_config_columns=csv_config_columns,
+            csv_config_delimiter=csv_config_delimiter,
+            csv_config_escape=csv_config_escape,
+            csv_config_header=csv_config_header,
+            csv_config_linefeed=csv_config_linefeed,
+            csv_config_null=csv_config_null,
+            csv_config_quote=csv_config_quote,
+            display_name=display_name,
+            from_time=from_time,
+            json_enable_tag=json_enable_tag,
+            log_read_role_arn=log_read_role_arn,
+            prefix=prefix,
+            role_arn=role_arn,
+            suffix=suffix,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bucket: Optional[pulumi.Input[str]] = None,
+             buffer_interval: Optional[pulumi.Input[int]] = None,
+             buffer_size: Optional[pulumi.Input[int]] = None,
+             content_type: Optional[pulumi.Input[str]] = None,
+             export_name: Optional[pulumi.Input[str]] = None,
+             logstore_name: Optional[pulumi.Input[str]] = None,
+             path_format: Optional[pulumi.Input[str]] = None,
+             project_name: Optional[pulumi.Input[str]] = None,
+             time_zone: Optional[pulumi.Input[str]] = None,
+             compress_type: Optional[pulumi.Input[str]] = None,
+             config_columns: Optional[pulumi.Input[Sequence[pulumi.Input['OssExportConfigColumnArgs']]]] = None,
+             csv_config_columns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             csv_config_delimiter: Optional[pulumi.Input[str]] = None,
+             csv_config_escape: Optional[pulumi.Input[str]] = None,
+             csv_config_header: Optional[pulumi.Input[bool]] = None,
+             csv_config_linefeed: Optional[pulumi.Input[str]] = None,
+             csv_config_null: Optional[pulumi.Input[str]] = None,
+             csv_config_quote: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             from_time: Optional[pulumi.Input[int]] = None,
+             json_enable_tag: Optional[pulumi.Input[bool]] = None,
+             log_read_role_arn: Optional[pulumi.Input[str]] = None,
+             prefix: Optional[pulumi.Input[str]] = None,
+             role_arn: Optional[pulumi.Input[str]] = None,
+             suffix: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if buffer_interval is None and 'bufferInterval' in kwargs:
+            buffer_interval = kwargs['bufferInterval']
+        if buffer_interval is None:
+            raise TypeError("Missing 'buffer_interval' argument")
+        if buffer_size is None and 'bufferSize' in kwargs:
+            buffer_size = kwargs['bufferSize']
+        if buffer_size is None:
+            raise TypeError("Missing 'buffer_size' argument")
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if content_type is None:
+            raise TypeError("Missing 'content_type' argument")
+        if export_name is None and 'exportName' in kwargs:
+            export_name = kwargs['exportName']
+        if export_name is None:
+            raise TypeError("Missing 'export_name' argument")
+        if logstore_name is None and 'logstoreName' in kwargs:
+            logstore_name = kwargs['logstoreName']
+        if logstore_name is None:
+            raise TypeError("Missing 'logstore_name' argument")
+        if path_format is None and 'pathFormat' in kwargs:
+            path_format = kwargs['pathFormat']
+        if path_format is None:
+            raise TypeError("Missing 'path_format' argument")
+        if project_name is None and 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if project_name is None:
+            raise TypeError("Missing 'project_name' argument")
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+        if time_zone is None:
+            raise TypeError("Missing 'time_zone' argument")
+        if compress_type is None and 'compressType' in kwargs:
+            compress_type = kwargs['compressType']
+        if config_columns is None and 'configColumns' in kwargs:
+            config_columns = kwargs['configColumns']
+        if csv_config_columns is None and 'csvConfigColumns' in kwargs:
+            csv_config_columns = kwargs['csvConfigColumns']
+        if csv_config_delimiter is None and 'csvConfigDelimiter' in kwargs:
+            csv_config_delimiter = kwargs['csvConfigDelimiter']
+        if csv_config_escape is None and 'csvConfigEscape' in kwargs:
+            csv_config_escape = kwargs['csvConfigEscape']
+        if csv_config_header is None and 'csvConfigHeader' in kwargs:
+            csv_config_header = kwargs['csvConfigHeader']
+        if csv_config_linefeed is None and 'csvConfigLinefeed' in kwargs:
+            csv_config_linefeed = kwargs['csvConfigLinefeed']
+        if csv_config_null is None and 'csvConfigNull' in kwargs:
+            csv_config_null = kwargs['csvConfigNull']
+        if csv_config_quote is None and 'csvConfigQuote' in kwargs:
+            csv_config_quote = kwargs['csvConfigQuote']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if from_time is None and 'fromTime' in kwargs:
+            from_time = kwargs['fromTime']
+        if json_enable_tag is None and 'jsonEnableTag' in kwargs:
+            json_enable_tag = kwargs['jsonEnableTag']
+        if log_read_role_arn is None and 'logReadRoleArn' in kwargs:
+            log_read_role_arn = kwargs['logReadRoleArn']
+        if role_arn is None and 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+
+        _setter("bucket", bucket)
+        _setter("buffer_interval", buffer_interval)
+        _setter("buffer_size", buffer_size)
+        _setter("content_type", content_type)
+        _setter("export_name", export_name)
+        _setter("logstore_name", logstore_name)
+        _setter("path_format", path_format)
+        _setter("project_name", project_name)
+        _setter("time_zone", time_zone)
         if compress_type is not None:
-            pulumi.set(__self__, "compress_type", compress_type)
+            _setter("compress_type", compress_type)
         if config_columns is not None:
-            pulumi.set(__self__, "config_columns", config_columns)
+            _setter("config_columns", config_columns)
         if csv_config_columns is not None:
-            pulumi.set(__self__, "csv_config_columns", csv_config_columns)
+            _setter("csv_config_columns", csv_config_columns)
         if csv_config_delimiter is not None:
-            pulumi.set(__self__, "csv_config_delimiter", csv_config_delimiter)
+            _setter("csv_config_delimiter", csv_config_delimiter)
         if csv_config_escape is not None:
-            pulumi.set(__self__, "csv_config_escape", csv_config_escape)
+            _setter("csv_config_escape", csv_config_escape)
         if csv_config_header is not None:
-            pulumi.set(__self__, "csv_config_header", csv_config_header)
+            _setter("csv_config_header", csv_config_header)
         if csv_config_linefeed is not None:
-            pulumi.set(__self__, "csv_config_linefeed", csv_config_linefeed)
+            _setter("csv_config_linefeed", csv_config_linefeed)
         if csv_config_null is not None:
-            pulumi.set(__self__, "csv_config_null", csv_config_null)
+            _setter("csv_config_null", csv_config_null)
         if csv_config_quote is not None:
-            pulumi.set(__self__, "csv_config_quote", csv_config_quote)
+            _setter("csv_config_quote", csv_config_quote)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if from_time is not None:
-            pulumi.set(__self__, "from_time", from_time)
+            _setter("from_time", from_time)
         if json_enable_tag is not None:
-            pulumi.set(__self__, "json_enable_tag", json_enable_tag)
+            _setter("json_enable_tag", json_enable_tag)
         if log_read_role_arn is not None:
-            pulumi.set(__self__, "log_read_role_arn", log_read_role_arn)
+            _setter("log_read_role_arn", log_read_role_arn)
         if prefix is not None:
-            pulumi.set(__self__, "prefix", prefix)
+            _setter("prefix", prefix)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
         if suffix is not None:
-            pulumi.set(__self__, "suffix", suffix)
+            _setter("suffix", suffix)
 
     @property
     @pulumi.getter
@@ -471,56 +592,159 @@ class _OssExportState:
         :param pulumi.Input[str] suffix: The suffix for the objects in which the shipped data is stored.
         :param pulumi.Input[str] time_zone: This time zone that is used to format the time, `+0800` e.g.
         """
+        _OssExportState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bucket=bucket,
+            buffer_interval=buffer_interval,
+            buffer_size=buffer_size,
+            compress_type=compress_type,
+            config_columns=config_columns,
+            content_type=content_type,
+            csv_config_columns=csv_config_columns,
+            csv_config_delimiter=csv_config_delimiter,
+            csv_config_escape=csv_config_escape,
+            csv_config_header=csv_config_header,
+            csv_config_linefeed=csv_config_linefeed,
+            csv_config_null=csv_config_null,
+            csv_config_quote=csv_config_quote,
+            display_name=display_name,
+            export_name=export_name,
+            from_time=from_time,
+            json_enable_tag=json_enable_tag,
+            log_read_role_arn=log_read_role_arn,
+            logstore_name=logstore_name,
+            path_format=path_format,
+            prefix=prefix,
+            project_name=project_name,
+            role_arn=role_arn,
+            suffix=suffix,
+            time_zone=time_zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bucket: Optional[pulumi.Input[str]] = None,
+             buffer_interval: Optional[pulumi.Input[int]] = None,
+             buffer_size: Optional[pulumi.Input[int]] = None,
+             compress_type: Optional[pulumi.Input[str]] = None,
+             config_columns: Optional[pulumi.Input[Sequence[pulumi.Input['OssExportConfigColumnArgs']]]] = None,
+             content_type: Optional[pulumi.Input[str]] = None,
+             csv_config_columns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             csv_config_delimiter: Optional[pulumi.Input[str]] = None,
+             csv_config_escape: Optional[pulumi.Input[str]] = None,
+             csv_config_header: Optional[pulumi.Input[bool]] = None,
+             csv_config_linefeed: Optional[pulumi.Input[str]] = None,
+             csv_config_null: Optional[pulumi.Input[str]] = None,
+             csv_config_quote: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             export_name: Optional[pulumi.Input[str]] = None,
+             from_time: Optional[pulumi.Input[int]] = None,
+             json_enable_tag: Optional[pulumi.Input[bool]] = None,
+             log_read_role_arn: Optional[pulumi.Input[str]] = None,
+             logstore_name: Optional[pulumi.Input[str]] = None,
+             path_format: Optional[pulumi.Input[str]] = None,
+             prefix: Optional[pulumi.Input[str]] = None,
+             project_name: Optional[pulumi.Input[str]] = None,
+             role_arn: Optional[pulumi.Input[str]] = None,
+             suffix: Optional[pulumi.Input[str]] = None,
+             time_zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if buffer_interval is None and 'bufferInterval' in kwargs:
+            buffer_interval = kwargs['bufferInterval']
+        if buffer_size is None and 'bufferSize' in kwargs:
+            buffer_size = kwargs['bufferSize']
+        if compress_type is None and 'compressType' in kwargs:
+            compress_type = kwargs['compressType']
+        if config_columns is None and 'configColumns' in kwargs:
+            config_columns = kwargs['configColumns']
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if csv_config_columns is None and 'csvConfigColumns' in kwargs:
+            csv_config_columns = kwargs['csvConfigColumns']
+        if csv_config_delimiter is None and 'csvConfigDelimiter' in kwargs:
+            csv_config_delimiter = kwargs['csvConfigDelimiter']
+        if csv_config_escape is None and 'csvConfigEscape' in kwargs:
+            csv_config_escape = kwargs['csvConfigEscape']
+        if csv_config_header is None and 'csvConfigHeader' in kwargs:
+            csv_config_header = kwargs['csvConfigHeader']
+        if csv_config_linefeed is None and 'csvConfigLinefeed' in kwargs:
+            csv_config_linefeed = kwargs['csvConfigLinefeed']
+        if csv_config_null is None and 'csvConfigNull' in kwargs:
+            csv_config_null = kwargs['csvConfigNull']
+        if csv_config_quote is None and 'csvConfigQuote' in kwargs:
+            csv_config_quote = kwargs['csvConfigQuote']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if export_name is None and 'exportName' in kwargs:
+            export_name = kwargs['exportName']
+        if from_time is None and 'fromTime' in kwargs:
+            from_time = kwargs['fromTime']
+        if json_enable_tag is None and 'jsonEnableTag' in kwargs:
+            json_enable_tag = kwargs['jsonEnableTag']
+        if log_read_role_arn is None and 'logReadRoleArn' in kwargs:
+            log_read_role_arn = kwargs['logReadRoleArn']
+        if logstore_name is None and 'logstoreName' in kwargs:
+            logstore_name = kwargs['logstoreName']
+        if path_format is None and 'pathFormat' in kwargs:
+            path_format = kwargs['pathFormat']
+        if project_name is None and 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if role_arn is None and 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         if bucket is not None:
-            pulumi.set(__self__, "bucket", bucket)
+            _setter("bucket", bucket)
         if buffer_interval is not None:
-            pulumi.set(__self__, "buffer_interval", buffer_interval)
+            _setter("buffer_interval", buffer_interval)
         if buffer_size is not None:
-            pulumi.set(__self__, "buffer_size", buffer_size)
+            _setter("buffer_size", buffer_size)
         if compress_type is not None:
-            pulumi.set(__self__, "compress_type", compress_type)
+            _setter("compress_type", compress_type)
         if config_columns is not None:
-            pulumi.set(__self__, "config_columns", config_columns)
+            _setter("config_columns", config_columns)
         if content_type is not None:
-            pulumi.set(__self__, "content_type", content_type)
+            _setter("content_type", content_type)
         if csv_config_columns is not None:
-            pulumi.set(__self__, "csv_config_columns", csv_config_columns)
+            _setter("csv_config_columns", csv_config_columns)
         if csv_config_delimiter is not None:
-            pulumi.set(__self__, "csv_config_delimiter", csv_config_delimiter)
+            _setter("csv_config_delimiter", csv_config_delimiter)
         if csv_config_escape is not None:
-            pulumi.set(__self__, "csv_config_escape", csv_config_escape)
+            _setter("csv_config_escape", csv_config_escape)
         if csv_config_header is not None:
-            pulumi.set(__self__, "csv_config_header", csv_config_header)
+            _setter("csv_config_header", csv_config_header)
         if csv_config_linefeed is not None:
-            pulumi.set(__self__, "csv_config_linefeed", csv_config_linefeed)
+            _setter("csv_config_linefeed", csv_config_linefeed)
         if csv_config_null is not None:
-            pulumi.set(__self__, "csv_config_null", csv_config_null)
+            _setter("csv_config_null", csv_config_null)
         if csv_config_quote is not None:
-            pulumi.set(__self__, "csv_config_quote", csv_config_quote)
+            _setter("csv_config_quote", csv_config_quote)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if export_name is not None:
-            pulumi.set(__self__, "export_name", export_name)
+            _setter("export_name", export_name)
         if from_time is not None:
-            pulumi.set(__self__, "from_time", from_time)
+            _setter("from_time", from_time)
         if json_enable_tag is not None:
-            pulumi.set(__self__, "json_enable_tag", json_enable_tag)
+            _setter("json_enable_tag", json_enable_tag)
         if log_read_role_arn is not None:
-            pulumi.set(__self__, "log_read_role_arn", log_read_role_arn)
+            _setter("log_read_role_arn", log_read_role_arn)
         if logstore_name is not None:
-            pulumi.set(__self__, "logstore_name", logstore_name)
+            _setter("logstore_name", logstore_name)
         if path_format is not None:
-            pulumi.set(__self__, "path_format", path_format)
+            _setter("path_format", path_format)
         if prefix is not None:
-            pulumi.set(__self__, "prefix", prefix)
+            _setter("prefix", prefix)
         if project_name is not None:
-            pulumi.set(__self__, "project_name", project_name)
+            _setter("project_name", project_name)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
         if suffix is not None:
-            pulumi.set(__self__, "suffix", suffix)
+            _setter("suffix", suffix)
         if time_zone is not None:
-            pulumi.set(__self__, "time_zone", time_zone)
+            _setter("time_zone", time_zone)
 
     @property
     @pulumi.getter
@@ -1016,6 +1240,10 @@ class OssExport(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OssExportArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

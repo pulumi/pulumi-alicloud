@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,10 +27,41 @@ class HoneypotPresetArgs:
         :param pulumi.Input[str] node_id: Unique id of management node
         :param pulumi.Input[str] preset_name: Honeypot template custom name
         """
-        pulumi.set(__self__, "honeypot_image_name", honeypot_image_name)
-        pulumi.set(__self__, "meta", meta)
-        pulumi.set(__self__, "node_id", node_id)
-        pulumi.set(__self__, "preset_name", preset_name)
+        HoneypotPresetArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            honeypot_image_name=honeypot_image_name,
+            meta=meta,
+            node_id=node_id,
+            preset_name=preset_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             honeypot_image_name: Optional[pulumi.Input[str]] = None,
+             meta: Optional[pulumi.Input['HoneypotPresetMetaArgs']] = None,
+             node_id: Optional[pulumi.Input[str]] = None,
+             preset_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if honeypot_image_name is None and 'honeypotImageName' in kwargs:
+            honeypot_image_name = kwargs['honeypotImageName']
+        if honeypot_image_name is None:
+            raise TypeError("Missing 'honeypot_image_name' argument")
+        if meta is None:
+            raise TypeError("Missing 'meta' argument")
+        if node_id is None and 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if node_id is None:
+            raise TypeError("Missing 'node_id' argument")
+        if preset_name is None and 'presetName' in kwargs:
+            preset_name = kwargs['presetName']
+        if preset_name is None:
+            raise TypeError("Missing 'preset_name' argument")
+
+        _setter("honeypot_image_name", honeypot_image_name)
+        _setter("meta", meta)
+        _setter("node_id", node_id)
+        _setter("preset_name", preset_name)
 
     @property
     @pulumi.getter(name="honeypotImageName")
@@ -97,16 +128,43 @@ class _HoneypotPresetState:
         :param pulumi.Input[str] node_id: Unique id of management node
         :param pulumi.Input[str] preset_name: Honeypot template custom name
         """
+        _HoneypotPresetState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            honeypot_image_name=honeypot_image_name,
+            honeypot_preset_id=honeypot_preset_id,
+            meta=meta,
+            node_id=node_id,
+            preset_name=preset_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             honeypot_image_name: Optional[pulumi.Input[str]] = None,
+             honeypot_preset_id: Optional[pulumi.Input[str]] = None,
+             meta: Optional[pulumi.Input['HoneypotPresetMetaArgs']] = None,
+             node_id: Optional[pulumi.Input[str]] = None,
+             preset_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if honeypot_image_name is None and 'honeypotImageName' in kwargs:
+            honeypot_image_name = kwargs['honeypotImageName']
+        if honeypot_preset_id is None and 'honeypotPresetId' in kwargs:
+            honeypot_preset_id = kwargs['honeypotPresetId']
+        if node_id is None and 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if preset_name is None and 'presetName' in kwargs:
+            preset_name = kwargs['presetName']
+
         if honeypot_image_name is not None:
-            pulumi.set(__self__, "honeypot_image_name", honeypot_image_name)
+            _setter("honeypot_image_name", honeypot_image_name)
         if honeypot_preset_id is not None:
-            pulumi.set(__self__, "honeypot_preset_id", honeypot_preset_id)
+            _setter("honeypot_preset_id", honeypot_preset_id)
         if meta is not None:
-            pulumi.set(__self__, "meta", meta)
+            _setter("meta", meta)
         if node_id is not None:
-            pulumi.set(__self__, "node_id", node_id)
+            _setter("node_id", node_id)
         if preset_name is not None:
-            pulumi.set(__self__, "preset_name", preset_name)
+            _setter("preset_name", preset_name)
 
     @property
     @pulumi.getter(name="honeypotImageName")
@@ -286,6 +344,10 @@ class HoneypotPreset(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            HoneypotPresetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -307,6 +369,11 @@ class HoneypotPreset(pulumi.CustomResource):
             if honeypot_image_name is None and not opts.urn:
                 raise TypeError("Missing required property 'honeypot_image_name'")
             __props__.__dict__["honeypot_image_name"] = honeypot_image_name
+            if meta is not None and not isinstance(meta, HoneypotPresetMetaArgs):
+                meta = meta or {}
+                def _setter(key, value):
+                    meta[key] = value
+                HoneypotPresetMetaArgs._configure(_setter, **meta)
             if meta is None and not opts.urn:
                 raise TypeError("Missing required property 'meta'")
             __props__.__dict__["meta"] = meta

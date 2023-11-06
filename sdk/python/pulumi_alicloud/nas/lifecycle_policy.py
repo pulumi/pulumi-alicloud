@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['LifecyclePolicyArgs', 'LifecyclePolicy']
@@ -27,11 +27,48 @@ class LifecyclePolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: The absolute path of the directory for which the lifecycle management policy is configured. Set a maximum of `10` path. The path value must be prefixed by a forward slash (/) and must be an existing path in the mount target.
         :param pulumi.Input[str] storage_type: The storage type of the data that is dumped to the IA storage medium. Valid values: `InfrequentAccess`.
         """
-        pulumi.set(__self__, "file_system_id", file_system_id)
-        pulumi.set(__self__, "lifecycle_policy_name", lifecycle_policy_name)
-        pulumi.set(__self__, "lifecycle_rule_name", lifecycle_rule_name)
-        pulumi.set(__self__, "paths", paths)
-        pulumi.set(__self__, "storage_type", storage_type)
+        LifecyclePolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            file_system_id=file_system_id,
+            lifecycle_policy_name=lifecycle_policy_name,
+            lifecycle_rule_name=lifecycle_rule_name,
+            paths=paths,
+            storage_type=storage_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             file_system_id: Optional[pulumi.Input[str]] = None,
+             lifecycle_policy_name: Optional[pulumi.Input[str]] = None,
+             lifecycle_rule_name: Optional[pulumi.Input[str]] = None,
+             paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             storage_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if file_system_id is None and 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if file_system_id is None:
+            raise TypeError("Missing 'file_system_id' argument")
+        if lifecycle_policy_name is None and 'lifecyclePolicyName' in kwargs:
+            lifecycle_policy_name = kwargs['lifecyclePolicyName']
+        if lifecycle_policy_name is None:
+            raise TypeError("Missing 'lifecycle_policy_name' argument")
+        if lifecycle_rule_name is None and 'lifecycleRuleName' in kwargs:
+            lifecycle_rule_name = kwargs['lifecycleRuleName']
+        if lifecycle_rule_name is None:
+            raise TypeError("Missing 'lifecycle_rule_name' argument")
+        if paths is None:
+            raise TypeError("Missing 'paths' argument")
+        if storage_type is None and 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+        if storage_type is None:
+            raise TypeError("Missing 'storage_type' argument")
+
+        _setter("file_system_id", file_system_id)
+        _setter("lifecycle_policy_name", lifecycle_policy_name)
+        _setter("lifecycle_rule_name", lifecycle_rule_name)
+        _setter("paths", paths)
+        _setter("storage_type", storage_type)
 
     @property
     @pulumi.getter(name="fileSystemId")
@@ -110,16 +147,43 @@ class _LifecyclePolicyState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: The absolute path of the directory for which the lifecycle management policy is configured. Set a maximum of `10` path. The path value must be prefixed by a forward slash (/) and must be an existing path in the mount target.
         :param pulumi.Input[str] storage_type: The storage type of the data that is dumped to the IA storage medium. Valid values: `InfrequentAccess`.
         """
+        _LifecyclePolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            file_system_id=file_system_id,
+            lifecycle_policy_name=lifecycle_policy_name,
+            lifecycle_rule_name=lifecycle_rule_name,
+            paths=paths,
+            storage_type=storage_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             file_system_id: Optional[pulumi.Input[str]] = None,
+             lifecycle_policy_name: Optional[pulumi.Input[str]] = None,
+             lifecycle_rule_name: Optional[pulumi.Input[str]] = None,
+             paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             storage_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if file_system_id is None and 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if lifecycle_policy_name is None and 'lifecyclePolicyName' in kwargs:
+            lifecycle_policy_name = kwargs['lifecyclePolicyName']
+        if lifecycle_rule_name is None and 'lifecycleRuleName' in kwargs:
+            lifecycle_rule_name = kwargs['lifecycleRuleName']
+        if storage_type is None and 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+
         if file_system_id is not None:
-            pulumi.set(__self__, "file_system_id", file_system_id)
+            _setter("file_system_id", file_system_id)
         if lifecycle_policy_name is not None:
-            pulumi.set(__self__, "lifecycle_policy_name", lifecycle_policy_name)
+            _setter("lifecycle_policy_name", lifecycle_policy_name)
         if lifecycle_rule_name is not None:
-            pulumi.set(__self__, "lifecycle_rule_name", lifecycle_rule_name)
+            _setter("lifecycle_rule_name", lifecycle_rule_name)
         if paths is not None:
-            pulumi.set(__self__, "paths", paths)
+            _setter("paths", paths)
         if storage_type is not None:
-            pulumi.set(__self__, "storage_type", storage_type)
+            _setter("storage_type", storage_type)
 
     @property
     @pulumi.getter(name="fileSystemId")
@@ -285,6 +349,10 @@ class LifecyclePolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            LifecyclePolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

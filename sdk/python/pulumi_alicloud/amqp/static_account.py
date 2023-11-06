@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['StaticAccountArgs', 'StaticAccount']
@@ -23,9 +23,36 @@ class StaticAccountArgs:
         :param pulumi.Input[str] instance_id: Amqp instance ID.
         :param pulumi.Input[str] secret_key: Secret key.
         """
-        pulumi.set(__self__, "access_key", access_key)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "secret_key", secret_key)
+        StaticAccountArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_key=access_key,
+            instance_id=instance_id,
+            secret_key=secret_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_key: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             secret_key: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_key is None and 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if access_key is None:
+            raise TypeError("Missing 'access_key' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if secret_key is None and 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if secret_key is None:
+            raise TypeError("Missing 'secret_key' argument")
+
+        _setter("access_key", access_key)
+        _setter("instance_id", instance_id)
+        _setter("secret_key", secret_key)
 
     @property
     @pulumi.getter(name="accessKey")
@@ -84,20 +111,55 @@ class _StaticAccountState:
         :param pulumi.Input[str] secret_key: Secret key.
         :param pulumi.Input[str] user_name: Static user name.
         """
+        _StaticAccountState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_key=access_key,
+            create_time=create_time,
+            instance_id=instance_id,
+            master_uid=master_uid,
+            password=password,
+            secret_key=secret_key,
+            user_name=user_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_key: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[int]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             master_uid: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             secret_key: Optional[pulumi.Input[str]] = None,
+             user_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_key is None and 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if master_uid is None and 'masterUid' in kwargs:
+            master_uid = kwargs['masterUid']
+        if secret_key is None and 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if user_name is None and 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         if access_key is not None:
-            pulumi.set(__self__, "access_key", access_key)
+            _setter("access_key", access_key)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if master_uid is not None:
-            pulumi.set(__self__, "master_uid", master_uid)
+            _setter("master_uid", master_uid)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
+            _setter("secret_key", secret_key)
         if user_name is not None:
-            pulumi.set(__self__, "user_name", user_name)
+            _setter("user_name", user_name)
 
     @property
     @pulumi.getter(name="accessKey")
@@ -305,6 +367,10 @@ class StaticAccount(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            StaticAccountArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

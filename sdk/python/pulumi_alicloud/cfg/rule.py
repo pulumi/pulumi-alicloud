@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -57,47 +57,132 @@ class RuleArgs:
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
-        pulumi.set(__self__, "risk_level", risk_level)
-        pulumi.set(__self__, "rule_name", rule_name)
-        pulumi.set(__self__, "source_identifier", source_identifier)
-        pulumi.set(__self__, "source_owner", source_owner)
+        RuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            risk_level=risk_level,
+            rule_name=rule_name,
+            source_identifier=source_identifier,
+            source_owner=source_owner,
+            config_rule_trigger_types=config_rule_trigger_types,
+            description=description,
+            exclude_resource_ids_scope=exclude_resource_ids_scope,
+            input_parameters=input_parameters,
+            maximum_execution_frequency=maximum_execution_frequency,
+            region_ids_scope=region_ids_scope,
+            resource_group_ids_scope=resource_group_ids_scope,
+            resource_types_scopes=resource_types_scopes,
+            scope_compliance_resource_types=scope_compliance_resource_types,
+            source_detail_message_type=source_detail_message_type,
+            source_maximum_execution_frequency=source_maximum_execution_frequency,
+            status=status,
+            tag_key_scope=tag_key_scope,
+            tag_value_scope=tag_value_scope,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             risk_level: Optional[pulumi.Input[int]] = None,
+             rule_name: Optional[pulumi.Input[str]] = None,
+             source_identifier: Optional[pulumi.Input[str]] = None,
+             source_owner: Optional[pulumi.Input[str]] = None,
+             config_rule_trigger_types: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             exclude_resource_ids_scope: Optional[pulumi.Input[str]] = None,
+             input_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             maximum_execution_frequency: Optional[pulumi.Input[str]] = None,
+             region_ids_scope: Optional[pulumi.Input[str]] = None,
+             resource_group_ids_scope: Optional[pulumi.Input[str]] = None,
+             resource_types_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             scope_compliance_resource_types: Optional[pulumi.Input[str]] = None,
+             source_detail_message_type: Optional[pulumi.Input[str]] = None,
+             source_maximum_execution_frequency: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tag_key_scope: Optional[pulumi.Input[str]] = None,
+             tag_value_scope: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if risk_level is None and 'riskLevel' in kwargs:
+            risk_level = kwargs['riskLevel']
+        if risk_level is None:
+            raise TypeError("Missing 'risk_level' argument")
+        if rule_name is None and 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+        if rule_name is None:
+            raise TypeError("Missing 'rule_name' argument")
+        if source_identifier is None and 'sourceIdentifier' in kwargs:
+            source_identifier = kwargs['sourceIdentifier']
+        if source_identifier is None:
+            raise TypeError("Missing 'source_identifier' argument")
+        if source_owner is None and 'sourceOwner' in kwargs:
+            source_owner = kwargs['sourceOwner']
+        if source_owner is None:
+            raise TypeError("Missing 'source_owner' argument")
+        if config_rule_trigger_types is None and 'configRuleTriggerTypes' in kwargs:
+            config_rule_trigger_types = kwargs['configRuleTriggerTypes']
+        if exclude_resource_ids_scope is None and 'excludeResourceIdsScope' in kwargs:
+            exclude_resource_ids_scope = kwargs['excludeResourceIdsScope']
+        if input_parameters is None and 'inputParameters' in kwargs:
+            input_parameters = kwargs['inputParameters']
+        if maximum_execution_frequency is None and 'maximumExecutionFrequency' in kwargs:
+            maximum_execution_frequency = kwargs['maximumExecutionFrequency']
+        if region_ids_scope is None and 'regionIdsScope' in kwargs:
+            region_ids_scope = kwargs['regionIdsScope']
+        if resource_group_ids_scope is None and 'resourceGroupIdsScope' in kwargs:
+            resource_group_ids_scope = kwargs['resourceGroupIdsScope']
+        if resource_types_scopes is None and 'resourceTypesScopes' in kwargs:
+            resource_types_scopes = kwargs['resourceTypesScopes']
+        if scope_compliance_resource_types is None and 'scopeComplianceResourceTypes' in kwargs:
+            scope_compliance_resource_types = kwargs['scopeComplianceResourceTypes']
+        if source_detail_message_type is None and 'sourceDetailMessageType' in kwargs:
+            source_detail_message_type = kwargs['sourceDetailMessageType']
+        if source_maximum_execution_frequency is None and 'sourceMaximumExecutionFrequency' in kwargs:
+            source_maximum_execution_frequency = kwargs['sourceMaximumExecutionFrequency']
+        if tag_key_scope is None and 'tagKeyScope' in kwargs:
+            tag_key_scope = kwargs['tagKeyScope']
+        if tag_value_scope is None and 'tagValueScope' in kwargs:
+            tag_value_scope = kwargs['tagValueScope']
+
+        _setter("risk_level", risk_level)
+        _setter("rule_name", rule_name)
+        _setter("source_identifier", source_identifier)
+        _setter("source_owner", source_owner)
         if config_rule_trigger_types is not None:
-            pulumi.set(__self__, "config_rule_trigger_types", config_rule_trigger_types)
+            _setter("config_rule_trigger_types", config_rule_trigger_types)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if exclude_resource_ids_scope is not None:
-            pulumi.set(__self__, "exclude_resource_ids_scope", exclude_resource_ids_scope)
+            _setter("exclude_resource_ids_scope", exclude_resource_ids_scope)
         if input_parameters is not None:
-            pulumi.set(__self__, "input_parameters", input_parameters)
+            _setter("input_parameters", input_parameters)
         if maximum_execution_frequency is not None:
-            pulumi.set(__self__, "maximum_execution_frequency", maximum_execution_frequency)
+            _setter("maximum_execution_frequency", maximum_execution_frequency)
         if region_ids_scope is not None:
-            pulumi.set(__self__, "region_ids_scope", region_ids_scope)
+            _setter("region_ids_scope", region_ids_scope)
         if resource_group_ids_scope is not None:
-            pulumi.set(__self__, "resource_group_ids_scope", resource_group_ids_scope)
+            _setter("resource_group_ids_scope", resource_group_ids_scope)
         if resource_types_scopes is not None:
-            pulumi.set(__self__, "resource_types_scopes", resource_types_scopes)
+            _setter("resource_types_scopes", resource_types_scopes)
         if scope_compliance_resource_types is not None:
             warnings.warn("""Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.""", DeprecationWarning)
             pulumi.log.warn("""scope_compliance_resource_types is deprecated: Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.""")
         if scope_compliance_resource_types is not None:
-            pulumi.set(__self__, "scope_compliance_resource_types", scope_compliance_resource_types)
+            _setter("scope_compliance_resource_types", scope_compliance_resource_types)
         if source_detail_message_type is not None:
             warnings.warn("""Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.""", DeprecationWarning)
             pulumi.log.warn("""source_detail_message_type is deprecated: Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.""")
         if source_detail_message_type is not None:
-            pulumi.set(__self__, "source_detail_message_type", source_detail_message_type)
+            _setter("source_detail_message_type", source_detail_message_type)
         if source_maximum_execution_frequency is not None:
             warnings.warn("""Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.""", DeprecationWarning)
             pulumi.log.warn("""source_maximum_execution_frequency is deprecated: Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.""")
         if source_maximum_execution_frequency is not None:
-            pulumi.set(__self__, "source_maximum_execution_frequency", source_maximum_execution_frequency)
+            _setter("source_maximum_execution_frequency", source_maximum_execution_frequency)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tag_key_scope is not None:
-            pulumi.set(__self__, "tag_key_scope", tag_key_scope)
+            _setter("tag_key_scope", tag_key_scope)
         if tag_value_scope is not None:
-            pulumi.set(__self__, "tag_value_scope", tag_value_scope)
+            _setter("tag_value_scope", tag_value_scope)
 
     @property
     @pulumi.getter(name="riskLevel")
@@ -387,67 +472,174 @@ class _RuleState:
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
+        _RuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            compliance=compliance,
+            compliance_pack_id=compliance_pack_id,
+            config_rule_arn=config_rule_arn,
+            config_rule_id=config_rule_id,
+            config_rule_trigger_types=config_rule_trigger_types,
+            create_time=create_time,
+            description=description,
+            event_source=event_source,
+            exclude_resource_ids_scope=exclude_resource_ids_scope,
+            input_parameters=input_parameters,
+            maximum_execution_frequency=maximum_execution_frequency,
+            modified_timestamp=modified_timestamp,
+            region_ids_scope=region_ids_scope,
+            resource_group_ids_scope=resource_group_ids_scope,
+            resource_types_scopes=resource_types_scopes,
+            risk_level=risk_level,
+            rule_name=rule_name,
+            scope_compliance_resource_types=scope_compliance_resource_types,
+            source_detail_message_type=source_detail_message_type,
+            source_identifier=source_identifier,
+            source_maximum_execution_frequency=source_maximum_execution_frequency,
+            source_owner=source_owner,
+            status=status,
+            tag_key_scope=tag_key_scope,
+            tag_value_scope=tag_value_scope,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[int]] = None,
+             compliance: Optional[pulumi.Input['RuleComplianceArgs']] = None,
+             compliance_pack_id: Optional[pulumi.Input[str]] = None,
+             config_rule_arn: Optional[pulumi.Input[str]] = None,
+             config_rule_id: Optional[pulumi.Input[str]] = None,
+             config_rule_trigger_types: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             event_source: Optional[pulumi.Input[str]] = None,
+             exclude_resource_ids_scope: Optional[pulumi.Input[str]] = None,
+             input_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             maximum_execution_frequency: Optional[pulumi.Input[str]] = None,
+             modified_timestamp: Optional[pulumi.Input[int]] = None,
+             region_ids_scope: Optional[pulumi.Input[str]] = None,
+             resource_group_ids_scope: Optional[pulumi.Input[str]] = None,
+             resource_types_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             risk_level: Optional[pulumi.Input[int]] = None,
+             rule_name: Optional[pulumi.Input[str]] = None,
+             scope_compliance_resource_types: Optional[pulumi.Input[str]] = None,
+             source_detail_message_type: Optional[pulumi.Input[str]] = None,
+             source_identifier: Optional[pulumi.Input[str]] = None,
+             source_maximum_execution_frequency: Optional[pulumi.Input[str]] = None,
+             source_owner: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tag_key_scope: Optional[pulumi.Input[str]] = None,
+             tag_value_scope: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if compliance_pack_id is None and 'compliancePackId' in kwargs:
+            compliance_pack_id = kwargs['compliancePackId']
+        if config_rule_arn is None and 'configRuleArn' in kwargs:
+            config_rule_arn = kwargs['configRuleArn']
+        if config_rule_id is None and 'configRuleId' in kwargs:
+            config_rule_id = kwargs['configRuleId']
+        if config_rule_trigger_types is None and 'configRuleTriggerTypes' in kwargs:
+            config_rule_trigger_types = kwargs['configRuleTriggerTypes']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if event_source is None and 'eventSource' in kwargs:
+            event_source = kwargs['eventSource']
+        if exclude_resource_ids_scope is None and 'excludeResourceIdsScope' in kwargs:
+            exclude_resource_ids_scope = kwargs['excludeResourceIdsScope']
+        if input_parameters is None and 'inputParameters' in kwargs:
+            input_parameters = kwargs['inputParameters']
+        if maximum_execution_frequency is None and 'maximumExecutionFrequency' in kwargs:
+            maximum_execution_frequency = kwargs['maximumExecutionFrequency']
+        if modified_timestamp is None and 'modifiedTimestamp' in kwargs:
+            modified_timestamp = kwargs['modifiedTimestamp']
+        if region_ids_scope is None and 'regionIdsScope' in kwargs:
+            region_ids_scope = kwargs['regionIdsScope']
+        if resource_group_ids_scope is None and 'resourceGroupIdsScope' in kwargs:
+            resource_group_ids_scope = kwargs['resourceGroupIdsScope']
+        if resource_types_scopes is None and 'resourceTypesScopes' in kwargs:
+            resource_types_scopes = kwargs['resourceTypesScopes']
+        if risk_level is None and 'riskLevel' in kwargs:
+            risk_level = kwargs['riskLevel']
+        if rule_name is None and 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+        if scope_compliance_resource_types is None and 'scopeComplianceResourceTypes' in kwargs:
+            scope_compliance_resource_types = kwargs['scopeComplianceResourceTypes']
+        if source_detail_message_type is None and 'sourceDetailMessageType' in kwargs:
+            source_detail_message_type = kwargs['sourceDetailMessageType']
+        if source_identifier is None and 'sourceIdentifier' in kwargs:
+            source_identifier = kwargs['sourceIdentifier']
+        if source_maximum_execution_frequency is None and 'sourceMaximumExecutionFrequency' in kwargs:
+            source_maximum_execution_frequency = kwargs['sourceMaximumExecutionFrequency']
+        if source_owner is None and 'sourceOwner' in kwargs:
+            source_owner = kwargs['sourceOwner']
+        if tag_key_scope is None and 'tagKeyScope' in kwargs:
+            tag_key_scope = kwargs['tagKeyScope']
+        if tag_value_scope is None and 'tagValueScope' in kwargs:
+            tag_value_scope = kwargs['tagValueScope']
+
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if compliance is not None:
-            pulumi.set(__self__, "compliance", compliance)
+            _setter("compliance", compliance)
         if compliance_pack_id is not None:
-            pulumi.set(__self__, "compliance_pack_id", compliance_pack_id)
+            _setter("compliance_pack_id", compliance_pack_id)
         if config_rule_arn is not None:
-            pulumi.set(__self__, "config_rule_arn", config_rule_arn)
+            _setter("config_rule_arn", config_rule_arn)
         if config_rule_id is not None:
-            pulumi.set(__self__, "config_rule_id", config_rule_id)
+            _setter("config_rule_id", config_rule_id)
         if config_rule_trigger_types is not None:
-            pulumi.set(__self__, "config_rule_trigger_types", config_rule_trigger_types)
+            _setter("config_rule_trigger_types", config_rule_trigger_types)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if event_source is not None:
-            pulumi.set(__self__, "event_source", event_source)
+            _setter("event_source", event_source)
         if exclude_resource_ids_scope is not None:
-            pulumi.set(__self__, "exclude_resource_ids_scope", exclude_resource_ids_scope)
+            _setter("exclude_resource_ids_scope", exclude_resource_ids_scope)
         if input_parameters is not None:
-            pulumi.set(__self__, "input_parameters", input_parameters)
+            _setter("input_parameters", input_parameters)
         if maximum_execution_frequency is not None:
-            pulumi.set(__self__, "maximum_execution_frequency", maximum_execution_frequency)
+            _setter("maximum_execution_frequency", maximum_execution_frequency)
         if modified_timestamp is not None:
-            pulumi.set(__self__, "modified_timestamp", modified_timestamp)
+            _setter("modified_timestamp", modified_timestamp)
         if region_ids_scope is not None:
-            pulumi.set(__self__, "region_ids_scope", region_ids_scope)
+            _setter("region_ids_scope", region_ids_scope)
         if resource_group_ids_scope is not None:
-            pulumi.set(__self__, "resource_group_ids_scope", resource_group_ids_scope)
+            _setter("resource_group_ids_scope", resource_group_ids_scope)
         if resource_types_scopes is not None:
-            pulumi.set(__self__, "resource_types_scopes", resource_types_scopes)
+            _setter("resource_types_scopes", resource_types_scopes)
         if risk_level is not None:
-            pulumi.set(__self__, "risk_level", risk_level)
+            _setter("risk_level", risk_level)
         if rule_name is not None:
-            pulumi.set(__self__, "rule_name", rule_name)
+            _setter("rule_name", rule_name)
         if scope_compliance_resource_types is not None:
             warnings.warn("""Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.""", DeprecationWarning)
             pulumi.log.warn("""scope_compliance_resource_types is deprecated: Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.""")
         if scope_compliance_resource_types is not None:
-            pulumi.set(__self__, "scope_compliance_resource_types", scope_compliance_resource_types)
+            _setter("scope_compliance_resource_types", scope_compliance_resource_types)
         if source_detail_message_type is not None:
             warnings.warn("""Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.""", DeprecationWarning)
             pulumi.log.warn("""source_detail_message_type is deprecated: Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.""")
         if source_detail_message_type is not None:
-            pulumi.set(__self__, "source_detail_message_type", source_detail_message_type)
+            _setter("source_detail_message_type", source_detail_message_type)
         if source_identifier is not None:
-            pulumi.set(__self__, "source_identifier", source_identifier)
+            _setter("source_identifier", source_identifier)
         if source_maximum_execution_frequency is not None:
             warnings.warn("""Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.""", DeprecationWarning)
             pulumi.log.warn("""source_maximum_execution_frequency is deprecated: Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.""")
         if source_maximum_execution_frequency is not None:
-            pulumi.set(__self__, "source_maximum_execution_frequency", source_maximum_execution_frequency)
+            _setter("source_maximum_execution_frequency", source_maximum_execution_frequency)
         if source_owner is not None:
-            pulumi.set(__self__, "source_owner", source_owner)
+            _setter("source_owner", source_owner)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tag_key_scope is not None:
-            pulumi.set(__self__, "tag_key_scope", tag_key_scope)
+            _setter("tag_key_scope", tag_key_scope)
         if tag_value_scope is not None:
-            pulumi.set(__self__, "tag_value_scope", tag_value_scope)
+            _setter("tag_value_scope", tag_value_scope)
 
     @property
     @pulumi.getter(name="accountId")
@@ -922,6 +1114,10 @@ class Rule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

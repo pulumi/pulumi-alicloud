@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -59,43 +59,136 @@ class AutoProvisioningGroupArgs:
         :param pulumi.Input[str] valid_from: The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `valid_until` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
         :param pulumi.Input[str] valid_until: The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `valid_from` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
         """
-        pulumi.set(__self__, "launch_template_configs", launch_template_configs)
-        pulumi.set(__self__, "launch_template_id", launch_template_id)
-        pulumi.set(__self__, "total_target_capacity", total_target_capacity)
+        AutoProvisioningGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            launch_template_configs=launch_template_configs,
+            launch_template_id=launch_template_id,
+            total_target_capacity=total_target_capacity,
+            auto_provisioning_group_name=auto_provisioning_group_name,
+            auto_provisioning_group_type=auto_provisioning_group_type,
+            default_target_capacity_type=default_target_capacity_type,
+            description=description,
+            excess_capacity_termination_policy=excess_capacity_termination_policy,
+            launch_template_version=launch_template_version,
+            max_spot_price=max_spot_price,
+            pay_as_you_go_allocation_strategy=pay_as_you_go_allocation_strategy,
+            pay_as_you_go_target_capacity=pay_as_you_go_target_capacity,
+            spot_allocation_strategy=spot_allocation_strategy,
+            spot_instance_interruption_behavior=spot_instance_interruption_behavior,
+            spot_instance_pools_to_use_count=spot_instance_pools_to_use_count,
+            spot_target_capacity=spot_target_capacity,
+            terminate_instances=terminate_instances,
+            terminate_instances_with_expiration=terminate_instances_with_expiration,
+            valid_from=valid_from,
+            valid_until=valid_until,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             launch_template_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AutoProvisioningGroupLaunchTemplateConfigArgs']]]] = None,
+             launch_template_id: Optional[pulumi.Input[str]] = None,
+             total_target_capacity: Optional[pulumi.Input[str]] = None,
+             auto_provisioning_group_name: Optional[pulumi.Input[str]] = None,
+             auto_provisioning_group_type: Optional[pulumi.Input[str]] = None,
+             default_target_capacity_type: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             excess_capacity_termination_policy: Optional[pulumi.Input[str]] = None,
+             launch_template_version: Optional[pulumi.Input[str]] = None,
+             max_spot_price: Optional[pulumi.Input[float]] = None,
+             pay_as_you_go_allocation_strategy: Optional[pulumi.Input[str]] = None,
+             pay_as_you_go_target_capacity: Optional[pulumi.Input[str]] = None,
+             spot_allocation_strategy: Optional[pulumi.Input[str]] = None,
+             spot_instance_interruption_behavior: Optional[pulumi.Input[str]] = None,
+             spot_instance_pools_to_use_count: Optional[pulumi.Input[int]] = None,
+             spot_target_capacity: Optional[pulumi.Input[str]] = None,
+             terminate_instances: Optional[pulumi.Input[bool]] = None,
+             terminate_instances_with_expiration: Optional[pulumi.Input[bool]] = None,
+             valid_from: Optional[pulumi.Input[str]] = None,
+             valid_until: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if launch_template_configs is None and 'launchTemplateConfigs' in kwargs:
+            launch_template_configs = kwargs['launchTemplateConfigs']
+        if launch_template_configs is None:
+            raise TypeError("Missing 'launch_template_configs' argument")
+        if launch_template_id is None and 'launchTemplateId' in kwargs:
+            launch_template_id = kwargs['launchTemplateId']
+        if launch_template_id is None:
+            raise TypeError("Missing 'launch_template_id' argument")
+        if total_target_capacity is None and 'totalTargetCapacity' in kwargs:
+            total_target_capacity = kwargs['totalTargetCapacity']
+        if total_target_capacity is None:
+            raise TypeError("Missing 'total_target_capacity' argument")
+        if auto_provisioning_group_name is None and 'autoProvisioningGroupName' in kwargs:
+            auto_provisioning_group_name = kwargs['autoProvisioningGroupName']
+        if auto_provisioning_group_type is None and 'autoProvisioningGroupType' in kwargs:
+            auto_provisioning_group_type = kwargs['autoProvisioningGroupType']
+        if default_target_capacity_type is None and 'defaultTargetCapacityType' in kwargs:
+            default_target_capacity_type = kwargs['defaultTargetCapacityType']
+        if excess_capacity_termination_policy is None and 'excessCapacityTerminationPolicy' in kwargs:
+            excess_capacity_termination_policy = kwargs['excessCapacityTerminationPolicy']
+        if launch_template_version is None and 'launchTemplateVersion' in kwargs:
+            launch_template_version = kwargs['launchTemplateVersion']
+        if max_spot_price is None and 'maxSpotPrice' in kwargs:
+            max_spot_price = kwargs['maxSpotPrice']
+        if pay_as_you_go_allocation_strategy is None and 'payAsYouGoAllocationStrategy' in kwargs:
+            pay_as_you_go_allocation_strategy = kwargs['payAsYouGoAllocationStrategy']
+        if pay_as_you_go_target_capacity is None and 'payAsYouGoTargetCapacity' in kwargs:
+            pay_as_you_go_target_capacity = kwargs['payAsYouGoTargetCapacity']
+        if spot_allocation_strategy is None and 'spotAllocationStrategy' in kwargs:
+            spot_allocation_strategy = kwargs['spotAllocationStrategy']
+        if spot_instance_interruption_behavior is None and 'spotInstanceInterruptionBehavior' in kwargs:
+            spot_instance_interruption_behavior = kwargs['spotInstanceInterruptionBehavior']
+        if spot_instance_pools_to_use_count is None and 'spotInstancePoolsToUseCount' in kwargs:
+            spot_instance_pools_to_use_count = kwargs['spotInstancePoolsToUseCount']
+        if spot_target_capacity is None and 'spotTargetCapacity' in kwargs:
+            spot_target_capacity = kwargs['spotTargetCapacity']
+        if terminate_instances is None and 'terminateInstances' in kwargs:
+            terminate_instances = kwargs['terminateInstances']
+        if terminate_instances_with_expiration is None and 'terminateInstancesWithExpiration' in kwargs:
+            terminate_instances_with_expiration = kwargs['terminateInstancesWithExpiration']
+        if valid_from is None and 'validFrom' in kwargs:
+            valid_from = kwargs['validFrom']
+        if valid_until is None and 'validUntil' in kwargs:
+            valid_until = kwargs['validUntil']
+
+        _setter("launch_template_configs", launch_template_configs)
+        _setter("launch_template_id", launch_template_id)
+        _setter("total_target_capacity", total_target_capacity)
         if auto_provisioning_group_name is not None:
-            pulumi.set(__self__, "auto_provisioning_group_name", auto_provisioning_group_name)
+            _setter("auto_provisioning_group_name", auto_provisioning_group_name)
         if auto_provisioning_group_type is not None:
-            pulumi.set(__self__, "auto_provisioning_group_type", auto_provisioning_group_type)
+            _setter("auto_provisioning_group_type", auto_provisioning_group_type)
         if default_target_capacity_type is not None:
-            pulumi.set(__self__, "default_target_capacity_type", default_target_capacity_type)
+            _setter("default_target_capacity_type", default_target_capacity_type)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if excess_capacity_termination_policy is not None:
-            pulumi.set(__self__, "excess_capacity_termination_policy", excess_capacity_termination_policy)
+            _setter("excess_capacity_termination_policy", excess_capacity_termination_policy)
         if launch_template_version is not None:
-            pulumi.set(__self__, "launch_template_version", launch_template_version)
+            _setter("launch_template_version", launch_template_version)
         if max_spot_price is not None:
-            pulumi.set(__self__, "max_spot_price", max_spot_price)
+            _setter("max_spot_price", max_spot_price)
         if pay_as_you_go_allocation_strategy is not None:
-            pulumi.set(__self__, "pay_as_you_go_allocation_strategy", pay_as_you_go_allocation_strategy)
+            _setter("pay_as_you_go_allocation_strategy", pay_as_you_go_allocation_strategy)
         if pay_as_you_go_target_capacity is not None:
-            pulumi.set(__self__, "pay_as_you_go_target_capacity", pay_as_you_go_target_capacity)
+            _setter("pay_as_you_go_target_capacity", pay_as_you_go_target_capacity)
         if spot_allocation_strategy is not None:
-            pulumi.set(__self__, "spot_allocation_strategy", spot_allocation_strategy)
+            _setter("spot_allocation_strategy", spot_allocation_strategy)
         if spot_instance_interruption_behavior is not None:
-            pulumi.set(__self__, "spot_instance_interruption_behavior", spot_instance_interruption_behavior)
+            _setter("spot_instance_interruption_behavior", spot_instance_interruption_behavior)
         if spot_instance_pools_to_use_count is not None:
-            pulumi.set(__self__, "spot_instance_pools_to_use_count", spot_instance_pools_to_use_count)
+            _setter("spot_instance_pools_to_use_count", spot_instance_pools_to_use_count)
         if spot_target_capacity is not None:
-            pulumi.set(__self__, "spot_target_capacity", spot_target_capacity)
+            _setter("spot_target_capacity", spot_target_capacity)
         if terminate_instances is not None:
-            pulumi.set(__self__, "terminate_instances", terminate_instances)
+            _setter("terminate_instances", terminate_instances)
         if terminate_instances_with_expiration is not None:
-            pulumi.set(__self__, "terminate_instances_with_expiration", terminate_instances_with_expiration)
+            _setter("terminate_instances_with_expiration", terminate_instances_with_expiration)
         if valid_from is not None:
-            pulumi.set(__self__, "valid_from", valid_from)
+            _setter("valid_from", valid_from)
         if valid_until is not None:
-            pulumi.set(__self__, "valid_until", valid_until)
+            _setter("valid_until", valid_until)
 
     @property
     @pulumi.getter(name="launchTemplateConfigs")
@@ -384,46 +477,133 @@ class _AutoProvisioningGroupState:
         :param pulumi.Input[str] valid_from: The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `valid_until` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
         :param pulumi.Input[str] valid_until: The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `valid_from` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
         """
+        _AutoProvisioningGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_provisioning_group_name=auto_provisioning_group_name,
+            auto_provisioning_group_type=auto_provisioning_group_type,
+            default_target_capacity_type=default_target_capacity_type,
+            description=description,
+            excess_capacity_termination_policy=excess_capacity_termination_policy,
+            launch_template_configs=launch_template_configs,
+            launch_template_id=launch_template_id,
+            launch_template_version=launch_template_version,
+            max_spot_price=max_spot_price,
+            pay_as_you_go_allocation_strategy=pay_as_you_go_allocation_strategy,
+            pay_as_you_go_target_capacity=pay_as_you_go_target_capacity,
+            spot_allocation_strategy=spot_allocation_strategy,
+            spot_instance_interruption_behavior=spot_instance_interruption_behavior,
+            spot_instance_pools_to_use_count=spot_instance_pools_to_use_count,
+            spot_target_capacity=spot_target_capacity,
+            terminate_instances=terminate_instances,
+            terminate_instances_with_expiration=terminate_instances_with_expiration,
+            total_target_capacity=total_target_capacity,
+            valid_from=valid_from,
+            valid_until=valid_until,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_provisioning_group_name: Optional[pulumi.Input[str]] = None,
+             auto_provisioning_group_type: Optional[pulumi.Input[str]] = None,
+             default_target_capacity_type: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             excess_capacity_termination_policy: Optional[pulumi.Input[str]] = None,
+             launch_template_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AutoProvisioningGroupLaunchTemplateConfigArgs']]]] = None,
+             launch_template_id: Optional[pulumi.Input[str]] = None,
+             launch_template_version: Optional[pulumi.Input[str]] = None,
+             max_spot_price: Optional[pulumi.Input[float]] = None,
+             pay_as_you_go_allocation_strategy: Optional[pulumi.Input[str]] = None,
+             pay_as_you_go_target_capacity: Optional[pulumi.Input[str]] = None,
+             spot_allocation_strategy: Optional[pulumi.Input[str]] = None,
+             spot_instance_interruption_behavior: Optional[pulumi.Input[str]] = None,
+             spot_instance_pools_to_use_count: Optional[pulumi.Input[int]] = None,
+             spot_target_capacity: Optional[pulumi.Input[str]] = None,
+             terminate_instances: Optional[pulumi.Input[bool]] = None,
+             terminate_instances_with_expiration: Optional[pulumi.Input[bool]] = None,
+             total_target_capacity: Optional[pulumi.Input[str]] = None,
+             valid_from: Optional[pulumi.Input[str]] = None,
+             valid_until: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_provisioning_group_name is None and 'autoProvisioningGroupName' in kwargs:
+            auto_provisioning_group_name = kwargs['autoProvisioningGroupName']
+        if auto_provisioning_group_type is None and 'autoProvisioningGroupType' in kwargs:
+            auto_provisioning_group_type = kwargs['autoProvisioningGroupType']
+        if default_target_capacity_type is None and 'defaultTargetCapacityType' in kwargs:
+            default_target_capacity_type = kwargs['defaultTargetCapacityType']
+        if excess_capacity_termination_policy is None and 'excessCapacityTerminationPolicy' in kwargs:
+            excess_capacity_termination_policy = kwargs['excessCapacityTerminationPolicy']
+        if launch_template_configs is None and 'launchTemplateConfigs' in kwargs:
+            launch_template_configs = kwargs['launchTemplateConfigs']
+        if launch_template_id is None and 'launchTemplateId' in kwargs:
+            launch_template_id = kwargs['launchTemplateId']
+        if launch_template_version is None and 'launchTemplateVersion' in kwargs:
+            launch_template_version = kwargs['launchTemplateVersion']
+        if max_spot_price is None and 'maxSpotPrice' in kwargs:
+            max_spot_price = kwargs['maxSpotPrice']
+        if pay_as_you_go_allocation_strategy is None and 'payAsYouGoAllocationStrategy' in kwargs:
+            pay_as_you_go_allocation_strategy = kwargs['payAsYouGoAllocationStrategy']
+        if pay_as_you_go_target_capacity is None and 'payAsYouGoTargetCapacity' in kwargs:
+            pay_as_you_go_target_capacity = kwargs['payAsYouGoTargetCapacity']
+        if spot_allocation_strategy is None and 'spotAllocationStrategy' in kwargs:
+            spot_allocation_strategy = kwargs['spotAllocationStrategy']
+        if spot_instance_interruption_behavior is None and 'spotInstanceInterruptionBehavior' in kwargs:
+            spot_instance_interruption_behavior = kwargs['spotInstanceInterruptionBehavior']
+        if spot_instance_pools_to_use_count is None and 'spotInstancePoolsToUseCount' in kwargs:
+            spot_instance_pools_to_use_count = kwargs['spotInstancePoolsToUseCount']
+        if spot_target_capacity is None and 'spotTargetCapacity' in kwargs:
+            spot_target_capacity = kwargs['spotTargetCapacity']
+        if terminate_instances is None and 'terminateInstances' in kwargs:
+            terminate_instances = kwargs['terminateInstances']
+        if terminate_instances_with_expiration is None and 'terminateInstancesWithExpiration' in kwargs:
+            terminate_instances_with_expiration = kwargs['terminateInstancesWithExpiration']
+        if total_target_capacity is None and 'totalTargetCapacity' in kwargs:
+            total_target_capacity = kwargs['totalTargetCapacity']
+        if valid_from is None and 'validFrom' in kwargs:
+            valid_from = kwargs['validFrom']
+        if valid_until is None and 'validUntil' in kwargs:
+            valid_until = kwargs['validUntil']
+
         if auto_provisioning_group_name is not None:
-            pulumi.set(__self__, "auto_provisioning_group_name", auto_provisioning_group_name)
+            _setter("auto_provisioning_group_name", auto_provisioning_group_name)
         if auto_provisioning_group_type is not None:
-            pulumi.set(__self__, "auto_provisioning_group_type", auto_provisioning_group_type)
+            _setter("auto_provisioning_group_type", auto_provisioning_group_type)
         if default_target_capacity_type is not None:
-            pulumi.set(__self__, "default_target_capacity_type", default_target_capacity_type)
+            _setter("default_target_capacity_type", default_target_capacity_type)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if excess_capacity_termination_policy is not None:
-            pulumi.set(__self__, "excess_capacity_termination_policy", excess_capacity_termination_policy)
+            _setter("excess_capacity_termination_policy", excess_capacity_termination_policy)
         if launch_template_configs is not None:
-            pulumi.set(__self__, "launch_template_configs", launch_template_configs)
+            _setter("launch_template_configs", launch_template_configs)
         if launch_template_id is not None:
-            pulumi.set(__self__, "launch_template_id", launch_template_id)
+            _setter("launch_template_id", launch_template_id)
         if launch_template_version is not None:
-            pulumi.set(__self__, "launch_template_version", launch_template_version)
+            _setter("launch_template_version", launch_template_version)
         if max_spot_price is not None:
-            pulumi.set(__self__, "max_spot_price", max_spot_price)
+            _setter("max_spot_price", max_spot_price)
         if pay_as_you_go_allocation_strategy is not None:
-            pulumi.set(__self__, "pay_as_you_go_allocation_strategy", pay_as_you_go_allocation_strategy)
+            _setter("pay_as_you_go_allocation_strategy", pay_as_you_go_allocation_strategy)
         if pay_as_you_go_target_capacity is not None:
-            pulumi.set(__self__, "pay_as_you_go_target_capacity", pay_as_you_go_target_capacity)
+            _setter("pay_as_you_go_target_capacity", pay_as_you_go_target_capacity)
         if spot_allocation_strategy is not None:
-            pulumi.set(__self__, "spot_allocation_strategy", spot_allocation_strategy)
+            _setter("spot_allocation_strategy", spot_allocation_strategy)
         if spot_instance_interruption_behavior is not None:
-            pulumi.set(__self__, "spot_instance_interruption_behavior", spot_instance_interruption_behavior)
+            _setter("spot_instance_interruption_behavior", spot_instance_interruption_behavior)
         if spot_instance_pools_to_use_count is not None:
-            pulumi.set(__self__, "spot_instance_pools_to_use_count", spot_instance_pools_to_use_count)
+            _setter("spot_instance_pools_to_use_count", spot_instance_pools_to_use_count)
         if spot_target_capacity is not None:
-            pulumi.set(__self__, "spot_target_capacity", spot_target_capacity)
+            _setter("spot_target_capacity", spot_target_capacity)
         if terminate_instances is not None:
-            pulumi.set(__self__, "terminate_instances", terminate_instances)
+            _setter("terminate_instances", terminate_instances)
         if terminate_instances_with_expiration is not None:
-            pulumi.set(__self__, "terminate_instances_with_expiration", terminate_instances_with_expiration)
+            _setter("terminate_instances_with_expiration", terminate_instances_with_expiration)
         if total_target_capacity is not None:
-            pulumi.set(__self__, "total_target_capacity", total_target_capacity)
+            _setter("total_target_capacity", total_target_capacity)
         if valid_from is not None:
-            pulumi.set(__self__, "valid_from", valid_from)
+            _setter("valid_from", valid_from)
         if valid_until is not None:
-            pulumi.set(__self__, "valid_until", valid_until)
+            _setter("valid_until", valid_until)
 
     @property
     @pulumi.getter(name="autoProvisioningGroupName")
@@ -839,6 +1019,10 @@ class AutoProvisioningGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AutoProvisioningGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

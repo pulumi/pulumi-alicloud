@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AuditArgs', 'Audit']
@@ -27,14 +27,45 @@ class AuditArgs:
         :param pulumi.Input[str] resource_directory_type: Resource Directory type. Optional values are all or custom. If the value is custom, argument multi_account should be provided.
         :param pulumi.Input[Mapping[str, Any]] variable_map: Log audit detailed configuration.
         """
-        pulumi.set(__self__, "aliuid", aliuid)
-        pulumi.set(__self__, "display_name", display_name)
+        AuditArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            aliuid=aliuid,
+            display_name=display_name,
+            multi_accounts=multi_accounts,
+            resource_directory_type=resource_directory_type,
+            variable_map=variable_map,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             aliuid: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             multi_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             resource_directory_type: Optional[pulumi.Input[str]] = None,
+             variable_map: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if aliuid is None:
+            raise TypeError("Missing 'aliuid' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if multi_accounts is None and 'multiAccounts' in kwargs:
+            multi_accounts = kwargs['multiAccounts']
+        if resource_directory_type is None and 'resourceDirectoryType' in kwargs:
+            resource_directory_type = kwargs['resourceDirectoryType']
+        if variable_map is None and 'variableMap' in kwargs:
+            variable_map = kwargs['variableMap']
+
+        _setter("aliuid", aliuid)
+        _setter("display_name", display_name)
         if multi_accounts is not None:
-            pulumi.set(__self__, "multi_accounts", multi_accounts)
+            _setter("multi_accounts", multi_accounts)
         if resource_directory_type is not None:
-            pulumi.set(__self__, "resource_directory_type", resource_directory_type)
+            _setter("resource_directory_type", resource_directory_type)
         if variable_map is not None:
-            pulumi.set(__self__, "variable_map", variable_map)
+            _setter("variable_map", variable_map)
 
     @property
     @pulumi.getter
@@ -113,16 +144,43 @@ class _AuditState:
         :param pulumi.Input[str] resource_directory_type: Resource Directory type. Optional values are all or custom. If the value is custom, argument multi_account should be provided.
         :param pulumi.Input[Mapping[str, Any]] variable_map: Log audit detailed configuration.
         """
+        _AuditState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            aliuid=aliuid,
+            display_name=display_name,
+            multi_accounts=multi_accounts,
+            resource_directory_type=resource_directory_type,
+            variable_map=variable_map,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             aliuid: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             multi_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             resource_directory_type: Optional[pulumi.Input[str]] = None,
+             variable_map: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if multi_accounts is None and 'multiAccounts' in kwargs:
+            multi_accounts = kwargs['multiAccounts']
+        if resource_directory_type is None and 'resourceDirectoryType' in kwargs:
+            resource_directory_type = kwargs['resourceDirectoryType']
+        if variable_map is None and 'variableMap' in kwargs:
+            variable_map = kwargs['variableMap']
+
         if aliuid is not None:
-            pulumi.set(__self__, "aliuid", aliuid)
+            _setter("aliuid", aliuid)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if multi_accounts is not None:
-            pulumi.set(__self__, "multi_accounts", multi_accounts)
+            _setter("multi_accounts", multi_accounts)
         if resource_directory_type is not None:
-            pulumi.set(__self__, "resource_directory_type", resource_directory_type)
+            _setter("resource_directory_type", resource_directory_type)
         if variable_map is not None:
-            pulumi.set(__self__, "variable_map", variable_map)
+            _setter("variable_map", variable_map)
 
     @property
     @pulumi.getter
@@ -564,6 +622,10 @@ class Audit(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AuditArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

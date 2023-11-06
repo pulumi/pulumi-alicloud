@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['NetworkAttachmentArgs', 'NetworkAttachment']
@@ -21,8 +21,29 @@ class NetworkAttachmentArgs:
         :param pulumi.Input[str] ccn_id: The ID of the CCN instance.
         :param pulumi.Input[str] sag_id: The ID of the Smart Access Gateway instance.
         """
-        pulumi.set(__self__, "ccn_id", ccn_id)
-        pulumi.set(__self__, "sag_id", sag_id)
+        NetworkAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ccn_id=ccn_id,
+            sag_id=sag_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ccn_id: Optional[pulumi.Input[str]] = None,
+             sag_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ccn_id is None and 'ccnId' in kwargs:
+            ccn_id = kwargs['ccnId']
+        if ccn_id is None:
+            raise TypeError("Missing 'ccn_id' argument")
+        if sag_id is None and 'sagId' in kwargs:
+            sag_id = kwargs['sagId']
+        if sag_id is None:
+            raise TypeError("Missing 'sag_id' argument")
+
+        _setter("ccn_id", ccn_id)
+        _setter("sag_id", sag_id)
 
     @property
     @pulumi.getter(name="ccnId")
@@ -59,10 +80,27 @@ class _NetworkAttachmentState:
         :param pulumi.Input[str] ccn_id: The ID of the CCN instance.
         :param pulumi.Input[str] sag_id: The ID of the Smart Access Gateway instance.
         """
+        _NetworkAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ccn_id=ccn_id,
+            sag_id=sag_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ccn_id: Optional[pulumi.Input[str]] = None,
+             sag_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ccn_id is None and 'ccnId' in kwargs:
+            ccn_id = kwargs['ccnId']
+        if sag_id is None and 'sagId' in kwargs:
+            sag_id = kwargs['sagId']
+
         if ccn_id is not None:
-            pulumi.set(__self__, "ccn_id", ccn_id)
+            _setter("ccn_id", ccn_id)
         if sag_id is not None:
-            pulumi.set(__self__, "sag_id", sag_id)
+            _setter("sag_id", sag_id)
 
     @property
     @pulumi.getter(name="ccnId")
@@ -200,6 +238,10 @@ class NetworkAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NetworkAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

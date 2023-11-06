@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['PolicyAttachmentArgs', 'PolicyAttachment']
@@ -27,11 +27,50 @@ class PolicyAttachmentArgs:
         :param pulumi.Input[str] principal_type: The type of the object to which you want to attach the policy. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.
         """
-        pulumi.set(__self__, "policy_name", policy_name)
-        pulumi.set(__self__, "policy_type", policy_type)
-        pulumi.set(__self__, "principal_name", principal_name)
-        pulumi.set(__self__, "principal_type", principal_type)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        PolicyAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            policy_name=policy_name,
+            policy_type=policy_type,
+            principal_name=principal_name,
+            principal_type=principal_type,
+            resource_group_id=resource_group_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             policy_name: Optional[pulumi.Input[str]] = None,
+             policy_type: Optional[pulumi.Input[str]] = None,
+             principal_name: Optional[pulumi.Input[str]] = None,
+             principal_type: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_name is None and 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if policy_name is None:
+            raise TypeError("Missing 'policy_name' argument")
+        if policy_type is None and 'policyType' in kwargs:
+            policy_type = kwargs['policyType']
+        if policy_type is None:
+            raise TypeError("Missing 'policy_type' argument")
+        if principal_name is None and 'principalName' in kwargs:
+            principal_name = kwargs['principalName']
+        if principal_name is None:
+            raise TypeError("Missing 'principal_name' argument")
+        if principal_type is None and 'principalType' in kwargs:
+            principal_type = kwargs['principalType']
+        if principal_type is None:
+            raise TypeError("Missing 'principal_type' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+
+        _setter("policy_name", policy_name)
+        _setter("policy_type", policy_type)
+        _setter("principal_name", principal_name)
+        _setter("principal_type", principal_type)
+        _setter("resource_group_id", resource_group_id)
 
     @property
     @pulumi.getter(name="policyName")
@@ -110,16 +149,45 @@ class _PolicyAttachmentState:
         :param pulumi.Input[str] principal_type: The type of the object to which you want to attach the policy. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.
         """
+        _PolicyAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            policy_name=policy_name,
+            policy_type=policy_type,
+            principal_name=principal_name,
+            principal_type=principal_type,
+            resource_group_id=resource_group_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             policy_name: Optional[pulumi.Input[str]] = None,
+             policy_type: Optional[pulumi.Input[str]] = None,
+             principal_name: Optional[pulumi.Input[str]] = None,
+             principal_type: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_name is None and 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if policy_type is None and 'policyType' in kwargs:
+            policy_type = kwargs['policyType']
+        if principal_name is None and 'principalName' in kwargs:
+            principal_name = kwargs['principalName']
+        if principal_type is None and 'principalType' in kwargs:
+            principal_type = kwargs['principalType']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         if policy_name is not None:
-            pulumi.set(__self__, "policy_name", policy_name)
+            _setter("policy_name", policy_name)
         if policy_type is not None:
-            pulumi.set(__self__, "policy_type", policy_type)
+            _setter("policy_type", policy_type)
         if principal_name is not None:
-            pulumi.set(__self__, "principal_name", principal_name)
+            _setter("principal_name", principal_name)
         if principal_type is not None:
-            pulumi.set(__self__, "principal_type", principal_type)
+            _setter("principal_type", principal_type)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
 
     @property
     @pulumi.getter(name="policyName")
@@ -245,6 +313,10 @@ class PolicyAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PolicyAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

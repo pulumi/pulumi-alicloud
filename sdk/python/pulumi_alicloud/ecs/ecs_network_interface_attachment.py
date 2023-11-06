@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EcsNetworkInterfaceAttachmentArgs', 'EcsNetworkInterfaceAttachment']
@@ -25,12 +25,41 @@ class EcsNetworkInterfaceAttachmentArgs:
         :param pulumi.Input[str] trunk_network_instance_id: The trunk network instance id.
         :param pulumi.Input[bool] wait_for_network_configuration_ready: The wait for network configuration ready.
         """
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "network_interface_id", network_interface_id)
+        EcsNetworkInterfaceAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_id=instance_id,
+            network_interface_id=network_interface_id,
+            trunk_network_instance_id=trunk_network_instance_id,
+            wait_for_network_configuration_ready=wait_for_network_configuration_ready,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_id: Optional[pulumi.Input[str]] = None,
+             network_interface_id: Optional[pulumi.Input[str]] = None,
+             trunk_network_instance_id: Optional[pulumi.Input[str]] = None,
+             wait_for_network_configuration_ready: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if network_interface_id is None and 'networkInterfaceId' in kwargs:
+            network_interface_id = kwargs['networkInterfaceId']
+        if network_interface_id is None:
+            raise TypeError("Missing 'network_interface_id' argument")
+        if trunk_network_instance_id is None and 'trunkNetworkInstanceId' in kwargs:
+            trunk_network_instance_id = kwargs['trunkNetworkInstanceId']
+        if wait_for_network_configuration_ready is None and 'waitForNetworkConfigurationReady' in kwargs:
+            wait_for_network_configuration_ready = kwargs['waitForNetworkConfigurationReady']
+
+        _setter("instance_id", instance_id)
+        _setter("network_interface_id", network_interface_id)
         if trunk_network_instance_id is not None:
-            pulumi.set(__self__, "trunk_network_instance_id", trunk_network_instance_id)
+            _setter("trunk_network_instance_id", trunk_network_instance_id)
         if wait_for_network_configuration_ready is not None:
-            pulumi.set(__self__, "wait_for_network_configuration_ready", wait_for_network_configuration_ready)
+            _setter("wait_for_network_configuration_ready", wait_for_network_configuration_ready)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -95,14 +124,39 @@ class _EcsNetworkInterfaceAttachmentState:
         :param pulumi.Input[str] trunk_network_instance_id: The trunk network instance id.
         :param pulumi.Input[bool] wait_for_network_configuration_ready: The wait for network configuration ready.
         """
+        _EcsNetworkInterfaceAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_id=instance_id,
+            network_interface_id=network_interface_id,
+            trunk_network_instance_id=trunk_network_instance_id,
+            wait_for_network_configuration_ready=wait_for_network_configuration_ready,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_id: Optional[pulumi.Input[str]] = None,
+             network_interface_id: Optional[pulumi.Input[str]] = None,
+             trunk_network_instance_id: Optional[pulumi.Input[str]] = None,
+             wait_for_network_configuration_ready: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if network_interface_id is None and 'networkInterfaceId' in kwargs:
+            network_interface_id = kwargs['networkInterfaceId']
+        if trunk_network_instance_id is None and 'trunkNetworkInstanceId' in kwargs:
+            trunk_network_instance_id = kwargs['trunkNetworkInstanceId']
+        if wait_for_network_configuration_ready is None and 'waitForNetworkConfigurationReady' in kwargs:
+            wait_for_network_configuration_ready = kwargs['waitForNetworkConfigurationReady']
+
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if network_interface_id is not None:
-            pulumi.set(__self__, "network_interface_id", network_interface_id)
+            _setter("network_interface_id", network_interface_id)
         if trunk_network_instance_id is not None:
-            pulumi.set(__self__, "trunk_network_instance_id", trunk_network_instance_id)
+            _setter("trunk_network_instance_id", trunk_network_instance_id)
         if wait_for_network_configuration_ready is not None:
-            pulumi.set(__self__, "wait_for_network_configuration_ready", wait_for_network_configuration_ready)
+            _setter("wait_for_network_configuration_ready", wait_for_network_configuration_ready)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -324,6 +378,10 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EcsNetworkInterfaceAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

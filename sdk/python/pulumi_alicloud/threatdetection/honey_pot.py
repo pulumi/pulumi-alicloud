@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['HoneyPotArgs', 'HoneyPot']
@@ -25,10 +25,43 @@ class HoneyPotArgs:
         :param pulumi.Input[str] honeypot_name: Honeypot custom name.
         :param pulumi.Input[str] node_id: The ID of the honeypot management node.
         """
-        pulumi.set(__self__, "honeypot_image_id", honeypot_image_id)
-        pulumi.set(__self__, "honeypot_image_name", honeypot_image_name)
-        pulumi.set(__self__, "honeypot_name", honeypot_name)
-        pulumi.set(__self__, "node_id", node_id)
+        HoneyPotArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            honeypot_image_id=honeypot_image_id,
+            honeypot_image_name=honeypot_image_name,
+            honeypot_name=honeypot_name,
+            node_id=node_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             honeypot_image_id: Optional[pulumi.Input[str]] = None,
+             honeypot_image_name: Optional[pulumi.Input[str]] = None,
+             honeypot_name: Optional[pulumi.Input[str]] = None,
+             node_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if honeypot_image_id is None and 'honeypotImageId' in kwargs:
+            honeypot_image_id = kwargs['honeypotImageId']
+        if honeypot_image_id is None:
+            raise TypeError("Missing 'honeypot_image_id' argument")
+        if honeypot_image_name is None and 'honeypotImageName' in kwargs:
+            honeypot_image_name = kwargs['honeypotImageName']
+        if honeypot_image_name is None:
+            raise TypeError("Missing 'honeypot_image_name' argument")
+        if honeypot_name is None and 'honeypotName' in kwargs:
+            honeypot_name = kwargs['honeypotName']
+        if honeypot_name is None:
+            raise TypeError("Missing 'honeypot_name' argument")
+        if node_id is None and 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if node_id is None:
+            raise TypeError("Missing 'node_id' argument")
+
+        _setter("honeypot_image_id", honeypot_image_id)
+        _setter("honeypot_image_name", honeypot_image_name)
+        _setter("honeypot_name", honeypot_name)
+        _setter("node_id", node_id)
 
     @property
     @pulumi.getter(name="honeypotImageId")
@@ -101,22 +134,59 @@ class _HoneyPotState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] states: Honeypot status.
         :param pulumi.Input[str] status: The status of the resource.
         """
+        _HoneyPotState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            honeypot_id=honeypot_id,
+            honeypot_image_id=honeypot_image_id,
+            honeypot_image_name=honeypot_image_name,
+            honeypot_name=honeypot_name,
+            node_id=node_id,
+            preset_id=preset_id,
+            states=states,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             honeypot_id: Optional[pulumi.Input[str]] = None,
+             honeypot_image_id: Optional[pulumi.Input[str]] = None,
+             honeypot_image_name: Optional[pulumi.Input[str]] = None,
+             honeypot_name: Optional[pulumi.Input[str]] = None,
+             node_id: Optional[pulumi.Input[str]] = None,
+             preset_id: Optional[pulumi.Input[str]] = None,
+             states: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if honeypot_id is None and 'honeypotId' in kwargs:
+            honeypot_id = kwargs['honeypotId']
+        if honeypot_image_id is None and 'honeypotImageId' in kwargs:
+            honeypot_image_id = kwargs['honeypotImageId']
+        if honeypot_image_name is None and 'honeypotImageName' in kwargs:
+            honeypot_image_name = kwargs['honeypotImageName']
+        if honeypot_name is None and 'honeypotName' in kwargs:
+            honeypot_name = kwargs['honeypotName']
+        if node_id is None and 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if preset_id is None and 'presetId' in kwargs:
+            preset_id = kwargs['presetId']
+
         if honeypot_id is not None:
-            pulumi.set(__self__, "honeypot_id", honeypot_id)
+            _setter("honeypot_id", honeypot_id)
         if honeypot_image_id is not None:
-            pulumi.set(__self__, "honeypot_image_id", honeypot_image_id)
+            _setter("honeypot_image_id", honeypot_image_id)
         if honeypot_image_name is not None:
-            pulumi.set(__self__, "honeypot_image_name", honeypot_image_name)
+            _setter("honeypot_image_name", honeypot_image_name)
         if honeypot_name is not None:
-            pulumi.set(__self__, "honeypot_name", honeypot_name)
+            _setter("honeypot_name", honeypot_name)
         if node_id is not None:
-            pulumi.set(__self__, "node_id", node_id)
+            _setter("node_id", node_id)
         if preset_id is not None:
-            pulumi.set(__self__, "preset_id", preset_id)
+            _setter("preset_id", preset_id)
         if states is not None:
-            pulumi.set(__self__, "states", states)
+            _setter("states", states)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="honeypotId")
@@ -326,6 +396,10 @@ class HoneyPot(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            HoneyPotArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

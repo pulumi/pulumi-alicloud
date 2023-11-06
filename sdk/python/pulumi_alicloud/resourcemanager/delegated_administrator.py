@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DelegatedAdministratorArgs', 'DelegatedAdministrator']
@@ -21,8 +21,29 @@ class DelegatedAdministratorArgs:
         :param pulumi.Input[str] account_id: The ID of the member account in the resource directory.
         :param pulumi.Input[str] service_principal: The identification of the trusted service. **NOTE:** Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://www.alibabacloud.com/help/en/resource-management/latest/manage-trusted-services-overview).
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "service_principal", service_principal)
+        DelegatedAdministratorArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            service_principal=service_principal,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             service_principal: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if service_principal is None and 'servicePrincipal' in kwargs:
+            service_principal = kwargs['servicePrincipal']
+        if service_principal is None:
+            raise TypeError("Missing 'service_principal' argument")
+
+        _setter("account_id", account_id)
+        _setter("service_principal", service_principal)
 
     @property
     @pulumi.getter(name="accountId")
@@ -59,10 +80,27 @@ class _DelegatedAdministratorState:
         :param pulumi.Input[str] account_id: The ID of the member account in the resource directory.
         :param pulumi.Input[str] service_principal: The identification of the trusted service. **NOTE:** Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://www.alibabacloud.com/help/en/resource-management/latest/manage-trusted-services-overview).
         """
+        _DelegatedAdministratorState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            service_principal=service_principal,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             service_principal: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if service_principal is None and 'servicePrincipal' in kwargs:
+            service_principal = kwargs['servicePrincipal']
+
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if service_principal is not None:
-            pulumi.set(__self__, "service_principal", service_principal)
+            _setter("service_principal", service_principal)
 
     @property
     @pulumi.getter(name="accountId")
@@ -196,6 +234,10 @@ class DelegatedAdministrator(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DelegatedAdministratorArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SmartagFlowLogArgs', 'SmartagFlowLog']
@@ -41,29 +41,84 @@ class SmartagFlowLogArgs:
         :param pulumi.Input[str] sls_region_id: The ID of the region where Log Service is deployed. If `output_type` is set to `sls` or `all`, this parameter is required.
         :param pulumi.Input[str] status: The status of the flow log. Valid values:  `Active`: The flow log is enabled. `Inactive`: The flow log is disabled.
         """
-        pulumi.set(__self__, "output_type", output_type)
+        SmartagFlowLogArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            output_type=output_type,
+            active_aging=active_aging,
+            description=description,
+            flow_log_name=flow_log_name,
+            inactive_aging=inactive_aging,
+            logstore_name=logstore_name,
+            netflow_server_ip=netflow_server_ip,
+            netflow_server_port=netflow_server_port,
+            netflow_version=netflow_version,
+            project_name=project_name,
+            sls_region_id=sls_region_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             output_type: Optional[pulumi.Input[str]] = None,
+             active_aging: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             flow_log_name: Optional[pulumi.Input[str]] = None,
+             inactive_aging: Optional[pulumi.Input[int]] = None,
+             logstore_name: Optional[pulumi.Input[str]] = None,
+             netflow_server_ip: Optional[pulumi.Input[str]] = None,
+             netflow_server_port: Optional[pulumi.Input[int]] = None,
+             netflow_version: Optional[pulumi.Input[str]] = None,
+             project_name: Optional[pulumi.Input[str]] = None,
+             sls_region_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if output_type is None and 'outputType' in kwargs:
+            output_type = kwargs['outputType']
+        if output_type is None:
+            raise TypeError("Missing 'output_type' argument")
+        if active_aging is None and 'activeAging' in kwargs:
+            active_aging = kwargs['activeAging']
+        if flow_log_name is None and 'flowLogName' in kwargs:
+            flow_log_name = kwargs['flowLogName']
+        if inactive_aging is None and 'inactiveAging' in kwargs:
+            inactive_aging = kwargs['inactiveAging']
+        if logstore_name is None and 'logstoreName' in kwargs:
+            logstore_name = kwargs['logstoreName']
+        if netflow_server_ip is None and 'netflowServerIp' in kwargs:
+            netflow_server_ip = kwargs['netflowServerIp']
+        if netflow_server_port is None and 'netflowServerPort' in kwargs:
+            netflow_server_port = kwargs['netflowServerPort']
+        if netflow_version is None and 'netflowVersion' in kwargs:
+            netflow_version = kwargs['netflowVersion']
+        if project_name is None and 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if sls_region_id is None and 'slsRegionId' in kwargs:
+            sls_region_id = kwargs['slsRegionId']
+
+        _setter("output_type", output_type)
         if active_aging is not None:
-            pulumi.set(__self__, "active_aging", active_aging)
+            _setter("active_aging", active_aging)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if flow_log_name is not None:
-            pulumi.set(__self__, "flow_log_name", flow_log_name)
+            _setter("flow_log_name", flow_log_name)
         if inactive_aging is not None:
-            pulumi.set(__self__, "inactive_aging", inactive_aging)
+            _setter("inactive_aging", inactive_aging)
         if logstore_name is not None:
-            pulumi.set(__self__, "logstore_name", logstore_name)
+            _setter("logstore_name", logstore_name)
         if netflow_server_ip is not None:
-            pulumi.set(__self__, "netflow_server_ip", netflow_server_ip)
+            _setter("netflow_server_ip", netflow_server_ip)
         if netflow_server_port is not None:
-            pulumi.set(__self__, "netflow_server_port", netflow_server_port)
+            _setter("netflow_server_port", netflow_server_port)
         if netflow_version is not None:
-            pulumi.set(__self__, "netflow_version", netflow_version)
+            _setter("netflow_version", netflow_version)
         if project_name is not None:
-            pulumi.set(__self__, "project_name", project_name)
+            _setter("project_name", project_name)
         if sls_region_id is not None:
-            pulumi.set(__self__, "sls_region_id", sls_region_id)
+            _setter("sls_region_id", sls_region_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="outputType")
@@ -240,30 +295,83 @@ class _SmartagFlowLogState:
         :param pulumi.Input[str] sls_region_id: The ID of the region where Log Service is deployed. If `output_type` is set to `sls` or `all`, this parameter is required.
         :param pulumi.Input[str] status: The status of the flow log. Valid values:  `Active`: The flow log is enabled. `Inactive`: The flow log is disabled.
         """
+        _SmartagFlowLogState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            active_aging=active_aging,
+            description=description,
+            flow_log_name=flow_log_name,
+            inactive_aging=inactive_aging,
+            logstore_name=logstore_name,
+            netflow_server_ip=netflow_server_ip,
+            netflow_server_port=netflow_server_port,
+            netflow_version=netflow_version,
+            output_type=output_type,
+            project_name=project_name,
+            sls_region_id=sls_region_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             active_aging: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             flow_log_name: Optional[pulumi.Input[str]] = None,
+             inactive_aging: Optional[pulumi.Input[int]] = None,
+             logstore_name: Optional[pulumi.Input[str]] = None,
+             netflow_server_ip: Optional[pulumi.Input[str]] = None,
+             netflow_server_port: Optional[pulumi.Input[int]] = None,
+             netflow_version: Optional[pulumi.Input[str]] = None,
+             output_type: Optional[pulumi.Input[str]] = None,
+             project_name: Optional[pulumi.Input[str]] = None,
+             sls_region_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if active_aging is None and 'activeAging' in kwargs:
+            active_aging = kwargs['activeAging']
+        if flow_log_name is None and 'flowLogName' in kwargs:
+            flow_log_name = kwargs['flowLogName']
+        if inactive_aging is None and 'inactiveAging' in kwargs:
+            inactive_aging = kwargs['inactiveAging']
+        if logstore_name is None and 'logstoreName' in kwargs:
+            logstore_name = kwargs['logstoreName']
+        if netflow_server_ip is None and 'netflowServerIp' in kwargs:
+            netflow_server_ip = kwargs['netflowServerIp']
+        if netflow_server_port is None and 'netflowServerPort' in kwargs:
+            netflow_server_port = kwargs['netflowServerPort']
+        if netflow_version is None and 'netflowVersion' in kwargs:
+            netflow_version = kwargs['netflowVersion']
+        if output_type is None and 'outputType' in kwargs:
+            output_type = kwargs['outputType']
+        if project_name is None and 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if sls_region_id is None and 'slsRegionId' in kwargs:
+            sls_region_id = kwargs['slsRegionId']
+
         if active_aging is not None:
-            pulumi.set(__self__, "active_aging", active_aging)
+            _setter("active_aging", active_aging)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if flow_log_name is not None:
-            pulumi.set(__self__, "flow_log_name", flow_log_name)
+            _setter("flow_log_name", flow_log_name)
         if inactive_aging is not None:
-            pulumi.set(__self__, "inactive_aging", inactive_aging)
+            _setter("inactive_aging", inactive_aging)
         if logstore_name is not None:
-            pulumi.set(__self__, "logstore_name", logstore_name)
+            _setter("logstore_name", logstore_name)
         if netflow_server_ip is not None:
-            pulumi.set(__self__, "netflow_server_ip", netflow_server_ip)
+            _setter("netflow_server_ip", netflow_server_ip)
         if netflow_server_port is not None:
-            pulumi.set(__self__, "netflow_server_port", netflow_server_port)
+            _setter("netflow_server_port", netflow_server_port)
         if netflow_version is not None:
-            pulumi.set(__self__, "netflow_version", netflow_version)
+            _setter("netflow_version", netflow_version)
         if output_type is not None:
-            pulumi.set(__self__, "output_type", output_type)
+            _setter("output_type", output_type)
         if project_name is not None:
-            pulumi.set(__self__, "project_name", project_name)
+            _setter("project_name", project_name)
         if sls_region_id is not None:
-            pulumi.set(__self__, "sls_region_id", sls_region_id)
+            _setter("sls_region_id", sls_region_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="activeAging")
@@ -519,6 +627,10 @@ class SmartagFlowLog(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SmartagFlowLogArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

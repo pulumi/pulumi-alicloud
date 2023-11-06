@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SharedTargetArgs', 'SharedTarget']
@@ -21,8 +21,29 @@ class SharedTargetArgs:
         :param pulumi.Input[str] resource_share_id: The resource share ID of resource manager.
         :param pulumi.Input[str] target_id: The member account ID in resource directory.
         """
-        pulumi.set(__self__, "resource_share_id", resource_share_id)
-        pulumi.set(__self__, "target_id", target_id)
+        SharedTargetArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            resource_share_id=resource_share_id,
+            target_id=target_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             resource_share_id: Optional[pulumi.Input[str]] = None,
+             target_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if resource_share_id is None and 'resourceShareId' in kwargs:
+            resource_share_id = kwargs['resourceShareId']
+        if resource_share_id is None:
+            raise TypeError("Missing 'resource_share_id' argument")
+        if target_id is None and 'targetId' in kwargs:
+            target_id = kwargs['targetId']
+        if target_id is None:
+            raise TypeError("Missing 'target_id' argument")
+
+        _setter("resource_share_id", resource_share_id)
+        _setter("target_id", target_id)
 
     @property
     @pulumi.getter(name="resourceShareId")
@@ -61,12 +82,31 @@ class _SharedTargetState:
         :param pulumi.Input[str] status: The status of shared target.
         :param pulumi.Input[str] target_id: The member account ID in resource directory.
         """
+        _SharedTargetState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            resource_share_id=resource_share_id,
+            status=status,
+            target_id=target_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             resource_share_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             target_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if resource_share_id is None and 'resourceShareId' in kwargs:
+            resource_share_id = kwargs['resourceShareId']
+        if target_id is None and 'targetId' in kwargs:
+            target_id = kwargs['targetId']
+
         if resource_share_id is not None:
-            pulumi.set(__self__, "resource_share_id", resource_share_id)
+            _setter("resource_share_id", resource_share_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if target_id is not None:
-            pulumi.set(__self__, "target_id", target_id)
+            _setter("target_id", target_id)
 
     @property
     @pulumi.getter(name="resourceShareId")
@@ -202,6 +242,10 @@ class SharedTarget(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SharedTargetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

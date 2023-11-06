@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['GatewayArgs', 'Gateway']
@@ -50,32 +50,91 @@ class GatewayArgs:
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of VPN gateway.
         :param pulumi.Input[str] vswitch_id: The VPN belongs the vswitch_id, the field can't be changed.
         """
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        GatewayArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            vpc_id=vpc_id,
+            auto_pay=auto_pay,
+            auto_propagate=auto_propagate,
+            description=description,
+            enable_ipsec=enable_ipsec,
+            enable_ssl=enable_ssl,
+            instance_charge_type=instance_charge_type,
+            name=name,
+            network_type=network_type,
+            period=period,
+            ssl_connections=ssl_connections,
+            tags=tags,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: Optional[pulumi.Input[int]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             auto_pay: Optional[pulumi.Input[bool]] = None,
+             auto_propagate: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enable_ipsec: Optional[pulumi.Input[bool]] = None,
+             enable_ssl: Optional[pulumi.Input[bool]] = None,
+             instance_charge_type: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             ssl_connections: Optional[pulumi.Input[int]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if auto_pay is None and 'autoPay' in kwargs:
+            auto_pay = kwargs['autoPay']
+        if auto_propagate is None and 'autoPropagate' in kwargs:
+            auto_propagate = kwargs['autoPropagate']
+        if enable_ipsec is None and 'enableIpsec' in kwargs:
+            enable_ipsec = kwargs['enableIpsec']
+        if enable_ssl is None and 'enableSsl' in kwargs:
+            enable_ssl = kwargs['enableSsl']
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if network_type is None and 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if ssl_connections is None and 'sslConnections' in kwargs:
+            ssl_connections = kwargs['sslConnections']
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
+        _setter("bandwidth", bandwidth)
+        _setter("vpc_id", vpc_id)
         if auto_pay is not None:
-            pulumi.set(__self__, "auto_pay", auto_pay)
+            _setter("auto_pay", auto_pay)
         if auto_propagate is not None:
-            pulumi.set(__self__, "auto_propagate", auto_propagate)
+            _setter("auto_propagate", auto_propagate)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enable_ipsec is not None:
-            pulumi.set(__self__, "enable_ipsec", enable_ipsec)
+            _setter("enable_ipsec", enable_ipsec)
         if enable_ssl is not None:
-            pulumi.set(__self__, "enable_ssl", enable_ssl)
+            _setter("enable_ssl", enable_ssl)
         if instance_charge_type is not None:
-            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+            _setter("instance_charge_type", instance_charge_type)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_type is not None:
-            pulumi.set(__self__, "network_type", network_type)
+            _setter("network_type", network_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if ssl_connections is not None:
-            pulumi.set(__self__, "ssl_connections", ssl_connections)
+            _setter("ssl_connections", ssl_connections)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter
@@ -294,40 +353,105 @@ class _GatewayState:
         :param pulumi.Input[str] vpc_id: The VPN belongs the vpc_id, the field can't be changed.
         :param pulumi.Input[str] vswitch_id: The VPN belongs the vswitch_id, the field can't be changed.
         """
+        _GatewayState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_pay=auto_pay,
+            auto_propagate=auto_propagate,
+            bandwidth=bandwidth,
+            business_status=business_status,
+            description=description,
+            enable_ipsec=enable_ipsec,
+            enable_ssl=enable_ssl,
+            instance_charge_type=instance_charge_type,
+            internet_ip=internet_ip,
+            name=name,
+            network_type=network_type,
+            period=period,
+            ssl_connections=ssl_connections,
+            status=status,
+            tags=tags,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_pay: Optional[pulumi.Input[bool]] = None,
+             auto_propagate: Optional[pulumi.Input[bool]] = None,
+             bandwidth: Optional[pulumi.Input[int]] = None,
+             business_status: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enable_ipsec: Optional[pulumi.Input[bool]] = None,
+             enable_ssl: Optional[pulumi.Input[bool]] = None,
+             instance_charge_type: Optional[pulumi.Input[str]] = None,
+             internet_ip: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             ssl_connections: Optional[pulumi.Input[int]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_pay is None and 'autoPay' in kwargs:
+            auto_pay = kwargs['autoPay']
+        if auto_propagate is None and 'autoPropagate' in kwargs:
+            auto_propagate = kwargs['autoPropagate']
+        if business_status is None and 'businessStatus' in kwargs:
+            business_status = kwargs['businessStatus']
+        if enable_ipsec is None and 'enableIpsec' in kwargs:
+            enable_ipsec = kwargs['enableIpsec']
+        if enable_ssl is None and 'enableSsl' in kwargs:
+            enable_ssl = kwargs['enableSsl']
+        if instance_charge_type is None and 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if internet_ip is None and 'internetIp' in kwargs:
+            internet_ip = kwargs['internetIp']
+        if network_type is None and 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if ssl_connections is None and 'sslConnections' in kwargs:
+            ssl_connections = kwargs['sslConnections']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if auto_pay is not None:
-            pulumi.set(__self__, "auto_pay", auto_pay)
+            _setter("auto_pay", auto_pay)
         if auto_propagate is not None:
-            pulumi.set(__self__, "auto_propagate", auto_propagate)
+            _setter("auto_propagate", auto_propagate)
         if bandwidth is not None:
-            pulumi.set(__self__, "bandwidth", bandwidth)
+            _setter("bandwidth", bandwidth)
         if business_status is not None:
-            pulumi.set(__self__, "business_status", business_status)
+            _setter("business_status", business_status)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enable_ipsec is not None:
-            pulumi.set(__self__, "enable_ipsec", enable_ipsec)
+            _setter("enable_ipsec", enable_ipsec)
         if enable_ssl is not None:
-            pulumi.set(__self__, "enable_ssl", enable_ssl)
+            _setter("enable_ssl", enable_ssl)
         if instance_charge_type is not None:
-            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+            _setter("instance_charge_type", instance_charge_type)
         if internet_ip is not None:
-            pulumi.set(__self__, "internet_ip", internet_ip)
+            _setter("internet_ip", internet_ip)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_type is not None:
-            pulumi.set(__self__, "network_type", network_type)
+            _setter("network_type", network_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if ssl_connections is not None:
-            pulumi.set(__self__, "ssl_connections", ssl_connections)
+            _setter("ssl_connections", ssl_connections)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="autoPay")
@@ -613,6 +737,10 @@ class Gateway(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GatewayArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

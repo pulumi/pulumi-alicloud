@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -49,31 +49,84 @@ class ServiceMeshArgs:
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         :param pulumi.Input[str] version: Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istio_operator_version in `servicemesh_get_service_meshes`.
         """
-        pulumi.set(__self__, "network", network)
+        ServiceMeshArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network=network,
+            cluster_ids=cluster_ids,
+            cluster_spec=cluster_spec,
+            customized_prometheus=customized_prometheus,
+            edition=edition,
+            extra_configuration=extra_configuration,
+            force=force,
+            load_balancer=load_balancer,
+            mesh_config=mesh_config,
+            prometheus_url=prometheus_url,
+            service_mesh_name=service_mesh_name,
+            tags=tags,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network: Optional[pulumi.Input['ServiceMeshNetworkArgs']] = None,
+             cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             cluster_spec: Optional[pulumi.Input[str]] = None,
+             customized_prometheus: Optional[pulumi.Input[bool]] = None,
+             edition: Optional[pulumi.Input[str]] = None,
+             extra_configuration: Optional[pulumi.Input['ServiceMeshExtraConfigurationArgs']] = None,
+             force: Optional[pulumi.Input[bool]] = None,
+             load_balancer: Optional[pulumi.Input['ServiceMeshLoadBalancerArgs']] = None,
+             mesh_config: Optional[pulumi.Input['ServiceMeshMeshConfigArgs']] = None,
+             prometheus_url: Optional[pulumi.Input[str]] = None,
+             service_mesh_name: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if cluster_ids is None and 'clusterIds' in kwargs:
+            cluster_ids = kwargs['clusterIds']
+        if cluster_spec is None and 'clusterSpec' in kwargs:
+            cluster_spec = kwargs['clusterSpec']
+        if customized_prometheus is None and 'customizedPrometheus' in kwargs:
+            customized_prometheus = kwargs['customizedPrometheus']
+        if extra_configuration is None and 'extraConfiguration' in kwargs:
+            extra_configuration = kwargs['extraConfiguration']
+        if load_balancer is None and 'loadBalancer' in kwargs:
+            load_balancer = kwargs['loadBalancer']
+        if mesh_config is None and 'meshConfig' in kwargs:
+            mesh_config = kwargs['meshConfig']
+        if prometheus_url is None and 'prometheusUrl' in kwargs:
+            prometheus_url = kwargs['prometheusUrl']
+        if service_mesh_name is None and 'serviceMeshName' in kwargs:
+            service_mesh_name = kwargs['serviceMeshName']
+
+        _setter("network", network)
         if cluster_ids is not None:
-            pulumi.set(__self__, "cluster_ids", cluster_ids)
+            _setter("cluster_ids", cluster_ids)
         if cluster_spec is not None:
-            pulumi.set(__self__, "cluster_spec", cluster_spec)
+            _setter("cluster_spec", cluster_spec)
         if customized_prometheus is not None:
-            pulumi.set(__self__, "customized_prometheus", customized_prometheus)
+            _setter("customized_prometheus", customized_prometheus)
         if edition is not None:
-            pulumi.set(__self__, "edition", edition)
+            _setter("edition", edition)
         if extra_configuration is not None:
-            pulumi.set(__self__, "extra_configuration", extra_configuration)
+            _setter("extra_configuration", extra_configuration)
         if force is not None:
-            pulumi.set(__self__, "force", force)
+            _setter("force", force)
         if load_balancer is not None:
-            pulumi.set(__self__, "load_balancer", load_balancer)
+            _setter("load_balancer", load_balancer)
         if mesh_config is not None:
-            pulumi.set(__self__, "mesh_config", mesh_config)
+            _setter("mesh_config", mesh_config)
         if prometheus_url is not None:
-            pulumi.set(__self__, "prometheus_url", prometheus_url)
+            _setter("prometheus_url", prometheus_url)
         if service_mesh_name is not None:
-            pulumi.set(__self__, "service_mesh_name", service_mesh_name)
+            _setter("service_mesh_name", service_mesh_name)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -276,36 +329,93 @@ class _ServiceMeshState:
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         :param pulumi.Input[str] version: Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istio_operator_version in `servicemesh_get_service_meshes`.
         """
+        _ServiceMeshState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_ids=cluster_ids,
+            cluster_spec=cluster_spec,
+            create_time=create_time,
+            customized_prometheus=customized_prometheus,
+            edition=edition,
+            extra_configuration=extra_configuration,
+            force=force,
+            load_balancer=load_balancer,
+            mesh_config=mesh_config,
+            network=network,
+            prometheus_url=prometheus_url,
+            service_mesh_name=service_mesh_name,
+            status=status,
+            tags=tags,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             cluster_spec: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             customized_prometheus: Optional[pulumi.Input[bool]] = None,
+             edition: Optional[pulumi.Input[str]] = None,
+             extra_configuration: Optional[pulumi.Input['ServiceMeshExtraConfigurationArgs']] = None,
+             force: Optional[pulumi.Input[bool]] = None,
+             load_balancer: Optional[pulumi.Input['ServiceMeshLoadBalancerArgs']] = None,
+             mesh_config: Optional[pulumi.Input['ServiceMeshMeshConfigArgs']] = None,
+             network: Optional[pulumi.Input['ServiceMeshNetworkArgs']] = None,
+             prometheus_url: Optional[pulumi.Input[str]] = None,
+             service_mesh_name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_ids is None and 'clusterIds' in kwargs:
+            cluster_ids = kwargs['clusterIds']
+        if cluster_spec is None and 'clusterSpec' in kwargs:
+            cluster_spec = kwargs['clusterSpec']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if customized_prometheus is None and 'customizedPrometheus' in kwargs:
+            customized_prometheus = kwargs['customizedPrometheus']
+        if extra_configuration is None and 'extraConfiguration' in kwargs:
+            extra_configuration = kwargs['extraConfiguration']
+        if load_balancer is None and 'loadBalancer' in kwargs:
+            load_balancer = kwargs['loadBalancer']
+        if mesh_config is None and 'meshConfig' in kwargs:
+            mesh_config = kwargs['meshConfig']
+        if prometheus_url is None and 'prometheusUrl' in kwargs:
+            prometheus_url = kwargs['prometheusUrl']
+        if service_mesh_name is None and 'serviceMeshName' in kwargs:
+            service_mesh_name = kwargs['serviceMeshName']
+
         if cluster_ids is not None:
-            pulumi.set(__self__, "cluster_ids", cluster_ids)
+            _setter("cluster_ids", cluster_ids)
         if cluster_spec is not None:
-            pulumi.set(__self__, "cluster_spec", cluster_spec)
+            _setter("cluster_spec", cluster_spec)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if customized_prometheus is not None:
-            pulumi.set(__self__, "customized_prometheus", customized_prometheus)
+            _setter("customized_prometheus", customized_prometheus)
         if edition is not None:
-            pulumi.set(__self__, "edition", edition)
+            _setter("edition", edition)
         if extra_configuration is not None:
-            pulumi.set(__self__, "extra_configuration", extra_configuration)
+            _setter("extra_configuration", extra_configuration)
         if force is not None:
-            pulumi.set(__self__, "force", force)
+            _setter("force", force)
         if load_balancer is not None:
-            pulumi.set(__self__, "load_balancer", load_balancer)
+            _setter("load_balancer", load_balancer)
         if mesh_config is not None:
-            pulumi.set(__self__, "mesh_config", mesh_config)
+            _setter("mesh_config", mesh_config)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if prometheus_url is not None:
-            pulumi.set(__self__, "prometheus_url", prometheus_url)
+            _setter("prometheus_url", prometheus_url)
         if service_mesh_name is not None:
-            pulumi.set(__self__, "service_mesh_name", service_mesh_name)
+            _setter("service_mesh_name", service_mesh_name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter(name="clusterIds")
@@ -577,6 +687,10 @@ class ServiceMesh(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ServiceMeshArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -608,10 +722,30 @@ class ServiceMesh(pulumi.CustomResource):
             __props__.__dict__["cluster_spec"] = cluster_spec
             __props__.__dict__["customized_prometheus"] = customized_prometheus
             __props__.__dict__["edition"] = edition
+            if extra_configuration is not None and not isinstance(extra_configuration, ServiceMeshExtraConfigurationArgs):
+                extra_configuration = extra_configuration or {}
+                def _setter(key, value):
+                    extra_configuration[key] = value
+                ServiceMeshExtraConfigurationArgs._configure(_setter, **extra_configuration)
             __props__.__dict__["extra_configuration"] = extra_configuration
             __props__.__dict__["force"] = force
+            if load_balancer is not None and not isinstance(load_balancer, ServiceMeshLoadBalancerArgs):
+                load_balancer = load_balancer or {}
+                def _setter(key, value):
+                    load_balancer[key] = value
+                ServiceMeshLoadBalancerArgs._configure(_setter, **load_balancer)
             __props__.__dict__["load_balancer"] = load_balancer
+            if mesh_config is not None and not isinstance(mesh_config, ServiceMeshMeshConfigArgs):
+                mesh_config = mesh_config or {}
+                def _setter(key, value):
+                    mesh_config[key] = value
+                ServiceMeshMeshConfigArgs._configure(_setter, **mesh_config)
             __props__.__dict__["mesh_config"] = mesh_config
+            if network is not None and not isinstance(network, ServiceMeshNetworkArgs):
+                network = network or {}
+                def _setter(key, value):
+                    network[key] = value
+                ServiceMeshNetworkArgs._configure(_setter, **network)
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__.__dict__["network"] = network

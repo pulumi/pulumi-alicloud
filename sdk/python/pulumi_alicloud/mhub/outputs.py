@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -39,16 +39,81 @@ class GetAppsAppResult(dict):
         :param str product_id: The ID of the Product.
         :param str type: The type of the App. Valid values: `Android` and `iOS`.
         """
-        pulumi.set(__self__, "app_key", app_key)
-        pulumi.set(__self__, "app_name", app_name)
-        pulumi.set(__self__, "bundle_id", bundle_id)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "encoded_icon", encoded_icon)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "industry_id", industry_id)
-        pulumi.set(__self__, "package_name", package_name)
-        pulumi.set(__self__, "product_id", product_id)
-        pulumi.set(__self__, "type", type)
+        GetAppsAppResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_key=app_key,
+            app_name=app_name,
+            bundle_id=bundle_id,
+            create_time=create_time,
+            encoded_icon=encoded_icon,
+            id=id,
+            industry_id=industry_id,
+            package_name=package_name,
+            product_id=product_id,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_key: Optional[str] = None,
+             app_name: Optional[str] = None,
+             bundle_id: Optional[str] = None,
+             create_time: Optional[str] = None,
+             encoded_icon: Optional[str] = None,
+             id: Optional[str] = None,
+             industry_id: Optional[str] = None,
+             package_name: Optional[str] = None,
+             product_id: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_key is None and 'appKey' in kwargs:
+            app_key = kwargs['appKey']
+        if app_key is None:
+            raise TypeError("Missing 'app_key' argument")
+        if app_name is None and 'appName' in kwargs:
+            app_name = kwargs['appName']
+        if app_name is None:
+            raise TypeError("Missing 'app_name' argument")
+        if bundle_id is None and 'bundleId' in kwargs:
+            bundle_id = kwargs['bundleId']
+        if bundle_id is None:
+            raise TypeError("Missing 'bundle_id' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if encoded_icon is None and 'encodedIcon' in kwargs:
+            encoded_icon = kwargs['encodedIcon']
+        if encoded_icon is None:
+            raise TypeError("Missing 'encoded_icon' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if industry_id is None and 'industryId' in kwargs:
+            industry_id = kwargs['industryId']
+        if industry_id is None:
+            raise TypeError("Missing 'industry_id' argument")
+        if package_name is None and 'packageName' in kwargs:
+            package_name = kwargs['packageName']
+        if package_name is None:
+            raise TypeError("Missing 'package_name' argument")
+        if product_id is None and 'productId' in kwargs:
+            product_id = kwargs['productId']
+        if product_id is None:
+            raise TypeError("Missing 'product_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
+        _setter("app_key", app_key)
+        _setter("app_name", app_name)
+        _setter("bundle_id", bundle_id)
+        _setter("create_time", create_time)
+        _setter("encoded_icon", encoded_icon)
+        _setter("id", id)
+        _setter("industry_id", industry_id)
+        _setter("package_name", package_name)
+        _setter("product_id", product_id)
+        _setter("type", type)
 
     @property
     @pulumi.getter(name="appKey")
@@ -142,9 +207,34 @@ class GetProductsProductResult(dict):
         :param str product_id: The ID of the Product.
         :param str product_name: The name of the Product.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "product_id", product_id)
-        pulumi.set(__self__, "product_name", product_name)
+        GetProductsProductResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            product_id=product_id,
+            product_name=product_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             product_id: Optional[str] = None,
+             product_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if product_id is None and 'productId' in kwargs:
+            product_id = kwargs['productId']
+        if product_id is None:
+            raise TypeError("Missing 'product_id' argument")
+        if product_name is None and 'productName' in kwargs:
+            product_name = kwargs['productName']
+        if product_name is None:
+            raise TypeError("Missing 'product_name' argument")
+
+        _setter("id", id)
+        _setter("product_id", product_id)
+        _setter("product_name", product_name)
 
     @property
     @pulumi.getter

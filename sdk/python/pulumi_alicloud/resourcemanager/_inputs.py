@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -22,10 +22,25 @@ class ResourceGroupRegionStatusArgs:
         :param pulumi.Input[str] region_id: The region ID.
         :param pulumi.Input[str] status: The status of the regional resource group.
         """
+        ResourceGroupRegionStatusArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            region_id=region_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             region_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if region_id is None and 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+
         if region_id is not None:
-            pulumi.set(__self__, "region_id", region_id)
+            _setter("region_id", region_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="regionId")

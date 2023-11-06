@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -110,100 +110,279 @@ class ListenerArgs:
         :param pulumi.Input[int] unhealthy_threshold: The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
         :param pulumi.Input['ListenerXForwardedForArgs'] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
         """
-        pulumi.set(__self__, "frontend_port", frontend_port)
-        pulumi.set(__self__, "load_balancer_id", load_balancer_id)
-        pulumi.set(__self__, "protocol", protocol)
+        ListenerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            frontend_port=frontend_port,
+            load_balancer_id=load_balancer_id,
+            protocol=protocol,
+            acl_id=acl_id,
+            acl_status=acl_status,
+            acl_type=acl_type,
+            backend_port=backend_port,
+            bandwidth=bandwidth,
+            ca_certificate_id=ca_certificate_id,
+            cookie=cookie,
+            cookie_timeout=cookie_timeout,
+            delete_protection_validation=delete_protection_validation,
+            description=description,
+            enable_http2=enable_http2,
+            established_timeout=established_timeout,
+            forward_port=forward_port,
+            gzip=gzip,
+            health_check=health_check,
+            health_check_connect_port=health_check_connect_port,
+            health_check_domain=health_check_domain,
+            health_check_http_code=health_check_http_code,
+            health_check_interval=health_check_interval,
+            health_check_method=health_check_method,
+            health_check_timeout=health_check_timeout,
+            health_check_type=health_check_type,
+            health_check_uri=health_check_uri,
+            healthy_threshold=healthy_threshold,
+            idle_timeout=idle_timeout,
+            lb_port=lb_port,
+            lb_protocol=lb_protocol,
+            listener_forward=listener_forward,
+            master_slave_server_group_id=master_slave_server_group_id,
+            persistence_timeout=persistence_timeout,
+            proxy_protocol_v2_enabled=proxy_protocol_v2_enabled,
+            request_timeout=request_timeout,
+            scheduler=scheduler,
+            server_certificate_id=server_certificate_id,
+            server_group_id=server_group_id,
+            ssl_certificate_id=ssl_certificate_id,
+            sticky_session=sticky_session,
+            sticky_session_type=sticky_session_type,
+            tls_cipher_policy=tls_cipher_policy,
+            unhealthy_threshold=unhealthy_threshold,
+            x_forwarded_for=x_forwarded_for,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             frontend_port: Optional[pulumi.Input[int]] = None,
+             load_balancer_id: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             acl_id: Optional[pulumi.Input[str]] = None,
+             acl_status: Optional[pulumi.Input[str]] = None,
+             acl_type: Optional[pulumi.Input[str]] = None,
+             backend_port: Optional[pulumi.Input[int]] = None,
+             bandwidth: Optional[pulumi.Input[int]] = None,
+             ca_certificate_id: Optional[pulumi.Input[str]] = None,
+             cookie: Optional[pulumi.Input[str]] = None,
+             cookie_timeout: Optional[pulumi.Input[int]] = None,
+             delete_protection_validation: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enable_http2: Optional[pulumi.Input[str]] = None,
+             established_timeout: Optional[pulumi.Input[int]] = None,
+             forward_port: Optional[pulumi.Input[int]] = None,
+             gzip: Optional[pulumi.Input[bool]] = None,
+             health_check: Optional[pulumi.Input[str]] = None,
+             health_check_connect_port: Optional[pulumi.Input[int]] = None,
+             health_check_domain: Optional[pulumi.Input[str]] = None,
+             health_check_http_code: Optional[pulumi.Input[str]] = None,
+             health_check_interval: Optional[pulumi.Input[int]] = None,
+             health_check_method: Optional[pulumi.Input[str]] = None,
+             health_check_timeout: Optional[pulumi.Input[int]] = None,
+             health_check_type: Optional[pulumi.Input[str]] = None,
+             health_check_uri: Optional[pulumi.Input[str]] = None,
+             healthy_threshold: Optional[pulumi.Input[int]] = None,
+             idle_timeout: Optional[pulumi.Input[int]] = None,
+             lb_port: Optional[pulumi.Input[int]] = None,
+             lb_protocol: Optional[pulumi.Input[str]] = None,
+             listener_forward: Optional[pulumi.Input[str]] = None,
+             master_slave_server_group_id: Optional[pulumi.Input[str]] = None,
+             persistence_timeout: Optional[pulumi.Input[int]] = None,
+             proxy_protocol_v2_enabled: Optional[pulumi.Input[bool]] = None,
+             request_timeout: Optional[pulumi.Input[int]] = None,
+             scheduler: Optional[pulumi.Input[str]] = None,
+             server_certificate_id: Optional[pulumi.Input[str]] = None,
+             server_group_id: Optional[pulumi.Input[str]] = None,
+             ssl_certificate_id: Optional[pulumi.Input[str]] = None,
+             sticky_session: Optional[pulumi.Input[str]] = None,
+             sticky_session_type: Optional[pulumi.Input[str]] = None,
+             tls_cipher_policy: Optional[pulumi.Input[str]] = None,
+             unhealthy_threshold: Optional[pulumi.Input[int]] = None,
+             x_forwarded_for: Optional[pulumi.Input['ListenerXForwardedForArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if frontend_port is None and 'frontendPort' in kwargs:
+            frontend_port = kwargs['frontendPort']
+        if frontend_port is None:
+            raise TypeError("Missing 'frontend_port' argument")
+        if load_balancer_id is None and 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if load_balancer_id is None:
+            raise TypeError("Missing 'load_balancer_id' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if acl_id is None and 'aclId' in kwargs:
+            acl_id = kwargs['aclId']
+        if acl_status is None and 'aclStatus' in kwargs:
+            acl_status = kwargs['aclStatus']
+        if acl_type is None and 'aclType' in kwargs:
+            acl_type = kwargs['aclType']
+        if backend_port is None and 'backendPort' in kwargs:
+            backend_port = kwargs['backendPort']
+        if ca_certificate_id is None and 'caCertificateId' in kwargs:
+            ca_certificate_id = kwargs['caCertificateId']
+        if cookie_timeout is None and 'cookieTimeout' in kwargs:
+            cookie_timeout = kwargs['cookieTimeout']
+        if delete_protection_validation is None and 'deleteProtectionValidation' in kwargs:
+            delete_protection_validation = kwargs['deleteProtectionValidation']
+        if enable_http2 is None and 'enableHttp2' in kwargs:
+            enable_http2 = kwargs['enableHttp2']
+        if established_timeout is None and 'establishedTimeout' in kwargs:
+            established_timeout = kwargs['establishedTimeout']
+        if forward_port is None and 'forwardPort' in kwargs:
+            forward_port = kwargs['forwardPort']
+        if health_check is None and 'healthCheck' in kwargs:
+            health_check = kwargs['healthCheck']
+        if health_check_connect_port is None and 'healthCheckConnectPort' in kwargs:
+            health_check_connect_port = kwargs['healthCheckConnectPort']
+        if health_check_domain is None and 'healthCheckDomain' in kwargs:
+            health_check_domain = kwargs['healthCheckDomain']
+        if health_check_http_code is None and 'healthCheckHttpCode' in kwargs:
+            health_check_http_code = kwargs['healthCheckHttpCode']
+        if health_check_interval is None and 'healthCheckInterval' in kwargs:
+            health_check_interval = kwargs['healthCheckInterval']
+        if health_check_method is None and 'healthCheckMethod' in kwargs:
+            health_check_method = kwargs['healthCheckMethod']
+        if health_check_timeout is None and 'healthCheckTimeout' in kwargs:
+            health_check_timeout = kwargs['healthCheckTimeout']
+        if health_check_type is None and 'healthCheckType' in kwargs:
+            health_check_type = kwargs['healthCheckType']
+        if health_check_uri is None and 'healthCheckUri' in kwargs:
+            health_check_uri = kwargs['healthCheckUri']
+        if healthy_threshold is None and 'healthyThreshold' in kwargs:
+            healthy_threshold = kwargs['healthyThreshold']
+        if idle_timeout is None and 'idleTimeout' in kwargs:
+            idle_timeout = kwargs['idleTimeout']
+        if lb_port is None and 'lbPort' in kwargs:
+            lb_port = kwargs['lbPort']
+        if lb_protocol is None and 'lbProtocol' in kwargs:
+            lb_protocol = kwargs['lbProtocol']
+        if listener_forward is None and 'listenerForward' in kwargs:
+            listener_forward = kwargs['listenerForward']
+        if master_slave_server_group_id is None and 'masterSlaveServerGroupId' in kwargs:
+            master_slave_server_group_id = kwargs['masterSlaveServerGroupId']
+        if persistence_timeout is None and 'persistenceTimeout' in kwargs:
+            persistence_timeout = kwargs['persistenceTimeout']
+        if proxy_protocol_v2_enabled is None and 'proxyProtocolV2Enabled' in kwargs:
+            proxy_protocol_v2_enabled = kwargs['proxyProtocolV2Enabled']
+        if request_timeout is None and 'requestTimeout' in kwargs:
+            request_timeout = kwargs['requestTimeout']
+        if server_certificate_id is None and 'serverCertificateId' in kwargs:
+            server_certificate_id = kwargs['serverCertificateId']
+        if server_group_id is None and 'serverGroupId' in kwargs:
+            server_group_id = kwargs['serverGroupId']
+        if ssl_certificate_id is None and 'sslCertificateId' in kwargs:
+            ssl_certificate_id = kwargs['sslCertificateId']
+        if sticky_session is None and 'stickySession' in kwargs:
+            sticky_session = kwargs['stickySession']
+        if sticky_session_type is None and 'stickySessionType' in kwargs:
+            sticky_session_type = kwargs['stickySessionType']
+        if tls_cipher_policy is None and 'tlsCipherPolicy' in kwargs:
+            tls_cipher_policy = kwargs['tlsCipherPolicy']
+        if unhealthy_threshold is None and 'unhealthyThreshold' in kwargs:
+            unhealthy_threshold = kwargs['unhealthyThreshold']
+        if x_forwarded_for is None and 'xForwardedFor' in kwargs:
+            x_forwarded_for = kwargs['xForwardedFor']
+
+        _setter("frontend_port", frontend_port)
+        _setter("load_balancer_id", load_balancer_id)
+        _setter("protocol", protocol)
         if acl_id is not None:
-            pulumi.set(__self__, "acl_id", acl_id)
+            _setter("acl_id", acl_id)
         if acl_status is not None:
-            pulumi.set(__self__, "acl_status", acl_status)
+            _setter("acl_status", acl_status)
         if acl_type is not None:
-            pulumi.set(__self__, "acl_type", acl_type)
+            _setter("acl_type", acl_type)
         if backend_port is not None:
-            pulumi.set(__self__, "backend_port", backend_port)
+            _setter("backend_port", backend_port)
         if bandwidth is not None:
-            pulumi.set(__self__, "bandwidth", bandwidth)
+            _setter("bandwidth", bandwidth)
         if ca_certificate_id is not None:
-            pulumi.set(__self__, "ca_certificate_id", ca_certificate_id)
+            _setter("ca_certificate_id", ca_certificate_id)
         if cookie is not None:
-            pulumi.set(__self__, "cookie", cookie)
+            _setter("cookie", cookie)
         if cookie_timeout is not None:
-            pulumi.set(__self__, "cookie_timeout", cookie_timeout)
+            _setter("cookie_timeout", cookie_timeout)
         if delete_protection_validation is not None:
-            pulumi.set(__self__, "delete_protection_validation", delete_protection_validation)
+            _setter("delete_protection_validation", delete_protection_validation)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enable_http2 is not None:
-            pulumi.set(__self__, "enable_http2", enable_http2)
+            _setter("enable_http2", enable_http2)
         if established_timeout is not None:
-            pulumi.set(__self__, "established_timeout", established_timeout)
+            _setter("established_timeout", established_timeout)
         if forward_port is not None:
-            pulumi.set(__self__, "forward_port", forward_port)
+            _setter("forward_port", forward_port)
         if gzip is not None:
-            pulumi.set(__self__, "gzip", gzip)
+            _setter("gzip", gzip)
         if health_check is not None:
-            pulumi.set(__self__, "health_check", health_check)
+            _setter("health_check", health_check)
         if health_check_connect_port is not None:
-            pulumi.set(__self__, "health_check_connect_port", health_check_connect_port)
+            _setter("health_check_connect_port", health_check_connect_port)
         if health_check_domain is not None:
-            pulumi.set(__self__, "health_check_domain", health_check_domain)
+            _setter("health_check_domain", health_check_domain)
         if health_check_http_code is not None:
-            pulumi.set(__self__, "health_check_http_code", health_check_http_code)
+            _setter("health_check_http_code", health_check_http_code)
         if health_check_interval is not None:
-            pulumi.set(__self__, "health_check_interval", health_check_interval)
+            _setter("health_check_interval", health_check_interval)
         if health_check_method is not None:
-            pulumi.set(__self__, "health_check_method", health_check_method)
+            _setter("health_check_method", health_check_method)
         if health_check_timeout is not None:
-            pulumi.set(__self__, "health_check_timeout", health_check_timeout)
+            _setter("health_check_timeout", health_check_timeout)
         if health_check_type is not None:
-            pulumi.set(__self__, "health_check_type", health_check_type)
+            _setter("health_check_type", health_check_type)
         if health_check_uri is not None:
-            pulumi.set(__self__, "health_check_uri", health_check_uri)
+            _setter("health_check_uri", health_check_uri)
         if healthy_threshold is not None:
-            pulumi.set(__self__, "healthy_threshold", healthy_threshold)
+            _setter("healthy_threshold", healthy_threshold)
         if idle_timeout is not None:
-            pulumi.set(__self__, "idle_timeout", idle_timeout)
+            _setter("idle_timeout", idle_timeout)
         if lb_port is not None:
             warnings.warn("""Field 'lb_port' has been removed since 1.211.0.""", DeprecationWarning)
             pulumi.log.warn("""lb_port is deprecated: Field 'lb_port' has been removed since 1.211.0.""")
         if lb_port is not None:
-            pulumi.set(__self__, "lb_port", lb_port)
+            _setter("lb_port", lb_port)
         if lb_protocol is not None:
             warnings.warn("""Field 'lb_protocol' has been removed since 1.211.0.""", DeprecationWarning)
             pulumi.log.warn("""lb_protocol is deprecated: Field 'lb_protocol' has been removed since 1.211.0.""")
         if lb_protocol is not None:
-            pulumi.set(__self__, "lb_protocol", lb_protocol)
+            _setter("lb_protocol", lb_protocol)
         if listener_forward is not None:
-            pulumi.set(__self__, "listener_forward", listener_forward)
+            _setter("listener_forward", listener_forward)
         if master_slave_server_group_id is not None:
-            pulumi.set(__self__, "master_slave_server_group_id", master_slave_server_group_id)
+            _setter("master_slave_server_group_id", master_slave_server_group_id)
         if persistence_timeout is not None:
-            pulumi.set(__self__, "persistence_timeout", persistence_timeout)
+            _setter("persistence_timeout", persistence_timeout)
         if proxy_protocol_v2_enabled is not None:
-            pulumi.set(__self__, "proxy_protocol_v2_enabled", proxy_protocol_v2_enabled)
+            _setter("proxy_protocol_v2_enabled", proxy_protocol_v2_enabled)
         if request_timeout is not None:
-            pulumi.set(__self__, "request_timeout", request_timeout)
+            _setter("request_timeout", request_timeout)
         if scheduler is not None:
-            pulumi.set(__self__, "scheduler", scheduler)
+            _setter("scheduler", scheduler)
         if server_certificate_id is not None:
-            pulumi.set(__self__, "server_certificate_id", server_certificate_id)
+            _setter("server_certificate_id", server_certificate_id)
         if server_group_id is not None:
-            pulumi.set(__self__, "server_group_id", server_group_id)
+            _setter("server_group_id", server_group_id)
         if ssl_certificate_id is not None:
             warnings.warn("""Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""", DeprecationWarning)
             pulumi.log.warn("""ssl_certificate_id is deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""")
         if ssl_certificate_id is not None:
-            pulumi.set(__self__, "ssl_certificate_id", ssl_certificate_id)
+            _setter("ssl_certificate_id", ssl_certificate_id)
         if sticky_session is not None:
-            pulumi.set(__self__, "sticky_session", sticky_session)
+            _setter("sticky_session", sticky_session)
         if sticky_session_type is not None:
-            pulumi.set(__self__, "sticky_session_type", sticky_session_type)
+            _setter("sticky_session_type", sticky_session_type)
         if tls_cipher_policy is not None:
-            pulumi.set(__self__, "tls_cipher_policy", tls_cipher_policy)
+            _setter("tls_cipher_policy", tls_cipher_policy)
         if unhealthy_threshold is not None:
-            pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
+            _setter("unhealthy_threshold", unhealthy_threshold)
         if x_forwarded_for is not None:
-            pulumi.set(__self__, "x_forwarded_for", x_forwarded_for)
+            _setter("x_forwarded_for", x_forwarded_for)
 
     @property
     @pulumi.getter(name="frontendPort")
@@ -839,103 +1018,276 @@ class _ListenerState:
         :param pulumi.Input[int] unhealthy_threshold: The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
         :param pulumi.Input['ListenerXForwardedForArgs'] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
         """
+        _ListenerState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl_id=acl_id,
+            acl_status=acl_status,
+            acl_type=acl_type,
+            backend_port=backend_port,
+            bandwidth=bandwidth,
+            ca_certificate_id=ca_certificate_id,
+            cookie=cookie,
+            cookie_timeout=cookie_timeout,
+            delete_protection_validation=delete_protection_validation,
+            description=description,
+            enable_http2=enable_http2,
+            established_timeout=established_timeout,
+            forward_port=forward_port,
+            frontend_port=frontend_port,
+            gzip=gzip,
+            health_check=health_check,
+            health_check_connect_port=health_check_connect_port,
+            health_check_domain=health_check_domain,
+            health_check_http_code=health_check_http_code,
+            health_check_interval=health_check_interval,
+            health_check_method=health_check_method,
+            health_check_timeout=health_check_timeout,
+            health_check_type=health_check_type,
+            health_check_uri=health_check_uri,
+            healthy_threshold=healthy_threshold,
+            idle_timeout=idle_timeout,
+            lb_port=lb_port,
+            lb_protocol=lb_protocol,
+            listener_forward=listener_forward,
+            load_balancer_id=load_balancer_id,
+            master_slave_server_group_id=master_slave_server_group_id,
+            persistence_timeout=persistence_timeout,
+            protocol=protocol,
+            proxy_protocol_v2_enabled=proxy_protocol_v2_enabled,
+            request_timeout=request_timeout,
+            scheduler=scheduler,
+            server_certificate_id=server_certificate_id,
+            server_group_id=server_group_id,
+            ssl_certificate_id=ssl_certificate_id,
+            sticky_session=sticky_session,
+            sticky_session_type=sticky_session_type,
+            tls_cipher_policy=tls_cipher_policy,
+            unhealthy_threshold=unhealthy_threshold,
+            x_forwarded_for=x_forwarded_for,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl_id: Optional[pulumi.Input[str]] = None,
+             acl_status: Optional[pulumi.Input[str]] = None,
+             acl_type: Optional[pulumi.Input[str]] = None,
+             backend_port: Optional[pulumi.Input[int]] = None,
+             bandwidth: Optional[pulumi.Input[int]] = None,
+             ca_certificate_id: Optional[pulumi.Input[str]] = None,
+             cookie: Optional[pulumi.Input[str]] = None,
+             cookie_timeout: Optional[pulumi.Input[int]] = None,
+             delete_protection_validation: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enable_http2: Optional[pulumi.Input[str]] = None,
+             established_timeout: Optional[pulumi.Input[int]] = None,
+             forward_port: Optional[pulumi.Input[int]] = None,
+             frontend_port: Optional[pulumi.Input[int]] = None,
+             gzip: Optional[pulumi.Input[bool]] = None,
+             health_check: Optional[pulumi.Input[str]] = None,
+             health_check_connect_port: Optional[pulumi.Input[int]] = None,
+             health_check_domain: Optional[pulumi.Input[str]] = None,
+             health_check_http_code: Optional[pulumi.Input[str]] = None,
+             health_check_interval: Optional[pulumi.Input[int]] = None,
+             health_check_method: Optional[pulumi.Input[str]] = None,
+             health_check_timeout: Optional[pulumi.Input[int]] = None,
+             health_check_type: Optional[pulumi.Input[str]] = None,
+             health_check_uri: Optional[pulumi.Input[str]] = None,
+             healthy_threshold: Optional[pulumi.Input[int]] = None,
+             idle_timeout: Optional[pulumi.Input[int]] = None,
+             lb_port: Optional[pulumi.Input[int]] = None,
+             lb_protocol: Optional[pulumi.Input[str]] = None,
+             listener_forward: Optional[pulumi.Input[str]] = None,
+             load_balancer_id: Optional[pulumi.Input[str]] = None,
+             master_slave_server_group_id: Optional[pulumi.Input[str]] = None,
+             persistence_timeout: Optional[pulumi.Input[int]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             proxy_protocol_v2_enabled: Optional[pulumi.Input[bool]] = None,
+             request_timeout: Optional[pulumi.Input[int]] = None,
+             scheduler: Optional[pulumi.Input[str]] = None,
+             server_certificate_id: Optional[pulumi.Input[str]] = None,
+             server_group_id: Optional[pulumi.Input[str]] = None,
+             ssl_certificate_id: Optional[pulumi.Input[str]] = None,
+             sticky_session: Optional[pulumi.Input[str]] = None,
+             sticky_session_type: Optional[pulumi.Input[str]] = None,
+             tls_cipher_policy: Optional[pulumi.Input[str]] = None,
+             unhealthy_threshold: Optional[pulumi.Input[int]] = None,
+             x_forwarded_for: Optional[pulumi.Input['ListenerXForwardedForArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if acl_id is None and 'aclId' in kwargs:
+            acl_id = kwargs['aclId']
+        if acl_status is None and 'aclStatus' in kwargs:
+            acl_status = kwargs['aclStatus']
+        if acl_type is None and 'aclType' in kwargs:
+            acl_type = kwargs['aclType']
+        if backend_port is None and 'backendPort' in kwargs:
+            backend_port = kwargs['backendPort']
+        if ca_certificate_id is None and 'caCertificateId' in kwargs:
+            ca_certificate_id = kwargs['caCertificateId']
+        if cookie_timeout is None and 'cookieTimeout' in kwargs:
+            cookie_timeout = kwargs['cookieTimeout']
+        if delete_protection_validation is None and 'deleteProtectionValidation' in kwargs:
+            delete_protection_validation = kwargs['deleteProtectionValidation']
+        if enable_http2 is None and 'enableHttp2' in kwargs:
+            enable_http2 = kwargs['enableHttp2']
+        if established_timeout is None and 'establishedTimeout' in kwargs:
+            established_timeout = kwargs['establishedTimeout']
+        if forward_port is None and 'forwardPort' in kwargs:
+            forward_port = kwargs['forwardPort']
+        if frontend_port is None and 'frontendPort' in kwargs:
+            frontend_port = kwargs['frontendPort']
+        if health_check is None and 'healthCheck' in kwargs:
+            health_check = kwargs['healthCheck']
+        if health_check_connect_port is None and 'healthCheckConnectPort' in kwargs:
+            health_check_connect_port = kwargs['healthCheckConnectPort']
+        if health_check_domain is None and 'healthCheckDomain' in kwargs:
+            health_check_domain = kwargs['healthCheckDomain']
+        if health_check_http_code is None and 'healthCheckHttpCode' in kwargs:
+            health_check_http_code = kwargs['healthCheckHttpCode']
+        if health_check_interval is None and 'healthCheckInterval' in kwargs:
+            health_check_interval = kwargs['healthCheckInterval']
+        if health_check_method is None and 'healthCheckMethod' in kwargs:
+            health_check_method = kwargs['healthCheckMethod']
+        if health_check_timeout is None and 'healthCheckTimeout' in kwargs:
+            health_check_timeout = kwargs['healthCheckTimeout']
+        if health_check_type is None and 'healthCheckType' in kwargs:
+            health_check_type = kwargs['healthCheckType']
+        if health_check_uri is None and 'healthCheckUri' in kwargs:
+            health_check_uri = kwargs['healthCheckUri']
+        if healthy_threshold is None and 'healthyThreshold' in kwargs:
+            healthy_threshold = kwargs['healthyThreshold']
+        if idle_timeout is None and 'idleTimeout' in kwargs:
+            idle_timeout = kwargs['idleTimeout']
+        if lb_port is None and 'lbPort' in kwargs:
+            lb_port = kwargs['lbPort']
+        if lb_protocol is None and 'lbProtocol' in kwargs:
+            lb_protocol = kwargs['lbProtocol']
+        if listener_forward is None and 'listenerForward' in kwargs:
+            listener_forward = kwargs['listenerForward']
+        if load_balancer_id is None and 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if master_slave_server_group_id is None and 'masterSlaveServerGroupId' in kwargs:
+            master_slave_server_group_id = kwargs['masterSlaveServerGroupId']
+        if persistence_timeout is None and 'persistenceTimeout' in kwargs:
+            persistence_timeout = kwargs['persistenceTimeout']
+        if proxy_protocol_v2_enabled is None and 'proxyProtocolV2Enabled' in kwargs:
+            proxy_protocol_v2_enabled = kwargs['proxyProtocolV2Enabled']
+        if request_timeout is None and 'requestTimeout' in kwargs:
+            request_timeout = kwargs['requestTimeout']
+        if server_certificate_id is None and 'serverCertificateId' in kwargs:
+            server_certificate_id = kwargs['serverCertificateId']
+        if server_group_id is None and 'serverGroupId' in kwargs:
+            server_group_id = kwargs['serverGroupId']
+        if ssl_certificate_id is None and 'sslCertificateId' in kwargs:
+            ssl_certificate_id = kwargs['sslCertificateId']
+        if sticky_session is None and 'stickySession' in kwargs:
+            sticky_session = kwargs['stickySession']
+        if sticky_session_type is None and 'stickySessionType' in kwargs:
+            sticky_session_type = kwargs['stickySessionType']
+        if tls_cipher_policy is None and 'tlsCipherPolicy' in kwargs:
+            tls_cipher_policy = kwargs['tlsCipherPolicy']
+        if unhealthy_threshold is None and 'unhealthyThreshold' in kwargs:
+            unhealthy_threshold = kwargs['unhealthyThreshold']
+        if x_forwarded_for is None and 'xForwardedFor' in kwargs:
+            x_forwarded_for = kwargs['xForwardedFor']
+
         if acl_id is not None:
-            pulumi.set(__self__, "acl_id", acl_id)
+            _setter("acl_id", acl_id)
         if acl_status is not None:
-            pulumi.set(__self__, "acl_status", acl_status)
+            _setter("acl_status", acl_status)
         if acl_type is not None:
-            pulumi.set(__self__, "acl_type", acl_type)
+            _setter("acl_type", acl_type)
         if backend_port is not None:
-            pulumi.set(__self__, "backend_port", backend_port)
+            _setter("backend_port", backend_port)
         if bandwidth is not None:
-            pulumi.set(__self__, "bandwidth", bandwidth)
+            _setter("bandwidth", bandwidth)
         if ca_certificate_id is not None:
-            pulumi.set(__self__, "ca_certificate_id", ca_certificate_id)
+            _setter("ca_certificate_id", ca_certificate_id)
         if cookie is not None:
-            pulumi.set(__self__, "cookie", cookie)
+            _setter("cookie", cookie)
         if cookie_timeout is not None:
-            pulumi.set(__self__, "cookie_timeout", cookie_timeout)
+            _setter("cookie_timeout", cookie_timeout)
         if delete_protection_validation is not None:
-            pulumi.set(__self__, "delete_protection_validation", delete_protection_validation)
+            _setter("delete_protection_validation", delete_protection_validation)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enable_http2 is not None:
-            pulumi.set(__self__, "enable_http2", enable_http2)
+            _setter("enable_http2", enable_http2)
         if established_timeout is not None:
-            pulumi.set(__self__, "established_timeout", established_timeout)
+            _setter("established_timeout", established_timeout)
         if forward_port is not None:
-            pulumi.set(__self__, "forward_port", forward_port)
+            _setter("forward_port", forward_port)
         if frontend_port is not None:
-            pulumi.set(__self__, "frontend_port", frontend_port)
+            _setter("frontend_port", frontend_port)
         if gzip is not None:
-            pulumi.set(__self__, "gzip", gzip)
+            _setter("gzip", gzip)
         if health_check is not None:
-            pulumi.set(__self__, "health_check", health_check)
+            _setter("health_check", health_check)
         if health_check_connect_port is not None:
-            pulumi.set(__self__, "health_check_connect_port", health_check_connect_port)
+            _setter("health_check_connect_port", health_check_connect_port)
         if health_check_domain is not None:
-            pulumi.set(__self__, "health_check_domain", health_check_domain)
+            _setter("health_check_domain", health_check_domain)
         if health_check_http_code is not None:
-            pulumi.set(__self__, "health_check_http_code", health_check_http_code)
+            _setter("health_check_http_code", health_check_http_code)
         if health_check_interval is not None:
-            pulumi.set(__self__, "health_check_interval", health_check_interval)
+            _setter("health_check_interval", health_check_interval)
         if health_check_method is not None:
-            pulumi.set(__self__, "health_check_method", health_check_method)
+            _setter("health_check_method", health_check_method)
         if health_check_timeout is not None:
-            pulumi.set(__self__, "health_check_timeout", health_check_timeout)
+            _setter("health_check_timeout", health_check_timeout)
         if health_check_type is not None:
-            pulumi.set(__self__, "health_check_type", health_check_type)
+            _setter("health_check_type", health_check_type)
         if health_check_uri is not None:
-            pulumi.set(__self__, "health_check_uri", health_check_uri)
+            _setter("health_check_uri", health_check_uri)
         if healthy_threshold is not None:
-            pulumi.set(__self__, "healthy_threshold", healthy_threshold)
+            _setter("healthy_threshold", healthy_threshold)
         if idle_timeout is not None:
-            pulumi.set(__self__, "idle_timeout", idle_timeout)
+            _setter("idle_timeout", idle_timeout)
         if lb_port is not None:
             warnings.warn("""Field 'lb_port' has been removed since 1.211.0.""", DeprecationWarning)
             pulumi.log.warn("""lb_port is deprecated: Field 'lb_port' has been removed since 1.211.0.""")
         if lb_port is not None:
-            pulumi.set(__self__, "lb_port", lb_port)
+            _setter("lb_port", lb_port)
         if lb_protocol is not None:
             warnings.warn("""Field 'lb_protocol' has been removed since 1.211.0.""", DeprecationWarning)
             pulumi.log.warn("""lb_protocol is deprecated: Field 'lb_protocol' has been removed since 1.211.0.""")
         if lb_protocol is not None:
-            pulumi.set(__self__, "lb_protocol", lb_protocol)
+            _setter("lb_protocol", lb_protocol)
         if listener_forward is not None:
-            pulumi.set(__self__, "listener_forward", listener_forward)
+            _setter("listener_forward", listener_forward)
         if load_balancer_id is not None:
-            pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+            _setter("load_balancer_id", load_balancer_id)
         if master_slave_server_group_id is not None:
-            pulumi.set(__self__, "master_slave_server_group_id", master_slave_server_group_id)
+            _setter("master_slave_server_group_id", master_slave_server_group_id)
         if persistence_timeout is not None:
-            pulumi.set(__self__, "persistence_timeout", persistence_timeout)
+            _setter("persistence_timeout", persistence_timeout)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if proxy_protocol_v2_enabled is not None:
-            pulumi.set(__self__, "proxy_protocol_v2_enabled", proxy_protocol_v2_enabled)
+            _setter("proxy_protocol_v2_enabled", proxy_protocol_v2_enabled)
         if request_timeout is not None:
-            pulumi.set(__self__, "request_timeout", request_timeout)
+            _setter("request_timeout", request_timeout)
         if scheduler is not None:
-            pulumi.set(__self__, "scheduler", scheduler)
+            _setter("scheduler", scheduler)
         if server_certificate_id is not None:
-            pulumi.set(__self__, "server_certificate_id", server_certificate_id)
+            _setter("server_certificate_id", server_certificate_id)
         if server_group_id is not None:
-            pulumi.set(__self__, "server_group_id", server_group_id)
+            _setter("server_group_id", server_group_id)
         if ssl_certificate_id is not None:
             warnings.warn("""Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""", DeprecationWarning)
             pulumi.log.warn("""ssl_certificate_id is deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""")
         if ssl_certificate_id is not None:
-            pulumi.set(__self__, "ssl_certificate_id", ssl_certificate_id)
+            _setter("ssl_certificate_id", ssl_certificate_id)
         if sticky_session is not None:
-            pulumi.set(__self__, "sticky_session", sticky_session)
+            _setter("sticky_session", sticky_session)
         if sticky_session_type is not None:
-            pulumi.set(__self__, "sticky_session_type", sticky_session_type)
+            _setter("sticky_session_type", sticky_session_type)
         if tls_cipher_policy is not None:
-            pulumi.set(__self__, "tls_cipher_policy", tls_cipher_policy)
+            _setter("tls_cipher_policy", tls_cipher_policy)
         if unhealthy_threshold is not None:
-            pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
+            _setter("unhealthy_threshold", unhealthy_threshold)
         if x_forwarded_for is not None:
-            pulumi.set(__self__, "x_forwarded_for", x_forwarded_for)
+            _setter("x_forwarded_for", x_forwarded_for)
 
     @property
     @pulumi.getter(name="aclId")
@@ -1824,6 +2176,10 @@ class Listener(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ListenerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1931,6 +2287,11 @@ class Listener(pulumi.CustomResource):
             __props__.__dict__["sticky_session_type"] = sticky_session_type
             __props__.__dict__["tls_cipher_policy"] = tls_cipher_policy
             __props__.__dict__["unhealthy_threshold"] = unhealthy_threshold
+            if x_forwarded_for is not None and not isinstance(x_forwarded_for, ListenerXForwardedForArgs):
+                x_forwarded_for = x_forwarded_for or {}
+                def _setter(key, value):
+                    x_forwarded_for[key] = value
+                ListenerXForwardedForArgs._configure(_setter, **x_forwarded_for)
             __props__.__dict__["x_forwarded_for"] = x_forwarded_for
         super(Listener, __self__).__init__(
             'alicloud:slb/listener:Listener',

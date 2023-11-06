@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -34,8 +34,21 @@ class ServiceMeshExtraConfigurationArgs:
         """
         :param pulumi.Input[bool] cr_aggregation_enabled: Whether the data plane KubeAPI access capability is enabled. Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of true indicates that the Kubernetes API is used.
         """
+        ServiceMeshExtraConfigurationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cr_aggregation_enabled=cr_aggregation_enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cr_aggregation_enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cr_aggregation_enabled is None and 'crAggregationEnabled' in kwargs:
+            cr_aggregation_enabled = kwargs['crAggregationEnabled']
+
         if cr_aggregation_enabled is not None:
-            pulumi.set(__self__, "cr_aggregation_enabled", cr_aggregation_enabled)
+            _setter("cr_aggregation_enabled", cr_aggregation_enabled)
 
     @property
     @pulumi.getter(name="crAggregationEnabled")
@@ -63,14 +76,39 @@ class ServiceMeshLoadBalancerArgs:
         :param pulumi.Input[bool] pilot_public_eip: Indicates whether to use the IP address of a public network exposure Istio Pilot.
         :param pulumi.Input[str] pilot_public_loadbalancer_id: The IP address of a public network exposure Istio Pilot corresponds to the load balancing ID.
         """
+        ServiceMeshLoadBalancerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_server_loadbalancer_id=api_server_loadbalancer_id,
+            api_server_public_eip=api_server_public_eip,
+            pilot_public_eip=pilot_public_eip,
+            pilot_public_loadbalancer_id=pilot_public_loadbalancer_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_server_loadbalancer_id: Optional[pulumi.Input[str]] = None,
+             api_server_public_eip: Optional[pulumi.Input[bool]] = None,
+             pilot_public_eip: Optional[pulumi.Input[bool]] = None,
+             pilot_public_loadbalancer_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api_server_loadbalancer_id is None and 'apiServerLoadbalancerId' in kwargs:
+            api_server_loadbalancer_id = kwargs['apiServerLoadbalancerId']
+        if api_server_public_eip is None and 'apiServerPublicEip' in kwargs:
+            api_server_public_eip = kwargs['apiServerPublicEip']
+        if pilot_public_eip is None and 'pilotPublicEip' in kwargs:
+            pilot_public_eip = kwargs['pilotPublicEip']
+        if pilot_public_loadbalancer_id is None and 'pilotPublicLoadbalancerId' in kwargs:
+            pilot_public_loadbalancer_id = kwargs['pilotPublicLoadbalancerId']
+
         if api_server_loadbalancer_id is not None:
-            pulumi.set(__self__, "api_server_loadbalancer_id", api_server_loadbalancer_id)
+            _setter("api_server_loadbalancer_id", api_server_loadbalancer_id)
         if api_server_public_eip is not None:
-            pulumi.set(__self__, "api_server_public_eip", api_server_public_eip)
+            _setter("api_server_public_eip", api_server_public_eip)
         if pilot_public_eip is not None:
-            pulumi.set(__self__, "pilot_public_eip", pilot_public_eip)
+            _setter("pilot_public_eip", pilot_public_eip)
         if pilot_public_loadbalancer_id is not None:
-            pulumi.set(__self__, "pilot_public_loadbalancer_id", pilot_public_loadbalancer_id)
+            _setter("pilot_public_loadbalancer_id", pilot_public_loadbalancer_id)
 
     @property
     @pulumi.getter(name="apiServerLoadbalancerId")
@@ -156,36 +194,89 @@ class ServiceMeshMeshConfigArgs:
         :param pulumi.Input[bool] telemetry: Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
         :param pulumi.Input[bool] tracing: Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
         """
+        ServiceMeshMeshConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_log=access_log,
+            audit=audit,
+            control_plane_log=control_plane_log,
+            customized_zipkin=customized_zipkin,
+            enable_locality_lb=enable_locality_lb,
+            include_ip_ranges=include_ip_ranges,
+            kiali=kiali,
+            opa=opa,
+            outbound_traffic_policy=outbound_traffic_policy,
+            pilot=pilot,
+            prometheus=prometheus,
+            proxy=proxy,
+            sidecar_injector=sidecar_injector,
+            telemetry=telemetry,
+            tracing=tracing,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_log: Optional[pulumi.Input['ServiceMeshMeshConfigAccessLogArgs']] = None,
+             audit: Optional[pulumi.Input['ServiceMeshMeshConfigAuditArgs']] = None,
+             control_plane_log: Optional[pulumi.Input['ServiceMeshMeshConfigControlPlaneLogArgs']] = None,
+             customized_zipkin: Optional[pulumi.Input[bool]] = None,
+             enable_locality_lb: Optional[pulumi.Input[bool]] = None,
+             include_ip_ranges: Optional[pulumi.Input[str]] = None,
+             kiali: Optional[pulumi.Input['ServiceMeshMeshConfigKialiArgs']] = None,
+             opa: Optional[pulumi.Input['ServiceMeshMeshConfigOpaArgs']] = None,
+             outbound_traffic_policy: Optional[pulumi.Input[str]] = None,
+             pilot: Optional[pulumi.Input['ServiceMeshMeshConfigPilotArgs']] = None,
+             prometheus: Optional[pulumi.Input['ServiceMeshMeshConfigPrometheusArgs']] = None,
+             proxy: Optional[pulumi.Input['ServiceMeshMeshConfigProxyArgs']] = None,
+             sidecar_injector: Optional[pulumi.Input['ServiceMeshMeshConfigSidecarInjectorArgs']] = None,
+             telemetry: Optional[pulumi.Input[bool]] = None,
+             tracing: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_log is None and 'accessLog' in kwargs:
+            access_log = kwargs['accessLog']
+        if control_plane_log is None and 'controlPlaneLog' in kwargs:
+            control_plane_log = kwargs['controlPlaneLog']
+        if customized_zipkin is None and 'customizedZipkin' in kwargs:
+            customized_zipkin = kwargs['customizedZipkin']
+        if enable_locality_lb is None and 'enableLocalityLb' in kwargs:
+            enable_locality_lb = kwargs['enableLocalityLb']
+        if include_ip_ranges is None and 'includeIpRanges' in kwargs:
+            include_ip_ranges = kwargs['includeIpRanges']
+        if outbound_traffic_policy is None and 'outboundTrafficPolicy' in kwargs:
+            outbound_traffic_policy = kwargs['outboundTrafficPolicy']
+        if sidecar_injector is None and 'sidecarInjector' in kwargs:
+            sidecar_injector = kwargs['sidecarInjector']
+
         if access_log is not None:
-            pulumi.set(__self__, "access_log", access_log)
+            _setter("access_log", access_log)
         if audit is not None:
-            pulumi.set(__self__, "audit", audit)
+            _setter("audit", audit)
         if control_plane_log is not None:
-            pulumi.set(__self__, "control_plane_log", control_plane_log)
+            _setter("control_plane_log", control_plane_log)
         if customized_zipkin is not None:
-            pulumi.set(__self__, "customized_zipkin", customized_zipkin)
+            _setter("customized_zipkin", customized_zipkin)
         if enable_locality_lb is not None:
-            pulumi.set(__self__, "enable_locality_lb", enable_locality_lb)
+            _setter("enable_locality_lb", enable_locality_lb)
         if include_ip_ranges is not None:
-            pulumi.set(__self__, "include_ip_ranges", include_ip_ranges)
+            _setter("include_ip_ranges", include_ip_ranges)
         if kiali is not None:
-            pulumi.set(__self__, "kiali", kiali)
+            _setter("kiali", kiali)
         if opa is not None:
-            pulumi.set(__self__, "opa", opa)
+            _setter("opa", opa)
         if outbound_traffic_policy is not None:
-            pulumi.set(__self__, "outbound_traffic_policy", outbound_traffic_policy)
+            _setter("outbound_traffic_policy", outbound_traffic_policy)
         if pilot is not None:
-            pulumi.set(__self__, "pilot", pilot)
+            _setter("pilot", pilot)
         if prometheus is not None:
-            pulumi.set(__self__, "prometheus", prometheus)
+            _setter("prometheus", prometheus)
         if proxy is not None:
-            pulumi.set(__self__, "proxy", proxy)
+            _setter("proxy", proxy)
         if sidecar_injector is not None:
-            pulumi.set(__self__, "sidecar_injector", sidecar_injector)
+            _setter("sidecar_injector", sidecar_injector)
         if telemetry is not None:
-            pulumi.set(__self__, "telemetry", telemetry)
+            _setter("telemetry", telemetry)
         if tracing is not None:
-            pulumi.set(__self__, "tracing", tracing)
+            _setter("tracing", tracing)
 
     @property
     @pulumi.getter(name="accessLog")
@@ -377,10 +468,23 @@ class ServiceMeshMeshConfigAccessLogArgs:
         :param pulumi.Input[bool] enabled: Enable CNI.
         :param pulumi.Input[str] project: The name of the SLS Project to which the control plane logs are collected.
         """
+        ServiceMeshMeshConfigAccessLogArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -416,10 +520,23 @@ class ServiceMeshMeshConfigAuditArgs:
         :param pulumi.Input[bool] enabled: Enable CNI.
         :param pulumi.Input[str] project: The name of the SLS Project to which the control plane logs are collected.
         """
+        ServiceMeshMeshConfigAuditArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -455,10 +572,23 @@ class ServiceMeshMeshConfigControlPlaneLogArgs:
         :param pulumi.Input[bool] enabled: Enable CNI.
         :param pulumi.Input[str] project: The name of the SLS Project to which the control plane logs are collected.
         """
+        ServiceMeshMeshConfigControlPlaneLogArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -494,10 +624,23 @@ class ServiceMeshMeshConfigKialiArgs:
         :param pulumi.Input[bool] enabled: Enable CNI.
         :param pulumi.Input[str] url: Grid topology service address.
         """
+        ServiceMeshMeshConfigKialiArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
 
     @property
     @pulumi.getter
@@ -541,18 +684,49 @@ class ServiceMeshMeshConfigOpaArgs:
         :param pulumi.Input[str] request_cpu: Sidecar injector Pods on the requested resource.
         :param pulumi.Input[str] request_memory: Sidecar injector Pods on the requested resource.
         """
+        ServiceMeshMeshConfigOpaArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            limit_cpu=limit_cpu,
+            limit_memory=limit_memory,
+            log_level=log_level,
+            request_cpu=request_cpu,
+            request_memory=request_memory,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             limit_cpu: Optional[pulumi.Input[str]] = None,
+             limit_memory: Optional[pulumi.Input[str]] = None,
+             log_level: Optional[pulumi.Input[str]] = None,
+             request_cpu: Optional[pulumi.Input[str]] = None,
+             request_memory: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if limit_cpu is None and 'limitCpu' in kwargs:
+            limit_cpu = kwargs['limitCpu']
+        if limit_memory is None and 'limitMemory' in kwargs:
+            limit_memory = kwargs['limitMemory']
+        if log_level is None and 'logLevel' in kwargs:
+            log_level = kwargs['logLevel']
+        if request_cpu is None and 'requestCpu' in kwargs:
+            request_cpu = kwargs['requestCpu']
+        if request_memory is None and 'requestMemory' in kwargs:
+            request_memory = kwargs['requestMemory']
+
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if limit_cpu is not None:
-            pulumi.set(__self__, "limit_cpu", limit_cpu)
+            _setter("limit_cpu", limit_cpu)
         if limit_memory is not None:
-            pulumi.set(__self__, "limit_memory", limit_memory)
+            _setter("limit_memory", limit_memory)
         if log_level is not None:
-            pulumi.set(__self__, "log_level", log_level)
+            _setter("log_level", log_level)
         if request_cpu is not None:
-            pulumi.set(__self__, "request_cpu", request_cpu)
+            _setter("request_cpu", request_cpu)
         if request_memory is not None:
-            pulumi.set(__self__, "request_memory", request_memory)
+            _setter("request_memory", request_memory)
 
     @property
     @pulumi.getter
@@ -636,10 +810,27 @@ class ServiceMeshMeshConfigPilotArgs:
         :param pulumi.Input[bool] http10_enabled: Whether to support the HTTP1.0.
         :param pulumi.Input[float] trace_sampling: Link trace sampling percentage.
         """
+        ServiceMeshMeshConfigPilotArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            http10_enabled=http10_enabled,
+            trace_sampling=trace_sampling,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             http10_enabled: Optional[pulumi.Input[bool]] = None,
+             trace_sampling: Optional[pulumi.Input[float]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if http10_enabled is None and 'http10Enabled' in kwargs:
+            http10_enabled = kwargs['http10Enabled']
+        if trace_sampling is None and 'traceSampling' in kwargs:
+            trace_sampling = kwargs['traceSampling']
+
         if http10_enabled is not None:
-            pulumi.set(__self__, "http10_enabled", http10_enabled)
+            _setter("http10_enabled", http10_enabled)
         if trace_sampling is not None:
-            pulumi.set(__self__, "trace_sampling", trace_sampling)
+            _setter("trace_sampling", trace_sampling)
 
     @property
     @pulumi.getter(name="http10Enabled")
@@ -675,10 +866,27 @@ class ServiceMeshMeshConfigPrometheusArgs:
         :param pulumi.Input[str] external_url: Prometheus service addresses (enabled external Prometheus when the system automatically populates).
         :param pulumi.Input[bool] use_external: Whether to enable external Prometheus.
         """
+        ServiceMeshMeshConfigPrometheusArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            external_url=external_url,
+            use_external=use_external,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             external_url: Optional[pulumi.Input[str]] = None,
+             use_external: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if external_url is None and 'externalUrl' in kwargs:
+            external_url = kwargs['externalUrl']
+        if use_external is None and 'useExternal' in kwargs:
+            use_external = kwargs['useExternal']
+
         if external_url is not None:
-            pulumi.set(__self__, "external_url", external_url)
+            _setter("external_url", external_url)
         if use_external is not None:
-            pulumi.set(__self__, "use_external", use_external)
+            _setter("use_external", use_external)
 
     @property
     @pulumi.getter(name="externalUrl")
@@ -720,16 +928,45 @@ class ServiceMeshMeshConfigProxyArgs:
         :param pulumi.Input[str] request_cpu: Sidecar injector Pods on the requested resource.
         :param pulumi.Input[str] request_memory: Sidecar injector Pods on the requested resource.
         """
+        ServiceMeshMeshConfigProxyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_domain=cluster_domain,
+            limit_cpu=limit_cpu,
+            limit_memory=limit_memory,
+            request_cpu=request_cpu,
+            request_memory=request_memory,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_domain: Optional[pulumi.Input[str]] = None,
+             limit_cpu: Optional[pulumi.Input[str]] = None,
+             limit_memory: Optional[pulumi.Input[str]] = None,
+             request_cpu: Optional[pulumi.Input[str]] = None,
+             request_memory: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_domain is None and 'clusterDomain' in kwargs:
+            cluster_domain = kwargs['clusterDomain']
+        if limit_cpu is None and 'limitCpu' in kwargs:
+            limit_cpu = kwargs['limitCpu']
+        if limit_memory is None and 'limitMemory' in kwargs:
+            limit_memory = kwargs['limitMemory']
+        if request_cpu is None and 'requestCpu' in kwargs:
+            request_cpu = kwargs['requestCpu']
+        if request_memory is None and 'requestMemory' in kwargs:
+            request_memory = kwargs['requestMemory']
+
         if cluster_domain is not None:
-            pulumi.set(__self__, "cluster_domain", cluster_domain)
+            _setter("cluster_domain", cluster_domain)
         if limit_cpu is not None:
-            pulumi.set(__self__, "limit_cpu", limit_cpu)
+            _setter("limit_cpu", limit_cpu)
         if limit_memory is not None:
-            pulumi.set(__self__, "limit_memory", limit_memory)
+            _setter("limit_memory", limit_memory)
         if request_cpu is not None:
-            pulumi.set(__self__, "request_cpu", request_cpu)
+            _setter("request_cpu", request_cpu)
         if request_memory is not None:
-            pulumi.set(__self__, "request_memory", request_memory)
+            _setter("request_memory", request_memory)
 
     @property
     @pulumi.getter(name="clusterDomain")
@@ -813,22 +1050,63 @@ class ServiceMeshMeshConfigSidecarInjectorArgs:
         :param pulumi.Input[str] request_memory: Sidecar injector Pods on the requested resource.
         :param pulumi.Input[str] sidecar_injector_webhook_as_yaml: Other configurations of automatically injected sidecar (in YAML format).
         """
+        ServiceMeshMeshConfigSidecarInjectorArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_injection_policy_enabled=auto_injection_policy_enabled,
+            enable_namespaces_by_default=enable_namespaces_by_default,
+            init_cni_configuration=init_cni_configuration,
+            limit_cpu=limit_cpu,
+            limit_memory=limit_memory,
+            request_cpu=request_cpu,
+            request_memory=request_memory,
+            sidecar_injector_webhook_as_yaml=sidecar_injector_webhook_as_yaml,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_injection_policy_enabled: Optional[pulumi.Input[bool]] = None,
+             enable_namespaces_by_default: Optional[pulumi.Input[bool]] = None,
+             init_cni_configuration: Optional[pulumi.Input['ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs']] = None,
+             limit_cpu: Optional[pulumi.Input[str]] = None,
+             limit_memory: Optional[pulumi.Input[str]] = None,
+             request_cpu: Optional[pulumi.Input[str]] = None,
+             request_memory: Optional[pulumi.Input[str]] = None,
+             sidecar_injector_webhook_as_yaml: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_injection_policy_enabled is None and 'autoInjectionPolicyEnabled' in kwargs:
+            auto_injection_policy_enabled = kwargs['autoInjectionPolicyEnabled']
+        if enable_namespaces_by_default is None and 'enableNamespacesByDefault' in kwargs:
+            enable_namespaces_by_default = kwargs['enableNamespacesByDefault']
+        if init_cni_configuration is None and 'initCniConfiguration' in kwargs:
+            init_cni_configuration = kwargs['initCniConfiguration']
+        if limit_cpu is None and 'limitCpu' in kwargs:
+            limit_cpu = kwargs['limitCpu']
+        if limit_memory is None and 'limitMemory' in kwargs:
+            limit_memory = kwargs['limitMemory']
+        if request_cpu is None and 'requestCpu' in kwargs:
+            request_cpu = kwargs['requestCpu']
+        if request_memory is None and 'requestMemory' in kwargs:
+            request_memory = kwargs['requestMemory']
+        if sidecar_injector_webhook_as_yaml is None and 'sidecarInjectorWebhookAsYaml' in kwargs:
+            sidecar_injector_webhook_as_yaml = kwargs['sidecarInjectorWebhookAsYaml']
+
         if auto_injection_policy_enabled is not None:
-            pulumi.set(__self__, "auto_injection_policy_enabled", auto_injection_policy_enabled)
+            _setter("auto_injection_policy_enabled", auto_injection_policy_enabled)
         if enable_namespaces_by_default is not None:
-            pulumi.set(__self__, "enable_namespaces_by_default", enable_namespaces_by_default)
+            _setter("enable_namespaces_by_default", enable_namespaces_by_default)
         if init_cni_configuration is not None:
-            pulumi.set(__self__, "init_cni_configuration", init_cni_configuration)
+            _setter("init_cni_configuration", init_cni_configuration)
         if limit_cpu is not None:
-            pulumi.set(__self__, "limit_cpu", limit_cpu)
+            _setter("limit_cpu", limit_cpu)
         if limit_memory is not None:
-            pulumi.set(__self__, "limit_memory", limit_memory)
+            _setter("limit_memory", limit_memory)
         if request_cpu is not None:
-            pulumi.set(__self__, "request_cpu", request_cpu)
+            _setter("request_cpu", request_cpu)
         if request_memory is not None:
-            pulumi.set(__self__, "request_memory", request_memory)
+            _setter("request_memory", request_memory)
         if sidecar_injector_webhook_as_yaml is not None:
-            pulumi.set(__self__, "sidecar_injector_webhook_as_yaml", sidecar_injector_webhook_as_yaml)
+            _setter("sidecar_injector_webhook_as_yaml", sidecar_injector_webhook_as_yaml)
 
     @property
     @pulumi.getter(name="autoInjectionPolicyEnabled")
@@ -936,10 +1214,25 @@ class ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs:
         :param pulumi.Input[bool] enabled: Enable CNI.
         :param pulumi.Input[str] exclude_namespaces: The excluded namespace.
         """
+        ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            exclude_namespaces=exclude_namespaces,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             exclude_namespaces: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if exclude_namespaces is None and 'excludeNamespaces' in kwargs:
+            exclude_namespaces = kwargs['excludeNamespaces']
+
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if exclude_namespaces is not None:
-            pulumi.set(__self__, "exclude_namespaces", exclude_namespaces)
+            _setter("exclude_namespaces", exclude_namespaces)
 
     @property
     @pulumi.getter
@@ -977,10 +1270,35 @@ class ServiceMeshNetworkArgs:
         :param pulumi.Input[str] vswitche_list: Virtual Switch ID.
         :param pulumi.Input[str] security_group_id: Security group ID.
         """
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitche_list", vswitche_list)
+        ServiceMeshNetworkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            vpc_id=vpc_id,
+            vswitche_list=vswitche_list,
+            security_group_id=security_group_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitche_list: Optional[pulumi.Input[str]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitche_list is None and 'vswitcheList' in kwargs:
+            vswitche_list = kwargs['vswitcheList']
+        if vswitche_list is None:
+            raise TypeError("Missing 'vswitche_list' argument")
+        if security_group_id is None and 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+
+        _setter("vpc_id", vpc_id)
+        _setter("vswitche_list", vswitche_list)
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -1037,16 +1355,45 @@ class UserPermissionPermissionArgs:
         :param pulumi.Input[str] role_type: The role type. Valid Value: `custom`.
         :param pulumi.Input[str] service_mesh_id: The service mesh id.
         """
+        UserPermissionPermissionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            is_custom=is_custom,
+            is_ram_role=is_ram_role,
+            role_name=role_name,
+            role_type=role_type,
+            service_mesh_id=service_mesh_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             is_custom: Optional[pulumi.Input[bool]] = None,
+             is_ram_role: Optional[pulumi.Input[bool]] = None,
+             role_name: Optional[pulumi.Input[str]] = None,
+             role_type: Optional[pulumi.Input[str]] = None,
+             service_mesh_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if is_custom is None and 'isCustom' in kwargs:
+            is_custom = kwargs['isCustom']
+        if is_ram_role is None and 'isRamRole' in kwargs:
+            is_ram_role = kwargs['isRamRole']
+        if role_name is None and 'roleName' in kwargs:
+            role_name = kwargs['roleName']
+        if role_type is None and 'roleType' in kwargs:
+            role_type = kwargs['roleType']
+        if service_mesh_id is None and 'serviceMeshId' in kwargs:
+            service_mesh_id = kwargs['serviceMeshId']
+
         if is_custom is not None:
-            pulumi.set(__self__, "is_custom", is_custom)
+            _setter("is_custom", is_custom)
         if is_ram_role is not None:
-            pulumi.set(__self__, "is_ram_role", is_ram_role)
+            _setter("is_ram_role", is_ram_role)
         if role_name is not None:
-            pulumi.set(__self__, "role_name", role_name)
+            _setter("role_name", role_name)
         if role_type is not None:
-            pulumi.set(__self__, "role_type", role_type)
+            _setter("role_type", role_type)
         if service_mesh_id is not None:
-            pulumi.set(__self__, "service_mesh_id", service_mesh_id)
+            _setter("service_mesh_id", service_mesh_id)
 
     @property
     @pulumi.getter(name="isCustom")

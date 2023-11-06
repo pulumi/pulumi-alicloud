@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ServiceLinkedRoleArgs', 'ServiceLinkedRole']
@@ -19,7 +19,22 @@ class ServiceLinkedRoleArgs:
         The set of arguments for constructing a ServiceLinkedRole resource.
         :param pulumi.Input[str] product_name: The product name for SLR. Dbfs can automatically create the following service-linked roles: `AliyunServiceRoleForDbfs`.
         """
-        pulumi.set(__self__, "product_name", product_name)
+        ServiceLinkedRoleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            product_name=product_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             product_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if product_name is None and 'productName' in kwargs:
+            product_name = kwargs['productName']
+        if product_name is None:
+            raise TypeError("Missing 'product_name' argument")
+
+        _setter("product_name", product_name)
 
     @property
     @pulumi.getter(name="productName")
@@ -44,10 +59,25 @@ class _ServiceLinkedRoleState:
         :param pulumi.Input[str] product_name: The product name for SLR. Dbfs can automatically create the following service-linked roles: `AliyunServiceRoleForDbfs`.
         :param pulumi.Input[bool] status: The status of the service Associated role. Valid Values: `true`: Created. `false`: not created.
         """
+        _ServiceLinkedRoleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            product_name=product_name,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             product_name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if product_name is None and 'productName' in kwargs:
+            product_name = kwargs['productName']
+
         if product_name is not None:
-            pulumi.set(__self__, "product_name", product_name)
+            _setter("product_name", product_name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="productName")
@@ -149,6 +179,10 @@ class ServiceLinkedRole(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ServiceLinkedRoleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

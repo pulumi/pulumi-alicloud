@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -72,33 +72,200 @@ class GetBackupPlansPlanResult(dict):
         :param str source_endpoint_user_name: The source endpoint username.
         :param str status: The status of the resource.
         """
-        pulumi.set(__self__, "backup_gateway_id", backup_gateway_id)
-        pulumi.set(__self__, "backup_method", backup_method)
-        pulumi.set(__self__, "backup_objects", backup_objects)
-        pulumi.set(__self__, "backup_period", backup_period)
-        pulumi.set(__self__, "backup_plan_id", backup_plan_id)
-        pulumi.set(__self__, "backup_plan_name", backup_plan_name)
-        pulumi.set(__self__, "backup_retention_period", backup_retention_period)
-        pulumi.set(__self__, "backup_start_time", backup_start_time)
-        pulumi.set(__self__, "backup_storage_type", backup_storage_type)
-        pulumi.set(__self__, "cross_aliyun_id", cross_aliyun_id)
-        pulumi.set(__self__, "cross_role_name", cross_role_name)
-        pulumi.set(__self__, "database_type", database_type)
-        pulumi.set(__self__, "duplication_archive_period", duplication_archive_period)
-        pulumi.set(__self__, "duplication_infrequent_access_period", duplication_infrequent_access_period)
-        pulumi.set(__self__, "enable_backup_log", enable_backup_log)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_class", instance_class)
-        pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "source_endpoint_database_name", source_endpoint_database_name)
-        pulumi.set(__self__, "source_endpoint_instance_id", source_endpoint_instance_id)
-        pulumi.set(__self__, "source_endpoint_instance_type", source_endpoint_instance_type)
-        pulumi.set(__self__, "source_endpoint_region", source_endpoint_region)
-        pulumi.set(__self__, "source_endpoint_sid", source_endpoint_sid)
-        pulumi.set(__self__, "source_endpoint_user_name", source_endpoint_user_name)
-        pulumi.set(__self__, "status", status)
+        GetBackupPlansPlanResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_gateway_id=backup_gateway_id,
+            backup_method=backup_method,
+            backup_objects=backup_objects,
+            backup_period=backup_period,
+            backup_plan_id=backup_plan_id,
+            backup_plan_name=backup_plan_name,
+            backup_retention_period=backup_retention_period,
+            backup_start_time=backup_start_time,
+            backup_storage_type=backup_storage_type,
+            cross_aliyun_id=cross_aliyun_id,
+            cross_role_name=cross_role_name,
+            database_type=database_type,
+            duplication_archive_period=duplication_archive_period,
+            duplication_infrequent_access_period=duplication_infrequent_access_period,
+            enable_backup_log=enable_backup_log,
+            id=id,
+            instance_class=instance_class,
+            oss_bucket_name=oss_bucket_name,
+            payment_type=payment_type,
+            resource_group_id=resource_group_id,
+            source_endpoint_database_name=source_endpoint_database_name,
+            source_endpoint_instance_id=source_endpoint_instance_id,
+            source_endpoint_instance_type=source_endpoint_instance_type,
+            source_endpoint_region=source_endpoint_region,
+            source_endpoint_sid=source_endpoint_sid,
+            source_endpoint_user_name=source_endpoint_user_name,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_gateway_id: Optional[str] = None,
+             backup_method: Optional[str] = None,
+             backup_objects: Optional[str] = None,
+             backup_period: Optional[str] = None,
+             backup_plan_id: Optional[str] = None,
+             backup_plan_name: Optional[str] = None,
+             backup_retention_period: Optional[int] = None,
+             backup_start_time: Optional[str] = None,
+             backup_storage_type: Optional[str] = None,
+             cross_aliyun_id: Optional[str] = None,
+             cross_role_name: Optional[str] = None,
+             database_type: Optional[str] = None,
+             duplication_archive_period: Optional[int] = None,
+             duplication_infrequent_access_period: Optional[int] = None,
+             enable_backup_log: Optional[bool] = None,
+             id: Optional[str] = None,
+             instance_class: Optional[str] = None,
+             oss_bucket_name: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             source_endpoint_database_name: Optional[str] = None,
+             source_endpoint_instance_id: Optional[str] = None,
+             source_endpoint_instance_type: Optional[str] = None,
+             source_endpoint_region: Optional[str] = None,
+             source_endpoint_sid: Optional[str] = None,
+             source_endpoint_user_name: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backup_gateway_id is None and 'backupGatewayId' in kwargs:
+            backup_gateway_id = kwargs['backupGatewayId']
+        if backup_gateway_id is None:
+            raise TypeError("Missing 'backup_gateway_id' argument")
+        if backup_method is None and 'backupMethod' in kwargs:
+            backup_method = kwargs['backupMethod']
+        if backup_method is None:
+            raise TypeError("Missing 'backup_method' argument")
+        if backup_objects is None and 'backupObjects' in kwargs:
+            backup_objects = kwargs['backupObjects']
+        if backup_objects is None:
+            raise TypeError("Missing 'backup_objects' argument")
+        if backup_period is None and 'backupPeriod' in kwargs:
+            backup_period = kwargs['backupPeriod']
+        if backup_period is None:
+            raise TypeError("Missing 'backup_period' argument")
+        if backup_plan_id is None and 'backupPlanId' in kwargs:
+            backup_plan_id = kwargs['backupPlanId']
+        if backup_plan_id is None:
+            raise TypeError("Missing 'backup_plan_id' argument")
+        if backup_plan_name is None and 'backupPlanName' in kwargs:
+            backup_plan_name = kwargs['backupPlanName']
+        if backup_plan_name is None:
+            raise TypeError("Missing 'backup_plan_name' argument")
+        if backup_retention_period is None and 'backupRetentionPeriod' in kwargs:
+            backup_retention_period = kwargs['backupRetentionPeriod']
+        if backup_retention_period is None:
+            raise TypeError("Missing 'backup_retention_period' argument")
+        if backup_start_time is None and 'backupStartTime' in kwargs:
+            backup_start_time = kwargs['backupStartTime']
+        if backup_start_time is None:
+            raise TypeError("Missing 'backup_start_time' argument")
+        if backup_storage_type is None and 'backupStorageType' in kwargs:
+            backup_storage_type = kwargs['backupStorageType']
+        if backup_storage_type is None:
+            raise TypeError("Missing 'backup_storage_type' argument")
+        if cross_aliyun_id is None and 'crossAliyunId' in kwargs:
+            cross_aliyun_id = kwargs['crossAliyunId']
+        if cross_aliyun_id is None:
+            raise TypeError("Missing 'cross_aliyun_id' argument")
+        if cross_role_name is None and 'crossRoleName' in kwargs:
+            cross_role_name = kwargs['crossRoleName']
+        if cross_role_name is None:
+            raise TypeError("Missing 'cross_role_name' argument")
+        if database_type is None and 'databaseType' in kwargs:
+            database_type = kwargs['databaseType']
+        if database_type is None:
+            raise TypeError("Missing 'database_type' argument")
+        if duplication_archive_period is None and 'duplicationArchivePeriod' in kwargs:
+            duplication_archive_period = kwargs['duplicationArchivePeriod']
+        if duplication_archive_period is None:
+            raise TypeError("Missing 'duplication_archive_period' argument")
+        if duplication_infrequent_access_period is None and 'duplicationInfrequentAccessPeriod' in kwargs:
+            duplication_infrequent_access_period = kwargs['duplicationInfrequentAccessPeriod']
+        if duplication_infrequent_access_period is None:
+            raise TypeError("Missing 'duplication_infrequent_access_period' argument")
+        if enable_backup_log is None and 'enableBackupLog' in kwargs:
+            enable_backup_log = kwargs['enableBackupLog']
+        if enable_backup_log is None:
+            raise TypeError("Missing 'enable_backup_log' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_class is None and 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if instance_class is None:
+            raise TypeError("Missing 'instance_class' argument")
+        if oss_bucket_name is None and 'ossBucketName' in kwargs:
+            oss_bucket_name = kwargs['ossBucketName']
+        if oss_bucket_name is None:
+            raise TypeError("Missing 'oss_bucket_name' argument")
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if source_endpoint_database_name is None and 'sourceEndpointDatabaseName' in kwargs:
+            source_endpoint_database_name = kwargs['sourceEndpointDatabaseName']
+        if source_endpoint_database_name is None:
+            raise TypeError("Missing 'source_endpoint_database_name' argument")
+        if source_endpoint_instance_id is None and 'sourceEndpointInstanceId' in kwargs:
+            source_endpoint_instance_id = kwargs['sourceEndpointInstanceId']
+        if source_endpoint_instance_id is None:
+            raise TypeError("Missing 'source_endpoint_instance_id' argument")
+        if source_endpoint_instance_type is None and 'sourceEndpointInstanceType' in kwargs:
+            source_endpoint_instance_type = kwargs['sourceEndpointInstanceType']
+        if source_endpoint_instance_type is None:
+            raise TypeError("Missing 'source_endpoint_instance_type' argument")
+        if source_endpoint_region is None and 'sourceEndpointRegion' in kwargs:
+            source_endpoint_region = kwargs['sourceEndpointRegion']
+        if source_endpoint_region is None:
+            raise TypeError("Missing 'source_endpoint_region' argument")
+        if source_endpoint_sid is None and 'sourceEndpointSid' in kwargs:
+            source_endpoint_sid = kwargs['sourceEndpointSid']
+        if source_endpoint_sid is None:
+            raise TypeError("Missing 'source_endpoint_sid' argument")
+        if source_endpoint_user_name is None and 'sourceEndpointUserName' in kwargs:
+            source_endpoint_user_name = kwargs['sourceEndpointUserName']
+        if source_endpoint_user_name is None:
+            raise TypeError("Missing 'source_endpoint_user_name' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+
+        _setter("backup_gateway_id", backup_gateway_id)
+        _setter("backup_method", backup_method)
+        _setter("backup_objects", backup_objects)
+        _setter("backup_period", backup_period)
+        _setter("backup_plan_id", backup_plan_id)
+        _setter("backup_plan_name", backup_plan_name)
+        _setter("backup_retention_period", backup_retention_period)
+        _setter("backup_start_time", backup_start_time)
+        _setter("backup_storage_type", backup_storage_type)
+        _setter("cross_aliyun_id", cross_aliyun_id)
+        _setter("cross_role_name", cross_role_name)
+        _setter("database_type", database_type)
+        _setter("duplication_archive_period", duplication_archive_period)
+        _setter("duplication_infrequent_access_period", duplication_infrequent_access_period)
+        _setter("enable_backup_log", enable_backup_log)
+        _setter("id", id)
+        _setter("instance_class", instance_class)
+        _setter("oss_bucket_name", oss_bucket_name)
+        _setter("payment_type", payment_type)
+        _setter("resource_group_id", resource_group_id)
+        _setter("source_endpoint_database_name", source_endpoint_database_name)
+        _setter("source_endpoint_instance_id", source_endpoint_instance_id)
+        _setter("source_endpoint_instance_type", source_endpoint_instance_type)
+        _setter("source_endpoint_region", source_endpoint_region)
+        _setter("source_endpoint_sid", source_endpoint_sid)
+        _setter("source_endpoint_user_name", source_endpoint_user_name)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="backupGatewayId")

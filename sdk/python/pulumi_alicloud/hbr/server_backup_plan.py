@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,19 +37,66 @@ class ServerBackupPlanArgs:
         :param pulumi.Input[int] cross_account_user_id: The original account ID of the cross account backup managed by the current account.
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         """
-        pulumi.set(__self__, "details", details)
-        pulumi.set(__self__, "ecs_server_backup_plan_name", ecs_server_backup_plan_name)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "retention", retention)
-        pulumi.set(__self__, "schedule", schedule)
+        ServerBackupPlanArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            details=details,
+            ecs_server_backup_plan_name=ecs_server_backup_plan_name,
+            instance_id=instance_id,
+            retention=retention,
+            schedule=schedule,
+            cross_account_role_name=cross_account_role_name,
+            cross_account_type=cross_account_type,
+            cross_account_user_id=cross_account_user_id,
+            disabled=disabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             details: Optional[pulumi.Input[Sequence[pulumi.Input['ServerBackupPlanDetailArgs']]]] = None,
+             ecs_server_backup_plan_name: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             retention: Optional[pulumi.Input[int]] = None,
+             schedule: Optional[pulumi.Input[str]] = None,
+             cross_account_role_name: Optional[pulumi.Input[str]] = None,
+             cross_account_type: Optional[pulumi.Input[str]] = None,
+             cross_account_user_id: Optional[pulumi.Input[int]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if details is None:
+            raise TypeError("Missing 'details' argument")
+        if ecs_server_backup_plan_name is None and 'ecsServerBackupPlanName' in kwargs:
+            ecs_server_backup_plan_name = kwargs['ecsServerBackupPlanName']
+        if ecs_server_backup_plan_name is None:
+            raise TypeError("Missing 'ecs_server_backup_plan_name' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if retention is None:
+            raise TypeError("Missing 'retention' argument")
+        if schedule is None:
+            raise TypeError("Missing 'schedule' argument")
+        if cross_account_role_name is None and 'crossAccountRoleName' in kwargs:
+            cross_account_role_name = kwargs['crossAccountRoleName']
+        if cross_account_type is None and 'crossAccountType' in kwargs:
+            cross_account_type = kwargs['crossAccountType']
+        if cross_account_user_id is None and 'crossAccountUserId' in kwargs:
+            cross_account_user_id = kwargs['crossAccountUserId']
+
+        _setter("details", details)
+        _setter("ecs_server_backup_plan_name", ecs_server_backup_plan_name)
+        _setter("instance_id", instance_id)
+        _setter("retention", retention)
+        _setter("schedule", schedule)
         if cross_account_role_name is not None:
-            pulumi.set(__self__, "cross_account_role_name", cross_account_role_name)
+            _setter("cross_account_role_name", cross_account_role_name)
         if cross_account_type is not None:
-            pulumi.set(__self__, "cross_account_type", cross_account_type)
+            _setter("cross_account_type", cross_account_type)
         if cross_account_user_id is not None:
-            pulumi.set(__self__, "cross_account_user_id", cross_account_user_id)
+            _setter("cross_account_user_id", cross_account_user_id)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
 
     @property
     @pulumi.getter
@@ -184,24 +231,61 @@ class _ServerBackupPlanState:
         :param pulumi.Input[int] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`
         """
+        _ServerBackupPlanState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cross_account_role_name=cross_account_role_name,
+            cross_account_type=cross_account_type,
+            cross_account_user_id=cross_account_user_id,
+            details=details,
+            disabled=disabled,
+            ecs_server_backup_plan_name=ecs_server_backup_plan_name,
+            instance_id=instance_id,
+            retention=retention,
+            schedule=schedule,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cross_account_role_name: Optional[pulumi.Input[str]] = None,
+             cross_account_type: Optional[pulumi.Input[str]] = None,
+             cross_account_user_id: Optional[pulumi.Input[int]] = None,
+             details: Optional[pulumi.Input[Sequence[pulumi.Input['ServerBackupPlanDetailArgs']]]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             ecs_server_backup_plan_name: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             retention: Optional[pulumi.Input[int]] = None,
+             schedule: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cross_account_role_name is None and 'crossAccountRoleName' in kwargs:
+            cross_account_role_name = kwargs['crossAccountRoleName']
+        if cross_account_type is None and 'crossAccountType' in kwargs:
+            cross_account_type = kwargs['crossAccountType']
+        if cross_account_user_id is None and 'crossAccountUserId' in kwargs:
+            cross_account_user_id = kwargs['crossAccountUserId']
+        if ecs_server_backup_plan_name is None and 'ecsServerBackupPlanName' in kwargs:
+            ecs_server_backup_plan_name = kwargs['ecsServerBackupPlanName']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if cross_account_role_name is not None:
-            pulumi.set(__self__, "cross_account_role_name", cross_account_role_name)
+            _setter("cross_account_role_name", cross_account_role_name)
         if cross_account_type is not None:
-            pulumi.set(__self__, "cross_account_type", cross_account_type)
+            _setter("cross_account_type", cross_account_type)
         if cross_account_user_id is not None:
-            pulumi.set(__self__, "cross_account_user_id", cross_account_user_id)
+            _setter("cross_account_user_id", cross_account_user_id)
         if details is not None:
-            pulumi.set(__self__, "details", details)
+            _setter("details", details)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if ecs_server_backup_plan_name is not None:
-            pulumi.set(__self__, "ecs_server_backup_plan_name", ecs_server_backup_plan_name)
+            _setter("ecs_server_backup_plan_name", ecs_server_backup_plan_name)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if retention is not None:
-            pulumi.set(__self__, "retention", retention)
+            _setter("retention", retention)
         if schedule is not None:
-            pulumi.set(__self__, "schedule", schedule)
+            _setter("schedule", schedule)
 
     @property
     @pulumi.getter(name="crossAccountRoleName")
@@ -471,6 +555,10 @@ class ServerBackupPlan(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ServerBackupPlanArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

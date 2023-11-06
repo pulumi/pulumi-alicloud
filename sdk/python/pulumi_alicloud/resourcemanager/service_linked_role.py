@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ServiceLinkedRoleArgs', 'ServiceLinkedRole']
@@ -23,11 +23,32 @@ class ServiceLinkedRoleArgs:
         :param pulumi.Input[str] custom_suffix: The suffix of the role name. Only a few service linked roles support custom suffixes. The role name (including its suffix) must be 1 to 64 characters in length and can contain letters, digits, periods (.), and hyphens (-). For example, if the suffix is Example, the role name is ServiceLinkedRoleName_Example.
         :param pulumi.Input[str] description: The description of the service linked role.  This parameter must be specified for only the service linked roles that support custom suffixes. Otherwise, the preset value is used and cannot be modified. The description must be 1 to 1,024 characters in length.
         """
-        pulumi.set(__self__, "service_name", service_name)
+        ServiceLinkedRoleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            service_name=service_name,
+            custom_suffix=custom_suffix,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             service_name: Optional[pulumi.Input[str]] = None,
+             custom_suffix: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if custom_suffix is None and 'customSuffix' in kwargs:
+            custom_suffix = kwargs['customSuffix']
+
+        _setter("service_name", service_name)
         if custom_suffix is not None:
-            pulumi.set(__self__, "custom_suffix", custom_suffix)
+            _setter("custom_suffix", custom_suffix)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="serviceName")
@@ -84,18 +105,47 @@ class _ServiceLinkedRoleState:
         :param pulumi.Input[str] role_name: The name of the role.
         :param pulumi.Input[str] service_name: The service name. For more information about the service name, see [Cloud services that support service linked roles](https://www.alibabacloud.com/help/en/doc-detail/160674.htm)
         """
+        _ServiceLinkedRoleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arn=arn,
+            custom_suffix=custom_suffix,
+            description=description,
+            role_id=role_id,
+            role_name=role_name,
+            service_name=service_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arn: Optional[pulumi.Input[str]] = None,
+             custom_suffix: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             role_id: Optional[pulumi.Input[str]] = None,
+             role_name: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if custom_suffix is None and 'customSuffix' in kwargs:
+            custom_suffix = kwargs['customSuffix']
+        if role_id is None and 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+        if role_name is None and 'roleName' in kwargs:
+            role_name = kwargs['roleName']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if arn is not None:
-            pulumi.set(__self__, "arn", arn)
+            _setter("arn", arn)
         if custom_suffix is not None:
-            pulumi.set(__self__, "custom_suffix", custom_suffix)
+            _setter("custom_suffix", custom_suffix)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if role_id is not None:
-            pulumi.set(__self__, "role_id", role_id)
+            _setter("role_id", role_id)
         if role_name is not None:
-            pulumi.set(__self__, "role_name", role_name)
+            _setter("role_name", role_name)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
 
     @property
     @pulumi.getter
@@ -253,6 +303,10 @@ class ServiceLinkedRole(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ServiceLinkedRoleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

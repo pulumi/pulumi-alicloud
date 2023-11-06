@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ExecutionArgs', 'Execution']
@@ -35,23 +35,64 @@ class ExecutionArgs:
         :param pulumi.Input[str] template_content: The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
         :param pulumi.Input[str] template_version: The version of execution template.
         """
-        pulumi.set(__self__, "template_name", template_name)
+        ExecutionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            template_name=template_name,
+            description=description,
+            loop_mode=loop_mode,
+            mode=mode,
+            parameters=parameters,
+            parent_execution_id=parent_execution_id,
+            safety_check=safety_check,
+            template_content=template_content,
+            template_version=template_version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             template_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             loop_mode: Optional[pulumi.Input[str]] = None,
+             mode: Optional[pulumi.Input[str]] = None,
+             parameters: Optional[pulumi.Input[str]] = None,
+             parent_execution_id: Optional[pulumi.Input[str]] = None,
+             safety_check: Optional[pulumi.Input[str]] = None,
+             template_content: Optional[pulumi.Input[str]] = None,
+             template_version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if template_name is None and 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+        if template_name is None:
+            raise TypeError("Missing 'template_name' argument")
+        if loop_mode is None and 'loopMode' in kwargs:
+            loop_mode = kwargs['loopMode']
+        if parent_execution_id is None and 'parentExecutionId' in kwargs:
+            parent_execution_id = kwargs['parentExecutionId']
+        if safety_check is None and 'safetyCheck' in kwargs:
+            safety_check = kwargs['safetyCheck']
+        if template_content is None and 'templateContent' in kwargs:
+            template_content = kwargs['templateContent']
+        if template_version is None and 'templateVersion' in kwargs:
+            template_version = kwargs['templateVersion']
+
+        _setter("template_name", template_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if loop_mode is not None:
-            pulumi.set(__self__, "loop_mode", loop_mode)
+            _setter("loop_mode", loop_mode)
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
         if parameters is not None:
-            pulumi.set(__self__, "parameters", parameters)
+            _setter("parameters", parameters)
         if parent_execution_id is not None:
-            pulumi.set(__self__, "parent_execution_id", parent_execution_id)
+            _setter("parent_execution_id", parent_execution_id)
         if safety_check is not None:
-            pulumi.set(__self__, "safety_check", safety_check)
+            _setter("safety_check", safety_check)
         if template_content is not None:
-            pulumi.set(__self__, "template_content", template_content)
+            _setter("template_content", template_content)
         if template_version is not None:
-            pulumi.set(__self__, "template_version", template_version)
+            _setter("template_version", template_version)
 
     @property
     @pulumi.getter(name="templateName")
@@ -210,48 +251,129 @@ class _ExecutionState:
         :param pulumi.Input[str] template_version: The version of execution template.
         :param pulumi.Input[str] update_date: The time when the execution was updated.
         """
+        _ExecutionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            counters=counters,
+            create_date=create_date,
+            description=description,
+            end_date=end_date,
+            executed_by=executed_by,
+            is_parent=is_parent,
+            loop_mode=loop_mode,
+            mode=mode,
+            outputs=outputs,
+            parameters=parameters,
+            parent_execution_id=parent_execution_id,
+            ram_role=ram_role,
+            safety_check=safety_check,
+            start_date=start_date,
+            status=status,
+            status_message=status_message,
+            template_content=template_content,
+            template_id=template_id,
+            template_name=template_name,
+            template_version=template_version,
+            update_date=update_date,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             counters: Optional[pulumi.Input[str]] = None,
+             create_date: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             end_date: Optional[pulumi.Input[str]] = None,
+             executed_by: Optional[pulumi.Input[str]] = None,
+             is_parent: Optional[pulumi.Input[bool]] = None,
+             loop_mode: Optional[pulumi.Input[str]] = None,
+             mode: Optional[pulumi.Input[str]] = None,
+             outputs: Optional[pulumi.Input[str]] = None,
+             parameters: Optional[pulumi.Input[str]] = None,
+             parent_execution_id: Optional[pulumi.Input[str]] = None,
+             ram_role: Optional[pulumi.Input[str]] = None,
+             safety_check: Optional[pulumi.Input[str]] = None,
+             start_date: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             status_message: Optional[pulumi.Input[str]] = None,
+             template_content: Optional[pulumi.Input[str]] = None,
+             template_id: Optional[pulumi.Input[str]] = None,
+             template_name: Optional[pulumi.Input[str]] = None,
+             template_version: Optional[pulumi.Input[str]] = None,
+             update_date: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_date is None and 'createDate' in kwargs:
+            create_date = kwargs['createDate']
+        if end_date is None and 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+        if executed_by is None and 'executedBy' in kwargs:
+            executed_by = kwargs['executedBy']
+        if is_parent is None and 'isParent' in kwargs:
+            is_parent = kwargs['isParent']
+        if loop_mode is None and 'loopMode' in kwargs:
+            loop_mode = kwargs['loopMode']
+        if parent_execution_id is None and 'parentExecutionId' in kwargs:
+            parent_execution_id = kwargs['parentExecutionId']
+        if ram_role is None and 'ramRole' in kwargs:
+            ram_role = kwargs['ramRole']
+        if safety_check is None and 'safetyCheck' in kwargs:
+            safety_check = kwargs['safetyCheck']
+        if start_date is None and 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+        if status_message is None and 'statusMessage' in kwargs:
+            status_message = kwargs['statusMessage']
+        if template_content is None and 'templateContent' in kwargs:
+            template_content = kwargs['templateContent']
+        if template_id is None and 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+        if template_name is None and 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+        if template_version is None and 'templateVersion' in kwargs:
+            template_version = kwargs['templateVersion']
+        if update_date is None and 'updateDate' in kwargs:
+            update_date = kwargs['updateDate']
+
         if counters is not None:
-            pulumi.set(__self__, "counters", counters)
+            _setter("counters", counters)
         if create_date is not None:
-            pulumi.set(__self__, "create_date", create_date)
+            _setter("create_date", create_date)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if end_date is not None:
-            pulumi.set(__self__, "end_date", end_date)
+            _setter("end_date", end_date)
         if executed_by is not None:
-            pulumi.set(__self__, "executed_by", executed_by)
+            _setter("executed_by", executed_by)
         if is_parent is not None:
-            pulumi.set(__self__, "is_parent", is_parent)
+            _setter("is_parent", is_parent)
         if loop_mode is not None:
-            pulumi.set(__self__, "loop_mode", loop_mode)
+            _setter("loop_mode", loop_mode)
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
         if outputs is not None:
-            pulumi.set(__self__, "outputs", outputs)
+            _setter("outputs", outputs)
         if parameters is not None:
-            pulumi.set(__self__, "parameters", parameters)
+            _setter("parameters", parameters)
         if parent_execution_id is not None:
-            pulumi.set(__self__, "parent_execution_id", parent_execution_id)
+            _setter("parent_execution_id", parent_execution_id)
         if ram_role is not None:
-            pulumi.set(__self__, "ram_role", ram_role)
+            _setter("ram_role", ram_role)
         if safety_check is not None:
-            pulumi.set(__self__, "safety_check", safety_check)
+            _setter("safety_check", safety_check)
         if start_date is not None:
-            pulumi.set(__self__, "start_date", start_date)
+            _setter("start_date", start_date)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if status_message is not None:
-            pulumi.set(__self__, "status_message", status_message)
+            _setter("status_message", status_message)
         if template_content is not None:
-            pulumi.set(__self__, "template_content", template_content)
+            _setter("template_content", template_content)
         if template_id is not None:
-            pulumi.set(__self__, "template_id", template_id)
+            _setter("template_id", template_id)
         if template_name is not None:
-            pulumi.set(__self__, "template_name", template_name)
+            _setter("template_name", template_name)
         if template_version is not None:
-            pulumi.set(__self__, "template_version", template_version)
+            _setter("template_version", template_version)
         if update_date is not None:
-            pulumi.set(__self__, "update_date", update_date)
+            _setter("update_date", update_date)
 
     @property
     @pulumi.getter
@@ -659,6 +781,10 @@ class Execution(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ExecutionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -34,22 +34,61 @@ class GatewaySlbListArgs:
         :param pulumi.Input[str] slb_port: The port of the gateway slb.
         :param pulumi.Input[str] type: The type of the gateway slb.
         """
+        GatewaySlbListArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            associate_id=associate_id,
+            gateway_slb_mode=gateway_slb_mode,
+            gateway_slb_status=gateway_slb_status,
+            gmt_create=gmt_create,
+            slb_id=slb_id,
+            slb_ip=slb_ip,
+            slb_port=slb_port,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             associate_id: Optional[pulumi.Input[str]] = None,
+             gateway_slb_mode: Optional[pulumi.Input[str]] = None,
+             gateway_slb_status: Optional[pulumi.Input[str]] = None,
+             gmt_create: Optional[pulumi.Input[str]] = None,
+             slb_id: Optional[pulumi.Input[str]] = None,
+             slb_ip: Optional[pulumi.Input[str]] = None,
+             slb_port: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if associate_id is None and 'associateId' in kwargs:
+            associate_id = kwargs['associateId']
+        if gateway_slb_mode is None and 'gatewaySlbMode' in kwargs:
+            gateway_slb_mode = kwargs['gatewaySlbMode']
+        if gateway_slb_status is None and 'gatewaySlbStatus' in kwargs:
+            gateway_slb_status = kwargs['gatewaySlbStatus']
+        if gmt_create is None and 'gmtCreate' in kwargs:
+            gmt_create = kwargs['gmtCreate']
+        if slb_id is None and 'slbId' in kwargs:
+            slb_id = kwargs['slbId']
+        if slb_ip is None and 'slbIp' in kwargs:
+            slb_ip = kwargs['slbIp']
+        if slb_port is None and 'slbPort' in kwargs:
+            slb_port = kwargs['slbPort']
+
         if associate_id is not None:
-            pulumi.set(__self__, "associate_id", associate_id)
+            _setter("associate_id", associate_id)
         if gateway_slb_mode is not None:
-            pulumi.set(__self__, "gateway_slb_mode", gateway_slb_mode)
+            _setter("gateway_slb_mode", gateway_slb_mode)
         if gateway_slb_status is not None:
-            pulumi.set(__self__, "gateway_slb_status", gateway_slb_status)
+            _setter("gateway_slb_status", gateway_slb_status)
         if gmt_create is not None:
-            pulumi.set(__self__, "gmt_create", gmt_create)
+            _setter("gmt_create", gmt_create)
         if slb_id is not None:
-            pulumi.set(__self__, "slb_id", slb_id)
+            _setter("slb_id", slb_id)
         if slb_ip is not None:
-            pulumi.set(__self__, "slb_ip", slb_ip)
+            _setter("slb_ip", slb_ip)
         if slb_port is not None:
-            pulumi.set(__self__, "slb_port", slb_port)
+            _setter("slb_port", slb_port)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="associateId")

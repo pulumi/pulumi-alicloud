@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -59,36 +59,131 @@ class DbClusterArgs:
         :param pulumi.Input[str] vswitch_id: The vswitch id of DBCluster.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "db_cluster_class", db_cluster_class)
-        pulumi.set(__self__, "db_cluster_network_type", db_cluster_network_type)
-        pulumi.set(__self__, "db_cluster_version", db_cluster_version)
-        pulumi.set(__self__, "db_node_group_count", db_node_group_count)
-        pulumi.set(__self__, "db_node_storage", db_node_storage)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "storage_type", storage_type)
+        DbClusterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            db_cluster_class=db_cluster_class,
+            db_cluster_network_type=db_cluster_network_type,
+            db_cluster_version=db_cluster_version,
+            db_node_group_count=db_node_group_count,
+            db_node_storage=db_node_storage,
+            payment_type=payment_type,
+            storage_type=storage_type,
+            db_cluster_access_white_lists=db_cluster_access_white_lists,
+            db_cluster_description=db_cluster_description,
+            encryption_key=encryption_key,
+            encryption_type=encryption_type,
+            maintain_time=maintain_time,
+            period=period,
+            status=status,
+            used_time=used_time,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: Optional[pulumi.Input[str]] = None,
+             db_cluster_class: Optional[pulumi.Input[str]] = None,
+             db_cluster_network_type: Optional[pulumi.Input[str]] = None,
+             db_cluster_version: Optional[pulumi.Input[str]] = None,
+             db_node_group_count: Optional[pulumi.Input[int]] = None,
+             db_node_storage: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             storage_type: Optional[pulumi.Input[str]] = None,
+             db_cluster_access_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input['DbClusterDbClusterAccessWhiteListArgs']]]] = None,
+             db_cluster_description: Optional[pulumi.Input[str]] = None,
+             encryption_key: Optional[pulumi.Input[str]] = None,
+             encryption_type: Optional[pulumi.Input[str]] = None,
+             maintain_time: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             used_time: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if category is None:
+            raise TypeError("Missing 'category' argument")
+        if db_cluster_class is None and 'dbClusterClass' in kwargs:
+            db_cluster_class = kwargs['dbClusterClass']
+        if db_cluster_class is None:
+            raise TypeError("Missing 'db_cluster_class' argument")
+        if db_cluster_network_type is None and 'dbClusterNetworkType' in kwargs:
+            db_cluster_network_type = kwargs['dbClusterNetworkType']
+        if db_cluster_network_type is None:
+            raise TypeError("Missing 'db_cluster_network_type' argument")
+        if db_cluster_version is None and 'dbClusterVersion' in kwargs:
+            db_cluster_version = kwargs['dbClusterVersion']
+        if db_cluster_version is None:
+            raise TypeError("Missing 'db_cluster_version' argument")
+        if db_node_group_count is None and 'dbNodeGroupCount' in kwargs:
+            db_node_group_count = kwargs['dbNodeGroupCount']
+        if db_node_group_count is None:
+            raise TypeError("Missing 'db_node_group_count' argument")
+        if db_node_storage is None and 'dbNodeStorage' in kwargs:
+            db_node_storage = kwargs['dbNodeStorage']
+        if db_node_storage is None:
+            raise TypeError("Missing 'db_node_storage' argument")
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if storage_type is None and 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+        if storage_type is None:
+            raise TypeError("Missing 'storage_type' argument")
+        if db_cluster_access_white_lists is None and 'dbClusterAccessWhiteLists' in kwargs:
+            db_cluster_access_white_lists = kwargs['dbClusterAccessWhiteLists']
+        if db_cluster_description is None and 'dbClusterDescription' in kwargs:
+            db_cluster_description = kwargs['dbClusterDescription']
+        if encryption_key is None and 'encryptionKey' in kwargs:
+            encryption_key = kwargs['encryptionKey']
+        if encryption_type is None and 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if maintain_time is None and 'maintainTime' in kwargs:
+            maintain_time = kwargs['maintainTime']
+        if used_time is None and 'usedTime' in kwargs:
+            used_time = kwargs['usedTime']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
+        _setter("category", category)
+        _setter("db_cluster_class", db_cluster_class)
+        _setter("db_cluster_network_type", db_cluster_network_type)
+        _setter("db_cluster_version", db_cluster_version)
+        _setter("db_node_group_count", db_node_group_count)
+        _setter("db_node_storage", db_node_storage)
+        _setter("payment_type", payment_type)
+        _setter("storage_type", storage_type)
         if db_cluster_access_white_lists is not None:
-            pulumi.set(__self__, "db_cluster_access_white_lists", db_cluster_access_white_lists)
+            _setter("db_cluster_access_white_lists", db_cluster_access_white_lists)
         if db_cluster_description is not None:
-            pulumi.set(__self__, "db_cluster_description", db_cluster_description)
+            _setter("db_cluster_description", db_cluster_description)
         if encryption_key is not None:
-            pulumi.set(__self__, "encryption_key", encryption_key)
+            _setter("encryption_key", encryption_key)
         if encryption_type is not None:
-            pulumi.set(__self__, "encryption_type", encryption_type)
+            _setter("encryption_type", encryption_type)
         if maintain_time is not None:
-            pulumi.set(__self__, "maintain_time", maintain_time)
+            _setter("maintain_time", maintain_time)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if used_time is not None:
-            pulumi.set(__self__, "used_time", used_time)
+            _setter("used_time", used_time)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -371,48 +466,133 @@ class _DbClusterState:
         :param pulumi.Input[str] vswitch_id: The vswitch id of DBCluster.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
+        _DbClusterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            connection_string=connection_string,
+            db_cluster_access_white_lists=db_cluster_access_white_lists,
+            db_cluster_class=db_cluster_class,
+            db_cluster_description=db_cluster_description,
+            db_cluster_network_type=db_cluster_network_type,
+            db_cluster_version=db_cluster_version,
+            db_node_group_count=db_node_group_count,
+            db_node_storage=db_node_storage,
+            encryption_key=encryption_key,
+            encryption_type=encryption_type,
+            maintain_time=maintain_time,
+            payment_type=payment_type,
+            period=period,
+            port=port,
+            status=status,
+            storage_type=storage_type,
+            used_time=used_time,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: Optional[pulumi.Input[str]] = None,
+             connection_string: Optional[pulumi.Input[str]] = None,
+             db_cluster_access_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input['DbClusterDbClusterAccessWhiteListArgs']]]] = None,
+             db_cluster_class: Optional[pulumi.Input[str]] = None,
+             db_cluster_description: Optional[pulumi.Input[str]] = None,
+             db_cluster_network_type: Optional[pulumi.Input[str]] = None,
+             db_cluster_version: Optional[pulumi.Input[str]] = None,
+             db_node_group_count: Optional[pulumi.Input[int]] = None,
+             db_node_storage: Optional[pulumi.Input[str]] = None,
+             encryption_key: Optional[pulumi.Input[str]] = None,
+             encryption_type: Optional[pulumi.Input[str]] = None,
+             maintain_time: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             storage_type: Optional[pulumi.Input[str]] = None,
+             used_time: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connection_string is None and 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if db_cluster_access_white_lists is None and 'dbClusterAccessWhiteLists' in kwargs:
+            db_cluster_access_white_lists = kwargs['dbClusterAccessWhiteLists']
+        if db_cluster_class is None and 'dbClusterClass' in kwargs:
+            db_cluster_class = kwargs['dbClusterClass']
+        if db_cluster_description is None and 'dbClusterDescription' in kwargs:
+            db_cluster_description = kwargs['dbClusterDescription']
+        if db_cluster_network_type is None and 'dbClusterNetworkType' in kwargs:
+            db_cluster_network_type = kwargs['dbClusterNetworkType']
+        if db_cluster_version is None and 'dbClusterVersion' in kwargs:
+            db_cluster_version = kwargs['dbClusterVersion']
+        if db_node_group_count is None and 'dbNodeGroupCount' in kwargs:
+            db_node_group_count = kwargs['dbNodeGroupCount']
+        if db_node_storage is None and 'dbNodeStorage' in kwargs:
+            db_node_storage = kwargs['dbNodeStorage']
+        if encryption_key is None and 'encryptionKey' in kwargs:
+            encryption_key = kwargs['encryptionKey']
+        if encryption_type is None and 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if maintain_time is None and 'maintainTime' in kwargs:
+            maintain_time = kwargs['maintainTime']
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if storage_type is None and 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+        if used_time is None and 'usedTime' in kwargs:
+            used_time = kwargs['usedTime']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if connection_string is not None:
-            pulumi.set(__self__, "connection_string", connection_string)
+            _setter("connection_string", connection_string)
         if db_cluster_access_white_lists is not None:
-            pulumi.set(__self__, "db_cluster_access_white_lists", db_cluster_access_white_lists)
+            _setter("db_cluster_access_white_lists", db_cluster_access_white_lists)
         if db_cluster_class is not None:
-            pulumi.set(__self__, "db_cluster_class", db_cluster_class)
+            _setter("db_cluster_class", db_cluster_class)
         if db_cluster_description is not None:
-            pulumi.set(__self__, "db_cluster_description", db_cluster_description)
+            _setter("db_cluster_description", db_cluster_description)
         if db_cluster_network_type is not None:
-            pulumi.set(__self__, "db_cluster_network_type", db_cluster_network_type)
+            _setter("db_cluster_network_type", db_cluster_network_type)
         if db_cluster_version is not None:
-            pulumi.set(__self__, "db_cluster_version", db_cluster_version)
+            _setter("db_cluster_version", db_cluster_version)
         if db_node_group_count is not None:
-            pulumi.set(__self__, "db_node_group_count", db_node_group_count)
+            _setter("db_node_group_count", db_node_group_count)
         if db_node_storage is not None:
-            pulumi.set(__self__, "db_node_storage", db_node_storage)
+            _setter("db_node_storage", db_node_storage)
         if encryption_key is not None:
-            pulumi.set(__self__, "encryption_key", encryption_key)
+            _setter("encryption_key", encryption_key)
         if encryption_type is not None:
-            pulumi.set(__self__, "encryption_type", encryption_type)
+            _setter("encryption_type", encryption_type)
         if maintain_time is not None:
-            pulumi.set(__self__, "maintain_time", maintain_time)
+            _setter("maintain_time", maintain_time)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if storage_type is not None:
-            pulumi.set(__self__, "storage_type", storage_type)
+            _setter("storage_type", storage_type)
         if used_time is not None:
-            pulumi.set(__self__, "used_time", used_time)
+            _setter("used_time", used_time)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -832,6 +1012,10 @@ class DbCluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DbClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AccessGroupArgs', 'AccessGroup']
@@ -23,10 +23,33 @@ class AccessGroupArgs:
         :param pulumi.Input[str] network_type: The NetworkType of Access Group. Valid values: `VPC`.
         :param pulumi.Input[str] description: The Description of Access Group. The length of `description` does not exceed 100 bytes.
         """
-        pulumi.set(__self__, "access_group_name", access_group_name)
-        pulumi.set(__self__, "network_type", network_type)
+        AccessGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_group_name=access_group_name,
+            network_type=network_type,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_group_name: Optional[pulumi.Input[str]] = None,
+             network_type: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_group_name is None and 'accessGroupName' in kwargs:
+            access_group_name = kwargs['accessGroupName']
+        if access_group_name is None:
+            raise TypeError("Missing 'access_group_name' argument")
+        if network_type is None and 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if network_type is None:
+            raise TypeError("Missing 'network_type' argument")
+
+        _setter("access_group_name", access_group_name)
+        _setter("network_type", network_type)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="accessGroupName")
@@ -77,12 +100,31 @@ class _AccessGroupState:
         :param pulumi.Input[str] description: The Description of Access Group. The length of `description` does not exceed 100 bytes.
         :param pulumi.Input[str] network_type: The NetworkType of Access Group. Valid values: `VPC`.
         """
+        _AccessGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_group_name=access_group_name,
+            description=description,
+            network_type=network_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_group_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             network_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_group_name is None and 'accessGroupName' in kwargs:
+            access_group_name = kwargs['accessGroupName']
+        if network_type is None and 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+
         if access_group_name is not None:
-            pulumi.set(__self__, "access_group_name", access_group_name)
+            _setter("access_group_name", access_group_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if network_type is not None:
-            pulumi.set(__self__, "network_type", network_type)
+            _setter("network_type", network_type)
 
     @property
     @pulumi.getter(name="accessGroupName")
@@ -216,6 +258,10 @@ class AccessGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AccessGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

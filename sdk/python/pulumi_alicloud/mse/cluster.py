@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ClusterArgs', 'Cluster']
@@ -49,32 +49,117 @@ class ClusterArgs:
         :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The id of VSwitch.
         """
-        pulumi.set(__self__, "cluster_specification", cluster_specification)
-        pulumi.set(__self__, "cluster_type", cluster_type)
-        pulumi.set(__self__, "cluster_version", cluster_version)
-        pulumi.set(__self__, "instance_count", instance_count)
-        pulumi.set(__self__, "net_type", net_type)
-        pulumi.set(__self__, "pub_network_flow", pub_network_flow)
+        ClusterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_specification=cluster_specification,
+            cluster_type=cluster_type,
+            cluster_version=cluster_version,
+            instance_count=instance_count,
+            net_type=net_type,
+            pub_network_flow=pub_network_flow,
+            acl_entry_lists=acl_entry_lists,
+            cluster_alias_name=cluster_alias_name,
+            connection_type=connection_type,
+            disk_type=disk_type,
+            mse_version=mse_version,
+            private_slb_specification=private_slb_specification,
+            pub_slb_specification=pub_slb_specification,
+            request_pars=request_pars,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_specification: Optional[pulumi.Input[str]] = None,
+             cluster_type: Optional[pulumi.Input[str]] = None,
+             cluster_version: Optional[pulumi.Input[str]] = None,
+             instance_count: Optional[pulumi.Input[int]] = None,
+             net_type: Optional[pulumi.Input[str]] = None,
+             pub_network_flow: Optional[pulumi.Input[str]] = None,
+             acl_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             cluster_alias_name: Optional[pulumi.Input[str]] = None,
+             connection_type: Optional[pulumi.Input[str]] = None,
+             disk_type: Optional[pulumi.Input[str]] = None,
+             mse_version: Optional[pulumi.Input[str]] = None,
+             private_slb_specification: Optional[pulumi.Input[str]] = None,
+             pub_slb_specification: Optional[pulumi.Input[str]] = None,
+             request_pars: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_specification is None and 'clusterSpecification' in kwargs:
+            cluster_specification = kwargs['clusterSpecification']
+        if cluster_specification is None:
+            raise TypeError("Missing 'cluster_specification' argument")
+        if cluster_type is None and 'clusterType' in kwargs:
+            cluster_type = kwargs['clusterType']
+        if cluster_type is None:
+            raise TypeError("Missing 'cluster_type' argument")
+        if cluster_version is None and 'clusterVersion' in kwargs:
+            cluster_version = kwargs['clusterVersion']
+        if cluster_version is None:
+            raise TypeError("Missing 'cluster_version' argument")
+        if instance_count is None and 'instanceCount' in kwargs:
+            instance_count = kwargs['instanceCount']
+        if instance_count is None:
+            raise TypeError("Missing 'instance_count' argument")
+        if net_type is None and 'netType' in kwargs:
+            net_type = kwargs['netType']
+        if net_type is None:
+            raise TypeError("Missing 'net_type' argument")
+        if pub_network_flow is None and 'pubNetworkFlow' in kwargs:
+            pub_network_flow = kwargs['pubNetworkFlow']
+        if pub_network_flow is None:
+            raise TypeError("Missing 'pub_network_flow' argument")
+        if acl_entry_lists is None and 'aclEntryLists' in kwargs:
+            acl_entry_lists = kwargs['aclEntryLists']
+        if cluster_alias_name is None and 'clusterAliasName' in kwargs:
+            cluster_alias_name = kwargs['clusterAliasName']
+        if connection_type is None and 'connectionType' in kwargs:
+            connection_type = kwargs['connectionType']
+        if disk_type is None and 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if mse_version is None and 'mseVersion' in kwargs:
+            mse_version = kwargs['mseVersion']
+        if private_slb_specification is None and 'privateSlbSpecification' in kwargs:
+            private_slb_specification = kwargs['privateSlbSpecification']
+        if pub_slb_specification is None and 'pubSlbSpecification' in kwargs:
+            pub_slb_specification = kwargs['pubSlbSpecification']
+        if request_pars is None and 'requestPars' in kwargs:
+            request_pars = kwargs['requestPars']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
+        _setter("cluster_specification", cluster_specification)
+        _setter("cluster_type", cluster_type)
+        _setter("cluster_version", cluster_version)
+        _setter("instance_count", instance_count)
+        _setter("net_type", net_type)
+        _setter("pub_network_flow", pub_network_flow)
         if acl_entry_lists is not None:
-            pulumi.set(__self__, "acl_entry_lists", acl_entry_lists)
+            _setter("acl_entry_lists", acl_entry_lists)
         if cluster_alias_name is not None:
-            pulumi.set(__self__, "cluster_alias_name", cluster_alias_name)
+            _setter("cluster_alias_name", cluster_alias_name)
         if connection_type is not None:
-            pulumi.set(__self__, "connection_type", connection_type)
+            _setter("connection_type", connection_type)
         if disk_type is not None:
-            pulumi.set(__self__, "disk_type", disk_type)
+            _setter("disk_type", disk_type)
         if mse_version is not None:
-            pulumi.set(__self__, "mse_version", mse_version)
+            _setter("mse_version", mse_version)
         if private_slb_specification is not None:
-            pulumi.set(__self__, "private_slb_specification", private_slb_specification)
+            _setter("private_slb_specification", private_slb_specification)
         if pub_slb_specification is not None:
-            pulumi.set(__self__, "pub_slb_specification", pub_slb_specification)
+            _setter("pub_slb_specification", pub_slb_specification)
         if request_pars is not None:
-            pulumi.set(__self__, "request_pars", request_pars)
+            _setter("request_pars", request_pars)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="clusterSpecification")
@@ -313,44 +398,127 @@ class _ClusterState:
         :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The id of VSwitch.
         """
+        _ClusterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl_entry_lists=acl_entry_lists,
+            app_version=app_version,
+            cluster_alias_name=cluster_alias_name,
+            cluster_id=cluster_id,
+            cluster_specification=cluster_specification,
+            cluster_type=cluster_type,
+            cluster_version=cluster_version,
+            connection_type=connection_type,
+            disk_type=disk_type,
+            instance_count=instance_count,
+            mse_version=mse_version,
+            net_type=net_type,
+            private_slb_specification=private_slb_specification,
+            pub_network_flow=pub_network_flow,
+            pub_slb_specification=pub_slb_specification,
+            request_pars=request_pars,
+            status=status,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             app_version: Optional[pulumi.Input[str]] = None,
+             cluster_alias_name: Optional[pulumi.Input[str]] = None,
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             cluster_specification: Optional[pulumi.Input[str]] = None,
+             cluster_type: Optional[pulumi.Input[str]] = None,
+             cluster_version: Optional[pulumi.Input[str]] = None,
+             connection_type: Optional[pulumi.Input[str]] = None,
+             disk_type: Optional[pulumi.Input[str]] = None,
+             instance_count: Optional[pulumi.Input[int]] = None,
+             mse_version: Optional[pulumi.Input[str]] = None,
+             net_type: Optional[pulumi.Input[str]] = None,
+             private_slb_specification: Optional[pulumi.Input[str]] = None,
+             pub_network_flow: Optional[pulumi.Input[str]] = None,
+             pub_slb_specification: Optional[pulumi.Input[str]] = None,
+             request_pars: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if acl_entry_lists is None and 'aclEntryLists' in kwargs:
+            acl_entry_lists = kwargs['aclEntryLists']
+        if app_version is None and 'appVersion' in kwargs:
+            app_version = kwargs['appVersion']
+        if cluster_alias_name is None and 'clusterAliasName' in kwargs:
+            cluster_alias_name = kwargs['clusterAliasName']
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_specification is None and 'clusterSpecification' in kwargs:
+            cluster_specification = kwargs['clusterSpecification']
+        if cluster_type is None and 'clusterType' in kwargs:
+            cluster_type = kwargs['clusterType']
+        if cluster_version is None and 'clusterVersion' in kwargs:
+            cluster_version = kwargs['clusterVersion']
+        if connection_type is None and 'connectionType' in kwargs:
+            connection_type = kwargs['connectionType']
+        if disk_type is None and 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if instance_count is None and 'instanceCount' in kwargs:
+            instance_count = kwargs['instanceCount']
+        if mse_version is None and 'mseVersion' in kwargs:
+            mse_version = kwargs['mseVersion']
+        if net_type is None and 'netType' in kwargs:
+            net_type = kwargs['netType']
+        if private_slb_specification is None and 'privateSlbSpecification' in kwargs:
+            private_slb_specification = kwargs['privateSlbSpecification']
+        if pub_network_flow is None and 'pubNetworkFlow' in kwargs:
+            pub_network_flow = kwargs['pubNetworkFlow']
+        if pub_slb_specification is None and 'pubSlbSpecification' in kwargs:
+            pub_slb_specification = kwargs['pubSlbSpecification']
+        if request_pars is None and 'requestPars' in kwargs:
+            request_pars = kwargs['requestPars']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if acl_entry_lists is not None:
-            pulumi.set(__self__, "acl_entry_lists", acl_entry_lists)
+            _setter("acl_entry_lists", acl_entry_lists)
         if app_version is not None:
-            pulumi.set(__self__, "app_version", app_version)
+            _setter("app_version", app_version)
         if cluster_alias_name is not None:
-            pulumi.set(__self__, "cluster_alias_name", cluster_alias_name)
+            _setter("cluster_alias_name", cluster_alias_name)
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if cluster_specification is not None:
-            pulumi.set(__self__, "cluster_specification", cluster_specification)
+            _setter("cluster_specification", cluster_specification)
         if cluster_type is not None:
-            pulumi.set(__self__, "cluster_type", cluster_type)
+            _setter("cluster_type", cluster_type)
         if cluster_version is not None:
-            pulumi.set(__self__, "cluster_version", cluster_version)
+            _setter("cluster_version", cluster_version)
         if connection_type is not None:
-            pulumi.set(__self__, "connection_type", connection_type)
+            _setter("connection_type", connection_type)
         if disk_type is not None:
-            pulumi.set(__self__, "disk_type", disk_type)
+            _setter("disk_type", disk_type)
         if instance_count is not None:
-            pulumi.set(__self__, "instance_count", instance_count)
+            _setter("instance_count", instance_count)
         if mse_version is not None:
-            pulumi.set(__self__, "mse_version", mse_version)
+            _setter("mse_version", mse_version)
         if net_type is not None:
-            pulumi.set(__self__, "net_type", net_type)
+            _setter("net_type", net_type)
         if private_slb_specification is not None:
-            pulumi.set(__self__, "private_slb_specification", private_slb_specification)
+            _setter("private_slb_specification", private_slb_specification)
         if pub_network_flow is not None:
-            pulumi.set(__self__, "pub_network_flow", pub_network_flow)
+            _setter("pub_network_flow", pub_network_flow)
         if pub_slb_specification is not None:
-            pulumi.set(__self__, "pub_slb_specification", pub_slb_specification)
+            _setter("pub_slb_specification", pub_slb_specification)
         if request_pars is not None:
-            pulumi.set(__self__, "request_pars", request_pars)
+            _setter("request_pars", request_pars)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="aclEntryLists")
@@ -722,6 +890,10 @@ class Cluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

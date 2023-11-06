@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DBClusterLakeVersionArgs', 'DBClusterLakeVersion']
@@ -49,29 +49,112 @@ class DBClusterLakeVersionArgs:
                - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
         :param pulumi.Input[str] source_db_cluster_id: The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
         """
-        pulumi.set(__self__, "compute_resource", compute_resource)
-        pulumi.set(__self__, "db_cluster_version", db_cluster_version)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "storage_resource", storage_resource)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        DBClusterLakeVersionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compute_resource=compute_resource,
+            db_cluster_version=db_cluster_version,
+            payment_type=payment_type,
+            storage_resource=storage_resource,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+            backup_set_id=backup_set_id,
+            db_cluster_description=db_cluster_description,
+            enable_default_resource_group=enable_default_resource_group,
+            resource_group_id=resource_group_id,
+            restore_to_time=restore_to_time,
+            restore_type=restore_type,
+            security_ips=security_ips,
+            source_db_cluster_id=source_db_cluster_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compute_resource: Optional[pulumi.Input[str]] = None,
+             db_cluster_version: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             storage_resource: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             backup_set_id: Optional[pulumi.Input[str]] = None,
+             db_cluster_description: Optional[pulumi.Input[str]] = None,
+             enable_default_resource_group: Optional[pulumi.Input[bool]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             restore_to_time: Optional[pulumi.Input[str]] = None,
+             restore_type: Optional[pulumi.Input[str]] = None,
+             security_ips: Optional[pulumi.Input[str]] = None,
+             source_db_cluster_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if compute_resource is None and 'computeResource' in kwargs:
+            compute_resource = kwargs['computeResource']
+        if compute_resource is None:
+            raise TypeError("Missing 'compute_resource' argument")
+        if db_cluster_version is None and 'dbClusterVersion' in kwargs:
+            db_cluster_version = kwargs['dbClusterVersion']
+        if db_cluster_version is None:
+            raise TypeError("Missing 'db_cluster_version' argument")
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if storage_resource is None and 'storageResource' in kwargs:
+            storage_resource = kwargs['storageResource']
+        if storage_resource is None:
+            raise TypeError("Missing 'storage_resource' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if backup_set_id is None and 'backupSetId' in kwargs:
+            backup_set_id = kwargs['backupSetId']
+        if db_cluster_description is None and 'dbClusterDescription' in kwargs:
+            db_cluster_description = kwargs['dbClusterDescription']
+        if enable_default_resource_group is None and 'enableDefaultResourceGroup' in kwargs:
+            enable_default_resource_group = kwargs['enableDefaultResourceGroup']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if restore_to_time is None and 'restoreToTime' in kwargs:
+            restore_to_time = kwargs['restoreToTime']
+        if restore_type is None and 'restoreType' in kwargs:
+            restore_type = kwargs['restoreType']
+        if security_ips is None and 'securityIps' in kwargs:
+            security_ips = kwargs['securityIps']
+        if source_db_cluster_id is None and 'sourceDbClusterId' in kwargs:
+            source_db_cluster_id = kwargs['sourceDbClusterId']
+
+        _setter("compute_resource", compute_resource)
+        _setter("db_cluster_version", db_cluster_version)
+        _setter("payment_type", payment_type)
+        _setter("storage_resource", storage_resource)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
         if backup_set_id is not None:
-            pulumi.set(__self__, "backup_set_id", backup_set_id)
+            _setter("backup_set_id", backup_set_id)
         if db_cluster_description is not None:
-            pulumi.set(__self__, "db_cluster_description", db_cluster_description)
+            _setter("db_cluster_description", db_cluster_description)
         if enable_default_resource_group is not None:
-            pulumi.set(__self__, "enable_default_resource_group", enable_default_resource_group)
+            _setter("enable_default_resource_group", enable_default_resource_group)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if restore_to_time is not None:
-            pulumi.set(__self__, "restore_to_time", restore_to_time)
+            _setter("restore_to_time", restore_to_time)
         if restore_type is not None:
-            pulumi.set(__self__, "restore_type", restore_type)
+            _setter("restore_type", restore_type)
         if security_ips is not None:
-            pulumi.set(__self__, "security_ips", security_ips)
+            _setter("security_ips", security_ips)
         if source_db_cluster_id is not None:
-            pulumi.set(__self__, "source_db_cluster_id", source_db_cluster_id)
+            _setter("source_db_cluster_id", source_db_cluster_id)
 
     @property
     @pulumi.getter(name="computeResource")
@@ -316,58 +399,163 @@ class _DBClusterLakeVersionState:
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
         :param pulumi.Input[str] zone_id: The zone ID of the resource.
         """
+        _DBClusterLakeVersionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_set_id=backup_set_id,
+            commodity_code=commodity_code,
+            compute_resource=compute_resource,
+            connection_string=connection_string,
+            create_time=create_time,
+            db_cluster_description=db_cluster_description,
+            db_cluster_version=db_cluster_version,
+            enable_default_resource_group=enable_default_resource_group,
+            engine=engine,
+            engine_version=engine_version,
+            expire_time=expire_time,
+            expired=expired,
+            lock_mode=lock_mode,
+            lock_reason=lock_reason,
+            payment_type=payment_type,
+            port=port,
+            resource_group_id=resource_group_id,
+            restore_to_time=restore_to_time,
+            restore_type=restore_type,
+            security_ips=security_ips,
+            source_db_cluster_id=source_db_cluster_id,
+            status=status,
+            storage_resource=storage_resource,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_set_id: Optional[pulumi.Input[str]] = None,
+             commodity_code: Optional[pulumi.Input[str]] = None,
+             compute_resource: Optional[pulumi.Input[str]] = None,
+             connection_string: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             db_cluster_description: Optional[pulumi.Input[str]] = None,
+             db_cluster_version: Optional[pulumi.Input[str]] = None,
+             enable_default_resource_group: Optional[pulumi.Input[bool]] = None,
+             engine: Optional[pulumi.Input[str]] = None,
+             engine_version: Optional[pulumi.Input[str]] = None,
+             expire_time: Optional[pulumi.Input[str]] = None,
+             expired: Optional[pulumi.Input[str]] = None,
+             lock_mode: Optional[pulumi.Input[str]] = None,
+             lock_reason: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             restore_to_time: Optional[pulumi.Input[str]] = None,
+             restore_type: Optional[pulumi.Input[str]] = None,
+             security_ips: Optional[pulumi.Input[str]] = None,
+             source_db_cluster_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             storage_resource: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if backup_set_id is None and 'backupSetId' in kwargs:
+            backup_set_id = kwargs['backupSetId']
+        if commodity_code is None and 'commodityCode' in kwargs:
+            commodity_code = kwargs['commodityCode']
+        if compute_resource is None and 'computeResource' in kwargs:
+            compute_resource = kwargs['computeResource']
+        if connection_string is None and 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if db_cluster_description is None and 'dbClusterDescription' in kwargs:
+            db_cluster_description = kwargs['dbClusterDescription']
+        if db_cluster_version is None and 'dbClusterVersion' in kwargs:
+            db_cluster_version = kwargs['dbClusterVersion']
+        if enable_default_resource_group is None and 'enableDefaultResourceGroup' in kwargs:
+            enable_default_resource_group = kwargs['enableDefaultResourceGroup']
+        if engine_version is None and 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if expire_time is None and 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if lock_mode is None and 'lockMode' in kwargs:
+            lock_mode = kwargs['lockMode']
+        if lock_reason is None and 'lockReason' in kwargs:
+            lock_reason = kwargs['lockReason']
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if restore_to_time is None and 'restoreToTime' in kwargs:
+            restore_to_time = kwargs['restoreToTime']
+        if restore_type is None and 'restoreType' in kwargs:
+            restore_type = kwargs['restoreType']
+        if security_ips is None and 'securityIps' in kwargs:
+            security_ips = kwargs['securityIps']
+        if source_db_cluster_id is None and 'sourceDbClusterId' in kwargs:
+            source_db_cluster_id = kwargs['sourceDbClusterId']
+        if storage_resource is None and 'storageResource' in kwargs:
+            storage_resource = kwargs['storageResource']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if backup_set_id is not None:
-            pulumi.set(__self__, "backup_set_id", backup_set_id)
+            _setter("backup_set_id", backup_set_id)
         if commodity_code is not None:
-            pulumi.set(__self__, "commodity_code", commodity_code)
+            _setter("commodity_code", commodity_code)
         if compute_resource is not None:
-            pulumi.set(__self__, "compute_resource", compute_resource)
+            _setter("compute_resource", compute_resource)
         if connection_string is not None:
-            pulumi.set(__self__, "connection_string", connection_string)
+            _setter("connection_string", connection_string)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if db_cluster_description is not None:
-            pulumi.set(__self__, "db_cluster_description", db_cluster_description)
+            _setter("db_cluster_description", db_cluster_description)
         if db_cluster_version is not None:
-            pulumi.set(__self__, "db_cluster_version", db_cluster_version)
+            _setter("db_cluster_version", db_cluster_version)
         if enable_default_resource_group is not None:
-            pulumi.set(__self__, "enable_default_resource_group", enable_default_resource_group)
+            _setter("enable_default_resource_group", enable_default_resource_group)
         if engine is not None:
-            pulumi.set(__self__, "engine", engine)
+            _setter("engine", engine)
         if engine_version is not None:
-            pulumi.set(__self__, "engine_version", engine_version)
+            _setter("engine_version", engine_version)
         if expire_time is not None:
-            pulumi.set(__self__, "expire_time", expire_time)
+            _setter("expire_time", expire_time)
         if expired is not None:
-            pulumi.set(__self__, "expired", expired)
+            _setter("expired", expired)
         if lock_mode is not None:
-            pulumi.set(__self__, "lock_mode", lock_mode)
+            _setter("lock_mode", lock_mode)
         if lock_reason is not None:
-            pulumi.set(__self__, "lock_reason", lock_reason)
+            _setter("lock_reason", lock_reason)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if restore_to_time is not None:
-            pulumi.set(__self__, "restore_to_time", restore_to_time)
+            _setter("restore_to_time", restore_to_time)
         if restore_type is not None:
-            pulumi.set(__self__, "restore_type", restore_type)
+            _setter("restore_type", restore_type)
         if security_ips is not None:
-            pulumi.set(__self__, "security_ips", security_ips)
+            _setter("security_ips", security_ips)
         if source_db_cluster_id is not None:
-            pulumi.set(__self__, "source_db_cluster_id", source_db_cluster_id)
+            _setter("source_db_cluster_id", source_db_cluster_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if storage_resource is not None:
-            pulumi.set(__self__, "storage_resource", storage_resource)
+            _setter("storage_resource", storage_resource)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="backupSetId")
@@ -817,6 +1005,10 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DBClusterLakeVersionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

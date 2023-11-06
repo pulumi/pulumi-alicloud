@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -47,13 +47,46 @@ class AutoProvisioningGroupLaunchTemplateConfigArgs:
         :param pulumi.Input[str] instance_type: The instance type of the Nth extended configurations of the launch template.
         :param pulumi.Input[str] priority: The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
         """
-        pulumi.set(__self__, "max_price", max_price)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "weighted_capacity", weighted_capacity)
+        AutoProvisioningGroupLaunchTemplateConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_price=max_price,
+            vswitch_id=vswitch_id,
+            weighted_capacity=weighted_capacity,
+            instance_type=instance_type,
+            priority=priority,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_price: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             weighted_capacity: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_price is None and 'maxPrice' in kwargs:
+            max_price = kwargs['maxPrice']
+        if max_price is None:
+            raise TypeError("Missing 'max_price' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if weighted_capacity is None and 'weightedCapacity' in kwargs:
+            weighted_capacity = kwargs['weightedCapacity']
+        if weighted_capacity is None:
+            raise TypeError("Missing 'weighted_capacity' argument")
+        if instance_type is None and 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+
+        _setter("max_price", max_price)
+        _setter("vswitch_id", vswitch_id)
+        _setter("weighted_capacity", weighted_capacity)
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
 
     @property
     @pulumi.getter(name="maxPrice")
@@ -125,10 +158,27 @@ class DedicatedHostNetworkAttributeArgs:
         :param pulumi.Input[int] slb_udp_timeout: The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Valid values: 15 to 310.
         :param pulumi.Input[int] udp_timeout: The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds. Valid values: 15 to 310.
         """
+        DedicatedHostNetworkAttributeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            slb_udp_timeout=slb_udp_timeout,
+            udp_timeout=udp_timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             slb_udp_timeout: Optional[pulumi.Input[int]] = None,
+             udp_timeout: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if slb_udp_timeout is None and 'slbUdpTimeout' in kwargs:
+            slb_udp_timeout = kwargs['slbUdpTimeout']
+        if udp_timeout is None and 'udpTimeout' in kwargs:
+            udp_timeout = kwargs['udpTimeout']
+
         if slb_udp_timeout is not None:
-            pulumi.set(__self__, "slb_udp_timeout", slb_udp_timeout)
+            _setter("slb_udp_timeout", slb_udp_timeout)
         if udp_timeout is not None:
-            pulumi.set(__self__, "udp_timeout", udp_timeout)
+            _setter("udp_timeout", udp_timeout)
 
     @property
     @pulumi.getter(name="slbUdpTimeout")
@@ -182,23 +232,68 @@ class EcsInstanceSetDataDiskArgs:
         :param pulumi.Input[str] performance_level: The performance level of the ESSD used as data disk. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
         :param pulumi.Input[str] snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
         """
-        pulumi.set(__self__, "disk_size", disk_size)
+        EcsInstanceSetDataDiskArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disk_size=disk_size,
+            auto_snapshot_policy_id=auto_snapshot_policy_id,
+            disk_category=disk_category,
+            disk_description=disk_description,
+            disk_name=disk_name,
+            encrypted=encrypted,
+            kms_key_id=kms_key_id,
+            performance_level=performance_level,
+            snapshot_id=snapshot_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disk_size: Optional[pulumi.Input[int]] = None,
+             auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
+             disk_category: Optional[pulumi.Input[str]] = None,
+             disk_description: Optional[pulumi.Input[str]] = None,
+             disk_name: Optional[pulumi.Input[str]] = None,
+             encrypted: Optional[pulumi.Input[bool]] = None,
+             kms_key_id: Optional[pulumi.Input[str]] = None,
+             performance_level: Optional[pulumi.Input[str]] = None,
+             snapshot_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disk_size is None and 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if disk_size is None:
+            raise TypeError("Missing 'disk_size' argument")
+        if auto_snapshot_policy_id is None and 'autoSnapshotPolicyId' in kwargs:
+            auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
+        if disk_category is None and 'diskCategory' in kwargs:
+            disk_category = kwargs['diskCategory']
+        if disk_description is None and 'diskDescription' in kwargs:
+            disk_description = kwargs['diskDescription']
+        if disk_name is None and 'diskName' in kwargs:
+            disk_name = kwargs['diskName']
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if performance_level is None and 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+        if snapshot_id is None and 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+
+        _setter("disk_size", disk_size)
         if auto_snapshot_policy_id is not None:
-            pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
+            _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
         if disk_category is not None:
-            pulumi.set(__self__, "disk_category", disk_category)
+            _setter("disk_category", disk_category)
         if disk_description is not None:
-            pulumi.set(__self__, "disk_description", disk_description)
+            _setter("disk_description", disk_description)
         if disk_name is not None:
-            pulumi.set(__self__, "disk_name", disk_name)
+            _setter("disk_name", disk_name)
         if encrypted is not None:
-            pulumi.set(__self__, "encrypted", encrypted)
+            _setter("encrypted", encrypted)
         if kms_key_id is not None:
-            pulumi.set(__self__, "kms_key_id", kms_key_id)
+            _setter("kms_key_id", kms_key_id)
         if performance_level is not None:
-            pulumi.set(__self__, "performance_level", performance_level)
+            _setter("performance_level", performance_level)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter(name="diskSize")
@@ -322,8 +417,25 @@ class EcsInstanceSetExcludeInstanceFilterArgs:
         :param pulumi.Input[str] key: The type of the excluded. Valid values: `InstanceId`, `InstanceName`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] values: The value of the excluded. The identification of the excluded instances. It is a list of instance Ids or names.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "values", values)
+        EcsInstanceSetExcludeInstanceFilterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[pulumi.Input[str]] = None,
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
+        _setter("key", key)
+        _setter("values", values)
 
     @property
     @pulumi.getter
@@ -365,15 +477,44 @@ class EcsInstanceSetNetworkInterfaceArgs:
         :param pulumi.Input[str] primary_ip_address: The primary private IP address of ENI.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch to which to connect ENI.
         """
-        pulumi.set(__self__, "security_group_id", security_group_id)
+        EcsInstanceSetNetworkInterfaceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            security_group_id=security_group_id,
+            description=description,
+            network_interface_name=network_interface_name,
+            primary_ip_address=primary_ip_address,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             network_interface_name: Optional[pulumi.Input[str]] = None,
+             primary_ip_address: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if security_group_id is None and 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if network_interface_name is None and 'networkInterfaceName' in kwargs:
+            network_interface_name = kwargs['networkInterfaceName']
+        if primary_ip_address is None and 'primaryIpAddress' in kwargs:
+            primary_ip_address = kwargs['primaryIpAddress']
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
+        _setter("security_group_id", security_group_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if network_interface_name is not None:
-            pulumi.set(__self__, "network_interface_name", network_interface_name)
+            _setter("network_interface_name", network_interface_name)
         if primary_ip_address is not None:
-            pulumi.set(__self__, "primary_ip_address", primary_ip_address)
+            _setter("primary_ip_address", primary_ip_address)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="securityGroupId")
@@ -457,22 +598,53 @@ class EcsLaunchTemplateDataDiskArgs:
         :param pulumi.Input[int] size: The size of the data disk.
         :param pulumi.Input[str] snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
         """
+        EcsLaunchTemplateDataDiskArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            delete_with_instance=delete_with_instance,
+            description=description,
+            encrypted=encrypted,
+            name=name,
+            performance_level=performance_level,
+            size=size,
+            snapshot_id=snapshot_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: Optional[pulumi.Input[str]] = None,
+             delete_with_instance: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             encrypted: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             performance_level: Optional[pulumi.Input[str]] = None,
+             size: Optional[pulumi.Input[int]] = None,
+             snapshot_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
+            delete_with_instance = kwargs['deleteWithInstance']
+        if performance_level is None and 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+        if snapshot_id is None and 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if delete_with_instance is not None:
-            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
+            _setter("delete_with_instance", delete_with_instance)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if encrypted is not None:
-            pulumi.set(__self__, "encrypted", encrypted)
+            _setter("encrypted", encrypted)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if performance_level is not None:
-            pulumi.set(__self__, "performance_level", performance_level)
+            _setter("performance_level", performance_level)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter
@@ -586,16 +758,41 @@ class EcsLaunchTemplateNetworkInterfacesArgs:
         :param pulumi.Input[str] security_group_id: The security group ID must be one in the same VPC.
         :param pulumi.Input[str] vswitch_id: The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
         """
+        EcsLaunchTemplateNetworkInterfacesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            name=name,
+            primary_ip=primary_ip,
+            security_group_id=security_group_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             primary_ip: Optional[pulumi.Input[str]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if primary_ip is None and 'primaryIp' in kwargs:
+            primary_ip = kwargs['primaryIp']
+        if security_group_id is None and 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if primary_ip is not None:
-            pulumi.set(__self__, "primary_ip", primary_ip)
+            _setter("primary_ip", primary_ip)
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter
@@ -679,22 +876,51 @@ class EcsLaunchTemplateSystemDiskArgs:
         :param pulumi.Input[str] performance_level: The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
         :param pulumi.Input[int] size: Size of the system disk, measured in GB. Value range: [20, 500].
         """
+        EcsLaunchTemplateSystemDiskArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            delete_with_instance=delete_with_instance,
+            description=description,
+            encrypted=encrypted,
+            iops=iops,
+            name=name,
+            performance_level=performance_level,
+            size=size,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: Optional[pulumi.Input[str]] = None,
+             delete_with_instance: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             encrypted: Optional[pulumi.Input[bool]] = None,
+             iops: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             performance_level: Optional[pulumi.Input[str]] = None,
+             size: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
+            delete_with_instance = kwargs['deleteWithInstance']
+        if performance_level is None and 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if delete_with_instance is not None:
-            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
+            _setter("delete_with_instance", delete_with_instance)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if encrypted is not None:
-            pulumi.set(__self__, "encrypted", encrypted)
+            _setter("encrypted", encrypted)
         if iops is not None:
-            pulumi.set(__self__, "iops", iops)
+            _setter("iops", iops)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if performance_level is not None:
-            pulumi.set(__self__, "performance_level", performance_level)
+            _setter("performance_level", performance_level)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
 
     @property
     @pulumi.getter
@@ -808,10 +1034,23 @@ class EcsPrefixListEntryArgs:
                * For more information about CIDR blocks, see the "What is CIDR block?" section of the [Network FAQ](https://www.alibabacloud.com/help/doc-detail/40637.htm) topic.  * The total number of entries must not exceed the `max_entries` value.
         :param pulumi.Input[str] description: The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
         """
+        EcsPrefixListEntryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr=cidr,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if cidr is not None:
-            pulumi.set(__self__, "cidr", cidr)
+            _setter("cidr", cidr)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -857,14 +1096,35 @@ class ImageDiskDeviceMappingArgs:
         :param pulumi.Input[int] size: Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
         :param pulumi.Input[str] snapshot_id: Specifies a snapshot that is used to create a combined custom image.
         """
+        ImageDiskDeviceMappingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            device=device,
+            disk_type=disk_type,
+            size=size,
+            snapshot_id=snapshot_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             device: Optional[pulumi.Input[str]] = None,
+             disk_type: Optional[pulumi.Input[str]] = None,
+             size: Optional[pulumi.Input[int]] = None,
+             snapshot_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disk_type is None and 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if snapshot_id is None and 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+
         if device is not None:
-            pulumi.set(__self__, "device", device)
+            _setter("device", device)
         if disk_type is not None:
-            pulumi.set(__self__, "disk_type", disk_type)
+            _setter("disk_type", disk_type)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter
@@ -932,16 +1192,41 @@ class ImageImportDiskDeviceMappingArgs:
                
                > **NOTE:** The disk_device_mapping is a list and it's first item will be used to system disk and other items are used to data disks.
         """
+        ImageImportDiskDeviceMappingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            device=device,
+            disk_image_size=disk_image_size,
+            format=format,
+            oss_bucket=oss_bucket,
+            oss_object=oss_object,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             device: Optional[pulumi.Input[str]] = None,
+             disk_image_size: Optional[pulumi.Input[int]] = None,
+             format: Optional[pulumi.Input[str]] = None,
+             oss_bucket: Optional[pulumi.Input[str]] = None,
+             oss_object: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disk_image_size is None and 'diskImageSize' in kwargs:
+            disk_image_size = kwargs['diskImageSize']
+        if oss_bucket is None and 'ossBucket' in kwargs:
+            oss_bucket = kwargs['ossBucket']
+        if oss_object is None and 'ossObject' in kwargs:
+            oss_object = kwargs['ossObject']
+
         if device is not None:
-            pulumi.set(__self__, "device", device)
+            _setter("device", device)
         if disk_image_size is not None:
-            pulumi.set(__self__, "disk_image_size", disk_image_size)
+            _setter("disk_image_size", disk_image_size)
         if format is not None:
-            pulumi.set(__self__, "format", format)
+            _setter("format", format)
         if oss_bucket is not None:
-            pulumi.set(__self__, "oss_bucket", oss_bucket)
+            _setter("oss_bucket", oss_bucket)
         if oss_object is not None:
-            pulumi.set(__self__, "oss_object", oss_object)
+            _setter("oss_object", oss_object)
 
     @property
     @pulumi.getter
@@ -1038,27 +1323,70 @@ class InstanceDataDiskArgs:
         :param pulumi.Input[str] performance_level: The performance level of the ESSD used as data disk:
         :param pulumi.Input[str] snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
         """
-        pulumi.set(__self__, "size", size)
+        InstanceDataDiskArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            size=size,
+            auto_snapshot_policy_id=auto_snapshot_policy_id,
+            category=category,
+            delete_with_instance=delete_with_instance,
+            description=description,
+            device=device,
+            encrypted=encrypted,
+            kms_key_id=kms_key_id,
+            name=name,
+            performance_level=performance_level,
+            snapshot_id=snapshot_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             size: Optional[pulumi.Input[int]] = None,
+             auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
+             category: Optional[pulumi.Input[str]] = None,
+             delete_with_instance: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             device: Optional[pulumi.Input[str]] = None,
+             encrypted: Optional[pulumi.Input[bool]] = None,
+             kms_key_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             performance_level: Optional[pulumi.Input[str]] = None,
+             snapshot_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if auto_snapshot_policy_id is None and 'autoSnapshotPolicyId' in kwargs:
+            auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
+        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
+            delete_with_instance = kwargs['deleteWithInstance']
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if performance_level is None and 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+        if snapshot_id is None and 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+
+        _setter("size", size)
         if auto_snapshot_policy_id is not None:
-            pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
+            _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if delete_with_instance is not None:
-            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
+            _setter("delete_with_instance", delete_with_instance)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if device is not None:
-            pulumi.set(__self__, "device", device)
+            _setter("device", device)
         if encrypted is not None:
-            pulumi.set(__self__, "encrypted", encrypted)
+            _setter("encrypted", encrypted)
         if kms_key_id is not None:
-            pulumi.set(__self__, "kms_key_id", kms_key_id)
+            _setter("kms_key_id", kms_key_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if performance_level is not None:
-            pulumi.set(__self__, "performance_level", performance_level)
+            _setter("performance_level", performance_level)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter
@@ -1207,10 +1535,27 @@ class InstanceMaintenanceTimeArgs:
         :param pulumi.Input[str] end_time: The end time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `start_time` and `end_time` parameters must be specified at the same time. The `end_time` value must be 1 to 23 hours later than the `start_time` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
         :param pulumi.Input[str] start_time: The start time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `start_time` and `end_time` parameters must be specified at the same time. The `end_time` value must be 1 to 23 hours later than the `start_time` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
         """
+        InstanceMaintenanceTimeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            end_time=end_time,
+            start_time=start_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             end_time: Optional[pulumi.Input[str]] = None,
+             start_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+
         if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
+            _setter("end_time", end_time)
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
 
     @property
     @pulumi.getter(name="endTime")
@@ -1273,22 +1618,53 @@ class LaunchTemplateDataDiskArgs:
                - ephemeral_ssd: [5, 800]
         :param pulumi.Input[str] snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
         """
+        LaunchTemplateDataDiskArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            delete_with_instance=delete_with_instance,
+            description=description,
+            encrypted=encrypted,
+            name=name,
+            performance_level=performance_level,
+            size=size,
+            snapshot_id=snapshot_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: Optional[pulumi.Input[str]] = None,
+             delete_with_instance: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             encrypted: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             performance_level: Optional[pulumi.Input[str]] = None,
+             size: Optional[pulumi.Input[int]] = None,
+             snapshot_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
+            delete_with_instance = kwargs['deleteWithInstance']
+        if performance_level is None and 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+        if snapshot_id is None and 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if delete_with_instance is not None:
-            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
+            _setter("delete_with_instance", delete_with_instance)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if encrypted is not None:
-            pulumi.set(__self__, "encrypted", encrypted)
+            _setter("encrypted", encrypted)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if performance_level is not None:
-            pulumi.set(__self__, "performance_level", performance_level)
+            _setter("performance_level", performance_level)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter
@@ -1415,16 +1791,41 @@ class LaunchTemplateNetworkInterfacesArgs:
         :param pulumi.Input[str] security_group_id: The security group ID must be one in the same VPC.
         :param pulumi.Input[str] vswitch_id: The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
         """
+        LaunchTemplateNetworkInterfacesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            name=name,
+            primary_ip=primary_ip,
+            security_group_id=security_group_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             primary_ip: Optional[pulumi.Input[str]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if primary_ip is None and 'primaryIp' in kwargs:
+            primary_ip = kwargs['primaryIp']
+        if security_group_id is None and 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if primary_ip is not None:
-            pulumi.set(__self__, "primary_ip", primary_ip)
+            _setter("primary_ip", primary_ip)
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter
@@ -1522,22 +1923,51 @@ class LaunchTemplateSystemDiskArgs:
                - cloud_essd：[20, 32768]
                - ephemeral_ssd: [5, 800]
         """
+        LaunchTemplateSystemDiskArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            delete_with_instance=delete_with_instance,
+            description=description,
+            encrypted=encrypted,
+            iops=iops,
+            name=name,
+            performance_level=performance_level,
+            size=size,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: Optional[pulumi.Input[str]] = None,
+             delete_with_instance: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             encrypted: Optional[pulumi.Input[bool]] = None,
+             iops: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             performance_level: Optional[pulumi.Input[str]] = None,
+             size: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if delete_with_instance is None and 'deleteWithInstance' in kwargs:
+            delete_with_instance = kwargs['deleteWithInstance']
+        if performance_level is None and 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if delete_with_instance is not None:
-            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
+            _setter("delete_with_instance", delete_with_instance)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if encrypted is not None:
-            pulumi.set(__self__, "encrypted", encrypted)
+            _setter("encrypted", encrypted)
         if iops is not None:
-            pulumi.set(__self__, "iops", iops)
+            _setter("iops", iops)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if performance_level is not None:
-            pulumi.set(__self__, "performance_level", performance_level)
+            _setter("performance_level", performance_level)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
 
     @property
     @pulumi.getter
@@ -1653,8 +2083,21 @@ class ReservedInstanceOperationLockArgs:
         """
         :param pulumi.Input[str] lock_reason: The reason why the reserved instance was locked.
         """
+        ReservedInstanceOperationLockArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            lock_reason=lock_reason,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             lock_reason: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if lock_reason is None and 'lockReason' in kwargs:
+            lock_reason = kwargs['lockReason']
+
         if lock_reason is not None:
-            pulumi.set(__self__, "lock_reason", lock_reason)
+            _setter("lock_reason", lock_reason)
 
     @property
     @pulumi.getter(name="lockReason")
@@ -1676,8 +2119,21 @@ class GetDedicatedHostsOperationLockArgs:
         """
         :param str lock_reason: The reason why the dedicated host resource is locked.
         """
+        GetDedicatedHostsOperationLockArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            lock_reason=lock_reason,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             lock_reason: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if lock_reason is None and 'lockReason' in kwargs:
+            lock_reason = kwargs['lockReason']
+
         if lock_reason is not None:
-            pulumi.set(__self__, "lock_reason", lock_reason)
+            _setter("lock_reason", lock_reason)
 
     @property
     @pulumi.getter(name="lockReason")
@@ -1696,8 +2152,21 @@ class GetDedicatedHostsOperationLockArgs:
 class GetDisksOperationLockArgs:
     def __init__(__self__, *,
                  lock_reason: Optional[str] = None):
+        GetDisksOperationLockArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            lock_reason=lock_reason,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             lock_reason: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if lock_reason is None and 'lockReason' in kwargs:
+            lock_reason = kwargs['lockReason']
+
         if lock_reason is not None:
-            pulumi.set(__self__, "lock_reason", lock_reason)
+            _setter("lock_reason", lock_reason)
 
     @property
     @pulumi.getter(name="lockReason")
@@ -1713,8 +2182,21 @@ class GetDisksOperationLockArgs:
 class GetEcsDisksOperationLockArgs:
     def __init__(__self__, *,
                  lock_reason: Optional[str] = None):
+        GetEcsDisksOperationLockArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            lock_reason=lock_reason,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             lock_reason: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if lock_reason is None and 'lockReason' in kwargs:
+            lock_reason = kwargs['lockReason']
+
         if lock_reason is not None:
-            pulumi.set(__self__, "lock_reason", lock_reason)
+            _setter("lock_reason", lock_reason)
 
     @property
     @pulumi.getter(name="lockReason")

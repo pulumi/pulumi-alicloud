@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DeliveryChannelArgs', 'DeliveryChannel']
@@ -34,17 +34,56 @@ class DeliveryChannelArgs:
         :param pulumi.Input[str] description: The description of the delivery method.
         :param pulumi.Input[int] status: The status of the delivery method. Valid values: `0`: The delivery method is disabled., `1`: The delivery destination is enabled. This is the default value.
         """
-        pulumi.set(__self__, "delivery_channel_assume_role_arn", delivery_channel_assume_role_arn)
-        pulumi.set(__self__, "delivery_channel_target_arn", delivery_channel_target_arn)
-        pulumi.set(__self__, "delivery_channel_type", delivery_channel_type)
+        DeliveryChannelArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            delivery_channel_assume_role_arn=delivery_channel_assume_role_arn,
+            delivery_channel_target_arn=delivery_channel_target_arn,
+            delivery_channel_type=delivery_channel_type,
+            delivery_channel_condition=delivery_channel_condition,
+            delivery_channel_name=delivery_channel_name,
+            description=description,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             delivery_channel_assume_role_arn: Optional[pulumi.Input[str]] = None,
+             delivery_channel_target_arn: Optional[pulumi.Input[str]] = None,
+             delivery_channel_type: Optional[pulumi.Input[str]] = None,
+             delivery_channel_condition: Optional[pulumi.Input[str]] = None,
+             delivery_channel_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if delivery_channel_assume_role_arn is None and 'deliveryChannelAssumeRoleArn' in kwargs:
+            delivery_channel_assume_role_arn = kwargs['deliveryChannelAssumeRoleArn']
+        if delivery_channel_assume_role_arn is None:
+            raise TypeError("Missing 'delivery_channel_assume_role_arn' argument")
+        if delivery_channel_target_arn is None and 'deliveryChannelTargetArn' in kwargs:
+            delivery_channel_target_arn = kwargs['deliveryChannelTargetArn']
+        if delivery_channel_target_arn is None:
+            raise TypeError("Missing 'delivery_channel_target_arn' argument")
+        if delivery_channel_type is None and 'deliveryChannelType' in kwargs:
+            delivery_channel_type = kwargs['deliveryChannelType']
+        if delivery_channel_type is None:
+            raise TypeError("Missing 'delivery_channel_type' argument")
+        if delivery_channel_condition is None and 'deliveryChannelCondition' in kwargs:
+            delivery_channel_condition = kwargs['deliveryChannelCondition']
+        if delivery_channel_name is None and 'deliveryChannelName' in kwargs:
+            delivery_channel_name = kwargs['deliveryChannelName']
+
+        _setter("delivery_channel_assume_role_arn", delivery_channel_assume_role_arn)
+        _setter("delivery_channel_target_arn", delivery_channel_target_arn)
+        _setter("delivery_channel_type", delivery_channel_type)
         if delivery_channel_condition is not None:
-            pulumi.set(__self__, "delivery_channel_condition", delivery_channel_condition)
+            _setter("delivery_channel_condition", delivery_channel_condition)
         if delivery_channel_name is not None:
-            pulumi.set(__self__, "delivery_channel_name", delivery_channel_name)
+            _setter("delivery_channel_name", delivery_channel_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="deliveryChannelAssumeRoleArn")
@@ -157,20 +196,53 @@ class _DeliveryChannelState:
         :param pulumi.Input[str] description: The description of the delivery method.
         :param pulumi.Input[int] status: The status of the delivery method. Valid values: `0`: The delivery method is disabled., `1`: The delivery destination is enabled. This is the default value.
         """
+        _DeliveryChannelState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            delivery_channel_assume_role_arn=delivery_channel_assume_role_arn,
+            delivery_channel_condition=delivery_channel_condition,
+            delivery_channel_name=delivery_channel_name,
+            delivery_channel_target_arn=delivery_channel_target_arn,
+            delivery_channel_type=delivery_channel_type,
+            description=description,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             delivery_channel_assume_role_arn: Optional[pulumi.Input[str]] = None,
+             delivery_channel_condition: Optional[pulumi.Input[str]] = None,
+             delivery_channel_name: Optional[pulumi.Input[str]] = None,
+             delivery_channel_target_arn: Optional[pulumi.Input[str]] = None,
+             delivery_channel_type: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if delivery_channel_assume_role_arn is None and 'deliveryChannelAssumeRoleArn' in kwargs:
+            delivery_channel_assume_role_arn = kwargs['deliveryChannelAssumeRoleArn']
+        if delivery_channel_condition is None and 'deliveryChannelCondition' in kwargs:
+            delivery_channel_condition = kwargs['deliveryChannelCondition']
+        if delivery_channel_name is None and 'deliveryChannelName' in kwargs:
+            delivery_channel_name = kwargs['deliveryChannelName']
+        if delivery_channel_target_arn is None and 'deliveryChannelTargetArn' in kwargs:
+            delivery_channel_target_arn = kwargs['deliveryChannelTargetArn']
+        if delivery_channel_type is None and 'deliveryChannelType' in kwargs:
+            delivery_channel_type = kwargs['deliveryChannelType']
+
         if delivery_channel_assume_role_arn is not None:
-            pulumi.set(__self__, "delivery_channel_assume_role_arn", delivery_channel_assume_role_arn)
+            _setter("delivery_channel_assume_role_arn", delivery_channel_assume_role_arn)
         if delivery_channel_condition is not None:
-            pulumi.set(__self__, "delivery_channel_condition", delivery_channel_condition)
+            _setter("delivery_channel_condition", delivery_channel_condition)
         if delivery_channel_name is not None:
-            pulumi.set(__self__, "delivery_channel_name", delivery_channel_name)
+            _setter("delivery_channel_name", delivery_channel_name)
         if delivery_channel_target_arn is not None:
-            pulumi.set(__self__, "delivery_channel_target_arn", delivery_channel_target_arn)
+            _setter("delivery_channel_target_arn", delivery_channel_target_arn)
         if delivery_channel_type is not None:
-            pulumi.set(__self__, "delivery_channel_type", delivery_channel_type)
+            _setter("delivery_channel_type", delivery_channel_type)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="deliveryChannelAssumeRoleArn")
@@ -320,6 +392,10 @@ class DeliveryChannel(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DeliveryChannelArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

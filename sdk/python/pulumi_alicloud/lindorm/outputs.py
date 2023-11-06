@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -86,40 +86,249 @@ class GetInstancesInstanceResult(dict):
         :param str vswitch_id: The vswitch id.
         :param str zone_id: The zone ID of the instance.
         """
-        pulumi.set(__self__, "auto_renew", auto_renew)
-        pulumi.set(__self__, "cold_storage", cold_storage)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "deletion_proection", deletion_proection)
-        pulumi.set(__self__, "disk_category", disk_category)
-        pulumi.set(__self__, "disk_usage", disk_usage)
-        pulumi.set(__self__, "disk_warning_threshold", disk_warning_threshold)
-        pulumi.set(__self__, "engine_type", engine_type)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "file_engine_node_count", file_engine_node_count)
-        pulumi.set(__self__, "file_engine_specification", file_engine_specification)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "instance_storage", instance_storage)
-        pulumi.set(__self__, "ip_white_lists", ip_white_lists)
-        pulumi.set(__self__, "lts_node_count", lts_node_count)
-        pulumi.set(__self__, "lts_node_specification", lts_node_specification)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "phoenix_node_count", phoenix_node_count)
-        pulumi.set(__self__, "phoenix_node_specification", phoenix_node_specification)
-        pulumi.set(__self__, "resource_owner_id", resource_owner_id)
-        pulumi.set(__self__, "search_engine_node_count", search_engine_node_count)
-        pulumi.set(__self__, "search_engine_specification", search_engine_specification)
-        pulumi.set(__self__, "service_type", service_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "table_engine_node_count", table_engine_node_count)
-        pulumi.set(__self__, "table_engine_specification", table_engine_specification)
-        pulumi.set(__self__, "time_series_engine_node_count", time_series_engine_node_count)
-        pulumi.set(__self__, "time_serires_engine_specification", time_serires_engine_specification)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_renew=auto_renew,
+            cold_storage=cold_storage,
+            create_time=create_time,
+            deletion_proection=deletion_proection,
+            disk_category=disk_category,
+            disk_usage=disk_usage,
+            disk_warning_threshold=disk_warning_threshold,
+            engine_type=engine_type,
+            expired_time=expired_time,
+            file_engine_node_count=file_engine_node_count,
+            file_engine_specification=file_engine_specification,
+            id=id,
+            instance_id=instance_id,
+            instance_name=instance_name,
+            instance_storage=instance_storage,
+            ip_white_lists=ip_white_lists,
+            lts_node_count=lts_node_count,
+            lts_node_specification=lts_node_specification,
+            network_type=network_type,
+            payment_type=payment_type,
+            phoenix_node_count=phoenix_node_count,
+            phoenix_node_specification=phoenix_node_specification,
+            resource_owner_id=resource_owner_id,
+            search_engine_node_count=search_engine_node_count,
+            search_engine_specification=search_engine_specification,
+            service_type=service_type,
+            status=status,
+            table_engine_node_count=table_engine_node_count,
+            table_engine_specification=table_engine_specification,
+            time_series_engine_node_count=time_series_engine_node_count,
+            time_serires_engine_specification=time_serires_engine_specification,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_renew: Optional[str] = None,
+             cold_storage: Optional[int] = None,
+             create_time: Optional[str] = None,
+             deletion_proection: Optional[bool] = None,
+             disk_category: Optional[str] = None,
+             disk_usage: Optional[str] = None,
+             disk_warning_threshold: Optional[str] = None,
+             engine_type: Optional[int] = None,
+             expired_time: Optional[str] = None,
+             file_engine_node_count: Optional[int] = None,
+             file_engine_specification: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             instance_name: Optional[str] = None,
+             instance_storage: Optional[str] = None,
+             ip_white_lists: Optional[Sequence[str]] = None,
+             lts_node_count: Optional[int] = None,
+             lts_node_specification: Optional[str] = None,
+             network_type: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             phoenix_node_count: Optional[int] = None,
+             phoenix_node_specification: Optional[str] = None,
+             resource_owner_id: Optional[str] = None,
+             search_engine_node_count: Optional[int] = None,
+             search_engine_specification: Optional[str] = None,
+             service_type: Optional[str] = None,
+             status: Optional[str] = None,
+             table_engine_node_count: Optional[int] = None,
+             table_engine_specification: Optional[str] = None,
+             time_series_engine_node_count: Optional[int] = None,
+             time_serires_engine_specification: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_renew is None and 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if auto_renew is None:
+            raise TypeError("Missing 'auto_renew' argument")
+        if cold_storage is None and 'coldStorage' in kwargs:
+            cold_storage = kwargs['coldStorage']
+        if cold_storage is None:
+            raise TypeError("Missing 'cold_storage' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if deletion_proection is None and 'deletionProection' in kwargs:
+            deletion_proection = kwargs['deletionProection']
+        if deletion_proection is None:
+            raise TypeError("Missing 'deletion_proection' argument")
+        if disk_category is None and 'diskCategory' in kwargs:
+            disk_category = kwargs['diskCategory']
+        if disk_category is None:
+            raise TypeError("Missing 'disk_category' argument")
+        if disk_usage is None and 'diskUsage' in kwargs:
+            disk_usage = kwargs['diskUsage']
+        if disk_usage is None:
+            raise TypeError("Missing 'disk_usage' argument")
+        if disk_warning_threshold is None and 'diskWarningThreshold' in kwargs:
+            disk_warning_threshold = kwargs['diskWarningThreshold']
+        if disk_warning_threshold is None:
+            raise TypeError("Missing 'disk_warning_threshold' argument")
+        if engine_type is None and 'engineType' in kwargs:
+            engine_type = kwargs['engineType']
+        if engine_type is None:
+            raise TypeError("Missing 'engine_type' argument")
+        if expired_time is None and 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if expired_time is None:
+            raise TypeError("Missing 'expired_time' argument")
+        if file_engine_node_count is None and 'fileEngineNodeCount' in kwargs:
+            file_engine_node_count = kwargs['fileEngineNodeCount']
+        if file_engine_node_count is None:
+            raise TypeError("Missing 'file_engine_node_count' argument")
+        if file_engine_specification is None and 'fileEngineSpecification' in kwargs:
+            file_engine_specification = kwargs['fileEngineSpecification']
+        if file_engine_specification is None:
+            raise TypeError("Missing 'file_engine_specification' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if instance_storage is None and 'instanceStorage' in kwargs:
+            instance_storage = kwargs['instanceStorage']
+        if instance_storage is None:
+            raise TypeError("Missing 'instance_storage' argument")
+        if ip_white_lists is None and 'ipWhiteLists' in kwargs:
+            ip_white_lists = kwargs['ipWhiteLists']
+        if ip_white_lists is None:
+            raise TypeError("Missing 'ip_white_lists' argument")
+        if lts_node_count is None and 'ltsNodeCount' in kwargs:
+            lts_node_count = kwargs['ltsNodeCount']
+        if lts_node_count is None:
+            raise TypeError("Missing 'lts_node_count' argument")
+        if lts_node_specification is None and 'ltsNodeSpecification' in kwargs:
+            lts_node_specification = kwargs['ltsNodeSpecification']
+        if lts_node_specification is None:
+            raise TypeError("Missing 'lts_node_specification' argument")
+        if network_type is None and 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if network_type is None:
+            raise TypeError("Missing 'network_type' argument")
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if phoenix_node_count is None and 'phoenixNodeCount' in kwargs:
+            phoenix_node_count = kwargs['phoenixNodeCount']
+        if phoenix_node_count is None:
+            raise TypeError("Missing 'phoenix_node_count' argument")
+        if phoenix_node_specification is None and 'phoenixNodeSpecification' in kwargs:
+            phoenix_node_specification = kwargs['phoenixNodeSpecification']
+        if phoenix_node_specification is None:
+            raise TypeError("Missing 'phoenix_node_specification' argument")
+        if resource_owner_id is None and 'resourceOwnerId' in kwargs:
+            resource_owner_id = kwargs['resourceOwnerId']
+        if resource_owner_id is None:
+            raise TypeError("Missing 'resource_owner_id' argument")
+        if search_engine_node_count is None and 'searchEngineNodeCount' in kwargs:
+            search_engine_node_count = kwargs['searchEngineNodeCount']
+        if search_engine_node_count is None:
+            raise TypeError("Missing 'search_engine_node_count' argument")
+        if search_engine_specification is None and 'searchEngineSpecification' in kwargs:
+            search_engine_specification = kwargs['searchEngineSpecification']
+        if search_engine_specification is None:
+            raise TypeError("Missing 'search_engine_specification' argument")
+        if service_type is None and 'serviceType' in kwargs:
+            service_type = kwargs['serviceType']
+        if service_type is None:
+            raise TypeError("Missing 'service_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if table_engine_node_count is None and 'tableEngineNodeCount' in kwargs:
+            table_engine_node_count = kwargs['tableEngineNodeCount']
+        if table_engine_node_count is None:
+            raise TypeError("Missing 'table_engine_node_count' argument")
+        if table_engine_specification is None and 'tableEngineSpecification' in kwargs:
+            table_engine_specification = kwargs['tableEngineSpecification']
+        if table_engine_specification is None:
+            raise TypeError("Missing 'table_engine_specification' argument")
+        if time_series_engine_node_count is None and 'timeSeriesEngineNodeCount' in kwargs:
+            time_series_engine_node_count = kwargs['timeSeriesEngineNodeCount']
+        if time_series_engine_node_count is None:
+            raise TypeError("Missing 'time_series_engine_node_count' argument")
+        if time_serires_engine_specification is None and 'timeSeriresEngineSpecification' in kwargs:
+            time_serires_engine_specification = kwargs['timeSeriresEngineSpecification']
+        if time_serires_engine_specification is None:
+            raise TypeError("Missing 'time_serires_engine_specification' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+
+        _setter("auto_renew", auto_renew)
+        _setter("cold_storage", cold_storage)
+        _setter("create_time", create_time)
+        _setter("deletion_proection", deletion_proection)
+        _setter("disk_category", disk_category)
+        _setter("disk_usage", disk_usage)
+        _setter("disk_warning_threshold", disk_warning_threshold)
+        _setter("engine_type", engine_type)
+        _setter("expired_time", expired_time)
+        _setter("file_engine_node_count", file_engine_node_count)
+        _setter("file_engine_specification", file_engine_specification)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("instance_name", instance_name)
+        _setter("instance_storage", instance_storage)
+        _setter("ip_white_lists", ip_white_lists)
+        _setter("lts_node_count", lts_node_count)
+        _setter("lts_node_specification", lts_node_specification)
+        _setter("network_type", network_type)
+        _setter("payment_type", payment_type)
+        _setter("phoenix_node_count", phoenix_node_count)
+        _setter("phoenix_node_specification", phoenix_node_specification)
+        _setter("resource_owner_id", resource_owner_id)
+        _setter("search_engine_node_count", search_engine_node_count)
+        _setter("search_engine_specification", search_engine_specification)
+        _setter("service_type", service_type)
+        _setter("status", status)
+        _setter("table_engine_node_count", table_engine_node_count)
+        _setter("table_engine_specification", table_engine_specification)
+        _setter("time_series_engine_node_count", time_series_engine_node_count)
+        _setter("time_serires_engine_specification", time_serires_engine_specification)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="autoRenew")

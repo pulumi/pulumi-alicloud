@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['UserVpcAuthorizationArgs', 'UserVpcAuthorization']
@@ -23,11 +23,34 @@ class UserVpcAuthorizationArgs:
         :param pulumi.Input[str] auth_channel: The auth channel. Valid values: `RESOURCE_DIRECTORY`.
         :param pulumi.Input[str] auth_type: The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
         """
-        pulumi.set(__self__, "authorized_user_id", authorized_user_id)
+        UserVpcAuthorizationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            authorized_user_id=authorized_user_id,
+            auth_channel=auth_channel,
+            auth_type=auth_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             authorized_user_id: Optional[pulumi.Input[str]] = None,
+             auth_channel: Optional[pulumi.Input[str]] = None,
+             auth_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if authorized_user_id is None and 'authorizedUserId' in kwargs:
+            authorized_user_id = kwargs['authorizedUserId']
+        if authorized_user_id is None:
+            raise TypeError("Missing 'authorized_user_id' argument")
+        if auth_channel is None and 'authChannel' in kwargs:
+            auth_channel = kwargs['authChannel']
+        if auth_type is None and 'authType' in kwargs:
+            auth_type = kwargs['authType']
+
+        _setter("authorized_user_id", authorized_user_id)
         if auth_channel is not None:
-            pulumi.set(__self__, "auth_channel", auth_channel)
+            _setter("auth_channel", auth_channel)
         if auth_type is not None:
-            pulumi.set(__self__, "auth_type", auth_type)
+            _setter("auth_type", auth_type)
 
     @property
     @pulumi.getter(name="authorizedUserId")
@@ -78,12 +101,33 @@ class _UserVpcAuthorizationState:
         :param pulumi.Input[str] auth_type: The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
         :param pulumi.Input[str] authorized_user_id: The primary account ID of the user who authorizes the resource.
         """
+        _UserVpcAuthorizationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auth_channel=auth_channel,
+            auth_type=auth_type,
+            authorized_user_id=authorized_user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auth_channel: Optional[pulumi.Input[str]] = None,
+             auth_type: Optional[pulumi.Input[str]] = None,
+             authorized_user_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auth_channel is None and 'authChannel' in kwargs:
+            auth_channel = kwargs['authChannel']
+        if auth_type is None and 'authType' in kwargs:
+            auth_type = kwargs['authType']
+        if authorized_user_id is None and 'authorizedUserId' in kwargs:
+            authorized_user_id = kwargs['authorizedUserId']
+
         if auth_channel is not None:
-            pulumi.set(__self__, "auth_channel", auth_channel)
+            _setter("auth_channel", auth_channel)
         if auth_type is not None:
-            pulumi.set(__self__, "auth_type", auth_type)
+            _setter("auth_type", auth_type)
         if authorized_user_id is not None:
-            pulumi.set(__self__, "authorized_user_id", authorized_user_id)
+            _setter("authorized_user_id", authorized_user_id)
 
     @property
     @pulumi.getter(name="authChannel")
@@ -213,6 +257,10 @@ class UserVpcAuthorization(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            UserVpcAuthorizationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

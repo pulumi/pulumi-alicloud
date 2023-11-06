@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InstanceAttachmentArgs', 'InstanceAttachment']
@@ -31,14 +31,55 @@ class InstanceAttachmentArgs:
                ->**NOTE:** Ensure that the child instance is not used in Express Connect.
         :param pulumi.Input[int] child_instance_owner_id: The uid of the child instance. Only used when attach a child instance of other account.
         """
-        pulumi.set(__self__, "child_instance_id", child_instance_id)
-        pulumi.set(__self__, "child_instance_region_id", child_instance_region_id)
-        pulumi.set(__self__, "child_instance_type", child_instance_type)
-        pulumi.set(__self__, "instance_id", instance_id)
+        InstanceAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            child_instance_id=child_instance_id,
+            child_instance_region_id=child_instance_region_id,
+            child_instance_type=child_instance_type,
+            instance_id=instance_id,
+            cen_owner_id=cen_owner_id,
+            child_instance_owner_id=child_instance_owner_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             child_instance_id: Optional[pulumi.Input[str]] = None,
+             child_instance_region_id: Optional[pulumi.Input[str]] = None,
+             child_instance_type: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             cen_owner_id: Optional[pulumi.Input[int]] = None,
+             child_instance_owner_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if child_instance_id is None and 'childInstanceId' in kwargs:
+            child_instance_id = kwargs['childInstanceId']
+        if child_instance_id is None:
+            raise TypeError("Missing 'child_instance_id' argument")
+        if child_instance_region_id is None and 'childInstanceRegionId' in kwargs:
+            child_instance_region_id = kwargs['childInstanceRegionId']
+        if child_instance_region_id is None:
+            raise TypeError("Missing 'child_instance_region_id' argument")
+        if child_instance_type is None and 'childInstanceType' in kwargs:
+            child_instance_type = kwargs['childInstanceType']
+        if child_instance_type is None:
+            raise TypeError("Missing 'child_instance_type' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if cen_owner_id is None and 'cenOwnerId' in kwargs:
+            cen_owner_id = kwargs['cenOwnerId']
+        if child_instance_owner_id is None and 'childInstanceOwnerId' in kwargs:
+            child_instance_owner_id = kwargs['childInstanceOwnerId']
+
+        _setter("child_instance_id", child_instance_id)
+        _setter("child_instance_region_id", child_instance_region_id)
+        _setter("child_instance_type", child_instance_type)
+        _setter("instance_id", instance_id)
         if cen_owner_id is not None:
-            pulumi.set(__self__, "cen_owner_id", cen_owner_id)
+            _setter("cen_owner_id", cen_owner_id)
         if child_instance_owner_id is not None:
-            pulumi.set(__self__, "child_instance_owner_id", child_instance_owner_id)
+            _setter("child_instance_owner_id", child_instance_owner_id)
 
     @property
     @pulumi.getter(name="childInstanceId")
@@ -137,20 +178,55 @@ class _InstanceAttachmentState:
         :param pulumi.Input[str] instance_id: The ID of the CEN.
         :param pulumi.Input[str] status: The associating status of the network.
         """
+        _InstanceAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cen_owner_id=cen_owner_id,
+            child_instance_id=child_instance_id,
+            child_instance_owner_id=child_instance_owner_id,
+            child_instance_region_id=child_instance_region_id,
+            child_instance_type=child_instance_type,
+            instance_id=instance_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cen_owner_id: Optional[pulumi.Input[int]] = None,
+             child_instance_id: Optional[pulumi.Input[str]] = None,
+             child_instance_owner_id: Optional[pulumi.Input[int]] = None,
+             child_instance_region_id: Optional[pulumi.Input[str]] = None,
+             child_instance_type: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cen_owner_id is None and 'cenOwnerId' in kwargs:
+            cen_owner_id = kwargs['cenOwnerId']
+        if child_instance_id is None and 'childInstanceId' in kwargs:
+            child_instance_id = kwargs['childInstanceId']
+        if child_instance_owner_id is None and 'childInstanceOwnerId' in kwargs:
+            child_instance_owner_id = kwargs['childInstanceOwnerId']
+        if child_instance_region_id is None and 'childInstanceRegionId' in kwargs:
+            child_instance_region_id = kwargs['childInstanceRegionId']
+        if child_instance_type is None and 'childInstanceType' in kwargs:
+            child_instance_type = kwargs['childInstanceType']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if cen_owner_id is not None:
-            pulumi.set(__self__, "cen_owner_id", cen_owner_id)
+            _setter("cen_owner_id", cen_owner_id)
         if child_instance_id is not None:
-            pulumi.set(__self__, "child_instance_id", child_instance_id)
+            _setter("child_instance_id", child_instance_id)
         if child_instance_owner_id is not None:
-            pulumi.set(__self__, "child_instance_owner_id", child_instance_owner_id)
+            _setter("child_instance_owner_id", child_instance_owner_id)
         if child_instance_region_id is not None:
-            pulumi.set(__self__, "child_instance_region_id", child_instance_region_id)
+            _setter("child_instance_region_id", child_instance_region_id)
         if child_instance_type is not None:
-            pulumi.set(__self__, "child_instance_type", child_instance_type)
+            _setter("child_instance_type", child_instance_type)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="cenOwnerId")
@@ -348,6 +424,10 @@ class InstanceAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InstanceAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EcsAutoSnapshotPolicyAttachmentArgs', 'EcsAutoSnapshotPolicyAttachment']
@@ -21,8 +21,29 @@ class EcsAutoSnapshotPolicyAttachmentArgs:
         :param pulumi.Input[str] auto_snapshot_policy_id: The auto snapshot policy id.
         :param pulumi.Input[str] disk_id: The disk id.
         """
-        pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
-        pulumi.set(__self__, "disk_id", disk_id)
+        EcsAutoSnapshotPolicyAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_snapshot_policy_id=auto_snapshot_policy_id,
+            disk_id=disk_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
+             disk_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_snapshot_policy_id is None and 'autoSnapshotPolicyId' in kwargs:
+            auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
+        if auto_snapshot_policy_id is None:
+            raise TypeError("Missing 'auto_snapshot_policy_id' argument")
+        if disk_id is None and 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if disk_id is None:
+            raise TypeError("Missing 'disk_id' argument")
+
+        _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
+        _setter("disk_id", disk_id)
 
     @property
     @pulumi.getter(name="autoSnapshotPolicyId")
@@ -59,10 +80,27 @@ class _EcsAutoSnapshotPolicyAttachmentState:
         :param pulumi.Input[str] auto_snapshot_policy_id: The auto snapshot policy id.
         :param pulumi.Input[str] disk_id: The disk id.
         """
+        _EcsAutoSnapshotPolicyAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_snapshot_policy_id=auto_snapshot_policy_id,
+            disk_id=disk_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
+             disk_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_snapshot_policy_id is None and 'autoSnapshotPolicyId' in kwargs:
+            auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
+        if disk_id is None and 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+
         if auto_snapshot_policy_id is not None:
-            pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
+            _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
         if disk_id is not None:
-            pulumi.set(__self__, "disk_id", disk_id)
+            _setter("disk_id", disk_id)
 
     @property
     @pulumi.getter(name="autoSnapshotPolicyId")
@@ -230,6 +268,10 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EcsAutoSnapshotPolicyAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

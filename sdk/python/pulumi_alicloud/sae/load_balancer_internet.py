@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,10 +25,33 @@ class LoadBalancerInternetArgs:
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerInternetInternetArgs']]] internets: The bound private network SLB. See `internet` below.
         :param pulumi.Input[str] internet_slb_id: The internet SLB ID.
         """
-        pulumi.set(__self__, "app_id", app_id)
-        pulumi.set(__self__, "internets", internets)
+        LoadBalancerInternetArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_id=app_id,
+            internets=internets,
+            internet_slb_id=internet_slb_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_id: Optional[pulumi.Input[str]] = None,
+             internets: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerInternetInternetArgs']]]] = None,
+             internet_slb_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_id is None and 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if app_id is None:
+            raise TypeError("Missing 'app_id' argument")
+        if internets is None:
+            raise TypeError("Missing 'internets' argument")
+        if internet_slb_id is None and 'internetSlbId' in kwargs:
+            internet_slb_id = kwargs['internetSlbId']
+
+        _setter("app_id", app_id)
+        _setter("internets", internets)
         if internet_slb_id is not None:
-            pulumi.set(__self__, "internet_slb_id", internet_slb_id)
+            _setter("internet_slb_id", internet_slb_id)
 
     @property
     @pulumi.getter(name="appId")
@@ -81,14 +104,37 @@ class _LoadBalancerInternetState:
         :param pulumi.Input[str] internet_slb_id: The internet SLB ID.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerInternetInternetArgs']]] internets: The bound private network SLB. See `internet` below.
         """
+        _LoadBalancerInternetState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_id=app_id,
+            internet_ip=internet_ip,
+            internet_slb_id=internet_slb_id,
+            internets=internets,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_id: Optional[pulumi.Input[str]] = None,
+             internet_ip: Optional[pulumi.Input[str]] = None,
+             internet_slb_id: Optional[pulumi.Input[str]] = None,
+             internets: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerInternetInternetArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_id is None and 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if internet_ip is None and 'internetIp' in kwargs:
+            internet_ip = kwargs['internetIp']
+        if internet_slb_id is None and 'internetSlbId' in kwargs:
+            internet_slb_id = kwargs['internetSlbId']
+
         if app_id is not None:
-            pulumi.set(__self__, "app_id", app_id)
+            _setter("app_id", app_id)
         if internet_ip is not None:
-            pulumi.set(__self__, "internet_ip", internet_ip)
+            _setter("internet_ip", internet_ip)
         if internet_slb_id is not None:
-            pulumi.set(__self__, "internet_slb_id", internet_slb_id)
+            _setter("internet_slb_id", internet_slb_id)
         if internets is not None:
-            pulumi.set(__self__, "internets", internets)
+            _setter("internets", internets)
 
     @property
     @pulumi.getter(name="appId")
@@ -322,6 +368,10 @@ class LoadBalancerInternet(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            LoadBalancerInternetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

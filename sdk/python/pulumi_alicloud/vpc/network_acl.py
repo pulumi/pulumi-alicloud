@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,24 +37,59 @@ class NetworkAclArgs:
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]] resources: The associated resource. See `resources` below.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of this resource.
         """
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        NetworkAclArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            vpc_id=vpc_id,
+            description=description,
+            egress_acl_entries=egress_acl_entries,
+            ingress_acl_entries=ingress_acl_entries,
+            name=name,
+            network_acl_name=network_acl_name,
+            resources=resources,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             egress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclEgressAclEntryArgs']]]] = None,
+             ingress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclIngressAclEntryArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_acl_name: Optional[pulumi.Input[str]] = None,
+             resources: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if egress_acl_entries is None and 'egressAclEntries' in kwargs:
+            egress_acl_entries = kwargs['egressAclEntries']
+        if ingress_acl_entries is None and 'ingressAclEntries' in kwargs:
+            ingress_acl_entries = kwargs['ingressAclEntries']
+        if network_acl_name is None and 'networkAclName' in kwargs:
+            network_acl_name = kwargs['networkAclName']
+
+        _setter("vpc_id", vpc_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if egress_acl_entries is not None:
-            pulumi.set(__self__, "egress_acl_entries", egress_acl_entries)
+            _setter("egress_acl_entries", egress_acl_entries)
         if ingress_acl_entries is not None:
-            pulumi.set(__self__, "ingress_acl_entries", ingress_acl_entries)
+            _setter("ingress_acl_entries", ingress_acl_entries)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.""")
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_acl_name is not None:
-            pulumi.set(__self__, "network_acl_name", network_acl_name)
+            _setter("network_acl_name", network_acl_name)
         if resources is not None:
-            pulumi.set(__self__, "resources", resources)
+            _setter("resources", resources)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -186,29 +221,68 @@ class _NetworkAclState:
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
+        _NetworkAclState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            egress_acl_entries=egress_acl_entries,
+            ingress_acl_entries=ingress_acl_entries,
+            name=name,
+            network_acl_name=network_acl_name,
+            resources=resources,
+            status=status,
+            tags=tags,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             egress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclEgressAclEntryArgs']]]] = None,
+             ingress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclIngressAclEntryArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_acl_name: Optional[pulumi.Input[str]] = None,
+             resources: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if egress_acl_entries is None and 'egressAclEntries' in kwargs:
+            egress_acl_entries = kwargs['egressAclEntries']
+        if ingress_acl_entries is None and 'ingressAclEntries' in kwargs:
+            ingress_acl_entries = kwargs['ingressAclEntries']
+        if network_acl_name is None and 'networkAclName' in kwargs:
+            network_acl_name = kwargs['networkAclName']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if egress_acl_entries is not None:
-            pulumi.set(__self__, "egress_acl_entries", egress_acl_entries)
+            _setter("egress_acl_entries", egress_acl_entries)
         if ingress_acl_entries is not None:
-            pulumi.set(__self__, "ingress_acl_entries", ingress_acl_entries)
+            _setter("ingress_acl_entries", ingress_acl_entries)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.""")
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_acl_name is not None:
-            pulumi.set(__self__, "network_acl_name", network_acl_name)
+            _setter("network_acl_name", network_acl_name)
         if resources is not None:
-            pulumi.set(__self__, "resources", resources)
+            _setter("resources", resources)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="createTime")
@@ -505,6 +579,10 @@ class NetworkAcl(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NetworkAclArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

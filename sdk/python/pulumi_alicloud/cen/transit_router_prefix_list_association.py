@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TransitRouterPrefixListAssociationArgs', 'TransitRouterPrefixListAssociation']
@@ -29,14 +29,55 @@ class TransitRouterPrefixListAssociationArgs:
         :param pulumi.Input[str] next_hop_type: The type of the next hop. Valid values:
         :param pulumi.Input[int] owner_uid: The ID of the Alibaba Cloud account to which the prefix list belongs.
         """
-        pulumi.set(__self__, "next_hop", next_hop)
-        pulumi.set(__self__, "prefix_list_id", prefix_list_id)
-        pulumi.set(__self__, "transit_router_id", transit_router_id)
-        pulumi.set(__self__, "transit_router_table_id", transit_router_table_id)
+        TransitRouterPrefixListAssociationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            next_hop=next_hop,
+            prefix_list_id=prefix_list_id,
+            transit_router_id=transit_router_id,
+            transit_router_table_id=transit_router_table_id,
+            next_hop_type=next_hop_type,
+            owner_uid=owner_uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             next_hop: Optional[pulumi.Input[str]] = None,
+             prefix_list_id: Optional[pulumi.Input[str]] = None,
+             transit_router_id: Optional[pulumi.Input[str]] = None,
+             transit_router_table_id: Optional[pulumi.Input[str]] = None,
+             next_hop_type: Optional[pulumi.Input[str]] = None,
+             owner_uid: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if next_hop is None and 'nextHop' in kwargs:
+            next_hop = kwargs['nextHop']
+        if next_hop is None:
+            raise TypeError("Missing 'next_hop' argument")
+        if prefix_list_id is None and 'prefixListId' in kwargs:
+            prefix_list_id = kwargs['prefixListId']
+        if prefix_list_id is None:
+            raise TypeError("Missing 'prefix_list_id' argument")
+        if transit_router_id is None and 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+        if transit_router_id is None:
+            raise TypeError("Missing 'transit_router_id' argument")
+        if transit_router_table_id is None and 'transitRouterTableId' in kwargs:
+            transit_router_table_id = kwargs['transitRouterTableId']
+        if transit_router_table_id is None:
+            raise TypeError("Missing 'transit_router_table_id' argument")
+        if next_hop_type is None and 'nextHopType' in kwargs:
+            next_hop_type = kwargs['nextHopType']
+        if owner_uid is None and 'ownerUid' in kwargs:
+            owner_uid = kwargs['ownerUid']
+
+        _setter("next_hop", next_hop)
+        _setter("prefix_list_id", prefix_list_id)
+        _setter("transit_router_id", transit_router_id)
+        _setter("transit_router_table_id", transit_router_table_id)
         if next_hop_type is not None:
-            pulumi.set(__self__, "next_hop_type", next_hop_type)
+            _setter("next_hop_type", next_hop_type)
         if owner_uid is not None:
-            pulumi.set(__self__, "owner_uid", owner_uid)
+            _setter("owner_uid", owner_uid)
 
     @property
     @pulumi.getter(name="nextHop")
@@ -131,20 +172,55 @@ class _TransitRouterPrefixListAssociationState:
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] transit_router_table_id: The ID of the route table of the transit router.
         """
+        _TransitRouterPrefixListAssociationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            next_hop=next_hop,
+            next_hop_type=next_hop_type,
+            owner_uid=owner_uid,
+            prefix_list_id=prefix_list_id,
+            status=status,
+            transit_router_id=transit_router_id,
+            transit_router_table_id=transit_router_table_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             next_hop: Optional[pulumi.Input[str]] = None,
+             next_hop_type: Optional[pulumi.Input[str]] = None,
+             owner_uid: Optional[pulumi.Input[int]] = None,
+             prefix_list_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             transit_router_id: Optional[pulumi.Input[str]] = None,
+             transit_router_table_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if next_hop is None and 'nextHop' in kwargs:
+            next_hop = kwargs['nextHop']
+        if next_hop_type is None and 'nextHopType' in kwargs:
+            next_hop_type = kwargs['nextHopType']
+        if owner_uid is None and 'ownerUid' in kwargs:
+            owner_uid = kwargs['ownerUid']
+        if prefix_list_id is None and 'prefixListId' in kwargs:
+            prefix_list_id = kwargs['prefixListId']
+        if transit_router_id is None and 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+        if transit_router_table_id is None and 'transitRouterTableId' in kwargs:
+            transit_router_table_id = kwargs['transitRouterTableId']
+
         if next_hop is not None:
-            pulumi.set(__self__, "next_hop", next_hop)
+            _setter("next_hop", next_hop)
         if next_hop_type is not None:
-            pulumi.set(__self__, "next_hop_type", next_hop_type)
+            _setter("next_hop_type", next_hop_type)
         if owner_uid is not None:
-            pulumi.set(__self__, "owner_uid", owner_uid)
+            _setter("owner_uid", owner_uid)
         if prefix_list_id is not None:
-            pulumi.set(__self__, "prefix_list_id", prefix_list_id)
+            _setter("prefix_list_id", prefix_list_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if transit_router_id is not None:
-            pulumi.set(__self__, "transit_router_id", transit_router_id)
+            _setter("transit_router_id", transit_router_id)
         if transit_router_table_id is not None:
-            pulumi.set(__self__, "transit_router_table_id", transit_router_table_id)
+            _setter("transit_router_table_id", transit_router_table_id)
 
     @property
     @pulumi.getter(name="nextHop")
@@ -354,6 +430,10 @@ class TransitRouterPrefixListAssociation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TransitRouterPrefixListAssociationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

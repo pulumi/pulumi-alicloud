@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -46,20 +46,103 @@ class GetBaseInstancesInstanceResult(dict):
         :param str status: The status of the resource.
         :param Sequence[str] zones: Information about the zone where the cluster is deployed.
         """
-        pulumi.set(__self__, "commodity_code", commodity_code)
-        pulumi.set(__self__, "cpu", cpu)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "disk_size", disk_size)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_class", instance_class)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "node_num", node_num)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "series", series)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "zones", zones)
+        GetBaseInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            commodity_code=commodity_code,
+            cpu=cpu,
+            create_time=create_time,
+            disk_size=disk_size,
+            id=id,
+            instance_class=instance_class,
+            instance_id=instance_id,
+            instance_name=instance_name,
+            node_num=node_num,
+            payment_type=payment_type,
+            resource_group_id=resource_group_id,
+            series=series,
+            status=status,
+            zones=zones,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             commodity_code: Optional[str] = None,
+             cpu: Optional[int] = None,
+             create_time: Optional[str] = None,
+             disk_size: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_class: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             instance_name: Optional[str] = None,
+             node_num: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             resource_group_id: Optional[str] = None,
+             series: Optional[str] = None,
+             status: Optional[str] = None,
+             zones: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if commodity_code is None and 'commodityCode' in kwargs:
+            commodity_code = kwargs['commodityCode']
+        if commodity_code is None:
+            raise TypeError("Missing 'commodity_code' argument")
+        if cpu is None:
+            raise TypeError("Missing 'cpu' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if disk_size is None and 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if disk_size is None:
+            raise TypeError("Missing 'disk_size' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_class is None and 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if instance_class is None:
+            raise TypeError("Missing 'instance_class' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if node_num is None and 'nodeNum' in kwargs:
+            node_num = kwargs['nodeNum']
+        if node_num is None:
+            raise TypeError("Missing 'node_num' argument")
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if resource_group_id is None:
+            raise TypeError("Missing 'resource_group_id' argument")
+        if series is None:
+            raise TypeError("Missing 'series' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if zones is None:
+            raise TypeError("Missing 'zones' argument")
+
+        _setter("commodity_code", commodity_code)
+        _setter("cpu", cpu)
+        _setter("create_time", create_time)
+        _setter("disk_size", disk_size)
+        _setter("id", id)
+        _setter("instance_class", instance_class)
+        _setter("instance_id", instance_id)
+        _setter("instance_name", instance_name)
+        _setter("node_num", node_num)
+        _setter("payment_type", payment_type)
+        _setter("resource_group_id", resource_group_id)
+        _setter("series", series)
+        _setter("status", status)
+        _setter("zones", zones)
 
     @property
     @pulumi.getter(name="commodityCode")

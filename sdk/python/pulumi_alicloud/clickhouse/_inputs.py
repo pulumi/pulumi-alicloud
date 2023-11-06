@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -24,12 +24,33 @@ class DbClusterDbClusterAccessWhiteListArgs:
         :param pulumi.Input[str] db_cluster_ip_array_name: Whitelist group name.
         :param pulumi.Input[str] security_ip_list: The IP address list under the whitelist group.
         """
+        DbClusterDbClusterAccessWhiteListArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_cluster_ip_array_attribute=db_cluster_ip_array_attribute,
+            db_cluster_ip_array_name=db_cluster_ip_array_name,
+            security_ip_list=security_ip_list,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_cluster_ip_array_attribute: Optional[pulumi.Input[str]] = None,
+             db_cluster_ip_array_name: Optional[pulumi.Input[str]] = None,
+             security_ip_list: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if db_cluster_ip_array_attribute is None and 'dbClusterIpArrayAttribute' in kwargs:
+            db_cluster_ip_array_attribute = kwargs['dbClusterIpArrayAttribute']
+        if db_cluster_ip_array_name is None and 'dbClusterIpArrayName' in kwargs:
+            db_cluster_ip_array_name = kwargs['dbClusterIpArrayName']
+        if security_ip_list is None and 'securityIpList' in kwargs:
+            security_ip_list = kwargs['securityIpList']
+
         if db_cluster_ip_array_attribute is not None:
-            pulumi.set(__self__, "db_cluster_ip_array_attribute", db_cluster_ip_array_attribute)
+            _setter("db_cluster_ip_array_attribute", db_cluster_ip_array_attribute)
         if db_cluster_ip_array_name is not None:
-            pulumi.set(__self__, "db_cluster_ip_array_name", db_cluster_ip_array_name)
+            _setter("db_cluster_ip_array_name", db_cluster_ip_array_name)
         if security_ip_list is not None:
-            pulumi.set(__self__, "security_ip_list", security_ip_list)
+            _setter("security_ip_list", security_ip_list)
 
     @property
     @pulumi.getter(name="dbClusterIpArrayAttribute")

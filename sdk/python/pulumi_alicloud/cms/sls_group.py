@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,10 +25,35 @@ class SlsGroupArgs:
         :param pulumi.Input[str] sls_group_name: The name of the resource. The name must be `2` to `32` characters in length, and can contain letters, digits and underscores (_). It must start with a letter.
         :param pulumi.Input[str] sls_group_description: The Description of the Sls Group.
         """
-        pulumi.set(__self__, "sls_group_configs", sls_group_configs)
-        pulumi.set(__self__, "sls_group_name", sls_group_name)
+        SlsGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            sls_group_configs=sls_group_configs,
+            sls_group_name=sls_group_name,
+            sls_group_description=sls_group_description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             sls_group_configs: Optional[pulumi.Input[Sequence[pulumi.Input['SlsGroupSlsGroupConfigArgs']]]] = None,
+             sls_group_name: Optional[pulumi.Input[str]] = None,
+             sls_group_description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if sls_group_configs is None and 'slsGroupConfigs' in kwargs:
+            sls_group_configs = kwargs['slsGroupConfigs']
+        if sls_group_configs is None:
+            raise TypeError("Missing 'sls_group_configs' argument")
+        if sls_group_name is None and 'slsGroupName' in kwargs:
+            sls_group_name = kwargs['slsGroupName']
+        if sls_group_name is None:
+            raise TypeError("Missing 'sls_group_name' argument")
+        if sls_group_description is None and 'slsGroupDescription' in kwargs:
+            sls_group_description = kwargs['slsGroupDescription']
+
+        _setter("sls_group_configs", sls_group_configs)
+        _setter("sls_group_name", sls_group_name)
         if sls_group_description is not None:
-            pulumi.set(__self__, "sls_group_description", sls_group_description)
+            _setter("sls_group_description", sls_group_description)
 
     @property
     @pulumi.getter(name="slsGroupConfigs")
@@ -79,12 +104,33 @@ class _SlsGroupState:
         :param pulumi.Input[str] sls_group_description: The Description of the Sls Group.
         :param pulumi.Input[str] sls_group_name: The name of the resource. The name must be `2` to `32` characters in length, and can contain letters, digits and underscores (_). It must start with a letter.
         """
+        _SlsGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            sls_group_configs=sls_group_configs,
+            sls_group_description=sls_group_description,
+            sls_group_name=sls_group_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             sls_group_configs: Optional[pulumi.Input[Sequence[pulumi.Input['SlsGroupSlsGroupConfigArgs']]]] = None,
+             sls_group_description: Optional[pulumi.Input[str]] = None,
+             sls_group_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if sls_group_configs is None and 'slsGroupConfigs' in kwargs:
+            sls_group_configs = kwargs['slsGroupConfigs']
+        if sls_group_description is None and 'slsGroupDescription' in kwargs:
+            sls_group_description = kwargs['slsGroupDescription']
+        if sls_group_name is None and 'slsGroupName' in kwargs:
+            sls_group_name = kwargs['slsGroupName']
+
         if sls_group_configs is not None:
-            pulumi.set(__self__, "sls_group_configs", sls_group_configs)
+            _setter("sls_group_configs", sls_group_configs)
         if sls_group_description is not None:
-            pulumi.set(__self__, "sls_group_description", sls_group_description)
+            _setter("sls_group_description", sls_group_description)
         if sls_group_name is not None:
-            pulumi.set(__self__, "sls_group_name", sls_group_name)
+            _setter("sls_group_name", sls_group_name)
 
     @property
     @pulumi.getter(name="slsGroupConfigs")
@@ -184,6 +230,10 @@ class SlsGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SlsGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

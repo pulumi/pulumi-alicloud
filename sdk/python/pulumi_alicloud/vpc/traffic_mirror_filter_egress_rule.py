@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TrafficMirrorFilterEgressRuleInitArgs', 'TrafficMirrorFilterEgressRule']
@@ -41,24 +41,77 @@ class TrafficMirrorFilterEgressRuleInitArgs:
         :param pulumi.Input[str] rule_action: . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
         :param pulumi.Input[str] source_port_range: The source port range of the outbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
         """
-        pulumi.set(__self__, "destination_cidr_block", destination_cidr_block)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "protocol", protocol)
-        pulumi.set(__self__, "source_cidr_block", source_cidr_block)
-        pulumi.set(__self__, "traffic_mirror_filter_id", traffic_mirror_filter_id)
+        TrafficMirrorFilterEgressRuleInitArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            destination_cidr_block=destination_cidr_block,
+            priority=priority,
+            protocol=protocol,
+            source_cidr_block=source_cidr_block,
+            traffic_mirror_filter_id=traffic_mirror_filter_id,
+            action=action,
+            destination_port_range=destination_port_range,
+            dry_run=dry_run,
+            rule_action=rule_action,
+            source_port_range=source_port_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             destination_cidr_block: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             source_cidr_block: Optional[pulumi.Input[str]] = None,
+             traffic_mirror_filter_id: Optional[pulumi.Input[str]] = None,
+             action: Optional[pulumi.Input[str]] = None,
+             destination_port_range: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             rule_action: Optional[pulumi.Input[str]] = None,
+             source_port_range: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if destination_cidr_block is None and 'destinationCidrBlock' in kwargs:
+            destination_cidr_block = kwargs['destinationCidrBlock']
+        if destination_cidr_block is None:
+            raise TypeError("Missing 'destination_cidr_block' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if source_cidr_block is None and 'sourceCidrBlock' in kwargs:
+            source_cidr_block = kwargs['sourceCidrBlock']
+        if source_cidr_block is None:
+            raise TypeError("Missing 'source_cidr_block' argument")
+        if traffic_mirror_filter_id is None and 'trafficMirrorFilterId' in kwargs:
+            traffic_mirror_filter_id = kwargs['trafficMirrorFilterId']
+        if traffic_mirror_filter_id is None:
+            raise TypeError("Missing 'traffic_mirror_filter_id' argument")
+        if destination_port_range is None and 'destinationPortRange' in kwargs:
+            destination_port_range = kwargs['destinationPortRange']
+        if dry_run is None and 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if rule_action is None and 'ruleAction' in kwargs:
+            rule_action = kwargs['ruleAction']
+        if source_port_range is None and 'sourcePortRange' in kwargs:
+            source_port_range = kwargs['sourcePortRange']
+
+        _setter("destination_cidr_block", destination_cidr_block)
+        _setter("priority", priority)
+        _setter("protocol", protocol)
+        _setter("source_cidr_block", source_cidr_block)
+        _setter("traffic_mirror_filter_id", traffic_mirror_filter_id)
         if action is not None:
-            pulumi.set(__self__, "action", action)
+            _setter("action", action)
         if destination_port_range is not None:
-            pulumi.set(__self__, "destination_port_range", destination_port_range)
+            _setter("destination_port_range", destination_port_range)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if rule_action is not None:
             warnings.warn("""Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.""", DeprecationWarning)
             pulumi.log.warn("""rule_action is deprecated: Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.""")
         if rule_action is not None:
-            pulumi.set(__self__, "rule_action", rule_action)
+            _setter("rule_action", rule_action)
         if source_port_range is not None:
-            pulumi.set(__self__, "source_port_range", source_port_range)
+            _setter("source_port_range", source_port_range)
 
     @property
     @pulumi.getter(name="destinationCidrBlock")
@@ -222,33 +275,82 @@ class _TrafficMirrorFilterEgressRuleState:
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
+        _TrafficMirrorFilterEgressRuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            destination_cidr_block=destination_cidr_block,
+            destination_port_range=destination_port_range,
+            dry_run=dry_run,
+            priority=priority,
+            protocol=protocol,
+            rule_action=rule_action,
+            source_cidr_block=source_cidr_block,
+            source_port_range=source_port_range,
+            status=status,
+            traffic_mirror_filter_egress_rule_id=traffic_mirror_filter_egress_rule_id,
+            traffic_mirror_filter_id=traffic_mirror_filter_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: Optional[pulumi.Input[str]] = None,
+             destination_cidr_block: Optional[pulumi.Input[str]] = None,
+             destination_port_range: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             rule_action: Optional[pulumi.Input[str]] = None,
+             source_cidr_block: Optional[pulumi.Input[str]] = None,
+             source_port_range: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             traffic_mirror_filter_egress_rule_id: Optional[pulumi.Input[str]] = None,
+             traffic_mirror_filter_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if destination_cidr_block is None and 'destinationCidrBlock' in kwargs:
+            destination_cidr_block = kwargs['destinationCidrBlock']
+        if destination_port_range is None and 'destinationPortRange' in kwargs:
+            destination_port_range = kwargs['destinationPortRange']
+        if dry_run is None and 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if rule_action is None and 'ruleAction' in kwargs:
+            rule_action = kwargs['ruleAction']
+        if source_cidr_block is None and 'sourceCidrBlock' in kwargs:
+            source_cidr_block = kwargs['sourceCidrBlock']
+        if source_port_range is None and 'sourcePortRange' in kwargs:
+            source_port_range = kwargs['sourcePortRange']
+        if traffic_mirror_filter_egress_rule_id is None and 'trafficMirrorFilterEgressRuleId' in kwargs:
+            traffic_mirror_filter_egress_rule_id = kwargs['trafficMirrorFilterEgressRuleId']
+        if traffic_mirror_filter_id is None and 'trafficMirrorFilterId' in kwargs:
+            traffic_mirror_filter_id = kwargs['trafficMirrorFilterId']
+
         if action is not None:
-            pulumi.set(__self__, "action", action)
+            _setter("action", action)
         if destination_cidr_block is not None:
-            pulumi.set(__self__, "destination_cidr_block", destination_cidr_block)
+            _setter("destination_cidr_block", destination_cidr_block)
         if destination_port_range is not None:
-            pulumi.set(__self__, "destination_port_range", destination_port_range)
+            _setter("destination_port_range", destination_port_range)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if rule_action is not None:
             warnings.warn("""Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.""", DeprecationWarning)
             pulumi.log.warn("""rule_action is deprecated: Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.""")
         if rule_action is not None:
-            pulumi.set(__self__, "rule_action", rule_action)
+            _setter("rule_action", rule_action)
         if source_cidr_block is not None:
-            pulumi.set(__self__, "source_cidr_block", source_cidr_block)
+            _setter("source_cidr_block", source_cidr_block)
         if source_port_range is not None:
-            pulumi.set(__self__, "source_port_range", source_port_range)
+            _setter("source_port_range", source_port_range)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if traffic_mirror_filter_egress_rule_id is not None:
-            pulumi.set(__self__, "traffic_mirror_filter_egress_rule_id", traffic_mirror_filter_egress_rule_id)
+            _setter("traffic_mirror_filter_egress_rule_id", traffic_mirror_filter_egress_rule_id)
         if traffic_mirror_filter_id is not None:
-            pulumi.set(__self__, "traffic_mirror_filter_id", traffic_mirror_filter_id)
+            _setter("traffic_mirror_filter_id", traffic_mirror_filter_id)
 
     @property
     @pulumi.getter
@@ -517,6 +619,10 @@ class TrafficMirrorFilterEgressRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TrafficMirrorFilterEgressRuleInitArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

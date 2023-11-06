@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['HistoryDeliveryJobArgs', 'HistoryDeliveryJob']
@@ -19,7 +19,22 @@ class HistoryDeliveryJobArgs:
         The set of arguments for constructing a HistoryDeliveryJob resource.
         :param pulumi.Input[str] trail_name: The name of the trail for which you want to create a historical event delivery task.
         """
-        pulumi.set(__self__, "trail_name", trail_name)
+        HistoryDeliveryJobArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            trail_name=trail_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             trail_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if trail_name is None and 'trailName' in kwargs:
+            trail_name = kwargs['trailName']
+        if trail_name is None:
+            raise TypeError("Missing 'trail_name' argument")
+
+        _setter("trail_name", trail_name)
 
     @property
     @pulumi.getter(name="trailName")
@@ -44,10 +59,25 @@ class _HistoryDeliveryJobState:
         :param pulumi.Input[int] status: The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
         :param pulumi.Input[str] trail_name: The name of the trail for which you want to create a historical event delivery task.
         """
+        _HistoryDeliveryJobState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            status=status,
+            trail_name=trail_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             status: Optional[pulumi.Input[int]] = None,
+             trail_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if trail_name is None and 'trailName' in kwargs:
+            trail_name = kwargs['trailName']
+
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if trail_name is not None:
-            pulumi.set(__self__, "trail_name", trail_name)
+            _setter("trail_name", trail_name)
 
     @property
     @pulumi.getter
@@ -185,6 +215,10 @@ class HistoryDeliveryJob(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            HistoryDeliveryJobArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

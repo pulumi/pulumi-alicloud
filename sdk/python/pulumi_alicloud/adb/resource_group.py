@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ResourceGroupArgs', 'ResourceGroup']
@@ -28,12 +28,41 @@ class ResourceGroupArgs:
                * **default_type**: the default query mode.
         :param pulumi.Input[int] node_num: The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
         """
-        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
-        pulumi.set(__self__, "group_name", group_name)
+        ResourceGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_cluster_id=db_cluster_id,
+            group_name=group_name,
+            group_type=group_type,
+            node_num=node_num,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_cluster_id: Optional[pulumi.Input[str]] = None,
+             group_name: Optional[pulumi.Input[str]] = None,
+             group_type: Optional[pulumi.Input[str]] = None,
+             node_num: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if db_cluster_id is None and 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+        if db_cluster_id is None:
+            raise TypeError("Missing 'db_cluster_id' argument")
+        if group_name is None and 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if group_name is None:
+            raise TypeError("Missing 'group_name' argument")
+        if group_type is None and 'groupType' in kwargs:
+            group_type = kwargs['groupType']
+        if node_num is None and 'nodeNum' in kwargs:
+            node_num = kwargs['nodeNum']
+
+        _setter("db_cluster_id", db_cluster_id)
+        _setter("group_name", group_name)
         if group_type is not None:
-            pulumi.set(__self__, "group_type", group_type)
+            _setter("group_type", group_type)
         if node_num is not None:
-            pulumi.set(__self__, "node_num", node_num)
+            _setter("node_num", node_num)
 
     @property
     @pulumi.getter(name="dbClusterId")
@@ -110,20 +139,55 @@ class _ResourceGroupState:
         :param pulumi.Input[str] update_time: Update time.
         :param pulumi.Input[str] user: Binding User.
         """
+        _ResourceGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            db_cluster_id=db_cluster_id,
+            group_name=group_name,
+            group_type=group_type,
+            node_num=node_num,
+            update_time=update_time,
+            user=user,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             db_cluster_id: Optional[pulumi.Input[str]] = None,
+             group_name: Optional[pulumi.Input[str]] = None,
+             group_type: Optional[pulumi.Input[str]] = None,
+             node_num: Optional[pulumi.Input[int]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             user: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if db_cluster_id is None and 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+        if group_name is None and 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if group_type is None and 'groupType' in kwargs:
+            group_type = kwargs['groupType']
+        if node_num is None and 'nodeNum' in kwargs:
+            node_num = kwargs['nodeNum']
+        if update_time is None and 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if db_cluster_id is not None:
-            pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+            _setter("db_cluster_id", db_cluster_id)
         if group_name is not None:
-            pulumi.set(__self__, "group_name", group_name)
+            _setter("group_name", group_name)
         if group_type is not None:
-            pulumi.set(__self__, "group_type", group_type)
+            _setter("group_type", group_type)
         if node_num is not None:
-            pulumi.set(__self__, "node_num", node_num)
+            _setter("node_num", node_num)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
         if user is not None:
-            pulumi.set(__self__, "user", user)
+            _setter("user", user)
 
     @property
     @pulumi.getter(name="createTime")
@@ -385,6 +449,10 @@ class ResourceGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ResourceGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

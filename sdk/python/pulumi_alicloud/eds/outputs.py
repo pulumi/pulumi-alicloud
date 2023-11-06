@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -71,10 +71,27 @@ class CustomPropertyPropertyValue(dict):
         :param str property_value: The value of an attribute.
         :param str property_value_id: The value of an attribute id.
         """
+        CustomPropertyPropertyValue._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            property_value=property_value,
+            property_value_id=property_value_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             property_value: Optional[str] = None,
+             property_value_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if property_value is None and 'propertyValue' in kwargs:
+            property_value = kwargs['propertyValue']
+        if property_value_id is None and 'propertyValueId' in kwargs:
+            property_value_id = kwargs['propertyValueId']
+
         if property_value is not None:
-            pulumi.set(__self__, "property_value", property_value)
+            _setter("property_value", property_value)
         if property_value_id is not None:
-            pulumi.set(__self__, "property_value_id", property_value_id)
+            _setter("property_value_id", property_value_id)
 
     @property
     @pulumi.getter(name="propertyValue")
@@ -119,10 +136,25 @@ class EcdPolicyGroupAuthorizeAccessPolicyRule(dict):
         :param str cidr_ip: The cidrip of authorize access rule.
         :param str description: The description of authorize access rule.
         """
+        EcdPolicyGroupAuthorizeAccessPolicyRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_ip=cidr_ip,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_ip: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cidr_ip is None and 'cidrIp' in kwargs:
+            cidr_ip = kwargs['cidrIp']
+
         if cidr_ip is not None:
-            pulumi.set(__self__, "cidr_ip", cidr_ip)
+            _setter("cidr_ip", cidr_ip)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="cidrIp")
@@ -181,20 +213,49 @@ class EcdPolicyGroupAuthorizeSecurityPolicyRule(dict):
         :param str priority: The priority of security rules.
         :param str type: The type of security rules.
         """
+        EcdPolicyGroupAuthorizeSecurityPolicyRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_ip=cidr_ip,
+            description=description,
+            ip_protocol=ip_protocol,
+            policy=policy,
+            port_range=port_range,
+            priority=priority,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_ip: Optional[str] = None,
+             description: Optional[str] = None,
+             ip_protocol: Optional[str] = None,
+             policy: Optional[str] = None,
+             port_range: Optional[str] = None,
+             priority: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cidr_ip is None and 'cidrIp' in kwargs:
+            cidr_ip = kwargs['cidrIp']
+        if ip_protocol is None and 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if port_range is None and 'portRange' in kwargs:
+            port_range = kwargs['portRange']
+
         if cidr_ip is not None:
-            pulumi.set(__self__, "cidr_ip", cidr_ip)
+            _setter("cidr_ip", cidr_ip)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if ip_protocol is not None:
-            pulumi.set(__self__, "ip_protocol", ip_protocol)
+            _setter("ip_protocol", ip_protocol)
         if policy is not None:
-            pulumi.set(__self__, "policy", policy)
+            _setter("policy", policy)
         if port_range is not None:
-            pulumi.set(__self__, "port_range", port_range)
+            _setter("port_range", port_range)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="cidrIp")
@@ -296,25 +357,144 @@ class GetAdConnectorDirectoriesDirectoryResult(dict):
         :param str vpc_id: The ID of the vpc.
         :param Sequence[str] vswitch_ids: List of VSwitch IDs in the directory.
         """
-        pulumi.set(__self__, "ad_connector_directory_id", ad_connector_directory_id)
-        pulumi.set(__self__, "ad_connectors", ad_connectors)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "custom_security_group_id", custom_security_group_id)
-        pulumi.set(__self__, "directory_name", directory_name)
-        pulumi.set(__self__, "directory_type", directory_type)
-        pulumi.set(__self__, "dns_addresses", dns_addresses)
-        pulumi.set(__self__, "dns_user_name", dns_user_name)
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "domain_user_name", domain_user_name)
-        pulumi.set(__self__, "enable_admin_access", enable_admin_access)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "mfa_enabled", mfa_enabled)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "sub_dns_addresses", sub_dns_addresses)
-        pulumi.set(__self__, "sub_domain_name", sub_domain_name)
-        pulumi.set(__self__, "trust_password", trust_password)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+        GetAdConnectorDirectoriesDirectoryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ad_connector_directory_id=ad_connector_directory_id,
+            ad_connectors=ad_connectors,
+            create_time=create_time,
+            custom_security_group_id=custom_security_group_id,
+            directory_name=directory_name,
+            directory_type=directory_type,
+            dns_addresses=dns_addresses,
+            dns_user_name=dns_user_name,
+            domain_name=domain_name,
+            domain_user_name=domain_user_name,
+            enable_admin_access=enable_admin_access,
+            id=id,
+            mfa_enabled=mfa_enabled,
+            status=status,
+            sub_dns_addresses=sub_dns_addresses,
+            sub_domain_name=sub_domain_name,
+            trust_password=trust_password,
+            vpc_id=vpc_id,
+            vswitch_ids=vswitch_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ad_connector_directory_id: Optional[str] = None,
+             ad_connectors: Optional[Sequence['outputs.GetAdConnectorDirectoriesDirectoryAdConnectorResult']] = None,
+             create_time: Optional[str] = None,
+             custom_security_group_id: Optional[str] = None,
+             directory_name: Optional[str] = None,
+             directory_type: Optional[str] = None,
+             dns_addresses: Optional[Sequence[str]] = None,
+             dns_user_name: Optional[str] = None,
+             domain_name: Optional[str] = None,
+             domain_user_name: Optional[str] = None,
+             enable_admin_access: Optional[bool] = None,
+             id: Optional[str] = None,
+             mfa_enabled: Optional[bool] = None,
+             status: Optional[str] = None,
+             sub_dns_addresses: Optional[Sequence[str]] = None,
+             sub_domain_name: Optional[str] = None,
+             trust_password: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_ids: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ad_connector_directory_id is None and 'adConnectorDirectoryId' in kwargs:
+            ad_connector_directory_id = kwargs['adConnectorDirectoryId']
+        if ad_connector_directory_id is None:
+            raise TypeError("Missing 'ad_connector_directory_id' argument")
+        if ad_connectors is None and 'adConnectors' in kwargs:
+            ad_connectors = kwargs['adConnectors']
+        if ad_connectors is None:
+            raise TypeError("Missing 'ad_connectors' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if custom_security_group_id is None and 'customSecurityGroupId' in kwargs:
+            custom_security_group_id = kwargs['customSecurityGroupId']
+        if custom_security_group_id is None:
+            raise TypeError("Missing 'custom_security_group_id' argument")
+        if directory_name is None and 'directoryName' in kwargs:
+            directory_name = kwargs['directoryName']
+        if directory_name is None:
+            raise TypeError("Missing 'directory_name' argument")
+        if directory_type is None and 'directoryType' in kwargs:
+            directory_type = kwargs['directoryType']
+        if directory_type is None:
+            raise TypeError("Missing 'directory_type' argument")
+        if dns_addresses is None and 'dnsAddresses' in kwargs:
+            dns_addresses = kwargs['dnsAddresses']
+        if dns_addresses is None:
+            raise TypeError("Missing 'dns_addresses' argument")
+        if dns_user_name is None and 'dnsUserName' in kwargs:
+            dns_user_name = kwargs['dnsUserName']
+        if dns_user_name is None:
+            raise TypeError("Missing 'dns_user_name' argument")
+        if domain_name is None and 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if domain_user_name is None and 'domainUserName' in kwargs:
+            domain_user_name = kwargs['domainUserName']
+        if domain_user_name is None:
+            raise TypeError("Missing 'domain_user_name' argument")
+        if enable_admin_access is None and 'enableAdminAccess' in kwargs:
+            enable_admin_access = kwargs['enableAdminAccess']
+        if enable_admin_access is None:
+            raise TypeError("Missing 'enable_admin_access' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if mfa_enabled is None and 'mfaEnabled' in kwargs:
+            mfa_enabled = kwargs['mfaEnabled']
+        if mfa_enabled is None:
+            raise TypeError("Missing 'mfa_enabled' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if sub_dns_addresses is None and 'subDnsAddresses' in kwargs:
+            sub_dns_addresses = kwargs['subDnsAddresses']
+        if sub_dns_addresses is None:
+            raise TypeError("Missing 'sub_dns_addresses' argument")
+        if sub_domain_name is None and 'subDomainName' in kwargs:
+            sub_domain_name = kwargs['subDomainName']
+        if sub_domain_name is None:
+            raise TypeError("Missing 'sub_domain_name' argument")
+        if trust_password is None and 'trustPassword' in kwargs:
+            trust_password = kwargs['trustPassword']
+        if trust_password is None:
+            raise TypeError("Missing 'trust_password' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_ids is None and 'vswitchIds' in kwargs:
+            vswitch_ids = kwargs['vswitchIds']
+        if vswitch_ids is None:
+            raise TypeError("Missing 'vswitch_ids' argument")
+
+        _setter("ad_connector_directory_id", ad_connector_directory_id)
+        _setter("ad_connectors", ad_connectors)
+        _setter("create_time", create_time)
+        _setter("custom_security_group_id", custom_security_group_id)
+        _setter("directory_name", directory_name)
+        _setter("directory_type", directory_type)
+        _setter("dns_addresses", dns_addresses)
+        _setter("dns_user_name", dns_user_name)
+        _setter("domain_name", domain_name)
+        _setter("domain_user_name", domain_user_name)
+        _setter("enable_admin_access", enable_admin_access)
+        _setter("id", id)
+        _setter("mfa_enabled", mfa_enabled)
+        _setter("status", status)
+        _setter("sub_dns_addresses", sub_dns_addresses)
+        _setter("sub_domain_name", sub_domain_name)
+        _setter("trust_password", trust_password)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_ids", vswitch_ids)
 
     @property
     @pulumi.getter(name="adConnectorDirectoryId")
@@ -486,12 +666,55 @@ class GetAdConnectorDirectoriesDirectoryAdConnectorResult(dict):
         :param str trust_key: The AD Connector control trust password.
         :param str vswitch_id: The ID of VSwitch.
         """
-        pulumi.set(__self__, "ad_connector_address", ad_connector_address)
-        pulumi.set(__self__, "connector_status", connector_status)
-        pulumi.set(__self__, "network_interface_id", network_interface_id)
-        pulumi.set(__self__, "specification", specification)
-        pulumi.set(__self__, "trust_key", trust_key)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetAdConnectorDirectoriesDirectoryAdConnectorResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ad_connector_address=ad_connector_address,
+            connector_status=connector_status,
+            network_interface_id=network_interface_id,
+            specification=specification,
+            trust_key=trust_key,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ad_connector_address: Optional[str] = None,
+             connector_status: Optional[str] = None,
+             network_interface_id: Optional[str] = None,
+             specification: Optional[str] = None,
+             trust_key: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ad_connector_address is None and 'adConnectorAddress' in kwargs:
+            ad_connector_address = kwargs['adConnectorAddress']
+        if ad_connector_address is None:
+            raise TypeError("Missing 'ad_connector_address' argument")
+        if connector_status is None and 'connectorStatus' in kwargs:
+            connector_status = kwargs['connectorStatus']
+        if connector_status is None:
+            raise TypeError("Missing 'connector_status' argument")
+        if network_interface_id is None and 'networkInterfaceId' in kwargs:
+            network_interface_id = kwargs['networkInterfaceId']
+        if network_interface_id is None:
+            raise TypeError("Missing 'network_interface_id' argument")
+        if specification is None:
+            raise TypeError("Missing 'specification' argument")
+        if trust_key is None and 'trustKey' in kwargs:
+            trust_key = kwargs['trustKey']
+        if trust_key is None:
+            raise TypeError("Missing 'trust_key' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+
+        _setter("ad_connector_address", ad_connector_address)
+        _setter("connector_status", connector_status)
+        _setter("network_interface_id", network_interface_id)
+        _setter("specification", specification)
+        _setter("trust_key", trust_key)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="adConnectorAddress")
@@ -607,36 +830,217 @@ class GetAdConnectorOfficeSitesSiteResult(dict):
         :param str vpc_id: Security Office VPC ID.
         :param Sequence[str] vswitch_ids: The vswitch ids.
         """
-        pulumi.set(__self__, "ad_connector_office_site_name", ad_connector_office_site_name)
-        pulumi.set(__self__, "ad_connectors", ad_connectors)
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "cen_id", cen_id)
-        pulumi.set(__self__, "cidr_block", cidr_block)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "custom_security_group_id", custom_security_group_id)
-        pulumi.set(__self__, "desktop_access_type", desktop_access_type)
-        pulumi.set(__self__, "desktop_vpc_endpoint", desktop_vpc_endpoint)
-        pulumi.set(__self__, "dns_addresses", dns_addresses)
-        pulumi.set(__self__, "dns_user_name", dns_user_name)
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "domain_user_name", domain_user_name)
-        pulumi.set(__self__, "enable_admin_access", enable_admin_access)
-        pulumi.set(__self__, "enable_cross_desktop_access", enable_cross_desktop_access)
-        pulumi.set(__self__, "enable_internet_access", enable_internet_access)
-        pulumi.set(__self__, "file_system_ids", file_system_ids)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "logs", logs)
-        pulumi.set(__self__, "mfa_enabled", mfa_enabled)
-        pulumi.set(__self__, "network_package_id", network_package_id)
-        pulumi.set(__self__, "office_site_id", office_site_id)
-        pulumi.set(__self__, "office_site_type", office_site_type)
-        pulumi.set(__self__, "sso_enabled", sso_enabled)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "sub_domain_dns_addresses", sub_domain_dns_addresses)
-        pulumi.set(__self__, "sub_domain_name", sub_domain_name)
-        pulumi.set(__self__, "trust_password", trust_password)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+        GetAdConnectorOfficeSitesSiteResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ad_connector_office_site_name=ad_connector_office_site_name,
+            ad_connectors=ad_connectors,
+            bandwidth=bandwidth,
+            cen_id=cen_id,
+            cidr_block=cidr_block,
+            create_time=create_time,
+            custom_security_group_id=custom_security_group_id,
+            desktop_access_type=desktop_access_type,
+            desktop_vpc_endpoint=desktop_vpc_endpoint,
+            dns_addresses=dns_addresses,
+            dns_user_name=dns_user_name,
+            domain_name=domain_name,
+            domain_user_name=domain_user_name,
+            enable_admin_access=enable_admin_access,
+            enable_cross_desktop_access=enable_cross_desktop_access,
+            enable_internet_access=enable_internet_access,
+            file_system_ids=file_system_ids,
+            id=id,
+            logs=logs,
+            mfa_enabled=mfa_enabled,
+            network_package_id=network_package_id,
+            office_site_id=office_site_id,
+            office_site_type=office_site_type,
+            sso_enabled=sso_enabled,
+            status=status,
+            sub_domain_dns_addresses=sub_domain_dns_addresses,
+            sub_domain_name=sub_domain_name,
+            trust_password=trust_password,
+            vpc_id=vpc_id,
+            vswitch_ids=vswitch_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ad_connector_office_site_name: Optional[str] = None,
+             ad_connectors: Optional[Sequence['outputs.GetAdConnectorOfficeSitesSiteAdConnectorResult']] = None,
+             bandwidth: Optional[int] = None,
+             cen_id: Optional[str] = None,
+             cidr_block: Optional[str] = None,
+             create_time: Optional[str] = None,
+             custom_security_group_id: Optional[str] = None,
+             desktop_access_type: Optional[str] = None,
+             desktop_vpc_endpoint: Optional[str] = None,
+             dns_addresses: Optional[Sequence[str]] = None,
+             dns_user_name: Optional[str] = None,
+             domain_name: Optional[str] = None,
+             domain_user_name: Optional[str] = None,
+             enable_admin_access: Optional[bool] = None,
+             enable_cross_desktop_access: Optional[bool] = None,
+             enable_internet_access: Optional[bool] = None,
+             file_system_ids: Optional[Sequence[str]] = None,
+             id: Optional[str] = None,
+             logs: Optional[Sequence['outputs.GetAdConnectorOfficeSitesSiteLogResult']] = None,
+             mfa_enabled: Optional[bool] = None,
+             network_package_id: Optional[str] = None,
+             office_site_id: Optional[str] = None,
+             office_site_type: Optional[str] = None,
+             sso_enabled: Optional[bool] = None,
+             status: Optional[str] = None,
+             sub_domain_dns_addresses: Optional[Sequence[str]] = None,
+             sub_domain_name: Optional[str] = None,
+             trust_password: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_ids: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ad_connector_office_site_name is None and 'adConnectorOfficeSiteName' in kwargs:
+            ad_connector_office_site_name = kwargs['adConnectorOfficeSiteName']
+        if ad_connector_office_site_name is None:
+            raise TypeError("Missing 'ad_connector_office_site_name' argument")
+        if ad_connectors is None and 'adConnectors' in kwargs:
+            ad_connectors = kwargs['adConnectors']
+        if ad_connectors is None:
+            raise TypeError("Missing 'ad_connectors' argument")
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if cen_id is None and 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if cen_id is None:
+            raise TypeError("Missing 'cen_id' argument")
+        if cidr_block is None and 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if cidr_block is None:
+            raise TypeError("Missing 'cidr_block' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if custom_security_group_id is None and 'customSecurityGroupId' in kwargs:
+            custom_security_group_id = kwargs['customSecurityGroupId']
+        if custom_security_group_id is None:
+            raise TypeError("Missing 'custom_security_group_id' argument")
+        if desktop_access_type is None and 'desktopAccessType' in kwargs:
+            desktop_access_type = kwargs['desktopAccessType']
+        if desktop_access_type is None:
+            raise TypeError("Missing 'desktop_access_type' argument")
+        if desktop_vpc_endpoint is None and 'desktopVpcEndpoint' in kwargs:
+            desktop_vpc_endpoint = kwargs['desktopVpcEndpoint']
+        if desktop_vpc_endpoint is None:
+            raise TypeError("Missing 'desktop_vpc_endpoint' argument")
+        if dns_addresses is None and 'dnsAddresses' in kwargs:
+            dns_addresses = kwargs['dnsAddresses']
+        if dns_addresses is None:
+            raise TypeError("Missing 'dns_addresses' argument")
+        if dns_user_name is None and 'dnsUserName' in kwargs:
+            dns_user_name = kwargs['dnsUserName']
+        if dns_user_name is None:
+            raise TypeError("Missing 'dns_user_name' argument")
+        if domain_name is None and 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if domain_user_name is None and 'domainUserName' in kwargs:
+            domain_user_name = kwargs['domainUserName']
+        if domain_user_name is None:
+            raise TypeError("Missing 'domain_user_name' argument")
+        if enable_admin_access is None and 'enableAdminAccess' in kwargs:
+            enable_admin_access = kwargs['enableAdminAccess']
+        if enable_admin_access is None:
+            raise TypeError("Missing 'enable_admin_access' argument")
+        if enable_cross_desktop_access is None and 'enableCrossDesktopAccess' in kwargs:
+            enable_cross_desktop_access = kwargs['enableCrossDesktopAccess']
+        if enable_cross_desktop_access is None:
+            raise TypeError("Missing 'enable_cross_desktop_access' argument")
+        if enable_internet_access is None and 'enableInternetAccess' in kwargs:
+            enable_internet_access = kwargs['enableInternetAccess']
+        if enable_internet_access is None:
+            raise TypeError("Missing 'enable_internet_access' argument")
+        if file_system_ids is None and 'fileSystemIds' in kwargs:
+            file_system_ids = kwargs['fileSystemIds']
+        if file_system_ids is None:
+            raise TypeError("Missing 'file_system_ids' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if logs is None:
+            raise TypeError("Missing 'logs' argument")
+        if mfa_enabled is None and 'mfaEnabled' in kwargs:
+            mfa_enabled = kwargs['mfaEnabled']
+        if mfa_enabled is None:
+            raise TypeError("Missing 'mfa_enabled' argument")
+        if network_package_id is None and 'networkPackageId' in kwargs:
+            network_package_id = kwargs['networkPackageId']
+        if network_package_id is None:
+            raise TypeError("Missing 'network_package_id' argument")
+        if office_site_id is None and 'officeSiteId' in kwargs:
+            office_site_id = kwargs['officeSiteId']
+        if office_site_id is None:
+            raise TypeError("Missing 'office_site_id' argument")
+        if office_site_type is None and 'officeSiteType' in kwargs:
+            office_site_type = kwargs['officeSiteType']
+        if office_site_type is None:
+            raise TypeError("Missing 'office_site_type' argument")
+        if sso_enabled is None and 'ssoEnabled' in kwargs:
+            sso_enabled = kwargs['ssoEnabled']
+        if sso_enabled is None:
+            raise TypeError("Missing 'sso_enabled' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if sub_domain_dns_addresses is None and 'subDomainDnsAddresses' in kwargs:
+            sub_domain_dns_addresses = kwargs['subDomainDnsAddresses']
+        if sub_domain_dns_addresses is None:
+            raise TypeError("Missing 'sub_domain_dns_addresses' argument")
+        if sub_domain_name is None and 'subDomainName' in kwargs:
+            sub_domain_name = kwargs['subDomainName']
+        if sub_domain_name is None:
+            raise TypeError("Missing 'sub_domain_name' argument")
+        if trust_password is None and 'trustPassword' in kwargs:
+            trust_password = kwargs['trustPassword']
+        if trust_password is None:
+            raise TypeError("Missing 'trust_password' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_ids is None and 'vswitchIds' in kwargs:
+            vswitch_ids = kwargs['vswitchIds']
+        if vswitch_ids is None:
+            raise TypeError("Missing 'vswitch_ids' argument")
+
+        _setter("ad_connector_office_site_name", ad_connector_office_site_name)
+        _setter("ad_connectors", ad_connectors)
+        _setter("bandwidth", bandwidth)
+        _setter("cen_id", cen_id)
+        _setter("cidr_block", cidr_block)
+        _setter("create_time", create_time)
+        _setter("custom_security_group_id", custom_security_group_id)
+        _setter("desktop_access_type", desktop_access_type)
+        _setter("desktop_vpc_endpoint", desktop_vpc_endpoint)
+        _setter("dns_addresses", dns_addresses)
+        _setter("dns_user_name", dns_user_name)
+        _setter("domain_name", domain_name)
+        _setter("domain_user_name", domain_user_name)
+        _setter("enable_admin_access", enable_admin_access)
+        _setter("enable_cross_desktop_access", enable_cross_desktop_access)
+        _setter("enable_internet_access", enable_internet_access)
+        _setter("file_system_ids", file_system_ids)
+        _setter("id", id)
+        _setter("logs", logs)
+        _setter("mfa_enabled", mfa_enabled)
+        _setter("network_package_id", network_package_id)
+        _setter("office_site_id", office_site_id)
+        _setter("office_site_type", office_site_type)
+        _setter("sso_enabled", sso_enabled)
+        _setter("status", status)
+        _setter("sub_domain_dns_addresses", sub_domain_dns_addresses)
+        _setter("sub_domain_name", sub_domain_name)
+        _setter("trust_password", trust_password)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_ids", vswitch_ids)
 
     @property
     @pulumi.getter(name="adConnectorOfficeSiteName")
@@ -892,10 +1296,43 @@ class GetAdConnectorOfficeSitesSiteAdConnectorResult(dict):
         :param str network_interface_id: AD Connector Mount of the Card ID.
         :param str vswitch_id: AD Connector in the Network Corresponding to the ID of the VSwitch in.
         """
-        pulumi.set(__self__, "ad_connector_address", ad_connector_address)
-        pulumi.set(__self__, "connector_status", connector_status)
-        pulumi.set(__self__, "network_interface_id", network_interface_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetAdConnectorOfficeSitesSiteAdConnectorResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ad_connector_address=ad_connector_address,
+            connector_status=connector_status,
+            network_interface_id=network_interface_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ad_connector_address: Optional[str] = None,
+             connector_status: Optional[str] = None,
+             network_interface_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ad_connector_address is None and 'adConnectorAddress' in kwargs:
+            ad_connector_address = kwargs['adConnectorAddress']
+        if ad_connector_address is None:
+            raise TypeError("Missing 'ad_connector_address' argument")
+        if connector_status is None and 'connectorStatus' in kwargs:
+            connector_status = kwargs['connectorStatus']
+        if connector_status is None:
+            raise TypeError("Missing 'connector_status' argument")
+        if network_interface_id is None and 'networkInterfaceId' in kwargs:
+            network_interface_id = kwargs['networkInterfaceId']
+        if network_interface_id is None:
+            raise TypeError("Missing 'network_interface_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+
+        _setter("ad_connector_address", ad_connector_address)
+        _setter("connector_status", connector_status)
+        _setter("network_interface_id", network_interface_id)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="adConnectorAddress")
@@ -943,10 +1380,37 @@ class GetAdConnectorOfficeSitesSiteLogResult(dict):
         :param str step: Log Information Corresponding to the Step.
         :param str time_stamp: Log Print Time.
         """
-        pulumi.set(__self__, "level", level)
-        pulumi.set(__self__, "message", message)
-        pulumi.set(__self__, "step", step)
-        pulumi.set(__self__, "time_stamp", time_stamp)
+        GetAdConnectorOfficeSitesSiteLogResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            level=level,
+            message=message,
+            step=step,
+            time_stamp=time_stamp,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             level: Optional[str] = None,
+             message: Optional[str] = None,
+             step: Optional[str] = None,
+             time_stamp: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+        if message is None:
+            raise TypeError("Missing 'message' argument")
+        if step is None:
+            raise TypeError("Missing 'step' argument")
+        if time_stamp is None and 'timeStamp' in kwargs:
+            time_stamp = kwargs['timeStamp']
+        if time_stamp is None:
+            raise TypeError("Missing 'time_stamp' argument")
+
+        _setter("level", level)
+        _setter("message", message)
+        _setter("step", step)
+        _setter("time_stamp", time_stamp)
 
     @property
     @pulumi.getter
@@ -1006,16 +1470,79 @@ class GetBundlesBundleResult(dict):
         :param str image_id: The image id attribute of the bundle.
         :param str os_type: The os type attribute of the bundle.
         """
-        pulumi.set(__self__, "bundle_id", bundle_id)
-        pulumi.set(__self__, "bundle_name", bundle_name)
-        pulumi.set(__self__, "bundle_type", bundle_type)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "desktop_type", desktop_type)
-        pulumi.set(__self__, "desktop_type_attributes", desktop_type_attributes)
-        pulumi.set(__self__, "disks", disks)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "os_type", os_type)
+        GetBundlesBundleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bundle_id=bundle_id,
+            bundle_name=bundle_name,
+            bundle_type=bundle_type,
+            description=description,
+            desktop_type=desktop_type,
+            desktop_type_attributes=desktop_type_attributes,
+            disks=disks,
+            id=id,
+            image_id=image_id,
+            os_type=os_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bundle_id: Optional[str] = None,
+             bundle_name: Optional[str] = None,
+             bundle_type: Optional[str] = None,
+             description: Optional[str] = None,
+             desktop_type: Optional[str] = None,
+             desktop_type_attributes: Optional[Sequence['outputs.GetBundlesBundleDesktopTypeAttributeResult']] = None,
+             disks: Optional[Sequence['outputs.GetBundlesBundleDiskResult']] = None,
+             id: Optional[str] = None,
+             image_id: Optional[str] = None,
+             os_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bundle_id is None and 'bundleId' in kwargs:
+            bundle_id = kwargs['bundleId']
+        if bundle_id is None:
+            raise TypeError("Missing 'bundle_id' argument")
+        if bundle_name is None and 'bundleName' in kwargs:
+            bundle_name = kwargs['bundleName']
+        if bundle_name is None:
+            raise TypeError("Missing 'bundle_name' argument")
+        if bundle_type is None and 'bundleType' in kwargs:
+            bundle_type = kwargs['bundleType']
+        if bundle_type is None:
+            raise TypeError("Missing 'bundle_type' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if desktop_type is None and 'desktopType' in kwargs:
+            desktop_type = kwargs['desktopType']
+        if desktop_type is None:
+            raise TypeError("Missing 'desktop_type' argument")
+        if desktop_type_attributes is None and 'desktopTypeAttributes' in kwargs:
+            desktop_type_attributes = kwargs['desktopTypeAttributes']
+        if desktop_type_attributes is None:
+            raise TypeError("Missing 'desktop_type_attributes' argument")
+        if disks is None:
+            raise TypeError("Missing 'disks' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+        if os_type is None and 'osType' in kwargs:
+            os_type = kwargs['osType']
+        if os_type is None:
+            raise TypeError("Missing 'os_type' argument")
+
+        _setter("bundle_id", bundle_id)
+        _setter("bundle_name", bundle_name)
+        _setter("bundle_type", bundle_type)
+        _setter("description", description)
+        _setter("desktop_type", desktop_type)
+        _setter("desktop_type_attributes", desktop_type_attributes)
+        _setter("disks", disks)
+        _setter("id", id)
+        _setter("image_id", image_id)
+        _setter("os_type", os_type)
 
     @property
     @pulumi.getter(name="bundleId")
@@ -1111,10 +1638,43 @@ class GetBundlesBundleDesktopTypeAttributeResult(dict):
         :param str gpu_spec: The gpu spec attribute of the bundle.
         :param str memory_size: The memory size attribute of the bundle.
         """
-        pulumi.set(__self__, "cpu_count", cpu_count)
-        pulumi.set(__self__, "gpu_count", gpu_count)
-        pulumi.set(__self__, "gpu_spec", gpu_spec)
-        pulumi.set(__self__, "memory_size", memory_size)
+        GetBundlesBundleDesktopTypeAttributeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cpu_count=cpu_count,
+            gpu_count=gpu_count,
+            gpu_spec=gpu_spec,
+            memory_size=memory_size,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cpu_count: Optional[int] = None,
+             gpu_count: Optional[str] = None,
+             gpu_spec: Optional[str] = None,
+             memory_size: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cpu_count is None and 'cpuCount' in kwargs:
+            cpu_count = kwargs['cpuCount']
+        if cpu_count is None:
+            raise TypeError("Missing 'cpu_count' argument")
+        if gpu_count is None and 'gpuCount' in kwargs:
+            gpu_count = kwargs['gpuCount']
+        if gpu_count is None:
+            raise TypeError("Missing 'gpu_count' argument")
+        if gpu_spec is None and 'gpuSpec' in kwargs:
+            gpu_spec = kwargs['gpuSpec']
+        if gpu_spec is None:
+            raise TypeError("Missing 'gpu_spec' argument")
+        if memory_size is None and 'memorySize' in kwargs:
+            memory_size = kwargs['memorySize']
+        if memory_size is None:
+            raise TypeError("Missing 'memory_size' argument")
+
+        _setter("cpu_count", cpu_count)
+        _setter("gpu_count", gpu_count)
+        _setter("gpu_spec", gpu_spec)
+        _setter("memory_size", memory_size)
 
     @property
     @pulumi.getter(name="cpuCount")
@@ -1158,8 +1718,29 @@ class GetBundlesBundleDiskResult(dict):
         :param str disk_size: The disk size attribute of the bundle.
         :param str disk_type: The disk type attribute of the bundle.
         """
-        pulumi.set(__self__, "disk_size", disk_size)
-        pulumi.set(__self__, "disk_type", disk_type)
+        GetBundlesBundleDiskResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disk_size=disk_size,
+            disk_type=disk_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disk_size: Optional[str] = None,
+             disk_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disk_size is None and 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if disk_size is None:
+            raise TypeError("Missing 'disk_size' argument")
+        if disk_type is None and 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if disk_type is None:
+            raise TypeError("Missing 'disk_type' argument")
+
+        _setter("disk_size", disk_size)
+        _setter("disk_type", disk_type)
 
     @property
     @pulumi.getter(name="diskSize")
@@ -1197,13 +1778,60 @@ class GetCommandsCommandResult(dict):
         :param str invoke_id: The invoke id of the Command.
         :param str status: Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
         """
-        pulumi.set(__self__, "command_content", command_content)
-        pulumi.set(__self__, "command_type", command_type)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "invoke_desktops", invoke_desktops)
-        pulumi.set(__self__, "invoke_id", invoke_id)
-        pulumi.set(__self__, "status", status)
+        GetCommandsCommandResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            command_content=command_content,
+            command_type=command_type,
+            create_time=create_time,
+            id=id,
+            invoke_desktops=invoke_desktops,
+            invoke_id=invoke_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             command_content: Optional[str] = None,
+             command_type: Optional[str] = None,
+             create_time: Optional[str] = None,
+             id: Optional[str] = None,
+             invoke_desktops: Optional[Sequence['outputs.GetCommandsCommandInvokeDesktopResult']] = None,
+             invoke_id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if command_content is None and 'commandContent' in kwargs:
+            command_content = kwargs['commandContent']
+        if command_content is None:
+            raise TypeError("Missing 'command_content' argument")
+        if command_type is None and 'commandType' in kwargs:
+            command_type = kwargs['commandType']
+        if command_type is None:
+            raise TypeError("Missing 'command_type' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if invoke_desktops is None and 'invokeDesktops' in kwargs:
+            invoke_desktops = kwargs['invokeDesktops']
+        if invoke_desktops is None:
+            raise TypeError("Missing 'invoke_desktops' argument")
+        if invoke_id is None and 'invokeId' in kwargs:
+            invoke_id = kwargs['invokeId']
+        if invoke_id is None:
+            raise TypeError("Missing 'invoke_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+
+        _setter("command_content", command_content)
+        _setter("command_type", command_type)
+        _setter("create_time", create_time)
+        _setter("id", id)
+        _setter("invoke_desktops", invoke_desktops)
+        _setter("invoke_id", invoke_id)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="commandContent")
@@ -1289,17 +1917,86 @@ class GetCommandsCommandInvokeDesktopResult(dict):
         :param str start_time: The Script Process on the Desktop, in the Start Timing of the Execution.
         :param str stop_time: If You Use the invocation Indicates That the Call of the Time.
         """
-        pulumi.set(__self__, "desktop_id", desktop_id)
-        pulumi.set(__self__, "dropped", dropped)
-        pulumi.set(__self__, "error_code", error_code)
-        pulumi.set(__self__, "error_info", error_info)
-        pulumi.set(__self__, "exit_code", exit_code)
-        pulumi.set(__self__, "finish_time", finish_time)
-        pulumi.set(__self__, "invocation_status", invocation_status)
-        pulumi.set(__self__, "output", output)
-        pulumi.set(__self__, "repeats", repeats)
-        pulumi.set(__self__, "start_time", start_time)
-        pulumi.set(__self__, "stop_time", stop_time)
+        GetCommandsCommandInvokeDesktopResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            desktop_id=desktop_id,
+            dropped=dropped,
+            error_code=error_code,
+            error_info=error_info,
+            exit_code=exit_code,
+            finish_time=finish_time,
+            invocation_status=invocation_status,
+            output=output,
+            repeats=repeats,
+            start_time=start_time,
+            stop_time=stop_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             desktop_id: Optional[str] = None,
+             dropped: Optional[int] = None,
+             error_code: Optional[str] = None,
+             error_info: Optional[str] = None,
+             exit_code: Optional[str] = None,
+             finish_time: Optional[str] = None,
+             invocation_status: Optional[str] = None,
+             output: Optional[str] = None,
+             repeats: Optional[int] = None,
+             start_time: Optional[str] = None,
+             stop_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if desktop_id is None and 'desktopId' in kwargs:
+            desktop_id = kwargs['desktopId']
+        if desktop_id is None:
+            raise TypeError("Missing 'desktop_id' argument")
+        if dropped is None:
+            raise TypeError("Missing 'dropped' argument")
+        if error_code is None and 'errorCode' in kwargs:
+            error_code = kwargs['errorCode']
+        if error_code is None:
+            raise TypeError("Missing 'error_code' argument")
+        if error_info is None and 'errorInfo' in kwargs:
+            error_info = kwargs['errorInfo']
+        if error_info is None:
+            raise TypeError("Missing 'error_info' argument")
+        if exit_code is None and 'exitCode' in kwargs:
+            exit_code = kwargs['exitCode']
+        if exit_code is None:
+            raise TypeError("Missing 'exit_code' argument")
+        if finish_time is None and 'finishTime' in kwargs:
+            finish_time = kwargs['finishTime']
+        if finish_time is None:
+            raise TypeError("Missing 'finish_time' argument")
+        if invocation_status is None and 'invocationStatus' in kwargs:
+            invocation_status = kwargs['invocationStatus']
+        if invocation_status is None:
+            raise TypeError("Missing 'invocation_status' argument")
+        if output is None:
+            raise TypeError("Missing 'output' argument")
+        if repeats is None:
+            raise TypeError("Missing 'repeats' argument")
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if start_time is None:
+            raise TypeError("Missing 'start_time' argument")
+        if stop_time is None and 'stopTime' in kwargs:
+            stop_time = kwargs['stopTime']
+        if stop_time is None:
+            raise TypeError("Missing 'stop_time' argument")
+
+        _setter("desktop_id", desktop_id)
+        _setter("dropped", dropped)
+        _setter("error_code", error_code)
+        _setter("error_info", error_info)
+        _setter("exit_code", exit_code)
+        _setter("finish_time", finish_time)
+        _setter("invocation_status", invocation_status)
+        _setter("output", output)
+        _setter("repeats", repeats)
+        _setter("start_time", start_time)
+        _setter("stop_time", stop_time)
 
     @property
     @pulumi.getter(name="desktopId")
@@ -1403,10 +2100,41 @@ class GetCustomPropertiesPropertyResult(dict):
         :param str property_key: The Custom attribute key.
         :param Sequence['GetCustomPropertiesPropertyPropertyValueArgs'] property_values: Custom attribute sets the value of.
         """
-        pulumi.set(__self__, "custom_property_id", custom_property_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "property_key", property_key)
-        pulumi.set(__self__, "property_values", property_values)
+        GetCustomPropertiesPropertyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            custom_property_id=custom_property_id,
+            id=id,
+            property_key=property_key,
+            property_values=property_values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             custom_property_id: Optional[str] = None,
+             id: Optional[str] = None,
+             property_key: Optional[str] = None,
+             property_values: Optional[Sequence['outputs.GetCustomPropertiesPropertyPropertyValueResult']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if custom_property_id is None and 'customPropertyId' in kwargs:
+            custom_property_id = kwargs['customPropertyId']
+        if custom_property_id is None:
+            raise TypeError("Missing 'custom_property_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if property_key is None and 'propertyKey' in kwargs:
+            property_key = kwargs['propertyKey']
+        if property_key is None:
+            raise TypeError("Missing 'property_key' argument")
+        if property_values is None and 'propertyValues' in kwargs:
+            property_values = kwargs['propertyValues']
+        if property_values is None:
+            raise TypeError("Missing 'property_values' argument")
+
+        _setter("custom_property_id", custom_property_id)
+        _setter("id", id)
+        _setter("property_key", property_key)
+        _setter("property_values", property_values)
 
     @property
     @pulumi.getter(name="customPropertyId")
@@ -1450,8 +2178,29 @@ class GetCustomPropertiesPropertyPropertyValueResult(dict):
         :param str property_value: The value of an attribute.
         :param str property_value_id: The value of an attribute id.
         """
-        pulumi.set(__self__, "property_value", property_value)
-        pulumi.set(__self__, "property_value_id", property_value_id)
+        GetCustomPropertiesPropertyPropertyValueResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            property_value=property_value,
+            property_value_id=property_value_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             property_value: Optional[str] = None,
+             property_value_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if property_value is None and 'propertyValue' in kwargs:
+            property_value = kwargs['propertyValue']
+        if property_value is None:
+            raise TypeError("Missing 'property_value' argument")
+        if property_value_id is None and 'propertyValueId' in kwargs:
+            property_value_id = kwargs['propertyValueId']
+        if property_value_id is None:
+            raise TypeError("Missing 'property_value_id' argument")
+
+        _setter("property_value", property_value)
+        _setter("property_value_id", property_value_id)
 
     @property
     @pulumi.getter(name="propertyValue")
@@ -1495,16 +2244,81 @@ class GetDesktopTypesTypeResult(dict):
         :param str status: The status of the resource.
         :param str system_disk_size: The size of the system disk. Unit: GiB.
         """
-        pulumi.set(__self__, "cpu_count", cpu_count)
-        pulumi.set(__self__, "data_disk_size", data_disk_size)
-        pulumi.set(__self__, "desktop_type_id", desktop_type_id)
-        pulumi.set(__self__, "gpu_count", gpu_count)
-        pulumi.set(__self__, "gpu_spec", gpu_spec)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_type_family", instance_type_family)
-        pulumi.set(__self__, "memory_size", memory_size)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "system_disk_size", system_disk_size)
+        GetDesktopTypesTypeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cpu_count=cpu_count,
+            data_disk_size=data_disk_size,
+            desktop_type_id=desktop_type_id,
+            gpu_count=gpu_count,
+            gpu_spec=gpu_spec,
+            id=id,
+            instance_type_family=instance_type_family,
+            memory_size=memory_size,
+            status=status,
+            system_disk_size=system_disk_size,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cpu_count: Optional[str] = None,
+             data_disk_size: Optional[str] = None,
+             desktop_type_id: Optional[str] = None,
+             gpu_count: Optional[float] = None,
+             gpu_spec: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_type_family: Optional[str] = None,
+             memory_size: Optional[str] = None,
+             status: Optional[str] = None,
+             system_disk_size: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cpu_count is None and 'cpuCount' in kwargs:
+            cpu_count = kwargs['cpuCount']
+        if cpu_count is None:
+            raise TypeError("Missing 'cpu_count' argument")
+        if data_disk_size is None and 'dataDiskSize' in kwargs:
+            data_disk_size = kwargs['dataDiskSize']
+        if data_disk_size is None:
+            raise TypeError("Missing 'data_disk_size' argument")
+        if desktop_type_id is None and 'desktopTypeId' in kwargs:
+            desktop_type_id = kwargs['desktopTypeId']
+        if desktop_type_id is None:
+            raise TypeError("Missing 'desktop_type_id' argument")
+        if gpu_count is None and 'gpuCount' in kwargs:
+            gpu_count = kwargs['gpuCount']
+        if gpu_count is None:
+            raise TypeError("Missing 'gpu_count' argument")
+        if gpu_spec is None and 'gpuSpec' in kwargs:
+            gpu_spec = kwargs['gpuSpec']
+        if gpu_spec is None:
+            raise TypeError("Missing 'gpu_spec' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if instance_type_family is None and 'instanceTypeFamily' in kwargs:
+            instance_type_family = kwargs['instanceTypeFamily']
+        if instance_type_family is None:
+            raise TypeError("Missing 'instance_type_family' argument")
+        if memory_size is None and 'memorySize' in kwargs:
+            memory_size = kwargs['memorySize']
+        if memory_size is None:
+            raise TypeError("Missing 'memory_size' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if system_disk_size is None and 'systemDiskSize' in kwargs:
+            system_disk_size = kwargs['systemDiskSize']
+        if system_disk_size is None:
+            raise TypeError("Missing 'system_disk_size' argument")
+
+        _setter("cpu_count", cpu_count)
+        _setter("data_disk_size", data_disk_size)
+        _setter("desktop_type_id", desktop_type_id)
+        _setter("gpu_count", gpu_count)
+        _setter("gpu_spec", gpu_spec)
+        _setter("id", id)
+        _setter("instance_type_family", instance_type_family)
+        _setter("memory_size", memory_size)
+        _setter("status", status)
+        _setter("system_disk_size", system_disk_size)
 
     @property
     @pulumi.getter(name="cpuCount")
@@ -1624,22 +2438,119 @@ class GetDesktopsDesktopResult(dict):
         :param str status: The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
         :param int system_disk_size: The system disk size of the Desktop.
         """
-        pulumi.set(__self__, "cpu", cpu)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "desktop_id", desktop_id)
-        pulumi.set(__self__, "desktop_name", desktop_name)
-        pulumi.set(__self__, "desktop_type", desktop_type)
-        pulumi.set(__self__, "directory_id", directory_id)
-        pulumi.set(__self__, "end_user_ids", end_user_ids)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "memory", memory)
-        pulumi.set(__self__, "network_interface_id", network_interface_id)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "policy_group_id", policy_group_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "system_disk_size", system_disk_size)
+        GetDesktopsDesktopResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cpu=cpu,
+            create_time=create_time,
+            desktop_id=desktop_id,
+            desktop_name=desktop_name,
+            desktop_type=desktop_type,
+            directory_id=directory_id,
+            end_user_ids=end_user_ids,
+            expired_time=expired_time,
+            id=id,
+            image_id=image_id,
+            memory=memory,
+            network_interface_id=network_interface_id,
+            payment_type=payment_type,
+            policy_group_id=policy_group_id,
+            status=status,
+            system_disk_size=system_disk_size,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cpu: Optional[int] = None,
+             create_time: Optional[str] = None,
+             desktop_id: Optional[str] = None,
+             desktop_name: Optional[str] = None,
+             desktop_type: Optional[str] = None,
+             directory_id: Optional[str] = None,
+             end_user_ids: Optional[Sequence[str]] = None,
+             expired_time: Optional[str] = None,
+             id: Optional[str] = None,
+             image_id: Optional[str] = None,
+             memory: Optional[str] = None,
+             network_interface_id: Optional[str] = None,
+             payment_type: Optional[str] = None,
+             policy_group_id: Optional[str] = None,
+             status: Optional[str] = None,
+             system_disk_size: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cpu is None:
+            raise TypeError("Missing 'cpu' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if desktop_id is None and 'desktopId' in kwargs:
+            desktop_id = kwargs['desktopId']
+        if desktop_id is None:
+            raise TypeError("Missing 'desktop_id' argument")
+        if desktop_name is None and 'desktopName' in kwargs:
+            desktop_name = kwargs['desktopName']
+        if desktop_name is None:
+            raise TypeError("Missing 'desktop_name' argument")
+        if desktop_type is None and 'desktopType' in kwargs:
+            desktop_type = kwargs['desktopType']
+        if desktop_type is None:
+            raise TypeError("Missing 'desktop_type' argument")
+        if directory_id is None and 'directoryId' in kwargs:
+            directory_id = kwargs['directoryId']
+        if directory_id is None:
+            raise TypeError("Missing 'directory_id' argument")
+        if end_user_ids is None and 'endUserIds' in kwargs:
+            end_user_ids = kwargs['endUserIds']
+        if end_user_ids is None:
+            raise TypeError("Missing 'end_user_ids' argument")
+        if expired_time is None and 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if expired_time is None:
+            raise TypeError("Missing 'expired_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+        if memory is None:
+            raise TypeError("Missing 'memory' argument")
+        if network_interface_id is None and 'networkInterfaceId' in kwargs:
+            network_interface_id = kwargs['networkInterfaceId']
+        if network_interface_id is None:
+            raise TypeError("Missing 'network_interface_id' argument")
+        if payment_type is None and 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if payment_type is None:
+            raise TypeError("Missing 'payment_type' argument")
+        if policy_group_id is None and 'policyGroupId' in kwargs:
+            policy_group_id = kwargs['policyGroupId']
+        if policy_group_id is None:
+            raise TypeError("Missing 'policy_group_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if system_disk_size is None and 'systemDiskSize' in kwargs:
+            system_disk_size = kwargs['systemDiskSize']
+        if system_disk_size is None:
+            raise TypeError("Missing 'system_disk_size' argument")
+
+        _setter("cpu", cpu)
+        _setter("create_time", create_time)
+        _setter("desktop_id", desktop_id)
+        _setter("desktop_name", desktop_name)
+        _setter("desktop_type", desktop_type)
+        _setter("directory_id", directory_id)
+        _setter("end_user_ids", end_user_ids)
+        _setter("expired_time", expired_time)
+        _setter("id", id)
+        _setter("image_id", image_id)
+        _setter("memory", memory)
+        _setter("network_interface_id", network_interface_id)
+        _setter("payment_type", payment_type)
+        _setter("policy_group_id", policy_group_id)
+        _setter("status", status)
+        _setter("system_disk_size", system_disk_size)
 
     @property
     @pulumi.getter
@@ -1799,18 +2710,89 @@ class GetImagesImageResult(dict):
         :param int size: The size of the image.
         :param str status: The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "data_disk_size", data_disk_size)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "gpu_category", gpu_category)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "image_name", image_name)
-        pulumi.set(__self__, "image_type", image_type)
-        pulumi.set(__self__, "os_type", os_type)
-        pulumi.set(__self__, "progress", progress)
-        pulumi.set(__self__, "size", size)
-        pulumi.set(__self__, "status", status)
+        GetImagesImageResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            data_disk_size=data_disk_size,
+            description=description,
+            gpu_category=gpu_category,
+            id=id,
+            image_id=image_id,
+            image_name=image_name,
+            image_type=image_type,
+            os_type=os_type,
+            progress=progress,
+            size=size,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[str] = None,
+             data_disk_size: Optional[int] = None,
+             description: Optional[str] = None,
+             gpu_category: Optional[bool] = None,
+             id: Optional[str] = None,
+             image_id: Optional[str] = None,
+             image_name: Optional[str] = None,
+             image_type: Optional[str] = None,
+             os_type: Optional[str] = None,
+             progress: Optional[str] = None,
+             size: Optional[int] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if data_disk_size is None and 'dataDiskSize' in kwargs:
+            data_disk_size = kwargs['dataDiskSize']
+        if data_disk_size is None:
+            raise TypeError("Missing 'data_disk_size' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if gpu_category is None and 'gpuCategory' in kwargs:
+            gpu_category = kwargs['gpuCategory']
+        if gpu_category is None:
+            raise TypeError("Missing 'gpu_category' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+        if image_name is None and 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+        if image_name is None:
+            raise TypeError("Missing 'image_name' argument")
+        if image_type is None and 'imageType' in kwargs:
+            image_type = kwargs['imageType']
+        if image_type is None:
+            raise TypeError("Missing 'image_type' argument")
+        if os_type is None and 'osType' in kwargs:
+            os_type = kwargs['osType']
+        if os_type is None:
+            raise TypeError("Missing 'os_type' argument")
+        if progress is None:
+            raise TypeError("Missing 'progress' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+
+        _setter("create_time", create_time)
+        _setter("data_disk_size", data_disk_size)
+        _setter("description", description)
+        _setter("gpu_category", gpu_category)
+        _setter("id", id)
+        _setter("image_id", image_id)
+        _setter("image_name", image_name)
+        _setter("image_type", image_type)
+        _setter("os_type", os_type)
+        _setter("progress", progress)
+        _setter("size", size)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="createTime")
@@ -1946,22 +2928,119 @@ class GetNasFileSystemsSystemResult(dict):
         :param bool support_acl: Whether to support Acl.
         :param str zone_id: The zone id of nas file system.
         """
-        pulumi.set(__self__, "capacity", capacity)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "file_system_id", file_system_id)
-        pulumi.set(__self__, "file_system_type", file_system_type)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "metered_size", metered_size)
-        pulumi.set(__self__, "mount_target_domain", mount_target_domain)
-        pulumi.set(__self__, "mount_target_status", mount_target_status)
-        pulumi.set(__self__, "nas_file_system_name", nas_file_system_name)
-        pulumi.set(__self__, "office_site_id", office_site_id)
-        pulumi.set(__self__, "office_site_name", office_site_name)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "storage_type", storage_type)
-        pulumi.set(__self__, "support_acl", support_acl)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetNasFileSystemsSystemResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            capacity=capacity,
+            create_time=create_time,
+            description=description,
+            file_system_id=file_system_id,
+            file_system_type=file_system_type,
+            id=id,
+            metered_size=metered_size,
+            mount_target_domain=mount_target_domain,
+            mount_target_status=mount_target_status,
+            nas_file_system_name=nas_file_system_name,
+            office_site_id=office_site_id,
+            office_site_name=office_site_name,
+            status=status,
+            storage_type=storage_type,
+            support_acl=support_acl,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             capacity: Optional[str] = None,
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             file_system_id: Optional[str] = None,
+             file_system_type: Optional[str] = None,
+             id: Optional[str] = None,
+             metered_size: Optional[str] = None,
+             mount_target_domain: Optional[str] = None,
+             mount_target_status: Optional[str] = None,
+             nas_file_system_name: Optional[str] = None,
+             office_site_id: Optional[str] = None,
+             office_site_name: Optional[str] = None,
+             status: Optional[str] = None,
+             storage_type: Optional[str] = None,
+             support_acl: Optional[bool] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if capacity is None:
+            raise TypeError("Missing 'capacity' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if file_system_id is None and 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if file_system_id is None:
+            raise TypeError("Missing 'file_system_id' argument")
+        if file_system_type is None and 'fileSystemType' in kwargs:
+            file_system_type = kwargs['fileSystemType']
+        if file_system_type is None:
+            raise TypeError("Missing 'file_system_type' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if metered_size is None and 'meteredSize' in kwargs:
+            metered_size = kwargs['meteredSize']
+        if metered_size is None:
+            raise TypeError("Missing 'metered_size' argument")
+        if mount_target_domain is None and 'mountTargetDomain' in kwargs:
+            mount_target_domain = kwargs['mountTargetDomain']
+        if mount_target_domain is None:
+            raise TypeError("Missing 'mount_target_domain' argument")
+        if mount_target_status is None and 'mountTargetStatus' in kwargs:
+            mount_target_status = kwargs['mountTargetStatus']
+        if mount_target_status is None:
+            raise TypeError("Missing 'mount_target_status' argument")
+        if nas_file_system_name is None and 'nasFileSystemName' in kwargs:
+            nas_file_system_name = kwargs['nasFileSystemName']
+        if nas_file_system_name is None:
+            raise TypeError("Missing 'nas_file_system_name' argument")
+        if office_site_id is None and 'officeSiteId' in kwargs:
+            office_site_id = kwargs['officeSiteId']
+        if office_site_id is None:
+            raise TypeError("Missing 'office_site_id' argument")
+        if office_site_name is None and 'officeSiteName' in kwargs:
+            office_site_name = kwargs['officeSiteName']
+        if office_site_name is None:
+            raise TypeError("Missing 'office_site_name' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if storage_type is None and 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+        if storage_type is None:
+            raise TypeError("Missing 'storage_type' argument")
+        if support_acl is None and 'supportAcl' in kwargs:
+            support_acl = kwargs['supportAcl']
+        if support_acl is None:
+            raise TypeError("Missing 'support_acl' argument")
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+
+        _setter("capacity", capacity)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("file_system_id", file_system_id)
+        _setter("file_system_type", file_system_type)
+        _setter("id", id)
+        _setter("metered_size", metered_size)
+        _setter("mount_target_domain", mount_target_domain)
+        _setter("mount_target_status", mount_target_status)
+        _setter("nas_file_system_name", nas_file_system_name)
+        _setter("office_site_id", office_site_id)
+        _setter("office_site_name", office_site_name)
+        _setter("status", status)
+        _setter("storage_type", storage_type)
+        _setter("support_acl", support_acl)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -2117,16 +3196,79 @@ class GetNetworkPackagesPackageResult(dict):
         :param str office_site_name: The name of office site.
         :param str status: The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
         """
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "eip_addresses", eip_addresses)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
-        pulumi.set(__self__, "network_package_id", network_package_id)
-        pulumi.set(__self__, "office_site_id", office_site_id)
-        pulumi.set(__self__, "office_site_name", office_site_name)
-        pulumi.set(__self__, "status", status)
+        GetNetworkPackagesPackageResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            create_time=create_time,
+            eip_addresses=eip_addresses,
+            expired_time=expired_time,
+            id=id,
+            internet_charge_type=internet_charge_type,
+            network_package_id=network_package_id,
+            office_site_id=office_site_id,
+            office_site_name=office_site_name,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: Optional[int] = None,
+             create_time: Optional[str] = None,
+             eip_addresses: Optional[Sequence[str]] = None,
+             expired_time: Optional[str] = None,
+             id: Optional[str] = None,
+             internet_charge_type: Optional[str] = None,
+             network_package_id: Optional[str] = None,
+             office_site_id: Optional[str] = None,
+             office_site_name: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if eip_addresses is None and 'eipAddresses' in kwargs:
+            eip_addresses = kwargs['eipAddresses']
+        if eip_addresses is None:
+            raise TypeError("Missing 'eip_addresses' argument")
+        if expired_time is None and 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if expired_time is None:
+            raise TypeError("Missing 'expired_time' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if internet_charge_type is None and 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if internet_charge_type is None:
+            raise TypeError("Missing 'internet_charge_type' argument")
+        if network_package_id is None and 'networkPackageId' in kwargs:
+            network_package_id = kwargs['networkPackageId']
+        if network_package_id is None:
+            raise TypeError("Missing 'network_package_id' argument")
+        if office_site_id is None and 'officeSiteId' in kwargs:
+            office_site_id = kwargs['officeSiteId']
+        if office_site_id is None:
+            raise TypeError("Missing 'office_site_id' argument")
+        if office_site_name is None and 'officeSiteName' in kwargs:
+            office_site_name = kwargs['officeSiteName']
+        if office_site_name is None:
+            raise TypeError("Missing 'office_site_name' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+
+        _setter("bandwidth", bandwidth)
+        _setter("create_time", create_time)
+        _setter("eip_addresses", eip_addresses)
+        _setter("expired_time", expired_time)
+        _setter("id", id)
+        _setter("internet_charge_type", internet_charge_type)
+        _setter("network_package_id", network_package_id)
+        _setter("office_site_id", office_site_id)
+        _setter("office_site_name", office_site_name)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -2260,29 +3402,166 @@ class GetPolicyGroupsGroupResult(dict):
         :param str watermark_transparency: The watermark transparency.
         :param str watermark_type: The type of watemark.
         """
-        pulumi.set(__self__, "authorize_access_policy_rules", authorize_access_policy_rules)
-        pulumi.set(__self__, "authorize_security_policy_rules", authorize_security_policy_rules)
-        pulumi.set(__self__, "camera_redirect", camera_redirect)
-        pulumi.set(__self__, "clipboard", clipboard)
-        pulumi.set(__self__, "domain_list", domain_list)
-        pulumi.set(__self__, "eds_count", eds_count)
-        pulumi.set(__self__, "html_access", html_access)
-        pulumi.set(__self__, "html_file_transfer", html_file_transfer)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "local_drive", local_drive)
-        pulumi.set(__self__, "policy_group_id", policy_group_id)
-        pulumi.set(__self__, "policy_group_name", policy_group_name)
-        pulumi.set(__self__, "policy_group_type", policy_group_type)
-        pulumi.set(__self__, "recording", recording)
-        pulumi.set(__self__, "recording_end_time", recording_end_time)
-        pulumi.set(__self__, "recording_fps", recording_fps)
-        pulumi.set(__self__, "recording_start_time", recording_start_time)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "usb_redirect", usb_redirect)
-        pulumi.set(__self__, "visual_quality", visual_quality)
-        pulumi.set(__self__, "watermark", watermark)
-        pulumi.set(__self__, "watermark_transparency", watermark_transparency)
-        pulumi.set(__self__, "watermark_type", watermark_type)
+        GetPolicyGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            authorize_access_policy_rules=authorize_access_policy_rules,
+            authorize_security_policy_rules=authorize_security_policy_rules,
+            camera_redirect=camera_redirect,
+            clipboard=clipboard,
+            domain_list=domain_list,
+            eds_count=eds_count,
+            html_access=html_access,
+            html_file_transfer=html_file_transfer,
+            id=id,
+            local_drive=local_drive,
+            policy_group_id=policy_group_id,
+            policy_group_name=policy_group_name,
+            policy_group_type=policy_group_type,
+            recording=recording,
+            recording_end_time=recording_end_time,
+            recording_fps=recording_fps,
+            recording_start_time=recording_start_time,
+            status=status,
+            usb_redirect=usb_redirect,
+            visual_quality=visual_quality,
+            watermark=watermark,
+            watermark_transparency=watermark_transparency,
+            watermark_type=watermark_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             authorize_access_policy_rules: Optional[Sequence['outputs.GetPolicyGroupsGroupAuthorizeAccessPolicyRuleResult']] = None,
+             authorize_security_policy_rules: Optional[Sequence['outputs.GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleResult']] = None,
+             camera_redirect: Optional[str] = None,
+             clipboard: Optional[str] = None,
+             domain_list: Optional[str] = None,
+             eds_count: Optional[int] = None,
+             html_access: Optional[str] = None,
+             html_file_transfer: Optional[str] = None,
+             id: Optional[str] = None,
+             local_drive: Optional[str] = None,
+             policy_group_id: Optional[str] = None,
+             policy_group_name: Optional[str] = None,
+             policy_group_type: Optional[str] = None,
+             recording: Optional[str] = None,
+             recording_end_time: Optional[str] = None,
+             recording_fps: Optional[int] = None,
+             recording_start_time: Optional[str] = None,
+             status: Optional[str] = None,
+             usb_redirect: Optional[str] = None,
+             visual_quality: Optional[str] = None,
+             watermark: Optional[str] = None,
+             watermark_transparency: Optional[str] = None,
+             watermark_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if authorize_access_policy_rules is None and 'authorizeAccessPolicyRules' in kwargs:
+            authorize_access_policy_rules = kwargs['authorizeAccessPolicyRules']
+        if authorize_access_policy_rules is None:
+            raise TypeError("Missing 'authorize_access_policy_rules' argument")
+        if authorize_security_policy_rules is None and 'authorizeSecurityPolicyRules' in kwargs:
+            authorize_security_policy_rules = kwargs['authorizeSecurityPolicyRules']
+        if authorize_security_policy_rules is None:
+            raise TypeError("Missing 'authorize_security_policy_rules' argument")
+        if camera_redirect is None and 'cameraRedirect' in kwargs:
+            camera_redirect = kwargs['cameraRedirect']
+        if camera_redirect is None:
+            raise TypeError("Missing 'camera_redirect' argument")
+        if clipboard is None:
+            raise TypeError("Missing 'clipboard' argument")
+        if domain_list is None and 'domainList' in kwargs:
+            domain_list = kwargs['domainList']
+        if domain_list is None:
+            raise TypeError("Missing 'domain_list' argument")
+        if eds_count is None and 'edsCount' in kwargs:
+            eds_count = kwargs['edsCount']
+        if eds_count is None:
+            raise TypeError("Missing 'eds_count' argument")
+        if html_access is None and 'htmlAccess' in kwargs:
+            html_access = kwargs['htmlAccess']
+        if html_access is None:
+            raise TypeError("Missing 'html_access' argument")
+        if html_file_transfer is None and 'htmlFileTransfer' in kwargs:
+            html_file_transfer = kwargs['htmlFileTransfer']
+        if html_file_transfer is None:
+            raise TypeError("Missing 'html_file_transfer' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if local_drive is None and 'localDrive' in kwargs:
+            local_drive = kwargs['localDrive']
+        if local_drive is None:
+            raise TypeError("Missing 'local_drive' argument")
+        if policy_group_id is None and 'policyGroupId' in kwargs:
+            policy_group_id = kwargs['policyGroupId']
+        if policy_group_id is None:
+            raise TypeError("Missing 'policy_group_id' argument")
+        if policy_group_name is None and 'policyGroupName' in kwargs:
+            policy_group_name = kwargs['policyGroupName']
+        if policy_group_name is None:
+            raise TypeError("Missing 'policy_group_name' argument")
+        if policy_group_type is None and 'policyGroupType' in kwargs:
+            policy_group_type = kwargs['policyGroupType']
+        if policy_group_type is None:
+            raise TypeError("Missing 'policy_group_type' argument")
+        if recording is None:
+            raise TypeError("Missing 'recording' argument")
+        if recording_end_time is None and 'recordingEndTime' in kwargs:
+            recording_end_time = kwargs['recordingEndTime']
+        if recording_end_time is None:
+            raise TypeError("Missing 'recording_end_time' argument")
+        if recording_fps is None and 'recordingFps' in kwargs:
+            recording_fps = kwargs['recordingFps']
+        if recording_fps is None:
+            raise TypeError("Missing 'recording_fps' argument")
+        if recording_start_time is None and 'recordingStartTime' in kwargs:
+            recording_start_time = kwargs['recordingStartTime']
+        if recording_start_time is None:
+            raise TypeError("Missing 'recording_start_time' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if usb_redirect is None and 'usbRedirect' in kwargs:
+            usb_redirect = kwargs['usbRedirect']
+        if usb_redirect is None:
+            raise TypeError("Missing 'usb_redirect' argument")
+        if visual_quality is None and 'visualQuality' in kwargs:
+            visual_quality = kwargs['visualQuality']
+        if visual_quality is None:
+            raise TypeError("Missing 'visual_quality' argument")
+        if watermark is None:
+            raise TypeError("Missing 'watermark' argument")
+        if watermark_transparency is None and 'watermarkTransparency' in kwargs:
+            watermark_transparency = kwargs['watermarkTransparency']
+        if watermark_transparency is None:
+            raise TypeError("Missing 'watermark_transparency' argument")
+        if watermark_type is None and 'watermarkType' in kwargs:
+            watermark_type = kwargs['watermarkType']
+        if watermark_type is None:
+            raise TypeError("Missing 'watermark_type' argument")
+
+        _setter("authorize_access_policy_rules", authorize_access_policy_rules)
+        _setter("authorize_security_policy_rules", authorize_security_policy_rules)
+        _setter("camera_redirect", camera_redirect)
+        _setter("clipboard", clipboard)
+        _setter("domain_list", domain_list)
+        _setter("eds_count", eds_count)
+        _setter("html_access", html_access)
+        _setter("html_file_transfer", html_file_transfer)
+        _setter("id", id)
+        _setter("local_drive", local_drive)
+        _setter("policy_group_id", policy_group_id)
+        _setter("policy_group_name", policy_group_name)
+        _setter("policy_group_type", policy_group_type)
+        _setter("recording", recording)
+        _setter("recording_end_time", recording_end_time)
+        _setter("recording_fps", recording_fps)
+        _setter("recording_start_time", recording_start_time)
+        _setter("status", status)
+        _setter("usb_redirect", usb_redirect)
+        _setter("visual_quality", visual_quality)
+        _setter("watermark", watermark)
+        _setter("watermark_transparency", watermark_transparency)
+        _setter("watermark_type", watermark_type)
 
     @property
     @pulumi.getter(name="authorizeAccessPolicyRules")
@@ -2478,8 +3757,27 @@ class GetPolicyGroupsGroupAuthorizeAccessPolicyRuleResult(dict):
         :param str cidr_ip: The cidrip of security rules.
         :param str description: The description of security rules.
         """
-        pulumi.set(__self__, "cidr_ip", cidr_ip)
-        pulumi.set(__self__, "description", description)
+        GetPolicyGroupsGroupAuthorizeAccessPolicyRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_ip=cidr_ip,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_ip: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cidr_ip is None and 'cidrIp' in kwargs:
+            cidr_ip = kwargs['cidrIp']
+        if cidr_ip is None:
+            raise TypeError("Missing 'cidr_ip' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+
+        _setter("cidr_ip", cidr_ip)
+        _setter("description", description)
 
     @property
     @pulumi.getter(name="cidrIp")
@@ -2517,13 +3815,56 @@ class GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleResult(dict):
         :param str priority: The priority of security rules.
         :param str type: The type of security rules.
         """
-        pulumi.set(__self__, "cidr_ip", cidr_ip)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "ip_protocol", ip_protocol)
-        pulumi.set(__self__, "policy", policy)
-        pulumi.set(__self__, "port_range", port_range)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "type", type)
+        GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_ip=cidr_ip,
+            description=description,
+            ip_protocol=ip_protocol,
+            policy=policy,
+            port_range=port_range,
+            priority=priority,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_ip: Optional[str] = None,
+             description: Optional[str] = None,
+             ip_protocol: Optional[str] = None,
+             policy: Optional[str] = None,
+             port_range: Optional[str] = None,
+             priority: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cidr_ip is None and 'cidrIp' in kwargs:
+            cidr_ip = kwargs['cidrIp']
+        if cidr_ip is None:
+            raise TypeError("Missing 'cidr_ip' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if ip_protocol is None and 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if ip_protocol is None:
+            raise TypeError("Missing 'ip_protocol' argument")
+        if policy is None:
+            raise TypeError("Missing 'policy' argument")
+        if port_range is None and 'portRange' in kwargs:
+            port_range = kwargs['portRange']
+        if port_range is None:
+            raise TypeError("Missing 'port_range' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
+        _setter("cidr_ip", cidr_ip)
+        _setter("description", description)
+        _setter("ip_protocol", ip_protocol)
+        _setter("policy", policy)
+        _setter("port_range", port_range)
+        _setter("priority", priority)
+        _setter("type", type)
 
     @property
     @pulumi.getter(name="cidrIp")
@@ -2641,33 +3982,198 @@ class GetRamDirectoriesDirectoryResult(dict):
         :param str vpc_id: The ID of the vpc.
         :param Sequence[str] vswitch_ids: List of VSwitch IDs in the directory.
         """
-        pulumi.set(__self__, "ad_connectors", ad_connectors)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "custom_security_group_id", custom_security_group_id)
-        pulumi.set(__self__, "desktop_access_type", desktop_access_type)
-        pulumi.set(__self__, "desktop_vpc_endpoint", desktop_vpc_endpoint)
-        pulumi.set(__self__, "directory_type", directory_type)
-        pulumi.set(__self__, "dns_addresses", dns_addresses)
-        pulumi.set(__self__, "dns_user_name", dns_user_name)
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "domain_password", domain_password)
-        pulumi.set(__self__, "domain_user_name", domain_user_name)
-        pulumi.set(__self__, "enable_admin_access", enable_admin_access)
-        pulumi.set(__self__, "enable_cross_desktop_access", enable_cross_desktop_access)
-        pulumi.set(__self__, "enable_internet_access", enable_internet_access)
-        pulumi.set(__self__, "file_system_ids", file_system_ids)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "logs", logs)
-        pulumi.set(__self__, "mfa_enabled", mfa_enabled)
-        pulumi.set(__self__, "ram_directory_id", ram_directory_id)
-        pulumi.set(__self__, "ram_directory_name", ram_directory_name)
-        pulumi.set(__self__, "sso_enabled", sso_enabled)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "sub_dns_addresses", sub_dns_addresses)
-        pulumi.set(__self__, "sub_domain_name", sub_domain_name)
-        pulumi.set(__self__, "trust_password", trust_password)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+        GetRamDirectoriesDirectoryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ad_connectors=ad_connectors,
+            create_time=create_time,
+            custom_security_group_id=custom_security_group_id,
+            desktop_access_type=desktop_access_type,
+            desktop_vpc_endpoint=desktop_vpc_endpoint,
+            directory_type=directory_type,
+            dns_addresses=dns_addresses,
+            dns_user_name=dns_user_name,
+            domain_name=domain_name,
+            domain_password=domain_password,
+            domain_user_name=domain_user_name,
+            enable_admin_access=enable_admin_access,
+            enable_cross_desktop_access=enable_cross_desktop_access,
+            enable_internet_access=enable_internet_access,
+            file_system_ids=file_system_ids,
+            id=id,
+            logs=logs,
+            mfa_enabled=mfa_enabled,
+            ram_directory_id=ram_directory_id,
+            ram_directory_name=ram_directory_name,
+            sso_enabled=sso_enabled,
+            status=status,
+            sub_dns_addresses=sub_dns_addresses,
+            sub_domain_name=sub_domain_name,
+            trust_password=trust_password,
+            vpc_id=vpc_id,
+            vswitch_ids=vswitch_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ad_connectors: Optional[Sequence['outputs.GetRamDirectoriesDirectoryAdConnectorResult']] = None,
+             create_time: Optional[str] = None,
+             custom_security_group_id: Optional[str] = None,
+             desktop_access_type: Optional[str] = None,
+             desktop_vpc_endpoint: Optional[str] = None,
+             directory_type: Optional[str] = None,
+             dns_addresses: Optional[Sequence[str]] = None,
+             dns_user_name: Optional[str] = None,
+             domain_name: Optional[str] = None,
+             domain_password: Optional[str] = None,
+             domain_user_name: Optional[str] = None,
+             enable_admin_access: Optional[bool] = None,
+             enable_cross_desktop_access: Optional[bool] = None,
+             enable_internet_access: Optional[bool] = None,
+             file_system_ids: Optional[Sequence[str]] = None,
+             id: Optional[str] = None,
+             logs: Optional[Sequence['outputs.GetRamDirectoriesDirectoryLogResult']] = None,
+             mfa_enabled: Optional[bool] = None,
+             ram_directory_id: Optional[str] = None,
+             ram_directory_name: Optional[str] = None,
+             sso_enabled: Optional[bool] = None,
+             status: Optional[str] = None,
+             sub_dns_addresses: Optional[Sequence[str]] = None,
+             sub_domain_name: Optional[str] = None,
+             trust_password: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_ids: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ad_connectors is None and 'adConnectors' in kwargs:
+            ad_connectors = kwargs['adConnectors']
+        if ad_connectors is None:
+            raise TypeError("Missing 'ad_connectors' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if custom_security_group_id is None and 'customSecurityGroupId' in kwargs:
+            custom_security_group_id = kwargs['customSecurityGroupId']
+        if custom_security_group_id is None:
+            raise TypeError("Missing 'custom_security_group_id' argument")
+        if desktop_access_type is None and 'desktopAccessType' in kwargs:
+            desktop_access_type = kwargs['desktopAccessType']
+        if desktop_access_type is None:
+            raise TypeError("Missing 'desktop_access_type' argument")
+        if desktop_vpc_endpoint is None and 'desktopVpcEndpoint' in kwargs:
+            desktop_vpc_endpoint = kwargs['desktopVpcEndpoint']
+        if desktop_vpc_endpoint is None:
+            raise TypeError("Missing 'desktop_vpc_endpoint' argument")
+        if directory_type is None and 'directoryType' in kwargs:
+            directory_type = kwargs['directoryType']
+        if directory_type is None:
+            raise TypeError("Missing 'directory_type' argument")
+        if dns_addresses is None and 'dnsAddresses' in kwargs:
+            dns_addresses = kwargs['dnsAddresses']
+        if dns_addresses is None:
+            raise TypeError("Missing 'dns_addresses' argument")
+        if dns_user_name is None and 'dnsUserName' in kwargs:
+            dns_user_name = kwargs['dnsUserName']
+        if dns_user_name is None:
+            raise TypeError("Missing 'dns_user_name' argument")
+        if domain_name is None and 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if domain_password is None and 'domainPassword' in kwargs:
+            domain_password = kwargs['domainPassword']
+        if domain_password is None:
+            raise TypeError("Missing 'domain_password' argument")
+        if domain_user_name is None and 'domainUserName' in kwargs:
+            domain_user_name = kwargs['domainUserName']
+        if domain_user_name is None:
+            raise TypeError("Missing 'domain_user_name' argument")
+        if enable_admin_access is None and 'enableAdminAccess' in kwargs:
+            enable_admin_access = kwargs['enableAdminAccess']
+        if enable_admin_access is None:
+            raise TypeError("Missing 'enable_admin_access' argument")
+        if enable_cross_desktop_access is None and 'enableCrossDesktopAccess' in kwargs:
+            enable_cross_desktop_access = kwargs['enableCrossDesktopAccess']
+        if enable_cross_desktop_access is None:
+            raise TypeError("Missing 'enable_cross_desktop_access' argument")
+        if enable_internet_access is None and 'enableInternetAccess' in kwargs:
+            enable_internet_access = kwargs['enableInternetAccess']
+        if enable_internet_access is None:
+            raise TypeError("Missing 'enable_internet_access' argument")
+        if file_system_ids is None and 'fileSystemIds' in kwargs:
+            file_system_ids = kwargs['fileSystemIds']
+        if file_system_ids is None:
+            raise TypeError("Missing 'file_system_ids' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if logs is None:
+            raise TypeError("Missing 'logs' argument")
+        if mfa_enabled is None and 'mfaEnabled' in kwargs:
+            mfa_enabled = kwargs['mfaEnabled']
+        if mfa_enabled is None:
+            raise TypeError("Missing 'mfa_enabled' argument")
+        if ram_directory_id is None and 'ramDirectoryId' in kwargs:
+            ram_directory_id = kwargs['ramDirectoryId']
+        if ram_directory_id is None:
+            raise TypeError("Missing 'ram_directory_id' argument")
+        if ram_directory_name is None and 'ramDirectoryName' in kwargs:
+            ram_directory_name = kwargs['ramDirectoryName']
+        if ram_directory_name is None:
+            raise TypeError("Missing 'ram_directory_name' argument")
+        if sso_enabled is None and 'ssoEnabled' in kwargs:
+            sso_enabled = kwargs['ssoEnabled']
+        if sso_enabled is None:
+            raise TypeError("Missing 'sso_enabled' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if sub_dns_addresses is None and 'subDnsAddresses' in kwargs:
+            sub_dns_addresses = kwargs['subDnsAddresses']
+        if sub_dns_addresses is None:
+            raise TypeError("Missing 'sub_dns_addresses' argument")
+        if sub_domain_name is None and 'subDomainName' in kwargs:
+            sub_domain_name = kwargs['subDomainName']
+        if sub_domain_name is None:
+            raise TypeError("Missing 'sub_domain_name' argument")
+        if trust_password is None and 'trustPassword' in kwargs:
+            trust_password = kwargs['trustPassword']
+        if trust_password is None:
+            raise TypeError("Missing 'trust_password' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_ids is None and 'vswitchIds' in kwargs:
+            vswitch_ids = kwargs['vswitchIds']
+        if vswitch_ids is None:
+            raise TypeError("Missing 'vswitch_ids' argument")
+
+        _setter("ad_connectors", ad_connectors)
+        _setter("create_time", create_time)
+        _setter("custom_security_group_id", custom_security_group_id)
+        _setter("desktop_access_type", desktop_access_type)
+        _setter("desktop_vpc_endpoint", desktop_vpc_endpoint)
+        _setter("directory_type", directory_type)
+        _setter("dns_addresses", dns_addresses)
+        _setter("dns_user_name", dns_user_name)
+        _setter("domain_name", domain_name)
+        _setter("domain_password", domain_password)
+        _setter("domain_user_name", domain_user_name)
+        _setter("enable_admin_access", enable_admin_access)
+        _setter("enable_cross_desktop_access", enable_cross_desktop_access)
+        _setter("enable_internet_access", enable_internet_access)
+        _setter("file_system_ids", file_system_ids)
+        _setter("id", id)
+        _setter("logs", logs)
+        _setter("mfa_enabled", mfa_enabled)
+        _setter("ram_directory_id", ram_directory_id)
+        _setter("ram_directory_name", ram_directory_name)
+        _setter("sso_enabled", sso_enabled)
+        _setter("status", status)
+        _setter("sub_dns_addresses", sub_dns_addresses)
+        _setter("sub_domain_name", sub_domain_name)
+        _setter("trust_password", trust_password)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_ids", vswitch_ids)
 
     @property
     @pulumi.getter(name="adConnectors")
@@ -2899,10 +4405,43 @@ class GetRamDirectoriesDirectoryAdConnectorResult(dict):
         :param str network_interface_id: The ID of the network interface.
         :param str vswitch_id: The ID of VSwitch.
         """
-        pulumi.set(__self__, "ad_connector_address", ad_connector_address)
-        pulumi.set(__self__, "connector_status", connector_status)
-        pulumi.set(__self__, "network_interface_id", network_interface_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetRamDirectoriesDirectoryAdConnectorResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ad_connector_address=ad_connector_address,
+            connector_status=connector_status,
+            network_interface_id=network_interface_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ad_connector_address: Optional[str] = None,
+             connector_status: Optional[str] = None,
+             network_interface_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ad_connector_address is None and 'adConnectorAddress' in kwargs:
+            ad_connector_address = kwargs['adConnectorAddress']
+        if ad_connector_address is None:
+            raise TypeError("Missing 'ad_connector_address' argument")
+        if connector_status is None and 'connectorStatus' in kwargs:
+            connector_status = kwargs['connectorStatus']
+        if connector_status is None:
+            raise TypeError("Missing 'connector_status' argument")
+        if network_interface_id is None and 'networkInterfaceId' in kwargs:
+            network_interface_id = kwargs['networkInterfaceId']
+        if network_interface_id is None:
+            raise TypeError("Missing 'network_interface_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+
+        _setter("ad_connector_address", ad_connector_address)
+        _setter("connector_status", connector_status)
+        _setter("network_interface_id", network_interface_id)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="adConnectorAddress")
@@ -2950,10 +4489,37 @@ class GetRamDirectoriesDirectoryLogResult(dict):
         :param str step: The step of log.
         :param str time_stamp: The time stamp of log.
         """
-        pulumi.set(__self__, "level", level)
-        pulumi.set(__self__, "message", message)
-        pulumi.set(__self__, "step", step)
-        pulumi.set(__self__, "time_stamp", time_stamp)
+        GetRamDirectoriesDirectoryLogResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            level=level,
+            message=message,
+            step=step,
+            time_stamp=time_stamp,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             level: Optional[str] = None,
+             message: Optional[str] = None,
+             step: Optional[str] = None,
+             time_stamp: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+        if message is None:
+            raise TypeError("Missing 'message' argument")
+        if step is None:
+            raise TypeError("Missing 'step' argument")
+        if time_stamp is None and 'timeStamp' in kwargs:
+            time_stamp = kwargs['timeStamp']
+        if time_stamp is None:
+            raise TypeError("Missing 'time_stamp' argument")
+
+        _setter("level", level)
+        _setter("message", message)
+        _setter("step", step)
+        _setter("time_stamp", time_stamp)
 
     @property
     @pulumi.getter
@@ -3053,36 +4619,219 @@ class GetSimpleOfficeSitesSiteResult(dict):
         :param str vpc_id: Security Office VPC ID.
         :param Sequence[str] vswitch_ids: The vswitch ids.
         """
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "cen_id", cen_id)
-        pulumi.set(__self__, "cidr_block", cidr_block)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "custom_security_group_id", custom_security_group_id)
-        pulumi.set(__self__, "desktop_access_type", desktop_access_type)
-        pulumi.set(__self__, "desktop_vpc_endpoint", desktop_vpc_endpoint)
-        pulumi.set(__self__, "dns_addresses", dns_addresses)
-        pulumi.set(__self__, "dns_user_name", dns_user_name)
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "domain_password", domain_password)
-        pulumi.set(__self__, "domain_user_name", domain_user_name)
-        pulumi.set(__self__, "enable_admin_access", enable_admin_access)
-        pulumi.set(__self__, "enable_cross_desktop_access", enable_cross_desktop_access)
-        pulumi.set(__self__, "enable_internet_access", enable_internet_access)
-        pulumi.set(__self__, "file_system_ids", file_system_ids)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "mfa_enabled", mfa_enabled)
-        pulumi.set(__self__, "network_package_id", network_package_id)
-        pulumi.set(__self__, "office_site_id", office_site_id)
-        pulumi.set(__self__, "office_site_type", office_site_type)
-        pulumi.set(__self__, "simple_office_site_name", simple_office_site_name)
-        pulumi.set(__self__, "sso_enabled", sso_enabled)
-        pulumi.set(__self__, "sso_status", sso_status)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "sub_dns_addresses", sub_dns_addresses)
-        pulumi.set(__self__, "sub_domain_name", sub_domain_name)
-        pulumi.set(__self__, "trust_password", trust_password)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+        GetSimpleOfficeSitesSiteResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            cen_id=cen_id,
+            cidr_block=cidr_block,
+            create_time=create_time,
+            custom_security_group_id=custom_security_group_id,
+            desktop_access_type=desktop_access_type,
+            desktop_vpc_endpoint=desktop_vpc_endpoint,
+            dns_addresses=dns_addresses,
+            dns_user_name=dns_user_name,
+            domain_name=domain_name,
+            domain_password=domain_password,
+            domain_user_name=domain_user_name,
+            enable_admin_access=enable_admin_access,
+            enable_cross_desktop_access=enable_cross_desktop_access,
+            enable_internet_access=enable_internet_access,
+            file_system_ids=file_system_ids,
+            id=id,
+            mfa_enabled=mfa_enabled,
+            network_package_id=network_package_id,
+            office_site_id=office_site_id,
+            office_site_type=office_site_type,
+            simple_office_site_name=simple_office_site_name,
+            sso_enabled=sso_enabled,
+            sso_status=sso_status,
+            status=status,
+            sub_dns_addresses=sub_dns_addresses,
+            sub_domain_name=sub_domain_name,
+            trust_password=trust_password,
+            vpc_id=vpc_id,
+            vswitch_ids=vswitch_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: Optional[int] = None,
+             cen_id: Optional[str] = None,
+             cidr_block: Optional[str] = None,
+             create_time: Optional[str] = None,
+             custom_security_group_id: Optional[str] = None,
+             desktop_access_type: Optional[str] = None,
+             desktop_vpc_endpoint: Optional[str] = None,
+             dns_addresses: Optional[Sequence[str]] = None,
+             dns_user_name: Optional[str] = None,
+             domain_name: Optional[str] = None,
+             domain_password: Optional[str] = None,
+             domain_user_name: Optional[str] = None,
+             enable_admin_access: Optional[bool] = None,
+             enable_cross_desktop_access: Optional[bool] = None,
+             enable_internet_access: Optional[bool] = None,
+             file_system_ids: Optional[Sequence[str]] = None,
+             id: Optional[str] = None,
+             mfa_enabled: Optional[bool] = None,
+             network_package_id: Optional[str] = None,
+             office_site_id: Optional[str] = None,
+             office_site_type: Optional[str] = None,
+             simple_office_site_name: Optional[str] = None,
+             sso_enabled: Optional[bool] = None,
+             sso_status: Optional[bool] = None,
+             status: Optional[str] = None,
+             sub_dns_addresses: Optional[Sequence[str]] = None,
+             sub_domain_name: Optional[str] = None,
+             trust_password: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_ids: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if cen_id is None and 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if cen_id is None:
+            raise TypeError("Missing 'cen_id' argument")
+        if cidr_block is None and 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if cidr_block is None:
+            raise TypeError("Missing 'cidr_block' argument")
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if custom_security_group_id is None and 'customSecurityGroupId' in kwargs:
+            custom_security_group_id = kwargs['customSecurityGroupId']
+        if custom_security_group_id is None:
+            raise TypeError("Missing 'custom_security_group_id' argument")
+        if desktop_access_type is None and 'desktopAccessType' in kwargs:
+            desktop_access_type = kwargs['desktopAccessType']
+        if desktop_access_type is None:
+            raise TypeError("Missing 'desktop_access_type' argument")
+        if desktop_vpc_endpoint is None and 'desktopVpcEndpoint' in kwargs:
+            desktop_vpc_endpoint = kwargs['desktopVpcEndpoint']
+        if desktop_vpc_endpoint is None:
+            raise TypeError("Missing 'desktop_vpc_endpoint' argument")
+        if dns_addresses is None and 'dnsAddresses' in kwargs:
+            dns_addresses = kwargs['dnsAddresses']
+        if dns_addresses is None:
+            raise TypeError("Missing 'dns_addresses' argument")
+        if dns_user_name is None and 'dnsUserName' in kwargs:
+            dns_user_name = kwargs['dnsUserName']
+        if dns_user_name is None:
+            raise TypeError("Missing 'dns_user_name' argument")
+        if domain_name is None and 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if domain_password is None and 'domainPassword' in kwargs:
+            domain_password = kwargs['domainPassword']
+        if domain_password is None:
+            raise TypeError("Missing 'domain_password' argument")
+        if domain_user_name is None and 'domainUserName' in kwargs:
+            domain_user_name = kwargs['domainUserName']
+        if domain_user_name is None:
+            raise TypeError("Missing 'domain_user_name' argument")
+        if enable_admin_access is None and 'enableAdminAccess' in kwargs:
+            enable_admin_access = kwargs['enableAdminAccess']
+        if enable_admin_access is None:
+            raise TypeError("Missing 'enable_admin_access' argument")
+        if enable_cross_desktop_access is None and 'enableCrossDesktopAccess' in kwargs:
+            enable_cross_desktop_access = kwargs['enableCrossDesktopAccess']
+        if enable_cross_desktop_access is None:
+            raise TypeError("Missing 'enable_cross_desktop_access' argument")
+        if enable_internet_access is None and 'enableInternetAccess' in kwargs:
+            enable_internet_access = kwargs['enableInternetAccess']
+        if enable_internet_access is None:
+            raise TypeError("Missing 'enable_internet_access' argument")
+        if file_system_ids is None and 'fileSystemIds' in kwargs:
+            file_system_ids = kwargs['fileSystemIds']
+        if file_system_ids is None:
+            raise TypeError("Missing 'file_system_ids' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if mfa_enabled is None and 'mfaEnabled' in kwargs:
+            mfa_enabled = kwargs['mfaEnabled']
+        if mfa_enabled is None:
+            raise TypeError("Missing 'mfa_enabled' argument")
+        if network_package_id is None and 'networkPackageId' in kwargs:
+            network_package_id = kwargs['networkPackageId']
+        if network_package_id is None:
+            raise TypeError("Missing 'network_package_id' argument")
+        if office_site_id is None and 'officeSiteId' in kwargs:
+            office_site_id = kwargs['officeSiteId']
+        if office_site_id is None:
+            raise TypeError("Missing 'office_site_id' argument")
+        if office_site_type is None and 'officeSiteType' in kwargs:
+            office_site_type = kwargs['officeSiteType']
+        if office_site_type is None:
+            raise TypeError("Missing 'office_site_type' argument")
+        if simple_office_site_name is None and 'simpleOfficeSiteName' in kwargs:
+            simple_office_site_name = kwargs['simpleOfficeSiteName']
+        if simple_office_site_name is None:
+            raise TypeError("Missing 'simple_office_site_name' argument")
+        if sso_enabled is None and 'ssoEnabled' in kwargs:
+            sso_enabled = kwargs['ssoEnabled']
+        if sso_enabled is None:
+            raise TypeError("Missing 'sso_enabled' argument")
+        if sso_status is None and 'ssoStatus' in kwargs:
+            sso_status = kwargs['ssoStatus']
+        if sso_status is None:
+            raise TypeError("Missing 'sso_status' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if sub_dns_addresses is None and 'subDnsAddresses' in kwargs:
+            sub_dns_addresses = kwargs['subDnsAddresses']
+        if sub_dns_addresses is None:
+            raise TypeError("Missing 'sub_dns_addresses' argument")
+        if sub_domain_name is None and 'subDomainName' in kwargs:
+            sub_domain_name = kwargs['subDomainName']
+        if sub_domain_name is None:
+            raise TypeError("Missing 'sub_domain_name' argument")
+        if trust_password is None and 'trustPassword' in kwargs:
+            trust_password = kwargs['trustPassword']
+        if trust_password is None:
+            raise TypeError("Missing 'trust_password' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_ids is None and 'vswitchIds' in kwargs:
+            vswitch_ids = kwargs['vswitchIds']
+        if vswitch_ids is None:
+            raise TypeError("Missing 'vswitch_ids' argument")
+
+        _setter("bandwidth", bandwidth)
+        _setter("cen_id", cen_id)
+        _setter("cidr_block", cidr_block)
+        _setter("create_time", create_time)
+        _setter("custom_security_group_id", custom_security_group_id)
+        _setter("desktop_access_type", desktop_access_type)
+        _setter("desktop_vpc_endpoint", desktop_vpc_endpoint)
+        _setter("dns_addresses", dns_addresses)
+        _setter("dns_user_name", dns_user_name)
+        _setter("domain_name", domain_name)
+        _setter("domain_password", domain_password)
+        _setter("domain_user_name", domain_user_name)
+        _setter("enable_admin_access", enable_admin_access)
+        _setter("enable_cross_desktop_access", enable_cross_desktop_access)
+        _setter("enable_internet_access", enable_internet_access)
+        _setter("file_system_ids", file_system_ids)
+        _setter("id", id)
+        _setter("mfa_enabled", mfa_enabled)
+        _setter("network_package_id", network_package_id)
+        _setter("office_site_id", office_site_id)
+        _setter("office_site_type", office_site_type)
+        _setter("simple_office_site_name", simple_office_site_name)
+        _setter("sso_enabled", sso_enabled)
+        _setter("sso_status", sso_status)
+        _setter("status", status)
+        _setter("sub_dns_addresses", sub_dns_addresses)
+        _setter("sub_domain_name", sub_domain_name)
+        _setter("trust_password", trust_password)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_ids", vswitch_ids)
 
     @property
     @pulumi.getter
@@ -3360,18 +5109,91 @@ class GetSnapshotsSnapshotResult(dict):
         :param str source_disk_type: The type of the source disk.
         :param str status: The status of the snapshot.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "desktop_id", desktop_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "progress", progress)
-        pulumi.set(__self__, "remain_time", remain_time)
-        pulumi.set(__self__, "snapshot_id", snapshot_id)
-        pulumi.set(__self__, "snapshot_name", snapshot_name)
-        pulumi.set(__self__, "snapshot_type", snapshot_type)
-        pulumi.set(__self__, "source_disk_size", source_disk_size)
-        pulumi.set(__self__, "source_disk_type", source_disk_type)
-        pulumi.set(__self__, "status", status)
+        GetSnapshotsSnapshotResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            desktop_id=desktop_id,
+            id=id,
+            progress=progress,
+            remain_time=remain_time,
+            snapshot_id=snapshot_id,
+            snapshot_name=snapshot_name,
+            snapshot_type=snapshot_type,
+            source_disk_size=source_disk_size,
+            source_disk_type=source_disk_type,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[str] = None,
+             description: Optional[str] = None,
+             desktop_id: Optional[str] = None,
+             id: Optional[str] = None,
+             progress: Optional[str] = None,
+             remain_time: Optional[int] = None,
+             snapshot_id: Optional[str] = None,
+             snapshot_name: Optional[str] = None,
+             snapshot_type: Optional[str] = None,
+             source_disk_size: Optional[str] = None,
+             source_disk_type: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if create_time is None:
+            raise TypeError("Missing 'create_time' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if desktop_id is None and 'desktopId' in kwargs:
+            desktop_id = kwargs['desktopId']
+        if desktop_id is None:
+            raise TypeError("Missing 'desktop_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if progress is None:
+            raise TypeError("Missing 'progress' argument")
+        if remain_time is None and 'remainTime' in kwargs:
+            remain_time = kwargs['remainTime']
+        if remain_time is None:
+            raise TypeError("Missing 'remain_time' argument")
+        if snapshot_id is None and 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if snapshot_id is None:
+            raise TypeError("Missing 'snapshot_id' argument")
+        if snapshot_name is None and 'snapshotName' in kwargs:
+            snapshot_name = kwargs['snapshotName']
+        if snapshot_name is None:
+            raise TypeError("Missing 'snapshot_name' argument")
+        if snapshot_type is None and 'snapshotType' in kwargs:
+            snapshot_type = kwargs['snapshotType']
+        if snapshot_type is None:
+            raise TypeError("Missing 'snapshot_type' argument")
+        if source_disk_size is None and 'sourceDiskSize' in kwargs:
+            source_disk_size = kwargs['sourceDiskSize']
+        if source_disk_size is None:
+            raise TypeError("Missing 'source_disk_size' argument")
+        if source_disk_type is None and 'sourceDiskType' in kwargs:
+            source_disk_type = kwargs['sourceDiskType']
+        if source_disk_type is None:
+            raise TypeError("Missing 'source_disk_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("desktop_id", desktop_id)
+        _setter("id", id)
+        _setter("progress", progress)
+        _setter("remain_time", remain_time)
+        _setter("snapshot_id", snapshot_id)
+        _setter("snapshot_name", snapshot_name)
+        _setter("snapshot_type", snapshot_type)
+        _setter("source_disk_size", source_disk_size)
+        _setter("source_disk_type", source_disk_type)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="createTime")
@@ -3485,11 +5307,42 @@ class GetUsersUserResult(dict):
         :param str phone: The phone of the mobile phone number.
         :param str status: The status of the resource.
         """
-        pulumi.set(__self__, "email", email)
-        pulumi.set(__self__, "end_user_id", end_user_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "phone", phone)
-        pulumi.set(__self__, "status", status)
+        GetUsersUserResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            email=email,
+            end_user_id=end_user_id,
+            id=id,
+            phone=phone,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             email: Optional[str] = None,
+             end_user_id: Optional[str] = None,
+             id: Optional[str] = None,
+             phone: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if email is None:
+            raise TypeError("Missing 'email' argument")
+        if end_user_id is None and 'endUserId' in kwargs:
+            end_user_id = kwargs['endUserId']
+        if end_user_id is None:
+            raise TypeError("Missing 'end_user_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if phone is None:
+            raise TypeError("Missing 'phone' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+
+        _setter("email", email)
+        _setter("end_user_id", end_user_id)
+        _setter("id", id)
+        _setter("phone", phone)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -3539,7 +5392,22 @@ class GetZonesZoneResult(dict):
         """
         :param str zone_id: String to filter results by zone id.
         """
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetZonesZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="zoneId")

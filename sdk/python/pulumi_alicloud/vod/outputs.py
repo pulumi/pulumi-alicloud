@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -52,11 +52,42 @@ class DomainSource(dict):
         :param str source_type: The type of the origin server. Valid values:
         :param str source_priority: The priority of the origin server if multiple origin servers are specified. Valid values: `20` and `30`. **Default value: 20**. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
         """
-        pulumi.set(__self__, "source_content", source_content)
-        pulumi.set(__self__, "source_port", source_port)
-        pulumi.set(__self__, "source_type", source_type)
+        DomainSource._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            source_content=source_content,
+            source_port=source_port,
+            source_type=source_type,
+            source_priority=source_priority,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             source_content: Optional[str] = None,
+             source_port: Optional[str] = None,
+             source_type: Optional[str] = None,
+             source_priority: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if source_content is None and 'sourceContent' in kwargs:
+            source_content = kwargs['sourceContent']
+        if source_content is None:
+            raise TypeError("Missing 'source_content' argument")
+        if source_port is None and 'sourcePort' in kwargs:
+            source_port = kwargs['sourcePort']
+        if source_port is None:
+            raise TypeError("Missing 'source_port' argument")
+        if source_type is None and 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+        if source_type is None:
+            raise TypeError("Missing 'source_type' argument")
+        if source_priority is None and 'sourcePriority' in kwargs:
+            source_priority = kwargs['sourcePriority']
+
+        _setter("source_content", source_content)
+        _setter("source_port", source_port)
+        _setter("source_type", source_type)
         if source_priority is not None:
-            pulumi.set(__self__, "source_priority", source_priority)
+            _setter("source_priority", source_priority)
 
     @property
     @pulumi.getter(name="sourceContent")
@@ -116,16 +147,75 @@ class GetDomainsDomainResult(dict):
         :param str ssl_protocol: Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
         :param str status: The status of the resource.
         """
-        pulumi.set(__self__, "cname", cname)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "gmt_created", gmt_created)
-        pulumi.set(__self__, "gmt_modified", gmt_modified)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "sand_box", sand_box)
-        pulumi.set(__self__, "sources", sources)
-        pulumi.set(__self__, "ssl_protocol", ssl_protocol)
-        pulumi.set(__self__, "status", status)
+        GetDomainsDomainResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cname=cname,
+            description=description,
+            domain_name=domain_name,
+            gmt_created=gmt_created,
+            gmt_modified=gmt_modified,
+            id=id,
+            sand_box=sand_box,
+            sources=sources,
+            ssl_protocol=ssl_protocol,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cname: Optional[str] = None,
+             description: Optional[str] = None,
+             domain_name: Optional[str] = None,
+             gmt_created: Optional[str] = None,
+             gmt_modified: Optional[str] = None,
+             id: Optional[str] = None,
+             sand_box: Optional[str] = None,
+             sources: Optional[Sequence['outputs.GetDomainsDomainSourceResult']] = None,
+             ssl_protocol: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cname is None:
+            raise TypeError("Missing 'cname' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if domain_name is None and 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if domain_name is None:
+            raise TypeError("Missing 'domain_name' argument")
+        if gmt_created is None and 'gmtCreated' in kwargs:
+            gmt_created = kwargs['gmtCreated']
+        if gmt_created is None:
+            raise TypeError("Missing 'gmt_created' argument")
+        if gmt_modified is None and 'gmtModified' in kwargs:
+            gmt_modified = kwargs['gmtModified']
+        if gmt_modified is None:
+            raise TypeError("Missing 'gmt_modified' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if sand_box is None and 'sandBox' in kwargs:
+            sand_box = kwargs['sandBox']
+        if sand_box is None:
+            raise TypeError("Missing 'sand_box' argument")
+        if sources is None:
+            raise TypeError("Missing 'sources' argument")
+        if ssl_protocol is None and 'sslProtocol' in kwargs:
+            ssl_protocol = kwargs['sslProtocol']
+        if ssl_protocol is None:
+            raise TypeError("Missing 'ssl_protocol' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+
+        _setter("cname", cname)
+        _setter("description", description)
+        _setter("domain_name", domain_name)
+        _setter("gmt_created", gmt_created)
+        _setter("gmt_modified", gmt_modified)
+        _setter("id", id)
+        _setter("sand_box", sand_box)
+        _setter("sources", sources)
+        _setter("ssl_protocol", ssl_protocol)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -215,10 +305,43 @@ class GetDomainsDomainSourceResult(dict):
                  source_port: str,
                  source_priority: str,
                  source_type: str):
-        pulumi.set(__self__, "source_content", source_content)
-        pulumi.set(__self__, "source_port", source_port)
-        pulumi.set(__self__, "source_priority", source_priority)
-        pulumi.set(__self__, "source_type", source_type)
+        GetDomainsDomainSourceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            source_content=source_content,
+            source_port=source_port,
+            source_priority=source_priority,
+            source_type=source_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             source_content: Optional[str] = None,
+             source_port: Optional[str] = None,
+             source_priority: Optional[str] = None,
+             source_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if source_content is None and 'sourceContent' in kwargs:
+            source_content = kwargs['sourceContent']
+        if source_content is None:
+            raise TypeError("Missing 'source_content' argument")
+        if source_port is None and 'sourcePort' in kwargs:
+            source_port = kwargs['sourcePort']
+        if source_port is None:
+            raise TypeError("Missing 'source_port' argument")
+        if source_priority is None and 'sourcePriority' in kwargs:
+            source_priority = kwargs['sourcePriority']
+        if source_priority is None:
+            raise TypeError("Missing 'source_priority' argument")
+        if source_type is None and 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+        if source_type is None:
+            raise TypeError("Missing 'source_type' argument")
+
+        _setter("source_content", source_content)
+        _setter("source_port", source_port)
+        _setter("source_priority", source_priority)
+        _setter("source_type", source_type)
 
     @property
     @pulumi.getter(name="sourceContent")

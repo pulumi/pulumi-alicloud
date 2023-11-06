@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['HostArgs', 'Host']
@@ -37,21 +37,76 @@ class HostArgs:
         :param pulumi.Input[str] instance_region_id: The instance region id.
         :param pulumi.Input[str] source_instance_id: Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
         """
-        pulumi.set(__self__, "active_address_type", active_address_type)
-        pulumi.set(__self__, "host_name", host_name)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "os_type", os_type)
-        pulumi.set(__self__, "source", source)
+        HostArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            active_address_type=active_address_type,
+            host_name=host_name,
+            instance_id=instance_id,
+            os_type=os_type,
+            source=source,
+            comment=comment,
+            host_private_address=host_private_address,
+            host_public_address=host_public_address,
+            instance_region_id=instance_region_id,
+            source_instance_id=source_instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             active_address_type: Optional[pulumi.Input[str]] = None,
+             host_name: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             os_type: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             comment: Optional[pulumi.Input[str]] = None,
+             host_private_address: Optional[pulumi.Input[str]] = None,
+             host_public_address: Optional[pulumi.Input[str]] = None,
+             instance_region_id: Optional[pulumi.Input[str]] = None,
+             source_instance_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if active_address_type is None and 'activeAddressType' in kwargs:
+            active_address_type = kwargs['activeAddressType']
+        if active_address_type is None:
+            raise TypeError("Missing 'active_address_type' argument")
+        if host_name is None and 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if host_name is None:
+            raise TypeError("Missing 'host_name' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if os_type is None and 'osType' in kwargs:
+            os_type = kwargs['osType']
+        if os_type is None:
+            raise TypeError("Missing 'os_type' argument")
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if host_private_address is None and 'hostPrivateAddress' in kwargs:
+            host_private_address = kwargs['hostPrivateAddress']
+        if host_public_address is None and 'hostPublicAddress' in kwargs:
+            host_public_address = kwargs['hostPublicAddress']
+        if instance_region_id is None and 'instanceRegionId' in kwargs:
+            instance_region_id = kwargs['instanceRegionId']
+        if source_instance_id is None and 'sourceInstanceId' in kwargs:
+            source_instance_id = kwargs['sourceInstanceId']
+
+        _setter("active_address_type", active_address_type)
+        _setter("host_name", host_name)
+        _setter("instance_id", instance_id)
+        _setter("os_type", os_type)
+        _setter("source", source)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if host_private_address is not None:
-            pulumi.set(__self__, "host_private_address", host_private_address)
+            _setter("host_private_address", host_private_address)
         if host_public_address is not None:
-            pulumi.set(__self__, "host_public_address", host_public_address)
+            _setter("host_public_address", host_public_address)
         if instance_region_id is not None:
-            pulumi.set(__self__, "instance_region_id", instance_region_id)
+            _setter("instance_region_id", instance_region_id)
         if source_instance_id is not None:
-            pulumi.set(__self__, "source_instance_id", source_instance_id)
+            _setter("source_instance_id", source_instance_id)
 
     @property
     @pulumi.getter(name="activeAddressType")
@@ -202,28 +257,77 @@ class _HostState:
         :param pulumi.Input[str] source: Specify the new create a host of source. Valid values:
         :param pulumi.Input[str] source_instance_id: Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
         """
+        _HostState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            active_address_type=active_address_type,
+            comment=comment,
+            host_id=host_id,
+            host_name=host_name,
+            host_private_address=host_private_address,
+            host_public_address=host_public_address,
+            instance_id=instance_id,
+            instance_region_id=instance_region_id,
+            os_type=os_type,
+            source=source,
+            source_instance_id=source_instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             active_address_type: Optional[pulumi.Input[str]] = None,
+             comment: Optional[pulumi.Input[str]] = None,
+             host_id: Optional[pulumi.Input[str]] = None,
+             host_name: Optional[pulumi.Input[str]] = None,
+             host_private_address: Optional[pulumi.Input[str]] = None,
+             host_public_address: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             instance_region_id: Optional[pulumi.Input[str]] = None,
+             os_type: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             source_instance_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if active_address_type is None and 'activeAddressType' in kwargs:
+            active_address_type = kwargs['activeAddressType']
+        if host_id is None and 'hostId' in kwargs:
+            host_id = kwargs['hostId']
+        if host_name is None and 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if host_private_address is None and 'hostPrivateAddress' in kwargs:
+            host_private_address = kwargs['hostPrivateAddress']
+        if host_public_address is None and 'hostPublicAddress' in kwargs:
+            host_public_address = kwargs['hostPublicAddress']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_region_id is None and 'instanceRegionId' in kwargs:
+            instance_region_id = kwargs['instanceRegionId']
+        if os_type is None and 'osType' in kwargs:
+            os_type = kwargs['osType']
+        if source_instance_id is None and 'sourceInstanceId' in kwargs:
+            source_instance_id = kwargs['sourceInstanceId']
+
         if active_address_type is not None:
-            pulumi.set(__self__, "active_address_type", active_address_type)
+            _setter("active_address_type", active_address_type)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if host_id is not None:
-            pulumi.set(__self__, "host_id", host_id)
+            _setter("host_id", host_id)
         if host_name is not None:
-            pulumi.set(__self__, "host_name", host_name)
+            _setter("host_name", host_name)
         if host_private_address is not None:
-            pulumi.set(__self__, "host_private_address", host_private_address)
+            _setter("host_private_address", host_private_address)
         if host_public_address is not None:
-            pulumi.set(__self__, "host_public_address", host_public_address)
+            _setter("host_public_address", host_public_address)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if instance_region_id is not None:
-            pulumi.set(__self__, "instance_region_id", instance_region_id)
+            _setter("instance_region_id", instance_region_id)
         if os_type is not None:
-            pulumi.set(__self__, "os_type", os_type)
+            _setter("os_type", os_type)
         if source is not None:
-            pulumi.set(__self__, "source", source)
+            _setter("source", source)
         if source_instance_id is not None:
-            pulumi.set(__self__, "source_instance_id", source_instance_id)
+            _setter("source_instance_id", source_instance_id)
 
     @property
     @pulumi.getter(name="activeAddressType")
@@ -513,6 +617,10 @@ class Host(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            HostArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

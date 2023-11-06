@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -31,10 +31,35 @@ class GetProductProductResult(dict):
         :param str name: The name of the product.
         :param Sequence['GetProductProductSkusArgs'] skuses: A list of one element containing sku attributes of an object. Each element contains the following attributes:
         """
-        pulumi.set(__self__, "code", code)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "skuses", skuses)
+        GetProductProductResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            code=code,
+            description=description,
+            name=name,
+            skuses=skuses,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             code: Optional[str] = None,
+             description: Optional[str] = None,
+             name: Optional[str] = None,
+             skuses: Optional[Sequence['outputs.GetProductProductSkusResult']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if code is None:
+            raise TypeError("Missing 'code' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if skuses is None:
+            raise TypeError("Missing 'skuses' argument")
+
+        _setter("code", code)
+        _setter("description", description)
+        _setter("name", name)
+        _setter("skuses", skuses)
 
     @property
     @pulumi.getter
@@ -82,10 +107,41 @@ class GetProductProductSkusResult(dict):
         :param str sku_code: The sku code of this product sku.
         :param str sku_name: The sku name of this product sku.
         """
-        pulumi.set(__self__, "images", images)
-        pulumi.set(__self__, "package_versions", package_versions)
-        pulumi.set(__self__, "sku_code", sku_code)
-        pulumi.set(__self__, "sku_name", sku_name)
+        GetProductProductSkusResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            images=images,
+            package_versions=package_versions,
+            sku_code=sku_code,
+            sku_name=sku_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             images: Optional[Sequence['outputs.GetProductProductSkusImageResult']] = None,
+             package_versions: Optional[Sequence['outputs.GetProductProductSkusPackageVersionResult']] = None,
+             sku_code: Optional[str] = None,
+             sku_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if images is None:
+            raise TypeError("Missing 'images' argument")
+        if package_versions is None and 'packageVersions' in kwargs:
+            package_versions = kwargs['packageVersions']
+        if package_versions is None:
+            raise TypeError("Missing 'package_versions' argument")
+        if sku_code is None and 'skuCode' in kwargs:
+            sku_code = kwargs['skuCode']
+        if sku_code is None:
+            raise TypeError("Missing 'sku_code' argument")
+        if sku_name is None and 'skuName' in kwargs:
+            sku_name = kwargs['skuName']
+        if sku_name is None:
+            raise TypeError("Missing 'sku_name' argument")
+
+        _setter("images", images)
+        _setter("package_versions", package_versions)
+        _setter("sku_code", sku_code)
+        _setter("sku_name", sku_name)
 
     @property
     @pulumi.getter
@@ -131,9 +187,36 @@ class GetProductProductSkusImageResult(dict):
         :param str image_name: The Ecs image display name.
         :param str region_id: The Ecs image region.
         """
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "image_name", image_name)
-        pulumi.set(__self__, "region_id", region_id)
+        GetProductProductSkusImageResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            image_id=image_id,
+            image_name=image_name,
+            region_id=region_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             image_id: Optional[str] = None,
+             image_name: Optional[str] = None,
+             region_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+        if image_name is None and 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+        if image_name is None:
+            raise TypeError("Missing 'image_name' argument")
+        if region_id is None and 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+
+        _setter("image_id", image_id)
+        _setter("image_name", image_name)
+        _setter("region_id", region_id)
 
     @property
     @pulumi.getter(name="imageId")
@@ -169,8 +252,29 @@ class GetProductProductSkusPackageVersionResult(dict):
         :param str package_name: The package name of this product sku package.
         :param str package_version: The package version of this product sku package. Currently, the API products can return package_version, but others can not for ensure.
         """
-        pulumi.set(__self__, "package_name", package_name)
-        pulumi.set(__self__, "package_version", package_version)
+        GetProductProductSkusPackageVersionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            package_name=package_name,
+            package_version=package_version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             package_name: Optional[str] = None,
+             package_version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if package_name is None and 'packageName' in kwargs:
+            package_name = kwargs['packageName']
+        if package_name is None:
+            raise TypeError("Missing 'package_name' argument")
+        if package_version is None and 'packageVersion' in kwargs:
+            package_version = kwargs['packageVersion']
+        if package_version is None:
+            raise TypeError("Missing 'package_version' argument")
+
+        _setter("package_name", package_name)
+        _setter("package_version", package_version)
 
     @property
     @pulumi.getter(name="packageName")
@@ -224,21 +328,112 @@ class GetProductsProductResult(dict):
         :param str target_url: The detail page URL of the product.
         :param str warranty_date: The warranty date of the product.
         """
-        pulumi.set(__self__, "category_id", category_id)
-        pulumi.set(__self__, "code", code)
-        pulumi.set(__self__, "delivery_date", delivery_date)
-        pulumi.set(__self__, "delivery_way", delivery_way)
-        pulumi.set(__self__, "image_url", image_url)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "operation_system", operation_system)
-        pulumi.set(__self__, "score", score)
-        pulumi.set(__self__, "short_description", short_description)
-        pulumi.set(__self__, "suggested_price", suggested_price)
-        pulumi.set(__self__, "supplier_id", supplier_id)
-        pulumi.set(__self__, "supplier_name", supplier_name)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "target_url", target_url)
-        pulumi.set(__self__, "warranty_date", warranty_date)
+        GetProductsProductResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category_id=category_id,
+            code=code,
+            delivery_date=delivery_date,
+            delivery_way=delivery_way,
+            image_url=image_url,
+            name=name,
+            operation_system=operation_system,
+            score=score,
+            short_description=short_description,
+            suggested_price=suggested_price,
+            supplier_id=supplier_id,
+            supplier_name=supplier_name,
+            tags=tags,
+            target_url=target_url,
+            warranty_date=warranty_date,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category_id: Optional[int] = None,
+             code: Optional[str] = None,
+             delivery_date: Optional[str] = None,
+             delivery_way: Optional[str] = None,
+             image_url: Optional[str] = None,
+             name: Optional[str] = None,
+             operation_system: Optional[str] = None,
+             score: Optional[str] = None,
+             short_description: Optional[str] = None,
+             suggested_price: Optional[str] = None,
+             supplier_id: Optional[int] = None,
+             supplier_name: Optional[str] = None,
+             tags: Optional[str] = None,
+             target_url: Optional[str] = None,
+             warranty_date: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if category_id is None and 'categoryId' in kwargs:
+            category_id = kwargs['categoryId']
+        if category_id is None:
+            raise TypeError("Missing 'category_id' argument")
+        if code is None:
+            raise TypeError("Missing 'code' argument")
+        if delivery_date is None and 'deliveryDate' in kwargs:
+            delivery_date = kwargs['deliveryDate']
+        if delivery_date is None:
+            raise TypeError("Missing 'delivery_date' argument")
+        if delivery_way is None and 'deliveryWay' in kwargs:
+            delivery_way = kwargs['deliveryWay']
+        if delivery_way is None:
+            raise TypeError("Missing 'delivery_way' argument")
+        if image_url is None and 'imageUrl' in kwargs:
+            image_url = kwargs['imageUrl']
+        if image_url is None:
+            raise TypeError("Missing 'image_url' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if operation_system is None and 'operationSystem' in kwargs:
+            operation_system = kwargs['operationSystem']
+        if operation_system is None:
+            raise TypeError("Missing 'operation_system' argument")
+        if score is None:
+            raise TypeError("Missing 'score' argument")
+        if short_description is None and 'shortDescription' in kwargs:
+            short_description = kwargs['shortDescription']
+        if short_description is None:
+            raise TypeError("Missing 'short_description' argument")
+        if suggested_price is None and 'suggestedPrice' in kwargs:
+            suggested_price = kwargs['suggestedPrice']
+        if suggested_price is None:
+            raise TypeError("Missing 'suggested_price' argument")
+        if supplier_id is None and 'supplierId' in kwargs:
+            supplier_id = kwargs['supplierId']
+        if supplier_id is None:
+            raise TypeError("Missing 'supplier_id' argument")
+        if supplier_name is None and 'supplierName' in kwargs:
+            supplier_name = kwargs['supplierName']
+        if supplier_name is None:
+            raise TypeError("Missing 'supplier_name' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if target_url is None and 'targetUrl' in kwargs:
+            target_url = kwargs['targetUrl']
+        if target_url is None:
+            raise TypeError("Missing 'target_url' argument")
+        if warranty_date is None and 'warrantyDate' in kwargs:
+            warranty_date = kwargs['warrantyDate']
+        if warranty_date is None:
+            raise TypeError("Missing 'warranty_date' argument")
+
+        _setter("category_id", category_id)
+        _setter("code", code)
+        _setter("delivery_date", delivery_date)
+        _setter("delivery_way", delivery_way)
+        _setter("image_url", image_url)
+        _setter("name", name)
+        _setter("operation_system", operation_system)
+        _setter("score", score)
+        _setter("short_description", short_description)
+        _setter("suggested_price", suggested_price)
+        _setter("supplier_id", supplier_id)
+        _setter("supplier_name", supplier_name)
+        _setter("tags", tags)
+        _setter("target_url", target_url)
+        _setter("warranty_date", warranty_date)
 
     @property
     @pulumi.getter(name="categoryId")

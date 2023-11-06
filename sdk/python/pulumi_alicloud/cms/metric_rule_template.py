@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -45,27 +45,78 @@ class MetricRuleTemplateArgs:
                > **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
         :param pulumi.Input[str] webhook: The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
         """
-        pulumi.set(__self__, "metric_rule_template_name", metric_rule_template_name)
+        MetricRuleTemplateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            metric_rule_template_name=metric_rule_template_name,
+            alert_templates=alert_templates,
+            apply_mode=apply_mode,
+            description=description,
+            enable_end_time=enable_end_time,
+            enable_start_time=enable_start_time,
+            group_id=group_id,
+            notify_level=notify_level,
+            rest_version=rest_version,
+            silence_time=silence_time,
+            webhook=webhook,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             metric_rule_template_name: Optional[pulumi.Input[str]] = None,
+             alert_templates: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRuleTemplateAlertTemplateArgs']]]] = None,
+             apply_mode: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enable_end_time: Optional[pulumi.Input[str]] = None,
+             enable_start_time: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             notify_level: Optional[pulumi.Input[str]] = None,
+             rest_version: Optional[pulumi.Input[str]] = None,
+             silence_time: Optional[pulumi.Input[int]] = None,
+             webhook: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if metric_rule_template_name is None and 'metricRuleTemplateName' in kwargs:
+            metric_rule_template_name = kwargs['metricRuleTemplateName']
+        if metric_rule_template_name is None:
+            raise TypeError("Missing 'metric_rule_template_name' argument")
+        if alert_templates is None and 'alertTemplates' in kwargs:
+            alert_templates = kwargs['alertTemplates']
+        if apply_mode is None and 'applyMode' in kwargs:
+            apply_mode = kwargs['applyMode']
+        if enable_end_time is None and 'enableEndTime' in kwargs:
+            enable_end_time = kwargs['enableEndTime']
+        if enable_start_time is None and 'enableStartTime' in kwargs:
+            enable_start_time = kwargs['enableStartTime']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if notify_level is None and 'notifyLevel' in kwargs:
+            notify_level = kwargs['notifyLevel']
+        if rest_version is None and 'restVersion' in kwargs:
+            rest_version = kwargs['restVersion']
+        if silence_time is None and 'silenceTime' in kwargs:
+            silence_time = kwargs['silenceTime']
+
+        _setter("metric_rule_template_name", metric_rule_template_name)
         if alert_templates is not None:
-            pulumi.set(__self__, "alert_templates", alert_templates)
+            _setter("alert_templates", alert_templates)
         if apply_mode is not None:
-            pulumi.set(__self__, "apply_mode", apply_mode)
+            _setter("apply_mode", apply_mode)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enable_end_time is not None:
-            pulumi.set(__self__, "enable_end_time", enable_end_time)
+            _setter("enable_end_time", enable_end_time)
         if enable_start_time is not None:
-            pulumi.set(__self__, "enable_start_time", enable_start_time)
+            _setter("enable_start_time", enable_start_time)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if notify_level is not None:
-            pulumi.set(__self__, "notify_level", notify_level)
+            _setter("notify_level", notify_level)
         if rest_version is not None:
-            pulumi.set(__self__, "rest_version", rest_version)
+            _setter("rest_version", rest_version)
         if silence_time is not None:
-            pulumi.set(__self__, "silence_time", silence_time)
+            _setter("silence_time", silence_time)
         if webhook is not None:
-            pulumi.set(__self__, "webhook", webhook)
+            _setter("webhook", webhook)
 
     @property
     @pulumi.getter(name="metricRuleTemplateName")
@@ -236,28 +287,77 @@ class _MetricRuleTemplateState:
                > **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
         :param pulumi.Input[str] webhook: The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
         """
+        _MetricRuleTemplateState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alert_templates=alert_templates,
+            apply_mode=apply_mode,
+            description=description,
+            enable_end_time=enable_end_time,
+            enable_start_time=enable_start_time,
+            group_id=group_id,
+            metric_rule_template_name=metric_rule_template_name,
+            notify_level=notify_level,
+            rest_version=rest_version,
+            silence_time=silence_time,
+            webhook=webhook,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alert_templates: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRuleTemplateAlertTemplateArgs']]]] = None,
+             apply_mode: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enable_end_time: Optional[pulumi.Input[str]] = None,
+             enable_start_time: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             metric_rule_template_name: Optional[pulumi.Input[str]] = None,
+             notify_level: Optional[pulumi.Input[str]] = None,
+             rest_version: Optional[pulumi.Input[str]] = None,
+             silence_time: Optional[pulumi.Input[int]] = None,
+             webhook: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if alert_templates is None and 'alertTemplates' in kwargs:
+            alert_templates = kwargs['alertTemplates']
+        if apply_mode is None and 'applyMode' in kwargs:
+            apply_mode = kwargs['applyMode']
+        if enable_end_time is None and 'enableEndTime' in kwargs:
+            enable_end_time = kwargs['enableEndTime']
+        if enable_start_time is None and 'enableStartTime' in kwargs:
+            enable_start_time = kwargs['enableStartTime']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if metric_rule_template_name is None and 'metricRuleTemplateName' in kwargs:
+            metric_rule_template_name = kwargs['metricRuleTemplateName']
+        if notify_level is None and 'notifyLevel' in kwargs:
+            notify_level = kwargs['notifyLevel']
+        if rest_version is None and 'restVersion' in kwargs:
+            rest_version = kwargs['restVersion']
+        if silence_time is None and 'silenceTime' in kwargs:
+            silence_time = kwargs['silenceTime']
+
         if alert_templates is not None:
-            pulumi.set(__self__, "alert_templates", alert_templates)
+            _setter("alert_templates", alert_templates)
         if apply_mode is not None:
-            pulumi.set(__self__, "apply_mode", apply_mode)
+            _setter("apply_mode", apply_mode)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enable_end_time is not None:
-            pulumi.set(__self__, "enable_end_time", enable_end_time)
+            _setter("enable_end_time", enable_end_time)
         if enable_start_time is not None:
-            pulumi.set(__self__, "enable_start_time", enable_start_time)
+            _setter("enable_start_time", enable_start_time)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if metric_rule_template_name is not None:
-            pulumi.set(__self__, "metric_rule_template_name", metric_rule_template_name)
+            _setter("metric_rule_template_name", metric_rule_template_name)
         if notify_level is not None:
-            pulumi.set(__self__, "notify_level", notify_level)
+            _setter("notify_level", notify_level)
         if rest_version is not None:
-            pulumi.set(__self__, "rest_version", rest_version)
+            _setter("rest_version", rest_version)
         if silence_time is not None:
-            pulumi.set(__self__, "silence_time", silence_time)
+            _setter("silence_time", silence_time)
         if webhook is not None:
-            pulumi.set(__self__, "webhook", webhook)
+            _setter("webhook", webhook)
 
     @property
     @pulumi.getter(name="alertTemplates")
@@ -537,6 +637,10 @@ class MetricRuleTemplate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MetricRuleTemplateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

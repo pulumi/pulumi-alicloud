@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ActivationArgs', 'Activation']
@@ -29,16 +29,43 @@ class ActivationArgs:
         :param pulumi.Input[str] ip_address_range: The IP addresses of hosts that are allowed to use the activation code. The value can be IPv4 addresses, IPv6 addresses, or CIDR blocks.
         :param pulumi.Input[int] time_to_live_in_hours: The validity period of the activation code. The activation code cannot be used to register new instances after the validity period expires. Unit: hours. Valid values: `1` to `24`. Default value: `4`.
         """
+        ActivationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            instance_count=instance_count,
+            instance_name=instance_name,
+            ip_address_range=ip_address_range,
+            time_to_live_in_hours=time_to_live_in_hours,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             instance_count: Optional[pulumi.Input[int]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             ip_address_range: Optional[pulumi.Input[str]] = None,
+             time_to_live_in_hours: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_count is None and 'instanceCount' in kwargs:
+            instance_count = kwargs['instanceCount']
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if ip_address_range is None and 'ipAddressRange' in kwargs:
+            ip_address_range = kwargs['ipAddressRange']
+        if time_to_live_in_hours is None and 'timeToLiveInHours' in kwargs:
+            time_to_live_in_hours = kwargs['timeToLiveInHours']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if instance_count is not None:
-            pulumi.set(__self__, "instance_count", instance_count)
+            _setter("instance_count", instance_count)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if ip_address_range is not None:
-            pulumi.set(__self__, "ip_address_range", ip_address_range)
+            _setter("ip_address_range", ip_address_range)
         if time_to_live_in_hours is not None:
-            pulumi.set(__self__, "time_to_live_in_hours", time_to_live_in_hours)
+            _setter("time_to_live_in_hours", time_to_live_in_hours)
 
     @property
     @pulumi.getter
@@ -121,16 +148,43 @@ class _ActivationState:
         :param pulumi.Input[str] ip_address_range: The IP addresses of hosts that are allowed to use the activation code. The value can be IPv4 addresses, IPv6 addresses, or CIDR blocks.
         :param pulumi.Input[int] time_to_live_in_hours: The validity period of the activation code. The activation code cannot be used to register new instances after the validity period expires. Unit: hours. Valid values: `1` to `24`. Default value: `4`.
         """
+        _ActivationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            instance_count=instance_count,
+            instance_name=instance_name,
+            ip_address_range=ip_address_range,
+            time_to_live_in_hours=time_to_live_in_hours,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             instance_count: Optional[pulumi.Input[int]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             ip_address_range: Optional[pulumi.Input[str]] = None,
+             time_to_live_in_hours: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_count is None and 'instanceCount' in kwargs:
+            instance_count = kwargs['instanceCount']
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if ip_address_range is None and 'ipAddressRange' in kwargs:
+            ip_address_range = kwargs['ipAddressRange']
+        if time_to_live_in_hours is None and 'timeToLiveInHours' in kwargs:
+            time_to_live_in_hours = kwargs['timeToLiveInHours']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if instance_count is not None:
-            pulumi.set(__self__, "instance_count", instance_count)
+            _setter("instance_count", instance_count)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if ip_address_range is not None:
-            pulumi.set(__self__, "ip_address_range", ip_address_range)
+            _setter("ip_address_range", ip_address_range)
         if time_to_live_in_hours is not None:
-            pulumi.set(__self__, "time_to_live_in_hours", time_to_live_in_hours)
+            _setter("time_to_live_in_hours", time_to_live_in_hours)
 
     @property
     @pulumi.getter
@@ -294,6 +348,10 @@ class Activation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ActivationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

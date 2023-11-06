@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['CustomRoutingEndpointGroupArgs', 'CustomRoutingEndpointGroup']
@@ -27,13 +27,46 @@ class CustomRoutingEndpointGroupArgs:
         :param pulumi.Input[str] custom_routing_endpoint_group_name: The name of the endpoint group.
         :param pulumi.Input[str] description: The description of the endpoint group.
         """
-        pulumi.set(__self__, "accelerator_id", accelerator_id)
-        pulumi.set(__self__, "endpoint_group_region", endpoint_group_region)
-        pulumi.set(__self__, "listener_id", listener_id)
+        CustomRoutingEndpointGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_id=accelerator_id,
+            endpoint_group_region=endpoint_group_region,
+            listener_id=listener_id,
+            custom_routing_endpoint_group_name=custom_routing_endpoint_group_name,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_id: Optional[pulumi.Input[str]] = None,
+             endpoint_group_region: Optional[pulumi.Input[str]] = None,
+             listener_id: Optional[pulumi.Input[str]] = None,
+             custom_routing_endpoint_group_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accelerator_id is None and 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if accelerator_id is None:
+            raise TypeError("Missing 'accelerator_id' argument")
+        if endpoint_group_region is None and 'endpointGroupRegion' in kwargs:
+            endpoint_group_region = kwargs['endpointGroupRegion']
+        if endpoint_group_region is None:
+            raise TypeError("Missing 'endpoint_group_region' argument")
+        if listener_id is None and 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if listener_id is None:
+            raise TypeError("Missing 'listener_id' argument")
+        if custom_routing_endpoint_group_name is None and 'customRoutingEndpointGroupName' in kwargs:
+            custom_routing_endpoint_group_name = kwargs['customRoutingEndpointGroupName']
+
+        _setter("accelerator_id", accelerator_id)
+        _setter("endpoint_group_region", endpoint_group_region)
+        _setter("listener_id", listener_id)
         if custom_routing_endpoint_group_name is not None:
-            pulumi.set(__self__, "custom_routing_endpoint_group_name", custom_routing_endpoint_group_name)
+            _setter("custom_routing_endpoint_group_name", custom_routing_endpoint_group_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -114,18 +147,47 @@ class _CustomRoutingEndpointGroupState:
         :param pulumi.Input[str] listener_id: The ID of the custom routing listener.
         :param pulumi.Input[str] status: The status of the Custom Routing Endpoint Group.
         """
+        _CustomRoutingEndpointGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_id=accelerator_id,
+            custom_routing_endpoint_group_name=custom_routing_endpoint_group_name,
+            description=description,
+            endpoint_group_region=endpoint_group_region,
+            listener_id=listener_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_id: Optional[pulumi.Input[str]] = None,
+             custom_routing_endpoint_group_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             endpoint_group_region: Optional[pulumi.Input[str]] = None,
+             listener_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accelerator_id is None and 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if custom_routing_endpoint_group_name is None and 'customRoutingEndpointGroupName' in kwargs:
+            custom_routing_endpoint_group_name = kwargs['customRoutingEndpointGroupName']
+        if endpoint_group_region is None and 'endpointGroupRegion' in kwargs:
+            endpoint_group_region = kwargs['endpointGroupRegion']
+        if listener_id is None and 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+
         if accelerator_id is not None:
-            pulumi.set(__self__, "accelerator_id", accelerator_id)
+            _setter("accelerator_id", accelerator_id)
         if custom_routing_endpoint_group_name is not None:
-            pulumi.set(__self__, "custom_routing_endpoint_group_name", custom_routing_endpoint_group_name)
+            _setter("custom_routing_endpoint_group_name", custom_routing_endpoint_group_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if endpoint_group_region is not None:
-            pulumi.set(__self__, "endpoint_group_region", endpoint_group_region)
+            _setter("endpoint_group_region", endpoint_group_region)
         if listener_id is not None:
-            pulumi.set(__self__, "listener_id", listener_id)
+            _setter("listener_id", listener_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -347,6 +409,10 @@ class CustomRoutingEndpointGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CustomRoutingEndpointGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

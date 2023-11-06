@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,36 +37,69 @@ class PolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input['PolicyStatementArgs']]] statements: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
         :param pulumi.Input[str] version: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
         """
+        PolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            document=document,
+            force=force,
+            name=name,
+            policy_document=policy_document,
+            policy_name=policy_name,
+            rotate_strategy=rotate_strategy,
+            statements=statements,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             document: Optional[pulumi.Input[str]] = None,
+             force: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             policy_document: Optional[pulumi.Input[str]] = None,
+             policy_name: Optional[pulumi.Input[str]] = None,
+             rotate_strategy: Optional[pulumi.Input[str]] = None,
+             statements: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyStatementArgs']]]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_document is None and 'policyDocument' in kwargs:
+            policy_document = kwargs['policyDocument']
+        if policy_name is None and 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if rotate_strategy is None and 'rotateStrategy' in kwargs:
+            rotate_strategy = kwargs['rotateStrategy']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if document is not None:
             warnings.warn("""Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.""", DeprecationWarning)
             pulumi.log.warn("""document is deprecated: Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.""")
         if document is not None:
-            pulumi.set(__self__, "document", document)
+            _setter("document", document)
         if force is not None:
-            pulumi.set(__self__, "force", force)
+            _setter("force", force)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.""")
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if policy_document is not None:
-            pulumi.set(__self__, "policy_document", policy_document)
+            _setter("policy_document", policy_document)
         if policy_name is not None:
-            pulumi.set(__self__, "policy_name", policy_name)
+            _setter("policy_name", policy_name)
         if rotate_strategy is not None:
-            pulumi.set(__self__, "rotate_strategy", rotate_strategy)
+            _setter("rotate_strategy", rotate_strategy)
         if statements is not None:
             warnings.warn("""Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
             pulumi.log.warn("""statements is deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
         if statements is not None:
-            pulumi.set(__self__, "statements", statements)
+            _setter("statements", statements)
         if version is not None:
             warnings.warn("""Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
             pulumi.log.warn("""version is deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -221,44 +254,91 @@ class _PolicyState:
         :param pulumi.Input[str] version: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
         :param pulumi.Input[str] version_id: The ID of default version policy.
         """
+        _PolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attachment_count=attachment_count,
+            default_version=default_version,
+            description=description,
+            document=document,
+            force=force,
+            name=name,
+            policy_document=policy_document,
+            policy_name=policy_name,
+            rotate_strategy=rotate_strategy,
+            statements=statements,
+            type=type,
+            version=version,
+            version_id=version_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attachment_count: Optional[pulumi.Input[int]] = None,
+             default_version: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             document: Optional[pulumi.Input[str]] = None,
+             force: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             policy_document: Optional[pulumi.Input[str]] = None,
+             policy_name: Optional[pulumi.Input[str]] = None,
+             rotate_strategy: Optional[pulumi.Input[str]] = None,
+             statements: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyStatementArgs']]]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             version_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if attachment_count is None and 'attachmentCount' in kwargs:
+            attachment_count = kwargs['attachmentCount']
+        if default_version is None and 'defaultVersion' in kwargs:
+            default_version = kwargs['defaultVersion']
+        if policy_document is None and 'policyDocument' in kwargs:
+            policy_document = kwargs['policyDocument']
+        if policy_name is None and 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if rotate_strategy is None and 'rotateStrategy' in kwargs:
+            rotate_strategy = kwargs['rotateStrategy']
+        if version_id is None and 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+
         if attachment_count is not None:
-            pulumi.set(__self__, "attachment_count", attachment_count)
+            _setter("attachment_count", attachment_count)
         if default_version is not None:
-            pulumi.set(__self__, "default_version", default_version)
+            _setter("default_version", default_version)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if document is not None:
             warnings.warn("""Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.""", DeprecationWarning)
             pulumi.log.warn("""document is deprecated: Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.""")
         if document is not None:
-            pulumi.set(__self__, "document", document)
+            _setter("document", document)
         if force is not None:
-            pulumi.set(__self__, "force", force)
+            _setter("force", force)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.""")
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if policy_document is not None:
-            pulumi.set(__self__, "policy_document", policy_document)
+            _setter("policy_document", policy_document)
         if policy_name is not None:
-            pulumi.set(__self__, "policy_name", policy_name)
+            _setter("policy_name", policy_name)
         if rotate_strategy is not None:
-            pulumi.set(__self__, "rotate_strategy", rotate_strategy)
+            _setter("rotate_strategy", rotate_strategy)
         if statements is not None:
             warnings.warn("""Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
             pulumi.log.warn("""statements is deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
         if statements is not None:
-            pulumi.set(__self__, "statements", statements)
+            _setter("statements", statements)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if version is not None:
             warnings.warn("""Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
             pulumi.log.warn("""version is deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
         if version_id is not None:
-            pulumi.set(__self__, "version_id", version_id)
+            _setter("version_id", version_id)
 
     @property
     @pulumi.getter(name="attachmentCount")
@@ -570,6 +650,10 @@ class Policy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

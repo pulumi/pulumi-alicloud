@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BasicAccelerateIpEndpointRelationArgs', 'BasicAccelerateIpEndpointRelation']
@@ -23,9 +23,36 @@ class BasicAccelerateIpEndpointRelationArgs:
         :param pulumi.Input[str] accelerator_id: The ID of the Basic GA instance.
         :param pulumi.Input[str] endpoint_id: The ID of the Basic Endpoint.
         """
-        pulumi.set(__self__, "accelerate_ip_id", accelerate_ip_id)
-        pulumi.set(__self__, "accelerator_id", accelerator_id)
-        pulumi.set(__self__, "endpoint_id", endpoint_id)
+        BasicAccelerateIpEndpointRelationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerate_ip_id=accelerate_ip_id,
+            accelerator_id=accelerator_id,
+            endpoint_id=endpoint_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerate_ip_id: Optional[pulumi.Input[str]] = None,
+             accelerator_id: Optional[pulumi.Input[str]] = None,
+             endpoint_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accelerate_ip_id is None and 'accelerateIpId' in kwargs:
+            accelerate_ip_id = kwargs['accelerateIpId']
+        if accelerate_ip_id is None:
+            raise TypeError("Missing 'accelerate_ip_id' argument")
+        if accelerator_id is None and 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if accelerator_id is None:
+            raise TypeError("Missing 'accelerator_id' argument")
+        if endpoint_id is None and 'endpointId' in kwargs:
+            endpoint_id = kwargs['endpointId']
+        if endpoint_id is None:
+            raise TypeError("Missing 'endpoint_id' argument")
+
+        _setter("accelerate_ip_id", accelerate_ip_id)
+        _setter("accelerator_id", accelerator_id)
+        _setter("endpoint_id", endpoint_id)
 
     @property
     @pulumi.getter(name="accelerateIpId")
@@ -78,14 +105,37 @@ class _BasicAccelerateIpEndpointRelationState:
         :param pulumi.Input[str] endpoint_id: The ID of the Basic Endpoint.
         :param pulumi.Input[str] status: The status of the Basic Accelerate Ip Endpoint Relation.
         """
+        _BasicAccelerateIpEndpointRelationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerate_ip_id=accelerate_ip_id,
+            accelerator_id=accelerator_id,
+            endpoint_id=endpoint_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerate_ip_id: Optional[pulumi.Input[str]] = None,
+             accelerator_id: Optional[pulumi.Input[str]] = None,
+             endpoint_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accelerate_ip_id is None and 'accelerateIpId' in kwargs:
+            accelerate_ip_id = kwargs['accelerateIpId']
+        if accelerator_id is None and 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if endpoint_id is None and 'endpointId' in kwargs:
+            endpoint_id = kwargs['endpointId']
+
         if accelerate_ip_id is not None:
-            pulumi.set(__self__, "accelerate_ip_id", accelerate_ip_id)
+            _setter("accelerate_ip_id", accelerate_ip_id)
         if accelerator_id is not None:
-            pulumi.set(__self__, "accelerator_id", accelerator_id)
+            _setter("accelerator_id", accelerator_id)
         if endpoint_id is not None:
-            pulumi.set(__self__, "endpoint_id", endpoint_id)
+            _setter("endpoint_id", endpoint_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="accelerateIpId")
@@ -335,6 +385,10 @@ class BasicAccelerateIpEndpointRelation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BasicAccelerateIpEndpointRelationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

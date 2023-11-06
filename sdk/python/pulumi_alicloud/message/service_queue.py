@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ServiceQueueArgs', 'ServiceQueue']
@@ -31,19 +31,58 @@ class ServiceQueueArgs:
         :param pulumi.Input[int] polling_wait_seconds: The maximum period for which a ReceiveMessage request waits if no message is available in the queue. Unit: seconds. Valid values: 0-30. Default value: 0.
         :param pulumi.Input[int] visibility_timeout: The invisibility period for which the received message remains the Inactive state. Unit: seconds. Valid values: 1-43200. Default value: 30.
         """
-        pulumi.set(__self__, "queue_name", queue_name)
+        ServiceQueueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            queue_name=queue_name,
+            delay_seconds=delay_seconds,
+            logging_enabled=logging_enabled,
+            maximum_message_size=maximum_message_size,
+            message_retention_period=message_retention_period,
+            polling_wait_seconds=polling_wait_seconds,
+            visibility_timeout=visibility_timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             queue_name: Optional[pulumi.Input[str]] = None,
+             delay_seconds: Optional[pulumi.Input[int]] = None,
+             logging_enabled: Optional[pulumi.Input[bool]] = None,
+             maximum_message_size: Optional[pulumi.Input[int]] = None,
+             message_retention_period: Optional[pulumi.Input[int]] = None,
+             polling_wait_seconds: Optional[pulumi.Input[int]] = None,
+             visibility_timeout: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if queue_name is None and 'queueName' in kwargs:
+            queue_name = kwargs['queueName']
+        if queue_name is None:
+            raise TypeError("Missing 'queue_name' argument")
+        if delay_seconds is None and 'delaySeconds' in kwargs:
+            delay_seconds = kwargs['delaySeconds']
+        if logging_enabled is None and 'loggingEnabled' in kwargs:
+            logging_enabled = kwargs['loggingEnabled']
+        if maximum_message_size is None and 'maximumMessageSize' in kwargs:
+            maximum_message_size = kwargs['maximumMessageSize']
+        if message_retention_period is None and 'messageRetentionPeriod' in kwargs:
+            message_retention_period = kwargs['messageRetentionPeriod']
+        if polling_wait_seconds is None and 'pollingWaitSeconds' in kwargs:
+            polling_wait_seconds = kwargs['pollingWaitSeconds']
+        if visibility_timeout is None and 'visibilityTimeout' in kwargs:
+            visibility_timeout = kwargs['visibilityTimeout']
+
+        _setter("queue_name", queue_name)
         if delay_seconds is not None:
-            pulumi.set(__self__, "delay_seconds", delay_seconds)
+            _setter("delay_seconds", delay_seconds)
         if logging_enabled is not None:
-            pulumi.set(__self__, "logging_enabled", logging_enabled)
+            _setter("logging_enabled", logging_enabled)
         if maximum_message_size is not None:
-            pulumi.set(__self__, "maximum_message_size", maximum_message_size)
+            _setter("maximum_message_size", maximum_message_size)
         if message_retention_period is not None:
-            pulumi.set(__self__, "message_retention_period", message_retention_period)
+            _setter("message_retention_period", message_retention_period)
         if polling_wait_seconds is not None:
-            pulumi.set(__self__, "polling_wait_seconds", polling_wait_seconds)
+            _setter("polling_wait_seconds", polling_wait_seconds)
         if visibility_timeout is not None:
-            pulumi.set(__self__, "visibility_timeout", visibility_timeout)
+            _setter("visibility_timeout", visibility_timeout)
 
     @property
     @pulumi.getter(name="queueName")
@@ -150,20 +189,57 @@ class _ServiceQueueState:
         :param pulumi.Input[str] queue_name: Two queues on a single account in the same region cannot have the same name. A queue name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 120 characters.
         :param pulumi.Input[int] visibility_timeout: The invisibility period for which the received message remains the Inactive state. Unit: seconds. Valid values: 1-43200. Default value: 30.
         """
+        _ServiceQueueState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            delay_seconds=delay_seconds,
+            logging_enabled=logging_enabled,
+            maximum_message_size=maximum_message_size,
+            message_retention_period=message_retention_period,
+            polling_wait_seconds=polling_wait_seconds,
+            queue_name=queue_name,
+            visibility_timeout=visibility_timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             delay_seconds: Optional[pulumi.Input[int]] = None,
+             logging_enabled: Optional[pulumi.Input[bool]] = None,
+             maximum_message_size: Optional[pulumi.Input[int]] = None,
+             message_retention_period: Optional[pulumi.Input[int]] = None,
+             polling_wait_seconds: Optional[pulumi.Input[int]] = None,
+             queue_name: Optional[pulumi.Input[str]] = None,
+             visibility_timeout: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if delay_seconds is None and 'delaySeconds' in kwargs:
+            delay_seconds = kwargs['delaySeconds']
+        if logging_enabled is None and 'loggingEnabled' in kwargs:
+            logging_enabled = kwargs['loggingEnabled']
+        if maximum_message_size is None and 'maximumMessageSize' in kwargs:
+            maximum_message_size = kwargs['maximumMessageSize']
+        if message_retention_period is None and 'messageRetentionPeriod' in kwargs:
+            message_retention_period = kwargs['messageRetentionPeriod']
+        if polling_wait_seconds is None and 'pollingWaitSeconds' in kwargs:
+            polling_wait_seconds = kwargs['pollingWaitSeconds']
+        if queue_name is None and 'queueName' in kwargs:
+            queue_name = kwargs['queueName']
+        if visibility_timeout is None and 'visibilityTimeout' in kwargs:
+            visibility_timeout = kwargs['visibilityTimeout']
+
         if delay_seconds is not None:
-            pulumi.set(__self__, "delay_seconds", delay_seconds)
+            _setter("delay_seconds", delay_seconds)
         if logging_enabled is not None:
-            pulumi.set(__self__, "logging_enabled", logging_enabled)
+            _setter("logging_enabled", logging_enabled)
         if maximum_message_size is not None:
-            pulumi.set(__self__, "maximum_message_size", maximum_message_size)
+            _setter("maximum_message_size", maximum_message_size)
         if message_retention_period is not None:
-            pulumi.set(__self__, "message_retention_period", message_retention_period)
+            _setter("message_retention_period", message_retention_period)
         if polling_wait_seconds is not None:
-            pulumi.set(__self__, "polling_wait_seconds", polling_wait_seconds)
+            _setter("polling_wait_seconds", polling_wait_seconds)
         if queue_name is not None:
-            pulumi.set(__self__, "queue_name", queue_name)
+            _setter("queue_name", queue_name)
         if visibility_timeout is not None:
-            pulumi.set(__self__, "visibility_timeout", visibility_timeout)
+            _setter("visibility_timeout", visibility_timeout)
 
     @property
     @pulumi.getter(name="delaySeconds")
@@ -363,6 +439,10 @@ class ServiceQueue(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ServiceQueueArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -38,8 +38,27 @@ class DbInstanceEndpointNodeItemArgs:
         :param pulumi.Input[str] node_id: The ID of the node.
         :param pulumi.Input[int] weight: The weight of the node. Read requests are distributed based on the weight.Valid values: 0 to 100.
         """
-        pulumi.set(__self__, "node_id", node_id)
-        pulumi.set(__self__, "weight", weight)
+        DbInstanceEndpointNodeItemArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            node_id=node_id,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             node_id: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_id is None and 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if node_id is None:
+            raise TypeError("Missing 'node_id' argument")
+        if weight is None:
+            raise TypeError("Missing 'weight' argument")
+
+        _setter("node_id", node_id)
+        _setter("weight", weight)
 
     @property
     @pulumi.getter(name="nodeId")
@@ -75,8 +94,25 @@ class DdrInstanceParameterArgs:
         :param pulumi.Input[str] name: The parameter name.
         :param pulumi.Input[str] value: The parameter value.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        DdrInstanceParameterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
+        _setter("name", name)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -129,16 +165,55 @@ class DdrInstancePgHbaConfArgs:
         :param pulumi.Input[str] mask: The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
         :param pulumi.Input[str] option: Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "database", database)
-        pulumi.set(__self__, "method", method)
-        pulumi.set(__self__, "priority_id", priority_id)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "user", user)
+        DdrInstancePgHbaConfArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            database=database,
+            method=method,
+            priority_id=priority_id,
+            type=type,
+            user=user,
+            mask=mask,
+            option=option,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: Optional[pulumi.Input[str]] = None,
+             database: Optional[pulumi.Input[str]] = None,
+             method: Optional[pulumi.Input[str]] = None,
+             priority_id: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             user: Optional[pulumi.Input[str]] = None,
+             mask: Optional[pulumi.Input[str]] = None,
+             option: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if database is None:
+            raise TypeError("Missing 'database' argument")
+        if method is None:
+            raise TypeError("Missing 'method' argument")
+        if priority_id is None and 'priorityId' in kwargs:
+            priority_id = kwargs['priorityId']
+        if priority_id is None:
+            raise TypeError("Missing 'priority_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
+
+        _setter("address", address)
+        _setter("database", database)
+        _setter("method", method)
+        _setter("priority_id", priority_id)
+        _setter("type", type)
+        _setter("user", user)
         if mask is not None:
-            pulumi.set(__self__, "mask", mask)
+            _setter("mask", mask)
         if option is not None:
-            pulumi.set(__self__, "option", option)
+            _setter("option", option)
 
     @property
     @pulumi.getter
@@ -255,10 +330,43 @@ class InstanceBabelfishConfigArgs:
         :param pulumi.Input[str] master_username: The name of the administrator account. The name can contain lowercase letters, digits, and underscores (_). It must start with a letter and end with a letter or digit. It can be up to 63 characters in length and cannot start with pg.
         :param pulumi.Input[str] migration_mode: The migration mode of the instance. Valid values: **single-db** and **multi-db**.
         """
-        pulumi.set(__self__, "babelfish_enabled", babelfish_enabled)
-        pulumi.set(__self__, "master_user_password", master_user_password)
-        pulumi.set(__self__, "master_username", master_username)
-        pulumi.set(__self__, "migration_mode", migration_mode)
+        InstanceBabelfishConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            babelfish_enabled=babelfish_enabled,
+            master_user_password=master_user_password,
+            master_username=master_username,
+            migration_mode=migration_mode,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             babelfish_enabled: Optional[pulumi.Input[str]] = None,
+             master_user_password: Optional[pulumi.Input[str]] = None,
+             master_username: Optional[pulumi.Input[str]] = None,
+             migration_mode: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if babelfish_enabled is None and 'babelfishEnabled' in kwargs:
+            babelfish_enabled = kwargs['babelfishEnabled']
+        if babelfish_enabled is None:
+            raise TypeError("Missing 'babelfish_enabled' argument")
+        if master_user_password is None and 'masterUserPassword' in kwargs:
+            master_user_password = kwargs['masterUserPassword']
+        if master_user_password is None:
+            raise TypeError("Missing 'master_user_password' argument")
+        if master_username is None and 'masterUsername' in kwargs:
+            master_username = kwargs['masterUsername']
+        if master_username is None:
+            raise TypeError("Missing 'master_username' argument")
+        if migration_mode is None and 'migrationMode' in kwargs:
+            migration_mode = kwargs['migrationMode']
+        if migration_mode is None:
+            raise TypeError("Missing 'migration_mode' argument")
+
+        _setter("babelfish_enabled", babelfish_enabled)
+        _setter("master_user_password", master_user_password)
+        _setter("master_username", master_username)
+        _setter("migration_mode", migration_mode)
 
     @property
     @pulumi.getter(name="babelfishEnabled")
@@ -318,8 +426,25 @@ class InstanceParameterArgs:
         :param pulumi.Input[str] name: The parameter name.
         :param pulumi.Input[str] value: The parameter value.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        InstanceParameterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
+        _setter("name", name)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -372,16 +497,55 @@ class InstancePgHbaConfArgs:
         :param pulumi.Input[str] mask: The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
         :param pulumi.Input[str] option: Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "database", database)
-        pulumi.set(__self__, "method", method)
-        pulumi.set(__self__, "priority_id", priority_id)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "user", user)
+        InstancePgHbaConfArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            database=database,
+            method=method,
+            priority_id=priority_id,
+            type=type,
+            user=user,
+            mask=mask,
+            option=option,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: Optional[pulumi.Input[str]] = None,
+             database: Optional[pulumi.Input[str]] = None,
+             method: Optional[pulumi.Input[str]] = None,
+             priority_id: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             user: Optional[pulumi.Input[str]] = None,
+             mask: Optional[pulumi.Input[str]] = None,
+             option: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if database is None:
+            raise TypeError("Missing 'database' argument")
+        if method is None:
+            raise TypeError("Missing 'method' argument")
+        if priority_id is None and 'priorityId' in kwargs:
+            priority_id = kwargs['priorityId']
+        if priority_id is None:
+            raise TypeError("Missing 'priority_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
+
+        _setter("address", address)
+        _setter("database", database)
+        _setter("method", method)
+        _setter("priority_id", priority_id)
+        _setter("type", type)
+        _setter("user", user)
         if mask is not None:
-            pulumi.set(__self__, "mask", mask)
+            _setter("mask", mask)
         if option is not None:
-            pulumi.set(__self__, "option", option)
+            _setter("option", option)
 
     @property
     @pulumi.getter
@@ -511,12 +675,41 @@ class InstanceServerlessConfigArgs:
                > - Only MySQL Serverless instances need to set this parameter. After enabling this parameter, there will be a flash break within 1 minute when the instance is forced to expand or shrink. Please use it with caution according to the actual situation.
                > - The elastic scaling of an instance RCU usually takes effect immediately, but in some special circumstances (such as during large transaction execution), it is not possible to complete scaling immediately. In this case, this parameter can be enabled to force scaling.
         """
-        pulumi.set(__self__, "max_capacity", max_capacity)
-        pulumi.set(__self__, "min_capacity", min_capacity)
+        InstanceServerlessConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_capacity=max_capacity,
+            min_capacity=min_capacity,
+            auto_pause=auto_pause,
+            switch_force=switch_force,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_capacity: Optional[pulumi.Input[float]] = None,
+             min_capacity: Optional[pulumi.Input[float]] = None,
+             auto_pause: Optional[pulumi.Input[bool]] = None,
+             switch_force: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_capacity is None and 'maxCapacity' in kwargs:
+            max_capacity = kwargs['maxCapacity']
+        if max_capacity is None:
+            raise TypeError("Missing 'max_capacity' argument")
+        if min_capacity is None and 'minCapacity' in kwargs:
+            min_capacity = kwargs['minCapacity']
+        if min_capacity is None:
+            raise TypeError("Missing 'min_capacity' argument")
+        if auto_pause is None and 'autoPause' in kwargs:
+            auto_pause = kwargs['autoPause']
+        if switch_force is None and 'switchForce' in kwargs:
+            switch_force = kwargs['switchForce']
+
+        _setter("max_capacity", max_capacity)
+        _setter("min_capacity", min_capacity)
         if auto_pause is not None:
-            pulumi.set(__self__, "auto_pause", auto_pause)
+            _setter("auto_pause", auto_pause)
         if switch_force is not None:
-            pulumi.set(__self__, "switch_force", switch_force)
+            _setter("switch_force", switch_force)
 
     @property
     @pulumi.getter(name="maxCapacity")
@@ -589,8 +782,25 @@ class RdsCloneDbInstanceParameterArgs:
         :param pulumi.Input[str] name: The parameters name.
         :param pulumi.Input[str] value: The parameters value.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        RdsCloneDbInstanceParameterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
+        _setter("name", name)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -643,16 +853,55 @@ class RdsCloneDbInstancePgHbaConfArgs:
         :param pulumi.Input[str] mask: The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
         :param pulumi.Input[str] option: Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "database", database)
-        pulumi.set(__self__, "method", method)
-        pulumi.set(__self__, "priority_id", priority_id)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "user", user)
+        RdsCloneDbInstancePgHbaConfArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            database=database,
+            method=method,
+            priority_id=priority_id,
+            type=type,
+            user=user,
+            mask=mask,
+            option=option,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: Optional[pulumi.Input[str]] = None,
+             database: Optional[pulumi.Input[str]] = None,
+             method: Optional[pulumi.Input[str]] = None,
+             priority_id: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             user: Optional[pulumi.Input[str]] = None,
+             mask: Optional[pulumi.Input[str]] = None,
+             option: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if database is None:
+            raise TypeError("Missing 'database' argument")
+        if method is None:
+            raise TypeError("Missing 'method' argument")
+        if priority_id is None and 'priorityId' in kwargs:
+            priority_id = kwargs['priorityId']
+        if priority_id is None:
+            raise TypeError("Missing 'priority_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
+
+        _setter("address", address)
+        _setter("database", database)
+        _setter("method", method)
+        _setter("priority_id", priority_id)
+        _setter("type", type)
+        _setter("user", user)
         if mask is not None:
-            pulumi.set(__self__, "mask", mask)
+            _setter("mask", mask)
         if option is not None:
-            pulumi.set(__self__, "option", option)
+            _setter("option", option)
 
     @property
     @pulumi.getter
@@ -782,12 +1031,41 @@ class RdsCloneDbInstanceServerlessConfigArgs:
                > - Only MySQL Serverless instances need to set this parameter. After enabling this parameter, there will be a flash break within 1 minute when the instance is forced to expand or shrink. Please use it with caution according to the actual situation.
                > - The elastic scaling of an instance RCU usually takes effect immediately, but in some special circumstances (such as during large transaction execution), it is not possible to complete scaling immediately. In this case, this parameter can be enabled to force scaling.
         """
-        pulumi.set(__self__, "max_capacity", max_capacity)
-        pulumi.set(__self__, "min_capacity", min_capacity)
+        RdsCloneDbInstanceServerlessConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_capacity=max_capacity,
+            min_capacity=min_capacity,
+            auto_pause=auto_pause,
+            switch_force=switch_force,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_capacity: Optional[pulumi.Input[float]] = None,
+             min_capacity: Optional[pulumi.Input[float]] = None,
+             auto_pause: Optional[pulumi.Input[bool]] = None,
+             switch_force: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_capacity is None and 'maxCapacity' in kwargs:
+            max_capacity = kwargs['maxCapacity']
+        if max_capacity is None:
+            raise TypeError("Missing 'max_capacity' argument")
+        if min_capacity is None and 'minCapacity' in kwargs:
+            min_capacity = kwargs['minCapacity']
+        if min_capacity is None:
+            raise TypeError("Missing 'min_capacity' argument")
+        if auto_pause is None and 'autoPause' in kwargs:
+            auto_pause = kwargs['autoPause']
+        if switch_force is None and 'switchForce' in kwargs:
+            switch_force = kwargs['switchForce']
+
+        _setter("max_capacity", max_capacity)
+        _setter("min_capacity", min_capacity)
         if auto_pause is not None:
-            pulumi.set(__self__, "auto_pause", auto_pause)
+            _setter("auto_pause", auto_pause)
         if switch_force is not None:
-            pulumi.set(__self__, "switch_force", switch_force)
+            _setter("switch_force", switch_force)
 
     @property
     @pulumi.getter(name="maxCapacity")
@@ -860,8 +1138,27 @@ class RdsDbProxyReadOnlyInstanceWeightArgs:
         :param pulumi.Input[str] instance_id: The Id of the instance and its read-only instances that can run database.
         :param pulumi.Input[str] weight: Weight of instances that can run the database and their read-only instances. Read weights increase in increments of 100, and the maximum read weight is 10000.
         """
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "weight", weight)
+        RdsDbProxyReadOnlyInstanceWeightArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_id=instance_id,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_id: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if weight is None:
+            raise TypeError("Missing 'weight' argument")
+
+        _setter("instance_id", instance_id)
+        _setter("weight", weight)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -897,8 +1194,29 @@ class RdsParameterGroupParamDetailArgs:
         :param pulumi.Input[str] param_name: The name of a parameter.
         :param pulumi.Input[str] param_value: The value of a parameter.
         """
-        pulumi.set(__self__, "param_name", param_name)
-        pulumi.set(__self__, "param_value", param_value)
+        RdsParameterGroupParamDetailArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            param_name=param_name,
+            param_value=param_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             param_name: Optional[pulumi.Input[str]] = None,
+             param_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if param_name is None and 'paramName' in kwargs:
+            param_name = kwargs['paramName']
+        if param_name is None:
+            raise TypeError("Missing 'param_name' argument")
+        if param_value is None and 'paramValue' in kwargs:
+            param_value = kwargs['paramValue']
+        if param_value is None:
+            raise TypeError("Missing 'param_value' argument")
+
+        _setter("param_name", param_name)
+        _setter("param_value", param_value)
 
     @property
     @pulumi.getter(name="paramName")
@@ -934,8 +1252,25 @@ class RdsUpgradeDbInstanceParameterArgs:
         :param pulumi.Input[str] name: The parameter name.
         :param pulumi.Input[str] value: The parameter value.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        RdsUpgradeDbInstanceParameterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
+        _setter("name", name)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -988,16 +1323,55 @@ class RdsUpgradeDbInstancePgHbaConfArgs:
         :param pulumi.Input[str] mask: The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
         :param pulumi.Input[str] option: Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "database", database)
-        pulumi.set(__self__, "method", method)
-        pulumi.set(__self__, "priority_id", priority_id)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "user", user)
+        RdsUpgradeDbInstancePgHbaConfArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            database=database,
+            method=method,
+            priority_id=priority_id,
+            type=type,
+            user=user,
+            mask=mask,
+            option=option,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: Optional[pulumi.Input[str]] = None,
+             database: Optional[pulumi.Input[str]] = None,
+             method: Optional[pulumi.Input[str]] = None,
+             priority_id: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             user: Optional[pulumi.Input[str]] = None,
+             mask: Optional[pulumi.Input[str]] = None,
+             option: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if database is None:
+            raise TypeError("Missing 'database' argument")
+        if method is None:
+            raise TypeError("Missing 'method' argument")
+        if priority_id is None and 'priorityId' in kwargs:
+            priority_id = kwargs['priorityId']
+        if priority_id is None:
+            raise TypeError("Missing 'priority_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
+
+        _setter("address", address)
+        _setter("database", database)
+        _setter("method", method)
+        _setter("priority_id", priority_id)
+        _setter("type", type)
+        _setter("user", user)
         if mask is not None:
-            pulumi.set(__self__, "mask", mask)
+            _setter("mask", mask)
         if option is not None:
-            pulumi.set(__self__, "option", option)
+            _setter("option", option)
 
     @property
     @pulumi.getter
@@ -1110,8 +1484,25 @@ class ReadOnlyInstanceParameterArgs:
         :param pulumi.Input[str] name: The parameter name.
         :param pulumi.Input[str] value: The parameter value.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        ReadOnlyInstanceParameterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
+        _setter("name", name)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -1149,12 +1540,31 @@ class GetCollationTimeZonesCollationTimeZoneArgs:
         :param str standard_time_offset: The offset of the UTC time. The offset is in the following format: (UTC+<i>HH:mm</i>).
         :param str time_zone: The time zone that is available for use in ApsaraDB RDS.
         """
+        GetCollationTimeZonesCollationTimeZoneArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            standard_time_offset=standard_time_offset,
+            time_zone=time_zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[str] = None,
+             standard_time_offset: Optional[str] = None,
+             time_zone: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if standard_time_offset is None and 'standardTimeOffset' in kwargs:
+            standard_time_offset = kwargs['standardTimeOffset']
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if standard_time_offset is not None:
-            pulumi.set(__self__, "standard_time_offset", standard_time_offset)
+            _setter("standard_time_offset", standard_time_offset)
         if time_zone is not None:
-            pulumi.set(__self__, "time_zone", time_zone)
+            _setter("time_zone", time_zone)
 
     @property
     @pulumi.getter
@@ -1216,24 +1626,67 @@ class GetInstanceClassInfosInfoArgs:
         :param str memory_class: The memory capacity that is supported by the instance type. Unit: GB.
         :param str reference_price: The fee that you must pay for the instance type. Unit: cent (USD).
         """
+        GetInstanceClassInfosInfoArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            class_code=class_code,
+            class_group=class_group,
+            cpu=cpu,
+            instruction_set_arch=instruction_set_arch,
+            max_connections=max_connections,
+            max_iombps=max_iombps,
+            max_iops=max_iops,
+            memory_class=memory_class,
+            reference_price=reference_price,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             class_code: Optional[str] = None,
+             class_group: Optional[str] = None,
+             cpu: Optional[str] = None,
+             instruction_set_arch: Optional[str] = None,
+             max_connections: Optional[str] = None,
+             max_iombps: Optional[str] = None,
+             max_iops: Optional[str] = None,
+             memory_class: Optional[str] = None,
+             reference_price: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if class_code is None and 'classCode' in kwargs:
+            class_code = kwargs['classCode']
+        if class_group is None and 'classGroup' in kwargs:
+            class_group = kwargs['classGroup']
+        if instruction_set_arch is None and 'instructionSetArch' in kwargs:
+            instruction_set_arch = kwargs['instructionSetArch']
+        if max_connections is None and 'maxConnections' in kwargs:
+            max_connections = kwargs['maxConnections']
+        if max_iombps is None and 'maxIombps' in kwargs:
+            max_iombps = kwargs['maxIombps']
+        if max_iops is None and 'maxIops' in kwargs:
+            max_iops = kwargs['maxIops']
+        if memory_class is None and 'memoryClass' in kwargs:
+            memory_class = kwargs['memoryClass']
+        if reference_price is None and 'referencePrice' in kwargs:
+            reference_price = kwargs['referencePrice']
+
         if class_code is not None:
-            pulumi.set(__self__, "class_code", class_code)
+            _setter("class_code", class_code)
         if class_group is not None:
-            pulumi.set(__self__, "class_group", class_group)
+            _setter("class_group", class_group)
         if cpu is not None:
-            pulumi.set(__self__, "cpu", cpu)
+            _setter("cpu", cpu)
         if instruction_set_arch is not None:
-            pulumi.set(__self__, "instruction_set_arch", instruction_set_arch)
+            _setter("instruction_set_arch", instruction_set_arch)
         if max_connections is not None:
-            pulumi.set(__self__, "max_connections", max_connections)
+            _setter("max_connections", max_connections)
         if max_iombps is not None:
-            pulumi.set(__self__, "max_iombps", max_iombps)
+            _setter("max_iombps", max_iombps)
         if max_iops is not None:
-            pulumi.set(__self__, "max_iops", max_iops)
+            _setter("max_iops", max_iops)
         if memory_class is not None:
-            pulumi.set(__self__, "memory_class", memory_class)
+            _setter("memory_class", memory_class)
         if reference_price is not None:
-            pulumi.set(__self__, "reference_price", reference_price)
+            _setter("reference_price", reference_price)
 
     @property
     @pulumi.getter(name="classCode")

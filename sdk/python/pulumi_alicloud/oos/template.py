@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TemplateArgs', 'Template']
@@ -29,16 +29,49 @@ class TemplateArgs:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] version_name: The name of template version.
         """
-        pulumi.set(__self__, "content", content)
-        pulumi.set(__self__, "template_name", template_name)
+        TemplateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            content=content,
+            template_name=template_name,
+            auto_delete_executions=auto_delete_executions,
+            resource_group_id=resource_group_id,
+            tags=tags,
+            version_name=version_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             content: Optional[pulumi.Input[str]] = None,
+             template_name: Optional[pulumi.Input[str]] = None,
+             auto_delete_executions: Optional[pulumi.Input[bool]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             version_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if content is None:
+            raise TypeError("Missing 'content' argument")
+        if template_name is None and 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+        if template_name is None:
+            raise TypeError("Missing 'template_name' argument")
+        if auto_delete_executions is None and 'autoDeleteExecutions' in kwargs:
+            auto_delete_executions = kwargs['autoDeleteExecutions']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if version_name is None and 'versionName' in kwargs:
+            version_name = kwargs['versionName']
+
+        _setter("content", content)
+        _setter("template_name", template_name)
         if auto_delete_executions is not None:
-            pulumi.set(__self__, "auto_delete_executions", auto_delete_executions)
+            _setter("auto_delete_executions", auto_delete_executions)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if version_name is not None:
-            pulumi.set(__self__, "version_name", version_name)
+            _setter("version_name", version_name)
 
     @property
     @pulumi.getter
@@ -153,40 +186,111 @@ class _TemplateState:
         :param pulumi.Input[str] updated_date: The time when the template was updated.
         :param pulumi.Input[str] version_name: The name of template version.
         """
+        _TemplateState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_delete_executions=auto_delete_executions,
+            content=content,
+            created_by=created_by,
+            created_date=created_date,
+            description=description,
+            has_trigger=has_trigger,
+            resource_group_id=resource_group_id,
+            share_type=share_type,
+            tags=tags,
+            template_format=template_format,
+            template_id=template_id,
+            template_name=template_name,
+            template_type=template_type,
+            template_version=template_version,
+            updated_by=updated_by,
+            updated_date=updated_date,
+            version_name=version_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_delete_executions: Optional[pulumi.Input[bool]] = None,
+             content: Optional[pulumi.Input[str]] = None,
+             created_by: Optional[pulumi.Input[str]] = None,
+             created_date: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             has_trigger: Optional[pulumi.Input[bool]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             share_type: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             template_format: Optional[pulumi.Input[str]] = None,
+             template_id: Optional[pulumi.Input[str]] = None,
+             template_name: Optional[pulumi.Input[str]] = None,
+             template_type: Optional[pulumi.Input[str]] = None,
+             template_version: Optional[pulumi.Input[str]] = None,
+             updated_by: Optional[pulumi.Input[str]] = None,
+             updated_date: Optional[pulumi.Input[str]] = None,
+             version_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_delete_executions is None and 'autoDeleteExecutions' in kwargs:
+            auto_delete_executions = kwargs['autoDeleteExecutions']
+        if created_by is None and 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if created_date is None and 'createdDate' in kwargs:
+            created_date = kwargs['createdDate']
+        if has_trigger is None and 'hasTrigger' in kwargs:
+            has_trigger = kwargs['hasTrigger']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if share_type is None and 'shareType' in kwargs:
+            share_type = kwargs['shareType']
+        if template_format is None and 'templateFormat' in kwargs:
+            template_format = kwargs['templateFormat']
+        if template_id is None and 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+        if template_name is None and 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+        if template_type is None and 'templateType' in kwargs:
+            template_type = kwargs['templateType']
+        if template_version is None and 'templateVersion' in kwargs:
+            template_version = kwargs['templateVersion']
+        if updated_by is None and 'updatedBy' in kwargs:
+            updated_by = kwargs['updatedBy']
+        if updated_date is None and 'updatedDate' in kwargs:
+            updated_date = kwargs['updatedDate']
+        if version_name is None and 'versionName' in kwargs:
+            version_name = kwargs['versionName']
+
         if auto_delete_executions is not None:
-            pulumi.set(__self__, "auto_delete_executions", auto_delete_executions)
+            _setter("auto_delete_executions", auto_delete_executions)
         if content is not None:
-            pulumi.set(__self__, "content", content)
+            _setter("content", content)
         if created_by is not None:
-            pulumi.set(__self__, "created_by", created_by)
+            _setter("created_by", created_by)
         if created_date is not None:
-            pulumi.set(__self__, "created_date", created_date)
+            _setter("created_date", created_date)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if has_trigger is not None:
-            pulumi.set(__self__, "has_trigger", has_trigger)
+            _setter("has_trigger", has_trigger)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if share_type is not None:
-            pulumi.set(__self__, "share_type", share_type)
+            _setter("share_type", share_type)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if template_format is not None:
-            pulumi.set(__self__, "template_format", template_format)
+            _setter("template_format", template_format)
         if template_id is not None:
-            pulumi.set(__self__, "template_id", template_id)
+            _setter("template_id", template_id)
         if template_name is not None:
-            pulumi.set(__self__, "template_name", template_name)
+            _setter("template_name", template_name)
         if template_type is not None:
-            pulumi.set(__self__, "template_type", template_type)
+            _setter("template_type", template_type)
         if template_version is not None:
-            pulumi.set(__self__, "template_version", template_version)
+            _setter("template_version", template_version)
         if updated_by is not None:
-            pulumi.set(__self__, "updated_by", updated_by)
+            _setter("updated_by", updated_by)
         if updated_date is not None:
-            pulumi.set(__self__, "updated_date", updated_date)
+            _setter("updated_date", updated_date)
         if version_name is not None:
-            pulumi.set(__self__, "version_name", version_name)
+            _setter("version_name", version_name)
 
     @property
     @pulumi.getter(name="autoDeleteExecutions")
@@ -534,6 +638,10 @@ class Template(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TemplateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

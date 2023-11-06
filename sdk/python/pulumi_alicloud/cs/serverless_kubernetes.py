@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -85,76 +85,203 @@ class ServerlessKubernetesArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vswitches where new kubernetes cluster will be located.
         :param pulumi.Input[str] zone_id: When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
         """
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        ServerlessKubernetesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            vpc_id=vpc_id,
+            addons=addons,
+            client_cert=client_cert,
+            client_key=client_key,
+            cluster_ca_cert=cluster_ca_cert,
+            cluster_spec=cluster_spec,
+            create_v2_cluster=create_v2_cluster,
+            deletion_protection=deletion_protection,
+            enable_rrsa=enable_rrsa,
+            endpoint_public_access_enabled=endpoint_public_access_enabled,
+            force_update=force_update,
+            kube_config=kube_config,
+            load_balancer_spec=load_balancer_spec,
+            logging_type=logging_type,
+            name=name,
+            name_prefix=name_prefix,
+            new_nat_gateway=new_nat_gateway,
+            private_zone=private_zone,
+            resource_group_id=resource_group_id,
+            retain_resources=retain_resources,
+            rrsa_metadata=rrsa_metadata,
+            security_group_id=security_group_id,
+            service_cidr=service_cidr,
+            service_discovery_types=service_discovery_types,
+            sls_project_name=sls_project_name,
+            tags=tags,
+            time_zone=time_zone,
+            version=version,
+            vswitch_id=vswitch_id,
+            vswitch_ids=vswitch_ids,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             addons: Optional[pulumi.Input[Sequence[pulumi.Input['ServerlessKubernetesAddonArgs']]]] = None,
+             client_cert: Optional[pulumi.Input[str]] = None,
+             client_key: Optional[pulumi.Input[str]] = None,
+             cluster_ca_cert: Optional[pulumi.Input[str]] = None,
+             cluster_spec: Optional[pulumi.Input[str]] = None,
+             create_v2_cluster: Optional[pulumi.Input[bool]] = None,
+             deletion_protection: Optional[pulumi.Input[bool]] = None,
+             enable_rrsa: Optional[pulumi.Input[bool]] = None,
+             endpoint_public_access_enabled: Optional[pulumi.Input[bool]] = None,
+             force_update: Optional[pulumi.Input[bool]] = None,
+             kube_config: Optional[pulumi.Input[str]] = None,
+             load_balancer_spec: Optional[pulumi.Input[str]] = None,
+             logging_type: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             name_prefix: Optional[pulumi.Input[str]] = None,
+             new_nat_gateway: Optional[pulumi.Input[bool]] = None,
+             private_zone: Optional[pulumi.Input[bool]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             rrsa_metadata: Optional[pulumi.Input['ServerlessKubernetesRrsaMetadataArgs']] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             service_cidr: Optional[pulumi.Input[str]] = None,
+             service_discovery_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             sls_project_name: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             time_zone: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if client_cert is None and 'clientCert' in kwargs:
+            client_cert = kwargs['clientCert']
+        if client_key is None and 'clientKey' in kwargs:
+            client_key = kwargs['clientKey']
+        if cluster_ca_cert is None and 'clusterCaCert' in kwargs:
+            cluster_ca_cert = kwargs['clusterCaCert']
+        if cluster_spec is None and 'clusterSpec' in kwargs:
+            cluster_spec = kwargs['clusterSpec']
+        if create_v2_cluster is None and 'createV2Cluster' in kwargs:
+            create_v2_cluster = kwargs['createV2Cluster']
+        if deletion_protection is None and 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if enable_rrsa is None and 'enableRrsa' in kwargs:
+            enable_rrsa = kwargs['enableRrsa']
+        if endpoint_public_access_enabled is None and 'endpointPublicAccessEnabled' in kwargs:
+            endpoint_public_access_enabled = kwargs['endpointPublicAccessEnabled']
+        if force_update is None and 'forceUpdate' in kwargs:
+            force_update = kwargs['forceUpdate']
+        if kube_config is None and 'kubeConfig' in kwargs:
+            kube_config = kwargs['kubeConfig']
+        if load_balancer_spec is None and 'loadBalancerSpec' in kwargs:
+            load_balancer_spec = kwargs['loadBalancerSpec']
+        if logging_type is None and 'loggingType' in kwargs:
+            logging_type = kwargs['loggingType']
+        if name_prefix is None and 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if new_nat_gateway is None and 'newNatGateway' in kwargs:
+            new_nat_gateway = kwargs['newNatGateway']
+        if private_zone is None and 'privateZone' in kwargs:
+            private_zone = kwargs['privateZone']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if retain_resources is None and 'retainResources' in kwargs:
+            retain_resources = kwargs['retainResources']
+        if rrsa_metadata is None and 'rrsaMetadata' in kwargs:
+            rrsa_metadata = kwargs['rrsaMetadata']
+        if security_group_id is None and 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if service_cidr is None and 'serviceCidr' in kwargs:
+            service_cidr = kwargs['serviceCidr']
+        if service_discovery_types is None and 'serviceDiscoveryTypes' in kwargs:
+            service_discovery_types = kwargs['serviceDiscoveryTypes']
+        if sls_project_name is None and 'slsProjectName' in kwargs:
+            sls_project_name = kwargs['slsProjectName']
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if vswitch_ids is None and 'vswitchIds' in kwargs:
+            vswitch_ids = kwargs['vswitchIds']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
+        _setter("vpc_id", vpc_id)
         if addons is not None:
-            pulumi.set(__self__, "addons", addons)
+            _setter("addons", addons)
         if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
+            _setter("client_cert", client_cert)
         if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
+            _setter("client_key", client_key)
         if cluster_ca_cert is not None:
-            pulumi.set(__self__, "cluster_ca_cert", cluster_ca_cert)
+            _setter("cluster_ca_cert", cluster_ca_cert)
         if cluster_spec is not None:
-            pulumi.set(__self__, "cluster_spec", cluster_spec)
+            _setter("cluster_spec", cluster_spec)
         if create_v2_cluster is not None:
-            pulumi.set(__self__, "create_v2_cluster", create_v2_cluster)
+            _setter("create_v2_cluster", create_v2_cluster)
         if deletion_protection is not None:
-            pulumi.set(__self__, "deletion_protection", deletion_protection)
+            _setter("deletion_protection", deletion_protection)
         if enable_rrsa is not None:
-            pulumi.set(__self__, "enable_rrsa", enable_rrsa)
+            _setter("enable_rrsa", enable_rrsa)
         if endpoint_public_access_enabled is not None:
-            pulumi.set(__self__, "endpoint_public_access_enabled", endpoint_public_access_enabled)
+            _setter("endpoint_public_access_enabled", endpoint_public_access_enabled)
         if force_update is not None:
-            pulumi.set(__self__, "force_update", force_update)
+            _setter("force_update", force_update)
         if kube_config is not None:
             warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""", DeprecationWarning)
             pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
         if kube_config is not None:
-            pulumi.set(__self__, "kube_config", kube_config)
+            _setter("kube_config", kube_config)
         if load_balancer_spec is not None:
-            pulumi.set(__self__, "load_balancer_spec", load_balancer_spec)
+            _setter("load_balancer_spec", load_balancer_spec)
         if logging_type is not None:
-            pulumi.set(__self__, "logging_type", logging_type)
+            _setter("logging_type", logging_type)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if name_prefix is not None:
-            pulumi.set(__self__, "name_prefix", name_prefix)
+            _setter("name_prefix", name_prefix)
         if new_nat_gateway is not None:
-            pulumi.set(__self__, "new_nat_gateway", new_nat_gateway)
+            _setter("new_nat_gateway", new_nat_gateway)
         if private_zone is not None:
             warnings.warn("""Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.""", DeprecationWarning)
             pulumi.log.warn("""private_zone is deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.""")
         if private_zone is not None:
-            pulumi.set(__self__, "private_zone", private_zone)
+            _setter("private_zone", private_zone)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if retain_resources is not None:
-            pulumi.set(__self__, "retain_resources", retain_resources)
+            _setter("retain_resources", retain_resources)
         if rrsa_metadata is not None:
-            pulumi.set(__self__, "rrsa_metadata", rrsa_metadata)
+            _setter("rrsa_metadata", rrsa_metadata)
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
         if service_cidr is not None:
-            pulumi.set(__self__, "service_cidr", service_cidr)
+            _setter("service_cidr", service_cidr)
         if service_discovery_types is not None:
-            pulumi.set(__self__, "service_discovery_types", service_discovery_types)
+            _setter("service_discovery_types", service_discovery_types)
         if sls_project_name is not None:
-            pulumi.set(__self__, "sls_project_name", sls_project_name)
+            _setter("sls_project_name", sls_project_name)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if time_zone is not None:
-            pulumi.set(__self__, "time_zone", time_zone)
+            _setter("time_zone", time_zone)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
         if vswitch_id is not None:
             warnings.warn("""Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.""", DeprecationWarning)
             pulumi.log.warn("""vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.""")
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if vswitch_ids is not None:
-            pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+            _setter("vswitch_ids", vswitch_ids)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -610,77 +737,202 @@ class _ServerlessKubernetesState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vswitches where new kubernetes cluster will be located.
         :param pulumi.Input[str] zone_id: When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
         """
+        _ServerlessKubernetesState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            addons=addons,
+            client_cert=client_cert,
+            client_key=client_key,
+            cluster_ca_cert=cluster_ca_cert,
+            cluster_spec=cluster_spec,
+            create_v2_cluster=create_v2_cluster,
+            deletion_protection=deletion_protection,
+            enable_rrsa=enable_rrsa,
+            endpoint_public_access_enabled=endpoint_public_access_enabled,
+            force_update=force_update,
+            kube_config=kube_config,
+            load_balancer_spec=load_balancer_spec,
+            logging_type=logging_type,
+            name=name,
+            name_prefix=name_prefix,
+            new_nat_gateway=new_nat_gateway,
+            private_zone=private_zone,
+            resource_group_id=resource_group_id,
+            retain_resources=retain_resources,
+            rrsa_metadata=rrsa_metadata,
+            security_group_id=security_group_id,
+            service_cidr=service_cidr,
+            service_discovery_types=service_discovery_types,
+            sls_project_name=sls_project_name,
+            tags=tags,
+            time_zone=time_zone,
+            version=version,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            vswitch_ids=vswitch_ids,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             addons: Optional[pulumi.Input[Sequence[pulumi.Input['ServerlessKubernetesAddonArgs']]]] = None,
+             client_cert: Optional[pulumi.Input[str]] = None,
+             client_key: Optional[pulumi.Input[str]] = None,
+             cluster_ca_cert: Optional[pulumi.Input[str]] = None,
+             cluster_spec: Optional[pulumi.Input[str]] = None,
+             create_v2_cluster: Optional[pulumi.Input[bool]] = None,
+             deletion_protection: Optional[pulumi.Input[bool]] = None,
+             enable_rrsa: Optional[pulumi.Input[bool]] = None,
+             endpoint_public_access_enabled: Optional[pulumi.Input[bool]] = None,
+             force_update: Optional[pulumi.Input[bool]] = None,
+             kube_config: Optional[pulumi.Input[str]] = None,
+             load_balancer_spec: Optional[pulumi.Input[str]] = None,
+             logging_type: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             name_prefix: Optional[pulumi.Input[str]] = None,
+             new_nat_gateway: Optional[pulumi.Input[bool]] = None,
+             private_zone: Optional[pulumi.Input[bool]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             rrsa_metadata: Optional[pulumi.Input['ServerlessKubernetesRrsaMetadataArgs']] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             service_cidr: Optional[pulumi.Input[str]] = None,
+             service_discovery_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             sls_project_name: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             time_zone: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if client_cert is None and 'clientCert' in kwargs:
+            client_cert = kwargs['clientCert']
+        if client_key is None and 'clientKey' in kwargs:
+            client_key = kwargs['clientKey']
+        if cluster_ca_cert is None and 'clusterCaCert' in kwargs:
+            cluster_ca_cert = kwargs['clusterCaCert']
+        if cluster_spec is None and 'clusterSpec' in kwargs:
+            cluster_spec = kwargs['clusterSpec']
+        if create_v2_cluster is None and 'createV2Cluster' in kwargs:
+            create_v2_cluster = kwargs['createV2Cluster']
+        if deletion_protection is None and 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if enable_rrsa is None and 'enableRrsa' in kwargs:
+            enable_rrsa = kwargs['enableRrsa']
+        if endpoint_public_access_enabled is None and 'endpointPublicAccessEnabled' in kwargs:
+            endpoint_public_access_enabled = kwargs['endpointPublicAccessEnabled']
+        if force_update is None and 'forceUpdate' in kwargs:
+            force_update = kwargs['forceUpdate']
+        if kube_config is None and 'kubeConfig' in kwargs:
+            kube_config = kwargs['kubeConfig']
+        if load_balancer_spec is None and 'loadBalancerSpec' in kwargs:
+            load_balancer_spec = kwargs['loadBalancerSpec']
+        if logging_type is None and 'loggingType' in kwargs:
+            logging_type = kwargs['loggingType']
+        if name_prefix is None and 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if new_nat_gateway is None and 'newNatGateway' in kwargs:
+            new_nat_gateway = kwargs['newNatGateway']
+        if private_zone is None and 'privateZone' in kwargs:
+            private_zone = kwargs['privateZone']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if retain_resources is None and 'retainResources' in kwargs:
+            retain_resources = kwargs['retainResources']
+        if rrsa_metadata is None and 'rrsaMetadata' in kwargs:
+            rrsa_metadata = kwargs['rrsaMetadata']
+        if security_group_id is None and 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if service_cidr is None and 'serviceCidr' in kwargs:
+            service_cidr = kwargs['serviceCidr']
+        if service_discovery_types is None and 'serviceDiscoveryTypes' in kwargs:
+            service_discovery_types = kwargs['serviceDiscoveryTypes']
+        if sls_project_name is None and 'slsProjectName' in kwargs:
+            sls_project_name = kwargs['slsProjectName']
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if vswitch_ids is None and 'vswitchIds' in kwargs:
+            vswitch_ids = kwargs['vswitchIds']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if addons is not None:
-            pulumi.set(__self__, "addons", addons)
+            _setter("addons", addons)
         if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
+            _setter("client_cert", client_cert)
         if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
+            _setter("client_key", client_key)
         if cluster_ca_cert is not None:
-            pulumi.set(__self__, "cluster_ca_cert", cluster_ca_cert)
+            _setter("cluster_ca_cert", cluster_ca_cert)
         if cluster_spec is not None:
-            pulumi.set(__self__, "cluster_spec", cluster_spec)
+            _setter("cluster_spec", cluster_spec)
         if create_v2_cluster is not None:
-            pulumi.set(__self__, "create_v2_cluster", create_v2_cluster)
+            _setter("create_v2_cluster", create_v2_cluster)
         if deletion_protection is not None:
-            pulumi.set(__self__, "deletion_protection", deletion_protection)
+            _setter("deletion_protection", deletion_protection)
         if enable_rrsa is not None:
-            pulumi.set(__self__, "enable_rrsa", enable_rrsa)
+            _setter("enable_rrsa", enable_rrsa)
         if endpoint_public_access_enabled is not None:
-            pulumi.set(__self__, "endpoint_public_access_enabled", endpoint_public_access_enabled)
+            _setter("endpoint_public_access_enabled", endpoint_public_access_enabled)
         if force_update is not None:
-            pulumi.set(__self__, "force_update", force_update)
+            _setter("force_update", force_update)
         if kube_config is not None:
             warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""", DeprecationWarning)
             pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
         if kube_config is not None:
-            pulumi.set(__self__, "kube_config", kube_config)
+            _setter("kube_config", kube_config)
         if load_balancer_spec is not None:
-            pulumi.set(__self__, "load_balancer_spec", load_balancer_spec)
+            _setter("load_balancer_spec", load_balancer_spec)
         if logging_type is not None:
-            pulumi.set(__self__, "logging_type", logging_type)
+            _setter("logging_type", logging_type)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if name_prefix is not None:
-            pulumi.set(__self__, "name_prefix", name_prefix)
+            _setter("name_prefix", name_prefix)
         if new_nat_gateway is not None:
-            pulumi.set(__self__, "new_nat_gateway", new_nat_gateway)
+            _setter("new_nat_gateway", new_nat_gateway)
         if private_zone is not None:
             warnings.warn("""Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.""", DeprecationWarning)
             pulumi.log.warn("""private_zone is deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.""")
         if private_zone is not None:
-            pulumi.set(__self__, "private_zone", private_zone)
+            _setter("private_zone", private_zone)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if retain_resources is not None:
-            pulumi.set(__self__, "retain_resources", retain_resources)
+            _setter("retain_resources", retain_resources)
         if rrsa_metadata is not None:
-            pulumi.set(__self__, "rrsa_metadata", rrsa_metadata)
+            _setter("rrsa_metadata", rrsa_metadata)
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
         if service_cidr is not None:
-            pulumi.set(__self__, "service_cidr", service_cidr)
+            _setter("service_cidr", service_cidr)
         if service_discovery_types is not None:
-            pulumi.set(__self__, "service_discovery_types", service_discovery_types)
+            _setter("service_discovery_types", service_discovery_types)
         if sls_project_name is not None:
-            pulumi.set(__self__, "sls_project_name", sls_project_name)
+            _setter("sls_project_name", sls_project_name)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if time_zone is not None:
-            pulumi.set(__self__, "time_zone", time_zone)
+            _setter("time_zone", time_zone)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
             warnings.warn("""Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.""", DeprecationWarning)
             pulumi.log.warn("""vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.""")
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if vswitch_ids is not None:
-            pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+            _setter("vswitch_ids", vswitch_ids)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -1313,6 +1565,10 @@ class ServerlessKubernetes(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ServerlessKubernetesArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1377,6 +1633,11 @@ class ServerlessKubernetes(pulumi.CustomResource):
             __props__.__dict__["private_zone"] = private_zone
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["retain_resources"] = retain_resources
+            if rrsa_metadata is not None and not isinstance(rrsa_metadata, ServerlessKubernetesRrsaMetadataArgs):
+                rrsa_metadata = rrsa_metadata or {}
+                def _setter(key, value):
+                    rrsa_metadata[key] = value
+                ServerlessKubernetesRrsaMetadataArgs._configure(_setter, **rrsa_metadata)
             __props__.__dict__["rrsa_metadata"] = rrsa_metadata
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["service_cidr"] = service_cidr

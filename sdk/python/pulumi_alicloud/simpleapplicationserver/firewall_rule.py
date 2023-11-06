@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['FirewallRuleArgs', 'FirewallRule']
@@ -25,11 +25,38 @@ class FirewallRuleArgs:
         :param pulumi.Input[str] rule_protocol: The transport layer protocol. Valid values: `Tcp`, `Udp`, `TcpAndUdp`.
         :param pulumi.Input[str] remark: The remarks of the firewall rule.
         """
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "rule_protocol", rule_protocol)
+        FirewallRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_id=instance_id,
+            port=port,
+            rule_protocol=rule_protocol,
+            remark=remark,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_id: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[str]] = None,
+             rule_protocol: Optional[pulumi.Input[str]] = None,
+             remark: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if rule_protocol is None and 'ruleProtocol' in kwargs:
+            rule_protocol = kwargs['ruleProtocol']
+        if rule_protocol is None:
+            raise TypeError("Missing 'rule_protocol' argument")
+
+        _setter("instance_id", instance_id)
+        _setter("port", port)
+        _setter("rule_protocol", rule_protocol)
         if remark is not None:
-            pulumi.set(__self__, "remark", remark)
+            _setter("remark", remark)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -96,16 +123,41 @@ class _FirewallRuleState:
         :param pulumi.Input[str] remark: The remarks of the firewall rule.
         :param pulumi.Input[str] rule_protocol: The transport layer protocol. Valid values: `Tcp`, `Udp`, `TcpAndUdp`.
         """
+        _FirewallRuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            firewall_rule_id=firewall_rule_id,
+            instance_id=instance_id,
+            port=port,
+            remark=remark,
+            rule_protocol=rule_protocol,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             firewall_rule_id: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[str]] = None,
+             remark: Optional[pulumi.Input[str]] = None,
+             rule_protocol: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if firewall_rule_id is None and 'firewallRuleId' in kwargs:
+            firewall_rule_id = kwargs['firewallRuleId']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if rule_protocol is None and 'ruleProtocol' in kwargs:
+            rule_protocol = kwargs['ruleProtocol']
+
         if firewall_rule_id is not None:
-            pulumi.set(__self__, "firewall_rule_id", firewall_rule_id)
+            _setter("firewall_rule_id", firewall_rule_id)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if remark is not None:
-            pulumi.set(__self__, "remark", remark)
+            _setter("remark", remark)
         if rule_protocol is not None:
-            pulumi.set(__self__, "rule_protocol", rule_protocol)
+            _setter("rule_protocol", rule_protocol)
 
     @property
     @pulumi.getter(name="firewallRuleId")
@@ -287,6 +339,10 @@ class FirewallRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FirewallRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

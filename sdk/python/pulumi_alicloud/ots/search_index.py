@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -30,12 +30,47 @@ class SearchIndexArgs:
         :param pulumi.Input[int] time_to_live: The index type of the OTS Table. Specifies the retention period of data in the search index. Unit: seconds. Default value: -1.
                If the retention period exceeds the TTL value, OTS automatically deletes expired data.
         """
-        pulumi.set(__self__, "index_name", index_name)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "schemas", schemas)
-        pulumi.set(__self__, "table_name", table_name)
+        SearchIndexArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            index_name=index_name,
+            instance_name=instance_name,
+            schemas=schemas,
+            table_name=table_name,
+            time_to_live=time_to_live,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             index_name: Optional[pulumi.Input[str]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             schemas: Optional[pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaArgs']]]] = None,
+             table_name: Optional[pulumi.Input[str]] = None,
+             time_to_live: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if index_name is None and 'indexName' in kwargs:
+            index_name = kwargs['indexName']
+        if index_name is None:
+            raise TypeError("Missing 'index_name' argument")
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if schemas is None:
+            raise TypeError("Missing 'schemas' argument")
+        if table_name is None and 'tableName' in kwargs:
+            table_name = kwargs['tableName']
+        if table_name is None:
+            raise TypeError("Missing 'table_name' argument")
+        if time_to_live is None and 'timeToLive' in kwargs:
+            time_to_live = kwargs['timeToLive']
+
+        _setter("index_name", index_name)
+        _setter("instance_name", instance_name)
+        _setter("schemas", schemas)
+        _setter("table_name", table_name)
         if time_to_live is not None:
-            pulumi.set(__self__, "time_to_live", time_to_live)
+            _setter("time_to_live", time_to_live)
 
     @property
     @pulumi.getter(name="indexName")
@@ -124,24 +159,67 @@ class _SearchIndexState:
         :param pulumi.Input[int] time_to_live: The index type of the OTS Table. Specifies the retention period of data in the search index. Unit: seconds. Default value: -1.
                If the retention period exceeds the TTL value, OTS automatically deletes expired data.
         """
+        _SearchIndexState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            current_sync_timestamp=current_sync_timestamp,
+            index_id=index_id,
+            index_name=index_name,
+            instance_name=instance_name,
+            schemas=schemas,
+            sync_phase=sync_phase,
+            table_name=table_name,
+            time_to_live=time_to_live,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[int]] = None,
+             current_sync_timestamp: Optional[pulumi.Input[int]] = None,
+             index_id: Optional[pulumi.Input[str]] = None,
+             index_name: Optional[pulumi.Input[str]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             schemas: Optional[pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaArgs']]]] = None,
+             sync_phase: Optional[pulumi.Input[str]] = None,
+             table_name: Optional[pulumi.Input[str]] = None,
+             time_to_live: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if current_sync_timestamp is None and 'currentSyncTimestamp' in kwargs:
+            current_sync_timestamp = kwargs['currentSyncTimestamp']
+        if index_id is None and 'indexId' in kwargs:
+            index_id = kwargs['indexId']
+        if index_name is None and 'indexName' in kwargs:
+            index_name = kwargs['indexName']
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if sync_phase is None and 'syncPhase' in kwargs:
+            sync_phase = kwargs['syncPhase']
+        if table_name is None and 'tableName' in kwargs:
+            table_name = kwargs['tableName']
+        if time_to_live is None and 'timeToLive' in kwargs:
+            time_to_live = kwargs['timeToLive']
+
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if current_sync_timestamp is not None:
-            pulumi.set(__self__, "current_sync_timestamp", current_sync_timestamp)
+            _setter("current_sync_timestamp", current_sync_timestamp)
         if index_id is not None:
-            pulumi.set(__self__, "index_id", index_id)
+            _setter("index_id", index_id)
         if index_name is not None:
-            pulumi.set(__self__, "index_name", index_name)
+            _setter("index_name", index_name)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if schemas is not None:
-            pulumi.set(__self__, "schemas", schemas)
+            _setter("schemas", schemas)
         if sync_phase is not None:
-            pulumi.set(__self__, "sync_phase", sync_phase)
+            _setter("sync_phase", sync_phase)
         if table_name is not None:
-            pulumi.set(__self__, "table_name", table_name)
+            _setter("table_name", table_name)
         if time_to_live is not None:
-            pulumi.set(__self__, "time_to_live", time_to_live)
+            _setter("time_to_live", time_to_live)
 
     @property
     @pulumi.getter(name="createTime")
@@ -499,6 +577,10 @@ class SearchIndex(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SearchIndexArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

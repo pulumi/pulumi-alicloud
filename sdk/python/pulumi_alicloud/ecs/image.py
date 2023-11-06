@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -47,33 +47,78 @@ class ImageArgs:
         :param pulumi.Input[str] snapshot_id: Specifies a snapshot that is used to create a combined custom image.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag value of an image. The value of N ranges from 1 to 20.
         """
+        ImageArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            architecture=architecture,
+            delete_auto_snapshot=delete_auto_snapshot,
+            description=description,
+            disk_device_mappings=disk_device_mappings,
+            force=force,
+            image_name=image_name,
+            instance_id=instance_id,
+            name=name,
+            platform=platform,
+            resource_group_id=resource_group_id,
+            snapshot_id=snapshot_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             architecture: Optional[pulumi.Input[str]] = None,
+             delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disk_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['ImageDiskDeviceMappingArgs']]]] = None,
+             force: Optional[pulumi.Input[bool]] = None,
+             image_name: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             platform: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             snapshot_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if delete_auto_snapshot is None and 'deleteAutoSnapshot' in kwargs:
+            delete_auto_snapshot = kwargs['deleteAutoSnapshot']
+        if disk_device_mappings is None and 'diskDeviceMappings' in kwargs:
+            disk_device_mappings = kwargs['diskDeviceMappings']
+        if image_name is None and 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if snapshot_id is None and 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+
         if architecture is not None:
-            pulumi.set(__self__, "architecture", architecture)
+            _setter("architecture", architecture)
         if delete_auto_snapshot is not None:
-            pulumi.set(__self__, "delete_auto_snapshot", delete_auto_snapshot)
+            _setter("delete_auto_snapshot", delete_auto_snapshot)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disk_device_mappings is not None:
-            pulumi.set(__self__, "disk_device_mappings", disk_device_mappings)
+            _setter("disk_device_mappings", disk_device_mappings)
         if force is not None:
-            pulumi.set(__self__, "force", force)
+            _setter("force", force)
         if image_name is not None:
-            pulumi.set(__self__, "image_name", image_name)
+            _setter("image_name", image_name)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if name is not None:
             warnings.warn("""Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.""")
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if platform is not None:
-            pulumi.set(__self__, "platform", platform)
+            _setter("platform", platform)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -257,33 +302,78 @@ class _ImageState:
         :param pulumi.Input[str] snapshot_id: Specifies a snapshot that is used to create a combined custom image.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag value of an image. The value of N ranges from 1 to 20.
         """
+        _ImageState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            architecture=architecture,
+            delete_auto_snapshot=delete_auto_snapshot,
+            description=description,
+            disk_device_mappings=disk_device_mappings,
+            force=force,
+            image_name=image_name,
+            instance_id=instance_id,
+            name=name,
+            platform=platform,
+            resource_group_id=resource_group_id,
+            snapshot_id=snapshot_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             architecture: Optional[pulumi.Input[str]] = None,
+             delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disk_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['ImageDiskDeviceMappingArgs']]]] = None,
+             force: Optional[pulumi.Input[bool]] = None,
+             image_name: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             platform: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             snapshot_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if delete_auto_snapshot is None and 'deleteAutoSnapshot' in kwargs:
+            delete_auto_snapshot = kwargs['deleteAutoSnapshot']
+        if disk_device_mappings is None and 'diskDeviceMappings' in kwargs:
+            disk_device_mappings = kwargs['diskDeviceMappings']
+        if image_name is None and 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if snapshot_id is None and 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+
         if architecture is not None:
-            pulumi.set(__self__, "architecture", architecture)
+            _setter("architecture", architecture)
         if delete_auto_snapshot is not None:
-            pulumi.set(__self__, "delete_auto_snapshot", delete_auto_snapshot)
+            _setter("delete_auto_snapshot", delete_auto_snapshot)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disk_device_mappings is not None:
-            pulumi.set(__self__, "disk_device_mappings", disk_device_mappings)
+            _setter("disk_device_mappings", disk_device_mappings)
         if force is not None:
-            pulumi.set(__self__, "force", force)
+            _setter("force", force)
         if image_name is not None:
-            pulumi.set(__self__, "image_name", image_name)
+            _setter("image_name", image_name)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if name is not None:
             warnings.warn("""Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.""")
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if platform is not None:
-            pulumi.set(__self__, "platform", platform)
+            _setter("platform", platform)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -604,6 +694,10 @@ class Image(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ImageArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

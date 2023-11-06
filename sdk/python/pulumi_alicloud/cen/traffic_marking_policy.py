@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TrafficMarkingPolicyArgs', 'TrafficMarkingPolicy']
@@ -29,15 +29,50 @@ class TrafficMarkingPolicyArgs:
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[str] traffic_marking_policy_name: The name of the Traffic Marking Policy. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
         """
-        pulumi.set(__self__, "marking_dscp", marking_dscp)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "transit_router_id", transit_router_id)
+        TrafficMarkingPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            marking_dscp=marking_dscp,
+            priority=priority,
+            transit_router_id=transit_router_id,
+            description=description,
+            dry_run=dry_run,
+            traffic_marking_policy_name=traffic_marking_policy_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             marking_dscp: Optional[pulumi.Input[int]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             transit_router_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             traffic_marking_policy_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if marking_dscp is None and 'markingDscp' in kwargs:
+            marking_dscp = kwargs['markingDscp']
+        if marking_dscp is None:
+            raise TypeError("Missing 'marking_dscp' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if transit_router_id is None and 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+        if transit_router_id is None:
+            raise TypeError("Missing 'transit_router_id' argument")
+        if dry_run is None and 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if traffic_marking_policy_name is None and 'trafficMarkingPolicyName' in kwargs:
+            traffic_marking_policy_name = kwargs['trafficMarkingPolicyName']
+
+        _setter("marking_dscp", marking_dscp)
+        _setter("priority", priority)
+        _setter("transit_router_id", transit_router_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if traffic_marking_policy_name is not None:
-            pulumi.set(__self__, "traffic_marking_policy_name", traffic_marking_policy_name)
+            _setter("traffic_marking_policy_name", traffic_marking_policy_name)
 
     @property
     @pulumi.getter(name="markingDscp")
@@ -134,22 +169,57 @@ class _TrafficMarkingPolicyState:
         :param pulumi.Input[str] traffic_marking_policy_name: The name of the Traffic Marking Policy. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         """
+        _TrafficMarkingPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            dry_run=dry_run,
+            marking_dscp=marking_dscp,
+            priority=priority,
+            status=status,
+            traffic_marking_policy_id=traffic_marking_policy_id,
+            traffic_marking_policy_name=traffic_marking_policy_name,
+            transit_router_id=transit_router_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             marking_dscp: Optional[pulumi.Input[int]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             traffic_marking_policy_id: Optional[pulumi.Input[str]] = None,
+             traffic_marking_policy_name: Optional[pulumi.Input[str]] = None,
+             transit_router_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dry_run is None and 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if marking_dscp is None and 'markingDscp' in kwargs:
+            marking_dscp = kwargs['markingDscp']
+        if traffic_marking_policy_id is None and 'trafficMarkingPolicyId' in kwargs:
+            traffic_marking_policy_id = kwargs['trafficMarkingPolicyId']
+        if traffic_marking_policy_name is None and 'trafficMarkingPolicyName' in kwargs:
+            traffic_marking_policy_name = kwargs['trafficMarkingPolicyName']
+        if transit_router_id is None and 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if marking_dscp is not None:
-            pulumi.set(__self__, "marking_dscp", marking_dscp)
+            _setter("marking_dscp", marking_dscp)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if traffic_marking_policy_id is not None:
-            pulumi.set(__self__, "traffic_marking_policy_id", traffic_marking_policy_id)
+            _setter("traffic_marking_policy_id", traffic_marking_policy_id)
         if traffic_marking_policy_name is not None:
-            pulumi.set(__self__, "traffic_marking_policy_name", traffic_marking_policy_name)
+            _setter("traffic_marking_policy_name", traffic_marking_policy_name)
         if transit_router_id is not None:
-            pulumi.set(__self__, "transit_router_id", transit_router_id)
+            _setter("transit_router_id", transit_router_id)
 
     @property
     @pulumi.getter
@@ -357,6 +427,10 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TrafficMarkingPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

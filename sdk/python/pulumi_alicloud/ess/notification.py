@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['NotificationArgs', 'Notification']
@@ -26,9 +26,36 @@ class NotificationArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_types: The notification types of Auto Scaling events and resource changes. Supported notification types: 'AUTOSCALING:SCALE_OUT_SUCCESS', 'AUTOSCALING:SCALE_IN_SUCCESS', 'AUTOSCALING:SCALE_OUT_ERROR', 'AUTOSCALING:SCALE_IN_ERROR', 'AUTOSCALING:SCALE_REJECT', 'AUTOSCALING:SCALE_OUT_START', 'AUTOSCALING:SCALE_IN_START', 'AUTOSCALING:SCHEDULE_TASK_EXPIRING'.
         :param pulumi.Input[str] scaling_group_id: The ID of the Auto Scaling group.
         """
-        pulumi.set(__self__, "notification_arn", notification_arn)
-        pulumi.set(__self__, "notification_types", notification_types)
-        pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+        NotificationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            notification_arn=notification_arn,
+            notification_types=notification_types,
+            scaling_group_id=scaling_group_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             notification_arn: Optional[pulumi.Input[str]] = None,
+             notification_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             scaling_group_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if notification_arn is None and 'notificationArn' in kwargs:
+            notification_arn = kwargs['notificationArn']
+        if notification_arn is None:
+            raise TypeError("Missing 'notification_arn' argument")
+        if notification_types is None and 'notificationTypes' in kwargs:
+            notification_types = kwargs['notificationTypes']
+        if notification_types is None:
+            raise TypeError("Missing 'notification_types' argument")
+        if scaling_group_id is None and 'scalingGroupId' in kwargs:
+            scaling_group_id = kwargs['scalingGroupId']
+        if scaling_group_id is None:
+            raise TypeError("Missing 'scaling_group_id' argument")
+
+        _setter("notification_arn", notification_arn)
+        _setter("notification_types", notification_types)
+        _setter("scaling_group_id", scaling_group_id)
 
     @property
     @pulumi.getter(name="notificationArn")
@@ -85,12 +112,33 @@ class _NotificationState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_types: The notification types of Auto Scaling events and resource changes. Supported notification types: 'AUTOSCALING:SCALE_OUT_SUCCESS', 'AUTOSCALING:SCALE_IN_SUCCESS', 'AUTOSCALING:SCALE_OUT_ERROR', 'AUTOSCALING:SCALE_IN_ERROR', 'AUTOSCALING:SCALE_REJECT', 'AUTOSCALING:SCALE_OUT_START', 'AUTOSCALING:SCALE_IN_START', 'AUTOSCALING:SCHEDULE_TASK_EXPIRING'.
         :param pulumi.Input[str] scaling_group_id: The ID of the Auto Scaling group.
         """
+        _NotificationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            notification_arn=notification_arn,
+            notification_types=notification_types,
+            scaling_group_id=scaling_group_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             notification_arn: Optional[pulumi.Input[str]] = None,
+             notification_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             scaling_group_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if notification_arn is None and 'notificationArn' in kwargs:
+            notification_arn = kwargs['notificationArn']
+        if notification_types is None and 'notificationTypes' in kwargs:
+            notification_types = kwargs['notificationTypes']
+        if scaling_group_id is None and 'scalingGroupId' in kwargs:
+            scaling_group_id = kwargs['scalingGroupId']
+
         if notification_arn is not None:
-            pulumi.set(__self__, "notification_arn", notification_arn)
+            _setter("notification_arn", notification_arn)
         if notification_types is not None:
-            pulumi.set(__self__, "notification_types", notification_types)
+            _setter("notification_types", notification_types)
         if scaling_group_id is not None:
-            pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+            _setter("scaling_group_id", scaling_group_id)
 
     @property
     @pulumi.getter(name="notificationArn")
@@ -274,6 +322,10 @@ class Notification(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NotificationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

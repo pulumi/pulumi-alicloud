@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ApplicationDeploymentArgs', 'ApplicationDeployment']
@@ -25,11 +25,42 @@ class ApplicationDeploymentArgs:
         :param pulumi.Input[str] war_url: The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
         :param pulumi.Input[str] package_version: The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
         """
-        pulumi.set(__self__, "app_id", app_id)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "war_url", war_url)
+        ApplicationDeploymentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_id=app_id,
+            group_id=group_id,
+            war_url=war_url,
+            package_version=package_version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_id: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             war_url: Optional[pulumi.Input[str]] = None,
+             package_version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_id is None and 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if app_id is None:
+            raise TypeError("Missing 'app_id' argument")
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if war_url is None and 'warUrl' in kwargs:
+            war_url = kwargs['warUrl']
+        if war_url is None:
+            raise TypeError("Missing 'war_url' argument")
+        if package_version is None and 'packageVersion' in kwargs:
+            package_version = kwargs['packageVersion']
+
+        _setter("app_id", app_id)
+        _setter("group_id", group_id)
+        _setter("war_url", war_url)
         if package_version is not None:
-            pulumi.set(__self__, "package_version", package_version)
+            _setter("package_version", package_version)
 
     @property
     @pulumi.getter(name="appId")
@@ -96,16 +127,45 @@ class _ApplicationDeploymentState:
         :param pulumi.Input[str] package_version: The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
         :param pulumi.Input[str] war_url: The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
         """
+        _ApplicationDeploymentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_id=app_id,
+            group_id=group_id,
+            last_package_version=last_package_version,
+            package_version=package_version,
+            war_url=war_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_id: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             last_package_version: Optional[pulumi.Input[str]] = None,
+             package_version: Optional[pulumi.Input[str]] = None,
+             war_url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_id is None and 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if last_package_version is None and 'lastPackageVersion' in kwargs:
+            last_package_version = kwargs['lastPackageVersion']
+        if package_version is None and 'packageVersion' in kwargs:
+            package_version = kwargs['packageVersion']
+        if war_url is None and 'warUrl' in kwargs:
+            war_url = kwargs['warUrl']
+
         if app_id is not None:
-            pulumi.set(__self__, "app_id", app_id)
+            _setter("app_id", app_id)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if last_package_version is not None:
-            pulumi.set(__self__, "last_package_version", last_package_version)
+            _setter("last_package_version", last_package_version)
         if package_version is not None:
-            pulumi.set(__self__, "package_version", package_version)
+            _setter("package_version", package_version)
         if war_url is not None:
-            pulumi.set(__self__, "war_url", war_url)
+            _setter("war_url", war_url)
 
     @property
     @pulumi.getter(name="appId")
@@ -325,6 +385,10 @@ class ApplicationDeployment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ApplicationDeploymentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

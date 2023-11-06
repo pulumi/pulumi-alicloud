@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -54,38 +54,97 @@ class ReservedInstanceArgs:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] zone_id: ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).
         """
-        pulumi.set(__self__, "instance_type", instance_type)
+        ReservedInstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_type=instance_type,
+            auto_renew_period=auto_renew_period,
+            description=description,
+            instance_amount=instance_amount,
+            name=name,
+            offering_type=offering_type,
+            period=period,
+            period_unit=period_unit,
+            platform=platform,
+            renewal_status=renewal_status,
+            reserved_instance_name=reserved_instance_name,
+            resource_group_id=resource_group_id,
+            scope=scope,
+            tags=tags,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_type: Optional[pulumi.Input[str]] = None,
+             auto_renew_period: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             instance_amount: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             offering_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             period_unit: Optional[pulumi.Input[str]] = None,
+             platform: Optional[pulumi.Input[str]] = None,
+             renewal_status: Optional[pulumi.Input[str]] = None,
+             reserved_instance_name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             scope: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_type is None and 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if instance_type is None:
+            raise TypeError("Missing 'instance_type' argument")
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if instance_amount is None and 'instanceAmount' in kwargs:
+            instance_amount = kwargs['instanceAmount']
+        if offering_type is None and 'offeringType' in kwargs:
+            offering_type = kwargs['offeringType']
+        if period_unit is None and 'periodUnit' in kwargs:
+            period_unit = kwargs['periodUnit']
+        if renewal_status is None and 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if reserved_instance_name is None and 'reservedInstanceName' in kwargs:
+            reserved_instance_name = kwargs['reservedInstanceName']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
+        _setter("instance_type", instance_type)
         if auto_renew_period is not None:
-            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+            _setter("auto_renew_period", auto_renew_period)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if instance_amount is not None:
-            pulumi.set(__self__, "instance_amount", instance_amount)
+            _setter("instance_amount", instance_amount)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.""")
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if offering_type is not None:
-            pulumi.set(__self__, "offering_type", offering_type)
+            _setter("offering_type", offering_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if period_unit is not None:
-            pulumi.set(__self__, "period_unit", period_unit)
+            _setter("period_unit", period_unit)
         if platform is not None:
-            pulumi.set(__self__, "platform", platform)
+            _setter("platform", platform)
         if renewal_status is not None:
-            pulumi.set(__self__, "renewal_status", renewal_status)
+            _setter("renewal_status", renewal_status)
         if reserved_instance_name is not None:
-            pulumi.set(__self__, "reserved_instance_name", reserved_instance_name)
+            _setter("reserved_instance_name", reserved_instance_name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if scope is not None:
-            pulumi.set(__self__, "scope", scope)
+            _setter("scope", scope)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="instanceType")
@@ -329,51 +388,130 @@ class _ReservedInstanceState:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] zone_id: ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).
         """
+        _ReservedInstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allocation_status=allocation_status,
+            auto_renew_period=auto_renew_period,
+            create_time=create_time,
+            description=description,
+            expired_time=expired_time,
+            instance_amount=instance_amount,
+            instance_type=instance_type,
+            name=name,
+            offering_type=offering_type,
+            operation_locks=operation_locks,
+            period=period,
+            period_unit=period_unit,
+            platform=platform,
+            renewal_status=renewal_status,
+            reserved_instance_name=reserved_instance_name,
+            resource_group_id=resource_group_id,
+            scope=scope,
+            start_time=start_time,
+            status=status,
+            tags=tags,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allocation_status: Optional[pulumi.Input[str]] = None,
+             auto_renew_period: Optional[pulumi.Input[int]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             expired_time: Optional[pulumi.Input[str]] = None,
+             instance_amount: Optional[pulumi.Input[int]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             offering_type: Optional[pulumi.Input[str]] = None,
+             operation_locks: Optional[pulumi.Input[Sequence[pulumi.Input['ReservedInstanceOperationLockArgs']]]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             period_unit: Optional[pulumi.Input[str]] = None,
+             platform: Optional[pulumi.Input[str]] = None,
+             renewal_status: Optional[pulumi.Input[str]] = None,
+             reserved_instance_name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             scope: Optional[pulumi.Input[str]] = None,
+             start_time: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allocation_status is None and 'allocationStatus' in kwargs:
+            allocation_status = kwargs['allocationStatus']
+        if auto_renew_period is None and 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if expired_time is None and 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if instance_amount is None and 'instanceAmount' in kwargs:
+            instance_amount = kwargs['instanceAmount']
+        if instance_type is None and 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if offering_type is None and 'offeringType' in kwargs:
+            offering_type = kwargs['offeringType']
+        if operation_locks is None and 'operationLocks' in kwargs:
+            operation_locks = kwargs['operationLocks']
+        if period_unit is None and 'periodUnit' in kwargs:
+            period_unit = kwargs['periodUnit']
+        if renewal_status is None and 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if reserved_instance_name is None and 'reservedInstanceName' in kwargs:
+            reserved_instance_name = kwargs['reservedInstanceName']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if allocation_status is not None:
-            pulumi.set(__self__, "allocation_status", allocation_status)
+            _setter("allocation_status", allocation_status)
         if auto_renew_period is not None:
-            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+            _setter("auto_renew_period", auto_renew_period)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if expired_time is not None:
-            pulumi.set(__self__, "expired_time", expired_time)
+            _setter("expired_time", expired_time)
         if instance_amount is not None:
-            pulumi.set(__self__, "instance_amount", instance_amount)
+            _setter("instance_amount", instance_amount)
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.""")
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if offering_type is not None:
-            pulumi.set(__self__, "offering_type", offering_type)
+            _setter("offering_type", offering_type)
         if operation_locks is not None:
-            pulumi.set(__self__, "operation_locks", operation_locks)
+            _setter("operation_locks", operation_locks)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if period_unit is not None:
-            pulumi.set(__self__, "period_unit", period_unit)
+            _setter("period_unit", period_unit)
         if platform is not None:
-            pulumi.set(__self__, "platform", platform)
+            _setter("platform", platform)
         if renewal_status is not None:
-            pulumi.set(__self__, "renewal_status", renewal_status)
+            _setter("renewal_status", renewal_status)
         if reserved_instance_name is not None:
-            pulumi.set(__self__, "reserved_instance_name", reserved_instance_name)
+            _setter("reserved_instance_name", reserved_instance_name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if scope is not None:
-            pulumi.set(__self__, "scope", scope)
+            _setter("scope", scope)
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="allocationStatus")
@@ -758,6 +896,10 @@ class ReservedInstance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ReservedInstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

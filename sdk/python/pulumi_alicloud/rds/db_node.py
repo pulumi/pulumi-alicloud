@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DbNodeArgs', 'DbNode']
@@ -23,9 +23,36 @@ class DbNodeArgs:
         :param pulumi.Input[str] db_instance_id: The Id of instance that can run database.
         :param pulumi.Input[str] zone_id: The zone ID of the node.
         """
-        pulumi.set(__self__, "class_code", class_code)
-        pulumi.set(__self__, "db_instance_id", db_instance_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        DbNodeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            class_code=class_code,
+            db_instance_id=db_instance_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             class_code: Optional[pulumi.Input[str]] = None,
+             db_instance_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if class_code is None and 'classCode' in kwargs:
+            class_code = kwargs['classCode']
+        if class_code is None:
+            raise TypeError("Missing 'class_code' argument")
+        if db_instance_id is None and 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if db_instance_id is None:
+            raise TypeError("Missing 'db_instance_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+
+        _setter("class_code", class_code)
+        _setter("db_instance_id", db_instance_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="classCode")
@@ -82,18 +109,51 @@ class _DbNodeState:
         :param pulumi.Input[str] node_role: The role of node.
         :param pulumi.Input[str] zone_id: The zone ID of the node.
         """
+        _DbNodeState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            class_code=class_code,
+            db_instance_id=db_instance_id,
+            node_id=node_id,
+            node_region_id=node_region_id,
+            node_role=node_role,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             class_code: Optional[pulumi.Input[str]] = None,
+             db_instance_id: Optional[pulumi.Input[str]] = None,
+             node_id: Optional[pulumi.Input[str]] = None,
+             node_region_id: Optional[pulumi.Input[str]] = None,
+             node_role: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if class_code is None and 'classCode' in kwargs:
+            class_code = kwargs['classCode']
+        if db_instance_id is None and 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if node_id is None and 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if node_region_id is None and 'nodeRegionId' in kwargs:
+            node_region_id = kwargs['nodeRegionId']
+        if node_role is None and 'nodeRole' in kwargs:
+            node_role = kwargs['nodeRole']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if class_code is not None:
-            pulumi.set(__self__, "class_code", class_code)
+            _setter("class_code", class_code)
         if db_instance_id is not None:
-            pulumi.set(__self__, "db_instance_id", db_instance_id)
+            _setter("db_instance_id", db_instance_id)
         if node_id is not None:
-            pulumi.set(__self__, "node_id", node_id)
+            _setter("node_id", node_id)
         if node_region_id is not None:
-            pulumi.set(__self__, "node_region_id", node_region_id)
+            _setter("node_region_id", node_region_id)
         if node_role is not None:
-            pulumi.set(__self__, "node_role", node_role)
+            _setter("node_role", node_role)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="classCode")
@@ -323,6 +383,10 @@ class DbNode(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DbNodeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

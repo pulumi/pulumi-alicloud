@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['PolardbxInstanceArgs', 'PolardbxInstance']
@@ -41,20 +41,89 @@ class PolardbxInstanceArgs:
         :param pulumi.Input[str] secondary_zone: Secondary availability zone.
         :param pulumi.Input[str] tertiary_zone: Third Availability Zone.
         """
-        pulumi.set(__self__, "cn_class", cn_class)
-        pulumi.set(__self__, "cn_node_count", cn_node_count)
-        pulumi.set(__self__, "dn_class", dn_class)
-        pulumi.set(__self__, "dn_node_count", dn_node_count)
-        pulumi.set(__self__, "primary_zone", primary_zone)
-        pulumi.set(__self__, "topology_type", topology_type)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        PolardbxInstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cn_class=cn_class,
+            cn_node_count=cn_node_count,
+            dn_class=dn_class,
+            dn_node_count=dn_node_count,
+            primary_zone=primary_zone,
+            topology_type=topology_type,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            resource_group_id=resource_group_id,
+            secondary_zone=secondary_zone,
+            tertiary_zone=tertiary_zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cn_class: Optional[pulumi.Input[str]] = None,
+             cn_node_count: Optional[pulumi.Input[int]] = None,
+             dn_class: Optional[pulumi.Input[str]] = None,
+             dn_node_count: Optional[pulumi.Input[int]] = None,
+             primary_zone: Optional[pulumi.Input[str]] = None,
+             topology_type: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             secondary_zone: Optional[pulumi.Input[str]] = None,
+             tertiary_zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cn_class is None and 'cnClass' in kwargs:
+            cn_class = kwargs['cnClass']
+        if cn_class is None:
+            raise TypeError("Missing 'cn_class' argument")
+        if cn_node_count is None and 'cnNodeCount' in kwargs:
+            cn_node_count = kwargs['cnNodeCount']
+        if cn_node_count is None:
+            raise TypeError("Missing 'cn_node_count' argument")
+        if dn_class is None and 'dnClass' in kwargs:
+            dn_class = kwargs['dnClass']
+        if dn_class is None:
+            raise TypeError("Missing 'dn_class' argument")
+        if dn_node_count is None and 'dnNodeCount' in kwargs:
+            dn_node_count = kwargs['dnNodeCount']
+        if dn_node_count is None:
+            raise TypeError("Missing 'dn_node_count' argument")
+        if primary_zone is None and 'primaryZone' in kwargs:
+            primary_zone = kwargs['primaryZone']
+        if primary_zone is None:
+            raise TypeError("Missing 'primary_zone' argument")
+        if topology_type is None and 'topologyType' in kwargs:
+            topology_type = kwargs['topologyType']
+        if topology_type is None:
+            raise TypeError("Missing 'topology_type' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if vswitch_id is None:
+            raise TypeError("Missing 'vswitch_id' argument")
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if secondary_zone is None and 'secondaryZone' in kwargs:
+            secondary_zone = kwargs['secondaryZone']
+        if tertiary_zone is None and 'tertiaryZone' in kwargs:
+            tertiary_zone = kwargs['tertiaryZone']
+
+        _setter("cn_class", cn_class)
+        _setter("cn_node_count", cn_node_count)
+        _setter("dn_class", dn_class)
+        _setter("dn_node_count", dn_node_count)
+        _setter("primary_zone", primary_zone)
+        _setter("topology_type", topology_type)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if secondary_zone is not None:
-            pulumi.set(__self__, "secondary_zone", secondary_zone)
+            _setter("secondary_zone", secondary_zone)
         if tertiary_zone is not None:
-            pulumi.set(__self__, "tertiary_zone", tertiary_zone)
+            _setter("tertiary_zone", tertiary_zone)
 
     @property
     @pulumi.getter(name="cnClass")
@@ -225,32 +294,91 @@ class _PolardbxInstanceState:
         :param pulumi.Input[str] vpc_id: The VPC ID.
         :param pulumi.Input[str] vswitch_id: The ID of the virtual switch.
         """
+        _PolardbxInstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cn_class=cn_class,
+            cn_node_count=cn_node_count,
+            create_time=create_time,
+            dn_class=dn_class,
+            dn_node_count=dn_node_count,
+            primary_zone=primary_zone,
+            resource_group_id=resource_group_id,
+            secondary_zone=secondary_zone,
+            status=status,
+            tertiary_zone=tertiary_zone,
+            topology_type=topology_type,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cn_class: Optional[pulumi.Input[str]] = None,
+             cn_node_count: Optional[pulumi.Input[int]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             dn_class: Optional[pulumi.Input[str]] = None,
+             dn_node_count: Optional[pulumi.Input[int]] = None,
+             primary_zone: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             secondary_zone: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tertiary_zone: Optional[pulumi.Input[str]] = None,
+             topology_type: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cn_class is None and 'cnClass' in kwargs:
+            cn_class = kwargs['cnClass']
+        if cn_node_count is None and 'cnNodeCount' in kwargs:
+            cn_node_count = kwargs['cnNodeCount']
+        if create_time is None and 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if dn_class is None and 'dnClass' in kwargs:
+            dn_class = kwargs['dnClass']
+        if dn_node_count is None and 'dnNodeCount' in kwargs:
+            dn_node_count = kwargs['dnNodeCount']
+        if primary_zone is None and 'primaryZone' in kwargs:
+            primary_zone = kwargs['primaryZone']
+        if resource_group_id is None and 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if secondary_zone is None and 'secondaryZone' in kwargs:
+            secondary_zone = kwargs['secondaryZone']
+        if tertiary_zone is None and 'tertiaryZone' in kwargs:
+            tertiary_zone = kwargs['tertiaryZone']
+        if topology_type is None and 'topologyType' in kwargs:
+            topology_type = kwargs['topologyType']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vswitch_id is None and 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if cn_class is not None:
-            pulumi.set(__self__, "cn_class", cn_class)
+            _setter("cn_class", cn_class)
         if cn_node_count is not None:
-            pulumi.set(__self__, "cn_node_count", cn_node_count)
+            _setter("cn_node_count", cn_node_count)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if dn_class is not None:
-            pulumi.set(__self__, "dn_class", dn_class)
+            _setter("dn_class", dn_class)
         if dn_node_count is not None:
-            pulumi.set(__self__, "dn_node_count", dn_node_count)
+            _setter("dn_node_count", dn_node_count)
         if primary_zone is not None:
-            pulumi.set(__self__, "primary_zone", primary_zone)
+            _setter("primary_zone", primary_zone)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if secondary_zone is not None:
-            pulumi.set(__self__, "secondary_zone", secondary_zone)
+            _setter("secondary_zone", secondary_zone)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tertiary_zone is not None:
-            pulumi.set(__self__, "tertiary_zone", tertiary_zone)
+            _setter("tertiary_zone", tertiary_zone)
         if topology_type is not None:
-            pulumi.set(__self__, "topology_type", topology_type)
+            _setter("topology_type", topology_type)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="cnClass")
@@ -554,6 +682,10 @@ class PolardbxInstance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PolardbxInstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

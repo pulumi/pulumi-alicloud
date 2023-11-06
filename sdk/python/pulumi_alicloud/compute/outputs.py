@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -47,10 +47,27 @@ class NestServiceInstanceCommodity(dict):
         :param int pay_period: Length of purchase.
         :param str pay_period_unit: Duration unit. Valid values: `Year`, `Month`, `Day`.
         """
+        NestServiceInstanceCommodity._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pay_period=pay_period,
+            pay_period_unit=pay_period_unit,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pay_period: Optional[int] = None,
+             pay_period_unit: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pay_period is None and 'payPeriod' in kwargs:
+            pay_period = kwargs['payPeriod']
+        if pay_period_unit is None and 'payPeriodUnit' in kwargs:
+            pay_period_unit = kwargs['payPeriodUnit']
+
         if pay_period is not None:
-            pulumi.set(__self__, "pay_period", pay_period)
+            _setter("pay_period", pay_period)
         if pay_period_unit is not None:
-            pulumi.set(__self__, "pay_period_unit", pay_period_unit)
+            _setter("pay_period_unit", pay_period_unit)
 
     @property
     @pulumi.getter(name="payPeriod")
@@ -103,14 +120,37 @@ class NestServiceInstanceOperationMetadata(dict):
         :param str operation_start_time: The start time of O&M.
         :param str resources: The list of imported resources.
         """
+        NestServiceInstanceOperationMetadata._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            operated_service_instance_id=operated_service_instance_id,
+            operation_end_time=operation_end_time,
+            operation_start_time=operation_start_time,
+            resources=resources,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             operated_service_instance_id: Optional[str] = None,
+             operation_end_time: Optional[str] = None,
+             operation_start_time: Optional[str] = None,
+             resources: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if operated_service_instance_id is None and 'operatedServiceInstanceId' in kwargs:
+            operated_service_instance_id = kwargs['operatedServiceInstanceId']
+        if operation_end_time is None and 'operationEndTime' in kwargs:
+            operation_end_time = kwargs['operationEndTime']
+        if operation_start_time is None and 'operationStartTime' in kwargs:
+            operation_start_time = kwargs['operationStartTime']
+
         if operated_service_instance_id is not None:
-            pulumi.set(__self__, "operated_service_instance_id", operated_service_instance_id)
+            _setter("operated_service_instance_id", operated_service_instance_id)
         if operation_end_time is not None:
-            pulumi.set(__self__, "operation_end_time", operation_end_time)
+            _setter("operation_end_time", operation_end_time)
         if operation_start_time is not None:
-            pulumi.set(__self__, "operation_start_time", operation_start_time)
+            _setter("operation_start_time", operation_start_time)
         if resources is not None:
-            pulumi.set(__self__, "resources", resources)
+            _setter("resources", resources)
 
     @property
     @pulumi.getter(name="operatedServiceInstanceId")
@@ -154,10 +194,23 @@ class GetNestServiceInstancesFilterResult(dict):
         :param str name: The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
         :param Sequence[str] values: Set of values that are accepted for the given field.
         """
+        GetNestServiceInstancesFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if values is not None:
-            pulumi.set(__self__, "values", values)
+            _setter("values", values)
 
     @property
     @pulumi.getter
@@ -209,20 +262,99 @@ class GetNestServiceInstancesServiceInstanceResult(dict):
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         :param str template_name: The name of the template.
         """
-        pulumi.set(__self__, "enable_instance_ops", enable_instance_ops)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "operated_service_instance_id", operated_service_instance_id)
-        pulumi.set(__self__, "operation_end_time", operation_end_time)
-        pulumi.set(__self__, "operation_start_time", operation_start_time)
-        pulumi.set(__self__, "parameters", parameters)
-        pulumi.set(__self__, "resources", resources)
-        pulumi.set(__self__, "service_instance_id", service_instance_id)
-        pulumi.set(__self__, "service_instance_name", service_instance_name)
-        pulumi.set(__self__, "services", services)
-        pulumi.set(__self__, "source", source)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "template_name", template_name)
+        GetNestServiceInstancesServiceInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enable_instance_ops=enable_instance_ops,
+            id=id,
+            operated_service_instance_id=operated_service_instance_id,
+            operation_end_time=operation_end_time,
+            operation_start_time=operation_start_time,
+            parameters=parameters,
+            resources=resources,
+            service_instance_id=service_instance_id,
+            service_instance_name=service_instance_name,
+            services=services,
+            source=source,
+            status=status,
+            tags=tags,
+            template_name=template_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enable_instance_ops: Optional[bool] = None,
+             id: Optional[str] = None,
+             operated_service_instance_id: Optional[str] = None,
+             operation_end_time: Optional[str] = None,
+             operation_start_time: Optional[str] = None,
+             parameters: Optional[str] = None,
+             resources: Optional[str] = None,
+             service_instance_id: Optional[str] = None,
+             service_instance_name: Optional[str] = None,
+             services: Optional[Sequence['outputs.GetNestServiceInstancesServiceInstanceServiceResult']] = None,
+             source: Optional[str] = None,
+             status: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             template_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_instance_ops is None and 'enableInstanceOps' in kwargs:
+            enable_instance_ops = kwargs['enableInstanceOps']
+        if enable_instance_ops is None:
+            raise TypeError("Missing 'enable_instance_ops' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if operated_service_instance_id is None and 'operatedServiceInstanceId' in kwargs:
+            operated_service_instance_id = kwargs['operatedServiceInstanceId']
+        if operated_service_instance_id is None:
+            raise TypeError("Missing 'operated_service_instance_id' argument")
+        if operation_end_time is None and 'operationEndTime' in kwargs:
+            operation_end_time = kwargs['operationEndTime']
+        if operation_end_time is None:
+            raise TypeError("Missing 'operation_end_time' argument")
+        if operation_start_time is None and 'operationStartTime' in kwargs:
+            operation_start_time = kwargs['operationStartTime']
+        if operation_start_time is None:
+            raise TypeError("Missing 'operation_start_time' argument")
+        if parameters is None:
+            raise TypeError("Missing 'parameters' argument")
+        if resources is None:
+            raise TypeError("Missing 'resources' argument")
+        if service_instance_id is None and 'serviceInstanceId' in kwargs:
+            service_instance_id = kwargs['serviceInstanceId']
+        if service_instance_id is None:
+            raise TypeError("Missing 'service_instance_id' argument")
+        if service_instance_name is None and 'serviceInstanceName' in kwargs:
+            service_instance_name = kwargs['serviceInstanceName']
+        if service_instance_name is None:
+            raise TypeError("Missing 'service_instance_name' argument")
+        if services is None:
+            raise TypeError("Missing 'services' argument")
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if template_name is None and 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+        if template_name is None:
+            raise TypeError("Missing 'template_name' argument")
+
+        _setter("enable_instance_ops", enable_instance_ops)
+        _setter("id", id)
+        _setter("operated_service_instance_id", operated_service_instance_id)
+        _setter("operation_end_time", operation_end_time)
+        _setter("operation_start_time", operation_start_time)
+        _setter("parameters", parameters)
+        _setter("resources", resources)
+        _setter("service_instance_id", service_instance_id)
+        _setter("service_instance_name", service_instance_name)
+        _setter("services", services)
+        _setter("source", source)
+        _setter("status", status)
+        _setter("tags", tags)
+        _setter("template_name", template_name)
 
     @property
     @pulumi.getter(name="enableInstanceOps")
@@ -362,16 +494,81 @@ class GetNestServiceInstancesServiceInstanceServiceResult(dict):
         :param str version: The version of the service.
         :param str version_name: The version name of the service.
         """
-        pulumi.set(__self__, "deploy_type", deploy_type)
-        pulumi.set(__self__, "publish_time", publish_time)
-        pulumi.set(__self__, "service_id", service_id)
-        pulumi.set(__self__, "service_infos", service_infos)
-        pulumi.set(__self__, "service_type", service_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "supplier_name", supplier_name)
-        pulumi.set(__self__, "supplier_url", supplier_url)
-        pulumi.set(__self__, "version", version)
-        pulumi.set(__self__, "version_name", version_name)
+        GetNestServiceInstancesServiceInstanceServiceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            deploy_type=deploy_type,
+            publish_time=publish_time,
+            service_id=service_id,
+            service_infos=service_infos,
+            service_type=service_type,
+            status=status,
+            supplier_name=supplier_name,
+            supplier_url=supplier_url,
+            version=version,
+            version_name=version_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             deploy_type: Optional[str] = None,
+             publish_time: Optional[str] = None,
+             service_id: Optional[str] = None,
+             service_infos: Optional[Sequence['outputs.GetNestServiceInstancesServiceInstanceServiceServiceInfoResult']] = None,
+             service_type: Optional[str] = None,
+             status: Optional[str] = None,
+             supplier_name: Optional[str] = None,
+             supplier_url: Optional[str] = None,
+             version: Optional[str] = None,
+             version_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if deploy_type is None and 'deployType' in kwargs:
+            deploy_type = kwargs['deployType']
+        if deploy_type is None:
+            raise TypeError("Missing 'deploy_type' argument")
+        if publish_time is None and 'publishTime' in kwargs:
+            publish_time = kwargs['publishTime']
+        if publish_time is None:
+            raise TypeError("Missing 'publish_time' argument")
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if service_id is None:
+            raise TypeError("Missing 'service_id' argument")
+        if service_infos is None and 'serviceInfos' in kwargs:
+            service_infos = kwargs['serviceInfos']
+        if service_infos is None:
+            raise TypeError("Missing 'service_infos' argument")
+        if service_type is None and 'serviceType' in kwargs:
+            service_type = kwargs['serviceType']
+        if service_type is None:
+            raise TypeError("Missing 'service_type' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if supplier_name is None and 'supplierName' in kwargs:
+            supplier_name = kwargs['supplierName']
+        if supplier_name is None:
+            raise TypeError("Missing 'supplier_name' argument")
+        if supplier_url is None and 'supplierUrl' in kwargs:
+            supplier_url = kwargs['supplierUrl']
+        if supplier_url is None:
+            raise TypeError("Missing 'supplier_url' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+        if version_name is None and 'versionName' in kwargs:
+            version_name = kwargs['versionName']
+        if version_name is None:
+            raise TypeError("Missing 'version_name' argument")
+
+        _setter("deploy_type", deploy_type)
+        _setter("publish_time", publish_time)
+        _setter("service_id", service_id)
+        _setter("service_infos", service_infos)
+        _setter("service_type", service_type)
+        _setter("status", status)
+        _setter("supplier_name", supplier_name)
+        _setter("supplier_url", supplier_url)
+        _setter("version", version)
+        _setter("version_name", version_name)
 
     @property
     @pulumi.getter(name="deployType")
@@ -467,10 +664,37 @@ class GetNestServiceInstancesServiceInstanceServiceServiceInfoResult(dict):
         :param str name: The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
         :param str short_description: The short description of the service.
         """
-        pulumi.set(__self__, "image", image)
-        pulumi.set(__self__, "locale", locale)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "short_description", short_description)
+        GetNestServiceInstancesServiceInstanceServiceServiceInfoResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            image=image,
+            locale=locale,
+            name=name,
+            short_description=short_description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             image: Optional[str] = None,
+             locale: Optional[str] = None,
+             name: Optional[str] = None,
+             short_description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if image is None:
+            raise TypeError("Missing 'image' argument")
+        if locale is None:
+            raise TypeError("Missing 'locale' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if short_description is None and 'shortDescription' in kwargs:
+            short_description = kwargs['shortDescription']
+        if short_description is None:
+            raise TypeError("Missing 'short_description' argument")
+
+        _setter("image", image)
+        _setter("locale", locale)
+        _setter("name", name)
+        _setter("short_description", short_description)
 
     @property
     @pulumi.getter
