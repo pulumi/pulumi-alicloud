@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Global Accelerator (GA) Basic Accelerate IPs of the current Alibaba Cloud user.
@@ -137,12 +136,6 @@ func (o GetBasicAccelerateIpsResultOutput) ToGetBasicAccelerateIpsResultOutput()
 
 func (o GetBasicAccelerateIpsResultOutput) ToGetBasicAccelerateIpsResultOutputWithContext(ctx context.Context) GetBasicAccelerateIpsResultOutput {
 	return o
-}
-
-func (o GetBasicAccelerateIpsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBasicAccelerateIpsResult] {
-	return pulumix.Output[GetBasicAccelerateIpsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The address of the Basic Accelerate IP.

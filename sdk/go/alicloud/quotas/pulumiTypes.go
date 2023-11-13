@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i ApplicationInfoDimensionArgs) ToApplicationInfoDimensionOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationInfoDimensionOutput)
 }
 
-func (i ApplicationInfoDimensionArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationInfoDimension] {
-	return pulumix.Output[ApplicationInfoDimension]{
-		OutputState: i.ToApplicationInfoDimensionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApplicationInfoDimensionArrayInput is an input type that accepts ApplicationInfoDimensionArray and ApplicationInfoDimensionArrayOutput values.
 // You can construct a concrete instance of `ApplicationInfoDimensionArrayInput` via:
 //
@@ -78,12 +71,6 @@ func (i ApplicationInfoDimensionArray) ToApplicationInfoDimensionArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationInfoDimensionArrayOutput)
 }
 
-func (i ApplicationInfoDimensionArray) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationInfoDimension] {
-	return pulumix.Output[[]ApplicationInfoDimension]{
-		OutputState: i.ToApplicationInfoDimensionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApplicationInfoDimensionOutput struct{ *pulumi.OutputState }
 
 func (ApplicationInfoDimensionOutput) ElementType() reflect.Type {
@@ -96,12 +83,6 @@ func (o ApplicationInfoDimensionOutput) ToApplicationInfoDimensionOutput() Appli
 
 func (o ApplicationInfoDimensionOutput) ToApplicationInfoDimensionOutputWithContext(ctx context.Context) ApplicationInfoDimensionOutput {
 	return o
-}
-
-func (o ApplicationInfoDimensionOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationInfoDimension] {
-	return pulumix.Output[ApplicationInfoDimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationInfoDimensionOutput) Key() pulumi.StringPtrOutput {
@@ -124,12 +105,6 @@ func (o ApplicationInfoDimensionArrayOutput) ToApplicationInfoDimensionArrayOutp
 
 func (o ApplicationInfoDimensionArrayOutput) ToApplicationInfoDimensionArrayOutputWithContext(ctx context.Context) ApplicationInfoDimensionArrayOutput {
 	return o
-}
-
-func (o ApplicationInfoDimensionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationInfoDimension] {
-	return pulumix.Output[[]ApplicationInfoDimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationInfoDimensionArrayOutput) Index(i pulumi.IntInput) ApplicationInfoDimensionOutput {
@@ -175,12 +150,6 @@ func (i QuotaAlarmQuotaDimensionArgs) ToQuotaAlarmQuotaDimensionOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(QuotaAlarmQuotaDimensionOutput)
 }
 
-func (i QuotaAlarmQuotaDimensionArgs) ToOutput(ctx context.Context) pulumix.Output[QuotaAlarmQuotaDimension] {
-	return pulumix.Output[QuotaAlarmQuotaDimension]{
-		OutputState: i.ToQuotaAlarmQuotaDimensionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // QuotaAlarmQuotaDimensionArrayInput is an input type that accepts QuotaAlarmQuotaDimensionArray and QuotaAlarmQuotaDimensionArrayOutput values.
 // You can construct a concrete instance of `QuotaAlarmQuotaDimensionArrayInput` via:
 //
@@ -206,12 +175,6 @@ func (i QuotaAlarmQuotaDimensionArray) ToQuotaAlarmQuotaDimensionArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(QuotaAlarmQuotaDimensionArrayOutput)
 }
 
-func (i QuotaAlarmQuotaDimensionArray) ToOutput(ctx context.Context) pulumix.Output[[]QuotaAlarmQuotaDimension] {
-	return pulumix.Output[[]QuotaAlarmQuotaDimension]{
-		OutputState: i.ToQuotaAlarmQuotaDimensionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type QuotaAlarmQuotaDimensionOutput struct{ *pulumi.OutputState }
 
 func (QuotaAlarmQuotaDimensionOutput) ElementType() reflect.Type {
@@ -224,12 +187,6 @@ func (o QuotaAlarmQuotaDimensionOutput) ToQuotaAlarmQuotaDimensionOutput() Quota
 
 func (o QuotaAlarmQuotaDimensionOutput) ToQuotaAlarmQuotaDimensionOutputWithContext(ctx context.Context) QuotaAlarmQuotaDimensionOutput {
 	return o
-}
-
-func (o QuotaAlarmQuotaDimensionOutput) ToOutput(ctx context.Context) pulumix.Output[QuotaAlarmQuotaDimension] {
-	return pulumix.Output[QuotaAlarmQuotaDimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Key of quota_dimensions.
@@ -254,12 +211,6 @@ func (o QuotaAlarmQuotaDimensionArrayOutput) ToQuotaAlarmQuotaDimensionArrayOutp
 
 func (o QuotaAlarmQuotaDimensionArrayOutput) ToQuotaAlarmQuotaDimensionArrayOutputWithContext(ctx context.Context) QuotaAlarmQuotaDimensionArrayOutput {
 	return o
-}
-
-func (o QuotaAlarmQuotaDimensionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]QuotaAlarmQuotaDimension] {
-	return pulumix.Output[[]QuotaAlarmQuotaDimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QuotaAlarmQuotaDimensionArrayOutput) Index(i pulumi.IntInput) QuotaAlarmQuotaDimensionOutput {
@@ -305,12 +256,6 @@ func (i QuotaApplicationDimensionArgs) ToQuotaApplicationDimensionOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(QuotaApplicationDimensionOutput)
 }
 
-func (i QuotaApplicationDimensionArgs) ToOutput(ctx context.Context) pulumix.Output[QuotaApplicationDimension] {
-	return pulumix.Output[QuotaApplicationDimension]{
-		OutputState: i.ToQuotaApplicationDimensionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // QuotaApplicationDimensionArrayInput is an input type that accepts QuotaApplicationDimensionArray and QuotaApplicationDimensionArrayOutput values.
 // You can construct a concrete instance of `QuotaApplicationDimensionArrayInput` via:
 //
@@ -336,12 +281,6 @@ func (i QuotaApplicationDimensionArray) ToQuotaApplicationDimensionArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(QuotaApplicationDimensionArrayOutput)
 }
 
-func (i QuotaApplicationDimensionArray) ToOutput(ctx context.Context) pulumix.Output[[]QuotaApplicationDimension] {
-	return pulumix.Output[[]QuotaApplicationDimension]{
-		OutputState: i.ToQuotaApplicationDimensionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type QuotaApplicationDimensionOutput struct{ *pulumi.OutputState }
 
 func (QuotaApplicationDimensionOutput) ElementType() reflect.Type {
@@ -354,12 +293,6 @@ func (o QuotaApplicationDimensionOutput) ToQuotaApplicationDimensionOutput() Quo
 
 func (o QuotaApplicationDimensionOutput) ToQuotaApplicationDimensionOutputWithContext(ctx context.Context) QuotaApplicationDimensionOutput {
 	return o
-}
-
-func (o QuotaApplicationDimensionOutput) ToOutput(ctx context.Context) pulumix.Output[QuotaApplicationDimension] {
-	return pulumix.Output[QuotaApplicationDimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Key.
@@ -384,12 +317,6 @@ func (o QuotaApplicationDimensionArrayOutput) ToQuotaApplicationDimensionArrayOu
 
 func (o QuotaApplicationDimensionArrayOutput) ToQuotaApplicationDimensionArrayOutputWithContext(ctx context.Context) QuotaApplicationDimensionArrayOutput {
 	return o
-}
-
-func (o QuotaApplicationDimensionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]QuotaApplicationDimension] {
-	return pulumix.Output[[]QuotaApplicationDimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QuotaApplicationDimensionArrayOutput) Index(i pulumi.IntInput) QuotaApplicationDimensionOutput {
@@ -435,12 +362,6 @@ func (i TemplateQuotaDimensionArgs) ToTemplateQuotaDimensionOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(TemplateQuotaDimensionOutput)
 }
 
-func (i TemplateQuotaDimensionArgs) ToOutput(ctx context.Context) pulumix.Output[TemplateQuotaDimension] {
-	return pulumix.Output[TemplateQuotaDimension]{
-		OutputState: i.ToTemplateQuotaDimensionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TemplateQuotaDimensionArrayInput is an input type that accepts TemplateQuotaDimensionArray and TemplateQuotaDimensionArrayOutput values.
 // You can construct a concrete instance of `TemplateQuotaDimensionArrayInput` via:
 //
@@ -466,12 +387,6 @@ func (i TemplateQuotaDimensionArray) ToTemplateQuotaDimensionArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(TemplateQuotaDimensionArrayOutput)
 }
 
-func (i TemplateQuotaDimensionArray) ToOutput(ctx context.Context) pulumix.Output[[]TemplateQuotaDimension] {
-	return pulumix.Output[[]TemplateQuotaDimension]{
-		OutputState: i.ToTemplateQuotaDimensionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TemplateQuotaDimensionOutput struct{ *pulumi.OutputState }
 
 func (TemplateQuotaDimensionOutput) ElementType() reflect.Type {
@@ -484,12 +399,6 @@ func (o TemplateQuotaDimensionOutput) ToTemplateQuotaDimensionOutput() TemplateQ
 
 func (o TemplateQuotaDimensionOutput) ToTemplateQuotaDimensionOutputWithContext(ctx context.Context) TemplateQuotaDimensionOutput {
 	return o
-}
-
-func (o TemplateQuotaDimensionOutput) ToOutput(ctx context.Context) pulumix.Output[TemplateQuotaDimension] {
-	return pulumix.Output[TemplateQuotaDimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Key of quota_dimensions.
@@ -514,12 +423,6 @@ func (o TemplateQuotaDimensionArrayOutput) ToTemplateQuotaDimensionArrayOutput()
 
 func (o TemplateQuotaDimensionArrayOutput) ToTemplateQuotaDimensionArrayOutputWithContext(ctx context.Context) TemplateQuotaDimensionArrayOutput {
 	return o
-}
-
-func (o TemplateQuotaDimensionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TemplateQuotaDimension] {
-	return pulumix.Output[[]TemplateQuotaDimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TemplateQuotaDimensionArrayOutput) Index(i pulumi.IntInput) TemplateQuotaDimensionOutput {
@@ -589,12 +492,6 @@ func (i GetApplicationInfosApplicationArgs) ToGetApplicationInfosApplicationOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationInfosApplicationOutput)
 }
 
-func (i GetApplicationInfosApplicationArgs) ToOutput(ctx context.Context) pulumix.Output[GetApplicationInfosApplication] {
-	return pulumix.Output[GetApplicationInfosApplication]{
-		OutputState: i.ToGetApplicationInfosApplicationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetApplicationInfosApplicationArrayInput is an input type that accepts GetApplicationInfosApplicationArray and GetApplicationInfosApplicationArrayOutput values.
 // You can construct a concrete instance of `GetApplicationInfosApplicationArrayInput` via:
 //
@@ -620,12 +517,6 @@ func (i GetApplicationInfosApplicationArray) ToGetApplicationInfosApplicationArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationInfosApplicationArrayOutput)
 }
 
-func (i GetApplicationInfosApplicationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationInfosApplication] {
-	return pulumix.Output[[]GetApplicationInfosApplication]{
-		OutputState: i.ToGetApplicationInfosApplicationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetApplicationInfosApplicationOutput struct{ *pulumi.OutputState }
 
 func (GetApplicationInfosApplicationOutput) ElementType() reflect.Type {
@@ -638,12 +529,6 @@ func (o GetApplicationInfosApplicationOutput) ToGetApplicationInfosApplicationOu
 
 func (o GetApplicationInfosApplicationOutput) ToGetApplicationInfosApplicationOutputWithContext(ctx context.Context) GetApplicationInfosApplicationOutput {
 	return o
-}
-
-func (o GetApplicationInfosApplicationOutput) ToOutput(ctx context.Context) pulumix.Output[GetApplicationInfosApplication] {
-	return pulumix.Output[GetApplicationInfosApplication]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetApplicationInfosApplicationOutput) ApplicationId() pulumi.StringOutput {
@@ -724,12 +609,6 @@ func (o GetApplicationInfosApplicationArrayOutput) ToGetApplicationInfosApplicat
 	return o
 }
 
-func (o GetApplicationInfosApplicationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationInfosApplication] {
-	return pulumix.Output[[]GetApplicationInfosApplication]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetApplicationInfosApplicationArrayOutput) Index(i pulumi.IntInput) GetApplicationInfosApplicationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationInfosApplication {
 		return vs[0].([]GetApplicationInfosApplication)[vs[1].(int)]
@@ -769,12 +648,6 @@ func (i GetApplicationInfosApplicationDimensionArgs) ToGetApplicationInfosApplic
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationInfosApplicationDimensionOutput)
 }
 
-func (i GetApplicationInfosApplicationDimensionArgs) ToOutput(ctx context.Context) pulumix.Output[GetApplicationInfosApplicationDimension] {
-	return pulumix.Output[GetApplicationInfosApplicationDimension]{
-		OutputState: i.ToGetApplicationInfosApplicationDimensionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetApplicationInfosApplicationDimensionArrayInput is an input type that accepts GetApplicationInfosApplicationDimensionArray and GetApplicationInfosApplicationDimensionArrayOutput values.
 // You can construct a concrete instance of `GetApplicationInfosApplicationDimensionArrayInput` via:
 //
@@ -800,12 +673,6 @@ func (i GetApplicationInfosApplicationDimensionArray) ToGetApplicationInfosAppli
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationInfosApplicationDimensionArrayOutput)
 }
 
-func (i GetApplicationInfosApplicationDimensionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationInfosApplicationDimension] {
-	return pulumix.Output[[]GetApplicationInfosApplicationDimension]{
-		OutputState: i.ToGetApplicationInfosApplicationDimensionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetApplicationInfosApplicationDimensionOutput struct{ *pulumi.OutputState }
 
 func (GetApplicationInfosApplicationDimensionOutput) ElementType() reflect.Type {
@@ -818,12 +685,6 @@ func (o GetApplicationInfosApplicationDimensionOutput) ToGetApplicationInfosAppl
 
 func (o GetApplicationInfosApplicationDimensionOutput) ToGetApplicationInfosApplicationDimensionOutputWithContext(ctx context.Context) GetApplicationInfosApplicationDimensionOutput {
 	return o
-}
-
-func (o GetApplicationInfosApplicationDimensionOutput) ToOutput(ctx context.Context) pulumix.Output[GetApplicationInfosApplicationDimension] {
-	return pulumix.Output[GetApplicationInfosApplicationDimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetApplicationInfosApplicationDimensionOutput) Key() pulumi.StringOutput {
@@ -846,12 +707,6 @@ func (o GetApplicationInfosApplicationDimensionArrayOutput) ToGetApplicationInfo
 
 func (o GetApplicationInfosApplicationDimensionArrayOutput) ToGetApplicationInfosApplicationDimensionArrayOutputWithContext(ctx context.Context) GetApplicationInfosApplicationDimensionArrayOutput {
 	return o
-}
-
-func (o GetApplicationInfosApplicationDimensionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationInfosApplicationDimension] {
-	return pulumix.Output[[]GetApplicationInfosApplicationDimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetApplicationInfosApplicationDimensionArrayOutput) Index(i pulumi.IntInput) GetApplicationInfosApplicationDimensionOutput {
@@ -893,12 +748,6 @@ func (i GetApplicationInfosDimensionArgs) ToGetApplicationInfosDimensionOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationInfosDimensionOutput)
 }
 
-func (i GetApplicationInfosDimensionArgs) ToOutput(ctx context.Context) pulumix.Output[GetApplicationInfosDimension] {
-	return pulumix.Output[GetApplicationInfosDimension]{
-		OutputState: i.ToGetApplicationInfosDimensionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetApplicationInfosDimensionArrayInput is an input type that accepts GetApplicationInfosDimensionArray and GetApplicationInfosDimensionArrayOutput values.
 // You can construct a concrete instance of `GetApplicationInfosDimensionArrayInput` via:
 //
@@ -924,12 +773,6 @@ func (i GetApplicationInfosDimensionArray) ToGetApplicationInfosDimensionArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationInfosDimensionArrayOutput)
 }
 
-func (i GetApplicationInfosDimensionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationInfosDimension] {
-	return pulumix.Output[[]GetApplicationInfosDimension]{
-		OutputState: i.ToGetApplicationInfosDimensionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetApplicationInfosDimensionOutput struct{ *pulumi.OutputState }
 
 func (GetApplicationInfosDimensionOutput) ElementType() reflect.Type {
@@ -942,12 +785,6 @@ func (o GetApplicationInfosDimensionOutput) ToGetApplicationInfosDimensionOutput
 
 func (o GetApplicationInfosDimensionOutput) ToGetApplicationInfosDimensionOutputWithContext(ctx context.Context) GetApplicationInfosDimensionOutput {
 	return o
-}
-
-func (o GetApplicationInfosDimensionOutput) ToOutput(ctx context.Context) pulumix.Output[GetApplicationInfosDimension] {
-	return pulumix.Output[GetApplicationInfosDimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetApplicationInfosDimensionOutput) Key() pulumi.StringPtrOutput {
@@ -970,12 +807,6 @@ func (o GetApplicationInfosDimensionArrayOutput) ToGetApplicationInfosDimensionA
 
 func (o GetApplicationInfosDimensionArrayOutput) ToGetApplicationInfosDimensionArrayOutputWithContext(ctx context.Context) GetApplicationInfosDimensionArrayOutput {
 	return o
-}
-
-func (o GetApplicationInfosDimensionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetApplicationInfosDimension] {
-	return pulumix.Output[[]GetApplicationInfosDimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetApplicationInfosDimensionArrayOutput) Index(i pulumi.IntInput) GetApplicationInfosDimensionOutput {
@@ -1049,12 +880,6 @@ func (i GetQuotaAlarmsAlarmArgs) ToGetQuotaAlarmsAlarmOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetQuotaAlarmsAlarmOutput)
 }
 
-func (i GetQuotaAlarmsAlarmArgs) ToOutput(ctx context.Context) pulumix.Output[GetQuotaAlarmsAlarm] {
-	return pulumix.Output[GetQuotaAlarmsAlarm]{
-		OutputState: i.ToGetQuotaAlarmsAlarmOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetQuotaAlarmsAlarmArrayInput is an input type that accepts GetQuotaAlarmsAlarmArray and GetQuotaAlarmsAlarmArrayOutput values.
 // You can construct a concrete instance of `GetQuotaAlarmsAlarmArrayInput` via:
 //
@@ -1080,12 +905,6 @@ func (i GetQuotaAlarmsAlarmArray) ToGetQuotaAlarmsAlarmArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetQuotaAlarmsAlarmArrayOutput)
 }
 
-func (i GetQuotaAlarmsAlarmArray) ToOutput(ctx context.Context) pulumix.Output[[]GetQuotaAlarmsAlarm] {
-	return pulumix.Output[[]GetQuotaAlarmsAlarm]{
-		OutputState: i.ToGetQuotaAlarmsAlarmArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetQuotaAlarmsAlarmOutput struct{ *pulumi.OutputState }
 
 func (GetQuotaAlarmsAlarmOutput) ElementType() reflect.Type {
@@ -1098,12 +917,6 @@ func (o GetQuotaAlarmsAlarmOutput) ToGetQuotaAlarmsAlarmOutput() GetQuotaAlarmsA
 
 func (o GetQuotaAlarmsAlarmOutput) ToGetQuotaAlarmsAlarmOutputWithContext(ctx context.Context) GetQuotaAlarmsAlarmOutput {
 	return o
-}
-
-func (o GetQuotaAlarmsAlarmOutput) ToOutput(ctx context.Context) pulumix.Output[GetQuotaAlarmsAlarm] {
-	return pulumix.Output[GetQuotaAlarmsAlarm]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The first ID of the resource.
@@ -1165,12 +978,6 @@ func (o GetQuotaAlarmsAlarmArrayOutput) ToGetQuotaAlarmsAlarmArrayOutputWithCont
 	return o
 }
 
-func (o GetQuotaAlarmsAlarmArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetQuotaAlarmsAlarm] {
-	return pulumix.Output[[]GetQuotaAlarmsAlarm]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetQuotaAlarmsAlarmArrayOutput) Index(i pulumi.IntInput) GetQuotaAlarmsAlarmOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetQuotaAlarmsAlarm {
 		return vs[0].([]GetQuotaAlarmsAlarm)[vs[1].(int)]
@@ -1214,12 +1021,6 @@ func (i GetQuotaAlarmsAlarmQuotaDimensionArgs) ToGetQuotaAlarmsAlarmQuotaDimensi
 	return pulumi.ToOutputWithContext(ctx, i).(GetQuotaAlarmsAlarmQuotaDimensionOutput)
 }
 
-func (i GetQuotaAlarmsAlarmQuotaDimensionArgs) ToOutput(ctx context.Context) pulumix.Output[GetQuotaAlarmsAlarmQuotaDimension] {
-	return pulumix.Output[GetQuotaAlarmsAlarmQuotaDimension]{
-		OutputState: i.ToGetQuotaAlarmsAlarmQuotaDimensionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetQuotaAlarmsAlarmQuotaDimensionArrayInput is an input type that accepts GetQuotaAlarmsAlarmQuotaDimensionArray and GetQuotaAlarmsAlarmQuotaDimensionArrayOutput values.
 // You can construct a concrete instance of `GetQuotaAlarmsAlarmQuotaDimensionArrayInput` via:
 //
@@ -1245,12 +1046,6 @@ func (i GetQuotaAlarmsAlarmQuotaDimensionArray) ToGetQuotaAlarmsAlarmQuotaDimens
 	return pulumi.ToOutputWithContext(ctx, i).(GetQuotaAlarmsAlarmQuotaDimensionArrayOutput)
 }
 
-func (i GetQuotaAlarmsAlarmQuotaDimensionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetQuotaAlarmsAlarmQuotaDimension] {
-	return pulumix.Output[[]GetQuotaAlarmsAlarmQuotaDimension]{
-		OutputState: i.ToGetQuotaAlarmsAlarmQuotaDimensionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetQuotaAlarmsAlarmQuotaDimensionOutput struct{ *pulumi.OutputState }
 
 func (GetQuotaAlarmsAlarmQuotaDimensionOutput) ElementType() reflect.Type {
@@ -1263,12 +1058,6 @@ func (o GetQuotaAlarmsAlarmQuotaDimensionOutput) ToGetQuotaAlarmsAlarmQuotaDimen
 
 func (o GetQuotaAlarmsAlarmQuotaDimensionOutput) ToGetQuotaAlarmsAlarmQuotaDimensionOutputWithContext(ctx context.Context) GetQuotaAlarmsAlarmQuotaDimensionOutput {
 	return o
-}
-
-func (o GetQuotaAlarmsAlarmQuotaDimensionOutput) ToOutput(ctx context.Context) pulumix.Output[GetQuotaAlarmsAlarmQuotaDimension] {
-	return pulumix.Output[GetQuotaAlarmsAlarmQuotaDimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The key of quota_dimensions.
@@ -1293,12 +1082,6 @@ func (o GetQuotaAlarmsAlarmQuotaDimensionArrayOutput) ToGetQuotaAlarmsAlarmQuota
 
 func (o GetQuotaAlarmsAlarmQuotaDimensionArrayOutput) ToGetQuotaAlarmsAlarmQuotaDimensionArrayOutputWithContext(ctx context.Context) GetQuotaAlarmsAlarmQuotaDimensionArrayOutput {
 	return o
-}
-
-func (o GetQuotaAlarmsAlarmQuotaDimensionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetQuotaAlarmsAlarmQuotaDimension] {
-	return pulumix.Output[[]GetQuotaAlarmsAlarmQuotaDimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetQuotaAlarmsAlarmQuotaDimensionArrayOutput) Index(i pulumi.IntInput) GetQuotaAlarmsAlarmQuotaDimensionOutput {
@@ -1344,12 +1127,6 @@ func (i GetQuotaAlarmsQuotaDimensionArgs) ToGetQuotaAlarmsQuotaDimensionOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetQuotaAlarmsQuotaDimensionOutput)
 }
 
-func (i GetQuotaAlarmsQuotaDimensionArgs) ToOutput(ctx context.Context) pulumix.Output[GetQuotaAlarmsQuotaDimension] {
-	return pulumix.Output[GetQuotaAlarmsQuotaDimension]{
-		OutputState: i.ToGetQuotaAlarmsQuotaDimensionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetQuotaAlarmsQuotaDimensionArrayInput is an input type that accepts GetQuotaAlarmsQuotaDimensionArray and GetQuotaAlarmsQuotaDimensionArrayOutput values.
 // You can construct a concrete instance of `GetQuotaAlarmsQuotaDimensionArrayInput` via:
 //
@@ -1375,12 +1152,6 @@ func (i GetQuotaAlarmsQuotaDimensionArray) ToGetQuotaAlarmsQuotaDimensionArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetQuotaAlarmsQuotaDimensionArrayOutput)
 }
 
-func (i GetQuotaAlarmsQuotaDimensionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetQuotaAlarmsQuotaDimension] {
-	return pulumix.Output[[]GetQuotaAlarmsQuotaDimension]{
-		OutputState: i.ToGetQuotaAlarmsQuotaDimensionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetQuotaAlarmsQuotaDimensionOutput struct{ *pulumi.OutputState }
 
 func (GetQuotaAlarmsQuotaDimensionOutput) ElementType() reflect.Type {
@@ -1393,12 +1164,6 @@ func (o GetQuotaAlarmsQuotaDimensionOutput) ToGetQuotaAlarmsQuotaDimensionOutput
 
 func (o GetQuotaAlarmsQuotaDimensionOutput) ToGetQuotaAlarmsQuotaDimensionOutputWithContext(ctx context.Context) GetQuotaAlarmsQuotaDimensionOutput {
 	return o
-}
-
-func (o GetQuotaAlarmsQuotaDimensionOutput) ToOutput(ctx context.Context) pulumix.Output[GetQuotaAlarmsQuotaDimension] {
-	return pulumix.Output[GetQuotaAlarmsQuotaDimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The key of quota_dimensions.
@@ -1423,12 +1188,6 @@ func (o GetQuotaAlarmsQuotaDimensionArrayOutput) ToGetQuotaAlarmsQuotaDimensionA
 
 func (o GetQuotaAlarmsQuotaDimensionArrayOutput) ToGetQuotaAlarmsQuotaDimensionArrayOutputWithContext(ctx context.Context) GetQuotaAlarmsQuotaDimensionArrayOutput {
 	return o
-}
-
-func (o GetQuotaAlarmsQuotaDimensionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetQuotaAlarmsQuotaDimension] {
-	return pulumix.Output[[]GetQuotaAlarmsQuotaDimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetQuotaAlarmsQuotaDimensionArrayOutput) Index(i pulumi.IntInput) GetQuotaAlarmsQuotaDimensionOutput {
@@ -1530,12 +1289,6 @@ func (i GetQuotaApplicationsApplicationArgs) ToGetQuotaApplicationsApplicationOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetQuotaApplicationsApplicationOutput)
 }
 
-func (i GetQuotaApplicationsApplicationArgs) ToOutput(ctx context.Context) pulumix.Output[GetQuotaApplicationsApplication] {
-	return pulumix.Output[GetQuotaApplicationsApplication]{
-		OutputState: i.ToGetQuotaApplicationsApplicationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetQuotaApplicationsApplicationArrayInput is an input type that accepts GetQuotaApplicationsApplicationArray and GetQuotaApplicationsApplicationArrayOutput values.
 // You can construct a concrete instance of `GetQuotaApplicationsApplicationArrayInput` via:
 //
@@ -1561,12 +1314,6 @@ func (i GetQuotaApplicationsApplicationArray) ToGetQuotaApplicationsApplicationA
 	return pulumi.ToOutputWithContext(ctx, i).(GetQuotaApplicationsApplicationArrayOutput)
 }
 
-func (i GetQuotaApplicationsApplicationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetQuotaApplicationsApplication] {
-	return pulumix.Output[[]GetQuotaApplicationsApplication]{
-		OutputState: i.ToGetQuotaApplicationsApplicationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetQuotaApplicationsApplicationOutput struct{ *pulumi.OutputState }
 
 func (GetQuotaApplicationsApplicationOutput) ElementType() reflect.Type {
@@ -1579,12 +1326,6 @@ func (o GetQuotaApplicationsApplicationOutput) ToGetQuotaApplicationsApplication
 
 func (o GetQuotaApplicationsApplicationOutput) ToGetQuotaApplicationsApplicationOutputWithContext(ctx context.Context) GetQuotaApplicationsApplicationOutput {
 	return o
-}
-
-func (o GetQuotaApplicationsApplicationOutput) ToOutput(ctx context.Context) pulumix.Output[GetQuotaApplicationsApplication] {
-	return pulumix.Output[GetQuotaApplicationsApplication]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The first ID of the resource.
@@ -1683,12 +1424,6 @@ func (o GetQuotaApplicationsApplicationArrayOutput) ToGetQuotaApplicationsApplic
 	return o
 }
 
-func (o GetQuotaApplicationsApplicationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetQuotaApplicationsApplication] {
-	return pulumix.Output[[]GetQuotaApplicationsApplication]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetQuotaApplicationsApplicationArrayOutput) Index(i pulumi.IntInput) GetQuotaApplicationsApplicationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetQuotaApplicationsApplication {
 		return vs[0].([]GetQuotaApplicationsApplication)[vs[1].(int)]
@@ -1732,12 +1467,6 @@ func (i GetQuotaApplicationsApplicationDimensionArgs) ToGetQuotaApplicationsAppl
 	return pulumi.ToOutputWithContext(ctx, i).(GetQuotaApplicationsApplicationDimensionOutput)
 }
 
-func (i GetQuotaApplicationsApplicationDimensionArgs) ToOutput(ctx context.Context) pulumix.Output[GetQuotaApplicationsApplicationDimension] {
-	return pulumix.Output[GetQuotaApplicationsApplicationDimension]{
-		OutputState: i.ToGetQuotaApplicationsApplicationDimensionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetQuotaApplicationsApplicationDimensionArrayInput is an input type that accepts GetQuotaApplicationsApplicationDimensionArray and GetQuotaApplicationsApplicationDimensionArrayOutput values.
 // You can construct a concrete instance of `GetQuotaApplicationsApplicationDimensionArrayInput` via:
 //
@@ -1763,12 +1492,6 @@ func (i GetQuotaApplicationsApplicationDimensionArray) ToGetQuotaApplicationsApp
 	return pulumi.ToOutputWithContext(ctx, i).(GetQuotaApplicationsApplicationDimensionArrayOutput)
 }
 
-func (i GetQuotaApplicationsApplicationDimensionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetQuotaApplicationsApplicationDimension] {
-	return pulumix.Output[[]GetQuotaApplicationsApplicationDimension]{
-		OutputState: i.ToGetQuotaApplicationsApplicationDimensionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetQuotaApplicationsApplicationDimensionOutput struct{ *pulumi.OutputState }
 
 func (GetQuotaApplicationsApplicationDimensionOutput) ElementType() reflect.Type {
@@ -1781,12 +1504,6 @@ func (o GetQuotaApplicationsApplicationDimensionOutput) ToGetQuotaApplicationsAp
 
 func (o GetQuotaApplicationsApplicationDimensionOutput) ToGetQuotaApplicationsApplicationDimensionOutputWithContext(ctx context.Context) GetQuotaApplicationsApplicationDimensionOutput {
 	return o
-}
-
-func (o GetQuotaApplicationsApplicationDimensionOutput) ToOutput(ctx context.Context) pulumix.Output[GetQuotaApplicationsApplicationDimension] {
-	return pulumix.Output[GetQuotaApplicationsApplicationDimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The key of dimensions.
@@ -1811,12 +1528,6 @@ func (o GetQuotaApplicationsApplicationDimensionArrayOutput) ToGetQuotaApplicati
 
 func (o GetQuotaApplicationsApplicationDimensionArrayOutput) ToGetQuotaApplicationsApplicationDimensionArrayOutputWithContext(ctx context.Context) GetQuotaApplicationsApplicationDimensionArrayOutput {
 	return o
-}
-
-func (o GetQuotaApplicationsApplicationDimensionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetQuotaApplicationsApplicationDimension] {
-	return pulumix.Output[[]GetQuotaApplicationsApplicationDimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetQuotaApplicationsApplicationDimensionArrayOutput) Index(i pulumi.IntInput) GetQuotaApplicationsApplicationDimensionOutput {
@@ -1862,12 +1573,6 @@ func (i GetQuotaApplicationsDimensionArgs) ToGetQuotaApplicationsDimensionOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetQuotaApplicationsDimensionOutput)
 }
 
-func (i GetQuotaApplicationsDimensionArgs) ToOutput(ctx context.Context) pulumix.Output[GetQuotaApplicationsDimension] {
-	return pulumix.Output[GetQuotaApplicationsDimension]{
-		OutputState: i.ToGetQuotaApplicationsDimensionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetQuotaApplicationsDimensionArrayInput is an input type that accepts GetQuotaApplicationsDimensionArray and GetQuotaApplicationsDimensionArrayOutput values.
 // You can construct a concrete instance of `GetQuotaApplicationsDimensionArrayInput` via:
 //
@@ -1893,12 +1598,6 @@ func (i GetQuotaApplicationsDimensionArray) ToGetQuotaApplicationsDimensionArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetQuotaApplicationsDimensionArrayOutput)
 }
 
-func (i GetQuotaApplicationsDimensionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetQuotaApplicationsDimension] {
-	return pulumix.Output[[]GetQuotaApplicationsDimension]{
-		OutputState: i.ToGetQuotaApplicationsDimensionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetQuotaApplicationsDimensionOutput struct{ *pulumi.OutputState }
 
 func (GetQuotaApplicationsDimensionOutput) ElementType() reflect.Type {
@@ -1911,12 +1610,6 @@ func (o GetQuotaApplicationsDimensionOutput) ToGetQuotaApplicationsDimensionOutp
 
 func (o GetQuotaApplicationsDimensionOutput) ToGetQuotaApplicationsDimensionOutputWithContext(ctx context.Context) GetQuotaApplicationsDimensionOutput {
 	return o
-}
-
-func (o GetQuotaApplicationsDimensionOutput) ToOutput(ctx context.Context) pulumix.Output[GetQuotaApplicationsDimension] {
-	return pulumix.Output[GetQuotaApplicationsDimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The key of dimensions.
@@ -1941,12 +1634,6 @@ func (o GetQuotaApplicationsDimensionArrayOutput) ToGetQuotaApplicationsDimensio
 
 func (o GetQuotaApplicationsDimensionArrayOutput) ToGetQuotaApplicationsDimensionArrayOutputWithContext(ctx context.Context) GetQuotaApplicationsDimensionArrayOutput {
 	return o
-}
-
-func (o GetQuotaApplicationsDimensionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetQuotaApplicationsDimension] {
-	return pulumix.Output[[]GetQuotaApplicationsDimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetQuotaApplicationsDimensionArrayOutput) Index(i pulumi.IntInput) GetQuotaApplicationsDimensionOutput {
@@ -1992,12 +1679,6 @@ func (i GetQuotasDimensionArgs) ToGetQuotasDimensionOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetQuotasDimensionOutput)
 }
 
-func (i GetQuotasDimensionArgs) ToOutput(ctx context.Context) pulumix.Output[GetQuotasDimension] {
-	return pulumix.Output[GetQuotasDimension]{
-		OutputState: i.ToGetQuotasDimensionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetQuotasDimensionArrayInput is an input type that accepts GetQuotasDimensionArray and GetQuotasDimensionArrayOutput values.
 // You can construct a concrete instance of `GetQuotasDimensionArrayInput` via:
 //
@@ -2023,12 +1704,6 @@ func (i GetQuotasDimensionArray) ToGetQuotasDimensionArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetQuotasDimensionArrayOutput)
 }
 
-func (i GetQuotasDimensionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetQuotasDimension] {
-	return pulumix.Output[[]GetQuotasDimension]{
-		OutputState: i.ToGetQuotasDimensionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetQuotasDimensionOutput struct{ *pulumi.OutputState }
 
 func (GetQuotasDimensionOutput) ElementType() reflect.Type {
@@ -2041,12 +1716,6 @@ func (o GetQuotasDimensionOutput) ToGetQuotasDimensionOutput() GetQuotasDimensio
 
 func (o GetQuotasDimensionOutput) ToGetQuotasDimensionOutputWithContext(ctx context.Context) GetQuotasDimensionOutput {
 	return o
-}
-
-func (o GetQuotasDimensionOutput) ToOutput(ctx context.Context) pulumix.Output[GetQuotasDimension] {
-	return pulumix.Output[GetQuotasDimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The key of dimensions.
@@ -2071,12 +1740,6 @@ func (o GetQuotasDimensionArrayOutput) ToGetQuotasDimensionArrayOutput() GetQuot
 
 func (o GetQuotasDimensionArrayOutput) ToGetQuotasDimensionArrayOutputWithContext(ctx context.Context) GetQuotasDimensionArrayOutput {
 	return o
-}
-
-func (o GetQuotasDimensionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetQuotasDimension] {
-	return pulumix.Output[[]GetQuotasDimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetQuotasDimensionArrayOutput) Index(i pulumi.IntInput) GetQuotasDimensionOutput {
@@ -2166,12 +1829,6 @@ func (i GetQuotasQuotaArgs) ToGetQuotasQuotaOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetQuotasQuotaOutput)
 }
 
-func (i GetQuotasQuotaArgs) ToOutput(ctx context.Context) pulumix.Output[GetQuotasQuota] {
-	return pulumix.Output[GetQuotasQuota]{
-		OutputState: i.ToGetQuotasQuotaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetQuotasQuotaArrayInput is an input type that accepts GetQuotasQuotaArray and GetQuotasQuotaArrayOutput values.
 // You can construct a concrete instance of `GetQuotasQuotaArrayInput` via:
 //
@@ -2197,12 +1854,6 @@ func (i GetQuotasQuotaArray) ToGetQuotasQuotaArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetQuotasQuotaArrayOutput)
 }
 
-func (i GetQuotasQuotaArray) ToOutput(ctx context.Context) pulumix.Output[[]GetQuotasQuota] {
-	return pulumix.Output[[]GetQuotasQuota]{
-		OutputState: i.ToGetQuotasQuotaArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetQuotasQuotaOutput struct{ *pulumi.OutputState }
 
 func (GetQuotasQuotaOutput) ElementType() reflect.Type {
@@ -2215,12 +1866,6 @@ func (o GetQuotasQuotaOutput) ToGetQuotasQuotaOutput() GetQuotasQuotaOutput {
 
 func (o GetQuotasQuotaOutput) ToGetQuotasQuotaOutputWithContext(ctx context.Context) GetQuotasQuotaOutput {
 	return o
-}
-
-func (o GetQuotasQuotaOutput) ToOutput(ctx context.Context) pulumix.Output[GetQuotasQuota] {
-	return pulumix.Output[GetQuotasQuota]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Is the quota adjustable.
@@ -2300,12 +1945,6 @@ func (o GetQuotasQuotaArrayOutput) ToGetQuotasQuotaArrayOutput() GetQuotasQuotaA
 
 func (o GetQuotasQuotaArrayOutput) ToGetQuotasQuotaArrayOutputWithContext(ctx context.Context) GetQuotasQuotaArrayOutput {
 	return o
-}
-
-func (o GetQuotasQuotaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetQuotasQuota] {
-	return pulumix.Output[[]GetQuotasQuota]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetQuotasQuotaArrayOutput) Index(i pulumi.IntInput) GetQuotasQuotaOutput {

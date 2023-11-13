@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Firewall Vpc Firewall resource.
@@ -263,12 +262,6 @@ func (i *FirewallVpcFirewall) ToFirewallVpcFirewallOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallOutput)
 }
 
-func (i *FirewallVpcFirewall) ToOutput(ctx context.Context) pulumix.Output[*FirewallVpcFirewall] {
-	return pulumix.Output[*FirewallVpcFirewall]{
-		OutputState: i.ToFirewallVpcFirewallOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FirewallVpcFirewallArrayInput is an input type that accepts FirewallVpcFirewallArray and FirewallVpcFirewallArrayOutput values.
 // You can construct a concrete instance of `FirewallVpcFirewallArrayInput` via:
 //
@@ -292,12 +285,6 @@ func (i FirewallVpcFirewallArray) ToFirewallVpcFirewallArrayOutput() FirewallVpc
 
 func (i FirewallVpcFirewallArray) ToFirewallVpcFirewallArrayOutputWithContext(ctx context.Context) FirewallVpcFirewallArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallArrayOutput)
-}
-
-func (i FirewallVpcFirewallArray) ToOutput(ctx context.Context) pulumix.Output[[]*FirewallVpcFirewall] {
-	return pulumix.Output[[]*FirewallVpcFirewall]{
-		OutputState: i.ToFirewallVpcFirewallArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FirewallVpcFirewallMapInput is an input type that accepts FirewallVpcFirewallMap and FirewallVpcFirewallMapOutput values.
@@ -325,12 +312,6 @@ func (i FirewallVpcFirewallMap) ToFirewallVpcFirewallMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallMapOutput)
 }
 
-func (i FirewallVpcFirewallMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FirewallVpcFirewall] {
-	return pulumix.Output[map[string]*FirewallVpcFirewall]{
-		OutputState: i.ToFirewallVpcFirewallMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FirewallVpcFirewallOutput struct{ *pulumi.OutputState }
 
 func (FirewallVpcFirewallOutput) ElementType() reflect.Type {
@@ -343,12 +324,6 @@ func (o FirewallVpcFirewallOutput) ToFirewallVpcFirewallOutput() FirewallVpcFire
 
 func (o FirewallVpcFirewallOutput) ToFirewallVpcFirewallOutputWithContext(ctx context.Context) FirewallVpcFirewallOutput {
 	return o
-}
-
-func (o FirewallVpcFirewallOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallVpcFirewall] {
-	return pulumix.Output[*FirewallVpcFirewall]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Bandwidth specifications for high-speed channels. Unit: Mbps.
@@ -415,12 +390,6 @@ func (o FirewallVpcFirewallArrayOutput) ToFirewallVpcFirewallArrayOutputWithCont
 	return o
 }
 
-func (o FirewallVpcFirewallArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FirewallVpcFirewall] {
-	return pulumix.Output[[]*FirewallVpcFirewall]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FirewallVpcFirewallArrayOutput) Index(i pulumi.IntInput) FirewallVpcFirewallOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FirewallVpcFirewall {
 		return vs[0].([]*FirewallVpcFirewall)[vs[1].(int)]
@@ -439,12 +408,6 @@ func (o FirewallVpcFirewallMapOutput) ToFirewallVpcFirewallMapOutput() FirewallV
 
 func (o FirewallVpcFirewallMapOutput) ToFirewallVpcFirewallMapOutputWithContext(ctx context.Context) FirewallVpcFirewallMapOutput {
 	return o
-}
-
-func (o FirewallVpcFirewallMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FirewallVpcFirewall] {
-	return pulumix.Output[map[string]*FirewallVpcFirewall]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallVpcFirewallMapOutput) MapIndex(k pulumi.StringInput) FirewallVpcFirewallOutput {

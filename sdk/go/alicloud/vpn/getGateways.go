@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
@@ -157,12 +156,6 @@ func (o GetGatewaysResultOutput) ToGetGatewaysResultOutput() GetGatewaysResultOu
 
 func (o GetGatewaysResultOutput) ToGetGatewaysResultOutputWithContext(ctx context.Context) GetGatewaysResultOutput {
 	return o
-}
-
-func (o GetGatewaysResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGatewaysResult] {
-	return pulumix.Output[GetGatewaysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The business status of the VPN gateway.

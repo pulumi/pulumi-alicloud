@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list of ALIKAFKA Sasl acls in an Alibaba Cloud account according to the specified filters.
@@ -130,12 +129,6 @@ func (o GetSaslAclsResultOutput) ToGetSaslAclsResultOutput() GetSaslAclsResultOu
 
 func (o GetSaslAclsResultOutput) ToGetSaslAclsResultOutputWithContext(ctx context.Context) GetSaslAclsResultOutput {
 	return o
-}
-
-func (o GetSaslAclsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSaslAclsResult] {
-	return pulumix.Output[GetSaslAclsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource name of the sasl acl.

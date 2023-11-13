@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list of KMS KeyVersions in an Alibaba Cloud account according to the specified filters.
@@ -118,12 +117,6 @@ func (o GetKeyVersionsResultOutput) ToGetKeyVersionsResultOutput() GetKeyVersion
 
 func (o GetKeyVersionsResultOutput) ToGetKeyVersionsResultOutputWithContext(ctx context.Context) GetKeyVersionsResultOutput {
 	return o
-}
-
-func (o GetKeyVersionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetKeyVersionsResult] {
-	return pulumix.Output[GetKeyVersionsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

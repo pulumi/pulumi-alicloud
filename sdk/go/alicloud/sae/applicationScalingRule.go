@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Serverless App Engine (SAE) Application Scaling Rule resource.
@@ -348,12 +347,6 @@ func (i *ApplicationScalingRule) ToApplicationScalingRuleOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleOutput)
 }
 
-func (i *ApplicationScalingRule) ToOutput(ctx context.Context) pulumix.Output[*ApplicationScalingRule] {
-	return pulumix.Output[*ApplicationScalingRule]{
-		OutputState: i.ToApplicationScalingRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApplicationScalingRuleArrayInput is an input type that accepts ApplicationScalingRuleArray and ApplicationScalingRuleArrayOutput values.
 // You can construct a concrete instance of `ApplicationScalingRuleArrayInput` via:
 //
@@ -377,12 +370,6 @@ func (i ApplicationScalingRuleArray) ToApplicationScalingRuleArrayOutput() Appli
 
 func (i ApplicationScalingRuleArray) ToApplicationScalingRuleArrayOutputWithContext(ctx context.Context) ApplicationScalingRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleArrayOutput)
-}
-
-func (i ApplicationScalingRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationScalingRule] {
-	return pulumix.Output[[]*ApplicationScalingRule]{
-		OutputState: i.ToApplicationScalingRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ApplicationScalingRuleMapInput is an input type that accepts ApplicationScalingRuleMap and ApplicationScalingRuleMapOutput values.
@@ -410,12 +397,6 @@ func (i ApplicationScalingRuleMap) ToApplicationScalingRuleMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleMapOutput)
 }
 
-func (i ApplicationScalingRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationScalingRule] {
-	return pulumix.Output[map[string]*ApplicationScalingRule]{
-		OutputState: i.ToApplicationScalingRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApplicationScalingRuleOutput struct{ *pulumi.OutputState }
 
 func (ApplicationScalingRuleOutput) ElementType() reflect.Type {
@@ -428,12 +409,6 @@ func (o ApplicationScalingRuleOutput) ToApplicationScalingRuleOutput() Applicati
 
 func (o ApplicationScalingRuleOutput) ToApplicationScalingRuleOutputWithContext(ctx context.Context) ApplicationScalingRuleOutput {
 	return o
-}
-
-func (o ApplicationScalingRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationScalingRule] {
-	return pulumix.Output[*ApplicationScalingRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Application ID.
@@ -494,12 +469,6 @@ func (o ApplicationScalingRuleArrayOutput) ToApplicationScalingRuleArrayOutputWi
 	return o
 }
 
-func (o ApplicationScalingRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationScalingRule] {
-	return pulumix.Output[[]*ApplicationScalingRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApplicationScalingRuleArrayOutput) Index(i pulumi.IntInput) ApplicationScalingRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApplicationScalingRule {
 		return vs[0].([]*ApplicationScalingRule)[vs[1].(int)]
@@ -518,12 +487,6 @@ func (o ApplicationScalingRuleMapOutput) ToApplicationScalingRuleMapOutput() App
 
 func (o ApplicationScalingRuleMapOutput) ToApplicationScalingRuleMapOutputWithContext(ctx context.Context) ApplicationScalingRuleMapOutput {
 	return o
-}
-
-func (o ApplicationScalingRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationScalingRule] {
-	return pulumix.Output[map[string]*ApplicationScalingRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationScalingRuleMapOutput) MapIndex(k pulumi.StringInput) ApplicationScalingRuleOutput {

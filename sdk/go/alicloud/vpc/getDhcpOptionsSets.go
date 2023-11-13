@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Vpc Dhcp Options Sets of the current Alibaba Cloud user.
@@ -174,12 +173,6 @@ func (o GetDhcpOptionsSetsResultOutput) ToGetDhcpOptionsSetsResultOutput() GetDh
 
 func (o GetDhcpOptionsSetsResultOutput) ToGetDhcpOptionsSetsResultOutputWithContext(ctx context.Context) GetDhcpOptionsSetsResultOutput {
 	return o
-}
-
-func (o GetDhcpOptionsSetsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDhcpOptionsSetsResult] {
-	return pulumix.Output[GetDhcpOptionsSetsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDhcpOptionsSetsResultOutput) DhcpOptionsSetName() pulumi.StringPtrOutput {

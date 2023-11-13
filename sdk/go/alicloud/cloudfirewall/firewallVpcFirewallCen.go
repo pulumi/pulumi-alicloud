@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Firewall Vpc Firewall Cen resource.
@@ -234,12 +233,6 @@ func (i *FirewallVpcFirewallCen) ToFirewallVpcFirewallCenOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallCenOutput)
 }
 
-func (i *FirewallVpcFirewallCen) ToOutput(ctx context.Context) pulumix.Output[*FirewallVpcFirewallCen] {
-	return pulumix.Output[*FirewallVpcFirewallCen]{
-		OutputState: i.ToFirewallVpcFirewallCenOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FirewallVpcFirewallCenArrayInput is an input type that accepts FirewallVpcFirewallCenArray and FirewallVpcFirewallCenArrayOutput values.
 // You can construct a concrete instance of `FirewallVpcFirewallCenArrayInput` via:
 //
@@ -263,12 +256,6 @@ func (i FirewallVpcFirewallCenArray) ToFirewallVpcFirewallCenArrayOutput() Firew
 
 func (i FirewallVpcFirewallCenArray) ToFirewallVpcFirewallCenArrayOutputWithContext(ctx context.Context) FirewallVpcFirewallCenArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallCenArrayOutput)
-}
-
-func (i FirewallVpcFirewallCenArray) ToOutput(ctx context.Context) pulumix.Output[[]*FirewallVpcFirewallCen] {
-	return pulumix.Output[[]*FirewallVpcFirewallCen]{
-		OutputState: i.ToFirewallVpcFirewallCenArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FirewallVpcFirewallCenMapInput is an input type that accepts FirewallVpcFirewallCenMap and FirewallVpcFirewallCenMapOutput values.
@@ -296,12 +283,6 @@ func (i FirewallVpcFirewallCenMap) ToFirewallVpcFirewallCenMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallCenMapOutput)
 }
 
-func (i FirewallVpcFirewallCenMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FirewallVpcFirewallCen] {
-	return pulumix.Output[map[string]*FirewallVpcFirewallCen]{
-		OutputState: i.ToFirewallVpcFirewallCenMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FirewallVpcFirewallCenOutput struct{ *pulumi.OutputState }
 
 func (FirewallVpcFirewallCenOutput) ElementType() reflect.Type {
@@ -314,12 +295,6 @@ func (o FirewallVpcFirewallCenOutput) ToFirewallVpcFirewallCenOutput() FirewallV
 
 func (o FirewallVpcFirewallCenOutput) ToFirewallVpcFirewallCenOutputWithContext(ctx context.Context) FirewallVpcFirewallCenOutput {
 	return o
-}
-
-func (o FirewallVpcFirewallCenOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallVpcFirewallCen] {
-	return pulumix.Output[*FirewallVpcFirewallCen]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the CEN instance.
@@ -381,12 +356,6 @@ func (o FirewallVpcFirewallCenArrayOutput) ToFirewallVpcFirewallCenArrayOutputWi
 	return o
 }
 
-func (o FirewallVpcFirewallCenArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FirewallVpcFirewallCen] {
-	return pulumix.Output[[]*FirewallVpcFirewallCen]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FirewallVpcFirewallCenArrayOutput) Index(i pulumi.IntInput) FirewallVpcFirewallCenOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FirewallVpcFirewallCen {
 		return vs[0].([]*FirewallVpcFirewallCen)[vs[1].(int)]
@@ -405,12 +374,6 @@ func (o FirewallVpcFirewallCenMapOutput) ToFirewallVpcFirewallCenMapOutput() Fir
 
 func (o FirewallVpcFirewallCenMapOutput) ToFirewallVpcFirewallCenMapOutputWithContext(ctx context.Context) FirewallVpcFirewallCenMapOutput {
 	return o
-}
-
-func (o FirewallVpcFirewallCenMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FirewallVpcFirewallCen] {
-	return pulumix.Output[map[string]*FirewallVpcFirewallCen]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallVpcFirewallCenMapOutput) MapIndex(k pulumi.StringInput) FirewallVpcFirewallCenOutput {

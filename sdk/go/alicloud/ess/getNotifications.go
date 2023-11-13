@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides available notification resources.
@@ -115,12 +114,6 @@ func (o GetNotificationsResultOutput) ToGetNotificationsResultOutput() GetNotifi
 
 func (o GetNotificationsResultOutput) ToGetNotificationsResultOutputWithContext(ctx context.Context) GetNotificationsResultOutput {
 	return o
-}
-
-func (o GetNotificationsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetNotificationsResult] {
-	return pulumix.Output[GetNotificationsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -55,12 +54,6 @@ func (i StudioApplicationInstanceArgs) ToStudioApplicationInstanceOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(StudioApplicationInstanceOutput)
 }
 
-func (i StudioApplicationInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[StudioApplicationInstance] {
-	return pulumix.Output[StudioApplicationInstance]{
-		OutputState: i.ToStudioApplicationInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StudioApplicationInstanceArrayInput is an input type that accepts StudioApplicationInstanceArray and StudioApplicationInstanceArrayOutput values.
 // You can construct a concrete instance of `StudioApplicationInstanceArrayInput` via:
 //
@@ -86,12 +79,6 @@ func (i StudioApplicationInstanceArray) ToStudioApplicationInstanceArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(StudioApplicationInstanceArrayOutput)
 }
 
-func (i StudioApplicationInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]StudioApplicationInstance] {
-	return pulumix.Output[[]StudioApplicationInstance]{
-		OutputState: i.ToStudioApplicationInstanceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StudioApplicationInstanceOutput struct{ *pulumi.OutputState }
 
 func (StudioApplicationInstanceOutput) ElementType() reflect.Type {
@@ -104,12 +91,6 @@ func (o StudioApplicationInstanceOutput) ToStudioApplicationInstanceOutput() Stu
 
 func (o StudioApplicationInstanceOutput) ToStudioApplicationInstanceOutputWithContext(ctx context.Context) StudioApplicationInstanceOutput {
 	return o
-}
-
-func (o StudioApplicationInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[StudioApplicationInstance] {
-	return pulumix.Output[StudioApplicationInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the instance.
@@ -139,12 +120,6 @@ func (o StudioApplicationInstanceArrayOutput) ToStudioApplicationInstanceArrayOu
 
 func (o StudioApplicationInstanceArrayOutput) ToStudioApplicationInstanceArrayOutputWithContext(ctx context.Context) StudioApplicationInstanceArrayOutput {
 	return o
-}
-
-func (o StudioApplicationInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StudioApplicationInstance] {
-	return pulumix.Output[[]StudioApplicationInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StudioApplicationInstanceArrayOutput) Index(i pulumi.IntInput) StudioApplicationInstanceOutput {
@@ -214,12 +189,6 @@ func (i GetStudioApplicationsApplicationArgs) ToGetStudioApplicationsApplication
 	return pulumi.ToOutputWithContext(ctx, i).(GetStudioApplicationsApplicationOutput)
 }
 
-func (i GetStudioApplicationsApplicationArgs) ToOutput(ctx context.Context) pulumix.Output[GetStudioApplicationsApplication] {
-	return pulumix.Output[GetStudioApplicationsApplication]{
-		OutputState: i.ToGetStudioApplicationsApplicationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetStudioApplicationsApplicationArrayInput is an input type that accepts GetStudioApplicationsApplicationArray and GetStudioApplicationsApplicationArrayOutput values.
 // You can construct a concrete instance of `GetStudioApplicationsApplicationArrayInput` via:
 //
@@ -245,12 +214,6 @@ func (i GetStudioApplicationsApplicationArray) ToGetStudioApplicationsApplicatio
 	return pulumi.ToOutputWithContext(ctx, i).(GetStudioApplicationsApplicationArrayOutput)
 }
 
-func (i GetStudioApplicationsApplicationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetStudioApplicationsApplication] {
-	return pulumix.Output[[]GetStudioApplicationsApplication]{
-		OutputState: i.ToGetStudioApplicationsApplicationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetStudioApplicationsApplicationOutput struct{ *pulumi.OutputState }
 
 func (GetStudioApplicationsApplicationOutput) ElementType() reflect.Type {
@@ -263,12 +226,6 @@ func (o GetStudioApplicationsApplicationOutput) ToGetStudioApplicationsApplicati
 
 func (o GetStudioApplicationsApplicationOutput) ToGetStudioApplicationsApplicationOutputWithContext(ctx context.Context) GetStudioApplicationsApplicationOutput {
 	return o
-}
-
-func (o GetStudioApplicationsApplicationOutput) ToOutput(ctx context.Context) pulumix.Output[GetStudioApplicationsApplication] {
-	return pulumix.Output[GetStudioApplicationsApplication]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Application.
@@ -323,12 +280,6 @@ func (o GetStudioApplicationsApplicationArrayOutput) ToGetStudioApplicationsAppl
 
 func (o GetStudioApplicationsApplicationArrayOutput) ToGetStudioApplicationsApplicationArrayOutputWithContext(ctx context.Context) GetStudioApplicationsApplicationArrayOutput {
 	return o
-}
-
-func (o GetStudioApplicationsApplicationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetStudioApplicationsApplication] {
-	return pulumix.Output[[]GetStudioApplicationsApplication]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetStudioApplicationsApplicationArrayOutput) Index(i pulumi.IntInput) GetStudioApplicationsApplicationOutput {

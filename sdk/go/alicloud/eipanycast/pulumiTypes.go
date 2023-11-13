@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i AnycastEipAddressAttachmentPopLocationArgs) ToAnycastEipAddressAttachmen
 	return pulumi.ToOutputWithContext(ctx, i).(AnycastEipAddressAttachmentPopLocationOutput)
 }
 
-func (i AnycastEipAddressAttachmentPopLocationArgs) ToOutput(ctx context.Context) pulumix.Output[AnycastEipAddressAttachmentPopLocation] {
-	return pulumix.Output[AnycastEipAddressAttachmentPopLocation]{
-		OutputState: i.ToAnycastEipAddressAttachmentPopLocationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AnycastEipAddressAttachmentPopLocationArrayInput is an input type that accepts AnycastEipAddressAttachmentPopLocationArray and AnycastEipAddressAttachmentPopLocationArrayOutput values.
 // You can construct a concrete instance of `AnycastEipAddressAttachmentPopLocationArrayInput` via:
 //
@@ -78,12 +71,6 @@ func (i AnycastEipAddressAttachmentPopLocationArray) ToAnycastEipAddressAttachme
 	return pulumi.ToOutputWithContext(ctx, i).(AnycastEipAddressAttachmentPopLocationArrayOutput)
 }
 
-func (i AnycastEipAddressAttachmentPopLocationArray) ToOutput(ctx context.Context) pulumix.Output[[]AnycastEipAddressAttachmentPopLocation] {
-	return pulumix.Output[[]AnycastEipAddressAttachmentPopLocation]{
-		OutputState: i.ToAnycastEipAddressAttachmentPopLocationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AnycastEipAddressAttachmentPopLocationOutput struct{ *pulumi.OutputState }
 
 func (AnycastEipAddressAttachmentPopLocationOutput) ElementType() reflect.Type {
@@ -96,12 +83,6 @@ func (o AnycastEipAddressAttachmentPopLocationOutput) ToAnycastEipAddressAttachm
 
 func (o AnycastEipAddressAttachmentPopLocationOutput) ToAnycastEipAddressAttachmentPopLocationOutputWithContext(ctx context.Context) AnycastEipAddressAttachmentPopLocationOutput {
 	return o
-}
-
-func (o AnycastEipAddressAttachmentPopLocationOutput) ToOutput(ctx context.Context) pulumix.Output[AnycastEipAddressAttachmentPopLocation] {
-	return pulumix.Output[AnycastEipAddressAttachmentPopLocation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas.
@@ -121,12 +102,6 @@ func (o AnycastEipAddressAttachmentPopLocationArrayOutput) ToAnycastEipAddressAt
 
 func (o AnycastEipAddressAttachmentPopLocationArrayOutput) ToAnycastEipAddressAttachmentPopLocationArrayOutputWithContext(ctx context.Context) AnycastEipAddressAttachmentPopLocationArrayOutput {
 	return o
-}
-
-func (o AnycastEipAddressAttachmentPopLocationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AnycastEipAddressAttachmentPopLocation] {
-	return pulumix.Output[[]AnycastEipAddressAttachmentPopLocation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AnycastEipAddressAttachmentPopLocationArrayOutput) Index(i pulumi.IntInput) AnycastEipAddressAttachmentPopLocationOutput {
@@ -220,12 +195,6 @@ func (i GetAnycastEipAddressesAddressArgs) ToGetAnycastEipAddressesAddressOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetAnycastEipAddressesAddressOutput)
 }
 
-func (i GetAnycastEipAddressesAddressArgs) ToOutput(ctx context.Context) pulumix.Output[GetAnycastEipAddressesAddress] {
-	return pulumix.Output[GetAnycastEipAddressesAddress]{
-		OutputState: i.ToGetAnycastEipAddressesAddressOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAnycastEipAddressesAddressArrayInput is an input type that accepts GetAnycastEipAddressesAddressArray and GetAnycastEipAddressesAddressArrayOutput values.
 // You can construct a concrete instance of `GetAnycastEipAddressesAddressArrayInput` via:
 //
@@ -251,12 +220,6 @@ func (i GetAnycastEipAddressesAddressArray) ToGetAnycastEipAddressesAddressArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetAnycastEipAddressesAddressArrayOutput)
 }
 
-func (i GetAnycastEipAddressesAddressArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAnycastEipAddressesAddress] {
-	return pulumix.Output[[]GetAnycastEipAddressesAddress]{
-		OutputState: i.ToGetAnycastEipAddressesAddressArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAnycastEipAddressesAddressOutput struct{ *pulumi.OutputState }
 
 func (GetAnycastEipAddressesAddressOutput) ElementType() reflect.Type {
@@ -269,12 +232,6 @@ func (o GetAnycastEipAddressesAddressOutput) ToGetAnycastEipAddressesAddressOutp
 
 func (o GetAnycastEipAddressesAddressOutput) ToGetAnycastEipAddressesAddressOutputWithContext(ctx context.Context) GetAnycastEipAddressesAddressOutput {
 	return o
-}
-
-func (o GetAnycastEipAddressesAddressOutput) ToOutput(ctx context.Context) pulumix.Output[GetAnycastEipAddressesAddress] {
-	return pulumix.Output[GetAnycastEipAddressesAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Anycast EIP instance account ID.
@@ -363,12 +320,6 @@ func (o GetAnycastEipAddressesAddressArrayOutput) ToGetAnycastEipAddressesAddres
 	return o
 }
 
-func (o GetAnycastEipAddressesAddressArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAnycastEipAddressesAddress] {
-	return pulumix.Output[[]GetAnycastEipAddressesAddress]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetAnycastEipAddressesAddressArrayOutput) Index(i pulumi.IntInput) GetAnycastEipAddressesAddressOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAnycastEipAddressesAddress {
 		return vs[0].([]GetAnycastEipAddressesAddress)[vs[1].(int)]
@@ -420,12 +371,6 @@ func (i GetAnycastEipAddressesAddressAnycastEipBindInfoListArgs) ToGetAnycastEip
 	return pulumi.ToOutputWithContext(ctx, i).(GetAnycastEipAddressesAddressAnycastEipBindInfoListOutput)
 }
 
-func (i GetAnycastEipAddressesAddressAnycastEipBindInfoListArgs) ToOutput(ctx context.Context) pulumix.Output[GetAnycastEipAddressesAddressAnycastEipBindInfoList] {
-	return pulumix.Output[GetAnycastEipAddressesAddressAnycastEipBindInfoList]{
-		OutputState: i.ToGetAnycastEipAddressesAddressAnycastEipBindInfoListOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAnycastEipAddressesAddressAnycastEipBindInfoListArrayInput is an input type that accepts GetAnycastEipAddressesAddressAnycastEipBindInfoListArray and GetAnycastEipAddressesAddressAnycastEipBindInfoListArrayOutput values.
 // You can construct a concrete instance of `GetAnycastEipAddressesAddressAnycastEipBindInfoListArrayInput` via:
 //
@@ -451,12 +396,6 @@ func (i GetAnycastEipAddressesAddressAnycastEipBindInfoListArray) ToGetAnycastEi
 	return pulumi.ToOutputWithContext(ctx, i).(GetAnycastEipAddressesAddressAnycastEipBindInfoListArrayOutput)
 }
 
-func (i GetAnycastEipAddressesAddressAnycastEipBindInfoListArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAnycastEipAddressesAddressAnycastEipBindInfoList] {
-	return pulumix.Output[[]GetAnycastEipAddressesAddressAnycastEipBindInfoList]{
-		OutputState: i.ToGetAnycastEipAddressesAddressAnycastEipBindInfoListArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAnycastEipAddressesAddressAnycastEipBindInfoListOutput struct{ *pulumi.OutputState }
 
 func (GetAnycastEipAddressesAddressAnycastEipBindInfoListOutput) ElementType() reflect.Type {
@@ -469,12 +408,6 @@ func (o GetAnycastEipAddressesAddressAnycastEipBindInfoListOutput) ToGetAnycastE
 
 func (o GetAnycastEipAddressesAddressAnycastEipBindInfoListOutput) ToGetAnycastEipAddressesAddressAnycastEipBindInfoListOutputWithContext(ctx context.Context) GetAnycastEipAddressesAddressAnycastEipBindInfoListOutput {
 	return o
-}
-
-func (o GetAnycastEipAddressesAddressAnycastEipBindInfoListOutput) ToOutput(ctx context.Context) pulumix.Output[GetAnycastEipAddressesAddressAnycastEipBindInfoList] {
-	return pulumix.Output[GetAnycastEipAddressesAddressAnycastEipBindInfoList]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The bound cloud resource instance ID.
@@ -509,12 +442,6 @@ func (o GetAnycastEipAddressesAddressAnycastEipBindInfoListArrayOutput) ToGetAny
 
 func (o GetAnycastEipAddressesAddressAnycastEipBindInfoListArrayOutput) ToGetAnycastEipAddressesAddressAnycastEipBindInfoListArrayOutputWithContext(ctx context.Context) GetAnycastEipAddressesAddressAnycastEipBindInfoListArrayOutput {
 	return o
-}
-
-func (o GetAnycastEipAddressesAddressAnycastEipBindInfoListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAnycastEipAddressesAddressAnycastEipBindInfoList] {
-	return pulumix.Output[[]GetAnycastEipAddressesAddressAnycastEipBindInfoList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAnycastEipAddressesAddressAnycastEipBindInfoListArrayOutput) Index(i pulumi.IntInput) GetAnycastEipAddressesAddressAnycastEipBindInfoListOutput {

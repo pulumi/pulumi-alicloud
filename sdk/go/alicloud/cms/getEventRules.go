@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cms Event Rules of the current Alibaba Cloud user.
@@ -140,12 +139,6 @@ func (o GetEventRulesResultOutput) ToGetEventRulesResultOutput() GetEventRulesRe
 
 func (o GetEventRulesResultOutput) ToGetEventRulesResultOutputWithContext(ctx context.Context) GetEventRulesResultOutput {
 	return o
-}
-
-func (o GetEventRulesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEventRulesResult] {
-	return pulumix.Output[GetEventRulesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

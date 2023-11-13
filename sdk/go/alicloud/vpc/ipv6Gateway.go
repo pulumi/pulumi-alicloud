@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Vpc Ipv6 Gateway resource. Gateway Based on Internet Protocol Version 6.
@@ -272,12 +271,6 @@ func (i *Ipv6Gateway) ToIpv6GatewayOutputWithContext(ctx context.Context) Ipv6Ga
 	return pulumi.ToOutputWithContext(ctx, i).(Ipv6GatewayOutput)
 }
 
-func (i *Ipv6Gateway) ToOutput(ctx context.Context) pulumix.Output[*Ipv6Gateway] {
-	return pulumix.Output[*Ipv6Gateway]{
-		OutputState: i.ToIpv6GatewayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Ipv6GatewayArrayInput is an input type that accepts Ipv6GatewayArray and Ipv6GatewayArrayOutput values.
 // You can construct a concrete instance of `Ipv6GatewayArrayInput` via:
 //
@@ -301,12 +294,6 @@ func (i Ipv6GatewayArray) ToIpv6GatewayArrayOutput() Ipv6GatewayArrayOutput {
 
 func (i Ipv6GatewayArray) ToIpv6GatewayArrayOutputWithContext(ctx context.Context) Ipv6GatewayArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(Ipv6GatewayArrayOutput)
-}
-
-func (i Ipv6GatewayArray) ToOutput(ctx context.Context) pulumix.Output[[]*Ipv6Gateway] {
-	return pulumix.Output[[]*Ipv6Gateway]{
-		OutputState: i.ToIpv6GatewayArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Ipv6GatewayMapInput is an input type that accepts Ipv6GatewayMap and Ipv6GatewayMapOutput values.
@@ -334,12 +321,6 @@ func (i Ipv6GatewayMap) ToIpv6GatewayMapOutputWithContext(ctx context.Context) I
 	return pulumi.ToOutputWithContext(ctx, i).(Ipv6GatewayMapOutput)
 }
 
-func (i Ipv6GatewayMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Ipv6Gateway] {
-	return pulumix.Output[map[string]*Ipv6Gateway]{
-		OutputState: i.ToIpv6GatewayMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type Ipv6GatewayOutput struct{ *pulumi.OutputState }
 
 func (Ipv6GatewayOutput) ElementType() reflect.Type {
@@ -352,12 +333,6 @@ func (o Ipv6GatewayOutput) ToIpv6GatewayOutput() Ipv6GatewayOutput {
 
 func (o Ipv6GatewayOutput) ToIpv6GatewayOutputWithContext(ctx context.Context) Ipv6GatewayOutput {
 	return o
-}
-
-func (o Ipv6GatewayOutput) ToOutput(ctx context.Context) pulumix.Output[*Ipv6Gateway] {
-	return pulumix.Output[*Ipv6Gateway]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The status of the IPv6 gateway.
@@ -436,12 +411,6 @@ func (o Ipv6GatewayArrayOutput) ToIpv6GatewayArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o Ipv6GatewayArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Ipv6Gateway] {
-	return pulumix.Output[[]*Ipv6Gateway]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o Ipv6GatewayArrayOutput) Index(i pulumi.IntInput) Ipv6GatewayOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Ipv6Gateway {
 		return vs[0].([]*Ipv6Gateway)[vs[1].(int)]
@@ -460,12 +429,6 @@ func (o Ipv6GatewayMapOutput) ToIpv6GatewayMapOutput() Ipv6GatewayMapOutput {
 
 func (o Ipv6GatewayMapOutput) ToIpv6GatewayMapOutputWithContext(ctx context.Context) Ipv6GatewayMapOutput {
 	return o
-}
-
-func (o Ipv6GatewayMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Ipv6Gateway] {
-	return pulumix.Output[map[string]*Ipv6Gateway]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o Ipv6GatewayMapOutput) MapIndex(k pulumi.StringInput) Ipv6GatewayOutput {

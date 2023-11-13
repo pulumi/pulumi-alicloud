@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the identity of the current user.
@@ -86,12 +85,6 @@ func (o GetCallerIdentityResultOutput) ToGetCallerIdentityResultOutput() GetCall
 
 func (o GetCallerIdentityResultOutput) ToGetCallerIdentityResultOutputWithContext(ctx context.Context) GetCallerIdentityResultOutput {
 	return o
-}
-
-func (o GetCallerIdentityResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCallerIdentityResult] {
-	return pulumix.Output[GetCallerIdentityResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Account ID.

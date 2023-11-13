@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Dts Migration Jobs of the current Alibaba Cloud user.
@@ -122,12 +121,6 @@ func (o GetMigrationJobsResultOutput) ToGetMigrationJobsResultOutput() GetMigrat
 
 func (o GetMigrationJobsResultOutput) ToGetMigrationJobsResultOutputWithContext(ctx context.Context) GetMigrationJobsResultOutput {
 	return o
-}
-
-func (o GetMigrationJobsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetMigrationJobsResult] {
-	return pulumix.Output[GetMigrationJobsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetMigrationJobsResultOutput) EnableDetails() pulumi.BoolPtrOutput {

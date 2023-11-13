@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ApsaraDB for MyBase Dedicated Host Account resource.
@@ -255,12 +254,6 @@ func (i *DedicatedHostAccount) ToDedicatedHostAccountOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(DedicatedHostAccountOutput)
 }
 
-func (i *DedicatedHostAccount) ToOutput(ctx context.Context) pulumix.Output[*DedicatedHostAccount] {
-	return pulumix.Output[*DedicatedHostAccount]{
-		OutputState: i.ToDedicatedHostAccountOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DedicatedHostAccountArrayInput is an input type that accepts DedicatedHostAccountArray and DedicatedHostAccountArrayOutput values.
 // You can construct a concrete instance of `DedicatedHostAccountArrayInput` via:
 //
@@ -284,12 +277,6 @@ func (i DedicatedHostAccountArray) ToDedicatedHostAccountArrayOutput() Dedicated
 
 func (i DedicatedHostAccountArray) ToDedicatedHostAccountArrayOutputWithContext(ctx context.Context) DedicatedHostAccountArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DedicatedHostAccountArrayOutput)
-}
-
-func (i DedicatedHostAccountArray) ToOutput(ctx context.Context) pulumix.Output[[]*DedicatedHostAccount] {
-	return pulumix.Output[[]*DedicatedHostAccount]{
-		OutputState: i.ToDedicatedHostAccountArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DedicatedHostAccountMapInput is an input type that accepts DedicatedHostAccountMap and DedicatedHostAccountMapOutput values.
@@ -317,12 +304,6 @@ func (i DedicatedHostAccountMap) ToDedicatedHostAccountMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(DedicatedHostAccountMapOutput)
 }
 
-func (i DedicatedHostAccountMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DedicatedHostAccount] {
-	return pulumix.Output[map[string]*DedicatedHostAccount]{
-		OutputState: i.ToDedicatedHostAccountMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DedicatedHostAccountOutput struct{ *pulumi.OutputState }
 
 func (DedicatedHostAccountOutput) ElementType() reflect.Type {
@@ -335,12 +316,6 @@ func (o DedicatedHostAccountOutput) ToDedicatedHostAccountOutput() DedicatedHost
 
 func (o DedicatedHostAccountOutput) ToDedicatedHostAccountOutputWithContext(ctx context.Context) DedicatedHostAccountOutput {
 	return o
-}
-
-func (o DedicatedHostAccountOutput) ToOutput(ctx context.Context) pulumix.Output[*DedicatedHostAccount] {
-	return pulumix.Output[*DedicatedHostAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the Dedicated host account. The account name must be 2 to 16 characters in length, contain lower case letters, digits, and underscore(_). At the same time, the name must start with a letter and end with a letter or number.
@@ -377,12 +352,6 @@ func (o DedicatedHostAccountArrayOutput) ToDedicatedHostAccountArrayOutputWithCo
 	return o
 }
 
-func (o DedicatedHostAccountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DedicatedHostAccount] {
-	return pulumix.Output[[]*DedicatedHostAccount]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DedicatedHostAccountArrayOutput) Index(i pulumi.IntInput) DedicatedHostAccountOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DedicatedHostAccount {
 		return vs[0].([]*DedicatedHostAccount)[vs[1].(int)]
@@ -401,12 +370,6 @@ func (o DedicatedHostAccountMapOutput) ToDedicatedHostAccountMapOutput() Dedicat
 
 func (o DedicatedHostAccountMapOutput) ToDedicatedHostAccountMapOutputWithContext(ctx context.Context) DedicatedHostAccountMapOutput {
 	return o
-}
-
-func (o DedicatedHostAccountMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DedicatedHostAccount] {
-	return pulumix.Output[map[string]*DedicatedHostAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DedicatedHostAccountMapOutput) MapIndex(k pulumi.StringInput) DedicatedHostAccountOutput {

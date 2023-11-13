@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an RDS read write splitting connection resource to allocate an Intranet connection string for RDS instance, see [What is DB Read Write Splitting Connection](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-allocatereadwritesplittingconnection).
@@ -283,12 +282,6 @@ func (i *ReadWriteSplittingConnection) ToReadWriteSplittingConnectionOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ReadWriteSplittingConnectionOutput)
 }
 
-func (i *ReadWriteSplittingConnection) ToOutput(ctx context.Context) pulumix.Output[*ReadWriteSplittingConnection] {
-	return pulumix.Output[*ReadWriteSplittingConnection]{
-		OutputState: i.ToReadWriteSplittingConnectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ReadWriteSplittingConnectionArrayInput is an input type that accepts ReadWriteSplittingConnectionArray and ReadWriteSplittingConnectionArrayOutput values.
 // You can construct a concrete instance of `ReadWriteSplittingConnectionArrayInput` via:
 //
@@ -312,12 +305,6 @@ func (i ReadWriteSplittingConnectionArray) ToReadWriteSplittingConnectionArrayOu
 
 func (i ReadWriteSplittingConnectionArray) ToReadWriteSplittingConnectionArrayOutputWithContext(ctx context.Context) ReadWriteSplittingConnectionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReadWriteSplittingConnectionArrayOutput)
-}
-
-func (i ReadWriteSplittingConnectionArray) ToOutput(ctx context.Context) pulumix.Output[[]*ReadWriteSplittingConnection] {
-	return pulumix.Output[[]*ReadWriteSplittingConnection]{
-		OutputState: i.ToReadWriteSplittingConnectionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ReadWriteSplittingConnectionMapInput is an input type that accepts ReadWriteSplittingConnectionMap and ReadWriteSplittingConnectionMapOutput values.
@@ -345,12 +332,6 @@ func (i ReadWriteSplittingConnectionMap) ToReadWriteSplittingConnectionMapOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ReadWriteSplittingConnectionMapOutput)
 }
 
-func (i ReadWriteSplittingConnectionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ReadWriteSplittingConnection] {
-	return pulumix.Output[map[string]*ReadWriteSplittingConnection]{
-		OutputState: i.ToReadWriteSplittingConnectionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ReadWriteSplittingConnectionOutput struct{ *pulumi.OutputState }
 
 func (ReadWriteSplittingConnectionOutput) ElementType() reflect.Type {
@@ -363,12 +344,6 @@ func (o ReadWriteSplittingConnectionOutput) ToReadWriteSplittingConnectionOutput
 
 func (o ReadWriteSplittingConnectionOutput) ToReadWriteSplittingConnectionOutputWithContext(ctx context.Context) ReadWriteSplittingConnectionOutput {
 	return o
-}
-
-func (o ReadWriteSplittingConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*ReadWriteSplittingConnection] {
-	return pulumix.Output[*ReadWriteSplittingConnection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + 'rw'.
@@ -420,12 +395,6 @@ func (o ReadWriteSplittingConnectionArrayOutput) ToReadWriteSplittingConnectionA
 	return o
 }
 
-func (o ReadWriteSplittingConnectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ReadWriteSplittingConnection] {
-	return pulumix.Output[[]*ReadWriteSplittingConnection]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ReadWriteSplittingConnectionArrayOutput) Index(i pulumi.IntInput) ReadWriteSplittingConnectionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ReadWriteSplittingConnection {
 		return vs[0].([]*ReadWriteSplittingConnection)[vs[1].(int)]
@@ -444,12 +413,6 @@ func (o ReadWriteSplittingConnectionMapOutput) ToReadWriteSplittingConnectionMap
 
 func (o ReadWriteSplittingConnectionMapOutput) ToReadWriteSplittingConnectionMapOutputWithContext(ctx context.Context) ReadWriteSplittingConnectionMapOutput {
 	return o
-}
-
-func (o ReadWriteSplittingConnectionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ReadWriteSplittingConnection] {
-	return pulumix.Output[map[string]*ReadWriteSplittingConnection]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReadWriteSplittingConnectionMapOutput) MapIndex(k pulumi.StringInput) ReadWriteSplittingConnectionOutput {

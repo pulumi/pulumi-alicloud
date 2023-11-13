@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Oos Application Groups of the current Alibaba Cloud user.
@@ -137,12 +136,6 @@ func (o GetApplicationGroupsResultOutput) ToGetApplicationGroupsResultOutput() G
 
 func (o GetApplicationGroupsResultOutput) ToGetApplicationGroupsResultOutputWithContext(ctx context.Context) GetApplicationGroupsResultOutput {
 	return o
-}
-
-func (o GetApplicationGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetApplicationGroupsResult] {
-	return pulumix.Output[GetApplicationGroupsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetApplicationGroupsResultOutput) ApplicationName() pulumi.StringOutput {

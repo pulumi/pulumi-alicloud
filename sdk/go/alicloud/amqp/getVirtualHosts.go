@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Amqp Virtual Hosts of the current Alibaba Cloud user.
@@ -132,12 +131,6 @@ func (o GetVirtualHostsResultOutput) ToGetVirtualHostsResultOutput() GetVirtualH
 
 func (o GetVirtualHostsResultOutput) ToGetVirtualHostsResultOutputWithContext(ctx context.Context) GetVirtualHostsResultOutput {
 	return o
-}
-
-func (o GetVirtualHostsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetVirtualHostsResult] {
-	return pulumix.Output[GetVirtualHostsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetVirtualHostsResultOutput) Hosts() GetVirtualHostsHostArrayOutput {

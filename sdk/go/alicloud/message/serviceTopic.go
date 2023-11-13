@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Message Notification Service Topic resource.
@@ -171,12 +170,6 @@ func (i *ServiceTopic) ToServiceTopicOutputWithContext(ctx context.Context) Serv
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTopicOutput)
 }
 
-func (i *ServiceTopic) ToOutput(ctx context.Context) pulumix.Output[*ServiceTopic] {
-	return pulumix.Output[*ServiceTopic]{
-		OutputState: i.ToServiceTopicOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceTopicArrayInput is an input type that accepts ServiceTopicArray and ServiceTopicArrayOutput values.
 // You can construct a concrete instance of `ServiceTopicArrayInput` via:
 //
@@ -200,12 +193,6 @@ func (i ServiceTopicArray) ToServiceTopicArrayOutput() ServiceTopicArrayOutput {
 
 func (i ServiceTopicArray) ToServiceTopicArrayOutputWithContext(ctx context.Context) ServiceTopicArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTopicArrayOutput)
-}
-
-func (i ServiceTopicArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceTopic] {
-	return pulumix.Output[[]*ServiceTopic]{
-		OutputState: i.ToServiceTopicArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServiceTopicMapInput is an input type that accepts ServiceTopicMap and ServiceTopicMapOutput values.
@@ -233,12 +220,6 @@ func (i ServiceTopicMap) ToServiceTopicMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTopicMapOutput)
 }
 
-func (i ServiceTopicMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceTopic] {
-	return pulumix.Output[map[string]*ServiceTopic]{
-		OutputState: i.ToServiceTopicMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTopicOutput struct{ *pulumi.OutputState }
 
 func (ServiceTopicOutput) ElementType() reflect.Type {
@@ -251,12 +232,6 @@ func (o ServiceTopicOutput) ToServiceTopicOutput() ServiceTopicOutput {
 
 func (o ServiceTopicOutput) ToServiceTopicOutputWithContext(ctx context.Context) ServiceTopicOutput {
 	return o
-}
-
-func (o ServiceTopicOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTopic] {
-	return pulumix.Output[*ServiceTopic]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies whether to enable the log management feature. Default value: false. Valid values:
@@ -288,12 +263,6 @@ func (o ServiceTopicArrayOutput) ToServiceTopicArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o ServiceTopicArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceTopic] {
-	return pulumix.Output[[]*ServiceTopic]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceTopicArrayOutput) Index(i pulumi.IntInput) ServiceTopicOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServiceTopic {
 		return vs[0].([]*ServiceTopic)[vs[1].(int)]
@@ -312,12 +281,6 @@ func (o ServiceTopicMapOutput) ToServiceTopicMapOutput() ServiceTopicMapOutput {
 
 func (o ServiceTopicMapOutput) ToServiceTopicMapOutputWithContext(ctx context.Context) ServiceTopicMapOutput {
 	return o
-}
-
-func (o ServiceTopicMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceTopic] {
-	return pulumix.Output[map[string]*ServiceTopic]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceTopicMapOutput) MapIndex(k pulumi.StringInput) ServiceTopicOutput {

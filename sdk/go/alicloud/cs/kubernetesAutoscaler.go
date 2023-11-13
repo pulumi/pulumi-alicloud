@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type KubernetesAutoscaler struct {
@@ -159,12 +158,6 @@ func (i *KubernetesAutoscaler) ToKubernetesAutoscalerOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesAutoscalerOutput)
 }
 
-func (i *KubernetesAutoscaler) ToOutput(ctx context.Context) pulumix.Output[*KubernetesAutoscaler] {
-	return pulumix.Output[*KubernetesAutoscaler]{
-		OutputState: i.ToKubernetesAutoscalerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // KubernetesAutoscalerArrayInput is an input type that accepts KubernetesAutoscalerArray and KubernetesAutoscalerArrayOutput values.
 // You can construct a concrete instance of `KubernetesAutoscalerArrayInput` via:
 //
@@ -188,12 +181,6 @@ func (i KubernetesAutoscalerArray) ToKubernetesAutoscalerArrayOutput() Kubernete
 
 func (i KubernetesAutoscalerArray) ToKubernetesAutoscalerArrayOutputWithContext(ctx context.Context) KubernetesAutoscalerArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesAutoscalerArrayOutput)
-}
-
-func (i KubernetesAutoscalerArray) ToOutput(ctx context.Context) pulumix.Output[[]*KubernetesAutoscaler] {
-	return pulumix.Output[[]*KubernetesAutoscaler]{
-		OutputState: i.ToKubernetesAutoscalerArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // KubernetesAutoscalerMapInput is an input type that accepts KubernetesAutoscalerMap and KubernetesAutoscalerMapOutput values.
@@ -221,12 +208,6 @@ func (i KubernetesAutoscalerMap) ToKubernetesAutoscalerMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesAutoscalerMapOutput)
 }
 
-func (i KubernetesAutoscalerMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*KubernetesAutoscaler] {
-	return pulumix.Output[map[string]*KubernetesAutoscaler]{
-		OutputState: i.ToKubernetesAutoscalerMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KubernetesAutoscalerOutput struct{ *pulumi.OutputState }
 
 func (KubernetesAutoscalerOutput) ElementType() reflect.Type {
@@ -239,12 +220,6 @@ func (o KubernetesAutoscalerOutput) ToKubernetesAutoscalerOutput() KubernetesAut
 
 func (o KubernetesAutoscalerOutput) ToKubernetesAutoscalerOutputWithContext(ctx context.Context) KubernetesAutoscalerOutput {
 	return o
-}
-
-func (o KubernetesAutoscalerOutput) ToOutput(ctx context.Context) pulumix.Output[*KubernetesAutoscaler] {
-	return pulumix.Output[*KubernetesAutoscaler]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of kubernetes cluster.
@@ -291,12 +266,6 @@ func (o KubernetesAutoscalerArrayOutput) ToKubernetesAutoscalerArrayOutputWithCo
 	return o
 }
 
-func (o KubernetesAutoscalerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*KubernetesAutoscaler] {
-	return pulumix.Output[[]*KubernetesAutoscaler]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o KubernetesAutoscalerArrayOutput) Index(i pulumi.IntInput) KubernetesAutoscalerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KubernetesAutoscaler {
 		return vs[0].([]*KubernetesAutoscaler)[vs[1].(int)]
@@ -315,12 +284,6 @@ func (o KubernetesAutoscalerMapOutput) ToKubernetesAutoscalerMapOutput() Kuberne
 
 func (o KubernetesAutoscalerMapOutput) ToKubernetesAutoscalerMapOutputWithContext(ctx context.Context) KubernetesAutoscalerMapOutput {
 	return o
-}
-
-func (o KubernetesAutoscalerMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*KubernetesAutoscaler] {
-	return pulumix.Output[map[string]*KubernetesAutoscaler]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KubernetesAutoscalerMapOutput) MapIndex(k pulumi.StringInput) KubernetesAutoscalerOutput {

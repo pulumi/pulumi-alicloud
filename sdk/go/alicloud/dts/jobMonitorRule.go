@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DTS Job Monitor Rule resource.
@@ -158,12 +157,6 @@ func (i *JobMonitorRule) ToJobMonitorRuleOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(JobMonitorRuleOutput)
 }
 
-func (i *JobMonitorRule) ToOutput(ctx context.Context) pulumix.Output[*JobMonitorRule] {
-	return pulumix.Output[*JobMonitorRule]{
-		OutputState: i.ToJobMonitorRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // JobMonitorRuleArrayInput is an input type that accepts JobMonitorRuleArray and JobMonitorRuleArrayOutput values.
 // You can construct a concrete instance of `JobMonitorRuleArrayInput` via:
 //
@@ -187,12 +180,6 @@ func (i JobMonitorRuleArray) ToJobMonitorRuleArrayOutput() JobMonitorRuleArrayOu
 
 func (i JobMonitorRuleArray) ToJobMonitorRuleArrayOutputWithContext(ctx context.Context) JobMonitorRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobMonitorRuleArrayOutput)
-}
-
-func (i JobMonitorRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*JobMonitorRule] {
-	return pulumix.Output[[]*JobMonitorRule]{
-		OutputState: i.ToJobMonitorRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // JobMonitorRuleMapInput is an input type that accepts JobMonitorRuleMap and JobMonitorRuleMapOutput values.
@@ -220,12 +207,6 @@ func (i JobMonitorRuleMap) ToJobMonitorRuleMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(JobMonitorRuleMapOutput)
 }
 
-func (i JobMonitorRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*JobMonitorRule] {
-	return pulumix.Output[map[string]*JobMonitorRule]{
-		OutputState: i.ToJobMonitorRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobMonitorRuleOutput struct{ *pulumi.OutputState }
 
 func (JobMonitorRuleOutput) ElementType() reflect.Type {
@@ -238,12 +219,6 @@ func (o JobMonitorRuleOutput) ToJobMonitorRuleOutput() JobMonitorRuleOutput {
 
 func (o JobMonitorRuleOutput) ToJobMonitorRuleOutputWithContext(ctx context.Context) JobMonitorRuleOutput {
 	return o
-}
-
-func (o JobMonitorRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*JobMonitorRule] {
-	return pulumix.Output[*JobMonitorRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Trigger delay alarm threshold, which is measured in seconds.
@@ -285,12 +260,6 @@ func (o JobMonitorRuleArrayOutput) ToJobMonitorRuleArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o JobMonitorRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*JobMonitorRule] {
-	return pulumix.Output[[]*JobMonitorRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JobMonitorRuleArrayOutput) Index(i pulumi.IntInput) JobMonitorRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *JobMonitorRule {
 		return vs[0].([]*JobMonitorRule)[vs[1].(int)]
@@ -309,12 +278,6 @@ func (o JobMonitorRuleMapOutput) ToJobMonitorRuleMapOutput() JobMonitorRuleMapOu
 
 func (o JobMonitorRuleMapOutput) ToJobMonitorRuleMapOutputWithContext(ctx context.Context) JobMonitorRuleMapOutput {
 	return o
-}
-
-func (o JobMonitorRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*JobMonitorRule] {
-	return pulumix.Output[map[string]*JobMonitorRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobMonitorRuleMapOutput) MapIndex(k pulumi.StringInput) JobMonitorRuleOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Storage Gateway Express Sync resource.
@@ -161,12 +160,6 @@ func (i *ExpressSync) ToExpressSyncOutputWithContext(ctx context.Context) Expres
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressSyncOutput)
 }
 
-func (i *ExpressSync) ToOutput(ctx context.Context) pulumix.Output[*ExpressSync] {
-	return pulumix.Output[*ExpressSync]{
-		OutputState: i.ToExpressSyncOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ExpressSyncArrayInput is an input type that accepts ExpressSyncArray and ExpressSyncArrayOutput values.
 // You can construct a concrete instance of `ExpressSyncArrayInput` via:
 //
@@ -190,12 +183,6 @@ func (i ExpressSyncArray) ToExpressSyncArrayOutput() ExpressSyncArrayOutput {
 
 func (i ExpressSyncArray) ToExpressSyncArrayOutputWithContext(ctx context.Context) ExpressSyncArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressSyncArrayOutput)
-}
-
-func (i ExpressSyncArray) ToOutput(ctx context.Context) pulumix.Output[[]*ExpressSync] {
-	return pulumix.Output[[]*ExpressSync]{
-		OutputState: i.ToExpressSyncArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ExpressSyncMapInput is an input type that accepts ExpressSyncMap and ExpressSyncMapOutput values.
@@ -223,12 +210,6 @@ func (i ExpressSyncMap) ToExpressSyncMapOutputWithContext(ctx context.Context) E
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressSyncMapOutput)
 }
 
-func (i ExpressSyncMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ExpressSync] {
-	return pulumix.Output[map[string]*ExpressSync]{
-		OutputState: i.ToExpressSyncMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ExpressSyncOutput struct{ *pulumi.OutputState }
 
 func (ExpressSyncOutput) ElementType() reflect.Type {
@@ -241,12 +222,6 @@ func (o ExpressSyncOutput) ToExpressSyncOutput() ExpressSyncOutput {
 
 func (o ExpressSyncOutput) ToExpressSyncOutputWithContext(ctx context.Context) ExpressSyncOutput {
 	return o
-}
-
-func (o ExpressSyncOutput) ToOutput(ctx context.Context) pulumix.Output[*ExpressSync] {
-	return pulumix.Output[*ExpressSync]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the OSS Bucket.
@@ -288,12 +263,6 @@ func (o ExpressSyncArrayOutput) ToExpressSyncArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o ExpressSyncArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ExpressSync] {
-	return pulumix.Output[[]*ExpressSync]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ExpressSyncArrayOutput) Index(i pulumi.IntInput) ExpressSyncOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ExpressSync {
 		return vs[0].([]*ExpressSync)[vs[1].(int)]
@@ -312,12 +281,6 @@ func (o ExpressSyncMapOutput) ToExpressSyncMapOutput() ExpressSyncMapOutput {
 
 func (o ExpressSyncMapOutput) ToExpressSyncMapOutputWithContext(ctx context.Context) ExpressSyncMapOutput {
 	return o
-}
-
-func (o ExpressSyncMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ExpressSync] {
-	return pulumix.Output[map[string]*ExpressSync]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExpressSyncMapOutput) MapIndex(k pulumi.StringInput) ExpressSyncOutput {

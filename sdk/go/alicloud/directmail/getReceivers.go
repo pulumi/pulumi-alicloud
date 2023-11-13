@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Direct Mail Receiverses of the current Alibaba Cloud user.
@@ -128,12 +127,6 @@ func (o LookupReceiversResultOutput) ToLookupReceiversResultOutput() LookupRecei
 
 func (o LookupReceiversResultOutput) ToLookupReceiversResultOutputWithContext(ctx context.Context) LookupReceiversResultOutput {
 	return o
-}
-
-func (o LookupReceiversResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReceiversResult] {
-	return pulumix.Output[LookupReceiversResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

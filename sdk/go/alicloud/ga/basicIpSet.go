@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Global Accelerator (GA) Basic Ip Set resource.
@@ -203,12 +202,6 @@ func (i *BasicIpSet) ToBasicIpSetOutputWithContext(ctx context.Context) BasicIpS
 	return pulumi.ToOutputWithContext(ctx, i).(BasicIpSetOutput)
 }
 
-func (i *BasicIpSet) ToOutput(ctx context.Context) pulumix.Output[*BasicIpSet] {
-	return pulumix.Output[*BasicIpSet]{
-		OutputState: i.ToBasicIpSetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BasicIpSetArrayInput is an input type that accepts BasicIpSetArray and BasicIpSetArrayOutput values.
 // You can construct a concrete instance of `BasicIpSetArrayInput` via:
 //
@@ -232,12 +225,6 @@ func (i BasicIpSetArray) ToBasicIpSetArrayOutput() BasicIpSetArrayOutput {
 
 func (i BasicIpSetArray) ToBasicIpSetArrayOutputWithContext(ctx context.Context) BasicIpSetArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BasicIpSetArrayOutput)
-}
-
-func (i BasicIpSetArray) ToOutput(ctx context.Context) pulumix.Output[[]*BasicIpSet] {
-	return pulumix.Output[[]*BasicIpSet]{
-		OutputState: i.ToBasicIpSetArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BasicIpSetMapInput is an input type that accepts BasicIpSetMap and BasicIpSetMapOutput values.
@@ -265,12 +252,6 @@ func (i BasicIpSetMap) ToBasicIpSetMapOutputWithContext(ctx context.Context) Bas
 	return pulumi.ToOutputWithContext(ctx, i).(BasicIpSetMapOutput)
 }
 
-func (i BasicIpSetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BasicIpSet] {
-	return pulumix.Output[map[string]*BasicIpSet]{
-		OutputState: i.ToBasicIpSetMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BasicIpSetOutput struct{ *pulumi.OutputState }
 
 func (BasicIpSetOutput) ElementType() reflect.Type {
@@ -283,12 +264,6 @@ func (o BasicIpSetOutput) ToBasicIpSetOutput() BasicIpSetOutput {
 
 func (o BasicIpSetOutput) ToBasicIpSetOutputWithContext(ctx context.Context) BasicIpSetOutput {
 	return o
-}
-
-func (o BasicIpSetOutput) ToOutput(ctx context.Context) pulumix.Output[*BasicIpSet] {
-	return pulumix.Output[*BasicIpSet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the acceleration region.
@@ -330,12 +305,6 @@ func (o BasicIpSetArrayOutput) ToBasicIpSetArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o BasicIpSetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BasicIpSet] {
-	return pulumix.Output[[]*BasicIpSet]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BasicIpSetArrayOutput) Index(i pulumi.IntInput) BasicIpSetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BasicIpSet {
 		return vs[0].([]*BasicIpSet)[vs[1].(int)]
@@ -354,12 +323,6 @@ func (o BasicIpSetMapOutput) ToBasicIpSetMapOutput() BasicIpSetMapOutput {
 
 func (o BasicIpSetMapOutput) ToBasicIpSetMapOutputWithContext(ctx context.Context) BasicIpSetMapOutput {
 	return o
-}
-
-func (o BasicIpSetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BasicIpSet] {
-	return pulumix.Output[map[string]*BasicIpSet]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BasicIpSetMapOutput) MapIndex(k pulumi.StringInput) BasicIpSetOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `polardb.getAccounts` data source provides a collection of PolarDB cluster database account available in Alibaba Cloud account.
@@ -168,12 +167,6 @@ func (o GetAccountsResultOutput) ToGetAccountsResultOutput() GetAccountsResultOu
 
 func (o GetAccountsResultOutput) ToGetAccountsResultOutputWithContext(ctx context.Context) GetAccountsResultOutput {
 	return o
-}
-
-func (o GetAccountsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccountsResult] {
-	return pulumix.Output[GetAccountsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of PolarDB cluster accounts. Each element contains the following attributes:

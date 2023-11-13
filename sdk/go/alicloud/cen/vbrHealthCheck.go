@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This topic describes how to configure the health check feature for a Cloud Enterprise Network (CEN) instance.
@@ -297,12 +296,6 @@ func (i *VbrHealthCheck) ToVbrHealthCheckOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(VbrHealthCheckOutput)
 }
 
-func (i *VbrHealthCheck) ToOutput(ctx context.Context) pulumix.Output[*VbrHealthCheck] {
-	return pulumix.Output[*VbrHealthCheck]{
-		OutputState: i.ToVbrHealthCheckOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VbrHealthCheckArrayInput is an input type that accepts VbrHealthCheckArray and VbrHealthCheckArrayOutput values.
 // You can construct a concrete instance of `VbrHealthCheckArrayInput` via:
 //
@@ -326,12 +319,6 @@ func (i VbrHealthCheckArray) ToVbrHealthCheckArrayOutput() VbrHealthCheckArrayOu
 
 func (i VbrHealthCheckArray) ToVbrHealthCheckArrayOutputWithContext(ctx context.Context) VbrHealthCheckArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VbrHealthCheckArrayOutput)
-}
-
-func (i VbrHealthCheckArray) ToOutput(ctx context.Context) pulumix.Output[[]*VbrHealthCheck] {
-	return pulumix.Output[[]*VbrHealthCheck]{
-		OutputState: i.ToVbrHealthCheckArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // VbrHealthCheckMapInput is an input type that accepts VbrHealthCheckMap and VbrHealthCheckMapOutput values.
@@ -359,12 +346,6 @@ func (i VbrHealthCheckMap) ToVbrHealthCheckMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(VbrHealthCheckMapOutput)
 }
 
-func (i VbrHealthCheckMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VbrHealthCheck] {
-	return pulumix.Output[map[string]*VbrHealthCheck]{
-		OutputState: i.ToVbrHealthCheckMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VbrHealthCheckOutput struct{ *pulumi.OutputState }
 
 func (VbrHealthCheckOutput) ElementType() reflect.Type {
@@ -377,12 +358,6 @@ func (o VbrHealthCheckOutput) ToVbrHealthCheckOutput() VbrHealthCheckOutput {
 
 func (o VbrHealthCheckOutput) ToVbrHealthCheckOutputWithContext(ctx context.Context) VbrHealthCheckOutput {
 	return o
-}
-
-func (o VbrHealthCheckOutput) ToOutput(ctx context.Context) pulumix.Output[*VbrHealthCheck] {
-	return pulumix.Output[*VbrHealthCheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the CEN instance.
@@ -441,12 +416,6 @@ func (o VbrHealthCheckArrayOutput) ToVbrHealthCheckArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o VbrHealthCheckArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VbrHealthCheck] {
-	return pulumix.Output[[]*VbrHealthCheck]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VbrHealthCheckArrayOutput) Index(i pulumi.IntInput) VbrHealthCheckOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VbrHealthCheck {
 		return vs[0].([]*VbrHealthCheck)[vs[1].(int)]
@@ -465,12 +434,6 @@ func (o VbrHealthCheckMapOutput) ToVbrHealthCheckMapOutput() VbrHealthCheckMapOu
 
 func (o VbrHealthCheckMapOutput) ToVbrHealthCheckMapOutputWithContext(ctx context.Context) VbrHealthCheckMapOutput {
 	return o
-}
-
-func (o VbrHealthCheckMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VbrHealthCheck] {
-	return pulumix.Output[map[string]*VbrHealthCheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VbrHealthCheckMapOutput) MapIndex(k pulumi.StringInput) VbrHealthCheckOutput {

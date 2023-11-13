@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DRDS Polardb X Instance resource.
@@ -324,12 +323,6 @@ func (i *PolardbxInstance) ToPolardbxInstanceOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(PolardbxInstanceOutput)
 }
 
-func (i *PolardbxInstance) ToOutput(ctx context.Context) pulumix.Output[*PolardbxInstance] {
-	return pulumix.Output[*PolardbxInstance]{
-		OutputState: i.ToPolardbxInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PolardbxInstanceArrayInput is an input type that accepts PolardbxInstanceArray and PolardbxInstanceArrayOutput values.
 // You can construct a concrete instance of `PolardbxInstanceArrayInput` via:
 //
@@ -353,12 +346,6 @@ func (i PolardbxInstanceArray) ToPolardbxInstanceArrayOutput() PolardbxInstanceA
 
 func (i PolardbxInstanceArray) ToPolardbxInstanceArrayOutputWithContext(ctx context.Context) PolardbxInstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PolardbxInstanceArrayOutput)
-}
-
-func (i PolardbxInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*PolardbxInstance] {
-	return pulumix.Output[[]*PolardbxInstance]{
-		OutputState: i.ToPolardbxInstanceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PolardbxInstanceMapInput is an input type that accepts PolardbxInstanceMap and PolardbxInstanceMapOutput values.
@@ -386,12 +373,6 @@ func (i PolardbxInstanceMap) ToPolardbxInstanceMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(PolardbxInstanceMapOutput)
 }
 
-func (i PolardbxInstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PolardbxInstance] {
-	return pulumix.Output[map[string]*PolardbxInstance]{
-		OutputState: i.ToPolardbxInstanceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PolardbxInstanceOutput struct{ *pulumi.OutputState }
 
 func (PolardbxInstanceOutput) ElementType() reflect.Type {
@@ -404,12 +385,6 @@ func (o PolardbxInstanceOutput) ToPolardbxInstanceOutput() PolardbxInstanceOutpu
 
 func (o PolardbxInstanceOutput) ToPolardbxInstanceOutputWithContext(ctx context.Context) PolardbxInstanceOutput {
 	return o
-}
-
-func (o PolardbxInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*PolardbxInstance] {
-	return pulumix.Output[*PolardbxInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Compute node specifications.
@@ -493,12 +468,6 @@ func (o PolardbxInstanceArrayOutput) ToPolardbxInstanceArrayOutputWithContext(ct
 	return o
 }
 
-func (o PolardbxInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PolardbxInstance] {
-	return pulumix.Output[[]*PolardbxInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PolardbxInstanceArrayOutput) Index(i pulumi.IntInput) PolardbxInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PolardbxInstance {
 		return vs[0].([]*PolardbxInstance)[vs[1].(int)]
@@ -517,12 +486,6 @@ func (o PolardbxInstanceMapOutput) ToPolardbxInstanceMapOutput() PolardbxInstanc
 
 func (o PolardbxInstanceMapOutput) ToPolardbxInstanceMapOutputWithContext(ctx context.Context) PolardbxInstanceMapOutput {
 	return o
-}
-
-func (o PolardbxInstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PolardbxInstance] {
-	return pulumix.Output[map[string]*PolardbxInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolardbxInstanceMapOutput) MapIndex(k pulumi.StringInput) PolardbxInstanceOutput {

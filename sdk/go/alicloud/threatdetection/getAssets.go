@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Threat Detection Asset available to the user.[What is Asset](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describecloudcenterinstances)
@@ -152,12 +151,6 @@ func (o GetAssetsResultOutput) ToGetAssetsResultOutput() GetAssetsResultOutput {
 
 func (o GetAssetsResultOutput) ToGetAssetsResultOutputWithContext(ctx context.Context) GetAssetsResultOutput {
 	return o
-}
-
-func (o GetAssetsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAssetsResult] {
-	return pulumix.Output[GetAssetsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of Asset Entries. Each element contains the following attributes:

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Direct Mail Mail Address resource.
@@ -154,12 +153,6 @@ func (i *MailAddress) ToMailAddressOutputWithContext(ctx context.Context) MailAd
 	return pulumi.ToOutputWithContext(ctx, i).(MailAddressOutput)
 }
 
-func (i *MailAddress) ToOutput(ctx context.Context) pulumix.Output[*MailAddress] {
-	return pulumix.Output[*MailAddress]{
-		OutputState: i.ToMailAddressOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MailAddressArrayInput is an input type that accepts MailAddressArray and MailAddressArrayOutput values.
 // You can construct a concrete instance of `MailAddressArrayInput` via:
 //
@@ -183,12 +176,6 @@ func (i MailAddressArray) ToMailAddressArrayOutput() MailAddressArrayOutput {
 
 func (i MailAddressArray) ToMailAddressArrayOutputWithContext(ctx context.Context) MailAddressArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MailAddressArrayOutput)
-}
-
-func (i MailAddressArray) ToOutput(ctx context.Context) pulumix.Output[[]*MailAddress] {
-	return pulumix.Output[[]*MailAddress]{
-		OutputState: i.ToMailAddressArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MailAddressMapInput is an input type that accepts MailAddressMap and MailAddressMapOutput values.
@@ -216,12 +203,6 @@ func (i MailAddressMap) ToMailAddressMapOutputWithContext(ctx context.Context) M
 	return pulumi.ToOutputWithContext(ctx, i).(MailAddressMapOutput)
 }
 
-func (i MailAddressMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MailAddress] {
-	return pulumix.Output[map[string]*MailAddress]{
-		OutputState: i.ToMailAddressMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MailAddressOutput struct{ *pulumi.OutputState }
 
 func (MailAddressOutput) ElementType() reflect.Type {
@@ -234,12 +215,6 @@ func (o MailAddressOutput) ToMailAddressOutput() MailAddressOutput {
 
 func (o MailAddressOutput) ToMailAddressOutputWithContext(ctx context.Context) MailAddressOutput {
 	return o
-}
-
-func (o MailAddressOutput) ToOutput(ctx context.Context) pulumix.Output[*MailAddress] {
-	return pulumix.Output[*MailAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The sender address. The email address must be filled in the format of account@domain, and only lowercase letters or numbers can be used.
@@ -281,12 +256,6 @@ func (o MailAddressArrayOutput) ToMailAddressArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o MailAddressArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MailAddress] {
-	return pulumix.Output[[]*MailAddress]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MailAddressArrayOutput) Index(i pulumi.IntInput) MailAddressOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MailAddress {
 		return vs[0].([]*MailAddress)[vs[1].(int)]
@@ -305,12 +274,6 @@ func (o MailAddressMapOutput) ToMailAddressMapOutput() MailAddressMapOutput {
 
 func (o MailAddressMapOutput) ToMailAddressMapOutputWithContext(ctx context.Context) MailAddressMapOutput {
 	return o
-}
-
-func (o MailAddressMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MailAddress] {
-	return pulumix.Output[map[string]*MailAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MailAddressMapOutput) MapIndex(k pulumi.StringInput) MailAddressOutput {

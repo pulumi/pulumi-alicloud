@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a CR Chain resource.
@@ -404,12 +403,6 @@ func (i *Chain) ToChainOutputWithContext(ctx context.Context) ChainOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ChainOutput)
 }
 
-func (i *Chain) ToOutput(ctx context.Context) pulumix.Output[*Chain] {
-	return pulumix.Output[*Chain]{
-		OutputState: i.ToChainOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ChainArrayInput is an input type that accepts ChainArray and ChainArrayOutput values.
 // You can construct a concrete instance of `ChainArrayInput` via:
 //
@@ -433,12 +426,6 @@ func (i ChainArray) ToChainArrayOutput() ChainArrayOutput {
 
 func (i ChainArray) ToChainArrayOutputWithContext(ctx context.Context) ChainArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ChainArrayOutput)
-}
-
-func (i ChainArray) ToOutput(ctx context.Context) pulumix.Output[[]*Chain] {
-	return pulumix.Output[[]*Chain]{
-		OutputState: i.ToChainArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ChainMapInput is an input type that accepts ChainMap and ChainMapOutput values.
@@ -466,12 +453,6 @@ func (i ChainMap) ToChainMapOutputWithContext(ctx context.Context) ChainMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ChainMapOutput)
 }
 
-func (i ChainMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Chain] {
-	return pulumix.Output[map[string]*Chain]{
-		OutputState: i.ToChainMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ChainOutput struct{ *pulumi.OutputState }
 
 func (ChainOutput) ElementType() reflect.Type {
@@ -484,12 +465,6 @@ func (o ChainOutput) ToChainOutput() ChainOutput {
 
 func (o ChainOutput) ToChainOutputWithContext(ctx context.Context) ChainOutput {
 	return o
-}
-
-func (o ChainOutput) ToOutput(ctx context.Context) pulumix.Output[*Chain] {
-	return pulumix.Output[*Chain]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration of delivery chain. See `chainConfig` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
@@ -541,12 +516,6 @@ func (o ChainArrayOutput) ToChainArrayOutputWithContext(ctx context.Context) Cha
 	return o
 }
 
-func (o ChainArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Chain] {
-	return pulumix.Output[[]*Chain]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ChainArrayOutput) Index(i pulumi.IntInput) ChainOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Chain {
 		return vs[0].([]*Chain)[vs[1].(int)]
@@ -565,12 +534,6 @@ func (o ChainMapOutput) ToChainMapOutput() ChainMapOutput {
 
 func (o ChainMapOutput) ToChainMapOutputWithContext(ctx context.Context) ChainMapOutput {
 	return o
-}
-
-func (o ChainMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Chain] {
-	return pulumix.Output[map[string]*Chain]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ChainMapOutput) MapIndex(k pulumi.StringInput) ChainOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Global Accelerator (GA) Basic Accelerate Ip Endpoint Relation resource.
@@ -287,12 +286,6 @@ func (i *BasicAccelerateIpEndpointRelation) ToBasicAccelerateIpEndpointRelationO
 	return pulumi.ToOutputWithContext(ctx, i).(BasicAccelerateIpEndpointRelationOutput)
 }
 
-func (i *BasicAccelerateIpEndpointRelation) ToOutput(ctx context.Context) pulumix.Output[*BasicAccelerateIpEndpointRelation] {
-	return pulumix.Output[*BasicAccelerateIpEndpointRelation]{
-		OutputState: i.ToBasicAccelerateIpEndpointRelationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BasicAccelerateIpEndpointRelationArrayInput is an input type that accepts BasicAccelerateIpEndpointRelationArray and BasicAccelerateIpEndpointRelationArrayOutput values.
 // You can construct a concrete instance of `BasicAccelerateIpEndpointRelationArrayInput` via:
 //
@@ -316,12 +309,6 @@ func (i BasicAccelerateIpEndpointRelationArray) ToBasicAccelerateIpEndpointRelat
 
 func (i BasicAccelerateIpEndpointRelationArray) ToBasicAccelerateIpEndpointRelationArrayOutputWithContext(ctx context.Context) BasicAccelerateIpEndpointRelationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BasicAccelerateIpEndpointRelationArrayOutput)
-}
-
-func (i BasicAccelerateIpEndpointRelationArray) ToOutput(ctx context.Context) pulumix.Output[[]*BasicAccelerateIpEndpointRelation] {
-	return pulumix.Output[[]*BasicAccelerateIpEndpointRelation]{
-		OutputState: i.ToBasicAccelerateIpEndpointRelationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BasicAccelerateIpEndpointRelationMapInput is an input type that accepts BasicAccelerateIpEndpointRelationMap and BasicAccelerateIpEndpointRelationMapOutput values.
@@ -349,12 +336,6 @@ func (i BasicAccelerateIpEndpointRelationMap) ToBasicAccelerateIpEndpointRelatio
 	return pulumi.ToOutputWithContext(ctx, i).(BasicAccelerateIpEndpointRelationMapOutput)
 }
 
-func (i BasicAccelerateIpEndpointRelationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BasicAccelerateIpEndpointRelation] {
-	return pulumix.Output[map[string]*BasicAccelerateIpEndpointRelation]{
-		OutputState: i.ToBasicAccelerateIpEndpointRelationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BasicAccelerateIpEndpointRelationOutput struct{ *pulumi.OutputState }
 
 func (BasicAccelerateIpEndpointRelationOutput) ElementType() reflect.Type {
@@ -367,12 +348,6 @@ func (o BasicAccelerateIpEndpointRelationOutput) ToBasicAccelerateIpEndpointRela
 
 func (o BasicAccelerateIpEndpointRelationOutput) ToBasicAccelerateIpEndpointRelationOutputWithContext(ctx context.Context) BasicAccelerateIpEndpointRelationOutput {
 	return o
-}
-
-func (o BasicAccelerateIpEndpointRelationOutput) ToOutput(ctx context.Context) pulumix.Output[*BasicAccelerateIpEndpointRelation] {
-	return pulumix.Output[*BasicAccelerateIpEndpointRelation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Basic Accelerate IP.
@@ -409,12 +384,6 @@ func (o BasicAccelerateIpEndpointRelationArrayOutput) ToBasicAccelerateIpEndpoin
 	return o
 }
 
-func (o BasicAccelerateIpEndpointRelationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BasicAccelerateIpEndpointRelation] {
-	return pulumix.Output[[]*BasicAccelerateIpEndpointRelation]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BasicAccelerateIpEndpointRelationArrayOutput) Index(i pulumi.IntInput) BasicAccelerateIpEndpointRelationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BasicAccelerateIpEndpointRelation {
 		return vs[0].([]*BasicAccelerateIpEndpointRelation)[vs[1].(int)]
@@ -433,12 +402,6 @@ func (o BasicAccelerateIpEndpointRelationMapOutput) ToBasicAccelerateIpEndpointR
 
 func (o BasicAccelerateIpEndpointRelationMapOutput) ToBasicAccelerateIpEndpointRelationMapOutputWithContext(ctx context.Context) BasicAccelerateIpEndpointRelationMapOutput {
 	return o
-}
-
-func (o BasicAccelerateIpEndpointRelationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BasicAccelerateIpEndpointRelation] {
-	return pulumix.Output[map[string]*BasicAccelerateIpEndpointRelation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BasicAccelerateIpEndpointRelationMapOutput) MapIndex(k pulumi.StringInput) BasicAccelerateIpEndpointRelationOutput {

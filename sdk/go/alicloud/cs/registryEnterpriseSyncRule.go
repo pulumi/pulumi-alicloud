@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource will help you to manager Container Registry Enterprise Edition sync rules.
@@ -339,12 +338,6 @@ func (i *RegistryEnterpriseSyncRule) ToRegistryEnterpriseSyncRuleOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseSyncRuleOutput)
 }
 
-func (i *RegistryEnterpriseSyncRule) ToOutput(ctx context.Context) pulumix.Output[*RegistryEnterpriseSyncRule] {
-	return pulumix.Output[*RegistryEnterpriseSyncRule]{
-		OutputState: i.ToRegistryEnterpriseSyncRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RegistryEnterpriseSyncRuleArrayInput is an input type that accepts RegistryEnterpriseSyncRuleArray and RegistryEnterpriseSyncRuleArrayOutput values.
 // You can construct a concrete instance of `RegistryEnterpriseSyncRuleArrayInput` via:
 //
@@ -368,12 +361,6 @@ func (i RegistryEnterpriseSyncRuleArray) ToRegistryEnterpriseSyncRuleArrayOutput
 
 func (i RegistryEnterpriseSyncRuleArray) ToRegistryEnterpriseSyncRuleArrayOutputWithContext(ctx context.Context) RegistryEnterpriseSyncRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseSyncRuleArrayOutput)
-}
-
-func (i RegistryEnterpriseSyncRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegistryEnterpriseSyncRule] {
-	return pulumix.Output[[]*RegistryEnterpriseSyncRule]{
-		OutputState: i.ToRegistryEnterpriseSyncRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RegistryEnterpriseSyncRuleMapInput is an input type that accepts RegistryEnterpriseSyncRuleMap and RegistryEnterpriseSyncRuleMapOutput values.
@@ -401,12 +388,6 @@ func (i RegistryEnterpriseSyncRuleMap) ToRegistryEnterpriseSyncRuleMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseSyncRuleMapOutput)
 }
 
-func (i RegistryEnterpriseSyncRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegistryEnterpriseSyncRule] {
-	return pulumix.Output[map[string]*RegistryEnterpriseSyncRule]{
-		OutputState: i.ToRegistryEnterpriseSyncRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegistryEnterpriseSyncRuleOutput struct{ *pulumi.OutputState }
 
 func (RegistryEnterpriseSyncRuleOutput) ElementType() reflect.Type {
@@ -419,12 +400,6 @@ func (o RegistryEnterpriseSyncRuleOutput) ToRegistryEnterpriseSyncRuleOutput() R
 
 func (o RegistryEnterpriseSyncRuleOutput) ToRegistryEnterpriseSyncRuleOutputWithContext(ctx context.Context) RegistryEnterpriseSyncRuleOutput {
 	return o
-}
-
-func (o RegistryEnterpriseSyncRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*RegistryEnterpriseSyncRule] {
-	return pulumix.Output[*RegistryEnterpriseSyncRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ID of Container Registry Enterprise Edition source instance.
@@ -501,12 +476,6 @@ func (o RegistryEnterpriseSyncRuleArrayOutput) ToRegistryEnterpriseSyncRuleArray
 	return o
 }
 
-func (o RegistryEnterpriseSyncRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegistryEnterpriseSyncRule] {
-	return pulumix.Output[[]*RegistryEnterpriseSyncRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RegistryEnterpriseSyncRuleArrayOutput) Index(i pulumi.IntInput) RegistryEnterpriseSyncRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegistryEnterpriseSyncRule {
 		return vs[0].([]*RegistryEnterpriseSyncRule)[vs[1].(int)]
@@ -525,12 +494,6 @@ func (o RegistryEnterpriseSyncRuleMapOutput) ToRegistryEnterpriseSyncRuleMapOutp
 
 func (o RegistryEnterpriseSyncRuleMapOutput) ToRegistryEnterpriseSyncRuleMapOutputWithContext(ctx context.Context) RegistryEnterpriseSyncRuleMapOutput {
 	return o
-}
-
-func (o RegistryEnterpriseSyncRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegistryEnterpriseSyncRule] {
-	return pulumix.Output[map[string]*RegistryEnterpriseSyncRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegistryEnterpriseSyncRuleMapOutput) MapIndex(k pulumi.StringInput) RegistryEnterpriseSyncRuleOutput {

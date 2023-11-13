@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Bastion Host Host Account resource.
@@ -300,12 +299,6 @@ func (i *HostAccount) ToHostAccountOutputWithContext(ctx context.Context) HostAc
 	return pulumi.ToOutputWithContext(ctx, i).(HostAccountOutput)
 }
 
-func (i *HostAccount) ToOutput(ctx context.Context) pulumix.Output[*HostAccount] {
-	return pulumix.Output[*HostAccount]{
-		OutputState: i.ToHostAccountOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HostAccountArrayInput is an input type that accepts HostAccountArray and HostAccountArrayOutput values.
 // You can construct a concrete instance of `HostAccountArrayInput` via:
 //
@@ -329,12 +322,6 @@ func (i HostAccountArray) ToHostAccountArrayOutput() HostAccountArrayOutput {
 
 func (i HostAccountArray) ToHostAccountArrayOutputWithContext(ctx context.Context) HostAccountArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostAccountArrayOutput)
-}
-
-func (i HostAccountArray) ToOutput(ctx context.Context) pulumix.Output[[]*HostAccount] {
-	return pulumix.Output[[]*HostAccount]{
-		OutputState: i.ToHostAccountArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HostAccountMapInput is an input type that accepts HostAccountMap and HostAccountMapOutput values.
@@ -362,12 +349,6 @@ func (i HostAccountMap) ToHostAccountMapOutputWithContext(ctx context.Context) H
 	return pulumi.ToOutputWithContext(ctx, i).(HostAccountMapOutput)
 }
 
-func (i HostAccountMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostAccount] {
-	return pulumix.Output[map[string]*HostAccount]{
-		OutputState: i.ToHostAccountMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HostAccountOutput struct{ *pulumi.OutputState }
 
 func (HostAccountOutput) ElementType() reflect.Type {
@@ -380,12 +361,6 @@ func (o HostAccountOutput) ToHostAccountOutput() HostAccountOutput {
 
 func (o HostAccountOutput) ToHostAccountOutputWithContext(ctx context.Context) HostAccountOutput {
 	return o
-}
-
-func (o HostAccountOutput) ToOutput(ctx context.Context) pulumix.Output[*HostAccount] {
-	return pulumix.Output[*HostAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Hosting account ID.
@@ -442,12 +417,6 @@ func (o HostAccountArrayOutput) ToHostAccountArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o HostAccountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HostAccount] {
-	return pulumix.Output[[]*HostAccount]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HostAccountArrayOutput) Index(i pulumi.IntInput) HostAccountOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HostAccount {
 		return vs[0].([]*HostAccount)[vs[1].(int)]
@@ -466,12 +435,6 @@ func (o HostAccountMapOutput) ToHostAccountMapOutput() HostAccountMapOutput {
 
 func (o HostAccountMapOutput) ToHostAccountMapOutputWithContext(ctx context.Context) HostAccountMapOutput {
 	return o
-}
-
-func (o HostAccountMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostAccount] {
-	return pulumix.Output[map[string]*HostAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HostAccountMapOutput) MapIndex(k pulumi.StringInput) HostAccountOutput {

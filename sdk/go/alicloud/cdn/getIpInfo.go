@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the function of verifying whether an IP is a CDN node.
@@ -107,12 +106,6 @@ func (o GetIpInfoResultOutput) ToGetIpInfoResultOutput() GetIpInfoResultOutput {
 
 func (o GetIpInfoResultOutput) ToGetIpInfoResultOutputWithContext(ctx context.Context) GetIpInfoResultOutput {
 	return o
-}
-
-func (o GetIpInfoResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetIpInfoResult] {
-	return pulumix.Output[GetIpInfoResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetIpInfoResultOutput) CdnIp() pulumi.StringOutput {

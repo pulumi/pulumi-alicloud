@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides available alarm resources.
@@ -101,12 +100,6 @@ func (o GetAlarmsResultOutput) ToGetAlarmsResultOutput() GetAlarmsResultOutput {
 
 func (o GetAlarmsResultOutput) ToGetAlarmsResultOutputWithContext(ctx context.Context) GetAlarmsResultOutput {
 	return o
-}
-
-func (o GetAlarmsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAlarmsResult] {
-	return pulumix.Output[GetAlarmsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of alarms. Each element contains the following attributes:

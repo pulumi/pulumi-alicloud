@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Threat Detection Honey Pot resource.
@@ -231,12 +230,6 @@ func (i *HoneyPot) ToHoneyPotOutputWithContext(ctx context.Context) HoneyPotOutp
 	return pulumi.ToOutputWithContext(ctx, i).(HoneyPotOutput)
 }
 
-func (i *HoneyPot) ToOutput(ctx context.Context) pulumix.Output[*HoneyPot] {
-	return pulumix.Output[*HoneyPot]{
-		OutputState: i.ToHoneyPotOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HoneyPotArrayInput is an input type that accepts HoneyPotArray and HoneyPotArrayOutput values.
 // You can construct a concrete instance of `HoneyPotArrayInput` via:
 //
@@ -260,12 +253,6 @@ func (i HoneyPotArray) ToHoneyPotArrayOutput() HoneyPotArrayOutput {
 
 func (i HoneyPotArray) ToHoneyPotArrayOutputWithContext(ctx context.Context) HoneyPotArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HoneyPotArrayOutput)
-}
-
-func (i HoneyPotArray) ToOutput(ctx context.Context) pulumix.Output[[]*HoneyPot] {
-	return pulumix.Output[[]*HoneyPot]{
-		OutputState: i.ToHoneyPotArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HoneyPotMapInput is an input type that accepts HoneyPotMap and HoneyPotMapOutput values.
@@ -293,12 +280,6 @@ func (i HoneyPotMap) ToHoneyPotMapOutputWithContext(ctx context.Context) HoneyPo
 	return pulumi.ToOutputWithContext(ctx, i).(HoneyPotMapOutput)
 }
 
-func (i HoneyPotMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HoneyPot] {
-	return pulumix.Output[map[string]*HoneyPot]{
-		OutputState: i.ToHoneyPotMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HoneyPotOutput struct{ *pulumi.OutputState }
 
 func (HoneyPotOutput) ElementType() reflect.Type {
@@ -311,12 +292,6 @@ func (o HoneyPotOutput) ToHoneyPotOutput() HoneyPotOutput {
 
 func (o HoneyPotOutput) ToHoneyPotOutputWithContext(ctx context.Context) HoneyPotOutput {
 	return o
-}
-
-func (o HoneyPotOutput) ToOutput(ctx context.Context) pulumix.Output[*HoneyPot] {
-	return pulumix.Output[*HoneyPot]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Honeypot ID.
@@ -373,12 +348,6 @@ func (o HoneyPotArrayOutput) ToHoneyPotArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o HoneyPotArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HoneyPot] {
-	return pulumix.Output[[]*HoneyPot]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HoneyPotArrayOutput) Index(i pulumi.IntInput) HoneyPotOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HoneyPot {
 		return vs[0].([]*HoneyPot)[vs[1].(int)]
@@ -397,12 +366,6 @@ func (o HoneyPotMapOutput) ToHoneyPotMapOutput() HoneyPotMapOutput {
 
 func (o HoneyPotMapOutput) ToHoneyPotMapOutputWithContext(ctx context.Context) HoneyPotMapOutput {
 	return o
-}
-
-func (o HoneyPotMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HoneyPot] {
-	return pulumix.Output[map[string]*HoneyPot]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HoneyPotMapOutput) MapIndex(k pulumi.StringInput) HoneyPotOutput {

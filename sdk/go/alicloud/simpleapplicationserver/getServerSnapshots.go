@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Simple Application Server Snapshots of the current Alibaba Cloud user.
@@ -159,12 +158,6 @@ func (o GetServerSnapshotsResultOutput) ToGetServerSnapshotsResultOutput() GetSe
 
 func (o GetServerSnapshotsResultOutput) ToGetServerSnapshotsResultOutputWithContext(ctx context.Context) GetServerSnapshotsResultOutput {
 	return o
-}
-
-func (o GetServerSnapshotsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetServerSnapshotsResult] {
-	return pulumix.Output[GetServerSnapshotsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetServerSnapshotsResultOutput) DiskId() pulumi.StringPtrOutput {

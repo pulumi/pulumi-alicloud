@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 //	Manages an asynchronous invocation configuration for a FC Function or Alias.\
@@ -356,12 +355,6 @@ func (i *FunctionAsyncInvokeConfig) ToFunctionAsyncInvokeConfigOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionAsyncInvokeConfigOutput)
 }
 
-func (i *FunctionAsyncInvokeConfig) ToOutput(ctx context.Context) pulumix.Output[*FunctionAsyncInvokeConfig] {
-	return pulumix.Output[*FunctionAsyncInvokeConfig]{
-		OutputState: i.ToFunctionAsyncInvokeConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FunctionAsyncInvokeConfigArrayInput is an input type that accepts FunctionAsyncInvokeConfigArray and FunctionAsyncInvokeConfigArrayOutput values.
 // You can construct a concrete instance of `FunctionAsyncInvokeConfigArrayInput` via:
 //
@@ -385,12 +378,6 @@ func (i FunctionAsyncInvokeConfigArray) ToFunctionAsyncInvokeConfigArrayOutput()
 
 func (i FunctionAsyncInvokeConfigArray) ToFunctionAsyncInvokeConfigArrayOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionAsyncInvokeConfigArrayOutput)
-}
-
-func (i FunctionAsyncInvokeConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*FunctionAsyncInvokeConfig] {
-	return pulumix.Output[[]*FunctionAsyncInvokeConfig]{
-		OutputState: i.ToFunctionAsyncInvokeConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FunctionAsyncInvokeConfigMapInput is an input type that accepts FunctionAsyncInvokeConfigMap and FunctionAsyncInvokeConfigMapOutput values.
@@ -418,12 +405,6 @@ func (i FunctionAsyncInvokeConfigMap) ToFunctionAsyncInvokeConfigMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionAsyncInvokeConfigMapOutput)
 }
 
-func (i FunctionAsyncInvokeConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FunctionAsyncInvokeConfig] {
-	return pulumix.Output[map[string]*FunctionAsyncInvokeConfig]{
-		OutputState: i.ToFunctionAsyncInvokeConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FunctionAsyncInvokeConfigOutput struct{ *pulumi.OutputState }
 
 func (FunctionAsyncInvokeConfigOutput) ElementType() reflect.Type {
@@ -436,12 +417,6 @@ func (o FunctionAsyncInvokeConfigOutput) ToFunctionAsyncInvokeConfigOutput() Fun
 
 func (o FunctionAsyncInvokeConfigOutput) ToFunctionAsyncInvokeConfigOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigOutput {
 	return o
-}
-
-func (o FunctionAsyncInvokeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*FunctionAsyncInvokeConfig] {
-	return pulumix.Output[*FunctionAsyncInvokeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The date this resource was created.
@@ -505,12 +480,6 @@ func (o FunctionAsyncInvokeConfigArrayOutput) ToFunctionAsyncInvokeConfigArrayOu
 	return o
 }
 
-func (o FunctionAsyncInvokeConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FunctionAsyncInvokeConfig] {
-	return pulumix.Output[[]*FunctionAsyncInvokeConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FunctionAsyncInvokeConfigArrayOutput) Index(i pulumi.IntInput) FunctionAsyncInvokeConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FunctionAsyncInvokeConfig {
 		return vs[0].([]*FunctionAsyncInvokeConfig)[vs[1].(int)]
@@ -529,12 +498,6 @@ func (o FunctionAsyncInvokeConfigMapOutput) ToFunctionAsyncInvokeConfigMapOutput
 
 func (o FunctionAsyncInvokeConfigMapOutput) ToFunctionAsyncInvokeConfigMapOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigMapOutput {
 	return o
-}
-
-func (o FunctionAsyncInvokeConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FunctionAsyncInvokeConfig] {
-	return pulumix.Output[map[string]*FunctionAsyncInvokeConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FunctionAsyncInvokeConfigMapOutput) MapIndex(k pulumi.StringInput) FunctionAsyncInvokeConfigOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a EBS Disk Replica Group resource.
@@ -190,12 +189,6 @@ func (i *DiskReplicaGroup) ToDiskReplicaGroupOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(DiskReplicaGroupOutput)
 }
 
-func (i *DiskReplicaGroup) ToOutput(ctx context.Context) pulumix.Output[*DiskReplicaGroup] {
-	return pulumix.Output[*DiskReplicaGroup]{
-		OutputState: i.ToDiskReplicaGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DiskReplicaGroupArrayInput is an input type that accepts DiskReplicaGroupArray and DiskReplicaGroupArrayOutput values.
 // You can construct a concrete instance of `DiskReplicaGroupArrayInput` via:
 //
@@ -219,12 +212,6 @@ func (i DiskReplicaGroupArray) ToDiskReplicaGroupArrayOutput() DiskReplicaGroupA
 
 func (i DiskReplicaGroupArray) ToDiskReplicaGroupArrayOutputWithContext(ctx context.Context) DiskReplicaGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DiskReplicaGroupArrayOutput)
-}
-
-func (i DiskReplicaGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*DiskReplicaGroup] {
-	return pulumix.Output[[]*DiskReplicaGroup]{
-		OutputState: i.ToDiskReplicaGroupArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DiskReplicaGroupMapInput is an input type that accepts DiskReplicaGroupMap and DiskReplicaGroupMapOutput values.
@@ -252,12 +239,6 @@ func (i DiskReplicaGroupMap) ToDiskReplicaGroupMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(DiskReplicaGroupMapOutput)
 }
 
-func (i DiskReplicaGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DiskReplicaGroup] {
-	return pulumix.Output[map[string]*DiskReplicaGroup]{
-		OutputState: i.ToDiskReplicaGroupMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DiskReplicaGroupOutput struct{ *pulumi.OutputState }
 
 func (DiskReplicaGroupOutput) ElementType() reflect.Type {
@@ -270,12 +251,6 @@ func (o DiskReplicaGroupOutput) ToDiskReplicaGroupOutput() DiskReplicaGroupOutpu
 
 func (o DiskReplicaGroupOutput) ToDiskReplicaGroupOutputWithContext(ctx context.Context) DiskReplicaGroupOutput {
 	return o
-}
-
-func (o DiskReplicaGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskReplicaGroup] {
-	return pulumix.Output[*DiskReplicaGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of the consistent replication group.
@@ -332,12 +307,6 @@ func (o DiskReplicaGroupArrayOutput) ToDiskReplicaGroupArrayOutputWithContext(ct
 	return o
 }
 
-func (o DiskReplicaGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DiskReplicaGroup] {
-	return pulumix.Output[[]*DiskReplicaGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DiskReplicaGroupArrayOutput) Index(i pulumi.IntInput) DiskReplicaGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DiskReplicaGroup {
 		return vs[0].([]*DiskReplicaGroup)[vs[1].(int)]
@@ -356,12 +325,6 @@ func (o DiskReplicaGroupMapOutput) ToDiskReplicaGroupMapOutput() DiskReplicaGrou
 
 func (o DiskReplicaGroupMapOutput) ToDiskReplicaGroupMapOutputWithContext(ctx context.Context) DiskReplicaGroupMapOutput {
 	return o
-}
-
-func (o DiskReplicaGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DiskReplicaGroup] {
-	return pulumix.Output[map[string]*DiskReplicaGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiskReplicaGroupMapOutput) MapIndex(k pulumi.StringInput) DiskReplicaGroupOutput {

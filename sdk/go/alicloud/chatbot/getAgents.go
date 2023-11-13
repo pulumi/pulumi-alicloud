@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Chatbot Agents of the current Alibaba Cloud user.
@@ -123,12 +122,6 @@ func (o GetAgentsResultOutput) ToGetAgentsResultOutput() GetAgentsResultOutput {
 
 func (o GetAgentsResultOutput) ToGetAgentsResultOutputWithContext(ctx context.Context) GetAgentsResultOutput {
 	return o
-}
-
-func (o GetAgentsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAgentsResult] {
-	return pulumix.Output[GetAgentsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The agent Name.

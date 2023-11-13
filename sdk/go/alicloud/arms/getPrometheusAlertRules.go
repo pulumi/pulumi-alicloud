@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Arms Prometheus Alert Rules of the current Alibaba Cloud user.
@@ -145,12 +144,6 @@ func (o GetPrometheusAlertRulesResultOutput) ToGetPrometheusAlertRulesResultOutp
 
 func (o GetPrometheusAlertRulesResultOutput) ToGetPrometheusAlertRulesResultOutputWithContext(ctx context.Context) GetPrometheusAlertRulesResultOutput {
 	return o
-}
-
-func (o GetPrometheusAlertRulesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPrometheusAlertRulesResult] {
-	return pulumix.Output[GetPrometheusAlertRulesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetPrometheusAlertRulesResultOutput) ClusterId() pulumi.StringOutput {

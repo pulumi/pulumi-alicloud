@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-describedcdnkvaccount)
@@ -101,12 +100,6 @@ func (o GetKvAccountResultOutput) ToGetKvAccountResultOutput() GetKvAccountResul
 
 func (o GetKvAccountResultOutput) ToGetKvAccountResultOutputWithContext(ctx context.Context) GetKvAccountResultOutput {
 	return o
-}
-
-func (o GetKvAccountResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetKvAccountResult] {
-	return pulumix.Output[GetKvAccountResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

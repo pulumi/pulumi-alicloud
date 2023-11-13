@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Operation to query the reserved keywords of an ApsaraDB RDS instance. The reserved keywords cannot be used for the usernames of accounts or the names of databases.
@@ -111,12 +110,6 @@ func (o GetInstanceKeywordsResultOutput) ToGetInstanceKeywordsResultOutput() Get
 
 func (o GetInstanceKeywordsResultOutput) ToGetInstanceKeywordsResultOutputWithContext(ctx context.Context) GetInstanceKeywordsResultOutput {
 	return o
-}
-
-func (o GetInstanceKeywordsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceKeywordsResult] {
-	return pulumix.Output[GetInstanceKeywordsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Alidns Custom Line resource.
@@ -186,12 +185,6 @@ func (i *CustomLine) ToCustomLineOutputWithContext(ctx context.Context) CustomLi
 	return pulumi.ToOutputWithContext(ctx, i).(CustomLineOutput)
 }
 
-func (i *CustomLine) ToOutput(ctx context.Context) pulumix.Output[*CustomLine] {
-	return pulumix.Output[*CustomLine]{
-		OutputState: i.ToCustomLineOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CustomLineArrayInput is an input type that accepts CustomLineArray and CustomLineArrayOutput values.
 // You can construct a concrete instance of `CustomLineArrayInput` via:
 //
@@ -215,12 +208,6 @@ func (i CustomLineArray) ToCustomLineArrayOutput() CustomLineArrayOutput {
 
 func (i CustomLineArray) ToCustomLineArrayOutputWithContext(ctx context.Context) CustomLineArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomLineArrayOutput)
-}
-
-func (i CustomLineArray) ToOutput(ctx context.Context) pulumix.Output[[]*CustomLine] {
-	return pulumix.Output[[]*CustomLine]{
-		OutputState: i.ToCustomLineArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CustomLineMapInput is an input type that accepts CustomLineMap and CustomLineMapOutput values.
@@ -248,12 +235,6 @@ func (i CustomLineMap) ToCustomLineMapOutputWithContext(ctx context.Context) Cus
 	return pulumi.ToOutputWithContext(ctx, i).(CustomLineMapOutput)
 }
 
-func (i CustomLineMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomLine] {
-	return pulumix.Output[map[string]*CustomLine]{
-		OutputState: i.ToCustomLineMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CustomLineOutput struct{ *pulumi.OutputState }
 
 func (CustomLineOutput) ElementType() reflect.Type {
@@ -266,12 +247,6 @@ func (o CustomLineOutput) ToCustomLineOutput() CustomLineOutput {
 
 func (o CustomLineOutput) ToCustomLineOutputWithContext(ctx context.Context) CustomLineOutput {
 	return o
-}
-
-func (o CustomLineOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomLine] {
-	return pulumix.Output[*CustomLine]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the Custom Line.
@@ -308,12 +283,6 @@ func (o CustomLineArrayOutput) ToCustomLineArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o CustomLineArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CustomLine] {
-	return pulumix.Output[[]*CustomLine]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CustomLineArrayOutput) Index(i pulumi.IntInput) CustomLineOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CustomLine {
 		return vs[0].([]*CustomLine)[vs[1].(int)]
@@ -332,12 +301,6 @@ func (o CustomLineMapOutput) ToCustomLineMapOutput() CustomLineMapOutput {
 
 func (o CustomLineMapOutput) ToCustomLineMapOutputWithContext(ctx context.Context) CustomLineMapOutput {
 	return o
-}
-
-func (o CustomLineMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomLine] {
-	return pulumix.Output[map[string]*CustomLine]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CustomLineMapOutput) MapIndex(k pulumi.StringInput) CustomLineOutput {

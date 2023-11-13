@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **DEPRECATED:** This datasource has been renamed to ecs.getEcsDisks from version 1.122.0.
@@ -278,12 +277,6 @@ func (o GetDisksResultOutput) ToGetDisksResultOutput() GetDisksResultOutput {
 
 func (o GetDisksResultOutput) ToGetDisksResultOutputWithContext(ctx context.Context) GetDisksResultOutput {
 	return o
-}
-
-func (o GetDisksResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDisksResult] {
-	return pulumix.Output[GetDisksResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDisksResultOutput) AdditionalAttributes() pulumi.StringArrayOutput {

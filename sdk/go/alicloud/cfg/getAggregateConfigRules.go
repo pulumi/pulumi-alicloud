@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Config Aggregate Config Rules of the current Alibaba Cloud user.
@@ -150,12 +149,6 @@ func (o GetAggregateConfigRulesResultOutput) ToGetAggregateConfigRulesResultOutp
 
 func (o GetAggregateConfigRulesResultOutput) ToGetAggregateConfigRulesResultOutputWithContext(ctx context.Context) GetAggregateConfigRulesResultOutput {
 	return o
-}
-
-func (o GetAggregateConfigRulesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAggregateConfigRulesResult] {
-	return pulumix.Output[GetAggregateConfigRulesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the rule.

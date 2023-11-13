@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Message Notification Service Subscription resource.
@@ -247,12 +246,6 @@ func (i *ServiceSubscription) ToServiceSubscriptionOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceSubscriptionOutput)
 }
 
-func (i *ServiceSubscription) ToOutput(ctx context.Context) pulumix.Output[*ServiceSubscription] {
-	return pulumix.Output[*ServiceSubscription]{
-		OutputState: i.ToServiceSubscriptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceSubscriptionArrayInput is an input type that accepts ServiceSubscriptionArray and ServiceSubscriptionArrayOutput values.
 // You can construct a concrete instance of `ServiceSubscriptionArrayInput` via:
 //
@@ -276,12 +269,6 @@ func (i ServiceSubscriptionArray) ToServiceSubscriptionArrayOutput() ServiceSubs
 
 func (i ServiceSubscriptionArray) ToServiceSubscriptionArrayOutputWithContext(ctx context.Context) ServiceSubscriptionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceSubscriptionArrayOutput)
-}
-
-func (i ServiceSubscriptionArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceSubscription] {
-	return pulumix.Output[[]*ServiceSubscription]{
-		OutputState: i.ToServiceSubscriptionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServiceSubscriptionMapInput is an input type that accepts ServiceSubscriptionMap and ServiceSubscriptionMapOutput values.
@@ -309,12 +296,6 @@ func (i ServiceSubscriptionMap) ToServiceSubscriptionMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceSubscriptionMapOutput)
 }
 
-func (i ServiceSubscriptionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceSubscription] {
-	return pulumix.Output[map[string]*ServiceSubscription]{
-		OutputState: i.ToServiceSubscriptionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceSubscriptionOutput struct{ *pulumi.OutputState }
 
 func (ServiceSubscriptionOutput) ElementType() reflect.Type {
@@ -327,12 +308,6 @@ func (o ServiceSubscriptionOutput) ToServiceSubscriptionOutput() ServiceSubscrip
 
 func (o ServiceSubscriptionOutput) ToServiceSubscriptionOutputWithContext(ctx context.Context) ServiceSubscriptionOutput {
 	return o
-}
-
-func (o ServiceSubscriptionOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceSubscription] {
-	return pulumix.Output[*ServiceSubscription]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The endpoint has three format. Available values format:
@@ -387,12 +362,6 @@ func (o ServiceSubscriptionArrayOutput) ToServiceSubscriptionArrayOutputWithCont
 	return o
 }
 
-func (o ServiceSubscriptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceSubscription] {
-	return pulumix.Output[[]*ServiceSubscription]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceSubscriptionArrayOutput) Index(i pulumi.IntInput) ServiceSubscriptionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServiceSubscription {
 		return vs[0].([]*ServiceSubscription)[vs[1].(int)]
@@ -411,12 +380,6 @@ func (o ServiceSubscriptionMapOutput) ToServiceSubscriptionMapOutput() ServiceSu
 
 func (o ServiceSubscriptionMapOutput) ToServiceSubscriptionMapOutputWithContext(ctx context.Context) ServiceSubscriptionMapOutput {
 	return o
-}
-
-func (o ServiceSubscriptionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceSubscription] {
-	return pulumix.Output[map[string]*ServiceSubscription]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceSubscriptionMapOutput) MapIndex(k pulumi.StringInput) ServiceSubscriptionOutput {

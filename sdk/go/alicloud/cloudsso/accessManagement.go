@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud SSO Access Assignment resource.
@@ -194,12 +193,6 @@ func (i *AccessManagement) ToAccessManagementOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(AccessManagementOutput)
 }
 
-func (i *AccessManagement) ToOutput(ctx context.Context) pulumix.Output[*AccessManagement] {
-	return pulumix.Output[*AccessManagement]{
-		OutputState: i.ToAccessManagementOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccessManagementArrayInput is an input type that accepts AccessManagementArray and AccessManagementArrayOutput values.
 // You can construct a concrete instance of `AccessManagementArrayInput` via:
 //
@@ -223,12 +216,6 @@ func (i AccessManagementArray) ToAccessManagementArrayOutput() AccessManagementA
 
 func (i AccessManagementArray) ToAccessManagementArrayOutputWithContext(ctx context.Context) AccessManagementArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessManagementArrayOutput)
-}
-
-func (i AccessManagementArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessManagement] {
-	return pulumix.Output[[]*AccessManagement]{
-		OutputState: i.ToAccessManagementArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AccessManagementMapInput is an input type that accepts AccessManagementMap and AccessManagementMapOutput values.
@@ -256,12 +243,6 @@ func (i AccessManagementMap) ToAccessManagementMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AccessManagementMapOutput)
 }
 
-func (i AccessManagementMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessManagement] {
-	return pulumix.Output[map[string]*AccessManagement]{
-		OutputState: i.ToAccessManagementMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessManagementOutput struct{ *pulumi.OutputState }
 
 func (AccessManagementOutput) ElementType() reflect.Type {
@@ -274,12 +255,6 @@ func (o AccessManagementOutput) ToAccessManagementOutput() AccessManagementOutpu
 
 func (o AccessManagementOutput) ToAccessManagementOutputWithContext(ctx context.Context) AccessManagementOutput {
 	return o
-}
-
-func (o AccessManagementOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessManagement] {
-	return pulumix.Output[*AccessManagement]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Access configuration ID.
@@ -331,12 +306,6 @@ func (o AccessManagementArrayOutput) ToAccessManagementArrayOutputWithContext(ct
 	return o
 }
 
-func (o AccessManagementArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessManagement] {
-	return pulumix.Output[[]*AccessManagement]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccessManagementArrayOutput) Index(i pulumi.IntInput) AccessManagementOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessManagement {
 		return vs[0].([]*AccessManagement)[vs[1].(int)]
@@ -355,12 +324,6 @@ func (o AccessManagementMapOutput) ToAccessManagementMapOutput() AccessManagemen
 
 func (o AccessManagementMapOutput) ToAccessManagementMapOutputWithContext(ctx context.Context) AccessManagementMapOutput {
 	return o
-}
-
-func (o AccessManagementMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessManagement] {
-	return pulumix.Output[map[string]*AccessManagement]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessManagementMapOutput) MapIndex(k pulumi.StringInput) AccessManagementOutput {

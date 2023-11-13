@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Mse Znodes of the current Alibaba Cloud user.
@@ -144,12 +143,6 @@ func (o GetZnodesResultOutput) ToGetZnodesResultOutput() GetZnodesResultOutput {
 
 func (o GetZnodesResultOutput) ToGetZnodesResultOutputWithContext(ctx context.Context) GetZnodesResultOutput {
 	return o
-}
-
-func (o GetZnodesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetZnodesResult] {
-	return pulumix.Output[GetZnodesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetZnodesResultOutput) AcceptLanguage() pulumi.StringPtrOutput {

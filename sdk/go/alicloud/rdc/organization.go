@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a RDC Organization resource.
@@ -177,12 +176,6 @@ func (i *Organization) ToOrganizationOutputWithContext(ctx context.Context) Orga
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationOutput)
 }
 
-func (i *Organization) ToOutput(ctx context.Context) pulumix.Output[*Organization] {
-	return pulumix.Output[*Organization]{
-		OutputState: i.ToOrganizationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OrganizationArrayInput is an input type that accepts OrganizationArray and OrganizationArrayOutput values.
 // You can construct a concrete instance of `OrganizationArrayInput` via:
 //
@@ -206,12 +199,6 @@ func (i OrganizationArray) ToOrganizationArrayOutput() OrganizationArrayOutput {
 
 func (i OrganizationArray) ToOrganizationArrayOutputWithContext(ctx context.Context) OrganizationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationArrayOutput)
-}
-
-func (i OrganizationArray) ToOutput(ctx context.Context) pulumix.Output[[]*Organization] {
-	return pulumix.Output[[]*Organization]{
-		OutputState: i.ToOrganizationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // OrganizationMapInput is an input type that accepts OrganizationMap and OrganizationMapOutput values.
@@ -239,12 +226,6 @@ func (i OrganizationMap) ToOrganizationMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationMapOutput)
 }
 
-func (i OrganizationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Organization] {
-	return pulumix.Output[map[string]*Organization]{
-		OutputState: i.ToOrganizationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationOutput struct{ *pulumi.OutputState }
 
 func (OrganizationOutput) ElementType() reflect.Type {
@@ -257,12 +238,6 @@ func (o OrganizationOutput) ToOrganizationOutput() OrganizationOutput {
 
 func (o OrganizationOutput) ToOrganizationOutputWithContext(ctx context.Context) OrganizationOutput {
 	return o
-}
-
-func (o OrganizationOutput) ToOutput(ctx context.Context) pulumix.Output[*Organization] {
-	return pulumix.Output[*Organization]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The desired member count.
@@ -299,12 +274,6 @@ func (o OrganizationArrayOutput) ToOrganizationArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o OrganizationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Organization] {
-	return pulumix.Output[[]*Organization]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OrganizationArrayOutput) Index(i pulumi.IntInput) OrganizationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Organization {
 		return vs[0].([]*Organization)[vs[1].(int)]
@@ -323,12 +292,6 @@ func (o OrganizationMapOutput) ToOrganizationMapOutput() OrganizationMapOutput {
 
 func (o OrganizationMapOutput) ToOrganizationMapOutputWithContext(ctx context.Context) OrganizationMapOutput {
 	return o
-}
-
-func (o OrganizationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Organization] {
-	return pulumix.Output[map[string]*Organization]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationMapOutput) MapIndex(k pulumi.StringInput) OrganizationOutput {

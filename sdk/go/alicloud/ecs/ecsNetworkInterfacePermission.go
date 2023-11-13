@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECS Network Interface Permission resource.
@@ -157,12 +156,6 @@ func (i *EcsNetworkInterfacePermission) ToEcsNetworkInterfacePermissionOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(EcsNetworkInterfacePermissionOutput)
 }
 
-func (i *EcsNetworkInterfacePermission) ToOutput(ctx context.Context) pulumix.Output[*EcsNetworkInterfacePermission] {
-	return pulumix.Output[*EcsNetworkInterfacePermission]{
-		OutputState: i.ToEcsNetworkInterfacePermissionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EcsNetworkInterfacePermissionArrayInput is an input type that accepts EcsNetworkInterfacePermissionArray and EcsNetworkInterfacePermissionArrayOutput values.
 // You can construct a concrete instance of `EcsNetworkInterfacePermissionArrayInput` via:
 //
@@ -186,12 +179,6 @@ func (i EcsNetworkInterfacePermissionArray) ToEcsNetworkInterfacePermissionArray
 
 func (i EcsNetworkInterfacePermissionArray) ToEcsNetworkInterfacePermissionArrayOutputWithContext(ctx context.Context) EcsNetworkInterfacePermissionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EcsNetworkInterfacePermissionArrayOutput)
-}
-
-func (i EcsNetworkInterfacePermissionArray) ToOutput(ctx context.Context) pulumix.Output[[]*EcsNetworkInterfacePermission] {
-	return pulumix.Output[[]*EcsNetworkInterfacePermission]{
-		OutputState: i.ToEcsNetworkInterfacePermissionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EcsNetworkInterfacePermissionMapInput is an input type that accepts EcsNetworkInterfacePermissionMap and EcsNetworkInterfacePermissionMapOutput values.
@@ -219,12 +206,6 @@ func (i EcsNetworkInterfacePermissionMap) ToEcsNetworkInterfacePermissionMapOutp
 	return pulumi.ToOutputWithContext(ctx, i).(EcsNetworkInterfacePermissionMapOutput)
 }
 
-func (i EcsNetworkInterfacePermissionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsNetworkInterfacePermission] {
-	return pulumix.Output[map[string]*EcsNetworkInterfacePermission]{
-		OutputState: i.ToEcsNetworkInterfacePermissionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EcsNetworkInterfacePermissionOutput struct{ *pulumi.OutputState }
 
 func (EcsNetworkInterfacePermissionOutput) ElementType() reflect.Type {
@@ -237,12 +218,6 @@ func (o EcsNetworkInterfacePermissionOutput) ToEcsNetworkInterfacePermissionOutp
 
 func (o EcsNetworkInterfacePermissionOutput) ToEcsNetworkInterfacePermissionOutputWithContext(ctx context.Context) EcsNetworkInterfacePermissionOutput {
 	return o
-}
-
-func (o EcsNetworkInterfacePermissionOutput) ToOutput(ctx context.Context) pulumix.Output[*EcsNetworkInterfacePermission] {
-	return pulumix.Output[*EcsNetworkInterfacePermission]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Alibaba Cloud Partner (Certified ISV) account ID or individual user ID.
@@ -284,12 +259,6 @@ func (o EcsNetworkInterfacePermissionArrayOutput) ToEcsNetworkInterfacePermissio
 	return o
 }
 
-func (o EcsNetworkInterfacePermissionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EcsNetworkInterfacePermission] {
-	return pulumix.Output[[]*EcsNetworkInterfacePermission]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EcsNetworkInterfacePermissionArrayOutput) Index(i pulumi.IntInput) EcsNetworkInterfacePermissionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EcsNetworkInterfacePermission {
 		return vs[0].([]*EcsNetworkInterfacePermission)[vs[1].(int)]
@@ -308,12 +277,6 @@ func (o EcsNetworkInterfacePermissionMapOutput) ToEcsNetworkInterfacePermissionM
 
 func (o EcsNetworkInterfacePermissionMapOutput) ToEcsNetworkInterfacePermissionMapOutputWithContext(ctx context.Context) EcsNetworkInterfacePermissionMapOutput {
 	return o
-}
-
-func (o EcsNetworkInterfacePermissionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsNetworkInterfacePermission] {
-	return pulumix.Output[map[string]*EcsNetworkInterfacePermission]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EcsNetworkInterfacePermissionMapOutput) MapIndex(k pulumi.StringInput) EcsNetworkInterfacePermissionOutput {

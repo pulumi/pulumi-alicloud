@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Global Accelerator (GA) Bandwidth Package Attachment resource.
@@ -188,12 +187,6 @@ func (i *BandwidthPackageAttachment) ToBandwidthPackageAttachmentOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(BandwidthPackageAttachmentOutput)
 }
 
-func (i *BandwidthPackageAttachment) ToOutput(ctx context.Context) pulumix.Output[*BandwidthPackageAttachment] {
-	return pulumix.Output[*BandwidthPackageAttachment]{
-		OutputState: i.ToBandwidthPackageAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BandwidthPackageAttachmentArrayInput is an input type that accepts BandwidthPackageAttachmentArray and BandwidthPackageAttachmentArrayOutput values.
 // You can construct a concrete instance of `BandwidthPackageAttachmentArrayInput` via:
 //
@@ -217,12 +210,6 @@ func (i BandwidthPackageAttachmentArray) ToBandwidthPackageAttachmentArrayOutput
 
 func (i BandwidthPackageAttachmentArray) ToBandwidthPackageAttachmentArrayOutputWithContext(ctx context.Context) BandwidthPackageAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BandwidthPackageAttachmentArrayOutput)
-}
-
-func (i BandwidthPackageAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*BandwidthPackageAttachment] {
-	return pulumix.Output[[]*BandwidthPackageAttachment]{
-		OutputState: i.ToBandwidthPackageAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BandwidthPackageAttachmentMapInput is an input type that accepts BandwidthPackageAttachmentMap and BandwidthPackageAttachmentMapOutput values.
@@ -250,12 +237,6 @@ func (i BandwidthPackageAttachmentMap) ToBandwidthPackageAttachmentMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(BandwidthPackageAttachmentMapOutput)
 }
 
-func (i BandwidthPackageAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BandwidthPackageAttachment] {
-	return pulumix.Output[map[string]*BandwidthPackageAttachment]{
-		OutputState: i.ToBandwidthPackageAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BandwidthPackageAttachmentOutput struct{ *pulumi.OutputState }
 
 func (BandwidthPackageAttachmentOutput) ElementType() reflect.Type {
@@ -268,12 +249,6 @@ func (o BandwidthPackageAttachmentOutput) ToBandwidthPackageAttachmentOutput() B
 
 func (o BandwidthPackageAttachmentOutput) ToBandwidthPackageAttachmentOutputWithContext(ctx context.Context) BandwidthPackageAttachmentOutput {
 	return o
-}
-
-func (o BandwidthPackageAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*BandwidthPackageAttachment] {
-	return pulumix.Output[*BandwidthPackageAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Global Accelerator instance from which you want to disassociate the bandwidth plan.
@@ -310,12 +285,6 @@ func (o BandwidthPackageAttachmentArrayOutput) ToBandwidthPackageAttachmentArray
 	return o
 }
 
-func (o BandwidthPackageAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BandwidthPackageAttachment] {
-	return pulumix.Output[[]*BandwidthPackageAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BandwidthPackageAttachmentArrayOutput) Index(i pulumi.IntInput) BandwidthPackageAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BandwidthPackageAttachment {
 		return vs[0].([]*BandwidthPackageAttachment)[vs[1].(int)]
@@ -334,12 +303,6 @@ func (o BandwidthPackageAttachmentMapOutput) ToBandwidthPackageAttachmentMapOutp
 
 func (o BandwidthPackageAttachmentMapOutput) ToBandwidthPackageAttachmentMapOutputWithContext(ctx context.Context) BandwidthPackageAttachmentMapOutput {
 	return o
-}
-
-func (o BandwidthPackageAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BandwidthPackageAttachment] {
-	return pulumix.Output[map[string]*BandwidthPackageAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BandwidthPackageAttachmentMapOutput) MapIndex(k pulumi.StringInput) BandwidthPackageAttachmentOutput {

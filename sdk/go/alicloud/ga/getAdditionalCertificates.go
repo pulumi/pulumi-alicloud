@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ga Additional Certificates of the current Alibaba Cloud user.
@@ -124,12 +123,6 @@ func (o GetAdditionalCertificatesResultOutput) ToGetAdditionalCertificatesResult
 
 func (o GetAdditionalCertificatesResultOutput) ToGetAdditionalCertificatesResultOutputWithContext(ctx context.Context) GetAdditionalCertificatesResultOutput {
 	return o
-}
-
-func (o GetAdditionalCertificatesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAdditionalCertificatesResult] {
-	return pulumix.Output[GetAdditionalCertificatesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAdditionalCertificatesResultOutput) AcceleratorId() pulumi.StringOutput {

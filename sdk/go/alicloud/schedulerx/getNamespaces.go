@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Schedulerx Namespaces of the current Alibaba Cloud user.
@@ -120,12 +119,6 @@ func (o GetNamespacesResultOutput) ToGetNamespacesResultOutput() GetNamespacesRe
 
 func (o GetNamespacesResultOutput) ToGetNamespacesResultOutputWithContext(ctx context.Context) GetNamespacesResultOutput {
 	return o
-}
-
-func (o GetNamespacesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetNamespacesResult] {
-	return pulumix.Output[GetNamespacesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

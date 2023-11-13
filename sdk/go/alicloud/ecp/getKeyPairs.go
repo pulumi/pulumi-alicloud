@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ecp Key Pairs of the current Alibaba Cloud user.
@@ -125,12 +124,6 @@ func (o GetKeyPairsResultOutput) ToGetKeyPairsResultOutput() GetKeyPairsResultOu
 
 func (o GetKeyPairsResultOutput) ToGetKeyPairsResultOutputWithContext(ctx context.Context) GetKeyPairsResultOutput {
 	return o
-}
-
-func (o GetKeyPairsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetKeyPairsResult] {
-	return pulumix.Output[GetKeyPairsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

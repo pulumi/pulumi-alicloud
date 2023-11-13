@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECS Network Interface Attachment resource.
@@ -267,12 +266,6 @@ func (i *EcsNetworkInterfaceAttachment) ToEcsNetworkInterfaceAttachmentOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(EcsNetworkInterfaceAttachmentOutput)
 }
 
-func (i *EcsNetworkInterfaceAttachment) ToOutput(ctx context.Context) pulumix.Output[*EcsNetworkInterfaceAttachment] {
-	return pulumix.Output[*EcsNetworkInterfaceAttachment]{
-		OutputState: i.ToEcsNetworkInterfaceAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EcsNetworkInterfaceAttachmentArrayInput is an input type that accepts EcsNetworkInterfaceAttachmentArray and EcsNetworkInterfaceAttachmentArrayOutput values.
 // You can construct a concrete instance of `EcsNetworkInterfaceAttachmentArrayInput` via:
 //
@@ -296,12 +289,6 @@ func (i EcsNetworkInterfaceAttachmentArray) ToEcsNetworkInterfaceAttachmentArray
 
 func (i EcsNetworkInterfaceAttachmentArray) ToEcsNetworkInterfaceAttachmentArrayOutputWithContext(ctx context.Context) EcsNetworkInterfaceAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EcsNetworkInterfaceAttachmentArrayOutput)
-}
-
-func (i EcsNetworkInterfaceAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*EcsNetworkInterfaceAttachment] {
-	return pulumix.Output[[]*EcsNetworkInterfaceAttachment]{
-		OutputState: i.ToEcsNetworkInterfaceAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EcsNetworkInterfaceAttachmentMapInput is an input type that accepts EcsNetworkInterfaceAttachmentMap and EcsNetworkInterfaceAttachmentMapOutput values.
@@ -329,12 +316,6 @@ func (i EcsNetworkInterfaceAttachmentMap) ToEcsNetworkInterfaceAttachmentMapOutp
 	return pulumi.ToOutputWithContext(ctx, i).(EcsNetworkInterfaceAttachmentMapOutput)
 }
 
-func (i EcsNetworkInterfaceAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsNetworkInterfaceAttachment] {
-	return pulumix.Output[map[string]*EcsNetworkInterfaceAttachment]{
-		OutputState: i.ToEcsNetworkInterfaceAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EcsNetworkInterfaceAttachmentOutput struct{ *pulumi.OutputState }
 
 func (EcsNetworkInterfaceAttachmentOutput) ElementType() reflect.Type {
@@ -347,12 +328,6 @@ func (o EcsNetworkInterfaceAttachmentOutput) ToEcsNetworkInterfaceAttachmentOutp
 
 func (o EcsNetworkInterfaceAttachmentOutput) ToEcsNetworkInterfaceAttachmentOutputWithContext(ctx context.Context) EcsNetworkInterfaceAttachmentOutput {
 	return o
-}
-
-func (o EcsNetworkInterfaceAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*EcsNetworkInterfaceAttachment] {
-	return pulumix.Output[*EcsNetworkInterfaceAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The instance id.
@@ -389,12 +364,6 @@ func (o EcsNetworkInterfaceAttachmentArrayOutput) ToEcsNetworkInterfaceAttachmen
 	return o
 }
 
-func (o EcsNetworkInterfaceAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EcsNetworkInterfaceAttachment] {
-	return pulumix.Output[[]*EcsNetworkInterfaceAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EcsNetworkInterfaceAttachmentArrayOutput) Index(i pulumi.IntInput) EcsNetworkInterfaceAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EcsNetworkInterfaceAttachment {
 		return vs[0].([]*EcsNetworkInterfaceAttachment)[vs[1].(int)]
@@ -413,12 +382,6 @@ func (o EcsNetworkInterfaceAttachmentMapOutput) ToEcsNetworkInterfaceAttachmentM
 
 func (o EcsNetworkInterfaceAttachmentMapOutput) ToEcsNetworkInterfaceAttachmentMapOutputWithContext(ctx context.Context) EcsNetworkInterfaceAttachmentMapOutput {
 	return o
-}
-
-func (o EcsNetworkInterfaceAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsNetworkInterfaceAttachment] {
-	return pulumix.Output[map[string]*EcsNetworkInterfaceAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EcsNetworkInterfaceAttachmentMapOutput) MapIndex(k pulumi.StringInput) EcsNetworkInterfaceAttachmentOutput {

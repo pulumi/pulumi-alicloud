@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECS Invocation resource.
@@ -270,12 +269,6 @@ func (i *EcsInvocation) ToEcsInvocationOutputWithContext(ctx context.Context) Ec
 	return pulumi.ToOutputWithContext(ctx, i).(EcsInvocationOutput)
 }
 
-func (i *EcsInvocation) ToOutput(ctx context.Context) pulumix.Output[*EcsInvocation] {
-	return pulumix.Output[*EcsInvocation]{
-		OutputState: i.ToEcsInvocationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EcsInvocationArrayInput is an input type that accepts EcsInvocationArray and EcsInvocationArrayOutput values.
 // You can construct a concrete instance of `EcsInvocationArrayInput` via:
 //
@@ -299,12 +292,6 @@ func (i EcsInvocationArray) ToEcsInvocationArrayOutput() EcsInvocationArrayOutpu
 
 func (i EcsInvocationArray) ToEcsInvocationArrayOutputWithContext(ctx context.Context) EcsInvocationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EcsInvocationArrayOutput)
-}
-
-func (i EcsInvocationArray) ToOutput(ctx context.Context) pulumix.Output[[]*EcsInvocation] {
-	return pulumix.Output[[]*EcsInvocation]{
-		OutputState: i.ToEcsInvocationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EcsInvocationMapInput is an input type that accepts EcsInvocationMap and EcsInvocationMapOutput values.
@@ -332,12 +319,6 @@ func (i EcsInvocationMap) ToEcsInvocationMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(EcsInvocationMapOutput)
 }
 
-func (i EcsInvocationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsInvocation] {
-	return pulumix.Output[map[string]*EcsInvocation]{
-		OutputState: i.ToEcsInvocationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EcsInvocationOutput struct{ *pulumi.OutputState }
 
 func (EcsInvocationOutput) ElementType() reflect.Type {
@@ -350,12 +331,6 @@ func (o EcsInvocationOutput) ToEcsInvocationOutput() EcsInvocationOutput {
 
 func (o EcsInvocationOutput) ToEcsInvocationOutputWithContext(ctx context.Context) EcsInvocationOutput {
 	return o
-}
-
-func (o EcsInvocationOutput) ToOutput(ctx context.Context) pulumix.Output[*EcsInvocation] {
-	return pulumix.Output[*EcsInvocation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the command.
@@ -423,12 +398,6 @@ func (o EcsInvocationArrayOutput) ToEcsInvocationArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o EcsInvocationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EcsInvocation] {
-	return pulumix.Output[[]*EcsInvocation]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EcsInvocationArrayOutput) Index(i pulumi.IntInput) EcsInvocationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EcsInvocation {
 		return vs[0].([]*EcsInvocation)[vs[1].(int)]
@@ -447,12 +416,6 @@ func (o EcsInvocationMapOutput) ToEcsInvocationMapOutput() EcsInvocationMapOutpu
 
 func (o EcsInvocationMapOutput) ToEcsInvocationMapOutputWithContext(ctx context.Context) EcsInvocationMapOutput {
 	return o
-}
-
-func (o EcsInvocationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsInvocation] {
-	return pulumix.Output[map[string]*EcsInvocation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EcsInvocationMapOutput) MapIndex(k pulumi.StringInput) EcsInvocationOutput {

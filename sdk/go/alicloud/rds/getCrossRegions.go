@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides an available area for remote disaster recovery for RDS.
@@ -101,12 +100,6 @@ func (o GetCrossRegionsResultOutput) ToGetCrossRegionsResultOutput() GetCrossReg
 
 func (o GetCrossRegionsResultOutput) ToGetCrossRegionsResultOutputWithContext(ctx context.Context) GetCrossRegionsResultOutput {
 	return o
-}
-
-func (o GetCrossRegionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCrossRegionsResult] {
-	return pulumix.Output[GetCrossRegionsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

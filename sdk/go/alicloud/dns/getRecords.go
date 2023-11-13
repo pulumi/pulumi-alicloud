@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
@@ -154,12 +153,6 @@ func (o GetRecordsResultOutput) ToGetRecordsResultOutput() GetRecordsResultOutpu
 
 func (o GetRecordsResultOutput) ToGetRecordsResultOutputWithContext(ctx context.Context) GetRecordsResultOutput {
 	return o
-}
-
-func (o GetRecordsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRecordsResult] {
-	return pulumix.Output[GetRecordsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the domain the record belongs to.

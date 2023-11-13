@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Monitor Service Hybrid Monitor Sls Task resource.
@@ -184,12 +183,6 @@ func (i *HybridMonitorSlsTask) ToHybridMonitorSlsTaskOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskOutput)
 }
 
-func (i *HybridMonitorSlsTask) ToOutput(ctx context.Context) pulumix.Output[*HybridMonitorSlsTask] {
-	return pulumix.Output[*HybridMonitorSlsTask]{
-		OutputState: i.ToHybridMonitorSlsTaskOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HybridMonitorSlsTaskArrayInput is an input type that accepts HybridMonitorSlsTaskArray and HybridMonitorSlsTaskArrayOutput values.
 // You can construct a concrete instance of `HybridMonitorSlsTaskArrayInput` via:
 //
@@ -213,12 +206,6 @@ func (i HybridMonitorSlsTaskArray) ToHybridMonitorSlsTaskArrayOutput() HybridMon
 
 func (i HybridMonitorSlsTaskArray) ToHybridMonitorSlsTaskArrayOutputWithContext(ctx context.Context) HybridMonitorSlsTaskArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskArrayOutput)
-}
-
-func (i HybridMonitorSlsTaskArray) ToOutput(ctx context.Context) pulumix.Output[[]*HybridMonitorSlsTask] {
-	return pulumix.Output[[]*HybridMonitorSlsTask]{
-		OutputState: i.ToHybridMonitorSlsTaskArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HybridMonitorSlsTaskMapInput is an input type that accepts HybridMonitorSlsTaskMap and HybridMonitorSlsTaskMapOutput values.
@@ -246,12 +233,6 @@ func (i HybridMonitorSlsTaskMap) ToHybridMonitorSlsTaskMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorSlsTaskMapOutput)
 }
 
-func (i HybridMonitorSlsTaskMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HybridMonitorSlsTask] {
-	return pulumix.Output[map[string]*HybridMonitorSlsTask]{
-		OutputState: i.ToHybridMonitorSlsTaskMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HybridMonitorSlsTaskOutput struct{ *pulumi.OutputState }
 
 func (HybridMonitorSlsTaskOutput) ElementType() reflect.Type {
@@ -264,12 +245,6 @@ func (o HybridMonitorSlsTaskOutput) ToHybridMonitorSlsTaskOutput() HybridMonitor
 
 func (o HybridMonitorSlsTaskOutput) ToHybridMonitorSlsTaskOutputWithContext(ctx context.Context) HybridMonitorSlsTaskOutput {
 	return o
-}
-
-func (o HybridMonitorSlsTaskOutput) ToOutput(ctx context.Context) pulumix.Output[*HybridMonitorSlsTask] {
-	return pulumix.Output[*HybridMonitorSlsTask]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The label of the monitoring task. See `attachLabels` below.
@@ -321,12 +296,6 @@ func (o HybridMonitorSlsTaskArrayOutput) ToHybridMonitorSlsTaskArrayOutputWithCo
 	return o
 }
 
-func (o HybridMonitorSlsTaskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HybridMonitorSlsTask] {
-	return pulumix.Output[[]*HybridMonitorSlsTask]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HybridMonitorSlsTaskArrayOutput) Index(i pulumi.IntInput) HybridMonitorSlsTaskOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HybridMonitorSlsTask {
 		return vs[0].([]*HybridMonitorSlsTask)[vs[1].(int)]
@@ -345,12 +314,6 @@ func (o HybridMonitorSlsTaskMapOutput) ToHybridMonitorSlsTaskMapOutput() HybridM
 
 func (o HybridMonitorSlsTaskMapOutput) ToHybridMonitorSlsTaskMapOutputWithContext(ctx context.Context) HybridMonitorSlsTaskMapOutput {
 	return o
-}
-
-func (o HybridMonitorSlsTaskMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HybridMonitorSlsTask] {
-	return pulumix.Output[map[string]*HybridMonitorSlsTask]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HybridMonitorSlsTaskMapOutput) MapIndex(k pulumi.StringInput) HybridMonitorSlsTaskOutput {

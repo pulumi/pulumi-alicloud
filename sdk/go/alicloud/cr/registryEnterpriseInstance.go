@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -227,12 +226,6 @@ func (i *RegistryEnterpriseInstance) ToRegistryEnterpriseInstanceOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseInstanceOutput)
 }
 
-func (i *RegistryEnterpriseInstance) ToOutput(ctx context.Context) pulumix.Output[*RegistryEnterpriseInstance] {
-	return pulumix.Output[*RegistryEnterpriseInstance]{
-		OutputState: i.ToRegistryEnterpriseInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RegistryEnterpriseInstanceArrayInput is an input type that accepts RegistryEnterpriseInstanceArray and RegistryEnterpriseInstanceArrayOutput values.
 // You can construct a concrete instance of `RegistryEnterpriseInstanceArrayInput` via:
 //
@@ -256,12 +249,6 @@ func (i RegistryEnterpriseInstanceArray) ToRegistryEnterpriseInstanceArrayOutput
 
 func (i RegistryEnterpriseInstanceArray) ToRegistryEnterpriseInstanceArrayOutputWithContext(ctx context.Context) RegistryEnterpriseInstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseInstanceArrayOutput)
-}
-
-func (i RegistryEnterpriseInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegistryEnterpriseInstance] {
-	return pulumix.Output[[]*RegistryEnterpriseInstance]{
-		OutputState: i.ToRegistryEnterpriseInstanceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RegistryEnterpriseInstanceMapInput is an input type that accepts RegistryEnterpriseInstanceMap and RegistryEnterpriseInstanceMapOutput values.
@@ -289,12 +276,6 @@ func (i RegistryEnterpriseInstanceMap) ToRegistryEnterpriseInstanceMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseInstanceMapOutput)
 }
 
-func (i RegistryEnterpriseInstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegistryEnterpriseInstance] {
-	return pulumix.Output[map[string]*RegistryEnterpriseInstance]{
-		OutputState: i.ToRegistryEnterpriseInstanceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegistryEnterpriseInstanceOutput struct{ *pulumi.OutputState }
 
 func (RegistryEnterpriseInstanceOutput) ElementType() reflect.Type {
@@ -307,12 +288,6 @@ func (o RegistryEnterpriseInstanceOutput) ToRegistryEnterpriseInstanceOutput() R
 
 func (o RegistryEnterpriseInstanceOutput) ToRegistryEnterpriseInstanceOutputWithContext(ctx context.Context) RegistryEnterpriseInstanceOutput {
 	return o
-}
-
-func (o RegistryEnterpriseInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*RegistryEnterpriseInstance] {
-	return pulumix.Output[*RegistryEnterpriseInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time of Container Registry Enterprise Edition instance creation.
@@ -394,12 +369,6 @@ func (o RegistryEnterpriseInstanceArrayOutput) ToRegistryEnterpriseInstanceArray
 	return o
 }
 
-func (o RegistryEnterpriseInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegistryEnterpriseInstance] {
-	return pulumix.Output[[]*RegistryEnterpriseInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RegistryEnterpriseInstanceArrayOutput) Index(i pulumi.IntInput) RegistryEnterpriseInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegistryEnterpriseInstance {
 		return vs[0].([]*RegistryEnterpriseInstance)[vs[1].(int)]
@@ -418,12 +387,6 @@ func (o RegistryEnterpriseInstanceMapOutput) ToRegistryEnterpriseInstanceMapOutp
 
 func (o RegistryEnterpriseInstanceMapOutput) ToRegistryEnterpriseInstanceMapOutputWithContext(ctx context.Context) RegistryEnterpriseInstanceMapOutput {
 	return o
-}
-
-func (o RegistryEnterpriseInstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegistryEnterpriseInstance] {
-	return pulumix.Output[map[string]*RegistryEnterpriseInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegistryEnterpriseInstanceMapOutput) MapIndex(k pulumi.StringInput) RegistryEnterpriseInstanceOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a MongoDB Sharding Network Public Address resource.
@@ -223,12 +222,6 @@ func (i *ShardingNetworkPublicAddress) ToShardingNetworkPublicAddressOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ShardingNetworkPublicAddressOutput)
 }
 
-func (i *ShardingNetworkPublicAddress) ToOutput(ctx context.Context) pulumix.Output[*ShardingNetworkPublicAddress] {
-	return pulumix.Output[*ShardingNetworkPublicAddress]{
-		OutputState: i.ToShardingNetworkPublicAddressOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ShardingNetworkPublicAddressArrayInput is an input type that accepts ShardingNetworkPublicAddressArray and ShardingNetworkPublicAddressArrayOutput values.
 // You can construct a concrete instance of `ShardingNetworkPublicAddressArrayInput` via:
 //
@@ -252,12 +245,6 @@ func (i ShardingNetworkPublicAddressArray) ToShardingNetworkPublicAddressArrayOu
 
 func (i ShardingNetworkPublicAddressArray) ToShardingNetworkPublicAddressArrayOutputWithContext(ctx context.Context) ShardingNetworkPublicAddressArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ShardingNetworkPublicAddressArrayOutput)
-}
-
-func (i ShardingNetworkPublicAddressArray) ToOutput(ctx context.Context) pulumix.Output[[]*ShardingNetworkPublicAddress] {
-	return pulumix.Output[[]*ShardingNetworkPublicAddress]{
-		OutputState: i.ToShardingNetworkPublicAddressArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ShardingNetworkPublicAddressMapInput is an input type that accepts ShardingNetworkPublicAddressMap and ShardingNetworkPublicAddressMapOutput values.
@@ -285,12 +272,6 @@ func (i ShardingNetworkPublicAddressMap) ToShardingNetworkPublicAddressMapOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ShardingNetworkPublicAddressMapOutput)
 }
 
-func (i ShardingNetworkPublicAddressMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ShardingNetworkPublicAddress] {
-	return pulumix.Output[map[string]*ShardingNetworkPublicAddress]{
-		OutputState: i.ToShardingNetworkPublicAddressMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ShardingNetworkPublicAddressOutput struct{ *pulumi.OutputState }
 
 func (ShardingNetworkPublicAddressOutput) ElementType() reflect.Type {
@@ -303,12 +284,6 @@ func (o ShardingNetworkPublicAddressOutput) ToShardingNetworkPublicAddressOutput
 
 func (o ShardingNetworkPublicAddressOutput) ToShardingNetworkPublicAddressOutputWithContext(ctx context.Context) ShardingNetworkPublicAddressOutput {
 	return o
-}
-
-func (o ShardingNetworkPublicAddressOutput) ToOutput(ctx context.Context) pulumix.Output[*ShardingNetworkPublicAddress] {
-	return pulumix.Output[*ShardingNetworkPublicAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the instance.
@@ -342,12 +317,6 @@ func (o ShardingNetworkPublicAddressArrayOutput) ToShardingNetworkPublicAddressA
 	return o
 }
 
-func (o ShardingNetworkPublicAddressArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ShardingNetworkPublicAddress] {
-	return pulumix.Output[[]*ShardingNetworkPublicAddress]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ShardingNetworkPublicAddressArrayOutput) Index(i pulumi.IntInput) ShardingNetworkPublicAddressOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ShardingNetworkPublicAddress {
 		return vs[0].([]*ShardingNetworkPublicAddress)[vs[1].(int)]
@@ -366,12 +335,6 @@ func (o ShardingNetworkPublicAddressMapOutput) ToShardingNetworkPublicAddressMap
 
 func (o ShardingNetworkPublicAddressMapOutput) ToShardingNetworkPublicAddressMapOutputWithContext(ctx context.Context) ShardingNetworkPublicAddressMapOutput {
 	return o
-}
-
-func (o ShardingNetworkPublicAddressMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ShardingNetworkPublicAddress] {
-	return pulumix.Output[map[string]*ShardingNetworkPublicAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ShardingNetworkPublicAddressMapOutput) MapIndex(k pulumi.StringInput) ShardingNetworkPublicAddressOutput {

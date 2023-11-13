@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides DMS Enterprise Database available to the user. [What is Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-listdatabases).
@@ -123,12 +122,6 @@ func (o GetEnterpriseDatabasesResultOutput) ToGetEnterpriseDatabasesResultOutput
 
 func (o GetEnterpriseDatabasesResultOutput) ToGetEnterpriseDatabasesResultOutputWithContext(ctx context.Context) GetEnterpriseDatabasesResultOutput {
 	return o
-}
-
-func (o GetEnterpriseDatabasesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnterpriseDatabasesResult] {
-	return pulumix.Output[GetEnterpriseDatabasesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of Database Entries. Each element contains the following attributes:

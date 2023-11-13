@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -51,12 +50,6 @@ func (i GetAclsAclArgs) ToGetAclsAclOutputWithContext(ctx context.Context) GetAc
 	return pulumi.ToOutputWithContext(ctx, i).(GetAclsAclOutput)
 }
 
-func (i GetAclsAclArgs) ToOutput(ctx context.Context) pulumix.Output[GetAclsAcl] {
-	return pulumix.Output[GetAclsAcl]{
-		OutputState: i.ToGetAclsAclOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAclsAclArrayInput is an input type that accepts GetAclsAclArray and GetAclsAclArrayOutput values.
 // You can construct a concrete instance of `GetAclsAclArrayInput` via:
 //
@@ -82,12 +75,6 @@ func (i GetAclsAclArray) ToGetAclsAclArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GetAclsAclArrayOutput)
 }
 
-func (i GetAclsAclArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAclsAcl] {
-	return pulumix.Output[[]GetAclsAcl]{
-		OutputState: i.ToGetAclsAclArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAclsAclOutput struct{ *pulumi.OutputState }
 
 func (GetAclsAclOutput) ElementType() reflect.Type {
@@ -100,12 +87,6 @@ func (o GetAclsAclOutput) ToGetAclsAclOutput() GetAclsAclOutput {
 
 func (o GetAclsAclOutput) ToGetAclsAclOutputWithContext(ctx context.Context) GetAclsAclOutput {
 	return o
-}
-
-func (o GetAclsAclOutput) ToOutput(ctx context.Context) pulumix.Output[GetAclsAcl] {
-	return pulumix.Output[GetAclsAcl]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the ACL. For example "acl-xxx".
@@ -130,12 +111,6 @@ func (o GetAclsAclArrayOutput) ToGetAclsAclArrayOutput() GetAclsAclArrayOutput {
 
 func (o GetAclsAclArrayOutput) ToGetAclsAclArrayOutputWithContext(ctx context.Context) GetAclsAclArrayOutput {
 	return o
-}
-
-func (o GetAclsAclArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAclsAcl] {
-	return pulumix.Output[[]GetAclsAcl]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAclsAclArrayOutput) Index(i pulumi.IntInput) GetAclsAclOutput {
@@ -237,12 +212,6 @@ func (i GetSmartagFlowLogsLogArgs) ToGetSmartagFlowLogsLogOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetSmartagFlowLogsLogOutput)
 }
 
-func (i GetSmartagFlowLogsLogArgs) ToOutput(ctx context.Context) pulumix.Output[GetSmartagFlowLogsLog] {
-	return pulumix.Output[GetSmartagFlowLogsLog]{
-		OutputState: i.ToGetSmartagFlowLogsLogOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetSmartagFlowLogsLogArrayInput is an input type that accepts GetSmartagFlowLogsLogArray and GetSmartagFlowLogsLogArrayOutput values.
 // You can construct a concrete instance of `GetSmartagFlowLogsLogArrayInput` via:
 //
@@ -268,12 +237,6 @@ func (i GetSmartagFlowLogsLogArray) ToGetSmartagFlowLogsLogArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetSmartagFlowLogsLogArrayOutput)
 }
 
-func (i GetSmartagFlowLogsLogArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSmartagFlowLogsLog] {
-	return pulumix.Output[[]GetSmartagFlowLogsLog]{
-		OutputState: i.ToGetSmartagFlowLogsLogArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetSmartagFlowLogsLogOutput struct{ *pulumi.OutputState }
 
 func (GetSmartagFlowLogsLogOutput) ElementType() reflect.Type {
@@ -286,12 +249,6 @@ func (o GetSmartagFlowLogsLogOutput) ToGetSmartagFlowLogsLogOutput() GetSmartagF
 
 func (o GetSmartagFlowLogsLogOutput) ToGetSmartagFlowLogsLogOutputWithContext(ctx context.Context) GetSmartagFlowLogsLogOutput {
 	return o
-}
-
-func (o GetSmartagFlowLogsLogOutput) ToOutput(ctx context.Context) pulumix.Output[GetSmartagFlowLogsLog] {
-	return pulumix.Output[GetSmartagFlowLogsLog]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time interval at which log data of active connections is collected. Valid values: 60 to 6000. Default value: 300. Unit: second.
@@ -386,12 +343,6 @@ func (o GetSmartagFlowLogsLogArrayOutput) ToGetSmartagFlowLogsLogArrayOutput() G
 
 func (o GetSmartagFlowLogsLogArrayOutput) ToGetSmartagFlowLogsLogArrayOutputWithContext(ctx context.Context) GetSmartagFlowLogsLogArrayOutput {
 	return o
-}
-
-func (o GetSmartagFlowLogsLogArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSmartagFlowLogsLog] {
-	return pulumix.Output[[]GetSmartagFlowLogsLog]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSmartagFlowLogsLogArrayOutput) Index(i pulumi.IntInput) GetSmartagFlowLogsLogOutput {

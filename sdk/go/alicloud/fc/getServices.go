@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Function Compute services of the current Alibaba Cloud user.
@@ -114,12 +113,6 @@ func (o GetServicesResultOutput) ToGetServicesResultOutput() GetServicesResultOu
 
 func (o GetServicesResultOutput) ToGetServicesResultOutputWithContext(ctx context.Context) GetServicesResultOutput {
 	return o
-}
-
-func (o GetServicesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetServicesResult] {
-	return pulumix.Output[GetServicesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

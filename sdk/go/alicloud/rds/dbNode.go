@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provide RDS cluster instance to increase node resources, see [What is RDS DB Node](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createdbnodes).
@@ -255,12 +254,6 @@ func (i *DbNode) ToDbNodeOutputWithContext(ctx context.Context) DbNodeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DbNodeOutput)
 }
 
-func (i *DbNode) ToOutput(ctx context.Context) pulumix.Output[*DbNode] {
-	return pulumix.Output[*DbNode]{
-		OutputState: i.ToDbNodeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DbNodeArrayInput is an input type that accepts DbNodeArray and DbNodeArrayOutput values.
 // You can construct a concrete instance of `DbNodeArrayInput` via:
 //
@@ -284,12 +277,6 @@ func (i DbNodeArray) ToDbNodeArrayOutput() DbNodeArrayOutput {
 
 func (i DbNodeArray) ToDbNodeArrayOutputWithContext(ctx context.Context) DbNodeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DbNodeArrayOutput)
-}
-
-func (i DbNodeArray) ToOutput(ctx context.Context) pulumix.Output[[]*DbNode] {
-	return pulumix.Output[[]*DbNode]{
-		OutputState: i.ToDbNodeArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DbNodeMapInput is an input type that accepts DbNodeMap and DbNodeMapOutput values.
@@ -317,12 +304,6 @@ func (i DbNodeMap) ToDbNodeMapOutputWithContext(ctx context.Context) DbNodeMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(DbNodeMapOutput)
 }
 
-func (i DbNodeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DbNode] {
-	return pulumix.Output[map[string]*DbNode]{
-		OutputState: i.ToDbNodeMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DbNodeOutput struct{ *pulumi.OutputState }
 
 func (DbNodeOutput) ElementType() reflect.Type {
@@ -335,12 +316,6 @@ func (o DbNodeOutput) ToDbNodeOutput() DbNodeOutput {
 
 func (o DbNodeOutput) ToDbNodeOutputWithContext(ctx context.Context) DbNodeOutput {
 	return o
-}
-
-func (o DbNodeOutput) ToOutput(ctx context.Context) pulumix.Output[*DbNode] {
-	return pulumix.Output[*DbNode]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The specification information of the node.
@@ -387,12 +362,6 @@ func (o DbNodeArrayOutput) ToDbNodeArrayOutputWithContext(ctx context.Context) D
 	return o
 }
 
-func (o DbNodeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DbNode] {
-	return pulumix.Output[[]*DbNode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DbNodeArrayOutput) Index(i pulumi.IntInput) DbNodeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DbNode {
 		return vs[0].([]*DbNode)[vs[1].(int)]
@@ -411,12 +380,6 @@ func (o DbNodeMapOutput) ToDbNodeMapOutput() DbNodeMapOutput {
 
 func (o DbNodeMapOutput) ToDbNodeMapOutputWithContext(ctx context.Context) DbNodeMapOutput {
 	return o
-}
-
-func (o DbNodeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DbNode] {
-	return pulumix.Output[map[string]*DbNode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DbNodeMapOutput) MapIndex(k pulumi.StringInput) DbNodeOutput {

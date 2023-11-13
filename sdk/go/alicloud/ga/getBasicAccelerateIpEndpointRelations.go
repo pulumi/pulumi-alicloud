@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Global Accelerator (GA) Basic Accelerate Ip Endpoint Relations of the current Alibaba Cloud user.
@@ -137,12 +136,6 @@ func (o GetBasicAccelerateIpEndpointRelationsResultOutput) ToGetBasicAccelerateI
 
 func (o GetBasicAccelerateIpEndpointRelationsResultOutput) ToGetBasicAccelerateIpEndpointRelationsResultOutputWithContext(ctx context.Context) GetBasicAccelerateIpEndpointRelationsResultOutput {
 	return o
-}
-
-func (o GetBasicAccelerateIpEndpointRelationsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBasicAccelerateIpEndpointRelationsResult] {
-	return pulumix.Output[GetBasicAccelerateIpEndpointRelationsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Basic Accelerate IP.

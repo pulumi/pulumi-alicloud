@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Application Load Balancer (ALB) Listener Additional Certificate Attachment resource.
@@ -140,12 +139,6 @@ func (i *ListenerAdditionalCertificateAttachment) ToListenerAdditionalCertificat
 	return pulumi.ToOutputWithContext(ctx, i).(ListenerAdditionalCertificateAttachmentOutput)
 }
 
-func (i *ListenerAdditionalCertificateAttachment) ToOutput(ctx context.Context) pulumix.Output[*ListenerAdditionalCertificateAttachment] {
-	return pulumix.Output[*ListenerAdditionalCertificateAttachment]{
-		OutputState: i.ToListenerAdditionalCertificateAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ListenerAdditionalCertificateAttachmentArrayInput is an input type that accepts ListenerAdditionalCertificateAttachmentArray and ListenerAdditionalCertificateAttachmentArrayOutput values.
 // You can construct a concrete instance of `ListenerAdditionalCertificateAttachmentArrayInput` via:
 //
@@ -169,12 +162,6 @@ func (i ListenerAdditionalCertificateAttachmentArray) ToListenerAdditionalCertif
 
 func (i ListenerAdditionalCertificateAttachmentArray) ToListenerAdditionalCertificateAttachmentArrayOutputWithContext(ctx context.Context) ListenerAdditionalCertificateAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ListenerAdditionalCertificateAttachmentArrayOutput)
-}
-
-func (i ListenerAdditionalCertificateAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*ListenerAdditionalCertificateAttachment] {
-	return pulumix.Output[[]*ListenerAdditionalCertificateAttachment]{
-		OutputState: i.ToListenerAdditionalCertificateAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ListenerAdditionalCertificateAttachmentMapInput is an input type that accepts ListenerAdditionalCertificateAttachmentMap and ListenerAdditionalCertificateAttachmentMapOutput values.
@@ -202,12 +189,6 @@ func (i ListenerAdditionalCertificateAttachmentMap) ToListenerAdditionalCertific
 	return pulumi.ToOutputWithContext(ctx, i).(ListenerAdditionalCertificateAttachmentMapOutput)
 }
 
-func (i ListenerAdditionalCertificateAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ListenerAdditionalCertificateAttachment] {
-	return pulumix.Output[map[string]*ListenerAdditionalCertificateAttachment]{
-		OutputState: i.ToListenerAdditionalCertificateAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ListenerAdditionalCertificateAttachmentOutput struct{ *pulumi.OutputState }
 
 func (ListenerAdditionalCertificateAttachmentOutput) ElementType() reflect.Type {
@@ -220,12 +201,6 @@ func (o ListenerAdditionalCertificateAttachmentOutput) ToListenerAdditionalCerti
 
 func (o ListenerAdditionalCertificateAttachmentOutput) ToListenerAdditionalCertificateAttachmentOutputWithContext(ctx context.Context) ListenerAdditionalCertificateAttachmentOutput {
 	return o
-}
-
-func (o ListenerAdditionalCertificateAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*ListenerAdditionalCertificateAttachment] {
-	return pulumix.Output[*ListenerAdditionalCertificateAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Certificate ID.
@@ -262,12 +237,6 @@ func (o ListenerAdditionalCertificateAttachmentArrayOutput) ToListenerAdditional
 	return o
 }
 
-func (o ListenerAdditionalCertificateAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ListenerAdditionalCertificateAttachment] {
-	return pulumix.Output[[]*ListenerAdditionalCertificateAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ListenerAdditionalCertificateAttachmentArrayOutput) Index(i pulumi.IntInput) ListenerAdditionalCertificateAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ListenerAdditionalCertificateAttachment {
 		return vs[0].([]*ListenerAdditionalCertificateAttachment)[vs[1].(int)]
@@ -286,12 +255,6 @@ func (o ListenerAdditionalCertificateAttachmentMapOutput) ToListenerAdditionalCe
 
 func (o ListenerAdditionalCertificateAttachmentMapOutput) ToListenerAdditionalCertificateAttachmentMapOutputWithContext(ctx context.Context) ListenerAdditionalCertificateAttachmentMapOutput {
 	return o
-}
-
-func (o ListenerAdditionalCertificateAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ListenerAdditionalCertificateAttachment] {
-	return pulumix.Output[map[string]*ListenerAdditionalCertificateAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ListenerAdditionalCertificateAttachmentMapOutput) MapIndex(k pulumi.StringInput) ListenerAdditionalCertificateAttachmentOutput {

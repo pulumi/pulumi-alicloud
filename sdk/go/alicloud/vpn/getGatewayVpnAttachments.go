@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
@@ -143,12 +142,6 @@ func (o GetGatewayVpnAttachmentsResultOutput) ToGetGatewayVpnAttachmentsResultOu
 
 func (o GetGatewayVpnAttachmentsResultOutput) ToGetGatewayVpnAttachmentsResultOutputWithContext(ctx context.Context) GetGatewayVpnAttachmentsResultOutput {
 	return o
-}
-
-func (o GetGatewayVpnAttachmentsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGatewayVpnAttachmentsResult] {
-	return pulumix.Output[GetGatewayVpnAttachmentsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetGatewayVpnAttachmentsResultOutput) Attachments() GetGatewayVpnAttachmentsAttachmentArrayOutput {

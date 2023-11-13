@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Config Delivery resource.
@@ -300,12 +299,6 @@ func (i *Delivery) ToDeliveryOutputWithContext(ctx context.Context) DeliveryOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryOutput)
 }
 
-func (i *Delivery) ToOutput(ctx context.Context) pulumix.Output[*Delivery] {
-	return pulumix.Output[*Delivery]{
-		OutputState: i.ToDeliveryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DeliveryArrayInput is an input type that accepts DeliveryArray and DeliveryArrayOutput values.
 // You can construct a concrete instance of `DeliveryArrayInput` via:
 //
@@ -329,12 +322,6 @@ func (i DeliveryArray) ToDeliveryArrayOutput() DeliveryArrayOutput {
 
 func (i DeliveryArray) ToDeliveryArrayOutputWithContext(ctx context.Context) DeliveryArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryArrayOutput)
-}
-
-func (i DeliveryArray) ToOutput(ctx context.Context) pulumix.Output[[]*Delivery] {
-	return pulumix.Output[[]*Delivery]{
-		OutputState: i.ToDeliveryArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DeliveryMapInput is an input type that accepts DeliveryMap and DeliveryMapOutput values.
@@ -362,12 +349,6 @@ func (i DeliveryMap) ToDeliveryMapOutputWithContext(ctx context.Context) Deliver
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryMapOutput)
 }
 
-func (i DeliveryMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Delivery] {
-	return pulumix.Output[map[string]*Delivery]{
-		OutputState: i.ToDeliveryMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeliveryOutput struct{ *pulumi.OutputState }
 
 func (DeliveryOutput) ElementType() reflect.Type {
@@ -380,12 +361,6 @@ func (o DeliveryOutput) ToDeliveryOutput() DeliveryOutput {
 
 func (o DeliveryOutput) ToDeliveryOutputWithContext(ctx context.Context) DeliveryOutput {
 	return o
-}
-
-func (o DeliveryOutput) ToOutput(ctx context.Context) pulumix.Output[*Delivery] {
-	return pulumix.Output[*Delivery]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Open or close delivery configuration change history. true: open, false: close.
@@ -457,12 +432,6 @@ func (o DeliveryArrayOutput) ToDeliveryArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o DeliveryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Delivery] {
-	return pulumix.Output[[]*Delivery]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DeliveryArrayOutput) Index(i pulumi.IntInput) DeliveryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Delivery {
 		return vs[0].([]*Delivery)[vs[1].(int)]
@@ -481,12 +450,6 @@ func (o DeliveryMapOutput) ToDeliveryMapOutput() DeliveryMapOutput {
 
 func (o DeliveryMapOutput) ToDeliveryMapOutputWithContext(ctx context.Context) DeliveryMapOutput {
 	return o
-}
-
-func (o DeliveryMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Delivery] {
-	return pulumix.Output[map[string]*Delivery]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeliveryMapOutput) MapIndex(k pulumi.StringInput) DeliveryOutput {

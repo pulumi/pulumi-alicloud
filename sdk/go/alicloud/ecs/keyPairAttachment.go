@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **DEPRECATED:** This resource has been renamed to ecs.EcsKeyPairAttachment from version 1.121.0.
@@ -140,12 +139,6 @@ func (i *KeyPairAttachment) ToKeyPairAttachmentOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(KeyPairAttachmentOutput)
 }
 
-func (i *KeyPairAttachment) ToOutput(ctx context.Context) pulumix.Output[*KeyPairAttachment] {
-	return pulumix.Output[*KeyPairAttachment]{
-		OutputState: i.ToKeyPairAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // KeyPairAttachmentArrayInput is an input type that accepts KeyPairAttachmentArray and KeyPairAttachmentArrayOutput values.
 // You can construct a concrete instance of `KeyPairAttachmentArrayInput` via:
 //
@@ -169,12 +162,6 @@ func (i KeyPairAttachmentArray) ToKeyPairAttachmentArrayOutput() KeyPairAttachme
 
 func (i KeyPairAttachmentArray) ToKeyPairAttachmentArrayOutputWithContext(ctx context.Context) KeyPairAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeyPairAttachmentArrayOutput)
-}
-
-func (i KeyPairAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*KeyPairAttachment] {
-	return pulumix.Output[[]*KeyPairAttachment]{
-		OutputState: i.ToKeyPairAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // KeyPairAttachmentMapInput is an input type that accepts KeyPairAttachmentMap and KeyPairAttachmentMapOutput values.
@@ -202,12 +189,6 @@ func (i KeyPairAttachmentMap) ToKeyPairAttachmentMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(KeyPairAttachmentMapOutput)
 }
 
-func (i KeyPairAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*KeyPairAttachment] {
-	return pulumix.Output[map[string]*KeyPairAttachment]{
-		OutputState: i.ToKeyPairAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KeyPairAttachmentOutput struct{ *pulumi.OutputState }
 
 func (KeyPairAttachmentOutput) ElementType() reflect.Type {
@@ -220,12 +201,6 @@ func (o KeyPairAttachmentOutput) ToKeyPairAttachmentOutput() KeyPairAttachmentOu
 
 func (o KeyPairAttachmentOutput) ToKeyPairAttachmentOutputWithContext(ctx context.Context) KeyPairAttachmentOutput {
 	return o
-}
-
-func (o KeyPairAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyPairAttachment] {
-	return pulumix.Output[*KeyPairAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
@@ -263,12 +238,6 @@ func (o KeyPairAttachmentArrayOutput) ToKeyPairAttachmentArrayOutputWithContext(
 	return o
 }
 
-func (o KeyPairAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*KeyPairAttachment] {
-	return pulumix.Output[[]*KeyPairAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o KeyPairAttachmentArrayOutput) Index(i pulumi.IntInput) KeyPairAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KeyPairAttachment {
 		return vs[0].([]*KeyPairAttachment)[vs[1].(int)]
@@ -287,12 +256,6 @@ func (o KeyPairAttachmentMapOutput) ToKeyPairAttachmentMapOutput() KeyPairAttach
 
 func (o KeyPairAttachmentMapOutput) ToKeyPairAttachmentMapOutputWithContext(ctx context.Context) KeyPairAttachmentMapOutput {
 	return o
-}
-
-func (o KeyPairAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*KeyPairAttachment] {
-	return pulumix.Output[map[string]*KeyPairAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyPairAttachmentMapOutput) MapIndex(k pulumi.StringInput) KeyPairAttachmentOutput {

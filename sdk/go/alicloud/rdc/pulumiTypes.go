@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -55,12 +54,6 @@ func (i GetOrganizationsOrganizationArgs) ToGetOrganizationsOrganizationOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationsOrganizationOutput)
 }
 
-func (i GetOrganizationsOrganizationArgs) ToOutput(ctx context.Context) pulumix.Output[GetOrganizationsOrganization] {
-	return pulumix.Output[GetOrganizationsOrganization]{
-		OutputState: i.ToGetOrganizationsOrganizationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetOrganizationsOrganizationArrayInput is an input type that accepts GetOrganizationsOrganizationArray and GetOrganizationsOrganizationArrayOutput values.
 // You can construct a concrete instance of `GetOrganizationsOrganizationArrayInput` via:
 //
@@ -86,12 +79,6 @@ func (i GetOrganizationsOrganizationArray) ToGetOrganizationsOrganizationArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationsOrganizationArrayOutput)
 }
 
-func (i GetOrganizationsOrganizationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetOrganizationsOrganization] {
-	return pulumix.Output[[]GetOrganizationsOrganization]{
-		OutputState: i.ToGetOrganizationsOrganizationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetOrganizationsOrganizationOutput struct{ *pulumi.OutputState }
 
 func (GetOrganizationsOrganizationOutput) ElementType() reflect.Type {
@@ -104,12 +91,6 @@ func (o GetOrganizationsOrganizationOutput) ToGetOrganizationsOrganizationOutput
 
 func (o GetOrganizationsOrganizationOutput) ToGetOrganizationsOrganizationOutputWithContext(ctx context.Context) GetOrganizationsOrganizationOutput {
 	return o
-}
-
-func (o GetOrganizationsOrganizationOutput) ToOutput(ctx context.Context) pulumix.Output[GetOrganizationsOrganization] {
-	return pulumix.Output[GetOrganizationsOrganization]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Organization.
@@ -139,12 +120,6 @@ func (o GetOrganizationsOrganizationArrayOutput) ToGetOrganizationsOrganizationA
 
 func (o GetOrganizationsOrganizationArrayOutput) ToGetOrganizationsOrganizationArrayOutputWithContext(ctx context.Context) GetOrganizationsOrganizationArrayOutput {
 	return o
-}
-
-func (o GetOrganizationsOrganizationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetOrganizationsOrganization] {
-	return pulumix.Output[[]GetOrganizationsOrganization]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetOrganizationsOrganizationArrayOutput) Index(i pulumi.IntInput) GetOrganizationsOrganizationOutput {

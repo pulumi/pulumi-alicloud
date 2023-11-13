@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list Container Registry Enterprise Edition repositories on Alibaba Cloud.
@@ -135,12 +134,6 @@ func (o GetRegistryEnterpriseReposResultOutput) ToGetRegistryEnterpriseReposResu
 
 func (o GetRegistryEnterpriseReposResultOutput) ToGetRegistryEnterpriseReposResultOutputWithContext(ctx context.Context) GetRegistryEnterpriseReposResultOutput {
 	return o
-}
-
-func (o GetRegistryEnterpriseReposResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRegistryEnterpriseReposResult] {
-	return pulumix.Output[GetRegistryEnterpriseReposResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRegistryEnterpriseReposResultOutput) EnableDetails() pulumi.BoolPtrOutput {

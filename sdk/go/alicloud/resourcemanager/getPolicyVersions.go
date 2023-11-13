@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Resource Manager Policy Versions of the current Alibaba Cloud user.
@@ -125,12 +124,6 @@ func (o GetPolicyVersionsResultOutput) ToGetPolicyVersionsResultOutput() GetPoli
 
 func (o GetPolicyVersionsResultOutput) ToGetPolicyVersionsResultOutputWithContext(ctx context.Context) GetPolicyVersionsResultOutput {
 	return o
-}
-
-func (o GetPolicyVersionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPolicyVersionsResult] {
-	return pulumix.Output[GetPolicyVersionsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetPolicyVersionsResultOutput) EnableDetails() pulumi.BoolPtrOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list Container Service Managed Kubernetes Clusters on Alibaba Cloud.
@@ -128,12 +127,6 @@ func (o GetManagedKubernetesClustersResultOutput) ToGetManagedKubernetesClusters
 
 func (o GetManagedKubernetesClustersResultOutput) ToGetManagedKubernetesClustersResultOutputWithContext(ctx context.Context) GetManagedKubernetesClustersResultOutput {
 	return o
-}
-
-func (o GetManagedKubernetesClustersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetManagedKubernetesClustersResult] {
-	return pulumix.Output[GetManagedKubernetesClustersResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of matched Kubernetes clusters. Each element contains the following attributes:

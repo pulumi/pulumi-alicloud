@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Service Mesh Extension Provider resource.
@@ -154,12 +153,6 @@ func (i *ExtensionProvider) ToExtensionProviderOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionProviderOutput)
 }
 
-func (i *ExtensionProvider) ToOutput(ctx context.Context) pulumix.Output[*ExtensionProvider] {
-	return pulumix.Output[*ExtensionProvider]{
-		OutputState: i.ToExtensionProviderOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ExtensionProviderArrayInput is an input type that accepts ExtensionProviderArray and ExtensionProviderArrayOutput values.
 // You can construct a concrete instance of `ExtensionProviderArrayInput` via:
 //
@@ -183,12 +176,6 @@ func (i ExtensionProviderArray) ToExtensionProviderArrayOutput() ExtensionProvid
 
 func (i ExtensionProviderArray) ToExtensionProviderArrayOutputWithContext(ctx context.Context) ExtensionProviderArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionProviderArrayOutput)
-}
-
-func (i ExtensionProviderArray) ToOutput(ctx context.Context) pulumix.Output[[]*ExtensionProvider] {
-	return pulumix.Output[[]*ExtensionProvider]{
-		OutputState: i.ToExtensionProviderArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ExtensionProviderMapInput is an input type that accepts ExtensionProviderMap and ExtensionProviderMapOutput values.
@@ -216,12 +203,6 @@ func (i ExtensionProviderMap) ToExtensionProviderMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionProviderMapOutput)
 }
 
-func (i ExtensionProviderMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ExtensionProvider] {
-	return pulumix.Output[map[string]*ExtensionProvider]{
-		OutputState: i.ToExtensionProviderMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ExtensionProviderOutput struct{ *pulumi.OutputState }
 
 func (ExtensionProviderOutput) ElementType() reflect.Type {
@@ -234,12 +215,6 @@ func (o ExtensionProviderOutput) ToExtensionProviderOutput() ExtensionProviderOu
 
 func (o ExtensionProviderOutput) ToExtensionProviderOutputWithContext(ctx context.Context) ExtensionProviderOutput {
 	return o
-}
-
-func (o ExtensionProviderOutput) ToOutput(ctx context.Context) pulumix.Output[*ExtensionProvider] {
-	return pulumix.Output[*ExtensionProvider]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The config of the Service Mesh Extension Provider. The `config` format is json.
@@ -276,12 +251,6 @@ func (o ExtensionProviderArrayOutput) ToExtensionProviderArrayOutputWithContext(
 	return o
 }
 
-func (o ExtensionProviderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ExtensionProvider] {
-	return pulumix.Output[[]*ExtensionProvider]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ExtensionProviderArrayOutput) Index(i pulumi.IntInput) ExtensionProviderOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ExtensionProvider {
 		return vs[0].([]*ExtensionProvider)[vs[1].(int)]
@@ -300,12 +269,6 @@ func (o ExtensionProviderMapOutput) ToExtensionProviderMapOutput() ExtensionProv
 
 func (o ExtensionProviderMapOutput) ToExtensionProviderMapOutputWithContext(ctx context.Context) ExtensionProviderMapOutput {
 	return o
-}
-
-func (o ExtensionProviderMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ExtensionProvider] {
-	return pulumix.Output[map[string]*ExtensionProvider]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExtensionProviderMapOutput) MapIndex(k pulumi.StringInput) ExtensionProviderOutput {

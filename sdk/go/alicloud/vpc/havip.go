@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -285,12 +284,6 @@ func (i *HAVip) ToHAVipOutputWithContext(ctx context.Context) HAVipOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HAVipOutput)
 }
 
-func (i *HAVip) ToOutput(ctx context.Context) pulumix.Output[*HAVip] {
-	return pulumix.Output[*HAVip]{
-		OutputState: i.ToHAVipOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HAVipArrayInput is an input type that accepts HAVipArray and HAVipArrayOutput values.
 // You can construct a concrete instance of `HAVipArrayInput` via:
 //
@@ -314,12 +307,6 @@ func (i HAVipArray) ToHAVipArrayOutput() HAVipArrayOutput {
 
 func (i HAVipArray) ToHAVipArrayOutputWithContext(ctx context.Context) HAVipArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HAVipArrayOutput)
-}
-
-func (i HAVipArray) ToOutput(ctx context.Context) pulumix.Output[[]*HAVip] {
-	return pulumix.Output[[]*HAVip]{
-		OutputState: i.ToHAVipArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HAVipMapInput is an input type that accepts HAVipMap and HAVipMapOutput values.
@@ -347,12 +334,6 @@ func (i HAVipMap) ToHAVipMapOutputWithContext(ctx context.Context) HAVipMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(HAVipMapOutput)
 }
 
-func (i HAVipMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HAVip] {
-	return pulumix.Output[map[string]*HAVip]{
-		OutputState: i.ToHAVipMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HAVipOutput struct{ *pulumi.OutputState }
 
 func (HAVipOutput) ElementType() reflect.Type {
@@ -365,12 +346,6 @@ func (o HAVipOutput) ToHAVipOutput() HAVipOutput {
 
 func (o HAVipOutput) ToHAVipOutputWithContext(ctx context.Context) HAVipOutput {
 	return o
-}
-
-func (o HAVipOutput) ToOutput(ctx context.Context) pulumix.Output[*HAVip] {
-	return pulumix.Output[*HAVip]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The elastic IP address (EIP) associated with the HAVIP.
@@ -464,12 +439,6 @@ func (o HAVipArrayOutput) ToHAVipArrayOutputWithContext(ctx context.Context) HAV
 	return o
 }
 
-func (o HAVipArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HAVip] {
-	return pulumix.Output[[]*HAVip]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HAVipArrayOutput) Index(i pulumi.IntInput) HAVipOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HAVip {
 		return vs[0].([]*HAVip)[vs[1].(int)]
@@ -488,12 +457,6 @@ func (o HAVipMapOutput) ToHAVipMapOutput() HAVipMapOutput {
 
 func (o HAVipMapOutput) ToHAVipMapOutputWithContext(ctx context.Context) HAVipMapOutput {
 	return o
-}
-
-func (o HAVipMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HAVip] {
-	return pulumix.Output[map[string]*HAVip]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HAVipMapOutput) MapIndex(k pulumi.StringInput) HAVipOutput {

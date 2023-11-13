@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Alidns Custom Lines of the current Alibaba Cloud user.
@@ -131,12 +130,6 @@ func (o GetCustomLinesResultOutput) ToGetCustomLinesResultOutput() GetCustomLine
 
 func (o GetCustomLinesResultOutput) ToGetCustomLinesResultOutputWithContext(ctx context.Context) GetCustomLinesResultOutput {
 	return o
-}
-
-func (o GetCustomLinesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCustomLinesResult] {
-	return pulumix.Output[GetCustomLinesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetCustomLinesResultOutput) DomainName() pulumi.StringOutput {

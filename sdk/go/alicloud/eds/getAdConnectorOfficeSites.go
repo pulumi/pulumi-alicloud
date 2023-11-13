@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ecd Ad Connector Office Sites of the current Alibaba Cloud user.
@@ -125,12 +124,6 @@ func (o GetAdConnectorOfficeSitesResultOutput) ToGetAdConnectorOfficeSitesResult
 
 func (o GetAdConnectorOfficeSitesResultOutput) ToGetAdConnectorOfficeSitesResultOutputWithContext(ctx context.Context) GetAdConnectorOfficeSitesResultOutput {
 	return o
-}
-
-func (o GetAdConnectorOfficeSitesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAdConnectorOfficeSitesResult] {
-	return pulumix.Output[GetAdConnectorOfficeSitesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

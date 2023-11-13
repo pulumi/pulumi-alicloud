@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a AliKafka Instance Allowed Ip Attachment resource.
@@ -244,12 +243,6 @@ func (i *InstanceAllowedIpAttachment) ToInstanceAllowedIpAttachmentOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceAllowedIpAttachmentOutput)
 }
 
-func (i *InstanceAllowedIpAttachment) ToOutput(ctx context.Context) pulumix.Output[*InstanceAllowedIpAttachment] {
-	return pulumix.Output[*InstanceAllowedIpAttachment]{
-		OutputState: i.ToInstanceAllowedIpAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstanceAllowedIpAttachmentArrayInput is an input type that accepts InstanceAllowedIpAttachmentArray and InstanceAllowedIpAttachmentArrayOutput values.
 // You can construct a concrete instance of `InstanceAllowedIpAttachmentArrayInput` via:
 //
@@ -273,12 +266,6 @@ func (i InstanceAllowedIpAttachmentArray) ToInstanceAllowedIpAttachmentArrayOutp
 
 func (i InstanceAllowedIpAttachmentArray) ToInstanceAllowedIpAttachmentArrayOutputWithContext(ctx context.Context) InstanceAllowedIpAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceAllowedIpAttachmentArrayOutput)
-}
-
-func (i InstanceAllowedIpAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceAllowedIpAttachment] {
-	return pulumix.Output[[]*InstanceAllowedIpAttachment]{
-		OutputState: i.ToInstanceAllowedIpAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InstanceAllowedIpAttachmentMapInput is an input type that accepts InstanceAllowedIpAttachmentMap and InstanceAllowedIpAttachmentMapOutput values.
@@ -306,12 +293,6 @@ func (i InstanceAllowedIpAttachmentMap) ToInstanceAllowedIpAttachmentMapOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceAllowedIpAttachmentMapOutput)
 }
 
-func (i InstanceAllowedIpAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceAllowedIpAttachment] {
-	return pulumix.Output[map[string]*InstanceAllowedIpAttachment]{
-		OutputState: i.ToInstanceAllowedIpAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceAllowedIpAttachmentOutput struct{ *pulumi.OutputState }
 
 func (InstanceAllowedIpAttachmentOutput) ElementType() reflect.Type {
@@ -324,12 +305,6 @@ func (o InstanceAllowedIpAttachmentOutput) ToInstanceAllowedIpAttachmentOutput()
 
 func (o InstanceAllowedIpAttachmentOutput) ToInstanceAllowedIpAttachmentOutputWithContext(ctx context.Context) InstanceAllowedIpAttachmentOutput {
 	return o
-}
-
-func (o InstanceAllowedIpAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceAllowedIpAttachment] {
-	return pulumix.Output[*InstanceAllowedIpAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The allowed ip. It can be a CIDR block.
@@ -368,12 +343,6 @@ func (o InstanceAllowedIpAttachmentArrayOutput) ToInstanceAllowedIpAttachmentArr
 	return o
 }
 
-func (o InstanceAllowedIpAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceAllowedIpAttachment] {
-	return pulumix.Output[[]*InstanceAllowedIpAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceAllowedIpAttachmentArrayOutput) Index(i pulumi.IntInput) InstanceAllowedIpAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceAllowedIpAttachment {
 		return vs[0].([]*InstanceAllowedIpAttachment)[vs[1].(int)]
@@ -392,12 +361,6 @@ func (o InstanceAllowedIpAttachmentMapOutput) ToInstanceAllowedIpAttachmentMapOu
 
 func (o InstanceAllowedIpAttachmentMapOutput) ToInstanceAllowedIpAttachmentMapOutputWithContext(ctx context.Context) InstanceAllowedIpAttachmentMapOutput {
 	return o
-}
-
-func (o InstanceAllowedIpAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceAllowedIpAttachment] {
-	return pulumix.Output[map[string]*InstanceAllowedIpAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceAllowedIpAttachmentMapOutput) MapIndex(k pulumi.StringInput) InstanceAllowedIpAttachmentOutput {

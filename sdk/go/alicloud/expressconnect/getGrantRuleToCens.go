@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Express Connect Grant Rule To Cens of the current Alibaba Cloud user.
@@ -124,12 +123,6 @@ func (o GetGrantRuleToCensResultOutput) ToGetGrantRuleToCensResultOutput() GetGr
 
 func (o GetGrantRuleToCensResultOutput) ToGetGrantRuleToCensResultOutputWithContext(ctx context.Context) GetGrantRuleToCensResultOutput {
 	return o
-}
-
-func (o GetGrantRuleToCensResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGrantRuleToCensResult] {
-	return pulumix.Output[GetGrantRuleToCensResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of Express Connect Grant Rule To Cens. Each element contains the following attributes:

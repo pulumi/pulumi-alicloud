@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list of Alidns instances in an Alibaba Cloud account according to the specified filters.
@@ -126,12 +125,6 @@ func (o GetAlidnsInstancesResultOutput) ToGetAlidnsInstancesResultOutput() GetAl
 
 func (o GetAlidnsInstancesResultOutput) ToGetAlidnsInstancesResultOutputWithContext(ctx context.Context) GetAlidnsInstancesResultOutput {
 	return o
-}
-
-func (o GetAlidnsInstancesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAlidnsInstancesResult] {
-	return pulumix.Output[GetAlidnsInstancesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAlidnsInstancesResultOutput) DomainType() pulumi.StringPtrOutput {

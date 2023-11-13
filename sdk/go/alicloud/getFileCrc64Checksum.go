@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source compute file crc64 checksum.
@@ -106,12 +105,6 @@ func (o GetFileCrc64ChecksumResultOutput) ToGetFileCrc64ChecksumResultOutput() G
 
 func (o GetFileCrc64ChecksumResultOutput) ToGetFileCrc64ChecksumResultOutputWithContext(ctx context.Context) GetFileCrc64ChecksumResultOutput {
 	return o
-}
-
-func (o GetFileCrc64ChecksumResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetFileCrc64ChecksumResult] {
-	return pulumix.Output[GetFileCrc64ChecksumResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // the file checksum of crc64.

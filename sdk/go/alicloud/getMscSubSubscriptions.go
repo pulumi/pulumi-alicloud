@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Message Center Subscriptions of the current Alibaba Cloud user.
@@ -102,12 +101,6 @@ func (o GetMscSubSubscriptionsResultOutput) ToGetMscSubSubscriptionsResultOutput
 
 func (o GetMscSubSubscriptionsResultOutput) ToGetMscSubSubscriptionsResultOutputWithContext(ctx context.Context) GetMscSubSubscriptionsResultOutput {
 	return o
-}
-
-func (o GetMscSubSubscriptionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetMscSubSubscriptionsResult] {
-	return pulumix.Output[GetMscSubSubscriptionsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

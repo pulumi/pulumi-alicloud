@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Config Aggregate Delivery resource.
@@ -252,12 +251,6 @@ func (i *AggregateDelivery) ToAggregateDeliveryOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(AggregateDeliveryOutput)
 }
 
-func (i *AggregateDelivery) ToOutput(ctx context.Context) pulumix.Output[*AggregateDelivery] {
-	return pulumix.Output[*AggregateDelivery]{
-		OutputState: i.ToAggregateDeliveryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AggregateDeliveryArrayInput is an input type that accepts AggregateDeliveryArray and AggregateDeliveryArrayOutput values.
 // You can construct a concrete instance of `AggregateDeliveryArrayInput` via:
 //
@@ -281,12 +274,6 @@ func (i AggregateDeliveryArray) ToAggregateDeliveryArrayOutput() AggregateDelive
 
 func (i AggregateDeliveryArray) ToAggregateDeliveryArrayOutputWithContext(ctx context.Context) AggregateDeliveryArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AggregateDeliveryArrayOutput)
-}
-
-func (i AggregateDeliveryArray) ToOutput(ctx context.Context) pulumix.Output[[]*AggregateDelivery] {
-	return pulumix.Output[[]*AggregateDelivery]{
-		OutputState: i.ToAggregateDeliveryArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AggregateDeliveryMapInput is an input type that accepts AggregateDeliveryMap and AggregateDeliveryMapOutput values.
@@ -314,12 +301,6 @@ func (i AggregateDeliveryMap) ToAggregateDeliveryMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AggregateDeliveryMapOutput)
 }
 
-func (i AggregateDeliveryMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AggregateDelivery] {
-	return pulumix.Output[map[string]*AggregateDelivery]{
-		OutputState: i.ToAggregateDeliveryMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AggregateDeliveryOutput struct{ *pulumi.OutputState }
 
 func (AggregateDeliveryOutput) ElementType() reflect.Type {
@@ -332,12 +313,6 @@ func (o AggregateDeliveryOutput) ToAggregateDeliveryOutput() AggregateDeliveryOu
 
 func (o AggregateDeliveryOutput) ToAggregateDeliveryOutputWithContext(ctx context.Context) AggregateDeliveryOutput {
 	return o
-}
-
-func (o AggregateDeliveryOutput) ToOutput(ctx context.Context) pulumix.Output[*AggregateDelivery] {
-	return pulumix.Output[*AggregateDelivery]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Aggregator.
@@ -419,12 +394,6 @@ func (o AggregateDeliveryArrayOutput) ToAggregateDeliveryArrayOutputWithContext(
 	return o
 }
 
-func (o AggregateDeliveryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AggregateDelivery] {
-	return pulumix.Output[[]*AggregateDelivery]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AggregateDeliveryArrayOutput) Index(i pulumi.IntInput) AggregateDeliveryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AggregateDelivery {
 		return vs[0].([]*AggregateDelivery)[vs[1].(int)]
@@ -443,12 +412,6 @@ func (o AggregateDeliveryMapOutput) ToAggregateDeliveryMapOutput() AggregateDeli
 
 func (o AggregateDeliveryMapOutput) ToAggregateDeliveryMapOutputWithContext(ctx context.Context) AggregateDeliveryMapOutput {
 	return o
-}
-
-func (o AggregateDeliveryMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AggregateDelivery] {
-	return pulumix.Output[map[string]*AggregateDelivery]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AggregateDeliveryMapOutput) MapIndex(k pulumi.StringInput) AggregateDeliveryOutput {

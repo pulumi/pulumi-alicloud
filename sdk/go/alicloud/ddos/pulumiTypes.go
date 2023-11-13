@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -51,12 +50,6 @@ func (i DomainResourceProxyTypeArgs) ToDomainResourceProxyTypeOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(DomainResourceProxyTypeOutput)
 }
 
-func (i DomainResourceProxyTypeArgs) ToOutput(ctx context.Context) pulumix.Output[DomainResourceProxyType] {
-	return pulumix.Output[DomainResourceProxyType]{
-		OutputState: i.ToDomainResourceProxyTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DomainResourceProxyTypeArrayInput is an input type that accepts DomainResourceProxyTypeArray and DomainResourceProxyTypeArrayOutput values.
 // You can construct a concrete instance of `DomainResourceProxyTypeArrayInput` via:
 //
@@ -82,12 +75,6 @@ func (i DomainResourceProxyTypeArray) ToDomainResourceProxyTypeArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(DomainResourceProxyTypeArrayOutput)
 }
 
-func (i DomainResourceProxyTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]DomainResourceProxyType] {
-	return pulumix.Output[[]DomainResourceProxyType]{
-		OutputState: i.ToDomainResourceProxyTypeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DomainResourceProxyTypeOutput struct{ *pulumi.OutputState }
 
 func (DomainResourceProxyTypeOutput) ElementType() reflect.Type {
@@ -100,12 +87,6 @@ func (o DomainResourceProxyTypeOutput) ToDomainResourceProxyTypeOutput() DomainR
 
 func (o DomainResourceProxyTypeOutput) ToDomainResourceProxyTypeOutputWithContext(ctx context.Context) DomainResourceProxyTypeOutput {
 	return o
-}
-
-func (o DomainResourceProxyTypeOutput) ToOutput(ctx context.Context) pulumix.Output[DomainResourceProxyType] {
-	return pulumix.Output[DomainResourceProxyType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxyPorts` can be modified.
@@ -130,12 +111,6 @@ func (o DomainResourceProxyTypeArrayOutput) ToDomainResourceProxyTypeArrayOutput
 
 func (o DomainResourceProxyTypeArrayOutput) ToDomainResourceProxyTypeArrayOutputWithContext(ctx context.Context) DomainResourceProxyTypeArrayOutput {
 	return o
-}
-
-func (o DomainResourceProxyTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DomainResourceProxyType] {
-	return pulumix.Output[[]DomainResourceProxyType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DomainResourceProxyTypeArrayOutput) Index(i pulumi.IntInput) DomainResourceProxyTypeOutput {
@@ -209,12 +184,6 @@ func (i SchedulerRuleRuleArgs) ToSchedulerRuleRuleOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(SchedulerRuleRuleOutput)
 }
 
-func (i SchedulerRuleRuleArgs) ToOutput(ctx context.Context) pulumix.Output[SchedulerRuleRule] {
-	return pulumix.Output[SchedulerRuleRule]{
-		OutputState: i.ToSchedulerRuleRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SchedulerRuleRuleArrayInput is an input type that accepts SchedulerRuleRuleArray and SchedulerRuleRuleArrayOutput values.
 // You can construct a concrete instance of `SchedulerRuleRuleArrayInput` via:
 //
@@ -240,12 +209,6 @@ func (i SchedulerRuleRuleArray) ToSchedulerRuleRuleArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(SchedulerRuleRuleArrayOutput)
 }
 
-func (i SchedulerRuleRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]SchedulerRuleRule] {
-	return pulumix.Output[[]SchedulerRuleRule]{
-		OutputState: i.ToSchedulerRuleRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SchedulerRuleRuleOutput struct{ *pulumi.OutputState }
 
 func (SchedulerRuleRuleOutput) ElementType() reflect.Type {
@@ -258,12 +221,6 @@ func (o SchedulerRuleRuleOutput) ToSchedulerRuleRuleOutput() SchedulerRuleRuleOu
 
 func (o SchedulerRuleRuleOutput) ToSchedulerRuleRuleOutputWithContext(ctx context.Context) SchedulerRuleRuleOutput {
 	return o
-}
-
-func (o SchedulerRuleRuleOutput) ToOutput(ctx context.Context) pulumix.Output[SchedulerRuleRule] {
-	return pulumix.Output[SchedulerRuleRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The priority of the rule.
@@ -314,12 +271,6 @@ func (o SchedulerRuleRuleArrayOutput) ToSchedulerRuleRuleArrayOutput() Scheduler
 
 func (o SchedulerRuleRuleArrayOutput) ToSchedulerRuleRuleArrayOutputWithContext(ctx context.Context) SchedulerRuleRuleArrayOutput {
 	return o
-}
-
-func (o SchedulerRuleRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SchedulerRuleRule] {
-	return pulumix.Output[[]SchedulerRuleRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SchedulerRuleRuleArrayOutput) Index(i pulumi.IntInput) SchedulerRuleRuleOutput {
@@ -393,12 +344,6 @@ func (i GetDdosBgpInstancesInstanceArgs) ToGetDdosBgpInstancesInstanceOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetDdosBgpInstancesInstanceOutput)
 }
 
-func (i GetDdosBgpInstancesInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetDdosBgpInstancesInstance] {
-	return pulumix.Output[GetDdosBgpInstancesInstance]{
-		OutputState: i.ToGetDdosBgpInstancesInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDdosBgpInstancesInstanceArrayInput is an input type that accepts GetDdosBgpInstancesInstanceArray and GetDdosBgpInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetDdosBgpInstancesInstanceArrayInput` via:
 //
@@ -424,12 +369,6 @@ func (i GetDdosBgpInstancesInstanceArray) ToGetDdosBgpInstancesInstanceArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetDdosBgpInstancesInstanceArrayOutput)
 }
 
-func (i GetDdosBgpInstancesInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDdosBgpInstancesInstance] {
-	return pulumix.Output[[]GetDdosBgpInstancesInstance]{
-		OutputState: i.ToGetDdosBgpInstancesInstanceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDdosBgpInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetDdosBgpInstancesInstanceOutput) ElementType() reflect.Type {
@@ -442,12 +381,6 @@ func (o GetDdosBgpInstancesInstanceOutput) ToGetDdosBgpInstancesInstanceOutput()
 
 func (o GetDdosBgpInstancesInstanceOutput) ToGetDdosBgpInstancesInstanceOutputWithContext(ctx context.Context) GetDdosBgpInstancesInstanceOutput {
 	return o
-}
-
-func (o GetDdosBgpInstancesInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetDdosBgpInstancesInstance] {
-	return pulumix.Output[GetDdosBgpInstancesInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The instance's elastic defend bandwidth.
@@ -509,12 +442,6 @@ func (o GetDdosBgpInstancesInstanceArrayOutput) ToGetDdosBgpInstancesInstanceArr
 	return o
 }
 
-func (o GetDdosBgpInstancesInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDdosBgpInstancesInstance] {
-	return pulumix.Output[[]GetDdosBgpInstancesInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetDdosBgpInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetDdosBgpInstancesInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDdosBgpInstancesInstance {
 		return vs[0].([]GetDdosBgpInstancesInstance)[vs[1].(int)]
@@ -570,12 +497,6 @@ func (i GetDdosBgpIpsIpArgs) ToGetDdosBgpIpsIpOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetDdosBgpIpsIpOutput)
 }
 
-func (i GetDdosBgpIpsIpArgs) ToOutput(ctx context.Context) pulumix.Output[GetDdosBgpIpsIp] {
-	return pulumix.Output[GetDdosBgpIpsIp]{
-		OutputState: i.ToGetDdosBgpIpsIpOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDdosBgpIpsIpArrayInput is an input type that accepts GetDdosBgpIpsIpArray and GetDdosBgpIpsIpArrayOutput values.
 // You can construct a concrete instance of `GetDdosBgpIpsIpArrayInput` via:
 //
@@ -601,12 +522,6 @@ func (i GetDdosBgpIpsIpArray) ToGetDdosBgpIpsIpArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetDdosBgpIpsIpArrayOutput)
 }
 
-func (i GetDdosBgpIpsIpArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDdosBgpIpsIp] {
-	return pulumix.Output[[]GetDdosBgpIpsIp]{
-		OutputState: i.ToGetDdosBgpIpsIpArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDdosBgpIpsIpOutput struct{ *pulumi.OutputState }
 
 func (GetDdosBgpIpsIpOutput) ElementType() reflect.Type {
@@ -619,12 +534,6 @@ func (o GetDdosBgpIpsIpOutput) ToGetDdosBgpIpsIpOutput() GetDdosBgpIpsIpOutput {
 
 func (o GetDdosBgpIpsIpOutput) ToGetDdosBgpIpsIpOutputWithContext(ctx context.Context) GetDdosBgpIpsIpOutput {
 	return o
-}
-
-func (o GetDdosBgpIpsIpOutput) ToOutput(ctx context.Context) pulumix.Output[GetDdosBgpIpsIp] {
-	return pulumix.Output[GetDdosBgpIpsIp]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Ip. The value formats as `<instance_id>:<ip>`.
@@ -664,12 +573,6 @@ func (o GetDdosBgpIpsIpArrayOutput) ToGetDdosBgpIpsIpArrayOutput() GetDdosBgpIps
 
 func (o GetDdosBgpIpsIpArrayOutput) ToGetDdosBgpIpsIpArrayOutputWithContext(ctx context.Context) GetDdosBgpIpsIpArrayOutput {
 	return o
-}
-
-func (o GetDdosBgpIpsIpArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDdosBgpIpsIp] {
-	return pulumix.Output[[]GetDdosBgpIpsIp]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDdosBgpIpsIpArrayOutput) Index(i pulumi.IntInput) GetDdosBgpIpsIpOutput {
@@ -779,12 +682,6 @@ func (i GetDdosCooDomainResourcesResourceArgs) ToGetDdosCooDomainResourcesResour
 	return pulumi.ToOutputWithContext(ctx, i).(GetDdosCooDomainResourcesResourceOutput)
 }
 
-func (i GetDdosCooDomainResourcesResourceArgs) ToOutput(ctx context.Context) pulumix.Output[GetDdosCooDomainResourcesResource] {
-	return pulumix.Output[GetDdosCooDomainResourcesResource]{
-		OutputState: i.ToGetDdosCooDomainResourcesResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDdosCooDomainResourcesResourceArrayInput is an input type that accepts GetDdosCooDomainResourcesResourceArray and GetDdosCooDomainResourcesResourceArrayOutput values.
 // You can construct a concrete instance of `GetDdosCooDomainResourcesResourceArrayInput` via:
 //
@@ -810,12 +707,6 @@ func (i GetDdosCooDomainResourcesResourceArray) ToGetDdosCooDomainResourcesResou
 	return pulumi.ToOutputWithContext(ctx, i).(GetDdosCooDomainResourcesResourceArrayOutput)
 }
 
-func (i GetDdosCooDomainResourcesResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDdosCooDomainResourcesResource] {
-	return pulumix.Output[[]GetDdosCooDomainResourcesResource]{
-		OutputState: i.ToGetDdosCooDomainResourcesResourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDdosCooDomainResourcesResourceOutput struct{ *pulumi.OutputState }
 
 func (GetDdosCooDomainResourcesResourceOutput) ElementType() reflect.Type {
@@ -828,12 +719,6 @@ func (o GetDdosCooDomainResourcesResourceOutput) ToGetDdosCooDomainResourcesReso
 
 func (o GetDdosCooDomainResourcesResourceOutput) ToGetDdosCooDomainResourcesResourceOutputWithContext(ctx context.Context) GetDdosCooDomainResourcesResourceOutput {
 	return o
-}
-
-func (o GetDdosCooDomainResourcesResourceOutput) ToOutput(ctx context.Context) pulumix.Output[GetDdosCooDomainResourcesResource] {
-	return pulumix.Output[GetDdosCooDomainResourcesResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IP addresses in the blacklist for the domain name.
@@ -942,12 +827,6 @@ func (o GetDdosCooDomainResourcesResourceArrayOutput) ToGetDdosCooDomainResource
 	return o
 }
 
-func (o GetDdosCooDomainResourcesResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDdosCooDomainResourcesResource] {
-	return pulumix.Output[[]GetDdosCooDomainResourcesResource]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetDdosCooDomainResourcesResourceArrayOutput) Index(i pulumi.IntInput) GetDdosCooDomainResourcesResourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDdosCooDomainResourcesResource {
 		return vs[0].([]GetDdosCooDomainResourcesResource)[vs[1].(int)]
@@ -991,12 +870,6 @@ func (i GetDdosCooDomainResourcesResourceProxyTypeArgs) ToGetDdosCooDomainResour
 	return pulumi.ToOutputWithContext(ctx, i).(GetDdosCooDomainResourcesResourceProxyTypeOutput)
 }
 
-func (i GetDdosCooDomainResourcesResourceProxyTypeArgs) ToOutput(ctx context.Context) pulumix.Output[GetDdosCooDomainResourcesResourceProxyType] {
-	return pulumix.Output[GetDdosCooDomainResourcesResourceProxyType]{
-		OutputState: i.ToGetDdosCooDomainResourcesResourceProxyTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDdosCooDomainResourcesResourceProxyTypeArrayInput is an input type that accepts GetDdosCooDomainResourcesResourceProxyTypeArray and GetDdosCooDomainResourcesResourceProxyTypeArrayOutput values.
 // You can construct a concrete instance of `GetDdosCooDomainResourcesResourceProxyTypeArrayInput` via:
 //
@@ -1022,12 +895,6 @@ func (i GetDdosCooDomainResourcesResourceProxyTypeArray) ToGetDdosCooDomainResou
 	return pulumi.ToOutputWithContext(ctx, i).(GetDdosCooDomainResourcesResourceProxyTypeArrayOutput)
 }
 
-func (i GetDdosCooDomainResourcesResourceProxyTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDdosCooDomainResourcesResourceProxyType] {
-	return pulumix.Output[[]GetDdosCooDomainResourcesResourceProxyType]{
-		OutputState: i.ToGetDdosCooDomainResourcesResourceProxyTypeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDdosCooDomainResourcesResourceProxyTypeOutput struct{ *pulumi.OutputState }
 
 func (GetDdosCooDomainResourcesResourceProxyTypeOutput) ElementType() reflect.Type {
@@ -1040,12 +907,6 @@ func (o GetDdosCooDomainResourcesResourceProxyTypeOutput) ToGetDdosCooDomainReso
 
 func (o GetDdosCooDomainResourcesResourceProxyTypeOutput) ToGetDdosCooDomainResourcesResourceProxyTypeOutputWithContext(ctx context.Context) GetDdosCooDomainResourcesResourceProxyTypeOutput {
 	return o
-}
-
-func (o GetDdosCooDomainResourcesResourceProxyTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GetDdosCooDomainResourcesResourceProxyType] {
-	return pulumix.Output[GetDdosCooDomainResourcesResourceProxyType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The forwarding port.
@@ -1070,12 +931,6 @@ func (o GetDdosCooDomainResourcesResourceProxyTypeArrayOutput) ToGetDdosCooDomai
 
 func (o GetDdosCooDomainResourcesResourceProxyTypeArrayOutput) ToGetDdosCooDomainResourcesResourceProxyTypeArrayOutputWithContext(ctx context.Context) GetDdosCooDomainResourcesResourceProxyTypeArrayOutput {
 	return o
-}
-
-func (o GetDdosCooDomainResourcesResourceProxyTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDdosCooDomainResourcesResourceProxyType] {
-	return pulumix.Output[[]GetDdosCooDomainResourcesResourceProxyType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDdosCooDomainResourcesResourceProxyTypeArrayOutput) Index(i pulumi.IntInput) GetDdosCooDomainResourcesResourceProxyTypeOutput {
@@ -1177,12 +1032,6 @@ func (i GetDdosCooInstancesInstanceArgs) ToGetDdosCooInstancesInstanceOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetDdosCooInstancesInstanceOutput)
 }
 
-func (i GetDdosCooInstancesInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetDdosCooInstancesInstance] {
-	return pulumix.Output[GetDdosCooInstancesInstance]{
-		OutputState: i.ToGetDdosCooInstancesInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDdosCooInstancesInstanceArrayInput is an input type that accepts GetDdosCooInstancesInstanceArray and GetDdosCooInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetDdosCooInstancesInstanceArrayInput` via:
 //
@@ -1208,12 +1057,6 @@ func (i GetDdosCooInstancesInstanceArray) ToGetDdosCooInstancesInstanceArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetDdosCooInstancesInstanceArrayOutput)
 }
 
-func (i GetDdosCooInstancesInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDdosCooInstancesInstance] {
-	return pulumix.Output[[]GetDdosCooInstancesInstance]{
-		OutputState: i.ToGetDdosCooInstancesInstanceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDdosCooInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetDdosCooInstancesInstanceOutput) ElementType() reflect.Type {
@@ -1226,12 +1069,6 @@ func (o GetDdosCooInstancesInstanceOutput) ToGetDdosCooInstancesInstanceOutput()
 
 func (o GetDdosCooInstancesInstanceOutput) ToGetDdosCooInstancesInstanceOutputWithContext(ctx context.Context) GetDdosCooInstancesInstanceOutput {
 	return o
-}
-
-func (o GetDdosCooInstancesInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetDdosCooInstancesInstance] {
-	return pulumix.Output[GetDdosCooInstancesInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The instance's elastic defend bandwidth.
@@ -1328,12 +1165,6 @@ func (o GetDdosCooInstancesInstanceArrayOutput) ToGetDdosCooInstancesInstanceArr
 	return o
 }
 
-func (o GetDdosCooInstancesInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDdosCooInstancesInstance] {
-	return pulumix.Output[[]GetDdosCooInstancesInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetDdosCooInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetDdosCooInstancesInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDdosCooInstancesInstance {
 		return vs[0].([]GetDdosCooInstancesInstance)[vs[1].(int)]
@@ -1393,12 +1224,6 @@ func (i GetDdosCooPortsPortArgs) ToGetDdosCooPortsPortOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetDdosCooPortsPortOutput)
 }
 
-func (i GetDdosCooPortsPortArgs) ToOutput(ctx context.Context) pulumix.Output[GetDdosCooPortsPort] {
-	return pulumix.Output[GetDdosCooPortsPort]{
-		OutputState: i.ToGetDdosCooPortsPortOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDdosCooPortsPortArrayInput is an input type that accepts GetDdosCooPortsPortArray and GetDdosCooPortsPortArrayOutput values.
 // You can construct a concrete instance of `GetDdosCooPortsPortArrayInput` via:
 //
@@ -1424,12 +1249,6 @@ func (i GetDdosCooPortsPortArray) ToGetDdosCooPortsPortArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetDdosCooPortsPortArrayOutput)
 }
 
-func (i GetDdosCooPortsPortArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDdosCooPortsPort] {
-	return pulumix.Output[[]GetDdosCooPortsPort]{
-		OutputState: i.ToGetDdosCooPortsPortArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDdosCooPortsPortOutput struct{ *pulumi.OutputState }
 
 func (GetDdosCooPortsPortOutput) ElementType() reflect.Type {
@@ -1442,12 +1261,6 @@ func (o GetDdosCooPortsPortOutput) ToGetDdosCooPortsPortOutput() GetDdosCooPorts
 
 func (o GetDdosCooPortsPortOutput) ToGetDdosCooPortsPortOutputWithContext(ctx context.Context) GetDdosCooPortsPortOutput {
 	return o
-}
-
-func (o GetDdosCooPortsPortOutput) ToOutput(ctx context.Context) pulumix.Output[GetDdosCooPortsPort] {
-	return pulumix.Output[GetDdosCooPortsPort]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The source station port.
@@ -1492,12 +1305,6 @@ func (o GetDdosCooPortsPortArrayOutput) ToGetDdosCooPortsPortArrayOutput() GetDd
 
 func (o GetDdosCooPortsPortArrayOutput) ToGetDdosCooPortsPortArrayOutputWithContext(ctx context.Context) GetDdosCooPortsPortArrayOutput {
 	return o
-}
-
-func (o GetDdosCooPortsPortArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDdosCooPortsPort] {
-	return pulumix.Output[[]GetDdosCooPortsPort]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDdosCooPortsPortArrayOutput) Index(i pulumi.IntInput) GetDdosCooPortsPortOutput {

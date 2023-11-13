@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECS Hpc Cluster resource.
@@ -149,12 +148,6 @@ func (i *HpcCluster) ToHpcClusterOutputWithContext(ctx context.Context) HpcClust
 	return pulumi.ToOutputWithContext(ctx, i).(HpcClusterOutput)
 }
 
-func (i *HpcCluster) ToOutput(ctx context.Context) pulumix.Output[*HpcCluster] {
-	return pulumix.Output[*HpcCluster]{
-		OutputState: i.ToHpcClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HpcClusterArrayInput is an input type that accepts HpcClusterArray and HpcClusterArrayOutput values.
 // You can construct a concrete instance of `HpcClusterArrayInput` via:
 //
@@ -178,12 +171,6 @@ func (i HpcClusterArray) ToHpcClusterArrayOutput() HpcClusterArrayOutput {
 
 func (i HpcClusterArray) ToHpcClusterArrayOutputWithContext(ctx context.Context) HpcClusterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HpcClusterArrayOutput)
-}
-
-func (i HpcClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]*HpcCluster] {
-	return pulumix.Output[[]*HpcCluster]{
-		OutputState: i.ToHpcClusterArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HpcClusterMapInput is an input type that accepts HpcClusterMap and HpcClusterMapOutput values.
@@ -211,12 +198,6 @@ func (i HpcClusterMap) ToHpcClusterMapOutputWithContext(ctx context.Context) Hpc
 	return pulumi.ToOutputWithContext(ctx, i).(HpcClusterMapOutput)
 }
 
-func (i HpcClusterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HpcCluster] {
-	return pulumix.Output[map[string]*HpcCluster]{
-		OutputState: i.ToHpcClusterMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HpcClusterOutput struct{ *pulumi.OutputState }
 
 func (HpcClusterOutput) ElementType() reflect.Type {
@@ -229,12 +210,6 @@ func (o HpcClusterOutput) ToHpcClusterOutput() HpcClusterOutput {
 
 func (o HpcClusterOutput) ToHpcClusterOutputWithContext(ctx context.Context) HpcClusterOutput {
 	return o
-}
-
-func (o HpcClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*HpcCluster] {
-	return pulumix.Output[*HpcCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of ECS Hpc Cluster.
@@ -261,12 +236,6 @@ func (o HpcClusterArrayOutput) ToHpcClusterArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o HpcClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HpcCluster] {
-	return pulumix.Output[[]*HpcCluster]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HpcClusterArrayOutput) Index(i pulumi.IntInput) HpcClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HpcCluster {
 		return vs[0].([]*HpcCluster)[vs[1].(int)]
@@ -285,12 +254,6 @@ func (o HpcClusterMapOutput) ToHpcClusterMapOutput() HpcClusterMapOutput {
 
 func (o HpcClusterMapOutput) ToHpcClusterMapOutputWithContext(ctx context.Context) HpcClusterMapOutput {
 	return o
-}
-
-func (o HpcClusterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HpcCluster] {
-	return pulumix.Output[map[string]*HpcCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HpcClusterMapOutput) MapIndex(k pulumi.StringInput) HpcClusterOutput {

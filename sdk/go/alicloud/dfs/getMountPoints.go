@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Dfs Mount Points of the current Alibaba Cloud user.
@@ -123,12 +122,6 @@ func (o GetMountPointsResultOutput) ToGetMountPointsResultOutput() GetMountPoint
 
 func (o GetMountPointsResultOutput) ToGetMountPointsResultOutputWithContext(ctx context.Context) GetMountPointsResultOutput {
 	return o
-}
-
-func (o GetMountPointsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetMountPointsResult] {
-	return pulumix.Output[GetMountPointsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetMountPointsResultOutput) FileSystemId() pulumi.StringOutput {

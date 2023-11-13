@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Config Aggregators of the current Alibaba Cloud user.
@@ -131,12 +130,6 @@ func (o GetAggregatorsResultOutput) ToGetAggregatorsResultOutput() GetAggregator
 
 func (o GetAggregatorsResultOutput) ToGetAggregatorsResultOutputWithContext(ctx context.Context) GetAggregatorsResultOutput {
 	return o
-}
-
-func (o GetAggregatorsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAggregatorsResult] {
-	return pulumix.Output[GetAggregatorsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of config aggregators. Each element contains the following attributes:

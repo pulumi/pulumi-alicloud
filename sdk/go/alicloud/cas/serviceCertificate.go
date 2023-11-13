@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a SSL Certificates Certificate resource.
@@ -273,12 +272,6 @@ func (i *ServiceCertificate) ToServiceCertificateOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceCertificateOutput)
 }
 
-func (i *ServiceCertificate) ToOutput(ctx context.Context) pulumix.Output[*ServiceCertificate] {
-	return pulumix.Output[*ServiceCertificate]{
-		OutputState: i.ToServiceCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceCertificateArrayInput is an input type that accepts ServiceCertificateArray and ServiceCertificateArrayOutput values.
 // You can construct a concrete instance of `ServiceCertificateArrayInput` via:
 //
@@ -302,12 +295,6 @@ func (i ServiceCertificateArray) ToServiceCertificateArrayOutput() ServiceCertif
 
 func (i ServiceCertificateArray) ToServiceCertificateArrayOutputWithContext(ctx context.Context) ServiceCertificateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceCertificateArrayOutput)
-}
-
-func (i ServiceCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceCertificate] {
-	return pulumix.Output[[]*ServiceCertificate]{
-		OutputState: i.ToServiceCertificateArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServiceCertificateMapInput is an input type that accepts ServiceCertificateMap and ServiceCertificateMapOutput values.
@@ -335,12 +322,6 @@ func (i ServiceCertificateMap) ToServiceCertificateMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceCertificateMapOutput)
 }
 
-func (i ServiceCertificateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceCertificate] {
-	return pulumix.Output[map[string]*ServiceCertificate]{
-		OutputState: i.ToServiceCertificateMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceCertificateOutput struct{ *pulumi.OutputState }
 
 func (ServiceCertificateOutput) ElementType() reflect.Type {
@@ -353,12 +334,6 @@ func (o ServiceCertificateOutput) ToServiceCertificateOutput() ServiceCertificat
 
 func (o ServiceCertificateOutput) ToServiceCertificateOutputWithContext(ctx context.Context) ServiceCertificateOutput {
 	return o
-}
-
-func (o ServiceCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceCertificate] {
-	return pulumix.Output[*ServiceCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cert of the Certificate in which the Certificate will add.
@@ -406,12 +381,6 @@ func (o ServiceCertificateArrayOutput) ToServiceCertificateArrayOutputWithContex
 	return o
 }
 
-func (o ServiceCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceCertificate] {
-	return pulumix.Output[[]*ServiceCertificate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceCertificateArrayOutput) Index(i pulumi.IntInput) ServiceCertificateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServiceCertificate {
 		return vs[0].([]*ServiceCertificate)[vs[1].(int)]
@@ -430,12 +399,6 @@ func (o ServiceCertificateMapOutput) ToServiceCertificateMapOutput() ServiceCert
 
 func (o ServiceCertificateMapOutput) ToServiceCertificateMapOutputWithContext(ctx context.Context) ServiceCertificateMapOutput {
 	return o
-}
-
-func (o ServiceCertificateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceCertificate] {
-	return pulumix.Output[map[string]*ServiceCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceCertificateMapOutput) MapIndex(k pulumi.StringInput) ServiceCertificateOutput {

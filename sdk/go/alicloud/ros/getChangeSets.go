@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ros Change Sets of the current Alibaba Cloud user.
@@ -139,12 +138,6 @@ func (o GetChangeSetsResultOutput) ToGetChangeSetsResultOutput() GetChangeSetsRe
 
 func (o GetChangeSetsResultOutput) ToGetChangeSetsResultOutputWithContext(ctx context.Context) GetChangeSetsResultOutput {
 	return o
-}
-
-func (o GetChangeSetsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetChangeSetsResult] {
-	return pulumix.Output[GetChangeSetsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetChangeSetsResultOutput) ChangeSetName() pulumi.StringPtrOutput {

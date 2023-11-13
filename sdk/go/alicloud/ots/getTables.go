@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the ots tables of the current Alibaba Cloud user.
@@ -124,12 +123,6 @@ func (o GetTablesResultOutput) ToGetTablesResultOutput() GetTablesResultOutput {
 
 func (o GetTablesResultOutput) ToGetTablesResultOutputWithContext(ctx context.Context) GetTablesResultOutput {
 	return o
-}
-
-func (o GetTablesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTablesResult] {
-	return pulumix.Output[GetTablesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

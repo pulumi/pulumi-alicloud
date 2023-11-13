@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Cen Inter Region Traffic Qos Queue available to the user.
@@ -124,12 +123,6 @@ func (o GetInterRegionTrafficQosQueuesResultOutput) ToGetInterRegionTrafficQosQu
 
 func (o GetInterRegionTrafficQosQueuesResultOutput) ToGetInterRegionTrafficQosQueuesResultOutputWithContext(ctx context.Context) GetInterRegionTrafficQosQueuesResultOutput {
 	return o
-}
-
-func (o GetInterRegionTrafficQosQueuesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetInterRegionTrafficQosQueuesResult] {
-	return pulumix.Output[GetInterRegionTrafficQosQueuesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

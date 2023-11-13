@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Serverless Workflow Schedule resource.
@@ -231,12 +230,6 @@ func (i *Schedule) ToScheduleOutputWithContext(ctx context.Context) ScheduleOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduleOutput)
 }
 
-func (i *Schedule) ToOutput(ctx context.Context) pulumix.Output[*Schedule] {
-	return pulumix.Output[*Schedule]{
-		OutputState: i.ToScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ScheduleArrayInput is an input type that accepts ScheduleArray and ScheduleArrayOutput values.
 // You can construct a concrete instance of `ScheduleArrayInput` via:
 //
@@ -260,12 +253,6 @@ func (i ScheduleArray) ToScheduleArrayOutput() ScheduleArrayOutput {
 
 func (i ScheduleArray) ToScheduleArrayOutputWithContext(ctx context.Context) ScheduleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduleArrayOutput)
-}
-
-func (i ScheduleArray) ToOutput(ctx context.Context) pulumix.Output[[]*Schedule] {
-	return pulumix.Output[[]*Schedule]{
-		OutputState: i.ToScheduleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ScheduleMapInput is an input type that accepts ScheduleMap and ScheduleMapOutput values.
@@ -293,12 +280,6 @@ func (i ScheduleMap) ToScheduleMapOutputWithContext(ctx context.Context) Schedul
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduleMapOutput)
 }
 
-func (i ScheduleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Schedule] {
-	return pulumix.Output[map[string]*Schedule]{
-		OutputState: i.ToScheduleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScheduleOutput struct{ *pulumi.OutputState }
 
 func (ScheduleOutput) ElementType() reflect.Type {
@@ -311,12 +292,6 @@ func (o ScheduleOutput) ToScheduleOutput() ScheduleOutput {
 
 func (o ScheduleOutput) ToScheduleOutputWithContext(ctx context.Context) ScheduleOutput {
 	return o
-}
-
-func (o ScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[*Schedule] {
-	return pulumix.Output[*Schedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The CRON expression of the time-based schedule to be created.
@@ -373,12 +348,6 @@ func (o ScheduleArrayOutput) ToScheduleArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o ScheduleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Schedule] {
-	return pulumix.Output[[]*Schedule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ScheduleArrayOutput) Index(i pulumi.IntInput) ScheduleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Schedule {
 		return vs[0].([]*Schedule)[vs[1].(int)]
@@ -397,12 +366,6 @@ func (o ScheduleMapOutput) ToScheduleMapOutput() ScheduleMapOutput {
 
 func (o ScheduleMapOutput) ToScheduleMapOutputWithContext(ctx context.Context) ScheduleMapOutput {
 	return o
-}
-
-func (o ScheduleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Schedule] {
-	return pulumix.Output[map[string]*Schedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScheduleMapOutput) MapIndex(k pulumi.StringInput) ScheduleOutput {

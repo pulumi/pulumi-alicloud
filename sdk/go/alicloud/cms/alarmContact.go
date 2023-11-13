@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates or modifies an alarm contact. For information about alarm contact and how to use it, see [What is alarm contact](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putcontact).
@@ -242,12 +241,6 @@ func (i *AlarmContact) ToAlarmContactOutputWithContext(ctx context.Context) Alar
 	return pulumi.ToOutputWithContext(ctx, i).(AlarmContactOutput)
 }
 
-func (i *AlarmContact) ToOutput(ctx context.Context) pulumix.Output[*AlarmContact] {
-	return pulumix.Output[*AlarmContact]{
-		OutputState: i.ToAlarmContactOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AlarmContactArrayInput is an input type that accepts AlarmContactArray and AlarmContactArrayOutput values.
 // You can construct a concrete instance of `AlarmContactArrayInput` via:
 //
@@ -271,12 +264,6 @@ func (i AlarmContactArray) ToAlarmContactArrayOutput() AlarmContactArrayOutput {
 
 func (i AlarmContactArray) ToAlarmContactArrayOutputWithContext(ctx context.Context) AlarmContactArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlarmContactArrayOutput)
-}
-
-func (i AlarmContactArray) ToOutput(ctx context.Context) pulumix.Output[[]*AlarmContact] {
-	return pulumix.Output[[]*AlarmContact]{
-		OutputState: i.ToAlarmContactArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AlarmContactMapInput is an input type that accepts AlarmContactMap and AlarmContactMapOutput values.
@@ -304,12 +291,6 @@ func (i AlarmContactMap) ToAlarmContactMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AlarmContactMapOutput)
 }
 
-func (i AlarmContactMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AlarmContact] {
-	return pulumix.Output[map[string]*AlarmContact]{
-		OutputState: i.ToAlarmContactMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AlarmContactOutput struct{ *pulumi.OutputState }
 
 func (AlarmContactOutput) ElementType() reflect.Type {
@@ -322,12 +303,6 @@ func (o AlarmContactOutput) ToAlarmContactOutput() AlarmContactOutput {
 
 func (o AlarmContactOutput) ToAlarmContactOutputWithContext(ctx context.Context) AlarmContactOutput {
 	return o
-}
-
-func (o AlarmContactOutput) ToOutput(ctx context.Context) pulumix.Output[*AlarmContact] {
-	return pulumix.Output[*AlarmContact]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the alarm contact. The length should between 2 and 40 characters.
@@ -381,12 +356,6 @@ func (o AlarmContactArrayOutput) ToAlarmContactArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o AlarmContactArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AlarmContact] {
-	return pulumix.Output[[]*AlarmContact]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AlarmContactArrayOutput) Index(i pulumi.IntInput) AlarmContactOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AlarmContact {
 		return vs[0].([]*AlarmContact)[vs[1].(int)]
@@ -405,12 +374,6 @@ func (o AlarmContactMapOutput) ToAlarmContactMapOutput() AlarmContactMapOutput {
 
 func (o AlarmContactMapOutput) ToAlarmContactMapOutputWithContext(ctx context.Context) AlarmContactMapOutput {
 	return o
-}
-
-func (o AlarmContactMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AlarmContact] {
-	return pulumix.Output[map[string]*AlarmContact]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AlarmContactMapOutput) MapIndex(k pulumi.StringInput) AlarmContactOutput {

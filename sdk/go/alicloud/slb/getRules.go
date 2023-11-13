@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the rules associated with a server load balancer listener.
@@ -190,12 +189,6 @@ func (o GetRulesResultOutput) ToGetRulesResultOutput() GetRulesResultOutput {
 
 func (o GetRulesResultOutput) ToGetRulesResultOutputWithContext(ctx context.Context) GetRulesResultOutput {
 	return o
-}
-
-func (o GetRulesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRulesResult] {
-	return pulumix.Output[GetRulesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRulesResultOutput) FrontendPort() pulumi.IntOutput {

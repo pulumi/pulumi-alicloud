@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Threat Detection Honeypot Node resource.
@@ -198,12 +197,6 @@ func (i *HoneypotNode) ToHoneypotNodeOutputWithContext(ctx context.Context) Hone
 	return pulumi.ToOutputWithContext(ctx, i).(HoneypotNodeOutput)
 }
 
-func (i *HoneypotNode) ToOutput(ctx context.Context) pulumix.Output[*HoneypotNode] {
-	return pulumix.Output[*HoneypotNode]{
-		OutputState: i.ToHoneypotNodeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HoneypotNodeArrayInput is an input type that accepts HoneypotNodeArray and HoneypotNodeArrayOutput values.
 // You can construct a concrete instance of `HoneypotNodeArrayInput` via:
 //
@@ -227,12 +220,6 @@ func (i HoneypotNodeArray) ToHoneypotNodeArrayOutput() HoneypotNodeArrayOutput {
 
 func (i HoneypotNodeArray) ToHoneypotNodeArrayOutputWithContext(ctx context.Context) HoneypotNodeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HoneypotNodeArrayOutput)
-}
-
-func (i HoneypotNodeArray) ToOutput(ctx context.Context) pulumix.Output[[]*HoneypotNode] {
-	return pulumix.Output[[]*HoneypotNode]{
-		OutputState: i.ToHoneypotNodeArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HoneypotNodeMapInput is an input type that accepts HoneypotNodeMap and HoneypotNodeMapOutput values.
@@ -260,12 +247,6 @@ func (i HoneypotNodeMap) ToHoneypotNodeMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(HoneypotNodeMapOutput)
 }
 
-func (i HoneypotNodeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HoneypotNode] {
-	return pulumix.Output[map[string]*HoneypotNode]{
-		OutputState: i.ToHoneypotNodeMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HoneypotNodeOutput struct{ *pulumi.OutputState }
 
 func (HoneypotNodeOutput) ElementType() reflect.Type {
@@ -278,12 +259,6 @@ func (o HoneypotNodeOutput) ToHoneypotNodeOutput() HoneypotNodeOutput {
 
 func (o HoneypotNodeOutput) ToHoneypotNodeOutputWithContext(ctx context.Context) HoneypotNodeOutput {
 	return o
-}
-
-func (o HoneypotNodeOutput) ToOutput(ctx context.Context) pulumix.Output[*HoneypotNode] {
-	return pulumix.Output[*HoneypotNode]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to allow honeypot access to the external network. Value:-**true**: Allow-**false**: Disabled
@@ -330,12 +305,6 @@ func (o HoneypotNodeArrayOutput) ToHoneypotNodeArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o HoneypotNodeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HoneypotNode] {
-	return pulumix.Output[[]*HoneypotNode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HoneypotNodeArrayOutput) Index(i pulumi.IntInput) HoneypotNodeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HoneypotNode {
 		return vs[0].([]*HoneypotNode)[vs[1].(int)]
@@ -354,12 +323,6 @@ func (o HoneypotNodeMapOutput) ToHoneypotNodeMapOutput() HoneypotNodeMapOutput {
 
 func (o HoneypotNodeMapOutput) ToHoneypotNodeMapOutputWithContext(ctx context.Context) HoneypotNodeMapOutput {
 	return o
-}
-
-func (o HoneypotNodeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HoneypotNode] {
-	return pulumix.Output[map[string]*HoneypotNode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HoneypotNodeMapOutput) MapIndex(k pulumi.StringInput) HoneypotNodeOutput {

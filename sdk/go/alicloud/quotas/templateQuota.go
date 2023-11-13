@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Quotas Template Quota resource.
@@ -281,12 +280,6 @@ func (i *TemplateQuota) ToTemplateQuotaOutputWithContext(ctx context.Context) Te
 	return pulumi.ToOutputWithContext(ctx, i).(TemplateQuotaOutput)
 }
 
-func (i *TemplateQuota) ToOutput(ctx context.Context) pulumix.Output[*TemplateQuota] {
-	return pulumix.Output[*TemplateQuota]{
-		OutputState: i.ToTemplateQuotaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TemplateQuotaArrayInput is an input type that accepts TemplateQuotaArray and TemplateQuotaArrayOutput values.
 // You can construct a concrete instance of `TemplateQuotaArrayInput` via:
 //
@@ -310,12 +303,6 @@ func (i TemplateQuotaArray) ToTemplateQuotaArrayOutput() TemplateQuotaArrayOutpu
 
 func (i TemplateQuotaArray) ToTemplateQuotaArrayOutputWithContext(ctx context.Context) TemplateQuotaArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TemplateQuotaArrayOutput)
-}
-
-func (i TemplateQuotaArray) ToOutput(ctx context.Context) pulumix.Output[[]*TemplateQuota] {
-	return pulumix.Output[[]*TemplateQuota]{
-		OutputState: i.ToTemplateQuotaArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TemplateQuotaMapInput is an input type that accepts TemplateQuotaMap and TemplateQuotaMapOutput values.
@@ -343,12 +330,6 @@ func (i TemplateQuotaMap) ToTemplateQuotaMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(TemplateQuotaMapOutput)
 }
 
-func (i TemplateQuotaMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TemplateQuota] {
-	return pulumix.Output[map[string]*TemplateQuota]{
-		OutputState: i.ToTemplateQuotaMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TemplateQuotaOutput struct{ *pulumi.OutputState }
 
 func (TemplateQuotaOutput) ElementType() reflect.Type {
@@ -361,12 +342,6 @@ func (o TemplateQuotaOutput) ToTemplateQuotaOutput() TemplateQuotaOutput {
 
 func (o TemplateQuotaOutput) ToTemplateQuotaOutputWithContext(ctx context.Context) TemplateQuotaOutput {
 	return o
-}
-
-func (o TemplateQuotaOutput) ToOutput(ctx context.Context) pulumix.Output[*TemplateQuota] {
-	return pulumix.Output[*TemplateQuota]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Quota application value.
@@ -435,12 +410,6 @@ func (o TemplateQuotaArrayOutput) ToTemplateQuotaArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o TemplateQuotaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TemplateQuota] {
-	return pulumix.Output[[]*TemplateQuota]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TemplateQuotaArrayOutput) Index(i pulumi.IntInput) TemplateQuotaOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TemplateQuota {
 		return vs[0].([]*TemplateQuota)[vs[1].(int)]
@@ -459,12 +428,6 @@ func (o TemplateQuotaMapOutput) ToTemplateQuotaMapOutput() TemplateQuotaMapOutpu
 
 func (o TemplateQuotaMapOutput) ToTemplateQuotaMapOutputWithContext(ctx context.Context) TemplateQuotaMapOutput {
 	return o
-}
-
-func (o TemplateQuotaMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TemplateQuota] {
-	return pulumix.Output[map[string]*TemplateQuota]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TemplateQuotaMapOutput) MapIndex(k pulumi.StringInput) TemplateQuotaOutput {

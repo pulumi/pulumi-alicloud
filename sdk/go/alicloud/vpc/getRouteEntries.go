@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list of Route Entries owned by an Alibaba Cloud account.
@@ -214,12 +213,6 @@ func (o GetRouteEntriesResultOutput) ToGetRouteEntriesResultOutput() GetRouteEnt
 
 func (o GetRouteEntriesResultOutput) ToGetRouteEntriesResultOutputWithContext(ctx context.Context) GetRouteEntriesResultOutput {
 	return o
-}
-
-func (o GetRouteEntriesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRouteEntriesResult] {
-	return pulumix.Output[GetRouteEntriesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The destination CIDR block of the route entry.

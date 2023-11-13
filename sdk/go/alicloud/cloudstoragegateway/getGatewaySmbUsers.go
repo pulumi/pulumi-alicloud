@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cloud Storage Gateway Gateway SMB Users of the current Alibaba Cloud user.
@@ -163,12 +162,6 @@ func (o GetGatewaySmbUsersResultOutput) ToGetGatewaySmbUsersResultOutput() GetGa
 
 func (o GetGatewaySmbUsersResultOutput) ToGetGatewaySmbUsersResultOutputWithContext(ctx context.Context) GetGatewaySmbUsersResultOutput {
 	return o
-}
-
-func (o GetGatewaySmbUsersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGatewaySmbUsersResult] {
-	return pulumix.Output[GetGatewaySmbUsersResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetGatewaySmbUsersResultOutput) GatewayId() pulumi.StringOutput {

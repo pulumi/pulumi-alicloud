@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list of ONS Groups in an Alibaba Cloud account according to the specified filters.
@@ -163,12 +162,6 @@ func (o GetGroupsResultOutput) ToGetGroupsResultOutput() GetGroupsResultOutput {
 
 func (o GetGroupsResultOutput) ToGetGroupsResultOutputWithContext(ctx context.Context) GetGroupsResultOutput {
 	return o
-}
-
-func (o GetGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupsResult] {
-	return pulumix.Output[GetGroupsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetGroupsResultOutput) GroupIdRegex() pulumi.StringPtrOutput {

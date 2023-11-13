@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -55,12 +54,6 @@ func (i HoneypotPresetMetaArgs) ToHoneypotPresetMetaOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(HoneypotPresetMetaOutput)
 }
 
-func (i HoneypotPresetMetaArgs) ToOutput(ctx context.Context) pulumix.Output[HoneypotPresetMeta] {
-	return pulumix.Output[HoneypotPresetMeta]{
-		OutputState: i.ToHoneypotPresetMetaOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i HoneypotPresetMetaArgs) ToHoneypotPresetMetaPtrOutput() HoneypotPresetMetaPtrOutput {
 	return i.ToHoneypotPresetMetaPtrOutputWithContext(context.Background())
 }
@@ -102,12 +95,6 @@ func (i *honeypotPresetMetaPtrType) ToHoneypotPresetMetaPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(HoneypotPresetMetaPtrOutput)
 }
 
-func (i *honeypotPresetMetaPtrType) ToOutput(ctx context.Context) pulumix.Output[*HoneypotPresetMeta] {
-	return pulumix.Output[*HoneypotPresetMeta]{
-		OutputState: i.ToHoneypotPresetMetaPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HoneypotPresetMetaOutput struct{ *pulumi.OutputState }
 
 func (HoneypotPresetMetaOutput) ElementType() reflect.Type {
@@ -130,12 +117,6 @@ func (o HoneypotPresetMetaOutput) ToHoneypotPresetMetaPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HoneypotPresetMeta) *HoneypotPresetMeta {
 		return &v
 	}).(HoneypotPresetMetaPtrOutput)
-}
-
-func (o HoneypotPresetMetaOutput) ToOutput(ctx context.Context) pulumix.Output[HoneypotPresetMeta] {
-	return pulumix.Output[HoneypotPresetMeta]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Burp counter.
@@ -165,12 +146,6 @@ func (o HoneypotPresetMetaPtrOutput) ToHoneypotPresetMetaPtrOutput() HoneypotPre
 
 func (o HoneypotPresetMetaPtrOutput) ToHoneypotPresetMetaPtrOutputWithContext(ctx context.Context) HoneypotPresetMetaPtrOutput {
 	return o
-}
-
-func (o HoneypotPresetMetaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HoneypotPresetMeta] {
-	return pulumix.Output[*HoneypotPresetMeta]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HoneypotPresetMetaPtrOutput) Elem() HoneypotPresetMetaOutput {
@@ -250,12 +225,6 @@ func (i HoneypotProbeHoneypotBindListArgs) ToHoneypotProbeHoneypotBindListOutput
 	return pulumi.ToOutputWithContext(ctx, i).(HoneypotProbeHoneypotBindListOutput)
 }
 
-func (i HoneypotProbeHoneypotBindListArgs) ToOutput(ctx context.Context) pulumix.Output[HoneypotProbeHoneypotBindList] {
-	return pulumix.Output[HoneypotProbeHoneypotBindList]{
-		OutputState: i.ToHoneypotProbeHoneypotBindListOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HoneypotProbeHoneypotBindListArrayInput is an input type that accepts HoneypotProbeHoneypotBindListArray and HoneypotProbeHoneypotBindListArrayOutput values.
 // You can construct a concrete instance of `HoneypotProbeHoneypotBindListArrayInput` via:
 //
@@ -281,12 +250,6 @@ func (i HoneypotProbeHoneypotBindListArray) ToHoneypotProbeHoneypotBindListArray
 	return pulumi.ToOutputWithContext(ctx, i).(HoneypotProbeHoneypotBindListArrayOutput)
 }
 
-func (i HoneypotProbeHoneypotBindListArray) ToOutput(ctx context.Context) pulumix.Output[[]HoneypotProbeHoneypotBindList] {
-	return pulumix.Output[[]HoneypotProbeHoneypotBindList]{
-		OutputState: i.ToHoneypotProbeHoneypotBindListArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HoneypotProbeHoneypotBindListOutput struct{ *pulumi.OutputState }
 
 func (HoneypotProbeHoneypotBindListOutput) ElementType() reflect.Type {
@@ -299,12 +262,6 @@ func (o HoneypotProbeHoneypotBindListOutput) ToHoneypotProbeHoneypotBindListOutp
 
 func (o HoneypotProbeHoneypotBindListOutput) ToHoneypotProbeHoneypotBindListOutputWithContext(ctx context.Context) HoneypotProbeHoneypotBindListOutput {
 	return o
-}
-
-func (o HoneypotProbeHoneypotBindListOutput) ToOutput(ctx context.Context) pulumix.Output[HoneypotProbeHoneypotBindList] {
-	return pulumix.Output[HoneypotProbeHoneypotBindList]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of listening ports.See the following `Block BindPortList`.
@@ -331,12 +288,6 @@ func (o HoneypotProbeHoneypotBindListArrayOutput) ToHoneypotProbeHoneypotBindLis
 
 func (o HoneypotProbeHoneypotBindListArrayOutput) ToHoneypotProbeHoneypotBindListArrayOutputWithContext(ctx context.Context) HoneypotProbeHoneypotBindListArrayOutput {
 	return o
-}
-
-func (o HoneypotProbeHoneypotBindListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HoneypotProbeHoneypotBindList] {
-	return pulumix.Output[[]HoneypotProbeHoneypotBindList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HoneypotProbeHoneypotBindListArrayOutput) Index(i pulumi.IntInput) HoneypotProbeHoneypotBindListOutput {
@@ -394,12 +345,6 @@ func (i HoneypotProbeHoneypotBindListBindPortListArgs) ToHoneypotProbeHoneypotBi
 	return pulumi.ToOutputWithContext(ctx, i).(HoneypotProbeHoneypotBindListBindPortListOutput)
 }
 
-func (i HoneypotProbeHoneypotBindListBindPortListArgs) ToOutput(ctx context.Context) pulumix.Output[HoneypotProbeHoneypotBindListBindPortList] {
-	return pulumix.Output[HoneypotProbeHoneypotBindListBindPortList]{
-		OutputState: i.ToHoneypotProbeHoneypotBindListBindPortListOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HoneypotProbeHoneypotBindListBindPortListArrayInput is an input type that accepts HoneypotProbeHoneypotBindListBindPortListArray and HoneypotProbeHoneypotBindListBindPortListArrayOutput values.
 // You can construct a concrete instance of `HoneypotProbeHoneypotBindListBindPortListArrayInput` via:
 //
@@ -425,12 +370,6 @@ func (i HoneypotProbeHoneypotBindListBindPortListArray) ToHoneypotProbeHoneypotB
 	return pulumi.ToOutputWithContext(ctx, i).(HoneypotProbeHoneypotBindListBindPortListArrayOutput)
 }
 
-func (i HoneypotProbeHoneypotBindListBindPortListArray) ToOutput(ctx context.Context) pulumix.Output[[]HoneypotProbeHoneypotBindListBindPortList] {
-	return pulumix.Output[[]HoneypotProbeHoneypotBindListBindPortList]{
-		OutputState: i.ToHoneypotProbeHoneypotBindListBindPortListArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HoneypotProbeHoneypotBindListBindPortListOutput struct{ *pulumi.OutputState }
 
 func (HoneypotProbeHoneypotBindListBindPortListOutput) ElementType() reflect.Type {
@@ -443,12 +382,6 @@ func (o HoneypotProbeHoneypotBindListBindPortListOutput) ToHoneypotProbeHoneypot
 
 func (o HoneypotProbeHoneypotBindListBindPortListOutput) ToHoneypotProbeHoneypotBindListBindPortListOutputWithContext(ctx context.Context) HoneypotProbeHoneypotBindListBindPortListOutput {
 	return o
-}
-
-func (o HoneypotProbeHoneypotBindListBindPortListOutput) ToOutput(ctx context.Context) pulumix.Output[HoneypotProbeHoneypotBindListBindPortList] {
-	return pulumix.Output[HoneypotProbeHoneypotBindListBindPortList]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to bind the port.
@@ -488,12 +421,6 @@ func (o HoneypotProbeHoneypotBindListBindPortListArrayOutput) ToHoneypotProbeHon
 
 func (o HoneypotProbeHoneypotBindListBindPortListArrayOutput) ToHoneypotProbeHoneypotBindListBindPortListArrayOutputWithContext(ctx context.Context) HoneypotProbeHoneypotBindListBindPortListArrayOutput {
 	return o
-}
-
-func (o HoneypotProbeHoneypotBindListBindPortListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HoneypotProbeHoneypotBindListBindPortList] {
-	return pulumix.Output[[]HoneypotProbeHoneypotBindListBindPortList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HoneypotProbeHoneypotBindListBindPortListArrayOutput) Index(i pulumi.IntInput) HoneypotProbeHoneypotBindListBindPortListOutput {
@@ -563,12 +490,6 @@ func (i GetAntiBruteForceRulesRuleArgs) ToGetAntiBruteForceRulesRuleOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetAntiBruteForceRulesRuleOutput)
 }
 
-func (i GetAntiBruteForceRulesRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetAntiBruteForceRulesRule] {
-	return pulumix.Output[GetAntiBruteForceRulesRule]{
-		OutputState: i.ToGetAntiBruteForceRulesRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAntiBruteForceRulesRuleArrayInput is an input type that accepts GetAntiBruteForceRulesRuleArray and GetAntiBruteForceRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetAntiBruteForceRulesRuleArrayInput` via:
 //
@@ -594,12 +515,6 @@ func (i GetAntiBruteForceRulesRuleArray) ToGetAntiBruteForceRulesRuleArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetAntiBruteForceRulesRuleArrayOutput)
 }
 
-func (i GetAntiBruteForceRulesRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAntiBruteForceRulesRule] {
-	return pulumix.Output[[]GetAntiBruteForceRulesRule]{
-		OutputState: i.ToGetAntiBruteForceRulesRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAntiBruteForceRulesRuleOutput struct{ *pulumi.OutputState }
 
 func (GetAntiBruteForceRulesRuleOutput) ElementType() reflect.Type {
@@ -612,12 +527,6 @@ func (o GetAntiBruteForceRulesRuleOutput) ToGetAntiBruteForceRulesRuleOutput() G
 
 func (o GetAntiBruteForceRulesRuleOutput) ToGetAntiBruteForceRulesRuleOutputWithContext(ctx context.Context) GetAntiBruteForceRulesRuleOutput {
 	return o
-}
-
-func (o GetAntiBruteForceRulesRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetAntiBruteForceRulesRule] {
-	return pulumix.Output[GetAntiBruteForceRulesRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the defense rule.
@@ -674,12 +583,6 @@ func (o GetAntiBruteForceRulesRuleArrayOutput) ToGetAntiBruteForceRulesRuleArray
 	return o
 }
 
-func (o GetAntiBruteForceRulesRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAntiBruteForceRulesRule] {
-	return pulumix.Output[[]GetAntiBruteForceRulesRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetAntiBruteForceRulesRuleArrayOutput) Index(i pulumi.IntInput) GetAntiBruteForceRulesRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAntiBruteForceRulesRule {
 		return vs[0].([]GetAntiBruteForceRulesRule)[vs[1].(int)]
@@ -727,12 +630,6 @@ func (i GetAssetsAssetArgs) ToGetAssetsAssetOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetAssetsAssetOutput)
 }
 
-func (i GetAssetsAssetArgs) ToOutput(ctx context.Context) pulumix.Output[GetAssetsAsset] {
-	return pulumix.Output[GetAssetsAsset]{
-		OutputState: i.ToGetAssetsAssetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAssetsAssetArrayInput is an input type that accepts GetAssetsAssetArray and GetAssetsAssetArrayOutput values.
 // You can construct a concrete instance of `GetAssetsAssetArrayInput` via:
 //
@@ -758,12 +655,6 @@ func (i GetAssetsAssetArray) ToGetAssetsAssetArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetAssetsAssetArrayOutput)
 }
 
-func (i GetAssetsAssetArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAssetsAsset] {
-	return pulumix.Output[[]GetAssetsAsset]{
-		OutputState: i.ToGetAssetsAssetArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAssetsAssetOutput struct{ *pulumi.OutputState }
 
 func (GetAssetsAssetOutput) ElementType() reflect.Type {
@@ -776,12 +667,6 @@ func (o GetAssetsAssetOutput) ToGetAssetsAssetOutput() GetAssetsAssetOutput {
 
 func (o GetAssetsAssetOutput) ToGetAssetsAssetOutputWithContext(ctx context.Context) GetAssetsAssetOutput {
 	return o
-}
-
-func (o GetAssetsAssetOutput) ToOutput(ctx context.Context) pulumix.Output[GetAssetsAsset] {
-	return pulumix.Output[GetAssetsAsset]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation time of the resource
@@ -811,12 +696,6 @@ func (o GetAssetsAssetArrayOutput) ToGetAssetsAssetArrayOutput() GetAssetsAssetA
 
 func (o GetAssetsAssetArrayOutput) ToGetAssetsAssetArrayOutputWithContext(ctx context.Context) GetAssetsAssetArrayOutput {
 	return o
-}
-
-func (o GetAssetsAssetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAssetsAsset] {
-	return pulumix.Output[[]GetAssetsAsset]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAssetsAssetArrayOutput) Index(i pulumi.IntInput) GetAssetsAssetOutput {
@@ -886,12 +765,6 @@ func (i GetBackupPoliciesPolicyArgs) ToGetBackupPoliciesPolicyOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPoliciesPolicyOutput)
 }
 
-func (i GetBackupPoliciesPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GetBackupPoliciesPolicy] {
-	return pulumix.Output[GetBackupPoliciesPolicy]{
-		OutputState: i.ToGetBackupPoliciesPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetBackupPoliciesPolicyArrayInput is an input type that accepts GetBackupPoliciesPolicyArray and GetBackupPoliciesPolicyArrayOutput values.
 // You can construct a concrete instance of `GetBackupPoliciesPolicyArrayInput` via:
 //
@@ -917,12 +790,6 @@ func (i GetBackupPoliciesPolicyArray) ToGetBackupPoliciesPolicyArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPoliciesPolicyArrayOutput)
 }
 
-func (i GetBackupPoliciesPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetBackupPoliciesPolicy] {
-	return pulumix.Output[[]GetBackupPoliciesPolicy]{
-		OutputState: i.ToGetBackupPoliciesPolicyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetBackupPoliciesPolicyOutput struct{ *pulumi.OutputState }
 
 func (GetBackupPoliciesPolicyOutput) ElementType() reflect.Type {
@@ -935,12 +802,6 @@ func (o GetBackupPoliciesPolicyOutput) ToGetBackupPoliciesPolicyOutput() GetBack
 
 func (o GetBackupPoliciesPolicyOutput) ToGetBackupPoliciesPolicyOutputWithContext(ctx context.Context) GetBackupPoliciesPolicyOutput {
 	return o
-}
-
-func (o GetBackupPoliciesPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GetBackupPoliciesPolicy] {
-	return pulumix.Output[GetBackupPoliciesPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the anti-ransomware policy.
@@ -995,12 +856,6 @@ func (o GetBackupPoliciesPolicyArrayOutput) ToGetBackupPoliciesPolicyArrayOutput
 
 func (o GetBackupPoliciesPolicyArrayOutput) ToGetBackupPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetBackupPoliciesPolicyArrayOutput {
 	return o
-}
-
-func (o GetBackupPoliciesPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetBackupPoliciesPolicy] {
-	return pulumix.Output[[]GetBackupPoliciesPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetBackupPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetBackupPoliciesPolicyOutput {
@@ -1082,12 +937,6 @@ func (i GetBaselineStrategiesStrategyArgs) ToGetBaselineStrategiesStrategyOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetBaselineStrategiesStrategyOutput)
 }
 
-func (i GetBaselineStrategiesStrategyArgs) ToOutput(ctx context.Context) pulumix.Output[GetBaselineStrategiesStrategy] {
-	return pulumix.Output[GetBaselineStrategiesStrategy]{
-		OutputState: i.ToGetBaselineStrategiesStrategyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetBaselineStrategiesStrategyArrayInput is an input type that accepts GetBaselineStrategiesStrategyArray and GetBaselineStrategiesStrategyArrayOutput values.
 // You can construct a concrete instance of `GetBaselineStrategiesStrategyArrayInput` via:
 //
@@ -1113,12 +962,6 @@ func (i GetBaselineStrategiesStrategyArray) ToGetBaselineStrategiesStrategyArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetBaselineStrategiesStrategyArrayOutput)
 }
 
-func (i GetBaselineStrategiesStrategyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetBaselineStrategiesStrategy] {
-	return pulumix.Output[[]GetBaselineStrategiesStrategy]{
-		OutputState: i.ToGetBaselineStrategiesStrategyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetBaselineStrategiesStrategyOutput struct{ *pulumi.OutputState }
 
 func (GetBaselineStrategiesStrategyOutput) ElementType() reflect.Type {
@@ -1131,12 +974,6 @@ func (o GetBaselineStrategiesStrategyOutput) ToGetBaselineStrategiesStrategyOutp
 
 func (o GetBaselineStrategiesStrategyOutput) ToGetBaselineStrategiesStrategyOutputWithContext(ctx context.Context) GetBaselineStrategiesStrategyOutput {
 	return o
-}
-
-func (o GetBaselineStrategiesStrategyOutput) ToOutput(ctx context.Context) pulumix.Output[GetBaselineStrategiesStrategy] {
-	return pulumix.Output[GetBaselineStrategiesStrategy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the baseline check policy.
@@ -1203,12 +1040,6 @@ func (o GetBaselineStrategiesStrategyArrayOutput) ToGetBaselineStrategiesStrateg
 
 func (o GetBaselineStrategiesStrategyArrayOutput) ToGetBaselineStrategiesStrategyArrayOutputWithContext(ctx context.Context) GetBaselineStrategiesStrategyArrayOutput {
 	return o
-}
-
-func (o GetBaselineStrategiesStrategyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetBaselineStrategiesStrategy] {
-	return pulumix.Output[[]GetBaselineStrategiesStrategy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetBaselineStrategiesStrategyArrayOutput) Index(i pulumi.IntInput) GetBaselineStrategiesStrategyOutput {
@@ -1282,12 +1113,6 @@ func (i GetHoneyPotsPotArgs) ToGetHoneyPotsPotOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetHoneyPotsPotOutput)
 }
 
-func (i GetHoneyPotsPotArgs) ToOutput(ctx context.Context) pulumix.Output[GetHoneyPotsPot] {
-	return pulumix.Output[GetHoneyPotsPot]{
-		OutputState: i.ToGetHoneyPotsPotOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetHoneyPotsPotArrayInput is an input type that accepts GetHoneyPotsPotArray and GetHoneyPotsPotArrayOutput values.
 // You can construct a concrete instance of `GetHoneyPotsPotArrayInput` via:
 //
@@ -1313,12 +1138,6 @@ func (i GetHoneyPotsPotArray) ToGetHoneyPotsPotArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetHoneyPotsPotArrayOutput)
 }
 
-func (i GetHoneyPotsPotArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHoneyPotsPot] {
-	return pulumix.Output[[]GetHoneyPotsPot]{
-		OutputState: i.ToGetHoneyPotsPotArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetHoneyPotsPotOutput struct{ *pulumi.OutputState }
 
 func (GetHoneyPotsPotOutput) ElementType() reflect.Type {
@@ -1331,12 +1150,6 @@ func (o GetHoneyPotsPotOutput) ToGetHoneyPotsPotOutput() GetHoneyPotsPotOutput {
 
 func (o GetHoneyPotsPotOutput) ToGetHoneyPotsPotOutputWithContext(ctx context.Context) GetHoneyPotsPotOutput {
 	return o
-}
-
-func (o GetHoneyPotsPotOutput) ToOutput(ctx context.Context) pulumix.Output[GetHoneyPotsPot] {
-	return pulumix.Output[GetHoneyPotsPot]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Honeypot ID.
@@ -1396,12 +1209,6 @@ func (o GetHoneyPotsPotArrayOutput) ToGetHoneyPotsPotArrayOutput() GetHoneyPotsP
 
 func (o GetHoneyPotsPotArrayOutput) ToGetHoneyPotsPotArrayOutputWithContext(ctx context.Context) GetHoneyPotsPotArrayOutput {
 	return o
-}
-
-func (o GetHoneyPotsPotArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHoneyPotsPot] {
-	return pulumix.Output[[]GetHoneyPotsPot]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetHoneyPotsPotArrayOutput) Index(i pulumi.IntInput) GetHoneyPotsPotOutput {
@@ -1479,12 +1286,6 @@ func (i GetHoneypotImagesImageArgs) ToGetHoneypotImagesImageOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetHoneypotImagesImageOutput)
 }
 
-func (i GetHoneypotImagesImageArgs) ToOutput(ctx context.Context) pulumix.Output[GetHoneypotImagesImage] {
-	return pulumix.Output[GetHoneypotImagesImage]{
-		OutputState: i.ToGetHoneypotImagesImageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetHoneypotImagesImageArrayInput is an input type that accepts GetHoneypotImagesImageArray and GetHoneypotImagesImageArrayOutput values.
 // You can construct a concrete instance of `GetHoneypotImagesImageArrayInput` via:
 //
@@ -1510,12 +1311,6 @@ func (i GetHoneypotImagesImageArray) ToGetHoneypotImagesImageArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetHoneypotImagesImageArrayOutput)
 }
 
-func (i GetHoneypotImagesImageArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHoneypotImagesImage] {
-	return pulumix.Output[[]GetHoneypotImagesImage]{
-		OutputState: i.ToGetHoneypotImagesImageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetHoneypotImagesImageOutput struct{ *pulumi.OutputState }
 
 func (GetHoneypotImagesImageOutput) ElementType() reflect.Type {
@@ -1528,12 +1323,6 @@ func (o GetHoneypotImagesImageOutput) ToGetHoneypotImagesImageOutput() GetHoneyp
 
 func (o GetHoneypotImagesImageOutput) ToGetHoneypotImagesImageOutputWithContext(ctx context.Context) GetHoneypotImagesImageOutput {
 	return o
-}
-
-func (o GetHoneypotImagesImageOutput) ToOutput(ctx context.Context) pulumix.Output[GetHoneypotImagesImage] {
-	return pulumix.Output[GetHoneypotImagesImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the honeypot image display.
@@ -1600,12 +1389,6 @@ func (o GetHoneypotImagesImageArrayOutput) ToGetHoneypotImagesImageArrayOutputWi
 	return o
 }
 
-func (o GetHoneypotImagesImageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHoneypotImagesImage] {
-	return pulumix.Output[[]GetHoneypotImagesImage]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetHoneypotImagesImageArrayOutput) Index(i pulumi.IntInput) GetHoneypotImagesImageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHoneypotImagesImage {
 		return vs[0].([]GetHoneypotImagesImage)[vs[1].(int)]
@@ -1669,12 +1452,6 @@ func (i GetHoneypotNodesNodeArgs) ToGetHoneypotNodesNodeOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetHoneypotNodesNodeOutput)
 }
 
-func (i GetHoneypotNodesNodeArgs) ToOutput(ctx context.Context) pulumix.Output[GetHoneypotNodesNode] {
-	return pulumix.Output[GetHoneypotNodesNode]{
-		OutputState: i.ToGetHoneypotNodesNodeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetHoneypotNodesNodeArrayInput is an input type that accepts GetHoneypotNodesNodeArray and GetHoneypotNodesNodeArrayOutput values.
 // You can construct a concrete instance of `GetHoneypotNodesNodeArrayInput` via:
 //
@@ -1700,12 +1477,6 @@ func (i GetHoneypotNodesNodeArray) ToGetHoneypotNodesNodeArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetHoneypotNodesNodeArrayOutput)
 }
 
-func (i GetHoneypotNodesNodeArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHoneypotNodesNode] {
-	return pulumix.Output[[]GetHoneypotNodesNode]{
-		OutputState: i.ToGetHoneypotNodesNodeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetHoneypotNodesNodeOutput struct{ *pulumi.OutputState }
 
 func (GetHoneypotNodesNodeOutput) ElementType() reflect.Type {
@@ -1718,12 +1489,6 @@ func (o GetHoneypotNodesNodeOutput) ToGetHoneypotNodesNodeOutput() GetHoneypotNo
 
 func (o GetHoneypotNodesNodeOutput) ToGetHoneypotNodesNodeOutputWithContext(ctx context.Context) GetHoneypotNodesNodeOutput {
 	return o
-}
-
-func (o GetHoneypotNodesNodeOutput) ToOutput(ctx context.Context) pulumix.Output[GetHoneypotNodesNode] {
-	return pulumix.Output[GetHoneypotNodesNode]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to allow honeypot access to the external network. Value:-**true**: Allow-**false**: Disabled
@@ -1776,12 +1541,6 @@ func (o GetHoneypotNodesNodeArrayOutput) ToGetHoneypotNodesNodeArrayOutput() Get
 
 func (o GetHoneypotNodesNodeArrayOutput) ToGetHoneypotNodesNodeArrayOutputWithContext(ctx context.Context) GetHoneypotNodesNodeArrayOutput {
 	return o
-}
-
-func (o GetHoneypotNodesNodeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHoneypotNodesNode] {
-	return pulumix.Output[[]GetHoneypotNodesNode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetHoneypotNodesNodeArrayOutput) Index(i pulumi.IntInput) GetHoneypotNodesNodeOutput {
@@ -1843,12 +1602,6 @@ func (i GetHoneypotPresetsPresetArgs) ToGetHoneypotPresetsPresetOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetHoneypotPresetsPresetOutput)
 }
 
-func (i GetHoneypotPresetsPresetArgs) ToOutput(ctx context.Context) pulumix.Output[GetHoneypotPresetsPreset] {
-	return pulumix.Output[GetHoneypotPresetsPreset]{
-		OutputState: i.ToGetHoneypotPresetsPresetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetHoneypotPresetsPresetArrayInput is an input type that accepts GetHoneypotPresetsPresetArray and GetHoneypotPresetsPresetArrayOutput values.
 // You can construct a concrete instance of `GetHoneypotPresetsPresetArrayInput` via:
 //
@@ -1874,12 +1627,6 @@ func (i GetHoneypotPresetsPresetArray) ToGetHoneypotPresetsPresetArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetHoneypotPresetsPresetArrayOutput)
 }
 
-func (i GetHoneypotPresetsPresetArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHoneypotPresetsPreset] {
-	return pulumix.Output[[]GetHoneypotPresetsPreset]{
-		OutputState: i.ToGetHoneypotPresetsPresetArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetHoneypotPresetsPresetOutput struct{ *pulumi.OutputState }
 
 func (GetHoneypotPresetsPresetOutput) ElementType() reflect.Type {
@@ -1892,12 +1639,6 @@ func (o GetHoneypotPresetsPresetOutput) ToGetHoneypotPresetsPresetOutput() GetHo
 
 func (o GetHoneypotPresetsPresetOutput) ToGetHoneypotPresetsPresetOutputWithContext(ctx context.Context) GetHoneypotPresetsPresetOutput {
 	return o
-}
-
-func (o GetHoneypotPresetsPresetOutput) ToOutput(ctx context.Context) pulumix.Output[GetHoneypotPresetsPreset] {
-	return pulumix.Output[GetHoneypotPresetsPreset]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Honeypot mirror name
@@ -1942,12 +1683,6 @@ func (o GetHoneypotPresetsPresetArrayOutput) ToGetHoneypotPresetsPresetArrayOutp
 
 func (o GetHoneypotPresetsPresetArrayOutput) ToGetHoneypotPresetsPresetArrayOutputWithContext(ctx context.Context) GetHoneypotPresetsPresetArrayOutput {
 	return o
-}
-
-func (o GetHoneypotPresetsPresetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHoneypotPresetsPreset] {
-	return pulumix.Output[[]GetHoneypotPresetsPreset]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetHoneypotPresetsPresetArrayOutput) Index(i pulumi.IntInput) GetHoneypotPresetsPresetOutput {
@@ -1997,12 +1732,6 @@ func (i GetHoneypotPresetsPresetMetaArgs) ToGetHoneypotPresetsPresetMetaOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetHoneypotPresetsPresetMetaOutput)
 }
 
-func (i GetHoneypotPresetsPresetMetaArgs) ToOutput(ctx context.Context) pulumix.Output[GetHoneypotPresetsPresetMeta] {
-	return pulumix.Output[GetHoneypotPresetsPresetMeta]{
-		OutputState: i.ToGetHoneypotPresetsPresetMetaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetHoneypotPresetsPresetMetaArrayInput is an input type that accepts GetHoneypotPresetsPresetMetaArray and GetHoneypotPresetsPresetMetaArrayOutput values.
 // You can construct a concrete instance of `GetHoneypotPresetsPresetMetaArrayInput` via:
 //
@@ -2028,12 +1757,6 @@ func (i GetHoneypotPresetsPresetMetaArray) ToGetHoneypotPresetsPresetMetaArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetHoneypotPresetsPresetMetaArrayOutput)
 }
 
-func (i GetHoneypotPresetsPresetMetaArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHoneypotPresetsPresetMeta] {
-	return pulumix.Output[[]GetHoneypotPresetsPresetMeta]{
-		OutputState: i.ToGetHoneypotPresetsPresetMetaArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetHoneypotPresetsPresetMetaOutput struct{ *pulumi.OutputState }
 
 func (GetHoneypotPresetsPresetMetaOutput) ElementType() reflect.Type {
@@ -2046,12 +1769,6 @@ func (o GetHoneypotPresetsPresetMetaOutput) ToGetHoneypotPresetsPresetMetaOutput
 
 func (o GetHoneypotPresetsPresetMetaOutput) ToGetHoneypotPresetsPresetMetaOutputWithContext(ctx context.Context) GetHoneypotPresetsPresetMetaOutput {
 	return o
-}
-
-func (o GetHoneypotPresetsPresetMetaOutput) ToOutput(ctx context.Context) pulumix.Output[GetHoneypotPresetsPresetMeta] {
-	return pulumix.Output[GetHoneypotPresetsPresetMeta]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Burp counter.
@@ -2081,12 +1798,6 @@ func (o GetHoneypotPresetsPresetMetaArrayOutput) ToGetHoneypotPresetsPresetMetaA
 
 func (o GetHoneypotPresetsPresetMetaArrayOutput) ToGetHoneypotPresetsPresetMetaArrayOutputWithContext(ctx context.Context) GetHoneypotPresetsPresetMetaArrayOutput {
 	return o
-}
-
-func (o GetHoneypotPresetsPresetMetaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHoneypotPresetsPresetMeta] {
-	return pulumix.Output[[]GetHoneypotPresetsPresetMeta]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetHoneypotPresetsPresetMetaArrayOutput) Index(i pulumi.IntInput) GetHoneypotPresetsPresetMetaOutput {
@@ -2170,12 +1881,6 @@ func (i GetHoneypotProbesProbeArgs) ToGetHoneypotProbesProbeOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetHoneypotProbesProbeOutput)
 }
 
-func (i GetHoneypotProbesProbeArgs) ToOutput(ctx context.Context) pulumix.Output[GetHoneypotProbesProbe] {
-	return pulumix.Output[GetHoneypotProbesProbe]{
-		OutputState: i.ToGetHoneypotProbesProbeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetHoneypotProbesProbeArrayInput is an input type that accepts GetHoneypotProbesProbeArray and GetHoneypotProbesProbeArrayOutput values.
 // You can construct a concrete instance of `GetHoneypotProbesProbeArrayInput` via:
 //
@@ -2201,12 +1906,6 @@ func (i GetHoneypotProbesProbeArray) ToGetHoneypotProbesProbeArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetHoneypotProbesProbeArrayOutput)
 }
 
-func (i GetHoneypotProbesProbeArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHoneypotProbesProbe] {
-	return pulumix.Output[[]GetHoneypotProbesProbe]{
-		OutputState: i.ToGetHoneypotProbesProbeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetHoneypotProbesProbeOutput struct{ *pulumi.OutputState }
 
 func (GetHoneypotProbesProbeOutput) ElementType() reflect.Type {
@@ -2219,12 +1918,6 @@ func (o GetHoneypotProbesProbeOutput) ToGetHoneypotProbesProbeOutput() GetHoneyp
 
 func (o GetHoneypotProbesProbeOutput) ToGetHoneypotProbesProbeOutputWithContext(ctx context.Context) GetHoneypotProbesProbeOutput {
 	return o
-}
-
-func (o GetHoneypotProbesProbeOutput) ToOutput(ctx context.Context) pulumix.Output[GetHoneypotProbesProbe] {
-	return pulumix.Output[GetHoneypotProbesProbe]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ARP spoofing detection.-**true**: Enable-**false**: Disabled. Available when `enableDetails` is on.
@@ -2300,12 +1993,6 @@ func (o GetHoneypotProbesProbeArrayOutput) ToGetHoneypotProbesProbeArrayOutputWi
 	return o
 }
 
-func (o GetHoneypotProbesProbeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHoneypotProbesProbe] {
-	return pulumix.Output[[]GetHoneypotProbesProbe]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetHoneypotProbesProbeArrayOutput) Index(i pulumi.IntInput) GetHoneypotProbesProbeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHoneypotProbesProbe {
 		return vs[0].([]GetHoneypotProbesProbe)[vs[1].(int)]
@@ -2347,12 +2034,6 @@ func (i GetHoneypotProbesProbeHoneypotBindListArgs) ToGetHoneypotProbesProbeHone
 	return pulumi.ToOutputWithContext(ctx, i).(GetHoneypotProbesProbeHoneypotBindListOutput)
 }
 
-func (i GetHoneypotProbesProbeHoneypotBindListArgs) ToOutput(ctx context.Context) pulumix.Output[GetHoneypotProbesProbeHoneypotBindList] {
-	return pulumix.Output[GetHoneypotProbesProbeHoneypotBindList]{
-		OutputState: i.ToGetHoneypotProbesProbeHoneypotBindListOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetHoneypotProbesProbeHoneypotBindListArrayInput is an input type that accepts GetHoneypotProbesProbeHoneypotBindListArray and GetHoneypotProbesProbeHoneypotBindListArrayOutput values.
 // You can construct a concrete instance of `GetHoneypotProbesProbeHoneypotBindListArrayInput` via:
 //
@@ -2378,12 +2059,6 @@ func (i GetHoneypotProbesProbeHoneypotBindListArray) ToGetHoneypotProbesProbeHon
 	return pulumi.ToOutputWithContext(ctx, i).(GetHoneypotProbesProbeHoneypotBindListArrayOutput)
 }
 
-func (i GetHoneypotProbesProbeHoneypotBindListArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHoneypotProbesProbeHoneypotBindList] {
-	return pulumix.Output[[]GetHoneypotProbesProbeHoneypotBindList]{
-		OutputState: i.ToGetHoneypotProbesProbeHoneypotBindListArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetHoneypotProbesProbeHoneypotBindListOutput struct{ *pulumi.OutputState }
 
 func (GetHoneypotProbesProbeHoneypotBindListOutput) ElementType() reflect.Type {
@@ -2396,12 +2071,6 @@ func (o GetHoneypotProbesProbeHoneypotBindListOutput) ToGetHoneypotProbesProbeHo
 
 func (o GetHoneypotProbesProbeHoneypotBindListOutput) ToGetHoneypotProbesProbeHoneypotBindListOutputWithContext(ctx context.Context) GetHoneypotProbesProbeHoneypotBindListOutput {
 	return o
-}
-
-func (o GetHoneypotProbesProbeHoneypotBindListOutput) ToOutput(ctx context.Context) pulumix.Output[GetHoneypotProbesProbeHoneypotBindList] {
-	return pulumix.Output[GetHoneypotProbesProbeHoneypotBindList]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of listening ports. Available when `enableDetails` is on.
@@ -2427,12 +2096,6 @@ func (o GetHoneypotProbesProbeHoneypotBindListArrayOutput) ToGetHoneypotProbesPr
 
 func (o GetHoneypotProbesProbeHoneypotBindListArrayOutput) ToGetHoneypotProbesProbeHoneypotBindListArrayOutputWithContext(ctx context.Context) GetHoneypotProbesProbeHoneypotBindListArrayOutput {
 	return o
-}
-
-func (o GetHoneypotProbesProbeHoneypotBindListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHoneypotProbesProbeHoneypotBindList] {
-	return pulumix.Output[[]GetHoneypotProbesProbeHoneypotBindList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetHoneypotProbesProbeHoneypotBindListArrayOutput) Index(i pulumi.IntInput) GetHoneypotProbesProbeHoneypotBindListOutput {
@@ -2490,12 +2153,6 @@ func (i GetHoneypotProbesProbeHoneypotBindListBindPortListArgs) ToGetHoneypotPro
 	return pulumi.ToOutputWithContext(ctx, i).(GetHoneypotProbesProbeHoneypotBindListBindPortListOutput)
 }
 
-func (i GetHoneypotProbesProbeHoneypotBindListBindPortListArgs) ToOutput(ctx context.Context) pulumix.Output[GetHoneypotProbesProbeHoneypotBindListBindPortList] {
-	return pulumix.Output[GetHoneypotProbesProbeHoneypotBindListBindPortList]{
-		OutputState: i.ToGetHoneypotProbesProbeHoneypotBindListBindPortListOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetHoneypotProbesProbeHoneypotBindListBindPortListArrayInput is an input type that accepts GetHoneypotProbesProbeHoneypotBindListBindPortListArray and GetHoneypotProbesProbeHoneypotBindListBindPortListArrayOutput values.
 // You can construct a concrete instance of `GetHoneypotProbesProbeHoneypotBindListBindPortListArrayInput` via:
 //
@@ -2521,12 +2178,6 @@ func (i GetHoneypotProbesProbeHoneypotBindListBindPortListArray) ToGetHoneypotPr
 	return pulumi.ToOutputWithContext(ctx, i).(GetHoneypotProbesProbeHoneypotBindListBindPortListArrayOutput)
 }
 
-func (i GetHoneypotProbesProbeHoneypotBindListBindPortListArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHoneypotProbesProbeHoneypotBindListBindPortList] {
-	return pulumix.Output[[]GetHoneypotProbesProbeHoneypotBindListBindPortList]{
-		OutputState: i.ToGetHoneypotProbesProbeHoneypotBindListBindPortListArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetHoneypotProbesProbeHoneypotBindListBindPortListOutput struct{ *pulumi.OutputState }
 
 func (GetHoneypotProbesProbeHoneypotBindListBindPortListOutput) ElementType() reflect.Type {
@@ -2539,12 +2190,6 @@ func (o GetHoneypotProbesProbeHoneypotBindListBindPortListOutput) ToGetHoneypotP
 
 func (o GetHoneypotProbesProbeHoneypotBindListBindPortListOutput) ToGetHoneypotProbesProbeHoneypotBindListBindPortListOutputWithContext(ctx context.Context) GetHoneypotProbesProbeHoneypotBindListBindPortListOutput {
 	return o
-}
-
-func (o GetHoneypotProbesProbeHoneypotBindListBindPortListOutput) ToOutput(ctx context.Context) pulumix.Output[GetHoneypotProbesProbeHoneypotBindListBindPortList] {
-	return pulumix.Output[GetHoneypotProbesProbeHoneypotBindListBindPortList]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to bind the port.
@@ -2584,12 +2229,6 @@ func (o GetHoneypotProbesProbeHoneypotBindListBindPortListArrayOutput) ToGetHone
 
 func (o GetHoneypotProbesProbeHoneypotBindListBindPortListArrayOutput) ToGetHoneypotProbesProbeHoneypotBindListBindPortListArrayOutputWithContext(ctx context.Context) GetHoneypotProbesProbeHoneypotBindListBindPortListArrayOutput {
 	return o
-}
-
-func (o GetHoneypotProbesProbeHoneypotBindListBindPortListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHoneypotProbesProbeHoneypotBindListBindPortList] {
-	return pulumix.Output[[]GetHoneypotProbesProbeHoneypotBindListBindPortList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetHoneypotProbesProbeHoneypotBindListBindPortListArrayOutput) Index(i pulumi.IntInput) GetHoneypotProbesProbeHoneypotBindListBindPortListOutput {
@@ -2647,12 +2286,6 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceOutput)
 }
 
-func (i GetInstancesInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstance] {
-	return pulumix.Output[GetInstancesInstance]{
-		OutputState: i.ToGetInstancesInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
 //
@@ -2678,12 +2311,6 @@ func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
 }
 
-func (i GetInstancesInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstance] {
-	return pulumix.Output[[]GetInstancesInstance]{
-		OutputState: i.ToGetInstancesInstanceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceOutput) ElementType() reflect.Type {
@@ -2696,12 +2323,6 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutput() GetInstancesI
 
 func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
 	return o
-}
-
-func (o GetInstancesInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstance] {
-	return pulumix.Output[GetInstancesInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation time of the resource
@@ -2741,12 +2362,6 @@ func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutput() Get
 
 func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceArrayOutput {
 	return o
-}
-
-func (o GetInstancesInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstance] {
-	return pulumix.Output[[]GetInstancesInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
@@ -2804,12 +2419,6 @@ func (i GetVulWhitelistsWhitelistArgs) ToGetVulWhitelistsWhitelistOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetVulWhitelistsWhitelistOutput)
 }
 
-func (i GetVulWhitelistsWhitelistArgs) ToOutput(ctx context.Context) pulumix.Output[GetVulWhitelistsWhitelist] {
-	return pulumix.Output[GetVulWhitelistsWhitelist]{
-		OutputState: i.ToGetVulWhitelistsWhitelistOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetVulWhitelistsWhitelistArrayInput is an input type that accepts GetVulWhitelistsWhitelistArray and GetVulWhitelistsWhitelistArrayOutput values.
 // You can construct a concrete instance of `GetVulWhitelistsWhitelistArrayInput` via:
 //
@@ -2835,12 +2444,6 @@ func (i GetVulWhitelistsWhitelistArray) ToGetVulWhitelistsWhitelistArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetVulWhitelistsWhitelistArrayOutput)
 }
 
-func (i GetVulWhitelistsWhitelistArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVulWhitelistsWhitelist] {
-	return pulumix.Output[[]GetVulWhitelistsWhitelist]{
-		OutputState: i.ToGetVulWhitelistsWhitelistArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetVulWhitelistsWhitelistOutput struct{ *pulumi.OutputState }
 
 func (GetVulWhitelistsWhitelistOutput) ElementType() reflect.Type {
@@ -2853,12 +2456,6 @@ func (o GetVulWhitelistsWhitelistOutput) ToGetVulWhitelistsWhitelistOutput() Get
 
 func (o GetVulWhitelistsWhitelistOutput) ToGetVulWhitelistsWhitelistOutputWithContext(ctx context.Context) GetVulWhitelistsWhitelistOutput {
 	return o
-}
-
-func (o GetVulWhitelistsWhitelistOutput) ToOutput(ctx context.Context) pulumix.Output[GetVulWhitelistsWhitelist] {
-	return pulumix.Output[GetVulWhitelistsWhitelist]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Vul Whitelist.
@@ -2898,12 +2495,6 @@ func (o GetVulWhitelistsWhitelistArrayOutput) ToGetVulWhitelistsWhitelistArrayOu
 
 func (o GetVulWhitelistsWhitelistArrayOutput) ToGetVulWhitelistsWhitelistArrayOutputWithContext(ctx context.Context) GetVulWhitelistsWhitelistArrayOutput {
 	return o
-}
-
-func (o GetVulWhitelistsWhitelistArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVulWhitelistsWhitelist] {
-	return pulumix.Output[[]GetVulWhitelistsWhitelist]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetVulWhitelistsWhitelistArrayOutput) Index(i pulumi.IntInput) GetVulWhitelistsWhitelistOutput {
@@ -2981,12 +2572,6 @@ func (i GetWebLockConfigsConfigArgs) ToGetWebLockConfigsConfigOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetWebLockConfigsConfigOutput)
 }
 
-func (i GetWebLockConfigsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetWebLockConfigsConfig] {
-	return pulumix.Output[GetWebLockConfigsConfig]{
-		OutputState: i.ToGetWebLockConfigsConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetWebLockConfigsConfigArrayInput is an input type that accepts GetWebLockConfigsConfigArray and GetWebLockConfigsConfigArrayOutput values.
 // You can construct a concrete instance of `GetWebLockConfigsConfigArrayInput` via:
 //
@@ -3012,12 +2597,6 @@ func (i GetWebLockConfigsConfigArray) ToGetWebLockConfigsConfigArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetWebLockConfigsConfigArrayOutput)
 }
 
-func (i GetWebLockConfigsConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetWebLockConfigsConfig] {
-	return pulumix.Output[[]GetWebLockConfigsConfig]{
-		OutputState: i.ToGetWebLockConfigsConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetWebLockConfigsConfigOutput struct{ *pulumi.OutputState }
 
 func (GetWebLockConfigsConfigOutput) ElementType() reflect.Type {
@@ -3030,12 +2609,6 @@ func (o GetWebLockConfigsConfigOutput) ToGetWebLockConfigsConfigOutput() GetWebL
 
 func (o GetWebLockConfigsConfigOutput) ToGetWebLockConfigsConfigOutputWithContext(ctx context.Context) GetWebLockConfigsConfigOutput {
 	return o
-}
-
-func (o GetWebLockConfigsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetWebLockConfigsConfig] {
-	return pulumix.Output[GetWebLockConfigsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The prevention mode.
@@ -3100,12 +2673,6 @@ func (o GetWebLockConfigsConfigArrayOutput) ToGetWebLockConfigsConfigArrayOutput
 
 func (o GetWebLockConfigsConfigArrayOutput) ToGetWebLockConfigsConfigArrayOutputWithContext(ctx context.Context) GetWebLockConfigsConfigArrayOutput {
 	return o
-}
-
-func (o GetWebLockConfigsConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetWebLockConfigsConfig] {
-	return pulumix.Output[[]GetWebLockConfigsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetWebLockConfigsConfigArrayOutput) Index(i pulumi.IntInput) GetWebLockConfigsConfigOutput {

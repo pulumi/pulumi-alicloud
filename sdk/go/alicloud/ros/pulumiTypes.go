@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -51,12 +50,6 @@ func (i ChangeSetParameterArgs) ToChangeSetParameterOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ChangeSetParameterOutput)
 }
 
-func (i ChangeSetParameterArgs) ToOutput(ctx context.Context) pulumix.Output[ChangeSetParameter] {
-	return pulumix.Output[ChangeSetParameter]{
-		OutputState: i.ToChangeSetParameterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ChangeSetParameterArrayInput is an input type that accepts ChangeSetParameterArray and ChangeSetParameterArrayOutput values.
 // You can construct a concrete instance of `ChangeSetParameterArrayInput` via:
 //
@@ -82,12 +75,6 @@ func (i ChangeSetParameterArray) ToChangeSetParameterArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ChangeSetParameterArrayOutput)
 }
 
-func (i ChangeSetParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]ChangeSetParameter] {
-	return pulumix.Output[[]ChangeSetParameter]{
-		OutputState: i.ToChangeSetParameterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ChangeSetParameterOutput struct{ *pulumi.OutputState }
 
 func (ChangeSetParameterOutput) ElementType() reflect.Type {
@@ -100,12 +87,6 @@ func (o ChangeSetParameterOutput) ToChangeSetParameterOutput() ChangeSetParamete
 
 func (o ChangeSetParameterOutput) ToChangeSetParameterOutputWithContext(ctx context.Context) ChangeSetParameterOutput {
 	return o
-}
-
-func (o ChangeSetParameterOutput) ToOutput(ctx context.Context) pulumix.Output[ChangeSetParameter] {
-	return pulumix.Output[ChangeSetParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The parameter key.
@@ -130,12 +111,6 @@ func (o ChangeSetParameterArrayOutput) ToChangeSetParameterArrayOutput() ChangeS
 
 func (o ChangeSetParameterArrayOutput) ToChangeSetParameterArrayOutputWithContext(ctx context.Context) ChangeSetParameterArrayOutput {
 	return o
-}
-
-func (o ChangeSetParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ChangeSetParameter] {
-	return pulumix.Output[[]ChangeSetParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ChangeSetParameterArrayOutput) Index(i pulumi.IntInput) ChangeSetParameterOutput {
@@ -181,12 +156,6 @@ func (i StackGroupParameterArgs) ToStackGroupParameterOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(StackGroupParameterOutput)
 }
 
-func (i StackGroupParameterArgs) ToOutput(ctx context.Context) pulumix.Output[StackGroupParameter] {
-	return pulumix.Output[StackGroupParameter]{
-		OutputState: i.ToStackGroupParameterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StackGroupParameterArrayInput is an input type that accepts StackGroupParameterArray and StackGroupParameterArrayOutput values.
 // You can construct a concrete instance of `StackGroupParameterArrayInput` via:
 //
@@ -212,12 +181,6 @@ func (i StackGroupParameterArray) ToStackGroupParameterArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(StackGroupParameterArrayOutput)
 }
 
-func (i StackGroupParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]StackGroupParameter] {
-	return pulumix.Output[[]StackGroupParameter]{
-		OutputState: i.ToStackGroupParameterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StackGroupParameterOutput struct{ *pulumi.OutputState }
 
 func (StackGroupParameterOutput) ElementType() reflect.Type {
@@ -230,12 +193,6 @@ func (o StackGroupParameterOutput) ToStackGroupParameterOutput() StackGroupParam
 
 func (o StackGroupParameterOutput) ToStackGroupParameterOutputWithContext(ctx context.Context) StackGroupParameterOutput {
 	return o
-}
-
-func (o StackGroupParameterOutput) ToOutput(ctx context.Context) pulumix.Output[StackGroupParameter] {
-	return pulumix.Output[StackGroupParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The parameter key.
@@ -260,12 +217,6 @@ func (o StackGroupParameterArrayOutput) ToStackGroupParameterArrayOutput() Stack
 
 func (o StackGroupParameterArrayOutput) ToStackGroupParameterArrayOutputWithContext(ctx context.Context) StackGroupParameterArrayOutput {
 	return o
-}
-
-func (o StackGroupParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StackGroupParameter] {
-	return pulumix.Output[[]StackGroupParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StackGroupParameterArrayOutput) Index(i pulumi.IntInput) StackGroupParameterOutput {
@@ -311,12 +262,6 @@ func (i StackInstanceParameterOverrideArgs) ToStackInstanceParameterOverrideOutp
 	return pulumi.ToOutputWithContext(ctx, i).(StackInstanceParameterOverrideOutput)
 }
 
-func (i StackInstanceParameterOverrideArgs) ToOutput(ctx context.Context) pulumix.Output[StackInstanceParameterOverride] {
-	return pulumix.Output[StackInstanceParameterOverride]{
-		OutputState: i.ToStackInstanceParameterOverrideOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StackInstanceParameterOverrideArrayInput is an input type that accepts StackInstanceParameterOverrideArray and StackInstanceParameterOverrideArrayOutput values.
 // You can construct a concrete instance of `StackInstanceParameterOverrideArrayInput` via:
 //
@@ -342,12 +287,6 @@ func (i StackInstanceParameterOverrideArray) ToStackInstanceParameterOverrideArr
 	return pulumi.ToOutputWithContext(ctx, i).(StackInstanceParameterOverrideArrayOutput)
 }
 
-func (i StackInstanceParameterOverrideArray) ToOutput(ctx context.Context) pulumix.Output[[]StackInstanceParameterOverride] {
-	return pulumix.Output[[]StackInstanceParameterOverride]{
-		OutputState: i.ToStackInstanceParameterOverrideArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StackInstanceParameterOverrideOutput struct{ *pulumi.OutputState }
 
 func (StackInstanceParameterOverrideOutput) ElementType() reflect.Type {
@@ -360,12 +299,6 @@ func (o StackInstanceParameterOverrideOutput) ToStackInstanceParameterOverrideOu
 
 func (o StackInstanceParameterOverrideOutput) ToStackInstanceParameterOverrideOutputWithContext(ctx context.Context) StackInstanceParameterOverrideOutput {
 	return o
-}
-
-func (o StackInstanceParameterOverrideOutput) ToOutput(ctx context.Context) pulumix.Output[StackInstanceParameterOverride] {
-	return pulumix.Output[StackInstanceParameterOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
@@ -390,12 +323,6 @@ func (o StackInstanceParameterOverrideArrayOutput) ToStackInstanceParameterOverr
 
 func (o StackInstanceParameterOverrideArrayOutput) ToStackInstanceParameterOverrideArrayOutputWithContext(ctx context.Context) StackInstanceParameterOverrideArrayOutput {
 	return o
-}
-
-func (o StackInstanceParameterOverrideArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StackInstanceParameterOverride] {
-	return pulumix.Output[[]StackInstanceParameterOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StackInstanceParameterOverrideArrayOutput) Index(i pulumi.IntInput) StackInstanceParameterOverrideOutput {
@@ -441,12 +368,6 @@ func (i StackParameterArgs) ToStackParameterOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(StackParameterOutput)
 }
 
-func (i StackParameterArgs) ToOutput(ctx context.Context) pulumix.Output[StackParameter] {
-	return pulumix.Output[StackParameter]{
-		OutputState: i.ToStackParameterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StackParameterArrayInput is an input type that accepts StackParameterArray and StackParameterArrayOutput values.
 // You can construct a concrete instance of `StackParameterArrayInput` via:
 //
@@ -472,12 +393,6 @@ func (i StackParameterArray) ToStackParameterArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(StackParameterArrayOutput)
 }
 
-func (i StackParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]StackParameter] {
-	return pulumix.Output[[]StackParameter]{
-		OutputState: i.ToStackParameterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StackParameterOutput struct{ *pulumi.OutputState }
 
 func (StackParameterOutput) ElementType() reflect.Type {
@@ -490,12 +405,6 @@ func (o StackParameterOutput) ToStackParameterOutput() StackParameterOutput {
 
 func (o StackParameterOutput) ToStackParameterOutputWithContext(ctx context.Context) StackParameterOutput {
 	return o
-}
-
-func (o StackParameterOutput) ToOutput(ctx context.Context) pulumix.Output[StackParameter] {
-	return pulumix.Output[StackParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The parameter key.
@@ -520,12 +429,6 @@ func (o StackParameterArrayOutput) ToStackParameterArrayOutput() StackParameterA
 
 func (o StackParameterArrayOutput) ToStackParameterArrayOutputWithContext(ctx context.Context) StackParameterArrayOutput {
 	return o
-}
-
-func (o StackParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StackParameter] {
-	return pulumix.Output[[]StackParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StackParameterArrayOutput) Index(i pulumi.IntInput) StackParameterOutput {
@@ -571,12 +474,6 @@ func (i TemplateScratchPreferenceParameterArgs) ToTemplateScratchPreferenceParam
 	return pulumi.ToOutputWithContext(ctx, i).(TemplateScratchPreferenceParameterOutput)
 }
 
-func (i TemplateScratchPreferenceParameterArgs) ToOutput(ctx context.Context) pulumix.Output[TemplateScratchPreferenceParameter] {
-	return pulumix.Output[TemplateScratchPreferenceParameter]{
-		OutputState: i.ToTemplateScratchPreferenceParameterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TemplateScratchPreferenceParameterArrayInput is an input type that accepts TemplateScratchPreferenceParameterArray and TemplateScratchPreferenceParameterArrayOutput values.
 // You can construct a concrete instance of `TemplateScratchPreferenceParameterArrayInput` via:
 //
@@ -602,12 +499,6 @@ func (i TemplateScratchPreferenceParameterArray) ToTemplateScratchPreferencePara
 	return pulumi.ToOutputWithContext(ctx, i).(TemplateScratchPreferenceParameterArrayOutput)
 }
 
-func (i TemplateScratchPreferenceParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]TemplateScratchPreferenceParameter] {
-	return pulumix.Output[[]TemplateScratchPreferenceParameter]{
-		OutputState: i.ToTemplateScratchPreferenceParameterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TemplateScratchPreferenceParameterOutput struct{ *pulumi.OutputState }
 
 func (TemplateScratchPreferenceParameterOutput) ElementType() reflect.Type {
@@ -620,12 +511,6 @@ func (o TemplateScratchPreferenceParameterOutput) ToTemplateScratchPreferencePar
 
 func (o TemplateScratchPreferenceParameterOutput) ToTemplateScratchPreferenceParameterOutputWithContext(ctx context.Context) TemplateScratchPreferenceParameterOutput {
 	return o
-}
-
-func (o TemplateScratchPreferenceParameterOutput) ToOutput(ctx context.Context) pulumix.Output[TemplateScratchPreferenceParameter] {
-	return pulumix.Output[TemplateScratchPreferenceParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Priority parameter key. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
@@ -650,12 +535,6 @@ func (o TemplateScratchPreferenceParameterArrayOutput) ToTemplateScratchPreferen
 
 func (o TemplateScratchPreferenceParameterArrayOutput) ToTemplateScratchPreferenceParameterArrayOutputWithContext(ctx context.Context) TemplateScratchPreferenceParameterArrayOutput {
 	return o
-}
-
-func (o TemplateScratchPreferenceParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TemplateScratchPreferenceParameter] {
-	return pulumix.Output[[]TemplateScratchPreferenceParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TemplateScratchPreferenceParameterArrayOutput) Index(i pulumi.IntInput) TemplateScratchPreferenceParameterOutput {
@@ -701,12 +580,6 @@ func (i TemplateScratchSourceResourceArgs) ToTemplateScratchSourceResourceOutput
 	return pulumi.ToOutputWithContext(ctx, i).(TemplateScratchSourceResourceOutput)
 }
 
-func (i TemplateScratchSourceResourceArgs) ToOutput(ctx context.Context) pulumix.Output[TemplateScratchSourceResource] {
-	return pulumix.Output[TemplateScratchSourceResource]{
-		OutputState: i.ToTemplateScratchSourceResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TemplateScratchSourceResourceArrayInput is an input type that accepts TemplateScratchSourceResourceArray and TemplateScratchSourceResourceArrayOutput values.
 // You can construct a concrete instance of `TemplateScratchSourceResourceArrayInput` via:
 //
@@ -732,12 +605,6 @@ func (i TemplateScratchSourceResourceArray) ToTemplateScratchSourceResourceArray
 	return pulumi.ToOutputWithContext(ctx, i).(TemplateScratchSourceResourceArrayOutput)
 }
 
-func (i TemplateScratchSourceResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]TemplateScratchSourceResource] {
-	return pulumix.Output[[]TemplateScratchSourceResource]{
-		OutputState: i.ToTemplateScratchSourceResourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TemplateScratchSourceResourceOutput struct{ *pulumi.OutputState }
 
 func (TemplateScratchSourceResourceOutput) ElementType() reflect.Type {
@@ -750,12 +617,6 @@ func (o TemplateScratchSourceResourceOutput) ToTemplateScratchSourceResourceOutp
 
 func (o TemplateScratchSourceResourceOutput) ToTemplateScratchSourceResourceOutputWithContext(ctx context.Context) TemplateScratchSourceResourceOutput {
 	return o
-}
-
-func (o TemplateScratchSourceResourceOutput) ToOutput(ctx context.Context) pulumix.Output[TemplateScratchSourceResource] {
-	return pulumix.Output[TemplateScratchSourceResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Source Resource.
@@ -780,12 +641,6 @@ func (o TemplateScratchSourceResourceArrayOutput) ToTemplateScratchSourceResourc
 
 func (o TemplateScratchSourceResourceArrayOutput) ToTemplateScratchSourceResourceArrayOutputWithContext(ctx context.Context) TemplateScratchSourceResourceArrayOutput {
 	return o
-}
-
-func (o TemplateScratchSourceResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TemplateScratchSourceResource] {
-	return pulumix.Output[[]TemplateScratchSourceResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TemplateScratchSourceResourceArrayOutput) Index(i pulumi.IntInput) TemplateScratchSourceResourceOutput {
@@ -831,12 +686,6 @@ func (i TemplateScratchSourceResourceGroupArgs) ToTemplateScratchSourceResourceG
 	return pulumi.ToOutputWithContext(ctx, i).(TemplateScratchSourceResourceGroupOutput)
 }
 
-func (i TemplateScratchSourceResourceGroupArgs) ToOutput(ctx context.Context) pulumix.Output[TemplateScratchSourceResourceGroup] {
-	return pulumix.Output[TemplateScratchSourceResourceGroup]{
-		OutputState: i.ToTemplateScratchSourceResourceGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TemplateScratchSourceResourceGroupArgs) ToTemplateScratchSourceResourceGroupPtrOutput() TemplateScratchSourceResourceGroupPtrOutput {
 	return i.ToTemplateScratchSourceResourceGroupPtrOutputWithContext(context.Background())
 }
@@ -878,12 +727,6 @@ func (i *templateScratchSourceResourceGroupPtrType) ToTemplateScratchSourceResou
 	return pulumi.ToOutputWithContext(ctx, i).(TemplateScratchSourceResourceGroupPtrOutput)
 }
 
-func (i *templateScratchSourceResourceGroupPtrType) ToOutput(ctx context.Context) pulumix.Output[*TemplateScratchSourceResourceGroup] {
-	return pulumix.Output[*TemplateScratchSourceResourceGroup]{
-		OutputState: i.ToTemplateScratchSourceResourceGroupPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TemplateScratchSourceResourceGroupOutput struct{ *pulumi.OutputState }
 
 func (TemplateScratchSourceResourceGroupOutput) ElementType() reflect.Type {
@@ -908,12 +751,6 @@ func (o TemplateScratchSourceResourceGroupOutput) ToTemplateScratchSourceResourc
 	}).(TemplateScratchSourceResourceGroupPtrOutput)
 }
 
-func (o TemplateScratchSourceResourceGroupOutput) ToOutput(ctx context.Context) pulumix.Output[TemplateScratchSourceResourceGroup] {
-	return pulumix.Output[TemplateScratchSourceResourceGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ID of the Source Resource Group.
 func (o TemplateScratchSourceResourceGroupOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v TemplateScratchSourceResourceGroup) string { return v.ResourceGroupId }).(pulumi.StringOutput)
@@ -936,12 +773,6 @@ func (o TemplateScratchSourceResourceGroupPtrOutput) ToTemplateScratchSourceReso
 
 func (o TemplateScratchSourceResourceGroupPtrOutput) ToTemplateScratchSourceResourceGroupPtrOutputWithContext(ctx context.Context) TemplateScratchSourceResourceGroupPtrOutput {
 	return o
-}
-
-func (o TemplateScratchSourceResourceGroupPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TemplateScratchSourceResourceGroup] {
-	return pulumix.Output[*TemplateScratchSourceResourceGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TemplateScratchSourceResourceGroupPtrOutput) Elem() TemplateScratchSourceResourceGroupOutput {
@@ -1011,12 +842,6 @@ func (i TemplateScratchSourceTagArgs) ToTemplateScratchSourceTagOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(TemplateScratchSourceTagOutput)
 }
 
-func (i TemplateScratchSourceTagArgs) ToOutput(ctx context.Context) pulumix.Output[TemplateScratchSourceTag] {
-	return pulumix.Output[TemplateScratchSourceTag]{
-		OutputState: i.ToTemplateScratchSourceTagOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TemplateScratchSourceTagArgs) ToTemplateScratchSourceTagPtrOutput() TemplateScratchSourceTagPtrOutput {
 	return i.ToTemplateScratchSourceTagPtrOutputWithContext(context.Background())
 }
@@ -1058,12 +883,6 @@ func (i *templateScratchSourceTagPtrType) ToTemplateScratchSourceTagPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(TemplateScratchSourceTagPtrOutput)
 }
 
-func (i *templateScratchSourceTagPtrType) ToOutput(ctx context.Context) pulumix.Output[*TemplateScratchSourceTag] {
-	return pulumix.Output[*TemplateScratchSourceTag]{
-		OutputState: i.ToTemplateScratchSourceTagPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TemplateScratchSourceTagOutput struct{ *pulumi.OutputState }
 
 func (TemplateScratchSourceTagOutput) ElementType() reflect.Type {
@@ -1088,12 +907,6 @@ func (o TemplateScratchSourceTagOutput) ToTemplateScratchSourceTagPtrOutputWithC
 	}).(TemplateScratchSourceTagPtrOutput)
 }
 
-func (o TemplateScratchSourceTagOutput) ToOutput(ctx context.Context) pulumix.Output[TemplateScratchSourceTag] {
-	return pulumix.Output[TemplateScratchSourceTag]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Source label. **NOTE:** A maximum of 10 source labels can be configured.
 func (o TemplateScratchSourceTagOutput) ResourceTags() pulumi.MapOutput {
 	return o.ApplyT(func(v TemplateScratchSourceTag) map[string]interface{} { return v.ResourceTags }).(pulumi.MapOutput)
@@ -1116,12 +929,6 @@ func (o TemplateScratchSourceTagPtrOutput) ToTemplateScratchSourceTagPtrOutput()
 
 func (o TemplateScratchSourceTagPtrOutput) ToTemplateScratchSourceTagPtrOutputWithContext(ctx context.Context) TemplateScratchSourceTagPtrOutput {
 	return o
-}
-
-func (o TemplateScratchSourceTagPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TemplateScratchSourceTag] {
-	return pulumix.Output[*TemplateScratchSourceTag]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TemplateScratchSourceTagPtrOutput) Elem() TemplateScratchSourceTagOutput {
@@ -1235,12 +1042,6 @@ func (i GetChangeSetsSetArgs) ToGetChangeSetsSetOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetChangeSetsSetOutput)
 }
 
-func (i GetChangeSetsSetArgs) ToOutput(ctx context.Context) pulumix.Output[GetChangeSetsSet] {
-	return pulumix.Output[GetChangeSetsSet]{
-		OutputState: i.ToGetChangeSetsSetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetChangeSetsSetArrayInput is an input type that accepts GetChangeSetsSetArray and GetChangeSetsSetArrayOutput values.
 // You can construct a concrete instance of `GetChangeSetsSetArrayInput` via:
 //
@@ -1266,12 +1067,6 @@ func (i GetChangeSetsSetArray) ToGetChangeSetsSetArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetChangeSetsSetArrayOutput)
 }
 
-func (i GetChangeSetsSetArray) ToOutput(ctx context.Context) pulumix.Output[[]GetChangeSetsSet] {
-	return pulumix.Output[[]GetChangeSetsSet]{
-		OutputState: i.ToGetChangeSetsSetArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetChangeSetsSetOutput struct{ *pulumi.OutputState }
 
 func (GetChangeSetsSetOutput) ElementType() reflect.Type {
@@ -1284,12 +1079,6 @@ func (o GetChangeSetsSetOutput) ToGetChangeSetsSetOutput() GetChangeSetsSetOutpu
 
 func (o GetChangeSetsSetOutput) ToGetChangeSetsSetOutputWithContext(ctx context.Context) GetChangeSetsSetOutput {
 	return o
-}
-
-func (o GetChangeSetsSetOutput) ToOutput(ctx context.Context) pulumix.Output[GetChangeSetsSet] {
-	return pulumix.Output[GetChangeSetsSet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the change set.
@@ -1371,12 +1160,6 @@ func (o GetChangeSetsSetArrayOutput) ToGetChangeSetsSetArrayOutputWithContext(ct
 	return o
 }
 
-func (o GetChangeSetsSetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetChangeSetsSet] {
-	return pulumix.Output[[]GetChangeSetsSet]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetChangeSetsSetArrayOutput) Index(i pulumi.IntInput) GetChangeSetsSetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetChangeSetsSet {
 		return vs[0].([]GetChangeSetsSet)[vs[1].(int)]
@@ -1420,12 +1203,6 @@ func (i GetChangeSetsSetParameterArgs) ToGetChangeSetsSetParameterOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetChangeSetsSetParameterOutput)
 }
 
-func (i GetChangeSetsSetParameterArgs) ToOutput(ctx context.Context) pulumix.Output[GetChangeSetsSetParameter] {
-	return pulumix.Output[GetChangeSetsSetParameter]{
-		OutputState: i.ToGetChangeSetsSetParameterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetChangeSetsSetParameterArrayInput is an input type that accepts GetChangeSetsSetParameterArray and GetChangeSetsSetParameterArrayOutput values.
 // You can construct a concrete instance of `GetChangeSetsSetParameterArrayInput` via:
 //
@@ -1451,12 +1228,6 @@ func (i GetChangeSetsSetParameterArray) ToGetChangeSetsSetParameterArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetChangeSetsSetParameterArrayOutput)
 }
 
-func (i GetChangeSetsSetParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetChangeSetsSetParameter] {
-	return pulumix.Output[[]GetChangeSetsSetParameter]{
-		OutputState: i.ToGetChangeSetsSetParameterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetChangeSetsSetParameterOutput struct{ *pulumi.OutputState }
 
 func (GetChangeSetsSetParameterOutput) ElementType() reflect.Type {
@@ -1469,12 +1240,6 @@ func (o GetChangeSetsSetParameterOutput) ToGetChangeSetsSetParameterOutput() Get
 
 func (o GetChangeSetsSetParameterOutput) ToGetChangeSetsSetParameterOutputWithContext(ctx context.Context) GetChangeSetsSetParameterOutput {
 	return o
-}
-
-func (o GetChangeSetsSetParameterOutput) ToOutput(ctx context.Context) pulumix.Output[GetChangeSetsSetParameter] {
-	return pulumix.Output[GetChangeSetsSetParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The parameters.
@@ -1499,12 +1264,6 @@ func (o GetChangeSetsSetParameterArrayOutput) ToGetChangeSetsSetParameterArrayOu
 
 func (o GetChangeSetsSetParameterArrayOutput) ToGetChangeSetsSetParameterArrayOutputWithContext(ctx context.Context) GetChangeSetsSetParameterArrayOutput {
 	return o
-}
-
-func (o GetChangeSetsSetParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetChangeSetsSetParameter] {
-	return pulumix.Output[[]GetChangeSetsSetParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetChangeSetsSetParameterArrayOutput) Index(i pulumi.IntInput) GetChangeSetsSetParameterOutput {
@@ -1554,12 +1313,6 @@ func (i GetRegionsRegionArgs) ToGetRegionsRegionOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsRegionOutput)
 }
 
-func (i GetRegionsRegionArgs) ToOutput(ctx context.Context) pulumix.Output[GetRegionsRegion] {
-	return pulumix.Output[GetRegionsRegion]{
-		OutputState: i.ToGetRegionsRegionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetRegionsRegionArrayInput is an input type that accepts GetRegionsRegionArray and GetRegionsRegionArrayOutput values.
 // You can construct a concrete instance of `GetRegionsRegionArrayInput` via:
 //
@@ -1585,12 +1338,6 @@ func (i GetRegionsRegionArray) ToGetRegionsRegionArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsRegionArrayOutput)
 }
 
-func (i GetRegionsRegionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRegionsRegion] {
-	return pulumix.Output[[]GetRegionsRegion]{
-		OutputState: i.ToGetRegionsRegionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetRegionsRegionOutput struct{ *pulumi.OutputState }
 
 func (GetRegionsRegionOutput) ElementType() reflect.Type {
@@ -1603,12 +1350,6 @@ func (o GetRegionsRegionOutput) ToGetRegionsRegionOutput() GetRegionsRegionOutpu
 
 func (o GetRegionsRegionOutput) ToGetRegionsRegionOutputWithContext(ctx context.Context) GetRegionsRegionOutput {
 	return o
-}
-
-func (o GetRegionsRegionOutput) ToOutput(ctx context.Context) pulumix.Output[GetRegionsRegion] {
-	return pulumix.Output[GetRegionsRegion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the region.
@@ -1638,12 +1379,6 @@ func (o GetRegionsRegionArrayOutput) ToGetRegionsRegionArrayOutput() GetRegionsR
 
 func (o GetRegionsRegionArrayOutput) ToGetRegionsRegionArrayOutputWithContext(ctx context.Context) GetRegionsRegionArrayOutput {
 	return o
-}
-
-func (o GetRegionsRegionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRegionsRegion] {
-	return pulumix.Output[[]GetRegionsRegion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRegionsRegionArrayOutput) Index(i pulumi.IntInput) GetRegionsRegionOutput {
@@ -1717,12 +1452,6 @@ func (i GetStackGroupsGroupArgs) ToGetStackGroupsGroupOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetStackGroupsGroupOutput)
 }
 
-func (i GetStackGroupsGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetStackGroupsGroup] {
-	return pulumix.Output[GetStackGroupsGroup]{
-		OutputState: i.ToGetStackGroupsGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetStackGroupsGroupArrayInput is an input type that accepts GetStackGroupsGroupArray and GetStackGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetStackGroupsGroupArrayInput` via:
 //
@@ -1748,12 +1477,6 @@ func (i GetStackGroupsGroupArray) ToGetStackGroupsGroupArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetStackGroupsGroupArrayOutput)
 }
 
-func (i GetStackGroupsGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetStackGroupsGroup] {
-	return pulumix.Output[[]GetStackGroupsGroup]{
-		OutputState: i.ToGetStackGroupsGroupArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetStackGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetStackGroupsGroupOutput) ElementType() reflect.Type {
@@ -1766,12 +1489,6 @@ func (o GetStackGroupsGroupOutput) ToGetStackGroupsGroupOutput() GetStackGroupsG
 
 func (o GetStackGroupsGroupOutput) ToGetStackGroupsGroupOutputWithContext(ctx context.Context) GetStackGroupsGroupOutput {
 	return o
-}
-
-func (o GetStackGroupsGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetStackGroupsGroup] {
-	return pulumix.Output[GetStackGroupsGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the RAM administrator role assumed by ROS.
@@ -1833,12 +1550,6 @@ func (o GetStackGroupsGroupArrayOutput) ToGetStackGroupsGroupArrayOutputWithCont
 	return o
 }
 
-func (o GetStackGroupsGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetStackGroupsGroup] {
-	return pulumix.Output[[]GetStackGroupsGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetStackGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetStackGroupsGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStackGroupsGroup {
 		return vs[0].([]GetStackGroupsGroup)[vs[1].(int)]
@@ -1882,12 +1593,6 @@ func (i GetStackGroupsGroupParameterArgs) ToGetStackGroupsGroupParameterOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetStackGroupsGroupParameterOutput)
 }
 
-func (i GetStackGroupsGroupParameterArgs) ToOutput(ctx context.Context) pulumix.Output[GetStackGroupsGroupParameter] {
-	return pulumix.Output[GetStackGroupsGroupParameter]{
-		OutputState: i.ToGetStackGroupsGroupParameterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetStackGroupsGroupParameterArrayInput is an input type that accepts GetStackGroupsGroupParameterArray and GetStackGroupsGroupParameterArrayOutput values.
 // You can construct a concrete instance of `GetStackGroupsGroupParameterArrayInput` via:
 //
@@ -1913,12 +1618,6 @@ func (i GetStackGroupsGroupParameterArray) ToGetStackGroupsGroupParameterArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetStackGroupsGroupParameterArrayOutput)
 }
 
-func (i GetStackGroupsGroupParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetStackGroupsGroupParameter] {
-	return pulumix.Output[[]GetStackGroupsGroupParameter]{
-		OutputState: i.ToGetStackGroupsGroupParameterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetStackGroupsGroupParameterOutput struct{ *pulumi.OutputState }
 
 func (GetStackGroupsGroupParameterOutput) ElementType() reflect.Type {
@@ -1931,12 +1630,6 @@ func (o GetStackGroupsGroupParameterOutput) ToGetStackGroupsGroupParameterOutput
 
 func (o GetStackGroupsGroupParameterOutput) ToGetStackGroupsGroupParameterOutputWithContext(ctx context.Context) GetStackGroupsGroupParameterOutput {
 	return o
-}
-
-func (o GetStackGroupsGroupParameterOutput) ToOutput(ctx context.Context) pulumix.Output[GetStackGroupsGroupParameter] {
-	return pulumix.Output[GetStackGroupsGroupParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The parameter key.
@@ -1961,12 +1654,6 @@ func (o GetStackGroupsGroupParameterArrayOutput) ToGetStackGroupsGroupParameterA
 
 func (o GetStackGroupsGroupParameterArrayOutput) ToGetStackGroupsGroupParameterArrayOutputWithContext(ctx context.Context) GetStackGroupsGroupParameterArrayOutput {
 	return o
-}
-
-func (o GetStackGroupsGroupParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetStackGroupsGroupParameter] {
-	return pulumix.Output[[]GetStackGroupsGroupParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetStackGroupsGroupParameterArrayOutput) Index(i pulumi.IntInput) GetStackGroupsGroupParameterOutput {
@@ -2040,12 +1727,6 @@ func (i GetStackInstancesInstanceArgs) ToGetStackInstancesInstanceOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetStackInstancesInstanceOutput)
 }
 
-func (i GetStackInstancesInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetStackInstancesInstance] {
-	return pulumix.Output[GetStackInstancesInstance]{
-		OutputState: i.ToGetStackInstancesInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetStackInstancesInstanceArrayInput is an input type that accepts GetStackInstancesInstanceArray and GetStackInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetStackInstancesInstanceArrayInput` via:
 //
@@ -2071,12 +1752,6 @@ func (i GetStackInstancesInstanceArray) ToGetStackInstancesInstanceArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetStackInstancesInstanceArrayOutput)
 }
 
-func (i GetStackInstancesInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetStackInstancesInstance] {
-	return pulumix.Output[[]GetStackInstancesInstance]{
-		OutputState: i.ToGetStackInstancesInstanceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetStackInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetStackInstancesInstanceOutput) ElementType() reflect.Type {
@@ -2089,12 +1764,6 @@ func (o GetStackInstancesInstanceOutput) ToGetStackInstancesInstanceOutput() Get
 
 func (o GetStackInstancesInstanceOutput) ToGetStackInstancesInstanceOutputWithContext(ctx context.Context) GetStackInstancesInstanceOutput {
 	return o
-}
-
-func (o GetStackInstancesInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetStackInstancesInstance] {
-	return pulumix.Output[GetStackInstancesInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Stack Instance. The value formats as `<stack_group_name>:<stack_instance_account_id>:<stack_instance_region_id>`.
@@ -2158,12 +1827,6 @@ func (o GetStackInstancesInstanceArrayOutput) ToGetStackInstancesInstanceArrayOu
 	return o
 }
 
-func (o GetStackInstancesInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetStackInstancesInstance] {
-	return pulumix.Output[[]GetStackInstancesInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetStackInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetStackInstancesInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStackInstancesInstance {
 		return vs[0].([]GetStackInstancesInstance)[vs[1].(int)]
@@ -2207,12 +1870,6 @@ func (i GetStackInstancesInstanceParameterOverrideArgs) ToGetStackInstancesInsta
 	return pulumi.ToOutputWithContext(ctx, i).(GetStackInstancesInstanceParameterOverrideOutput)
 }
 
-func (i GetStackInstancesInstanceParameterOverrideArgs) ToOutput(ctx context.Context) pulumix.Output[GetStackInstancesInstanceParameterOverride] {
-	return pulumix.Output[GetStackInstancesInstanceParameterOverride]{
-		OutputState: i.ToGetStackInstancesInstanceParameterOverrideOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetStackInstancesInstanceParameterOverrideArrayInput is an input type that accepts GetStackInstancesInstanceParameterOverrideArray and GetStackInstancesInstanceParameterOverrideArrayOutput values.
 // You can construct a concrete instance of `GetStackInstancesInstanceParameterOverrideArrayInput` via:
 //
@@ -2238,12 +1895,6 @@ func (i GetStackInstancesInstanceParameterOverrideArray) ToGetStackInstancesInst
 	return pulumi.ToOutputWithContext(ctx, i).(GetStackInstancesInstanceParameterOverrideArrayOutput)
 }
 
-func (i GetStackInstancesInstanceParameterOverrideArray) ToOutput(ctx context.Context) pulumix.Output[[]GetStackInstancesInstanceParameterOverride] {
-	return pulumix.Output[[]GetStackInstancesInstanceParameterOverride]{
-		OutputState: i.ToGetStackInstancesInstanceParameterOverrideArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetStackInstancesInstanceParameterOverrideOutput struct{ *pulumi.OutputState }
 
 func (GetStackInstancesInstanceParameterOverrideOutput) ElementType() reflect.Type {
@@ -2256,12 +1907,6 @@ func (o GetStackInstancesInstanceParameterOverrideOutput) ToGetStackInstancesIns
 
 func (o GetStackInstancesInstanceParameterOverrideOutput) ToGetStackInstancesInstanceParameterOverrideOutputWithContext(ctx context.Context) GetStackInstancesInstanceParameterOverrideOutput {
 	return o
-}
-
-func (o GetStackInstancesInstanceParameterOverrideOutput) ToOutput(ctx context.Context) pulumix.Output[GetStackInstancesInstanceParameterOverride] {
-	return pulumix.Output[GetStackInstancesInstanceParameterOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The key of override parameter.
@@ -2286,12 +1931,6 @@ func (o GetStackInstancesInstanceParameterOverrideArrayOutput) ToGetStackInstanc
 
 func (o GetStackInstancesInstanceParameterOverrideArrayOutput) ToGetStackInstancesInstanceParameterOverrideArrayOutputWithContext(ctx context.Context) GetStackInstancesInstanceParameterOverrideArrayOutput {
 	return o
-}
-
-func (o GetStackInstancesInstanceParameterOverrideArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetStackInstancesInstanceParameterOverride] {
-	return pulumix.Output[[]GetStackInstancesInstanceParameterOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetStackInstancesInstanceParameterOverrideArrayOutput) Index(i pulumi.IntInput) GetStackInstancesInstanceParameterOverrideOutput {
@@ -2401,12 +2040,6 @@ func (i GetStacksStackArgs) ToGetStacksStackOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetStacksStackOutput)
 }
 
-func (i GetStacksStackArgs) ToOutput(ctx context.Context) pulumix.Output[GetStacksStack] {
-	return pulumix.Output[GetStacksStack]{
-		OutputState: i.ToGetStacksStackOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetStacksStackArrayInput is an input type that accepts GetStacksStackArray and GetStacksStackArrayOutput values.
 // You can construct a concrete instance of `GetStacksStackArrayInput` via:
 //
@@ -2432,12 +2065,6 @@ func (i GetStacksStackArray) ToGetStacksStackArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetStacksStackArrayOutput)
 }
 
-func (i GetStacksStackArray) ToOutput(ctx context.Context) pulumix.Output[[]GetStacksStack] {
-	return pulumix.Output[[]GetStacksStack]{
-		OutputState: i.ToGetStacksStackArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetStacksStackOutput struct{ *pulumi.OutputState }
 
 func (GetStacksStackOutput) ElementType() reflect.Type {
@@ -2450,12 +2077,6 @@ func (o GetStacksStackOutput) ToGetStacksStackOutput() GetStacksStackOutput {
 
 func (o GetStacksStackOutput) ToGetStacksStackOutputWithContext(ctx context.Context) GetStacksStackOutput {
 	return o
-}
-
-func (o GetStacksStackOutput) ToOutput(ctx context.Context) pulumix.Output[GetStacksStack] {
-	return pulumix.Output[GetStacksStack]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies whether to enable deletion protection on the stack.
@@ -2562,12 +2183,6 @@ func (o GetStacksStackArrayOutput) ToGetStacksStackArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o GetStacksStackArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetStacksStack] {
-	return pulumix.Output[[]GetStacksStack]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetStacksStackArrayOutput) Index(i pulumi.IntInput) GetStacksStackOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStacksStack {
 		return vs[0].([]GetStacksStack)[vs[1].(int)]
@@ -2611,12 +2226,6 @@ func (i GetStacksStackParameterArgs) ToGetStacksStackParameterOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetStacksStackParameterOutput)
 }
 
-func (i GetStacksStackParameterArgs) ToOutput(ctx context.Context) pulumix.Output[GetStacksStackParameter] {
-	return pulumix.Output[GetStacksStackParameter]{
-		OutputState: i.ToGetStacksStackParameterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetStacksStackParameterArrayInput is an input type that accepts GetStacksStackParameterArray and GetStacksStackParameterArrayOutput values.
 // You can construct a concrete instance of `GetStacksStackParameterArrayInput` via:
 //
@@ -2642,12 +2251,6 @@ func (i GetStacksStackParameterArray) ToGetStacksStackParameterArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetStacksStackParameterArrayOutput)
 }
 
-func (i GetStacksStackParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetStacksStackParameter] {
-	return pulumix.Output[[]GetStacksStackParameter]{
-		OutputState: i.ToGetStacksStackParameterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetStacksStackParameterOutput struct{ *pulumi.OutputState }
 
 func (GetStacksStackParameterOutput) ElementType() reflect.Type {
@@ -2660,12 +2263,6 @@ func (o GetStacksStackParameterOutput) ToGetStacksStackParameterOutput() GetStac
 
 func (o GetStacksStackParameterOutput) ToGetStacksStackParameterOutputWithContext(ctx context.Context) GetStacksStackParameterOutput {
 	return o
-}
-
-func (o GetStacksStackParameterOutput) ToOutput(ctx context.Context) pulumix.Output[GetStacksStackParameter] {
-	return pulumix.Output[GetStacksStackParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The key of parameters.
@@ -2690,12 +2287,6 @@ func (o GetStacksStackParameterArrayOutput) ToGetStacksStackParameterArrayOutput
 
 func (o GetStacksStackParameterArrayOutput) ToGetStacksStackParameterArrayOutputWithContext(ctx context.Context) GetStacksStackParameterArrayOutput {
 	return o
-}
-
-func (o GetStacksStackParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetStacksStackParameter] {
-	return pulumix.Output[[]GetStacksStackParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetStacksStackParameterArrayOutput) Index(i pulumi.IntInput) GetStacksStackParameterOutput {
@@ -2781,12 +2372,6 @@ func (i GetTemplateScratchesScratchArgs) ToGetTemplateScratchesScratchOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateScratchesScratchOutput)
 }
 
-func (i GetTemplateScratchesScratchArgs) ToOutput(ctx context.Context) pulumix.Output[GetTemplateScratchesScratch] {
-	return pulumix.Output[GetTemplateScratchesScratch]{
-		OutputState: i.ToGetTemplateScratchesScratchOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetTemplateScratchesScratchArrayInput is an input type that accepts GetTemplateScratchesScratchArray and GetTemplateScratchesScratchArrayOutput values.
 // You can construct a concrete instance of `GetTemplateScratchesScratchArrayInput` via:
 //
@@ -2812,12 +2397,6 @@ func (i GetTemplateScratchesScratchArray) ToGetTemplateScratchesScratchArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateScratchesScratchArrayOutput)
 }
 
-func (i GetTemplateScratchesScratchArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTemplateScratchesScratch] {
-	return pulumix.Output[[]GetTemplateScratchesScratch]{
-		OutputState: i.ToGetTemplateScratchesScratchArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetTemplateScratchesScratchOutput struct{ *pulumi.OutputState }
 
 func (GetTemplateScratchesScratchOutput) ElementType() reflect.Type {
@@ -2830,12 +2409,6 @@ func (o GetTemplateScratchesScratchOutput) ToGetTemplateScratchesScratchOutput()
 
 func (o GetTemplateScratchesScratchOutput) ToGetTemplateScratchesScratchOutputWithContext(ctx context.Context) GetTemplateScratchesScratchOutput {
 	return o
-}
-
-func (o GetTemplateScratchesScratchOutput) ToOutput(ctx context.Context) pulumix.Output[GetTemplateScratchesScratch] {
-	return pulumix.Output[GetTemplateScratchesScratch]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation time of the resource.
@@ -2918,12 +2491,6 @@ func (o GetTemplateScratchesScratchArrayOutput) ToGetTemplateScratchesScratchArr
 	return o
 }
 
-func (o GetTemplateScratchesScratchArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTemplateScratchesScratch] {
-	return pulumix.Output[[]GetTemplateScratchesScratch]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetTemplateScratchesScratchArrayOutput) Index(i pulumi.IntInput) GetTemplateScratchesScratchOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTemplateScratchesScratch {
 		return vs[0].([]GetTemplateScratchesScratch)[vs[1].(int)]
@@ -2967,12 +2534,6 @@ func (i GetTemplateScratchesScratchPreferenceParameterArgs) ToGetTemplateScratch
 	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateScratchesScratchPreferenceParameterOutput)
 }
 
-func (i GetTemplateScratchesScratchPreferenceParameterArgs) ToOutput(ctx context.Context) pulumix.Output[GetTemplateScratchesScratchPreferenceParameter] {
-	return pulumix.Output[GetTemplateScratchesScratchPreferenceParameter]{
-		OutputState: i.ToGetTemplateScratchesScratchPreferenceParameterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetTemplateScratchesScratchPreferenceParameterArrayInput is an input type that accepts GetTemplateScratchesScratchPreferenceParameterArray and GetTemplateScratchesScratchPreferenceParameterArrayOutput values.
 // You can construct a concrete instance of `GetTemplateScratchesScratchPreferenceParameterArrayInput` via:
 //
@@ -2998,12 +2559,6 @@ func (i GetTemplateScratchesScratchPreferenceParameterArray) ToGetTemplateScratc
 	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateScratchesScratchPreferenceParameterArrayOutput)
 }
 
-func (i GetTemplateScratchesScratchPreferenceParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTemplateScratchesScratchPreferenceParameter] {
-	return pulumix.Output[[]GetTemplateScratchesScratchPreferenceParameter]{
-		OutputState: i.ToGetTemplateScratchesScratchPreferenceParameterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetTemplateScratchesScratchPreferenceParameterOutput struct{ *pulumi.OutputState }
 
 func (GetTemplateScratchesScratchPreferenceParameterOutput) ElementType() reflect.Type {
@@ -3016,12 +2571,6 @@ func (o GetTemplateScratchesScratchPreferenceParameterOutput) ToGetTemplateScrat
 
 func (o GetTemplateScratchesScratchPreferenceParameterOutput) ToGetTemplateScratchesScratchPreferenceParameterOutputWithContext(ctx context.Context) GetTemplateScratchesScratchPreferenceParameterOutput {
 	return o
-}
-
-func (o GetTemplateScratchesScratchPreferenceParameterOutput) ToOutput(ctx context.Context) pulumix.Output[GetTemplateScratchesScratchPreferenceParameter] {
-	return pulumix.Output[GetTemplateScratchesScratchPreferenceParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Priority parameter key.
@@ -3046,12 +2595,6 @@ func (o GetTemplateScratchesScratchPreferenceParameterArrayOutput) ToGetTemplate
 
 func (o GetTemplateScratchesScratchPreferenceParameterArrayOutput) ToGetTemplateScratchesScratchPreferenceParameterArrayOutputWithContext(ctx context.Context) GetTemplateScratchesScratchPreferenceParameterArrayOutput {
 	return o
-}
-
-func (o GetTemplateScratchesScratchPreferenceParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTemplateScratchesScratchPreferenceParameter] {
-	return pulumix.Output[[]GetTemplateScratchesScratchPreferenceParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetTemplateScratchesScratchPreferenceParameterArrayOutput) Index(i pulumi.IntInput) GetTemplateScratchesScratchPreferenceParameterOutput {
@@ -3097,12 +2640,6 @@ func (i GetTemplateScratchesScratchSourceResourceArgs) ToGetTemplateScratchesScr
 	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateScratchesScratchSourceResourceOutput)
 }
 
-func (i GetTemplateScratchesScratchSourceResourceArgs) ToOutput(ctx context.Context) pulumix.Output[GetTemplateScratchesScratchSourceResource] {
-	return pulumix.Output[GetTemplateScratchesScratchSourceResource]{
-		OutputState: i.ToGetTemplateScratchesScratchSourceResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetTemplateScratchesScratchSourceResourceArrayInput is an input type that accepts GetTemplateScratchesScratchSourceResourceArray and GetTemplateScratchesScratchSourceResourceArrayOutput values.
 // You can construct a concrete instance of `GetTemplateScratchesScratchSourceResourceArrayInput` via:
 //
@@ -3128,12 +2665,6 @@ func (i GetTemplateScratchesScratchSourceResourceArray) ToGetTemplateScratchesSc
 	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateScratchesScratchSourceResourceArrayOutput)
 }
 
-func (i GetTemplateScratchesScratchSourceResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTemplateScratchesScratchSourceResource] {
-	return pulumix.Output[[]GetTemplateScratchesScratchSourceResource]{
-		OutputState: i.ToGetTemplateScratchesScratchSourceResourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetTemplateScratchesScratchSourceResourceOutput struct{ *pulumi.OutputState }
 
 func (GetTemplateScratchesScratchSourceResourceOutput) ElementType() reflect.Type {
@@ -3146,12 +2677,6 @@ func (o GetTemplateScratchesScratchSourceResourceOutput) ToGetTemplateScratchesS
 
 func (o GetTemplateScratchesScratchSourceResourceOutput) ToGetTemplateScratchesScratchSourceResourceOutputWithContext(ctx context.Context) GetTemplateScratchesScratchSourceResourceOutput {
 	return o
-}
-
-func (o GetTemplateScratchesScratchSourceResourceOutput) ToOutput(ctx context.Context) pulumix.Output[GetTemplateScratchesScratchSourceResource] {
-	return pulumix.Output[GetTemplateScratchesScratchSourceResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Source Resource.
@@ -3176,12 +2701,6 @@ func (o GetTemplateScratchesScratchSourceResourceArrayOutput) ToGetTemplateScrat
 
 func (o GetTemplateScratchesScratchSourceResourceArrayOutput) ToGetTemplateScratchesScratchSourceResourceArrayOutputWithContext(ctx context.Context) GetTemplateScratchesScratchSourceResourceArrayOutput {
 	return o
-}
-
-func (o GetTemplateScratchesScratchSourceResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTemplateScratchesScratchSourceResource] {
-	return pulumix.Output[[]GetTemplateScratchesScratchSourceResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetTemplateScratchesScratchSourceResourceArrayOutput) Index(i pulumi.IntInput) GetTemplateScratchesScratchSourceResourceOutput {
@@ -3227,12 +2746,6 @@ func (i GetTemplateScratchesScratchSourceResourceGroupArgs) ToGetTemplateScratch
 	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateScratchesScratchSourceResourceGroupOutput)
 }
 
-func (i GetTemplateScratchesScratchSourceResourceGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetTemplateScratchesScratchSourceResourceGroup] {
-	return pulumix.Output[GetTemplateScratchesScratchSourceResourceGroup]{
-		OutputState: i.ToGetTemplateScratchesScratchSourceResourceGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetTemplateScratchesScratchSourceResourceGroupArrayInput is an input type that accepts GetTemplateScratchesScratchSourceResourceGroupArray and GetTemplateScratchesScratchSourceResourceGroupArrayOutput values.
 // You can construct a concrete instance of `GetTemplateScratchesScratchSourceResourceGroupArrayInput` via:
 //
@@ -3258,12 +2771,6 @@ func (i GetTemplateScratchesScratchSourceResourceGroupArray) ToGetTemplateScratc
 	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateScratchesScratchSourceResourceGroupArrayOutput)
 }
 
-func (i GetTemplateScratchesScratchSourceResourceGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTemplateScratchesScratchSourceResourceGroup] {
-	return pulumix.Output[[]GetTemplateScratchesScratchSourceResourceGroup]{
-		OutputState: i.ToGetTemplateScratchesScratchSourceResourceGroupArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetTemplateScratchesScratchSourceResourceGroupOutput struct{ *pulumi.OutputState }
 
 func (GetTemplateScratchesScratchSourceResourceGroupOutput) ElementType() reflect.Type {
@@ -3276,12 +2783,6 @@ func (o GetTemplateScratchesScratchSourceResourceGroupOutput) ToGetTemplateScrat
 
 func (o GetTemplateScratchesScratchSourceResourceGroupOutput) ToGetTemplateScratchesScratchSourceResourceGroupOutputWithContext(ctx context.Context) GetTemplateScratchesScratchSourceResourceGroupOutput {
 	return o
-}
-
-func (o GetTemplateScratchesScratchSourceResourceGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetTemplateScratchesScratchSourceResourceGroup] {
-	return pulumix.Output[GetTemplateScratchesScratchSourceResourceGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Source Resource Group.
@@ -3306,12 +2807,6 @@ func (o GetTemplateScratchesScratchSourceResourceGroupArrayOutput) ToGetTemplate
 
 func (o GetTemplateScratchesScratchSourceResourceGroupArrayOutput) ToGetTemplateScratchesScratchSourceResourceGroupArrayOutputWithContext(ctx context.Context) GetTemplateScratchesScratchSourceResourceGroupArrayOutput {
 	return o
-}
-
-func (o GetTemplateScratchesScratchSourceResourceGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTemplateScratchesScratchSourceResourceGroup] {
-	return pulumix.Output[[]GetTemplateScratchesScratchSourceResourceGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetTemplateScratchesScratchSourceResourceGroupArrayOutput) Index(i pulumi.IntInput) GetTemplateScratchesScratchSourceResourceGroupOutput {
@@ -3357,12 +2852,6 @@ func (i GetTemplateScratchesScratchSourceTagArgs) ToGetTemplateScratchesScratchS
 	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateScratchesScratchSourceTagOutput)
 }
 
-func (i GetTemplateScratchesScratchSourceTagArgs) ToOutput(ctx context.Context) pulumix.Output[GetTemplateScratchesScratchSourceTag] {
-	return pulumix.Output[GetTemplateScratchesScratchSourceTag]{
-		OutputState: i.ToGetTemplateScratchesScratchSourceTagOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetTemplateScratchesScratchSourceTagArrayInput is an input type that accepts GetTemplateScratchesScratchSourceTagArray and GetTemplateScratchesScratchSourceTagArrayOutput values.
 // You can construct a concrete instance of `GetTemplateScratchesScratchSourceTagArrayInput` via:
 //
@@ -3388,12 +2877,6 @@ func (i GetTemplateScratchesScratchSourceTagArray) ToGetTemplateScratchesScratch
 	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateScratchesScratchSourceTagArrayOutput)
 }
 
-func (i GetTemplateScratchesScratchSourceTagArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTemplateScratchesScratchSourceTag] {
-	return pulumix.Output[[]GetTemplateScratchesScratchSourceTag]{
-		OutputState: i.ToGetTemplateScratchesScratchSourceTagArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetTemplateScratchesScratchSourceTagOutput struct{ *pulumi.OutputState }
 
 func (GetTemplateScratchesScratchSourceTagOutput) ElementType() reflect.Type {
@@ -3406,12 +2889,6 @@ func (o GetTemplateScratchesScratchSourceTagOutput) ToGetTemplateScratchesScratc
 
 func (o GetTemplateScratchesScratchSourceTagOutput) ToGetTemplateScratchesScratchSourceTagOutputWithContext(ctx context.Context) GetTemplateScratchesScratchSourceTagOutput {
 	return o
-}
-
-func (o GetTemplateScratchesScratchSourceTagOutput) ToOutput(ctx context.Context) pulumix.Output[GetTemplateScratchesScratchSourceTag] {
-	return pulumix.Output[GetTemplateScratchesScratchSourceTag]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Source label.
@@ -3436,12 +2913,6 @@ func (o GetTemplateScratchesScratchSourceTagArrayOutput) ToGetTemplateScratchesS
 
 func (o GetTemplateScratchesScratchSourceTagArrayOutput) ToGetTemplateScratchesScratchSourceTagArrayOutputWithContext(ctx context.Context) GetTemplateScratchesScratchSourceTagArrayOutput {
 	return o
-}
-
-func (o GetTemplateScratchesScratchSourceTagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTemplateScratchesScratchSourceTag] {
-	return pulumix.Output[[]GetTemplateScratchesScratchSourceTag]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetTemplateScratchesScratchSourceTagArrayOutput) Index(i pulumi.IntInput) GetTemplateScratchesScratchSourceTagOutput {
@@ -3483,12 +2954,6 @@ func (i GetTemplateScratchesScratchStackArgs) ToGetTemplateScratchesScratchStack
 	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateScratchesScratchStackOutput)
 }
 
-func (i GetTemplateScratchesScratchStackArgs) ToOutput(ctx context.Context) pulumix.Output[GetTemplateScratchesScratchStack] {
-	return pulumix.Output[GetTemplateScratchesScratchStack]{
-		OutputState: i.ToGetTemplateScratchesScratchStackOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetTemplateScratchesScratchStackArrayInput is an input type that accepts GetTemplateScratchesScratchStackArray and GetTemplateScratchesScratchStackArrayOutput values.
 // You can construct a concrete instance of `GetTemplateScratchesScratchStackArrayInput` via:
 //
@@ -3514,12 +2979,6 @@ func (i GetTemplateScratchesScratchStackArray) ToGetTemplateScratchesScratchStac
 	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateScratchesScratchStackArrayOutput)
 }
 
-func (i GetTemplateScratchesScratchStackArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTemplateScratchesScratchStack] {
-	return pulumix.Output[[]GetTemplateScratchesScratchStack]{
-		OutputState: i.ToGetTemplateScratchesScratchStackArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetTemplateScratchesScratchStackOutput struct{ *pulumi.OutputState }
 
 func (GetTemplateScratchesScratchStackOutput) ElementType() reflect.Type {
@@ -3532,12 +2991,6 @@ func (o GetTemplateScratchesScratchStackOutput) ToGetTemplateScratchesScratchSta
 
 func (o GetTemplateScratchesScratchStackOutput) ToGetTemplateScratchesScratchStackOutputWithContext(ctx context.Context) GetTemplateScratchesScratchStackOutput {
 	return o
-}
-
-func (o GetTemplateScratchesScratchStackOutput) ToOutput(ctx context.Context) pulumix.Output[GetTemplateScratchesScratchStack] {
-	return pulumix.Output[GetTemplateScratchesScratchStack]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Resource stack.
@@ -3557,12 +3010,6 @@ func (o GetTemplateScratchesScratchStackArrayOutput) ToGetTemplateScratchesScrat
 
 func (o GetTemplateScratchesScratchStackArrayOutput) ToGetTemplateScratchesScratchStackArrayOutputWithContext(ctx context.Context) GetTemplateScratchesScratchStackArrayOutput {
 	return o
-}
-
-func (o GetTemplateScratchesScratchStackArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTemplateScratchesScratchStack] {
-	return pulumix.Output[[]GetTemplateScratchesScratchStack]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetTemplateScratchesScratchStackArrayOutput) Index(i pulumi.IntInput) GetTemplateScratchesScratchStackOutput {
@@ -3644,12 +3091,6 @@ func (i GetTemplatesTemplateArgs) ToGetTemplatesTemplateOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetTemplatesTemplateOutput)
 }
 
-func (i GetTemplatesTemplateArgs) ToOutput(ctx context.Context) pulumix.Output[GetTemplatesTemplate] {
-	return pulumix.Output[GetTemplatesTemplate]{
-		OutputState: i.ToGetTemplatesTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetTemplatesTemplateArrayInput is an input type that accepts GetTemplatesTemplateArray and GetTemplatesTemplateArrayOutput values.
 // You can construct a concrete instance of `GetTemplatesTemplateArrayInput` via:
 //
@@ -3675,12 +3116,6 @@ func (i GetTemplatesTemplateArray) ToGetTemplatesTemplateArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetTemplatesTemplateArrayOutput)
 }
 
-func (i GetTemplatesTemplateArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTemplatesTemplate] {
-	return pulumix.Output[[]GetTemplatesTemplate]{
-		OutputState: i.ToGetTemplatesTemplateArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetTemplatesTemplateOutput struct{ *pulumi.OutputState }
 
 func (GetTemplatesTemplateOutput) ElementType() reflect.Type {
@@ -3693,12 +3128,6 @@ func (o GetTemplatesTemplateOutput) ToGetTemplatesTemplateOutput() GetTemplatesT
 
 func (o GetTemplatesTemplateOutput) ToGetTemplatesTemplateOutputWithContext(ctx context.Context) GetTemplatesTemplateOutput {
 	return o
-}
-
-func (o GetTemplatesTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[GetTemplatesTemplate] {
-	return pulumix.Output[GetTemplatesTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the change set.
@@ -3768,12 +3197,6 @@ func (o GetTemplatesTemplateArrayOutput) ToGetTemplatesTemplateArrayOutput() Get
 
 func (o GetTemplatesTemplateArrayOutput) ToGetTemplatesTemplateArrayOutputWithContext(ctx context.Context) GetTemplatesTemplateArrayOutput {
 	return o
-}
-
-func (o GetTemplatesTemplateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTemplatesTemplate] {
-	return pulumix.Output[[]GetTemplatesTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetTemplatesTemplateArrayOutput) Index(i pulumi.IntInput) GetTemplatesTemplateOutput {

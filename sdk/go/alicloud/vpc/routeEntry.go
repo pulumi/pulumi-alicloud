@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a route entry resource. A route entry represents a route item of one VPC route table.
@@ -288,12 +287,6 @@ func (i *RouteEntry) ToRouteEntryOutputWithContext(ctx context.Context) RouteEnt
 	return pulumi.ToOutputWithContext(ctx, i).(RouteEntryOutput)
 }
 
-func (i *RouteEntry) ToOutput(ctx context.Context) pulumix.Output[*RouteEntry] {
-	return pulumix.Output[*RouteEntry]{
-		OutputState: i.ToRouteEntryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RouteEntryArrayInput is an input type that accepts RouteEntryArray and RouteEntryArrayOutput values.
 // You can construct a concrete instance of `RouteEntryArrayInput` via:
 //
@@ -317,12 +310,6 @@ func (i RouteEntryArray) ToRouteEntryArrayOutput() RouteEntryArrayOutput {
 
 func (i RouteEntryArray) ToRouteEntryArrayOutputWithContext(ctx context.Context) RouteEntryArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RouteEntryArrayOutput)
-}
-
-func (i RouteEntryArray) ToOutput(ctx context.Context) pulumix.Output[[]*RouteEntry] {
-	return pulumix.Output[[]*RouteEntry]{
-		OutputState: i.ToRouteEntryArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RouteEntryMapInput is an input type that accepts RouteEntryMap and RouteEntryMapOutput values.
@@ -350,12 +337,6 @@ func (i RouteEntryMap) ToRouteEntryMapOutputWithContext(ctx context.Context) Rou
 	return pulumi.ToOutputWithContext(ctx, i).(RouteEntryMapOutput)
 }
 
-func (i RouteEntryMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RouteEntry] {
-	return pulumix.Output[map[string]*RouteEntry]{
-		OutputState: i.ToRouteEntryMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RouteEntryOutput struct{ *pulumi.OutputState }
 
 func (RouteEntryOutput) ElementType() reflect.Type {
@@ -368,12 +349,6 @@ func (o RouteEntryOutput) ToRouteEntryOutput() RouteEntryOutput {
 
 func (o RouteEntryOutput) ToRouteEntryOutputWithContext(ctx context.Context) RouteEntryOutput {
 	return o
-}
-
-func (o RouteEntryOutput) ToOutput(ctx context.Context) pulumix.Output[*RouteEntry] {
-	return pulumix.Output[*RouteEntry]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The RouteEntry's target network segment.
@@ -422,12 +397,6 @@ func (o RouteEntryArrayOutput) ToRouteEntryArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o RouteEntryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RouteEntry] {
-	return pulumix.Output[[]*RouteEntry]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RouteEntryArrayOutput) Index(i pulumi.IntInput) RouteEntryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RouteEntry {
 		return vs[0].([]*RouteEntry)[vs[1].(int)]
@@ -446,12 +415,6 @@ func (o RouteEntryMapOutput) ToRouteEntryMapOutput() RouteEntryMapOutput {
 
 func (o RouteEntryMapOutput) ToRouteEntryMapOutputWithContext(ctx context.Context) RouteEntryMapOutput {
 	return o
-}
-
-func (o RouteEntryMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RouteEntry] {
-	return pulumix.Output[map[string]*RouteEntry]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RouteEntryMapOutput) MapIndex(k pulumi.StringInput) RouteEntryOutput {

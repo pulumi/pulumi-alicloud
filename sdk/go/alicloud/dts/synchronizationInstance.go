@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DTS Synchronization Instance resource.
@@ -304,12 +303,6 @@ func (i *SynchronizationInstance) ToSynchronizationInstanceOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(SynchronizationInstanceOutput)
 }
 
-func (i *SynchronizationInstance) ToOutput(ctx context.Context) pulumix.Output[*SynchronizationInstance] {
-	return pulumix.Output[*SynchronizationInstance]{
-		OutputState: i.ToSynchronizationInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SynchronizationInstanceArrayInput is an input type that accepts SynchronizationInstanceArray and SynchronizationInstanceArrayOutput values.
 // You can construct a concrete instance of `SynchronizationInstanceArrayInput` via:
 //
@@ -333,12 +326,6 @@ func (i SynchronizationInstanceArray) ToSynchronizationInstanceArrayOutput() Syn
 
 func (i SynchronizationInstanceArray) ToSynchronizationInstanceArrayOutputWithContext(ctx context.Context) SynchronizationInstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SynchronizationInstanceArrayOutput)
-}
-
-func (i SynchronizationInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*SynchronizationInstance] {
-	return pulumix.Output[[]*SynchronizationInstance]{
-		OutputState: i.ToSynchronizationInstanceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SynchronizationInstanceMapInput is an input type that accepts SynchronizationInstanceMap and SynchronizationInstanceMapOutput values.
@@ -366,12 +353,6 @@ func (i SynchronizationInstanceMap) ToSynchronizationInstanceMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(SynchronizationInstanceMapOutput)
 }
 
-func (i SynchronizationInstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SynchronizationInstance] {
-	return pulumix.Output[map[string]*SynchronizationInstance]{
-		OutputState: i.ToSynchronizationInstanceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SynchronizationInstanceOutput struct{ *pulumi.OutputState }
 
 func (SynchronizationInstanceOutput) ElementType() reflect.Type {
@@ -384,12 +365,6 @@ func (o SynchronizationInstanceOutput) ToSynchronizationInstanceOutput() Synchro
 
 func (o SynchronizationInstanceOutput) ToSynchronizationInstanceOutputWithContext(ctx context.Context) SynchronizationInstanceOutput {
 	return o
-}
-
-func (o SynchronizationInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*SynchronizationInstance] {
-	return pulumix.Output[*SynchronizationInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to automatically renew when it expires. Valid values: `true`, `false`.
@@ -481,12 +456,6 @@ func (o SynchronizationInstanceArrayOutput) ToSynchronizationInstanceArrayOutput
 	return o
 }
 
-func (o SynchronizationInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SynchronizationInstance] {
-	return pulumix.Output[[]*SynchronizationInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SynchronizationInstanceArrayOutput) Index(i pulumi.IntInput) SynchronizationInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SynchronizationInstance {
 		return vs[0].([]*SynchronizationInstance)[vs[1].(int)]
@@ -505,12 +474,6 @@ func (o SynchronizationInstanceMapOutput) ToSynchronizationInstanceMapOutput() S
 
 func (o SynchronizationInstanceMapOutput) ToSynchronizationInstanceMapOutputWithContext(ctx context.Context) SynchronizationInstanceMapOutput {
 	return o
-}
-
-func (o SynchronizationInstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SynchronizationInstance] {
-	return pulumix.Output[map[string]*SynchronizationInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SynchronizationInstanceMapOutput) MapIndex(k pulumi.StringInput) SynchronizationInstanceOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -67,12 +66,6 @@ func (i EciScalingConfigurationAcrRegistryInfoArgs) ToEciScalingConfigurationAcr
 	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationAcrRegistryInfoOutput)
 }
 
-func (i EciScalingConfigurationAcrRegistryInfoArgs) ToOutput(ctx context.Context) pulumix.Output[EciScalingConfigurationAcrRegistryInfo] {
-	return pulumix.Output[EciScalingConfigurationAcrRegistryInfo]{
-		OutputState: i.ToEciScalingConfigurationAcrRegistryInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EciScalingConfigurationAcrRegistryInfoArrayInput is an input type that accepts EciScalingConfigurationAcrRegistryInfoArray and EciScalingConfigurationAcrRegistryInfoArrayOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationAcrRegistryInfoArrayInput` via:
 //
@@ -98,12 +91,6 @@ func (i EciScalingConfigurationAcrRegistryInfoArray) ToEciScalingConfigurationAc
 	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationAcrRegistryInfoArrayOutput)
 }
 
-func (i EciScalingConfigurationAcrRegistryInfoArray) ToOutput(ctx context.Context) pulumix.Output[[]EciScalingConfigurationAcrRegistryInfo] {
-	return pulumix.Output[[]EciScalingConfigurationAcrRegistryInfo]{
-		OutputState: i.ToEciScalingConfigurationAcrRegistryInfoArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EciScalingConfigurationAcrRegistryInfoOutput struct{ *pulumi.OutputState }
 
 func (EciScalingConfigurationAcrRegistryInfoOutput) ElementType() reflect.Type {
@@ -116,12 +103,6 @@ func (o EciScalingConfigurationAcrRegistryInfoOutput) ToEciScalingConfigurationA
 
 func (o EciScalingConfigurationAcrRegistryInfoOutput) ToEciScalingConfigurationAcrRegistryInfoOutputWithContext(ctx context.Context) EciScalingConfigurationAcrRegistryInfoOutput {
 	return o
-}
-
-func (o EciScalingConfigurationAcrRegistryInfoOutput) ToOutput(ctx context.Context) pulumix.Output[EciScalingConfigurationAcrRegistryInfo] {
-	return pulumix.Output[EciScalingConfigurationAcrRegistryInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Endpoint of Container Registry Enterprise Edition instance. By default, all endpoints of the Container Registry Enterprise Edition instance are displayed. It is required
@@ -160,12 +141,6 @@ func (o EciScalingConfigurationAcrRegistryInfoArrayOutput) ToEciScalingConfigura
 
 func (o EciScalingConfigurationAcrRegistryInfoArrayOutput) ToEciScalingConfigurationAcrRegistryInfoArrayOutputWithContext(ctx context.Context) EciScalingConfigurationAcrRegistryInfoArrayOutput {
 	return o
-}
-
-func (o EciScalingConfigurationAcrRegistryInfoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EciScalingConfigurationAcrRegistryInfo] {
-	return pulumix.Output[[]EciScalingConfigurationAcrRegistryInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EciScalingConfigurationAcrRegistryInfoArrayOutput) Index(i pulumi.IntInput) EciScalingConfigurationAcrRegistryInfoOutput {
@@ -335,12 +310,6 @@ func (i EciScalingConfigurationContainerArgs) ToEciScalingConfigurationContainer
 	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationContainerOutput)
 }
 
-func (i EciScalingConfigurationContainerArgs) ToOutput(ctx context.Context) pulumix.Output[EciScalingConfigurationContainer] {
-	return pulumix.Output[EciScalingConfigurationContainer]{
-		OutputState: i.ToEciScalingConfigurationContainerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EciScalingConfigurationContainerArrayInput is an input type that accepts EciScalingConfigurationContainerArray and EciScalingConfigurationContainerArrayOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationContainerArrayInput` via:
 //
@@ -366,12 +335,6 @@ func (i EciScalingConfigurationContainerArray) ToEciScalingConfigurationContaine
 	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationContainerArrayOutput)
 }
 
-func (i EciScalingConfigurationContainerArray) ToOutput(ctx context.Context) pulumix.Output[[]EciScalingConfigurationContainer] {
-	return pulumix.Output[[]EciScalingConfigurationContainer]{
-		OutputState: i.ToEciScalingConfigurationContainerArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EciScalingConfigurationContainerOutput struct{ *pulumi.OutputState }
 
 func (EciScalingConfigurationContainerOutput) ElementType() reflect.Type {
@@ -384,12 +347,6 @@ func (o EciScalingConfigurationContainerOutput) ToEciScalingConfigurationContain
 
 func (o EciScalingConfigurationContainerOutput) ToEciScalingConfigurationContainerOutputWithContext(ctx context.Context) EciScalingConfigurationContainerOutput {
 	return o
-}
-
-func (o EciScalingConfigurationContainerOutput) ToOutput(ctx context.Context) pulumix.Output[EciScalingConfigurationContainer] {
-	return pulumix.Output[EciScalingConfigurationContainer]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The arguments passed to the commands.
@@ -572,12 +529,6 @@ func (o EciScalingConfigurationContainerArrayOutput) ToEciScalingConfigurationCo
 	return o
 }
 
-func (o EciScalingConfigurationContainerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EciScalingConfigurationContainer] {
-	return pulumix.Output[[]EciScalingConfigurationContainer]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EciScalingConfigurationContainerArrayOutput) Index(i pulumi.IntInput) EciScalingConfigurationContainerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EciScalingConfigurationContainer {
 		return vs[0].([]EciScalingConfigurationContainer)[vs[1].(int)]
@@ -623,12 +574,6 @@ func (i EciScalingConfigurationContainerEnvironmentVarArgs) ToEciScalingConfigur
 	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationContainerEnvironmentVarOutput)
 }
 
-func (i EciScalingConfigurationContainerEnvironmentVarArgs) ToOutput(ctx context.Context) pulumix.Output[EciScalingConfigurationContainerEnvironmentVar] {
-	return pulumix.Output[EciScalingConfigurationContainerEnvironmentVar]{
-		OutputState: i.ToEciScalingConfigurationContainerEnvironmentVarOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EciScalingConfigurationContainerEnvironmentVarArrayInput is an input type that accepts EciScalingConfigurationContainerEnvironmentVarArray and EciScalingConfigurationContainerEnvironmentVarArrayOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationContainerEnvironmentVarArrayInput` via:
 //
@@ -654,12 +599,6 @@ func (i EciScalingConfigurationContainerEnvironmentVarArray) ToEciScalingConfigu
 	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationContainerEnvironmentVarArrayOutput)
 }
 
-func (i EciScalingConfigurationContainerEnvironmentVarArray) ToOutput(ctx context.Context) pulumix.Output[[]EciScalingConfigurationContainerEnvironmentVar] {
-	return pulumix.Output[[]EciScalingConfigurationContainerEnvironmentVar]{
-		OutputState: i.ToEciScalingConfigurationContainerEnvironmentVarArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EciScalingConfigurationContainerEnvironmentVarOutput struct{ *pulumi.OutputState }
 
 func (EciScalingConfigurationContainerEnvironmentVarOutput) ElementType() reflect.Type {
@@ -672,12 +611,6 @@ func (o EciScalingConfigurationContainerEnvironmentVarOutput) ToEciScalingConfig
 
 func (o EciScalingConfigurationContainerEnvironmentVarOutput) ToEciScalingConfigurationContainerEnvironmentVarOutputWithContext(ctx context.Context) EciScalingConfigurationContainerEnvironmentVarOutput {
 	return o
-}
-
-func (o EciScalingConfigurationContainerEnvironmentVarOutput) ToOutput(ctx context.Context) pulumix.Output[EciScalingConfigurationContainerEnvironmentVar] {
-	return pulumix.Output[EciScalingConfigurationContainerEnvironmentVar]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
@@ -703,12 +636,6 @@ func (o EciScalingConfigurationContainerEnvironmentVarArrayOutput) ToEciScalingC
 
 func (o EciScalingConfigurationContainerEnvironmentVarArrayOutput) ToEciScalingConfigurationContainerEnvironmentVarArrayOutputWithContext(ctx context.Context) EciScalingConfigurationContainerEnvironmentVarArrayOutput {
 	return o
-}
-
-func (o EciScalingConfigurationContainerEnvironmentVarArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EciScalingConfigurationContainerEnvironmentVar] {
-	return pulumix.Output[[]EciScalingConfigurationContainerEnvironmentVar]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EciScalingConfigurationContainerEnvironmentVarArrayOutput) Index(i pulumi.IntInput) EciScalingConfigurationContainerEnvironmentVarOutput {
@@ -754,12 +681,6 @@ func (i EciScalingConfigurationContainerPortArgs) ToEciScalingConfigurationConta
 	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationContainerPortOutput)
 }
 
-func (i EciScalingConfigurationContainerPortArgs) ToOutput(ctx context.Context) pulumix.Output[EciScalingConfigurationContainerPort] {
-	return pulumix.Output[EciScalingConfigurationContainerPort]{
-		OutputState: i.ToEciScalingConfigurationContainerPortOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EciScalingConfigurationContainerPortArrayInput is an input type that accepts EciScalingConfigurationContainerPortArray and EciScalingConfigurationContainerPortArrayOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationContainerPortArrayInput` via:
 //
@@ -785,12 +706,6 @@ func (i EciScalingConfigurationContainerPortArray) ToEciScalingConfigurationCont
 	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationContainerPortArrayOutput)
 }
 
-func (i EciScalingConfigurationContainerPortArray) ToOutput(ctx context.Context) pulumix.Output[[]EciScalingConfigurationContainerPort] {
-	return pulumix.Output[[]EciScalingConfigurationContainerPort]{
-		OutputState: i.ToEciScalingConfigurationContainerPortArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EciScalingConfigurationContainerPortOutput struct{ *pulumi.OutputState }
 
 func (EciScalingConfigurationContainerPortOutput) ElementType() reflect.Type {
@@ -803,12 +718,6 @@ func (o EciScalingConfigurationContainerPortOutput) ToEciScalingConfigurationCon
 
 func (o EciScalingConfigurationContainerPortOutput) ToEciScalingConfigurationContainerPortOutputWithContext(ctx context.Context) EciScalingConfigurationContainerPortOutput {
 	return o
-}
-
-func (o EciScalingConfigurationContainerPortOutput) ToOutput(ctx context.Context) pulumix.Output[EciScalingConfigurationContainerPort] {
-	return pulumix.Output[EciScalingConfigurationContainerPort]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The port number. Valid values: 1 to 65535.
@@ -833,12 +742,6 @@ func (o EciScalingConfigurationContainerPortArrayOutput) ToEciScalingConfigurati
 
 func (o EciScalingConfigurationContainerPortArrayOutput) ToEciScalingConfigurationContainerPortArrayOutputWithContext(ctx context.Context) EciScalingConfigurationContainerPortArrayOutput {
 	return o
-}
-
-func (o EciScalingConfigurationContainerPortArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EciScalingConfigurationContainerPort] {
-	return pulumix.Output[[]EciScalingConfigurationContainerPort]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EciScalingConfigurationContainerPortArrayOutput) Index(i pulumi.IntInput) EciScalingConfigurationContainerPortOutput {
@@ -890,12 +793,6 @@ func (i EciScalingConfigurationContainerVolumeMountArgs) ToEciScalingConfigurati
 	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationContainerVolumeMountOutput)
 }
 
-func (i EciScalingConfigurationContainerVolumeMountArgs) ToOutput(ctx context.Context) pulumix.Output[EciScalingConfigurationContainerVolumeMount] {
-	return pulumix.Output[EciScalingConfigurationContainerVolumeMount]{
-		OutputState: i.ToEciScalingConfigurationContainerVolumeMountOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EciScalingConfigurationContainerVolumeMountArrayInput is an input type that accepts EciScalingConfigurationContainerVolumeMountArray and EciScalingConfigurationContainerVolumeMountArrayOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationContainerVolumeMountArrayInput` via:
 //
@@ -921,12 +818,6 @@ func (i EciScalingConfigurationContainerVolumeMountArray) ToEciScalingConfigurat
 	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationContainerVolumeMountArrayOutput)
 }
 
-func (i EciScalingConfigurationContainerVolumeMountArray) ToOutput(ctx context.Context) pulumix.Output[[]EciScalingConfigurationContainerVolumeMount] {
-	return pulumix.Output[[]EciScalingConfigurationContainerVolumeMount]{
-		OutputState: i.ToEciScalingConfigurationContainerVolumeMountArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EciScalingConfigurationContainerVolumeMountOutput struct{ *pulumi.OutputState }
 
 func (EciScalingConfigurationContainerVolumeMountOutput) ElementType() reflect.Type {
@@ -939,12 +830,6 @@ func (o EciScalingConfigurationContainerVolumeMountOutput) ToEciScalingConfigura
 
 func (o EciScalingConfigurationContainerVolumeMountOutput) ToEciScalingConfigurationContainerVolumeMountOutputWithContext(ctx context.Context) EciScalingConfigurationContainerVolumeMountOutput {
 	return o
-}
-
-func (o EciScalingConfigurationContainerVolumeMountOutput) ToOutput(ctx context.Context) pulumix.Output[EciScalingConfigurationContainerVolumeMount] {
-	return pulumix.Output[EciScalingConfigurationContainerVolumeMount]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The directory of the mounted volume. Data under this directory will be overwritten by the
@@ -975,12 +860,6 @@ func (o EciScalingConfigurationContainerVolumeMountArrayOutput) ToEciScalingConf
 
 func (o EciScalingConfigurationContainerVolumeMountArrayOutput) ToEciScalingConfigurationContainerVolumeMountArrayOutputWithContext(ctx context.Context) EciScalingConfigurationContainerVolumeMountArrayOutput {
 	return o
-}
-
-func (o EciScalingConfigurationContainerVolumeMountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EciScalingConfigurationContainerVolumeMount] {
-	return pulumix.Output[[]EciScalingConfigurationContainerVolumeMount]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EciScalingConfigurationContainerVolumeMountArrayOutput) Index(i pulumi.IntInput) EciScalingConfigurationContainerVolumeMountOutput {
@@ -1026,12 +905,6 @@ func (i EciScalingConfigurationHostAliasArgs) ToEciScalingConfigurationHostAlias
 	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationHostAliasOutput)
 }
 
-func (i EciScalingConfigurationHostAliasArgs) ToOutput(ctx context.Context) pulumix.Output[EciScalingConfigurationHostAlias] {
-	return pulumix.Output[EciScalingConfigurationHostAlias]{
-		OutputState: i.ToEciScalingConfigurationHostAliasOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EciScalingConfigurationHostAliasArrayInput is an input type that accepts EciScalingConfigurationHostAliasArray and EciScalingConfigurationHostAliasArrayOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationHostAliasArrayInput` via:
 //
@@ -1057,12 +930,6 @@ func (i EciScalingConfigurationHostAliasArray) ToEciScalingConfigurationHostAlia
 	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationHostAliasArrayOutput)
 }
 
-func (i EciScalingConfigurationHostAliasArray) ToOutput(ctx context.Context) pulumix.Output[[]EciScalingConfigurationHostAlias] {
-	return pulumix.Output[[]EciScalingConfigurationHostAlias]{
-		OutputState: i.ToEciScalingConfigurationHostAliasArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EciScalingConfigurationHostAliasOutput struct{ *pulumi.OutputState }
 
 func (EciScalingConfigurationHostAliasOutput) ElementType() reflect.Type {
@@ -1075,12 +942,6 @@ func (o EciScalingConfigurationHostAliasOutput) ToEciScalingConfigurationHostAli
 
 func (o EciScalingConfigurationHostAliasOutput) ToEciScalingConfigurationHostAliasOutputWithContext(ctx context.Context) EciScalingConfigurationHostAliasOutput {
 	return o
-}
-
-func (o EciScalingConfigurationHostAliasOutput) ToOutput(ctx context.Context) pulumix.Output[EciScalingConfigurationHostAlias] {
-	return pulumix.Output[EciScalingConfigurationHostAlias]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Adds a host name.
@@ -1105,12 +966,6 @@ func (o EciScalingConfigurationHostAliasArrayOutput) ToEciScalingConfigurationHo
 
 func (o EciScalingConfigurationHostAliasArrayOutput) ToEciScalingConfigurationHostAliasArrayOutputWithContext(ctx context.Context) EciScalingConfigurationHostAliasArrayOutput {
 	return o
-}
-
-func (o EciScalingConfigurationHostAliasArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EciScalingConfigurationHostAlias] {
-	return pulumix.Output[[]EciScalingConfigurationHostAlias]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EciScalingConfigurationHostAliasArrayOutput) Index(i pulumi.IntInput) EciScalingConfigurationHostAliasOutput {
@@ -1166,12 +1021,6 @@ func (i EciScalingConfigurationImageRegistryCredentialArgs) ToEciScalingConfigur
 	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationImageRegistryCredentialOutput)
 }
 
-func (i EciScalingConfigurationImageRegistryCredentialArgs) ToOutput(ctx context.Context) pulumix.Output[EciScalingConfigurationImageRegistryCredential] {
-	return pulumix.Output[EciScalingConfigurationImageRegistryCredential]{
-		OutputState: i.ToEciScalingConfigurationImageRegistryCredentialOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EciScalingConfigurationImageRegistryCredentialArrayInput is an input type that accepts EciScalingConfigurationImageRegistryCredentialArray and EciScalingConfigurationImageRegistryCredentialArrayOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationImageRegistryCredentialArrayInput` via:
 //
@@ -1197,12 +1046,6 @@ func (i EciScalingConfigurationImageRegistryCredentialArray) ToEciScalingConfigu
 	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationImageRegistryCredentialArrayOutput)
 }
 
-func (i EciScalingConfigurationImageRegistryCredentialArray) ToOutput(ctx context.Context) pulumix.Output[[]EciScalingConfigurationImageRegistryCredential] {
-	return pulumix.Output[[]EciScalingConfigurationImageRegistryCredential]{
-		OutputState: i.ToEciScalingConfigurationImageRegistryCredentialArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EciScalingConfigurationImageRegistryCredentialOutput struct{ *pulumi.OutputState }
 
 func (EciScalingConfigurationImageRegistryCredentialOutput) ElementType() reflect.Type {
@@ -1215,12 +1058,6 @@ func (o EciScalingConfigurationImageRegistryCredentialOutput) ToEciScalingConfig
 
 func (o EciScalingConfigurationImageRegistryCredentialOutput) ToEciScalingConfigurationImageRegistryCredentialOutputWithContext(ctx context.Context) EciScalingConfigurationImageRegistryCredentialOutput {
 	return o
-}
-
-func (o EciScalingConfigurationImageRegistryCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[EciScalingConfigurationImageRegistryCredential] {
-	return pulumix.Output[EciScalingConfigurationImageRegistryCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The password used to log on to the image repository. It is required
@@ -1253,12 +1090,6 @@ func (o EciScalingConfigurationImageRegistryCredentialArrayOutput) ToEciScalingC
 
 func (o EciScalingConfigurationImageRegistryCredentialArrayOutput) ToEciScalingConfigurationImageRegistryCredentialArrayOutputWithContext(ctx context.Context) EciScalingConfigurationImageRegistryCredentialArrayOutput {
 	return o
-}
-
-func (o EciScalingConfigurationImageRegistryCredentialArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EciScalingConfigurationImageRegistryCredential] {
-	return pulumix.Output[[]EciScalingConfigurationImageRegistryCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EciScalingConfigurationImageRegistryCredentialArrayOutput) Index(i pulumi.IntInput) EciScalingConfigurationImageRegistryCredentialOutput {
@@ -1346,12 +1177,6 @@ func (i EciScalingConfigurationInitContainerArgs) ToEciScalingConfigurationInitC
 	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationInitContainerOutput)
 }
 
-func (i EciScalingConfigurationInitContainerArgs) ToOutput(ctx context.Context) pulumix.Output[EciScalingConfigurationInitContainer] {
-	return pulumix.Output[EciScalingConfigurationInitContainer]{
-		OutputState: i.ToEciScalingConfigurationInitContainerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EciScalingConfigurationInitContainerArrayInput is an input type that accepts EciScalingConfigurationInitContainerArray and EciScalingConfigurationInitContainerArrayOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationInitContainerArrayInput` via:
 //
@@ -1377,12 +1202,6 @@ func (i EciScalingConfigurationInitContainerArray) ToEciScalingConfigurationInit
 	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationInitContainerArrayOutput)
 }
 
-func (i EciScalingConfigurationInitContainerArray) ToOutput(ctx context.Context) pulumix.Output[[]EciScalingConfigurationInitContainer] {
-	return pulumix.Output[[]EciScalingConfigurationInitContainer]{
-		OutputState: i.ToEciScalingConfigurationInitContainerArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EciScalingConfigurationInitContainerOutput struct{ *pulumi.OutputState }
 
 func (EciScalingConfigurationInitContainerOutput) ElementType() reflect.Type {
@@ -1395,12 +1214,6 @@ func (o EciScalingConfigurationInitContainerOutput) ToEciScalingConfigurationIni
 
 func (o EciScalingConfigurationInitContainerOutput) ToEciScalingConfigurationInitContainerOutputWithContext(ctx context.Context) EciScalingConfigurationInitContainerOutput {
 	return o
-}
-
-func (o EciScalingConfigurationInitContainerOutput) ToOutput(ctx context.Context) pulumix.Output[EciScalingConfigurationInitContainer] {
-	return pulumix.Output[EciScalingConfigurationInitContainer]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The arguments passed to the commands.
@@ -1484,12 +1297,6 @@ func (o EciScalingConfigurationInitContainerArrayOutput) ToEciScalingConfigurati
 	return o
 }
 
-func (o EciScalingConfigurationInitContainerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EciScalingConfigurationInitContainer] {
-	return pulumix.Output[[]EciScalingConfigurationInitContainer]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EciScalingConfigurationInitContainerArrayOutput) Index(i pulumi.IntInput) EciScalingConfigurationInitContainerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EciScalingConfigurationInitContainer {
 		return vs[0].([]EciScalingConfigurationInitContainer)[vs[1].(int)]
@@ -1535,12 +1342,6 @@ func (i EciScalingConfigurationInitContainerEnvironmentVarArgs) ToEciScalingConf
 	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationInitContainerEnvironmentVarOutput)
 }
 
-func (i EciScalingConfigurationInitContainerEnvironmentVarArgs) ToOutput(ctx context.Context) pulumix.Output[EciScalingConfigurationInitContainerEnvironmentVar] {
-	return pulumix.Output[EciScalingConfigurationInitContainerEnvironmentVar]{
-		OutputState: i.ToEciScalingConfigurationInitContainerEnvironmentVarOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EciScalingConfigurationInitContainerEnvironmentVarArrayInput is an input type that accepts EciScalingConfigurationInitContainerEnvironmentVarArray and EciScalingConfigurationInitContainerEnvironmentVarArrayOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationInitContainerEnvironmentVarArrayInput` via:
 //
@@ -1566,12 +1367,6 @@ func (i EciScalingConfigurationInitContainerEnvironmentVarArray) ToEciScalingCon
 	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationInitContainerEnvironmentVarArrayOutput)
 }
 
-func (i EciScalingConfigurationInitContainerEnvironmentVarArray) ToOutput(ctx context.Context) pulumix.Output[[]EciScalingConfigurationInitContainerEnvironmentVar] {
-	return pulumix.Output[[]EciScalingConfigurationInitContainerEnvironmentVar]{
-		OutputState: i.ToEciScalingConfigurationInitContainerEnvironmentVarArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EciScalingConfigurationInitContainerEnvironmentVarOutput struct{ *pulumi.OutputState }
 
 func (EciScalingConfigurationInitContainerEnvironmentVarOutput) ElementType() reflect.Type {
@@ -1584,12 +1379,6 @@ func (o EciScalingConfigurationInitContainerEnvironmentVarOutput) ToEciScalingCo
 
 func (o EciScalingConfigurationInitContainerEnvironmentVarOutput) ToEciScalingConfigurationInitContainerEnvironmentVarOutputWithContext(ctx context.Context) EciScalingConfigurationInitContainerEnvironmentVarOutput {
 	return o
-}
-
-func (o EciScalingConfigurationInitContainerEnvironmentVarOutput) ToOutput(ctx context.Context) pulumix.Output[EciScalingConfigurationInitContainerEnvironmentVar] {
-	return pulumix.Output[EciScalingConfigurationInitContainerEnvironmentVar]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
@@ -1615,12 +1404,6 @@ func (o EciScalingConfigurationInitContainerEnvironmentVarArrayOutput) ToEciScal
 
 func (o EciScalingConfigurationInitContainerEnvironmentVarArrayOutput) ToEciScalingConfigurationInitContainerEnvironmentVarArrayOutputWithContext(ctx context.Context) EciScalingConfigurationInitContainerEnvironmentVarArrayOutput {
 	return o
-}
-
-func (o EciScalingConfigurationInitContainerEnvironmentVarArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EciScalingConfigurationInitContainerEnvironmentVar] {
-	return pulumix.Output[[]EciScalingConfigurationInitContainerEnvironmentVar]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EciScalingConfigurationInitContainerEnvironmentVarArrayOutput) Index(i pulumi.IntInput) EciScalingConfigurationInitContainerEnvironmentVarOutput {
@@ -1666,12 +1449,6 @@ func (i EciScalingConfigurationInitContainerPortArgs) ToEciScalingConfigurationI
 	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationInitContainerPortOutput)
 }
 
-func (i EciScalingConfigurationInitContainerPortArgs) ToOutput(ctx context.Context) pulumix.Output[EciScalingConfigurationInitContainerPort] {
-	return pulumix.Output[EciScalingConfigurationInitContainerPort]{
-		OutputState: i.ToEciScalingConfigurationInitContainerPortOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EciScalingConfigurationInitContainerPortArrayInput is an input type that accepts EciScalingConfigurationInitContainerPortArray and EciScalingConfigurationInitContainerPortArrayOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationInitContainerPortArrayInput` via:
 //
@@ -1697,12 +1474,6 @@ func (i EciScalingConfigurationInitContainerPortArray) ToEciScalingConfiguration
 	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationInitContainerPortArrayOutput)
 }
 
-func (i EciScalingConfigurationInitContainerPortArray) ToOutput(ctx context.Context) pulumix.Output[[]EciScalingConfigurationInitContainerPort] {
-	return pulumix.Output[[]EciScalingConfigurationInitContainerPort]{
-		OutputState: i.ToEciScalingConfigurationInitContainerPortArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EciScalingConfigurationInitContainerPortOutput struct{ *pulumi.OutputState }
 
 func (EciScalingConfigurationInitContainerPortOutput) ElementType() reflect.Type {
@@ -1715,12 +1486,6 @@ func (o EciScalingConfigurationInitContainerPortOutput) ToEciScalingConfiguratio
 
 func (o EciScalingConfigurationInitContainerPortOutput) ToEciScalingConfigurationInitContainerPortOutputWithContext(ctx context.Context) EciScalingConfigurationInitContainerPortOutput {
 	return o
-}
-
-func (o EciScalingConfigurationInitContainerPortOutput) ToOutput(ctx context.Context) pulumix.Output[EciScalingConfigurationInitContainerPort] {
-	return pulumix.Output[EciScalingConfigurationInitContainerPort]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The port number. Valid values: 1 to 65535.
@@ -1745,12 +1510,6 @@ func (o EciScalingConfigurationInitContainerPortArrayOutput) ToEciScalingConfigu
 
 func (o EciScalingConfigurationInitContainerPortArrayOutput) ToEciScalingConfigurationInitContainerPortArrayOutputWithContext(ctx context.Context) EciScalingConfigurationInitContainerPortArrayOutput {
 	return o
-}
-
-func (o EciScalingConfigurationInitContainerPortArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EciScalingConfigurationInitContainerPort] {
-	return pulumix.Output[[]EciScalingConfigurationInitContainerPort]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EciScalingConfigurationInitContainerPortArrayOutput) Index(i pulumi.IntInput) EciScalingConfigurationInitContainerPortOutput {
@@ -1802,12 +1561,6 @@ func (i EciScalingConfigurationInitContainerVolumeMountArgs) ToEciScalingConfigu
 	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationInitContainerVolumeMountOutput)
 }
 
-func (i EciScalingConfigurationInitContainerVolumeMountArgs) ToOutput(ctx context.Context) pulumix.Output[EciScalingConfigurationInitContainerVolumeMount] {
-	return pulumix.Output[EciScalingConfigurationInitContainerVolumeMount]{
-		OutputState: i.ToEciScalingConfigurationInitContainerVolumeMountOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EciScalingConfigurationInitContainerVolumeMountArrayInput is an input type that accepts EciScalingConfigurationInitContainerVolumeMountArray and EciScalingConfigurationInitContainerVolumeMountArrayOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationInitContainerVolumeMountArrayInput` via:
 //
@@ -1833,12 +1586,6 @@ func (i EciScalingConfigurationInitContainerVolumeMountArray) ToEciScalingConfig
 	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationInitContainerVolumeMountArrayOutput)
 }
 
-func (i EciScalingConfigurationInitContainerVolumeMountArray) ToOutput(ctx context.Context) pulumix.Output[[]EciScalingConfigurationInitContainerVolumeMount] {
-	return pulumix.Output[[]EciScalingConfigurationInitContainerVolumeMount]{
-		OutputState: i.ToEciScalingConfigurationInitContainerVolumeMountArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EciScalingConfigurationInitContainerVolumeMountOutput struct{ *pulumi.OutputState }
 
 func (EciScalingConfigurationInitContainerVolumeMountOutput) ElementType() reflect.Type {
@@ -1851,12 +1598,6 @@ func (o EciScalingConfigurationInitContainerVolumeMountOutput) ToEciScalingConfi
 
 func (o EciScalingConfigurationInitContainerVolumeMountOutput) ToEciScalingConfigurationInitContainerVolumeMountOutputWithContext(ctx context.Context) EciScalingConfigurationInitContainerVolumeMountOutput {
 	return o
-}
-
-func (o EciScalingConfigurationInitContainerVolumeMountOutput) ToOutput(ctx context.Context) pulumix.Output[EciScalingConfigurationInitContainerVolumeMount] {
-	return pulumix.Output[EciScalingConfigurationInitContainerVolumeMount]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The directory of the mounted volume. Data under this directory will be overwritten by the
@@ -1887,12 +1628,6 @@ func (o EciScalingConfigurationInitContainerVolumeMountArrayOutput) ToEciScaling
 
 func (o EciScalingConfigurationInitContainerVolumeMountArrayOutput) ToEciScalingConfigurationInitContainerVolumeMountArrayOutputWithContext(ctx context.Context) EciScalingConfigurationInitContainerVolumeMountArrayOutput {
 	return o
-}
-
-func (o EciScalingConfigurationInitContainerVolumeMountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EciScalingConfigurationInitContainerVolumeMount] {
-	return pulumix.Output[[]EciScalingConfigurationInitContainerVolumeMount]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EciScalingConfigurationInitContainerVolumeMountArrayOutput) Index(i pulumi.IntInput) EciScalingConfigurationInitContainerVolumeMountOutput {
@@ -1988,12 +1723,6 @@ func (i EciScalingConfigurationVolumeArgs) ToEciScalingConfigurationVolumeOutput
 	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationVolumeOutput)
 }
 
-func (i EciScalingConfigurationVolumeArgs) ToOutput(ctx context.Context) pulumix.Output[EciScalingConfigurationVolume] {
-	return pulumix.Output[EciScalingConfigurationVolume]{
-		OutputState: i.ToEciScalingConfigurationVolumeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EciScalingConfigurationVolumeArrayInput is an input type that accepts EciScalingConfigurationVolumeArray and EciScalingConfigurationVolumeArrayOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationVolumeArrayInput` via:
 //
@@ -2019,12 +1748,6 @@ func (i EciScalingConfigurationVolumeArray) ToEciScalingConfigurationVolumeArray
 	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationVolumeArrayOutput)
 }
 
-func (i EciScalingConfigurationVolumeArray) ToOutput(ctx context.Context) pulumix.Output[[]EciScalingConfigurationVolume] {
-	return pulumix.Output[[]EciScalingConfigurationVolume]{
-		OutputState: i.ToEciScalingConfigurationVolumeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EciScalingConfigurationVolumeOutput struct{ *pulumi.OutputState }
 
 func (EciScalingConfigurationVolumeOutput) ElementType() reflect.Type {
@@ -2037,12 +1760,6 @@ func (o EciScalingConfigurationVolumeOutput) ToEciScalingConfigurationVolumeOutp
 
 func (o EciScalingConfigurationVolumeOutput) ToEciScalingConfigurationVolumeOutputWithContext(ctx context.Context) EciScalingConfigurationVolumeOutput {
 	return o
-}
-
-func (o EciScalingConfigurationVolumeOutput) ToOutput(ctx context.Context) pulumix.Output[EciScalingConfigurationVolume] {
-	return pulumix.Output[EciScalingConfigurationVolume]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ConfigFileVolumeConfigFileToPaths.
@@ -2126,12 +1843,6 @@ func (o EciScalingConfigurationVolumeArrayOutput) ToEciScalingConfigurationVolum
 	return o
 }
 
-func (o EciScalingConfigurationVolumeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EciScalingConfigurationVolume] {
-	return pulumix.Output[[]EciScalingConfigurationVolume]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EciScalingConfigurationVolumeArrayOutput) Index(i pulumi.IntInput) EciScalingConfigurationVolumeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EciScalingConfigurationVolume {
 		return vs[0].([]EciScalingConfigurationVolume)[vs[1].(int)]
@@ -2175,12 +1886,6 @@ func (i EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs) ToEci
 	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput)
 }
 
-func (i EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs) ToOutput(ctx context.Context) pulumix.Output[EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath] {
-	return pulumix.Output[EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath]{
-		OutputState: i.ToEciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayInput is an input type that accepts EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArray and EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayInput` via:
 //
@@ -2206,12 +1911,6 @@ func (i EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArray) ToEc
 	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput)
 }
 
-func (i EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArray) ToOutput(ctx context.Context) pulumix.Output[[]EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath] {
-	return pulumix.Output[[]EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath]{
-		OutputState: i.ToEciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput struct{ *pulumi.OutputState }
 
 func (EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput) ElementType() reflect.Type {
@@ -2224,12 +1923,6 @@ func (o EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput) ToE
 
 func (o EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput) ToEciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutputWithContext(ctx context.Context) EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput {
 	return o
-}
-
-func (o EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput) ToOutput(ctx context.Context) pulumix.Output[EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath] {
-	return pulumix.Output[EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The content of the configuration file. Maximum size: 32 KB.
@@ -2254,12 +1947,6 @@ func (o EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput
 
 func (o EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput) ToEciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutputWithContext(ctx context.Context) EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput {
 	return o
-}
-
-func (o EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath] {
-	return pulumix.Output[[]EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput) Index(i pulumi.IntInput) EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput {
@@ -2345,12 +2032,6 @@ func (i ScalingConfigurationDataDiskArgs) ToScalingConfigurationDataDiskOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigurationDataDiskOutput)
 }
 
-func (i ScalingConfigurationDataDiskArgs) ToOutput(ctx context.Context) pulumix.Output[ScalingConfigurationDataDisk] {
-	return pulumix.Output[ScalingConfigurationDataDisk]{
-		OutputState: i.ToScalingConfigurationDataDiskOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ScalingConfigurationDataDiskArrayInput is an input type that accepts ScalingConfigurationDataDiskArray and ScalingConfigurationDataDiskArrayOutput values.
 // You can construct a concrete instance of `ScalingConfigurationDataDiskArrayInput` via:
 //
@@ -2376,12 +2057,6 @@ func (i ScalingConfigurationDataDiskArray) ToScalingConfigurationDataDiskArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigurationDataDiskArrayOutput)
 }
 
-func (i ScalingConfigurationDataDiskArray) ToOutput(ctx context.Context) pulumix.Output[[]ScalingConfigurationDataDisk] {
-	return pulumix.Output[[]ScalingConfigurationDataDisk]{
-		OutputState: i.ToScalingConfigurationDataDiskArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScalingConfigurationDataDiskOutput struct{ *pulumi.OutputState }
 
 func (ScalingConfigurationDataDiskOutput) ElementType() reflect.Type {
@@ -2394,12 +2069,6 @@ func (o ScalingConfigurationDataDiskOutput) ToScalingConfigurationDataDiskOutput
 
 func (o ScalingConfigurationDataDiskOutput) ToScalingConfigurationDataDiskOutputWithContext(ctx context.Context) ScalingConfigurationDataDiskOutput {
 	return o
-}
-
-func (o ScalingConfigurationDataDiskOutput) ToOutput(ctx context.Context) pulumix.Output[ScalingConfigurationDataDisk] {
-	return pulumix.Output[ScalingConfigurationDataDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of auto snapshot policy for data disk.
@@ -2473,12 +2142,6 @@ func (o ScalingConfigurationDataDiskArrayOutput) ToScalingConfigurationDataDiskA
 	return o
 }
 
-func (o ScalingConfigurationDataDiskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScalingConfigurationDataDisk] {
-	return pulumix.Output[[]ScalingConfigurationDataDisk]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ScalingConfigurationDataDiskArrayOutput) Index(i pulumi.IntInput) ScalingConfigurationDataDiskOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScalingConfigurationDataDisk {
 		return vs[0].([]ScalingConfigurationDataDisk)[vs[1].(int)]
@@ -2530,12 +2193,6 @@ func (i ScalingConfigurationInstancePatternInfoArgs) ToScalingConfigurationInsta
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigurationInstancePatternInfoOutput)
 }
 
-func (i ScalingConfigurationInstancePatternInfoArgs) ToOutput(ctx context.Context) pulumix.Output[ScalingConfigurationInstancePatternInfo] {
-	return pulumix.Output[ScalingConfigurationInstancePatternInfo]{
-		OutputState: i.ToScalingConfigurationInstancePatternInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ScalingConfigurationInstancePatternInfoArrayInput is an input type that accepts ScalingConfigurationInstancePatternInfoArray and ScalingConfigurationInstancePatternInfoArrayOutput values.
 // You can construct a concrete instance of `ScalingConfigurationInstancePatternInfoArrayInput` via:
 //
@@ -2561,12 +2218,6 @@ func (i ScalingConfigurationInstancePatternInfoArray) ToScalingConfigurationInst
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigurationInstancePatternInfoArrayOutput)
 }
 
-func (i ScalingConfigurationInstancePatternInfoArray) ToOutput(ctx context.Context) pulumix.Output[[]ScalingConfigurationInstancePatternInfo] {
-	return pulumix.Output[[]ScalingConfigurationInstancePatternInfo]{
-		OutputState: i.ToScalingConfigurationInstancePatternInfoArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScalingConfigurationInstancePatternInfoOutput struct{ *pulumi.OutputState }
 
 func (ScalingConfigurationInstancePatternInfoOutput) ElementType() reflect.Type {
@@ -2579,12 +2230,6 @@ func (o ScalingConfigurationInstancePatternInfoOutput) ToScalingConfigurationIns
 
 func (o ScalingConfigurationInstancePatternInfoOutput) ToScalingConfigurationInstancePatternInfoOutputWithContext(ctx context.Context) ScalingConfigurationInstancePatternInfoOutput {
 	return o
-}
-
-func (o ScalingConfigurationInstancePatternInfoOutput) ToOutput(ctx context.Context) pulumix.Output[ScalingConfigurationInstancePatternInfo] {
-	return pulumix.Output[ScalingConfigurationInstancePatternInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of vCPUs that are specified for an instance type in instancePatternInfo.
@@ -2619,12 +2264,6 @@ func (o ScalingConfigurationInstancePatternInfoArrayOutput) ToScalingConfigurati
 
 func (o ScalingConfigurationInstancePatternInfoArrayOutput) ToScalingConfigurationInstancePatternInfoArrayOutputWithContext(ctx context.Context) ScalingConfigurationInstancePatternInfoArrayOutput {
 	return o
-}
-
-func (o ScalingConfigurationInstancePatternInfoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScalingConfigurationInstancePatternInfo] {
-	return pulumix.Output[[]ScalingConfigurationInstancePatternInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScalingConfigurationInstancePatternInfoArrayOutput) Index(i pulumi.IntInput) ScalingConfigurationInstancePatternInfoOutput {
@@ -2670,12 +2309,6 @@ func (i ScalingConfigurationSpotPriceLimitArgs) ToScalingConfigurationSpotPriceL
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigurationSpotPriceLimitOutput)
 }
 
-func (i ScalingConfigurationSpotPriceLimitArgs) ToOutput(ctx context.Context) pulumix.Output[ScalingConfigurationSpotPriceLimit] {
-	return pulumix.Output[ScalingConfigurationSpotPriceLimit]{
-		OutputState: i.ToScalingConfigurationSpotPriceLimitOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ScalingConfigurationSpotPriceLimitArrayInput is an input type that accepts ScalingConfigurationSpotPriceLimitArray and ScalingConfigurationSpotPriceLimitArrayOutput values.
 // You can construct a concrete instance of `ScalingConfigurationSpotPriceLimitArrayInput` via:
 //
@@ -2701,12 +2334,6 @@ func (i ScalingConfigurationSpotPriceLimitArray) ToScalingConfigurationSpotPrice
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigurationSpotPriceLimitArrayOutput)
 }
 
-func (i ScalingConfigurationSpotPriceLimitArray) ToOutput(ctx context.Context) pulumix.Output[[]ScalingConfigurationSpotPriceLimit] {
-	return pulumix.Output[[]ScalingConfigurationSpotPriceLimit]{
-		OutputState: i.ToScalingConfigurationSpotPriceLimitArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScalingConfigurationSpotPriceLimitOutput struct{ *pulumi.OutputState }
 
 func (ScalingConfigurationSpotPriceLimitOutput) ElementType() reflect.Type {
@@ -2719,12 +2346,6 @@ func (o ScalingConfigurationSpotPriceLimitOutput) ToScalingConfigurationSpotPric
 
 func (o ScalingConfigurationSpotPriceLimitOutput) ToScalingConfigurationSpotPriceLimitOutputWithContext(ctx context.Context) ScalingConfigurationSpotPriceLimitOutput {
 	return o
-}
-
-func (o ScalingConfigurationSpotPriceLimitOutput) ToOutput(ctx context.Context) pulumix.Output[ScalingConfigurationSpotPriceLimit] {
-	return pulumix.Output[ScalingConfigurationSpotPriceLimit]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource type of an ECS instance.
@@ -2749,12 +2370,6 @@ func (o ScalingConfigurationSpotPriceLimitArrayOutput) ToScalingConfigurationSpo
 
 func (o ScalingConfigurationSpotPriceLimitArrayOutput) ToScalingConfigurationSpotPriceLimitArrayOutputWithContext(ctx context.Context) ScalingConfigurationSpotPriceLimitArrayOutput {
 	return o
-}
-
-func (o ScalingConfigurationSpotPriceLimitArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScalingConfigurationSpotPriceLimit] {
-	return pulumix.Output[[]ScalingConfigurationSpotPriceLimit]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScalingConfigurationSpotPriceLimitArrayOutput) Index(i pulumi.IntInput) ScalingConfigurationSpotPriceLimitOutput {
@@ -2800,12 +2415,6 @@ func (i ScalingGroupVServerGroupsVserverGroupArgs) ToScalingGroupVServerGroupsVs
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupVServerGroupsVserverGroupOutput)
 }
 
-func (i ScalingGroupVServerGroupsVserverGroupArgs) ToOutput(ctx context.Context) pulumix.Output[ScalingGroupVServerGroupsVserverGroup] {
-	return pulumix.Output[ScalingGroupVServerGroupsVserverGroup]{
-		OutputState: i.ToScalingGroupVServerGroupsVserverGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ScalingGroupVServerGroupsVserverGroupArrayInput is an input type that accepts ScalingGroupVServerGroupsVserverGroupArray and ScalingGroupVServerGroupsVserverGroupArrayOutput values.
 // You can construct a concrete instance of `ScalingGroupVServerGroupsVserverGroupArrayInput` via:
 //
@@ -2831,12 +2440,6 @@ func (i ScalingGroupVServerGroupsVserverGroupArray) ToScalingGroupVServerGroupsV
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupVServerGroupsVserverGroupArrayOutput)
 }
 
-func (i ScalingGroupVServerGroupsVserverGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]ScalingGroupVServerGroupsVserverGroup] {
-	return pulumix.Output[[]ScalingGroupVServerGroupsVserverGroup]{
-		OutputState: i.ToScalingGroupVServerGroupsVserverGroupArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScalingGroupVServerGroupsVserverGroupOutput struct{ *pulumi.OutputState }
 
 func (ScalingGroupVServerGroupsVserverGroupOutput) ElementType() reflect.Type {
@@ -2849,12 +2452,6 @@ func (o ScalingGroupVServerGroupsVserverGroupOutput) ToScalingGroupVServerGroups
 
 func (o ScalingGroupVServerGroupsVserverGroupOutput) ToScalingGroupVServerGroupsVserverGroupOutputWithContext(ctx context.Context) ScalingGroupVServerGroupsVserverGroupOutput {
 	return o
-}
-
-func (o ScalingGroupVServerGroupsVserverGroupOutput) ToOutput(ctx context.Context) pulumix.Output[ScalingGroupVServerGroupsVserverGroup] {
-	return pulumix.Output[ScalingGroupVServerGroupsVserverGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Loadbalancer server ID of VServer Group.
@@ -2881,12 +2478,6 @@ func (o ScalingGroupVServerGroupsVserverGroupArrayOutput) ToScalingGroupVServerG
 
 func (o ScalingGroupVServerGroupsVserverGroupArrayOutput) ToScalingGroupVServerGroupsVserverGroupArrayOutputWithContext(ctx context.Context) ScalingGroupVServerGroupsVserverGroupArrayOutput {
 	return o
-}
-
-func (o ScalingGroupVServerGroupsVserverGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScalingGroupVServerGroupsVserverGroup] {
-	return pulumix.Output[[]ScalingGroupVServerGroupsVserverGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScalingGroupVServerGroupsVserverGroupArrayOutput) Index(i pulumi.IntInput) ScalingGroupVServerGroupsVserverGroupOutput {
@@ -2936,12 +2527,6 @@ func (i ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs) ToScalingGrou
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput)
 }
 
-func (i ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs) ToOutput(ctx context.Context) pulumix.Output[ScalingGroupVServerGroupsVserverGroupVserverAttribute] {
-	return pulumix.Output[ScalingGroupVServerGroupsVserverGroupVserverAttribute]{
-		OutputState: i.ToScalingGroupVServerGroupsVserverGroupVserverAttributeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayInput is an input type that accepts ScalingGroupVServerGroupsVserverGroupVserverAttributeArray and ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayOutput values.
 // You can construct a concrete instance of `ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayInput` via:
 //
@@ -2967,12 +2552,6 @@ func (i ScalingGroupVServerGroupsVserverGroupVserverAttributeArray) ToScalingGro
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayOutput)
 }
 
-func (i ScalingGroupVServerGroupsVserverGroupVserverAttributeArray) ToOutput(ctx context.Context) pulumix.Output[[]ScalingGroupVServerGroupsVserverGroupVserverAttribute] {
-	return pulumix.Output[[]ScalingGroupVServerGroupsVserverGroupVserverAttribute]{
-		OutputState: i.ToScalingGroupVServerGroupsVserverGroupVserverAttributeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput struct{ *pulumi.OutputState }
 
 func (ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput) ElementType() reflect.Type {
@@ -2985,12 +2564,6 @@ func (o ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput) ToScalingGr
 
 func (o ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput) ToScalingGroupVServerGroupsVserverGroupVserverAttributeOutputWithContext(ctx context.Context) ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput {
 	return o
-}
-
-func (o ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput) ToOutput(ctx context.Context) pulumix.Output[ScalingGroupVServerGroupsVserverGroupVserverAttribute] {
-	return pulumix.Output[ScalingGroupVServerGroupsVserverGroupVserverAttribute]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The port will be used for VServer Group backend server.
@@ -3020,12 +2593,6 @@ func (o ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayOutput) ToScal
 
 func (o ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayOutput) ToScalingGroupVServerGroupsVserverGroupVserverAttributeArrayOutputWithContext(ctx context.Context) ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayOutput {
 	return o
-}
-
-func (o ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScalingGroupVServerGroupsVserverGroupVserverAttribute] {
-	return pulumix.Output[[]ScalingGroupVServerGroupsVserverGroupVserverAttribute]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayOutput) Index(i pulumi.IntInput) ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput {
@@ -3075,12 +2642,6 @@ func (i ScalingRuleStepAdjustmentArgs) ToScalingRuleStepAdjustmentOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingRuleStepAdjustmentOutput)
 }
 
-func (i ScalingRuleStepAdjustmentArgs) ToOutput(ctx context.Context) pulumix.Output[ScalingRuleStepAdjustment] {
-	return pulumix.Output[ScalingRuleStepAdjustment]{
-		OutputState: i.ToScalingRuleStepAdjustmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ScalingRuleStepAdjustmentArrayInput is an input type that accepts ScalingRuleStepAdjustmentArray and ScalingRuleStepAdjustmentArrayOutput values.
 // You can construct a concrete instance of `ScalingRuleStepAdjustmentArrayInput` via:
 //
@@ -3106,12 +2667,6 @@ func (i ScalingRuleStepAdjustmentArray) ToScalingRuleStepAdjustmentArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingRuleStepAdjustmentArrayOutput)
 }
 
-func (i ScalingRuleStepAdjustmentArray) ToOutput(ctx context.Context) pulumix.Output[[]ScalingRuleStepAdjustment] {
-	return pulumix.Output[[]ScalingRuleStepAdjustment]{
-		OutputState: i.ToScalingRuleStepAdjustmentArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScalingRuleStepAdjustmentOutput struct{ *pulumi.OutputState }
 
 func (ScalingRuleStepAdjustmentOutput) ElementType() reflect.Type {
@@ -3124,12 +2679,6 @@ func (o ScalingRuleStepAdjustmentOutput) ToScalingRuleStepAdjustmentOutput() Sca
 
 func (o ScalingRuleStepAdjustmentOutput) ToScalingRuleStepAdjustmentOutputWithContext(ctx context.Context) ScalingRuleStepAdjustmentOutput {
 	return o
-}
-
-func (o ScalingRuleStepAdjustmentOutput) ToOutput(ctx context.Context) pulumix.Output[ScalingRuleStepAdjustment] {
-	return pulumix.Output[ScalingRuleStepAdjustment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The lower bound of step.
@@ -3159,12 +2708,6 @@ func (o ScalingRuleStepAdjustmentArrayOutput) ToScalingRuleStepAdjustmentArrayOu
 
 func (o ScalingRuleStepAdjustmentArrayOutput) ToScalingRuleStepAdjustmentArrayOutputWithContext(ctx context.Context) ScalingRuleStepAdjustmentArrayOutput {
 	return o
-}
-
-func (o ScalingRuleStepAdjustmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScalingRuleStepAdjustment] {
-	return pulumix.Output[[]ScalingRuleStepAdjustment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScalingRuleStepAdjustmentArrayOutput) Index(i pulumi.IntInput) ScalingRuleStepAdjustmentOutput {
@@ -3266,12 +2809,6 @@ func (i GetAlarmsAlarmArgs) ToGetAlarmsAlarmOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmsAlarmOutput)
 }
 
-func (i GetAlarmsAlarmArgs) ToOutput(ctx context.Context) pulumix.Output[GetAlarmsAlarm] {
-	return pulumix.Output[GetAlarmsAlarm]{
-		OutputState: i.ToGetAlarmsAlarmOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAlarmsAlarmArrayInput is an input type that accepts GetAlarmsAlarmArray and GetAlarmsAlarmArrayOutput values.
 // You can construct a concrete instance of `GetAlarmsAlarmArrayInput` via:
 //
@@ -3297,12 +2834,6 @@ func (i GetAlarmsAlarmArray) ToGetAlarmsAlarmArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmsAlarmArrayOutput)
 }
 
-func (i GetAlarmsAlarmArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAlarmsAlarm] {
-	return pulumix.Output[[]GetAlarmsAlarm]{
-		OutputState: i.ToGetAlarmsAlarmArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAlarmsAlarmOutput struct{ *pulumi.OutputState }
 
 func (GetAlarmsAlarmOutput) ElementType() reflect.Type {
@@ -3315,12 +2846,6 @@ func (o GetAlarmsAlarmOutput) ToGetAlarmsAlarmOutput() GetAlarmsAlarmOutput {
 
 func (o GetAlarmsAlarmOutput) ToGetAlarmsAlarmOutputWithContext(ctx context.Context) GetAlarmsAlarmOutput {
 	return o
-}
-
-func (o GetAlarmsAlarmOutput) ToOutput(ctx context.Context) pulumix.Output[GetAlarmsAlarm] {
-	return pulumix.Output[GetAlarmsAlarm]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
@@ -3417,12 +2942,6 @@ func (o GetAlarmsAlarmArrayOutput) ToGetAlarmsAlarmArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o GetAlarmsAlarmArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAlarmsAlarm] {
-	return pulumix.Output[[]GetAlarmsAlarm]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetAlarmsAlarmArrayOutput) Index(i pulumi.IntInput) GetAlarmsAlarmOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlarmsAlarm {
 		return vs[0].([]GetAlarmsAlarm)[vs[1].(int)]
@@ -3490,12 +3009,6 @@ func (i GetLifecycleHooksHookArgs) ToGetLifecycleHooksHookOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetLifecycleHooksHookOutput)
 }
 
-func (i GetLifecycleHooksHookArgs) ToOutput(ctx context.Context) pulumix.Output[GetLifecycleHooksHook] {
-	return pulumix.Output[GetLifecycleHooksHook]{
-		OutputState: i.ToGetLifecycleHooksHookOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetLifecycleHooksHookArrayInput is an input type that accepts GetLifecycleHooksHookArray and GetLifecycleHooksHookArrayOutput values.
 // You can construct a concrete instance of `GetLifecycleHooksHookArrayInput` via:
 //
@@ -3521,12 +3034,6 @@ func (i GetLifecycleHooksHookArray) ToGetLifecycleHooksHookArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetLifecycleHooksHookArrayOutput)
 }
 
-func (i GetLifecycleHooksHookArray) ToOutput(ctx context.Context) pulumix.Output[[]GetLifecycleHooksHook] {
-	return pulumix.Output[[]GetLifecycleHooksHook]{
-		OutputState: i.ToGetLifecycleHooksHookArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetLifecycleHooksHookOutput struct{ *pulumi.OutputState }
 
 func (GetLifecycleHooksHookOutput) ElementType() reflect.Type {
@@ -3539,12 +3046,6 @@ func (o GetLifecycleHooksHookOutput) ToGetLifecycleHooksHookOutput() GetLifecycl
 
 func (o GetLifecycleHooksHookOutput) ToGetLifecycleHooksHookOutputWithContext(ctx context.Context) GetLifecycleHooksHookOutput {
 	return o
-}
-
-func (o GetLifecycleHooksHookOutput) ToOutput(ctx context.Context) pulumix.Output[GetLifecycleHooksHook] {
-	return pulumix.Output[GetLifecycleHooksHook]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses.
@@ -3601,12 +3102,6 @@ func (o GetLifecycleHooksHookArrayOutput) ToGetLifecycleHooksHookArrayOutputWith
 	return o
 }
 
-func (o GetLifecycleHooksHookArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetLifecycleHooksHook] {
-	return pulumix.Output[[]GetLifecycleHooksHook]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetLifecycleHooksHookArrayOutput) Index(i pulumi.IntInput) GetLifecycleHooksHookOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLifecycleHooksHook {
 		return vs[0].([]GetLifecycleHooksHook)[vs[1].(int)]
@@ -3658,12 +3153,6 @@ func (i GetNotificationsNotificationArgs) ToGetNotificationsNotificationOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetNotificationsNotificationOutput)
 }
 
-func (i GetNotificationsNotificationArgs) ToOutput(ctx context.Context) pulumix.Output[GetNotificationsNotification] {
-	return pulumix.Output[GetNotificationsNotification]{
-		OutputState: i.ToGetNotificationsNotificationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetNotificationsNotificationArrayInput is an input type that accepts GetNotificationsNotificationArray and GetNotificationsNotificationArrayOutput values.
 // You can construct a concrete instance of `GetNotificationsNotificationArrayInput` via:
 //
@@ -3689,12 +3178,6 @@ func (i GetNotificationsNotificationArray) ToGetNotificationsNotificationArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetNotificationsNotificationArrayOutput)
 }
 
-func (i GetNotificationsNotificationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetNotificationsNotification] {
-	return pulumix.Output[[]GetNotificationsNotification]{
-		OutputState: i.ToGetNotificationsNotificationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetNotificationsNotificationOutput struct{ *pulumi.OutputState }
 
 func (GetNotificationsNotificationOutput) ElementType() reflect.Type {
@@ -3707,12 +3190,6 @@ func (o GetNotificationsNotificationOutput) ToGetNotificationsNotificationOutput
 
 func (o GetNotificationsNotificationOutput) ToGetNotificationsNotificationOutputWithContext(ctx context.Context) GetNotificationsNotificationOutput {
 	return o
-}
-
-func (o GetNotificationsNotificationOutput) ToOutput(ctx context.Context) pulumix.Output[GetNotificationsNotification] {
-	return pulumix.Output[GetNotificationsNotification]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ID of the notification.
@@ -3747,12 +3224,6 @@ func (o GetNotificationsNotificationArrayOutput) ToGetNotificationsNotificationA
 
 func (o GetNotificationsNotificationArrayOutput) ToGetNotificationsNotificationArrayOutputWithContext(ctx context.Context) GetNotificationsNotificationArrayOutput {
 	return o
-}
-
-func (o GetNotificationsNotificationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetNotificationsNotification] {
-	return pulumix.Output[[]GetNotificationsNotification]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetNotificationsNotificationArrayOutput) Index(i pulumi.IntInput) GetNotificationsNotificationOutput {
@@ -3870,12 +3341,6 @@ func (i GetScalingConfigurationsConfigurationArgs) ToGetScalingConfigurationsCon
 	return pulumi.ToOutputWithContext(ctx, i).(GetScalingConfigurationsConfigurationOutput)
 }
 
-func (i GetScalingConfigurationsConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[GetScalingConfigurationsConfiguration] {
-	return pulumix.Output[GetScalingConfigurationsConfiguration]{
-		OutputState: i.ToGetScalingConfigurationsConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetScalingConfigurationsConfigurationArrayInput is an input type that accepts GetScalingConfigurationsConfigurationArray and GetScalingConfigurationsConfigurationArrayOutput values.
 // You can construct a concrete instance of `GetScalingConfigurationsConfigurationArrayInput` via:
 //
@@ -3901,12 +3366,6 @@ func (i GetScalingConfigurationsConfigurationArray) ToGetScalingConfigurationsCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetScalingConfigurationsConfigurationArrayOutput)
 }
 
-func (i GetScalingConfigurationsConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetScalingConfigurationsConfiguration] {
-	return pulumix.Output[[]GetScalingConfigurationsConfiguration]{
-		OutputState: i.ToGetScalingConfigurationsConfigurationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetScalingConfigurationsConfigurationOutput struct{ *pulumi.OutputState }
 
 func (GetScalingConfigurationsConfigurationOutput) ElementType() reflect.Type {
@@ -3919,12 +3378,6 @@ func (o GetScalingConfigurationsConfigurationOutput) ToGetScalingConfigurationsC
 
 func (o GetScalingConfigurationsConfigurationOutput) ToGetScalingConfigurationsConfigurationOutputWithContext(ctx context.Context) GetScalingConfigurationsConfigurationOutput {
 	return o
-}
-
-func (o GetScalingConfigurationsConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[GetScalingConfigurationsConfiguration] {
-	return pulumix.Output[GetScalingConfigurationsConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation time of the scaling configuration.
@@ -4045,12 +3498,6 @@ func (o GetScalingConfigurationsConfigurationArrayOutput) ToGetScalingConfigurat
 	return o
 }
 
-func (o GetScalingConfigurationsConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetScalingConfigurationsConfiguration] {
-	return pulumix.Output[[]GetScalingConfigurationsConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetScalingConfigurationsConfigurationArrayOutput) Index(i pulumi.IntInput) GetScalingConfigurationsConfigurationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetScalingConfigurationsConfiguration {
 		return vs[0].([]GetScalingConfigurationsConfiguration)[vs[1].(int)]
@@ -4110,12 +3557,6 @@ func (i GetScalingConfigurationsConfigurationDataDiskArgs) ToGetScalingConfigura
 	return pulumi.ToOutputWithContext(ctx, i).(GetScalingConfigurationsConfigurationDataDiskOutput)
 }
 
-func (i GetScalingConfigurationsConfigurationDataDiskArgs) ToOutput(ctx context.Context) pulumix.Output[GetScalingConfigurationsConfigurationDataDisk] {
-	return pulumix.Output[GetScalingConfigurationsConfigurationDataDisk]{
-		OutputState: i.ToGetScalingConfigurationsConfigurationDataDiskOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetScalingConfigurationsConfigurationDataDiskArrayInput is an input type that accepts GetScalingConfigurationsConfigurationDataDiskArray and GetScalingConfigurationsConfigurationDataDiskArrayOutput values.
 // You can construct a concrete instance of `GetScalingConfigurationsConfigurationDataDiskArrayInput` via:
 //
@@ -4141,12 +3582,6 @@ func (i GetScalingConfigurationsConfigurationDataDiskArray) ToGetScalingConfigur
 	return pulumi.ToOutputWithContext(ctx, i).(GetScalingConfigurationsConfigurationDataDiskArrayOutput)
 }
 
-func (i GetScalingConfigurationsConfigurationDataDiskArray) ToOutput(ctx context.Context) pulumix.Output[[]GetScalingConfigurationsConfigurationDataDisk] {
-	return pulumix.Output[[]GetScalingConfigurationsConfigurationDataDisk]{
-		OutputState: i.ToGetScalingConfigurationsConfigurationDataDiskArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetScalingConfigurationsConfigurationDataDiskOutput struct{ *pulumi.OutputState }
 
 func (GetScalingConfigurationsConfigurationDataDiskOutput) ElementType() reflect.Type {
@@ -4159,12 +3594,6 @@ func (o GetScalingConfigurationsConfigurationDataDiskOutput) ToGetScalingConfigu
 
 func (o GetScalingConfigurationsConfigurationDataDiskOutput) ToGetScalingConfigurationsConfigurationDataDiskOutputWithContext(ctx context.Context) GetScalingConfigurationsConfigurationDataDiskOutput {
 	return o
-}
-
-func (o GetScalingConfigurationsConfigurationDataDiskOutput) ToOutput(ctx context.Context) pulumix.Output[GetScalingConfigurationsConfigurationDataDisk] {
-	return pulumix.Output[GetScalingConfigurationsConfigurationDataDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Category of data disk.
@@ -4211,12 +3640,6 @@ func (o GetScalingConfigurationsConfigurationDataDiskArrayOutput) ToGetScalingCo
 	return o
 }
 
-func (o GetScalingConfigurationsConfigurationDataDiskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetScalingConfigurationsConfigurationDataDisk] {
-	return pulumix.Output[[]GetScalingConfigurationsConfigurationDataDisk]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetScalingConfigurationsConfigurationDataDiskArrayOutput) Index(i pulumi.IntInput) GetScalingConfigurationsConfigurationDataDiskOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetScalingConfigurationsConfigurationDataDisk {
 		return vs[0].([]GetScalingConfigurationsConfigurationDataDisk)[vs[1].(int)]
@@ -4260,12 +3683,6 @@ func (i GetScalingConfigurationsConfigurationSpotPriceLimitArgs) ToGetScalingCon
 	return pulumi.ToOutputWithContext(ctx, i).(GetScalingConfigurationsConfigurationSpotPriceLimitOutput)
 }
 
-func (i GetScalingConfigurationsConfigurationSpotPriceLimitArgs) ToOutput(ctx context.Context) pulumix.Output[GetScalingConfigurationsConfigurationSpotPriceLimit] {
-	return pulumix.Output[GetScalingConfigurationsConfigurationSpotPriceLimit]{
-		OutputState: i.ToGetScalingConfigurationsConfigurationSpotPriceLimitOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetScalingConfigurationsConfigurationSpotPriceLimitArrayInput is an input type that accepts GetScalingConfigurationsConfigurationSpotPriceLimitArray and GetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput values.
 // You can construct a concrete instance of `GetScalingConfigurationsConfigurationSpotPriceLimitArrayInput` via:
 //
@@ -4291,12 +3708,6 @@ func (i GetScalingConfigurationsConfigurationSpotPriceLimitArray) ToGetScalingCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput)
 }
 
-func (i GetScalingConfigurationsConfigurationSpotPriceLimitArray) ToOutput(ctx context.Context) pulumix.Output[[]GetScalingConfigurationsConfigurationSpotPriceLimit] {
-	return pulumix.Output[[]GetScalingConfigurationsConfigurationSpotPriceLimit]{
-		OutputState: i.ToGetScalingConfigurationsConfigurationSpotPriceLimitArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetScalingConfigurationsConfigurationSpotPriceLimitOutput struct{ *pulumi.OutputState }
 
 func (GetScalingConfigurationsConfigurationSpotPriceLimitOutput) ElementType() reflect.Type {
@@ -4309,12 +3720,6 @@ func (o GetScalingConfigurationsConfigurationSpotPriceLimitOutput) ToGetScalingC
 
 func (o GetScalingConfigurationsConfigurationSpotPriceLimitOutput) ToGetScalingConfigurationsConfigurationSpotPriceLimitOutputWithContext(ctx context.Context) GetScalingConfigurationsConfigurationSpotPriceLimitOutput {
 	return o
-}
-
-func (o GetScalingConfigurationsConfigurationSpotPriceLimitOutput) ToOutput(ctx context.Context) pulumix.Output[GetScalingConfigurationsConfigurationSpotPriceLimit] {
-	return pulumix.Output[GetScalingConfigurationsConfigurationSpotPriceLimit]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource type of an ECS instance.
@@ -4339,12 +3744,6 @@ func (o GetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput) ToGetSca
 
 func (o GetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput) ToGetScalingConfigurationsConfigurationSpotPriceLimitArrayOutputWithContext(ctx context.Context) GetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput {
 	return o
-}
-
-func (o GetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetScalingConfigurationsConfigurationSpotPriceLimit] {
-	return pulumix.Output[[]GetScalingConfigurationsConfigurationSpotPriceLimit]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput) Index(i pulumi.IntInput) GetScalingConfigurationsConfigurationSpotPriceLimitOutput {
@@ -4490,12 +3889,6 @@ func (i GetScalingGroupsGroupArgs) ToGetScalingGroupsGroupOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetScalingGroupsGroupOutput)
 }
 
-func (i GetScalingGroupsGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetScalingGroupsGroup] {
-	return pulumix.Output[GetScalingGroupsGroup]{
-		OutputState: i.ToGetScalingGroupsGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetScalingGroupsGroupArrayInput is an input type that accepts GetScalingGroupsGroupArray and GetScalingGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetScalingGroupsGroupArrayInput` via:
 //
@@ -4521,12 +3914,6 @@ func (i GetScalingGroupsGroupArray) ToGetScalingGroupsGroupArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetScalingGroupsGroupArrayOutput)
 }
 
-func (i GetScalingGroupsGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetScalingGroupsGroup] {
-	return pulumix.Output[[]GetScalingGroupsGroup]{
-		OutputState: i.ToGetScalingGroupsGroupArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetScalingGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetScalingGroupsGroupOutput) ElementType() reflect.Type {
@@ -4539,12 +3926,6 @@ func (o GetScalingGroupsGroupOutput) ToGetScalingGroupsGroupOutput() GetScalingG
 
 func (o GetScalingGroupsGroupOutput) ToGetScalingGroupsGroupOutputWithContext(ctx context.Context) GetScalingGroupsGroupOutput {
 	return o
-}
-
-func (o GetScalingGroupsGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetScalingGroupsGroup] {
-	return pulumix.Output[GetScalingGroupsGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Number of active instances in scaling group.
@@ -4696,12 +4077,6 @@ func (o GetScalingGroupsGroupArrayOutput) ToGetScalingGroupsGroupArrayOutputWith
 	return o
 }
 
-func (o GetScalingGroupsGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetScalingGroupsGroup] {
-	return pulumix.Output[[]GetScalingGroupsGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetScalingGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetScalingGroupsGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetScalingGroupsGroup {
 		return vs[0].([]GetScalingGroupsGroup)[vs[1].(int)]
@@ -4773,12 +4148,6 @@ func (i GetScalingRulesRuleArgs) ToGetScalingRulesRuleOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetScalingRulesRuleOutput)
 }
 
-func (i GetScalingRulesRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetScalingRulesRule] {
-	return pulumix.Output[GetScalingRulesRule]{
-		OutputState: i.ToGetScalingRulesRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetScalingRulesRuleArrayInput is an input type that accepts GetScalingRulesRuleArray and GetScalingRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetScalingRulesRuleArrayInput` via:
 //
@@ -4804,12 +4173,6 @@ func (i GetScalingRulesRuleArray) ToGetScalingRulesRuleArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetScalingRulesRuleArrayOutput)
 }
 
-func (i GetScalingRulesRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetScalingRulesRule] {
-	return pulumix.Output[[]GetScalingRulesRule]{
-		OutputState: i.ToGetScalingRulesRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetScalingRulesRuleOutput struct{ *pulumi.OutputState }
 
 func (GetScalingRulesRuleOutput) ElementType() reflect.Type {
@@ -4822,12 +4185,6 @@ func (o GetScalingRulesRuleOutput) ToGetScalingRulesRuleOutput() GetScalingRules
 
 func (o GetScalingRulesRuleOutput) ToGetScalingRulesRuleOutputWithContext(ctx context.Context) GetScalingRulesRuleOutput {
 	return o
-}
-
-func (o GetScalingRulesRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetScalingRulesRule] {
-	return pulumix.Output[GetScalingRulesRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Adjustment type of the scaling rule.
@@ -4887,12 +4244,6 @@ func (o GetScalingRulesRuleArrayOutput) ToGetScalingRulesRuleArrayOutput() GetSc
 
 func (o GetScalingRulesRuleArrayOutput) ToGetScalingRulesRuleArrayOutputWithContext(ctx context.Context) GetScalingRulesRuleArrayOutput {
 	return o
-}
-
-func (o GetScalingRulesRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetScalingRulesRule] {
-	return pulumix.Output[[]GetScalingRulesRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetScalingRulesRuleArrayOutput) Index(i pulumi.IntInput) GetScalingRulesRuleOutput {
@@ -4972,12 +4323,6 @@ func (i GetScheduledTasksTaskArgs) ToGetScheduledTasksTaskOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetScheduledTasksTaskOutput)
 }
 
-func (i GetScheduledTasksTaskArgs) ToOutput(ctx context.Context) pulumix.Output[GetScheduledTasksTask] {
-	return pulumix.Output[GetScheduledTasksTask]{
-		OutputState: i.ToGetScheduledTasksTaskOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetScheduledTasksTaskArrayInput is an input type that accepts GetScheduledTasksTaskArray and GetScheduledTasksTaskArrayOutput values.
 // You can construct a concrete instance of `GetScheduledTasksTaskArrayInput` via:
 //
@@ -5003,12 +4348,6 @@ func (i GetScheduledTasksTaskArray) ToGetScheduledTasksTaskArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetScheduledTasksTaskArrayOutput)
 }
 
-func (i GetScheduledTasksTaskArray) ToOutput(ctx context.Context) pulumix.Output[[]GetScheduledTasksTask] {
-	return pulumix.Output[[]GetScheduledTasksTask]{
-		OutputState: i.ToGetScheduledTasksTaskArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetScheduledTasksTaskOutput struct{ *pulumi.OutputState }
 
 func (GetScheduledTasksTaskOutput) ElementType() reflect.Type {
@@ -5021,12 +4360,6 @@ func (o GetScheduledTasksTaskOutput) ToGetScheduledTasksTaskOutput() GetSchedule
 
 func (o GetScheduledTasksTaskOutput) ToGetScheduledTasksTaskOutputWithContext(ctx context.Context) GetScheduledTasksTaskOutput {
 	return o
-}
-
-func (o GetScheduledTasksTaskOutput) ToOutput(ctx context.Context) pulumix.Output[GetScheduledTasksTask] {
-	return pulumix.Output[GetScheduledTasksTask]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the scheduled task.
@@ -5098,12 +4431,6 @@ func (o GetScheduledTasksTaskArrayOutput) ToGetScheduledTasksTaskArrayOutput() G
 
 func (o GetScheduledTasksTaskArrayOutput) ToGetScheduledTasksTaskArrayOutputWithContext(ctx context.Context) GetScheduledTasksTaskArrayOutput {
 	return o
-}
-
-func (o GetScheduledTasksTaskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetScheduledTasksTask] {
-	return pulumix.Output[[]GetScheduledTasksTask]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetScheduledTasksTaskArrayOutput) Index(i pulumi.IntInput) GetScheduledTasksTaskOutput {

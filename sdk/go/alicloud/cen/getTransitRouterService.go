@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Using this data source can open CEN Transit Router Service automatically. If the service has been opened, it will return opened.
@@ -108,12 +107,6 @@ func (o GetTransitRouterServiceResultOutput) ToGetTransitRouterServiceResultOutp
 
 func (o GetTransitRouterServiceResultOutput) ToGetTransitRouterServiceResultOutputWithContext(ctx context.Context) GetTransitRouterServiceResultOutput {
 	return o
-}
-
-func (o GetTransitRouterServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterServiceResult] {
-	return pulumix.Output[GetTransitRouterServiceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetTransitRouterServiceResultOutput) Enable() pulumi.StringPtrOutput {

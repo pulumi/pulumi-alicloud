@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Load Balancer CA Certificate is used by the listener of the protocol https.
@@ -254,12 +253,6 @@ func (i *CaCertificate) ToCaCertificateOutputWithContext(ctx context.Context) Ca
 	return pulumi.ToOutputWithContext(ctx, i).(CaCertificateOutput)
 }
 
-func (i *CaCertificate) ToOutput(ctx context.Context) pulumix.Output[*CaCertificate] {
-	return pulumix.Output[*CaCertificate]{
-		OutputState: i.ToCaCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CaCertificateArrayInput is an input type that accepts CaCertificateArray and CaCertificateArrayOutput values.
 // You can construct a concrete instance of `CaCertificateArrayInput` via:
 //
@@ -283,12 +276,6 @@ func (i CaCertificateArray) ToCaCertificateArrayOutput() CaCertificateArrayOutpu
 
 func (i CaCertificateArray) ToCaCertificateArrayOutputWithContext(ctx context.Context) CaCertificateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CaCertificateArrayOutput)
-}
-
-func (i CaCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]*CaCertificate] {
-	return pulumix.Output[[]*CaCertificate]{
-		OutputState: i.ToCaCertificateArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CaCertificateMapInput is an input type that accepts CaCertificateMap and CaCertificateMapOutput values.
@@ -316,12 +303,6 @@ func (i CaCertificateMap) ToCaCertificateMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(CaCertificateMapOutput)
 }
 
-func (i CaCertificateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CaCertificate] {
-	return pulumix.Output[map[string]*CaCertificate]{
-		OutputState: i.ToCaCertificateMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CaCertificateOutput struct{ *pulumi.OutputState }
 
 func (CaCertificateOutput) ElementType() reflect.Type {
@@ -334,12 +315,6 @@ func (o CaCertificateOutput) ToCaCertificateOutput() CaCertificateOutput {
 
 func (o CaCertificateOutput) ToCaCertificateOutputWithContext(ctx context.Context) CaCertificateOutput {
 	return o
-}
-
-func (o CaCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[*CaCertificate] {
-	return pulumix.Output[*CaCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // the content of the CA certificate.
@@ -383,12 +358,6 @@ func (o CaCertificateArrayOutput) ToCaCertificateArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o CaCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CaCertificate] {
-	return pulumix.Output[[]*CaCertificate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CaCertificateArrayOutput) Index(i pulumi.IntInput) CaCertificateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CaCertificate {
 		return vs[0].([]*CaCertificate)[vs[1].(int)]
@@ -407,12 +376,6 @@ func (o CaCertificateMapOutput) ToCaCertificateMapOutput() CaCertificateMapOutpu
 
 func (o CaCertificateMapOutput) ToCaCertificateMapOutputWithContext(ctx context.Context) CaCertificateMapOutput {
 	return o
-}
-
-func (o CaCertificateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CaCertificate] {
-	return pulumix.Output[map[string]*CaCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CaCertificateMapOutput) MapIndex(k pulumi.StringInput) CaCertificateOutput {

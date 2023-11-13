@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.
@@ -144,12 +143,6 @@ func (o GetPublicIpAddressPoolsResultOutput) ToGetPublicIpAddressPoolsResultOutp
 
 func (o GetPublicIpAddressPoolsResultOutput) ToGetPublicIpAddressPoolsResultOutputWithContext(ctx context.Context) GetPublicIpAddressPoolsResultOutput {
 	return o
-}
-
-func (o GetPublicIpAddressPoolsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPublicIpAddressPoolsResult] {
-	return pulumix.Output[GetPublicIpAddressPoolsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

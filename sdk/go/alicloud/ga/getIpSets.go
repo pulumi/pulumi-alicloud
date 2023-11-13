@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Global Accelerator (GA) Ip Sets of the current Alibaba Cloud user.
@@ -122,12 +121,6 @@ func (o GetIpSetsResultOutput) ToGetIpSetsResultOutput() GetIpSetsResultOutput {
 
 func (o GetIpSetsResultOutput) ToGetIpSetsResultOutputWithContext(ctx context.Context) GetIpSetsResultOutput {
 	return o
-}
-
-func (o GetIpSetsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetIpSetsResult] {
-	return pulumix.Output[GetIpSetsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetIpSetsResultOutput) AcceleratorId() pulumi.StringOutput {

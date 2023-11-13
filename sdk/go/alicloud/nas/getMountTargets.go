@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides MountTargets available to the user.
@@ -169,12 +168,6 @@ func (o GetMountTargetsResultOutput) ToGetMountTargetsResultOutput() GetMountTar
 
 func (o GetMountTargetsResultOutput) ToGetMountTargetsResultOutputWithContext(ctx context.Context) GetMountTargetsResultOutput {
 	return o
-}
-
-func (o GetMountTargetsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetMountTargetsResult] {
-	return pulumix.Output[GetMountTargetsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // AccessGroup of The MountTarget.

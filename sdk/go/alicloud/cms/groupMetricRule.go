@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Monitor Service Group Metric Rule resource.
@@ -373,12 +372,6 @@ func (i *GroupMetricRule) ToGroupMetricRuleOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMetricRuleOutput)
 }
 
-func (i *GroupMetricRule) ToOutput(ctx context.Context) pulumix.Output[*GroupMetricRule] {
-	return pulumix.Output[*GroupMetricRule]{
-		OutputState: i.ToGroupMetricRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GroupMetricRuleArrayInput is an input type that accepts GroupMetricRuleArray and GroupMetricRuleArrayOutput values.
 // You can construct a concrete instance of `GroupMetricRuleArrayInput` via:
 //
@@ -402,12 +395,6 @@ func (i GroupMetricRuleArray) ToGroupMetricRuleArrayOutput() GroupMetricRuleArra
 
 func (i GroupMetricRuleArray) ToGroupMetricRuleArrayOutputWithContext(ctx context.Context) GroupMetricRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMetricRuleArrayOutput)
-}
-
-func (i GroupMetricRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*GroupMetricRule] {
-	return pulumix.Output[[]*GroupMetricRule]{
-		OutputState: i.ToGroupMetricRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GroupMetricRuleMapInput is an input type that accepts GroupMetricRuleMap and GroupMetricRuleMapOutput values.
@@ -435,12 +422,6 @@ func (i GroupMetricRuleMap) ToGroupMetricRuleMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMetricRuleMapOutput)
 }
 
-func (i GroupMetricRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupMetricRule] {
-	return pulumix.Output[map[string]*GroupMetricRule]{
-		OutputState: i.ToGroupMetricRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GroupMetricRuleOutput struct{ *pulumi.OutputState }
 
 func (GroupMetricRuleOutput) ElementType() reflect.Type {
@@ -453,12 +434,6 @@ func (o GroupMetricRuleOutput) ToGroupMetricRuleOutput() GroupMetricRuleOutput {
 
 func (o GroupMetricRuleOutput) ToGroupMetricRuleOutputWithContext(ctx context.Context) GroupMetricRuleOutput {
 	return o
-}
-
-func (o GroupMetricRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupMetricRule] {
-	return pulumix.Output[*GroupMetricRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The abbreviation of the service name.
@@ -565,12 +540,6 @@ func (o GroupMetricRuleArrayOutput) ToGroupMetricRuleArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o GroupMetricRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GroupMetricRule] {
-	return pulumix.Output[[]*GroupMetricRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GroupMetricRuleArrayOutput) Index(i pulumi.IntInput) GroupMetricRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GroupMetricRule {
 		return vs[0].([]*GroupMetricRule)[vs[1].(int)]
@@ -589,12 +558,6 @@ func (o GroupMetricRuleMapOutput) ToGroupMetricRuleMapOutput() GroupMetricRuleMa
 
 func (o GroupMetricRuleMapOutput) ToGroupMetricRuleMapOutputWithContext(ctx context.Context) GroupMetricRuleMapOutput {
 	return o
-}
-
-func (o GroupMetricRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupMetricRule] {
-	return pulumix.Output[map[string]*GroupMetricRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GroupMetricRuleMapOutput) MapIndex(k pulumi.StringInput) GroupMetricRuleOutput {

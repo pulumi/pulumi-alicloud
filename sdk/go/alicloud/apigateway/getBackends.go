@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
@@ -119,12 +118,6 @@ func (o GetBackendsResultOutput) ToGetBackendsResultOutput() GetBackendsResultOu
 
 func (o GetBackendsResultOutput) ToGetBackendsResultOutputWithContext(ctx context.Context) GetBackendsResultOutput {
 	return o
-}
-
-func (o GetBackendsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBackendsResult] {
-	return pulumix.Output[GetBackendsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetBackendsResultOutput) Backends() GetBackendsBackendArrayOutput {

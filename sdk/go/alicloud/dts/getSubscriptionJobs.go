@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.
@@ -126,12 +125,6 @@ func (o GetSubscriptionJobsResultOutput) ToGetSubscriptionJobsResultOutput() Get
 
 func (o GetSubscriptionJobsResultOutput) ToGetSubscriptionJobsResultOutputWithContext(ctx context.Context) GetSubscriptionJobsResultOutput {
 	return o
-}
-
-func (o GetSubscriptionJobsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSubscriptionJobsResult] {
-	return pulumix.Output[GetSubscriptionJobsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSubscriptionJobsResultOutput) EnableDetails() pulumi.BoolPtrOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Using this data source can open VPC Traffic Mirror service automatically. If the service has been opened, it will return opened.
@@ -110,12 +109,6 @@ func (o GetTrafficMirrorServiceResultOutput) ToGetTrafficMirrorServiceResultOutp
 
 func (o GetTrafficMirrorServiceResultOutput) ToGetTrafficMirrorServiceResultOutputWithContext(ctx context.Context) GetTrafficMirrorServiceResultOutput {
 	return o
-}
-
-func (o GetTrafficMirrorServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTrafficMirrorServiceResult] {
-	return pulumix.Output[GetTrafficMirrorServiceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetTrafficMirrorServiceResultOutput) Enable() pulumi.StringPtrOutput {

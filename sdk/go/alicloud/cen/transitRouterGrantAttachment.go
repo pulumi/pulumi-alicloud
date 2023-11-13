@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Enterprise Network (CEN) Transit Router Grant Attachment resource.
@@ -216,12 +215,6 @@ func (i *TransitRouterGrantAttachment) ToTransitRouterGrantAttachmentOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterGrantAttachmentOutput)
 }
 
-func (i *TransitRouterGrantAttachment) ToOutput(ctx context.Context) pulumix.Output[*TransitRouterGrantAttachment] {
-	return pulumix.Output[*TransitRouterGrantAttachment]{
-		OutputState: i.ToTransitRouterGrantAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TransitRouterGrantAttachmentArrayInput is an input type that accepts TransitRouterGrantAttachmentArray and TransitRouterGrantAttachmentArrayOutput values.
 // You can construct a concrete instance of `TransitRouterGrantAttachmentArrayInput` via:
 //
@@ -245,12 +238,6 @@ func (i TransitRouterGrantAttachmentArray) ToTransitRouterGrantAttachmentArrayOu
 
 func (i TransitRouterGrantAttachmentArray) ToTransitRouterGrantAttachmentArrayOutputWithContext(ctx context.Context) TransitRouterGrantAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterGrantAttachmentArrayOutput)
-}
-
-func (i TransitRouterGrantAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*TransitRouterGrantAttachment] {
-	return pulumix.Output[[]*TransitRouterGrantAttachment]{
-		OutputState: i.ToTransitRouterGrantAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TransitRouterGrantAttachmentMapInput is an input type that accepts TransitRouterGrantAttachmentMap and TransitRouterGrantAttachmentMapOutput values.
@@ -278,12 +265,6 @@ func (i TransitRouterGrantAttachmentMap) ToTransitRouterGrantAttachmentMapOutput
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterGrantAttachmentMapOutput)
 }
 
-func (i TransitRouterGrantAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransitRouterGrantAttachment] {
-	return pulumix.Output[map[string]*TransitRouterGrantAttachment]{
-		OutputState: i.ToTransitRouterGrantAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TransitRouterGrantAttachmentOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterGrantAttachmentOutput) ElementType() reflect.Type {
@@ -296,12 +277,6 @@ func (o TransitRouterGrantAttachmentOutput) ToTransitRouterGrantAttachmentOutput
 
 func (o TransitRouterGrantAttachmentOutput) ToTransitRouterGrantAttachmentOutputWithContext(ctx context.Context) TransitRouterGrantAttachmentOutput {
 	return o
-}
-
-func (o TransitRouterGrantAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*TransitRouterGrantAttachment] {
-	return pulumix.Output[*TransitRouterGrantAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
@@ -343,12 +318,6 @@ func (o TransitRouterGrantAttachmentArrayOutput) ToTransitRouterGrantAttachmentA
 	return o
 }
 
-func (o TransitRouterGrantAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TransitRouterGrantAttachment] {
-	return pulumix.Output[[]*TransitRouterGrantAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TransitRouterGrantAttachmentArrayOutput) Index(i pulumi.IntInput) TransitRouterGrantAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TransitRouterGrantAttachment {
 		return vs[0].([]*TransitRouterGrantAttachment)[vs[1].(int)]
@@ -367,12 +336,6 @@ func (o TransitRouterGrantAttachmentMapOutput) ToTransitRouterGrantAttachmentMap
 
 func (o TransitRouterGrantAttachmentMapOutput) ToTransitRouterGrantAttachmentMapOutputWithContext(ctx context.Context) TransitRouterGrantAttachmentMapOutput {
 	return o
-}
-
-func (o TransitRouterGrantAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransitRouterGrantAttachment] {
-	return pulumix.Output[map[string]*TransitRouterGrantAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TransitRouterGrantAttachmentMapOutput) MapIndex(k pulumi.StringInput) TransitRouterGrantAttachmentOutput {

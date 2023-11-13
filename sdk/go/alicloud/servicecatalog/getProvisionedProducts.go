@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Service Catalog Provisioned Product available to the user. [What is Provisioned Product](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-launchproduct)
@@ -151,12 +150,6 @@ func (o GetProvisionedProductsResultOutput) ToGetProvisionedProductsResultOutput
 
 func (o GetProvisionedProductsResultOutput) ToGetProvisionedProductsResultOutputWithContext(ctx context.Context) GetProvisionedProductsResultOutput {
 	return o
-}
-
-func (o GetProvisionedProductsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetProvisionedProductsResult] {
-	return pulumix.Output[GetProvisionedProductsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetProvisionedProductsResultOutput) AccessLevelFilter() pulumi.StringPtrOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list of ONS Topics in an Alibaba Cloud account according to the specified filters.
@@ -156,12 +155,6 @@ func (o GetTopicsResultOutput) ToGetTopicsResultOutput() GetTopicsResultOutput {
 
 func (o GetTopicsResultOutput) ToGetTopicsResultOutputWithContext(ctx context.Context) GetTopicsResultOutput {
 	return o
-}
-
-func (o GetTopicsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTopicsResult] {
-	return pulumix.Output[GetTopicsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetTopicsResultOutput) EnableDetails() pulumi.BoolPtrOutput {

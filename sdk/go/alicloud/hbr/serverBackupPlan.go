@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Hybrid Backup Recovery (HBR) Server Backup Plan resource.
@@ -305,12 +304,6 @@ func (i *ServerBackupPlan) ToServerBackupPlanOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ServerBackupPlanOutput)
 }
 
-func (i *ServerBackupPlan) ToOutput(ctx context.Context) pulumix.Output[*ServerBackupPlan] {
-	return pulumix.Output[*ServerBackupPlan]{
-		OutputState: i.ToServerBackupPlanOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServerBackupPlanArrayInput is an input type that accepts ServerBackupPlanArray and ServerBackupPlanArrayOutput values.
 // You can construct a concrete instance of `ServerBackupPlanArrayInput` via:
 //
@@ -334,12 +327,6 @@ func (i ServerBackupPlanArray) ToServerBackupPlanArrayOutput() ServerBackupPlanA
 
 func (i ServerBackupPlanArray) ToServerBackupPlanArrayOutputWithContext(ctx context.Context) ServerBackupPlanArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerBackupPlanArrayOutput)
-}
-
-func (i ServerBackupPlanArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServerBackupPlan] {
-	return pulumix.Output[[]*ServerBackupPlan]{
-		OutputState: i.ToServerBackupPlanArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServerBackupPlanMapInput is an input type that accepts ServerBackupPlanMap and ServerBackupPlanMapOutput values.
@@ -367,12 +354,6 @@ func (i ServerBackupPlanMap) ToServerBackupPlanMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ServerBackupPlanMapOutput)
 }
 
-func (i ServerBackupPlanMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServerBackupPlan] {
-	return pulumix.Output[map[string]*ServerBackupPlan]{
-		OutputState: i.ToServerBackupPlanMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServerBackupPlanOutput struct{ *pulumi.OutputState }
 
 func (ServerBackupPlanOutput) ElementType() reflect.Type {
@@ -385,12 +366,6 @@ func (o ServerBackupPlanOutput) ToServerBackupPlanOutput() ServerBackupPlanOutpu
 
 func (o ServerBackupPlanOutput) ToServerBackupPlanOutputWithContext(ctx context.Context) ServerBackupPlanOutput {
 	return o
-}
-
-func (o ServerBackupPlanOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerBackupPlan] {
-	return pulumix.Output[*ServerBackupPlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The role name created in the original account RAM backup by the cross account managed by the current account.
@@ -452,12 +427,6 @@ func (o ServerBackupPlanArrayOutput) ToServerBackupPlanArrayOutputWithContext(ct
 	return o
 }
 
-func (o ServerBackupPlanArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServerBackupPlan] {
-	return pulumix.Output[[]*ServerBackupPlan]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServerBackupPlanArrayOutput) Index(i pulumi.IntInput) ServerBackupPlanOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServerBackupPlan {
 		return vs[0].([]*ServerBackupPlan)[vs[1].(int)]
@@ -476,12 +445,6 @@ func (o ServerBackupPlanMapOutput) ToServerBackupPlanMapOutput() ServerBackupPla
 
 func (o ServerBackupPlanMapOutput) ToServerBackupPlanMapOutputWithContext(ctx context.Context) ServerBackupPlanMapOutput {
 	return o
-}
-
-func (o ServerBackupPlanMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServerBackupPlan] {
-	return pulumix.Output[map[string]*ServerBackupPlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServerBackupPlanMapOutput) MapIndex(k pulumi.StringInput) ServerBackupPlanOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Resource Manager Handshakes of the current Alibaba Cloud user.
@@ -118,12 +117,6 @@ func (o GetHandshakesResultOutput) ToGetHandshakesResultOutput() GetHandshakesRe
 
 func (o GetHandshakesResultOutput) ToGetHandshakesResultOutputWithContext(ctx context.Context) GetHandshakesResultOutput {
 	return o
-}
-
-func (o GetHandshakesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetHandshakesResult] {
-	return pulumix.Output[GetHandshakesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetHandshakesResultOutput) EnableDetails() pulumi.BoolPtrOutput {
