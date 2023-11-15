@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list of available addons that the cluster can install.
@@ -90,12 +89,6 @@ func (o GetKubernetesAddonsResultOutput) ToGetKubernetesAddonsResultOutput() Get
 
 func (o GetKubernetesAddonsResultOutput) ToGetKubernetesAddonsResultOutputWithContext(ctx context.Context) GetKubernetesAddonsResultOutput {
 	return o
-}
-
-func (o GetKubernetesAddonsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetKubernetesAddonsResult] {
-	return pulumix.Output[GetKubernetesAddonsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of addons.

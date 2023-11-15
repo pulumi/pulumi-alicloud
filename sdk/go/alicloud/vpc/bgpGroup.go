@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a VPC Bgp Group resource.
@@ -252,12 +251,6 @@ func (i *BgpGroup) ToBgpGroupOutputWithContext(ctx context.Context) BgpGroupOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BgpGroupOutput)
 }
 
-func (i *BgpGroup) ToOutput(ctx context.Context) pulumix.Output[*BgpGroup] {
-	return pulumix.Output[*BgpGroup]{
-		OutputState: i.ToBgpGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BgpGroupArrayInput is an input type that accepts BgpGroupArray and BgpGroupArrayOutput values.
 // You can construct a concrete instance of `BgpGroupArrayInput` via:
 //
@@ -281,12 +274,6 @@ func (i BgpGroupArray) ToBgpGroupArrayOutput() BgpGroupArrayOutput {
 
 func (i BgpGroupArray) ToBgpGroupArrayOutputWithContext(ctx context.Context) BgpGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BgpGroupArrayOutput)
-}
-
-func (i BgpGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*BgpGroup] {
-	return pulumix.Output[[]*BgpGroup]{
-		OutputState: i.ToBgpGroupArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BgpGroupMapInput is an input type that accepts BgpGroupMap and BgpGroupMapOutput values.
@@ -314,12 +301,6 @@ func (i BgpGroupMap) ToBgpGroupMapOutputWithContext(ctx context.Context) BgpGrou
 	return pulumi.ToOutputWithContext(ctx, i).(BgpGroupMapOutput)
 }
 
-func (i BgpGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BgpGroup] {
-	return pulumix.Output[map[string]*BgpGroup]{
-		OutputState: i.ToBgpGroupMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BgpGroupOutput struct{ *pulumi.OutputState }
 
 func (BgpGroupOutput) ElementType() reflect.Type {
@@ -332,12 +313,6 @@ func (o BgpGroupOutput) ToBgpGroupOutput() BgpGroupOutput {
 
 func (o BgpGroupOutput) ToBgpGroupOutputWithContext(ctx context.Context) BgpGroupOutput {
 	return o
-}
-
-func (o BgpGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*BgpGroup] {
-	return pulumix.Output[*BgpGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The authentication key of the BGP group.
@@ -394,12 +369,6 @@ func (o BgpGroupArrayOutput) ToBgpGroupArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o BgpGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BgpGroup] {
-	return pulumix.Output[[]*BgpGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BgpGroupArrayOutput) Index(i pulumi.IntInput) BgpGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BgpGroup {
 		return vs[0].([]*BgpGroup)[vs[1].(int)]
@@ -418,12 +387,6 @@ func (o BgpGroupMapOutput) ToBgpGroupMapOutput() BgpGroupMapOutput {
 
 func (o BgpGroupMapOutput) ToBgpGroupMapOutputWithContext(ctx context.Context) BgpGroupMapOutput {
 	return o
-}
-
-func (o BgpGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BgpGroup] {
-	return pulumix.Output[map[string]*BgpGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BgpGroupMapOutput) MapIndex(k pulumi.StringInput) BgpGroupOutput {

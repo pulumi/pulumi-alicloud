@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func LookupMonitorGroupInstances(ctx *pulumi.Context, args *LookupMonitorGroupInstancesArgs, opts ...pulumi.InvokeOption) (*LookupMonitorGroupInstancesResult, error) {
@@ -76,12 +75,6 @@ func (o LookupMonitorGroupInstancesResultOutput) ToLookupMonitorGroupInstancesRe
 
 func (o LookupMonitorGroupInstancesResultOutput) ToLookupMonitorGroupInstancesResultOutputWithContext(ctx context.Context) LookupMonitorGroupInstancesResultOutput {
 	return o
-}
-
-func (o LookupMonitorGroupInstancesResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMonitorGroupInstancesResult] {
-	return pulumix.Output[LookupMonitorGroupInstancesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

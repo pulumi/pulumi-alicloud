@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list of KMS aliases in an Alibaba Cloud account according to the specified filters.
@@ -119,12 +118,6 @@ func (o GetAliasesResultOutput) ToGetAliasesResultOutput() GetAliasesResultOutpu
 
 func (o GetAliasesResultOutput) ToGetAliasesResultOutputWithContext(ctx context.Context) GetAliasesResultOutput {
 	return o
-}
-
-func (o GetAliasesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAliasesResult] {
-	return pulumix.Output[GetAliasesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of KMS User alias. Each element contains the following attributes:

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -49,12 +48,6 @@ func (i ProjectIpWhiteListArgs) ToProjectIpWhiteListOutput() ProjectIpWhiteListO
 
 func (i ProjectIpWhiteListArgs) ToProjectIpWhiteListOutputWithContext(ctx context.Context) ProjectIpWhiteListOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectIpWhiteListOutput)
-}
-
-func (i ProjectIpWhiteListArgs) ToOutput(ctx context.Context) pulumix.Output[ProjectIpWhiteList] {
-	return pulumix.Output[ProjectIpWhiteList]{
-		OutputState: i.ToProjectIpWhiteListOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ProjectIpWhiteListArgs) ToProjectIpWhiteListPtrOutput() ProjectIpWhiteListPtrOutput {
@@ -98,12 +91,6 @@ func (i *projectIpWhiteListPtrType) ToProjectIpWhiteListPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectIpWhiteListPtrOutput)
 }
 
-func (i *projectIpWhiteListPtrType) ToOutput(ctx context.Context) pulumix.Output[*ProjectIpWhiteList] {
-	return pulumix.Output[*ProjectIpWhiteList]{
-		OutputState: i.ToProjectIpWhiteListPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectIpWhiteListOutput struct{ *pulumi.OutputState }
 
 func (ProjectIpWhiteListOutput) ElementType() reflect.Type {
@@ -128,12 +115,6 @@ func (o ProjectIpWhiteListOutput) ToProjectIpWhiteListPtrOutputWithContext(ctx c
 	}).(ProjectIpWhiteListPtrOutput)
 }
 
-func (o ProjectIpWhiteListOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectIpWhiteList] {
-	return pulumix.Output[ProjectIpWhiteList]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Classic network IP white list.
 func (o ProjectIpWhiteListOutput) IpList() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectIpWhiteList) *string { return v.IpList }).(pulumi.StringPtrOutput)
@@ -156,12 +137,6 @@ func (o ProjectIpWhiteListPtrOutput) ToProjectIpWhiteListPtrOutput() ProjectIpWh
 
 func (o ProjectIpWhiteListPtrOutput) ToProjectIpWhiteListPtrOutputWithContext(ctx context.Context) ProjectIpWhiteListPtrOutput {
 	return o
-}
-
-func (o ProjectIpWhiteListPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectIpWhiteList] {
-	return pulumix.Output[*ProjectIpWhiteList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectIpWhiteListPtrOutput) Elem() ProjectIpWhiteListOutput {
@@ -255,12 +230,6 @@ func (i ProjectPropertiesArgs) ToProjectPropertiesOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectPropertiesOutput)
 }
 
-func (i ProjectPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ProjectProperties] {
-	return pulumix.Output[ProjectProperties]{
-		OutputState: i.ToProjectPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ProjectPropertiesArgs) ToProjectPropertiesPtrOutput() ProjectPropertiesPtrOutput {
 	return i.ToProjectPropertiesPtrOutputWithContext(context.Background())
 }
@@ -302,12 +271,6 @@ func (i *projectPropertiesPtrType) ToProjectPropertiesPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectPropertiesPtrOutput)
 }
 
-func (i *projectPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ProjectProperties] {
-	return pulumix.Output[*ProjectProperties]{
-		OutputState: i.ToProjectPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectPropertiesOutput struct{ *pulumi.OutputState }
 
 func (ProjectPropertiesOutput) ElementType() reflect.Type {
@@ -330,12 +293,6 @@ func (o ProjectPropertiesOutput) ToProjectPropertiesPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectProperties) *ProjectProperties {
 		return &v
 	}).(ProjectPropertiesPtrOutput)
-}
-
-func (o ProjectPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectProperties] {
-	return pulumix.Output[ProjectProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to allow full table scan.
@@ -390,12 +347,6 @@ func (o ProjectPropertiesPtrOutput) ToProjectPropertiesPtrOutput() ProjectProper
 
 func (o ProjectPropertiesPtrOutput) ToProjectPropertiesPtrOutputWithContext(ctx context.Context) ProjectPropertiesPtrOutput {
 	return o
-}
-
-func (o ProjectPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectProperties] {
-	return pulumix.Output[*ProjectProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectPropertiesPtrOutput) Elem() ProjectPropertiesOutput {
@@ -529,12 +480,6 @@ func (i ProjectPropertiesEncryptionArgs) ToProjectPropertiesEncryptionOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectPropertiesEncryptionOutput)
 }
 
-func (i ProjectPropertiesEncryptionArgs) ToOutput(ctx context.Context) pulumix.Output[ProjectPropertiesEncryption] {
-	return pulumix.Output[ProjectPropertiesEncryption]{
-		OutputState: i.ToProjectPropertiesEncryptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ProjectPropertiesEncryptionArgs) ToProjectPropertiesEncryptionPtrOutput() ProjectPropertiesEncryptionPtrOutput {
 	return i.ToProjectPropertiesEncryptionPtrOutputWithContext(context.Background())
 }
@@ -576,12 +521,6 @@ func (i *projectPropertiesEncryptionPtrType) ToProjectPropertiesEncryptionPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectPropertiesEncryptionPtrOutput)
 }
 
-func (i *projectPropertiesEncryptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ProjectPropertiesEncryption] {
-	return pulumix.Output[*ProjectPropertiesEncryption]{
-		OutputState: i.ToProjectPropertiesEncryptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectPropertiesEncryptionOutput struct{ *pulumi.OutputState }
 
 func (ProjectPropertiesEncryptionOutput) ElementType() reflect.Type {
@@ -604,12 +543,6 @@ func (o ProjectPropertiesEncryptionOutput) ToProjectPropertiesEncryptionPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectPropertiesEncryption) *ProjectPropertiesEncryption {
 		return &v
 	}).(ProjectPropertiesEncryptionPtrOutput)
-}
-
-func (o ProjectPropertiesEncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectPropertiesEncryption] {
-	return pulumix.Output[ProjectPropertiesEncryption]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Algorithm.
@@ -639,12 +572,6 @@ func (o ProjectPropertiesEncryptionPtrOutput) ToProjectPropertiesEncryptionPtrOu
 
 func (o ProjectPropertiesEncryptionPtrOutput) ToProjectPropertiesEncryptionPtrOutputWithContext(ctx context.Context) ProjectPropertiesEncryptionPtrOutput {
 	return o
-}
-
-func (o ProjectPropertiesEncryptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectPropertiesEncryption] {
-	return pulumix.Output[*ProjectPropertiesEncryption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectPropertiesEncryptionPtrOutput) Elem() ProjectPropertiesEncryptionOutput {
@@ -724,12 +651,6 @@ func (i ProjectPropertiesTableLifecycleArgs) ToProjectPropertiesTableLifecycleOu
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectPropertiesTableLifecycleOutput)
 }
 
-func (i ProjectPropertiesTableLifecycleArgs) ToOutput(ctx context.Context) pulumix.Output[ProjectPropertiesTableLifecycle] {
-	return pulumix.Output[ProjectPropertiesTableLifecycle]{
-		OutputState: i.ToProjectPropertiesTableLifecycleOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ProjectPropertiesTableLifecycleArgs) ToProjectPropertiesTableLifecyclePtrOutput() ProjectPropertiesTableLifecyclePtrOutput {
 	return i.ToProjectPropertiesTableLifecyclePtrOutputWithContext(context.Background())
 }
@@ -771,12 +692,6 @@ func (i *projectPropertiesTableLifecyclePtrType) ToProjectPropertiesTableLifecyc
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectPropertiesTableLifecyclePtrOutput)
 }
 
-func (i *projectPropertiesTableLifecyclePtrType) ToOutput(ctx context.Context) pulumix.Output[*ProjectPropertiesTableLifecycle] {
-	return pulumix.Output[*ProjectPropertiesTableLifecycle]{
-		OutputState: i.ToProjectPropertiesTableLifecyclePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectPropertiesTableLifecycleOutput struct{ *pulumi.OutputState }
 
 func (ProjectPropertiesTableLifecycleOutput) ElementType() reflect.Type {
@@ -801,12 +716,6 @@ func (o ProjectPropertiesTableLifecycleOutput) ToProjectPropertiesTableLifecycle
 	}).(ProjectPropertiesTableLifecyclePtrOutput)
 }
 
-func (o ProjectPropertiesTableLifecycleOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectPropertiesTableLifecycle] {
-	return pulumix.Output[ProjectPropertiesTableLifecycle]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Life cycle type.
 func (o ProjectPropertiesTableLifecycleOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectPropertiesTableLifecycle) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -829,12 +738,6 @@ func (o ProjectPropertiesTableLifecyclePtrOutput) ToProjectPropertiesTableLifecy
 
 func (o ProjectPropertiesTableLifecyclePtrOutput) ToProjectPropertiesTableLifecyclePtrOutputWithContext(ctx context.Context) ProjectPropertiesTableLifecyclePtrOutput {
 	return o
-}
-
-func (o ProjectPropertiesTableLifecyclePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectPropertiesTableLifecycle] {
-	return pulumix.Output[*ProjectPropertiesTableLifecycle]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectPropertiesTableLifecyclePtrOutput) Elem() ProjectPropertiesTableLifecycleOutput {
@@ -924,12 +827,6 @@ func (i ProjectSecurityPropertiesArgs) ToProjectSecurityPropertiesOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectSecurityPropertiesOutput)
 }
 
-func (i ProjectSecurityPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ProjectSecurityProperties] {
-	return pulumix.Output[ProjectSecurityProperties]{
-		OutputState: i.ToProjectSecurityPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ProjectSecurityPropertiesArgs) ToProjectSecurityPropertiesPtrOutput() ProjectSecurityPropertiesPtrOutput {
 	return i.ToProjectSecurityPropertiesPtrOutputWithContext(context.Background())
 }
@@ -971,12 +868,6 @@ func (i *projectSecurityPropertiesPtrType) ToProjectSecurityPropertiesPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectSecurityPropertiesPtrOutput)
 }
 
-func (i *projectSecurityPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ProjectSecurityProperties] {
-	return pulumix.Output[*ProjectSecurityProperties]{
-		OutputState: i.ToProjectSecurityPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectSecurityPropertiesOutput struct{ *pulumi.OutputState }
 
 func (ProjectSecurityPropertiesOutput) ElementType() reflect.Type {
@@ -999,12 +890,6 @@ func (o ProjectSecurityPropertiesOutput) ToProjectSecurityPropertiesPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectSecurityProperties) *ProjectSecurityProperties {
 		return &v
 	}).(ProjectSecurityPropertiesPtrOutput)
-}
-
-func (o ProjectSecurityPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectSecurityProperties] {
-	return pulumix.Output[ProjectSecurityProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to enable download permission check.
@@ -1056,12 +941,6 @@ func (o ProjectSecurityPropertiesPtrOutput) ToProjectSecurityPropertiesPtrOutput
 
 func (o ProjectSecurityPropertiesPtrOutput) ToProjectSecurityPropertiesPtrOutputWithContext(ctx context.Context) ProjectSecurityPropertiesPtrOutput {
 	return o
-}
-
-func (o ProjectSecurityPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectSecurityProperties] {
-	return pulumix.Output[*ProjectSecurityProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectSecurityPropertiesPtrOutput) Elem() ProjectSecurityPropertiesOutput {
@@ -1181,12 +1060,6 @@ func (i ProjectSecurityPropertiesProjectProtectionArgs) ToProjectSecurityPropert
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectSecurityPropertiesProjectProtectionOutput)
 }
 
-func (i ProjectSecurityPropertiesProjectProtectionArgs) ToOutput(ctx context.Context) pulumix.Output[ProjectSecurityPropertiesProjectProtection] {
-	return pulumix.Output[ProjectSecurityPropertiesProjectProtection]{
-		OutputState: i.ToProjectSecurityPropertiesProjectProtectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ProjectSecurityPropertiesProjectProtectionArgs) ToProjectSecurityPropertiesProjectProtectionPtrOutput() ProjectSecurityPropertiesProjectProtectionPtrOutput {
 	return i.ToProjectSecurityPropertiesProjectProtectionPtrOutputWithContext(context.Background())
 }
@@ -1228,12 +1101,6 @@ func (i *projectSecurityPropertiesProjectProtectionPtrType) ToProjectSecurityPro
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectSecurityPropertiesProjectProtectionPtrOutput)
 }
 
-func (i *projectSecurityPropertiesProjectProtectionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ProjectSecurityPropertiesProjectProtection] {
-	return pulumix.Output[*ProjectSecurityPropertiesProjectProtection]{
-		OutputState: i.ToProjectSecurityPropertiesProjectProtectionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectSecurityPropertiesProjectProtectionOutput struct{ *pulumi.OutputState }
 
 func (ProjectSecurityPropertiesProjectProtectionOutput) ElementType() reflect.Type {
@@ -1258,12 +1125,6 @@ func (o ProjectSecurityPropertiesProjectProtectionOutput) ToProjectSecurityPrope
 	}).(ProjectSecurityPropertiesProjectProtectionPtrOutput)
 }
 
-func (o ProjectSecurityPropertiesProjectProtectionOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectSecurityPropertiesProjectProtection] {
-	return pulumix.Output[ProjectSecurityPropertiesProjectProtection]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Exclusion policy.
 func (o ProjectSecurityPropertiesProjectProtectionOutput) ExceptionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectSecurityPropertiesProjectProtection) *string { return v.ExceptionPolicy }).(pulumi.StringPtrOutput)
@@ -1286,12 +1147,6 @@ func (o ProjectSecurityPropertiesProjectProtectionPtrOutput) ToProjectSecurityPr
 
 func (o ProjectSecurityPropertiesProjectProtectionPtrOutput) ToProjectSecurityPropertiesProjectProtectionPtrOutputWithContext(ctx context.Context) ProjectSecurityPropertiesProjectProtectionPtrOutput {
 	return o
-}
-
-func (o ProjectSecurityPropertiesProjectProtectionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectSecurityPropertiesProjectProtection] {
-	return pulumix.Output[*ProjectSecurityPropertiesProjectProtection]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectSecurityPropertiesProjectProtectionPtrOutput) Elem() ProjectSecurityPropertiesProjectProtectionOutput {
@@ -1391,12 +1246,6 @@ func (i GetProjectsProjectArgs) ToGetProjectsProjectOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsProjectOutput)
 }
 
-func (i GetProjectsProjectArgs) ToOutput(ctx context.Context) pulumix.Output[GetProjectsProject] {
-	return pulumix.Output[GetProjectsProject]{
-		OutputState: i.ToGetProjectsProjectOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetProjectsProjectArrayInput is an input type that accepts GetProjectsProjectArray and GetProjectsProjectArrayOutput values.
 // You can construct a concrete instance of `GetProjectsProjectArrayInput` via:
 //
@@ -1422,12 +1271,6 @@ func (i GetProjectsProjectArray) ToGetProjectsProjectArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsProjectArrayOutput)
 }
 
-func (i GetProjectsProjectArray) ToOutput(ctx context.Context) pulumix.Output[[]GetProjectsProject] {
-	return pulumix.Output[[]GetProjectsProject]{
-		OutputState: i.ToGetProjectsProjectArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetProjectsProjectOutput struct{ *pulumi.OutputState }
 
 func (GetProjectsProjectOutput) ElementType() reflect.Type {
@@ -1440,12 +1283,6 @@ func (o GetProjectsProjectOutput) ToGetProjectsProjectOutput() GetProjectsProjec
 
 func (o GetProjectsProjectOutput) ToGetProjectsProjectOutputWithContext(ctx context.Context) GetProjectsProjectOutput {
 	return o
-}
-
-func (o GetProjectsProjectOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectsProject] {
-	return pulumix.Output[GetProjectsProject]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetProjectsProjectOutput) Comment() pulumi.StringOutput {
@@ -1511,12 +1348,6 @@ func (o GetProjectsProjectArrayOutput) ToGetProjectsProjectArrayOutputWithContex
 	return o
 }
 
-func (o GetProjectsProjectArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetProjectsProject] {
-	return pulumix.Output[[]GetProjectsProject]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetProjectsProjectArrayOutput) Index(i pulumi.IntInput) GetProjectsProjectOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectsProject {
 		return vs[0].([]GetProjectsProject)[vs[1].(int)]
@@ -1560,12 +1391,6 @@ func (i GetProjectsProjectIpWhiteListArgs) ToGetProjectsProjectIpWhiteListOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsProjectIpWhiteListOutput)
 }
 
-func (i GetProjectsProjectIpWhiteListArgs) ToOutput(ctx context.Context) pulumix.Output[GetProjectsProjectIpWhiteList] {
-	return pulumix.Output[GetProjectsProjectIpWhiteList]{
-		OutputState: i.ToGetProjectsProjectIpWhiteListOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetProjectsProjectIpWhiteListOutput struct{ *pulumi.OutputState }
 
 func (GetProjectsProjectIpWhiteListOutput) ElementType() reflect.Type {
@@ -1578,12 +1403,6 @@ func (o GetProjectsProjectIpWhiteListOutput) ToGetProjectsProjectIpWhiteListOutp
 
 func (o GetProjectsProjectIpWhiteListOutput) ToGetProjectsProjectIpWhiteListOutputWithContext(ctx context.Context) GetProjectsProjectIpWhiteListOutput {
 	return o
-}
-
-func (o GetProjectsProjectIpWhiteListOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectsProjectIpWhiteList] {
-	return pulumix.Output[GetProjectsProjectIpWhiteList]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Classic network IP white list.
@@ -1657,12 +1476,6 @@ func (i GetProjectsProjectPropertiesArgs) ToGetProjectsProjectPropertiesOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsProjectPropertiesOutput)
 }
 
-func (i GetProjectsProjectPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[GetProjectsProjectProperties] {
-	return pulumix.Output[GetProjectsProjectProperties]{
-		OutputState: i.ToGetProjectsProjectPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetProjectsProjectPropertiesOutput struct{ *pulumi.OutputState }
 
 func (GetProjectsProjectPropertiesOutput) ElementType() reflect.Type {
@@ -1675,12 +1488,6 @@ func (o GetProjectsProjectPropertiesOutput) ToGetProjectsProjectPropertiesOutput
 
 func (o GetProjectsProjectPropertiesOutput) ToGetProjectsProjectPropertiesOutputWithContext(ctx context.Context) GetProjectsProjectPropertiesOutput {
 	return o
-}
-
-func (o GetProjectsProjectPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectsProjectProperties] {
-	return pulumix.Output[GetProjectsProjectProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to allow full table scan.
@@ -1766,12 +1573,6 @@ func (i GetProjectsProjectPropertiesEncryptionArgs) ToGetProjectsProjectProperti
 	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsProjectPropertiesEncryptionOutput)
 }
 
-func (i GetProjectsProjectPropertiesEncryptionArgs) ToOutput(ctx context.Context) pulumix.Output[GetProjectsProjectPropertiesEncryption] {
-	return pulumix.Output[GetProjectsProjectPropertiesEncryption]{
-		OutputState: i.ToGetProjectsProjectPropertiesEncryptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetProjectsProjectPropertiesEncryptionOutput struct{ *pulumi.OutputState }
 
 func (GetProjectsProjectPropertiesEncryptionOutput) ElementType() reflect.Type {
@@ -1784,12 +1585,6 @@ func (o GetProjectsProjectPropertiesEncryptionOutput) ToGetProjectsProjectProper
 
 func (o GetProjectsProjectPropertiesEncryptionOutput) ToGetProjectsProjectPropertiesEncryptionOutputWithContext(ctx context.Context) GetProjectsProjectPropertiesEncryptionOutput {
 	return o
-}
-
-func (o GetProjectsProjectPropertiesEncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectsProjectPropertiesEncryption] {
-	return pulumix.Output[GetProjectsProjectPropertiesEncryption]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Algorithm.
@@ -1844,12 +1639,6 @@ func (i GetProjectsProjectPropertiesTableLifecycleArgs) ToGetProjectsProjectProp
 	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsProjectPropertiesTableLifecycleOutput)
 }
 
-func (i GetProjectsProjectPropertiesTableLifecycleArgs) ToOutput(ctx context.Context) pulumix.Output[GetProjectsProjectPropertiesTableLifecycle] {
-	return pulumix.Output[GetProjectsProjectPropertiesTableLifecycle]{
-		OutputState: i.ToGetProjectsProjectPropertiesTableLifecycleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetProjectsProjectPropertiesTableLifecycleOutput struct{ *pulumi.OutputState }
 
 func (GetProjectsProjectPropertiesTableLifecycleOutput) ElementType() reflect.Type {
@@ -1862,12 +1651,6 @@ func (o GetProjectsProjectPropertiesTableLifecycleOutput) ToGetProjectsProjectPr
 
 func (o GetProjectsProjectPropertiesTableLifecycleOutput) ToGetProjectsProjectPropertiesTableLifecycleOutputWithContext(ctx context.Context) GetProjectsProjectPropertiesTableLifecycleOutput {
 	return o
-}
-
-func (o GetProjectsProjectPropertiesTableLifecycleOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectsProjectPropertiesTableLifecycle] {
-	return pulumix.Output[GetProjectsProjectPropertiesTableLifecycle]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Project type
@@ -1937,12 +1720,6 @@ func (i GetProjectsProjectSecurityPropertiesArgs) ToGetProjectsProjectSecurityPr
 	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsProjectSecurityPropertiesOutput)
 }
 
-func (i GetProjectsProjectSecurityPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[GetProjectsProjectSecurityProperties] {
-	return pulumix.Output[GetProjectsProjectSecurityProperties]{
-		OutputState: i.ToGetProjectsProjectSecurityPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetProjectsProjectSecurityPropertiesOutput struct{ *pulumi.OutputState }
 
 func (GetProjectsProjectSecurityPropertiesOutput) ElementType() reflect.Type {
@@ -1955,12 +1732,6 @@ func (o GetProjectsProjectSecurityPropertiesOutput) ToGetProjectsProjectSecurity
 
 func (o GetProjectsProjectSecurityPropertiesOutput) ToGetProjectsProjectSecurityPropertiesOutputWithContext(ctx context.Context) GetProjectsProjectSecurityPropertiesOutput {
 	return o
-}
-
-func (o GetProjectsProjectSecurityPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectsProjectSecurityProperties] {
-	return pulumix.Output[GetProjectsProjectSecurityProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to enable download permission check.
@@ -2037,12 +1808,6 @@ func (i GetProjectsProjectSecurityPropertiesProjectProtectionArgs) ToGetProjects
 	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsProjectSecurityPropertiesProjectProtectionOutput)
 }
 
-func (i GetProjectsProjectSecurityPropertiesProjectProtectionArgs) ToOutput(ctx context.Context) pulumix.Output[GetProjectsProjectSecurityPropertiesProjectProtection] {
-	return pulumix.Output[GetProjectsProjectSecurityPropertiesProjectProtection]{
-		OutputState: i.ToGetProjectsProjectSecurityPropertiesProjectProtectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetProjectsProjectSecurityPropertiesProjectProtectionOutput struct{ *pulumi.OutputState }
 
 func (GetProjectsProjectSecurityPropertiesProjectProtectionOutput) ElementType() reflect.Type {
@@ -2055,12 +1820,6 @@ func (o GetProjectsProjectSecurityPropertiesProjectProtectionOutput) ToGetProjec
 
 func (o GetProjectsProjectSecurityPropertiesProjectProtectionOutput) ToGetProjectsProjectSecurityPropertiesProjectProtectionOutputWithContext(ctx context.Context) GetProjectsProjectSecurityPropertiesProjectProtectionOutput {
 	return o
-}
-
-func (o GetProjectsProjectSecurityPropertiesProjectProtectionOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectsProjectSecurityPropertiesProjectProtection] {
-	return pulumix.Output[GetProjectsProjectSecurityPropertiesProjectProtection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Exclusion policy.

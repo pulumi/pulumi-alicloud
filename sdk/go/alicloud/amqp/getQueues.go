@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Amqp Queues of the current Alibaba Cloud user.
@@ -139,12 +138,6 @@ func (o GetQueuesResultOutput) ToGetQueuesResultOutput() GetQueuesResultOutput {
 
 func (o GetQueuesResultOutput) ToGetQueuesResultOutputWithContext(ctx context.Context) GetQueuesResultOutput {
 	return o
-}
-
-func (o GetQueuesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetQueuesResult] {
-	return pulumix.Output[GetQueuesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

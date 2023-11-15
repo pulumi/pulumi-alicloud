@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the ots instance attachments of the current Alibaba Cloud user.
@@ -120,12 +119,6 @@ func (o GetInstanceAttachmentsResultOutput) ToGetInstanceAttachmentsResultOutput
 
 func (o GetInstanceAttachmentsResultOutput) ToGetInstanceAttachmentsResultOutputWithContext(ctx context.Context) GetInstanceAttachmentsResultOutput {
 	return o
-}
-
-func (o GetInstanceAttachmentsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceAttachmentsResult] {
-	return pulumix.Output[GetInstanceAttachmentsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of instance attachments. Each element contains the following attributes:

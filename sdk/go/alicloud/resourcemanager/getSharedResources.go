@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Resource Manager Shared Resources of the current Alibaba Cloud user.
@@ -93,12 +92,6 @@ func (o GetSharedResourcesResultOutput) ToGetSharedResourcesResultOutput() GetSh
 
 func (o GetSharedResourcesResultOutput) ToGetSharedResourcesResultOutputWithContext(ctx context.Context) GetSharedResourcesResultOutput {
 	return o
-}
-
-func (o GetSharedResourcesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSharedResourcesResult] {
-	return pulumix.Output[GetSharedResourcesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DMS Enterprise Instance resource.
@@ -577,12 +576,6 @@ func (i *EnterpriseInstance) ToEnterpriseInstanceOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseInstanceOutput)
 }
 
-func (i *EnterpriseInstance) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseInstance] {
-	return pulumix.Output[*EnterpriseInstance]{
-		OutputState: i.ToEnterpriseInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EnterpriseInstanceArrayInput is an input type that accepts EnterpriseInstanceArray and EnterpriseInstanceArrayOutput values.
 // You can construct a concrete instance of `EnterpriseInstanceArrayInput` via:
 //
@@ -606,12 +599,6 @@ func (i EnterpriseInstanceArray) ToEnterpriseInstanceArrayOutput() EnterpriseIns
 
 func (i EnterpriseInstanceArray) ToEnterpriseInstanceArrayOutputWithContext(ctx context.Context) EnterpriseInstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseInstanceArrayOutput)
-}
-
-func (i EnterpriseInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*EnterpriseInstance] {
-	return pulumix.Output[[]*EnterpriseInstance]{
-		OutputState: i.ToEnterpriseInstanceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EnterpriseInstanceMapInput is an input type that accepts EnterpriseInstanceMap and EnterpriseInstanceMapOutput values.
@@ -639,12 +626,6 @@ func (i EnterpriseInstanceMap) ToEnterpriseInstanceMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseInstanceMapOutput)
 }
 
-func (i EnterpriseInstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EnterpriseInstance] {
-	return pulumix.Output[map[string]*EnterpriseInstance]{
-		OutputState: i.ToEnterpriseInstanceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnterpriseInstanceOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseInstanceOutput) ElementType() reflect.Type {
@@ -657,12 +638,6 @@ func (o EnterpriseInstanceOutput) ToEnterpriseInstanceOutput() EnterpriseInstanc
 
 func (o EnterpriseInstanceOutput) ToEnterpriseInstanceOutputWithContext(ctx context.Context) EnterpriseInstanceOutput {
 	return o
-}
-
-func (o EnterpriseInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseInstance] {
-	return pulumix.Output[*EnterpriseInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cross-database query datalink name.
@@ -828,12 +803,6 @@ func (o EnterpriseInstanceArrayOutput) ToEnterpriseInstanceArrayOutputWithContex
 	return o
 }
 
-func (o EnterpriseInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EnterpriseInstance] {
-	return pulumix.Output[[]*EnterpriseInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EnterpriseInstanceArrayOutput) Index(i pulumi.IntInput) EnterpriseInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EnterpriseInstance {
 		return vs[0].([]*EnterpriseInstance)[vs[1].(int)]
@@ -852,12 +821,6 @@ func (o EnterpriseInstanceMapOutput) ToEnterpriseInstanceMapOutput() EnterpriseI
 
 func (o EnterpriseInstanceMapOutput) ToEnterpriseInstanceMapOutputWithContext(ctx context.Context) EnterpriseInstanceMapOutput {
 	return o
-}
-
-func (o EnterpriseInstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EnterpriseInstance] {
-	return pulumix.Output[map[string]*EnterpriseInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnterpriseInstanceMapOutput) MapIndex(k pulumi.StringInput) EnterpriseInstanceOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECD Network Package resource.
@@ -184,12 +183,6 @@ func (i *NetworkPackage) ToNetworkPackageOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkPackageOutput)
 }
 
-func (i *NetworkPackage) ToOutput(ctx context.Context) pulumix.Output[*NetworkPackage] {
-	return pulumix.Output[*NetworkPackage]{
-		OutputState: i.ToNetworkPackageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NetworkPackageArrayInput is an input type that accepts NetworkPackageArray and NetworkPackageArrayOutput values.
 // You can construct a concrete instance of `NetworkPackageArrayInput` via:
 //
@@ -213,12 +206,6 @@ func (i NetworkPackageArray) ToNetworkPackageArrayOutput() NetworkPackageArrayOu
 
 func (i NetworkPackageArray) ToNetworkPackageArrayOutputWithContext(ctx context.Context) NetworkPackageArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkPackageArrayOutput)
-}
-
-func (i NetworkPackageArray) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkPackage] {
-	return pulumix.Output[[]*NetworkPackage]{
-		OutputState: i.ToNetworkPackageArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NetworkPackageMapInput is an input type that accepts NetworkPackageMap and NetworkPackageMapOutput values.
@@ -246,12 +233,6 @@ func (i NetworkPackageMap) ToNetworkPackageMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkPackageMapOutput)
 }
 
-func (i NetworkPackageMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkPackage] {
-	return pulumix.Output[map[string]*NetworkPackage]{
-		OutputState: i.ToNetworkPackageMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NetworkPackageOutput struct{ *pulumi.OutputState }
 
 func (NetworkPackageOutput) ElementType() reflect.Type {
@@ -264,12 +245,6 @@ func (o NetworkPackageOutput) ToNetworkPackageOutput() NetworkPackageOutput {
 
 func (o NetworkPackageOutput) ToNetworkPackageOutputWithContext(ctx context.Context) NetworkPackageOutput {
 	return o
-}
-
-func (o NetworkPackageOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkPackage] {
-	return pulumix.Output[*NetworkPackage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The bandwidth of package public network bandwidth peak. Valid values: 1~200. Unit:Mbps.
@@ -306,12 +281,6 @@ func (o NetworkPackageArrayOutput) ToNetworkPackageArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o NetworkPackageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkPackage] {
-	return pulumix.Output[[]*NetworkPackage]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NetworkPackageArrayOutput) Index(i pulumi.IntInput) NetworkPackageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NetworkPackage {
 		return vs[0].([]*NetworkPackage)[vs[1].(int)]
@@ -330,12 +299,6 @@ func (o NetworkPackageMapOutput) ToNetworkPackageMapOutput() NetworkPackageMapOu
 
 func (o NetworkPackageMapOutput) ToNetworkPackageMapOutputWithContext(ctx context.Context) NetworkPackageMapOutput {
 	return o
-}
-
-func (o NetworkPackageMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkPackage] {
-	return pulumix.Output[map[string]*NetworkPackage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkPackageMapOutput) MapIndex(k pulumi.StringInput) NetworkPackageOutput {

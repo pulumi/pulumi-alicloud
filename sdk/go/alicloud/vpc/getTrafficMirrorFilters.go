@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Vpc Traffic Mirror Filters of the current Alibaba Cloud user.
@@ -148,12 +147,6 @@ func (o GetTrafficMirrorFiltersResultOutput) ToGetTrafficMirrorFiltersResultOutp
 
 func (o GetTrafficMirrorFiltersResultOutput) ToGetTrafficMirrorFiltersResultOutputWithContext(ctx context.Context) GetTrafficMirrorFiltersResultOutput {
 	return o
-}
-
-func (o GetTrafficMirrorFiltersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTrafficMirrorFiltersResult] {
-	return pulumix.Output[GetTrafficMirrorFiltersResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetTrafficMirrorFiltersResultOutput) Filters() GetTrafficMirrorFiltersFilterArrayOutput {

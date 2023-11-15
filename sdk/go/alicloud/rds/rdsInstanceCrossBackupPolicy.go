@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an RDS instance emote disaster recovery strategy policy resource and used to configure instance emote disaster recovery strategy policy.
@@ -308,12 +307,6 @@ func (i *RdsInstanceCrossBackupPolicy) ToRdsInstanceCrossBackupPolicyOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(RdsInstanceCrossBackupPolicyOutput)
 }
 
-func (i *RdsInstanceCrossBackupPolicy) ToOutput(ctx context.Context) pulumix.Output[*RdsInstanceCrossBackupPolicy] {
-	return pulumix.Output[*RdsInstanceCrossBackupPolicy]{
-		OutputState: i.ToRdsInstanceCrossBackupPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RdsInstanceCrossBackupPolicyArrayInput is an input type that accepts RdsInstanceCrossBackupPolicyArray and RdsInstanceCrossBackupPolicyArrayOutput values.
 // You can construct a concrete instance of `RdsInstanceCrossBackupPolicyArrayInput` via:
 //
@@ -337,12 +330,6 @@ func (i RdsInstanceCrossBackupPolicyArray) ToRdsInstanceCrossBackupPolicyArrayOu
 
 func (i RdsInstanceCrossBackupPolicyArray) ToRdsInstanceCrossBackupPolicyArrayOutputWithContext(ctx context.Context) RdsInstanceCrossBackupPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RdsInstanceCrossBackupPolicyArrayOutput)
-}
-
-func (i RdsInstanceCrossBackupPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*RdsInstanceCrossBackupPolicy] {
-	return pulumix.Output[[]*RdsInstanceCrossBackupPolicy]{
-		OutputState: i.ToRdsInstanceCrossBackupPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RdsInstanceCrossBackupPolicyMapInput is an input type that accepts RdsInstanceCrossBackupPolicyMap and RdsInstanceCrossBackupPolicyMapOutput values.
@@ -370,12 +357,6 @@ func (i RdsInstanceCrossBackupPolicyMap) ToRdsInstanceCrossBackupPolicyMapOutput
 	return pulumi.ToOutputWithContext(ctx, i).(RdsInstanceCrossBackupPolicyMapOutput)
 }
 
-func (i RdsInstanceCrossBackupPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RdsInstanceCrossBackupPolicy] {
-	return pulumix.Output[map[string]*RdsInstanceCrossBackupPolicy]{
-		OutputState: i.ToRdsInstanceCrossBackupPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RdsInstanceCrossBackupPolicyOutput struct{ *pulumi.OutputState }
 
 func (RdsInstanceCrossBackupPolicyOutput) ElementType() reflect.Type {
@@ -388,12 +369,6 @@ func (o RdsInstanceCrossBackupPolicyOutput) ToRdsInstanceCrossBackupPolicyOutput
 
 func (o RdsInstanceCrossBackupPolicyOutput) ToRdsInstanceCrossBackupPolicyOutputWithContext(ctx context.Context) RdsInstanceCrossBackupPolicyOutput {
 	return o
-}
-
-func (o RdsInstanceCrossBackupPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*RdsInstanceCrossBackupPolicy] {
-	return pulumix.Output[*RdsInstanceCrossBackupPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The status of the overall cross-region backup switch on the instance. Valid values:
@@ -474,12 +449,6 @@ func (o RdsInstanceCrossBackupPolicyArrayOutput) ToRdsInstanceCrossBackupPolicyA
 	return o
 }
 
-func (o RdsInstanceCrossBackupPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RdsInstanceCrossBackupPolicy] {
-	return pulumix.Output[[]*RdsInstanceCrossBackupPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RdsInstanceCrossBackupPolicyArrayOutput) Index(i pulumi.IntInput) RdsInstanceCrossBackupPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RdsInstanceCrossBackupPolicy {
 		return vs[0].([]*RdsInstanceCrossBackupPolicy)[vs[1].(int)]
@@ -498,12 +467,6 @@ func (o RdsInstanceCrossBackupPolicyMapOutput) ToRdsInstanceCrossBackupPolicyMap
 
 func (o RdsInstanceCrossBackupPolicyMapOutput) ToRdsInstanceCrossBackupPolicyMapOutputWithContext(ctx context.Context) RdsInstanceCrossBackupPolicyMapOutput {
 	return o
-}
-
-func (o RdsInstanceCrossBackupPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RdsInstanceCrossBackupPolicy] {
-	return pulumix.Output[map[string]*RdsInstanceCrossBackupPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RdsInstanceCrossBackupPolicyMapOutput) MapIndex(k pulumi.StringInput) RdsInstanceCrossBackupPolicyOutput {

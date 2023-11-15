@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Private Link Vpc Endpoint Service User resource.
@@ -191,12 +190,6 @@ func (i *VpcEndpointServiceUser) ToVpcEndpointServiceUserOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointServiceUserOutput)
 }
 
-func (i *VpcEndpointServiceUser) ToOutput(ctx context.Context) pulumix.Output[*VpcEndpointServiceUser] {
-	return pulumix.Output[*VpcEndpointServiceUser]{
-		OutputState: i.ToVpcEndpointServiceUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VpcEndpointServiceUserArrayInput is an input type that accepts VpcEndpointServiceUserArray and VpcEndpointServiceUserArrayOutput values.
 // You can construct a concrete instance of `VpcEndpointServiceUserArrayInput` via:
 //
@@ -220,12 +213,6 @@ func (i VpcEndpointServiceUserArray) ToVpcEndpointServiceUserArrayOutput() VpcEn
 
 func (i VpcEndpointServiceUserArray) ToVpcEndpointServiceUserArrayOutputWithContext(ctx context.Context) VpcEndpointServiceUserArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointServiceUserArrayOutput)
-}
-
-func (i VpcEndpointServiceUserArray) ToOutput(ctx context.Context) pulumix.Output[[]*VpcEndpointServiceUser] {
-	return pulumix.Output[[]*VpcEndpointServiceUser]{
-		OutputState: i.ToVpcEndpointServiceUserArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // VpcEndpointServiceUserMapInput is an input type that accepts VpcEndpointServiceUserMap and VpcEndpointServiceUserMapOutput values.
@@ -253,12 +240,6 @@ func (i VpcEndpointServiceUserMap) ToVpcEndpointServiceUserMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointServiceUserMapOutput)
 }
 
-func (i VpcEndpointServiceUserMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VpcEndpointServiceUser] {
-	return pulumix.Output[map[string]*VpcEndpointServiceUser]{
-		OutputState: i.ToVpcEndpointServiceUserMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VpcEndpointServiceUserOutput struct{ *pulumi.OutputState }
 
 func (VpcEndpointServiceUserOutput) ElementType() reflect.Type {
@@ -271,12 +252,6 @@ func (o VpcEndpointServiceUserOutput) ToVpcEndpointServiceUserOutput() VpcEndpoi
 
 func (o VpcEndpointServiceUserOutput) ToVpcEndpointServiceUserOutputWithContext(ctx context.Context) VpcEndpointServiceUserOutput {
 	return o
-}
-
-func (o VpcEndpointServiceUserOutput) ToOutput(ctx context.Context) pulumix.Output[*VpcEndpointServiceUser] {
-	return pulumix.Output[*VpcEndpointServiceUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The dry run.
@@ -308,12 +283,6 @@ func (o VpcEndpointServiceUserArrayOutput) ToVpcEndpointServiceUserArrayOutputWi
 	return o
 }
 
-func (o VpcEndpointServiceUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VpcEndpointServiceUser] {
-	return pulumix.Output[[]*VpcEndpointServiceUser]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VpcEndpointServiceUserArrayOutput) Index(i pulumi.IntInput) VpcEndpointServiceUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VpcEndpointServiceUser {
 		return vs[0].([]*VpcEndpointServiceUser)[vs[1].(int)]
@@ -332,12 +301,6 @@ func (o VpcEndpointServiceUserMapOutput) ToVpcEndpointServiceUserMapOutput() Vpc
 
 func (o VpcEndpointServiceUserMapOutput) ToVpcEndpointServiceUserMapOutputWithContext(ctx context.Context) VpcEndpointServiceUserMapOutput {
 	return o
-}
-
-func (o VpcEndpointServiceUserMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VpcEndpointServiceUser] {
-	return pulumix.Output[map[string]*VpcEndpointServiceUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VpcEndpointServiceUserMapOutput) MapIndex(k pulumi.StringInput) VpcEndpointServiceUserOutput {

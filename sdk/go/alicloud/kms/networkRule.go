@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a KMS Network Rule resource. Network rules that can be bound by Application Access Point's policies.
@@ -175,12 +174,6 @@ func (i *NetworkRule) ToNetworkRuleOutputWithContext(ctx context.Context) Networ
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkRuleOutput)
 }
 
-func (i *NetworkRule) ToOutput(ctx context.Context) pulumix.Output[*NetworkRule] {
-	return pulumix.Output[*NetworkRule]{
-		OutputState: i.ToNetworkRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NetworkRuleArrayInput is an input type that accepts NetworkRuleArray and NetworkRuleArrayOutput values.
 // You can construct a concrete instance of `NetworkRuleArrayInput` via:
 //
@@ -204,12 +197,6 @@ func (i NetworkRuleArray) ToNetworkRuleArrayOutput() NetworkRuleArrayOutput {
 
 func (i NetworkRuleArray) ToNetworkRuleArrayOutputWithContext(ctx context.Context) NetworkRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkRuleArrayOutput)
-}
-
-func (i NetworkRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkRule] {
-	return pulumix.Output[[]*NetworkRule]{
-		OutputState: i.ToNetworkRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NetworkRuleMapInput is an input type that accepts NetworkRuleMap and NetworkRuleMapOutput values.
@@ -237,12 +224,6 @@ func (i NetworkRuleMap) ToNetworkRuleMapOutputWithContext(ctx context.Context) N
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkRuleMapOutput)
 }
 
-func (i NetworkRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkRule] {
-	return pulumix.Output[map[string]*NetworkRule]{
-		OutputState: i.ToNetworkRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NetworkRuleOutput struct{ *pulumi.OutputState }
 
 func (NetworkRuleOutput) ElementType() reflect.Type {
@@ -255,12 +236,6 @@ func (o NetworkRuleOutput) ToNetworkRuleOutput() NetworkRuleOutput {
 
 func (o NetworkRuleOutput) ToNetworkRuleOutputWithContext(ctx context.Context) NetworkRuleOutput {
 	return o
-}
-
-func (o NetworkRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkRule] {
-	return pulumix.Output[*NetworkRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description.
@@ -292,12 +267,6 @@ func (o NetworkRuleArrayOutput) ToNetworkRuleArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o NetworkRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkRule] {
-	return pulumix.Output[[]*NetworkRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NetworkRuleArrayOutput) Index(i pulumi.IntInput) NetworkRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NetworkRule {
 		return vs[0].([]*NetworkRule)[vs[1].(int)]
@@ -316,12 +285,6 @@ func (o NetworkRuleMapOutput) ToNetworkRuleMapOutput() NetworkRuleMapOutput {
 
 func (o NetworkRuleMapOutput) ToNetworkRuleMapOutputWithContext(ctx context.Context) NetworkRuleMapOutput {
 	return o
-}
-
-func (o NetworkRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkRule] {
-	return pulumix.Output[map[string]*NetworkRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkRuleMapOutput) MapIndex(k pulumi.StringInput) NetworkRuleOutput {

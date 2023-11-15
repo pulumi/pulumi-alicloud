@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupsources)
@@ -114,12 +113,6 @@ func (o GetTransitRouterMulticastDomainSourcesResultOutput) ToGetTransitRouterMu
 
 func (o GetTransitRouterMulticastDomainSourcesResultOutput) ToGetTransitRouterMulticastDomainSourcesResultOutputWithContext(ctx context.Context) GetTransitRouterMulticastDomainSourcesResultOutput {
 	return o
-}
-
-func (o GetTransitRouterMulticastDomainSourcesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterMulticastDomainSourcesResult] {
-	return pulumix.Output[GetTransitRouterMulticastDomainSourcesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

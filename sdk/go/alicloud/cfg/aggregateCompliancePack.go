@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Config Aggregate Compliance Pack resource.
@@ -289,12 +288,6 @@ func (i *AggregateCompliancePack) ToAggregateCompliancePackOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(AggregateCompliancePackOutput)
 }
 
-func (i *AggregateCompliancePack) ToOutput(ctx context.Context) pulumix.Output[*AggregateCompliancePack] {
-	return pulumix.Output[*AggregateCompliancePack]{
-		OutputState: i.ToAggregateCompliancePackOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AggregateCompliancePackArrayInput is an input type that accepts AggregateCompliancePackArray and AggregateCompliancePackArrayOutput values.
 // You can construct a concrete instance of `AggregateCompliancePackArrayInput` via:
 //
@@ -318,12 +311,6 @@ func (i AggregateCompliancePackArray) ToAggregateCompliancePackArrayOutput() Agg
 
 func (i AggregateCompliancePackArray) ToAggregateCompliancePackArrayOutputWithContext(ctx context.Context) AggregateCompliancePackArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AggregateCompliancePackArrayOutput)
-}
-
-func (i AggregateCompliancePackArray) ToOutput(ctx context.Context) pulumix.Output[[]*AggregateCompliancePack] {
-	return pulumix.Output[[]*AggregateCompliancePack]{
-		OutputState: i.ToAggregateCompliancePackArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AggregateCompliancePackMapInput is an input type that accepts AggregateCompliancePackMap and AggregateCompliancePackMapOutput values.
@@ -351,12 +338,6 @@ func (i AggregateCompliancePackMap) ToAggregateCompliancePackMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(AggregateCompliancePackMapOutput)
 }
 
-func (i AggregateCompliancePackMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AggregateCompliancePack] {
-	return pulumix.Output[map[string]*AggregateCompliancePack]{
-		OutputState: i.ToAggregateCompliancePackMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AggregateCompliancePackOutput struct{ *pulumi.OutputState }
 
 func (AggregateCompliancePackOutput) ElementType() reflect.Type {
@@ -369,12 +350,6 @@ func (o AggregateCompliancePackOutput) ToAggregateCompliancePackOutput() Aggrega
 
 func (o AggregateCompliancePackOutput) ToAggregateCompliancePackOutputWithContext(ctx context.Context) AggregateCompliancePackOutput {
 	return o
-}
-
-func (o AggregateCompliancePackOutput) ToOutput(ctx context.Context) pulumix.Output[*AggregateCompliancePack] {
-	return pulumix.Output[*AggregateCompliancePack]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of compliance package name. **NOTE:** From version 1.145.0, `aggregateCompliancePackName` can be modified.
@@ -440,12 +415,6 @@ func (o AggregateCompliancePackArrayOutput) ToAggregateCompliancePackArrayOutput
 	return o
 }
 
-func (o AggregateCompliancePackArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AggregateCompliancePack] {
-	return pulumix.Output[[]*AggregateCompliancePack]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AggregateCompliancePackArrayOutput) Index(i pulumi.IntInput) AggregateCompliancePackOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AggregateCompliancePack {
 		return vs[0].([]*AggregateCompliancePack)[vs[1].(int)]
@@ -464,12 +433,6 @@ func (o AggregateCompliancePackMapOutput) ToAggregateCompliancePackMapOutput() A
 
 func (o AggregateCompliancePackMapOutput) ToAggregateCompliancePackMapOutputWithContext(ctx context.Context) AggregateCompliancePackMapOutput {
 	return o
-}
-
-func (o AggregateCompliancePackMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AggregateCompliancePack] {
-	return pulumix.Output[map[string]*AggregateCompliancePack]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AggregateCompliancePackMapOutput) MapIndex(k pulumi.StringInput) AggregateCompliancePackOutput {

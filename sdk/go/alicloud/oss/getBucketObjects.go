@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the objects of an OSS bucket.
@@ -117,12 +116,6 @@ func (o GetBucketObjectsResultOutput) ToGetBucketObjectsResultOutput() GetBucket
 
 func (o GetBucketObjectsResultOutput) ToGetBucketObjectsResultOutputWithContext(ctx context.Context) GetBucketObjectsResultOutput {
 	return o
-}
-
-func (o GetBucketObjectsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBucketObjectsResult] {
-	return pulumix.Output[GetBucketObjectsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetBucketObjectsResultOutput) BucketName() pulumi.StringOutput {

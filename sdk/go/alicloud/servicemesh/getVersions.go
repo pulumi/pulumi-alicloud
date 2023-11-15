@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides ASM available versions in the specified region.
@@ -114,12 +113,6 @@ func (o GetVersionsResultOutput) ToGetVersionsResultOutput() GetVersionsResultOu
 
 func (o GetVersionsResultOutput) ToGetVersionsResultOutputWithContext(ctx context.Context) GetVersionsResultOutput {
 	return o
-}
-
-func (o GetVersionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetVersionsResult] {
-	return pulumix.Output[GetVersionsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetVersionsResultOutput) Edition() pulumi.StringPtrOutput {

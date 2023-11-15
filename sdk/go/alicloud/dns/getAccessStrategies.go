@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Alidns Access Strategies of the current Alibaba Cloud user.
@@ -141,12 +140,6 @@ func (o GetAccessStrategiesResultOutput) ToGetAccessStrategiesResultOutput() Get
 
 func (o GetAccessStrategiesResultOutput) ToGetAccessStrategiesResultOutputWithContext(ctx context.Context) GetAccessStrategiesResultOutput {
 	return o
-}
-
-func (o GetAccessStrategiesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccessStrategiesResult] {
-	return pulumix.Output[GetAccessStrategiesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAccessStrategiesResultOutput) EnableDetails() pulumi.BoolPtrOutput {

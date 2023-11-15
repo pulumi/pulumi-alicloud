@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -97,12 +96,6 @@ func (i GetSubnetsSubnetArgs) ToGetSubnetsSubnetOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetSubnetsSubnetOutput)
 }
 
-func (i GetSubnetsSubnetArgs) ToOutput(ctx context.Context) pulumix.Output[GetSubnetsSubnet] {
-	return pulumix.Output[GetSubnetsSubnet]{
-		OutputState: i.ToGetSubnetsSubnetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetSubnetsSubnetArrayInput is an input type that accepts GetSubnetsSubnetArray and GetSubnetsSubnetArrayOutput values.
 // You can construct a concrete instance of `GetSubnetsSubnetArrayInput` via:
 //
@@ -128,12 +121,6 @@ func (i GetSubnetsSubnetArray) ToGetSubnetsSubnetArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetSubnetsSubnetArrayOutput)
 }
 
-func (i GetSubnetsSubnetArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSubnetsSubnet] {
-	return pulumix.Output[[]GetSubnetsSubnet]{
-		OutputState: i.ToGetSubnetsSubnetArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetSubnetsSubnetOutput struct{ *pulumi.OutputState }
 
 func (GetSubnetsSubnetOutput) ElementType() reflect.Type {
@@ -146,12 +133,6 @@ func (o GetSubnetsSubnetOutput) ToGetSubnetsSubnetOutput() GetSubnetsSubnetOutpu
 
 func (o GetSubnetsSubnetOutput) ToGetSubnetsSubnetOutputWithContext(ctx context.Context) GetSubnetsSubnetOutput {
 	return o
-}
-
-func (o GetSubnetsSubnetOutput) ToOutput(ctx context.Context) pulumix.Output[GetSubnetsSubnet] {
-	return pulumix.Output[GetSubnetsSubnet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Network segment
@@ -231,12 +212,6 @@ func (o GetSubnetsSubnetArrayOutput) ToGetSubnetsSubnetArrayOutputWithContext(ct
 	return o
 }
 
-func (o GetSubnetsSubnetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSubnetsSubnet] {
-	return pulumix.Output[[]GetSubnetsSubnet]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetSubnetsSubnetArrayOutput) Index(i pulumi.IntInput) GetSubnetsSubnetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSubnetsSubnet {
 		return vs[0].([]GetSubnetsSubnet)[vs[1].(int)]
@@ -304,12 +279,6 @@ func (i GetVpdsVpdArgs) ToGetVpdsVpdOutputWithContext(ctx context.Context) GetVp
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpdsVpdOutput)
 }
 
-func (i GetVpdsVpdArgs) ToOutput(ctx context.Context) pulumix.Output[GetVpdsVpd] {
-	return pulumix.Output[GetVpdsVpd]{
-		OutputState: i.ToGetVpdsVpdOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetVpdsVpdArrayInput is an input type that accepts GetVpdsVpdArray and GetVpdsVpdArrayOutput values.
 // You can construct a concrete instance of `GetVpdsVpdArrayInput` via:
 //
@@ -335,12 +304,6 @@ func (i GetVpdsVpdArray) ToGetVpdsVpdArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpdsVpdArrayOutput)
 }
 
-func (i GetVpdsVpdArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVpdsVpd] {
-	return pulumix.Output[[]GetVpdsVpd]{
-		OutputState: i.ToGetVpdsVpdArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetVpdsVpdOutput struct{ *pulumi.OutputState }
 
 func (GetVpdsVpdOutput) ElementType() reflect.Type {
@@ -353,12 +316,6 @@ func (o GetVpdsVpdOutput) ToGetVpdsVpdOutput() GetVpdsVpdOutput {
 
 func (o GetVpdsVpdOutput) ToGetVpdsVpdOutputWithContext(ctx context.Context) GetVpdsVpdOutput {
 	return o
-}
-
-func (o GetVpdsVpdOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpdsVpd] {
-	return pulumix.Output[GetVpdsVpd]{
-		OutputState: o.OutputState,
-	}
 }
 
 // CIDR network segment
@@ -413,12 +370,6 @@ func (o GetVpdsVpdArrayOutput) ToGetVpdsVpdArrayOutput() GetVpdsVpdArrayOutput {
 
 func (o GetVpdsVpdArrayOutput) ToGetVpdsVpdArrayOutputWithContext(ctx context.Context) GetVpdsVpdArrayOutput {
 	return o
-}
-
-func (o GetVpdsVpdArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVpdsVpd] {
-	return pulumix.Output[[]GetVpdsVpd]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetVpdsVpdArrayOutput) Index(i pulumi.IntInput) GetVpdsVpdOutput {

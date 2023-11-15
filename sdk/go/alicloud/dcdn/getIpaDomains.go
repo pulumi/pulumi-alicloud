@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Dcdn Ipa Domains of the current Alibaba Cloud user.
@@ -136,12 +135,6 @@ func (o GetIpaDomainsResultOutput) ToGetIpaDomainsResultOutput() GetIpaDomainsRe
 
 func (o GetIpaDomainsResultOutput) ToGetIpaDomainsResultOutputWithContext(ctx context.Context) GetIpaDomainsResultOutput {
 	return o
-}
-
-func (o GetIpaDomainsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetIpaDomainsResult] {
-	return pulumix.Output[GetIpaDomainsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetIpaDomainsResultOutput) DomainName() pulumi.StringPtrOutput {

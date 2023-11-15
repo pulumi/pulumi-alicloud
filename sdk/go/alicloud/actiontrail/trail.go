@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ActionTrail Trail resource. For information about alicloud actiontrail trail and how to use it, see [What is Resource Alicloud ActionTrail Trail](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-createtrail).
@@ -326,12 +325,6 @@ func (i *Trail) ToTrailOutputWithContext(ctx context.Context) TrailOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TrailOutput)
 }
 
-func (i *Trail) ToOutput(ctx context.Context) pulumix.Output[*Trail] {
-	return pulumix.Output[*Trail]{
-		OutputState: i.ToTrailOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TrailArrayInput is an input type that accepts TrailArray and TrailArrayOutput values.
 // You can construct a concrete instance of `TrailArrayInput` via:
 //
@@ -355,12 +348,6 @@ func (i TrailArray) ToTrailArrayOutput() TrailArrayOutput {
 
 func (i TrailArray) ToTrailArrayOutputWithContext(ctx context.Context) TrailArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TrailArrayOutput)
-}
-
-func (i TrailArray) ToOutput(ctx context.Context) pulumix.Output[[]*Trail] {
-	return pulumix.Output[[]*Trail]{
-		OutputState: i.ToTrailArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TrailMapInput is an input type that accepts TrailMap and TrailMapOutput values.
@@ -388,12 +375,6 @@ func (i TrailMap) ToTrailMapOutputWithContext(ctx context.Context) TrailMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(TrailMapOutput)
 }
 
-func (i TrailMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Trail] {
-	return pulumix.Output[map[string]*Trail]{
-		OutputState: i.ToTrailMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TrailOutput struct{ *pulumi.OutputState }
 
 func (TrailOutput) ElementType() reflect.Type {
@@ -406,12 +387,6 @@ func (o TrailOutput) ToTrailOutput() TrailOutput {
 
 func (o TrailOutput) ToTrailOutputWithContext(ctx context.Context) TrailOutput {
 	return o
-}
-
-func (o TrailOutput) ToOutput(ctx context.Context) pulumix.Output[*Trail] {
-	return pulumix.Output[*Trail]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
@@ -499,12 +474,6 @@ func (o TrailArrayOutput) ToTrailArrayOutputWithContext(ctx context.Context) Tra
 	return o
 }
 
-func (o TrailArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Trail] {
-	return pulumix.Output[[]*Trail]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TrailArrayOutput) Index(i pulumi.IntInput) TrailOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Trail {
 		return vs[0].([]*Trail)[vs[1].(int)]
@@ -523,12 +492,6 @@ func (o TrailMapOutput) ToTrailMapOutput() TrailMapOutput {
 
 func (o TrailMapOutput) ToTrailMapOutputWithContext(ctx context.Context) TrailMapOutput {
 	return o
-}
-
-func (o TrailMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Trail] {
-	return pulumix.Output[map[string]*Trail]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TrailMapOutput) MapIndex(k pulumi.StringInput) TrailOutput {

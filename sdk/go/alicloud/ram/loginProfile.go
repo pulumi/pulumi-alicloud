@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a RAM User Login Profile resource.
@@ -190,12 +189,6 @@ func (i *LoginProfile) ToLoginProfileOutputWithContext(ctx context.Context) Logi
 	return pulumi.ToOutputWithContext(ctx, i).(LoginProfileOutput)
 }
 
-func (i *LoginProfile) ToOutput(ctx context.Context) pulumix.Output[*LoginProfile] {
-	return pulumix.Output[*LoginProfile]{
-		OutputState: i.ToLoginProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LoginProfileArrayInput is an input type that accepts LoginProfileArray and LoginProfileArrayOutput values.
 // You can construct a concrete instance of `LoginProfileArrayInput` via:
 //
@@ -219,12 +212,6 @@ func (i LoginProfileArray) ToLoginProfileArrayOutput() LoginProfileArrayOutput {
 
 func (i LoginProfileArray) ToLoginProfileArrayOutputWithContext(ctx context.Context) LoginProfileArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LoginProfileArrayOutput)
-}
-
-func (i LoginProfileArray) ToOutput(ctx context.Context) pulumix.Output[[]*LoginProfile] {
-	return pulumix.Output[[]*LoginProfile]{
-		OutputState: i.ToLoginProfileArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // LoginProfileMapInput is an input type that accepts LoginProfileMap and LoginProfileMapOutput values.
@@ -252,12 +239,6 @@ func (i LoginProfileMap) ToLoginProfileMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(LoginProfileMapOutput)
 }
 
-func (i LoginProfileMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LoginProfile] {
-	return pulumix.Output[map[string]*LoginProfile]{
-		OutputState: i.ToLoginProfileMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LoginProfileOutput struct{ *pulumi.OutputState }
 
 func (LoginProfileOutput) ElementType() reflect.Type {
@@ -270,12 +251,6 @@ func (o LoginProfileOutput) ToLoginProfileOutput() LoginProfileOutput {
 
 func (o LoginProfileOutput) ToLoginProfileOutputWithContext(ctx context.Context) LoginProfileOutput {
 	return o
-}
-
-func (o LoginProfileOutput) ToOutput(ctx context.Context) pulumix.Output[*LoginProfile] {
-	return pulumix.Output[*LoginProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
@@ -312,12 +287,6 @@ func (o LoginProfileArrayOutput) ToLoginProfileArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o LoginProfileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LoginProfile] {
-	return pulumix.Output[[]*LoginProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LoginProfileArrayOutput) Index(i pulumi.IntInput) LoginProfileOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LoginProfile {
 		return vs[0].([]*LoginProfile)[vs[1].(int)]
@@ -336,12 +305,6 @@ func (o LoginProfileMapOutput) ToLoginProfileMapOutput() LoginProfileMapOutput {
 
 func (o LoginProfileMapOutput) ToLoginProfileMapOutputWithContext(ctx context.Context) LoginProfileMapOutput {
 	return o
-}
-
-func (o LoginProfileMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LoginProfile] {
-	return pulumix.Output[map[string]*LoginProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LoginProfileMapOutput) MapIndex(k pulumi.StringInput) LoginProfileOutput {

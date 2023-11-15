@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Message Notification Service Queue resource.
@@ -215,12 +214,6 @@ func (i *ServiceQueue) ToServiceQueueOutputWithContext(ctx context.Context) Serv
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceQueueOutput)
 }
 
-func (i *ServiceQueue) ToOutput(ctx context.Context) pulumix.Output[*ServiceQueue] {
-	return pulumix.Output[*ServiceQueue]{
-		OutputState: i.ToServiceQueueOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceQueueArrayInput is an input type that accepts ServiceQueueArray and ServiceQueueArrayOutput values.
 // You can construct a concrete instance of `ServiceQueueArrayInput` via:
 //
@@ -244,12 +237,6 @@ func (i ServiceQueueArray) ToServiceQueueArrayOutput() ServiceQueueArrayOutput {
 
 func (i ServiceQueueArray) ToServiceQueueArrayOutputWithContext(ctx context.Context) ServiceQueueArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceQueueArrayOutput)
-}
-
-func (i ServiceQueueArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceQueue] {
-	return pulumix.Output[[]*ServiceQueue]{
-		OutputState: i.ToServiceQueueArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServiceQueueMapInput is an input type that accepts ServiceQueueMap and ServiceQueueMapOutput values.
@@ -277,12 +264,6 @@ func (i ServiceQueueMap) ToServiceQueueMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceQueueMapOutput)
 }
 
-func (i ServiceQueueMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceQueue] {
-	return pulumix.Output[map[string]*ServiceQueue]{
-		OutputState: i.ToServiceQueueMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceQueueOutput struct{ *pulumi.OutputState }
 
 func (ServiceQueueOutput) ElementType() reflect.Type {
@@ -295,12 +276,6 @@ func (o ServiceQueueOutput) ToServiceQueueOutput() ServiceQueueOutput {
 
 func (o ServiceQueueOutput) ToServiceQueueOutputWithContext(ctx context.Context) ServiceQueueOutput {
 	return o
-}
-
-func (o ServiceQueueOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceQueue] {
-	return pulumix.Output[*ServiceQueue]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The delay period after which a message sent to the queue can be consumed. Unit: seconds. Valid values: 0-604800 seconds. Default value: 0.
@@ -352,12 +327,6 @@ func (o ServiceQueueArrayOutput) ToServiceQueueArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o ServiceQueueArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceQueue] {
-	return pulumix.Output[[]*ServiceQueue]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceQueueArrayOutput) Index(i pulumi.IntInput) ServiceQueueOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServiceQueue {
 		return vs[0].([]*ServiceQueue)[vs[1].(int)]
@@ -376,12 +345,6 @@ func (o ServiceQueueMapOutput) ToServiceQueueMapOutput() ServiceQueueMapOutput {
 
 func (o ServiceQueueMapOutput) ToServiceQueueMapOutputWithContext(ctx context.Context) ServiceQueueMapOutput {
 	return o
-}
-
-func (o ServiceQueueMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceQueue] {
-	return pulumix.Output[map[string]*ServiceQueue]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceQueueMapOutput) MapIndex(k pulumi.StringInput) ServiceQueueOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Chatbot Publish Task resource.
@@ -186,12 +185,6 @@ func (i *PublishTask) ToPublishTaskOutputWithContext(ctx context.Context) Publis
 	return pulumi.ToOutputWithContext(ctx, i).(PublishTaskOutput)
 }
 
-func (i *PublishTask) ToOutput(ctx context.Context) pulumix.Output[*PublishTask] {
-	return pulumix.Output[*PublishTask]{
-		OutputState: i.ToPublishTaskOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PublishTaskArrayInput is an input type that accepts PublishTaskArray and PublishTaskArrayOutput values.
 // You can construct a concrete instance of `PublishTaskArrayInput` via:
 //
@@ -215,12 +208,6 @@ func (i PublishTaskArray) ToPublishTaskArrayOutput() PublishTaskArrayOutput {
 
 func (i PublishTaskArray) ToPublishTaskArrayOutputWithContext(ctx context.Context) PublishTaskArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PublishTaskArrayOutput)
-}
-
-func (i PublishTaskArray) ToOutput(ctx context.Context) pulumix.Output[[]*PublishTask] {
-	return pulumix.Output[[]*PublishTask]{
-		OutputState: i.ToPublishTaskArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PublishTaskMapInput is an input type that accepts PublishTaskMap and PublishTaskMapOutput values.
@@ -248,12 +235,6 @@ func (i PublishTaskMap) ToPublishTaskMapOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, i).(PublishTaskMapOutput)
 }
 
-func (i PublishTaskMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PublishTask] {
-	return pulumix.Output[map[string]*PublishTask]{
-		OutputState: i.ToPublishTaskMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PublishTaskOutput struct{ *pulumi.OutputState }
 
 func (PublishTaskOutput) ElementType() reflect.Type {
@@ -266,12 +247,6 @@ func (o PublishTaskOutput) ToPublishTaskOutput() PublishTaskOutput {
 
 func (o PublishTaskOutput) ToPublishTaskOutputWithContext(ctx context.Context) PublishTaskOutput {
 	return o
-}
-
-func (o PublishTaskOutput) ToOutput(ctx context.Context) pulumix.Output[*PublishTask] {
-	return pulumix.Output[*PublishTask]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The business space key. If you do not set it, the default business space is accessed. The key value is obtained on the business management page of the primary account.
@@ -318,12 +293,6 @@ func (o PublishTaskArrayOutput) ToPublishTaskArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o PublishTaskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PublishTask] {
-	return pulumix.Output[[]*PublishTask]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PublishTaskArrayOutput) Index(i pulumi.IntInput) PublishTaskOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PublishTask {
 		return vs[0].([]*PublishTask)[vs[1].(int)]
@@ -342,12 +311,6 @@ func (o PublishTaskMapOutput) ToPublishTaskMapOutput() PublishTaskMapOutput {
 
 func (o PublishTaskMapOutput) ToPublishTaskMapOutputWithContext(ctx context.Context) PublishTaskMapOutput {
 	return o
-}
-
-func (o PublishTaskMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PublishTask] {
-	return pulumix.Output[map[string]*PublishTask]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PublishTaskMapOutput) MapIndex(k pulumi.StringInput) PublishTaskOutput {

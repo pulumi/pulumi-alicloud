@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the details of the Kubernetes version supported by ACK.
@@ -196,12 +195,6 @@ func (o GetKubernetesVersionResultOutput) ToGetKubernetesVersionResultOutput() G
 
 func (o GetKubernetesVersionResultOutput) ToGetKubernetesVersionResultOutputWithContext(ctx context.Context) GetKubernetesVersionResultOutput {
 	return o
-}
-
-func (o GetKubernetesVersionResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetKubernetesVersionResult] {
-	return pulumix.Output[GetKubernetesVersionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetKubernetesVersionResultOutput) ClusterType() pulumi.StringOutput {

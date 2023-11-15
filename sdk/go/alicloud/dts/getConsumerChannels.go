@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Dts Consumer Channels of the current Alibaba Cloud user.
@@ -112,12 +111,6 @@ func (o GetConsumerChannelsResultOutput) ToGetConsumerChannelsResultOutput() Get
 
 func (o GetConsumerChannelsResultOutput) ToGetConsumerChannelsResultOutputWithContext(ctx context.Context) GetConsumerChannelsResultOutput {
 	return o
-}
-
-func (o GetConsumerChannelsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetConsumerChannelsResult] {
-	return pulumix.Output[GetConsumerChannelsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetConsumerChannelsResultOutput) Channels() GetConsumerChannelsChannelArrayOutput {

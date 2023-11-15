@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a CEN transit router route entry resource.[What is Cen Transit Router Route Entry](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-cbn-2017-09-12-createtransitrouterrouteentry)
@@ -305,12 +304,6 @@ func (i *TransitRouterRouteEntry) ToTransitRouterRouteEntryOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterRouteEntryOutput)
 }
 
-func (i *TransitRouterRouteEntry) ToOutput(ctx context.Context) pulumix.Output[*TransitRouterRouteEntry] {
-	return pulumix.Output[*TransitRouterRouteEntry]{
-		OutputState: i.ToTransitRouterRouteEntryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TransitRouterRouteEntryArrayInput is an input type that accepts TransitRouterRouteEntryArray and TransitRouterRouteEntryArrayOutput values.
 // You can construct a concrete instance of `TransitRouterRouteEntryArrayInput` via:
 //
@@ -334,12 +327,6 @@ func (i TransitRouterRouteEntryArray) ToTransitRouterRouteEntryArrayOutput() Tra
 
 func (i TransitRouterRouteEntryArray) ToTransitRouterRouteEntryArrayOutputWithContext(ctx context.Context) TransitRouterRouteEntryArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterRouteEntryArrayOutput)
-}
-
-func (i TransitRouterRouteEntryArray) ToOutput(ctx context.Context) pulumix.Output[[]*TransitRouterRouteEntry] {
-	return pulumix.Output[[]*TransitRouterRouteEntry]{
-		OutputState: i.ToTransitRouterRouteEntryArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TransitRouterRouteEntryMapInput is an input type that accepts TransitRouterRouteEntryMap and TransitRouterRouteEntryMapOutput values.
@@ -367,12 +354,6 @@ func (i TransitRouterRouteEntryMap) ToTransitRouterRouteEntryMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterRouteEntryMapOutput)
 }
 
-func (i TransitRouterRouteEntryMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransitRouterRouteEntry] {
-	return pulumix.Output[map[string]*TransitRouterRouteEntry]{
-		OutputState: i.ToTransitRouterRouteEntryMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TransitRouterRouteEntryOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterRouteEntryOutput) ElementType() reflect.Type {
@@ -385,12 +366,6 @@ func (o TransitRouterRouteEntryOutput) ToTransitRouterRouteEntryOutput() Transit
 
 func (o TransitRouterRouteEntryOutput) ToTransitRouterRouteEntryOutputWithContext(ctx context.Context) TransitRouterRouteEntryOutput {
 	return o
-}
-
-func (o TransitRouterRouteEntryOutput) ToOutput(ctx context.Context) pulumix.Output[*TransitRouterRouteEntry] {
-	return pulumix.Output[*TransitRouterRouteEntry]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The dry run.
@@ -457,12 +432,6 @@ func (o TransitRouterRouteEntryArrayOutput) ToTransitRouterRouteEntryArrayOutput
 	return o
 }
 
-func (o TransitRouterRouteEntryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TransitRouterRouteEntry] {
-	return pulumix.Output[[]*TransitRouterRouteEntry]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TransitRouterRouteEntryArrayOutput) Index(i pulumi.IntInput) TransitRouterRouteEntryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TransitRouterRouteEntry {
 		return vs[0].([]*TransitRouterRouteEntry)[vs[1].(int)]
@@ -481,12 +450,6 @@ func (o TransitRouterRouteEntryMapOutput) ToTransitRouterRouteEntryMapOutput() T
 
 func (o TransitRouterRouteEntryMapOutput) ToTransitRouterRouteEntryMapOutputWithContext(ctx context.Context) TransitRouterRouteEntryMapOutput {
 	return o
-}
-
-func (o TransitRouterRouteEntryMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransitRouterRouteEntry] {
-	return pulumix.Output[map[string]*TransitRouterRouteEntry]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TransitRouterRouteEntryMapOutput) MapIndex(k pulumi.StringInput) TransitRouterRouteEntryOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DFS Mount Point resource.
@@ -273,12 +272,6 @@ func (i *MountPoint) ToMountPointOutputWithContext(ctx context.Context) MountPoi
 	return pulumi.ToOutputWithContext(ctx, i).(MountPointOutput)
 }
 
-func (i *MountPoint) ToOutput(ctx context.Context) pulumix.Output[*MountPoint] {
-	return pulumix.Output[*MountPoint]{
-		OutputState: i.ToMountPointOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MountPointArrayInput is an input type that accepts MountPointArray and MountPointArrayOutput values.
 // You can construct a concrete instance of `MountPointArrayInput` via:
 //
@@ -302,12 +295,6 @@ func (i MountPointArray) ToMountPointArrayOutput() MountPointArrayOutput {
 
 func (i MountPointArray) ToMountPointArrayOutputWithContext(ctx context.Context) MountPointArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MountPointArrayOutput)
-}
-
-func (i MountPointArray) ToOutput(ctx context.Context) pulumix.Output[[]*MountPoint] {
-	return pulumix.Output[[]*MountPoint]{
-		OutputState: i.ToMountPointArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MountPointMapInput is an input type that accepts MountPointMap and MountPointMapOutput values.
@@ -335,12 +322,6 @@ func (i MountPointMap) ToMountPointMapOutputWithContext(ctx context.Context) Mou
 	return pulumi.ToOutputWithContext(ctx, i).(MountPointMapOutput)
 }
 
-func (i MountPointMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MountPoint] {
-	return pulumix.Output[map[string]*MountPoint]{
-		OutputState: i.ToMountPointMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MountPointOutput struct{ *pulumi.OutputState }
 
 func (MountPointOutput) ElementType() reflect.Type {
@@ -353,12 +334,6 @@ func (o MountPointOutput) ToMountPointOutput() MountPointOutput {
 
 func (o MountPointOutput) ToMountPointOutputWithContext(ctx context.Context) MountPointOutput {
 	return o
-}
-
-func (o MountPointOutput) ToOutput(ctx context.Context) pulumix.Output[*MountPoint] {
-	return pulumix.Output[*MountPoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Access Group.
@@ -415,12 +390,6 @@ func (o MountPointArrayOutput) ToMountPointArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o MountPointArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MountPoint] {
-	return pulumix.Output[[]*MountPoint]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MountPointArrayOutput) Index(i pulumi.IntInput) MountPointOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MountPoint {
 		return vs[0].([]*MountPoint)[vs[1].(int)]
@@ -439,12 +408,6 @@ func (o MountPointMapOutput) ToMountPointMapOutput() MountPointMapOutput {
 
 func (o MountPointMapOutput) ToMountPointMapOutputWithContext(ctx context.Context) MountPointMapOutput {
 	return o
-}
-
-func (o MountPointMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MountPoint] {
-	return pulumix.Output[map[string]*MountPoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MountPointMapOutput) MapIndex(k pulumi.StringInput) MountPointOutput {

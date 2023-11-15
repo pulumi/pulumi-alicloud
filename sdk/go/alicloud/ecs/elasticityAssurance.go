@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Ecs Elasticity Assurance resource.
@@ -277,12 +276,6 @@ func (i *ElasticityAssurance) ToElasticityAssuranceOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ElasticityAssuranceOutput)
 }
 
-func (i *ElasticityAssurance) ToOutput(ctx context.Context) pulumix.Output[*ElasticityAssurance] {
-	return pulumix.Output[*ElasticityAssurance]{
-		OutputState: i.ToElasticityAssuranceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElasticityAssuranceArrayInput is an input type that accepts ElasticityAssuranceArray and ElasticityAssuranceArrayOutput values.
 // You can construct a concrete instance of `ElasticityAssuranceArrayInput` via:
 //
@@ -306,12 +299,6 @@ func (i ElasticityAssuranceArray) ToElasticityAssuranceArrayOutput() ElasticityA
 
 func (i ElasticityAssuranceArray) ToElasticityAssuranceArrayOutputWithContext(ctx context.Context) ElasticityAssuranceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ElasticityAssuranceArrayOutput)
-}
-
-func (i ElasticityAssuranceArray) ToOutput(ctx context.Context) pulumix.Output[[]*ElasticityAssurance] {
-	return pulumix.Output[[]*ElasticityAssurance]{
-		OutputState: i.ToElasticityAssuranceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ElasticityAssuranceMapInput is an input type that accepts ElasticityAssuranceMap and ElasticityAssuranceMapOutput values.
@@ -339,12 +326,6 @@ func (i ElasticityAssuranceMap) ToElasticityAssuranceMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ElasticityAssuranceMapOutput)
 }
 
-func (i ElasticityAssuranceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ElasticityAssurance] {
-	return pulumix.Output[map[string]*ElasticityAssurance]{
-		OutputState: i.ToElasticityAssuranceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElasticityAssuranceOutput struct{ *pulumi.OutputState }
 
 func (ElasticityAssuranceOutput) ElementType() reflect.Type {
@@ -357,12 +338,6 @@ func (o ElasticityAssuranceOutput) ToElasticityAssuranceOutput() ElasticityAssur
 
 func (o ElasticityAssuranceOutput) ToElasticityAssuranceOutputWithContext(ctx context.Context) ElasticityAssuranceOutput {
 	return o
-}
-
-func (o ElasticityAssuranceOutput) ToOutput(ctx context.Context) pulumix.Output[*ElasticityAssurance] {
-	return pulumix.Output[*ElasticityAssurance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
@@ -471,12 +446,6 @@ func (o ElasticityAssuranceArrayOutput) ToElasticityAssuranceArrayOutputWithCont
 	return o
 }
 
-func (o ElasticityAssuranceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ElasticityAssurance] {
-	return pulumix.Output[[]*ElasticityAssurance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ElasticityAssuranceArrayOutput) Index(i pulumi.IntInput) ElasticityAssuranceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ElasticityAssurance {
 		return vs[0].([]*ElasticityAssurance)[vs[1].(int)]
@@ -495,12 +464,6 @@ func (o ElasticityAssuranceMapOutput) ToElasticityAssuranceMapOutput() Elasticit
 
 func (o ElasticityAssuranceMapOutput) ToElasticityAssuranceMapOutputWithContext(ctx context.Context) ElasticityAssuranceMapOutput {
 	return o
-}
-
-func (o ElasticityAssuranceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ElasticityAssurance] {
-	return pulumix.Output[map[string]*ElasticityAssurance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElasticityAssuranceMapOutput) MapIndex(k pulumi.StringInput) ElasticityAssuranceOutput {

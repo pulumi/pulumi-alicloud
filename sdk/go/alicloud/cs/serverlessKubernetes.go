@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource will help you to manager a Serverless Kubernetes Cluster, see [What is serverless kubernetes](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/create-a-dedicated-kubernetes-cluster-that-supports-sandboxed-containers). The cluster is same as container service created by web console.
@@ -566,12 +565,6 @@ func (i *ServerlessKubernetes) ToServerlessKubernetesOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ServerlessKubernetesOutput)
 }
 
-func (i *ServerlessKubernetes) ToOutput(ctx context.Context) pulumix.Output[*ServerlessKubernetes] {
-	return pulumix.Output[*ServerlessKubernetes]{
-		OutputState: i.ToServerlessKubernetesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServerlessKubernetesArrayInput is an input type that accepts ServerlessKubernetesArray and ServerlessKubernetesArrayOutput values.
 // You can construct a concrete instance of `ServerlessKubernetesArrayInput` via:
 //
@@ -595,12 +588,6 @@ func (i ServerlessKubernetesArray) ToServerlessKubernetesArrayOutput() Serverles
 
 func (i ServerlessKubernetesArray) ToServerlessKubernetesArrayOutputWithContext(ctx context.Context) ServerlessKubernetesArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerlessKubernetesArrayOutput)
-}
-
-func (i ServerlessKubernetesArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServerlessKubernetes] {
-	return pulumix.Output[[]*ServerlessKubernetes]{
-		OutputState: i.ToServerlessKubernetesArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServerlessKubernetesMapInput is an input type that accepts ServerlessKubernetesMap and ServerlessKubernetesMapOutput values.
@@ -628,12 +615,6 @@ func (i ServerlessKubernetesMap) ToServerlessKubernetesMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ServerlessKubernetesMapOutput)
 }
 
-func (i ServerlessKubernetesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServerlessKubernetes] {
-	return pulumix.Output[map[string]*ServerlessKubernetes]{
-		OutputState: i.ToServerlessKubernetesMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServerlessKubernetesOutput struct{ *pulumi.OutputState }
 
 func (ServerlessKubernetesOutput) ElementType() reflect.Type {
@@ -646,12 +627,6 @@ func (o ServerlessKubernetesOutput) ToServerlessKubernetesOutput() ServerlessKub
 
 func (o ServerlessKubernetesOutput) ToServerlessKubernetesOutputWithContext(ctx context.Context) ServerlessKubernetesOutput {
 	return o
-}
-
-func (o ServerlessKubernetesOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerlessKubernetes] {
-	return pulumix.Output[*ServerlessKubernetes]{
-		OutputState: o.OutputState,
-	}
 }
 
 // You can specific network plugin,log component,ingress component and so on. See `addons` below.
@@ -833,12 +808,6 @@ func (o ServerlessKubernetesArrayOutput) ToServerlessKubernetesArrayOutputWithCo
 	return o
 }
 
-func (o ServerlessKubernetesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServerlessKubernetes] {
-	return pulumix.Output[[]*ServerlessKubernetes]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServerlessKubernetesArrayOutput) Index(i pulumi.IntInput) ServerlessKubernetesOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServerlessKubernetes {
 		return vs[0].([]*ServerlessKubernetes)[vs[1].(int)]
@@ -857,12 +826,6 @@ func (o ServerlessKubernetesMapOutput) ToServerlessKubernetesMapOutput() Serverl
 
 func (o ServerlessKubernetesMapOutput) ToServerlessKubernetesMapOutputWithContext(ctx context.Context) ServerlessKubernetesMapOutput {
 	return o
-}
-
-func (o ServerlessKubernetesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServerlessKubernetes] {
-	return pulumix.Output[map[string]*ServerlessKubernetes]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServerlessKubernetesMapOutput) MapIndex(k pulumi.StringInput) ServerlessKubernetesOutput {

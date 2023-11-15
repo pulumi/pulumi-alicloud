@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Bastion Host Host Attachment resource to add host into one host group.
@@ -239,12 +238,6 @@ func (i *HostAttachment) ToHostAttachmentOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(HostAttachmentOutput)
 }
 
-func (i *HostAttachment) ToOutput(ctx context.Context) pulumix.Output[*HostAttachment] {
-	return pulumix.Output[*HostAttachment]{
-		OutputState: i.ToHostAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HostAttachmentArrayInput is an input type that accepts HostAttachmentArray and HostAttachmentArrayOutput values.
 // You can construct a concrete instance of `HostAttachmentArrayInput` via:
 //
@@ -268,12 +261,6 @@ func (i HostAttachmentArray) ToHostAttachmentArrayOutput() HostAttachmentArrayOu
 
 func (i HostAttachmentArray) ToHostAttachmentArrayOutputWithContext(ctx context.Context) HostAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostAttachmentArrayOutput)
-}
-
-func (i HostAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*HostAttachment] {
-	return pulumix.Output[[]*HostAttachment]{
-		OutputState: i.ToHostAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HostAttachmentMapInput is an input type that accepts HostAttachmentMap and HostAttachmentMapOutput values.
@@ -301,12 +288,6 @@ func (i HostAttachmentMap) ToHostAttachmentMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(HostAttachmentMapOutput)
 }
 
-func (i HostAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostAttachment] {
-	return pulumix.Output[map[string]*HostAttachment]{
-		OutputState: i.ToHostAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HostAttachmentOutput struct{ *pulumi.OutputState }
 
 func (HostAttachmentOutput) ElementType() reflect.Type {
@@ -319,12 +300,6 @@ func (o HostAttachmentOutput) ToHostAttachmentOutput() HostAttachmentOutput {
 
 func (o HostAttachmentOutput) ToHostAttachmentOutputWithContext(ctx context.Context) HostAttachmentOutput {
 	return o
-}
-
-func (o HostAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*HostAttachment] {
-	return pulumix.Output[*HostAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the added to the host group ID.
@@ -356,12 +331,6 @@ func (o HostAttachmentArrayOutput) ToHostAttachmentArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o HostAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HostAttachment] {
-	return pulumix.Output[[]*HostAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HostAttachmentArrayOutput) Index(i pulumi.IntInput) HostAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HostAttachment {
 		return vs[0].([]*HostAttachment)[vs[1].(int)]
@@ -380,12 +349,6 @@ func (o HostAttachmentMapOutput) ToHostAttachmentMapOutput() HostAttachmentMapOu
 
 func (o HostAttachmentMapOutput) ToHostAttachmentMapOutputWithContext(ctx context.Context) HostAttachmentMapOutput {
 	return o
-}
-
-func (o HostAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostAttachment] {
-	return pulumix.Output[map[string]*HostAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HostAttachmentMapOutput) MapIndex(k pulumi.StringInput) HostAttachmentOutput {

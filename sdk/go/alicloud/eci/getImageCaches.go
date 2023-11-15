@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a collection of ECI Image Cache to the specified filters.
@@ -112,12 +111,6 @@ func (o GetImageCachesResultOutput) ToGetImageCachesResultOutput() GetImageCache
 
 func (o GetImageCachesResultOutput) ToGetImageCachesResultOutputWithContext(ctx context.Context) GetImageCachesResultOutput {
 	return o
-}
-
-func (o GetImageCachesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetImageCachesResult] {
-	return pulumix.Output[GetImageCachesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of caches. Each element contains the following attributes:

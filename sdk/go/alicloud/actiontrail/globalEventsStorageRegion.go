@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Global events storage region resource.
@@ -131,12 +130,6 @@ func (i *GlobalEventsStorageRegion) ToGlobalEventsStorageRegionOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalEventsStorageRegionOutput)
 }
 
-func (i *GlobalEventsStorageRegion) ToOutput(ctx context.Context) pulumix.Output[*GlobalEventsStorageRegion] {
-	return pulumix.Output[*GlobalEventsStorageRegion]{
-		OutputState: i.ToGlobalEventsStorageRegionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GlobalEventsStorageRegionArrayInput is an input type that accepts GlobalEventsStorageRegionArray and GlobalEventsStorageRegionArrayOutput values.
 // You can construct a concrete instance of `GlobalEventsStorageRegionArrayInput` via:
 //
@@ -160,12 +153,6 @@ func (i GlobalEventsStorageRegionArray) ToGlobalEventsStorageRegionArrayOutput()
 
 func (i GlobalEventsStorageRegionArray) ToGlobalEventsStorageRegionArrayOutputWithContext(ctx context.Context) GlobalEventsStorageRegionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalEventsStorageRegionArrayOutput)
-}
-
-func (i GlobalEventsStorageRegionArray) ToOutput(ctx context.Context) pulumix.Output[[]*GlobalEventsStorageRegion] {
-	return pulumix.Output[[]*GlobalEventsStorageRegion]{
-		OutputState: i.ToGlobalEventsStorageRegionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GlobalEventsStorageRegionMapInput is an input type that accepts GlobalEventsStorageRegionMap and GlobalEventsStorageRegionMapOutput values.
@@ -193,12 +180,6 @@ func (i GlobalEventsStorageRegionMap) ToGlobalEventsStorageRegionMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalEventsStorageRegionMapOutput)
 }
 
-func (i GlobalEventsStorageRegionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GlobalEventsStorageRegion] {
-	return pulumix.Output[map[string]*GlobalEventsStorageRegion]{
-		OutputState: i.ToGlobalEventsStorageRegionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GlobalEventsStorageRegionOutput struct{ *pulumi.OutputState }
 
 func (GlobalEventsStorageRegionOutput) ElementType() reflect.Type {
@@ -211,12 +192,6 @@ func (o GlobalEventsStorageRegionOutput) ToGlobalEventsStorageRegionOutput() Glo
 
 func (o GlobalEventsStorageRegionOutput) ToGlobalEventsStorageRegionOutputWithContext(ctx context.Context) GlobalEventsStorageRegionOutput {
 	return o
-}
-
-func (o GlobalEventsStorageRegionOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalEventsStorageRegion] {
-	return pulumix.Output[*GlobalEventsStorageRegion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Global Events Storage Region.
@@ -238,12 +213,6 @@ func (o GlobalEventsStorageRegionArrayOutput) ToGlobalEventsStorageRegionArrayOu
 	return o
 }
 
-func (o GlobalEventsStorageRegionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GlobalEventsStorageRegion] {
-	return pulumix.Output[[]*GlobalEventsStorageRegion]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GlobalEventsStorageRegionArrayOutput) Index(i pulumi.IntInput) GlobalEventsStorageRegionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GlobalEventsStorageRegion {
 		return vs[0].([]*GlobalEventsStorageRegion)[vs[1].(int)]
@@ -262,12 +231,6 @@ func (o GlobalEventsStorageRegionMapOutput) ToGlobalEventsStorageRegionMapOutput
 
 func (o GlobalEventsStorageRegionMapOutput) ToGlobalEventsStorageRegionMapOutputWithContext(ctx context.Context) GlobalEventsStorageRegionMapOutput {
 	return o
-}
-
-func (o GlobalEventsStorageRegionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GlobalEventsStorageRegion] {
-	return pulumix.Output[map[string]*GlobalEventsStorageRegion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GlobalEventsStorageRegionMapOutput) MapIndex(k pulumi.StringInput) GlobalEventsStorageRegionOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Resource Manager Accounts of the current Alibaba Cloud user.
@@ -118,12 +117,6 @@ func (o GetAccountsResultOutput) ToGetAccountsResultOutput() GetAccountsResultOu
 
 func (o GetAccountsResultOutput) ToGetAccountsResultOutputWithContext(ctx context.Context) GetAccountsResultOutput {
 	return o
-}
-
-func (o GetAccountsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccountsResult] {
-	return pulumix.Output[GetAccountsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of accounts. Each element contains the following attributes:

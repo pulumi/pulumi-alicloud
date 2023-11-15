@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides bind the domain name to the DNS instance resource.
@@ -158,12 +157,6 @@ func (i *DomainAttachment) ToDomainAttachmentOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(DomainAttachmentOutput)
 }
 
-func (i *DomainAttachment) ToOutput(ctx context.Context) pulumix.Output[*DomainAttachment] {
-	return pulumix.Output[*DomainAttachment]{
-		OutputState: i.ToDomainAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DomainAttachmentArrayInput is an input type that accepts DomainAttachmentArray and DomainAttachmentArrayOutput values.
 // You can construct a concrete instance of `DomainAttachmentArrayInput` via:
 //
@@ -187,12 +180,6 @@ func (i DomainAttachmentArray) ToDomainAttachmentArrayOutput() DomainAttachmentA
 
 func (i DomainAttachmentArray) ToDomainAttachmentArrayOutputWithContext(ctx context.Context) DomainAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainAttachmentArrayOutput)
-}
-
-func (i DomainAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*DomainAttachment] {
-	return pulumix.Output[[]*DomainAttachment]{
-		OutputState: i.ToDomainAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DomainAttachmentMapInput is an input type that accepts DomainAttachmentMap and DomainAttachmentMapOutput values.
@@ -220,12 +207,6 @@ func (i DomainAttachmentMap) ToDomainAttachmentMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(DomainAttachmentMapOutput)
 }
 
-func (i DomainAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DomainAttachment] {
-	return pulumix.Output[map[string]*DomainAttachment]{
-		OutputState: i.ToDomainAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DomainAttachmentOutput struct{ *pulumi.OutputState }
 
 func (DomainAttachmentOutput) ElementType() reflect.Type {
@@ -238,12 +219,6 @@ func (o DomainAttachmentOutput) ToDomainAttachmentOutput() DomainAttachmentOutpu
 
 func (o DomainAttachmentOutput) ToDomainAttachmentOutputWithContext(ctx context.Context) DomainAttachmentOutput {
 	return o
-}
-
-func (o DomainAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainAttachment] {
-	return pulumix.Output[*DomainAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The domain names bound to the DNS instance.
@@ -270,12 +245,6 @@ func (o DomainAttachmentArrayOutput) ToDomainAttachmentArrayOutputWithContext(ct
 	return o
 }
 
-func (o DomainAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DomainAttachment] {
-	return pulumix.Output[[]*DomainAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DomainAttachmentArrayOutput) Index(i pulumi.IntInput) DomainAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DomainAttachment {
 		return vs[0].([]*DomainAttachment)[vs[1].(int)]
@@ -294,12 +263,6 @@ func (o DomainAttachmentMapOutput) ToDomainAttachmentMapOutput() DomainAttachmen
 
 func (o DomainAttachmentMapOutput) ToDomainAttachmentMapOutputWithContext(ctx context.Context) DomainAttachmentMapOutput {
 	return o
-}
-
-func (o DomainAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DomainAttachment] {
-	return pulumix.Output[map[string]*DomainAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DomainAttachmentMapOutput) MapIndex(k pulumi.StringInput) DomainAttachmentOutput {

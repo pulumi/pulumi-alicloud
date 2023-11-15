@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Video Surveillance System Groups of the current Alibaba Cloud user.
@@ -141,12 +140,6 @@ func (o GetSystemGroupsResultOutput) ToGetSystemGroupsResultOutput() GetSystemGr
 
 func (o GetSystemGroupsResultOutput) ToGetSystemGroupsResultOutputWithContext(ctx context.Context) GetSystemGroupsResultOutput {
 	return o
-}
-
-func (o GetSystemGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSystemGroupsResult] {
-	return pulumix.Output[GetSystemGroupsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSystemGroupsResultOutput) Groups() GetSystemGroupsGroupArrayOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Firewall Instance Member resource.
@@ -191,12 +190,6 @@ func (i *InstanceMember) ToInstanceMemberOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceMemberOutput)
 }
 
-func (i *InstanceMember) ToOutput(ctx context.Context) pulumix.Output[*InstanceMember] {
-	return pulumix.Output[*InstanceMember]{
-		OutputState: i.ToInstanceMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstanceMemberArrayInput is an input type that accepts InstanceMemberArray and InstanceMemberArrayOutput values.
 // You can construct a concrete instance of `InstanceMemberArrayInput` via:
 //
@@ -220,12 +213,6 @@ func (i InstanceMemberArray) ToInstanceMemberArrayOutput() InstanceMemberArrayOu
 
 func (i InstanceMemberArray) ToInstanceMemberArrayOutputWithContext(ctx context.Context) InstanceMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceMemberArrayOutput)
-}
-
-func (i InstanceMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceMember] {
-	return pulumix.Output[[]*InstanceMember]{
-		OutputState: i.ToInstanceMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InstanceMemberMapInput is an input type that accepts InstanceMemberMap and InstanceMemberMapOutput values.
@@ -253,12 +240,6 @@ func (i InstanceMemberMap) ToInstanceMemberMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceMemberMapOutput)
 }
 
-func (i InstanceMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceMember] {
-	return pulumix.Output[map[string]*InstanceMember]{
-		OutputState: i.ToInstanceMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceMemberOutput struct{ *pulumi.OutputState }
 
 func (InstanceMemberOutput) ElementType() reflect.Type {
@@ -271,12 +252,6 @@ func (o InstanceMemberOutput) ToInstanceMemberOutput() InstanceMemberOutput {
 
 func (o InstanceMemberOutput) ToInstanceMemberOutputWithContext(ctx context.Context) InstanceMemberOutput {
 	return o
-}
-
-func (o InstanceMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceMember] {
-	return pulumix.Output[*InstanceMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // When the cloud firewall member account was added.> use second-level timestamp format.
@@ -323,12 +298,6 @@ func (o InstanceMemberArrayOutput) ToInstanceMemberArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o InstanceMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceMember] {
-	return pulumix.Output[[]*InstanceMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceMemberArrayOutput) Index(i pulumi.IntInput) InstanceMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceMember {
 		return vs[0].([]*InstanceMember)[vs[1].(int)]
@@ -347,12 +316,6 @@ func (o InstanceMemberMapOutput) ToInstanceMemberMapOutput() InstanceMemberMapOu
 
 func (o InstanceMemberMapOutput) ToInstanceMemberMapOutputWithContext(ctx context.Context) InstanceMemberMapOutput {
 	return o
-}
-
-func (o InstanceMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceMember] {
-	return pulumix.Output[map[string]*InstanceMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceMemberMapOutput) MapIndex(k pulumi.StringInput) InstanceMemberOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cloud Firewall Address Books of the current Alibaba Cloud user.
@@ -143,12 +142,6 @@ func (o GetAddressBooksResultOutput) ToGetAddressBooksResultOutput() GetAddressB
 
 func (o GetAddressBooksResultOutput) ToGetAddressBooksResultOutputWithContext(ctx context.Context) GetAddressBooksResultOutput {
 	return o
-}
-
-func (o GetAddressBooksResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAddressBooksResult] {
-	return pulumix.Output[GetAddressBooksResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of Cloud Firewall Address Books. Each element contains the following attributes:

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list of Alidns Domains in an Alibaba Cloud account according to the specified filters.
@@ -180,12 +179,6 @@ func (o GetAlidnsDomainsResultOutput) ToGetAlidnsDomainsResultOutput() GetAlidns
 
 func (o GetAlidnsDomainsResultOutput) ToGetAlidnsDomainsResultOutputWithContext(ctx context.Context) GetAlidnsDomainsResultOutput {
 	return o
-}
-
-func (o GetAlidnsDomainsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAlidnsDomainsResult] {
-	return pulumix.Output[GetAlidnsDomainsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates whether the domain is an Alibaba Cloud domain.

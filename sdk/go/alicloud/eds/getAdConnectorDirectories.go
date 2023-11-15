@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ecd Ad Connector Directories of the current Alibaba Cloud user.
@@ -122,12 +121,6 @@ func (o GetAdConnectorDirectoriesResultOutput) ToGetAdConnectorDirectoriesResult
 
 func (o GetAdConnectorDirectoriesResultOutput) ToGetAdConnectorDirectoriesResultOutputWithContext(ctx context.Context) GetAdConnectorDirectoriesResultOutput {
 	return o
-}
-
-func (o GetAdConnectorDirectoriesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAdConnectorDirectoriesResult] {
-	return pulumix.Output[GetAdConnectorDirectoriesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAdConnectorDirectoriesResultOutput) Directories() GetAdConnectorDirectoriesDirectoryArrayOutput {

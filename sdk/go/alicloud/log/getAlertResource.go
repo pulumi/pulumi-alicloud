@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Using this data source can init SLS Alert resources automatically.
@@ -120,12 +119,6 @@ func (o GetAlertResourceResultOutput) ToGetAlertResourceResultOutput() GetAlertR
 
 func (o GetAlertResourceResultOutput) ToGetAlertResourceResultOutputWithContext(ctx context.Context) GetAlertResourceResultOutput {
 	return o
-}
-
-func (o GetAlertResourceResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAlertResourceResult] {
-	return pulumix.Output[GetAlertResourceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

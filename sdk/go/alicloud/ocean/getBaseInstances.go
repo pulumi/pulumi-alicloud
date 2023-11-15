@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ocean Base Instances of the current Alibaba Cloud user.
@@ -154,12 +153,6 @@ func (o GetBaseInstancesResultOutput) ToGetBaseInstancesResultOutput() GetBaseIn
 
 func (o GetBaseInstancesResultOutput) ToGetBaseInstancesResultOutputWithContext(ctx context.Context) GetBaseInstancesResultOutput {
 	return o
-}
-
-func (o GetBaseInstancesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBaseInstancesResult] {
-	return pulumix.Output[GetBaseInstancesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetBaseInstancesResultOutput) EnableDetails() pulumi.BoolPtrOutput {

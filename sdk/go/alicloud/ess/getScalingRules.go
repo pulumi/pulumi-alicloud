@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides available scaling rule resources.
@@ -131,12 +130,6 @@ func (o GetScalingRulesResultOutput) ToGetScalingRulesResultOutput() GetScalingR
 
 func (o GetScalingRulesResultOutput) ToGetScalingRulesResultOutputWithContext(ctx context.Context) GetScalingRulesResultOutput {
 	return o
-}
-
-func (o GetScalingRulesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetScalingRulesResult] {
-	return pulumix.Output[GetScalingRulesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

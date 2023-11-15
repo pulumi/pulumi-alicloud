@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a VPC Public Ip Address Pool Cidr Block resource.
@@ -189,12 +188,6 @@ func (i *PublicIpAddressPoolCidrBlock) ToPublicIpAddressPoolCidrBlockOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(PublicIpAddressPoolCidrBlockOutput)
 }
 
-func (i *PublicIpAddressPoolCidrBlock) ToOutput(ctx context.Context) pulumix.Output[*PublicIpAddressPoolCidrBlock] {
-	return pulumix.Output[*PublicIpAddressPoolCidrBlock]{
-		OutputState: i.ToPublicIpAddressPoolCidrBlockOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PublicIpAddressPoolCidrBlockArrayInput is an input type that accepts PublicIpAddressPoolCidrBlockArray and PublicIpAddressPoolCidrBlockArrayOutput values.
 // You can construct a concrete instance of `PublicIpAddressPoolCidrBlockArrayInput` via:
 //
@@ -218,12 +211,6 @@ func (i PublicIpAddressPoolCidrBlockArray) ToPublicIpAddressPoolCidrBlockArrayOu
 
 func (i PublicIpAddressPoolCidrBlockArray) ToPublicIpAddressPoolCidrBlockArrayOutputWithContext(ctx context.Context) PublicIpAddressPoolCidrBlockArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PublicIpAddressPoolCidrBlockArrayOutput)
-}
-
-func (i PublicIpAddressPoolCidrBlockArray) ToOutput(ctx context.Context) pulumix.Output[[]*PublicIpAddressPoolCidrBlock] {
-	return pulumix.Output[[]*PublicIpAddressPoolCidrBlock]{
-		OutputState: i.ToPublicIpAddressPoolCidrBlockArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PublicIpAddressPoolCidrBlockMapInput is an input type that accepts PublicIpAddressPoolCidrBlockMap and PublicIpAddressPoolCidrBlockMapOutput values.
@@ -251,12 +238,6 @@ func (i PublicIpAddressPoolCidrBlockMap) ToPublicIpAddressPoolCidrBlockMapOutput
 	return pulumi.ToOutputWithContext(ctx, i).(PublicIpAddressPoolCidrBlockMapOutput)
 }
 
-func (i PublicIpAddressPoolCidrBlockMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PublicIpAddressPoolCidrBlock] {
-	return pulumix.Output[map[string]*PublicIpAddressPoolCidrBlock]{
-		OutputState: i.ToPublicIpAddressPoolCidrBlockMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PublicIpAddressPoolCidrBlockOutput struct{ *pulumi.OutputState }
 
 func (PublicIpAddressPoolCidrBlockOutput) ElementType() reflect.Type {
@@ -269,12 +250,6 @@ func (o PublicIpAddressPoolCidrBlockOutput) ToPublicIpAddressPoolCidrBlockOutput
 
 func (o PublicIpAddressPoolCidrBlockOutput) ToPublicIpAddressPoolCidrBlockOutputWithContext(ctx context.Context) PublicIpAddressPoolCidrBlockOutput {
 	return o
-}
-
-func (o PublicIpAddressPoolCidrBlockOutput) ToOutput(ctx context.Context) pulumix.Output[*PublicIpAddressPoolCidrBlock] {
-	return pulumix.Output[*PublicIpAddressPoolCidrBlock]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The CIDR block.
@@ -311,12 +286,6 @@ func (o PublicIpAddressPoolCidrBlockArrayOutput) ToPublicIpAddressPoolCidrBlockA
 	return o
 }
 
-func (o PublicIpAddressPoolCidrBlockArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PublicIpAddressPoolCidrBlock] {
-	return pulumix.Output[[]*PublicIpAddressPoolCidrBlock]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PublicIpAddressPoolCidrBlockArrayOutput) Index(i pulumi.IntInput) PublicIpAddressPoolCidrBlockOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PublicIpAddressPoolCidrBlock {
 		return vs[0].([]*PublicIpAddressPoolCidrBlock)[vs[1].(int)]
@@ -335,12 +304,6 @@ func (o PublicIpAddressPoolCidrBlockMapOutput) ToPublicIpAddressPoolCidrBlockMap
 
 func (o PublicIpAddressPoolCidrBlockMapOutput) ToPublicIpAddressPoolCidrBlockMapOutputWithContext(ctx context.Context) PublicIpAddressPoolCidrBlockMapOutput {
 	return o
-}
-
-func (o PublicIpAddressPoolCidrBlockMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PublicIpAddressPoolCidrBlock] {
-	return pulumix.Output[map[string]*PublicIpAddressPoolCidrBlock]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PublicIpAddressPoolCidrBlockMapOutput) MapIndex(k pulumi.StringInput) PublicIpAddressPoolCidrBlockOutput {

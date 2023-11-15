@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECD Desktop resource.
@@ -380,12 +379,6 @@ func (i *Desktop) ToDesktopOutputWithContext(ctx context.Context) DesktopOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(DesktopOutput)
 }
 
-func (i *Desktop) ToOutput(ctx context.Context) pulumix.Output[*Desktop] {
-	return pulumix.Output[*Desktop]{
-		OutputState: i.ToDesktopOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DesktopArrayInput is an input type that accepts DesktopArray and DesktopArrayOutput values.
 // You can construct a concrete instance of `DesktopArrayInput` via:
 //
@@ -409,12 +402,6 @@ func (i DesktopArray) ToDesktopArrayOutput() DesktopArrayOutput {
 
 func (i DesktopArray) ToDesktopArrayOutputWithContext(ctx context.Context) DesktopArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DesktopArrayOutput)
-}
-
-func (i DesktopArray) ToOutput(ctx context.Context) pulumix.Output[[]*Desktop] {
-	return pulumix.Output[[]*Desktop]{
-		OutputState: i.ToDesktopArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DesktopMapInput is an input type that accepts DesktopMap and DesktopMapOutput values.
@@ -442,12 +429,6 @@ func (i DesktopMap) ToDesktopMapOutputWithContext(ctx context.Context) DesktopMa
 	return pulumi.ToOutputWithContext(ctx, i).(DesktopMapOutput)
 }
 
-func (i DesktopMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Desktop] {
-	return pulumix.Output[map[string]*Desktop]{
-		OutputState: i.ToDesktopMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DesktopOutput struct{ *pulumi.OutputState }
 
 func (DesktopOutput) ElementType() reflect.Type {
@@ -460,12 +441,6 @@ func (o DesktopOutput) ToDesktopOutput() DesktopOutput {
 
 func (o DesktopOutput) ToDesktopOutputWithContext(ctx context.Context) DesktopOutput {
 	return o
-}
-
-func (o DesktopOutput) ToOutput(ctx context.Context) pulumix.Output[*Desktop] {
-	return pulumix.Output[*Desktop]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The amount of the Desktop.
@@ -577,12 +552,6 @@ func (o DesktopArrayOutput) ToDesktopArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o DesktopArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Desktop] {
-	return pulumix.Output[[]*Desktop]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DesktopArrayOutput) Index(i pulumi.IntInput) DesktopOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Desktop {
 		return vs[0].([]*Desktop)[vs[1].(int)]
@@ -601,12 +570,6 @@ func (o DesktopMapOutput) ToDesktopMapOutput() DesktopMapOutput {
 
 func (o DesktopMapOutput) ToDesktopMapOutputWithContext(ctx context.Context) DesktopMapOutput {
 	return o
-}
-
-func (o DesktopMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Desktop] {
-	return pulumix.Output[map[string]*Desktop]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DesktopMapOutput) MapIndex(k pulumi.StringInput) DesktopOutput {

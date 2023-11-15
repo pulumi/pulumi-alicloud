@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DMS Enterprise User resource. For information about Alidms Enterprise User and how to use it, see [What is Resource Alidms Enterprise User](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-registeruser).
@@ -250,12 +249,6 @@ func (i *EnterpriseUser) ToEnterpriseUserOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseUserOutput)
 }
 
-func (i *EnterpriseUser) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseUser] {
-	return pulumix.Output[*EnterpriseUser]{
-		OutputState: i.ToEnterpriseUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EnterpriseUserArrayInput is an input type that accepts EnterpriseUserArray and EnterpriseUserArrayOutput values.
 // You can construct a concrete instance of `EnterpriseUserArrayInput` via:
 //
@@ -279,12 +272,6 @@ func (i EnterpriseUserArray) ToEnterpriseUserArrayOutput() EnterpriseUserArrayOu
 
 func (i EnterpriseUserArray) ToEnterpriseUserArrayOutputWithContext(ctx context.Context) EnterpriseUserArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseUserArrayOutput)
-}
-
-func (i EnterpriseUserArray) ToOutput(ctx context.Context) pulumix.Output[[]*EnterpriseUser] {
-	return pulumix.Output[[]*EnterpriseUser]{
-		OutputState: i.ToEnterpriseUserArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EnterpriseUserMapInput is an input type that accepts EnterpriseUserMap and EnterpriseUserMapOutput values.
@@ -312,12 +299,6 @@ func (i EnterpriseUserMap) ToEnterpriseUserMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseUserMapOutput)
 }
 
-func (i EnterpriseUserMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EnterpriseUser] {
-	return pulumix.Output[map[string]*EnterpriseUser]{
-		OutputState: i.ToEnterpriseUserMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnterpriseUserOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseUserOutput) ElementType() reflect.Type {
@@ -330,12 +311,6 @@ func (o EnterpriseUserOutput) ToEnterpriseUserOutput() EnterpriseUserOutput {
 
 func (o EnterpriseUserOutput) ToEnterpriseUserOutputWithContext(ctx context.Context) EnterpriseUserOutput {
 	return o
-}
-
-func (o EnterpriseUserOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseUser] {
-	return pulumix.Output[*EnterpriseUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Maximum number of inquiries on the day.
@@ -399,12 +374,6 @@ func (o EnterpriseUserArrayOutput) ToEnterpriseUserArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o EnterpriseUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EnterpriseUser] {
-	return pulumix.Output[[]*EnterpriseUser]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EnterpriseUserArrayOutput) Index(i pulumi.IntInput) EnterpriseUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EnterpriseUser {
 		return vs[0].([]*EnterpriseUser)[vs[1].(int)]
@@ -423,12 +392,6 @@ func (o EnterpriseUserMapOutput) ToEnterpriseUserMapOutput() EnterpriseUserMapOu
 
 func (o EnterpriseUserMapOutput) ToEnterpriseUserMapOutputWithContext(ctx context.Context) EnterpriseUserMapOutput {
 	return o
-}
-
-func (o EnterpriseUserMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EnterpriseUser] {
-	return pulumix.Output[map[string]*EnterpriseUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnterpriseUserMapOutput) MapIndex(k pulumi.StringInput) EnterpriseUserOutput {

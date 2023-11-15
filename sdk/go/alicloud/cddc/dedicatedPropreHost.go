@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -398,12 +397,6 @@ func (i *DedicatedPropreHost) ToDedicatedPropreHostOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(DedicatedPropreHostOutput)
 }
 
-func (i *DedicatedPropreHost) ToOutput(ctx context.Context) pulumix.Output[*DedicatedPropreHost] {
-	return pulumix.Output[*DedicatedPropreHost]{
-		OutputState: i.ToDedicatedPropreHostOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DedicatedPropreHostArrayInput is an input type that accepts DedicatedPropreHostArray and DedicatedPropreHostArrayOutput values.
 // You can construct a concrete instance of `DedicatedPropreHostArrayInput` via:
 //
@@ -427,12 +420,6 @@ func (i DedicatedPropreHostArray) ToDedicatedPropreHostArrayOutput() DedicatedPr
 
 func (i DedicatedPropreHostArray) ToDedicatedPropreHostArrayOutputWithContext(ctx context.Context) DedicatedPropreHostArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DedicatedPropreHostArrayOutput)
-}
-
-func (i DedicatedPropreHostArray) ToOutput(ctx context.Context) pulumix.Output[[]*DedicatedPropreHost] {
-	return pulumix.Output[[]*DedicatedPropreHost]{
-		OutputState: i.ToDedicatedPropreHostArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DedicatedPropreHostMapInput is an input type that accepts DedicatedPropreHostMap and DedicatedPropreHostMapOutput values.
@@ -460,12 +447,6 @@ func (i DedicatedPropreHostMap) ToDedicatedPropreHostMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(DedicatedPropreHostMapOutput)
 }
 
-func (i DedicatedPropreHostMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DedicatedPropreHost] {
-	return pulumix.Output[map[string]*DedicatedPropreHost]{
-		OutputState: i.ToDedicatedPropreHostMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DedicatedPropreHostOutput struct{ *pulumi.OutputState }
 
 func (DedicatedPropreHostOutput) ElementType() reflect.Type {
@@ -478,12 +459,6 @@ func (o DedicatedPropreHostOutput) ToDedicatedPropreHostOutput() DedicatedPropre
 
 func (o DedicatedPropreHostOutput) ToDedicatedPropreHostOutputWithContext(ctx context.Context) DedicatedPropreHostOutput {
 	return o
-}
-
-func (o DedicatedPropreHostOutput) ToOutput(ctx context.Context) pulumix.Output[*DedicatedPropreHost] {
-	return pulumix.Output[*DedicatedPropreHost]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to enable automatic renewal. Valid values:
@@ -617,12 +592,6 @@ func (o DedicatedPropreHostArrayOutput) ToDedicatedPropreHostArrayOutputWithCont
 	return o
 }
 
-func (o DedicatedPropreHostArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DedicatedPropreHost] {
-	return pulumix.Output[[]*DedicatedPropreHost]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DedicatedPropreHostArrayOutput) Index(i pulumi.IntInput) DedicatedPropreHostOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DedicatedPropreHost {
 		return vs[0].([]*DedicatedPropreHost)[vs[1].(int)]
@@ -641,12 +610,6 @@ func (o DedicatedPropreHostMapOutput) ToDedicatedPropreHostMapOutput() Dedicated
 
 func (o DedicatedPropreHostMapOutput) ToDedicatedPropreHostMapOutputWithContext(ctx context.Context) DedicatedPropreHostMapOutput {
 	return o
-}
-
-func (o DedicatedPropreHostMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DedicatedPropreHost] {
-	return pulumix.Output[map[string]*DedicatedPropreHost]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DedicatedPropreHostMapOutput) MapIndex(k pulumi.StringInput) DedicatedPropreHostOutput {

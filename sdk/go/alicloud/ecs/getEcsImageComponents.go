@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ecs Image Components of the current Alibaba Cloud user.
@@ -144,12 +143,6 @@ func (o GetEcsImageComponentsResultOutput) ToGetEcsImageComponentsResultOutput()
 
 func (o GetEcsImageComponentsResultOutput) ToGetEcsImageComponentsResultOutputWithContext(ctx context.Context) GetEcsImageComponentsResultOutput {
 	return o
-}
-
-func (o GetEcsImageComponentsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEcsImageComponentsResult] {
-	return pulumix.Output[GetEcsImageComponentsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEcsImageComponentsResultOutput) Components() GetEcsImageComponentsComponentArrayOutput {

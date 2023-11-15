@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Using this data source can open Vpc Flow Log service automatically. If the service has been opened, it will return opened.
@@ -110,12 +109,6 @@ func (o GetFlowLogServiceResultOutput) ToGetFlowLogServiceResultOutput() GetFlow
 
 func (o GetFlowLogServiceResultOutput) ToGetFlowLogServiceResultOutputWithContext(ctx context.Context) GetFlowLogServiceResultOutput {
 	return o
-}
-
-func (o GetFlowLogServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetFlowLogServiceResult] {
-	return pulumix.Output[GetFlowLogServiceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetFlowLogServiceResultOutput) Enable() pulumi.StringPtrOutput {

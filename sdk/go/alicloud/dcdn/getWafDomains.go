@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Dcdn Waf Domains of the current Alibaba Cloud user.
@@ -117,12 +116,6 @@ func (o GetWafDomainsResultOutput) ToGetWafDomainsResultOutput() GetWafDomainsRe
 
 func (o GetWafDomainsResultOutput) ToGetWafDomainsResultOutputWithContext(ctx context.Context) GetWafDomainsResultOutput {
 	return o
-}
-
-func (o GetWafDomainsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetWafDomainsResult] {
-	return pulumix.Output[GetWafDomainsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetWafDomainsResultOutput) Domains() GetWafDomainsDomainArrayOutput {

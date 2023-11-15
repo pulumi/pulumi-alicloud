@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Brain Industrial Pid Organizations of the current Alibaba Cloud user.
@@ -123,12 +122,6 @@ func (o GetIndustrialPidOrganizationsResultOutput) ToGetIndustrialPidOrganizatio
 
 func (o GetIndustrialPidOrganizationsResultOutput) ToGetIndustrialPidOrganizationsResultOutputWithContext(ctx context.Context) GetIndustrialPidOrganizationsResultOutput {
 	return o
-}
-
-func (o GetIndustrialPidOrganizationsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetIndustrialPidOrganizationsResult] {
-	return pulumix.Output[GetIndustrialPidOrganizationsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

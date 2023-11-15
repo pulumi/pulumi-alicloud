@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Global Accelerator (GA) Ip Set resource.
@@ -237,12 +236,6 @@ func (i *IpSet) ToIpSetOutputWithContext(ctx context.Context) IpSetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IpSetOutput)
 }
 
-func (i *IpSet) ToOutput(ctx context.Context) pulumix.Output[*IpSet] {
-	return pulumix.Output[*IpSet]{
-		OutputState: i.ToIpSetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IpSetArrayInput is an input type that accepts IpSetArray and IpSetArrayOutput values.
 // You can construct a concrete instance of `IpSetArrayInput` via:
 //
@@ -266,12 +259,6 @@ func (i IpSetArray) ToIpSetArrayOutput() IpSetArrayOutput {
 
 func (i IpSetArray) ToIpSetArrayOutputWithContext(ctx context.Context) IpSetArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IpSetArrayOutput)
-}
-
-func (i IpSetArray) ToOutput(ctx context.Context) pulumix.Output[[]*IpSet] {
-	return pulumix.Output[[]*IpSet]{
-		OutputState: i.ToIpSetArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IpSetMapInput is an input type that accepts IpSetMap and IpSetMapOutput values.
@@ -299,12 +286,6 @@ func (i IpSetMap) ToIpSetMapOutputWithContext(ctx context.Context) IpSetMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(IpSetMapOutput)
 }
 
-func (i IpSetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IpSet] {
-	return pulumix.Output[map[string]*IpSet]{
-		OutputState: i.ToIpSetMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IpSetOutput struct{ *pulumi.OutputState }
 
 func (IpSetOutput) ElementType() reflect.Type {
@@ -317,12 +298,6 @@ func (o IpSetOutput) ToIpSetOutput() IpSetOutput {
 
 func (o IpSetOutput) ToIpSetOutputWithContext(ctx context.Context) IpSetOutput {
 	return o
-}
-
-func (o IpSetOutput) ToOutput(ctx context.Context) pulumix.Output[*IpSet] {
-	return pulumix.Output[*IpSet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of an acceleration region.
@@ -375,12 +350,6 @@ func (o IpSetArrayOutput) ToIpSetArrayOutputWithContext(ctx context.Context) IpS
 	return o
 }
 
-func (o IpSetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IpSet] {
-	return pulumix.Output[[]*IpSet]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IpSetArrayOutput) Index(i pulumi.IntInput) IpSetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IpSet {
 		return vs[0].([]*IpSet)[vs[1].(int)]
@@ -399,12 +368,6 @@ func (o IpSetMapOutput) ToIpSetMapOutput() IpSetMapOutput {
 
 func (o IpSetMapOutput) ToIpSetMapOutputWithContext(ctx context.Context) IpSetMapOutput {
 	return o
-}
-
-func (o IpSetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IpSet] {
-	return pulumix.Output[map[string]*IpSet]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IpSetMapOutput) MapIndex(k pulumi.StringInput) IpSetOutput {

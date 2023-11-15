@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Click House DBCluster of the current Alibaba Cloud user.
@@ -139,12 +138,6 @@ func (o GetDbClustersResultOutput) ToGetDbClustersResultOutput() GetDbClustersRe
 
 func (o GetDbClustersResultOutput) ToGetDbClustersResultOutputWithContext(ctx context.Context) GetDbClustersResultOutput {
 	return o
-}
-
-func (o GetDbClustersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDbClustersResult] {
-	return pulumix.Output[GetDbClustersResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDbClustersResultOutput) Clusters() GetDbClustersClusterArrayOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list of ALIKAFKA Consumer Groups in an Alibaba Cloud account according to the specified filters.
@@ -124,12 +123,6 @@ func (o GetConsumerGroupsResultOutput) ToGetConsumerGroupsResultOutput() GetCons
 
 func (o GetConsumerGroupsResultOutput) ToGetConsumerGroupsResultOutputWithContext(ctx context.Context) GetConsumerGroupsResultOutput {
 	return o
-}
-
-func (o GetConsumerGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetConsumerGroupsResult] {
-	return pulumix.Output[GetConsumerGroupsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetConsumerGroupsResultOutput) ConsumerIdRegex() pulumi.StringPtrOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECS Activation resource.
@@ -193,12 +192,6 @@ func (i *Activation) ToActivationOutputWithContext(ctx context.Context) Activati
 	return pulumi.ToOutputWithContext(ctx, i).(ActivationOutput)
 }
 
-func (i *Activation) ToOutput(ctx context.Context) pulumix.Output[*Activation] {
-	return pulumix.Output[*Activation]{
-		OutputState: i.ToActivationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ActivationArrayInput is an input type that accepts ActivationArray and ActivationArrayOutput values.
 // You can construct a concrete instance of `ActivationArrayInput` via:
 //
@@ -222,12 +215,6 @@ func (i ActivationArray) ToActivationArrayOutput() ActivationArrayOutput {
 
 func (i ActivationArray) ToActivationArrayOutputWithContext(ctx context.Context) ActivationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ActivationArrayOutput)
-}
-
-func (i ActivationArray) ToOutput(ctx context.Context) pulumix.Output[[]*Activation] {
-	return pulumix.Output[[]*Activation]{
-		OutputState: i.ToActivationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ActivationMapInput is an input type that accepts ActivationMap and ActivationMapOutput values.
@@ -255,12 +242,6 @@ func (i ActivationMap) ToActivationMapOutputWithContext(ctx context.Context) Act
 	return pulumi.ToOutputWithContext(ctx, i).(ActivationMapOutput)
 }
 
-func (i ActivationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Activation] {
-	return pulumix.Output[map[string]*Activation]{
-		OutputState: i.ToActivationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActivationOutput struct{ *pulumi.OutputState }
 
 func (ActivationOutput) ElementType() reflect.Type {
@@ -273,12 +254,6 @@ func (o ActivationOutput) ToActivationOutput() ActivationOutput {
 
 func (o ActivationOutput) ToActivationOutputWithContext(ctx context.Context) ActivationOutput {
 	return o
-}
-
-func (o ActivationOutput) ToOutput(ctx context.Context) pulumix.Output[*Activation] {
-	return pulumix.Output[*Activation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of the activation code. The description can be 1 to 100 characters in length and cannot start with `http://` or `https://`.
@@ -322,12 +297,6 @@ func (o ActivationArrayOutput) ToActivationArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o ActivationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Activation] {
-	return pulumix.Output[[]*Activation]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ActivationArrayOutput) Index(i pulumi.IntInput) ActivationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Activation {
 		return vs[0].([]*Activation)[vs[1].(int)]
@@ -346,12 +315,6 @@ func (o ActivationMapOutput) ToActivationMapOutput() ActivationMapOutput {
 
 func (o ActivationMapOutput) ToActivationMapOutputWithContext(ctx context.Context) ActivationMapOutput {
 	return o
-}
-
-func (o ActivationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Activation] {
-	return pulumix.Output[map[string]*Activation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActivationMapOutput) MapIndex(k pulumi.StringInput) ActivationOutput {

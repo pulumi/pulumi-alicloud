@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a AnalyticDB for PostgreSQL instance resource which storage type is flexible. Compared to the reserved storage ADB PG instance, you can scale up each disk and smoothly scale out nodes online.\
@@ -401,12 +400,6 @@ func (i *ElasticInstance) ToElasticInstanceOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ElasticInstanceOutput)
 }
 
-func (i *ElasticInstance) ToOutput(ctx context.Context) pulumix.Output[*ElasticInstance] {
-	return pulumix.Output[*ElasticInstance]{
-		OutputState: i.ToElasticInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElasticInstanceArrayInput is an input type that accepts ElasticInstanceArray and ElasticInstanceArrayOutput values.
 // You can construct a concrete instance of `ElasticInstanceArrayInput` via:
 //
@@ -430,12 +423,6 @@ func (i ElasticInstanceArray) ToElasticInstanceArrayOutput() ElasticInstanceArra
 
 func (i ElasticInstanceArray) ToElasticInstanceArrayOutputWithContext(ctx context.Context) ElasticInstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ElasticInstanceArrayOutput)
-}
-
-func (i ElasticInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*ElasticInstance] {
-	return pulumix.Output[[]*ElasticInstance]{
-		OutputState: i.ToElasticInstanceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ElasticInstanceMapInput is an input type that accepts ElasticInstanceMap and ElasticInstanceMapOutput values.
@@ -463,12 +450,6 @@ func (i ElasticInstanceMap) ToElasticInstanceMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ElasticInstanceMapOutput)
 }
 
-func (i ElasticInstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ElasticInstance] {
-	return pulumix.Output[map[string]*ElasticInstance]{
-		OutputState: i.ToElasticInstanceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElasticInstanceOutput struct{ *pulumi.OutputState }
 
 func (ElasticInstanceOutput) ElementType() reflect.Type {
@@ -481,12 +462,6 @@ func (o ElasticInstanceOutput) ToElasticInstanceOutput() ElasticInstanceOutput {
 
 func (o ElasticInstanceOutput) ToElasticInstanceOutputWithContext(ctx context.Context) ElasticInstanceOutput {
 	return o
-}
-
-func (o ElasticInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*ElasticInstance] {
-	return pulumix.Output[*ElasticInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ADB PG instance connection string.
@@ -612,12 +587,6 @@ func (o ElasticInstanceArrayOutput) ToElasticInstanceArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o ElasticInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ElasticInstance] {
-	return pulumix.Output[[]*ElasticInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ElasticInstanceArrayOutput) Index(i pulumi.IntInput) ElasticInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ElasticInstance {
 		return vs[0].([]*ElasticInstance)[vs[1].(int)]
@@ -636,12 +605,6 @@ func (o ElasticInstanceMapOutput) ToElasticInstanceMapOutput() ElasticInstanceMa
 
 func (o ElasticInstanceMapOutput) ToElasticInstanceMapOutputWithContext(ctx context.Context) ElasticInstanceMapOutput {
 	return o
-}
-
-func (o ElasticInstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ElasticInstance] {
-	return pulumix.Output[map[string]*ElasticInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElasticInstanceMapOutput) MapIndex(k pulumi.StringInput) ElasticInstanceOutput {

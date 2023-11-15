@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Firewall Control Policy resource.
@@ -331,12 +330,6 @@ func (i *ControlPolicy) ToControlPolicyOutputWithContext(ctx context.Context) Co
 	return pulumi.ToOutputWithContext(ctx, i).(ControlPolicyOutput)
 }
 
-func (i *ControlPolicy) ToOutput(ctx context.Context) pulumix.Output[*ControlPolicy] {
-	return pulumix.Output[*ControlPolicy]{
-		OutputState: i.ToControlPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ControlPolicyArrayInput is an input type that accepts ControlPolicyArray and ControlPolicyArrayOutput values.
 // You can construct a concrete instance of `ControlPolicyArrayInput` via:
 //
@@ -360,12 +353,6 @@ func (i ControlPolicyArray) ToControlPolicyArrayOutput() ControlPolicyArrayOutpu
 
 func (i ControlPolicyArray) ToControlPolicyArrayOutputWithContext(ctx context.Context) ControlPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ControlPolicyArrayOutput)
-}
-
-func (i ControlPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*ControlPolicy] {
-	return pulumix.Output[[]*ControlPolicy]{
-		OutputState: i.ToControlPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ControlPolicyMapInput is an input type that accepts ControlPolicyMap and ControlPolicyMapOutput values.
@@ -393,12 +380,6 @@ func (i ControlPolicyMap) ToControlPolicyMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ControlPolicyMapOutput)
 }
 
-func (i ControlPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ControlPolicy] {
-	return pulumix.Output[map[string]*ControlPolicy]{
-		OutputState: i.ToControlPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ControlPolicyOutput struct{ *pulumi.OutputState }
 
 func (ControlPolicyOutput) ElementType() reflect.Type {
@@ -411,12 +392,6 @@ func (o ControlPolicyOutput) ToControlPolicyOutput() ControlPolicyOutput {
 
 func (o ControlPolicyOutput) ToControlPolicyOutputWithContext(ctx context.Context) ControlPolicyOutput {
 	return o
-}
-
-func (o ControlPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ControlPolicy] {
-	return pulumix.Output[*ControlPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
@@ -518,12 +493,6 @@ func (o ControlPolicyArrayOutput) ToControlPolicyArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o ControlPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ControlPolicy] {
-	return pulumix.Output[[]*ControlPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ControlPolicyArrayOutput) Index(i pulumi.IntInput) ControlPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ControlPolicy {
 		return vs[0].([]*ControlPolicy)[vs[1].(int)]
@@ -542,12 +511,6 @@ func (o ControlPolicyMapOutput) ToControlPolicyMapOutput() ControlPolicyMapOutpu
 
 func (o ControlPolicyMapOutput) ToControlPolicyMapOutputWithContext(ctx context.Context) ControlPolicyMapOutput {
 	return o
-}
-
-func (o ControlPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ControlPolicy] {
-	return pulumix.Output[map[string]*ControlPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ControlPolicyMapOutput) MapIndex(k pulumi.StringInput) ControlPolicyOutput {

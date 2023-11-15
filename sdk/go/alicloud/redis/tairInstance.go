@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -340,12 +339,6 @@ func (i *TairInstance) ToTairInstanceOutputWithContext(ctx context.Context) Tair
 	return pulumi.ToOutputWithContext(ctx, i).(TairInstanceOutput)
 }
 
-func (i *TairInstance) ToOutput(ctx context.Context) pulumix.Output[*TairInstance] {
-	return pulumix.Output[*TairInstance]{
-		OutputState: i.ToTairInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TairInstanceArrayInput is an input type that accepts TairInstanceArray and TairInstanceArrayOutput values.
 // You can construct a concrete instance of `TairInstanceArrayInput` via:
 //
@@ -369,12 +362,6 @@ func (i TairInstanceArray) ToTairInstanceArrayOutput() TairInstanceArrayOutput {
 
 func (i TairInstanceArray) ToTairInstanceArrayOutputWithContext(ctx context.Context) TairInstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TairInstanceArrayOutput)
-}
-
-func (i TairInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*TairInstance] {
-	return pulumix.Output[[]*TairInstance]{
-		OutputState: i.ToTairInstanceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TairInstanceMapInput is an input type that accepts TairInstanceMap and TairInstanceMapOutput values.
@@ -402,12 +389,6 @@ func (i TairInstanceMap) ToTairInstanceMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(TairInstanceMapOutput)
 }
 
-func (i TairInstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TairInstance] {
-	return pulumix.Output[map[string]*TairInstance]{
-		OutputState: i.ToTairInstanceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TairInstanceOutput struct{ *pulumi.OutputState }
 
 func (TairInstanceOutput) ElementType() reflect.Type {
@@ -420,12 +401,6 @@ func (o TairInstanceOutput) ToTairInstanceOutput() TairInstanceOutput {
 
 func (o TairInstanceOutput) ToTairInstanceOutputWithContext(ctx context.Context) TairInstanceOutput {
 	return o
-}
-
-func (o TairInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*TairInstance] {
-	return pulumix.Output[*TairInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies whether to enable auto-renewal for the instance. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
@@ -557,12 +532,6 @@ func (o TairInstanceArrayOutput) ToTairInstanceArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o TairInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TairInstance] {
-	return pulumix.Output[[]*TairInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TairInstanceArrayOutput) Index(i pulumi.IntInput) TairInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TairInstance {
 		return vs[0].([]*TairInstance)[vs[1].(int)]
@@ -581,12 +550,6 @@ func (o TairInstanceMapOutput) ToTairInstanceMapOutput() TairInstanceMapOutput {
 
 func (o TairInstanceMapOutput) ToTairInstanceMapOutputWithContext(ctx context.Context) TairInstanceMapOutput {
 	return o
-}
-
-func (o TairInstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TairInstance] {
-	return pulumix.Output[map[string]*TairInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TairInstanceMapOutput) MapIndex(k pulumi.StringInput) TairInstanceOutput {

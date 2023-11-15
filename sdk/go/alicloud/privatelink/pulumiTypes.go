@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -59,12 +58,6 @@ func (i GetVpcEndpointConnectionsConnectionArgs) ToGetVpcEndpointConnectionsConn
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcEndpointConnectionsConnectionOutput)
 }
 
-func (i GetVpcEndpointConnectionsConnectionArgs) ToOutput(ctx context.Context) pulumix.Output[GetVpcEndpointConnectionsConnection] {
-	return pulumix.Output[GetVpcEndpointConnectionsConnection]{
-		OutputState: i.ToGetVpcEndpointConnectionsConnectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetVpcEndpointConnectionsConnectionArrayInput is an input type that accepts GetVpcEndpointConnectionsConnectionArray and GetVpcEndpointConnectionsConnectionArrayOutput values.
 // You can construct a concrete instance of `GetVpcEndpointConnectionsConnectionArrayInput` via:
 //
@@ -90,12 +83,6 @@ func (i GetVpcEndpointConnectionsConnectionArray) ToGetVpcEndpointConnectionsCon
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcEndpointConnectionsConnectionArrayOutput)
 }
 
-func (i GetVpcEndpointConnectionsConnectionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcEndpointConnectionsConnection] {
-	return pulumix.Output[[]GetVpcEndpointConnectionsConnection]{
-		OutputState: i.ToGetVpcEndpointConnectionsConnectionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetVpcEndpointConnectionsConnectionOutput struct{ *pulumi.OutputState }
 
 func (GetVpcEndpointConnectionsConnectionOutput) ElementType() reflect.Type {
@@ -108,12 +95,6 @@ func (o GetVpcEndpointConnectionsConnectionOutput) ToGetVpcEndpointConnectionsCo
 
 func (o GetVpcEndpointConnectionsConnectionOutput) ToGetVpcEndpointConnectionsConnectionOutputWithContext(ctx context.Context) GetVpcEndpointConnectionsConnectionOutput {
 	return o
-}
-
-func (o GetVpcEndpointConnectionsConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpcEndpointConnectionsConnection] {
-	return pulumix.Output[GetVpcEndpointConnectionsConnection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Bandwidth.
@@ -148,12 +129,6 @@ func (o GetVpcEndpointConnectionsConnectionArrayOutput) ToGetVpcEndpointConnecti
 
 func (o GetVpcEndpointConnectionsConnectionArrayOutput) ToGetVpcEndpointConnectionsConnectionArrayOutputWithContext(ctx context.Context) GetVpcEndpointConnectionsConnectionArrayOutput {
 	return o
-}
-
-func (o GetVpcEndpointConnectionsConnectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcEndpointConnectionsConnection] {
-	return pulumix.Output[[]GetVpcEndpointConnectionsConnection]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetVpcEndpointConnectionsConnectionArrayOutput) Index(i pulumi.IntInput) GetVpcEndpointConnectionsConnectionOutput {
@@ -203,12 +178,6 @@ func (i GetVpcEndpointServiceResourcesResourceArgs) ToGetVpcEndpointServiceResou
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcEndpointServiceResourcesResourceOutput)
 }
 
-func (i GetVpcEndpointServiceResourcesResourceArgs) ToOutput(ctx context.Context) pulumix.Output[GetVpcEndpointServiceResourcesResource] {
-	return pulumix.Output[GetVpcEndpointServiceResourcesResource]{
-		OutputState: i.ToGetVpcEndpointServiceResourcesResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetVpcEndpointServiceResourcesResourceArrayInput is an input type that accepts GetVpcEndpointServiceResourcesResourceArray and GetVpcEndpointServiceResourcesResourceArrayOutput values.
 // You can construct a concrete instance of `GetVpcEndpointServiceResourcesResourceArrayInput` via:
 //
@@ -234,12 +203,6 @@ func (i GetVpcEndpointServiceResourcesResourceArray) ToGetVpcEndpointServiceReso
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcEndpointServiceResourcesResourceArrayOutput)
 }
 
-func (i GetVpcEndpointServiceResourcesResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcEndpointServiceResourcesResource] {
-	return pulumix.Output[[]GetVpcEndpointServiceResourcesResource]{
-		OutputState: i.ToGetVpcEndpointServiceResourcesResourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetVpcEndpointServiceResourcesResourceOutput struct{ *pulumi.OutputState }
 
 func (GetVpcEndpointServiceResourcesResourceOutput) ElementType() reflect.Type {
@@ -252,12 +215,6 @@ func (o GetVpcEndpointServiceResourcesResourceOutput) ToGetVpcEndpointServiceRes
 
 func (o GetVpcEndpointServiceResourcesResourceOutput) ToGetVpcEndpointServiceResourcesResourceOutputWithContext(ctx context.Context) GetVpcEndpointServiceResourcesResourceOutput {
 	return o
-}
-
-func (o GetVpcEndpointServiceResourcesResourceOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpcEndpointServiceResourcesResource] {
-	return pulumix.Output[GetVpcEndpointServiceResourcesResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Vpc Endpoint Service Resource.
@@ -287,12 +244,6 @@ func (o GetVpcEndpointServiceResourcesResourceArrayOutput) ToGetVpcEndpointServi
 
 func (o GetVpcEndpointServiceResourcesResourceArrayOutput) ToGetVpcEndpointServiceResourcesResourceArrayOutputWithContext(ctx context.Context) GetVpcEndpointServiceResourcesResourceArrayOutput {
 	return o
-}
-
-func (o GetVpcEndpointServiceResourcesResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcEndpointServiceResourcesResource] {
-	return pulumix.Output[[]GetVpcEndpointServiceResourcesResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetVpcEndpointServiceResourcesResourceArrayOutput) Index(i pulumi.IntInput) GetVpcEndpointServiceResourcesResourceOutput {
@@ -338,12 +289,6 @@ func (i GetVpcEndpointServiceUsersUserArgs) ToGetVpcEndpointServiceUsersUserOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcEndpointServiceUsersUserOutput)
 }
 
-func (i GetVpcEndpointServiceUsersUserArgs) ToOutput(ctx context.Context) pulumix.Output[GetVpcEndpointServiceUsersUser] {
-	return pulumix.Output[GetVpcEndpointServiceUsersUser]{
-		OutputState: i.ToGetVpcEndpointServiceUsersUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetVpcEndpointServiceUsersUserArrayInput is an input type that accepts GetVpcEndpointServiceUsersUserArray and GetVpcEndpointServiceUsersUserArrayOutput values.
 // You can construct a concrete instance of `GetVpcEndpointServiceUsersUserArrayInput` via:
 //
@@ -369,12 +314,6 @@ func (i GetVpcEndpointServiceUsersUserArray) ToGetVpcEndpointServiceUsersUserArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcEndpointServiceUsersUserArrayOutput)
 }
 
-func (i GetVpcEndpointServiceUsersUserArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcEndpointServiceUsersUser] {
-	return pulumix.Output[[]GetVpcEndpointServiceUsersUser]{
-		OutputState: i.ToGetVpcEndpointServiceUsersUserArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetVpcEndpointServiceUsersUserOutput struct{ *pulumi.OutputState }
 
 func (GetVpcEndpointServiceUsersUserOutput) ElementType() reflect.Type {
@@ -387,12 +326,6 @@ func (o GetVpcEndpointServiceUsersUserOutput) ToGetVpcEndpointServiceUsersUserOu
 
 func (o GetVpcEndpointServiceUsersUserOutput) ToGetVpcEndpointServiceUsersUserOutputWithContext(ctx context.Context) GetVpcEndpointServiceUsersUserOutput {
 	return o
-}
-
-func (o GetVpcEndpointServiceUsersUserOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpcEndpointServiceUsersUser] {
-	return pulumix.Output[GetVpcEndpointServiceUsersUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Vpc Endpoint Service User.
@@ -417,12 +350,6 @@ func (o GetVpcEndpointServiceUsersUserArrayOutput) ToGetVpcEndpointServiceUsersU
 
 func (o GetVpcEndpointServiceUsersUserArrayOutput) ToGetVpcEndpointServiceUsersUserArrayOutputWithContext(ctx context.Context) GetVpcEndpointServiceUsersUserArrayOutput {
 	return o
-}
-
-func (o GetVpcEndpointServiceUsersUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcEndpointServiceUsersUser] {
-	return pulumix.Output[[]GetVpcEndpointServiceUsersUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetVpcEndpointServiceUsersUserArrayOutput) Index(i pulumi.IntInput) GetVpcEndpointServiceUsersUserOutput {
@@ -496,12 +423,6 @@ func (i GetVpcEndpointServicesServiceArgs) ToGetVpcEndpointServicesServiceOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcEndpointServicesServiceOutput)
 }
 
-func (i GetVpcEndpointServicesServiceArgs) ToOutput(ctx context.Context) pulumix.Output[GetVpcEndpointServicesService] {
-	return pulumix.Output[GetVpcEndpointServicesService]{
-		OutputState: i.ToGetVpcEndpointServicesServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetVpcEndpointServicesServiceArrayInput is an input type that accepts GetVpcEndpointServicesServiceArray and GetVpcEndpointServicesServiceArrayOutput values.
 // You can construct a concrete instance of `GetVpcEndpointServicesServiceArrayInput` via:
 //
@@ -527,12 +448,6 @@ func (i GetVpcEndpointServicesServiceArray) ToGetVpcEndpointServicesServiceArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcEndpointServicesServiceArrayOutput)
 }
 
-func (i GetVpcEndpointServicesServiceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcEndpointServicesService] {
-	return pulumix.Output[[]GetVpcEndpointServicesService]{
-		OutputState: i.ToGetVpcEndpointServicesServiceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetVpcEndpointServicesServiceOutput struct{ *pulumi.OutputState }
 
 func (GetVpcEndpointServicesServiceOutput) ElementType() reflect.Type {
@@ -545,12 +460,6 @@ func (o GetVpcEndpointServicesServiceOutput) ToGetVpcEndpointServicesServiceOutp
 
 func (o GetVpcEndpointServicesServiceOutput) ToGetVpcEndpointServicesServiceOutputWithContext(ctx context.Context) GetVpcEndpointServicesServiceOutput {
 	return o
-}
-
-func (o GetVpcEndpointServicesServiceOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpcEndpointServicesService] {
-	return pulumix.Output[GetVpcEndpointServicesService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to automatically accept terminal node connections..
@@ -610,12 +519,6 @@ func (o GetVpcEndpointServicesServiceArrayOutput) ToGetVpcEndpointServicesServic
 
 func (o GetVpcEndpointServicesServiceArrayOutput) ToGetVpcEndpointServicesServiceArrayOutputWithContext(ctx context.Context) GetVpcEndpointServicesServiceArrayOutput {
 	return o
-}
-
-func (o GetVpcEndpointServicesServiceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcEndpointServicesService] {
-	return pulumix.Output[[]GetVpcEndpointServicesService]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetVpcEndpointServicesServiceArrayOutput) Index(i pulumi.IntInput) GetVpcEndpointServicesServiceOutput {
@@ -681,12 +584,6 @@ func (i GetVpcEndpointZonesZoneArgs) ToGetVpcEndpointZonesZoneOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcEndpointZonesZoneOutput)
 }
 
-func (i GetVpcEndpointZonesZoneArgs) ToOutput(ctx context.Context) pulumix.Output[GetVpcEndpointZonesZone] {
-	return pulumix.Output[GetVpcEndpointZonesZone]{
-		OutputState: i.ToGetVpcEndpointZonesZoneOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetVpcEndpointZonesZoneArrayInput is an input type that accepts GetVpcEndpointZonesZoneArray and GetVpcEndpointZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetVpcEndpointZonesZoneArrayInput` via:
 //
@@ -712,12 +609,6 @@ func (i GetVpcEndpointZonesZoneArray) ToGetVpcEndpointZonesZoneArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcEndpointZonesZoneArrayOutput)
 }
 
-func (i GetVpcEndpointZonesZoneArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcEndpointZonesZone] {
-	return pulumix.Output[[]GetVpcEndpointZonesZone]{
-		OutputState: i.ToGetVpcEndpointZonesZoneArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetVpcEndpointZonesZoneOutput struct{ *pulumi.OutputState }
 
 func (GetVpcEndpointZonesZoneOutput) ElementType() reflect.Type {
@@ -730,12 +621,6 @@ func (o GetVpcEndpointZonesZoneOutput) ToGetVpcEndpointZonesZoneOutput() GetVpcE
 
 func (o GetVpcEndpointZonesZoneOutput) ToGetVpcEndpointZonesZoneOutputWithContext(ctx context.Context) GetVpcEndpointZonesZoneOutput {
 	return o
-}
-
-func (o GetVpcEndpointZonesZoneOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpcEndpointZonesZone] {
-	return pulumix.Output[GetVpcEndpointZonesZone]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Terminal node network card.
@@ -785,12 +670,6 @@ func (o GetVpcEndpointZonesZoneArrayOutput) ToGetVpcEndpointZonesZoneArrayOutput
 
 func (o GetVpcEndpointZonesZoneArrayOutput) ToGetVpcEndpointZonesZoneArrayOutputWithContext(ctx context.Context) GetVpcEndpointZonesZoneArrayOutput {
 	return o
-}
-
-func (o GetVpcEndpointZonesZoneArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcEndpointZonesZone] {
-	return pulumix.Output[[]GetVpcEndpointZonesZone]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetVpcEndpointZonesZoneArrayOutput) Index(i pulumi.IntInput) GetVpcEndpointZonesZoneOutput {
@@ -880,12 +759,6 @@ func (i GetVpcEndpointsEndpointArgs) ToGetVpcEndpointsEndpointOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcEndpointsEndpointOutput)
 }
 
-func (i GetVpcEndpointsEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[GetVpcEndpointsEndpoint] {
-	return pulumix.Output[GetVpcEndpointsEndpoint]{
-		OutputState: i.ToGetVpcEndpointsEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetVpcEndpointsEndpointArrayInput is an input type that accepts GetVpcEndpointsEndpointArray and GetVpcEndpointsEndpointArrayOutput values.
 // You can construct a concrete instance of `GetVpcEndpointsEndpointArrayInput` via:
 //
@@ -911,12 +784,6 @@ func (i GetVpcEndpointsEndpointArray) ToGetVpcEndpointsEndpointArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetVpcEndpointsEndpointArrayOutput)
 }
 
-func (i GetVpcEndpointsEndpointArray) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcEndpointsEndpoint] {
-	return pulumix.Output[[]GetVpcEndpointsEndpoint]{
-		OutputState: i.ToGetVpcEndpointsEndpointArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetVpcEndpointsEndpointOutput struct{ *pulumi.OutputState }
 
 func (GetVpcEndpointsEndpointOutput) ElementType() reflect.Type {
@@ -929,12 +796,6 @@ func (o GetVpcEndpointsEndpointOutput) ToGetVpcEndpointsEndpointOutput() GetVpcE
 
 func (o GetVpcEndpointsEndpointOutput) ToGetVpcEndpointsEndpointOutputWithContext(ctx context.Context) GetVpcEndpointsEndpointOutput {
 	return o
-}
-
-func (o GetVpcEndpointsEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpcEndpointsEndpoint] {
-	return pulumix.Output[GetVpcEndpointsEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Bandwidth.
@@ -1014,12 +875,6 @@ func (o GetVpcEndpointsEndpointArrayOutput) ToGetVpcEndpointsEndpointArrayOutput
 
 func (o GetVpcEndpointsEndpointArrayOutput) ToGetVpcEndpointsEndpointArrayOutputWithContext(ctx context.Context) GetVpcEndpointsEndpointArrayOutput {
 	return o
-}
-
-func (o GetVpcEndpointsEndpointArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetVpcEndpointsEndpoint] {
-	return pulumix.Output[[]GetVpcEndpointsEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetVpcEndpointsEndpointArrayOutput) Index(i pulumi.IntInput) GetVpcEndpointsEndpointOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Bastion Host Host Account Attachment resource to add list host accounts into one user group and one host group.
@@ -272,12 +271,6 @@ func (i *HostGroupAccountUserGroupAttachment) ToHostGroupAccountUserGroupAttachm
 	return pulumi.ToOutputWithContext(ctx, i).(HostGroupAccountUserGroupAttachmentOutput)
 }
 
-func (i *HostGroupAccountUserGroupAttachment) ToOutput(ctx context.Context) pulumix.Output[*HostGroupAccountUserGroupAttachment] {
-	return pulumix.Output[*HostGroupAccountUserGroupAttachment]{
-		OutputState: i.ToHostGroupAccountUserGroupAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HostGroupAccountUserGroupAttachmentArrayInput is an input type that accepts HostGroupAccountUserGroupAttachmentArray and HostGroupAccountUserGroupAttachmentArrayOutput values.
 // You can construct a concrete instance of `HostGroupAccountUserGroupAttachmentArrayInput` via:
 //
@@ -301,12 +294,6 @@ func (i HostGroupAccountUserGroupAttachmentArray) ToHostGroupAccountUserGroupAtt
 
 func (i HostGroupAccountUserGroupAttachmentArray) ToHostGroupAccountUserGroupAttachmentArrayOutputWithContext(ctx context.Context) HostGroupAccountUserGroupAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostGroupAccountUserGroupAttachmentArrayOutput)
-}
-
-func (i HostGroupAccountUserGroupAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*HostGroupAccountUserGroupAttachment] {
-	return pulumix.Output[[]*HostGroupAccountUserGroupAttachment]{
-		OutputState: i.ToHostGroupAccountUserGroupAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HostGroupAccountUserGroupAttachmentMapInput is an input type that accepts HostGroupAccountUserGroupAttachmentMap and HostGroupAccountUserGroupAttachmentMapOutput values.
@@ -334,12 +321,6 @@ func (i HostGroupAccountUserGroupAttachmentMap) ToHostGroupAccountUserGroupAttac
 	return pulumi.ToOutputWithContext(ctx, i).(HostGroupAccountUserGroupAttachmentMapOutput)
 }
 
-func (i HostGroupAccountUserGroupAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostGroupAccountUserGroupAttachment] {
-	return pulumix.Output[map[string]*HostGroupAccountUserGroupAttachment]{
-		OutputState: i.ToHostGroupAccountUserGroupAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HostGroupAccountUserGroupAttachmentOutput struct{ *pulumi.OutputState }
 
 func (HostGroupAccountUserGroupAttachmentOutput) ElementType() reflect.Type {
@@ -352,12 +333,6 @@ func (o HostGroupAccountUserGroupAttachmentOutput) ToHostGroupAccountUserGroupAt
 
 func (o HostGroupAccountUserGroupAttachmentOutput) ToHostGroupAccountUserGroupAttachmentOutputWithContext(ctx context.Context) HostGroupAccountUserGroupAttachmentOutput {
 	return o
-}
-
-func (o HostGroupAccountUserGroupAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*HostGroupAccountUserGroupAttachment] {
-	return pulumix.Output[*HostGroupAccountUserGroupAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list names of the host account.
@@ -394,12 +369,6 @@ func (o HostGroupAccountUserGroupAttachmentArrayOutput) ToHostGroupAccountUserGr
 	return o
 }
 
-func (o HostGroupAccountUserGroupAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HostGroupAccountUserGroupAttachment] {
-	return pulumix.Output[[]*HostGroupAccountUserGroupAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HostGroupAccountUserGroupAttachmentArrayOutput) Index(i pulumi.IntInput) HostGroupAccountUserGroupAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HostGroupAccountUserGroupAttachment {
 		return vs[0].([]*HostGroupAccountUserGroupAttachment)[vs[1].(int)]
@@ -418,12 +387,6 @@ func (o HostGroupAccountUserGroupAttachmentMapOutput) ToHostGroupAccountUserGrou
 
 func (o HostGroupAccountUserGroupAttachmentMapOutput) ToHostGroupAccountUserGroupAttachmentMapOutputWithContext(ctx context.Context) HostGroupAccountUserGroupAttachmentMapOutput {
 	return o
-}
-
-func (o HostGroupAccountUserGroupAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostGroupAccountUserGroupAttachment] {
-	return pulumix.Output[map[string]*HostGroupAccountUserGroupAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HostGroupAccountUserGroupAttachmentMapOutput) MapIndex(k pulumi.StringInput) HostGroupAccountUserGroupAttachmentOutput {

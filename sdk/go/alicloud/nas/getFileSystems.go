@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides FileSystems available to the user.
@@ -137,12 +136,6 @@ func (o GetFileSystemsResultOutput) ToGetFileSystemsResultOutput() GetFileSystem
 
 func (o GetFileSystemsResultOutput) ToGetFileSystemsResultOutputWithContext(ctx context.Context) GetFileSystemsResultOutput {
 	return o
-}
-
-func (o GetFileSystemsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetFileSystemsResult] {
-	return pulumix.Output[GetFileSystemsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetFileSystemsResultOutput) DescriptionRegex() pulumi.StringPtrOutput {

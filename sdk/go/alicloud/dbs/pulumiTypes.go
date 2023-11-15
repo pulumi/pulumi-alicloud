@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -151,12 +150,6 @@ func (i GetBackupPlansPlanArgs) ToGetBackupPlansPlanOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPlansPlanOutput)
 }
 
-func (i GetBackupPlansPlanArgs) ToOutput(ctx context.Context) pulumix.Output[GetBackupPlansPlan] {
-	return pulumix.Output[GetBackupPlansPlan]{
-		OutputState: i.ToGetBackupPlansPlanOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetBackupPlansPlanArrayInput is an input type that accepts GetBackupPlansPlanArray and GetBackupPlansPlanArrayOutput values.
 // You can construct a concrete instance of `GetBackupPlansPlanArrayInput` via:
 //
@@ -182,12 +175,6 @@ func (i GetBackupPlansPlanArray) ToGetBackupPlansPlanArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPlansPlanArrayOutput)
 }
 
-func (i GetBackupPlansPlanArray) ToOutput(ctx context.Context) pulumix.Output[[]GetBackupPlansPlan] {
-	return pulumix.Output[[]GetBackupPlansPlan]{
-		OutputState: i.ToGetBackupPlansPlanArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetBackupPlansPlanOutput struct{ *pulumi.OutputState }
 
 func (GetBackupPlansPlanOutput) ElementType() reflect.Type {
@@ -200,12 +187,6 @@ func (o GetBackupPlansPlanOutput) ToGetBackupPlansPlanOutput() GetBackupPlansPla
 
 func (o GetBackupPlansPlanOutput) ToGetBackupPlansPlanOutputWithContext(ctx context.Context) GetBackupPlansPlanOutput {
 	return o
-}
-
-func (o GetBackupPlansPlanOutput) ToOutput(ctx context.Context) pulumix.Output[GetBackupPlansPlan] {
-	return pulumix.Output[GetBackupPlansPlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the backup gateway.
@@ -355,12 +336,6 @@ func (o GetBackupPlansPlanArrayOutput) ToGetBackupPlansPlanArrayOutput() GetBack
 
 func (o GetBackupPlansPlanArrayOutput) ToGetBackupPlansPlanArrayOutputWithContext(ctx context.Context) GetBackupPlansPlanArrayOutput {
 	return o
-}
-
-func (o GetBackupPlansPlanArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetBackupPlansPlan] {
-	return pulumix.Output[[]GetBackupPlansPlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetBackupPlansPlanArrayOutput) Index(i pulumi.IntInput) GetBackupPlansPlanOutput {

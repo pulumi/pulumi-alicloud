@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Threat Detection Honeypot Preset available to the user.
@@ -150,12 +149,6 @@ func (o GetHoneypotPresetsResultOutput) ToGetHoneypotPresetsResultOutput() GetHo
 
 func (o GetHoneypotPresetsResultOutput) ToGetHoneypotPresetsResultOutputWithContext(ctx context.Context) GetHoneypotPresetsResultOutput {
 	return o
-}
-
-func (o GetHoneypotPresetsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetHoneypotPresetsResult] {
-	return pulumix.Output[GetHoneypotPresetsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetHoneypotPresetsResultOutput) CurrentPage() pulumi.IntPtrOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -51,12 +50,6 @@ func (i AlertAnnotationArgs) ToAlertAnnotationOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AlertAnnotationOutput)
 }
 
-func (i AlertAnnotationArgs) ToOutput(ctx context.Context) pulumix.Output[AlertAnnotation] {
-	return pulumix.Output[AlertAnnotation]{
-		OutputState: i.ToAlertAnnotationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AlertAnnotationArrayInput is an input type that accepts AlertAnnotationArray and AlertAnnotationArrayOutput values.
 // You can construct a concrete instance of `AlertAnnotationArrayInput` via:
 //
@@ -82,12 +75,6 @@ func (i AlertAnnotationArray) ToAlertAnnotationArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AlertAnnotationArrayOutput)
 }
 
-func (i AlertAnnotationArray) ToOutput(ctx context.Context) pulumix.Output[[]AlertAnnotation] {
-	return pulumix.Output[[]AlertAnnotation]{
-		OutputState: i.ToAlertAnnotationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AlertAnnotationOutput struct{ *pulumi.OutputState }
 
 func (AlertAnnotationOutput) ElementType() reflect.Type {
@@ -100,12 +87,6 @@ func (o AlertAnnotationOutput) ToAlertAnnotationOutput() AlertAnnotationOutput {
 
 func (o AlertAnnotationOutput) ToAlertAnnotationOutputWithContext(ctx context.Context) AlertAnnotationOutput {
 	return o
-}
-
-func (o AlertAnnotationOutput) ToOutput(ctx context.Context) pulumix.Output[AlertAnnotation] {
-	return pulumix.Output[AlertAnnotation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Annotations's key for new alert.
@@ -130,12 +111,6 @@ func (o AlertAnnotationArrayOutput) ToAlertAnnotationArrayOutput() AlertAnnotati
 
 func (o AlertAnnotationArrayOutput) ToAlertAnnotationArrayOutputWithContext(ctx context.Context) AlertAnnotationArrayOutput {
 	return o
-}
-
-func (o AlertAnnotationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AlertAnnotation] {
-	return pulumix.Output[[]AlertAnnotation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AlertAnnotationArrayOutput) Index(i pulumi.IntInput) AlertAnnotationOutput {
@@ -179,12 +154,6 @@ func (i AlertGroupConfigurationArgs) ToAlertGroupConfigurationOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(AlertGroupConfigurationOutput)
 }
 
-func (i AlertGroupConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[AlertGroupConfiguration] {
-	return pulumix.Output[AlertGroupConfiguration]{
-		OutputState: i.ToAlertGroupConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AlertGroupConfigurationArgs) ToAlertGroupConfigurationPtrOutput() AlertGroupConfigurationPtrOutput {
 	return i.ToAlertGroupConfigurationPtrOutputWithContext(context.Background())
 }
@@ -226,12 +195,6 @@ func (i *alertGroupConfigurationPtrType) ToAlertGroupConfigurationPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(AlertGroupConfigurationPtrOutput)
 }
 
-func (i *alertGroupConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*AlertGroupConfiguration] {
-	return pulumix.Output[*AlertGroupConfiguration]{
-		OutputState: i.ToAlertGroupConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AlertGroupConfigurationOutput struct{ *pulumi.OutputState }
 
 func (AlertGroupConfigurationOutput) ElementType() reflect.Type {
@@ -256,12 +219,6 @@ func (o AlertGroupConfigurationOutput) ToAlertGroupConfigurationPtrOutputWithCon
 	}).(AlertGroupConfigurationPtrOutput)
 }
 
-func (o AlertGroupConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[AlertGroupConfiguration] {
-	return pulumix.Output[AlertGroupConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AlertGroupConfigurationOutput) Fields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AlertGroupConfiguration) []string { return v.Fields }).(pulumi.StringArrayOutput)
 }
@@ -283,12 +240,6 @@ func (o AlertGroupConfigurationPtrOutput) ToAlertGroupConfigurationPtrOutput() A
 
 func (o AlertGroupConfigurationPtrOutput) ToAlertGroupConfigurationPtrOutputWithContext(ctx context.Context) AlertGroupConfigurationPtrOutput {
 	return o
-}
-
-func (o AlertGroupConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AlertGroupConfiguration] {
-	return pulumix.Output[*AlertGroupConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AlertGroupConfigurationPtrOutput) Elem() AlertGroupConfigurationOutput {
@@ -357,12 +308,6 @@ func (i AlertJoinConfigurationArgs) ToAlertJoinConfigurationOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(AlertJoinConfigurationOutput)
 }
 
-func (i AlertJoinConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[AlertJoinConfiguration] {
-	return pulumix.Output[AlertJoinConfiguration]{
-		OutputState: i.ToAlertJoinConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AlertJoinConfigurationArrayInput is an input type that accepts AlertJoinConfigurationArray and AlertJoinConfigurationArrayOutput values.
 // You can construct a concrete instance of `AlertJoinConfigurationArrayInput` via:
 //
@@ -388,12 +333,6 @@ func (i AlertJoinConfigurationArray) ToAlertJoinConfigurationArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(AlertJoinConfigurationArrayOutput)
 }
 
-func (i AlertJoinConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]AlertJoinConfiguration] {
-	return pulumix.Output[[]AlertJoinConfiguration]{
-		OutputState: i.ToAlertJoinConfigurationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AlertJoinConfigurationOutput struct{ *pulumi.OutputState }
 
 func (AlertJoinConfigurationOutput) ElementType() reflect.Type {
@@ -406,12 +345,6 @@ func (o AlertJoinConfigurationOutput) ToAlertJoinConfigurationOutput() AlertJoin
 
 func (o AlertJoinConfigurationOutput) ToAlertJoinConfigurationOutputWithContext(ctx context.Context) AlertJoinConfigurationOutput {
 	return o
-}
-
-func (o AlertJoinConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[AlertJoinConfiguration] {
-	return pulumix.Output[AlertJoinConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Join condition.
@@ -436,12 +369,6 @@ func (o AlertJoinConfigurationArrayOutput) ToAlertJoinConfigurationArrayOutput()
 
 func (o AlertJoinConfigurationArrayOutput) ToAlertJoinConfigurationArrayOutputWithContext(ctx context.Context) AlertJoinConfigurationArrayOutput {
 	return o
-}
-
-func (o AlertJoinConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AlertJoinConfiguration] {
-	return pulumix.Output[[]AlertJoinConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AlertJoinConfigurationArrayOutput) Index(i pulumi.IntInput) AlertJoinConfigurationOutput {
@@ -487,12 +414,6 @@ func (i AlertLabelArgs) ToAlertLabelOutputWithContext(ctx context.Context) Alert
 	return pulumi.ToOutputWithContext(ctx, i).(AlertLabelOutput)
 }
 
-func (i AlertLabelArgs) ToOutput(ctx context.Context) pulumix.Output[AlertLabel] {
-	return pulumix.Output[AlertLabel]{
-		OutputState: i.ToAlertLabelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AlertLabelArrayInput is an input type that accepts AlertLabelArray and AlertLabelArrayOutput values.
 // You can construct a concrete instance of `AlertLabelArrayInput` via:
 //
@@ -518,12 +439,6 @@ func (i AlertLabelArray) ToAlertLabelArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AlertLabelArrayOutput)
 }
 
-func (i AlertLabelArray) ToOutput(ctx context.Context) pulumix.Output[[]AlertLabel] {
-	return pulumix.Output[[]AlertLabel]{
-		OutputState: i.ToAlertLabelArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AlertLabelOutput struct{ *pulumi.OutputState }
 
 func (AlertLabelOutput) ElementType() reflect.Type {
@@ -536,12 +451,6 @@ func (o AlertLabelOutput) ToAlertLabelOutput() AlertLabelOutput {
 
 func (o AlertLabelOutput) ToAlertLabelOutputWithContext(ctx context.Context) AlertLabelOutput {
 	return o
-}
-
-func (o AlertLabelOutput) ToOutput(ctx context.Context) pulumix.Output[AlertLabel] {
-	return pulumix.Output[AlertLabel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Annotations's key for new alert.
@@ -566,12 +475,6 @@ func (o AlertLabelArrayOutput) ToAlertLabelArrayOutput() AlertLabelArrayOutput {
 
 func (o AlertLabelArrayOutput) ToAlertLabelArrayOutputWithContext(ctx context.Context) AlertLabelArrayOutput {
 	return o
-}
-
-func (o AlertLabelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AlertLabel] {
-	return pulumix.Output[[]AlertLabel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AlertLabelArrayOutput) Index(i pulumi.IntInput) AlertLabelOutput {
@@ -629,12 +532,6 @@ func (i AlertNotificationListArgs) ToAlertNotificationListOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(AlertNotificationListOutput)
 }
 
-func (i AlertNotificationListArgs) ToOutput(ctx context.Context) pulumix.Output[AlertNotificationList] {
-	return pulumix.Output[AlertNotificationList]{
-		OutputState: i.ToAlertNotificationListOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AlertNotificationListArrayInput is an input type that accepts AlertNotificationListArray and AlertNotificationListArrayOutput values.
 // You can construct a concrete instance of `AlertNotificationListArrayInput` via:
 //
@@ -660,12 +557,6 @@ func (i AlertNotificationListArray) ToAlertNotificationListArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(AlertNotificationListArrayOutput)
 }
 
-func (i AlertNotificationListArray) ToOutput(ctx context.Context) pulumix.Output[[]AlertNotificationList] {
-	return pulumix.Output[[]AlertNotificationList]{
-		OutputState: i.ToAlertNotificationListArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AlertNotificationListOutput struct{ *pulumi.OutputState }
 
 func (AlertNotificationListOutput) ElementType() reflect.Type {
@@ -678,12 +569,6 @@ func (o AlertNotificationListOutput) ToAlertNotificationListOutput() AlertNotifi
 
 func (o AlertNotificationListOutput) ToAlertNotificationListOutputWithContext(ctx context.Context) AlertNotificationListOutput {
 	return o
-}
-
-func (o AlertNotificationListOutput) ToOutput(ctx context.Context) pulumix.Output[AlertNotificationList] {
-	return pulumix.Output[AlertNotificationList]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Notice content of alarm.
@@ -723,12 +608,6 @@ func (o AlertNotificationListArrayOutput) ToAlertNotificationListArrayOutput() A
 
 func (o AlertNotificationListArrayOutput) ToAlertNotificationListArrayOutputWithContext(ctx context.Context) AlertNotificationListArrayOutput {
 	return o
-}
-
-func (o AlertNotificationListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AlertNotificationList] {
-	return pulumix.Output[[]AlertNotificationList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AlertNotificationListArrayOutput) Index(i pulumi.IntInput) AlertNotificationListOutput {
@@ -778,12 +657,6 @@ func (i AlertPolicyConfigurationArgs) ToAlertPolicyConfigurationOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConfigurationOutput)
 }
 
-func (i AlertPolicyConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyConfiguration] {
-	return pulumix.Output[AlertPolicyConfiguration]{
-		OutputState: i.ToAlertPolicyConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AlertPolicyConfigurationArgs) ToAlertPolicyConfigurationPtrOutput() AlertPolicyConfigurationPtrOutput {
 	return i.ToAlertPolicyConfigurationPtrOutputWithContext(context.Background())
 }
@@ -825,12 +698,6 @@ func (i *alertPolicyConfigurationPtrType) ToAlertPolicyConfigurationPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConfigurationPtrOutput)
 }
 
-func (i *alertPolicyConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*AlertPolicyConfiguration] {
-	return pulumix.Output[*AlertPolicyConfiguration]{
-		OutputState: i.ToAlertPolicyConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AlertPolicyConfigurationOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyConfigurationOutput) ElementType() reflect.Type {
@@ -853,12 +720,6 @@ func (o AlertPolicyConfigurationOutput) ToAlertPolicyConfigurationPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyConfiguration) *AlertPolicyConfiguration {
 		return &v
 	}).(AlertPolicyConfigurationPtrOutput)
-}
-
-func (o AlertPolicyConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyConfiguration] {
-	return pulumix.Output[AlertPolicyConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Action Policy Id.
@@ -888,12 +749,6 @@ func (o AlertPolicyConfigurationPtrOutput) ToAlertPolicyConfigurationPtrOutput()
 
 func (o AlertPolicyConfigurationPtrOutput) ToAlertPolicyConfigurationPtrOutputWithContext(ctx context.Context) AlertPolicyConfigurationPtrOutput {
 	return o
-}
-
-func (o AlertPolicyConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AlertPolicyConfiguration] {
-	return pulumix.Output[*AlertPolicyConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AlertPolicyConfigurationPtrOutput) Elem() AlertPolicyConfigurationOutput {
@@ -1021,12 +876,6 @@ func (i AlertQueryListArgs) ToAlertQueryListOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AlertQueryListOutput)
 }
 
-func (i AlertQueryListArgs) ToOutput(ctx context.Context) pulumix.Output[AlertQueryList] {
-	return pulumix.Output[AlertQueryList]{
-		OutputState: i.ToAlertQueryListOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AlertQueryListArrayInput is an input type that accepts AlertQueryListArray and AlertQueryListArrayOutput values.
 // You can construct a concrete instance of `AlertQueryListArrayInput` via:
 //
@@ -1052,12 +901,6 @@ func (i AlertQueryListArray) ToAlertQueryListArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AlertQueryListArrayOutput)
 }
 
-func (i AlertQueryListArray) ToOutput(ctx context.Context) pulumix.Output[[]AlertQueryList] {
-	return pulumix.Output[[]AlertQueryList]{
-		OutputState: i.ToAlertQueryListArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AlertQueryListOutput struct{ *pulumi.OutputState }
 
 func (AlertQueryListOutput) ElementType() reflect.Type {
@@ -1070,12 +913,6 @@ func (o AlertQueryListOutput) ToAlertQueryListOutput() AlertQueryListOutput {
 
 func (o AlertQueryListOutput) ToAlertQueryListOutputWithContext(ctx context.Context) AlertQueryListOutput {
 	return o
-}
-
-func (o AlertQueryListOutput) ToOutput(ctx context.Context) pulumix.Output[AlertQueryList] {
-	return pulumix.Output[AlertQueryList]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Chart title, optional from 1.161.0+.
@@ -1159,12 +996,6 @@ func (o AlertQueryListArrayOutput) ToAlertQueryListArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o AlertQueryListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AlertQueryList] {
-	return pulumix.Output[[]AlertQueryList]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AlertQueryListArrayOutput) Index(i pulumi.IntInput) AlertQueryListOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertQueryList {
 		return vs[0].([]AlertQueryList)[vs[1].(int)]
@@ -1228,12 +1059,6 @@ func (i AlertScheduleArgs) ToAlertScheduleOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AlertScheduleOutput)
 }
 
-func (i AlertScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[AlertSchedule] {
-	return pulumix.Output[AlertSchedule]{
-		OutputState: i.ToAlertScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AlertScheduleArgs) ToAlertSchedulePtrOutput() AlertSchedulePtrOutput {
 	return i.ToAlertSchedulePtrOutputWithContext(context.Background())
 }
@@ -1275,12 +1100,6 @@ func (i *alertSchedulePtrType) ToAlertSchedulePtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AlertSchedulePtrOutput)
 }
 
-func (i *alertSchedulePtrType) ToOutput(ctx context.Context) pulumix.Output[*AlertSchedule] {
-	return pulumix.Output[*AlertSchedule]{
-		OutputState: i.ToAlertSchedulePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AlertScheduleOutput struct{ *pulumi.OutputState }
 
 func (AlertScheduleOutput) ElementType() reflect.Type {
@@ -1303,12 +1122,6 @@ func (o AlertScheduleOutput) ToAlertSchedulePtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertSchedule) *AlertSchedule {
 		return &v
 	}).(AlertSchedulePtrOutput)
-}
-
-func (o AlertScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[AlertSchedule] {
-	return pulumix.Output[AlertSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cron expression when type is Cron.
@@ -1361,12 +1174,6 @@ func (o AlertSchedulePtrOutput) ToAlertSchedulePtrOutput() AlertSchedulePtrOutpu
 
 func (o AlertSchedulePtrOutput) ToAlertSchedulePtrOutputWithContext(ctx context.Context) AlertSchedulePtrOutput {
 	return o
-}
-
-func (o AlertSchedulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AlertSchedule] {
-	return pulumix.Output[*AlertSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AlertSchedulePtrOutput) Elem() AlertScheduleOutput {
@@ -1494,12 +1301,6 @@ func (i AlertSeverityConfigurationArgs) ToAlertSeverityConfigurationOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(AlertSeverityConfigurationOutput)
 }
 
-func (i AlertSeverityConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[AlertSeverityConfiguration] {
-	return pulumix.Output[AlertSeverityConfiguration]{
-		OutputState: i.ToAlertSeverityConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AlertSeverityConfigurationArrayInput is an input type that accepts AlertSeverityConfigurationArray and AlertSeverityConfigurationArrayOutput values.
 // You can construct a concrete instance of `AlertSeverityConfigurationArrayInput` via:
 //
@@ -1525,12 +1326,6 @@ func (i AlertSeverityConfigurationArray) ToAlertSeverityConfigurationArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(AlertSeverityConfigurationArrayOutput)
 }
 
-func (i AlertSeverityConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]AlertSeverityConfiguration] {
-	return pulumix.Output[[]AlertSeverityConfiguration]{
-		OutputState: i.ToAlertSeverityConfigurationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AlertSeverityConfigurationOutput struct{ *pulumi.OutputState }
 
 func (AlertSeverityConfigurationOutput) ElementType() reflect.Type {
@@ -1543,12 +1338,6 @@ func (o AlertSeverityConfigurationOutput) ToAlertSeverityConfigurationOutput() A
 
 func (o AlertSeverityConfigurationOutput) ToAlertSeverityConfigurationOutputWithContext(ctx context.Context) AlertSeverityConfigurationOutput {
 	return o
-}
-
-func (o AlertSeverityConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[AlertSeverityConfiguration] {
-	return pulumix.Output[AlertSeverityConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Severity when this condition is met.
@@ -1573,12 +1362,6 @@ func (o AlertSeverityConfigurationArrayOutput) ToAlertSeverityConfigurationArray
 
 func (o AlertSeverityConfigurationArrayOutput) ToAlertSeverityConfigurationArrayOutputWithContext(ctx context.Context) AlertSeverityConfigurationArrayOutput {
 	return o
-}
-
-func (o AlertSeverityConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AlertSeverityConfiguration] {
-	return pulumix.Output[[]AlertSeverityConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AlertSeverityConfigurationArrayOutput) Index(i pulumi.IntInput) AlertSeverityConfigurationOutput {
@@ -1636,12 +1419,6 @@ func (i AlertTemplateConfigurationArgs) ToAlertTemplateConfigurationOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(AlertTemplateConfigurationOutput)
 }
 
-func (i AlertTemplateConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[AlertTemplateConfiguration] {
-	return pulumix.Output[AlertTemplateConfiguration]{
-		OutputState: i.ToAlertTemplateConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AlertTemplateConfigurationArgs) ToAlertTemplateConfigurationPtrOutput() AlertTemplateConfigurationPtrOutput {
 	return i.ToAlertTemplateConfigurationPtrOutputWithContext(context.Background())
 }
@@ -1683,12 +1460,6 @@ func (i *alertTemplateConfigurationPtrType) ToAlertTemplateConfigurationPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(AlertTemplateConfigurationPtrOutput)
 }
 
-func (i *alertTemplateConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*AlertTemplateConfiguration] {
-	return pulumix.Output[*AlertTemplateConfiguration]{
-		OutputState: i.ToAlertTemplateConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AlertTemplateConfigurationOutput struct{ *pulumi.OutputState }
 
 func (AlertTemplateConfigurationOutput) ElementType() reflect.Type {
@@ -1711,12 +1482,6 @@ func (o AlertTemplateConfigurationOutput) ToAlertTemplateConfigurationPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertTemplateConfiguration) *AlertTemplateConfiguration {
 		return &v
 	}).(AlertTemplateConfigurationPtrOutput)
-}
-
-func (o AlertTemplateConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[AlertTemplateConfiguration] {
-	return pulumix.Output[AlertTemplateConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Alert template annotations.
@@ -1756,12 +1521,6 @@ func (o AlertTemplateConfigurationPtrOutput) ToAlertTemplateConfigurationPtrOutp
 
 func (o AlertTemplateConfigurationPtrOutput) ToAlertTemplateConfigurationPtrOutputWithContext(ctx context.Context) AlertTemplateConfigurationPtrOutput {
 	return o
-}
-
-func (o AlertTemplateConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AlertTemplateConfiguration] {
-	return pulumix.Output[*AlertTemplateConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AlertTemplateConfigurationPtrOutput) Elem() AlertTemplateConfigurationOutput {
@@ -1897,12 +1656,6 @@ func (i EtlEtlSinkArgs) ToEtlEtlSinkOutputWithContext(ctx context.Context) EtlEt
 	return pulumi.ToOutputWithContext(ctx, i).(EtlEtlSinkOutput)
 }
 
-func (i EtlEtlSinkArgs) ToOutput(ctx context.Context) pulumix.Output[EtlEtlSink] {
-	return pulumix.Output[EtlEtlSink]{
-		OutputState: i.ToEtlEtlSinkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EtlEtlSinkArrayInput is an input type that accepts EtlEtlSinkArray and EtlEtlSinkArrayOutput values.
 // You can construct a concrete instance of `EtlEtlSinkArrayInput` via:
 //
@@ -1928,12 +1681,6 @@ func (i EtlEtlSinkArray) ToEtlEtlSinkArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(EtlEtlSinkArrayOutput)
 }
 
-func (i EtlEtlSinkArray) ToOutput(ctx context.Context) pulumix.Output[[]EtlEtlSink] {
-	return pulumix.Output[[]EtlEtlSink]{
-		OutputState: i.ToEtlEtlSinkArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EtlEtlSinkOutput struct{ *pulumi.OutputState }
 
 func (EtlEtlSinkOutput) ElementType() reflect.Type {
@@ -1946,12 +1693,6 @@ func (o EtlEtlSinkOutput) ToEtlEtlSinkOutput() EtlEtlSinkOutput {
 
 func (o EtlEtlSinkOutput) ToEtlEtlSinkOutputWithContext(ctx context.Context) EtlEtlSinkOutput {
 	return o
-}
-
-func (o EtlEtlSinkOutput) ToOutput(ctx context.Context) pulumix.Output[EtlEtlSink] {
-	return pulumix.Output[EtlEtlSink]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Delivery target logstore access key id.
@@ -2020,12 +1761,6 @@ func (o EtlEtlSinkArrayOutput) ToEtlEtlSinkArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o EtlEtlSinkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EtlEtlSink] {
-	return pulumix.Output[[]EtlEtlSink]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EtlEtlSinkArrayOutput) Index(i pulumi.IntInput) EtlEtlSinkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EtlEtlSink {
 		return vs[0].([]EtlEtlSink)[vs[1].(int)]
@@ -2069,12 +1804,6 @@ func (i OssExportConfigColumnArgs) ToOssExportConfigColumnOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(OssExportConfigColumnOutput)
 }
 
-func (i OssExportConfigColumnArgs) ToOutput(ctx context.Context) pulumix.Output[OssExportConfigColumn] {
-	return pulumix.Output[OssExportConfigColumn]{
-		OutputState: i.ToOssExportConfigColumnOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OssExportConfigColumnArrayInput is an input type that accepts OssExportConfigColumnArray and OssExportConfigColumnArrayOutput values.
 // You can construct a concrete instance of `OssExportConfigColumnArrayInput` via:
 //
@@ -2100,12 +1829,6 @@ func (i OssExportConfigColumnArray) ToOssExportConfigColumnArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(OssExportConfigColumnArrayOutput)
 }
 
-func (i OssExportConfigColumnArray) ToOutput(ctx context.Context) pulumix.Output[[]OssExportConfigColumn] {
-	return pulumix.Output[[]OssExportConfigColumn]{
-		OutputState: i.ToOssExportConfigColumnArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OssExportConfigColumnOutput struct{ *pulumi.OutputState }
 
 func (OssExportConfigColumnOutput) ElementType() reflect.Type {
@@ -2118,12 +1841,6 @@ func (o OssExportConfigColumnOutput) ToOssExportConfigColumnOutput() OssExportCo
 
 func (o OssExportConfigColumnOutput) ToOssExportConfigColumnOutputWithContext(ctx context.Context) OssExportConfigColumnOutput {
 	return o
-}
-
-func (o OssExportConfigColumnOutput) ToOutput(ctx context.Context) pulumix.Output[OssExportConfigColumn] {
-	return pulumix.Output[OssExportConfigColumn]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the key.
@@ -2148,12 +1865,6 @@ func (o OssExportConfigColumnArrayOutput) ToOssExportConfigColumnArrayOutput() O
 
 func (o OssExportConfigColumnArrayOutput) ToOssExportConfigColumnArrayOutputWithContext(ctx context.Context) OssExportConfigColumnArrayOutput {
 	return o
-}
-
-func (o OssExportConfigColumnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OssExportConfigColumn] {
-	return pulumix.Output[[]OssExportConfigColumn]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OssExportConfigColumnArrayOutput) Index(i pulumi.IntInput) OssExportConfigColumnOutput {
@@ -2195,12 +1906,6 @@ func (i OssShipperParquetConfigArgs) ToOssShipperParquetConfigOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(OssShipperParquetConfigOutput)
 }
 
-func (i OssShipperParquetConfigArgs) ToOutput(ctx context.Context) pulumix.Output[OssShipperParquetConfig] {
-	return pulumix.Output[OssShipperParquetConfig]{
-		OutputState: i.ToOssShipperParquetConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OssShipperParquetConfigArrayInput is an input type that accepts OssShipperParquetConfigArray and OssShipperParquetConfigArrayOutput values.
 // You can construct a concrete instance of `OssShipperParquetConfigArrayInput` via:
 //
@@ -2226,12 +1931,6 @@ func (i OssShipperParquetConfigArray) ToOssShipperParquetConfigArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(OssShipperParquetConfigArrayOutput)
 }
 
-func (i OssShipperParquetConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]OssShipperParquetConfig] {
-	return pulumix.Output[[]OssShipperParquetConfig]{
-		OutputState: i.ToOssShipperParquetConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OssShipperParquetConfigOutput struct{ *pulumi.OutputState }
 
 func (OssShipperParquetConfigOutput) ElementType() reflect.Type {
@@ -2244,12 +1943,6 @@ func (o OssShipperParquetConfigOutput) ToOssShipperParquetConfigOutput() OssShip
 
 func (o OssShipperParquetConfigOutput) ToOssShipperParquetConfigOutputWithContext(ctx context.Context) OssShipperParquetConfigOutput {
 	return o
-}
-
-func (o OssShipperParquetConfigOutput) ToOutput(ctx context.Context) pulumix.Output[OssShipperParquetConfig] {
-	return pulumix.Output[OssShipperParquetConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OssShipperParquetConfigOutput) Name() pulumi.StringOutput {
@@ -2272,12 +1965,6 @@ func (o OssShipperParquetConfigArrayOutput) ToOssShipperParquetConfigArrayOutput
 
 func (o OssShipperParquetConfigArrayOutput) ToOssShipperParquetConfigArrayOutputWithContext(ctx context.Context) OssShipperParquetConfigArrayOutput {
 	return o
-}
-
-func (o OssShipperParquetConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OssShipperParquetConfig] {
-	return pulumix.Output[[]OssShipperParquetConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OssShipperParquetConfigArrayOutput) Index(i pulumi.IntInput) OssShipperParquetConfigOutput {
@@ -2353,12 +2040,6 @@ func (i StoreEncryptConfArgs) ToStoreEncryptConfOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(StoreEncryptConfOutput)
 }
 
-func (i StoreEncryptConfArgs) ToOutput(ctx context.Context) pulumix.Output[StoreEncryptConf] {
-	return pulumix.Output[StoreEncryptConf]{
-		OutputState: i.ToStoreEncryptConfOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StoreEncryptConfArgs) ToStoreEncryptConfPtrOutput() StoreEncryptConfPtrOutput {
 	return i.ToStoreEncryptConfPtrOutputWithContext(context.Background())
 }
@@ -2400,12 +2081,6 @@ func (i *storeEncryptConfPtrType) ToStoreEncryptConfPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(StoreEncryptConfPtrOutput)
 }
 
-func (i *storeEncryptConfPtrType) ToOutput(ctx context.Context) pulumix.Output[*StoreEncryptConf] {
-	return pulumix.Output[*StoreEncryptConf]{
-		OutputState: i.ToStoreEncryptConfPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StoreEncryptConfOutput struct{ *pulumi.OutputState }
 
 func (StoreEncryptConfOutput) ElementType() reflect.Type {
@@ -2428,12 +2103,6 @@ func (o StoreEncryptConfOutput) ToStoreEncryptConfPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StoreEncryptConf) *StoreEncryptConf {
 		return &v
 	}).(StoreEncryptConfPtrOutput)
-}
-
-func (o StoreEncryptConfOutput) ToOutput(ctx context.Context) pulumix.Output[StoreEncryptConf] {
-	return pulumix.Output[StoreEncryptConf]{
-		OutputState: o.OutputState,
-	}
 }
 
 // enable encryption. Default `false`
@@ -2479,12 +2148,6 @@ func (o StoreEncryptConfPtrOutput) ToStoreEncryptConfPtrOutput() StoreEncryptCon
 
 func (o StoreEncryptConfPtrOutput) ToStoreEncryptConfPtrOutputWithContext(ctx context.Context) StoreEncryptConfPtrOutput {
 	return o
-}
-
-func (o StoreEncryptConfPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StoreEncryptConf] {
-	return pulumix.Output[*StoreEncryptConf]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StoreEncryptConfPtrOutput) Elem() StoreEncryptConfOutput {
@@ -2584,12 +2247,6 @@ func (i StoreEncryptConfUserCmkInfoArgs) ToStoreEncryptConfUserCmkInfoOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(StoreEncryptConfUserCmkInfoOutput)
 }
 
-func (i StoreEncryptConfUserCmkInfoArgs) ToOutput(ctx context.Context) pulumix.Output[StoreEncryptConfUserCmkInfo] {
-	return pulumix.Output[StoreEncryptConfUserCmkInfo]{
-		OutputState: i.ToStoreEncryptConfUserCmkInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StoreEncryptConfUserCmkInfoArgs) ToStoreEncryptConfUserCmkInfoPtrOutput() StoreEncryptConfUserCmkInfoPtrOutput {
 	return i.ToStoreEncryptConfUserCmkInfoPtrOutputWithContext(context.Background())
 }
@@ -2631,12 +2288,6 @@ func (i *storeEncryptConfUserCmkInfoPtrType) ToStoreEncryptConfUserCmkInfoPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(StoreEncryptConfUserCmkInfoPtrOutput)
 }
 
-func (i *storeEncryptConfUserCmkInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*StoreEncryptConfUserCmkInfo] {
-	return pulumix.Output[*StoreEncryptConfUserCmkInfo]{
-		OutputState: i.ToStoreEncryptConfUserCmkInfoPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StoreEncryptConfUserCmkInfoOutput struct{ *pulumi.OutputState }
 
 func (StoreEncryptConfUserCmkInfoOutput) ElementType() reflect.Type {
@@ -2659,12 +2310,6 @@ func (o StoreEncryptConfUserCmkInfoOutput) ToStoreEncryptConfUserCmkInfoPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StoreEncryptConfUserCmkInfo) *StoreEncryptConfUserCmkInfo {
 		return &v
 	}).(StoreEncryptConfUserCmkInfoPtrOutput)
-}
-
-func (o StoreEncryptConfUserCmkInfoOutput) ToOutput(ctx context.Context) pulumix.Output[StoreEncryptConfUserCmkInfo] {
-	return pulumix.Output[StoreEncryptConfUserCmkInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // role arn.
@@ -2694,12 +2339,6 @@ func (o StoreEncryptConfUserCmkInfoPtrOutput) ToStoreEncryptConfUserCmkInfoPtrOu
 
 func (o StoreEncryptConfUserCmkInfoPtrOutput) ToStoreEncryptConfUserCmkInfoPtrOutputWithContext(ctx context.Context) StoreEncryptConfUserCmkInfoPtrOutput {
 	return o
-}
-
-func (o StoreEncryptConfUserCmkInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StoreEncryptConfUserCmkInfo] {
-	return pulumix.Output[*StoreEncryptConfUserCmkInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StoreEncryptConfUserCmkInfoPtrOutput) Elem() StoreEncryptConfUserCmkInfoOutput {
@@ -2803,12 +2442,6 @@ func (i StoreIndexFieldSearchArgs) ToStoreIndexFieldSearchOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(StoreIndexFieldSearchOutput)
 }
 
-func (i StoreIndexFieldSearchArgs) ToOutput(ctx context.Context) pulumix.Output[StoreIndexFieldSearch] {
-	return pulumix.Output[StoreIndexFieldSearch]{
-		OutputState: i.ToStoreIndexFieldSearchOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StoreIndexFieldSearchArrayInput is an input type that accepts StoreIndexFieldSearchArray and StoreIndexFieldSearchArrayOutput values.
 // You can construct a concrete instance of `StoreIndexFieldSearchArrayInput` via:
 //
@@ -2834,12 +2467,6 @@ func (i StoreIndexFieldSearchArray) ToStoreIndexFieldSearchArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(StoreIndexFieldSearchArrayOutput)
 }
 
-func (i StoreIndexFieldSearchArray) ToOutput(ctx context.Context) pulumix.Output[[]StoreIndexFieldSearch] {
-	return pulumix.Output[[]StoreIndexFieldSearch]{
-		OutputState: i.ToStoreIndexFieldSearchArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StoreIndexFieldSearchOutput struct{ *pulumi.OutputState }
 
 func (StoreIndexFieldSearchOutput) ElementType() reflect.Type {
@@ -2852,12 +2479,6 @@ func (o StoreIndexFieldSearchOutput) ToStoreIndexFieldSearchOutput() StoreIndexF
 
 func (o StoreIndexFieldSearchOutput) ToStoreIndexFieldSearchOutputWithContext(ctx context.Context) StoreIndexFieldSearchOutput {
 	return o
-}
-
-func (o StoreIndexFieldSearchOutput) ToOutput(ctx context.Context) pulumix.Output[StoreIndexFieldSearch] {
-	return pulumix.Output[StoreIndexFieldSearch]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The alias of one field.
@@ -2912,12 +2533,6 @@ func (o StoreIndexFieldSearchArrayOutput) ToStoreIndexFieldSearchArrayOutput() S
 
 func (o StoreIndexFieldSearchArrayOutput) ToStoreIndexFieldSearchArrayOutputWithContext(ctx context.Context) StoreIndexFieldSearchArrayOutput {
 	return o
-}
-
-func (o StoreIndexFieldSearchArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StoreIndexFieldSearch] {
-	return pulumix.Output[[]StoreIndexFieldSearch]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StoreIndexFieldSearchArrayOutput) Index(i pulumi.IntInput) StoreIndexFieldSearchOutput {
@@ -2975,12 +2590,6 @@ func (i StoreIndexFieldSearchJsonKeyArgs) ToStoreIndexFieldSearchJsonKeyOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(StoreIndexFieldSearchJsonKeyOutput)
 }
 
-func (i StoreIndexFieldSearchJsonKeyArgs) ToOutput(ctx context.Context) pulumix.Output[StoreIndexFieldSearchJsonKey] {
-	return pulumix.Output[StoreIndexFieldSearchJsonKey]{
-		OutputState: i.ToStoreIndexFieldSearchJsonKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StoreIndexFieldSearchJsonKeyArrayInput is an input type that accepts StoreIndexFieldSearchJsonKeyArray and StoreIndexFieldSearchJsonKeyArrayOutput values.
 // You can construct a concrete instance of `StoreIndexFieldSearchJsonKeyArrayInput` via:
 //
@@ -3006,12 +2615,6 @@ func (i StoreIndexFieldSearchJsonKeyArray) ToStoreIndexFieldSearchJsonKeyArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(StoreIndexFieldSearchJsonKeyArrayOutput)
 }
 
-func (i StoreIndexFieldSearchJsonKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]StoreIndexFieldSearchJsonKey] {
-	return pulumix.Output[[]StoreIndexFieldSearchJsonKey]{
-		OutputState: i.ToStoreIndexFieldSearchJsonKeyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StoreIndexFieldSearchJsonKeyOutput struct{ *pulumi.OutputState }
 
 func (StoreIndexFieldSearchJsonKeyOutput) ElementType() reflect.Type {
@@ -3024,12 +2627,6 @@ func (o StoreIndexFieldSearchJsonKeyOutput) ToStoreIndexFieldSearchJsonKeyOutput
 
 func (o StoreIndexFieldSearchJsonKeyOutput) ToStoreIndexFieldSearchJsonKeyOutputWithContext(ctx context.Context) StoreIndexFieldSearchJsonKeyOutput {
 	return o
-}
-
-func (o StoreIndexFieldSearchJsonKeyOutput) ToOutput(ctx context.Context) pulumix.Output[StoreIndexFieldSearchJsonKey] {
-	return pulumix.Output[StoreIndexFieldSearchJsonKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The alias of one field.
@@ -3066,12 +2663,6 @@ func (o StoreIndexFieldSearchJsonKeyArrayOutput) ToStoreIndexFieldSearchJsonKeyA
 
 func (o StoreIndexFieldSearchJsonKeyArrayOutput) ToStoreIndexFieldSearchJsonKeyArrayOutputWithContext(ctx context.Context) StoreIndexFieldSearchJsonKeyArrayOutput {
 	return o
-}
-
-func (o StoreIndexFieldSearchJsonKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StoreIndexFieldSearchJsonKey] {
-	return pulumix.Output[[]StoreIndexFieldSearchJsonKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StoreIndexFieldSearchJsonKeyArrayOutput) Index(i pulumi.IntInput) StoreIndexFieldSearchJsonKeyOutput {
@@ -3121,12 +2712,6 @@ func (i StoreIndexFullTextArgs) ToStoreIndexFullTextOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(StoreIndexFullTextOutput)
 }
 
-func (i StoreIndexFullTextArgs) ToOutput(ctx context.Context) pulumix.Output[StoreIndexFullText] {
-	return pulumix.Output[StoreIndexFullText]{
-		OutputState: i.ToStoreIndexFullTextOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StoreIndexFullTextArgs) ToStoreIndexFullTextPtrOutput() StoreIndexFullTextPtrOutput {
 	return i.ToStoreIndexFullTextPtrOutputWithContext(context.Background())
 }
@@ -3168,12 +2753,6 @@ func (i *storeIndexFullTextPtrType) ToStoreIndexFullTextPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(StoreIndexFullTextPtrOutput)
 }
 
-func (i *storeIndexFullTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*StoreIndexFullText] {
-	return pulumix.Output[*StoreIndexFullText]{
-		OutputState: i.ToStoreIndexFullTextPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StoreIndexFullTextOutput struct{ *pulumi.OutputState }
 
 func (StoreIndexFullTextOutput) ElementType() reflect.Type {
@@ -3196,12 +2775,6 @@ func (o StoreIndexFullTextOutput) ToStoreIndexFullTextPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StoreIndexFullText) *StoreIndexFullText {
 		return &v
 	}).(StoreIndexFullTextPtrOutput)
-}
-
-func (o StoreIndexFullTextOutput) ToOutput(ctx context.Context) pulumix.Output[StoreIndexFullText] {
-	return pulumix.Output[StoreIndexFullText]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
@@ -3231,12 +2804,6 @@ func (o StoreIndexFullTextPtrOutput) ToStoreIndexFullTextPtrOutput() StoreIndexF
 
 func (o StoreIndexFullTextPtrOutput) ToStoreIndexFullTextPtrOutputWithContext(ctx context.Context) StoreIndexFullTextPtrOutput {
 	return o
-}
-
-func (o StoreIndexFullTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StoreIndexFullText] {
-	return pulumix.Output[*StoreIndexFullText]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StoreIndexFullTextPtrOutput) Elem() StoreIndexFullTextOutput {
@@ -3324,12 +2891,6 @@ func (i StoreShardArgs) ToStoreShardOutputWithContext(ctx context.Context) Store
 	return pulumi.ToOutputWithContext(ctx, i).(StoreShardOutput)
 }
 
-func (i StoreShardArgs) ToOutput(ctx context.Context) pulumix.Output[StoreShard] {
-	return pulumix.Output[StoreShard]{
-		OutputState: i.ToStoreShardOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StoreShardArrayInput is an input type that accepts StoreShardArray and StoreShardArrayOutput values.
 // You can construct a concrete instance of `StoreShardArrayInput` via:
 //
@@ -3355,12 +2916,6 @@ func (i StoreShardArray) ToStoreShardArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(StoreShardArrayOutput)
 }
 
-func (i StoreShardArray) ToOutput(ctx context.Context) pulumix.Output[[]StoreShard] {
-	return pulumix.Output[[]StoreShard]{
-		OutputState: i.ToStoreShardArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StoreShardOutput struct{ *pulumi.OutputState }
 
 func (StoreShardOutput) ElementType() reflect.Type {
@@ -3373,12 +2928,6 @@ func (o StoreShardOutput) ToStoreShardOutput() StoreShardOutput {
 
 func (o StoreShardOutput) ToStoreShardOutputWithContext(ctx context.Context) StoreShardOutput {
 	return o
-}
-
-func (o StoreShardOutput) ToOutput(ctx context.Context) pulumix.Output[StoreShard] {
-	return pulumix.Output[StoreShard]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The begin value of the shard range(MD5), included in the shard range.
@@ -3413,12 +2962,6 @@ func (o StoreShardArrayOutput) ToStoreShardArrayOutput() StoreShardArrayOutput {
 
 func (o StoreShardArrayOutput) ToStoreShardArrayOutputWithContext(ctx context.Context) StoreShardArrayOutput {
 	return o
-}
-
-func (o StoreShardArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StoreShard] {
-	return pulumix.Output[[]StoreShard]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StoreShardArrayOutput) Index(i pulumi.IntInput) StoreShardOutput {
@@ -3488,12 +3031,6 @@ func (i GetProjectsProjectArgs) ToGetProjectsProjectOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsProjectOutput)
 }
 
-func (i GetProjectsProjectArgs) ToOutput(ctx context.Context) pulumix.Output[GetProjectsProject] {
-	return pulumix.Output[GetProjectsProject]{
-		OutputState: i.ToGetProjectsProjectOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetProjectsProjectArrayInput is an input type that accepts GetProjectsProjectArray and GetProjectsProjectArrayOutput values.
 // You can construct a concrete instance of `GetProjectsProjectArrayInput` via:
 //
@@ -3519,12 +3056,6 @@ func (i GetProjectsProjectArray) ToGetProjectsProjectArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsProjectArrayOutput)
 }
 
-func (i GetProjectsProjectArray) ToOutput(ctx context.Context) pulumix.Output[[]GetProjectsProject] {
-	return pulumix.Output[[]GetProjectsProject]{
-		OutputState: i.ToGetProjectsProjectArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetProjectsProjectOutput struct{ *pulumi.OutputState }
 
 func (GetProjectsProjectOutput) ElementType() reflect.Type {
@@ -3537,12 +3068,6 @@ func (o GetProjectsProjectOutput) ToGetProjectsProjectOutput() GetProjectsProjec
 
 func (o GetProjectsProjectOutput) ToGetProjectsProjectOutputWithContext(ctx context.Context) GetProjectsProjectOutput {
 	return o
-}
-
-func (o GetProjectsProjectOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectsProject] {
-	return pulumix.Output[GetProjectsProject]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of the project.
@@ -3599,12 +3124,6 @@ func (o GetProjectsProjectArrayOutput) ToGetProjectsProjectArrayOutputWithContex
 	return o
 }
 
-func (o GetProjectsProjectArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetProjectsProject] {
-	return pulumix.Output[[]GetProjectsProject]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetProjectsProjectArrayOutput) Index(i pulumi.IntInput) GetProjectsProjectOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectsProject {
 		return vs[0].([]GetProjectsProject)[vs[1].(int)]
@@ -3648,12 +3167,6 @@ func (i GetStoresStoreArgs) ToGetStoresStoreOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetStoresStoreOutput)
 }
 
-func (i GetStoresStoreArgs) ToOutput(ctx context.Context) pulumix.Output[GetStoresStore] {
-	return pulumix.Output[GetStoresStore]{
-		OutputState: i.ToGetStoresStoreOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetStoresStoreArrayInput is an input type that accepts GetStoresStoreArray and GetStoresStoreArrayOutput values.
 // You can construct a concrete instance of `GetStoresStoreArrayInput` via:
 //
@@ -3679,12 +3192,6 @@ func (i GetStoresStoreArray) ToGetStoresStoreArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetStoresStoreArrayOutput)
 }
 
-func (i GetStoresStoreArray) ToOutput(ctx context.Context) pulumix.Output[[]GetStoresStore] {
-	return pulumix.Output[[]GetStoresStore]{
-		OutputState: i.ToGetStoresStoreArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetStoresStoreOutput struct{ *pulumi.OutputState }
 
 func (GetStoresStoreOutput) ElementType() reflect.Type {
@@ -3697,12 +3204,6 @@ func (o GetStoresStoreOutput) ToGetStoresStoreOutput() GetStoresStoreOutput {
 
 func (o GetStoresStoreOutput) ToGetStoresStoreOutputWithContext(ctx context.Context) GetStoresStoreOutput {
 	return o
-}
-
-func (o GetStoresStoreOutput) ToOutput(ctx context.Context) pulumix.Output[GetStoresStore] {
-	return pulumix.Output[GetStoresStore]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the store.
@@ -3727,12 +3228,6 @@ func (o GetStoresStoreArrayOutput) ToGetStoresStoreArrayOutput() GetStoresStoreA
 
 func (o GetStoresStoreArrayOutput) ToGetStoresStoreArrayOutputWithContext(ctx context.Context) GetStoresStoreArrayOutput {
 	return o
-}
-
-func (o GetStoresStoreArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetStoresStore] {
-	return pulumix.Output[[]GetStoresStore]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetStoresStoreArrayOutput) Index(i pulumi.IntInput) GetStoresStoreOutput {

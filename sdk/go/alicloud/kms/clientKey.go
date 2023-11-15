@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a KMS Client Key resource. Client key (of Application Access Point).
@@ -221,12 +220,6 @@ func (i *ClientKey) ToClientKeyOutputWithContext(ctx context.Context) ClientKeyO
 	return pulumi.ToOutputWithContext(ctx, i).(ClientKeyOutput)
 }
 
-func (i *ClientKey) ToOutput(ctx context.Context) pulumix.Output[*ClientKey] {
-	return pulumix.Output[*ClientKey]{
-		OutputState: i.ToClientKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ClientKeyArrayInput is an input type that accepts ClientKeyArray and ClientKeyArrayOutput values.
 // You can construct a concrete instance of `ClientKeyArrayInput` via:
 //
@@ -250,12 +243,6 @@ func (i ClientKeyArray) ToClientKeyArrayOutput() ClientKeyArrayOutput {
 
 func (i ClientKeyArray) ToClientKeyArrayOutputWithContext(ctx context.Context) ClientKeyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClientKeyArrayOutput)
-}
-
-func (i ClientKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]*ClientKey] {
-	return pulumix.Output[[]*ClientKey]{
-		OutputState: i.ToClientKeyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ClientKeyMapInput is an input type that accepts ClientKeyMap and ClientKeyMapOutput values.
@@ -283,12 +270,6 @@ func (i ClientKeyMap) ToClientKeyMapOutputWithContext(ctx context.Context) Clien
 	return pulumi.ToOutputWithContext(ctx, i).(ClientKeyMapOutput)
 }
 
-func (i ClientKeyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClientKey] {
-	return pulumix.Output[map[string]*ClientKey]{
-		OutputState: i.ToClientKeyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClientKeyOutput struct{ *pulumi.OutputState }
 
 func (ClientKeyOutput) ElementType() reflect.Type {
@@ -301,12 +282,6 @@ func (o ClientKeyOutput) ToClientKeyOutput() ClientKeyOutput {
 
 func (o ClientKeyOutput) ToClientKeyOutputWithContext(ctx context.Context) ClientKeyOutput {
 	return o
-}
-
-func (o ClientKeyOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientKey] {
-	return pulumix.Output[*ClientKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ClientKey's parent Application Access Point name.
@@ -353,12 +328,6 @@ func (o ClientKeyArrayOutput) ToClientKeyArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o ClientKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ClientKey] {
-	return pulumix.Output[[]*ClientKey]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ClientKeyArrayOutput) Index(i pulumi.IntInput) ClientKeyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClientKey {
 		return vs[0].([]*ClientKey)[vs[1].(int)]
@@ -377,12 +346,6 @@ func (o ClientKeyMapOutput) ToClientKeyMapOutput() ClientKeyMapOutput {
 
 func (o ClientKeyMapOutput) ToClientKeyMapOutputWithContext(ctx context.Context) ClientKeyMapOutput {
 	return o
-}
-
-func (o ClientKeyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClientKey] {
-	return pulumix.Output[map[string]*ClientKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClientKeyMapOutput) MapIndex(k pulumi.StringInput) ClientKeyOutput {

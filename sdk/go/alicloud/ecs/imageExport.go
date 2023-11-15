@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Export a custom image to the OSS bucket in the same region as the custom image.
@@ -249,12 +248,6 @@ func (i *ImageExport) ToImageExportOutputWithContext(ctx context.Context) ImageE
 	return pulumi.ToOutputWithContext(ctx, i).(ImageExportOutput)
 }
 
-func (i *ImageExport) ToOutput(ctx context.Context) pulumix.Output[*ImageExport] {
-	return pulumix.Output[*ImageExport]{
-		OutputState: i.ToImageExportOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ImageExportArrayInput is an input type that accepts ImageExportArray and ImageExportArrayOutput values.
 // You can construct a concrete instance of `ImageExportArrayInput` via:
 //
@@ -278,12 +271,6 @@ func (i ImageExportArray) ToImageExportArrayOutput() ImageExportArrayOutput {
 
 func (i ImageExportArray) ToImageExportArrayOutputWithContext(ctx context.Context) ImageExportArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageExportArrayOutput)
-}
-
-func (i ImageExportArray) ToOutput(ctx context.Context) pulumix.Output[[]*ImageExport] {
-	return pulumix.Output[[]*ImageExport]{
-		OutputState: i.ToImageExportArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ImageExportMapInput is an input type that accepts ImageExportMap and ImageExportMapOutput values.
@@ -311,12 +298,6 @@ func (i ImageExportMap) ToImageExportMapOutputWithContext(ctx context.Context) I
 	return pulumi.ToOutputWithContext(ctx, i).(ImageExportMapOutput)
 }
 
-func (i ImageExportMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ImageExport] {
-	return pulumix.Output[map[string]*ImageExport]{
-		OutputState: i.ToImageExportMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ImageExportOutput struct{ *pulumi.OutputState }
 
 func (ImageExportOutput) ElementType() reflect.Type {
@@ -329,12 +310,6 @@ func (o ImageExportOutput) ToImageExportOutput() ImageExportOutput {
 
 func (o ImageExportOutput) ToImageExportOutputWithContext(ctx context.Context) ImageExportOutput {
 	return o
-}
-
-func (o ImageExportOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageExport] {
-	return pulumix.Output[*ImageExport]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The source image ID.
@@ -366,12 +341,6 @@ func (o ImageExportArrayOutput) ToImageExportArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o ImageExportArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ImageExport] {
-	return pulumix.Output[[]*ImageExport]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ImageExportArrayOutput) Index(i pulumi.IntInput) ImageExportOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ImageExport {
 		return vs[0].([]*ImageExport)[vs[1].(int)]
@@ -390,12 +359,6 @@ func (o ImageExportMapOutput) ToImageExportMapOutput() ImageExportMapOutput {
 
 func (o ImageExportMapOutput) ToImageExportMapOutputWithContext(ctx context.Context) ImageExportMapOutput {
 	return o
-}
-
-func (o ImageExportMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ImageExport] {
-	return pulumix.Output[map[string]*ImageExport]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ImageExportMapOutput) MapIndex(k pulumi.StringInput) ImageExportOutput {

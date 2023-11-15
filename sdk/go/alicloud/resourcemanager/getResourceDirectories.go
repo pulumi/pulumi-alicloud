@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Resource Manager Resource Directories of the current Alibaba Cloud user.
@@ -101,12 +100,6 @@ func (o GetResourceDirectoriesResultOutput) ToGetResourceDirectoriesResultOutput
 
 func (o GetResourceDirectoriesResultOutput) ToGetResourceDirectoriesResultOutputWithContext(ctx context.Context) GetResourceDirectoriesResultOutput {
 	return o
-}
-
-func (o GetResourceDirectoriesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceDirectoriesResult] {
-	return pulumix.Output[GetResourceDirectoriesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of resource directories. Each element contains the following attributes:

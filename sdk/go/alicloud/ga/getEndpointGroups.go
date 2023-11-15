@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Global Accelerator (GA) Endpoint Groups of the current Alibaba Cloud user.
@@ -139,12 +138,6 @@ func (o GetEndpointGroupsResultOutput) ToGetEndpointGroupsResultOutput() GetEndp
 
 func (o GetEndpointGroupsResultOutput) ToGetEndpointGroupsResultOutputWithContext(ctx context.Context) GetEndpointGroupsResultOutput {
 	return o
-}
-
-func (o GetEndpointGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEndpointGroupsResult] {
-	return pulumix.Output[GetEndpointGroupsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEndpointGroupsResultOutput) AcceleratorId() pulumi.StringOutput {

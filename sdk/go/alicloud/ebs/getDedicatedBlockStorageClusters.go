@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Ebs Dedicated Block Storage Cluster available to the user.
@@ -119,12 +118,6 @@ func (o GetDedicatedBlockStorageClustersResultOutput) ToGetDedicatedBlockStorage
 
 func (o GetDedicatedBlockStorageClustersResultOutput) ToGetDedicatedBlockStorageClustersResultOutputWithContext(ctx context.Context) GetDedicatedBlockStorageClustersResultOutput {
 	return o
-}
-
-func (o GetDedicatedBlockStorageClustersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDedicatedBlockStorageClustersResult] {
-	return pulumix.Output[GetDedicatedBlockStorageClustersResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of Dedicated Block Storage Cluster Entries. Each element contains the following attributes:

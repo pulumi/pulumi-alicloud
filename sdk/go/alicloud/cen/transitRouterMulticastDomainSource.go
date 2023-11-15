@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cen Transit Router Multicast Domain Source resource.
@@ -157,12 +156,6 @@ func (i *TransitRouterMulticastDomainSource) ToTransitRouterMulticastDomainSourc
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterMulticastDomainSourceOutput)
 }
 
-func (i *TransitRouterMulticastDomainSource) ToOutput(ctx context.Context) pulumix.Output[*TransitRouterMulticastDomainSource] {
-	return pulumix.Output[*TransitRouterMulticastDomainSource]{
-		OutputState: i.ToTransitRouterMulticastDomainSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TransitRouterMulticastDomainSourceArrayInput is an input type that accepts TransitRouterMulticastDomainSourceArray and TransitRouterMulticastDomainSourceArrayOutput values.
 // You can construct a concrete instance of `TransitRouterMulticastDomainSourceArrayInput` via:
 //
@@ -186,12 +179,6 @@ func (i TransitRouterMulticastDomainSourceArray) ToTransitRouterMulticastDomainS
 
 func (i TransitRouterMulticastDomainSourceArray) ToTransitRouterMulticastDomainSourceArrayOutputWithContext(ctx context.Context) TransitRouterMulticastDomainSourceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterMulticastDomainSourceArrayOutput)
-}
-
-func (i TransitRouterMulticastDomainSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]*TransitRouterMulticastDomainSource] {
-	return pulumix.Output[[]*TransitRouterMulticastDomainSource]{
-		OutputState: i.ToTransitRouterMulticastDomainSourceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TransitRouterMulticastDomainSourceMapInput is an input type that accepts TransitRouterMulticastDomainSourceMap and TransitRouterMulticastDomainSourceMapOutput values.
@@ -219,12 +206,6 @@ func (i TransitRouterMulticastDomainSourceMap) ToTransitRouterMulticastDomainSou
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterMulticastDomainSourceMapOutput)
 }
 
-func (i TransitRouterMulticastDomainSourceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransitRouterMulticastDomainSource] {
-	return pulumix.Output[map[string]*TransitRouterMulticastDomainSource]{
-		OutputState: i.ToTransitRouterMulticastDomainSourceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TransitRouterMulticastDomainSourceOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterMulticastDomainSourceOutput) ElementType() reflect.Type {
@@ -237,12 +218,6 @@ func (o TransitRouterMulticastDomainSourceOutput) ToTransitRouterMulticastDomain
 
 func (o TransitRouterMulticastDomainSourceOutput) ToTransitRouterMulticastDomainSourceOutputWithContext(ctx context.Context) TransitRouterMulticastDomainSourceOutput {
 	return o
-}
-
-func (o TransitRouterMulticastDomainSourceOutput) ToOutput(ctx context.Context) pulumix.Output[*TransitRouterMulticastDomainSource] {
-	return pulumix.Output[*TransitRouterMulticastDomainSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IP address of the multicast group to which the multicast source belongs. Value range: **224.0.0.1** to **239.255.255.254**. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you.
@@ -286,12 +261,6 @@ func (o TransitRouterMulticastDomainSourceArrayOutput) ToTransitRouterMulticastD
 	return o
 }
 
-func (o TransitRouterMulticastDomainSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TransitRouterMulticastDomainSource] {
-	return pulumix.Output[[]*TransitRouterMulticastDomainSource]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TransitRouterMulticastDomainSourceArrayOutput) Index(i pulumi.IntInput) TransitRouterMulticastDomainSourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TransitRouterMulticastDomainSource {
 		return vs[0].([]*TransitRouterMulticastDomainSource)[vs[1].(int)]
@@ -310,12 +279,6 @@ func (o TransitRouterMulticastDomainSourceMapOutput) ToTransitRouterMulticastDom
 
 func (o TransitRouterMulticastDomainSourceMapOutput) ToTransitRouterMulticastDomainSourceMapOutputWithContext(ctx context.Context) TransitRouterMulticastDomainSourceMapOutput {
 	return o
-}
-
-func (o TransitRouterMulticastDomainSourceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransitRouterMulticastDomainSource] {
-	return pulumix.Output[map[string]*TransitRouterMulticastDomainSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TransitRouterMulticastDomainSourceMapOutput) MapIndex(k pulumi.StringInput) TransitRouterMulticastDomainSourceOutput {

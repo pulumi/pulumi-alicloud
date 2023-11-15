@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
@@ -99,12 +98,6 @@ func (o GetBaselineStrategiesResultOutput) ToGetBaselineStrategiesResultOutput()
 
 func (o GetBaselineStrategiesResultOutput) ToGetBaselineStrategiesResultOutputWithContext(ctx context.Context) GetBaselineStrategiesResultOutput {
 	return o
-}
-
-func (o GetBaselineStrategiesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBaselineStrategiesResult] {
-	return pulumix.Output[GetBaselineStrategiesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of policy. Value:

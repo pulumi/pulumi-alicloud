@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Operation to query the character set collations and time zones available for use in ApsaraDB RDS.
@@ -111,12 +110,6 @@ func (o GetCollationTimeZonesResultOutput) ToGetCollationTimeZonesResultOutput()
 
 func (o GetCollationTimeZonesResultOutput) ToGetCollationTimeZonesResultOutputWithContext(ctx context.Context) GetCollationTimeZonesResultOutput {
 	return o
-}
-
-func (o GetCollationTimeZonesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCollationTimeZonesResult] {
-	return pulumix.Output[GetCollationTimeZonesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetCollationTimeZonesResultOutput) CollationTimeZones() GetCollationTimeZonesCollationTimeZoneArrayOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Vpc Public Ip Address Pool Cidr Blocks of the current Alibaba Cloud user.
@@ -141,12 +140,6 @@ func (o GetPublicIpAddressPoolCidrBlocksResultOutput) ToGetPublicIpAddressPoolCi
 
 func (o GetPublicIpAddressPoolCidrBlocksResultOutput) ToGetPublicIpAddressPoolCidrBlocksResultOutputWithContext(ctx context.Context) GetPublicIpAddressPoolCidrBlocksResultOutput {
 	return o
-}
-
-func (o GetPublicIpAddressPoolCidrBlocksResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPublicIpAddressPoolCidrBlocksResult] {
-	return pulumix.Output[GetPublicIpAddressPoolCidrBlocksResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of Vpc Public Ip Address Pool Cidr Blocks. Each element contains the following attributes:

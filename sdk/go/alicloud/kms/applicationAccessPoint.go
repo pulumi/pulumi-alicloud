@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a KMS Application Access Point resource. An application access point (AAP) is used to implement fine-grained access control for Key Management Service (KMS) resources. An application can access a KMS instance only after an AAP is created for the application. .
@@ -178,12 +177,6 @@ func (i *ApplicationAccessPoint) ToApplicationAccessPointOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAccessPointOutput)
 }
 
-func (i *ApplicationAccessPoint) ToOutput(ctx context.Context) pulumix.Output[*ApplicationAccessPoint] {
-	return pulumix.Output[*ApplicationAccessPoint]{
-		OutputState: i.ToApplicationAccessPointOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApplicationAccessPointArrayInput is an input type that accepts ApplicationAccessPointArray and ApplicationAccessPointArrayOutput values.
 // You can construct a concrete instance of `ApplicationAccessPointArrayInput` via:
 //
@@ -207,12 +200,6 @@ func (i ApplicationAccessPointArray) ToApplicationAccessPointArrayOutput() Appli
 
 func (i ApplicationAccessPointArray) ToApplicationAccessPointArrayOutputWithContext(ctx context.Context) ApplicationAccessPointArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAccessPointArrayOutput)
-}
-
-func (i ApplicationAccessPointArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationAccessPoint] {
-	return pulumix.Output[[]*ApplicationAccessPoint]{
-		OutputState: i.ToApplicationAccessPointArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ApplicationAccessPointMapInput is an input type that accepts ApplicationAccessPointMap and ApplicationAccessPointMapOutput values.
@@ -240,12 +227,6 @@ func (i ApplicationAccessPointMap) ToApplicationAccessPointMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAccessPointMapOutput)
 }
 
-func (i ApplicationAccessPointMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationAccessPoint] {
-	return pulumix.Output[map[string]*ApplicationAccessPoint]{
-		OutputState: i.ToApplicationAccessPointMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApplicationAccessPointOutput struct{ *pulumi.OutputState }
 
 func (ApplicationAccessPointOutput) ElementType() reflect.Type {
@@ -258,12 +239,6 @@ func (o ApplicationAccessPointOutput) ToApplicationAccessPointOutput() Applicati
 
 func (o ApplicationAccessPointOutput) ToApplicationAccessPointOutputWithContext(ctx context.Context) ApplicationAccessPointOutput {
 	return o
-}
-
-func (o ApplicationAccessPointOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationAccessPoint] {
-	return pulumix.Output[*ApplicationAccessPoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Application Access Point Name.
@@ -295,12 +270,6 @@ func (o ApplicationAccessPointArrayOutput) ToApplicationAccessPointArrayOutputWi
 	return o
 }
 
-func (o ApplicationAccessPointArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationAccessPoint] {
-	return pulumix.Output[[]*ApplicationAccessPoint]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApplicationAccessPointArrayOutput) Index(i pulumi.IntInput) ApplicationAccessPointOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApplicationAccessPoint {
 		return vs[0].([]*ApplicationAccessPoint)[vs[1].(int)]
@@ -319,12 +288,6 @@ func (o ApplicationAccessPointMapOutput) ToApplicationAccessPointMapOutput() App
 
 func (o ApplicationAccessPointMapOutput) ToApplicationAccessPointMapOutputWithContext(ctx context.Context) ApplicationAccessPointMapOutput {
 	return o
-}
-
-func (o ApplicationAccessPointMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationAccessPoint] {
-	return pulumix.Output[map[string]*ApplicationAccessPoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationAccessPointMapOutput) MapIndex(k pulumi.StringInput) ApplicationAccessPointOutput {

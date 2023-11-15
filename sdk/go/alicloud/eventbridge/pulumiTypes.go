@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -49,12 +48,6 @@ func (i ApiDestinationHttpApiParametersArgs) ToApiDestinationHttpApiParametersOu
 
 func (i ApiDestinationHttpApiParametersArgs) ToApiDestinationHttpApiParametersOutputWithContext(ctx context.Context) ApiDestinationHttpApiParametersOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiDestinationHttpApiParametersOutput)
-}
-
-func (i ApiDestinationHttpApiParametersArgs) ToOutput(ctx context.Context) pulumix.Output[ApiDestinationHttpApiParameters] {
-	return pulumix.Output[ApiDestinationHttpApiParameters]{
-		OutputState: i.ToApiDestinationHttpApiParametersOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ApiDestinationHttpApiParametersArgs) ToApiDestinationHttpApiParametersPtrOutput() ApiDestinationHttpApiParametersPtrOutput {
@@ -98,12 +91,6 @@ func (i *apiDestinationHttpApiParametersPtrType) ToApiDestinationHttpApiParamete
 	return pulumi.ToOutputWithContext(ctx, i).(ApiDestinationHttpApiParametersPtrOutput)
 }
 
-func (i *apiDestinationHttpApiParametersPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApiDestinationHttpApiParameters] {
-	return pulumix.Output[*ApiDestinationHttpApiParameters]{
-		OutputState: i.ToApiDestinationHttpApiParametersPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApiDestinationHttpApiParametersOutput struct{ *pulumi.OutputState }
 
 func (ApiDestinationHttpApiParametersOutput) ElementType() reflect.Type {
@@ -128,12 +115,6 @@ func (o ApiDestinationHttpApiParametersOutput) ToApiDestinationHttpApiParameters
 	}).(ApiDestinationHttpApiParametersPtrOutput)
 }
 
-func (o ApiDestinationHttpApiParametersOutput) ToOutput(ctx context.Context) pulumix.Output[ApiDestinationHttpApiParameters] {
-	return pulumix.Output[ApiDestinationHttpApiParameters]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The endpoint of the API destination.
 func (o ApiDestinationHttpApiParametersOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiDestinationHttpApiParameters) string { return v.Endpoint }).(pulumi.StringOutput)
@@ -156,12 +137,6 @@ func (o ApiDestinationHttpApiParametersPtrOutput) ToApiDestinationHttpApiParamet
 
 func (o ApiDestinationHttpApiParametersPtrOutput) ToApiDestinationHttpApiParametersPtrOutputWithContext(ctx context.Context) ApiDestinationHttpApiParametersPtrOutput {
 	return o
-}
-
-func (o ApiDestinationHttpApiParametersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiDestinationHttpApiParameters] {
-	return pulumix.Output[*ApiDestinationHttpApiParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiDestinationHttpApiParametersPtrOutput) Elem() ApiDestinationHttpApiParametersOutput {
@@ -239,12 +214,6 @@ func (i ConnectionAuthParametersArgs) ToConnectionAuthParametersOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAuthParametersOutput)
 }
 
-func (i ConnectionAuthParametersArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionAuthParameters] {
-	return pulumix.Output[ConnectionAuthParameters]{
-		OutputState: i.ToConnectionAuthParametersOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionAuthParametersArgs) ToConnectionAuthParametersPtrOutput() ConnectionAuthParametersPtrOutput {
 	return i.ToConnectionAuthParametersPtrOutputWithContext(context.Background())
 }
@@ -286,12 +255,6 @@ func (i *connectionAuthParametersPtrType) ToConnectionAuthParametersPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAuthParametersPtrOutput)
 }
 
-func (i *connectionAuthParametersPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionAuthParameters] {
-	return pulumix.Output[*ConnectionAuthParameters]{
-		OutputState: i.ToConnectionAuthParametersPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionAuthParametersOutput struct{ *pulumi.OutputState }
 
 func (ConnectionAuthParametersOutput) ElementType() reflect.Type {
@@ -314,12 +277,6 @@ func (o ConnectionAuthParametersOutput) ToConnectionAuthParametersPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionAuthParameters) *ConnectionAuthParameters {
 		return &v
 	}).(ConnectionAuthParametersPtrOutput)
-}
-
-func (o ConnectionAuthParametersOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionAuthParameters] {
-	return pulumix.Output[ConnectionAuthParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The parameters that are configured for API key authentication. See `apiKeyAuthParameters` below.
@@ -358,12 +315,6 @@ func (o ConnectionAuthParametersPtrOutput) ToConnectionAuthParametersPtrOutput()
 
 func (o ConnectionAuthParametersPtrOutput) ToConnectionAuthParametersPtrOutputWithContext(ctx context.Context) ConnectionAuthParametersPtrOutput {
 	return o
-}
-
-func (o ConnectionAuthParametersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionAuthParameters] {
-	return pulumix.Output[*ConnectionAuthParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionAuthParametersPtrOutput) Elem() ConnectionAuthParametersOutput {
@@ -453,12 +404,6 @@ func (i ConnectionAuthParametersApiKeyAuthParametersArgs) ToConnectionAuthParame
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAuthParametersApiKeyAuthParametersOutput)
 }
 
-func (i ConnectionAuthParametersApiKeyAuthParametersArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionAuthParametersApiKeyAuthParameters] {
-	return pulumix.Output[ConnectionAuthParametersApiKeyAuthParameters]{
-		OutputState: i.ToConnectionAuthParametersApiKeyAuthParametersOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionAuthParametersApiKeyAuthParametersArgs) ToConnectionAuthParametersApiKeyAuthParametersPtrOutput() ConnectionAuthParametersApiKeyAuthParametersPtrOutput {
 	return i.ToConnectionAuthParametersApiKeyAuthParametersPtrOutputWithContext(context.Background())
 }
@@ -500,12 +445,6 @@ func (i *connectionAuthParametersApiKeyAuthParametersPtrType) ToConnectionAuthPa
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAuthParametersApiKeyAuthParametersPtrOutput)
 }
 
-func (i *connectionAuthParametersApiKeyAuthParametersPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionAuthParametersApiKeyAuthParameters] {
-	return pulumix.Output[*ConnectionAuthParametersApiKeyAuthParameters]{
-		OutputState: i.ToConnectionAuthParametersApiKeyAuthParametersPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionAuthParametersApiKeyAuthParametersOutput struct{ *pulumi.OutputState }
 
 func (ConnectionAuthParametersApiKeyAuthParametersOutput) ElementType() reflect.Type {
@@ -530,12 +469,6 @@ func (o ConnectionAuthParametersApiKeyAuthParametersOutput) ToConnectionAuthPara
 	}).(ConnectionAuthParametersApiKeyAuthParametersPtrOutput)
 }
 
-func (o ConnectionAuthParametersApiKeyAuthParametersOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionAuthParametersApiKeyAuthParameters] {
-	return pulumix.Output[ConnectionAuthParametersApiKeyAuthParameters]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the API key.
 func (o ConnectionAuthParametersApiKeyAuthParametersOutput) ApiKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersApiKeyAuthParameters) *string { return v.ApiKeyName }).(pulumi.StringPtrOutput)
@@ -558,12 +491,6 @@ func (o ConnectionAuthParametersApiKeyAuthParametersPtrOutput) ToConnectionAuthP
 
 func (o ConnectionAuthParametersApiKeyAuthParametersPtrOutput) ToConnectionAuthParametersApiKeyAuthParametersPtrOutputWithContext(ctx context.Context) ConnectionAuthParametersApiKeyAuthParametersPtrOutput {
 	return o
-}
-
-func (o ConnectionAuthParametersApiKeyAuthParametersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionAuthParametersApiKeyAuthParameters] {
-	return pulumix.Output[*ConnectionAuthParametersApiKeyAuthParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionAuthParametersApiKeyAuthParametersPtrOutput) Elem() ConnectionAuthParametersApiKeyAuthParametersOutput {
@@ -633,12 +560,6 @@ func (i ConnectionAuthParametersBasicAuthParametersArgs) ToConnectionAuthParamet
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAuthParametersBasicAuthParametersOutput)
 }
 
-func (i ConnectionAuthParametersBasicAuthParametersArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionAuthParametersBasicAuthParameters] {
-	return pulumix.Output[ConnectionAuthParametersBasicAuthParameters]{
-		OutputState: i.ToConnectionAuthParametersBasicAuthParametersOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionAuthParametersBasicAuthParametersArgs) ToConnectionAuthParametersBasicAuthParametersPtrOutput() ConnectionAuthParametersBasicAuthParametersPtrOutput {
 	return i.ToConnectionAuthParametersBasicAuthParametersPtrOutputWithContext(context.Background())
 }
@@ -680,12 +601,6 @@ func (i *connectionAuthParametersBasicAuthParametersPtrType) ToConnectionAuthPar
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAuthParametersBasicAuthParametersPtrOutput)
 }
 
-func (i *connectionAuthParametersBasicAuthParametersPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionAuthParametersBasicAuthParameters] {
-	return pulumix.Output[*ConnectionAuthParametersBasicAuthParameters]{
-		OutputState: i.ToConnectionAuthParametersBasicAuthParametersPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionAuthParametersBasicAuthParametersOutput struct{ *pulumi.OutputState }
 
 func (ConnectionAuthParametersBasicAuthParametersOutput) ElementType() reflect.Type {
@@ -710,12 +625,6 @@ func (o ConnectionAuthParametersBasicAuthParametersOutput) ToConnectionAuthParam
 	}).(ConnectionAuthParametersBasicAuthParametersPtrOutput)
 }
 
-func (o ConnectionAuthParametersBasicAuthParametersOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionAuthParametersBasicAuthParameters] {
-	return pulumix.Output[ConnectionAuthParametersBasicAuthParameters]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The password for basic authentication.
 func (o ConnectionAuthParametersBasicAuthParametersOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersBasicAuthParameters) *string { return v.Password }).(pulumi.StringPtrOutput)
@@ -738,12 +647,6 @@ func (o ConnectionAuthParametersBasicAuthParametersPtrOutput) ToConnectionAuthPa
 
 func (o ConnectionAuthParametersBasicAuthParametersPtrOutput) ToConnectionAuthParametersBasicAuthParametersPtrOutputWithContext(ctx context.Context) ConnectionAuthParametersBasicAuthParametersPtrOutput {
 	return o
-}
-
-func (o ConnectionAuthParametersBasicAuthParametersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionAuthParametersBasicAuthParameters] {
-	return pulumix.Output[*ConnectionAuthParametersBasicAuthParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionAuthParametersBasicAuthParametersPtrOutput) Elem() ConnectionAuthParametersBasicAuthParametersOutput {
@@ -821,12 +724,6 @@ func (i ConnectionAuthParametersOauthParametersArgs) ToConnectionAuthParametersO
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAuthParametersOauthParametersOutput)
 }
 
-func (i ConnectionAuthParametersOauthParametersArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionAuthParametersOauthParameters] {
-	return pulumix.Output[ConnectionAuthParametersOauthParameters]{
-		OutputState: i.ToConnectionAuthParametersOauthParametersOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionAuthParametersOauthParametersArgs) ToConnectionAuthParametersOauthParametersPtrOutput() ConnectionAuthParametersOauthParametersPtrOutput {
 	return i.ToConnectionAuthParametersOauthParametersPtrOutputWithContext(context.Background())
 }
@@ -868,12 +765,6 @@ func (i *connectionAuthParametersOauthParametersPtrType) ToConnectionAuthParamet
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAuthParametersOauthParametersPtrOutput)
 }
 
-func (i *connectionAuthParametersOauthParametersPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionAuthParametersOauthParameters] {
-	return pulumix.Output[*ConnectionAuthParametersOauthParameters]{
-		OutputState: i.ToConnectionAuthParametersOauthParametersPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionAuthParametersOauthParametersOutput struct{ *pulumi.OutputState }
 
 func (ConnectionAuthParametersOauthParametersOutput) ElementType() reflect.Type {
@@ -896,12 +787,6 @@ func (o ConnectionAuthParametersOauthParametersOutput) ToConnectionAuthParameter
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionAuthParametersOauthParameters) *ConnectionAuthParametersOauthParameters {
 		return &v
 	}).(ConnectionAuthParametersOauthParametersPtrOutput)
-}
-
-func (o ConnectionAuthParametersOauthParametersOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionAuthParametersOauthParameters] {
-	return pulumix.Output[ConnectionAuthParametersOauthParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IP address of the authorized endpoint.
@@ -940,12 +825,6 @@ func (o ConnectionAuthParametersOauthParametersPtrOutput) ToConnectionAuthParame
 
 func (o ConnectionAuthParametersOauthParametersPtrOutput) ToConnectionAuthParametersOauthParametersPtrOutputWithContext(ctx context.Context) ConnectionAuthParametersOauthParametersPtrOutput {
 	return o
-}
-
-func (o ConnectionAuthParametersOauthParametersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionAuthParametersOauthParameters] {
-	return pulumix.Output[*ConnectionAuthParametersOauthParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionAuthParametersOauthParametersPtrOutput) Elem() ConnectionAuthParametersOauthParametersOutput {
@@ -1035,12 +914,6 @@ func (i ConnectionAuthParametersOauthParametersClientParametersArgs) ToConnectio
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAuthParametersOauthParametersClientParametersOutput)
 }
 
-func (i ConnectionAuthParametersOauthParametersClientParametersArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionAuthParametersOauthParametersClientParameters] {
-	return pulumix.Output[ConnectionAuthParametersOauthParametersClientParameters]{
-		OutputState: i.ToConnectionAuthParametersOauthParametersClientParametersOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionAuthParametersOauthParametersClientParametersArgs) ToConnectionAuthParametersOauthParametersClientParametersPtrOutput() ConnectionAuthParametersOauthParametersClientParametersPtrOutput {
 	return i.ToConnectionAuthParametersOauthParametersClientParametersPtrOutputWithContext(context.Background())
 }
@@ -1082,12 +955,6 @@ func (i *connectionAuthParametersOauthParametersClientParametersPtrType) ToConne
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAuthParametersOauthParametersClientParametersPtrOutput)
 }
 
-func (i *connectionAuthParametersOauthParametersClientParametersPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionAuthParametersOauthParametersClientParameters] {
-	return pulumix.Output[*ConnectionAuthParametersOauthParametersClientParameters]{
-		OutputState: i.ToConnectionAuthParametersOauthParametersClientParametersPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionAuthParametersOauthParametersClientParametersOutput struct{ *pulumi.OutputState }
 
 func (ConnectionAuthParametersOauthParametersClientParametersOutput) ElementType() reflect.Type {
@@ -1112,12 +979,6 @@ func (o ConnectionAuthParametersOauthParametersClientParametersOutput) ToConnect
 	}).(ConnectionAuthParametersOauthParametersClientParametersPtrOutput)
 }
 
-func (o ConnectionAuthParametersOauthParametersClientParametersOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionAuthParametersOauthParametersClientParameters] {
-	return pulumix.Output[ConnectionAuthParametersOauthParametersClientParameters]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ID of the client.
 func (o ConnectionAuthParametersOauthParametersClientParametersOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersOauthParametersClientParameters) *string { return v.ClientId }).(pulumi.StringPtrOutput)
@@ -1140,12 +1001,6 @@ func (o ConnectionAuthParametersOauthParametersClientParametersPtrOutput) ToConn
 
 func (o ConnectionAuthParametersOauthParametersClientParametersPtrOutput) ToConnectionAuthParametersOauthParametersClientParametersPtrOutputWithContext(ctx context.Context) ConnectionAuthParametersOauthParametersClientParametersPtrOutput {
 	return o
-}
-
-func (o ConnectionAuthParametersOauthParametersClientParametersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionAuthParametersOauthParametersClientParameters] {
-	return pulumix.Output[*ConnectionAuthParametersOauthParametersClientParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionAuthParametersOauthParametersClientParametersPtrOutput) Elem() ConnectionAuthParametersOauthParametersClientParametersOutput {
@@ -1219,12 +1074,6 @@ func (i ConnectionAuthParametersOauthParametersOauthHttpParametersArgs) ToConnec
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAuthParametersOauthParametersOauthHttpParametersOutput)
 }
 
-func (i ConnectionAuthParametersOauthParametersOauthHttpParametersArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionAuthParametersOauthParametersOauthHttpParameters] {
-	return pulumix.Output[ConnectionAuthParametersOauthParametersOauthHttpParameters]{
-		OutputState: i.ToConnectionAuthParametersOauthParametersOauthHttpParametersOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionAuthParametersOauthParametersOauthHttpParametersArgs) ToConnectionAuthParametersOauthParametersOauthHttpParametersPtrOutput() ConnectionAuthParametersOauthParametersOauthHttpParametersPtrOutput {
 	return i.ToConnectionAuthParametersOauthParametersOauthHttpParametersPtrOutputWithContext(context.Background())
 }
@@ -1266,12 +1115,6 @@ func (i *connectionAuthParametersOauthParametersOauthHttpParametersPtrType) ToCo
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAuthParametersOauthParametersOauthHttpParametersPtrOutput)
 }
 
-func (i *connectionAuthParametersOauthParametersOauthHttpParametersPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionAuthParametersOauthParametersOauthHttpParameters] {
-	return pulumix.Output[*ConnectionAuthParametersOauthParametersOauthHttpParameters]{
-		OutputState: i.ToConnectionAuthParametersOauthParametersOauthHttpParametersPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionAuthParametersOauthParametersOauthHttpParametersOutput struct{ *pulumi.OutputState }
 
 func (ConnectionAuthParametersOauthParametersOauthHttpParametersOutput) ElementType() reflect.Type {
@@ -1294,12 +1137,6 @@ func (o ConnectionAuthParametersOauthParametersOauthHttpParametersOutput) ToConn
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionAuthParametersOauthParametersOauthHttpParameters) *ConnectionAuthParametersOauthParametersOauthHttpParameters {
 		return &v
 	}).(ConnectionAuthParametersOauthParametersOauthHttpParametersPtrOutput)
-}
-
-func (o ConnectionAuthParametersOauthParametersOauthHttpParametersOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionAuthParametersOauthParametersOauthHttpParameters] {
-	return pulumix.Output[ConnectionAuthParametersOauthParametersOauthHttpParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The parameters that are configured for the request body. See `bodyParameters` below.
@@ -1335,12 +1172,6 @@ func (o ConnectionAuthParametersOauthParametersOauthHttpParametersPtrOutput) ToC
 
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersPtrOutput) ToConnectionAuthParametersOauthParametersOauthHttpParametersPtrOutputWithContext(ctx context.Context) ConnectionAuthParametersOauthParametersOauthHttpParametersPtrOutput {
 	return o
-}
-
-func (o ConnectionAuthParametersOauthParametersOauthHttpParametersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionAuthParametersOauthParametersOauthHttpParameters] {
-	return pulumix.Output[*ConnectionAuthParametersOauthParametersOauthHttpParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersPtrOutput) Elem() ConnectionAuthParametersOauthParametersOauthHttpParametersOutput {
@@ -1424,12 +1255,6 @@ func (i ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterA
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterOutput)
 }
 
-func (i ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter] {
-	return pulumix.Output[ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter]{
-		OutputState: i.ToConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArrayInput is an input type that accepts ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArray and ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArrayOutput values.
 // You can construct a concrete instance of `ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArrayInput` via:
 //
@@ -1455,12 +1280,6 @@ func (i ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterA
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArrayOutput)
 }
 
-func (i ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter] {
-	return pulumix.Output[[]ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter]{
-		OutputState: i.ToConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterOutput struct{ *pulumi.OutputState }
 
 func (ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterOutput) ElementType() reflect.Type {
@@ -1473,12 +1292,6 @@ func (o ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterO
 
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterOutput) ToConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterOutputWithContext(ctx context.Context) ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterOutput {
 	return o
-}
-
-func (o ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter] {
-	return pulumix.Output[ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies whether to enable authentication.
@@ -1512,12 +1325,6 @@ func (o ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterA
 
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArrayOutput) ToConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArrayOutputWithContext(ctx context.Context) ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArrayOutput {
 	return o
-}
-
-func (o ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter] {
-	return pulumix.Output[[]ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArrayOutput) Index(i pulumi.IntInput) ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterOutput {
@@ -1567,12 +1374,6 @@ func (i ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParamete
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterOutput)
 }
 
-func (i ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter] {
-	return pulumix.Output[ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter]{
-		OutputState: i.ToConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArrayInput is an input type that accepts ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArray and ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArrayOutput values.
 // You can construct a concrete instance of `ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArrayInput` via:
 //
@@ -1598,12 +1399,6 @@ func (i ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParamete
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArrayOutput)
 }
 
-func (i ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter] {
-	return pulumix.Output[[]ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter]{
-		OutputState: i.ToConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterOutput struct{ *pulumi.OutputState }
 
 func (ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterOutput) ElementType() reflect.Type {
@@ -1616,12 +1411,6 @@ func (o ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParamete
 
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterOutput) ToConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterOutputWithContext(ctx context.Context) ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterOutput {
 	return o
-}
-
-func (o ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter] {
-	return pulumix.Output[ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies whether to enable authentication.
@@ -1657,12 +1446,6 @@ func (o ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParamete
 
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArrayOutput) ToConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArrayOutputWithContext(ctx context.Context) ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArrayOutput {
 	return o
-}
-
-func (o ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter] {
-	return pulumix.Output[[]ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArrayOutput) Index(i pulumi.IntInput) ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterOutput {
@@ -1712,12 +1495,6 @@ func (i ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringPar
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterOutput)
 }
 
-func (i ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter] {
-	return pulumix.Output[ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter]{
-		OutputState: i.ToConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArrayInput is an input type that accepts ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArray and ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArrayOutput values.
 // You can construct a concrete instance of `ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArrayInput` via:
 //
@@ -1743,12 +1520,6 @@ func (i ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringPar
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArrayOutput)
 }
 
-func (i ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter] {
-	return pulumix.Output[[]ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter]{
-		OutputState: i.ToConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterOutput struct{ *pulumi.OutputState }
 
 func (ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterOutput) ElementType() reflect.Type {
@@ -1761,12 +1532,6 @@ func (o ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringPar
 
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterOutput) ToConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterOutputWithContext(ctx context.Context) ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterOutput {
 	return o
-}
-
-func (o ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter] {
-	return pulumix.Output[ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies whether to enable authentication.
@@ -1802,12 +1567,6 @@ func (o ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringPar
 
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArrayOutput) ToConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArrayOutputWithContext(ctx context.Context) ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArrayOutput {
 	return o
-}
-
-func (o ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter] {
-	return pulumix.Output[[]ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArrayOutput) Index(i pulumi.IntInput) ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterOutput {
@@ -1861,12 +1620,6 @@ func (i ConnectionNetworkParametersArgs) ToConnectionNetworkParametersOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionNetworkParametersOutput)
 }
 
-func (i ConnectionNetworkParametersArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionNetworkParameters] {
-	return pulumix.Output[ConnectionNetworkParameters]{
-		OutputState: i.ToConnectionNetworkParametersOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConnectionNetworkParametersArgs) ToConnectionNetworkParametersPtrOutput() ConnectionNetworkParametersPtrOutput {
 	return i.ToConnectionNetworkParametersPtrOutputWithContext(context.Background())
 }
@@ -1908,12 +1661,6 @@ func (i *connectionNetworkParametersPtrType) ToConnectionNetworkParametersPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionNetworkParametersPtrOutput)
 }
 
-func (i *connectionNetworkParametersPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionNetworkParameters] {
-	return pulumix.Output[*ConnectionNetworkParameters]{
-		OutputState: i.ToConnectionNetworkParametersPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionNetworkParametersOutput struct{ *pulumi.OutputState }
 
 func (ConnectionNetworkParametersOutput) ElementType() reflect.Type {
@@ -1936,12 +1683,6 @@ func (o ConnectionNetworkParametersOutput) ToConnectionNetworkParametersPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionNetworkParameters) *ConnectionNetworkParameters {
 		return &v
 	}).(ConnectionNetworkParametersPtrOutput)
-}
-
-func (o ConnectionNetworkParametersOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionNetworkParameters] {
-	return pulumix.Output[ConnectionNetworkParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The network type. Valid values: `PublicNetwork`, `PrivateNetwork`. **NOTE:** If you set `networkType` to `PrivateNetwork`, you must configure `vpcId`, `vswitcheId`, and `securityGroupId`.
@@ -1976,12 +1717,6 @@ func (o ConnectionNetworkParametersPtrOutput) ToConnectionNetworkParametersPtrOu
 
 func (o ConnectionNetworkParametersPtrOutput) ToConnectionNetworkParametersPtrOutputWithContext(ctx context.Context) ConnectionNetworkParametersPtrOutput {
 	return o
-}
-
-func (o ConnectionNetworkParametersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionNetworkParameters] {
-	return pulumix.Output[*ConnectionNetworkParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionNetworkParametersPtrOutput) Elem() ConnectionNetworkParametersOutput {
@@ -2089,12 +1824,6 @@ func (i RuleTargetArgs) ToRuleTargetOutputWithContext(ctx context.Context) RuleT
 	return pulumi.ToOutputWithContext(ctx, i).(RuleTargetOutput)
 }
 
-func (i RuleTargetArgs) ToOutput(ctx context.Context) pulumix.Output[RuleTarget] {
-	return pulumix.Output[RuleTarget]{
-		OutputState: i.ToRuleTargetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RuleTargetArrayInput is an input type that accepts RuleTargetArray and RuleTargetArrayOutput values.
 // You can construct a concrete instance of `RuleTargetArrayInput` via:
 //
@@ -2120,12 +1849,6 @@ func (i RuleTargetArray) ToRuleTargetArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(RuleTargetArrayOutput)
 }
 
-func (i RuleTargetArray) ToOutput(ctx context.Context) pulumix.Output[[]RuleTarget] {
-	return pulumix.Output[[]RuleTarget]{
-		OutputState: i.ToRuleTargetArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RuleTargetOutput struct{ *pulumi.OutputState }
 
 func (RuleTargetOutput) ElementType() reflect.Type {
@@ -2138,12 +1861,6 @@ func (o RuleTargetOutput) ToRuleTargetOutput() RuleTargetOutput {
 
 func (o RuleTargetOutput) ToRuleTargetOutputWithContext(ctx context.Context) RuleTargetOutput {
 	return o
-}
-
-func (o RuleTargetOutput) ToOutput(ctx context.Context) pulumix.Output[RuleTarget] {
-	return pulumix.Output[RuleTarget]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `deadLetterQueue` below.
@@ -2191,12 +1908,6 @@ func (o RuleTargetArrayOutput) ToRuleTargetArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o RuleTargetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RuleTarget] {
-	return pulumix.Output[[]RuleTarget]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RuleTargetArrayOutput) Index(i pulumi.IntInput) RuleTargetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleTarget {
 		return vs[0].([]RuleTarget)[vs[1].(int)]
@@ -2234,12 +1945,6 @@ func (i RuleTargetDeadLetterQueueArgs) ToRuleTargetDeadLetterQueueOutput() RuleT
 
 func (i RuleTargetDeadLetterQueueArgs) ToRuleTargetDeadLetterQueueOutputWithContext(ctx context.Context) RuleTargetDeadLetterQueueOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RuleTargetDeadLetterQueueOutput)
-}
-
-func (i RuleTargetDeadLetterQueueArgs) ToOutput(ctx context.Context) pulumix.Output[RuleTargetDeadLetterQueue] {
-	return pulumix.Output[RuleTargetDeadLetterQueue]{
-		OutputState: i.ToRuleTargetDeadLetterQueueOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i RuleTargetDeadLetterQueueArgs) ToRuleTargetDeadLetterQueuePtrOutput() RuleTargetDeadLetterQueuePtrOutput {
@@ -2283,12 +1988,6 @@ func (i *ruleTargetDeadLetterQueuePtrType) ToRuleTargetDeadLetterQueuePtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(RuleTargetDeadLetterQueuePtrOutput)
 }
 
-func (i *ruleTargetDeadLetterQueuePtrType) ToOutput(ctx context.Context) pulumix.Output[*RuleTargetDeadLetterQueue] {
-	return pulumix.Output[*RuleTargetDeadLetterQueue]{
-		OutputState: i.ToRuleTargetDeadLetterQueuePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RuleTargetDeadLetterQueueOutput struct{ *pulumi.OutputState }
 
 func (RuleTargetDeadLetterQueueOutput) ElementType() reflect.Type {
@@ -2313,12 +2012,6 @@ func (o RuleTargetDeadLetterQueueOutput) ToRuleTargetDeadLetterQueuePtrOutputWit
 	}).(RuleTargetDeadLetterQueuePtrOutput)
 }
 
-func (o RuleTargetDeadLetterQueueOutput) ToOutput(ctx context.Context) pulumix.Output[RuleTargetDeadLetterQueue] {
-	return pulumix.Output[RuleTargetDeadLetterQueue]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The srn of the dead letter queue.
 func (o RuleTargetDeadLetterQueueOutput) Arn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleTargetDeadLetterQueue) *string { return v.Arn }).(pulumi.StringPtrOutput)
@@ -2336,12 +2029,6 @@ func (o RuleTargetDeadLetterQueuePtrOutput) ToRuleTargetDeadLetterQueuePtrOutput
 
 func (o RuleTargetDeadLetterQueuePtrOutput) ToRuleTargetDeadLetterQueuePtrOutputWithContext(ctx context.Context) RuleTargetDeadLetterQueuePtrOutput {
 	return o
-}
-
-func (o RuleTargetDeadLetterQueuePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RuleTargetDeadLetterQueue] {
-	return pulumix.Output[*RuleTargetDeadLetterQueue]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RuleTargetDeadLetterQueuePtrOutput) Elem() RuleTargetDeadLetterQueueOutput {
@@ -2449,12 +2136,6 @@ func (i RuleTargetParamListArgs) ToRuleTargetParamListOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(RuleTargetParamListOutput)
 }
 
-func (i RuleTargetParamListArgs) ToOutput(ctx context.Context) pulumix.Output[RuleTargetParamList] {
-	return pulumix.Output[RuleTargetParamList]{
-		OutputState: i.ToRuleTargetParamListOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RuleTargetParamListArrayInput is an input type that accepts RuleTargetParamListArray and RuleTargetParamListArrayOutput values.
 // You can construct a concrete instance of `RuleTargetParamListArrayInput` via:
 //
@@ -2480,12 +2161,6 @@ func (i RuleTargetParamListArray) ToRuleTargetParamListArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(RuleTargetParamListArrayOutput)
 }
 
-func (i RuleTargetParamListArray) ToOutput(ctx context.Context) pulumix.Output[[]RuleTargetParamList] {
-	return pulumix.Output[[]RuleTargetParamList]{
-		OutputState: i.ToRuleTargetParamListArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RuleTargetParamListOutput struct{ *pulumi.OutputState }
 
 func (RuleTargetParamListOutput) ElementType() reflect.Type {
@@ -2498,12 +2173,6 @@ func (o RuleTargetParamListOutput) ToRuleTargetParamListOutput() RuleTargetParam
 
 func (o RuleTargetParamListOutput) ToRuleTargetParamListOutputWithContext(ctx context.Context) RuleTargetParamListOutput {
 	return o
-}
-
-func (o RuleTargetParamListOutput) ToOutput(ctx context.Context) pulumix.Output[RuleTargetParamList] {
-	return pulumix.Output[RuleTargetParamList]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The format of param. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
@@ -2563,12 +2232,6 @@ func (o RuleTargetParamListArrayOutput) ToRuleTargetParamListArrayOutputWithCont
 	return o
 }
 
-func (o RuleTargetParamListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RuleTargetParamList] {
-	return pulumix.Output[[]RuleTargetParamList]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RuleTargetParamListArrayOutput) Index(i pulumi.IntInput) RuleTargetParamListOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleTargetParamList {
 		return vs[0].([]RuleTargetParamList)[vs[1].(int)]
@@ -2620,12 +2283,6 @@ func (i GetEventBusesBusArgs) ToGetEventBusesBusOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetEventBusesBusOutput)
 }
 
-func (i GetEventBusesBusArgs) ToOutput(ctx context.Context) pulumix.Output[GetEventBusesBus] {
-	return pulumix.Output[GetEventBusesBus]{
-		OutputState: i.ToGetEventBusesBusOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetEventBusesBusArrayInput is an input type that accepts GetEventBusesBusArray and GetEventBusesBusArrayOutput values.
 // You can construct a concrete instance of `GetEventBusesBusArrayInput` via:
 //
@@ -2651,12 +2308,6 @@ func (i GetEventBusesBusArray) ToGetEventBusesBusArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetEventBusesBusArrayOutput)
 }
 
-func (i GetEventBusesBusArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEventBusesBus] {
-	return pulumix.Output[[]GetEventBusesBus]{
-		OutputState: i.ToGetEventBusesBusArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetEventBusesBusOutput struct{ *pulumi.OutputState }
 
 func (GetEventBusesBusOutput) ElementType() reflect.Type {
@@ -2669,12 +2320,6 @@ func (o GetEventBusesBusOutput) ToGetEventBusesBusOutput() GetEventBusesBusOutpu
 
 func (o GetEventBusesBusOutput) ToGetEventBusesBusOutputWithContext(ctx context.Context) GetEventBusesBusOutput {
 	return o
-}
-
-func (o GetEventBusesBusOutput) ToOutput(ctx context.Context) pulumix.Output[GetEventBusesBus] {
-	return pulumix.Output[GetEventBusesBus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time of this bus was created.
@@ -2709,12 +2354,6 @@ func (o GetEventBusesBusArrayOutput) ToGetEventBusesBusArrayOutput() GetEventBus
 
 func (o GetEventBusesBusArrayOutput) ToGetEventBusesBusArrayOutputWithContext(ctx context.Context) GetEventBusesBusArrayOutput {
 	return o
-}
-
-func (o GetEventBusesBusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEventBusesBus] {
-	return pulumix.Output[[]GetEventBusesBus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEventBusesBusArrayOutput) Index(i pulumi.IntInput) GetEventBusesBusOutput {
@@ -2778,12 +2417,6 @@ func (i GetEventSourcesSourceArgs) ToGetEventSourcesSourceOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetEventSourcesSourceOutput)
 }
 
-func (i GetEventSourcesSourceArgs) ToOutput(ctx context.Context) pulumix.Output[GetEventSourcesSource] {
-	return pulumix.Output[GetEventSourcesSource]{
-		OutputState: i.ToGetEventSourcesSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetEventSourcesSourceArrayInput is an input type that accepts GetEventSourcesSourceArray and GetEventSourcesSourceArrayOutput values.
 // You can construct a concrete instance of `GetEventSourcesSourceArrayInput` via:
 //
@@ -2809,12 +2442,6 @@ func (i GetEventSourcesSourceArray) ToGetEventSourcesSourceArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetEventSourcesSourceArrayOutput)
 }
 
-func (i GetEventSourcesSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetEventSourcesSource] {
-	return pulumix.Output[[]GetEventSourcesSource]{
-		OutputState: i.ToGetEventSourcesSourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetEventSourcesSourceOutput struct{ *pulumi.OutputState }
 
 func (GetEventSourcesSourceOutput) ElementType() reflect.Type {
@@ -2827,12 +2454,6 @@ func (o GetEventSourcesSourceOutput) ToGetEventSourcesSourceOutput() GetEventSou
 
 func (o GetEventSourcesSourceOutput) ToGetEventSourcesSourceOutputWithContext(ctx context.Context) GetEventSourcesSourceOutput {
 	return o
-}
-
-func (o GetEventSourcesSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GetEventSourcesSource] {
-	return pulumix.Output[GetEventSourcesSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The detail describe of event source.
@@ -2881,12 +2502,6 @@ func (o GetEventSourcesSourceArrayOutput) ToGetEventSourcesSourceArrayOutput() G
 
 func (o GetEventSourcesSourceArrayOutput) ToGetEventSourcesSourceArrayOutputWithContext(ctx context.Context) GetEventSourcesSourceArrayOutput {
 	return o
-}
-
-func (o GetEventSourcesSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetEventSourcesSource] {
-	return pulumix.Output[[]GetEventSourcesSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEventSourcesSourceArrayOutput) Index(i pulumi.IntInput) GetEventSourcesSourceOutput {
@@ -2952,12 +2567,6 @@ func (i GetRulesRuleArgs) ToGetRulesRuleOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleOutput)
 }
 
-func (i GetRulesRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetRulesRule] {
-	return pulumix.Output[GetRulesRule]{
-		OutputState: i.ToGetRulesRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetRulesRuleArrayInput is an input type that accepts GetRulesRuleArray and GetRulesRuleArrayOutput values.
 // You can construct a concrete instance of `GetRulesRuleArrayInput` via:
 //
@@ -2983,12 +2592,6 @@ func (i GetRulesRuleArray) ToGetRulesRuleArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleArrayOutput)
 }
 
-func (i GetRulesRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesRule] {
-	return pulumix.Output[[]GetRulesRule]{
-		OutputState: i.ToGetRulesRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetRulesRuleOutput struct{ *pulumi.OutputState }
 
 func (GetRulesRuleOutput) ElementType() reflect.Type {
@@ -3001,12 +2604,6 @@ func (o GetRulesRuleOutput) ToGetRulesRuleOutput() GetRulesRuleOutput {
 
 func (o GetRulesRuleOutput) ToGetRulesRuleOutputWithContext(ctx context.Context) GetRulesRuleOutput {
 	return o
-}
-
-func (o GetRulesRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetRulesRule] {
-	return pulumix.Output[GetRulesRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of rule.
@@ -3058,12 +2655,6 @@ func (o GetRulesRuleArrayOutput) ToGetRulesRuleArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o GetRulesRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesRule] {
-	return pulumix.Output[[]GetRulesRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetRulesRuleArrayOutput) Index(i pulumi.IntInput) GetRulesRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRule {
 		return vs[0].([]GetRulesRule)[vs[1].(int)]
@@ -3111,12 +2702,6 @@ func (i GetRulesRuleTargetArgs) ToGetRulesRuleTargetOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleTargetOutput)
 }
 
-func (i GetRulesRuleTargetArgs) ToOutput(ctx context.Context) pulumix.Output[GetRulesRuleTarget] {
-	return pulumix.Output[GetRulesRuleTarget]{
-		OutputState: i.ToGetRulesRuleTargetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetRulesRuleTargetArrayInput is an input type that accepts GetRulesRuleTargetArray and GetRulesRuleTargetArrayOutput values.
 // You can construct a concrete instance of `GetRulesRuleTargetArrayInput` via:
 //
@@ -3142,12 +2727,6 @@ func (i GetRulesRuleTargetArray) ToGetRulesRuleTargetArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleTargetArrayOutput)
 }
 
-func (i GetRulesRuleTargetArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesRuleTarget] {
-	return pulumix.Output[[]GetRulesRuleTarget]{
-		OutputState: i.ToGetRulesRuleTargetArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetRulesRuleTargetOutput struct{ *pulumi.OutputState }
 
 func (GetRulesRuleTargetOutput) ElementType() reflect.Type {
@@ -3160,12 +2739,6 @@ func (o GetRulesRuleTargetOutput) ToGetRulesRuleTargetOutput() GetRulesRuleTarge
 
 func (o GetRulesRuleTargetOutput) ToGetRulesRuleTargetOutputWithContext(ctx context.Context) GetRulesRuleTargetOutput {
 	return o
-}
-
-func (o GetRulesRuleTargetOutput) ToOutput(ctx context.Context) pulumix.Output[GetRulesRuleTarget] {
-	return pulumix.Output[GetRulesRuleTarget]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The endpoint.
@@ -3195,12 +2768,6 @@ func (o GetRulesRuleTargetArrayOutput) ToGetRulesRuleTargetArrayOutput() GetRule
 
 func (o GetRulesRuleTargetArrayOutput) ToGetRulesRuleTargetArrayOutputWithContext(ctx context.Context) GetRulesRuleTargetArrayOutput {
 	return o
-}
-
-func (o GetRulesRuleTargetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRulesRuleTarget] {
-	return pulumix.Output[[]GetRulesRuleTarget]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRulesRuleTargetArrayOutput) Index(i pulumi.IntInput) GetRulesRuleTargetOutput {

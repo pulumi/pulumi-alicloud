@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Ecs Capacity Reservation available to the user.
@@ -158,12 +157,6 @@ func (o GetCapacityReservationsResultOutput) ToGetCapacityReservationsResultOutp
 
 func (o GetCapacityReservationsResultOutput) ToGetCapacityReservationsResultOutputWithContext(ctx context.Context) GetCapacityReservationsResultOutput {
 	return o
-}
-
-func (o GetCapacityReservationsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCapacityReservationsResult] {
-	return pulumix.Output[GetCapacityReservationsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetCapacityReservationsResultOutput) CapacityReservationIds() pulumi.StringArrayOutput {

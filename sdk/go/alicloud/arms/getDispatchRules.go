@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Arms Dispatch Rules of the current Alibaba Cloud user.
@@ -130,12 +129,6 @@ func (o GetDispatchRulesResultOutput) ToGetDispatchRulesResultOutput() GetDispat
 
 func (o GetDispatchRulesResultOutput) ToGetDispatchRulesResultOutputWithContext(ctx context.Context) GetDispatchRulesResultOutput {
 	return o
-}
-
-func (o GetDispatchRulesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDispatchRulesResult] {
-	return pulumix.Output[GetDispatchRulesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDispatchRulesResultOutput) DispatchRuleName() pulumi.StringPtrOutput {

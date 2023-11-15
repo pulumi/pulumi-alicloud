@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -51,12 +50,6 @@ func (i CustomPropertyPropertyValueArgs) ToCustomPropertyPropertyValueOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(CustomPropertyPropertyValueOutput)
 }
 
-func (i CustomPropertyPropertyValueArgs) ToOutput(ctx context.Context) pulumix.Output[CustomPropertyPropertyValue] {
-	return pulumix.Output[CustomPropertyPropertyValue]{
-		OutputState: i.ToCustomPropertyPropertyValueOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CustomPropertyPropertyValueArrayInput is an input type that accepts CustomPropertyPropertyValueArray and CustomPropertyPropertyValueArrayOutput values.
 // You can construct a concrete instance of `CustomPropertyPropertyValueArrayInput` via:
 //
@@ -82,12 +75,6 @@ func (i CustomPropertyPropertyValueArray) ToCustomPropertyPropertyValueArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(CustomPropertyPropertyValueArrayOutput)
 }
 
-func (i CustomPropertyPropertyValueArray) ToOutput(ctx context.Context) pulumix.Output[[]CustomPropertyPropertyValue] {
-	return pulumix.Output[[]CustomPropertyPropertyValue]{
-		OutputState: i.ToCustomPropertyPropertyValueArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CustomPropertyPropertyValueOutput struct{ *pulumi.OutputState }
 
 func (CustomPropertyPropertyValueOutput) ElementType() reflect.Type {
@@ -100,12 +87,6 @@ func (o CustomPropertyPropertyValueOutput) ToCustomPropertyPropertyValueOutput()
 
 func (o CustomPropertyPropertyValueOutput) ToCustomPropertyPropertyValueOutputWithContext(ctx context.Context) CustomPropertyPropertyValueOutput {
 	return o
-}
-
-func (o CustomPropertyPropertyValueOutput) ToOutput(ctx context.Context) pulumix.Output[CustomPropertyPropertyValue] {
-	return pulumix.Output[CustomPropertyPropertyValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The value of an attribute.
@@ -130,12 +111,6 @@ func (o CustomPropertyPropertyValueArrayOutput) ToCustomPropertyPropertyValueArr
 
 func (o CustomPropertyPropertyValueArrayOutput) ToCustomPropertyPropertyValueArrayOutputWithContext(ctx context.Context) CustomPropertyPropertyValueArrayOutput {
 	return o
-}
-
-func (o CustomPropertyPropertyValueArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CustomPropertyPropertyValue] {
-	return pulumix.Output[[]CustomPropertyPropertyValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CustomPropertyPropertyValueArrayOutput) Index(i pulumi.IntInput) CustomPropertyPropertyValueOutput {
@@ -181,12 +156,6 @@ func (i EcdPolicyGroupAuthorizeAccessPolicyRuleArgs) ToEcdPolicyGroupAuthorizeAc
 	return pulumi.ToOutputWithContext(ctx, i).(EcdPolicyGroupAuthorizeAccessPolicyRuleOutput)
 }
 
-func (i EcdPolicyGroupAuthorizeAccessPolicyRuleArgs) ToOutput(ctx context.Context) pulumix.Output[EcdPolicyGroupAuthorizeAccessPolicyRule] {
-	return pulumix.Output[EcdPolicyGroupAuthorizeAccessPolicyRule]{
-		OutputState: i.ToEcdPolicyGroupAuthorizeAccessPolicyRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EcdPolicyGroupAuthorizeAccessPolicyRuleArrayInput is an input type that accepts EcdPolicyGroupAuthorizeAccessPolicyRuleArray and EcdPolicyGroupAuthorizeAccessPolicyRuleArrayOutput values.
 // You can construct a concrete instance of `EcdPolicyGroupAuthorizeAccessPolicyRuleArrayInput` via:
 //
@@ -212,12 +181,6 @@ func (i EcdPolicyGroupAuthorizeAccessPolicyRuleArray) ToEcdPolicyGroupAuthorizeA
 	return pulumi.ToOutputWithContext(ctx, i).(EcdPolicyGroupAuthorizeAccessPolicyRuleArrayOutput)
 }
 
-func (i EcdPolicyGroupAuthorizeAccessPolicyRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]EcdPolicyGroupAuthorizeAccessPolicyRule] {
-	return pulumix.Output[[]EcdPolicyGroupAuthorizeAccessPolicyRule]{
-		OutputState: i.ToEcdPolicyGroupAuthorizeAccessPolicyRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EcdPolicyGroupAuthorizeAccessPolicyRuleOutput struct{ *pulumi.OutputState }
 
 func (EcdPolicyGroupAuthorizeAccessPolicyRuleOutput) ElementType() reflect.Type {
@@ -230,12 +193,6 @@ func (o EcdPolicyGroupAuthorizeAccessPolicyRuleOutput) ToEcdPolicyGroupAuthorize
 
 func (o EcdPolicyGroupAuthorizeAccessPolicyRuleOutput) ToEcdPolicyGroupAuthorizeAccessPolicyRuleOutputWithContext(ctx context.Context) EcdPolicyGroupAuthorizeAccessPolicyRuleOutput {
 	return o
-}
-
-func (o EcdPolicyGroupAuthorizeAccessPolicyRuleOutput) ToOutput(ctx context.Context) pulumix.Output[EcdPolicyGroupAuthorizeAccessPolicyRule] {
-	return pulumix.Output[EcdPolicyGroupAuthorizeAccessPolicyRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The cidrip of authorize access rule.
@@ -260,12 +217,6 @@ func (o EcdPolicyGroupAuthorizeAccessPolicyRuleArrayOutput) ToEcdPolicyGroupAuth
 
 func (o EcdPolicyGroupAuthorizeAccessPolicyRuleArrayOutput) ToEcdPolicyGroupAuthorizeAccessPolicyRuleArrayOutputWithContext(ctx context.Context) EcdPolicyGroupAuthorizeAccessPolicyRuleArrayOutput {
 	return o
-}
-
-func (o EcdPolicyGroupAuthorizeAccessPolicyRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EcdPolicyGroupAuthorizeAccessPolicyRule] {
-	return pulumix.Output[[]EcdPolicyGroupAuthorizeAccessPolicyRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EcdPolicyGroupAuthorizeAccessPolicyRuleArrayOutput) Index(i pulumi.IntInput) EcdPolicyGroupAuthorizeAccessPolicyRuleOutput {
@@ -331,12 +282,6 @@ func (i EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs) ToEcdPolicyGroupAuthorize
 	return pulumi.ToOutputWithContext(ctx, i).(EcdPolicyGroupAuthorizeSecurityPolicyRuleOutput)
 }
 
-func (i EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs) ToOutput(ctx context.Context) pulumix.Output[EcdPolicyGroupAuthorizeSecurityPolicyRule] {
-	return pulumix.Output[EcdPolicyGroupAuthorizeSecurityPolicyRule]{
-		OutputState: i.ToEcdPolicyGroupAuthorizeSecurityPolicyRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayInput is an input type that accepts EcdPolicyGroupAuthorizeSecurityPolicyRuleArray and EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayOutput values.
 // You can construct a concrete instance of `EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayInput` via:
 //
@@ -362,12 +307,6 @@ func (i EcdPolicyGroupAuthorizeSecurityPolicyRuleArray) ToEcdPolicyGroupAuthoriz
 	return pulumi.ToOutputWithContext(ctx, i).(EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayOutput)
 }
 
-func (i EcdPolicyGroupAuthorizeSecurityPolicyRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]EcdPolicyGroupAuthorizeSecurityPolicyRule] {
-	return pulumix.Output[[]EcdPolicyGroupAuthorizeSecurityPolicyRule]{
-		OutputState: i.ToEcdPolicyGroupAuthorizeSecurityPolicyRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EcdPolicyGroupAuthorizeSecurityPolicyRuleOutput struct{ *pulumi.OutputState }
 
 func (EcdPolicyGroupAuthorizeSecurityPolicyRuleOutput) ElementType() reflect.Type {
@@ -380,12 +319,6 @@ func (o EcdPolicyGroupAuthorizeSecurityPolicyRuleOutput) ToEcdPolicyGroupAuthori
 
 func (o EcdPolicyGroupAuthorizeSecurityPolicyRuleOutput) ToEcdPolicyGroupAuthorizeSecurityPolicyRuleOutputWithContext(ctx context.Context) EcdPolicyGroupAuthorizeSecurityPolicyRuleOutput {
 	return o
-}
-
-func (o EcdPolicyGroupAuthorizeSecurityPolicyRuleOutput) ToOutput(ctx context.Context) pulumix.Output[EcdPolicyGroupAuthorizeSecurityPolicyRule] {
-	return pulumix.Output[EcdPolicyGroupAuthorizeSecurityPolicyRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The cidrip of security rules.
@@ -435,12 +368,6 @@ func (o EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayOutput) ToEcdPolicyGroupAu
 
 func (o EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayOutput) ToEcdPolicyGroupAuthorizeSecurityPolicyRuleArrayOutputWithContext(ctx context.Context) EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayOutput {
 	return o
-}
-
-func (o EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EcdPolicyGroupAuthorizeSecurityPolicyRule] {
-	return pulumix.Output[[]EcdPolicyGroupAuthorizeSecurityPolicyRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayOutput) Index(i pulumi.IntInput) EcdPolicyGroupAuthorizeSecurityPolicyRuleOutput {
@@ -554,12 +481,6 @@ func (i GetAdConnectorDirectoriesDirectoryArgs) ToGetAdConnectorDirectoriesDirec
 	return pulumi.ToOutputWithContext(ctx, i).(GetAdConnectorDirectoriesDirectoryOutput)
 }
 
-func (i GetAdConnectorDirectoriesDirectoryArgs) ToOutput(ctx context.Context) pulumix.Output[GetAdConnectorDirectoriesDirectory] {
-	return pulumix.Output[GetAdConnectorDirectoriesDirectory]{
-		OutputState: i.ToGetAdConnectorDirectoriesDirectoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAdConnectorDirectoriesDirectoryArrayInput is an input type that accepts GetAdConnectorDirectoriesDirectoryArray and GetAdConnectorDirectoriesDirectoryArrayOutput values.
 // You can construct a concrete instance of `GetAdConnectorDirectoriesDirectoryArrayInput` via:
 //
@@ -585,12 +506,6 @@ func (i GetAdConnectorDirectoriesDirectoryArray) ToGetAdConnectorDirectoriesDire
 	return pulumi.ToOutputWithContext(ctx, i).(GetAdConnectorDirectoriesDirectoryArrayOutput)
 }
 
-func (i GetAdConnectorDirectoriesDirectoryArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAdConnectorDirectoriesDirectory] {
-	return pulumix.Output[[]GetAdConnectorDirectoriesDirectory]{
-		OutputState: i.ToGetAdConnectorDirectoriesDirectoryArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAdConnectorDirectoriesDirectoryOutput struct{ *pulumi.OutputState }
 
 func (GetAdConnectorDirectoriesDirectoryOutput) ElementType() reflect.Type {
@@ -603,12 +518,6 @@ func (o GetAdConnectorDirectoriesDirectoryOutput) ToGetAdConnectorDirectoriesDir
 
 func (o GetAdConnectorDirectoriesDirectoryOutput) ToGetAdConnectorDirectoriesDirectoryOutputWithContext(ctx context.Context) GetAdConnectorDirectoriesDirectoryOutput {
 	return o
-}
-
-func (o GetAdConnectorDirectoriesDirectoryOutput) ToOutput(ctx context.Context) pulumix.Output[GetAdConnectorDirectoriesDirectory] {
-	return pulumix.Output[GetAdConnectorDirectoriesDirectory]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the ad connector directory.
@@ -722,12 +631,6 @@ func (o GetAdConnectorDirectoriesDirectoryArrayOutput) ToGetAdConnectorDirectori
 	return o
 }
 
-func (o GetAdConnectorDirectoriesDirectoryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAdConnectorDirectoriesDirectory] {
-	return pulumix.Output[[]GetAdConnectorDirectoriesDirectory]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetAdConnectorDirectoriesDirectoryArrayOutput) Index(i pulumi.IntInput) GetAdConnectorDirectoriesDirectoryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAdConnectorDirectoriesDirectory {
 		return vs[0].([]GetAdConnectorDirectoriesDirectory)[vs[1].(int)]
@@ -787,12 +690,6 @@ func (i GetAdConnectorDirectoriesDirectoryAdConnectorArgs) ToGetAdConnectorDirec
 	return pulumi.ToOutputWithContext(ctx, i).(GetAdConnectorDirectoriesDirectoryAdConnectorOutput)
 }
 
-func (i GetAdConnectorDirectoriesDirectoryAdConnectorArgs) ToOutput(ctx context.Context) pulumix.Output[GetAdConnectorDirectoriesDirectoryAdConnector] {
-	return pulumix.Output[GetAdConnectorDirectoriesDirectoryAdConnector]{
-		OutputState: i.ToGetAdConnectorDirectoriesDirectoryAdConnectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAdConnectorDirectoriesDirectoryAdConnectorArrayInput is an input type that accepts GetAdConnectorDirectoriesDirectoryAdConnectorArray and GetAdConnectorDirectoriesDirectoryAdConnectorArrayOutput values.
 // You can construct a concrete instance of `GetAdConnectorDirectoriesDirectoryAdConnectorArrayInput` via:
 //
@@ -818,12 +715,6 @@ func (i GetAdConnectorDirectoriesDirectoryAdConnectorArray) ToGetAdConnectorDire
 	return pulumi.ToOutputWithContext(ctx, i).(GetAdConnectorDirectoriesDirectoryAdConnectorArrayOutput)
 }
 
-func (i GetAdConnectorDirectoriesDirectoryAdConnectorArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAdConnectorDirectoriesDirectoryAdConnector] {
-	return pulumix.Output[[]GetAdConnectorDirectoriesDirectoryAdConnector]{
-		OutputState: i.ToGetAdConnectorDirectoriesDirectoryAdConnectorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAdConnectorDirectoriesDirectoryAdConnectorOutput struct{ *pulumi.OutputState }
 
 func (GetAdConnectorDirectoriesDirectoryAdConnectorOutput) ElementType() reflect.Type {
@@ -836,12 +727,6 @@ func (o GetAdConnectorDirectoriesDirectoryAdConnectorOutput) ToGetAdConnectorDir
 
 func (o GetAdConnectorDirectoriesDirectoryAdConnectorOutput) ToGetAdConnectorDirectoriesDirectoryAdConnectorOutputWithContext(ctx context.Context) GetAdConnectorDirectoriesDirectoryAdConnectorOutput {
 	return o
-}
-
-func (o GetAdConnectorDirectoriesDirectoryAdConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[GetAdConnectorDirectoriesDirectoryAdConnector] {
-	return pulumix.Output[GetAdConnectorDirectoriesDirectoryAdConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The address of AD connector.
@@ -886,12 +771,6 @@ func (o GetAdConnectorDirectoriesDirectoryAdConnectorArrayOutput) ToGetAdConnect
 
 func (o GetAdConnectorDirectoriesDirectoryAdConnectorArrayOutput) ToGetAdConnectorDirectoriesDirectoryAdConnectorArrayOutputWithContext(ctx context.Context) GetAdConnectorDirectoriesDirectoryAdConnectorArrayOutput {
 	return o
-}
-
-func (o GetAdConnectorDirectoriesDirectoryAdConnectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAdConnectorDirectoriesDirectoryAdConnector] {
-	return pulumix.Output[[]GetAdConnectorDirectoriesDirectoryAdConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAdConnectorDirectoriesDirectoryAdConnectorArrayOutput) Index(i pulumi.IntInput) GetAdConnectorDirectoriesDirectoryAdConnectorOutput {
@@ -1049,12 +928,6 @@ func (i GetAdConnectorOfficeSitesSiteArgs) ToGetAdConnectorOfficeSitesSiteOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetAdConnectorOfficeSitesSiteOutput)
 }
 
-func (i GetAdConnectorOfficeSitesSiteArgs) ToOutput(ctx context.Context) pulumix.Output[GetAdConnectorOfficeSitesSite] {
-	return pulumix.Output[GetAdConnectorOfficeSitesSite]{
-		OutputState: i.ToGetAdConnectorOfficeSitesSiteOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAdConnectorOfficeSitesSiteArrayInput is an input type that accepts GetAdConnectorOfficeSitesSiteArray and GetAdConnectorOfficeSitesSiteArrayOutput values.
 // You can construct a concrete instance of `GetAdConnectorOfficeSitesSiteArrayInput` via:
 //
@@ -1080,12 +953,6 @@ func (i GetAdConnectorOfficeSitesSiteArray) ToGetAdConnectorOfficeSitesSiteArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetAdConnectorOfficeSitesSiteArrayOutput)
 }
 
-func (i GetAdConnectorOfficeSitesSiteArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAdConnectorOfficeSitesSite] {
-	return pulumix.Output[[]GetAdConnectorOfficeSitesSite]{
-		OutputState: i.ToGetAdConnectorOfficeSitesSiteArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAdConnectorOfficeSitesSiteOutput struct{ *pulumi.OutputState }
 
 func (GetAdConnectorOfficeSitesSiteOutput) ElementType() reflect.Type {
@@ -1098,12 +965,6 @@ func (o GetAdConnectorOfficeSitesSiteOutput) ToGetAdConnectorOfficeSitesSiteOutp
 
 func (o GetAdConnectorOfficeSitesSiteOutput) ToGetAdConnectorOfficeSitesSiteOutputWithContext(ctx context.Context) GetAdConnectorOfficeSitesSiteOutput {
 	return o
-}
-
-func (o GetAdConnectorOfficeSitesSiteOutput) ToOutput(ctx context.Context) pulumix.Output[GetAdConnectorOfficeSitesSite] {
-	return pulumix.Output[GetAdConnectorOfficeSitesSite]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Name of the ad connector office site.
@@ -1272,12 +1133,6 @@ func (o GetAdConnectorOfficeSitesSiteArrayOutput) ToGetAdConnectorOfficeSitesSit
 	return o
 }
 
-func (o GetAdConnectorOfficeSitesSiteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAdConnectorOfficeSitesSite] {
-	return pulumix.Output[[]GetAdConnectorOfficeSitesSite]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetAdConnectorOfficeSitesSiteArrayOutput) Index(i pulumi.IntInput) GetAdConnectorOfficeSitesSiteOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAdConnectorOfficeSitesSite {
 		return vs[0].([]GetAdConnectorOfficeSitesSite)[vs[1].(int)]
@@ -1329,12 +1184,6 @@ func (i GetAdConnectorOfficeSitesSiteAdConnectorArgs) ToGetAdConnectorOfficeSite
 	return pulumi.ToOutputWithContext(ctx, i).(GetAdConnectorOfficeSitesSiteAdConnectorOutput)
 }
 
-func (i GetAdConnectorOfficeSitesSiteAdConnectorArgs) ToOutput(ctx context.Context) pulumix.Output[GetAdConnectorOfficeSitesSiteAdConnector] {
-	return pulumix.Output[GetAdConnectorOfficeSitesSiteAdConnector]{
-		OutputState: i.ToGetAdConnectorOfficeSitesSiteAdConnectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAdConnectorOfficeSitesSiteAdConnectorArrayInput is an input type that accepts GetAdConnectorOfficeSitesSiteAdConnectorArray and GetAdConnectorOfficeSitesSiteAdConnectorArrayOutput values.
 // You can construct a concrete instance of `GetAdConnectorOfficeSitesSiteAdConnectorArrayInput` via:
 //
@@ -1360,12 +1209,6 @@ func (i GetAdConnectorOfficeSitesSiteAdConnectorArray) ToGetAdConnectorOfficeSit
 	return pulumi.ToOutputWithContext(ctx, i).(GetAdConnectorOfficeSitesSiteAdConnectorArrayOutput)
 }
 
-func (i GetAdConnectorOfficeSitesSiteAdConnectorArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAdConnectorOfficeSitesSiteAdConnector] {
-	return pulumix.Output[[]GetAdConnectorOfficeSitesSiteAdConnector]{
-		OutputState: i.ToGetAdConnectorOfficeSitesSiteAdConnectorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAdConnectorOfficeSitesSiteAdConnectorOutput struct{ *pulumi.OutputState }
 
 func (GetAdConnectorOfficeSitesSiteAdConnectorOutput) ElementType() reflect.Type {
@@ -1378,12 +1221,6 @@ func (o GetAdConnectorOfficeSitesSiteAdConnectorOutput) ToGetAdConnectorOfficeSi
 
 func (o GetAdConnectorOfficeSitesSiteAdConnectorOutput) ToGetAdConnectorOfficeSitesSiteAdConnectorOutputWithContext(ctx context.Context) GetAdConnectorOfficeSitesSiteAdConnectorOutput {
 	return o
-}
-
-func (o GetAdConnectorOfficeSitesSiteAdConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[GetAdConnectorOfficeSitesSiteAdConnector] {
-	return pulumix.Output[GetAdConnectorOfficeSitesSiteAdConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // AD Connector across Zones, Its Connection Addresses.
@@ -1418,12 +1255,6 @@ func (o GetAdConnectorOfficeSitesSiteAdConnectorArrayOutput) ToGetAdConnectorOff
 
 func (o GetAdConnectorOfficeSitesSiteAdConnectorArrayOutput) ToGetAdConnectorOfficeSitesSiteAdConnectorArrayOutputWithContext(ctx context.Context) GetAdConnectorOfficeSitesSiteAdConnectorArrayOutput {
 	return o
-}
-
-func (o GetAdConnectorOfficeSitesSiteAdConnectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAdConnectorOfficeSitesSiteAdConnector] {
-	return pulumix.Output[[]GetAdConnectorOfficeSitesSiteAdConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAdConnectorOfficeSitesSiteAdConnectorArrayOutput) Index(i pulumi.IntInput) GetAdConnectorOfficeSitesSiteAdConnectorOutput {
@@ -1477,12 +1308,6 @@ func (i GetAdConnectorOfficeSitesSiteLogArgs) ToGetAdConnectorOfficeSitesSiteLog
 	return pulumi.ToOutputWithContext(ctx, i).(GetAdConnectorOfficeSitesSiteLogOutput)
 }
 
-func (i GetAdConnectorOfficeSitesSiteLogArgs) ToOutput(ctx context.Context) pulumix.Output[GetAdConnectorOfficeSitesSiteLog] {
-	return pulumix.Output[GetAdConnectorOfficeSitesSiteLog]{
-		OutputState: i.ToGetAdConnectorOfficeSitesSiteLogOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAdConnectorOfficeSitesSiteLogArrayInput is an input type that accepts GetAdConnectorOfficeSitesSiteLogArray and GetAdConnectorOfficeSitesSiteLogArrayOutput values.
 // You can construct a concrete instance of `GetAdConnectorOfficeSitesSiteLogArrayInput` via:
 //
@@ -1508,12 +1333,6 @@ func (i GetAdConnectorOfficeSitesSiteLogArray) ToGetAdConnectorOfficeSitesSiteLo
 	return pulumi.ToOutputWithContext(ctx, i).(GetAdConnectorOfficeSitesSiteLogArrayOutput)
 }
 
-func (i GetAdConnectorOfficeSitesSiteLogArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAdConnectorOfficeSitesSiteLog] {
-	return pulumix.Output[[]GetAdConnectorOfficeSitesSiteLog]{
-		OutputState: i.ToGetAdConnectorOfficeSitesSiteLogArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAdConnectorOfficeSitesSiteLogOutput struct{ *pulumi.OutputState }
 
 func (GetAdConnectorOfficeSitesSiteLogOutput) ElementType() reflect.Type {
@@ -1526,12 +1345,6 @@ func (o GetAdConnectorOfficeSitesSiteLogOutput) ToGetAdConnectorOfficeSitesSiteL
 
 func (o GetAdConnectorOfficeSitesSiteLogOutput) ToGetAdConnectorOfficeSitesSiteLogOutputWithContext(ctx context.Context) GetAdConnectorOfficeSitesSiteLogOutput {
 	return o
-}
-
-func (o GetAdConnectorOfficeSitesSiteLogOutput) ToOutput(ctx context.Context) pulumix.Output[GetAdConnectorOfficeSitesSiteLog] {
-	return pulumix.Output[GetAdConnectorOfficeSitesSiteLog]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Log Level. Possible Values: Info: Information Error: Error Warn: Warning.
@@ -1566,12 +1379,6 @@ func (o GetAdConnectorOfficeSitesSiteLogArrayOutput) ToGetAdConnectorOfficeSites
 
 func (o GetAdConnectorOfficeSitesSiteLogArrayOutput) ToGetAdConnectorOfficeSitesSiteLogArrayOutputWithContext(ctx context.Context) GetAdConnectorOfficeSitesSiteLogArrayOutput {
 	return o
-}
-
-func (o GetAdConnectorOfficeSitesSiteLogArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAdConnectorOfficeSitesSiteLog] {
-	return pulumix.Output[[]GetAdConnectorOfficeSitesSiteLog]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAdConnectorOfficeSitesSiteLogArrayOutput) Index(i pulumi.IntInput) GetAdConnectorOfficeSitesSiteLogOutput {
@@ -1649,12 +1456,6 @@ func (i GetBundlesBundleArgs) ToGetBundlesBundleOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetBundlesBundleOutput)
 }
 
-func (i GetBundlesBundleArgs) ToOutput(ctx context.Context) pulumix.Output[GetBundlesBundle] {
-	return pulumix.Output[GetBundlesBundle]{
-		OutputState: i.ToGetBundlesBundleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetBundlesBundleArrayInput is an input type that accepts GetBundlesBundleArray and GetBundlesBundleArrayOutput values.
 // You can construct a concrete instance of `GetBundlesBundleArrayInput` via:
 //
@@ -1680,12 +1481,6 @@ func (i GetBundlesBundleArray) ToGetBundlesBundleArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetBundlesBundleArrayOutput)
 }
 
-func (i GetBundlesBundleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetBundlesBundle] {
-	return pulumix.Output[[]GetBundlesBundle]{
-		OutputState: i.ToGetBundlesBundleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetBundlesBundleOutput struct{ *pulumi.OutputState }
 
 func (GetBundlesBundleOutput) ElementType() reflect.Type {
@@ -1698,12 +1493,6 @@ func (o GetBundlesBundleOutput) ToGetBundlesBundleOutput() GetBundlesBundleOutpu
 
 func (o GetBundlesBundleOutput) ToGetBundlesBundleOutputWithContext(ctx context.Context) GetBundlesBundleOutput {
 	return o
-}
-
-func (o GetBundlesBundleOutput) ToOutput(ctx context.Context) pulumix.Output[GetBundlesBundle] {
-	return pulumix.Output[GetBundlesBundle]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The bundle id of the bundle.
@@ -1770,12 +1559,6 @@ func (o GetBundlesBundleArrayOutput) ToGetBundlesBundleArrayOutputWithContext(ct
 	return o
 }
 
-func (o GetBundlesBundleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetBundlesBundle] {
-	return pulumix.Output[[]GetBundlesBundle]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetBundlesBundleArrayOutput) Index(i pulumi.IntInput) GetBundlesBundleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBundlesBundle {
 		return vs[0].([]GetBundlesBundle)[vs[1].(int)]
@@ -1827,12 +1610,6 @@ func (i GetBundlesBundleDesktopTypeAttributeArgs) ToGetBundlesBundleDesktopTypeA
 	return pulumi.ToOutputWithContext(ctx, i).(GetBundlesBundleDesktopTypeAttributeOutput)
 }
 
-func (i GetBundlesBundleDesktopTypeAttributeArgs) ToOutput(ctx context.Context) pulumix.Output[GetBundlesBundleDesktopTypeAttribute] {
-	return pulumix.Output[GetBundlesBundleDesktopTypeAttribute]{
-		OutputState: i.ToGetBundlesBundleDesktopTypeAttributeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetBundlesBundleDesktopTypeAttributeArrayInput is an input type that accepts GetBundlesBundleDesktopTypeAttributeArray and GetBundlesBundleDesktopTypeAttributeArrayOutput values.
 // You can construct a concrete instance of `GetBundlesBundleDesktopTypeAttributeArrayInput` via:
 //
@@ -1858,12 +1635,6 @@ func (i GetBundlesBundleDesktopTypeAttributeArray) ToGetBundlesBundleDesktopType
 	return pulumi.ToOutputWithContext(ctx, i).(GetBundlesBundleDesktopTypeAttributeArrayOutput)
 }
 
-func (i GetBundlesBundleDesktopTypeAttributeArray) ToOutput(ctx context.Context) pulumix.Output[[]GetBundlesBundleDesktopTypeAttribute] {
-	return pulumix.Output[[]GetBundlesBundleDesktopTypeAttribute]{
-		OutputState: i.ToGetBundlesBundleDesktopTypeAttributeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetBundlesBundleDesktopTypeAttributeOutput struct{ *pulumi.OutputState }
 
 func (GetBundlesBundleDesktopTypeAttributeOutput) ElementType() reflect.Type {
@@ -1876,12 +1647,6 @@ func (o GetBundlesBundleDesktopTypeAttributeOutput) ToGetBundlesBundleDesktopTyp
 
 func (o GetBundlesBundleDesktopTypeAttributeOutput) ToGetBundlesBundleDesktopTypeAttributeOutputWithContext(ctx context.Context) GetBundlesBundleDesktopTypeAttributeOutput {
 	return o
-}
-
-func (o GetBundlesBundleDesktopTypeAttributeOutput) ToOutput(ctx context.Context) pulumix.Output[GetBundlesBundleDesktopTypeAttribute] {
-	return pulumix.Output[GetBundlesBundleDesktopTypeAttribute]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The cpu count attribute of the bundle.
@@ -1916,12 +1681,6 @@ func (o GetBundlesBundleDesktopTypeAttributeArrayOutput) ToGetBundlesBundleDeskt
 
 func (o GetBundlesBundleDesktopTypeAttributeArrayOutput) ToGetBundlesBundleDesktopTypeAttributeArrayOutputWithContext(ctx context.Context) GetBundlesBundleDesktopTypeAttributeArrayOutput {
 	return o
-}
-
-func (o GetBundlesBundleDesktopTypeAttributeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetBundlesBundleDesktopTypeAttribute] {
-	return pulumix.Output[[]GetBundlesBundleDesktopTypeAttribute]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetBundlesBundleDesktopTypeAttributeArrayOutput) Index(i pulumi.IntInput) GetBundlesBundleDesktopTypeAttributeOutput {
@@ -1967,12 +1726,6 @@ func (i GetBundlesBundleDiskArgs) ToGetBundlesBundleDiskOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetBundlesBundleDiskOutput)
 }
 
-func (i GetBundlesBundleDiskArgs) ToOutput(ctx context.Context) pulumix.Output[GetBundlesBundleDisk] {
-	return pulumix.Output[GetBundlesBundleDisk]{
-		OutputState: i.ToGetBundlesBundleDiskOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetBundlesBundleDiskArrayInput is an input type that accepts GetBundlesBundleDiskArray and GetBundlesBundleDiskArrayOutput values.
 // You can construct a concrete instance of `GetBundlesBundleDiskArrayInput` via:
 //
@@ -1998,12 +1751,6 @@ func (i GetBundlesBundleDiskArray) ToGetBundlesBundleDiskArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetBundlesBundleDiskArrayOutput)
 }
 
-func (i GetBundlesBundleDiskArray) ToOutput(ctx context.Context) pulumix.Output[[]GetBundlesBundleDisk] {
-	return pulumix.Output[[]GetBundlesBundleDisk]{
-		OutputState: i.ToGetBundlesBundleDiskArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetBundlesBundleDiskOutput struct{ *pulumi.OutputState }
 
 func (GetBundlesBundleDiskOutput) ElementType() reflect.Type {
@@ -2016,12 +1763,6 @@ func (o GetBundlesBundleDiskOutput) ToGetBundlesBundleDiskOutput() GetBundlesBun
 
 func (o GetBundlesBundleDiskOutput) ToGetBundlesBundleDiskOutputWithContext(ctx context.Context) GetBundlesBundleDiskOutput {
 	return o
-}
-
-func (o GetBundlesBundleDiskOutput) ToOutput(ctx context.Context) pulumix.Output[GetBundlesBundleDisk] {
-	return pulumix.Output[GetBundlesBundleDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The disk size attribute of the bundle.
@@ -2046,12 +1787,6 @@ func (o GetBundlesBundleDiskArrayOutput) ToGetBundlesBundleDiskArrayOutput() Get
 
 func (o GetBundlesBundleDiskArrayOutput) ToGetBundlesBundleDiskArrayOutputWithContext(ctx context.Context) GetBundlesBundleDiskArrayOutput {
 	return o
-}
-
-func (o GetBundlesBundleDiskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetBundlesBundleDisk] {
-	return pulumix.Output[[]GetBundlesBundleDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetBundlesBundleDiskArrayOutput) Index(i pulumi.IntInput) GetBundlesBundleDiskOutput {
@@ -2117,12 +1852,6 @@ func (i GetCommandsCommandArgs) ToGetCommandsCommandOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetCommandsCommandOutput)
 }
 
-func (i GetCommandsCommandArgs) ToOutput(ctx context.Context) pulumix.Output[GetCommandsCommand] {
-	return pulumix.Output[GetCommandsCommand]{
-		OutputState: i.ToGetCommandsCommandOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetCommandsCommandArrayInput is an input type that accepts GetCommandsCommandArray and GetCommandsCommandArrayOutput values.
 // You can construct a concrete instance of `GetCommandsCommandArrayInput` via:
 //
@@ -2148,12 +1877,6 @@ func (i GetCommandsCommandArray) ToGetCommandsCommandArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetCommandsCommandArrayOutput)
 }
 
-func (i GetCommandsCommandArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCommandsCommand] {
-	return pulumix.Output[[]GetCommandsCommand]{
-		OutputState: i.ToGetCommandsCommandArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetCommandsCommandOutput struct{ *pulumi.OutputState }
 
 func (GetCommandsCommandOutput) ElementType() reflect.Type {
@@ -2166,12 +1889,6 @@ func (o GetCommandsCommandOutput) ToGetCommandsCommandOutput() GetCommandsComman
 
 func (o GetCommandsCommandOutput) ToGetCommandsCommandOutputWithContext(ctx context.Context) GetCommandsCommandOutput {
 	return o
-}
-
-func (o GetCommandsCommandOutput) ToOutput(ctx context.Context) pulumix.Output[GetCommandsCommand] {
-	return pulumix.Output[GetCommandsCommand]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Contents of the Script to Base64 Encoded Transmission.
@@ -2221,12 +1938,6 @@ func (o GetCommandsCommandArrayOutput) ToGetCommandsCommandArrayOutput() GetComm
 
 func (o GetCommandsCommandArrayOutput) ToGetCommandsCommandArrayOutputWithContext(ctx context.Context) GetCommandsCommandArrayOutput {
 	return o
-}
-
-func (o GetCommandsCommandArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCommandsCommand] {
-	return pulumix.Output[[]GetCommandsCommand]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetCommandsCommandArrayOutput) Index(i pulumi.IntInput) GetCommandsCommandOutput {
@@ -2308,12 +2019,6 @@ func (i GetCommandsCommandInvokeDesktopArgs) ToGetCommandsCommandInvokeDesktopOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetCommandsCommandInvokeDesktopOutput)
 }
 
-func (i GetCommandsCommandInvokeDesktopArgs) ToOutput(ctx context.Context) pulumix.Output[GetCommandsCommandInvokeDesktop] {
-	return pulumix.Output[GetCommandsCommandInvokeDesktop]{
-		OutputState: i.ToGetCommandsCommandInvokeDesktopOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetCommandsCommandInvokeDesktopArrayInput is an input type that accepts GetCommandsCommandInvokeDesktopArray and GetCommandsCommandInvokeDesktopArrayOutput values.
 // You can construct a concrete instance of `GetCommandsCommandInvokeDesktopArrayInput` via:
 //
@@ -2339,12 +2044,6 @@ func (i GetCommandsCommandInvokeDesktopArray) ToGetCommandsCommandInvokeDesktopA
 	return pulumi.ToOutputWithContext(ctx, i).(GetCommandsCommandInvokeDesktopArrayOutput)
 }
 
-func (i GetCommandsCommandInvokeDesktopArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCommandsCommandInvokeDesktop] {
-	return pulumix.Output[[]GetCommandsCommandInvokeDesktop]{
-		OutputState: i.ToGetCommandsCommandInvokeDesktopArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetCommandsCommandInvokeDesktopOutput struct{ *pulumi.OutputState }
 
 func (GetCommandsCommandInvokeDesktopOutput) ElementType() reflect.Type {
@@ -2357,12 +2056,6 @@ func (o GetCommandsCommandInvokeDesktopOutput) ToGetCommandsCommandInvokeDesktop
 
 func (o GetCommandsCommandInvokeDesktopOutput) ToGetCommandsCommandInvokeDesktopOutputWithContext(ctx context.Context) GetCommandsCommandInvokeDesktopOutput {
 	return o
-}
-
-func (o GetCommandsCommandInvokeDesktopOutput) ToOutput(ctx context.Context) pulumix.Output[GetCommandsCommandInvokeDesktop] {
-	return pulumix.Output[GetCommandsCommandInvokeDesktop]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The desktop id of the Desktop.
@@ -2434,12 +2127,6 @@ func (o GetCommandsCommandInvokeDesktopArrayOutput) ToGetCommandsCommandInvokeDe
 	return o
 }
 
-func (o GetCommandsCommandInvokeDesktopArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCommandsCommandInvokeDesktop] {
-	return pulumix.Output[[]GetCommandsCommandInvokeDesktop]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetCommandsCommandInvokeDesktopArrayOutput) Index(i pulumi.IntInput) GetCommandsCommandInvokeDesktopOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCommandsCommandInvokeDesktop {
 		return vs[0].([]GetCommandsCommandInvokeDesktop)[vs[1].(int)]
@@ -2491,12 +2178,6 @@ func (i GetCustomPropertiesPropertyArgs) ToGetCustomPropertiesPropertyOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetCustomPropertiesPropertyOutput)
 }
 
-func (i GetCustomPropertiesPropertyArgs) ToOutput(ctx context.Context) pulumix.Output[GetCustomPropertiesProperty] {
-	return pulumix.Output[GetCustomPropertiesProperty]{
-		OutputState: i.ToGetCustomPropertiesPropertyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetCustomPropertiesPropertyArrayInput is an input type that accepts GetCustomPropertiesPropertyArray and GetCustomPropertiesPropertyArrayOutput values.
 // You can construct a concrete instance of `GetCustomPropertiesPropertyArrayInput` via:
 //
@@ -2522,12 +2203,6 @@ func (i GetCustomPropertiesPropertyArray) ToGetCustomPropertiesPropertyArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetCustomPropertiesPropertyArrayOutput)
 }
 
-func (i GetCustomPropertiesPropertyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCustomPropertiesProperty] {
-	return pulumix.Output[[]GetCustomPropertiesProperty]{
-		OutputState: i.ToGetCustomPropertiesPropertyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetCustomPropertiesPropertyOutput struct{ *pulumi.OutputState }
 
 func (GetCustomPropertiesPropertyOutput) ElementType() reflect.Type {
@@ -2540,12 +2215,6 @@ func (o GetCustomPropertiesPropertyOutput) ToGetCustomPropertiesPropertyOutput()
 
 func (o GetCustomPropertiesPropertyOutput) ToGetCustomPropertiesPropertyOutputWithContext(ctx context.Context) GetCustomPropertiesPropertyOutput {
 	return o
-}
-
-func (o GetCustomPropertiesPropertyOutput) ToOutput(ctx context.Context) pulumix.Output[GetCustomPropertiesProperty] {
-	return pulumix.Output[GetCustomPropertiesProperty]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The first ID of the resource.
@@ -2582,12 +2251,6 @@ func (o GetCustomPropertiesPropertyArrayOutput) ToGetCustomPropertiesPropertyArr
 
 func (o GetCustomPropertiesPropertyArrayOutput) ToGetCustomPropertiesPropertyArrayOutputWithContext(ctx context.Context) GetCustomPropertiesPropertyArrayOutput {
 	return o
-}
-
-func (o GetCustomPropertiesPropertyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCustomPropertiesProperty] {
-	return pulumix.Output[[]GetCustomPropertiesProperty]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetCustomPropertiesPropertyArrayOutput) Index(i pulumi.IntInput) GetCustomPropertiesPropertyOutput {
@@ -2633,12 +2296,6 @@ func (i GetCustomPropertiesPropertyPropertyValueArgs) ToGetCustomPropertiesPrope
 	return pulumi.ToOutputWithContext(ctx, i).(GetCustomPropertiesPropertyPropertyValueOutput)
 }
 
-func (i GetCustomPropertiesPropertyPropertyValueArgs) ToOutput(ctx context.Context) pulumix.Output[GetCustomPropertiesPropertyPropertyValue] {
-	return pulumix.Output[GetCustomPropertiesPropertyPropertyValue]{
-		OutputState: i.ToGetCustomPropertiesPropertyPropertyValueOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetCustomPropertiesPropertyPropertyValueArrayInput is an input type that accepts GetCustomPropertiesPropertyPropertyValueArray and GetCustomPropertiesPropertyPropertyValueArrayOutput values.
 // You can construct a concrete instance of `GetCustomPropertiesPropertyPropertyValueArrayInput` via:
 //
@@ -2664,12 +2321,6 @@ func (i GetCustomPropertiesPropertyPropertyValueArray) ToGetCustomPropertiesProp
 	return pulumi.ToOutputWithContext(ctx, i).(GetCustomPropertiesPropertyPropertyValueArrayOutput)
 }
 
-func (i GetCustomPropertiesPropertyPropertyValueArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCustomPropertiesPropertyPropertyValue] {
-	return pulumix.Output[[]GetCustomPropertiesPropertyPropertyValue]{
-		OutputState: i.ToGetCustomPropertiesPropertyPropertyValueArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetCustomPropertiesPropertyPropertyValueOutput struct{ *pulumi.OutputState }
 
 func (GetCustomPropertiesPropertyPropertyValueOutput) ElementType() reflect.Type {
@@ -2682,12 +2333,6 @@ func (o GetCustomPropertiesPropertyPropertyValueOutput) ToGetCustomPropertiesPro
 
 func (o GetCustomPropertiesPropertyPropertyValueOutput) ToGetCustomPropertiesPropertyPropertyValueOutputWithContext(ctx context.Context) GetCustomPropertiesPropertyPropertyValueOutput {
 	return o
-}
-
-func (o GetCustomPropertiesPropertyPropertyValueOutput) ToOutput(ctx context.Context) pulumix.Output[GetCustomPropertiesPropertyPropertyValue] {
-	return pulumix.Output[GetCustomPropertiesPropertyPropertyValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The value of an attribute.
@@ -2712,12 +2357,6 @@ func (o GetCustomPropertiesPropertyPropertyValueArrayOutput) ToGetCustomProperti
 
 func (o GetCustomPropertiesPropertyPropertyValueArrayOutput) ToGetCustomPropertiesPropertyPropertyValueArrayOutputWithContext(ctx context.Context) GetCustomPropertiesPropertyPropertyValueArrayOutput {
 	return o
-}
-
-func (o GetCustomPropertiesPropertyPropertyValueArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCustomPropertiesPropertyPropertyValue] {
-	return pulumix.Output[[]GetCustomPropertiesPropertyPropertyValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetCustomPropertiesPropertyPropertyValueArrayOutput) Index(i pulumi.IntInput) GetCustomPropertiesPropertyPropertyValueOutput {
@@ -2795,12 +2434,6 @@ func (i GetDesktopTypesTypeArgs) ToGetDesktopTypesTypeOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetDesktopTypesTypeOutput)
 }
 
-func (i GetDesktopTypesTypeArgs) ToOutput(ctx context.Context) pulumix.Output[GetDesktopTypesType] {
-	return pulumix.Output[GetDesktopTypesType]{
-		OutputState: i.ToGetDesktopTypesTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDesktopTypesTypeArrayInput is an input type that accepts GetDesktopTypesTypeArray and GetDesktopTypesTypeArrayOutput values.
 // You can construct a concrete instance of `GetDesktopTypesTypeArrayInput` via:
 //
@@ -2826,12 +2459,6 @@ func (i GetDesktopTypesTypeArray) ToGetDesktopTypesTypeArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetDesktopTypesTypeArrayOutput)
 }
 
-func (i GetDesktopTypesTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDesktopTypesType] {
-	return pulumix.Output[[]GetDesktopTypesType]{
-		OutputState: i.ToGetDesktopTypesTypeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDesktopTypesTypeOutput struct{ *pulumi.OutputState }
 
 func (GetDesktopTypesTypeOutput) ElementType() reflect.Type {
@@ -2844,12 +2471,6 @@ func (o GetDesktopTypesTypeOutput) ToGetDesktopTypesTypeOutput() GetDesktopTypes
 
 func (o GetDesktopTypesTypeOutput) ToGetDesktopTypesTypeOutputWithContext(ctx context.Context) GetDesktopTypesTypeOutput {
 	return o
-}
-
-func (o GetDesktopTypesTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GetDesktopTypesType] {
-	return pulumix.Output[GetDesktopTypesType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The CPU cores.
@@ -2914,12 +2535,6 @@ func (o GetDesktopTypesTypeArrayOutput) ToGetDesktopTypesTypeArrayOutput() GetDe
 
 func (o GetDesktopTypesTypeArrayOutput) ToGetDesktopTypesTypeArrayOutputWithContext(ctx context.Context) GetDesktopTypesTypeArrayOutput {
 	return o
-}
-
-func (o GetDesktopTypesTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDesktopTypesType] {
-	return pulumix.Output[[]GetDesktopTypesType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDesktopTypesTypeArrayOutput) Index(i pulumi.IntInput) GetDesktopTypesTypeOutput {
@@ -3021,12 +2636,6 @@ func (i GetDesktopsDesktopArgs) ToGetDesktopsDesktopOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetDesktopsDesktopOutput)
 }
 
-func (i GetDesktopsDesktopArgs) ToOutput(ctx context.Context) pulumix.Output[GetDesktopsDesktop] {
-	return pulumix.Output[GetDesktopsDesktop]{
-		OutputState: i.ToGetDesktopsDesktopOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDesktopsDesktopArrayInput is an input type that accepts GetDesktopsDesktopArray and GetDesktopsDesktopArrayOutput values.
 // You can construct a concrete instance of `GetDesktopsDesktopArrayInput` via:
 //
@@ -3052,12 +2661,6 @@ func (i GetDesktopsDesktopArray) ToGetDesktopsDesktopArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetDesktopsDesktopArrayOutput)
 }
 
-func (i GetDesktopsDesktopArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDesktopsDesktop] {
-	return pulumix.Output[[]GetDesktopsDesktop]{
-		OutputState: i.ToGetDesktopsDesktopArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDesktopsDesktopOutput struct{ *pulumi.OutputState }
 
 func (GetDesktopsDesktopOutput) ElementType() reflect.Type {
@@ -3070,12 +2673,6 @@ func (o GetDesktopsDesktopOutput) ToGetDesktopsDesktopOutput() GetDesktopsDeskto
 
 func (o GetDesktopsDesktopOutput) ToGetDesktopsDesktopOutputWithContext(ctx context.Context) GetDesktopsDesktopOutput {
 	return o
-}
-
-func (o GetDesktopsDesktopOutput) ToOutput(ctx context.Context) pulumix.Output[GetDesktopsDesktop] {
-	return pulumix.Output[GetDesktopsDesktop]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of CPUs.
@@ -3172,12 +2769,6 @@ func (o GetDesktopsDesktopArrayOutput) ToGetDesktopsDesktopArrayOutputWithContex
 	return o
 }
 
-func (o GetDesktopsDesktopArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDesktopsDesktop] {
-	return pulumix.Output[[]GetDesktopsDesktop]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetDesktopsDesktopArrayOutput) Index(i pulumi.IntInput) GetDesktopsDesktopOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDesktopsDesktop {
 		return vs[0].([]GetDesktopsDesktop)[vs[1].(int)]
@@ -3261,12 +2852,6 @@ func (i GetImagesImageArgs) ToGetImagesImageOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetImagesImageOutput)
 }
 
-func (i GetImagesImageArgs) ToOutput(ctx context.Context) pulumix.Output[GetImagesImage] {
-	return pulumix.Output[GetImagesImage]{
-		OutputState: i.ToGetImagesImageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetImagesImageArrayInput is an input type that accepts GetImagesImageArray and GetImagesImageArrayOutput values.
 // You can construct a concrete instance of `GetImagesImageArrayInput` via:
 //
@@ -3292,12 +2877,6 @@ func (i GetImagesImageArray) ToGetImagesImageArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetImagesImageArrayOutput)
 }
 
-func (i GetImagesImageArray) ToOutput(ctx context.Context) pulumix.Output[[]GetImagesImage] {
-	return pulumix.Output[[]GetImagesImage]{
-		OutputState: i.ToGetImagesImageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetImagesImageOutput struct{ *pulumi.OutputState }
 
 func (GetImagesImageOutput) ElementType() reflect.Type {
@@ -3310,12 +2889,6 @@ func (o GetImagesImageOutput) ToGetImagesImageOutput() GetImagesImageOutput {
 
 func (o GetImagesImageOutput) ToGetImagesImageOutputWithContext(ctx context.Context) GetImagesImageOutput {
 	return o
-}
-
-func (o GetImagesImageOutput) ToOutput(ctx context.Context) pulumix.Output[GetImagesImage] {
-	return pulumix.Output[GetImagesImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation time of the image.
@@ -3390,12 +2963,6 @@ func (o GetImagesImageArrayOutput) ToGetImagesImageArrayOutput() GetImagesImageA
 
 func (o GetImagesImageArrayOutput) ToGetImagesImageArrayOutputWithContext(ctx context.Context) GetImagesImageArrayOutput {
 	return o
-}
-
-func (o GetImagesImageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetImagesImage] {
-	return pulumix.Output[[]GetImagesImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetImagesImageArrayOutput) Index(i pulumi.IntInput) GetImagesImageOutput {
@@ -3497,12 +3064,6 @@ func (i GetNasFileSystemsSystemArgs) ToGetNasFileSystemsSystemOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetNasFileSystemsSystemOutput)
 }
 
-func (i GetNasFileSystemsSystemArgs) ToOutput(ctx context.Context) pulumix.Output[GetNasFileSystemsSystem] {
-	return pulumix.Output[GetNasFileSystemsSystem]{
-		OutputState: i.ToGetNasFileSystemsSystemOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetNasFileSystemsSystemArrayInput is an input type that accepts GetNasFileSystemsSystemArray and GetNasFileSystemsSystemArrayOutput values.
 // You can construct a concrete instance of `GetNasFileSystemsSystemArrayInput` via:
 //
@@ -3528,12 +3089,6 @@ func (i GetNasFileSystemsSystemArray) ToGetNasFileSystemsSystemArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetNasFileSystemsSystemArrayOutput)
 }
 
-func (i GetNasFileSystemsSystemArray) ToOutput(ctx context.Context) pulumix.Output[[]GetNasFileSystemsSystem] {
-	return pulumix.Output[[]GetNasFileSystemsSystem]{
-		OutputState: i.ToGetNasFileSystemsSystemArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetNasFileSystemsSystemOutput struct{ *pulumi.OutputState }
 
 func (GetNasFileSystemsSystemOutput) ElementType() reflect.Type {
@@ -3546,12 +3101,6 @@ func (o GetNasFileSystemsSystemOutput) ToGetNasFileSystemsSystemOutput() GetNasF
 
 func (o GetNasFileSystemsSystemOutput) ToGetNasFileSystemsSystemOutputWithContext(ctx context.Context) GetNasFileSystemsSystemOutput {
 	return o
-}
-
-func (o GetNasFileSystemsSystemOutput) ToOutput(ctx context.Context) pulumix.Output[GetNasFileSystemsSystem] {
-	return pulumix.Output[GetNasFileSystemsSystem]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The capacity of nas file system.
@@ -3648,12 +3197,6 @@ func (o GetNasFileSystemsSystemArrayOutput) ToGetNasFileSystemsSystemArrayOutput
 	return o
 }
 
-func (o GetNasFileSystemsSystemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetNasFileSystemsSystem] {
-	return pulumix.Output[[]GetNasFileSystemsSystem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetNasFileSystemsSystemArrayOutput) Index(i pulumi.IntInput) GetNasFileSystemsSystemOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNasFileSystemsSystem {
 		return vs[0].([]GetNasFileSystemsSystem)[vs[1].(int)]
@@ -3729,12 +3272,6 @@ func (i GetNetworkPackagesPackageArgs) ToGetNetworkPackagesPackageOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkPackagesPackageOutput)
 }
 
-func (i GetNetworkPackagesPackageArgs) ToOutput(ctx context.Context) pulumix.Output[GetNetworkPackagesPackage] {
-	return pulumix.Output[GetNetworkPackagesPackage]{
-		OutputState: i.ToGetNetworkPackagesPackageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetNetworkPackagesPackageArrayInput is an input type that accepts GetNetworkPackagesPackageArray and GetNetworkPackagesPackageArrayOutput values.
 // You can construct a concrete instance of `GetNetworkPackagesPackageArrayInput` via:
 //
@@ -3760,12 +3297,6 @@ func (i GetNetworkPackagesPackageArray) ToGetNetworkPackagesPackageArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkPackagesPackageArrayOutput)
 }
 
-func (i GetNetworkPackagesPackageArray) ToOutput(ctx context.Context) pulumix.Output[[]GetNetworkPackagesPackage] {
-	return pulumix.Output[[]GetNetworkPackagesPackage]{
-		OutputState: i.ToGetNetworkPackagesPackageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetNetworkPackagesPackageOutput struct{ *pulumi.OutputState }
 
 func (GetNetworkPackagesPackageOutput) ElementType() reflect.Type {
@@ -3778,12 +3309,6 @@ func (o GetNetworkPackagesPackageOutput) ToGetNetworkPackagesPackageOutput() Get
 
 func (o GetNetworkPackagesPackageOutput) ToGetNetworkPackagesPackageOutputWithContext(ctx context.Context) GetNetworkPackagesPackageOutput {
 	return o
-}
-
-func (o GetNetworkPackagesPackageOutput) ToOutput(ctx context.Context) pulumix.Output[GetNetworkPackagesPackage] {
-	return pulumix.Output[GetNetworkPackagesPackage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The bandwidth of package.
@@ -3848,12 +3373,6 @@ func (o GetNetworkPackagesPackageArrayOutput) ToGetNetworkPackagesPackageArrayOu
 
 func (o GetNetworkPackagesPackageArrayOutput) ToGetNetworkPackagesPackageArrayOutputWithContext(ctx context.Context) GetNetworkPackagesPackageArrayOutput {
 	return o
-}
-
-func (o GetNetworkPackagesPackageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetNetworkPackagesPackage] {
-	return pulumix.Output[[]GetNetworkPackagesPackage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetNetworkPackagesPackageArrayOutput) Index(i pulumi.IntInput) GetNetworkPackagesPackageOutput {
@@ -3983,12 +3502,6 @@ func (i GetPolicyGroupsGroupArgs) ToGetPolicyGroupsGroupOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyGroupsGroupOutput)
 }
 
-func (i GetPolicyGroupsGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetPolicyGroupsGroup] {
-	return pulumix.Output[GetPolicyGroupsGroup]{
-		OutputState: i.ToGetPolicyGroupsGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetPolicyGroupsGroupArrayInput is an input type that accepts GetPolicyGroupsGroupArray and GetPolicyGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetPolicyGroupsGroupArrayInput` via:
 //
@@ -4014,12 +3527,6 @@ func (i GetPolicyGroupsGroupArray) ToGetPolicyGroupsGroupArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyGroupsGroupArrayOutput)
 }
 
-func (i GetPolicyGroupsGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPolicyGroupsGroup] {
-	return pulumix.Output[[]GetPolicyGroupsGroup]{
-		OutputState: i.ToGetPolicyGroupsGroupArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetPolicyGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetPolicyGroupsGroupOutput) ElementType() reflect.Type {
@@ -4032,12 +3539,6 @@ func (o GetPolicyGroupsGroupOutput) ToGetPolicyGroupsGroupOutput() GetPolicyGrou
 
 func (o GetPolicyGroupsGroupOutput) ToGetPolicyGroupsGroupOutputWithContext(ctx context.Context) GetPolicyGroupsGroupOutput {
 	return o
-}
-
-func (o GetPolicyGroupsGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetPolicyGroupsGroup] {
-	return pulumix.Output[GetPolicyGroupsGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The rule of authorize access rule.
@@ -4173,12 +3674,6 @@ func (o GetPolicyGroupsGroupArrayOutput) ToGetPolicyGroupsGroupArrayOutputWithCo
 	return o
 }
 
-func (o GetPolicyGroupsGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPolicyGroupsGroup] {
-	return pulumix.Output[[]GetPolicyGroupsGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetPolicyGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetPolicyGroupsGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPolicyGroupsGroup {
 		return vs[0].([]GetPolicyGroupsGroup)[vs[1].(int)]
@@ -4222,12 +3717,6 @@ func (i GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArgs) ToGetPolicyGroupsGrou
 	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyGroupsGroupAuthorizeAccessPolicyRuleOutput)
 }
 
-func (i GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetPolicyGroupsGroupAuthorizeAccessPolicyRule] {
-	return pulumix.Output[GetPolicyGroupsGroupAuthorizeAccessPolicyRule]{
-		OutputState: i.ToGetPolicyGroupsGroupAuthorizeAccessPolicyRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArrayInput is an input type that accepts GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArray and GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArrayOutput values.
 // You can construct a concrete instance of `GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArrayInput` via:
 //
@@ -4253,12 +3742,6 @@ func (i GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArray) ToGetPolicyGroupsGro
 	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArrayOutput)
 }
 
-func (i GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPolicyGroupsGroupAuthorizeAccessPolicyRule] {
-	return pulumix.Output[[]GetPolicyGroupsGroupAuthorizeAccessPolicyRule]{
-		OutputState: i.ToGetPolicyGroupsGroupAuthorizeAccessPolicyRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetPolicyGroupsGroupAuthorizeAccessPolicyRuleOutput struct{ *pulumi.OutputState }
 
 func (GetPolicyGroupsGroupAuthorizeAccessPolicyRuleOutput) ElementType() reflect.Type {
@@ -4271,12 +3754,6 @@ func (o GetPolicyGroupsGroupAuthorizeAccessPolicyRuleOutput) ToGetPolicyGroupsGr
 
 func (o GetPolicyGroupsGroupAuthorizeAccessPolicyRuleOutput) ToGetPolicyGroupsGroupAuthorizeAccessPolicyRuleOutputWithContext(ctx context.Context) GetPolicyGroupsGroupAuthorizeAccessPolicyRuleOutput {
 	return o
-}
-
-func (o GetPolicyGroupsGroupAuthorizeAccessPolicyRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetPolicyGroupsGroupAuthorizeAccessPolicyRule] {
-	return pulumix.Output[GetPolicyGroupsGroupAuthorizeAccessPolicyRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The cidrip of security rules.
@@ -4301,12 +3778,6 @@ func (o GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArrayOutput) ToGetPolicyGro
 
 func (o GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArrayOutput) ToGetPolicyGroupsGroupAuthorizeAccessPolicyRuleArrayOutputWithContext(ctx context.Context) GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArrayOutput {
 	return o
-}
-
-func (o GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPolicyGroupsGroupAuthorizeAccessPolicyRule] {
-	return pulumix.Output[[]GetPolicyGroupsGroupAuthorizeAccessPolicyRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArrayOutput) Index(i pulumi.IntInput) GetPolicyGroupsGroupAuthorizeAccessPolicyRuleOutput {
@@ -4372,12 +3843,6 @@ func (i GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArgs) ToGetPolicyGroupsGr
 	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleOutput)
 }
 
-func (i GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetPolicyGroupsGroupAuthorizeSecurityPolicyRule] {
-	return pulumix.Output[GetPolicyGroupsGroupAuthorizeSecurityPolicyRule]{
-		OutputState: i.ToGetPolicyGroupsGroupAuthorizeSecurityPolicyRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArrayInput is an input type that accepts GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArray and GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArrayOutput values.
 // You can construct a concrete instance of `GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArrayInput` via:
 //
@@ -4403,12 +3868,6 @@ func (i GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArray) ToGetPolicyGroupsG
 	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArrayOutput)
 }
 
-func (i GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPolicyGroupsGroupAuthorizeSecurityPolicyRule] {
-	return pulumix.Output[[]GetPolicyGroupsGroupAuthorizeSecurityPolicyRule]{
-		OutputState: i.ToGetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleOutput struct{ *pulumi.OutputState }
 
 func (GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleOutput) ElementType() reflect.Type {
@@ -4421,12 +3880,6 @@ func (o GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleOutput) ToGetPolicyGroups
 
 func (o GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleOutput) ToGetPolicyGroupsGroupAuthorizeSecurityPolicyRuleOutputWithContext(ctx context.Context) GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleOutput {
 	return o
-}
-
-func (o GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetPolicyGroupsGroupAuthorizeSecurityPolicyRule] {
-	return pulumix.Output[GetPolicyGroupsGroupAuthorizeSecurityPolicyRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The cidrip of security rules.
@@ -4476,12 +3929,6 @@ func (o GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArrayOutput) ToGetPolicyG
 
 func (o GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArrayOutput) ToGetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArrayOutputWithContext(ctx context.Context) GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArrayOutput {
 	return o
-}
-
-func (o GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPolicyGroupsGroupAuthorizeSecurityPolicyRule] {
-	return pulumix.Output[[]GetPolicyGroupsGroupAuthorizeSecurityPolicyRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArrayOutput) Index(i pulumi.IntInput) GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleOutput {
@@ -4627,12 +4074,6 @@ func (i GetRamDirectoriesDirectoryArgs) ToGetRamDirectoriesDirectoryOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetRamDirectoriesDirectoryOutput)
 }
 
-func (i GetRamDirectoriesDirectoryArgs) ToOutput(ctx context.Context) pulumix.Output[GetRamDirectoriesDirectory] {
-	return pulumix.Output[GetRamDirectoriesDirectory]{
-		OutputState: i.ToGetRamDirectoriesDirectoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetRamDirectoriesDirectoryArrayInput is an input type that accepts GetRamDirectoriesDirectoryArray and GetRamDirectoriesDirectoryArrayOutput values.
 // You can construct a concrete instance of `GetRamDirectoriesDirectoryArrayInput` via:
 //
@@ -4658,12 +4099,6 @@ func (i GetRamDirectoriesDirectoryArray) ToGetRamDirectoriesDirectoryArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetRamDirectoriesDirectoryArrayOutput)
 }
 
-func (i GetRamDirectoriesDirectoryArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRamDirectoriesDirectory] {
-	return pulumix.Output[[]GetRamDirectoriesDirectory]{
-		OutputState: i.ToGetRamDirectoriesDirectoryArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetRamDirectoriesDirectoryOutput struct{ *pulumi.OutputState }
 
 func (GetRamDirectoriesDirectoryOutput) ElementType() reflect.Type {
@@ -4676,12 +4111,6 @@ func (o GetRamDirectoriesDirectoryOutput) ToGetRamDirectoriesDirectoryOutput() G
 
 func (o GetRamDirectoriesDirectoryOutput) ToGetRamDirectoriesDirectoryOutputWithContext(ctx context.Context) GetRamDirectoriesDirectoryOutput {
 	return o
-}
-
-func (o GetRamDirectoriesDirectoryOutput) ToOutput(ctx context.Context) pulumix.Output[GetRamDirectoriesDirectory] {
-	return pulumix.Output[GetRamDirectoriesDirectory]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The AD connectors.
@@ -4833,12 +4262,6 @@ func (o GetRamDirectoriesDirectoryArrayOutput) ToGetRamDirectoriesDirectoryArray
 	return o
 }
 
-func (o GetRamDirectoriesDirectoryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRamDirectoriesDirectory] {
-	return pulumix.Output[[]GetRamDirectoriesDirectory]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetRamDirectoriesDirectoryArrayOutput) Index(i pulumi.IntInput) GetRamDirectoriesDirectoryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRamDirectoriesDirectory {
 		return vs[0].([]GetRamDirectoriesDirectory)[vs[1].(int)]
@@ -4890,12 +4313,6 @@ func (i GetRamDirectoriesDirectoryAdConnectorArgs) ToGetRamDirectoriesDirectoryA
 	return pulumi.ToOutputWithContext(ctx, i).(GetRamDirectoriesDirectoryAdConnectorOutput)
 }
 
-func (i GetRamDirectoriesDirectoryAdConnectorArgs) ToOutput(ctx context.Context) pulumix.Output[GetRamDirectoriesDirectoryAdConnector] {
-	return pulumix.Output[GetRamDirectoriesDirectoryAdConnector]{
-		OutputState: i.ToGetRamDirectoriesDirectoryAdConnectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetRamDirectoriesDirectoryAdConnectorArrayInput is an input type that accepts GetRamDirectoriesDirectoryAdConnectorArray and GetRamDirectoriesDirectoryAdConnectorArrayOutput values.
 // You can construct a concrete instance of `GetRamDirectoriesDirectoryAdConnectorArrayInput` via:
 //
@@ -4921,12 +4338,6 @@ func (i GetRamDirectoriesDirectoryAdConnectorArray) ToGetRamDirectoriesDirectory
 	return pulumi.ToOutputWithContext(ctx, i).(GetRamDirectoriesDirectoryAdConnectorArrayOutput)
 }
 
-func (i GetRamDirectoriesDirectoryAdConnectorArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRamDirectoriesDirectoryAdConnector] {
-	return pulumix.Output[[]GetRamDirectoriesDirectoryAdConnector]{
-		OutputState: i.ToGetRamDirectoriesDirectoryAdConnectorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetRamDirectoriesDirectoryAdConnectorOutput struct{ *pulumi.OutputState }
 
 func (GetRamDirectoriesDirectoryAdConnectorOutput) ElementType() reflect.Type {
@@ -4939,12 +4350,6 @@ func (o GetRamDirectoriesDirectoryAdConnectorOutput) ToGetRamDirectoriesDirector
 
 func (o GetRamDirectoriesDirectoryAdConnectorOutput) ToGetRamDirectoriesDirectoryAdConnectorOutputWithContext(ctx context.Context) GetRamDirectoriesDirectoryAdConnectorOutput {
 	return o
-}
-
-func (o GetRamDirectoriesDirectoryAdConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[GetRamDirectoriesDirectoryAdConnector] {
-	return pulumix.Output[GetRamDirectoriesDirectoryAdConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The address of AD connector.
@@ -4979,12 +4384,6 @@ func (o GetRamDirectoriesDirectoryAdConnectorArrayOutput) ToGetRamDirectoriesDir
 
 func (o GetRamDirectoriesDirectoryAdConnectorArrayOutput) ToGetRamDirectoriesDirectoryAdConnectorArrayOutputWithContext(ctx context.Context) GetRamDirectoriesDirectoryAdConnectorArrayOutput {
 	return o
-}
-
-func (o GetRamDirectoriesDirectoryAdConnectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRamDirectoriesDirectoryAdConnector] {
-	return pulumix.Output[[]GetRamDirectoriesDirectoryAdConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRamDirectoriesDirectoryAdConnectorArrayOutput) Index(i pulumi.IntInput) GetRamDirectoriesDirectoryAdConnectorOutput {
@@ -5038,12 +4437,6 @@ func (i GetRamDirectoriesDirectoryLogArgs) ToGetRamDirectoriesDirectoryLogOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetRamDirectoriesDirectoryLogOutput)
 }
 
-func (i GetRamDirectoriesDirectoryLogArgs) ToOutput(ctx context.Context) pulumix.Output[GetRamDirectoriesDirectoryLog] {
-	return pulumix.Output[GetRamDirectoriesDirectoryLog]{
-		OutputState: i.ToGetRamDirectoriesDirectoryLogOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetRamDirectoriesDirectoryLogArrayInput is an input type that accepts GetRamDirectoriesDirectoryLogArray and GetRamDirectoriesDirectoryLogArrayOutput values.
 // You can construct a concrete instance of `GetRamDirectoriesDirectoryLogArrayInput` via:
 //
@@ -5069,12 +4462,6 @@ func (i GetRamDirectoriesDirectoryLogArray) ToGetRamDirectoriesDirectoryLogArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetRamDirectoriesDirectoryLogArrayOutput)
 }
 
-func (i GetRamDirectoriesDirectoryLogArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRamDirectoriesDirectoryLog] {
-	return pulumix.Output[[]GetRamDirectoriesDirectoryLog]{
-		OutputState: i.ToGetRamDirectoriesDirectoryLogArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetRamDirectoriesDirectoryLogOutput struct{ *pulumi.OutputState }
 
 func (GetRamDirectoriesDirectoryLogOutput) ElementType() reflect.Type {
@@ -5087,12 +4474,6 @@ func (o GetRamDirectoriesDirectoryLogOutput) ToGetRamDirectoriesDirectoryLogOutp
 
 func (o GetRamDirectoriesDirectoryLogOutput) ToGetRamDirectoriesDirectoryLogOutputWithContext(ctx context.Context) GetRamDirectoriesDirectoryLogOutput {
 	return o
-}
-
-func (o GetRamDirectoriesDirectoryLogOutput) ToOutput(ctx context.Context) pulumix.Output[GetRamDirectoriesDirectoryLog] {
-	return pulumix.Output[GetRamDirectoriesDirectoryLog]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The level of log.
@@ -5127,12 +4508,6 @@ func (o GetRamDirectoriesDirectoryLogArrayOutput) ToGetRamDirectoriesDirectoryLo
 
 func (o GetRamDirectoriesDirectoryLogArrayOutput) ToGetRamDirectoriesDirectoryLogArrayOutputWithContext(ctx context.Context) GetRamDirectoriesDirectoryLogArrayOutput {
 	return o
-}
-
-func (o GetRamDirectoriesDirectoryLogArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRamDirectoriesDirectoryLog] {
-	return pulumix.Output[[]GetRamDirectoriesDirectoryLog]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRamDirectoriesDirectoryLogArrayOutput) Index(i pulumi.IntInput) GetRamDirectoriesDirectoryLogOutput {
@@ -5298,12 +4673,6 @@ func (i GetSimpleOfficeSitesSiteArgs) ToGetSimpleOfficeSitesSiteOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetSimpleOfficeSitesSiteOutput)
 }
 
-func (i GetSimpleOfficeSitesSiteArgs) ToOutput(ctx context.Context) pulumix.Output[GetSimpleOfficeSitesSite] {
-	return pulumix.Output[GetSimpleOfficeSitesSite]{
-		OutputState: i.ToGetSimpleOfficeSitesSiteOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetSimpleOfficeSitesSiteArrayInput is an input type that accepts GetSimpleOfficeSitesSiteArray and GetSimpleOfficeSitesSiteArrayOutput values.
 // You can construct a concrete instance of `GetSimpleOfficeSitesSiteArrayInput` via:
 //
@@ -5329,12 +4698,6 @@ func (i GetSimpleOfficeSitesSiteArray) ToGetSimpleOfficeSitesSiteArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetSimpleOfficeSitesSiteArrayOutput)
 }
 
-func (i GetSimpleOfficeSitesSiteArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSimpleOfficeSitesSite] {
-	return pulumix.Output[[]GetSimpleOfficeSitesSite]{
-		OutputState: i.ToGetSimpleOfficeSitesSiteArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetSimpleOfficeSitesSiteOutput struct{ *pulumi.OutputState }
 
 func (GetSimpleOfficeSitesSiteOutput) ElementType() reflect.Type {
@@ -5347,12 +4710,6 @@ func (o GetSimpleOfficeSitesSiteOutput) ToGetSimpleOfficeSitesSiteOutput() GetSi
 
 func (o GetSimpleOfficeSitesSiteOutput) ToGetSimpleOfficeSitesSiteOutputWithContext(ctx context.Context) GetSimpleOfficeSitesSiteOutput {
 	return o
-}
-
-func (o GetSimpleOfficeSitesSiteOutput) ToOutput(ctx context.Context) pulumix.Output[GetSimpleOfficeSitesSite] {
-	return pulumix.Output[GetSimpleOfficeSitesSite]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
@@ -5523,12 +4880,6 @@ func (o GetSimpleOfficeSitesSiteArrayOutput) ToGetSimpleOfficeSitesSiteArrayOutp
 	return o
 }
 
-func (o GetSimpleOfficeSitesSiteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSimpleOfficeSitesSite] {
-	return pulumix.Output[[]GetSimpleOfficeSitesSite]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetSimpleOfficeSitesSiteArrayOutput) Index(i pulumi.IntInput) GetSimpleOfficeSitesSiteOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSimpleOfficeSitesSite {
 		return vs[0].([]GetSimpleOfficeSitesSite)[vs[1].(int)]
@@ -5612,12 +4963,6 @@ func (i GetSnapshotsSnapshotArgs) ToGetSnapshotsSnapshotOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetSnapshotsSnapshotOutput)
 }
 
-func (i GetSnapshotsSnapshotArgs) ToOutput(ctx context.Context) pulumix.Output[GetSnapshotsSnapshot] {
-	return pulumix.Output[GetSnapshotsSnapshot]{
-		OutputState: i.ToGetSnapshotsSnapshotOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetSnapshotsSnapshotArrayInput is an input type that accepts GetSnapshotsSnapshotArray and GetSnapshotsSnapshotArrayOutput values.
 // You can construct a concrete instance of `GetSnapshotsSnapshotArrayInput` via:
 //
@@ -5643,12 +4988,6 @@ func (i GetSnapshotsSnapshotArray) ToGetSnapshotsSnapshotArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetSnapshotsSnapshotArrayOutput)
 }
 
-func (i GetSnapshotsSnapshotArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSnapshotsSnapshot] {
-	return pulumix.Output[[]GetSnapshotsSnapshot]{
-		OutputState: i.ToGetSnapshotsSnapshotArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetSnapshotsSnapshotOutput struct{ *pulumi.OutputState }
 
 func (GetSnapshotsSnapshotOutput) ElementType() reflect.Type {
@@ -5661,12 +5000,6 @@ func (o GetSnapshotsSnapshotOutput) ToGetSnapshotsSnapshotOutput() GetSnapshotsS
 
 func (o GetSnapshotsSnapshotOutput) ToGetSnapshotsSnapshotOutputWithContext(ctx context.Context) GetSnapshotsSnapshotOutput {
 	return o
-}
-
-func (o GetSnapshotsSnapshotOutput) ToOutput(ctx context.Context) pulumix.Output[GetSnapshotsSnapshot] {
-	return pulumix.Output[GetSnapshotsSnapshot]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time when the snapshot was created.
@@ -5743,12 +5076,6 @@ func (o GetSnapshotsSnapshotArrayOutput) ToGetSnapshotsSnapshotArrayOutputWithCo
 	return o
 }
 
-func (o GetSnapshotsSnapshotArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSnapshotsSnapshot] {
-	return pulumix.Output[[]GetSnapshotsSnapshot]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetSnapshotsSnapshotArrayOutput) Index(i pulumi.IntInput) GetSnapshotsSnapshotOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSnapshotsSnapshot {
 		return vs[0].([]GetSnapshotsSnapshot)[vs[1].(int)]
@@ -5804,12 +5131,6 @@ func (i GetUsersUserArgs) ToGetUsersUserOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserOutput)
 }
 
-func (i GetUsersUserArgs) ToOutput(ctx context.Context) pulumix.Output[GetUsersUser] {
-	return pulumix.Output[GetUsersUser]{
-		OutputState: i.ToGetUsersUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetUsersUserArrayInput is an input type that accepts GetUsersUserArray and GetUsersUserArrayOutput values.
 // You can construct a concrete instance of `GetUsersUserArrayInput` via:
 //
@@ -5835,12 +5156,6 @@ func (i GetUsersUserArray) ToGetUsersUserArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserArrayOutput)
 }
 
-func (i GetUsersUserArray) ToOutput(ctx context.Context) pulumix.Output[[]GetUsersUser] {
-	return pulumix.Output[[]GetUsersUser]{
-		OutputState: i.ToGetUsersUserArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetUsersUserOutput struct{ *pulumi.OutputState }
 
 func (GetUsersUserOutput) ElementType() reflect.Type {
@@ -5853,12 +5168,6 @@ func (o GetUsersUserOutput) ToGetUsersUserOutput() GetUsersUserOutput {
 
 func (o GetUsersUserOutput) ToGetUsersUserOutputWithContext(ctx context.Context) GetUsersUserOutput {
 	return o
-}
-
-func (o GetUsersUserOutput) ToOutput(ctx context.Context) pulumix.Output[GetUsersUser] {
-	return pulumix.Output[GetUsersUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The email of the user email.
@@ -5900,12 +5209,6 @@ func (o GetUsersUserArrayOutput) ToGetUsersUserArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o GetUsersUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetUsersUser] {
-	return pulumix.Output[[]GetUsersUser]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetUsersUserArrayOutput) Index(i pulumi.IntInput) GetUsersUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUsersUser {
 		return vs[0].([]GetUsersUser)[vs[1].(int)]
@@ -5945,12 +5248,6 @@ func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneOutput)
 }
 
-func (i GetZonesZoneArgs) ToOutput(ctx context.Context) pulumix.Output[GetZonesZone] {
-	return pulumix.Output[GetZonesZone]{
-		OutputState: i.ToGetZonesZoneOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneArrayInput` via:
 //
@@ -5976,12 +5273,6 @@ func (i GetZonesZoneArray) ToGetZonesZoneArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneArrayOutput)
 }
 
-func (i GetZonesZoneArray) ToOutput(ctx context.Context) pulumix.Output[[]GetZonesZone] {
-	return pulumix.Output[[]GetZonesZone]{
-		OutputState: i.ToGetZonesZoneArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetZonesZoneOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneOutput) ElementType() reflect.Type {
@@ -5994,12 +5285,6 @@ func (o GetZonesZoneOutput) ToGetZonesZoneOutput() GetZonesZoneOutput {
 
 func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context) GetZonesZoneOutput {
 	return o
-}
-
-func (o GetZonesZoneOutput) ToOutput(ctx context.Context) pulumix.Output[GetZonesZone] {
-	return pulumix.Output[GetZonesZone]{
-		OutputState: o.OutputState,
-	}
 }
 
 // String to filter results by zone id.
@@ -6019,12 +5304,6 @@ func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutput() GetZonesZoneArrayOu
 
 func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutputWithContext(ctx context.Context) GetZonesZoneArrayOutput {
 	return o
-}
-
-func (o GetZonesZoneArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetZonesZone] {
-	return pulumix.Output[[]GetZonesZone]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {

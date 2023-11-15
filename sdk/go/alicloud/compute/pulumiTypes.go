@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -49,12 +48,6 @@ func (i NestServiceInstanceCommodityArgs) ToNestServiceInstanceCommodityOutput()
 
 func (i NestServiceInstanceCommodityArgs) ToNestServiceInstanceCommodityOutputWithContext(ctx context.Context) NestServiceInstanceCommodityOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NestServiceInstanceCommodityOutput)
-}
-
-func (i NestServiceInstanceCommodityArgs) ToOutput(ctx context.Context) pulumix.Output[NestServiceInstanceCommodity] {
-	return pulumix.Output[NestServiceInstanceCommodity]{
-		OutputState: i.ToNestServiceInstanceCommodityOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i NestServiceInstanceCommodityArgs) ToNestServiceInstanceCommodityPtrOutput() NestServiceInstanceCommodityPtrOutput {
@@ -98,12 +91,6 @@ func (i *nestServiceInstanceCommodityPtrType) ToNestServiceInstanceCommodityPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(NestServiceInstanceCommodityPtrOutput)
 }
 
-func (i *nestServiceInstanceCommodityPtrType) ToOutput(ctx context.Context) pulumix.Output[*NestServiceInstanceCommodity] {
-	return pulumix.Output[*NestServiceInstanceCommodity]{
-		OutputState: i.ToNestServiceInstanceCommodityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NestServiceInstanceCommodityOutput struct{ *pulumi.OutputState }
 
 func (NestServiceInstanceCommodityOutput) ElementType() reflect.Type {
@@ -128,12 +115,6 @@ func (o NestServiceInstanceCommodityOutput) ToNestServiceInstanceCommodityPtrOut
 	}).(NestServiceInstanceCommodityPtrOutput)
 }
 
-func (o NestServiceInstanceCommodityOutput) ToOutput(ctx context.Context) pulumix.Output[NestServiceInstanceCommodity] {
-	return pulumix.Output[NestServiceInstanceCommodity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Length of purchase.
 func (o NestServiceInstanceCommodityOutput) PayPeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NestServiceInstanceCommodity) *int { return v.PayPeriod }).(pulumi.IntPtrOutput)
@@ -156,12 +137,6 @@ func (o NestServiceInstanceCommodityPtrOutput) ToNestServiceInstanceCommodityPtr
 
 func (o NestServiceInstanceCommodityPtrOutput) ToNestServiceInstanceCommodityPtrOutputWithContext(ctx context.Context) NestServiceInstanceCommodityPtrOutput {
 	return o
-}
-
-func (o NestServiceInstanceCommodityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NestServiceInstanceCommodity] {
-	return pulumix.Output[*NestServiceInstanceCommodity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NestServiceInstanceCommodityPtrOutput) Elem() NestServiceInstanceCommodityOutput {
@@ -239,12 +214,6 @@ func (i NestServiceInstanceOperationMetadataArgs) ToNestServiceInstanceOperation
 	return pulumi.ToOutputWithContext(ctx, i).(NestServiceInstanceOperationMetadataOutput)
 }
 
-func (i NestServiceInstanceOperationMetadataArgs) ToOutput(ctx context.Context) pulumix.Output[NestServiceInstanceOperationMetadata] {
-	return pulumix.Output[NestServiceInstanceOperationMetadata]{
-		OutputState: i.ToNestServiceInstanceOperationMetadataOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i NestServiceInstanceOperationMetadataArgs) ToNestServiceInstanceOperationMetadataPtrOutput() NestServiceInstanceOperationMetadataPtrOutput {
 	return i.ToNestServiceInstanceOperationMetadataPtrOutputWithContext(context.Background())
 }
@@ -286,12 +255,6 @@ func (i *nestServiceInstanceOperationMetadataPtrType) ToNestServiceInstanceOpera
 	return pulumi.ToOutputWithContext(ctx, i).(NestServiceInstanceOperationMetadataPtrOutput)
 }
 
-func (i *nestServiceInstanceOperationMetadataPtrType) ToOutput(ctx context.Context) pulumix.Output[*NestServiceInstanceOperationMetadata] {
-	return pulumix.Output[*NestServiceInstanceOperationMetadata]{
-		OutputState: i.ToNestServiceInstanceOperationMetadataPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NestServiceInstanceOperationMetadataOutput struct{ *pulumi.OutputState }
 
 func (NestServiceInstanceOperationMetadataOutput) ElementType() reflect.Type {
@@ -314,12 +277,6 @@ func (o NestServiceInstanceOperationMetadataOutput) ToNestServiceInstanceOperati
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v NestServiceInstanceOperationMetadata) *NestServiceInstanceOperationMetadata {
 		return &v
 	}).(NestServiceInstanceOperationMetadataPtrOutput)
-}
-
-func (o NestServiceInstanceOperationMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[NestServiceInstanceOperationMetadata] {
-	return pulumix.Output[NestServiceInstanceOperationMetadata]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the imported service instance.
@@ -354,12 +311,6 @@ func (o NestServiceInstanceOperationMetadataPtrOutput) ToNestServiceInstanceOper
 
 func (o NestServiceInstanceOperationMetadataPtrOutput) ToNestServiceInstanceOperationMetadataPtrOutputWithContext(ctx context.Context) NestServiceInstanceOperationMetadataPtrOutput {
 	return o
-}
-
-func (o NestServiceInstanceOperationMetadataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NestServiceInstanceOperationMetadata] {
-	return pulumix.Output[*NestServiceInstanceOperationMetadata]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NestServiceInstanceOperationMetadataPtrOutput) Elem() NestServiceInstanceOperationMetadataOutput {
@@ -449,12 +400,6 @@ func (i GetNestServiceInstancesFilterArgs) ToGetNestServiceInstancesFilterOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetNestServiceInstancesFilterOutput)
 }
 
-func (i GetNestServiceInstancesFilterArgs) ToOutput(ctx context.Context) pulumix.Output[GetNestServiceInstancesFilter] {
-	return pulumix.Output[GetNestServiceInstancesFilter]{
-		OutputState: i.ToGetNestServiceInstancesFilterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetNestServiceInstancesFilterArrayInput is an input type that accepts GetNestServiceInstancesFilterArray and GetNestServiceInstancesFilterArrayOutput values.
 // You can construct a concrete instance of `GetNestServiceInstancesFilterArrayInput` via:
 //
@@ -480,12 +425,6 @@ func (i GetNestServiceInstancesFilterArray) ToGetNestServiceInstancesFilterArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetNestServiceInstancesFilterArrayOutput)
 }
 
-func (i GetNestServiceInstancesFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetNestServiceInstancesFilter] {
-	return pulumix.Output[[]GetNestServiceInstancesFilter]{
-		OutputState: i.ToGetNestServiceInstancesFilterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetNestServiceInstancesFilterOutput struct{ *pulumi.OutputState }
 
 func (GetNestServiceInstancesFilterOutput) ElementType() reflect.Type {
@@ -498,12 +437,6 @@ func (o GetNestServiceInstancesFilterOutput) ToGetNestServiceInstancesFilterOutp
 
 func (o GetNestServiceInstancesFilterOutput) ToGetNestServiceInstancesFilterOutputWithContext(ctx context.Context) GetNestServiceInstancesFilterOutput {
 	return o
-}
-
-func (o GetNestServiceInstancesFilterOutput) ToOutput(ctx context.Context) pulumix.Output[GetNestServiceInstancesFilter] {
-	return pulumix.Output[GetNestServiceInstancesFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
@@ -528,12 +461,6 @@ func (o GetNestServiceInstancesFilterArrayOutput) ToGetNestServiceInstancesFilte
 
 func (o GetNestServiceInstancesFilterArrayOutput) ToGetNestServiceInstancesFilterArrayOutputWithContext(ctx context.Context) GetNestServiceInstancesFilterArrayOutput {
 	return o
-}
-
-func (o GetNestServiceInstancesFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetNestServiceInstancesFilter] {
-	return pulumix.Output[[]GetNestServiceInstancesFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetNestServiceInstancesFilterArrayOutput) Index(i pulumi.IntInput) GetNestServiceInstancesFilterOutput {
@@ -627,12 +554,6 @@ func (i GetNestServiceInstancesServiceInstanceArgs) ToGetNestServiceInstancesSer
 	return pulumi.ToOutputWithContext(ctx, i).(GetNestServiceInstancesServiceInstanceOutput)
 }
 
-func (i GetNestServiceInstancesServiceInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetNestServiceInstancesServiceInstance] {
-	return pulumix.Output[GetNestServiceInstancesServiceInstance]{
-		OutputState: i.ToGetNestServiceInstancesServiceInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetNestServiceInstancesServiceInstanceArrayInput is an input type that accepts GetNestServiceInstancesServiceInstanceArray and GetNestServiceInstancesServiceInstanceArrayOutput values.
 // You can construct a concrete instance of `GetNestServiceInstancesServiceInstanceArrayInput` via:
 //
@@ -658,12 +579,6 @@ func (i GetNestServiceInstancesServiceInstanceArray) ToGetNestServiceInstancesSe
 	return pulumi.ToOutputWithContext(ctx, i).(GetNestServiceInstancesServiceInstanceArrayOutput)
 }
 
-func (i GetNestServiceInstancesServiceInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetNestServiceInstancesServiceInstance] {
-	return pulumix.Output[[]GetNestServiceInstancesServiceInstance]{
-		OutputState: i.ToGetNestServiceInstancesServiceInstanceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetNestServiceInstancesServiceInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetNestServiceInstancesServiceInstanceOutput) ElementType() reflect.Type {
@@ -676,12 +591,6 @@ func (o GetNestServiceInstancesServiceInstanceOutput) ToGetNestServiceInstancesS
 
 func (o GetNestServiceInstancesServiceInstanceOutput) ToGetNestServiceInstancesServiceInstanceOutputWithContext(ctx context.Context) GetNestServiceInstancesServiceInstanceOutput {
 	return o
-}
-
-func (o GetNestServiceInstancesServiceInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetNestServiceInstancesServiceInstance] {
-	return pulumix.Output[GetNestServiceInstancesServiceInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether the service instance has the O&M function.
@@ -770,12 +679,6 @@ func (o GetNestServiceInstancesServiceInstanceArrayOutput) ToGetNestServiceInsta
 	return o
 }
 
-func (o GetNestServiceInstancesServiceInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetNestServiceInstancesServiceInstance] {
-	return pulumix.Output[[]GetNestServiceInstancesServiceInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetNestServiceInstancesServiceInstanceArrayOutput) Index(i pulumi.IntInput) GetNestServiceInstancesServiceInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNestServiceInstancesServiceInstance {
 		return vs[0].([]GetNestServiceInstancesServiceInstance)[vs[1].(int)]
@@ -851,12 +754,6 @@ func (i GetNestServiceInstancesServiceInstanceServiceArgs) ToGetNestServiceInsta
 	return pulumi.ToOutputWithContext(ctx, i).(GetNestServiceInstancesServiceInstanceServiceOutput)
 }
 
-func (i GetNestServiceInstancesServiceInstanceServiceArgs) ToOutput(ctx context.Context) pulumix.Output[GetNestServiceInstancesServiceInstanceService] {
-	return pulumix.Output[GetNestServiceInstancesServiceInstanceService]{
-		OutputState: i.ToGetNestServiceInstancesServiceInstanceServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetNestServiceInstancesServiceInstanceServiceArrayInput is an input type that accepts GetNestServiceInstancesServiceInstanceServiceArray and GetNestServiceInstancesServiceInstanceServiceArrayOutput values.
 // You can construct a concrete instance of `GetNestServiceInstancesServiceInstanceServiceArrayInput` via:
 //
@@ -882,12 +779,6 @@ func (i GetNestServiceInstancesServiceInstanceServiceArray) ToGetNestServiceInst
 	return pulumi.ToOutputWithContext(ctx, i).(GetNestServiceInstancesServiceInstanceServiceArrayOutput)
 }
 
-func (i GetNestServiceInstancesServiceInstanceServiceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetNestServiceInstancesServiceInstanceService] {
-	return pulumix.Output[[]GetNestServiceInstancesServiceInstanceService]{
-		OutputState: i.ToGetNestServiceInstancesServiceInstanceServiceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetNestServiceInstancesServiceInstanceServiceOutput struct{ *pulumi.OutputState }
 
 func (GetNestServiceInstancesServiceInstanceServiceOutput) ElementType() reflect.Type {
@@ -900,12 +791,6 @@ func (o GetNestServiceInstancesServiceInstanceServiceOutput) ToGetNestServiceIns
 
 func (o GetNestServiceInstancesServiceInstanceServiceOutput) ToGetNestServiceInstancesServiceInstanceServiceOutputWithContext(ctx context.Context) GetNestServiceInstancesServiceInstanceServiceOutput {
 	return o
-}
-
-func (o GetNestServiceInstancesServiceInstanceServiceOutput) ToOutput(ctx context.Context) pulumix.Output[GetNestServiceInstancesServiceInstanceService] {
-	return pulumix.Output[GetNestServiceInstancesServiceInstanceService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of the deployment.
@@ -974,12 +859,6 @@ func (o GetNestServiceInstancesServiceInstanceServiceArrayOutput) ToGetNestServi
 	return o
 }
 
-func (o GetNestServiceInstancesServiceInstanceServiceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetNestServiceInstancesServiceInstanceService] {
-	return pulumix.Output[[]GetNestServiceInstancesServiceInstanceService]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetNestServiceInstancesServiceInstanceServiceArrayOutput) Index(i pulumi.IntInput) GetNestServiceInstancesServiceInstanceServiceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNestServiceInstancesServiceInstanceService {
 		return vs[0].([]GetNestServiceInstancesServiceInstanceService)[vs[1].(int)]
@@ -1031,12 +910,6 @@ func (i GetNestServiceInstancesServiceInstanceServiceServiceInfoArgs) ToGetNestS
 	return pulumi.ToOutputWithContext(ctx, i).(GetNestServiceInstancesServiceInstanceServiceServiceInfoOutput)
 }
 
-func (i GetNestServiceInstancesServiceInstanceServiceServiceInfoArgs) ToOutput(ctx context.Context) pulumix.Output[GetNestServiceInstancesServiceInstanceServiceServiceInfo] {
-	return pulumix.Output[GetNestServiceInstancesServiceInstanceServiceServiceInfo]{
-		OutputState: i.ToGetNestServiceInstancesServiceInstanceServiceServiceInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetNestServiceInstancesServiceInstanceServiceServiceInfoArrayInput is an input type that accepts GetNestServiceInstancesServiceInstanceServiceServiceInfoArray and GetNestServiceInstancesServiceInstanceServiceServiceInfoArrayOutput values.
 // You can construct a concrete instance of `GetNestServiceInstancesServiceInstanceServiceServiceInfoArrayInput` via:
 //
@@ -1062,12 +935,6 @@ func (i GetNestServiceInstancesServiceInstanceServiceServiceInfoArray) ToGetNest
 	return pulumi.ToOutputWithContext(ctx, i).(GetNestServiceInstancesServiceInstanceServiceServiceInfoArrayOutput)
 }
 
-func (i GetNestServiceInstancesServiceInstanceServiceServiceInfoArray) ToOutput(ctx context.Context) pulumix.Output[[]GetNestServiceInstancesServiceInstanceServiceServiceInfo] {
-	return pulumix.Output[[]GetNestServiceInstancesServiceInstanceServiceServiceInfo]{
-		OutputState: i.ToGetNestServiceInstancesServiceInstanceServiceServiceInfoArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetNestServiceInstancesServiceInstanceServiceServiceInfoOutput struct{ *pulumi.OutputState }
 
 func (GetNestServiceInstancesServiceInstanceServiceServiceInfoOutput) ElementType() reflect.Type {
@@ -1080,12 +947,6 @@ func (o GetNestServiceInstancesServiceInstanceServiceServiceInfoOutput) ToGetNes
 
 func (o GetNestServiceInstancesServiceInstanceServiceServiceInfoOutput) ToGetNestServiceInstancesServiceInstanceServiceServiceInfoOutputWithContext(ctx context.Context) GetNestServiceInstancesServiceInstanceServiceServiceInfoOutput {
 	return o
-}
-
-func (o GetNestServiceInstancesServiceInstanceServiceServiceInfoOutput) ToOutput(ctx context.Context) pulumix.Output[GetNestServiceInstancesServiceInstanceServiceServiceInfo] {
-	return pulumix.Output[GetNestServiceInstancesServiceInstanceServiceServiceInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The image of the service.
@@ -1120,12 +981,6 @@ func (o GetNestServiceInstancesServiceInstanceServiceServiceInfoArrayOutput) ToG
 
 func (o GetNestServiceInstancesServiceInstanceServiceServiceInfoArrayOutput) ToGetNestServiceInstancesServiceInstanceServiceServiceInfoArrayOutputWithContext(ctx context.Context) GetNestServiceInstancesServiceInstanceServiceServiceInfoArrayOutput {
 	return o
-}
-
-func (o GetNestServiceInstancesServiceInstanceServiceServiceInfoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetNestServiceInstancesServiceInstanceServiceServiceInfo] {
-	return pulumix.Output[[]GetNestServiceInstancesServiceInstanceServiceServiceInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetNestServiceInstancesServiceInstanceServiceServiceInfoArrayOutput) Index(i pulumi.IntInput) GetNestServiceInstancesServiceInstanceServiceServiceInfoOutput {

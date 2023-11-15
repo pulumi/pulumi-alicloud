@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i ProviderAssumeRoleArgs) ToProviderAssumeRoleOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderAssumeRoleOutput)
 }
 
-func (i ProviderAssumeRoleArgs) ToOutput(ctx context.Context) pulumix.Output[ProviderAssumeRole] {
-	return pulumix.Output[ProviderAssumeRole]{
-		OutputState: i.ToProviderAssumeRoleOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ProviderAssumeRoleArgs) ToProviderAssumeRolePtrOutput() ProviderAssumeRolePtrOutput {
 	return i.ToProviderAssumeRolePtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *providerAssumeRolePtrType) ToProviderAssumeRolePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderAssumeRolePtrOutput)
 }
 
-func (i *providerAssumeRolePtrType) ToOutput(ctx context.Context) pulumix.Output[*ProviderAssumeRole] {
-	return pulumix.Output[*ProviderAssumeRole]{
-		OutputState: i.ToProviderAssumeRolePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProviderAssumeRoleOutput struct{ *pulumi.OutputState }
 
 func (ProviderAssumeRoleOutput) ElementType() reflect.Type {
@@ -128,12 +115,6 @@ func (o ProviderAssumeRoleOutput) ToProviderAssumeRolePtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProviderAssumeRole) *ProviderAssumeRole {
 		return &v
 	}).(ProviderAssumeRolePtrOutput)
-}
-
-func (o ProviderAssumeRoleOutput) ToOutput(ctx context.Context) pulumix.Output[ProviderAssumeRole] {
-	return pulumix.Output[ProviderAssumeRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProviderAssumeRoleOutput) ExternalId() pulumi.StringPtrOutput {
@@ -168,12 +149,6 @@ func (o ProviderAssumeRolePtrOutput) ToProviderAssumeRolePtrOutput() ProviderAss
 
 func (o ProviderAssumeRolePtrOutput) ToProviderAssumeRolePtrOutputWithContext(ctx context.Context) ProviderAssumeRolePtrOutput {
 	return o
-}
-
-func (o ProviderAssumeRolePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProviderAssumeRole] {
-	return pulumix.Output[*ProviderAssumeRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProviderAssumeRolePtrOutput) Elem() ProviderAssumeRoleOutput {
@@ -518,12 +493,6 @@ func (i ProviderEndpointArgs) ToProviderEndpointOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderEndpointOutput)
 }
 
-func (i ProviderEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[ProviderEndpoint] {
-	return pulumix.Output[ProviderEndpoint]{
-		OutputState: i.ToProviderEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProviderEndpointArrayInput is an input type that accepts ProviderEndpointArray and ProviderEndpointArrayOutput values.
 // You can construct a concrete instance of `ProviderEndpointArrayInput` via:
 //
@@ -549,12 +518,6 @@ func (i ProviderEndpointArray) ToProviderEndpointArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderEndpointArrayOutput)
 }
 
-func (i ProviderEndpointArray) ToOutput(ctx context.Context) pulumix.Output[[]ProviderEndpoint] {
-	return pulumix.Output[[]ProviderEndpoint]{
-		OutputState: i.ToProviderEndpointArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProviderEndpointOutput struct{ *pulumi.OutputState }
 
 func (ProviderEndpointOutput) ElementType() reflect.Type {
@@ -567,12 +530,6 @@ func (o ProviderEndpointOutput) ToProviderEndpointOutput() ProviderEndpointOutpu
 
 func (o ProviderEndpointOutput) ToProviderEndpointOutputWithContext(ctx context.Context) ProviderEndpointOutput {
 	return o
-}
-
-func (o ProviderEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[ProviderEndpoint] {
-	return pulumix.Output[ProviderEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProviderEndpointOutput) Acr() pulumi.StringPtrOutput {
@@ -1105,12 +1062,6 @@ func (o ProviderEndpointArrayOutput) ToProviderEndpointArrayOutputWithContext(ct
 	return o
 }
 
-func (o ProviderEndpointArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ProviderEndpoint] {
-	return pulumix.Output[[]ProviderEndpoint]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProviderEndpointArrayOutput) Index(i pulumi.IntInput) ProviderEndpointOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProviderEndpoint {
 		return vs[0].([]ProviderEndpoint)[vs[1].(int)]
@@ -1198,12 +1149,6 @@ func (i GetMscSubContactsContactArgs) ToGetMscSubContactsContactOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetMscSubContactsContactOutput)
 }
 
-func (i GetMscSubContactsContactArgs) ToOutput(ctx context.Context) pulumix.Output[GetMscSubContactsContact] {
-	return pulumix.Output[GetMscSubContactsContact]{
-		OutputState: i.ToGetMscSubContactsContactOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetMscSubContactsContactArrayInput is an input type that accepts GetMscSubContactsContactArray and GetMscSubContactsContactArrayOutput values.
 // You can construct a concrete instance of `GetMscSubContactsContactArrayInput` via:
 //
@@ -1229,12 +1174,6 @@ func (i GetMscSubContactsContactArray) ToGetMscSubContactsContactArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetMscSubContactsContactArrayOutput)
 }
 
-func (i GetMscSubContactsContactArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMscSubContactsContact] {
-	return pulumix.Output[[]GetMscSubContactsContact]{
-		OutputState: i.ToGetMscSubContactsContactArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetMscSubContactsContactOutput struct{ *pulumi.OutputState }
 
 func (GetMscSubContactsContactOutput) ElementType() reflect.Type {
@@ -1247,12 +1186,6 @@ func (o GetMscSubContactsContactOutput) ToGetMscSubContactsContactOutput() GetMs
 
 func (o GetMscSubContactsContactOutput) ToGetMscSubContactsContactOutputWithContext(ctx context.Context) GetMscSubContactsContactOutput {
 	return o
-}
-
-func (o GetMscSubContactsContactOutput) ToOutput(ctx context.Context) pulumix.Output[GetMscSubContactsContact] {
-	return pulumix.Output[GetMscSubContactsContact]{
-		OutputState: o.OutputState,
-	}
 }
 
 // UID.
@@ -1332,12 +1265,6 @@ func (o GetMscSubContactsContactArrayOutput) ToGetMscSubContactsContactArrayOutp
 
 func (o GetMscSubContactsContactArrayOutput) ToGetMscSubContactsContactArrayOutputWithContext(ctx context.Context) GetMscSubContactsContactArrayOutput {
 	return o
-}
-
-func (o GetMscSubContactsContactArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMscSubContactsContact] {
-	return pulumix.Output[[]GetMscSubContactsContact]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetMscSubContactsContactArrayOutput) Index(i pulumi.IntInput) GetMscSubContactsContactOutput {
@@ -1423,12 +1350,6 @@ func (i GetMscSubSubscriptionsSubscriptionArgs) ToGetMscSubSubscriptionsSubscrip
 	return pulumi.ToOutputWithContext(ctx, i).(GetMscSubSubscriptionsSubscriptionOutput)
 }
 
-func (i GetMscSubSubscriptionsSubscriptionArgs) ToOutput(ctx context.Context) pulumix.Output[GetMscSubSubscriptionsSubscription] {
-	return pulumix.Output[GetMscSubSubscriptionsSubscription]{
-		OutputState: i.ToGetMscSubSubscriptionsSubscriptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetMscSubSubscriptionsSubscriptionArrayInput is an input type that accepts GetMscSubSubscriptionsSubscriptionArray and GetMscSubSubscriptionsSubscriptionArrayOutput values.
 // You can construct a concrete instance of `GetMscSubSubscriptionsSubscriptionArrayInput` via:
 //
@@ -1454,12 +1375,6 @@ func (i GetMscSubSubscriptionsSubscriptionArray) ToGetMscSubSubscriptionsSubscri
 	return pulumi.ToOutputWithContext(ctx, i).(GetMscSubSubscriptionsSubscriptionArrayOutput)
 }
 
-func (i GetMscSubSubscriptionsSubscriptionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMscSubSubscriptionsSubscription] {
-	return pulumix.Output[[]GetMscSubSubscriptionsSubscription]{
-		OutputState: i.ToGetMscSubSubscriptionsSubscriptionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetMscSubSubscriptionsSubscriptionOutput struct{ *pulumi.OutputState }
 
 func (GetMscSubSubscriptionsSubscriptionOutput) ElementType() reflect.Type {
@@ -1472,12 +1387,6 @@ func (o GetMscSubSubscriptionsSubscriptionOutput) ToGetMscSubSubscriptionsSubscr
 
 func (o GetMscSubSubscriptionsSubscriptionOutput) ToGetMscSubSubscriptionsSubscriptionOutputWithContext(ctx context.Context) GetMscSubSubscriptionsSubscriptionOutput {
 	return o
-}
-
-func (o GetMscSubSubscriptionsSubscriptionOutput) ToOutput(ctx context.Context) pulumix.Output[GetMscSubSubscriptionsSubscription] {
-	return pulumix.Output[GetMscSubSubscriptionsSubscription]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The channel the Subscription.
@@ -1554,12 +1463,6 @@ func (o GetMscSubSubscriptionsSubscriptionArrayOutput) ToGetMscSubSubscriptionsS
 	return o
 }
 
-func (o GetMscSubSubscriptionsSubscriptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMscSubSubscriptionsSubscription] {
-	return pulumix.Output[[]GetMscSubSubscriptionsSubscription]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetMscSubSubscriptionsSubscriptionArrayOutput) Index(i pulumi.IntInput) GetMscSubSubscriptionsSubscriptionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMscSubSubscriptionsSubscription {
 		return vs[0].([]GetMscSubSubscriptionsSubscription)[vs[1].(int)]
@@ -1611,12 +1514,6 @@ func (i GetMscSubWebhooksWebhookArgs) ToGetMscSubWebhooksWebhookOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetMscSubWebhooksWebhookOutput)
 }
 
-func (i GetMscSubWebhooksWebhookArgs) ToOutput(ctx context.Context) pulumix.Output[GetMscSubWebhooksWebhook] {
-	return pulumix.Output[GetMscSubWebhooksWebhook]{
-		OutputState: i.ToGetMscSubWebhooksWebhookOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetMscSubWebhooksWebhookArrayInput is an input type that accepts GetMscSubWebhooksWebhookArray and GetMscSubWebhooksWebhookArrayOutput values.
 // You can construct a concrete instance of `GetMscSubWebhooksWebhookArrayInput` via:
 //
@@ -1642,12 +1539,6 @@ func (i GetMscSubWebhooksWebhookArray) ToGetMscSubWebhooksWebhookArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetMscSubWebhooksWebhookArrayOutput)
 }
 
-func (i GetMscSubWebhooksWebhookArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMscSubWebhooksWebhook] {
-	return pulumix.Output[[]GetMscSubWebhooksWebhook]{
-		OutputState: i.ToGetMscSubWebhooksWebhookArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetMscSubWebhooksWebhookOutput struct{ *pulumi.OutputState }
 
 func (GetMscSubWebhooksWebhookOutput) ElementType() reflect.Type {
@@ -1660,12 +1551,6 @@ func (o GetMscSubWebhooksWebhookOutput) ToGetMscSubWebhooksWebhookOutput() GetMs
 
 func (o GetMscSubWebhooksWebhookOutput) ToGetMscSubWebhooksWebhookOutputWithContext(ctx context.Context) GetMscSubWebhooksWebhookOutput {
 	return o
-}
-
-func (o GetMscSubWebhooksWebhookOutput) ToOutput(ctx context.Context) pulumix.Output[GetMscSubWebhooksWebhook] {
-	return pulumix.Output[GetMscSubWebhooksWebhook]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Webhook.
@@ -1700,12 +1585,6 @@ func (o GetMscSubWebhooksWebhookArrayOutput) ToGetMscSubWebhooksWebhookArrayOutp
 
 func (o GetMscSubWebhooksWebhookArrayOutput) ToGetMscSubWebhooksWebhookArrayOutputWithContext(ctx context.Context) GetMscSubWebhooksWebhookArrayOutput {
 	return o
-}
-
-func (o GetMscSubWebhooksWebhookArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMscSubWebhooksWebhook] {
-	return pulumix.Output[[]GetMscSubWebhooksWebhook]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetMscSubWebhooksWebhookArrayOutput) Index(i pulumi.IntInput) GetMscSubWebhooksWebhookOutput {
@@ -1753,12 +1632,6 @@ func (i GetRegionsRegionArgs) ToGetRegionsRegionOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsRegionOutput)
 }
 
-func (i GetRegionsRegionArgs) ToOutput(ctx context.Context) pulumix.Output[GetRegionsRegion] {
-	return pulumix.Output[GetRegionsRegion]{
-		OutputState: i.ToGetRegionsRegionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetRegionsRegionArrayInput is an input type that accepts GetRegionsRegionArray and GetRegionsRegionArrayOutput values.
 // You can construct a concrete instance of `GetRegionsRegionArrayInput` via:
 //
@@ -1784,12 +1657,6 @@ func (i GetRegionsRegionArray) ToGetRegionsRegionArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsRegionArrayOutput)
 }
 
-func (i GetRegionsRegionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRegionsRegion] {
-	return pulumix.Output[[]GetRegionsRegion]{
-		OutputState: i.ToGetRegionsRegionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetRegionsRegionOutput struct{ *pulumi.OutputState }
 
 func (GetRegionsRegionOutput) ElementType() reflect.Type {
@@ -1802,12 +1669,6 @@ func (o GetRegionsRegionOutput) ToGetRegionsRegionOutput() GetRegionsRegionOutpu
 
 func (o GetRegionsRegionOutput) ToGetRegionsRegionOutputWithContext(ctx context.Context) GetRegionsRegionOutput {
 	return o
-}
-
-func (o GetRegionsRegionOutput) ToOutput(ctx context.Context) pulumix.Output[GetRegionsRegion] {
-	return pulumix.Output[GetRegionsRegion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ID of the region.
@@ -1836,12 +1697,6 @@ func (o GetRegionsRegionArrayOutput) ToGetRegionsRegionArrayOutput() GetRegionsR
 
 func (o GetRegionsRegionArrayOutput) ToGetRegionsRegionArrayOutputWithContext(ctx context.Context) GetRegionsRegionArrayOutput {
 	return o
-}
-
-func (o GetRegionsRegionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRegionsRegion] {
-	return pulumix.Output[[]GetRegionsRegion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRegionsRegionArrayOutput) Index(i pulumi.IntInput) GetRegionsRegionOutput {
@@ -1915,12 +1770,6 @@ func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneOutput)
 }
 
-func (i GetZonesZoneArgs) ToOutput(ctx context.Context) pulumix.Output[GetZonesZone] {
-	return pulumix.Output[GetZonesZone]{
-		OutputState: i.ToGetZonesZoneOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneArrayInput` via:
 //
@@ -1946,12 +1795,6 @@ func (i GetZonesZoneArray) ToGetZonesZoneArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneArrayOutput)
 }
 
-func (i GetZonesZoneArray) ToOutput(ctx context.Context) pulumix.Output[[]GetZonesZone] {
-	return pulumix.Output[[]GetZonesZone]{
-		OutputState: i.ToGetZonesZoneArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetZonesZoneOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneOutput) ElementType() reflect.Type {
@@ -1964,12 +1807,6 @@ func (o GetZonesZoneOutput) ToGetZonesZoneOutput() GetZonesZoneOutput {
 
 func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context) GetZonesZoneOutput {
 	return o
-}
-
-func (o GetZonesZoneOutput) ToOutput(ctx context.Context) pulumix.Output[GetZonesZone] {
-	return pulumix.Output[GetZonesZone]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Set of supported disk categories.
@@ -2023,12 +1860,6 @@ func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutput() GetZonesZoneArrayOu
 
 func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutputWithContext(ctx context.Context) GetZonesZoneArrayOutput {
 	return o
-}
-
-func (o GetZonesZoneArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetZonesZone] {
-	return pulumix.Output[[]GetZonesZone]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {

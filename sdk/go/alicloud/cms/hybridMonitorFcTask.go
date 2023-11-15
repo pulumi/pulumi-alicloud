@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Monitor Service Hybrid Monitor Fc Task resource.
@@ -212,12 +211,6 @@ func (i *HybridMonitorFcTask) ToHybridMonitorFcTaskOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorFcTaskOutput)
 }
 
-func (i *HybridMonitorFcTask) ToOutput(ctx context.Context) pulumix.Output[*HybridMonitorFcTask] {
-	return pulumix.Output[*HybridMonitorFcTask]{
-		OutputState: i.ToHybridMonitorFcTaskOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HybridMonitorFcTaskArrayInput is an input type that accepts HybridMonitorFcTaskArray and HybridMonitorFcTaskArrayOutput values.
 // You can construct a concrete instance of `HybridMonitorFcTaskArrayInput` via:
 //
@@ -241,12 +234,6 @@ func (i HybridMonitorFcTaskArray) ToHybridMonitorFcTaskArrayOutput() HybridMonit
 
 func (i HybridMonitorFcTaskArray) ToHybridMonitorFcTaskArrayOutputWithContext(ctx context.Context) HybridMonitorFcTaskArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorFcTaskArrayOutput)
-}
-
-func (i HybridMonitorFcTaskArray) ToOutput(ctx context.Context) pulumix.Output[[]*HybridMonitorFcTask] {
-	return pulumix.Output[[]*HybridMonitorFcTask]{
-		OutputState: i.ToHybridMonitorFcTaskArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HybridMonitorFcTaskMapInput is an input type that accepts HybridMonitorFcTaskMap and HybridMonitorFcTaskMapOutput values.
@@ -274,12 +261,6 @@ func (i HybridMonitorFcTaskMap) ToHybridMonitorFcTaskMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(HybridMonitorFcTaskMapOutput)
 }
 
-func (i HybridMonitorFcTaskMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HybridMonitorFcTask] {
-	return pulumix.Output[map[string]*HybridMonitorFcTask]{
-		OutputState: i.ToHybridMonitorFcTaskMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HybridMonitorFcTaskOutput struct{ *pulumi.OutputState }
 
 func (HybridMonitorFcTaskOutput) ElementType() reflect.Type {
@@ -292,12 +273,6 @@ func (o HybridMonitorFcTaskOutput) ToHybridMonitorFcTaskOutput() HybridMonitorFc
 
 func (o HybridMonitorFcTaskOutput) ToHybridMonitorFcTaskOutputWithContext(ctx context.Context) HybridMonitorFcTaskOutput {
 	return o
-}
-
-func (o HybridMonitorFcTaskOutput) ToOutput(ctx context.Context) pulumix.Output[*HybridMonitorFcTask] {
-	return pulumix.Output[*HybridMonitorFcTask]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the monitoring task.
@@ -334,12 +309,6 @@ func (o HybridMonitorFcTaskArrayOutput) ToHybridMonitorFcTaskArrayOutputWithCont
 	return o
 }
 
-func (o HybridMonitorFcTaskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HybridMonitorFcTask] {
-	return pulumix.Output[[]*HybridMonitorFcTask]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HybridMonitorFcTaskArrayOutput) Index(i pulumi.IntInput) HybridMonitorFcTaskOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HybridMonitorFcTask {
 		return vs[0].([]*HybridMonitorFcTask)[vs[1].(int)]
@@ -358,12 +327,6 @@ func (o HybridMonitorFcTaskMapOutput) ToHybridMonitorFcTaskMapOutput() HybridMon
 
 func (o HybridMonitorFcTaskMapOutput) ToHybridMonitorFcTaskMapOutputWithContext(ctx context.Context) HybridMonitorFcTaskMapOutput {
 	return o
-}
-
-func (o HybridMonitorFcTaskMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HybridMonitorFcTask] {
-	return pulumix.Output[map[string]*HybridMonitorFcTask]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HybridMonitorFcTaskMapOutput) MapIndex(k pulumi.StringInput) HybridMonitorFcTaskOutput {

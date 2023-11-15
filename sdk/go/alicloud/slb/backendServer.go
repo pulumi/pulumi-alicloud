@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Add a group of backend servers (ECS or ENI instance) to the Server Load Balancer or remove them from it.
@@ -142,12 +141,6 @@ func (i *BackendServer) ToBackendServerOutputWithContext(ctx context.Context) Ba
 	return pulumi.ToOutputWithContext(ctx, i).(BackendServerOutput)
 }
 
-func (i *BackendServer) ToOutput(ctx context.Context) pulumix.Output[*BackendServer] {
-	return pulumix.Output[*BackendServer]{
-		OutputState: i.ToBackendServerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BackendServerArrayInput is an input type that accepts BackendServerArray and BackendServerArrayOutput values.
 // You can construct a concrete instance of `BackendServerArrayInput` via:
 //
@@ -171,12 +164,6 @@ func (i BackendServerArray) ToBackendServerArrayOutput() BackendServerArrayOutpu
 
 func (i BackendServerArray) ToBackendServerArrayOutputWithContext(ctx context.Context) BackendServerArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackendServerArrayOutput)
-}
-
-func (i BackendServerArray) ToOutput(ctx context.Context) pulumix.Output[[]*BackendServer] {
-	return pulumix.Output[[]*BackendServer]{
-		OutputState: i.ToBackendServerArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BackendServerMapInput is an input type that accepts BackendServerMap and BackendServerMapOutput values.
@@ -204,12 +191,6 @@ func (i BackendServerMap) ToBackendServerMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(BackendServerMapOutput)
 }
 
-func (i BackendServerMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BackendServer] {
-	return pulumix.Output[map[string]*BackendServer]{
-		OutputState: i.ToBackendServerMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BackendServerOutput struct{ *pulumi.OutputState }
 
 func (BackendServerOutput) ElementType() reflect.Type {
@@ -222,12 +203,6 @@ func (o BackendServerOutput) ToBackendServerOutput() BackendServerOutput {
 
 func (o BackendServerOutput) ToBackendServerOutputWithContext(ctx context.Context) BackendServerOutput {
 	return o
-}
-
-func (o BackendServerOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendServer] {
-	return pulumix.Output[*BackendServer]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
@@ -259,12 +234,6 @@ func (o BackendServerArrayOutput) ToBackendServerArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o BackendServerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BackendServer] {
-	return pulumix.Output[[]*BackendServer]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BackendServerArrayOutput) Index(i pulumi.IntInput) BackendServerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BackendServer {
 		return vs[0].([]*BackendServer)[vs[1].(int)]
@@ -283,12 +252,6 @@ func (o BackendServerMapOutput) ToBackendServerMapOutput() BackendServerMapOutpu
 
 func (o BackendServerMapOutput) ToBackendServerMapOutputWithContext(ctx context.Context) BackendServerMapOutput {
 	return o
-}
-
-func (o BackendServerMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BackendServer] {
-	return pulumix.Output[map[string]*BackendServer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackendServerMapOutput) MapIndex(k pulumi.StringInput) BackendServerOutput {

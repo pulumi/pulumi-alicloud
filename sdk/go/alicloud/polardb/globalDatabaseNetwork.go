@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a PolarDB Global Database Network resource.
@@ -197,12 +196,6 @@ func (i *GlobalDatabaseNetwork) ToGlobalDatabaseNetworkOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalDatabaseNetworkOutput)
 }
 
-func (i *GlobalDatabaseNetwork) ToOutput(ctx context.Context) pulumix.Output[*GlobalDatabaseNetwork] {
-	return pulumix.Output[*GlobalDatabaseNetwork]{
-		OutputState: i.ToGlobalDatabaseNetworkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GlobalDatabaseNetworkArrayInput is an input type that accepts GlobalDatabaseNetworkArray and GlobalDatabaseNetworkArrayOutput values.
 // You can construct a concrete instance of `GlobalDatabaseNetworkArrayInput` via:
 //
@@ -226,12 +219,6 @@ func (i GlobalDatabaseNetworkArray) ToGlobalDatabaseNetworkArrayOutput() GlobalD
 
 func (i GlobalDatabaseNetworkArray) ToGlobalDatabaseNetworkArrayOutputWithContext(ctx context.Context) GlobalDatabaseNetworkArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalDatabaseNetworkArrayOutput)
-}
-
-func (i GlobalDatabaseNetworkArray) ToOutput(ctx context.Context) pulumix.Output[[]*GlobalDatabaseNetwork] {
-	return pulumix.Output[[]*GlobalDatabaseNetwork]{
-		OutputState: i.ToGlobalDatabaseNetworkArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GlobalDatabaseNetworkMapInput is an input type that accepts GlobalDatabaseNetworkMap and GlobalDatabaseNetworkMapOutput values.
@@ -259,12 +246,6 @@ func (i GlobalDatabaseNetworkMap) ToGlobalDatabaseNetworkMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalDatabaseNetworkMapOutput)
 }
 
-func (i GlobalDatabaseNetworkMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GlobalDatabaseNetwork] {
-	return pulumix.Output[map[string]*GlobalDatabaseNetwork]{
-		OutputState: i.ToGlobalDatabaseNetworkMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GlobalDatabaseNetworkOutput struct{ *pulumi.OutputState }
 
 func (GlobalDatabaseNetworkOutput) ElementType() reflect.Type {
@@ -277,12 +258,6 @@ func (o GlobalDatabaseNetworkOutput) ToGlobalDatabaseNetworkOutput() GlobalDatab
 
 func (o GlobalDatabaseNetworkOutput) ToGlobalDatabaseNetworkOutputWithContext(ctx context.Context) GlobalDatabaseNetworkOutput {
 	return o
-}
-
-func (o GlobalDatabaseNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalDatabaseNetwork] {
-	return pulumix.Output[*GlobalDatabaseNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the primary cluster.
@@ -314,12 +289,6 @@ func (o GlobalDatabaseNetworkArrayOutput) ToGlobalDatabaseNetworkArrayOutputWith
 	return o
 }
 
-func (o GlobalDatabaseNetworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GlobalDatabaseNetwork] {
-	return pulumix.Output[[]*GlobalDatabaseNetwork]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GlobalDatabaseNetworkArrayOutput) Index(i pulumi.IntInput) GlobalDatabaseNetworkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GlobalDatabaseNetwork {
 		return vs[0].([]*GlobalDatabaseNetwork)[vs[1].(int)]
@@ -338,12 +307,6 @@ func (o GlobalDatabaseNetworkMapOutput) ToGlobalDatabaseNetworkMapOutput() Globa
 
 func (o GlobalDatabaseNetworkMapOutput) ToGlobalDatabaseNetworkMapOutputWithContext(ctx context.Context) GlobalDatabaseNetworkMapOutput {
 	return o
-}
-
-func (o GlobalDatabaseNetworkMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GlobalDatabaseNetwork] {
-	return pulumix.Output[map[string]*GlobalDatabaseNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GlobalDatabaseNetworkMapOutput) MapIndex(k pulumi.StringInput) GlobalDatabaseNetworkOutput {

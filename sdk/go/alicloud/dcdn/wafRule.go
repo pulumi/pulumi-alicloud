@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Dcdn Waf Rule resource.
@@ -341,12 +340,6 @@ func (i *WafRule) ToWafRuleOutputWithContext(ctx context.Context) WafRuleOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(WafRuleOutput)
 }
 
-func (i *WafRule) ToOutput(ctx context.Context) pulumix.Output[*WafRule] {
-	return pulumix.Output[*WafRule]{
-		OutputState: i.ToWafRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WafRuleArrayInput is an input type that accepts WafRuleArray and WafRuleArrayOutput values.
 // You can construct a concrete instance of `WafRuleArrayInput` via:
 //
@@ -370,12 +363,6 @@ func (i WafRuleArray) ToWafRuleArrayOutput() WafRuleArrayOutput {
 
 func (i WafRuleArray) ToWafRuleArrayOutputWithContext(ctx context.Context) WafRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WafRuleArrayOutput)
-}
-
-func (i WafRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*WafRule] {
-	return pulumix.Output[[]*WafRule]{
-		OutputState: i.ToWafRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WafRuleMapInput is an input type that accepts WafRuleMap and WafRuleMapOutput values.
@@ -403,12 +390,6 @@ func (i WafRuleMap) ToWafRuleMapOutputWithContext(ctx context.Context) WafRuleMa
 	return pulumi.ToOutputWithContext(ctx, i).(WafRuleMapOutput)
 }
 
-func (i WafRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WafRule] {
-	return pulumix.Output[map[string]*WafRule]{
-		OutputState: i.ToWafRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WafRuleOutput struct{ *pulumi.OutputState }
 
 func (WafRuleOutput) ElementType() reflect.Type {
@@ -421,12 +402,6 @@ func (o WafRuleOutput) ToWafRuleOutput() WafRuleOutput {
 
 func (o WafRuleOutput) ToWafRuleOutputWithContext(ctx context.Context) WafRuleOutput {
 	return o
-}
-
-func (o WafRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*WafRule] {
-	return pulumix.Output[*WafRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the action of the rule. Valid values: `block`, `monitor`, `js`.
@@ -528,12 +503,6 @@ func (o WafRuleArrayOutput) ToWafRuleArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o WafRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WafRule] {
-	return pulumix.Output[[]*WafRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WafRuleArrayOutput) Index(i pulumi.IntInput) WafRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WafRule {
 		return vs[0].([]*WafRule)[vs[1].(int)]
@@ -552,12 +521,6 @@ func (o WafRuleMapOutput) ToWafRuleMapOutput() WafRuleMapOutput {
 
 func (o WafRuleMapOutput) ToWafRuleMapOutputWithContext(ctx context.Context) WafRuleMapOutput {
 	return o
-}
-
-func (o WafRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WafRule] {
-	return pulumix.Output[map[string]*WafRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WafRuleMapOutput) MapIndex(k pulumi.StringInput) WafRuleOutput {

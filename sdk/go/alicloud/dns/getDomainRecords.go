@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetDomainRecords(ctx *pulumi.Context, args *GetDomainRecordsArgs, opts ...pulumi.InvokeOption) (*GetDomainRecordsResult, error) {
@@ -95,12 +94,6 @@ func (o GetDomainRecordsResultOutput) ToGetDomainRecordsResultOutput() GetDomain
 
 func (o GetDomainRecordsResultOutput) ToGetDomainRecordsResultOutputWithContext(ctx context.Context) GetDomainRecordsResultOutput {
 	return o
-}
-
-func (o GetDomainRecordsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDomainRecordsResult] {
-	return pulumix.Output[GetDomainRecordsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDomainRecordsResultOutput) DomainName() pulumi.StringOutput {

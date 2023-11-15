@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Eflo Subnet available to the user.[What is Subnet](https://help.aliyun.com/document_detail/604977.html)
@@ -170,12 +169,6 @@ func (o GetSubnetsResultOutput) ToGetSubnetsResultOutput() GetSubnetsResultOutpu
 
 func (o GetSubnetsResultOutput) ToGetSubnetsResultOutputWithContext(ctx context.Context) GetSubnetsResultOutput {
 	return o
-}
-
-func (o GetSubnetsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSubnetsResult] {
-	return pulumix.Output[GetSubnetsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

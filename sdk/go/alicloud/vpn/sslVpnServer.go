@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -218,12 +217,6 @@ func (i *SslVpnServer) ToSslVpnServerOutputWithContext(ctx context.Context) SslV
 	return pulumi.ToOutputWithContext(ctx, i).(SslVpnServerOutput)
 }
 
-func (i *SslVpnServer) ToOutput(ctx context.Context) pulumix.Output[*SslVpnServer] {
-	return pulumix.Output[*SslVpnServer]{
-		OutputState: i.ToSslVpnServerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SslVpnServerArrayInput is an input type that accepts SslVpnServerArray and SslVpnServerArrayOutput values.
 // You can construct a concrete instance of `SslVpnServerArrayInput` via:
 //
@@ -247,12 +240,6 @@ func (i SslVpnServerArray) ToSslVpnServerArrayOutput() SslVpnServerArrayOutput {
 
 func (i SslVpnServerArray) ToSslVpnServerArrayOutputWithContext(ctx context.Context) SslVpnServerArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SslVpnServerArrayOutput)
-}
-
-func (i SslVpnServerArray) ToOutput(ctx context.Context) pulumix.Output[[]*SslVpnServer] {
-	return pulumix.Output[[]*SslVpnServer]{
-		OutputState: i.ToSslVpnServerArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SslVpnServerMapInput is an input type that accepts SslVpnServerMap and SslVpnServerMapOutput values.
@@ -280,12 +267,6 @@ func (i SslVpnServerMap) ToSslVpnServerMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(SslVpnServerMapOutput)
 }
 
-func (i SslVpnServerMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SslVpnServer] {
-	return pulumix.Output[map[string]*SslVpnServer]{
-		OutputState: i.ToSslVpnServerMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SslVpnServerOutput struct{ *pulumi.OutputState }
 
 func (SslVpnServerOutput) ElementType() reflect.Type {
@@ -298,12 +279,6 @@ func (o SslVpnServerOutput) ToSslVpnServerOutput() SslVpnServerOutput {
 
 func (o SslVpnServerOutput) ToSslVpnServerOutputWithContext(ctx context.Context) SslVpnServerOutput {
 	return o
-}
-
-func (o SslVpnServerOutput) ToOutput(ctx context.Context) pulumix.Output[*SslVpnServer] {
-	return pulumix.Output[*SslVpnServer]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
@@ -378,12 +353,6 @@ func (o SslVpnServerArrayOutput) ToSslVpnServerArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o SslVpnServerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SslVpnServer] {
-	return pulumix.Output[[]*SslVpnServer]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SslVpnServerArrayOutput) Index(i pulumi.IntInput) SslVpnServerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SslVpnServer {
 		return vs[0].([]*SslVpnServer)[vs[1].(int)]
@@ -402,12 +371,6 @@ func (o SslVpnServerMapOutput) ToSslVpnServerMapOutput() SslVpnServerMapOutput {
 
 func (o SslVpnServerMapOutput) ToSslVpnServerMapOutputWithContext(ctx context.Context) SslVpnServerMapOutput {
 	return o
-}
-
-func (o SslVpnServerMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SslVpnServer] {
-	return pulumix.Output[map[string]*SslVpnServer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SslVpnServerMapOutput) MapIndex(k pulumi.StringInput) SslVpnServerOutput {

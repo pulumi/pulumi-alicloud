@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -55,12 +54,6 @@ func (i DbInstanceDbInstanceIpArrayArgs) ToDbInstanceDbInstanceIpArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(DbInstanceDbInstanceIpArrayOutput)
 }
 
-func (i DbInstanceDbInstanceIpArrayArgs) ToOutput(ctx context.Context) pulumix.Output[DbInstanceDbInstanceIpArray] {
-	return pulumix.Output[DbInstanceDbInstanceIpArray]{
-		OutputState: i.ToDbInstanceDbInstanceIpArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DbInstanceDbInstanceIpArrayArrayInput is an input type that accepts DbInstanceDbInstanceIpArrayArray and DbInstanceDbInstanceIpArrayArrayOutput values.
 // You can construct a concrete instance of `DbInstanceDbInstanceIpArrayArrayInput` via:
 //
@@ -86,12 +79,6 @@ func (i DbInstanceDbInstanceIpArrayArray) ToDbInstanceDbInstanceIpArrayArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DbInstanceDbInstanceIpArrayArrayOutput)
 }
 
-func (i DbInstanceDbInstanceIpArrayArray) ToOutput(ctx context.Context) pulumix.Output[[]DbInstanceDbInstanceIpArray] {
-	return pulumix.Output[[]DbInstanceDbInstanceIpArray]{
-		OutputState: i.ToDbInstanceDbInstanceIpArrayArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DbInstanceDbInstanceIpArrayOutput struct{ *pulumi.OutputState }
 
 func (DbInstanceDbInstanceIpArrayOutput) ElementType() reflect.Type {
@@ -104,12 +91,6 @@ func (o DbInstanceDbInstanceIpArrayOutput) ToDbInstanceDbInstanceIpArrayOutput()
 
 func (o DbInstanceDbInstanceIpArrayOutput) ToDbInstanceDbInstanceIpArrayOutputWithContext(ctx context.Context) DbInstanceDbInstanceIpArrayOutput {
 	return o
-}
-
-func (o DbInstanceDbInstanceIpArrayOutput) ToOutput(ctx context.Context) pulumix.Output[DbInstanceDbInstanceIpArray] {
-	return pulumix.Output[DbInstanceDbInstanceIpArray]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The default is empty. To distinguish between the different property console does not display a `hidden` label grouping.
@@ -139,12 +120,6 @@ func (o DbInstanceDbInstanceIpArrayArrayOutput) ToDbInstanceDbInstanceIpArrayArr
 
 func (o DbInstanceDbInstanceIpArrayArrayOutput) ToDbInstanceDbInstanceIpArrayArrayOutputWithContext(ctx context.Context) DbInstanceDbInstanceIpArrayArrayOutput {
 	return o
-}
-
-func (o DbInstanceDbInstanceIpArrayArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DbInstanceDbInstanceIpArray] {
-	return pulumix.Output[[]DbInstanceDbInstanceIpArray]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DbInstanceDbInstanceIpArrayArrayOutput) Index(i pulumi.IntInput) DbInstanceDbInstanceIpArrayOutput {
@@ -314,12 +289,6 @@ func (i GetDbInstancesInstanceArgs) ToGetDbInstancesInstanceOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbInstancesInstanceOutput)
 }
 
-func (i GetDbInstancesInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetDbInstancesInstance] {
-	return pulumix.Output[GetDbInstancesInstance]{
-		OutputState: i.ToGetDbInstancesInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDbInstancesInstanceArrayInput is an input type that accepts GetDbInstancesInstanceArray and GetDbInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetDbInstancesInstanceArrayInput` via:
 //
@@ -345,12 +314,6 @@ func (i GetDbInstancesInstanceArray) ToGetDbInstancesInstanceArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbInstancesInstanceArrayOutput)
 }
 
-func (i GetDbInstancesInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDbInstancesInstance] {
-	return pulumix.Output[[]GetDbInstancesInstance]{
-		OutputState: i.ToGetDbInstancesInstanceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDbInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetDbInstancesInstanceOutput) ElementType() reflect.Type {
@@ -363,12 +326,6 @@ func (o GetDbInstancesInstanceOutput) ToGetDbInstancesInstanceOutput() GetDbInst
 
 func (o GetDbInstancesInstanceOutput) ToGetDbInstancesInstanceOutputWithContext(ctx context.Context) GetDbInstancesInstanceOutput {
 	return o
-}
-
-func (o GetDbInstancesInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetDbInstancesInstance] {
-	return pulumix.Output[GetDbInstancesInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Virtual Private Cloud (vpc connection such as a VPN connection or leased line domain name).
@@ -550,12 +507,6 @@ func (o GetDbInstancesInstanceArrayOutput) ToGetDbInstancesInstanceArrayOutputWi
 	return o
 }
 
-func (o GetDbInstancesInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDbInstancesInstance] {
-	return pulumix.Output[[]GetDbInstancesInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetDbInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetDbInstancesInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDbInstancesInstance {
 		return vs[0].([]GetDbInstancesInstance)[vs[1].(int)]
@@ -603,12 +554,6 @@ func (i GetDbInstancesInstanceDbInstanceIpArrayArgs) ToGetDbInstancesInstanceDbI
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbInstancesInstanceDbInstanceIpArrayOutput)
 }
 
-func (i GetDbInstancesInstanceDbInstanceIpArrayArgs) ToOutput(ctx context.Context) pulumix.Output[GetDbInstancesInstanceDbInstanceIpArray] {
-	return pulumix.Output[GetDbInstancesInstanceDbInstanceIpArray]{
-		OutputState: i.ToGetDbInstancesInstanceDbInstanceIpArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDbInstancesInstanceDbInstanceIpArrayArrayInput is an input type that accepts GetDbInstancesInstanceDbInstanceIpArrayArray and GetDbInstancesInstanceDbInstanceIpArrayArrayOutput values.
 // You can construct a concrete instance of `GetDbInstancesInstanceDbInstanceIpArrayArrayInput` via:
 //
@@ -634,12 +579,6 @@ func (i GetDbInstancesInstanceDbInstanceIpArrayArray) ToGetDbInstancesInstanceDb
 	return pulumi.ToOutputWithContext(ctx, i).(GetDbInstancesInstanceDbInstanceIpArrayArrayOutput)
 }
 
-func (i GetDbInstancesInstanceDbInstanceIpArrayArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDbInstancesInstanceDbInstanceIpArray] {
-	return pulumix.Output[[]GetDbInstancesInstanceDbInstanceIpArray]{
-		OutputState: i.ToGetDbInstancesInstanceDbInstanceIpArrayArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDbInstancesInstanceDbInstanceIpArrayOutput struct{ *pulumi.OutputState }
 
 func (GetDbInstancesInstanceDbInstanceIpArrayOutput) ElementType() reflect.Type {
@@ -652,12 +591,6 @@ func (o GetDbInstancesInstanceDbInstanceIpArrayOutput) ToGetDbInstancesInstanceD
 
 func (o GetDbInstancesInstanceDbInstanceIpArrayOutput) ToGetDbInstancesInstanceDbInstanceIpArrayOutputWithContext(ctx context.Context) GetDbInstancesInstanceDbInstanceIpArrayOutput {
 	return o
-}
-
-func (o GetDbInstancesInstanceDbInstanceIpArrayOutput) ToOutput(ctx context.Context) pulumix.Output[GetDbInstancesInstanceDbInstanceIpArray] {
-	return pulumix.Output[GetDbInstancesInstanceDbInstanceIpArray]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The default is empty. To distinguish between the different property console does not display a `hidden` label grouping.
@@ -687,12 +620,6 @@ func (o GetDbInstancesInstanceDbInstanceIpArrayArrayOutput) ToGetDbInstancesInst
 
 func (o GetDbInstancesInstanceDbInstanceIpArrayArrayOutput) ToGetDbInstancesInstanceDbInstanceIpArrayArrayOutputWithContext(ctx context.Context) GetDbInstancesInstanceDbInstanceIpArrayArrayOutput {
 	return o
-}
-
-func (o GetDbInstancesInstanceDbInstanceIpArrayArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDbInstancesInstanceDbInstanceIpArray] {
-	return pulumix.Output[[]GetDbInstancesInstanceDbInstanceIpArray]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDbInstancesInstanceDbInstanceIpArrayArrayOutput) Index(i pulumi.IntInput) GetDbInstancesInstanceDbInstanceIpArrayOutput {

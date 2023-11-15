@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Storage Gateway Gateway SMB User resource.
@@ -148,12 +147,6 @@ func (i *GatewaySmbUser) ToGatewaySmbUserOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(GatewaySmbUserOutput)
 }
 
-func (i *GatewaySmbUser) ToOutput(ctx context.Context) pulumix.Output[*GatewaySmbUser] {
-	return pulumix.Output[*GatewaySmbUser]{
-		OutputState: i.ToGatewaySmbUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GatewaySmbUserArrayInput is an input type that accepts GatewaySmbUserArray and GatewaySmbUserArrayOutput values.
 // You can construct a concrete instance of `GatewaySmbUserArrayInput` via:
 //
@@ -177,12 +170,6 @@ func (i GatewaySmbUserArray) ToGatewaySmbUserArrayOutput() GatewaySmbUserArrayOu
 
 func (i GatewaySmbUserArray) ToGatewaySmbUserArrayOutputWithContext(ctx context.Context) GatewaySmbUserArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GatewaySmbUserArrayOutput)
-}
-
-func (i GatewaySmbUserArray) ToOutput(ctx context.Context) pulumix.Output[[]*GatewaySmbUser] {
-	return pulumix.Output[[]*GatewaySmbUser]{
-		OutputState: i.ToGatewaySmbUserArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GatewaySmbUserMapInput is an input type that accepts GatewaySmbUserMap and GatewaySmbUserMapOutput values.
@@ -210,12 +197,6 @@ func (i GatewaySmbUserMap) ToGatewaySmbUserMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GatewaySmbUserMapOutput)
 }
 
-func (i GatewaySmbUserMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GatewaySmbUser] {
-	return pulumix.Output[map[string]*GatewaySmbUser]{
-		OutputState: i.ToGatewaySmbUserMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GatewaySmbUserOutput struct{ *pulumi.OutputState }
 
 func (GatewaySmbUserOutput) ElementType() reflect.Type {
@@ -228,12 +209,6 @@ func (o GatewaySmbUserOutput) ToGatewaySmbUserOutput() GatewaySmbUserOutput {
 
 func (o GatewaySmbUserOutput) ToGatewaySmbUserOutputWithContext(ctx context.Context) GatewaySmbUserOutput {
 	return o
-}
-
-func (o GatewaySmbUserOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewaySmbUser] {
-	return pulumix.Output[*GatewaySmbUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Gateway ID of the Gateway SMB User.
@@ -265,12 +240,6 @@ func (o GatewaySmbUserArrayOutput) ToGatewaySmbUserArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o GatewaySmbUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GatewaySmbUser] {
-	return pulumix.Output[[]*GatewaySmbUser]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GatewaySmbUserArrayOutput) Index(i pulumi.IntInput) GatewaySmbUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GatewaySmbUser {
 		return vs[0].([]*GatewaySmbUser)[vs[1].(int)]
@@ -289,12 +258,6 @@ func (o GatewaySmbUserMapOutput) ToGatewaySmbUserMapOutput() GatewaySmbUserMapOu
 
 func (o GatewaySmbUserMapOutput) ToGatewaySmbUserMapOutputWithContext(ctx context.Context) GatewaySmbUserMapOutput {
 	return o
-}
-
-func (o GatewaySmbUserMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GatewaySmbUser] {
-	return pulumix.Output[map[string]*GatewaySmbUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GatewaySmbUserMapOutput) MapIndex(k pulumi.StringInput) GatewaySmbUserOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Dms Enterprise Proxies of the current Alibaba Cloud user.
@@ -112,12 +111,6 @@ func (o GetEnterpriseProxiesResultOutput) ToGetEnterpriseProxiesResultOutput() G
 
 func (o GetEnterpriseProxiesResultOutput) ToGetEnterpriseProxiesResultOutputWithContext(ctx context.Context) GetEnterpriseProxiesResultOutput {
 	return o
-}
-
-func (o GetEnterpriseProxiesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnterpriseProxiesResult] {
-	return pulumix.Output[GetEnterpriseProxiesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

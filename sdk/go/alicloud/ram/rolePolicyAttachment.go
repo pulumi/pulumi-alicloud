@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a RAM Role attachment resource.
@@ -216,12 +215,6 @@ func (i *RolePolicyAttachment) ToRolePolicyAttachmentOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(RolePolicyAttachmentOutput)
 }
 
-func (i *RolePolicyAttachment) ToOutput(ctx context.Context) pulumix.Output[*RolePolicyAttachment] {
-	return pulumix.Output[*RolePolicyAttachment]{
-		OutputState: i.ToRolePolicyAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RolePolicyAttachmentArrayInput is an input type that accepts RolePolicyAttachmentArray and RolePolicyAttachmentArrayOutput values.
 // You can construct a concrete instance of `RolePolicyAttachmentArrayInput` via:
 //
@@ -245,12 +238,6 @@ func (i RolePolicyAttachmentArray) ToRolePolicyAttachmentArrayOutput() RolePolic
 
 func (i RolePolicyAttachmentArray) ToRolePolicyAttachmentArrayOutputWithContext(ctx context.Context) RolePolicyAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RolePolicyAttachmentArrayOutput)
-}
-
-func (i RolePolicyAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*RolePolicyAttachment] {
-	return pulumix.Output[[]*RolePolicyAttachment]{
-		OutputState: i.ToRolePolicyAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RolePolicyAttachmentMapInput is an input type that accepts RolePolicyAttachmentMap and RolePolicyAttachmentMapOutput values.
@@ -278,12 +265,6 @@ func (i RolePolicyAttachmentMap) ToRolePolicyAttachmentMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(RolePolicyAttachmentMapOutput)
 }
 
-func (i RolePolicyAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RolePolicyAttachment] {
-	return pulumix.Output[map[string]*RolePolicyAttachment]{
-		OutputState: i.ToRolePolicyAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RolePolicyAttachmentOutput struct{ *pulumi.OutputState }
 
 func (RolePolicyAttachmentOutput) ElementType() reflect.Type {
@@ -296,12 +277,6 @@ func (o RolePolicyAttachmentOutput) ToRolePolicyAttachmentOutput() RolePolicyAtt
 
 func (o RolePolicyAttachmentOutput) ToRolePolicyAttachmentOutputWithContext(ctx context.Context) RolePolicyAttachmentOutput {
 	return o
-}
-
-func (o RolePolicyAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*RolePolicyAttachment] {
-	return pulumix.Output[*RolePolicyAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
@@ -333,12 +308,6 @@ func (o RolePolicyAttachmentArrayOutput) ToRolePolicyAttachmentArrayOutputWithCo
 	return o
 }
 
-func (o RolePolicyAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RolePolicyAttachment] {
-	return pulumix.Output[[]*RolePolicyAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RolePolicyAttachmentArrayOutput) Index(i pulumi.IntInput) RolePolicyAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RolePolicyAttachment {
 		return vs[0].([]*RolePolicyAttachment)[vs[1].(int)]
@@ -357,12 +326,6 @@ func (o RolePolicyAttachmentMapOutput) ToRolePolicyAttachmentMapOutput() RolePol
 
 func (o RolePolicyAttachmentMapOutput) ToRolePolicyAttachmentMapOutputWithContext(ctx context.Context) RolePolicyAttachmentMapOutput {
 	return o
-}
-
-func (o RolePolicyAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RolePolicyAttachment] {
-	return pulumix.Output[map[string]*RolePolicyAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RolePolicyAttachmentMapOutput) MapIndex(k pulumi.StringInput) RolePolicyAttachmentOutput {

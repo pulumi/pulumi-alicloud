@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Open Search App Group resource.
@@ -257,12 +256,6 @@ func (i *AppGroup) ToAppGroupOutputWithContext(ctx context.Context) AppGroupOutp
 	return pulumi.ToOutputWithContext(ctx, i).(AppGroupOutput)
 }
 
-func (i *AppGroup) ToOutput(ctx context.Context) pulumix.Output[*AppGroup] {
-	return pulumix.Output[*AppGroup]{
-		OutputState: i.ToAppGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AppGroupArrayInput is an input type that accepts AppGroupArray and AppGroupArrayOutput values.
 // You can construct a concrete instance of `AppGroupArrayInput` via:
 //
@@ -286,12 +279,6 @@ func (i AppGroupArray) ToAppGroupArrayOutput() AppGroupArrayOutput {
 
 func (i AppGroupArray) ToAppGroupArrayOutputWithContext(ctx context.Context) AppGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppGroupArrayOutput)
-}
-
-func (i AppGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*AppGroup] {
-	return pulumix.Output[[]*AppGroup]{
-		OutputState: i.ToAppGroupArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AppGroupMapInput is an input type that accepts AppGroupMap and AppGroupMapOutput values.
@@ -319,12 +306,6 @@ func (i AppGroupMap) ToAppGroupMapOutputWithContext(ctx context.Context) AppGrou
 	return pulumi.ToOutputWithContext(ctx, i).(AppGroupMapOutput)
 }
 
-func (i AppGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AppGroup] {
-	return pulumix.Output[map[string]*AppGroup]{
-		OutputState: i.ToAppGroupMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AppGroupOutput struct{ *pulumi.OutputState }
 
 func (AppGroupOutput) ElementType() reflect.Type {
@@ -337,12 +318,6 @@ func (o AppGroupOutput) ToAppGroupOutput() AppGroupOutput {
 
 func (o AppGroupOutput) ToAppGroupOutputWithContext(ctx context.Context) AppGroupOutput {
 	return o
-}
-
-func (o AppGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*AppGroup] {
-	return pulumix.Output[*AppGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Application Group Name.
@@ -414,12 +389,6 @@ func (o AppGroupArrayOutput) ToAppGroupArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o AppGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AppGroup] {
-	return pulumix.Output[[]*AppGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AppGroupArrayOutput) Index(i pulumi.IntInput) AppGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AppGroup {
 		return vs[0].([]*AppGroup)[vs[1].(int)]
@@ -438,12 +407,6 @@ func (o AppGroupMapOutput) ToAppGroupMapOutput() AppGroupMapOutput {
 
 func (o AppGroupMapOutput) ToAppGroupMapOutputWithContext(ctx context.Context) AppGroupMapOutput {
 	return o
-}
-
-func (o AppGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AppGroup] {
-	return pulumix.Output[map[string]*AppGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppGroupMapOutput) MapIndex(k pulumi.StringInput) AppGroupOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -103,12 +102,6 @@ func (i GetSystemGroupsGroupArgs) ToGetSystemGroupsGroupOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetSystemGroupsGroupOutput)
 }
 
-func (i GetSystemGroupsGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetSystemGroupsGroup] {
-	return pulumix.Output[GetSystemGroupsGroup]{
-		OutputState: i.ToGetSystemGroupsGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetSystemGroupsGroupArrayInput is an input type that accepts GetSystemGroupsGroupArray and GetSystemGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetSystemGroupsGroupArrayInput` via:
 //
@@ -134,12 +127,6 @@ func (i GetSystemGroupsGroupArray) ToGetSystemGroupsGroupArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetSystemGroupsGroupArrayOutput)
 }
 
-func (i GetSystemGroupsGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSystemGroupsGroup] {
-	return pulumix.Output[[]GetSystemGroupsGroup]{
-		OutputState: i.ToGetSystemGroupsGroupArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetSystemGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetSystemGroupsGroupOutput) ElementType() reflect.Type {
@@ -152,12 +139,6 @@ func (o GetSystemGroupsGroupOutput) ToGetSystemGroupsGroupOutput() GetSystemGrou
 
 func (o GetSystemGroupsGroupOutput) ToGetSystemGroupsGroupOutputWithContext(ctx context.Context) GetSystemGroupsGroupOutput {
 	return o
-}
-
-func (o GetSystemGroupsGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetSystemGroupsGroup] {
-	return pulumix.Output[GetSystemGroupsGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The App Name of Group.
@@ -249,12 +230,6 @@ func (o GetSystemGroupsGroupArrayOutput) ToGetSystemGroupsGroupArrayOutputWithCo
 	return o
 }
 
-func (o GetSystemGroupsGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSystemGroupsGroup] {
-	return pulumix.Output[[]GetSystemGroupsGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetSystemGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetSystemGroupsGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSystemGroupsGroup {
 		return vs[0].([]GetSystemGroupsGroup)[vs[1].(int)]
@@ -306,12 +281,6 @@ func (i GetSystemGroupsGroupStatArgs) ToGetSystemGroupsGroupStatOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetSystemGroupsGroupStatOutput)
 }
 
-func (i GetSystemGroupsGroupStatArgs) ToOutput(ctx context.Context) pulumix.Output[GetSystemGroupsGroupStat] {
-	return pulumix.Output[GetSystemGroupsGroupStat]{
-		OutputState: i.ToGetSystemGroupsGroupStatOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetSystemGroupsGroupStatArrayInput is an input type that accepts GetSystemGroupsGroupStatArray and GetSystemGroupsGroupStatArrayOutput values.
 // You can construct a concrete instance of `GetSystemGroupsGroupStatArrayInput` via:
 //
@@ -337,12 +306,6 @@ func (i GetSystemGroupsGroupStatArray) ToGetSystemGroupsGroupStatArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetSystemGroupsGroupStatArrayOutput)
 }
 
-func (i GetSystemGroupsGroupStatArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSystemGroupsGroupStat] {
-	return pulumix.Output[[]GetSystemGroupsGroupStat]{
-		OutputState: i.ToGetSystemGroupsGroupStatArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetSystemGroupsGroupStatOutput struct{ *pulumi.OutputState }
 
 func (GetSystemGroupsGroupStatOutput) ElementType() reflect.Type {
@@ -355,12 +318,6 @@ func (o GetSystemGroupsGroupStatOutput) ToGetSystemGroupsGroupStatOutput() GetSy
 
 func (o GetSystemGroupsGroupStatOutput) ToGetSystemGroupsGroupStatOutputWithContext(ctx context.Context) GetSystemGroupsGroupStatOutput {
 	return o
-}
-
-func (o GetSystemGroupsGroupStatOutput) ToOutput(ctx context.Context) pulumix.Output[GetSystemGroupsGroupStat] {
-	return pulumix.Output[GetSystemGroupsGroupStat]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The total number of devices in the group.
@@ -395,12 +352,6 @@ func (o GetSystemGroupsGroupStatArrayOutput) ToGetSystemGroupsGroupStatArrayOutp
 
 func (o GetSystemGroupsGroupStatArrayOutput) ToGetSystemGroupsGroupStatArrayOutputWithContext(ctx context.Context) GetSystemGroupsGroupStatArrayOutput {
 	return o
-}
-
-func (o GetSystemGroupsGroupStatArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSystemGroupsGroupStat] {
-	return pulumix.Output[[]GetSystemGroupsGroupStat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSystemGroupsGroupStatArrayOutput) Index(i pulumi.IntInput) GetSystemGroupsGroupStatOutput {

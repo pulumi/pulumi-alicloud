@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Application Real-Time Monitoring Service (ARMS) Prometheus resource.
@@ -292,12 +291,6 @@ func (i *Prometheus) ToPrometheusOutputWithContext(ctx context.Context) Promethe
 	return pulumi.ToOutputWithContext(ctx, i).(PrometheusOutput)
 }
 
-func (i *Prometheus) ToOutput(ctx context.Context) pulumix.Output[*Prometheus] {
-	return pulumix.Output[*Prometheus]{
-		OutputState: i.ToPrometheusOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PrometheusArrayInput is an input type that accepts PrometheusArray and PrometheusArrayOutput values.
 // You can construct a concrete instance of `PrometheusArrayInput` via:
 //
@@ -321,12 +314,6 @@ func (i PrometheusArray) ToPrometheusArrayOutput() PrometheusArrayOutput {
 
 func (i PrometheusArray) ToPrometheusArrayOutputWithContext(ctx context.Context) PrometheusArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PrometheusArrayOutput)
-}
-
-func (i PrometheusArray) ToOutput(ctx context.Context) pulumix.Output[[]*Prometheus] {
-	return pulumix.Output[[]*Prometheus]{
-		OutputState: i.ToPrometheusArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PrometheusMapInput is an input type that accepts PrometheusMap and PrometheusMapOutput values.
@@ -354,12 +341,6 @@ func (i PrometheusMap) ToPrometheusMapOutputWithContext(ctx context.Context) Pro
 	return pulumi.ToOutputWithContext(ctx, i).(PrometheusMapOutput)
 }
 
-func (i PrometheusMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Prometheus] {
-	return pulumix.Output[map[string]*Prometheus]{
-		OutputState: i.ToPrometheusMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrometheusOutput struct{ *pulumi.OutputState }
 
 func (PrometheusOutput) ElementType() reflect.Type {
@@ -372,12 +353,6 @@ func (o PrometheusOutput) ToPrometheusOutput() PrometheusOutput {
 
 func (o PrometheusOutput) ToPrometheusOutputWithContext(ctx context.Context) PrometheusOutput {
 	return o
-}
-
-func (o PrometheusOutput) ToOutput(ctx context.Context) pulumix.Output[*Prometheus] {
-	return pulumix.Output[*Prometheus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Kubernetes cluster. This parameter is required, if you set `clusterType` to `aliyun-cs`.
@@ -444,12 +419,6 @@ func (o PrometheusArrayOutput) ToPrometheusArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o PrometheusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Prometheus] {
-	return pulumix.Output[[]*Prometheus]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PrometheusArrayOutput) Index(i pulumi.IntInput) PrometheusOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Prometheus {
 		return vs[0].([]*Prometheus)[vs[1].(int)]
@@ -468,12 +437,6 @@ func (o PrometheusMapOutput) ToPrometheusMapOutput() PrometheusMapOutput {
 
 func (o PrometheusMapOutput) ToPrometheusMapOutputWithContext(ctx context.Context) PrometheusMapOutput {
 	return o
-}
-
-func (o PrometheusMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Prometheus] {
-	return pulumix.Output[map[string]*Prometheus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrometheusMapOutput) MapIndex(k pulumi.StringInput) PrometheusOutput {

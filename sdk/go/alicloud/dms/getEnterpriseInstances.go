@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list of DMS Enterprise Instances in an Alibaba Cloud account according to the specified filters.
@@ -160,12 +159,6 @@ func (o GetEnterpriseInstancesResultOutput) ToGetEnterpriseInstancesResultOutput
 
 func (o GetEnterpriseInstancesResultOutput) ToGetEnterpriseInstancesResultOutputWithContext(ctx context.Context) GetEnterpriseInstancesResultOutput {
 	return o
-}
-
-func (o GetEnterpriseInstancesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnterpriseInstancesResult] {
-	return pulumix.Output[GetEnterpriseInstancesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of the environment to which the database instance belongs..

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Direct Mail Tags of the current Alibaba Cloud user.
@@ -124,12 +123,6 @@ func (o GetTagsResultOutput) ToGetTagsResultOutput() GetTagsResultOutput {
 
 func (o GetTagsResultOutput) ToGetTagsResultOutputWithContext(ctx context.Context) GetTagsResultOutput {
 	return o
-}
-
-func (o GetTagsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTagsResult] {
-	return pulumix.Output[GetTagsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a RAM Group Policy attachment resource.
@@ -198,12 +197,6 @@ func (i *GroupPolicyAttachment) ToGroupPolicyAttachmentOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(GroupPolicyAttachmentOutput)
 }
 
-func (i *GroupPolicyAttachment) ToOutput(ctx context.Context) pulumix.Output[*GroupPolicyAttachment] {
-	return pulumix.Output[*GroupPolicyAttachment]{
-		OutputState: i.ToGroupPolicyAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GroupPolicyAttachmentArrayInput is an input type that accepts GroupPolicyAttachmentArray and GroupPolicyAttachmentArrayOutput values.
 // You can construct a concrete instance of `GroupPolicyAttachmentArrayInput` via:
 //
@@ -227,12 +220,6 @@ func (i GroupPolicyAttachmentArray) ToGroupPolicyAttachmentArrayOutput() GroupPo
 
 func (i GroupPolicyAttachmentArray) ToGroupPolicyAttachmentArrayOutputWithContext(ctx context.Context) GroupPolicyAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupPolicyAttachmentArrayOutput)
-}
-
-func (i GroupPolicyAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*GroupPolicyAttachment] {
-	return pulumix.Output[[]*GroupPolicyAttachment]{
-		OutputState: i.ToGroupPolicyAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GroupPolicyAttachmentMapInput is an input type that accepts GroupPolicyAttachmentMap and GroupPolicyAttachmentMapOutput values.
@@ -260,12 +247,6 @@ func (i GroupPolicyAttachmentMap) ToGroupPolicyAttachmentMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GroupPolicyAttachmentMapOutput)
 }
 
-func (i GroupPolicyAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupPolicyAttachment] {
-	return pulumix.Output[map[string]*GroupPolicyAttachment]{
-		OutputState: i.ToGroupPolicyAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GroupPolicyAttachmentOutput struct{ *pulumi.OutputState }
 
 func (GroupPolicyAttachmentOutput) ElementType() reflect.Type {
@@ -278,12 +259,6 @@ func (o GroupPolicyAttachmentOutput) ToGroupPolicyAttachmentOutput() GroupPolicy
 
 func (o GroupPolicyAttachmentOutput) ToGroupPolicyAttachmentOutputWithContext(ctx context.Context) GroupPolicyAttachmentOutput {
 	return o
-}
-
-func (o GroupPolicyAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupPolicyAttachment] {
-	return pulumix.Output[*GroupPolicyAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
@@ -315,12 +290,6 @@ func (o GroupPolicyAttachmentArrayOutput) ToGroupPolicyAttachmentArrayOutputWith
 	return o
 }
 
-func (o GroupPolicyAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GroupPolicyAttachment] {
-	return pulumix.Output[[]*GroupPolicyAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GroupPolicyAttachmentArrayOutput) Index(i pulumi.IntInput) GroupPolicyAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GroupPolicyAttachment {
 		return vs[0].([]*GroupPolicyAttachment)[vs[1].(int)]
@@ -339,12 +308,6 @@ func (o GroupPolicyAttachmentMapOutput) ToGroupPolicyAttachmentMapOutput() Group
 
 func (o GroupPolicyAttachmentMapOutput) ToGroupPolicyAttachmentMapOutputWithContext(ctx context.Context) GroupPolicyAttachmentMapOutput {
 	return o
-}
-
-func (o GroupPolicyAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupPolicyAttachment] {
-	return pulumix.Output[map[string]*GroupPolicyAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GroupPolicyAttachmentMapOutput) MapIndex(k pulumi.StringInput) GroupPolicyAttachmentOutput {

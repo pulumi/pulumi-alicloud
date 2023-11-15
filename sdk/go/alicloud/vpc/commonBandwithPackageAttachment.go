@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -210,12 +209,6 @@ func (i *CommonBandwithPackageAttachment) ToCommonBandwithPackageAttachmentOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(CommonBandwithPackageAttachmentOutput)
 }
 
-func (i *CommonBandwithPackageAttachment) ToOutput(ctx context.Context) pulumix.Output[*CommonBandwithPackageAttachment] {
-	return pulumix.Output[*CommonBandwithPackageAttachment]{
-		OutputState: i.ToCommonBandwithPackageAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CommonBandwithPackageAttachmentArrayInput is an input type that accepts CommonBandwithPackageAttachmentArray and CommonBandwithPackageAttachmentArrayOutput values.
 // You can construct a concrete instance of `CommonBandwithPackageAttachmentArrayInput` via:
 //
@@ -239,12 +232,6 @@ func (i CommonBandwithPackageAttachmentArray) ToCommonBandwithPackageAttachmentA
 
 func (i CommonBandwithPackageAttachmentArray) ToCommonBandwithPackageAttachmentArrayOutputWithContext(ctx context.Context) CommonBandwithPackageAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CommonBandwithPackageAttachmentArrayOutput)
-}
-
-func (i CommonBandwithPackageAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*CommonBandwithPackageAttachment] {
-	return pulumix.Output[[]*CommonBandwithPackageAttachment]{
-		OutputState: i.ToCommonBandwithPackageAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CommonBandwithPackageAttachmentMapInput is an input type that accepts CommonBandwithPackageAttachmentMap and CommonBandwithPackageAttachmentMapOutput values.
@@ -272,12 +259,6 @@ func (i CommonBandwithPackageAttachmentMap) ToCommonBandwithPackageAttachmentMap
 	return pulumi.ToOutputWithContext(ctx, i).(CommonBandwithPackageAttachmentMapOutput)
 }
 
-func (i CommonBandwithPackageAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CommonBandwithPackageAttachment] {
-	return pulumix.Output[map[string]*CommonBandwithPackageAttachment]{
-		OutputState: i.ToCommonBandwithPackageAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CommonBandwithPackageAttachmentOutput struct{ *pulumi.OutputState }
 
 func (CommonBandwithPackageAttachmentOutput) ElementType() reflect.Type {
@@ -290,12 +271,6 @@ func (o CommonBandwithPackageAttachmentOutput) ToCommonBandwithPackageAttachment
 
 func (o CommonBandwithPackageAttachmentOutput) ToCommonBandwithPackageAttachmentOutputWithContext(ctx context.Context) CommonBandwithPackageAttachmentOutput {
 	return o
-}
-
-func (o CommonBandwithPackageAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*CommonBandwithPackageAttachment] {
-	return pulumix.Output[*CommonBandwithPackageAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
@@ -344,12 +319,6 @@ func (o CommonBandwithPackageAttachmentArrayOutput) ToCommonBandwithPackageAttac
 	return o
 }
 
-func (o CommonBandwithPackageAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CommonBandwithPackageAttachment] {
-	return pulumix.Output[[]*CommonBandwithPackageAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CommonBandwithPackageAttachmentArrayOutput) Index(i pulumi.IntInput) CommonBandwithPackageAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CommonBandwithPackageAttachment {
 		return vs[0].([]*CommonBandwithPackageAttachment)[vs[1].(int)]
@@ -368,12 +337,6 @@ func (o CommonBandwithPackageAttachmentMapOutput) ToCommonBandwithPackageAttachm
 
 func (o CommonBandwithPackageAttachmentMapOutput) ToCommonBandwithPackageAttachmentMapOutputWithContext(ctx context.Context) CommonBandwithPackageAttachmentMapOutput {
 	return o
-}
-
-func (o CommonBandwithPackageAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CommonBandwithPackageAttachment] {
-	return pulumix.Output[map[string]*CommonBandwithPackageAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CommonBandwithPackageAttachmentMapOutput) MapIndex(k pulumi.StringInput) CommonBandwithPackageAttachmentOutput {

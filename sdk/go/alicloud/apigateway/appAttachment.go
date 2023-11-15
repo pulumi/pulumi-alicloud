@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -224,12 +223,6 @@ func (i *AppAttachment) ToAppAttachmentOutputWithContext(ctx context.Context) Ap
 	return pulumi.ToOutputWithContext(ctx, i).(AppAttachmentOutput)
 }
 
-func (i *AppAttachment) ToOutput(ctx context.Context) pulumix.Output[*AppAttachment] {
-	return pulumix.Output[*AppAttachment]{
-		OutputState: i.ToAppAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AppAttachmentArrayInput is an input type that accepts AppAttachmentArray and AppAttachmentArrayOutput values.
 // You can construct a concrete instance of `AppAttachmentArrayInput` via:
 //
@@ -253,12 +246,6 @@ func (i AppAttachmentArray) ToAppAttachmentArrayOutput() AppAttachmentArrayOutpu
 
 func (i AppAttachmentArray) ToAppAttachmentArrayOutputWithContext(ctx context.Context) AppAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppAttachmentArrayOutput)
-}
-
-func (i AppAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*AppAttachment] {
-	return pulumix.Output[[]*AppAttachment]{
-		OutputState: i.ToAppAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AppAttachmentMapInput is an input type that accepts AppAttachmentMap and AppAttachmentMapOutput values.
@@ -286,12 +273,6 @@ func (i AppAttachmentMap) ToAppAttachmentMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AppAttachmentMapOutput)
 }
 
-func (i AppAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AppAttachment] {
-	return pulumix.Output[map[string]*AppAttachment]{
-		OutputState: i.ToAppAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AppAttachmentOutput struct{ *pulumi.OutputState }
 
 func (AppAttachmentOutput) ElementType() reflect.Type {
@@ -304,12 +285,6 @@ func (o AppAttachmentOutput) ToAppAttachmentOutput() AppAttachmentOutput {
 
 func (o AppAttachmentOutput) ToAppAttachmentOutputWithContext(ctx context.Context) AppAttachmentOutput {
 	return o
-}
-
-func (o AppAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*AppAttachment] {
-	return pulumix.Output[*AppAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The apiId that app apply to access.
@@ -346,12 +321,6 @@ func (o AppAttachmentArrayOutput) ToAppAttachmentArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o AppAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AppAttachment] {
-	return pulumix.Output[[]*AppAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AppAttachmentArrayOutput) Index(i pulumi.IntInput) AppAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AppAttachment {
 		return vs[0].([]*AppAttachment)[vs[1].(int)]
@@ -370,12 +339,6 @@ func (o AppAttachmentMapOutput) ToAppAttachmentMapOutput() AppAttachmentMapOutpu
 
 func (o AppAttachmentMapOutput) ToAppAttachmentMapOutputWithContext(ctx context.Context) AppAttachmentMapOutput {
 	return o
-}
-
-func (o AppAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AppAttachment] {
-	return pulumix.Output[map[string]*AppAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppAttachmentMapOutput) MapIndex(k pulumi.StringInput) AppAttachmentOutput {

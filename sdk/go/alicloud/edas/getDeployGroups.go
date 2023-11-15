@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list of EDAS deploy groups in an Alibaba Cloud account according to the specified filters.
@@ -89,12 +88,6 @@ func (o GetDeployGroupsResultOutput) ToGetDeployGroupsResultOutput() GetDeployGr
 
 func (o GetDeployGroupsResultOutput) ToGetDeployGroupsResultOutputWithContext(ctx context.Context) GetDeployGroupsResultOutput {
 	return o
-}
-
-func (o GetDeployGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDeployGroupsResult] {
-	return pulumix.Output[GetDeployGroupsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the application that you want to deploy.

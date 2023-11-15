@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ecs Network Interface Permissions of the current Alibaba Cloud user.
@@ -129,12 +128,6 @@ func (o GetEcsNetworkInterfacePermissionsResultOutput) ToGetEcsNetworkInterfaceP
 
 func (o GetEcsNetworkInterfacePermissionsResultOutput) ToGetEcsNetworkInterfacePermissionsResultOutputWithContext(ctx context.Context) GetEcsNetworkInterfacePermissionsResultOutput {
 	return o
-}
-
-func (o GetEcsNetworkInterfacePermissionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEcsNetworkInterfacePermissionsResult] {
-	return pulumix.Output[GetEcsNetworkInterfacePermissionsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides availability instanceTypes for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
@@ -120,12 +119,6 @@ func (o GetInstanceTypesResultOutput) ToGetInstanceTypesResultOutput() GetInstan
 
 func (o GetInstanceTypesResultOutput) ToGetInstanceTypesResultOutputWithContext(ctx context.Context) GetInstanceTypesResultOutput {
 	return o
-}
-
-func (o GetInstanceTypesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceTypesResult] {
-	return pulumix.Output[GetInstanceTypesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetInstanceTypesResultOutput) ChargeType() pulumi.StringPtrOutput {

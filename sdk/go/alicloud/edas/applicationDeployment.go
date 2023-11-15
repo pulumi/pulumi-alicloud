@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Deploys applications on EDAS, see [What is EDAS Application Deployment](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-deployapplication).
@@ -280,12 +279,6 @@ func (i *ApplicationDeployment) ToApplicationDeploymentOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationDeploymentOutput)
 }
 
-func (i *ApplicationDeployment) ToOutput(ctx context.Context) pulumix.Output[*ApplicationDeployment] {
-	return pulumix.Output[*ApplicationDeployment]{
-		OutputState: i.ToApplicationDeploymentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApplicationDeploymentArrayInput is an input type that accepts ApplicationDeploymentArray and ApplicationDeploymentArrayOutput values.
 // You can construct a concrete instance of `ApplicationDeploymentArrayInput` via:
 //
@@ -309,12 +302,6 @@ func (i ApplicationDeploymentArray) ToApplicationDeploymentArrayOutput() Applica
 
 func (i ApplicationDeploymentArray) ToApplicationDeploymentArrayOutputWithContext(ctx context.Context) ApplicationDeploymentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationDeploymentArrayOutput)
-}
-
-func (i ApplicationDeploymentArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationDeployment] {
-	return pulumix.Output[[]*ApplicationDeployment]{
-		OutputState: i.ToApplicationDeploymentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ApplicationDeploymentMapInput is an input type that accepts ApplicationDeploymentMap and ApplicationDeploymentMapOutput values.
@@ -342,12 +329,6 @@ func (i ApplicationDeploymentMap) ToApplicationDeploymentMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationDeploymentMapOutput)
 }
 
-func (i ApplicationDeploymentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationDeployment] {
-	return pulumix.Output[map[string]*ApplicationDeployment]{
-		OutputState: i.ToApplicationDeploymentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApplicationDeploymentOutput struct{ *pulumi.OutputState }
 
 func (ApplicationDeploymentOutput) ElementType() reflect.Type {
@@ -360,12 +341,6 @@ func (o ApplicationDeploymentOutput) ToApplicationDeploymentOutput() Application
 
 func (o ApplicationDeploymentOutput) ToApplicationDeploymentOutputWithContext(ctx context.Context) ApplicationDeploymentOutput {
 	return o
-}
-
-func (o ApplicationDeploymentOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationDeployment] {
-	return pulumix.Output[*ApplicationDeployment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the application that you want to deploy.
@@ -407,12 +382,6 @@ func (o ApplicationDeploymentArrayOutput) ToApplicationDeploymentArrayOutputWith
 	return o
 }
 
-func (o ApplicationDeploymentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationDeployment] {
-	return pulumix.Output[[]*ApplicationDeployment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApplicationDeploymentArrayOutput) Index(i pulumi.IntInput) ApplicationDeploymentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApplicationDeployment {
 		return vs[0].([]*ApplicationDeployment)[vs[1].(int)]
@@ -431,12 +400,6 @@ func (o ApplicationDeploymentMapOutput) ToApplicationDeploymentMapOutput() Appli
 
 func (o ApplicationDeploymentMapOutput) ToApplicationDeploymentMapOutputWithContext(ctx context.Context) ApplicationDeploymentMapOutput {
 	return o
-}
-
-func (o ApplicationDeploymentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationDeployment] {
-	return pulumix.Output[map[string]*ApplicationDeployment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationDeploymentMapOutput) MapIndex(k pulumi.StringInput) ApplicationDeploymentOutput {

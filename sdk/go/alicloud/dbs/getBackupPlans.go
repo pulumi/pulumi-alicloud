@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Dbs Backup Plans of the current Alibaba Cloud user.
@@ -141,12 +140,6 @@ func (o GetBackupPlansResultOutput) ToGetBackupPlansResultOutput() GetBackupPlan
 
 func (o GetBackupPlansResultOutput) ToGetBackupPlansResultOutputWithContext(ctx context.Context) GetBackupPlansResultOutput {
 	return o
-}
-
-func (o GetBackupPlansResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBackupPlansResult] {
-	return pulumix.Output[GetBackupPlansResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetBackupPlansResultOutput) BackupPlanName() pulumi.StringPtrOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Global Accelerator (GA) Basic Accelerate IP resource.
@@ -195,12 +194,6 @@ func (i *BasicAccelerateIp) ToBasicAccelerateIpOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(BasicAccelerateIpOutput)
 }
 
-func (i *BasicAccelerateIp) ToOutput(ctx context.Context) pulumix.Output[*BasicAccelerateIp] {
-	return pulumix.Output[*BasicAccelerateIp]{
-		OutputState: i.ToBasicAccelerateIpOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BasicAccelerateIpArrayInput is an input type that accepts BasicAccelerateIpArray and BasicAccelerateIpArrayOutput values.
 // You can construct a concrete instance of `BasicAccelerateIpArrayInput` via:
 //
@@ -224,12 +217,6 @@ func (i BasicAccelerateIpArray) ToBasicAccelerateIpArrayOutput() BasicAccelerate
 
 func (i BasicAccelerateIpArray) ToBasicAccelerateIpArrayOutputWithContext(ctx context.Context) BasicAccelerateIpArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BasicAccelerateIpArrayOutput)
-}
-
-func (i BasicAccelerateIpArray) ToOutput(ctx context.Context) pulumix.Output[[]*BasicAccelerateIp] {
-	return pulumix.Output[[]*BasicAccelerateIp]{
-		OutputState: i.ToBasicAccelerateIpArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BasicAccelerateIpMapInput is an input type that accepts BasicAccelerateIpMap and BasicAccelerateIpMapOutput values.
@@ -257,12 +244,6 @@ func (i BasicAccelerateIpMap) ToBasicAccelerateIpMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(BasicAccelerateIpMapOutput)
 }
 
-func (i BasicAccelerateIpMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BasicAccelerateIp] {
-	return pulumix.Output[map[string]*BasicAccelerateIp]{
-		OutputState: i.ToBasicAccelerateIpMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BasicAccelerateIpOutput struct{ *pulumi.OutputState }
 
 func (BasicAccelerateIpOutput) ElementType() reflect.Type {
@@ -275,12 +256,6 @@ func (o BasicAccelerateIpOutput) ToBasicAccelerateIpOutput() BasicAccelerateIpOu
 
 func (o BasicAccelerateIpOutput) ToBasicAccelerateIpOutputWithContext(ctx context.Context) BasicAccelerateIpOutput {
 	return o
-}
-
-func (o BasicAccelerateIpOutput) ToOutput(ctx context.Context) pulumix.Output[*BasicAccelerateIp] {
-	return pulumix.Output[*BasicAccelerateIp]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The address of the Basic Accelerate IP.
@@ -317,12 +292,6 @@ func (o BasicAccelerateIpArrayOutput) ToBasicAccelerateIpArrayOutputWithContext(
 	return o
 }
 
-func (o BasicAccelerateIpArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BasicAccelerateIp] {
-	return pulumix.Output[[]*BasicAccelerateIp]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BasicAccelerateIpArrayOutput) Index(i pulumi.IntInput) BasicAccelerateIpOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BasicAccelerateIp {
 		return vs[0].([]*BasicAccelerateIp)[vs[1].(int)]
@@ -341,12 +310,6 @@ func (o BasicAccelerateIpMapOutput) ToBasicAccelerateIpMapOutput() BasicAccelera
 
 func (o BasicAccelerateIpMapOutput) ToBasicAccelerateIpMapOutputWithContext(ctx context.Context) BasicAccelerateIpMapOutput {
 	return o
-}
-
-func (o BasicAccelerateIpMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BasicAccelerateIp] {
-	return pulumix.Output[map[string]*BasicAccelerateIp]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BasicAccelerateIpMapOutput) MapIndex(k pulumi.StringInput) BasicAccelerateIpOutput {

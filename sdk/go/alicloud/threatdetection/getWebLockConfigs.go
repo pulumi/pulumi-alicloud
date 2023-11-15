@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Threat Detection Web Lock Config available to the user.[What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-describeweblockconfiglist)
@@ -135,12 +134,6 @@ func (o GetWebLockConfigsResultOutput) ToGetWebLockConfigsResultOutput() GetWebL
 
 func (o GetWebLockConfigsResultOutput) ToGetWebLockConfigsResultOutputWithContext(ctx context.Context) GetWebLockConfigsResultOutput {
 	return o
-}
-
-func (o GetWebLockConfigsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetWebLockConfigsResult] {
-	return pulumix.Output[GetWebLockConfigsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of Web Lock Config Entries. Each element contains the following attributes:

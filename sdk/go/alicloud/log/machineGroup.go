@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Log Service manages all the ECS instances whose logs need to be collected by using the Logtail client in the form of machine groups.
@@ -208,12 +207,6 @@ func (i *MachineGroup) ToMachineGroupOutputWithContext(ctx context.Context) Mach
 	return pulumi.ToOutputWithContext(ctx, i).(MachineGroupOutput)
 }
 
-func (i *MachineGroup) ToOutput(ctx context.Context) pulumix.Output[*MachineGroup] {
-	return pulumix.Output[*MachineGroup]{
-		OutputState: i.ToMachineGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MachineGroupArrayInput is an input type that accepts MachineGroupArray and MachineGroupArrayOutput values.
 // You can construct a concrete instance of `MachineGroupArrayInput` via:
 //
@@ -237,12 +230,6 @@ func (i MachineGroupArray) ToMachineGroupArrayOutput() MachineGroupArrayOutput {
 
 func (i MachineGroupArray) ToMachineGroupArrayOutputWithContext(ctx context.Context) MachineGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MachineGroupArrayOutput)
-}
-
-func (i MachineGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*MachineGroup] {
-	return pulumix.Output[[]*MachineGroup]{
-		OutputState: i.ToMachineGroupArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MachineGroupMapInput is an input type that accepts MachineGroupMap and MachineGroupMapOutput values.
@@ -270,12 +257,6 @@ func (i MachineGroupMap) ToMachineGroupMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(MachineGroupMapOutput)
 }
 
-func (i MachineGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MachineGroup] {
-	return pulumix.Output[map[string]*MachineGroup]{
-		OutputState: i.ToMachineGroupMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MachineGroupOutput struct{ *pulumi.OutputState }
 
 func (MachineGroupOutput) ElementType() reflect.Type {
@@ -288,12 +269,6 @@ func (o MachineGroupOutput) ToMachineGroupOutput() MachineGroupOutput {
 
 func (o MachineGroupOutput) ToMachineGroupOutputWithContext(ctx context.Context) MachineGroupOutput {
 	return o
-}
-
-func (o MachineGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*MachineGroup] {
-	return pulumix.Output[*MachineGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The specific machine identification, which can be an IP address or user-defined identity.
@@ -335,12 +310,6 @@ func (o MachineGroupArrayOutput) ToMachineGroupArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o MachineGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MachineGroup] {
-	return pulumix.Output[[]*MachineGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MachineGroupArrayOutput) Index(i pulumi.IntInput) MachineGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MachineGroup {
 		return vs[0].([]*MachineGroup)[vs[1].(int)]
@@ -359,12 +328,6 @@ func (o MachineGroupMapOutput) ToMachineGroupMapOutput() MachineGroupMapOutput {
 
 func (o MachineGroupMapOutput) ToMachineGroupMapOutputWithContext(ctx context.Context) MachineGroupMapOutput {
 	return o
-}
-
-func (o MachineGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MachineGroup] {
-	return pulumix.Output[map[string]*MachineGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MachineGroupMapOutput) MapIndex(k pulumi.StringInput) MachineGroupOutput {

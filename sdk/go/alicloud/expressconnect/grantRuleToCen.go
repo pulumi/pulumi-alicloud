@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Express Connect Grant Rule To Cen resource.
@@ -217,12 +216,6 @@ func (i *GrantRuleToCen) ToGrantRuleToCenOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(GrantRuleToCenOutput)
 }
 
-func (i *GrantRuleToCen) ToOutput(ctx context.Context) pulumix.Output[*GrantRuleToCen] {
-	return pulumix.Output[*GrantRuleToCen]{
-		OutputState: i.ToGrantRuleToCenOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GrantRuleToCenArrayInput is an input type that accepts GrantRuleToCenArray and GrantRuleToCenArrayOutput values.
 // You can construct a concrete instance of `GrantRuleToCenArrayInput` via:
 //
@@ -246,12 +239,6 @@ func (i GrantRuleToCenArray) ToGrantRuleToCenArrayOutput() GrantRuleToCenArrayOu
 
 func (i GrantRuleToCenArray) ToGrantRuleToCenArrayOutputWithContext(ctx context.Context) GrantRuleToCenArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GrantRuleToCenArrayOutput)
-}
-
-func (i GrantRuleToCenArray) ToOutput(ctx context.Context) pulumix.Output[[]*GrantRuleToCen] {
-	return pulumix.Output[[]*GrantRuleToCen]{
-		OutputState: i.ToGrantRuleToCenArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GrantRuleToCenMapInput is an input type that accepts GrantRuleToCenMap and GrantRuleToCenMapOutput values.
@@ -279,12 +266,6 @@ func (i GrantRuleToCenMap) ToGrantRuleToCenMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GrantRuleToCenMapOutput)
 }
 
-func (i GrantRuleToCenMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GrantRuleToCen] {
-	return pulumix.Output[map[string]*GrantRuleToCen]{
-		OutputState: i.ToGrantRuleToCenMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GrantRuleToCenOutput struct{ *pulumi.OutputState }
 
 func (GrantRuleToCenOutput) ElementType() reflect.Type {
@@ -297,12 +278,6 @@ func (o GrantRuleToCenOutput) ToGrantRuleToCenOutput() GrantRuleToCenOutput {
 
 func (o GrantRuleToCenOutput) ToGrantRuleToCenOutputWithContext(ctx context.Context) GrantRuleToCenOutput {
 	return o
-}
-
-func (o GrantRuleToCenOutput) ToOutput(ctx context.Context) pulumix.Output[*GrantRuleToCen] {
-	return pulumix.Output[*GrantRuleToCen]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the CEN instance to which you want to grant permissions.
@@ -334,12 +309,6 @@ func (o GrantRuleToCenArrayOutput) ToGrantRuleToCenArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o GrantRuleToCenArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GrantRuleToCen] {
-	return pulumix.Output[[]*GrantRuleToCen]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GrantRuleToCenArrayOutput) Index(i pulumi.IntInput) GrantRuleToCenOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GrantRuleToCen {
 		return vs[0].([]*GrantRuleToCen)[vs[1].(int)]
@@ -358,12 +327,6 @@ func (o GrantRuleToCenMapOutput) ToGrantRuleToCenMapOutput() GrantRuleToCenMapOu
 
 func (o GrantRuleToCenMapOutput) ToGrantRuleToCenMapOutputWithContext(ctx context.Context) GrantRuleToCenMapOutput {
 	return o
-}
-
-func (o GrantRuleToCenMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GrantRuleToCen] {
-	return pulumix.Output[map[string]*GrantRuleToCen]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GrantRuleToCenMapOutput) MapIndex(k pulumi.StringInput) GrantRuleToCenOutput {

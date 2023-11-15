@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECD Custom Property resource.
@@ -160,12 +159,6 @@ func (i *CustomProperty) ToCustomPropertyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(CustomPropertyOutput)
 }
 
-func (i *CustomProperty) ToOutput(ctx context.Context) pulumix.Output[*CustomProperty] {
-	return pulumix.Output[*CustomProperty]{
-		OutputState: i.ToCustomPropertyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CustomPropertyArrayInput is an input type that accepts CustomPropertyArray and CustomPropertyArrayOutput values.
 // You can construct a concrete instance of `CustomPropertyArrayInput` via:
 //
@@ -189,12 +182,6 @@ func (i CustomPropertyArray) ToCustomPropertyArrayOutput() CustomPropertyArrayOu
 
 func (i CustomPropertyArray) ToCustomPropertyArrayOutputWithContext(ctx context.Context) CustomPropertyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomPropertyArrayOutput)
-}
-
-func (i CustomPropertyArray) ToOutput(ctx context.Context) pulumix.Output[[]*CustomProperty] {
-	return pulumix.Output[[]*CustomProperty]{
-		OutputState: i.ToCustomPropertyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CustomPropertyMapInput is an input type that accepts CustomPropertyMap and CustomPropertyMapOutput values.
@@ -222,12 +209,6 @@ func (i CustomPropertyMap) ToCustomPropertyMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(CustomPropertyMapOutput)
 }
 
-func (i CustomPropertyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomProperty] {
-	return pulumix.Output[map[string]*CustomProperty]{
-		OutputState: i.ToCustomPropertyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CustomPropertyOutput struct{ *pulumi.OutputState }
 
 func (CustomPropertyOutput) ElementType() reflect.Type {
@@ -240,12 +221,6 @@ func (o CustomPropertyOutput) ToCustomPropertyOutput() CustomPropertyOutput {
 
 func (o CustomPropertyOutput) ToCustomPropertyOutputWithContext(ctx context.Context) CustomPropertyOutput {
 	return o
-}
-
-func (o CustomPropertyOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomProperty] {
-	return pulumix.Output[*CustomProperty]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Custom attribute key.
@@ -272,12 +247,6 @@ func (o CustomPropertyArrayOutput) ToCustomPropertyArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o CustomPropertyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CustomProperty] {
-	return pulumix.Output[[]*CustomProperty]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CustomPropertyArrayOutput) Index(i pulumi.IntInput) CustomPropertyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CustomProperty {
 		return vs[0].([]*CustomProperty)[vs[1].(int)]
@@ -296,12 +265,6 @@ func (o CustomPropertyMapOutput) ToCustomPropertyMapOutput() CustomPropertyMapOu
 
 func (o CustomPropertyMapOutput) ToCustomPropertyMapOutputWithContext(ctx context.Context) CustomPropertyMapOutput {
 	return o
-}
-
-func (o CustomPropertyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomProperty] {
-	return pulumix.Output[map[string]*CustomProperty]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CustomPropertyMapOutput) MapIndex(k pulumi.StringInput) CustomPropertyOutput {

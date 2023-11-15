@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Mse Engine Namespaces of the current Alibaba Cloud user.
@@ -122,12 +121,6 @@ func (o GetEngineNamespacesResultOutput) ToGetEngineNamespacesResultOutput() Get
 
 func (o GetEngineNamespacesResultOutput) ToGetEngineNamespacesResultOutputWithContext(ctx context.Context) GetEngineNamespacesResultOutput {
 	return o
-}
-
-func (o GetEngineNamespacesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEngineNamespacesResult] {
-	return pulumix.Output[GetEngineNamespacesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEngineNamespacesResultOutput) AcceptLanguage() pulumi.StringPtrOutput {

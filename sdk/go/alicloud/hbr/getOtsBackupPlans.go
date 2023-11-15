@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Hbr OtsBackupPlans of the current Alibaba Cloud user.
@@ -130,12 +129,6 @@ func (o GetOtsBackupPlansResultOutput) ToGetOtsBackupPlansResultOutput() GetOtsB
 
 func (o GetOtsBackupPlansResultOutput) ToGetOtsBackupPlansResultOutputWithContext(ctx context.Context) GetOtsBackupPlansResultOutput {
 	return o
-}
-
-func (o GetOtsBackupPlansResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetOtsBackupPlansResult] {
-	return pulumix.Output[GetOtsBackupPlansResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

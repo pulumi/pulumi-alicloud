@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -51,12 +50,6 @@ func (i ResourceGroupRegionStatusArgs) ToResourceGroupRegionStatusOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupRegionStatusOutput)
 }
 
-func (i ResourceGroupRegionStatusArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceGroupRegionStatus] {
-	return pulumix.Output[ResourceGroupRegionStatus]{
-		OutputState: i.ToResourceGroupRegionStatusOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ResourceGroupRegionStatusArrayInput is an input type that accepts ResourceGroupRegionStatusArray and ResourceGroupRegionStatusArrayOutput values.
 // You can construct a concrete instance of `ResourceGroupRegionStatusArrayInput` via:
 //
@@ -82,12 +75,6 @@ func (i ResourceGroupRegionStatusArray) ToResourceGroupRegionStatusArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupRegionStatusArrayOutput)
 }
 
-func (i ResourceGroupRegionStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]ResourceGroupRegionStatus] {
-	return pulumix.Output[[]ResourceGroupRegionStatus]{
-		OutputState: i.ToResourceGroupRegionStatusArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ResourceGroupRegionStatusOutput struct{ *pulumi.OutputState }
 
 func (ResourceGroupRegionStatusOutput) ElementType() reflect.Type {
@@ -100,12 +87,6 @@ func (o ResourceGroupRegionStatusOutput) ToResourceGroupRegionStatusOutput() Res
 
 func (o ResourceGroupRegionStatusOutput) ToResourceGroupRegionStatusOutputWithContext(ctx context.Context) ResourceGroupRegionStatusOutput {
 	return o
-}
-
-func (o ResourceGroupRegionStatusOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceGroupRegionStatus] {
-	return pulumix.Output[ResourceGroupRegionStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The region ID.
@@ -130,12 +111,6 @@ func (o ResourceGroupRegionStatusArrayOutput) ToResourceGroupRegionStatusArrayOu
 
 func (o ResourceGroupRegionStatusArrayOutput) ToResourceGroupRegionStatusArrayOutputWithContext(ctx context.Context) ResourceGroupRegionStatusArrayOutput {
 	return o
-}
-
-func (o ResourceGroupRegionStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ResourceGroupRegionStatus] {
-	return pulumix.Output[[]ResourceGroupRegionStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceGroupRegionStatusArrayOutput) Index(i pulumi.IntInput) ResourceGroupRegionStatusOutput {
@@ -185,12 +160,6 @@ func (i GetAccountDeletionCheckTaskAbandonAbleCheckArgs) ToGetAccountDeletionChe
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccountDeletionCheckTaskAbandonAbleCheckOutput)
 }
 
-func (i GetAccountDeletionCheckTaskAbandonAbleCheckArgs) ToOutput(ctx context.Context) pulumix.Output[GetAccountDeletionCheckTaskAbandonAbleCheck] {
-	return pulumix.Output[GetAccountDeletionCheckTaskAbandonAbleCheck]{
-		OutputState: i.ToGetAccountDeletionCheckTaskAbandonAbleCheckOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAccountDeletionCheckTaskAbandonAbleCheckArrayInput is an input type that accepts GetAccountDeletionCheckTaskAbandonAbleCheckArray and GetAccountDeletionCheckTaskAbandonAbleCheckArrayOutput values.
 // You can construct a concrete instance of `GetAccountDeletionCheckTaskAbandonAbleCheckArrayInput` via:
 //
@@ -216,12 +185,6 @@ func (i GetAccountDeletionCheckTaskAbandonAbleCheckArray) ToGetAccountDeletionCh
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccountDeletionCheckTaskAbandonAbleCheckArrayOutput)
 }
 
-func (i GetAccountDeletionCheckTaskAbandonAbleCheckArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAccountDeletionCheckTaskAbandonAbleCheck] {
-	return pulumix.Output[[]GetAccountDeletionCheckTaskAbandonAbleCheck]{
-		OutputState: i.ToGetAccountDeletionCheckTaskAbandonAbleCheckArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAccountDeletionCheckTaskAbandonAbleCheckOutput struct{ *pulumi.OutputState }
 
 func (GetAccountDeletionCheckTaskAbandonAbleCheckOutput) ElementType() reflect.Type {
@@ -234,12 +197,6 @@ func (o GetAccountDeletionCheckTaskAbandonAbleCheckOutput) ToGetAccountDeletionC
 
 func (o GetAccountDeletionCheckTaskAbandonAbleCheckOutput) ToGetAccountDeletionCheckTaskAbandonAbleCheckOutputWithContext(ctx context.Context) GetAccountDeletionCheckTaskAbandonAbleCheckOutput {
 	return o
-}
-
-func (o GetAccountDeletionCheckTaskAbandonAbleCheckOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccountDeletionCheckTaskAbandonAbleCheck] {
-	return pulumix.Output[GetAccountDeletionCheckTaskAbandonAbleCheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the check item.
@@ -269,12 +226,6 @@ func (o GetAccountDeletionCheckTaskAbandonAbleCheckArrayOutput) ToGetAccountDele
 
 func (o GetAccountDeletionCheckTaskAbandonAbleCheckArrayOutput) ToGetAccountDeletionCheckTaskAbandonAbleCheckArrayOutputWithContext(ctx context.Context) GetAccountDeletionCheckTaskAbandonAbleCheckArrayOutput {
 	return o
-}
-
-func (o GetAccountDeletionCheckTaskAbandonAbleCheckArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAccountDeletionCheckTaskAbandonAbleCheck] {
-	return pulumix.Output[[]GetAccountDeletionCheckTaskAbandonAbleCheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAccountDeletionCheckTaskAbandonAbleCheckArrayOutput) Index(i pulumi.IntInput) GetAccountDeletionCheckTaskAbandonAbleCheckOutput {
@@ -324,12 +275,6 @@ func (i GetAccountDeletionCheckTaskNotAllowReasonArgs) ToGetAccountDeletionCheck
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccountDeletionCheckTaskNotAllowReasonOutput)
 }
 
-func (i GetAccountDeletionCheckTaskNotAllowReasonArgs) ToOutput(ctx context.Context) pulumix.Output[GetAccountDeletionCheckTaskNotAllowReason] {
-	return pulumix.Output[GetAccountDeletionCheckTaskNotAllowReason]{
-		OutputState: i.ToGetAccountDeletionCheckTaskNotAllowReasonOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAccountDeletionCheckTaskNotAllowReasonArrayInput is an input type that accepts GetAccountDeletionCheckTaskNotAllowReasonArray and GetAccountDeletionCheckTaskNotAllowReasonArrayOutput values.
 // You can construct a concrete instance of `GetAccountDeletionCheckTaskNotAllowReasonArrayInput` via:
 //
@@ -355,12 +300,6 @@ func (i GetAccountDeletionCheckTaskNotAllowReasonArray) ToGetAccountDeletionChec
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccountDeletionCheckTaskNotAllowReasonArrayOutput)
 }
 
-func (i GetAccountDeletionCheckTaskNotAllowReasonArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAccountDeletionCheckTaskNotAllowReason] {
-	return pulumix.Output[[]GetAccountDeletionCheckTaskNotAllowReason]{
-		OutputState: i.ToGetAccountDeletionCheckTaskNotAllowReasonArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAccountDeletionCheckTaskNotAllowReasonOutput struct{ *pulumi.OutputState }
 
 func (GetAccountDeletionCheckTaskNotAllowReasonOutput) ElementType() reflect.Type {
@@ -373,12 +312,6 @@ func (o GetAccountDeletionCheckTaskNotAllowReasonOutput) ToGetAccountDeletionChe
 
 func (o GetAccountDeletionCheckTaskNotAllowReasonOutput) ToGetAccountDeletionCheckTaskNotAllowReasonOutputWithContext(ctx context.Context) GetAccountDeletionCheckTaskNotAllowReasonOutput {
 	return o
-}
-
-func (o GetAccountDeletionCheckTaskNotAllowReasonOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccountDeletionCheckTaskNotAllowReason] {
-	return pulumix.Output[GetAccountDeletionCheckTaskNotAllowReason]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the check item.
@@ -408,12 +341,6 @@ func (o GetAccountDeletionCheckTaskNotAllowReasonArrayOutput) ToGetAccountDeleti
 
 func (o GetAccountDeletionCheckTaskNotAllowReasonArrayOutput) ToGetAccountDeletionCheckTaskNotAllowReasonArrayOutputWithContext(ctx context.Context) GetAccountDeletionCheckTaskNotAllowReasonArrayOutput {
 	return o
-}
-
-func (o GetAccountDeletionCheckTaskNotAllowReasonArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAccountDeletionCheckTaskNotAllowReason] {
-	return pulumix.Output[[]GetAccountDeletionCheckTaskNotAllowReason]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAccountDeletionCheckTaskNotAllowReasonArrayOutput) Index(i pulumi.IntInput) GetAccountDeletionCheckTaskNotAllowReasonOutput {
@@ -499,12 +426,6 @@ func (i GetAccountsAccountArgs) ToGetAccountsAccountOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccountsAccountOutput)
 }
 
-func (i GetAccountsAccountArgs) ToOutput(ctx context.Context) pulumix.Output[GetAccountsAccount] {
-	return pulumix.Output[GetAccountsAccount]{
-		OutputState: i.ToGetAccountsAccountOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAccountsAccountArrayInput is an input type that accepts GetAccountsAccountArray and GetAccountsAccountArrayOutput values.
 // You can construct a concrete instance of `GetAccountsAccountArrayInput` via:
 //
@@ -530,12 +451,6 @@ func (i GetAccountsAccountArray) ToGetAccountsAccountArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccountsAccountArrayOutput)
 }
 
-func (i GetAccountsAccountArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAccountsAccount] {
-	return pulumix.Output[[]GetAccountsAccount]{
-		OutputState: i.ToGetAccountsAccountArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAccountsAccountOutput struct{ *pulumi.OutputState }
 
 func (GetAccountsAccountOutput) ElementType() reflect.Type {
@@ -548,12 +463,6 @@ func (o GetAccountsAccountOutput) ToGetAccountsAccountOutput() GetAccountsAccoun
 
 func (o GetAccountsAccountOutput) ToGetAccountsAccountOutputWithContext(ctx context.Context) GetAccountsAccountOutput {
 	return o
-}
-
-func (o GetAccountsAccountOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccountsAccount] {
-	return pulumix.Output[GetAccountsAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the account.
@@ -630,12 +539,6 @@ func (o GetAccountsAccountArrayOutput) ToGetAccountsAccountArrayOutputWithContex
 	return o
 }
 
-func (o GetAccountsAccountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAccountsAccount] {
-	return pulumix.Output[[]GetAccountsAccount]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetAccountsAccountArrayOutput) Index(i pulumi.IntInput) GetAccountsAccountOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccountsAccount {
 		return vs[0].([]GetAccountsAccount)[vs[1].(int)]
@@ -703,12 +606,6 @@ func (i GetControlPoliciesPolicyArgs) ToGetControlPoliciesPolicyOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetControlPoliciesPolicyOutput)
 }
 
-func (i GetControlPoliciesPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GetControlPoliciesPolicy] {
-	return pulumix.Output[GetControlPoliciesPolicy]{
-		OutputState: i.ToGetControlPoliciesPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetControlPoliciesPolicyArrayInput is an input type that accepts GetControlPoliciesPolicyArray and GetControlPoliciesPolicyArrayOutput values.
 // You can construct a concrete instance of `GetControlPoliciesPolicyArrayInput` via:
 //
@@ -734,12 +631,6 @@ func (i GetControlPoliciesPolicyArray) ToGetControlPoliciesPolicyArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetControlPoliciesPolicyArrayOutput)
 }
 
-func (i GetControlPoliciesPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetControlPoliciesPolicy] {
-	return pulumix.Output[[]GetControlPoliciesPolicy]{
-		OutputState: i.ToGetControlPoliciesPolicyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetControlPoliciesPolicyOutput struct{ *pulumi.OutputState }
 
 func (GetControlPoliciesPolicyOutput) ElementType() reflect.Type {
@@ -752,12 +643,6 @@ func (o GetControlPoliciesPolicyOutput) ToGetControlPoliciesPolicyOutput() GetCo
 
 func (o GetControlPoliciesPolicyOutput) ToGetControlPoliciesPolicyOutputWithContext(ctx context.Context) GetControlPoliciesPolicyOutput {
 	return o
-}
-
-func (o GetControlPoliciesPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GetControlPoliciesPolicy] {
-	return pulumix.Output[GetControlPoliciesPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The count of policy attachment.
@@ -812,12 +697,6 @@ func (o GetControlPoliciesPolicyArrayOutput) ToGetControlPoliciesPolicyArrayOutp
 
 func (o GetControlPoliciesPolicyArrayOutput) ToGetControlPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetControlPoliciesPolicyArrayOutput {
 	return o
-}
-
-func (o GetControlPoliciesPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetControlPoliciesPolicy] {
-	return pulumix.Output[[]GetControlPoliciesPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetControlPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetControlPoliciesPolicyOutput {
@@ -879,12 +758,6 @@ func (i GetControlPolicyAttachmentsAttachmentArgs) ToGetControlPolicyAttachments
 	return pulumi.ToOutputWithContext(ctx, i).(GetControlPolicyAttachmentsAttachmentOutput)
 }
 
-func (i GetControlPolicyAttachmentsAttachmentArgs) ToOutput(ctx context.Context) pulumix.Output[GetControlPolicyAttachmentsAttachment] {
-	return pulumix.Output[GetControlPolicyAttachmentsAttachment]{
-		OutputState: i.ToGetControlPolicyAttachmentsAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetControlPolicyAttachmentsAttachmentArrayInput is an input type that accepts GetControlPolicyAttachmentsAttachmentArray and GetControlPolicyAttachmentsAttachmentArrayOutput values.
 // You can construct a concrete instance of `GetControlPolicyAttachmentsAttachmentArrayInput` via:
 //
@@ -910,12 +783,6 @@ func (i GetControlPolicyAttachmentsAttachmentArray) ToGetControlPolicyAttachment
 	return pulumi.ToOutputWithContext(ctx, i).(GetControlPolicyAttachmentsAttachmentArrayOutput)
 }
 
-func (i GetControlPolicyAttachmentsAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]GetControlPolicyAttachmentsAttachment] {
-	return pulumix.Output[[]GetControlPolicyAttachmentsAttachment]{
-		OutputState: i.ToGetControlPolicyAttachmentsAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetControlPolicyAttachmentsAttachmentOutput struct{ *pulumi.OutputState }
 
 func (GetControlPolicyAttachmentsAttachmentOutput) ElementType() reflect.Type {
@@ -928,12 +795,6 @@ func (o GetControlPolicyAttachmentsAttachmentOutput) ToGetControlPolicyAttachmen
 
 func (o GetControlPolicyAttachmentsAttachmentOutput) ToGetControlPolicyAttachmentsAttachmentOutputWithContext(ctx context.Context) GetControlPolicyAttachmentsAttachmentOutput {
 	return o
-}
-
-func (o GetControlPolicyAttachmentsAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[GetControlPolicyAttachmentsAttachment] {
-	return pulumix.Output[GetControlPolicyAttachmentsAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The attach date.
@@ -978,12 +839,6 @@ func (o GetControlPolicyAttachmentsAttachmentArrayOutput) ToGetControlPolicyAtta
 
 func (o GetControlPolicyAttachmentsAttachmentArrayOutput) ToGetControlPolicyAttachmentsAttachmentArrayOutputWithContext(ctx context.Context) GetControlPolicyAttachmentsAttachmentArrayOutput {
 	return o
-}
-
-func (o GetControlPolicyAttachmentsAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetControlPolicyAttachmentsAttachment] {
-	return pulumix.Output[[]GetControlPolicyAttachmentsAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetControlPolicyAttachmentsAttachmentArrayOutput) Index(i pulumi.IntInput) GetControlPolicyAttachmentsAttachmentOutput {
@@ -1037,12 +892,6 @@ func (i GetDelegatedAdministratorsAdministratorArgs) ToGetDelegatedAdministrator
 	return pulumi.ToOutputWithContext(ctx, i).(GetDelegatedAdministratorsAdministratorOutput)
 }
 
-func (i GetDelegatedAdministratorsAdministratorArgs) ToOutput(ctx context.Context) pulumix.Output[GetDelegatedAdministratorsAdministrator] {
-	return pulumix.Output[GetDelegatedAdministratorsAdministrator]{
-		OutputState: i.ToGetDelegatedAdministratorsAdministratorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDelegatedAdministratorsAdministratorArrayInput is an input type that accepts GetDelegatedAdministratorsAdministratorArray and GetDelegatedAdministratorsAdministratorArrayOutput values.
 // You can construct a concrete instance of `GetDelegatedAdministratorsAdministratorArrayInput` via:
 //
@@ -1068,12 +917,6 @@ func (i GetDelegatedAdministratorsAdministratorArray) ToGetDelegatedAdministrato
 	return pulumi.ToOutputWithContext(ctx, i).(GetDelegatedAdministratorsAdministratorArrayOutput)
 }
 
-func (i GetDelegatedAdministratorsAdministratorArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDelegatedAdministratorsAdministrator] {
-	return pulumix.Output[[]GetDelegatedAdministratorsAdministrator]{
-		OutputState: i.ToGetDelegatedAdministratorsAdministratorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDelegatedAdministratorsAdministratorOutput struct{ *pulumi.OutputState }
 
 func (GetDelegatedAdministratorsAdministratorOutput) ElementType() reflect.Type {
@@ -1086,12 +929,6 @@ func (o GetDelegatedAdministratorsAdministratorOutput) ToGetDelegatedAdministrat
 
 func (o GetDelegatedAdministratorsAdministratorOutput) ToGetDelegatedAdministratorsAdministratorOutputWithContext(ctx context.Context) GetDelegatedAdministratorsAdministratorOutput {
 	return o
-}
-
-func (o GetDelegatedAdministratorsAdministratorOutput) ToOutput(ctx context.Context) pulumix.Output[GetDelegatedAdministratorsAdministrator] {
-	return pulumix.Output[GetDelegatedAdministratorsAdministrator]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the member account.
@@ -1126,12 +963,6 @@ func (o GetDelegatedAdministratorsAdministratorArrayOutput) ToGetDelegatedAdmini
 
 func (o GetDelegatedAdministratorsAdministratorArrayOutput) ToGetDelegatedAdministratorsAdministratorArrayOutputWithContext(ctx context.Context) GetDelegatedAdministratorsAdministratorArrayOutput {
 	return o
-}
-
-func (o GetDelegatedAdministratorsAdministratorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDelegatedAdministratorsAdministrator] {
-	return pulumix.Output[[]GetDelegatedAdministratorsAdministrator]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDelegatedAdministratorsAdministratorArrayOutput) Index(i pulumi.IntInput) GetDelegatedAdministratorsAdministratorOutput {
@@ -1185,12 +1016,6 @@ func (i GetFoldersFolderArgs) ToGetFoldersFolderOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetFoldersFolderOutput)
 }
 
-func (i GetFoldersFolderArgs) ToOutput(ctx context.Context) pulumix.Output[GetFoldersFolder] {
-	return pulumix.Output[GetFoldersFolder]{
-		OutputState: i.ToGetFoldersFolderOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetFoldersFolderArrayInput is an input type that accepts GetFoldersFolderArray and GetFoldersFolderArrayOutput values.
 // You can construct a concrete instance of `GetFoldersFolderArrayInput` via:
 //
@@ -1216,12 +1041,6 @@ func (i GetFoldersFolderArray) ToGetFoldersFolderArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetFoldersFolderArrayOutput)
 }
 
-func (i GetFoldersFolderArray) ToOutput(ctx context.Context) pulumix.Output[[]GetFoldersFolder] {
-	return pulumix.Output[[]GetFoldersFolder]{
-		OutputState: i.ToGetFoldersFolderArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetFoldersFolderOutput struct{ *pulumi.OutputState }
 
 func (GetFoldersFolderOutput) ElementType() reflect.Type {
@@ -1234,12 +1053,6 @@ func (o GetFoldersFolderOutput) ToGetFoldersFolderOutput() GetFoldersFolderOutpu
 
 func (o GetFoldersFolderOutput) ToGetFoldersFolderOutputWithContext(ctx context.Context) GetFoldersFolderOutput {
 	return o
-}
-
-func (o GetFoldersFolderOutput) ToOutput(ctx context.Context) pulumix.Output[GetFoldersFolder] {
-	return pulumix.Output[GetFoldersFolder]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the folder.
@@ -1274,12 +1087,6 @@ func (o GetFoldersFolderArrayOutput) ToGetFoldersFolderArrayOutput() GetFoldersF
 
 func (o GetFoldersFolderArrayOutput) ToGetFoldersFolderArrayOutputWithContext(ctx context.Context) GetFoldersFolderArrayOutput {
 	return o
-}
-
-func (o GetFoldersFolderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetFoldersFolder] {
-	return pulumix.Output[[]GetFoldersFolder]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetFoldersFolderArrayOutput) Index(i pulumi.IntInput) GetFoldersFolderOutput {
@@ -1369,12 +1176,6 @@ func (i GetHandshakesHandshakeArgs) ToGetHandshakesHandshakeOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetHandshakesHandshakeOutput)
 }
 
-func (i GetHandshakesHandshakeArgs) ToOutput(ctx context.Context) pulumix.Output[GetHandshakesHandshake] {
-	return pulumix.Output[GetHandshakesHandshake]{
-		OutputState: i.ToGetHandshakesHandshakeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetHandshakesHandshakeArrayInput is an input type that accepts GetHandshakesHandshakeArray and GetHandshakesHandshakeArrayOutput values.
 // You can construct a concrete instance of `GetHandshakesHandshakeArrayInput` via:
 //
@@ -1400,12 +1201,6 @@ func (i GetHandshakesHandshakeArray) ToGetHandshakesHandshakeArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetHandshakesHandshakeArrayOutput)
 }
 
-func (i GetHandshakesHandshakeArray) ToOutput(ctx context.Context) pulumix.Output[[]GetHandshakesHandshake] {
-	return pulumix.Output[[]GetHandshakesHandshake]{
-		OutputState: i.ToGetHandshakesHandshakeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetHandshakesHandshakeOutput struct{ *pulumi.OutputState }
 
 func (GetHandshakesHandshakeOutput) ElementType() reflect.Type {
@@ -1418,12 +1213,6 @@ func (o GetHandshakesHandshakeOutput) ToGetHandshakesHandshakeOutput() GetHandsh
 
 func (o GetHandshakesHandshakeOutput) ToGetHandshakesHandshakeOutputWithContext(ctx context.Context) GetHandshakesHandshakeOutput {
 	return o
-}
-
-func (o GetHandshakesHandshakeOutput) ToOutput(ctx context.Context) pulumix.Output[GetHandshakesHandshake] {
-	return pulumix.Output[GetHandshakesHandshake]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time when the invitation expires.
@@ -1505,12 +1294,6 @@ func (o GetHandshakesHandshakeArrayOutput) ToGetHandshakesHandshakeArrayOutputWi
 	return o
 }
 
-func (o GetHandshakesHandshakeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetHandshakesHandshake] {
-	return pulumix.Output[[]GetHandshakesHandshake]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetHandshakesHandshakeArrayOutput) Index(i pulumi.IntInput) GetHandshakesHandshakeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHandshakesHandshake {
 		return vs[0].([]GetHandshakesHandshake)[vs[1].(int)]
@@ -1574,12 +1357,6 @@ func (i GetPoliciesPolicyArgs) ToGetPoliciesPolicyOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetPoliciesPolicyOutput)
 }
 
-func (i GetPoliciesPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GetPoliciesPolicy] {
-	return pulumix.Output[GetPoliciesPolicy]{
-		OutputState: i.ToGetPoliciesPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetPoliciesPolicyArrayInput is an input type that accepts GetPoliciesPolicyArray and GetPoliciesPolicyArrayOutput values.
 // You can construct a concrete instance of `GetPoliciesPolicyArrayInput` via:
 //
@@ -1605,12 +1382,6 @@ func (i GetPoliciesPolicyArray) ToGetPoliciesPolicyArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetPoliciesPolicyArrayOutput)
 }
 
-func (i GetPoliciesPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPoliciesPolicy] {
-	return pulumix.Output[[]GetPoliciesPolicy]{
-		OutputState: i.ToGetPoliciesPolicyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetPoliciesPolicyOutput struct{ *pulumi.OutputState }
 
 func (GetPoliciesPolicyOutput) ElementType() reflect.Type {
@@ -1623,12 +1394,6 @@ func (o GetPoliciesPolicyOutput) ToGetPoliciesPolicyOutput() GetPoliciesPolicyOu
 
 func (o GetPoliciesPolicyOutput) ToGetPoliciesPolicyOutputWithContext(ctx context.Context) GetPoliciesPolicyOutput {
 	return o
-}
-
-func (o GetPoliciesPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GetPoliciesPolicy] {
-	return pulumix.Output[GetPoliciesPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of times the policy is referenced.
@@ -1678,12 +1443,6 @@ func (o GetPoliciesPolicyArrayOutput) ToGetPoliciesPolicyArrayOutput() GetPolici
 
 func (o GetPoliciesPolicyArrayOutput) ToGetPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetPoliciesPolicyArrayOutput {
 	return o
-}
-
-func (o GetPoliciesPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPoliciesPolicy] {
-	return pulumix.Output[[]GetPoliciesPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetPoliciesPolicyOutput {
@@ -1753,12 +1512,6 @@ func (i GetPolicyAttachmentsAttachmentArgs) ToGetPolicyAttachmentsAttachmentOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyAttachmentsAttachmentOutput)
 }
 
-func (i GetPolicyAttachmentsAttachmentArgs) ToOutput(ctx context.Context) pulumix.Output[GetPolicyAttachmentsAttachment] {
-	return pulumix.Output[GetPolicyAttachmentsAttachment]{
-		OutputState: i.ToGetPolicyAttachmentsAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetPolicyAttachmentsAttachmentArrayInput is an input type that accepts GetPolicyAttachmentsAttachmentArray and GetPolicyAttachmentsAttachmentArrayOutput values.
 // You can construct a concrete instance of `GetPolicyAttachmentsAttachmentArrayInput` via:
 //
@@ -1784,12 +1537,6 @@ func (i GetPolicyAttachmentsAttachmentArray) ToGetPolicyAttachmentsAttachmentArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyAttachmentsAttachmentArrayOutput)
 }
 
-func (i GetPolicyAttachmentsAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPolicyAttachmentsAttachment] {
-	return pulumix.Output[[]GetPolicyAttachmentsAttachment]{
-		OutputState: i.ToGetPolicyAttachmentsAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetPolicyAttachmentsAttachmentOutput struct{ *pulumi.OutputState }
 
 func (GetPolicyAttachmentsAttachmentOutput) ElementType() reflect.Type {
@@ -1802,12 +1549,6 @@ func (o GetPolicyAttachmentsAttachmentOutput) ToGetPolicyAttachmentsAttachmentOu
 
 func (o GetPolicyAttachmentsAttachmentOutput) ToGetPolicyAttachmentsAttachmentOutputWithContext(ctx context.Context) GetPolicyAttachmentsAttachmentOutput {
 	return o
-}
-
-func (o GetPolicyAttachmentsAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[GetPolicyAttachmentsAttachment] {
-	return pulumix.Output[GetPolicyAttachmentsAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time when the policy was attached.
@@ -1864,12 +1605,6 @@ func (o GetPolicyAttachmentsAttachmentArrayOutput) ToGetPolicyAttachmentsAttachm
 	return o
 }
 
-func (o GetPolicyAttachmentsAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPolicyAttachmentsAttachment] {
-	return pulumix.Output[[]GetPolicyAttachmentsAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetPolicyAttachmentsAttachmentArrayOutput) Index(i pulumi.IntInput) GetPolicyAttachmentsAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPolicyAttachmentsAttachment {
 		return vs[0].([]GetPolicyAttachmentsAttachment)[vs[1].(int)]
@@ -1921,12 +1656,6 @@ func (i GetPolicyVersionsVersionArgs) ToGetPolicyVersionsVersionOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyVersionsVersionOutput)
 }
 
-func (i GetPolicyVersionsVersionArgs) ToOutput(ctx context.Context) pulumix.Output[GetPolicyVersionsVersion] {
-	return pulumix.Output[GetPolicyVersionsVersion]{
-		OutputState: i.ToGetPolicyVersionsVersionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetPolicyVersionsVersionArrayInput is an input type that accepts GetPolicyVersionsVersionArray and GetPolicyVersionsVersionArrayOutput values.
 // You can construct a concrete instance of `GetPolicyVersionsVersionArrayInput` via:
 //
@@ -1952,12 +1681,6 @@ func (i GetPolicyVersionsVersionArray) ToGetPolicyVersionsVersionArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyVersionsVersionArrayOutput)
 }
 
-func (i GetPolicyVersionsVersionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPolicyVersionsVersion] {
-	return pulumix.Output[[]GetPolicyVersionsVersion]{
-		OutputState: i.ToGetPolicyVersionsVersionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetPolicyVersionsVersionOutput struct{ *pulumi.OutputState }
 
 func (GetPolicyVersionsVersionOutput) ElementType() reflect.Type {
@@ -1970,12 +1693,6 @@ func (o GetPolicyVersionsVersionOutput) ToGetPolicyVersionsVersionOutput() GetPo
 
 func (o GetPolicyVersionsVersionOutput) ToGetPolicyVersionsVersionOutputWithContext(ctx context.Context) GetPolicyVersionsVersionOutput {
 	return o
-}
-
-func (o GetPolicyVersionsVersionOutput) ToOutput(ctx context.Context) pulumix.Output[GetPolicyVersionsVersion] {
-	return pulumix.Output[GetPolicyVersionsVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the resource, the value is `<policy_name>`:`<version_id>`.
@@ -2010,12 +1727,6 @@ func (o GetPolicyVersionsVersionArrayOutput) ToGetPolicyVersionsVersionArrayOutp
 
 func (o GetPolicyVersionsVersionArrayOutput) ToGetPolicyVersionsVersionArrayOutputWithContext(ctx context.Context) GetPolicyVersionsVersionArrayOutput {
 	return o
-}
-
-func (o GetPolicyVersionsVersionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPolicyVersionsVersion] {
-	return pulumix.Output[[]GetPolicyVersionsVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetPolicyVersionsVersionArrayOutput) Index(i pulumi.IntInput) GetPolicyVersionsVersionOutput {
@@ -2077,12 +1788,6 @@ func (i GetResourceDirectoriesDirectoryArgs) ToGetResourceDirectoriesDirectoryOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceDirectoriesDirectoryOutput)
 }
 
-func (i GetResourceDirectoriesDirectoryArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceDirectoriesDirectory] {
-	return pulumix.Output[GetResourceDirectoriesDirectory]{
-		OutputState: i.ToGetResourceDirectoriesDirectoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetResourceDirectoriesDirectoryArrayInput is an input type that accepts GetResourceDirectoriesDirectoryArray and GetResourceDirectoriesDirectoryArrayOutput values.
 // You can construct a concrete instance of `GetResourceDirectoriesDirectoryArrayInput` via:
 //
@@ -2108,12 +1813,6 @@ func (i GetResourceDirectoriesDirectoryArray) ToGetResourceDirectoriesDirectoryA
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceDirectoriesDirectoryArrayOutput)
 }
 
-func (i GetResourceDirectoriesDirectoryArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceDirectoriesDirectory] {
-	return pulumix.Output[[]GetResourceDirectoriesDirectory]{
-		OutputState: i.ToGetResourceDirectoriesDirectoryArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetResourceDirectoriesDirectoryOutput struct{ *pulumi.OutputState }
 
 func (GetResourceDirectoriesDirectoryOutput) ElementType() reflect.Type {
@@ -2126,12 +1825,6 @@ func (o GetResourceDirectoriesDirectoryOutput) ToGetResourceDirectoriesDirectory
 
 func (o GetResourceDirectoriesDirectoryOutput) ToGetResourceDirectoriesDirectoryOutputWithContext(ctx context.Context) GetResourceDirectoriesDirectoryOutput {
 	return o
-}
-
-func (o GetResourceDirectoriesDirectoryOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceDirectoriesDirectory] {
-	return pulumix.Output[GetResourceDirectoriesDirectory]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of resource directory.
@@ -2176,12 +1869,6 @@ func (o GetResourceDirectoriesDirectoryArrayOutput) ToGetResourceDirectoriesDire
 
 func (o GetResourceDirectoriesDirectoryArrayOutput) ToGetResourceDirectoriesDirectoryArrayOutputWithContext(ctx context.Context) GetResourceDirectoriesDirectoryArrayOutput {
 	return o
-}
-
-func (o GetResourceDirectoriesDirectoryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceDirectoriesDirectory] {
-	return pulumix.Output[[]GetResourceDirectoriesDirectory]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetResourceDirectoriesDirectoryArrayOutput) Index(i pulumi.IntInput) GetResourceDirectoriesDirectoryOutput {
@@ -2247,12 +1934,6 @@ func (i GetResourceGroupsGroupArgs) ToGetResourceGroupsGroupOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceGroupsGroupOutput)
 }
 
-func (i GetResourceGroupsGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceGroupsGroup] {
-	return pulumix.Output[GetResourceGroupsGroup]{
-		OutputState: i.ToGetResourceGroupsGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetResourceGroupsGroupArrayInput is an input type that accepts GetResourceGroupsGroupArray and GetResourceGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetResourceGroupsGroupArrayInput` via:
 //
@@ -2278,12 +1959,6 @@ func (i GetResourceGroupsGroupArray) ToGetResourceGroupsGroupArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceGroupsGroupArrayOutput)
 }
 
-func (i GetResourceGroupsGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceGroupsGroup] {
-	return pulumix.Output[[]GetResourceGroupsGroup]{
-		OutputState: i.ToGetResourceGroupsGroupArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetResourceGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetResourceGroupsGroupOutput) ElementType() reflect.Type {
@@ -2296,12 +1971,6 @@ func (o GetResourceGroupsGroupOutput) ToGetResourceGroupsGroupOutput() GetResour
 
 func (o GetResourceGroupsGroupOutput) ToGetResourceGroupsGroupOutputWithContext(ctx context.Context) GetResourceGroupsGroupOutput {
 	return o
-}
-
-func (o GetResourceGroupsGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceGroupsGroup] {
-	return pulumix.Output[GetResourceGroupsGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Alibaba Cloud account to which the resource group belongs.
@@ -2353,12 +2022,6 @@ func (o GetResourceGroupsGroupArrayOutput) ToGetResourceGroupsGroupArrayOutputWi
 	return o
 }
 
-func (o GetResourceGroupsGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceGroupsGroup] {
-	return pulumix.Output[[]GetResourceGroupsGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetResourceGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetResourceGroupsGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceGroupsGroup {
 		return vs[0].([]GetResourceGroupsGroup)[vs[1].(int)]
@@ -2402,12 +2065,6 @@ func (i GetResourceGroupsGroupRegionStatusArgs) ToGetResourceGroupsGroupRegionSt
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceGroupsGroupRegionStatusOutput)
 }
 
-func (i GetResourceGroupsGroupRegionStatusArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceGroupsGroupRegionStatus] {
-	return pulumix.Output[GetResourceGroupsGroupRegionStatus]{
-		OutputState: i.ToGetResourceGroupsGroupRegionStatusOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetResourceGroupsGroupRegionStatusArrayInput is an input type that accepts GetResourceGroupsGroupRegionStatusArray and GetResourceGroupsGroupRegionStatusArrayOutput values.
 // You can construct a concrete instance of `GetResourceGroupsGroupRegionStatusArrayInput` via:
 //
@@ -2433,12 +2090,6 @@ func (i GetResourceGroupsGroupRegionStatusArray) ToGetResourceGroupsGroupRegionS
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceGroupsGroupRegionStatusArrayOutput)
 }
 
-func (i GetResourceGroupsGroupRegionStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceGroupsGroupRegionStatus] {
-	return pulumix.Output[[]GetResourceGroupsGroupRegionStatus]{
-		OutputState: i.ToGetResourceGroupsGroupRegionStatusArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetResourceGroupsGroupRegionStatusOutput struct{ *pulumi.OutputState }
 
 func (GetResourceGroupsGroupRegionStatusOutput) ElementType() reflect.Type {
@@ -2451,12 +2102,6 @@ func (o GetResourceGroupsGroupRegionStatusOutput) ToGetResourceGroupsGroupRegion
 
 func (o GetResourceGroupsGroupRegionStatusOutput) ToGetResourceGroupsGroupRegionStatusOutputWithContext(ctx context.Context) GetResourceGroupsGroupRegionStatusOutput {
 	return o
-}
-
-func (o GetResourceGroupsGroupRegionStatusOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceGroupsGroupRegionStatus] {
-	return pulumix.Output[GetResourceGroupsGroupRegionStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The region ID.
@@ -2481,12 +2126,6 @@ func (o GetResourceGroupsGroupRegionStatusArrayOutput) ToGetResourceGroupsGroupR
 
 func (o GetResourceGroupsGroupRegionStatusArrayOutput) ToGetResourceGroupsGroupRegionStatusArrayOutputWithContext(ctx context.Context) GetResourceGroupsGroupRegionStatusArrayOutput {
 	return o
-}
-
-func (o GetResourceGroupsGroupRegionStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceGroupsGroupRegionStatus] {
-	return pulumix.Output[[]GetResourceGroupsGroupRegionStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetResourceGroupsGroupRegionStatusArrayOutput) Index(i pulumi.IntInput) GetResourceGroupsGroupRegionStatusOutput {
@@ -2544,12 +2183,6 @@ func (i GetResourceSharesShareArgs) ToGetResourceSharesShareOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceSharesShareOutput)
 }
 
-func (i GetResourceSharesShareArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceSharesShare] {
-	return pulumix.Output[GetResourceSharesShare]{
-		OutputState: i.ToGetResourceSharesShareOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetResourceSharesShareArrayInput is an input type that accepts GetResourceSharesShareArray and GetResourceSharesShareArrayOutput values.
 // You can construct a concrete instance of `GetResourceSharesShareArrayInput` via:
 //
@@ -2575,12 +2208,6 @@ func (i GetResourceSharesShareArray) ToGetResourceSharesShareArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceSharesShareArrayOutput)
 }
 
-func (i GetResourceSharesShareArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceSharesShare] {
-	return pulumix.Output[[]GetResourceSharesShare]{
-		OutputState: i.ToGetResourceSharesShareArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetResourceSharesShareOutput struct{ *pulumi.OutputState }
 
 func (GetResourceSharesShareOutput) ElementType() reflect.Type {
@@ -2593,12 +2220,6 @@ func (o GetResourceSharesShareOutput) ToGetResourceSharesShareOutput() GetResour
 
 func (o GetResourceSharesShareOutput) ToGetResourceSharesShareOutputWithContext(ctx context.Context) GetResourceSharesShareOutput {
 	return o
-}
-
-func (o GetResourceSharesShareOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceSharesShare] {
-	return pulumix.Output[GetResourceSharesShare]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Resource Share.
@@ -2638,12 +2259,6 @@ func (o GetResourceSharesShareArrayOutput) ToGetResourceSharesShareArrayOutput()
 
 func (o GetResourceSharesShareArrayOutput) ToGetResourceSharesShareArrayOutputWithContext(ctx context.Context) GetResourceSharesShareArrayOutput {
 	return o
-}
-
-func (o GetResourceSharesShareArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceSharesShare] {
-	return pulumix.Output[[]GetResourceSharesShare]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetResourceSharesShareArrayOutput) Index(i pulumi.IntInput) GetResourceSharesShareOutput {
@@ -2713,12 +2328,6 @@ func (i GetRolesRoleArgs) ToGetRolesRoleOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetRolesRoleOutput)
 }
 
-func (i GetRolesRoleArgs) ToOutput(ctx context.Context) pulumix.Output[GetRolesRole] {
-	return pulumix.Output[GetRolesRole]{
-		OutputState: i.ToGetRolesRoleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetRolesRoleArrayInput is an input type that accepts GetRolesRoleArray and GetRolesRoleArrayOutput values.
 // You can construct a concrete instance of `GetRolesRoleArrayInput` via:
 //
@@ -2744,12 +2353,6 @@ func (i GetRolesRoleArray) ToGetRolesRoleArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRolesRoleArrayOutput)
 }
 
-func (i GetRolesRoleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRolesRole] {
-	return pulumix.Output[[]GetRolesRole]{
-		OutputState: i.ToGetRolesRoleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetRolesRoleOutput struct{ *pulumi.OutputState }
 
 func (GetRolesRoleOutput) ElementType() reflect.Type {
@@ -2762,12 +2365,6 @@ func (o GetRolesRoleOutput) ToGetRolesRoleOutput() GetRolesRoleOutput {
 
 func (o GetRolesRoleOutput) ToGetRolesRoleOutputWithContext(ctx context.Context) GetRolesRoleOutput {
 	return o
-}
-
-func (o GetRolesRoleOutput) ToOutput(ctx context.Context) pulumix.Output[GetRolesRole] {
-	return pulumix.Output[GetRolesRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Alibaba Cloud Resource Name (ARN) of the RAM role.
@@ -2822,12 +2419,6 @@ func (o GetRolesRoleArrayOutput) ToGetRolesRoleArrayOutput() GetRolesRoleArrayOu
 
 func (o GetRolesRoleArrayOutput) ToGetRolesRoleArrayOutputWithContext(ctx context.Context) GetRolesRoleArrayOutput {
 	return o
-}
-
-func (o GetRolesRoleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRolesRole] {
-	return pulumix.Output[[]GetRolesRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRolesRoleArrayOutput) Index(i pulumi.IntInput) GetRolesRoleOutput {
@@ -2885,12 +2476,6 @@ func (i GetSharedResourcesResourceArgs) ToGetSharedResourcesResourceOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetSharedResourcesResourceOutput)
 }
 
-func (i GetSharedResourcesResourceArgs) ToOutput(ctx context.Context) pulumix.Output[GetSharedResourcesResource] {
-	return pulumix.Output[GetSharedResourcesResource]{
-		OutputState: i.ToGetSharedResourcesResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetSharedResourcesResourceArrayInput is an input type that accepts GetSharedResourcesResourceArray and GetSharedResourcesResourceArrayOutput values.
 // You can construct a concrete instance of `GetSharedResourcesResourceArrayInput` via:
 //
@@ -2916,12 +2501,6 @@ func (i GetSharedResourcesResourceArray) ToGetSharedResourcesResourceArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetSharedResourcesResourceArrayOutput)
 }
 
-func (i GetSharedResourcesResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSharedResourcesResource] {
-	return pulumix.Output[[]GetSharedResourcesResource]{
-		OutputState: i.ToGetSharedResourcesResourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetSharedResourcesResourceOutput struct{ *pulumi.OutputState }
 
 func (GetSharedResourcesResourceOutput) ElementType() reflect.Type {
@@ -2934,12 +2513,6 @@ func (o GetSharedResourcesResourceOutput) ToGetSharedResourcesResourceOutput() G
 
 func (o GetSharedResourcesResourceOutput) ToGetSharedResourcesResourceOutputWithContext(ctx context.Context) GetSharedResourcesResourceOutput {
 	return o
-}
-
-func (o GetSharedResourcesResourceOutput) ToOutput(ctx context.Context) pulumix.Output[GetSharedResourcesResource] {
-	return pulumix.Output[GetSharedResourcesResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Shared Resource. It formats as `<resource_id>:<resource_type>`.
@@ -2979,12 +2552,6 @@ func (o GetSharedResourcesResourceArrayOutput) ToGetSharedResourcesResourceArray
 
 func (o GetSharedResourcesResourceArrayOutput) ToGetSharedResourcesResourceArrayOutputWithContext(ctx context.Context) GetSharedResourcesResourceArrayOutput {
 	return o
-}
-
-func (o GetSharedResourcesResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSharedResourcesResource] {
-	return pulumix.Output[[]GetSharedResourcesResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSharedResourcesResourceArrayOutput) Index(i pulumi.IntInput) GetSharedResourcesResourceOutput {
@@ -3038,12 +2605,6 @@ func (i GetSharedTargetsTargetArgs) ToGetSharedTargetsTargetOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetSharedTargetsTargetOutput)
 }
 
-func (i GetSharedTargetsTargetArgs) ToOutput(ctx context.Context) pulumix.Output[GetSharedTargetsTarget] {
-	return pulumix.Output[GetSharedTargetsTarget]{
-		OutputState: i.ToGetSharedTargetsTargetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetSharedTargetsTargetArrayInput is an input type that accepts GetSharedTargetsTargetArray and GetSharedTargetsTargetArrayOutput values.
 // You can construct a concrete instance of `GetSharedTargetsTargetArrayInput` via:
 //
@@ -3069,12 +2630,6 @@ func (i GetSharedTargetsTargetArray) ToGetSharedTargetsTargetArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetSharedTargetsTargetArrayOutput)
 }
 
-func (i GetSharedTargetsTargetArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSharedTargetsTarget] {
-	return pulumix.Output[[]GetSharedTargetsTarget]{
-		OutputState: i.ToGetSharedTargetsTargetArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetSharedTargetsTargetOutput struct{ *pulumi.OutputState }
 
 func (GetSharedTargetsTargetOutput) ElementType() reflect.Type {
@@ -3087,12 +2642,6 @@ func (o GetSharedTargetsTargetOutput) ToGetSharedTargetsTargetOutput() GetShared
 
 func (o GetSharedTargetsTargetOutput) ToGetSharedTargetsTargetOutputWithContext(ctx context.Context) GetSharedTargetsTargetOutput {
 	return o
-}
-
-func (o GetSharedTargetsTargetOutput) ToOutput(ctx context.Context) pulumix.Output[GetSharedTargetsTarget] {
-	return pulumix.Output[GetSharedTargetsTarget]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Shared Target.
@@ -3127,12 +2676,6 @@ func (o GetSharedTargetsTargetArrayOutput) ToGetSharedTargetsTargetArrayOutput()
 
 func (o GetSharedTargetsTargetArrayOutput) ToGetSharedTargetsTargetArrayOutputWithContext(ctx context.Context) GetSharedTargetsTargetArrayOutput {
 	return o
-}
-
-func (o GetSharedTargetsTargetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSharedTargetsTarget] {
-	return pulumix.Output[[]GetSharedTargetsTarget]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSharedTargetsTargetArrayOutput) Index(i pulumi.IntInput) GetSharedTargetsTargetOutput {

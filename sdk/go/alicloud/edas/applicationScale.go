@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This operation is provided to scale out an EDAS application, see [What is EDAS Application Scale](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-scaleoutapplication).
@@ -295,12 +294,6 @@ func (i *ApplicationScale) ToApplicationScaleOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScaleOutput)
 }
 
-func (i *ApplicationScale) ToOutput(ctx context.Context) pulumix.Output[*ApplicationScale] {
-	return pulumix.Output[*ApplicationScale]{
-		OutputState: i.ToApplicationScaleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApplicationScaleArrayInput is an input type that accepts ApplicationScaleArray and ApplicationScaleArrayOutput values.
 // You can construct a concrete instance of `ApplicationScaleArrayInput` via:
 //
@@ -324,12 +317,6 @@ func (i ApplicationScaleArray) ToApplicationScaleArrayOutput() ApplicationScaleA
 
 func (i ApplicationScaleArray) ToApplicationScaleArrayOutputWithContext(ctx context.Context) ApplicationScaleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScaleArrayOutput)
-}
-
-func (i ApplicationScaleArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationScale] {
-	return pulumix.Output[[]*ApplicationScale]{
-		OutputState: i.ToApplicationScaleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ApplicationScaleMapInput is an input type that accepts ApplicationScaleMap and ApplicationScaleMapOutput values.
@@ -357,12 +344,6 @@ func (i ApplicationScaleMap) ToApplicationScaleMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScaleMapOutput)
 }
 
-func (i ApplicationScaleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationScale] {
-	return pulumix.Output[map[string]*ApplicationScale]{
-		OutputState: i.ToApplicationScaleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApplicationScaleOutput struct{ *pulumi.OutputState }
 
 func (ApplicationScaleOutput) ElementType() reflect.Type {
@@ -375,12 +356,6 @@ func (o ApplicationScaleOutput) ToApplicationScaleOutput() ApplicationScaleOutpu
 
 func (o ApplicationScaleOutput) ToApplicationScaleOutputWithContext(ctx context.Context) ApplicationScaleOutput {
 	return o
-}
-
-func (o ApplicationScaleOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationScale] {
-	return pulumix.Output[*ApplicationScale]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the application that you want to deploy.
@@ -422,12 +397,6 @@ func (o ApplicationScaleArrayOutput) ToApplicationScaleArrayOutputWithContext(ct
 	return o
 }
 
-func (o ApplicationScaleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationScale] {
-	return pulumix.Output[[]*ApplicationScale]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApplicationScaleArrayOutput) Index(i pulumi.IntInput) ApplicationScaleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApplicationScale {
 		return vs[0].([]*ApplicationScale)[vs[1].(int)]
@@ -446,12 +415,6 @@ func (o ApplicationScaleMapOutput) ToApplicationScaleMapOutput() ApplicationScal
 
 func (o ApplicationScaleMapOutput) ToApplicationScaleMapOutputWithContext(ctx context.Context) ApplicationScaleMapOutput {
 	return o
-}
-
-func (o ApplicationScaleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationScale] {
-	return pulumix.Output[map[string]*ApplicationScale]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationScaleMapOutput) MapIndex(k pulumi.StringInput) ApplicationScaleOutput {

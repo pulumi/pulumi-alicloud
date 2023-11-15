@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a PolarDB account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account.
@@ -232,12 +231,6 @@ func (i *AccountPrivilege) ToAccountPrivilegeOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(AccountPrivilegeOutput)
 }
 
-func (i *AccountPrivilege) ToOutput(ctx context.Context) pulumix.Output[*AccountPrivilege] {
-	return pulumix.Output[*AccountPrivilege]{
-		OutputState: i.ToAccountPrivilegeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccountPrivilegeArrayInput is an input type that accepts AccountPrivilegeArray and AccountPrivilegeArrayOutput values.
 // You can construct a concrete instance of `AccountPrivilegeArrayInput` via:
 //
@@ -261,12 +254,6 @@ func (i AccountPrivilegeArray) ToAccountPrivilegeArrayOutput() AccountPrivilegeA
 
 func (i AccountPrivilegeArray) ToAccountPrivilegeArrayOutputWithContext(ctx context.Context) AccountPrivilegeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccountPrivilegeArrayOutput)
-}
-
-func (i AccountPrivilegeArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccountPrivilege] {
-	return pulumix.Output[[]*AccountPrivilege]{
-		OutputState: i.ToAccountPrivilegeArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AccountPrivilegeMapInput is an input type that accepts AccountPrivilegeMap and AccountPrivilegeMapOutput values.
@@ -294,12 +281,6 @@ func (i AccountPrivilegeMap) ToAccountPrivilegeMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AccountPrivilegeMapOutput)
 }
 
-func (i AccountPrivilegeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccountPrivilege] {
-	return pulumix.Output[map[string]*AccountPrivilege]{
-		OutputState: i.ToAccountPrivilegeMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccountPrivilegeOutput struct{ *pulumi.OutputState }
 
 func (AccountPrivilegeOutput) ElementType() reflect.Type {
@@ -312,12 +293,6 @@ func (o AccountPrivilegeOutput) ToAccountPrivilegeOutput() AccountPrivilegeOutpu
 
 func (o AccountPrivilegeOutput) ToAccountPrivilegeOutputWithContext(ctx context.Context) AccountPrivilegeOutput {
 	return o
-}
-
-func (o AccountPrivilegeOutput) ToOutput(ctx context.Context) pulumix.Output[*AccountPrivilege] {
-	return pulumix.Output[*AccountPrivilege]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A specified account name.
@@ -354,12 +329,6 @@ func (o AccountPrivilegeArrayOutput) ToAccountPrivilegeArrayOutputWithContext(ct
 	return o
 }
 
-func (o AccountPrivilegeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccountPrivilege] {
-	return pulumix.Output[[]*AccountPrivilege]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccountPrivilegeArrayOutput) Index(i pulumi.IntInput) AccountPrivilegeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccountPrivilege {
 		return vs[0].([]*AccountPrivilege)[vs[1].(int)]
@@ -378,12 +347,6 @@ func (o AccountPrivilegeMapOutput) ToAccountPrivilegeMapOutput() AccountPrivileg
 
 func (o AccountPrivilegeMapOutput) ToAccountPrivilegeMapOutputWithContext(ctx context.Context) AccountPrivilegeMapOutput {
 	return o
-}
-
-func (o AccountPrivilegeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccountPrivilege] {
-	return pulumix.Output[map[string]*AccountPrivilege]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccountPrivilegeMapOutput) MapIndex(k pulumi.StringInput) AccountPrivilegeOutput {

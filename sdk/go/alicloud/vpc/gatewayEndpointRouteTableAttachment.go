@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a VPC Gateway Endpoint Route Table Attachment resource. VPC gateway node association route.
@@ -194,12 +193,6 @@ func (i *GatewayEndpointRouteTableAttachment) ToGatewayEndpointRouteTableAttachm
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayEndpointRouteTableAttachmentOutput)
 }
 
-func (i *GatewayEndpointRouteTableAttachment) ToOutput(ctx context.Context) pulumix.Output[*GatewayEndpointRouteTableAttachment] {
-	return pulumix.Output[*GatewayEndpointRouteTableAttachment]{
-		OutputState: i.ToGatewayEndpointRouteTableAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GatewayEndpointRouteTableAttachmentArrayInput is an input type that accepts GatewayEndpointRouteTableAttachmentArray and GatewayEndpointRouteTableAttachmentArrayOutput values.
 // You can construct a concrete instance of `GatewayEndpointRouteTableAttachmentArrayInput` via:
 //
@@ -223,12 +216,6 @@ func (i GatewayEndpointRouteTableAttachmentArray) ToGatewayEndpointRouteTableAtt
 
 func (i GatewayEndpointRouteTableAttachmentArray) ToGatewayEndpointRouteTableAttachmentArrayOutputWithContext(ctx context.Context) GatewayEndpointRouteTableAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayEndpointRouteTableAttachmentArrayOutput)
-}
-
-func (i GatewayEndpointRouteTableAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*GatewayEndpointRouteTableAttachment] {
-	return pulumix.Output[[]*GatewayEndpointRouteTableAttachment]{
-		OutputState: i.ToGatewayEndpointRouteTableAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GatewayEndpointRouteTableAttachmentMapInput is an input type that accepts GatewayEndpointRouteTableAttachmentMap and GatewayEndpointRouteTableAttachmentMapOutput values.
@@ -256,12 +243,6 @@ func (i GatewayEndpointRouteTableAttachmentMap) ToGatewayEndpointRouteTableAttac
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayEndpointRouteTableAttachmentMapOutput)
 }
 
-func (i GatewayEndpointRouteTableAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GatewayEndpointRouteTableAttachment] {
-	return pulumix.Output[map[string]*GatewayEndpointRouteTableAttachment]{
-		OutputState: i.ToGatewayEndpointRouteTableAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GatewayEndpointRouteTableAttachmentOutput struct{ *pulumi.OutputState }
 
 func (GatewayEndpointRouteTableAttachmentOutput) ElementType() reflect.Type {
@@ -274,12 +255,6 @@ func (o GatewayEndpointRouteTableAttachmentOutput) ToGatewayEndpointRouteTableAt
 
 func (o GatewayEndpointRouteTableAttachmentOutput) ToGatewayEndpointRouteTableAttachmentOutputWithContext(ctx context.Context) GatewayEndpointRouteTableAttachmentOutput {
 	return o
-}
-
-func (o GatewayEndpointRouteTableAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewayEndpointRouteTableAttachment] {
-	return pulumix.Output[*GatewayEndpointRouteTableAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the gateway endpoint instance to which you want to associate the route table.
@@ -311,12 +286,6 @@ func (o GatewayEndpointRouteTableAttachmentArrayOutput) ToGatewayEndpointRouteTa
 	return o
 }
 
-func (o GatewayEndpointRouteTableAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GatewayEndpointRouteTableAttachment] {
-	return pulumix.Output[[]*GatewayEndpointRouteTableAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GatewayEndpointRouteTableAttachmentArrayOutput) Index(i pulumi.IntInput) GatewayEndpointRouteTableAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GatewayEndpointRouteTableAttachment {
 		return vs[0].([]*GatewayEndpointRouteTableAttachment)[vs[1].(int)]
@@ -335,12 +304,6 @@ func (o GatewayEndpointRouteTableAttachmentMapOutput) ToGatewayEndpointRouteTabl
 
 func (o GatewayEndpointRouteTableAttachmentMapOutput) ToGatewayEndpointRouteTableAttachmentMapOutputWithContext(ctx context.Context) GatewayEndpointRouteTableAttachmentMapOutput {
 	return o
-}
-
-func (o GatewayEndpointRouteTableAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GatewayEndpointRouteTableAttachment] {
-	return pulumix.Output[map[string]*GatewayEndpointRouteTableAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GatewayEndpointRouteTableAttachmentMapOutput) MapIndex(k pulumi.StringInput) GatewayEndpointRouteTableAttachmentOutput {

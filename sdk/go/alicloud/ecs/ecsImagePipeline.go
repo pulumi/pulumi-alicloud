@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECS Image Pipeline resource.
@@ -366,12 +365,6 @@ func (i *EcsImagePipeline) ToEcsImagePipelineOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(EcsImagePipelineOutput)
 }
 
-func (i *EcsImagePipeline) ToOutput(ctx context.Context) pulumix.Output[*EcsImagePipeline] {
-	return pulumix.Output[*EcsImagePipeline]{
-		OutputState: i.ToEcsImagePipelineOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EcsImagePipelineArrayInput is an input type that accepts EcsImagePipelineArray and EcsImagePipelineArrayOutput values.
 // You can construct a concrete instance of `EcsImagePipelineArrayInput` via:
 //
@@ -395,12 +388,6 @@ func (i EcsImagePipelineArray) ToEcsImagePipelineArrayOutput() EcsImagePipelineA
 
 func (i EcsImagePipelineArray) ToEcsImagePipelineArrayOutputWithContext(ctx context.Context) EcsImagePipelineArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EcsImagePipelineArrayOutput)
-}
-
-func (i EcsImagePipelineArray) ToOutput(ctx context.Context) pulumix.Output[[]*EcsImagePipeline] {
-	return pulumix.Output[[]*EcsImagePipeline]{
-		OutputState: i.ToEcsImagePipelineArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EcsImagePipelineMapInput is an input type that accepts EcsImagePipelineMap and EcsImagePipelineMapOutput values.
@@ -428,12 +415,6 @@ func (i EcsImagePipelineMap) ToEcsImagePipelineMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(EcsImagePipelineMapOutput)
 }
 
-func (i EcsImagePipelineMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsImagePipeline] {
-	return pulumix.Output[map[string]*EcsImagePipeline]{
-		OutputState: i.ToEcsImagePipelineMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EcsImagePipelineOutput struct{ *pulumi.OutputState }
 
 func (EcsImagePipelineOutput) ElementType() reflect.Type {
@@ -446,12 +427,6 @@ func (o EcsImagePipelineOutput) ToEcsImagePipelineOutput() EcsImagePipelineOutpu
 
 func (o EcsImagePipelineOutput) ToEcsImagePipelineOutputWithContext(ctx context.Context) EcsImagePipelineOutput {
 	return o
-}
-
-func (o EcsImagePipelineOutput) ToOutput(ctx context.Context) pulumix.Output[*EcsImagePipeline] {
-	return pulumix.Output[*EcsImagePipeline]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of Alibaba Cloud account to which to share the created image.
@@ -545,12 +520,6 @@ func (o EcsImagePipelineArrayOutput) ToEcsImagePipelineArrayOutputWithContext(ct
 	return o
 }
 
-func (o EcsImagePipelineArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EcsImagePipeline] {
-	return pulumix.Output[[]*EcsImagePipeline]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EcsImagePipelineArrayOutput) Index(i pulumi.IntInput) EcsImagePipelineOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EcsImagePipeline {
 		return vs[0].([]*EcsImagePipeline)[vs[1].(int)]
@@ -569,12 +538,6 @@ func (o EcsImagePipelineMapOutput) ToEcsImagePipelineMapOutput() EcsImagePipelin
 
 func (o EcsImagePipelineMapOutput) ToEcsImagePipelineMapOutputWithContext(ctx context.Context) EcsImagePipelineMapOutput {
 	return o
-}
-
-func (o EcsImagePipelineMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsImagePipeline] {
-	return pulumix.Output[map[string]*EcsImagePipeline]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EcsImagePipelineMapOutput) MapIndex(k pulumi.StringInput) EcsImagePipelineOutput {

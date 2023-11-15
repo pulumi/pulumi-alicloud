@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Sddp Data Limits of the current Alibaba Cloud user.
@@ -117,12 +116,6 @@ func (o GetDataLimitsResultOutput) ToGetDataLimitsResultOutput() GetDataLimitsRe
 
 func (o GetDataLimitsResultOutput) ToGetDataLimitsResultOutputWithContext(ctx context.Context) GetDataLimitsResultOutput {
 	return o
-}
-
-func (o GetDataLimitsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDataLimitsResult] {
-	return pulumix.Output[GetDataLimitsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list of Alidns Domain Groups in an Alibaba Cloud account according to the specified filters.
@@ -118,12 +117,6 @@ func (o GetAlidnsDomainGroupsResultOutput) ToGetAlidnsDomainGroupsResultOutput()
 
 func (o GetAlidnsDomainGroupsResultOutput) ToGetAlidnsDomainGroupsResultOutputWithContext(ctx context.Context) GetAlidnsDomainGroupsResultOutput {
 	return o
-}
-
-func (o GetAlidnsDomainGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAlidnsDomainGroupsResult] {
-	return pulumix.Output[GetAlidnsDomainGroupsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of instances. Each element contains the following attributes:

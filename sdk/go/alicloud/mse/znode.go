@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Microservice Engine (MSE) Znode resource.
@@ -220,12 +219,6 @@ func (i *Znode) ToZnodeOutputWithContext(ctx context.Context) ZnodeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZnodeOutput)
 }
 
-func (i *Znode) ToOutput(ctx context.Context) pulumix.Output[*Znode] {
-	return pulumix.Output[*Znode]{
-		OutputState: i.ToZnodeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ZnodeArrayInput is an input type that accepts ZnodeArray and ZnodeArrayOutput values.
 // You can construct a concrete instance of `ZnodeArrayInput` via:
 //
@@ -249,12 +242,6 @@ func (i ZnodeArray) ToZnodeArrayOutput() ZnodeArrayOutput {
 
 func (i ZnodeArray) ToZnodeArrayOutputWithContext(ctx context.Context) ZnodeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZnodeArrayOutput)
-}
-
-func (i ZnodeArray) ToOutput(ctx context.Context) pulumix.Output[[]*Znode] {
-	return pulumix.Output[[]*Znode]{
-		OutputState: i.ToZnodeArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ZnodeMapInput is an input type that accepts ZnodeMap and ZnodeMapOutput values.
@@ -282,12 +269,6 @@ func (i ZnodeMap) ToZnodeMapOutputWithContext(ctx context.Context) ZnodeMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ZnodeMapOutput)
 }
 
-func (i ZnodeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Znode] {
-	return pulumix.Output[map[string]*Znode]{
-		OutputState: i.ToZnodeMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ZnodeOutput struct{ *pulumi.OutputState }
 
 func (ZnodeOutput) ElementType() reflect.Type {
@@ -300,12 +281,6 @@ func (o ZnodeOutput) ToZnodeOutput() ZnodeOutput {
 
 func (o ZnodeOutput) ToZnodeOutputWithContext(ctx context.Context) ZnodeOutput {
 	return o
-}
-
-func (o ZnodeOutput) ToOutput(ctx context.Context) pulumix.Output[*Znode] {
-	return pulumix.Output[*Znode]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The language type of the returned information. Valid values: `zh` or `en`.
@@ -342,12 +317,6 @@ func (o ZnodeArrayOutput) ToZnodeArrayOutputWithContext(ctx context.Context) Zno
 	return o
 }
 
-func (o ZnodeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Znode] {
-	return pulumix.Output[[]*Znode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ZnodeArrayOutput) Index(i pulumi.IntInput) ZnodeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Znode {
 		return vs[0].([]*Znode)[vs[1].(int)]
@@ -366,12 +335,6 @@ func (o ZnodeMapOutput) ToZnodeMapOutput() ZnodeMapOutput {
 
 func (o ZnodeMapOutput) ToZnodeMapOutputWithContext(ctx context.Context) ZnodeMapOutput {
 	return o
-}
-
-func (o ZnodeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Znode] {
-	return pulumix.Output[map[string]*Znode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ZnodeMapOutput) MapIndex(k pulumi.StringInput) ZnodeOutput {

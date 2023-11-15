@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
@@ -131,12 +130,6 @@ func (o GetRouterInterfacesResultOutput) ToGetRouterInterfacesResultOutput() Get
 
 func (o GetRouterInterfacesResultOutput) ToGetRouterInterfacesResultOutputWithContext(ctx context.Context) GetRouterInterfacesResultOutput {
 	return o
-}
-
-func (o GetRouterInterfacesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRouterInterfacesResult] {
-	return pulumix.Output[GetRouterInterfacesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRouterInterfacesResultOutput) Filters() GetRouterInterfacesFilterArrayOutput {

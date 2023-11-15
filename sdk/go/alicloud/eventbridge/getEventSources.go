@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Event Bridge Event Sources of the current Alibaba Cloud user.
@@ -118,12 +117,6 @@ func (o GetEventSourcesResultOutput) ToGetEventSourcesResultOutput() GetEventSou
 
 func (o GetEventSourcesResultOutput) ToGetEventSourcesResultOutputWithContext(ctx context.Context) GetEventSourcesResultOutput {
 	return o
-}
-
-func (o GetEventSourcesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEventSourcesResult] {
-	return pulumix.Output[GetEventSourcesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

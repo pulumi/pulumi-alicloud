@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -173,12 +172,6 @@ func (i *DBAuditInstance) ToDBAuditInstanceOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(DBAuditInstanceOutput)
 }
 
-func (i *DBAuditInstance) ToOutput(ctx context.Context) pulumix.Output[*DBAuditInstance] {
-	return pulumix.Output[*DBAuditInstance]{
-		OutputState: i.ToDBAuditInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DBAuditInstanceArrayInput is an input type that accepts DBAuditInstanceArray and DBAuditInstanceArrayOutput values.
 // You can construct a concrete instance of `DBAuditInstanceArrayInput` via:
 //
@@ -202,12 +195,6 @@ func (i DBAuditInstanceArray) ToDBAuditInstanceArrayOutput() DBAuditInstanceArra
 
 func (i DBAuditInstanceArray) ToDBAuditInstanceArrayOutputWithContext(ctx context.Context) DBAuditInstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DBAuditInstanceArrayOutput)
-}
-
-func (i DBAuditInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*DBAuditInstance] {
-	return pulumix.Output[[]*DBAuditInstance]{
-		OutputState: i.ToDBAuditInstanceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DBAuditInstanceMapInput is an input type that accepts DBAuditInstanceMap and DBAuditInstanceMapOutput values.
@@ -235,12 +222,6 @@ func (i DBAuditInstanceMap) ToDBAuditInstanceMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DBAuditInstanceMapOutput)
 }
 
-func (i DBAuditInstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DBAuditInstance] {
-	return pulumix.Output[map[string]*DBAuditInstance]{
-		OutputState: i.ToDBAuditInstanceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DBAuditInstanceOutput struct{ *pulumi.OutputState }
 
 func (DBAuditInstanceOutput) ElementType() reflect.Type {
@@ -253,12 +234,6 @@ func (o DBAuditInstanceOutput) ToDBAuditInstanceOutput() DBAuditInstanceOutput {
 
 func (o DBAuditInstanceOutput) ToDBAuditInstanceOutputWithContext(ctx context.Context) DBAuditInstanceOutput {
 	return o
-}
-
-func (o DBAuditInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*DBAuditInstance] {
-	return pulumix.Output[*DBAuditInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the instance. This name can have a string of 1 to 63 characters.
@@ -306,12 +281,6 @@ func (o DBAuditInstanceArrayOutput) ToDBAuditInstanceArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o DBAuditInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DBAuditInstance] {
-	return pulumix.Output[[]*DBAuditInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DBAuditInstanceArrayOutput) Index(i pulumi.IntInput) DBAuditInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DBAuditInstance {
 		return vs[0].([]*DBAuditInstance)[vs[1].(int)]
@@ -330,12 +299,6 @@ func (o DBAuditInstanceMapOutput) ToDBAuditInstanceMapOutput() DBAuditInstanceMa
 
 func (o DBAuditInstanceMapOutput) ToDBAuditInstanceMapOutputWithContext(ctx context.Context) DBAuditInstanceMapOutput {
 	return o
-}
-
-func (o DBAuditInstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DBAuditInstance] {
-	return pulumix.Output[map[string]*DBAuditInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DBAuditInstanceMapOutput) MapIndex(k pulumi.StringInput) DBAuditInstanceOutput {

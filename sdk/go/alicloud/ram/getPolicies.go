@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
@@ -145,12 +144,6 @@ func (o GetPoliciesResultOutput) ToGetPoliciesResultOutput() GetPoliciesResultOu
 
 func (o GetPoliciesResultOutput) ToGetPoliciesResultOutputWithContext(ctx context.Context) GetPoliciesResultOutput {
 	return o
-}
-
-func (o GetPoliciesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPoliciesResult] {
-	return pulumix.Output[GetPoliciesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetPoliciesResultOutput) EnableDetails() pulumi.BoolPtrOutput {

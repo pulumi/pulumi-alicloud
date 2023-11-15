@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a NLB Security Policy resource.
@@ -232,12 +231,6 @@ func (i *SecurityPolicy) ToSecurityPolicyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyOutput)
 }
 
-func (i *SecurityPolicy) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicy] {
-	return pulumix.Output[*SecurityPolicy]{
-		OutputState: i.ToSecurityPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SecurityPolicyArrayInput is an input type that accepts SecurityPolicyArray and SecurityPolicyArrayOutput values.
 // You can construct a concrete instance of `SecurityPolicyArrayInput` via:
 //
@@ -261,12 +254,6 @@ func (i SecurityPolicyArray) ToSecurityPolicyArrayOutput() SecurityPolicyArrayOu
 
 func (i SecurityPolicyArray) ToSecurityPolicyArrayOutputWithContext(ctx context.Context) SecurityPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyArrayOutput)
-}
-
-func (i SecurityPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*SecurityPolicy] {
-	return pulumix.Output[[]*SecurityPolicy]{
-		OutputState: i.ToSecurityPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SecurityPolicyMapInput is an input type that accepts SecurityPolicyMap and SecurityPolicyMapOutput values.
@@ -294,12 +281,6 @@ func (i SecurityPolicyMap) ToSecurityPolicyMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyMapOutput)
 }
 
-func (i SecurityPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecurityPolicy] {
-	return pulumix.Output[map[string]*SecurityPolicy]{
-		OutputState: i.ToSecurityPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecurityPolicyOutput struct{ *pulumi.OutputState }
 
 func (SecurityPolicyOutput) ElementType() reflect.Type {
@@ -312,12 +293,6 @@ func (o SecurityPolicyOutput) ToSecurityPolicyOutput() SecurityPolicyOutput {
 
 func (o SecurityPolicyOutput) ToSecurityPolicyOutputWithContext(ctx context.Context) SecurityPolicyOutput {
 	return o
-}
-
-func (o SecurityPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicy] {
-	return pulumix.Output[*SecurityPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The supported cipher suites, which are determined by the TLS protocol version. You can specify at most 32 cipher suites.
@@ -367,12 +342,6 @@ func (o SecurityPolicyArrayOutput) ToSecurityPolicyArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o SecurityPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SecurityPolicy] {
-	return pulumix.Output[[]*SecurityPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SecurityPolicyArrayOutput) Index(i pulumi.IntInput) SecurityPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SecurityPolicy {
 		return vs[0].([]*SecurityPolicy)[vs[1].(int)]
@@ -391,12 +360,6 @@ func (o SecurityPolicyMapOutput) ToSecurityPolicyMapOutput() SecurityPolicyMapOu
 
 func (o SecurityPolicyMapOutput) ToSecurityPolicyMapOutputWithContext(ctx context.Context) SecurityPolicyMapOutput {
 	return o
-}
-
-func (o SecurityPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecurityPolicy] {
-	return pulumix.Output[map[string]*SecurityPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecurityPolicyMapOutput) MapIndex(k pulumi.StringInput) SecurityPolicyOutput {

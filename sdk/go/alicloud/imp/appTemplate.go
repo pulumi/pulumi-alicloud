@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Apsara Agile Live (IMP) App Template resource.
@@ -208,12 +207,6 @@ func (i *AppTemplate) ToAppTemplateOutputWithContext(ctx context.Context) AppTem
 	return pulumi.ToOutputWithContext(ctx, i).(AppTemplateOutput)
 }
 
-func (i *AppTemplate) ToOutput(ctx context.Context) pulumix.Output[*AppTemplate] {
-	return pulumix.Output[*AppTemplate]{
-		OutputState: i.ToAppTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AppTemplateArrayInput is an input type that accepts AppTemplateArray and AppTemplateArrayOutput values.
 // You can construct a concrete instance of `AppTemplateArrayInput` via:
 //
@@ -237,12 +230,6 @@ func (i AppTemplateArray) ToAppTemplateArrayOutput() AppTemplateArrayOutput {
 
 func (i AppTemplateArray) ToAppTemplateArrayOutputWithContext(ctx context.Context) AppTemplateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppTemplateArrayOutput)
-}
-
-func (i AppTemplateArray) ToOutput(ctx context.Context) pulumix.Output[[]*AppTemplate] {
-	return pulumix.Output[[]*AppTemplate]{
-		OutputState: i.ToAppTemplateArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AppTemplateMapInput is an input type that accepts AppTemplateMap and AppTemplateMapOutput values.
@@ -270,12 +257,6 @@ func (i AppTemplateMap) ToAppTemplateMapOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, i).(AppTemplateMapOutput)
 }
 
-func (i AppTemplateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AppTemplate] {
-	return pulumix.Output[map[string]*AppTemplate]{
-		OutputState: i.ToAppTemplateMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AppTemplateOutput struct{ *pulumi.OutputState }
 
 func (AppTemplateOutput) ElementType() reflect.Type {
@@ -288,12 +269,6 @@ func (o AppTemplateOutput) ToAppTemplateOutput() AppTemplateOutput {
 
 func (o AppTemplateOutput) ToAppTemplateOutputWithContext(ctx context.Context) AppTemplateOutput {
 	return o
-}
-
-func (o AppTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*AppTemplate] {
-	return pulumix.Output[*AppTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource.
@@ -342,12 +317,6 @@ func (o AppTemplateArrayOutput) ToAppTemplateArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o AppTemplateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AppTemplate] {
-	return pulumix.Output[[]*AppTemplate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AppTemplateArrayOutput) Index(i pulumi.IntInput) AppTemplateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AppTemplate {
 		return vs[0].([]*AppTemplate)[vs[1].(int)]
@@ -366,12 +335,6 @@ func (o AppTemplateMapOutput) ToAppTemplateMapOutput() AppTemplateMapOutput {
 
 func (o AppTemplateMapOutput) ToAppTemplateMapOutputWithContext(ctx context.Context) AppTemplateMapOutput {
 	return o
-}
-
-func (o AppTemplateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AppTemplate] {
-	return pulumix.Output[map[string]*AppTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppTemplateMapOutput) MapIndex(k pulumi.StringInput) AppTemplateOutput {

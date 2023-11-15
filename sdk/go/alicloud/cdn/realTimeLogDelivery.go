@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a CDN Real Time Log Delivery resource.
@@ -250,12 +249,6 @@ func (i *RealTimeLogDelivery) ToRealTimeLogDeliveryOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(RealTimeLogDeliveryOutput)
 }
 
-func (i *RealTimeLogDelivery) ToOutput(ctx context.Context) pulumix.Output[*RealTimeLogDelivery] {
-	return pulumix.Output[*RealTimeLogDelivery]{
-		OutputState: i.ToRealTimeLogDeliveryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RealTimeLogDeliveryArrayInput is an input type that accepts RealTimeLogDeliveryArray and RealTimeLogDeliveryArrayOutput values.
 // You can construct a concrete instance of `RealTimeLogDeliveryArrayInput` via:
 //
@@ -279,12 +272,6 @@ func (i RealTimeLogDeliveryArray) ToRealTimeLogDeliveryArrayOutput() RealTimeLog
 
 func (i RealTimeLogDeliveryArray) ToRealTimeLogDeliveryArrayOutputWithContext(ctx context.Context) RealTimeLogDeliveryArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RealTimeLogDeliveryArrayOutput)
-}
-
-func (i RealTimeLogDeliveryArray) ToOutput(ctx context.Context) pulumix.Output[[]*RealTimeLogDelivery] {
-	return pulumix.Output[[]*RealTimeLogDelivery]{
-		OutputState: i.ToRealTimeLogDeliveryArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RealTimeLogDeliveryMapInput is an input type that accepts RealTimeLogDeliveryMap and RealTimeLogDeliveryMapOutput values.
@@ -312,12 +299,6 @@ func (i RealTimeLogDeliveryMap) ToRealTimeLogDeliveryMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(RealTimeLogDeliveryMapOutput)
 }
 
-func (i RealTimeLogDeliveryMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RealTimeLogDelivery] {
-	return pulumix.Output[map[string]*RealTimeLogDelivery]{
-		OutputState: i.ToRealTimeLogDeliveryMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RealTimeLogDeliveryOutput struct{ *pulumi.OutputState }
 
 func (RealTimeLogDeliveryOutput) ElementType() reflect.Type {
@@ -330,12 +311,6 @@ func (o RealTimeLogDeliveryOutput) ToRealTimeLogDeliveryOutput() RealTimeLogDeli
 
 func (o RealTimeLogDeliveryOutput) ToRealTimeLogDeliveryOutputWithContext(ctx context.Context) RealTimeLogDeliveryOutput {
 	return o
-}
-
-func (o RealTimeLogDeliveryOutput) ToOutput(ctx context.Context) pulumix.Output[*RealTimeLogDelivery] {
-	return pulumix.Output[*RealTimeLogDelivery]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
@@ -379,12 +354,6 @@ func (o RealTimeLogDeliveryArrayOutput) ToRealTimeLogDeliveryArrayOutputWithCont
 	return o
 }
 
-func (o RealTimeLogDeliveryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RealTimeLogDelivery] {
-	return pulumix.Output[[]*RealTimeLogDelivery]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RealTimeLogDeliveryArrayOutput) Index(i pulumi.IntInput) RealTimeLogDeliveryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RealTimeLogDelivery {
 		return vs[0].([]*RealTimeLogDelivery)[vs[1].(int)]
@@ -403,12 +372,6 @@ func (o RealTimeLogDeliveryMapOutput) ToRealTimeLogDeliveryMapOutput() RealTimeL
 
 func (o RealTimeLogDeliveryMapOutput) ToRealTimeLogDeliveryMapOutputWithContext(ctx context.Context) RealTimeLogDeliveryMapOutput {
 	return o
-}
-
-func (o RealTimeLogDeliveryMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RealTimeLogDelivery] {
-	return pulumix.Output[map[string]*RealTimeLogDelivery]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RealTimeLogDeliveryMapOutput) MapIndex(k pulumi.StringInput) RealTimeLogDeliveryOutput {

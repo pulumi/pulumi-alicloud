@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an EDAS K8s cluster resource. For information about EDAS K8s Cluster and how to use it, see[What is EDAS K8s Cluster](https://www.alibabacloud.com/help/en/doc-detail/85108.htm).
@@ -165,12 +164,6 @@ func (i *K8sCluster) ToK8sClusterOutputWithContext(ctx context.Context) K8sClust
 	return pulumi.ToOutputWithContext(ctx, i).(K8sClusterOutput)
 }
 
-func (i *K8sCluster) ToOutput(ctx context.Context) pulumix.Output[*K8sCluster] {
-	return pulumix.Output[*K8sCluster]{
-		OutputState: i.ToK8sClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // K8sClusterArrayInput is an input type that accepts K8sClusterArray and K8sClusterArrayOutput values.
 // You can construct a concrete instance of `K8sClusterArrayInput` via:
 //
@@ -194,12 +187,6 @@ func (i K8sClusterArray) ToK8sClusterArrayOutput() K8sClusterArrayOutput {
 
 func (i K8sClusterArray) ToK8sClusterArrayOutputWithContext(ctx context.Context) K8sClusterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(K8sClusterArrayOutput)
-}
-
-func (i K8sClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]*K8sCluster] {
-	return pulumix.Output[[]*K8sCluster]{
-		OutputState: i.ToK8sClusterArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // K8sClusterMapInput is an input type that accepts K8sClusterMap and K8sClusterMapOutput values.
@@ -227,12 +214,6 @@ func (i K8sClusterMap) ToK8sClusterMapOutputWithContext(ctx context.Context) K8s
 	return pulumi.ToOutputWithContext(ctx, i).(K8sClusterMapOutput)
 }
 
-func (i K8sClusterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*K8sCluster] {
-	return pulumix.Output[map[string]*K8sCluster]{
-		OutputState: i.ToK8sClusterMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type K8sClusterOutput struct{ *pulumi.OutputState }
 
 func (K8sClusterOutput) ElementType() reflect.Type {
@@ -245,12 +226,6 @@ func (o K8sClusterOutput) ToK8sClusterOutput() K8sClusterOutput {
 
 func (o K8sClusterOutput) ToK8sClusterOutputWithContext(ctx context.Context) K8sClusterOutput {
 	return o
-}
-
-func (o K8sClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*K8sCluster] {
-	return pulumix.Output[*K8sCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The import status of cluster:
@@ -306,12 +281,6 @@ func (o K8sClusterArrayOutput) ToK8sClusterArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o K8sClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*K8sCluster] {
-	return pulumix.Output[[]*K8sCluster]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o K8sClusterArrayOutput) Index(i pulumi.IntInput) K8sClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *K8sCluster {
 		return vs[0].([]*K8sCluster)[vs[1].(int)]
@@ -330,12 +299,6 @@ func (o K8sClusterMapOutput) ToK8sClusterMapOutput() K8sClusterMapOutput {
 
 func (o K8sClusterMapOutput) ToK8sClusterMapOutputWithContext(ctx context.Context) K8sClusterMapOutput {
 	return o
-}
-
-func (o K8sClusterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*K8sCluster] {
-	return pulumix.Output[map[string]*K8sCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o K8sClusterMapOutput) MapIndex(k pulumi.StringInput) K8sClusterOutput {
