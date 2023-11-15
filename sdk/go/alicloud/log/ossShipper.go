@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Log service data delivery management, this service provides the function of delivering data in logstore to oss product storage.
@@ -411,12 +410,6 @@ func (i *OssShipper) ToOssShipperOutputWithContext(ctx context.Context) OssShipp
 	return pulumi.ToOutputWithContext(ctx, i).(OssShipperOutput)
 }
 
-func (i *OssShipper) ToOutput(ctx context.Context) pulumix.Output[*OssShipper] {
-	return pulumix.Output[*OssShipper]{
-		OutputState: i.ToOssShipperOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OssShipperArrayInput is an input type that accepts OssShipperArray and OssShipperArrayOutput values.
 // You can construct a concrete instance of `OssShipperArrayInput` via:
 //
@@ -440,12 +433,6 @@ func (i OssShipperArray) ToOssShipperArrayOutput() OssShipperArrayOutput {
 
 func (i OssShipperArray) ToOssShipperArrayOutputWithContext(ctx context.Context) OssShipperArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OssShipperArrayOutput)
-}
-
-func (i OssShipperArray) ToOutput(ctx context.Context) pulumix.Output[[]*OssShipper] {
-	return pulumix.Output[[]*OssShipper]{
-		OutputState: i.ToOssShipperArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // OssShipperMapInput is an input type that accepts OssShipperMap and OssShipperMapOutput values.
@@ -473,12 +460,6 @@ func (i OssShipperMap) ToOssShipperMapOutputWithContext(ctx context.Context) Oss
 	return pulumi.ToOutputWithContext(ctx, i).(OssShipperMapOutput)
 }
 
-func (i OssShipperMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OssShipper] {
-	return pulumix.Output[map[string]*OssShipper]{
-		OutputState: i.ToOssShipperMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OssShipperOutput struct{ *pulumi.OutputState }
 
 func (OssShipperOutput) ElementType() reflect.Type {
@@ -491,12 +472,6 @@ func (o OssShipperOutput) ToOssShipperOutput() OssShipperOutput {
 
 func (o OssShipperOutput) ToOssShipperOutputWithContext(ctx context.Context) OssShipperOutput {
 	return o
-}
-
-func (o OssShipperOutput) ToOutput(ctx context.Context) pulumix.Output[*OssShipper] {
-	return pulumix.Output[*OssShipper]{
-		OutputState: o.OutputState,
-	}
 }
 
 // How often is it delivered every interval.
@@ -614,12 +589,6 @@ func (o OssShipperArrayOutput) ToOssShipperArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o OssShipperArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OssShipper] {
-	return pulumix.Output[[]*OssShipper]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OssShipperArrayOutput) Index(i pulumi.IntInput) OssShipperOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OssShipper {
 		return vs[0].([]*OssShipper)[vs[1].(int)]
@@ -638,12 +607,6 @@ func (o OssShipperMapOutput) ToOssShipperMapOutput() OssShipperMapOutput {
 
 func (o OssShipperMapOutput) ToOssShipperMapOutputWithContext(ctx context.Context) OssShipperMapOutput {
 	return o
-}
-
-func (o OssShipperMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OssShipper] {
-	return pulumix.Output[map[string]*OssShipper]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OssShipperMapOutput) MapIndex(k pulumi.StringInput) OssShipperOutput {

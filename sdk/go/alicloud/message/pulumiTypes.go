@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -103,12 +102,6 @@ func (i GetServiceQueuesQueueArgs) ToGetServiceQueuesQueueOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceQueuesQueueOutput)
 }
 
-func (i GetServiceQueuesQueueArgs) ToOutput(ctx context.Context) pulumix.Output[GetServiceQueuesQueue] {
-	return pulumix.Output[GetServiceQueuesQueue]{
-		OutputState: i.ToGetServiceQueuesQueueOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetServiceQueuesQueueArrayInput is an input type that accepts GetServiceQueuesQueueArray and GetServiceQueuesQueueArrayOutput values.
 // You can construct a concrete instance of `GetServiceQueuesQueueArrayInput` via:
 //
@@ -134,12 +127,6 @@ func (i GetServiceQueuesQueueArray) ToGetServiceQueuesQueueArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceQueuesQueueArrayOutput)
 }
 
-func (i GetServiceQueuesQueueArray) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceQueuesQueue] {
-	return pulumix.Output[[]GetServiceQueuesQueue]{
-		OutputState: i.ToGetServiceQueuesQueueArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetServiceQueuesQueueOutput struct{ *pulumi.OutputState }
 
 func (GetServiceQueuesQueueOutput) ElementType() reflect.Type {
@@ -152,12 +139,6 @@ func (o GetServiceQueuesQueueOutput) ToGetServiceQueuesQueueOutput() GetServiceQ
 
 func (o GetServiceQueuesQueueOutput) ToGetServiceQueuesQueueOutputWithContext(ctx context.Context) GetServiceQueuesQueueOutput {
 	return o
-}
-
-func (o GetServiceQueuesQueueOutput) ToOutput(ctx context.Context) pulumix.Output[GetServiceQueuesQueue] {
-	return pulumix.Output[GetServiceQueuesQueue]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The total number of messages that are in the Active state in the queue. The value is an approximate number.
@@ -249,12 +230,6 @@ func (o GetServiceQueuesQueueArrayOutput) ToGetServiceQueuesQueueArrayOutputWith
 	return o
 }
 
-func (o GetServiceQueuesQueueArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceQueuesQueue] {
-	return pulumix.Output[[]GetServiceQueuesQueue]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetServiceQueuesQueueArrayOutput) Index(i pulumi.IntInput) GetServiceQueuesQueueOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceQueuesQueue {
 		return vs[0].([]GetServiceQueuesQueue)[vs[1].(int)]
@@ -334,12 +309,6 @@ func (i GetServiceSubscriptionsSubscriptionArgs) ToGetServiceSubscriptionsSubscr
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceSubscriptionsSubscriptionOutput)
 }
 
-func (i GetServiceSubscriptionsSubscriptionArgs) ToOutput(ctx context.Context) pulumix.Output[GetServiceSubscriptionsSubscription] {
-	return pulumix.Output[GetServiceSubscriptionsSubscription]{
-		OutputState: i.ToGetServiceSubscriptionsSubscriptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetServiceSubscriptionsSubscriptionArrayInput is an input type that accepts GetServiceSubscriptionsSubscriptionArray and GetServiceSubscriptionsSubscriptionArrayOutput values.
 // You can construct a concrete instance of `GetServiceSubscriptionsSubscriptionArrayInput` via:
 //
@@ -365,12 +334,6 @@ func (i GetServiceSubscriptionsSubscriptionArray) ToGetServiceSubscriptionsSubsc
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceSubscriptionsSubscriptionArrayOutput)
 }
 
-func (i GetServiceSubscriptionsSubscriptionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceSubscriptionsSubscription] {
-	return pulumix.Output[[]GetServiceSubscriptionsSubscription]{
-		OutputState: i.ToGetServiceSubscriptionsSubscriptionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetServiceSubscriptionsSubscriptionOutput struct{ *pulumi.OutputState }
 
 func (GetServiceSubscriptionsSubscriptionOutput) ElementType() reflect.Type {
@@ -383,12 +346,6 @@ func (o GetServiceSubscriptionsSubscriptionOutput) ToGetServiceSubscriptionsSubs
 
 func (o GetServiceSubscriptionsSubscriptionOutput) ToGetServiceSubscriptionsSubscriptionOutputWithContext(ctx context.Context) GetServiceSubscriptionsSubscriptionOutput {
 	return o
-}
-
-func (o GetServiceSubscriptionsSubscriptionOutput) ToOutput(ctx context.Context) pulumix.Output[GetServiceSubscriptionsSubscription] {
-	return pulumix.Output[GetServiceSubscriptionsSubscription]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time when the subscription was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
@@ -458,12 +415,6 @@ func (o GetServiceSubscriptionsSubscriptionArrayOutput) ToGetServiceSubscription
 
 func (o GetServiceSubscriptionsSubscriptionArrayOutput) ToGetServiceSubscriptionsSubscriptionArrayOutputWithContext(ctx context.Context) GetServiceSubscriptionsSubscriptionArrayOutput {
 	return o
-}
-
-func (o GetServiceSubscriptionsSubscriptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceSubscriptionsSubscription] {
-	return pulumix.Output[[]GetServiceSubscriptionsSubscription]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetServiceSubscriptionsSubscriptionArrayOutput) Index(i pulumi.IntInput) GetServiceSubscriptionsSubscriptionOutput {
@@ -541,12 +492,6 @@ func (i GetServiceTopicsTopicArgs) ToGetServiceTopicsTopicOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTopicsTopicOutput)
 }
 
-func (i GetServiceTopicsTopicArgs) ToOutput(ctx context.Context) pulumix.Output[GetServiceTopicsTopic] {
-	return pulumix.Output[GetServiceTopicsTopic]{
-		OutputState: i.ToGetServiceTopicsTopicOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetServiceTopicsTopicArrayInput is an input type that accepts GetServiceTopicsTopicArray and GetServiceTopicsTopicArrayOutput values.
 // You can construct a concrete instance of `GetServiceTopicsTopicArrayInput` via:
 //
@@ -572,12 +517,6 @@ func (i GetServiceTopicsTopicArray) ToGetServiceTopicsTopicArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTopicsTopicArrayOutput)
 }
 
-func (i GetServiceTopicsTopicArray) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceTopicsTopic] {
-	return pulumix.Output[[]GetServiceTopicsTopic]{
-		OutputState: i.ToGetServiceTopicsTopicArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetServiceTopicsTopicOutput struct{ *pulumi.OutputState }
 
 func (GetServiceTopicsTopicOutput) ElementType() reflect.Type {
@@ -590,12 +529,6 @@ func (o GetServiceTopicsTopicOutput) ToGetServiceTopicsTopicOutput() GetServiceT
 
 func (o GetServiceTopicsTopicOutput) ToGetServiceTopicsTopicOutputWithContext(ctx context.Context) GetServiceTopicsTopicOutput {
 	return o
-}
-
-func (o GetServiceTopicsTopicOutput) ToOutput(ctx context.Context) pulumix.Output[GetServiceTopicsTopic] {
-	return pulumix.Output[GetServiceTopicsTopic]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time when the topic was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
@@ -660,12 +593,6 @@ func (o GetServiceTopicsTopicArrayOutput) ToGetServiceTopicsTopicArrayOutput() G
 
 func (o GetServiceTopicsTopicArrayOutput) ToGetServiceTopicsTopicArrayOutputWithContext(ctx context.Context) GetServiceTopicsTopicArrayOutput {
 	return o
-}
-
-func (o GetServiceTopicsTopicArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetServiceTopicsTopic] {
-	return pulumix.Output[[]GetServiceTopicsTopic]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetServiceTopicsTopicArrayOutput) Index(i pulumi.IntInput) GetServiceTopicsTopicOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Bastion Host Account Share Key Attachment resource.
@@ -257,12 +256,6 @@ func (i *HostAccountShareKeyAttachment) ToHostAccountShareKeyAttachmentOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(HostAccountShareKeyAttachmentOutput)
 }
 
-func (i *HostAccountShareKeyAttachment) ToOutput(ctx context.Context) pulumix.Output[*HostAccountShareKeyAttachment] {
-	return pulumix.Output[*HostAccountShareKeyAttachment]{
-		OutputState: i.ToHostAccountShareKeyAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HostAccountShareKeyAttachmentArrayInput is an input type that accepts HostAccountShareKeyAttachmentArray and HostAccountShareKeyAttachmentArrayOutput values.
 // You can construct a concrete instance of `HostAccountShareKeyAttachmentArrayInput` via:
 //
@@ -286,12 +279,6 @@ func (i HostAccountShareKeyAttachmentArray) ToHostAccountShareKeyAttachmentArray
 
 func (i HostAccountShareKeyAttachmentArray) ToHostAccountShareKeyAttachmentArrayOutputWithContext(ctx context.Context) HostAccountShareKeyAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostAccountShareKeyAttachmentArrayOutput)
-}
-
-func (i HostAccountShareKeyAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*HostAccountShareKeyAttachment] {
-	return pulumix.Output[[]*HostAccountShareKeyAttachment]{
-		OutputState: i.ToHostAccountShareKeyAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HostAccountShareKeyAttachmentMapInput is an input type that accepts HostAccountShareKeyAttachmentMap and HostAccountShareKeyAttachmentMapOutput values.
@@ -319,12 +306,6 @@ func (i HostAccountShareKeyAttachmentMap) ToHostAccountShareKeyAttachmentMapOutp
 	return pulumi.ToOutputWithContext(ctx, i).(HostAccountShareKeyAttachmentMapOutput)
 }
 
-func (i HostAccountShareKeyAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostAccountShareKeyAttachment] {
-	return pulumix.Output[map[string]*HostAccountShareKeyAttachment]{
-		OutputState: i.ToHostAccountShareKeyAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HostAccountShareKeyAttachmentOutput struct{ *pulumi.OutputState }
 
 func (HostAccountShareKeyAttachmentOutput) ElementType() reflect.Type {
@@ -337,12 +318,6 @@ func (o HostAccountShareKeyAttachmentOutput) ToHostAccountShareKeyAttachmentOutp
 
 func (o HostAccountShareKeyAttachmentOutput) ToHostAccountShareKeyAttachmentOutputWithContext(ctx context.Context) HostAccountShareKeyAttachmentOutput {
 	return o
-}
-
-func (o HostAccountShareKeyAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*HostAccountShareKeyAttachment] {
-	return pulumix.Output[*HostAccountShareKeyAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID list of the host account.
@@ -374,12 +349,6 @@ func (o HostAccountShareKeyAttachmentArrayOutput) ToHostAccountShareKeyAttachmen
 	return o
 }
 
-func (o HostAccountShareKeyAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HostAccountShareKeyAttachment] {
-	return pulumix.Output[[]*HostAccountShareKeyAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HostAccountShareKeyAttachmentArrayOutput) Index(i pulumi.IntInput) HostAccountShareKeyAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HostAccountShareKeyAttachment {
 		return vs[0].([]*HostAccountShareKeyAttachment)[vs[1].(int)]
@@ -398,12 +367,6 @@ func (o HostAccountShareKeyAttachmentMapOutput) ToHostAccountShareKeyAttachmentM
 
 func (o HostAccountShareKeyAttachmentMapOutput) ToHostAccountShareKeyAttachmentMapOutputWithContext(ctx context.Context) HostAccountShareKeyAttachmentMapOutput {
 	return o
-}
-
-func (o HostAccountShareKeyAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostAccountShareKeyAttachment] {
-	return pulumix.Output[map[string]*HostAccountShareKeyAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HostAccountShareKeyAttachmentMapOutput) MapIndex(k pulumi.StringInput) HostAccountShareKeyAttachmentOutput {

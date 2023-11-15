@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Storage Gateway Gateway File Share resource.
@@ -456,12 +455,6 @@ func (i *GatewayFileShare) ToGatewayFileShareOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayFileShareOutput)
 }
 
-func (i *GatewayFileShare) ToOutput(ctx context.Context) pulumix.Output[*GatewayFileShare] {
-	return pulumix.Output[*GatewayFileShare]{
-		OutputState: i.ToGatewayFileShareOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GatewayFileShareArrayInput is an input type that accepts GatewayFileShareArray and GatewayFileShareArrayOutput values.
 // You can construct a concrete instance of `GatewayFileShareArrayInput` via:
 //
@@ -485,12 +478,6 @@ func (i GatewayFileShareArray) ToGatewayFileShareArrayOutput() GatewayFileShareA
 
 func (i GatewayFileShareArray) ToGatewayFileShareArrayOutputWithContext(ctx context.Context) GatewayFileShareArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayFileShareArrayOutput)
-}
-
-func (i GatewayFileShareArray) ToOutput(ctx context.Context) pulumix.Output[[]*GatewayFileShare] {
-	return pulumix.Output[[]*GatewayFileShare]{
-		OutputState: i.ToGatewayFileShareArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GatewayFileShareMapInput is an input type that accepts GatewayFileShareMap and GatewayFileShareMapOutput values.
@@ -518,12 +505,6 @@ func (i GatewayFileShareMap) ToGatewayFileShareMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayFileShareMapOutput)
 }
 
-func (i GatewayFileShareMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GatewayFileShare] {
-	return pulumix.Output[map[string]*GatewayFileShare]{
-		OutputState: i.ToGatewayFileShareMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GatewayFileShareOutput struct{ *pulumi.OutputState }
 
 func (GatewayFileShareOutput) ElementType() reflect.Type {
@@ -536,12 +517,6 @@ func (o GatewayFileShareOutput) ToGatewayFileShareOutput() GatewayFileShareOutpu
 
 func (o GatewayFileShareOutput) ToGatewayFileShareOutputWithContext(ctx context.Context) GatewayFileShareOutput {
 	return o
-}
-
-func (o GatewayFileShareOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewayFileShare] {
-	return pulumix.Output[*GatewayFileShare]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version >= 1.0.45 above support.
@@ -728,12 +703,6 @@ func (o GatewayFileShareArrayOutput) ToGatewayFileShareArrayOutputWithContext(ct
 	return o
 }
 
-func (o GatewayFileShareArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GatewayFileShare] {
-	return pulumix.Output[[]*GatewayFileShare]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GatewayFileShareArrayOutput) Index(i pulumi.IntInput) GatewayFileShareOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GatewayFileShare {
 		return vs[0].([]*GatewayFileShare)[vs[1].(int)]
@@ -752,12 +721,6 @@ func (o GatewayFileShareMapOutput) ToGatewayFileShareMapOutput() GatewayFileShar
 
 func (o GatewayFileShareMapOutput) ToGatewayFileShareMapOutputWithContext(ctx context.Context) GatewayFileShareMapOutput {
 	return o
-}
-
-func (o GatewayFileShareMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GatewayFileShare] {
-	return pulumix.Output[map[string]*GatewayFileShare]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GatewayFileShareMapOutput) MapIndex(k pulumi.StringInput) GatewayFileShareOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The SSL-VPN servers data source lists lots of SSL-VPN servers resource information owned by an Alicloud account.
@@ -124,12 +123,6 @@ func (o GetSslVpnServersResultOutput) ToGetSslVpnServersResultOutput() GetSslVpn
 
 func (o GetSslVpnServersResultOutput) ToGetSslVpnServersResultOutputWithContext(ctx context.Context) GetSslVpnServersResultOutput {
 	return o
-}
-
-func (o GetSslVpnServersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSslVpnServersResult] {
-	return pulumix.Output[GetSslVpnServersResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **DEPRECATED:** This resource has been renamed to ecs.EcsDiskAttachment from version 1.122.0.
@@ -210,12 +209,6 @@ func (i *DiskAttachment) ToDiskAttachmentOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(DiskAttachmentOutput)
 }
 
-func (i *DiskAttachment) ToOutput(ctx context.Context) pulumix.Output[*DiskAttachment] {
-	return pulumix.Output[*DiskAttachment]{
-		OutputState: i.ToDiskAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DiskAttachmentArrayInput is an input type that accepts DiskAttachmentArray and DiskAttachmentArrayOutput values.
 // You can construct a concrete instance of `DiskAttachmentArrayInput` via:
 //
@@ -239,12 +232,6 @@ func (i DiskAttachmentArray) ToDiskAttachmentArrayOutput() DiskAttachmentArrayOu
 
 func (i DiskAttachmentArray) ToDiskAttachmentArrayOutputWithContext(ctx context.Context) DiskAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DiskAttachmentArrayOutput)
-}
-
-func (i DiskAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*DiskAttachment] {
-	return pulumix.Output[[]*DiskAttachment]{
-		OutputState: i.ToDiskAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DiskAttachmentMapInput is an input type that accepts DiskAttachmentMap and DiskAttachmentMapOutput values.
@@ -272,12 +259,6 @@ func (i DiskAttachmentMap) ToDiskAttachmentMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DiskAttachmentMapOutput)
 }
 
-func (i DiskAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DiskAttachment] {
-	return pulumix.Output[map[string]*DiskAttachment]{
-		OutputState: i.ToDiskAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DiskAttachmentOutput struct{ *pulumi.OutputState }
 
 func (DiskAttachmentOutput) ElementType() reflect.Type {
@@ -290,12 +271,6 @@ func (o DiskAttachmentOutput) ToDiskAttachmentOutput() DiskAttachmentOutput {
 
 func (o DiskAttachmentOutput) ToDiskAttachmentOutputWithContext(ctx context.Context) DiskAttachmentOutput {
 	return o
-}
-
-func (o DiskAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskAttachment] {
-	return pulumix.Output[*DiskAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiskAttachmentOutput) Bootable() pulumi.BoolPtrOutput {
@@ -342,12 +317,6 @@ func (o DiskAttachmentArrayOutput) ToDiskAttachmentArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o DiskAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DiskAttachment] {
-	return pulumix.Output[[]*DiskAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DiskAttachmentArrayOutput) Index(i pulumi.IntInput) DiskAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DiskAttachment {
 		return vs[0].([]*DiskAttachment)[vs[1].(int)]
@@ -366,12 +335,6 @@ func (o DiskAttachmentMapOutput) ToDiskAttachmentMapOutput() DiskAttachmentMapOu
 
 func (o DiskAttachmentMapOutput) ToDiskAttachmentMapOutputWithContext(ctx context.Context) DiskAttachmentMapOutput {
 	return o
-}
-
-func (o DiskAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DiskAttachment] {
-	return pulumix.Output[map[string]*DiskAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiskAttachmentMapOutput) MapIndex(k pulumi.StringInput) DiskAttachmentOutput {

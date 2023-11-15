@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides user-available access groups. Use when you can create mount points
@@ -154,12 +153,6 @@ func (o GetAccessGroupsResultOutput) ToGetAccessGroupsResultOutput() GetAccessGr
 
 func (o GetAccessGroupsResultOutput) ToGetAccessGroupsResultOutputWithContext(ctx context.Context) GetAccessGroupsResultOutput {
 	return o
-}
-
-func (o GetAccessGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccessGroupsResult] {
-	return pulumix.Output[GetAccessGroupsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Available in 1.95.0+) The name of the AccessGroup.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the resource manager folders of the current Alibaba Cloud user.
@@ -134,12 +133,6 @@ func (o GetFoldersResultOutput) ToGetFoldersResultOutput() GetFoldersResultOutpu
 
 func (o GetFoldersResultOutput) ToGetFoldersResultOutputWithContext(ctx context.Context) GetFoldersResultOutput {
 	return o
-}
-
-func (o GetFoldersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetFoldersResult] {
-	return pulumix.Output[GetFoldersResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetFoldersResultOutput) EnableDetails() pulumi.BoolPtrOutput {

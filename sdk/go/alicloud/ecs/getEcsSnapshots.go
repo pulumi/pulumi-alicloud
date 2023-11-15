@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ecs Snapshots of the current Alibaba Cloud user.
@@ -181,12 +180,6 @@ func (o GetEcsSnapshotsResultOutput) ToGetEcsSnapshotsResultOutput() GetEcsSnaps
 
 func (o GetEcsSnapshotsResultOutput) ToGetEcsSnapshotsResultOutputWithContext(ctx context.Context) GetEcsSnapshotsResultOutput {
 	return o
-}
-
-func (o GetEcsSnapshotsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEcsSnapshotsResult] {
-	return pulumix.Output[GetEcsSnapshotsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetEcsSnapshotsResultOutput) Category() pulumi.StringPtrOutput {

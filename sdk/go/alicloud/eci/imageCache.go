@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An ECI Image Cache can help user to solve the time-consuming problem of image pull. For information about Alicloud ECI Image Cache and how to use it, see [What is Resource Alicloud ECI Image Cache](https://www.alibabacloud.com/help/doc-detail/146891.htm).
@@ -316,12 +315,6 @@ func (i *ImageCache) ToImageCacheOutputWithContext(ctx context.Context) ImageCac
 	return pulumi.ToOutputWithContext(ctx, i).(ImageCacheOutput)
 }
 
-func (i *ImageCache) ToOutput(ctx context.Context) pulumix.Output[*ImageCache] {
-	return pulumix.Output[*ImageCache]{
-		OutputState: i.ToImageCacheOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ImageCacheArrayInput is an input type that accepts ImageCacheArray and ImageCacheArrayOutput values.
 // You can construct a concrete instance of `ImageCacheArrayInput` via:
 //
@@ -345,12 +338,6 @@ func (i ImageCacheArray) ToImageCacheArrayOutput() ImageCacheArrayOutput {
 
 func (i ImageCacheArray) ToImageCacheArrayOutputWithContext(ctx context.Context) ImageCacheArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageCacheArrayOutput)
-}
-
-func (i ImageCacheArray) ToOutput(ctx context.Context) pulumix.Output[[]*ImageCache] {
-	return pulumix.Output[[]*ImageCache]{
-		OutputState: i.ToImageCacheArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ImageCacheMapInput is an input type that accepts ImageCacheMap and ImageCacheMapOutput values.
@@ -378,12 +365,6 @@ func (i ImageCacheMap) ToImageCacheMapOutputWithContext(ctx context.Context) Ima
 	return pulumi.ToOutputWithContext(ctx, i).(ImageCacheMapOutput)
 }
 
-func (i ImageCacheMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ImageCache] {
-	return pulumix.Output[map[string]*ImageCache]{
-		OutputState: i.ToImageCacheMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ImageCacheOutput struct{ *pulumi.OutputState }
 
 func (ImageCacheOutput) ElementType() reflect.Type {
@@ -396,12 +377,6 @@ func (o ImageCacheOutput) ToImageCacheOutput() ImageCacheOutput {
 
 func (o ImageCacheOutput) ToImageCacheOutputWithContext(ctx context.Context) ImageCacheOutput {
 	return o
-}
-
-func (o ImageCacheOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageCache] {
-	return pulumix.Output[*ImageCache]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the container group job that is used to create the image cache.
@@ -478,12 +453,6 @@ func (o ImageCacheArrayOutput) ToImageCacheArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o ImageCacheArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ImageCache] {
-	return pulumix.Output[[]*ImageCache]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ImageCacheArrayOutput) Index(i pulumi.IntInput) ImageCacheOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ImageCache {
 		return vs[0].([]*ImageCache)[vs[1].(int)]
@@ -502,12 +471,6 @@ func (o ImageCacheMapOutput) ToImageCacheMapOutput() ImageCacheMapOutput {
 
 func (o ImageCacheMapOutput) ToImageCacheMapOutputWithContext(ctx context.Context) ImageCacheMapOutput {
 	return o
-}
-
-func (o ImageCacheMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ImageCache] {
-	return pulumix.Output[map[string]*ImageCache]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ImageCacheMapOutput) MapIndex(k pulumi.StringInput) ImageCacheOutput {

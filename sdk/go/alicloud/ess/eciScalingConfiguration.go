@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ESS eci scaling configuration resource.
@@ -544,12 +543,6 @@ func (i *EciScalingConfiguration) ToEciScalingConfigurationOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationOutput)
 }
 
-func (i *EciScalingConfiguration) ToOutput(ctx context.Context) pulumix.Output[*EciScalingConfiguration] {
-	return pulumix.Output[*EciScalingConfiguration]{
-		OutputState: i.ToEciScalingConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EciScalingConfigurationArrayInput is an input type that accepts EciScalingConfigurationArray and EciScalingConfigurationArrayOutput values.
 // You can construct a concrete instance of `EciScalingConfigurationArrayInput` via:
 //
@@ -573,12 +566,6 @@ func (i EciScalingConfigurationArray) ToEciScalingConfigurationArrayOutput() Eci
 
 func (i EciScalingConfigurationArray) ToEciScalingConfigurationArrayOutputWithContext(ctx context.Context) EciScalingConfigurationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationArrayOutput)
-}
-
-func (i EciScalingConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]*EciScalingConfiguration] {
-	return pulumix.Output[[]*EciScalingConfiguration]{
-		OutputState: i.ToEciScalingConfigurationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EciScalingConfigurationMapInput is an input type that accepts EciScalingConfigurationMap and EciScalingConfigurationMapOutput values.
@@ -606,12 +593,6 @@ func (i EciScalingConfigurationMap) ToEciScalingConfigurationMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationMapOutput)
 }
 
-func (i EciScalingConfigurationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EciScalingConfiguration] {
-	return pulumix.Output[map[string]*EciScalingConfiguration]{
-		OutputState: i.ToEciScalingConfigurationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EciScalingConfigurationOutput struct{ *pulumi.OutputState }
 
 func (EciScalingConfigurationOutput) ElementType() reflect.Type {
@@ -624,12 +605,6 @@ func (o EciScalingConfigurationOutput) ToEciScalingConfigurationOutput() EciScal
 
 func (o EciScalingConfigurationOutput) ToEciScalingConfigurationOutputWithContext(ctx context.Context) EciScalingConfigurationOutput {
 	return o
-}
-
-func (o EciScalingConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*EciScalingConfiguration] {
-	return pulumix.Output[*EciScalingConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Information about the Container Registry Enterprise Edition instance. See `acrRegistryInfos` below for details.
@@ -805,12 +780,6 @@ func (o EciScalingConfigurationArrayOutput) ToEciScalingConfigurationArrayOutput
 	return o
 }
 
-func (o EciScalingConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EciScalingConfiguration] {
-	return pulumix.Output[[]*EciScalingConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EciScalingConfigurationArrayOutput) Index(i pulumi.IntInput) EciScalingConfigurationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EciScalingConfiguration {
 		return vs[0].([]*EciScalingConfiguration)[vs[1].(int)]
@@ -829,12 +798,6 @@ func (o EciScalingConfigurationMapOutput) ToEciScalingConfigurationMapOutput() E
 
 func (o EciScalingConfigurationMapOutput) ToEciScalingConfigurationMapOutputWithContext(ctx context.Context) EciScalingConfigurationMapOutput {
 	return o
-}
-
-func (o EciScalingConfigurationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EciScalingConfiguration] {
-	return pulumix.Output[map[string]*EciScalingConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EciScalingConfigurationMapOutput) MapIndex(k pulumi.StringInput) EciScalingConfigurationOutput {

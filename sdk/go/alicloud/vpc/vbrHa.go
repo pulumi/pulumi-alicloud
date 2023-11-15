@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a VPC Vbr Ha resource.
@@ -164,12 +163,6 @@ func (i *VbrHa) ToVbrHaOutputWithContext(ctx context.Context) VbrHaOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VbrHaOutput)
 }
 
-func (i *VbrHa) ToOutput(ctx context.Context) pulumix.Output[*VbrHa] {
-	return pulumix.Output[*VbrHa]{
-		OutputState: i.ToVbrHaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VbrHaArrayInput is an input type that accepts VbrHaArray and VbrHaArrayOutput values.
 // You can construct a concrete instance of `VbrHaArrayInput` via:
 //
@@ -193,12 +186,6 @@ func (i VbrHaArray) ToVbrHaArrayOutput() VbrHaArrayOutput {
 
 func (i VbrHaArray) ToVbrHaArrayOutputWithContext(ctx context.Context) VbrHaArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VbrHaArrayOutput)
-}
-
-func (i VbrHaArray) ToOutput(ctx context.Context) pulumix.Output[[]*VbrHa] {
-	return pulumix.Output[[]*VbrHa]{
-		OutputState: i.ToVbrHaArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // VbrHaMapInput is an input type that accepts VbrHaMap and VbrHaMapOutput values.
@@ -226,12 +213,6 @@ func (i VbrHaMap) ToVbrHaMapOutputWithContext(ctx context.Context) VbrHaMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(VbrHaMapOutput)
 }
 
-func (i VbrHaMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VbrHa] {
-	return pulumix.Output[map[string]*VbrHa]{
-		OutputState: i.ToVbrHaMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VbrHaOutput struct{ *pulumi.OutputState }
 
 func (VbrHaOutput) ElementType() reflect.Type {
@@ -244,12 +225,6 @@ func (o VbrHaOutput) ToVbrHaOutput() VbrHaOutput {
 
 func (o VbrHaOutput) ToVbrHaOutputWithContext(ctx context.Context) VbrHaOutput {
 	return o
-}
-
-func (o VbrHaOutput) ToOutput(ctx context.Context) pulumix.Output[*VbrHa] {
-	return pulumix.Output[*VbrHa]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
@@ -296,12 +271,6 @@ func (o VbrHaArrayOutput) ToVbrHaArrayOutputWithContext(ctx context.Context) Vbr
 	return o
 }
 
-func (o VbrHaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VbrHa] {
-	return pulumix.Output[[]*VbrHa]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VbrHaArrayOutput) Index(i pulumi.IntInput) VbrHaOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VbrHa {
 		return vs[0].([]*VbrHa)[vs[1].(int)]
@@ -320,12 +289,6 @@ func (o VbrHaMapOutput) ToVbrHaMapOutput() VbrHaMapOutput {
 
 func (o VbrHaMapOutput) ToVbrHaMapOutputWithContext(ctx context.Context) VbrHaMapOutput {
 	return o
-}
-
-func (o VbrHaMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VbrHa] {
-	return pulumix.Output[map[string]*VbrHa]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VbrHaMapOutput) MapIndex(k pulumi.StringInput) VbrHaOutput {

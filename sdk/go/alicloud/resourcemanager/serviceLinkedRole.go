@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Resource Manager Service Linked Role.
@@ -181,12 +180,6 @@ func (i *ServiceLinkedRole) ToServiceLinkedRoleOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceLinkedRoleOutput)
 }
 
-func (i *ServiceLinkedRole) ToOutput(ctx context.Context) pulumix.Output[*ServiceLinkedRole] {
-	return pulumix.Output[*ServiceLinkedRole]{
-		OutputState: i.ToServiceLinkedRoleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceLinkedRoleArrayInput is an input type that accepts ServiceLinkedRoleArray and ServiceLinkedRoleArrayOutput values.
 // You can construct a concrete instance of `ServiceLinkedRoleArrayInput` via:
 //
@@ -210,12 +203,6 @@ func (i ServiceLinkedRoleArray) ToServiceLinkedRoleArrayOutput() ServiceLinkedRo
 
 func (i ServiceLinkedRoleArray) ToServiceLinkedRoleArrayOutputWithContext(ctx context.Context) ServiceLinkedRoleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceLinkedRoleArrayOutput)
-}
-
-func (i ServiceLinkedRoleArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceLinkedRole] {
-	return pulumix.Output[[]*ServiceLinkedRole]{
-		OutputState: i.ToServiceLinkedRoleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServiceLinkedRoleMapInput is an input type that accepts ServiceLinkedRoleMap and ServiceLinkedRoleMapOutput values.
@@ -243,12 +230,6 @@ func (i ServiceLinkedRoleMap) ToServiceLinkedRoleMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceLinkedRoleMapOutput)
 }
 
-func (i ServiceLinkedRoleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceLinkedRole] {
-	return pulumix.Output[map[string]*ServiceLinkedRole]{
-		OutputState: i.ToServiceLinkedRoleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceLinkedRoleOutput struct{ *pulumi.OutputState }
 
 func (ServiceLinkedRoleOutput) ElementType() reflect.Type {
@@ -261,12 +242,6 @@ func (o ServiceLinkedRoleOutput) ToServiceLinkedRoleOutput() ServiceLinkedRoleOu
 
 func (o ServiceLinkedRoleOutput) ToServiceLinkedRoleOutputWithContext(ctx context.Context) ServiceLinkedRoleOutput {
 	return o
-}
-
-func (o ServiceLinkedRoleOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceLinkedRole] {
-	return pulumix.Output[*ServiceLinkedRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Alibaba Cloud Resource Name (ARN) of the role.
@@ -313,12 +288,6 @@ func (o ServiceLinkedRoleArrayOutput) ToServiceLinkedRoleArrayOutputWithContext(
 	return o
 }
 
-func (o ServiceLinkedRoleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceLinkedRole] {
-	return pulumix.Output[[]*ServiceLinkedRole]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceLinkedRoleArrayOutput) Index(i pulumi.IntInput) ServiceLinkedRoleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServiceLinkedRole {
 		return vs[0].([]*ServiceLinkedRole)[vs[1].(int)]
@@ -337,12 +306,6 @@ func (o ServiceLinkedRoleMapOutput) ToServiceLinkedRoleMapOutput() ServiceLinked
 
 func (o ServiceLinkedRoleMapOutput) ToServiceLinkedRoleMapOutputWithContext(ctx context.Context) ServiceLinkedRoleMapOutput {
 	return o
-}
-
-func (o ServiceLinkedRoleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceLinkedRole] {
-	return pulumix.Output[map[string]*ServiceLinkedRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceLinkedRoleMapOutput) MapIndex(k pulumi.StringInput) ServiceLinkedRoleOutput {

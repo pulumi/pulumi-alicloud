@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ehpc Job Templates of the current Alibaba Cloud user.
@@ -117,12 +116,6 @@ func (o GetJobTemplatesResultOutput) ToGetJobTemplatesResultOutput() GetJobTempl
 
 func (o GetJobTemplatesResultOutput) ToGetJobTemplatesResultOutputWithContext(ctx context.Context) GetJobTemplatesResultOutput {
 	return o
-}
-
-func (o GetJobTemplatesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetJobTemplatesResult] {
-	return pulumix.Output[GetJobTemplatesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

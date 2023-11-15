@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The dashboard is a real-time data analysis platform provided by the log service. You can display frequently used query and analysis statements in the form of charts and save statistical charts to the dashboard.
@@ -244,12 +243,6 @@ func (i *Dashboard) ToDashboardOutputWithContext(ctx context.Context) DashboardO
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardOutput)
 }
 
-func (i *Dashboard) ToOutput(ctx context.Context) pulumix.Output[*Dashboard] {
-	return pulumix.Output[*Dashboard]{
-		OutputState: i.ToDashboardOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DashboardArrayInput is an input type that accepts DashboardArray and DashboardArrayOutput values.
 // You can construct a concrete instance of `DashboardArrayInput` via:
 //
@@ -273,12 +266,6 @@ func (i DashboardArray) ToDashboardArrayOutput() DashboardArrayOutput {
 
 func (i DashboardArray) ToDashboardArrayOutputWithContext(ctx context.Context) DashboardArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardArrayOutput)
-}
-
-func (i DashboardArray) ToOutput(ctx context.Context) pulumix.Output[[]*Dashboard] {
-	return pulumix.Output[[]*Dashboard]{
-		OutputState: i.ToDashboardArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DashboardMapInput is an input type that accepts DashboardMap and DashboardMapOutput values.
@@ -306,12 +293,6 @@ func (i DashboardMap) ToDashboardMapOutputWithContext(ctx context.Context) Dashb
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardMapOutput)
 }
 
-func (i DashboardMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Dashboard] {
-	return pulumix.Output[map[string]*Dashboard]{
-		OutputState: i.ToDashboardMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DashboardOutput struct{ *pulumi.OutputState }
 
 func (DashboardOutput) ElementType() reflect.Type {
@@ -324,12 +305,6 @@ func (o DashboardOutput) ToDashboardOutput() DashboardOutput {
 
 func (o DashboardOutput) ToDashboardOutputWithContext(ctx context.Context) DashboardOutput {
 	return o
-}
-
-func (o DashboardOutput) ToOutput(ctx context.Context) pulumix.Output[*Dashboard] {
-	return pulumix.Output[*Dashboard]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Dashboard attribute.
@@ -371,12 +346,6 @@ func (o DashboardArrayOutput) ToDashboardArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o DashboardArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Dashboard] {
-	return pulumix.Output[[]*Dashboard]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DashboardArrayOutput) Index(i pulumi.IntInput) DashboardOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Dashboard {
 		return vs[0].([]*Dashboard)[vs[1].(int)]
@@ -395,12 +364,6 @@ func (o DashboardMapOutput) ToDashboardMapOutput() DashboardMapOutput {
 
 func (o DashboardMapOutput) ToDashboardMapOutputWithContext(ctx context.Context) DashboardMapOutput {
 	return o
-}
-
-func (o DashboardMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Dashboard] {
-	return pulumix.Output[map[string]*Dashboard]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DashboardMapOutput) MapIndex(k pulumi.StringInput) DashboardOutput {

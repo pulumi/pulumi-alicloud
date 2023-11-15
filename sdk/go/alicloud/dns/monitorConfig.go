@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DNS Monitor Config resource.
@@ -310,12 +309,6 @@ func (i *MonitorConfig) ToMonitorConfigOutputWithContext(ctx context.Context) Mo
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorConfigOutput)
 }
 
-func (i *MonitorConfig) ToOutput(ctx context.Context) pulumix.Output[*MonitorConfig] {
-	return pulumix.Output[*MonitorConfig]{
-		OutputState: i.ToMonitorConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MonitorConfigArrayInput is an input type that accepts MonitorConfigArray and MonitorConfigArrayOutput values.
 // You can construct a concrete instance of `MonitorConfigArrayInput` via:
 //
@@ -339,12 +332,6 @@ func (i MonitorConfigArray) ToMonitorConfigArrayOutput() MonitorConfigArrayOutpu
 
 func (i MonitorConfigArray) ToMonitorConfigArrayOutputWithContext(ctx context.Context) MonitorConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorConfigArrayOutput)
-}
-
-func (i MonitorConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*MonitorConfig] {
-	return pulumix.Output[[]*MonitorConfig]{
-		OutputState: i.ToMonitorConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MonitorConfigMapInput is an input type that accepts MonitorConfigMap and MonitorConfigMapOutput values.
@@ -372,12 +359,6 @@ func (i MonitorConfigMap) ToMonitorConfigMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorConfigMapOutput)
 }
 
-func (i MonitorConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MonitorConfig] {
-	return pulumix.Output[map[string]*MonitorConfig]{
-		OutputState: i.ToMonitorConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MonitorConfigOutput struct{ *pulumi.OutputState }
 
 func (MonitorConfigOutput) ElementType() reflect.Type {
@@ -390,12 +371,6 @@ func (o MonitorConfigOutput) ToMonitorConfigOutput() MonitorConfigOutput {
 
 func (o MonitorConfigOutput) ToMonitorConfigOutputWithContext(ctx context.Context) MonitorConfigOutput {
 	return o
-}
-
-func (o MonitorConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*MonitorConfig] {
-	return pulumix.Output[*MonitorConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the address pool.
@@ -452,12 +427,6 @@ func (o MonitorConfigArrayOutput) ToMonitorConfigArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o MonitorConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MonitorConfig] {
-	return pulumix.Output[[]*MonitorConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MonitorConfigArrayOutput) Index(i pulumi.IntInput) MonitorConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MonitorConfig {
 		return vs[0].([]*MonitorConfig)[vs[1].(int)]
@@ -476,12 +445,6 @@ func (o MonitorConfigMapOutput) ToMonitorConfigMapOutput() MonitorConfigMapOutpu
 
 func (o MonitorConfigMapOutput) ToMonitorConfigMapOutputWithContext(ctx context.Context) MonitorConfigMapOutput {
 	return o
-}
-
-func (o MonitorConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MonitorConfig] {
-	return pulumix.Output[map[string]*MonitorConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MonitorConfigMapOutput) MapIndex(k pulumi.StringInput) MonitorConfigOutput {

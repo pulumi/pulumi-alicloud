@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -59,12 +58,6 @@ func (i GetProductProductArgs) ToGetProductProductOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetProductProductOutput)
 }
 
-func (i GetProductProductArgs) ToOutput(ctx context.Context) pulumix.Output[GetProductProduct] {
-	return pulumix.Output[GetProductProduct]{
-		OutputState: i.ToGetProductProductOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetProductProductArrayInput is an input type that accepts GetProductProductArray and GetProductProductArrayOutput values.
 // You can construct a concrete instance of `GetProductProductArrayInput` via:
 //
@@ -90,12 +83,6 @@ func (i GetProductProductArray) ToGetProductProductArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetProductProductArrayOutput)
 }
 
-func (i GetProductProductArray) ToOutput(ctx context.Context) pulumix.Output[[]GetProductProduct] {
-	return pulumix.Output[[]GetProductProduct]{
-		OutputState: i.ToGetProductProductArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetProductProductOutput struct{ *pulumi.OutputState }
 
 func (GetProductProductOutput) ElementType() reflect.Type {
@@ -108,12 +95,6 @@ func (o GetProductProductOutput) ToGetProductProductOutput() GetProductProductOu
 
 func (o GetProductProductOutput) ToGetProductProductOutputWithContext(ctx context.Context) GetProductProductOutput {
 	return o
-}
-
-func (o GetProductProductOutput) ToOutput(ctx context.Context) pulumix.Output[GetProductProduct] {
-	return pulumix.Output[GetProductProduct]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The code of the product.
@@ -148,12 +129,6 @@ func (o GetProductProductArrayOutput) ToGetProductProductArrayOutput() GetProduc
 
 func (o GetProductProductArrayOutput) ToGetProductProductArrayOutputWithContext(ctx context.Context) GetProductProductArrayOutput {
 	return o
-}
-
-func (o GetProductProductArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetProductProduct] {
-	return pulumix.Output[[]GetProductProduct]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetProductProductArrayOutput) Index(i pulumi.IntInput) GetProductProductOutput {
@@ -207,12 +182,6 @@ func (i GetProductProductSkusArgs) ToGetProductProductSkusOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetProductProductSkusOutput)
 }
 
-func (i GetProductProductSkusArgs) ToOutput(ctx context.Context) pulumix.Output[GetProductProductSkus] {
-	return pulumix.Output[GetProductProductSkus]{
-		OutputState: i.ToGetProductProductSkusOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetProductProductSkusArrayInput is an input type that accepts GetProductProductSkusArray and GetProductProductSkusArrayOutput values.
 // You can construct a concrete instance of `GetProductProductSkusArrayInput` via:
 //
@@ -238,12 +207,6 @@ func (i GetProductProductSkusArray) ToGetProductProductSkusArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetProductProductSkusArrayOutput)
 }
 
-func (i GetProductProductSkusArray) ToOutput(ctx context.Context) pulumix.Output[[]GetProductProductSkus] {
-	return pulumix.Output[[]GetProductProductSkus]{
-		OutputState: i.ToGetProductProductSkusArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetProductProductSkusOutput struct{ *pulumi.OutputState }
 
 func (GetProductProductSkusOutput) ElementType() reflect.Type {
@@ -256,12 +219,6 @@ func (o GetProductProductSkusOutput) ToGetProductProductSkusOutput() GetProductP
 
 func (o GetProductProductSkusOutput) ToGetProductProductSkusOutputWithContext(ctx context.Context) GetProductProductSkusOutput {
 	return o
-}
-
-func (o GetProductProductSkusOutput) ToOutput(ctx context.Context) pulumix.Output[GetProductProductSkus] {
-	return pulumix.Output[GetProductProductSkus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of custom ECS images, Each element contains the following attributes:
@@ -296,12 +253,6 @@ func (o GetProductProductSkusArrayOutput) ToGetProductProductSkusArrayOutput() G
 
 func (o GetProductProductSkusArrayOutput) ToGetProductProductSkusArrayOutputWithContext(ctx context.Context) GetProductProductSkusArrayOutput {
 	return o
-}
-
-func (o GetProductProductSkusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetProductProductSkus] {
-	return pulumix.Output[[]GetProductProductSkus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetProductProductSkusArrayOutput) Index(i pulumi.IntInput) GetProductProductSkusOutput {
@@ -351,12 +302,6 @@ func (i GetProductProductSkusImageArgs) ToGetProductProductSkusImageOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetProductProductSkusImageOutput)
 }
 
-func (i GetProductProductSkusImageArgs) ToOutput(ctx context.Context) pulumix.Output[GetProductProductSkusImage] {
-	return pulumix.Output[GetProductProductSkusImage]{
-		OutputState: i.ToGetProductProductSkusImageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetProductProductSkusImageArrayInput is an input type that accepts GetProductProductSkusImageArray and GetProductProductSkusImageArrayOutput values.
 // You can construct a concrete instance of `GetProductProductSkusImageArrayInput` via:
 //
@@ -382,12 +327,6 @@ func (i GetProductProductSkusImageArray) ToGetProductProductSkusImageArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetProductProductSkusImageArrayOutput)
 }
 
-func (i GetProductProductSkusImageArray) ToOutput(ctx context.Context) pulumix.Output[[]GetProductProductSkusImage] {
-	return pulumix.Output[[]GetProductProductSkusImage]{
-		OutputState: i.ToGetProductProductSkusImageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetProductProductSkusImageOutput struct{ *pulumi.OutputState }
 
 func (GetProductProductSkusImageOutput) ElementType() reflect.Type {
@@ -400,12 +339,6 @@ func (o GetProductProductSkusImageOutput) ToGetProductProductSkusImageOutput() G
 
 func (o GetProductProductSkusImageOutput) ToGetProductProductSkusImageOutputWithContext(ctx context.Context) GetProductProductSkusImageOutput {
 	return o
-}
-
-func (o GetProductProductSkusImageOutput) ToOutput(ctx context.Context) pulumix.Output[GetProductProductSkusImage] {
-	return pulumix.Output[GetProductProductSkusImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Ecs image id.
@@ -435,12 +368,6 @@ func (o GetProductProductSkusImageArrayOutput) ToGetProductProductSkusImageArray
 
 func (o GetProductProductSkusImageArrayOutput) ToGetProductProductSkusImageArrayOutputWithContext(ctx context.Context) GetProductProductSkusImageArrayOutput {
 	return o
-}
-
-func (o GetProductProductSkusImageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetProductProductSkusImage] {
-	return pulumix.Output[[]GetProductProductSkusImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetProductProductSkusImageArrayOutput) Index(i pulumi.IntInput) GetProductProductSkusImageOutput {
@@ -486,12 +413,6 @@ func (i GetProductProductSkusPackageVersionArgs) ToGetProductProductSkusPackageV
 	return pulumi.ToOutputWithContext(ctx, i).(GetProductProductSkusPackageVersionOutput)
 }
 
-func (i GetProductProductSkusPackageVersionArgs) ToOutput(ctx context.Context) pulumix.Output[GetProductProductSkusPackageVersion] {
-	return pulumix.Output[GetProductProductSkusPackageVersion]{
-		OutputState: i.ToGetProductProductSkusPackageVersionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetProductProductSkusPackageVersionArrayInput is an input type that accepts GetProductProductSkusPackageVersionArray and GetProductProductSkusPackageVersionArrayOutput values.
 // You can construct a concrete instance of `GetProductProductSkusPackageVersionArrayInput` via:
 //
@@ -517,12 +438,6 @@ func (i GetProductProductSkusPackageVersionArray) ToGetProductProductSkusPackage
 	return pulumi.ToOutputWithContext(ctx, i).(GetProductProductSkusPackageVersionArrayOutput)
 }
 
-func (i GetProductProductSkusPackageVersionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetProductProductSkusPackageVersion] {
-	return pulumix.Output[[]GetProductProductSkusPackageVersion]{
-		OutputState: i.ToGetProductProductSkusPackageVersionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetProductProductSkusPackageVersionOutput struct{ *pulumi.OutputState }
 
 func (GetProductProductSkusPackageVersionOutput) ElementType() reflect.Type {
@@ -535,12 +450,6 @@ func (o GetProductProductSkusPackageVersionOutput) ToGetProductProductSkusPackag
 
 func (o GetProductProductSkusPackageVersionOutput) ToGetProductProductSkusPackageVersionOutputWithContext(ctx context.Context) GetProductProductSkusPackageVersionOutput {
 	return o
-}
-
-func (o GetProductProductSkusPackageVersionOutput) ToOutput(ctx context.Context) pulumix.Output[GetProductProductSkusPackageVersion] {
-	return pulumix.Output[GetProductProductSkusPackageVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The package name of this product sku package.
@@ -565,12 +474,6 @@ func (o GetProductProductSkusPackageVersionArrayOutput) ToGetProductProductSkusP
 
 func (o GetProductProductSkusPackageVersionArrayOutput) ToGetProductProductSkusPackageVersionArrayOutputWithContext(ctx context.Context) GetProductProductSkusPackageVersionArrayOutput {
 	return o
-}
-
-func (o GetProductProductSkusPackageVersionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetProductProductSkusPackageVersion] {
-	return pulumix.Output[[]GetProductProductSkusPackageVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetProductProductSkusPackageVersionArrayOutput) Index(i pulumi.IntInput) GetProductProductSkusPackageVersionOutput {
@@ -668,12 +571,6 @@ func (i GetProductsProductArgs) ToGetProductsProductOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetProductsProductOutput)
 }
 
-func (i GetProductsProductArgs) ToOutput(ctx context.Context) pulumix.Output[GetProductsProduct] {
-	return pulumix.Output[GetProductsProduct]{
-		OutputState: i.ToGetProductsProductOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetProductsProductArrayInput is an input type that accepts GetProductsProductArray and GetProductsProductArrayOutput values.
 // You can construct a concrete instance of `GetProductsProductArrayInput` via:
 //
@@ -699,12 +596,6 @@ func (i GetProductsProductArray) ToGetProductsProductArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetProductsProductArrayOutput)
 }
 
-func (i GetProductsProductArray) ToOutput(ctx context.Context) pulumix.Output[[]GetProductsProduct] {
-	return pulumix.Output[[]GetProductsProduct]{
-		OutputState: i.ToGetProductsProductArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetProductsProductOutput struct{ *pulumi.OutputState }
 
 func (GetProductsProductOutput) ElementType() reflect.Type {
@@ -717,12 +608,6 @@ func (o GetProductsProductOutput) ToGetProductsProductOutput() GetProductsProduc
 
 func (o GetProductsProductOutput) ToGetProductsProductOutputWithContext(ctx context.Context) GetProductsProductOutput {
 	return o
-}
-
-func (o GetProductsProductOutput) ToOutput(ctx context.Context) pulumix.Output[GetProductsProduct] {
-	return pulumix.Output[GetProductsProduct]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Category ID of products.
@@ -812,12 +697,6 @@ func (o GetProductsProductArrayOutput) ToGetProductsProductArrayOutput() GetProd
 
 func (o GetProductsProductArrayOutput) ToGetProductsProductArrayOutputWithContext(ctx context.Context) GetProductsProductArrayOutput {
 	return o
-}
-
-func (o GetProductsProductArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetProductsProduct] {
-	return pulumix.Output[[]GetProductsProduct]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetProductsProductArrayOutput) Index(i pulumi.IntInput) GetProductsProductOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a CEN transit router route table association resource.[What is Cen Transit Router Route Table Association](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutetableaggregation)
@@ -259,12 +258,6 @@ func (i *TransitRouterRouteTableAssociation) ToTransitRouterRouteTableAssociatio
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterRouteTableAssociationOutput)
 }
 
-func (i *TransitRouterRouteTableAssociation) ToOutput(ctx context.Context) pulumix.Output[*TransitRouterRouteTableAssociation] {
-	return pulumix.Output[*TransitRouterRouteTableAssociation]{
-		OutputState: i.ToTransitRouterRouteTableAssociationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TransitRouterRouteTableAssociationArrayInput is an input type that accepts TransitRouterRouteTableAssociationArray and TransitRouterRouteTableAssociationArrayOutput values.
 // You can construct a concrete instance of `TransitRouterRouteTableAssociationArrayInput` via:
 //
@@ -288,12 +281,6 @@ func (i TransitRouterRouteTableAssociationArray) ToTransitRouterRouteTableAssoci
 
 func (i TransitRouterRouteTableAssociationArray) ToTransitRouterRouteTableAssociationArrayOutputWithContext(ctx context.Context) TransitRouterRouteTableAssociationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterRouteTableAssociationArrayOutput)
-}
-
-func (i TransitRouterRouteTableAssociationArray) ToOutput(ctx context.Context) pulumix.Output[[]*TransitRouterRouteTableAssociation] {
-	return pulumix.Output[[]*TransitRouterRouteTableAssociation]{
-		OutputState: i.ToTransitRouterRouteTableAssociationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TransitRouterRouteTableAssociationMapInput is an input type that accepts TransitRouterRouteTableAssociationMap and TransitRouterRouteTableAssociationMapOutput values.
@@ -321,12 +308,6 @@ func (i TransitRouterRouteTableAssociationMap) ToTransitRouterRouteTableAssociat
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterRouteTableAssociationMapOutput)
 }
 
-func (i TransitRouterRouteTableAssociationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransitRouterRouteTableAssociation] {
-	return pulumix.Output[map[string]*TransitRouterRouteTableAssociation]{
-		OutputState: i.ToTransitRouterRouteTableAssociationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TransitRouterRouteTableAssociationOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterRouteTableAssociationOutput) ElementType() reflect.Type {
@@ -339,12 +320,6 @@ func (o TransitRouterRouteTableAssociationOutput) ToTransitRouterRouteTableAssoc
 
 func (o TransitRouterRouteTableAssociationOutput) ToTransitRouterRouteTableAssociationOutputWithContext(ctx context.Context) TransitRouterRouteTableAssociationOutput {
 	return o
-}
-
-func (o TransitRouterRouteTableAssociationOutput) ToOutput(ctx context.Context) pulumix.Output[*TransitRouterRouteTableAssociation] {
-	return pulumix.Output[*TransitRouterRouteTableAssociation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The dry run.
@@ -383,12 +358,6 @@ func (o TransitRouterRouteTableAssociationArrayOutput) ToTransitRouterRouteTable
 	return o
 }
 
-func (o TransitRouterRouteTableAssociationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TransitRouterRouteTableAssociation] {
-	return pulumix.Output[[]*TransitRouterRouteTableAssociation]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TransitRouterRouteTableAssociationArrayOutput) Index(i pulumi.IntInput) TransitRouterRouteTableAssociationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TransitRouterRouteTableAssociation {
 		return vs[0].([]*TransitRouterRouteTableAssociation)[vs[1].(int)]
@@ -407,12 +376,6 @@ func (o TransitRouterRouteTableAssociationMapOutput) ToTransitRouterRouteTableAs
 
 func (o TransitRouterRouteTableAssociationMapOutput) ToTransitRouterRouteTableAssociationMapOutputWithContext(ctx context.Context) TransitRouterRouteTableAssociationMapOutput {
 	return o
-}
-
-func (o TransitRouterRouteTableAssociationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransitRouterRouteTableAssociation] {
-	return pulumix.Output[map[string]*TransitRouterRouteTableAssociation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TransitRouterRouteTableAssociationMapOutput) MapIndex(k pulumi.StringInput) TransitRouterRouteTableAssociationOutput {

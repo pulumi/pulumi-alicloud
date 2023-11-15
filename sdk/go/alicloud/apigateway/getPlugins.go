@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
@@ -141,12 +140,6 @@ func (o GetPluginsResultOutput) ToGetPluginsResultOutput() GetPluginsResultOutpu
 
 func (o GetPluginsResultOutput) ToGetPluginsResultOutputWithContext(ctx context.Context) GetPluginsResultOutput {
 	return o
-}
-
-func (o GetPluginsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPluginsResult] {
-	return pulumix.Output[GetPluginsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

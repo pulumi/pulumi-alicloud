@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Sag DnatEntry resource. This topic describes how to add a DNAT entry to a Smart Access Gateway (SAG) instance to enable the DNAT function. By using the DNAT function, you can forward requests received by public IP addresses to Alibaba Cloud instances according to custom mapping rules.
@@ -232,12 +231,6 @@ func (i *DnatEntry) ToDnatEntryOutputWithContext(ctx context.Context) DnatEntryO
 	return pulumi.ToOutputWithContext(ctx, i).(DnatEntryOutput)
 }
 
-func (i *DnatEntry) ToOutput(ctx context.Context) pulumix.Output[*DnatEntry] {
-	return pulumix.Output[*DnatEntry]{
-		OutputState: i.ToDnatEntryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DnatEntryArrayInput is an input type that accepts DnatEntryArray and DnatEntryArrayOutput values.
 // You can construct a concrete instance of `DnatEntryArrayInput` via:
 //
@@ -261,12 +254,6 @@ func (i DnatEntryArray) ToDnatEntryArrayOutput() DnatEntryArrayOutput {
 
 func (i DnatEntryArray) ToDnatEntryArrayOutputWithContext(ctx context.Context) DnatEntryArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DnatEntryArrayOutput)
-}
-
-func (i DnatEntryArray) ToOutput(ctx context.Context) pulumix.Output[[]*DnatEntry] {
-	return pulumix.Output[[]*DnatEntry]{
-		OutputState: i.ToDnatEntryArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DnatEntryMapInput is an input type that accepts DnatEntryMap and DnatEntryMapOutput values.
@@ -294,12 +281,6 @@ func (i DnatEntryMap) ToDnatEntryMapOutputWithContext(ctx context.Context) DnatE
 	return pulumi.ToOutputWithContext(ctx, i).(DnatEntryMapOutput)
 }
 
-func (i DnatEntryMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DnatEntry] {
-	return pulumix.Output[map[string]*DnatEntry]{
-		OutputState: i.ToDnatEntryMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DnatEntryOutput struct{ *pulumi.OutputState }
 
 func (DnatEntryOutput) ElementType() reflect.Type {
@@ -312,12 +293,6 @@ func (o DnatEntryOutput) ToDnatEntryOutput() DnatEntryOutput {
 
 func (o DnatEntryOutput) ToDnatEntryOutputWithContext(ctx context.Context) DnatEntryOutput {
 	return o
-}
-
-func (o DnatEntryOutput) ToOutput(ctx context.Context) pulumix.Output[*DnatEntry] {
-	return pulumix.Output[*DnatEntry]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The external public IP address.when "type" is "Internet",automatically identify the external ip.
@@ -369,12 +344,6 @@ func (o DnatEntryArrayOutput) ToDnatEntryArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o DnatEntryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DnatEntry] {
-	return pulumix.Output[[]*DnatEntry]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DnatEntryArrayOutput) Index(i pulumi.IntInput) DnatEntryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DnatEntry {
 		return vs[0].([]*DnatEntry)[vs[1].(int)]
@@ -393,12 +362,6 @@ func (o DnatEntryMapOutput) ToDnatEntryMapOutput() DnatEntryMapOutput {
 
 func (o DnatEntryMapOutput) ToDnatEntryMapOutputWithContext(ctx context.Context) DnatEntryMapOutput {
 	return o
-}
-
-func (o DnatEntryMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DnatEntry] {
-	return pulumix.Output[map[string]*DnatEntry]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DnatEntryMapOutput) MapIndex(k pulumi.StringInput) DnatEntryOutput {

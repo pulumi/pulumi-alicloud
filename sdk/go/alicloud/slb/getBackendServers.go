@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the server load balancer backend servers related to a server load balancer..
@@ -112,12 +111,6 @@ func (o GetBackendServersResultOutput) ToGetBackendServersResultOutput() GetBack
 
 func (o GetBackendServersResultOutput) ToGetBackendServersResultOutputWithContext(ctx context.Context) GetBackendServersResultOutput {
 	return o
-}
-
-func (o GetBackendServersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBackendServersResult] {
-	return pulumix.Output[GetBackendServersResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetBackendServersResultOutput) BackendServers() GetBackendServersBackendServerArrayOutput {

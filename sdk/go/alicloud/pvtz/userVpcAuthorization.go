@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Private Zone User Vpc Authorization resource.
@@ -168,12 +167,6 @@ func (i *UserVpcAuthorization) ToUserVpcAuthorizationOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(UserVpcAuthorizationOutput)
 }
 
-func (i *UserVpcAuthorization) ToOutput(ctx context.Context) pulumix.Output[*UserVpcAuthorization] {
-	return pulumix.Output[*UserVpcAuthorization]{
-		OutputState: i.ToUserVpcAuthorizationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // UserVpcAuthorizationArrayInput is an input type that accepts UserVpcAuthorizationArray and UserVpcAuthorizationArrayOutput values.
 // You can construct a concrete instance of `UserVpcAuthorizationArrayInput` via:
 //
@@ -197,12 +190,6 @@ func (i UserVpcAuthorizationArray) ToUserVpcAuthorizationArrayOutput() UserVpcAu
 
 func (i UserVpcAuthorizationArray) ToUserVpcAuthorizationArrayOutputWithContext(ctx context.Context) UserVpcAuthorizationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserVpcAuthorizationArrayOutput)
-}
-
-func (i UserVpcAuthorizationArray) ToOutput(ctx context.Context) pulumix.Output[[]*UserVpcAuthorization] {
-	return pulumix.Output[[]*UserVpcAuthorization]{
-		OutputState: i.ToUserVpcAuthorizationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // UserVpcAuthorizationMapInput is an input type that accepts UserVpcAuthorizationMap and UserVpcAuthorizationMapOutput values.
@@ -230,12 +217,6 @@ func (i UserVpcAuthorizationMap) ToUserVpcAuthorizationMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(UserVpcAuthorizationMapOutput)
 }
 
-func (i UserVpcAuthorizationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*UserVpcAuthorization] {
-	return pulumix.Output[map[string]*UserVpcAuthorization]{
-		OutputState: i.ToUserVpcAuthorizationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UserVpcAuthorizationOutput struct{ *pulumi.OutputState }
 
 func (UserVpcAuthorizationOutput) ElementType() reflect.Type {
@@ -248,12 +229,6 @@ func (o UserVpcAuthorizationOutput) ToUserVpcAuthorizationOutput() UserVpcAuthor
 
 func (o UserVpcAuthorizationOutput) ToUserVpcAuthorizationOutputWithContext(ctx context.Context) UserVpcAuthorizationOutput {
 	return o
-}
-
-func (o UserVpcAuthorizationOutput) ToOutput(ctx context.Context) pulumix.Output[*UserVpcAuthorization] {
-	return pulumix.Output[*UserVpcAuthorization]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The auth channel. Valid values: `RESOURCE_DIRECTORY`.
@@ -285,12 +260,6 @@ func (o UserVpcAuthorizationArrayOutput) ToUserVpcAuthorizationArrayOutputWithCo
 	return o
 }
 
-func (o UserVpcAuthorizationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*UserVpcAuthorization] {
-	return pulumix.Output[[]*UserVpcAuthorization]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o UserVpcAuthorizationArrayOutput) Index(i pulumi.IntInput) UserVpcAuthorizationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *UserVpcAuthorization {
 		return vs[0].([]*UserVpcAuthorization)[vs[1].(int)]
@@ -309,12 +278,6 @@ func (o UserVpcAuthorizationMapOutput) ToUserVpcAuthorizationMapOutput() UserVpc
 
 func (o UserVpcAuthorizationMapOutput) ToUserVpcAuthorizationMapOutputWithContext(ctx context.Context) UserVpcAuthorizationMapOutput {
 	return o
-}
-
-func (o UserVpcAuthorizationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*UserVpcAuthorization] {
-	return pulumix.Output[map[string]*UserVpcAuthorization]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserVpcAuthorizationMapOutput) MapIndex(k pulumi.StringInput) UserVpcAuthorizationOutput {

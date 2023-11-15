@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -55,12 +54,6 @@ func (i AppGroupOrderArgs) ToAppGroupOrderOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AppGroupOrderOutput)
 }
 
-func (i AppGroupOrderArgs) ToOutput(ctx context.Context) pulumix.Output[AppGroupOrder] {
-	return pulumix.Output[AppGroupOrder]{
-		OutputState: i.ToAppGroupOrderOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AppGroupOrderArrayInput is an input type that accepts AppGroupOrderArray and AppGroupOrderArrayOutput values.
 // You can construct a concrete instance of `AppGroupOrderArrayInput` via:
 //
@@ -86,12 +79,6 @@ func (i AppGroupOrderArray) ToAppGroupOrderArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(AppGroupOrderArrayOutput)
 }
 
-func (i AppGroupOrderArray) ToOutput(ctx context.Context) pulumix.Output[[]AppGroupOrder] {
-	return pulumix.Output[[]AppGroupOrder]{
-		OutputState: i.ToAppGroupOrderArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AppGroupOrderOutput struct{ *pulumi.OutputState }
 
 func (AppGroupOrderOutput) ElementType() reflect.Type {
@@ -104,12 +91,6 @@ func (o AppGroupOrderOutput) ToAppGroupOrderOutput() AppGroupOrderOutput {
 
 func (o AppGroupOrderOutput) ToAppGroupOrderOutputWithContext(ctx context.Context) AppGroupOrderOutput {
 	return o
-}
-
-func (o AppGroupOrderOutput) ToOutput(ctx context.Context) pulumix.Output[AppGroupOrder] {
-	return pulumix.Output[AppGroupOrder]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to renew automatically. It only takes effect when the parameter paymentType takes the value `Subscription`.
@@ -139,12 +120,6 @@ func (o AppGroupOrderArrayOutput) ToAppGroupOrderArrayOutput() AppGroupOrderArra
 
 func (o AppGroupOrderArrayOutput) ToAppGroupOrderArrayOutputWithContext(ctx context.Context) AppGroupOrderArrayOutput {
 	return o
-}
-
-func (o AppGroupOrderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AppGroupOrder] {
-	return pulumix.Output[[]AppGroupOrder]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppGroupOrderArrayOutput) Index(i pulumi.IntInput) AppGroupOrderOutput {
@@ -212,12 +187,6 @@ func (i AppGroupQuotaArgs) ToAppGroupQuotaOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AppGroupQuotaOutput)
 }
 
-func (i AppGroupQuotaArgs) ToOutput(ctx context.Context) pulumix.Output[AppGroupQuota] {
-	return pulumix.Output[AppGroupQuota]{
-		OutputState: i.ToAppGroupQuotaOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AppGroupQuotaArgs) ToAppGroupQuotaPtrOutput() AppGroupQuotaPtrOutput {
 	return i.ToAppGroupQuotaPtrOutputWithContext(context.Background())
 }
@@ -259,12 +228,6 @@ func (i *appGroupQuotaPtrType) ToAppGroupQuotaPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AppGroupQuotaPtrOutput)
 }
 
-func (i *appGroupQuotaPtrType) ToOutput(ctx context.Context) pulumix.Output[*AppGroupQuota] {
-	return pulumix.Output[*AppGroupQuota]{
-		OutputState: i.ToAppGroupQuotaPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AppGroupQuotaOutput struct{ *pulumi.OutputState }
 
 func (AppGroupQuotaOutput) ElementType() reflect.Type {
@@ -287,12 +250,6 @@ func (o AppGroupQuotaOutput) ToAppGroupQuotaPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppGroupQuota) *AppGroupQuota {
 		return &v
 	}).(AppGroupQuotaPtrOutput)
-}
-
-func (o AppGroupQuotaOutput) ToOutput(ctx context.Context) pulumix.Output[AppGroupQuota] {
-	return pulumix.Output[AppGroupQuota]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Computing resources. Unit: LCU.
@@ -334,12 +291,6 @@ func (o AppGroupQuotaPtrOutput) ToAppGroupQuotaPtrOutput() AppGroupQuotaPtrOutpu
 
 func (o AppGroupQuotaPtrOutput) ToAppGroupQuotaPtrOutputWithContext(ctx context.Context) AppGroupQuotaPtrOutput {
 	return o
-}
-
-func (o AppGroupQuotaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppGroupQuota] {
-	return pulumix.Output[*AppGroupQuota]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppGroupQuotaPtrOutput) Elem() AppGroupQuotaOutput {
@@ -530,12 +481,6 @@ func (i GetAppGroupsGroupArgs) ToGetAppGroupsGroupOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppGroupsGroupOutput)
 }
 
-func (i GetAppGroupsGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetAppGroupsGroup] {
-	return pulumix.Output[GetAppGroupsGroup]{
-		OutputState: i.ToGetAppGroupsGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAppGroupsGroupArrayInput is an input type that accepts GetAppGroupsGroupArray and GetAppGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetAppGroupsGroupArrayInput` via:
 //
@@ -561,12 +506,6 @@ func (i GetAppGroupsGroupArray) ToGetAppGroupsGroupArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppGroupsGroupArrayOutput)
 }
 
-func (i GetAppGroupsGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAppGroupsGroup] {
-	return pulumix.Output[[]GetAppGroupsGroup]{
-		OutputState: i.ToGetAppGroupsGroupArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAppGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetAppGroupsGroupOutput) ElementType() reflect.Type {
@@ -579,12 +518,6 @@ func (o GetAppGroupsGroupOutput) ToGetAppGroupsGroupOutput() GetAppGroupsGroupOu
 
 func (o GetAppGroupsGroupOutput) ToGetAppGroupsGroupOutputWithContext(ctx context.Context) GetAppGroupsGroupOutput {
 	return o
-}
-
-func (o GetAppGroupsGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetAppGroupsGroup] {
-	return pulumix.Output[GetAppGroupsGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the App Group.
@@ -730,12 +663,6 @@ func (o GetAppGroupsGroupArrayOutput) ToGetAppGroupsGroupArrayOutputWithContext(
 	return o
 }
 
-func (o GetAppGroupsGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAppGroupsGroup] {
-	return pulumix.Output[[]GetAppGroupsGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetAppGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetAppGroupsGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppGroupsGroup {
 		return vs[0].([]GetAppGroupsGroup)[vs[1].(int)]
@@ -797,12 +724,6 @@ func (i GetAppGroupsGroupQuotaArgs) ToGetAppGroupsGroupQuotaOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppGroupsGroupQuotaOutput)
 }
 
-func (i GetAppGroupsGroupQuotaArgs) ToOutput(ctx context.Context) pulumix.Output[GetAppGroupsGroupQuota] {
-	return pulumix.Output[GetAppGroupsGroupQuota]{
-		OutputState: i.ToGetAppGroupsGroupQuotaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAppGroupsGroupQuotaArrayInput is an input type that accepts GetAppGroupsGroupQuotaArray and GetAppGroupsGroupQuotaArrayOutput values.
 // You can construct a concrete instance of `GetAppGroupsGroupQuotaArrayInput` via:
 //
@@ -828,12 +749,6 @@ func (i GetAppGroupsGroupQuotaArray) ToGetAppGroupsGroupQuotaArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppGroupsGroupQuotaArrayOutput)
 }
 
-func (i GetAppGroupsGroupQuotaArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAppGroupsGroupQuota] {
-	return pulumix.Output[[]GetAppGroupsGroupQuota]{
-		OutputState: i.ToGetAppGroupsGroupQuotaArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAppGroupsGroupQuotaOutput struct{ *pulumi.OutputState }
 
 func (GetAppGroupsGroupQuotaOutput) ElementType() reflect.Type {
@@ -846,12 +761,6 @@ func (o GetAppGroupsGroupQuotaOutput) ToGetAppGroupsGroupQuotaOutput() GetAppGro
 
 func (o GetAppGroupsGroupQuotaOutput) ToGetAppGroupsGroupQuotaOutputWithContext(ctx context.Context) GetAppGroupsGroupQuotaOutput {
 	return o
-}
-
-func (o GetAppGroupsGroupQuotaOutput) ToOutput(ctx context.Context) pulumix.Output[GetAppGroupsGroupQuota] {
-	return pulumix.Output[GetAppGroupsGroupQuota]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Computing resources. Unit: LCU.
@@ -888,12 +797,6 @@ func (o GetAppGroupsGroupQuotaArrayOutput) ToGetAppGroupsGroupQuotaArrayOutput()
 
 func (o GetAppGroupsGroupQuotaArrayOutput) ToGetAppGroupsGroupQuotaArrayOutputWithContext(ctx context.Context) GetAppGroupsGroupQuotaArrayOutput {
 	return o
-}
-
-func (o GetAppGroupsGroupQuotaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAppGroupsGroupQuota] {
-	return pulumix.Output[[]GetAppGroupsGroupQuota]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAppGroupsGroupQuotaArrayOutput) Index(i pulumi.IntInput) GetAppGroupsGroupQuotaOutput {

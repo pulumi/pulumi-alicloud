@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Actiontrail History Delivery Job resource.
@@ -190,12 +189,6 @@ func (i *HistoryDeliveryJob) ToHistoryDeliveryJobOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(HistoryDeliveryJobOutput)
 }
 
-func (i *HistoryDeliveryJob) ToOutput(ctx context.Context) pulumix.Output[*HistoryDeliveryJob] {
-	return pulumix.Output[*HistoryDeliveryJob]{
-		OutputState: i.ToHistoryDeliveryJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HistoryDeliveryJobArrayInput is an input type that accepts HistoryDeliveryJobArray and HistoryDeliveryJobArrayOutput values.
 // You can construct a concrete instance of `HistoryDeliveryJobArrayInput` via:
 //
@@ -219,12 +212,6 @@ func (i HistoryDeliveryJobArray) ToHistoryDeliveryJobArrayOutput() HistoryDelive
 
 func (i HistoryDeliveryJobArray) ToHistoryDeliveryJobArrayOutputWithContext(ctx context.Context) HistoryDeliveryJobArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HistoryDeliveryJobArrayOutput)
-}
-
-func (i HistoryDeliveryJobArray) ToOutput(ctx context.Context) pulumix.Output[[]*HistoryDeliveryJob] {
-	return pulumix.Output[[]*HistoryDeliveryJob]{
-		OutputState: i.ToHistoryDeliveryJobArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HistoryDeliveryJobMapInput is an input type that accepts HistoryDeliveryJobMap and HistoryDeliveryJobMapOutput values.
@@ -252,12 +239,6 @@ func (i HistoryDeliveryJobMap) ToHistoryDeliveryJobMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(HistoryDeliveryJobMapOutput)
 }
 
-func (i HistoryDeliveryJobMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HistoryDeliveryJob] {
-	return pulumix.Output[map[string]*HistoryDeliveryJob]{
-		OutputState: i.ToHistoryDeliveryJobMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HistoryDeliveryJobOutput struct{ *pulumi.OutputState }
 
 func (HistoryDeliveryJobOutput) ElementType() reflect.Type {
@@ -270,12 +251,6 @@ func (o HistoryDeliveryJobOutput) ToHistoryDeliveryJobOutput() HistoryDeliveryJo
 
 func (o HistoryDeliveryJobOutput) ToHistoryDeliveryJobOutputWithContext(ctx context.Context) HistoryDeliveryJobOutput {
 	return o
-}
-
-func (o HistoryDeliveryJobOutput) ToOutput(ctx context.Context) pulumix.Output[*HistoryDeliveryJob] {
-	return pulumix.Output[*HistoryDeliveryJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
@@ -302,12 +277,6 @@ func (o HistoryDeliveryJobArrayOutput) ToHistoryDeliveryJobArrayOutputWithContex
 	return o
 }
 
-func (o HistoryDeliveryJobArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HistoryDeliveryJob] {
-	return pulumix.Output[[]*HistoryDeliveryJob]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HistoryDeliveryJobArrayOutput) Index(i pulumi.IntInput) HistoryDeliveryJobOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HistoryDeliveryJob {
 		return vs[0].([]*HistoryDeliveryJob)[vs[1].(int)]
@@ -326,12 +295,6 @@ func (o HistoryDeliveryJobMapOutput) ToHistoryDeliveryJobMapOutput() HistoryDeli
 
 func (o HistoryDeliveryJobMapOutput) ToHistoryDeliveryJobMapOutputWithContext(ctx context.Context) HistoryDeliveryJobMapOutput {
 	return o
-}
-
-func (o HistoryDeliveryJobMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HistoryDeliveryJob] {
-	return pulumix.Output[map[string]*HistoryDeliveryJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HistoryDeliveryJobMapOutput) MapIndex(k pulumi.StringInput) HistoryDeliveryJobOutput {

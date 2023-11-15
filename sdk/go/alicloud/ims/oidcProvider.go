@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a IMS Oidc Provider resource. OpenID Connect Provider.
@@ -222,12 +221,6 @@ func (i *OidcProvider) ToOidcProviderOutputWithContext(ctx context.Context) Oidc
 	return pulumi.ToOutputWithContext(ctx, i).(OidcProviderOutput)
 }
 
-func (i *OidcProvider) ToOutput(ctx context.Context) pulumix.Output[*OidcProvider] {
-	return pulumix.Output[*OidcProvider]{
-		OutputState: i.ToOidcProviderOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OidcProviderArrayInput is an input type that accepts OidcProviderArray and OidcProviderArrayOutput values.
 // You can construct a concrete instance of `OidcProviderArrayInput` via:
 //
@@ -251,12 +244,6 @@ func (i OidcProviderArray) ToOidcProviderArrayOutput() OidcProviderArrayOutput {
 
 func (i OidcProviderArray) ToOidcProviderArrayOutputWithContext(ctx context.Context) OidcProviderArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OidcProviderArrayOutput)
-}
-
-func (i OidcProviderArray) ToOutput(ctx context.Context) pulumix.Output[[]*OidcProvider] {
-	return pulumix.Output[[]*OidcProvider]{
-		OutputState: i.ToOidcProviderArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // OidcProviderMapInput is an input type that accepts OidcProviderMap and OidcProviderMapOutput values.
@@ -284,12 +271,6 @@ func (i OidcProviderMap) ToOidcProviderMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(OidcProviderMapOutput)
 }
 
-func (i OidcProviderMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OidcProvider] {
-	return pulumix.Output[map[string]*OidcProvider]{
-		OutputState: i.ToOidcProviderMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OidcProviderOutput struct{ *pulumi.OutputState }
 
 func (OidcProviderOutput) ElementType() reflect.Type {
@@ -302,12 +283,6 @@ func (o OidcProviderOutput) ToOidcProviderOutput() OidcProviderOutput {
 
 func (o OidcProviderOutput) ToOidcProviderOutputWithContext(ctx context.Context) OidcProviderOutput {
 	return o
-}
-
-func (o OidcProviderOutput) ToOutput(ctx context.Context) pulumix.Output[*OidcProvider] {
-	return pulumix.Output[*OidcProvider]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Client ID.
@@ -359,12 +334,6 @@ func (o OidcProviderArrayOutput) ToOidcProviderArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o OidcProviderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OidcProvider] {
-	return pulumix.Output[[]*OidcProvider]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OidcProviderArrayOutput) Index(i pulumi.IntInput) OidcProviderOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OidcProvider {
 		return vs[0].([]*OidcProvider)[vs[1].(int)]
@@ -383,12 +352,6 @@ func (o OidcProviderMapOutput) ToOidcProviderMapOutput() OidcProviderMapOutput {
 
 func (o OidcProviderMapOutput) ToOidcProviderMapOutputWithContext(ctx context.Context) OidcProviderMapOutput {
 	return o
-}
-
-func (o OidcProviderMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OidcProvider] {
-	return pulumix.Output[map[string]*OidcProvider]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OidcProviderMapOutput) MapIndex(k pulumi.StringInput) OidcProviderOutput {

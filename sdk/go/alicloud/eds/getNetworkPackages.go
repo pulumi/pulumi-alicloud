@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ecd Network Packages of the current Alibaba Cloud user.
@@ -130,12 +129,6 @@ func (o GetNetworkPackagesResultOutput) ToGetNetworkPackagesResultOutput() GetNe
 
 func (o GetNetworkPackagesResultOutput) ToGetNetworkPackagesResultOutputWithContext(ctx context.Context) GetNetworkPackagesResultOutput {
 	return o
-}
-
-func (o GetNetworkPackagesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetNetworkPackagesResult] {
-	return pulumix.Output[GetNetworkPackagesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

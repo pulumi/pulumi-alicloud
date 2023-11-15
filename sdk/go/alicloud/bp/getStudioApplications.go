@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cloud Architect Design Tools (BPStudio) Applications of the current Alibaba Cloud user.
@@ -151,12 +150,6 @@ func (o GetStudioApplicationsResultOutput) ToGetStudioApplicationsResultOutput()
 
 func (o GetStudioApplicationsResultOutput) ToGetStudioApplicationsResultOutputWithContext(ctx context.Context) GetStudioApplicationsResultOutput {
 	return o
-}
-
-func (o GetStudioApplicationsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetStudioApplicationsResult] {
-	return pulumix.Output[GetStudioApplicationsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of Cloud Architect Design Tools (BPStudio) Applications. Each element contains the following attributes:

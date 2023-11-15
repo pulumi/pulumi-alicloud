@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an EDAS instance cluster attachment resource, see [What is EDAS Instance Cluster Attachment](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-installagent).
@@ -246,12 +245,6 @@ func (i *InstanceClusterAttachment) ToInstanceClusterAttachmentOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceClusterAttachmentOutput)
 }
 
-func (i *InstanceClusterAttachment) ToOutput(ctx context.Context) pulumix.Output[*InstanceClusterAttachment] {
-	return pulumix.Output[*InstanceClusterAttachment]{
-		OutputState: i.ToInstanceClusterAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstanceClusterAttachmentArrayInput is an input type that accepts InstanceClusterAttachmentArray and InstanceClusterAttachmentArrayOutput values.
 // You can construct a concrete instance of `InstanceClusterAttachmentArrayInput` via:
 //
@@ -275,12 +268,6 @@ func (i InstanceClusterAttachmentArray) ToInstanceClusterAttachmentArrayOutput()
 
 func (i InstanceClusterAttachmentArray) ToInstanceClusterAttachmentArrayOutputWithContext(ctx context.Context) InstanceClusterAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceClusterAttachmentArrayOutput)
-}
-
-func (i InstanceClusterAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceClusterAttachment] {
-	return pulumix.Output[[]*InstanceClusterAttachment]{
-		OutputState: i.ToInstanceClusterAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InstanceClusterAttachmentMapInput is an input type that accepts InstanceClusterAttachmentMap and InstanceClusterAttachmentMapOutput values.
@@ -308,12 +295,6 @@ func (i InstanceClusterAttachmentMap) ToInstanceClusterAttachmentMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceClusterAttachmentMapOutput)
 }
 
-func (i InstanceClusterAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceClusterAttachment] {
-	return pulumix.Output[map[string]*InstanceClusterAttachment]{
-		OutputState: i.ToInstanceClusterAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceClusterAttachmentOutput struct{ *pulumi.OutputState }
 
 func (InstanceClusterAttachmentOutput) ElementType() reflect.Type {
@@ -326,12 +307,6 @@ func (o InstanceClusterAttachmentOutput) ToInstanceClusterAttachmentOutput() Ins
 
 func (o InstanceClusterAttachmentOutput) ToInstanceClusterAttachmentOutputWithContext(ctx context.Context) InstanceClusterAttachmentOutput {
 	return o
-}
-
-func (o InstanceClusterAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceClusterAttachment] {
-	return pulumix.Output[*InstanceClusterAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the cluster that you want to create the application.
@@ -373,12 +348,6 @@ func (o InstanceClusterAttachmentArrayOutput) ToInstanceClusterAttachmentArrayOu
 	return o
 }
 
-func (o InstanceClusterAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceClusterAttachment] {
-	return pulumix.Output[[]*InstanceClusterAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceClusterAttachmentArrayOutput) Index(i pulumi.IntInput) InstanceClusterAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceClusterAttachment {
 		return vs[0].([]*InstanceClusterAttachment)[vs[1].(int)]
@@ -397,12 +366,6 @@ func (o InstanceClusterAttachmentMapOutput) ToInstanceClusterAttachmentMapOutput
 
 func (o InstanceClusterAttachmentMapOutput) ToInstanceClusterAttachmentMapOutputWithContext(ctx context.Context) InstanceClusterAttachmentMapOutput {
 	return o
-}
-
-func (o InstanceClusterAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceClusterAttachment] {
-	return pulumix.Output[map[string]*InstanceClusterAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceClusterAttachmentMapOutput) MapIndex(k pulumi.StringInput) InstanceClusterAttachmentOutput {

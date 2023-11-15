@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -115,12 +114,6 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceOutput)
 }
 
-func (i GetInstancesInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstance] {
-	return pulumix.Output[GetInstancesInstance]{
-		OutputState: i.ToGetInstancesInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
 //
@@ -146,12 +139,6 @@ func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
 }
 
-func (i GetInstancesInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstance] {
-	return pulumix.Output[[]GetInstancesInstance]{
-		OutputState: i.ToGetInstancesInstanceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceOutput) ElementType() reflect.Type {
@@ -164,12 +151,6 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutput() GetInstancesI
 
 func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
 	return o
-}
-
-func (o GetInstancesInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstance] {
-	return pulumix.Output[GetInstancesInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Auto renew.
@@ -276,12 +257,6 @@ func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithCo
 	return o
 }
 
-func (o GetInstancesInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstance] {
-	return pulumix.Output[[]GetInstancesInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
 		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
@@ -329,12 +304,6 @@ func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneOutput)
 }
 
-func (i GetZonesZoneArgs) ToOutput(ctx context.Context) pulumix.Output[GetZonesZone] {
-	return pulumix.Output[GetZonesZone]{
-		OutputState: i.ToGetZonesZoneOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneArrayInput` via:
 //
@@ -360,12 +329,6 @@ func (i GetZonesZoneArray) ToGetZonesZoneArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneArrayOutput)
 }
 
-func (i GetZonesZoneArray) ToOutput(ctx context.Context) pulumix.Output[[]GetZonesZone] {
-	return pulumix.Output[[]GetZonesZone]{
-		OutputState: i.ToGetZonesZoneArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetZonesZoneOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneOutput) ElementType() reflect.Type {
@@ -378,12 +341,6 @@ func (o GetZonesZoneOutput) ToGetZonesZoneOutput() GetZonesZoneOutput {
 
 func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context) GetZonesZoneOutput {
 	return o
-}
-
-func (o GetZonesZoneOutput) ToOutput(ctx context.Context) pulumix.Output[GetZonesZone] {
-	return pulumix.Output[GetZonesZone]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of zone.
@@ -413,12 +370,6 @@ func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutput() GetZonesZoneArrayOu
 
 func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutputWithContext(ctx context.Context) GetZonesZoneArrayOutput {
 	return o
-}
-
-func (o GetZonesZoneArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetZonesZone] {
-	return pulumix.Output[[]GetZonesZone]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provide  a data source to retrieve the type of protocol used to create NAS file system.
@@ -115,12 +114,6 @@ func (o GetProtocolsResultOutput) ToGetProtocolsResultOutput() GetProtocolsResul
 
 func (o GetProtocolsResultOutput) ToGetProtocolsResultOutputWithContext(ctx context.Context) GetProtocolsResultOutput {
 	return o
-}
-
-func (o GetProtocolsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetProtocolsResult] {
-	return pulumix.Output[GetProtocolsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

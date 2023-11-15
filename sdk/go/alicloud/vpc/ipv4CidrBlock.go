@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a VPC Ipv4 Cidr Block resource. VPC IPv4 additional network segment.
@@ -189,12 +188,6 @@ func (i *Ipv4CidrBlock) ToIpv4CidrBlockOutputWithContext(ctx context.Context) Ip
 	return pulumi.ToOutputWithContext(ctx, i).(Ipv4CidrBlockOutput)
 }
 
-func (i *Ipv4CidrBlock) ToOutput(ctx context.Context) pulumix.Output[*Ipv4CidrBlock] {
-	return pulumix.Output[*Ipv4CidrBlock]{
-		OutputState: i.ToIpv4CidrBlockOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Ipv4CidrBlockArrayInput is an input type that accepts Ipv4CidrBlockArray and Ipv4CidrBlockArrayOutput values.
 // You can construct a concrete instance of `Ipv4CidrBlockArrayInput` via:
 //
@@ -218,12 +211,6 @@ func (i Ipv4CidrBlockArray) ToIpv4CidrBlockArrayOutput() Ipv4CidrBlockArrayOutpu
 
 func (i Ipv4CidrBlockArray) ToIpv4CidrBlockArrayOutputWithContext(ctx context.Context) Ipv4CidrBlockArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(Ipv4CidrBlockArrayOutput)
-}
-
-func (i Ipv4CidrBlockArray) ToOutput(ctx context.Context) pulumix.Output[[]*Ipv4CidrBlock] {
-	return pulumix.Output[[]*Ipv4CidrBlock]{
-		OutputState: i.ToIpv4CidrBlockArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Ipv4CidrBlockMapInput is an input type that accepts Ipv4CidrBlockMap and Ipv4CidrBlockMapOutput values.
@@ -251,12 +238,6 @@ func (i Ipv4CidrBlockMap) ToIpv4CidrBlockMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(Ipv4CidrBlockMapOutput)
 }
 
-func (i Ipv4CidrBlockMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Ipv4CidrBlock] {
-	return pulumix.Output[map[string]*Ipv4CidrBlock]{
-		OutputState: i.ToIpv4CidrBlockMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type Ipv4CidrBlockOutput struct{ *pulumi.OutputState }
 
 func (Ipv4CidrBlockOutput) ElementType() reflect.Type {
@@ -269,12 +250,6 @@ func (o Ipv4CidrBlockOutput) ToIpv4CidrBlockOutput() Ipv4CidrBlockOutput {
 
 func (o Ipv4CidrBlockOutput) ToIpv4CidrBlockOutputWithContext(ctx context.Context) Ipv4CidrBlockOutput {
 	return o
-}
-
-func (o Ipv4CidrBlockOutput) ToOutput(ctx context.Context) pulumix.Output[*Ipv4CidrBlock] {
-	return pulumix.Output[*Ipv4CidrBlock]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IPv4 CIDR block. Take note of the following requirements:
@@ -305,12 +280,6 @@ func (o Ipv4CidrBlockArrayOutput) ToIpv4CidrBlockArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o Ipv4CidrBlockArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Ipv4CidrBlock] {
-	return pulumix.Output[[]*Ipv4CidrBlock]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o Ipv4CidrBlockArrayOutput) Index(i pulumi.IntInput) Ipv4CidrBlockOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Ipv4CidrBlock {
 		return vs[0].([]*Ipv4CidrBlock)[vs[1].(int)]
@@ -329,12 +298,6 @@ func (o Ipv4CidrBlockMapOutput) ToIpv4CidrBlockMapOutput() Ipv4CidrBlockMapOutpu
 
 func (o Ipv4CidrBlockMapOutput) ToIpv4CidrBlockMapOutputWithContext(ctx context.Context) Ipv4CidrBlockMapOutput {
 	return o
-}
-
-func (o Ipv4CidrBlockMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Ipv4CidrBlock] {
-	return pulumix.Output[map[string]*Ipv4CidrBlock]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o Ipv4CidrBlockMapOutput) MapIndex(k pulumi.StringInput) Ipv4CidrBlockOutput {

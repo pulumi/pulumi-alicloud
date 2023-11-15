@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cloud Storage Gateway Gateway Cache Disks of the current Alibaba Cloud user.
@@ -135,12 +134,6 @@ func (o GetGatewayCacheDisksResultOutput) ToGetGatewayCacheDisksResultOutput() G
 
 func (o GetGatewayCacheDisksResultOutput) ToGetGatewayCacheDisksResultOutputWithContext(ctx context.Context) GetGatewayCacheDisksResultOutput {
 	return o
-}
-
-func (o GetGatewayCacheDisksResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGatewayCacheDisksResult] {
-	return pulumix.Output[GetGatewayCacheDisksResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetGatewayCacheDisksResultOutput) Disks() GetGatewayCacheDisksDiskArrayOutput {

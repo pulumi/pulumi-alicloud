@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DCDN Waf Policy Domain Attachment resource.
@@ -199,12 +198,6 @@ func (i *WafPolicyDomainAttachment) ToWafPolicyDomainAttachmentOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(WafPolicyDomainAttachmentOutput)
 }
 
-func (i *WafPolicyDomainAttachment) ToOutput(ctx context.Context) pulumix.Output[*WafPolicyDomainAttachment] {
-	return pulumix.Output[*WafPolicyDomainAttachment]{
-		OutputState: i.ToWafPolicyDomainAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WafPolicyDomainAttachmentArrayInput is an input type that accepts WafPolicyDomainAttachmentArray and WafPolicyDomainAttachmentArrayOutput values.
 // You can construct a concrete instance of `WafPolicyDomainAttachmentArrayInput` via:
 //
@@ -228,12 +221,6 @@ func (i WafPolicyDomainAttachmentArray) ToWafPolicyDomainAttachmentArrayOutput()
 
 func (i WafPolicyDomainAttachmentArray) ToWafPolicyDomainAttachmentArrayOutputWithContext(ctx context.Context) WafPolicyDomainAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WafPolicyDomainAttachmentArrayOutput)
-}
-
-func (i WafPolicyDomainAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*WafPolicyDomainAttachment] {
-	return pulumix.Output[[]*WafPolicyDomainAttachment]{
-		OutputState: i.ToWafPolicyDomainAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WafPolicyDomainAttachmentMapInput is an input type that accepts WafPolicyDomainAttachmentMap and WafPolicyDomainAttachmentMapOutput values.
@@ -261,12 +248,6 @@ func (i WafPolicyDomainAttachmentMap) ToWafPolicyDomainAttachmentMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(WafPolicyDomainAttachmentMapOutput)
 }
 
-func (i WafPolicyDomainAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WafPolicyDomainAttachment] {
-	return pulumix.Output[map[string]*WafPolicyDomainAttachment]{
-		OutputState: i.ToWafPolicyDomainAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WafPolicyDomainAttachmentOutput struct{ *pulumi.OutputState }
 
 func (WafPolicyDomainAttachmentOutput) ElementType() reflect.Type {
@@ -279,12 +260,6 @@ func (o WafPolicyDomainAttachmentOutput) ToWafPolicyDomainAttachmentOutput() Waf
 
 func (o WafPolicyDomainAttachmentOutput) ToWafPolicyDomainAttachmentOutputWithContext(ctx context.Context) WafPolicyDomainAttachmentOutput {
 	return o
-}
-
-func (o WafPolicyDomainAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*WafPolicyDomainAttachment] {
-	return pulumix.Output[*WafPolicyDomainAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Access the accelerated domain name of the specified protection policy.
@@ -311,12 +286,6 @@ func (o WafPolicyDomainAttachmentArrayOutput) ToWafPolicyDomainAttachmentArrayOu
 	return o
 }
 
-func (o WafPolicyDomainAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WafPolicyDomainAttachment] {
-	return pulumix.Output[[]*WafPolicyDomainAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WafPolicyDomainAttachmentArrayOutput) Index(i pulumi.IntInput) WafPolicyDomainAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WafPolicyDomainAttachment {
 		return vs[0].([]*WafPolicyDomainAttachment)[vs[1].(int)]
@@ -335,12 +304,6 @@ func (o WafPolicyDomainAttachmentMapOutput) ToWafPolicyDomainAttachmentMapOutput
 
 func (o WafPolicyDomainAttachmentMapOutput) ToWafPolicyDomainAttachmentMapOutputWithContext(ctx context.Context) WafPolicyDomainAttachmentMapOutput {
 	return o
-}
-
-func (o WafPolicyDomainAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WafPolicyDomainAttachment] {
-	return pulumix.Output[map[string]*WafPolicyDomainAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WafPolicyDomainAttachmentMapOutput) MapIndex(k pulumi.StringInput) WafPolicyDomainAttachmentOutput {

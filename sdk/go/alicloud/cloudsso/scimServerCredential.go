@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud SSO SCIM Server Credential resource.
@@ -133,12 +132,6 @@ func (i *ScimServerCredential) ToScimServerCredentialOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ScimServerCredentialOutput)
 }
 
-func (i *ScimServerCredential) ToOutput(ctx context.Context) pulumix.Output[*ScimServerCredential] {
-	return pulumix.Output[*ScimServerCredential]{
-		OutputState: i.ToScimServerCredentialOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ScimServerCredentialArrayInput is an input type that accepts ScimServerCredentialArray and ScimServerCredentialArrayOutput values.
 // You can construct a concrete instance of `ScimServerCredentialArrayInput` via:
 //
@@ -162,12 +155,6 @@ func (i ScimServerCredentialArray) ToScimServerCredentialArrayOutput() ScimServe
 
 func (i ScimServerCredentialArray) ToScimServerCredentialArrayOutputWithContext(ctx context.Context) ScimServerCredentialArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScimServerCredentialArrayOutput)
-}
-
-func (i ScimServerCredentialArray) ToOutput(ctx context.Context) pulumix.Output[[]*ScimServerCredential] {
-	return pulumix.Output[[]*ScimServerCredential]{
-		OutputState: i.ToScimServerCredentialArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ScimServerCredentialMapInput is an input type that accepts ScimServerCredentialMap and ScimServerCredentialMapOutput values.
@@ -195,12 +182,6 @@ func (i ScimServerCredentialMap) ToScimServerCredentialMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ScimServerCredentialMapOutput)
 }
 
-func (i ScimServerCredentialMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ScimServerCredential] {
-	return pulumix.Output[map[string]*ScimServerCredential]{
-		OutputState: i.ToScimServerCredentialMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScimServerCredentialOutput struct{ *pulumi.OutputState }
 
 func (ScimServerCredentialOutput) ElementType() reflect.Type {
@@ -213,12 +194,6 @@ func (o ScimServerCredentialOutput) ToScimServerCredentialOutput() ScimServerCre
 
 func (o ScimServerCredentialOutput) ToScimServerCredentialOutputWithContext(ctx context.Context) ScimServerCredentialOutput {
 	return o
-}
-
-func (o ScimServerCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[*ScimServerCredential] {
-	return pulumix.Output[*ScimServerCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The CredentialId of the resource.
@@ -250,12 +225,6 @@ func (o ScimServerCredentialArrayOutput) ToScimServerCredentialArrayOutputWithCo
 	return o
 }
 
-func (o ScimServerCredentialArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ScimServerCredential] {
-	return pulumix.Output[[]*ScimServerCredential]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ScimServerCredentialArrayOutput) Index(i pulumi.IntInput) ScimServerCredentialOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ScimServerCredential {
 		return vs[0].([]*ScimServerCredential)[vs[1].(int)]
@@ -274,12 +243,6 @@ func (o ScimServerCredentialMapOutput) ToScimServerCredentialMapOutput() ScimSer
 
 func (o ScimServerCredentialMapOutput) ToScimServerCredentialMapOutputWithContext(ctx context.Context) ScimServerCredentialMapOutput {
 	return o
-}
-
-func (o ScimServerCredentialMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ScimServerCredential] {
-	return pulumix.Output[map[string]*ScimServerCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScimServerCredentialMapOutput) MapIndex(k pulumi.StringInput) ScimServerCredentialOutput {

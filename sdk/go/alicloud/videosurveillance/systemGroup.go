@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Video Surveillance System Group resource.
@@ -271,12 +270,6 @@ func (i *SystemGroup) ToSystemGroupOutputWithContext(ctx context.Context) System
 	return pulumi.ToOutputWithContext(ctx, i).(SystemGroupOutput)
 }
 
-func (i *SystemGroup) ToOutput(ctx context.Context) pulumix.Output[*SystemGroup] {
-	return pulumix.Output[*SystemGroup]{
-		OutputState: i.ToSystemGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SystemGroupArrayInput is an input type that accepts SystemGroupArray and SystemGroupArrayOutput values.
 // You can construct a concrete instance of `SystemGroupArrayInput` via:
 //
@@ -300,12 +293,6 @@ func (i SystemGroupArray) ToSystemGroupArrayOutput() SystemGroupArrayOutput {
 
 func (i SystemGroupArray) ToSystemGroupArrayOutputWithContext(ctx context.Context) SystemGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SystemGroupArrayOutput)
-}
-
-func (i SystemGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*SystemGroup] {
-	return pulumix.Output[[]*SystemGroup]{
-		OutputState: i.ToSystemGroupArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SystemGroupMapInput is an input type that accepts SystemGroupMap and SystemGroupMapOutput values.
@@ -333,12 +320,6 @@ func (i SystemGroupMap) ToSystemGroupMapOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(SystemGroupMapOutput)
 }
 
-func (i SystemGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SystemGroup] {
-	return pulumix.Output[map[string]*SystemGroup]{
-		OutputState: i.ToSystemGroupMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SystemGroupOutput struct{ *pulumi.OutputState }
 
 func (SystemGroupOutput) ElementType() reflect.Type {
@@ -351,12 +332,6 @@ func (o SystemGroupOutput) ToSystemGroupOutput() SystemGroupOutput {
 
 func (o SystemGroupOutput) ToSystemGroupOutputWithContext(ctx context.Context) SystemGroupOutput {
 	return o
-}
-
-func (o SystemGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*SystemGroup] {
-	return pulumix.Output[*SystemGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The space within the device status update of the callback, need to start with http:// or https:// at the beginning.
@@ -448,12 +423,6 @@ func (o SystemGroupArrayOutput) ToSystemGroupArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o SystemGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SystemGroup] {
-	return pulumix.Output[[]*SystemGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SystemGroupArrayOutput) Index(i pulumi.IntInput) SystemGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SystemGroup {
 		return vs[0].([]*SystemGroup)[vs[1].(int)]
@@ -472,12 +441,6 @@ func (o SystemGroupMapOutput) ToSystemGroupMapOutput() SystemGroupMapOutput {
 
 func (o SystemGroupMapOutput) ToSystemGroupMapOutputWithContext(ctx context.Context) SystemGroupMapOutput {
 	return o
-}
-
-func (o SystemGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SystemGroup] {
-	return pulumix.Output[map[string]*SystemGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SystemGroupMapOutput) MapIndex(k pulumi.StringInput) SystemGroupOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Storage Gateway Gateway Cache Disk resource.
@@ -156,12 +155,6 @@ func (i *GatewayCacheDisk) ToGatewayCacheDiskOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayCacheDiskOutput)
 }
 
-func (i *GatewayCacheDisk) ToOutput(ctx context.Context) pulumix.Output[*GatewayCacheDisk] {
-	return pulumix.Output[*GatewayCacheDisk]{
-		OutputState: i.ToGatewayCacheDiskOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GatewayCacheDiskArrayInput is an input type that accepts GatewayCacheDiskArray and GatewayCacheDiskArrayOutput values.
 // You can construct a concrete instance of `GatewayCacheDiskArrayInput` via:
 //
@@ -185,12 +178,6 @@ func (i GatewayCacheDiskArray) ToGatewayCacheDiskArrayOutput() GatewayCacheDiskA
 
 func (i GatewayCacheDiskArray) ToGatewayCacheDiskArrayOutputWithContext(ctx context.Context) GatewayCacheDiskArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayCacheDiskArrayOutput)
-}
-
-func (i GatewayCacheDiskArray) ToOutput(ctx context.Context) pulumix.Output[[]*GatewayCacheDisk] {
-	return pulumix.Output[[]*GatewayCacheDisk]{
-		OutputState: i.ToGatewayCacheDiskArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GatewayCacheDiskMapInput is an input type that accepts GatewayCacheDiskMap and GatewayCacheDiskMapOutput values.
@@ -218,12 +205,6 @@ func (i GatewayCacheDiskMap) ToGatewayCacheDiskMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayCacheDiskMapOutput)
 }
 
-func (i GatewayCacheDiskMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GatewayCacheDisk] {
-	return pulumix.Output[map[string]*GatewayCacheDisk]{
-		OutputState: i.ToGatewayCacheDiskMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GatewayCacheDiskOutput struct{ *pulumi.OutputState }
 
 func (GatewayCacheDiskOutput) ElementType() reflect.Type {
@@ -236,12 +217,6 @@ func (o GatewayCacheDiskOutput) ToGatewayCacheDiskOutput() GatewayCacheDiskOutpu
 
 func (o GatewayCacheDiskOutput) ToGatewayCacheDiskOutputWithContext(ctx context.Context) GatewayCacheDiskOutput {
 	return o
-}
-
-func (o GatewayCacheDiskOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewayCacheDisk] {
-	return pulumix.Output[*GatewayCacheDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The cache disk type. Valid values: `cloudEfficiency`, `cloudSsd`.
@@ -288,12 +263,6 @@ func (o GatewayCacheDiskArrayOutput) ToGatewayCacheDiskArrayOutputWithContext(ct
 	return o
 }
 
-func (o GatewayCacheDiskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GatewayCacheDisk] {
-	return pulumix.Output[[]*GatewayCacheDisk]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GatewayCacheDiskArrayOutput) Index(i pulumi.IntInput) GatewayCacheDiskOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GatewayCacheDisk {
 		return vs[0].([]*GatewayCacheDisk)[vs[1].(int)]
@@ -312,12 +281,6 @@ func (o GatewayCacheDiskMapOutput) ToGatewayCacheDiskMapOutput() GatewayCacheDis
 
 func (o GatewayCacheDiskMapOutput) ToGatewayCacheDiskMapOutputWithContext(ctx context.Context) GatewayCacheDiskMapOutput {
 	return o
-}
-
-func (o GatewayCacheDiskMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GatewayCacheDisk] {
-	return pulumix.Output[map[string]*GatewayCacheDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GatewayCacheDiskMapOutput) MapIndex(k pulumi.StringInput) GatewayCacheDiskOutput {

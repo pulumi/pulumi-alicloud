@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a CEN child instance grant resource, which allow you to authorize a VPC or VBR to a CEN of a different account.
@@ -232,12 +231,6 @@ func (i *InstanceGrant) ToInstanceGrantOutputWithContext(ctx context.Context) In
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceGrantOutput)
 }
 
-func (i *InstanceGrant) ToOutput(ctx context.Context) pulumix.Output[*InstanceGrant] {
-	return pulumix.Output[*InstanceGrant]{
-		OutputState: i.ToInstanceGrantOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstanceGrantArrayInput is an input type that accepts InstanceGrantArray and InstanceGrantArrayOutput values.
 // You can construct a concrete instance of `InstanceGrantArrayInput` via:
 //
@@ -261,12 +254,6 @@ func (i InstanceGrantArray) ToInstanceGrantArrayOutput() InstanceGrantArrayOutpu
 
 func (i InstanceGrantArray) ToInstanceGrantArrayOutputWithContext(ctx context.Context) InstanceGrantArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceGrantArrayOutput)
-}
-
-func (i InstanceGrantArray) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceGrant] {
-	return pulumix.Output[[]*InstanceGrant]{
-		OutputState: i.ToInstanceGrantArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InstanceGrantMapInput is an input type that accepts InstanceGrantMap and InstanceGrantMapOutput values.
@@ -294,12 +281,6 @@ func (i InstanceGrantMap) ToInstanceGrantMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceGrantMapOutput)
 }
 
-func (i InstanceGrantMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceGrant] {
-	return pulumix.Output[map[string]*InstanceGrant]{
-		OutputState: i.ToInstanceGrantMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceGrantOutput struct{ *pulumi.OutputState }
 
 func (InstanceGrantOutput) ElementType() reflect.Type {
@@ -312,12 +293,6 @@ func (o InstanceGrantOutput) ToInstanceGrantOutput() InstanceGrantOutput {
 
 func (o InstanceGrantOutput) ToInstanceGrantOutputWithContext(ctx context.Context) InstanceGrantOutput {
 	return o
-}
-
-func (o InstanceGrantOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceGrant] {
-	return pulumix.Output[*InstanceGrant]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the CEN.
@@ -349,12 +324,6 @@ func (o InstanceGrantArrayOutput) ToInstanceGrantArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o InstanceGrantArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceGrant] {
-	return pulumix.Output[[]*InstanceGrant]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceGrantArrayOutput) Index(i pulumi.IntInput) InstanceGrantOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceGrant {
 		return vs[0].([]*InstanceGrant)[vs[1].(int)]
@@ -373,12 +342,6 @@ func (o InstanceGrantMapOutput) ToInstanceGrantMapOutput() InstanceGrantMapOutpu
 
 func (o InstanceGrantMapOutput) ToInstanceGrantMapOutputWithContext(ctx context.Context) InstanceGrantMapOutput {
 	return o
-}
-
-func (o InstanceGrantMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceGrant] {
-	return pulumix.Output[map[string]*InstanceGrant]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceGrantMapOutput) MapIndex(k pulumi.StringInput) InstanceGrantOutput {

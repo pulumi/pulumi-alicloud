@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Vpc Ipv6 Egress Rules of the current Alibaba Cloud user.
@@ -163,12 +162,6 @@ func (o GetIpv6EgressRulesResultOutput) ToGetIpv6EgressRulesResultOutput() GetIp
 
 func (o GetIpv6EgressRulesResultOutput) ToGetIpv6EgressRulesResultOutputWithContext(ctx context.Context) GetIpv6EgressRulesResultOutput {
 	return o
-}
-
-func (o GetIpv6EgressRulesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetIpv6EgressRulesResult] {
-	return pulumix.Output[GetIpv6EgressRulesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

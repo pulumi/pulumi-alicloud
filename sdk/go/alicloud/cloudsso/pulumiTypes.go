@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -55,12 +54,6 @@ func (i AccessConfigurationPermissionPolicyArgs) ToAccessConfigurationPermission
 	return pulumi.ToOutputWithContext(ctx, i).(AccessConfigurationPermissionPolicyOutput)
 }
 
-func (i AccessConfigurationPermissionPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[AccessConfigurationPermissionPolicy] {
-	return pulumix.Output[AccessConfigurationPermissionPolicy]{
-		OutputState: i.ToAccessConfigurationPermissionPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccessConfigurationPermissionPolicyArrayInput is an input type that accepts AccessConfigurationPermissionPolicyArray and AccessConfigurationPermissionPolicyArrayOutput values.
 // You can construct a concrete instance of `AccessConfigurationPermissionPolicyArrayInput` via:
 //
@@ -86,12 +79,6 @@ func (i AccessConfigurationPermissionPolicyArray) ToAccessConfigurationPermissio
 	return pulumi.ToOutputWithContext(ctx, i).(AccessConfigurationPermissionPolicyArrayOutput)
 }
 
-func (i AccessConfigurationPermissionPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]AccessConfigurationPermissionPolicy] {
-	return pulumix.Output[[]AccessConfigurationPermissionPolicy]{
-		OutputState: i.ToAccessConfigurationPermissionPolicyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessConfigurationPermissionPolicyOutput struct{ *pulumi.OutputState }
 
 func (AccessConfigurationPermissionPolicyOutput) ElementType() reflect.Type {
@@ -104,12 +91,6 @@ func (o AccessConfigurationPermissionPolicyOutput) ToAccessConfigurationPermissi
 
 func (o AccessConfigurationPermissionPolicyOutput) ToAccessConfigurationPermissionPolicyOutputWithContext(ctx context.Context) AccessConfigurationPermissionPolicyOutput {
 	return o
-}
-
-func (o AccessConfigurationPermissionPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[AccessConfigurationPermissionPolicy] {
-	return pulumix.Output[AccessConfigurationPermissionPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Content of Policy.
@@ -139,12 +120,6 @@ func (o AccessConfigurationPermissionPolicyArrayOutput) ToAccessConfigurationPer
 
 func (o AccessConfigurationPermissionPolicyArrayOutput) ToAccessConfigurationPermissionPolicyArrayOutputWithContext(ctx context.Context) AccessConfigurationPermissionPolicyArrayOutput {
 	return o
-}
-
-func (o AccessConfigurationPermissionPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AccessConfigurationPermissionPolicy] {
-	return pulumix.Output[[]AccessConfigurationPermissionPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessConfigurationPermissionPolicyArrayOutput) Index(i pulumi.IntInput) AccessConfigurationPermissionPolicyOutput {
@@ -190,12 +165,6 @@ func (i DirectorySamlIdentityProviderConfigurationArgs) ToDirectorySamlIdentityP
 	return pulumi.ToOutputWithContext(ctx, i).(DirectorySamlIdentityProviderConfigurationOutput)
 }
 
-func (i DirectorySamlIdentityProviderConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[DirectorySamlIdentityProviderConfiguration] {
-	return pulumix.Output[DirectorySamlIdentityProviderConfiguration]{
-		OutputState: i.ToDirectorySamlIdentityProviderConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DirectorySamlIdentityProviderConfigurationArgs) ToDirectorySamlIdentityProviderConfigurationPtrOutput() DirectorySamlIdentityProviderConfigurationPtrOutput {
 	return i.ToDirectorySamlIdentityProviderConfigurationPtrOutputWithContext(context.Background())
 }
@@ -237,12 +206,6 @@ func (i *directorySamlIdentityProviderConfigurationPtrType) ToDirectorySamlIdent
 	return pulumi.ToOutputWithContext(ctx, i).(DirectorySamlIdentityProviderConfigurationPtrOutput)
 }
 
-func (i *directorySamlIdentityProviderConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*DirectorySamlIdentityProviderConfiguration] {
-	return pulumix.Output[*DirectorySamlIdentityProviderConfiguration]{
-		OutputState: i.ToDirectorySamlIdentityProviderConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DirectorySamlIdentityProviderConfigurationOutput struct{ *pulumi.OutputState }
 
 func (DirectorySamlIdentityProviderConfigurationOutput) ElementType() reflect.Type {
@@ -267,12 +230,6 @@ func (o DirectorySamlIdentityProviderConfigurationOutput) ToDirectorySamlIdentit
 	}).(DirectorySamlIdentityProviderConfigurationPtrOutput)
 }
 
-func (o DirectorySamlIdentityProviderConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[DirectorySamlIdentityProviderConfiguration] {
-	return pulumix.Output[DirectorySamlIdentityProviderConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `ssoStatus` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `ssoStatus` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
 func (o DirectorySamlIdentityProviderConfigurationOutput) EncodedMetadataDocument() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DirectorySamlIdentityProviderConfiguration) *string { return v.EncodedMetadataDocument }).(pulumi.StringPtrOutput)
@@ -295,12 +252,6 @@ func (o DirectorySamlIdentityProviderConfigurationPtrOutput) ToDirectorySamlIden
 
 func (o DirectorySamlIdentityProviderConfigurationPtrOutput) ToDirectorySamlIdentityProviderConfigurationPtrOutputWithContext(ctx context.Context) DirectorySamlIdentityProviderConfigurationPtrOutput {
 	return o
-}
-
-func (o DirectorySamlIdentityProviderConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DirectorySamlIdentityProviderConfiguration] {
-	return pulumix.Output[*DirectorySamlIdentityProviderConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DirectorySamlIdentityProviderConfigurationPtrOutput) Elem() DirectorySamlIdentityProviderConfigurationOutput {
@@ -406,12 +357,6 @@ func (i GetAccessAssignmentsAssignmentArgs) ToGetAccessAssignmentsAssignmentOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccessAssignmentsAssignmentOutput)
 }
 
-func (i GetAccessAssignmentsAssignmentArgs) ToOutput(ctx context.Context) pulumix.Output[GetAccessAssignmentsAssignment] {
-	return pulumix.Output[GetAccessAssignmentsAssignment]{
-		OutputState: i.ToGetAccessAssignmentsAssignmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAccessAssignmentsAssignmentArrayInput is an input type that accepts GetAccessAssignmentsAssignmentArray and GetAccessAssignmentsAssignmentArrayOutput values.
 // You can construct a concrete instance of `GetAccessAssignmentsAssignmentArrayInput` via:
 //
@@ -437,12 +382,6 @@ func (i GetAccessAssignmentsAssignmentArray) ToGetAccessAssignmentsAssignmentArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccessAssignmentsAssignmentArrayOutput)
 }
 
-func (i GetAccessAssignmentsAssignmentArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAccessAssignmentsAssignment] {
-	return pulumix.Output[[]GetAccessAssignmentsAssignment]{
-		OutputState: i.ToGetAccessAssignmentsAssignmentArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAccessAssignmentsAssignmentOutput struct{ *pulumi.OutputState }
 
 func (GetAccessAssignmentsAssignmentOutput) ElementType() reflect.Type {
@@ -455,12 +394,6 @@ func (o GetAccessAssignmentsAssignmentOutput) ToGetAccessAssignmentsAssignmentOu
 
 func (o GetAccessAssignmentsAssignmentOutput) ToGetAccessAssignmentsAssignmentOutputWithContext(ctx context.Context) GetAccessAssignmentsAssignmentOutput {
 	return o
-}
-
-func (o GetAccessAssignmentsAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccessAssignmentsAssignment] {
-	return pulumix.Output[GetAccessAssignmentsAssignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Access configuration ID.
@@ -530,12 +463,6 @@ func (o GetAccessAssignmentsAssignmentArrayOutput) ToGetAccessAssignmentsAssignm
 
 func (o GetAccessAssignmentsAssignmentArrayOutput) ToGetAccessAssignmentsAssignmentArrayOutputWithContext(ctx context.Context) GetAccessAssignmentsAssignmentArrayOutput {
 	return o
-}
-
-func (o GetAccessAssignmentsAssignmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAccessAssignmentsAssignment] {
-	return pulumix.Output[[]GetAccessAssignmentsAssignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAccessAssignmentsAssignmentArrayOutput) Index(i pulumi.IntInput) GetAccessAssignmentsAssignmentOutput {
@@ -613,12 +540,6 @@ func (i GetAccessConfigurationsConfigurationArgs) ToGetAccessConfigurationsConfi
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccessConfigurationsConfigurationOutput)
 }
 
-func (i GetAccessConfigurationsConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[GetAccessConfigurationsConfiguration] {
-	return pulumix.Output[GetAccessConfigurationsConfiguration]{
-		OutputState: i.ToGetAccessConfigurationsConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAccessConfigurationsConfigurationArrayInput is an input type that accepts GetAccessConfigurationsConfigurationArray and GetAccessConfigurationsConfigurationArrayOutput values.
 // You can construct a concrete instance of `GetAccessConfigurationsConfigurationArrayInput` via:
 //
@@ -644,12 +565,6 @@ func (i GetAccessConfigurationsConfigurationArray) ToGetAccessConfigurationsConf
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccessConfigurationsConfigurationArrayOutput)
 }
 
-func (i GetAccessConfigurationsConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAccessConfigurationsConfiguration] {
-	return pulumix.Output[[]GetAccessConfigurationsConfiguration]{
-		OutputState: i.ToGetAccessConfigurationsConfigurationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAccessConfigurationsConfigurationOutput struct{ *pulumi.OutputState }
 
 func (GetAccessConfigurationsConfigurationOutput) ElementType() reflect.Type {
@@ -662,12 +577,6 @@ func (o GetAccessConfigurationsConfigurationOutput) ToGetAccessConfigurationsCon
 
 func (o GetAccessConfigurationsConfigurationOutput) ToGetAccessConfigurationsConfigurationOutputWithContext(ctx context.Context) GetAccessConfigurationsConfigurationOutput {
 	return o
-}
-
-func (o GetAccessConfigurationsConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccessConfigurationsConfiguration] {
-	return pulumix.Output[GetAccessConfigurationsConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The AccessConfigurationId of the Access Configuration.
@@ -736,12 +645,6 @@ func (o GetAccessConfigurationsConfigurationArrayOutput) ToGetAccessConfiguratio
 	return o
 }
 
-func (o GetAccessConfigurationsConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAccessConfigurationsConfiguration] {
-	return pulumix.Output[[]GetAccessConfigurationsConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetAccessConfigurationsConfigurationArrayOutput) Index(i pulumi.IntInput) GetAccessConfigurationsConfigurationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccessConfigurationsConfiguration {
 		return vs[0].([]GetAccessConfigurationsConfiguration)[vs[1].(int)]
@@ -793,12 +696,6 @@ func (i GetAccessConfigurationsConfigurationPermissionPolicyArgs) ToGetAccessCon
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccessConfigurationsConfigurationPermissionPolicyOutput)
 }
 
-func (i GetAccessConfigurationsConfigurationPermissionPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GetAccessConfigurationsConfigurationPermissionPolicy] {
-	return pulumix.Output[GetAccessConfigurationsConfigurationPermissionPolicy]{
-		OutputState: i.ToGetAccessConfigurationsConfigurationPermissionPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAccessConfigurationsConfigurationPermissionPolicyArrayInput is an input type that accepts GetAccessConfigurationsConfigurationPermissionPolicyArray and GetAccessConfigurationsConfigurationPermissionPolicyArrayOutput values.
 // You can construct a concrete instance of `GetAccessConfigurationsConfigurationPermissionPolicyArrayInput` via:
 //
@@ -824,12 +721,6 @@ func (i GetAccessConfigurationsConfigurationPermissionPolicyArray) ToGetAccessCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccessConfigurationsConfigurationPermissionPolicyArrayOutput)
 }
 
-func (i GetAccessConfigurationsConfigurationPermissionPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAccessConfigurationsConfigurationPermissionPolicy] {
-	return pulumix.Output[[]GetAccessConfigurationsConfigurationPermissionPolicy]{
-		OutputState: i.ToGetAccessConfigurationsConfigurationPermissionPolicyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAccessConfigurationsConfigurationPermissionPolicyOutput struct{ *pulumi.OutputState }
 
 func (GetAccessConfigurationsConfigurationPermissionPolicyOutput) ElementType() reflect.Type {
@@ -842,12 +733,6 @@ func (o GetAccessConfigurationsConfigurationPermissionPolicyOutput) ToGetAccessC
 
 func (o GetAccessConfigurationsConfigurationPermissionPolicyOutput) ToGetAccessConfigurationsConfigurationPermissionPolicyOutputWithContext(ctx context.Context) GetAccessConfigurationsConfigurationPermissionPolicyOutput {
 	return o
-}
-
-func (o GetAccessConfigurationsConfigurationPermissionPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccessConfigurationsConfigurationPermissionPolicy] {
-	return pulumix.Output[GetAccessConfigurationsConfigurationPermissionPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Creation time of policy.
@@ -882,12 +767,6 @@ func (o GetAccessConfigurationsConfigurationPermissionPolicyArrayOutput) ToGetAc
 
 func (o GetAccessConfigurationsConfigurationPermissionPolicyArrayOutput) ToGetAccessConfigurationsConfigurationPermissionPolicyArrayOutputWithContext(ctx context.Context) GetAccessConfigurationsConfigurationPermissionPolicyArrayOutput {
 	return o
-}
-
-func (o GetAccessConfigurationsConfigurationPermissionPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAccessConfigurationsConfigurationPermissionPolicy] {
-	return pulumix.Output[[]GetAccessConfigurationsConfigurationPermissionPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAccessConfigurationsConfigurationPermissionPolicyArrayOutput) Index(i pulumi.IntInput) GetAccessConfigurationsConfigurationPermissionPolicyOutput {
@@ -961,12 +840,6 @@ func (i GetDirectoriesDirectoryArgs) ToGetDirectoriesDirectoryOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetDirectoriesDirectoryOutput)
 }
 
-func (i GetDirectoriesDirectoryArgs) ToOutput(ctx context.Context) pulumix.Output[GetDirectoriesDirectory] {
-	return pulumix.Output[GetDirectoriesDirectory]{
-		OutputState: i.ToGetDirectoriesDirectoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDirectoriesDirectoryArrayInput is an input type that accepts GetDirectoriesDirectoryArray and GetDirectoriesDirectoryArrayOutput values.
 // You can construct a concrete instance of `GetDirectoriesDirectoryArrayInput` via:
 //
@@ -992,12 +865,6 @@ func (i GetDirectoriesDirectoryArray) ToGetDirectoriesDirectoryArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetDirectoriesDirectoryArrayOutput)
 }
 
-func (i GetDirectoriesDirectoryArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDirectoriesDirectory] {
-	return pulumix.Output[[]GetDirectoriesDirectory]{
-		OutputState: i.ToGetDirectoriesDirectoryArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDirectoriesDirectoryOutput struct{ *pulumi.OutputState }
 
 func (GetDirectoriesDirectoryOutput) ElementType() reflect.Type {
@@ -1010,12 +877,6 @@ func (o GetDirectoriesDirectoryOutput) ToGetDirectoriesDirectoryOutput() GetDire
 
 func (o GetDirectoriesDirectoryOutput) ToGetDirectoriesDirectoryOutputWithContext(ctx context.Context) GetDirectoriesDirectoryOutput {
 	return o
-}
-
-func (o GetDirectoriesDirectoryOutput) ToOutput(ctx context.Context) pulumix.Output[GetDirectoriesDirectory] {
-	return pulumix.Output[GetDirectoriesDirectory]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Saml identifies the creation time of the provider configuration.
@@ -1079,12 +940,6 @@ func (o GetDirectoriesDirectoryArrayOutput) ToGetDirectoriesDirectoryArrayOutput
 	return o
 }
 
-func (o GetDirectoriesDirectoryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDirectoriesDirectory] {
-	return pulumix.Output[[]GetDirectoriesDirectory]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetDirectoriesDirectoryArrayOutput) Index(i pulumi.IntInput) GetDirectoriesDirectoryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDirectoriesDirectory {
 		return vs[0].([]GetDirectoriesDirectory)[vs[1].(int)]
@@ -1140,12 +995,6 @@ func (i GetDirectoriesDirectorySamlIdentityProviderConfigurationArgs) ToGetDirec
 	return pulumi.ToOutputWithContext(ctx, i).(GetDirectoriesDirectorySamlIdentityProviderConfigurationOutput)
 }
 
-func (i GetDirectoriesDirectorySamlIdentityProviderConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[GetDirectoriesDirectorySamlIdentityProviderConfiguration] {
-	return pulumix.Output[GetDirectoriesDirectorySamlIdentityProviderConfiguration]{
-		OutputState: i.ToGetDirectoriesDirectorySamlIdentityProviderConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDirectoriesDirectorySamlIdentityProviderConfigurationArrayInput is an input type that accepts GetDirectoriesDirectorySamlIdentityProviderConfigurationArray and GetDirectoriesDirectorySamlIdentityProviderConfigurationArrayOutput values.
 // You can construct a concrete instance of `GetDirectoriesDirectorySamlIdentityProviderConfigurationArrayInput` via:
 //
@@ -1171,12 +1020,6 @@ func (i GetDirectoriesDirectorySamlIdentityProviderConfigurationArray) ToGetDire
 	return pulumi.ToOutputWithContext(ctx, i).(GetDirectoriesDirectorySamlIdentityProviderConfigurationArrayOutput)
 }
 
-func (i GetDirectoriesDirectorySamlIdentityProviderConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDirectoriesDirectorySamlIdentityProviderConfiguration] {
-	return pulumix.Output[[]GetDirectoriesDirectorySamlIdentityProviderConfiguration]{
-		OutputState: i.ToGetDirectoriesDirectorySamlIdentityProviderConfigurationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDirectoriesDirectorySamlIdentityProviderConfigurationOutput struct{ *pulumi.OutputState }
 
 func (GetDirectoriesDirectorySamlIdentityProviderConfigurationOutput) ElementType() reflect.Type {
@@ -1189,12 +1032,6 @@ func (o GetDirectoriesDirectorySamlIdentityProviderConfigurationOutput) ToGetDir
 
 func (o GetDirectoriesDirectorySamlIdentityProviderConfigurationOutput) ToGetDirectoriesDirectorySamlIdentityProviderConfigurationOutputWithContext(ctx context.Context) GetDirectoriesDirectorySamlIdentityProviderConfigurationOutput {
 	return o
-}
-
-func (o GetDirectoriesDirectorySamlIdentityProviderConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[GetDirectoriesDirectorySamlIdentityProviderConfiguration] {
-	return pulumix.Output[GetDirectoriesDirectorySamlIdentityProviderConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Saml identifies the creation time of the provider configuration.
@@ -1236,12 +1073,6 @@ func (o GetDirectoriesDirectorySamlIdentityProviderConfigurationArrayOutput) ToG
 
 func (o GetDirectoriesDirectorySamlIdentityProviderConfigurationArrayOutput) ToGetDirectoriesDirectorySamlIdentityProviderConfigurationArrayOutputWithContext(ctx context.Context) GetDirectoriesDirectorySamlIdentityProviderConfigurationArrayOutput {
 	return o
-}
-
-func (o GetDirectoriesDirectorySamlIdentityProviderConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDirectoriesDirectorySamlIdentityProviderConfiguration] {
-	return pulumix.Output[[]GetDirectoriesDirectorySamlIdentityProviderConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDirectoriesDirectorySamlIdentityProviderConfigurationArrayOutput) Index(i pulumi.IntInput) GetDirectoriesDirectorySamlIdentityProviderConfigurationOutput {
@@ -1339,12 +1170,6 @@ func (i GetDirectoriesDirectoryTaskArgs) ToGetDirectoriesDirectoryTaskOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetDirectoriesDirectoryTaskOutput)
 }
 
-func (i GetDirectoriesDirectoryTaskArgs) ToOutput(ctx context.Context) pulumix.Output[GetDirectoriesDirectoryTask] {
-	return pulumix.Output[GetDirectoriesDirectoryTask]{
-		OutputState: i.ToGetDirectoriesDirectoryTaskOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDirectoriesDirectoryTaskArrayInput is an input type that accepts GetDirectoriesDirectoryTaskArray and GetDirectoriesDirectoryTaskArrayOutput values.
 // You can construct a concrete instance of `GetDirectoriesDirectoryTaskArrayInput` via:
 //
@@ -1370,12 +1195,6 @@ func (i GetDirectoriesDirectoryTaskArray) ToGetDirectoriesDirectoryTaskArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetDirectoriesDirectoryTaskArrayOutput)
 }
 
-func (i GetDirectoriesDirectoryTaskArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDirectoriesDirectoryTask] {
-	return pulumix.Output[[]GetDirectoriesDirectoryTask]{
-		OutputState: i.ToGetDirectoriesDirectoryTaskArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDirectoriesDirectoryTaskOutput struct{ *pulumi.OutputState }
 
 func (GetDirectoriesDirectoryTaskOutput) ElementType() reflect.Type {
@@ -1388,12 +1207,6 @@ func (o GetDirectoriesDirectoryTaskOutput) ToGetDirectoriesDirectoryTaskOutput()
 
 func (o GetDirectoriesDirectoryTaskOutput) ToGetDirectoriesDirectoryTaskOutputWithContext(ctx context.Context) GetDirectoriesDirectoryTaskOutput {
 	return o
-}
-
-func (o GetDirectoriesDirectoryTaskOutput) ToOutput(ctx context.Context) pulumix.Output[GetDirectoriesDirectoryTask] {
-	return pulumix.Output[GetDirectoriesDirectoryTask]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of Access Configuration.
@@ -1485,12 +1298,6 @@ func (o GetDirectoriesDirectoryTaskArrayOutput) ToGetDirectoriesDirectoryTaskArr
 	return o
 }
 
-func (o GetDirectoriesDirectoryTaskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDirectoriesDirectoryTask] {
-	return pulumix.Output[[]GetDirectoriesDirectoryTask]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetDirectoriesDirectoryTaskArrayOutput) Index(i pulumi.IntInput) GetDirectoriesDirectoryTaskOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDirectoriesDirectoryTask {
 		return vs[0].([]GetDirectoriesDirectoryTask)[vs[1].(int)]
@@ -1554,12 +1361,6 @@ func (i GetGroupsGroupArgs) ToGetGroupsGroupOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupsGroupOutput)
 }
 
-func (i GetGroupsGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetGroupsGroup] {
-	return pulumix.Output[GetGroupsGroup]{
-		OutputState: i.ToGetGroupsGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetGroupsGroupArrayInput is an input type that accepts GetGroupsGroupArray and GetGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetGroupsGroupArrayInput` via:
 //
@@ -1585,12 +1386,6 @@ func (i GetGroupsGroupArray) ToGetGroupsGroupArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupsGroupArrayOutput)
 }
 
-func (i GetGroupsGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupsGroup] {
-	return pulumix.Output[[]GetGroupsGroup]{
-		OutputState: i.ToGetGroupsGroupArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetGroupsGroupOutput) ElementType() reflect.Type {
@@ -1603,12 +1398,6 @@ func (o GetGroupsGroupOutput) ToGetGroupsGroupOutput() GetGroupsGroupOutput {
 
 func (o GetGroupsGroupOutput) ToGetGroupsGroupOutputWithContext(ctx context.Context) GetGroupsGroupOutput {
 	return o
-}
-
-func (o GetGroupsGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupsGroup] {
-	return pulumix.Output[GetGroupsGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Created Time of the Directory.
@@ -1658,12 +1447,6 @@ func (o GetGroupsGroupArrayOutput) ToGetGroupsGroupArrayOutput() GetGroupsGroupA
 
 func (o GetGroupsGroupArrayOutput) ToGetGroupsGroupArrayOutputWithContext(ctx context.Context) GetGroupsGroupArrayOutput {
 	return o
-}
-
-func (o GetGroupsGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupsGroup] {
-	return pulumix.Output[[]GetGroupsGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetGroupsGroupOutput {
@@ -1733,12 +1516,6 @@ func (i GetScimServerCredentialsCredentialArgs) ToGetScimServerCredentialsCreden
 	return pulumi.ToOutputWithContext(ctx, i).(GetScimServerCredentialsCredentialOutput)
 }
 
-func (i GetScimServerCredentialsCredentialArgs) ToOutput(ctx context.Context) pulumix.Output[GetScimServerCredentialsCredential] {
-	return pulumix.Output[GetScimServerCredentialsCredential]{
-		OutputState: i.ToGetScimServerCredentialsCredentialOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetScimServerCredentialsCredentialArrayInput is an input type that accepts GetScimServerCredentialsCredentialArray and GetScimServerCredentialsCredentialArrayOutput values.
 // You can construct a concrete instance of `GetScimServerCredentialsCredentialArrayInput` via:
 //
@@ -1764,12 +1541,6 @@ func (i GetScimServerCredentialsCredentialArray) ToGetScimServerCredentialsCrede
 	return pulumi.ToOutputWithContext(ctx, i).(GetScimServerCredentialsCredentialArrayOutput)
 }
 
-func (i GetScimServerCredentialsCredentialArray) ToOutput(ctx context.Context) pulumix.Output[[]GetScimServerCredentialsCredential] {
-	return pulumix.Output[[]GetScimServerCredentialsCredential]{
-		OutputState: i.ToGetScimServerCredentialsCredentialArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetScimServerCredentialsCredentialOutput struct{ *pulumi.OutputState }
 
 func (GetScimServerCredentialsCredentialOutput) ElementType() reflect.Type {
@@ -1782,12 +1553,6 @@ func (o GetScimServerCredentialsCredentialOutput) ToGetScimServerCredentialsCred
 
 func (o GetScimServerCredentialsCredentialOutput) ToGetScimServerCredentialsCredentialOutputWithContext(ctx context.Context) GetScimServerCredentialsCredentialOutput {
 	return o
-}
-
-func (o GetScimServerCredentialsCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[GetScimServerCredentialsCredential] {
-	return pulumix.Output[GetScimServerCredentialsCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The CreateTime of the resource.
@@ -1842,12 +1607,6 @@ func (o GetScimServerCredentialsCredentialArrayOutput) ToGetScimServerCredential
 
 func (o GetScimServerCredentialsCredentialArrayOutput) ToGetScimServerCredentialsCredentialArrayOutputWithContext(ctx context.Context) GetScimServerCredentialsCredentialArrayOutput {
 	return o
-}
-
-func (o GetScimServerCredentialsCredentialArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetScimServerCredentialsCredential] {
-	return pulumix.Output[[]GetScimServerCredentialsCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetScimServerCredentialsCredentialArrayOutput) Index(i pulumi.IntInput) GetScimServerCredentialsCredentialOutput {
@@ -1937,12 +1696,6 @@ func (i GetUsersUserArgs) ToGetUsersUserOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserOutput)
 }
 
-func (i GetUsersUserArgs) ToOutput(ctx context.Context) pulumix.Output[GetUsersUser] {
-	return pulumix.Output[GetUsersUser]{
-		OutputState: i.ToGetUsersUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetUsersUserArrayInput is an input type that accepts GetUsersUserArray and GetUsersUserArrayOutput values.
 // You can construct a concrete instance of `GetUsersUserArrayInput` via:
 //
@@ -1968,12 +1721,6 @@ func (i GetUsersUserArray) ToGetUsersUserArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserArrayOutput)
 }
 
-func (i GetUsersUserArray) ToOutput(ctx context.Context) pulumix.Output[[]GetUsersUser] {
-	return pulumix.Output[[]GetUsersUser]{
-		OutputState: i.ToGetUsersUserArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetUsersUserOutput struct{ *pulumi.OutputState }
 
 func (GetUsersUserOutput) ElementType() reflect.Type {
@@ -1986,12 +1733,6 @@ func (o GetUsersUserOutput) ToGetUsersUserOutput() GetUsersUserOutput {
 
 func (o GetUsersUserOutput) ToGetUsersUserOutputWithContext(ctx context.Context) GetUsersUserOutput {
 	return o
-}
-
-func (o GetUsersUserOutput) ToOutput(ctx context.Context) pulumix.Output[GetUsersUser] {
-	return pulumix.Output[GetUsersUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The create time of the user.
@@ -2073,12 +1814,6 @@ func (o GetUsersUserArrayOutput) ToGetUsersUserArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o GetUsersUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetUsersUser] {
-	return pulumix.Output[[]GetUsersUser]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetUsersUserArrayOutput) Index(i pulumi.IntInput) GetUsersUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUsersUser {
 		return vs[0].([]GetUsersUser)[vs[1].(int)]
@@ -2130,12 +1865,6 @@ func (i GetUsersUserMfaDeviceArgs) ToGetUsersUserMfaDeviceOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserMfaDeviceOutput)
 }
 
-func (i GetUsersUserMfaDeviceArgs) ToOutput(ctx context.Context) pulumix.Output[GetUsersUserMfaDevice] {
-	return pulumix.Output[GetUsersUserMfaDevice]{
-		OutputState: i.ToGetUsersUserMfaDeviceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetUsersUserMfaDeviceArrayInput is an input type that accepts GetUsersUserMfaDeviceArray and GetUsersUserMfaDeviceArrayOutput values.
 // You can construct a concrete instance of `GetUsersUserMfaDeviceArrayInput` via:
 //
@@ -2161,12 +1890,6 @@ func (i GetUsersUserMfaDeviceArray) ToGetUsersUserMfaDeviceArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserMfaDeviceArrayOutput)
 }
 
-func (i GetUsersUserMfaDeviceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetUsersUserMfaDevice] {
-	return pulumix.Output[[]GetUsersUserMfaDevice]{
-		OutputState: i.ToGetUsersUserMfaDeviceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetUsersUserMfaDeviceOutput struct{ *pulumi.OutputState }
 
 func (GetUsersUserMfaDeviceOutput) ElementType() reflect.Type {
@@ -2179,12 +1902,6 @@ func (o GetUsersUserMfaDeviceOutput) ToGetUsersUserMfaDeviceOutput() GetUsersUse
 
 func (o GetUsersUserMfaDeviceOutput) ToGetUsersUserMfaDeviceOutputWithContext(ctx context.Context) GetUsersUserMfaDeviceOutput {
 	return o
-}
-
-func (o GetUsersUserMfaDeviceOutput) ToOutput(ctx context.Context) pulumix.Output[GetUsersUserMfaDevice] {
-	return pulumix.Output[GetUsersUserMfaDevice]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The MFA Device ID.
@@ -2219,12 +1936,6 @@ func (o GetUsersUserMfaDeviceArrayOutput) ToGetUsersUserMfaDeviceArrayOutput() G
 
 func (o GetUsersUserMfaDeviceArrayOutput) ToGetUsersUserMfaDeviceArrayOutputWithContext(ctx context.Context) GetUsersUserMfaDeviceArrayOutput {
 	return o
-}
-
-func (o GetUsersUserMfaDeviceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetUsersUserMfaDevice] {
-	return pulumix.Output[[]GetUsersUserMfaDevice]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetUsersUserMfaDeviceArrayOutput) Index(i pulumi.IntInput) GetUsersUserMfaDeviceOutput {

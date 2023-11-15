@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Privatelink Vpc Endpoint Zones of the current Alibaba Cloud user.
@@ -115,12 +114,6 @@ func (o GetVpcEndpointZonesResultOutput) ToGetVpcEndpointZonesResultOutput() Get
 
 func (o GetVpcEndpointZonesResultOutput) ToGetVpcEndpointZonesResultOutputWithContext(ctx context.Context) GetVpcEndpointZonesResultOutput {
 	return o
-}
-
-func (o GetVpcEndpointZonesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetVpcEndpointZonesResult] {
-	return pulumix.Output[GetVpcEndpointZonesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetVpcEndpointZonesResultOutput) EndpointId() pulumi.StringOutput {

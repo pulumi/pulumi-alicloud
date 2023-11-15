@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource will help you implement RBAC authorization for the kubernetes cluster, see [What is kubernetes permissions](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/api-grantpermissions).
@@ -120,12 +119,6 @@ func (i *KubernetesPermission) ToKubernetesPermissionOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesPermissionOutput)
 }
 
-func (i *KubernetesPermission) ToOutput(ctx context.Context) pulumix.Output[*KubernetesPermission] {
-	return pulumix.Output[*KubernetesPermission]{
-		OutputState: i.ToKubernetesPermissionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // KubernetesPermissionArrayInput is an input type that accepts KubernetesPermissionArray and KubernetesPermissionArrayOutput values.
 // You can construct a concrete instance of `KubernetesPermissionArrayInput` via:
 //
@@ -149,12 +142,6 @@ func (i KubernetesPermissionArray) ToKubernetesPermissionArrayOutput() Kubernete
 
 func (i KubernetesPermissionArray) ToKubernetesPermissionArrayOutputWithContext(ctx context.Context) KubernetesPermissionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesPermissionArrayOutput)
-}
-
-func (i KubernetesPermissionArray) ToOutput(ctx context.Context) pulumix.Output[[]*KubernetesPermission] {
-	return pulumix.Output[[]*KubernetesPermission]{
-		OutputState: i.ToKubernetesPermissionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // KubernetesPermissionMapInput is an input type that accepts KubernetesPermissionMap and KubernetesPermissionMapOutput values.
@@ -182,12 +169,6 @@ func (i KubernetesPermissionMap) ToKubernetesPermissionMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesPermissionMapOutput)
 }
 
-func (i KubernetesPermissionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*KubernetesPermission] {
-	return pulumix.Output[map[string]*KubernetesPermission]{
-		OutputState: i.ToKubernetesPermissionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KubernetesPermissionOutput struct{ *pulumi.OutputState }
 
 func (KubernetesPermissionOutput) ElementType() reflect.Type {
@@ -200,12 +181,6 @@ func (o KubernetesPermissionOutput) ToKubernetesPermissionOutput() KubernetesPer
 
 func (o KubernetesPermissionOutput) ToKubernetesPermissionOutputWithContext(ctx context.Context) KubernetesPermissionOutput {
 	return o
-}
-
-func (o KubernetesPermissionOutput) ToOutput(ctx context.Context) pulumix.Output[*KubernetesPermission] {
-	return pulumix.Output[*KubernetesPermission]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of user permission. See `permissions` below.
@@ -232,12 +207,6 @@ func (o KubernetesPermissionArrayOutput) ToKubernetesPermissionArrayOutputWithCo
 	return o
 }
 
-func (o KubernetesPermissionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*KubernetesPermission] {
-	return pulumix.Output[[]*KubernetesPermission]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o KubernetesPermissionArrayOutput) Index(i pulumi.IntInput) KubernetesPermissionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KubernetesPermission {
 		return vs[0].([]*KubernetesPermission)[vs[1].(int)]
@@ -256,12 +225,6 @@ func (o KubernetesPermissionMapOutput) ToKubernetesPermissionMapOutput() Kuberne
 
 func (o KubernetesPermissionMapOutput) ToKubernetesPermissionMapOutputWithContext(ctx context.Context) KubernetesPermissionMapOutput {
 	return o
-}
-
-func (o KubernetesPermissionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*KubernetesPermission] {
-	return pulumix.Output[map[string]*KubernetesPermission]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KubernetesPermissionMapOutput) MapIndex(k pulumi.StringInput) KubernetesPermissionOutput {

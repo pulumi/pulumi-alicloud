@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list Container Registry Enterprise Edition namespaces on Alibaba Cloud.
@@ -124,12 +123,6 @@ func (o GetRegistryEnterpriseNamespacesResultOutput) ToGetRegistryEnterpriseName
 
 func (o GetRegistryEnterpriseNamespacesResultOutput) ToGetRegistryEnterpriseNamespacesResultOutputWithContext(ctx context.Context) GetRegistryEnterpriseNamespacesResultOutput {
 	return o
-}
-
-func (o GetRegistryEnterpriseNamespacesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRegistryEnterpriseNamespacesResult] {
-	return pulumix.Output[GetRegistryEnterpriseNamespacesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

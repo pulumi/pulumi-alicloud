@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECS Key Pair resource.
@@ -218,12 +217,6 @@ func (i *EcsKeyPair) ToEcsKeyPairOutputWithContext(ctx context.Context) EcsKeyPa
 	return pulumi.ToOutputWithContext(ctx, i).(EcsKeyPairOutput)
 }
 
-func (i *EcsKeyPair) ToOutput(ctx context.Context) pulumix.Output[*EcsKeyPair] {
-	return pulumix.Output[*EcsKeyPair]{
-		OutputState: i.ToEcsKeyPairOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EcsKeyPairArrayInput is an input type that accepts EcsKeyPairArray and EcsKeyPairArrayOutput values.
 // You can construct a concrete instance of `EcsKeyPairArrayInput` via:
 //
@@ -247,12 +240,6 @@ func (i EcsKeyPairArray) ToEcsKeyPairArrayOutput() EcsKeyPairArrayOutput {
 
 func (i EcsKeyPairArray) ToEcsKeyPairArrayOutputWithContext(ctx context.Context) EcsKeyPairArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EcsKeyPairArrayOutput)
-}
-
-func (i EcsKeyPairArray) ToOutput(ctx context.Context) pulumix.Output[[]*EcsKeyPair] {
-	return pulumix.Output[[]*EcsKeyPair]{
-		OutputState: i.ToEcsKeyPairArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EcsKeyPairMapInput is an input type that accepts EcsKeyPairMap and EcsKeyPairMapOutput values.
@@ -280,12 +267,6 @@ func (i EcsKeyPairMap) ToEcsKeyPairMapOutputWithContext(ctx context.Context) Ecs
 	return pulumi.ToOutputWithContext(ctx, i).(EcsKeyPairMapOutput)
 }
 
-func (i EcsKeyPairMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsKeyPair] {
-	return pulumix.Output[map[string]*EcsKeyPair]{
-		OutputState: i.ToEcsKeyPairMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EcsKeyPairOutput struct{ *pulumi.OutputState }
 
 func (EcsKeyPairOutput) ElementType() reflect.Type {
@@ -298,12 +279,6 @@ func (o EcsKeyPairOutput) ToEcsKeyPairOutput() EcsKeyPairOutput {
 
 func (o EcsKeyPairOutput) ToEcsKeyPairOutputWithContext(ctx context.Context) EcsKeyPairOutput {
 	return o
-}
-
-func (o EcsKeyPairOutput) ToOutput(ctx context.Context) pulumix.Output[*EcsKeyPair] {
-	return pulumix.Output[*EcsKeyPair]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The finger print of the key pair.
@@ -360,12 +335,6 @@ func (o EcsKeyPairArrayOutput) ToEcsKeyPairArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o EcsKeyPairArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EcsKeyPair] {
-	return pulumix.Output[[]*EcsKeyPair]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EcsKeyPairArrayOutput) Index(i pulumi.IntInput) EcsKeyPairOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EcsKeyPair {
 		return vs[0].([]*EcsKeyPair)[vs[1].(int)]
@@ -384,12 +353,6 @@ func (o EcsKeyPairMapOutput) ToEcsKeyPairMapOutput() EcsKeyPairMapOutput {
 
 func (o EcsKeyPairMapOutput) ToEcsKeyPairMapOutputWithContext(ctx context.Context) EcsKeyPairMapOutput {
 	return o
-}
-
-func (o EcsKeyPairMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsKeyPair] {
-	return pulumix.Output[map[string]*EcsKeyPair]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EcsKeyPairMapOutput) MapIndex(k pulumi.StringInput) EcsKeyPairOutput {

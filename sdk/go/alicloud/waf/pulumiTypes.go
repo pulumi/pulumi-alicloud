@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i DomainLogHeaderArgs) ToDomainLogHeaderOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DomainLogHeaderOutput)
 }
 
-func (i DomainLogHeaderArgs) ToOutput(ctx context.Context) pulumix.Output[DomainLogHeader] {
-	return pulumix.Output[DomainLogHeader]{
-		OutputState: i.ToDomainLogHeaderOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DomainLogHeaderArrayInput is an input type that accepts DomainLogHeaderArray and DomainLogHeaderArrayOutput values.
 // You can construct a concrete instance of `DomainLogHeaderArrayInput` via:
 //
@@ -78,12 +71,6 @@ func (i DomainLogHeaderArray) ToDomainLogHeaderArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DomainLogHeaderArrayOutput)
 }
 
-func (i DomainLogHeaderArray) ToOutput(ctx context.Context) pulumix.Output[[]DomainLogHeader] {
-	return pulumix.Output[[]DomainLogHeader]{
-		OutputState: i.ToDomainLogHeaderArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DomainLogHeaderOutput struct{ *pulumi.OutputState }
 
 func (DomainLogHeaderOutput) ElementType() reflect.Type {
@@ -96,12 +83,6 @@ func (o DomainLogHeaderOutput) ToDomainLogHeaderOutput() DomainLogHeaderOutput {
 
 func (o DomainLogHeaderOutput) ToDomainLogHeaderOutputWithContext(ctx context.Context) DomainLogHeaderOutput {
 	return o
-}
-
-func (o DomainLogHeaderOutput) ToOutput(ctx context.Context) pulumix.Output[DomainLogHeader] {
-	return pulumix.Output[DomainLogHeader]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DomainLogHeaderOutput) Key() pulumi.StringPtrOutput {
@@ -124,12 +105,6 @@ func (o DomainLogHeaderArrayOutput) ToDomainLogHeaderArrayOutput() DomainLogHead
 
 func (o DomainLogHeaderArrayOutput) ToDomainLogHeaderArrayOutputWithContext(ctx context.Context) DomainLogHeaderArrayOutput {
 	return o
-}
-
-func (o DomainLogHeaderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DomainLogHeader] {
-	return pulumix.Output[[]DomainLogHeader]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DomainLogHeaderArrayOutput) Index(i pulumi.IntInput) DomainLogHeaderOutput {
@@ -195,12 +170,6 @@ func (i GetCertificatesCertificateArgs) ToGetCertificatesCertificateOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatesCertificateOutput)
 }
 
-func (i GetCertificatesCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[GetCertificatesCertificate] {
-	return pulumix.Output[GetCertificatesCertificate]{
-		OutputState: i.ToGetCertificatesCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetCertificatesCertificateArrayInput is an input type that accepts GetCertificatesCertificateArray and GetCertificatesCertificateArrayOutput values.
 // You can construct a concrete instance of `GetCertificatesCertificateArrayInput` via:
 //
@@ -226,12 +195,6 @@ func (i GetCertificatesCertificateArray) ToGetCertificatesCertificateArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatesCertificateArrayOutput)
 }
 
-func (i GetCertificatesCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCertificatesCertificate] {
-	return pulumix.Output[[]GetCertificatesCertificate]{
-		OutputState: i.ToGetCertificatesCertificateArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetCertificatesCertificateOutput struct{ *pulumi.OutputState }
 
 func (GetCertificatesCertificateOutput) ElementType() reflect.Type {
@@ -244,12 +207,6 @@ func (o GetCertificatesCertificateOutput) ToGetCertificatesCertificateOutput() G
 
 func (o GetCertificatesCertificateOutput) ToGetCertificatesCertificateOutputWithContext(ctx context.Context) GetCertificatesCertificateOutput {
 	return o
-}
-
-func (o GetCertificatesCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[GetCertificatesCertificate] {
-	return pulumix.Output[GetCertificatesCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Certificate recording ID.
@@ -302,12 +259,6 @@ func (o GetCertificatesCertificateArrayOutput) ToGetCertificatesCertificateArray
 
 func (o GetCertificatesCertificateArrayOutput) ToGetCertificatesCertificateArrayOutputWithContext(ctx context.Context) GetCertificatesCertificateArrayOutput {
 	return o
-}
-
-func (o GetCertificatesCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCertificatesCertificate] {
-	return pulumix.Output[[]GetCertificatesCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetCertificatesCertificateArrayOutput) Index(i pulumi.IntInput) GetCertificatesCertificateOutput {
@@ -421,12 +372,6 @@ func (i GetDomainsDomainArgs) ToGetDomainsDomainOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainOutput)
 }
 
-func (i GetDomainsDomainArgs) ToOutput(ctx context.Context) pulumix.Output[GetDomainsDomain] {
-	return pulumix.Output[GetDomainsDomain]{
-		OutputState: i.ToGetDomainsDomainOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDomainsDomainArrayInput is an input type that accepts GetDomainsDomainArray and GetDomainsDomainArrayOutput values.
 // You can construct a concrete instance of `GetDomainsDomainArrayInput` via:
 //
@@ -452,12 +397,6 @@ func (i GetDomainsDomainArray) ToGetDomainsDomainArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainArrayOutput)
 }
 
-func (i GetDomainsDomainArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainsDomain] {
-	return pulumix.Output[[]GetDomainsDomain]{
-		OutputState: i.ToGetDomainsDomainArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDomainsDomainOutput struct{ *pulumi.OutputState }
 
 func (GetDomainsDomainOutput) ElementType() reflect.Type {
@@ -470,12 +409,6 @@ func (o GetDomainsDomainOutput) ToGetDomainsDomainOutput() GetDomainsDomainOutpu
 
 func (o GetDomainsDomainOutput) ToGetDomainsDomainOutputWithContext(ctx context.Context) GetDomainsDomainOutput {
 	return o
-}
-
-func (o GetDomainsDomainOutput) ToOutput(ctx context.Context) pulumix.Output[GetDomainsDomain] {
-	return pulumix.Output[GetDomainsDomain]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of the WAF cluster.
@@ -587,12 +520,6 @@ func (o GetDomainsDomainArrayOutput) ToGetDomainsDomainArrayOutputWithContext(ct
 	return o
 }
 
-func (o GetDomainsDomainArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainsDomain] {
-	return pulumix.Output[[]GetDomainsDomain]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetDomainsDomainArrayOutput) Index(i pulumi.IntInput) GetDomainsDomainOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDomainsDomain {
 		return vs[0].([]GetDomainsDomain)[vs[1].(int)]
@@ -636,12 +563,6 @@ func (i GetDomainsDomainLogHeaderArgs) ToGetDomainsDomainLogHeaderOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainLogHeaderOutput)
 }
 
-func (i GetDomainsDomainLogHeaderArgs) ToOutput(ctx context.Context) pulumix.Output[GetDomainsDomainLogHeader] {
-	return pulumix.Output[GetDomainsDomainLogHeader]{
-		OutputState: i.ToGetDomainsDomainLogHeaderOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDomainsDomainLogHeaderArrayInput is an input type that accepts GetDomainsDomainLogHeaderArray and GetDomainsDomainLogHeaderArrayOutput values.
 // You can construct a concrete instance of `GetDomainsDomainLogHeaderArrayInput` via:
 //
@@ -667,12 +588,6 @@ func (i GetDomainsDomainLogHeaderArray) ToGetDomainsDomainLogHeaderArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainLogHeaderArrayOutput)
 }
 
-func (i GetDomainsDomainLogHeaderArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainsDomainLogHeader] {
-	return pulumix.Output[[]GetDomainsDomainLogHeader]{
-		OutputState: i.ToGetDomainsDomainLogHeaderArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDomainsDomainLogHeaderOutput struct{ *pulumi.OutputState }
 
 func (GetDomainsDomainLogHeaderOutput) ElementType() reflect.Type {
@@ -685,12 +600,6 @@ func (o GetDomainsDomainLogHeaderOutput) ToGetDomainsDomainLogHeaderOutput() Get
 
 func (o GetDomainsDomainLogHeaderOutput) ToGetDomainsDomainLogHeaderOutputWithContext(ctx context.Context) GetDomainsDomainLogHeaderOutput {
 	return o
-}
-
-func (o GetDomainsDomainLogHeaderOutput) ToOutput(ctx context.Context) pulumix.Output[GetDomainsDomainLogHeader] {
-	return pulumix.Output[GetDomainsDomainLogHeader]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The key of label.
@@ -715,12 +624,6 @@ func (o GetDomainsDomainLogHeaderArrayOutput) ToGetDomainsDomainLogHeaderArrayOu
 
 func (o GetDomainsDomainLogHeaderArrayOutput) ToGetDomainsDomainLogHeaderArrayOutputWithContext(ctx context.Context) GetDomainsDomainLogHeaderArrayOutput {
 	return o
-}
-
-func (o GetDomainsDomainLogHeaderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainsDomainLogHeader] {
-	return pulumix.Output[[]GetDomainsDomainLogHeader]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDomainsDomainLogHeaderArrayOutput) Index(i pulumi.IntInput) GetDomainsDomainLogHeaderOutput {
@@ -788,12 +691,6 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceOutput)
 }
 
-func (i GetInstancesInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstance] {
-	return pulumix.Output[GetInstancesInstance]{
-		OutputState: i.ToGetInstancesInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
 //
@@ -819,12 +716,6 @@ func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
 }
 
-func (i GetInstancesInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstance] {
-	return pulumix.Output[[]GetInstancesInstance]{
-		OutputState: i.ToGetInstancesInstanceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceOutput) ElementType() reflect.Type {
@@ -837,12 +728,6 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutput() GetInstancesI
 
 func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
 	return o
-}
-
-func (o GetInstancesInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstance] {
-	return pulumix.Output[GetInstancesInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp (in seconds) indicating when the WAF instance expires.
@@ -896,12 +781,6 @@ func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutput() Get
 
 func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceArrayOutput {
 	return o
-}
-
-func (o GetInstancesInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstance] {
-	return pulumix.Output[[]GetInstancesInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {

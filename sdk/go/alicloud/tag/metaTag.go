@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Tag Meta Tag resource.
@@ -162,12 +161,6 @@ func (i *MetaTag) ToMetaTagOutputWithContext(ctx context.Context) MetaTagOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(MetaTagOutput)
 }
 
-func (i *MetaTag) ToOutput(ctx context.Context) pulumix.Output[*MetaTag] {
-	return pulumix.Output[*MetaTag]{
-		OutputState: i.ToMetaTagOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MetaTagArrayInput is an input type that accepts MetaTagArray and MetaTagArrayOutput values.
 // You can construct a concrete instance of `MetaTagArrayInput` via:
 //
@@ -191,12 +184,6 @@ func (i MetaTagArray) ToMetaTagArrayOutput() MetaTagArrayOutput {
 
 func (i MetaTagArray) ToMetaTagArrayOutputWithContext(ctx context.Context) MetaTagArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MetaTagArrayOutput)
-}
-
-func (i MetaTagArray) ToOutput(ctx context.Context) pulumix.Output[[]*MetaTag] {
-	return pulumix.Output[[]*MetaTag]{
-		OutputState: i.ToMetaTagArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MetaTagMapInput is an input type that accepts MetaTagMap and MetaTagMapOutput values.
@@ -224,12 +211,6 @@ func (i MetaTagMap) ToMetaTagMapOutputWithContext(ctx context.Context) MetaTagMa
 	return pulumi.ToOutputWithContext(ctx, i).(MetaTagMapOutput)
 }
 
-func (i MetaTagMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetaTag] {
-	return pulumix.Output[map[string]*MetaTag]{
-		OutputState: i.ToMetaTagMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetaTagOutput struct{ *pulumi.OutputState }
 
 func (MetaTagOutput) ElementType() reflect.Type {
@@ -242,12 +223,6 @@ func (o MetaTagOutput) ToMetaTagOutput() MetaTagOutput {
 
 func (o MetaTagOutput) ToMetaTagOutputWithContext(ctx context.Context) MetaTagOutput {
 	return o
-}
-
-func (o MetaTagOutput) ToOutput(ctx context.Context) pulumix.Output[*MetaTag] {
-	return pulumix.Output[*MetaTag]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The key of the tag meta tag. key must be 1 to 128 characters in length.
@@ -274,12 +249,6 @@ func (o MetaTagArrayOutput) ToMetaTagArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o MetaTagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MetaTag] {
-	return pulumix.Output[[]*MetaTag]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MetaTagArrayOutput) Index(i pulumi.IntInput) MetaTagOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MetaTag {
 		return vs[0].([]*MetaTag)[vs[1].(int)]
@@ -298,12 +267,6 @@ func (o MetaTagMapOutput) ToMetaTagMapOutput() MetaTagMapOutput {
 
 func (o MetaTagMapOutput) ToMetaTagMapOutputWithContext(ctx context.Context) MetaTagMapOutput {
 	return o
-}
-
-func (o MetaTagMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetaTag] {
-	return pulumix.Output[map[string]*MetaTag]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetaTagMapOutput) MapIndex(k pulumi.StringInput) MetaTagOutput {

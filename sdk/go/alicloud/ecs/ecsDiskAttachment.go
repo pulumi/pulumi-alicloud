@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an Alicloud ECS Disk Attachment as a resource, to attach and detach disks from ECS Instances.
@@ -232,12 +231,6 @@ func (i *EcsDiskAttachment) ToEcsDiskAttachmentOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(EcsDiskAttachmentOutput)
 }
 
-func (i *EcsDiskAttachment) ToOutput(ctx context.Context) pulumix.Output[*EcsDiskAttachment] {
-	return pulumix.Output[*EcsDiskAttachment]{
-		OutputState: i.ToEcsDiskAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EcsDiskAttachmentArrayInput is an input type that accepts EcsDiskAttachmentArray and EcsDiskAttachmentArrayOutput values.
 // You can construct a concrete instance of `EcsDiskAttachmentArrayInput` via:
 //
@@ -261,12 +254,6 @@ func (i EcsDiskAttachmentArray) ToEcsDiskAttachmentArrayOutput() EcsDiskAttachme
 
 func (i EcsDiskAttachmentArray) ToEcsDiskAttachmentArrayOutputWithContext(ctx context.Context) EcsDiskAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EcsDiskAttachmentArrayOutput)
-}
-
-func (i EcsDiskAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*EcsDiskAttachment] {
-	return pulumix.Output[[]*EcsDiskAttachment]{
-		OutputState: i.ToEcsDiskAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EcsDiskAttachmentMapInput is an input type that accepts EcsDiskAttachmentMap and EcsDiskAttachmentMapOutput values.
@@ -294,12 +281,6 @@ func (i EcsDiskAttachmentMap) ToEcsDiskAttachmentMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(EcsDiskAttachmentMapOutput)
 }
 
-func (i EcsDiskAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsDiskAttachment] {
-	return pulumix.Output[map[string]*EcsDiskAttachment]{
-		OutputState: i.ToEcsDiskAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EcsDiskAttachmentOutput struct{ *pulumi.OutputState }
 
 func (EcsDiskAttachmentOutput) ElementType() reflect.Type {
@@ -312,12 +293,6 @@ func (o EcsDiskAttachmentOutput) ToEcsDiskAttachmentOutput() EcsDiskAttachmentOu
 
 func (o EcsDiskAttachmentOutput) ToEcsDiskAttachmentOutputWithContext(ctx context.Context) EcsDiskAttachmentOutput {
 	return o
-}
-
-func (o EcsDiskAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*EcsDiskAttachment] {
-	return pulumix.Output[*EcsDiskAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to mount as a system disk. Default to: `false`.
@@ -368,12 +343,6 @@ func (o EcsDiskAttachmentArrayOutput) ToEcsDiskAttachmentArrayOutputWithContext(
 	return o
 }
 
-func (o EcsDiskAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EcsDiskAttachment] {
-	return pulumix.Output[[]*EcsDiskAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EcsDiskAttachmentArrayOutput) Index(i pulumi.IntInput) EcsDiskAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EcsDiskAttachment {
 		return vs[0].([]*EcsDiskAttachment)[vs[1].(int)]
@@ -392,12 +361,6 @@ func (o EcsDiskAttachmentMapOutput) ToEcsDiskAttachmentMapOutput() EcsDiskAttach
 
 func (o EcsDiskAttachmentMapOutput) ToEcsDiskAttachmentMapOutputWithContext(ctx context.Context) EcsDiskAttachmentMapOutput {
 	return o
-}
-
-func (o EcsDiskAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsDiskAttachment] {
-	return pulumix.Output[map[string]*EcsDiskAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EcsDiskAttachmentMapOutput) MapIndex(k pulumi.StringInput) EcsDiskAttachmentOutput {

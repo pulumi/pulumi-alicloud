@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Sae Instance Specifications of the current Alibaba Cloud user.
@@ -107,12 +106,6 @@ func (o GetInstanceSpecificationsResultOutput) ToGetInstanceSpecificationsResult
 
 func (o GetInstanceSpecificationsResultOutput) ToGetInstanceSpecificationsResultOutputWithContext(ctx context.Context) GetInstanceSpecificationsResultOutput {
 	return o
-}
-
-func (o GetInstanceSpecificationsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceSpecificationsResult] {
-	return pulumix.Output[GetInstanceSpecificationsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

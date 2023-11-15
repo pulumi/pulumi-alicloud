@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cdn blocked regions.
@@ -103,12 +102,6 @@ func (o GetBlockedRegionsResultOutput) ToGetBlockedRegionsResultOutput() GetBloc
 
 func (o GetBlockedRegionsResultOutput) ToGetBlockedRegionsResultOutputWithContext(ctx context.Context) GetBlockedRegionsResultOutput {
 	return o
-}
-
-func (o GetBlockedRegionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBlockedRegionsResult] {
-	return pulumix.Output[GetBlockedRegionsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -165,12 +164,6 @@ func (i GetClustersClusterArgs) ToGetClustersClusterOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterOutput)
 }
 
-func (i GetClustersClusterArgs) ToOutput(ctx context.Context) pulumix.Output[GetClustersCluster] {
-	return pulumix.Output[GetClustersCluster]{
-		OutputState: i.ToGetClustersClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetClustersClusterArrayInput is an input type that accepts GetClustersClusterArray and GetClustersClusterArrayOutput values.
 // You can construct a concrete instance of `GetClustersClusterArrayInput` via:
 //
@@ -196,12 +189,6 @@ func (i GetClustersClusterArray) ToGetClustersClusterArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterArrayOutput)
 }
 
-func (i GetClustersClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClustersCluster] {
-	return pulumix.Output[[]GetClustersCluster]{
-		OutputState: i.ToGetClustersClusterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetClustersClusterOutput struct{ *pulumi.OutputState }
 
 func (GetClustersClusterOutput) ElementType() reflect.Type {
@@ -214,12 +201,6 @@ func (o GetClustersClusterOutput) ToGetClustersClusterOutput() GetClustersCluste
 
 func (o GetClustersClusterOutput) ToGetClustersClusterOutputWithContext(ctx context.Context) GetClustersClusterOutput {
 	return o
-}
-
-func (o GetClustersClusterOutput) ToOutput(ctx context.Context) pulumix.Output[GetClustersCluster] {
-	return pulumix.Output[GetClustersCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetClustersClusterOutput) AutoRenewPeriod() pulumi.IntOutput {
@@ -426,12 +407,6 @@ func (o GetClustersClusterArrayOutput) ToGetClustersClusterArrayOutputWithContex
 	return o
 }
 
-func (o GetClustersClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClustersCluster] {
-	return pulumix.Output[[]GetClustersCluster]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetClustersClusterArrayOutput) Index(i pulumi.IntInput) GetClustersClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClustersCluster {
 		return vs[0].([]GetClustersCluster)[vs[1].(int)]
@@ -551,12 +526,6 @@ func (i GetDBClusterLakeVersionsVersionArgs) ToGetDBClusterLakeVersionsVersionOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetDBClusterLakeVersionsVersionOutput)
 }
 
-func (i GetDBClusterLakeVersionsVersionArgs) ToOutput(ctx context.Context) pulumix.Output[GetDBClusterLakeVersionsVersion] {
-	return pulumix.Output[GetDBClusterLakeVersionsVersion]{
-		OutputState: i.ToGetDBClusterLakeVersionsVersionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDBClusterLakeVersionsVersionArrayInput is an input type that accepts GetDBClusterLakeVersionsVersionArray and GetDBClusterLakeVersionsVersionArrayOutput values.
 // You can construct a concrete instance of `GetDBClusterLakeVersionsVersionArrayInput` via:
 //
@@ -582,12 +551,6 @@ func (i GetDBClusterLakeVersionsVersionArray) ToGetDBClusterLakeVersionsVersionA
 	return pulumi.ToOutputWithContext(ctx, i).(GetDBClusterLakeVersionsVersionArrayOutput)
 }
 
-func (i GetDBClusterLakeVersionsVersionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDBClusterLakeVersionsVersion] {
-	return pulumix.Output[[]GetDBClusterLakeVersionsVersion]{
-		OutputState: i.ToGetDBClusterLakeVersionsVersionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDBClusterLakeVersionsVersionOutput struct{ *pulumi.OutputState }
 
 func (GetDBClusterLakeVersionsVersionOutput) ElementType() reflect.Type {
@@ -600,12 +563,6 @@ func (o GetDBClusterLakeVersionsVersionOutput) ToGetDBClusterLakeVersionsVersion
 
 func (o GetDBClusterLakeVersionsVersionOutput) ToGetDBClusterLakeVersionsVersionOutputWithContext(ctx context.Context) GetDBClusterLakeVersionsVersionOutput {
 	return o
-}
-
-func (o GetDBClusterLakeVersionsVersionOutput) ToOutput(ctx context.Context) pulumix.Output[GetDBClusterLakeVersionsVersion] {
-	return pulumix.Output[GetDBClusterLakeVersionsVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the service.
@@ -725,12 +682,6 @@ func (o GetDBClusterLakeVersionsVersionArrayOutput) ToGetDBClusterLakeVersionsVe
 
 func (o GetDBClusterLakeVersionsVersionArrayOutput) ToGetDBClusterLakeVersionsVersionArrayOutputWithContext(ctx context.Context) GetDBClusterLakeVersionsVersionArrayOutput {
 	return o
-}
-
-func (o GetDBClusterLakeVersionsVersionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDBClusterLakeVersionsVersion] {
-	return pulumix.Output[[]GetDBClusterLakeVersionsVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDBClusterLakeVersionsVersionArrayOutput) Index(i pulumi.IntInput) GetDBClusterLakeVersionsVersionOutput {
@@ -940,12 +891,6 @@ func (i GetDBClustersClusterArgs) ToGetDBClustersClusterOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetDBClustersClusterOutput)
 }
 
-func (i GetDBClustersClusterArgs) ToOutput(ctx context.Context) pulumix.Output[GetDBClustersCluster] {
-	return pulumix.Output[GetDBClustersCluster]{
-		OutputState: i.ToGetDBClustersClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDBClustersClusterArrayInput is an input type that accepts GetDBClustersClusterArray and GetDBClustersClusterArrayOutput values.
 // You can construct a concrete instance of `GetDBClustersClusterArrayInput` via:
 //
@@ -971,12 +916,6 @@ func (i GetDBClustersClusterArray) ToGetDBClustersClusterArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetDBClustersClusterArrayOutput)
 }
 
-func (i GetDBClustersClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDBClustersCluster] {
-	return pulumix.Output[[]GetDBClustersCluster]{
-		OutputState: i.ToGetDBClustersClusterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDBClustersClusterOutput struct{ *pulumi.OutputState }
 
 func (GetDBClustersClusterOutput) ElementType() reflect.Type {
@@ -989,12 +928,6 @@ func (o GetDBClustersClusterOutput) ToGetDBClustersClusterOutput() GetDBClusters
 
 func (o GetDBClustersClusterOutput) ToGetDBClustersClusterOutputWithContext(ctx context.Context) GetDBClustersClusterOutput {
 	return o
-}
-
-func (o GetDBClustersClusterOutput) ToOutput(ctx context.Context) pulumix.Output[GetDBClustersCluster] {
-	return pulumix.Output[GetDBClustersCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Auto-renewal period of an cluster, in the unit of the month.
@@ -1226,12 +1159,6 @@ func (o GetDBClustersClusterArrayOutput) ToGetDBClustersClusterArrayOutputWithCo
 	return o
 }
 
-func (o GetDBClustersClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDBClustersCluster] {
-	return pulumix.Output[[]GetDBClustersCluster]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetDBClustersClusterArrayOutput) Index(i pulumi.IntInput) GetDBClustersClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDBClustersCluster {
 		return vs[0].([]GetDBClustersCluster)[vs[1].(int)]
@@ -1301,12 +1228,6 @@ func (i GetResourceGroupsGroupArgs) ToGetResourceGroupsGroupOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceGroupsGroupOutput)
 }
 
-func (i GetResourceGroupsGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceGroupsGroup] {
-	return pulumix.Output[GetResourceGroupsGroup]{
-		OutputState: i.ToGetResourceGroupsGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetResourceGroupsGroupArrayInput is an input type that accepts GetResourceGroupsGroupArray and GetResourceGroupsGroupArrayOutput values.
 // You can construct a concrete instance of `GetResourceGroupsGroupArrayInput` via:
 //
@@ -1332,12 +1253,6 @@ func (i GetResourceGroupsGroupArray) ToGetResourceGroupsGroupArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceGroupsGroupArrayOutput)
 }
 
-func (i GetResourceGroupsGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceGroupsGroup] {
-	return pulumix.Output[[]GetResourceGroupsGroup]{
-		OutputState: i.ToGetResourceGroupsGroupArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetResourceGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetResourceGroupsGroupOutput) ElementType() reflect.Type {
@@ -1350,12 +1265,6 @@ func (o GetResourceGroupsGroupOutput) ToGetResourceGroupsGroupOutput() GetResour
 
 func (o GetResourceGroupsGroupOutput) ToGetResourceGroupsGroupOutputWithContext(ctx context.Context) GetResourceGroupsGroupOutput {
 	return o
-}
-
-func (o GetResourceGroupsGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceGroupsGroup] {
-	return pulumix.Output[GetResourceGroupsGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation time.
@@ -1410,12 +1319,6 @@ func (o GetResourceGroupsGroupArrayOutput) ToGetResourceGroupsGroupArrayOutputWi
 	return o
 }
 
-func (o GetResourceGroupsGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceGroupsGroup] {
-	return pulumix.Output[[]GetResourceGroupsGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetResourceGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetResourceGroupsGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceGroupsGroup {
 		return vs[0].([]GetResourceGroupsGroup)[vs[1].(int)]
@@ -1459,12 +1362,6 @@ func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneOutput)
 }
 
-func (i GetZonesZoneArgs) ToOutput(ctx context.Context) pulumix.Output[GetZonesZone] {
-	return pulumix.Output[GetZonesZone]{
-		OutputState: i.ToGetZonesZoneOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
 // You can construct a concrete instance of `GetZonesZoneArrayInput` via:
 //
@@ -1490,12 +1387,6 @@ func (i GetZonesZoneArray) ToGetZonesZoneArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneArrayOutput)
 }
 
-func (i GetZonesZoneArray) ToOutput(ctx context.Context) pulumix.Output[[]GetZonesZone] {
-	return pulumix.Output[[]GetZonesZone]{
-		OutputState: i.ToGetZonesZoneArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetZonesZoneOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneOutput) ElementType() reflect.Type {
@@ -1508,12 +1399,6 @@ func (o GetZonesZoneOutput) ToGetZonesZoneOutput() GetZonesZoneOutput {
 
 func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context) GetZonesZoneOutput {
 	return o
-}
-
-func (o GetZonesZoneOutput) ToOutput(ctx context.Context) pulumix.Output[GetZonesZone] {
-	return pulumix.Output[GetZonesZone]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ID of the zone.
@@ -1538,12 +1423,6 @@ func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutput() GetZonesZoneArrayOu
 
 func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutputWithContext(ctx context.Context) GetZonesZoneArrayOutput {
 	return o
-}
-
-func (o GetZonesZoneArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetZonesZone] {
-	return pulumix.Output[[]GetZonesZone]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {

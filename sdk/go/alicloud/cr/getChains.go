@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cr Chains of the current Alibaba Cloud user.
@@ -151,12 +150,6 @@ func (o GetChainsResultOutput) ToGetChainsResultOutput() GetChainsResultOutput {
 
 func (o GetChainsResultOutput) ToGetChainsResultOutputWithContext(ctx context.Context) GetChainsResultOutput {
 	return o
-}
-
-func (o GetChainsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetChainsResult] {
-	return pulumix.Output[GetChainsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of Cr Chains. Each element contains the following attributes:

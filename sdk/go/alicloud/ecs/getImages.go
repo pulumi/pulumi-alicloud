@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud,
@@ -207,12 +206,6 @@ func (o GetImagesResultOutput) ToGetImagesResultOutput() GetImagesResultOutput {
 
 func (o GetImagesResultOutput) ToGetImagesResultOutputWithContext(ctx context.Context) GetImagesResultOutput {
 	return o
-}
-
-func (o GetImagesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetImagesResult] {
-	return pulumix.Output[GetImagesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetImagesResultOutput) ActionType() pulumi.StringPtrOutput {

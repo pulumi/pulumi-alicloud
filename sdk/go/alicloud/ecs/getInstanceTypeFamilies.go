@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the ECS instance type families of Alibaba Cloud.
@@ -126,12 +125,6 @@ func (o GetInstanceTypeFamiliesResultOutput) ToGetInstanceTypeFamiliesResultOutp
 
 func (o GetInstanceTypeFamiliesResultOutput) ToGetInstanceTypeFamiliesResultOutputWithContext(ctx context.Context) GetInstanceTypeFamiliesResultOutput {
 	return o
-}
-
-func (o GetInstanceTypeFamiliesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceTypeFamiliesResult] {
-	return pulumix.Output[GetInstanceTypeFamiliesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetInstanceTypeFamiliesResultOutput) Families() GetInstanceTypeFamiliesFamilyArrayOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetStorageBundles(ctx *pulumi.Context, args *GetStorageBundlesArgs, opts ...pulumi.InvokeOption) (*GetStorageBundlesResult, error) {
@@ -87,12 +86,6 @@ func (o GetStorageBundlesResultOutput) ToGetStorageBundlesResultOutput() GetStor
 
 func (o GetStorageBundlesResultOutput) ToGetStorageBundlesResultOutputWithContext(ctx context.Context) GetStorageBundlesResultOutput {
 	return o
-}
-
-func (o GetStorageBundlesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetStorageBundlesResult] {
-	return pulumix.Output[GetStorageBundlesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetStorageBundlesResultOutput) BackendBucketRegionId() pulumi.StringOutput {

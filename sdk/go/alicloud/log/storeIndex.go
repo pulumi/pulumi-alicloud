@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Log Service provides the LogSearch/Analytics function to query and analyze large amounts of logs in real time.
@@ -214,12 +213,6 @@ func (i *StoreIndex) ToStoreIndexOutputWithContext(ctx context.Context) StoreInd
 	return pulumi.ToOutputWithContext(ctx, i).(StoreIndexOutput)
 }
 
-func (i *StoreIndex) ToOutput(ctx context.Context) pulumix.Output[*StoreIndex] {
-	return pulumix.Output[*StoreIndex]{
-		OutputState: i.ToStoreIndexOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StoreIndexArrayInput is an input type that accepts StoreIndexArray and StoreIndexArrayOutput values.
 // You can construct a concrete instance of `StoreIndexArrayInput` via:
 //
@@ -243,12 +236,6 @@ func (i StoreIndexArray) ToStoreIndexArrayOutput() StoreIndexArrayOutput {
 
 func (i StoreIndexArray) ToStoreIndexArrayOutputWithContext(ctx context.Context) StoreIndexArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StoreIndexArrayOutput)
-}
-
-func (i StoreIndexArray) ToOutput(ctx context.Context) pulumix.Output[[]*StoreIndex] {
-	return pulumix.Output[[]*StoreIndex]{
-		OutputState: i.ToStoreIndexArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // StoreIndexMapInput is an input type that accepts StoreIndexMap and StoreIndexMapOutput values.
@@ -276,12 +263,6 @@ func (i StoreIndexMap) ToStoreIndexMapOutputWithContext(ctx context.Context) Sto
 	return pulumi.ToOutputWithContext(ctx, i).(StoreIndexMapOutput)
 }
 
-func (i StoreIndexMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*StoreIndex] {
-	return pulumix.Output[map[string]*StoreIndex]{
-		OutputState: i.ToStoreIndexMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StoreIndexOutput struct{ *pulumi.OutputState }
 
 func (StoreIndexOutput) ElementType() reflect.Type {
@@ -294,12 +275,6 @@ func (o StoreIndexOutput) ToStoreIndexOutput() StoreIndexOutput {
 
 func (o StoreIndexOutput) ToStoreIndexOutputWithContext(ctx context.Context) StoreIndexOutput {
 	return o
-}
-
-func (o StoreIndexOutput) ToOutput(ctx context.Context) pulumix.Output[*StoreIndex] {
-	return pulumix.Output[*StoreIndex]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List configurations of field search index. Valid item as follows:
@@ -336,12 +311,6 @@ func (o StoreIndexArrayOutput) ToStoreIndexArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o StoreIndexArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*StoreIndex] {
-	return pulumix.Output[[]*StoreIndex]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StoreIndexArrayOutput) Index(i pulumi.IntInput) StoreIndexOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *StoreIndex {
 		return vs[0].([]*StoreIndex)[vs[1].(int)]
@@ -360,12 +329,6 @@ func (o StoreIndexMapOutput) ToStoreIndexMapOutput() StoreIndexMapOutput {
 
 func (o StoreIndexMapOutput) ToStoreIndexMapOutputWithContext(ctx context.Context) StoreIndexMapOutput {
 	return o
-}
-
-func (o StoreIndexMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*StoreIndex] {
-	return pulumix.Output[map[string]*StoreIndex]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StoreIndexMapOutput) MapIndex(k pulumi.StringInput) StoreIndexOutput {

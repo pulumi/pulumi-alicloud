@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Hybrid Backup Recovery (HBR) Restore Job resource.
@@ -479,12 +478,6 @@ func (i *RestoreJob) ToRestoreJobOutputWithContext(ctx context.Context) RestoreJ
 	return pulumi.ToOutputWithContext(ctx, i).(RestoreJobOutput)
 }
 
-func (i *RestoreJob) ToOutput(ctx context.Context) pulumix.Output[*RestoreJob] {
-	return pulumix.Output[*RestoreJob]{
-		OutputState: i.ToRestoreJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RestoreJobArrayInput is an input type that accepts RestoreJobArray and RestoreJobArrayOutput values.
 // You can construct a concrete instance of `RestoreJobArrayInput` via:
 //
@@ -508,12 +501,6 @@ func (i RestoreJobArray) ToRestoreJobArrayOutput() RestoreJobArrayOutput {
 
 func (i RestoreJobArray) ToRestoreJobArrayOutputWithContext(ctx context.Context) RestoreJobArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RestoreJobArrayOutput)
-}
-
-func (i RestoreJobArray) ToOutput(ctx context.Context) pulumix.Output[[]*RestoreJob] {
-	return pulumix.Output[[]*RestoreJob]{
-		OutputState: i.ToRestoreJobArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RestoreJobMapInput is an input type that accepts RestoreJobMap and RestoreJobMapOutput values.
@@ -541,12 +528,6 @@ func (i RestoreJobMap) ToRestoreJobMapOutputWithContext(ctx context.Context) Res
 	return pulumi.ToOutputWithContext(ctx, i).(RestoreJobMapOutput)
 }
 
-func (i RestoreJobMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RestoreJob] {
-	return pulumix.Output[map[string]*RestoreJob]{
-		OutputState: i.ToRestoreJobMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RestoreJobOutput struct{ *pulumi.OutputState }
 
 func (RestoreJobOutput) ElementType() reflect.Type {
@@ -559,12 +540,6 @@ func (o RestoreJobOutput) ToRestoreJobOutput() RestoreJobOutput {
 
 func (o RestoreJobOutput) ToRestoreJobOutputWithContext(ctx context.Context) RestoreJobOutput {
 	return o
-}
-
-func (o RestoreJobOutput) ToOutput(ctx context.Context) pulumix.Output[*RestoreJob] {
-	return pulumix.Output[*RestoreJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The role name created in the original account RAM backup by the cross account managed by the current account.
@@ -711,12 +686,6 @@ func (o RestoreJobArrayOutput) ToRestoreJobArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o RestoreJobArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RestoreJob] {
-	return pulumix.Output[[]*RestoreJob]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RestoreJobArrayOutput) Index(i pulumi.IntInput) RestoreJobOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RestoreJob {
 		return vs[0].([]*RestoreJob)[vs[1].(int)]
@@ -735,12 +704,6 @@ func (o RestoreJobMapOutput) ToRestoreJobMapOutput() RestoreJobMapOutput {
 
 func (o RestoreJobMapOutput) ToRestoreJobMapOutputWithContext(ctx context.Context) RestoreJobMapOutput {
 	return o
-}
-
-func (o RestoreJobMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RestoreJob] {
-	return pulumix.Output[map[string]*RestoreJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RestoreJobMapOutput) MapIndex(k pulumi.StringInput) RestoreJobOutput {

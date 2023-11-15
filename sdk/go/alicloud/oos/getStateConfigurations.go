@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Oos State Configurations of the current Alibaba Cloud user.
@@ -117,12 +116,6 @@ func (o GetStateConfigurationsResultOutput) ToGetStateConfigurationsResultOutput
 
 func (o GetStateConfigurationsResultOutput) ToGetStateConfigurationsResultOutputWithContext(ctx context.Context) GetStateConfigurationsResultOutput {
 	return o
-}
-
-func (o GetStateConfigurationsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetStateConfigurationsResult] {
-	return pulumix.Output[GetStateConfigurationsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetStateConfigurationsResultOutput) Configurations() GetStateConfigurationsConfigurationArrayOutput {

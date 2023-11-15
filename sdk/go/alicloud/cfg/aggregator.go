@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Config Aggregator resource.
@@ -204,12 +203,6 @@ func (i *Aggregator) ToAggregatorOutputWithContext(ctx context.Context) Aggregat
 	return pulumi.ToOutputWithContext(ctx, i).(AggregatorOutput)
 }
 
-func (i *Aggregator) ToOutput(ctx context.Context) pulumix.Output[*Aggregator] {
-	return pulumix.Output[*Aggregator]{
-		OutputState: i.ToAggregatorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AggregatorArrayInput is an input type that accepts AggregatorArray and AggregatorArrayOutput values.
 // You can construct a concrete instance of `AggregatorArrayInput` via:
 //
@@ -233,12 +226,6 @@ func (i AggregatorArray) ToAggregatorArrayOutput() AggregatorArrayOutput {
 
 func (i AggregatorArray) ToAggregatorArrayOutputWithContext(ctx context.Context) AggregatorArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AggregatorArrayOutput)
-}
-
-func (i AggregatorArray) ToOutput(ctx context.Context) pulumix.Output[[]*Aggregator] {
-	return pulumix.Output[[]*Aggregator]{
-		OutputState: i.ToAggregatorArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AggregatorMapInput is an input type that accepts AggregatorMap and AggregatorMapOutput values.
@@ -266,12 +253,6 @@ func (i AggregatorMap) ToAggregatorMapOutputWithContext(ctx context.Context) Agg
 	return pulumi.ToOutputWithContext(ctx, i).(AggregatorMapOutput)
 }
 
-func (i AggregatorMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Aggregator] {
-	return pulumix.Output[map[string]*Aggregator]{
-		OutputState: i.ToAggregatorMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AggregatorOutput struct{ *pulumi.OutputState }
 
 func (AggregatorOutput) ElementType() reflect.Type {
@@ -284,12 +265,6 @@ func (o AggregatorOutput) ToAggregatorOutput() AggregatorOutput {
 
 func (o AggregatorOutput) ToAggregatorOutputWithContext(ctx context.Context) AggregatorOutput {
 	return o
-}
-
-func (o AggregatorOutput) ToOutput(ctx context.Context) pulumix.Output[*Aggregator] {
-	return pulumix.Output[*Aggregator]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. See `aggregatorAccounts` below.  **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
@@ -331,12 +306,6 @@ func (o AggregatorArrayOutput) ToAggregatorArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o AggregatorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Aggregator] {
-	return pulumix.Output[[]*Aggregator]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AggregatorArrayOutput) Index(i pulumi.IntInput) AggregatorOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Aggregator {
 		return vs[0].([]*Aggregator)[vs[1].(int)]
@@ -355,12 +324,6 @@ func (o AggregatorMapOutput) ToAggregatorMapOutput() AggregatorMapOutput {
 
 func (o AggregatorMapOutput) ToAggregatorMapOutputWithContext(ctx context.Context) AggregatorMapOutput {
 	return o
-}
-
-func (o AggregatorMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Aggregator] {
-	return pulumix.Output[map[string]*Aggregator]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AggregatorMapOutput) MapIndex(k pulumi.StringInput) AggregatorOutput {

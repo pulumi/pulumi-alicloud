@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -55,12 +54,6 @@ func (i SearchIndexSchemaArgs) ToSearchIndexSchemaOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(SearchIndexSchemaOutput)
 }
 
-func (i SearchIndexSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[SearchIndexSchema] {
-	return pulumix.Output[SearchIndexSchema]{
-		OutputState: i.ToSearchIndexSchemaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SearchIndexSchemaArrayInput is an input type that accepts SearchIndexSchemaArray and SearchIndexSchemaArrayOutput values.
 // You can construct a concrete instance of `SearchIndexSchemaArrayInput` via:
 //
@@ -86,12 +79,6 @@ func (i SearchIndexSchemaArray) ToSearchIndexSchemaArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(SearchIndexSchemaArrayOutput)
 }
 
-func (i SearchIndexSchemaArray) ToOutput(ctx context.Context) pulumix.Output[[]SearchIndexSchema] {
-	return pulumix.Output[[]SearchIndexSchema]{
-		OutputState: i.ToSearchIndexSchemaArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SearchIndexSchemaOutput struct{ *pulumi.OutputState }
 
 func (SearchIndexSchemaOutput) ElementType() reflect.Type {
@@ -104,12 +91,6 @@ func (o SearchIndexSchemaOutput) ToSearchIndexSchemaOutput() SearchIndexSchemaOu
 
 func (o SearchIndexSchemaOutput) ToSearchIndexSchemaOutputWithContext(ctx context.Context) SearchIndexSchemaOutput {
 	return o
-}
-
-func (o SearchIndexSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[SearchIndexSchema] {
-	return pulumix.Output[SearchIndexSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of field schemas. See `fieldSchema` below.
@@ -139,12 +120,6 @@ func (o SearchIndexSchemaArrayOutput) ToSearchIndexSchemaArrayOutput() SearchInd
 
 func (o SearchIndexSchemaArrayOutput) ToSearchIndexSchemaArrayOutputWithContext(ctx context.Context) SearchIndexSchemaArrayOutput {
 	return o
-}
-
-func (o SearchIndexSchemaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SearchIndexSchema] {
-	return pulumix.Output[[]SearchIndexSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SearchIndexSchemaArrayOutput) Index(i pulumi.IntInput) SearchIndexSchemaOutput {
@@ -210,12 +185,6 @@ func (i SearchIndexSchemaFieldSchemaArgs) ToSearchIndexSchemaFieldSchemaOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(SearchIndexSchemaFieldSchemaOutput)
 }
 
-func (i SearchIndexSchemaFieldSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[SearchIndexSchemaFieldSchema] {
-	return pulumix.Output[SearchIndexSchemaFieldSchema]{
-		OutputState: i.ToSearchIndexSchemaFieldSchemaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SearchIndexSchemaFieldSchemaArrayInput is an input type that accepts SearchIndexSchemaFieldSchemaArray and SearchIndexSchemaFieldSchemaArrayOutput values.
 // You can construct a concrete instance of `SearchIndexSchemaFieldSchemaArrayInput` via:
 //
@@ -241,12 +210,6 @@ func (i SearchIndexSchemaFieldSchemaArray) ToSearchIndexSchemaFieldSchemaArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(SearchIndexSchemaFieldSchemaArrayOutput)
 }
 
-func (i SearchIndexSchemaFieldSchemaArray) ToOutput(ctx context.Context) pulumix.Output[[]SearchIndexSchemaFieldSchema] {
-	return pulumix.Output[[]SearchIndexSchemaFieldSchema]{
-		OutputState: i.ToSearchIndexSchemaFieldSchemaArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SearchIndexSchemaFieldSchemaOutput struct{ *pulumi.OutputState }
 
 func (SearchIndexSchemaFieldSchemaOutput) ElementType() reflect.Type {
@@ -259,12 +222,6 @@ func (o SearchIndexSchemaFieldSchemaOutput) ToSearchIndexSchemaFieldSchemaOutput
 
 func (o SearchIndexSchemaFieldSchemaOutput) ToSearchIndexSchemaFieldSchemaOutputWithContext(ctx context.Context) SearchIndexSchemaFieldSchemaOutput {
 	return o
-}
-
-func (o SearchIndexSchemaFieldSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[SearchIndexSchemaFieldSchema] {
-	return pulumix.Output[SearchIndexSchemaFieldSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the type of the analyzer that you want to use. If fieldType is set to Text, you can configure this parameter. Otherwise, the default analyzer type single-word tokenization is used.
@@ -316,12 +273,6 @@ func (o SearchIndexSchemaFieldSchemaArrayOutput) ToSearchIndexSchemaFieldSchemaA
 	return o
 }
 
-func (o SearchIndexSchemaFieldSchemaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SearchIndexSchemaFieldSchema] {
-	return pulumix.Output[[]SearchIndexSchemaFieldSchema]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SearchIndexSchemaFieldSchemaArrayOutput) Index(i pulumi.IntInput) SearchIndexSchemaFieldSchemaOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SearchIndexSchemaFieldSchema {
 		return vs[0].([]SearchIndexSchemaFieldSchema)[vs[1].(int)]
@@ -361,12 +312,6 @@ func (i SearchIndexSchemaIndexSettingArgs) ToSearchIndexSchemaIndexSettingOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SearchIndexSchemaIndexSettingOutput)
 }
 
-func (i SearchIndexSchemaIndexSettingArgs) ToOutput(ctx context.Context) pulumix.Output[SearchIndexSchemaIndexSetting] {
-	return pulumix.Output[SearchIndexSchemaIndexSetting]{
-		OutputState: i.ToSearchIndexSchemaIndexSettingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SearchIndexSchemaIndexSettingArrayInput is an input type that accepts SearchIndexSchemaIndexSettingArray and SearchIndexSchemaIndexSettingArrayOutput values.
 // You can construct a concrete instance of `SearchIndexSchemaIndexSettingArrayInput` via:
 //
@@ -392,12 +337,6 @@ func (i SearchIndexSchemaIndexSettingArray) ToSearchIndexSchemaIndexSettingArray
 	return pulumi.ToOutputWithContext(ctx, i).(SearchIndexSchemaIndexSettingArrayOutput)
 }
 
-func (i SearchIndexSchemaIndexSettingArray) ToOutput(ctx context.Context) pulumix.Output[[]SearchIndexSchemaIndexSetting] {
-	return pulumix.Output[[]SearchIndexSchemaIndexSetting]{
-		OutputState: i.ToSearchIndexSchemaIndexSettingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SearchIndexSchemaIndexSettingOutput struct{ *pulumi.OutputState }
 
 func (SearchIndexSchemaIndexSettingOutput) ElementType() reflect.Type {
@@ -410,12 +349,6 @@ func (o SearchIndexSchemaIndexSettingOutput) ToSearchIndexSchemaIndexSettingOutp
 
 func (o SearchIndexSchemaIndexSettingOutput) ToSearchIndexSchemaIndexSettingOutputWithContext(ctx context.Context) SearchIndexSchemaIndexSettingOutput {
 	return o
-}
-
-func (o SearchIndexSchemaIndexSettingOutput) ToOutput(ctx context.Context) pulumix.Output[SearchIndexSchemaIndexSetting] {
-	return pulumix.Output[SearchIndexSchemaIndexSetting]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies custom routing fields. You can specify some primary key columns as routing fields. Tablestore distributes data that is written to a search index across different partitions based on the specified routing fields. The data whose routing field values are the same is distributed to the same partition.
@@ -435,12 +368,6 @@ func (o SearchIndexSchemaIndexSettingArrayOutput) ToSearchIndexSchemaIndexSettin
 
 func (o SearchIndexSchemaIndexSettingArrayOutput) ToSearchIndexSchemaIndexSettingArrayOutputWithContext(ctx context.Context) SearchIndexSchemaIndexSettingArrayOutput {
 	return o
-}
-
-func (o SearchIndexSchemaIndexSettingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SearchIndexSchemaIndexSetting] {
-	return pulumix.Output[[]SearchIndexSchemaIndexSetting]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SearchIndexSchemaIndexSettingArrayOutput) Index(i pulumi.IntInput) SearchIndexSchemaIndexSettingOutput {
@@ -482,12 +409,6 @@ func (i SearchIndexSchemaIndexSortArgs) ToSearchIndexSchemaIndexSortOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(SearchIndexSchemaIndexSortOutput)
 }
 
-func (i SearchIndexSchemaIndexSortArgs) ToOutput(ctx context.Context) pulumix.Output[SearchIndexSchemaIndexSort] {
-	return pulumix.Output[SearchIndexSchemaIndexSort]{
-		OutputState: i.ToSearchIndexSchemaIndexSortOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SearchIndexSchemaIndexSortArrayInput is an input type that accepts SearchIndexSchemaIndexSortArray and SearchIndexSchemaIndexSortArrayOutput values.
 // You can construct a concrete instance of `SearchIndexSchemaIndexSortArrayInput` via:
 //
@@ -513,12 +434,6 @@ func (i SearchIndexSchemaIndexSortArray) ToSearchIndexSchemaIndexSortArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SearchIndexSchemaIndexSortArrayOutput)
 }
 
-func (i SearchIndexSchemaIndexSortArray) ToOutput(ctx context.Context) pulumix.Output[[]SearchIndexSchemaIndexSort] {
-	return pulumix.Output[[]SearchIndexSchemaIndexSort]{
-		OutputState: i.ToSearchIndexSchemaIndexSortArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SearchIndexSchemaIndexSortOutput struct{ *pulumi.OutputState }
 
 func (SearchIndexSchemaIndexSortOutput) ElementType() reflect.Type {
@@ -531,12 +446,6 @@ func (o SearchIndexSchemaIndexSortOutput) ToSearchIndexSchemaIndexSortOutput() S
 
 func (o SearchIndexSchemaIndexSortOutput) ToSearchIndexSchemaIndexSortOutputWithContext(ctx context.Context) SearchIndexSchemaIndexSortOutput {
 	return o
-}
-
-func (o SearchIndexSchemaIndexSortOutput) ToOutput(ctx context.Context) pulumix.Output[SearchIndexSchemaIndexSort] {
-	return pulumix.Output[SearchIndexSchemaIndexSort]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported. See `sorter` below.
@@ -556,12 +465,6 @@ func (o SearchIndexSchemaIndexSortArrayOutput) ToSearchIndexSchemaIndexSortArray
 
 func (o SearchIndexSchemaIndexSortArrayOutput) ToSearchIndexSchemaIndexSortArrayOutputWithContext(ctx context.Context) SearchIndexSchemaIndexSortArrayOutput {
 	return o
-}
-
-func (o SearchIndexSchemaIndexSortArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SearchIndexSchemaIndexSort] {
-	return pulumix.Output[[]SearchIndexSchemaIndexSort]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SearchIndexSchemaIndexSortArrayOutput) Index(i pulumi.IntInput) SearchIndexSchemaIndexSortOutput {
@@ -615,12 +518,6 @@ func (i SearchIndexSchemaIndexSortSorterArgs) ToSearchIndexSchemaIndexSortSorter
 	return pulumi.ToOutputWithContext(ctx, i).(SearchIndexSchemaIndexSortSorterOutput)
 }
 
-func (i SearchIndexSchemaIndexSortSorterArgs) ToOutput(ctx context.Context) pulumix.Output[SearchIndexSchemaIndexSortSorter] {
-	return pulumix.Output[SearchIndexSchemaIndexSortSorter]{
-		OutputState: i.ToSearchIndexSchemaIndexSortSorterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SearchIndexSchemaIndexSortSorterArrayInput is an input type that accepts SearchIndexSchemaIndexSortSorterArray and SearchIndexSchemaIndexSortSorterArrayOutput values.
 // You can construct a concrete instance of `SearchIndexSchemaIndexSortSorterArrayInput` via:
 //
@@ -646,12 +543,6 @@ func (i SearchIndexSchemaIndexSortSorterArray) ToSearchIndexSchemaIndexSortSorte
 	return pulumi.ToOutputWithContext(ctx, i).(SearchIndexSchemaIndexSortSorterArrayOutput)
 }
 
-func (i SearchIndexSchemaIndexSortSorterArray) ToOutput(ctx context.Context) pulumix.Output[[]SearchIndexSchemaIndexSortSorter] {
-	return pulumix.Output[[]SearchIndexSchemaIndexSortSorter]{
-		OutputState: i.ToSearchIndexSchemaIndexSortSorterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SearchIndexSchemaIndexSortSorterOutput struct{ *pulumi.OutputState }
 
 func (SearchIndexSchemaIndexSortSorterOutput) ElementType() reflect.Type {
@@ -664,12 +555,6 @@ func (o SearchIndexSchemaIndexSortSorterOutput) ToSearchIndexSchemaIndexSortSort
 
 func (o SearchIndexSchemaIndexSortSorterOutput) ToSearchIndexSchemaIndexSortSorterOutputWithContext(ctx context.Context) SearchIndexSchemaIndexSortSorterOutput {
 	return o
-}
-
-func (o SearchIndexSchemaIndexSortSorterOutput) ToOutput(ctx context.Context) pulumix.Output[SearchIndexSchemaIndexSortSorter] {
-	return pulumix.Output[SearchIndexSchemaIndexSortSorter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the field that is used to sort data. only required if sorterType is FieldSort.
@@ -704,12 +589,6 @@ func (o SearchIndexSchemaIndexSortSorterArrayOutput) ToSearchIndexSchemaIndexSor
 
 func (o SearchIndexSchemaIndexSortSorterArrayOutput) ToSearchIndexSchemaIndexSortSorterArrayOutputWithContext(ctx context.Context) SearchIndexSchemaIndexSortSorterArrayOutput {
 	return o
-}
-
-func (o SearchIndexSchemaIndexSortSorterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SearchIndexSchemaIndexSortSorter] {
-	return pulumix.Output[[]SearchIndexSchemaIndexSortSorter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SearchIndexSchemaIndexSortSorterArrayOutput) Index(i pulumi.IntInput) SearchIndexSchemaIndexSortSorterOutput {
@@ -755,12 +634,6 @@ func (i TableDefinedColumnArgs) ToTableDefinedColumnOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TableDefinedColumnOutput)
 }
 
-func (i TableDefinedColumnArgs) ToOutput(ctx context.Context) pulumix.Output[TableDefinedColumn] {
-	return pulumix.Output[TableDefinedColumn]{
-		OutputState: i.ToTableDefinedColumnOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TableDefinedColumnArrayInput is an input type that accepts TableDefinedColumnArray and TableDefinedColumnArrayOutput values.
 // You can construct a concrete instance of `TableDefinedColumnArrayInput` via:
 //
@@ -786,12 +659,6 @@ func (i TableDefinedColumnArray) ToTableDefinedColumnArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(TableDefinedColumnArrayOutput)
 }
 
-func (i TableDefinedColumnArray) ToOutput(ctx context.Context) pulumix.Output[[]TableDefinedColumn] {
-	return pulumix.Output[[]TableDefinedColumn]{
-		OutputState: i.ToTableDefinedColumnArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TableDefinedColumnOutput struct{ *pulumi.OutputState }
 
 func (TableDefinedColumnOutput) ElementType() reflect.Type {
@@ -804,12 +671,6 @@ func (o TableDefinedColumnOutput) ToTableDefinedColumnOutput() TableDefinedColum
 
 func (o TableDefinedColumnOutput) ToTableDefinedColumnOutputWithContext(ctx context.Context) TableDefinedColumnOutput {
 	return o
-}
-
-func (o TableDefinedColumnOutput) ToOutput(ctx context.Context) pulumix.Output[TableDefinedColumn] {
-	return pulumix.Output[TableDefinedColumn]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name for defined column.
@@ -834,12 +695,6 @@ func (o TableDefinedColumnArrayOutput) ToTableDefinedColumnArrayOutput() TableDe
 
 func (o TableDefinedColumnArrayOutput) ToTableDefinedColumnArrayOutputWithContext(ctx context.Context) TableDefinedColumnArrayOutput {
 	return o
-}
-
-func (o TableDefinedColumnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TableDefinedColumn] {
-	return pulumix.Output[[]TableDefinedColumn]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TableDefinedColumnArrayOutput) Index(i pulumi.IntInput) TableDefinedColumnOutput {
@@ -885,12 +740,6 @@ func (i TablePrimaryKeyArgs) ToTablePrimaryKeyOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TablePrimaryKeyOutput)
 }
 
-func (i TablePrimaryKeyArgs) ToOutput(ctx context.Context) pulumix.Output[TablePrimaryKey] {
-	return pulumix.Output[TablePrimaryKey]{
-		OutputState: i.ToTablePrimaryKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TablePrimaryKeyArrayInput is an input type that accepts TablePrimaryKeyArray and TablePrimaryKeyArrayOutput values.
 // You can construct a concrete instance of `TablePrimaryKeyArrayInput` via:
 //
@@ -916,12 +765,6 @@ func (i TablePrimaryKeyArray) ToTablePrimaryKeyArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TablePrimaryKeyArrayOutput)
 }
 
-func (i TablePrimaryKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]TablePrimaryKey] {
-	return pulumix.Output[[]TablePrimaryKey]{
-		OutputState: i.ToTablePrimaryKeyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TablePrimaryKeyOutput struct{ *pulumi.OutputState }
 
 func (TablePrimaryKeyOutput) ElementType() reflect.Type {
@@ -934,12 +777,6 @@ func (o TablePrimaryKeyOutput) ToTablePrimaryKeyOutput() TablePrimaryKeyOutput {
 
 func (o TablePrimaryKeyOutput) ToTablePrimaryKeyOutputWithContext(ctx context.Context) TablePrimaryKeyOutput {
 	return o
-}
-
-func (o TablePrimaryKeyOutput) ToOutput(ctx context.Context) pulumix.Output[TablePrimaryKey] {
-	return pulumix.Output[TablePrimaryKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name for primary key.
@@ -964,12 +801,6 @@ func (o TablePrimaryKeyArrayOutput) ToTablePrimaryKeyArrayOutput() TablePrimaryK
 
 func (o TablePrimaryKeyArrayOutput) ToTablePrimaryKeyArrayOutputWithContext(ctx context.Context) TablePrimaryKeyArrayOutput {
 	return o
-}
-
-func (o TablePrimaryKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TablePrimaryKey] {
-	return pulumix.Output[[]TablePrimaryKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TablePrimaryKeyArrayOutput) Index(i pulumi.IntInput) TablePrimaryKeyOutput {
@@ -1027,12 +858,6 @@ func (i TunnelChannelArgs) ToTunnelChannelOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelChannelOutput)
 }
 
-func (i TunnelChannelArgs) ToOutput(ctx context.Context) pulumix.Output[TunnelChannel] {
-	return pulumix.Output[TunnelChannel]{
-		OutputState: i.ToTunnelChannelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TunnelChannelArrayInput is an input type that accepts TunnelChannelArray and TunnelChannelArrayOutput values.
 // You can construct a concrete instance of `TunnelChannelArrayInput` via:
 //
@@ -1058,12 +883,6 @@ func (i TunnelChannelArray) ToTunnelChannelArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelChannelArrayOutput)
 }
 
-func (i TunnelChannelArray) ToOutput(ctx context.Context) pulumix.Output[[]TunnelChannel] {
-	return pulumix.Output[[]TunnelChannel]{
-		OutputState: i.ToTunnelChannelArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TunnelChannelOutput struct{ *pulumi.OutputState }
 
 func (TunnelChannelOutput) ElementType() reflect.Type {
@@ -1076,12 +895,6 @@ func (o TunnelChannelOutput) ToTunnelChannelOutput() TunnelChannelOutput {
 
 func (o TunnelChannelOutput) ToTunnelChannelOutputWithContext(ctx context.Context) TunnelChannelOutput {
 	return o
-}
-
-func (o TunnelChannelOutput) ToOutput(ctx context.Context) pulumix.Output[TunnelChannel] {
-	return pulumix.Output[TunnelChannel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the channel.
@@ -1121,12 +934,6 @@ func (o TunnelChannelArrayOutput) ToTunnelChannelArrayOutput() TunnelChannelArra
 
 func (o TunnelChannelArrayOutput) ToTunnelChannelArrayOutputWithContext(ctx context.Context) TunnelChannelArrayOutput {
 	return o
-}
-
-func (o TunnelChannelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TunnelChannel] {
-	return pulumix.Output[[]TunnelChannel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TunnelChannelArrayOutput) Index(i pulumi.IntInput) TunnelChannelOutput {
@@ -1192,12 +999,6 @@ func (i GetInstanceAttachmentsAttachmentArgs) ToGetInstanceAttachmentsAttachment
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAttachmentsAttachmentOutput)
 }
 
-func (i GetInstanceAttachmentsAttachmentArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstanceAttachmentsAttachment] {
-	return pulumix.Output[GetInstanceAttachmentsAttachment]{
-		OutputState: i.ToGetInstanceAttachmentsAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetInstanceAttachmentsAttachmentArrayInput is an input type that accepts GetInstanceAttachmentsAttachmentArray and GetInstanceAttachmentsAttachmentArrayOutput values.
 // You can construct a concrete instance of `GetInstanceAttachmentsAttachmentArrayInput` via:
 //
@@ -1223,12 +1024,6 @@ func (i GetInstanceAttachmentsAttachmentArray) ToGetInstanceAttachmentsAttachmen
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAttachmentsAttachmentArrayOutput)
 }
 
-func (i GetInstanceAttachmentsAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstanceAttachmentsAttachment] {
-	return pulumix.Output[[]GetInstanceAttachmentsAttachment]{
-		OutputState: i.ToGetInstanceAttachmentsAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetInstanceAttachmentsAttachmentOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceAttachmentsAttachmentOutput) ElementType() reflect.Type {
@@ -1241,12 +1036,6 @@ func (o GetInstanceAttachmentsAttachmentOutput) ToGetInstanceAttachmentsAttachme
 
 func (o GetInstanceAttachmentsAttachmentOutput) ToGetInstanceAttachmentsAttachmentOutputWithContext(ctx context.Context) GetInstanceAttachmentsAttachmentOutput {
 	return o
-}
-
-func (o GetInstanceAttachmentsAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceAttachmentsAttachment] {
-	return pulumix.Output[GetInstanceAttachmentsAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The domain of the instance attachment.
@@ -1296,12 +1085,6 @@ func (o GetInstanceAttachmentsAttachmentArrayOutput) ToGetInstanceAttachmentsAtt
 
 func (o GetInstanceAttachmentsAttachmentArrayOutput) ToGetInstanceAttachmentsAttachmentArrayOutputWithContext(ctx context.Context) GetInstanceAttachmentsAttachmentArrayOutput {
 	return o
-}
-
-func (o GetInstanceAttachmentsAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstanceAttachmentsAttachment] {
-	return pulumix.Output[[]GetInstanceAttachmentsAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetInstanceAttachmentsAttachmentArrayOutput) Index(i pulumi.IntInput) GetInstanceAttachmentsAttachmentOutput {
@@ -1433,12 +1216,6 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceOutput)
 }
 
-func (i GetInstancesInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstance] {
-	return pulumix.Output[GetInstancesInstance]{
-		OutputState: i.ToGetInstancesInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
 //
@@ -1464,12 +1241,6 @@ func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
 }
 
-func (i GetInstancesInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstance] {
-	return pulumix.Output[[]GetInstancesInstance]{
-		OutputState: i.ToGetInstancesInstanceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceOutput) ElementType() reflect.Type {
@@ -1482,12 +1253,6 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutput() GetInstancesI
 
 func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
 	return o
-}
-
-func (o GetInstancesInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstance] {
-	return pulumix.Output[GetInstancesInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The cluster type of the instance. Possible values: `SSD`, `HYBRID`.
@@ -1590,12 +1355,6 @@ func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithCo
 	return o
 }
 
-func (o GetInstancesInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstance] {
-	return pulumix.Output[[]GetInstancesInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
 		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
@@ -1683,12 +1442,6 @@ func (i GetSearchIndexesIndexArgs) ToGetSearchIndexesIndexOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetSearchIndexesIndexOutput)
 }
 
-func (i GetSearchIndexesIndexArgs) ToOutput(ctx context.Context) pulumix.Output[GetSearchIndexesIndex] {
-	return pulumix.Output[GetSearchIndexesIndex]{
-		OutputState: i.ToGetSearchIndexesIndexOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetSearchIndexesIndexArrayInput is an input type that accepts GetSearchIndexesIndexArray and GetSearchIndexesIndexArrayOutput values.
 // You can construct a concrete instance of `GetSearchIndexesIndexArrayInput` via:
 //
@@ -1714,12 +1467,6 @@ func (i GetSearchIndexesIndexArray) ToGetSearchIndexesIndexArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetSearchIndexesIndexArrayOutput)
 }
 
-func (i GetSearchIndexesIndexArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSearchIndexesIndex] {
-	return pulumix.Output[[]GetSearchIndexesIndex]{
-		OutputState: i.ToGetSearchIndexesIndexArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetSearchIndexesIndexOutput struct{ *pulumi.OutputState }
 
 func (GetSearchIndexesIndexOutput) ElementType() reflect.Type {
@@ -1732,12 +1479,6 @@ func (o GetSearchIndexesIndexOutput) ToGetSearchIndexesIndexOutput() GetSearchIn
 
 func (o GetSearchIndexesIndexOutput) ToGetSearchIndexesIndexOutputWithContext(ctx context.Context) GetSearchIndexesIndexOutput {
 	return o
-}
-
-func (o GetSearchIndexesIndexOutput) ToOutput(ctx context.Context) pulumix.Output[GetSearchIndexesIndex] {
-	return pulumix.Output[GetSearchIndexesIndex]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation time of the index.
@@ -1819,12 +1560,6 @@ func (o GetSearchIndexesIndexArrayOutput) ToGetSearchIndexesIndexArrayOutputWith
 	return o
 }
 
-func (o GetSearchIndexesIndexArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSearchIndexesIndex] {
-	return pulumix.Output[[]GetSearchIndexesIndex]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetSearchIndexesIndexArrayOutput) Index(i pulumi.IntInput) GetSearchIndexesIndexOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSearchIndexesIndex {
 		return vs[0].([]GetSearchIndexesIndex)[vs[1].(int)]
@@ -1888,12 +1623,6 @@ func (i GetSecondaryIndexesIndexArgs) ToGetSecondaryIndexesIndexOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecondaryIndexesIndexOutput)
 }
 
-func (i GetSecondaryIndexesIndexArgs) ToOutput(ctx context.Context) pulumix.Output[GetSecondaryIndexesIndex] {
-	return pulumix.Output[GetSecondaryIndexesIndex]{
-		OutputState: i.ToGetSecondaryIndexesIndexOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetSecondaryIndexesIndexArrayInput is an input type that accepts GetSecondaryIndexesIndexArray and GetSecondaryIndexesIndexArrayOutput values.
 // You can construct a concrete instance of `GetSecondaryIndexesIndexArrayInput` via:
 //
@@ -1919,12 +1648,6 @@ func (i GetSecondaryIndexesIndexArray) ToGetSecondaryIndexesIndexArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecondaryIndexesIndexArrayOutput)
 }
 
-func (i GetSecondaryIndexesIndexArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSecondaryIndexesIndex] {
-	return pulumix.Output[[]GetSecondaryIndexesIndex]{
-		OutputState: i.ToGetSecondaryIndexesIndexArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetSecondaryIndexesIndexOutput struct{ *pulumi.OutputState }
 
 func (GetSecondaryIndexesIndexOutput) ElementType() reflect.Type {
@@ -1937,12 +1660,6 @@ func (o GetSecondaryIndexesIndexOutput) ToGetSecondaryIndexesIndexOutput() GetSe
 
 func (o GetSecondaryIndexesIndexOutput) ToGetSecondaryIndexesIndexOutputWithContext(ctx context.Context) GetSecondaryIndexesIndexOutput {
 	return o
-}
-
-func (o GetSecondaryIndexesIndexOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecondaryIndexesIndex] {
-	return pulumix.Output[GetSecondaryIndexesIndex]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of defined column for index, referenced from Table's primary keys or predefined columns.
@@ -1992,12 +1709,6 @@ func (o GetSecondaryIndexesIndexArrayOutput) ToGetSecondaryIndexesIndexArrayOutp
 
 func (o GetSecondaryIndexesIndexArrayOutput) ToGetSecondaryIndexesIndexArrayOutputWithContext(ctx context.Context) GetSecondaryIndexesIndexArrayOutput {
 	return o
-}
-
-func (o GetSecondaryIndexesIndexArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSecondaryIndexesIndex] {
-	return pulumix.Output[[]GetSecondaryIndexesIndex]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSecondaryIndexesIndexArrayOutput) Index(i pulumi.IntInput) GetSecondaryIndexesIndexOutput {
@@ -2061,12 +1772,6 @@ func (i GetTablesTableArgs) ToGetTablesTableOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetTablesTableOutput)
 }
 
-func (i GetTablesTableArgs) ToOutput(ctx context.Context) pulumix.Output[GetTablesTable] {
-	return pulumix.Output[GetTablesTable]{
-		OutputState: i.ToGetTablesTableOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetTablesTableArrayInput is an input type that accepts GetTablesTableArray and GetTablesTableArrayOutput values.
 // You can construct a concrete instance of `GetTablesTableArrayInput` via:
 //
@@ -2092,12 +1797,6 @@ func (i GetTablesTableArray) ToGetTablesTableArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetTablesTableArrayOutput)
 }
 
-func (i GetTablesTableArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTablesTable] {
-	return pulumix.Output[[]GetTablesTable]{
-		OutputState: i.ToGetTablesTableArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetTablesTableOutput struct{ *pulumi.OutputState }
 
 func (GetTablesTableOutput) ElementType() reflect.Type {
@@ -2110,12 +1809,6 @@ func (o GetTablesTableOutput) ToGetTablesTableOutput() GetTablesTableOutput {
 
 func (o GetTablesTableOutput) ToGetTablesTableOutputWithContext(ctx context.Context) GetTablesTableOutput {
 	return o
-}
-
-func (o GetTablesTableOutput) ToOutput(ctx context.Context) pulumix.Output[GetTablesTable] {
-	return pulumix.Output[GetTablesTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetTablesTableOutput) DefinedColumns() GetTablesTableDefinedColumnArrayOutput {
@@ -2166,12 +1859,6 @@ func (o GetTablesTableArrayOutput) ToGetTablesTableArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o GetTablesTableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTablesTable] {
-	return pulumix.Output[[]GetTablesTable]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetTablesTableArrayOutput) Index(i pulumi.IntInput) GetTablesTableOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTablesTable {
 		return vs[0].([]GetTablesTable)[vs[1].(int)]
@@ -2211,12 +1898,6 @@ func (i GetTablesTableDefinedColumnArgs) ToGetTablesTableDefinedColumnOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetTablesTableDefinedColumnOutput)
 }
 
-func (i GetTablesTableDefinedColumnArgs) ToOutput(ctx context.Context) pulumix.Output[GetTablesTableDefinedColumn] {
-	return pulumix.Output[GetTablesTableDefinedColumn]{
-		OutputState: i.ToGetTablesTableDefinedColumnOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetTablesTableDefinedColumnArrayInput is an input type that accepts GetTablesTableDefinedColumnArray and GetTablesTableDefinedColumnArrayOutput values.
 // You can construct a concrete instance of `GetTablesTableDefinedColumnArrayInput` via:
 //
@@ -2242,12 +1923,6 @@ func (i GetTablesTableDefinedColumnArray) ToGetTablesTableDefinedColumnArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetTablesTableDefinedColumnArrayOutput)
 }
 
-func (i GetTablesTableDefinedColumnArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTablesTableDefinedColumn] {
-	return pulumix.Output[[]GetTablesTableDefinedColumn]{
-		OutputState: i.ToGetTablesTableDefinedColumnArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetTablesTableDefinedColumnOutput struct{ *pulumi.OutputState }
 
 func (GetTablesTableDefinedColumnOutput) ElementType() reflect.Type {
@@ -2260,12 +1935,6 @@ func (o GetTablesTableDefinedColumnOutput) ToGetTablesTableDefinedColumnOutput()
 
 func (o GetTablesTableDefinedColumnOutput) ToGetTablesTableDefinedColumnOutputWithContext(ctx context.Context) GetTablesTableDefinedColumnOutput {
 	return o
-}
-
-func (o GetTablesTableDefinedColumnOutput) ToOutput(ctx context.Context) pulumix.Output[GetTablesTableDefinedColumn] {
-	return pulumix.Output[GetTablesTableDefinedColumn]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetTablesTableDefinedColumnOutput) Name() pulumi.StringOutput {
@@ -2288,12 +1957,6 @@ func (o GetTablesTableDefinedColumnArrayOutput) ToGetTablesTableDefinedColumnArr
 
 func (o GetTablesTableDefinedColumnArrayOutput) ToGetTablesTableDefinedColumnArrayOutputWithContext(ctx context.Context) GetTablesTableDefinedColumnArrayOutput {
 	return o
-}
-
-func (o GetTablesTableDefinedColumnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTablesTableDefinedColumn] {
-	return pulumix.Output[[]GetTablesTableDefinedColumn]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetTablesTableDefinedColumnArrayOutput) Index(i pulumi.IntInput) GetTablesTableDefinedColumnOutput {
@@ -2335,12 +1998,6 @@ func (i GetTablesTablePrimaryKeyArgs) ToGetTablesTablePrimaryKeyOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetTablesTablePrimaryKeyOutput)
 }
 
-func (i GetTablesTablePrimaryKeyArgs) ToOutput(ctx context.Context) pulumix.Output[GetTablesTablePrimaryKey] {
-	return pulumix.Output[GetTablesTablePrimaryKey]{
-		OutputState: i.ToGetTablesTablePrimaryKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetTablesTablePrimaryKeyArrayInput is an input type that accepts GetTablesTablePrimaryKeyArray and GetTablesTablePrimaryKeyArrayOutput values.
 // You can construct a concrete instance of `GetTablesTablePrimaryKeyArrayInput` via:
 //
@@ -2366,12 +2023,6 @@ func (i GetTablesTablePrimaryKeyArray) ToGetTablesTablePrimaryKeyArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetTablesTablePrimaryKeyArrayOutput)
 }
 
-func (i GetTablesTablePrimaryKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTablesTablePrimaryKey] {
-	return pulumix.Output[[]GetTablesTablePrimaryKey]{
-		OutputState: i.ToGetTablesTablePrimaryKeyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetTablesTablePrimaryKeyOutput struct{ *pulumi.OutputState }
 
 func (GetTablesTablePrimaryKeyOutput) ElementType() reflect.Type {
@@ -2384,12 +2035,6 @@ func (o GetTablesTablePrimaryKeyOutput) ToGetTablesTablePrimaryKeyOutput() GetTa
 
 func (o GetTablesTablePrimaryKeyOutput) ToGetTablesTablePrimaryKeyOutputWithContext(ctx context.Context) GetTablesTablePrimaryKeyOutput {
 	return o
-}
-
-func (o GetTablesTablePrimaryKeyOutput) ToOutput(ctx context.Context) pulumix.Output[GetTablesTablePrimaryKey] {
-	return pulumix.Output[GetTablesTablePrimaryKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetTablesTablePrimaryKeyOutput) Name() pulumi.StringOutput {
@@ -2412,12 +2057,6 @@ func (o GetTablesTablePrimaryKeyArrayOutput) ToGetTablesTablePrimaryKeyArrayOutp
 
 func (o GetTablesTablePrimaryKeyArrayOutput) ToGetTablesTablePrimaryKeyArrayOutputWithContext(ctx context.Context) GetTablesTablePrimaryKeyArrayOutput {
 	return o
-}
-
-func (o GetTablesTablePrimaryKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTablesTablePrimaryKey] {
-	return pulumix.Output[[]GetTablesTablePrimaryKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetTablesTablePrimaryKeyArrayOutput) Index(i pulumi.IntInput) GetTablesTablePrimaryKeyOutput {
@@ -2499,12 +2138,6 @@ func (i GetTunnelsTunnelArgs) ToGetTunnelsTunnelOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetTunnelsTunnelOutput)
 }
 
-func (i GetTunnelsTunnelArgs) ToOutput(ctx context.Context) pulumix.Output[GetTunnelsTunnel] {
-	return pulumix.Output[GetTunnelsTunnel]{
-		OutputState: i.ToGetTunnelsTunnelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetTunnelsTunnelArrayInput is an input type that accepts GetTunnelsTunnelArray and GetTunnelsTunnelArrayOutput values.
 // You can construct a concrete instance of `GetTunnelsTunnelArrayInput` via:
 //
@@ -2530,12 +2163,6 @@ func (i GetTunnelsTunnelArray) ToGetTunnelsTunnelArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetTunnelsTunnelArrayOutput)
 }
 
-func (i GetTunnelsTunnelArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTunnelsTunnel] {
-	return pulumix.Output[[]GetTunnelsTunnel]{
-		OutputState: i.ToGetTunnelsTunnelArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetTunnelsTunnelOutput struct{ *pulumi.OutputState }
 
 func (GetTunnelsTunnelOutput) ElementType() reflect.Type {
@@ -2548,12 +2175,6 @@ func (o GetTunnelsTunnelOutput) ToGetTunnelsTunnelOutput() GetTunnelsTunnelOutpu
 
 func (o GetTunnelsTunnelOutput) ToGetTunnelsTunnelOutputWithContext(ctx context.Context) GetTunnelsTunnelOutput {
 	return o
-}
-
-func (o GetTunnelsTunnelOutput) ToOutput(ctx context.Context) pulumix.Output[GetTunnelsTunnel] {
-	return pulumix.Output[GetTunnelsTunnel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The channels of OTS tunnel. Each element contains the following attributes:
@@ -2625,12 +2246,6 @@ func (o GetTunnelsTunnelArrayOutput) ToGetTunnelsTunnelArrayOutputWithContext(ct
 	return o
 }
 
-func (o GetTunnelsTunnelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTunnelsTunnel] {
-	return pulumix.Output[[]GetTunnelsTunnel]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetTunnelsTunnelArrayOutput) Index(i pulumi.IntInput) GetTunnelsTunnelOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTunnelsTunnel {
 		return vs[0].([]GetTunnelsTunnel)[vs[1].(int)]
@@ -2686,12 +2301,6 @@ func (i GetTunnelsTunnelChannelArgs) ToGetTunnelsTunnelChannelOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetTunnelsTunnelChannelOutput)
 }
 
-func (i GetTunnelsTunnelChannelArgs) ToOutput(ctx context.Context) pulumix.Output[GetTunnelsTunnelChannel] {
-	return pulumix.Output[GetTunnelsTunnelChannel]{
-		OutputState: i.ToGetTunnelsTunnelChannelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetTunnelsTunnelChannelArrayInput is an input type that accepts GetTunnelsTunnelChannelArray and GetTunnelsTunnelChannelArrayOutput values.
 // You can construct a concrete instance of `GetTunnelsTunnelChannelArrayInput` via:
 //
@@ -2717,12 +2326,6 @@ func (i GetTunnelsTunnelChannelArray) ToGetTunnelsTunnelChannelArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetTunnelsTunnelChannelArrayOutput)
 }
 
-func (i GetTunnelsTunnelChannelArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTunnelsTunnelChannel] {
-	return pulumix.Output[[]GetTunnelsTunnelChannel]{
-		OutputState: i.ToGetTunnelsTunnelChannelArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetTunnelsTunnelChannelOutput struct{ *pulumi.OutputState }
 
 func (GetTunnelsTunnelChannelOutput) ElementType() reflect.Type {
@@ -2735,12 +2338,6 @@ func (o GetTunnelsTunnelChannelOutput) ToGetTunnelsTunnelChannelOutput() GetTunn
 
 func (o GetTunnelsTunnelChannelOutput) ToGetTunnelsTunnelChannelOutputWithContext(ctx context.Context) GetTunnelsTunnelChannelOutput {
 	return o
-}
-
-func (o GetTunnelsTunnelChannelOutput) ToOutput(ctx context.Context) pulumix.Output[GetTunnelsTunnelChannel] {
-	return pulumix.Output[GetTunnelsTunnelChannel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the channel.
@@ -2780,12 +2377,6 @@ func (o GetTunnelsTunnelChannelArrayOutput) ToGetTunnelsTunnelChannelArrayOutput
 
 func (o GetTunnelsTunnelChannelArrayOutput) ToGetTunnelsTunnelChannelArrayOutputWithContext(ctx context.Context) GetTunnelsTunnelChannelArrayOutput {
 	return o
-}
-
-func (o GetTunnelsTunnelChannelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTunnelsTunnelChannel] {
-	return pulumix.Output[[]GetTunnelsTunnelChannel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetTunnelsTunnelChannelArrayOutput) Index(i pulumi.IntInput) GetTunnelsTunnelChannelOutput {

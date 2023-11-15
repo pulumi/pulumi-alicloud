@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A master slave server group contains two ECS instances. The master slave server group can help you to define multiple listening dimension.
@@ -326,12 +325,6 @@ func (i *MasterSlaveServerGroup) ToMasterSlaveServerGroupOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(MasterSlaveServerGroupOutput)
 }
 
-func (i *MasterSlaveServerGroup) ToOutput(ctx context.Context) pulumix.Output[*MasterSlaveServerGroup] {
-	return pulumix.Output[*MasterSlaveServerGroup]{
-		OutputState: i.ToMasterSlaveServerGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MasterSlaveServerGroupArrayInput is an input type that accepts MasterSlaveServerGroupArray and MasterSlaveServerGroupArrayOutput values.
 // You can construct a concrete instance of `MasterSlaveServerGroupArrayInput` via:
 //
@@ -355,12 +348,6 @@ func (i MasterSlaveServerGroupArray) ToMasterSlaveServerGroupArrayOutput() Maste
 
 func (i MasterSlaveServerGroupArray) ToMasterSlaveServerGroupArrayOutputWithContext(ctx context.Context) MasterSlaveServerGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MasterSlaveServerGroupArrayOutput)
-}
-
-func (i MasterSlaveServerGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*MasterSlaveServerGroup] {
-	return pulumix.Output[[]*MasterSlaveServerGroup]{
-		OutputState: i.ToMasterSlaveServerGroupArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MasterSlaveServerGroupMapInput is an input type that accepts MasterSlaveServerGroupMap and MasterSlaveServerGroupMapOutput values.
@@ -388,12 +375,6 @@ func (i MasterSlaveServerGroupMap) ToMasterSlaveServerGroupMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(MasterSlaveServerGroupMapOutput)
 }
 
-func (i MasterSlaveServerGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MasterSlaveServerGroup] {
-	return pulumix.Output[map[string]*MasterSlaveServerGroup]{
-		OutputState: i.ToMasterSlaveServerGroupMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MasterSlaveServerGroupOutput struct{ *pulumi.OutputState }
 
 func (MasterSlaveServerGroupOutput) ElementType() reflect.Type {
@@ -406,12 +387,6 @@ func (o MasterSlaveServerGroupOutput) ToMasterSlaveServerGroupOutput() MasterSla
 
 func (o MasterSlaveServerGroupOutput) ToMasterSlaveServerGroupOutputWithContext(ctx context.Context) MasterSlaveServerGroupOutput {
 	return o
-}
-
-func (o MasterSlaveServerGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*MasterSlaveServerGroup] {
-	return pulumix.Output[*MasterSlaveServerGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
@@ -448,12 +423,6 @@ func (o MasterSlaveServerGroupArrayOutput) ToMasterSlaveServerGroupArrayOutputWi
 	return o
 }
 
-func (o MasterSlaveServerGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MasterSlaveServerGroup] {
-	return pulumix.Output[[]*MasterSlaveServerGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MasterSlaveServerGroupArrayOutput) Index(i pulumi.IntInput) MasterSlaveServerGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MasterSlaveServerGroup {
 		return vs[0].([]*MasterSlaveServerGroup)[vs[1].(int)]
@@ -472,12 +441,6 @@ func (o MasterSlaveServerGroupMapOutput) ToMasterSlaveServerGroupMapOutput() Mas
 
 func (o MasterSlaveServerGroupMapOutput) ToMasterSlaveServerGroupMapOutputWithContext(ctx context.Context) MasterSlaveServerGroupMapOutput {
 	return o
-}
-
-func (o MasterSlaveServerGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MasterSlaveServerGroup] {
-	return pulumix.Output[map[string]*MasterSlaveServerGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MasterSlaveServerGroupMapOutput) MapIndex(k pulumi.StringInput) MasterSlaveServerGroupOutput {

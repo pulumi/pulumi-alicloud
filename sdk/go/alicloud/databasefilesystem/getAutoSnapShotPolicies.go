@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Dbfs Auto Snap Shot Policy available to the user.[What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html)
@@ -122,12 +121,6 @@ func (o GetAutoSnapShotPoliciesResultOutput) ToGetAutoSnapShotPoliciesResultOutp
 
 func (o GetAutoSnapShotPoliciesResultOutput) ToGetAutoSnapShotPoliciesResultOutputWithContext(ctx context.Context) GetAutoSnapShotPoliciesResultOutput {
 	return o
-}
-
-func (o GetAutoSnapShotPoliciesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAutoSnapShotPoliciesResult] {
-	return pulumix.Output[GetAutoSnapShotPoliciesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of Auto Snap Shot Policy Entries. Each element contains the following attributes:

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -71,12 +70,6 @@ func (i GetConsumerChannelsChannelArgs) ToGetConsumerChannelsChannelOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetConsumerChannelsChannelOutput)
 }
 
-func (i GetConsumerChannelsChannelArgs) ToOutput(ctx context.Context) pulumix.Output[GetConsumerChannelsChannel] {
-	return pulumix.Output[GetConsumerChannelsChannel]{
-		OutputState: i.ToGetConsumerChannelsChannelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetConsumerChannelsChannelArrayInput is an input type that accepts GetConsumerChannelsChannelArray and GetConsumerChannelsChannelArrayOutput values.
 // You can construct a concrete instance of `GetConsumerChannelsChannelArrayInput` via:
 //
@@ -102,12 +95,6 @@ func (i GetConsumerChannelsChannelArray) ToGetConsumerChannelsChannelArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetConsumerChannelsChannelArrayOutput)
 }
 
-func (i GetConsumerChannelsChannelArray) ToOutput(ctx context.Context) pulumix.Output[[]GetConsumerChannelsChannel] {
-	return pulumix.Output[[]GetConsumerChannelsChannel]{
-		OutputState: i.ToGetConsumerChannelsChannelArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetConsumerChannelsChannelOutput struct{ *pulumi.OutputState }
 
 func (GetConsumerChannelsChannelOutput) ElementType() reflect.Type {
@@ -120,12 +107,6 @@ func (o GetConsumerChannelsChannelOutput) ToGetConsumerChannelsChannelOutput() G
 
 func (o GetConsumerChannelsChannelOutput) ToGetConsumerChannelsChannelOutputWithContext(ctx context.Context) GetConsumerChannelsChannelOutput {
 	return o
-}
-
-func (o GetConsumerChannelsChannelOutput) ToOutput(ctx context.Context) pulumix.Output[GetConsumerChannelsChannel] {
-	return pulumix.Output[GetConsumerChannelsChannel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the consumer group.
@@ -175,12 +156,6 @@ func (o GetConsumerChannelsChannelArrayOutput) ToGetConsumerChannelsChannelArray
 
 func (o GetConsumerChannelsChannelArrayOutput) ToGetConsumerChannelsChannelArrayOutputWithContext(ctx context.Context) GetConsumerChannelsChannelArrayOutput {
 	return o
-}
-
-func (o GetConsumerChannelsChannelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetConsumerChannelsChannel] {
-	return pulumix.Output[[]GetConsumerChannelsChannel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetConsumerChannelsChannelArrayOutput) Index(i pulumi.IntInput) GetConsumerChannelsChannelOutput {
@@ -272,12 +247,6 @@ func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceOutput)
 }
 
-func (i GetInstancesInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstance] {
-	return pulumix.Output[GetInstancesInstance]{
-		OutputState: i.ToGetInstancesInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
 //
@@ -303,12 +272,6 @@ func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
 }
 
-func (i GetInstancesInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstance] {
-	return pulumix.Output[[]GetInstancesInstance]{
-		OutputState: i.ToGetInstancesInstanceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceOutput) ElementType() reflect.Type {
@@ -321,12 +284,6 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutput() GetInstancesI
 
 func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
 	return o
-}
-
-func (o GetInstancesInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstancesInstance] {
-	return pulumix.Output[GetInstancesInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Instance creation time
@@ -410,12 +367,6 @@ func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutput() Get
 
 func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceArrayOutput {
 	return o
-}
-
-func (o GetInstancesInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstancesInstance] {
-	return pulumix.Output[[]GetInstancesInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
@@ -573,12 +524,6 @@ func (i GetMigrationJobsJobArgs) ToGetMigrationJobsJobOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetMigrationJobsJobOutput)
 }
 
-func (i GetMigrationJobsJobArgs) ToOutput(ctx context.Context) pulumix.Output[GetMigrationJobsJob] {
-	return pulumix.Output[GetMigrationJobsJob]{
-		OutputState: i.ToGetMigrationJobsJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetMigrationJobsJobArrayInput is an input type that accepts GetMigrationJobsJobArray and GetMigrationJobsJobArrayOutput values.
 // You can construct a concrete instance of `GetMigrationJobsJobArrayInput` via:
 //
@@ -604,12 +549,6 @@ func (i GetMigrationJobsJobArray) ToGetMigrationJobsJobArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetMigrationJobsJobArrayOutput)
 }
 
-func (i GetMigrationJobsJobArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMigrationJobsJob] {
-	return pulumix.Output[[]GetMigrationJobsJob]{
-		OutputState: i.ToGetMigrationJobsJobArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetMigrationJobsJobOutput struct{ *pulumi.OutputState }
 
 func (GetMigrationJobsJobOutput) ElementType() reflect.Type {
@@ -622,12 +561,6 @@ func (o GetMigrationJobsJobOutput) ToGetMigrationJobsJobOutput() GetMigrationJob
 
 func (o GetMigrationJobsJobOutput) ToGetMigrationJobsJobOutputWithContext(ctx context.Context) GetMigrationJobsJobOutput {
 	return o
-}
-
-func (o GetMigrationJobsJobOutput) ToOutput(ctx context.Context) pulumix.Output[GetMigrationJobsJob] {
-	return pulumix.Output[GetMigrationJobsJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether or not to execute DTS supports schema migration, full data migration, or full-data initialization.
@@ -794,12 +727,6 @@ func (o GetMigrationJobsJobArrayOutput) ToGetMigrationJobsJobArrayOutputWithCont
 	return o
 }
 
-func (o GetMigrationJobsJobArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMigrationJobsJob] {
-	return pulumix.Output[[]GetMigrationJobsJob]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetMigrationJobsJobArrayOutput) Index(i pulumi.IntInput) GetMigrationJobsJobOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMigrationJobsJob {
 		return vs[0].([]GetMigrationJobsJob)[vs[1].(int)]
@@ -947,12 +874,6 @@ func (i GetSubscriptionJobsJobArgs) ToGetSubscriptionJobsJobOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionJobsJobOutput)
 }
 
-func (i GetSubscriptionJobsJobArgs) ToOutput(ctx context.Context) pulumix.Output[GetSubscriptionJobsJob] {
-	return pulumix.Output[GetSubscriptionJobsJob]{
-		OutputState: i.ToGetSubscriptionJobsJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetSubscriptionJobsJobArrayInput is an input type that accepts GetSubscriptionJobsJobArray and GetSubscriptionJobsJobArrayOutput values.
 // You can construct a concrete instance of `GetSubscriptionJobsJobArrayInput` via:
 //
@@ -978,12 +899,6 @@ func (i GetSubscriptionJobsJobArray) ToGetSubscriptionJobsJobArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionJobsJobArrayOutput)
 }
 
-func (i GetSubscriptionJobsJobArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSubscriptionJobsJob] {
-	return pulumix.Output[[]GetSubscriptionJobsJob]{
-		OutputState: i.ToGetSubscriptionJobsJobArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetSubscriptionJobsJobOutput struct{ *pulumi.OutputState }
 
 func (GetSubscriptionJobsJobOutput) ElementType() reflect.Type {
@@ -996,12 +911,6 @@ func (o GetSubscriptionJobsJobOutput) ToGetSubscriptionJobsJobOutput() GetSubscr
 
 func (o GetSubscriptionJobsJobOutput) ToGetSubscriptionJobsJobOutputWithContext(ctx context.Context) GetSubscriptionJobsJobOutput {
 	return o
-}
-
-func (o GetSubscriptionJobsJobOutput) ToOutput(ctx context.Context) pulumix.Output[GetSubscriptionJobsJob] {
-	return pulumix.Output[GetSubscriptionJobsJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Subscription start time in Unix timestamp format.
@@ -1158,12 +1067,6 @@ func (o GetSubscriptionJobsJobArrayOutput) ToGetSubscriptionJobsJobArrayOutputWi
 	return o
 }
 
-func (o GetSubscriptionJobsJobArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSubscriptionJobsJob] {
-	return pulumix.Output[[]GetSubscriptionJobsJob]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetSubscriptionJobsJobArrayOutput) Index(i pulumi.IntInput) GetSubscriptionJobsJobOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSubscriptionJobsJob {
 		return vs[0].([]GetSubscriptionJobsJob)[vs[1].(int)]
@@ -1211,12 +1114,6 @@ func (i GetSubscriptionJobsJobSubscriptionHostArgs) ToGetSubscriptionJobsJobSubs
 	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionJobsJobSubscriptionHostOutput)
 }
 
-func (i GetSubscriptionJobsJobSubscriptionHostArgs) ToOutput(ctx context.Context) pulumix.Output[GetSubscriptionJobsJobSubscriptionHost] {
-	return pulumix.Output[GetSubscriptionJobsJobSubscriptionHost]{
-		OutputState: i.ToGetSubscriptionJobsJobSubscriptionHostOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetSubscriptionJobsJobSubscriptionHostArrayInput is an input type that accepts GetSubscriptionJobsJobSubscriptionHostArray and GetSubscriptionJobsJobSubscriptionHostArrayOutput values.
 // You can construct a concrete instance of `GetSubscriptionJobsJobSubscriptionHostArrayInput` via:
 //
@@ -1242,12 +1139,6 @@ func (i GetSubscriptionJobsJobSubscriptionHostArray) ToGetSubscriptionJobsJobSub
 	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionJobsJobSubscriptionHostArrayOutput)
 }
 
-func (i GetSubscriptionJobsJobSubscriptionHostArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSubscriptionJobsJobSubscriptionHost] {
-	return pulumix.Output[[]GetSubscriptionJobsJobSubscriptionHost]{
-		OutputState: i.ToGetSubscriptionJobsJobSubscriptionHostArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetSubscriptionJobsJobSubscriptionHostOutput struct{ *pulumi.OutputState }
 
 func (GetSubscriptionJobsJobSubscriptionHostOutput) ElementType() reflect.Type {
@@ -1260,12 +1151,6 @@ func (o GetSubscriptionJobsJobSubscriptionHostOutput) ToGetSubscriptionJobsJobSu
 
 func (o GetSubscriptionJobsJobSubscriptionHostOutput) ToGetSubscriptionJobsJobSubscriptionHostOutputWithContext(ctx context.Context) GetSubscriptionJobsJobSubscriptionHostOutput {
 	return o
-}
-
-func (o GetSubscriptionJobsJobSubscriptionHostOutput) ToOutput(ctx context.Context) pulumix.Output[GetSubscriptionJobsJobSubscriptionHost] {
-	return pulumix.Output[GetSubscriptionJobsJobSubscriptionHost]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Classic network address.
@@ -1295,12 +1180,6 @@ func (o GetSubscriptionJobsJobSubscriptionHostArrayOutput) ToGetSubscriptionJobs
 
 func (o GetSubscriptionJobsJobSubscriptionHostArrayOutput) ToGetSubscriptionJobsJobSubscriptionHostArrayOutputWithContext(ctx context.Context) GetSubscriptionJobsJobSubscriptionHostArrayOutput {
 	return o
-}
-
-func (o GetSubscriptionJobsJobSubscriptionHostArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSubscriptionJobsJobSubscriptionHost] {
-	return pulumix.Output[[]GetSubscriptionJobsJobSubscriptionHost]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSubscriptionJobsJobSubscriptionHostArrayOutput) Index(i pulumi.IntInput) GetSubscriptionJobsJobSubscriptionHostOutput {
@@ -1462,12 +1341,6 @@ func (i GetSynchronizationJobsJobArgs) ToGetSynchronizationJobsJobOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetSynchronizationJobsJobOutput)
 }
 
-func (i GetSynchronizationJobsJobArgs) ToOutput(ctx context.Context) pulumix.Output[GetSynchronizationJobsJob] {
-	return pulumix.Output[GetSynchronizationJobsJob]{
-		OutputState: i.ToGetSynchronizationJobsJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetSynchronizationJobsJobArrayInput is an input type that accepts GetSynchronizationJobsJobArray and GetSynchronizationJobsJobArrayOutput values.
 // You can construct a concrete instance of `GetSynchronizationJobsJobArrayInput` via:
 //
@@ -1493,12 +1366,6 @@ func (i GetSynchronizationJobsJobArray) ToGetSynchronizationJobsJobArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetSynchronizationJobsJobArrayOutput)
 }
 
-func (i GetSynchronizationJobsJobArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSynchronizationJobsJob] {
-	return pulumix.Output[[]GetSynchronizationJobsJob]{
-		OutputState: i.ToGetSynchronizationJobsJobArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetSynchronizationJobsJobOutput struct{ *pulumi.OutputState }
 
 func (GetSynchronizationJobsJobOutput) ElementType() reflect.Type {
@@ -1511,12 +1378,6 @@ func (o GetSynchronizationJobsJobOutput) ToGetSynchronizationJobsJobOutput() Get
 
 func (o GetSynchronizationJobsJobOutput) ToGetSynchronizationJobsJobOutputWithContext(ctx context.Context) GetSynchronizationJobsJobOutput {
 	return o
-}
-
-func (o GetSynchronizationJobsJobOutput) ToOutput(ctx context.Context) pulumix.Output[GetSynchronizationJobsJob] {
-	return pulumix.Output[GetSynchronizationJobsJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Start time in Unix timestamp format.
@@ -1692,12 +1553,6 @@ func (o GetSynchronizationJobsJobArrayOutput) ToGetSynchronizationJobsJobArrayOu
 
 func (o GetSynchronizationJobsJobArrayOutput) ToGetSynchronizationJobsJobArrayOutputWithContext(ctx context.Context) GetSynchronizationJobsJobArrayOutput {
 	return o
-}
-
-func (o GetSynchronizationJobsJobArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSynchronizationJobsJob] {
-	return pulumix.Output[[]GetSynchronizationJobsJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSynchronizationJobsJobArrayOutput) Index(i pulumi.IntInput) GetSynchronizationJobsJobOutput {

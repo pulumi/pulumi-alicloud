@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Message Center Contacts of the current Alibaba Cloud user.
@@ -120,12 +119,6 @@ func (o GetMscSubContactsResultOutput) ToGetMscSubContactsResultOutput() GetMscS
 
 func (o GetMscSubContactsResultOutput) ToGetMscSubContactsResultOutputWithContext(ctx context.Context) GetMscSubContactsResultOutput {
 	return o
-}
-
-func (o GetMscSubContactsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetMscSubContactsResult] {
-	return pulumix.Output[GetMscSubContactsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetMscSubContactsResultOutput) Contacts() GetMscSubContactsContactArrayOutput {

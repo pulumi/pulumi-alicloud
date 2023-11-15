@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Nas Smb Acl resource.
@@ -315,12 +314,6 @@ func (i *SmbAclAttachment) ToSmbAclAttachmentOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SmbAclAttachmentOutput)
 }
 
-func (i *SmbAclAttachment) ToOutput(ctx context.Context) pulumix.Output[*SmbAclAttachment] {
-	return pulumix.Output[*SmbAclAttachment]{
-		OutputState: i.ToSmbAclAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SmbAclAttachmentArrayInput is an input type that accepts SmbAclAttachmentArray and SmbAclAttachmentArrayOutput values.
 // You can construct a concrete instance of `SmbAclAttachmentArrayInput` via:
 //
@@ -344,12 +337,6 @@ func (i SmbAclAttachmentArray) ToSmbAclAttachmentArrayOutput() SmbAclAttachmentA
 
 func (i SmbAclAttachmentArray) ToSmbAclAttachmentArrayOutputWithContext(ctx context.Context) SmbAclAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SmbAclAttachmentArrayOutput)
-}
-
-func (i SmbAclAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*SmbAclAttachment] {
-	return pulumix.Output[[]*SmbAclAttachment]{
-		OutputState: i.ToSmbAclAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SmbAclAttachmentMapInput is an input type that accepts SmbAclAttachmentMap and SmbAclAttachmentMapOutput values.
@@ -377,12 +364,6 @@ func (i SmbAclAttachmentMap) ToSmbAclAttachmentMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(SmbAclAttachmentMapOutput)
 }
 
-func (i SmbAclAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SmbAclAttachment] {
-	return pulumix.Output[map[string]*SmbAclAttachment]{
-		OutputState: i.ToSmbAclAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SmbAclAttachmentOutput struct{ *pulumi.OutputState }
 
 func (SmbAclAttachmentOutput) ElementType() reflect.Type {
@@ -395,12 +376,6 @@ func (o SmbAclAttachmentOutput) ToSmbAclAttachmentOutput() SmbAclAttachmentOutpu
 
 func (o SmbAclAttachmentOutput) ToSmbAclAttachmentOutputWithContext(ctx context.Context) SmbAclAttachmentOutput {
 	return o
-}
-
-func (o SmbAclAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*SmbAclAttachment] {
-	return pulumix.Output[*SmbAclAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The method that is used to authenticate network identities.
@@ -483,12 +458,6 @@ func (o SmbAclAttachmentArrayOutput) ToSmbAclAttachmentArrayOutputWithContext(ct
 	return o
 }
 
-func (o SmbAclAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SmbAclAttachment] {
-	return pulumix.Output[[]*SmbAclAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SmbAclAttachmentArrayOutput) Index(i pulumi.IntInput) SmbAclAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SmbAclAttachment {
 		return vs[0].([]*SmbAclAttachment)[vs[1].(int)]
@@ -507,12 +476,6 @@ func (o SmbAclAttachmentMapOutput) ToSmbAclAttachmentMapOutput() SmbAclAttachmen
 
 func (o SmbAclAttachmentMapOutput) ToSmbAclAttachmentMapOutputWithContext(ctx context.Context) SmbAclAttachmentMapOutput {
 	return o
-}
-
-func (o SmbAclAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SmbAclAttachment] {
-	return pulumix.Output[map[string]*SmbAclAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SmbAclAttachmentMapOutput) MapIndex(k pulumi.StringInput) SmbAclAttachmentOutput {

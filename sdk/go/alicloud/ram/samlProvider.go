@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a RAM SAML Provider resource.
@@ -177,12 +176,6 @@ func (i *SamlProvider) ToSamlProviderOutputWithContext(ctx context.Context) Saml
 	return pulumi.ToOutputWithContext(ctx, i).(SamlProviderOutput)
 }
 
-func (i *SamlProvider) ToOutput(ctx context.Context) pulumix.Output[*SamlProvider] {
-	return pulumix.Output[*SamlProvider]{
-		OutputState: i.ToSamlProviderOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SamlProviderArrayInput is an input type that accepts SamlProviderArray and SamlProviderArrayOutput values.
 // You can construct a concrete instance of `SamlProviderArrayInput` via:
 //
@@ -206,12 +199,6 @@ func (i SamlProviderArray) ToSamlProviderArrayOutput() SamlProviderArrayOutput {
 
 func (i SamlProviderArray) ToSamlProviderArrayOutputWithContext(ctx context.Context) SamlProviderArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SamlProviderArrayOutput)
-}
-
-func (i SamlProviderArray) ToOutput(ctx context.Context) pulumix.Output[[]*SamlProvider] {
-	return pulumix.Output[[]*SamlProvider]{
-		OutputState: i.ToSamlProviderArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SamlProviderMapInput is an input type that accepts SamlProviderMap and SamlProviderMapOutput values.
@@ -239,12 +226,6 @@ func (i SamlProviderMap) ToSamlProviderMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(SamlProviderMapOutput)
 }
 
-func (i SamlProviderMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SamlProvider] {
-	return pulumix.Output[map[string]*SamlProvider]{
-		OutputState: i.ToSamlProviderMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SamlProviderOutput struct{ *pulumi.OutputState }
 
 func (SamlProviderOutput) ElementType() reflect.Type {
@@ -257,12 +238,6 @@ func (o SamlProviderOutput) ToSamlProviderOutput() SamlProviderOutput {
 
 func (o SamlProviderOutput) ToSamlProviderOutputWithContext(ctx context.Context) SamlProviderOutput {
 	return o
-}
-
-func (o SamlProviderOutput) ToOutput(ctx context.Context) pulumix.Output[*SamlProvider] {
-	return pulumix.Output[*SamlProvider]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Alibaba Cloud Resource Name (ARN) of the IdP.
@@ -304,12 +279,6 @@ func (o SamlProviderArrayOutput) ToSamlProviderArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o SamlProviderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SamlProvider] {
-	return pulumix.Output[[]*SamlProvider]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SamlProviderArrayOutput) Index(i pulumi.IntInput) SamlProviderOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SamlProvider {
 		return vs[0].([]*SamlProvider)[vs[1].(int)]
@@ -328,12 +297,6 @@ func (o SamlProviderMapOutput) ToSamlProviderMapOutput() SamlProviderMapOutput {
 
 func (o SamlProviderMapOutput) ToSamlProviderMapOutputWithContext(ctx context.Context) SamlProviderMapOutput {
 	return o
-}
-
-func (o SamlProviderMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SamlProvider] {
-	return pulumix.Output[map[string]*SamlProvider]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SamlProviderMapOutput) MapIndex(k pulumi.StringInput) SamlProviderOutput {

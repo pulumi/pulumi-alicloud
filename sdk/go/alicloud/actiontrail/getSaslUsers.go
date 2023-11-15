@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list of ALIKAFKA Sasl users in an Alibaba Cloud account according to the specified filters.
@@ -117,12 +116,6 @@ func (o GetSaslUsersResultOutput) ToGetSaslUsersResultOutput() GetSaslUsersResul
 
 func (o GetSaslUsersResultOutput) ToGetSaslUsersResultOutputWithContext(ctx context.Context) GetSaslUsersResultOutput {
 	return o
-}
-
-func (o GetSaslUsersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSaslUsersResult] {
-	return pulumix.Output[GetSaslUsersResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

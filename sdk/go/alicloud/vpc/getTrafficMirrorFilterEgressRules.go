@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Vpc Traffic Mirror Filter Egress Rules of the current Alibaba Cloud user.
@@ -133,12 +132,6 @@ func (o GetTrafficMirrorFilterEgressRulesResultOutput) ToGetTrafficMirrorFilterE
 
 func (o GetTrafficMirrorFilterEgressRulesResultOutput) ToGetTrafficMirrorFilterEgressRulesResultOutputWithContext(ctx context.Context) GetTrafficMirrorFilterEgressRulesResultOutput {
 	return o
-}
-
-func (o GetTrafficMirrorFilterEgressRulesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTrafficMirrorFilterEgressRulesResult] {
-	return pulumix.Output[GetTrafficMirrorFilterEgressRulesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

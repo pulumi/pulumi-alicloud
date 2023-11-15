@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Actiontrail Global Events Storage Region of the current Alibaba Cloud user.
@@ -83,12 +82,6 @@ func (o LookupGlobalEventsStorageRegionResultOutput) ToLookupGlobalEventsStorage
 
 func (o LookupGlobalEventsStorageRegionResultOutput) ToLookupGlobalEventsStorageRegionResultOutputWithContext(ctx context.Context) LookupGlobalEventsStorageRegionResultOutput {
 	return o
-}
-
-func (o LookupGlobalEventsStorageRegionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGlobalEventsStorageRegionResult] {
-	return pulumix.Output[LookupGlobalEventsStorageRegionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

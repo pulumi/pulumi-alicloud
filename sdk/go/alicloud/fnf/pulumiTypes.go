@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -75,12 +74,6 @@ func (i GetExecutionsExecutionArgs) ToGetExecutionsExecutionOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetExecutionsExecutionOutput)
 }
 
-func (i GetExecutionsExecutionArgs) ToOutput(ctx context.Context) pulumix.Output[GetExecutionsExecution] {
-	return pulumix.Output[GetExecutionsExecution]{
-		OutputState: i.ToGetExecutionsExecutionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetExecutionsExecutionArrayInput is an input type that accepts GetExecutionsExecutionArray and GetExecutionsExecutionArrayOutput values.
 // You can construct a concrete instance of `GetExecutionsExecutionArrayInput` via:
 //
@@ -106,12 +99,6 @@ func (i GetExecutionsExecutionArray) ToGetExecutionsExecutionArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetExecutionsExecutionArrayOutput)
 }
 
-func (i GetExecutionsExecutionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetExecutionsExecution] {
-	return pulumix.Output[[]GetExecutionsExecution]{
-		OutputState: i.ToGetExecutionsExecutionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetExecutionsExecutionOutput struct{ *pulumi.OutputState }
 
 func (GetExecutionsExecutionOutput) ElementType() reflect.Type {
@@ -124,12 +111,6 @@ func (o GetExecutionsExecutionOutput) ToGetExecutionsExecutionOutput() GetExecut
 
 func (o GetExecutionsExecutionOutput) ToGetExecutionsExecutionOutputWithContext(ctx context.Context) GetExecutionsExecutionOutput {
 	return o
-}
-
-func (o GetExecutionsExecutionOutput) ToOutput(ctx context.Context) pulumix.Output[GetExecutionsExecution] {
-	return pulumix.Output[GetExecutionsExecution]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the execution.
@@ -184,12 +165,6 @@ func (o GetExecutionsExecutionArrayOutput) ToGetExecutionsExecutionArrayOutput()
 
 func (o GetExecutionsExecutionArrayOutput) ToGetExecutionsExecutionArrayOutputWithContext(ctx context.Context) GetExecutionsExecutionArrayOutput {
 	return o
-}
-
-func (o GetExecutionsExecutionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetExecutionsExecution] {
-	return pulumix.Output[[]GetExecutionsExecution]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetExecutionsExecutionArrayOutput) Index(i pulumi.IntInput) GetExecutionsExecutionOutput {
@@ -259,12 +234,6 @@ func (i GetFlowsFlowArgs) ToGetFlowsFlowOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetFlowsFlowOutput)
 }
 
-func (i GetFlowsFlowArgs) ToOutput(ctx context.Context) pulumix.Output[GetFlowsFlow] {
-	return pulumix.Output[GetFlowsFlow]{
-		OutputState: i.ToGetFlowsFlowOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetFlowsFlowArrayInput is an input type that accepts GetFlowsFlowArray and GetFlowsFlowArrayOutput values.
 // You can construct a concrete instance of `GetFlowsFlowArrayInput` via:
 //
@@ -290,12 +259,6 @@ func (i GetFlowsFlowArray) ToGetFlowsFlowArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetFlowsFlowArrayOutput)
 }
 
-func (i GetFlowsFlowArray) ToOutput(ctx context.Context) pulumix.Output[[]GetFlowsFlow] {
-	return pulumix.Output[[]GetFlowsFlow]{
-		OutputState: i.ToGetFlowsFlowArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetFlowsFlowOutput struct{ *pulumi.OutputState }
 
 func (GetFlowsFlowOutput) ElementType() reflect.Type {
@@ -308,12 +271,6 @@ func (o GetFlowsFlowOutput) ToGetFlowsFlowOutput() GetFlowsFlowOutput {
 
 func (o GetFlowsFlowOutput) ToGetFlowsFlowOutputWithContext(ctx context.Context) GetFlowsFlowOutput {
 	return o
-}
-
-func (o GetFlowsFlowOutput) ToOutput(ctx context.Context) pulumix.Output[GetFlowsFlow] {
-	return pulumix.Output[GetFlowsFlow]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The definition of the flow. It must comply with the Flow Definition Language (FDL) syntax.
@@ -368,12 +325,6 @@ func (o GetFlowsFlowArrayOutput) ToGetFlowsFlowArrayOutput() GetFlowsFlowArrayOu
 
 func (o GetFlowsFlowArrayOutput) ToGetFlowsFlowArrayOutputWithContext(ctx context.Context) GetFlowsFlowArrayOutput {
 	return o
-}
-
-func (o GetFlowsFlowArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetFlowsFlow] {
-	return pulumix.Output[[]GetFlowsFlow]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetFlowsFlowArrayOutput) Index(i pulumi.IntInput) GetFlowsFlowOutput {
@@ -443,12 +394,6 @@ func (i GetSchedulesScheduleArgs) ToGetSchedulesScheduleOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetSchedulesScheduleOutput)
 }
 
-func (i GetSchedulesScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[GetSchedulesSchedule] {
-	return pulumix.Output[GetSchedulesSchedule]{
-		OutputState: i.ToGetSchedulesScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetSchedulesScheduleArrayInput is an input type that accepts GetSchedulesScheduleArray and GetSchedulesScheduleArrayOutput values.
 // You can construct a concrete instance of `GetSchedulesScheduleArrayInput` via:
 //
@@ -474,12 +419,6 @@ func (i GetSchedulesScheduleArray) ToGetSchedulesScheduleArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetSchedulesScheduleArrayOutput)
 }
 
-func (i GetSchedulesScheduleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSchedulesSchedule] {
-	return pulumix.Output[[]GetSchedulesSchedule]{
-		OutputState: i.ToGetSchedulesScheduleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetSchedulesScheduleOutput struct{ *pulumi.OutputState }
 
 func (GetSchedulesScheduleOutput) ElementType() reflect.Type {
@@ -492,12 +431,6 @@ func (o GetSchedulesScheduleOutput) ToGetSchedulesScheduleOutput() GetSchedulesS
 
 func (o GetSchedulesScheduleOutput) ToGetSchedulesScheduleOutputWithContext(ctx context.Context) GetSchedulesScheduleOutput {
 	return o
-}
-
-func (o GetSchedulesScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[GetSchedulesSchedule] {
-	return pulumix.Output[GetSchedulesSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The CRON expression of the time-based schedule to be created.
@@ -552,12 +485,6 @@ func (o GetSchedulesScheduleArrayOutput) ToGetSchedulesScheduleArrayOutput() Get
 
 func (o GetSchedulesScheduleArrayOutput) ToGetSchedulesScheduleArrayOutputWithContext(ctx context.Context) GetSchedulesScheduleArrayOutput {
 	return o
-}
-
-func (o GetSchedulesScheduleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSchedulesSchedule] {
-	return pulumix.Output[[]GetSchedulesSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSchedulesScheduleArrayOutput) Index(i pulumi.IntInput) GetSchedulesScheduleOutput {

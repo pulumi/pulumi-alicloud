@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Config Aggregate Config Rule resource.
@@ -357,12 +356,6 @@ func (i *AggregateConfigRule) ToAggregateConfigRuleOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(AggregateConfigRuleOutput)
 }
 
-func (i *AggregateConfigRule) ToOutput(ctx context.Context) pulumix.Output[*AggregateConfigRule] {
-	return pulumix.Output[*AggregateConfigRule]{
-		OutputState: i.ToAggregateConfigRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AggregateConfigRuleArrayInput is an input type that accepts AggregateConfigRuleArray and AggregateConfigRuleArrayOutput values.
 // You can construct a concrete instance of `AggregateConfigRuleArrayInput` via:
 //
@@ -386,12 +379,6 @@ func (i AggregateConfigRuleArray) ToAggregateConfigRuleArrayOutput() AggregateCo
 
 func (i AggregateConfigRuleArray) ToAggregateConfigRuleArrayOutputWithContext(ctx context.Context) AggregateConfigRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AggregateConfigRuleArrayOutput)
-}
-
-func (i AggregateConfigRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*AggregateConfigRule] {
-	return pulumix.Output[[]*AggregateConfigRule]{
-		OutputState: i.ToAggregateConfigRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AggregateConfigRuleMapInput is an input type that accepts AggregateConfigRuleMap and AggregateConfigRuleMapOutput values.
@@ -419,12 +406,6 @@ func (i AggregateConfigRuleMap) ToAggregateConfigRuleMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AggregateConfigRuleMapOutput)
 }
 
-func (i AggregateConfigRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AggregateConfigRule] {
-	return pulumix.Output[map[string]*AggregateConfigRule]{
-		OutputState: i.ToAggregateConfigRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AggregateConfigRuleOutput struct{ *pulumi.OutputState }
 
 func (AggregateConfigRuleOutput) ElementType() reflect.Type {
@@ -437,12 +418,6 @@ func (o AggregateConfigRuleOutput) ToAggregateConfigRuleOutput() AggregateConfig
 
 func (o AggregateConfigRuleOutput) ToAggregateConfigRuleOutputWithContext(ctx context.Context) AggregateConfigRuleOutput {
 	return o
-}
-
-func (o AggregateConfigRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*AggregateConfigRule] {
-	return pulumix.Output[*AggregateConfigRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the rule.
@@ -544,12 +519,6 @@ func (o AggregateConfigRuleArrayOutput) ToAggregateConfigRuleArrayOutputWithCont
 	return o
 }
 
-func (o AggregateConfigRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AggregateConfigRule] {
-	return pulumix.Output[[]*AggregateConfigRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AggregateConfigRuleArrayOutput) Index(i pulumi.IntInput) AggregateConfigRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AggregateConfigRule {
 		return vs[0].([]*AggregateConfigRule)[vs[1].(int)]
@@ -568,12 +537,6 @@ func (o AggregateConfigRuleMapOutput) ToAggregateConfigRuleMapOutput() Aggregate
 
 func (o AggregateConfigRuleMapOutput) ToAggregateConfigRuleMapOutputWithContext(ctx context.Context) AggregateConfigRuleMapOutput {
 	return o
-}
-
-func (o AggregateConfigRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AggregateConfigRule] {
-	return pulumix.Output[map[string]*AggregateConfigRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AggregateConfigRuleMapOutput) MapIndex(k pulumi.StringInput) AggregateConfigRuleOutput {

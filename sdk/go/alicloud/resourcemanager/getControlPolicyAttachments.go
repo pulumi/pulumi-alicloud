@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Resource Manager Control Policy Attachments of the current Alibaba Cloud user.
@@ -120,12 +119,6 @@ func (o GetControlPolicyAttachmentsResultOutput) ToGetControlPolicyAttachmentsRe
 
 func (o GetControlPolicyAttachmentsResultOutput) ToGetControlPolicyAttachmentsResultOutputWithContext(ctx context.Context) GetControlPolicyAttachmentsResultOutput {
 	return o
-}
-
-func (o GetControlPolicyAttachmentsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetControlPolicyAttachmentsResult] {
-	return pulumix.Output[GetControlPolicyAttachmentsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetControlPolicyAttachmentsResultOutput) Attachments() GetControlPolicyAttachmentsAttachmentArrayOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cms Monitor Groups of the current Alibaba Cloud user.
@@ -153,12 +152,6 @@ func (o GetMonitorGroupsResultOutput) ToGetMonitorGroupsResultOutput() GetMonito
 
 func (o GetMonitorGroupsResultOutput) ToGetMonitorGroupsResultOutputWithContext(ctx context.Context) GetMonitorGroupsResultOutput {
 	return o
-}
-
-func (o GetMonitorGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetMonitorGroupsResult] {
-	return pulumix.Output[GetMonitorGroupsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetMonitorGroupsResultOutput) DynamicTagRuleId() pulumi.StringPtrOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Resource Manager Shared Resource resource.
@@ -213,12 +212,6 @@ func (i *SharedResource) ToSharedResourceOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(SharedResourceOutput)
 }
 
-func (i *SharedResource) ToOutput(ctx context.Context) pulumix.Output[*SharedResource] {
-	return pulumix.Output[*SharedResource]{
-		OutputState: i.ToSharedResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SharedResourceArrayInput is an input type that accepts SharedResourceArray and SharedResourceArrayOutput values.
 // You can construct a concrete instance of `SharedResourceArrayInput` via:
 //
@@ -242,12 +235,6 @@ func (i SharedResourceArray) ToSharedResourceArrayOutput() SharedResourceArrayOu
 
 func (i SharedResourceArray) ToSharedResourceArrayOutputWithContext(ctx context.Context) SharedResourceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SharedResourceArrayOutput)
-}
-
-func (i SharedResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]*SharedResource] {
-	return pulumix.Output[[]*SharedResource]{
-		OutputState: i.ToSharedResourceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SharedResourceMapInput is an input type that accepts SharedResourceMap and SharedResourceMapOutput values.
@@ -275,12 +262,6 @@ func (i SharedResourceMap) ToSharedResourceMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(SharedResourceMapOutput)
 }
 
-func (i SharedResourceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SharedResource] {
-	return pulumix.Output[map[string]*SharedResource]{
-		OutputState: i.ToSharedResourceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SharedResourceOutput struct{ *pulumi.OutputState }
 
 func (SharedResourceOutput) ElementType() reflect.Type {
@@ -293,12 +274,6 @@ func (o SharedResourceOutput) ToSharedResourceOutput() SharedResourceOutput {
 
 func (o SharedResourceOutput) ToSharedResourceOutputWithContext(ctx context.Context) SharedResourceOutput {
 	return o
-}
-
-func (o SharedResourceOutput) ToOutput(ctx context.Context) pulumix.Output[*SharedResource] {
-	return pulumix.Output[*SharedResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource ID need shared.
@@ -335,12 +310,6 @@ func (o SharedResourceArrayOutput) ToSharedResourceArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o SharedResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SharedResource] {
-	return pulumix.Output[[]*SharedResource]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SharedResourceArrayOutput) Index(i pulumi.IntInput) SharedResourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SharedResource {
 		return vs[0].([]*SharedResource)[vs[1].(int)]
@@ -359,12 +328,6 @@ func (o SharedResourceMapOutput) ToSharedResourceMapOutput() SharedResourceMapOu
 
 func (o SharedResourceMapOutput) ToSharedResourceMapOutputWithContext(ctx context.Context) SharedResourceMapOutput {
 	return o
-}
-
-func (o SharedResourceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SharedResource] {
-	return pulumix.Output[map[string]*SharedResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SharedResourceMapOutput) MapIndex(k pulumi.StringInput) SharedResourceOutput {

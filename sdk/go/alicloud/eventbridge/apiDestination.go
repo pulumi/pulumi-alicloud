@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Event Bridge Api Destination resource.
@@ -210,12 +209,6 @@ func (i *ApiDestination) ToApiDestinationOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ApiDestinationOutput)
 }
 
-func (i *ApiDestination) ToOutput(ctx context.Context) pulumix.Output[*ApiDestination] {
-	return pulumix.Output[*ApiDestination]{
-		OutputState: i.ToApiDestinationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApiDestinationArrayInput is an input type that accepts ApiDestinationArray and ApiDestinationArrayOutput values.
 // You can construct a concrete instance of `ApiDestinationArrayInput` via:
 //
@@ -239,12 +232,6 @@ func (i ApiDestinationArray) ToApiDestinationArrayOutput() ApiDestinationArrayOu
 
 func (i ApiDestinationArray) ToApiDestinationArrayOutputWithContext(ctx context.Context) ApiDestinationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiDestinationArrayOutput)
-}
-
-func (i ApiDestinationArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApiDestination] {
-	return pulumix.Output[[]*ApiDestination]{
-		OutputState: i.ToApiDestinationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ApiDestinationMapInput is an input type that accepts ApiDestinationMap and ApiDestinationMapOutput values.
@@ -272,12 +259,6 @@ func (i ApiDestinationMap) ToApiDestinationMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ApiDestinationMapOutput)
 }
 
-func (i ApiDestinationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApiDestination] {
-	return pulumix.Output[map[string]*ApiDestination]{
-		OutputState: i.ToApiDestinationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApiDestinationOutput struct{ *pulumi.OutputState }
 
 func (ApiDestinationOutput) ElementType() reflect.Type {
@@ -290,12 +271,6 @@ func (o ApiDestinationOutput) ToApiDestinationOutput() ApiDestinationOutput {
 
 func (o ApiDestinationOutput) ToApiDestinationOutputWithContext(ctx context.Context) ApiDestinationOutput {
 	return o
-}
-
-func (o ApiDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiDestination] {
-	return pulumix.Output[*ApiDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the API destination.
@@ -337,12 +312,6 @@ func (o ApiDestinationArrayOutput) ToApiDestinationArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o ApiDestinationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApiDestination] {
-	return pulumix.Output[[]*ApiDestination]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApiDestinationArrayOutput) Index(i pulumi.IntInput) ApiDestinationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApiDestination {
 		return vs[0].([]*ApiDestination)[vs[1].(int)]
@@ -361,12 +330,6 @@ func (o ApiDestinationMapOutput) ToApiDestinationMapOutput() ApiDestinationMapOu
 
 func (o ApiDestinationMapOutput) ToApiDestinationMapOutputWithContext(ctx context.Context) ApiDestinationMapOutput {
 	return o
-}
-
-func (o ApiDestinationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApiDestination] {
-	return pulumix.Output[map[string]*ApiDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiDestinationMapOutput) MapIndex(k pulumi.StringInput) ApiDestinationOutput {

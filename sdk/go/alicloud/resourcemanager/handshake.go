@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Resource Manager handshake resource. You can invite accounts to join a resource directory for unified management.
@@ -201,12 +200,6 @@ func (i *Handshake) ToHandshakeOutputWithContext(ctx context.Context) HandshakeO
 	return pulumi.ToOutputWithContext(ctx, i).(HandshakeOutput)
 }
 
-func (i *Handshake) ToOutput(ctx context.Context) pulumix.Output[*Handshake] {
-	return pulumix.Output[*Handshake]{
-		OutputState: i.ToHandshakeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HandshakeArrayInput is an input type that accepts HandshakeArray and HandshakeArrayOutput values.
 // You can construct a concrete instance of `HandshakeArrayInput` via:
 //
@@ -230,12 +223,6 @@ func (i HandshakeArray) ToHandshakeArrayOutput() HandshakeArrayOutput {
 
 func (i HandshakeArray) ToHandshakeArrayOutputWithContext(ctx context.Context) HandshakeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HandshakeArrayOutput)
-}
-
-func (i HandshakeArray) ToOutput(ctx context.Context) pulumix.Output[[]*Handshake] {
-	return pulumix.Output[[]*Handshake]{
-		OutputState: i.ToHandshakeArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HandshakeMapInput is an input type that accepts HandshakeMap and HandshakeMapOutput values.
@@ -263,12 +250,6 @@ func (i HandshakeMap) ToHandshakeMapOutputWithContext(ctx context.Context) Hands
 	return pulumi.ToOutputWithContext(ctx, i).(HandshakeMapOutput)
 }
 
-func (i HandshakeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Handshake] {
-	return pulumix.Output[map[string]*Handshake]{
-		OutputState: i.ToHandshakeMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HandshakeOutput struct{ *pulumi.OutputState }
 
 func (HandshakeOutput) ElementType() reflect.Type {
@@ -281,12 +262,6 @@ func (o HandshakeOutput) ToHandshakeOutput() HandshakeOutput {
 
 func (o HandshakeOutput) ToHandshakeOutputWithContext(ctx context.Context) HandshakeOutput {
 	return o
-}
-
-func (o HandshakeOutput) ToOutput(ctx context.Context) pulumix.Output[*Handshake] {
-	return pulumix.Output[*Handshake]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The expiration time of the invitation.
@@ -348,12 +323,6 @@ func (o HandshakeArrayOutput) ToHandshakeArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o HandshakeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Handshake] {
-	return pulumix.Output[[]*Handshake]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HandshakeArrayOutput) Index(i pulumi.IntInput) HandshakeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Handshake {
 		return vs[0].([]*Handshake)[vs[1].(int)]
@@ -372,12 +341,6 @@ func (o HandshakeMapOutput) ToHandshakeMapOutput() HandshakeMapOutput {
 
 func (o HandshakeMapOutput) ToHandshakeMapOutputWithContext(ctx context.Context) HandshakeMapOutput {
 	return o
-}
-
-func (o HandshakeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Handshake] {
-	return pulumix.Output[map[string]*Handshake]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HandshakeMapOutput) MapIndex(k pulumi.StringInput) HandshakeOutput {

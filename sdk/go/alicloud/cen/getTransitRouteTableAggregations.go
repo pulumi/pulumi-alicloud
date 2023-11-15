@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cen Transit Route Table Aggregations of the current Alibaba Cloud user.
@@ -146,12 +145,6 @@ func (o GetTransitRouteTableAggregationsResultOutput) ToGetTransitRouteTableAggr
 
 func (o GetTransitRouteTableAggregationsResultOutput) ToGetTransitRouteTableAggregationsResultOutputWithContext(ctx context.Context) GetTransitRouteTableAggregationsResultOutput {
 	return o
-}
-
-func (o GetTransitRouteTableAggregationsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouteTableAggregationsResult] {
-	return pulumix.Output[GetTransitRouteTableAggregationsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -244,12 +243,6 @@ func (i *AccountPasswordPolicy) ToAccountPasswordPolicyOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(AccountPasswordPolicyOutput)
 }
 
-func (i *AccountPasswordPolicy) ToOutput(ctx context.Context) pulumix.Output[*AccountPasswordPolicy] {
-	return pulumix.Output[*AccountPasswordPolicy]{
-		OutputState: i.ToAccountPasswordPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccountPasswordPolicyArrayInput is an input type that accepts AccountPasswordPolicyArray and AccountPasswordPolicyArrayOutput values.
 // You can construct a concrete instance of `AccountPasswordPolicyArrayInput` via:
 //
@@ -273,12 +266,6 @@ func (i AccountPasswordPolicyArray) ToAccountPasswordPolicyArrayOutput() Account
 
 func (i AccountPasswordPolicyArray) ToAccountPasswordPolicyArrayOutputWithContext(ctx context.Context) AccountPasswordPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccountPasswordPolicyArrayOutput)
-}
-
-func (i AccountPasswordPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccountPasswordPolicy] {
-	return pulumix.Output[[]*AccountPasswordPolicy]{
-		OutputState: i.ToAccountPasswordPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AccountPasswordPolicyMapInput is an input type that accepts AccountPasswordPolicyMap and AccountPasswordPolicyMapOutput values.
@@ -306,12 +293,6 @@ func (i AccountPasswordPolicyMap) ToAccountPasswordPolicyMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(AccountPasswordPolicyMapOutput)
 }
 
-func (i AccountPasswordPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccountPasswordPolicy] {
-	return pulumix.Output[map[string]*AccountPasswordPolicy]{
-		OutputState: i.ToAccountPasswordPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccountPasswordPolicyOutput struct{ *pulumi.OutputState }
 
 func (AccountPasswordPolicyOutput) ElementType() reflect.Type {
@@ -324,12 +305,6 @@ func (o AccountPasswordPolicyOutput) ToAccountPasswordPolicyOutput() AccountPass
 
 func (o AccountPasswordPolicyOutput) ToAccountPasswordPolicyOutputWithContext(ctx context.Context) AccountPasswordPolicyOutput {
 	return o
-}
-
-func (o AccountPasswordPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*AccountPasswordPolicy] {
-	return pulumix.Output[*AccountPasswordPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies if a password can expire in a hard way. Default to false.
@@ -391,12 +366,6 @@ func (o AccountPasswordPolicyArrayOutput) ToAccountPasswordPolicyArrayOutputWith
 	return o
 }
 
-func (o AccountPasswordPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccountPasswordPolicy] {
-	return pulumix.Output[[]*AccountPasswordPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccountPasswordPolicyArrayOutput) Index(i pulumi.IntInput) AccountPasswordPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccountPasswordPolicy {
 		return vs[0].([]*AccountPasswordPolicy)[vs[1].(int)]
@@ -415,12 +384,6 @@ func (o AccountPasswordPolicyMapOutput) ToAccountPasswordPolicyMapOutput() Accou
 
 func (o AccountPasswordPolicyMapOutput) ToAccountPasswordPolicyMapOutputWithContext(ctx context.Context) AccountPasswordPolicyMapOutput {
 	return o
-}
-
-func (o AccountPasswordPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccountPasswordPolicy] {
-	return pulumix.Output[map[string]*AccountPasswordPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccountPasswordPolicyMapOutput) MapIndex(k pulumi.StringInput) AccountPasswordPolicyOutput {

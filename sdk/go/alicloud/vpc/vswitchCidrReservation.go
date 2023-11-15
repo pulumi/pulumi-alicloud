@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Vpc Vswitch Cidr Reservation resource. The reserved network segment of the vswitch. This resource type can be used only in ap-southeast region.
@@ -263,12 +262,6 @@ func (i *VswitchCidrReservation) ToVswitchCidrReservationOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(VswitchCidrReservationOutput)
 }
 
-func (i *VswitchCidrReservation) ToOutput(ctx context.Context) pulumix.Output[*VswitchCidrReservation] {
-	return pulumix.Output[*VswitchCidrReservation]{
-		OutputState: i.ToVswitchCidrReservationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VswitchCidrReservationArrayInput is an input type that accepts VswitchCidrReservationArray and VswitchCidrReservationArrayOutput values.
 // You can construct a concrete instance of `VswitchCidrReservationArrayInput` via:
 //
@@ -292,12 +285,6 @@ func (i VswitchCidrReservationArray) ToVswitchCidrReservationArrayOutput() Vswit
 
 func (i VswitchCidrReservationArray) ToVswitchCidrReservationArrayOutputWithContext(ctx context.Context) VswitchCidrReservationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VswitchCidrReservationArrayOutput)
-}
-
-func (i VswitchCidrReservationArray) ToOutput(ctx context.Context) pulumix.Output[[]*VswitchCidrReservation] {
-	return pulumix.Output[[]*VswitchCidrReservation]{
-		OutputState: i.ToVswitchCidrReservationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // VswitchCidrReservationMapInput is an input type that accepts VswitchCidrReservationMap and VswitchCidrReservationMapOutput values.
@@ -325,12 +312,6 @@ func (i VswitchCidrReservationMap) ToVswitchCidrReservationMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(VswitchCidrReservationMapOutput)
 }
 
-func (i VswitchCidrReservationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VswitchCidrReservation] {
-	return pulumix.Output[map[string]*VswitchCidrReservation]{
-		OutputState: i.ToVswitchCidrReservationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VswitchCidrReservationOutput struct{ *pulumi.OutputState }
 
 func (VswitchCidrReservationOutput) ElementType() reflect.Type {
@@ -343,12 +324,6 @@ func (o VswitchCidrReservationOutput) ToVswitchCidrReservationOutput() VswitchCi
 
 func (o VswitchCidrReservationOutput) ToVswitchCidrReservationOutputWithContext(ctx context.Context) VswitchCidrReservationOutput {
 	return o
-}
-
-func (o VswitchCidrReservationOutput) ToOutput(ctx context.Context) pulumix.Output[*VswitchCidrReservation] {
-	return pulumix.Output[*VswitchCidrReservation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Reserved network segment CIdrBlock.
@@ -420,12 +395,6 @@ func (o VswitchCidrReservationArrayOutput) ToVswitchCidrReservationArrayOutputWi
 	return o
 }
 
-func (o VswitchCidrReservationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VswitchCidrReservation] {
-	return pulumix.Output[[]*VswitchCidrReservation]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VswitchCidrReservationArrayOutput) Index(i pulumi.IntInput) VswitchCidrReservationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VswitchCidrReservation {
 		return vs[0].([]*VswitchCidrReservation)[vs[1].(int)]
@@ -444,12 +413,6 @@ func (o VswitchCidrReservationMapOutput) ToVswitchCidrReservationMapOutput() Vsw
 
 func (o VswitchCidrReservationMapOutput) ToVswitchCidrReservationMapOutputWithContext(ctx context.Context) VswitchCidrReservationMapOutput {
 	return o
-}
-
-func (o VswitchCidrReservationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VswitchCidrReservation] {
-	return pulumix.Output[map[string]*VswitchCidrReservation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VswitchCidrReservationMapOutput) MapIndex(k pulumi.StringInput) VswitchCidrReservationOutput {

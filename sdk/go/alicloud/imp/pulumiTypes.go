@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -55,12 +54,6 @@ func (i AppTemplateConfigListArgs) ToAppTemplateConfigListOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(AppTemplateConfigListOutput)
 }
 
-func (i AppTemplateConfigListArgs) ToOutput(ctx context.Context) pulumix.Output[AppTemplateConfigList] {
-	return pulumix.Output[AppTemplateConfigList]{
-		OutputState: i.ToAppTemplateConfigListOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AppTemplateConfigListArrayInput is an input type that accepts AppTemplateConfigListArray and AppTemplateConfigListArrayOutput values.
 // You can construct a concrete instance of `AppTemplateConfigListArrayInput` via:
 //
@@ -86,12 +79,6 @@ func (i AppTemplateConfigListArray) ToAppTemplateConfigListArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(AppTemplateConfigListArrayOutput)
 }
 
-func (i AppTemplateConfigListArray) ToOutput(ctx context.Context) pulumix.Output[[]AppTemplateConfigList] {
-	return pulumix.Output[[]AppTemplateConfigList]{
-		OutputState: i.ToAppTemplateConfigListArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AppTemplateConfigListOutput struct{ *pulumi.OutputState }
 
 func (AppTemplateConfigListOutput) ElementType() reflect.Type {
@@ -104,12 +91,6 @@ func (o AppTemplateConfigListOutput) ToAppTemplateConfigListOutput() AppTemplate
 
 func (o AppTemplateConfigListOutput) ToAppTemplateConfigListOutputWithContext(ctx context.Context) AppTemplateConfigListOutput {
 	return o
-}
-
-func (o AppTemplateConfigListOutput) ToOutput(ctx context.Context) pulumix.Output[AppTemplateConfigList] {
-	return pulumix.Output[AppTemplateConfigList]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration item key. Valid values: ["config.appCallbackAuthKey","config.appCallbackUrl","config.callbackClass.live","config.callbackClass.user","config.livePullDomain","config.livePushDomain","config.multipleClientsLogin","config.regionId","config.streamChangeCallbackUrl"].
@@ -136,12 +117,6 @@ func (o AppTemplateConfigListArrayOutput) ToAppTemplateConfigListArrayOutput() A
 
 func (o AppTemplateConfigListArrayOutput) ToAppTemplateConfigListArrayOutputWithContext(ctx context.Context) AppTemplateConfigListArrayOutput {
 	return o
-}
-
-func (o AppTemplateConfigListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AppTemplateConfigList] {
-	return pulumix.Output[[]AppTemplateConfigList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppTemplateConfigListArrayOutput) Index(i pulumi.IntInput) AppTemplateConfigListOutput {
@@ -227,12 +202,6 @@ func (i GetAppTemplatesTemplateArgs) ToGetAppTemplatesTemplateOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppTemplatesTemplateOutput)
 }
 
-func (i GetAppTemplatesTemplateArgs) ToOutput(ctx context.Context) pulumix.Output[GetAppTemplatesTemplate] {
-	return pulumix.Output[GetAppTemplatesTemplate]{
-		OutputState: i.ToGetAppTemplatesTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAppTemplatesTemplateArrayInput is an input type that accepts GetAppTemplatesTemplateArray and GetAppTemplatesTemplateArrayOutput values.
 // You can construct a concrete instance of `GetAppTemplatesTemplateArrayInput` via:
 //
@@ -258,12 +227,6 @@ func (i GetAppTemplatesTemplateArray) ToGetAppTemplatesTemplateArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppTemplatesTemplateArrayOutput)
 }
 
-func (i GetAppTemplatesTemplateArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAppTemplatesTemplate] {
-	return pulumix.Output[[]GetAppTemplatesTemplate]{
-		OutputState: i.ToGetAppTemplatesTemplateArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAppTemplatesTemplateOutput struct{ *pulumi.OutputState }
 
 func (GetAppTemplatesTemplateOutput) ElementType() reflect.Type {
@@ -276,12 +239,6 @@ func (o GetAppTemplatesTemplateOutput) ToGetAppTemplatesTemplateOutput() GetAppT
 
 func (o GetAppTemplatesTemplateOutput) ToGetAppTemplatesTemplateOutputWithContext(ctx context.Context) GetAppTemplatesTemplateOutput {
 	return o
-}
-
-func (o GetAppTemplatesTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[GetAppTemplatesTemplate] {
-	return pulumix.Output[GetAppTemplatesTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Apply template creator.
@@ -358,12 +315,6 @@ func (o GetAppTemplatesTemplateArrayOutput) ToGetAppTemplatesTemplateArrayOutput
 	return o
 }
 
-func (o GetAppTemplatesTemplateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAppTemplatesTemplate] {
-	return pulumix.Output[[]GetAppTemplatesTemplate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetAppTemplatesTemplateArrayOutput) Index(i pulumi.IntInput) GetAppTemplatesTemplateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppTemplatesTemplate {
 		return vs[0].([]GetAppTemplatesTemplate)[vs[1].(int)]
@@ -407,12 +358,6 @@ func (i GetAppTemplatesTemplateConfigListArgs) ToGetAppTemplatesTemplateConfigLi
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppTemplatesTemplateConfigListOutput)
 }
 
-func (i GetAppTemplatesTemplateConfigListArgs) ToOutput(ctx context.Context) pulumix.Output[GetAppTemplatesTemplateConfigList] {
-	return pulumix.Output[GetAppTemplatesTemplateConfigList]{
-		OutputState: i.ToGetAppTemplatesTemplateConfigListOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAppTemplatesTemplateConfigListArrayInput is an input type that accepts GetAppTemplatesTemplateConfigListArray and GetAppTemplatesTemplateConfigListArrayOutput values.
 // You can construct a concrete instance of `GetAppTemplatesTemplateConfigListArrayInput` via:
 //
@@ -438,12 +383,6 @@ func (i GetAppTemplatesTemplateConfigListArray) ToGetAppTemplatesTemplateConfigL
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppTemplatesTemplateConfigListArrayOutput)
 }
 
-func (i GetAppTemplatesTemplateConfigListArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAppTemplatesTemplateConfigList] {
-	return pulumix.Output[[]GetAppTemplatesTemplateConfigList]{
-		OutputState: i.ToGetAppTemplatesTemplateConfigListArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAppTemplatesTemplateConfigListOutput struct{ *pulumi.OutputState }
 
 func (GetAppTemplatesTemplateConfigListOutput) ElementType() reflect.Type {
@@ -456,12 +395,6 @@ func (o GetAppTemplatesTemplateConfigListOutput) ToGetAppTemplatesTemplateConfig
 
 func (o GetAppTemplatesTemplateConfigListOutput) ToGetAppTemplatesTemplateConfigListOutputWithContext(ctx context.Context) GetAppTemplatesTemplateConfigListOutput {
 	return o
-}
-
-func (o GetAppTemplatesTemplateConfigListOutput) ToOutput(ctx context.Context) pulumix.Output[GetAppTemplatesTemplateConfigList] {
-	return pulumix.Output[GetAppTemplatesTemplateConfigList]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Config key.
@@ -486,12 +419,6 @@ func (o GetAppTemplatesTemplateConfigListArrayOutput) ToGetAppTemplatesTemplateC
 
 func (o GetAppTemplatesTemplateConfigListArrayOutput) ToGetAppTemplatesTemplateConfigListArrayOutputWithContext(ctx context.Context) GetAppTemplatesTemplateConfigListArrayOutput {
 	return o
-}
-
-func (o GetAppTemplatesTemplateConfigListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAppTemplatesTemplateConfigList] {
-	return pulumix.Output[[]GetAppTemplatesTemplateConfigList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAppTemplatesTemplateConfigListArrayOutput) Index(i pulumi.IntInput) GetAppTemplatesTemplateConfigListOutput {

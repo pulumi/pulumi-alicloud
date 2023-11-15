@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides CEN Transit Router peer attachments available to the user.
@@ -111,12 +110,6 @@ func (o GetTransitRouterPeerAttachmentsResultOutput) ToGetTransitRouterPeerAttac
 
 func (o GetTransitRouterPeerAttachmentsResultOutput) ToGetTransitRouterPeerAttachmentsResultOutputWithContext(ctx context.Context) GetTransitRouterPeerAttachmentsResultOutput {
 	return o
-}
-
-func (o GetTransitRouterPeerAttachmentsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterPeerAttachmentsResult] {
-	return pulumix.Output[GetTransitRouterPeerAttachmentsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetTransitRouterPeerAttachmentsResultOutput) Attachments() GetTransitRouterPeerAttachmentsAttachmentArrayOutput {

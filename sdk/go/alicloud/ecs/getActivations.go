@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ecs Activations of the current Alibaba Cloud user.
@@ -119,12 +118,6 @@ func (o GetActivationsResultOutput) ToGetActivationsResultOutput() GetActivation
 
 func (o GetActivationsResultOutput) ToGetActivationsResultOutputWithContext(ctx context.Context) GetActivationsResultOutput {
 	return o
-}
-
-func (o GetActivationsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetActivationsResult] {
-	return pulumix.Output[GetActivationsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetActivationsResultOutput) Activations() GetActivationsActivationArrayOutput {

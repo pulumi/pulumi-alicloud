@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Express Connect Physical Connections of the current Alibaba Cloud user.
@@ -134,12 +133,6 @@ func (o GetPhysicalConnectionsResultOutput) ToGetPhysicalConnectionsResultOutput
 
 func (o GetPhysicalConnectionsResultOutput) ToGetPhysicalConnectionsResultOutputWithContext(ctx context.Context) GetPhysicalConnectionsResultOutput {
 	return o
-}
-
-func (o GetPhysicalConnectionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPhysicalConnectionsResult] {
-	return pulumix.Output[GetPhysicalConnectionsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetPhysicalConnectionsResultOutput) Connections() GetPhysicalConnectionsConnectionArrayOutput {

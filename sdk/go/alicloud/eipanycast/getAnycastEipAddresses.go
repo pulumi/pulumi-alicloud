@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Eipanycast Anycast Eip Addresses of the current Alibaba Cloud user.
@@ -158,12 +157,6 @@ func (o GetAnycastEipAddressesResultOutput) ToGetAnycastEipAddressesResultOutput
 
 func (o GetAnycastEipAddressesResultOutput) ToGetAnycastEipAddressesResultOutputWithContext(ctx context.Context) GetAnycastEipAddressesResultOutput {
 	return o
-}
-
-func (o GetAnycastEipAddressesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAnycastEipAddressesResult] {
-	return pulumix.Output[GetAnycastEipAddressesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAnycastEipAddressesResultOutput) Addresses() GetAnycastEipAddressesAddressArrayOutput {

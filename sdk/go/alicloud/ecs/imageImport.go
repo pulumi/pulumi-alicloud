@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Import a copy of your local on-premise file to ECS, and appear as a custom replacement in the corresponding domain.
@@ -230,12 +229,6 @@ func (i *ImageImport) ToImageImportOutputWithContext(ctx context.Context) ImageI
 	return pulumi.ToOutputWithContext(ctx, i).(ImageImportOutput)
 }
 
-func (i *ImageImport) ToOutput(ctx context.Context) pulumix.Output[*ImageImport] {
-	return pulumix.Output[*ImageImport]{
-		OutputState: i.ToImageImportOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ImageImportArrayInput is an input type that accepts ImageImportArray and ImageImportArrayOutput values.
 // You can construct a concrete instance of `ImageImportArrayInput` via:
 //
@@ -259,12 +252,6 @@ func (i ImageImportArray) ToImageImportArrayOutput() ImageImportArrayOutput {
 
 func (i ImageImportArray) ToImageImportArrayOutputWithContext(ctx context.Context) ImageImportArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageImportArrayOutput)
-}
-
-func (i ImageImportArray) ToOutput(ctx context.Context) pulumix.Output[[]*ImageImport] {
-	return pulumix.Output[[]*ImageImport]{
-		OutputState: i.ToImageImportArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ImageImportMapInput is an input type that accepts ImageImportMap and ImageImportMapOutput values.
@@ -292,12 +279,6 @@ func (i ImageImportMap) ToImageImportMapOutputWithContext(ctx context.Context) I
 	return pulumi.ToOutputWithContext(ctx, i).(ImageImportMapOutput)
 }
 
-func (i ImageImportMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ImageImport] {
-	return pulumix.Output[map[string]*ImageImport]{
-		OutputState: i.ToImageImportMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ImageImportOutput struct{ *pulumi.OutputState }
 
 func (ImageImportOutput) ElementType() reflect.Type {
@@ -310,12 +291,6 @@ func (o ImageImportOutput) ToImageImportOutput() ImageImportOutput {
 
 func (o ImageImportOutput) ToImageImportOutputWithContext(ctx context.Context) ImageImportOutput {
 	return o
-}
-
-func (o ImageImportOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageImport] {
-	return pulumix.Output[*ImageImport]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x8664`.
@@ -369,12 +344,6 @@ func (o ImageImportArrayOutput) ToImageImportArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o ImageImportArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ImageImport] {
-	return pulumix.Output[[]*ImageImport]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ImageImportArrayOutput) Index(i pulumi.IntInput) ImageImportOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ImageImport {
 		return vs[0].([]*ImageImport)[vs[1].(int)]
@@ -393,12 +362,6 @@ func (o ImageImportMapOutput) ToImageImportMapOutput() ImageImportMapOutput {
 
 func (o ImageImportMapOutput) ToImageImportMapOutputWithContext(ctx context.Context) ImageImportMapOutput {
 	return o
-}
-
-func (o ImageImportMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ImageImport] {
-	return pulumix.Output[map[string]*ImageImport]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ImageImportMapOutput) MapIndex(k pulumi.StringInput) ImageImportOutput {

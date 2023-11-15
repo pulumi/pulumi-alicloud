@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Amqp Static Account resource.
@@ -225,12 +224,6 @@ func (i *StaticAccount) ToStaticAccountOutputWithContext(ctx context.Context) St
 	return pulumi.ToOutputWithContext(ctx, i).(StaticAccountOutput)
 }
 
-func (i *StaticAccount) ToOutput(ctx context.Context) pulumix.Output[*StaticAccount] {
-	return pulumix.Output[*StaticAccount]{
-		OutputState: i.ToStaticAccountOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StaticAccountArrayInput is an input type that accepts StaticAccountArray and StaticAccountArrayOutput values.
 // You can construct a concrete instance of `StaticAccountArrayInput` via:
 //
@@ -254,12 +247,6 @@ func (i StaticAccountArray) ToStaticAccountArrayOutput() StaticAccountArrayOutpu
 
 func (i StaticAccountArray) ToStaticAccountArrayOutputWithContext(ctx context.Context) StaticAccountArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StaticAccountArrayOutput)
-}
-
-func (i StaticAccountArray) ToOutput(ctx context.Context) pulumix.Output[[]*StaticAccount] {
-	return pulumix.Output[[]*StaticAccount]{
-		OutputState: i.ToStaticAccountArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // StaticAccountMapInput is an input type that accepts StaticAccountMap and StaticAccountMapOutput values.
@@ -287,12 +274,6 @@ func (i StaticAccountMap) ToStaticAccountMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(StaticAccountMapOutput)
 }
 
-func (i StaticAccountMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*StaticAccount] {
-	return pulumix.Output[map[string]*StaticAccount]{
-		OutputState: i.ToStaticAccountMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StaticAccountOutput struct{ *pulumi.OutputState }
 
 func (StaticAccountOutput) ElementType() reflect.Type {
@@ -305,12 +286,6 @@ func (o StaticAccountOutput) ToStaticAccountOutput() StaticAccountOutput {
 
 func (o StaticAccountOutput) ToStaticAccountOutputWithContext(ctx context.Context) StaticAccountOutput {
 	return o
-}
-
-func (o StaticAccountOutput) ToOutput(ctx context.Context) pulumix.Output[*StaticAccount] {
-	return pulumix.Output[*StaticAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Access key.
@@ -362,12 +337,6 @@ func (o StaticAccountArrayOutput) ToStaticAccountArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o StaticAccountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*StaticAccount] {
-	return pulumix.Output[[]*StaticAccount]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StaticAccountArrayOutput) Index(i pulumi.IntInput) StaticAccountOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *StaticAccount {
 		return vs[0].([]*StaticAccount)[vs[1].(int)]
@@ -386,12 +355,6 @@ func (o StaticAccountMapOutput) ToStaticAccountMapOutput() StaticAccountMapOutpu
 
 func (o StaticAccountMapOutput) ToStaticAccountMapOutputWithContext(ctx context.Context) StaticAccountMapOutput {
 	return o
-}
-
-func (o StaticAccountMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*StaticAccount] {
-	return pulumix.Output[map[string]*StaticAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StaticAccountMapOutput) MapIndex(k pulumi.StringInput) StaticAccountOutput {

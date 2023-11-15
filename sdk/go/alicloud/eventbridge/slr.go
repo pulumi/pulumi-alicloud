@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type Slr struct {
@@ -95,12 +94,6 @@ func (i *Slr) ToSlrOutputWithContext(ctx context.Context) SlrOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SlrOutput)
 }
 
-func (i *Slr) ToOutput(ctx context.Context) pulumix.Output[*Slr] {
-	return pulumix.Output[*Slr]{
-		OutputState: i.ToSlrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SlrArrayInput is an input type that accepts SlrArray and SlrArrayOutput values.
 // You can construct a concrete instance of `SlrArrayInput` via:
 //
@@ -124,12 +117,6 @@ func (i SlrArray) ToSlrArrayOutput() SlrArrayOutput {
 
 func (i SlrArray) ToSlrArrayOutputWithContext(ctx context.Context) SlrArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SlrArrayOutput)
-}
-
-func (i SlrArray) ToOutput(ctx context.Context) pulumix.Output[[]*Slr] {
-	return pulumix.Output[[]*Slr]{
-		OutputState: i.ToSlrArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SlrMapInput is an input type that accepts SlrMap and SlrMapOutput values.
@@ -157,12 +144,6 @@ func (i SlrMap) ToSlrMapOutputWithContext(ctx context.Context) SlrMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SlrMapOutput)
 }
 
-func (i SlrMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Slr] {
-	return pulumix.Output[map[string]*Slr]{
-		OutputState: i.ToSlrMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SlrOutput struct{ *pulumi.OutputState }
 
 func (SlrOutput) ElementType() reflect.Type {
@@ -175,12 +156,6 @@ func (o SlrOutput) ToSlrOutput() SlrOutput {
 
 func (o SlrOutput) ToSlrOutputWithContext(ctx context.Context) SlrOutput {
 	return o
-}
-
-func (o SlrOutput) ToOutput(ctx context.Context) pulumix.Output[*Slr] {
-	return pulumix.Output[*Slr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SlrOutput) ProductName() pulumi.StringOutput {
@@ -201,12 +176,6 @@ func (o SlrArrayOutput) ToSlrArrayOutputWithContext(ctx context.Context) SlrArra
 	return o
 }
 
-func (o SlrArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Slr] {
-	return pulumix.Output[[]*Slr]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SlrArrayOutput) Index(i pulumi.IntInput) SlrOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Slr {
 		return vs[0].([]*Slr)[vs[1].(int)]
@@ -225,12 +194,6 @@ func (o SlrMapOutput) ToSlrMapOutput() SlrMapOutput {
 
 func (o SlrMapOutput) ToSlrMapOutputWithContext(ctx context.Context) SlrMapOutput {
 	return o
-}
-
-func (o SlrMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Slr] {
-	return pulumix.Output[map[string]*Slr]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SlrMapOutput) MapIndex(k pulumi.StringInput) SlrOutput {

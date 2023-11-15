@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides VPCs available to the user.
@@ -183,12 +182,6 @@ func (o GetNetworksResultOutput) ToGetNetworksResultOutput() GetNetworksResultOu
 
 func (o GetNetworksResultOutput) ToGetNetworksResultOutputWithContext(ctx context.Context) GetNetworksResultOutput {
 	return o
-}
-
-func (o GetNetworksResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetNetworksResult] {
-	return pulumix.Output[GetNetworksResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // CIDR block of the VPC.

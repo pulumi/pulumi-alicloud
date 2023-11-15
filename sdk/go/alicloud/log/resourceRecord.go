@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Log resource is a meta store service provided by log service, resource can be used to define meta store's table structure, record can be used for table's row data.
@@ -185,12 +184,6 @@ func (i *ResourceRecord) ToResourceRecordOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceRecordOutput)
 }
 
-func (i *ResourceRecord) ToOutput(ctx context.Context) pulumix.Output[*ResourceRecord] {
-	return pulumix.Output[*ResourceRecord]{
-		OutputState: i.ToResourceRecordOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ResourceRecordArrayInput is an input type that accepts ResourceRecordArray and ResourceRecordArrayOutput values.
 // You can construct a concrete instance of `ResourceRecordArrayInput` via:
 //
@@ -214,12 +207,6 @@ func (i ResourceRecordArray) ToResourceRecordArrayOutput() ResourceRecordArrayOu
 
 func (i ResourceRecordArray) ToResourceRecordArrayOutputWithContext(ctx context.Context) ResourceRecordArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceRecordArrayOutput)
-}
-
-func (i ResourceRecordArray) ToOutput(ctx context.Context) pulumix.Output[[]*ResourceRecord] {
-	return pulumix.Output[[]*ResourceRecord]{
-		OutputState: i.ToResourceRecordArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ResourceRecordMapInput is an input type that accepts ResourceRecordMap and ResourceRecordMapOutput values.
@@ -247,12 +234,6 @@ func (i ResourceRecordMap) ToResourceRecordMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceRecordMapOutput)
 }
 
-func (i ResourceRecordMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ResourceRecord] {
-	return pulumix.Output[map[string]*ResourceRecord]{
-		OutputState: i.ToResourceRecordMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ResourceRecordOutput struct{ *pulumi.OutputState }
 
 func (ResourceRecordOutput) ElementType() reflect.Type {
@@ -265,12 +246,6 @@ func (o ResourceRecordOutput) ToResourceRecordOutput() ResourceRecordOutput {
 
 func (o ResourceRecordOutput) ToResourceRecordOutputWithContext(ctx context.Context) ResourceRecordOutput {
 	return o
-}
-
-func (o ResourceRecordOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceRecord] {
-	return pulumix.Output[*ResourceRecord]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The record's id, should be unique.
@@ -307,12 +282,6 @@ func (o ResourceRecordArrayOutput) ToResourceRecordArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o ResourceRecordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ResourceRecord] {
-	return pulumix.Output[[]*ResourceRecord]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ResourceRecordArrayOutput) Index(i pulumi.IntInput) ResourceRecordOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ResourceRecord {
 		return vs[0].([]*ResourceRecord)[vs[1].(int)]
@@ -331,12 +300,6 @@ func (o ResourceRecordMapOutput) ToResourceRecordMapOutput() ResourceRecordMapOu
 
 func (o ResourceRecordMapOutput) ToResourceRecordMapOutputWithContext(ctx context.Context) ResourceRecordMapOutput {
 	return o
-}
-
-func (o ResourceRecordMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ResourceRecord] {
-	return pulumix.Output[map[string]*ResourceRecord]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceRecordMapOutput) MapIndex(k pulumi.StringInput) ResourceRecordOutput {

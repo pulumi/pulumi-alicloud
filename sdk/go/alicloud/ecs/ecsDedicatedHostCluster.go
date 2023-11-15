@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a ECS Dedicated Host Cluster resource.
@@ -194,12 +193,6 @@ func (i *EcsDedicatedHostCluster) ToEcsDedicatedHostClusterOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(EcsDedicatedHostClusterOutput)
 }
 
-func (i *EcsDedicatedHostCluster) ToOutput(ctx context.Context) pulumix.Output[*EcsDedicatedHostCluster] {
-	return pulumix.Output[*EcsDedicatedHostCluster]{
-		OutputState: i.ToEcsDedicatedHostClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EcsDedicatedHostClusterArrayInput is an input type that accepts EcsDedicatedHostClusterArray and EcsDedicatedHostClusterArrayOutput values.
 // You can construct a concrete instance of `EcsDedicatedHostClusterArrayInput` via:
 //
@@ -223,12 +216,6 @@ func (i EcsDedicatedHostClusterArray) ToEcsDedicatedHostClusterArrayOutput() Ecs
 
 func (i EcsDedicatedHostClusterArray) ToEcsDedicatedHostClusterArrayOutputWithContext(ctx context.Context) EcsDedicatedHostClusterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EcsDedicatedHostClusterArrayOutput)
-}
-
-func (i EcsDedicatedHostClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]*EcsDedicatedHostCluster] {
-	return pulumix.Output[[]*EcsDedicatedHostCluster]{
-		OutputState: i.ToEcsDedicatedHostClusterArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EcsDedicatedHostClusterMapInput is an input type that accepts EcsDedicatedHostClusterMap and EcsDedicatedHostClusterMapOutput values.
@@ -256,12 +243,6 @@ func (i EcsDedicatedHostClusterMap) ToEcsDedicatedHostClusterMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(EcsDedicatedHostClusterMapOutput)
 }
 
-func (i EcsDedicatedHostClusterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsDedicatedHostCluster] {
-	return pulumix.Output[map[string]*EcsDedicatedHostCluster]{
-		OutputState: i.ToEcsDedicatedHostClusterMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EcsDedicatedHostClusterOutput struct{ *pulumi.OutputState }
 
 func (EcsDedicatedHostClusterOutput) ElementType() reflect.Type {
@@ -274,12 +255,6 @@ func (o EcsDedicatedHostClusterOutput) ToEcsDedicatedHostClusterOutput() EcsDedi
 
 func (o EcsDedicatedHostClusterOutput) ToEcsDedicatedHostClusterOutputWithContext(ctx context.Context) EcsDedicatedHostClusterOutput {
 	return o
-}
-
-func (o EcsDedicatedHostClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*EcsDedicatedHostCluster] {
-	return pulumix.Output[*EcsDedicatedHostCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the dedicated host cluster. The name must be `2` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It cannot contain `http://` or `https://`.
@@ -321,12 +296,6 @@ func (o EcsDedicatedHostClusterArrayOutput) ToEcsDedicatedHostClusterArrayOutput
 	return o
 }
 
-func (o EcsDedicatedHostClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EcsDedicatedHostCluster] {
-	return pulumix.Output[[]*EcsDedicatedHostCluster]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EcsDedicatedHostClusterArrayOutput) Index(i pulumi.IntInput) EcsDedicatedHostClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EcsDedicatedHostCluster {
 		return vs[0].([]*EcsDedicatedHostCluster)[vs[1].(int)]
@@ -345,12 +314,6 @@ func (o EcsDedicatedHostClusterMapOutput) ToEcsDedicatedHostClusterMapOutput() E
 
 func (o EcsDedicatedHostClusterMapOutput) ToEcsDedicatedHostClusterMapOutputWithContext(ctx context.Context) EcsDedicatedHostClusterMapOutput {
 	return o
-}
-
-func (o EcsDedicatedHostClusterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EcsDedicatedHostCluster] {
-	return pulumix.Output[map[string]*EcsDedicatedHostCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EcsDedicatedHostClusterMapOutput) MapIndex(k pulumi.StringInput) EcsDedicatedHostClusterOutput {

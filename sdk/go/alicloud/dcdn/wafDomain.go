@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DCDN Waf Domain resource.
@@ -176,12 +175,6 @@ func (i *WafDomain) ToWafDomainOutputWithContext(ctx context.Context) WafDomainO
 	return pulumi.ToOutputWithContext(ctx, i).(WafDomainOutput)
 }
 
-func (i *WafDomain) ToOutput(ctx context.Context) pulumix.Output[*WafDomain] {
-	return pulumix.Output[*WafDomain]{
-		OutputState: i.ToWafDomainOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WafDomainArrayInput is an input type that accepts WafDomainArray and WafDomainArrayOutput values.
 // You can construct a concrete instance of `WafDomainArrayInput` via:
 //
@@ -205,12 +198,6 @@ func (i WafDomainArray) ToWafDomainArrayOutput() WafDomainArrayOutput {
 
 func (i WafDomainArray) ToWafDomainArrayOutputWithContext(ctx context.Context) WafDomainArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WafDomainArrayOutput)
-}
-
-func (i WafDomainArray) ToOutput(ctx context.Context) pulumix.Output[[]*WafDomain] {
-	return pulumix.Output[[]*WafDomain]{
-		OutputState: i.ToWafDomainArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WafDomainMapInput is an input type that accepts WafDomainMap and WafDomainMapOutput values.
@@ -238,12 +225,6 @@ func (i WafDomainMap) ToWafDomainMapOutputWithContext(ctx context.Context) WafDo
 	return pulumi.ToOutputWithContext(ctx, i).(WafDomainMapOutput)
 }
 
-func (i WafDomainMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WafDomain] {
-	return pulumix.Output[map[string]*WafDomain]{
-		OutputState: i.ToWafDomainMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WafDomainOutput struct{ *pulumi.OutputState }
 
 func (WafDomainOutput) ElementType() reflect.Type {
@@ -256,12 +237,6 @@ func (o WafDomainOutput) ToWafDomainOutput() WafDomainOutput {
 
 func (o WafDomainOutput) ToWafDomainOutputWithContext(ctx context.Context) WafDomainOutput {
 	return o
-}
-
-func (o WafDomainOutput) ToOutput(ctx context.Context) pulumix.Output[*WafDomain] {
-	return pulumix.Output[*WafDomain]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The client ip tag.
@@ -288,12 +263,6 @@ func (o WafDomainArrayOutput) ToWafDomainArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o WafDomainArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WafDomain] {
-	return pulumix.Output[[]*WafDomain]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WafDomainArrayOutput) Index(i pulumi.IntInput) WafDomainOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WafDomain {
 		return vs[0].([]*WafDomain)[vs[1].(int)]
@@ -312,12 +281,6 @@ func (o WafDomainMapOutput) ToWafDomainMapOutput() WafDomainMapOutput {
 
 func (o WafDomainMapOutput) ToWafDomainMapOutputWithContext(ctx context.Context) WafDomainMapOutput {
 	return o
-}
-
-func (o WafDomainMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WafDomain] {
-	return pulumix.Output[map[string]*WafDomain]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WafDomainMapOutput) MapIndex(k pulumi.StringInput) WafDomainOutput {

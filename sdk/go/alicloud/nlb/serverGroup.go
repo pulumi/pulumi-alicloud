@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a NLB Server Group resource.
@@ -311,12 +310,6 @@ func (i *ServerGroup) ToServerGroupOutputWithContext(ctx context.Context) Server
 	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupOutput)
 }
 
-func (i *ServerGroup) ToOutput(ctx context.Context) pulumix.Output[*ServerGroup] {
-	return pulumix.Output[*ServerGroup]{
-		OutputState: i.ToServerGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServerGroupArrayInput is an input type that accepts ServerGroupArray and ServerGroupArrayOutput values.
 // You can construct a concrete instance of `ServerGroupArrayInput` via:
 //
@@ -340,12 +333,6 @@ func (i ServerGroupArray) ToServerGroupArrayOutput() ServerGroupArrayOutput {
 
 func (i ServerGroupArray) ToServerGroupArrayOutputWithContext(ctx context.Context) ServerGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupArrayOutput)
-}
-
-func (i ServerGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServerGroup] {
-	return pulumix.Output[[]*ServerGroup]{
-		OutputState: i.ToServerGroupArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServerGroupMapInput is an input type that accepts ServerGroupMap and ServerGroupMapOutput values.
@@ -373,12 +360,6 @@ func (i ServerGroupMap) ToServerGroupMapOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupMapOutput)
 }
 
-func (i ServerGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServerGroup] {
-	return pulumix.Output[map[string]*ServerGroup]{
-		OutputState: i.ToServerGroupMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServerGroupOutput struct{ *pulumi.OutputState }
 
 func (ServerGroupOutput) ElementType() reflect.Type {
@@ -391,12 +372,6 @@ func (o ServerGroupOutput) ToServerGroupOutput() ServerGroupOutput {
 
 func (o ServerGroupOutput) ToServerGroupOutputWithContext(ctx context.Context) ServerGroupOutput {
 	return o
-}
-
-func (o ServerGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerGroup] {
-	return pulumix.Output[*ServerGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The protocol version. Valid values: `Ipv4` (default), `DualStack`.
@@ -478,12 +453,6 @@ func (o ServerGroupArrayOutput) ToServerGroupArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o ServerGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServerGroup] {
-	return pulumix.Output[[]*ServerGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServerGroupArrayOutput) Index(i pulumi.IntInput) ServerGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServerGroup {
 		return vs[0].([]*ServerGroup)[vs[1].(int)]
@@ -502,12 +471,6 @@ func (o ServerGroupMapOutput) ToServerGroupMapOutput() ServerGroupMapOutput {
 
 func (o ServerGroupMapOutput) ToServerGroupMapOutputWithContext(ctx context.Context) ServerGroupMapOutput {
 	return o
-}
-
-func (o ServerGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServerGroup] {
-	return pulumix.Output[map[string]*ServerGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServerGroupMapOutput) MapIndex(k pulumi.StringInput) ServerGroupOutput {

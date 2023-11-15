@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Amqp Bindings of the current Alibaba Cloud user.
@@ -115,12 +114,6 @@ func (o GetBindingsResultOutput) ToGetBindingsResultOutput() GetBindingsResultOu
 
 func (o GetBindingsResultOutput) ToGetBindingsResultOutputWithContext(ctx context.Context) GetBindingsResultOutput {
 	return o
-}
-
-func (o GetBindingsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBindingsResult] {
-	return pulumix.Output[GetBindingsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetBindingsResultOutput) Bindings() GetBindingsBindingArrayOutput {

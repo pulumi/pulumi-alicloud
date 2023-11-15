@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Nlb Server Group Server Attachments of the current Alibaba Cloud user.
@@ -126,12 +125,6 @@ func (o GetServerGroupServerAttachmentsResultOutput) ToGetServerGroupServerAttac
 
 func (o GetServerGroupServerAttachmentsResultOutput) ToGetServerGroupServerAttachmentsResultOutputWithContext(ctx context.Context) GetServerGroupServerAttachmentsResultOutput {
 	return o
-}
-
-func (o GetServerGroupServerAttachmentsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetServerGroupServerAttachmentsResult] {
-	return pulumix.Output[GetServerGroupServerAttachmentsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetServerGroupServerAttachmentsResultOutput) Attachments() GetServerGroupServerAttachmentsAttachmentArrayOutput {

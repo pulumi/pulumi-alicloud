@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ecs.getSecurityGroupRules` data source provides a collection of security permissions of a specific security group.
@@ -157,12 +156,6 @@ func (o GetSecurityGroupRulesResultOutput) ToGetSecurityGroupRulesResultOutput()
 
 func (o GetSecurityGroupRulesResultOutput) ToGetSecurityGroupRulesResultOutputWithContext(ctx context.Context) GetSecurityGroupRulesResultOutput {
 	return o
-}
-
-func (o GetSecurityGroupRulesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecurityGroupRulesResult] {
-	return pulumix.Output[GetSecurityGroupRulesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Authorization direction, `ingress` or `egress`.

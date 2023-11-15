@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio)
@@ -143,12 +142,6 @@ func (o GetPortfoliosResultOutput) ToGetPortfoliosResultOutput() GetPortfoliosRe
 
 func (o GetPortfoliosResultOutput) ToGetPortfoliosResultOutputWithContext(ctx context.Context) GetPortfoliosResultOutput {
 	return o
-}
-
-func (o GetPortfoliosResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPortfoliosResult] {
-	return pulumix.Output[GetPortfoliosResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

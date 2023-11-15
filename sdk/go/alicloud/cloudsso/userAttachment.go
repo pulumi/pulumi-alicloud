@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud SSO User Attachment resource.
@@ -143,12 +142,6 @@ func (i *UserAttachment) ToUserAttachmentOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(UserAttachmentOutput)
 }
 
-func (i *UserAttachment) ToOutput(ctx context.Context) pulumix.Output[*UserAttachment] {
-	return pulumix.Output[*UserAttachment]{
-		OutputState: i.ToUserAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // UserAttachmentArrayInput is an input type that accepts UserAttachmentArray and UserAttachmentArrayOutput values.
 // You can construct a concrete instance of `UserAttachmentArrayInput` via:
 //
@@ -172,12 +165,6 @@ func (i UserAttachmentArray) ToUserAttachmentArrayOutput() UserAttachmentArrayOu
 
 func (i UserAttachmentArray) ToUserAttachmentArrayOutputWithContext(ctx context.Context) UserAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserAttachmentArrayOutput)
-}
-
-func (i UserAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*UserAttachment] {
-	return pulumix.Output[[]*UserAttachment]{
-		OutputState: i.ToUserAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // UserAttachmentMapInput is an input type that accepts UserAttachmentMap and UserAttachmentMapOutput values.
@@ -205,12 +192,6 @@ func (i UserAttachmentMap) ToUserAttachmentMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(UserAttachmentMapOutput)
 }
 
-func (i UserAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*UserAttachment] {
-	return pulumix.Output[map[string]*UserAttachment]{
-		OutputState: i.ToUserAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UserAttachmentOutput struct{ *pulumi.OutputState }
 
 func (UserAttachmentOutput) ElementType() reflect.Type {
@@ -223,12 +204,6 @@ func (o UserAttachmentOutput) ToUserAttachmentOutput() UserAttachmentOutput {
 
 func (o UserAttachmentOutput) ToUserAttachmentOutputWithContext(ctx context.Context) UserAttachmentOutput {
 	return o
-}
-
-func (o UserAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*UserAttachment] {
-	return pulumix.Output[*UserAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Directory.
@@ -260,12 +235,6 @@ func (o UserAttachmentArrayOutput) ToUserAttachmentArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o UserAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*UserAttachment] {
-	return pulumix.Output[[]*UserAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o UserAttachmentArrayOutput) Index(i pulumi.IntInput) UserAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *UserAttachment {
 		return vs[0].([]*UserAttachment)[vs[1].(int)]
@@ -284,12 +253,6 @@ func (o UserAttachmentMapOutput) ToUserAttachmentMapOutput() UserAttachmentMapOu
 
 func (o UserAttachmentMapOutput) ToUserAttachmentMapOutputWithContext(ctx context.Context) UserAttachmentMapOutput {
 	return o
-}
-
-func (o UserAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*UserAttachment] {
-	return pulumix.Output[map[string]*UserAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserAttachmentMapOutput) MapIndex(k pulumi.StringInput) UserAttachmentOutput {

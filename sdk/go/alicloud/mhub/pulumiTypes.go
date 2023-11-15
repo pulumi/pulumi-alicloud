@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -83,12 +82,6 @@ func (i GetAppsAppArgs) ToGetAppsAppOutputWithContext(ctx context.Context) GetAp
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppsAppOutput)
 }
 
-func (i GetAppsAppArgs) ToOutput(ctx context.Context) pulumix.Output[GetAppsApp] {
-	return pulumix.Output[GetAppsApp]{
-		OutputState: i.ToGetAppsAppOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetAppsAppArrayInput is an input type that accepts GetAppsAppArray and GetAppsAppArrayOutput values.
 // You can construct a concrete instance of `GetAppsAppArrayInput` via:
 //
@@ -114,12 +107,6 @@ func (i GetAppsAppArray) ToGetAppsAppArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppsAppArrayOutput)
 }
 
-func (i GetAppsAppArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAppsApp] {
-	return pulumix.Output[[]GetAppsApp]{
-		OutputState: i.ToGetAppsAppArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetAppsAppOutput struct{ *pulumi.OutputState }
 
 func (GetAppsAppOutput) ElementType() reflect.Type {
@@ -132,12 +119,6 @@ func (o GetAppsAppOutput) ToGetAppsAppOutput() GetAppsAppOutput {
 
 func (o GetAppsAppOutput) ToGetAppsAppOutputWithContext(ctx context.Context) GetAppsAppOutput {
 	return o
-}
-
-func (o GetAppsAppOutput) ToOutput(ctx context.Context) pulumix.Output[GetAppsApp] {
-	return pulumix.Output[GetAppsApp]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Application AppKey, which uniquely identifies an application when requested by the interface
@@ -204,12 +185,6 @@ func (o GetAppsAppArrayOutput) ToGetAppsAppArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o GetAppsAppArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAppsApp] {
-	return pulumix.Output[[]GetAppsApp]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetAppsAppArrayOutput) Index(i pulumi.IntInput) GetAppsAppOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppsApp {
 		return vs[0].([]GetAppsApp)[vs[1].(int)]
@@ -257,12 +232,6 @@ func (i GetProductsProductArgs) ToGetProductsProductOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetProductsProductOutput)
 }
 
-func (i GetProductsProductArgs) ToOutput(ctx context.Context) pulumix.Output[GetProductsProduct] {
-	return pulumix.Output[GetProductsProduct]{
-		OutputState: i.ToGetProductsProductOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetProductsProductArrayInput is an input type that accepts GetProductsProductArray and GetProductsProductArrayOutput values.
 // You can construct a concrete instance of `GetProductsProductArrayInput` via:
 //
@@ -288,12 +257,6 @@ func (i GetProductsProductArray) ToGetProductsProductArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetProductsProductArrayOutput)
 }
 
-func (i GetProductsProductArray) ToOutput(ctx context.Context) pulumix.Output[[]GetProductsProduct] {
-	return pulumix.Output[[]GetProductsProduct]{
-		OutputState: i.ToGetProductsProductArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetProductsProductOutput struct{ *pulumi.OutputState }
 
 func (GetProductsProductOutput) ElementType() reflect.Type {
@@ -306,12 +269,6 @@ func (o GetProductsProductOutput) ToGetProductsProductOutput() GetProductsProduc
 
 func (o GetProductsProductOutput) ToGetProductsProductOutputWithContext(ctx context.Context) GetProductsProductOutput {
 	return o
-}
-
-func (o GetProductsProductOutput) ToOutput(ctx context.Context) pulumix.Output[GetProductsProduct] {
-	return pulumix.Output[GetProductsProduct]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Product.
@@ -341,12 +298,6 @@ func (o GetProductsProductArrayOutput) ToGetProductsProductArrayOutput() GetProd
 
 func (o GetProductsProductArrayOutput) ToGetProductsProductArrayOutputWithContext(ctx context.Context) GetProductsProductArrayOutput {
 	return o
-}
-
-func (o GetProductsProductArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetProductsProduct] {
-	return pulumix.Output[[]GetProductsProduct]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetProductsProductArrayOutput) Index(i pulumi.IntInput) GetProductsProductOutput {

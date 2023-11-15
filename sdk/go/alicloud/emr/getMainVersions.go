@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `emr.getMainVersions` data source provides a collection of emr
@@ -124,12 +123,6 @@ func (o GetMainVersionsResultOutput) ToGetMainVersionsResultOutput() GetMainVers
 
 func (o GetMainVersionsResultOutput) ToGetMainVersionsResultOutputWithContext(ctx context.Context) GetMainVersionsResultOutput {
 	return o
-}
-
-func (o GetMainVersionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetMainVersionsResult] {
-	return pulumix.Output[GetMainVersionsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetMainVersionsResultOutput) ClusterTypes() pulumi.StringArrayOutput {

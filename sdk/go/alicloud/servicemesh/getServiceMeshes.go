@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Service Mesh Service Meshes of the current Alibaba Cloud user.
@@ -145,12 +144,6 @@ func (o GetServiceMeshesResultOutput) ToGetServiceMeshesResultOutput() GetServic
 
 func (o GetServiceMeshesResultOutput) ToGetServiceMeshesResultOutputWithContext(ctx context.Context) GetServiceMeshesResultOutput {
 	return o
-}
-
-func (o GetServiceMeshesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetServiceMeshesResult] {
-	return pulumix.Output[GetServiceMeshesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetServiceMeshesResultOutput) EnableDetails() pulumi.BoolPtrOutput {

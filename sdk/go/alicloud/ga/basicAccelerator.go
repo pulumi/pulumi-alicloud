@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Global Accelerator (GA) Basic Accelerator resource.
@@ -281,12 +280,6 @@ func (i *BasicAccelerator) ToBasicAcceleratorOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(BasicAcceleratorOutput)
 }
 
-func (i *BasicAccelerator) ToOutput(ctx context.Context) pulumix.Output[*BasicAccelerator] {
-	return pulumix.Output[*BasicAccelerator]{
-		OutputState: i.ToBasicAcceleratorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BasicAcceleratorArrayInput is an input type that accepts BasicAcceleratorArray and BasicAcceleratorArrayOutput values.
 // You can construct a concrete instance of `BasicAcceleratorArrayInput` via:
 //
@@ -310,12 +303,6 @@ func (i BasicAcceleratorArray) ToBasicAcceleratorArrayOutput() BasicAcceleratorA
 
 func (i BasicAcceleratorArray) ToBasicAcceleratorArrayOutputWithContext(ctx context.Context) BasicAcceleratorArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BasicAcceleratorArrayOutput)
-}
-
-func (i BasicAcceleratorArray) ToOutput(ctx context.Context) pulumix.Output[[]*BasicAccelerator] {
-	return pulumix.Output[[]*BasicAccelerator]{
-		OutputState: i.ToBasicAcceleratorArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BasicAcceleratorMapInput is an input type that accepts BasicAcceleratorMap and BasicAcceleratorMapOutput values.
@@ -343,12 +330,6 @@ func (i BasicAcceleratorMap) ToBasicAcceleratorMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(BasicAcceleratorMapOutput)
 }
 
-func (i BasicAcceleratorMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BasicAccelerator] {
-	return pulumix.Output[map[string]*BasicAccelerator]{
-		OutputState: i.ToBasicAcceleratorMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BasicAcceleratorOutput struct{ *pulumi.OutputState }
 
 func (BasicAcceleratorOutput) ElementType() reflect.Type {
@@ -361,12 +342,6 @@ func (o BasicAcceleratorOutput) ToBasicAcceleratorOutput() BasicAcceleratorOutpu
 
 func (o BasicAcceleratorOutput) ToBasicAcceleratorOutputWithContext(ctx context.Context) BasicAcceleratorOutput {
 	return o
-}
-
-func (o BasicAcceleratorOutput) ToOutput(ctx context.Context) pulumix.Output[*BasicAccelerator] {
-	return pulumix.Output[*BasicAccelerator]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies whether to enable automatic payment. Default value: `false`. Valid values:
@@ -455,12 +430,6 @@ func (o BasicAcceleratorArrayOutput) ToBasicAcceleratorArrayOutputWithContext(ct
 	return o
 }
 
-func (o BasicAcceleratorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BasicAccelerator] {
-	return pulumix.Output[[]*BasicAccelerator]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BasicAcceleratorArrayOutput) Index(i pulumi.IntInput) BasicAcceleratorOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BasicAccelerator {
 		return vs[0].([]*BasicAccelerator)[vs[1].(int)]
@@ -479,12 +448,6 @@ func (o BasicAcceleratorMapOutput) ToBasicAcceleratorMapOutput() BasicAccelerato
 
 func (o BasicAcceleratorMapOutput) ToBasicAcceleratorMapOutputWithContext(ctx context.Context) BasicAcceleratorMapOutput {
 	return o
-}
-
-func (o BasicAcceleratorMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BasicAccelerator] {
-	return pulumix.Output[map[string]*BasicAccelerator]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BasicAcceleratorMapOutput) MapIndex(k pulumi.StringInput) BasicAcceleratorOutput {

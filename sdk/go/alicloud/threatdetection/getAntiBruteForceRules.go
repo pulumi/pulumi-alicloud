@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-createantibruteforcerule)
@@ -89,12 +88,6 @@ func (o GetAntiBruteForceRulesResultOutput) ToGetAntiBruteForceRulesResultOutput
 
 func (o GetAntiBruteForceRulesResultOutput) ToGetAntiBruteForceRulesResultOutputWithContext(ctx context.Context) GetAntiBruteForceRulesResultOutput {
 	return o
-}
-
-func (o GetAntiBruteForceRulesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAntiBruteForceRulesResult] {
-	return pulumix.Output[GetAntiBruteForceRulesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

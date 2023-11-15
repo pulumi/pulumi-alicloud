@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
@@ -136,12 +135,6 @@ func (o GetTrailsResultOutput) ToGetTrailsResultOutput() GetTrailsResultOutput {
 
 func (o GetTrailsResultOutput) ToGetTrailsResultOutputWithContext(ctx context.Context) GetTrailsResultOutput {
 	return o
-}
-
-func (o GetTrailsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTrailsResult] {
-	return pulumix.Output[GetTrailsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Field `actiontrails` has been deprecated from version 1.95.0. Use `trails` instead."

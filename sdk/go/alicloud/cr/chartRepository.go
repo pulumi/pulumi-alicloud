@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a CR Chart Repository resource.
@@ -215,12 +214,6 @@ func (i *ChartRepository) ToChartRepositoryOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ChartRepositoryOutput)
 }
 
-func (i *ChartRepository) ToOutput(ctx context.Context) pulumix.Output[*ChartRepository] {
-	return pulumix.Output[*ChartRepository]{
-		OutputState: i.ToChartRepositoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ChartRepositoryArrayInput is an input type that accepts ChartRepositoryArray and ChartRepositoryArrayOutput values.
 // You can construct a concrete instance of `ChartRepositoryArrayInput` via:
 //
@@ -244,12 +237,6 @@ func (i ChartRepositoryArray) ToChartRepositoryArrayOutput() ChartRepositoryArra
 
 func (i ChartRepositoryArray) ToChartRepositoryArrayOutputWithContext(ctx context.Context) ChartRepositoryArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ChartRepositoryArrayOutput)
-}
-
-func (i ChartRepositoryArray) ToOutput(ctx context.Context) pulumix.Output[[]*ChartRepository] {
-	return pulumix.Output[[]*ChartRepository]{
-		OutputState: i.ToChartRepositoryArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ChartRepositoryMapInput is an input type that accepts ChartRepositoryMap and ChartRepositoryMapOutput values.
@@ -277,12 +264,6 @@ func (i ChartRepositoryMap) ToChartRepositoryMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ChartRepositoryMapOutput)
 }
 
-func (i ChartRepositoryMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ChartRepository] {
-	return pulumix.Output[map[string]*ChartRepository]{
-		OutputState: i.ToChartRepositoryMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ChartRepositoryOutput struct{ *pulumi.OutputState }
 
 func (ChartRepositoryOutput) ElementType() reflect.Type {
@@ -295,12 +276,6 @@ func (o ChartRepositoryOutput) ToChartRepositoryOutput() ChartRepositoryOutput {
 
 func (o ChartRepositoryOutput) ToChartRepositoryOutputWithContext(ctx context.Context) ChartRepositoryOutput {
 	return o
-}
-
-func (o ChartRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[*ChartRepository] {
-	return pulumix.Output[*ChartRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Container Registry instance.
@@ -342,12 +317,6 @@ func (o ChartRepositoryArrayOutput) ToChartRepositoryArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o ChartRepositoryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ChartRepository] {
-	return pulumix.Output[[]*ChartRepository]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ChartRepositoryArrayOutput) Index(i pulumi.IntInput) ChartRepositoryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ChartRepository {
 		return vs[0].([]*ChartRepository)[vs[1].(int)]
@@ -366,12 +335,6 @@ func (o ChartRepositoryMapOutput) ToChartRepositoryMapOutput() ChartRepositoryMa
 
 func (o ChartRepositoryMapOutput) ToChartRepositoryMapOutputWithContext(ctx context.Context) ChartRepositoryMapOutput {
 	return o
-}
-
-func (o ChartRepositoryMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ChartRepository] {
-	return pulumix.Output[map[string]*ChartRepository]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ChartRepositoryMapOutput) MapIndex(k pulumi.StringInput) ChartRepositoryOutput {

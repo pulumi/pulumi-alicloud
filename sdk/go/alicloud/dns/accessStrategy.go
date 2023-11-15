@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DNS Access Strategy resource.
@@ -300,12 +299,6 @@ func (i *AccessStrategy) ToAccessStrategyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(AccessStrategyOutput)
 }
 
-func (i *AccessStrategy) ToOutput(ctx context.Context) pulumix.Output[*AccessStrategy] {
-	return pulumix.Output[*AccessStrategy]{
-		OutputState: i.ToAccessStrategyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccessStrategyArrayInput is an input type that accepts AccessStrategyArray and AccessStrategyArrayOutput values.
 // You can construct a concrete instance of `AccessStrategyArrayInput` via:
 //
@@ -329,12 +322,6 @@ func (i AccessStrategyArray) ToAccessStrategyArrayOutput() AccessStrategyArrayOu
 
 func (i AccessStrategyArray) ToAccessStrategyArrayOutputWithContext(ctx context.Context) AccessStrategyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessStrategyArrayOutput)
-}
-
-func (i AccessStrategyArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessStrategy] {
-	return pulumix.Output[[]*AccessStrategy]{
-		OutputState: i.ToAccessStrategyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AccessStrategyMapInput is an input type that accepts AccessStrategyMap and AccessStrategyMapOutput values.
@@ -362,12 +349,6 @@ func (i AccessStrategyMap) ToAccessStrategyMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AccessStrategyMapOutput)
 }
 
-func (i AccessStrategyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessStrategy] {
-	return pulumix.Output[map[string]*AccessStrategy]{
-		OutputState: i.ToAccessStrategyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessStrategyOutput struct{ *pulumi.OutputState }
 
 func (AccessStrategyOutput) ElementType() reflect.Type {
@@ -380,12 +361,6 @@ func (o AccessStrategyOutput) ToAccessStrategyOutput() AccessStrategyOutput {
 
 func (o AccessStrategyOutput) ToAccessStrategyOutputWithContext(ctx context.Context) AccessStrategyOutput {
 	return o
-}
-
-func (o AccessStrategyOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessStrategy] {
-	return pulumix.Output[*AccessStrategy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The primary/secondary switchover policy for address pool groups. Valid values: `AUTO`, `DEFAULT`, `FAILOVER`.
@@ -492,12 +467,6 @@ func (o AccessStrategyArrayOutput) ToAccessStrategyArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o AccessStrategyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessStrategy] {
-	return pulumix.Output[[]*AccessStrategy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccessStrategyArrayOutput) Index(i pulumi.IntInput) AccessStrategyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessStrategy {
 		return vs[0].([]*AccessStrategy)[vs[1].(int)]
@@ -516,12 +485,6 @@ func (o AccessStrategyMapOutput) ToAccessStrategyMapOutput() AccessStrategyMapOu
 
 func (o AccessStrategyMapOutput) ToAccessStrategyMapOutputWithContext(ctx context.Context) AccessStrategyMapOutput {
 	return o
-}
-
-func (o AccessStrategyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessStrategy] {
-	return pulumix.Output[map[string]*AccessStrategy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessStrategyMapOutput) MapIndex(k pulumi.StringInput) AccessStrategyOutput {

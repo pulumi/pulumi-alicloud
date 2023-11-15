@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -415,12 +414,6 @@ func (i *DBCluster) ToDBClusterOutputWithContext(ctx context.Context) DBClusterO
 	return pulumi.ToOutputWithContext(ctx, i).(DBClusterOutput)
 }
 
-func (i *DBCluster) ToOutput(ctx context.Context) pulumix.Output[*DBCluster] {
-	return pulumix.Output[*DBCluster]{
-		OutputState: i.ToDBClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DBClusterArrayInput is an input type that accepts DBClusterArray and DBClusterArrayOutput values.
 // You can construct a concrete instance of `DBClusterArrayInput` via:
 //
@@ -444,12 +437,6 @@ func (i DBClusterArray) ToDBClusterArrayOutput() DBClusterArrayOutput {
 
 func (i DBClusterArray) ToDBClusterArrayOutputWithContext(ctx context.Context) DBClusterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DBClusterArrayOutput)
-}
-
-func (i DBClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]*DBCluster] {
-	return pulumix.Output[[]*DBCluster]{
-		OutputState: i.ToDBClusterArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DBClusterMapInput is an input type that accepts DBClusterMap and DBClusterMapOutput values.
@@ -477,12 +464,6 @@ func (i DBClusterMap) ToDBClusterMapOutputWithContext(ctx context.Context) DBClu
 	return pulumi.ToOutputWithContext(ctx, i).(DBClusterMapOutput)
 }
 
-func (i DBClusterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DBCluster] {
-	return pulumix.Output[map[string]*DBCluster]{
-		OutputState: i.ToDBClusterMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DBClusterOutput struct{ *pulumi.OutputState }
 
 func (DBClusterOutput) ElementType() reflect.Type {
@@ -495,12 +476,6 @@ func (o DBClusterOutput) ToDBClusterOutput() DBClusterOutput {
 
 func (o DBClusterOutput) ToDBClusterOutputWithContext(ctx context.Context) DBClusterOutput {
 	return o
-}
-
-func (o DBClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*DBCluster] {
-	return pulumix.Output[*DBCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
@@ -666,12 +641,6 @@ func (o DBClusterArrayOutput) ToDBClusterArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o DBClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DBCluster] {
-	return pulumix.Output[[]*DBCluster]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DBClusterArrayOutput) Index(i pulumi.IntInput) DBClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DBCluster {
 		return vs[0].([]*DBCluster)[vs[1].(int)]
@@ -690,12 +659,6 @@ func (o DBClusterMapOutput) ToDBClusterMapOutput() DBClusterMapOutput {
 
 func (o DBClusterMapOutput) ToDBClusterMapOutputWithContext(ctx context.Context) DBClusterMapOutput {
 	return o
-}
-
-func (o DBClusterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DBCluster] {
-	return pulumix.Output[map[string]*DBCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DBClusterMapOutput) MapIndex(k pulumi.StringInput) DBClusterOutput {

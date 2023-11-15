@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Vpc Prefix List resource. This resource is used to create a prefix list.
@@ -262,12 +261,6 @@ func (i *PrefixList) ToPrefixListOutputWithContext(ctx context.Context) PrefixLi
 	return pulumi.ToOutputWithContext(ctx, i).(PrefixListOutput)
 }
 
-func (i *PrefixList) ToOutput(ctx context.Context) pulumix.Output[*PrefixList] {
-	return pulumix.Output[*PrefixList]{
-		OutputState: i.ToPrefixListOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PrefixListArrayInput is an input type that accepts PrefixListArray and PrefixListArrayOutput values.
 // You can construct a concrete instance of `PrefixListArrayInput` via:
 //
@@ -291,12 +284,6 @@ func (i PrefixListArray) ToPrefixListArrayOutput() PrefixListArrayOutput {
 
 func (i PrefixListArray) ToPrefixListArrayOutputWithContext(ctx context.Context) PrefixListArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PrefixListArrayOutput)
-}
-
-func (i PrefixListArray) ToOutput(ctx context.Context) pulumix.Output[[]*PrefixList] {
-	return pulumix.Output[[]*PrefixList]{
-		OutputState: i.ToPrefixListArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PrefixListMapInput is an input type that accepts PrefixListMap and PrefixListMapOutput values.
@@ -324,12 +311,6 @@ func (i PrefixListMap) ToPrefixListMapOutputWithContext(ctx context.Context) Pre
 	return pulumi.ToOutputWithContext(ctx, i).(PrefixListMapOutput)
 }
 
-func (i PrefixListMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PrefixList] {
-	return pulumix.Output[map[string]*PrefixList]{
-		OutputState: i.ToPrefixListMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrefixListOutput struct{ *pulumi.OutputState }
 
 func (PrefixListOutput) ElementType() reflect.Type {
@@ -342,12 +323,6 @@ func (o PrefixListOutput) ToPrefixListOutput() PrefixListOutput {
 
 func (o PrefixListOutput) ToPrefixListOutputWithContext(ctx context.Context) PrefixListOutput {
 	return o
-}
-
-func (o PrefixListOutput) ToOutput(ctx context.Context) pulumix.Output[*PrefixList] {
-	return pulumix.Output[*PrefixList]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time when the prefix list was created.
@@ -424,12 +399,6 @@ func (o PrefixListArrayOutput) ToPrefixListArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o PrefixListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PrefixList] {
-	return pulumix.Output[[]*PrefixList]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PrefixListArrayOutput) Index(i pulumi.IntInput) PrefixListOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PrefixList {
 		return vs[0].([]*PrefixList)[vs[1].(int)]
@@ -448,12 +417,6 @@ func (o PrefixListMapOutput) ToPrefixListMapOutput() PrefixListMapOutput {
 
 func (o PrefixListMapOutput) ToPrefixListMapOutputWithContext(ctx context.Context) PrefixListMapOutput {
 	return o
-}
-
-func (o PrefixListMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PrefixList] {
-	return pulumix.Output[map[string]*PrefixList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrefixListMapOutput) MapIndex(k pulumi.StringInput) PrefixListOutput {

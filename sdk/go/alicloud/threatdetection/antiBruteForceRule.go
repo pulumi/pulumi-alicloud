@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Threat Detection Anti Brute Force Rule resource.
@@ -217,12 +216,6 @@ func (i *AntiBruteForceRule) ToAntiBruteForceRuleOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AntiBruteForceRuleOutput)
 }
 
-func (i *AntiBruteForceRule) ToOutput(ctx context.Context) pulumix.Output[*AntiBruteForceRule] {
-	return pulumix.Output[*AntiBruteForceRule]{
-		OutputState: i.ToAntiBruteForceRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AntiBruteForceRuleArrayInput is an input type that accepts AntiBruteForceRuleArray and AntiBruteForceRuleArrayOutput values.
 // You can construct a concrete instance of `AntiBruteForceRuleArrayInput` via:
 //
@@ -246,12 +239,6 @@ func (i AntiBruteForceRuleArray) ToAntiBruteForceRuleArrayOutput() AntiBruteForc
 
 func (i AntiBruteForceRuleArray) ToAntiBruteForceRuleArrayOutputWithContext(ctx context.Context) AntiBruteForceRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AntiBruteForceRuleArrayOutput)
-}
-
-func (i AntiBruteForceRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*AntiBruteForceRule] {
-	return pulumix.Output[[]*AntiBruteForceRule]{
-		OutputState: i.ToAntiBruteForceRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AntiBruteForceRuleMapInput is an input type that accepts AntiBruteForceRuleMap and AntiBruteForceRuleMapOutput values.
@@ -279,12 +266,6 @@ func (i AntiBruteForceRuleMap) ToAntiBruteForceRuleMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AntiBruteForceRuleMapOutput)
 }
 
-func (i AntiBruteForceRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AntiBruteForceRule] {
-	return pulumix.Output[map[string]*AntiBruteForceRule]{
-		OutputState: i.ToAntiBruteForceRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AntiBruteForceRuleOutput struct{ *pulumi.OutputState }
 
 func (AntiBruteForceRuleOutput) ElementType() reflect.Type {
@@ -297,12 +278,6 @@ func (o AntiBruteForceRuleOutput) ToAntiBruteForceRuleOutput() AntiBruteForceRul
 
 func (o AntiBruteForceRuleOutput) ToAntiBruteForceRuleOutputWithContext(ctx context.Context) AntiBruteForceRuleOutput {
 	return o
-}
-
-func (o AntiBruteForceRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*AntiBruteForceRule] {
-	return pulumix.Output[*AntiBruteForceRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the defense rule.
@@ -354,12 +329,6 @@ func (o AntiBruteForceRuleArrayOutput) ToAntiBruteForceRuleArrayOutputWithContex
 	return o
 }
 
-func (o AntiBruteForceRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AntiBruteForceRule] {
-	return pulumix.Output[[]*AntiBruteForceRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AntiBruteForceRuleArrayOutput) Index(i pulumi.IntInput) AntiBruteForceRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AntiBruteForceRule {
 		return vs[0].([]*AntiBruteForceRule)[vs[1].(int)]
@@ -378,12 +347,6 @@ func (o AntiBruteForceRuleMapOutput) ToAntiBruteForceRuleMapOutput() AntiBruteFo
 
 func (o AntiBruteForceRuleMapOutput) ToAntiBruteForceRuleMapOutputWithContext(ctx context.Context) AntiBruteForceRuleMapOutput {
 	return o
-}
-
-func (o AntiBruteForceRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AntiBruteForceRule] {
-	return pulumix.Output[map[string]*AntiBruteForceRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AntiBruteForceRuleMapOutput) MapIndex(k pulumi.StringInput) AntiBruteForceRuleOutput {

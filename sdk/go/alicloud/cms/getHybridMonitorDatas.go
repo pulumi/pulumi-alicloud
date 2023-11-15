@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cms Hybrid Monitor Datas of the current Alibaba Cloud user.
@@ -132,12 +131,6 @@ func (o GetHybridMonitorDatasResultOutput) ToGetHybridMonitorDatasResultOutput()
 
 func (o GetHybridMonitorDatasResultOutput) ToGetHybridMonitorDatasResultOutputWithContext(ctx context.Context) GetHybridMonitorDatasResultOutput {
 	return o
-}
-
-func (o GetHybridMonitorDatasResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetHybridMonitorDatasResult] {
-	return pulumix.Output[GetHybridMonitorDatasResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetHybridMonitorDatasResultOutput) Datas() GetHybridMonitorDatasDataArrayOutput {

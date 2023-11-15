@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://help.aliyun.com/document_detail/260941.html)
@@ -111,12 +110,6 @@ func (o GetTransitRouterRouteEntriesResultOutput) ToGetTransitRouterRouteEntries
 
 func (o GetTransitRouterRouteEntriesResultOutput) ToGetTransitRouterRouteEntriesResultOutputWithContext(ctx context.Context) GetTransitRouterRouteEntriesResultOutput {
 	return o
-}
-
-func (o GetTransitRouterRouteEntriesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTransitRouterRouteEntriesResult] {
-	return pulumix.Output[GetTransitRouterRouteEntriesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of CEN Route Entries. Each element contains the following attributes:

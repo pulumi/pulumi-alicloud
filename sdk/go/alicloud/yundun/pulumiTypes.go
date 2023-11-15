@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -67,12 +66,6 @@ func (i BastionHostInstanceAdAuthServerArgs) ToBastionHostInstanceAdAuthServerOu
 	return pulumi.ToOutputWithContext(ctx, i).(BastionHostInstanceAdAuthServerOutput)
 }
 
-func (i BastionHostInstanceAdAuthServerArgs) ToOutput(ctx context.Context) pulumix.Output[BastionHostInstanceAdAuthServer] {
-	return pulumix.Output[BastionHostInstanceAdAuthServer]{
-		OutputState: i.ToBastionHostInstanceAdAuthServerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BastionHostInstanceAdAuthServerArrayInput is an input type that accepts BastionHostInstanceAdAuthServerArray and BastionHostInstanceAdAuthServerArrayOutput values.
 // You can construct a concrete instance of `BastionHostInstanceAdAuthServerArrayInput` via:
 //
@@ -98,12 +91,6 @@ func (i BastionHostInstanceAdAuthServerArray) ToBastionHostInstanceAdAuthServerA
 	return pulumi.ToOutputWithContext(ctx, i).(BastionHostInstanceAdAuthServerArrayOutput)
 }
 
-func (i BastionHostInstanceAdAuthServerArray) ToOutput(ctx context.Context) pulumix.Output[[]BastionHostInstanceAdAuthServer] {
-	return pulumix.Output[[]BastionHostInstanceAdAuthServer]{
-		OutputState: i.ToBastionHostInstanceAdAuthServerArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BastionHostInstanceAdAuthServerOutput struct{ *pulumi.OutputState }
 
 func (BastionHostInstanceAdAuthServerOutput) ElementType() reflect.Type {
@@ -116,12 +103,6 @@ func (o BastionHostInstanceAdAuthServerOutput) ToBastionHostInstanceAdAuthServer
 
 func (o BastionHostInstanceAdAuthServerOutput) ToBastionHostInstanceAdAuthServerOutputWithContext(ctx context.Context) BastionHostInstanceAdAuthServerOutput {
 	return o
-}
-
-func (o BastionHostInstanceAdAuthServerOutput) ToOutput(ctx context.Context) pulumix.Output[BastionHostInstanceAdAuthServer] {
-	return pulumix.Output[BastionHostInstanceAdAuthServer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BastionHostInstanceAdAuthServerOutput) Account() pulumi.StringOutput {
@@ -186,12 +167,6 @@ func (o BastionHostInstanceAdAuthServerArrayOutput) ToBastionHostInstanceAdAuthS
 	return o
 }
 
-func (o BastionHostInstanceAdAuthServerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BastionHostInstanceAdAuthServer] {
-	return pulumix.Output[[]BastionHostInstanceAdAuthServer]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BastionHostInstanceAdAuthServerArrayOutput) Index(i pulumi.IntInput) BastionHostInstanceAdAuthServerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BastionHostInstanceAdAuthServer {
 		return vs[0].([]BastionHostInstanceAdAuthServer)[vs[1].(int)]
@@ -251,12 +226,6 @@ func (i BastionHostInstanceLdapAuthServerArgs) ToBastionHostInstanceLdapAuthServ
 	return pulumi.ToOutputWithContext(ctx, i).(BastionHostInstanceLdapAuthServerOutput)
 }
 
-func (i BastionHostInstanceLdapAuthServerArgs) ToOutput(ctx context.Context) pulumix.Output[BastionHostInstanceLdapAuthServer] {
-	return pulumix.Output[BastionHostInstanceLdapAuthServer]{
-		OutputState: i.ToBastionHostInstanceLdapAuthServerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BastionHostInstanceLdapAuthServerArrayInput is an input type that accepts BastionHostInstanceLdapAuthServerArray and BastionHostInstanceLdapAuthServerArrayOutput values.
 // You can construct a concrete instance of `BastionHostInstanceLdapAuthServerArrayInput` via:
 //
@@ -282,12 +251,6 @@ func (i BastionHostInstanceLdapAuthServerArray) ToBastionHostInstanceLdapAuthSer
 	return pulumi.ToOutputWithContext(ctx, i).(BastionHostInstanceLdapAuthServerArrayOutput)
 }
 
-func (i BastionHostInstanceLdapAuthServerArray) ToOutput(ctx context.Context) pulumix.Output[[]BastionHostInstanceLdapAuthServer] {
-	return pulumix.Output[[]BastionHostInstanceLdapAuthServer]{
-		OutputState: i.ToBastionHostInstanceLdapAuthServerArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BastionHostInstanceLdapAuthServerOutput struct{ *pulumi.OutputState }
 
 func (BastionHostInstanceLdapAuthServerOutput) ElementType() reflect.Type {
@@ -300,12 +263,6 @@ func (o BastionHostInstanceLdapAuthServerOutput) ToBastionHostInstanceLdapAuthSe
 
 func (o BastionHostInstanceLdapAuthServerOutput) ToBastionHostInstanceLdapAuthServerOutputWithContext(ctx context.Context) BastionHostInstanceLdapAuthServerOutput {
 	return o
-}
-
-func (o BastionHostInstanceLdapAuthServerOutput) ToOutput(ctx context.Context) pulumix.Output[BastionHostInstanceLdapAuthServer] {
-	return pulumix.Output[BastionHostInstanceLdapAuthServer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BastionHostInstanceLdapAuthServerOutput) Account() pulumi.StringOutput {
@@ -370,12 +327,6 @@ func (o BastionHostInstanceLdapAuthServerArrayOutput) ToBastionHostInstanceLdapA
 	return o
 }
 
-func (o BastionHostInstanceLdapAuthServerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BastionHostInstanceLdapAuthServer] {
-	return pulumix.Output[[]BastionHostInstanceLdapAuthServer]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BastionHostInstanceLdapAuthServerArrayOutput) Index(i pulumi.IntInput) BastionHostInstanceLdapAuthServerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BastionHostInstanceLdapAuthServer {
 		return vs[0].([]BastionHostInstanceLdapAuthServer)[vs[1].(int)]
@@ -431,12 +382,6 @@ func (i GetBastionHostInstancesInstanceArgs) ToGetBastionHostInstancesInstanceOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetBastionHostInstancesInstanceOutput)
 }
 
-func (i GetBastionHostInstancesInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetBastionHostInstancesInstance] {
-	return pulumix.Output[GetBastionHostInstancesInstance]{
-		OutputState: i.ToGetBastionHostInstancesInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetBastionHostInstancesInstanceArrayInput is an input type that accepts GetBastionHostInstancesInstanceArray and GetBastionHostInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `GetBastionHostInstancesInstanceArrayInput` via:
 //
@@ -462,12 +407,6 @@ func (i GetBastionHostInstancesInstanceArray) ToGetBastionHostInstancesInstanceA
 	return pulumi.ToOutputWithContext(ctx, i).(GetBastionHostInstancesInstanceArrayOutput)
 }
 
-func (i GetBastionHostInstancesInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetBastionHostInstancesInstance] {
-	return pulumix.Output[[]GetBastionHostInstancesInstance]{
-		OutputState: i.ToGetBastionHostInstancesInstanceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetBastionHostInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetBastionHostInstancesInstanceOutput) ElementType() reflect.Type {
@@ -480,12 +419,6 @@ func (o GetBastionHostInstancesInstanceOutput) ToGetBastionHostInstancesInstance
 
 func (o GetBastionHostInstancesInstanceOutput) ToGetBastionHostInstancesInstanceOutputWithContext(ctx context.Context) GetBastionHostInstancesInstanceOutput {
 	return o
-}
-
-func (o GetBastionHostInstancesInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetBastionHostInstancesInstance] {
-	return pulumix.Output[GetBastionHostInstancesInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetBastionHostInstancesInstanceOutput) Description() pulumi.StringOutput {
@@ -542,12 +475,6 @@ func (o GetBastionHostInstancesInstanceArrayOutput) ToGetBastionHostInstancesIns
 	return o
 }
 
-func (o GetBastionHostInstancesInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetBastionHostInstancesInstance] {
-	return pulumix.Output[[]GetBastionHostInstancesInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetBastionHostInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetBastionHostInstancesInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBastionHostInstancesInstance {
 		return vs[0].([]GetBastionHostInstancesInstance)[vs[1].(int)]
@@ -601,12 +528,6 @@ func (i GetDBAuditInstanceInstanceArgs) ToGetDBAuditInstanceInstanceOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetDBAuditInstanceInstanceOutput)
 }
 
-func (i GetDBAuditInstanceInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[GetDBAuditInstanceInstance] {
-	return pulumix.Output[GetDBAuditInstanceInstance]{
-		OutputState: i.ToGetDBAuditInstanceInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDBAuditInstanceInstanceArrayInput is an input type that accepts GetDBAuditInstanceInstanceArray and GetDBAuditInstanceInstanceArrayOutput values.
 // You can construct a concrete instance of `GetDBAuditInstanceInstanceArrayInput` via:
 //
@@ -632,12 +553,6 @@ func (i GetDBAuditInstanceInstanceArray) ToGetDBAuditInstanceInstanceArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetDBAuditInstanceInstanceArrayOutput)
 }
 
-func (i GetDBAuditInstanceInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDBAuditInstanceInstance] {
-	return pulumix.Output[[]GetDBAuditInstanceInstance]{
-		OutputState: i.ToGetDBAuditInstanceInstanceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDBAuditInstanceInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetDBAuditInstanceInstanceOutput) ElementType() reflect.Type {
@@ -650,12 +565,6 @@ func (o GetDBAuditInstanceInstanceOutput) ToGetDBAuditInstanceInstanceOutput() G
 
 func (o GetDBAuditInstanceInstanceOutput) ToGetDBAuditInstanceInstanceOutputWithContext(ctx context.Context) GetDBAuditInstanceInstanceOutput {
 	return o
-}
-
-func (o GetDBAuditInstanceInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[GetDBAuditInstanceInstance] {
-	return pulumix.Output[GetDBAuditInstanceInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDBAuditInstanceInstanceOutput) Description() pulumi.StringOutput {
@@ -706,12 +615,6 @@ func (o GetDBAuditInstanceInstanceArrayOutput) ToGetDBAuditInstanceInstanceArray
 
 func (o GetDBAuditInstanceInstanceArrayOutput) ToGetDBAuditInstanceInstanceArrayOutputWithContext(ctx context.Context) GetDBAuditInstanceInstanceArrayOutput {
 	return o
-}
-
-func (o GetDBAuditInstanceInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDBAuditInstanceInstance] {
-	return pulumix.Output[[]GetDBAuditInstanceInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDBAuditInstanceInstanceArrayOutput) Index(i pulumi.IntInput) GetDBAuditInstanceInstanceOutput {

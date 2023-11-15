@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Alidns Gtm Instance resource.
@@ -388,12 +387,6 @@ func (i *GtmInstance) ToGtmInstanceOutputWithContext(ctx context.Context) GtmIns
 	return pulumi.ToOutputWithContext(ctx, i).(GtmInstanceOutput)
 }
 
-func (i *GtmInstance) ToOutput(ctx context.Context) pulumix.Output[*GtmInstance] {
-	return pulumix.Output[*GtmInstance]{
-		OutputState: i.ToGtmInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GtmInstanceArrayInput is an input type that accepts GtmInstanceArray and GtmInstanceArrayOutput values.
 // You can construct a concrete instance of `GtmInstanceArrayInput` via:
 //
@@ -417,12 +410,6 @@ func (i GtmInstanceArray) ToGtmInstanceArrayOutput() GtmInstanceArrayOutput {
 
 func (i GtmInstanceArray) ToGtmInstanceArrayOutputWithContext(ctx context.Context) GtmInstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GtmInstanceArrayOutput)
-}
-
-func (i GtmInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*GtmInstance] {
-	return pulumix.Output[[]*GtmInstance]{
-		OutputState: i.ToGtmInstanceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GtmInstanceMapInput is an input type that accepts GtmInstanceMap and GtmInstanceMapOutput values.
@@ -450,12 +437,6 @@ func (i GtmInstanceMap) ToGtmInstanceMapOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GtmInstanceMapOutput)
 }
 
-func (i GtmInstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GtmInstance] {
-	return pulumix.Output[map[string]*GtmInstance]{
-		OutputState: i.ToGtmInstanceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GtmInstanceOutput struct{ *pulumi.OutputState }
 
 func (GtmInstanceOutput) ElementType() reflect.Type {
@@ -468,12 +449,6 @@ func (o GtmInstanceOutput) ToGtmInstanceOutput() GtmInstanceOutput {
 
 func (o GtmInstanceOutput) ToGtmInstanceOutputWithContext(ctx context.Context) GtmInstanceOutput {
 	return o
-}
-
-func (o GtmInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*GtmInstance] {
-	return pulumix.Output[*GtmInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The alert notification methods. See `alertConfig` below for details.
@@ -590,12 +565,6 @@ func (o GtmInstanceArrayOutput) ToGtmInstanceArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o GtmInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GtmInstance] {
-	return pulumix.Output[[]*GtmInstance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GtmInstanceArrayOutput) Index(i pulumi.IntInput) GtmInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GtmInstance {
 		return vs[0].([]*GtmInstance)[vs[1].(int)]
@@ -614,12 +583,6 @@ func (o GtmInstanceMapOutput) ToGtmInstanceMapOutput() GtmInstanceMapOutput {
 
 func (o GtmInstanceMapOutput) ToGtmInstanceMapOutputWithContext(ctx context.Context) GtmInstanceMapOutput {
 	return o
-}
-
-func (o GtmInstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GtmInstance] {
-	return pulumix.Output[map[string]*GtmInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GtmInstanceMapOutput) MapIndex(k pulumi.StringInput) GtmInstanceOutput {

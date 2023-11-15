@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Gpdb Db Instance Plans of the current Alibaba Cloud user.
@@ -146,12 +145,6 @@ func (o GetDbInstancePlansResultOutput) ToGetDbInstancePlansResultOutput() GetDb
 
 func (o GetDbInstancePlansResultOutput) ToGetDbInstancePlansResultOutputWithContext(ctx context.Context) GetDbInstancePlansResultOutput {
 	return o
-}
-
-func (o GetDbInstancePlansResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDbInstancePlansResult] {
-	return pulumix.Output[GetDbInstancePlansResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDbInstancePlansResultOutput) DbInstanceId() pulumi.StringOutput {

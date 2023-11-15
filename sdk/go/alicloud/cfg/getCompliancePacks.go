@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Config Compliance Packs of the current Alibaba Cloud user.
@@ -131,12 +130,6 @@ func (o GetCompliancePacksResultOutput) ToGetCompliancePacksResultOutput() GetCo
 
 func (o GetCompliancePacksResultOutput) ToGetCompliancePacksResultOutputWithContext(ctx context.Context) GetCompliancePacksResultOutput {
 	return o
-}
-
-func (o GetCompliancePacksResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCompliancePacksResult] {
-	return pulumix.Output[GetCompliancePacksResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetCompliancePacksResultOutput) EnableDetails() pulumi.BoolPtrOutput {

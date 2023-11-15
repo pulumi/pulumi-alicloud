@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides information about the current account.
@@ -78,12 +77,6 @@ func (o GetAccountResultOutput) ToGetAccountResultOutput() GetAccountResultOutpu
 
 func (o GetAccountResultOutput) ToGetAccountResultOutputWithContext(ctx context.Context) GetAccountResultOutput {
 	return o
-}
-
-func (o GetAccountResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccountResult] {
-	return pulumix.Output[GetAccountResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Account ID (e.g. "1239306421830812"). It can be used to construct an ARN.

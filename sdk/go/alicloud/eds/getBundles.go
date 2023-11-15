@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Ecd bundles of the current Alibaba Cloud user.
@@ -124,12 +123,6 @@ func (o GetBundlesResultOutput) ToGetBundlesResultOutput() GetBundlesResultOutpu
 
 func (o GetBundlesResultOutput) ToGetBundlesResultOutputWithContext(ctx context.Context) GetBundlesResultOutput {
 	return o
-}
-
-func (o GetBundlesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBundlesResult] {
-	return pulumix.Output[GetBundlesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetBundlesResultOutput) BundleIds() pulumi.StringArrayOutput {

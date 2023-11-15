@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloud Enterprise Network (CEN) Inter Region Traffic Qos Policy resource.
@@ -242,12 +241,6 @@ func (i *InterRegionTrafficQosPolicy) ToInterRegionTrafficQosPolicyOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(InterRegionTrafficQosPolicyOutput)
 }
 
-func (i *InterRegionTrafficQosPolicy) ToOutput(ctx context.Context) pulumix.Output[*InterRegionTrafficQosPolicy] {
-	return pulumix.Output[*InterRegionTrafficQosPolicy]{
-		OutputState: i.ToInterRegionTrafficQosPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InterRegionTrafficQosPolicyArrayInput is an input type that accepts InterRegionTrafficQosPolicyArray and InterRegionTrafficQosPolicyArrayOutput values.
 // You can construct a concrete instance of `InterRegionTrafficQosPolicyArrayInput` via:
 //
@@ -271,12 +264,6 @@ func (i InterRegionTrafficQosPolicyArray) ToInterRegionTrafficQosPolicyArrayOutp
 
 func (i InterRegionTrafficQosPolicyArray) ToInterRegionTrafficQosPolicyArrayOutputWithContext(ctx context.Context) InterRegionTrafficQosPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InterRegionTrafficQosPolicyArrayOutput)
-}
-
-func (i InterRegionTrafficQosPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*InterRegionTrafficQosPolicy] {
-	return pulumix.Output[[]*InterRegionTrafficQosPolicy]{
-		OutputState: i.ToInterRegionTrafficQosPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InterRegionTrafficQosPolicyMapInput is an input type that accepts InterRegionTrafficQosPolicyMap and InterRegionTrafficQosPolicyMapOutput values.
@@ -304,12 +291,6 @@ func (i InterRegionTrafficQosPolicyMap) ToInterRegionTrafficQosPolicyMapOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(InterRegionTrafficQosPolicyMapOutput)
 }
 
-func (i InterRegionTrafficQosPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InterRegionTrafficQosPolicy] {
-	return pulumix.Output[map[string]*InterRegionTrafficQosPolicy]{
-		OutputState: i.ToInterRegionTrafficQosPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InterRegionTrafficQosPolicyOutput struct{ *pulumi.OutputState }
 
 func (InterRegionTrafficQosPolicyOutput) ElementType() reflect.Type {
@@ -322,12 +303,6 @@ func (o InterRegionTrafficQosPolicyOutput) ToInterRegionTrafficQosPolicyOutput()
 
 func (o InterRegionTrafficQosPolicyOutput) ToInterRegionTrafficQosPolicyOutputWithContext(ctx context.Context) InterRegionTrafficQosPolicyOutput {
 	return o
-}
-
-func (o InterRegionTrafficQosPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*InterRegionTrafficQosPolicy] {
-	return pulumix.Output[*InterRegionTrafficQosPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of the QoS policy. The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The description must start with a letter.
@@ -371,12 +346,6 @@ func (o InterRegionTrafficQosPolicyArrayOutput) ToInterRegionTrafficQosPolicyArr
 	return o
 }
 
-func (o InterRegionTrafficQosPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InterRegionTrafficQosPolicy] {
-	return pulumix.Output[[]*InterRegionTrafficQosPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InterRegionTrafficQosPolicyArrayOutput) Index(i pulumi.IntInput) InterRegionTrafficQosPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InterRegionTrafficQosPolicy {
 		return vs[0].([]*InterRegionTrafficQosPolicy)[vs[1].(int)]
@@ -395,12 +364,6 @@ func (o InterRegionTrafficQosPolicyMapOutput) ToInterRegionTrafficQosPolicyMapOu
 
 func (o InterRegionTrafficQosPolicyMapOutput) ToInterRegionTrafficQosPolicyMapOutputWithContext(ctx context.Context) InterRegionTrafficQosPolicyMapOutput {
 	return o
-}
-
-func (o InterRegionTrafficQosPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InterRegionTrafficQosPolicy] {
-	return pulumix.Output[map[string]*InterRegionTrafficQosPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InterRegionTrafficQosPolicyMapOutput) MapIndex(k pulumi.StringInput) InterRegionTrafficQosPolicyOutput {

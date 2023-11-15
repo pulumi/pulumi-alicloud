@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Sag ClientUser resource. This topic describes how to manage accounts as an administrator. After you configure the network, you can create multiple accounts and distribute them to end users so that clients can access Alibaba Cloud.
@@ -236,12 +235,6 @@ func (i *ClientUser) ToClientUserOutputWithContext(ctx context.Context) ClientUs
 	return pulumi.ToOutputWithContext(ctx, i).(ClientUserOutput)
 }
 
-func (i *ClientUser) ToOutput(ctx context.Context) pulumix.Output[*ClientUser] {
-	return pulumix.Output[*ClientUser]{
-		OutputState: i.ToClientUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ClientUserArrayInput is an input type that accepts ClientUserArray and ClientUserArrayOutput values.
 // You can construct a concrete instance of `ClientUserArrayInput` via:
 //
@@ -265,12 +258,6 @@ func (i ClientUserArray) ToClientUserArrayOutput() ClientUserArrayOutput {
 
 func (i ClientUserArray) ToClientUserArrayOutputWithContext(ctx context.Context) ClientUserArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClientUserArrayOutput)
-}
-
-func (i ClientUserArray) ToOutput(ctx context.Context) pulumix.Output[[]*ClientUser] {
-	return pulumix.Output[[]*ClientUser]{
-		OutputState: i.ToClientUserArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ClientUserMapInput is an input type that accepts ClientUserMap and ClientUserMapOutput values.
@@ -298,12 +285,6 @@ func (i ClientUserMap) ToClientUserMapOutputWithContext(ctx context.Context) Cli
 	return pulumi.ToOutputWithContext(ctx, i).(ClientUserMapOutput)
 }
 
-func (i ClientUserMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClientUser] {
-	return pulumix.Output[map[string]*ClientUser]{
-		OutputState: i.ToClientUserMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClientUserOutput struct{ *pulumi.OutputState }
 
 func (ClientUserOutput) ElementType() reflect.Type {
@@ -316,12 +297,6 @@ func (o ClientUserOutput) ToClientUserOutput() ClientUserOutput {
 
 func (o ClientUserOutput) ToClientUserOutputWithContext(ctx context.Context) ClientUserOutput {
 	return o
-}
-
-func (o ClientUserOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientUser] {
-	return pulumix.Output[*ClientUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
@@ -378,12 +353,6 @@ func (o ClientUserArrayOutput) ToClientUserArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o ClientUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ClientUser] {
-	return pulumix.Output[[]*ClientUser]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ClientUserArrayOutput) Index(i pulumi.IntInput) ClientUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClientUser {
 		return vs[0].([]*ClientUser)[vs[1].(int)]
@@ -402,12 +371,6 @@ func (o ClientUserMapOutput) ToClientUserMapOutput() ClientUserMapOutput {
 
 func (o ClientUserMapOutput) ToClientUserMapOutputWithContext(ctx context.Context) ClientUserMapOutput {
 	return o
-}
-
-func (o ClientUserMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClientUser] {
-	return pulumix.Output[map[string]*ClientUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClientUserMapOutput) MapIndex(k pulumi.StringInput) ClientUserOutput {

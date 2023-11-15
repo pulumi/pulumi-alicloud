@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the Cloud Storage Gateway Gateway Block Volumes of the current Alibaba Cloud user.
@@ -137,12 +136,6 @@ func (o GetGatewayBlockVolumesResultOutput) ToGetGatewayBlockVolumesResultOutput
 
 func (o GetGatewayBlockVolumesResultOutput) ToGetGatewayBlockVolumesResultOutputWithContext(ctx context.Context) GetGatewayBlockVolumesResultOutput {
 	return o
-}
-
-func (o GetGatewayBlockVolumesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGatewayBlockVolumesResult] {
-	return pulumix.Output[GetGatewayBlockVolumesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetGatewayBlockVolumesResultOutput) GatewayId() pulumi.StringOutput {

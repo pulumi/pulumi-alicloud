@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -59,12 +58,6 @@ func (i DomainSourceArgs) ToDomainSourceOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DomainSourceOutput)
 }
 
-func (i DomainSourceArgs) ToOutput(ctx context.Context) pulumix.Output[DomainSource] {
-	return pulumix.Output[DomainSource]{
-		OutputState: i.ToDomainSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DomainSourceArrayInput is an input type that accepts DomainSourceArray and DomainSourceArrayOutput values.
 // You can construct a concrete instance of `DomainSourceArrayInput` via:
 //
@@ -90,12 +83,6 @@ func (i DomainSourceArray) ToDomainSourceArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DomainSourceArrayOutput)
 }
 
-func (i DomainSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]DomainSource] {
-	return pulumix.Output[[]DomainSource]{
-		OutputState: i.ToDomainSourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DomainSourceOutput struct{ *pulumi.OutputState }
 
 func (DomainSourceOutput) ElementType() reflect.Type {
@@ -108,12 +95,6 @@ func (o DomainSourceOutput) ToDomainSourceOutput() DomainSourceOutput {
 
 func (o DomainSourceOutput) ToDomainSourceOutputWithContext(ctx context.Context) DomainSourceOutput {
 	return o
-}
-
-func (o DomainSourceOutput) ToOutput(ctx context.Context) pulumix.Output[DomainSource] {
-	return pulumix.Output[DomainSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The address of the origin server. You can specify an IP address or a domain name.
@@ -148,12 +129,6 @@ func (o DomainSourceArrayOutput) ToDomainSourceArrayOutput() DomainSourceArrayOu
 
 func (o DomainSourceArrayOutput) ToDomainSourceArrayOutputWithContext(ctx context.Context) DomainSourceArrayOutput {
 	return o
-}
-
-func (o DomainSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DomainSource] {
-	return pulumix.Output[[]DomainSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DomainSourceArrayOutput) Index(i pulumi.IntInput) DomainSourceOutput {
@@ -231,12 +206,6 @@ func (i GetDomainsDomainArgs) ToGetDomainsDomainOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainOutput)
 }
 
-func (i GetDomainsDomainArgs) ToOutput(ctx context.Context) pulumix.Output[GetDomainsDomain] {
-	return pulumix.Output[GetDomainsDomain]{
-		OutputState: i.ToGetDomainsDomainOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDomainsDomainArrayInput is an input type that accepts GetDomainsDomainArray and GetDomainsDomainArrayOutput values.
 // You can construct a concrete instance of `GetDomainsDomainArrayInput` via:
 //
@@ -262,12 +231,6 @@ func (i GetDomainsDomainArray) ToGetDomainsDomainArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainArrayOutput)
 }
 
-func (i GetDomainsDomainArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainsDomain] {
-	return pulumix.Output[[]GetDomainsDomain]{
-		OutputState: i.ToGetDomainsDomainArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDomainsDomainOutput struct{ *pulumi.OutputState }
 
 func (GetDomainsDomainOutput) ElementType() reflect.Type {
@@ -280,12 +243,6 @@ func (o GetDomainsDomainOutput) ToGetDomainsDomainOutput() GetDomainsDomainOutpu
 
 func (o GetDomainsDomainOutput) ToGetDomainsDomainOutputWithContext(ctx context.Context) GetDomainsDomainOutput {
 	return o
-}
-
-func (o GetDomainsDomainOutput) ToOutput(ctx context.Context) pulumix.Output[GetDomainsDomain] {
-	return pulumix.Output[GetDomainsDomain]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The CNAME that is assigned to the domain name for CDN. You must add a CNAME record in the system of your Domain Name System (DNS) service provider to map the domain name for CDN to the CNAME.
@@ -352,12 +309,6 @@ func (o GetDomainsDomainArrayOutput) ToGetDomainsDomainArrayOutputWithContext(ct
 	return o
 }
 
-func (o GetDomainsDomainArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainsDomain] {
-	return pulumix.Output[[]GetDomainsDomain]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetDomainsDomainArrayOutput) Index(i pulumi.IntInput) GetDomainsDomainOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDomainsDomain {
 		return vs[0].([]GetDomainsDomain)[vs[1].(int)]
@@ -401,12 +352,6 @@ func (i GetDomainsDomainSourceArgs) ToGetDomainsDomainSourceOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainSourceOutput)
 }
 
-func (i GetDomainsDomainSourceArgs) ToOutput(ctx context.Context) pulumix.Output[GetDomainsDomainSource] {
-	return pulumix.Output[GetDomainsDomainSource]{
-		OutputState: i.ToGetDomainsDomainSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetDomainsDomainSourceArrayInput is an input type that accepts GetDomainsDomainSourceArray and GetDomainsDomainSourceArrayOutput values.
 // You can construct a concrete instance of `GetDomainsDomainSourceArrayInput` via:
 //
@@ -432,12 +377,6 @@ func (i GetDomainsDomainSourceArray) ToGetDomainsDomainSourceArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainSourceArrayOutput)
 }
 
-func (i GetDomainsDomainSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainsDomainSource] {
-	return pulumix.Output[[]GetDomainsDomainSource]{
-		OutputState: i.ToGetDomainsDomainSourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetDomainsDomainSourceOutput struct{ *pulumi.OutputState }
 
 func (GetDomainsDomainSourceOutput) ElementType() reflect.Type {
@@ -450,12 +389,6 @@ func (o GetDomainsDomainSourceOutput) ToGetDomainsDomainSourceOutput() GetDomain
 
 func (o GetDomainsDomainSourceOutput) ToGetDomainsDomainSourceOutputWithContext(ctx context.Context) GetDomainsDomainSourceOutput {
 	return o
-}
-
-func (o GetDomainsDomainSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GetDomainsDomainSource] {
-	return pulumix.Output[GetDomainsDomainSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDomainsDomainSourceOutput) SourceContent() pulumi.StringOutput {
@@ -486,12 +419,6 @@ func (o GetDomainsDomainSourceArrayOutput) ToGetDomainsDomainSourceArrayOutput()
 
 func (o GetDomainsDomainSourceArrayOutput) ToGetDomainsDomainSourceArrayOutputWithContext(ctx context.Context) GetDomainsDomainSourceArrayOutput {
 	return o
-}
-
-func (o GetDomainsDomainSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainsDomainSource] {
-	return pulumix.Output[[]GetDomainsDomainSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDomainsDomainSourceArrayOutput) Index(i pulumi.IntInput) GetDomainsDomainSourceOutput {

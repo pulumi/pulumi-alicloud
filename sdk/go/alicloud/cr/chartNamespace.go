@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a CR Chart Namespace resource.
@@ -194,12 +193,6 @@ func (i *ChartNamespace) ToChartNamespaceOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ChartNamespaceOutput)
 }
 
-func (i *ChartNamespace) ToOutput(ctx context.Context) pulumix.Output[*ChartNamespace] {
-	return pulumix.Output[*ChartNamespace]{
-		OutputState: i.ToChartNamespaceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ChartNamespaceArrayInput is an input type that accepts ChartNamespaceArray and ChartNamespaceArrayOutput values.
 // You can construct a concrete instance of `ChartNamespaceArrayInput` via:
 //
@@ -223,12 +216,6 @@ func (i ChartNamespaceArray) ToChartNamespaceArrayOutput() ChartNamespaceArrayOu
 
 func (i ChartNamespaceArray) ToChartNamespaceArrayOutputWithContext(ctx context.Context) ChartNamespaceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ChartNamespaceArrayOutput)
-}
-
-func (i ChartNamespaceArray) ToOutput(ctx context.Context) pulumix.Output[[]*ChartNamespace] {
-	return pulumix.Output[[]*ChartNamespace]{
-		OutputState: i.ToChartNamespaceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ChartNamespaceMapInput is an input type that accepts ChartNamespaceMap and ChartNamespaceMapOutput values.
@@ -256,12 +243,6 @@ func (i ChartNamespaceMap) ToChartNamespaceMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ChartNamespaceMapOutput)
 }
 
-func (i ChartNamespaceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ChartNamespace] {
-	return pulumix.Output[map[string]*ChartNamespace]{
-		OutputState: i.ToChartNamespaceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ChartNamespaceOutput struct{ *pulumi.OutputState }
 
 func (ChartNamespaceOutput) ElementType() reflect.Type {
@@ -274,12 +255,6 @@ func (o ChartNamespaceOutput) ToChartNamespaceOutput() ChartNamespaceOutput {
 
 func (o ChartNamespaceOutput) ToChartNamespaceOutputWithContext(ctx context.Context) ChartNamespaceOutput {
 	return o
-}
-
-func (o ChartNamespaceOutput) ToOutput(ctx context.Context) pulumix.Output[*ChartNamespace] {
-	return pulumix.Output[*ChartNamespace]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies whether to automatically create repositories in the namespace. Valid values:
@@ -316,12 +291,6 @@ func (o ChartNamespaceArrayOutput) ToChartNamespaceArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o ChartNamespaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ChartNamespace] {
-	return pulumix.Output[[]*ChartNamespace]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ChartNamespaceArrayOutput) Index(i pulumi.IntInput) ChartNamespaceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ChartNamespace {
 		return vs[0].([]*ChartNamespace)[vs[1].(int)]
@@ -340,12 +309,6 @@ func (o ChartNamespaceMapOutput) ToChartNamespaceMapOutput() ChartNamespaceMapOu
 
 func (o ChartNamespaceMapOutput) ToChartNamespaceMapOutputWithContext(ctx context.Context) ChartNamespaceMapOutput {
 	return o
-}
-
-func (o ChartNamespaceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ChartNamespace] {
-	return pulumix.Output[map[string]*ChartNamespace]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ChartNamespaceMapOutput) MapIndex(k pulumi.StringInput) ChartNamespaceOutput {

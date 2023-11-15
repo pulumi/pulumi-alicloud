@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **DEPRECATED:**  This datasource has been renamed to actiontrail.getTrails from version 1.95.0.
@@ -100,12 +99,6 @@ func (o GetTrailsDeprecatedResultOutput) ToGetTrailsDeprecatedResultOutput() Get
 
 func (o GetTrailsDeprecatedResultOutput) ToGetTrailsDeprecatedResultOutputWithContext(ctx context.Context) GetTrailsDeprecatedResultOutput {
 	return o
-}
-
-func (o GetTrailsDeprecatedResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTrailsDeprecatedResult] {
-	return pulumix.Output[GetTrailsDeprecatedResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of actiontrails. Each element contains the following attributes:

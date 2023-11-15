@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Alicloud Config Configuration Recorder resource. Cloud Config is a specialized service for evaluating resources. Cloud Config tracks configuration changes of your resources and evaluates configuration compliance. Cloud Config can help you evaluate numerous resources and maintain the continuous compliance of your cloud infrastructure.
@@ -179,12 +178,6 @@ func (i *ConfigurationRecorder) ToConfigurationRecorderOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationRecorderOutput)
 }
 
-func (i *ConfigurationRecorder) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationRecorder] {
-	return pulumix.Output[*ConfigurationRecorder]{
-		OutputState: i.ToConfigurationRecorderOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConfigurationRecorderArrayInput is an input type that accepts ConfigurationRecorderArray and ConfigurationRecorderArrayOutput values.
 // You can construct a concrete instance of `ConfigurationRecorderArrayInput` via:
 //
@@ -208,12 +201,6 @@ func (i ConfigurationRecorderArray) ToConfigurationRecorderArrayOutput() Configu
 
 func (i ConfigurationRecorderArray) ToConfigurationRecorderArrayOutputWithContext(ctx context.Context) ConfigurationRecorderArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationRecorderArrayOutput)
-}
-
-func (i ConfigurationRecorderArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConfigurationRecorder] {
-	return pulumix.Output[[]*ConfigurationRecorder]{
-		OutputState: i.ToConfigurationRecorderArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConfigurationRecorderMapInput is an input type that accepts ConfigurationRecorderMap and ConfigurationRecorderMapOutput values.
@@ -241,12 +228,6 @@ func (i ConfigurationRecorderMap) ToConfigurationRecorderMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationRecorderMapOutput)
 }
 
-func (i ConfigurationRecorderMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConfigurationRecorder] {
-	return pulumix.Output[map[string]*ConfigurationRecorder]{
-		OutputState: i.ToConfigurationRecorderMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigurationRecorderOutput struct{ *pulumi.OutputState }
 
 func (ConfigurationRecorderOutput) ElementType() reflect.Type {
@@ -259,12 +240,6 @@ func (o ConfigurationRecorderOutput) ToConfigurationRecorderOutput() Configurati
 
 func (o ConfigurationRecorderOutput) ToConfigurationRecorderOutputWithContext(ctx context.Context) ConfigurationRecorderOutput {
 	return o
-}
-
-func (o ConfigurationRecorderOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationRecorder] {
-	return pulumix.Output[*ConfigurationRecorder]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
@@ -308,12 +283,6 @@ func (o ConfigurationRecorderArrayOutput) ToConfigurationRecorderArrayOutputWith
 	return o
 }
 
-func (o ConfigurationRecorderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConfigurationRecorder] {
-	return pulumix.Output[[]*ConfigurationRecorder]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConfigurationRecorderArrayOutput) Index(i pulumi.IntInput) ConfigurationRecorderOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConfigurationRecorder {
 		return vs[0].([]*ConfigurationRecorder)[vs[1].(int)]
@@ -332,12 +301,6 @@ func (o ConfigurationRecorderMapOutput) ToConfigurationRecorderMapOutput() Confi
 
 func (o ConfigurationRecorderMapOutput) ToConfigurationRecorderMapOutputWithContext(ctx context.Context) ConfigurationRecorderMapOutput {
 	return o
-}
-
-func (o ConfigurationRecorderMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConfigurationRecorder] {
-	return pulumix.Output[map[string]*ConfigurationRecorder]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigurationRecorderMapOutput) MapIndex(k pulumi.StringInput) ConfigurationRecorderOutput {

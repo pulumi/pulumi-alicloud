@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides a list of VSwitches owned by an Alibaba Cloud account.
@@ -201,12 +200,6 @@ func (o GetSwitchesResultOutput) ToGetSwitchesResultOutput() GetSwitchesResultOu
 
 func (o GetSwitchesResultOutput) ToGetSwitchesResultOutputWithContext(ctx context.Context) GetSwitchesResultOutput {
 	return o
-}
-
-func (o GetSwitchesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSwitchesResult] {
-	return pulumix.Output[GetSwitchesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // CIDR block of the VSwitch.
